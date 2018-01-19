@@ -2,9 +2,9 @@
 
 ## About
 
-The Node.js i18n Working Group is dedicated to support and improvement of Internationalization (i18n) and Localization (l10n) in Node.js.
+The Node.js i18n Working Group is dedicated to support and improvement of Internationalization (i18n) and Localization (l10n) in the [Node.js project](https://github.com/nodejs/node). This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
 
-**This Working Group is responsible for:**
+#### What we're responsible for
 * The ongoing translation of the [Node.js](https://github.com/nodejs/node) project's textual content into every language of its users.
 * The implementation of i18n support including [ECMA-402](https://tc39.github.io/ecma402/) within [Node.js](https://github.com/nodejs/node). 
 * Ensuring Node.js is compliant with common standards like [Unicode](https://unicode.org/), [CLDR](http://cldr.unicode.org/), and other globalization efforts.
@@ -33,7 +33,7 @@ such as localized methods for displaying dates & times that are common to specif
 Please read [this article](https://medium.com/the-node-js-collection/internationalizing-node-js-fe7761798b0a) to get up to speed on our current trajectory.
 
 
-## Inter-project liaison relationships
+## Inter-project relationships
 In order to ensure best practices, this working group may work directly with representatives of similar i18n efforts from other external projects. For example:
 * [Electron i18n](https://github.com/electron/electron-i18n)
 * [W3C i18n Working Group](https://www.w3.org/International/core/Overview)
@@ -50,4 +50,5 @@ In order to ensure best practices, this working group may work directly with rep
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
 
 
-__This document was influenced by the [nodejs/Intl](https://github.com/nodejs/Intl/blob/master/README.md) working group's mandate, and is seen as a continuation of that work.__
+----
+_This document was influenced by the [nodejs/Intl](https://github.com/nodejs/Intl/blob/master/README.md) working group's mandate, and is seen as a continuation of that work._
