@@ -19,7 +19,7 @@ such as localized methods for displaying dates & times that are common to specif
 #### What l10n means to us
 * The ability for Node.js and its related modules & applications to be translated into distinct human languages. 
 * The responsibility to provide translators with a useful platform to work in.
-* The responsibility to provision Node.js with all l10n assets, through coordination with [Node.js core contributors](https://github.com/nodejs/node).
+* The responsibility to provision Node.js with all l10n assets, through coordination with [Node.js](https://github.com/nodejs/node) core contributors
 * Members of this group are not responsible for performing the act of translation itself.
 
 
