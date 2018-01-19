@@ -2,7 +2,7 @@
 
 ## About
 
-The Node.js i18n Working Group is dedicated to support and improvement of Internationalization (i18n) and Localization (l10n) in the [Node.js project](https://github.com/nodejs/node). This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
+The Node.js i18n Working Group is dedicated to the support and improvement of Internationalization (i18n) and Localization (l10n) within the [Node.js](https://github.com/nodejs/node) project. This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
 
 #### What we're responsible for
 * The ongoing translation of the [Node.js](https://github.com/nodejs/node) project's textual content into every language of its users.
@@ -17,9 +17,9 @@ such as localized methods for displaying dates & times that are common to specif
 * Building and maintaining i18n module(s) that support [Node.js](https://github.com/nodejs/node).
 
 #### What l10n means to us
-* The ability for Node.js and its related modules & applications to be translated into distinct human languages. 
+* The ability for [Node.js](https://github.com/nodejs/node) and its related modules & applications to be translated into distinct human languages. 
 * The responsibility to provide translators with a useful platform to work in.
-* The responsibility to provision Node.js with all l10n assets, through coordination with [Node.js](https://github.com/nodejs/node) core contributors
+* The responsibility to provision Node.js with all l10n assets, through coordination with [Node.js](https://github.com/nodejs/node) core contributors.
 * Members of this group are not responsible for performing the act of translation itself.
 
 
