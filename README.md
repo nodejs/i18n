@@ -43,7 +43,7 @@ In order to ensure best practices, this working group may work directly with rep
 ## Current Members
   + [Ben Michel](https://twitter.com/obensource)
   + [Adam Miller](https://twitter.com/millea9)
-  + [Ben Tiriel](https://twitter.com/Ben_Tiriel)
+  + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
   + [Rachel White](https://twitter.com/ohhoe)
 
 
