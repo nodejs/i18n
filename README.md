@@ -44,11 +44,11 @@ In order to ensure best practices, this working group may work directly with rep
   + [Ben Michel](https://twitter.com/obensource)
   + [Adam Miller](https://twitter.com/millea9)
   + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
+  + [Raja Sekar](https://twitter.com/rajzshkr)
   + [Rachel White](https://twitter.com/ohhoe)
   + [Sam Yamashita](https://twitter.com/sota0805)
   + [Richard Littauer](https://twitter.com/richlitt)
   + [Zeke Sikelianos](https://twitter.com/zeke)
-  + [Raja Sekar](https://twitter.com/rajzshkr)
   
 
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
