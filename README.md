@@ -41,12 +41,14 @@ In order to ensure best practices, this working group may work directly with rep
 
 
 ## Current Members
-  + [Ben Michel](https://twitter.com/obensource)
   + [Adam Miller](https://twitter.com/millea9)
+  + [Ben Michel](https://twitter.com/obensource)
   + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
+  + [Jonathan Cardoso](https://twitter.com/_jonathancardos)
   + [Rachel White](https://twitter.com/ohhoe)
-  + [Sam Yamashita](https://twitter.com/sota0805)
+  + [Raja Sekar](https://twitter.com/rajzshkr)
   + [Richard Littauer](https://twitter.com/richlitt)
+  + [Sam Yamashita](https://twitter.com/sota0805)
   + [Zeke Sikelianos](https://twitter.com/zeke)
   
 
