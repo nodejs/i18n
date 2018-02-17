@@ -49,6 +49,7 @@ In order to ensure best practices, this working group may work directly with rep
   + [Raja Sekar](https://twitter.com/rajzshkr)
   + [Richard Littauer](https://twitter.com/richlitt)
   + [Sam Yamashita](https://twitter.com/sota0805)
+  + [Steven R. Loomis](https://twitter.com/srl295)
   + [Zeke Sikelianos](https://twitter.com/zeke)
   
 
