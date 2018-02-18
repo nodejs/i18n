@@ -48,6 +48,7 @@ In order to ensure best practices, this working group may work directly with rep
   + [Rachel White](https://twitter.com/ohhoe)
   + [Raja Sekar](https://twitter.com/rajzshkr)
   + [Richard Littauer](https://twitter.com/richlitt)
+  + [Ryo Aramaki](https://twitter.com/geo_vitya)
   + [Sam Yamashita](https://twitter.com/sota0805)
   + [Steven R. Loomis](https://twitter.com/srl295)
   + [Zeke Sikelianos](https://twitter.com/zeke)
