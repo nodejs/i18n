@@ -55,6 +55,7 @@ In order to ensure best practices, this working group may work directly with rep
   + [Ryo Aramaki](https://twitter.com/geo_vitya)
   + [Sam Yamashita](https://twitter.com/sota0805)
   + [Steven R. Loomis](https://twitter.com/srl295)
+  + [Tiago Danin](https://twitter.com/_TiagoEDGE)
   + [Zeke Sikelianos](https://twitter.com/zeke)
 
 
