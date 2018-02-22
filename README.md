@@ -39,8 +39,8 @@ In order to ensure best practices, this working group may work directly with rep
 * [V8 i18n](https://github.com/v8/v8/wiki/i18n-support) (implements ECMA-402 in Node.js)
 * [Unicode](https://unicode.org):
   - [The Unicode Standard](https://unicode.org/standard/) (defines how text is encoded)
-  - [CLDR](https://cldr.unicode.org) (Common Locale Data Repository)
-  - [ICU](https://icu-project.org) (C/C++ i18n library used by v8 and Node.js) 
+  - [CLDR](http://cldr.unicode.org) (Common Locale Data Repository)
+  - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js) 
 
 
 ## Current Members
