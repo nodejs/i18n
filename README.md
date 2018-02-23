@@ -61,8 +61,5 @@ In order to ensure best practices, this working group may work directly with rep
 
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
 
-## License
-[MIT](./LICENSE.md)
-
 ----
 _This document was influenced by the [nodejs/Intl](https://github.com/nodejs/Intl/blob/master/README.md) working group's mandate, and is seen as a continuation of that work._
