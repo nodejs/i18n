@@ -6,7 +6,7 @@ The Node.js i18n Working Group is dedicated to the support and improvement of bo
 
 #### What we're responsible for
 * The ongoing translation of the [Node.js](https://github.com/nodejs/node) project's textual content into every language of its users.
-* The implementation of i18n support including [ECMA-402](https://tc39.github.io/ecma402/) within [Node.js](https://github.com/nodejs/node). 
+* The implementation of i18n support including [ECMA-402](https://tc39.github.io/ecma402/) within [Node.js](https://github.com/nodejs/node).
 * Ensuring Node.js is compliant with common standards like [Unicode](https://unicode.org/), [CLDR](http://cldr.unicode.org/), and harmonized with other globalization efforts.
 
 #### What i18n (Internationalization) means to us
@@ -40,15 +40,15 @@ In order to ensure best practices, this working group may work directly with rep
 * [Unicode](https://unicode.org):
   - [The Unicode Standard](https://unicode.org/standard/) (defines how text is encoded)
   - [CLDR](http://cldr.unicode.org) (Common Locale Data Repository)
-  - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js) 
+  - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js)
 
 
 ## l10n groups
 
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
-* [Portuguese (nodejs-pt)](https://github.com/nodejs/nodejs-pt)			
-* [Turkish (nodejs-tr)](https://github.com/nodejs/nodejs-tr)	
-* [German (nodejs-de)](https://github.com/nodejs/nodejs-de)			
+* [Portuguese (nodejs-pt)](https://github.com/nodejs/nodejs-pt)
+* [Turkish (nodejs-tr)](https://github.com/nodejs/nodejs-tr)
+* [German (nodejs-de)](https://github.com/nodejs/nodejs-de)
 * [Japanese (nodejs-ja)](https://github.com/nodejs/nodejs-ja)
 * [Ukrainian (nodejs-uk)](https://github.com/nodejs/nodejs-uk)
 * [Russian (nodejs-ru)](https://github.com/nodejs/nodejs-ru)
@@ -96,7 +96,8 @@ In order to ensure best practices, this working group may work directly with rep
   + [Tiago Danin](https://twitter.com/_TiagoEDGE)
   + [Volkan Nazmi Metin](https://twitter.com/volemnic)
   + [Zeke Sikelianos](https://twitter.com/zeke)
-  
+  + [Vanessa Yuen](https://twitter.com/vanessayuenn)
+
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
 
 ----
