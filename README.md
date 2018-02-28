@@ -43,6 +43,43 @@ In order to ensure best practices, this working group may work directly with rep
   - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js) 
 
 
+## l10n groups
+
+* [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
+* [Portuguese (nodejs-pt)](https://github.com/nodejs/nodejs-pt)			
+* [Turkish (nodejs-tr)](https://github.com/nodejs/nodejs-tr)	
+* [German (nodejs-de)](https://github.com/nodejs/nodejs-de)			
+* [Japanese (nodejs-ja)](https://github.com/nodejs/nodejs-ja)
+* [Ukrainian (nodejs-uk)](https://github.com/nodejs/nodejs-uk)
+* [Russian (nodejs-ru)](https://github.com/nodejs/nodejs-ru)
+* [Arabic (nodejs-ar)](https://github.com/nodejs/nodejs-ar)
+* [Hungarian (nodejs-hu)](https://github.com/nodejs/nodejs-hu)
+* [Greek (nodejs-el)](https://github.com/nodejs/nodejs-el)
+* [Tamil (nodejs-ta)](https://github.com/nodejs/nodejs-ta)
+* [Georgian (nodejs-ka)](https://github.com/nodejs/nodejs-ka)
+* [Taiwan (nodejs-zh-TW)](https://github.com/nodejs/nodejs-zh-TW)
+* [French (nodejs-fr)](https://github.com/nodejs/nodejs-fr)
+* [Finnish (nodejs-fi)](https://github.com/nodejs/nodejs-fi)
+* [Dutch (nodejs-nl)](https://github.com/nodejs/nodejs-nl)
+* [Persian (nodejs-fa)](https://github.com/nodejs/nodejs-fa)
+* [Vietnamese (nodejs-vi)](https://github.com/nodejs/nodejs-vi)
+* [Indonesian (nodejs-id)](https://github.com/nodejs/nodejs-id)
+* [Swahili (nodejs-sw)](https://github.com/nodejs/nodejs-sw)
+* [Chinese (nodejs-zh-CN)](https://github.com/nodejs/nodejs-zh-CN)
+* [Hebrew (nodejs-he)](https://github.com/nodejs/nodejs-he)
+* [Polish (nodejs-pl)](https://github.com/nodejs/nodejs-pl)
+* [Italian (nodejs-it)](https://github.com/nodejs/nodejs-it)
+* [Norwegian (nodejs-no)](https://github.com/nodejs/nodejs-no)
+* [Malay (nodejs-ms)](https://github.com/nodejs/nodejs-ms)
+* [Hindi (nodejs-hi)](https://github.com/nodejs/nodejs-hi)
+* [Bulgarian (nodejs-bg)](https://github.com/nodejs/nodejs-bg)
+* [Bengali (nodejs-bn)](https://github.com/nodejs/nodejs-bn)
+* [Danish (nodejs-da)](https://github.com/nodejs/nodejs-da)
+* [Macedonian (nodejs-mk)](https://github.com/nodejs/nodejs-mk)
+* [Czech (nodejs-cs)](https://github.com/nodejs/nodejs-cs)
+* [Swedish (nodejs-sv)](https://github.com/nodejs/nodejs-sv)
+
+
 ## Current Members
   + [Adam Miller](https://twitter.com/millea9)
   + [Antoine Olivier](https://twitter.com/Toinane)
