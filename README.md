@@ -94,9 +94,9 @@ In order to ensure best practices, this working group may work directly with rep
   + [Sam Yamashita](https://twitter.com/sota0805)
   + [Steven R. Loomis](https://twitter.com/srl295)
   + [Tiago Danin](https://twitter.com/_TiagoEDGE)
+  + [Vanessa Yuen](https://twitter.com/vanessayuenn)
   + [Volkan Nazmi Metin](https://twitter.com/volemnic)
   + [Zeke Sikelianos](https://twitter.com/zeke)
-  + [Vanessa Yuen](https://twitter.com/vanessayuenn)
 
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
 
