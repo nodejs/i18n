@@ -42,9 +42,25 @@ In order to ensure best practices, this working group may work directly with rep
   - [CLDR](http://cldr.unicode.org) (Common Locale Data Repository)
   - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js)
 
+## Current Members
+  + [Adam Miller](https://twitter.com/millea9)
+  + [Antoine Olivier](https://twitter.com/Toinane)
+  + [Ben Michel](https://twitter.com/obensource)
+  + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
+  + [Jonathan Cardoso](https://twitter.com/_jonathancardos)
+  + [Łukasz Szewczak](https://twitter.com/lukaszewczak)
+  + [Rachel White](https://twitter.com/ohhoe)
+  + [Raja Sekar](https://twitter.com/rajzshkr)
+  + [Richard Littauer](https://twitter.com/richlitt)
+  + [Ryo Aramaki](https://twitter.com/geo_vitya)
+  + [Sam Yamashita](https://twitter.com/sota0805)
+  + [Steven R. Loomis](https://twitter.com/srl295)
+  + [Tiago Danin](https://twitter.com/_TiagoEDGE)
+  + [Vanessa Yuen](https://twitter.com/vanessayuenn)
+  + [Volkan Nazmi Metin](https://twitter.com/volemnic)
+  + [Zeke Sikelianos](https://twitter.com/zeke)
 
-## l10n groups
-
+## Current l10n groups we support
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
 * [Portuguese (nodejs-pt)](https://github.com/nodejs/nodejs-pt)
 * [Turkish (nodejs-tr)](https://github.com/nodejs/nodejs-tr)
@@ -79,24 +95,6 @@ In order to ensure best practices, this working group may work directly with rep
 * [Czech (nodejs-cs)](https://github.com/nodejs/nodejs-cs)
 * [Swedish (nodejs-sv)](https://github.com/nodejs/nodejs-sv)
 
-
-## Current Members
-  + [Adam Miller](https://twitter.com/millea9)
-  + [Antoine Olivier](https://twitter.com/Toinane)
-  + [Ben Michel](https://twitter.com/obensource)
-  + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
-  + [Jonathan Cardoso](https://twitter.com/_jonathancardos)
-  + [Łukasz Szewczak](https://twitter.com/lukaszewczak)
-  + [Rachel White](https://twitter.com/ohhoe)
-  + [Raja Sekar](https://twitter.com/rajzshkr)
-  + [Richard Littauer](https://twitter.com/richlitt)
-  + [Ryo Aramaki](https://twitter.com/geo_vitya)
-  + [Sam Yamashita](https://twitter.com/sota0805)
-  + [Steven R. Loomis](https://twitter.com/srl295)
-  + [Tiago Danin](https://twitter.com/_TiagoEDGE)
-  + [Vanessa Yuen](https://twitter.com/vanessayuenn)
-  + [Volkan Nazmi Metin](https://twitter.com/volemnic)
-  + [Zeke Sikelianos](https://twitter.com/zeke)
 
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
 
