@@ -57,9 +57,9 @@ In order to ensure best practices, this working group may work directly with rep
   + [Sam Yamashita](https://twitter.com/sota0805)
   + [Steven R. Loomis](https://twitter.com/srl295)
   + [Tiago Danin](https://twitter.com/_TiagoEDGE)
+  + [Volkan Nazmi Metin] (https://twitter.com/volemnic)
   + [Zeke Sikelianos](https://twitter.com/zeke)
-
-
+  
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
 
 ----
