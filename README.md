@@ -33,7 +33,7 @@ Please read [this article](https://medium.com/the-node-js-collection/internation
 
 ## Inter-project relationships
 In order to ensure best practices, this working group may work directly with representatives of similar and related i18n efforts from other external projects. For example:
-* [Electron i18n](https://github.com/electron/electron-i18n)
+* [Electron i18n](https://github.com/electron/i18n)
 * [W3C i18n Working Group](https://www.w3.org/International/core/Overview)
 * [ECMA-402](https://github.com/tc39/ecma402) (Together with ECMA-262, specifies the i18n features of JavaScript)
 * [V8 i18n](https://github.com/v8/v8/wiki/i18n-support) (implements ECMA-402 in Node.js)
