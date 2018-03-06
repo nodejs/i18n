@@ -47,6 +47,7 @@ In order to ensure best practices, this working group may work directly with rep
   + [Antoine Olivier](https://twitter.com/Toinane)
   + [Ben Michel](https://twitter.com/obensource)
   + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
+  + [Franz de Copenhague](https://twitter.com/garrido_mi)
   + [Jonathan Cardoso](https://twitter.com/_jonathancardos)
   + [Łukasz Szewczak](https://twitter.com/lukaszewczak)
   + [Rachel White](https://twitter.com/ohhoe)
