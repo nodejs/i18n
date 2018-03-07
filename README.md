@@ -49,6 +49,7 @@ In order to ensure best practices, this working group may work directly with rep
   + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
   + [Dhruv Jain](https://twitter.com/maddhruv)
   + [Jonathan Cardoso](https://twitter.com/_jonathancardos)
+  + [Laurent Goderre](https://twitter.com/LaurentGoderre)
   + [Łukasz Szewczak](https://twitter.com/lukaszewczak)
   + [Rachel White](https://twitter.com/ohhoe)
   + [Raja Sekar](https://twitter.com/rajzshkr)
