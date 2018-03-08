@@ -4,6 +4,8 @@
 
 The Node.js i18n Working Group is dedicated to the support and improvement of both Internationalization (i18n) and Localization (l10n) within the [Node.js](https://github.com/nodejs/node) project. This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
 
+_Small note: If you do not speak English, go to the [Need Translators?](#need-translators) section._
+
 #### What we're responsible for
 * The ongoing translation of the [Node.js](https://github.com/nodejs/node) project's textual content into every language of its users.
 * The implementation of i18n support including [ECMA-402](https://tc39.github.io/ecma402/) within [Node.js](https://github.com/nodejs/node).
@@ -99,6 +101,10 @@ In order to ensure best practices, this working group may work directly with rep
 
 
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
+
+## Need Translators?
+
+If you cannot speak or read English easily, we can provide translators for this group's documents and during our video meetings. Please get in touch with [Ben Michel](https://twitter.com/obensource) or [Zeke Sikelianos](https://twitter.com/zeke) and ask for help for your language.
 
 ----
 _This document was influenced by the [nodejs/Intl](https://github.com/nodejs/Intl/blob/master/README.md) working group's mandate, and is seen as a continuation of that work._
