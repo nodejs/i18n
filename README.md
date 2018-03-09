@@ -45,27 +45,27 @@ In order to ensure best practices, this working group may work directly with rep
   - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js)
 
 ## Current Members
-| Name                  | GitHub                        | Twitter                             |
-|:----------------------|:------------------------------|:------------------------------------|
-| Adam Miller           |                               | https://twitter.com/millea9         |
-| Antoine Olivier       |                               | https://twitter.com/Toinane         |
-| Amor                  | https://github.com/amor520    | https://twitter.com/amor90s         |
-| Ben Michel            |                               | https://twitter.com/obensource      |
-| Benjamin Zaslavsky    |                               | https://twitter.com/Ben_Tiriel      |
-| Dhruv Jain            |                               | https://twitter.com/maddhruv        |
-| Jonathan Cardoso      |                               | https://twitter.com/_jonathancardos |
-| Laurent Goderre       |                               | https://twitter.com/LaurentGoderre  |
-| Łukasz Szewczak       |                               | https://twitter.com/lukaszewczak    |
-| Rachel White          |                               | https://twitter.com/ohhoe           |
-| Raja Sekar            |                               | https://twitter.com/rajzshkr        |
-| Richard Littauer      |                               | https://twitter.com/richlitt        |
-| Ryo Aramaki           |                               | https://twitter.com/geo_vitya       |
-| Sam Yamashita         |                               | https://twitter.com/sota0805        |
-| Steven R. Loomis      |                               | https://twitter.com/srl295          |
-| Tiago Danin           |                               | https://twitter.com/_TiagoEDGE      |
-| Vanessa Yuen          |                               | https://twitter.com/vanessayuenn    |
-| Volkan Nazmi Metin    |                               | https://twitter.com/volemnic        |
-| Zeke Sikelianos       |                               | https://twitter.com/zeke            |
+| Name                  | GitHub                                | Twitter                                                 |
+|:----------------------|:------------------------------------  |:--------------------------------------------------------|
+| Adam Miller           |                                       | [millea9](https://twitter.com/millea9)                  |
+| Antoine Olivier       |                                       | [Toinane](https://twitter.com/Toinane)                  |
+| Amor                  | [amor520](https://github.com/amor520) | [amor90s](https://twitter.com/amor90s)                  |
+| Ben Michel            |                                       | [obensource](https://twitter.com/obensource)            |
+| Benjamin Zaslavsky    |                                       | [Ben_Tiriel](https://twitter.com/Ben_Tiriel)            |
+| Dhruv Jain            |                                       | [maddhruv](https://twitter.com/maddhruv)                |
+| Jonathan Cardoso      |                                       | [_jonathancardos](https://twitter.com/_jonathancardos)  |
+| Laurent Goderre       |                                       | [LaurentGoderre](https://twitter.com/LaurentGoderre)    |
+| Łukasz Szewczak       |                                       | [lukaszewczak](https://twitter.com/lukaszewczak)        |
+| Rachel White          |                                       | [ohhoe](https://twitter.com/ohhoe)                      |
+| Raja Sekar            |                                       | [rajzshkr](https://twitter.com/rajzshkr)                |
+| Richard Littauer      |                                       | [richlitt](https://twitter.com/richlitt)                |
+| Ryo Aramaki           |                                       | [geo_vitya](https://twitter.com/geo_vitya)              |
+| Sam Yamashita         |                                       | [sota0805](https://twitter.com/sota0805)                |
+| Steven R. Loomis      |                                       | [srl295](https://twitter.com/srl295)                    |
+| Tiago Danin           |                                       | [_TiagoEDGE](https://twitter.com/_TiagoEDGE)            |
+| Vanessa Yuen          |                                       | [vanessayuenn](https://twitter.com/vanessayuenn)        |
+| Volkan Nazmi Metin    |                                       | [volemnic](https://twitter.com/volemnic)                |
+| Zeke Sikelianos       |                                       | [zeke](https://twitter.com/zeke)                        |
 
 ## Current l10n groups we support
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
