@@ -45,7 +45,6 @@ In order to ensure best practices, this working group may work directly with rep
   - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js)
 
 ## Current Members
-
 | Name                  | GitHub                        | Twitter                             |
 | ----------------------|:-----------------------------:|:-----------------------------------:|
 | Adam Miller           |                               |https://twitter.com/millea9          |
