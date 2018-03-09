@@ -47,6 +47,7 @@ In order to ensure best practices, this working group may work directly with rep
 ## Current Members
   + [Adam Miller](https://twitter.com/millea9)
   + [Antoine Olivier](https://twitter.com/Toinane)
+  + [Amor](https://twitter.com/amor90s)
   + [Ben Michel](https://twitter.com/obensource)
   + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
   + [Dhruv Jain](https://twitter.com/maddhruv)
@@ -63,7 +64,6 @@ In order to ensure best practices, this working group may work directly with rep
   + [Vanessa Yuen](https://twitter.com/vanessayuenn)
   + [Volkan Nazmi Metin](https://twitter.com/volemnic)
   + [Zeke Sikelianos](https://twitter.com/zeke)
-  + [Amor](https://twitter.com/amor90s)
 
 ## Current l10n groups we support
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
