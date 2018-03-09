@@ -63,6 +63,7 @@ In order to ensure best practices, this working group may work directly with rep
   + [Vanessa Yuen](https://twitter.com/vanessayuenn)
   + [Volkan Nazmi Metin](https://twitter.com/volemnic)
   + [Zeke Sikelianos](https://twitter.com/zeke)
+  + [Amor](https://twitter.com/amor90s)
 
 ## Current l10n groups we support
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
