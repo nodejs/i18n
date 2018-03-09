@@ -46,26 +46,26 @@ In order to ensure best practices, this working group may work directly with rep
 
 ## Current Members
 | Name                  | GitHub                        | Twitter                             |
-| ----------------------|:-----------------------------:|:-----------------------------------:|
-| Adam Miller           |                               |https://twitter.com/millea9          |
-| Antoine Olivier       |                               |https://twitter.com/Toinane          |
-| Amor                  | https://github.com/amor520    |https://twitter.com/amor90s          |
-| Ben Michel            |                               |https://twitter.com/obensource       |
-| Benjamin Zaslavsky    |                               |https://twitter.com/Ben_Tiriel       |
-| Dhruv Jain            |                               |https://twitter.com/maddhruv         |
-| Jonathan Cardoso      |                               |https://twitter.com/_jonathancardos  |
-| Laurent Goderre       |                               |https://twitter.com/LaurentGoderre   |
-| Łukasz Szewczak       |                               |https://twitter.com/lukaszewczak     |
-| Rachel White          |                               |https://twitter.com/ohhoe            |
-| Raja Sekar            |                               |https://twitter.com/rajzshkr         |
-| Richard Littauer      |                               |https://twitter.com/richlitt         |
-| Ryo Aramaki           |                               |https://twitter.com/geo_vitya        |
-| Sam Yamashita         |                               |https://twitter.com/sota0805         |
-| Steven R. Loomis      |                               |https://twitter.com/srl295           |
-| Tiago Danin           |                               |https://twitter.com/_TiagoEDGE       |
-| Vanessa Yuen          |                               |https://twitter.com/vanessayuenn     |
-| Volkan Nazmi Metin    |                               |https://twitter.com/volemnic         |
-| Zeke Sikelianos       |                               |https://twitter.com/zeke             |
+|:----------------------|:------------------------------|:------------------------------------|
+| Adam Miller           |                               | https://twitter.com/millea9         |
+| Antoine Olivier       |                               | https://twitter.com/Toinane         |
+| Amor                  | https://github.com/amor520    | https://twitter.com/amor90s         |
+| Ben Michel            |                               | https://twitter.com/obensource      |
+| Benjamin Zaslavsky    |                               | https://twitter.com/Ben_Tiriel      |
+| Dhruv Jain            |                               | https://twitter.com/maddhruv        |
+| Jonathan Cardoso      |                               | https://twitter.com/_jonathancardos |
+| Laurent Goderre       |                               | https://twitter.com/LaurentGoderre  |
+| Łukasz Szewczak       |                               | https://twitter.com/lukaszewczak    |
+| Rachel White          |                               | https://twitter.com/ohhoe           |
+| Raja Sekar            |                               | https://twitter.com/rajzshkr        |
+| Richard Littauer      |                               | https://twitter.com/richlitt        |
+| Ryo Aramaki           |                               | https://twitter.com/geo_vitya       |
+| Sam Yamashita         |                               | https://twitter.com/sota0805        |
+| Steven R. Loomis      |                               | https://twitter.com/srl295          |
+| Tiago Danin           |                               | https://twitter.com/_TiagoEDGE      |
+| Vanessa Yuen          |                               | https://twitter.com/vanessayuenn    |
+| Volkan Nazmi Metin    |                               | https://twitter.com/volemnic        |
+| Zeke Sikelianos       |                               | https://twitter.com/zeke            |
 
 ## Current l10n groups we support
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
