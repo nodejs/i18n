@@ -46,7 +46,7 @@ In order to ensure best practices, this working group may work directly with rep
 
 ## Current Members
 | Name                  | GitHub                                            | Twitter                                                 |
-|:----------------------|:----------------------------------------------    |:--------------------------------------------------------|
+|:----------------------|:--------------------------------------------------|:--------------------------------------------------------|
 | Adam Miller           | [amiller-gh](https://github.com/amiller-gh)       | [millea9](https://twitter.com/millea9)                  |
 | Antoine Olivier       | [Toinane](https://github.com/Toinane)             | [Toinane](https://twitter.com/Toinane)                  |
 | Amor                  | [amor520](https://github.com/amor520)             | [amor90s](https://twitter.com/amor90s)                  |
