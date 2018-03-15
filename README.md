@@ -66,6 +66,7 @@ In order to ensure best practices, this working group may work directly with rep
 | Tiago Danin           | [TiagoDanin](https://github.com/TiagoDanin)       | [_TiagoEDGE](https://twitter.com/_TiagoEDGE)            |
 | Vanessa Yuen          | [vanessayuenn](https://github.com/vanessayuenn)   | [vanessayuenn](https://twitter.com/vanessayuenn)        |
 | Volkan Nazmi Metin    | [Volem](https://github.com/Volem)                 | [volemnic](https://twitter.com/volemnic)                |
+| Wexpo Lyu             | [laosb](https://github.com/laosb)                 | [it99p](https://twitter.com/it99p)                      |
 | Zeke Sikelianos       | [zeke](https://github.com/zeke)                   | [zeke](https://twitter.com/zeke)                        |
 
 ## Current l10n groups we support
