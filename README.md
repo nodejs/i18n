@@ -53,8 +53,9 @@ In order to ensure best practices, this working group may work directly with rep
 | Ben Michel            | [obensource](https://github.com/obensource)       | [obensource](https://twitter.com/obensource)            |
 | Benjamin Zaslavsky    | [Tiriel](https://github.com/Tiriel)               | [Ben_Tiriel](https://twitter.com/Ben_Tiriel)            |
 | Dhruv Jain            | [maddhruv](https://github.com/maddhruv)           | [maddhruv](https://twitter.com/maddhruv)                |
+| Franz de Copenhague   | [FranzDeCopenhague](https://github.com/FranzDeCopenhague) | [FranzDeCopenhague](https://twitter.com/FranzDeCopenhag) |
 | Jonathan Cardoso      | [JCMais](https://github.com/JCMais)               | [_jonathancardos](https://twitter.com/_jonathancardos)  |
-| Laurent Goderre       | [LaurentGoderre](https://github.com/LaurentGoderre) | [LaurentGoderre](https://twitter.com/LaurentGoderre)    |
+| Laurent Goderre       | [LaurentGoderre](https://github.com/LaurentGoderre) | [LaurentGoderre](https://twitter.com/LaurentGoderre)  |
 | Łukasz Szewczak       | [lukaszewczak](https://github.com/lukaszewczak)   | [lukaszewczak](https://twitter.com/lukaszewczak)        |
 | Rachel White          | [rachelnicole](https://github.com/rachelnicole)   | [ohhoe](https://twitter.com/ohhoe)                      |
 | Raja Sekar            | [rajzshkr](https://github,com/rajzshkr)           | [rajzshkr](https://twitter.com/rajzshkr)                |
