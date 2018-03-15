@@ -4,6 +4,8 @@
 
 The Node.js i18n Working Group is dedicated to the support and improvement of both Internationalization (i18n) and Localization (l10n) within the [Node.js](https://github.com/nodejs/node) project. This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
 
+_Small note: If you do not speak English, go to the [Need Translators?](#need-translators) section._
+
 #### What we're responsible for
 * The ongoing translation of the [Node.js](https://github.com/nodejs/node) project's textual content into every language of its users.
 * The implementation of i18n support including [ECMA-402](https://tc39.github.io/ecma402/) within [Node.js](https://github.com/nodejs/node).
@@ -43,24 +45,28 @@ In order to ensure best practices, this working group may work directly with rep
   - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js)
 
 ## Current Members
-  + [Adam Miller](https://twitter.com/millea9)
-  + [Antoine Olivier](https://twitter.com/Toinane)
-  + [Ben Michel](https://twitter.com/obensource)
-  + [Benjamin Zaslavsky](https://twitter.com/Ben_Tiriel)
-  + [Dhruv Jain](https://twitter.com/maddhruv)
-  + [Franz de Copenhague](https://twitter.com/FranzDeCopenhag)
-  + [Jonathan Cardoso](https://twitter.com/_jonathancardos)
-  + [Łukasz Szewczak](https://twitter.com/lukaszewczak)
-  + [Rachel White](https://twitter.com/ohhoe)
-  + [Raja Sekar](https://twitter.com/rajzshkr)
-  + [Richard Littauer](https://twitter.com/richlitt)
-  + [Ryo Aramaki](https://twitter.com/geo_vitya)
-  + [Sam Yamashita](https://twitter.com/sota0805)
-  + [Steven R. Loomis](https://twitter.com/srl295)
-  + [Tiago Danin](https://twitter.com/_TiagoEDGE)
-  + [Vanessa Yuen](https://twitter.com/vanessayuenn)
-  + [Volkan Nazmi Metin](https://twitter.com/volemnic)
-  + [Zeke Sikelianos](https://twitter.com/zeke)
+| Name                  | GitHub                                            | Twitter                                                 |
+|:----------------------|:--------------------------------------------------|:--------------------------------------------------------|
+| Adam Miller           | [amiller-gh](https://github.com/amiller-gh)       | [millea9](https://twitter.com/millea9)                  |
+| Antoine Olivier       | [Toinane](https://github.com/Toinane)             | [Toinane](https://twitter.com/Toinane)                  |
+| Amor                  | [amor520](https://github.com/amor520)             | [amor90s](https://twitter.com/amor90s)                  |
+| Ben Michel            | [obensource](https://github.com/obensource)       | [obensource](https://twitter.com/obensource)            |
+| Benjamin Zaslavsky    | [Tiriel](https://github.com/Tiriel)               | [Ben_Tiriel](https://twitter.com/Ben_Tiriel)            |
+| Dhruv Jain            | [maddhruv](https://github.com/maddhruv)           | [maddhruv](https://twitter.com/maddhruv)                |
+| Franz de Copenhague   | [FranzDeCopenhague](https://github.com/FranzDeCopenhague) | [FranzDeCopenhague](https://twitter.com/FranzDeCopenhag) |
+| Jonathan Cardoso      | [JCMais](https://github.com/JCMais)               | [_jonathancardos](https://twitter.com/_jonathancardos)  |
+| Laurent Goderre       | [LaurentGoderre](https://github.com/LaurentGoderre) | [LaurentGoderre](https://twitter.com/LaurentGoderre)  |
+| Łukasz Szewczak       | [lukaszewczak](https://github.com/lukaszewczak)   | [lukaszewczak](https://twitter.com/lukaszewczak)        |
+| Rachel White          | [rachelnicole](https://github.com/rachelnicole)   | [ohhoe](https://twitter.com/ohhoe)                      |
+| Raja Sekar            | [rajzshkr](https://github,com/rajzshkr)           | [rajzshkr](https://twitter.com/rajzshkr)                |
+| Richard Littauer      | [RichardLitt](https://github.com/RichardLitt)     | [richlitt](https://twitter.com/richlitt)                |
+| Ryo Aramaki           | [ryo-a](https://github.com/ryo-a)                 | [geo_vitya](https://twitter.com/geo_vitya)              |
+| Sam Yamashita         | [sotayamashita](https://github.com/sotayamashita) | [sota0805](https://twitter.com/sota0805)                |
+| Steven R. Loomis      | [srl295](https://github.com/srl295)               | [srl295](https://twitter.com/srl295)                    |
+| Tiago Danin           | [TiagoDanin](https://github.com/TiagoDanin)       | [_TiagoEDGE](https://twitter.com/_TiagoEDGE)            |
+| Vanessa Yuen          | [vanessayuenn](https://github.com/vanessayuenn)   | [vanessayuenn](https://twitter.com/vanessayuenn)        |
+| Volkan Nazmi Metin    | [Volem](https://github.com/Volem)                 | [volemnic](https://twitter.com/volemnic)                |
+| Zeke Sikelianos       | [zeke](https://github.com/zeke)                   | [zeke](https://twitter.com/zeke)                        |
 
 ## Current l10n groups we support
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
@@ -97,8 +103,12 @@ In order to ensure best practices, this working group may work directly with rep
 * [Czech (nodejs-cs)](https://github.com/nodejs/nodejs-cs)
 * [Swedish (nodejs-sv)](https://github.com/nodejs/nodejs-sv)
 
-
+## Joining
 If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
+
+## Need Translators?
+
+If you cannot speak or read English easily, we can provide translators for this group's documents and during our video meetings. Please get in touch with [Ben Michel](https://twitter.com/obensource) or [Zeke Sikelianos](https://twitter.com/zeke) and ask for help for your language.
 
 ----
 _This document was influenced by the [nodejs/Intl](https://github.com/nodejs/Intl/blob/master/README.md) working group's mandate, and is seen as a continuation of that work._
