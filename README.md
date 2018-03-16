@@ -45,27 +45,29 @@ In order to ensure best practices, this working group may work directly with rep
   - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js)
 
 ## Current Members
-| Name                  | GitHub                                              | Twitter                                                 |
-|:----------------------|:----------------------------------------------------|:--------------------------------------------------------|
-| Adam Miller           | [amiller-gh](https://github.com/amiller-gh)         | [millea9](https://twitter.com/millea9)                  |
-| Antoine Olivier       | [Toinane](https://github.com/Toinane)               | [Toinane](https://twitter.com/Toinane)                  |
-| Amor                  | [amor520](https://github.com/amor520)               | [amor90s](https://twitter.com/amor90s)                  |
-| Ben Michel            | [obensource](https://github.com/obensource)         | [obensource](https://twitter.com/obensource)            |
-| Benjamin Zaslavsky    | [Tiriel](https://github.com/Tiriel)                 | [Ben_Tiriel](https://twitter.com/Ben_Tiriel)            |
-| Dhruv Jain            | [maddhruv](https://github.com/maddhruv)             | [maddhruv](https://twitter.com/maddhruv)                |
-| Jonathan Cardoso      | [JCMais](https://github.com/JCMais)                 | [_jonathancardos](https://twitter.com/_jonathancardos)  |
-| Laurent Goderre       | [LaurentGoderre](https://github.com/LaurentGoderre) | [LaurentGoderre](https://twitter.com/LaurentGoderre)    |
-| Łukasz Szewczak       | [lukaszewczak](https://github.com/lukaszewczak)     | [lukaszewczak](https://twitter.com/lukaszewczak)        |
-| Rachel White          | [rachelnicole](https://github.com/rachelnicole)     | [ohhoe](https://twitter.com/ohhoe)                      |
-| Raja Sekar            | [rajzshkr](https://github,com/rajzshkr)             | [rajzshkr](https://twitter.com/rajzshkr)                |
-| Richard Littauer      | [RichardLitt](https://github.com/RichardLitt)       | [richlitt](https://twitter.com/richlitt)                |
-| Ryo Aramaki           | [ryo-a](https://github.com/ryo-a)                   | [geo_vitya](https://twitter.com/geo_vitya)              |
-| Sam Yamashita         | [sotayamashita](https://github.com/sotayamashita)   | [sota0805](https://twitter.com/sota0805)                |
-| Steven R. Loomis      | [srl295](https://github.com/srl295)                 | [srl295](https://twitter.com/srl295)                    |
-| Tiago Danin           | [TiagoDanin](https://github.com/TiagoDanin)         | [_TiagoEDGE](https://twitter.com/_TiagoEDGE)            |
-| Vanessa Yuen          | [vanessayuenn](https://github.com/vanessayuenn)     | [vanessayuenn](https://twitter.com/vanessayuenn)        |
-| Volkan Nazmi Metin    | [Volem](https://github.com/Volem)                   | [volemnic](https://twitter.com/volemnic)                |
-| Zeke Sikelianos       | [zeke](https://github.com/zeke)                     | [zeke](https://twitter.com/zeke)                        |
+| Name                  | GitHub                                                   | Twitter                                                 |
+|:----------------------|:---------------------------------------------------------|:--------------------------------------------------------|
+| Adam Miller           | [amiller-gh](https://github.com/amiller-gh)              | [millea9](https://twitter.com/millea9)                  |
+| Antoine Olivier       | [Toinane](https://github.com/Toinane)                    | [Toinane](https://twitter.com/Toinane)                  |
+| Amor                  | [amor520](https://github.com/amor520)                    | [amor90s](https://twitter.com/amor90s)                  |
+| Ben Michel            | [obensource](https://github.com/obensource)              | [obensource](https://twitter.com/obensource)            |
+| Benjamin Zaslavsky    | [Tiriel](https://github.com/Tiriel)                      | [Ben_Tiriel](https://twitter.com/Ben_Tiriel)            |
+| Dhruv Jain            | [maddhruv](https://github.com/maddhruv)                  | [maddhruv](https://twitter.com/maddhruv)                |
+| Franz de Copenhague   | [FranzDeCopenhague](https://github.com/FranzDeCopenhague)| [FranzDeCopenhague](https://twitter.com/FranzDeCopenhag)|
+| Jonathan Cardoso      | [JCMais](https://github.com/JCMais)                      | [_jonathancardos](https://twitter.com/_jonathancardos)  |
+| Laurent Goderre       | [LaurentGoderre](https://github.com/LaurentGoderre)      | [LaurentGoderre](https://twitter.com/LaurentGoderre)    |
+| Łukasz Szewczak       | [lukaszewczak](https://github.com/lukaszewczak)          | [lukaszewczak](https://twitter.com/lukaszewczak)        |
+| Rachel White          | [rachelnicole](https://github.com/rachelnicole)          | [ohhoe](https://twitter.com/ohhoe)                      |
+| Raja Sekar            | [rajzshkr](https://github,com/rajzshkr)                  | [rajzshkr](https://twitter.com/rajzshkr)                |
+| Richard Littauer      | [RichardLitt](https://github.com/RichardLitt)            | [richlitt](https://twitter.com/richlitt)                |
+| Ryo Aramaki           | [ryo-a](https://github.com/ryo-a)                        | [geo_vitya](https://twitter.com/geo_vitya)              |
+| Sam Yamashita         | [sotayamashita](https://github.com/sotayamashita)        | [sota0805](https://twitter.com/sota0805)                |
+| Steven R. Loomis      | [srl295](https://github.com/srl295)                      | [srl295](https://twitter.com/srl295)                    |
+| Tiago Danin           | [TiagoDanin](https://github.com/TiagoDanin)              | [_TiagoEDGE](https://twitter.com/_TiagoEDGE)            |
+| Vanessa Yuen          | [vanessayuenn](https://github.com/vanessayuenn)          | [vanessayuenn](https://twitter.com/vanessayuenn)        |
+| Volkan Nazmi Metin    | [Volem](https://github.com/Volem)                        | [volemnic](https://twitter.com/volemnic)                |
+| Wexpo Lyu             | [laosb](https://github.com/laosb)                        | [it99p](https://twitter.com/it99p)                      |
+| Zeke Sikelianos       | [zeke](https://github.com/zeke)                          | [zeke](https://twitter.com/zeke)                        |
 
 ## Current l10n groups we support
 * [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
