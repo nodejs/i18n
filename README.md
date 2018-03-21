@@ -59,7 +59,7 @@ In order to ensure best practices, this working group may work directly with rep
 | Laurent Goderre       | [LaurentGoderre](https://github.com/LaurentGoderre) | [LaurentGoderre](https://twitter.com/LaurentGoderre)  |
 | Łukasz Szewczak       | [lukaszewczak](https://github.com/lukaszewczak)   | [lukaszewczak](https://twitter.com/lukaszewczak)        |
 | Rachel White          | [rachelnicole](https://github.com/rachelnicole)   | [ohhoe](https://twitter.com/ohhoe)                      |
-| Raja Sekar            | [rajzshkr](https://github,com/rajzshkr)           | [rajzshkr](https://twitter.com/rajzshkr)                |
+| Raja Sekar            | [rajzshkr](https://github.com/rajzshkr)           | [rajzshkr](https://twitter.com/rajzshkr)                |
 | Richard Littauer      | [RichardLitt](https://github.com/RichardLitt)     | [richlitt](https://twitter.com/richlitt)                |
 | Ryo Aramaki           | [ryo-a](https://github.com/ryo-a)                 | [geo_vitya](https://twitter.com/geo_vitya)              |
 | Sam Yamashita         | [sotayamashita](https://github.com/sotayamashita) | [sota0805](https://twitter.com/sota0805)                |
