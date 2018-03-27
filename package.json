@@ -1,0 +1,21 @@
+{
+  "name": "node-i18n",
+  "private": true,
+  "version": "1.0.0",
+  "description": "The home of translated Node.js documentation",
+  "repository": "https://github.com/nodejs/i18n",
+  "contributors": [
+    "Vanessa Yuen <vanessa.yh.yuen@gmail.com>",
+    "Zeke Sikelianos <zeke@sikelianos.com>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "collect": "node script/collect.js"
+  },
+  "devDependencies": {
+    "decompress": "^4.2.0",
+    "download": "^6.2.5",
+    "mkdirp": "^0.5.1",
+    "temp": "^0.8.3"
+  }
+}
