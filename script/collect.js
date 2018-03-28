@@ -19,12 +19,6 @@ async function collect () {
   const files = await decompress(tarballFilename, tempDir)
   const tempDocsDirectory = path.join(tempDir, `node-${nodeVersion}`, 'doc')
   const targetDocsDirectory = path.join(__dirname, `../content/v${nodeVersion}/en-US/doc`)
-  console.log(
-    tempDir, 
-    tarballFilename,
-    tempDocsDirectory,
-    targetDocsDirectory 
-  )
   mkdirp(targetDocsDirectory)
   fs.renameSync(tempDocsDirectory, targetDocsDirectory)
 }
