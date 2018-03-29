@@ -1,0 +1,5 @@
+.env
+.npmrc
+coverage
+node_modules
+*.tgz
