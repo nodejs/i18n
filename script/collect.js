@@ -17,7 +17,7 @@ async function collect () {
 }
 
 async function getDocsForNodeVersion (version) {
-  const docDir = path.join(__dirname, `../content/v${version}/en-US/doc`)
+  const docDir = path.join(__dirname, `../content/${version}/en-US/doc`)
 
   // exit early if docs for this version have already been downloaded
   if (fs.existsSync(docDir)) {
@@ -26,13 +26,13 @@ async function getDocsForNodeVersion (version) {
   }
 
   // download repo bundle and extract to a temporary directory
-  const tarballUrl = `https://github.com/nodejs/node/archive/v${version}.tar.gz`
+  const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
   console.log('downloading', tarballUrl)
   const tempDir = temp.mkdirSync()
   await download(tarballUrl, tempDir, {extract: true})
 
   // move docs from temp dir to this repo
-  const tempDocDir = path.join(tempDir, `node-${version}`, 'doc')
+  const tempDocDir = path.join(tempDir, `node-${version.replace('v', '')}`, 'doc')
   mkdirp(docDir)
   fs.renameSync(tempDocDir, docDir)
 
