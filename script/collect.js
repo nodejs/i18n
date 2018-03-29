@@ -6,12 +6,12 @@ const download = require('download')
 const mkdirp = require('mkdirp').sync
 const temp = require('temp')
 const walk = require('walk-sync').entries
-const targetNodeVersions = require('../lib/target-node-versions')
+const {nodeVersions} = require('../package.json')
 
 collect()
 
 async function collect () {
-  for (const version of targetNodeVersions) {
+  for (const version of nodeVersions) {
     await getDocsForNodeVersion(version)
   }
 }
