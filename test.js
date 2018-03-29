@@ -15,6 +15,10 @@ test('defines nodeVersions, a non-empty array of semver-valid versions', () => {
 test('includes source English content for all nodeVersions', () => {
   const fetchedVersions = fs.readdirSync(contentDir)
   expect(nodeVersions).toEqual(fetchedVersions)
+  fetchedVersions.forEach(version => {
+    const languages = fs.readdirSync(path.join(contentDir, version))
+    expect(languages.includes('en-US')).toBe(true)
+  })
 })
 
 xtest('includes translated content for all nodeVersions', () => {
