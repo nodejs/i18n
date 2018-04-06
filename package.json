@@ -20,11 +20,10 @@
   "devDependencies": {
     "download": "^6.2.5",
     "jest": "^22.4.3",
-    "mkdirp": "^0.5.1",
     "semver": "^5.5.0",
     "standard": "^11.0.1",
-    "temp": "^0.8.3",
-    "walk-sync": "^0.3.2"
+    "walk-sync": "^0.3.2",
+    "fs-extra": "^5.0.0"
   },
   "standard": {
     "env": [
