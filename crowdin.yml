@@ -1,0 +1,6 @@
+preserve_hierarchy: true
+files:
+  # /content/{vodeVersion}/en-US/doc/{filesInSubFolders}
+  # markdown extensions - md, mkd, mkdn
+  - source: /content/v*/en-US/doc/**/.(m?d?|markdown)
+    translation: /content/v*/%locale%/doc/**/%original_file_name%
