@@ -35,11 +35,10 @@ async function getDocsForNodeVersion (version) {
   // move docs from temp dir to this repo
   const tempDocDir = path.join(tempDir, `node-${version.replace('v', '')}`, 'doc')
   await fs.move(tempDocDir, docDir)
+  fs.remove(tempDir)
 
   // keep .md files and remove all others
   walk(docDir, {directories: false})
     .filter(file => path.extname(file.relativePath.toLowerCase()) !== '.md')
     .forEach(file => fs.unlinkSync(path.join(docDir, file.relativePath)))
-
-  fs.remove(tempDir)
 }
