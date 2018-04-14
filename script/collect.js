@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
+const fs = require('fs-extra')
 const path = require('path')
 const download = require('download')
-const mkdirp = require('mkdirp').sync
-const temp = require('temp')
 const walk = require('walk-sync').entries
 const {nodeVersions} = require('../package.json')
 
@@ -12,12 +10,16 @@ collect()
 
 async function collect () {
   for (const version of nodeVersions) {
-    await getDocsForNodeVersion(version)
+    await getDocsForNodeVersion(version).catch(err => {
+      console.error(`problem fetching version: ${version}`)
+      console.error(err)
+    })
   }
 }
 
 async function getDocsForNodeVersion (version) {
   const docDir = path.join(__dirname, `../content/${version}/en-US/doc`)
+  const tempDir = path.join(__dirname, `../temp/${version}`)
 
   // exit early if docs for this version have already been downloaded
   if (fs.existsSync(docDir)) {
@@ -28,13 +30,12 @@ async function getDocsForNodeVersion (version) {
   // download repo bundle and extract to a temporary directory
   const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
   console.log('downloading', tarballUrl)
-  const tempDir = temp.mkdirSync()
   await download(tarballUrl, tempDir, {extract: true})
 
   // move docs from temp dir to this repo
   const tempDocDir = path.join(tempDir, `node-${version.replace('v', '')}`, 'doc')
-  mkdirp(docDir)
-  fs.renameSync(tempDocDir, docDir)
+  await fs.move(tempDocDir, docDir)
+  fs.remove(tempDir)
 
   // keep .md files and remove all others
   walk(docDir, {directories: false})
