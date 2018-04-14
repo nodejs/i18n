@@ -1,0 +1,5 @@
+preserve_hierarchy: true
+files:
+  # /content/{vodeVersion}/en-US/doc/{filesInSubFolders}
+  - source: /content/v*/en-US/doc/**/.md
+    translation: /content/v*/%locale%/doc/**/%original_file_name%
