@@ -4,6 +4,8 @@
 
 By translating Node.js content (website, api, tutorials), you are directly impacting developers around the world. Your efforts will help developers in more countries to learn Node.js! Thank you so much for volunteering your time!
 
+This project adheres to the Contributor Covenant [code of conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to report@nodejs.org.
+
 The following is a set of guidelines for contributing to Node.js localization effort.
 
 ## Translating
