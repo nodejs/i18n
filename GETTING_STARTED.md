@@ -15,7 +15,7 @@ Here are some guidelines to keep in mind as a translator:
 - Do not translate JavaScript keywords like `String`, `Event`, `Array`, `Class`, etc.
 - Do not translate Node.js module names, method names, event names, etc.
 - If you find an error in the source English docs, open a pull request on the [nodejs/node](https://github.com/nodejs/node/tree/master/doc) repository.
-- If you've been working as a translator and want to have more influence over the approved translations in your language, let know managers on the Crowdin platform and  they wll make you a proofreader.
+- If you've been working as a translator and want to have more influence over the approved translations in your language, let know managers on the Crowdin platform and they wll make you a proofreader.
 
 Node.js localization effort uses [Crowdin](https://crowdin.com/), an awesome platform for 
 collaborative translation. The work in Crowdin generate automated PRs & updates to [Node.js i18n](https://github.com/nodejs/i18n) repo.
@@ -30,12 +30,12 @@ The final translation that appears in Node.js content is selected as follows:
 
 1. A proofreader selects the best translation.
 2. If there is no translation selected by a proofreader, translators vote on the best translation and the translation with the most votes is selected.
-3. if votes are tied, the most recent translation will be selected.
+3. If votes are tied, the most recent translation will be selected.
 
 ## Proofreading
 
 If you would like to be promoted to proofreader status on the Node.js project, please translate 1,000 words or 
-more before applying. When contacting menagers on the Crowdin, please include a link to your existing translations on the project.
+more before applying. When contacting managers on the Crowdin, please include a link to your existing translations on the project.
 
 ## The role of the l10n group
 
@@ -57,15 +57,15 @@ their technical experience or familiarity with the Node.js project.
 
 - Asking translators to jump into the Github environment is confusing enough. Crowdin beautifully abstracts away the cruft into a simple & useful interface.
 
-- Each localization project contains a directory tree of of the core project’s documents–giving the translator continuous visibility on what has and hasn’t been translated, streamlining the process entirely.
+- Each localization project contains a directory tree of the core project’s documents–giving the translator continuous visibility on what has and hasn’t been translated, streamlining the process entirely.
 
 - A simple work environment presents untranslated documents in one row, and the localized version being updated in another.
 
 - A Crowdin project seamlessly integrates with an existing Github repo, automating PRs & updates from its internationalization projects.
 
-Please take o look at the [video]( https://www.youtube.com/watch?v=bxdC7MfrO7A&t=105s) prepeared by Andriy Poznakhovskyy member of the  Node.js i18n WG  where Andriy show how to work on translations in Crowdin.
+Please take o look at the [video]( https://www.youtube.com/watch?v=bxdC7MfrO7A&t=105s) prepared by Andriy Poznakhovskyy member of the  Node.js i18n WG  where Andriy show how to work on translations in Crowdin.
 
-## Releated links
+## Related links
 -  [Node.js i18n](https://github.com/nodejs/i18n) repo
 -  [nodejs/node](https://github.com/nodejs/node/tree/master/doc) repository
 -  [Crowdin](https://crowdin.com/)
