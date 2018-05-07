@@ -50,7 +50,7 @@ In order to ensure best practices, this working group may work directly with rep
 | Adam Miller           | [amiller-gh](https://github.com/amiller-gh)       | [millea9](https://twitter.com/millea9)                  |
 | Andrew Bus            | [iAndrewCA](https://github.com/iAndrewCA)         | [AndrewPaulBus](https://twitter.com/AndrewPaulBus)      |
 | Antoine Olivier       | [Toinane](https://github.com/Toinane)             | [Toinane](https://twitter.com/Toinane)                  |
-| Amor                  | [amor520](https://github.com/amor520)             | [amor90s](https://twitter.com/amor90s)                  |
+| Amor                  | [amorist](https://github.com/amorist)             | [amor90s](https://twitter.com/amor90s)                  |
 | Ben Michel            | [obensource](https://github.com/obensource)       | [obensource](https://twitter.com/obensource)            |
 | Benjamin Zaslavsky    | [Tiriel](https://github.com/Tiriel)               | [Ben_Tiriel](https://twitter.com/Ben_Tiriel)            |
 | Dhruv Jain            | [maddhruv](https://github.com/maddhruv)           | [maddhruv](https://twitter.com/maddhruv)                |
