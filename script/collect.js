@@ -23,10 +23,6 @@ async function getDocsForNodeVersion (major, version) {
   const tempDir = path.join(__dirname, `../temp/${major}`)
 
   // TODO exit early if docs for this version have already been downloaded
-  if (fs.existsSync(docDir)) {
-    console.log(`docs for ${version} have already been collected; skipping`)
-    return
-  }
 
   // download repo bundle and extract to a temporary directory
   const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
