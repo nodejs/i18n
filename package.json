@@ -2,10 +2,13 @@
   "name": "node-i18n",
   "private": true,
   "version": "1.0.0",
-  "nodeVersions": [
-    "v8.11.0",
-    "v9.10.0"
-  ],
+  "nodeVersions": {
+    "v10.x": "v10.1.0",
+    "v9.x": "v9.11.1",
+    "v8.x": "v8.11.1",
+    "v7.x": "v7.10.1",
+    "v6.x": "v6.14.2"
+  },
   "description": "The home of translated Node.js documentation",
   "repository": "https://github.com/nodejs/i18n",
   "contributors": [
