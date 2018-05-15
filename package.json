@@ -6,7 +6,6 @@
     "v10.x": "v10.1.0",
     "v9.x": "v9.11.1",
     "v8.x": "v8.11.1",
-    "v7.x": "v7.10.1",
     "v6.x": "v6.14.2"
   },
   "description": "The home of translated Node.js documentation",

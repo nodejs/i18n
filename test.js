@@ -7,7 +7,7 @@ const contentDir = path.join(__dirname, 'content')
 
 test('defines nodeVersions', () => {
   const majors = Object.keys(nodeVersions)
-  const expectedMajors = ['v10.x', 'v9.x', 'v8.x', 'v7.x', 'v6.x']
+  const expectedMajors = ['v10.x', 'v9.x', 'v8.x', 'v6.x']
   expect(expectedMajors).toEqual(majors)
 
   const versions = Object.values(nodeVersions)
