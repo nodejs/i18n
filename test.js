@@ -5,23 +5,28 @@ const {nodeVersions} = require('./package.json')
 const semver = require('semver')
 const contentDir = path.join(__dirname, 'content')
 
-test('defines nodeVersions, a non-empty array of semver-valid versions', () => {
-  expect(Array.isArray(nodeVersions)).toBe(true)
-  expect(nodeVersions.length).toBeGreaterThan(1)
-  expect(nodeVersions.every(semver.valid)).toBe(true)
-  expect(nodeVersions.every(version => version.startsWith('v'))).toBe(true)
+test('defines nodeVersions', () => {
+  const majors = Object.keys(nodeVersions)
+  const expectedMajors = ['v10.x', 'v8.x', 'v6.x']
+  expect(expectedMajors).toEqual(majors)
+
+  const versions = Object.values(nodeVersions)
+  expect(versions.every(semver.valid)).toBe(true)
+  expect(versions.every(version => version.startsWith('v'))).toBe(true)
 })
 
-test('includes source English content for all nodeVersions', () => {
-  const fetchedVersions = fs.readdirSync(contentDir)
-  expect(nodeVersions).toEqual(fetchedVersions)
-  fetchedVersions.forEach(version => {
-    const languages = fs.readdirSync(path.join(contentDir, version))
+test('includes source English content for all major versions', () => {
+  const fetchedMajors = fs.readdirSync(contentDir).sort()
+  const targetMajors = Object.keys(nodeVersions).sort()
+  expect(targetMajors).toEqual(fetchedMajors)
+
+  fetchedMajors.forEach(major => {
+    const languages = fs.readdirSync(path.join(contentDir, major))
     expect(languages.includes('en-US')).toBe(true)
   })
 })
 
-xtest('includes translated content for all nodeVersions', () => {
+xtest('includes translated content for all major versions', () => {
   // pending Crowdin integration
 })
 
