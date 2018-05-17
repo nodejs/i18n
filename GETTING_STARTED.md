@@ -69,5 +69,5 @@ Please take o look at the [video]( https://www.youtube.com/watch?v=bxdC7MfrO7A&t
 -  [Node.js i18n](https://github.com/nodejs/i18n) repo
 -  [nodejs/node](https://github.com/nodejs/node/tree/master/doc) repository
 -  [Crowdin](https://crowdin.com/)
-
+-  [Node.js Slack Community](http://node-js.slack.com) ([register](http://www.nodeslackers.com/)) There is _#i18n_ channel. 
 
