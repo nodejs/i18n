@@ -2,17 +2,17 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilité: 2 - Stable
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+Le module `url` fournit des utilités pour la resolution et l'analyse de l'URL. On y accède en invoquant:
 
 ```js
 const url = require('url');
 ```
 
-## URL Strings and URL Objects
+## Chaîne de caractères et Objets URL
 
-A URL string is a structured string containing multiple meaningful components. When parsed, a URL object is returned containing properties for each of these components.
+Une chaîne de caractères URL est une chaîne structurée contenant plusieurs composants significatifs. Une fois analysé, un objet URL contenant des propriétés pour chacun de ces composants est rapporté.
 
 The `url` module provides two APIs for working with URLs: a legacy API that is Node.js specific, and a newer API that implements the same [WHATWG URL Standard](https://url.spec.whatwg.org/) used by web browsers.
 
