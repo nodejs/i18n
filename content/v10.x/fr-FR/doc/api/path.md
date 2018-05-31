@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilité : 2 - Stable
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+Le module `path` fournit des fonctions utilitaires permettant de travailler avec des chemins de fichiers et de répertoires. On peut y accéder en utilisant :
 
 ```js
 const path = require('path');
@@ -12,43 +12,43 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+L'opération par défaut du module `path` varie selon le système d'exploitation sur lequel s'exécute une application Node.js. Plus précisément, lorsque vous utilisez un système d'exploitation Window, le module `path` considérera que les chemins utilisés sont de type Windows.
 
-For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
+Par exemple, la fonction `path.basename()` avec le chemin Windows `C:\temp\myfile.html`, donnera des résultats différents si vous utilisez POSIX ou Windows :
 
-On POSIX:
+Sur POSIX :
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-On Windows:
+Sur Windows :
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers Windows sur n'importe quel système d'exploitation, utilisez [`path.win32`][] :
 
-On POSIX and Windows:
+Sur POSIX et Windows :
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
 // Returns: 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers POSIX sur n'importe quel système d'exploitation, utilisez [`path.posix`][] :
 
-On POSIX and Windows:
+Sur POSIX et Windows :
 
 ```js
 path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note :* Sur Windows, Node.js suit le concept de répertoire de travail par disque. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. Par exemple `path.resolve('c:\\')` peut potentiellement retourner un résultat différent de `path.resolve('c:')`. Pour plus d'informations, consulter [cette page MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
@@ -62,10 +62,10 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} An optional file extension
-* Returns: {string}
+* `ext` {string} Une extension de fichier optionnelle
+* Retourne : {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+La méthode `path.basename()` retourne la dernière portion de `path`, de la même façon que la commande Unix `basename`. Trailing directory separators are ignored, see [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
