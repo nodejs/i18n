@@ -1,5 +1,43 @@
 # Node.js Internationalization
 
+## Contributing
+
+Help us get the documentations translated to your native language and reach more people's heart.
+**Visit [Crowdin/project/NodeJs](https://crowdin.com/project/nodejs)** and help translating docs
+
+### Languages being Translated
+
+- Chinese Simplified - [zh-CN](https://crowdin.com/project/nodejs/zh-CN)
+- Chinese Traditional - [zh-TW](https://crowdin.com/project/nodejs/zh-TW)
+- French - [fr](https://crowdin.com/project/nodejs/fr)
+- Russian - [ru](https://crowdin.com/project/nodejs/ru)
+- Portuguese - [pt](https://crowdin.com/project/nodejs/pt-PT)
+- Spanish - [es](https://crowdin.com/project/nodejs/es-ES)
+- German - [de](https://crowdin.com/project/nodejs/de)
+- Japanese - [ja](https://crowdin.com/project/nodejs/ja)
+- Hindi - [hi](https://crowdin.com/project/nodejs/hi)
+- Arabic - [ar](https://crowdin.com/project/nodejs/ar)
+- Indonesian - [id](https://crowdin.com/project/nodejs/id)
+- Italian - [it](https://crowdin.com/project/nodejs/it)
+- Korean - [ko](https://crowdin.com/project/nodejs/ko)
+- Polish - [pl](https://crowdin.com/project/nodejs/pl)
+- Turkish - [tr](https://crowdin.com/project/nodejs/tr)
+- Ukrainian - [uk](https://crowdin.com/project/nodejs/uk)
+- Croatian - [hr](https://crowdin.com/project/nodejs/hr)
+- Czech - [cs](https://crowdin.com/project/nodejs/cs)
+- Danish - [da](https://crowdin.com/project/nodejs/da)
+- Dutch - [nl](https://crowdin.com/project/nodejs/nl)
+- Finnish - [fi](https://crowdin.com/project/nodejs/fi)
+- Greek - [el](https://crowdin.com/project/nodejs/el)
+- Hebrew - [he](https://crowdin.com/project/nodejs/he)
+- Hungarian - [hu](https://crowdin.com/project/nodejs/hu)
+- Norwegian - [no](https://crowdin.com/project/nodejs/no)
+- Romanian - [ro](https://crowdin.com/project/nodejs/ro)
+- Slovak - [sk](https://crowdin.com/project/nodejs/sk)
+- Swedish - [sv](https://crowdin.com/project/nodejs/sv-SE)
+- Thai - [th](https://crowdin.com/project/nodejs/th)
+- Vietnamese - [vi](https://crowdin.com/project/nodejs/vi)
+
 ## About
 
 The Node.js i18n Working Group is dedicated to the support and improvement of both Internationalization (i18n) and Localization (l10n) within the [Node.js](https://github.com/nodejs/node) project. This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
