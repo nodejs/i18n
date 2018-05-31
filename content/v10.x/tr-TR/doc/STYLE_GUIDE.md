@@ -10,8 +10,8 @@
 * Amerikan İngilizcesi yazımı tercih edilir. "Capitalize" vs. "Capitalise", "color" vs. "colour", vb.
 * [Seri virgül](https://en.wikipedia.org/wiki/Serial_comma) kullanın.
 * Referans belgelerinde kişi zamirlerden kaçının (“Ben”, “sen”, “biz”). 
-  * Personal pronouns are acceptable in colloquial documentation such as guides.
-  * Use gender-neutral pronouns and gender-neutral plural nouns. 
+  * Kişi zamirlerinin kullanımı günlük konuşma diline özgü klavuzlar gibi belgelerde kabul edilir.
+  * Cinsiyet belirtmeyen zamirleri ve cinsiyet belirtmeyen çoğul isimleri kullanın. 
     * OK: "they", "their", "them", "folks", "people", "developers"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
