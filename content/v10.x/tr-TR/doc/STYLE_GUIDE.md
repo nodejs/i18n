@@ -1,15 +1,15 @@
 # Stil Klavuzu
 
-* Dokümantasyon, `lowercase-with-dashes.md` olarak biçimlendirilmiş isimlerle markdown'da yazılmıştır. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Changes to documentation should be checked with `make lint-md`.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
-* Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Avoid personal pronouns in reference documentation ("I", "you", "we"). 
+* Dokümantasyon, `lowercase-with-dashes.md` olarak biçimlendirilmiş isimlerle markdown dosyalarına yazılmıştır. 
+  * Dosya adlarında altçizgilerin bulunmasına yalnızca belgenin açıklayacağı konu içerisinde bulunduklarında izin verilir(ör. `child_process`).
+  * Üst düzey markdown dosyaları gibi bazı dosyalar istisnadır.
+* Dokümanlar satır sonuna kadar 80 karakterle sınırlı olmalıdır.
+* `.editorconfig` 'da açıklanan formatlama tercih edilir. 
+  * Bazı editörlerin bu kuralları otomatik olarak uygulayabilmeleri için bir [eklenti](http://editorconfig.org/#download) bulunmaktadır.
+* Belgelerdeki değişiklikler `make lint-md` ile kontrol edilmelidir.
+* Amerikan İngilizcesi yazımı tercih edilir. "Capitalize" vs. "Capitalise", "color" vs. "colour", vb.
+* [Seri virgül](https://en.wikipedia.org/wiki/Serial_comma) kullanın.
+* Referans belgelerinde kişi zamirlerden kaçının (“Ben”, “sen”, “biz”). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
