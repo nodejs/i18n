@@ -8,12 +8,12 @@
 
 קהילות פתוחות, מגוונים וכולל של כל חיות ומתות על בסיס של אמון. תורמים יכולים להיות חלוקי דעות אחד עם השני כל עוד הם בטוחים כי החלוקי הדעות האלה הם בתום לב וכולם עובדים לקראת מטרה משותפת.
 
-## תורמים אכזרי
+## תורמים אכזרים
 
-כל התורמים לNode.js מסכימים לציית מכתב והרוח [של הקוד אתי](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
+כל התורמים לNode.js מסכימים לציית מכתב והרוח [של הקוד אתי](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). כישלון או חוסר רצון כדי לעשות זאת יגרום תרומות בכבוד נדחה.
 
-A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
+*התורם אכזרי* הוא אדם המשבר שוב ושוב את *הרוח* של קוד התנהגות דרך ההימנעות העקבית עצמית לווסת את הדרך שבה הם אינטראקציה עם תורמײַמ אחרים בפרוייקט. בעשות כן, תורמים אכזרים להרחיק תורמים אחרימ, לעודד שיתוף פעולה ובדרך כלל גרוע על הפרוייקט כולו.
 
-Being a bad actor may be intentional or unintentional. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
+להיות תורם אכזרי יכול להיות בכוונה או לא בכוונה. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
 
 Don't be a bad actor.
