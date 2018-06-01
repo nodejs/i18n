@@ -3,7 +3,7 @@
 * La documentation est composée de fichiers markdown, nommés suivant le format `minuscules-avec-tirets.md`. 
   * Les underscores dans les noms de fichiers sont autorisés lorsqu'ils sont présents dans le sujet que le document va décrire (par exemple `child_process `).
   * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
+* Les fichiers doivent être limité à 80 caractères par ligne.
 * The formatting described in `.editorconfig` is preferred. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
