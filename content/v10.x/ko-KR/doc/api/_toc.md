@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [이 문서들에 관하여](documentation.html)
+* [사용법 & 예제](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
+* [단언 테스팅](assert.html)
+* [Async 훅](async_hooks.html)
+* [버퍼](buffer.html)
+* [C++ 애드온](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Cluster](cluster.html)
