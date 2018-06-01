@@ -1,7 +1,7 @@
 # Style guide
 
 * La documentation est composée de fichiers markdown, nommés suivant le format `minuscules-avec-tirets.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Les underscores dans les noms de fichiers sont autorisés lorsqu'ils sont présents dans le sujet que le document va décrire (par exemple `child_process `).
   * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
