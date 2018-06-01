@@ -38,9 +38,9 @@ Cuando se llama, el objeto `immediate` activo no requerirá del Event Loop de No
 
 ## Clase: Timeout
 
-This object is created internally and is returned from [`setTimeout()`][] and [`setInterval()`][]. It can be passed to either [`clearTimeout()`][] or [`clearInterval()`][] in order to cancel the scheduled actions.
+Este objeto se crea internamente y se retorna desde [`setImmediate()`][]. Se puede pasar a [`clearTimeout()`] [] o [[`clearInterval()`]] con el fin de cancelar las acciones programadas.
 
-By default, when a timer is scheduled using either [`setTimeout()`][] or [`setInterval()`][], the Node.js event loop will continue running as long as the timer is active. Each of the `Timeout` objects returned by these functions export both `timeout.ref()` and `timeout.unref()` functions that can be used to control this default behavior.
+Por defecto, cuando un temporizador es usado mediante [[`setTimeout()`]] o [[`setInterval()`]], el Event Loop de Node.js seguirá funcionando mientras el temporizador esté activo. Cada uno de los objetos `Timeout` returnados por estas funciones, contienen los métodos `timeout.ref()` y `timeout.unref()` que pueden ser utilizados para controlar el comportamiento predeterminado de este.
 
 ### timeout.ref()
 
@@ -48,11 +48,11 @@ By default, when a timer is scheduled using either [`setTimeout()`][] or [`setIn
 added: v0.9.1
 -->
 
-* Returns: {Timeout} a reference to `timeout`
+* Retorna: {Timeout} una referencia a `timeout`
 
-When called, requests that the Node.js event loop *not* exit so long as the `Timeout` is active. Calling `timeout.ref()` multiple times will have no effect.
+Cuando esta función es llamada, se solicita que el Event Loop de Node.js *no* se detenga mientras la `Timeout` permanezca activa. Llamar a `timeout.ref()` multiples veces, no tendrá efecto.
 
-By default, all `Timeout` objects are "ref'ed", making it normally unnecessary to call `timeout.ref()` unless `timeout.unref()` had been called previously.
+De forma predeterminada, todos los objetos de `Tiemout` son "ref'ed", lo que es normalmente innecesario llamar `timeout.ref()` a menos que `timeout.unref()` haya sido llamado previamente.
 
 ### timeout.unref()
 
@@ -60,9 +60,9 @@ By default, all `Timeout` objects are "ref'ed", making it normally unnecessary t
 added: v0.9.1
 -->
 
-* Returns: {Timeout} a reference to `timeout`
+* Retorna: {Timeout} una referencia a `timeout`
 
-When called, the active `Timeout` object will not require the Node.js event loop to remain active. If there is no other activity keeping the event loop running, the process may exit before the `Timeout` object's callback is invoked. Calling `timeout.unref()` multiple times will have no effect.
+Cuando se llama, el objeto `Timeout` activo no requerirá del Event Loop de Node.js para permanecer activo. Si no hay ninguna otra actividad manteniendo al Event Loop corriendo, el proceso podría salir antes de que se invoque el método callback del objeto `Timeout`. Llamar a `timeout.ref()` multiples veces, no tendrá efecto.
 
 Calling `timeout.unref()` creates an internal timer that will wake the Node.js event loop. Creating too many of these can adversely impact performance of the Node.js application.
 
