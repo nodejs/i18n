@@ -29,7 +29,7 @@
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
-* [Inspector](inspector.html)
+* [Inspecteur](inspector.html)
 * [Internationalization](intl.html)
 * [Modules](modules.html)
 * [Net](net.html)
