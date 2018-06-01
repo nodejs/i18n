@@ -18,7 +18,7 @@
 * [Konsol](console.html)
 * [Kripto](crypto.html)
 * [Hata Ayıklayıcı](debugger.html)
-* [Kullanımdan Kaldırılan Eklentiler](deprecations.html)
+* [Kullanımdan Kaldırılan API'ler](deprecations.html)
 * [DNS](dns.html)
 * [Etki Alanı](domain.html)
 * [ECMAScript Modülleri](esm.html)
