@@ -2,14 +2,14 @@
 
 * La documentation est composée de fichiers markdown, nommés suivant le format `minuscules-avec-tirets.md`. 
   * Les underscores dans les noms de fichiers sont autorisés lorsqu'ils sont présents dans le sujet que le document va décrire (par exemple `child_process `).
-  * Some files, such as top-level markdown files, are exceptions.
+  * Certains fichiers, tels que les fichiers markdown de premier niveau, sont a des exceptions.
 * Les fichiers doivent être limité à 80 caractères par ligne.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+* La mise en forme décrite dans `.editorconfig` est à préférer. 
+  * Un [plugin](http://editorconfig.org/#download) est disponible pour certains éditeurs afin d'appliquer automatiquement ces règles.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
+* En général, éviter les pronoms personnels dans la documentation de référence (« je », « tu », « nous »). 
   * Pronouns are acceptable in more colloquial documentation, like guides.
   * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
     * OK: "they", "their", "them", "folks", "people", "developers", "cats"
