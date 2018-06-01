@@ -16,14 +16,14 @@ An asynchronous resource represents an object with an associated callback. This 
 
 ## Public API
 
-### Overview
+### Genel Bakış
 
-Following is a simple overview of the public API.
+Aşağıda, public API'nin basit bir değerlendirmesi yer almaktadır.
 
 ```js
 const async_hooks = require('async_hooks');
 
-// Return the ID of the current execution context.
+// Mevcut yürütme kontekstinin ID'sini döndür.
 const eid = async_hooks.executionAsyncId();
 
 // Return the ID of the handle responsible for triggering the callback of the
@@ -112,7 +112,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Error Handling
+##### Hata işleme
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -509,7 +509,7 @@ asyncResource.emitAfter();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Example usage:
+Örnek kullanım:
 
 ```js
 class DBQuery extends AsyncResource {
