@@ -16,11 +16,11 @@ Une chaîne de caractères URL est une chaîne structurée contenant plusieurs c
 
 Le module `url` fournit deux APIs pour travailler avec les URLs : une héritée spécifique à Node.js, et une plus neuve qui applique les mêmes standards [WHATWG URL](https://url.spec.whatwg.org/) utilisé par les navigateurs web.
 
-Tandis que l'API héritée n'a pas encore été déprécié, elle est maintenue uniquement pour la compatabilité descendante avec les applications existantes. New application code should use the WHATWG API.
+Tandis que l'API héritée n'a pas encore été déprécié, elle est maintenue uniquement pour la compatabilité descendante avec les applications existantes. Le codage d'application nouvelle devrait emprunter l'API WHATWG.
 
-A comparison between the WHATWG and Legacy APIs is provided below. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
+Une comparaison entre les APIs WHATWG et celle héritée est offerte ci-dessous. Au-dessus de l'URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, les propriétés d'un objet rapporté par la méthode héritée `url.parse()` sont démontrées. Plus loin, on trouve les propriétés d'un objet `URL` WHATWG.
 
-WHATWG URL's `origin` property includes `protocol` and `host`, but not `username` or `password`.
+La propriété `origin` de l'URL WHATWG inclut `protocol` et `host`, mais non pas `username` ou `password`.
 
 ```txt
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
