@@ -1,6 +1,6 @@
-# Code of Conduct
+# קוד התנהגות
 
-The Node.js project has a [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) that *all* contributors are expected to follow. This code describes the *minimum* behavior expectations for all contributors.
+הפרוייקט Node.js יש [קוד התנהגות](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) *שכל התורמים* צפויים לכבד. This code describes the *minimum* behavior expectations for all contributors.
 
 As a contributor to Node.js, how you choose to act and interact towards your fellow contributors, as well as to the community, will reflect back not only on yourself but on the project as a whole. The Code of Conduct is designed and intended, above all else, to help establish a culture within the project that allows anyone and everyone who wants to contribute to feel safe doing so.
 
