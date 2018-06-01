@@ -40,17 +40,17 @@ La propriété `origin` de l'URL WHATWG inclut `protocol` et `host`, mais non pa
 ├─────────────┴─────────────────────┴─────────────────────┴──────────┴────────────────┴───────┤
 │                                            href                                             │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(tout éspace sur la ligne doit être ignoré - ils sont là pour le formatage
 ```
 
-Parsing the URL string using the WHATWG API:
+Analysant la chaîne URL utilisant l'API WHATWG :
 
 ```js
 const myURL =
   new URL('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
 ```
 
-Parsing the URL string using the Legacy API:
+Analysant la chaîne URL utilisant l'API héritée :
 
 ```js
 const url = require('url');
