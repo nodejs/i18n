@@ -1,6 +1,6 @@
-# Onboarding
+# Oryantasyon
 
-This document is an outline of the things we tell new Collaborators at their onboarding session.
+Bu belge yeni ortaklara oryantasyon oturumunda söylediğimiz şeylerin bir taslağıdır.
 
 ## One week before the onboarding session
 
