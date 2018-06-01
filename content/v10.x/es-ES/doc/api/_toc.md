@@ -7,13 +7,13 @@
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
-* [Cluster](cluster.html)
+* [Pruebas de Afirmación](assert.html)
+* [Ganchos Asíncronos](async_hooks.html)
+* [Búfer](buffer.html)
+* [Complementos de C++](addons.html)
+* [Complementos de C/C++ - N-API](n-api.html)
+* [Procesos Hijos](child_process.html)
+* [Clúster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
