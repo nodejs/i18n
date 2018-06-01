@@ -1,7 +1,7 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [À propos de ces documents](documentation.html)
+* [Usages & Exemples](synopsis.html)
 
 <div class="line"></div>
 
@@ -18,17 +18,17 @@
 * [Debugger](debugger.html)
 * [Deprecated APIs](deprecations.html)
 * [DNS](dns.html)
-* [Domain](domain.html)
+* [Domaine](domain.html)
 * [ECMAScript Modules](esm.html)
-* [Errors](errors.html)
+* [Erreurs](errors.html)
 * [Events](events.html)
 * [File System](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
-* [Inspector](inspector.html)
-* [Internationalization](intl.html)
+* [Inspecteur](inspector.html)
+* [Internationalisation](intl.html)
 * [Modules](modules.html)
 * [Net](net.html)
 * [OS](os.html)
@@ -54,5 +54,5 @@
 
 <div class="line"></div>
 
-* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [Dépôt GitHub & Suivi des problèmes](https://github.com/nodejs/node)
+* [Liste de diffusion](https://groups.google.com/group/nodejs)
