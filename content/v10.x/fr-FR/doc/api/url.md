@@ -14,9 +14,9 @@ const url = require('url');
 
 Une chaîne de caractères URL est une chaîne structurée contenant plusieurs composants significatifs. Une fois analysé, un objet URL contenant des propriétés pour chacun de ces composants est rapporté.
 
-The `url` module provides two APIs for working with URLs: a legacy API that is Node.js specific, and a newer API that implements the same [WHATWG URL Standard](https://url.spec.whatwg.org/) used by web browsers.
+Le module `url` fournit deux APIs pour travailler avec les URLs : une héritée spécifique à Node.js, et une plus neuve qui applique les mêmes standards [WHATWG URL](https://url.spec.whatwg.org/) utilisé par les navigateurs web.
 
-While the Legacy API has not been deprecated, it is maintained solely for backwards compatibility with existing applications. New application code should use the WHATWG API.
+Tandis que l'API héritée n'a pas encore été déprécié, elle est maintenue uniquement pour la compatabilité descendante avec les applications existantes. New application code should use the WHATWG API.
 
 A comparison between the WHATWG and Legacy APIs is provided below. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
 
