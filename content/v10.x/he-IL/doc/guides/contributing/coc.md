@@ -14,6 +14,6 @@
 
 *התורם אכזרי* הוא אדם המשבר שוב ושוב את *הרוח* של קוד התנהגות דרך ההימנעות העקבית עצמית לווסת את הדרך שבה הם אינטראקציה עם תורמײַמ אחרים בפרוייקט. בעשות כן, תורמים אכזרים להרחיק תורמים אחרימ, לעודד שיתוף פעולה ובדרך כלל גרוע על הפרוייקט כולו.
 
-להיות תורם אכזרי יכול להיות בכוונה או לא בכוונה. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
+להיות תורם אכזרי יכול להיות בכוונה או לא בכוונה. בדרך כלל, התנהגות לא מכוונת רע יכול לתקן בקלות על ידי להיות מהיר להתנצל ולתקן כמובן, *אפילו אם את/ה לא כל כך משוכנע שאת/ה צריך*. לתת תרומים אחרים את הזכות הספק ויש נכונות כנה להודות כי את/ה *עולי* לטעות הוא קריטי עבור כל שיתוף פתוח.
 
-Don't be a bad actor.
+אל תהיה תורם אכזרי.
