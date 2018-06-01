@@ -10,7 +10,7 @@ Sürüm yetkisi Node.js TSC tarafından verilir. Yetkilendirilen kişi aşağıd
 
 Sürüm akışı için kullanılması gereken ilgili üç Jenkins görevi vardır:
 
-**a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
+**a.** **Test yürütmek:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** Güncel *HEAD*'in kararlı olduğundan emin olmak için son bir tam test yürütmesi için kullanılır.
 
 **b.** **Nightly builds:** (optional) **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** can be used to create a nightly release for the current *HEAD* if public test releases are required. Builds triggered with this job are published straight to <https://nodejs.org/download/nightly/> and are available for public download.
 
