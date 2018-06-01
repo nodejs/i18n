@@ -8,9 +8,9 @@ El módulo `timer` expone una API global para la programación de funciones que 
 
 Las funciones temporizadoras incluidas en Node.js, implementan una API similiar a la API disponible en los navegadores WEB, pero cambia la implementación interna, ya que esta está basada en el [Event Loop de Node.js](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick).
 
-## Class: Immediate
+## Clase: Immediete
 
-This object is created internally and is returned from [`setImmediate()`][]. It can be passed to [`clearImmediate()`][] in order to cancel the scheduled actions.
+Este objeto se crea internamente y se retorna desde [`setImmediate()`][]. Se puede pasar a [`clearImmediate()`][] con el fin de cancelar las acciones programadas.
 
 By default, when an immediate is scheduled, the Node.js event loop will continue running as long as the immediate is active. The `Immediate` object returned by [`setImmediate()`][] exports both `immediate.ref()` and `immediate.unref()` functions that can be used to control this default behavior.
 
