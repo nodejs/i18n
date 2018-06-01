@@ -6,11 +6,11 @@
 
 האם כל אדם יפעלֹ בדרך כלשהי כדי לשבור [הקוד האתי](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), פעולות מתקנות יילקח. זה אפשרי, בכל זאת, עבור כל אדם *מתנהג* בצורה כזאת שאינה בתוך הפרה של האות קפדנית של ההנחיות הקוד האתי תוך עדיין הולך לגמרי נגד הרוח של מה הקוד הזה נועד.
 
-Open, diverse, and inclusive communities live and die on the basis of trust. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
+קהילות פתוחות, מגוונים וכולל של כל חיות ומתות על בסיס של אמון. תורמים יכולים להיות חלוקי דעות אחד עם השני כל עוד הם בטוחים כי החלוקי הדעות האלה הם בתום לב וכולם עובדים לקראת מטרה משותפת.
 
-## Bad actors
+## תורמים אכזרי
 
-All contributors to Node.js tacitly agree to abide by both the letter and spirit of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
+כל התורמים לNode.js מסכימים לציית מכתב והרוח [של הקוד אתי](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
 
 A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
 
