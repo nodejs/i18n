@@ -8,9 +8,9 @@ Node.js의 애드온은 C++로 작성되어 동적으로 링크되는 공유 객
 
 현재, 애드온을 구현하는 것은 꽤나 복잡하며, 다음과 같은 몇몇 컴포넌트와 API에 대한 지식이 요구됩니다:
 
-* V8: Node.js가 JavaScript 구현을 제공하기 위해 사용 중인 C++ 라이브러리. V8은 객체를 생성하고, 함수를 호출하는 등의 메커니즘을 제공합니다. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+* V8: Node.js가 JavaScript 구현을 제공하기 위해 사용 중인 C++ 라이브러리. V8은 객체를 생성하고, 함수를 호출하는 등의 메커니즘을 제공합니다. V8의 API의 대부분이 `v8.h` 헤더 파일(Node.js 소스 트리의 `deps/v8/include/v8.h`)에 문서화되어 있습니다. 이 헤더 파일은 [online](https://v8docs.nodesource.com/)에서 이용 가능합니다.
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): Node.js의 이벤트 루프, 워커 스레드와 플랫폼의 모든 비동기적 행위를 구현하는 C 라이브러리. 또한 크로스-플랫폼 추상화 라이브러리의 역할을 함으로써, 주요한 모든 운영 체제의 파일 시스템, 소켓, 타이머, 시스템 이벤트와 같은 많은 일반적인 시스템 작업에 대한 사용하기 쉽고, POSIX-like 한 접근을 가능하게 합니다. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
 * Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
