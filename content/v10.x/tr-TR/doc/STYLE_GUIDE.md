@@ -12,8 +12,8 @@
 * Referans belgelerinde kişi zamirlerden kaçının (“Ben”, “sen”, “biz”). 
   * Kişi zamirlerinin kullanımı günlük konuşma diline özgü klavuzlar gibi belgelerde kabul edilir.
   * Cinsiyet belirtmeyen zamirleri ve cinsiyet belirtmeyen çoğul isimleri kullanın. 
-    * OK: "they", "their", "them", "folks", "people", "developers"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+    * EVET: "onlar", "onların", "onlar", "millet", "insanlar", "geliştiriciler"
+    * HAYIR: "onun", "onunki", "o", "çocuklar", "kanka"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
