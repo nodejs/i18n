@@ -12,7 +12,7 @@ Las funciones temporizadoras incluidas en Node.js, implementan una API similiar 
 
 Este objeto se crea internamente y se retorna desde [`setImmediate()`][]. Se puede pasar a [`clearImmediate()`][] con el fin de cancelar las acciones programadas.
 
-By default, when an immediate is scheduled, the Node.js event loop will continue running as long as the immediate is active. The `Immediate` object returned by [`setImmediate()`][] exports both `immediate.ref()` and `immediate.unref()` functions that can be used to control this default behavior.
+Por defecto, cuando una immediate es asignada, el Event Loop de Node.js seguirá corriendo mientras la immediate permanezca activa. El objeto immediate, retornado por [`setImmediate()`][] contiene las funciones `immediate.ref()` y `immediate.unref()` que pueden ser utilizadas para controlar el comportamiento predeterminado de este.
 
 ### immediate.ref()
 
@@ -20,7 +20,7 @@ By default, when an immediate is scheduled, the Node.js event loop will continue
 added: v9.7.0
 -->
 
-* Returns: {Immediate} a reference to `immediate`
+* Retorna: {Immediate} una referencia a `immediate`
 
 When called, requests that the Node.js event loop *not* exit so long as the `Immediate` is active. Calling `immediate.ref()` multiple times will have no effect.
 
@@ -32,7 +32,7 @@ By default, all `Immediate` objects are "ref'ed", making it normally unnecessary
 added: v9.7.0
 -->
 
-* Returns: {Immediate} a reference to `immediate`
+* Retorna: {Immediate} una referencia a `immediate`
 
 When called, the active `Immediate` object will not require the Node.js event loop to remain active. If there is no other activity keeping the event loop running, the process may exit before the `Immediate` object's callback is invoked. Calling `immediate.unref()` multiple times will have no effect.
 
