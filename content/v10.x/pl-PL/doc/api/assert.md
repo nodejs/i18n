@@ -1,18 +1,18 @@
-# Assert
+# Asercje
 
 <!--introduced_in=v0.1.21-->
 
-> Stability: 2 - Stable
+> Stabilność: 2 - Stabilne
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+Moduł `assert` zapewnia prosty zestaw testów, które mogą służyć do sprawdzania prawdziwości założeń.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Dostępny jest tryb ścisły (`strict`) oraz tryb zgodności (`legacy`), jednak zalecane jest używanie wyłącznie [`trybu ścisłego`][].
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Więcej informacji odnośnie prawdziwości porównań można znaleźć w [artykule MDN na temat porównań i równowartości](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Class: assert.AssertionError
+## Klasa: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Podklasa `Error`, która wskazuje na błąd asercji. Wszystkie błędy rzucane przez moduł `assert` będą instancjami klasy `AssertionError`.
 
 ### new assert.AssertionError(options)
 
