@@ -82,4 +82,4 @@ to update from nodejs/node:
 
 ## Лучшие практики
 
-* When making PRs, spend time writing a thorough description.
+* При создании PR лучше подготовить детальное описание изменений.
