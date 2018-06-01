@@ -177,7 +177,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## Eklenti Örnekleri
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
@@ -206,7 +206,7 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Fonksiyon Argümanları
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
@@ -275,7 +275,7 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### Callbackler
 
 It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
 
