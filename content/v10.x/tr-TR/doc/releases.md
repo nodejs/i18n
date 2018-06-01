@@ -4,11 +4,11 @@ Bu belge, Node.js sürüm yönteminin teknik yönlerini açıklamaktadır. Hedef
 
 ## Kim Sürüm Yapabilir?
 
-Sürüm yetkisi Node.js TSC tarafından verilir. Once authorized, an individual must be have the following:
+Sürüm yetkisi Node.js TSC tarafından verilir. Yetkilendirilen kişi aşağıda belirtilenlere sahip olmalıdır:
 
-### 1. Jenkins Release Access
+### 1. Jenkins Sürüm Erişimi
 
-There are three relevant Jenkins jobs that should be used for a release flow:
+Sürüm akışı için kullanılması gereken ilgili üç Jenkins görevi vardır:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
