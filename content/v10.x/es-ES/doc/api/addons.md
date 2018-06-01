@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Los Complementos de Node.js son objetos compartidos dinámicamente enlazados, escritos en C++, que pueden ser cargados en Node.js usando la función [`require()`](modules.html#modules_require), y usados como si fueran una modulo de Node.js ordinario. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Los Complementos de Node.js son objetos compartidos dinámicamente enlazados, escritos en C++, que pueden ser cargados en Node.js usando la función [`require()`](modules.html#modules_require), y usados como si fueran una modulo de Node.js ordinario. Son usados principalmente para proveer una interfaz entre JavaScript corriendo en Node.js y librerías de C/C++
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
@@ -16,11 +16,11 @@ At the moment, the method for implementing Addons is rather complicated, involvi
 
 * Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Todos los ejemplos a continuación están disponibles para [descargar](https://github.com/nodejs/node-addon-examples) y pueden ser usados como punto de inicio para un Addon.
 
-## Hello world
+## Hola mundo
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Este ejemplo de "Hola Mundo" es un Addon simple, escrito en C++, que es equivalente al siguiente código de Javascript:
 
 ```js
 module.exports.hello = () => 'world';
