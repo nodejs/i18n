@@ -169,7 +169,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Diğer Versiyonlar 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -183,10 +183,10 @@
 
 <a id="0.11.14"></a>
 
-## 2014.09.24, Version 0.11.14 (Unstable)
+## 2014.09.24, Versiyon 0.11.14 (Kararsız)
 
-* uv: Upgrade to v1.0.0-rc1
-* http_parser: Upgrade to v2.3.0
+* uv: v1.0.0-rc1 yükseltmesi
+* http_parser: v2.3.0 yükseltmesi
 * npm: Upgrade to v2.0.0
 * openssl: Upgrade to v1.0.1i
 * v8: Upgrade to 3.26.33
