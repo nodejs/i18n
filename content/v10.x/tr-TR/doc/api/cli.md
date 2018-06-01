@@ -1,4 +1,4 @@
-# Command Line Options
+# Komut Satırı Seçenekleri
 
 <!--introduced_in=v5.9.1-->
 
@@ -20,7 +20,7 @@ Execute without arguments to start the [REPL](repl.html).
 
 *For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
 
-## Options
+## Seçenekler
 
 ### `-`
 
