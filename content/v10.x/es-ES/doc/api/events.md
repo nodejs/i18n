@@ -8,11 +8,11 @@
 
 Gran parte de la API principal de Nodejs está construida alrededor de una arquitectura idiomática dirigida por eventos asíncronos en la cual ciertas clases de objetos (llamados "emisores") emiten eventos nombrados que causan ` Function ` objetos ("escuchadores") para ser llamados.
 
-For instance: a [`net.Server`][] object emits an event each time a peer connects to it; a [`fs.ReadStream`][] emits an event when the file is opened; a [stream](stream.html) emits an event whenever data is available to be read.
+Para la instancia: a [`net.Server`][] el objeto emite un evento cada vez que un par se conecta a este; un [`fs.ReadStream`][] emite un evento cuando el archivo es abierto; un [stream](stream.html) emite un evento cuando la información está disponible para ser leida.
 
-All objects that emit events are instances of the `EventEmitter` class. These objects expose an `eventEmitter.on()` function that allows one or more functions to be attached to named events emitted by the object. Typically, event names are camel-cased strings but any valid JavaScript property key can be used.
+Todos los objetos que emiten eventos son instancia de la clase `EventEmitter`. Estos objetos exponen una función `eventEmitter.on()` que permite a una o más funciones ser anexadas a eventos emitidos por el objeto. Típicamente, los nombres de los eventos son cadenas en Minúsculas/Mayúsculas pero alguna propiedad válida de Javascript puede ser usada.
 
-When the `EventEmitter` object emits an event, all of the functions attached to that specific event are called *synchronously*. Any values returned by the called listeners are *ignored* and will be discarded.
+Cuando el objeto `EventEmitter` emite un evento, todos las funciones adjuntas a ese evento específico son llamadas *synchronously*. Any values returned by the called listeners are *ignored* and will be discarded.
 
 The following example shows a simple `EventEmitter` instance with a single listener. The `eventEmitter.on()` method is used to register listeners, while the `eventEmitter.emit()` method is used to trigger the event.
 
