@@ -21,9 +21,9 @@ $ git checkout vX.Y.Z
 $ make release
 ```
 
-Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
+Hinweis: Bitte führen Sie `npm dist-tag ls npm` aus und stellen Sie sicher, dass dies der `latest` **dist-tag** ist. `latest` in git wird für gewöhnlich als `next` veröffentlicht, wenn es stabil ist.
 
-## Step 3: Remove old npm
+## Schritt 3: Altes npm entfernen
 
 ```console
 $ cd /path/to/node
@@ -33,7 +33,7 @@ $ cd deps
 $ rm -rf npm
 ```
 
-## Step 4: Extract and commit new npm
+## Schritt 4: Neues npm extrahieren und committen
 
 ```console
 $ tar zxf /path/to/npm/release/npm-x.y.z.tgz
@@ -42,7 +42,7 @@ $ git commit -m "deps: upgrade npm to x.y.z"
 $ cd ..
 ```
 
-## Step 5: Update licenses
+## Schritt 5: Lizenz aktualisieren
 
 ```console
 $ ./configure
@@ -53,15 +53,15 @@ $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
 
-Note: please ensure you are only making the updates that are changed by npm.
+Hinweis: Bitte stellen Sie sicher, dass Sie nur Änderungen machen welche auch durch npm gemacht wurden.
 
-## Step 6: Apply Whitespace fix
+## Schritt 6: Leerzeichen korrigieren
 
 ```console
 $ git rebase --whitespace=fix master
 ```
 
-## Step 7: Test the build
+## Schritt 7: Änderungen testen
 
 ```console
 $ make test-npm
