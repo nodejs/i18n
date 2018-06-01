@@ -1,12 +1,12 @@
-# Events
+# Eventos
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 <!--type=module-->
 
-Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause `Function` objects ("listeners") to be called.
+Gran parte de la API principal de Nodejs está construida alrededor de una arquitectura idiomática dirigida por eventos asíncronos en la cual ciertas clases de objetos (llamados "emisores") emiten eventos nombrados que causan ` Function ` objetos ("escuchadores") para ser llamados.
 
 For instance: a [`net.Server`][] object emits an event each time a peer connects to it; a [`fs.ReadStream`][] emits an event when the file is opened; a [stream](stream.html) emits an event whenever data is available to be read.
 
