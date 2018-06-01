@@ -1,10 +1,10 @@
-# Node.js Yayın Süreci
+# Node.js Sürüm Yöntemi
 
-Bu belge, Node.js yayın sürecinin teknik yönlerini açıklamaktadır. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+Bu belge, Node.js sürüm yönteminin teknik yönlerini açıklamaktadır. Hedef kitle, <https://nodejs.org/> adresinde barındırılan Node.js için resmi sürüm oluşturma, yükseltme ve imzalama konusunda Node.js Vakfı Teknik Yönetim Kurulu (TSC) tarafından yetkilendirilmiş kişilerdir.
 
-## Who can make a release?
+## Kim Sürüm Yapabilir?
 
-Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
+Sürüm yetkisi Node.js TSC tarafından verilir. Once authorized, an individual must be have the following:
 
 ### 1. Jenkins Release Access
 
