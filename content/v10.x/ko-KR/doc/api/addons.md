@@ -10,9 +10,9 @@ Node.js의 애드온은 C++로 작성되어 동적으로 링크되는 공유 객
 
 * V8: Node.js가 JavaScript 구현을 제공하기 위해 사용 중인 C++ 라이브러리. V8은 객체를 생성하고, 함수를 호출하는 등의 메커니즘을 제공합니다. V8의 API의 대부분이 `v8.h` 헤더 파일(Node.js 소스 트리의 `deps/v8/include/v8.h`)에 문서화되어 있습니다. 이 헤더 파일은 [online](https://v8docs.nodesource.com/)에서 이용 가능합니다.
 
-* [libuv](https://github.com/libuv/libuv): Node.js의 이벤트 루프, 워커 스레드와 플랫폼의 모든 비동기적 행위를 구현하는 C 라이브러리. 또한 크로스-플랫폼 추상화 라이브러리의 역할을 함으로써, 주요한 모든 운영 체제의 파일 시스템, 소켓, 타이머, 시스템 이벤트와 같은 많은 일반적인 시스템 작업에 대한 사용하기 쉽고, POSIX-like 한 접근을 가능하게 합니다. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): Node.js의 이벤트 루프, 워커 스레드와 플랫폼의 모든 비동기적 행위를 구현하는 C 라이브러리. 또한 크로스-플랫폼 추상화 라이브러리의 역할을 함으로써, 주요한 모든 운영 체제의 파일 시스템, 소켓, 타이머, 시스템 이벤트와 같은 많은 일반적인 시스템 작업에 대한 사용하기 쉽고, POSIX-like 한 접근을 가능하게 합니다. libuv는 또한 pthreads-like한 스레딩 추상화를 통해, 표준 이벤트 루프보다 강력하고 세련된 비동기 애드온을 제공합니다. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* 내부 Node.js 라이브러리. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
 * Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
