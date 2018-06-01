@@ -1,16 +1,16 @@
-# Errors
+# שגיאות
 
 <!--introduced_in=v4.0.0-->
 
 <!--type=misc-->
 
-Applications running in Node.js will generally experience four categories of errors:
+אפליקציות שרצות עם Node.js יכולות לחוות ארבע קטגוריות של שגיאות:
 
-- Standard JavaScript errors such as: 
+- שגיאות JavaScript סטנדרטיות כגון: 
   - {EvalError} : thrown when a call to `eval()` fails.
   - {SyntaxError} : thrown in response to improper JavaScript language syntax.
-  - {RangeError} : thrown when a value is not within an expected range
-  - {ReferenceError} : thrown when using undefined variables
+  - {RangeError} : נזרק כאשר ערך אינו נמצא בתוך הטווח הצפוי
+  - {ReferenceError} : נזרק בעת שימוש במשתנים לא מוגדרים
   - {TypeError} : thrown when passing arguments of the wrong type
   - {URIError} : thrown when a global URI handling function is misused.
 - System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist, attempting to send data over a closed socket, etc;
