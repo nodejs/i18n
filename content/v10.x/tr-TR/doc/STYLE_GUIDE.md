@@ -14,7 +14,7 @@
   * Cinsiyet belirtmeyen zamirleri ve cinsiyet belirtmeyen çoğul isimleri kullanın. 
     * EVET: "onlar", "onların", "onlar", "millet", "insanlar", "geliştiriciler"
     * HAYIR: "onun", "onunki", "o", "çocuklar", "kanka"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
+* Sarma elemanlarını (parantez ve tırnak) birleştirirken, terminal noktalama işareti yerleştirilmelidir: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
 * Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
