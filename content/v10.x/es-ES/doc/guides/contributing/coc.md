@@ -2,7 +2,7 @@
 
 El proyecto Node.js tiene un [Código de conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) que *todos* los colaboradores deberían seguir. Este código describe las expectativas *mínimas* de comportamiento para todos los contribuyentes.
 
-Como colaborador de Node.js, la manera que decide actuar e interactuar con sus compañeros colaboradores, así como con la comunidad, reflejará no sólo en usted mismo sino también en el proyecto como un todo. The Code of Conduct is designed and intended, above all else, to help establish a culture within the project that allows anyone and everyone who wants to contribute to feel safe doing so.
+Como colaborador de Node.js, la manera que decide actuar e interactuar con sus compañeros colaboradores, así como con la comunidad, reflejará no sólo en usted mismo sino también en el proyecto como un todo. El código de conducta está diseñado y pensado, sobre todo, para ayudar a establecer una cultura dentro del proyecto que permite a todo aquel que quieran contribuir a sentirse seguros de hacerlo.
 
 Should any individual act in any way that is considered in violation of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), corrective actions will be taken. It is possible, however, for any individual to *act* in such a manner that is not in violation of the strict letter of the Code of Conduct guidelines while still going completely against the spirit of what that Code is intended to accomplish.
 
