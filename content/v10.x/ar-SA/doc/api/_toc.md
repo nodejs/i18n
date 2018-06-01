@@ -8,12 +8,12 @@
 <div class="line"></div>
 
 * [الاختبار بالتأكّد](assert.html)
-* [Async Hooks](async_hooks.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
-* [Cluster](cluster.html)
+* [الخطافات الغير متزامنة (async)](async_hooks.html)
+* [المخزن المؤقت](buffer.html)
+* [إضافات C++](addons.html)
+* [اضافات C/C++ -N-API](n-api.html)
+* [وحدات المعالجة التابعة](child_process.html)
+* [عنقود Cluster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
