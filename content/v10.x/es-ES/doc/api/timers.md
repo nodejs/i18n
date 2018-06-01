@@ -22,9 +22,9 @@ added: v9.7.0
 
 * Retorna: {Immediate} una referencia a `immediate`
 
-When called, requests that the Node.js event loop *not* exit so long as the `Immediate` is active. Calling `immediate.ref()` multiple times will have no effect.
+Cuando esta función es llamada, se solicita que el Event Loop de Node.js *no* se detenga mientras la `Immediate` permanezca activa. Llamar a `immediate.ref()` multiples veces, no tendrá efecto.
 
-By default, all `Immediate` objects are "ref'ed", making it normally unnecessary to call `immediate.ref()` unless `immediate.unref()` had been called previously.
+De forma predeterminada, todos los objetos de `inmediato` son "ref'ed", lo que es normalmente innecesario llamar `immediate.ref()` a menos que `immediate.unref()` haya sido llamado previamente.
 
 ### immediate.unref()
 
@@ -34,7 +34,7 @@ added: v9.7.0
 
 * Retorna: {Immediate} una referencia a `immediate`
 
-When called, the active `Immediate` object will not require the Node.js event loop to remain active. If there is no other activity keeping the event loop running, the process may exit before the `Immediate` object's callback is invoked. Calling `immediate.unref()` multiple times will have no effect.
+Cuando se llama, el objeto `immediate` activo no requerirá del Event Loop de Node.js para permanecer activo. If there is no other activity keeping the event loop running, the process may exit before the `Immediate` object's callback is invoked. Calling `immediate.unref()` multiple times will have no effect.
 
 ## Class: Timeout
 
