@@ -34,9 +34,9 @@ added: v9.7.0
 
 * Retorna: {Immediate} una referencia a `immediate`
 
-Cuando se llama, el objeto `immediate` activo no requerirá del Event Loop de Node.js para permanecer activo. If there is no other activity keeping the event loop running, the process may exit before the `Immediate` object's callback is invoked. Calling `immediate.unref()` multiple times will have no effect.
+Cuando se llama, el objeto `immediate` activo no requerirá del Event Loop de Node.js para permanecer activo. Si no hay ninguna otra actividad manteniendo al Event Loop corriendo, el proceso podría salir antes de que se invoque el método callback del objeto `immediate`. Llamar a `immediate.unref()` multiples veces, no tendrá efecto.
 
-## Class: Timeout
+## Clase: Timeout
 
 This object is created internally and is returned from [`setTimeout()`][] and [`setInterval()`][]. It can be passed to either [`clearTimeout()`][] or [`clearInterval()`][] in order to cancel the scheduled actions.
 
