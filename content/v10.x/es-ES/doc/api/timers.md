@@ -1,12 +1,12 @@
-# Timers
+# Temporizadores
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-The `timer` module exposes a global API for scheduling functions to be called at some future period of time. Because the timer functions are globals, there is no need to call `require('timers')` to use the API.
+El módulo `timer` expone una API global para la programación de funciones que podrán ser llamadas en algún período futuro de tiempo. Debido a que las funciones de temporizadores son globales, no es necesario llamar a `require('timers')` para utilizar la API.
 
-The timer functions within Node.js implement a similar API as the timers API provided by Web Browsers but use a different internal implementation that is built around [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick).
+Las funciones temporizadoras incluidas en Node.js, implementan una API similiar a la API disponible en los navegadores WEB, pero cambia la implementación interna, ya que esta está basada en el [Event Loop de Node.js](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick).
 
 ## Class: Immediate
 
