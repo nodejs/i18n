@@ -13,7 +13,7 @@ The module exports two specific components:
 
 ***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
-Example using the global `console`:
+Przykłady użycia `console`:
 
 ```js
 console.log('hello world');
