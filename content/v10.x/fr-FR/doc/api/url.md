@@ -58,9 +58,9 @@ const myURL =
   url.parse('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
 ```
 
-## The WHATWG URL API
+## L'API URL WHATWG
 
-### Class: URL
+### Classe: URL
 
 <!-- YAML
 added: v7.0.0
