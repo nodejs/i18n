@@ -196,7 +196,7 @@ added: v0.11.7
 
 * {number}
 
-By default set to 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
+Por defecto, el valor es 256. Para agentes con `keepAlive` habilitado, define el valor máximo de sockets que quedaran abiertos en el estado libre.
 
 ### agent.maxSockets
 
@@ -206,7 +206,7 @@ added: v0.3.6
 
 * {number}
 
-By default set to `Infinity`. Determines how many concurrent sockets the agent can have open per origin. Origin is the returned value of [`agent.getName()`][].
+Por defecto, el valor es `Infinito`. Determina cuantos sockets concurrentes el agente puede tener abierto por origen. Origen es el valor de retorno de [`agent.getName()`][].
 
 ### agent.requests
 
@@ -216,7 +216,7 @@ added: v0.5.9
 
 * {Object}
 
-An object which contains queues of requests that have not yet been assigned to sockets. Do not modify.
+Un objeto que contiene colas de peticiones que aún no han sido asignadas a sockets. No modificar.
 
 ### agent.sockets
 
@@ -226,7 +226,7 @@ added: v0.3.6
 
 * {Object}
 
-An object which contains arrays of sockets currently in use by the agent. Do not modify.
+Un objeto que contiene arreglos de sockets siendo utilizados por el agente. No modificar.
 
 ## Class: http.ClientRequest
 
