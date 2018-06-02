@@ -46,13 +46,13 @@ added: v0.3.4
 
 Un `Agent` es responsable del manejo de la persistencia y reutilización de las conexiones en los clientes HTTP. Mantiene una cola de llamados pendientes para un host definido y un puerto, reutilizando un único socket para cada uno hasta que la cola se encuentra vacía. Que un llamado se destruya o sea agrupado con otros, depende de la [opción](#http_new_agent_options) `keepAlive`.
 
-Pooled connections have TCP Keep-Alive enabled for them, but servers may still close idle connections, in which case they will be removed from the pool and a new connection will be made when a new HTTP request is made for that host and port. Servers may also refuse to allow multiple requests over the same connection, in which case the connection will have to be remade for every request and cannot be pooled. The `Agent` will still make the requests to that server, but each one will occur over a new connection.
+Las conexiones agrupadas tienen la opcion TCP Keep-Alive habilitada, pero incluso así los servidores pueden cerrar las conexiones en espera. De ocurrir, las mismas serán removidas del grupo y una nueva conexión sera establecida cuando un nuevo llamado HTTP sea realizado para ese host y ese puerto específico. Los servidores también pueden denegar el permiso de permitir múltiples llamados en una misma conexión, por lo que en este caso la conexión tendrá que ser re establecida para cada llamado y no podrá ser agrupada. El `Agent` hará los llamados a ese servidor, pero cada uno será llevado a cabo en una nueva conexión.
 
-When a connection is closed by the client or the server, it is removed from the pool. Any unused sockets in the pool will be unrefed so as not to keep the Node.js process running when there are no outstanding requests. (see [`socket.unref()`]).
+Cuando una conexión es cerrada por el cliente o por el servidor, la misma es removida del grupo. Todos los sockets del grupo que ya no sean utilizados, serán desreferenciados para evitar que el proceso de Node.js se mantenga activo cuando no hay mas llamadas pendientes. (Consultar la sección [`socket.unref()`]).
 
-It is good practice, to [`destroy()`][] an `Agent` instance when it is no longer in use, because unused sockets consume OS resources.
+Se considera una buena práctica destruir la instancia del `Agent` cuando ya no esta siendo utilizada, ya que los sockets que persisten consumen recursos del SO. (Consulte la sección [`destroy()`][]).
 
-Sockets are removed from an agent when the socket emits either a `'close'` event or an `'agentRemove'` event. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
+Los sockets son removidos de un agente cuando emiten un evento `'close'` o un evento `'agentRemove'`. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
 
 ```js
 http.get(options, (res) => {
