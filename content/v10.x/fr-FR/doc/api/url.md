@@ -174,13 +174,13 @@ console.log(myURL.href);
 // Prints https://example.com:81/foo
 ```
 
-Invalid hostname values assigned to the `hostname` property are ignored.
+Les valeurs du nom d'hôte invalides assignées à la propriété `hostname` sont ingorées.
 
 #### url.href
 
 * {string}
 
-Gets and sets the serialized URL.
+Rend et fixe l'URL sérialisé.
 
 ```js
 const myURL = new URL('https://example.org/foo');
