@@ -1,7 +1,7 @@
 # Style Guide
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+* Tài liệu được viết trong các tập tin markdown và đặt tên theo định dạng là `chữ-thường-và-gạch-ngang.md`. 
+  * Các dấu gạch chân trong tên tập tin chỉ được phép dùng khi chúng xuất hiện trong chủ đề mà tài liệu sẽ mô tả (ví dụ `child_process`).
   * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
