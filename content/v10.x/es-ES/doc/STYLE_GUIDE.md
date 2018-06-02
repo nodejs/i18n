@@ -8,10 +8,10 @@
   * Un [plugin](http://editorconfig.org/#download) de formato automático para aplicar estas reglas, esta disponible para algunos editores.
 * Los cambios a la documentación deben ser verificados con `make link-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
-* Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Personal pronouns are acceptable in colloquial documentation such as guides.
-  * Use gender-neutral pronouns and gender-neutral plural nouns. 
+* Utilizar [comas seriales](https://en.wikipedia.org/wiki/Serial_comma).
+* Evitar pronombres personales en la documentación de referencia ("Yo", "usted", "nosotros"). 
+  * Los pronombres personales son aceptables en documentación coloquial, como guías.
+  * Utilizar la neutralidad de género en pronombres y verbos plurales. 
     * OK: "they", "their", "them", "folks", "people", "developers"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
