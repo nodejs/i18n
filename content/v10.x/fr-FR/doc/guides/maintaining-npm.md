@@ -1,4 +1,4 @@
-# Maintaining npm in Node.js
+# Maintenir npm en Node.js
 
 ## Step 1: Clone npm
 
