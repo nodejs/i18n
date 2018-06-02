@@ -8,11 +8,11 @@ Jeder Versionszweig hat einen Staging-Branch, der dem Releaser als Zwischenspeic
 
 ## Was wird zurückportiert?
 
-If a cherry-pick from master does not land cleanly on a staging branch, the releaser will mark the pull request with a particular label for that release line (e.g. `backport-requested-vN.x`), specifying to our tooling that this pull request should not be included. The releaser will then add a comment requesting that a backport pull request be made.
+Wenn ein Cherry-Pick aus dem master nicht fehlerfrei in einen Staging-Branch übertragen werden konnte, wird der Releaser den Pull-Request mit einem speziellen Label für diesen Versionszweig kennzeichnen (z.B. `backport-requested-vN.x`). Das bedeutet für unser Tooling, dass dieser Pull-Request nicht enthalten sein soll. Der Releaser wird dann in einem Kommentar einen Pull-Request für die Zurückportierung anfordern.
 
-## What can be backported?
+## Was kann zurückportiert werden?
 
-The "Current" release line is much more lenient than the LTS release lines in what can be landed. Our LTS release lines (see the [Release Plan](https://github.com/nodejs/Release#release-plan)) require that commits mature in the Current release for at least 2 weeks before they can be landed in an LTS staging branch. Only after "maturation" will those commits be cherry-picked or backported.
+Der aktuelle Versionszweig ist weniger strikt als die LTS-Versionszweige in Bezug auf, welche Pull-Requests übernommen werden können. Our LTS release lines (see the [Release Plan](https://github.com/nodejs/Release#release-plan)) require that commits mature in the Current release for at least 2 weeks before they can be landed in an LTS staging branch. Only after "maturation" will those commits be cherry-picked or backported.
 
 ## How to submit a backport pull request
 
