@@ -1,4 +1,4 @@
-# File System
+# Souborový systém
 
 <!--introduced_in=v0.10.0-->
 
