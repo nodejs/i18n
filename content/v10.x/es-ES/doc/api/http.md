@@ -46,7 +46,7 @@ added: v0.3.4
 
 Un `Agent` es responsable del manejo de la persistencia y reutilización de las conexiones en los clientes HTTP. Mantiene una cola de peticiones pendientes para un host definido y un puerto, reutilizando un único socket para cada una hasta que la cola se encuentra vacía. Que una petición se destruya o sea agrupada con otras, depende de la [opción](#http_new_agent_options) `keepAlive`.
 
-Las conexiones agrupadas tienen la opcion TCP Keep-Alive habilitada, pero incluso así los servidores pueden cerrar las conexiones en espera. De ocurrir, las mismas serán removidas del grupo y una nueva conexión sera establecida cuando un nuevo llamado HTTP sea realizado para ese host y ese puerto específico. Los servidores también pueden denegar el permiso de permitir múltiples peticiones en una misma conexión, por lo que en este caso la conexión tendrá que ser re establecida para cada petición y no podrá ser agrupada. El `Agent` hará los llamados a ese servidor, pero cada uno será llevado a cabo en una nueva conexión.
+Las conexiones agrupadas tienen la opcion TCP Keep-Alive habilitada, pero incluso así los servidores pueden cerrar las conexiones en espera. De ocurrir, las mismas serán removidas del grupo y una nueva conexión sera establecida cuando una nueva petición HTTP sea realizada para ese host y ese puerto específico. Los servidores también pueden denegar el permiso de permitir múltiples peticiones en una misma conexión, por lo que en este caso la conexión tendrá que ser re establecida para cada petición y no podrá ser agrupada. El `Agent` hará las peticiones a ese servidor, pero cada una será llevada a cabo en una nueva conexión.
 
 Cuando una conexión es cerrada por el cliente o por el servidor, la misma es removida del grupo. Todos los sockets del grupo que ya no sean utilizados, serán desreferenciados para evitar que el proceso de Node.js se mantenga activo cuando no hay mas llamadas pendientes. (Consultar la sección [`socket.unref()`]).
 
@@ -62,7 +62,7 @@ http.get(options, (res) => {
 });
 ```
 
-Un agent también puede ser utilizado para un llamado individual. Al proveer `{agent: false}` como una opción a las funciones `http.get()` o `http.request()`, un `Agent` de uso único, con la configuración por defecto, sera utilizado para la conexión del cliente.
+Un agent también puede ser utilizado para una petición individual. Al proveer `{agent: false}` como una opción a las funciones `http.get()` o `http.request()`, un `Agent` de uso único, con la configuración por defecto, sera utilizado para la conexión del cliente.
 
 `agent:false`:
 
@@ -71,7 +71,7 @@ http.get({
   hostname: 'localhost',
   port: 80,
   path: '/',
-  agent: false  // crea un nuevo agente solo para este llamado
+  agent: false  // crea un nuevo agente solo para esta petición
 }, (res) => {
   // Hacer algo con la respuesta
 });
@@ -84,7 +84,7 @@ added: v0.3.4
 -->
 
 * `options` {Object} Conjunto de opciones configurables aplicables al agente. Puede contener los siguientes campos: 
-  * `keepAlive` {boolean} Mantiene los sockets activos incluso cuando no hay llamados pendientes, para que puedan ser utilizados por futuros llamados sin tener que re-establecer una conexión TCP. **Default:**`false`.
+  * `keepAlive` {boolean} Mantiene los sockets activos incluso cuando no hay peticiones pendientes, para que puedan ser utilizados por futuras peticiones sin tener que re-establecer una conexión TCP. **Default:**`false`.
   * `keepAliveMsecs` {number} Cuando se utiliza la opción `keepAlive`, especifica el [ delay inicial](net.html#net_socket_setkeepalive_enable_initialdelay) para los paquetes TCP Keep-Alive. Se ignora cuando la opción `keepAlive` es `false` o `undefined`. **Default:** `1000`.
   * `maxSockets` {number} Número máximo de sockets permitidos por host. **Default:** `Infinito`.
   * `maxFreeSockets` {number} Número máximo de sockets a dejar disponibles en un estado libre. Solo aplica si `keepAlive` tiene valor `true`. **Default:** `256`.
@@ -145,13 +145,13 @@ added: v8.1.0
 * `socket` {net.Socket}
 * `request` {http.ClientRequest}
 
-Called when `socket` is attached to `request` after being persisted because of the keep-alive options. Default behavior is to:
+Invocado cuando `socket` se adosa a `request` luego de ser persistido por las opciones de keep-alive. El comportamiento por defecto es:
 
 ```js
 socket.ref();
 ```
 
-This method can be overridden by a particular `Agent` subclass.
+Este método puede ser anulado por una subclase particular `Agent`.
 
 ### agent.destroy()
 
@@ -159,9 +159,9 @@ This method can be overridden by a particular `Agent` subclass.
 added: v0.11.4
 -->
 
-Destroy any sockets that are currently in use by the agent.
+Destruye cualquier socket que este siendo utilizado por el agent.
 
-It is usually not necessary to do this. However, if using an agent with `keepAlive` enabled, then it is best to explicitly shut down the agent when it will no longer be used. Otherwise, sockets may hang open for quite a long time before the server terminates them.
+Generalmente, no es necesario hacer esto. De cualquier manera, si se esta utilizando un agent con `keepAlive` habilitado, entonces es mejor cerrar el agente explícitamente cuando ya no va a ser utilizado. De otra forma, los sockets pueden mantenerse habilitados por tiempo indeterminado hasta que el server los termine.
 
 ### agent.freeSockets
 
@@ -171,7 +171,7 @@ added: v0.11.4
 
 * {Object}
 
-An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Do not modify.
+Un objeto que contiene un arreglo de sockets disponibles para ser utilizados por el agente cuando `keepAlive` se encuentra habilitado. No modificar.
 
 ### agent.getName(options)
 
@@ -179,7 +179,7 @@ An object which contains arrays of sockets currently awaiting use by the agent w
 added: v0.11.4
 -->
 
-* `options` {Object} A set of options providing information for name generation 
+* `options` {Object} Conjunto de opciones que contiene la información para la generación de nombres 
   * `host` {string} A domain name or IP address of the server to issue the request to
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
