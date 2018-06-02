@@ -2,11 +2,11 @@
 
 * La documentación debe ser escrita en archivos markdown respetando el formato de nomenclatura `minuscula-con-guiones.md`. 
   * Los guiones bajos en los nombres de archivo están permitidos solo cuando se encuentren en el tópico que el documento va a describir (p.ej `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Changes to documentation should be checked with `make lint-md`.
+  * Algunos archivos, como archivos markdown de alto nivel, constituyen excepciones.
+* Los documentos deben tener el ajuste de línea en 80 caracteres.
+* Se prefiere el formato descrito en `.editorconfig`. 
+  * Un [plugin](http://editorconfig.org/#download) de formato automático para aplicar estas reglas, esta disponible para algunos editores.
+* Los cambios a la documentación deben ser verificados con `make link-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
