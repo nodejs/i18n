@@ -4,7 +4,7 @@
 
 > 稳定性: 2 - 稳定的
 
-` os ` 模块提供了许多与操作系统相关的实用工具和方法。 引用方法如下:
+` os ` 模块提供了许多与操作系统相关的实用工具和方法。 使用如下方法引用·:
 
 ```js
 const os = require('os');
@@ -18,10 +18,10 @@ added: v0.7.8
 
 * {string}
 
-A string constant defining the operating system-specific end-of-line marker:
+一个字符串常量， 用于定义操作系统相关的行末标志：
 
-* `\n` on POSIX
-* `\r\n` on Windows
+* `\n` 在 POSIX 系统上
+* `\r\n` 在 Windows系统上
 
 ## os.arch()
 
@@ -29,9 +29,9 @@ A string constant defining the operating system-specific end-of-line marker:
 added: v0.5.0
 -->
 
-* Returns: {string}
+* 返回: {string}
 
-The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
+`os.arch()`方法返回一个字符串, 表明 Node.js 二进制编译所用的操作系统CPU架构.
 
 The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
