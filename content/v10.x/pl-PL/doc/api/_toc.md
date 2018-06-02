@@ -49,7 +49,7 @@
 * [TTY](tty.html)
 * [UDP/Datagram](dgram.html)
 * [URL](url.html)
-* [Utilities](util.html)
+* [Narzędzia](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
 * [ZLIB](zlib.html)
@@ -57,4 +57,4 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [Lista Mailingowa](https://groups.google.com/group/nodejs)
