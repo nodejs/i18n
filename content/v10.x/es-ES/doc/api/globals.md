@@ -32,7 +32,7 @@ Esta variable puede parecer de alcance global, pero no lo es. Ver [`__dirname`].
 
 ## \_\_filename
 
-Esta variable puede parecer de alcance global, pero no lo es. Ver [`__dirname`].
+Esta variable puede parecer de alcance global, pero no lo es. Ver [`__filename`].
 
 ## clearImmediate(immediateObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearImmediate`] se describe en la sección [contadores de tiempo](timers.html).
+[`clearInterval`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## clearTimeout(timeoutObject)
 
@@ -62,7 +62,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearImmediate`] se describe en la sección [contadores de tiempo](timers.html).
+[`clearTimeout`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## console
 
@@ -94,7 +94,7 @@ En los navegadores, el ámbito de nivel superior es el ámbito global. Esto sign
 
 ## module
 
-Esta variable puede parecer de alcance global, pero no lo es. See [`module`].
+Esta variable puede parecer de alcance global, pero no lo es. Ver [`module`].
 
 ## process
 
@@ -104,9 +104,9 @@ added: v0.1.7
 
 <!-- type=global -->
 
-* {Object}
+* {Objeto}
 
-El objeto del proceso. See the [`process` object][] section.
+El objeto del proceso. Consulte la sección de [objeto de `proceso`][].
 
 ## require()
 
@@ -150,7 +150,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-La clase WHATWG `URL`. See the [`URL`][] section.
+La clase WHATWG `URL`. Consulte la sección [`URL`][].
 
 ## URLSearchParams
 
@@ -160,4 +160,4 @@ added: v10.0.0
 
 <!-- type=global -->
 
-The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+La clase WHATWG `URL`. Consulte la sección de [`URLSearchParams`][].
