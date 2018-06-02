@@ -14,6 +14,6 @@ Todos los contribuyentes a Node.js acuerdan tácitamente cumplir con las pautas 
 
 Un *mal actor* es alguien que infringe repetidamente *el espíritu* del Código de Conducta a través de una falla consistente para autorregular la forma en que interactúan con otros contribuyentes en el proyecto. Al hacerlo, los malos actores alienan a otros contribuyentes, desalientan la colaboración y, en general, reflejan de mala manera al proyecto en su conjunto.
 
-Ser un mal actor puede ser intencional o no. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
+Ser un mal actor puede ser intencional o no. Normalmente, el mal comportamiento involuntario se puede corregir fácilmente al disculparse rápidamente y corregir el curso, *incluso si no se está del todo convencido de que debe hacerlo*. Darle a otros contribuyentes el beneficio de la duda y tener una voluntad sincera de admitir que *puedes* estar equivocado es fundamental para cualquier exitosa colaboración abierta.
 
 Don't be a bad actor.
