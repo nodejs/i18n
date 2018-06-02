@@ -1,4 +1,4 @@
-# Command Line Options
+# Parametry wiersza poleceń
 
 <!--introduced_in=v5.9.1-->
 
