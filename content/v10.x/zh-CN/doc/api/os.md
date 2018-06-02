@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性: 2 - 稳定的
 
-The `os` module provides a number of operating system-related utility methods. It can be accessed using:
+` os ` 模块提供了许多与操作系统相关的实用工具和方法。 引用方法如下:
 
 ```js
 const os = require('os');
