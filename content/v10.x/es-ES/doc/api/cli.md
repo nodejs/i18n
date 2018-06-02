@@ -70,7 +70,7 @@ Habilita soporte y caché de módulos experimentales ES.
 added: v10.0.0
 -->
 
-Enable experimental top-level `await` keyword support in REPL.
+Habilita la palabra clave `await` en REPL.
 
 ### `--experimental-vm-modules`
 
@@ -78,7 +78,7 @@ Enable experimental top-level `await` keyword support in REPL.
 added: v9.6.0
 -->
 
-Enable experimental ES Module support in the `vm` module.
+Habilita soporte y caché de módulos experimentales ES en el módulo `vm`.
 
 ### `--force-fips`
 
@@ -86,7 +86,7 @@ Enable experimental ES Module support in the `vm` module.
 added: v6.0.0
 -->
 
-Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
+Fuerza cripto FIPS-compliant en inicio. (No puede se deshabilitado desde el código del script.) (Mismos requisitos que `--enable-fips`.)
 
 ### `--icu-data-dir=file`
 
@@ -94,7 +94,7 @@ Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (
 added: v0.11.15
 -->
 
-Specify ICU data load path. (Overrides `NODE_ICU_DATA`.)
+Especifica ruta de datos ICU. (Sobreescribe `NODE_ICU_DATA`.)
 
 ### `--inspect-brk[=[host:]port]`
 
@@ -102,7 +102,7 @@ Specify ICU data load path. (Overrides `NODE_ICU_DATA`.)
 added: v7.6.0
 -->
 
-Activate inspector on `host:port` and break at start of user script. Default `host:port` is `127.0.0.1:9229`.
+Activar inspector en `host:port` e interrumpe al inicio del script de usuario. Predeterminado `host:port` es `127.0.0.1:9229`.
 
 ### `--inspect-port=[host:]port`
 
