@@ -53,7 +53,7 @@ fs.stat('/tmp/world', (err, stats) => {
 });
 ```
 
-To correctly order the operations, move the `fs.stat()` call into the callback of the `fs.rename()` operation:
+Para ordenar correctamente las operaciones, mover la llamada `fs.stat()` en la devolución de llamada de la operación `fs.rename()`:
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
