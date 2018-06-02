@@ -6,7 +6,7 @@ Como colaborador de Node.js, la manera que decide actuar e interactuar con sus c
 
 Si un individuo actúa de alguna manera que se considere en violación del [Código de conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), se tomarán medidas correctivas. Sin embargo, es posible que una persona *actúe* de una manera que no infrinja estrictamente las pautas del Código de Conducta, y que vaya completamente en contra del espíritu de lo que el Código pretende lograr.
 
-Open, diverse, and inclusive communities live and die on the basis of trust. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
+Las comunidades abiertas, diversas e inclusivas viven y mueren en base a la confianza. Los colaboradores pueden estar en desacuerdo el uno con el otro siempre que confíen en que esos desacuerdos son de buena fe y que todos están trabajando para lograr un objetivo común.
 
 ## Bad actors
 
