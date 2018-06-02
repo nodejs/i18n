@@ -1,12 +1,12 @@
-# How to Backport a Pull Request to a Release Line
+# How to: Zurückportieren eines Pull Requests zu einem Versionszweig
 
-## Staging branches
+## Staging Branches
 
-Each release line has a staging branch that the releaser will use as a scratch pad while preparing a release. The branch name is formatted as follows: `vN.x-staging` where `N` is the major release number.
+Jeder Versionszweig hat einen Staging-Branch, der dem Releaser als Zwischenspeicher während der Präparierung einer neuen Version dient. Der Branchname ist wie folgt aufgebaut: `vN.x-staging` wobei `N` die Hauptversionsnummer ist.
 
-*Note*: For the active staging branches see the [Release Schedule](https://github.com/nodejs/Release#release-schedule1).
+*Hinweis*: Weitere Infos zu aktiven Staging-Branches sind im [Release-Plan](https://github.com/nodejs/Release#release-schedule1) zu finden.
 
-## What needs to be backported?
+## Was wird zurückportiert?
 
 If a cherry-pick from master does not land cleanly on a staging branch, the releaser will mark the pull request with a particular label for that release line (e.g. `backport-requested-vN.x`), specifying to our tooling that this pull request should not be included. The releaser will then add a comment requesting that a backport pull request be made.
 
