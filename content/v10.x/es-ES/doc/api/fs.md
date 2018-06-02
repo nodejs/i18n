@@ -65,9 +65,9 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+En procesos difíciles, el programador es *fuertemente aconsejado* que use la versión asíncrona de éstas llamadas. Las versiones síncronas bloqueará el proceso completo hasta que terminen — deteniendo todas las conexiones.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Aunque no es recomendado, la mayoría de las funciones fs permiten que el argumento de devolución de llamada sea omitido, en este caso, una devolución de llamada predeterminada sea usada para regenerar errores. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
 
 Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
 
