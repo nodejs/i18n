@@ -27,7 +27,7 @@ fs.unlink('/tmp/hello', (err) => {
 });
 ```
 
-Exceptions that occur using synchronous operations are thrown immediately and may be handled using `try`/`catch`, or may be allowed to bubble up.
+Excepciones que se producen utilizando operaciones sincrónicas se lanzan inmediatamente y puede ser manejadas mediante `try`/`catch`, o puede ser permitido que se acumulen.
 
 ```js
 const fs = require('fs');
@@ -40,7 +40,7 @@ try {
 }
 ```
 
-Note that there is no guaranteed ordering when using asynchronous methods. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
+Notar que no hay orden garantizado cuando se utilizan métodos asíncronos. Asi que lo siguiente es propenso a errores porque la operación `fs.stat()` puede terminar antes que `fs.rename()`.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
