@@ -95,16 +95,16 @@ const myURL = new URL({ toString: () => 'https://exemple.org/' });
 // https://exemple.org/
 ```
 
-Unicode characters appearing within the hostname of `input` will be automatically converted to ASCII using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm.
+Les caractères unicode apparaissant avec l'hostname de `input` seront automatiquement convertis en ASCII en utilisant l'algorithme[Punycode](https://tools.ietf.org/html/rfc5891#section-4.4).
 
 ```js
 const myURL = new URL('https://你好你好');
 // https://xn--6qqa088eba/
 ```
 
-This feature is only available if the `node` executable was compiled with [ICU](intl.html#intl_options_for_building_node_js) enabled. If not, the domain names are passed through unchanged.
+Cette fonction est disponible seulement si l'exécutable `node` a été compilé avec [ICU](intl.html#intl_options_for_building_node_js) activé. Sinon, les noms de domaine y sont passés inchangés.
 
-In cases where it is not known in advance if `input` is an absolute URL and a `base` is provided, it is advised to validate that the `origin` of the `URL` object is what is expected.
+En cas ou il n'est pas connu d'avance si l'`input` est un URL absolu, et une `base` est fournie, il est advisé de valider que l'`origin` de l'`URL` est ce à quoi on s'attend.
 
 ```js
 let myURL = new URL('http://anotherExample.org/', 'https://example.org/');
@@ -119,18 +119,14 @@ myURL = new URL('foo://anotherExample.org/', 'https://example.org/');
 myURL = new URL('http:anotherExample.org/', 'https://example.org/');
 // http://anotherexample.org/
 
-myURL = new URL('https:anotherExample.org/', 'https://example.org/');
-// https://example.org/anotherExample.org/
-
-myURL = new URL('foo:anotherExample.org/', 'https://example.org/');
-// foo:anotherExample.org/
+myURL = new URL('https:anotherExample.org/', 'https://example.org/')
 ```
 
 #### url.hash
 
 * {string}
 
-Gets and sets the fragment portion of the URL.
+Rend et fixe la portion fragment de l'URL.
 
 ```js
 const myURL = new URL('https://example.org/foo#bar');
