@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-To use the HTTP server and client one must `require('http')`.
+Para utilizar el server HTTP y el cliente, uno debe requerirlo de la siguiente manera `require('http')`.
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Las interfaces HTTP en Node.js están diseñadas para soportar varias características del protocolo que, tradicionalmente, han sido difíciles de utilizar. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
 Los encabezados de los mensajes HTTP se representan mediante un objeto como este:
 
