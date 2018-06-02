@@ -2,8 +2,8 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Om denne dokumentation](documentation.html)
+* [Brug & eksempel](synopsis.html)
 
 <div class="line"></div>
 
