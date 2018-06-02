@@ -228,13 +228,13 @@ added: v0.3.6
 
 Un objeto que contiene arreglos de sockets siendo utilizados por el agente. No modificar.
 
-## Class: http.ClientRequest
+## Clase: http.ClientRequest
 
 <!-- YAML
 added: v0.1.17
 -->
 
-This object is created internally and returned from [`http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
+Este objecto es creado internamente y el valor de retorno de [`http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
 
 To get the response, add a listener for [`'response'`][] to the request object. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
 
