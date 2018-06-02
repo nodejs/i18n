@@ -68,7 +68,7 @@ Llamar a `timeout.unref()` crea un contador interno que activará el Event Loop 
 
 ## Scheduling Timers
 
-A timer in Node.js is an internal construct that calls a given function after a certain period of time. When a timer's function is called varies depending on which method was used to create the timer and what other work the Node.js event loop is doing.
+Un temporizador en Node.js es un constructor interno que llama a una función dada después de cierto periodo de tiempo. When a timer's function is called varies depending on which method was used to create the timer and what other work the Node.js event loop is doing.
 
 ### setImmediate(callback[, ...args])
 
