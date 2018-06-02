@@ -8,12 +8,12 @@ Si un individuo actúa de alguna manera que se considere en violación del [Cód
 
 Las comunidades abiertas, diversas e inclusivas viven y mueren en base a la confianza. Los colaboradores pueden estar en desacuerdo el uno con el otro siempre que confíen en que esos desacuerdos son de buena fe y que todos están trabajando para lograr un objetivo común.
 
-## Bad actors
+## Malintencionados
 
 Todos los contribuyentes a Node.js acuerdan tácitamente cumplir con las pautas y el espíritu del [Código de conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Si no lo hacen, o no están dispuesto a hacerlo, se les rechazarán respetuosamente las contribuciones.
 
-Un *mal actor* es alguien que infringe repetidamente *el espíritu* del Código de Conducta a través de una falla consistente para autorregular la forma en que interactúan con otros contribuyentes en el proyecto. Al hacerlo, los malos actores alienan a otros contribuyentes, desalientan la colaboración y, en general, reflejan de mala manera al proyecto en su conjunto.
+Un *malintencionado* es alguien que infringe repetidamente *el espíritu* del Código de Conducta a través de una falla consistente para autorregular la forma en que interactúan con otros contribuyentes en el proyecto. Al hacerlo, los malintencionados alienan a otros contribuyentes, desalientan la colaboración y, en general, reflejan de mala manera al proyecto en su conjunto.
 
-Ser un mal actor puede ser intencional o no. Normalmente, el mal comportamiento involuntario se puede corregir fácilmente al disculparse rápidamente y corregir el curso, *incluso si no se está del todo convencido de que debe hacerlo*. Darle a otros contribuyentes el beneficio de la duda y tener una voluntad sincera de admitir que *puedes* estar equivocado es fundamental para cualquier exitosa colaboración abierta.
+Ser malintencionado puede ser intencional o no. Normalmente, el mal comportamiento involuntario se puede corregir fácilmente al disculparse rápidamente y corregir el curso, *incluso si no se está del todo convencido de que debe hacerlo*. Darle a otros contribuyentes el beneficio de la duda y tener una voluntad sincera de admitir que *puedes* estar equivocado es fundamental para cualquier exitosa colaboración abierta.
 
-Don't be a bad actor.
+No seas un malintencionado.
