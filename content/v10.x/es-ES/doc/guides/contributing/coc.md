@@ -12,8 +12,8 @@ Las comunidades abiertas, diversas e inclusivas viven y mueren en base a la conf
 
 Todos los contribuyentes a Node.js acuerdan tácitamente cumplir con las pautas y el espíritu del [Código de conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Si no lo hacen, o no están dispuesto a hacerlo, se les rechazarán respetuosamente las contribuciones.
 
-A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
+Un *mal actor* es alguien que infringe repetidamente *el espíritu* del Código de Conducta a través de una falla consistente para autorregular la forma en que interactúan con otros contribuyentes en el proyecto. Al hacerlo, los malos actores alienan a otros contribuyentes, desalientan la colaboración y, en general, reflejan de mala manera al proyecto en su conjunto.
 
-Being a bad actor may be intentional or unintentional. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
+Ser un mal actor puede ser intencional o no. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
 
 Don't be a bad actor.
