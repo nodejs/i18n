@@ -13,7 +13,8 @@ Instantieringer af `Buffer` klassen minder on arrays af integers, men er rå huk
 `Buffer` klassen er tilgængelig i globalt scope, så det er usandsynligt at du nogensinde får brug for at skrive `require('buffer').Buffer`.
 
 ```js
-// Opretter en Buffer med en længde på 10, hvor alle elementer er nul.
+// Opretter en Buffer med en længde på 10, hvor alle 
+// elementer har værdien nul.
 const buf1 = Buffer.alloc(10);
 
 // Opretter en Buffer med en længde på 10, hvor alle 
@@ -21,22 +22,24 @@ const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(10, 1);
 
 // Opretter en uinitialiseret Buffer med en længde på 10.
-// Det er hurtigere end at kalde Buffer.alloc(), men den 
+// Dette er hurtigere end at kalde Buffer.alloc(), men den 
 // Buffer du får kan indeholde gammelt data, som du bliver 
 // nød til at overskrive med enten fill() eller write().
 const buf3 = Buffer.allocUnsafe(10);
 
-// Creates a Buffer containing [0x1, 0x2, 0x3].
-const buf4 = Buffer.from([1, 2, 3]);
+// Opretter en Buffer, der indeholder [0x1, 0x2, 0x3].
+const buf4 = Buffer.from ([1, 2, 3]); 
 
-// Creates a Buffer containing UTF-8 bytes [0x74, 0xc3, 0xa9, 0x73, 0x74].
+// Opretter en Buffer, der indeholder følgende UTF-8 bytes:
+// [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Creates a Buffer containing Latin-1 bytes [0x74, 0xe9, 0x73, 0x74].
+// Opretter en buffer, der indeholder følgende Latin-1 bytes: 
+// [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
-## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
+## `Buffer.from()`, `Buffer.alloc()` og `Buffer.allocUnsafe()`
 
 In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
