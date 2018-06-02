@@ -8,7 +8,7 @@ Los Complementos de Node.js son objetos compartidos dinámicamente enlazados, es
 
 Por el momento, el método para implementar Complementos es algo complicado, implicando conocimientos de diversos componentes y APIs:
 
-* V8: La librería de C++ que Node.js usa actualmente para proveer la implementación de JavaScript. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+* V8: La librería de C++ que Node.js usa actualmente para proveer la implementación de JavaScript. V8 provee los mecanismos de creación de objetos, llamado de funciones, etc. La API de V8 esta documentada mayormente en el archivo de cabecera `v8.h` (`deps/v8/include/v8.h` en árbol del código fuente de Node.js), el cual también esta disponible [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
@@ -16,11 +16,11 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
-Todos los ejemplos a continuación están disponibles para [descargar](https://github.com/nodejs/node-addon-examples) y pueden ser usados como punto de inicio para un Addon.
+Todos los ejemplos a continuación están disponibles para [descargar](https://github.com/nodejs/node-addon-examples) y pueden ser usados como punto de inicio para un Complemento.
 
 ## Hola mundo
 
-Este ejemplo de "Hola Mundo" es un Addon simple, escrito en C++, que es equivalente al siguiente código de Javascript:
+Este ejemplo de "Hola Mundo" es un Complemento simple, escrito en C++, que es equivalente al siguiente código en JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
