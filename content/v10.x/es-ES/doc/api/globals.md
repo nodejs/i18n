@@ -42,7 +42,7 @@ added: v0.9.1
 
 <!--type=global-->
 
-[`clearImmediate`] is described in the [timers](timers.html) section.
+[`clearImmediate`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## clearInterval(intervalObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearInterval`] is described in the [timers](timers.html) section.
+[`clearImmediate`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## clearTimeout(timeoutObject)
 
@@ -62,7 +62,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearTimeout`] is described in the [timers](timers.html) section.
+[`clearImmediate`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## console
 
@@ -72,13 +72,13 @@ added: v0.1.100
 
 <!-- type=global -->
 
-* {Object}
+* {Objeto}
 
-Used to print to stdout and stderr. See the [`console`][] section.
+Utilizado para imprimir a stdout y stderr. Consulte la sección de [] [`consola`].
 
 ## exports
 
-This variable may appear to be global but is not. See [`exports`].
+Esta variable puede parecer de alcance global, pero no lo es. Ver [`exports`].
 
 ## global
 
@@ -94,7 +94,7 @@ In browsers, the top-level scope is the global scope. This means that within the
 
 ## module
 
-This variable may appear to be global but is not. See [`module`].
+Esta variable puede parecer de alcance global, pero no lo es. See [`module`].
 
 ## process
 
@@ -130,7 +130,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setInterval`] is described in the [timers](timers.html) section.
+[`setInterval`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
 
