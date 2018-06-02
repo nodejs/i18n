@@ -14,13 +14,13 @@ Wenn ein Cherry-Pick aus dem master nicht fehlerfrei in einen Staging-Branch üb
 
 Der aktuelle Versionszweig ist weniger strikt als die LTS-Versionszweige in Bezug auf, welche Pull-Requests übernommen werden können. Unsere LTS-Versionszweige (siehe im [Release-Plan](https://github.com/nodejs/Release#release-plan)) erfordern, dass Commits mindestens zwei Wochen im aktuellen Versionszweig heranreifen bevor sie in einen LTS-Staging-Branch übernommen werden können. Nur nach dieser "Reifephase" werden diese Commits zurückportiert oder gecherry-picked.
 
-## How to submit a backport pull request
+## Wie reicht man einen Pull-Request für eine Zurückportierung ein?
 
-For the following steps, let's assume that a backport is needed for the v6.x release line. All commands will use the `v6.x-staging` branch as the target branch. In order to submit a backport pull request to another branch, simply replace that with the staging branch for the targeted release line.
+Für die nächsten Schritte nehmen wir an, dass eine Zurückportierung für den v6.x Versionszweig gemacht wird. Alle Befehle verwenden den `v6.x-staging` Branch als Ziel-Branch. Um einen Pull-Request für einen anderen Branch einzureichen, ersetze diesen einfach mit dem Namen des Staging-Branches des entsprechenden Versionszweiges.
 
-1. Checkout the staging branch for the targeted release line
-2. Make sure that the local staging branch is up to date with the remote
-3. Create a new branch off of the staging branch
+1. Checke den Staging-Branch für den Ziel-Versionszweig aus
+2. Stelle sicher, dass der lokale Staging-Branch ist auf dem aktuellen Stand ist
+3. Erstelle vom Staging-Branch aus einen neuen Branch
 
 ```shell
 # Assuming your fork of Node.js is checked out in $NODE_DIR,
