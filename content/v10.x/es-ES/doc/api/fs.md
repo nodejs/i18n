@@ -1,22 +1,22 @@
-# File System
+# Sistema de Archivos
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+El módulo de `fs` proporciona una API para interactuar con el sistema de archivos de una manera estrechamente modelado por las funciones estándar de POSIX.
 
-To use this module:
+Para utilizar este módulo:
 
 ```js
 const fs = require('fs');
 ```
 
-All file system operations have synchronous and asynchronous forms.
+Todas las operaciones del sistema de archivo tienen formas sincrónicas y asincrónicas.
 
-The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+La forma asincrónica toma siempre una devolución de llamada de finalización como su último argumento. Los argumentos pasados a la devolución de llamada de finalización dependen del método, pero el primer argumento se reserva siempre una excepción. Si la operación se completó con éxito, entonces el primer argumento será `null` o `undefined`.
 
 ```js
 const fs = require('fs');
