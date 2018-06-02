@@ -23,18 +23,18 @@ Für die nächsten Schritte nehmen wir an, dass eine Zurückportierung für den 
 3. Erstelle vom Staging-Branch aus einen neuen Branch
 
 ```shell
-# Assuming your fork of Node.js is checked out in $NODE_DIR,
-# the origin remote points to your fork, and the upstream remote points
-# to git://github.com/nodejs/node
+# Unter der Annahme, dass dein Node.js Fork in $NODE_DIR ausgecheckt ist,
+# zeigt der origin Remote-Branch auf deinen Fork, und der upstream Remote-Branch
+# auf git://github.com/nodejs/node
 cd $NODE_DIR
-# If v6.x-staging is checked out `pull` should be used instead of `fetch`
+# Wenn der v6.x-staging ausgecheckt ist, sollte `pull` statt `fetch` verwendet werden.
 git fetch upstream v6.x-staging:v6.x-staging -f
-# Assume we want to backport PR #10157
+# Angenommen wir möchten den PR #10157 zurückportieren
 git checkout -b backport-10157-to-v6.x v6.x-staging
-# Ensure there are no test artifacts from previous builds
-# Note that this command deletes all files and directories
-# not under revision control below the ./test directory.
-# It is optional and should be used with caution.
+# Stellen Sie sicher, dass keine alten Testdaten von alten Builds vorhanden sind.
+# Beachten Sie, dass dieser Befehl alle Dateien und Verzeichnisse löscht
+# welche nicht in der Versionsverwaltung unter ./test sind.
+# Es ist optional und sollte mit Bedacht verwendet werden.
 git clean -xfd ./test/
 ```
 
