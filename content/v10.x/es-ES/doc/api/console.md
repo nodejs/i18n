@@ -9,26 +9,26 @@ El módulo `console` proporciona una simple consola de depuración que es simila
 El módulo exporta dos componentes específicos:
 
 * Una clase `Console` con métodos como `console.log()`, `console.error()` y `console.warn()` que pueden utilizarse para escribir en cualquier Node.js stream.
-* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
+* Una instancia global `console` configurada para escribir en [`process.stdout`][] y [`process.stderr`][]. Puede utilizar la global `console` sin llamar a `require('console')`.
 
 ***ADVERTENCIA***: Los métodos del objeto console global no son siempre sincronizados como las APIs de los navegadores a las que se asemejan, ni son siempre asíncrono como todos los otros streams de Node.js. Vea la [nota del proceso I/O](process.html#process_a_note_on_process_i_o) para obtener más información.
 
-Example using the global `console`:
+Ejemplo de uso de la global `console`:
 
 ```js
 console.log('hello world');
-// Prints: hello world, to stdout
+// Imprime: hello world, en stdout
 console.log('hello %s', 'world');
-// Prints: hello world, to stdout
+// Imprime: hello world, en stdout
 console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+// Imprime: [Error: Whoops, something bad happened], en stderr
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+// Imprime: Danger Will Robinson! Danger!, en stderr
 ```
 
-Example using the `Console` class:
+Ejemplo utilizando la clase `consola`:
 
 ```js
 const out = getStreamSomehow();
