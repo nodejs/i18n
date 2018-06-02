@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Estos objetos están disponibles en todos los módulos. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Estos objetos están disponibles en todos los módulos. Las siguientes variables pueden parecer globales, pero no lo son. Existen sólo en el ámbito de los módulos, consulte la [documentación del sistema de módulo](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -12,9 +12,9 @@ Estos objetos están disponibles en todos los módulos. The following variables 
 * [`module`][]
 * [`require()`][]
 
-The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+Los objetos listados aquí son específicos a Node.js. Son un numero de [ objetos embebidos ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) que forman parte del lenguaje JavaScript en si, y a la vez son accesibles globalmente.
 
-## Class: Buffer
+## Clase: Buffer
 
 <!-- YAML
 added: v0.1.103
@@ -24,15 +24,15 @@ added: v0.1.103
 
 * {Function}
 
-Used to handle binary data. See the [buffer section](buffer.html).
+Utilizado para manejar datos binarios. Ver la [sección de buffer](buffer.html).
 
 ## \_\_dirname
 
-This variable may appear to be global but is not. See [`__dirname`].
+Esta variable puede parecer de alcance global, pero no lo es. Ver [`__dirname`].
 
 ## \_\_filename
 
-This variable may appear to be global but is not. See [`__filename`].
+Esta variable puede parecer de alcance global, pero no lo es. Ver [`__dirname`].
 
 ## clearImmediate(immediateObject)
 
