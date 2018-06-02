@@ -1,10 +1,10 @@
-# Cluster
+# Klaster
 
 <!--introduced_in=v0.10.0-->
 
 > Stability: 2 - Stable
 
-A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+Pojedyncza instancja Node.js tworzy pojedynczy wątek. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
 The cluster module allows easy creation of child processes that all share server ports.
 
@@ -49,7 +49,7 @@ Worker 5644 started
 
 Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
 
-## How It Works
+## Jak to działa
 
 <!--type=misc-->
 
@@ -75,7 +75,7 @@ Because workers are all separate processes, they can be killed or re-spawned dep
 
 Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
 
-## Class: Worker
+## Klasa: Worker
 
 <!-- YAML
 added: v0.7.0
@@ -83,7 +83,7 @@ added: v0.7.0
 
 A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
-### Event: 'disconnect'
+### Zdarzene: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
