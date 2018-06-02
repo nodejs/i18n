@@ -6,7 +6,7 @@
 
 Para utilizar el server HTTP y el cliente, uno debe requerirlo de la siguiente manera `require('http')`.
 
-Las interfaces HTTP en Node.js están diseñadas para soportar varias características del protocolo que, tradicionalmente, han sido difíciles de utilizar. En particular, mensajes grandes y potencialmente codificados en fragmentos. La interfaz nunca almacena respuestas o llamados enteros — el usuario puede establecer entonces un flujo continuo de datos.
+Las interfaces HTTP en Node.js están diseñadas para soportar varias características del protocolo que, tradicionalmente, han sido difíciles de utilizar. En particular, mensajes grandes y potencialmente codificados en fragmentos. La interfaz nunca almacena respuestas o peticiones enteras — el usuario puede establecer entonces un flujo continuo de datos.
 
 Los encabezados de los mensajes HTTP se representan mediante un objeto como el siguiente:
 
@@ -44,15 +44,15 @@ Los encabezados sin procesar estan retenidos en la propiedad `rawHeaders`, que e
 added: v0.3.4
 -->
 
-Un `Agent` es responsable del manejo de la persistencia y reutilización de las conexiones en los clientes HTTP. Mantiene una cola de llamados pendientes para un host definido y un puerto, reutilizando un único socket para cada uno hasta que la cola se encuentra vacía. Que un llamado se destruya o sea agrupado con otros, depende de la [opción](#http_new_agent_options) `keepAlive`.
+Un `Agent` es responsable del manejo de la persistencia y reutilización de las conexiones en los clientes HTTP. Mantiene una cola de peticiones pendientes para un host definido y un puerto, reutilizando un único socket para cada una hasta que la cola se encuentra vacía. Que una petición se destruya o sea agrupada con otras, depende de la [opción](#http_new_agent_options) `keepAlive`.
 
-Las conexiones agrupadas tienen la opcion TCP Keep-Alive habilitada, pero incluso así los servidores pueden cerrar las conexiones en espera. De ocurrir, las mismas serán removidas del grupo y una nueva conexión sera establecida cuando un nuevo llamado HTTP sea realizado para ese host y ese puerto específico. Los servidores también pueden denegar el permiso de permitir múltiples llamados en una misma conexión, por lo que en este caso la conexión tendrá que ser re establecida para cada llamado y no podrá ser agrupada. El `Agent` hará los llamados a ese servidor, pero cada uno será llevado a cabo en una nueva conexión.
+Las conexiones agrupadas tienen la opcion TCP Keep-Alive habilitada, pero incluso así los servidores pueden cerrar las conexiones en espera. De ocurrir, las mismas serán removidas del grupo y una nueva conexión sera establecida cuando un nuevo llamado HTTP sea realizado para ese host y ese puerto específico. Los servidores también pueden denegar el permiso de permitir múltiples peticiones en una misma conexión, por lo que en este caso la conexión tendrá que ser re establecida para cada petición y no podrá ser agrupada. El `Agent` hará los llamados a ese servidor, pero cada uno será llevado a cabo en una nueva conexión.
 
 Cuando una conexión es cerrada por el cliente o por el servidor, la misma es removida del grupo. Todos los sockets del grupo que ya no sean utilizados, serán desreferenciados para evitar que el proceso de Node.js se mantenga activo cuando no hay mas llamadas pendientes. (Consultar la sección [`socket.unref()`]).
 
 Se considera una buena práctica destruir la instancia del `Agent` cuando ya no esta siendo utilizada, ya que los sockets que persisten consumen recursos del SO. (Consulte la sección [`destroy()`][]).
 
-Los sockets son removidos de un agente cuando emiten un evento `'close'` o un evento `'agentRemove'`. Si la intención es mantener un llamado HTTP activo por un periodo de tiempo indefinido, sin mantenerlo dentro del agent se puede hacer algo como lo siguiente:
+Los sockets son removidos de un agente cuando emiten un evento `'close'` o un evento `'agentRemove'`. Si la intención es mantener una petición HTTP activa por un periodo de tiempo indefinido, sin mantenerla dentro del agent se puede hacer algo como lo siguiente:
 
 ```js
 http.get(options, (res) => {
@@ -110,13 +110,13 @@ added: v0.11.4
 * `callback` {Function} Función callback que recibe el socket creado
 * Retorna: {net.Socket}
 
-Produce un socket/stream para ser utilizado por los llamados HTTP.
+Produce un socket/stream para ser utilizado por las peticiones HTTP.
 
 Por defecto, esta función es la misma que [`net.createConnection()`][]. Es posible anular este método con un agente personalizado en caso de que se desee mayor flexibilidad.
 
-A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
+Un socket/stream puede ser proporcionado de dos maneras: retornando el socket/stream desde esta función, o pasando el socket/stream como argumento a la función `callback`.
 
-`callback` has a signature of `(err, stream)`.
+`callback` contempla el ingreso de `(err, stream)` como parámetros.
 
 ### agent.keepSocketAlive(socket)
 
@@ -126,7 +126,7 @@ added: v8.1.0
 
 * `socket` {net.Socket}
 
-Called when `socket` is detached from a request and could be persisted by the `Agent`. Default behavior is to:
+Se invoca cuando `socket` se desreferencia de una petición y puede ser persistido por el `Agent`. El comportamiento por defecto es:
 
 ```js
 socket.setKeepAlive(true, this.keepAliveMsecs);
@@ -134,7 +134,7 @@ socket.unref();
 return true;
 ```
 
-This method can be overridden by a particular `Agent` subclass. If this method returns a falsy value, the socket will be destroyed instead of persisting it for use with the next request.
+Este método puede ser anulado por una subclase `Agent` particular. Si este método retorna un valor falsy, el socket sera destruido en vez de persistir para ser utilizado en la próxima petición.
 
 ### agent.reuseSocket(socket, request)
 
