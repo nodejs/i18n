@@ -180,13 +180,13 @@ added: v0.11.4
 -->
 
 * `options` {Object} Conjunto de opciones que contiene la información para la generación de nombres 
-  * `host` {string} A domain name or IP address of the server to issue the request to
-  * `port` {number} Port of remote server
-  * `localAddress` {string} Local interface to bind for network connections when issuing the request
-  * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Returns: {string}
+  * `host` {string} Un nombre de dominio o dirección IP del servidor al cual se le emitirá la petición
+  * `port` {number} Puerto del servidor remoto
+  * `localAddress` {string} Interfaz local a la cual se realiza en enlace cuando se emite la petición
+  * `family` {integer} Debe ser 4 o 6 si su valor no es igual a `undefined`.
+* Retorna: {string}
 
-Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
+Obtiene un nombre único para un conjunto de opciones de petición, para determinar si una conexión puede ser reutilizada. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
 ### agent.maxFreeSockets
 
