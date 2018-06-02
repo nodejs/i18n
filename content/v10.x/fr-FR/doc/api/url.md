@@ -138,13 +138,13 @@ console.log(myURL.href);
 // Prints https://example.org/foo#baz
 ```
 
-Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Les caractères d'URL invalides inclues dans la valeur assignée à la propriété `hash` sont [percent-encoded](#whatwg-percent-encoding). Note que la séléction de caractères à pourcent-encoder peuvent varier un peu par rapport à ce que produit le méthodes [`url.parse()`][] et [`url.format()`][].
 
 #### url.host
 
 * {string}
 
-Gets and sets the host portion of the URL.
+Rend et fixe la portion hôte de l'URL.
 
 ```js
 const myURL = new URL('https://example.org:81/foo');
@@ -156,13 +156,13 @@ console.log(myURL.href);
 // Prints https://example.com:82/foo
 ```
 
-Invalid host values assigned to the `host` property are ignored.
+Les valeurs d'hôte invalides assignées à la propriété `host` sont ignorées.
 
 #### url.hostname
 
 * {string}
 
-Gets and sets the hostname portion of the URL. The key difference between `url.host` and `url.hostname` is that `url.hostname` does *not* include the port.
+Rend et fixe la portion nom d'hôte de l'URL. La différence clé entre `url.host` et `url.hostname` est que `url.hostname` *n'inclut pas* le port.
 
 ```js
 const myURL = new URL('https://example.org:81/foo');
