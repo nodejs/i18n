@@ -14,7 +14,7 @@
 * [C/C++ Addons - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Klasa Cluster](cluster.html)
-* [Command Line Options](cli.html)
+* [Parametry wiersza poleceń](cli.html)
 * [Konsola](console.html)
 * [Crypto](crypto.html)
 * [Debugger](debugger.html)
