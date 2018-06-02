@@ -8,21 +8,22 @@ Før [`TypedArray`] blev tilføjet, kunne man ikke læse eller manipulere stream
 
 Nu hvor [`TypedArray`] er blevet tilføjet til JavaScript, implementerer `Buffer` klassen [`Uint8Array`] API'et, på en måde der er optimeret og tilpasset Node.js.
 
-Instantieringer af `Buffer` klassen minder on arrays af integers, men er rå hukommelses-allokationer af fast størrelse udenfor V8 heap'en. The size of the `Buffer` is established when it is created and cannot be changed.
+Instantieringer af `Buffer` klassen minder on arrays af integers, men er rå hukommelses-allokationer af fast størrelse udenfor V8 heap'en. Størrelsen på en `Buffer` fastsættes når den oprettes og kan ikke ændres.
 
-The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
+`Buffer` klassen er tilgængelig i globalt scope, så det er usandsynligt at du nogensinde får brug for at skrive `require('buffer').Buffer`.
 
 ```js
-// Creates a zero-filled Buffer of length 10.
+// Opretter en Buffer med en længde på 10, hvor alle elementer er nul.
 const buf1 = Buffer.alloc(10);
 
-// Creates a Buffer of length 10, filled with 0x1.
+// Opretter en Buffer med en længde på 10, hvor alle 
+// elementer har værdien 0x1.
 const buf2 = Buffer.alloc(10, 1);
 
-// Creates an uninitialized buffer of length 10.
-// This is faster than calling Buffer.alloc() but the returned
-// Buffer instance might contain old data that needs to be
-// overwritten using either fill() or write().
+// Opretter en uinitialiseret Buffer med en længde på 10.
+// Det er hurtigere end at kalde Buffer.alloc(), men den 
+// Buffer du får kan indeholde gammelt data, som du bliver 
+// nød til at overskrive med enten fill() eller write().
 const buf3 = Buffer.allocUnsafe(10);
 
 // Creates a Buffer containing [0x1, 0x2, 0x3].
