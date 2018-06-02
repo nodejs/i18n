@@ -33,9 +33,9 @@ added: v0.5.0
 
 `os.arch()`方法返回一个字符串, 表明 Node.js 二进制编译所用的操作系统CPU架构.
 
-The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+目前可能的值有: `'arm'`， `'arm64'`，`'ia32'`， `'mips'`， `'mipsel'`，`'ppc'`，`'ppc64'`，`'s390'`，`'s390x'`，`'x32'` 和`'x64'`。
 
-Equivalent to [`process.arch`][].
+等价于 [` 进程. arch `] []。
 
 ## os.constants
 
@@ -45,7 +45,7 @@ added: v6.3.0
 
 * {Object}
 
-Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
+返回一个包含错误码，处理信号等通用的操作系统特定常量的对象。 现在, 这些特定的常量的定义在 [OS Constants](#os_os_constants_1)被描述。
 
 ## os.cpus()
 
@@ -53,7 +53,7 @@ Returns an object containing commonly used operating system specific constants f
 added: v0.3.3
 -->
 
-* Returns: {Object[]}
+* 返回: {Object[]}
 
 The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
