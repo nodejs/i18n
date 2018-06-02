@@ -6,21 +6,21 @@
 
 Node.js viene con una variedad de opciones de CLI. Estas opciones exponen depuración integrada, múltiples formas para ejecutar secuencias de comandos y útiles otras opciones de tiempo de ejecución.
 
-To view this documentation as a manual page in a terminal, run `man node`.
+Para ver esta documentación como una página de manual en un terminal, ejecutar `man node`.
 
-## Synopsis
+## Sinopsis
 
-`node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
+`node [options] [V8 options] [script.js | -e "script" |-] [--] [arguments]`
 
 `node debug [script.js | -e "script" | <host>:<port>] …`
 
 `node --v8-options`
 
-Execute without arguments to start the [REPL](repl.html).
+Ejecutar sin argumentos para iniciar la [REPL](repl.html).
 
-*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
+*Para obtener más información sobre `node debug`, consulte la documentación del [debugger](debugger.html).*
 
-## Options
+## Opciones
 
 ### `-`
 
@@ -28,7 +28,7 @@ Execute without arguments to start the [REPL](repl.html).
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+Alias para stdin, análogo al uso de - en otras utilidades de línea de comandos, lo que significa que el script lee de stdin, y el resto de las opciones se pasan al script.
 
 ### `--`
 
@@ -36,7 +36,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indicar el final de las opciones de node. Pasar el resto de los argumentos al script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--abort-on-uncaught-exception`
 
@@ -54,7 +54,7 @@ If this flag is passed, the behavior can still be set to not abort through [`pro
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
+Habilita FIPS-compliant cripto al Inicio. (Requiere Node.js para ser construido con `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -62,7 +62,7 @@ Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./c
 added: v8.5.0
 -->
 
-Enable experimental ES module support and caching modules.
+Habilita soporte y caché de módulos experimentales ES.
 
 ### `--experimental-repl-await`
 
