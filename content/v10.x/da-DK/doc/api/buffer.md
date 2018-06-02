@@ -8,7 +8,7 @@ Før [`TypedArray`] blev tilføjet, kunne man ikke læse eller manipulere stream
 
 Nu hvor [`TypedArray`] er blevet tilføjet til JavaScript, implementerer `Buffer` klassen [`Uint8Array`] API'et, på en måde der er optimeret og tilpasset Node.js.
 
-Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. The size of the `Buffer` is established when it is created and cannot be changed.
+Instantieringer af `Buffer` klassen minder on arrays af integers, men er rå hukommelses-allokationer af fast størrelse udenfor V8 heap'en. The size of the `Buffer` is established when it is created and cannot be changed.
 
 The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 
