@@ -186,7 +186,7 @@ added: v0.11.4
   * `family` {integer} Debe ser 4 o 6 si su valor no es igual a `undefined`.
 * Retorna: {string}
 
-Obtiene un nombre único para un conjunto de opciones de petición, para determinar si una conexión puede ser reutilizada. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
+Obtiene un nombre único para un conjunto de opciones de petición, para determinar si una conexión puede ser reutilizada. Para un agente HTTP, retorna `host:port:localAddress` o `host:port:localAddress:family`. Para un agente HTTPS, el nombre incluye la Autoridad de Certificación, certificado, cifras, y otras opciones específicas a HTTPS/TLS que determinan la reusabilidad de un socket.
 
 ### agent.maxFreeSockets
 
