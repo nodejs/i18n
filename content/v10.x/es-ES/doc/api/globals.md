@@ -1,10 +1,10 @@
-# Global Objects
+# Objetos Globales
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Estos objetos están disponibles en todos los módulos. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
