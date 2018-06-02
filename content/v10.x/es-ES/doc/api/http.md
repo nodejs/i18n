@@ -6,9 +6,9 @@
 
 Para utilizar el server HTTP y el cliente, uno debe requerirlo de la siguiente manera `require('http')`.
 
-Las interfaces HTTP en Node.js están diseñadas para soportar varias características del protocolo que, tradicionalmente, han sido difíciles de utilizar. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+Las interfaces HTTP en Node.js están diseñadas para soportar varias características del protocolo que, tradicionalmente, han sido difíciles de utilizar. En particular, mensajes grandes y potencialmente codificados en fragmentos. La interfaz nunca almacena respuestas o llamados enteros — el usuario puede establecer entonces un flujo continuo de datos.
 
-Los encabezados de los mensajes HTTP se representan mediante un objeto como este:
+Los encabezados de los mensajes HTTP se representan mediante un objeto como el siguiente:
 
 <!-- eslint-skip -->
 
@@ -20,13 +20,13 @@ Los encabezados de los mensajes HTTP se representan mediante un objeto como este
   'accept': '*/*' }
 ```
 
-Keys are lowercased. Values are not modified.
+Las llaves o identificadores se escriben en minúscula. Los valores no son modificados.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+Para poder soportar el espectro completo de las aplicaciones HTTP, la API HTTP de Node.js es de muy bajo nivel. Se encarga solo de manejar flujos y analizar mensajes. Puede analizar y re ordenar un mensaje en encabezado y cuerpo, pero no puede hacer lo mismo con un objeto header o un objeto body.
 
-See [`message.headers`][] for details on how duplicate headers are handled.
+Consulte la sección [`message.headers`][] para conocer detalles de como los encabezados duplicados son manejados.
 
-The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
+Los encabezados sin procesar estan retenidos en la propiedad `rawHeaders`, que es un arreglo con la estructura `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
 
 <!-- eslint-disable semi -->
 
