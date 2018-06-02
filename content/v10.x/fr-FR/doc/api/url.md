@@ -79,20 +79,20 @@ myURL.protocol`, `delete myURL.pathname`, etc) n'a pas d'effet mais rendra `true
 #### Constructeur: new URL(input[, base])
 
 * `input` {string} L'input absolu ou relatif à analyser. Si `input` est relatif, `base` est requis. Si `input` est absolu, la `base` est ignorée.
-* `base` {string|URL} The base URL to resolve against if the `input` is not absolute.
+* `base` {string|URL} La base URL à résoudre ci-contre, si `input` n'est pas absolu.
 
-Creates a new `URL` object by parsing the `input` relative to the `base`. If `base` is passed as a string, it will be parsed equivalent to `new URL(base)`.
+Crée un nouvel objet `URL` en analysant l'`input` relatif à la `base`. Si `base` est passé en tant que chaîne de caractères, elle sera analysée équivalamment à `new URL(base)`.
 
 ```js
-const myURL = new URL('/foo', 'https://example.org/');
-// https://example.org/foo
+const myURL = new URL('/foo', 'https://exemple.org/');
+// https://exemple.org/foo
 ```
 
-A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. For instance:
+Une `TypeError` sera lancée si l'`input` ou `base` ne sont pas d'URL valide. Note qu'on fera un effort à coercer les valeurs donées en chaîne de caractères. Par exemple:
 
 ```js
-const myURL = new URL({ toString: () => 'https://example.org/' });
-// https://example.org/
+const myURL = new URL({ toString: () => 'https://exemple.org/' });
+// https://exemple.org/
 ```
 
 Unicode characters appearing within the hostname of `input` will be automatically converted to ASCII using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm.
