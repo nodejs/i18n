@@ -52,17 +52,17 @@ Cuando una conexión es cerrada por el cliente o por el servidor, la misma es re
 
 Se considera una buena práctica destruir la instancia del `Agent` cuando ya no esta siendo utilizada, ya que los sockets que persisten consumen recursos del SO. (Consulte la sección [`destroy()`][]).
 
-Los sockets son removidos de un agente cuando emiten un evento `'close'` o un evento `'agentRemove'`. When intending to keep one HTTP request open for a long time without keeping it in the agent, something like the following may be done:
+Los sockets son removidos de un agente cuando emiten un evento `'close'` o un evento `'agentRemove'`. Si la intención es mantener un llamado HTTP activo por un periodo de tiempo indefinido, sin mantenerlo dentro del agent se puede hacer algo como lo siguiente:
 
 ```js
 http.get(options, (res) => {
-  // Do stuff
+  // Hacer algo
 }).on('socket', (socket) => {
   socket.emit('agentRemove');
 });
 ```
 
-An agent may also be used for an individual request. By providing `{agent: false}` as an option to the `http.get()` or `http.request()` functions, a one-time use `Agent` with default options will be used for the client connection.
+Un agent también puede ser utilizado para un llamado individual. Al proveer `{agent: false}` como una opción a las funciones `http.get()` o `http.request()`, un `Agent` de uso único, con la configuración por defecto, sera utilizado para la conexión del cliente.
 
 `agent:false`:
 
@@ -71,9 +71,9 @@ http.get({
   hostname: 'localhost',
   port: 80,
   path: '/',
-  agent: false  // create a new agent just for this one request
+  agent: false  // crea un nuevo agente solo para este llamado
 }, (res) => {
-  // Do stuff with response
+  // Hacer algo con la respuesta
 });
 ```
 
