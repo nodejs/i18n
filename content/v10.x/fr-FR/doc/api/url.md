@@ -71,9 +71,9 @@ changes:
     description: The class is now available on the global object.
 -->
 
-Browser-compatible `URL` class, implemented by following the WHATWG URL Standard. [Examples of parsed URLs](https://url.spec.whatwg.org/#example-url-parsing) may be found in the Standard itself. The `URL` class is also available on the global object.
+La classe `URL`, compatible avec les navigateurs, est implémentée par le Standard URL WHATWG suivant. [Des exemples des URLs analysés](https://url.spec.whatwg.org/#example-url-parsing) se trouvent dans le Standard lui-même. La classe `URL` est aussi disponislbe sur l'objet global.
 
-In accordance with browser conventions, all properties of `URL` objects are implemented as getters and setters on the class prototype, rather than as data properties on the object itself. Thus, unlike [legacy `urlObject`][]s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
+En accord avec les conventions des navigateurs, toutes propriétés des objets `URL` sont implémentées en tant que getters et setters sur le prototype de la classe, au lieu de propriétés de data sur l'objet lui-même. Thus, unlike [legacy `urlObject`][]s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
 myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still return `true`.
 
 #### Constructor: new URL(input[, base])
