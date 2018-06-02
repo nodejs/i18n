@@ -86,12 +86,12 @@ added: v0.3.4
 * `options` {Object} Conjunto de opciones configurables aplicables al agente. Puede contener los siguientes campos: 
   * `keepAlive` {boolean} Mantiene los sockets activos incluso cuando no hay llamados pendientes, para que puedan ser utilizados por futuros llamados sin tener que re-establecer una conexión TCP. **Default:**`false`.
   * `keepAliveMsecs` {number} Cuando se utiliza la opción `keepAlive`, especifica el [ delay inicial](net.html#net_socket_setkeepalive_enable_initialdelay) para los paquetes TCP Keep-Alive. Se ignora cuando la opción `keepAlive` es `false` o `undefined`. **Default:** `1000`.
-  * `maxSockets` {number} Maximum number of sockets to allow per host. **Default:** `Infinity`.
-  * `maxFreeSockets` {number} Maximum number of sockets to leave open in a free state. Only relevant if `keepAlive` is set to `true`. **Default:** `256`.
+  * `maxSockets` {number} Número máximo de sockets permitidos por host. **Default:** `Infinito`.
+  * `maxFreeSockets` {number} Número máximo de sockets a dejar disponibles en un estado libre. Solo aplica si `keepAlive` tiene valor `true`. **Default:** `256`.
 
-The default [`http.globalAgent`][] that is used by [`http.request()`][] has all of these values set to their respective defaults.
+El [`http.globalAgent`][] que es utilizado por [`http.request()`][] tiene todos estos valores configurados como sus valores por defecto.
 
-To configure any of them, a custom [`http.Agent`][] instance must be created.
+Para configurar cualquiera de ellos, se deberá crear una instancia de [`http.Agent`][].
 
 ```js
 const http = require('http');
@@ -106,13 +106,13 @@ http.request(options, onResponseCallback);
 added: v0.11.4
 -->
 
-* `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
-* `callback` {Function} Callback function that receives the created socket
-* Returns: {net.Socket}
+* `options` {Object} Opciones que contienen los detalles de conexión. Consultar [`net.createConnection()`][] para ver el formato de las opciones
+* `callback` {Function} Función callback que recibe el socket creado
+* Retorna: {net.Socket}
 
-Produces a socket/stream to be used for HTTP requests.
+Produce un socket/stream para ser utilizado por los llamados HTTP.
 
-By default, this function is the same as [`net.createConnection()`][]. However, custom agents may override this method in case greater flexibility is desired.
+Por defecto, esta función es la misma que [`net.createConnection()`][]. Es posible anular este método con un agente personalizado en caso de que se desee mayor flexibilidad.
 
 A socket/stream can be supplied in one of two ways: by returning the socket/stream from this function, or by passing the socket/stream to `callback`.
 
