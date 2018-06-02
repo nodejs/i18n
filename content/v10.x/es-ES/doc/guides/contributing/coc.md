@@ -10,7 +10,7 @@ Las comunidades abiertas, diversas e inclusivas viven y mueren en base a la conf
 
 ## Bad actors
 
-All contributors to Node.js tacitly agree to abide by both the letter and spirit of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
+Todos los contribuyentes a Node.js acuerdan tácitamente cumplir con las pautas y el espíritu del [Código de conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Si no lo hacen, o no están dispuesto a hacerlo, se les rechazarán respetuosamente las contribuciones.
 
 A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
 
