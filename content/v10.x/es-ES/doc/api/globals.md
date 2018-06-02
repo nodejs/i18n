@@ -22,7 +22,7 @@ added: v0.1.103
 
 <!-- type=global -->
 
-* {Function}
+* {Función}
 
 Utilizado para manejar datos binarios. Ver la [sección de buffer](buffer.html).
 
@@ -88,9 +88,9 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} The global namespace object.
+* {Objeto} el objeto del espacio de nombre global.
 
-In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+En los navegadores, el ámbito de nivel superior es el ámbito global. Esto significa que dentro del navegador de `var algo` va a definir una nueva variable global. En Node.js esto es diferente. El ámbito de nivel superior no es el ámbito global; `var algo` dentro un módulo de Node.js tendrá alcance local a dicho módulo.
 
 ## module
 
@@ -106,11 +106,11 @@ added: v0.1.7
 
 * {Object}
 
-The process object. See the [`process` object][] section.
+El objeto del proceso. See the [`process` object][] section.
 
 ## require()
 
-This variable may appear to be global but is not. See [`require()`].
+Esta variable puede parecer de alcance global, pero no lo es. Ver [`require()`].
 
 ## setImmediate(callback[, ...args])
 
@@ -120,7 +120,7 @@ added: v0.9.1
 
 <!-- type=global -->
 
-[`setImmediate`] is described in the [timers](timers.html) section.
+[`setImmediate`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## setInterval(callback, delay[, ...args])
 
@@ -140,7 +140,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setTimeout`] is described in the [timers](timers.html) section.
+[`setTimeout`] se describe en la sección [contadores de tiempo](timers.html).
 
 ## URL
 
@@ -150,7 +150,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-The WHATWG `URL` class. See the [`URL`][] section.
+La clase WHATWG `URL`. See the [`URL`][] section.
 
 ## URLSearchParams
 
