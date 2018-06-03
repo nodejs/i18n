@@ -29,7 +29,7 @@ zlib.deflate(input, (err, buffer) => {
   if (!err) {
     console.log(buffer.toString('base64'));
   } else {
-    // handle error
+    // manejar el error
   }
 });
 
@@ -38,22 +38,22 @@ zlib.unzip(buffer, (err, buffer) => {
   if (!err) {
     console.log(buffer.toString());
   } else {
-    // handle error
+    // manejar el error
   }
 });
 ```
 
-## Threadpool Usage
+## Uso de Threadpool
 
-Note that all zlib APIs except those that are explicitly synchronous use libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Notese que todas las API de zlib excepto aquellas que son explícitamente sincrónicas utilizan el threadpool de libuv, lo que puede tener efectos inesperados y negativos en el rendimiento de algunas aplicaciones. Para mas información, ver la documentación de [`UV_THREADPOOL_SIZE`][].
 
-## Compressing HTTP requests and responses
+## Comprimiendo peticiones y respuestas HTTP
 
 The `zlib` module can be used to implement support for the `gzip` and `deflate` content-encoding mechanisms defined by [HTTP](https://tools.ietf.org/html/rfc7230#section-4.2).
 
-The HTTP [`Accept-Encoding`][] header is used within an http request to identify the compression encodings accepted by the client. The [`Content-Encoding`][] header is used to identify the compression encodings actually applied to a message.
+El encabezado HTTP [`Accept-Encoding`][] se usa en el contexto de una petición HTTP para identificar los cifrados de compresión aceptados por el cliente. The [`Content-Encoding`][] header is used to identify the compression encodings actually applied to a message.
 
-The examples given below are drastically simplified to show the basic concept. Using `zlib` encoding can be expensive, and the results ought to be cached. See [Memory Usage Tuning](#zlib_memory_usage_tuning) for more information on the speed/memory/compression tradeoffs involved in `zlib` usage.
+The examples given below are drastically simplified to show the basic concept. Utilizar codificación basada en `zlib` puede resultar costosa y los resultados deberían ser almacenados en memoria. See [Memory Usage Tuning](#zlib_memory_usage_tuning) for more information on the speed/memory/compression tradeoffs involved in `zlib` usage.
 
 ```js
 // client request example
