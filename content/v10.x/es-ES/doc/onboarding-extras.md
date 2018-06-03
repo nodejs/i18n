@@ -52,14 +52,14 @@ Utilizamos etiquetas para mantener un seguimiento de en que branches deberían r
   * Aplicado a los PRs para los cuales un PR de soporte de versión anterior ha sido mergeado
 * `lts-watch-v?.x` 
   * Aplicado a los PRs que se desea que el grupo de trabajo de LTS considere incluir en una entrega LTS
-  * Does not indicate that any specific action will be taken, but can be effective as messaging to non-collaborators
+  * No indica que ninguna acción específica sera llevada a cabo, pero puede ser un mensaje efectivo hacia no colaboradores
 * `lts-agenda` 
-  * For things that need discussion by the LTS working group
-  * (for example semver-minor changes that need or should go into an LTS release)
+  * Para temas que necesitan ser discutidos por el grupo de trabajo de LTS
+  * (por ejemplo, cambios menores de semver-minor que necesitan o deberían ser incluidos en una entrega LTS)
 * `v?.x` 
-  * Automatically applied to changes that do not target `master` but rather the `v?.x-staging` branch
+  * Automáticamente aplicado a cambios que no tienen como objetivo `master` pero si la branch `v?.x-staging`
 
-Una vez que una linea de entrega progresa a modo de mantenimiento, las etiquetas correspondientes ya no necesitan ser incluidas, por que solo los arreglos de defectos mas importantes serán incluidos.
+Una vez que una línea de entrega progresa a modo de mantenimiento, las etiquetas correspondientes ya no necesitan ser incluidas, por que solo los arreglos de defectos mas importantes serán incluidos.
 
 ### Otras etiquetas
 
