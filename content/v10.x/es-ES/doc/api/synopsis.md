@@ -1,4 +1,4 @@
-# Usage
+# Uso
 
 <!--introduced_in=v0.10.0-->
 
@@ -6,13 +6,13 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
+Por favor hacer referencia a la documentación de [Opciones de Línea de Comando](cli.html#cli_command_line_options) para obtener información sobre las diferentes opciones y formas de ejecutar scripts con Node.js.
 
-## Example
+## Ejemplo
 
-An example of a [web server](http.html) written with Node.js which responds with `'Hello World!'`:
+Un ejemplo con un [servidor web](http.html) escrito con Node.js cuya respuesta es `'Hello World!'`:
 
-Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` character they are there to indicate the start of each command.
+Los comandos que se muestran en este documento comienzan con `$` o `>` para replicar como se verían en la terminal de un usuario. Do not include the `$` and `>` character they are there to indicate the start of each command.
 
 There are many tutorials and examples that follow this convention: `$` or `>` for commands run as a regular user, and `#` for commands that should be executed as an administrator.
 
