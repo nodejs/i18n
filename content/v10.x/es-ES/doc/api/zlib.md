@@ -199,11 +199,11 @@ added: v0.5.8
 
 <!--type=misc-->
 
-Todas las constantes definidas en `zlib.h` se encuentran también definidas en `require('zlib').constants`. En el curso normal de operaciones, no debería ser necesario usar estas constantes. Se encuentran documentadas para que su presencia no resulte sorpresiva. Esta sección esta extraída casi directamente de la [documentación de zlib](https://zlib.net/manual.html#Constants). See <https://zlib.net/manual.html#Constants> for more details.
+Todas las constantes definidas en `zlib.h` se encuentran también definidas en `require('zlib').constants`. En el curso normal de operaciones, no debería ser necesario usar estas constantes. Se encuentran documentadas para que su presencia no resulte sorpresiva. Esta sección esta extraída casi directamente de la [documentación de zlib](https://zlib.net/manual.html#Constants). Ver <https://zlib.net/manual.html#Constants> para mas detalles.
 
-Previously, the constants were available directly from `require('zlib')`, for instance `zlib.Z_NO_FLUSH`. Accessing the constants directly from the module is currently still possible but is deprecated.
+Anteriormente, las constantes estaban directamente disponibles desde `require('zlib')`, por ejemplo `zlib.Z_NO_FLUSH`. Acceder a las constantes directamente desde el modulo aún es posible pero se encuentra deprecado.
 
-Allowed flush values.
+Valores de flush permitidos.
 
 - `zlib.constants.Z_NO_FLUSH`
 - `zlib.constants.Z_PARTIAL_FLUSH`
@@ -213,7 +213,7 @@ Allowed flush values.
 - `zlib.constants.Z_BLOCK`
 - `zlib.constants.Z_TREES`
 
-Return codes for the compression/decompression functions. Negative values are errors, positive values are used for special but normal events.
+Códigos de retorno para las funciones de compresión/descompresión. Los valores negativos son errores, los valores positivos se utilizan para eventos especiales pero normales.
 
 - `zlib.constants.Z_OK`
 - `zlib.constants.Z_STREAM_END`
@@ -225,14 +225,14 @@ Return codes for the compression/decompression functions. Negative values are er
 - `zlib.constants.Z_BUF_ERROR`
 - `zlib.constants.Z_VERSION_ERROR`
 
-Compression levels.
+Niveles de compresión.
 
 - `zlib.constants.Z_NO_COMPRESSION`
 - `zlib.constants.Z_BEST_SPEED`
 - `zlib.constants.Z_BEST_COMPRESSION`
 - `zlib.constants.Z_DEFAULT_COMPRESSION`
 
-Compression strategy.
+Estrategia de compresión.
 
 - `zlib.constants.Z_FILTERED`
 - `zlib.constants.Z_HUFFMAN_ONLY`
@@ -240,7 +240,7 @@ Compression strategy.
 - `zlib.constants.Z_FIXED`
 - `zlib.constants.Z_DEFAULT_STRATEGY`
 
-## Class: Options
+## Clase: Opciones
 
 <!-- YAML
 added: v0.11.1
@@ -259,39 +259,39 @@ changes:
 
 <!--type=misc-->
 
-Each class takes an `options` object. All options are optional.
+Cada clase acepta un objeto `options`. Todas las opciones son opcionales.
 
-Note that some options are only relevant when compressing, and are ignored by the decompression classes.
+Notar que algunas opciones solo son relevantes cuando se esta llevando a cabo una compresión, y son ignoradas por las clases de descompresión.
 
-- `flush` {integer} **Default:** `zlib.constants.Z_NO_FLUSH`
-- `finishFlush` {integer} **Default:** `zlib.constants.Z_FINISH`
-- `chunkSize` {integer} **Default:** `16 * 1024`
+- `flush` {integer} **Por defecto:** `zlib.constants.Z_NO_FLUSH`
+- `finishFlush` {integer} **Por defecto:** `zlib.constants.Z_FINISH`
+- `chunkSize` {integer} **Por defecto:** `16 * 1024`
 - `windowBits` {integer}
-- `level` {integer} (compression only)
-- `memLevel` {integer} (compression only)
-- `strategy` {integer} (compression only)
-- `dictionary` {Buffer|TypedArray|DataView|ArrayBuffer} (deflate/inflate only, empty dictionary by default)
-- `info` {boolean} (If `true`, returns an object with `buffer` and `engine`.)
+- `level` {integer} (solo compresión)
+- `memLevel` {integer} (solo compresión)
+- `strategy` {integer} (solo compresión)
+- `dictionary` {Buffer|TypedArray|DataView|ArrayBuffer} (deflate/inflate solamente, diccionario vacío por defecto)
+- `info` {boolean} (Si `true`, retorna un objecto con `buffer` y `engine`.)
 
-See the description of `deflateInit2` and `inflateInit2` at <https://zlib.net/manual.html#Advanced> for more information on these.
+Ver la descripción de `deflateInit2` y `inflateInit2` en <https://zlib.net/manual.html#Advanced> para mas información.
 
-## Class: zlib.Deflate
-
-<!-- YAML
-added: v0.5.8
--->
-
-Compress data using deflate.
-
-## Class: zlib.DeflateRaw
+## Clase: zlib.Deflate
 
 <!-- YAML
 added: v0.5.8
 -->
 
-Compress data using deflate, and do not append a `zlib` header.
+Comprimir datos usando deflate.
 
-## Class: zlib.Gunzip
+## Clase: zlib.DeflateRaw
+
+<!-- YAML
+added: v0.5.8
+-->
+
+Comprimir datos utilizando deflate, sin adjuntar un encabezado `zlib`.
+
+## Clase: zlib.Gunzip
 
 <!-- YAML
 added: v0.5.8
@@ -309,17 +309,17 @@ changes:
     description: A truncated input stream will now result in an `'error'` event.
 -->
 
-Decompress a gzip stream.
+Descomprimir un stream gzip.
 
-## Class: zlib.Gzip
+## Clase: zlib.Gzip
 
 <!-- YAML
 added: v0.5.8
 -->
 
-Compress data using gzip.
+Comprimir datos usando gzip.
 
-## Class: zlib.Inflate
+## Clase: zlib.Inflate
 
 <!-- YAML
 added: v0.5.8
@@ -330,9 +330,9 @@ changes:
     description: A truncated input stream will now result in an `'error'` event.
 -->
 
-Decompress a deflate stream.
+Descomprimir un stream deflate.
 
-## Class: zlib.InflateRaw
+## Clase: zlib.InflateRaw
 
 <!-- YAML
 added: v0.5.8
@@ -346,23 +346,23 @@ changes:
     description: A truncated input stream will now result in an `'error'` event.
 -->
 
-Decompress a raw deflate stream.
+Descomprimir un deflate raw stream.
 
-## Class: zlib.Unzip
-
-<!-- YAML
-added: v0.5.8
--->
-
-Decompress either a Gzip- or Deflate-compressed stream by auto-detecting the header.
-
-## Class: zlib.Zlib
+## Clase: zlib.Unzip
 
 <!-- YAML
 added: v0.5.8
 -->
 
-Not exported by the `zlib` module. It is documented here because it is the base class of the compressor/decompressor classes.
+Descomprimir un stream comprimido con Gzip o Deflate, detectando automáticamente el encabezado.
+
+## Clase: zlib.Zlib
+
+<!-- YAML
+added: v0.5.8
+-->
+
+No exportada por el módulo `zlib`. Se encuentra documentada aquí por que es la clase base de las clases de compresión/descompresión.
 
 ### zlib.bytesRead
 
@@ -371,11 +371,11 @@ added: v8.1.0
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`zlib.bytesWritten`][] instead.
+> Estabilidad: 0 - Deprecada: Utilizar [`zlib.bytesWritten`][] en su lugar.
 
 - {number}
 
-Deprecated alias for [`zlib.bytesWritten`][]. This original name was chosen because it also made sense to interpret the value as the number of bytes read by the engine, but is inconsistent with other streams in Node.js that expose values under these names.
+Alias deprecado para [`zlib.bytesWritten`][]. Este nombre fue elegido originalmente porque tenía sentido interpretar el valor como el número de bytes que lee el motor, pero es inconsistente con otros streams en Node.js que exponen valores bajo estos mismos nombres.
 
 ### zlib.bytesWritten
 
