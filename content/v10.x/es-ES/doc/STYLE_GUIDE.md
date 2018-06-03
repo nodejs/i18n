@@ -14,13 +14,13 @@
   * Utilizar la neutralidad de género en pronombres y verbos plurales. 
     * OK: "they", "their", "them", "folks", "people", "developers"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
-* Documents must start with a level-one heading. An example document will be linked here eventually.
+* Al combinar elementos envolventes (paréntesis y comillas), se deberá utilizar puntuación terminal: 
+  * Dentro del elemento envolvente si el elemento envolvente contiene una clausula completa— un sujeto, un verbo y un objeto.
+  * Por fuera del elemento envolvente si el elemento envolvente contiene solo un fragmento de clausula.
+* Colocar puntuación para el fin de una oración dentro de los elementos envolventes — los puntos van dentro de los paréntesis y las comillas, no después.
+* Los documentos deben comenzar con un encabezado de nivel uno. Un documento de ejemplo sera referenciado aquí, eventualmente.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
-* When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
+* Cuando se documenten APIs, indicar la versión en que la API fue introducida al final de la sección. Si una API fue deprecada, también notar la primera versión en la cual dicha API apareció deprecada por primera vez.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
@@ -44,8 +44,8 @@
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
-* Use official styling for capitalization in products and projects. 
-  * OK: JavaScript, Google's V8
-  * NOT OK: Javascript, Google's v8
+* Utilizar el estilo oficial para el uso de mayúsculas en productos y proyectos. 
+  * CORRECTO: JavaScript, V8 de Google
+  * INCORRECTO: Javascript, v8 de Google
 
 See also API documentation structure overview in [doctools README](../tools/doc/README.md).
