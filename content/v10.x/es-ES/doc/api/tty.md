@@ -35,7 +35,7 @@ La clase `tty.ReadStream` es una subclase de [`net.Socket`][] que representa la 
 added: v0.7.7
 -->
 
-A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
+Un valor `boolean` que es `true` si la TTY esta configurada para operar como un dispositivo raw. Por defecto su valor es `false`.
 
 ### readStream.isTTY
 
@@ -43,7 +43,7 @@ A `boolean` that is `true` if the TTY is currently configured to operate as a ra
 added: v0.5.8
 -->
 
-A `boolean` that is always `true` for `tty.ReadStream` instances.
+Un valor `boolean` que es siempre `true` para las instancias de `tty.ReadStream`.
 
 ### readStream.setRawMode(mode)
 
@@ -51,11 +51,11 @@ A `boolean` that is always `true` for `tty.ReadStream` instances.
 added: v0.7.7
 -->
 
-Allows configuration of `tty.ReadStream` so that it operates as a raw device.
+Permite la configuración de `tty.ReadStream` de tal manera que opere como un dispositivo raw.
 
-When in raw mode, input is always available character-by-character, not including modifiers. Additionally, all special processing of characters by the terminal is disabled, including echoing input characters. Note that `CTRL`+`C` will no longer cause a `SIGINT` when in this mode.
+Cuando se encuentra en modo raw, lo ingresado siempre esta disponible caracter a caracter, no incluyendo modificadores. Adicionalmente, todo el proceso especial de caracteres por parte de la terminal esta deshabilitado, incluyendo el echo de caracteres ingresados. Notese que `CTRL`+`C` no causará un `SIGINT` en este modo.
 
-* `mode` {boolean} If `true`, configures the `tty.ReadStream` to operate as a raw device. If `false`, configures the `tty.ReadStream` to operate in its default mode. The `readStream.isRaw` property will be set to the resulting mode.
+* `mode` {boolean} Si es `true`, configura `tty.ReadStream` para operar como dispositivo raw. Si es `false`, configura el `tty.ReadStream` para operar en su modo por defecto. The `readStream.isRaw` property will be set to the resulting mode.
 
 ## Class: tty.WriteStream
 
