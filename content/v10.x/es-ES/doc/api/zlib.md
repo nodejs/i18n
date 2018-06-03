@@ -385,7 +385,7 @@ added: v10.0.0
 
 - {number}
 
-The `zlib.bytesWritten` property specifies the number of bytes written to the engine, before the bytes are processed (compressed or decompressed, as appropriate for the derived class).
+La propiedad `zlib.bytesWritten` especifica el número de bytes que se escriben al motor, antes que los bytes sean procesados (comprimidos o descomprimidos, lo que aplique a la clase derivada).
 
 ### zlib.close([callback])
 
@@ -393,7 +393,7 @@ The `zlib.bytesWritten` property specifies the number of bytes written to the en
 added: v0.9.4
 -->
 
-Close the underlying handle.
+Cierra el orquestador adyacente.
 
 ### zlib.flush([kind], callback)
 
@@ -401,9 +401,9 @@ Close the underlying handle.
 added: v0.5.8
 -->
 
-- `kind` **Default:** `zlib.constants.Z_FULL_FLUSH`
+- `kind` **Por defecto:** `zlib.constants.Z_FULL_FLUSH`
 
-Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
+Desagota los datos pendientes. No utilizar generosamente, los flushes/vaciamientos de datos prematuros impactan negativamente en la efectividad del algoritmo de compresión.
 
 Calling this only flushes data from the internal `zlib` state, and does not perform flushing of any kind on the streams level. Rather, it behaves like a normal call to `.write()`, i.e. it will be queued up behind other pending writes and will only produce output when data is being read from the stream.
 
