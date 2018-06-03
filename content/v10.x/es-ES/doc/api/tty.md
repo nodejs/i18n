@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
+El módulo `tty` provee las clases `tty.ReadStream` y `tty.WriteStream`. En la mayoría de los casos, no será necesario o posible utilizar este módulo directamente. De hacer falta, puede ser accedido utilizando:
 
 ```js
 const tty = require('tty');
 ```
 
-When Node.js detects that it is being run with a text terminal ("TTY") attached, [`process.stdin`][] will, by default, be initialized as an instance of `tty.ReadStream` and both [`process.stdout`][] and [`process.stderr`][] will, by default be instances of `tty.WriteStream`. The preferred method of determining whether Node.js is being run within a TTY context is to check that the value of the `process.stdout.isTTY` property is `true`:
+Cuando Node.js detecta que esta siendo ejecutado con una terminal de texto ("TTY") adosada, [`process.stdin`][] será por defecto inicializado como una instancia de `tty.ReadStream` y tanto [`process.stdout`][] como [`process.stderr`][] serán por defecto, instancias de `tty.WriteStream`. El método por excelencia para determinar si Node.js esta siendo ejecutado en un contexto TTY es verificar que el valor de la propiedad `process.stdout.isTTY` sea `true`:
 
 ```sh
 $ node -p -e "Boolean(process.stdout.isTTY)"
@@ -19,7 +19,7 @@ $ node -p -e "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-In most cases, there should be little to no reason for an application to manually create instances of the `tty.ReadStream` and `tty.WriteStream` classes.
+En la mayoría de los casos, debería no haber razones para que una aplicación cree instancias manuales de las clases `tty.ReadStream` y `tty.WriteStream`.
 
 ## Class: tty.ReadStream
 
