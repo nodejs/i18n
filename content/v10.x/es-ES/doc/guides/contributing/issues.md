@@ -63,12 +63,12 @@ Ver [Como crear un ejemplo Mínimo, Completo y Verificable](https://stackoverflo
 
 ## Hacer triage de un Bug
 
-Una vez que se ha presentado un problema, es común que se genere una discusión sobre el mismo. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
+Una vez que se ha presentado un problema, es común que se genere una discusión sobre el mismo. Algunos colaboradores pueden tener opiniones variadas respecto al problema, incluyendo la apreciación de que lo presentado sea un defecto o una característica deseada. Esta discusión es parte del proceso y los involucrados deberán comprometerse a mantener el foco, el profesionalismo, y la voluntad de ayudar y contribuir.
 
-Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
+Las respuestas breves—que no aportan contexto o detalles—no contribuyen ni son profesionales. Para muchos colaboradores, ese tipo de respuestas son interpretadas como molestas y mal recibidas.
 
-Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
+Los colaboradores son alentados a lograr todo el progreso que puedan, ayudándose entre si para resolver los problemas de manera colaborativa. Si se decide comentar sobre un asunto que personalmente no se considera un problema a ser resuelto, o si se encuentra información que se interpreta como incorrecta, es importante explicar *por que* se llega a esa conclusión, aportando contexto para facilitar su comprensión. También, es necesario estar dispuestos a considerar la posibilidad de que el error es propio. Teniendo en cuenta lo anterior, generalmente se llega a la conclusión correcta de manera mucho más rápida.
 
-## Resolving a Bug Report
+## Resolver un reporte de Bug
 
-In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
+En la amplia mayoría de los casos, los problemas se resuelven abriendo un Pull Request. El proceso para abrir y revisar un Pull Request es similar al que se describe en Enviar y Hacer triage de un bug, pero conlleva además una revisión necesaria y la aprobación del flujo de trabajo que permita que el cambio sugerido posea la calidad mínima y los requerimientos funcionales básicos del proyecto Node.js.
