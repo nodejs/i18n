@@ -157,17 +157,17 @@ Esto, sin embargo, generalmente degradara la compresión.
 
 Los requerimientos de memoria para inflate son (en bytes) `1 << windowBits`. Esto es, 32K para `windowBits` = 15 (valor por defecto) más un par de kilobytes para objetos pequeños.
 
-This is in addition to a single internal output slab buffer of size `chunkSize`, which defaults to 16K.
+Esto es en adición a un buffer bloque de salida interno único con tamaño `chunkSize`, que por defecto se establece en 16K.
 
-The speed of `zlib` compression is affected most dramatically by the `level` setting. A higher level will result in better compression, but will take longer to complete. A lower level will result in less compression, but will be much faster.
+La velocidad de compresión de `zlib` se ve más drásticamente afectada por la opción `level`. Un level mas alto resultará en mejor compresion, pero tardará mas tiempo en ser completada. Un level más bajo resultará en menor compresión, pero se llevará a cabo mas rápidamente.
 
-In general, greater memory usage options will mean that Node.js has to make fewer calls to `zlib` because it will be able to process more data on each `write` operation. So, this is another factor that affects the speed, at the cost of memory usage.
+En general, operaciones con mayor utilización de memoria significaran que Node.js tiene que hacer menos llamados a `zlib` ya que podrá procesar mas datos en cada operación `write`. Entonces, este es otro factor que afecta la velocidad a costas del uso de memoria.
 
-## Flushing
+## Flushing/Vaciamiento
 
-Calling [`.flush()`][] on a compression stream will make `zlib` return as much output as currently possible. This may come at the cost of degraded compression quality, but can be useful when data needs to be available as soon as possible.
+Invocar [`.flush()`][] en un stream de compresión hará que `zlib` retorne la mayor cantidad posible de contenido. Esto puede ocurrir a costa de compresión degradada, pero es útil cuando los datos deben estar disponibles lo antes posible.
 
-In the following example, `flush()` is used to write a compressed partial HTTP response to the client:
+En el siguiente ejemplo, `flush()` se utiliza para escribir una respuesta HTTP al cliente parcialmente comprimida:
 
 ```js
 const zlib = require('zlib');
