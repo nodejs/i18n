@@ -234,13 +234,13 @@ Un objeto que contiene arreglos de sockets siendo utilizados por el agente. No m
 added: v0.1.17
 -->
 
-Este objecto es creado internamente y el valor de retorno de [`http.request()`][]. It represents an *in-progress* request whose header has already been queued. The header is still mutable using the [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][] API. The actual header will be sent along with the first data chunk or when calling [`request.end()`][].
+Este objecto es creado internamente y es el valor de retorno de [`http.request()`][]. Representa una petición *en progreso* cuyo encabezado ya se encuentra en cola. El encabezado aún es mutable utilizando las APIs de [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. El encabezado será enviado junto con el primer fragmento de datos o cuando se invoque [`request.end()`][].
 
-To get the response, add a listener for [`'response'`][] to the request object. [`'response'`][] will be emitted from the request object when the response headers have been received. The [`'response'`][] event is executed with one argument which is an instance of [`http.IncomingMessage`][].
+Para obtener la respuesta, se debe agregar un listener [`'response'`][] al objeto de la petición. [`'response'`][] será emitido del objecto de petición cuando los encabezados de respuesta hayan sido recibidos. El evento [`'response'`][] se ejecuta con un argumento que es una instancia de [`http.IncomingMessage`][].
 
-During the [`'response'`][] event, one can add listeners to the response object; particularly to listen for the `'data'` event.
+Durante el evento [`'response'`][], se pueden agregar listeners al objeto de respuesta; particularmente para esperar que ocurra el evento `'data'`.
 
-If no [`'response'`][] handler is added, then the response will be entirely discarded. However, if a [`'response'`][] event handler is added, then the data from the response object **must** be consumed, either by calling `response.read()` whenever there is a `'readable'` event, or by adding a `'data'` handler, or by calling the `.resume()` method. Until the data is consumed, the `'end'` event will not fire. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
+Si no se incluye código para manejar la [`'response'`][], entonces la respuesta sera descartada en su totalidad. Sin embargo, en caso de incluir código para manejar [`'response'`][], entonces los datos del objeto de respuesta **deben** ser consumidos ya sea llamando `response.read()` cuando ocurra un evento `'readable'`, o agregando una forma de manipular `'data'`, o llamando al método `.resume()`. Hasta que la data no sea consumida, el evento `'end'` no se va a disparar. Also, until the data is read it will consume memory that can eventually lead to a 'process out of memory' error.
 
 Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
 
