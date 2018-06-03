@@ -532,7 +532,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Compress a chunk of data with [`Deflate`][].
+Comprime un fragmento de datos con [`Deflate`][].
 
 ### zlib.deflateRaw(buffer[, options], callback)
 
@@ -566,7 +566,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Compress a chunk of data with [`DeflateRaw`][].
+Comprime un fragmento de datos con [`DeflateRaw`][].
 
 ### zlib.gunzip(buffer[, options], callback)
 
@@ -603,7 +603,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`Gunzip`][].
+Descomprime un fragmento de datos con [`Gunzip`][].
 
 ### zlib.gzip(buffer[, options], callback)
 
@@ -640,7 +640,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Compress a chunk of data with [`Gzip`][].
+Comprime un fragmento de datos con [`Gzip`][].
 
 ### zlib.inflate(buffer[, options], callback)
 
@@ -677,7 +677,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`Inflate`][].
+Descomprime un fragmento de datos con [`Inflate`][].
 
 ### zlib.inflateRaw(buffer[, options], callback)
 
@@ -714,7 +714,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`InflateRaw`][].
+Descomprime un fragmento de datos con [`InflateRaw`][].
 
 ### zlib.unzip(buffer[, options], callback)
 
@@ -751,4 +751,4 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`Unzip`][].
+Descomprime un fragmento de datos con [`Unzip`][].
