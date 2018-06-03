@@ -24,26 +24,26 @@ Puede haber mas de un subsistema valido para problemas o pull requests.
 --
 
 * `semver-{minor,major}` 
-  * be conservative – that is, if a change has the remote *chance* of breaking something, go for semver-major
-  * when adding a semver label, add a comment explaining why you're adding it
-  * minor vs. patch: roughly: "does it add a new method / does it add a new section to the docs"
-  * major vs. everything else: run last versions tests against this version, if they pass, **probably** minor or patch
-  * A breaking change helper ([full source](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)): 
+  * ser conservativos – esto significa que si un cambio tiene una *chance* remota de romper algo, se debe elegir semver-major
+  * al agregar una etiqueta semver, incluir un comentario explicando el motivo de la adición
+  * menor vs. parche: básicamente evaluar "si agrega un nuevo método / agrega una nueva sección a la documentación"
+  * mayor vs. cualquier otra cosa: correr los tests de la ultima version contra esta version, y si pasan, **probablemente** puedan ser considerados como menores o parches
+  * Ayuda para un cambio que rompa ([código completo](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)): 
         sh
         SHOW=$(git show-ref -d $(git describe --abbrev=0) | tail -n1 | awk '{print $1}')
         git checkout $(git show -s --pretty='%T' $SHOW) -- test
         make -j4 test
 
-### LTS/Version labels
+### LTS/Etiquetas de versión
 
-We use labels to keep track of which branches a commit should land on:
+Utilizamos etiquetas para mantener un seguimiento de en que branches deberían realizarse los commits:
 
 * `dont-land-on-v?.x` 
-  * For changes that do not apply to a certain release line
-  * Also used when the work of backporting a change outweighs the benefits
+  * Para cambios que no aplican a cierta linea de entrega específica
+  * También utilizable cuando el trabajo involucrado en modificar versiones anteriores sobrepasa los beneficios
 * `land-on-v?.x` 
-  * Used by releasers to mark a PR as scheduled for inclusion in an LTS release
-  * Applied to the original PR for clean cherry-picks, to the backport PR otherwise
+  * Usado para marcar los PR como candidatos de inclusión en una entrega LTS
+  * Aplicado o al PR original para ejecutar cherry-picks, o al PR de ajustes a versiones anteriores
 * `backport-requested-v?.x` 
   * Used to indicate that a PR needs a manual backport to a branch in order to land the changes on that branch
   * Typically applied by a releaser when the PR does not apply cleanly or it breaks the tests after applying
