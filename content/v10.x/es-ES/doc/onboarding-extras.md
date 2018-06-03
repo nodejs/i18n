@@ -1,8 +1,8 @@
-# Additional Onboarding Information
+# Información adicional para Onboarding
 
-## Labels
+## Etiquetas
 
-### Subsystems
+### Subsistemas
 
 * `lib/*.js` (`assert`, `buffer`, etc.)
 * `build`
@@ -11,15 +11,15 @@
 * `test`
 * `tools`
 
-There may be more than one subsystem valid for any particular issue or pull request.
+Puede haber mas de un subsistema valido para problemas o pull requests.
 
 ### General
 
-* `confirmed-bug` - Bugs you have verified exist
-* `discuss` - Things that need larger discussion
-* `feature request` - Any issue that requests a new feature (usually not PRs)
-* `good first issue` - Issues suitable for newcomers to process
-* `meta` - For issues whose topic is governance, policies, procedures, etc.
+* `confirmed-bug` - Bugs cuya existencia está verificada
+* `discuss` - Asuntos que necesitan mayor discusión
+* `feature request` - Pedidos de nuevas características (usualmente no son PRs)
+* `good first issue` - Defectos adecuados para ser tomados por nuevos colaboradores
+* `meta` - Para defectos cuyo tema son la gobernanza, políticas, procedimientos, etc.
 
 --
 
