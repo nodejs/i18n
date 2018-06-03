@@ -191,7 +191,7 @@ http.createServer((request, response) => {
 }).listen(1337);
 ```
 
-## Constants
+## Constantes
 
 <!-- YAML
 added: v0.5.8
@@ -199,7 +199,7 @@ added: v0.5.8
 
 <!--type=misc-->
 
-All of the constants defined in `zlib.h` are also defined on `require('zlib').constants`. In the normal course of operations, it will not be necessary to use these constants. They are documented so that their presence is not surprising. This section is taken almost directly from the [zlib documentation](https://zlib.net/manual.html#Constants). See <https://zlib.net/manual.html#Constants> for more details.
+Todas las constantes definidas en `zlib.h` se encuentran también definidas en `require('zlib').constants`. En el curso normal de operaciones, no debería ser necesario usar estas constantes. Se encuentran documentadas para que su presencia no resulte sorpresiva. Esta sección esta extraída casi directamente de la [documentación de zlib](https://zlib.net/manual.html#Constants). See <https://zlib.net/manual.html#Constants> for more details.
 
 Previously, the constants were available directly from `require('zlib')`, for instance `zlib.Z_NO_FLUSH`. Accessing the constants directly from the module is currently still possible but is deprecated.
 
