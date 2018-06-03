@@ -405,7 +405,7 @@ added: v0.5.8
 
 Desagota los datos pendientes. No utilizar generosamente, los flushes/vaciamientos de datos prematuros impactan negativamente en la efectividad del algoritmo de compresión.
 
-Calling this only flushes data from the internal `zlib` state, and does not perform flushing of any kind on the streams level. Rather, it behaves like a normal call to `.write()`, i.e. it will be queued up behind other pending writes and will only produce output when data is being read from the stream.
+Invocar este método solo vacía los datos contenidos en el estado interno de `zlib`, pero no se replica a ningún tipo de vaciamiento a nivel de los streams. Se comporta como una llamada normal a `.write()`, ej. se añadirá a la cola detrás de otros write pendientes y solo producirá datos de salida cuando los datos estén siendo leídos desde el stream.
 
 ### zlib.params(level, strategy, callback)
 
@@ -413,7 +413,7 @@ Calling this only flushes data from the internal `zlib` state, and does not perf
 added: v0.11.4
 -->
 
-Dynamically update the compression level and compression strategy. Only applicable to deflate algorithm.
+Modificar la estrategia de compresión y el nivel de compresión de manera dinámica. Solo aplica al algoritmo de deflate.
 
 ### zlib.reset()
 
@@ -421,7 +421,7 @@ Dynamically update the compression level and compression strategy. Only applicab
 added: v0.7.0
 -->
 
-Reset the compressor/decompressor to factory defaults. Only applicable to the inflate and deflate algorithms.
+Volver el compresor/descompresor a su estado de fábrica. Solo aplicable a los algoritmos de inflate y deflate.
 
 ## zlib.constants
 
@@ -429,7 +429,7 @@ Reset the compressor/decompressor to factory defaults. Only applicable to the in
 added: v7.0.0
 -->
 
-Provides an object enumerating Zlib-related constants.
+Provee un objeto que enumera constantes relacionadas a Zlib.
 
 ## zlib.createDeflate([options])
 
