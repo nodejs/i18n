@@ -2,11 +2,11 @@
 
 <!--introduced_in=v8.0.0-->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-The `inspector` module provides an API for interacting with the V8 inspector.
+El módulo `inspector` expone una API para interactuar con el inspector de V8.
 
-It can be accessed using:
+Puede ser accedido utilizando:
 
 ```js
 const inspector = require('inspector');
@@ -14,9 +14,9 @@ const inspector = require('inspector');
 
 ## inspector.open([port[, host[, wait]]])
 
-* `port` {number} Port to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
-* `host` {string} Host to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
-* `wait` {boolean} Block until a client has connected. Optional. **Default:** `false`.
+* `port` {number} Puerto en el cual escuchar para las conexiónes de inspector. Opcional. **Predeterminado:** lo que fue especificado en la CLI.
+* `host` {string} Huésped en el cual escuchar para las conexiónes de inspector. Opcional. **Predeterminado:** lo que fue especificado en la CLI.
+* `wait` {boolean} Bloquear hasta que un cliente se haya conectado. Opcional. **Predeterminado:** `false`.
 
 Activate inspector on host and port. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has started.
