@@ -1,4 +1,4 @@
-# Node.js 9 ChangeLog
+# Changelog de Node.js 9
 
 <!--lint disable prohibited-strings-->
 
@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Current</th>
+<th>Courant</th>
 </tr>
   
   <tr>
@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Autres versions 
   * [10.x](CHANGELOG_V10.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
