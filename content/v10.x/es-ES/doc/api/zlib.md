@@ -111,7 +111,7 @@ http.createServer((request, response) => {
 }).listen(1337);
 ```
 
-By default, the `zlib` methods will throw an error when decompressing truncated data. However, if it is known that the data is incomplete, or the desire is to inspect only the beginning of a compressed file, it is possible to suppress the default error handling by changing the flushing method that is used to decompress the last chunk of input data:
+Por defecto, los métodos de `zlib` van a arrojar un error cuando se intente descomprimir data truncada. De cualquier manera, si es sabido que la data esta incompleta, o se desea inspeccionar solo el principio de un archivo comprimido, es posible suprimir el manejo de error predeterminado cambiando el método que se utiliza para descomprimir el ultimo fragmento de data ingresada:
 
 ```js
 // This is a truncated version of the buffer from the above examples
@@ -129,15 +129,15 @@ zlib.unzip(
   });
 ```
 
-This will not change the behavior in other error-throwing situations, e.g. when the input data has an invalid format. Using this method, it will not be possible to determine whether the input ended prematurely or lacks the integrity checks, making it necessary to manually check that the decompressed result is valid.
+Esto no cambiará el comportamiento en otras situaciones que arrojen errores, ej. cuando la data ingresada tiene un formato inválido. Usando este método, no sera posible determinar si el ingreso de datos terminó prematuramente o si no posee validaciones de integridad, volviendo necesario que se verifique manualmente que el resultado de la descompresión es válido.
 
 ## Ajustes en el uso de Memoria
 
 <!--type=misc-->
 
-From `zlib/zconf.h`, modified to Node.js's usage:
+Fuente `zlib/zconf.h`, modificado para su uso en Node.js:
 
-The memory requirements for deflate are (in bytes):
+Los requerimientos de memoria para deflate son (en bytes):
 
 <!-- eslint-disable semi -->
 
@@ -145,17 +145,17 @@ The memory requirements for deflate are (in bytes):
 (1 << (windowBits + 2)) + (1 << (memLevel + 9))
 ```
 
-That is: 128K for `windowBits` = 15 + 128K for `memLevel` = 8 (default values) plus a few kilobytes for small objects.
+Esto es: 128K para `windowBits` = 15 + 128K para `memLevel` = 8 (valores por defecto) mas un par de kilobytes para objetos pequeños.
 
-For example, to reduce the default memory requirements from 256K to 128K, the options should be set to:
+Por ejemplo, para reducir los requerimientos predeterminados de memoria de 256K a 128K, las opciones deberían ser configuradas de la siguiente manera:
 
 ```js
 const options = { windowBits: 14, memLevel: 7 };
 ```
 
-This will, however, generally degrade compression.
+Esto, sin embargo, generalmente degradara la compresión.
 
-The memory requirements for inflate are (in bytes) `1 << windowBits`. That is, 32K for `windowBits` = 15 (default value) plus a few kilobytes for small objects.
+Los requerimientos de memoria para inflate son (en bytes) `1 << windowBits`. Esto es, 32K para `windowBits` = 15 (valor por defecto) más un par de kilobytes para objetos pequeños.
 
 This is in addition to a single internal output slab buffer of size `chunkSize`, which defaults to 16K.
 
