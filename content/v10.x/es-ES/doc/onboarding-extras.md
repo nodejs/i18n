@@ -45,13 +45,13 @@ Utilizamos etiquetas para mantener un seguimiento de en que branches deberían r
   * Usado para marcar los PR como candidatos de inclusión en una entrega LTS
   * Aplicado o al PR original para ejecutar cherry-picks, o al PR de ajustes a versiones anteriores
 * `backport-requested-v?.x` 
-  * Used to indicate that a PR needs a manual backport to a branch in order to land the changes on that branch
-  * Typically applied by a releaser when the PR does not apply cleanly or it breaks the tests after applying
-  * Will be replaced by either `dont-land-on-v?.x` or `backported-to-v?.x`
+  * Usado para indicar que un PR necesita un ajuste de versiones manual para una branch, de manera de poder incluir los cambios en esa branch
+  * Típicamente se aplica por quien realiza la entrega cuando el PR no puede aplicarse limpiamente, o cuando rompe los tests luego de ser aplicado
+  * Será reemplazado por `dont-land-on-v?.x` o `backported-to-v?.x`
 * `backported-to-v?.x` 
-  * Applied to PRs for which a backport PR has been merged
+  * Aplicado a los PRs para los cuales un PR de soporte de versión anterior ha sido mergeado
 * `lts-watch-v?.x` 
-  * Applied to PRs which the LTS working group should consider including in a LTS release
+  * Aplicado a los PRs que se desea que el grupo de trabajo de LTS considere incluir en una entrega LTS
   * Does not indicate that any specific action will be taken, but can be effective as messaging to non-collaborators
 * `lts-agenda` 
   * For things that need discussion by the LTS working group
@@ -59,27 +59,27 @@ Utilizamos etiquetas para mantener un seguimiento de en que branches deberían r
 * `v?.x` 
   * Automatically applied to changes that do not target `master` but rather the `v?.x-staging` branch
 
-Once a release line enters maintenance mode, the corresponding labels do not need to be attached anymore, as only important bugfixes will be included.
+Una vez que una linea de entrega progresa a modo de mantenimiento, las etiquetas correspondientes ya no necesitan ser incluidas, por que solo los arreglos de defectos mas importantes serán incluidos.
 
-### Other Labels
+### Otras etiquetas
 
-* Operating system labels 
+* Etiquetas de sistemas operativos 
   * `macos`, `windows`, `smartos`, `aix`
-  * No linux, linux is the implied default
-* Architecture labels 
+  * Sin linux, linux está implícito por defecto
+* Etiquetas de arquitectura 
   * `arm`, `mips`, `s390`, `ppc`
-  * No x86{_64}, since that is the implied default
+  * Sin x86{_64}, ya que se asumen por defecto
 
-## Updating Node.js from Upstream
+## Actualizando Node.js desde Upstream
 
 * `git remote add upstream git://github.com/nodejs/node.git`
 
-to update from nodejs/node:
+para actualizar desde nodejs/node:
 
 * `git checkout master`
 * `git remote update -p` OR `git fetch --all`
 * `git merge --ff-only upstream/master` (or `REMOTENAME/BRANCH`)
 
-## Best practices
+## Buenas prácticas
 
-* When making PRs, spend time writing a thorough description.
+* Al crear PRs, dedicar el tiempo necesario a escribir descripciones completas.
