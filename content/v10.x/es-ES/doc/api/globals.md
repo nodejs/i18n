@@ -22,7 +22,7 @@ added: v0.1.103
 
 <!-- type=global -->
 
-* {Función}
+* {Function}
 
 Utilizado para manejar datos binarios. Ver la [sección de buffer](buffer.html).
 
@@ -72,7 +72,7 @@ added: v0.1.100
 
 <!-- type=global -->
 
-* {Objeto}
+* {Object}
 
 Utilizado para imprimir a stdout y stderr. Consulte la sección de [] [`consola`].
 
@@ -104,7 +104,7 @@ added: v0.1.7
 
 <!-- type=global -->
 
-* {Objeto}
+* {Object}
 
 El objeto del proceso. Consulte la sección de [objeto de `proceso`][].
 
