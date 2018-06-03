@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate. It can be accessed using:
+El modulo `zlib` provee funcionalidad de compresión implementada utilizando Gzip y Deflate/Inflate. Puede ser accedido utilizando:
 
 ```js
 const zlib = require('zlib');
 ```
 
-Compressing or decompressing a stream (such as a file) can be accomplished by piping the source stream data through a `zlib` stream into a destination stream:
+Comprimir o descomprimir un stream (como un archivo) se puede lograr mediante el piping de los datos del stream original a través de un stream de `zlib` hacia un stream de destino:
 
 ```js
 const gzip = zlib.createGzip();
@@ -21,7 +21,7 @@ const out = fs.createWriteStream('input.txt.gz');
 inp.pipe(gzip).pipe(out);
 ```
 
-It is also possible to compress or decompress data in a single step:
+También es posible comprimir o descomprimir datos en un solo paso:
 
 ```js
 const input = '.................................';
