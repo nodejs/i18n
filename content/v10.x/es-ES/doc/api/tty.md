@@ -21,7 +21,7 @@ false
 
 En la mayoría de los casos, debería no haber razones para que una aplicación cree instancias manuales de las clases `tty.ReadStream` y `tty.WriteStream`.
 
-## Class: tty.ReadStream
+## Clase: tty.ReadStream
 
 <!-- YAML
 added: v0.5.8
@@ -55,23 +55,23 @@ Permite la configuración de `tty.ReadStream` de tal manera que opere como un di
 
 Cuando se encuentra en modo raw, lo ingresado siempre esta disponible caracter a caracter, no incluyendo modificadores. Adicionalmente, todo el proceso especial de caracteres por parte de la terminal esta deshabilitado, incluyendo el echo de caracteres ingresados. Notese que `CTRL`+`C` no causará un `SIGINT` en este modo.
 
-* `mode` {boolean} Si es `true`, configura `tty.ReadStream` para operar como dispositivo raw. Si es `false`, configura el `tty.ReadStream` para operar en su modo por defecto. The `readStream.isRaw` property will be set to the resulting mode.
+* `mode` {boolean} Si es `true`, configura `tty.ReadStream` para operar como dispositivo raw. Si es `false`, configura el `tty.ReadStream` para operar en su modo por defecto. La propiedad `readStream.isRaw` será establecida en el modo definido.
 
-## Class: tty.WriteStream
+## Clase: tty.WriteStream
 
 <!-- YAML
 added: v0.5.8
 -->
 
-The `tty.WriteStream` class is a subclass of [`net.Socket`][] that represents the writable side of a TTY. In normal circumstances, [`process.stdout`][] and [`process.stderr`][] will be the only `tty.WriteStream` instances created for a Node.js process and there should be no reason to create additional instances.
+La clase `tty.WriteStream` es una subclase de [`net.Socket`][] que representa la porción con posibilidad de ser escrita de una TTY. En circunstancias normales, [`process.stdout`][] y [`process.stderr`][] son las únicas instancias de `tty.WriteStream` creadas para un proceso Node.js y no debería haber razon para crear instancias adicionales.
 
-### Event: 'resize'
+### Evento: 'resize'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-The `'resize'` event is emitted whenever either of the `writeStream.columns` or `writeStream.rows` properties have changed. No arguments are passed to the listener callback when called.
+El evento `'resize'` se emite cuando cambian las propiedades de `writeStream.columns` o `writeStream.rows`. No se pasa ningún argumento a la función callback en espera cuando se lo invoca.
 
 ```js
 process.stdout.on('resize', () => {
@@ -86,7 +86,7 @@ process.stdout.on('resize', () => {
 added: v0.7.7
 -->
 
-A `number` specifying the number of columns the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
+Un `number` que especifica el número de columnas con las que cuenta una TTY. Esta propiedad se actualiza cada vez que el evento `'resize'` es emitido.
 
 ### writeStream.isTTY
 
@@ -94,7 +94,7 @@ A `number` specifying the number of columns the TTY currently has. This property
 added: v0.5.8
 -->
 
-A `boolean` that is always `true`.
+Un valor `boolean` que siempre es `true`.
 
 ### writeStream.rows
 
@@ -102,7 +102,7 @@ A `boolean` that is always `true`.
 added: v0.7.7
 -->
 
-A `number` specifying the number of rows the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
+Un `number` que especifica el número de filas con las que cuenta una TTY. Esta propiedad se actualiza cada vez que el evento `'resize'` es emitido.
 
 ### writeStream.getColorDepth([env])
 
