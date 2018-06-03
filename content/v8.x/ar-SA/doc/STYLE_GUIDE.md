@@ -1,4 +1,4 @@
-# Style Guide
+# دليل الاسلوب
 
 * Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
@@ -6,13 +6,13 @@
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* ينبغي تحديد المسائل الميكانيكية، مثل التدقيق الإملائي والنحوي، بأدوات، قدر ما هو ممكن. If not caught by a tool, they should be pointed out by human reviewers.
+* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "اللون"، إلخ.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
+* عموما تجنب الضمائر الشخصية في الوثائق المرجعية ("أنا"، "أنت"، "نحن"). 
   * Pronouns are acceptable in more colloquial documentation, like guides.
   * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
+    * حسنا: "هم"، "بهم"، "هم"، "الناس"، "الشعب"، "مطوري"، "قطط"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
