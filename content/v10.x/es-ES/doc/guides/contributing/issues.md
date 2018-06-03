@@ -57,13 +57,13 @@ Si cree haber encontrado un bug en Node.js, por favor complete el formulario, si
 
 Los dos datos mas importantes que necesitamos a la hora de evaluar el reporte correctamente son la descripción del comportamiento que observa, y un caso de prueba simple que pueda ser usado para recrear el problema nosotros. Si no podemos recrear el problema, se vuelve imposible de arreglar.
 
-In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+Para evitar la posibilidad de defectos introducidos por código de los usuarios en general, los casos de pruebe deberían estar limitados a usar *solo* APIs de Node.js. Si el defecto ocurre solo cuando se esta usando un módulo generado por la comunidad, hay una gran posibilidad de que (a) el módulo en si tiene un bug/defecto o (b) algo en Node.js cambió y eso rompió el módulo.
 
-See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
+Ver [Como crear un ejemplo Mínimo, Completo y Verificable](https://stackoverflow.com/help/mcve).
 
-## Triaging a Bug Report
+## Hacer triage de un Bug
 
-Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
+Una vez que se ha presentado un problema, es común que se genere una discusión sobre el mismo. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
 Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
 
