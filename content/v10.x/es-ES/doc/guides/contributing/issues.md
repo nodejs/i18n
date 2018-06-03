@@ -1,17 +1,17 @@
-# Issues
+# Problemas
 
-* [How to Contribute in Issues](#how-to-contribute-in-issues)
-* [Asking for General Help](#asking-for-general-help)
-* [Discussing non-technical topics](#discussing-non-technical-topics)
-* [Submitting a Bug Report](#submitting-a-bug-report)
-* [Triaging a Bug Report](#triaging-a-bug-report)
-* [Resolving a Bug Report](#resolving-a-bug-report)
+* [Como contribuir en Problemas](#how-to-contribute-in-issues)
+* [Pidiendo ayuda en General](#asking-for-general-help)
+* [Discutiendo temas no técnicos](#discussing-non-technical-topics)
+* [Enviando un reporte de Bug](#submitting-a-bug-report)
+* [Hacer triage de un Bug](#triaging-a-bug-report)
+* [Resolver un reporte de Bug](#resolving-a-bug-report)
 
-## How to Contribute in Issues
+## Como colaborar en Defectos
 
-For any issue, there are fundamentally three ways an individual can contribute:
+Para cualquier problema, hay tres maneras fundamentales en la que cualquier individuo puede contribuir:
 
-1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
+1. Abriendo el problema a discusión: Por ejemplo, si crees que has descubierto un bug en Node.js, crear un nuevo reporte de problema en el tracker de problemas de `nodejs/node` es la mejor manera de reportarlo.
 2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
 3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
 
