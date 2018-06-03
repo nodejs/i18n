@@ -110,19 +110,19 @@ Un `number` que especifica el número de filas con las que cuenta una TTY. Esta 
 added: v9.9.0
 -->
 
-* `env` {Object} An object containing the environment variables to check. **Default:** `process.env`.
-* Returns: {number}
+* `env` {Object} Un objeto que contiene las variables de ambiente a verificar. **Valor por defecto:** `process.env`.
+* Retorno: {number}
 
-Returns:
+Retorna:
 
-* `1` for 2,
-* `4` for 16,
-* `8` for 256,
-* `24` for 16,777,216 colors supported.
+* `1` para 2,
+* `4` para 16,
+* `8` para 256,
+* `24` para 16,777,216 colores soportados.
 
-Use this to determine what colors the terminal supports. Due to the nature of colors in terminals it is possible to either have false positives or false negatives. It depends on process information and the environment variables that may lie about what terminal is used. To enforce a specific behavior without relying on `process.env` it is possible to pass in an object with different settings.
+Utilizar esto para determinar que colores soporta la terminal. Debido a la naturaleza de los colores en la terminal, es posible tener falsos positivos o falsos negativos. Depende de la información del proceso y las variables de ambiente que pueden informar erróneamente que terminal está siendo utilizada. Para forzar un comportamiento específico sin depender de `process.env` es posible pasar un objeto con variables diferentes.
 
-Use the `NODE_DISABLE_COLORS` environment variable to enforce this function to always return 1.
+Utilizar la variable de ambiente `NODE_DISABLE_COLORS` para forzar a esta función a siempre retornar 1.
 
 ## tty.isatty(fd)
 
@@ -130,6 +130,6 @@ Use the `NODE_DISABLE_COLORS` environment variable to enforce this function to a
 added: v0.5.8
 -->
 
-* `fd` {number} A numeric file descriptor
+* `fd` {number} Un descriptor numérico de archivos
 
-The `tty.isatty()` method returns `true` if the given `fd` is associated with a TTY and `false` if it is not, including whenever `fd` is not a non-negative integer.
+El método `tty.isatty()` retorna `true` si el `fd` provisto esta asociado con una TTY, y `false` si no lo esta, incluyendo cuando `fd` es un entero no negativo.
