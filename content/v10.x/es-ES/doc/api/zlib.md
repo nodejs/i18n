@@ -49,14 +49,14 @@ Notese que todas las API de zlib excepto aquellas que son explícitamente sincr�
 
 ## Comprimiendo peticiones y respuestas HTTP
 
-The `zlib` module can be used to implement support for the `gzip` and `deflate` content-encoding mechanisms defined by [HTTP](https://tools.ietf.org/html/rfc7230#section-4.2).
+El módulo `zlib` puede ser utilizado para implementar soporte para los mecanismos de codificación de contenido `gzip` y `deflate`, definidos por [HTTP](https://tools.ietf.org/html/rfc7230#section-4.2).
 
-El encabezado HTTP [`Accept-Encoding`][] se usa en el contexto de una petición HTTP para identificar los cifrados de compresión aceptados por el cliente. The [`Content-Encoding`][] header is used to identify the compression encodings actually applied to a message.
+El encabezado HTTP [`Accept-Encoding`][] se usa en el contexto de una petición HTTP para identificar los cifrados de compresión aceptados por el cliente. El encabezado [`Content-Encoding`][] se utiliza para identificar los cifrados de compresión actualmente aplicados a un mensaje.
 
-The examples given below are drastically simplified to show the basic concept. Utilizar codificación basada en `zlib` puede resultar costosa y los resultados deberían ser almacenados en memoria. See [Memory Usage Tuning](#zlib_memory_usage_tuning) for more information on the speed/memory/compression tradeoffs involved in `zlib` usage.
+Los ejemplos listados abajo están drásticamente simplificados para mostrar el concepto básico. Utilizar codificación basada en `zlib` puede resultar costosa y los resultados deberían ser almacenados en memoria. Ver [Ajustes en el Uso de Memoria](#zlib_memory_usage_tuning) para obtener más información sobre la eficiencia en velocidad/memoria/compresión involucrada en el uso de `zlib`.
 
 ```js
-// client request example
+// ejemplo de petición del cliente
 const zlib = require('zlib');
 const http = require('http');
 const fs = require('fs');
@@ -68,7 +68,7 @@ request.on('response', (response) => {
   const output = fs.createWriteStream('example.com_index.html');
 
   switch (response.headers['content-encoding']) {
-    // or, just use zlib.createUnzip() to handle both cases
+    // o, simplemente usar zlib.createUnzip() para manejar ambos casos
     case 'gzip':
       response.pipe(zlib.createGunzip()).pipe(output);
       break;
@@ -83,9 +83,9 @@ request.on('response', (response) => {
 ```
 
 ```js
-// server example
-// Running a gzip operation on every request is quite expensive.
-// It would be much more efficient to cache the compressed buffer.
+// ejemplo de servidor
+// Ejecutar una operacion gzip en cada petición es bastante costoso.
+// Sería mucho mas eficiente almacenar en memoria el buffer comprimido.
 const zlib = require('zlib');
 const http = require('http');
 const fs = require('fs');
@@ -131,7 +131,7 @@ zlib.unzip(
 
 This will not change the behavior in other error-throwing situations, e.g. when the input data has an invalid format. Using this method, it will not be possible to determine whether the input ended prematurely or lacks the integrity checks, making it necessary to manually check that the decompressed result is valid.
 
-## Memory Usage Tuning
+## Ajustes en el uso de Memoria
 
 <!--type=misc-->
 
