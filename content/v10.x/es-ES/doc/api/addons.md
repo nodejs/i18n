@@ -23,17 +23,16 @@ Todos los ejemplos a continuación están disponibles para [descargar](https://g
 Este ejemplo de "Hola Mundo" es un Complemento simple, escrito en C++, que es equivalente al siguiente código en JavaScript:
 
 ```js
-module.exports.hello = () => 'world';
+module.exports.hola = () => 'mundo';
 ```
 
-First, create the file `hello.cc`:
+Primero, crea el archivo `hola.cc`:
 
 ```cpp
-// hello.cc
+// hola.cc
 #include <node.h>
 
 namespace demo {
-
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
@@ -43,11 +42,11 @@ using v8::Value;
 
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "mundo"));
 }
 
 void init(Local<Object> exports) {
-  NODE_SET_METHOD(exports, "hello", Method);
+  NODE_SET_METHOD(exports, "hola", Method);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, init)
@@ -55,14 +54,14 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Ten en cuenta que todos los Addons de Node.js deben exportar una función de inicialización siguiendo el patrón:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+No hay punto y coma después de `NODE_MODULE` ya que no es una función (ver `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
