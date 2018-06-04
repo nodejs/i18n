@@ -9,7 +9,7 @@
 该模块导出了两个特定的组件：
 
 * A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
-* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
+* 一个全局的 `console` 实例可被用于写入到 [`process.stdout`][] 和 [`process.stderr`][]。 全局的 `console` 使用时无需调用 `require('console')`.。
 
 ***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
