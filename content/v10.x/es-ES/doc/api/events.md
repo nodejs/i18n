@@ -28,9 +28,9 @@ myEmitter.on('event', () => {
 myEmitter.emit('event');
 ```
 
-## Passing arguments and `this` to listeners
+## Pasando argumentos y `this` a escuchadores
 
-The `eventEmitter.emit()` method allows an arbitrary set of arguments to be passed to the listener functions. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
+El método `eventEmitter.emit()` permite un conjunto arbitrario de argumentos para que sean pasados a las funciones escuchadoras. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
 
 ```js
 const myEmitter = new MyEmitter();
