@@ -4,7 +4,7 @@
 
 <!--type=misc-->
 
-Node.js viene con una variedad de opciones de CLI. Estas opciones exponen depuración integrada, múltiples formas para ejecutar secuencias de comandos y útiles otras opciones de tiempo de ejecución.
+Node.js viene con una variedad de opciones de CLI. Estas opciones exponen depuración integrada, múltiples formas para ejecutar secuencias de comandos y otras opciones útiles de tiempo de ejecución.
 
 Para ver esta documentación como una página de manual en un terminal, ejecutar `man node`.
 
