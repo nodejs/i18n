@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.13-->
 
-> Stability: 2 - Stable
+> 稳定性: 2 - 稳定的
 
-The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
+`console` 模块提供了一个简单的调试控制台，类似于 Web 浏览器提供的 JavaScript 控制台。
 
-The module exports two specific components:
+该模块导出了两个特定的组件：
 
 * A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
 * A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
