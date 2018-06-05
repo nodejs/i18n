@@ -52,7 +52,7 @@ const common = require('../common');
 
 第一行启用严格模式。 所有的测试应该在严格模式下进行，除非测试的性质需要在非严格模式下运行。
 
-第二行是加载 `common` 模块。 The `common` module is a helper module that provides useful tools for the tests.
+第二行是加载 `common` 模块。 `common` 模块是一个为测试提供实用工具的帮助模块。
 
 Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
@@ -60,16 +60,16 @@ Even if a test uses no functions or other properties exported by `common`, the t
 require('../common');
 ```
 
-### **Lines 4-5**
+### **4-5 行**
 
 ```javascript
 // This test ensures that the http-parser can handle UTF-8 characters
 // in the http header.
 ```
 
-A test should start with a comment containing a brief description of what it is designed to test.
+测试应该以一个包含它是什么的简短说明的注释开始。
 
-### **Lines 7-8**
+### **7-8 行**
 
 ```javascript
 const assert = require('assert');
@@ -82,7 +82,7 @@ Most tests use the `assert` module to confirm expectations of the test.
 
 The require statements are sorted in \[ASCII\]\[\] order (digits, upper case, `_`, lower case).
 
-### **Lines 10-21**
+### **10-21 行**
 
 This is the body of the test. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
 
