@@ -147,26 +147,26 @@ changes:
 * `path` {string}
 * Çıktı: {string}
 
-`path.extname()` metodu, argüman olarak verilen `path`'de son sırada bulunan nokta karakterinden (.), son sıradaki karakter öbeğinin sonuna (dosya uzantısı) kadar olan parçayı döner. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
+`path.extname()` metodu, argüman olarak verilen `path`'de son sırada bulunan nokta (`.`) karakterinden, son sırada bulunan karakterler öbeğinin sonuna kadar olan parçayı (dosya uzantısı) döner. Eğer `path`'in son parçasında `.` karakteri bulunamazsa, ya da `path`'in `basename`'inin ilk karakteri `.` ise, boş bir karakter öbeği döner.
 
 ```js
 path.extname('index.html');
-// Returns: '.html'
+// '.html'
 
 path.extname('index.coffee.md');
-// Returns: '.md'
+// '.md'
 
 path.extname('index.');
-// Returns: '.'
+// '.'
 
 path.extname('index');
-// Returns: ''
+// ''
 
 path.extname('.index');
-// Returns: ''
+// ''
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.format(pathObject)
 
