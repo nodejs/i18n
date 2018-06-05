@@ -23,8 +23,8 @@
 'use strict';                                                          // 1
 const common = require('../common');                                   // 2
 
-// This test ensures that the http-parser can handle UTF-8 characters  // 4
-// in the http header.                                                 // 5
+
+// 此测试确保 http-parser 可以处理 http 标头中的 UTF-8 字符            // 5                                                 // 5
 
 const assert = require('assert');                                      // 7
 const http = require('http');                                          // 8
