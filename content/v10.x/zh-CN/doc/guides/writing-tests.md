@@ -116,7 +116,7 @@ Make use of the helpers from the `common` module as much as possible. Please ref
 
 #### common.mustCall
 
-One interesting case is `common.mustCall`. The use of `common.mustCall` may avoid the use of extra variables and the corresponding assertions. Let's explain this with a real test from the test suite.
+一个有趣的例子是 `common.mustCall`. The use of `common.mustCall` may avoid the use of extra variables and the corresponding assertions. Let's explain this with a real test from the test suite.
 
 ```javascript
 'use strict';
@@ -184,9 +184,9 @@ countdown.dec();
 countdown.dec(); // countdown 回调将被立即调用
 ```
 
-### Flags
+### 标记
 
-Some tests will require running Node.js with specific command line flags set. To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
+一些测试需要在指定命令行标记设置的情况下运行Node.js。 To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
 
 ```javascript
 'use strict';
