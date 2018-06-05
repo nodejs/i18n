@@ -63,8 +63,7 @@ require('../common');
 ### **4-5 行**
 
 ```javascript
-// This test ensures that the http-parser can handle UTF-8 characters
-// in the http header.
+// 此测试可确保 http 分析器可以处理 http 标头中的 UTF-8 字符。
 ```
 
 测试应该以一个包含它是什么的简短说明的注释开始。
@@ -90,7 +89,7 @@ This is the body of the test. This test is simple, it just tests that an HTTP se
 - The use of `common.mustCall` to check that some callbacks/listeners are called.
 - The HTTP server closes once all the checks have run. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
 
-## General recommendations
+## 一般建议
 
 ### Timers
 
@@ -104,7 +103,7 @@ const timer = setTimeout(fail, common.platformTimeout(4000));
 
 will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
 
-### The *common* API
+### *common* API
 
 Make use of the helpers from the `common` module as much as possible. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
 
@@ -163,7 +162,7 @@ const server = http.createServer(common.mustCall(function(req, res) {
 
 ```
 
-#### Countdown Module
+#### Countdown 模块
 
 The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
 
