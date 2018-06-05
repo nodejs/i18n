@@ -4,7 +4,7 @@
 
 > Kararlılık: 2 - Kararlı
 
-`path` modülü, dosya ve dizin adresleriyle çalışmak için yardımcı araçlar sağlar. Modüle erişim için:
+`path` modülü, dosya ve dizin adresleriyle çalışmak için yardımcı araçlar sağlar. Modülü yüklemek için:
 
 ```js
 const path = require('path');
@@ -65,7 +65,7 @@ changes:
 * `ext` {string} dosya uzantısı (zorunlu değil)
 * Çıktı: {string}
 
-`path.basename()` metodları, girdi olarak verilen `path`'in son parçasını dönerler -ve Unix'in `basename` komutu gibi davranırlar. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
+`path.basename()` metodları, girdi olarak verilen `path`'in son parçasını dönerler. Unix'deki `basename` komutu gibi davranırlar. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -124,14 +124,14 @@ changes:
 * `path` {string}
 * Çıktı: {string}
 
-The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
+`path.dirname()` metodu, argüman olarak verilen `path`'in dizin adresi parçasını döner. Unix'deki `dirname` komutu gibi davranır. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
-// Returns: '/foo/bar/baz/asdf'
+// '/foo/bar/baz/asdf'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.extname(path)
 
@@ -145,7 +145,7 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Çıktı: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
