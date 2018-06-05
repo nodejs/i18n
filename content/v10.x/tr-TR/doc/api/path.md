@@ -147,7 +147,7 @@ changes:
 * `path` {string}
 * Çıktı: {string}
 
-The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
+`path.extname()` metodu, argüman olarak verilen `path`'de son sırada bulunan nokta karakterinden (.), son sıradaki karakter öbeğinin sonuna (dosya uzantısı) kadar olan parçayı döner. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
 ```js
 path.extname('index.html');
