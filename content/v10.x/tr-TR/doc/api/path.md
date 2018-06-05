@@ -20,14 +20,14 @@ POSIX'te:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// çıktı: 'C:\\temp\\myfile.html'
+// 'C:\\temp\\myfile.html'
 ```
 
 Windows'ta:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Çıktı: 'myfile.html'
+// 'myfile.html'
 ```
 
 Windows tarzı adresleme kullanıyorsanız, uygulamanın çalıştığı işletim sisteminden bağımsız olarak tutarlı sonuçlar almak için, [`path.win32`][] kullanabilirsiniz:
@@ -36,7 +36,7 @@ POSIX ve Windows'ta:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
-// çıktı: 'myfile.html'
+// 'myfile.html'
 ```
 
 POSIX tarzı adresleme kullanıyorsanız, uygulamanın çalıştığı işletim sisteminden bağımsız olarak tutarlı sonuçlar almak için, [`path.posix`][] kullanabilirsiniz:
@@ -45,7 +45,7 @@ POSIX ve Windows'ta:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
-// çıktı: 'myfile.html'
+// 'myfile.html'
 ```
 
 *Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. Mesela, `path.resolve('c:\\')` çıktısı `path.resolve('c:')` çıktısından farklı olabilir. [Bu MSDN sayfasında](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths) detaylı açıklamasını bulabilirsiniz.
@@ -65,17 +65,17 @@ changes:
 * `ext` {string} dosya uzantısı (zorunlu değil)
 * Çıktı: {string}
 
-`path.basename()` metodları, girdi olarak verilen `path`'in son parçasını dönerler -ve Unix'in `basename` komutu gibi davranırlar. Trailing directory separators are ignored, see [`path.sep`][].
+`path.basename()` metodları, girdi olarak verilen `path`'in son parçasını dönerler -ve Unix'in `basename` komutu gibi davranırlar. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
-// Returns: 'quux.html'
+// 'quux.html'
 
 path.basename('/foo/bar/baz/asdf/quux.html', '.html');
-// Returns: 'quux'
+// 'quux'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
+Eğer `path` argümanı bir string değilse, ya da `ext` argümanı verilmiş ancak bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.delimiter
 
@@ -85,29 +85,29 @@ added: v0.9.3
 
 * {string}
 
-Provides the platform-specific path delimiter:
+Platformun kullandığı adresleme ayracını verir:
 
-* `;` for Windows
-* `:` for POSIX
+* Windows'ta: `;`
+* POSIX'te: `:`
 
-For example, on POSIX:
+POSIX'te:
 
 ```js
 console.log(process.env.PATH);
-// Prints: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
+// '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
 
 process.env.PATH.split(path.delimiter);
-// Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
+// ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 console.log(process.env.PATH);
-// Prints: 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
+// 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
 
 process.env.PATH.split(path.delimiter);
-// Returns ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
+// ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
 ```
 
 ## path.dirname(path)
@@ -122,7 +122,7 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Çıktı: {string}
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
