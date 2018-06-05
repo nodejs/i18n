@@ -209,15 +209,15 @@ assert.throws(
 );
 ```
 
-### ES.Next features
+### ES.Next 功能
 
-For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in \[all maintained branches\]\[\]. \[node.green\]\[\] lists available features in each release.
+出于性能考虑，我们在 `lib`目录的 JavaScript 代码中仅选择使用ES.Next的部分功能。 However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in \[all maintained branches\]\[\]. \[node.green\]\[\] lists available features in each release.
 
 例如：
 
-- `let` and `const` over `var`
-- Template literals over string concatenation
-- Arrow functions when appropriate
+- `let` 和 `const` 替代 `var`
+- 模版字符串 替代 字符串拼接
+- 适时使用箭头函数
 
 ## Naming Test Files
 
