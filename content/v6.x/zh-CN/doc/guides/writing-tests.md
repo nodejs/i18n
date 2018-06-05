@@ -83,7 +83,7 @@ require 语句以 \[ASCII\]\[\] 编码顺序(数字, 大写, `_` , 小写) 排�
 
 ### **10-21 行**
 
-这是测试的主体。 This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
+这是测试的主体。 这个测试很简单，它仅仅测试 HTTP 服务器在传入的请求标头接受 `非ASCII字符`。 有趣的事情要注意：
 
 - If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
 - The use of `common.mustCall` to check that some callbacks/listeners are called.
