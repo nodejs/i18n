@@ -57,9 +57,9 @@ const common = require('../common');
 const fixtures = require('../common/fixtures');
 ```
 
-The first line enables strict mode. All tests should be in strict mode unless the nature of the test requires that the test run without it.
+第一行启用严格模式。 所有的测试应该在严格模式下进行，除非测试的性质需要在非严格模式下运行。
 
-The second line loads the `common` module. The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
+第二行是加载 `common` 模块。 The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
 
 Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
