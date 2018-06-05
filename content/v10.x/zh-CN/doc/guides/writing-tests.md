@@ -186,7 +186,7 @@ countdown.dec(); // countdown 回调将被立即调用
 
 ### 标记
 
-一些测试需要在指定命令行标记设置的情况下运行Node.js。 若要完成此操作，在测试的序言中紧随标记的后面添加一个 `// Flags:` 注释。 For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
+一些测试需要在指定命令行标记设置的情况下运行Node.js。 若要完成此操作，在测试的序言中紧随标记的后面添加一个 `// Flags:` 注释。 例如，若要允许测试引入某些 `internal/*` 模块，请添加 `--expose-internals` 标记。 需要引入 `internal/freelist` 模块的测试可以像这样开始：
 
 ```javascript
 'use strict';
@@ -198,14 +198,14 @@ const assert = require('assert');
 const freelist = require('internal/freelist');
 ```
 
-### Assertions
+### 断言
 
-When writing assertions, prefer the strict versions:
+在编写断言时，更喜欢严格的版本：
 
-- `assert.strictEqual()` over `assert.equal()`
-- `assert.deepStrictEqual()` over `assert.deepEqual()`
+- `assert.strictEqual()` 替代 `assert.equal()`
+- `assert.deepStrictEqual()` 替代 `assert.deepEqual()`
 
-When using `assert.throws()`, if possible, provide the full error message:
+在使用 `assert.throws()` 时，如果可能，请提供完整的错误信息：
 
 ```js
 assert.throws(
