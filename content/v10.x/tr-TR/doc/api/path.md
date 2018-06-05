@@ -4,7 +4,7 @@
 
 > Kararlılık: 2 - Kararlı
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+`path` modülü, dosya ve dizin adresleriyle çalışmak için yardımcı araçlar sağlar. Modüle erişim için:
 
 ```js
 const path = require('path');
@@ -12,22 +12,22 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+`path` modülünün varsayılan ayarları, Node.js uygulamasının çalıştığı işletim sistemine göre değişiklik gösterir. Uygulama Windows işletim sistemi üzerinde çalışıyorsa, `path` modülü Windows tarzı dosya/dizin adreslemesi varsayacaktır.
 
-For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
+Örneğin, `path.basename()` fonksiyonu, Windows tarzı bir dosya adresi (`C:\temp\myfile.html`) ile kullanıldığında, POSIX üzerindeki çıktısı, Windows üzerindeki çıktısından farklı olacaktır:
 
-On POSIX:
+POSIX'te:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Returns: 'C:\\temp\\myfile.html'
+// çıktı: 'C:\\temp\\myfile.html'
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+// Çıktı: 'myfile.html'
 ```
 
 To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
