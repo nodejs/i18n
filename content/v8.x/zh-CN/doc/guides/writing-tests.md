@@ -222,9 +222,9 @@ For example:
 - 模版字符串 替代 字符串拼接
 - 适时使用箭头函数
 
-## Naming Test Files
+## 测试文件命名
 
-Test files are named using kebab casing. The first component of the name is `test`. The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
+测试文件使用短横杆间隔(kebab casing)命名。 名字的第一个组成部分是 `test`。 The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
 
 For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
 
