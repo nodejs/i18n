@@ -179,7 +179,7 @@ countdown.dec(); // countdown 回调将被立即调用
 
 ### 标记
 
-一些测试需要在指定命令行标记设置的情况下运行Node.js。 To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
+一些测试需要在指定命令行标记设置的情况下运行Node.js。 若要完成此操作，在测试的序言中紧随标记的后面添加一个 `// Flags:` 注释。 For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
 
 ```javascript
 'use strict';
