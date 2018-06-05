@@ -65,7 +65,7 @@ changes:
 * `ext` {string} dosya uzantısı (zorunlu değil)
 * Çıktı: {string}
 
-`path.basename()` metodları, girdi olarak verilen `path`'in son parçasını dönerler. Unix'deki `basename` komutu gibi davranırlar. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
+`path.basename()` metodları, argüman olarak verilen `path`'in son parçasını dönerler. Unix'deki `basename` komutu gibi davranırlar. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -85,7 +85,7 @@ added: v0.9.3
 
 * {string}
 
-Platformun kullandığı adresleme ayracını verir:
+Platformun kullandığı adresleme ayracı:
 
 * Windows'ta: `;`
 * POSIX'te: `:`
