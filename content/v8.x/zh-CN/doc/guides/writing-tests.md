@@ -57,7 +57,7 @@ const fixtures = require('../common/fixtures');
 
 第二行是加载 `common` 模块。 The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
 
-Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
+即使测试不使用 `common` 模块的函数和属性，测试仍然应该在任何其他模块之前引入 `common` 模块。 This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
 ```javascript
 require('../common');
