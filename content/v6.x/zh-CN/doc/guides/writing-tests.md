@@ -7,17 +7,17 @@
 - 它通过将 ` exitCode ` 设置为非零数字来退出。 
   - 这通常是通过断言抛出一个未捕获的 Error 来完成的。
   - 有时，使用 `process.exit(code)` 可能是适当的。
-- 它从不退出。 In this case, the test runner will terminate the test because it sets a maximum time limit.
+- 它从不退出。 在这种情况下，测试运行程序最终将终止测试，因为它设置了最大时间限制。
 
-Add tests when:
+在以下情况下添加测试:
 
-- Adding new functionality.
-- Fixing regressions and bugs.
-- Expanding test coverage.
+- 添加新功能。
+- 修复回归和 bug。
+- 扩展测试覆盖率。
 
-## Test structure
+## 测试结构
 
-Let's analyze this basic test from the Node.js test suite:
+让我们从 Node.js 测试套件分析这个基本测试：
 
 ```javascript
 'use strict';                                                          // 1
