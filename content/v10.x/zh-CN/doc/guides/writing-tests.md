@@ -147,7 +147,7 @@ const server = http.createServer(function(req, res) {
 });
 ```
 
-This test could be greatly simplified by using `common.mustCall` like this:
+使用 `common.mustCall` 可以像下面这样大大简化该测试：
 
 ```javascript
 'use strict';
@@ -228,7 +228,7 @@ assert.throws(
 
 测试文件使用短横杆间隔(kebab casing)命名。 名称的第一个组成部分是 `test`。 名称的第二个组成部分是将要被测试的模块或者子系统。 第三部分通常是将要测试的方法或者事件名称。 名称的后续部分会添加更多关于被测试内容的信息。
 
-例如，`process` 对象的 `beforeExit` 事件的测试可能被命名为 `test-process-before-exit.js`。 If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
+例如，`process` 对象的 `beforeExit` 事件的测试可能被命名为 `test-process-before-exit.js`。 如果测试专门检查箭头函数是否与 `beforeExit` 事件正常工作，则它可能被命名为 `test-process-before-exit-arrow-functions.js`。
 
 ## Imported Tests
 
