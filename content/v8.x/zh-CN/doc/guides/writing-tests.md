@@ -2,12 +2,12 @@
 
 ## 什么是测试？
 
-Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `` on success. A test will fail if:
+在 Node.js 核心中，大多数测试都是 JavaScript 程序，它执行 Node.js 提供的功能并检查其行为是否符合预期。 成功时, 测试应与代码 ` 0 ` 一起退出。 如果存在以下情况, 测试将失败:
 
-- It exits by setting `process.exitCode` to a non-zero number. 
-  - This is usually done by having an assertion throw an uncaught Error.
-  - Occasionally, using `process.exit(code)` may be appropriate.
-- It never exits. In this case, the test runner will terminate the test because it sets a maximum time limit.
+- 它通过将 ` exitCode ` 设置为非零数字来退出。 
+  - 这通常是通过断言抛出一个未捕获的 Error 来完成的。
+  - 有时，使用 `process.exit(code)` 可能是适当的。
+- 它从不退出。 In this case, the test runner will terminate the test because it sets a maximum time limit.
 
 Add tests when:
 
