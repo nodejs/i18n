@@ -74,7 +74,7 @@ require('../common');
 // in the http header.
 ```
 
-A test should start with a comment containing a brief description of what it is designed to test.
+测试应该以一个包含它是什么的简短说明的注释开始。
 
 ### **Lines 8-9**
 
