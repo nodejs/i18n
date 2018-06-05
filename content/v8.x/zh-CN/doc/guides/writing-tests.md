@@ -224,9 +224,9 @@ For example:
 
 ## 测试文件命名
 
-测试文件使用短横杆间隔(kebab casing)命名。 名字的第一个组成部分是 `test`。 The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
+测试文件使用短横杆间隔(kebab casing)命名。 名称的第一个组成部分是 `test`。 名称的第二个组成部分是将要被测试的模块或者子系统。 第三部分通常是将要测试的方法或者事件名称。 名称的后续部分会添加更多关于被测试内容的信息。
 
-For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
+例如，`process` 对象的 `beforeExit` 事件的测试可能被命名为 `test-process-before-exit.js`。 If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
 
 ## Imported Tests
 
