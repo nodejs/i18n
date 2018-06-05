@@ -177,7 +177,7 @@ const countdown = new Countdown(2, function() {
 });
 
 countdown.dec();
-countdown.dec(); // The countdown callback will be invoked now.
+countdown.dec(); // countdown 回调将被立即调用
 ```
 
 ### Flags
