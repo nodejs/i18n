@@ -437,7 +437,7 @@ Provee un objeto que enumera constantes relacionadas a Zlib.
 added: v0.5.8
 -->
 
-Creates and returns a new [`Deflate`][] object with the given [`options`][].
+Crea y retorna un nuevo objeto [`Deflate`][] con las [`options`][] suministradas.
 
 ## zlib.createDeflateRaw([options])
 
@@ -445,9 +445,9 @@ Creates and returns a new [`Deflate`][] object with the given [`options`][].
 added: v0.5.8
 -->
 
-Creates and returns a new [`DeflateRaw`][] object with the given [`options`][].
+Crea y retorna un nuevo objeto [`DeflateRaw`][] con las [`options`][] suministradas.
 
-An upgrade of zlib from 1.2.8 to 1.2.11 changed behavior when `windowBits` is set to 8 for raw deflate streams. zlib would automatically set `windowBits` to 9 if was initially set to 8. Newer versions of zlib will throw an exception, so Node.js restored the original behavior of upgrading a value of 8 to 9, since passing `windowBits = 9` to zlib actually results in a compressed stream that effectively uses an 8-bit window only.
+Una actualización de zlib de 1.2.8 a 1.2.11 cambia el comportamiento cuando `windowBits` se establece en 8 para raw deflate streams. zlib establecía `windowBits` a 9 automáticamente si inicialmente se estableció en 8. Versiones mas nuevas de zlib arrojan una excepción, por lo que Node.js restauró el comportamiento original de actualizar el valor de 8 a 9, ya que suministrar `windowBits = 9` a zlib resulta en un stream comprimido que efectivamente usa una ventana de 8 bits.
 
 ## zlib.createGunzip([options])
 
@@ -455,7 +455,7 @@ An upgrade of zlib from 1.2.8 to 1.2.11 changed behavior when `windowBits` is se
 added: v0.5.8
 -->
 
-Creates and returns a new [`Gunzip`][] object with the given [`options`][].
+Crea y retorna un nuevo objeto [`Gunzip`][] con las [`options`][] suministradas.
 
 ## zlib.createGzip([options])
 
@@ -463,7 +463,7 @@ Creates and returns a new [`Gunzip`][] object with the given [`options`][].
 added: v0.5.8
 -->
 
-Creates and returns a new [`Gzip`][] object with the given [`options`][].
+Crea y retorna un nuevo objeto [`Gzip`][] con las [`options`][] suministradas.
 
 ## zlib.createInflate([options])
 
@@ -471,7 +471,7 @@ Creates and returns a new [`Gzip`][] object with the given [`options`][].
 added: v0.5.8
 -->
 
-Creates and returns a new [`Inflate`][] object with the given [`options`][].
+Crea y retorna un nuevo objeto [`Inflate`][] con las [`options`][] suministradas.
 
 ## zlib.createInflateRaw([options])
 
@@ -479,7 +479,7 @@ Creates and returns a new [`Inflate`][] object with the given [`options`][].
 added: v0.5.8
 -->
 
-Creates and returns a new [`InflateRaw`][] object with the given [`options`][].
+Crea y retorna un nuevo objeto [`InflateRaw`][] con las [`options`][] suministradas.
 
 ## zlib.createUnzip([options])
 
@@ -487,15 +487,15 @@ Creates and returns a new [`InflateRaw`][] object with the given [`options`][].
 added: v0.5.8
 -->
 
-Creates and returns a new [`Unzip`][] object with the given [`options`][].
+Crea y retorna un nuevo objeto [`Unzip`][] con las [`options`][] suministradas.
 
-## Convenience Methods
+## Métodos de conveniencia
 
 <!--type=misc-->
 
-All of these take a [`Buffer`][], [`TypedArray`][], [`DataView`][], [`ArrayBuffer`][] or string as the first argument, an optional second argument to supply options to the `zlib` classes and will call the supplied callback with `callback(error, result)`.
+Todos estos aceptan un [`Buffer`][], [`TypedArray`][], [`DataView`][], [`ArrayBuffer`][] o string como el primer argumento, un segundo argumento opcional para suministrar opciones a las clases `zlib`, y un llamado al callback suministrado con `callback(error, result)`.
 
-Every method has a `*Sync` counterpart, which accept the same arguments, but without a callback.
+Cada método tiene una contraparte `*Sync` que acepta los mismos argumentos pero sin el llamado a un callback.
 
 ### zlib.deflate(buffer[, options], callback)
 
@@ -532,7 +532,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Compress a chunk of data with [`Deflate`][].
+Comprime un fragmento de datos con [`Deflate`][].
 
 ### zlib.deflateRaw(buffer[, options], callback)
 
@@ -566,7 +566,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Compress a chunk of data with [`DeflateRaw`][].
+Comprime un fragmento de datos con [`DeflateRaw`][].
 
 ### zlib.gunzip(buffer[, options], callback)
 
@@ -603,7 +603,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`Gunzip`][].
+Descomprime un fragmento de datos con [`Gunzip`][].
 
 ### zlib.gzip(buffer[, options], callback)
 
@@ -640,7 +640,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Compress a chunk of data with [`Gzip`][].
+Comprime un fragmento de datos con [`Gzip`][].
 
 ### zlib.inflate(buffer[, options], callback)
 
@@ -677,7 +677,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`Inflate`][].
+Descomprime un fragmento de datos con [`Inflate`][].
 
 ### zlib.inflateRaw(buffer[, options], callback)
 
@@ -714,7 +714,7 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`InflateRaw`][].
+Descomprime un fragmento de datos con [`InflateRaw`][].
 
 ### zlib.unzip(buffer[, options], callback)
 
@@ -751,4 +751,4 @@ changes:
 
 - `buffer` {Buffer|TypedArray|DataView|ArrayBuffer|string}
 
-Decompress a chunk of data with [`Unzip`][].
+Descomprime un fragmento de datos con [`Unzip`][].

@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Kararlılık: 2 - Kararlı
 
-The `path` module provides utilities for working with file and directory paths. It can be accessed using:
+`path` modülü, dosya ve dizin adresleriyle çalışmak için yardımcı araçlar sağlar. Modülü yüklemek için:
 
 ```js
 const path = require('path');
@@ -12,43 +12,43 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
+`path` modülünün varsayılan ayarları, Node.js uygulamasının çalıştığı işletim sistemine göre değişiklik gösterir. Uygulama Windows işletim sistemi üzerinde çalışıyorsa, `path` modülü Windows tarzı dosya/dizin adreslemesi varsayacaktır.
 
-For example, using the `path.basename()` function with the Windows file path `C:\temp\myfile.html`, will yield different results when running on POSIX than when run on Windows:
+Örneğin, `path.basename()` fonksiyonu, Windows tarzı bir dosya adresi (`C:\temp\myfile.html`) ile kullanıldığında, POSIX üzerindeki çıktısı, Windows üzerindeki çıktısından farklı olacaktır:
 
-On POSIX:
-
-```js
-path.basename('C:\\temp\\myfile.html');
-// Returns: 'C:\\temp\\myfile.html'
-```
-
-On Windows:
+POSIX'te:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+// 'C:\\temp\\myfile.html'
 ```
 
-To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
+Windows'ta:
 
-On POSIX and Windows:
+```js
+path.basename('C:\\temp\\myfile.html');
+// 'myfile.html'
+```
+
+Windows tarzı adresleme kullanıyorsanız, uygulamanın çalıştığı işletim sisteminden bağımsız olarak tutarlı sonuçlar almak için, [`path.win32`][] kullanabilirsiniz:
+
+POSIX ve Windows'ta:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+// 'myfile.html'
 ```
 
-To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
+POSIX tarzı adresleme kullanıyorsanız, uygulamanın çalıştığı işletim sisteminden bağımsız olarak tutarlı sonuçlar almak için, [`path.posix`][] kullanabilirsiniz:
 
-On POSIX and Windows:
+POSIX ve Windows'ta:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
-// Returns: 'myfile.html'
+// 'myfile.html'
 ```
 
-*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. Mesela, `path.resolve('c:\\')` çıktısı `path.resolve('c:')` çıktısından farklı olabilir. [Bu MSDN sayfasında](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths) detaylı açıklamasını bulabilirsiniz.
 
 ## path.basename(path[, ext])
 
@@ -62,20 +62,20 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} An optional file extension
-* Returns: {string}
+* `ext` {string} dosya uzantısı (zorunlu değil)
+* Çıktı: {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+`path.basename()` metodları, girdi olarak verilen `path`'in son parçasını dönerler. Unix'deki `basename` komutu gibi davranırlar. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
-// Returns: 'quux.html'
+// 'quux.html'
 
 path.basename('/foo/bar/baz/asdf/quux.html', '.html');
-// Returns: 'quux'
+// 'quux'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
+Eğer `path` argümanı bir string değilse, ya da `ext` argümanı verilmiş ancak bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.delimiter
 
@@ -85,29 +85,29 @@ added: v0.9.3
 
 * {string}
 
-Provides the platform-specific path delimiter:
+Platformun kullandığı adresleme ayracını verir:
 
-* `;` for Windows
-* `:` for POSIX
+* Windows'ta: `;`
+* POSIX'te: `:`
 
-For example, on POSIX:
+POSIX'te:
 
 ```js
 console.log(process.env.PATH);
-// Prints: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
+// '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
 
 process.env.PATH.split(path.delimiter);
-// Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
+// ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
-On Windows:
+Windows'ta:
 
 ```js
 console.log(process.env.PATH);
-// Prints: 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
+// 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
 
 process.env.PATH.split(path.delimiter);
-// Returns ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
+// ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
 ```
 
 ## path.dirname(path)
@@ -122,16 +122,16 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Çıktı: {string}
 
-The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
+`path.dirname()` metodu, argüman olarak verilen `path`'in dizin adresi parçasını döner. Unix'deki `dirname` komutu gibi davranır. Dizin adresi sonundaki ayraç hesaba katılmaz. bkz. [`path.sep`][].
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
-// Returns: '/foo/bar/baz/asdf'
+// '/foo/bar/baz/asdf'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Eğer `path` argümanı bir string değilse [`TypeError`][] fırlatılır.
 
 ## path.extname(path)
 
@@ -145,7 +145,7 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Çıktı: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 

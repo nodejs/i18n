@@ -12,9 +12,9 @@ Para la instancia: a [`net.Server`][] el objeto emite un evento cada vez que un 
 
 Todos los objetos que emiten eventos son instancia de la clase `EventEmitter`. Estos objetos exponen una función `eventEmitter.on()` que permite a una o más funciones ser anexadas a eventos emitidos por el objeto. Típicamente, los nombres de los eventos son cadenas en Minúsculas/Mayúsculas pero alguna propiedad válida de Javascript puede ser usada.
 
-Cuando el objeto `EventEmitter` emite un evento, todos las funciones adjuntas a ese evento específico son llamadas *synchronously*. Any values returned by the called listeners are *ignored* and will be discarded.
+Cuando el objeto `EventEmitter` emite un evento, todos las funciones adjuntas a ese evento específico son llamadas *synchronously*. Cualquier valor retornado por los escuchadores es *ignorado* y será descartado.
 
-The following example shows a simple `EventEmitter` instance with a single listener. The `eventEmitter.on()` method is used to register listeners, while the `eventEmitter.emit()` method is used to trigger the event.
+El siguiente ejemplo muestra una simple instacia de `EventEmitter` con un solo escuchador. El método `eventEmitter.on()` es usado para registrar escuchadores, mientras el método `eventEmitter.emit()` es usado para desencadenar el evento.
 
 ```js
 const EventEmitter = require('events');
@@ -28,9 +28,9 @@ myEmitter.on('event', () => {
 myEmitter.emit('event');
 ```
 
-## Passing arguments and `this` to listeners
+## Pasando argumentos y `this` a escuchadores
 
-The `eventEmitter.emit()` method allows an arbitrary set of arguments to be passed to the listener functions. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
+El método `eventEmitter.emit()` permite un conjunto arbitrario de argumentos para que sean pasados a las funciones escuchadoras. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
 
 ```js
 const myEmitter = new MyEmitter();

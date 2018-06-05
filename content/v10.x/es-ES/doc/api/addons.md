@@ -10,7 +10,7 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * V8: La librería de C++ que Node.js usa actualmente para proveer la implementación de JavaScript. V8 provee los mecanismos de creación de objetos, llamado de funciones, etc. La API de V8 esta documentada mayormente en el archivo de cabecera `v8.h` (`deps/v8/include/v8.h` en árbol del código fuente de Node.js), el cual también esta disponible [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): La librería de C que implementa el event loop en Node.js, sus workers threads y todo los comportamientos asincrónicos de la plataforma. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
 * Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
@@ -23,17 +23,16 @@ Todos los ejemplos a continuación están disponibles para [descargar](https://g
 Este ejemplo de "Hola Mundo" es un Complemento simple, escrito en C++, que es equivalente al siguiente código en JavaScript:
 
 ```js
-module.exports.hello = () => 'world';
+module.exports.hola = () => 'mundo';
 ```
 
-First, create the file `hello.cc`:
+Primero, crea el archivo `hola.cc`:
 
 ```cpp
-// hello.cc
+// hola.cc
 #include <node.h>
 
 namespace demo {
-
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
@@ -43,11 +42,11 @@ using v8::Value;
 
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
-  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "mundo"));
 }
 
 void init(Local<Object> exports) {
-  NODE_SET_METHOD(exports, "hello", Method);
+  NODE_SET_METHOD(exports, "hola", Method);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, init)
@@ -55,18 +54,18 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Ten en cuenta que todos los Addons de Node.js deben exportar una función de inicialización siguiendo el patrón:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+No hay punto y coma después de `NODE_MODULE` ya que no es una función (ver `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+El `module_name` debe debe coincidir con el nombre del archivo del binario final (excluyendo el sufijo `.node`).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+Entonces, en el ejemplo `hola.cc`, la función de inicialización es `init` y el nombre del módulo Addon es `addon`.
 
 ### Building
 

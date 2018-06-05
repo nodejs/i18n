@@ -1,31 +1,31 @@
-# How to write a test for the Node.js project
+# 如何为 Node.js 项目编写测试
 
-## What is a test?
+## 什么是测试？
 
-Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `` on success. A test will fail if:
+在 Node.js 核心中，大多数测试都是 JavaScript 程序，它执行 Node.js 提供的功能并检查其行为是否符合预期。 成功时, 测试应与代码 ` 0 ` 一起退出。 如果存在以下情况, 测试将失败:
 
-- It exits by setting `process.exitCode` to a non-zero number. 
-  - This is usually done by having an assertion throw an uncaught Error.
-  - Occasionally, using `process.exit(code)` may be appropriate.
-- It never exits. In this case, the test runner will terminate the test because it sets a maximum time limit.
+- 它通过将 ` exitCode ` 设置为非零数字来退出。 
+  - 这通常是通过断言抛出一个未捕获的 Error 来完成的。
+  - 有时，使用 `process.exit(code)` 可能是适当的。
+- 它从不退出。 在这种情况下，测试运行程序最终将终止测试，因为它设置了最大时间限制。
 
-Add tests when:
+在以下情况下添加测试:
 
-- Adding new functionality.
-- Fixing regressions and bugs.
-- Expanding test coverage.
+- 添加新功能。
+- 修复回归和 bug。
+- 扩展测试覆盖率。
 
-## Test structure
+## 测试结构
 
-Let's analyze this basic test from the Node.js test suite:
+让我们从 Node.js 测试套件分析这个基本测试：
 
 ```javascript
 'use strict';                                                          // 1
 const common = require('../common');                                   // 2
 
-// This test ensures that the http-parser can handle UTF-8 characters  // 4
-// in the http header.                                                 // 5
 
+// 此测试确保 http-parser 可以处理 http 标头中的 UTF-8 字符            // 5
+                                                 
 const assert = require('assert');                                      // 7
 const http = require('http');                                          // 8
 
@@ -43,54 +43,53 @@ server.listen(0, () => {                                               // 13
 });                                                                    // 21
 ```
 
-### **Lines 1-2**
+### **1-2 行**
 
 ```javascript
 'use strict';
 const common = require('../common');
 ```
 
-The first line enables strict mode. All tests should be in strict mode unless the nature of the test requires that the test run without it.
+第一行启用严格模式。 所有的测试应该在严格模式下进行，除非测试的性质需要在非严格模式下运行。
 
-The second line loads the `common` module. The `common` module is a helper module that provides useful tools for the tests.
+第二行是加载 `common` 模块。 `common` 模块是一个为测试提供实用工具的帮助模块。
 
-Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
+即使测试不使用 `common` 模块的函数和属性，测试仍然应该在任何其他模块之前引入 `common` 模块。 This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
 ```javascript
 require('../common');
 ```
 
-### **Lines 4-5**
+### **4-5 行**
 
 ```javascript
-// This test ensures that the http-parser can handle UTF-8 characters
-// in the http header.
+// 此测试可确保 http 分析器可以处理 http 标头中的 UTF-8 字符。
 ```
 
-A test should start with a comment containing a brief description of what it is designed to test.
+测试应该以一个包含它是什么的简短说明的注释开始。
 
-### **Lines 7-8**
+### **7-8 行**
 
 ```javascript
 const assert = require('assert');
 const http = require('http');
 ```
 
-The test checks functionality in the `http` module.
+该测试检查 `http` 模块的功能。
 
-Most tests use the `assert` module to confirm expectations of the test.
+大多数测试使用 `assert` 模块来确认测试的期望。
 
-The require statements are sorted in \[ASCII\]\[\] order (digits, upper case, `_`, lower case).
+require 语句以 \[ASCII\]\[\] 编码顺序(数字, 大写, `_` , 小写) 排序。
 
-### **Lines 10-21**
+### **10-21 行**
 
-This is the body of the test. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
+这是测试的主体。 这个测试很简单，它仅仅测试 HTTP 服务器在传入的请求标头接受 `非ASCII字符`。 有趣的事情要注意：
 
 - If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
 - The use of `common.mustCall` to check that some callbacks/listeners are called.
 - The HTTP server closes once all the checks have run. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
 
-## General recommendations
+## 一般建议
 
 ### Timers
 
@@ -104,13 +103,13 @@ const timer = setTimeout(fail, common.platformTimeout(4000));
 
 will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
 
-### The *common* API
+### *common* API
 
 Make use of the helpers from the `common` module as much as possible. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
 
 #### common.mustCall
 
-One interesting case is `common.mustCall`. The use of `common.mustCall` may avoid the use of extra variables and the corresponding assertions. Let's explain this with a real test from the test suite.
+一个有趣的例子是 `common.mustCall`. 使用 `common.mustCall` 可以避免使用额外的变量和相应的断言。 让我们用测试套件中的真实测试来解释这一点。
 
 ```javascript
 'use strict';
@@ -141,7 +140,7 @@ const server = http.createServer(function(req, res) {
 });
 ```
 
-This test could be greatly simplified by using `common.mustCall` like this:
+使用 `common.mustCall` 可以像下面这样大大简化该测试：
 
 ```javascript
 'use strict';
@@ -163,7 +162,7 @@ const server = http.createServer(common.mustCall(function(req, res) {
 
 ```
 
-#### Countdown Module
+#### Countdown 模块
 
 The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
 
@@ -175,12 +174,12 @@ const countdown = new Countdown(2, function() {
 });
 
 countdown.dec();
-countdown.dec(); // The countdown callback will be invoked now.
+countdown.dec(); // countdown 回调将被立即调用
 ```
 
-### Flags
+### 标记
 
-Some tests will require running Node.js with specific command line flags set. To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
+一些测试需要在指定命令行标记设置的情况下运行Node.js。 若要完成此操作，在测试的序言中紧随标记的后面添加一个 `// Flags:` 注释。 例如，若要允许测试引入某些 `internal/*` 模块，请添加 `--expose-internals` 标记。 需要引入 `internal/freelist` 模块的测试可以像这样开始：
 
 ```javascript
 'use strict';
@@ -192,14 +191,14 @@ const assert = require('assert');
 const freelist = require('internal/freelist');
 ```
 
-### Assertions
+### 断言
 
-When writing assertions, prefer the strict versions:
+在编写断言时，更喜欢严格的版本：
 
-- `assert.strictEqual()` over `assert.equal()`
-- `assert.deepStrictEqual()` over `assert.deepEqual()`
+- `assert.strictEqual()` 替代 `assert.equal()`
+- `assert.deepStrictEqual()` 替代 `assert.deepEqual()`
 
-When using `assert.throws()`, if possible, provide the full error message:
+在使用 `assert.throws()` 时，如果可能，请提供完整的错误信息：
 
 ```js
 assert.throws(
@@ -210,21 +209,21 @@ assert.throws(
 );
 ```
 
-### ES.Next features
+### ES.Next 功能
 
-For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in \[all maintained branches\]\[\]. \[node.green\]\[\] lists available features in each release.
+出于性能考虑，我们在 `lib`目录的 JavaScript 代码中仅选择使用ES.Next的部分功能。 然而，当编写测试，为了便于移植，鼓励使用那些可以直接使用并且没有在 \[all maintained branches\]\[\] 中标记的 ES.Next 功能。 \[node.green\]\[\] 列出了每个版本中的可用功能。
 
-For example:
+例如：
 
-- `let` and `const` over `var`
-- Template literals over string concatenation
-- Arrow functions when appropriate
+- `let` 和 `const` 替代 `var`
+- 模版字符串 替代 字符串拼接
+- 适时使用箭头函数
 
-## Naming Test Files
+## 测试文件命名
 
-Test files are named using kebab casing. The first component of the name is `test`. The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
+测试文件使用短横杆间隔(kebab casing)命名。 名称的第一个组成部分是 `test`。 名称的第二个组成部分是将要被测试的模块或者子系统。 第三部分通常是将要测试的方法或者事件名称。 名称的后续部分会添加更多关于被测试内容的信息。
 
-For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
+例如，`process` 对象的 `beforeExit` 事件的测试可能被命名为 `test-process-before-exit.js`。 如果测试专门检查箭头函数是否与 `beforeExit` 事件正常工作，则它可能被命名为 `test-process-before-exit-arrow-functions.js`。
 
 ## Imported Tests
 

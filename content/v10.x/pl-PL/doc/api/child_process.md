@@ -27,7 +27,7 @@ ls.on('close', (code) => {
 
 By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Use the `{ stdio: 'ignore' }` option if the output will not be consumed.
 
-The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. The [`child_process.spawnSync()`][] function provides equivalent functionality in a synchronous manner that blocks the event loop until the spawned process either exits or is terminated.
+Metoda [`child_process.spawn()`][] uruchamia procesy podrzędne asynchronicznie, nie blokując pętli zdarzeń Node.js. Metoda [`child_process.spawnSync()`][] zapewnia równoważną funkcjonalność w sposób synchroniczny, blokując pętle zdarzeń dopóki uruchomiony proces się nie zakończy lub nie zostanie zakończony.
 
 For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
 
