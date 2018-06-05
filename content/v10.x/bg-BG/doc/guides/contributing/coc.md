@@ -12,8 +12,8 @@
 
 Всички участници в Node.js мълчаливо се съгласяват да спазват буквата и духа на [Кодекс на поведение](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Неуспех или нежелание това да бъде направено, ще доведе до почтеното отказване на участници.
 
-A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
+*Лошо действащ участник* е някой който многократно нарушава *духа* на Кодекса на поведение чрез системен неуспех за само-регулиране на начина, по който той взаимодейства с останалите участници в проекта. По този начин, лошо действащи участници отчуждават други участници, разубеждават сътрудничество и се отразяват лошо на проекта като цяло.
 
-Being a bad actor may be intentional or unintentional. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
+Да бъдеш лошо действащ участник може да е съзнателно или несъзнателно. Обикновено несъзнателно лошо поведение може да бъде лесно коригирано чрез бързо извинение и поправка в курса, *дори когато не си напълно убеден, че трябва да го направиш*. Давайки на останалите участници ползата на съмнението и имайки искреното желание да признаеш че *може* да си сбъркал е критично за успеха на отвореното сътрудничество.
 
 Don't be a bad actor.
