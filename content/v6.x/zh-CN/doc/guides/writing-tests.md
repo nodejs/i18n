@@ -75,15 +75,15 @@ const assert = require('assert');
 const http = require('http');
 ```
 
-The test checks functionality in the `http` module.
+该测试检查 `http` 模块的功能。
 
-Most tests use the `assert` module to confirm expectations of the test.
+大多数测试使用 `assert` 模块来确认测试的期望。
 
-The require statements are sorted in \[ASCII\]\[\] order (digits, upper case, `_`, lower case).
+require 语句以 \[ASCII\]\[\] 编码顺序(数字, 大写, `_` , 小写) 排序。
 
 ### **10-21 行**
 
-This is the body of the test. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
+这是测试的主体。 This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
 
 - If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
 - The use of `common.mustCall` to check that some callbacks/listeners are called.
