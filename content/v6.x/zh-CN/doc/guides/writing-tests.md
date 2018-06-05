@@ -24,8 +24,8 @@
 const common = require('../common');                                   // 2
 
 
-// 此测试确保 http-parser 可以处理 http 标头中的 UTF-8 字符            // 5                                                 // 5
-
+// 此测试确保 http-parser 可以处理 http 标头中的 UTF-8 字符            // 5
+                                                 
 const assert = require('assert');                                      // 7
 const http = require('http');                                          // 8
 
@@ -43,16 +43,16 @@ server.listen(0, () => {                                               // 13
 });                                                                    // 21
 ```
 
-### **Lines 1-2**
+### **1-2 行**
 
 ```javascript
 'use strict';
 const common = require('../common');
 ```
 
-The first line enables strict mode. All tests should be in strict mode unless the nature of the test requires that the test run without it.
+第一行启用严格模式。 所有的测试应该在严格模式下进行，除非测试的性质需要在非严格模式下运行。
 
-The second line loads the `common` module. The `common` module is a helper module that provides useful tools for the tests.
+第二行是加载 `common` 模块。 The `common` module is a helper module that provides useful tools for the tests.
 
 Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
