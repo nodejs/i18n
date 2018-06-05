@@ -1,6 +1,6 @@
-# How to write a test for the Node.js project
+# 如何为 Node.js 项目编写测试
 
-## What is a test?
+## 什么是测试？
 
 Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `` on success. A test will fail if:
 
