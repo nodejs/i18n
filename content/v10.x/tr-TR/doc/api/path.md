@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // çıktı: 'myfile.html'
 ```
 
-*Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. Mesela, `path.resolve('c:\\')` çıktısı `path.resolve('c:')` çıktısından farklı olabilir. [Bu MSDN sayfasında](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths) detaylı açıklamasını bulabilirsiniz.
 
 ## path.basename(path[, ext])
 
@@ -62,10 +62,10 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} An optional file extension
-* Returns: {string}
+* `ext` {string} dosya uzantısı (zorunlu değil)
+* Çıktı: {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+`path.basename()` metodları, girdi olarak verilen `path`'in son parçasını dönerler -ve Unix'in `basename` komutu gibi davranırlar. Trailing directory separators are ignored, see [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
