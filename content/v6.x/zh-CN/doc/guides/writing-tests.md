@@ -174,7 +174,7 @@ const countdown = new Countdown(2, function() {
 });
 
 countdown.dec();
-countdown.dec(); // The countdown callback will be invoked now.
+countdown.dec(); // countdown 回调将被立即调用
 ```
 
 ### Flags
@@ -213,7 +213,7 @@ assert.throws(
 
 For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in \[all maintained branches\]\[\]. \[node.green\]\[\] lists available features in each release.
 
-For example:
+例如：
 
 - `let` and `const` over `var`
 - Template literals over string concatenation
