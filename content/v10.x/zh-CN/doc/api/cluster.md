@@ -25,8 +25,8 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  // Workers can share any TCP connection
-  // In this case it is an HTTP server
+  // Workers 可以共享任意 TCP 连接
+  // 在这个例子中，它是一个 HTTP 服务器
   http.createServer((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
@@ -36,7 +36,7 @@ if (cluster.isMaster) {
 }
 ```
 
-Running Node.js will now share port 8000 between the workers:
+运行中的 Node.js 程序将在所有 Worker 之间共享8000端口：
 
 ```txt
 $ node server.js
@@ -343,7 +343,7 @@ added: v0.9.12
 
 * `signal` {string} Name of the kill signal to send to the worker process.
 
-This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code ``.
+This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
 
 Causes `.exitedAfterDisconnect` to be set.
 
