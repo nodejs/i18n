@@ -1,4 +1,4 @@
-# C++ Addons
+# C++ 插件
 
 <!--introduced_in=v0.10.0-->
 
