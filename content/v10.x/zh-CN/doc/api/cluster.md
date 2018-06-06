@@ -55,7 +55,7 @@ Worker 5644 started
 
 Worker 进程使用 [`child_process.fork()`][] 方法产生，它们可以通过 IPC 与父进程通信并来回传递服务器句柄。
 
-The cluster module supports two methods of distributing incoming connections.
+cluster 模块支持两种分发传入连接的方法。
 
 The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
 
