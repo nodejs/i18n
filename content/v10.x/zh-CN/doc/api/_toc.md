@@ -45,14 +45,14 @@
 * [字符串解码 (String Decoder)](string_decoder.html)
 * [定时器 (Timers)](timers.html)
 * [TLS/SSL](tls.html)
-* [Trace Events](tracing.html)
+* [跟踪事件 (Trace Events)](tracing.html)
 * [TTY](tty.html)
-* [UDP/Datagram](dgram.html)
+* [UDP/数据报文 (Datagram)](dgram.html)
 * [URL](url.html)
-* [Utilities](util.html)
+* [实用工具 (Utilities)](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
-* [ZLIB](zlib.html)
+* [解压缩 (ZLIB)](zlib.html)
 
 <div class="line"></div>
 
