@@ -443,7 +443,7 @@ cluster.on('exit', (worker, code, signal) => {
 
 See [`child_process` event: `'exit'`][].
 
-## Event: 'fork'
+## 事件: 'fork'
 
 <!-- YAML
 added: v0.7.0
@@ -471,7 +471,7 @@ cluster.on('exit', (worker, code, signal) => {
 });
 ```
 
-## Event: 'listening'
+## 事件: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -491,14 +491,14 @@ cluster.on('listening', (worker, address) => {
 });
 ```
 
-The `addressType` is one of:
+`addressType` 为下列之一：
 
 * `4` (TCPv4)
 * `6` (TCPv6)
 * `-1` (unix domain socket)
-* `'udp4'` or `'udp6'` (UDP v4 or v6)
+* `'udp4'` 或 `'udp6'` (UDP v4 或 v6)
 
-## Event: 'message'
+## 事件: 'message'
 
 <!-- YAML
 added: v2.5.0
@@ -532,7 +532,7 @@ cluster.on('message', (worker, message, handle) => {
 });
 ```
 
-## Event: 'online'
+## 事件: 'online'
 
 <!-- YAML
 added: v0.7.0
@@ -548,7 +548,7 @@ cluster.on('online', (worker) => {
 });
 ```
 
-## Event: 'setup'
+## 事件: 'setup'
 
 <!-- YAML
 added: v0.7.1
@@ -556,7 +556,7 @@ added: v0.7.1
 
 * `settings` {Object}
 
-Emitted every time `.setupMaster()` is called.
+每当 `.setupMaster()` 被调用后触发。
 
 The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
 
@@ -568,7 +568,7 @@ If accuracy is important, use `cluster.settings`.
 added: v0.7.7
 -->
 
-* `callback` {Function} Called when all workers are disconnected and handles are closed.
+* `callback` {Function} 当所有的 Worker 都断开连接并且所有的句柄都关闭后调用。
 
 Calls `.disconnect()` on each worker in `cluster.workers`.
 
@@ -599,7 +599,7 @@ added: v0.8.1
 
 * {boolean}
 
-True if the process is a master. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+True 表示当前进程为 master 进程。 这是通过 `process.env.NODE_UNIQUE_ID` 决定的。 如果 `process.env.NODE_UNIQUE_ID` 为 undefined, 则 `isMaster` 为 `true`。
 
 ## cluster.isWorker
 
@@ -609,7 +609,7 @@ added: v0.6.0
 
 * {boolean}
 
-True if the process is not a master (it is the negation of `cluster.isMaster`).
+True 表示当前进程不是 master 进程 (它是 `cluster.isMaster` 的反面)。
 
 ## cluster.schedulingPolicy
 
