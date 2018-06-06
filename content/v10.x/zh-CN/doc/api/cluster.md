@@ -57,7 +57,7 @@ Worker 进程使用 [`child_process.fork()`][] 方法产生，它们可以通过
 
 cluster 模块支持两种分发传入连接的方法。
 
-The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
+第一个(除 Windows 之外的所有平台的默认的那个)是轮询方法，master 进程侦听端口，接受新的连接并且通过轮询 Worker 的方式分发，通过一些内置的机制来避免重复加载Worker 进程。
 
 The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
 
