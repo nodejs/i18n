@@ -35,5 +35,8 @@
     "env": [
       "jest"
     ]
+  },
+  "dependencies": {
+    "request": "^2.87.0"
   }
 }
