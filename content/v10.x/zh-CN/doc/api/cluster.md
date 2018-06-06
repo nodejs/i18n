@@ -47,13 +47,13 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
+请注意，在 Windows 中，还不能为 Worker 设置命名管道服务器。
 
-## How It Works
+## 工作原理
 
 <!--type=misc-->
 
-The worker processes are spawned using the [`child_process.fork()`][] method, so that they can communicate with the parent via IPC and pass server handles back and forth.
+Worker 进程使用 [`child_process.fork()`][] 方法产生，它们可以通过 IPC 与父进程通信并来回传递服务器句柄。
 
 The cluster module supports two methods of distributing incoming connections.
 
