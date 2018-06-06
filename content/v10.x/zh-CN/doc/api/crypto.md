@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stability: 2 - Stable
+> 稳定性: 2 - 稳定的
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -1772,7 +1772,7 @@ changes:
 -->
 
 - `buffer` {Buffer|TypedArray|DataView} Must be supplied.
-- `offset` {number} **Default:** ``
+- `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - Returns: {Buffer}
 
@@ -1815,7 +1815,7 @@ changes:
 -->
 
 - `buffer` {Buffer|TypedArray|DataView} Must be supplied.
-- `offset` {number} **Default:** ``
+- `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - `callback` {Function} `function(err, buf) {}`.
 
