@@ -59,9 +59,9 @@ cluster 模块支持两种分发传入连接的方法。
 
 第一个(除 Windows 之外的所有平台的默认的那个)是轮询方法，master 进程侦听端口，接受新的连接并且通过轮询 Worker 的方式分发，通过一些内置的机制来避免重复加载Worker 进程。
 
-The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
+第二种方法 master 进程创建侦听 socket 并将其发送给有关 Worker。 然后，Worker 直接接受传入的连接。
 
-The second approach should, in theory, give the best performance. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
+从理论上来讲，第二种方法的性能表现最好。 然而，在实践中，由于操作系统调度程序的反复无常，分发往往非常不平衡。 Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
 
 Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
 
