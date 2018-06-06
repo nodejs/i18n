@@ -1,4 +1,4 @@
-# Style Guide
+# Guida di stile
 
 * Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
@@ -7,7 +7,7 @@
 * The formatting described in `.editorconfig` is preferred. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colore", ecc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Pronouns are acceptable in more colloquial documentation, like guides.
@@ -39,7 +39,7 @@
   * Preferably, make the note a new paragraph for better visual distinction.
 * Function arguments or object properties should use the following format: 
   * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** ``</code>
+  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
   * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`
