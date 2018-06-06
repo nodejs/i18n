@@ -67,15 +67,15 @@ cluster 模块支持两种分发传入连接的方法。
 
 1. `server.listen({fd: 7})` 由于消息是传递到 master 进程，所以 **父进程** 中的 file descriptor 7 将被侦听，并且传递该句柄到 worker 进程，而不是侦听 Worker 进程中关于编号为7的 file descriptor 的引用。
 2. `server.listen(handle)` 显示的句柄侦听将导致 worker 进程直接使用提供的句柄，而不是跟 master 进程通讯。
-3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 然而，在 cluster 中，每个 Worker 每次执行 `listen(0)` 时都会收到相同的 "随机" 端口。 实质上，端口第一次是随机的，但是随后是可预测的。 To listen on a unique port, generate a port number based on the cluster worker ID.
+3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 然而，在 cluster 中，每个 Worker 每次执行 `listen(0)` 时都会收到相同的 "随机" 端口。 实质上，端口第一次是随机的，但是随后是可预测的。 要侦听唯一端口，生成一个基于 cluster worker ID 的端口号。
 
-Node.js does not provide routing logic. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
+Node.js 不提供路由逻辑。 因此，设计一个应用程序是很重要的，因为它不会过多地依赖于内存中的数据对象，比如会话和登录。
 
 Because workers are all separate processes, they can be killed or re-spawned depending on a program's needs, without affecting other workers. As long as there are some workers still alive, the server will continue to accept connections. If no workers are alive, existing connections will be dropped and new connections will be refused. Node.js does not automatically manage the number of workers, however. It is the application's responsibility to manage the worker pool based on its own needs.
 
 Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
 
-## Class: Worker
+## 类: Worker
 
 <!-- YAML
 added: v0.7.0
@@ -83,7 +83,7 @@ added: v0.7.0
 
 A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
-### Event: 'disconnect'
+### 事件: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
@@ -93,11 +93,11 @@ Similar to the `cluster.on('disconnect')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('disconnect', () => {
-  // Worker has disconnected
+  // Worker已经断开连接
 });
 ```
 
-### Event: 'error'
+### 事件: 'error'
 
 <!-- YAML
 added: v0.7.3
@@ -107,7 +107,7 @@ This event is the same as the one provided by [`child_process.fork()`][].
 
 Within a worker, `process.on('error')` may also be used.
 
-### Event: 'exit'
+### 事件: 'exit'
 
 <!-- YAML
 added: v0.11.2
@@ -131,7 +131,7 @@ worker.on('exit', (code, signal) => {
 });
 ```
 
-### Event: 'listening'
+### 事件: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -149,7 +149,7 @@ cluster.fork().on('listening', (address) => {
 
 It is not emitted in the worker.
 
-### Event: 'message'
+### 事件: 'message'
 
 <!-- YAML
 added: v0.7.0
@@ -208,7 +208,7 @@ if (cluster.isMaster) {
 }
 ```
 
-### Event: 'online'
+### 事件: 'online'
 
 <!-- YAML
 added: v0.7.0
@@ -379,7 +379,7 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Returns: {boolean}
+* 返回: {boolean}
 
 Send a message to a worker or master, optionally with a handle.
 
@@ -401,7 +401,7 @@ if (cluster.isMaster) {
 }
 ```
 
-## Event: 'disconnect'
+## 事件: 'disconnect'
 
 <!-- YAML
 added: v0.7.9
@@ -419,7 +419,7 @@ cluster.on('disconnect', (worker) => {
 });
 ```
 
-## Event: 'exit'
+## 事件: 'exit'
 
 <!-- YAML
 added: v0.7.9
