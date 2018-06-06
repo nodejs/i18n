@@ -15,7 +15,7 @@
 - 修复回归和 bug。
 - 扩展测试覆盖率。
 
-## Test directory structure
+## 目录结构
 
 See [directory structure overview](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) for outline of existing test & locations. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
 
