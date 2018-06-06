@@ -1,9 +1,9 @@
-@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
+@// NB(chrisdickinson): 如果你移动这个文件, 请确保更新 @// tools/doc/html.js 文件指向到新的位置。
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [关于这些文档](documentation.html)
+* [使用方法和示例](synopsis.html)
 
 <div class="line"></div>
 
@@ -57,4 +57,4 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [邮件列表](https://groups.google.com/group/nodejs)
