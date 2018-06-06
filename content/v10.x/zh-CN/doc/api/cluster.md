@@ -66,8 +66,8 @@ cluster 模块支持两种分发传入连接的方法。
 因为 `server.listen()` 将大部分的工作都交给了 master 进程，在以下三种情况下，一个正常 Node.js 进程和一个 cluster Worker 进程之间的行为表现不同：
 
 1. `server.listen({fd: 7})` 由于消息是传递到 master 进程，所以 **父进程** 中的 file descriptor 7 将被侦听，并且传递该句柄到 worker 进程，而不是侦听 Worker 进程中关于编号为7的 file descriptor 的引用。
-2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
-3. `server.listen(0)` Normally, this will cause servers to listen on a random port. However, in a cluster, each worker will receive the same "random" port each time they do `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
+2. `server.listen(handle)` 显示的句柄侦听将导致 worker 进程直接使用提供的句柄，而不是跟 master 进程通讯。
+3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 However, in a cluster, each worker will receive the same "random" port each time they do `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
 
 Node.js does not provide routing logic. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
 
