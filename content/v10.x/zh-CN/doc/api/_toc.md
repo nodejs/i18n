@@ -7,18 +7,18 @@
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
+* [断言测试](assert.html)
+* [异步Hooks](async_hooks.html)
 * [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
+* [C++ 插件](addons.html)
+* [C/C++ 插件 - N-API](n-api.html)
+* [子进程](child_process.html)
 * [Cluster](cluster.html)
-* [Command Line Options](cli.html)
+* [命令行选项](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
 * [Debugger](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [废弃的 API](deprecations.html)
 * [DNS](dns.html)
 * [Domain](domain.html)
 * [ECMAScript Modules](esm.html)
@@ -56,5 +56,5 @@
 
 <div class="line"></div>
 
-* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
+* [GitHub 仓库和 Issue 跟踪](https://github.com/nodejs/node)
 * [邮件列表](https://groups.google.com/group/nodejs)
