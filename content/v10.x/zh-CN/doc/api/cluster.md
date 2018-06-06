@@ -4,9 +4,9 @@
 
 > 稳定性: 2 - 稳定的
 
-一个 Node.js 单实例在一个线程中运行。 To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+一个 Node.js 单实例在一个线程中运行。 为了利用多核系统，用户有事想要启动 Node.js 集群来处理负载。
 
-The cluster module allows easy creation of child processes that all share server ports.
+cluster 模块允许轻松创建所有服务器端口都共享的子进程。
 
 ```js
 const cluster = require('cluster');
