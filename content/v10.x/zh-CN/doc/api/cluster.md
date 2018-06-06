@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> 稳定性: 2 - 稳定的
 
-A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+一个 Node.js 单实例在一个线程中运行。 为了利用多核系统，用户有事想要启动 Node.js 集群来处理负载。
 
-The cluster module allows easy creation of child processes that all share server ports.
+cluster 模块允许轻松创建所有服务器端口都共享的子进程。
 
 ```js
 const cluster = require('cluster');
@@ -25,8 +25,8 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  // Workers can share any TCP connection
-  // In this case it is an HTTP server
+  // Workers 可以共享任意 TCP 连接
+  // 在这个例子中，它是一个 HTTP 服务器
   http.createServer((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
@@ -36,7 +36,7 @@ if (cluster.isMaster) {
 }
 ```
 
-Running Node.js will now share port 8000 between the workers:
+运行中的 Node.js 程序将在所有 Worker 之间共享8000端口：
 
 ```txt
 $ node server.js
@@ -47,35 +47,35 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
+请注意，在 Windows 中，还不能为 Worker 设置命名管道服务器。
 
-## How It Works
+## 工作原理
 
 <!--type=misc-->
 
-The worker processes are spawned using the [`child_process.fork()`][] method, so that they can communicate with the parent via IPC and pass server handles back and forth.
+Worker 进程使用 [`child_process.fork()`][] 方法产生，它们可以通过 IPC 与父进程通信并来回传递服务器句柄。
 
-The cluster module supports two methods of distributing incoming connections.
+cluster 模块支持两种分发传入连接的方法。
 
-The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
+第一个(除 Windows 之外的所有平台的默认的那个)是轮询方法，master 进程侦听端口，接受新的连接并且通过轮询 Worker 的方式分发，通过一些内置的机制来避免重复加载Worker 进程。
 
-The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
+第二种方法 master 进程创建侦听 socket 并将其发送给有关 Worker。 然后，Worker 直接接受传入的连接。
 
-The second approach should, in theory, give the best performance. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
+从理论上来讲，第二种方法的性能表现最好。 然而，在实践中，由于操作系统调度程序的反复无常，分发往往非常不平衡。 从以观察到的负载来看，总共8个进程当中，超过70%的连接仅在两个进程中结束。
 
-Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
+因为 `server.listen()` 将大部分的工作都交给了 master 进程，在以下三种情况下，一个正常 Node.js 进程和一个 cluster Worker 进程之间的行为表现不同：
 
-1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
-2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
-3. `server.listen(0)` Normally, this will cause servers to listen on a random port. However, in a cluster, each worker will receive the same "random" port each time they do `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
+1. `server.listen({fd: 7})` 由于消息是传递到 master 进程，所以 **父进程** 中的 file descriptor 7 将被侦听，并且传递该句柄到 worker 进程，而不是侦听 Worker 进程中关于编号为7的 file descriptor 的引用。
+2. `server.listen(handle)` 显示的句柄侦听将导致 worker 进程直接使用提供的句柄，而不是跟 master 进程通讯。
+3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 然而，在 cluster 中，每个 Worker 每次执行 `listen(0)` 时都会收到相同的 "随机" 端口。 实质上，端口第一次是随机的，但是随后是可预测的。 要侦听唯一端口，生成一个基于 cluster worker ID 的端口号。
 
-Node.js does not provide routing logic. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
+Node.js 不提供路由逻辑。 因此，设计一个应用程序是很重要的，因为它不会过多地依赖于内存中的数据对象，比如会话和登录。
 
 Because workers are all separate processes, they can be killed or re-spawned depending on a program's needs, without affecting other workers. As long as there are some workers still alive, the server will continue to accept connections. If no workers are alive, existing connections will be dropped and new connections will be refused. Node.js does not automatically manage the number of workers, however. It is the application's responsibility to manage the worker pool based on its own needs.
 
 Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
 
-## Class: Worker
+## 类: Worker
 
 <!-- YAML
 added: v0.7.0
@@ -83,7 +83,7 @@ added: v0.7.0
 
 A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
-### Event: 'disconnect'
+### 事件: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
@@ -93,11 +93,11 @@ Similar to the `cluster.on('disconnect')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('disconnect', () => {
-  // Worker has disconnected
+  // Worker已经断开连接
 });
 ```
 
-### Event: 'error'
+### 事件: 'error'
 
 <!-- YAML
 added: v0.7.3
@@ -107,7 +107,7 @@ This event is the same as the one provided by [`child_process.fork()`][].
 
 Within a worker, `process.on('error')` may also be used.
 
-### Event: 'exit'
+### 事件: 'exit'
 
 <!-- YAML
 added: v0.11.2
@@ -131,7 +131,7 @@ worker.on('exit', (code, signal) => {
 });
 ```
 
-### Event: 'listening'
+### 事件: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -149,7 +149,7 @@ cluster.fork().on('listening', (address) => {
 
 It is not emitted in the worker.
 
-### Event: 'message'
+### 事件: 'message'
 
 <!-- YAML
 added: v0.7.0
@@ -208,7 +208,7 @@ if (cluster.isMaster) {
 }
 ```
 
-### Event: 'online'
+### 事件: 'online'
 
 <!-- YAML
 added: v0.7.0
@@ -343,7 +343,7 @@ added: v0.9.12
 
 * `signal` {string} Name of the kill signal to send to the worker process.
 
-This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code ``.
+This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
 
 Causes `.exitedAfterDisconnect` to be set.
 
@@ -379,7 +379,7 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Returns: {boolean}
+* 返回: {boolean}
 
 Send a message to a worker or master, optionally with a handle.
 
@@ -401,7 +401,7 @@ if (cluster.isMaster) {
 }
 ```
 
-## Event: 'disconnect'
+## 事件: 'disconnect'
 
 <!-- YAML
 added: v0.7.9
@@ -419,7 +419,7 @@ cluster.on('disconnect', (worker) => {
 });
 ```
 
-## Event: 'exit'
+## 事件: 'exit'
 
 <!-- YAML
 added: v0.7.9
@@ -443,7 +443,7 @@ cluster.on('exit', (worker, code, signal) => {
 
 See [`child_process` event: `'exit'`][].
 
-## Event: 'fork'
+## 事件: 'fork'
 
 <!-- YAML
 added: v0.7.0
@@ -471,7 +471,7 @@ cluster.on('exit', (worker, code, signal) => {
 });
 ```
 
-## Event: 'listening'
+## 事件: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -491,14 +491,14 @@ cluster.on('listening', (worker, address) => {
 });
 ```
 
-The `addressType` is one of:
+`addressType` 为下列之一：
 
 * `4` (TCPv4)
 * `6` (TCPv6)
 * `-1` (unix domain socket)
-* `'udp4'` or `'udp6'` (UDP v4 or v6)
+* `'udp4'` 或 `'udp6'` (UDP v4 或 v6)
 
-## Event: 'message'
+## 事件: 'message'
 
 <!-- YAML
 added: v2.5.0
@@ -532,7 +532,7 @@ cluster.on('message', (worker, message, handle) => {
 });
 ```
 
-## Event: 'online'
+## 事件: 'online'
 
 <!-- YAML
 added: v0.7.0
@@ -548,7 +548,7 @@ cluster.on('online', (worker) => {
 });
 ```
 
-## Event: 'setup'
+## 事件: 'setup'
 
 <!-- YAML
 added: v0.7.1
@@ -556,7 +556,7 @@ added: v0.7.1
 
 * `settings` {Object}
 
-Emitted every time `.setupMaster()` is called.
+每当 `.setupMaster()` 被调用后触发。
 
 The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
 
@@ -568,7 +568,7 @@ If accuracy is important, use `cluster.settings`.
 added: v0.7.7
 -->
 
-* `callback` {Function} Called when all workers are disconnected and handles are closed.
+* `callback` {Function} 当所有的 Worker 都断开连接并且所有的句柄都关闭后调用。
 
 Calls `.disconnect()` on each worker in `cluster.workers`.
 
@@ -599,7 +599,7 @@ added: v0.8.1
 
 * {boolean}
 
-True if the process is a master. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+True 表示当前进程为 master 进程。 这是通过 `process.env.NODE_UNIQUE_ID` 决定的。 如果 `process.env.NODE_UNIQUE_ID` 为 undefined, 则 `isMaster` 为 `true`。
 
 ## cluster.isWorker
 
@@ -609,7 +609,7 @@ added: v0.6.0
 
 * {boolean}
 
-True if the process is not a master (it is the negation of `cluster.isMaster`).
+True 表示当前进程不是 master 进程 (它是 `cluster.isMaster` 的反面)。
 
 ## cluster.schedulingPolicy
 
