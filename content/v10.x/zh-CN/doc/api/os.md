@@ -35,7 +35,7 @@ added: v0.5.0
 
 目前可能的值有: `'arm'`， `'arm64'`，`'ia32'`， `'mips'`， `'mipsel'`，`'ppc'`，`'ppc64'`，`'s390'`，`'s390x'`，`'x32'` 和`'x64'`。
 
-等价于 [` 进程. arch `] []。
+等同于 [`process.arch`][]。
 
 ## os.constants
 
