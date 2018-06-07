@@ -320,7 +320,7 @@ The `replServer.displayPrompt()` method readies the REPL instance for input from
 
 When multi-line input is being entered, an ellipsis is printed rather than the 'prompt'.
 
-When `preserveCursor` is `true`, the cursor placement will not be reset to ``.
+When `preserveCursor` is `true`, the cursor placement will not be reset to `0`.
 
 The `replServer.displayPrompt` method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
 
