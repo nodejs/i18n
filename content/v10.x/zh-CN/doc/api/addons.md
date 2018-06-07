@@ -10,13 +10,13 @@ Node.js 插件是动态链接的共享对象，用 C++ 编写，可以使用 [`r
 
 * V8：Node.js 目前用于提供 JavaScript 实现的 C++ 库。 V8 提供了创建对象、调用函数等机制。 V8 的 API 主要记录在`v8.h` 的头文件中（Node.js 源代码中的 deps/v8/include/v8.h），也可以在查看 V8 的 [在线文档](https://v8docs.nodesource.com/)。
 
-* [libuv](https://github.com/libuv/libuv)：实现了 Node.js 的事件循环、Worker线程、以及平台所有的的异步操作的 C 库。 It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv)：实现了 Node.js 的事件循环、Worker线程、以及平台所有的的异步操作的 C 库。 它也是一个跨平台的抽象库，使所有主流操作系统中可以像 POSIX 一样轻松访问常用的系统任务，比如与文件系统、socket、定时器、以及系统事件的交互。 libuv 还提供了类似 pthreads 的线程抽象，可用于强化更复杂的需要超出标准事件循环的异步插件。 鼓励插件开发者思考如何在 libuv 的非阻塞系统操作、worker线程、或自定义的 libuv 线程中通过降低工作负载在 I/O 或者其他时间密集型任务中避免阻塞事件循环。
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* 内置的 Node.js 库。 Node.js 自身开放了一些插件可以使用的 C++ API，其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js 包含一些其他的静态链接库，如 OpenSSL。 这些库位于 Node.js 源代码中的 `deps/` 目录。 只有 libuv、V8和 zlib 符号是通过 Node.js 特意重新开放的，并且可以通过插件用于各种不同的场景。 更多信息可查看 [链接到 Node.js 自身的依赖](#addons_linking_to_node_js_own_dependencies) 。
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+下面所有的示例都可以 [下载](https://github.com/nodejs/node-addon-examples) ，并且可以作为学习插件开发的起点。
 
 ## Hello world
 
@@ -55,20 +55,20 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+注意，所有的 Node.js 插件必须导出一个如下模式的初始化函数：
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+`NODE_MODULE` 后面没有分号，因为它不是函数 (参见 `node.h`)。
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+`module_name` 必须匹配最终的二进制文件名 (不包括 `.node` 后缀)。
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+在 `hello.cc` 示例中，初始化函数是 `init` ，插件模块的名字是 `addon`。
 
-### Building
+### 构建
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
