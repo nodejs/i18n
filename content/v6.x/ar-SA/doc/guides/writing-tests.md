@@ -2,7 +2,7 @@
 
 ## What is a test?
 
-Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `` on success. A test will fail if:
+Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `0` on success. A test will fail if:
 
 - It exits by setting `process.exitCode` to a non-zero number. 
   - This is usually done by having an assertion throw an uncaught Error.
