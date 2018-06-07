@@ -244,7 +244,7 @@ Updates the cipher with `data`. If the `inputEncoding` argument is given,
 its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data`
 argument is a string using the specified encoding. If the `inputEncoding`
 argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or
-`DataView`.  If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then
+`DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then
 `inputEncoding` is ignored.
 
 The `outputEncoding` specifies the output format of the enciphered
@@ -371,6 +371,14 @@ received _authentication tag_. If no tag is provided, or if the cipher text
 has been tampered with, [`decipher.final()`][] will throw, indicating that the
 cipher text should be discarded due to failed authentication.
 
+Note that this Node.js version does not verify the length of GCM authentication
+tags. Such a check *must* be implemented by applications and is crucial to the
+authenticity of the encrypted data, otherwise, an attacker can use an
+arbitrarily short authentication tag to increase the chances of successfully
+passing authentication (up to 0.39%). It is highly recommended to associate one
+of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit
+authentication tags of that length, see [NIST SP 800-38D][].
+
 The `decipher.setAuthTag()` method must be called before
 [`decipher.final()`][].
 
@@ -487,7 +495,7 @@ added: v0.5.0
 - `encoding` {string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`, which can
-be `'latin1'`, `'hex'`, or `'base64'`. If  `encoding` is provided a string is
+be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is
 returned; otherwise a [`Buffer`][] is returned.
 
 ### diffieHellman.getPrime([encoding])
@@ -1206,6 +1214,9 @@ vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting
 Adversaries][] for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
+<!-- YAML
+added: v0.1.94
+-->
 - `algorithm` {string}
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
@@ -1281,8 +1292,8 @@ recent OpenSSL releases, `openssl list-cipher-algorithms` will display the
 available cipher algorithms.
 
 The `key` is the raw key used by the `algorithm` and `iv` is an
-[initialization vector][]. Both arguments must be `'utf8'` encoded strings or
-[buffers][`Buffer`].
+[initialization vector][]. Both arguments must be `'utf8'` encoded strings,
+[Buffers][`Buffer`], `TypedArray`, or `DataView`s.
 
 ### crypto.createDiffieHellman(prime[, primeEncoding][, generator][, generatorEncoding])
 <!-- YAML
@@ -2288,6 +2299,7 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
 [HTML5's `keygen` element]: https://www.w3.org/TR/html5/forms.html#the-keygen-element
 [NIST SP 800-131A]: http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf
 [NIST SP 800-132]: http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf
+[NIST SP 800-38D]: http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
 [Nonce-Disrespecting Adversaries]: https://github.com/nonce-disrespect/nonce-disrespect
 [OpenSSL's SPKAC implementation]: https://www.openssl.org/docs/man1.0.2/apps/spkac.html
 [RFC 2412]: https://www.rfc-editor.org/rfc/rfc2412.txt
