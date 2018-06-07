@@ -229,7 +229,7 @@ $ git push <remote> <vx.y.z>
 On release proposal branch, edit `src/node_version.h` again and:
 
 * Increment `NODE_PATCH_VERSION` by one
-* Change `NODE_VERSION_IS_RELEASE` back to ``
+* Change `NODE_VERSION_IS_RELEASE` back to `0`
 
 Commit this change with the following commit message format:
 
@@ -243,7 +243,7 @@ This sets up the branch so that nightly builds are produced with the next versio
 
 Merge your release proposal branch into the stable branch that you are releasing from (e.g. `v8.x`), and rebase the corresponding staging branch (`v8.x-staging`) on top of that.
 
-Cherry-pick the release commit to `master`. After cherry-picking, edit `src/node_version.h` to ensure the version macros contain whatever values were previously on `master`. `NODE_VERSION_IS_RELEASE` should be ``.
+Cherry-pick the release commit to `master`. After cherry-picking, edit `src/node_version.h` to ensure the version macros contain whatever values were previously on `master`. `NODE_VERSION_IS_RELEASE` should be `0`.
 
 ### 12. Promote and Sign the Release Builds
 
