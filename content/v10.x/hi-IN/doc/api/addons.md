@@ -665,7 +665,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+`myobject.cc` में कार्यान्वयन पिछले उदाहरण के समान है:
 
 ```cpp
 // myobject.cc
@@ -752,7 +752,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+एक बार फिर, इस उदाहरण को बनाने के लिए, `myobject.cc` फ़ाइल को `binding.gyp` में जोड़ा जाना चाहिए:
 
 ```json
 {
@@ -768,7 +768,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+इसके साथ परीक्षण करें:
 
 ```js
 // test.js
@@ -793,7 +793,7 @@ console.log(obj2.plusOne());
 
 ### Passing wrapped objects around
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+C++ ऑब्जेक्ट्स को लपेटने और वापस करने के अलावा, Node.js हेल्पर फ़ंक्शन `node::ObjectWrap::Unwrap` के साथ उन्हें अनपढ़ करके लपेटकर ऑब्जेक्ट पास करना संभव है। निम्नलिखित उदाहरण एक फ़ंक्शन `add()` दिखाते हैं जो इनपुट तर्क के रूप में दो `MyObject` ऑब्जेक्ट्स ले सकता है:
 
 ```cpp
 // addon.cc
@@ -839,7 +839,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+`myobject.h` में, ऑब्जेक्ट को खोलने के बाद निजी मानों तक पहुंच की अनुमति देने के लिए एक नई सार्वजनिक विधि जोड़ दी जाती है।
 
 ```cpp
 // myobject.h
@@ -871,7 +871,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+`myobject.cc` का कार्यान्वयन पहले जैसा ही है:
 
 ```cpp
 // myobject.cc
@@ -945,7 +945,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+इसके साथ परीक्षण करें:
 
 ```js
 // test.js
@@ -961,20 +961,20 @@ console.log(result);
 
 ### AtExit hooks
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+एक `AtExit` हुक एक ऐसा फ़ंक्शन है जिसे Node.js इवेंट लूप समाप्त होने के बाद बुलाया जाता है लेकिन JavaScript VM समाप्त होने से पहले और Node.js बंद हो जाता है। `AtExit` हुक `node::AtExit` API का उपयोग करके पंजीकृत हैं।
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> बाहर निकलने पर कॉल करने के लिए फ़ंक्शन के लिए एक सूचक।
+* `args` <span class="type">&lt;void\*&gt;</span> बाहर निकलने पर कॉलबैक पास करने के लिए एक सूचक।
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+रजिस्टर्स इवेंट लूप समाप्त होने के बाद चलने वाले हुक से बाहर निकलते हैं लेकिन VM मारे जाने से पहले।
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` दो पैरामीटर लेता है: बाहर निकलने के लिए callback फ़ंक्शन के लिए पॉइंटर, और उस callback को पारित किए गए संदर्भित डेटा को पॉइंटर।
 
-Callbacks are run in last-in first-out order.
+कॉलबैक last-in first-out ऑर्डर में चलाए जाते हैं।
 
-The following `addon.cc` implements `AtExit`:
+निम्नलिखित `addon.cc` लागू `AtExit`:
 
 ```cpp
 // addon.cc
@@ -1025,7 +1025,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+JavaScript में चलाकर परीक्षण करें:
 
 ```js
 // test.js
