@@ -614,7 +614,7 @@ The times in the stat object have the following semantics:
 * `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
 * `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
 * `ctime` "Change Time" - Time when file status was last changed (inode data modification). Changed by the chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2) system calls.
-* `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp ``). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
+* `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
 
 Prior to Node.js v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
 
@@ -1016,7 +1016,7 @@ An easier method of constructing the `mode` is to use a sequence of three octal 
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
-| ``     | no permission            |
+| `0`    | no permission            |
 
 For example, the octal value `0o765` means:
 
@@ -1139,7 +1139,7 @@ added: v8.5.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Default:** ``.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 * `callback` {Function}
 
 Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
@@ -1180,7 +1180,7 @@ added: v8.5.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Default:** ``.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 
 Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
@@ -1600,7 +1600,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `len` {integer} **Default:** ``
+* `len` {integer} **Default:** `0`
 * `callback` {Function} 
   * `err` {Error}
 
@@ -1652,7 +1652,7 @@ added: v0.8.6
 -->
 
 * `fd` {integer}
-* `len` {integer} **Default:** ``
+* `len` {integer} **Default:** `0`
 
 Synchronous ftruncate(2). Returns `undefined`.
 
@@ -2679,7 +2679,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `len` {integer} **Default:** ``
+* `len` {integer} **Default:** `0`
 * `callback` {Function} 
   * `err` {Error}
 
@@ -2694,7 +2694,7 @@ added: v0.8.6
 -->
 
 * `path` {string|Buffer|URL}
-* `len` {integer} **Default:** ``
+* `len` {integer} **Default:** `0`
 
 Synchronous truncate(2). Returns `undefined`. A file descriptor can also be passed as the first argument. In this case, `fs.ftruncateSync()` is called.
 
@@ -3345,7 +3345,7 @@ Asynchronous fsync(2). The `Promise` is resolved with no arguments upon success.
 added: v10.0.0
 -->
 
-* `len` {integer} **Default:** ``
+* `len` {integer} **Default:** `0`
 * Returns: {Promise}
 
 Truncates the file then resolves the `Promise` with no arguments upon success.
@@ -3525,7 +3525,7 @@ added: v10.0.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Default:** ``.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 * Returns: {Promise}
 
 Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. The `Promise` will be resolved with no arguments upon success.
@@ -3626,7 +3626,7 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* `len` {integer} **Default:** ``
+* `len` {integer} **Default:** `0`
 * Returns: {Promise}
 
 Truncates the file represented by `filehandle` then resolves the `Promise` with no arguments upon success.
@@ -3933,7 +3933,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `len` {integer} **Default:** ``
+* `len` {integer} **Default:** `0`
 * Returns: {Promise}
 
 Truncates the `path` then resolves the `Promise` with no arguments upon success. The `path` *must* be a string or `Buffer`.
