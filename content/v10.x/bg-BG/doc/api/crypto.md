@@ -1772,7 +1772,7 @@ changes:
 -->
 
 - `buffer` {Buffer|TypedArray|DataView} Must be supplied.
-- `offset` {number} **Default:** ``
+- `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - Returns: {Buffer}
 
@@ -1815,7 +1815,7 @@ changes:
 -->
 
 - `buffer` {Buffer|TypedArray|DataView} Must be supplied.
-- `offset` {number} **Default:** ``
+- `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - `callback` {Function} `function(err, buf) {}`.
 
