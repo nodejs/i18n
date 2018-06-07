@@ -269,7 +269,7 @@ changes:
 > Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** ``.
+* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
@@ -426,7 +426,7 @@ changes:
 -->
 
 * `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** ``.
+* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
 * `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`.
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
@@ -660,7 +660,7 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** ``.
+* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
@@ -814,7 +814,7 @@ type: property
 name: [index]
 -->
 
-The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `` and `255` (decimal).
+The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
 
 This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
 
@@ -859,15 +859,15 @@ changes:
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** ``.
+* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`.
 * `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`.
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** ``.
+* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`.
 * `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`].
 * Returns: {integer}
 
 Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
 
-* `` is returned if `target` is the same as `buf`
+* `0` is returned if `target` is the same as `buf`
 * `1` is returned if `target` should come *before* `buf` when sorted.
 * `-1` is returned if `target` should come *after* `buf` when sorted.
 
@@ -914,8 +914,8 @@ added: v0.1.90
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** ``.
-* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** ``.
+* `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
+* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
 * `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`].
 * Returns: {integer} The number of bytes copied.
 
@@ -1032,7 +1032,7 @@ changes:
 -->
 
 * `value` {string|Buffer|integer} The value with which to fill `buf`.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** ``.
+* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
 * `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
 * `encoding` {string} The encoding for `value` if `value` is a string. **Default:** `'utf8'`.
 * Returns: {Buffer} A reference to `buf`.
@@ -1079,7 +1079,7 @@ added: v5.3.0
 -->
 
 * `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** ``.
+* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`.
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
@@ -1120,7 +1120,7 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** ``.
+* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
 * `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
 * Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
@@ -1128,7 +1128,7 @@ If `value` is:
 
 * a string, `value` is interpreted according to the character encoding in `encoding`.
 * a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
-* a number, `value` will be interpreted as an unsigned 8-bit integer value between `` and `255`.
+* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1156,7 +1156,7 @@ console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
 
 If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
 
-If `byteOffset` is not a number, it will be coerced to a number. If the result of coercion is `NaN` or ``, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
+If `byteOffset` is not a number, it will be coerced to a number. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1646,7 +1646,7 @@ changes:
                  calculations with them.
 -->
 
-* `start` {integer} Where the new `Buffer` will start. **Default:** ``.
+* `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
 * Returns: {Buffer}
 
@@ -1813,7 +1813,7 @@ added: v0.1.90
 -->
 
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
-* `start` {integer} The byte offset to start decoding at. **Default:** ``.
+* `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
 * Returns: {string}
 
@@ -1887,7 +1887,7 @@ added: v0.1.90
 -->
 
 * `string` {string} String to write to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** ``.
+* `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`.
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`.
 * `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`.
 * Returns: {integer} Number of bytes written.
