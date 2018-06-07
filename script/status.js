@@ -1,8 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 const request = require('request')
+require('dotenv-safe').load()
 
-const projectKey
+const projectKey = process.env.CROWDIN_KEY
 
 const url = `https://api.crowdin.com/api/project/nodejs/status?key=${projectKey}&json`
 
