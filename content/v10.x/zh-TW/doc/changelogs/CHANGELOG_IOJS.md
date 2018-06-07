@@ -2734,7 +2734,7 @@ https://iojs.org/api/util.html
 * Added `util.debuglog`.
 * Added a plethora of new type-testing methods. See [the docs](https://iojs.org/api/util.html).
 * Updated `util.format` to receive several changes: 
-  * `-0` is now displayed as such, instead of as ``.
+  * `-0` is now displayed as such, instead of as `0`.
   * Anything that is `instanceof Error` is now formatted as an error.
   * Circular references in JavaScript objects are now handled for the `%j` specifier.
   * Custom `inspect` functions are now allowed to return an object.
