@@ -295,7 +295,7 @@ process.on('SIGTERM', handle);
 * `'SIGSTOP'` cannot have a listener installed.
 * `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised artificially using kill(2), inherently leave the process in a state from which it is not safe to attempt to call JS listeners. Doing so might lead to the process hanging in an endless loop, since listeners attached using `process.on()` are called asynchronously and therefore unable to correct the underlying problem.
 
-Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
+Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
 
 ## process.abort()
 
@@ -810,9 +810,9 @@ The `process.execPath` property returns the absolute pathname of the executable 
 added: v0.1.13
 -->
 
-* `code` {integer} The exit code. **Default:** ``.
+* `code` {integer} The exit code. **Default:** `0`.
 
-The `process.exit()` method instructs Node.js to terminate the process synchronously with an exit status of `code`. If `code` is omitted, exit uses either the 'success' code `` or the value of `process.exitCode` if it has been set. Node.js will not terminate until all the [`'exit'`] event listeners are called.
+The `process.exit()` method instructs Node.js to terminate the process synchronously with an exit status of `code`. If `code` is omitted, exit uses either the 'success' code `0` or the value of `process.exitCode` if it has been set. Node.js will not terminate until all the [`'exit'`] event listeners are called.
 
 To exit with a 'failure' code:
 
@@ -1020,7 +1020,7 @@ The `process.kill()` method sends the `signal` to the process identified by `pid
 
 Signal names are strings such as `'SIGINT'` or `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
 
-This method will throw an error if the target `pid` does not exist. As a special case, a signal of `` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
+This method will throw an error if the target `pid` does not exist. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
 
 Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
@@ -1437,7 +1437,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 * {Stream}
 
-The `process.stdin` property returns a stream connected to `stdin` (fd ``). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
+The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
 
 ```js
 process.stdin.setEncoding('utf8');
@@ -1628,7 +1628,7 @@ Will generate an object similar to:
 
 ## Exit Codes
 
-Node.js will normally exit with a `` status code when no more async operations are pending. The following status codes are used in other cases:
+Node.js will normally exit with a `0` status code when no more async operations are pending. The following status codes are used in other cases:
 
 * `1` **Uncaught Fatal Exception** - There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2` - Unused (reserved by Bash for builtin misuse)
