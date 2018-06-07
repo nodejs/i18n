@@ -17,7 +17,8 @@
   "scripts": {
     "collect": "node script/collect.js",
     "upload-crowdin-glossary": "node script/upload-crowdin-glossary.js",
-    "test": "jest && standard --fix"
+    "test": "jest && standard --fix",
+    "status": "script/status.js"
   },
   "devDependencies": {
     "builtins": "^2.0.0",
@@ -27,6 +28,7 @@
     "fs-extra": "^5.0.0",
     "globals": "^11.5.0",
     "jest": "^22.4.3",
+    "request": "^2.87.0",
     "semver": "^5.5.0",
     "standard": "^11.0.1",
     "walk-sync": "^0.3.2"
@@ -35,5 +37,6 @@
     "env": [
       "jest"
     ]
-  }
+  },
+  "dependencies": {}
 }
