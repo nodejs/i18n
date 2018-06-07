@@ -1564,7 +1564,7 @@ added: v7.10.0
 -->
 
 - `buffer` {Buffer|Uint8Array} Must be supplied.
-- `offset` {number} Defaults to ``.
+- `offset` {number} Defaults to `0`.
 - `size` {number} Defaults to `buffer.length - offset`.
 
 Synchronous version of [`crypto.randomFill()`][].
@@ -1590,7 +1590,7 @@ added: v7.10.0
 -->
 
 - `buffer` {Buffer|Uint8Array} Must be supplied.
-- `offset` {number} Defaults to ``.
+- `offset` {number} Defaults to `0`.
 - `size` {number} Defaults to `buffer.length - offset`.
 - `callback` {Function} `function(err, buf) {}`.
 
