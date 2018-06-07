@@ -179,9 +179,9 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 ## Addon उदाहरण
 
-निम्न कुछ उदाहरण दिए गए हैं जो addon डेवलपर्स को शुरू करने में मदद करने के लिए लक्षित हैं। उदाहरण V8 API का उपयोग करते हैं। Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+निम्न कुछ उदाहरण दिए गए हैं जो addon डेवलपर्स को शुरू करने में मदद करने के लिए लक्षित हैं। उदाहरण V8 API का उपयोग करते हैं। Handles, scopes, function templates इत्यादि जैसे कई अवधारणाओं के स्पष्टीकरण के लिए विभिन्न V8 कॉलों और V8 की [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) के साथ ऑनलाइन [V8 reference](https://v8docs.nodesource.com/) का संदर्भ लें।
 
-Each of these examples using the following `binding.gyp` file:
+निम्न में से प्रत्येक उदाहरण निम्न`binding.gyp` फ़ाइल का उपयोग कर रहा है:
 
 ```json
 {
@@ -194,13 +194,13 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+ऐसे मामलों में जहां एक से अधिक `.cc` फ़ाइल है, बस `sources` array में अतिरिक्त फ़ाइल नाम जोड़ें:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+एक बार `binding.gyp` फ़ाइल के तैयार हो जाने के बाद, उदाहरण addons को कॉन्फ़िगर किया जा सकता है और `node-gyp` का उपयोग करके बनाया जा सकता है:
 
 ```console
 $ node-gyp configure build
@@ -208,9 +208,9 @@ $ node-gyp configure build
 
 ### Function arguments
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Addons आमतौर पर ऑब्जेक्ट्स और फ़ंक्शंस का प्रकट करेंगे जिन्हें JavaScript द्वारा Node.js. के भीतर चलाया जा सकता है। जब JavaScript से फ़ंक्शन लागू किए जाते हैं, तो input arguments and return value को C/C ++ कोड से मैप किया जाना चाहिए।
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+निम्न उदाहरण JavaScript से पारित function arguments को कैसे पढ़ा जाए और परिणाम कैसे वापस करें:
 
 ```cpp
 // addon.cc
@@ -266,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+संकलित हो जाने के बाद, उदाहरण addon की आवश्यकता हो सकती है और Node.js के भीतर से उपयोग की जा सकती है:
 
 ```js
 // test.js
@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Addons के भीतर C++ फ़ंक्शन में JavaScript फ़ंक्शंस पास करने और वहां से निष्पादित करने की एक यह सामान्य प्रथा है। निम्न उदाहरण बताता है कि इस तरह के callback का आह्वान कैसे करें:
 
 ```cpp
 // addon.cc
@@ -311,9 +311,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+ध्यान दें कि यह उदाहरण `Init()` के two-argument फ़ॉर्म का उपयोग करता है जो second argument के रूप में पूर्ण `module` ऑब्जेक्ट को प्राप्त करता है। यह addon को `exports` के अधिकार के रूप में फ़ंक्शन जोड़ने की बजाय एक ही फ़ंक्शन के साथ `exports` को पूरी तरह ओवरराइट करने की अनुमति देता है।
 
-To test it, run the following JavaScript:
+इसका परीक्षण करने के लिए, निम्न JavaScript चलाएं:
 
 ```js
 // test.js
@@ -325,11 +325,11 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+ध्यान दें कि, इस उदाहरण में, callback फ़ंक्शन को synchronize किया जाता है।
 
 ### Object factory
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+निम्न उदाहरणों में दिखाए गए Addons के अनुसार C++ फ़ंक्शन के भीतर से नई ऑब्जेक्ट्स बना और वापस कर सकते हैं। एक ऑब्जेक्ट बनाया जाता है और एक अधिकार `msg` के साथ लौटाया जाता है जो string को `createObject()` पर पारित करता है:
 
 ```cpp
 // addon.cc
@@ -362,7 +362,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+JavaScript में इसका परीक्षण करने के लिए:
 
 ```js
 // test.js
@@ -376,7 +376,7 @@ console.log(obj1.msg, obj2.msg);
 
 ### Function factory
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+एक और आम परिदृश्य JavaScript फ़ंक्शंस बना रहा है जो C++ फ़ंक्शंस को सम्मिलित कर लेता है और उन्हें वापस JavaScript को भेज देता है:
 
 ```cpp
 // addon.cc
@@ -419,7 +419,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+परीक्षा करे:
 
 ```js
 // test.js
@@ -432,7 +432,7 @@ console.log(fn());
 
 ### Wrapping C++ objects
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+C ++ objects/classes को इस तरह से सम्मिलित करना भी संभव है जो JavaScript `new` ऑपरेटर का उपयोग करके नए उदाहरण बनाए जाने की अनुमति देता है:
 
 ```cpp
 // addon.cc
@@ -453,7 +453,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+फिर, `myobject.h` में, रैपर वर्ग `node::ObjectWrap` से प्राप्त होता है:
 
 ```cpp
 // myobject.h
@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+`myobject.cc` में, उन विभिन्न विधियों को लागू करें जिन्हें प्रकट किया जाना है। नीचे, विधि `plusOne()` इसे कन्स्ट्रक्टर के प्रोटोटाइप में जोड़कर प्रकट किया गया है:
 
 ```cpp
 // myobject.cc
@@ -561,7 +561,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+इस उदाहरण को बनाने के लिए, `myobject.cc` फ़ाइल को `binding.gyp` में जोड़ा जाना चाहिए:
 
 ```json
 {
@@ -577,7 +577,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+इसके साथ परीक्षण करें:
 
 ```js
 // test.js
@@ -594,7 +594,7 @@ console.log(obj.plusOne());
 
 ### Factory of wrapped objects
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+वैकल्पिक रूप से, जावास्क्रिप्ट `new` ऑपरेटर का उपयोग करके स्पष्ट रूप से ऑब्जेक्ट उदाहरण बनाने से बचने के लिए फ़ैक्टरी पैटर्न का उपयोग करना संभव है:
 
 ```js
 const obj = addon.createObject();
@@ -602,7 +602,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+सबसे पहले, `createObject()` विधि `addon.cc` में लागू की गई है:
 
 ```cpp
 // addon.cc
@@ -633,7 +633,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+`myobject.h` में, स्थिर विधि `NewInstance()` ऑब्जेक्ट को तुरंत चालू करने के लिए जोड़ा जाता है। यह विधि जावास्क्रिप्ट में `new` का उपयोग करने की जगह लेती है:
 
 ```cpp
 // myobject.h
