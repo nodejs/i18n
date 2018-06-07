@@ -16,7 +16,7 @@ Node.js 插件是动态链接的共享对象，用 C++ 编写，可以使用 [`r
 
 * Node.js 包含一些其他的静态链接库，如 OpenSSL。 这些库位于 Node.js 源代码中的 `deps/` 目录。 只有 libuv、V8和 zlib 符号是通过 Node.js 特意重新开放的，并且可以通过插件用于各种不同的场景。 更多信息可查看 [链接到 Node.js 自身的依赖](#addons_linking_to_node_js_own_dependencies) 。
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+下面所有的示例都可以 [下载](https://github.com/nodejs/node-addon-examples) ，并且可以作为学习插件开发的起点。
 
 ## Hello world
 
@@ -55,20 +55,20 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+注意，所有的 Node.js 插件必须导出一个如下模式的初始化函数：
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+`NODE_MODULE` 后面没有分号，因为它不是函数 (参见 `node.h`)。
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+`module_name` 必须匹配最终的二进制文件名 (不包括 `.node` 后缀)。
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+在 `hello.cc` 示例中，初始化函数是 `init` ，插件模块的名字是 `addon`。
 
-### Building
+### 构建
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
