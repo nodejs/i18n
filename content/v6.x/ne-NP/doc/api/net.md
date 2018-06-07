@@ -203,7 +203,7 @@ added: v0.1.90
 
 * Returns: {net.Server}
 
-Begin accepting connections on the specified `port` and `hostname`. If the `hostname` is omitted, the server will accept connections on any IPv6 address (`::`) when IPv6 is available, or any IPv4 address (`0.0.0.0`) otherwise. Omit the port argument, or use a port value of ``, to have the operating system assign a random port, which can be retrieved by using `server.address().port` after the `'listening'` event has been emitted.
+Begin accepting connections on the specified `port` and `hostname`. If the `hostname` is omitted, the server will accept connections on any IPv6 address (`::`) when IPv6 is available, or any IPv4 address (`0.0.0.0`) otherwise. Omit the port argument, or use a port value of `0`, to have the operating system assign a random port, which can be retrieved by using `server.address().port` after the `'listening'` event has been emitted.
 
 Backlog is the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
 
@@ -587,7 +587,7 @@ added: v0.1.92
 
 Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket. `enable` defaults to `false`.
 
-Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting 0 for initialDelay will leave the value unchanged from the default (or previous) setting. Defaults to ``.
+Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting 0 for initialDelay will leave the value unchanged from the default (or previous) setting. Defaults to `0`.
 
 ### socket.setNoDelay([noDelay])
 
