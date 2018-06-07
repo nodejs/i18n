@@ -14,7 +14,7 @@ Node.js 插件是动态链接的共享对象，用 C++ 编写，可以使用 [`r
 
 * 内置的 Node.js 库。 Node.js 自身开放了一些插件可以使用的 C++ API，其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js 包含一些其他的静态链接库，如 OpenSSL。 These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js 包含一些其他的静态链接库，如 OpenSSL。 这些库位于 Node.js 源代码中的 `deps/` 目录。 只有 libuv、V8和 zlib 符号是通过 Node.js 特意重新开放的，并且可以通过插件用于各种不同的场景。 更多信息可查看 [链接到 Node.js 自身的依赖](#addons_linking_to_node_js_own_dependencies) 。
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
