@@ -16,6 +16,7 @@
   "license": "MIT",
   "scripts": {
     "collect": "node script/collect.js",
+    "fetch:releases": "curl https://api.github.com/repos/nodejs/node/releases > releases.json",
     "upload-crowdin-glossary": "node script/upload-crowdin-glossary.js",
     "test": "jest && standard --fix"
   },
