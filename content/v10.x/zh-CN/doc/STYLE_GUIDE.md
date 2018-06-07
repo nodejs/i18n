@@ -4,8 +4,8 @@
   * 文件名的字下线“_”仅当文件名出现在文档描述的主题中才允许使用（例如 `child_process`）。
   * 某些文件是例外，例如顶级 markdown 文件。
 * Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+* 首选 `. editorconfig ` 中描述的格式。 
+  * 某些编辑器可以使用 [插件](http://editorconfig.org/#download) 自动应用这些规则。
 * Changes to documentation should be checked with `make lint-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
