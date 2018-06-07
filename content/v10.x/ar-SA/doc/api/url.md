@@ -306,7 +306,7 @@ console.log(myURL.port);
 // Prints 1234
 ```
 
-The port value may be set as either a number or as a string containing a number in the range `` to `65535` (inclusive). Setting the value to the default port of the `URL` objects given `protocol` will result in the `port` value becoming the empty string (`''`).
+The port value may be set as either a number or as a string containing a number in the range `0` to `65535` (inclusive). Setting the value to the default port of the `URL` objects given `protocol` will result in the `port` value becoming the empty string (`''`).
 
 Upon assigning a value to the port, the value will first be converted to a string using `.toString()`.
 
