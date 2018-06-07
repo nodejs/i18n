@@ -193,7 +193,7 @@ Calling `rl.pause()` does not immediately pause other events (including `'line'`
 added: v0.1.98
 -->
 
-* `preserveCursor` {boolean} If `true`, prevents the cursor placement from being reset to ``.
+* `preserveCursor` {boolean} If `true`, prevents the cursor placement from being reset to `0`.
 
 The `rl.prompt()` method writes the `readline.Interface` instances configured `prompt` to a new line in `output` in order to provide a user with a new location at which to provide input.
 
@@ -283,7 +283,7 @@ added: v0.7.7
 * `dir` {number} 
   * `-1` - to the left from cursor
   * `1` - to the right from cursor
-  * `` - the entire line
+  * `0` - the entire line
 
 The `readline.clearLine()` method clears current line of given [TTY](tty.html) stream in a specified direction identified by `dir`.
 
@@ -322,7 +322,7 @@ changes:
   * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
   * `completer` {Function} An optional function used for Tab autocompletion.
   * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
-  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to ``. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
+  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
   * `prompt` {string} The prompt string to use. **Default:** `'> '`.
   * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
   * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`.
