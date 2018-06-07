@@ -35,7 +35,7 @@ added: v0.1.25
 * `eq` {string}. The substring used to delimit keys and values in the query string. Defaults to `'='`.
 * `options` {Object} 
   * `decodeURIComponent` {Function} The function to use when decoding percent-encoded characters in the query string. Defaults to `querystring.unescape()`.
-  * `maxKeys` {number} Specifies the maximum number of keys to parse. Defaults to `1000`. Specify `` to remove key counting limitations.
+  * `maxKeys` {number} Specifies the maximum number of keys to parse. Defaults to `1000`. Specify `0` to remove key counting limitations.
 
 The `querystring.parse()` method parses a URL query string (`str`) into a collection of key and value pairs.
 
