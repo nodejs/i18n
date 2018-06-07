@@ -18,7 +18,7 @@
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
 * Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
-* Documents must start with a level-one heading. An example document will be linked here eventually.
+* Documents must start with a level-one heading.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
