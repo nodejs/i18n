@@ -38,13 +38,13 @@ the event loop until the spawned process either exits or is terminated.
 
 For convenience, the `child_process` module provides a handful of synchronous
 and asynchronous alternatives to [`child_process.spawn()`][] and
-[`child_process.spawnSync()`][].  *Note that each of these alternatives are
+[`child_process.spawnSync()`][]. *Note that each of these alternatives are
 implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
 
   * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
     passing the `stdout` and `stderr` to a callback function when complete.
   * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
-    it spawns the command directly without first spawning a shell.
+    it spawns the command directly without first spawning a shell by default.
   * [`child_process.fork()`][]: spawns a new Node.js process and invokes a
     specified module with an IPC communication channel established that allows
     sending messages between parent and child.
@@ -78,7 +78,7 @@ when the child process terminates.
 The importance of the distinction between [`child_process.exec()`][] and
 [`child_process.execFile()`][] can vary based on platform. On Unix-type operating
 systems (Unix, Linux, macOS) [`child_process.execFile()`][] can be more efficient
-because it does not spawn a shell. On Windows, however, `.bat` and `.cmd`
+because it does not spawn a shell by default. On Windows, however, `.bat` and `.cmd`
 files are not executable on their own without a terminal, and therefore cannot
 be launched using [`child_process.execFile()`][]. When running on Windows, `.bat`
 and `.cmd` files can be invoked using [`child_process.spawn()`][] with the `shell`
@@ -143,8 +143,8 @@ changes:
     [Shell Requirements][] and [Default Windows Shell][].
   * `timeout` {number} **Default:** `0`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or
-    stderr. **Default:** `200*1024`. If exceeded, the child process is terminated.
-    See caveat at [`maxBuffer` and Unicode][].
+    stderr. **Default:** `200 * 1024`. If exceeded, the child process is
+    terminated. See caveat at [`maxBuffer` and Unicode][].
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
@@ -187,7 +187,7 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 ```
 
 If a `callback` function is provided, it is called with the arguments
-`(error, stdout, stderr)`. On success, `error` will be `null`.  On error,
+`(error, stdout, stderr)`. On success, `error` will be `null`. On error,
 `error` will be an instance of [`Error`][]. The `error.code` property will be
 the exit code of the child process while `error.signal` will be set to the
 signal that terminated the process. Any exit code other than `0` is considered
@@ -257,8 +257,8 @@ changes:
   * `encoding` {string} **Default:** `'utf8'`
   * `timeout` {number} **Default:** `0`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or
-    stderr. **Default:** `200*1024` If exceeded, the child process is terminated.
-    See caveat at [`maxBuffer` and Unicode][].
+    stderr. **Default:** `200 * 1024` If exceeded, the child process is
+    terminated. See caveat at [`maxBuffer` and Unicode][].
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
@@ -266,6 +266,10 @@ changes:
     normally be created on Windows systems. **Default:** `false`.
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is
     done on Windows. Ignored on Unix. **Default:** `false`.
+  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses
+    `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different
+    shell can be specified as a string. See [Shell Requirements][] and
+    [Default Windows Shell][]. **Default:** `false` (no shell).
 * `callback` {Function} Called with the output when process terminates.
   * `error` {Error}
   * `stdout` {string|Buffer}
@@ -273,7 +277,7 @@ changes:
 * Returns: {ChildProcess}
 
 The `child_process.execFile()` function is similar to [`child_process.exec()`][]
-except that it does not spawn a shell. Rather, the specified executable `file`
+except that it does not spawn a shell by default. Rather, the specified executable `file`
 is spawned directly as a new process making it slightly more efficient than
 [`child_process.exec()`][].
 
@@ -311,6 +315,10 @@ async function getVersion() {
 }
 getVersion();
 ```
+
+*Note*: If the `shell` option is enabled, do not pass unsanitized user input
+to this function. Any input containing shell metacharacters may be used to
+trigger arbitrary command execution.
 
 ### child_process.fork(modulePath[, args][, options])
 <!-- YAML
@@ -528,7 +536,7 @@ disabled*.
 On non-Windows platforms, if `options.detached` is set to `true`, the child
 process will be made the leader of a new process group and session. Note that
 child processes may continue running after the parent exits regardless of
-whether they are detached or not.  See setsid(2) for more information.
+whether they are detached or not. See setsid(2) for more information.
 
 By default, the parent will wait for the detached child to exit. To prevent
 the parent from waiting for a given `subprocess`, use the `subprocess.unref()`
@@ -698,11 +706,15 @@ changes:
   * `killSignal` {string|integer} The signal value to be used when the spawned
     process will be killed. **Default:** `'SIGTERM'`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or
-    stderr. **Default:** `200*1024` If exceeded, the child process is terminated.
-    See caveat at [`maxBuffer` and Unicode][].
+    stderr. **Default:** `200 * 1024` If exceeded, the child process is
+    terminated. See caveat at [`maxBuffer` and Unicode][].
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`
   * `windowsHide` {boolean} Hide the subprocess console window that would
     normally be created on Windows systems. **Default:** `false`.
+  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses
+    `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different
+    shell can be specified as a string. See [Shell Requirements][] and
+    [Default Windows Shell][]. **Default:** `false` (no shell).
 * Returns: {Buffer|string} The stdout from the command.
 
 The `child_process.execFileSync()` method is generally identical to
@@ -718,6 +730,10 @@ exited.
 If the process times out or has a non-zero exit code, this method ***will***
 throw an [`Error`][] that will include the full result of the underlying
 [`child_process.spawnSync()`][].
+
+*Note*: If the `shell` option is enabled, do not pass unsanitized user input
+to this function. Any input containing shell metacharacters may be used to
+trigger arbitrary command execution.
 
 ### child_process.execSync(command[, options])
 <!-- YAML
@@ -751,8 +767,8 @@ changes:
   * `killSignal` {string|integer} The signal value to be used when the spawned
     process will be killed. **Default:** `'SIGTERM'`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or
-    stderr. **Default:** `200*1024` If exceeded, the child process is terminated.
-    See caveat at [`maxBuffer` and Unicode][].
+    stderr. **Default:** `200 * 1024` If exceeded, the child process is
+    terminated. See caveat at [`maxBuffer` and Unicode][].
   * `encoding` {string} The encoding used for all stdio inputs and outputs.
     **Default:** `'buffer'`
   * `windowsHide` {boolean} Hide the subprocess console window that would
@@ -763,12 +779,12 @@ The `child_process.execSync()` method is generally identical to
 [`child_process.exec()`][] with the exception that the method will not return until
 the child process has fully closed. When a timeout has been encountered and
 `killSignal` is sent, the method won't return until the process has completely
-exited. *Note that if  the child process intercepts and handles the `SIGTERM`
+exited. *Note that if the child process intercepts and handles the `SIGTERM`
 signal and doesn't exit, the parent process will wait until the child
 process has exited.*
 
 If the process times out or has a non-zero exit code, this method ***will***
-throw.  The [`Error`][] object will contain the entire result from
+throw. The [`Error`][] object will contain the entire result from
 [`child_process.spawnSync()`][]
 
 *Note*: Never pass unsanitized user input to this function. Any input
@@ -809,8 +825,8 @@ changes:
   * `killSignal` {string|integer} The signal value to be used when the spawned
     process will be killed. **Default:** `'SIGTERM'`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or
-    stderr. **Default:** `200*1024` If exceeded, the child process is terminated.
-    See caveat at [`maxBuffer` and Unicode][].
+    stderr. **Default:** `200 * 1024` If exceeded, the child process is
+    terminated. See caveat at [`maxBuffer` and Unicode][].
   * `encoding` {string} The encoding used for all stdio inputs and outputs.
     **Default:** `'buffer'`
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses
@@ -1153,7 +1169,7 @@ properties:
     Defaults to `false`.
 
 The optional `callback` is a function that is invoked after the message is
-sent but before the child may have received it.  The function is called with a
+sent but before the child may have received it. The function is called with a
 single argument: `null` on success, or an [`Error`][] object on failure.
 
 If no `callback` function is provided and the message cannot be sent, an

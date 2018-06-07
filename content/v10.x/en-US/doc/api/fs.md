@@ -746,17 +746,9 @@ changes:
 
 Tests a user's permissions for the file or directory specified by `path`.
 The `mode` argument is an optional integer that specifies the accessibility
-checks to be performed. The following constants define the possible values of
-`mode`. It is possible to create a mask consisting of the bitwise OR of two or
-more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
-
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful
-for determining if a file exists, but says nothing about `rwx` permissions.
-Default if no `mode` is specified.
-* `fs.constants.R_OK` - `path` can be read by the calling process.
-* `fs.constants.W_OK` - `path` can be written by the calling process.
-* `fs.constants.X_OK` - `path` can be executed by the calling process. This has
-no effect on Windows (will behave like `fs.constants.F_OK`).
+checks to be performed. Check [File Access Constants][] for possible values
+of `mode`. It is possible to create a mask consisting of the bitwise OR of
+two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 The final argument, `callback`, is a callback function that is invoked with
 a possible error argument. If any of the accessibility checks fail, the error
@@ -889,19 +881,12 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
 
-Synchronously tests a user's permissions for the file or directory specified by
-`path`. The `mode` argument is an optional integer that specifies the
-accessibility checks to be performed. The following constants define the
-possible values of `mode`. It is possible to create a mask consisting of the
-bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
-
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful
-for determining if a file exists, but says nothing about `rwx` permissions.
-Default if no `mode` is specified.
-* `fs.constants.R_OK` - `path` can be read by the calling process.
-* `fs.constants.W_OK` - `path` can be written by the calling process.
-* `fs.constants.X_OK` - `path` can be executed by the calling process. This has
-no effect on Windows (will behave like `fs.constants.F_OK`).
+Synchronously tests a user's permissions for the file or directory specified
+by `path`. The `mode` argument is an optional integer that specifies the
+accessibility checks to be performed. Check [File Access Constants][] for
+possible values of `mode`. It is possible to create a mask consisting of
+the bitwise OR of two or more values
+(e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 If any of the accessibility checks fail, an `Error` will be thrown. Otherwise,
 the method will return `undefined`.
@@ -2151,7 +2136,7 @@ by [Naming Files, Paths, and Namespaces][]. Under NTFS, if the filename contains
 a colon, Node.js will open a file system stream, as described by
 [this MSDN page][MSDN-Using-Streams].
 
-Functions based on `fs.open()` exhibit this behavior as well. eg.
+Functions based on `fs.open()` exhibit this behavior as well:
 `fs.writeFile()`, `fs.readFile()`, etc.
 
 ## fs.openSync(path, flags[, mode])
@@ -2382,7 +2367,7 @@ fs.readFileSync('<directory>');
 // => [Error: EISDIR: illegal operation on a directory, read <directory>]
 
 //  FreeBSD
-fs.readFileSync('<directory>'); // => null, <data>
+fs.readFileSync('<directory>'); // => <data>
 ```
 
 ## fs.readlink(path[, options], callback)
@@ -2496,7 +2481,7 @@ changes:
 Asynchronously computes the canonical pathname by resolving `.`, `..` and
 symbolic links.
 
-Note that "canonical" does not mean "unique": hard links and bind mounts can
+A canonical pathname is not necessarily unique. Hard links and bind mounts can
 expose a file system entity through many pathnames.
 
 This function behaves like realpath(3), with some exceptions:
@@ -2571,26 +2556,7 @@ changes:
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
-Synchronously computes the canonical pathname by resolving `.`, `..` and
-symbolic links.
-
-Note that "canonical" does not mean "unique": hard links and bind mounts can
-expose a file system entity through many pathnames.
-
-This function behaves like realpath(3), with some exceptions:
-
-1. No case conversion is performed on case-insensitive file systems.
-
-2. The maximum number of symbolic links is platform-independent and generally
-   (much) higher than what the native realpath(3) implementation supports.
-
-The optional `options` argument can be a string specifying an encoding, or an
-object with an `encoding` property specifying the character encoding to use for
-the returned value. If the `encoding` is set to `'buffer'`, the path returned
-will be passed as a `Buffer` object.
-
-If `path` resolves to a socket or a pipe, the function will return a system
-dependent name for that object.
+Synchronous version of [`fs.realpath()`][]. Returns the resolved pathname.
 
 ## fs.realpathSync.native(path[, options])
 <!-- YAML
@@ -3051,9 +3017,9 @@ The recursive option is only supported on macOS and Windows.
 This feature depends on the underlying operating system providing a way
 to be notified of filesystem changes.
 
-* On Linux systems, this uses [`inotify`]
-* On BSD systems, this uses [`kqueue`]
-* On macOS, this uses [`kqueue`] for files and [`FSEvents`] for directories.
+* On Linux systems, this uses [`inotify(7)`].
+* On BSD systems, this uses [`kqueue(2)`].
+* On macOS, this uses [`kqueue(2)`] for files and [`FSEvents`] for directories.
 * On SunOS systems (including Solaris and SmartOS), this uses [`event ports`].
 * On Windows systems, this feature depends on [`ReadDirectoryChangesW`].
 * On Aix systems, this feature depends on [`AHAFS`], which must be enabled.
@@ -3458,6 +3424,7 @@ added: v10.0.0
 Closes the file descriptor.
 
 ```js
+const fsPromises = require('fs').promises;
 async function openAndClose() {
   let filehandle;
   try {
@@ -3569,12 +3536,23 @@ For example, the following program retains only the first four bytes of the
 file:
 
 ```js
+const fs = require('fs');
+const fsPromises = fs.promises;
+
 console.log(fs.readFileSync('temp.txt', 'utf8'));
 // Prints: Node.js
 
 async function doTruncate() {
-  const fd = await fsPromises.open('temp.txt', 'r+');
-  await fsPromises.ftruncate(fd, 4);
+  let filehandle = null;
+  try {
+    filehandle = await fsPromises.open('temp.txt', 'r+');
+    await filehandle.truncate(4);
+  } finally {
+    if (filehandle) {
+      // close the file if it is opened.
+      await filehandle.close();
+    }
+  }
   console.log(fs.readFileSync('temp.txt', 'utf8'));  // Prints: Node
 }
 
@@ -3585,12 +3563,23 @@ If the file previously was shorter than `len` bytes, it is extended, and the
 extended part is filled with null bytes (`'\0'`). For example,
 
 ```js
+const fs = require('fs');
+const fsPromises = fs.promises;
+
 console.log(fs.readFileSync('temp.txt', 'utf8'));
 // Prints: Node.js
 
 async function doTruncate() {
-  const fd = await fsPromises.open('temp.txt', 'r+');
-  await fsPromises.ftruncate(fd, 10);
+  let filehandle = null;
+  try {
+    filehandle = await fsPromises.open('temp.txt', 'r+');
+    await filehandle.truncate(10);
+  } finally {
+    if (filehandle) {
+      // close the file if it is opened.
+      await filehandle.close();
+    }
+  }
   console.log(fs.readFileSync('temp.txt', 'utf8'));  // Prints Node.js\0\0\0
 }
 
@@ -3679,17 +3668,9 @@ added: v10.0.0
 
 Tests a user's permissions for the file or directory specified by `path`.
 The `mode` argument is an optional integer that specifies the accessibility
-checks to be performed. The following constants define the possible values of
-`mode`. It is possible to create a mask consisting of the bitwise OR of two or
-more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
-
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful
-for determining if a file exists, but says nothing about `rwx` permissions.
-Default if no `mode` is specified.
-* `fs.constants.R_OK` - `path` can be read by the calling process.
-* `fs.constants.W_OK` - `path` can be written by the calling process.
-* `fs.constants.X_OK` - `path` can be executed by the calling process. This has
-no effect on Windows (will behave like `fs.constants.F_OK`).
+checks to be performed. Check [File Access Constants][] for possible values
+of `mode`. It is possible to create a mask consisting of the bitwise OR of
+two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 If the accessibility check is successful, the `Promise` is resolved with no
 value. If any of the accessibility checks fail, the `Promise` is rejected
@@ -3697,6 +3678,9 @@ with an `Error` object. The following example checks if the file
 `/etc/passwd` can be read and written by the current process.
 
 ```js
+const fs = require('fs');
+const fsPromises = fs.promises;
+
 fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
   .then(() => console.log('can access'))
   .catch(() => console.error('cannot access'));
@@ -3789,7 +3773,7 @@ then the operation will fail.
 Example:
 
 ```js
-const fs = require('fs');
+const fsPromises = require('fs').promises;
 
 // destination.txt will be created or overwritten by default.
 fsPromises.copyFile('source.txt', 'destination.txt')
@@ -3802,6 +3786,7 @@ following example.
 
 ```js
 const fs = require('fs');
+const fsPromises = fs.promises;
 const { COPYFILE_EXCL } = fs.constants;
 
 // By using COPYFILE_EXCL, the operation will fail if destination.txt exists.
@@ -4329,7 +4314,9 @@ The following constants are meant for use with [`fs.access()`][].
   </tr>
   <tr>
     <td><code>F_OK</code></td>
-    <td>Flag indicating that the file is visible to the calling process.</td>
+    <td>Flag indicating that the file is visible to the calling process.
+     This is useful for determining if a file exists, but says nothing
+     about <code>rwx</code> permissions. Default if no mode is specified.</td>
   </tr>
   <tr>
     <td><code>R_OK</code></td>
@@ -4343,7 +4330,8 @@ The following constants are meant for use with [`fs.access()`][].
   <tr>
     <td><code>X_OK</code></td>
     <td>Flag indicating that the file can be executed by the calling
-    process.</td>
+    process. This has no effect on Windows
+    (will behave like <code>fs.constants.F_OK</code>).</td>
   </tr>
 </table>
 
@@ -4659,7 +4647,7 @@ the file contents.
 [`AHAFS`]: https://www.ibm.com/developerworks/aix/library/au-aix_event_infrastructure/
 [`Buffer.byteLength`]: buffer.html#buffer_class_method_buffer_bytelength_string_encoding
 [`Buffer`]: buffer.html#buffer_buffer
-[`FSEvents`]: https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/FSEvents_ProgGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005289-CH1-SW1
+[`FSEvents`]: https://developer.apple.com/documentation/coreservices/file_system_events
 [`ReadDirectoryChangesW`]: https://msdn.microsoft.com/en-us/library/windows/desktop/aa365465%28v=vs.85%29.aspx
 [`ReadStream`]: #fs_class_fs_readstream
 [`URL`]: url.html#url_the_whatwg_url_api
@@ -4683,14 +4671,15 @@ the file contents.
 [`fs.read()`]: #fs_fs_read_fd_buffer_offset_length_position_callback
 [`fs.readFile()`]: #fs_fs_readfile_path_options_callback
 [`fs.readFileSync()`]: #fs_fs_readfilesync_path_options
+[`fs.realpath()`]: #fs_fs_realpath_path_options_callback
 [`fs.rmdir()`]: #fs_fs_rmdir_path_callback
 [`fs.stat()`]: #fs_fs_stat_path_callback
 [`fs.utimes()`]: #fs_fs_utimes_path_atime_mtime_callback
 [`fs.watch()`]: #fs_fs_watch_filename_options_listener
 [`fs.write()`]: #fs_fs_write_fd_buffer_offset_length_position_callback
 [`fs.writeFile()`]: #fs_fs_writefile_file_data_options_callback
-[`inotify`]: http://man7.org/linux/man-pages/man7/inotify.7.html
-[`kqueue`]: https://www.freebsd.org/cgi/man.cgi?kqueue
+[`inotify(7)`]: http://man7.org/linux/man-pages/man7/inotify.7.html
+[`kqueue(2)`]: https://www.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2
 [`net.Socket`]: net.html#net_class_net_socket
 [`stat()`]: fs.html#fs_fs_stat_path_callback
 [`util.promisify()`]: util.html#util_util_promisify_original
@@ -4706,3 +4695,4 @@ the file contents.
 [Naming Files, Paths, and Namespaces]: https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx
 [MSDN-Using-Streams]: https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx
 [support of file system `flags`]: #fs_file_system_flags
+[File Access Constants]: #fs_file_access_constants

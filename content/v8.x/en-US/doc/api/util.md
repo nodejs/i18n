@@ -82,9 +82,9 @@ added: v0.11.3
 
 The `util.debuglog()` method is used to create a function that conditionally
 writes debug messages to `stderr` based on the existence of the `NODE_DEBUG`
-environment variable.  If the `section` name appears within the value of that
+environment variable. If the `section` name appears within the value of that
 environment variable, then the returned function operates similar to
-[`console.error()`][].  If not, then the returned function is a no-op.
+[`console.error()`][]. If not, then the returned function is a no-op.
 
 For example:
 
@@ -102,7 +102,7 @@ it will output something like:
 FOO 3245: hello from foo [123]
 ```
 
-where `3245` is the process id.  If it is not run with that
+where `3245` is the process id. If it is not run with that
 environment variable set, then it will not print anything.
 
 Multiple comma-separated `section` names may be specified in the `NODE_DEBUG`
@@ -172,7 +172,7 @@ corresponding argument. Supported placeholders are:
 * `%d` - Number (integer or floating point value).
 * `%i` - Integer.
 * `%f` - Floating point value.
-* `%j` - JSON.  Replaced with the string `'[Circular]'` if the argument
+* `%j` - JSON. Replaced with the string `'[Circular]'` if the argument
 contains circular references.
 * `%o` - Object. A string representation of an object
   with generic JavaScript object formatting.
@@ -233,7 +233,7 @@ that the two styles are [semantically incompatible][].
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Inherit the prototype methods from one [constructor][] into another.  The
+Inherit the prototype methods from one [constructor][] into another. The
 prototype of `constructor` will be set to a new object created from
 `superConstructor`.
 
@@ -1191,7 +1191,7 @@ Deprecated predecessor of `console.log`.
 [`Array.isArray`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
 [`Buffer.isBuffer()`]: buffer.html#buffer_class_method_buffer_isbuffer_obj
 [`Error`]: errors.html#errors_class_error
-[`Object.assign()`]: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+[`Object.assign()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 [`console.error()`]: console.html#console_console_error_data_args
 [`console.log()`]: console.html#console_console_log_data_args
 [`util.inspect()`]: #util_util_inspect_object_options
@@ -1201,5 +1201,5 @@ Deprecated predecessor of `console.log`.
 [Customizing `util.inspect` colors]: #util_customizing_util_inspect_colors
 [Internationalization]: intl.html
 [WHATWG Encoding Standard]: https://encoding.spec.whatwg.org/
-[constructor]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/constructor
+[constructor]: https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor
 [semantically incompatible]: https://github.com/nodejs/node/issues/4179
