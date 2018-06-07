@@ -653,12 +653,12 @@ added: v0.1.92
 -->
 
 * `enable` {boolean} **Default:** `false`
-* `initialDelay` {number} **Default:** ``
+* `initialDelay` {number} **Default:** `0`
 * Returns: {net.Socket} The socket itself.
 
 Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket.
 
-Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting `` for `initialDelay` will leave the value unchanged from the default (or previous) setting.
+Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting `0` for `initialDelay` will leave the value unchanged from the default (or previous) setting.
 
 ### socket.setNoDelay([noDelay])
 
@@ -910,7 +910,7 @@ added: v0.3.0
 
 * Returns: {integer}
 
-Tests if input is an IP address. Returns `` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
+Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
 
 ## net.isIPv4(input)
 
