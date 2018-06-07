@@ -133,15 +133,15 @@ Node.js V8, libuv और OpenSSL जैसे कई सांख्यिकी
 
 इस दस्तावेज़ में दिखाए गए प्रत्येक उदाहरण addons को लागू करने के लिए Node.js और V8 API का प्रत्यक्ष उपयोग करता है। यह समझना महत्वपूर्ण है कि V8 API एक से दूसरे V8 रिलीज में नाटकीय रूप से बदल सकता है (और अगले प्रमुख Node.js रिलीज में भी हो सकता है)। प्रत्येक परिवर्तन के साथ, कार्य जारी रखने के लिए addons को अद्यतन और संकलित करने की आवश्यकता हो सकती है। Node.js रिलीज शेड्यूल को इस तरह के परिवर्तनों की आवृत्ति और प्रभाव को कम करने के लिए डिज़ाइन किया गया है लेकिन V8 API की स्थिरता सुनिश्चित करने के लिए वर्तमान में Node.js ऐसा कम ही कर सकता है।
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+[Native Abstractions for Node.js](https://github.com/nodejs/nan) (या `nan`) उपकरण का एक सेट प्रदान करते हैं जो addon डेवलपर्स को V8 और Node.js के पिछले और भविष्य के रिलीज के बीच संगतता रखने के लिए उपयोग करने की अनुशंसा की जाती है। इसका उपयोग कैसे किया जा सकता है इसका एक उदाहरण के लिए `nan` [उदाहरण](https://github.com/nodejs/nan/tree/master/examples/) देखें।
 
 ## N-API
 
-> Stability: 1 - Experimental
+> स्थिरता: 1 - प्रायोगिक
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API मूल एडॉन्स बनाने के लिए एक API है। यह अंतर्निहित JavaScript रनटाइम (उदा। V8) से स्वतंत्र है और इसे Node.js के हिस्से के रूप में बनाए रखा जाता है। This API will be Application Binary Interface (ABI) stable across version of Node.js. इसका उद्देश्य अंतर्निहित JavaScript इंजन में परिवर्तनों से addons को अपनाना है और बिना किसी संकलन के Node.js के बाद के संस्करणों पर चलाने के लिए एक संस्करण के लिए संकलित मॉड्यूल को अनुमति देना है। Addons इस दस्तावेज़ (node-gyp, इत्यादि) में उल्लिखित एक ही दृष्टिकोण/उपकरण के साथ निर्मित किए गए हैं। केवल अंतर API के सेट में है जो मूल कोड द्वारा उपयोग किया जाता है। V8 या [Native Abstractions for Node.js](https://github.com/nodejs/nan) का उपयोग करने के बजाय, N-API में उपलब्ध फ़ंक्शंस का उपयोग किया जाता है।
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+उपर्युक्त "हैलो वर्ल्ड" उदाहरण में N-API का उपयोग करने के लिए, निम्नलिखित के साथ `hello.cc` की सामग्री को प्रतिस्थापित करें। अन्य सभी निर्देश सामन्य रुप से लागु रहेंगे।
 
 ```cpp
 // hello.cc using N-API
@@ -175,11 +175,11 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+उपलब्ध कार्यों और उनका उपयोग कैसे करें [C/C++ addons - N-API](n-api.html) शीर्षक वाले अनुभाग में दस्तावेज हैं।
 
-## Addon examples
+## Addon उदाहरण
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+निम्न कुछ उदाहरण दिए गए हैं जो addon डेवलपर्स को शुरू करने में मदद करने के लिए लक्षित हैं। उदाहरण V8 API का उपयोग करते हैं। Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
 Each of these examples using the following `binding.gyp` file:
 
