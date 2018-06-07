@@ -224,7 +224,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 The `TCPSERVERWRAP` is the server which receives the connections.
 
-The `TCPWRAP` is the new connection from the client. When a new connection is made, the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack. (An `executionAsyncId()` of `` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
+The `TCPWRAP` is the new connection from the client. When a new connection is made, the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
 
 ###### `resource`
 
@@ -436,7 +436,7 @@ Promise.resolve(1729).then(() => {
 // eid 1 tid 0
 ```
 
-Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the `triggerAsyncId` value is ``, which means that we are missing context about the resource that caused (triggered) the `then()` callback to be executed.
+Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the `triggerAsyncId` value is `0`, which means that we are missing context about the resource that caused (triggered) the `then()` callback to be executed.
 
 Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
 
