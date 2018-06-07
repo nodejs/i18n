@@ -138,7 +138,7 @@ added: v8.4.0
 
 * `type` {integer} The frame type.
 * `code` {integer} The error code.
-* `id` {integer} The stream id (or `` if the frame isn't associated with a stream).
+* `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
 
 The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. If the frame that could not be sent is associated with a specific `Http2Stream`, an attempt to emit `'frameError'` event on the `Http2Stream` is made.
 
@@ -151,7 +151,7 @@ added: v8.4.0
 -->
 
 * `errorCode` {number} The HTTP/2 error code specified in the `GOAWAY` frame.
-* `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `` if no ID is specified).
+* `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
 * `opaqueData` {Buffer} If additional opaque data was included in the `GOAWAY` frame, a `Buffer` instance will be passed containing that data.
 
 The `'goaway'` event is emitted when a `GOAWAY` frame is received.
@@ -689,7 +689,7 @@ added: v8.4.0
 
 The `'close'` event is emitted when the `Http2Stream` is destroyed. Once this event is emitted, the `Http2Stream` instance is no longer usable.
 
-The HTTP/2 error code used when closing the stream can be retrieved using the `http2stream.rstCode` property. If the code is any value other than `NGHTTP2_NO_ERROR` (``), an `'error'` event will have also been emitted.
+The HTTP/2 error code used when closing the stream can be retrieved using the `http2stream.rstCode` property. If the code is any value other than `NGHTTP2_NO_ERROR` (`0`), an `'error'` event will have also been emitted.
 
 #### Event: 'error'
 
@@ -1802,7 +1802,7 @@ The HTTP/2 implementation applies stricter handling of invalid characters in HTT
 
 Header field names are *case-insensitive* and are transmitted over the wire strictly as lower-case strings. The API provided by Node.js allows header names to be set as mixed-case strings (e.g. `Content-Type`) but will convert those to lower-case (e.g. `content-type`) upon transmission.
 
-Header field-names *must only* contain one or more of the following ASCII characters: `a`-`z`, `A`-`Z`, ``-`9`, `!`, `#`, `$`, `%`, `&`, `'`, `*`, `+`, `-`, `.`, `^`, `_`, `` ` `` (backtick), `|`, and `~`.
+Header field-names *must only* contain one or more of the following ASCII characters: `a`-`z`, `A`-`Z`, `0`-`9`, `!`, `#`, `$`, `%`, `&`, `'`, `*`, `+`, `-`, `.`, `^`, `_`, `` ` `` (backtick), `|`, and `~`.
 
 Using invalid characters within an HTTP header field name will cause the stream to be closed with a protocol error being reported.
 
