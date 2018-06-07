@@ -152,7 +152,7 @@ added: v8.4.0
 The `'goaway'` event is emitted when a GOAWAY frame is received. When invoked, the handler function will receive three arguments:
 
 * `errorCode` {number} The HTTP/2 error code specified in the GOAWAY frame.
-* `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `` if no ID is specified).
+* `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
 * `opaqueData` {Buffer} If additional opaque data was included in the GOAWAY frame, a `Buffer` instance will be passed containing that data.
 
 *Note*: The `Http2Session` instance will be shutdown automatically when the `'goaway'` event is emitted.
@@ -542,7 +542,7 @@ added: v8.4.0
 
 The `'close'` event is emitted when the `Http2Stream` is destroyed. Once this event is emitted, the `Http2Stream` instance is no longer usable.
 
-The listener callback is passed a single argument specifying the HTTP/2 error code specified when closing the stream. If the code is any value other than `NGHTTP2_NO_ERROR` (``), an `'error'` event will also be emitted.
+The listener callback is passed a single argument specifying the HTTP/2 error code specified when closing the stream. If the code is any value other than `NGHTTP2_NO_ERROR` (`0`), an `'error'` event will also be emitted.
 
 #### Event: 'error'
 
@@ -1573,7 +1573,7 @@ The HTTP/2 implementation applies stricter handling of invalid characters in HTT
 
 Header field names are *case-insensitive* and are transmitted over the wire strictly as lower-case strings. The API provided by Node.js allows header names to be set as mixed-case strings (e.g. `Content-Type`) but will convert those to lower-case (e.g. `content-type`) upon transmission.
 
-Header field-names *must only* contain one or more of the following ASCII characters: `a`-`z`, `A`-`Z`, ``-`9`, `!`, `#`, `$`, `%`, `&`, `'`, `*`, `+`, `-`, `.`, `^`, `_`, `` ` `` (backtick), `|`, and `~`.
+Header field-names *must only* contain one or more of the following ASCII characters: `a`-`z`, `A`-`Z`, `0`-`9`, `!`, `#`, `$`, `%`, `&`, `'`, `*`, `+`, `-`, `.`, `^`, `_`, `` ` `` (backtick), `|`, and `~`.
 
 Using invalid characters within an HTTP header field name will cause the stream to be closed with a protocol error being reported.
 
