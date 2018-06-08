@@ -18,7 +18,7 @@
   * Dentro del elemento envolvente si el elemento envolvente contiene una clausula completa— un sujeto, un verbo y un objeto.
   * Por fuera del elemento envolvente si el elemento envolvente contiene solo un fragmento de clausula.
 * Colocar puntuación para el fin de una oración dentro de los elementos envolventes — los puntos van dentro de los paréntesis y las comillas, no después.
-* Los documentos deben comenzar con un encabezado de nivel uno. Un documento de ejemplo sera referenciado aquí, eventualmente.
+* Los documentos deben comenzar con un encabezado de nivel uno.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * Cuando se documenten APIs, indicar la versión en que la API fue introducida al final de la sección. Si una API fue deprecada, también notar la primera versión en la cual dicha API apareció deprecada por primera vez.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
@@ -39,7 +39,7 @@
   * Preferably, make the note a new paragraph for better visual distinction.
 * Function arguments or object properties should use the following format: 
   * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`.</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** ``.</code>
+  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code>
   * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`

@@ -188,7 +188,7 @@ added: v0.3.0
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Defaults to `false`. Colors are customizable, see [Customizing `util.inspect` colors][].
   * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. Defaults to `true`.
   * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. Defaults to `false`.
-  * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Defaults to `100`. Set to `null` to show all array elements. Set to `` or negative to show no array elements.
+  * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Defaults to `100`. Set to `null` to show all array elements. Set to `0` or negative to show no array elements.
   * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. Defaults to 60 for legacy compatibility.
 
 The `util.inspect()` method returns a string representation of `object` that is primarily useful for debugging. Additional `options` may be passed that alter certain aspects of the formatted string.
