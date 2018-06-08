@@ -103,9 +103,9 @@ console.log(addon.hello());
 
 有关进一步的信息，请查看下面的例子，或者访问 <https://github.com/arturadib/node-qt> 了解生成环境中的示例。
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+因为编译二进制插件的确切路径取决于它如何被编译（例如，有时可能在 `./build/Debug/`中），因此插件可以使用 [bindings](https://github.com/TooTallNate/node-bindings) 包来加载编译后的模块。
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+注意，虽然 `bindings` 包在如何定位插件模块的实现上非常复杂，但是它的本质上是使用类似于下面的 try-catch 模式：
 
 ```js
 try {
