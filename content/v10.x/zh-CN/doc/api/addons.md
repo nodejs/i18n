@@ -91,7 +91,7 @@ Node.js 会捆绑发布一个版本的 `node-gyp` 工具作为 `npm` 的一部�
 
 当使用 `npm install` 安装 Node.js 插件时，npm 会使用自身捆绑的 `node-gyp` 版本执行同样一组动作，为用户要求的平台生成一个编译后的版本。
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+构建完成后，二进制插件就可以在Node.js中使用，通过 [`require()`](modules.html#modules_require) 来指向构建后的 `addon.node` 模块。
 
 ```js
 // hello.js
