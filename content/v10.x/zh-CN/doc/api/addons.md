@@ -85,11 +85,11 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Node.js 会捆绑发布一个版本的 `node-gyp` 工具作为 `npm` 的一部分。 该版本是不是直接给开发者使用的。它仅用于提供支持使用 `npm install` 命令编译和安装插件的能力。 希望直接使用 `node-gyp` 的开发者可以使用命令 `npm install -g node-gyp` 来安装它。 有关详细信息（包括平台的特定需求），请参阅 `node-gyp` 的 [安装说明](https://github.com/nodejs/node-gyp#installation)。
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+当 `binding.gyp` 文件创建后，可以使用 `node-gyp configure` 为当前平台生成相应的项目生成文件。 这将在 `build/` 目录生成文件 `Makefile`（在 Unix 平台上）或者 `vcxproj`（在 Windows 平台上）。
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+下一步，调用 `node-gyp build` 命令来生成以编译的 `addon.node` 文件。 它将被放进 `build/Release/` 目录。
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+当使用 `npm install` 安装 Node.js 插件时，npm 会使用自身捆绑的 `node-gyp` 版本执行同样一组动作，为用户要求的平台生成一个编译后的版本。
 
 Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
 
