@@ -4,11 +4,11 @@
 
 <!-- type=misc -->
 
-La meta de esta documentacion es explicar de forma exhaustiva la API de Node.js, tanto de un punto de vista referencial como conceptual. Each section describes a built-in module or high-level concept.
+La meta de esta documentacion es explicar de forma exhaustiva la API de Node.js, tanto de un punto de vista referencial como conceptual. Cada sección describe un módulo integrado o un concepto de alto nivel.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Cuando es apropiado, los tipos de las propiedades, los argumentos de métodos y los argumentos que se proveen a manejadores de eventos son detallados en una lista bajo el título de cada tema.
 
-## Contributing
+## Contribuyendo
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
