@@ -70,7 +70,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 ### 构建
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+当源码编写完成后，就必然要编译成二进制 `addon.node` 文件。 为此，需要在项目的根目录创建一个名为 `binding.gyp` 的文件，它使用类似于JSON的格式描述模块的生成配置。 该文件会被 [node-gyp](https://github.com/nodejs/node-gyp)（专门为编译Node.js 插件而编写的工具） 使用。
 
 ```json
 {
@@ -83,15 +83,15 @@ Once the source code has been written, it must be compiled into the binary `addo
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+Node.js 会捆绑发布一个版本的 `node-gyp` 工具作为 `npm` 的一部分。 该版本是不是直接给开发者使用的。它仅用于提供支持使用 `npm install` 命令编译和安装插件的能力。 希望直接使用 `node-gyp` 的开发者可以使用命令 `npm install -g node-gyp` 来安装它。 有关详细信息（包括平台的特定需求），请参阅 `node-gyp` 的 [安装说明](https://github.com/nodejs/node-gyp#installation)。
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+当 `binding.gyp` 文件创建后，可以使用 `node-gyp configure` 为当前平台生成相应的项目生成文件。 这将在 `build/` 目录生成文件 `Makefile`（在 Unix 平台上）或者 `vcxproj`（在 Windows 平台上）。
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+下一步，调用 `node-gyp build` 命令来生成以编译的 `addon.node` 文件。 它将被放进 `build/Release/` 目录。
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+当使用 `npm install` 安装 Node.js 插件时，npm 会使用自身捆绑的 `node-gyp` 版本执行同样一组动作，为用户要求的平台生成一个编译后的版本。
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+构建完成后，二进制插件就可以在Node.js中使用，通过 [`require()`](modules.html#modules_require) 来指向构建后的 `addon.node` 模块。
 
 ```js
 // hello.js
@@ -101,11 +101,11 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+有关进一步的信息，请查看下面的例子，或者访问 <https://github.com/arturadib/node-qt> 了解生成环境中的示例。
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+因为编译二进制插件的确切路径取决于它如何被编译（例如，有时可能在 `./build/Debug/`中），因此插件可以使用 [bindings](https://github.com/TooTallNate/node-bindings) 包来加载编译后的模块。
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+注意，虽然 `bindings` 包在如何定位插件模块的实现上非常复杂，但是它的本质上是使用类似于下面的 try-catch 模式：
 
 ```js
 try {
@@ -115,15 +115,15 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### 链接到 Node.js 自身的依赖
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的插件都需要链接到 V8 ，也可能链接到其他任何依赖项。 通常，这只需要简单的包含适当的 `#include <...>` 声明 (例如 `#include <v8.h>`) ，`node-gyp` 则会自动定位到相应的头文件。 但是，还有一些事项需要注意：
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* 当 `node-gyp` 运行时，它会检查特定的 Node.js 发行版本，并且下载完整的源代码的 tar 包或者只是头文件。 如果下载了完整的源代码，插件将有完全访问全套 Node.js 依赖的权限。 然而，如果只是下载了 Node.js 的头文件，则只能访问 Node.js 导出的符号。
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
-### Loading Addons using require()
+### 使用 require() 加载插件
 
 The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
@@ -137,7 +137,7 @@ The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) 
 
 ## N-API
 
-> Stability: 1 - Experimental
+> 稳定性: 1-实验
 
 N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -177,7 +177,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## 插件示例
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
