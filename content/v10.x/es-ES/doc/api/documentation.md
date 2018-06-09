@@ -23,12 +23,11 @@ A lo largo de la documentación se indica la estabilidad de cada sección. La AP
 Los índices de estabilidad son los siguientes:
 
 ```txt
-Estabilidad: 0 - Absoleto. Esta funcionalidad/característica se sabe que es problemática y puede tener cambios planificados. Do not rely on it. Use of the feature may cause warnings to be
-emitted. Backwards compatibility across major versions should not be expected.
+Estabilidad: 0 - Absoleto. Esta funcionalidad/característica se sabe que es problemática y puede tener cambios planificados. No confíes en ella. El uso de esta funcionalidad/característica puede causar que se emitan advertencias. No se espera que se mantenga compatibilidad hacia atrás cuando se actualicen versiones principales.
 ```
 
 ```txt
-Stability: 1 - Experimental. This feature is still under active development and
+Estabilidad: 1 - Experimental. This feature is still under active development and
 subject to non-backwards compatible changes, or even removal, in any future
 version. Use of the feature is not recommended in production environments.
 Experimental features are not subject to the Node.js Semantic Versioning model.
