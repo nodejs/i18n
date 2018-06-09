@@ -117,7 +117,7 @@ try {
 
 ### 链接到 Node.js 自身的依赖
 
-Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的插件都需要链接到 V8 ，也可能链接到其他任何依赖项。 Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的插件都需要链接到 V8 ，也可能链接到其他任何依赖项。 通常，这只需要简单的包含适当的 `#include <...>` 声明 (例如 `#include <v8.h>`) ，`node-gyp` 则会自动定位到相应的头文件。 但是，还有一些事项需要注意：
 
 * When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
