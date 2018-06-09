@@ -119,7 +119,7 @@ try {
 
 Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的插件都需要链接到 V8 ，也可能链接到其他任何依赖项。 通常，这只需要简单的包含适当的 `#include <...>` 声明 (例如 `#include <v8.h>`) ，`node-gyp` 则会自动定位到相应的头文件。 但是，还有一些事项需要注意：
 
-* 当 `node-gyp` 运行时，它会检查特定的 Node.js 发行版本，并且下载完整的源代码的 tar 包或者只是头文件。 如果下载了完整的源代码，插件将有完全访问全套 Node.js 依赖的权限。 However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* 当 `node-gyp` 运行时，它会检查特定的 Node.js 发行版本，并且下载完整的源代码的 tar 包或者只是头文件。 如果下载了完整的源代码，插件将有完全访问全套 Node.js 依赖的权限。 然而，如果只是下载了 Node.js 的头文件，则只能访问 Node.js 导出的符号。
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
