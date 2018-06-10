@@ -235,13 +235,13 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-Les caractères URL invalides inclus dans la valeur assignée à la propriété `mot de passe` sont [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Les caractères URL invalides inclus dans la valeur assignée à la propriété `mot de passe` sont [percent-encoded](#whatwg-percent-encoding). Notez que la séléction de caractères à percent-encoder pourrait varier un peu de ce produirait les méthodes [`url.parse()`][] et [`url.format()`][].
 
 #### url.pathname
 
 * {string}
 
-Gets and sets the path portion of the URL.
+Rend et fixe la portion path de l'URL.
 
 ```js
 const myURL = new URL('https://example.org/abc/xyz?123');
@@ -253,13 +253,13 @@ console.log(myURL.href);
 // Prints https://example.org/abcdef?123
 ```
 
-Invalid URL characters included in the value assigned to the `pathname` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Les caractères URL inclus dans la valeur assignée à la propriété `pathname` sont [percent-encoded](#whatwg-percent-encoding). Notez que la séléction de caractères à percent-encoder pourrait varier un peu de ce produirait les méthodes [`url.parse()`][] et [`url.format()`][].
 
 #### url.port
 
 * {string}
 
-Gets and sets the port portion of the URL.
+Rend et fixe la portion port de l'URL.
 
 ```js
 const myURL = new URL('https://example.org:8888');
