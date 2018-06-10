@@ -266,8 +266,8 @@ const myURL = new URL('https://example.org:8888');
 console.log(myURL.port);
 // Prints 8888
 
-// Default ports are automatically transformed to the empty string
-// (HTTPS protocol's default port is 443)
+// Les ports par défaut sont automatiquement transformés en chaîne de caractères vide.
+// (Le port par défaut de HTTPS est 443)
 myURL.port = '443';
 console.log(myURL.port);
 // Prints the empty string
@@ -280,23 +280,24 @@ console.log(myURL.port);
 console.log(myURL.href);
 // Prints https://example.org:1234/
 
-// Completely invalid port strings are ignored
+// Les chaînes de caractères de port complètement invalide sont ignorée.
 myURL.port = 'abcd';
 console.log(myURL.port);
 // Prints 1234
 
-// Leading numbers are treated as a port number
+// Les numéros de lot sont traités en tant que numéro de port.
 myURL.port = '5678abcd';
 console.log(myURL.port);
 // Prints 5678
 
-// Non-integers are truncated
+Les nombres non-entiers sont tronqués.
 myURL.port = 1234.5678;
 console.log(myURL.port);
 // Prints 1234
 
-// Out-of-range numbers which are not represented in scientific notation
-// will be ignored.
+// Les nombres hors domaine qui ne sont pas représentés en notation scientifique seront ignorés.
+Context | Request Context
+XPath: /pre[17]/code.
 myURL.port = 1e10; // 10000000000, will be range-checked as described below
 console.log(myURL.port);
 // Prints 1234
