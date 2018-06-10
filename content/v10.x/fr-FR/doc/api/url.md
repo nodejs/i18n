@@ -290,14 +290,13 @@ myURL.port = '5678abcd';
 console.log(myURL.port);
 // Prints 5678
 
-Les nombres non-entiers sont tronqués.
+// Les nombres non-entiers sont tronqués.
 myURL.port = 1234.5678;
 console.log(myURL.port);
 // Prints 1234
 
-// Les nombres hors domaine qui ne sont pas représentés en notation scientifique seront ignorés.
-Context | Request Context
-XPath: /pre[17]/code.
+// Les nombres hors domaine qui ne sont pas représentés en notation scientifique
+// seront ignorés.
 myURL.port = 1e10; // 10000000000, will be range-checked as described below
 console.log(myURL.port);
 // Prints 1234
