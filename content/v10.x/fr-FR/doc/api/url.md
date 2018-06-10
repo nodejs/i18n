@@ -192,17 +192,17 @@ console.log(myURL.href);
 // Prints https://example.com/bar
 ```
 
-Getting the value of the `href` property is equivalent to calling [`url.toString()`][].
+Obtenir la valeur de la propriété `href`est équivalent à appeler [`url.toString()`][].
 
-Setting the value of this property to a new value is equivalent to creating a new `URL` object using [`new URL(value)`][`new URL()`]. Each of the `URL` object's properties will be modified.
+Changer la valeur de cette propriété à une nouvelle valeur est équivalent à créer un nouvel objet `URL` en utilisant [`new URL(value)`][`new URL()`]. Chacune des propriétés de l'objet `URL` sera modifiée.
 
-If the value assigned to the `href` property is not a valid URL, a `TypeError` will be thrown.
+Si la valeur assignée à la propriété `href` n'est pas un URL valide, un `TypeError` sera lancé.
 
 #### url.origin
 
 * {string}
 
-Gets the read-only serialization of the URL's origin.
+Obtient la sérialisation mode-lecteur de l'origine de l'URL.
 
 ```js
 const myURL = new URL('https://example.org/foo/bar?baz');
@@ -223,7 +223,7 @@ console.log(idnURL.hostname);
 
 * {string}
 
-Gets and sets the password portion of the URL.
+Rend et fixe la portion mot de passe de l'URL.
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
@@ -235,13 +235,13 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Les caractères URL invalides inclus dans la valeur assignée à la propriété `mot de passe` sont [percent-encoded](#whatwg-percent-encoding). Notez que la séléction de caractères à percent-encoder pourrait varier un peu de ce produirait les méthodes [`url.parse()`][] et [`url.format()`][].
 
 #### url.pathname
 
 * {string}
 
-Gets and sets the path portion of the URL.
+Rend et fixe la portion path de l'URL.
 
 ```js
 const myURL = new URL('https://example.org/abc/xyz?123');
@@ -253,21 +253,21 @@ console.log(myURL.href);
 // Prints https://example.org/abcdef?123
 ```
 
-Invalid URL characters included in the value assigned to the `pathname` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Les caractères URL inclus dans la valeur assignée à la propriété `pathname` sont [percent-encoded](#whatwg-percent-encoding). Notez que la séléction de caractères à percent-encoder pourrait varier un peu de ce produirait les méthodes [`url.parse()`][] et [`url.format()`][].
 
 #### url.port
 
 * {string}
 
-Gets and sets the port portion of the URL.
+Rend et fixe la portion port de l'URL.
 
 ```js
 const myURL = new URL('https://example.org:8888');
 console.log(myURL.port);
 // Prints 8888
 
-// Default ports are automatically transformed to the empty string
-// (HTTPS protocol's default port is 443)
+// Les ports par défaut sont automatiquement transformés en chaîne de caractères vide.
+// (Le port par défaut de HTTPS est 443)
 myURL.port = '443';
 console.log(myURL.port);
 // Prints the empty string
@@ -280,23 +280,23 @@ console.log(myURL.port);
 console.log(myURL.href);
 // Prints https://example.org:1234/
 
-// Completely invalid port strings are ignored
+// Les chaînes de caractères de port complètement invalide sont ignorée.
 myURL.port = 'abcd';
 console.log(myURL.port);
 // Prints 1234
 
-// Leading numbers are treated as a port number
+// Les numéros de lot sont traités en tant que numéro de port.
 myURL.port = '5678abcd';
 console.log(myURL.port);
 // Prints 5678
 
-// Non-integers are truncated
+// Les nombres non-entiers sont tronqués.
 myURL.port = 1234.5678;
 console.log(myURL.port);
 // Prints 1234
 
-// Out-of-range numbers which are not represented in scientific notation
-// will be ignored.
+// Les nombres hors domaine qui ne sont pas représentés en notation scientifique
+// seront ignorés.
 myURL.port = 1e10; // 10000000000, will be range-checked as described below
 console.log(myURL.port);
 // Prints 1234

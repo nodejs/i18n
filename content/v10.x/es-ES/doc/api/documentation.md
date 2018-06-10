@@ -4,13 +4,13 @@
 
 <!-- type=misc -->
 
-La meta de esta documentacion es explicar de forma exhaustiva la API de Node.js, tanto de un punto de vista referencial como conceptual. Each section describes a built-in module or high-level concept.
+La meta de esta documentacion es explicar de forma exhaustiva la API de Node.js, tanto de un punto de vista referencial como conceptual. Cada sección describe un módulo integrado o un concepto de alto nivel.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Cuando es apropiado, los tipos de las propiedades, los argumentos de métodos y los argumentos que se proveen a manejadores de eventos son detallados en una lista bajo el título de cada tema.
 
-## Contributing
+## Contribuyendo
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Si encuentras errores en esta documentación, por favor [abre una nueva incidencia](https://github.com/nodejs/node/issues/new) o revisa [la guia de contribución](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) para obtener ayuda en como enviar un arreglo del error.
 
 Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
@@ -18,18 +18,16 @@ Every file is generated based on the corresponding `.md` file in the `doc/api/` 
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+A lo largo de la documentación se indica la estabilidad de cada sección. La API de Node.js está aún de cierta forma cambiando, y mientras se vuelve más madura, ciertas partes son más confiables que otras. Algunas están tan bien probadas, y hay Tanya dependencias en ellas, que es muy poco probable que alguna vez vayan a cambiar. Otras son muy recientes y experimentales, o se sabe que son arriesgadas y están en proceso de ser rediseñadas.
 
-The stability indices are as follows:
+Los índices de estabilidad son los siguientes:
 
 ```txt
-Stability: 0 - Deprecated. This feature is known to be problematic, and changes
-may be planned. Do not rely on it. Use of the feature may cause warnings to be
-emitted. Backwards compatibility across major versions should not be expected.
+Estabilidad: 0 - Absoleto. Esta funcionalidad/característica se sabe que es problemática y puede tener cambios planificados. No confíes en ella. El uso de esta funcionalidad/característica puede causar que se emitan advertencias. No se espera que se mantenga compatibilidad hacia atrás cuando se actualicen versiones principales.
 ```
 
 ```txt
-Stability: 1 - Experimental. This feature is still under active development and
+Estabilidad: 1 - Experimental. This feature is still under active development and
 subject to non-backwards compatible changes, or even removal, in any future
 version. Use of the feature is not recommended in production environments.
 Experimental features are not subject to the Node.js Semantic Versioning model.
