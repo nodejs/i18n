@@ -202,7 +202,7 @@ Si la valeur assignée à la propriété `href` n'est pas un URL valide, un `Typ
 
 * {string}
 
-Gets the read-only serialization of the URL's origin.
+Obtient la sérialisation mode-lecteur de l'origine de l'URL.
 
 ```js
 const myURL = new URL('https://example.org/foo/bar?baz');
@@ -223,7 +223,7 @@ console.log(idnURL.hostname);
 
 * {string}
 
-Gets and sets the password portion of the URL.
+Rend et fixe la portion mot de passe de l'URL.
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
@@ -235,7 +235,7 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Les caractères URL invalides inclus dans la valeur assignée à la propriété `mot de passe` sont [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.pathname
 
