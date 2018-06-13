@@ -46,7 +46,7 @@ myEmitter.on('event', function(a, b) {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-It is possible to use ES6 Arrow Functions as listeners, however, when doing so, the `this` keyword will no longer reference the `EventEmitter` instance:
+Es posible usar funciones flecha de ES6 como escuchadores, sin embargo, cuando hacemos esto, la palabra reservada `this` ya no referenciará a la instancia `EventEmitter`:
 
 ```js
 const myEmitter = new MyEmitter();
