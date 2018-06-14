@@ -1338,7 +1338,7 @@ An attempt was made to call [`stream.unshift()`][] after the `'end'` event was e
 
 Prevents an abort if a string decoder was set on the Socket or if the decoder is in `objectMode`.
 
-Example
+Exempel
 
 ```js
 const Socket = require('net').Socket;

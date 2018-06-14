@@ -213,7 +213,7 @@ added: v0.1.27
 
 Uses the DNS protocol to resolve a hostname (e.g. `'nodejs.org'`) into an array of the resource records. The `callback` function has arguments `(err, records)`. When successful, `records` will be an array of resource records. The type and structure of individual results varies based on `rrtype`:
 
-| `rrtype`  | `records` contains             | Result type | Shorthand method         |
+| `rrtype`  | `records` contains             | Resultattyp | Shorthand method         |
 | --------- | ------------------------------ | ----------- | ------------------------ |
 | `'A'`     | IPv4 addresses (default)       | {string}    | [`dns.resolve4()`][]     |
 | `'AAAA'`  | IPv6 addresses                 | {string}    | [`dns.resolve6()`][]     |

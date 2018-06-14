@@ -1,4 +1,4 @@
-# File System
+# Filsystem
 
 <!--introduced_in=v0.10.0-->
 
@@ -4174,7 +4174,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 <table>
   <tr>
     <th>Constant</th>
-    <th>Description</th>
+    <th>Beskrivning</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -4217,7 +4217,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 <table>
   <tr>
     <th>Constant</th>
-    <th>Description</th>
+    <th>Beskrivning</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>

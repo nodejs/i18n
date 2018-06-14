@@ -1458,7 +1458,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array with the names of the supported cipher algorithms.
 
-Example:
+Exempel:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1473,7 +1473,7 @@ added: v2.3.0
 
 - Returns: {string[]} An array with the names of the supported elliptic curves.
 
-Example:
+Exempel:
 
 ```js
 const curves = crypto.getCurves();
@@ -1524,7 +1524,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
 
-Example:
+Exempel:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1567,7 +1567,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Example:
+Exempel:
 
 ```js
 const crypto = require('crypto');
@@ -1623,7 +1623,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Example:
+Exempel:
 
 ```js
 const crypto = require('crypto');
@@ -2013,7 +2013,7 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Constant</th>
+    <th>Konstant</th>
     <th>Description</th>
   </tr>
   <tr>

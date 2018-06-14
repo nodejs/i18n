@@ -2015,7 +2015,7 @@ added: v8.4.0
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Key-value pairs of header names and values. Header names are lower-cased. Exempel:
 
 ```js
 // Prints something like:
@@ -2173,7 +2173,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Exempel:
 
 ```txt
 $ node
@@ -2193,7 +2193,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Exempel:
 
 ```txt
 $ node
@@ -2306,7 +2306,7 @@ added: v8.4.0
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
-Example:
+Exempel:
 
 ```js
 const contentType = response.getHeader('content-type');
