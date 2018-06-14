@@ -258,7 +258,7 @@ If the Timer or `EventEmitter` was already bound to a domain, it is removed from
 
 The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
 
-#### Example
+#### Exempel
 
 ```js
 const d = domain.create();
@@ -300,7 +300,7 @@ This method is almost identical to [`domain.bind(callback)`][]. However, in addi
 
 In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
 
-#### Example
+#### Exempel
 
 ```js
 const d = domain.create();
