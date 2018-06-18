@@ -55,22 +55,21 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Notez que toutes les extensions Node.js doivent exporter une fonction d’initialisation suivant le modèle :
 
 ```cpp
-void Initialize(Local<Object> exports);
-NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
+void Initialize(Local<Object> exports); NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Il n’y a pas de point-virgule après `NODE_MODULE`, car ce n’est pas une fonction (voir `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+Le `module_name` doit correspondre au nom de fichier du binaire final (sans le suffixe `.node`).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+Dans l’exemple `hello.cc`, la fonction d’initialisation est `init` et le nom de module de l'extension est `addon`.
 
-### Building
+### Génération
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Une fois le code source écrit, il doit être compilé vers le fichier binaire `addon.node`. Pour ce faire, créez un fichier appelé `binding.gyp` au plus haut niveau de l'arborescence du projet décrivant la configuration de génération du module à l’aide d’un format de type JSON. Ce fichier est utilisé par [node-gyp](https://github.com/nodejs/node-gyp) — un outil écrit spécifiquement pour compiler les extensions Node.js.
 
 ```json
 {
