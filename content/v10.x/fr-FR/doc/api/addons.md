@@ -452,7 +452,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Ensuite, dans `myobject.h`, la classe enveloppe hérite de `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -483,7 +483,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+Dans `myobject.cc`, implémentez les différentes méthodes qui doivent être exposées. Ci-dessous, la méthode `plusOne()` est exposée en l'ajoutant au prototype du constructeur:
 
 ```cpp
 // myobject.cc
@@ -514,7 +514,7 @@ MyObject::~MyObject() {
 void MyObject::Init(Local<Object> exports) {
   Isolate* isolate = exports->GetIsolate();
 
-  // Prepare constructor template
+  // Prepare le gabarit du constructeur
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
@@ -531,13 +531,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // appelé comme constructeur: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // appelée comme fonction brute `MyObject(...)`, devient un appel construct.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -560,7 +560,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Pour compiler cet exemple, le fichier `myobject.cc` doit être ajouté à `binding.gyp`:
 
 ```json
 {
@@ -576,7 +576,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Testez-le avec:
 
 ```js
 // test.js
