@@ -971,9 +971,9 @@ Enregistre un hook de sortie qui est exécuté après que la boucle évènementi
 
 `AtExit` prend deux paramètres: un pointeur vers un callback à appeler à la sortie, et un pointeur vers des données de contexte non-typées à passer à ce callback.
 
-Callbacks are run in last-in first-out order.
+Les callbacks sont exécutés dans l'ordre dernier entré, premier sorti.
 
-The following `addon.cc` implements `AtExit`:
+Le fichier `addon.cc` suivant implémente `AtExit`:
 
 ```cpp
 // addon.cc
@@ -1024,7 +1024,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Testez en JavaScript en exécutant:
 
 ```js
 // test.js
