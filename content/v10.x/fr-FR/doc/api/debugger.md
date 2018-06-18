@@ -101,13 +101,13 @@ Pour commencer à espionner une expression, tapez `watch('mon_expression')`. La 
 
 ### Points d'arrêt
 
-* `setBreakpoint()`, `sb()` - Set breakpoint on current line
-* `setBreakpoint(line)`, `sb(line)` - Set breakpoint on specific line
-* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
-* `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
-* `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
+* `setBreakpoint()`, `sb()` - Ajoute un point d'arrêt sur la ligne courante
+* `setBreakpoint(line)`, `sb(line)` - Ajoute un point d'arrêt sur une ligne spécifique
+* `setBreakpoint('fn()')`, `sb(...)` - Ajoute un point d'arrêt sur la première instruction du corps de la fonction
+* `setBreakpoint('script.js', 1)`, `sb(...)` - Ajoute un point d'arrêt sur la première ligne de `script.js`
+* `clearBreakpoint('script.js', 1)`, `cb(...)` - Supprime le point d'arrêt à la ligne 1 de `script.js`
 
-It is also possible to set a breakpoint in a file (module) that is not loaded yet:
+Il est également possible d'ajouter un point d'arrêt dans un fichier (module) qui n'est pas encore chargé:
 
 ```txt
 $ node inspect main.js
