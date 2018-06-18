@@ -83,7 +83,7 @@ La commande `repl` permet d'évaluer du code à distance. La commande `next` pas
 
 Presser `enter` sans taper de commande répètera la commande de débogage précédente.
 
-## Observateurs
+## Espions
 
 Il est possible d'observer les valeurs d'expression et de variables pendant le débogage. Sur tous les point d'arrêt, chaque expression de la liste d'observation sera évaluée dans le contexte courant et affichée immédiatement avant le listing de code source du point d'arrêt.
 
