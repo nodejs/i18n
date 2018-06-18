@@ -10,17 +10,17 @@ Les Extensions C++ sont des objets partagés liés dynamiquement, écrits en C++
 
 * V8: la bibliothèque C++ que Node.js utilise actuellement pour son implémentation de JavaScript. V8 fournit les mécanismes pour créer les objets, appeler les fonctions, etc. L'API de V8 est principalement documentée dans le fichier d'en-tête `v8.h` (`deps/v8/include/v8.h` dans l'arborescence des sources de Node.js), qui est également disponible [en ligne](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): la bibliothèque C qui implémente la boucle d'évènements de Node.js, ses threads de travail et tous les comportement asynchrones de la plateforme. Elle sert également de bibliothèque d'abstraction inter-plateformes, fournissant sur tous les systèmes d'exploitation majeurs un accès facile, façon POSIX, à de nombreuses tâches systèmes communes, telles que l'interaction avec le système de fichiers, les sockets, les timers et les évènements système. libuv fournit aussi une abstraction de threading façon pthreads qui peut être utilisée pour alimenter des extensions asynchrones plus sophistiquées, ayant besoin d'aller au-delà de la boucle évènementielle standard. Les auteurs d'extensions sont encouragés à considérer des manières d'éviter de bloquer la boucle évènementielle avec des entrées/sorties (I/O) ou d'autres tâches longue durée, en déportant le travail via libuv vers des opérations systèmes non-bloquantes, des threads de travail ou une utilisation personnalisée des threads libuv.
+* [libuv](https://github.com/libuv/libuv): la bibliothèque C qui implémente la boucle d'évènements de Node.js, ses threads de travail et tous les comportement asynchrones de la plateforme. Elle sert également de bibliothèque d'abstraction inter-plateformes, fournissant sur tous les systèmes d'exploitation majeurs un accès facile, type POSIX, à de nombreuses tâches systèmes communes, telles que l'interaction avec le système de fichiers, les sockets, les timers et les évènements système. libuv fournit aussi une abstraction de threading façon pthreads qui peut être utilisée pour alimenter des extensions asynchrones plus sophistiquées, ayant besoin d'aller au-delà de la boucle évènementielle standard. Les auteurs d'Extensions sont encouragés à considérer des manières d'éviter de bloquer la boucle évènementielle avec des entrées/sorties (I/O) ou d'autres tâches longue durée, en déportant le travail via libuv vers des opérations systèmes non-bloquantes, des threads de travail ou une utilisation personnalisée des threads libuv.
 
-* Bibliothèques internes de Node.js: Node.js exporte un certain nombre d'APIs C++ que les extensions peuvent utiliser &mdash; la plus importante de celles-ci étant la classe `node::ObjectWrap`.
+* Bibliothèques internes de Node.js: Node.js exporte un certain nombre d'APIs C++ que les Extensions peuvent utiliser &mdash; la plus importante de celles-ci étant la classe `node::ObjectWrap`.
 
-* Node.js inclut d'autres bibliothèques liées statiquement, dont OpenSSL. Ces autres bibliothèques se trouvent dans le répertoire `deps/` de l'arborescence des sources de Node.js. Seus les symboles de libuv, OpenSSL, V8 et zlib sont délibérément réexportées par Node.js et peuvent être utilisés à divers degrés par les extensions. Voir [Liaison aux dépendances propres de Node.js](#addons_linking_to_node_js_own_dependencies) pour plus d'informations.
+* Node.js inclut d'autres bibliothèques liées statiquement, dont OpenSSL. Ces autres bibliothèques se trouvent dans le répertoire `deps/` de l'arborescence des sources de Node.js. Seus les symboles de libuv, OpenSSL, V8 et zlib sont délibérément réexportées par Node.js et peuvent être utilisés à divers degrés par les Extensions. Voir [Liaison vers les dépendances propres de Node.js](#addons_linking_to_node_js_own_dependencies) pour plus d'informations.
 
-Tous les exemples suivants sont disponibles au [téléchargement](https://github.com/nodejs/node-addon-examples) et peuvent être utilisés comme point de départ pour une extension.
+Tous les exemples suivants sont disponibles au [téléchargement](https://github.com/nodejs/node-addon-examples) et peuvent être utilisés comme point de départ pour une Extension.
 
 ## Hello world
 
-Cet exemple « Hello world » est une extension simple, écrite en C++, qui est l’équivalent du code JavaScript suivant :
+Cet exemple « Hello world » est une Extension simple, écrite en C++, qui est l’équivalent du code JavaScript suivant :
 
 ```js
 module.exports.hello = () => 'world';
@@ -55,7 +55,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Notez que toutes les extensions Node.js doivent exporter une fonction d’initialisation suivant le modèle :
+Notez que toutes les Extensions Node.js doivent exporter une fonction d’initialisation suivant le modèle :
 
 ```cpp
 void Initialize(Local<Object> exports); NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
@@ -65,9 +65,9 @@ Il n’y a pas de point-virgule après `NODE_MODULE`, car ce n’est pas une fon
 
 Le `module_name` doit correspondre au nom de fichier du binaire final (sans le suffixe `.node`).
 
-Dans l’exemple `hello.cc`, la fonction d’initialisation est `init` et le nom de module de l'extension est `addon`.
+Dans l’exemple `hello.cc`, la fonction d’initialisation est `init` et le nom de module de l'Extension est `addon`.
 
-### Génération
+### Compilation
 
 Une fois le code source écrit, il doit être compilé vers le fichier binaire `addon.node`. Pour ce faire, créez un fichier appelé `binding.gyp` au plus haut niveau de l'arborescence du projet décrivant la configuration de génération du module à l’aide d’un format de type JSON. Ce fichier est utilisé par [node-gyp](https://github.com/nodejs/node-gyp) — un outil écrit spécifiquement pour compiler les extensions Node.js.
 
@@ -82,15 +82,15 @@ Une fois le code source écrit, il doit être compilé vers le fichier binaire `
 }
 ```
 
-Une version de l’utilitaire `node-gyp` est empaquetée et distribuée avec Node.js, incluse dans `npm`. Cette version n'est pas directement disponible pour les développeurs, et n'est présente que pour permettre d’utiliser la commande `npm install` pour compiler et installer des extensions. Les développeurs qui souhaitent utiliser `node-gyp` directement peuvent l’installer en utilisant la commande `npm install -g node-gyp`. Voir les [instructions d’installation](https://github.com/nodejs/node-gyp#installation) de `node-gyp` pour plus d’informations, incluant les exigences spécifiques à chaque plateforme.
+Une version de l’utilitaire `node-gyp` est empaquetée et distribuée avec Node.js, incluse dans `npm`. Cette version n'est pas directement disponible pour les développeurs, et n'est présente que pour permettre d’utiliser la commande `npm install` pour compiler et installer des Extensions. Les développeurs qui souhaitent utiliser `node-gyp` directement peuvent l’installer en utilisant la commande `npm install -g node-gyp`. Voir les [instructions d’installation](https://github.com/nodejs/node-gyp#installation) de `node-gyp` pour plus d’informations, incluant les exigences spécifiques à chaque plateforme.
 
 Une fois que le fichier `binding.gyp` a été créé, utilisez `node-gyp configure` pour générer les fichiers de compilation du projet adaptés à la plateforme sur laquelle vous vous trouvez. Ceci va générer un `Makefile` (sur les platesformes Unix) ou un fichier `vcxproj` (sous Windows) dans le répertoire `build/`.
 
 Ensuite, appelez la commande `node-gyp generate` pour générer le fichier compilé `addon.node`. Celui-ci sera placé dans le répertoire `build/Release/`.
 
-Lorsque vous utilisez `npm install` pour installer une extension Node.js, npm utilise sa propre version embarquée de `node-gyp` pour effectuer cette même série d’actions, générant à la demande une version compilée de l’extension pour la plateforme de l’utilisateur.
+Lorsque vous utilisez `npm install` pour installer une Extension Node.js, npm utilise sa propre version embarquée de `node-gyp` pour effectuer cette même série d’actions, générant à la demande une version compilée de l’Extension pour la plateforme de l’utilisateur.
 
-Une fois générée, l'extension peut être utilisée au sein de Node.js en pointant [`require()`](modules.html#modules_require) sur le module compilé `addon.node` :
+Une fois générée, l'Extension peut être utilisée au sein de Node.js en pointant [`require()`](modules.html#modules_require) sur le module compilé `addon.node` :
 
 ```js
 // hello.js
@@ -102,9 +102,9 @@ console.log(addon.hello());
 
 Merci de voir les exemples ci-dessous pour de plus amples informations, ou <https://github.com/arturadib/node-qt> pour un exemple en production.
 
-Comme le chemin exact vers le binaire compilé de l’extension peut varier en fonction de la façon dont il est compilé (il peut par exemple se trouver dans `./build/Debug/`), les extensions peuvent utiliser le paquet [bindings](https://github.com/TooTallNate/node-bindings) pour charger le module compilé.
+Comme le chemin exact vers le binaire compilé de l’Extension peut varier en fonction de la façon dont il est compilé (il peut par exemple se trouver dans `./build/Debug/`), les Extensions peuvent utiliser le paquet [bindings](https://github.com/TooTallNate/node-bindings) pour charger le module compilé.
 
-Notez que même si l'implémentation du paquet `bindings` est plus sophistiquée dans sa façon de localiser les modules d'extension, elle utilise en essence un modèle de try-catch similaire à:
+Notez que même si l'implémentation du paquet `bindings` est plus sophistiquée dans sa façon de localiser les modules d'Extension, elle utilise en essence un modèle de try-catch similaire à:
 
 ```js
 try {
@@ -116,15 +116,15 @@ try {
 
 ### Liaison vers les dépendances propres de Node.js
 
-Node.js utilise un certain nombre de bibliothèques liées statiquement comme V8, libuv et OpenSSL. Toutes les extensions sont tenues de lier V8, et peuvent également lier n'importe laquelle des autres dépendances. En général, il suffit d'inclure les déclarations `#include <...>` appropriées (p. ex. `#include <v8.h>`) et `node-gyp` localisera automatiquement les bons en-têtes. Toutefois, il y a quelques points d'attention à connaître:
+Node.js utilise un certain nombre de bibliothèques liées statiquement comme V8, libuv et OpenSSL. Toutes les Extensions sont tenues de lier V8, et peuvent également lier n'importe laquelle des autres dépendances. En général, il suffit d'inclure les déclarations `#include <...>` appropriées (p. ex. `#include <v8.h>`) et `node-gyp` localisera automatiquement les bons en-têtes. Toutefois, il y a quelques points d'attention à connaître:
 
-* Lorsque `node-gyp` est exécuté, la version spécifique de Node.js est détectée, et node-gyp choisira de ne télécharger que les en-têtes, ou bien la source complète. Si la source complète est téléchargée, les extensions auront un accès complet à l’ensemble des dépendances de Node.js. Mais si seuls les en-têtes de Node.js sont téléchargés, ne seront disponibles que les symboles exportés par Node.js.
+* Lorsque `node-gyp` est exécuté, la version spécifique de Node.js est détectée, et node-gyp choisira de ne télécharger que les en-têtes, ou bien la source complète. Si la source complète est téléchargée, les Extensions auront un accès complet à l’ensemble des dépendances de Node.js. Mais si seuls les en-têtes de Node.js sont téléchargés, ne seront disponibles que les symboles exportés par Node.js.
 
-* `node-gyp` peut être exécuté avec le flag `--nodedir` pointant vers une image locale des sources de Node.js. Avec cette option, l'extension aura accès à l'ensemble des dépendances.
+* `node-gyp` peut être exécuté avec le flag `--nodedir` pointant vers une image locale des sources de Node.js. Avec cette option, l'Extension aura accès à l'ensemble des dépendances.
 
-### Chargement des extensions avec require()
+### Chargement des Extensions avec require()
 
-L’extension de nom de fichier du binaire de l'extension compilée est `.node` (plutôt que `.dll` ou `.so`). La fonction [`require()`](modules.html#modules_require) est écrite pour rechercher des fichiers avec l’extension `.node` et les initialiser comme des bibliothèques dynamiquement liées.
+L’extension de nom de fichier du binaire de l'Extension compilée est `.node` (plutôt que `.dll` ou `.so`). La fonction [`require()`](modules.html#modules_require) est écrite pour rechercher des fichiers avec l’extension `.node` et les initialiser comme des bibliothèques dynamiquement liées.
 
 Lorsque vous appelez [`require()`](modules.html#modules_require), l’extension de nom de fichier`.node` peut généralement être omise et Node.js saura toujours rechercher et initialiser l’Extension. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
