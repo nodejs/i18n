@@ -150,7 +150,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-The WHATWG `URL` class. See the [`URL`][] section.
+La classe `URL` WHATWG. Voir la section [`URL`][].
 
 ## URLSearchParams
 
