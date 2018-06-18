@@ -132,13 +132,13 @@ Lorsque vous appelez [`require()`](modules.html#modules_require), l’extension 
 
 Chacun des exemples illustrés dans le présent document utilise directement les APIs de Node.js et V8 pour implémenter des Extensions. Il est important de comprendre que l’API de V8 peut et a déjà changé de façon importante d’une version de V8 à l’autre (et d'une version majeure de Node.js à l’autre). A chaque changement, les Extensions peuvent nécessiter une mise à jour et une recompilation pour continuer à fonctionner. Le calendrier des parutions de Node.js est conçu pour réduire au minimum la fréquence et l’impact de ces changements, mais Node.js ne peut actuellement pas faire grand chose pour assurer la stabilité des API V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+Les [Abstractions Natives pour Node.js](https://github.com/nodejs/nan) (Native Abstractions for Node.js ou `nan`) fournissent un ensemble d'outils qu'il est recommandé aux développeurs d'Extensions d'utiliser pour conserver la compatibilité entre les versions passées et futures de V8 et Node.js. Voir les [examples](https://github.com/nodejs/nan/tree/master/examples/) de `nan` pour une illustration de la façon dont ils peuvent être employés.
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Stabilité: 1 - Expérimental
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API est une API pour la création d’Extensions natives. Elle est indépendante de la plateforme d'exécution JavaScript sous-jacente (p. ex. V8) et est maintenue en tant que partie de Node.js. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
 To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
