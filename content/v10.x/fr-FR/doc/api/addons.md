@@ -4,13 +4,13 @@
 
 <!-- type=misc -->
 
-Les extensions C++ sont des objets partagés liés dynamiquement, écrits en C++, qui peuvent être chargés dans Node.js en utilisant la fonction [`require()`](modules.html#modules_require), et utilisés comme s'il s'agissait de modules Node.js ordinaires. Ils sont principalement utilisés pour fournir une interface entre le JavaScript qui s'exécute dans Node.js et des bibliothèques C/C++.
+Les Extensions C++ sont des objets partagés liés dynamiquement, écrits en C++, qui peuvent être chargés dans Node.js en utilisant la fonction [`require()`](modules.html#modules_require), et utilisés comme s'il s'agissait de modules Node.js ordinaires. Elles sont principalement utilisées pour fournir une interface entre le JavaScript qui s'exécute dans Node.js et des bibliothèques C/C++.
 
-À l'heure actuelle, la façon d'implémenter ces extensions est plutôt compliquée, et implique la connaissance de plusieurs composants et APIs:
+À l'heure actuelle, la façon d'implémenter ces Extensions est plutôt compliquée, et implique la connaissance de plusieurs composants et APIs:
 
 * V8: la bibliothèque C++ que Node.js utilise actuellement pour son implémentation de JavaScript. V8 fournit les mécanismes pour créer les objets, appeler les fonctions, etc. L'API de V8 est principalement documentée dans le fichier d'en-tête `v8.h` (`deps/v8/include/v8.h` dans l'arborescence des sources de Node.js), qui est également disponible [en ligne](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): La bibliothèque C qui implémente la boucle évènementielle de Node.js, ses threads de travail et tous les comportements asynchrones de la plateforme. Elle sert également de bibliothèque d'abstraction inter-plateformes, fournissant sur tous les systèmes d'exploitation majeurs un accès facile, façon POSIX, à de nombreuses tâches systèmes communes, telles que l'interaction avec le système de fichiers, les sockets, les timers et les évènements système. libuv fournit aussi une abstraction de threading façon pthreads qui peut être utilisée pour alimenter des extensions asynchrones plus sophistiquées, ayant besoin d'aller au-delà de la boucle évènementielle standard. Les auteurs d'extensions sont encouragés à considérer des manières d'éviter de bloquer la boucle évènementielle avec des entrées/sorties (I/O) ou d'autres tâches longue durée, en déportant le travail via libuv vers des opérations systèmes non-bloquantes, des threads de travail ou une utilisation personnalisée des threads libuv.
+* [libuv](https://github.com/libuv/libuv): la bibliothèque C qui implémente la boucle d'évènements de Node.js, ses threads de travail et tous les comportement asynchrones de la plateforme. Elle sert également de bibliothèque d'abstraction inter-plateformes, fournissant sur tous les systèmes d'exploitation majeurs un accès facile, façon POSIX, à de nombreuses tâches systèmes communes, telles que l'interaction avec le système de fichiers, les sockets, les timers et les évènements système. libuv fournit aussi une abstraction de threading façon pthreads qui peut être utilisée pour alimenter des extensions asynchrones plus sophistiquées, ayant besoin d'aller au-delà de la boucle évènementielle standard. Les auteurs d'extensions sont encouragés à considérer des manières d'éviter de bloquer la boucle évènementielle avec des entrées/sorties (I/O) ou d'autres tâches longue durée, en déportant le travail via libuv vers des opérations systèmes non-bloquantes, des threads de travail ou une utilisation personnalisée des threads libuv.
 
 * Bibliothèques internes de Node.js: Node.js exporte un certain nombre d'APIs C++ que les extensions peuvent utiliser &mdash; la plus importante de celles-ci étant la classe `node::ObjectWrap`.
 
@@ -118,15 +118,15 @@ try {
 
 Node.js utilise un certain nombre de bibliothèques liées statiquement comme V8, libuv et OpenSSL. Toutes les extensions sont tenues de lier V8, et peuvent également lier n'importe laquelle des autres dépendances. En général, il suffit d'inclure les déclarations `#include <...>` appropriées (p. ex. `#include <v8.h>`) et `node-gyp` localisera automatiquement les bons en-têtes. Toutefois, il y a quelques points d'attention à connaître:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Lorsque `node-gyp` est exécuté, la version spécifique de Node.js est détectée, et node-gyp choisira de ne télécharger que les en-têtes, ou bien la source complète. Si la source complète est téléchargée, les extensions auront un accès complet à l’ensemble des dépendances de Node.js. Mais si seuls les en-têtes de Node.js sont téléchargés, ne seront disponibles que les symboles exportés par Node.js.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* `node-gyp` peut être exécuté avec le flag `--nodedir` pointant vers une image locale des sources de Node.js. Avec cette option, l'extension aura accès à l'ensemble des dépendances.
 
-### Loading Addons using require()
+### Chargement des extensions avec require()
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+L’extension de nom de fichier du binaire de l'extension compilée est `.node` (plutôt que `.dll` ou `.so`). La fonction [`require()`](modules.html#modules_require) est écrite pour rechercher des fichiers avec l’extension `.node` et les initialiser comme des bibliothèques dynamiquement liées.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Lorsque vous appelez [`require()`](modules.html#modules_require), l’extension de nom de fichier`.node` peut généralement être omise et Node.js saura toujours rechercher et initialiser l’Extension. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
 ## Native Abstractions for Node.js
 
