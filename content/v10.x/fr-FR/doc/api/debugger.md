@@ -85,11 +85,11 @@ Presser `enter` sans taper de commande répètera la commande de débogage préc
 
 ## Espions
 
-Il est possible d'observer les valeurs d'expression et de variables pendant le débogage. Sur tous les point d'arrêt, chaque expression de la liste d'observation sera évaluée dans le contexte courant et affichée immédiatement avant le listing de code source du point d'arrêt.
+Il est possible d'espionner les valeurs d'expression et de variables pendant le débogage. Sur tous les point d'arrêt, chaque expression de la liste d'expressions espionnées sera évaluée dans le contexte courant, et affichée immédiatement avant le listing de code source du point d'arrêt.
 
-Pour commencer à observer une expression, tapez `watch('mon_expression')`. La commande `watchers` affichera tous les observateurs actifs. Pour supprimer un observateur, tapez `unwatch('mon_expression')`.
+Pour commencer à espionner une expression, tapez `watch('mon_expression')`. La commande `watchers` affichera tous les espions actifs. Pour supprimer un espion, tapez `unwatch('mon_expression')`.
 
-## Référence de commande
+## Référence de la ligne de commande
 
 ### Pas-à-pas
 
@@ -97,9 +97,9 @@ Pour commencer à observer une expression, tapez `watch('mon_expression')`. La c
 * `next`, `n` - Instruction suivante
 * `step`, `s` - Pas à pas entrant (si l'instruction à exécuter contient une fonction, se rend à la première instruction de cette fonction)
 * `out`, `o` - Pas à pas sortant (exécute le code jusqu'au retour de la fonction en cours, et s'arrête dans la fonction parente, à l'instruction suivant l'appel de la fonction où l'on était entré)
-* `pause` - Pause running code (like pause button in Developer Tools)
+* `pause` - Mets l'exécution du code en pause (comme le bouton pause dans les outils de développement Chrome)
 
-### Breakpoints
+### Points d'arrêt
 
 * `setBreakpoint()`, `sb()` - Set breakpoint on current line
 * `setBreakpoint(line)`, `sb(line)` - Set breakpoint on specific line
