@@ -132,28 +132,28 @@ debug>
 
 ### Information
 
-* `backtrace`, `bt` - Print backtrace of current execution frame
-* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
-* `watch(expr)` - Add expression to watch list
-* `unwatch(expr)` - Remove expression from watch list
-* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
-* `repl` - Open debugger's repl for evaluation in debugging script's context
-* `exec expr` - Execute an expression in debugging script's context
+* `backtrace`, `bt` - Affiche la pile d'apppel au point d'exécution courant
+* `list(5)` - Affiche le code source avec un contexte de 5 lignes (5 lignes avant et après)
+* `watch(expr)` - Ajoute une expression à la liste d'espions
+* `unwatch(expr)` - Retire une expression de la liste d'espions
+* `watchers` - Liste tous les espions et leurs valeurs (listé automatiquement à chaque point d'arrêt)
+* `repl` - Ouvre le repl du débogueur pour exécuter du code dans le contexte du script débogué
+* `exec expr` - Exécute une expression dans le contexte du script débogué
 
-### Execution control
+### Contrôle d’exécution
 
-* `run` - Run script (automatically runs on debugger's start)
-* `restart` - Restart script
-* `kill` - Kill script
+* `run` - Exécute le script (s'exécute automatiquement au démarrage du débogueur)
+* `restart` - Redémarre le script
+* `kill` - Arrête le script
 
-### Various
+### Divers
 
-* `scripts` - List all loaded scripts
-* `version` - Display V8's version
+* `scripts` - Liste tous les scripts chargés
+* `version` - Affiche la version de V8
 
-## Advanced Usage
+## Utilisation avancée
 
-### V8 Inspector Integration for Node.js
+### Intégration de l'inspecteur V8 pour Node.js
 
 V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
