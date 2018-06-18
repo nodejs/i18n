@@ -1,12 +1,12 @@
-# Debugger
+# Débogueur
 
 <!--introduced_in=v0.9.12-->
 
-> Stability: 2 - Stable
+> Stabilité: 2 - stable
 
 <!-- type=misc -->
 
-Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+Node.js inclut un utilitaire de débogage out-of-process accessible via un [Inspecteur V8](#debugger_v8_inspector_integration_for_node_js) et le client de débogage intégré. Pour l’utiliser, lancez Node.js avec l’argument `inspect`, suivi par le chemin d’accès du script à déboguer; une invite s’affichera, indiquant le lancement réussi du débogueur :
 
 ```txt
 $ node inspect myscript.js
