@@ -1,41 +1,33 @@
-@/ / NB(chrisdickinson) : Si vous déplacez ce fichier, assurez-vous de mettre à jour @/ / tools/doc/html.js pour pointer vers le nouvel emplacement.
+@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
 
-<!--introduced_in=v0.10.0-->
-
-* [À propos de ces documents](documentation.html)
-* [Usage & Exemple](synopsis.html)
+* [About these Docs](documentation.html)
+* [Usage & Example](synopsis.html)
 
 <div class="line"></div>
 
-* [Tests d'Assertion](assert.html)
-* [Async Hooks](async_hooks.html)
+* [Assertion Testing](assert.html)
 * [Buffer](buffer.html)
-* [Extensions C++](addons.html)
+* [C++ Addons](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
-* [Processus enfants](child_process.html)
+* [Child Processes](child_process.html)
 * [Cluster](cluster.html)
-* [Option de la ligne de commande](cli.html)
+* [Command Line Options](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
-* [Débogueur](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [Debugger](debugger.html)
 * [DNS](dns.html)
 * [Domain](domain.html)
-* [ECMAScript Modules](esm.html)
-* [Erreurs](errors.html)
+* [Errors](errors.html)
 * [Events](events.html)
 * [File System](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
-* [HTTP/2](http2.html)
 * [HTTPS](https.html)
-* [Inspecteur](inspector.html)
 * [Internationalization](intl.html)
 * [Modules](modules.html)
 * [Net](net.html)
 * [OS](os.html)
 * [Path](path.html)
-* [Performance Hooks](perf_hooks.html)
 * [Process](process.html)
 * [Punycode](punycode.html)
 * [Query Strings](querystring.html)
@@ -45,7 +37,6 @@
 * [String Decoder](string_decoder.html)
 * [Timers](timers.html)
 * [TLS/SSL](tls.html)
-* [Trace Events](tracing.html)
 * [TTY](tty.html)
 * [UDP/Datagram](dgram.html)
 * [URL](url.html)
@@ -57,4 +48,4 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [Mailing List](http://groups.google.com/group/nodejs)
