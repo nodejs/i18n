@@ -310,9 +310,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Notez que cet exemple utilise une forme d'`Init()` à deux arguments qui reçoit l’objet `module` complet comme second argument. Cela permet à l'Extension de récrire complètement `exports` avec une seule fonction plutôt que d'ajouter la fonction comme propriété d'`exports`.
 
-To test it, run the following JavaScript:
+Pour tester cette Extension, exécutez le JavaScript suivant:
 
 ```js
 // test.js
@@ -324,11 +324,11 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Notez que dans cet exemple, la fonction de callback est appelée de façon synchrone.
 
-### Object factory
+### Usine à Objets
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Les Extensions peuvent créer et renvoyer de nouveaux objets depuis une fonction C++ comme illustré par l'exemple suivant. Un objet est créé et renvoyé avec une propriété `msg` qui a pour valeur la chaîne passée à `createObject()`:
 
 ```cpp
 // addon.cc
@@ -361,7 +361,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Pour tester cette Extension en JavaScript:
 
 ```js
 // test.js
@@ -370,12 +370,12 @@ const addon = require('./build/Release/addon');
 const obj1 = addon('hello');
 const obj2 = addon('world');
 console.log(obj1.msg, obj2.msg);
-// Prints: 'hello world'
+// Affiche: 'hello world'
 ```
 
-### Function factory
+### Usine à fonction
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Un autre scénario commun est de créer des fonctions JavaScript qui enveloppent des fonctions C++, et de les retourner vers JavaScript:
 
 ```cpp
 // addon.cc
@@ -403,7 +403,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
   Local<Function> fn = tpl->GetFunction();
 
-  // omit this to make it anonymous
+  // omettez cette ligne pour la rendre anonyme
   fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
 
   args.GetReturnValue().Set(fn);
@@ -418,7 +418,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Pour tester:
 
 ```js
 // test.js
@@ -429,9 +429,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Envelopper des objets C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+Il est également possible d'envelopper des objets/classes C++ d'une façon qui permet de créer de nouvelles instances en utilisant l'opérateur JavaScript `new`:
 
 ```cpp
 // addon.cc
