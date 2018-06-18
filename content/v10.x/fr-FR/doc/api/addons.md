@@ -326,7 +326,7 @@ addon((msg) => {
 
 Notez que dans cet exemple, la fonction de callback est appelée de façon synchrone.
 
-### Usine à Objets
+### Usine à objets
 
 Les Extensions peuvent créer et renvoyer de nouveaux objets depuis une fonction C++ comme illustré par l'exemple suivant. Un objet est créé et renvoyé avec une propriété `msg` qui a pour valeur la chaîne passée à `createObject()`:
 
@@ -373,9 +373,9 @@ console.log(obj1.msg, obj2.msg);
 // Affiche: 'hello world'
 ```
 
-### Usine à fonction
+### Usine à fonctions
 
-Un autre scénario commun est de créer des fonctions JavaScript qui enveloppent des fonctions C++, et de les retourner vers JavaScript:
+Un autre scénario commun est de créer des fonctions JavaScript qui encapsulent des fonctions C++, et de les retourner vers JavaScript:
 
 ```cpp
 // addon.cc
@@ -429,9 +429,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Envelopper des objets C++
+### Encapsuler des objets C++
 
-Il est également possible d'envelopper des objets/classes C++ d'une façon qui permet de créer de nouvelles instances en utilisant l'opérateur JavaScript `new`:
+Il est également possible d'encapsuler des objets/classes C++ d'une façon qui permet de créer de nouvelles instances en utilisant l'opérateur JavaScript `new`:
 
 ```cpp
 // addon.cc
@@ -584,24 +584,24 @@ const addon = require('./build/Release/addon');
 
 const obj = new addon.MyObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Affiche: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Affiche: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Affiche: 13
 ```
 
-### Factory of wrapped objects
+### Usine à objets encapsulés
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Comme alternative, il est possible d'utiliser le Design Pattern Factory pour éviter de créer directement des instances d'objets en utilisant l'opérateur JavaScript `new`:
 
 ```js
 const obj = addon.createObject();
-// instead of:
+// au lieu de:
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+D'abord, la méthode `createObject()` est implémentée dans `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -632,7 +632,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+Dans `myobject.h`, la méthode statique `NewInstance()` est ajoutée pour gérer l'instanciation de l'objet. Cette méthode prend la place de l'utilisation de `new` en JavaScript:
 
 ```cpp
 // myobject.h
