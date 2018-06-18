@@ -84,13 +84,13 @@ Une fois le code source écrit, il doit être compilé vers le fichier binaire `
 
 Une version de l’utilitaire `node-gyp` est empaquetée et distribuée avec Node.js, incluse dans `npm`. Cette version n'est pas directement disponible pour les développeurs, et n'est présente que pour permettre d’utiliser la commande `npm install` pour compiler et installer des extensions. Les développeurs qui souhaitent utiliser `node-gyp` directement peuvent l’installer en utilisant la commande `npm install -g node-gyp`. Voir les [instructions d’installation](https://github.com/nodejs/node-gyp#installation) de `node-gyp` pour plus d’informations, incluant les exigences spécifiques à chaque plateforme.
 
-Une fois que le fichier `binding.gyp` a été créé, utilisez `node-gyp configure` pour générer les fichiers de compilation du projet adaptés à la plateforme sur laquelle vous vous trouvez. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Une fois que le fichier `binding.gyp` a été créé, utilisez `node-gyp configure` pour générer les fichiers de compilation du projet adaptés à la plateforme sur laquelle vous vous trouvez. Ceci va générer un `Makefile` (sur les platesformes Unix) ou un fichier `vcxproj` (sous Windows) dans le répertoire `build/`.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Ensuite, appelez la commande `node-gyp generate` pour générer le fichier compilé `addon.node`. Celui-ci sera placé dans le répertoire `build/Release/`.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Lorsque vous utilisez `npm install` pour installer une extension Node.js, npm utilise sa propre version embarquée de `node-gyp` pour effectuer cette même série d’actions, générant à la demande une version compilée de l’extension pour la plateforme de l’utilisateur.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Une fois générée, l'extension peut être utilisée au sein de Node.js en pointant [`require()`](modules.html#modules_require) sur le module compilé `addon.node` :
 
 ```js
 // hello.js
@@ -100,11 +100,11 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Merci de voir les exemples ci-dessous pour de plus amples informations, ou <https://github.com/arturadib/node-qt> pour un exemple en production.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Comme le chemin exact vers le binaire compilé de l’extension peut varier en fonction de la façon dont il est compilé (il peut par exemple se trouver dans `./build/Debug/`), les extensions peuvent utiliser le paquet [bindings](https://github.com/TooTallNate/node-bindings) pour charger le module compilé.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Notez que même si l'implémentation du paquet `bindings` est plus sophistiquée dans sa façon de localiser les modules d'extension, elle utilise en essence un modèle de try-catch similaire à:
 
 ```js
 try {
@@ -114,9 +114,9 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### Liaison vers les dépendances propres de Node.js
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js utilise un certain nombre de bibliothèques liées statiquement comme V8, libuv et OpenSSL. Toutes les extensions sont tenues de lier V8, et peuvent également lier n'importe laquelle des autres dépendances. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
 
 * When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
