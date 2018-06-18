@@ -14,19 +14,19 @@ Les extensions C++ sont des objets partagés liés dynamiquement, écrits en C++
 
 * Bibliothèques internes de Node.js: Node.js exporte un certain nombre d'APIs C++ que les extensions peuvent utiliser &mdash; la plus importante de celles-ci étant la classe `node::ObjectWrap`.
 
-* Node.js inclut d'autres bibliothèques liées statiquement, dont OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js inclut d'autres bibliothèques liées statiquement, dont OpenSSL. Ces autres bibliothèques se trouvent dans le répertoire `deps/` de l'arborescence des sources de Node.js. Seus les symboles de libuv, OpenSSL, V8 et zlib sont délibérément réexportées par Node.js et peuvent être utilisés à divers degrés par les extensions. Voir [Liaison aux dépendances propres de Node.js](#addons_linking_to_node_js_own_dependencies) pour plus d'informations.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Tous les exemples suivants sont disponibles au [téléchargement](https://github.com/nodejs/node-addon-examples) et peuvent être utilisés comme point de départ pour une extension.
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Cet exemple « Hello world » est une extension simple, écrite en C++, qui est l’équivalent du code JavaScript suivant :
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Tout d’abord, créez le fichier `hello.cc` :
 
 ```cpp
 // hello.cc
