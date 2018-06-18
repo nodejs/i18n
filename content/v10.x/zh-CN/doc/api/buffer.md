@@ -50,7 +50,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 *开发人员应将 `new Buffer()` 构造函数的所有现有使用迁移到这些新 api 之一中。*
 
 * [`Buffer.from(array)`] 返回一个新的 `Buffer`, *包含提供的八位字节的副本 *。
-* [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`].
+* [`Buffer.from(arrayBuffer[, byteOffset[,length]])`][`Buffer.from(arrayBuf)`] 返回一个新的 `Buffer`,与给定的 [`ArrayBuffer`] *共享相同的已分配内存 *。
 * [`Buffer.from(buffer)`] returns a new `Buffer` that *contains a copy* of the contents of the given `Buffer`.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` that *contains a copy* of the provided string.
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a new initialized `Buffer` of the specified size. This method is slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly created `Buffer` instances never contain old data that is potentially sensitive.
