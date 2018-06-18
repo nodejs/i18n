@@ -899,7 +899,7 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Prépare le gabarit du coonstructeur
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
@@ -911,13 +911,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // appelé comme constructeur: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // appelé comme fonction brute `MyObject(...)`, devient un appel construct.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -944,7 +944,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Testez-le avec:
 
 ```js
 // test.js
@@ -955,21 +955,21 @@ const obj2 = addon.createObject(20);
 const result = addon.add(obj1, obj2);
 
 console.log(result);
-// Prints: 30
+// Affiche: 30
 ```
 
 ### AtExit hooks
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+Un hook `AtExit` est une fonction qui est appelée après que la boucle évènementielle de Node.js se soit arrêtée mais avant que la machine virtuelle JavaScript soit détruite et que Node.js s'éteigne. Les hooks `AtExit` hooks sont enregistrés en utilisant l'API `node::AtExit`.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Un pointeur vers la fonction de callback à appeler à la sortie.
+* `args` <span class="type">&lt;void\*&gt;</span> Un pointeur à passer au callback à la sortie.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Enregistre un hook de sortie qui est exécuté après que la boucle évènementielle de Node. js se soit arrêtée mais avant que la machine virtuelle JavaScript soit détruite.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` prend deux paramètres: un pointeur vers un callback à appeler à la sortie, et un pointeur vers des données de contexte non-typées à passer à ce callback.
 
 Callbacks are run in last-in first-out order.
 
