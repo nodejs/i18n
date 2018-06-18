@@ -160,4 +160,4 @@ added: v10.0.0
 
 <!-- type=global -->
 
-The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+La classe `URLSearchParams` WHATWG. Voir la section [`URLSearchParams`][].
