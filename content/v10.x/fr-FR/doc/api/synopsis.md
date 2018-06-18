@@ -14,7 +14,7 @@ Exemple d’un [serveur web](http.html) écrit avec Node.js qui répond avec `«
 
 Les commandes utilisées dans ce document sont montrées commençant par `$` ou `>` pour simuler la façon dont elles seraient affichées dans le terminal de l’utilisateur. Ne tapez pas les caractères `$` and `>`, ils sont là pour indiquer le début de chaque commande.
 
-There are many tutorials and examples that follow this convention: `$` or `>` for commands run as a regular user, and `#` for commands that should be executed as an administrator.
+Beaucoup de tutoriaux et d'exemples suivent cette convention: `$` or `>` pour les commandes exécutées comme un utilisateur standard, et `#` pour les commandes devant être exécutées en tant qu'administrateur.
 
 Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
 
