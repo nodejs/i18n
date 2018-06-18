@@ -130,7 +130,7 @@ Lorsque vous appelez [`require()`](modules.html#modules_require), l’extension 
 
 ## Abstractions Natives pour Node.js
 
-Chacun des exemples illustrés dans le présent document utilise directement les APIs de Node.js et V8 pour implémenter des Extensions. Il est important de comprendre que l’API de V8 peut et a déjà changé de façon importante d’une version de V8 à l’autre (et d'une version majeure de Node.js à l’autre). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Chacun des exemples illustrés dans le présent document utilise directement les APIs de Node.js et V8 pour implémenter des Extensions. Il est important de comprendre que l’API de V8 peut et a déjà changé de façon importante d’une version de V8 à l’autre (et d'une version majeure de Node.js à l’autre). A chaque changement, les Extensions peuvent nécessiter une mise à jour et une recompilation pour continuer à fonctionner. Le calendrier des parutions de Node.js est conçu pour réduire au minimum la fréquence et l’impact de ces changements, mais Node.js ne peut actuellement pas faire grand chose pour assurer la stabilité des API V8.
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
