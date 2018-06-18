@@ -664,7 +664,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+L'implémentation dans `myobject.cc` est similaire à celle de l'exemple précédent:
 
 ```cpp
 // myobject.cc
@@ -694,7 +694,7 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Prépare le gabarit du constructeur
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
@@ -709,13 +709,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // appelé comme constructeur: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Appelé comme fonction brute `MyObject(...)`,devient un appel construct.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -751,7 +751,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Une fois encore, pour compiler cet exemple, le fichier `myobject.cc` doit être ajouté à `binding.gyp`:
 
 ```json
 {
@@ -767,7 +767,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Testez-le avec:
 
 ```js
 // test.js
@@ -775,24 +775,24 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Affiche: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Affiche: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Affiche: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Affiche: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Affiche: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Affiche: 23
 ```
 
-### Passing wrapped objects around
+### Transmettre des objets encapsulés
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+En plus d'encapsuler et de renvoyer des objets C++, il est possible de transmettre ces objets en les désencapsulant avec la fonction outil Node.js `node::ObjectWrap::Unwrap`. Les exemples suivant montrent une fonction `add()` qui peut prendre en entrée deux instances de `MyObject` comme arguments:
 
 ```cpp
 // addon.cc
@@ -838,7 +838,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+Dans `myobject.h`, une nouvelle méthode publique est ajoutée pour permettre l'accès aux valeurs privées après avoir désencapsulé l'objet.
 
 ```cpp
 // myobject.h
@@ -870,7 +870,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+L'implémentation dans `myobject.cc` est similaire à celle de l'exemple précédent:
 
 ```cpp
 // myobject.cc
