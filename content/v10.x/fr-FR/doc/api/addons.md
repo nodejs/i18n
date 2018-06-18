@@ -174,13 +174,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+Les fonctions disponibles et leur utilisation sont documentées dans la section [Extensions C/C++ - N-API](n-api.html).
 
-## Addon examples
+## Exemples d'Extensions
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Voici quelques exemples d'Extensions destinés à aider les développeurs à démarrer. Ces exemples utilisent les APIs V8. Consultez en ligne la [référence de V8](https://v8docs.nodesource.com/) si vous avez besoin d'aide avec les différents appels spécifiques à V8, et le [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) de V8 pour une explication de plusieurs concepts utlisés comme les handles, portées, gabarits de fonction, etc.
 
-Each of these examples using the following `binding.gyp` file:
+Chacun de ces exemples utilise le fichier `binding.gyp` suivant:
 
 ```json
 {
@@ -193,19 +193,19 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+Dans les cas où il y aurait plus d'un fichier `.cc`, ajoutez simplement les noms de fichiers additionnels au tableau `sources`:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Une fois le fichier `binding.gyp` prêt, l'exemple d'Extension peut être configuré et compilé en utilisant `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Arguments de Fonctions
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
