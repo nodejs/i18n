@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [À propos de ces documents](documentation.html)
+* [À propos de cette documentation](documentation.html)
 * [Usage & Exemple](synopsis.html)
 
 <div class="line"></div>
@@ -11,17 +11,17 @@
 * [Async Hooks](async_hooks.html)
 * [Buffer](buffer.html)
 * [Extensions C++](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
+* [Extensions C++ - N-API](n-api.html)
 * [Processus enfants](child_process.html)
 * [Cluster](cluster.html)
 * [Option de la ligne de commande](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
 * [Débogueur](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [APIs obsolètes](deprecations.html)
 * [DNS](dns.html)
 * [Domain](domain.html)
-* [ECMAScript Modules](esm.html)
+* [Modules ECMAScript](esm.html)
 * [Erreurs](errors.html)
 * [Events](events.html)
 * [File System](fs.html)
