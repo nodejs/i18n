@@ -37,19 +37,19 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 ## `Buffer.from()`, `Buffer.alloc()`, 和 `Buffer.allocUnsafe()`
 
-In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
+在 Node.js 6.0.0 版本之前, 实例通过 `Buffer` 构造函数创建, 它基于不同构造参数 `Buffer` 返回不同的 `Buffer`实例：
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`) allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
-* Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
-* Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
+* 将一个数字作为第一个参数传入 `Buffer` (例子: `new Buffer(10)`) 创造一个有特定大小的新 `Buffer` 在 Node.js 8.0.0 之前, 为这样的 `Buffer` 实例分配的内存是 * 未 * 初始化的, 并且 * 可以包含敏感数据 *。 这样的 `Buffer` 实例 * 必须 * 随后使用 [` buf.fill(0) `] [` buf.fill()`] 或写入整个 `Buffer` 来初始化。 虽然此行为是 *有意* 提高性能, 但开发经验表明, 创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node. js 8.0.0, `Buffer(num)` 和 `new Buffer(num)` 将返回一个具有初始化内存的 `Buffer`。
+* 作为第一个参数传递字符串、数组或 `Buffer`, 将传递的对象的数据复制到 `Buffer` 中。
+* 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 返回一个 `Buffer`, 它与给定的数组缓冲区共享分配的内存。
 
-Because the behavior of `new Buffer()` is different depending on the type of the first argument, security and reliability issues can be inadvertently introduced into applications when argument validation or `Buffer` initialization is not performed.
+由于 ` new Buffer() ` 的行为不同于第一个参数的类型, 因此在不执行参数验证或 `Buffer` 初始化时, 可能会无意中将安全和可靠性问题引入到应用程序中。
 
-To make the creation of `Buffer` instances more reliable and less error-prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+为使 `Buffer` 实例的创建更加可靠且不易出错, `new Buffer()` 构造函数的各种形式已被 ** 否决**, 并由单独的 `Buffer.from()`、[`Buffer.alloc()`] 和 [`Buffer.allocUnsafe()`] 方法。
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*开发人员应将 `new Buffer()` 构造函数的所有现有使用迁移到这些新 api 之一中。*
 
-* [`Buffer.from(array)`] returns a new `Buffer` that *contains a copy* of the provided octets.
+* [`Buffer.from(array)`] 返回一个新的 `Buffer`, *包含提供的八位字节的副本 *。
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`].
 * [`Buffer.from(buffer)`] returns a new `Buffer` that *contains a copy* of the contents of the given `Buffer`.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` that *contains a copy* of the provided string.
