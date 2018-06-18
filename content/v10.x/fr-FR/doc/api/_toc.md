@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): Si tu déplace ce ficheir, assure que tu mets à jour @// tools/doc/html.js pour qu'il pointe à la nouvelle location.
+@/ / NB(chrisdickinson) : Si vous déplacez ce fichier, assurez-vous de mettre à jour @/ / tools/doc/html.js pour pointer vers le nouvel emplacement.
 
 <!--introduced_in=v0.10.0-->
 
