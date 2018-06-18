@@ -16,13 +16,13 @@ Les commandes utilisées dans ce document sont montrées commençant par `$` ou 
 
 Beaucoup de tutoriaux et d'exemples suivent cette convention: `$` or `>` pour les commandes exécutées comme un utilisateur standard, et `#` pour les commandes devant être exécutées en tant qu'administrateur.
 
-Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
+Les lignes qui ne commencent pas par un caractère `$` ou `>` montrent généralement le résultat de la commande précédente.
 
-Firstly, make sure to have downloaded and installed Node.js. See [this guide](https://nodejs.org/en/download/package-manager/) for further install information.
+Tout d’abord, assurez-vous d’avoir téléchargé et installé Node.js. Consultez [ce guide](https://nodejs.org/en/download/package-manager/) pour plus d’informations sur l'installation.
 
-Now, create an empty project folder called `projects`, navigate into it: Project folder can be named base on user's current project title but this example will use `projects` as the project folder.
+Maintenant, créez un dossier projet vide, appelé `projects`, et naviguez à l'intérieur: un dossier projet peut être nommé sur la base du nom du projet en cours de l’utilisateur, mais cet exemple utilisera `projects` comme dossier projet.
 
-Linux and Mac:
+Linux et Mac:
 
 ```console
 $ mkdir ~/projects
@@ -43,7 +43,7 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Next, create a new source file in the `projects` folder and call it `hello-world.js`.
+Ensuite, créez un nouveau fichier source dans le dossier `projects` et appelez-le `hello-world.js`.
 
 In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
 
