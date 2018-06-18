@@ -45,9 +45,9 @@ Windows PowerShell:
 
 Ensuite, créez un nouveau fichier source dans le dossier `projects` et appelez-le `hello-world.js`.
 
-In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
+En Node.js la pratique standard en matière de style est d'utiliser des tirets (`-`) ou des underscores (`_`) pour séparer plusieurs mots dans les noms de fichier.
 
-Open `hello-world.js` in any preferred text editor and paste in the following content.
+Ouvrez `hello-world.js` dans n’importe quel éditeur de texte, selon votre préférence, et collez-y le contenu suivant.
 
 ```js
 const http = require('http');
@@ -66,7 +66,7 @@ server.listen(port, hostname, () => {
 });
 ```
 
-Save the file, go back to the terminal window enter the following command:
+Enregistrez le fichier, retournez à votre terminal et entrez la commande suivante :
 
 ```console
 $ node hello-world.js
