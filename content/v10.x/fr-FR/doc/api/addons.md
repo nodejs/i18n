@@ -116,7 +116,7 @@ try {
 
 ### Liaison vers les dépendances propres de Node.js
 
-Node.js utilise un certain nombre de bibliothèques liées statiquement comme V8, libuv et OpenSSL. Toutes les extensions sont tenues de lier V8, et peuvent également lier n'importe laquelle des autres dépendances. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js utilise un certain nombre de bibliothèques liées statiquement comme V8, libuv et OpenSSL. Toutes les extensions sont tenues de lier V8, et peuvent également lier n'importe laquelle des autres dépendances. En général, il suffit d'inclure les déclarations `#include <...>` appropriées (p. ex. `#include <v8.h>`) et `node-gyp` localisera automatiquement les bons en-têtes. Toutefois, il y a quelques points d'attention à connaître:
 
 * When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
