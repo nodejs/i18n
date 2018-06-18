@@ -20,9 +20,9 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
+Le client de débogage Node.js n'est pas un debogueur complet, mais simple pas à pas et inspection sont possibles.
 
-Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+Insérer l'instruction `debugger ;` dans le code source d’un script activera un point d’arrêt à cet emplacement dans le code:
 
 <!-- eslint-disable no-debugger -->
 
@@ -36,7 +36,7 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Once the debugger is run, a breakpoint will occur at line 3:
+Quand le débogueur sera exécuté, un arrêt se produira à la ligne 3:
 
 ```txt
 $ node inspect myscript.js
@@ -79,7 +79,7 @@ break in myscript.js:5
 debug> .exit
 ```
 
-The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
+La commande `repl` permet d'évaluer du code à distance. La commande `next` passe à la ligne suivante. Tapez `help` pour voir quelles autres commandes sont disponibles.
 
 Pressing `enter` without typing a command will repeat the previous debugger command.
 
