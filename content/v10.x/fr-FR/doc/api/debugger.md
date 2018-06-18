@@ -81,22 +81,22 @@ debug> .exit
 
 La commande `repl` permet d'évaluer du code à distance. La commande `next` passe à la ligne suivante. Tapez `help` pour voir quelles autres commandes sont disponibles.
 
-Pressing `enter` without typing a command will repeat the previous debugger command.
+Presser `enter` sans taper de commande répètera la commande de débogage précédente.
 
-## Watchers
+## Observateurs
 
-It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
+Il est possible d'observer les valeurs d'expression et de variables pendant le débogage. Sur tous les point d'arrêt, chaque expression de la liste d'observation sera évaluée dans le contexte courant et affichée immédiatement avant le listing de code source du point d'arrêt.
 
-To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
+Pour commencer à observer une expression, tapez `watch('mon_expression')`. La commande `watchers` affichera tous les observateurs actifs. Pour supprimer un observateur, tapez `unwatch('mon_expression')`.
 
-## Command reference
+## Référence de commande
 
-### Stepping
+### Pas-à-pas
 
-* `cont`, `c` - Continue execution
-* `next`, `n` - Step next
-* `step`, `s` - Step in
-* `out`, `o` - Step out
+* `cont`, `c` - Continuer l'exécution jusqu'au prochain point d'arrêt
+* `next`, `n` - Instruction suivante
+* `step`, `s` - Pas à pas entrant (si l'instruction à exécuter contient une fonction, se rend à la première instruction de cette fonction)
+* `out`, `o` - Pas à pas sortant (exécute le code jusqu'au retour de la fonction en cours, et s'arrête dans la fonction parente, à l'instruction suivant l'appel de la fonction où l'on était entré)
 * `pause` - Pause running code (like pause button in Developer Tools)
 
 ### Breakpoints
