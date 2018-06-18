@@ -72,14 +72,14 @@ Enregistrez le fichier, retournez à votre terminal et entrez la commande suivan
 $ node hello-world.js
 ```
 
-An output like this should appear in the terminal to indicate Node.js server is running:
+Une sortie telle que celle-ci devrait apparaître dans votre terminal pour indiquer que le serveur Node.js est en cours d'exécution:
 
 ```console
 Server running at http://127.0.0.1:3000/
 ```
 
-Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
+Maintenant, ouvrez n’importe quel navigateur web, selon votre préférence, et visitez `http://127.0.0.1:3000`.
 
-If the browser displays the string `Hello, world!`, that indicates the server is working.
+Si le navigateur affiche la chaîne `Hello, world !`, cela vous indique que le serveur fonctionne.
 
-Many of the examples in the documentation can be run similarly.
+De nombreux exemples dans la documentation peuvent être exécutés de la même façon.
