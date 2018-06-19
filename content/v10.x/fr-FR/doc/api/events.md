@@ -14,7 +14,7 @@ Tous les objets qui émettent des événements sont des instances de la classe `
 
 Lorsque l’objet `EventEmitter` émet un événement, toutes les fonctions attachées à cet événement particulier sont appelées *de façon synchrone*. Toutes les valeurs retournées par les auditeurs (listeners) appelés sont *ignorées* et ne seront pas propagées.
 
-L’exemple suivant montre une simple instance d'`EventEmitter` avec un seul écouteur (listener). La méthode `eventEmitter.on()` est utilisée pour enregistrer des auditeurs (listeners), tandis que la méthode `eventEmitter.emit()` est utilisée pour déclencher l’événement.
+L’exemple suivant montre une simple instance d'`EventEmitter` avec un seul écouteur (listener). La méthode `eventEmitter.on()` est utilisée pour abonner des écouteurs (listeners), tandis que la méthode `eventEmitter.emit()` est utilisée pour déclencher l’événement.
 
 ```js
 const EventEmitter = require('events');
@@ -59,53 +59,53 @@ monEmetteur.emit('evenement', 'a', 'b');
 
 ## Mode Asynchrone vs. Mode Synchrone
 
-L'`EventEmitter` appelle tous les écouteurs (listeners) de façon synchrone dans l’ordre dans lequel ils ont été enregistrés. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
+L'`EventEmitter` appelle tous les écouteurs (listeners) de façon synchrone dans l’ordre dans lequel ils ont été enregistrés. Ceci est important pour garantir l'ordre correct de la séquence d'événements, et pour éviter les erreurs dues à des accès concurrents ou les erreurs de logique. Lorsque cela est approprié, les fonctions écouteurs (listeners) peuvent basculer vers un mode de fonctionnement asynchrone en utilisant les méthodes `setImmediate()` ou `process.nextTick()` :
 
 ```js
-const myEmitter = new MyEmitter();
-myEmitter.on('event', (a, b) => {
+const monEmetteur = new MonEmetteur();
+monEmetteur.on('evenement', (a, b) => {
   setImmediate(() => {
-    console.log('this happens asynchronously');
+    console.log('ceci se produit de manière asynchrone');
   });
 });
-myEmitter.emit('event', 'a', 'b');
+monEmetteur.emit('evenement', 'a', 'b');
 ```
 
-## Handling events only once
+## Ne gérer les évènements qu'une seule fois
 
-When a listener is registered using the `eventEmitter.on()` method, that listener will be invoked *every time* the named event is emitted.
+Lorsqu’un écouteur (listener) est enregistré à l’aide de la méthode `eventEmitter.on()`, cet écouteur (listener) sera appelé à *chaque fois* que cet événement sera émis.
 
 ```js
-const myEmitter = new MyEmitter();
+const monEmetteur = new MonEmetteur();
 let m = 0;
-myEmitter.on('event', () => {
+monEmetteur.on('evenement', () => {
   console.log(++m);
 });
-myEmitter.emit('event');
-// Prints: 1
-myEmitter.emit('event');
-// Prints: 2
+monEmetteur.emit('evenement');
+// Affiche : 1
+monEmetteur.emit('evenement');
+// Affiche : 2
 ```
 
-Using the `eventEmitter.once()` method, it is possible to register a listener that is called at most once for a particular event. Once the event is emitted, the listener is unregistered and *then* called.
+En employant la méthode `eventEmitter.once()`, il est possible d’abonner un écouteur (listener) qui sera appelé au plus une fois pour un événement particulier. Une fois l'évènement émis, l'écouteur est d'abord désabonné et *ensuite* appelé.
 
 ```js
-const myEmitter = new MyEmitter();
+const monEmetteur = new MonEmetteur();
 let m = 0;
-myEmitter.once('event', () => {
+monEmetteur.once('evenement', () => {
   console.log(++m);
 });
-myEmitter.emit('event');
-// Prints: 1
-myEmitter.emit('event');
-// Ignored
+monEmetteur.emit('evenement');
+// Affiche : 1
+monEmetteur.emit('evenement');
+// Ignoré
 ```
 
-## Error events
+## Evènements « error »
 
-When an error occurs within an `EventEmitter` instance, the typical action is for an `'error'` event to be emitted. These are treated as special cases within Node.js.
+Lorsqu'une erreur se produit au sein d'une instance d'`EventEmitter`, il est habituelle que soit émis un évènement `« error »`. Ceux-ci sont traités comme des cas spéciaux en Node.js.
 
-If an `EventEmitter` does *not* have at least one listener registered for the `'error'` event, and an `'error'` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
+Si un `EventEmitter` n'a *pas* au moins un écouteur (listener) abonné à l'évènement `« error »`, et si un évènement `« error »` est émis, une erreur est lancée, une trace de la pile d'appel est affichée, et le processus Node.js s'arrête.
 
 ```js
 const myEmitter = new MyEmitter();
