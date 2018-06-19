@@ -6,13 +6,13 @@
 
 <!--type=module-->
 
-Une grande partie de l'API centrale de Node.js est bâtie autour d'une architecture asynchrone idiomatique orientée évènement, dans laquelle certains types d'objets (appelés « émetteurs » (emitters)) émettent des événements nommés qui entrainent l'appel d'objets `fonction` (« écouteurs » (listeners)).
+Une grande partie de l'API centrale de Node.js est bâtie autour d'une architecture asynchrone idiomatique orientée évènement, dans laquelle certains types d'objets (appelés « émetteurs » (emitters)) émettent des événements nommés, qui entrainent l'appel d'objets de type `fonction` (alors apppelés « écouteurs » (listeners)).
 
-For instance: a [`net.Server`][] object emits an event each time a peer connects to it; a [`fs.ReadStream`][] emits an event when the file is opened; a [stream](stream.html) emits an event whenever data is available to be read.
+Par exemple : un objet [net `. Server`] [] émet un événement chaque fois qu’un pair s'y connecte ; un [`fs. ReadStream`] [] émet un événement lorsque le fichier est ouvert ; un [flux (stream)](stream.html) émet émet un événement chaque fois que des données sont disponibles pour lecture.
 
-All objects that emit events are instances of the `EventEmitter` class. These objects expose an `eventEmitter.on()` function that allows one or more functions to be attached to named events emitted by the object. Typically, event names are camel-cased strings but any valid JavaScript property key can be used.
+Tous les objets qui émettent des événements sont des instances de la classe `EventEmitter`. Ces objets exposent une fonction `eventEmitter.on()` qui permet d'attacher une ou plusieurs fonctions aux événements nommés émis par l’objet. En général, les noms d’événements sont des chaînes de caractères écrites en camelCase mais n’importe quel nom de propriété JavaScript valide peut être utilisé.
 
-When the `EventEmitter` object emits an event, all of the functions attached to that specific event are called *synchronously*. Any values returned by the called listeners are *ignored* and will be discarded.
+Lorsque l’objet `EventEmitter` émet un événement, toutes les fonctions attachées à cet événement particulier sont appelées *de façon synchrone*. Any values returned by the called listeners are *ignored* and will be discarded.
 
 The following example shows a simple `EventEmitter` instance with a single listener. The `eventEmitter.on()` method is used to register listeners, while the `eventEmitter.emit()` method is used to trigger the event.
 
