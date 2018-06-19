@@ -6,7 +6,7 @@
 
 <!--type=module-->
 
-Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause `Function` objects ("listeners") to be called.
+Une grande partie de l'API centrale de Node.js est bâtie autour d'une architecture asynchrone idiomatique orientée évènement, dans laquelle certains types d'objets (appelés « émetteurs » (emitters)) émettent des événements nommés qui entrainent l'appel d'objets `fonction` (« écouteurs » (listeners)).
 
 For instance: a [`net.Server`][] object emits an event each time a peer connects to it; a [`fs.ReadStream`][] emits an event when the file is opened; a [stream](stream.html) emits an event whenever data is available to be read.
 
