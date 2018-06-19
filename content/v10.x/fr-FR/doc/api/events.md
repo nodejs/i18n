@@ -108,46 +108,46 @@ Lorsqu'une erreur se produit au sein d'une instance d'`EventEmitter`, il est hab
 Si un `EventEmitter` n'a *pas* au moins un écouteur (listener) abonné à l'évènement `« error »`, et si un évènement `« error »` est émis, une erreur est lancée, une trace de la pile d'appel est affichée, et le processus Node.js s'arrête.
 
 ```js
-const myEmitter = new MyEmitter();
-myEmitter.emit('error', new Error('whoops!'));
-// Throws and crashes Node.js
+const monEmetteur = new MonEmetteur();
+monEmetteur.emit('error', new Error('whoops!'));
+// Lève une erreur et crashe Node.js
 ```
 
-To guard against crashing the Node.js process the [`domain`][] module can be used. (Note, however, that the `domain` module has been deprecated.)
+Pour éviter de crasher le processus Node.js le module [`domain`][] peut être utilisé. (Notez, cependant, que le module `domain` a été déprécié.)
 
-As a best practice, listeners should always be added for the `'error'` events.
+La bonne pratique reconnue est de toujours abonner des écouteurs (listeners) aux évènements `« error »`.
 
 ```js
-const myEmitter = new MyEmitter();
-myEmitter.on('error', (err) => {
-  console.error('whoops! there was an error');
+const monEmetteur = new MonEmetteur();
+monEmetteur.on('error', (err) => {
+  console.error("whoops! une erreur s'est produite");
 });
-myEmitter.emit('error', new Error('whoops!'));
-// Prints: whoops! there was an error
+monEmetteur.emit('error', new Error('whoops!'));
+// Affiche : whoops! une erreur s’est produite
 ```
 
-## Class: EventEmitter
+## Classe : EventEmitter
 
 <!-- YAML
 added: v0.1.26
 -->
 
-The `EventEmitter` class is defined and exposed by the `events` module:
+La classe `EventEmitter` est définie et exposée par le module `events` :
 
 ```js
 const EventEmitter = require('events');
 ```
 
-All `EventEmitter`s emit the event `'newListener'` when new listeners are added and `'removeListener'` when existing listeners are removed.
+Tous les `EventEmitter`s émettent l’événement `« newListener »` lors de l’ajout de nouveaux écouteurs (listener) et `« removeListener »` lorsque les écouteurs (listeners) existants sont supprimés.
 
-### Event: 'newListener'
+### Event : « newListener »
 
 <!-- YAML
 added: v0.1.26
 -->
 
-- `eventName` {string|symbol} The name of the event being listened for
-- `listener` {Function} The event handler function
+- `eventName` {string|symbol} le nom de l’événement auquel l'écouteur (listener) s'est abonné
+- `listener` {Function} La fonction gestionnaire d'évènement
 
 The `EventEmitter` instance will emit its own `'newListener'` event *before* a listener is added to its internal array of listeners.
 
