@@ -12,20 +12,20 @@ Par exemple : un objet [net `. Server`] [] émet un événement chaque fois qu�
 
 Tous les objets qui émettent des événements sont des instances de la classe `EventEmitter`. Ces objets exposent une fonction `eventEmitter.on()` qui permet d'attacher une ou plusieurs fonctions aux événements nommés émis par l’objet. En général, les noms d’événements sont des chaînes de caractères écrites en camelCase mais n’importe quel nom de propriété JavaScript valide peut être utilisé.
 
-Lorsque l’objet `EventEmitter` émet un événement, toutes les fonctions attachées à cet événement particulier sont appelées *de façon synchrone*. Any values returned by the called listeners are *ignored* and will be discarded.
+Lorsque l’objet `EventEmitter` émet un événement, toutes les fonctions attachées à cet événement particulier sont appelées *de façon synchrone*. Toutes les valeurs retournées par les auditeurs (listeners) appelés sont *ignorées* et ne seront pas propagées.
 
-The following example shows a simple `EventEmitter` instance with a single listener. The `eventEmitter.on()` method is used to register listeners, while the `eventEmitter.emit()` method is used to trigger the event.
+L’exemple suivant montre une simple instance d'`EventEmitter` avec un seul écouteur (listener). La méthode `eventEmitter.on()` est utilisée pour enregistrer des auditeurs (listeners), tandis que la méthode `eventEmitter.emit()` est utilisée pour déclencher l’événement.
 
 ```js
 const EventEmitter = require('events');
 
-class MyEmitter extends EventEmitter {}
+class MonEmetteur extends EventEmitter {}
 
-const myEmitter = new MyEmitter();
-myEmitter.on('event', () => {
-  console.log('an event occurred!');
+const monEmetteur = new MonEmetteur();
+monEmetteur.on('evenement', () => {
+  console.log("un évènement s'est produit !");
 });
-myEmitter.emit('event');
+monEmetteur.emit('evenement');
 ```
 
 ## Passing arguments and `this` to listeners
