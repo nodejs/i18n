@@ -28,22 +28,22 @@ monEmetteur.on('evenement', () => {
 monEmetteur.emit('evenement');
 ```
 
-## Passing arguments and `this` to listeners
+## Passage d'arguments et de `this` aux écouteurs (listeners)
 
-The `eventEmitter.emit()` method allows an arbitrary set of arguments to be passed to the listener functions. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
+La méthode `eventEmitter.emit()` permet de passer un ensemble arbitraire d’arguments aux fonctions écouteurs (listeners). Il est important de garder à l’esprit que lorsqu’une fonction écouteur (listener) ordinaire est appelée, le mot clé standard `this` référence intentionnellement l’instance d'`EventEmitter` à laquelle l'écouteur (listener) est attaché.
 
 ```js
-const myEmitter = new MyEmitter();
-myEmitter.on('event', function(a, b) {
-  console.log(a, b, this, this === myEmitter);
-  // Prints:
-  //   a b MyEmitter {
+const monEmetteur = new MonEmetteur();
+monEmetteur.on('evenement', function(a, b) {
+  console.log(a, b, this, this === monEmetteur);
+  // Affiche:
+  //   a b MonEmetteur {
   //     domain: null,
-  //     _events: { event: [Function] },
+  //     _events: { evenement: [Function] },
   //     _eventsCount: 1,
   //     _maxListeners: undefined } true
 });
-myEmitter.emit('event', 'a', 'b');
+monEmetteur.emit('evenement', 'a', 'b');
 ```
 
 It is possible to use ES6 Arrow Functions as listeners, however, when doing so, the `this` keyword will no longer reference the `EventEmitter` instance:
