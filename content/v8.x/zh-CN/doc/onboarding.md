@@ -1,4 +1,4 @@
-# Onboarding
+# 新手上路
 
 This document is an outline of the things we tell new Collaborators at their onboarding session.
 
