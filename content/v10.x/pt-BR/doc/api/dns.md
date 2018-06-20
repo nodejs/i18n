@@ -6,9 +6,9 @@
 
 O módulo de `dns` contém funções pertencentes a duas categorias diferentes:
 
-1) Funções que utilizam mecanismos do sistema operacional para executar a resolução de nomes, e que não necessariamente fazem qualquer comunicação de rede. Esta categoria contém apenas uma função: [] [`dns.lookup()`]. **Os desenvolvedores procurando por resolução de nomes no mesmo modo que outras aplicações no mesmo mesmo sistema operacional devem usar [`dns.lookup()`].**
+1) Funções que utilizam mecanismos do sistema operacional para executar a resolução de nomes, e que não necessariamente fazem qualquer comunicação de rede. Esta categoria contém apenas uma função: [] [`dns.lookup()`]. **Desenvolvedores buscando por resolução de nomes no mesmo modo que outras aplicações no mesmo mesmo sistema operacional devem usar [`dns.lookup()`].**
 
-For example, looking up `iana.org`.
+Por exemplo, buscando por `iana.org`.
 
 ```js
 const dns = require('dns');
@@ -19,9 +19,9 @@ dns.lookup('iana.org', (err, address, family) => {
 // address: "192.0.43.8" family: IPv4
 ```
 
-2) Functions that connect to an actual DNS server to perform name resolution, and that *always* use the network to perform DNS queries. This category contains all functions in the `dns` module *except* [`dns.lookup()`][]. These functions do not use the same set of configuration files used by [`dns.lookup()`][] (e.g. `/etc/hosts`). These functions should be used by developers who do not want to use the underlying operating system's facilities for name resolution, and instead want to *always* perform DNS queries.
+2) Funções que conectam ao servidor DNS atual para executar a resolução de nomes e que *sempre* usam a rede para executar consultas DNS. Esta categoria contém todas as funções no módulo `dns` *exceto* [`dns.lookup()`][]. Estas funções não usam os mesmos arquivos de configuração usados por [`dns.lookup()`][] (Ex. `/etc/hosts`). Essas funções devem ser usadas pelos desenvolvedores que não querem usar as instalações do sistema operacional subjacente para resolução de nome, e em vez disso, querem *sempre* executar consultas DNS.
 
-Below is an example that resolves `'archive.org'` then reverse resolves the IP addresses that are returned.
+Abaixo está um exemplo que resolve `'archive.org'` e então resolve o reverso do endereço IP que é retornado.
 
 ```js
 const dns = require('dns');
@@ -42,7 +42,7 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-There are subtle consequences in choosing one over the other, please consult the [Implementation considerations section](#dns_implementation_considerations) for more information.
+Há sutis consequências na escolha de um ou do outro, por favor consulte a [seção de considerações da implementação](#dns_implementation_considerations) para mais informações.
 
 ## Class: dns.Resolver
 
