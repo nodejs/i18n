@@ -149,28 +149,28 @@ added: v0.1.26
 - `eventName` {string|symbol} le nom de l’événement auquel l'écouteur s'est abonné
 - `listener` {Function} La fonction gestionnaire d'évènement
 
-L’instance d'`EventEmitter` émettra son propre évènement `« newListener »` *avant* qu'un écouteur (listener) soit ajouté à son tableau interne d'écouteurs.
+L’instance d'`EventEmitter` émettra son propre évènement `« newListener »` *avant* qu'un écouteur soit ajouté à son tableau interne d'écouteurs.
 
-Les écouteurs (listeners) s'étant abonnés à l’événement `« newListener »` recevront le nom de l’événement et une référence à l’écouteur (listener) ajouté.
+Les écouteurs s'étant abonnés à l’événement `« newListener »` recevront le nom de l’événement et une référence à l’écouteur ajouté.
 
 Le fait que l’événement soit déclenché avant l'ajout de l’écouteur a un effet secondaire subtil mais important : tous les écouteurs *supplémentaires* abonnés au même `nom` *à l'intérieur* du callback de l'évènement `« newListener »` seront insérés *avant* l'écouteur en cours d’ajout.
 
 ```js
-const myEmitter = new MyEmitter();
-// Only do this once so we don't loop forever
-myEmitter.once('newListener', (event, listener) => {
-  if (event === 'event') {
-    // Insert a new listener in front
-    myEmitter.on('event', () => {
+const monEmetteur = new MonEmetteur();
+// Ne faisons cette action qu'une seule fois pour éviter une boucle infinie
+monEmetteur.once('newListener', (event, listener) => {
+  if (event === 'evenement') {
+    // Insérer un nouvel écouteur avant
+    monEmetteur.on('evenement', () => {
       console.log('B');
     });
   }
 });
-myEmitter.on('event', () => {
+monEmetteur.on('evenement', () => {
   console.log('A');
 });
-myEmitter.emit('event');
-// Prints:
+monEmetteur.emit('evenement');
+// Affiche :
 //   B
 //   A
 ```
