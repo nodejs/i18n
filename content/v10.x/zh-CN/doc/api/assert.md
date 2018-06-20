@@ -8,11 +8,11 @@
 
 有` strict `（严格）和 ` legacy `（老版本）模式, 建议只使用 [` strict 模式 `] []。
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+更多关于平等性的对比，可以参考 [MDN 上 JavaScript 中的相等性判断](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)。
 
 ## Class: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+`Error` 的子类，表示断言失败。 所有被 `assert` 模块抛出的错误都是 `AssertionError` 类的实例。
 
 ### new assert.AssertionError(options)
 
@@ -21,8 +21,8 @@ added: v0.1.21
 -->
 
 * `options` {Object} 
-  * `message` {string} If provided, the error message is going to be set to this value.
-  * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
+  * `message` {string} 如果有此参数，错误信息会被设为此值。
+  * `actual` {any} 错误实例的 `actual` 参数会包含此值。 Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
   * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
