@@ -22,9 +22,9 @@ added: v0.1.21
 
 * `options` {Object} 
   * `message` {string} 如果有此参数，错误信息会被设为此值。
-  * `actual` {any} 错误实例的 `actual` 参数会包含此值。 Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
+  * `actual` {any} 错误实例的 `actual` 参数会包含此值。 在内部里用于 `actual` （实际上的）错误输入，例如在 [`assert.strictEqual()`] 中。
+  * `expected` {any} 错误实例的 `expected` 参数会包含此值。 在内部里用于 `expected`（预期）错误输入，例如在 [`assert.strictEqual()`] 中。
+  * `operator` {string} 错误实例的 `operator` 参数会包含此值。 在内部用于表示判断用的是哪个运算符（或者哪个断言函数触发了错误）。
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
 A subclass of `Error` that indicates the failure of an assertion.
