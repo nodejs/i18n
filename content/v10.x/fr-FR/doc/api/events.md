@@ -201,14 +201,14 @@ deprecated: v4.0.0
 
 > Stabilité : 0 - obsolète : utilisez [`emitter.listenerCount()`] [] à la place.
 
-A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
+Une méthode de classe qui retourne le nombre d’écouteurs abonnés, pour le nom d'évènement `eventName` donné, sur l'émetteur `emitter` donné.
 
 ```js
-const myEmitter = new MyEmitter();
-myEmitter.on('event', () => {});
-myEmitter.on('event', () => {});
-console.log(EventEmitter.listenerCount(myEmitter, 'event'));
-// Prints: 2
+const monEmetteur = new MonEmetteur();
+monEmetteur.on('evenement', () => {});
+monEmetteur.on('evenement', () => {});
+console.log(EventEmitter.listenerCount(monEmetteur, 'evenement'));
+// Affiche : 2
 ```
 
 ### EventEmitter.defaultMaxListeners
