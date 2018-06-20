@@ -1,12 +1,12 @@
-# 断言 (Assert)
+# Assert
 
 <!--introduced_in=v0.1.21-->
 
 > Stability: 2 - Stable
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+` assert ` 模块提供了一组简单的断言测试, 可用于测试不变量。
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+有` strict `（严格）和 ` legacy `（老版本）模式, 建议只使用 [` strict 模式 `] []。
 
 For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
