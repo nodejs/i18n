@@ -25,11 +25,11 @@ added: v0.1.21
   * `actual` {any} 错误实例的 `actual` 参数会包含此值。 在内部里用于 `actual` （实际上的）错误输入，例如在 [`assert.strictEqual()`] 中。
   * `expected` {any} 错误实例的 `expected` 参数会包含此值。 在内部里用于 `expected`（预期）错误输入，例如在 [`assert.strictEqual()`] 中。
   * `operator` {string} 错误实例的 `operator` 参数会包含此值。 在内部用于表示判断用的是哪个运算符（或者哪个断言函数触发了错误）。
-  * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
+  * `stackStartFn` {Function} 如果提供，生成的堆栈跟踪会移掉此函数之前的所有帧。
 
-A subclass of `Error` that indicates the failure of an assertion.
+`Error` 的子类，表示断言失败。
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+所有实例都包含内置` Error `属性（` message ` 和 ` name `）和：
 
 * `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
 * `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
