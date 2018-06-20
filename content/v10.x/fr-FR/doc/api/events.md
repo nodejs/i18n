@@ -256,9 +256,9 @@ added: v0.1.26
 - `...args` {any}
 - Returns: {boolean}
 
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
+Appelle de façon synchrone chacun des écouteurs abonnés à l'évènement nommé, `eventName`, dans l'ordre où ils ont été abonnés, en passant les arguments fournis à chacun.
 
-Returns `true` if the event had listeners, `false` otherwise.
+Renvoie `true` si l’événement avait au moins un écouteur, `false` sinon.
 
 ### emitter.eventNames()
 
@@ -268,19 +268,19 @@ added: v6.0.0
 
 - Returns: {Array}
 
-Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or `Symbol`s.
+Retourne un tableau répertoriant les événements pour lesquels l’émetteur a abonné des écouteurs. Les valeurs du tableau seront de type String ou `Symbol`.
 
 ```js
 const EventEmitter = require('events');
-const myEE = new EventEmitter();
-myEE.on('foo', () => {});
-myEE.on('bar', () => {});
+const monEE = new EventEmitter();
+monEE.on('foo', () => {});
+monEE.on('bar', () => {});
 
-const sym = Symbol('symbol');
-myEE.on(sym, () => {});
+const sym = Symbol('symbole');
+monEE.on(sym, () => {});
 
-console.log(myEE.eventNames());
-// Prints: [ 'foo', 'bar', Symbol(symbol) ]
+console.log(monEE.eventNames());
+// Affiche : [ 'foo', 'bar', Symbol(symbole) ]
 ```
 
 ### emitter.getMaxListeners()
