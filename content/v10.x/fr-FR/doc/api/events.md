@@ -231,9 +231,9 @@ emetteur.once('evenement', () => {
 });
 ```
 
-The [`--trace-warnings`][] command line flag can be used to display the stack trace for such warnings.
+Le flag [`--trace-avertissements`][] peut être utilisé en ligne de commande pour afficher la pile d'appel avec ces avertissements.
 
-The emitted warning can be inspected with [`process.on('warning')`][] and will have the additional `emitter`, `type` and `count` properties, referring to the event emitter instance, the event’s name and the number of attached listeners, respectively. Its `name` property is set to `'MaxListenersExceededWarning'`.
+L’avertissement émis peut être inspecté avec [`process.on('warning')`][] et comportera les propriétés addtionnelles `emitter`, `type` et `count`, correspondant respectivement à l’instance d’EventEmitter, au nom de l’événement et au nombre d’écouteurs abonnés. Sa propriété `name` aura pour valeur `« MaxListenersExceededWarning »`.
 
 ### emitter.addListener(eventName, listener)
 
@@ -244,7 +244,7 @@ added: v0.1.26
 - `eventName` {string|symbol}
 - `listener` {Function}
 
-Alias for `emitter.on(eventName, listener)`.
+Alias pour `emitter.on(eventName, listener)`.
 
 ### emitter.emit(eventName[, ...args])
 
