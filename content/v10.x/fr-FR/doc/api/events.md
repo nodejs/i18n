@@ -12,9 +12,9 @@ Par exemple : un objet [net `. Server`] [] émet un événement chaque fois qu�
 
 Tous les objets qui émettent des événements sont des instances de la classe `EventEmitter`. Ces objets exposent une fonction `eventEmitter.on()` qui permet d'attacher une ou plusieurs fonctions aux événements nommés émis par l’objet. En général, les noms d’événements sont des chaînes de caractères écrites en camelCase mais n’importe quel nom de propriété JavaScript valide peut être utilisé.
 
-Lorsque l’objet `EventEmitter` émet un événement, toutes les fonctions attachées à cet événement particulier sont appelées *de façon synchrone*. Toutes les valeurs retournées par les auditeurs (listeners) appelés sont *ignorées* et ne seront pas propagées.
+Lorsque l’objet `EventEmitter` émet un événement, toutes les fonctions attachées à cet événement particulier sont appelées *de façon synchrone*. Toutes les valeurs retournées par les écouteurs appelés sont *ignorées* et ne seront pas propagées.
 
-L’exemple suivant montre une simple instance d'`EventEmitter` avec un seul écouteur (listener). La méthode `eventEmitter.on()` est utilisée pour abonner des écouteurs (listeners), tandis que la méthode `eventEmitter.emit()` est utilisée pour déclencher l’événement.
+L’exemple suivant montre une simple instance d'`EventEmitter` avec un seul écouteur. La méthode `eventEmitter.on()` est utilisée pour abonner des écouteurs, tandis que la méthode `eventEmitter.emit()` est utilisée pour déclencher l’événement.
 
 ```js
 const EventEmitter = require('events');
@@ -30,7 +30,7 @@ monEmetteur.emit('evenement');
 
 ## Passage d'arguments et de `this` aux écouteurs (listeners)
 
-La méthode `eventEmitter.emit()` permet de passer un ensemble arbitraire d’arguments aux fonctions écouteurs (listeners). Il est important de garder à l’esprit que lorsqu’une fonction écouteur (listener) ordinaire est appelée, le mot clé standard `this` référence intentionnellement l’instance d'`EventEmitter` à laquelle l'écouteur (listener) est attaché.
+La méthode `eventEmitter.emit()` permet de passer un ensemble arbitraire d’arguments aux fonctions écouteurs. Il est important de garder à l’esprit que lorsqu’une fonction écouteur ordinaire est appelée, le mot clé standard `this` référence intentionnellement l’instance d'`EventEmitter` à laquelle l'écouteur est attaché.
 
 ```js
 const monEmetteur = new MonEmetteur();
@@ -46,7 +46,7 @@ monEmetteur.on('evenement', function(a, b) {
 monEmetteur.emit('evenement', 'a', 'b');
 ```
 
-Il est possible d’utiliser les fonctions fléchées (arrow functions) ES6 comme écouteurs (listeners), cependant, si vous le faites, le mot clé `this` ne référencera plus l’instance d'`EventEmitter` :
+Il est possible d’utiliser les fonctions fléchées (arrow functions) ES6 comme écouteurs, cependant, si vous le faites, le mot clé `this` ne référencera plus l’instance d'`EventEmitter` :
 
 ```js
 const monEmetteur = new MonEmetteur();
@@ -59,7 +59,7 @@ monEmetteur.emit('evenement', 'a', 'b');
 
 ## Mode Asynchrone vs. Mode Synchrone
 
-L'`EventEmitter` appelle tous les écouteurs (listeners) de façon synchrone dans l’ordre dans lequel ils ont été enregistrés. Ceci est important pour garantir l'ordre correct de la séquence d'événements, et pour éviter les erreurs dues à des accès concurrents ou les erreurs de logique. Lorsque cela est approprié, les fonctions écouteurs (listeners) peuvent basculer vers un mode de fonctionnement asynchrone en utilisant les méthodes `setImmediate()` ou `process.nextTick()` :
+L'`EventEmitter` appelle tous les écouteurs de façon synchrone dans l’ordre dans lequel ils ont été enregistrés. Ceci est important pour garantir l'ordre correct de la séquence d'événements, et pour éviter les erreurs dues à des accès concurrents ou les erreurs de logique. Lorsque cela est approprié, les fonctions écouteurs peuvent basculer vers un mode de fonctionnement asynchrone en utilisant les méthodes `setImmediate()` ou `process.nextTick()` :
 
 ```js
 const monEmetteur = new MonEmetteur();
@@ -73,7 +73,7 @@ monEmetteur.emit('evenement', 'a', 'b');
 
 ## Ne gérer les évènements qu'une seule fois
 
-Lorsqu’un écouteur (listener) est enregistré à l’aide de la méthode `eventEmitter.on()`, cet écouteur (listener) sera appelé à *chaque fois* que cet événement sera émis.
+Lorsqu’un écouteur est enregistré à l’aide de la méthode `eventEmitter.on()`, cet écouteur sera appelé à *chaque fois* que cet événement sera émis.
 
 ```js
 const monEmetteur = new MonEmetteur();
@@ -87,7 +87,7 @@ monEmetteur.emit('evenement');
 // Affiche : 2
 ```
 
-En employant la méthode `eventEmitter.once()`, il est possible d’abonner un écouteur (listener) qui sera appelé au plus une fois pour un événement particulier. Une fois l'évènement émis, l'écouteur est d'abord désabonné et *ensuite* appelé.
+En employant la méthode `eventEmitter.once()`, il est possible d’abonner un écouteur qui sera appelé au plus une fois pour un événement particulier. Une fois l'évènement émis, l'écouteur est d'abord désabonné et *ensuite* appelé.
 
 ```js
 const monEmetteur = new MonEmetteur();
@@ -103,9 +103,9 @@ monEmetteur.emit('evenement');
 
 ## Evènements « error »
 
-Lorsqu'une erreur se produit au sein d'une instance d'`EventEmitter`, il est habituelle que soit émis un évènement `« error »`. Ceux-ci sont traités comme des cas spéciaux en Node.js.
+Lorsqu'une erreur se produit au sein d'une instance d'`EventEmitter`, il est standard d'émettre un évènement `« error »`. Ceux-ci sont traités comme des cas spéciaux en Node.js.
 
-Si un `EventEmitter` n'a *pas* au moins un écouteur (listener) abonné à l'évènement `« error »`, et si un évènement `« error »` est émis, une erreur est lancée, une trace de la pile d'appel est affichée, et le processus Node.js s'arrête.
+Si un `EventEmitter` n'a *pas* au moins un écouteur abonné à l'évènement `« error »`, et si un évènement `« error »` est émis, une erreur est lancée, une trace de la pile d'appel est affichée, et le processus Node.js s'arrête.
 
 ```js
 const monEmetteur = new MonEmetteur();
@@ -115,7 +115,7 @@ monEmetteur.emit('error', new Error('whoops!'));
 
 Pour éviter de crasher le processus Node.js le module [`domain`][] peut être utilisé. (Notez, cependant, que le module `domain` a été déprécié.)
 
-La bonne pratique reconnue est de toujours abonner des écouteurs (listeners) aux évènements `« error »`.
+La bonne pratique reconnue est de toujours abonner des écouteurs aux évènements `« error »`.
 
 ```js
 const monEmetteur = new MonEmetteur();
@@ -138,7 +138,7 @@ La classe `EventEmitter` est définie et exposée par le module `events` :
 const EventEmitter = require('events');
 ```
 
-Tous les `EventEmitter`s émettent l’événement `« newListener »` lors de l’ajout de nouveaux écouteurs (listener) et `« removeListener »` lorsque les écouteurs (listeners) existants sont supprimés.
+Tous les `EventEmitter`s émettent l’événement `« newListener »` lors de l’ajout de nouveaux écouteurs et `« removeListener »` lorsque les écouteurs existants sont supprimés.
 
 ### Event : « newListener »
 
@@ -146,14 +146,14 @@ Tous les `EventEmitter`s émettent l’événement `« newListener »` lors de
 added: v0.1.26
 -->
 
-- `eventName` {string|symbol} le nom de l’événement auquel l'écouteur (listener) s'est abonné
+- `eventName` {string|symbol} le nom de l’événement auquel l'écouteur s'est abonné
 - `listener` {Function} La fonction gestionnaire d'évènement
 
 L’instance d'`EventEmitter` émettra son propre évènement `« newListener »` *avant* qu'un écouteur (listener) soit ajouté à son tableau interne d'écouteurs.
 
 Les écouteurs (listeners) s'étant abonnés à l’événement `« newListener »` recevront le nom de l’événement et une référence à l’écouteur (listener) ajouté.
 
-The fact that the event is triggered before adding the listener has a subtle but important side effect: any *additional* listeners registered to the same `name` *within* the `'newListener'` callback will be inserted *before* the listener that is in the process of being added.
+Le fait que l’événement soit déclenché avant l'ajout de l’écouteur a un effet secondaire subtil mais important : tous les écouteurs *supplémentaires* abonnés au même `nom` *à l'intérieur* du callback de l'évènement `« newListener »` seront insérés *avant* l'écouteur en cours d’ajout.
 
 ```js
 const myEmitter = new MyEmitter();
