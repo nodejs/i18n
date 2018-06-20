@@ -199,7 +199,7 @@ added: v0.9.12
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
+> Stabilité : 0 - obsolète : utilisez [`emitter.listenerCount()`] [] à la place.
 
 A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
 
