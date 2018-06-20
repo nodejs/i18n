@@ -31,7 +31,7 @@ added: v0.1.21
 
 所有实例都包含内置` Error `属性（` message ` 和 ` name `）和：
 
-* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
+* `actual` {any} 设置为 actual （实际）值，比如 [`assert.strictEqual()`]。
 * `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
 * `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
 * `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
