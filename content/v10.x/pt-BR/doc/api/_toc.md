@@ -2,8 +2,8 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [Sobre os Documentos](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Sobre estas Documentações](documentation.html)
+* [Uso & Exemplo](synopsis.html)
 
 <div class="line"></div>
 
@@ -14,7 +14,7 @@
 * [C/C++ Addons - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Cluster](cluster.html)
-* [Command Line Options](cli.html)
+* [Opções de Linha de Comandos](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
 * [Debugger](debugger.html)
