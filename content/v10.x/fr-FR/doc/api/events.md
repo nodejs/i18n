@@ -175,7 +175,7 @@ monEmetteur.emit('evenement');
 //   A
 ```
 
-### Event: 'removeListener'
+### Event: « removeListener »
 
 <!-- YAML
 added: v0.9.3
@@ -187,10 +187,10 @@ changes:
                  now yields the original listener function.
 -->
 
-- `eventName` {string|symbol} The event name
-- `listener` {Function} The event handler function
+- `eventName` {string|symbol} le nom de l’événement
+- `listener` {Function} La fonction gestionnaire d'évènement
 
-The `'removeListener'` event is emitted *after* the `listener` is removed.
+L’événement `« removeListener »` est émis *après* la suppression de l'`écouteur`.
 
 ### EventEmitter.listenerCount(emitter, eventName)
 
