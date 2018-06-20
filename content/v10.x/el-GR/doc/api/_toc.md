@@ -3,7 +3,7 @@
 <!--introduced_in=v0.10.0-->
 
 * [Σχετικά με αυτά τα Εγχειρίδια](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Παραδειγμα & Χρήση](synopsis.html)
 
 <div class="line"></div>
 
