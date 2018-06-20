@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
-The `dns` module contains functions belonging to two different categories:
+O módulo de `dns` contém funções pertencentes a duas categorias diferentes:
 
-1) Functions that use the underlying operating system facilities to perform name resolution, and that do not necessarily perform any network communication. This category contains only one function: [`dns.lookup()`][]. **Developers looking to perform name resolution in the same way that other applications on the same operating system behave should use [`dns.lookup()`][].**
+1) Funções que utilizam mecanismos do sistema operacional para executar a resolução de nomes, e que não necessariamente fazem qualquer comunicação de rede. Esta categoria contém apenas uma função: [] [`dns.lookup()`]. **Os desenvolvedores procurando por resolução de nomes no mesmo modo que outras aplicações no mesmo mesmo sistema operacional devem usar [`dns.lookup()`].**
 
 For example, looking up `iana.org`.
 
