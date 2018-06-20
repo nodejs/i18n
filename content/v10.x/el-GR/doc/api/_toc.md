@@ -7,7 +7,7 @@
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
+* [Έλεγχος Ισχυρισμού](assert.html)
 * [Async Hooks](async_hooks.html)
 * [Buffer](buffer.html)
 * [C++ Addons](addons.html)
