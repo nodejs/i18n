@@ -1,8 +1,8 @@
-@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
+@// NB(chrisdickinson): αν μετακινήσετε αυτό το αρχείο, να ενημερώστε το @// tools/doc/html.js να δείχνει στην καινούργια τοποθεσία.
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
+* [Σχετικά με αυτά τα Εγχειρίδια](documentation.html)
 * [Usage & Example](synopsis.html)
 
 <div class="line"></div>
