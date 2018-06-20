@@ -149,9 +149,9 @@ added: v0.1.26
 - `eventName` {string|symbol} le nom de l’événement auquel l'écouteur (listener) s'est abonné
 - `listener` {Function} La fonction gestionnaire d'évènement
 
-The `EventEmitter` instance will emit its own `'newListener'` event *before* a listener is added to its internal array of listeners.
+L’instance d'`EventEmitter` émettra son propre évènement `« newListener »` *avant* qu'un écouteur (listener) soit ajouté à son tableau interne d'écouteurs.
 
-Listeners registered for the `'newListener'` event will be passed the event name and a reference to the listener being added.
+Les écouteurs (listeners) s'étant abonnés à l’événement `« newListener »` recevront le nom de l’événement et une référence à l’écouteur (listener) ajouté.
 
 The fact that the event is triggered before adding the listener has a subtle but important side effect: any *additional* listeners registered to the same `name` *within* the `'newListener'` callback will be inserted *before* the listener that is in the process of being added.
 
