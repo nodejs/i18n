@@ -544,25 +544,25 @@ added: v9.4.0
 Retourne une copie du tableau d’écouteurs pour l’événement nommé `eventName`, incluant les enveloppes (wrapper) (telles que celles créées par `.once()`).
 
 ```js
-const emitter = new EventEmitter();
-emitter.once('log', () => console.log('log once'));
+const emetteur = new EventEmitter();
+emetteur.once('log', () => console.log('journalise une fois'));
 
-// Returns a new Array with a function `onceWrapper` which has a property
-// `listener` which contains the original listener bound above
-const listeners = emitter.rawListeners('log');
-const logFnWrapper = listeners[0];
+// Renvoie un nouveau tableau avec une fonction`onceWrapper` qui comporte une propriété
+// `listener` qui contient l'écouteur original lié ci-dessus
+const ecouteurs = emetteur.rawListeners('log');
+const logFnWrapper = ecouteurs[0];
 
-// logs "log once" to the console and does not unbind the `once` event
+// affiche "journalise une fois" dans la console sans détacher l'évènement `once`
 logFnWrapper.listener();
 
-// logs "log once" to the console and removes the listener
+// affiche "journalise une fois" dans la console et supprime l'écouteur
 logFnWrapper();
 
-emitter.on('log', () => console.log('log persistently'));
-// will return a new Array with a single function bound by `.on()` above
-const newListeners = emitter.rawListeners('log');
+emetteur.on('log', () => console.log('journalise toujours'));
+// retournera un tableau avec une seule fonction abonnée par `.on()` ci-dessus
+const nouveauxEcouteurs = emetteur.rawListeners('log');
 
-// logs "log persistently" twice
-newListeners[0]();
-emitter.emit('log');
+// affiche "journalise toujours" deux fois
+nouveauxEcouteurs[0]();
+emetteur.emit('log');
 ```
