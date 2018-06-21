@@ -515,7 +515,7 @@ monEmetteur.emit('evenement');
 //   A
 ```
 
-Because listeners are managed using an internal array, calling this will change the position indices of any listener registered *after* the listener being removed. This will not impact the order in which listeners are called, but it means that any copies of the listener array as returned by the `emitter.listeners()` method will need to be recreated.
+Comme les écouteurs sont gérés à l’aide d’un tableau interne, cet appel va changer l'index de position de chaque écouteur enregistré *après* l’écouteur supprimé. This will not impact the order in which listeners are called, but it means that any copies of the listener array as returned by the `emitter.listeners()` method will need to be recreated.
 
 Returns a reference to the `EventEmitter`, so that calls can be chained.
 
