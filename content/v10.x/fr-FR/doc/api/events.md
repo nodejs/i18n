@@ -361,7 +361,7 @@ server.on('connexion', (flux) => {
 
 Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
-Par défaut, les écouteurs sont ajoutés dans l'ordre dans lequel ils sont ajoutés. La méthode `emitter.prependListener()` peut être utilisée comme alternative pour ajouter l'écouteur au début du tableau d'écouteurs.
+Par défaut, les écouteurs sont appelés dans l'ordre dans lequel ils sont ajoutés. La méthode `emitter.prependListener()` peut être utilisée comme alternative pour ajouter l'écouteur au début du tableau d'écouteurs.
 
 ```js
 const monEE = new EventEmitter();
@@ -383,24 +383,24 @@ added: v0.3.0
 - `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Ajoute un écouteur `listener` à **usage unique** pour l'évènement nommé `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
+Ajoute un écouteur `listener` à **usage unique** pour l'évènement nommé `eventName`. Au prochain déclenchement de l'évènement `eventName`, cet écouteur est supprimé, puis appelé.
 
 ```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
+serveur.once('connexion', (flux) => {
+  console.log('Ah, nous avons notre premier utilisateur !');
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
+Par défaut, les écouteurs sont appelés dans l'ordre dans lequel ils sont ajoutés. La méthode `emitter.prependOnceListener()` peut être utilisée comme alternative pour ajouter l'écouteur au début du tableau d'écouteurs.
 
 ```js
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
+const monEE = new EventEmitter();
+monEE.on('foo', () => console.log('a'));
+monEE.prependOnceListener('foo', () => console.log('b'));
+monEE.emit('foo');
+// Affiche :
 //   b
 //   a
 ```
@@ -411,8 +411,8 @@ myEE.emit('foo');
 added: v6.0.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
 Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
