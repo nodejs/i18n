@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "nodeVersions": {
-    "v10.x": "v10.4.1",
+    "v10.x": "v10.5.0",
     "v8.x": "v8.11.3",
     "v6.x": "v6.14.2"
   },
