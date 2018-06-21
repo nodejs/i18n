@@ -379,11 +379,11 @@ monEE.emit('foo');
 added: v0.3.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
+Ajoute un écouteur `listener` à **usage unique** pour l'évènement nommé `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
 
 ```js
 server.once('connection', (stream) => {
