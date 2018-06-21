@@ -291,7 +291,7 @@ added: v1.0.0
 
 - Returns: {integer}
 
-Returns the current max listener value for the `EventEmitter` which is either set by [`emitter.setMaxListeners(n)`][] or defaults to [`EventEmitter.defaultMaxListeners`][].
+Retourne la valeur actuelle du maximum d'écouteurs pour l'instance d'`EventEmitter`, valeur qui soit a été affectée avec [`emitter.setMaxListeners(n)`][], soit est la valeur par défaut [`EventEmitter.defaultMaxListeners`][].
 
 ### emitter.listenerCount(eventName)
 
@@ -299,10 +299,10 @@ Returns the current max listener value for the `EventEmitter` which is either se
 added: v3.2.0
 -->
 
-- `eventName` {string|symbol} The name of the event being listened for
+- `eventName` {string|symbol} le nom de l’évènement écouté
 - Returns: {integer}
 
-Returns the number of listeners listening to the event named `eventName`.
+Retourne le nombre d’écouteurs abonnés à l’événement nommé `eventName`.
 
 ### emitter.listeners(eventName)
 
@@ -319,14 +319,14 @@ changes:
 - `eventName` {string|symbol}
 - Returns: {Function[]}
 
-Returns a copy of the array of listeners for the event named `eventName`.
+Retourne une copie du tableau d’écouteurs pour l’événement nommé `eventName`.
 
 ```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
+serveur.on('connexion', (flux) => {
+  console.log("une personne s'est connectée !");
 });
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
+console.log(util.inspect(serveur.listeners('connexion')));
+// Affiche : [ [Function] ]
 ```
 
 ### emitter.off(eventName, listener)
@@ -339,7 +339,7 @@ added: v10.0.0
 - `listener` {Function}
 - Returns: {EventEmitter}
 
-Alias for [`emitter.removeListener()`][].
+Alias pour [`emitter.removeListener()`] [].
 
 ### emitter.on(eventName, listener)
 
@@ -347,28 +347,28 @@ Alias for [`emitter.removeListener()`][].
 added: v0.1.101
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
+Ajoute la fonction `listener` à la fin du tableau d'écouteurs pour l’événement nommé `eventName`. Aucune vérification n'est effectuée pour voir si `listener` a déjà été ajouté. Plusieurs appels passant la même combinaison `eventName` / `listener` feront que `listener` sera ajouté, et donc appelé, à plusieurs reprises.
 
 ```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
+server.on('connexion', (flux) => {
+  console.log("quelqu'un s'est connecté !");
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
+Par défaut, les écouteurs sont appelés dans l'ordre dans lequel ils sont ajoutés. La méthode `emitter.prependListener()` peut être utilisée comme alternative pour ajouter l'écouteur au début du tableau d'écouteurs.
 
 ```js
-const myEE = new EventEmitter();
-myEE.on('foo', () => console.log('a'));
-myEE.prependListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
+const monEE = new EventEmitter();
+monEE.on('foo', () => console.log('a'));
+monEE.prependListener('foo', () => console.log('b'));
+monEE.emit('foo');
+// Affiche :
 //   b
 //   a
 ```
@@ -379,28 +379,28 @@ myEE.emit('foo');
 added: v0.3.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
+Ajoute un écouteur `listener` à **usage unique** pour l'évènement nommé `eventName`. Au prochain déclenchement de l'évènement `eventName`, cet écouteur est supprimé, puis appelé.
 
 ```js
-server.once('connection', (stream) => {
-  console.log('Ah, we have our first user!');
+serveur.once('connexion', (flux) => {
+  console.log('Ah, nous avons notre premier utilisateur !');
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
-By default, event listeners are invoked in the order they are added. The `emitter.prependOnceListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
+Par défaut, les écouteurs sont appelés dans l'ordre dans lequel ils sont ajoutés. La méthode `emitter.prependOnceListener()` peut être utilisée comme alternative pour ajouter l'écouteur au début du tableau d'écouteurs.
 
 ```js
-const myEE = new EventEmitter();
-myEE.once('foo', () => console.log('a'));
-myEE.prependOnceListener('foo', () => console.log('b'));
-myEE.emit('foo');
-// Prints:
+const monEE = new EventEmitter();
+monEE.on('foo', () => console.log('a'));
+monEE.prependOnceListener('foo', () => console.log('b'));
+monEE.emit('foo');
+// Affiche :
 //   b
 //   a
 ```
@@ -411,19 +411,19 @@ myEE.emit('foo');
 added: v6.0.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
+Ajoute la fonction `listener` *au début* du tableau d'écouteurs pour l’événement nommé `eventName`. Aucune vérification n'est effectuée pour voir si `listener` a déjà été ajouté. Plusieurs appels passant la même combinaison `eventName` / `listener` feront que `listener` sera ajouté, et donc appelé, à plusieurs reprises.
 
 ```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
+server.prependListener('connexion', (flux) => {
+  console.log("quelqu'un s'est connecté !");
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.prependOnceListener(eventName, listener)
 
@@ -431,19 +431,19 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 added: v6.0.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
+Ajoute un écouteur `listener` à **usage unique** pour l'évènement nommé `eventName`, au *début* du tableau d'écouteurs. Au prochain déclenchement de l'évènement `eventName`, cet écouteur est supprimé, puis appelé.
 
 ```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
+serveur.prependOnceListener('connexion', (flux) => {
+  console.log('Ah, nous avons notre premier utilisateur !');
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.removeAllListeners([eventName])
 
@@ -454,11 +454,11 @@ added: v0.1.26
 - `eventName` {string|symbol}
 - Returns: {EventEmitter}
 
-Removes all listeners, or those of the specified `eventName`.
+Supprime tous les écouteurs, ou ceux de l'évènement `eventName` spécifié.
 
-Note that it is bad practice to remove listeners added elsewhere in the code, particularly when the `EventEmitter` instance was created by some other component or module (e.g. sockets or file streams).
+Notez qu'il est considéré comme une mauvaise pratique de supprimer des écouteurs ajoutés ailleurs dans le code, en particulier lorsque l’instance d'`EventEmitter` a été créée par un autre composant ou module (p. ex. sockets ou flux de fichiers (streams)).
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.removeListener(eventName, listener)
 
@@ -470,54 +470,54 @@ added: v0.1.26
 - `listener` {Function}
 - Returns: {EventEmitter}
 
-Removes the specified `listener` from the listener array for the event named `eventName`.
+Supprime l'écouteur `listener` spécifié du tableau d'écouteurs pour l'évènement nommé `eventName`.
 
 ```js
-const callback = (stream) => {
-  console.log('someone connected!');
+const callback = (flux) => {
+  console.log("quelqu'un s'est connecté");
 };
-server.on('connection', callback);
+serveur.on('connexion', callback);
 // ...
-server.removeListener('connection', callback);
+serveur.removeListener('connexion', callback);
 ```
 
-`removeListener()` will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
+`removeListener()` supprimera du tableau d'écouteurs, au plus, une seule instance de l'écouteur. Si un écouteur a été ajouté plusieurs fois dans le tableau d'écouteurs pour l'évènement `eventName`, alors `removeListener()` doit être appelée plusieurs fois pour supprimer chaque occurence.
 
-Note that once an event has been emitted, all listeners attached to it at the time of emitting will be called in order. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Subsequent events will behave as expected.
+Notez qu'au déclenchement d'un évènement, tous les écouteurs qui lui sont abonnés au moment du déclenchement seront appelés dans l'ordre. Cela implique qu'un appel à `removeListener()` ou à `removeAllListeners()` effectué *après* le déclenchement mais *avant* que le dernier écouteur ait terminé son exécution ne supprimera pas les écouteurs ciblés pour l'exécution d'`emit()` en cours. Les déclenchements suivants de l'évènement se comporteront comme attendu.
 
 ```js
-const myEmitter = new MyEmitter();
+const monEmetteur = new MonEmetteur();
 
 const callbackA = () => {
   console.log('A');
-  myEmitter.removeListener('event', callbackB);
+  monEmetteur.removeListener('evenementt', callbackB);
 };
 
 const callbackB = () => {
   console.log('B');
 };
 
-myEmitter.on('event', callbackA);
+monEmetteur.on('evenement', callbackA);
 
-myEmitter.on('event', callbackB);
+monEmetteur.on('evenement', callbackB);
 
-// callbackA removes listener callbackB but it will still be called.
-// Internal listener array at time of emit [callbackA, callbackB]
-myEmitter.emit('event');
-// Prints:
+// callbackA supprime l'écouteur callbackB, mais il sera quand même appelé.
+// Le tableau d'écouteurs au moment du déclenchement : [callbackA, callbackB]
+monEmetteur.emit('evenement');
+// Affiche :
 //   A
 //   B
 
-// callbackB is now removed.
-// Internal listener array [callbackA]
-myEmitter.emit('event');
-// Prints:
+// callbackB est maintenant supprimé.
+// Le tableau d'écouteurs : [callbackA]
+monEmetteur.emit('evenement');
+// Affiche :
 //   A
 ```
 
-Because listeners are managed using an internal array, calling this will change the position indices of any listener registered *after* the listener being removed. This will not impact the order in which listeners are called, but it means that any copies of the listener array as returned by the `emitter.listeners()` method will need to be recreated.
+Comme les écouteurs sont gérés à l’aide d’un tableau interne, cet appel va changer l'index de position de chaque écouteur enregistré *après* l’écouteur supprimé. Cela n’affectera pas l’ordre dans lequel les écouteurs sont appelés, mais cela signifie que toutes les copies du tableau d'écouteurs, comme celles retournées par la méthode `emitter.listeners()`, devront être recréées.
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.setMaxListeners(n)
 
@@ -528,9 +528,9 @@ added: v0.3.5
 - `n` {integer}
 - Returns: {EventEmitter}
 
-By default `EventEmitter`s will print a warning if more than `10` listeners are added for a particular event. This is a useful default that helps finding memory leaks. Obviously, not all events should be limited to just 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+Par défaut, les instances d'`EventEmitter` afficheront un avertissement si plus de `10` écouteurs sont ajoutés pour un même événement. Il s’agit d’une valeur par défaut utile qui aide à trouver des fuites mémoire. Bien sûr, tous les évènements ne devrait pas être limités à 10 écouteurs. La méthode `emitter.setMaxListeners()` permet de modifier la limite pour l'instance d'`EventEmitter` sur laquelle elle est appelée. Il est possible d'affecter la valeur `Infinity` (ou `0`) pour indiquer un nombre illimité d'écouteurs.
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.rawListeners(eventName)
 
@@ -541,28 +541,28 @@ added: v9.4.0
 - `eventName` {string|symbol}
 - Returns: {Function[]}
 
-Returns a copy of the array of listeners for the event named `eventName`, including any wrappers (such as those created by `.once()`).
+Retourne une copie du tableau d’écouteurs pour l’événement nommé `eventName`, incluant les enveloppes (wrapper) (telles que celles créées par `.once()`).
 
 ```js
-const emitter = new EventEmitter();
-emitter.once('log', () => console.log('log once'));
+const emetteur = new EventEmitter();
+emetteur.once('log', () => console.log('journalise une fois'));
 
-// Returns a new Array with a function `onceWrapper` which has a property
-// `listener` which contains the original listener bound above
-const listeners = emitter.rawListeners('log');
-const logFnWrapper = listeners[0];
+// Renvoie un nouveau tableau avec une fonction`onceWrapper` qui comporte une propriété
+// `listener` qui contient l'écouteur original lié ci-dessus
+const ecouteurs = emetteur.rawListeners('log');
+const logFnWrapper = ecouteurs[0];
 
-// logs "log once" to the console and does not unbind the `once` event
+// affiche "journalise une fois" dans la console sans détacher l'évènement `once`
 logFnWrapper.listener();
 
-// logs "log once" to the console and removes the listener
+// affiche "journalise une fois" dans la console et supprime l'écouteur
 logFnWrapper();
 
-emitter.on('log', () => console.log('log persistently'));
-// will return a new Array with a single function bound by `.on()` above
-const newListeners = emitter.rawListeners('log');
+emetteur.on('log', () => console.log('journalise toujours'));
+// retournera un tableau avec une seule fonction abonnée par `.on()` ci-dessus
+const nouveauxEcouteurs = emetteur.rawListeners('log');
 
-// logs "log persistently" twice
-newListeners[0]();
-emitter.emit('log');
+// affiche "journalise toujours" deux fois
+nouveauxEcouteurs[0]();
+emetteur.emit('log');
 ```

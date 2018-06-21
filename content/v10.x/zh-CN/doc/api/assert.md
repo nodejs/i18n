@@ -1,18 +1,18 @@
-# 断言 (Assert)
+# Assert
 
 <!--introduced_in=v0.1.21-->
 
 > Stability: 2 - Stable
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+` assert ` 模块提供了一组简单的断言测试, 可用于测试不变量。
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+有` strict `（严格）和 ` legacy `（老版本）模式, 建议只使用 [` strict 模式 `] []。
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+更多关于平等性的对比，可以参考 [MDN 上 JavaScript 中的相等性判断](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)。
 
 ## Class: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+`Error` 的子类，表示断言失败。 所有被 `assert` 模块抛出的错误都是 `AssertionError` 类的实例。
 
 ### new assert.AssertionError(options)
 
@@ -21,33 +21,33 @@ added: v0.1.21
 -->
 
 * `options` {Object} 
-  * `message` {string} If provided, the error message is going to be set to this value.
-  * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
-  * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
+  * `message` {string} 如果有此参数，错误信息会被设为此值。
+  * `actual` {any} 错误实例的 `actual` 参数会包含此值。 在内部里用于 `actual` （实际上的）错误输入，例如在 [`assert.strictEqual()`] 中。
+  * `expected` {any} 错误实例的 `expected` 参数会包含此值。 在内部里用于 `expected`（预期）错误输入，例如在 [`assert.strictEqual()`] 中。
+  * `operator` {string} 错误实例的 `operator` 参数会包含此值。 在内部用于表示判断用的是哪个运算符（或者哪个断言函数触发了错误）。
+  * `stackStartFn` {Function} 如果提供，生成的堆栈跟踪会移掉此函数之前的所有帧。
 
-A subclass of `Error` that indicates the failure of an assertion.
+`Error` 的子类，表示断言失败。
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+所有实例都包含内置` Error `属性（` message ` 和 ` name `）和：
 
-* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
-* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
-* `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
-* `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
-* `operator` {string} Set to the passed in operator value.
+* `actual` {any} 设置为 actual （实际）值，比如在用 [`assert.strictEqual()`]时。
+* `expected` {any} 设置为 expected（预期）值，比如在用 [`assert.strictEqual()`]时。
+* `generatedMessage` {boolean} 表示信息是否是自动生成（是则 `true`）。
+* `code` {string} 始终被设置为 `ERR_ASSERTION` 字符串，来表明错误是断言错误。
+* ` operator ` {string} 设置为传入的运算符值。
 
 ```js
 const assert = require('assert');
 
-// Generate an AssertionError to compare the error message later:
+// 生成 AssertionError 来对比错误信息：
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Verify error output:
+// 验证错误输出
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode
+## Strict mode（严格模式）
 
 <!-- YAML
 added: v9.9.0
@@ -166,7 +166,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.deepStrictEqual()`][].
 
@@ -478,7 +478,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.strictEqual()`][].
 
@@ -658,7 +658,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
@@ -759,7 +759,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.notStrictEqual()`][].
 
