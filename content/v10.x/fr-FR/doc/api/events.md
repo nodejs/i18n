@@ -291,7 +291,7 @@ added: v1.0.0
 
 - Returns: {integer}
 
-Returns the current max listener value for the `EventEmitter` which is either set by [`emitter.setMaxListeners(n)`][] or defaults to [`EventEmitter.defaultMaxListeners`][].
+Retourne la valeur actuelle du maximum d'écouteurs pour l'instance d'`EventEmitter`, valeur qui soit a été affectée avec [`emitter.setMaxListeners(n)`][], soit est la valeur par défaut [`EventEmitter.defaultMaxListeners`][].
 
 ### emitter.listenerCount(eventName)
 
@@ -299,10 +299,10 @@ Returns the current max listener value for the `EventEmitter` which is either se
 added: v3.2.0
 -->
 
-- `eventName` {string|symbol} The name of the event being listened for
+- `eventName` {string|symbol} le nom de l’évènement écouté
 - Returns: {integer}
 
-Returns the number of listeners listening to the event named `eventName`.
+Retourne le nombre d’écouteurs abonnés à l’événement nommé `eventName`.
 
 ### emitter.listeners(eventName)
 
@@ -319,14 +319,14 @@ changes:
 - `eventName` {string|symbol}
 - Returns: {Function[]}
 
-Returns a copy of the array of listeners for the event named `eventName`.
+Retourne une copie du tableau d’écouteurs pour l’événement nommé `eventName`.
 
 ```js
-server.on('connection', (stream) => {
-  console.log('someone connected!');
+serveur.on('connexion', (flux) => {
+  console.log("une personne s'est connectée !");
 });
-console.log(util.inspect(server.listeners('connection')));
-// Prints: [ [Function] ]
+console.log(util.inspect(serveur.listeners('connexion')));
+// Affiche : [ [Function] ]
 ```
 
 ### emitter.off(eventName, listener)
@@ -339,7 +339,7 @@ added: v10.0.0
 - `listener` {Function}
 - Returns: {EventEmitter}
 
-Alias for [`emitter.removeListener()`][].
+Alias pour [`emitter.removeListener()`] [].
 
 ### emitter.on(eventName, listener)
 
@@ -347,11 +347,11 @@ Alias for [`emitter.removeListener()`][].
 added: v0.1.101
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
+Ajoute la fonction `listener` à la fin du tableau d'écouteurs pour l’événement nommé `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
 ```js
 server.on('connection', (stream) => {
