@@ -10,6 +10,7 @@
   "description": "The home of translated Node.js documentation",
   "repository": "https://github.com/nodejs/i18n",
   "contributors": [
+    "Dhruv Jain <dhruvjainpenny@gmail.com>",
     "Vanessa Yuen <vanessa.yh.yuen@gmail.com>",
     "Zeke Sikelianos <zeke@sikelianos.com>"
   ],
