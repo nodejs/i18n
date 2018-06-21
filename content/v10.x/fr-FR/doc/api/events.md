@@ -435,15 +435,15 @@ added: v6.0.0
 - `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
+Ajoute un écouteur `listener` à **usage unique** pour l'évènement nommé `eventName`, au *début* du tableau d'écouteurs. Au prochain déclenchement de l'évènement `eventName`, cet écouteur est supprimé, puis appelé.
 
 ```js
-server.prependOnceListener('connection', (stream) => {
-  console.log('Ah, we have our first user!');
+serveur.prependOnceListener('connexion', (flux) => {
+  console.log('Ah, nous avons notre premier utilisateur !');
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.removeAllListeners([eventName])
 
@@ -454,11 +454,11 @@ added: v0.1.26
 - `eventName` {string|symbol}
 - Returns: {EventEmitter}
 
-Removes all listeners, or those of the specified `eventName`.
+Supprime tous les écouteurs, ou ceux de l'évènement `eventName` spécifié.
 
-Note that it is bad practice to remove listeners added elsewhere in the code, particularly when the `EventEmitter` instance was created by some other component or module (e.g. sockets or file streams).
+Notez qu'il est considéré comme une mauvaise pratique de supprimer des écouteurs ajoutés ailleurs dans le code, en particulier lorsque l’instance d'`EventEmitter` a été créée par un autre composant ou module (p. ex. sockets ou flux de fichiers (streams)).
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.removeListener(eventName, listener)
 
