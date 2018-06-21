@@ -1,4 +1,4 @@
-# Trace Events
+# Ανίχνευση Συμβάντων
 
 <!--introduced_in=v7.7.0-->
 
