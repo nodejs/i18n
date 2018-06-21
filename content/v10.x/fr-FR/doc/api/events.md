@@ -415,15 +415,15 @@ added: v6.0.0
 - `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
-Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
+Ajoute la fonction `listener` *au début* du tableau d'écouteurs pour l’événement nommé `eventName`. Aucune vérification n'est effectuée pour voir si `listener` a déjà été ajouté. Plusieurs appels passant la même combinaison `eventName` / `listener` feront que `listener` sera ajouté, et donc appelé, à plusieurs reprises.
 
 ```js
-server.prependListener('connection', (stream) => {
-  console.log('someone connected!');
+server.prependListener('connexion', (flux) => {
+  console.log("quelqu'un s'est connecté !");
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.prependOnceListener(eventName, listener)
 
@@ -431,8 +431,8 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 added: v6.0.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} le nom de l’événement.
+- `listener` {Function} la fonction de callback
 - Returns: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
