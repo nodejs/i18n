@@ -515,9 +515,9 @@ monEmetteur.emit('evenement');
 //   A
 ```
 
-Comme les écouteurs sont gérés à l’aide d’un tableau interne, cet appel va changer l'index de position de chaque écouteur enregistré *après* l’écouteur supprimé. This will not impact the order in which listeners are called, but it means that any copies of the listener array as returned by the `emitter.listeners()` method will need to be recreated.
+Comme les écouteurs sont gérés à l’aide d’un tableau interne, cet appel va changer l'index de position de chaque écouteur enregistré *après* l’écouteur supprimé. Cela n’affectera pas l’ordre dans lequel les écouteurs sont appelés, mais cela signifie que toutes les copies du tableau d'écouteurs, comme celles retournées par la méthode `emitter.listeners()`, devront être recréées.
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.setMaxListeners(n)
 
@@ -528,9 +528,9 @@ added: v0.3.5
 - `n` {integer}
 - Returns: {EventEmitter}
 
-By default `EventEmitter`s will print a warning if more than `10` listeners are added for a particular event. This is a useful default that helps finding memory leaks. Obviously, not all events should be limited to just 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+Par défaut, les instances d'`EventEmitter` afficheront un avertissement si plus de `10` écouteurs sont ajoutés pour un même événement. Il s’agit d’une valeur par défaut utile qui aide à trouver des fuites mémoire. Bien sûr, tous les évènements ne devrait pas être limités à 10 écouteurs. La méthode `emitter.setMaxListeners()` permet de modifier la limite pour l'instance d'`EventEmitter` sur laquelle elle est appelée. Il est possible d'affecter la valeur `Infinity` (ou `0`) pour indiquer un nombre illimité d'écouteurs.
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Retourne une référence à l'instance d'`EventEmitter`, afin que les appels puissent être chaînés.
 
 ### emitter.rawListeners(eventName)
 
@@ -541,7 +541,7 @@ added: v9.4.0
 - `eventName` {string|symbol}
 - Returns: {Function[]}
 
-Returns a copy of the array of listeners for the event named `eventName`, including any wrappers (such as those created by `.once()`).
+Retourne une copie du tableau d’écouteurs pour l’événement nommé `eventName`, incluant les enveloppes (wrapper) (telles que celles créées par `.once()`).
 
 ```js
 const emitter = new EventEmitter();
