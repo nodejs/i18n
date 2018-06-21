@@ -470,48 +470,48 @@ added: v0.1.26
 - `listener` {Function}
 - Returns: {EventEmitter}
 
-Removes the specified `listener` from the listener array for the event named `eventName`.
+Supprime l'écouteur `listener` spécifié du tableau d'écouteurs pour l'évènement nommé `eventName`.
 
 ```js
-const callback = (stream) => {
-  console.log('someone connected!');
+const callback = (flux) => {
+  console.log("quelqu'un s'est connecté");
 };
-server.on('connection', callback);
+serveur.on('connexion', callback);
 // ...
-server.removeListener('connection', callback);
+serveur.removeListener('connexion', callback);
 ```
 
-`removeListener()` will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
+`removeListener()` supprimera du tableau d'écouteurs, au plus, une seule instance de l'écouteur. Si un écouteur a été ajouté plusieurs fois dans le tableau d'écouteurs pour l'évènement `eventName`, alors `removeListener()` doit être appelée plusieurs fois pour supprimer chaque occurence.
 
-Note that once an event has been emitted, all listeners attached to it at the time of emitting will be called in order. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Subsequent events will behave as expected.
+Notez qu'au déclenchement d'un évènement, tous les écouteurs qui lui sont abonnés au moment du déclenchement seront appelés dans l'ordre. Cela implique qu'un appel à `removeListener()` ou à `removeAllListeners()` effectué *après* le déclenchement mais *avant* que le dernier écouteur ait terminé son exécution ne supprimera pas les écouteurs ciblés pour l'exécution d'`emit()` en cours. Les déclenchements suivants de l'évènement se comporteront comme attendu.
 
 ```js
-const myEmitter = new MyEmitter();
+const monEmetteur = new MonEmetteur();
 
 const callbackA = () => {
   console.log('A');
-  myEmitter.removeListener('event', callbackB);
+  monEmetteur.removeListener('evenementt', callbackB);
 };
 
 const callbackB = () => {
   console.log('B');
 };
 
-myEmitter.on('event', callbackA);
+monEmetteur.on('evenement', callbackA);
 
-myEmitter.on('event', callbackB);
+monEmetteur.on('evenement', callbackB);
 
-// callbackA removes listener callbackB but it will still be called.
-// Internal listener array at time of emit [callbackA, callbackB]
-myEmitter.emit('event');
-// Prints:
+// callbackA supprime l'écouteur callbackB, mais il sera quand même appelé.
+// Le tableau d'écouteurs au moment du déclenchement : [callbackA, callbackB]
+monEmetteur.emit('evenement');
+// Affiche :
 //   A
 //   B
 
-// callbackB is now removed.
-// Internal listener array [callbackA]
-myEmitter.emit('event');
-// Prints:
+// callbackB est maintenant supprimé.
+// Le tableau d'écouteurs : [callbackA]
+monEmetteur.emit('evenement');
+// Affiche :
 //   A
 ```
 
