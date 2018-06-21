@@ -31,23 +31,23 @@ added: v0.1.21
 
 所有实例都包含内置` Error `属性（` message ` 和 ` name `）和：
 
-* `actual` {any} 设置为 actual （实际）值，比如 [`assert.strictEqual()`]。
-* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
-* `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
-* `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
-* `operator` {string} Set to the passed in operator value.
+* `actual` {any} 设置为 actual （实际）值，比如在用 [`assert.strictEqual()`]时。
+* `expected` {any} 设置为 expected（预期）值，比如在用 [`assert.strictEqual()`]时。
+* `generatedMessage` {boolean} 表示信息是否是自动生成（是则 `true`）。
+* `code` {string} 始终被设置为 `ERR_ASSERTION` 字符串，来表明错误是断言错误。
+* ` operator ` {string} 设置为传入的运算符值。
 
 ```js
 const assert = require('assert');
 
-// Generate an AssertionError to compare the error message later:
+// 生成 AssertionError 来对比错误信息：
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Verify error output:
+// 验证错误输出
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode
+## Strict mode（严格模式）
 
 <!-- YAML
 added: v9.9.0
@@ -166,7 +166,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.deepStrictEqual()`][].
 
@@ -478,7 +478,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.strictEqual()`][].
 
@@ -658,7 +658,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
@@ -759,7 +759,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Strict mode（严格模式）**
 
 An alias of [`assert.notStrictEqual()`][].
 
