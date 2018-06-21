@@ -57,4 +57,4 @@
 <div class="line"></div>
 
 * [GitHub Αποθηκευτικός Χώρος & Ανιχνευτής Θεμάτων](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [Λίστα Αποδεκτών Αλληλογραφίας](https://groups.google.com/group/nodejs)
