@@ -170,19 +170,19 @@ Pour qu'un module exécute une portion de code à plusieurs reprise, exportez un
 
 <!--type=misc-->
 
-Les modules sont mis en cache sur la base du nom de fichier résolu. Since modules may resolve to a different filename based on the location of the calling module (loading from `node_modules` folders), it is not a *guarantee* that `require('foo')` will always return the exact same object, if it would resolve to different files.
+Les modules sont mis en cache sur la base du nom de fichier résolu. Comme les chemins d'accès résolus pour un même nom de module peuvent différer, selon l'emplacement du module appelant (chargement depuis les dossiers `node_modules`), il n'est *pas garanti* que `require('foo')` retournera toujours l'exact même objet, si le chemin résolu pointe vers des fichiers différents.
 
-Additionally, on case-insensitive file systems or operating systems, different resolved filenames can point to the same file, but the cache will still treat them as different modules and will reload the file multiple times. For example, `require('./foo')` and `require('./FOO')` return two different objects, irrespective of whether or not `./foo` and `./FOO` are the same file.
+De plus, sur les systèmes de fichiers ou d'exploitation insensibles à la casse, des chemins d'accès résolus différents peuvent pointer vers le même fichier, mais le cache les traitera tout de même comme des modules différents et rechargera le fichier plusieurs fois. Par exemple, `require('./foo')` et `require('./FOO')` renverront deux objets différents, que `./foo` et `./FOO` soient le même fichier ou non.
 
-## Core Modules
+## Modules de la Bibliothèque de Base
 
 <!--type=misc-->
 
-Node.js has several modules compiled into the binary. These modules are described in greater detail elsewhere in this documentation.
+Node.js comporte plusieurs modules compilés directement dans son exécutable. Ces modules sont décrits plus en détail ailleurs dans la présente documentation.
 
-The core modules are defined within Node.js's source and are located in the `lib/` folder.
+Les modules de la bibliothèque de base sont définis dans les sources de Node.js et se situent dans le dossier `lib/`.
 
-Core modules are always preferentially loaded if their identifier is passed to `require()`. For instance, `require('http')` will always return the built in HTTP module, even if there is a file by that name.
+Les modules de la bibliothèque de base sont toujours chargés en priorité si leur identificateur est passé à `require()`. Par exemple, `require('http')` renverra toujours le module HTTP embarqué, même s'il existe un fichier portant ce nom.
 
 ## Cycles
 
