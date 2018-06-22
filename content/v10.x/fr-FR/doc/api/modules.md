@@ -239,7 +239,7 @@ a terminé
 en main, a.done = true, b.done = true
 ```
 
-Careful planning is required to allow cyclic module dependencies to work correctly within an application.
+Une planification minutieuse est requise pour permettre aux dépendances de modules cycliques de fonctionner correctement au sein d'une application.
 
 ## File Modules
 
