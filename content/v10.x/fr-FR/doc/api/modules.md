@@ -56,17 +56,17 @@ module.exports = class Carré{
 
 Le système de module est implémenté dans le module `require('module')`.
 
-## Accessing the main module
+## Accès au module principal
 
 <!-- type=misc -->
 
-When a file is run directly from Node.js, `require.main` is set to its `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+Lorsqu’un fichier est exécuté directement par Node.js, son `module` est assigné à `require.main`. Cela signifie qu’il est possible de déterminer si un fichier est exécuté directement en testant que `require.main === module`.
 
-For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
+Pour un fichier `foo.js`, cette comparaison renverra `true` si le fichier est exécuté via la commande `node foo.js`, `false` s'il est exécuté par `require('./foo')`.
 
-Because `module` provides a `filename` property (normally equivalent to `__filename`), the entry point of the current application can be obtained by checking `require.main.filename`.
+Parce que `module` expose une propriété `filename` (normalement équivalente à `__filename`), le point d’entrée de l’application courante peut être obtenu en consultant la valeur de `require.main.filename`.
 
-## Addenda: Package Manager Tips
+## Addenda : Astuces de Gestionnaire de Paquets
 
 <!-- type=misc -->
 
