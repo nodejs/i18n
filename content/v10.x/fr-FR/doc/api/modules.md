@@ -140,17 +140,17 @@ CHARGER_MODULES_NODE(X, DEBUT)
 
 1. soit DOSSIERS=CHEMINS_NODE_MODULES(DEBUT)
 2. pour chaque DOSSIER de DOSSIERS :
-   a. LOAD_AS_FILE(DIR/X)
-   b. LOAD_AS_DIRECTORY(DIR/X)
+   a. CHARGER_COMME_FICHIER(DOSSIER/X)
+   b. CHARGER_COMME_DOSSIER(DOSSIER/X)
 
-NODE_MODULES_PATHS(START)
+CHEMINS_NODE_MODULES(DEBUT)
 
-1. let PARTS = path split(START)
-2. let I = count of PARTS - 1
-3. let DIRS = []
-4. while I >= 0,
-   a. if PARTS[I] = "node_modules" CONTINUE
-   b. DIR = path join(PARTS[0 .. I] + "node_modules")
+1. soit SEGMENTS = separation_chemin(DEBUT)
+2. soit I = nombre de SEGMENTS - 1
+3. soit DOSSIERS = []
+4. tant que I >= 0,
+   a. si SEGMENTS[I] = "node_modules" CONTINUE
+   b. DOSSIER = concaténation_chemin(SEGMENTS[0 .. I] + "node_modules")
    c. DIRS = DIRS + DIR
    d. let I = I - 1
 5. return DIRS
