@@ -130,16 +130,16 @@ CHARGER_INDEX(X)
 CHARGER_COMME_DOSSIER(X)
 
 1. Si X/package.json est un fichier,
-   a. Parse X/package.json, and look for "main" field.
-   b. let M = X + (json main field)
-   c. LOAD_AS_FILE(M)
-   d. LOAD_INDEX(M)
-2. LOAD_INDEX(X)
+   a. Parser X/package.json, et chercher un champ "main".
+   b. soit M = X + (contenu du champ json main)
+   c. CHARGER_COMME_FICHIER(M)
+   d. CHARGER_INDEX(M)
+2. CHARGER_INDEX(X)
 
-LOAD_NODE_MODULES(X, START)
+CHARGER_MODULES_NODE(X, DEBUT)
 
-1. let DIRS=NODE_MODULES_PATHS(START)
-2. for each DIR in DIRS:
+1. soit DOSSIERS=CHEMINS_NODE_MODULES(DEBUT)
+2. pour chaque DOSSIER de DOSSIERS :
    a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
 
