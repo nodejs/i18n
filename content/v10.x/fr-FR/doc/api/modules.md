@@ -70,11 +70,11 @@ Parce que `module` expose une propriété `filename` (normalement équivalente �
 
 <!-- type=misc -->
 
-The semantics of Node.js's `require()` function were designed to be general enough to support a number of reasonable directory structures. Package manager programs such as `dpkg`, `rpm`, and `npm` will hopefully find it possible to build native packages from Node.js modules without modification.
+La sémantique de la fonction `require()` de Node.js a été conçue de façon à être assez générale pour supporter plusieurs types raisonnables d'arborescence de répertoires. Nous espérons que les programmes de gestion de paquets tels que `dpkg`, `rpm`, et `npm` seront en mesure de générer des paquets natifs à partir de modules Node.js sans modification.
 
-Below we give a suggested directory structure that could work:
+Ci-dessous une suggestion d'arborescence de répertoire qui pourrait fonctionner :
 
-Let's say that we wanted to have the folder at `/usr/lib/node/<some-package>/<some-version>` hold the contents of a specific version of a package.
+Disons que nous voudrions que le dossier situé à `/usr/lib/node/<some-package>/<some-version>` contienne une version spécifique d'un paquet.
 
 Packages can depend on one another. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
 
