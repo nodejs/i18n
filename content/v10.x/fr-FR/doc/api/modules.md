@@ -91,13 +91,13 @@ Quand le code dans le paquet `foo` appellera `require('bar')`, il obtiendra la v
 
 De plus, pour rendre le processus de résolution de module encore plus optimal, plutôt que de placer directement les packets dans `/usr/lib/node`, nous pourrions les mettre dans `/usr/lib/node_modules/<name>/<version>`. Ainsi Node.js ne perdra pas de temps à aller chercher les dépendances manquantes dans `/usr/node_modules` ou `/node_modules`.
 
-Pour que les modules soient disponibles pour le REPL de Node.js, il pourrait également être utile d'ajouter le dossier `/usr/lib/node_modules` à la variable d'environnement `$NODE_PATH`. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Pour que les modules soient disponibles pour le REPL de Node.js, il pourrait également être utile d'ajouter le dossier `/usr/lib/node_modules` à la variable d'environnement `$NODE_PATH`. Comme les recherches de modules utilisant les dossiers `node_modules` sont toutes relatives, et basées sur le chemin d'accès réels des fichiers appelant `require()`, les paquets eux-mêmes peuvent se trouver n'importe où.
 
-## All Together...
+## En assemblant les pièces...
 
 <!-- type=misc -->
 
-To get the exact filename that will be loaded when `require()` is called, use the `require.resolve()` function.
+Pour obtenir le nom de fichier exact qui sera chargé lorsque `require()` est appelée, utilisez la fonction `require.resolve()`.
 
 Putting together all of the above, here is the high-level algorithm in pseudocode of what `require.resolve()` does:
 
