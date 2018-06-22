@@ -76,16 +76,16 @@ Ci-dessous une suggestion d'arborescence de répertoire qui pourrait fonctionner
 
 Disons que nous voudrions que le dossier situé à `/usr/lib/node/<some-package>/<some-version>` contienne une version spécifique d'un paquet.
 
-Packages can depend on one another. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
+Les paquets peuvent dépendre les uns des autres. Afin d’installer le paquet `foo`, il peut être nécessaire d’installer une version spécifique du paquet `bar`. Le paquet `bar` peut lui-même avoir des dépendances, et dans certains cas, elles pourraient même entrer en collision ou former des cycles de dépendances.
 
-Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
+Puisque Node.js vérifie le `chemin d'accès réel` de tous les modules qu'il charge (autrement dit, résoud les liens symboliques), puis cherche leurs dépendances dans le dossier `node_modules` comme décrit [ici](#modules_loading_from_node_modules_folders), ce cas est très simple à résoudre avec l'architecture suivante :
 
-* `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` package, version 1.2.3.
-* `/usr/lib/node/bar/4.3.2/` - Contents of the `bar` package that `foo` depends on.
-* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Symbolic link to `/usr/lib/node/bar/4.3.2/`.
-* `/usr/lib/node/bar/4.3.2/node_modules/*` - Symbolic links to the packages that `bar` depends on.
+* `/usr/lib/node/foo/1.2.3/` - contenu du paquet `foo`, version 1.2.3.
+* `/usr/lib/node/bar/4.3.2/` - contenu du paquet `bar` dont `foo` dépend.
+* `/usr/lib/node/foo/1.2.3/node_modules/bar` - lien symbolique vers `/usr/lib/node/bar/4.3.2/`.
+* `/usr/lib/node/bar/4.3.2/node_modules/*` - liens symboliques vers les paquets dont `bar` dépend.
 
-Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
+Ainsi, même si un cycle est formé, ou s’il existe des conflits de dépendances, chaque module sera en mesure d’obtenir une version de sa dépendance qu’il pourra utiliser.
 
 When the code in the `foo` package does `require('bar')`, it will get the version that is symlinked into `/usr/lib/node/foo/1.2.3/node_modules/bar`. Then, when the code in the `bar` package calls `require('quux')`, it'll get the version that is symlinked into `/usr/lib/node/bar/4.3.2/node_modules/quux`.
 
