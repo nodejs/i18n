@@ -104,17 +104,17 @@ En rassemblant tout ce qui a été dit précédemment, voici l'algorithme géné
 ```txt
 require(X) depuis le module situé au chemin d'accès Y
 1. Si X est un module de la librairie de base,
-   a. return the core module
-   b. STOP
-2. If X begins with '/'
-   a. set Y to be the filesystem root
-3. If X begins with './' or '/' or '../'
-   a. LOAD_AS_FILE(Y + X)
-   b. LOAD_AS_DIRECTORY(Y + X)
-4. LOAD_NODE_MODULES(X, dirname(Y))
-5. THROW "not found"
+   a. retourner le module de la biliothèque de base
+   b. ARRET
+2. Si X commence par '/'
+   a. assigner à Y une valeur pointant vers la racine du système de fichiers
+3. Si X commence par './' ou '/' ou '../'
+   a. CHARGER_COMME_FICHIER(Y + X)
+   b. CHARGER_COMME_DOSSIER(Y + X)
+4. CHARGER_MODULES_NODE(X, nom_de_dossier(Y))
+5. LEVER ERREUR "non trouvé"
 
-LOAD_AS_FILE(X)
+CHARGER_COMME_FICHIER(X)
 
 1. If X is a file, load X as JavaScript text.  STOP
 2. If X.js is a file, load X.js as JavaScript text.  STOP
