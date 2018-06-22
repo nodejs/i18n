@@ -116,20 +116,20 @@ require(X) depuis le module situé au chemin d'accès Y
 
 CHARGER_COMME_FICHIER(X)
 
-1. If X is a file, load X as JavaScript text.  STOP
-2. If X.js is a file, load X.js as JavaScript text.  STOP
-3. If X.json is a file, parse X.json to a JavaScript Object.  STOP
-4. If X.node is a file, load X.node as binary addon.  STOP
+1. Si X est un fichier, charger X comme texte JavaScript.  ARRET
+2. Si X.js est un fichier, charger X.js comme texte JavaScript.  ARRET
+3. Si X.json est un fichier, parser X.json vers un Objet JavaScript.  ARRET
+4. Si X.node est un fichier, charger X.node comme une extension binaire.  ARRET
 
-LOAD_INDEX(X)
+CHARGER_INDEX(X)
 
-1. If X/index.js is a file, load X/index.js as JavaScript text.  STOP
-2. If X/index.json is a file, parse X/index.json to a JavaScript object. STOP
-3. If X/index.node is a file, load X/index.node as binary addon.  STOP
+1. Si X/index.js est un fichier, charger X/index.js comme texte JavaScript.  ARRET
+2. Si X/index.json est un fichier, parser X/index.json vers un Objet JavaScript. ARRET
+3. Si X/index.node est un fichier, charger X/index.node comme une extension binaire.  STOP
 
-LOAD_AS_DIRECTORY(X)
+CHARGER_COMME_DOSSIER(X)
 
-1. If X/package.json is a file,
+1. Si X/package.json est un fichier,
    a. Parse X/package.json, and look for "main" field.
    b. let M = X + (json main field)
    c. LOAD_AS_FILE(M)
