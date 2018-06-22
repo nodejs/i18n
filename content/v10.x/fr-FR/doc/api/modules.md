@@ -25,36 +25,36 @@ exports.aire = (r) => PI * r ** 2;
 exports.circonference = (r) => 2 * PI * r;
 ```
 
-Le module `cercle.js` a exporté les fonctions `aire()` et `circonference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+Le module `cercle.js` a exporté les fonctions `aire()` et `circonference()`. Fonctions et objets sont ajoutés à la racine d’un module en ajoutant des propriétés à l’objet spécial `exports`.
 
-Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
+Les variables locales au module seront privées, car le module est enveloppé dans une fonction par Node.js (voir [module wrapper](#modules_the_module_wrapper)). Dans cet exemple, la variable `PI` est une variable privée de `cercle.js`.
 
-The `module.exports` property can be assigned a new value (such as a function or object).
+Il est possible d'assigner une nouvelle valeur à `module.exports` (telle qu'une fonction ou un objet).
 
-Below, `bar.js` makes use of the `square` module, which exports a Square class:
+Ci-dessous, `bar.js` utilise le module `carré`, qui exporte une classe Carré :
 
 ```js
-const Square = require('./square.js');
-const mySquare = new Square(2);
-console.log(`The area of mySquare is ${mySquare.area()}`);
+const Carré = require('./carré.js');
+const monCarré = new Carré(2);
+console.log(`L'aire de monCarré est ${monCarré.aire()}`);
 ```
 
-The `square` module is defined in `square.js`:
+Le module `carré` est défini dans le fichier `carré.js` :
 
 ```js
-// assigning to exports will not modify module, must use module.exports
-module.exports = class Square {
-  constructor(width) {
-    this.width = width;
+// assigner à exports directement ne modifierait pas module, il est nécessaire de passer par module.exports
+module.exports = class Carré{
+  constructor(longueur) {
+    this.longueur = longueur;
   }
 
-  area() {
-    return this.width ** 2;
+  aire() {
+    return this.longueur ** 2;
   }
 };
 ```
 
-The module system is implemented in the `require('module')` module.
+Le système de module est implémenté dans le module `require('module')`.
 
 ## Accessing the main module
 
