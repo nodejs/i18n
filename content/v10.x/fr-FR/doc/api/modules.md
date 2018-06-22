@@ -2,30 +2,30 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilité: 2 - stable
 
 <!--name=module-->
 
-In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
+Dans le système de module de Node.js, chaque fichier est traité comme un module séparé. Par exemple, considérez un fichier nommé `foo.js` :
 
 ```js
-const circle = require('./circle.js');
-console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
+const cercle = require('./cercle.js');
+console.log(`L'aire d'un cercle de rayon 4 est ${cercle.aire(4)}`);
 ```
 
-On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
+Sur la première ligne, `foo.js` charge le module `cercle.js` qui se trouve dans le même répertoire que `foo.js`.
 
-Here are the contents of `circle.js`:
+Voici le contenu de `cercle.js` :
 
 ```js
 const { PI } = Math;
 
-exports.area = (r) => PI * r ** 2;
+exports.aire = (r) => PI * r ** 2;
 
-exports.circumference = (r) => 2 * PI * r;
+exports.circonference = (r) => 2 * PI * r;
 ```
 
-The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+Le module `cercle.js` a exporté les fonctions `aire()` et `circonference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
 
 Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
 
