@@ -99,11 +99,11 @@ Pour que les modules soient disponibles pour le REPL de Node.js, il pourrait ég
 
 Pour obtenir le nom de fichier exact qui sera chargé lorsque `require()` est appelée, utilisez la fonction `require.resolve()`.
 
-Putting together all of the above, here is the high-level algorithm in pseudocode of what `require.resolve()` does:
+En rassemblant tout ce qui a été dit précédemment, voici l'algorithme général, en pseudocode, de ce que fait `require.resolve()` :
 
 ```txt
-require(X) from module at path Y
-1. If X is a core module,
+require(X) depuis le module situé au chemin d'accès Y
+1. Si X est un module de la librairie de base,
    a. return the core module
    b. STOP
 2. If X begins with '/'
