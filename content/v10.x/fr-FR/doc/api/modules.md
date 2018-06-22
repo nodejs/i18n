@@ -188,55 +188,55 @@ Les modules de la bibliothèque de base sont toujours chargés en priorité si l
 
 <!--type=misc-->
 
-When there are circular `require()` calls, a module might not have finished executing when it is returned.
+Lorsque se produisent des appels circulaires à `require()`, un module peut ne pas avoir fini son exécution au moment où il est retourné.
 
-Consider this situation:
+Considérez cette situation :
 
-`a.js`:
+`a.js` :
 
 ```js
-console.log('a starting');
+console.log('démarrage de a');
 exports.done = false;
 const b = require('./b.js');
-console.log('in a, b.done = %j', b.done);
+console.log('en a, b.done = %j', b.done);
 exports.done = true;
-console.log('a done');
+console.log('a terminé');
 ```
 
-`b.js`:
+`b.js` :
 
 ```js
-console.log('b starting');
+console.log('démarrage de b');
 exports.done = false;
 const a = require('./a.js');
-console.log('in b, a.done = %j', a.done);
+console.log('en b, a.done = %j', a.done);
 exports.done = true;
-console.log('b done');
+console.log('b terminé');
 ```
 
 `main.js`:
 
 ```js
-console.log('main starting');
+console.log('démarrage de main');
 const a = require('./a.js');
 const b = require('./b.js');
-console.log('in main, a.done = %j, b.done = %j', a.done, b.done);
+console.log('en main, a.done = %j, b.done = %j', a.done, b.done);
 ```
 
-When `main.js` loads `a.js`, then `a.js` in turn loads `b.js`. At that point, `b.js` tries to load `a.js`. In order to prevent an infinite loop, an **unfinished copy** of the `a.js` exports object is returned to the `b.js` module. `b.js` then finishes loading, and its `exports` object is provided to the `a.js` module.
+Lorsque `main.js` charge `a.js`, alors `a.js` charge à son tour `b.js`. Arrrivé là, `b.js` essaie de charger `a.js`. Dans le but d'éviter une boucle infinie, une **copie non-terminée** de l'objet exports de `a.js` est retournée au module `b.js`. `b.js` finit alors son chargement, et son objet `exports` est fourni au module `a.js`.
 
-By the time `main.js` has loaded both modules, they're both finished. The output of this program would thus be:
+Lorsque `main.js` a chargé les deux modules, ils sont tous deux terminés. La sortie de ce programme serait donc :
 
 ```txt
 $ node main.js
-main starting
-a starting
-b starting
-in b, a.done = false
-b done
-in a, b.done = true
-a done
-in main, a.done = true, b.done = true
+démarrage de main
+démarrage de a
+démarrage de b
+en b, a.done = false
+b terminé
+en a, b.done = true
+a terminé
+en main, a.done = true, b.done = true
 ```
 
 Careful planning is required to allow cyclic module dependencies to work correctly within an application.
