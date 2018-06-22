@@ -103,7 +103,7 @@ En rassemblant tout ce qui a été dit précédemment, voici l'algorithme géné
 
 ```txt
 require(X) depuis le module situé au chemin d'accès Y
-1. Si X est un module de la librairie de base,
+1. Si X est un module de la bibliothèque de base,
    a. retourner le module de la biliothèque de base
    b. ARRET
 2. Si X commence par '/'
@@ -151,16 +151,16 @@ CHEMINS_NODE_MODULES(DEBUT)
 4. tant que I >= 0,
    a. si SEGMENTS[I] = "node_modules" CONTINUE
    b. DOSSIER = concaténation_chemin(SEGMENTS[0 .. I] + "node_modules")
-   c. DIRS = DIRS + DIR
-   d. let I = I - 1
-5. return DIRS
+   c. DOSSIERS = DOSSIERS + DOSSIER
+   d. soit I = I - 1
+5. retourner DOSSIERS
 ```
 
-## Caching
+## Cache
 
 <!--type=misc-->
 
-Modules are cached after the first time they are loaded. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+Les modules sont mis en cache après leur premier chargement. Cela signifie (entre autres choses) que chaque appel à `require('foo')` recevra l'exact même objet, si le chemin résolu pointe vers le même fichier.
 
 Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
