@@ -27,9 +27,9 @@ added: v0.1.21
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
-A subclass of `Error` that indicates the failure of an assertion.
+Une sous-classe d' `Error` qui indique l’échec d’une assertion.
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+Toutes les instances contiennent les propriétés héritées de `Error` (`message` et `name`) ainsi que :
 
 * `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
 * `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
@@ -40,14 +40,14 @@ All instances contain the built-in `Error` properties (`message` and `name`) and
 ```js
 const assert = require('assert');
 
-// Generate an AssertionError to compare the error message later:
+// Génère une AssertionError afin de comparer le message d'erreur plus tard:
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Verify error output:
+// Vérifier l'output du message:
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode
+## Mode strict
 
 <!-- YAML
 added: v9.9.0
@@ -76,17 +76,17 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
+En utilisant le `mode strict`, n'importe qu'elle fonction `assert` va utiliser l'égalité présente dans le mode strict de la fonction. Donc [`assert.deepEqual()`][] va, par exemple, fonctionner de la même manière que [`assert.deepStrictEqual()`][].
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
+De plus, les messages d'erreur impliquant des objets produisent un diff plutôt que d'afficher les deux objets. Ce n'est pas le cas dans le mode legacy.
 
-It can be accessed using:
+On peut y accéder en utilisant :
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+Exemple de diff:
 
 ```js
 const assert = require('assert').strict;
@@ -166,7 +166,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Mode strict**
 
 An alias of [`assert.deepStrictEqual()`][].
 
@@ -478,7 +478,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Mode strict**
 
 An alias of [`assert.strictEqual()`][].
 
@@ -658,7 +658,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Mode strict**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
@@ -759,7 +759,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Mode strict**
 
 An alias of [`assert.notStrictEqual()`][].
 
