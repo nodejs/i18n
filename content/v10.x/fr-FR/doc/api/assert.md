@@ -121,23 +121,23 @@ On peut y accéder en utilisant :
 const assert = require('assert');
 ```
 
-Il est recommandé d’utiliser le [de] [`mode strict`] plutôt que la [Comparaison d’égalité abstraite](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) qui peut souvent avoir des résultats surprenants. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Il est recommandé d’utiliser le [de] [`mode strict`] plutôt que la [Comparaison d’égalité abstraite](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) qui peut souvent avoir des résultats surprenants. C’est particulièrement vrai pour [`assert.deepEqual()`] [], où des règles de comparaison sont laxistes :
 
 ```js
-// WARNING: This does not throw an AssertionError!
+// ATTENTION: Ceci ne soulève pas d'AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-## assert(value[, message])
+## assert(valeur[, message])
 
 <!-- YAML
 added: v0.5.9
 -->
 
-* `value` {any}
+* `valeur` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Un alias de [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -168,11 +168,11 @@ changes:
 
 **Mode strict**
 
-An alias of [`assert.deepStrictEqual()`][].
+Un alias de [`assert.ok()`][].
 
 **Mode Legacy**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> Stabilité : 0 - obsolète : utilisez [`emitter.listenerCount()`] [] à la place.
 
 Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
