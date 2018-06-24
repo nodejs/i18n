@@ -1,12 +1,12 @@
-# File System
+# Sistema de Arquivos
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 <!--name=fs-->
 
-The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
+O módulo `fs` fornece uma API para interagir com o sistema de arquivos, através de uma modelagem bem próxima das funções POSIX.
 
 Para utilizar este módulo:
 
@@ -14,29 +14,29 @@ Para utilizar este módulo:
 const fs = require('fs');
 ```
 
-All file system operations have synchronous and asynchronous forms.
+Todas as operações de sistema de arquivos têm formas síncronas e assíncronas.
 
-The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+A forma assíncrona sempre leva uma função de conclusão (frequentemente chamado "callback") como seu último argumento. Os argumentos passados para função de conclusão dependem do método, mas o primeiro argumento é sempre reservado para uma exceção. Se a operação foi concluída com êxito, então, o primeiro argumento será `null` ou `undefined`.
 
 ```js
 const fs = require('fs');
 
 fs.unlink('/tmp/hello', (err) => {
   if (err) throw err;
-  console.log('successfully deleted /tmp/hello');
+  console.log('/tmp/hello deletado com sucesso');
 });
 ```
 
-Exceptions that occur using synchronous operations are thrown immediately and may be handled using `try`/`catch`, or may be allowed to bubble up.
+Exceções que ocorrem usando operações síncronas são lançadas imediatamente e podem ser manipuladas usando `try`/`catch`, ou podem propagar para escopos superiores.
 
 ```js
 const fs = require('fs');
 
 try {
   fs.unlinkSync('/tmp/hello');
-  console.log('successfully deleted /tmp/hello');
+  console.log('/tmp/hello deletado com sucesso');
 } catch (err) {
-  // handle the error
+  // tratamento de erro
 }
 ```
 
