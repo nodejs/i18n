@@ -1,37 +1,37 @@
-@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
+@// NB(chrisdickinson): Если вы перемещаете этот файл, не забудьте обновить @// tools/doc/html.js до нового расположения файла.
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [О документации](documentation.html)
+* [Примеры использования](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
+* [Тестирование утверждениями](assert.html)
 * [Async Hooks](async_hooks.html)
-* [Buffer](buffer.html)
+* [Буфер](buffer.html)
 * [C++ Addons](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
+* [Дочерние процессы](child_process.html)
 * [Cluster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
-* [Debugger](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [Отладчик](debugger.html)
+* [Устаревшие API](deprecations.html)
 * [DNS](dns.html)
 * [Domain](domain.html)
-* [ECMAScript Modules](esm.html)
-* [Errors](errors.html)
+* [Модули ECMAScript](esm.html)
+* [Ошибки](errors.html)
 * [Events](events.html)
-* [File System](fs.html)
+* [Файловая система](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
 * [HTTPS](https.html)
 * [Inspector](inspector.html)
-* [Internationalization](intl.html)
-* [Modules](modules.html)
+* [Интернационализация](intl.html)
+* [Модули](modules.html)
 * [Net](net.html)
 * [OS](os.html)
 * [Path](path.html)
@@ -50,11 +50,11 @@
 * [UDP/Datagram](dgram.html)
 * [URL](url.html)
 * [Utilities](util.html)
-* [V8](v8.html)
+* [Виртуальная машина V8](v8.html)
 * [VM](vm.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](https://groups.google.com/group/nodejs)
+* [Список рассылки](https://groups.google.com/group/nodejs)
