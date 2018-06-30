@@ -1,4 +1,4 @@
-# C++ Addons
+# إضافات C++
 
 <!--introduced_in=v0.10.0-->
 
@@ -18,7 +18,7 @@ At the moment, the method for implementing Addons is rather complicated, involvi
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## Hello world
+## مرحبا بالعالم
 
 This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
@@ -68,7 +68,7 @@ The `module_name` must match the filename of the final binary (excluding the `.n
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
-### Building
+### بناء
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
@@ -177,7 +177,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## أمثلة على الإضافة
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
@@ -275,7 +275,7 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### معاودة الاتصال
 
 It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
 
