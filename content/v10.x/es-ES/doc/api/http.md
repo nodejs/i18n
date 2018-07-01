@@ -337,7 +337,7 @@ Emitido cuando el servidor envía una respuesta HTTP '100 Continue', normalmente
 added: v10.0.0
 -->
 
-Emitido cuando el servidor envía una respuesta 1xx (excluyendo 101 Upgrade). This event is emitted with a callback containing an object with a status code.
+Emitido cuando el servidor envía una respuesta 1xx (excluyendo 101 Upgrade). Este evento es emitido con un callback conteniendo un objeto con un código de estado HTTP.
 
 ```js
 const http = require('http');
@@ -345,7 +345,7 @@ const http = require('http');
 const options = {
   hostname: '127.0.0.1',
   port: 8080,
-  path: '/length_request'
+  path: '/longitud_peticion'
 };
 
 // Make a request
@@ -353,7 +353,7 @@ const req = http.request(options);
 req.end();
 
 req.on('information', (res) => {
-  console.log(`Got information prior to main response: ${res.statusCode}`);
+  console.log(`Recibida información antes de la respuesta principal : ${res.statusCode}`);
 });
 ```
 
