@@ -244,17 +244,17 @@ Si no se incluye código para manejar la [`'response'`][], entonces la respuesta
 
 Node.js no comprueba si el Content-Length y la longitud del objeto body transmitido son iguales o no.
 
-The request implements the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+La petición implementa la interfaz [Writable Stream](stream.html#stream_class_stream_writable). Esto es un [`EventEmitter`][] con los siguientes eventos:
 
-### Event: 'abort'
+### Evento: 'abort'
 
 <!-- YAML
 added: v1.4.1
 -->
 
-Emitted when the request has been aborted by the client. This event is only emitted on the first call to `abort()`.
+Emitido cuando la petición ha sido cancelada por el cliente. Este evento solo es emitido en la primer llamada a `abort()`.
 
-### Event: 'connect'
+### Evento: 'connect'
 
 <!-- YAML
 added: v0.7.0
@@ -264,7 +264,7 @@ added: v0.7.0
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with a `CONNECT` method. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Emitido cada vez que el servidor responde a una petición con el método `CONNECT`. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
 
 A client and server pair demonstrating how to listen for the `'connect'` event:
 
