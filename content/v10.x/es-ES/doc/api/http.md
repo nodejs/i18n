@@ -264,22 +264,22 @@ added: v0.7.0
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitido cada vez que el servidor responde a una petición con el método `CONNECT`. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Emitido cada vez que el servidor responde a una petición con el método `CONNECT`. Si este evento no está siendo atendido, los clientes recibiendo un método `CONNECT` cerrarán sus conexiones.
 
-A client and server pair demonstrating how to listen for the `'connect'` event:
+Un cliente y un servidor demostrando cómo atender el evento `'connect'`:
 
 ```js
 const http = require('http');
 const net = require('net');
 const url = require('url');
 
-// Create an HTTP tunneling proxy
+// Crea un proxy túnel HTTP
 const proxy = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('okay');
 });
 proxy.on('connect', (req, cltSocket, head) => {
-  // connect to an origin server
+  // conectar a un servidor de origen
   const srvUrl = url.parse(`http://${req.url}`);
   const srvSocket = net.connect(srvUrl.port, srvUrl.hostname, () => {
     cltSocket.write('HTTP/1.1 200 Connection Established\r\n' +
@@ -291,10 +291,10 @@ proxy.on('connect', (req, cltSocket, head) => {
   });
 });
 
-// now that proxy is running
+// ahora el proxy está corriendo
 proxy.listen(1337, '127.0.0.1', () => {
 
-  // make a request to a tunneling proxy
+  // hacer una petición al túnel proxy
   const options = {
     port: 1337,
     hostname: '127.0.0.1',
@@ -306,9 +306,9 @@ proxy.listen(1337, '127.0.0.1', () => {
   req.end();
 
   req.on('connect', (res, socket, head) => {
-    console.log('got connected!');
+    console.log('conectado!');
 
-    // make a request over an HTTP tunnel
+    // hacer una petición a través de un túnel HTTP
     socket.write('GET / HTTP/1.1\r\n' +
                  'Host: www.google.com:80\r\n' +
                  'Connection: close\r\n' +
@@ -323,21 +323,21 @@ proxy.listen(1337, '127.0.0.1', () => {
 });
 ```
 
-### Event: 'continue'
+### Evento: 'continue'
 
 <!-- YAML
 added: v0.3.2
 -->
 
-Emitted when the server sends a '100 Continue' HTTP response, usually because the request contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
+Emitido cuando el servidor envía una respuesta HTTP '100 Continue', normalmente porque la petición contenía 'Expect: 100-continue'. Esta es una instrucción en que el cliente debería enviar el objeto body de la petición.
 
-### Event: 'information'
+### Evento: 'information'
 
 <!-- YAML
 added: v10.0.0
 -->
 
-Emitted when the server sends a 1xx response (excluding 101 Upgrade). This event is emitted with a callback containing an object with a status code.
+Emitido cuando el servidor envía una respuesta 1xx (excluyendo 101 Upgrade). This event is emitted with a callback containing an object with a status code.
 
 ```js
 const http = require('http');
