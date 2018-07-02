@@ -4,11 +4,11 @@
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+O objetivo desta documentação é explicar de modo compreensível a API do Node.js, tanto do ponto de vista de referência quanto do ponto de vista conceitual. Cada seção descreve um módulo embutido ou um conceito de alto nível.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Quando necessário, propriedades de tipos, métodos de argumentos e os argumentos fornecidos para manipuladores de evento serão detalhados num subtópico, abaixo do tópico de cabeçalho.
 
-## Contributing
+## Contribuições
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
