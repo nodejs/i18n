@@ -65,11 +65,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-Nos processos onerosos, o programador é *fortemente encorajado* a usar as versões assíncronas dessas chamadas. The synchronous versions will block the entire process until they complete — halting all connections.
+Nos processos onerosos, o programador é *fortemente encorajado* a usar as versões assíncronas dessas chamadas. As versões síncronas bloquearão todo o processo até que se completem — travando todas as conexões.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Embora não seja recomendado, a maioria dos funções de sistema de arquivos permitem que o argumento da função de conclusão (callback) seja omitido, neste caso uma função de conclusão padrão é usada para relançar os erros. Para obter um rastreamento para a chamada original, defina a variável de ambiente `NODE_DEBUG`:
 
-Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
+Omitir a função de conclusão em funções assíncronas de sistema de arquivos é obsoleto e pode resultar em um erro que será lançado no futuro.
 
 ```txt
 $ cat script.js
