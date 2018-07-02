@@ -10,7 +10,7 @@ Quando necessário, propriedades de tipos, métodos de argumentos e os argumento
 
 ## Contribuições
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Caso encontre um erro nesta documentação, por favor, abra uma issue ou então veja o guia de contribuição para instruções de como submeter um patch de correção.
 
 Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
