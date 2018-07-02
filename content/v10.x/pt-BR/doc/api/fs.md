@@ -40,12 +40,12 @@ try {
 }
 ```
 
-Note que não existe nenhuma garantia de ordenação ao usar métodos assíncronos. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
+Note que não existe nenhuma garantia de ordenação ao usar métodos assíncronos. Então, o código a seguir é propenso a erros, porque a operação `fs.stat()` pode ser concluída antes da operação `fs.rename()`.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
   if (err) throw err;
-  console.log('renamed complete');
+  console.log('renomeação concluída');
 });
 fs.stat('/tmp/world', (err, stats) => {
   if (err) throw err;
@@ -53,7 +53,7 @@ fs.stat('/tmp/world', (err, stats) => {
 });
 ```
 
-To correctly order the operations, move the `fs.stat()` call into the callback of the `fs.rename()` operation:
+Para ordenar corretamente as operações, mova a chamada `fs.stat()` para a função de conclusão da operação `fs.rename()`:
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -65,7 +65,7 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Nos processos onerosos, o programador é *fortemente encorajado* a usar as versões assíncronas dessas chamadas. The synchronous versions will block the entire process until they complete — halting all connections.
 
 While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
 
