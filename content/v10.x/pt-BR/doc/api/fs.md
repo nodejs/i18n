@@ -40,7 +40,7 @@ try {
 }
 ```
 
-Note that there is no guaranteed ordering when using asynchronous methods. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
+Note que não existe nenhuma garantia de ordenação ao usar métodos assíncronos. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
