@@ -82,7 +82,7 @@ $ env NODE_DEBUG=fs node script.js
 fs.js:88
         throw backtrace;
         ^
-Error: EISDIR: illegal operation on a directory, read
+Error: EISDIR: operação ilegal em um diretório, leitura
     <stack trace.>
 ```
 
