@@ -18,14 +18,12 @@ Cada arquivo é gerado com base num arquivo `.md` correspondente que fica no dir
 
 <!--type=misc-->
 
-Por toda a documentação há indicadores de estabilidade de uma seção. A API do Node.js passa por mudanças, e conforme amadurece, certas partes são mais confiáveis que outras. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+Por toda a documentação há indicadores de estabilidade de uma seção. A API do Node.js passa por mudanças, e conforme amadurece, certas partes são mais confiáveis que outras. Algumas já foram bastante testadas, e são tão usadas, que dificilmente mudarão. Outras são recentes e experimentais, ou são tidas como incertas e podem ser re-desenhadas.
 
-The stability indices are as follows:
+Os índices de estabilidade são os seguintes:
 
 ```txt
-Stability: 0 - Deprecated. This feature is known to be problematic, and changes
-may be planned. Do not rely on it. Use of the feature may cause warnings to be
-emitted. Backwards compatibility across major versions should not be expected.
+Estabilidade: 0 - Descontinuado. Essa feature é conhecida apresentar problemas, e mudanças podem ser planejadas. Não confie nela. O uso dessa feature pode emitir alertas. Backwards compatibility across major versions should not be expected.
 ```
 
 ```txt
