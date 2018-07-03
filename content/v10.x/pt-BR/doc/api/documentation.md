@@ -10,15 +10,15 @@ Quando necessário, propriedades de tipos, métodos de argumentos e os argumento
 
 ## Contribuições
 
-Caso encontre um erro nesta documentação, por favor, abra uma issue ou então veja o guia de contribuição para instruções de como submeter um patch de correção.
+Caso encontre um erro nesta documentação, por favor, [abra uma issue](https://github.com/nodejs/node/issues/new) ou então veja [o guia de contribuição](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) para instruções de como submeter um patch de correção.
 
-Cada arquivo é gerado com base num arquivo .md correspondente que fica no diretório: doc/api na estrutura de arquivos do Node.js. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Cada arquivo é gerado com base num arquivo `.md` correspondente que fica no diretório: `doc/api/` na estrutura de arquivos do Node.js. A documentação é gerada usando o programa `tools/doc/generate.js`. Um template HTML está localizado em `template.html`.
 
-## Stability Index
+## Índice de estabilidade
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+Por toda a documentação há indicadores de estabilidade de uma seção. A API do Node.js passa por mudanças, e conforme amadurece, certas partes são mais confiáveis que outras. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
 
 The stability indices are as follows:
 
