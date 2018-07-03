@@ -12,7 +12,7 @@ Quando necessário, propriedades de tipos, métodos de argumentos e os argumento
 
 Caso encontre um erro nesta documentação, por favor, abra uma issue ou então veja o guia de contribuição para instruções de como submeter um patch de correção.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Cada arquivo é gerado com base num arquivo .md correspondente que fica no diretório: doc/api na estrutura de arquivos do Node.js. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
 ## Stability Index
 
