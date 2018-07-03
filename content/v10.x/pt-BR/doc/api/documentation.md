@@ -35,7 +35,7 @@ Features experimentais não estão sujeitas ao modelo de versionamento semântic
 Estabilidade: 2 - Estável. A API foi aprovada. A compatibilidade com o ambiente npm é de alta prioridade, e não será quebrada a menos que seja necessário.
 ```
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+É necessária tomar cuidado no uso de uma feature `Experimental`, particularmente com módulos que podem ser usados como dependência (ou dependência das dependências) de uma aplicação Node.js. Usuários finais podem não estar cientes do uso de uma feature experimental, e podem ocorrer erros inesperados ou mudança de comportamento caso a API seja modificada. Para evitar surpresas desagradáveis, uma feature `Experimental` deve ser marcada com uma linha de comando para habilitá-la explicitamente, ou então poderá emitir um alerta. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## JSON Output
 
