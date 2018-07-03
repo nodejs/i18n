@@ -23,20 +23,16 @@ Por toda a documentação há indicadores de estabilidade de uma seção. A API 
 Os índices de estabilidade são os seguintes:
 
 ```txt
-Estabilidade: 0 - Descontinuado. Essa feature é conhecida apresentar problemas, e mudanças podem ser planejadas. Não confie nela. O uso dessa feature pode emitir alertas. Backwards compatibility across major versions should not be expected.
+Estabilidade: 0 - Descontinuado. Essa feature é conhecida apresentar problemas, e mudanças podem ser planejadas. Não confie nela. O uso dessa feature pode emitir alertas. Não se deve esperar compatibilidade com versões principais mais antigas.
 ```
 
 ```txt
-Stability: 1 - Experimental. This feature is still under active development and
-subject to non-backwards compatible changes, or even removal, in any future
-version. Use of the feature is not recommended in production environments.
-Experimental features are not subject to the Node.js Semantic Versioning model.
+Estabilidade: 1 - Experimental. Essa feature ainda está em desenvolvimento e está sujeita a alterações não compatíveis com versões anteriores, ou até remoção de versões futuras. Não recomendado o uso dessa feature em ambiente de produção.
+Features experimentais não estão sujeitas ao modelo de versionamento semântico do Node.js.
 ```
 
 ```txt
-Stability: 2 - Stable. The API has proven satisfactory. Compatibility with the
-npm ecosystem is a high priority, and will not be broken unless absolutely
-necessary.
+Estabilidade: 2 - Estável. A API foi aprovada. A compatibilidade com o ambiente npm é de alta prioridade, e não será quebrada a menos que seja necessário.
 ```
 
 Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
