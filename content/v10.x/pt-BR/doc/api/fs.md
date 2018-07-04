@@ -40,12 +40,12 @@ try {
 }
 ```
 
-Note that there is no guaranteed ordering when using asynchronous methods. So the following is prone to error because the `fs.stat()` operation may complete before the `fs.rename()` operation.
+Note que não existe nenhuma garantia de ordenação ao usar métodos assíncronos. Então, o código a seguir é propenso a erros, porque a operação `fs.stat()` pode ser concluída antes da operação `fs.rename()`.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
   if (err) throw err;
-  console.log('renamed complete');
+  console.log('renomeação concluída');
 });
 fs.stat('/tmp/world', (err, stats) => {
   if (err) throw err;
@@ -53,7 +53,7 @@ fs.stat('/tmp/world', (err, stats) => {
 });
 ```
 
-To correctly order the operations, move the `fs.stat()` call into the callback of the `fs.rename()` operation:
+Para ordenar corretamente as operações, mova a chamada `fs.stat()` para a função de conclusão da operação `fs.rename()`:
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -65,11 +65,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
+Nos processos onerosos, o programador é *fortemente encorajado* a usar as versões assíncronas dessas chamadas. As versões síncronas bloquearão todo o processo até que se completem — travando todas as conexões.
 
-While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
+Embora não seja recomendado, a maioria dos funções de sistema de arquivos permitem que o argumento da função de conclusão (callback) seja omitido, neste caso uma função de conclusão padrão é usada para relançar os erros. Para obter um rastreamento para a chamada original, defina a variável de ambiente `NODE_DEBUG`:
 
-Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
+Omitir a função de conclusão em funções assíncronas de sistema de arquivos é obsoleto e pode resultar em um erro que será lançado no futuro.
 
 ```txt
 $ cat script.js
@@ -82,7 +82,7 @@ $ env NODE_DEBUG=fs node script.js
 fs.js:88
         throw backtrace;
         ^
-Error: EISDIR: illegal operation on a directory, read
+Error: EISDIR: operação ilegal em um diretório, leitura
     <stack trace.>
 ```
 

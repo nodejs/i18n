@@ -1,49 +1,43 @@
-# About this Documentation
+# Sobre esta documentação
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+O objetivo desta documentação é explicar de modo compreensível a API do Node.js, tanto do ponto de vista de referência quanto do ponto de vista conceitual. Cada seção descreve um módulo embutido ou um conceito de alto nível.
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Quando necessário, propriedades de tipos, métodos de argumentos e os argumentos fornecidos para manipuladores de evento serão detalhados num subtópico, abaixo do tópico de cabeçalho.
 
-## Contributing
+## Contribuições
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Caso encontre um erro nesta documentação, por favor, [abra uma issue](https://github.com/nodejs/node/issues/new) ou então veja [o guia de contribuição](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) para instruções de como submeter um patch de correção.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Cada arquivo é gerado com base num arquivo `.md` correspondente que fica no diretório: `doc/api/` na estrutura de arquivos do Node.js. A documentação é gerada usando o programa `tools/doc/generate.js`. Um template HTML está localizado em `template.html`.
 
-## Stability Index
+## Índice de estabilidade
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+Por toda a documentação há indicadores de estabilidade de uma seção. A API do Node.js passa por mudanças, e conforme amadurece, certas partes são mais confiáveis que outras. Algumas já foram bastante testadas, e são tão usadas, que dificilmente mudarão. Outras são recentes e experimentais, ou são tidas como incertas e podem ser re-desenhadas.
 
-The stability indices are as follows:
+Os índices de estabilidade são os seguintes:
 
 ```txt
-Stability: 0 - Deprecated. This feature is known to be problematic, and changes
-may be planned. Do not rely on it. Use of the feature may cause warnings to be
-emitted. Backwards compatibility across major versions should not be expected.
+Estabilidade: 0 - Descontinuado. Essa feature é conhecida apresentar problemas, e mudanças podem ser planejadas. Não confie nela. O uso dessa feature pode emitir alertas. Não se deve esperar compatibilidade com versões principais mais antigas.
 ```
 
 ```txt
-Stability: 1 - Experimental. This feature is still under active development and
-subject to non-backwards compatible changes, or even removal, in any future
-version. Use of the feature is not recommended in production environments.
-Experimental features are not subject to the Node.js Semantic Versioning model.
+Estabilidade: 1 - Experimental. Essa feature ainda está em desenvolvimento e está sujeita a alterações não compatíveis com versões anteriores, ou até remoção de versões futuras. Não recomendado o uso dessa feature em ambiente de produção.
+Features experimentais não estão sujeitas ao modelo de versionamento semântico do Node.js.
 ```
 
 ```txt
-Stability: 2 - Stable. The API has proven satisfactory. Compatibility with the
-npm ecosystem is a high priority, and will not be broken unless absolutely
-necessary.
+Estabilidade: 2 - Estável. A API foi aprovada. A compatibilidade com o ambiente npm é de alta prioridade, e não será quebrada a menos que seja necessário.
 ```
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+É necessária tomar cuidado no uso de uma feature `Experimental`, particularmente com módulos que podem ser usados como dependência (ou dependência das dependências) de uma aplicação Node.js. Usuários finais podem não estar cientes do uso de uma feature experimental, e podem ocorrer erros inesperados ou mudança de comportamento caso a API seja modificada. Para evitar surpresas desagradáveis, uma feature `Experimental` deve ser marcada com uma linha de comando para habilitá-la explicitamente, ou então poderá emitir um alerta. Por padrão, esses alertas são exibidos num [`stderr`][] e devem ser tratados anexando um listener no evento [`'warning'`][].
 
-## JSON Output
+## Saída de JSON
 
 <!-- YAML
 added: v0.6.12

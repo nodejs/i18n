@@ -66,7 +66,7 @@ Pour un fichier `foo.js`, cette comparaison renverra `true` si le fichier est ex
 
 Parce que `module` expose une propriété `filename` (normalement équivalente à `__filename`), le point d’entrée de l’application courante peut être obtenu en consultant la valeur de `require.main.filename`.
 
-## Addenda : Astuces de Gestionnaire de Paquets
+## Addenda : Astuces pour Gestionnaire de Paquets
 
 <!-- type=misc -->
 

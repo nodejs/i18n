@@ -242,19 +242,19 @@ Durante el evento [`'response'`][], se pueden agregar listeners al objeto de res
 
 Si no se incluye código para manejar la [`'response'`][], entonces la respuesta sera descartada en su totalidad. Sin embargo, en caso de incluir código para manejar [`'response'`][], entonces los datos del objeto de respuesta **deben** ser consumidos ya sea llamando `response.read()` cuando ocurra un evento `'readable'`, o agregando una forma de manipular `'data'`, o llamando al método `.resume()`. Hasta que la data no sea consumida, el evento `'end'` no se va a disparar. También, hasta que la data no sea leída, va a consumir memoria que eventualmente puede desembocar en un error 'process out of memory'.
 
-Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Node.js no comprueba si el Content-Length y la longitud del objeto body transmitido son iguales o no.
 
-The request implements the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+La petición implementa la interfaz [Writable Stream](stream.html#stream_class_stream_writable). Esto es un [`EventEmitter`][] con los siguientes eventos:
 
-### Event: 'abort'
+### Evento: 'abort'
 
 <!-- YAML
 added: v1.4.1
 -->
 
-Emitted when the request has been aborted by the client. This event is only emitted on the first call to `abort()`.
+Emitido cuando la petición ha sido cancelada por el cliente. Este evento solo es emitido en la primer llamada a `abort()`.
 
-### Event: 'connect'
+### Evento: 'connect'
 
 <!-- YAML
 added: v0.7.0
@@ -264,22 +264,22 @@ added: v0.7.0
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with a `CONNECT` method. If this event is not being listened for, clients receiving a `CONNECT` method will have their connections closed.
+Emitido cada vez que el servidor responde a una petición con el método `CONNECT`. Si este evento no está siendo atendido, los clientes recibiendo un método `CONNECT` cerrarán sus conexiones.
 
-A client and server pair demonstrating how to listen for the `'connect'` event:
+Un cliente y un servidor demostrando cómo atender el evento `'connect'`:
 
 ```js
 const http = require('http');
 const net = require('net');
 const url = require('url');
 
-// Create an HTTP tunneling proxy
+// Crea un proxy túnel HTTP
 const proxy = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('okay');
 });
 proxy.on('connect', (req, cltSocket, head) => {
-  // connect to an origin server
+  // conectar a un servidor de origen
   const srvUrl = url.parse(`http://${req.url}`);
   const srvSocket = net.connect(srvUrl.port, srvUrl.hostname, () => {
     cltSocket.write('HTTP/1.1 200 Connection Established\r\n' +
@@ -291,10 +291,10 @@ proxy.on('connect', (req, cltSocket, head) => {
   });
 });
 
-// now that proxy is running
+// ahora el proxy está corriendo
 proxy.listen(1337, '127.0.0.1', () => {
 
-  // make a request to a tunneling proxy
+  // hacer una petición al túnel proxy
   const options = {
     port: 1337,
     hostname: '127.0.0.1',
@@ -306,9 +306,9 @@ proxy.listen(1337, '127.0.0.1', () => {
   req.end();
 
   req.on('connect', (res, socket, head) => {
-    console.log('got connected!');
+    console.log('conectado!');
 
-    // make a request over an HTTP tunnel
+    // hacer una petición a través de un túnel HTTP
     socket.write('GET / HTTP/1.1\r\n' +
                  'Host: www.google.com:80\r\n' +
                  'Connection: close\r\n' +
@@ -323,21 +323,21 @@ proxy.listen(1337, '127.0.0.1', () => {
 });
 ```
 
-### Event: 'continue'
+### Evento: 'continue'
 
 <!-- YAML
 added: v0.3.2
 -->
 
-Emitted when the server sends a '100 Continue' HTTP response, usually because the request contained 'Expect: 100-continue'. This is an instruction that the client should send the request body.
+Emitido cuando el servidor envía una respuesta HTTP '100 Continue', normalmente porque la petición contenía 'Expect: 100-continue'. Esta es una instrucción en que el cliente debería enviar el objeto body de la petición.
 
-### Event: 'information'
+### Evento: 'information'
 
 <!-- YAML
 added: v10.0.0
 -->
 
-Emitted when the server sends a 1xx response (excluding 101 Upgrade). This event is emitted with a callback containing an object with a status code.
+Emitido cuando el servidor envía una respuesta 1xx (excluyendo 101 Upgrade). Este evento es emitido con un callback conteniendo un objeto con un código de estado HTTP.
 
 ```js
 const http = require('http');
@@ -345,7 +345,7 @@ const http = require('http');
 const options = {
   hostname: '127.0.0.1',
   port: 8080,
-  path: '/length_request'
+  path: '/longitud_peticion'
 };
 
 // Make a request
@@ -353,7 +353,7 @@ const req = http.request(options);
 req.end();
 
 req.on('information', (res) => {
-  console.log(`Got information prior to main response: ${res.statusCode}`);
+  console.log(`Recibida información antes de la respuesta principal : ${res.statusCode}`);
 });
 ```
 
