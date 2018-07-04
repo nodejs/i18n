@@ -45,11 +45,11 @@ added: v0.6.12
 
 > Stability: 1 - Experimental
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Todo documento `.html` tem um documento `.json` correspondente, que apresenta as mesmas informações de forma estruturada. Essa é uma feature experimental, adicionada para benefício de IDEs ou outras ferramentas utilitárias para quem deseja fazer coisas através da programação com essa documentação.
 
-## Syscalls and man pages
+## Syscalls e páginas man
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Chamadas de sistema como open(2) e read(2) definem a interface de uso entre programas de usuário e o sistema operacional subjacente. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
 
 Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
 
