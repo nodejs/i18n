@@ -47,10 +47,10 @@ added: v0.6.12
 
 Todo documento `.html` tem um documento `.json` correspondente, que apresenta as mesmas informações de forma estruturada. Essa é uma feature experimental, adicionada para benefício de IDEs ou outras ferramentas utilitárias para quem deseja fazer coisas através da programação com essa documentação.
 
-## Syscalls e páginas man
+## Chamadas de sistema e páginas de manual
 
-Chamadas de sistema como open(2) e read(2) definem a interface de uso entre programas de usuário e o sistema operacional subjacente. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Chamadas de sistema (system calls) como open(2) e read(2) definem a interface de uso entre programas de usuário e o sistema operacional subjacente. Funções Node.js que somente envolvem uma syscall, como [`fs.open()`][], vão documentar isso. O link do documento para sua página correspondente no manual (abreviação de man pages) que descreve como a chamada de sistema funciona.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Algumas chamadas de sistema, como lchown(2), são específicas do BSD. Isso significa que, por exemplo, [`fs.lchown()`][] só funciona no macOS e oustros sistemas BSD semelhantes, e não está disponível no Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+Muitas chamadas de sistema Unix possuem equivalentes no Windows, mas o comportamento pode ser diferente no Windows em relação a Lunix e macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
