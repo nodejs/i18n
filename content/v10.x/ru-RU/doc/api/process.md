@@ -4,27 +4,27 @@
 
 <!-- type=global -->
 
-The `process` object is a `global` that provides information about, and control over, the current Node.js process. As a global, it is always available to Node.js applications without using `require()`.
+Объект `process` является глобальным, который предоставляет информацию и возможность контроля текущего процесса Node.js. Будучи глобальным, он всегда доступен в приложениях Node.js без использования функции `require()`.
 
-## Process Events
+## События процесса
 
-The `process` object is an instance of [`EventEmitter`][].
+Объект `process` является экземпляром класса [`EventEmitter`][].
 
-### Event: 'beforeExit'
+### Событие: 'beforeExit'
 
 <!-- YAML
 added: v0.11.12
 -->
 
-The `'beforeExit'` event is emitted when Node.js empties its event loop and has no additional work to schedule. Normally, the Node.js process will exit when there is no work scheduled, but a listener registered on the `'beforeExit'` event can make asynchronous calls, and thereby cause the Node.js process to continue.
+Событие `'beforeExit'` генерируется, когда Node.js очищает свой цикл событий и никаких дополнительных действий не планируется. Обычно процесс Node.js завершится, когда не запланировано никаких действий, но слушатель, зарегистрированный на событие `'beforeExit'`, может выполнять асинхронные вызовы и таким образом заставлять процесс Node.js продолжать существовать.
 
-The listener callback function is invoked with the value of [`process.exitCode`][] passed as the only argument.
+Слушающая функция обратного вызова вызывается с единственным аргументом [`process.exitCode`][].
 
-The `'beforeExit'` event is *not* emitted for conditions causing explicit termination, such as calling [`process.exit()`][] or uncaught exceptions.
+Событие `'beforeExit'` не *не* генерируется в условиях, явно задающих терминацию процесса, таких как вызов [`process.exit()`][] или неперехваченные исключения.
 
-The `'beforeExit'` should *not* be used as an alternative to the `'exit'` event unless the intention is to schedule additional work.
+Событие `'beforeExit'` *не* должно быть использовано как альтернатива событию `'exit'`, пока не требуется запланировать дополнительные действия на выполнение.
 
-### Event: 'disconnect'
+### Событие: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
