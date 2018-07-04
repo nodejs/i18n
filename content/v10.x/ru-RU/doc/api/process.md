@@ -30,7 +30,7 @@ added: v0.11.12
 added: v0.7.7
 -->
 
-If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'disconnect'` event will be emitted when the IPC channel is closed.
+Если процесс Node.js был порожден с каналом IPC (смотри документацию по [Дочернему процессу](child_process.html) и [Кластеру](cluster.html)), событие `'disconnect'` будет сгенерировано при закрытии канала IPC.
 
 ### Event: 'exit'
 
