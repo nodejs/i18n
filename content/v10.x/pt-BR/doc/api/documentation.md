@@ -53,4 +53,4 @@ Chamadas de sistema (system calls) como open(2) e read(2) definem a interface de
 
 Algumas chamadas de sistema, como lchown(2), são específicas do BSD. Isso significa que, por exemplo, [`fs.lchown()`][] só funciona no macOS e oustros sistemas BSD semelhantes, e não está disponível no Linux.
 
-Muitas chamadas de sistema Unix possuem equivalentes no Windows, mas o comportamento pode ser diferente no Windows em relação a Lunix e macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+Muitas chamadas de sistema Unix possuem equivalentes no Windows, mas o comportamento pode ser diferente no Windows em relação a Lunix e macOS. Um exemplo dessas sutilezas é que às vezes é impossível substituir no Windows uma chamada de sistema Unix, veja [Node issue 4760](https://github.com/nodejs/node/issues/4760).
