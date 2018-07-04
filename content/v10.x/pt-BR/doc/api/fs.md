@@ -88,11 +88,11 @@ Error: EISDIR: operação ilegal em um diretório, leitura
 
 ## File paths
 
-Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
+Muitas `fs` operações aceitam caminhos que podem ser especificados em forma de uma string, a [`Buffer`][], ou um [`URL`][] objeto usando o `file:` protocolo.
 
-String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
+Os caminhos de formulário de string são interpretados como sequências de caracteres UTF-8 que identificam o nome do arquivo absoluto ou relativo. Caminhos relativos serão resolvidos em relação ao diretório de trabalho atual conforme especificado pelo `process.cwd()`.
 
-Example using an absolute path on POSIX:
+Exemplo usando um caminho absoluto em POSIX:
 
 ```js
 const fs = require('fs');
@@ -105,7 +105,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-Example using a relative path on POSIX (relative to `process.cwd()`):
+Exemplo usando um caminho relativo em POSIX (em relação a `process.cwd()`):
 
 ```js
 fs.open('file.txt', 'r', (err, fd) => {
@@ -118,7 +118,7 @@ fs.open('file.txt', 'r', (err, fd) => {
 
 Paths specified using a [`Buffer`][] are useful primarily on certain POSIX operating systems that treat file paths as opaque byte sequences. On such systems, it is possible for a single file path to contain sub-sequences that use multiple character encodings. As with string paths, `Buffer` paths may be relative or absolute:
 
-Example using an absolute path on POSIX:
+Exemplo usando um caminho absoluto em POSIX:
 
 ```js
 fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
