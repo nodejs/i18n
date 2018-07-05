@@ -175,46 +175,38 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `opções` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-    - `protocol` **Default:** `'https:'`
-    - `port` **Default:** `443`
-    - `agent` **Default:** `https.globalAgent`
+- `opções` {Object | string | URL} Aceita todas as `options` de [`http.request()`][], com algumas diferenças nos valores padrões: 
+    - `protocolo` **Padrão:** `'https:'`
+    - `porta` **Padrão:** `443`
+    - `agente` **Padrão:** `https.globalAgent`
 - `callback` {Function}
 
-Makes a request to a secure web server.
+Faz uma requesição para um web server seguro.
 
-The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+As seguintes `opções` adicionais de [`tls.connect()</ 0>][] também são aceitas:
+<code>ca`,`cert`,`cifras`,`clientCertEngine`,`crl`,`dhparam`,`ecdhCurve `, `honorCipherOrder`,`chave`,`senha`,`pfx`,`rejectUnauthorized`, `secureOptions`,`secureProtocol`,`servername`,`sessionIdContext`.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
 
-Example:
+Exemplo:
 
 ```js
 const https = require('https');
 
-const options = {
-  hostname: 'encrypted.google.com',
-  port: 443,
-  path: '/',
-  method: 'GET'
-};
-
-const req = https.request(options, (res) => {
+https.get('https://encrypted.google.com/', (res) => {
   console.log('statusCode:', res.statusCode);
   console.log('headers:', res.headers);
 
   res.on('data', (d) => {
     process.stdout.write(d);
   });
-});
 
-req.on('error', (e) => {
+}).on('error', (e) => {
   console.error(e);
 });
-req.end();
 ```
 
-Example using options from [`tls.connect()`][]:
+Exemplo usando opções do [`tls.connect()`] []:
 
 ```js
 const options = {
@@ -232,9 +224,9 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Alternatively, opt out of connection pooling by not using an [`Agent`][].
+Alternativamente, opt fora do pool de conexão não usando um [`agente`] [].
 
-Example:
+Exemplo:
 
 ```js
 const options = {
@@ -243,9 +235,9 @@ const options = {
   path: '/',
   method: 'GET',
   key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
-  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem'),
-  agent: false
+  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem')
 };
+options.agent = new https.Agent(options);
 
 const req = https.request(options, (res) => {
   // ...
