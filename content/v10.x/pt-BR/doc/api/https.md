@@ -59,9 +59,9 @@ Consulte [`http.Server#setTimeout()`][].
 added: v0.11.2
 -->
 
-- {number} **Default:** `120000` (2 minutes)
+- {number} **Padrão:** `120000` (2 minutos)
 
-See [`http.Server#timeout`][].
+Consulte [`http. Server #timeout`] [].
 
 ### server.keepAliveTimeout
 
@@ -69,20 +69,20 @@ See [`http.Server#timeout`][].
 added: v8.0.0
 -->
 
-- {number} **Default:** `5000` (5 seconds)
+- {number} **Padrão:** `5000` (5 segundos)
 
-See [`http.Server#keepAliveTimeout`][].
+Consulte [`http. Server #keepAliveTimeout`] [].
 
-## https.createServer(\[options\]\[, requestListener\])
+## https.createServer (\[options\]\[, requestListener\])
 
 <!-- YAML
 added: v0.3.4
 -->
 
-- `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
-- `requestListener` {Function} A listener to be added to the `'request'` event.
+- `Opções de` {Object} aceita `Opções` de [`tls.createServer()`] [], [`tls.createSecureContext()`] [] e [`http.createServer()`] [].
+- `requestListener` {Function} Um ouvinte a ser adicionado para o evento `'request'`.
 
-Example:
+Exemplo:
 
 ```js
 // curl -k https://localhost:8000/
@@ -100,7 +100,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-Or
+Ou
 
 ```js
 const https = require('https');
@@ -128,14 +128,14 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
+- `opções` {Object | string | URL} aceita as mesmas `Opções` que [] [`https.request()`], com o `método` sempre definido para `GET`.
 - `callback` {Function}
 
-Like [`http.get()`][] but for HTTPS.
+Como [`http.get()`][] mas para o HTTPS.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`opções` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
 
-Example:
+Exemplo:
 
 ```js
 const https = require('https');
@@ -159,7 +159,7 @@ https.get('https://encrypted.google.com/', (res) => {
 added: v0.5.9
 -->
 
-Global instance of [`https.Agent`][] for all HTTPS client requests.
+Instância global de [`https.Agent`][] para todas as requisições HTTPS clientes.
 
 ## https.request(options[, callback])
 
@@ -175,7 +175,7 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
+- `opções` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
     - `protocol` **Default:** `'https:'`
     - `port` **Default:** `443`
     - `agent` **Default:** `https.globalAgent`
