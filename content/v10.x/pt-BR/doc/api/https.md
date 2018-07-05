@@ -244,7 +244,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example using a [`URL`][] as `options`:
+Exemplo usando uma [`URL`] [] como `options`:
 
 ```js
 const options = new URL('https://abc:xyz@example.com');
@@ -254,7 +254,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example pinning on certificate fingerprint, or the public key (similar to `pin-sha256`):
+Exemplo de fixação na impressão digital do certificado ou na chave pública (semelhante à `pin-sha256`):
 
 ```js
 const tls = require('tls');
@@ -330,7 +330,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Outputs for example:
+Exemplos de saída:
 
 ```text
 Subject Common Name: github.com
