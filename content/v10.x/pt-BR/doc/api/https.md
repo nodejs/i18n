@@ -2,27 +2,27 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - estável
 
-HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
+HTTPS é o protocolo HTTP sobre SSL/TLS. Em node. js, isso é implementado como um módulo separado.
 
-## Class: https.Agent
+## Classe: https. Agente
 
 <!-- YAML
 added: v0.4.5
 -->
 
-An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
+Um objeto de [] de [`Agent`] para HTTPS semelhante ao [`http. Agent`] []. Consulte [`https.request()`] [-] para obter mais informações.
 
-## Class: https.Server
+## Classe: https. Server
 
 <!-- YAML
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. See [`http.Server`][] for more information.
+Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. Consulte [`https.request()`] [-] para obter mais informações.
 
-### server.close([callback])
+### server.close ([callback])
 
 <!-- YAML
 added: v0.1.90
@@ -30,28 +30,28 @@ added: v0.1.90
 
 - `callback` {Function}
 
-See [`server.close()`][`http.close()`] from the HTTP module for details.
+Consulte [`server.close()`] [`http.close()`] do módulo HTTP para obter detalhes.
 
 ### server.listen()
 
-Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
+Inicia o servidor HTTPS escutando para conexões criptografadas. Esse método é idêntico ao [`server.listen()`] [] do [`net. Server`] [].
 
 ### server.maxHeadersCount
 
-- {number} **Default:** `2000`
+- {number} **Padrão:** `2000`
 
-See [`http.Server#maxHeadersCount`][].
+Consulte [`http. Server #maxHeadersCount`] [].
 
-### server.setTimeout(\[msecs\]\[, callback\])
+### server.setTimeout (\[msecs\]\[, callback\])
 
 <!-- YAML
 added: v0.11.2
 -->
 
-- `msecs` {number} **Default:** `120000` (2 minutes)
+- `Ms` {number} **Padrão:** `120000` (2 minutos)
 - `callback` {Function}
 
-See [`http.Server#setTimeout()`][].
+Consulte [`http.Server#setTimeout()`][].
 
 ### server.timeout
 
