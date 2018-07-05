@@ -3,7 +3,7 @@
 <!--introduced_in=v0.10.0-->
 
 * [关于这些文档](documentation.html)
-* [使用方法和示例](synopsis.html)
+* [使用示例](synopsis.html)
 
 <div class="line"></div>
 

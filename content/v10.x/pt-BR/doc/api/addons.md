@@ -4,15 +4,15 @@
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node. js e C/C++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
+No momento, o método para a implementação de Addons é bastante complicado, envolvendo o conhecimento de vários componentes e APIs:
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+* V8: biblioteca C++ node. js usada atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamar funções, etc. API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore de fonte do node. js), que também está disponível [on-line](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos de Node. js, seus threads de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração de plataforma cruzada, dando acesso fácil, POSIX, como em todos os principais sistemas operacionais para muitas tarefas comuns de sistema, tais como interagir com os sistema de arquivos, soquetes, temporizadores e sistema de eventos. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar mais sofisticados assíncrono Addons que precisam ir além do loop de eventos padrão. Addon autores são incentivados a pensar sobre como evitar o bloquear o ciclo de eventos com e/s ou outras tarefas demorada por off-loading trabalham através de libuv sem bloqueiar operações do sistema, threads de trabalho ou uma utilização personalizada dos segmentos do libuv.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Bibliotecas internas de Node. js. Node. js se exporta um número de APIs de C++ que Addons pode usar &mdash;, o mais importante dos quais é a classe de `node::ObjectWrap`.
 
 * Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
