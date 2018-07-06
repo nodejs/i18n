@@ -26,7 +26,7 @@ Para poder soportar el espectro completo de las aplicaciones HTTP, la API HTTP d
 
 Consulte la sección [`message.headers`][] para conocer detalles de como los encabezados duplicados son manejados.
 
-Los encabezados sin procesar estan retenidos en la propiedad `rawHeaders`, que es un arreglo con la estructura `[key, value, key2, value2, ...]`. Por ejemplo, el objecto encabezado anterior puede tener un arreglo para la propiedad `rawHeaders` como el siguiente:
+Los encabezados sin procesar están retenidos en la propiedad `rawHeaders`, que es un arreglo con la estructura `[key, value, key2, value2, ...]`. Por ejemplo, el objecto encabezado anterior puede tener un arreglo para la propiedad `rawHeaders` como el siguiente:
 
 <!-- eslint-disable semi -->
 
