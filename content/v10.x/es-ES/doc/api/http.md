@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-Para utilizar el server HTTP y el cliente, uno debe requerirlo de la siguiente manera `require('http')`.
+Para utilizar el servidor HTTP y el cliente, uno debe requerirlo de la siguiente manera `require('http')`.
 
 Las interfaces HTTP en Node.js están diseñadas para soportar varias características del protocolo que, tradicionalmente, han sido difíciles de utilizar. En particular, mensajes grandes y potencialmente codificados en fragmentos. La interfaz nunca almacena respuestas o peticiones enteras — el usuario puede establecer entonces un flujo continuo de datos.
 
@@ -348,18 +348,18 @@ const options = {
   path: '/longitud_peticion'
 };
 
-// Make a request
+// Hace una solicitud
 const req = http.request(options);
 req.end();
 
 req.on('information', (res) => {
-  console.log(`Recibida información antes de la respuesta principal : ${res.statusCode}`);
+  console.log(`Información recibida antes de la respuesta principal: ${res.statusCode}`);
 });
 ```
 
 101 Upgrade statuses do not fire this event due to their break from the traditional HTTP request/response chain, such as web sockets, in-place TLS upgrades, or HTTP 2.0. To be notified of 101 Upgrade notices, listen for the [`'upgrade'`][] event instead.
 
-### Event: 'response'
+### Evento: 'response'
 
 <!-- YAML
 added: v0.1.0
@@ -367,9 +367,9 @@ added: v0.1.0
 
 * `response` {http.IncomingMessage}
 
-Emitted when a response is received to this request. This event is emitted only once.
+Emitido cuando se recibe una respuesta para esta solicitud. Este evento se emite solo una vez.
 
-### Event: 'socket'
+### Evento: 'socket'
 
 <!-- YAML
 added: v0.5.3
@@ -377,9 +377,9 @@ added: v0.5.3
 
 * `socket` {net.Socket}
 
-Emitted after a socket is assigned to this request.
+Emitido luego de que se asigna un socket a esta solicitud.
 
-### Event: 'timeout'
+### Evento: 'timeout'
 
 <!-- YAML
 added: v0.7.8
