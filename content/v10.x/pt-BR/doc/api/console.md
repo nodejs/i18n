@@ -9,11 +9,11 @@ O módulo `console` fornece um console de depuração simples que é semelhante 
 O módulo exporta dois componentes específicos:
 
 * Uma classe de `Console` tem métodos como `console.log()`, `console.error()` e `console.warn()` que pode ser usado para gravar qualquer fluxo de Node. js.
-* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
+* Uma instância global `console` configurada para gravar em [`process.stdout`] [] e [`process.stderr`] []. O global `console` pode ser usado sem a chamada `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+***Aviso***: métodos do objeto global console nem assemelham-se consistentemente síncronos como o navegador APIs, nem consistentemente assíncronos como todos os outros fluxos de Node. js. Veja a nota no processo I / O </ 0> para Mais Informações.</p> 
 
-Example using the global `console`:
+Exemplo usando o `console` global:
 
 ```js
 console.log('hello world');
@@ -28,26 +28,22 @@ console.warn(`Danger ${name}! Danger!`);
 // Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
-Example using the `Console` class:
+Examplo usando a classe `Console`:
 
 ```js
-const out = getStreamSomehow();
-const err = getStreamSomehow();
-const myConsole = new console.Console(out, err);
-
-myConsole.log('hello world');
-// Prints: hello world, to out
-myConsole.log('hello %s', 'world');
-// Prints: hello world, to out
-myConsole.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to err
+console.log('hello world');
+// Prints: hello world, to stdout
+console.log('hello %s', 'world');
+// Prints: hello world, to stdout
+console.error(new Error('Whoops, something bad happened'));
+// Prints: [Error: Whoops, something bad happened], to stderr
 
 const name = 'Will Robinson';
-myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+console.warn(`Danger ${name}! Danger!`);
+// Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
-## Class: Console
+## Classe: Console
 
 <!-- YAML
 changes:
@@ -60,7 +56,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+A classe `Console` pode ser usada para criar um simples logger com configuráveis fluxos de saída e pode ser acessada usando `require('console').Console` ou `console.Console` (ou desestruturado):
 
 ```js
 const { Console } = require('console');
@@ -89,10 +85,10 @@ changes:
 * `options` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
-  * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
-  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `ignoreErrors` {boolean} ignore erros ao escrever para os fluxos subjacentes. **Padrão:** `true`.
+  * `colorMode` {boolean|string} conjunto suporte a cores para esta instância do `Console`. Ajuste para `true` permite colorir enquanto inspecionando valores, configuração para `'auto'` fará suporte cor dependem do valor da propriedade `isTTY` e o valor retornado pelo `getColorDepth()` no respectivo fluxo. **Padrão:** `'auto'`.
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Cria um novo `Console` com uma ou duas instâncias de fluxo gravável. `stdout` é um fluxo gravável para imprimir a saída de log ou informação. `stderr` é usado para o aviso ou a saída de erro. Se não for fornecido `stderr`, `stdout` é usado para `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
@@ -105,7 +101,7 @@ logger.log('count: %d', count);
 // in stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+Uma instância global `console` configurada para gravar em [`process.stdout`] e [`process.stderr`]. É equivalente a chamar:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
