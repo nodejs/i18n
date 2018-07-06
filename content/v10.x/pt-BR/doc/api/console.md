@@ -4,11 +4,11 @@
 
 > Estabilidade: 2 - Estável
 
-The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
+O módulo `console` fornece um console de depuração simples que é semelhante ao mecanismo de console JavaScript fornecido por navegadores da web.
 
-The module exports two specific components:
+O módulo exporta dois componentes específicos:
 
-* A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
+* Uma classe de `Console` tem métodos como `console.log()`, `console.error()` e `console.warn()` que pode ser usado para gravar qualquer fluxo de Node. js.
 * A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
 
 ***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
