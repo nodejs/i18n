@@ -4,6 +4,7 @@ const walk = require('walk-sync').entries
 const {nodeVersions} = require('./package.json')
 const semver = require('semver')
 const contentDir = path.join(__dirname, 'content')
+const i18n = require('.')
 
 test('defines nodeVersions', () => {
   const majors = Object.keys(nodeVersions)
@@ -43,4 +44,17 @@ test('includes only markdown files, ignoring images and other files', () => {
       expect(files.every(file => file.relativePath.endsWith('.md')))
     })
   })
+})
+
+test('i18 is an object with node versions as keys', () => {
+  const versions = Object.keys(i18n).sort()
+  const majors = Object.keys(nodeVersions).sort()
+  expect(versions).toEqual(majors)
+})
+
+test('i18n[version].docs is an object with locales as keys', () => {
+  const majorVersion = Object.keys(nodeVersions).sort().shift()
+  const locales = Object.keys(i18n[majorVersion].docs)
+  expect(locales).toContain('pl-PL')
+  expect(locales).toContain('en-US')
 })
