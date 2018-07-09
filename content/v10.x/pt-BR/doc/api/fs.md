@@ -88,9 +88,9 @@ Error: EISDIR: operação ilegal em um diretório, leitura
 
 ## File paths
 
-Muitas `fs` operações aceitam caminhos que podem ser especificados em forma de uma string, a [`Buffer`][], ou um [`URL`][] objeto usando o `file:` protocolo.
+Muitas operações de `fs` aceitam caminhos que podem ser especificados como uma string, um [`Buffer`][], ou objeto [`URL`][], usando o protocolo `file:`.
 
-Os caminhos de formulário de string são interpretados como sequências de caracteres UTF-8 que identificam o nome do arquivo absoluto ou relativo. Caminhos relativos serão resolvidos em relação ao diretório de trabalho atual conforme especificado pelo `process.cwd()`.
+Os caminhos de formulário de string são interpretados como sequências de caracteres UTF-8 que identificam o nome do arquivo absoluto ou relativo. Caminhos relativos serão resolvidos em relação ao diretório de trabalho atual especificado pelo `process.cwd()`.
 
 Exemplo usando um caminho absoluto em POSIX:
 
