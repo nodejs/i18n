@@ -1,7 +1,7 @@
 # Guida di stile
 
 * La documentazione è scritta in file markdown con nomi formattati tipo `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g., `child_process`).
+  * I caratteri underscore (trattino basso) nei nomi dei file sono consentiti solo quando sono presenti nell'argomento che il documento descriverà (es. `child_process`).
   * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
