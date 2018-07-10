@@ -5,7 +5,7 @@
   * Alcuni file, come i file markdown top-level, sono eccezioni.
 * Il testo dei documenti dovrebbe andare a capo in modo automatico raggiunti gli 80 caratteri.
 * E' preferita la formattazione descritta in `.editorconfig`. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Per alcuni editor è disponibile un [plugin](http://editorconfig.org/#download) che applica automaticamente queste regole.
 * Changes to documentation should be checked with `make lint-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colore", ecc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
