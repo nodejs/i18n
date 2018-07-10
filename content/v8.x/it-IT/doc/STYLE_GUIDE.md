@@ -29,7 +29,7 @@
 * Per i blocchi di codice: 
   * Usa blocchi consapevoli del linguaggio. ("```js")
   * Il codice non deve essere completo — considera i blocchi di codice come un'illustrazione od un aiuto per il tuo punto, non come programmi completi in esecuzione. Se è necessario un programma completo in esecuzione, includilo come asset in `assets/code-examples` e collegalo ad esso.
-* When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
+* Quando si usano caratteri underscore, asterischi ed apici inversi, si prega di usare il formato corretto (`\_`, `\*` e `` \` `` invece di `_`, `*` e `` ` ``).
 * References to constructor functions should use PascalCase.
 * References to constructor instances should use camelCase.
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
