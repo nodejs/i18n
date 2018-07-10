@@ -15,10 +15,10 @@
     * OK: "essi", "loro", "loro", "gente", "persone", "sviluppatori", "gatti"
     * NON OK: "suo", "sua", "lui", "lei", "ragazzi", "amici"
 * Quando si combinano elementi di wrapping (parentesi e virgolette), dovrebbe essere messa la punteggiatura finale: 
-  * All'interno dell'elemento di wrapping se questo contiene una proposizione completa — un soggetto, un verbo ed un oggetto.
-  * Al di fuori dell'elemento di wrapping se questo contiene solo un frammento di una proposizione.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
-* Documents must start with a level-one heading. An example document will be linked here eventually.
+  * All'interno dell'elemento di wrapping se l'elemento di wrapping contiene una proposizione completa: un soggetto, un verbo ed un oggetto.
+  * Al di fuori dell'elemento di wrapping se l'elemento di wrapping contiene solo il frammento di una proposizione.
+* Inserire la punteggiatura di fine frase all'interno degli elementi di wrapping: i periodi vanno tra parentesi e virgolette, non dopo.
+* I documenti devono iniziare con un'intestazione di livello uno. Eventualmente sarà linkato qui un documento di esempio.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
