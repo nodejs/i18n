@@ -7,7 +7,7 @@
 * E' preferita la formattazione descritta in `.editorconfig`. 
   * Per alcuni editor è disponibile un [plugin](http://editorconfig.org/#download) che applica automaticamente queste regole.
 * Changes to documentation should be checked with `make lint-md`.
-* E' preferita l'ortografia in Inglese Americano. "Capitalizzare" vs. "Capitalise", "color" vs. "colore", ecc.
+* E' preferita l'ortografia in Inglese Americano. "Capitalizzare" vs. "Capitalizzare", "colore" vs. "colore", ecc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
