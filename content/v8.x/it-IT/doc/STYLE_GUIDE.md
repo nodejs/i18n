@@ -20,7 +20,7 @@
 * Inserire la punteggiatura di fine frase all'interno degli elementi di wrapping: i periodi vanno tra parentesi e virgolette, non dopo.
 * I documenti devono iniziare con un'intestazione di livello uno. Eventualmente sarà linkato qui un documento di esempio.
 * Preferisci i link di apposizione al posto dei link diretti: preferisci `[un link][]` al posto di `[un link](http://esempio.com)`.
-* Quando si documentano le API, si noti, alla fine della sezione, la versione in cui è stata introdotta l'API. If an API has been deprecated, also note the first version that the API appeared deprecated in.
+* Quando si documentano le API, annottare, alla fine della sezione, la versione in cui è stata introdotta l'API. Se un'API è stata dichiarata obsoleta, annota anche la prima versione in cui l'API appariva obsoleta.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
