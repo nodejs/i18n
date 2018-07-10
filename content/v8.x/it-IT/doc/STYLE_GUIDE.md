@@ -9,11 +9,11 @@
 * I problemi meccanici, come l'ortografia e la grammatica, dovrebbero essere identificati dagli strumenti (tools), nella misura del possibile. Se non identificati da uno strumento, dovrebbero essere segnalati dai revisori umani.
 * E' preferita l'ortografia in Inglese Americano. "Capitalizzare" vs. "Capitalizzare", "colore" vs. "colore", ecc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Generalmente evitare i pronomi personali nella documentazione di riferimento ("Io", "tu", "noi"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
-  * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+* Generalmente evitare i pronomi personali nei documenti di riferimento ("Io", "tu", "noi"). 
+  * I pronomi sono accettabili nei documenti più colloquiali, come le guide.
+  * Usa pronomi neutrali e sostantivi non numerabili. Esempi non-esaustivi: 
+    * OK: "essi", "loro", "loro", "gente", "persone", "sviluppatori", "gatti"
+    * NON OK: "suo", "sua", "lui", "lei", "ragazzi", "amici"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
