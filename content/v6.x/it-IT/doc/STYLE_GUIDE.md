@@ -2,9 +2,9 @@
 
 * La documentazione è scritta in file markdown con nomi formattati tipo `lowercase-with-dashes.md`. 
   * I caratteri underscore (trattino basso) nei nomi dei file sono consentiti solo quando sono presenti nell'argomento che il documento descriverà (es. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
+  * Alcuni file, come i file markdown top-level, sono eccezioni.
+* Il testo dei documenti dovrebbe andare a capo in modo automatico raggiunti gli 80 caratteri.
+* E' preferita la formattazione descritta in `.editorconfig`. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colore", ecc.
