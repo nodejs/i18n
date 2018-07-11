@@ -115,9 +115,9 @@ try {
 
 ### Collegamento alle dipendenze di Node.js
 
-Node.js utilizza un numero di librerie collegate in modo statico come V8, libuv ed OpenSSL. Tutti gli Addons sono necessari per il collegamento a V8 ma possono anche essere collegati a qualsiasi altra dipendenza. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js utilizza un numero di librerie collegate in modo statico come V8, libuv ed OpenSSL. Tutti gli Addons sono necessari per il collegamento a V8 ma possono anche essere collegati a qualsiasi altra dipendenza. In genere, questo è semplice come includere l'appropriato `#include <...>` le istruzioni (es. `#include <v8.h>`) e `node-gyp` individueranno automaticamente le intestazioni appropriate. Tuttavia, ci sono alcune avvertenze da tenere in considerazione:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Quando viene eseguito `node-gyp`, esso rileverà la specifica versione di rilascio di Node.js e scaricherà il codice sorgente tarball completo oppure solo le intestazioni. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
