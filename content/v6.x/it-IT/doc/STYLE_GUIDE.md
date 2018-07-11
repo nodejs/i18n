@@ -35,8 +35,8 @@
 * I riferimenti ai metodi dovrebbero essere usati con parentesi: ad esempio `socket.end()` invece di `socket.end`.
 * Gli argomenti della funzione o le proprietà dell'oggetto devono utilizzare il seguente formato: 
   * `* \<code>name` {type|type2} Descrizione facoltativa. **Default:** `defaultValue`</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
-* Function returns should use the following format: 
-  * `* Returns: {type|type2} Optional description.`
+  * Es. `* <code>byteOffset` {integer} Indice del primo byte da esporre. **Default:** `0`</code>
+  * Il `tipo` dovrebbe fare riferimento ad un tipo Node.js oppure ad un [tipo JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
+* I returns delle funzioni dovrebbero utilizzare il seguente formato: 
+  * `* Returns: {type|type2} Descrizione facoltativa.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
