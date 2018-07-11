@@ -123,9 +123,9 @@ Node.js utilizza un numero di librerie collegate in modo statico come V8, libuv 
 
 ### Caricamento degli Addons utilizzando require()
 
-L'estensione del filename dell'Addon binario compilato è `.node` (al contrario di `.dll` oppure `.so`). The [`require()`](globals.html#globals_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+L'estensione del filename dell'Addon binario compilato è `.node` (al contrario di `.dll` oppure `.so`). La funzione [`require()`](globals.html#globals_require) viene scritta per cercare i file con l'estensione `.node` ed inizializzarli come librerie con collegamenti dinamici.
 
-When calling [`require()`](globals.html#globals_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](globals.html#globals_require) will give precedence to the `addon.js` file and load it instead.
+Quando si chiama [`require()`](globals.html#globals_require), solitamente l'estensione `.node` può essere omessa e Node.js continuerà a ritrovare ed inizializzare l'Addon. Un avvertimento, tuttavia, è che Node.js prima tenterà di individuare e caricare i moduli oppure i file JavaScript che capitano a condividere lo stesso nome di base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](globals.html#globals_require) will give precedence to the `addon.js` file and load it instead.
 
 ## Native Abstractions for Node.js
 
