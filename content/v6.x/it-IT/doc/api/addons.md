@@ -85,11 +85,11 @@ Una volta che è stato scritto il codice sorgente, esso dev'essere compilato nel
 
 Una volta creato il file `binding.gyp`, utilizzare `node-gyp configure` per generare gli appropriati build files del progetto per la piattaforma corrente. Questo genererà un `Makefile` (su piattaforme Unix) oppure un file `vcxproj` (su Windows) nella directory `build/`.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Successivamente, invoca il comando `node-gyp build` per generare il file compilato `addon.node`. Questo verrà inserito nella directory `build/Release/`.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Quando si utilizza `npm install` per installare un Addon di Node.js, npm utilizza la propria versione in bundle di `node-gyp` per eseguire lo stesso insieme di azioni, generando una versione compilata dell'Addon per la piattaforma dell'utente su richiesta.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](globals.html#globals_require) to the built `addon.node` module:
+Una volta costruito, l'Addon binario può essere utilizzato da Node.js puntando [`require()`](globals.html#globals_require) al modulo costruito `addon.node`:
 
 ```js
 // hello.js
