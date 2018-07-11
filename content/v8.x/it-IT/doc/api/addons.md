@@ -18,13 +18,13 @@ All of the following examples are available for [download](https://github.com/no
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Questo esempio di "Hello world" è un semplice Addon, scritto in C++, che è l'equivalente del seguente codice JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Prima di tutto, crea il file `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -53,18 +53,18 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Si noti che tutti gli Addons di Node.js devono esportare una funzione di inizializzazione seguendo il modello:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Non c'è alcun punto e virgola dopo `NODE_MODULE` poiché non è una funzione (vedi `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the .node suffix).
+Il `module_name` deve corrispondere al filename del file binario finale (escludendo il suffisso .node).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+Quindi nell'esempio `hello.cc`, la funzione di inizializzazione è `init` ed il module name dell'Addon è `addon`.
 
 ### Building
 
