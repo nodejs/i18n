@@ -30,19 +30,19 @@
   * Usa blocchi consapevoli del linguaggio. ("```js")
   * Il codice non deve essere completo — considera i blocchi di codice come un'illustrazione od un aiuto per il tuo punto, non come programmi completi in esecuzione. Se è necessario un programma completo in esecuzione, includilo come asset in `assets/code-examples` e collegalo ad esso.
 * Quando si usano caratteri underscore, asterischi ed apici inversi, si prega di usare il formato corretto (`\_`, `\*` e `` \` `` invece di `_`, `*` e `` ` ``).
-* References to constructor functions should use PascalCase.
-* References to constructor instances should use camelCase.
-* References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
+* I riferimenti alle funzioni del costruttore dovrebbero utilizzare PascalCase.
+* I riferimenti alle istanze del costruttore dovrebbero usare camelCase.
+* I riferimenti ai metodi dovrebbero essere usati con parentesi: ad esempio `socket.end()` invece di `socket.end`.
 * To draw special attention to a note, adhere to the following guidelines: 
   * Make the "Note:" label italic, i.e. `*Note*:`.
   * Use a capital letter after the "Note:" label.
   * Preferably, make the note a new paragraph for better visual distinction.
-* Function arguments or object properties should use the following format: 
-  * `* \<code>name` {type|type2} Optional description. **Default:** `defaultValue`</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
-* Function returns should use the following format: 
-  * `* Returns: {type|type2} Optional description.`
+* Gli argomenti della funzione o le proprietà dell'oggetto devono utilizzare il seguente formato: 
+  * `* \<code>name` {type|type2} Descrizione facoltativa. **Default:** `defaultValue`</code>
+  * Es. `* <code>byteOffset` {integer} Indice del primo byte da esporre. **Default:** `0`</code>
+  * Il `tipo` dovrebbe fare riferimento ad un tipo Node.js oppure ad un [tipo JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
+* I returns delle funzioni dovrebbero utilizzare il seguente formato: 
+  * `* Returns: {type|type2} Descrizione facoltativa.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
 * Use official styling for capitalization in products and projects. 
   * OK: JavaScript, Google's V8
