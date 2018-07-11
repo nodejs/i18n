@@ -1,35 +1,35 @@
 # Guida di stile
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* La documentazione è scritta in file markdown con nomi formattati tipo `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Alcuni file, come i file markdown top-level, sono eccezioni.
+* Il testo dei documenti dovrebbe andare a capo in modo automatico raggiunti gli 80 caratteri.
+* E' preferita la formattazione descritta in `.editorconfig`. 
+  * Per alcuni editor è disponibile un [plugin](http://editorconfig.org/#download) che applica automaticamente queste regole.
 * Changes to documentation should be checked with `make lint-md`.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colore", ecc.
+* E' preferita l'ortografia in Inglese Americano. "Capitalizzare" vs. "Capitalizzare", "colore" vs. "colore", ecc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
-* Documents must start with a level-one heading.
-* Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
-* When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
-* When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
-* Including assets: 
-  * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
-  * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
-  * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
-* For code blocks: 
-  * Use language aware fences. ("```js")
-  * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
-* When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
+    * NON OK: "suo", "sua", "lui", "lei", "ragazzi", "amici"
+* Quando si combinano elementi di wrapping (parentesi e virgolette), dovrebbe essere messa la punteggiatura finale: 
+  * All'interno dell'elemento di wrapping se l'elemento di wrapping contiene una proposizione completa — un soggetto, un verbo ed un oggetto.
+  * Al di fuori dell'elemento di wrapping se l'elemento di wrapping contiene solo il frammento di una proposizione.
+* Inserire la punteggiatura di fine frase all'interno degli elementi di wrapping — i periodi vanno tra parentesi e virgolette, non dopo.
+* I documenti devono iniziare con un'intestazione di livello uno.
+* Preferisci i link di apposizione al posto dei link diretti — preferisci `[un link][]` al posto di `[un link](http://esempio.com)`.
+* Quando si documentano le API, annottare, alla fine della sezione, la versione in cui è stata introdotta l'API. Se un'API è stata dichiarata obsoleta, annota anche la prima versione in cui l'API appariva obsoleta.
+* Quando utilizzi i trattini, usa gli [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) (trattini lunghi) ("—" oppure `Option+Shift+"-"` su macOS) circondati dagli spazi, come per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
+* Compresi gli assets: 
+  * Se si desidera aggiungere un'illustrazione od un programma completo, aggiungerlo alla sub-directory appropriata all'interno della directory `assets/`.
+  * Collegati ad essa in questo modo: `[Asset](/assets/{subdir}/{filename})` per gli assets basati sui file e `![Asset](/assets/{subdir}/{filename})` per gli assets basati sulle immagini.
+  * Per le illustrazioni, preferisci SVG ad altri assets. Quando SVG non è fattibile, tieni d'occhio la dimensione dell'asset che stai introducendo.
+* Per i blocchi di codice: 
+  * Usa blocchi consapevoli del linguaggio. ("```js")
+  * Il codice non deve essere completo — considera i blocchi di codice come un'illustrazione od un aiuto per il tuo punto, non come programmi completi in esecuzione. Se è necessario un programma completo in esecuzione, includilo come asset in `assets/code-examples` e collegalo ad esso.
+* Quando si usano caratteri underscore, asterischi ed apici inversi, si prega di usare il formato corretto (`\_`, `\*` e `` \` `` invece di `_`, `*` e `` ` ``).
 * References to constructor functions should use PascalCase.
 * References to constructor instances should use camelCase.
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
