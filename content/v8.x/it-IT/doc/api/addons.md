@@ -536,7 +536,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -555,11 +555,9 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 
   args.GetReturnValue().Set(Number::New(isolate, obj->value_));
 }
-
-}  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Per compilare questo esempio, il file `myobject.cc` deve essere aggiunto a `binding.gyp`:
 
 ```json
 {
@@ -575,7 +573,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -583,11 +581,11 @@ const addon = require('./build/Release/addon');
 
 const obj = new addon.MyObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Stampa: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Stampa: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Stampa: 13
 ```
 
 ### Factory of wrapped objects
@@ -714,7 +712,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -766,7 +764,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -916,7 +914,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -943,7 +941,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
