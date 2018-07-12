@@ -592,15 +592,15 @@ console.log(obj.plusOne());
 
 ### Factory di wrapped objects
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+In alternativa, è possibile utilizzare un modello di factory per evitare la creazione esplicita di istanze di oggetti utilizzando l'operatore `new` di JavaScript:
 
 ```js
 const obj = addon.createObject();
-// instead of:
+// invece di:
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Prima di tutto, il metodo `createObject()` è implementato in `addon.cc`:
 
 ```cpp
 // addon.cc
