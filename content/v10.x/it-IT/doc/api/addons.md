@@ -590,7 +590,7 @@ console.log(obj.plusOne());
 // Stampa: 13
 ```
 
-### Factory of wrapped objects
+### Factory di wrapped objects
 
 Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
 
