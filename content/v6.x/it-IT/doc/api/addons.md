@@ -936,7 +936,7 @@ AtExit accetta due parametri: un puntatore ad una funzione di callback da esegui
 
 I callback vengono eseguiti nell'ordine last-in first-out (ultimo ad entrare, primo ad uscire).
 
-The following `addon.cc` implements AtExit:
+Il seguente `addon.cc` implementa AtExit:
 
 ```cpp
 // addon.cc
@@ -960,7 +960,7 @@ static void at_exit_cb1(void* arg) {
   Isolate* isolate = static_cast<Isolate*>(arg);
   HandleScope scope(isolate);
   Local<Object> obj = Object::New(isolate);
-  assert(!obj.IsEmpty()); // assert VM is still alive
+  assert(!obj.IsEmpty()); // Afferma che la VM è ancora funzionante
   assert(obj->IsObject());
   at_exit_cb1_called++;
 }
@@ -987,7 +987,7 @@ NODE_MODULE(addon, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Testa in JavaScript eseguendo:
 
 ```js
 // test.js
