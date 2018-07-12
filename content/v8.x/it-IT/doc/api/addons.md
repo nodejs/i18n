@@ -661,7 +661,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+L'implementazione in `myobject.cc` è simile all'esempio precedente:
 
 ```cpp
 // myobject.cc
@@ -691,12 +691,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Prepara il template del constructor
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototipo
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -706,7 +706,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Invocato come constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
@@ -748,7 +748,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Ancora una volta, per compilare questo esempio, il file `myobject.cc` deve essere aggiunto a `binding.gyp`:
 
 ```json
 {
@@ -772,19 +772,19 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Stampa: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Stampa: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Stampa: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Stampa: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Stampa: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Stampa: 23
 ```
 
 ### Passing wrapped objects around
