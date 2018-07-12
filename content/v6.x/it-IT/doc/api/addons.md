@@ -930,11 +930,11 @@ Un hook "AtExit" è una funzione che viene invocata dopo la fine del ciclo di ev
 * `callback` {void (*)(void*)} Un puntatore alla funzione per una "call at exit".
 * `args` {void\*} Un puntatore per passare ad un "callback at exit".
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registra gli "exit hooks" che vengono eseguiti dopo che il ciclo di eventi è terminato ma prima che la VM venga distrutta.
 
-AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+AtExit accetta due parametri: un puntatore ad una funzione di callback da eseguire all'uscita (at exit) ed un puntatore a dati contestuali untyped da passare a tale callback.
 
-Callbacks are run in last-in first-out order.
+I callback vengono eseguiti nell'ordine last-in first-out (ultimo ad entrare, primo ad uscire).
 
 The following `addon.cc` implements AtExit:
 
