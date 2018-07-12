@@ -430,7 +430,7 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Wrapping degli oggetti C++
 
 It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
 
