@@ -430,7 +430,7 @@ console.log(fn());
 // Stampa: 'hello world'
 ```
 
-### Wrapping degli oggetti C++
+### Wrapping degli objects C++
 
 È anche possibile eseguire il wrapping di oggetti/classi C++ in un modo che consenta la creazione di nuove istanze utilizzando l'operatore JavaScript `new`:
 
@@ -791,7 +791,7 @@ console.log(obj2.plusOne());
 
 ### Riavvolgere gli wrapped objects
 
-Oltre ad eseguire il wrapping e restituire oggetti C++, è possibile riavvolgere gli wrapped objects tramite l'unwrapping con la funzione di supporto di Node.js `node::ObjectWrap::Unwrap`. I seguenti esempi mostrano una funzione `add()` che può prendere due oggetti `MyObject` come argomenti di input:
+Oltre ad eseguire il wrapping e restituire objects C++, è possibile riavvolgere gli wrapped objects tramite l'unwrapping con la funzione di supporto di Node.js `node::ObjectWrap::Unwrap`. I seguenti esempi mostrano una funzione `add()` che può prendere due oggetti `MyObject` come argomenti di input:
 
 ```cpp
 // addon.cc
