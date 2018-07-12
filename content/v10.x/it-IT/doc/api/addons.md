@@ -1023,7 +1023,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Testa in JavaScript eseguendo:
 
 ```js
 // test.js
