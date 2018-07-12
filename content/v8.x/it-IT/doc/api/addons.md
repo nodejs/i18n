@@ -789,7 +789,7 @@ console.log(obj2.plusOne());
 
 ### Riavvolgere gli wrapped objects
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Oltre ad eseguire il wrapping e restituire oggetti C++, è possibile riavvolgere gli wrapped objects tramite l'unwrapping con la funzione di supporto di Node.js `node::ObjectWrap::Unwrap`. I seguenti esempi mostrano una funzione `add()` che può prendere due oggetti `MyObject` come argomenti di input:
 
 ```cpp
 // addon.cc
@@ -835,7 +835,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+In `myobject.h`, viene aggiunto un nuovo metodo pubblico per consentire l'accesso ai valori privati dopo aver eseguito l'unwrapping dell'oggetto.
 
 ```cpp
 // myobject.h
