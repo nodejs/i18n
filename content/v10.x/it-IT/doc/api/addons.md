@@ -966,11 +966,11 @@ An `AtExit` hook is a function that is invoked after the Node.js event loop has 
 * `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
 * `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registra gli "exit hooks" che vengono eseguiti dopo che il ciclo di eventi è terminato ma prima che la VM venga distrutta.
 
 `AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
-Callbacks are run in last-in first-out order.
+I callback vengono eseguiti nell'ordine last-in first-out (ultimo ad entrare, primo ad uscire).
 
 The following `addon.cc` implements `AtExit`:
 
