@@ -2,28 +2,28 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Informazioni su questi documenti](documentation.html)
+* [Utilizzo & Esempio](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
+* [Test di asserzione](assert.html)
 * [Async Hooks](async_hooks.html)
 * [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
+* [Addons C++](addons.html)
+* [Addons C/C++ - N-API](n-api.html)
+* [Processi del Child](child_process.html)
 * [Cluster](cluster.html)
-* [Command Line Options](cli.html)
+* [Opzioni della Command Line](cli.html)
 * [Console](console.html)
 * [Crypto](crypto.html)
 * [Debugger](debugger.html)
 * [Deprecated APIs](deprecations.html)
 * [DNS](dns.html)
-* [Domain](domain.html)
+* [Dominio](domain.html)
 * [ECMAScript Modules](esm.html)
-* [Errors](errors.html)
-* [Events](events.html)
+* [Errori](errors.html)
+* [Eventi](events.html)
 * [File System](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
