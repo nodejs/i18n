@@ -16,7 +16,7 @@ Al momento, il metodo per implementare gli Addons è piuttosto complicato, coinv
 
 * Node.js include una serie di altre librerie collegate in modo statico, tra cui OpenSSL. Queste altre librerie si trovano nella directory `deps/` all'interno dell'albero sorgente (source tree) di Node.js. Solo i simboli di libuv, OpenSSL, V8 e zlib vengono appositamente ri-esportati da Node.js e possono essere utilizzati in varie estensioni dagli Addons. Vedi [Collegamento alle dipendenze di Node.js](#addons_linking_to_node_js_own_dependencies) per ulteriori informazioni.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Tutti i seguenti esempi sono disponibili per il [download](https://github.com/nodejs/node-addon-examples) e possono essere utilizzati come punto di partenza per un Addon.
 
 ## Hello world
 
@@ -64,13 +64,13 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Non c'è alcun punto e virgola dopo `NODE_MODULE` poiché non è una funzione (vedi `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+Il `module_name` deve corrispondere al filename del file binario finale (escludendo il suffisso `.node`).
 
 Quindi nell'esempio `hello.cc`, la funzione di inizializzazione è `init` ed il module name dell'Addon è `addon`.
 
 ### Building
 
-Una volta che è stato scritto il codice sorgente, esso dev'essere compilato nel file binario `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Questo file è usato da [node-gyp](https://github.com/nodejs/node-gyp) — uno strumento scritto appositamente per compilare gli Addons di Node.js.
+Una volta che è stato scritto il codice sorgente, esso dev'essere compilato nel file binario `addon.node`. Per fare ciò, crea un file chiamato `binding.gyp` nel primo livello del progetto che descriva la configurazione del build del modulo usando un formato di tipo JSON. Questo file è usato da [node-gyp](https://github.com/nodejs/node-gyp) — uno strumento scritto appositamente per compilare gli Addons di Node.js.
 
 ```json
 {
@@ -83,7 +83,7 @@ Una volta che è stato scritto il codice sorgente, esso dev'essere compilato nel
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Questa versione non è resa direttamente disponibile per gli sviluppatori ed è pensata solo per supportare la possibilità di utilizzare il comando `npm install` per compilare ed installare gli Addons. Gli sviluppatori che desiderano utilizzare `node-gyp` direttamente possono installarlo tramite il comando `npm install -g node-gyp`. Vedi le [istruzioni di installazione](https://github.com/nodejs/node-gyp#installation) di `node-gyp` per ulteriori informazioni, compresi i requisiti specifici della piattaforma.
+Una versione dell'utility `node-gyp` è in bundle e distribuita con Node.js come parte di `npm`. Questa versione non è resa direttamente disponibile per gli sviluppatori ed è pensata solo per supportare la possibilità di utilizzare il comando `npm install` per compilare ed installare gli Addons. Gli sviluppatori che desiderano utilizzare `node-gyp` direttamente possono installarlo tramite il comando `npm install -g node-gyp`. Vedi le [istruzioni di installazione](https://github.com/nodejs/node-gyp#installation) di `node-gyp` per ulteriori informazioni, compresi i requisiti specifici della piattaforma.
 
 Una volta creato il file `binding.gyp`, utilizzare `node-gyp configure` per generare gli appropriati build files del progetto per la piattaforma corrente. Questo genererà un `Makefile` (su piattaforme Unix) oppure un file `vcxproj` (su Windows) nella directory `build/`.
 
