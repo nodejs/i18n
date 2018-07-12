@@ -127,7 +127,7 @@ Node.js utilizza un numero di librerie collegate in modo statico come V8, libuv 
 
 L'estensione del filename dell'Addon binario compilato è `.node` (al contrario di `.dll` oppure `.so`). La funzione [`require()`](modules.html#modules_require) viene scritta per cercare i file con l'estensione `.node` ed inizializzarli come librerie con collegamenti dinamici.
 
-Quando si chiama [`require()`](modules.html#modules_require), solitamente l'estensione `.node` può essere omessa e Node.js continuerà a ritrovare ed inizializzare l'Addon. Un avvertimento, tuttavia, è che Node.js prima tenterà di individuare e caricare i moduli oppure i file JavaScript che capitano a condividere lo stesso nome di base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Quando si chiama [`require()`](modules.html#modules_require), solitamente l'estensione `.node` può essere omessa e Node.js continuerà a ritrovare ed inizializzare l'Addon. Un avvertimento, tuttavia, è che Node.js prima tenterà di individuare e caricare i moduli oppure i file JavaScript che capitano a condividere lo stesso nome di base. Ad esempio, se c'è un file `addon.js` nella stessa directory del file binario `addon.node`, allora [`require('addon')`](modules.html#modules_require) darà la precedenza al file `addon.js` e lo caricherà.
 
 ## Native Abstractions for Node.js
 
