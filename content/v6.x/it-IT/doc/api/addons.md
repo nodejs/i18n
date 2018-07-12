@@ -595,7 +595,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+In `myobject.h`, il metodo statico `NewInstance()` viene aggiunto per gestire la creazione di un'istanza per l'oggetto. Questo metodo sostituisce l'uso di `new` in JavaScript:
 
 ```cpp
 // myobject.h
