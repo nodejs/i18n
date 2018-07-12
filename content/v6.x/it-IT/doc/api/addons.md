@@ -417,7 +417,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Quindi, in `myobject.h`, la classe wrapper eredita da `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -448,7 +448,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+In `myobject.cc`, implementa i vari metodi che devono essere esposti. Sotto, viene esposto il metodo `plusOne()` aggiungendolo al prototipo del constructor:
 
 ```cpp
 // myobject.cc
