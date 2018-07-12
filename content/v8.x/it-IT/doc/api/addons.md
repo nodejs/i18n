@@ -970,7 +970,7 @@ AtExit accetta due parametri: un puntatore ad una funzione di callback da esegui
 
 I callback vengono eseguiti nell'ordine last-in first-out (ultimo ad entrare, primo ad uscire).
 
-The following `addon.cc` implements AtExit:
+Il seguente `addon.cc` implementa AtExit:
 
 ```cpp
 // addon.cc
@@ -1021,7 +1021,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Testa in JavaScript eseguendo:
 
 ```js
 // test.js
