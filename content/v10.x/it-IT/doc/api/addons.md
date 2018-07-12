@@ -789,7 +789,7 @@ console.log(obj2.plusOne());
 // Stampa: 23
 ```
 
-### Passing wrapped objects around
+### Riavvolgere gli wrapped objects
 
 In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
 
