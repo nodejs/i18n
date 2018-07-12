@@ -2825,7 +2825,7 @@ The following significant changes have been made since the previous Node.js v5.0
   * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
 * Domains 
   * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
-* Events 
+* Eventi 
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
 * File System 
