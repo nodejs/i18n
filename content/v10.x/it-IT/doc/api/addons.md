@@ -432,7 +432,7 @@ console.log(fn());
 
 ### Wrapping degli oggetti C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+È anche possibile eseguire il wrapping di oggetti/classi C++ in un modo che consenta la creazione di nuove istanze utilizzando l'operatore JavaScript `new`:
 
 ```cpp
 // addon.cc
