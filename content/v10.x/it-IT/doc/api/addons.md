@@ -98,7 +98,7 @@ Una volta costruito, l'Addon binario può essere utilizzato da Node.js puntando 
 const addon = require('./build/Release/addon');
 
 console.log(addon.hello());
-// Prints: 'world'
+// Stampa: 'world'
 ```
 
 Si prega di vedere gli esempi di seguito per ulteriori informazioni oppure <https://github.com/arturadib/node-qt> per un esempio in corso di produzione.
@@ -321,7 +321,7 @@ const addon = require('./build/Release/addon');
 
 addon((msg) => {
   console.log(msg);
-// Prints: 'hello world'
+// Stampa: 'hello world'
 });
 ```
 
@@ -371,7 +371,7 @@ const addon = require('./build/Release/addon');
 const obj1 = addon('hello');
 const obj2 = addon('world');
 console.log(obj1.msg, obj2.msg);
-// Prints: 'hello world'
+// Stampa: 'hello world'
 ```
 
 ### Funzione factory
@@ -427,7 +427,7 @@ const addon = require('./build/Release/addon');
 
 const fn = addon();
 console.log(fn());
-// Prints: 'hello world'
+// Stampa: 'hello world'
 ```
 
 ### Wrapping degli oggetti C++
