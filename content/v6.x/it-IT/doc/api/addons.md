@@ -927,8 +927,8 @@ Un hook "AtExit" è una funzione che viene invocata dopo la fine del ciclo di ev
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} Un puntatore alla funzione per una "call" all'uscita.
-* `args` {void\*} Un puntatore per passare al "callback" all'uscita.
+* `callback` {void (*)(void*)} Un puntatore alla funzione per una "call at exit".
+* `args` {void\*} Un puntatore per passare ad un "callback at exit".
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.
 
