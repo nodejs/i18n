@@ -27,7 +27,7 @@ Per utilizzare le funzioni di N-API, includere il file [`node_api.h`](https://gi
 
 ## Data Types N-API di base
 
-N-API espone i seguenti datatypes fondamentali come abstractions che vengono utilizzate dalle varie API. These APIs should be treated as opaque, introspectable only with other N-API calls.
+N-API espone i seguenti datatypes fondamentali come abstractions che vengono utilizzate dalle varie API. Queste API devono essere considerate come opache, auto-esaminabile (introspectable) solo con altre calls di N-API.
 
 ### napi_status
 
