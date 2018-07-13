@@ -208,7 +208,7 @@ $ node-gyp configure build
 
 ### Argomenti della funzione
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+In genere gli Addons espongono oggetti e funzioni a cui è possibile accedere da JavaScript in esecuzione all'interno di Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
 The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
 
