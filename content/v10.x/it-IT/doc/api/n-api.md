@@ -19,15 +19,15 @@ Le API esposte da N-API vengono generalmente utilizzate per creare e manipolare 
 
 Il N-API è un'API C che garantisce la stabilità dell'ABI attraverso le versioni di Node.js e diversi livelli del compilatore. Tuttavia, capiamo che un'API C++ può essere più facile da usare in molti casi. Per supportare questi casi ci aspettiamo che ci siano uno o più moduli wrapper C++ che forniscano un'API C++ inlineable. I file binari creati con questi moduli wrapper dipenderanno dai simboli per le funzioni basate su N-API C esportate da Node.js. Questi wrappers non fanno parte di N-API, né saranno mantenuti come parte di Node.js. Uno di questi esempi è: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
-In order to use the N-API functions, include the file [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree:
+Per utilizzare le funzioni di N-API, includere il file [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) che si trova nella directory src nel node development tree:
 
 ```C
 #include <node_api.h>
 ```
 
-## Basic N-API Data Types
+## Data Types N-API di base
 
-N-API exposes the following fundamental datatypes as abstractions that are consumed by the various APIs. These APIs should be treated as opaque, introspectable only with other N-API calls.
+N-API espone i seguenti datatypes fondamentali come abstractions che vengono utilizzate dalle varie API. These APIs should be treated as opaque, introspectable only with other N-API calls.
 
 ### napi_status
 
