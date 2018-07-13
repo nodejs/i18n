@@ -311,9 +311,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Nota che questo esempio usa una forma a due argomenti di `Init()` che riceve l'intero `module` object come secondo argomento. Ciò consente all'Addon di sovrascrivere completamente `exports` con una singola funzione anzichè aggiungere la funzione come una proprietà di `exports`.
 
-To test it, run the following JavaScript:
+Per testarlo, esegui il seguente codice JavaScript:
 
 ```js
 // test.js
@@ -325,14 +325,14 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Nota che, in questo esempio, la funzione di callback è invocata in modo sincrono.
 
 ### Object factory
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Gli Addons possono creare e restituire(return) nuovi oggetti dall'interno di una funzione C++, come mostrato nel seguente esempio. Un oggetto viene creato e restituito con una proprietà `msg` che fa da eco alla stringa passata a `createObject()`:
 
 ```cpp
-// addon.cc
+/ addon.cc
 #include <node.h>
 
 namespace demo {
@@ -404,7 +404,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
   Local<Function> fn = tpl->GetFunction();
 
-  // omit this to make it anonymous
+  // omettere questo per renderlo anonimo
   fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
 
   args.GetReturnValue().Set(fn);
