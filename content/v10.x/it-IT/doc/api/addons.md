@@ -141,10 +141,10 @@ La [Native Abstractions per Node.js](https://github.com/nodejs/nan) (oppure `nan
 
 N-API è un'API per la creazione di Addons nativi. È indipendente dal runtime JavaScript sottostante (es. V8) e viene mantenuto come parte dello stesso Node.js. Quest'API sarà stabile in Application Binary Interface (ABI) attraverso la versione di Node.js. Ha lo scopo di isolare gli Addons dalle modifiche nell'engine JavaScript sottostante e consentire ai moduli compilati per una versione di essere eseguiti nelle versioni successive di Node.js senza ricompilazione. Gli Addons sono costruiti/impacchettati con lo stesso approccio/gli stessi tools evidenziati in questo documento (node-gyp, ecc.). L'unica differenza è l'insieme di API utilizzate dal codice nativo. Invece di utilizzare le API di V8 o di [Native Abstractions per Node.js](https://github.com/nodejs/nan), vengono utilizzate le funzioni disponibili in N-API.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Per utilizzare N-API nell'esempio precedente di "Hello world", sostituisci il contenuto di `hello.cc` con il seguente. Tutte le altre istruzioni rimangono le stesse.
 
 ```cpp
-// hello.cc using N-API
+// hello.cc usando N-API
 #include <node_api.h>
 
 namespace demo {
@@ -175,9 +175,9 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+Le funzioni disponibili e le informazioni su come usarle sono documentate nella sezione intitolata [Addons C/C++ - N-API](n-api.html).
 
-## Addon examples
+## Esempi di Addons
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
