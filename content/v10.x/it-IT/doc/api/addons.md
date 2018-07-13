@@ -133,11 +133,11 @@ Quando si chiama [`require()`](modules.html#modules_require), solitamente l'este
 
 Ciascuno degli esempi illustrati in questo documento fa uso diretto delle API di Node.js e V8 per implementare gli Addons. È importante capire che l'API di V8 può essere modificata radicalmente, e lo è stata, da una versione di V8 alla successiva (ancora di più da una versione di Node.js alla successiva). Ad ogni modifica, potrebbe essere necessario aggiornare e ricompilare gli Addons per continuare a farli funzionare. La pianificazione delle versioni di Node.js è progettata per ridurre al minimo la frequenza e l'impatto di tali modifiche, tuttavia al momento Node.js può fare poco per garantire la stabilità delle API di V8.
 
-Le [Native Abstractions per Node.js](https://github.com/nodejs/nan) (oppure `nan`) forniscono una serie di strumenti che gli sviluppatori degli Addons raccomandano di utilizzare per mantenere la compatibilità tra le versioni passate e future di V8 e Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+La [Native Abstractions per Node.js](https://github.com/nodejs/nan) (oppure `nan`) fornisce una serie di strumenti che gli sviluppatori degli Addons raccomandano di utilizzare per mantenere la compatibilità tra le versioni passate e future di V8 e Node.js. Guarda gli [esempi](https://github.com/nodejs/nan/tree/master/examples/) di `nan` per una visione di come può essere usato.
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Stabilità: 1 - Sperimentale
 
 N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
