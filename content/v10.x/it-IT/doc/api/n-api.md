@@ -10,10 +10,10 @@ N-API (pronunciato N come la lettera stessa, seguito da API) è un'API per la cr
 
 Gli Addons sono costruiti/impacchettati con lo stesso approccio/gli stessi tools evidenziati nella sezione intitolata [Addons C++](addons.html). L'unica differenza è l'insieme di API utilizzate dal codice nativo. Invece di utilizzare le API di V8 o di [Native Abstractions per Node.js](https://github.com/nodejs/nan), vengono utilizzate le funzioni disponibili in N-API.
 
-APIs exposed by N-API are generally used to create and manipulate JavaScript values. Concepts and operations generally map to ideas specified in the ECMA262 Language Specification. The APIs have the following properties:
+Le API esposte da N-API vengono generalmente utilizzate per creare e manipolare i valori di JavaScript. I concepts e le operations generalmente mappano le idee specificate in "ECMA262 Language Specification". Le API hanno le seguenti proprietà:
 
-- All N-API calls return a status code of type `napi_status`. This status indicates whether the API call succeeded or failed.
-- The API's return value is passed via an out parameter.
+- Tutte le calls di N-API restituiscono(return) uno status code di tipo `napi_status`. Questo stato indica se la call di API è avvenuta con successo oppure no.
+- Il valore di return dell'API viene passato tramite un parametro out.
 - All JavaScript values are abstracted behind an opaque type named `napi_value`.
 - In case of an error status code, additional information can be obtained using `napi_get_last_error_info`. More information can be found in the error handling section [Error Handling](#n_api_error_handling).
 
