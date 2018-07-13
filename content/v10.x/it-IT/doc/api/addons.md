@@ -996,7 +996,7 @@ static void at_exit_cb1(void* arg) {
   Isolate* isolate = static_cast<Isolate*>(arg);
   HandleScope scope(isolate);
   Local<Object> obj = Object::New(isolate);
-  assert(!obj.IsEmpty());  // assert VM is still alive
+  assert(!obj.IsEmpty());  // Afferma che la VM è ancora funzionante
   assert(obj->IsObject());
   at_exit_cb1_called++;
 }
