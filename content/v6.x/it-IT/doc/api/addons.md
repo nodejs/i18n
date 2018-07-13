@@ -394,7 +394,7 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping degli oggetti C++
+### Wrapping degli objects C++
 
 È anche possibile eseguire il wrapping di oggetti/classi C++ in un modo che consenta la creazione di nuove istanze utilizzando l'operatore JavaScript `new`:
 
@@ -932,7 +932,7 @@ Un hook "AtExit" è una funzione che viene invocata dopo la fine del ciclo di ev
 
 Registra gli "exit hooks" che vengono eseguiti dopo che il ciclo di eventi è terminato ma prima che la VM venga distrutta.
 
-AtExit accetta due parametri: un puntatore ad una funzione di callback da eseguire all'uscita (at exit) ed un puntatore a dati contestuali untyped da passare a tale callback.
+AtExit accetta due parametri: un puntatore ad una funzione di callback da eseguire all'uscita (at exit), ed un puntatore a dati contestuali untyped da passare a tale callback.
 
 I callback vengono eseguiti nell'ordine last-in first-out (ultimo ad entrare, primo ad uscire).
 
