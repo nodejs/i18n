@@ -208,9 +208,9 @@ $ node-gyp configure build
 
 ### Argomenti della funzione
 
-In genere gli Addons espongono oggetti e funzioni a cui è possibile accedere da JavaScript in esecuzione all'interno di Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+In genere gli Addons espongono oggetti e funzioni a cui è possibile accedere da JavaScript in esecuzione all'interno di Node.js. Quando le funzioni sono invocate da JavaScript, gli argomenti di input ed il valore di return devono essere mappati sul e dal codice C/C++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+L'esempio seguente mostra come leggere gli argomenti della funzione passati da JavaScript e come restituire(return) un risultato:
 
 ```cpp
 // addon.cc
@@ -227,32 +227,32 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// This is the implementation of the "add" method
-// Input arguments are passed using the
+// Questa è l'implementazione del metodo "add"
+// Gli argomenti di input sono passati usando
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Check the number of arguments passed.
+  // Verifica il numero di argomenti passati.
   if (args.Length() < 2) {
-    // Throw an Error that is passed back to JavaScript
+    // Lancia un errore che viene passato a JavaScript
     isolate->ThrowException(Exception::TypeError(
         String::NewFromUtf8(isolate, "Wrong number of arguments")));
     return;
   }
 
-  // Check the argument types
+  // Verifica i tipi di argomento
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
     isolate->ThrowException(Exception::TypeError(
         String::NewFromUtf8(isolate, "Wrong arguments")));
     return;
   }
 
-  // Perform the operation
+  // Esegue l'operazione
   double value = args[0]->NumberValue() + args[1]->NumberValue();
   Local<Number> num = Number::New(isolate, value);
 
-  // Set the return value (using the passed in
+  // Imposta il valore di return (usando la funzione passata
   // FunctionCallbackInfo<Value>&)
   args.GetReturnValue().Set(num);
 }
@@ -266,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Una volta compilato, l'Addon di esempio può essere richiesto ed utilizzato da Node.js:
 
 ```js
 // test.js
@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+È pratica comune negli Addons passare le funzioni JavaScript ad una funzione C++ ed eseguirle da lì. L'esempio seguente mostra come invocare tali callbacks:
 
 ```cpp
 // addon.cc
