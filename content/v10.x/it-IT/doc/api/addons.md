@@ -179,9 +179,9 @@ Le funzioni disponibili e le informazioni su come usarle sono documentate nella 
 
 ## Esempi di Addons
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Di seguito sono riportati alcuni esempi di Addons con lo scopo di aiutare gli sviluppatori ad iniziare. Gli esempi utilizzano le API di V8. Fare riferimento alla [V8 reference](https://v8docs.nodesource.com/) presente online per aiutarsi con le varie calls di V8, ed alla [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) di V8 per la spiegazione dei diversi concetti utilizzati come handles, scopes, function templates, etc.
 
-Each of these examples using the following `binding.gyp` file:
+Ciascuno di questi esempi utilizza il seguente file `binding.gyp`:
 
 ```json
 {
@@ -194,19 +194,19 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+Nei casi in cui è presente più di un file `.cc`, basta aggiungere il filename aggiuntivo all'array `sources`:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Una volta che il file `binding.gyp` è pronto, gli Addons di esempio possono essere configurati e creati usando `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Argomenti della funzione
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
