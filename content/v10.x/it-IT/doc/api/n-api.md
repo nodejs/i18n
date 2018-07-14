@@ -127,7 +127,7 @@ typedef void (*napi_finalize)(napi_env env,
 
 #### napi_async_execute_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Funzione puntatore utilizzato con funzioni che supportano operazioni asincrone. Le funzioni di callback devono soddisfare la seguente dicitura:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env, void* data);
@@ -135,7 +135,7 @@ typedef void (*napi_async_execute_callback)(napi_env env, void* data);
 
 #### napi_async_complete_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Funzione puntatore utilizzato con funzioni che supportano operazioni asincrone. Le funzioni di callback devono soddisfare la seguente dicitura:
 
 ```C
 typedef void (*napi_async_complete_callback)(napi_env env,
