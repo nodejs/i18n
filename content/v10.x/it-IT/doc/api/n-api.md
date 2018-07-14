@@ -31,7 +31,7 @@ N-API espone i seguenti datatypes fondamentali come abstractions che vengono uti
 
 ### napi_status
 
-Integral status code indicating the success or failure of a N-API call. Currently, the following status codes are supported.
+Status code integrale che indica il successo oppure il fallimento di una call di N-API. Attualmente sono supportati i seguenti status codes.
 
 ```C
 typedef enum {
