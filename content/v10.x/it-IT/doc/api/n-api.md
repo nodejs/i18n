@@ -66,9 +66,9 @@ typedef struct {
 } napi_extended_error_info;
 ```
 
-- `error_message`: stringa con codifica UTF8 contenente una descrizione neutrale dell'errore da parte della VM.
+- `error_message`: Stringa con codifica UTF8 contenente una descrizione neutrale dell'errore da parte della VM.
 - `engine_reserved`: Riservato per i dettagli degli errori specifici della VM. Questo non è attualmente implementato per qualsiasi VM.
-- `engine_error_code`: error code specifico della VM. Questo non è attualmente implementato per qualsiasi VM.
+- `engine_error_code`: Error code specifico della VM. Questo non è attualmente implementato per qualsiasi VM.
 - `error_code`: Lo status code di N-API che ha avuto origine con l'ultimo errore.
 
 Vedi la sezione [Gestione degli Errori](#n_api_error_handling) per ulteriori informazioni.
@@ -159,7 +159,7 @@ Il set completo di possibili valori `napi_status` è definito in `napi_api_types
 
 Il valore return `napi_status` fornisce una rappresentazione indipendente dell'errore verificatosi da parte della VM. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
 
-In order to retrieve this information [`napi_get_last_error_info`][] is provided which returns a `napi_extended_error_info` structure. The format of the `napi_extended_error_info` structure is as follows:
+Per recuperare queste informazioni viene fornito [`napi_get_last_error_info`][] che restituisce una struttura `napi_extended_error_info`. Il formato della struttura `napi_extended_error_info` è il seguente:
 
 ```C
 typedef struct napi_extended_error_info {
@@ -170,14 +170,14 @@ typedef struct napi_extended_error_info {
 };
 ```
 
-- `error_message`: Textual representation of the error that occurred.
-- `engine_reserved`: Opaque handle reserved for engine use only.
-- `engine_error_code`: VM specific error code.
-- `error_code`: n-api status code for the last error.
+- `error_message`: Rappresentazione testuale dell'errore che si è verificato.
+- `engine_reserved`: Handle opaco riservato solo all'uso dell'engine.
+- `engine_error_code`: Error code specifico della VM.
+- `error_code`: Status code n-api per l'ultimo errore.
 
-[`napi_get_last_error_info`][] returns the information for the last N-API call that was made.
+[`napi_get_last_error_info`][] restituisce le informazioni per l'ultima chiamata N-API che è stata effettuata.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+Non fare affidamento sul contenuto o sul formato di una qualsiasi delle informazioni estese in quanto non è soggetto a SemVer e può cambiare in qualsiasi momento. È inteso solo per scopi di registrazione.
 
 #### napi_get_last_error_info
 
@@ -191,16 +191,16 @@ napi_get_last_error_info(napi_env env,
                          const napi_extended_error_info** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The `napi_extended_error_info` structure with more information about the error.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] result`: La struttura `napi_extended_error_info` con ulteriori informazioni sull'errore.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API retrieves a `napi_extended_error_info` structure with information about the last error that occurred.
 
 The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+Non fare affidamento sul contenuto o sul formato di una qualsiasi delle informazioni estese in quanto non è soggetto a SemVer e può cambiare in qualsiasi momento. È inteso solo per scopi di registrazione.
 
 This API can be called even if there is a pending JavaScript exception.
 
