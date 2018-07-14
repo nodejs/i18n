@@ -53,7 +53,7 @@ typedef enum {
 } napi_status;
 ```
 
-If additional information is required upon an API returning a failed status, it can be obtained by calling `napi_get_last_error_info`.
+Se viene richiesta qualche informazione aggiuntiva su un'API che restituisce un failed status, può essere ottenuta chiamando `napi_get_last_error_info`.
 
 ### napi_extended_error_info
 
@@ -66,7 +66,7 @@ typedef struct {
 } napi_extended_error_info;
 ```
 
-- `error_message`: UTF8-encoded string containing a VM-neutral description of the error.
+- `error_message`: stringa con codifica UTF8 contenente una descrizione VM-neutral dell'errore.
 - `engine_reserved`: Reserved for VM-specific error details. This is currently not implemented for any VM.
 - `engine_error_code`: VM-specific error code. This is currently not implemented for any VM.
 - `error_code`: The N-API status code that originated with the last error.
