@@ -143,15 +143,15 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-## Error Handling
+## Gestione degli Errori
 
-N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
+N-API utilizza sia i valori return che le exceptions JavaScript per la gestione degli errori. Le seguenti sezioni spiegano l'approccio per ciascun caso.
 
-### Return values
+### Valori Return
 
-All of the N-API functions share the same error handling pattern. The return type of all API functions is `napi_status`.
+Tutte le funzioni N-API condividono lo stesso modello di gestione degli errori. Il tipo di return di tutte le funzioni API è `napi_status`.
 
-The return value will be `napi_ok` if the request was successful and no uncaught JavaScript exception was thrown. If an error occurred AND an exception was thrown, the `napi_status` value for the error will be returned. If an exception was thrown, and no error occurred, `napi_pending_exception` will be returned.
+Il valore return sarà `napi_ok` se la richiesta è stata eseguita correttamente e se non è stata generata alcuna exception JavaScript non rilevata. Se si è verificato un errore ED è stata generata un'exception, verrà restituito il valore `napi_status` per l'errore. Se è stata generata un'exception, e non si è verificato alcun errore, verrà restituito `napi_pending_exception`.
 
 In cases where a return value other than `napi_ok` or `napi_pending_exception` is returned, [`napi_is_exception_pending`][] must be called to check if an exception is pending. See the section on exceptions for more details.
 
