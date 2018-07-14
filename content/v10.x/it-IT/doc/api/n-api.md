@@ -12,7 +12,7 @@ Gli Addons sono costruiti/impacchettati con lo stesso approccio/gli stessi tools
 
 Le API esposte da N-API vengono generalmente utilizzate per creare e manipolare i valori di JavaScript. I concepts e le operations generalmente mappano le idee specificate in "ECMA262 Language Specification". Le API hanno le seguenti proprietà:
 
-- Tutte le calls di N-API restituiscono(return) uno status code di tipo `napi_status`. Questo stato indica se la call di API è avvenuta con successo oppure no.
+- Tutte le chiamate N-API restituiscono(return) uno status code di tipo `napi_status`. Questo stato indica se la chiamata API è avvenuta con successo oppure no.
 - Il valore di return dell'API viene passato tramite un parametro out.
 - Tutti i valori di JavaScript sono astratti dietro un tipo opaco chiamato `napi_value`.
 - In caso di status code di errore, è possibile ottenere ulteriori informazioni utilizzando `napi_get_last_error_info`. Ulteriori informazioni possono essere trovate nella sezione di gestione degli errori [Gestione degli Errori](#n_api_error_handling).
@@ -27,11 +27,11 @@ Per utilizzare le funzioni di N-API, includere il file [`node_api.h`](https://gi
 
 ## Data Types N-API di base
 
-N-API espone i seguenti datatypes fondamentali come abstractions che vengono utilizzate dalle varie API. Queste API devono essere considerate come opache, auto-esaminabile (introspectable) solo con altre calls di N-API.
+N-API espone i seguenti datatypes fondamentali come abstractions che vengono utilizzate dalle varie API. Queste API devono essere considerate come opache, auto-esaminabile (introspectable) solo con altre chiamate N-API.
 
 ### napi_status
 
-Status code integrale che indica il successo oppure il fallimento di una call di N-API. Attualmente sono supportati i seguenti status codes.
+Status code integrale che indica il successo oppure il fallimento di una chiamata N-API. Attualmente sono supportati i seguenti status codes.
 
 ```C
 typedef enum {
@@ -68,14 +68,14 @@ typedef struct {
 
 - `error_message`: stringa con codifica UTF8 contenente una descrizione neutrale dell'errore da parte della VM.
 - `engine_reserved`: Riservato per i dettagli degli errori specifici della VM. Questo non è attualmente implementato per qualsiasi VM.
-- `engine_error_code`: VM-specific error code. This is currently not implemented for any VM.
-- `error_code`: The N-API status code that originated with the last error.
+- `engine_error_code`: error code specifico della VM. Questo non è attualmente implementato per qualsiasi VM.
+- `error_code`: Lo status code di N-API che ha avuto origine con l'ultimo errore.
 
-See the [Error Handling](#n_api_error_handling) section for additional information.
+Vedi la sezione [Gestione degli Errori](#n_api_error_handling) per ulteriori informazioni.
 
 ### napi_env
 
-`napi_env` is used to represent a context that the underlying N-API implementation can use to persist VM-specific state. This structure is passed to native functions when they're invoked, and it must be passed back when making N-API calls. Specifically, the same `napi_env` that was passed in when the initial native function was called must be passed to any subsequent nested N-API calls. Caching the `napi_env` for the purpose of general reuse is not allowed.
+`napi_env` viene utilizzato per rappresentare un contesto che l'implementazione N-API sottostante può utilizzare per mantenere lo stato specifico della VM. Questa struttura viene passata alle funzioni native quando vengono invocate, e dev'essere passata indietro quando si effettuano calls N-API. Nello specifico, lo stesso `napi_env`, che è stato passato quand'è stata chiamata la funzione nativa iniziale, deve essere passato a tutte le successive calls N-API nidificate. Caching the `napi_env` for the purpose of general reuse is not allowed.
 
 ### napi_value
 
