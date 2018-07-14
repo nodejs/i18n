@@ -145,19 +145,19 @@ typedef void (*napi_async_complete_callback)(napi_env env,
 
 ## Gestione degli Errori
 
-N-API utilizza sia i valori return che le exceptions JavaScript per la gestione degli errori. Le seguenti sezioni spiegano l'approccio per ciascun caso.
+N-API utilizza sia i valori return che le eccezioni JavaScript per la gestione degli errori. Le seguenti sezioni spiegano l'approccio per ciascun caso.
 
 ### Valori Return
 
 Tutte le funzioni N-API condividono lo stesso modello di gestione degli errori. Il tipo di return di tutte le funzioni API è `napi_status`.
 
-Il valore return sarà `napi_ok` se la richiesta è stata eseguita correttamente e se non è stata generata alcuna exception JavaScript non rilevata. Se si è verificato un errore ED è stata generata un'exception, verrà restituito il valore `napi_status` per l'errore. Se è stata generata un'exception, e non si è verificato alcun errore, verrà restituito `napi_pending_exception`.
+Il valore return sarà `napi_ok` se la richiesta è stata eseguita correttamente e se non è stata generata alcuna eccezione JavaScript non rilevata. Se si è verificato un errore ED è stata generata un'eccezione, verrà restituito il valore `napi_status` per l'errore. Se è stata generata un'eccezione, e non si è verificato alcun errore, verrà restituito `napi_pending_exception`.
 
-In cases where a return value other than `napi_ok` or `napi_pending_exception` is returned, [`napi_is_exception_pending`][] must be called to check if an exception is pending. See the section on exceptions for more details.
+Nei casi in cui viene restituito un valore return diverso da `napi_ok` o `napi_pending_exception`, è necessario chiamare [`napi_is_exception_pending`][] per verificare se c'è un'eccezione in sospeso. Vedi la sezione sulle eccezioni per maggiori dettagli.
 
-The full set of possible `napi_status` values is defined in `napi_api_types.h`.
+Il set completo di possibili valori `napi_status` è definito in `napi_api_types.h`.
 
-The `napi_status` return value provides a VM-independent representation of the error which occurred. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
+Il valore return `napi_status` fornisce una rappresentazione indipendente dell'errore verificatosi da parte della VM. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
 
 In order to retrieve this information [`napi_get_last_error_info`][] is provided which returns a `napi_extended_error_info` structure. The format of the `napi_extended_error_info` structure is as follows:
 
