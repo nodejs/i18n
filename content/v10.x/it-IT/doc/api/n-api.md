@@ -177,7 +177,7 @@ typedef struct napi_extended_error_info {
 
 [`napi_get_last_error_info`][] restituisce le informazioni per l'ultima chiamata N-API che è stata effettuata.
 
-Non fare affidamento sul contenuto o sul formato di una qualsiasi delle informazioni estese in quanto non è soggetto a SemVer e può cambiare in qualsiasi momento. È inteso solo per scopi di registrazione.
+Non fare affidamento sul contenuto o sul formato di una qualsiasi delle extended information in quanto non è soggetto a SemVer e può cambiare in qualsiasi momento. È inteso solo per scopi di registrazione.
 
 #### napi_get_last_error_info
 
@@ -196,17 +196,17 @@ napi_get_last_error_info(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API retrieves a `napi_extended_error_info` structure with information about the last error that occurred.
+Quest'API recupera una struttura `napi_extended_error_info` con informazioni sull'ultimo errore che si è verificato.
 
-The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
+Il contenuto del `napi_extended_error_info` restituito è valido solo finché non viene chiamata una funzione n-api sullo stesso `env`.
 
-Non fare affidamento sul contenuto o sul formato di una qualsiasi delle informazioni estese in quanto non è soggetto a SemVer e può cambiare in qualsiasi momento. È inteso solo per scopi di registrazione.
+Non fare affidamento sul contenuto o sul formato di una qualsiasi delle extended information in quanto non è soggetto a SemVer e può cambiare in qualsiasi momento. È inteso solo per scopi di registrazione.
 
-This API can be called even if there is a pending JavaScript exception.
+Quest'API può essere chiamata anche se è presente un'eccezione JavaScript in sospeso.
 
-### Exceptions
+### Eccezioni
 
-Any N-API function call may result in a pending JavaScript exception. This is obviously the case for any function that may cause the execution of JavaScript, but N-API specifies that an exception may be pending on return from any of the API functions.
+Qualsiasi chiamata alla funzione N-API può causare un'eccezione JavaScript in sospeso. Questo è ovviamente il caso per qualsiasi funzione che potrebbe causare l'esecuzione di JavaScript, ma N-API specifica che un'eccezione potrebbe essere in attesa di return da una qualsiasi delle funzioni API.
 
 If the `napi_status` returned by a function is `napi_ok` then no exception is pending and no additional action is required. If the `napi_status` returned is anything other than `napi_ok` or `napi_pending_exception`, in order to try to recover and continue instead of simply returning immediately, [`napi_is_exception_pending`][] must be called in order to determine if an exception is pending or not.
 
