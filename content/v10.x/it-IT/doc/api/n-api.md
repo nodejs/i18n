@@ -109,7 +109,7 @@ Datatype opaco passato ad una funzione di callback. Può essere utilizzato per o
 
 #### napi_callback
 
-Tipo di funzione puntatore per le funzioni native fornite dall'utente che devono essere esposte a JavaScript tramite N-API. Callback functions should satisfy the following signature:
+Tipo di funzione puntatore per le funzioni native fornite dall'utente che devono essere esposte a JavaScript tramite N-API. Le funzioni di callback devono soddisfare la seguente dicitura:
 
 ```C
 typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
