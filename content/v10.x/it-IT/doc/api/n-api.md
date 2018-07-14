@@ -99,17 +99,17 @@ Gli handle scopes di tipo escapable sono un tipo speciale di handle scope per re
 
 Questa è l'abstraction da usare per fare riferimento a `napi_value`. Ciò consente agli utenti di gestire la durata dei valori JavaScript, compresa la definizione in modo esplicito della loro durata minima.
 
-For more details, review the [Object Lifetime Management](#n_api_object_lifetime_management).
+Per maggiori dettagli, consulta [Object Lifetime Management](#n_api_object_lifetime_management).
 
-### N-API Callback types
+### Tipi di N-API Callback
 
 #### napi_callback_info
 
-Opaque datatype that is passed to a callback function. It can be used for getting additional information about the context in which the callback was invoked.
+Datatype opaco passato ad una funzione di callback. Può essere utilizzato per ottenere informazioni aggiuntive sul contesto in cui è stato invocato il callback.
 
 #### napi_callback
 
-Function pointer type for user-provided native functions which are to be exposed to JavaScript via N-API. Callback functions should satisfy the following signature:
+Tipo di funzione puntatore per le funzioni native fornite dall'utente che devono essere esposte a JavaScript tramite N-API. Callback functions should satisfy the following signature:
 
 ```C
 typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
