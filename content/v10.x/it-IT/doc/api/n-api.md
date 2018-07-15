@@ -220,13 +220,13 @@ Le seguenti funzioni utility sono disponibili anche nel caso in cui il codice na
 
 Le seguenti funzioni utility sono disponibili anche nel caso in cui il codice nativo necessiti di creare un `Error` object: [`napi_create_error`][], [`napi_create_type_error`][], e [`napi_create_range_error`][], dove il risultato è il `napi_value` che fa riferimento al JavaScript `Error` object appena creato.
 
-Il progetto Node.js aggiunge error codes a tutti gli errori generati internamente. L'obiettivo è che le applicazioni utilizzino questi error codes per il controllo di tutti gli errori. I messaggi di associated error rimarranno, ma verranno utilizzati solo per la registrazione e la visualizzazione con l'aspettativa che il messaggio possa cambiare senza applicare SemVer. In order to support this model with N-API, both in internal functionality and for module specific functionality (as its good practice), the `throw_` and `create_` functions take an optional code parameter which is the string for the code to be added to the error object. If the optional parameter is NULL then no code will be associated with the error. If a code is provided, the name associated with the error is also updated to be:
+Il progetto Node.js aggiunge error codes a tutti gli errori generati internamente. L'obiettivo è che le applicazioni utilizzino questi error codes per il controllo di tutti gli errori. I messaggi di errato associato rimarranno, ma verranno utilizzati solo per la registrazione e la visualizzazione con l'aspettativa che il messaggio possa cambiare senza applicare SemVer. Per supportare questo modello con N-API, sia nelle funzionalità interne che per le funzionalità specifiche del modulo (come buona pratica), le funzioni `throw_` e `create_` richiedono un parametro di codice opzionale che è la stringa per il codice da aggiungere all'error object. Se il parametro opzionale è NULL, nessun codice verrà associato all'errore. Se viene fornito un codice, viene aggiornato anche il nome associato all'errore:
 
 ```text
 originalName [code]
 ```
 
-where `originalName` is the original name associated with the error and `code` is the code that was provided. For example if the code is `'ERR_ERROR_1'` and a `TypeError` is being created the name will be:
+dove `originalName` è il nome originale associato all'errore e `code` è il codice che è stato fornito. Ad esempio se il codice è `'ERR_ERROR_1'` ed un `TypeError` è in fase di creazione, il nome sarà:
 
 ```text
 TypeError [ERR_ERROR_1]
@@ -242,7 +242,7 @@ added: v8.0.0
 NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] error`: The JavaScript value to be thrown.
 
 Returns `napi_ok` if the API succeeded.
