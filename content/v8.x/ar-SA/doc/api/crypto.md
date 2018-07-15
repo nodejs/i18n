@@ -20,7 +20,7 @@ console.log(hash);
 //   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
 ```
 
-## Determining if crypto support is unavailable
+## تحديد ما إذا كان دعم التشفير متوفر
 
 It is possible for Node.js to be built without including support for the `crypto` module. In such cases, calling `require('crypto')` will result in an error being thrown.
 
