@@ -467,13 +467,13 @@ NAPI_NO_RETURN void napi_fatal_error(const char* location,
 ```
 
 - `[in] location`: Posizione opzionale in cui si è verificato l'errore.
-- `[in] location_len`: The length of the location in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[in] message`: The message associated with the error.
-- `[in] message_len`: The length of the message in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
+- `[in] location_len`: La lunghezza della posizione in bytes, oppure `NAPI_AUTO_LENGTH` se è null-terminated.
+- `[in] message`: Il messaggio associato all'errore.
+- `[in] message_len`: La lunghezza del messaggio in bytes, oppure `NAPI_AUTO_LENGTH` se è null-terminated.
 
-The function call does not return, the process will be terminated.
+La funzione call non restituisce nulla, il processo verrà terminato.
 
-This API can be called even if there is a pending JavaScript exception.
+Quest'API può essere chiamata anche se è presente un'eccezione JavaScript in sospeso.
 
 ## Object Lifetime management
 
