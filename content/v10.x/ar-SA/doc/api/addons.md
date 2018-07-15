@@ -1,12 +1,12 @@
-# إضافات C++
+# إضافات C++&lrm;
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+إضافات Node.js عبارة عن كائنات مشتركة ومرتبطة بشكل حيوي، مكتوبة بلغة C++&lrm;، ويمكن تحميلها إلى Node.js باستخدام دالة [`require()`](modules.html#modules_require)&lrm;، وتستخدم كما لو أنها مديول Node.js عادي. الإضافات تستخدم بشكل أساسي كويسلة ربط بين JavaScript يعمل في Node.js وبين مكتبات C/C++&lrm;.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
+في الوقت الراهن، طريقة تنفيذ معقدة وتتطلب معرفة بعض المكونات وواجهات برمجة التطبيقات (APIs):
 
 * V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
