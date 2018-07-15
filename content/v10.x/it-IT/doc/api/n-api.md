@@ -481,11 +481,11 @@ Quando vengono effettuate le N-API calls, gli handles per gli objects nell'heap 
 
 Man mano che object handles vengono restituiti, essi vengono associati a uno 'scope'. La durata dello scope predefinito è legata alla durata della chiamata al metodo nativo. Il risultato è che, per impostazione predefinita, gli handles restano validi e gli objects associati a questi handles verranno mantenuti vivi per la durata della chiamata al metodo nativo.
 
-In many cases, however, it is necessary that the handles remain valid for either a shorter or longer lifespan than that of the native method. The sections which follow describe the N-API functions than can be used to change the handle lifespan from the default.
+In molti casi, tuttavia, è necessario che gli handles restino validi per una durata più breve o più lunga rispetto a quella del metodo nativo. Le sezioni che seguono descrivono le funzioni N-API che possono essere utilizzate per cambiare la durata predefinita dell'handle.
 
-### Making handle lifespan shorter than that of the native method
+### Rendere la durata dell'handle più breve rispetto a quella del metodo nativo
 
-It is often necessary to make the lifespan of handles shorter than the lifespan of a native method. For example, consider a native method that has a loop which iterates through the elements in a large array:
+Spesso è necessario rendere la durata degli handles più breve rispetto alla durata di un metodo nativo. Ad esempio, si consideri un metodo nativo che ha un ciclo che itera attraverso gli elements in un array di grandi dimensioni:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
