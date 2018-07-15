@@ -7,13 +7,13 @@
 <table>
   <tr>
     
-<th>v0.11</th>
-<th>v0.9</th>
-<th>v0.8</th>
-<th>v0.7</th>
-<th>v0.6</th>
-<th>v0.5</th>
-<th>&lt;= v0.4</th>
+<th>النسخة 0.11</th>
+<th>النسخة 0.9</th>
+<th>النسخة 0.8</th>
+<th>النسخة 0.7</th>
+<th>النسخة 0.6</th>
+<th>النسخة 0.5</th>
+<th>&lt;= النسخة 0.4</th>
   </tr>
   
   <tr>
@@ -169,7 +169,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* نسخ أخرى 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
