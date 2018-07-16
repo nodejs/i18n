@@ -705,7 +705,7 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API increments the reference count for the reference passed in and returns the resulting reference count.
+Quest'API incrementa il reference count per il reference passato e restituisce il reference count risultante.
 
 #### napi_reference_unref
 
@@ -719,13 +719,13 @@ NODE_EXTERN napi_status napi_reference_unref(napi_env env,
                                              int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which the reference count will be decremented.
-- `[out] result`: The new reference count.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] ref`: `napi_ref` per il quale verrà decrementato il reference count.
+- `[out] result`: Il nuovo reference count.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API decrements the reference count for the reference passed in and returns the resulting reference count.
+Quest'API decrementa il reference count per il reference passato e restituisce il reference count risultante.
 
 #### napi_get_reference_value
 
@@ -739,13 +739,13 @@ NODE_EXTERN napi_status napi_get_reference_value(napi_env env,
                                                  napi_value* result);
 ```
 
-the `napi_value passed` in or out of these methods is a handle to the object to which the reference is related.
+il `napi_value` passato all'interno o all'esterno da questi metodi è un handle per l'object a cui è collegato il reference.
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which we requesting the corresponding `Object`.
-- `[out] result`: The `napi_value` for the `Object` referenced by the `napi_ref`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] ref`: `napi_ref` per il quale richiediamo l'`Object` corrispondente.
+- `[out] result`: Il `napi_value` per l'`Object` a cui fa riferimento `napi_ref`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 If still valid, this API returns the `napi_value` representing the JavaScript `Object` associated with the `napi_ref`. Otherwise, result will be NULL.
 
