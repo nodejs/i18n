@@ -763,9 +763,9 @@ La prossima differenza è la dicitura per il metodo `Init`. Per un modulo N-API 
 napi_value Init(napi_env env, napi_value exports);
 ```
 
-Il valore restituito da `Init` viene considerato come `exports` object per il modulo. The `Init` method is passed an empty object via the `exports` parameter as a convenience. If `Init` returns NULL, the parameter passed as `exports` is exported by the module. N-API modules cannot modify the `module` object but can specify anything as the `exports` property of the module.
+Il valore restituito da `Init` viene considerato come `exports` object per il modulo. Il metodo `Init` passa un empty object tramite il parametro `exports` per comodità. Se `Init` restituisce NULL, il parametro passato come `exports` viene esportato dal modulo. I moduli N-API non possono modificare il `module` object ma possono specificare qualsiasi cosa come la proprietà `exports` del modulo.
 
-To add the method `hello` as a function so that it can be called as a method provided by the addon:
+Per aggiungere il metodo `hello` come una funzione in modo che possa essere chiamato come metodo fornito dall'addon:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -778,7 +778,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To set a function to be returned by the `require()` for the addon:
+Per impostare una funzione in modo che venga restituita da `require()` per l'addon:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -790,10 +790,10 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
+Per definire una classe in modo che possano essere create nuove istanze (spesso utilizzato con [Object Wrap](#n_api_object_wrap)):
 
 ```C
-// NOTE: partial example, not all referenced code is included
+// NOTA: esempio parziale, non è incluso tutto il codice di riferimento
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
