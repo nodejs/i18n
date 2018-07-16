@@ -844,16 +844,16 @@ Per maggiori dettagli sulla costruzione di moduli addon in generale, fare riferi
 
 ## Lavorare con i valori JavaScript
 
-N-API espone un set di API per creare tutti i tipi di valori JavaScript. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API espone un set di API per creare tutti i tipi di valori JavaScript. Alcuni di questi tipi sono documentati nella [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) del [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
-Fundamentally, these APIs are used to do one of the following:
+Fondamentalmente, queste API vengono utilizzate per eseguire una delle seguenti operazioni:
 
-1. Create a new JavaScript object
-2. Convert from a primitive C type to an N-API value
-3. Convert from N-API value to a primitive C type
-4. Get global instances including `undefined` and `null`
+1. Creare un nuovo JavaScript object
+2. Convertire da un tipo C primitivo ad un valore N-API
+3. Converti da un valore N-API ad un tipo C primitivo
+4. Ottenere istanze globali tra cui `undefined` e `null`
 
-N-API values are represented by the type `napi_value`. Any N-API call that requires a JavaScript value takes in a `napi_value`. In some cases, the API does check the type of the `napi_value` up-front. However, for better performance, it's better for the caller to make sure that the `napi_value` in question is of the JavaScript type expected by the API.
+I valori N-API sono rappresentati dal tipo `napi_value`. Qualsiasi chiamata N-API che richiede un valore JavaScript accetta un `napi_value`. In alcuni casi, l'API controlla il tipo del `napi_value` in anticipo. However, for better performance, it's better for the caller to make sure that the `napi_value` in question is of the JavaScript type expected by the API.
 
 ### Enum types
 
