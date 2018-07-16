@@ -644,7 +644,7 @@ I reference possono essere creati con un reference count iniziale. Il count può
 
 I reference devono essere cancellati una volta che non sono più richiesti dall'addon. Quando un reference viene eliminato, non impedirà più all'object corrispondente di essere raccolto. La mancata eliminazione di un reference persistente comporterà una 'perdita di memoria' sia con la memoria nativa per il reference persistente sia con l'object corrispondente sull'heap che sarà mantenuto per sempre.
 
-There can be multiple persistent references created which refer to the same object, each of which will either keep the object live or not based on its individual count.
+Possono essere creati più reference persistenti che si riferiscono allo stesso object, ognuno dei quali manterrà l'object vivo o meno in base al proprio count.
 
 #### napi_create_reference
 
@@ -659,14 +659,14 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
                                               napi_ref* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the `Object` to which we want a reference.
-- `[in] initial_refcount`: Initial reference count for the new reference.
-- `[out] result`: `napi_ref` pointing to the new reference.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: `napi_value` che rappresenta l'`Object` per il quale vogliamo un reference.
+- `[in] initial_refcount`: Reference count iniziale per il nuovo reference.
+- `[out] result`: `napi_ref` che punta al nuovo reference.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API create a new reference with the specified reference count to the `Object` passed in.
+Quest'API crea un nuovo reference con il reference count specificato sull'`Object` passato.
 
 #### napi_delete_reference
 
@@ -678,14 +678,14 @@ added: v8.0.0
 NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` to be deleted.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] ref`: `napi_ref` da cancellare.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API deletes the reference passed in.
+Quest'API cancella il reference passato.
 
-This API can be called even if there is a pending JavaScript exception.
+Quest'API può essere chiamata anche se è presente un'eccezione JavaScript in sospeso.
 
 #### napi_reference_ref
 
@@ -699,11 +699,11 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
                                            int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which the reference count will be incremented.
-- `[out] result`: The new reference count.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] ref`: `napi_ref` per il quale verrà incrementato il reference count.
+- `[out] result`: Il nuovo reference count.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API increments the reference count for the reference passed in and returns the resulting reference count.
 
