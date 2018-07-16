@@ -817,7 +817,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-If you expect that your module will be loaded multiple times during the lifetime of the Node.js process, you can use the `NAPI_MODULE_INIT` macro to initialize your module:
+Se ti aspetti che il tuo modulo venga caricato più volte durante il ciclo del processo Node.js, puoi utilizzare la macro `NAPI_MODULE_INIT` per inizializzare il tuo modulo:
 
 ```C
 NAPI_MODULE_INIT() {
@@ -834,15 +834,15 @@ NAPI_MODULE_INIT() {
 }
 ```
 
-This macro includes `NAPI_MODULE`, and declares an `Init` function with a special name and with visibility beyond the addon. This will allow Node.js to initialize the module even if it is loaded multiple times.
+Questa macro include `NAPI_MODULE`, e dichiara una funzione `Init` con un nome speciale e con una visibilità superiore all'addon. Questo consentirà a Node.js di inizializzare il modulo anche se viene caricato più volte.
 
-The variables `env` and `exports` will be available inside the function body following the macro invocation.
+Le variabili `env` ed `exports` saranno disponibili all'interno del corpo della funzione in seguito all'invocazione della macro.
 
-For more details on setting properties on objects, see the section on [Working with JavaScript Properties](#n_api_working_with_javascript_properties).
+Per maggiori dettagli sul settaggio delle proprietà sugli objects, vedi la sezione [Lavorare con le proprietà JavaScript](#n_api_working_with_javascript_properties).
 
-For more details on building addon modules in general, refer to the existing API.
+Per maggiori dettagli sulla costruzione di moduli addon in generale, fare riferimento all'API esistente.
 
-## Working with JavaScript Values
+## Lavorare con i valori JavaScript
 
 N-API exposes a set of APIs to create all types of JavaScript values. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
