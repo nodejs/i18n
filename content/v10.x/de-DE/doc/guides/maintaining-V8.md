@@ -25,13 +25,13 @@ Der Prozess für die Rückportierung von Fehlerkorrekturen in aktive Zweige ist 
 * V8 unterstützt nur aktive Zweige. Es gibt keine Tests in irgendwelchen Zweigen älter als der aktuelle Stall / Beta / Master.
 * A fix needing backport is tagged w/ *merge-request-x.x* tag. Das kann gemacht werden von jedem, der daran interessiert ist, die Reparatur rückportiert zu bekommen. Probleme mit diesem Tag sind regelmäßig vom V8-Team als Kandidaten für Backporting überprüft.
 * Fixes benötigen etwas Backzeit, bevor sie für Backporting freigegeben werden können. Dies bedeutet, dass Sie einige Tage warten müssen, um sicherzustellen, dass keine Probleme auf der Website gefunden werden Kanarische / Beta-Builds.
-* Once ready, the issue is tagged w/ *merge-approved-x.x* and one can do the actual merge by using the scripts on the [wiki page](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
-* Merge requests to an abandoned branch will be rejected.
-* Only bug fixes are accepted for backporting.
+* Sobald es fertig ist, wird das Problem mit w / *merge-approved-x.x* markiert und man kann das tun tatsächliche Zusammenführung mit den Skripten auf der [Wiki-Seite](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
+* Merge-anforderungen einen verlassenen zweig werden zuruckgewiesen.
+* Nur bug-fixes fut backporting akzeptiert.
 
-## Node.js Support Requirements
+## Node.js-Supportanforderungen
 
-At any given time Node.js needs to be maintaining a few different V8 branches for the various Current, LTS, and nightly releases. At present this list includes the following branches<sup>1</sup>:
+Zu einem bestimmten Zeitpunkt muss Node.js einige verschiedene V8-Zweige verwalten für die verschiedenen Current, LTS und Nightly werden. Zur zeit diese liste enthält die folgenden zweige<sup>1</sup>:
 
 <table>
   <tr>
@@ -120,7 +120,7 @@ At any given time Node.js needs to be maintaining a few different V8 branches fo
   </tr>
 </table>
 
-The versions of V8 used in Node.js v4.x, v6.x, and 8.x have already been abandoned by upstream V8. However, Node.js needs to continue supporting these branches for many months (Current branches) or several years (LTS branches).
+Die versionen von V8, die in Node.js v4.x, v6.x und 8.x verwendet wurden, waren bereits vorhanden aufgegeben von stromaufwärts V8. However, Node.js needs to continue supporting these branches for many months (Current branches) or several years (LTS branches).
 
 ## Maintenance Process
 
