@@ -22,9 +22,9 @@ Alle älteren Zweige sind aufgegeben und werden nicht vom V8-Team gewartet.
 
 Der Prozess für die Rückportierung von Fehlerkorrekturen in aktive Zweige ist offiziell dokumentiert [im V8-Wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Der Zusammenfassung des Prozesses ist:
 
-* V8 unterstützt nur aktive Zweige. There is no testing done on any branches older than the current stable/beta/master.
-* A fix needing backport is tagged w/ *merge-request-x.x* tag. This can be done by anyone interested in getting the fix backported. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
-* Fixes need some 'baking time' before they can be approved for backporting. This means waiting a few days to ensure that no issues are detected on the canary/beta builds.
+* V8 unterstützt nur aktive Zweige. Es gibt keine Tests in irgendwelchen Zweigen älter als der aktuelle Stall / Beta / Master.
+* A fix needing backport is tagged w/ *merge-request-x.x* tag. Das kann gemacht werden von jedem, der daran interessiert ist, die Reparatur rückportiert zu bekommen. Probleme mit diesem Tag sind regelmäßig vom V8-Team als Kandidaten für Backporting überprüft.
+* Fixes benötigen etwas Backzeit, bevor sie für Backporting freigegeben werden können. Dies bedeutet, dass Sie einige Tage warten müssen, um sicherzustellen, dass keine Probleme auf der Website gefunden werden Kanarische / Beta-Builds.
 * Once ready, the issue is tagged w/ *merge-approved-x.x* and one can do the actual merge by using the scripts on the [wiki page](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
 * Merge requests to an abandoned branch will be rejected.
 * Only bug fixes are accepted for backporting.
