@@ -1,4 +1,4 @@
-# Maintaining V8 in Node.js
+# Aktualisierung von npm in Node.js
 
 ## Hintergrund
 
@@ -120,11 +120,11 @@ Zu einem bestimmten Zeitpunkt muss Node.js einige verschiedene V8-Zweige verwalt
   </tr>
 </table>
 
-Die versionen von V8, die in Node.js v4.x, v6.x und 8.x verwendet wurden, waren bereits vorhanden aufgegeben von stromaufwärts V8. However, Node.js needs to continue supporting these branches for many months (Current branches) or several years (LTS branches).
+Die versionen von V8, die in Node.js v4.x, v6.x und 8.x verwendet wurden, waren bereits vorhanden aufgegeben von stromaufwärts V8. Node.js muss jedoch weiterhin unterstützt werden diese Zweige für viele Monate (Aktuelle Zweige) oder mehrere Jahre (LTS-Filialen).
 
-## Maintenance Process
+## Wartungsprozess
 
-Once a bug in Node.js has been identified to be caused by V8, the first step is to identify the versions of Node.js and V8 affected. The bug may be present in multiple different locations, each of which follows a slightly different process.
+Sobald ein Fehler in Node.js durch V8 verursacht wurde, ist der erste Schritt Identifizieren der Versionen von Node.js und V8 betroffen. Der Fehler kann in vorhanden sein mehrere verschiedene Orte, von denen jeder eine etwas andere folgt verarbeiten.
 
 * Unfixed bugs. The bug exists in the V8 master branch.
 * Fixed, but needs backport. The bug may need porting to one or more branches. 
@@ -132,14 +132,14 @@ Once a bug in Node.js has been identified to be caused by V8, the first step is 
   * Backporting to abandoned branches.
 * Backports identified by the V8 team. Bugs identified by upstream V8 that we haven't encountered in Node.js yet.
 
-### Unfixed Upstream Bugs
+### Unfixierten vorgelagerten bugs
 
-If the bug can be reproduced on the [Node.js `canary` branch], Chromium canary, or V8 tip-of-tree, and the test case is valid, then the bug needs to be fixed upstream first.
+Wenn der Fehler auf dem Zweig [Node.js `Kanarienvogel` Zweig] reproduziert werden kann, oder V8- Tip-of-tree, und der Testfall ist gültig, dann muss der Fehler behoben werden stromaufwärts zuerst.
 
-* Start by opening a bug upstream using [this template](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug).
-* Make sure to include a link to the corresponding Node.js issue (if one exists).
-* If the fix is simple enough, you may fix it yourself; [contributions](https://github.com/v8/v8/wiki/Contributing) are welcome.
-* V8's build waterfall tests your change.
+* Beginnen Sie mit dem Öffnen eines Fehlers mit [dieser Vorlage](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug).
+* Stellen Sie sicher, dass Sie einen Link zu dem entsprechenden Node.js-Problem einfügen (wenn einer existiert).
+* Wenn die Fehlerbehebung einfach genug ist, können Sie sie selbst beheben. [Beiträge](https://github.com/v8/v8/wiki/Contributing) sind willkommen.
+* Der Build-Wasserfall von V8 testet Ihre Veränderung.
 * Once the bug is fixed it may still need backporting, if it exists in other V8 branches that are still active or are branches that Node.js cares about. Follow the process for backporting below.
 
 ### Backporting to Active Branches
