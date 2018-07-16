@@ -2,17 +2,17 @@
 
 ## Hintergrund
 
-V8 folgt dem Chrom-Release-Zeitplan. The support horizon for Chromium is different compared to the support horizon for Node.js. As a result, Node.js needs to support multiple versions of V8 longer than what upstream needs to support. V8 branches in Node.js lack of an official maintenance process due to a missing LTS supported branch.
+V8 folgt dem Chrom-Release-Zeitplan. Der Unterstützungshorizont für Chromium ist anders als der Support-Horizont für Node.js. Als Ergebnis wird Node.js muss mehrere Versionen von V8 länger unterstützen als Upstream benötigt zu unterstützen. Der V8 Store bei Node.js hat keinen offiziellen Wartungsprozess zu einem nicht unterstützten Zweig von LTS verloren.
 
-This document attempts to outline the current maintenance processes, proposes a workflow for maintaining the V8 branches in both Node.js LTS and current releases, and discusses how the Node.js and V8 teams at Google can help.
+Dieses Dokument versucht den aktuellen Wartungsprozess zu beschreiben, schlägt vor Workflow zum Verwalten des V8-Zweigs in Node.js LTS und aktuell an veröffentlicht und erläutert, wie Node.js und V8-Teams bei Google helfen können.
 
-## V8 Release Schedule
+## V8 Release Zeitplan
 
 V8 and Chromium follow a [roughly 6-week release cadence](https://www.chromium.org/developers/calendar). At any given time there are three V8 branches that are **active**.
 
-For example, at the time of this writing:
+Zum Beispiel zum Zeitpunkt dieses Schreibens:
 
-* **Stable**: V8 5.4 is currently shipping as part of Chromium stable. This branch was created approx. 6 weeks before from when V8 5.3 shipped as stable.
+* **Stable**: V8 5.4 is currently shipping as part of Chromium stable. Dies Filiale wurde ca. 6 Wochen vorher ab V8 5.3 als stabiler Versand.
 * **Beta**: V8 5.5 is currently in beta. It will be promoted to stable next; approximately 6 weeks after V8 5.4 shipped as stable.
 * **Master**: V8 tip-of-tree corresponds to V8 5.6. This branch gets regularly released as part of the Chromium **canary** builds. This branch will be promoted to beta next when V8 5.5 ships as stable.
 
