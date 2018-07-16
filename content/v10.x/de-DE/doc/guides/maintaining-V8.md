@@ -13,16 +13,16 @@ V8 and Chromium follow a [roughly 6-week release cadence](https://www.chromium.o
 Zum Beispiel zum Zeitpunkt dieses Schreibens:
 
 * **Stable**: V8 5.4 is currently shipping as part of Chromium stable. Dies Filiale wurde ca. 6 Wochen vorher ab V8 5.3 als stabiler Versand.
-* **Beta**: V8 5.5 is currently in beta. It will be promoted to stable next; approximately 6 weeks after V8 5.4 shipped as stable.
-* **Master**: V8 tip-of-tree corresponds to V8 5.6. This branch gets regularly released as part of the Chromium **canary** builds. This branch will be promoted to beta next when V8 5.5 ships as stable.
+* **Beta**: V8 5.5 is currently in beta. Es wird als nächstes zu stabil hochgestuft; ca. 6 Wochen nach Auslieferung von V8 5.4 als stabil.
+* **Master**: V8 tip-of-tree corresponds to V8 5.6. This branch gets regularly released as part of the Chromium **canary** builds. Dieser Zweig wird sein Wenn V8 5.5 als stabil ausgeliefert wird, geht es weiter zur Beta.
 
-All older branches are abandoned and are not maintained by the V8 team.
+Alle älteren Zweige sind aufgegeben und werden nicht vom V8-Team gewartet.
 
-### V8 merge process overview
+### V8-Merge-Prozess-Übersicht
 
-The process for backporting bug fixes to active branches is officially documented [on the V8 wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). The summary of the process is:
+Der Prozess für die Rückportierung von Fehlerkorrekturen in aktive Zweige ist offiziell dokumentiert [im V8-Wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Der Zusammenfassung des Prozesses ist:
 
-* V8 only supports active branches. There is no testing done on any branches older than the current stable/beta/master.
+* V8 unterstützt nur aktive Zweige. There is no testing done on any branches older than the current stable/beta/master.
 * A fix needing backport is tagged w/ *merge-request-x.x* tag. This can be done by anyone interested in getting the fix backported. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
 * Fixes need some 'baking time' before they can be approved for backporting. This means waiting a few days to ensure that no issues are detected on the canary/beta builds.
 * Once ready, the issue is tagged w/ *merge-approved-x.x* and one can do the actual merge by using the scripts on the [wiki page](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
