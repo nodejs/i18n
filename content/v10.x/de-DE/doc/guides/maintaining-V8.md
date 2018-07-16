@@ -140,11 +140,11 @@ Wenn der Fehler auf dem Zweig [Node.js `Kanarienvogel` Zweig] reproduziert werde
 * Stellen Sie sicher, dass Sie einen Link zu dem entsprechenden Node.js-Problem einfügen (wenn einer existiert).
 * Wenn die Fehlerbehebung einfach genug ist, können Sie sie selbst beheben. [Beiträge](https://github.com/v8/v8/wiki/Contributing) sind willkommen.
 * Der Build-Wasserfall von V8 testet Ihre Veränderung.
-* Once the bug is fixed it may still need backporting, if it exists in other V8 branches that are still active or are branches that Node.js cares about. Follow the process for backporting below.
+* Sobald der Fehler behoben ist, muss er möglicherweise noch zurückportiert werden, wenn er in einem anderen V8 vorhanden ist Zweige, die noch aktiv sind oder Zweige sind, die Node.js interessiert. Befolgen Sie den folgenden Vorgang für die Rückportierung.
 
-### Backporting to Active Branches
+### Zurück zu Active Branches
 
-If the bug exists in any of the active V8 branches, we may need to get the fix backported. At any given time there are [two active branches](https://build.chromium.org/p/client.v8.branches/console) (beta and stable) in addition to master. The following steps are needed to backport the fix:
+Wenn der Fehler in einer der aktiven V8-Zweige vorhanden ist, müssen wir möglicherweise das Update erhalten rückportiert. Zu jeder gegebenen Zeit gibt es [zwei aktive Zweige](https://build.chromium.org/p/client.v8.branches/console) (Beta und stall) zusätzlich zum Maister. Die folgenden Schritte sind erforderlich den Fix rückportieren:
 
 * Identify which version of V8 the bug was fixed in.
 * Identify if any active V8 branches still contain the bug:
