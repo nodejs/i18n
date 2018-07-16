@@ -149,16 +149,16 @@ Wenn der Fehler in einer der aktiven V8-Zweige vorhanden ist, müssen wir mögli
 * Identify which version of V8 the bug was fixed in.
 * Identify if any active V8 branches still contain the bug:
 * A tracking bug is needed to request a backport. 
-  * If there isn't already a V8 bug tracking the fix, open a new merge request bug using this [Node.js specific template](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20merge%20request).
+  * Wenn nicht bereits ein V8-Fehler den Fix verfolgt, öffnen Sie eine neue Zusammenführungsanforderung Fehler mit dieser [Node.js spezifischen Vorlage ](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20merge%20request).
   * If a bug already exists 
     * Add a reference to the GitHub issue.
-    * Attach *merge-request-x.x* labels to the bug for any active branches that still contain the bug. (e.g. merge-request-5.3, merge-request-5.4)
+    * Hängen Sie *merge-request-x.x* -Etiketten an den Fehler für aktive Zweige an die immer noch den Fehler enthalten. (e.g. merge-request-5.3, merge-request-5.4)
     * Add ofrobots-at-google.com to the cc list.
-* Once the merge has been approved, it should be merged using the [merge script documented in the V8 wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Merging requires commit access to the V8 repository. If you don't have commit access you can indicate someone on the V8 team can do the merge for you.
-* It is possible that the merge request may not get approved, for example if it is considered to be a feature or otherwise too risky for V8 stable. In such cases we float the patch on the Node.js side. See the process on 'Backporting to Abandoned branches'.
-* Once the fix has been merged upstream, it can be picked up during an update of the V8 branch (see below).
+* Sobald die Zusammenführung genehmigt wurde, sollte sie mit der Verknüpfung zusammengeführt werden [Skript zusammenführen, das im V8-Wiki dokumentiert ist](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Merging requires commit access to the V8 repository. If you don't have commit access you can indicate someone on the V8 team can do the merge for you.
+* Es ist möglich, dass die Zusammenführungsanforderung möglicherweise nicht genehmigt wird, z wird für V8 stable als Feature oder anderweitig als zu riskant angesehen. In such cases we float the patch on the Node.js side. See the process on 'Backporting to Abandoned branches'.
+* Sobald der Fix upstream zusammengeführt wurde, kann er während eines Updates von der V8-Zweig (siehe unten).
 
-### Backporting to Abandoned Branches
+### Backporting zu verlassenen Niederlassungen
 
 Abandoned V8 branches are supported in the Node.js repository. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
 
