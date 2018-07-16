@@ -844,7 +844,7 @@ Per maggiori dettagli sulla costruzione di moduli addon in generale, fare riferi
 
 ## Lavorare con i valori JavaScript
 
-N-API exposes a set of APIs to create all types of JavaScript values. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API espone un set di API per creare tutti i tipi di valori JavaScript. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
 Fundamentally, these APIs are used to do one of the following:
 
