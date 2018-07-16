@@ -853,7 +853,7 @@ Fondamentalmente, queste API vengono utilizzate per eseguire una delle seguenti 
 3. Converti da un valore N-API ad un tipo C primitivo
 4. Ottenere istanze globali tra cui `undefined` e `null`
 
-I valori N-API sono rappresentati dal tipo `napi_value`. Qualsiasi chiamata N-API che richiede un valore JavaScript accetta un `napi_value`. In alcuni casi, l'API controlla il tipo del `napi_value` in anticipo. However, for better performance, it's better for the caller to make sure that the `napi_value` in question is of the JavaScript type expected by the API.
+I valori N-API sono rappresentati dal tipo `napi_value`. Qualsiasi chiamata N-API che richiede un valore JavaScript accetta un `napi_value`. In alcuni casi, l'API controlla il tipo del `napi_value` in anticipo. Tuttavia, per prestazioni migliori, è meglio che il caller si assicuri che il `napi_value` in questione sia del tipo JavaScript previsto dall'API.
 
 ### Enum types
 
