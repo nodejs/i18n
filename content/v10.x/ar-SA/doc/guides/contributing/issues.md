@@ -21,9 +21,9 @@
 
 ## مناقشة المواضيع غير التقنية
 
-Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
+يجب توجيه مناقشة القضايا غير التقنية (مثل تسجيل الملكية الفكرية والعلامات التجارية) إلى [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
-## Submitting a Bug Report
+## تقديم تقرير عن خطأ
 
 When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
 
