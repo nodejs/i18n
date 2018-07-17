@@ -55,7 +55,7 @@ simple and free of external dependencies as you are able.
 
 أهم البيانات التي نحتاجها لتقييم التقرير بشكل صحيح هي وصف السلوك الذي تلاحظه ، وحالة اختبار بسيطة يمكن استخدامها لإعادة إنشاء المشكلة بأنفسنا. إذا لم نتمكن من إعادة المشكلة ، يصبح من المستحيل إصلاحها.
 
-In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+لتجنب إمكانية حدوث أخطاء بواسطة شفرات البرمجة userland ، يجب أن تقتصر حالات الاختبار على استخدام واجهة برمجة التطبيقات Node.js APIs. * فقط *. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
 See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 
