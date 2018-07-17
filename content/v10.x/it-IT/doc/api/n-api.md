@@ -1088,7 +1088,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Quest'API alloca un `node::Buffer` object e lo inizializza con i dati supportati dal buffer passato/approvato. Mentre questa è ancora una struttura di dati completamente supportata, nella maggior parte dei casi sarà sufficiente utilizzare un `TypedArray`.
 
-For Node.js >=4 `Buffers` are `Uint8Array`s.
+Per Node.js >=4 i `Buffers` sono `Uint8Array`.
 
 #### napi_create_function
 
@@ -1105,14 +1105,14 @@ napi_status napi_create_function(napi_env env,
                                  napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] utf8name`: A string representing the name of the function encoded as UTF8.
-- `[in] length`: The length of the `utf8name` in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[in] cb`: A function pointer to the native function to be invoked when the created function is invoked from JavaScript.
-- `[in] data`: Optional arbitrary context data to be passed into the native function when it is invoked.
-- `[out] result`: A `napi_value` representing a JavaScript function.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] utf8name`: Una stringa che rappresenta il nome della funzione codificata come UTF8.
+- `[in] length`: La lunghezza di `utf8name` in bytes, oppure `NAPI_AUTO_LENGTH` se è null-terminated.
+- `[in] cb`: Un funzione puntatore alla funzione nativa da invocare quando la funzione creata viene invocata da JavaScript.
+- `[in] data`: Arbitrary context data opzionali da passare alla funzione nativa quando viene invocata.
+- `[out] result`: Un `napi_value` che rappresenta una funzione JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API returns an N-API value corresponding to a JavaScript `Function` object. It's used to wrap native functions so that they can be invoked from JavaScript.
 
