@@ -876,7 +876,7 @@ typedef enum {
 
 Descrive il tipo di `napi_value`. Questo generalmente corrisponde ai tipi descritti nella [Section 6.1](https://tc39.github.io/ecma262/#sec-ecmascript-language-types) dell'ECMAScript Language Specification. Oltre ai tipi in quella sezione, `napi_valuetype` può anche rappresentare delle `Function` e degli `Object` con dati esterni.
 
-A JavaScript value of type `napi_external` appears in JavaScript as a plain object such that no properties can be set on it, and no prototype.
+Un valore JavaScript di tipo `napi_external` viene visualizzato in JavaScript come un semplice object in modo tale che nessuna proprietà e nessun prototipo possano essere impostati su di esso.
 
 #### napi_typedarray_type
 
@@ -894,9 +894,9 @@ typedef enum {
 } napi_typedarray_type;
 ```
 
-This represents the underlying binary scalar datatype of the `TypedArray`. Elements of this enum correspond to [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+Questo rappresenta il datatype scalare binario sottostante di `TypedArray`. Gli elementi di questa enum corrispondono alla [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
-### Object Creation Functions
+### Funzioni per la creazione di Objects
 
 #### napi_create_array
 
@@ -908,10 +908,10 @@ added: v8.0.0
 napi_status napi_create_array(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[out] result`: A `napi_value` representing a JavaScript `Array`.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Array`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API returns an N-API value corresponding to a JavaScript `Array` type. JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
 
@@ -929,7 +929,7 @@ napi_status napi_create_array_with_length(napi_env env,
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] length`: The initial length of the `Array`.
-- `[out] result`: A `napi_value` representing a JavaScript `Array`.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Array`.
 
 Returns `napi_ok` if the API succeeded.
 
