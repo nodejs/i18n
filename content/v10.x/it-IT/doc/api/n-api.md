@@ -1343,7 +1343,7 @@ napi_status napi_create_string_utf16(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API creates a JavaScript `String` object from a UTF16-LE-encoded C string. La stringa nativa viene copiata.
+Quest'API crea un JavaScript `String` object da una stringa C con codifica UTF16-LE. La stringa nativa viene copiata.
 
 Il tipo JavaScript `String` è descritto nella [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) dell'ECMAScript Language Specification.
 
@@ -1360,18 +1360,18 @@ napi_status napi_create_string_utf8(napi_env env,
                                     napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] str`: Character buffer representing a UTF8-encoded string.
-- `[in] length`: The length of the string in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] str`: Character buffer che rappresenta una stringa con codifica UTF8.
+- `[in] length`: La lunghezza della stringa in bytes, oppure `NAPI_AUTO_LENGTH` se è null-terminated.
 - `[out] result`: Un `napi_value` che rappresenta una JavaScript `String`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API creates a JavaScript `String` object from a UTF8-encoded C string. La stringa nativa viene copiata.
+Quest'API crea un JavaScript `String` object da una stringa C con codifica UTF8. La stringa nativa viene copiata.
 
 Il tipo JavaScript `String` è descritto nella [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) dell'ECMAScript Language Specification.
 
-### Functions to convert from N-API to C types
+### Funzioni per la conversione da N-API a tipi C
 
 #### napi_get_array_length
 
@@ -1385,15 +1385,15 @@ napi_status napi_get_array_length(napi_env env,
                                   uint32_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the JavaScript `Array` whose length is being queried.
-- `[out] result`: `uint32` representing length of the array.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: `napi_value` che rappresenta il JavaScript `Array` di cui viene interrogata la lunghezza.
+- `[out] result`: `uint32` che rappresenta la lunghezza dell'array.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns the length of an array.
+Quest'API restituisce la lunghezza di un'array.
 
-`Array` length is described in [Section 22.1.4.1](https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length) of the ECMAScript Language Specification.
+La lunghezza dell'`Array` è descritta nella [Section 22.1.4.1](https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length) dell'ECMAScript Language Specification.
 
 #### napi_get_arraybuffer_info
 
