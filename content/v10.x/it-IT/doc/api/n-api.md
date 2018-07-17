@@ -1003,9 +1003,9 @@ napi_status napi_create_buffer_copy(napi_env env,
 - `[out] result_data`: Puntatore al buffer dei dati sottostanti del nuovo `Buffer`.
 - `[out] result`: Un `napi_value` che rappresenta un `node::Buffer`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API allocates a `node::Buffer` object and initializes it with data copied from the passed-in buffer. While this is still a fully-supported data structure, in most cases using a `TypedArray` will suffice.
+Quest'API alloca un `node::Buffer` object e lo inizializza con i dati copiati dal buffer passato/approvato. Mentre questa è ancora una struttura di dati completamente supportata, nella maggior parte dei casi sarà sufficiente utilizzare un `TypedArray`.
 
 #### napi_create_external
 
@@ -1086,7 +1086,7 @@ napi_status napi_create_external_buffer(napi_env env,
 
 Returns `napi_ok` if the API succeeded.
 
-This API allocates a `node::Buffer` object and initializes it with data backed by the passed in buffer. While this is still a fully-supported data structure, in most cases using a `TypedArray` will suffice.
+This API allocates a `node::Buffer` object and initializes it with data backed by the passed in buffer. Mentre questa è ancora una struttura di dati completamente supportata, nella maggior parte dei casi sarà sufficiente utilizzare un `TypedArray`.
 
 For Node.js >=4 `Buffers` are `Uint8Array`s.
 
