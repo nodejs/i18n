@@ -25,11 +25,11 @@
 
 ## تقديم تقرير عن خطأ
 
-When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
+عند فتح تذكرة جديدة في متعقب أخطاء `nodejs/node` ، سيتم تقديم قالب أساسي للمستخدمين والذي يجب ملؤه.
 
 ```markdown
 <!--
-Thank you for reporting an issue.
+شكرًا لك على التبليغ عن خطأ.
 
 This issue tracker is for bugs and issues found within Node.js core.
 If you require more general support please file an issue on our help
