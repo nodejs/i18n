@@ -981,7 +981,7 @@ napi_status napi_create_buffer(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API allocates a `node::Buffer` object. While this is still a fully-supported data structure, in most cases using a `TypedArray` will suffice.
+Quest'API alloca un `node::Buffer` object. Mentre questa è ancora una struttura di dati completamente supportata, nella maggior parte dei casi sarà sufficiente utilizzare un `TypedArray`.
 
 #### napi_create_buffer_copy
 
@@ -997,11 +997,11 @@ napi_status napi_create_buffer_copy(napi_env env,
                                     napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] size`: Size in bytes of the input buffer (should be the same as the size of the new buffer).
-- `[in] data`: Raw pointer to the underlying buffer to copy from.
-- `[out] result_data`: Pointer to the new `Buffer`'s underlying data buffer.
-- `[out] result`: A `napi_value` representing a `node::Buffer`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] size`: Dimensione in bytes dell'input buffer (dovrebbe essere uguale alla dimensione del nuovo buffer).
+- `[in] data`: Puntatore Raw al buffer sottostante da cui poter copiare.
+- `[out] result_data`: Puntatore al buffer dei dati sottostanti del nuovo `Buffer`.
+- `[out] result`: Un `napi_value` che rappresenta un `node::Buffer`.
 
 Returns `napi_ok` if the API succeeded.
 
