@@ -61,9 +61,9 @@ simple and free of external dependencies as you are able.
 
 ## تصنيف تقرير الخطأ
 
-من الشائع توليد نقاش حول تذكرة بمجرد فتحها. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
+من الشائع توليد نقاش حول تذكرة بمجرد فتحها. قد يكون لدى بعض المساهمين آراء متباينة حول المشكلة ، بما في ذلك إذا كان ما هو معروض عيب أو ميزة. هذه المناقشة هي جزء من العملية ويجب أن تظل مركزة, مفيدة ومهنية.
 
-Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
+الردود القصيرة والمختصرة التي لا توفر سياقًا إضافيًا ولا دعمًا للتفاصيل - ليست مفيدة أو مهنية. بالنسبة للكثيرين ، هذه الردود ببساطة مزعجة وغير ودية.
 
 Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
