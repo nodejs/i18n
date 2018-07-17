@@ -65,8 +65,8 @@ simple and free of external dependencies as you are able.
 
 الردود القصيرة والمختصرة التي لا توفر سياقًا إضافيًا ولا دعمًا للتفاصيل - ليست مفيدة أو مهنية. بالنسبة للكثيرين ، هذه الردود ببساطة مزعجة وغير ودية.
 
-Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
+يتم تشجيع المساهمين على مساعدة بعضهم البعض لإحراز تقدم كبير قدر المستطاع ، تشجيع بعضهم البعض لحل القضايا بشكل تعاوني. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. من خلال القيام بذلك ، يمكننا في كثير من الأحيان الوصول إلى النتيجة الصحيحة أسرع بكثير.
 
-## Resolving a Bug Report
+## إصلاح تقرير الخطأ
 
-In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
+في الغالبية العظمى من الحالات ، يتم حل التذاكر عن طريق فتح طلب سحب. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
