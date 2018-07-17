@@ -162,7 +162,7 @@ Wenn der Fehler in einer der aktiven V8-Zweige vorhanden ist, müssen wir mögli
 
 Zweig V8 Links wird im repository-Knoten unterstützt.js. Das Update benötigt werden handverlesene, in den Knoten.js repository und V8-CI müssen die änderung testen.
 
-* For each abandoned V8 branch corresponding to an LTS branch that is affected by the bug: 
+* Für jeden verlassenen V8-Zweig, der einem betroffenen LTS-Zweig entspricht durch den bug: 
   * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
   * Cherry-pick the commit(s) from the V8 repository.
   * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. This will not cause any problems with versioning because V8 will not publish other patches for this branch, so Node.js can effectively bump the patch version.
