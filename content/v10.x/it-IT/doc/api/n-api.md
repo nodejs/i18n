@@ -1114,9 +1114,9 @@ napi_status napi_create_function(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-Quest'API restituisce un valore N-API corrispondente ad un JavaScript `Function` object. It's used to wrap native functions so that they can be invoked from JavaScript.
+Quest'API restituisce un valore N-API corrispondente ad un JavaScript `Function` object. È usata per avvolgere(wrap) le funzioni native in modo che possano essere invocate da JavaScript.
 
-JavaScript `Function`s are described in [Section 19.2](https://tc39.github.io/ecma262/#sec-function-objects) of the ECMAScript Language Specification.
+Le JavaScript `Function` sono descritte nella [Section 19.2](https://tc39.github.io/ecma262/#sec-function-objects) dell'ECMAScript Language Specification.
 
 #### napi_create_object
 
@@ -1128,14 +1128,14 @@ added: v8.0.0
 napi_status napi_create_object(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: A `napi_value` representing a JavaScript `Object`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Object`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API allocates a default JavaScript `Object`. It is the equivalent of doing `new Object()` in JavaScript.
+Quest'API alloca un JavaScript `Object` predefinito. È l'equivalente di fare `new Object()` in JavaScript.
 
-The JavaScript `Object` type is described in [Section 6.1.7](https://tc39.github.io/ecma262/#sec-object-type) of the ECMAScript Language Specification.
+Il tipo JavaScript `Object` è descritto nella [Section 6.1.7](https://tc39.github.io/ecma262/#sec-object-type) dell'ECMAScript Language Specification.
 
 #### napi_create_symbol
 
@@ -1149,15 +1149,15 @@ napi_status napi_create_symbol(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] description`: Optional `napi_value` which refers to a JavaScript `String` to be set as the description for the symbol.
-- `[out] result`: A `napi_value` representing a JavaScript `Symbol`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] description`: `napi_value` opzionale che fa riferimento ad una JavaScript `String` da impostare come descrizione per il simbolo.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Symbol`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API creates a JavaScript `Symbol` object from a UTF8-encoded C string.
+Quest'API crea un JavaScript `Symbol` object da una stringa C con codifica UTF8.
 
-The JavaScript `Symbol` type is described in [Section 19.4](https://tc39.github.io/ecma262/#sec-symbol-objects) of the ECMAScript Language Specification.
+Il tipo JavaScript `Symbol` è descritto nella [Section 19.4](https://tc39.github.io/ecma262/#sec-symbol-objects) dell'ECMAScript Language Specification.
 
 #### napi_create_typedarray
 
@@ -1174,16 +1174,16 @@ napi_status napi_create_typedarray(napi_env env,
                                    napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] type`: Scalar datatype of the elements within the `TypedArray`.
-- `[in] length`: Number of elements in the `TypedArray`.
-- `[in] arraybuffer`: `ArrayBuffer` underlying the typed array.
-- `[in] byte_offset`: The byte offset within the `ArrayBuffer` from which to start projecting the `TypedArray`.
-- `[out] result`: A `napi_value` representing a JavaScript `TypedArray`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] type`: Datatype scalare degli elementi all'interno di `TypedArray`.
+- `[in] length`: Numero di elementi in `TypedArray`.
+- `[in] arraybuffer`: `ArrayBuffer` sottostante all'array tipizzato.
+- `[in] byte_offset`: Il byte offset all'interno dell'`ArrayBuffer` da cui iniziare a proiettare il `TypedArray`.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `TypedArray`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API creates a JavaScript `TypedArray` object over an existing `ArrayBuffer`. `TypedArray` objects provide an array-like view over an underlying data buffer where each element has the same underlying binary scalar datatype.
+Quest'API crea un JavaScript `TypedArray` object su un `ArrayBuffer` esistente. `TypedArray` objects provide an array-like view over an underlying data buffer where each element has the same underlying binary scalar datatype.
 
 It's required that `(length * size_of_element) + byte_offset` should be <= the size in bytes of the array passed in. If not, a `RangeError` exception is raised.
 
