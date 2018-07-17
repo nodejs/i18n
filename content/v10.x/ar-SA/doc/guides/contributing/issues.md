@@ -13,13 +13,13 @@
 
 1. فتح التذكرة للمناقشة: على سبيل المثال ، إذا كنت تعتقد أنك اكتشفت خطأً في Node.js ، فإن إنشاء تقرير خطأ جديد في أداة تعقب الأخطاء `nodejs/node` هو أفضل طريقة للإبلاغ عنه.
 2. من خلال المساعدة في فرز التذكرة: يمكن إجراء ذلك إما عن طريق توفير تفاصيل الدعم (حالة اختبار توضح وجود خطأ) ، أو تقديم اقتراحات حول كيفية معالجة التذكرة.
-3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
+3. من خلال المساعدة على حل التذكرة: عادة ما يتم ذلك إما في النموذج للتدليل على أن المشكلة المبلغ عنها ليست مشكلة بعد كل شيء ، أو أكثر في كثير من الأحيان ، عن طريق فتح طلب السحب الذي يغير بعض الشيء شيء ما في `nodejs/node` بطريقة ملموسة ومراجعة.
 
-## Asking for General Help
+## طلب المساعدة في مسائل عامة
 
-Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
+نظرًا لأن النشاط في مستودع `nodejs/node` مرتفع جدًا ، يجب توجيه الأسئلة أو طلبات المساعدة العامة باستخدام Node.js إلى [Node.js help repository](https://github.com/nodejs/help/issues).
 
-## Discussing non-technical topics
+## مناقشة المواضيع غير التقنية
 
 Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
