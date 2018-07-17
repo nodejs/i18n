@@ -51,9 +51,9 @@ simple and free of external dependencies as you are able.
 <!-- Enter your issue details below this comment. -->
 ```
 
-If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
+إذا كنت تعتقد أنك اكتشفت خطأ في Node.js ، فيرجى ملء هذا النموذج ، اتبع القالب إلى أقصى حد ممكن. لا تقلق إذا كنت لا تستطيع الإجابة على كل التفاصيل ، فقط املأ ما تستطيع.
 
-The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
+أهم البيانات التي نحتاجها لتقييم التقرير بشكل صحيح هي وصف السلوك الذي تلاحظه ، وحالة اختبار بسيطة يمكن استخدامها لإعادة إنشاء المشكلة بأنفسنا. إذا لم نتمكن من إعادة المشكلة ، يصبح من المستحيل إصلاحها.
 
 In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
