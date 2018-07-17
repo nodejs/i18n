@@ -1211,13 +1211,13 @@ napi_status napi_create_dataview(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API creates a JavaScript `DataView` object over an existing `ArrayBuffer`. `DataView` objects provide an array-like view over an underlying data buffer, but one which allows items of different size and type in the `ArrayBuffer`.
+Quest'API crea un JavaScript `DataView` su un `ArrayBuffer` esistente. Gli `DataView` objects forniscono una visione simile all'array su un data buffer sottostante, ma uno che accetti elementi di dimensioni e tipo diversi nell'`ArrayBuffer`.
 
-It is required that `byte_length + byte_offset` is less than or equal to the size in bytes of the array passed in. If not, a `RangeError` exception is raised.
+È richiesto che `byte_length + byte_offset` sia minore o uguale alla dimensione in bytes dell'array passato/approvato. In caso contrario, viene generata un'eccezione `RangeError`.
 
-JavaScript `DataView` objects are described in [Section 24.3](https://tc39.github.io/ecma262/#sec-dataview-objects) of the ECMAScript Language Specification.
+Gli JavaScript `DataView` objects sono descritti nella [Section 24.3](https://tc39.github.io/ecma262/#sec-dataview-objects) dell'ECMAScript Language Specification.
 
-### Functions to convert from C types to N-API
+### Funzioni per la conversione da tipi C a N-API
 
 #### napi_create_int32
 
@@ -1229,13 +1229,13 @@ added: v8.4.0
 napi_status napi_create_int32(napi_env env, int32_t value, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: Integer value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: Valore intero da rappresentare in JavaScript.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Number`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API is used to convert from the C `int32_t` type to the JavaScript `Number` type.
+Quest'API viene utilizzata per la conversione dal tipo C `int32_t` al tipo JavaScript `Number`.
 
 The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
 
@@ -1251,7 +1251,7 @@ napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] value`: Unsigned integer value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Number`.
 
 Returns `napi_ok` if the API succeeded.
 
@@ -1271,7 +1271,7 @@ napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] value`: Integer value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Number`.
 
 Returns `napi_ok` if the API succeeded.
 
@@ -1291,7 +1291,7 @@ napi_status napi_create_double(napi_env env, double value, napi_value* result)
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] value`: Double-precision value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `Number`.
 
 Returns `napi_ok` if the API succeeded.
 
