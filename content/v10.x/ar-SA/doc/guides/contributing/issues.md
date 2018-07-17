@@ -2,10 +2,10 @@
 
 * [كيف تساهم في التذاكر](#how-to-contribute-in-issues)
 * [طلب المساعدة](#asking-for-general-help)
-* [Discussing non-technical topics](#discussing-non-technical-topics)
-* [Submitting a Bug Report](#submitting-a-bug-report)
-* [Triaging a Bug Report](#triaging-a-bug-report)
-* [Resolving a Bug Report](#resolving-a-bug-report)
+* [مناقشة المواضيع غير التقنية](#discussing-non-technical-topics)
+* [تقديم تقرير عن الأخطاء](#submitting-a-bug-report)
+* [فرز تقارير الأخطاء](#triaging-a-bug-report)
+* [حل تقرير الخطأ](#resolving-a-bug-report)
 
 ## كيف تساهم في التذاكر
 
