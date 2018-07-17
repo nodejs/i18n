@@ -31,12 +31,10 @@
 <!--
 شكرًا لك على التبليغ عن خطأ.
 
-This issue tracker is for bugs and issues found within Node.js core.
-If you require more general support please file an issue on our help
-repo. https://github.com/nodejs/help
+متعقب الأخطاء هذا هو للأخطاء والمشاكل التي وجدت في نواة Node.js.
+إذا كنت تحتاج إلى مزيد من الدعم العام ، يُرجى تقديم تذكرة في مستودع المساعدة الخاص بنا. https://github.com/nodejs/help 
 
-
-Please fill in as much of the template below as you're able.
+يرجى ملء أكبر قدر ممكن من النموذج أدناه.
 
 Version: output of `node -v`
 Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
