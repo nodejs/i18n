@@ -855,7 +855,7 @@ Fondamentalmente, queste API vengono utilizzate per eseguire una delle seguenti 
 
 I valori N-API sono rappresentati dal tipo `napi_value`. Qualsiasi chiamata N-API che richiede un valore JavaScript accetta un `napi_value`. In alcuni casi, l'API controlla il tipo del `napi_value` in anticipo. Tuttavia, per prestazioni migliori, è meglio che il caller si assicuri che il `napi_value` in questione sia del tipo JavaScript previsto dall'API.
 
-### Enum types
+### Tipi di Enum
 
 #### napi_valuetype
 
@@ -874,7 +874,7 @@ typedef enum {
 } napi_valuetype;
 ```
 
-Describes the type of a `napi_value`. This generally corresponds to the types described in [Section 6.1](https://tc39.github.io/ecma262/#sec-ecmascript-language-types) of the ECMAScript Language Specification. In addition to types in that section, `napi_valuetype` can also represent `Function`s and `Object`s with external data.
+Descrive il tipo di `napi_value`. Questo generalmente corrisponde ai tipi descritti nella [Section 6.1](https://tc39.github.io/ecma262/#sec-ecmascript-language-types) dell'ECMAScript Language Specification. Oltre ai tipi in quella sezione, `napi_valuetype` può anche rappresentare delle `Function` e degli `Object` con dati esterni.
 
 A JavaScript value of type `napi_external` appears in JavaScript as a plain object such that no properties can be set on it, and no prototype.
 
