@@ -957,9 +957,9 @@ napi_status napi_create_arraybuffer(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-Quest'API restuisce un valore N-API corrispondente ad un JavaScript `ArrayBuffer`. Gli `ArrayBuffer` sono usati per rappresentare i buffers di dati binari a lunghezza fissa. Sono normalmente utilizzati come backing-buffer per gli `TypedArray` objects. L'`ArrayBuffer` allocato avrà un byte buffer sottostante la cui dimensione è determinata dal parametro `length` che è stato passato/approvato. Il buffer sottostante viene restituito in modo facoltativo al caller nel caso in cui il caller voglia manipolare direttamente il buffer. Questo buffer può essere scritto solo direttamente dal codice nativo. To write to this buffer from JavaScript, a typed array or `DataView` object would need to be created.
+Quest'API restuisce un valore N-API corrispondente ad un JavaScript `ArrayBuffer`. Gli `ArrayBuffer` sono usati per rappresentare i buffers di dati binari a lunghezza fissa. Sono normalmente utilizzati come backing-buffer per gli `TypedArray` objects. L'`ArrayBuffer` allocato avrà un byte buffer sottostante la cui dimensione è determinata dal parametro `length` che è stato passato/approvato. Il buffer sottostante viene restituito in modo facoltativo al caller nel caso in cui il caller voglia manipolare direttamente il buffer. Questo buffer può essere scritto solo direttamente dal codice nativo. Per scrivere su questo buffer da JavaScript, è necessario creare un array tipizzato od un `DataView` object.
 
-JavaScript `ArrayBuffer` objects are described in [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) of the ECMAScript Language Specification.
+Gli JavaScript `ArrayBuffer` objects sono descritti nella [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) dell'ECMAScript Language Specification.
 
 #### napi_create_buffer
 
@@ -974,12 +974,12 @@ napi_status napi_create_buffer(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] size`: Size in bytes of the underlying buffer.
-- `[out] data`: Raw pointer to the underlying buffer.
-- `[out] result`: A `napi_value` representing a `node::Buffer`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] size`: Dimensione in bytes del buffer sottostante.
+- `[out] data`: Puntatore Raw al buffer sottostante.
+- `[out] result`: Un `napi_value` che rappresenta un `node::Buffer`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API allocates a `node::Buffer` object. While this is still a fully-supported data structure, in most cases using a `TypedArray` will suffice.
 
