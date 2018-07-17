@@ -55,13 +55,13 @@ simple and free of external dependencies as you are able.
 
 أهم البيانات التي نحتاجها لتقييم التقرير بشكل صحيح هي وصف السلوك الذي تلاحظه ، وحالة اختبار بسيطة يمكن استخدامها لإعادة إنشاء المشكلة بأنفسنا. إذا لم نتمكن من إعادة المشكلة ، يصبح من المستحيل إصلاحها.
 
-لتجنب إمكانية حدوث أخطاء بواسطة شفرات البرمجة userland ، يجب أن تقتصر حالات الاختبار على استخدام واجهة برمجة التطبيقات Node.js APIs. * فقط *. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+لتجنب إمكانية حدوث أخطاء بواسطة شفرات البرمجة userland ، يجب أن تقتصر حالات الاختبار على استخدام واجهة برمجة التطبيقات Node.js APIs. * فقط *. إذا كان الخطأ يحدث فقط عند استخدام وحدة userland محددة ، فهناك فرصة جيدة جدا بأن تكون (أ) الوحدة لديها خلل أو (ب) شيء ما تغير في Node.js الشيء الذي سبب خلل في الوحدة.
 
-See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
+راجع [ كيفية إنشاء مثال صغير وكامل ويمكن التحقق منه ](https://stackoverflow.com/help/mcve).
 
-## Triaging a Bug Report
+## تصنيف تقرير الخطأ
 
-Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
+من الشائع توليد نقاش حول تذكرة بمجرد فتحها. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
 Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
 
