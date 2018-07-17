@@ -1031,7 +1031,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Quest'API alloca un valore JavaScript con dati esterni associati ad esso. Questo è usato per passare dati esterni attraverso il codice JavaScript, quindi può essere recuperato in seguito dal codice nativo. L'API consente al caller di passare ad un callback finalizzato, nel caso in cui la risorsa nativa sottostante debba essere ripulita quando viene raccolto il valore JavaScript esterno.
 
-Il valore creato non è un object, e pertanto non supporta proprietà aggiuntive. It is considered a distinct value type: calling `napi_typeof()` with an external value yields `napi_external`.
+Il valore creato non è un object, e pertanto non supporta proprietà aggiuntive. È considerato un tipo di valore distinto: chiamando `napi_typeof()` con un valore esterno produce `napi_external`.
 
 #### napi_create_external_arraybuffer
 
@@ -1049,18 +1049,18 @@ napi_create_external_arraybuffer(napi_env env,
                                  napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] external_data`: Pointer to the underlying byte buffer of the `ArrayBuffer`.
-- `[in] byte_length`: The length in bytes of the underlying buffer.
-- `[in] finalize_cb`: Optional callback to call when the `ArrayBuffer` is being collected.
-- `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] external_data`: Puntatore al byte buffer sottostante dell'`ArrayBuffer`.
+- `[in] byte_length`: La lunghezza in bytes del buffer sottostante.
+- `[in] finalize_cb`: Callback opzionale da chiamare quando viene raccolto l'`ArrayBuffer`.
+- `[in] finalize_hint`: Hint opzionale da passare al callback finalizzato durante la raccolta.
 - `[out] result`: Un `napi_value` che rappresenta un JavaScript `ArrayBuffer`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-Quest'API restuisce un valore N-API corrispondente ad un JavaScript `ArrayBuffer`. The underlying byte buffer of the `ArrayBuffer` is externally allocated and managed. The caller must ensure that the byte buffer remains valid until the finalize callback is called.
+Quest'API restuisce un valore N-API corrispondente ad un JavaScript `ArrayBuffer`. Il byte buffer sottostante dell'`ArrayBuffer` è allocato e gestito esternamente. Il caller deve assicurarsi che il byte buffer rimanga valido fino alla chiamata del callback finalizzato.
 
-JavaScript `ArrayBuffer`s are described in [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) of the ECMAScript Language Specification.
+I JavaScript `ArrayBuffer` sono descritti nella [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) dell'ECMAScript Language Specification.
 
 #### napi_create_external_buffer
 
@@ -1077,10 +1077,10 @@ napi_status napi_create_external_buffer(napi_env env,
                                         napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] length`: Size in bytes of the input buffer (should be the same as the size of the new buffer).
-- `[in] data`: Raw pointer to the underlying buffer to copy from.
-- `[in] finalize_cb`: Optional callback to call when the `ArrayBuffer` is being collected.
+- `[in] env`: L'ambiente in cui viene invocata l'APi.
+- `[in] length`: Dimensione in bytes dell'input buffer (dovrebbe essere uguale alla dimensione del nuovo buffer).
+- `[in] data`: Puntatore Raw al buffer sottostante da cui poter copiare.
+- `[in] finalize_cb`: Callback opzionale da chiamare quando viene raccolto l'`ArrayBuffer`.
 - `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
 - `[out] result`: A `napi_value` representing a `node::Buffer`.
 
