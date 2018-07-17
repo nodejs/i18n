@@ -1021,15 +1021,15 @@ napi_status napi_create_external(napi_env env,
                                  napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] data`: Raw pointer to the external data.
-- `[in] finalize_cb`: Optional callback to call when the external value is being collected.
-- `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
-- `[out] result`: A `napi_value` representing an external value.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] data`: Puntatore Raw ai dati esterni.
+- `[in] finalize_cb`: Callback opzionale da chiamare quando viene raccolto il valore esterno.
+- `[in] finalize_hint`: Hint opzionale da passare al callback finalizzato durante la raccolta.
+- `[out] result`: Un `napi_value` che rappresenta un valore esterno.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API allocates a JavaScript value with external data attached to it. This is used to pass external data through JavaScript code, so it can be retrieved later by native code. The API allows the caller to pass in a finalize callback, in case the underlying native resource needs to be cleaned up when the external JavaScript value gets collected.
+Quest'API alloca un valore JavaScript con dati esterni associati ad esso. Questo è usato per passare dati esterni attraverso il codice JavaScript, quindi può essere recuperato in seguito dal codice nativo. The API allows the caller to pass in a finalize callback, in case the underlying native resource needs to be cleaned up when the external JavaScript value gets collected.
 
 The created value is not an object, and therefore does not support additional properties. It is considered a distinct value type: calling `napi_typeof()` with an external value yields `napi_external`.
 
