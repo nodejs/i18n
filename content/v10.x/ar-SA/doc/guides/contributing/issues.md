@@ -69,4 +69,4 @@ simple and free of external dependencies as you are able.
 
 ## إصلاح تقرير الخطأ
 
-في الغالبية العظمى من الحالات ، يتم حل التذاكر عن طريق فتح طلب سحب. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
+في الغالبية العظمى من الحالات ، يتم حل التذاكر عن طريق فتح طلب سحب. تشبه عملية فتح ومراجعة طلب السحب تلك الخاصة بـفتح وتصنيف التذاكر ، ولكنها تتضمن أيضًا مراجعة وموافقة ضرورية لسير العمل الذي يضمن أن التغييرات المقترحة تلبي الحد الأدنى من الجودة والإرشادات الوظيفية لمشروع Node.js.
