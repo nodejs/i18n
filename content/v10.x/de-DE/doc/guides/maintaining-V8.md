@@ -160,7 +160,7 @@ Wenn der Fehler in einer der aktiven V8-Zweige vorhanden ist, müssen wir mögli
 
 ### Backporting zu verlassenen Niederlassungen
 
-Abandoned V8 branches are supported in the Node.js repository. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
+Zweig V8 Links wird im repository-Knoten unterstützt.js. Das Update benötigt werden handverlesene, in den Knoten.js repository und V8-CI müssen die änderung testen.
 
 * For each abandoned V8 branch corresponding to an LTS branch that is affected by the bug: 
   * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
