@@ -1183,11 +1183,11 @@ napi_status napi_create_typedarray(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-Quest'API crea un JavaScript `TypedArray` object su un `ArrayBuffer` esistente. `TypedArray` objects provide an array-like view over an underlying data buffer where each element has the same underlying binary scalar datatype.
+Quest'API crea un JavaScript `TypedArray` object su un `ArrayBuffer` esistente. Gli `TypedArray` objects forniscono una visione simile all'array su un data buffer sottostante in cui ogni elemento ha lo stesso datatype scalare binario.
 
-It's required that `(length * size_of_element) + byte_offset` should be <= the size in bytes of the array passed in. If not, a `RangeError` exception is raised.
+È richiesto che `(length * size_of_element) + byte_offset` debba essere <= della dimensione in bytes dell'array passato/approvato. In caso contrario, viene generata un'eccezione `RangeError`.
 
-JavaScript `TypedArray` objects are described in [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the ECMAScript Language Specification.
+Gli JavaScript `TypedArray` objects sono descritti nella [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) dell'ECMAScript Language Specification.
 
 #### napi_create_dataview
 
@@ -1203,13 +1203,13 @@ napi_status napi_create_dataview(napi_env env,
                                  napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] length`: Number of elements in the `DataView`.
-- `[in] arraybuffer`: `ArrayBuffer` underlying the `DataView`.
-- `[in] byte_offset`: The byte offset within the `ArrayBuffer` from which to start projecting the `DataView`.
-- `[out] result`: A `napi_value` representing a JavaScript `DataView`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] length`: Numero di elemtni in `DataView`.
+- `[in] arraybuffer`: `ArrayBuffer` sottostante il `DataView`.
+- `[in] byte_offset`: Il byte offset all'interno dell'`ArrayBuffer` da cui iniziare a proiettare il `DataView`.
+- `[out] result`: Un `napi_value` che rappresenta un JavaScript `DataView`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API creates a JavaScript `DataView` object over an existing `ArrayBuffer`. `DataView` objects provide an array-like view over an underlying data buffer, but one which allows items of different size and type in the `ArrayBuffer`.
 
