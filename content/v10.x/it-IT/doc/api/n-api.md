@@ -1081,12 +1081,12 @@ napi_status napi_create_external_buffer(napi_env env,
 - `[in] length`: Dimensione in bytes dell'input buffer (dovrebbe essere uguale alla dimensione del nuovo buffer).
 - `[in] data`: Puntatore Raw al buffer sottostante da cui poter copiare.
 - `[in] finalize_cb`: Callback opzionale da chiamare quando viene raccolto l'`ArrayBuffer`.
-- `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
-- `[out] result`: A `napi_value` representing a `node::Buffer`.
+- `[in] finalize_hint`: Hint opzionale da passare al callback finalizzato durante la raccolta.
+- `[out] result`: Un `napi_value` che rappresenta un `node::Buffer`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API allocates a `node::Buffer` object and initializes it with data backed by the passed in buffer. Mentre questa è ancora una struttura di dati completamente supportata, nella maggior parte dei casi sarà sufficiente utilizzare un `TypedArray`.
+Quest'API alloca un `node::Buffer` object e lo inizializza con i dati supportati dal buffer passato/approvato. Mentre questa è ancora una struttura di dati completamente supportata, nella maggior parte dei casi sarà sufficiente utilizzare un `TypedArray`.
 
 For Node.js >=4 `Buffers` are `Uint8Array`s.
 
