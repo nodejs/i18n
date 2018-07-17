@@ -1029,9 +1029,9 @@ napi_status napi_create_external(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-Quest'API alloca un valore JavaScript con dati esterni associati ad esso. Questo è usato per passare dati esterni attraverso il codice JavaScript, quindi può essere recuperato in seguito dal codice nativo. The API allows the caller to pass in a finalize callback, in case the underlying native resource needs to be cleaned up when the external JavaScript value gets collected.
+Quest'API alloca un valore JavaScript con dati esterni associati ad esso. Questo è usato per passare dati esterni attraverso il codice JavaScript, quindi può essere recuperato in seguito dal codice nativo. L'API consente al caller di passare ad un callback finalizzato, nel caso in cui la risorsa nativa sottostante debba essere ripulita quando viene raccolto il valore JavaScript esterno.
 
-The created value is not an object, and therefore does not support additional properties. It is considered a distinct value type: calling `napi_typeof()` with an external value yields `napi_external`.
+Il valore creato non è un object, e pertanto non supporta proprietà aggiuntive. It is considered a distinct value type: calling `napi_typeof()` with an external value yields `napi_external`.
 
 #### napi_create_external_arraybuffer
 
