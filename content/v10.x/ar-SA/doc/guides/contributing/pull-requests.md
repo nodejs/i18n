@@ -8,8 +8,8 @@
   * [الخطوة 2: التفرع](#step-2-branch)
 * [عملية إجراء التغييرات](#the-process-of-making-changes) 
   * [الخطوة 3: كتابة الشيفرة البرمجية](#step-3-code)
-  * [الخطوة 4: التسليم](#step-4-commit) 
-    * [إرشادات رسالة التسليم](#commit-message-guidelines)
+  * [الخطوة 4: الإلتزام](#step-4-commit) 
+    * [إرشادات رسالة الإلتزام](#commit-message-guidelines)
   * [الخطوة 5: إعادة الإنشاء (Rebase)](#step-5-rebase)
   * [الخطوة 6: الإختبار](#step-6-test) 
     * [تغطية الاختبار](#test-coverage)
@@ -66,9 +66,9 @@ $ git config user.email "j.random.user@example.com"
 
 يرجى التأكد من إضافة البريد الإلكتروني المحلي أيضًا إلى [ قائمة البريد الإلكتروني لـ GitHub ](https://github.com/settings/emails) حتى يتم ربط إلتزامك بشكل صحيح بحسابك وسيتم ترقيتك لمساهم بمجرد نزول اول التزام لك.
 
-### Step 2: Branch
+### الخطوة 2: التفرع
 
-As a best practice to keep your development environment as organized as possible, create local branches to work within. These should also be created directly off of the `master` branch.
+أفضل طريقة للحفاظ على بيئة التطوير الخاصة بك أكثر تنضيما قدر الإمكان، أنشئ فروع محلية للعمل عليها. These should also be created directly off of the `master` branch.
 
 ```text
 $ git checkout -b my-branch -t upstream/master
@@ -92,9 +92,9 @@ Any documentation you write (including code comments and API documentation) shou
 
 For contributing C++ code, you may want to look at the [C++ Style Guide](../../../CPP_STYLE_GUIDE.md).
 
-### Step 4: Commit
+### الخطوة 4: الإلتزام
 
-It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+من أفضل الممارسات الموصى بها، الحفاظ على تعديلاتك كمجموعة مجمعة منطقياً قدر الإمكان ضمن إلتزامات فردية. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
 
 ```text
 $ git add my/changed/files
