@@ -36,7 +36,7 @@
 
 ## التبعيات
 
-Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
+يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
 
 In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
 
