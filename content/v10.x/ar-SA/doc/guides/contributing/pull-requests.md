@@ -42,13 +42,13 @@
 
 ## إعداد البيئة المحلية الخاصة بك
 
-للبدء ، ستحتاج، لأن يكون `git` مثبت محليا. اعتمادا علي نظام التشغيل الخاص بك ، وهناك أيضا عدد من التبعيات الأخرى المطلوبة. These are detailed in the [Building guide](../../../BUILDING.md).
+للبدء ، ستحتاج، لأن يكون `git` مثبت محليا. اعتمادا علي نظام التشغيل الخاص بك ، وهناك أيضا عدد من التبعيات الأخرى المطلوبة. ستجدها مفصلة في [إرشادات البناء](../../../BUILDING.md).
 
-Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
+بمجرد أن يكون لديك `git` وتكون متأكد من أن لديك جميع التبعيات اللازمة ، حان الوقت لإنشاء نسخة.
 
-### Step 1: Fork
+### الخطوة 1: النسخ
 
-Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
+إنسخ المشروع [ على GitHub ](https://github.com/nodejs/node) واستنسخ النسخة محليا.
 
 ```text
 $ git clone git@github.com:username/node.git
@@ -64,7 +64,7 @@ $ git config user.name "J. Random User"
 $ git config user.email "j.random.user@example.com"
 ```
 
-Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
+يرجى التأكد من إضافة البريد الإلكتروني المحلي أيضًا إلى [ قائمة البريد الإلكتروني لـ GitHub ](https://github.com/settings/emails) حتى يتم ربط إلتزامك بشكل صحيح بحسابك وسيتم ترقيتك لمساهم بمجرد نزول اول التزام لك.
 
 ### Step 2: Branch
 
