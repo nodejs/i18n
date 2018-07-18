@@ -94,7 +94,7 @@ For contributing C++ code, you may want to look at the [C++ Style Guide](../../.
 
 ### الخطوة 4: الإلتزام
 
-من أفضل الممارسات الموصى بها، الحفاظ على تعديلاتك كمجموعة مجمعة منطقياً قدر الإمكان ضمن إلتزامات فردية. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+من أفضل الممارسات الموصى بها، الحفاظ على تعديلاتك كمجموعة مجمعة منطقياً قدر الإمكان ضمن إلتزامات فردية. لا يوجد حد لعدد الإلتزامات في طلب السحب الواحد ، ويجد العديد من المساهمين أنه من الأسهل مراجعة التعديلات المنقسمة على عدة إلتزامات.
 
 ```text
 $ git add my/changed/files
@@ -103,11 +103,11 @@ $ git commit
 
 Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
 
-#### Commit message guidelines
+#### إرشادات رسالة الإلتزام
 
-A good commit message should describe what changed and why.
+رسالة التزام جيدة ينبغي أن تصف ما الذي تغير، ولماذا.
 
-1. The first line should:
+1. يجب على السطر الأول أن:
   
   * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
   * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
