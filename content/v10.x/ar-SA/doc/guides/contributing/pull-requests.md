@@ -1,6 +1,6 @@
 # طلبات السحب
 
-هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. ومن هنا سنبدأ.
+هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. العنصر الملموس والتقني يتضمن تفاصيل محددة من إعداد البيئة المحلية الخاصة بك حتى تتمكن من إجراء تعديلات فعلية. ومن هنا سنبدأ.
 
 * [التبعيات](#dependencies)
 * [إعداد البيئة المحلية الخاصة بك](#setting-up-your-local-environment) 
@@ -19,7 +19,7 @@
     * [الموافقة وطلب تغييرات سير العمل](#approval-and-request-changes-workflow)
   * [الخطوة 10: الهبوط](#step-10-landing)
 * [مراجعة طلبات السحب](#reviewing-pull-requests) 
-  * [Review a bit at a time](#review-a-bit-at-a-time)
+  * [راجع جزء صغير في كل وقت](#review-a-bit-at-a-time)
   * [كن حذرا من الشخص المسؤول عن الشيفرة](#be-aware-of-the-person-behind-the-code)
   * [احترام الحد الأدنى من وقت الانتظار للتعليقات](#respect-the-minimum-wait-time-for-comments)
   * [طلبات سحب مهجورة أو متوقفة](#abandoned-or-stalled-pull-requests)
@@ -28,7 +28,7 @@
   * [الأداء ليس كل شيء](#performance-is-not-everything)
   * [اختبار التكامل المستمر](#continuous-integration-testing)
 * [ملاحظات إضافية](#additional-notes) 
-  * [Commit Squashing](#commit-squashing)
+  * [سحق الإلتزام](#commit-squashing)
   * [الحصول على الموافقة لطلب السحب الخاص بك](#getting-approvals-for-your-pull-request)
   * [اختبار CI](#ci-testing)
   * [الانتظار حتى ينزل طلب السحب](#waiting-until-the-pull-request-gets-landed)
@@ -38,7 +38,7 @@
 
 يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. التعديلات في الملفات الموجودة في هذه الدلائل يجب ان ترسل إلى المشاريع الخاصة بها. لا تقم بإرسال تصحيح ل Node.js. لا يمكننا أن نقبل مثل هذه التصحيحات.
 
-في حالة الشك، إفتح تذكرة في [متعقب المشاكل](https://github.com/nodejs/node/issues/) أو إتصل بأحد [المتعاونين مع المشروع](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
+في حالة الشك، إفتح تذكرة في [متعقب المشاكل](https://github.com/nodejs/node/issues/) أو إتصل بأحد [المتعاونين مع المشروع](https://github.com/nodejs/node/#current-project-team-members). لدى Node.js قناتين للدردشة: [#Node.js](https://webchat.freenode.net/?channels=node.js) للمساعدة العامة و الأسئلة ، و [#Node-dev](https://webchat.freenode.net/?channels=node-dev) لتطوير نواة Node.js على وجه التحديد.
 
 ## إعداد البيئة المحلية الخاصة بك
 
@@ -57,7 +57,7 @@ $ git remote add upstream https://github.com/nodejs/node.git
 $ git fetch upstream
 ```
 
-It is recommended to configure `git` so that it knows who you are:
+يوصى بإعداد `git` حتى يعرف من أنت:
 
 ```text
 $ git config user.name "J. Random User"
@@ -74,7 +74,7 @@ $ git config user.email "j.random.user@example.com"
 $ git checkout -b my-branch -t upstream/master
 ```
 
-## The Process of Making Changes
+## عملية إجراء التعديلات
 
 ### Step 3: Code
 
@@ -136,11 +136,11 @@ Note that multiple commits often get squashed when they are landed (see the note
 عنية كاملة لرسالة آلإلتزام:
 
 ```txt
-subsystem: explain the commit in one line
+النظام الفرعي: شرح الالتزام في سطر واحد
 
-Body of commit message is a few lines of text, explaining things
-in more detail, possibly giving some background about the issue
-being fixed, etc.
+نص رسالة الالتزام عبارة عن بضعة أسطر من النص ، تشرح فيها الأمور
+بمزيد من التفاصيل ، وربما إعطاء بعض المعلومات الأساسية أيضا حول المشكلة
+التي يجري إصلاحها ، إلخ.
 
 The body of the commit message can be several paragraphs, and
 please do proper word-wrap and keep columns shorter than about
