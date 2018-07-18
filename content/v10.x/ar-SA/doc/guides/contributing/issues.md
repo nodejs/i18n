@@ -17,11 +17,11 @@
 
 ## طلب المساعدة في مسائل عامة
 
-نظرًا لأن النشاط في مستودع `nodejs/node` مرتفع جدًا ، يجب توجيه الأسئلة أو طلبات المساعدة العامة باستخدام Node.js إلى [Node.js help repository](https://github.com/nodejs/help/issues).
+نظرًا لأن النشاط في مستودع `nodejs/node` مرتفع جدًا، يجب توجيه الأسئلة أو طلبات المساعدة العامة باستخدام Node.js إلى [Node.js help repository](https://github.com/nodejs/help/issues).
 
 ## مناقشة المواضيع غير التقنية
 
-يجب توجيه مناقشة القضايا غير التقنية (مثل تسجيل الملكية الفكرية والعلامات التجارية) إلى [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
+يجب توجيه مناقشة القضايا الغير تقنية (مثل تسجيل الملكية الفكرية والعلامات التجارية) إلى [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
 ## تقديم تقرير عن خطأ
 
