@@ -109,19 +109,19 @@ Note that multiple commits often get squashed when they are landed (see the note
 
 1. يجب على السطر الأول أن:
   
-  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
-  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+  * يحتوي على وصف مختصر للتعديل (يفضل أن يكون 50 حرفاً أو أقل، وليس أكثر من 72 حرفاً)
+  * تكون بالكامل بأحرف صغيرة باستثناء الأسماء المناسبة ، المختصرات ، و الكلمات التي تشير إلى تعليمات برمجية ، مثل أسماء الدالة / المتغير
+  * تكون مسبوقة باسم النظام الفرعي الذي تم تعديله وتبدأ بـ الفعل الضروري. تحقق من المخرج `git log --oneline files/you/changed` لمعرفة مآهي النظم الفرعية التي تلمسها تغييراتك.
     
-    Examples:
+    أمثلة:
   
   * `net: add localAddress and localPort to Socket`
   
   * `src: fix typos in async_wrap.h`
 
-2. Keep the second line blank.
+2. حافظ على السطر الثاني فارغًا.
 
-3. Wrap all other lines at 72 columns (except for long URLs).
+3. ضع جميع الأسطر الأخرى في 72 عمودًا (باستثناء عناوين URL الطويلة).
 
 4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
   
