@@ -101,7 +101,7 @@ $ git add my/changed/files
 $ git commit
 ```
 
-Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
+لاحظ أنه غالباً ما يتم سحق الإلتزامات المتعددة عندما يتم إنزالها (راجع الملاحظات حول [سحق الإلتزام](#commit-squashing)).
 
 #### إرشادات رسالة الإلتزام
 
@@ -155,7 +155,7 @@ If you are new to contributing to Node.js, please try to do your best at conform
 
 See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
 
-### Step 5: Rebase
+### الخطوة 5: إعادة الإنشاء (Rebase)
 
 As a best practice, once you have committed your changes, it is a good idea to use `git rebase` (not `git merge`) to synchronize your work with the main repository.
 
@@ -164,9 +164,9 @@ $ git fetch upstream
 $ git rebase upstream/master
 ```
 
-This ensures that your working branch has the latest changes from `nodejs/node` master.
+هذا يضمن أن الفرع الخاص بك الذي يعمل لديه أحدث التعديلات من `nodejs/node` الرئيسي.
 
-### Step 6: Test
+### الخطوة 6: الإختبار
 
 Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
 
