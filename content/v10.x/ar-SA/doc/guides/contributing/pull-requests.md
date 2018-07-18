@@ -1,14 +1,14 @@
 # طلبات السحب
 
-هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
+هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. ومن هنا سنبدأ.
 
-* [Dependencies](#dependencies)
-* [Setting up your local environment](#setting-up-your-local-environment) 
-  * [Step 1: Fork](#step-1-fork)
-  * [Step 2: Branch](#step-2-branch)
-* [The Process of Making Changes](#the-process-of-making-changes) 
-  * [Step 3: Code](#step-3-code)
-  * [Step 4: Commit](#step-4-commit) 
+* [التبعيات](#dependencies)
+* [إعداد البيئة المحلية الخاصة بك](#setting-up-your-local-environment) 
+  * [الخطوة 1: النسخ](#step-1-fork)
+  * [الخطوة 2: التفرع](#step-2-branch)
+* [عملية إجراء التغييرات](#the-process-of-making-changes) 
+  * [الخطوة 3: كتابة الشيفرة البرمجية](#step-3-code)
+  * [الخطوة 4: التسليم](#step-4-commit) 
     * [Commit message guidelines](#commit-message-guidelines)
   * [Step 5: Rebase](#step-5-rebase)
   * [Step 6: Test](#step-6-test) 
