@@ -36,7 +36,7 @@
 
 ## التبعيات
 
-يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. التعديلات في الملفات الموجودة في هذه الدلائل يجب ان ترسل إلى المشاريع الخاصة بها. Do not send a patch to Node.js. We cannot accept such patches.
+يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. التعديلات في الملفات الموجودة في هذه الدلائل يجب ان ترسل إلى المشاريع الخاصة بها. لا تقم بإرسال تصحيح ل Node.js. لا يمكننا أن نقبل مثل هذه التصحيحات.
 
 In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
 
