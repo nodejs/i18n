@@ -168,7 +168,7 @@ Zweig V8 Links wird im repository-Knoten unterstützt.js. Das Update benötigt w
   * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. Dies wird keine Probleme mit der Versionierung verursachen, weil V8 dies nicht tut Veröffentlichen Sie andere Patches für diesen Zweig, damit Node.js die Patch-Version.
   * On Node.js >= 9.0.0: Increase the `v8_embedder_string` number in `common.gypi`.
   * In einigen Fällen erfordert der Patch möglicherweise zusätzlichen Aufwand, um zu verschmelzen, falls V8 hat wesentlich verändert. Bei wichtigen Fragen können wir uns auf die V8-Team, um Hilfe bei der Neuimplementierung des Patches zu erhalten.
-  * Open a cherry-pick PR on `nodejs/node` targeting the *vY.x-staging* branch and notify the `@nodejs/v8` team.
+  * Öffnen Sie eine PR-Person für die Auswahl "Kirsche" auf `nodejs / node`, die auf den Zweig *vY.x-staging* ausgerichtet ist und benachrichtigen Sie das Team `@nodejs/v8`.
   * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). Note: The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
 
 The [`update-v8`] tool can be used to simplify this task. Run `update-v8 backport --sha=SHA` to cherry-pick a commit.
