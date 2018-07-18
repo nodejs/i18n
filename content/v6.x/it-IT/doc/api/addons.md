@@ -1,12 +1,12 @@
-# C++ Addons
+# Addons C++
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](globals.html#globals_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Gli Addons di Node.js sono oggetti condivisi collegati in modo dinamico, scritti in C++, che possono essere caricati all'interno di Node.js usando la funzione [`require()`](globals.html#globals_require), ed utilizzati come se fossero un normale modulo di Node.js. Essi vengono utilizzati principalmente per fornire un'interfaccia tra JavaScript in esecuzione in Node.js e le librerie C/C++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
+Al momento, il metodo per implementare gli Addons è piuttosto complicato, coinvolgendo la conoscenza di diversi componenti e diversi API :
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 fornisce i meccanismi per creare oggetti, chiamare funzioni, ecc. L'API di V8 è documentata principalmente nel file di intestazione `v8.h` (`deps/v8/include/v8.h` nell'albero sorgente di Node.js), che è anche disponibile [online](https://v8docs.nodesource.com/).
+* V8: la libreria C++ che Node.js utilizza attualmente per fornire l'implementazione JavaScript. V8 fornisce i meccanismi per creare oggetti, chiamare funzioni, ecc. L'API di V8 è documentata principalmente nel file di intestazione `v8.h` (`deps/v8/include/v8.h` nell'albero sorgente di Node.js), che è anche disponibile [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): La libreria C che implementa il ciclo di eventi Node.js, i suoi thread di lavoro e tutti i comportamenti asincroni della piattaforma. Inoltre, funge da libreria di astrazione multipiattaforma, dando un facile accesso di tipo POSIX, su tutti i principali sistemi operativi, a molte attività di sistema comuni, come l'interazione con il filesystem, i socket, i timer e gli eventi di sistema. libuv fornisce anche un'astrazione di thread di tipo pthreads (POSIX-threads) che può essere usata per alimentare gli Addons asincroni più sofisticati che devono andare oltre il ciclo degli eventi standard. Gli autori degli Addon sono incoraggiati a pensare a come evitare il blocco del ciclo degli eventi con I/O oppure con altre attività che richiedono molto tempo nello scaricare il lavoro tramite libuv in operazioni di sistema non-blocking, threads di lavoro od un uso personalizzato dei threads di libuv.
 
@@ -326,7 +326,7 @@ NODE_MODULE(addon, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Per testarlo in JavaScript:
 
 ```js
 // test.js
@@ -338,9 +338,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### Funzione factory
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Un altro scenario comune è la creazione di funzioni JavaScript che racchiudono le funzioni C++ e le restituiscono a JavaScript:
 
 ```cpp
 // addon.cc
@@ -368,7 +368,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
   Local<Function> fn = tpl->GetFunction();
 
-  // omit this to make it anonymous
+  // omettere questo per renderlo anonimo
   fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
 
   args.GetReturnValue().Set(fn);
@@ -383,7 +383,7 @@ NODE_MODULE(addon, Init)
 }  // namespace demo
 ```
 
-To test:
+Per testare:
 
 ```js
 // test.js
@@ -394,9 +394,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Wrapping degli objects C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+È anche possibile eseguire il wrapping di oggetti/classi C++ in un modo che consenta la creazione di nuove istanze utilizzando l'operatore JavaScript `new`:
 
 ```cpp
 // addon.cc
@@ -417,7 +417,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Quindi, in `myobject.h`, la classe wrapper eredita da `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -448,7 +448,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+In `myobject.cc`, implementa i vari metodi che devono essere esposti. Sotto, viene esposto il metodo `plusOne()` aggiungendolo al prototipo del constructor:
 
 ```cpp
 // myobject.cc
@@ -479,12 +479,12 @@ MyObject::~MyObject() {
 void MyObject::Init(Local<Object> exports) {
   Isolate* isolate = exports->GetIsolate();
 
-  // Prepare constructor template
+  // Prepara il template del constructor
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototipo
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -496,13 +496,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Invocato come constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -521,11 +521,9 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 
   args.GetReturnValue().Set(Number::New(isolate, obj->value_));
 }
-
-}  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Per compilare questo esempio, il file `myobject.cc` deve essere aggiunto a `binding.gyp`:
 
 ```json
 {
@@ -541,7 +539,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -549,24 +547,24 @@ const addon = require('./build/Release/addon');
 
 const obj = new addon.MyObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Stampa: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Stampa: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Stampa: 13
 ```
 
-### Factory of wrapped objects
+### Factory di wrapped objects
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+In alternativa, è possibile utilizzare un modello di factory per evitare la creazione esplicita di istanze di oggetti utilizzando l'operatore `new` di JavaScript:
 
 ```js
 const obj = addon.createObject();
-// instead of:
+// invece di:
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Prima di tutto, il metodo `createObject()` è implementato in `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -597,7 +595,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+In `myobject.h`, il metodo statico `NewInstance()` viene aggiunto per gestire la creazione di un'istanza per l'oggetto. Questo metodo sostituisce l'uso di `new` in JavaScript:
 
 ```cpp
 // myobject.h
@@ -629,7 +627,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+L'implementazione in `myobject.cc` è simile all'esempio precedente:
 
 ```cpp
 // myobject.cc
@@ -659,12 +657,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Prepara il template del constructor
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototipo
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -674,13 +672,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Invocato come constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -716,7 +714,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Ancora una volta, per compilare questo esempio, il file `myobject.cc` deve essere aggiunto a `binding.gyp`:
 
 ```json
 {
@@ -732,7 +730,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -740,24 +738,24 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Stampa: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Stampa: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Stampa: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Stampa: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Stampa: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Stampa: 23
 ```
 
-### Passing wrapped objects around
+### Riavvolgere gli wrapped objects
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. I seguenti esempi mostrano una funzione `add()` che può prendere due oggetti `MyObject` come argomenti di input:
 
 ```cpp
 // addon.cc
@@ -803,7 +801,7 @@ NODE_MODULE(addon, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+In `myobject.h`, viene aggiunto un nuovo metodo pubblico per consentire l'accesso ai valori privati dopo aver eseguito l'unwrapping dell'oggetto.
 
 ```cpp
 // myobject.h
@@ -835,7 +833,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+L'implementazione di `myobject.cc` è simile a prima:
 
 ```cpp
 // myobject.cc
@@ -864,7 +862,7 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Prepara il template del constructor
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
@@ -876,13 +874,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Invocato come constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -909,7 +907,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -920,25 +918,25 @@ const obj2 = addon.createObject(20);
 const result = addon.add(obj1, obj2);
 
 console.log(result);
-// Prints: 30
+// Stampa: 30
 ```
 
 ### AtExit hooks
 
-An "AtExit" hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. "AtExit" hooks are registered using the `node::AtExit` API.
+Un hook "AtExit" è una funzione che viene invocata dopo la fine del ciclo di eventi di Node.js ma prima che la JavaScript VM sia terminata e prima che Node.js si arresti. Gli hooks "AtExit" vengono registrati utilizzando l'API `node::AtExit`.
 
 #### void AtExit(callback, args)
 
-* `callback` {void (*)(void*)} A pointer to the function to call at exit.
-* `args` {void\*} A pointer to pass to the callback at exit.
+* `callback` {void (*)(void*)} Un puntatore alla funzione per una "call at exit".
+* `args` {void\*} Un puntatore per passare ad un "callback at exit".
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registra gli "exit hooks" che vengono eseguiti dopo che il ciclo di eventi è terminato ma prima che la VM venga distrutta.
 
-AtExit takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+AtExit accetta due parametri: un puntatore ad una funzione di callback da eseguire all'uscita (at exit), ed un puntatore a dati contestuali untyped da passare a tale callback.
 
-Callbacks are run in last-in first-out order.
+I callback vengono eseguiti nell'ordine last-in first-out (ultimo ad entrare, primo ad uscire).
 
-The following `addon.cc` implements AtExit:
+Il seguente `addon.cc` implementa AtExit:
 
 ```cpp
 // addon.cc
@@ -962,7 +960,7 @@ static void at_exit_cb1(void* arg) {
   Isolate* isolate = static_cast<Isolate*>(arg);
   HandleScope scope(isolate);
   Local<Object> obj = Object::New(isolate);
-  assert(!obj.IsEmpty()); // assert VM is still alive
+  assert(!obj.IsEmpty()); // Afferma che la VM è ancora funzionante
   assert(obj->IsObject());
   at_exit_cb1_called++;
 }
@@ -989,7 +987,7 @@ NODE_MODULE(addon, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Testa in JavaScript eseguendo:
 
 ```js
 // test.js

@@ -1,22 +1,22 @@
-# C++ Addons
+# Addons C++
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Gli Addons di Node.js sono shared objects con collegamenti dinamici, scritti in C++, che possono essere caricati all'interno di Node.js usando la funzione [`require()`](modules.html#modules_require), ed utilizzati come se fossero un normale modulo di Node.js. Essi vengono utilizzati principalmente per fornire un'interfaccia tra JavaScript in esecuzione in Node.js e le librerie C/C++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
+Al momento, il metodo per implementare gli Addons è piuttosto complicato, coinvolgendo la conoscenza di diversi componenti e diversi API:
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 fornisce i meccanismi per creare oggetti, chiamare funzioni, ecc. L'API di V8 è documentata principalmente nel file di intestazione `v8.h` (`deps/v8/include/v8.h` nell'albero sorgente di Node.js), che è anche disponibile [online](https://v8docs.nodesource.com/).
+* V8: la libreria C++ che Node.js utilizza attualmente per fornire l'implementazione JavaScript. V8 fornisce i meccanismi per creare oggetti, chiamare funzioni, ecc. L'API di V8 è documentata principalmente nel file di intestazione `v8.h` (`deps/v8/include/v8.h` nell'albero sorgente di Node.js), che è anche disponibile [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): La libreria C che implementa il ciclo di eventi Node.js, i suoi thread di lavoro e tutti i comportamenti asincroni della piattaforma. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv fornisce anche un'astrazione di thread di tipo pthreads (POSIX-threads) che può essere usata per alimentare gli Addons asincroni più sofisticati che devono andare oltre il ciclo degli eventi standard. Gli autori degli Addon sono incoraggiati a pensare a come evitare il blocco del ciclo degli eventi con I/O oppure con altre attività che richiedono molto tempo nello scaricare il lavoro tramite libuv in operazioni di sistema non-blocking, threads di lavoro od un uso personalizzato dei threads di libuv.
+* [libuv](https://github.com/libuv/libuv): La libreria C che implementa il ciclo di eventi Node.js, i suoi thread di lavoro e tutti i comportamenti asincroni della piattaforma. Inoltre, funge da libreria di astrazione multipiattaforma, dando un facile accesso di tipo POSIX, su tutti i principali sistemi operativi, a molte attività di sistema comuni come l'interazione con il filesystem, i socket, i timer e gli eventi di sistema. libuv fornisce anche un'astrazione di thread di tipo pthreads (POSIX-threads) che può essere usata per alimentare gli Addons asincroni più sofisticati che devono andare oltre il ciclo degli eventi standard. Gli autori degli Addon sono incoraggiati a pensare a come evitare il blocco del ciclo degli eventi con I/O oppure con altre attività che richiedono molto tempo nello scaricare il lavoro tramite libuv in operazioni di sistema non-blocking, threads di lavoro od un uso personalizzato dei threads di libuv.
 
 * Librerie interne di Node.js. Node.js stesso esporta un numero di API C++ che gli Addons possono utilizzare &mdash; la più importante delle quali è la classe `node::ObjectWrap`.
 
-* Node.js include una serie di altre librerie collegate in modo statico, tra cui OpenSSL. Queste altre librerie si trovano nella directory `deps/` all'interno dell'albero sorgente (source tree) di Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Vedi [Collegamento alle dipendenze di Node.js](#addons_linking_to_node_js_own_dependencies) per ulteriori informazioni.
+* Node.js include una serie di altre librerie collegate in modo statico, tra cui OpenSSL. Queste altre librerie si trovano nella directory `deps/` all'interno dell'albero sorgente (source tree) di Node.js. Solo i simboli di libuv, OpenSSL, V8 e zlib vengono appositamente ri-esportati da Node.js e possono essere utilizzati in varie estensioni dagli Addons. Vedi [Collegamento alle dipendenze di Node.js](#addons_linking_to_node_js_own_dependencies) per ulteriori informazioni.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Tutti i seguenti esempi sono disponibili per il [download](https://github.com/nodejs/node-addon-examples) e possono essere utilizzati come punto di partenza per un Addon.
 
 ## Hello world
 
@@ -64,13 +64,13 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Non c'è alcun punto e virgola dopo `NODE_MODULE` poiché non è una funzione (vedi `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+Il `module_name` deve corrispondere al filename del file binario finale (escludendo il suffisso `.node`).
 
 Quindi nell'esempio `hello.cc`, la funzione di inizializzazione è `init` ed il module name dell'Addon è `addon`.
 
 ### Building
 
-Una volta che è stato scritto il codice sorgente, esso dev'essere compilato nel file binario `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Questo file è usato da [node-gyp](https://github.com/nodejs/node-gyp) — uno strumento scritto appositamente per compilare gli Addons di Node.js.
+Una volta che è stato scritto il codice sorgente, esso dev'essere compilato nel file binario `addon.node`. Per fare ciò, crea un file chiamato `binding.gyp` nel primo livello del progetto che descriva la configurazione del build del modulo usando un formato di tipo JSON. Questo file è usato da [node-gyp](https://github.com/nodejs/node-gyp) — uno strumento scritto appositamente per compilare gli Addons di Node.js.
 
 ```json
 {
@@ -83,7 +83,7 @@ Una volta che è stato scritto il codice sorgente, esso dev'essere compilato nel
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Questa versione non è resa direttamente disponibile per gli sviluppatori ed è pensata solo per supportare la possibilità di utilizzare il comando `npm install` per compilare ed installare gli Addons. Gli sviluppatori che desiderano utilizzare `node-gyp` direttamente possono installarlo tramite il comando `npm install -g node-gyp`. Vedi le [istruzioni di installazione](https://github.com/nodejs/node-gyp#installation) di `node-gyp` per ulteriori informazioni, compresi i requisiti specifici della piattaforma.
+Una versione dell'utility `node-gyp` è in bundle e distribuita con Node.js come parte di `npm`. Questa versione non è resa direttamente disponibile per gli sviluppatori ed è pensata solo per supportare la possibilità di utilizzare il comando `npm install` per compilare ed installare gli Addons. Gli sviluppatori che desiderano utilizzare `node-gyp` direttamente possono installarlo tramite il comando `npm install -g node-gyp`. Vedi le [istruzioni di installazione](https://github.com/nodejs/node-gyp#installation) di `node-gyp` per ulteriori informazioni, compresi i requisiti specifici della piattaforma.
 
 Una volta creato il file `binding.gyp`, utilizzare `node-gyp configure` per generare gli appropriati build files del progetto per la piattaforma corrente. Questo genererà un `Makefile` (su piattaforme Unix) oppure un file `vcxproj` (su Windows) nella directory `build/`.
 
@@ -91,14 +91,14 @@ Successivamente, invoca il comando `node-gyp build` per generare il file compila
 
 Quando si utilizza `npm install` per installare un Addon di Node.js, npm utilizza la propria versione in bundle di `node-gyp` per eseguire lo stesso insieme di azioni, generando una versione compilata dell'Addon per la piattaforma dell'utente su richiesta.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Una volta costruito, l'Addon binario può essere utilizzato da Node.js puntando [`require()`](modules.html#modules_require) al modulo costruito `addon.node`:
 
 ```js
 // hello.js
 const addon = require('./build/Release/addon');
 
 console.log(addon.hello());
-// Prints: 'world'
+// Stampa: 'world'
 ```
 
 Si prega di vedere gli esempi di seguito per ulteriori informazioni oppure <https://github.com/arturadib/node-qt> per un esempio in corso di produzione.
@@ -125,26 +125,26 @@ Node.js utilizza un numero di librerie collegate in modo statico come V8, libuv 
 
 ### Caricamento degli Addons utilizzando require()
 
-L'estensione del filename dell'Addon binario compilato è `.node` (al contrario di `.dll` oppure `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+L'estensione del filename dell'Addon binario compilato è `.node` (al contrario di `.dll` oppure `.so`). La funzione [`require()`](modules.html#modules_require) viene scritta per cercare i file con l'estensione `.node` ed inizializzarli come librerie con collegamenti dinamici.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Un avvertimento, tuttavia, è che Node.js prima tenterà di individuare e caricare i moduli oppure i file JavaScript che capitano a condividere lo stesso nome di base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Quando si chiama [`require()`](modules.html#modules_require), solitamente l'estensione `.node` può essere omessa e Node.js continuerà a ritrovare ed inizializzare l'Addon. Un avvertimento, tuttavia, è che Node.js prima tenterà di individuare e caricare i moduli oppure i file JavaScript che capitano a condividere lo stesso nome di base. Ad esempio, se c'è un file `addon.js` nella stessa directory del file binario `addon.node`, allora [`require('addon')`](modules.html#modules_require) darà la precedenza al file `addon.js` e lo caricherà.
 
-## Native Abstractions for Node.js
+## Native Abstractions per Node.js
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Ciascuno degli esempi illustrati in questo documento fa uso diretto delle API di Node.js e V8 per implementare gli Addons. È importante capire che l'API di V8 può essere modificata radicalmente, e lo è stata, da una versione di V8 alla successiva (ancora di più da una versione di Node.js alla successiva). Ad ogni modifica, potrebbe essere necessario aggiornare e ricompilare gli Addons per continuare a farli funzionare. La pianificazione delle versioni di Node.js è progettata per ridurre al minimo la frequenza e l'impatto di tali modifiche, tuttavia al momento Node.js può fare poco per garantire la stabilità delle API di V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+La [Native Abstractions per Node.js](https://github.com/nodejs/nan) (oppure `nan`) fornisce una serie di strumenti che gli sviluppatori degli Addons raccomandano di utilizzare per mantenere la compatibilità tra le versioni passate e future di V8 e Node.js. Guarda gli [esempi](https://github.com/nodejs/nan/tree/master/examples/) di `nan` per una visione di come può essere usato.
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Stabilità: 1 - Sperimentale
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API è un'API per la creazione di Addons nativi. È indipendente dal runtime JavaScript sottostante (es. V8) e viene mantenuto come parte dello stesso Node.js. Quest'API sarà stabile in Application Binary Interface (ABI) tra le versioni di Node.js. Ha lo scopo di isolare gli Addons dalle modifiche nell'engine JavaScript sottostante e consentire ai moduli compilati per una versione di essere eseguiti nelle versioni successive di Node.js senza ricompilazione. Gli Addons sono costruiti/impacchettati con lo stesso approccio/gli stessi tools evidenziati in questo documento (node-gyp, ecc.). L'unica differenza è l'insieme di API utilizzate dal codice nativo. Invece di utilizzare le API di V8 o di [Native Abstractions per Node.js](https://github.com/nodejs/nan), vengono utilizzate le funzioni disponibili in N-API.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Per utilizzare N-API nell'esempio precedente di "Hello world", sostituisci il contenuto di `hello.cc` con il seguente. Tutte le altre istruzioni rimangono le stesse.
 
 ```cpp
-// hello.cc using N-API
+// hello.cc usando N-API
 #include <node_api.h>
 
 namespace demo {
@@ -175,13 +175,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+Le funzioni disponibili e le informazioni su come usarle sono documentate nella sezione intitolata [Addons C/C++ - N-API](n-api.html).
 
-## Addon examples
+## Esempi di Addons
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Di seguito sono riportati alcuni esempi di Addons con lo scopo di aiutare gli sviluppatori ad iniziare. Gli esempi utilizzano le API di V8. Fare riferimento alla [V8 reference](https://v8docs.nodesource.com/) presente online per aiutarsi con le varie calls di V8, ed alla [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) di V8 per la spiegazione dei diversi concetti utilizzati come handles, scopes, function templates, etc.
 
-Each of these examples using the following `binding.gyp` file:
+Ciascuno di questi esempi utilizza il seguente file `binding.gyp`:
 
 ```json
 {
@@ -194,23 +194,23 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+Nei casi in cui è presente più di un file `.cc`, basta aggiungere il filename aggiuntivo all'array `sources`:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Una volta che il file `binding.gyp` è pronto, gli Addons di esempio possono essere configurati e creati usando `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Argomenti della funzione
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+In genere gli Addons espongono oggetti e funzioni a cui è possibile accedere da JavaScript in esecuzione all'interno di Node.js. Quando le funzioni sono invocate da JavaScript, gli argomenti di input ed il valore di return devono essere mappati sul e dal codice C/C++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+L'esempio seguente mostra come leggere gli argomenti della funzione passati da JavaScript e come restituire(return) un risultato:
 
 ```cpp
 // addon.cc
@@ -227,32 +227,32 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// This is the implementation of the "add" method
-// Input arguments are passed using the
+// Questa è l'implementazione del metodo "add"
+// Gli argomenti di input sono passati usando
 // const FunctionCallbackInfo<Value>& args struct
 void Add(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
-  // Check the number of arguments passed.
+  // Verifica il numero di argomenti passati.
   if (args.Length() < 2) {
-    // Throw an Error that is passed back to JavaScript
+    // Lancia un errore che viene passato a JavaScript
     isolate->ThrowException(Exception::TypeError(
         String::NewFromUtf8(isolate, "Wrong number of arguments")));
     return;
   }
 
-  // Check the argument types
+  // Verifica i tipi di argomento
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
     isolate->ThrowException(Exception::TypeError(
         String::NewFromUtf8(isolate, "Wrong arguments")));
     return;
   }
 
-  // Perform the operation
+  // Esegue l'operazione
   double value = args[0]->NumberValue() + args[1]->NumberValue();
   Local<Number> num = Number::New(isolate, value);
 
-  // Set the return value (using the passed in
+  // Imposta il valore di return (usando la funzione passata
   // FunctionCallbackInfo<Value>&)
   args.GetReturnValue().Set(num);
 }
@@ -266,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Una volta compilato, l'Addon di esempio può essere richiesto ed utilizzato da Node.js:
 
 ```js
 // test.js
@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+È pratica comune negli Addons passare le funzioni JavaScript ad una funzione C++ ed eseguirle da lì. L'esempio seguente mostra come invocare tali callbacks:
 
 ```cpp
 // addon.cc
@@ -311,9 +311,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Nota che questo esempio usa una forma a due argomenti di `Init()` che riceve l'intero `module` object come secondo argomento. Ciò consente all'Addon di sovrascrivere completamente `exports` con una singola funzione anzichè aggiungere la funzione come una proprietà di `exports`.
 
-To test it, run the following JavaScript:
+Per testarlo, esegui il seguente codice JavaScript:
 
 ```js
 // test.js
@@ -321,18 +321,18 @@ const addon = require('./build/Release/addon');
 
 addon((msg) => {
   console.log(msg);
-// Prints: 'hello world'
+// Stampa: 'hello world'
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Nota che, in questo esempio, la funzione di callback è invocata in modo sincrono.
 
 ### Object factory
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Gli Addons possono creare e restituire(return) nuovi oggetti dall'interno di una funzione C++, come mostrato nel seguente esempio. Un oggetto viene creato e restituito con una proprietà `msg` che fa da eco alla stringa passata a `createObject()`:
 
 ```cpp
-// addon.cc
+/ addon.cc
 #include <node.h>
 
 namespace demo {
@@ -362,7 +362,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Per testarlo in JavaScript:
 
 ```js
 // test.js
@@ -371,12 +371,12 @@ const addon = require('./build/Release/addon');
 const obj1 = addon('hello');
 const obj2 = addon('world');
 console.log(obj1.msg, obj2.msg);
-// Prints: 'hello world'
+// Stampa: 'hello world'
 ```
 
-### Function factory
+### Funzione factory
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Un altro scenario comune è la creazione di funzioni JavaScript che racchiudono le funzioni C++ e le restituiscono a JavaScript:
 
 ```cpp
 // addon.cc
@@ -404,7 +404,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
   Local<Function> fn = tpl->GetFunction();
 
-  // omit this to make it anonymous
+  // omettere questo per renderlo anonimo
   fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
 
   args.GetReturnValue().Set(fn);
@@ -419,7 +419,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Per testare:
 
 ```js
 // test.js
@@ -427,12 +427,12 @@ const addon = require('./build/Release/addon');
 
 const fn = addon();
 console.log(fn());
-// Prints: 'hello world'
+// Stampa: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Wrapping degli objects C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+È anche possibile eseguire il wrapping di oggetti/classi C++ in un modo che consenta la creazione di nuove istanze utilizzando l'operatore JavaScript `new`:
 
 ```cpp
 // addon.cc
@@ -453,7 +453,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Quindi, in `myobject.h`, la classe wrapper eredita da `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+In `myobject.cc`, implementa i vari metodi che devono essere esposti. Sotto, viene esposto il metodo `plusOne()` aggiungendolo al prototipo del constructor:
 
 ```cpp
 // myobject.cc
@@ -515,12 +515,12 @@ MyObject::~MyObject() {
 void MyObject::Init(Local<Object> exports) {
   Isolate* isolate = exports->GetIsolate();
 
-  // Prepare constructor template
+  // Prepara il template del constructor
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototipo
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -532,13 +532,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Invocato come constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -557,11 +557,9 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 
   args.GetReturnValue().Set(Number::New(isolate, obj->value_));
 }
-
-}  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Per compilare questo esempio, il file `myobject.cc` deve essere aggiunto a `binding.gyp`:
 
 ```json
 {
@@ -577,7 +575,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -585,24 +583,24 @@ const addon = require('./build/Release/addon');
 
 const obj = new addon.MyObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Stampa: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Stampa: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Stampa: 13
 ```
 
-### Factory of wrapped objects
+### Factory di wrapped objects
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+In alternativa, è possibile utilizzare un modello di factory per evitare la creazione esplicita di istanze di oggetti utilizzando l'operatore `new` di JavaScript:
 
 ```js
 const obj = addon.createObject();
-// instead of:
+// invece di:
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Prima di tutto, il metodo `createObject()` è implementato in `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -633,7 +631,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+In `myobject.h`, il metodo statico `NewInstance()` viene aggiunto per gestire la creazione di un'istanza per l'oggetto. Questo metodo sostituisce l'uso di `new` in JavaScript:
 
 ```cpp
 // myobject.h
@@ -665,7 +663,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+L'implementazione in `myobject.cc` è simile all'esempio precedente:
 
 ```cpp
 // myobject.cc
@@ -695,12 +693,12 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Prepara il template del constructor
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototipo
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -710,13 +708,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Invocato come constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -752,7 +750,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Ancora una volta, per compilare questo esempio, il file `myobject.cc` deve essere aggiunto a `binding.gyp`:
 
 ```json
 {
@@ -768,7 +766,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -776,24 +774,24 @@ const createObject = require('./build/Release/addon');
 
 const obj = createObject(10);
 console.log(obj.plusOne());
-// Prints: 11
+// Stampa: 11
 console.log(obj.plusOne());
-// Prints: 12
+// Stampa: 12
 console.log(obj.plusOne());
-// Prints: 13
+// Stampa: 13
 
 const obj2 = createObject(20);
 console.log(obj2.plusOne());
-// Prints: 21
+// Stampa: 21
 console.log(obj2.plusOne());
-// Prints: 22
+// Stampa: 22
 console.log(obj2.plusOne());
-// Prints: 23
+// Stampa: 23
 ```
 
-### Passing wrapped objects around
+### Riavvolgere gli wrapped objects
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Oltre ad eseguire il wrapping e restituire objects C++, è possibile riavvolgere gli wrapped objects tramite l'unwrapping con la funzione di supporto di Node.js `node::ObjectWrap::Unwrap`. I seguenti esempi mostrano una funzione `add()` che può prendere due oggetti `MyObject` come argomenti di input:
 
 ```cpp
 // addon.cc
@@ -839,7 +837,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+In `myobject.h`, viene aggiunto un nuovo metodo pubblico per consentire l'accesso ai valori privati dopo aver eseguito l'unwrapping dell'oggetto.
 
 ```cpp
 // myobject.h
@@ -871,7 +869,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+L'implementazione di `myobject.cc` è simile a prima:
 
 ```cpp
 // myobject.cc
@@ -900,7 +898,7 @@ MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
+  // Prepara il template del constructor
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
@@ -912,13 +910,13 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Invocato come constructor: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Invocato come semplice funzione `MyObject(...)`, trasformare in construct call.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -945,7 +943,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Testalo con:
 
 ```js
 // test.js
@@ -956,25 +954,25 @@ const obj2 = addon.createObject(20);
 const result = addon.add(obj1, obj2);
 
 console.log(result);
-// Prints: 30
+// Stampa: 30
 ```
 
 ### AtExit hooks
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+Un hook `AtExit` è una funzione che viene invocata dopo la fine del ciclo di eventi di Node.js ma prima che la JavaScript VM sia terminata e prima che Node.js si arresti. Gli hooks `AtExit` vengono registrati utilizzando l'API `node::AtExit`.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Un puntatore alla funzione per una "call at exit".
+* `args` <span class="type">&lt;void\*&gt;</span> Un puntatore per passare ad un "callback at exit".
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registra gli "exit hooks" che vengono eseguiti dopo che il ciclo di eventi è terminato ma prima che la VM venga distrutta.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` accetta due parametri: un puntatore ad una funzione di callback da eseguire all'uscita (at exit), ed un puntatore a dati contestuali untyped da passare a tale callback.
 
-Callbacks are run in last-in first-out order.
+I callback vengono eseguiti nell'ordine last-in first-out (ultimo ad entrare, primo ad uscire).
 
-The following `addon.cc` implements `AtExit`:
+Il seguente `addon.cc` implementa `AtExit`:
 
 ```cpp
 // addon.cc
@@ -998,7 +996,7 @@ static void at_exit_cb1(void* arg) {
   Isolate* isolate = static_cast<Isolate*>(arg);
   HandleScope scope(isolate);
   Local<Object> obj = Object::New(isolate);
-  assert(!obj.IsEmpty());  // assert VM is still alive
+  assert(!obj.IsEmpty());  // Afferma che la VM è ancora funzionante
   assert(obj->IsObject());
   at_exit_cb1_called++;
 }
@@ -1025,7 +1023,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Testa in JavaScript eseguendo:
 
 ```js
 // test.js

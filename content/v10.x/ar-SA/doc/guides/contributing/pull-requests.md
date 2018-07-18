@@ -1,54 +1,54 @@
-# Pull Requests
+# طلبات السحب
 
-There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
+هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. ومن هنا سنبدأ.
 
-* [Dependencies](#dependencies)
-* [Setting up your local environment](#setting-up-your-local-environment) 
-  * [Step 1: Fork](#step-1-fork)
-  * [Step 2: Branch](#step-2-branch)
-* [The Process of Making Changes](#the-process-of-making-changes) 
-  * [Step 3: Code](#step-3-code)
-  * [Step 4: Commit](#step-4-commit) 
-    * [Commit message guidelines](#commit-message-guidelines)
-  * [Step 5: Rebase](#step-5-rebase)
-  * [Step 6: Test](#step-6-test) 
-    * [Test Coverage](#test-coverage)
-  * [Step 7: Push](#step-7-push)
-  * [Step 8: Opening the Pull Request](#step-8-opening-the-pull-request)
-  * [Step 9: Discuss and Update](#step-9-discuss-and-update) 
-    * [Approval and Request Changes Workflow](#approval-and-request-changes-workflow)
-  * [Step 10: Landing](#step-10-landing)
-* [Reviewing Pull Requests](#reviewing-pull-requests) 
+* [التبعيات](#dependencies)
+* [إعداد البيئة المحلية الخاصة بك](#setting-up-your-local-environment) 
+  * [الخطوة 1: النسخ](#step-1-fork)
+  * [الخطوة 2: التفرع](#step-2-branch)
+* [عملية إجراء التغييرات](#the-process-of-making-changes) 
+  * [الخطوة 3: كتابة الشيفرة البرمجية](#step-3-code)
+  * [الخطوة 4: الإلتزام](#step-4-commit) 
+    * [إرشادات رسالة الإلتزام](#commit-message-guidelines)
+  * [الخطوة 5: إعادة الإنشاء (Rebase)](#step-5-rebase)
+  * [الخطوة 6: الإختبار](#step-6-test) 
+    * [تغطية الاختبار](#test-coverage)
+  * [الخطوة 7: الدفع](#step-7-push)
+  * [خطوة 8: فتح طلب السحب](#step-8-opening-the-pull-request)
+  * [الخطوة 9: النقاش والتحديث](#step-9-discuss-and-update) 
+    * [الموافقة وطلب تغييرات سير العمل](#approval-and-request-changes-workflow)
+  * [الخطوة 10: الهبوط](#step-10-landing)
+* [مراجعة طلبات السحب](#reviewing-pull-requests) 
   * [Review a bit at a time](#review-a-bit-at-a-time)
-  * [Be aware of the person behind the code](#be-aware-of-the-person-behind-the-code)
-  * [Respect the minimum wait time for comments](#respect-the-minimum-wait-time-for-comments)
-  * [Abandoned or Stalled Pull Requests](#abandoned-or-stalled-pull-requests)
-  * [Approving a change](#approving-a-change)
-  * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
-  * [Performance is not everything](#performance-is-not-everything)
-  * [Continuous Integration Testing](#continuous-integration-testing)
-* [Additional Notes](#additional-notes) 
+  * [كن حذرا من الشخص المسؤول عن الشيفرة](#be-aware-of-the-person-behind-the-code)
+  * [احترام الحد الأدنى من وقت الانتظار للتعليقات](#respect-the-minimum-wait-time-for-comments)
+  * [طلبات سحب مهجورة أو متوقفة](#abandoned-or-stalled-pull-requests)
+  * [الموافقة على تعديل](#approving-a-change)
+  * [تقبل أن هناك آراء مختلفة حول ما ينتمي ل Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
+  * [الأداء ليس كل شيء](#performance-is-not-everything)
+  * [اختبار التكامل المستمر](#continuous-integration-testing)
+* [ملاحظات إضافية](#additional-notes) 
   * [Commit Squashing](#commit-squashing)
-  * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
-  * [CI Testing](#ci-testing)
-  * [Waiting Until the Pull Request Gets Landed](#waiting-until-the-pull-request-gets-landed)
-  * [Check Out the Collaborator Guide](#check-out-the-collaborator-guide)
+  * [الحصول على الموافقة لطلب السحب الخاص بك](#getting-approvals-for-your-pull-request)
+  * [اختبار CI](#ci-testing)
+  * [الانتظار حتى ينزل طلب السحب](#waiting-until-the-pull-request-gets-landed)
+  * [ألق نضرة على دليل التعاون](#check-out-the-collaborator-guide)
 
-## Dependencies
+## التبعيات
 
-Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
+يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. التعديلات في الملفات الموجودة في هذه الدلائل يجب ان ترسل إلى المشاريع الخاصة بها. لا تقم بإرسال تصحيح ل Node.js. لا يمكننا أن نقبل مثل هذه التصحيحات.
 
-In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
+في حالة الشك، إفتح تذكرة في [متعقب المشاكل](https://github.com/nodejs/node/issues/) أو إتصل بأحد [المتعاونين مع المشروع](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
 
-## Setting up your local environment
+## إعداد البيئة المحلية الخاصة بك
 
-To get started, you will need to have `git` installed locally. Depending on your operating system, there are also a number of other dependencies required. These are detailed in the [Building guide](../../../BUILDING.md).
+للبدء ، ستحتاج، لأن يكون `git` مثبت محليا. اعتمادا علي نظام التشغيل الخاص بك ، وهناك أيضا عدد من التبعيات الأخرى المطلوبة. ستجدها مفصلة في [إرشادات البناء](../../../BUILDING.md).
 
-Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
+بمجرد أن يكون لديك `git` وتكون متأكد من أن لديك جميع التبعيات اللازمة ، حان الوقت لإنشاء نسخة.
 
-### Step 1: Fork
+### الخطوة 1: النسخ
 
-Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
+إنسخ المشروع [ على GitHub ](https://github.com/nodejs/node) واستنسخ النسخة محليا.
 
 ```text
 $ git clone git@github.com:username/node.git
@@ -64,11 +64,11 @@ $ git config user.name "J. Random User"
 $ git config user.email "j.random.user@example.com"
 ```
 
-Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
+يرجى التأكد من إضافة البريد الإلكتروني المحلي أيضًا إلى [ قائمة البريد الإلكتروني لـ GitHub ](https://github.com/settings/emails) حتى يتم ربط إلتزامك بشكل صحيح بحسابك وسيتم ترقيتك لمساهم بمجرد نزول اول التزام لك.
 
-### Step 2: Branch
+### الخطوة 2: التفرع
 
-As a best practice to keep your development environment as organized as possible, create local branches to work within. These should also be created directly off of the `master` branch.
+أفضل طريقة للحفاظ على بيئة التطوير الخاصة بك أكثر تنضيما قدر الإمكان، أنشئ فروع محلية للعمل عليها. These should also be created directly off of the `master` branch.
 
 ```text
 $ git checkout -b my-branch -t upstream/master
@@ -92,9 +92,9 @@ Any documentation you write (including code comments and API documentation) shou
 
 For contributing C++ code, you may want to look at the [C++ Style Guide](../../../CPP_STYLE_GUIDE.md).
 
-### Step 4: Commit
+### الخطوة 4: الإلتزام
 
-It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+من أفضل الممارسات الموصى بها، الحفاظ على تعديلاتك كمجموعة مجمعة منطقياً قدر الإمكان ضمن إلتزامات فردية. لا يوجد حد لعدد الإلتزامات في طلب السحب الواحد ، ويجد العديد من المساهمين أنه من الأسهل مراجعة التعديلات المنقسمة على عدة إلتزامات.
 
 ```text
 $ git add my/changed/files
@@ -103,11 +103,11 @@ $ git commit
 
 Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
 
-#### Commit message guidelines
+#### إرشادات رسالة الإلتزام
 
-A good commit message should describe what changed and why.
+رسالة التزام جيدة ينبغي أن تصف ما الذي تغير، ولماذا.
 
-1. The first line should:
+1. يجب على السطر الأول أن:
   
   * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
   * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
@@ -437,6 +437,6 @@ Only a Collaborator can start a CI run. Usually one of them will do it for you a
 
 A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### Check Out the Collaborator Guide
+### ألق نضرة على دليل التعاون
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).

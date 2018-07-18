@@ -43,7 +43,7 @@
   * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
 * I returns delle funzioni dovrebbero utilizzare il seguente formato: 
   * `* Returns: {type|type2} Descrizione facoltativa.`
-  * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
+  * Es. `* Returns: {AsyncHook} Un riferimento a <code>asyncHook`.</code>
 * Use official styling for capitalization in products and projects. 
   * OK: JavaScript, Google's V8
   * NOT OK: Javascript, Google's v8
