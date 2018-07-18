@@ -68,7 +68,7 @@ $ git config user.email "j.random.user@example.com"
 
 ### الخطوة 2: التفرع
 
-أفضل طريقة للحفاظ على بيئة التطوير الخاصة بك أكثر تنضيما قدر الإمكان، أنشئ فروع محلية للعمل عليها. These should also be created directly off of the `master` branch.
+أفضل طريقة للحفاظ على بيئة التطوير الخاصة بك أكثر تنضيما قدر الإمكان، هي إنشاء فروع محلية للعمل عليها. وينبغي أيضا أن تنشئها مباشرة خارج الفرع `الرئيسي`.
 
 ```text
 $ git checkout -b my-branch -t upstream/master
@@ -76,7 +76,7 @@ $ git checkout -b my-branch -t upstream/master
 
 ## عملية إجراء التعديلات
 
-### Step 3: Code
+### الخطوة 3: كتابة الشيفرة البرمجية
 
 The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
 
