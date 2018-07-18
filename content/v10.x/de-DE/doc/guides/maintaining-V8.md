@@ -163,11 +163,11 @@ Wenn der Fehler in einer der aktiven V8-Zweige vorhanden ist, müssen wir mögli
 Zweig V8 Links wird im repository-Knoten unterstützt.js. Das Update benötigt werden handverlesene, in den Knoten.js repository und V8-CI müssen die änderung testen.
 
 * Für jeden verlassenen V8-Zweig, der einem betroffenen LTS-Zweig entspricht durch den bug: 
-  * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
+  * Auschecken einer Verzweigung aus der entsprechenden *vY.x-staging* - Zweig (z.B. *v6.x-staging*, um ein Problem in V8 5.1 zu beheben).
   * Cherry-pick the commit(s) from the V8 repository.
-  * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. This will not cause any problems with versioning because V8 will not publish other patches for this branch, so Node.js can effectively bump the patch version.
+  * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. Dies wird keine Probleme mit der Versionierung verursachen, weil V8 dies nicht tut Veröffentlichen Sie andere Patches für diesen Zweig, damit Node.js die Patch-Version.
   * On Node.js >= 9.0.0: Increase the `v8_embedder_string` number in `common.gypi`.
-  * In some cases the patch may require extra effort to merge in case V8 has changed substantially. For important issues we may be able to lean on the V8 team to get help with reimplementing the patch.
+  * In einigen Fällen erfordert der Patch möglicherweise zusätzlichen Aufwand, um zu verschmelzen, falls V8 hat wesentlich verändert. Bei wichtigen Fragen können wir uns auf die V8-Team, um Hilfe bei der Neuimplementierung des Patches zu erhalten.
   * Open a cherry-pick PR on `nodejs/node` targeting the *vY.x-staging* branch and notify the `@nodejs/v8` team.
   * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). Note: The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
 
