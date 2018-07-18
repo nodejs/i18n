@@ -29,12 +29,12 @@
   * [اختبار التكامل المستمر](#continuous-integration-testing)
 * [ملاحظات إضافية](#additional-notes) 
   * [Commit Squashing](#commit-squashing)
-  * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
-  * [CI Testing](#ci-testing)
-  * [Waiting Until the Pull Request Gets Landed](#waiting-until-the-pull-request-gets-landed)
-  * [Check Out the Collaborator Guide](#check-out-the-collaborator-guide)
+  * [الحصول على الموافقة لطلب السحب الخاص بك](#getting-approvals-for-your-pull-request)
+  * [اختبار CI](#ci-testing)
+  * [الانتظار حتى ينزل طلب السحب](#waiting-until-the-pull-request-gets-landed)
+  * [ألق نضرة على دليل التعاون](#check-out-the-collaborator-guide)
 
-## Dependencies
+## التبعيات
 
 Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
 
@@ -437,6 +437,6 @@ Only a Collaborator can start a CI run. Usually one of them will do it for you a
 
 A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### Check Out the Collaborator Guide
+### ألق نضرة على دليل التعاون
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
