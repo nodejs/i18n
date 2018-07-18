@@ -38,11 +38,11 @@
 
 يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. التعديلات في الملفات الموجودة في هذه الدلائل يجب ان ترسل إلى المشاريع الخاصة بها. لا تقم بإرسال تصحيح ل Node.js. لا يمكننا أن نقبل مثل هذه التصحيحات.
 
-In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
+في حالة الشك، إفتح تذكرة في [متعقب المشاكل](https://github.com/nodejs/node/issues/) أو إتصل بأحد [المتعاونين مع المشروع](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
 
-## Setting up your local environment
+## إعداد البيئة المحلية الخاصة بك
 
-To get started, you will need to have `git` installed locally. Depending on your operating system, there are also a number of other dependencies required. These are detailed in the [Building guide](../../../BUILDING.md).
+للبدء ، ستحتاج، لأن يكون `git` مثبت محليا. اعتمادا علي نظام التشغيل الخاص بك ، وهناك أيضا عدد من التبعيات الأخرى المطلوبة. These are detailed in the [Building guide](../../../BUILDING.md).
 
 Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
 
