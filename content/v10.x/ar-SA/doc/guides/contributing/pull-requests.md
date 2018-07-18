@@ -123,9 +123,9 @@ Note that multiple commits often get squashed when they are landed (see the note
 
 3. ضع جميع الأسطر الأخرى في 72 عمودًا (باستثناء عناوين URL الطويلة).
 
-4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
+4. إذا كان التصحيح الخاص بك يعمل على إصلاح مشكلة مفتوحة ، فيمكنك إضافة مرجع إليها في نهاية السجل. استخدم بادئة `Fixes:` وعنوان URL الكامل للمشكلة. لمراجع أخرى استعمل `Refs:`.
   
-  Examples:
+  أمثلة:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
@@ -133,7 +133,7 @@ Note that multiple commits often get squashed when they are landed (see the note
 
 5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
 
-Sample complete commit message:
+عنية كاملة لرسالة آلإلتزام:
 
 ```txt
 subsystem: explain the commit in one line
