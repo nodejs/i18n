@@ -1592,11 +1592,11 @@ napi_status napi_get_value_int32(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` non numerico in `napi_number_expected`.
 
-This API returns the C `int32` primitive equivalent of the given JavaScript `Number`.
+Quest'API restituisce un C `int32` primitivo equivalente al JavaScript `Number` fornito.
 
-If the number exceeds the range of the 32 bit integer, then the result is truncated to the equivalent of the bottom 32 bits. This can result in a large positive number becoming a negative number if the value is > 2^31 -1.
+Se il numero supera l'intervallo del valore integer a 32 bit, allora il risultato viene troncato all'equivalente dei 32 bits inferiori. Questo può determinare un numero positivo elevato che diventa un numero negativo se il valore è > 2^31 -1.
 
-Non-finite number values (`NaN`, `+Infinity`, or `-Infinity`) set the result to zero.
+I valori numerici non finiti (`NaN`, `+Infinity`, oppure `-Infinity`) impostano il risultato su zero.
 
 #### napi_get_value_int64
 
@@ -1610,17 +1610,17 @@ napi_status napi_get_value_int64(napi_env env,
                                  int64_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] value`: `napi_value` che rappresenta un JavaScript `Number`.
-- `[out] result`: C `int64` primitive equivalent of the given JavaScript `Number`.
+- `[out] result`: C `int64` primitivo equivalente al JavaScript `Number` fornito.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
+Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` non numerico esso restituisce `napi_number_expected`.
 
-This API returns the C `int64` primitive equivalent of the given JavaScript `Number`.
+Quest'API restituisce un C `int64` primitivo equivalente al JavaScript `Number` fornito.
 
-`Number` values outside the range of [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) will lose precision.
+I valori `Number` (numerici) al di fuori dell'intervallo [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) perderanno precisione.
 
-Non-finite number values (`NaN`, `+Infinity`, or `-Infinity`) set the result to zero.
+I valori numerici non finiti (`NaN`, `+Infinity`, oppure `-Infinity`) impostano il risultato su zero.
 
 #### napi_get_value_string_latin1
 
@@ -1636,7 +1636,7 @@ napi_status napi_get_value_string_latin1(napi_env env,
                                          size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] value`: `napi_value` representing JavaScript string.
 - `[in] buf`: Buffer to write the ISO-8859-1-encoded string into. If NULL is passed in, the length of the string (in bytes) is returned.
 - `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
