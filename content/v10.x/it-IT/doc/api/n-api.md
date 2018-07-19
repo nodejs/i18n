@@ -1482,13 +1482,13 @@ napi_status napi_get_typedarray_info(napi_env env,
 - `[out] type`: Datatype scalare degli elementi all'interno di `TypedArray`.
 - `[out] length`: `Number` (numero) di elementi in `TypedArray`.
 - `[out] data`: Il data buffer sottostante l'array tipizzato (typed array).
-- `[out] byte_offset`: The byte offset within the data buffer from which to start projecting the `TypedArray`.
+- `[out] byte_offset`: Il byte offset all'interno del data buffer da cui iniziare a proiettare il `TypedArray`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns various properties of a typed array.
+Quest'API restituisce varie proprietà di un array tipizzato (typed array).
 
-*Warning*: Use caution while using this API since the underlying data buffer is managed by the VM.
+*Warning*: Prestare attenzione durante l'utilizzo di quest'API poiché il data buffer sottostante è gestito dalla VM.
 
 #### napi_get_dataview_info
 
@@ -1505,16 +1505,16 @@ napi_status napi_get_dataview_info(napi_env env,
                                    size_t* byte_offset)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] dataview`: `napi_value` representing the `DataView` whose properties to query.
-- `[out] byte_length`: `Number` of bytes in the `DataView`.
-- `[out] data`: The data buffer underlying the `DataView`.
-- `[out] arraybuffer`: `ArrayBuffer` underlying the `DataView`.
-- `[out] byte_offset`: The byte offset within the data buffer from which to start projecting the `DataView`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] dataview`: `napi_value` che rappresenta il `DataView` le cui proprietà sono da interrogare.
+- `[out] byte_length`: `Number` (numero) di bytes in `DataView`.
+- `[out] data`: Il data buffer sottostante il `DataView`.
+- `[out] arraybuffer`: `ArrayBuffer` sottostante il `DataView`.
+- `[out] byte_offset`: Il byte offset all'interno del data buffer da cui iniziare a proiettare il `DataView`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns various properties of a `DataView`.
+Quest'API restituisce varie proprietà di un `DataView`.
 
 #### napi_get_value_bool
 
@@ -1526,11 +1526,11 @@ added: v8.0.0
 napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Boolean`.
-- `[out] result`: C boolean primitive equivalent of the given JavaScript `Boolean`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: `napi_value` che rappresenta un JavaScript `Boolean`.
+- `[out] result`: C primitivo booleano equivalente del JavaScript `Boolean` fornito.
 
-Returns `napi_ok` if the API succeeded. If a non-boolean `napi_value` is passed in it returns `napi_boolean_expected`.
+Restituisce `napi_ok` se l'API ha esito positivo. If a non-boolean `napi_value` is passed in it returns `napi_boolean_expected`.
 
 This API returns the C boolean primitive equivalent of the given JavaScript `Boolean`.
 
