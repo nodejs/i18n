@@ -1685,9 +1685,9 @@ napi_status napi_get_value_string_utf16(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the UTF16-LE-encoded string into. If NULL is passed in, the length of the string (in 2-byte code units) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
+- `[in] value`: `napi_value` che rappresenta una stringa JavaScript.
+- `[in] buf`: Buffer nel quale scrivere la stringa con codifica UTF16-LE. Se viene passato NULL, viene restituita la lunghezza della stringa (in unità di codice a 2 byte).
+- `[in] bufsize`: Dimensione del buffer di destinazione. Quando questo valore è insufficiente, la stringa restituita verrà troncata.
 - `[out] result`: Number of 2-byte code units copied into the buffer, excluding the null terminator.
 
 Returns `napi_ok` if the API succeeded. Se viene passato un valore `napi_value` che non sia `String` esso restituisce `napi_string_expected`.
