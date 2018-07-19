@@ -1728,11 +1728,11 @@ napi_status napi_get_boolean(napi_env env, bool value, napi_value* result)
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] value`: Il valore del booleano da recuperare.
-- `[out] result`: `napi_value` representing JavaScript `Boolean` singleton to retrieve.
+- `[out] result`: `napi_value` che rappresenta un JavaScript `Boolean` singleton da recuperare.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API is used to return the JavaScript singleton object that is used to represent the given boolean value.
+Quest'API viene utilizzata per restituire il JavaScript singleton object che viene utilizzato per rappresentare il valore booleano fornito.
 
 #### napi_get_global
 
@@ -1744,12 +1744,12 @@ added: v8.0.0
 napi_status napi_get_global(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript `global` object.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] result`: `napi_value` che rappresenta un JavaScript `global` object.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns the `global` object.
+Quest'API restituisce il `global` object.
 
 #### napi_get_null
 
@@ -1761,12 +1761,12 @@ added: v8.0.0
 napi_status napi_get_null(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript `null` object.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] result`: `napi_value` che rappresenta un JavaScript `null` object.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns the `null` object.
+Quest'API restituisce il `null` object.
 
 #### napi_get_undefined
 
@@ -1778,12 +1778,12 @@ added: v8.0.0
 napi_status napi_get_undefined(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript Undefined value.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] result`: `napi_value` che rappresenta un valore JavaScript Undefined.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns the Undefined object.
+Quest'API restituisce l'Undefined object.
 
 ## Working with JavaScript Values - Abstract Operations
 
