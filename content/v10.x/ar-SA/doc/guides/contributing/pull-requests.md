@@ -312,7 +312,7 @@ $ git push --force-with-lease origin my-branch
 
 #### الموافقة وطلب تغييرات سير العمل
 
-All Pull Requests require "sign off" in order to land. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+تتطلب كافة طلبات سحب "تسجيل الخروج" من أجل النزول. قد يجد المساهم تفاصيل محددة يرغب في تعديلها او إصلاحها كلما راجع طلب سحب. قد يكون هذا بسيطاً مثل إصلاح خطأ مطبعي ، أو قد يشمل تعديلات جوهرية على الشيفرة الذي كتبتها. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
 
 Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
 
