@@ -321,7 +321,7 @@ const addon = require('./build/Release/addon');
 
 addon((msg) => {
   console.log(msg);
-// Prints: 'hello world'
+// Stampa: 'hello world'
 });
 ```
 
@@ -404,7 +404,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, MyFunction);
   Local<Function> fn = tpl->GetFunction();
 
-  // omit this to make it anonymous
+  // omettez cette ligne pour la rendre anonyme
   fn->SetName(String::NewFromUtf8(isolate, "theFunction"));
 
   args.GetReturnValue().Set(fn);
@@ -515,7 +515,7 @@ MyObject::~MyObject() {
 void MyObject::Init(Local<Object> exports) {
   Isolate* isolate = exports->GetIsolate();
 
-  // Prepare constructor template
+  // Prepare le gabarit du constructeur
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
@@ -532,8 +532,8 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    // appelé comme constructeur: `new MyObject(...)`
+    double value = args[0]->IsUndefined() ؟ 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
