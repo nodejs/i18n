@@ -1785,9 +1785,9 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Quest'API restituisce l'Undefined object.
 
-## Working with JavaScript Values - Abstract Operations
+## Lavorare con i valori JavaScript - Abstract Operations
 
-N-API exposes a set of APIs to perform some abstract operations on JavaScript values. Some of these operations are documented under [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API espone un set di API per eseguire alcune abstract operations sui valori JavaScript. Alcune di queste operations sono documentate nella [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
 These APIs support doing one of the following:
 
