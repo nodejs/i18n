@@ -1787,7 +1787,7 @@ Quest'API restituisce l'Undefined object.
 
 ## Lavorare con i valori JavaScript - Abstract Operations
 
-N-API espone un set di API per eseguire alcune abstract operations sui valori JavaScript. Alcune di queste operations sono documentate nella [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API exposes a set of APIs to perform some abstract operations on JavaScript values. Alcune di queste operations sono documentate nella [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
 Queste API supportano una delle seguenti operations:
 
@@ -1910,7 +1910,7 @@ napi_status napi_instanceof(napi_env env,
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] object`: Il valore JavaScript da verificare.
-- `[in] constructor`: Il JavaScript function object della funzione constructor da controllare.
+- `[in] constructor`: Il JavaScript function object della funzione constructor con il quale verificarlo.
 - `[out] result`: Valore booleano impostato su true se `object instanceof constructor` è true.
 
 Restituisce `napi_ok` se l'API ha esito positivo.
@@ -1928,7 +1928,7 @@ napi_status napi_is_array(napi_env env, napi_value value, bool* result)
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] object`: Il valore JavaScript da verificare.
+- `[in] value`: Il valore JavaScript da verificare.
 - `[out] result`: Se l'object fornito è un array.
 
 Restituisce `napi_ok` se l'API ha esito positivo.
@@ -1946,7 +1946,7 @@ napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] object`: Il valore JavaScript da verificare.
+- `[in] value`: Il valore JavaScript da verificare.
 - `[out] result`: Se l'object fornito è un `ArrayBuffer`.
 
 Restituisce `napi_ok` se l'API ha esito positivo.
@@ -1964,7 +1964,7 @@ napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] object`: Il valore JavaScript da verificare.
+- `[in] value`: Il valore JavaScript da verificare.
 - `[out] result`: Se il `napi_value` fornito rappresenta un `node::Buffer` object.
 
 Restituisce `napi_ok` se l'API ha esito positivo.
@@ -1982,7 +1982,7 @@ napi_status napi_is_error(napi_env env, napi_value value, bool* result)
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] object`: Il valore JavaScript da verificare.
+- `[in] value`: Il valore JavaScript da verificare.
 - `[out] result`: Se il `napi_value` fornito rappresenta un `Error` object.
 
 Restituisce `napi_ok` se l'API ha esito positivo.
@@ -2000,12 +2000,12 @@ napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] object`: Il valore JavaScript da verificare.
+- `[in] value`: Il valore JavaScript da verificare.
 - `[out] result`: Se il `napi_value` fornito rappresenta un `TypedArray`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API checks if the `Object` passed in is a typed array.
+Quest'API controlla se l'`Object` passato è un array tipizzato (typed array).
 
 ### napi_is_dataview
 
@@ -2017,13 +2017,13 @@ added: v8.3.0
 napi_status napi_is_dataview(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents a `DataView`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: Il valore JavaScript da verificare.
+- `[out] result`: Se il `napi_value` fornito rappresenta un `DataView`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API checks if the `Object` passed in is a `DataView`.
+Quest'API controlla se l'`Object` passato è un `DataView`.
 
 ### napi_strict_equals
 
@@ -2038,16 +2038,16 @@ napi_status napi_strict_equals(napi_env env,
                                bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] lhs`: The JavaScript value to check.
-- `[in] rhs`: The JavaScript value to check against.
-- `[out] result`: Whether the two `napi_value` objects are equal.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] lhs`: Il valore JavaScript da verificare.
+- `[in] rhs`: Il valore JavaScript con il quale verificarlo.
+- `[out] result`: Se i due `napi_value` objects sono uguali.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API represents the invocation of the Strict Equality algorithm as defined in [Section 7.2.14](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) of the ECMAScript Language Specification.
+Quest'API si comporta in modo simile all'invocazione dell'algoritmo Strict Equality come definito nella [Section 7.2.14](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) dell'ECMAScript Language Specification.
 
-## Working with JavaScript Properties
+## Lavorare con le Proprietà JavaScript
 
 N-API exposes a set of APIs to get and set properties on JavaScript objects. Some of these types are documented under [Section 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
