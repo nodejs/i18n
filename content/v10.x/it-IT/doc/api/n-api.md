@@ -1437,11 +1437,11 @@ napi_status napi_get_buffer_info(napi_env env,
 - `[out] data`: Il data buffer sottostante al `node::Buffer`.
 - `[out] length`: Lunghezza in bytes del data buffer sottostante.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API is used to retrieve the underlying data buffer of a `node::Buffer` and it's length.
+Quest'API viene utilizzata per recuperare il data buffer sottostante di un `node::Buffer` e la sua lunghezza.
 
-*Warning*: Use caution while using this API since the underlying data buffer's lifetime is not guaranteed if it's managed by the VM.
+*Warning*: Prestare attenzione durante l'utilizzo di quest'API poiché la durata del data buffer sottostante non è garantita se è gestita dalla VM.
 
 #### napi_get_prototype
 
@@ -1455,8 +1455,8 @@ napi_status napi_get_prototype(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] object`: `napi_value` representing JavaScript `Object` whose prototype to return. This returns the equivalent of `Object.getPrototypeOf` (which is not the same as the function's `prototype` property).
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: `napi_value` che rappresenta il JavaScript `Object` il cui prototipo da restituire. This returns the equivalent of `Object.getPrototypeOf` (which is not the same as the function's `prototype` property).
 - `[out] result`: `napi_value` representing prototype of the given object.
 
 Returns `napi_ok` if the API succeeded.
