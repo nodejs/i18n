@@ -2197,13 +2197,13 @@ Gli `napi_property_attributes` sono flags (bandiere) utilizzate per controllare 
 - `napi_writable` - Utilizzato per indicare che una determinata proprietà è scrivibile.
 - `napi_enumerable` - Utilizzato per indicare che una determinata proprietà è enumerabile.
 - `napi_configurable` - Utilizzato per indicare che una determinata proprietà è configurabile, com'è definito nella [Section 6.1.7.1](https://tc39.github.io/ecma262/#table-2) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
-- `napi_static` - Used to indicate that the property will be defined as a static property on a class as opposed to an instance property, which is the default. This is used only by [`napi_define_class`][]. It is ignored by `napi_define_properties`.
+- `napi_static` - Utilizzato per indicare che la proprietà verrà definita come una proprietà statica su una classe al posto di una proprietà dell'istanza, che è l'impostazione predefinita. Questo è usato solo tramite [`napi_define_class`][]. E' ignorato da `napi_define_properties`.
 
 #### napi_property_descriptor
 
 ```C
 typedef struct {
-  // One of utf8name or name should be NULL.
+  // Una di tipo utf8name oppure il nome dovrebbe essere NULL.
   const char* utf8name;
   napi_value name;
 
@@ -2217,8 +2217,8 @@ typedef struct {
 } napi_property_descriptor;
 ```
 
-- `utf8name`: Optional `String` describing the key for the property, encoded as UTF8. One of `utf8name` or `name` must be provided for the property.
-- `name`: Optional `napi_value` that points to a JavaScript string or symbol to be used as the key for the property. One of `utf8name` or `name` must be provided for the property.
+- `utf8name`: `String` (stringa) opzionale che descrive la key per la proprietà, codificata come UTF8. Uno tra `utf8name` oppure `name` deve essere fornito per la proprietà.
+- `name`: `napi_value` facoltativo che punta ad una stringa od un simbolo JavaScript da utilizzare come key per la proprietà. One of `utf8name` or `name` must be provided for the property.
 - `value`: The value that's retrieved by a get access of the property if the property is a data property. If this is passed in, set `getter`, `setter`, `method` and `data` to `NULL` (since these members won't be used).
 - `getter`: A function to call when a get access of the property is performed. If this is passed in, set `value` and `method` to `NULL` (since these members won't be used). The given function is called implicitly by the runtime when the property is accessed from JavaScript code (or if a get on the property is performed using a N-API call).
 - `setter`: A function to call when a set access of the property is performed. If this is passed in, set `value` and `method` to `NULL` (since these members won't be used). The given function is called implicitly by the runtime when the property is set from JavaScript code (or if a set on the property is performed using a N-API call).
