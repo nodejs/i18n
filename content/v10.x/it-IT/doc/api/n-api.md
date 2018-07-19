@@ -1409,13 +1409,13 @@ napi_status napi_get_arraybuffer_info(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] arraybuffer`: `napi_value` representing the `ArrayBuffer` being queried.
-- `[out] data`: The underlying data buffer of the `ArrayBuffer`.
-- `[out] byte_length`: Length in bytes of the underlying data buffer.
+- `[in] arraybuffer`: `napi_value` che rappresenta l'`ArrayBuffer` interrogato.
+- `[out] data`: Il data buffer sottostante dell'`ArrayBuffer`.
+- `[out] byte_length`: Lunghezza in bytes del data buffer sottostante.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API is used to retrieve the underlying data buffer of an `ArrayBuffer` and its length.
+Quest'API viene utilizzata per recuperare il data buffer sottostante di un `ArrayBuffer` e la sua lunghezza.
 
 *WARNING*: Use caution while using this API. The lifetime of the underlying data buffer is managed by the `ArrayBuffer` even after it's returned. A possible safe way to use this API is in conjunction with [`napi_create_reference`][], which can be used to guarantee control over the lifetime of the `ArrayBuffer`. It's also safe to use the returned data buffer within the same callback as long as there are no calls to other APIs that might trigger a GC.
 
