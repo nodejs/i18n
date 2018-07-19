@@ -2055,20 +2055,20 @@ Le proprietà in JavaScript sono rappresentate come una tupla di una key ed un v
 
 - Named: una semplice stringa con codifica UTF8
 - Integer-Indexed: un valore di indice rappresentato tramite `uint32_t`
-- JavaScript value: questi sono rappresentati in N-API tramite `napi_value`. This can be a `napi_value` representing a `String`, `Number`, or `Symbol`.
+- JavaScript value: questi sono rappresentati in N-API tramite `napi_value`. Può essere un `napi_value` che rappresenta una `String` (stringa), un `Number` (numero), oppure un `Symbol` (simbolo).
 
-N-API values are represented by the type `napi_value`. Any N-API call that requires a JavaScript value takes in a `napi_value`. However, it's the caller's responsibility to make sure that the `napi_value` in question is of the JavaScript type expected by the API.
+I valori N-API sono rappresentati dal tipo `napi_value`. Qualsiasi chiamata N-API che richiede un un valore JavaScript accetta un `napi_value`. Tuttavia, è responsabilità del caller assicurarsi che il `napi_value` in questione sia del tipo JavaScript previsto dall'API.
 
-The APIs documented in this section provide a simple interface to get and set properties on arbitrary JavaScript objects represented by `napi_value`.
+Le API documentate in questa sezione forniscono una semplice interfaccia per ottenere ed impostare le proprietà su JavaScript objects arbitrari rappresentati tramite `napi_value`.
 
-For instance, consider the following JavaScript code snippet:
+Ad esempio, considerare il seguente frammento di codice JavaScript:
 
 ```js
 const obj = {};
 obj.myProp = 123;
 ```
 
-The equivalent can be done using N-API values with the following snippet:
+L'equivalente può essere fatto usando i valori N-API con il seguente frammento:
 
 ```C
 napi_status status = napi_generic_failure;
