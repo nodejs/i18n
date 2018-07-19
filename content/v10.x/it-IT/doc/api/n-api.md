@@ -1456,10 +1456,10 @@ napi_status napi_get_prototype(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] object`: `napi_value` che rappresenta il JavaScript `Object` il cui prototipo da restituire. This returns the equivalent of `Object.getPrototypeOf` (which is not the same as the function's `prototype` property).
-- `[out] result`: `napi_value` representing prototype of the given object.
+- `[in] object`: `napi_value` che rappresenta il JavaScript `Object` che deve restituire il prototipo. Questo restituisce l'equivalente di `Object.getPrototypeOf` (che non ha lo stesso ruolo della proprietà del `prototype` della funzione).
+- `[out] result`: `napi_value` che rappresenta il prototipo dell'object dato.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 #### napi_get_typedarray_info
 
@@ -1477,11 +1477,11 @@ napi_status napi_get_typedarray_info(napi_env env,
                                      size_t* byte_offset)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] typedarray`: `napi_value` representing the `TypedArray` whose properties to query.
-- `[out] type`: Scalar datatype of the elements within the `TypedArray`.
-- `[out] length`: `Number` of elements in the `TypedArray`.
-- `[out] data`: The data buffer underlying the typed array.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] typedarray`: `napi_value` che rappresenta il `TypedArray` le cui proprietà sono da interrogare.
+- `[out] type`: Datatype scalare degli elementi all'interno di `TypedArray`.
+- `[out] length`: `Number` (numero) di elementi in `TypedArray`.
+- `[out] data`: Il data buffer sottostante l'array tipizzato (typed array).
 - `[out] byte_offset`: The byte offset within the data buffer from which to start projecting the `TypedArray`.
 
 Returns `napi_ok` if the API succeeded.
