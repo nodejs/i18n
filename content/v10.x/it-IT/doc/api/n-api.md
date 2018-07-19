@@ -1791,8 +1791,8 @@ N-API espone un set di API per eseguire alcune abstract operations sui valori Ja
 
 Queste API supportano una delle seguenti operations:
 
-1. Coerce JavaScript values to specific JavaScript types (such as `Number` or `String`).
-2. Check the type of a JavaScript value.
+1. Convertire i valori JavaScript a specifici tipi JavaScript (come `Number` oppure `String`).
+2. Controllare il tipo di un valore JavaScript.
 3. Check for equality between two JavaScript values.
 
 ### napi_coerce_to_bool
