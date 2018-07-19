@@ -1,34 +1,42 @@
 const fs = require('fs')
 const path = require('path')
 const walk = require('walk-sync')
-const cleanDeep = require('clean-deep')
 const hubdown = require('hubdown')
 const localesByVersion = require('../lib/locales')
+const db = require('level')('../db', {valueEncoding: 'json'})
 
 const contentDir = path.join(__dirname, '../content')
-async function parseDocs (version, locales) {
-  console.time(`parsed docs for ${version} in`)
-  const markdownFiles = walk.entries(path.join(contentDir, version))
+async function parseDocs (nodeVersion, locales) {
+  console.time(`parsed docs for ${nodeVersion} in`)
+  const markdownFiles = walk.entries(path.join(contentDir, nodeVersion))
     .filter(file => file.relativePath.endsWith('.md'))
-  console.log(`procesing ${markdownFiles.length} files in ${Object.keys(locales).length} locales for ${version} version`)
-  let docs = await Promise.all(markdownFiles.map(parseFile))
-  console.timeEnd(`parsed docs for ${version} in`)
-  return docs
+    
+  console.log(`processing ${markdownFiles.length} files in ${Object.keys(locales).length} locales for ${nodeVersion} version`)
+
+  for (let file of markdownFiles) {
+    file.nodeVersion = nodeVersion
+    file = await parseFile(file)
+    const key = {
+      nodeVersion: file.nodeVersion,
+      locale: file.locale,
+      path: file.path
+    }
+    await db.put(key, file)
+    console.log(key)
+  }
+  console.timeEnd(`parsed docs for ${nodeVersion} in`)
 }
 
 async function parseFile (file) {
-  file.fullPath = path.join(file.basePath, file.relativePath)
-  file.locale = file.relativePath.split('/')[0]
-  file.slug = path.basename(file.relativePath, '.md')
+  // clone object so it's not a walk-sync `Entry` instance
+  file = Object.assign({}, file)
 
-  file.category = file.relativePath
-    .split('/')
-    .slice(2, -1)
-    .join('/')
+  file.fullPath = path.join(file.basePath, file.relativePath)
+  file.path = file.relativePath.split('/').slice(2).join('/')
+  file.locale = file.relativePath.split('/')[0]
 
   const markdown = fs.readFileSync(file.fullPath, 'utf8')
-
-  file.sections = await hubdown(markdown)
+  file.html = await hubdown(markdown)
 
   // remove leftover file props from walk-sync
   delete file.mode
@@ -36,8 +44,9 @@ async function parseFile (file) {
   delete file.mtime
   delete file.relativePath
   delete file.basePath
+  delete file.fullPath
 
-  return cleanDeep(file)
+  return file
 }
 
 async function main () {
