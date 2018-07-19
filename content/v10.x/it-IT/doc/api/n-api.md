@@ -1787,7 +1787,7 @@ Quest'API restituisce l'Undefined object.
 
 ## Lavorare con i valori JavaScript - Abstract Operations
 
-N-API exposes a set of APIs to perform some abstract operations on JavaScript values. Alcune di queste operations sono documentate nella [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API fornisce un set di API per eseguire alcune abstract operations su valori JavaScript. Alcune di queste operations sono documentate nella [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
 Queste API supportano una delle seguenti operations:
 
@@ -2049,13 +2049,13 @@ Quest'API si comporta in modo simile all'invocazione dell'algoritmo Strict Equal
 
 ## Lavorare con le Proprietà JavaScript
 
-N-API exposes a set of APIs to get and set properties on JavaScript objects. Some of these types are documented under [Section 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API fornisce un set di API per ottenere ed impostare le proprietà sugli JavaScript objects. Alcuni di questi tipi sono documentati nella [Section 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
-Properties in JavaScript are represented as a tuple of a key and a value. Fundamentally, all property keys in N-API can be represented in one of the following forms:
+Le proprietà in JavaScript sono rappresentate come una tupla di una key ed un valore. Fondamentalmente, tutte le property keys in N-API possono essere rappresentate in una delle seguenti forme:
 
-- Named: a simple UTF8-encoded string
-- Integer-Indexed: an index value represented by `uint32_t`
-- JavaScript value: these are represented in N-API by `napi_value`. This can be a `napi_value` representing a `String`, `Number`, or `Symbol`.
+- Named: una semplice stringa con codifica UTF8
+- Integer-Indexed: un valore di indice rappresentato tramite `uint32_t`
+- JavaScript value: questi sono rappresentati in N-API tramite `napi_value`. This can be a `napi_value` representing a `String`, `Number`, or `Symbol`.
 
 N-API values are represented by the type `napi_value`. Any N-API call that requires a JavaScript value takes in a `napi_value`. However, it's the caller's responsibility to make sure that the `napi_value` in question is of the JavaScript type expected by the API.
 
