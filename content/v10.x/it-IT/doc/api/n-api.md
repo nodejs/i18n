@@ -2061,7 +2061,7 @@ I valori N-API sono rappresentati dal tipo `napi_value`. Qualsiasi chiamata N-AP
 
 Le API documentate in questa sezione forniscono una semplice interfaccia per ottenere ed impostare le proprietà su JavaScript objects arbitrari rappresentati tramite `napi_value`.
 
-Ad esempio, considerare il seguente frammento di codice JavaScript:
+Ad esempio, considera il seguente frammento di codice JavaScript:
 
 ```js
 const obj = {};
@@ -2078,7 +2078,7 @@ napi_value obj, value;
 status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// Create a napi_value for 123
+// Crea un napi_value per 123
 status = napi_create_int32(env, 123, &value);
 if (status != napi_ok) return status;
 
@@ -2087,14 +2087,14 @@ status = napi_set_named_property(env, obj, "myProp", value);
 if (status != napi_ok) return status;
 ```
 
-Indexed properties can be set in a similar manner. Consider the following JavaScript snippet:
+Le proprietà indicizzate possono essere impostate in modo simile. Considera il seguente frammento JavaScript:
 
 ```js
 const arr = [];
 arr[123] = 'hello';
 ```
 
-The equivalent can be done using N-API values with the following snippet:
+L'equivalente può essere fatto usando i valori N-API con il seguente frammento:
 
 ```C
 napi_status status = napi_generic_failure;
@@ -2104,7 +2104,7 @@ napi_value arr, value;
 status = napi_create_array(env, &arr);
 if (status != napi_ok) return status;
 
-// Create a napi_value for 'hello'
+// Crea un napi_value per 'hello'
 status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &value);
 if (status != napi_ok) return status;
 
@@ -2113,14 +2113,14 @@ status = napi_set_element(env, arr, 123, value);
 if (status != napi_ok) return status;
 ```
 
-Properties can be retrieved using the APIs described in this section. Consider the following JavaScript snippet:
+Le proprietà possono essere recuperate utilizzando le API descritte in questa sezione. Considera il seguente frammento JavaScript:
 
 ```js
 const arr = [];
 const value = arr[123];
 ```
 
-The following is the approximate equivalent of the N-API counterpart:
+Quanto segue è l'equivalente approssimativo della controparte N-API:
 
 ```C
 napi_status status = napi_generic_failure;
@@ -2135,7 +2135,7 @@ status = napi_get_element(env, arr, 123, &value);
 if (status != napi_ok) return status;
 ```
 
-Finally, multiple properties can also be defined on an object for performance reasons. Consider the following JavaScript:
+Infine, è possibile definire più proprietà su un object per motivi di prestazioni. Considera il seguente codice JavaScript:
 
 ```js
 const obj = {};
@@ -2145,7 +2145,7 @@ Object.defineProperties(obj, {
 });
 ```
 
-The following is the approximate equivalent of the N-API counterpart:
+Quanto segue è l'equivalente approssimativo della controparte N-API:
 
 ```C
 napi_status status = napi_status_generic_failure;
@@ -2155,14 +2155,14 @@ napi_value obj;
 status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// Create napi_values for 123 and 456
+// Crea napi_values per 123 e 456
 napi_value fooValue, barValue;
 status = napi_create_int32(env, 123, &fooValue);
 if (status != napi_ok) return status;
 status = napi_create_int32(env, 456, &barValue);
 if (status != napi_ok) return status;
 
-// Set the properties
+// Imposta le proprietà
 napi_property_descriptor descriptors[] = {
   { "foo", NULL, NULL, NULL, NULL, fooValue, napi_default, NULL },
   { "bar", NULL, NULL, NULL, NULL, barValue, napi_default, NULL }
@@ -2174,7 +2174,7 @@ status = napi_define_properties(env,
 if (status != napi_ok) return status;
 ```
 
-### Structures
+### Strutture
 
 #### napi_property_attributes
 
@@ -2185,8 +2185,8 @@ typedef enum {
   napi_enumerable = 1 << 1,
   napi_configurable = 1 << 2,
 
-  // Used with napi_define_class to distinguish static properties
-  // from instance properties. Ignored by napi_define_properties.
+  // Usato con napi_define_class per distinguere le proprietà statiche
+  // dalle proprietà dell'istanza. Ignorato da napi_define_properties.
   napi_static = 1 << 10,
 } napi_property_attributes;
 ```
