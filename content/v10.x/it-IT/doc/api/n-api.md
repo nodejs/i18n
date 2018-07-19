@@ -1929,11 +1929,11 @@ napi_status napi_is_array(napi_env env, napi_value value, bool* result)
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] object`: Il valore JavaScript da verificare.
-- `[out] result`: Whether the given object is an array.
+- `[out] result`: Se l'object fornito è un array.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API represents invoking the `IsArray` operation on the object as defined in [Section 7.2.2](https://tc39.github.io/ecma262/#sec-isarray) of the ECMAScript Language Specification.
+Quest'API si comporta in modo simile all'invocazione del `IsArray` operation sull'object come definito nella [Section 7.2.2](https://tc39.github.io/ecma262/#sec-isarray) dell'ECMAScript Language Specification.
 
 ### napi_is_arraybuffer
 
@@ -1945,13 +1945,13 @@ added: v8.0.0
 napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given object is an `ArrayBuffer`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: Il valore JavaScript da verificare.
+- `[out] result`: Se l'object fornito è un `ArrayBuffer`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API checks if the `Object` passed in is an array buffer.
+Quest'API controlla se l'`Object` passato è un array buffer.
 
 ### napi_is_buffer
 
@@ -1963,13 +1963,13 @@ added: v8.0.0
 napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents a `node::Buffer` object.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: Il valore JavaScript da verificare.
+- `[out] result`: Se il `napi_value` fornito rappresenta un `node::Buffer` object.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API checks if the `Object` passed in is a buffer.
+Quest'API controlla se l'`Object` passato è un buffer.
 
 ### napi_is_error
 
@@ -1981,13 +1981,13 @@ added: v8.0.0
 napi_status napi_is_error(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents an `Error` object.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: Il valore JavaScript da verificare.
+- `[out] result`: Se il `napi_value` fornito rappresenta un `Error` object.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API checks if the `Object` passed in is an `Error`.
+Quest'API controlla se l'`Object` passato è un `Error`.
 
 ### napi_is_typedarray
 
@@ -1999,9 +1999,9 @@ added: v8.0.0
 napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents a `TypedArray`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: Il valore JavaScript da verificare.
+- `[out] result`: Se il `napi_value` fornito rappresenta un `TypedArray`.
 
 Returns `napi_ok` if the API succeeded.
 
