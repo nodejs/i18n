@@ -1637,14 +1637,14 @@ napi_status napi_get_value_string_latin1(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the ISO-8859-1-encoded string into. If NULL is passed in, the length of the string (in bytes) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
-- `[out] result`: Number of bytes copied into the buffer, excluding the null terminator.
+- `[in] value`: `napi_value` che rappresenta una stringa JavaScript.
+- `[in] buf`: Buffer nel quale scrivere la stringa con codifica ISO-8859-1. Se viene passato NULL, viene restituita la lunghezza della stringa (in bytes).
+- `[in] bufsize`: Dimensione del buffer di destinazione. Quando questo valore è insufficiente, la stringa restituita verrà troncata.
+- `[out] result`: Numero di bytes copiati all'interno del buffer, escluso il null terminator.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` che non sia `String` esso restituisce `napi_string_expected`.
 
-This API returns the ISO-8859-1-encoded string corresponding the value passed in.
+Quest'API restituisce la stringa con codifica ISO-8859-1 corrispondente al valore passato.
 
 #### napi_get_value_string_utf8
 
@@ -1660,15 +1660,15 @@ napi_status napi_get_value_string_utf8(napi_env env,
                                        size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the UTF8-encoded string into. If NULL is passed in, the length of the string (in bytes) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
-- `[out] result`: Number of bytes copied into the buffer, excluding the null terminator.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: `napi_value` che rappresenta una stringa JavaScript.
+- `[in] buf`: Buffer nel quale scrivere la stringa con codifica UTF8. Se viene passato NULL, viene restituita la lunghezza della stringa (in bytes).
+- `[in] bufsize`: Dimensione del buffer di destinazione. Quando questo valore è insufficiente, la stringa restituita verrà troncata.
+- `[out] result`: Numero di bytes copiati all'interno del buffer, escluso il null terminator.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` che non sia `String` esso restituisce `napi_string_expected`.
 
-This API returns the UTF8-encoded string corresponding the value passed in.
+Quest'API restituisce la stringa con codifica UTF8 corrispondente al valore passato.
 
 #### napi_get_value_string_utf16
 
@@ -1684,13 +1684,13 @@ napi_status napi_get_value_string_utf16(napi_env env,
                                         size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] value`: `napi_value` representing JavaScript string.
 - `[in] buf`: Buffer to write the UTF16-LE-encoded string into. If NULL is passed in, the length of the string (in 2-byte code units) is returned.
 - `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
 - `[out] result`: Number of 2-byte code units copied into the buffer, excluding the null terminator.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Returns `napi_ok` if the API succeeded. Se viene passato un valore `napi_value` che non sia `String` esso restituisce `napi_string_expected`.
 
 This API returns the UTF16-encoded string corresponding the value passed in.
 
