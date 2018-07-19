@@ -1791,9 +1791,9 @@ N-API espone un set di API per eseguire alcune abstract operations sui valori Ja
 
 Queste API supportano una delle seguenti operations:
 
-1. Convertire i valori JavaScript a specifici tipi JavaScript (come `Number` oppure `String`).
+1. Forzare i valori JavaScript a specifici tipi JavaScript (come `Number` oppure `String`).
 2. Controllare il tipo di un valore JavaScript.
-3. Check for equality between two JavaScript values.
+3. Verificare l'uguaglianza tra due valori JavaScript.
 
 ### napi_coerce_to_bool
 
@@ -1807,11 +1807,11 @@ napi_status napi_coerce_to_bool(napi_env env,
                                 napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Boolean`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: Il valore JavaScript da forzare.
+- `[out] result`: `napi_value` che rappresenta il JavaScript `Boolean` forzato.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API implements the abstract operation `ToBoolean()` as defined in [Section 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
 
