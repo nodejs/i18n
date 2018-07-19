@@ -2218,9 +2218,9 @@ typedef struct {
 ```
 
 - `utf8name`: `String` (stringa) opzionale che descrive la key per la proprietà, codificata come UTF8. Uno tra `utf8name` oppure `name` deve essere fornito per la proprietà.
-- `name`: `napi_value` facoltativo che punta ad una stringa od un simbolo JavaScript da utilizzare come key per la proprietà. One of `utf8name` or `name` must be provided for the property.
-- `value`: The value that's retrieved by a get access of the property if the property is a data property. If this is passed in, set `getter`, `setter`, `method` and `data` to `NULL` (since these members won't be used).
-- `getter`: A function to call when a get access of the property is performed. If this is passed in, set `value` and `method` to `NULL` (since these members won't be used). The given function is called implicitly by the runtime when the property is accessed from JavaScript code (or if a get on the property is performed using a N-API call).
+- `name`: `napi_value` facoltativo che punta ad una stringa od un simbolo JavaScript da utilizzare come key per la proprietà. Uno tra `utf8name` oppure `name` deve essere fornito per la proprietà.
+- `value`: Il valore recuperato tramite un get access della proprietà se la proprietà è una proprietà dei dati. Se questo viene passato, imposta `getter`, `setter`, `method` e `data` a `NULL` (poiché questi membri non saranno usati).
+- `getter`: Una funzione da chiamare quando viene eseguito un get access della proprietà. Se questo viene passato, imposta `value` e `method` a `NULL` (poiché questi membri non saranno usati). La funzione specificata viene chiamata implicitamente dal runtime quando si accede alla proprietà dal codice JavaScript (o se viene eseguito un get sulla proprietà utilizzando una chiamata N-API).
 - `setter`: A function to call when a set access of the property is performed. If this is passed in, set `value` and `method` to `NULL` (since these members won't be used). The given function is called implicitly by the runtime when the property is set from JavaScript code (or if a set on the property is performed using a N-API call).
 - `method`: Set this to make the property descriptor object's `value` property to be a JavaScript function represented by `method`. If this is passed in, set `value`, `getter` and `setter` to `NULL` (since these members won't be used).
 - `attributes`: The attributes associated with the particular property. See [`napi_property_attributes`](#n_api_napi_property_attributes).
