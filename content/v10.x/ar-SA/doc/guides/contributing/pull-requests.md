@@ -251,22 +251,20 @@ make coverage-clean
 $ git push origin my-branch
 ```
 
-### Step 8: Opening the Pull Request
+### خطوة 8: فتح طلب السحب
 
-From within GitHub, opening a new Pull Request will present you with a template that should be filled out:
+من داخل GitHub ، سيؤدي فتح طلب سحب جديد إلى تقديم نموذج لك يجب ملؤه:
 
 ```markdown
 <!--
-Thank you for your Pull Request. Please provide a description above and review
-the requirements below.
+شكرا لك على طلب السحب. يرجى تقديم وصف أعلاه ومراجعة المتطلبات أدناه.
 
-Bug fixes and new features should include tests and possibly benchmarks.
+يجب أن تتضمن إصلاحات الأخطاء والميزات الجديدة اختبارات ومقاييس محتملة.
 
-Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
--->
+دليل المساهمين: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md->
 
-#### Checklist
-<!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
+# # # قائمة
+<!-إزالة العناصر التي لا تنطبق. For completed items, change [ ] to [x]. -->
 
 - [ ] `make -j4 test` (UNIX), or `vcbuild test` (Windows) passes
 - [ ] tests and/or benchmarks are included
