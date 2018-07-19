@@ -264,12 +264,12 @@ $ git push origin my-branch
 دليل المساهمين: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md->
 
 # # # قائمة
-<!-إزالة العناصر التي لا تنطبق. بالنسبة للعناصر المكتملة، غَيِّر [] إلى [x]. -->
+<!-إزالة العناصر التي لا تنطبق. بالنسبة للعناصر المكتملة، غَيِّر [] إلى [x]. ->
 
-- [ ] `make -j4 test` (UNIX), or `vcbuild test` (Windows) passes
-- [ ] tests and/or benchmarks are included
-- [ ] documentation is changed or added
-- [ ] commit message follows [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
+- [ ] إختبار 'UNIX) 'make -j4) أو 'windows) 'vcbuild) مر بنجاح
+- [ ] تم تضمين الاختبارات/ أو المعايير
+- [ ] تم تغيير التوثيق أو إضافته
+- [ ] رسالة الإلتزام تتبع [إرشادات الإلتزام] (https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
 ```
 
 Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
