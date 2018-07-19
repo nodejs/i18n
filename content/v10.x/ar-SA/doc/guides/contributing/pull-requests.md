@@ -26,7 +26,7 @@
   * [الموافقة على تعديل](#approving-a-change)
   * [تقبل أن هناك آراء مختلفة حول ما ينتمي لـ Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [الأداء ليس كل شيء](#performance-is-not-everything)
-  * [اختبار التكامل المستمر](#continuous-integration-testing)
+  * [اختبار التكامل المتواصل](#continuous-integration-testing)
 * [ملاحظات إضافية](#additional-notes) 
   * [سحق الإلتزام](#commit-squashing)
   * [الحصول على الموافقة لطلب السحب الخاص بك](#getting-approvals-for-your-pull-request)
