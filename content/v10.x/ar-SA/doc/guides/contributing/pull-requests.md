@@ -278,7 +278,7 @@ $ git push origin my-branch
 
 ### الخطوة 9: النقاش والتحديث
 
-من المحتمل أن تحصل على ملاحظات أو طلبات لإجراء تعديلات على طلب السحب. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+من المحتمل أن تحصل على ملاحظات أو طلبات لإجراء تعديلات على طلب السحب. هذا جزء كبير من عملية التقديم ، لذا لا تصب بالإحباط! بعض المساهمين قد يوقعون على طلب السحب على الفور ، وبعضهم قد يكون لديهم مزيد من الملاحضات أو التعليقات المفصلة. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
 
 To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
 
