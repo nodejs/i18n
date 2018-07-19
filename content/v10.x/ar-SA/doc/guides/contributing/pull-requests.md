@@ -278,9 +278,9 @@ $ git push origin my-branch
 
 ### الخطوة 9: النقاش والتحديث
 
-من المحتمل أن تحصل على ملاحظات أو طلبات لإجراء تعديلات على طلب السحب. هذا جزء كبير من عملية التقديم ، لذا لا تصب بالإحباط! بعض المساهمين قد يوقعون على طلب السحب على الفور ، وبعضهم قد يكون لديهم مزيد من الملاحضات أو التعليقات المفصلة. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+من المحتمل أن تحصل على ملاحظات أو طلبات لإجراء تعديلات على طلب السحب. هذا جزء كبير من عملية التقديم ، لذا لا تصب بالإحباط! بعض المساهمين قد يوقعون على طلب السحب على الفور ، وبعضهم قد يكون لديهم مزيد من الملاحضات أو التعليقات المفصلة. هذا جزء ضروري من العملية من أجل تقييم ما إذا كانت التعديلات صحيحة وضرورية.
 
-To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
+لإجراء تعديلات على طلب سحب موجود ، قم بإجراء التعديلات على فرعك المحلي، أضف إلتزام جديد مع تلك التعديلات، وإدفعهم إلى النسخة الخاصة بك. GitHub سيقوم تلقائياً بتحديث "طلب السحب".
 
 ```text
 $ git add my/changed/files
