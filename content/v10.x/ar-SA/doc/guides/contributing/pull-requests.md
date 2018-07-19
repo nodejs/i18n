@@ -312,11 +312,11 @@ $ git push --force-with-lease origin my-branch
 
 #### الموافقة وطلب تغييرات سير العمل
 
-تتطلب كافة طلبات سحب "تسجيل الخروج" من أجل النزول. قد يجد المساهم تفاصيل محددة يرغب في تعديلها او إصلاحها كلما راجع طلب سحب. قد يكون هذا بسيطاً مثل إصلاح خطأ مطبعي ، أو قد يشمل تعديلات جوهرية على الشيفرة الذي كتبتها. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+تتطلب كافة طلبات سحب "تسجيل الخروج" من أجل النزول. قد يجد المساهم تفاصيل محددة يرغب في تعديلها او إصلاحها كلما راجع طلب سحب. قد يكون هذا بسيطاً مثل إصلاح خطأ مطبعي ، أو قد يشمل تعديلات جوهرية على الشيفرة الذي كتبتها. في حين أن هذه الطلبات من المفترض أن تكون مفيدة ، قد تصادف أنها غير مرتبطة أو غير مفيدة ، خاصة طلبات تغيير الأشياء التي لا تتضمن اقتراحات محددة عن *كيفية* تغييرها.
 
-Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+حاول ألا يصيبك الإحباط. إذا كنت تشعر أن مراجعة معينة غير عادلة ، قل ذلك، أو إتصل بأحد المساهمين الآخرين في المشروع والتمس مدخلاتهم. غالبًا ما تكون مثل هذه التعليقات نتيجة ان المراجع لم يأخد الوقت الكافي لمراجعة طلب السحب وهي ليست مقصودة. مثل هذه القضايا غالباً ما يمكن حلها مع قليل من الصبر. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
 
-### Step 10: Landing
+### الخطوة 10: النزول
 
 In order to land, a Pull Request needs to be reviewed and [approved](#getting-approvals-for-your-pull-request) by at least one Node.js Collaborator and pass a [CI (Continuous Integration) test run](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
 
