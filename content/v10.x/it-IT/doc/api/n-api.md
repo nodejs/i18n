@@ -1893,7 +1893,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 - `napi_invalid_arg` se il tipo di `value` non è un tipo ECMAScript noto e se `value` non è un valore esterno.
 
-This API represents behavior similar to invoking the `typeof` Operator on the object as defined in [Section 12.5.5](https://tc39.github.io/ecma262/#sec-typeof-operator) of the ECMAScript Language Specification. However, it has support for detecting an External value. If `value` has a type that is invalid, an error is returned.
+Quest'API si comporta in modo simile all'invocazione del `typeof` Operator sull'object come definito nella [Section 12.5.5](https://tc39.github.io/ecma262/#sec-typeof-operator) dell'ECMAScript Language Specification. Tuttavia, ha il supporto per rilevare un valore esterno. Se `value` ha un tipo che non è valido, viene restituito un errore.
 
 ### napi_instanceof
 
@@ -1908,14 +1908,14 @@ napi_status napi_instanceof(napi_env env,
                             bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] object`: The JavaScript value to check.
-- `[in] constructor`: The JavaScript function object of the constructor function to check against.
-- `[out] result`: Boolean that is set to true if `object instanceof constructor` is true.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: Il valore JavaScript da verificare.
+- `[in] constructor`: Il JavaScript function object della funzione constructor da controllare.
+- `[out] result`: Valore booleano impostato su true se `object instanceof constructor` è true.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API represents invoking the `instanceof` Operator on the object as defined in [Section 12.10.4](https://tc39.github.io/ecma262/#sec-instanceofoperator) of the ECMAScript Language Specification.
+Quest'API si comporta in modo simile all'invocazione del `instanceof` Operator sull'object come definito nella [Section 12.10.4](https://tc39.github.io/ecma262/#sec-instanceofoperator) dell'ECMAScript Language Specification.
 
 ### napi_is_array
 
@@ -1927,8 +1927,8 @@ added: v8.0.0
 napi_status napi_is_array(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: Il valore JavaScript da verificare.
 - `[out] result`: Whether the given object is an array.
 
 Returns `napi_ok` if the API succeeded.
