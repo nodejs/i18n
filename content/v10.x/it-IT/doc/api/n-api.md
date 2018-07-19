@@ -1813,7 +1813,7 @@ napi_status napi_coerce_to_bool(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API implements the abstract operation `ToBoolean()` as defined in [Section 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Quest'API implementa l'abstract operation `ToBoolean()` come definito nella [Section 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) dell'ECMAScript Language Specification. Quest'API può essere rientrante se i getters sono definiti nell'`Object` passato.
 
 ### napi_coerce_to_number
 
@@ -1827,13 +1827,13 @@ napi_status napi_coerce_to_number(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Number`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: Il valore JavaScript da forzare.
+- `[out] result`: `napi_value` che rappresenta il JavaScript `Number` forzato.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API implements the abstract operation `ToNumber()` as defined in [Section 7.1.3](https://tc39.github.io/ecma262/#sec-tonumber) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Quest'API implementa l'abstract operation `ToNumber()` come definito nella [Section 7.1.3](https://tc39.github.io/ecma262/#sec-tonumber) dell'ECMAScript Language Specification. Quest'API può essere rientrante se i getters sono definiti nell'`Object` passato.
 
 ### napi_coerce_to_object
 
@@ -1847,13 +1847,13 @@ napi_status napi_coerce_to_object(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Object`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: Il valore JavaScript da forzare.
+- `[out] result`: `napi_value` che rappresenta il JavaScript `Object` forzato.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API implements the abstract operation `ToObject()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-toobject) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Quest'API implementa l'abstract operation `ToObject()` come definito nella [Section 7.1.13](https://tc39.github.io/ecma262/#sec-toobject) dell'ECMAScript Language Specification. Quest'API può essere rientrante se i getters sono definiti nell'`Object` passato.
 
 ### napi_coerce_to_string
 
@@ -1867,13 +1867,13 @@ napi_status napi_coerce_to_string(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `String`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: Il valore JavaScript da forzare.
+- `[out] result`: `napi_value` che rappresenta la JavaScript `String` forzata.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API implements the abstract operation `ToString()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-tostring) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Quest'API implementa l'abstract operation `ToString()` come definito nella [Section 7.1.13](https://tc39.github.io/ecma262/#sec-tostring) dell'ECMAScript Language Specification. Quest'API può essere rientrante se i getters sono definiti nell'`Object` passato.
 
 ### napi_typeof
 
@@ -1885,13 +1885,13 @@ added: v8.0.0
 napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value whose type to query.
-- `[out] result`: The type of the JavaScript value.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: Il valore JavaScript il cui tipo è da interrogare.
+- `[out] result`: Il tipo del valore JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-- `napi_invalid_arg` if the type of `value` is not a known ECMAScript type and `value` is not an External value.
+- `napi_invalid_arg` se il tipo di `value` non è un tipo ECMAScript noto e se `value` non è un valore esterno.
 
 This API represents behavior similar to invoking the `typeof` Operator on the object as defined in [Section 12.5.5](https://tc39.github.io/ecma262/#sec-typeof-operator) of the ECMAScript Language Specification. However, it has support for detecting an External value. If `value` has a type that is invalid, an error is returned.
 
