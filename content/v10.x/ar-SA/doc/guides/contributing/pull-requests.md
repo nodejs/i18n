@@ -272,13 +272,13 @@ $ git push origin my-branch
 - [ ] رسالة الإلتزام تتبع [إرشادات الإلتزام] (https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
 ```
 
-Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
+يرجى محاولة بذل قصارى جهدك عند ملء التفاصيل ، ولكن لا تتردد في تخطي الأجزاء التي تكون فيها غير متأكد من ما ستضعه.
 
-Once opened, Pull Requests are usually reviewed within a few days.
+بمجرد فتحها ، تتم مراجعة طلبات السحب عادة في غضون بضعة أيام.
 
-### Step 9: Discuss and update
+### الخطوة 9: النقاش والتحديث
 
-You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+من المحتمل أن تحصل على ملاحظات أو طلبات لإجراء تعديلات على طلب السحب. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
 
 To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
 
