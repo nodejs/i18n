@@ -243,9 +243,9 @@ make coverage-clean
 ./configure && make -j4.
 ```
 
-### Step 7: Push
+### الخطوة 7: الدفع
 
-Once you are sure your commits are ready to go, with passing tests and linting, begin the process of opening a Pull Request by pushing your working branch to your fork on GitHub.
+بمجرد التأكد من أن التزاماتك جاهزة ، مع اجتياز الاختبارات والفحوصات ، تبدأ عملية فتح طلب السحب عن طريق دفع فرع العمل الخاص بك إلى نسختك على GitHub.
 
 ```text
 $ git push origin my-branch
