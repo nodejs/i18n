@@ -1566,13 +1566,13 @@ napi_status napi_get_value_external(napi_env env,
                                     void** result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript external value.
-- `[out] result`: Pointer to the data wrapped by the JavaScript external value.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: `napi_value` che rappresenta un valore esterno di JavaScript.
+- `[out] result`: Puntatore ai dati che hanno subito il wrapping da parte del valore esterno di JavaScript.
 
-Returns `napi_ok` if the API succeeded. If a non-external `napi_value` is passed in it returns `napi_invalid_arg`.
+Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` non esterno esso restituisce `napi_invalid_arg`.
 
-This API retrieves the external data pointer that was previously passed to `napi_create_external()`.
+Quest'API recupera il puntatore ai dati esterni passato in precedenza a `napi_create_external()`.
 
 #### napi_get_value_int32
 
@@ -1586,11 +1586,11 @@ napi_status napi_get_value_int32(napi_env env,
                                  int32_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] value`: `napi_value` che rappresenta un JavaScript `Number`.
-- `[out] result`: C `int32` primitive equivalent of the given JavaScript `Number`.
+- `[out] result`: C `int32` primitivo equivalente al JavaScript `Number` fornito.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in `napi_number_expected`.
+Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` non numerico in `napi_number_expected`.
 
 This API returns the C `int32` primitive equivalent of the given JavaScript `Number`.
 
