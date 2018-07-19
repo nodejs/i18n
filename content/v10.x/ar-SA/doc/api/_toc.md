@@ -48,13 +48,13 @@
 * [تتبع الأحداث](tracing.html)
 * [TTY](tty.html)
 * [UDP/Datagram](dgram.html)
-* [URL](url.html)
-* [Utilities](util.html)
+* [عنوان موقع إلكتروني](url.html)
+* [أدوات](util.html)
 * [V8](v8.html)
-* [VM](vm.html)
+* [الجهاز الإفتراضي](vm.html)
 * [ZLIB](zlib.html)
 
 <div class="line"></div>
 
-* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
+* [مستودع GitHub ومتتبع التذاكر](https://github.com/nodejs/node)
 * [القائمة البريدية](https://groups.google.com/group/nodejs)
