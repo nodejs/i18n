@@ -1,6 +1,6 @@
 # طلبات السحب
 
-هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. العنصر الملموس والتقني يتضمن تفاصيل محددة من إعداد البيئة المحلية الخاصة بك حتى تتمكن من إجراء تعديلات فعلية. ومن هنا سنبدأ.
+هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. العنصر الملموس والتقني يتضمن تفاصيل محددة من إعداد البيئة المحلية الخاصة بك حتى تتمكن من إجراء تعديلات فعلية. هذا هو المكان الذي سنبدأ منه.
 
 * [التبعيات](#dependencies)
 * [إعداد البيئة المحلية الخاصة بك](#setting-up-your-local-environment) 
@@ -9,7 +9,7 @@
 * [عملية إجراء التغييرات](#the-process-of-making-changes) 
   * [الخطوة 3: كتابة الشيفرة البرمجية](#step-3-code)
   * [الخطوة 4: الإلتزام](#step-4-commit) 
-    * [إرشادات رسالة الإلتزام](#commit-message-guidelines)
+    * [إرشادات رسالة التسليم](#commit-message-guidelines)
   * [الخطوة 5: إعادة الإنشاء (Rebase)](#step-5-rebase)
   * [الخطوة 6: الإختبار](#step-6-test) 
     * [تغطية الاختبار](#test-coverage)
@@ -21,7 +21,7 @@
 * [مراجعة طلبات السحب](#reviewing-pull-requests) 
   * [راجع جزء صغير في كل وقت](#review-a-bit-at-a-time)
   * [كن حذرا من الشخص المسؤول عن الشيفرة](#be-aware-of-the-person-behind-the-code)
-  * [احترام الحد الأدنى من وقت الانتظار للتعليقات](#respect-the-minimum-wait-time-for-comments)
+  * [احترم الحد الأدنى من وقت الانتظار للتعليقات](#respect-the-minimum-wait-time-for-comments)
   * [طلبات سحب مهجورة أو متوقفة](#abandoned-or-stalled-pull-requests)
   * [الموافقة على تعديل](#approving-a-change)
   * [تقبل أن هناك آراء مختلفة حول ما ينتمي ل Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
