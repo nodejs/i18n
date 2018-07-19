@@ -1528,11 +1528,11 @@ napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] value`: `napi_value` che rappresenta un JavaScript `Boolean`.
-- `[out] result`: C primitivo booleano equivalente del JavaScript `Boolean` fornito.
+- `[out] result`: C booleano primitivo equivalente al JavaScript `Boolean` fornito.
 
-Restituisce `napi_ok` se l'API ha esito positivo. If a non-boolean `napi_value` is passed in it returns `napi_boolean_expected`.
+Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` non booleano esso restituisce `napi_boolean_expected`.
 
-This API returns the C boolean primitive equivalent of the given JavaScript `Boolean`.
+Quest'API restituisce un C booleano primitivo equivalente al JavaScript `Boolean` fornito.
 
 #### napi_get_value_double
 
@@ -1546,13 +1546,13 @@ napi_status napi_get_value_double(napi_env env,
                                   double* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
-- `[out] result`: C double primitive equivalent of the given JavaScript `Number`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: `napi_value` che rappresenta un JavaScript `Number`.
+- `[out] result`: C double primitivo equivalente al JavaScript `Number` fornito.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
+Restituisce `napi_ok` se l'API ha esito positivo. Se viene passato un valore `napi_value` non numerico esso restituisce `napi_number_expected`.
 
-This API returns the C double primitive equivalent of the given JavaScript `Number`.
+Quest'API restituisce un C double primitivo equivalente al JavaScript `Number` fornito.
 
 #### napi_get_value_external
 
@@ -1587,7 +1587,7 @@ napi_status napi_get_value_int32(napi_env env,
 ```
 
 - `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
+- `[in] value`: `napi_value` che rappresenta un JavaScript `Number`.
 - `[out] result`: C `int32` primitive equivalent of the given JavaScript `Number`.
 
 Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in `napi_number_expected`.
@@ -1611,7 +1611,7 @@ napi_status napi_get_value_int64(napi_env env,
 ```
 
 - `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
+- `[in] value`: `napi_value` che rappresenta un JavaScript `Number`.
 - `[out] result`: C `int64` primitive equivalent of the given JavaScript `Number`.
 
 Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
@@ -1707,7 +1707,7 @@ napi_status napi_get_value_uint32(napi_env env,
 ```
 
 - `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
+- `[in] value`: `napi_value` che rappresenta un JavaScript `Number`.
 - `[out] result`: C primitive equivalent of the given `napi_value` as a `uint32_t`.
 
 Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
