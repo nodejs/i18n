@@ -1417,7 +1417,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Quest'API viene utilizzata per recuperare il data buffer sottostante di un `ArrayBuffer` e la sua lunghezza.
 
-*WARNING*: Use caution while using this API. The lifetime of the underlying data buffer is managed by the `ArrayBuffer` even after it's returned. A possible safe way to use this API is in conjunction with [`napi_create_reference`][], which can be used to guarantee control over the lifetime of the `ArrayBuffer`. It's also safe to use the returned data buffer within the same callback as long as there are no calls to other APIs that might trigger a GC.
+*WARNING*: Prestare attenzione durante l'utilizzo di quest'API. La durata del data buffer sottostante è gestita dall'`ArrayBuffer` anche dopo che viene restituito. Un possibile metodo sicuro per utilizzare quest'API è insieme a [`napi_create_reference`][], che può essere utilizzato per garantire il controllo della durata dell'`ArrayBuffer`. È anche sicuro utilizzare il data buffer restituito all'interno dello stesso callback fin quando non ci sono calls ad altre API che potrebbero attivare un GC.
 
 #### napi_get_buffer_info
 
@@ -1432,10 +1432,10 @@ napi_status napi_get_buffer_info(napi_env env,
                                  size_t* length)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the `node::Buffer` being queried.
-- `[out] data`: The underlying data buffer of the `node::Buffer`.
-- `[out] length`: Length in bytes of the underlying data buffer.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] value`: `napi_value` che rappresenta il `node::Buffer` interrogato.
+- `[out] data`: Il data buffer sottostante al `node::Buffer`.
+- `[out] length`: Lunghezza in bytes del data buffer sottostante.
 
 Returns `napi_ok` if the API succeeded.
 
