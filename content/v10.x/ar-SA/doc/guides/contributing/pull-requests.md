@@ -288,7 +288,7 @@ $ git commit
 $ git push origin my-branch
 ```
 
-It is also frequently necessary to synchronize your Pull Request with other changes that have landed in `master` by using `git rebase`:
+من الضروري في كثير من الأحيان مزامنة طلب السحب الخاص بك مع التعديلات الأخرى التي نزلت في `master` باستخدام `git rebase`:
 
 ```text
 $ git fetch --all
@@ -296,9 +296,9 @@ $ git rebase origin/master
 $ git push --force-with-lease origin my-branch
 ```
 
-**Important:** The `git push --force-with-lease` command is one of the few ways to delete history in `git`. Before you use it, make sure you understand the risks. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
+** هام: ** يعد الأمر `git push --force-with-lease` أحد الطرق القليلة لحذف السجل في `git`. قبل استخدامه ، تأكد من أنك تفهم المخاطر. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-If you happen to make a mistake in any of your commits, do not worry. You can amend the last commit (for example if you want to change the commit log).
+إذا ارتكبت خطأ في أي من التزاماتك ، فلا تقلق. تستطيع تعديل الالتزام الأخير (على سبيل المثال إذا كنت ترغب في تغيير سجل الالتزام).
 
 ```text
 $ git add any/changed/files
@@ -306,9 +306,9 @@ $ git commit --amend
 $ git push --force-with-lease origin my-branch
 ```
 
-There are a number of more advanced mechanisms for managing commits using `git rebase` that can be used, but are beyond the scope of this guide.
+هناك عدد من الآليات الأكثر تقدمًا التي يمكن استخدامها لإدارة الالتزامات باستخدام `git rebase`، ولكنها خارج نطاق هذا الدليل.
 
-Feel free to post a comment in the Pull Request to ping reviewers if you are awaiting an answer on something. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
+لا تتردد في نشر تعليق في طلب سحب لتنبيه المراجعين إذا كنت في انتظار إجابة على شيء ما. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
 
 #### Approval and Request Changes Workflow
 
