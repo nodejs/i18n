@@ -21,7 +21,7 @@
 * [مراجعة طلبات السحب](#reviewing-pull-requests) 
   * [راجع جزء صغير في كل وقت](#review-a-bit-at-a-time)
   * [كن حذرا من الشخص المسؤول عن الشيفرة](#be-aware-of-the-person-behind-the-code)
-  * [احترم الحد الأدنى من وقت الانتظار للتعليقات](#respect-the-minimum-wait-time-for-comments)
+  * [احترام الحد الأدنى من وقت الانتظار للتعليقات](#respect-the-minimum-wait-time-for-comments)
   * [طلبات سحب مهجورة أو متوقفة](#abandoned-or-stalled-pull-requests)
   * [الموافقة على تعديل](#approving-a-change)
   * [تقبل أن هناك آراء مختلفة حول ما ينتمي لـ Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
@@ -123,7 +123,7 @@ $ git commit
 
 3. ضع جميع الأسطر الأخرى في 72 عمودًا (باستثناء عناوين URL الطويلة).
 
-4. إذا كان التصحيح الخاص بك يعمل على إصلاح مشكلة مفتوحة، فيمكنك إضافة مرجع إليها في نهاية السجل. استخدم بادئة `Fixes:` وعنوان URL الكامل للمشكلة. لمراجع أخرى استعمل `Refs:`.
+4. إذا كان التصحيح الخاص بك يعمل على إصلاح مشكلة مفتوحة، فيمكنك إضافة مرجع إليها في نهاية السجل. استخدم إختصار`Fixes:` وعنوان URL الكامل للمشكلة. لمراجع أخرى استعمل `Refs:`.
   
   أمثلة:
   
@@ -133,13 +133,13 @@ $ git commit
 
 5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
 
-عنية كاملة لرسالة آلإلتزام:
+عينة كاملة لرسالة آلإلتزام:
 
 ```txt
 النظام الفرعي: شرح الالتزام في سطر واحد
 
-نص رسالة الالتزام عبارة عن بضعة أسطر من النص ، تشرح فيها الأمور
-بمزيد من التفاصيل ، وربما إعطاء بعض المعلومات الأساسية أيضا حول المشكلة
+نص رسالة الالتزام عبارة عن بضعة أسطر مكتوبة توضح فيها الأمور
+بمزيد من التفاصيل، وربما إعطاء بعض المعلومات الأساسية أيضا حول المشكلة
 التي يجري إصلاحها ، إلخ.
 
 The body of the commit message can be several paragraphs, and
