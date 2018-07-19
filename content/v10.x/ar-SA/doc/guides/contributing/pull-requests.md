@@ -216,9 +216,9 @@ $ ./node ./test/parallel/test-stream2-transform.js
 
 Remember to recompile with `make -j4` in between test runs if you change code in the `lib` or `src` directories.
 
-#### Test Coverage
+#### تغطية الاختبار
 
-It's good practice to ensure any code you add or change is covered by tests. You can do so by running the test suite with coverage enabled:
+من الممارسات الجيدة لضمان أن أي شيفرة تضيفها أو تغيرها قد تم تغطيتها من خلال الاختبارات. يمكنك القيام بذلك عن طريق تشغيل مجموعة الاختبار مع تمكين التغطية:
 
 ```text
 $ ./configure --coverage && make coverage
@@ -236,7 +236,7 @@ $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
 
 The above command executes tests for the `child-process` subsystem and outputs the resulting coverage report.
 
-Running tests with coverage will create and modify several directories and files. To clean up afterwards, run:
+يؤدي تشغيل الاختبارات مع التغطية إلى إنشاء وتعديل عدة دلائل وملفات. لتنظيف بعد ذلك، قم بتشغيل:
 
 ```text
 make coverage-clean
@@ -308,9 +308,9 @@ $ git push --force-with-lease origin my-branch
 
 هناك عدد من الآليات الأكثر تقدمًا التي يمكن استخدامها لإدارة الالتزامات باستخدام `git rebase`، ولكنها خارج نطاق هذا الدليل.
 
-لا تتردد في نشر تعليق في طلب سحب لتنبيه المراجعين إذا كنت في انتظار إجابة على شيء ما. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
+لا تتردد في نشر تعليق في طلب سحب لتنبيه المراجعين إذا كنت في انتظار إجابة على شيء ما. إذا كنت تواجه كلمات أو اختصارات تبدو غير مألوفة ، يرجى الرجوع إلى [ القاموس](https://sites.google.com/a/chromium.org/dev/glossary).
 
-#### Approval and Request Changes Workflow
+#### الموافقة وطلب تغييرات سير العمل
 
 All Pull Requests require "sign off" in order to land. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
 
