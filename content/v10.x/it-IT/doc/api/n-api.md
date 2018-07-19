@@ -1789,7 +1789,7 @@ Quest'API restituisce l'Undefined object.
 
 N-API espone un set di API per eseguire alcune abstract operations sui valori JavaScript. Alcune di queste operations sono documentate nella [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
-These APIs support doing one of the following:
+Queste API supportano una delle seguenti operations:
 
 1. Coerce JavaScript values to specific JavaScript types (such as `Number` or `String`).
 2. Check the type of a JavaScript value.
