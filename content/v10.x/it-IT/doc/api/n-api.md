@@ -2191,12 +2191,12 @@ typedef enum {
 } napi_property_attributes;
 ```
 
-`napi_property_attributes` are flags used to control the behavior of properties set on a JavaScript object. Other than `napi_static` they correspond to the attributes listed in [Section 6.1.7.1](https://tc39.github.io/ecma262/#table-2) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/). They can be one or more of the following bitflags:
+Gli `napi_property_attributes` sono flags (bandiere) utilizzate per controllare il comportamento delle proprietà impostate su un JavaScript object. A parte `napi_static` essi corrispondono agli attributi elencati nella [Section 6.1.7.1](https://tc39.github.io/ecma262/#table-2) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/). Possono essere uno o più dei seguenti bitflags:
 
-- `napi_default` - Used to indicate that no explicit attributes are set on the given property. By default, a property is read only, not enumerable and not configurable.
-- `napi_writable` - Used to indicate that a given property is writable.
-- `napi_enumerable` - Used to indicate that a given property is enumerable.
-- `napi_configurable` - Used to indicate that a given property is configurable, as defined in [Section 6.1.7.1](https://tc39.github.io/ecma262/#table-2) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+- `napi_default` - Utilizzato per indicare che non sono stati impostati attributi espliciti sulla proprietà specificata. Per impostazione predefinita, una proprietà è di sola lettura, non enumerabile e non configurabile.
+- `napi_writable` - Utilizzato per indicare che una determinata proprietà è scrivibile.
+- `napi_enumerable` - Utilizzato per indicare che una determinata proprietà è enumerabile.
+- `napi_configurable` - Utilizzato per indicare che una determinata proprietà è configurabile, com'è definito nella [Section 6.1.7.1](https://tc39.github.io/ecma262/#table-2) dell'[ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 - `napi_static` - Used to indicate that the property will be defined as a static property on a class as opposed to an instance property, which is the default. This is used only by [`napi_define_class`][]. It is ignored by `napi_define_properties`.
 
 #### napi_property_descriptor
