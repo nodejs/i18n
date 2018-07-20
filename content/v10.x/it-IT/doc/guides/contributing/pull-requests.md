@@ -290,7 +290,7 @@ $ git commit
 $ git push origin my-branch
 ```
 
-It is also frequently necessary to synchronize your Pull Request with other changes that have landed in `master` by using `git rebase`:
+Spesso è anche necessario sincronizzare la tua Pull Request con altre modifiche che sono finite in `master` usando `git rebase`:
 
 ```text
 $ git fetch --all
@@ -298,9 +298,9 @@ $ git rebase origin/master
 $ git push --force-with-lease origin my-branch
 ```
 
-**Important:** The `git push --force-with-lease` command is one of the few ways to delete history in `git`. Before you use it, make sure you understand the risks. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
+**Importante:** Il comando `git push --force-with-lease` è uno dei pochi modi per eliminare la cronologia in `git`. Prima di usarlo, assicurati di comprenderne i rischi. Se hai qualche dubbio, puoi sempre chiedere indicazioni nella Pull Request o su [IRC nel canale #node-dev](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-If you happen to make a mistake in any of your commits, do not worry. You can amend the last commit (for example if you want to change the commit log).
+Se ti capita di fare un errore in uno dei tuoi commits, non preoccuparti. Puoi modificare l'ultimo commit (ad esempio se vuoi modificare il commit log).
 
 ```text
 $ git add any/changed/files
@@ -308,7 +308,7 @@ $ git commit --amend
 $ git push --force-with-lease origin my-branch
 ```
 
-There are a number of more advanced mechanisms for managing commits using `git rebase` that can be used, but are beyond the scope of this guide.
+Ci sono numerosi meccanismi più avanzati per la gestione dei commits e possono essere utilizzati tramite `git rebase`, ma vanno oltre lo scopo di questa guida.
 
 Feel free to post a comment in the Pull Request to ping reviewers if you are awaiting an answer on something. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
 
