@@ -171,25 +171,25 @@ Questo assicura che il tuo branch di lavoro abbia le ultime modifiche dal `nodej
 
 Le correzioni dei bug e le funzionalità dovrebbero sempre arrivare facendo i test. E' stata fornita una [guida per scrivere test in Node.js](../writing-tests.md) in modo da rendere il processo più facile. Anche guardare altri test per vedere come dovrebbero essere strutturati può essere d'aiuto.
 
-La directory `test` all'interno del repository `nodejs/node` è complessa e spesso non è chiaro dove dovrebbe andare un nuovo test file. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
+La directory `test` all'interno del repository `nodejs/node` è complessa e spesso non è chiaro dove dovrebbe andare un nuovo test file. In caso di qualche dubbio, aggiungere i nuovi test alla directory `test/parallel/` e la posizione corretta verrà aggiustata in un secondo momento.
 
-Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
+Prima di inviare le modifiche in una Pull Request, eseguire sempre tutto l'insieme dei test di Node.js. Per eseguire i test (incluso il code linting) su Unix / macOS:
 
 ```text
 $ ./configure && make -j4 test
 ```
 
-And on Windows:
+E su Windows:
 
 ```text
 > vcbuild test
 ```
 
-(See the [Building guide](../../../BUILDING.md) for more details.)
+(Vedi la [Building guide](../../../BUILDING.md) per maggiori dettagli.)
 
-Make sure the linter does not report any issues and that all tests pass. Please do not submit patches that fail either check.
+Assicurarsi che il linter non segnali alcun problema e che tutti i test passino con successo. Si prega di non inviare patch che non superano i controlli.
 
-If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
+Se vuoi eseguire il linter senza eseguire i test, usa `make lint`/`vcbuild lint`. Esso eseguirà sia il JavaScript linting che il C++ linting.
 
 If you are updating tests and just want to run a single test to check it:
 
