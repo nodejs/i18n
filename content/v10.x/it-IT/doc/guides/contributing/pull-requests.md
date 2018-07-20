@@ -68,22 +68,22 @@ Si presa di assicurarsi che questa local email sia aggiunta anche alla tua [GitH
 
 ### Step 2: Branch
 
-As a best practice to keep your development environment as organized as possible, create local branches to work within. These should also be created directly off of the `master` branch.
+Come migliore pratica per mantenere il tuo development environment il più organizzato possibile, crea local branch su cui lavorare. Questi dovrebbero anche essere creati direttamente dal `master` branch.
 
 ```text
 $ git checkout -b my-branch -t upstream/master
 ```
 
-## The Process of Making Changes
+## Il Processo per Fare Modifiche
 
 ### Step 3: Code
 
-The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
+La stragrande maggioranza delle Pull Requests aperte sul repository `nodejs/node` includono le modifiche ad uno o più dei seguenti elementi:
 
-     - the C/C++ code contained in the `src` directory
-     - the JavaScript code contained in the `lib` directory
-     - the documentation in `doc/api`
-     - tests within the `test` directory.
+     - Il codice C/C++ all'interno della directory `src`
+     - Il codice JavaScript all'interno della directory `lib`
+     - la documentazione in `doc/api`
+     - i test all'interno della directory `test`.
     
 
 If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
