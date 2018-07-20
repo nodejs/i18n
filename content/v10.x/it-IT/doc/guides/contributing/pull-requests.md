@@ -36,15 +36,15 @@ Ci sono due componenti fondamentali del processo di Pull Request: uno concreto e
 
 ## Dipendenze
 
-Node.js ha diverse dipendenze in bundle nelle directory *deps/* e *tools/* che non fanno parte del progetto corretto. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
+Node.js ha diverse dipendenze in bundle nelle directory *deps/* e *tools/* che non fanno parte del progetto corretto. Le modifiche ai file in tali directory dovrebbero essere inviate ai rispettivi progetti. Non inviare una patch a Node.js. Non possiamo accettare tali patch.
 
-In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
+Se c'è qualche dubbio, aprire un issue nell'[issue tracker](https://github.com/nodejs/node/issues/) o contattare uno dei [Collaboratori del progetto](https://github.com/nodejs/node/#current-project-team-members). Node.js ha due canali IRC: [#Node.js](https://webchat.freenode.net/?channels=node.js) per un aiuto e domande di tipo generico, e [#Node-dev](https://webchat.freenode.net/?channels=node-dev) per lo sviluppo del Node.js core in particolare.
 
-## Setting up your local environment
+## Configurazione del local environment
 
-To get started, you will need to have `git` installed locally. Depending on your operating system, there are also a number of other dependencies required. These are detailed in the [Building guide](../../../BUILDING.md).
+Per iniziare, bisogna avere `git` installato in local. A seconda del sistema operativo in uso, c'è un determinato numero di dipendenze necessarie. Queste sono approfondite nella [Building guide](../../../BUILDING.md).
 
-Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
+Una volta che hai `git` e sei sicuro di avere tutte le dipendenze necessarie, è il momento di creare un fork.
 
 ### Step 1: Fork
 
