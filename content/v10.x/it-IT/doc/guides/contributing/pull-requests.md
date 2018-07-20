@@ -111,15 +111,15 @@ Un buon commit message dovrebbe descrivere cosa è stato modificato e perchè.
   
   * contenere una breve descrizione della modifica (preferibilmente di 50 caratteri o meno, e non più di 72 caratteri)
   * essere interamente in minuscolo con l'eccezione dei nomi propri, degli acronimi e delle parole che si riferiscono al codice, come nomi di funzioni/variabili
-  * essere preceduta dal nome del subsystem modificato ed iniziare con un verbo imperativo. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+  * essere preceduta dal nome del subsystem modificato ed iniziare con un verbo imperativo. Controlla l'output di `git log --oneline files/you/changed` per scoprire quali subsystems tocchi con le tue modifiche.
     
-    Examples:
+    Esempi:
   
-  * `net: add localAddress and localPort to Socket`
+  * `net: Aggiunge localAddress e localPort al Socket`
   
-  * `src: fix typos in async_wrap.h`
+  * `src: corregge gli errori di battitura in async_wrap.h`
 
-2. Keep the second line blank.
+2. Lascia vuota la seconda riga.
 
 3. Wrap all other lines at 72 columns (except for long URLs).
 
