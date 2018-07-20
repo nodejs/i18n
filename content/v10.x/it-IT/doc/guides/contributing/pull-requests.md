@@ -203,19 +203,19 @@ Puoi eseguire tutto l'insieme di test per un determinato subsystem fornendo il n
 $ python tools/test.py -J --mode=release child-process
 ```
 
-If you want to check the other options, please refer to the help by using the `--help` option
+Se vuoi controllare le altre opzioni, chiedi aiuto usando l'opzione `--help`
 
 ```text
 $ python tools/test.py --help
 ```
 
-You can usually run tests directly with node:
+In genere puoi eseguire test direttamente con il node:
 
 ```text
 $ ./node ./test/parallel/test-stream2-transform.js
 ```
 
-Remember to recompile with `make -j4` in between test runs if you change code in the `lib` or `src` directories.
+Ricorda di ricompilare con `make -j4`, tra l'esecuzione di un test e l'altro, se modifichi il codice nelle directory `lib` o `src`.
 
 #### Test Coverage
 
