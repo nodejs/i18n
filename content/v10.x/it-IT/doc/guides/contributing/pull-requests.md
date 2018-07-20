@@ -268,21 +268,21 @@ Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
 #### Checklist
 <!-- Rimuovi gli elementi che non si applicano. Per gli elementi completati, modificare [ ] to [x]. -->
 
-- [ ] `make -j4 test` (UNIX), or `vcbuild test` (Windows) passes
-- [ ] tests and/or benchmarks are included
-- [ ] documentation is changed or added
-- [ ] commit message follows [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
+- [ ] `make -j4 test` (UNIX), oppure `vcbuild test` (Windows) passa
+- [ ] i test e/o i benchmark sono inclusi
+- [ ] la documentazione è modificata o aggiunta
+- [ ] il commit message segue le [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
 ```
 
-Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
+Cerca di fare del tuo meglio per compilare tutti i punti, ma sentiti libero di saltare le parti dove non sei sicuro cosa mettere.
 
-Once opened, Pull Requests are usually reviewed within a few days.
+Una volta aperte, le Pull Request vengono generalmente esaminate entro pochi giorni.
 
-### Step 9: Discuss and update
+### Step 9: Discutere ed Aggiornare
 
-You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+Probabilmente riceverai feedback o richieste di modifiche per la tua Pull Request. Questa è una parte importante del processo di invio quindi non scoraggiarti! Alcuni contributors possono confermare subito la Pull Request, altri possono volere commenti o feedback più dettagliati. Questa è una parte necessaria del processo al fine di poter valutare se le modifiche sono corrette e necessarie.
 
-To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
+Per apportare modifiche ad una Pull Request esistente, fai le modifiche nel tuo local branch, aggiungi un nuovo commit con queste modifiche ed inviale (push) al fork. GitHub aggiornerà automaticamente la Pull Request.
 
 ```text
 $ git add my/changed/files
