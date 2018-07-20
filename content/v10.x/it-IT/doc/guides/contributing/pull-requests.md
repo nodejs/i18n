@@ -131,9 +131,9 @@ Un buon commit message dovrebbe descrivere cosa è stato modificato e perchè.
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
   * `Refs: https://github.com/nodejs/node/pull/3615`
 
-5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
+5. Se il tuo commit introduce una breaking change (`semver-major`), dovrebbe contenere una spiegazione sul perchè di questa modifica, quale situazione la innescherebbe e qual è la modifica esatta.
 
-Sample complete commit message:
+Esempio di commit message completo:
 
 ```txt
 subsystem: explain the commit in one line
