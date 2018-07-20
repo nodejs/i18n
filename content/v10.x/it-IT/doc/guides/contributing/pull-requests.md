@@ -158,7 +158,7 @@ Vedi [core-validate-commit](https://github.com/evanlucas/core-validate-commit) -
 
 ### Step 5: Rebase
 
-Come migliore pratica, una volta inviate le modifiche, è una buona idea usare `git rebase` (non `git merge`) per sincronizzare il lavoro con la repository principale.
+Come migliore pratica, una volta inviate le modifiche, è una buona idea usare `git rebase` (non `git merge`) per sincronizzare il lavoro con il repository principale.
 
 ```text
 $ git fetch upstream
@@ -169,9 +169,9 @@ Questo assicura che il tuo branch di lavoro abbia le ultime modifiche dal `nodej
 
 ### Step 6: Test
 
-Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
+Le correzioni dei bug e le funzionalità dovrebbero sempre arrivare facendo i test. E' stata fornita una [guida per scrivere test in Node.js](../writing-tests.md) in modo da rendere il processo più facile. Anche guardare altri test per vedere come dovrebbero essere strutturati può essere d'aiuto.
 
-The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
+La directory `test` all'interno del repository `nodejs/node` è complessa e spesso non è chiaro dove dovrebbe andare un nuovo test file. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
 
 Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
 
