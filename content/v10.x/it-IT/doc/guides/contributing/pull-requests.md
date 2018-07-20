@@ -48,7 +48,7 @@ Una volta che hai `git` e sei sicuro di avere tutte le dipendenze necessarie, è
 
 ### Step 1: Fork
 
-Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
+Suddividi (Fork) il progetto [su GitHub](https://github.com/nodejs/node) e clona la tua fork (parte suddivisa) in local.
 
 ```text
 $ git clone git@github.com:username/node.git
@@ -57,14 +57,14 @@ $ git remote add upstream https://github.com/nodejs/node.git
 $ git fetch upstream
 ```
 
-It is recommended to configure `git` so that it knows who you are:
+Si consiglia di configurare `git` in modo che sappia chi sei:
 
 ```text
 $ git config user.name "J. Random User"
 $ git config user.email "j.random.user@example.com"
 ```
 
-Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
+Si presa di assicurarsi che questa local email sia aggiunta anche alla tua [GitHub email list](https://github.com/settings/emails) in modo che i tuoi commits siano correttamente associati al tuo account ed in modo che tu venga promosso a Contributor una volta che il tuo primo commit viene confermato.
 
 ### Step 2: Branch
 
