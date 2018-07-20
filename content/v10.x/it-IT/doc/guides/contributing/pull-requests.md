@@ -121,11 +121,11 @@ Un buon commit message dovrebbe descrivere cosa è stato modificato e perchè.
 
 2. Lascia vuota la seconda riga.
 
-3. Wrap all other lines at 72 columns (except for long URLs).
+3. Esegui il wrapping di tutte le altre righe a 72 colonne (ad eccezione di URL lunghi).
 
-4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
+4. Se la patch corregge un issue (problema) aperto, puoi aggiungere un riferimento ad esso alla fine del log. Usa il prefisso `Fixes:` ed l'URL completo dell'issue. Per altri riferimenti usa `Refs:`.
   
-  Examples:
+  Esempi:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
