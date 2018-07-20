@@ -219,25 +219,25 @@ Ricorda di ricompilare con `make -j4`, tra l'esecuzione di un test e l'altro, se
 
 #### Test Coverage
 
-It's good practice to ensure any code you add or change is covered by tests. You can do so by running the test suite with coverage enabled:
+È buona pratica garantire che qualsiasi codice aggiunto o modificato sia coperto dai test. Puoi farlo eseguendo l'insieme dei test con la coverage abilitata:
 
 ```text
 $ ./configure --coverage && make coverage
 ```
 
-A detailed coverage report will be written to `coverage/index.html` for JavaScript coverage and to `coverage/cxxcoverage.html` for C++ coverage.
+Un report dettagliato sulla coverage verrà scritto su `coverage/index.html` per la JavaScript coverage e su `coverage/cxxcoverage.html` per la C++ coverage.
 
-*Note that generating a test coverage report can take several minutes.*
+*Si noti che la generazione di un test coverage report può richiedere diversi minuti.*
 
-To collect coverage for a subset of tests you can set the `CI_JS_SUITES` and `CI_NATIVE_SUITES` variables:
+Per raccogliere la coverage di un sottoinsieme di test, puoi impostare le variabili `CI_JS_SUITES` e `CI_NATIVE_SUITES`:
 
 ```text
 $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
 ```
 
-The above command executes tests for the `child-process` subsystem and outputs the resulting coverage report.
+Il comando precedente esegue i test per il subsystem `child-process` e genera il coverage report risultante.
 
-Running tests with coverage will create and modify several directories and files. To clean up afterwards, run:
+L'esecuzione di test con coverage creerà e modificherà diverse directory e file. Per pulire in seguito, esegui:
 
 ```text
 make coverage-clean
@@ -246,7 +246,7 @@ make coverage-clean
 
 ### Step 7: Push
 
-Once you are sure your commits are ready to go, with passing tests and linting, begin the process of opening a Pull Request by pushing your working branch to your fork on GitHub.
+Una volta che sei sicuro che i tuoi commits sono pronti, con i test ed il linting superati, inizia il processo di apertura di una Pull Request spingendo (push) il tuo branch di lavoro al tuo fork su GitHub.
 
 ```text
 $ git push origin my-branch
