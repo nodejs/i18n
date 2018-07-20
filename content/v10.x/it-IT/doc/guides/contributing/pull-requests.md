@@ -143,18 +143,18 @@ righe di testo, le quali spiegano le cose in modo
 più dettagliato, dando eventualmente qualche informazione
 sul problema da correggere, ecc.
 
-The body of the commit message can be several paragraphs, and
-please do proper word-wrap and keep columns shorter than about
-72 characters or so. That way, `git log` will show things
-nicely even when it is indented.
+Il corpo del commit message può essere di diversi paragrafi, 
+e si prega di andare a capo e mantenere le colonne 
+più corte di 72 caratteri all'incirca. In questo modo, `git log` 
+mostrerà le cose bene anche quando è indentato.
 
 Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
 ```
 
-If you are new to contributing to Node.js, please try to do your best at conforming to these guidelines, but do not worry if you get something wrong. One of the existing contributors will help get things situated and the contributor landing the Pull Request will ensure that everything follows the project guidelines.
+Se sei nuovo nel contribuire a Node.js, prova a fare del tuo meglio seguendo queste linee guida, ma non preoccuparti se fai qualcosa di sbagliato. Uno dei contributors esistenti ti aiuterà a trovare le cose e il contributor che conferma la Pull Request si assicurerà che sia tutto secondo le linee guida del progetto.
 
-See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
+Vedi [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - Un'utility che garantisce che i commits seguano le linee guida per la formattazione del commit.
 
 ### Step 5: Rebase
 
