@@ -310,11 +310,11 @@ $ git push --force-with-lease origin my-branch
 
 Ci sono numerosi meccanismi più avanzati per la gestione dei commits e possono essere utilizzati tramite `git rebase`, ma vanno oltre lo scopo di questa guida.
 
-Feel free to post a comment in the Pull Request to ping reviewers if you are awaiting an answer on something. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
+Se sei in attesa di una risposta o qualsiasi cosa, sentiti libero di inserire un commento nella Pull Request per ricordarlo ai revisori. Se incontri parole o acronimi che non ti sembrano familiari, aiutati con questo [glossario](https://sites.google.com/a/chromium.org/dev/glossary).
 
-#### Approval and Request Changes Workflow
+#### Workflow dell'Approval e delle Request Changes
 
-All Pull Requests require "sign off" in order to land. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+Tutte le Pull Request richiedono lo "sign off" per essere confermate. Ogni volta che un contributor esamina una Pull Request, può trovare dettagli specifici che vorrebbe vedere modificati o corretti. Questi possono essere semplici come correggere errori di battitura oppure possono implicare modifiche sostanziali al codice che hai scritto. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
 
 Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
 
