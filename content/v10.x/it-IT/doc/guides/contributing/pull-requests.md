@@ -316,7 +316,7 @@ Se sei in attesa di una risposta o qualsiasi cosa, sentiti libero di inserire un
 
 Tutte le Pull Request richiedono lo "sign off" per essere confermate. Ogni volta che un contributor esamina una Pull Request, può trovare dettagli specifici che vorrebbe vedere modificati o corretti. Questi possono essere semplici come correggere errori di battitura oppure possono implicare modifiche sostanziali al codice che hai scritto. Sebbene queste loro richieste siano utili, potrebbero anche rivelarsi improvvise o inutili, in particolare le richieste di modificare cose senza suggerimenti concreti su *come* fare per modificarle.
 
-Cerca di non scoraggiarti. Se credi che una particolare revisione sia ingiusta, dillo, oppure contatta uno degli altri contributors del progetto e tenta di ottenere il loro aiuto. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+Cerca di non scoraggiarti. Se credi che una particolare revisione sia ingiusta, dillo, oppure contatta uno degli altri contributors del progetto e tenta di ottenere il loro aiuto. Spesso osservazioni di questo tipo sono il risultato del fatto che il revisore ha dato un giudizio affrettato e quindi non sono mal intenzionate. Spesso problemi di questo tipo possono essere risolti con un pò di pazienza. Detto questo, i revisori dovrebbero essere d'aiuto con i loro feedback, perciò il feedback semplicemente vago, sprezzante ed inutile è senz'altro da ignorare.
 
 ### Step 10: Landing
 
