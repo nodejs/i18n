@@ -9,7 +9,7 @@ Ci sono due componenti fondamentali del processo di Pull Request: uno concreto e
 * [Il Processo per Fare Modifiche](#the-process-of-making-changes) 
   * [Step 3: Code](#step-3-code)
   * [Step 4: Commit](#step-4-commit) 
-    * [Commit message guidelines](#commit-message-guidelines)
+    * [Linee Guida per il Commit Message](#commit-message-guidelines)
   * [Step 5: Rebase](#step-5-rebase)
   * [Step 6: Test](#step-6-test) 
     * [Test Coverage](#test-coverage)
@@ -24,19 +24,19 @@ Ci sono due componenti fondamentali del processo di Pull Request: uno concreto e
   * [Rispettare il tempo di attesa minimo per i commenti](#respect-the-minimum-wait-time-for-comments)
   * [Pull Request Abbandonate o Bloccate](#abandoned-or-stalled-pull-requests)
   * [Approvare una modifica](#approving-a-change)
-  * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
-  * [Performance is not everything](#performance-is-not-everything)
-  * [Continuous Integration Testing](#continuous-integration-testing)
-* [Additional Notes](#additional-notes) 
+  * [Accettare che ci siano opinioni diverse su ciò che appartiene a Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
+  * [Le prestazioni non sono tutto](#performance-is-not-everything)
+  * [Test di integrazione continua](#continuous-integration-testing)
+* [Note aggiuntive](#additional-notes) 
   * [Commit Squashing](#commit-squashing)
-  * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
+  * [Ottenere Approvazioni per la Pull Request](#getting-approvals-for-your-pull-request)
   * [CI Testing](#ci-testing)
-  * [Waiting Until the Pull Request Gets Landed](#waiting-until-the-pull-request-gets-landed)
-  * [Check Out the Collaborator Guide](#check-out-the-collaborator-guide)
+  * [Attendere fino a quanto la Pull Request non viene confermata](#waiting-until-the-pull-request-gets-landed)
+  * [Consultare la Collaborator Guide](#check-out-the-collaborator-guide)
 
-## Dependencies
+## Dipendenze
 
-Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
+Node.js ha diverse dipendenze in bundle nelle directory *deps/* e *tools/* che non fanno parte del progetto corretto. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
 
 In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
 
@@ -437,6 +437,6 @@ Only a Collaborator can start a CI run. Usually one of them will do it for you a
 
 A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### Check Out the Collaborator Guide
+### Consultare la Collaborator Guide
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
