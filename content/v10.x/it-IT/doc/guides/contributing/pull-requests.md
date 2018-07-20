@@ -191,13 +191,13 @@ Assicurarsi che il linter non segnali alcun problema e che tutti i test passino 
 
 Se vuoi eseguire il linter senza eseguire i test, usa `make lint`/`vcbuild lint`. Esso eseguirà sia il JavaScript linting che il C++ linting.
 
-If you are updating tests and just want to run a single test to check it:
+Se stai aggiornando i test e ne vuoi eseguire uno solo per controllarlo:
 
 ```text
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
 ```
 
-You can execute the entire suite of tests for a given subsystem by providing the name of a subsystem:
+Puoi eseguire tutto l'insieme di test per un determinato subsystem fornendo il nome di un subsystem:
 
 ```text
 $ python tools/test.py -J --mode=release child-process
