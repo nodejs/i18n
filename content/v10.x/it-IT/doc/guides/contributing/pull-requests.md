@@ -252,22 +252,21 @@ Una volta che sei sicuro che i tuoi commits sono pronti, con i test ed il lintin
 $ git push origin my-branch
 ```
 
-### Step 8: Opening the Pull Request
+### Step 8: Aprire la Pull Request
 
-From within GitHub, opening a new Pull Request will present you with a template that should be filled out:
+All'interno di GitHub, l'apertura di una nuova Pull Request si presenterà con un modello da dover compilare:
 
 ```markdown
 <!--
-Thank you for your Pull Request. Please provide a description above and review
-the requirements below.
+Grazie per la tua Pull Request. Si prega di fornire una descrizione sopra e ricontrollare i requisiti di seguito.
 
-Bug fixes and new features should include tests and possibly benchmarks.
+Le correzioni di bug e nuove funzionalità dovrebbero includere i test ed eventualmente i benchmark.
 
 Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
 -->
 
 #### Checklist
-<!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
+<!-- Rimuovi gli elementi che non si applicano. Per gli elementi completati, modificare [ ] to [x]. -->
 
 - [ ] `make -j4 test` (UNIX), or `vcbuild test` (Windows) passes
 - [ ] tests and/or benchmarks are included
