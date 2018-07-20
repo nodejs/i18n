@@ -136,11 +136,12 @@ Un buon commit message dovrebbe descrivere cosa è stato modificato e perchè.
 Esempio di commit message completo:
 
 ```txt
-subsystem: explain the commit in one line
+subsystem: spiega il commit in una riga
 
-Body of commit message is a few lines of text, explaining things
-in more detail, possibly giving some background about the issue
-being fixed, etc.
+Il corpo (body) del commit message è composto da poche 
+righe di testo, le quali spiegano le cose in modo
+più dettagliato, dando eventualmente qualche informazione
+sul problema da correggere, ecc.
 
 The body of the commit message can be several paragraphs, and
 please do proper word-wrap and keep columns shorter than about
