@@ -86,15 +86,15 @@ La stragrande maggioranza delle Pull Requests aperte sul repository `nodejs/node
      - i test all'interno della directory `test`.
     
 
-If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
+Se stai modificando il codice, assicurati di eseguire `make lint` di volta in volta per essere sicuro che le modifiche seguano la Node.js code style guide.
 
-Any documentation you write (including code comments and API documentation) should follow the [Style Guide](../../STYLE_GUIDE.md). Code samples included in the API docs will also be checked when running `make lint` (or `vcbuild.bat lint` on Windows).
+Qualsiasi documentazione scritta (compresi i commenti al codice e la documentazione API) dovrebbe seguire la [Style Guide](../../STYLE_GUIDE.md). Gli esempi di codice inclusi nei documenti API verranno controllati anche quando si esegue `make lint` (o `vcbuild.bat lint` su Windows).
 
-For contributing C++ code, you may want to look at the [C++ Style Guide](../../../CPP_STYLE_GUIDE.md).
+Per contribuire con il codice C++, potresti dare un'occhiata alla [C++ Style Guide](../../../CPP_STYLE_GUIDE.md).
 
 ### Step 4: Commit
 
-It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+È consigliato utilizzare le migliori pratiche per mantenere le modifiche raggruppate nel modo più logico possibile all'interno dei singoli commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
 
 ```text
 $ git add my/changed/files
