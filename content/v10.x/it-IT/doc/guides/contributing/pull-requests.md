@@ -158,14 +158,14 @@ Vedi [core-validate-commit](https://github.com/evanlucas/core-validate-commit) -
 
 ### Step 5: Rebase
 
-As a best practice, once you have committed your changes, it is a good idea to use `git rebase` (not `git merge`) to synchronize your work with the main repository.
+Come migliore pratica, una volta inviate le modifiche, è una buona idea usare `git rebase` (non `git merge`) per sincronizzare il lavoro con la repository principale.
 
 ```text
 $ git fetch upstream
 $ git rebase upstream/master
 ```
 
-This ensures that your working branch has the latest changes from `nodejs/node` master.
+Questo assicura che il tuo branch di lavoro abbia le ultime modifiche dal `nodejs/node` master.
 
 ### Step 6: Test
 
