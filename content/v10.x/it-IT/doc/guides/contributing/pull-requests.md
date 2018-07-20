@@ -314,9 +314,9 @@ Se sei in attesa di una risposta o qualsiasi cosa, sentiti libero di inserire un
 
 #### Workflow dell'Approval e delle Request Changes
 
-Tutte le Pull Request richiedono lo "sign off" per essere confermate. Ogni volta che un contributor esamina una Pull Request, può trovare dettagli specifici che vorrebbe vedere modificati o corretti. Questi possono essere semplici come correggere errori di battitura oppure possono implicare modifiche sostanziali al codice che hai scritto. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+Tutte le Pull Request richiedono lo "sign off" per essere confermate. Ogni volta che un contributor esamina una Pull Request, può trovare dettagli specifici che vorrebbe vedere modificati o corretti. Questi possono essere semplici come correggere errori di battitura oppure possono implicare modifiche sostanziali al codice che hai scritto. Sebbene queste loro richieste siano utili, potrebbero anche rivelarsi improvvise o inutili, in particolare le richieste di modificare cose senza suggerimenti concreti su *come* fare per modificarle.
 
-Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+Cerca di non scoraggiarti. Se credi che una particolare revisione sia ingiusta, dillo, oppure contatta uno degli altri contributors del progetto e tenta di ottenere il loro aiuto. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
 
 ### Step 10: Landing
 
