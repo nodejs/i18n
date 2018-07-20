@@ -94,24 +94,24 @@ Per contribuire con il codice C++, potresti dare un'occhiata alla [C++ Style Gui
 
 ### Step 4: Commit
 
-È consigliato utilizzare le migliori pratiche per mantenere le modifiche raggruppate nel modo più logico possibile all'interno dei singoli commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+È consigliato utilizzare le migliori pratiche per mantenere le modifiche raggruppate nel modo più logico possibile all'interno dei singoli commits. Non c'è alcun limite al numero di commits che ogni singola Pull Request può avere, e molti contributors trovano più facile rivedere le modifiche che sono suddivise tra più commits.
 
 ```text
 $ git add my/changed/files
 $ git commit
 ```
 
-Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
+Da notare che più commits vengono spesso "schiacciati" (squashing) quando sono confermati (vedi le note riguardo il [commit squashing](#commit-squashing)).
 
-#### Commit message guidelines
+#### Linee Guida per il Commit Message
 
-A good commit message should describe what changed and why.
+Un buon commit message dovrebbe descrivere cosa è stato modificato e perchè.
 
-1. The first line should:
+1. La prima riga dovrebbe:
   
-  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
-  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+  * contenere una breve descrizione della modifica (preferibilmente di 50 caratteri o meno, e non più di 72 caratteri)
+  * essere interamente in minuscolo con l'eccezione dei nomi propri, degli acronimi e delle parole che si riferiscono al codice, come nomi di funzioni/variabili
+  * essere preceduta dal nome del subsystem modificato ed iniziare con un verbo imperativo. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
     
     Examples:
   
