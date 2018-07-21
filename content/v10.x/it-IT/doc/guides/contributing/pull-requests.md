@@ -347,15 +347,15 @@ Concentrati innanzitutto sugli aspetti più significativi della modifica:
 
 Quando le modifiche sono necessarie, *rechiedile*, non *pretenderle*, e non dare per scontato che il submitter sappia già come aggiungere un test od eseguire un benchmark.
 
-Specific performance optimization techniques, coding styles and conventions change over time. The first impression you give to a new contributor never does.
+Specifiche tecniche di ottimizzazione delle prestazioni, stili e convenzioni di codifica si modificano nel tempo. La prima impressione che date ad un nuovo contributor non cambia mai più.
 
-Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the Pull Request. Most nits can typically be fixed by the Node.js Collaborator landing the Pull Request but they can also be an opportunity for the contributor to learn a bit more about the project.
+I Nits (le request per piccole modifiche che non sono essenziali) vanno bene, ma cerca di evitare che una Pull Request venga bloccata. La maggior parte dei nits può essere risolta dal Node.js Collaborator che conferma la Pull Request, ma può anche essere un'opportunità per il contributor di imparare un pò di più sul progetto.
 
-It is always good to clearly indicate nits when you comment: e.g. `Nit: change foo() to bar(). But this is not blocking.`
+È sempre bene indicare chiaramente i nits quando commentate: ad es. `Nit: modifica di foo() con bar(). Ma questo non sta bloccando`
 
-If your comments were addressed but were not folded automatically after new commits or if they proved to be mistaken, please, [hide them](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) with the appropriate reason to keep the conversation flow concise and relevant.
+Se i tuoi commenti sono stati indirizzati ma non sono stati inseriti automaticamente dopo i nuovi commits o se si sono rivelati errati, sei pregato di [nasconderli](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) con la giusta motivazione per mantenere la conversazione fluida e pertinente.
 
-### Be aware of the person behind the code
+### Essere consapevoli della persona dietro il codice
 
 Be aware that *how* you communicate requests and reviews in your feedback can have a significant impact on the success of the Pull Request. Yes, we may land a particular change that makes Node.js better, but the individual might just not want to have anything to do with Node.js ever again. The goal is not just having good code.
 
