@@ -369,15 +369,15 @@ Le modifiche banali, in genere limitate a piccole modifiche di formattazione o c
 
 ### Pull Request Abbandonate o Bloccate
 
-Se una Pull Request sembra essere abbandonata o bloccata, se la vuoi prendere (soprattutto se rimangono solo i nits), prima di tutto è buona educazione controllare con il contributor e vedere se intende continuare il lavoro così da capire se per lui è un problema oppure no. When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
+Se una Pull Request sembra essere abbandonata o bloccata, se la vuoi prendere (soprattutto se rimangono solo i nits), prima di tutto è buona educazione controllare con il contributor e vedere se intende continuare il lavoro così da capire se per lui è un problema oppure no. Nel fare ciò, è cortese dare i giusti crediti al contributor originale per il lavoro svolto (mantenendo il suo nome e l'indirizzo email nel commit log, oppure utilizzando un meta-data tag `Author:` nel commit).
 
-### Approving a change
+### Approvare una modifica
 
-Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. Collaborators are not permitted to approve their own Pull Requests.
+Qualsiasi Node.js core Collaborator (qualsiasi utente GitHub con diritti di commit nel repository `nodejs/node`) è autorizzato ad approvare il lavoro di qualsiasi altro contributor. I collaborators non sono autorizzati ad approvare le proprie Pull Requests.
 
-Collaborators indicate that they have reviewed and approve of the changes in a Pull Request either by using GitHub's Approval Workflow, which is preferred, or by leaving an `LGTM` ("Looks Good To Me") comment.
+I collaborators indicano di aver revisionato ed approvato le modifiche in una Pull Request utilizzando l'Approval Workflow di GitHub, che è preferito, oppure lasciando un commento `LGTM` ("Looks Good To Me" - "A me sembra buono").
 
-When explicitly using the "Changes requested" component of the GitHub Approval Workflow, show empathy. That is, do not be rude or abrupt with your feedback and offer concrete suggestions for improvement, if possible. If you're not sure *how* a particular change can be improved, say so.
+Quando si utilizza esplicitamente la componente "Changes requested" (Modifiche richieste) dell'Approval Workflow di GitHub, mostra empatia. Cioè, non essere scortese o brusco con il tuo feedback ed offri, se possibile, suggerimenti concreti per migliorare. If you're not sure *how* a particular change can be improved, say so.
 
 Most importantly, after leaving such requests, it is courteous to make yourself available later to check whether your comments have been addressed.
 
