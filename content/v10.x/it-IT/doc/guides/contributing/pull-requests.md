@@ -363,11 +363,11 @@ Tieni presente che *il modo* in cui comunichi le richieste e le revisioni nel tu
 
 C'è un tempo di attesa minimo che cerchiamo di rispettare per le modifiche significative, in modo che le persone, che possono avere un input importante in un progetto così distribuito, siano in grado di rispondere.
 
-For non-trivial changes, Pull Requests must be left open for *at least* 48 hours during the week, and 72 hours on a weekend. In most cases, when the PR is relatively small and focused on a narrow set of changes, these periods provide more than enough time to adequately review. Sometimes changes take far longer to review, or need more specialized review from subject matter experts. When in doubt, do not rush.
+Per le modifiche significative, le Pull Requests devono essere lasciate aperte per *almeno* 48 ore nel corso della settimana, e 72 ore durante il weekend. Nella maggior parte dei casi, quando la PR è relativamente piccola e focalizzata su un ristretto insieme di modifiche, questi periodi danno a disposizione più del tempo necessario per un'adeguata revisione. A volte le modifiche richiedono molto più tempo per la revisione o richiedono una revisione più specializzata da parte di esperti in materia. Se c'è qualche dubbio, non avere fretta.
 
-Trivial changes, typically limited to small formatting changes or fixes to documentation, may be landed within the minimum 48 hour window.
+Le modifiche banali, in genere limitate a piccole modifiche di formattazione o correzioni alla documentazione, possono essere confermate entro in un minimo di 48 ore.
 
-### Abandoned or Stalled Pull Requests
+### Pull Request Abbandonate o Bloccate
 
 If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
 
