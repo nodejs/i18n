@@ -377,11 +377,11 @@ Qualsiasi Node.js core Collaborator (qualsiasi utente GitHub con diritti di comm
 
 I collaborators indicano di aver revisionato ed approvato le modifiche in una Pull Request utilizzando l'Approval Workflow di GitHub, che è preferito, oppure lasciando un commento `LGTM` ("Looks Good To Me" - "A me sembra buono").
 
-Quando si utilizza esplicitamente la componente "Changes requested" (Modifiche richieste) dell'Approval Workflow di GitHub, mostra empatia. Cioè, non essere scortese o brusco con il tuo feedback ed offri, se possibile, suggerimenti concreti per migliorare. If you're not sure *how* a particular change can be improved, say so.
+Quando si utilizza esplicitamente la componente "Changes requested" (Modifiche richieste) dell'Approval Workflow di GitHub, mostra empatia. Cioè, non essere scortese o brusco con il tuo feedback ed offri, se possibile, suggerimenti concreti per migliorare. Se non sei sicuro sul *come* una particolare modifica possa essere migliorata, dillo.
 
-Most importantly, after leaving such requests, it is courteous to make yourself available later to check whether your comments have been addressed.
+Ancora più importante, dopo aver lasciato queste richieste, è cortese rendersi disponibili anche in seguito per verificare se sono state risolte.
 
-If you see that requested changes have been made, you can clear another collaborator's `Changes requested` review.
+Se noti che le modifiche richieste sono state fatte, puoi cancellare la revisione `Changes requested` di un altro collaborator.
 
 Change requests that are vague, dismissive, or unconstructive may also be dismissed if requests for greater clarification go unanswered within a reasonable period of time.
 
