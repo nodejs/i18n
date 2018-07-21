@@ -328,11 +328,11 @@ Quando un collaborator conferma la Pull Request, invierà un commento alla pagin
 
 Tutti i contributors di Node.js che scelgono di revisionare e fornire feedback sulle Pull Requests hanno una responsabilità sia nei confronti del progetto sia nei confronti della persona che fornisce il contributo. Le revisioni ed i feedback devono essere utili, perspicaci ed orientate a migliorare il contributo anziché semplicemente bloccarlo. Se ci sono ragioni per le quali ritieni che la PR non debba essere confermata, spiega quali sono. Non aspettarti di essere in grado di bloccare l'avanzamento di una Pull Request semplicemente dicendo "No" senza neanche dare una spiegazione. Sii aperto ad avere una mentalità flessibile. Sii aperto a collaborare con il contributor per migliorare la Pull Request.
 
-Reviews that are dismissive or disrespectful of the contributor or any other reviewers are strictly counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+Le revisioni, del contributor o di qualsiasi altro revisore, che sono sprezzanti o irrispettose sono rigorosamente in contrasto con il [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-When reviewing a Pull Request, the primary goals are for the codebase to improve and for the person submitting the request to succeed. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
+Quando si revisiona una Pull Request, gli obiettivi primari sono il miglioramento del codebase e che la persona che invia la richiesta abbia successo. Anche se una Pull Request non viene confermata, chi invia la richiesta dovrebbe uscire da quest'esperienza come se il proprio sforzo non fosse sprecato o poco apprezzato. Perchè ogni Pull Request di un nuovo contributor è un'opportunità per far crescere la community.
 
-### Review a bit at a time.
+### Revisionare un pò alla volta.
 
 Do not overwhelm new contributors.
 
