@@ -357,11 +357,11 @@ Se i tuoi commenti sono stati indirizzati ma non sono stati inseriti automaticam
 
 ### Essere consapevoli della persona dietro il codice
 
-Be aware that *how* you communicate requests and reviews in your feedback can have a significant impact on the success of the Pull Request. Yes, we may land a particular change that makes Node.js better, but the individual might just not want to have anything to do with Node.js ever again. The goal is not just having good code.
+Tieni presente che *il modo* in cui comunichi le richieste e le revisioni nel tuo feedback può avere un impatto significativo sul successo della Pull Request. Sì, potremmo confermare una particolare modifica che rende Node.js migliore, ma la persona potrebbe non voler più avere nulla a che fare con Node.js. L'obiettivo non è solo avere un buon codice.
 
-### Respect the minimum wait time for comments
+### Rispettare il tempo di attesa minimo per i commenti
 
-There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
+C'è un tempo di attesa minimo che cerchiamo di rispettare per le modifiche significative, in modo che le persone, che possono avere un input importante in un progetto così distribuito, siano in grado di rispondere.
 
 For non-trivial changes, Pull Requests must be left open for *at least* 48 hours during the week, and 72 hours on a weekend. In most cases, when the PR is relatively small and focused on a narrow set of changes, these periods provide more than enough time to adequately review. Sometimes changes take far longer to review, or need more specialized review from subject matter experts. When in doubt, do not rush.
 
