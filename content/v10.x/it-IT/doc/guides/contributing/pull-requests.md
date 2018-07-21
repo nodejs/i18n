@@ -26,7 +26,7 @@ Ci sono due componenti fondamentali del processo di Pull Request: uno concreto e
   * [Approvare una modifica](#approving-a-change)
   * [Accettare che ci siano opinioni diverse su ciò che appartiene a Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [Le prestazioni non sono tutto](#performance-is-not-everything)
-  * [Test di integrazione continua](#continuous-integration-testing)
+  * [Continuous Integration Testing](#continuous-integration-testing)
 * [Note aggiuntive](#additional-notes) 
   * [Commit Squashing](#commit-squashing)
   * [Ottenere Approvazioni per la Pull Request](#getting-approvals-for-your-pull-request)
@@ -383,9 +383,9 @@ Ancora più importante, dopo aver lasciato queste richieste, è cortese rendersi
 
 Se noti che le modifiche richieste sono state fatte, puoi cancellare la revisione `Changes requested` di un altro collaborator.
 
-Change requests that are vague, dismissive, or unconstructive may also be dismissed if requests for greater clarification go unanswered within a reasonable period of time.
+Le Change Requests vaghe, sprezzanti o non costruttive possono anche essere respinte se sono stati richiesti maggiori chiarimenti ma non hanno ricevuto nessuna risposta entro un periodo di tempo ragionevole.
 
-If you do not believe that the Pull Request should land at all, use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing. When doing so, explain *why* you believe the Pull Request should not land along with an explanation of what may be an acceptable alternative course, if any.
+Se non credi che la Pull Request debba essere confermata, usa `Changes requested` per indicare che stai considerando alcuni dei tuoi commenti per bloccare la conferma della PR. Quando lo fai, spiega *perchè* ritieni che la Pull Request non debba essere confermata dando anche una spiegazione di quale potrebbe essere un'alternativa accettabile, se esiste.
 
 ### Accept that there are different opinions about what belongs in Node.js
 
