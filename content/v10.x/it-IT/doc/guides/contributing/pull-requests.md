@@ -334,18 +334,18 @@ Quando si revisiona una Pull Request, gli obiettivi primari sono il migliorament
 
 ### Revisionare un pò alla volta.
 
-Do not overwhelm new contributors.
+Non sovraccaricare i nuovi contributors.
 
-It is tempting to micro-optimize and make everything about relative performance, perfect grammar, or exact style matches. Do not succumb to that temptation.
+Si è tentati di micro-ottimizzare e fare tutto seguendo prestazioni relative, grammatica perfetta o corrispondenze di stile esatte. Non cedere a questa tentazione.
 
-Focus first on the most significant aspects of the change:
+Concentrati innanzitutto sugli aspetti più significativi della modifica:
 
-1. Does this change make sense for Node.js?
-2. Does this change make Node.js better, even if only incrementally?
-3. Are there clear bugs or larger scale issues that need attending to?
-4. Is the commit message readable and correct? If it contains a breaking change is it clear enough?
+1. Questa modifica ha senso per Node.js?
+2. Questa modifica rende Node.js migliore, anche se solo in modo incrementale?
+3. Ci sono chiari bug o problemi su larga scala che devono essere seguiti?
+4. Il commit message è leggibile e corretto? Se contiene una breaking change è abbastanza chiaro?
 
-When changes are necessary, *request* them, do not *demand* them, and do not assume that the submitter already knows how to add a test or run a benchmark.
+Quando le modifiche sono necessarie, *rechiedile*, non *pretenderle*, e non dare per scontato che il submitter sappia già come aggiungere un test od eseguire un benchmark.
 
 Specific performance optimization techniques, coding styles and conventions change over time. The first impression you give to a new contributor never does.
 
