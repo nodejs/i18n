@@ -17,7 +17,7 @@ Ci sono due componenti fondamentali del processo di Pull Request: uno concreto e
   * [Step 8: Aprire la Pull Request](#step-8-opening-the-pull-request)
   * [Step 9: Discutere ed Aggiornare](#step-9-discuss-and-update) 
     * [Workflow dell'Approval e delle Request Changes](#approval-and-request-changes-workflow)
-  * [Step 10: Landing](#step-10-landing)
+  * [Step 10: Conferma (Landing)](#step-10-landing)
 * [Revisione delle Pull Requests](#reviewing-pull-requests) 
   * [Revisionare un pò alla volta](#review-a-bit-at-a-time)
   * [Essere consapevoli della persona dietro il codice](#be-aware-of-the-person-behind-the-code)
@@ -318,11 +318,11 @@ Tutte le Pull Request richiedono lo "sign off" per essere confermate. Ogni volta
 
 Cerca di non scoraggiarti. Se credi che una particolare revisione sia ingiusta, dillo, oppure contatta uno degli altri contributors del progetto e tenta di ottenere il loro aiuto. Spesso osservazioni di questo tipo sono il risultato del fatto che il revisore ha dato un giudizio affrettato e quindi non sono mal intenzionate. Spesso problemi di questo tipo possono essere risolti con un pò di pazienza. Detto questo, i revisori dovrebbero essere d'aiuto con i loro feedback, perciò il feedback semplicemente vago, sprezzante ed inutile è senz'altro da ignorare.
 
-### Step 10: Landing
+### Step 10: Conferma (Landing)
 
-In order to land, a Pull Request needs to be reviewed and [approved](#getting-approvals-for-your-pull-request) by at least one Node.js Collaborator and pass a [CI (Continuous Integration) test run](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
+Per essere confermata, una Pull Request deve essere revisionata ed [approvata](#getting-approvals-for-your-pull-request) da almeno un Node.js Collaborator e superare un [CI (Continuous Integration) test run](#ci-testing). Dopodiché, finché non ci sono obiezioni da parte di altri contributors, la Pull Request può essere inserita (merged). Se credi che il tempo d'attesa della tua Pull Request sia stato più lungo del previsto, vedi le [note riguardo il tempo d'attesa](#waiting-until-the-pull-request-gets-landed).
 
-When a collaborator lands your Pull Request, they will post a comment to the Pull Request page mentioning the commit(s) it landed as. GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulations and thanks for your contribution!
+Quando un collaborator conferma la Pull Request, invierà un commento alla pagina della Pull Request menzionando il(i) commit(s) confermato(i). GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulations and thanks for your contribution!
 
 ## Reviewing Pull Requests
 
