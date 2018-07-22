@@ -395,9 +395,9 @@ Una regola generale è che se Node.js stesso ne ha bisogno (a causa di ragioni c
 
 Inoltre, è una funzionalità che non può essere implementata al di fuori del core in alcun modo ragionevole, o solo con uno sforzo significativo.
 
-It is not uncommon for contributors to suggest new features they feel would make Node.js better. These may or may not make sense to add, but as with all changes, be courteous in how you communicate your stance on these. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+Non è raro che i contributors suggeriscano nuove funzionalità che potrebbero rendere Node.js migliore. Queste possono avere o meno senso nell'essere aggiunte, ma come con tutte le modifiche, sii cortese nel modo in cui comunichi la tua posizione a riguardo. I commenti che fanno sentire il contributor come se avesse dovuto "conoscere meglio" od essere ridicolizzato per aver persino provato ad andare contro il [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-### Performance is not everything
+### Le prestazioni non sono tutto
 
 Node.js has always optimized for speed of execution. If a particular change can be shown to make some part of Node.js faster, it's quite likely to be accepted. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
 
