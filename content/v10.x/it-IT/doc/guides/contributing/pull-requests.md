@@ -417,13 +417,13 @@ Idealmente, la modifica del codice passerà con successo ("è verde") su tutte l
 
 ### Commit Squashing
 
-Nella maggior parte dei casi, non schiacciare/comprimere (squashing) i commits aggiunti alla tua Pull Request durante il processo di revisione. When the commits in your Pull Request land, they may be squashed into one commit per logical change. Metadata will be added to the commit message (including links to the Pull Request, links to relevant issues, and the names of the reviewers). The commit history of your Pull Request, however, will stay intact on the Pull Request page.
+Nella maggior parte dei casi, non schiacciare/comprimere (squashing) i commits aggiunti alla tua Pull Request durante il processo di revisione. Quando i commits nella tua Pull Request vengono confermati, allora possono essere compressi in un commit per cambiamento logico. I metadati verranno aggiunti al commit message (inclusi i link alla Pull Request, i link ai problemi rilevanti ed i nomi dei revisori). La cronologia dei commit della tua Pull Request, tuttavia, rimarrà intatta nella Pull Request page.
 
-For the size of "one logical change", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) can be a good example. It touches the implementation, the documentation, and the tests, but is still one logical change. All tests should always pass when each individual commit lands on the master branch.
+Per la dimensione di "un cambiamento logico", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) può essere un buon esempio. Esso tocca l'implementazione, la documentazione ed i test, ma è ancora un cambiamento logico. Tutti i test devono sempre essere superati quando ogni singolo commit viene confermato e spostato nel master branch.
 
-### Getting Approvals for Your Pull Request
+### Ottenere Approvazioni per la Pull Request
 
-A Pull Request is approved either by saying LGTM, which stands for "Looks Good To Me", or by using GitHub's Approve button. GitHub's Pull Request review feature can be used during the process. For more information, check out [the video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) or [the official documentation](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
+Una Pull Request è approvata dicendo LGTM, che sta per "Looks Good To Me" (a me sembra buono), oppure usando l'Approve button di GitHub. GitHub's Pull Request review feature can be used during the process. For more information, check out [the video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) or [the official documentation](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
 
 After you push new changes to your branch, you need to get approval for these new changes again, even if GitHub shows "Approved" because the reviewers have hit the buttons before.
 
