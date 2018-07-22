@@ -387,13 +387,13 @@ Le Change Requests vaghe, sprezzanti o non costruttive possono anche essere resp
 
 Se non credi che la Pull Request debba essere confermata, usa `Changes requested` per indicare che stai considerando alcuni dei tuoi commenti per bloccare la conferma della PR. Quando lo fai, spiega *perchè* ritieni che la Pull Request non debba essere confermata dando anche una spiegazione di quale potrebbe essere un'alternativa accettabile, se esiste.
 
-### Accept that there are different opinions about what belongs in Node.js
+### Accettare che ci siano opinioni diverse su ciò che appartiene a Node.js
 
-Opinions on this vary, even among the members of the Technical Steering Committee.
+Le opinioni su questo variano, anche tra i membri del Technical Steering Committee (Comitato Direttivo Tecnico).
 
-One general rule of thumb is that if Node.js itself needs it (due to historic or functional reasons), then it belongs in Node.js. For instance, `url` parsing is in Node.js because of HTTP protocol support.
+Una regola generale è che se Node.js stesso ne ha bisogno (a causa di ragioni cronologiche o funzionali), allora appartiene a Node.js. Ad esempio, l'analisi `url` si trova in Node.js a causa del supporto del protocollo HTTP.
 
-Also, functionality that either cannot be implemented outside of core in any reasonable way, or only with significant pain.
+Inoltre, è una funzionalità che non può essere implementata al di fuori del core in alcun modo ragionevole, o solo con uno sforzo significativo.
 
 It is not uncommon for contributors to suggest new features they feel would make Node.js better. These may or may not make sense to add, but as with all changes, be courteous in how you communicate your stance on these. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
