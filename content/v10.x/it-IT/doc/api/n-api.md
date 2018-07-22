@@ -2240,13 +2240,13 @@ napi_status napi_get_property_names(napi_env env,
                                     napi_value* result);
 ```
 
-- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
 - `[in] object`: L'object da cui recuperare le proprietà.
-- `[out] result`: Un `napi_value` che rappresenta un array di valori JavaScript che indicano i nomi delle proprietà dell'object. The API can be used to iterate over `result` using [`napi_get_array_length`][] and [`napi_get_element`][].
+- `[out] result`: Un `napi_value` che rappresenta un array di valori JavaScript che indicano i nomi delle proprietà dell'object. L'API può essere utilizzata per iterare su `result` usando [`napi_get_array_length`][] e [`napi_get_element`][].
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns the names of the enumerable properties of `object` as an array of strings. The properties of `object` whose key is a symbol will not be included.
+Quest'API restituisce i nomi delle proprietà enumerabili di `object` come un'array di stringhe. Le proprietà di `object`, la cui key è un simbolo, non saranno incluse.
 
 #### napi_set_property
 
@@ -2261,14 +2261,14 @@ napi_status napi_set_property(napi_env env,
                               napi_value value);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object on which to set the property.
-- `[in] key`: The name of the property to set.
-- `[in] value`: The property value.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[in] object`: L'object su cui impostare la proprietà.
+- `[in] key`: Il nome della proprietà da impostare.
+- `[in] value`: Il valore della proprietà.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API set a property on the `Object` passed in.
+Quest'API imposta una proprietà sull'`Object` passato/approvato.
 
 #### napi_get_property
 
@@ -2283,12 +2283,12 @@ napi_status napi_get_property(napi_env env,
                               napi_value* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the property.
-- `[in] key`: The name of the property to retrieve.
-- `[out] result`: The value of the property.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[in] object`: L'object da cui recuperare la proprietà.
+- `[in] key`: Il nome della proprietà da recuperare.
+- `[out] result`: Il valore della proprietà.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API gets the requested property from the `Object` passed in.
 
