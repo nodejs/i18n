@@ -411,13 +411,13 @@ Tutte le Pull Requests che contengono modifiche al codice devono essere eseguite
 
 Solo i Node.js core Collaborators con diritti di commit al repository `nodejs/node` possono avviare un'esecuzione di CI testing. I dettagli specifici su come eseguire questa operazione sono inclusi nella nuova Collaborator [Onboarding guide](../../onboarding.md).
 
-Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
+Idealmente, la modifica del codice passerà con successo ("è verde") su tutte le configurazioni della piattaforma supportate da Node.js (ci sono attualmente oltre 30 configurazioni della piattaforma). Ciò significa che tutti i test sono superati e non ci sono linting errors. In realtà, tuttavia, non è raro che l'infrastruttura CI fallisca su piattaforme specifiche o che i cosiddetti "flaky" tests falliscano ("sono rossi"). È fondamentale ispezionare visivamente i risultati di tutti i test non riusciti ("rossi") per determinare se l'errore è stato causato dalle modifiche nella Pull Request.
 
-## Additional Notes
+## Note aggiuntive
 
 ### Commit Squashing
 
-In most cases, do not squash commits that you add to your Pull Request during the review process. When the commits in your Pull Request land, they may be squashed into one commit per logical change. Metadata will be added to the commit message (including links to the Pull Request, links to relevant issues, and the names of the reviewers). The commit history of your Pull Request, however, will stay intact on the Pull Request page.
+Nella maggior parte dei casi, non schiacciare/comprimere (squashing) i commits aggiunti alla tua Pull Request durante il processo di revisione. When the commits in your Pull Request land, they may be squashed into one commit per logical change. Metadata will be added to the commit message (including links to the Pull Request, links to relevant issues, and the names of the reviewers). The commit history of your Pull Request, however, will stay intact on the Pull Request page.
 
 For the size of "one logical change", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) can be a good example. It touches the implementation, the documentation, and the tests, but is still one logical change. All tests should always pass when each individual commit lands on the master branch.
 
