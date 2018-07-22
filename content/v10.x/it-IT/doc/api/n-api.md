@@ -2222,11 +2222,11 @@ typedef struct {
 - `value`: Il valore recuperato tramite un get access della proprietà se la proprietà è una proprietà dei dati. Se questo viene passato, imposta `getter`, `setter`, `method` e `data` a `NULL` (poiché questi membri non saranno usati).
 - `getter`: Una funzione da chiamare quando viene eseguito un get access della proprietà. Se questo viene passato, imposta `value` e `method` a `NULL` (poiché questi membri non saranno usati). La funzione specificata viene chiamata implicitamente dal runtime quando si accede alla proprietà dal codice JavaScript (o se viene eseguito un get sulla proprietà utilizzando una chiamata N-API).
 - `setter`: Una funzione da chiamare quando viene eseguito un set access della proprietà. Se questo viene passato, imposta `value` e `method` a `NULL` (poiché questi membri non saranno usati). La funzione specificata viene chiamata implicitamente dal runtime quando la proprietà viene impostata dal codice JavaScript (o se viene eseguito un set sulla proprietà utilizzando una chiamata N-API).
-- `method`: Set this to make the property descriptor object's `value` property to be a JavaScript function represented by `method`. If this is passed in, set `value`, `getter` and `setter` to `NULL` (since these members won't be used).
-- `attributes`: The attributes associated with the particular property. See [`napi_property_attributes`](#n_api_napi_property_attributes).
-- `data`: The callback data passed into `method`, `getter` and `setter` if this function is invoked.
+- `method`: Impostalo per fare in modo che la `value` property del property descriptor object sia una funzione JavaScript rappresentata tramite `method`. Se questo viene passato, imposta `value`, `getter` e `setter` a `NULL` (poiché questi membri non saranno usati).
+- `attributes`: Gli attributi associati alla particolare proprietà. Vedi [`napi_property_attributes`](#n_api_napi_property_attributes).
+- `data`: I dati di callback vengono passati in `method`, `getter` e `setter` se viene invocata questa funzione.
 
-### Functions
+### Funzioni
 
 #### napi_get_property_names
 
@@ -2240,9 +2240,9 @@ napi_status napi_get_property_names(napi_env env,
                                     napi_value* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the properties.
-- `[out] result`: A `napi_value` representing an array of JavaScript values that represent the property names of the object. The API can be used to iterate over `result` using [`napi_get_array_length`][] and [`napi_get_element`][].
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] object`: L'object da cui recuperare le proprietà.
+- `[out] result`: Un `napi_value` che rappresenta un array di valori JavaScript che indicano i nomi delle proprietà dell'object. The API can be used to iterate over `result` using [`napi_get_array_length`][] and [`napi_get_element`][].
 
 Returns `napi_ok` if the API succeeded.
 
