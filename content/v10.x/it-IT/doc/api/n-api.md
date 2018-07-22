@@ -2305,14 +2305,14 @@ napi_status napi_has_property(napi_env env,
                               bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object to query.
-- `[in] key`: The name of the property whose existence to check.
-- `[out] result`: Whether the property exists on the object or not.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[in] object`: L'object da interrogare.
+- `[in] key`: Il nome della proprietà di cui bisogna verificare l'esistenza.
+- `[out] result`: Se la proprietà esiste nell'object oppure no.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API checks if the `Object` passed in has the named property.
+Quest'API controlla se l'`Object` passato/approvato ha la proprietà nominata.
 
 #### napi_delete_property
 
@@ -2539,10 +2539,10 @@ This method allows the efficient definition of multiple properties on a given ob
 N-API fornisce un set di API che consentono al codice JavaScript di richiamare (callback) il codice nativo. Le API N-API che supportano il richiamo al codice nativo utilizzano funzioni di callback rappresentate dal tipo `napi_callback`. Quando la JavaScript VM richiama il codice nativo, viene invocata la funzione `napi_callback` fornita. Le API documentate in questa sezione consentono alla funzione di callback di eseguire le operazioni seguenti:
 
 - Ottenere informazioni sul contesto in cui è stato invocato il callback.
-- Get the arguments passed into the callback.
-- Return a `napi_value` back from the callback.
+- Ottenere gli argomenti passati nel callback.
+- Restituire un `napi_value` indietro dal callback.
 
-Additionally, N-API provides a set of functions which allow calling JavaScript functions from native code. One can either call a function like a regular JavaScript function call, or as a constructor function.
+Inoltre, N-API fornisce un set di funzioni che consentono di chiamare le funzioni JavaScript dal codice nativo. Si può chiamare una funzione come una normale chiamata di funzione JavaScript, o come una funzione constructor.
 
 ### napi_call_function
 
