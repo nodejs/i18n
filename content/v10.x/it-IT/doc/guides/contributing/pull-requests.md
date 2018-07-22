@@ -435,8 +435,8 @@ Solo un Collaborator può avviare un'esecuzione CI. Solitamente uno di loro lo f
 
 ### Attendere fino a quando la Pull Request non viene confermata
 
-Una Pull Request deve rimanere aperta per almeno 48 ore (72 ore durante il weekend) da quando è stata inoltrata, anche dopo che è stata approvata e supera il CI. Questo per assicurarsi che tutti abbiano la possibilità di valutarla. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
+Una Pull Request deve rimanere aperta per almeno 48 ore (72 ore durante il weekend) da quando è stata inoltrata, anche dopo che è stata approvata e supera il CI. Questo per assicurarsi che tutti abbiano la possibilità di valutarla. Se le modifiche sono banali, i collaborators possono decidere che l'attesa non è necessaria. Una Pull Request può richiedere più tempo per essere inserita (merged) dopo la conferma. Tutte queste precauzioni sono importanti perchè Node.js è ampiamente utilizzato, quindi non scoraggiarti!
 
 ### Consultare la Collaborator Guide
 
-If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
+Se vuoi saperne di più sulla revisione del codice e sul processo di landing (conferma), consulta la [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
