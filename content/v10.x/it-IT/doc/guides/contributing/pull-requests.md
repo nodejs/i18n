@@ -403,13 +403,13 @@ Node.js ha sempre ottimizzato la velocità di esecuzione. Se è possibile mostra
 
 Detto questo, le prestazioni non sono l'unico fattore da considerare. Node.js ottimizza anche a favore di non violare il codice esistente nell'ecosistema e non modifica il working functional code solo per il gusto di modificare.
 
-If a particular Pull Request introduces a performance or functional regression, rather than simply rejecting the Pull Request, take the time to work *with* the contributor on improving the change. Offer feedback and advice on what would make the Pull Request acceptable, and do not assume that the contributor should already know how to do that. Be explicit in your feedback.
+Se una particolare Pull Request introduce una performance o una regressione funzionale, anzichè rifiutare semplicemente la Pull Request, prenditi il tempo di lavorare *insieme* al contributor per migliorare la modifica. Offri feedback e consigli su cosa potrebbe rendere accettabile la Pull Request, e non dare per scontato che il contributor debba già sapere come farlo. Sii esplicito nel tuo feedback.
 
 ### Continuous Integration Testing
 
-All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at <https://ci.nodejs.org/>.
+Tutte le Pull Requests che contengono modifiche al codice devono essere eseguite tramite continuous integration (CI) testing su <https://ci.nodejs.org/>.
 
-Only Node.js core Collaborators with commit rights to the `nodejs/node` repository may start a CI testing run. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
+Solo i Node.js core Collaborators con diritti di commit al repository `nodejs/node` possono avviare un'esecuzione di CI testing. I dettagli specifici su come eseguire questa operazione sono inclusi nella nuova Collaborator [Onboarding guide](../../onboarding.md).
 
 Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
 
