@@ -2290,7 +2290,7 @@ napi_status napi_get_property(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API gets the requested property from the `Object` passed in.
+Quest'API ottiene la proprietà richiesta dall'`Object` passato/approvato.
 
 #### napi_has_property
 
@@ -2534,11 +2534,11 @@ Returns `napi_ok` if the API succeeded.
 
 This method allows the efficient definition of multiple properties on a given object. The properties are defined using property descriptors (see [`napi_property_descriptor`][]). Given an array of such property descriptors, this API will set the properties on the object one at a time, as defined by `DefineOwnProperty()` (described in [Section 9.1.6](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc) of the ECMA262 specification).
 
-## Working with JavaScript Functions
+## Lavorare con le funzioni JavaScript
 
-N-API provides a set of APIs that allow JavaScript code to call back into native code. N-API APIs that support calling back into native code take in a callback functions represented by the `napi_callback` type. When the JavaScript VM calls back to native code, the `napi_callback` function provided is invoked. The APIs documented in this section allow the callback function to do the following:
+N-API fornisce un set di API che consentono al codice JavaScript di richiamare (callback) il codice nativo. Le API N-API che supportano il richiamo al codice nativo utilizzano funzioni di callback rappresentate dal tipo `napi_callback`. Quando la JavaScript VM richiama il codice nativo, viene invocata la funzione `napi_callback` fornita. Le API documentate in questa sezione consentono alla funzione di callback di eseguire le operazioni seguenti:
 
-- Get information about the context in which the callback was invoked.
+- Ottenere informazioni sul contesto in cui è stato invocato il callback.
 - Get the arguments passed into the callback.
 - Return a `napi_value` back from the callback.
 
