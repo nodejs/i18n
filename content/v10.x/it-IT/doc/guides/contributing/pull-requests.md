@@ -31,7 +31,7 @@ Ci sono due componenti fondamentali del processo di Pull Request: uno concreto e
   * [Commit Squashing](#commit-squashing)
   * [Ottenere Approvazioni per la Pull Request](#getting-approvals-for-your-pull-request)
   * [CI Testing](#ci-testing)
-  * [Attendere fino a quanto la Pull Request non viene confermata](#waiting-until-the-pull-request-gets-landed)
+  * [Attendere fino a quando la Pull Request non viene confermata](#waiting-until-the-pull-request-gets-landed)
   * [Consultare la Collaborator Guide](#check-out-the-collaborator-guide)
 
 ## Dipendenze
@@ -423,19 +423,19 @@ Per la dimensione di "un cambiamento logico", [0b5191f](https://github.com/nodej
 
 ### Ottenere Approvazioni per la Pull Request
 
-Una Pull Request è approvata dicendo LGTM, che sta per "Looks Good To Me" (a me sembra buono), oppure usando l'Approve button di GitHub. GitHub's Pull Request review feature can be used during the process. For more information, check out [the video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) or [the official documentation](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
+Una Pull Request è approvata dicendo LGTM, che sta per "Looks Good To Me" (a me sembra buono), oppure usando l'Approve button di GitHub. La funzione di revisione (review feature) della Pull Request di GitHub può essere utilizzata durante il processo di approvazione. Per ulteriori informazioni, guarda [il video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) o la [documentazione ufficiale](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
 
-After you push new changes to your branch, you need to get approval for these new changes again, even if GitHub shows "Approved" because the reviewers have hit the buttons before.
+Dopo aver inviato le nuove modifiche al tuo branch, devi ottenere di nuovo l'approvazione per queste modifiche, anche se GitHub mostra "Approved" (Approvato) visto che i revisori hanno premuto il pulsante precedentemente.
 
 ### CI Testing
 
-Every Pull Request needs to be tested to make sure that it works on the platforms that Node.js supports. This is done by running the code through the CI system.
+Ogni Pull Request deve essere testata per assicurarsi che funzioni sulle piattaforme supportate da Node.js. Questo viene fatto eseguendo il codice attraverso il CI system.
 
-Only a Collaborator can start a CI run. Usually one of them will do it for you as approvals for the Pull Request come in. If not, you can ask a Collaborator to start a CI run.
+Solo un Collaborator può avviare un'esecuzione CI. Solitamente uno di loro lo farà per te, così come le approvazioni per le Pull Request. In caso contrario, puoi chiedere ad un Collaborator di avviare un'esecuzione CI.
 
-### Waiting Until the Pull Request Gets Landed
+### Attendere fino a quando la Pull Request non viene confermata
 
-A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
+Una Pull Request deve rimanere aperta per almeno 48 ore (72 ore durante il weekend) da quando è stata inoltrata, anche dopo che è stata approvata e supera il CI. Questo per assicurarsi che tutti abbiano la possibilità di valutarla. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
 ### Consultare la Collaborator Guide
 
