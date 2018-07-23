@@ -385,7 +385,7 @@ Se noti che le modifiche richieste sono state fatte, puoi cancellare la revision
 
 Le Change Requests vaghe, sprezzanti o non costruttive possono anche essere respinte se sono stati richiesti maggiori chiarimenti ma non hanno ricevuto nessuna risposta entro un periodo di tempo ragionevole.
 
-Se non credi che la Pull Request debba essere confermata, usa `Changes requested` per indicare che stai considerando alcuni dei tuoi commenti per bloccare la conferma della PR. Quando lo fai, spiega *perchè* ritieni che la Pull Request non debba essere confermata dando anche una spiegazione di quale potrebbe essere un'alternativa accettabile, se esiste.
+Se non credi che la Pull Request debba essere confermata, usa `Changes requested` per indicare che stai considerando alcuni dei tuoi commenti per bloccare la conferma della PR. Quando lo fai, spiega *perché* ritieni che la Pull Request non debba essere confermata dando anche una spiegazione di quale potrebbe essere un'alternativa accettabile, se esiste.
 
 ### Accettare che ci siano opinioni diverse su ciò che appartiene a Node.js
 
