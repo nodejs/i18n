@@ -2352,11 +2352,11 @@ napi_status napi_has_own_property(napi_env env,
 - `[in] env`: L'ambiente in cui viene invocata la N-API call.
 - `[in] object`: L'object da interrogare.
 - `[in] key`: Il nome della own property di cui bisogna verificare l'esistenza.
-- `[out] result`: Whether the own property exists on the object or not.
+- `[out] result`: Se l'own property esiste sull'object oppure no.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API checks if the `Object` passed in has the named own property. `key` must be a string or a `Symbol`, or an error will be thrown. N-API will not perform any conversion between data types.
+Quest'API controlla se l'`Object` passato ha la own property nominata. La `key` deve essere una stringa od un `Symbol`, altrimenti verrà generato un errore. N-API non eseguirà alcuna conversione tra i tipi di dati.
 
 #### napi_set_named_property
 
@@ -2371,7 +2371,7 @@ napi_status napi_set_named_property(napi_env env,
                                     napi_value value);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
 - `[in] object`: The object on which to set the property.
 - `[in] utf8Name`: The name of the property to set.
 - `[in] value`: The property value.
