@@ -2525,14 +2525,14 @@ napi_status napi_define_properties(napi_env env,
                                    const napi_property_descriptor* properties);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the properties.
-- `[in] property_count`: The number of elements in the `properties` array.
-- `[in] properties`: The array of property descriptors.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[in] object`: L'object da cui recuperare le proprietà.
+- `[in] property_count`: Il numero di elementi nell'array `properties`.
+- `[in] properties`: L'array dei property descriptors (descrittori della proprietà).
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This method allows the efficient definition of multiple properties on a given object. The properties are defined using property descriptors (see [`napi_property_descriptor`][]). Given an array of such property descriptors, this API will set the properties on the object one at a time, as defined by `DefineOwnProperty()` (described in [Section 9.1.6](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc) of the ECMA262 specification).
+Questo metodo consente la definizione efficiente di più proprietà su un dato object. Le proprietà sono definite utilizzando i property descriptors (vedi [`napi_property_descriptor`][]). Dato un'array di tali property descriptors, quest'API imposterà le proprietà sull'object una alla volta, come definito da `DefineOwnProperty()` (descritto nella [Section 9.1.6](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc) dell'ECMA262 specification).
 
 ## Lavorare con le funzioni JavaScript
 
@@ -2559,8 +2559,8 @@ napi_status napi_call_function(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] recv`: The `this` object passed to the called function.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] recv`: L'object `this` è passato alla funzione chiamata.
 - `[in] func`: `napi_value` representing the JavaScript function to be invoked.
 - `[in] argc`: The count of elements in the `argv` array.
 - `[in] argv`: Array of `napi_values` representing JavaScript values passed in as arguments to the function.
