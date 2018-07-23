@@ -2561,14 +2561,14 @@ napi_status napi_call_function(napi_env env,
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] recv`: L'object `this` è passato alla funzione chiamata.
-- `[in] func`: `napi_value` representing the JavaScript function to be invoked.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of `napi_values` representing JavaScript values passed in as arguments to the function.
-- `[out] result`: `napi_value` representing the JavaScript object returned.
+- `[in] func`: `napi_value` che rappresenta la funzione JavaScript da invocare.
+- `[in] argc`: Il count degli elementi nell'array `argv`.
+- `[in] argv`: L'Array dei `napi_values` che rappresenta i valori JavaScript passati come argomenti alla funzione.
+- `[out] result`: `napi_value` che rappresenta il JavaScript object restituito.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This method allows a JavaScript function object to be called from a native add-on. This is the primary mechanism of calling back *from* the add-on's native code *into* JavaScript. For the special case of calling into JavaScript after an async operation, see [`napi_make_callback`][].
+Questo metodo consente ad un JavaScript function object di essere chiamato da un add-on nativo. This is the primary mechanism of calling back *from* the add-on's native code *into* JavaScript. For the special case of calling into JavaScript after an async operation, see [`napi_make_callback`][].
 
 A sample use case might look as follows. Consider the following JavaScript snippet:
 
