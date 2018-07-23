@@ -2352,7 +2352,7 @@ napi_status napi_has_own_property(napi_env env,
 - `[in] env`: L'ambiente in cui viene invocata la N-API call.
 - `[in] object`: L'object da interrogare.
 - `[in] key`: Il nome della own property di cui bisogna verificare l'esistenza.
-- `[out] result`: Se l'own property esiste sull'object oppure no.
+- `[out] result`: Se l'own property esiste nell'object oppure no.
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
@@ -2372,13 +2372,13 @@ napi_status napi_set_named_property(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata la N-API call.
-- `[in] object`: The object on which to set the property.
-- `[in] utf8Name`: The name of the property to set.
-- `[in] value`: The property value.
+- `[in] object`: L'object su cui impostare la proprietà.
+- `[in] utf8Name`: Il nome della proprietà da impostare.
+- `[in] value`: Il valore della proprietà.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This method is equivalent to calling [`napi_set_property`][] with a `napi_value` created from the string passed in as `utf8Name`.
+Questo metodo equivale a chiamare [`napi_set_property`][] con un `napi_value` creato dalla stringa passata come `utf8Name`.
 
 #### napi_get_named_property
 
@@ -2393,14 +2393,14 @@ napi_status napi_get_named_property(napi_env env,
                                     napi_value* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the property.
-- `[in] utf8Name`: The name of the property to get.
-- `[out] result`: The value of the property.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[in] object`: L'oggetto da cui recuperare la proprietà.
+- `[in] utf8Name`: Il nome della proprietà da ottenere.
+- `[out] result`: Il valore della proprietà.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This method is equivalent to calling [`napi_get_property`][] with a `napi_value` created from the string passed in as `utf8Name`.
+Questo metodo equivale a chiamare [`napi_get_property`][] con un `napi_value` creato dalla stringa passata come `utf8Name`.
 
 #### napi_has_named_property
 
@@ -2415,14 +2415,14 @@ napi_status napi_has_named_property(napi_env env,
                                     bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object to query.
-- `[in] utf8Name`: The name of the property whose existence to check.
-- `[out] result`: Whether the property exists on the object or not.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[in] object`: L'object da interrogare.
+- `[in] utf8Name`: Il nome della proprietà di cui bisogna verificare l'esistenza.
+- `[out] result`: Se la proprietà esiste nell'object oppure no.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This method is equivalent to calling [`napi_has_property`][] with a `napi_value` created from the string passed in as `utf8Name`.
+Questo metodo equivale a chiamare [`napi_has_property`][] con un `napi_value` creato dalla stringa passata come `utf8Name`.
 
 #### napi_set_element
 
@@ -2437,12 +2437,12 @@ napi_status napi_set_element(napi_env env,
                              napi_value value);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to set the properties.
-- `[in] index`: The index of the property to set.
-- `[in] value`: The property value.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
+- `[in] object`: L'object da cui impostare le proprietà.
+- `[in] index`: L'index della proprietà da impostare.
+- `[in] value`: Il valore della proprietà.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API sets and element on the `Object` passed in.
 
