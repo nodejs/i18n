@@ -2568,9 +2568,9 @@ napi_status napi_call_function(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-Questo metodo consente ad un JavaScript function object di essere chiamato da un add-on nativo. This is the primary mechanism of calling back *from* the add-on's native code *into* JavaScript. For the special case of calling into JavaScript after an async operation, see [`napi_make_callback`][].
+Questo metodo consente ad un JavaScript function object di essere chiamato da un add-on nativo. Questo è il meccanismo principale di callback *dal* codice nativo dell'add-on *a* JavaScript. Nel caso speciale di chiamare in JavaScript dopo un'operazione asincrona, vedi [`napi_make_callback`][].
 
-A sample use case might look as follows. Consider the following JavaScript snippet:
+Un esempio di caso d'utilizzo potrebbe essere il seguente. Considera il seguente frammento JavaScript:
 
 ```js
 function AddTwo(num) {
@@ -2578,10 +2578,10 @@ function AddTwo(num) {
 }
 ```
 
-Then, the above function can be invoked from a native add-on using the following code:
+La funzione sopracitata può essere invocata da un add-on nativo usando il seguente codice:
 
 ```C
-// Get the function named "AddTwo" on the global object
+// Ottiene la funzione denominata "AddTwo" sul global object
 napi_value global, add_two, arg;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -2601,7 +2601,7 @@ napi_value return_val;
 status = napi_call_function(env, global, add_two, argc, argv, &return_val);
 if (status != napi_ok) return;
 
-// Convert the result back to a native type
+// Converte il risultato in un tipo nativo
 int32_t result;
 status = napi_get_value_int32(env, return_val, &result);
 if (status != napi_ok) return;
@@ -2621,7 +2621,7 @@ napi_status napi_create_function(napi_env env,
                                  napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] utf8Name`: The name of the function encoded as UTF8. This is visible within JavaScript as the new function object's `name` property.
 - `[in] cb`: The native function which should be called when this function object is invoked.
 - `[in] data`: User-provided data context. This will be passed back into the function when invoked later.
