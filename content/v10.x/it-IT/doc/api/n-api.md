@@ -2622,14 +2622,14 @@ napi_status napi_create_function(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] utf8Name`: The name of the function encoded as UTF8. This is visible within JavaScript as the new function object's `name` property.
-- `[in] cb`: The native function which should be called when this function object is invoked.
-- `[in] data`: User-provided data context. This will be passed back into the function when invoked later.
-- `[out] result`: `napi_value` representing the JavaScript function object for the newly created function.
+- `[in] utf8Name`: Il nome della funzione codificata come UTF8. Questo è visibile all'interno di JavaScript come nuova proprietà `name` del function object.
+- `[in] cb`: La funzione nativa che dovrebbe essere chiamata quando viene invocato questo function object.
+- `[in] data`: Data context fornito dall'utente. Questo verrà restituito alla funzione quando viene invocata in seguito.
+- `[out] result`: `napi_value` che rappresenta il JavaScript function object per la funzione appena creata.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API allows an add-on author to create a function object in native code. This is the primary mechanism to allow calling *into* the add-on's native code *from* JavaScript.
+Quest'API consente ad un add-on author di creare un function object nel codice nativo. Questo è il meccanismo principale che consente il call (chiamata) *da* JavaScript *nel* codice nativo dell'addon.
 
 The newly created function is not automatically visible from script after this call. Instead, a property must be explicitly set on any object that is visible to JavaScript, in order for the function to be accessible from script.
 
