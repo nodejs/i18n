@@ -2631,9 +2631,9 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Quest'API consente ad un add-on author di creare un function object nel codice nativo. Questo è il meccanismo principale che consente il call (chiamata) *da* JavaScript *nel* codice nativo dell'addon.
 
-The newly created function is not automatically visible from script after this call. Instead, a property must be explicitly set on any object that is visible to JavaScript, in order for the function to be accessible from script.
+La funzione appena creata non è automaticamente visibile dallo script dopo questa call. Invece, una proprietà deve essere impostata in modo esplicito su qualsiasi object visibile a JavaScript, in modo che la funzione sia accessibile dallo script.
 
-In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
+Per esporre una funzione come parte del modulo exports dell'add-on, imposta la funzione appena creata sull'exports object. Un modulo di esempio potrebbe essere il seguente:
 
 ```C
 napi_value SayHello(napi_env env, napi_callback_info info) {
@@ -2657,14 +2657,14 @@ napi_value Init(napi_env env, napi_value exports) {
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
-Given the above code, the add-on can be used from JavaScript as follows:
+Dato il codice sopracitato, l'add-on può essere utilizzato da JavaScript nel seguente modo:
 
 ```js
 const myaddon = require('./addon');
 myaddon.sayHello();
 ```
 
-The string passed to require is not necessarily the name passed into `NAPI_MODULE` in the earlier snippet but the name of the target in `binding.gyp` responsible for creating the `.node` file.
+La stringa passata per require non è necessariamente il nome passato in `NAPI_MODULE` nel frammento precedente ma il nome del target in `binding.gyp` responsabile della creazione del file `.node`.
 
 ### napi_get_cb_info
 
@@ -2681,7 +2681,7 @@ napi_status napi_get_cb_info(napi_env env,
                              void** data)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] cbinfo`: The callback info passed into the callback function.
 - `[in-out] argc`: Specifies the size of the provided `argv` array and receives the actual count of arguments.
 - `[out] argv`: Buffer to which the `napi_value` representing the arguments are copied. If there are more arguments than the provided count, only the requested number of arguments are copied. If there are fewer arguments provided than claimed, the rest of `argv` is filled with `napi_value` values that represent `undefined`.
