@@ -2330,11 +2330,11 @@ napi_status napi_delete_property(napi_env env,
 - `[in] env`: L'ambiente in cui viene invocata la N-API call.
 - `[in] object`: L'object da interrogare.
 - `[in] key`: Il nome della proprietà da cancellare.
-- `[out] result`: Whether the property deletion succeeded or not. `result` can optionally be ignored by passing `NULL`.
+- `[out] result`: Se la cancellazione della proprietà è avvenuta con successo o meno. Facoltativamente, il `result` può essere ignorato passando `NULL`.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API attempts to delete the `key` own property from `object`.
+Quest'API tenta di eliminare la `key` della propria proprietà da `object`.
 
 #### napi_has_own_property
 
@@ -2349,7 +2349,7 @@ napi_status napi_has_own_property(napi_env env,
                                   bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata la N-API call.
 - `[in] object`: The object to query.
 - `[in] key`: The name of the own property whose existence to check.
 - `[out] result`: Whether the own property exists on the object or not.
