@@ -1,6 +1,6 @@
 # طلبات السحب
 
-هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. ومن هنا سنبدأ.
+هناك عنصرين أساسيين لعملية طلب السحب: واحد ملموس وتقني ، والأخر عملي. العنصر الملموس والتقني يتضمن تفاصيل محددة من إعداد البيئة المحلية الخاصة بك حتى تتمكن من إجراء تعديلات فعلية. هذا هو المكان الذي سنبدأ منه.
 
 * [التبعيات](#dependencies)
 * [إعداد البيئة المحلية الخاصة بك](#setting-up-your-local-environment) 
@@ -9,7 +9,7 @@
 * [عملية إجراء التغييرات](#the-process-of-making-changes) 
   * [الخطوة 3: كتابة الشيفرة البرمجية](#step-3-code)
   * [الخطوة 4: الإلتزام](#step-4-commit) 
-    * [إرشادات رسالة الإلتزام](#commit-message-guidelines)
+    * [إرشادات رسالة التسليم](#commit-message-guidelines)
   * [الخطوة 5: إعادة الإنشاء (Rebase)](#step-5-rebase)
   * [الخطوة 6: الإختبار](#step-6-test) 
     * [تغطية الاختبار](#test-coverage)
@@ -19,16 +19,16 @@
     * [الموافقة وطلب تغييرات سير العمل](#approval-and-request-changes-workflow)
   * [الخطوة 10: الهبوط](#step-10-landing)
 * [مراجعة طلبات السحب](#reviewing-pull-requests) 
-  * [Review a bit at a time](#review-a-bit-at-a-time)
+  * [راجع جزء صغير في كل وقت](#review-a-bit-at-a-time)
   * [كن حذرا من الشخص المسؤول عن الشيفرة](#be-aware-of-the-person-behind-the-code)
   * [احترام الحد الأدنى من وقت الانتظار للتعليقات](#respect-the-minimum-wait-time-for-comments)
   * [طلبات سحب مهجورة أو متوقفة](#abandoned-or-stalled-pull-requests)
   * [الموافقة على تعديل](#approving-a-change)
-  * [تقبل أن هناك آراء مختلفة حول ما ينتمي ل Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
+  * [تقبل أن هناك آراء مختلفة حول ما ينتمي لـ Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [الأداء ليس كل شيء](#performance-is-not-everything)
-  * [اختبار التكامل المستمر](#continuous-integration-testing)
+  * [اختبار التكامل المتواصل](#continuous-integration-testing)
 * [ملاحظات إضافية](#additional-notes) 
-  * [Commit Squashing](#commit-squashing)
+  * [دمج الإلتزام](#commit-squashing)
   * [الحصول على الموافقة لطلب السحب الخاص بك](#getting-approvals-for-your-pull-request)
   * [اختبار CI](#ci-testing)
   * [الانتظار حتى ينزل طلب السحب](#waiting-until-the-pull-request-gets-landed)
@@ -36,15 +36,15 @@
 
 ## التبعيات
 
-يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. التعديلات في الملفات الموجودة في هذه الدلائل يجب ان ترسل إلى المشاريع الخاصة بها. لا تقم بإرسال تصحيح ل Node.js. لا يمكننا أن نقبل مثل هذه التصحيحات.
+يحتوي Node.js على عدة تبعيات مجمعة في * deps / * وأدوات * / * الدلائل التي ليست جزءا من المشروع المناسب. التعديلات في الملفات الموجودة في هذه الدلائل يجب ان ترسل إلى المشاريع الخاصة بها. لا تقم بإرسال تصحيح لـ Node.js. لا يمكننا أن نقبل مثل هذه التصحيحات.
 
-في حالة الشك، إفتح تذكرة في [متعقب المشاكل](https://github.com/nodejs/node/issues/) أو إتصل بأحد [المتعاونين مع المشروع](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
+في حالة الشك، إفتح تذكرة في [متعقب المشاكل](https://github.com/nodejs/node/issues/) أو إتصل بأحد [المتعاونين مع المشروع](https://github.com/nodejs/node/#current-project-team-members). لدى Node.js قناتين للدردشة: [#Node.js](https://webchat.freenode.net/?channels=node.js) للمساعدة العامة و الأسئلة ، و [#Node-dev](https://webchat.freenode.net/?channels=node-dev) لتطوير نواة Node.js على وجه التحديد.
 
 ## إعداد البيئة المحلية الخاصة بك
 
-للبدء ، ستحتاج، لأن يكون `git` مثبت محليا. اعتمادا علي نظام التشغيل الخاص بك ، وهناك أيضا عدد من التبعيات الأخرى المطلوبة. ستجدها مفصلة في [إرشادات البناء](../../../BUILDING.md).
+للبدء، ستحتاج إلى تثبيت `git` محليًا. اعتمادا على نظام التشغيل الخاص بك، هناك أيضا عدد من التبعيات الأخرى المطلوبة. ستجدها مفصلة في [إرشادات البناء](../../../BUILDING.md).
 
-بمجرد أن يكون لديك `git` وتكون متأكد من أن لديك جميع التبعيات اللازمة ، حان الوقت لإنشاء نسخة.
+بمجرد أن يكون لديك `git` وتكون متأكد من أنه لديك جميع التبعيات اللازمة، حان الوقت لإنشاء نسخة.
 
 ### الخطوة 1: النسخ
 
@@ -57,7 +57,7 @@ $ git remote add upstream https://github.com/nodejs/node.git
 $ git fetch upstream
 ```
 
-It is recommended to configure `git` so that it knows who you are:
+يوصى بإعداد `git` حتى يعرف من أنت:
 
 ```text
 $ git config user.name "J. Random User"
@@ -68,15 +68,15 @@ $ git config user.email "j.random.user@example.com"
 
 ### الخطوة 2: التفرع
 
-أفضل طريقة للحفاظ على بيئة التطوير الخاصة بك أكثر تنضيما قدر الإمكان، أنشئ فروع محلية للعمل عليها. These should also be created directly off of the `master` branch.
+أفضل طريقة للحفاظ على بيئة التطوير الخاصة بك أكثر تنضيما قدر الإمكان، هي إنشاء فروع محلية للعمل عليها. وينبغي أيضا أن تنشئها مباشرة خارج الفرع `الرئيسي`.
 
 ```text
 $ git checkout -b my-branch -t upstream/master
 ```
 
-## The Process of Making Changes
+## عملية إجراء التعديلات
 
-### Step 3: Code
+### الخطوة 3: كتابة الشيفرة البرمجية
 
 The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
 
@@ -94,14 +94,14 @@ For contributing C++ code, you may want to look at the [C++ Style Guide](../../.
 
 ### الخطوة 4: الإلتزام
 
-من أفضل الممارسات الموصى بها، الحفاظ على تعديلاتك كمجموعة مجمعة منطقياً قدر الإمكان ضمن إلتزامات فردية. لا يوجد حد لعدد الإلتزامات في طلب السحب الواحد ، ويجد العديد من المساهمين أنه من الأسهل مراجعة التعديلات المنقسمة على عدة إلتزامات.
+من أفضل الممارسات الموصى بها، الحفاظ على تعديلاتك في مجموعات منطقية قدر الإمكان ضمن الإلتزامات الفردية. لا يوجد حد لعدد الإلتزامات في طلب السحب الواحد، ويجد العديد من المساهمين أنه من الأسهل مراجعة التعديلات المنقسمة على عدة إلتزامات.
 
 ```text
 $ git add my/changed/files
 $ git commit
 ```
 
-Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
+لاحظ أنه غالباً ما يتم دمج الإلتزامات المتعددة عندما يتم إنزالها (راجع الملاحظات حول [سحق الإلتزام](#commit-squashing)).
 
 #### إرشادات رسالة الإلتزام
 
@@ -109,23 +109,23 @@ Note that multiple commits often get squashed when they are landed (see the note
 
 1. يجب على السطر الأول أن:
   
-  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
-  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+  * يحتوي على وصف مختصر للتعديل (يفضل أن يكون 50 حرفاً أو أقل، وليس أكثر من 72 حرفاً)
+  * تكون بالكامل بأحرف صغيرة باستثناء الأسماء المناسبة، المختصرات، والكلمات التي تشير إلى تعليمات برمجية، مثل أسماء الدالة / المتغير
+  * تكون مسبوقة باسم النظام الفرعي الذي تم تعديله وتبدأ بـ فعل الأمر. تحقق من المخرج `git log --oneline files/you/changed` لمعرفة ما هي النظم الفرعية التي أثرت عليها تغييراتك.
     
-    Examples:
+    أمثلة:
   
   * `net: add localAddress and localPort to Socket`
   
   * `src: fix typos in async_wrap.h`
 
-2. Keep the second line blank.
+2. حافظ على السطر الثاني فارغًا.
 
-3. Wrap all other lines at 72 columns (except for long URLs).
+3. ضع جميع الأسطر الأخرى في 72 عمودًا (باستثناء عناوين URL الطويلة).
 
-4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
+4. إذا كان التصحيح الخاص بك يعمل على إصلاح مشكلة مفتوحة، فيمكنك إضافة مرجع إليها في نهاية السجل. استخدم إختصار`Fixes:` وعنوان URL الكامل للمشكلة. لمراجع أخرى استعمل `Refs:`.
   
-  Examples:
+  أمثلة:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
@@ -133,14 +133,14 @@ Note that multiple commits often get squashed when they are landed (see the note
 
 5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
 
-Sample complete commit message:
+عينة كاملة لرسالة آلإلتزام:
 
 ```txt
-subsystem: explain the commit in one line
+النظام الفرعي: شرح الالتزام في سطر واحد
 
-Body of commit message is a few lines of text, explaining things
-in more detail, possibly giving some background about the issue
-being fixed, etc.
+نص رسالة الالتزام عبارة عن بضعة أسطر مكتوبة توضح فيها الأمور
+بمزيد من التفاصيل، وربما إعطاء بعض المعلومات الأساسية أيضا حول المشكلة
+التي يجري إصلاحها ، إلخ.
 
 The body of the commit message can be several paragraphs, and
 please do proper word-wrap and keep columns shorter than about
@@ -155,7 +155,7 @@ If you are new to contributing to Node.js, please try to do your best at conform
 
 See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
 
-### Step 5: Rebase
+### الخطوة 5: إعادة الإنشاء (Rebase)
 
 As a best practice, once you have committed your changes, it is a good idea to use `git rebase` (not `git merge`) to synchronize your work with the main repository.
 
@@ -164,9 +164,9 @@ $ git fetch upstream
 $ git rebase upstream/master
 ```
 
-This ensures that your working branch has the latest changes from `nodejs/node` master.
+هذا يضمن أن الفرع الخاص بك الذي يعمل لديه أحدث التعديلات من `nodejs/node` الرئيسي.
 
-### Step 6: Test
+### الخطوة 6: الإختبار
 
 Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
 
@@ -216,9 +216,9 @@ $ ./node ./test/parallel/test-stream2-transform.js
 
 Remember to recompile with `make -j4` in between test runs if you change code in the `lib` or `src` directories.
 
-#### Test Coverage
+#### تغطية الاختبار
 
-It's good practice to ensure any code you add or change is covered by tests. You can do so by running the test suite with coverage enabled:
+من الممارسات الجيدة لضمان أن أي شيفرة تضيفها أو تغيرها قد تم تغطيتها من خلال الاختبارات. يمكنك القيام بذلك عن طريق تشغيل مجموعة الاختبار مع تمكين التغطية:
 
 ```text
 $ ./configure --coverage && make coverage
@@ -236,53 +236,51 @@ $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
 
 The above command executes tests for the `child-process` subsystem and outputs the resulting coverage report.
 
-Running tests with coverage will create and modify several directories and files. To clean up afterwards, run:
+يؤدي تشغيل الاختبارات مع التغطية إلى إنشاء وتعديل عدة مجلدات وملفات. للتنظيف بعد ذلك، قم بتشغيل:
 
 ```text
 make coverage-clean
 ./configure && make -j4.
 ```
 
-### Step 7: Push
+### الخطوة 7: الدفع
 
-Once you are sure your commits are ready to go, with passing tests and linting, begin the process of opening a Pull Request by pushing your working branch to your fork on GitHub.
+بمجرد التأكد من أن التزاماتك جاهزة، مع اجتياز الاختبارات والفحوصات، تبدأ عملية فتح طلب السحب عن طريق دفع فرع العمل الخاص بك إلى نسختك على GitHub.
 
 ```text
 $ git push origin my-branch
 ```
 
-### Step 8: Opening the Pull Request
+### خطوة 8: فتح طلب السحب
 
-From within GitHub, opening a new Pull Request will present you with a template that should be filled out:
+من داخل GitHub ، سيؤدي فتح طلب سحب جديد إلى تقديم نموذج لك يجب ملؤه:
 
 ```markdown
 <!--
-Thank you for your Pull Request. Please provide a description above and review
-the requirements below.
+شكرا لك على طلب السحب. يرجى تقديم وصف أعلاه ومراجعة المتطلبات أدناه.
 
-Bug fixes and new features should include tests and possibly benchmarks.
+يجب أن تتضمن إصلاحات الأخطاء والميزات الجديدة اختبارات ومقاييس محتملة.
 
-Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
--->
+دليل المساهمين: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md->
 
-#### Checklist
-<!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
+# # # قائمة
+<!-إزالة العناصر التي لا تنطبق. بالنسبة للعناصر المكتملة، غَيِّر [] إلى [x]. ->
 
-- [ ] `make -j4 test` (UNIX), or `vcbuild test` (Windows) passes
-- [ ] tests and/or benchmarks are included
-- [ ] documentation is changed or added
-- [ ] commit message follows [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
+- [ ] إختبار 'UNIX) 'make -j4) أو 'windows) 'vcbuild) مر بنجاح
+- [ ] تم تضمين الاختبارات/ أو المعايير
+- [ ] تم تغيير التوثيق أو إضافته
+- [ ] رسالة الإلتزام تتبع [إرشادات الإلتزام] (https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
 ```
 
-Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
+يرجى محاولة بذل قصارى جهدك عند ملء التفاصيل، ولكن لا تتردد في تخطي الأجزاء التي تكون فيها غير متأكد من ما ستضعه.
 
-Once opened, Pull Requests are usually reviewed within a few days.
+بمجرد فتحها، تتم مراجعة طلبات السحب عادة في غضون بضعة أيام.
 
-### Step 9: Discuss and update
+### الخطوة 9: النقاش والتحديث
 
-You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+من المحتمل أن تحصل على ملاحظات أو طلبات لإجراء تعديلات على طلب السحب. هذا جزء كبير من عملية التقديم، لذا لا تصب بالإحباط! بعض المساهمين قد يوقعون على طلب السحب على الفور، وبعضهم قد يكون لديهم مزيد من الملاحضات أو التعليقات المفصلة. هذا جزء ضروري من العملية من أجل تقييم ما إذا كانت التعديلات صحيحة وضرورية.
 
-To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
+لإجراء تعديلات على طلب سحب موجود، قم بإجراء التعديلات على فرعك المحلي، أضف إلتزام جديد مع تلك التعديلات، وإدفعهم إلى النسخة الخاصة بك. GitHub سيقوم تلقائياً بتحديث "طلب السحب".
 
 ```text
 $ git add my/changed/files
@@ -290,7 +288,7 @@ $ git commit
 $ git push origin my-branch
 ```
 
-It is also frequently necessary to synchronize your Pull Request with other changes that have landed in `master` by using `git rebase`:
+من الضروري في كثير من الأحيان مزامنة طلب السحب الخاص بك مع التعديلات الأخرى التي نزلت في `master` باستخدام `git rebase`:
 
 ```text
 $ git fetch --all
@@ -298,9 +296,9 @@ $ git rebase origin/master
 $ git push --force-with-lease origin my-branch
 ```
 
-**Important:** The `git push --force-with-lease` command is one of the few ways to delete history in `git`. Before you use it, make sure you understand the risks. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
+** هام: ** يعد الأمر `git push --force-with-lease` أحد الطرق القليلة لحذف السجل في `git`. قبل استخدامه، تأكد من أنك تفهم المخاطر. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-If you happen to make a mistake in any of your commits, do not worry. You can amend the last commit (for example if you want to change the commit log).
+إذا ارتكبت خطأ في أي من التزاماتك ، فلا تقلق. تستطيع تعديل الالتزام الأخير (على سبيل المثال إذا كنت ترغب في تغيير سجل الالتزام).
 
 ```text
 $ git add any/changed/files
@@ -308,25 +306,25 @@ $ git commit --amend
 $ git push --force-with-lease origin my-branch
 ```
 
-There are a number of more advanced mechanisms for managing commits using `git rebase` that can be used, but are beyond the scope of this guide.
+هناك عدد من الآليات الأكثر تقدمًا التي يمكن استخدامها لإدارة الالتزامات باستخدام `git rebase`، ولكنها خارج نطاق هذا الدليل.
 
-Feel free to post a comment in the Pull Request to ping reviewers if you are awaiting an answer on something. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
+لا تتردد في نشر تعليق في طلب سحب لتنبيه المراجعين إذا كنت في انتظار إجابة على شيء ما. إذا كنت تواجه كلمات أو اختصارات تبدو غير مألوفة، يرجى الرجوع إلى [ القاموس](https://sites.google.com/a/chromium.org/dev/glossary).
 
-#### Approval and Request Changes Workflow
+#### الموافقة وطلب تغييرات سير العمل
 
-All Pull Requests require "sign off" in order to land. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+تتطلب كافة طلبات سحب "تسجيل الخروج" من أجل النزول. قد يجد المساهم تفاصيل محددة يرغب في تعديلها او إصلاحها كلما راجع طلب السحب. قد يكون هذا بسيطاً مثل إصلاح خطأ مطبعي، أو قد يشمل تعديلات جوهرية على الشيفرة الذي كتبتها. في حين أن هذه الطلبات من المفترض أن تكون مفيدة، قد تصادف أنها غير مرتبطة أو غير مفيدة، خاصة طلبات تغيير الأشياء التي لا تتضمن اقتراحات محددة عن *كيفية* تغييرها.
 
-Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+حاول ألا يصيبك الإحباط. إذا كنت تشعر أن مراجعة معينة غير عادلة، قل ذلك، أو إتصل بأحد المساهمين الآخرين في المشروع والتمس مدخلاتهم. غالبًا ما تكون مثل هذه التعليقات نتيجة ان المُراجع لم يأخد الوقت الكافي لمراجعة طلب السحب وهي ليست مقصودة. مثل هذه القضايا غالباً ما يمكن حلها مع قليل من الصبر. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
 
-### Step 10: Landing
+### الخطوة 10: النزول
 
 In order to land, a Pull Request needs to be reviewed and [approved](#getting-approvals-for-your-pull-request) by at least one Node.js Collaborator and pass a [CI (Continuous Integration) test run](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
 
 When a collaborator lands your Pull Request, they will post a comment to the Pull Request page mentioning the commit(s) it landed as. GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulations and thanks for your contribution!
 
-## Reviewing Pull Requests
+## مراجعة طلبات السحب
 
-All Node.js contributors who choose to review and provide feedback on Pull Requests have a responsibility to both the project and the individual making the contribution. Reviews and feedback must be helpful, insightful, and geared towards improving the contribution as opposed to simply blocking it. If there are reasons why you feel the PR should not land, explain what those are. Do not expect to be able to block a Pull Request from advancing simply because you say "No" without giving an explanation. Be open to having your mind changed. Be open to working with the contributor to make the Pull Request better.
+جميع المساهمين في Node.js الذين يختارون مراجعة طلبات السحب وتقديم الملاحضات لديهم مسؤولية تجاه كل من المشروع والفرد المسؤول عن المساهمة. Reviews and feedback must be helpful, insightful, and geared towards improving the contribution as opposed to simply blocking it. If there are reasons why you feel the PR should not land, explain what those are. Do not expect to be able to block a Pull Request from advancing simply because you say "No" without giving an explanation. Be open to having your mind changed. Be open to working with the contributor to make the Pull Request better.
 
 Reviews that are dismissive or disrespectful of the contributor or any other reviewers are strictly counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
@@ -367,7 +365,7 @@ For non-trivial changes, Pull Requests must be left open for *at least* 48 hours
 
 Trivial changes, typically limited to small formatting changes or fixes to documentation, may be landed within the minimum 48 hour window.
 
-### Abandoned or Stalled Pull Requests
+### طلبات السحب المهجورة أو المتوقفة
 
 If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
 
