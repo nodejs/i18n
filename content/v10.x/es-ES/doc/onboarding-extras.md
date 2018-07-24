@@ -1,4 +1,4 @@
-# Información adicional para Onboarding
+# Información adicional para la Orientación
 
 ## Etiquetas
 
