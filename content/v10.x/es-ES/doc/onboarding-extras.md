@@ -34,9 +34,9 @@ Puede haber mas de un subsistema válido para cada issue o pull request particul
         git checkout $(git show -s --pretty='%T' $SHOW) -- test
         make -j4 test
 
-### LTS/Etiquetas de versión
+### Soporte a largo plazo/Etiquetas de versión
 
-Utilizamos etiquetas para mantener un seguimiento de en que branches deberían realizarse los commits:
+Utilizamos etiquetas para mantener un seguimiento de en qué branches deberían realizarse los commits:
 
 * `dont-land-on-v?.x` 
   * Para cambios que no aplican a cierta linea de entrega específica
