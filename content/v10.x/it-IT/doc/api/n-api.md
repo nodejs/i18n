@@ -2831,7 +2831,7 @@ Definisce una classe JavaScript che corrisponde ad una classe C++, includendo:
 
 Il callback del constructor C++ deve essere un metodo statico sulla classe che chiama l'effettivo constructor della classe, successivamente esegue il wrapping della nuova istanza C++ in un JavaScript object, e restituisce il wrapper object. Vedi `napi_wrap()` per maggiori dettagli.
 
-La funzione JavaScript constructor restituita da [`napi_define_class`][] viene spesso salvata ed utilizzata in seguito, per costruire nuove istanze della classe dal codice nativo, e/o verificare se i valori forniti sono istanze della classe. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
+La funzione JavaScript constructor restituita da [`napi_define_class`][] viene spesso salvata ed utilizzata in seguito, per costruire nuove istanze della classe dal codice nativo, e/o verificare se i valori forniti sono istanze della classe. In tal caso, per impedire che il valore della funzione subisca la garbage collection, crea un reference persistente usando [`napi_create_reference`][] ed assicurati che il reference count sia mantenuto >= 1.
 
 ### napi_wrap
 
@@ -2848,8 +2848,8 @@ napi_status napi_wrap(napi_env env,
                       napi_ref* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The JavaScript object that will be the wrapper for the native object. This object *must* have been created from the `prototype` of a constructor that was created using `napi_define_class()`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] js_object`: Il JavaScript object che sarà il wrapper per l'object nativo. This object *must* have been created from the `prototype` of a constructor that was created using `napi_define_class()`.
 - `[in] native_object`: The native instance that will be wrapped in the JavaScript object.
 - `[in] finalize_cb`: Optional native callback that can be used to free the native instance when the JavaScript object is ready for garbage-collection.
 - `[in] finalize_hint`: Optional contextual hint that is passed to the finalize callback.
