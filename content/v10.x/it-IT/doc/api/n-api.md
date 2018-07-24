@@ -2849,9 +2849,9 @@ napi_status napi_wrap(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] js_object`: Il JavaScript object che sarà il wrapper per l'object nativo. This object *must* have been created from the `prototype` of a constructor that was created using `napi_define_class()`.
-- `[in] native_object`: The native instance that will be wrapped in the JavaScript object.
-- `[in] finalize_cb`: Optional native callback that can be used to free the native instance when the JavaScript object is ready for garbage-collection.
+- `[in] js_object`: Il JavaScript object che sarà il wrapper per l'object nativo. Quest'object *deve* essere stato creato dal `prototype` di un constructor creato usando `napi_define_class()`.
+- `[in] native_object`: L'istanza nativa che subirà il wrapping nel JavaScript object.
+- `[in] finalize_cb`: Callback nativo opzionale che può essere utilizzato per liberare l'istanza nativa quando il JavaScript object è pronto per la garbage-collection.
 - `[in] finalize_hint`: Optional contextual hint that is passed to the finalize callback.
 - `[out] result`: Optional reference to the wrapped object.
 
