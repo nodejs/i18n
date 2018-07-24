@@ -49,9 +49,9 @@ Utilizamos etiquetas para mantener un seguimiento de en qué branches deberían 
   * Típicamente aplicado por un lanzador cuando el PR no puede aplicarse limpiamente o rompe las pruebas luego de ser aplicado
   * Será reemplazado por `dont-land-on-v?.x` o `backported-to-v?.x`
 * `backported-to-v?.x` 
-  * Aplicado a los PRs para los cuales un PR de soporte de versión anterior ha sido mergeado
+  * Aplicado a los PRs para los cuales un PR de soporte de versión anterior ha sido integrado
 * `lts-watch-v?.x` 
-  * Aplicado a los PRs que se desea que el grupo de trabajo de LTS considere incluir en una entrega LTS
+  * Aplicado a los PRs que el grupo de trabajo de soporte a largo plazo debería considerar incluir en una entrega LTS
   * No indica que ninguna acción específica sera llevada a cabo, pero puede ser un mensaje efectivo hacia no colaboradores
 * `lts-agenda` 
   * Para temas que necesitan ser discutidos por el grupo de trabajo de LTS
