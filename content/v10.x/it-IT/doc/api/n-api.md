@@ -2775,9 +2775,9 @@ N-API offre un modo per "avvolgere" (wrap) classi ed istanze C++ in modo che il 
 2. Quando il codice JavaScript invoca il constructor, il callback del constructor utilizza [`napi_wrap`][] per eseguire il wrapping di una nuova istanza C++ in un JavaScript object, quindi restituisce il wrapper object.
 3. Quando il codice JavaScript invoca un metodo od una property accessor sulla classe, viene invocata la corrispondente funzione C++ `napi_callback`. Per un callback di istanza, [`napi_unwrap`][] ottiene l'istanza C++ che è il target della call.
 
-For wrapped objects it may be difficult to distinguish between a function called on a class prototype and a function called on an instance of a class. A common pattern used to address this problem is to save a persistent reference to the class constructor for later `instanceof` checks.
+Per i wrapped objects può essere difficile distinguere tra una funzione chiamata su un prototipo di classe ed una funzione chiamata su un'istanza di una classe. Un modello comune utilizzato per risolvere questo problema consiste nel salvare un reference persistente al constructor della classe per i successivi controlli di `instanceof`.
 
-As an example:
+Ad esempio:
 
 ```C
 napi_value MyClass_constructor = NULL;
@@ -2789,11 +2789,11 @@ assert(napi_ok == status);
 if (is_instance) {
   // napi_unwrap() ...
 } else {
-  // otherwise...
+  // in caso contrario...
 }
 ```
 
-The reference must be freed once it is no longer needed.
+Il reference deve essere liberato quando non è più necessario.
 
 ### napi_define_class
 
@@ -2812,7 +2812,7 @@ napi_status napi_define_class(napi_env env,
                               napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] utf8name`: Name of the JavaScript constructor function; this is not required to be the same as the C++ class name, though it is recommended for clarity.
 - `[in] length`: The length of the `utf8name` in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
 - `[in] constructor`: Callback function that handles constructing instances of the class. (This should be a static method on the class, not an actual C++ constructor function.)
