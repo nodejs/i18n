@@ -2682,7 +2682,7 @@ napi_status napi_get_cb_info(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] cbinfo`: Le informazioni di callback passate nella funzione callback.
+- `[in] cbinfo`: Le callback info passate nella funzione callback.
 - `[in-out] argc`: Specifica la dimensione dell'array `argv` fornito e riceve il count effettivo degli argomenti.
 - `[out] argv`: Buffer a cui il `napi_value` rappresenta gli argomenti che sono copiati. Se ci sono più argomenti del count fornito, viene copiato solo il numero richiesto di argomenti. Se sono presenti meno argomenti di quelli richiesti, il resto di `argv` viene riempito con valori `napi_value` che rappresentano `undefined`.
 - `[out] this`: Riceve l'argomento JavaScript `this` per la call.
@@ -2690,7 +2690,7 @@ napi_status napi_get_cb_info(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This method is used within a callback function to retrieve details about the call like the arguments and the `this` pointer from a given callback info.
+Questo metodo viene utilizzato all'interno di una funzione callback per recuperare i dettagli sulla call come gli argomenti ed il puntatore `this` da una determinata callback info.
 
 ### napi_get_new_target
 
@@ -2704,13 +2704,13 @@ napi_status napi_get_new_target(napi_env env,
                                 napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cbinfo`: The callback info passed into the callback function.
-- `[out] result`: The `new.target` of the constructor call.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] cbinfo`: Le callback info passate nella funzione callback.
+- `[out] result`: Il `new.target` della constructor call.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns the `new.target` of the constructor call. If the current callback is not a constructor call, the result is `NULL`.
+Quest'API restituisce il `new.target` della constructor call. Se il callback corrente non è una constructor call, il risultato è `NULL`.
 
 ### napi_new_instance
 
@@ -2726,10 +2726,10 @@ napi_status napi_new_instance(napi_env env,
                               napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cons`: `napi_value` representing the JavaScript function to be invoked as a constructor.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of JavaScript values as `napi_value` representing the arguments to the constructor.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] cons`: `napi_value` che rappresenta la funzione JavaScript da invocare come constructor.
+- `[in] argc`: Il count degli elementi nell'array `argv`.
+- `[in] argv`: Array di valori JavaScript come `napi_value` che rappresentano gli argomenti del constructor.
 - `[out] result`: `napi_value` representing the JavaScript object returned, which in this case is the constructed object.
 
 This method is used to instantiate a new JavaScript value using a given `napi_value` that represents the constructor for the object. For example, consider the following snippet:
