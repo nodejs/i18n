@@ -39,14 +39,14 @@ Puede haber mas de un subsistema válido para cada issue o pull request particul
 Utilizamos etiquetas para mantener un seguimiento de en qué branches deberían realizarse los commits:
 
 * `dont-land-on-v?.x` 
-  * Para cambios que no aplican a cierta linea de entrega específica
-  * También utilizable cuando el trabajo involucrado en modificar versiones anteriores sobrepasa los beneficios
+  * Para cambios que no aplican a cierta línea de lanzamiento específica
+  * También se utiliza cuando el trabajo involucrado en reincorporar un cambio anterior sobrepasa los beneficios
 * `land-on-v?.x` 
-  * Usado para marcar los PR como candidatos de inclusión en una entrega LTS
-  * Aplicado o al PR original para ejecutar cherry-picks, o al PR de ajustes a versiones anteriores
+  * Usado por los lanzadores para marcar un PR como programado para inclusión en un lanzamiento con soporte a largo plazo
+  * Aplicado al PR original para ejecutar cherry-picks, o al PR de ajustes a versiones anteriores
 * `backport-requested-v?.x` 
-  * Usado para indicar que un PR necesita un ajuste de versiones manual para una branch, de manera de poder incluir los cambios en esa branch
-  * Típicamente se aplica por quien realiza la entrega cuando el PR no puede aplicarse limpiamente, o cuando rompe los tests luego de ser aplicado
+  * Usado para indicar que un PR necesita un reajuste manual a una branch de manera que se puedan incluir los cambios en esa branch
+  * Típicamente aplicado por un lanzador cuando el PR no puede aplicarse limpiamente o rompe las pruebas luego de ser aplicado
   * Será reemplazado por `dont-land-on-v?.x` o `backported-to-v?.x`
 * `backported-to-v?.x` 
   * Aplicado a los PRs para los cuales un PR de soporte de versión anterior ha sido mergeado
