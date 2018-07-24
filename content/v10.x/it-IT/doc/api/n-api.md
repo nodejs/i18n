@@ -2818,20 +2818,20 @@ napi_status napi_define_class(napi_env env,
 - `[in] constructor`: Funzione callback che gestisce la costruzione di istanze della classe. (Questo dovrebbe essere un metodo statico sulla classe, non una funzione C++ constructor effettiva.)
 - `[in] data`: Dati opzionali da passare al callback del constructor come `data` property delle callback info.
 - `[in] property_count`: Numero di elementi nell'argomento dell'array `properties`.
-- `[in] properties`: Array of property descriptors describing static and instance data properties, accessors, and methods on the class See `napi_property_descriptor`.
-- `[out] result`: A `napi_value` representing the constructor function for the class.
+- `[in] properties`: Array di property descriptors che descrivono proprietà di dati statici e di istanza, accessors e metodi sulla classe. Vedi `napi_property_descriptor`.
+- `[out] result`: Un `napi_value` che rappresenta la funzione constructor per la classe.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-Defines a JavaScript class that corresponds to a C++ class, including:
+Definisce una classe JavaScript che corrisponde ad una classe C++, includendo:
 
-- A JavaScript constructor function that has the class name and invokes the provided C++ constructor callback.
-- Properties on the constructor function corresponding to *static* data properties, accessors, and methods of the C++ class (defined by property descriptors with the `napi_static` attribute).
-- Properties on the constructor function's `prototype` object corresponding to *non-static* data properties, accessors, and methods of the C++ class (defined by property descriptors without the `napi_static` attribute).
+- Una funzione JavaScript constructor che ha il nome della classe ed invoca il callback del constructor C++ fornito.
+- Proprietà presenti sulla funzione constructor corrispondenti alle proprietà dei dati *statici*, agli accessors ed ai metodi della classe C++ (definita dai property descriptors con l'attributo `napi_static`).
+- Proprietà presenti sul `prototype` object della funzione constructor corrispondenti a proprietà di dati *non-statici*, agli accessors ed ai metodi della classe C++ (definiti dai property descriptors senza l'attributo `napi_static`).
 
-The C++ constructor callback should be a static method on the class that calls the actual class constructor, then wraps the new C++ instance in a JavaScript object, and returns the wrapper object. See `napi_wrap()` for details.
+Il callback del constructor C++ deve essere un metodo statico sulla classe che chiama l'effettivo constructor della classe, successivamente esegue il wrapping della nuova istanza C++ in un JavaScript object, e restituisce il wrapper object. Vedi `napi_wrap()` per maggiori dettagli.
 
-The JavaScript constructor function returned from [`napi_define_class`][] is often saved and used later, to construct new instances of the class from native code, and/or check whether provided values are instances of the class. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
+La funzione JavaScript constructor restituita da [`napi_define_class`][] viene spesso salvata ed utilizzata in seguito, per costruire nuove istanze della classe dal codice nativo, e/o verificare se i valori forniti sono istanze della classe. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
 
 ### napi_wrap
 
