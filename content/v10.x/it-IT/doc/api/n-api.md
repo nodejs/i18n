@@ -2684,11 +2684,11 @@ napi_status napi_get_cb_info(napi_env env,
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] cbinfo`: Le informazioni di callback passate nella funzione callback.
 - `[in-out] argc`: Specifica la dimensione dell'array `argv` fornito e riceve il count effettivo degli argomenti.
-- `[out] argv`: Buffer to which the `napi_value` representing the arguments are copied. If there are more arguments than the provided count, only the requested number of arguments are copied. If there are fewer arguments provided than claimed, the rest of `argv` is filled with `napi_value` values that represent `undefined`.
-- `[out] this`: Receives the JavaScript `this` argument for the call.
-- `[out] data`: Receives the data pointer for the callback.
+- `[out] argv`: Buffer a cui il `napi_value` rappresenta gli argomenti che sono copiati. Se ci sono più argomenti del count fornito, viene copiato solo il numero richiesto di argomenti. Se sono presenti meno argomenti di quelli richiesti, il resto di `argv` viene riempito con valori `napi_value` che rappresentano `undefined`.
+- `[out] this`: Riceve l'argomento JavaScript `this` per la call.
+- `[out] data`: Riceve il puntatore ai dati per il callback.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This method is used within a callback function to retrieve details about the call like the arguments and the `this` pointer from a given callback info.
 
