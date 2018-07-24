@@ -24,10 +24,10 @@ Puede haber mas de un subsistema válido para cada issue o pull request particul
 --
 
 * `semver-{minor,major}` 
-  * ser conservativos – esto significa que si un cambio tiene una *chance* remota de romper algo, se debe elegir semver-major
-  * al agregar una etiqueta semver, incluir un comentario explicando el motivo de la adición
-  * menor vs. parche: básicamente evaluar "si agrega un nuevo método / agrega una nueva sección a la documentación"
-  * mayor vs. cualquier otra cosa: correr los tests de la ultima version contra esta version, y si pasan, **probablemente** puedan ser considerados como menores o parches
+  * sea conservador – esto significa que si un cambio tiene un *chance* remoto de romper algo, se debe elegir semver-major
+  * al agregar una etiqueta semver, incluya un comentario explicando el motivo de la adición
+  * minor vs. patch: básicamente "agrega un nuevo método / agrega una nueva sección a la documentación"
+  * major vs. cualquier otra cosa: corra las pruebas de la ultima versión contra esta versión, y si pasan, **probablemente** sea mejor elegir minor o patch
   * Ayuda para un cambio que rompa ([código completo](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)): 
         sh
         SHOW=$(git show-ref -d $(git describe --abbrev=0) | tail -n1 | awk '{print $1}')
