@@ -2772,8 +2772,8 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 N-API offre un modo per "avvolgere" (wrap) classi ed istanze C++ in modo che il constructor ed i metodi della classe possano essere chiamati da JavaScript.
 
 1. L'API [`napi_define_class`][] definisce una classe JavaScript con constructor, proprietà e metodi statici, e proprietà e metodi di istanza che corrispondono alla classe C++.
-2. When JavaScript code invokes the constructor, the constructor callback uses [`napi_wrap`][] to wrap a new C++ instance in a JavaScript object, then returns the wrapper object.
-3. When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` C++ function is invoked. For an instance callback, [`napi_unwrap`][] obtains the C++ instance that is the target of the call.
+2. Quando il codice JavaScript invoca il constructor, il callback del constructor utilizza [`napi_wrap`][] per eseguire il wrapping di una nuova istanza C++ in un JavaScript object, quindi restituisce il wrapper object.
+3. Quando il codice JavaScript invoca un metodo od una property accessor sulla classe, viene invocata la corrispondente funzione C++ `napi_callback`. Per un callback di istanza, [`napi_unwrap`][] ottiene l'istanza C++ che è il target della call.
 
 For wrapped objects it may be difficult to distinguish between a function called on a class prototype and a function called on an instance of a class. A common pattern used to address this problem is to save a persistent reference to the class constructor for later `instanceof` checks.
 
