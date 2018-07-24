@@ -2813,11 +2813,11 @@ napi_status napi_define_class(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] utf8name`: Name of the JavaScript constructor function; this is not required to be the same as the C++ class name, though it is recommended for clarity.
-- `[in] length`: The length of the `utf8name` in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[in] constructor`: Callback function that handles constructing instances of the class. (This should be a static method on the class, not an actual C++ constructor function.)
-- `[in] data`: Optional data to be passed to the constructor callback as the `data` property of the callback info.
-- `[in] property_count`: Number of items in the `properties` array argument.
+- `[in] utf8name`: Nome della funzione JavaScript constructor; non deve essere necessariamente uguale al nome della classe C++, sebbene sia raccomandato per chiarezza.
+- `[in] length`: La lunghezza di `utf8name` in bytes, oppure `NAPI_AUTO_LENGTH` se è null-terminated.
+- `[in] constructor`: Funzione callback che gestisce la costruzione di istanze della classe. (Questo dovrebbe essere un metodo statico sulla classe, non una funzione C++ constructor effettiva.)
+- `[in] data`: Dati opzionali da passare al callback del constructor come `data` property delle callback info.
+- `[in] property_count`: Numero di elementi nell'argomento dell'array `properties`.
 - `[in] properties`: Array of property descriptors describing static and instance data properties, accessors, and methods on the class See `napi_property_descriptor`.
 - `[out] result`: A `napi_value` representing the constructor function for the class.
 
