@@ -11,15 +11,15 @@
 * `test`
 * `tools`
 
-Puede haber mas de un subsistema valido para problemas o pull requests.
+Puede haber mas de un subsistema válido para cada issue o pull request particular.
 
 ### General
 
-* `confirmed-bug` - Bugs cuya existencia está verificada
+* `confirmed-bug` - Bugs cuya existencia ha verificado
 * `discuss` - Asuntos que necesitan mayor discusión
-* `feature request` - Pedidos de nuevas características (usualmente no son PRs)
-* `good first issue` - Defectos adecuados para ser tomados por nuevos colaboradores
-* `meta` - Para defectos cuyo tema son la gobernanza, políticas, procedimientos, etc.
+* `feature request` - Cualquier issue que solicite una nueva característica (usualmente no son PRs)
+* `good first issue` - Issues adecuados para ser procesados por nuevos colaboradores
+* `meta` - Para issues cuyo tema es la gobernanza, políticas, procedimientos, etc.
 
 --
 
