@@ -3102,7 +3102,7 @@ napi_status napi_make_callback(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] async_context`: Context per l'operazione asincrona che invocando il callback. Questo dovrebbe normalmente essere un valore precedentemente ottenuto da [`napi_async_init`][]. Tuttavia è consentito anche `NULL`, che indica che l'async context corrente (se presente) deve essere utilizzato per il callback.
+- `[in] async_context`: Context per l'operazione asincrona che invoca il callback. Questo dovrebbe normalmente essere un valore precedentemente ottenuto da [`napi_async_init`][]. Tuttavia è consentito anche `NULL`, che indica che l'async context corrente (se presente) deve essere utilizzato per il callback.
 - `[in] recv`: L'object `this` è passato alla funzione chiamata.
 - `[in] func`: `napi_value` che rappresenta la funzione JavaScript da invocare.
 - `[in] argc`: Il count degli elementi nell'array `argv`.
@@ -3113,7 +3113,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Questo metodo consente ad un JavaScript function object di essere chiamato da un add-on nativo. Quest'API è simile a `napi_call_function`. Tuttavia, esso è usato per chiamare *da* codice nativo di nuovo *all'interno* di JavaScript *dopo* esser stato restituito da un'operazione asincrona (quando non ci sono altri script nello stack). È un wrapper abbastanza semplice attorno a `node::MakeCallback`.
 
-Note it is *not* necessary to use `napi_make_callback` from within a `napi_async_complete_callback`; in that situation the callback's async context has already been set up, so a direct call to `napi_call_function` is sufficient and appropriate. Use of the `napi_make_callback` function may be required when implementing custom async behavior that does not use `napi_create_async_work`.
+Nota che *non* è necessario per utilizzare `napi_make_callback` da un `napi_async_complete_callback`; in quella situazione l'async context del callback è già stato impostato, quindi una chiamata diretta a `napi_call_function` è sufficiente ed appropriata. L'utilizzo della funzione `napi_make_callback` può essere richiesto quando si implementa un comportamento asincrono personalizzato che non utilizza `napi_create_async_work`.
 
 ### napi_open_callback_scope
 
