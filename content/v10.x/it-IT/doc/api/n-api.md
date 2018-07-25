@@ -2975,11 +2975,11 @@ napi_status napi_create_async_work(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API allocates a work object that is used to execute logic asynchronously. It should be freed using [`napi_delete_async_work`][] once the work is no longer required.
+Quest'API alloca un work object che viene utilizzato per eseguire la logica in modo asincrono. Esso dovrebbe essere liberato usando [`napi_delete_async_work`][] una volta che il work non è più necessario.
 
-`async_resource_name` should be a null-terminated, UTF-8-encoded string.
+`async_resource_name` dovrebbe essere una stringa null-terminated con codifica UTF-8.
 
-The `async_resource_name` identifier is provided by the user and should be representative of the type of async work being performed. It is also recommended to apply namespacing to the identifier, e.g. by including the module name. See the [`async_hooks` documentation][async_hooks `type`] for more information.
+L'identificatore `async_resource_name` viene fornito dall'utente e dovrebbe essere rappresentativo del tipo di async work eseguito. E' inoltre consigliato di applicare il namespace all'identificatore, ad es. includendo il nome del modulo. Vedi la [documentazione riguardo `async_hooks`][async_hooks `type`] per maggiori informazioni.
 
 ### napi_delete_async_work
 
@@ -2992,8 +2992,8 @@ napi_status napi_delete_async_work(napi_env env,
                                    napi_async_work work);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] work`: The handle returned by the call to `napi_create_async_work`.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] work`: L'handle restituito dalla chiamata a `napi_create_async_work`.
 
 Returns `napi_ok` if the API succeeded.
 
