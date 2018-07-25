@@ -117,7 +117,7 @@ typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 
 #### napi_finalize
 
-Function pointer type for add-on provided functions that allow the user to be notified when externally-owned data is ready to be cleaned up because the object with which it was associated with, has been garbage-collected. The user must provide a function satisfying the following signature which would get called upon the object's collection. Currently, `napi_finalize` can be used for finding out when objects that have external data are collected.
+Tipo di funzione puntatore per funzioni aggiuntive fornite che consente all'utente di essere avvisato quando i dati di proprietà esterna sono pronti per essere puliti poichè l'oggetto con cui è stato associato è stato sottoposto alla garbage collection. The user must provide a function satisfying the following signature which would get called upon the object's collection. Currently, `napi_finalize` can be used for finding out when objects that have external data are collected.
 
 ```C
 typedef void (*napi_finalize)(napi_env env,
