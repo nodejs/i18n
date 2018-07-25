@@ -3107,11 +3107,11 @@ napi_status napi_make_callback(napi_env env,
 - `[in] func`: `napi_value` che rappresenta la funzione JavaScript da invocare.
 - `[in] argc`: Il count degli elementi nell'array `argv`.
 - `[in] argv`: Array di valori JavaScript come `napi_value` che rappresentano gli argomenti della funzione.
-- `[out] result`: `napi_value` representing the JavaScript object returned.
+- `[out] result`: `napi_value` che rappresenta il JavaScript object restituito.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This method allows a JavaScript function object to be called from a native add-on. This API is similar to `napi_call_function`. However, it is used to call *from* native code back *into* JavaScript *after* returning from an async operation (when there is no other script on the stack). It is a fairly simple wrapper around `node::MakeCallback`.
+Questo metodo consente ad un JavaScript function object di essere chiamato da un add-on nativo. Quest'API è simile a `napi_call_function`. Tuttavia, esso è usato per chiamare *da* codice nativo di nuovo *all'interno* di JavaScript *dopo* esser stato restituito da un'operazione asincrona (quando non ci sono altri script nello stack). È un wrapper abbastanza semplice attorno a `node::MakeCallback`.
 
 Note it is *not* necessary to use `napi_make_callback` from within a `napi_async_complete_callback`; in that situation the callback's async context has already been set up, so a direct call to `napi_call_function` is sufficient and appropriate. Use of the `napi_make_callback` function may be required when implementing custom async behavior that does not use `napi_create_async_work`.
 
