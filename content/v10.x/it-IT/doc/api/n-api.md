@@ -2913,7 +2913,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Recupera un'istanza nativa che ha precedentemente subito il wrapping nel JavaScript object `js_object` utilizzando `napi_wrap()` e rimuove il wrapping, ripristinando in tal modo la prototype chain del JavaScript object. Se un callback finalizzato è stato associato al wrapping, non verrà più chiamato quando il JavaScript object subisce la garbage collection.
 
-## Simple Asynchronous Operations
+## Semplici Operazioni Asincrone
 
 Addon modules often need to leverage async helpers from libuv as part of their implementation. This allows them to schedule work to be executed asynchronously so that their methods can return in advance of the work being completed. This is important in order to allow them to avoid blocking overall execution of the Node.js application.
 
