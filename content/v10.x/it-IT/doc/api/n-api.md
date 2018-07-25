@@ -3041,7 +3041,7 @@ Quest'API può essere chiamata anche se è presente un'eccezione JavaScript in s
 
 ## Operazioni Asincrone Personalizzate
 
-Le semplici API di work asincrono sopracitate potrebbero non essere appropriate per ogni scenario. When using any other asynchronous mechanism, the following APIs are necessary to ensure an asynchronous operation is properly tracked by the runtime.
+Le semplici API di work asincrono sopracitate potrebbero non essere appropriate per ogni scenario. Quando si utilizza un altro meccanismo asincrono, sono necessarie le seguenti API per garantire che un'operazione asincrona venga monitorata correttamente dal runtime.
 
 ### napi_async_init
 
