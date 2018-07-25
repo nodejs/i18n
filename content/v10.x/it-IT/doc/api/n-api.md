@@ -2931,7 +2931,7 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-When these methods are invoked, the `data` parameter passed will be the addon-provided `void*` data that was passed into the `napi_create_async_work` call.
+Quando questi metodi vengono invocati, il parametro `data` passato sarà il `void*` data fornito dall'addon che è stato passato alla chiamata `napi_create_async_work`.
 
 Once created the async worker can be queued for execution using the [`napi_queue_async_work`][] function:
 
