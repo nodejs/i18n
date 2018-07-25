@@ -3056,9 +3056,9 @@ napi_status napi_async_init(napi_env env,
                             napi_async_context* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_resource`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] async_resource_name`: Identifier for the kind of resource that is being provided for diagnostic information exposed by the `async_hooks` API.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] async_resource`: Un object facoltativo associato all'async work che verrà passato a possibili `async_hooks` [`init` hooks][].
+- `[in] async_resource_name`: Identificatore per il tipo di risorsa che viene fornita per le informazioni diagnostiche esposte dall'API `async_hooks`.
 - `[out] result`: The initialized async context.
 
 Returns `napi_ok` if the API succeeded.
