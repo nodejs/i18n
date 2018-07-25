@@ -2942,7 +2942,7 @@ napi_status napi_queue_async_work(napi_env env,
 
 [`napi_cancel_async_work`][] può essere usato se il work deve essere cancellato prima che esso inizi l'esecuzione.
 
-After calling [`napi_cancel_async_work`][], the `complete` callback will be invoked with a status value of `napi_cancelled`. The work should not be deleted before the `complete` callback invocation, even when it was cancelled.
+Dopo aver chiamato [`napi_cancel_async_work`][], il callback `complete` verrà invocato con un status value di `napi_cancelled`. Il work non dovrebbe essere cancellato prima dell'invocazione del callback `complete`, anche quando è stato annullato.
 
 ### napi_create_async_work
 
@@ -2965,9 +2965,9 @@ napi_status napi_create_async_work(napi_env env,
                                    napi_async_work* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_resource`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] async_resource_name`: Identifier for the kind of resource that is being provided for diagnostic information exposed by the `async_hooks` API.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] async_resource`: Un object facoltativo associato all'async work che verrà passato a possibili `async_hooks` [`init` hooks][].
+- `[in] async_resource_name`: Identificatore per il tipo di risorsa che viene fornita per le informazioni diagnostiche esposte dall'API `async_hooks`.
 - `[in] execute`: The native function which should be called to execute the logic asynchronously. The given function is called from a worker pool thread and can execute in parallel with the main event loop thread.
 - `[in] complete`: The native function which will be called when the asynchronous logic is completed or is cancelled. The given function is called from the main event loop thread.
 - `[in] data`: User-provided data context. This will be passed back into the execute and complete functions.
