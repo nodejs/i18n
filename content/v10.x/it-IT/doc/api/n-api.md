@@ -2921,7 +2921,7 @@ N-API fornisce un'interfaccia ABI stabile per queste funzioni di supporto che co
 
 N-API definisce la struttura `napi_work` che viene utilizzata per gestire gli workers asincroni. Le istanze vengono create/eliminate con [`napi_create_async_work`][] e [`napi_delete_async_work`][].
 
-I callback `execute` e `complete` sono funzioni che verranno invocate rispettivamente quando l'executor è pronto per essere eseguito e quando esso termina il suo compito (task). These functions implement the following interfaces:
+I callback `execute` e `complete` sono funzioni che verranno invocate rispettivamente quando l'executor è pronto per essere eseguito e quando esso termina il suo compito (task). Queste funzioni implementano le seguenti interfacce:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env,
