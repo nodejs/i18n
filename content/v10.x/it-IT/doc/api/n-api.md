@@ -2863,11 +2863,11 @@ Quando il codice JavaScript invoca un constructor per una classe che è stata de
 
 In genere, quando si esegue il wrapping di un'istanza di classe, è necessario fornire un callback finalizzato che elimina semplicemente l'istanza nativa ricevuta come argomento `data` sul callback finalizzato.
 
-The optional returned reference is initially a weak reference, meaning it has a reference count of 0. Typically this reference count would be incremented temporarily during async operations that require the instance to remain valid.
+Il reference opzionale restituito è inizialmente un reference debole, il che significa che ha un reference count pari a 0. In genere questo reference count viene incrementato temporaneamente durante le operazioni asincrone che richiedono che l'istanza rimanga valida.
 
-*Caution*: The optional returned reference (if obtained) should be deleted via [`napi_delete_reference`][] ONLY in response to the finalize callback invocation. (If it is deleted before then, then the finalize callback may never be invoked.) Therefore, when obtaining a reference a finalize callback is also required in order to enable correct proper of the reference.
+*Attenzione*: il reference opzionale restituito (se ottenuto) deve essere eliminato tramite [`napi_delete_reference`][] SOLO in risposta all'invocazione del callback finalizzato. (Se viene eliminato prima di allora, il callback finalizzato non può mai essere invocato.) Pertanto, quando si ottiene un reference, è necessario anche un callback finalizzato che permetta la giusta correzione del reference.
 
-This API may modify the prototype chain of the wrapper object. Afterward, additional manipulation of the wrapper's prototype chain may cause `napi_unwrap()` to fail.
+Quest'API può modificare la prototype chain del wrapper object. Afterward, additional manipulation of the wrapper's prototype chain may cause `napi_unwrap()` to fail.
 
 Calling `napi_wrap()` a second time on an object will return an error. To associate another native instance with the object, use `napi_remove_wrap()` first.
 
