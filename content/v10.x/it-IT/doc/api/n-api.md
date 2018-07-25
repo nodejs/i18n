@@ -2915,9 +2915,9 @@ Recupera un'istanza nativa che ha precedentemente subito il wrapping nel JavaScr
 
 ## Semplici Operazioni Asincrone
 
-Addon modules often need to leverage async helpers from libuv as part of their implementation. This allows them to schedule work to be executed asynchronously so that their methods can return in advance of the work being completed. This is important in order to allow them to avoid blocking overall execution of the Node.js application.
+I moduli Addon spesso hanno bisogno di sfruttare gli async helpers di libuv come parte della loro implementazione. Ciò gli consente di pianificare il lavoro da eseguire in modo asincrono così che i loro metodi possano eseguire il return prima che il lavoro venga completato. Questo è importante perchè gli consente di evitare il blocco totale dell'esecuzione dell'applicazione Node.js.
 
-N-API provides an ABI-stable interface for these supporting functions which covers the most common asynchronous use cases.
+N-API fornisce un'interfaccia ABI stabile per queste funzioni di supporto che copre i casi più comuni di utilizzo asicrono.
 
 N-API defines the `napi_work` structure which is used to manage asynchronous workers. Instances are created/deleted with [`napi_create_async_work`][] and [`napi_delete_async_work`][].
 
