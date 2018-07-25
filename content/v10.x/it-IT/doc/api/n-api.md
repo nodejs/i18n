@@ -3059,9 +3059,9 @@ napi_status napi_async_init(napi_env env,
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] async_resource`: Un object facoltativo associato all'async work che verrà passato a possibili `async_hooks` [`init` hooks][].
 - `[in] async_resource_name`: Identificatore per il tipo di risorsa che viene fornita per le informazioni diagnostiche esposte dall'API `async_hooks`.
-- `[out] result`: The initialized async context.
+- `[out] result`: L'async context inizializzato.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 ### napi_async_destroy
 
@@ -3074,12 +3074,12 @@ napi_status napi_async_destroy(napi_env env,
                                napi_async_context async_context);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_context`: The async context to be destroyed.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] async_context`: L'async context da distruggere.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API can be called even if there is a pending JavaScript exception.
+Quest'API può essere chiamata anche se è presente un'eccezione JavaScript in sospeso.
 
 ### napi_make_callback
 
@@ -3101,12 +3101,12 @@ napi_status napi_make_callback(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_context`: Context for the async operation that is invoking the callback. This should normally be a value previously obtained from [`napi_async_init`][]. However `NULL` is also allowed, which indicates the current async context (if any) is to be used for the callback.
-- `[in] recv`: The `this` object passed to the called function.
-- `[in] func`: `napi_value` representing the JavaScript function to be invoked.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of JavaScript values as `napi_value` representing the arguments to the function.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] async_context`: Context per l'operazione asincrona che invocando il callback. Questo dovrebbe normalmente essere un valore precedentemente ottenuto da [`napi_async_init`][]. Tuttavia è consentito anche `NULL`, che indica che l'async context corrente (se presente) deve essere utilizzato per il callback.
+- `[in] recv`: L'object `this` è passato alla funzione chiamata.
+- `[in] func`: `napi_value` che rappresenta la funzione JavaScript da invocare.
+- `[in] argc`: Il count degli elementi nell'array `argv`.
+- `[in] argv`: Array di valori JavaScript come `napi_value` che rappresentano gli argomenti della funzione.
 - `[out] result`: `napi_value` representing the JavaScript object returned.
 
 Returns `napi_ok` if the API succeeded.
