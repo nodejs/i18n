@@ -2968,12 +2968,12 @@ napi_status napi_create_async_work(napi_env env,
 - `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] async_resource`: Un object facoltativo associato all'async work che verrà passato a possibili `async_hooks` [`init` hooks][].
 - `[in] async_resource_name`: Identificatore per il tipo di risorsa che viene fornita per le informazioni diagnostiche esposte dall'API `async_hooks`.
-- `[in] execute`: The native function which should be called to execute the logic asynchronously. The given function is called from a worker pool thread and can execute in parallel with the main event loop thread.
-- `[in] complete`: The native function which will be called when the asynchronous logic is completed or is cancelled. The given function is called from the main event loop thread.
-- `[in] data`: User-provided data context. This will be passed back into the execute and complete functions.
-- `[out] result`: `napi_async_work*` which is the handle to the newly created async work.
+- `[in] execute`: La funzione nativa che dovrebbe essere chiamata per eseguire la logica in modo asincrono. La funzione data viene chiamata da un worker pool thread e può essere eseguita in parallelo con il main event loop thread.
+- `[in] complete`: La funzione nativa che verrà chiamata quando la logica asincrona è completata o cancellata. La funzione data viene chiamata dal main event loop thread.
+- `[in] data`: Data context fornito dall'utente. Questo verrà passato di nuovo nelle funzioni execute e complete.
+- `[out] result`: `napi_async_work*` che è l'handle dell'async work appena creato.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API allocates a work object that is used to execute logic asynchronously. It should be freed using [`napi_delete_async_work`][] once the work is no longer required.
 
