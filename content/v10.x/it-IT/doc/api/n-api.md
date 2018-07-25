@@ -2867,9 +2867,9 @@ Il reference opzionale restituito è inizialmente un reference debole, il che si
 
 *Attenzione*: il reference opzionale restituito (se ottenuto) deve essere eliminato tramite [`napi_delete_reference`][] SOLO in risposta all'invocazione del callback finalizzato. (Se viene eliminato prima di allora, il callback finalizzato non può mai essere invocato.) Pertanto, quando si ottiene un reference, è necessario anche un callback finalizzato che permetta la giusta correzione del reference.
 
-Quest'API può modificare la prototype chain del wrapper object. Afterward, additional manipulation of the wrapper's prototype chain may cause `napi_unwrap()` to fail.
+Quest'API può modificare la prototype chain del wrapper object. In seguito, un'ulteriore manipolazione della prototype chain del wrapper potrebbe causare il fallimento di `napi_unwrap()`.
 
-Calling `napi_wrap()` a second time on an object will return an error. To associate another native instance with the object, use `napi_remove_wrap()` first.
+Chiamando `napi_wrap()` una seconda volta su di un object verrà restituito un errore. Per associare un'altra istanza nativa all'object, prima di tutto utilizza `napi_remove_wrap()`.
 
 ### napi_unwrap
 
@@ -2883,15 +2883,15 @@ napi_status napi_unwrap(napi_env env,
                         void** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The object associated with the native instance.
-- `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] js_object`: L'object associato all'istanza nativa.
+- `[out] result`: Puntatore all'istanza nativa che ha subito il wrapping.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-Retrieves a native instance that was previously wrapped in a JavaScript object using `napi_wrap()`.
+Recupera un'istanza nativa che ha precedentemente subito il wrapping in un JavaScript object utilizzando `napi_wrap()`.
 
-When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` is invoked. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
+Quando il codice JavaScript invoca un metodo od una property accessor sulla classe, viene invocato il corrispondente `napi_callback`. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
 
 ### napi_remove_wrap
 
