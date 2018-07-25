@@ -2859,9 +2859,9 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Esegue il wrapping di un'istanza nativa in un JavaScript object. L'istanza nativa può essere recuperata in seguito utilizzando `napi_unwrap()`.
 
-Quando il codice JavaScript invoca un constructor per una classe che è stata definita usando `napi_define_class()`, viene invocato il `napi_callback` per il constructor. Dopo aver costruito un'istanza della classe nativa, il callback deve chiamare `napi_wrap()` per eseguire il wrapping dell'istanza appena costruita nel JavaScript object già creato ovvero l'argomento `this` del callback del constructor. (That `this` object was created from the constructor function's `prototype`, so it already has definitions of all the instance properties and methods.)
+Quando il codice JavaScript invoca un constructor per una classe che è stata definita usando `napi_define_class()`, viene invocato il `napi_callback` per il constructor. Dopo aver costruito un'istanza della classe nativa, il callback deve chiamare `napi_wrap()` per eseguire il wrapping dell'istanza appena costruita nel JavaScript object già creato ovvero l'argomento `this` del callback del constructor. (Quel `this` object è stato creato dal `prototype` della funzione constructor, quindi ha già le definizioni di tutte le proprietà e i metodi dell'istanza.)
 
-Typically when wrapping a class instance, a finalize callback should be provided that simply deletes the native instance that is received as the `data` argument to the finalize callback.
+In genere, quando si esegue il wrapping di un'istanza di classe, è necessario fornire un callback finalizzato che elimina semplicemente l'istanza nativa ricevuta come argomento `data` sul callback finalizzato.
 
 The optional returned reference is initially a weak reference, meaning it has a reference count of 0. Typically this reference count would be incremented temporarily during async operations that require the instance to remain valid.
 
