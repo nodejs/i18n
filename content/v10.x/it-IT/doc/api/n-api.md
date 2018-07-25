@@ -117,7 +117,7 @@ typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 
 #### napi_finalize
 
-Tipo di funzione puntatore per funzioni aggiuntive fornite che consente all'utente di essere avvisato quando i dati di proprietà esterna sono pronti per essere puliti poichè l'oggetto con cui è stato associato è stato sottoposto alla garbage collection. The user must provide a function satisfying the following signature which would get called upon the object's collection. Currently, `napi_finalize` can be used for finding out when objects that have external data are collected.
+Tipo di funzione puntatore per funzioni aggiuntive fornite che consente all'utente di essere avvisato quando i dati di proprietà esterna sono pronti per essere puliti poichè l'oggetto con cui è stato associato è stato sottoposto alla garbage collection. L'utente deve fornire una funzione che soddisfi la seguente dicitura che verrebbe chiamata sulla collection dell'object. Al momento, `napi_finalize` può essere utilizzato per scoprire quando avviene la collection di objects con dati esterni.
 
 ```C
 typedef void (*napi_finalize)(napi_env env,
@@ -157,7 +157,7 @@ Nei casi in cui viene restituito un valore return diverso da `napi_ok` o `napi_p
 
 Il set completo di possibili valori `napi_status` è definito in `napi_api_types.h`.
 
-Il valore return `napi_status` fornisce una rappresentazione indipendente dell'errore verificatosi da parte della VM. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
+Il valore return `napi_status` fornisce una rappresentazione indipendente dell'errore verificatosi da parte della VM. In alcuni casi è utile essere in grado di ottenere informazioni più dettagliate, includendo una stringa che rappresenta l'errore e le informazioni specifiche della VM (engine).
 
 Per recuperare queste informazioni viene fornito [`napi_get_last_error_info`][] che restituisce una struttura `napi_extended_error_info`. Il formato della struttura `napi_extended_error_info` è il seguente:
 
@@ -2857,7 +2857,7 @@ napi_status napi_wrap(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-Wraps a native instance in a JavaScript object. The native instance can be retrieved later using `napi_unwrap()`.
+Esegue il wrapping di un'istanza nativa in un JavaScript object. The native instance can be retrieved later using `napi_unwrap()`.
 
 When JavaScript code invokes a constructor for a class that was defined using `napi_define_class()`, the `napi_callback` for the constructor is invoked. After constructing an instance of the native class, the callback must then call `napi_wrap()` to wrap the newly constructed instance in the already-created JavaScript object that is the `this` argument to the constructor callback. (That `this` object was created from the constructor function's `prototype`, so it already has definitions of all the instance properties and methods.)
 
