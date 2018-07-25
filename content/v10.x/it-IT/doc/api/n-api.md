@@ -2891,7 +2891,7 @@ Restituisce `napi_ok` se l'API ha esito positivo.
 
 Recupera un'istanza nativa che ha precedentemente subito il wrapping in un JavaScript object utilizzando `napi_wrap()`.
 
-Quando il codice JavaScript invoca un metodo od una property accessor sulla classe, viene invocato il corrispondente `napi_callback`. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
+Quando il codice JavaScript invoca un metodo od una property accessor sulla classe, viene invocato il corrispondente `napi_callback`. Se il callback è per un metodo od un accessor di istanza, allora l'argomento `this` del callback è il wrapper object; l'istanza C++, che ha subito il wrapping ed è il target della chiamata, può essere ottenuta chiamando `napi_unwrap()` sul wrapper object.
 
 ### napi_remove_wrap
 
@@ -2905,13 +2905,13 @@ napi_status napi_remove_wrap(napi_env env,
                              void** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The object associated with the native instance.
-- `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] js_object`: L'object associato all'istanza nativa.
+- `[out] result`: Puntatore all'istanza nativa che ha subito il wrapping.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-Retrieves a native instance that was previously wrapped in the JavaScript object `js_object` using `napi_wrap()` and removes the wrapping, thereby restoring the JavaScript object's prototype chain. If a finalize callback was associated with the wrapping, it will no longer be called when the JavaScript object becomes garbage-collected.
+Recupera un'istanza nativa che ha precedentemente subito il wrapping nel JavaScript object `js_object` utilizzando `napi_wrap()` e rimuove il wrapping, ripristinando in tal modo la prototype chain del JavaScript object. Se un callback finalizzato è stato associato al wrapping, non verrà più chiamato quando il JavaScript object subisce la garbage collection.
 
 ## Simple Asynchronous Operations
 
