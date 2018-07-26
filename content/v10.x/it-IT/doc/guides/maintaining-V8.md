@@ -12,11 +12,11 @@ V8 e Chromium seguono una [cadenza di rilascio delle nuove versioni di circa 6 s
 
 Ad esempio, al momento della stesura di questo documento:
 
-* **Stable**: V8 5.4 è attualmente disponibile come parte di Chromium stable. Questo branch è stato creato circa 6 settimane prima che V8 5.3 è sia stato spedito come stable.
-* **Beta**: V8 5.5 è attualmente in versione beta. It will be promoted to stable next; approximately 6 weeks after V8 5.4 shipped as stable.
-* **Master**: V8 tip-of-tree corresponds to V8 5.6. This branch gets regularly released as part of the Chromium **canary** builds. This branch will be promoted to beta next when V8 5.5 ships as stable.
+* **Stable**: V8 5.4 è attualmente disponibile come parte di Chromium stable. Questo branch è stato creato circa 6 settimane prima che V8 5.3 sia stato spedito come stable.
+* **Beta**: V8 5.5 è attualmente in versione beta. Sarà promosso a stable in seguito; circa 6 settimane dopo che V8 5.4 sia stato spedito come stable.
+* **Master**: La V8 tip-of-tree corrisponde a V8 5.6. Questo branch viene regolarmente rilasciato come parte delle **canary** builds di Chromium. Questo branch verrà promosso in versione beta quando V8 5.5 verrà spedito come stable.
 
-All older branches are abandoned and are not maintained by the V8 team.
+Tutti i branch più vecchi vengono abbandonati e non vengono gestiti dal team di V8.
 
 ### V8 merge process overview
 
