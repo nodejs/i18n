@@ -163,10 +163,10 @@ Se il bug esiste in uno dei branch attivi di V8, potremmo aver bisogno della cor
 I branch abbandonati di V8 sono supportati nel repository di Node.js. La correzione deve essere selezionata in modo accurato nel repository di Node.js e V8-CI deve testare la modifica.
 
 * Per ogni branch abbandonato di V8 corrispondente ad un branch LTS colpito dal bug: 
-  * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
-  * Cherry-pick the commit(s) from the V8 repository.
-  * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. This will not cause any problems with versioning because V8 will not publish other patches for this branch, so Node.js can effectively bump the patch version.
-  * On Node.js >= 9.0.0: Increase the `v8_embedder_string` number in `common.gypi`.
+  * Esegui il checkout di un branch fuori dall'appropriato branch *vY.x-staging* (es. *v6.x-staging* per correggere un problema in V8 5.1).
+  * Seleziona accuratamente il(i) commit(s) dal repository di V8.
+  * Su Node.js < 9.0.0: Aumenta la versione a livello di patch in `v8-version.h`. Questo non causerà alcun problema con il controllo delle versioni perché V8 non pubblicherà altre patch per questo branch, quindi Node.js può effettivamente eseguire il bump della versione della patch.
+  * Su Node.js >= 9.0.0: Aumenta il numero di `v8_embedder_string` in `common.gypi`.
   * In some cases the patch may require extra effort to merge in case V8 has changed substantially. For important issues we may be able to lean on the V8 team to get help with reimplementing the patch.
   * Open a cherry-pick PR on `nodejs/node` targeting the *vY.x-staging* branch and notify the `@nodejs/v8` team.
   * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). Note: The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
