@@ -144,7 +144,7 @@ Se il bug può essere riprodotto sul [branch Node.js `canary`], sul Chromium can
 
 ### Backporting ai Branch Attivi
 
-If the bug exists in any of the active V8 branches, we may need to get the fix backported. At any given time there are [two active branches](https://build.chromium.org/p/client.v8.branches/console) (beta and stable) in addition to master. The following steps are needed to backport the fix:
+Se il bug esiste in uno dei branch attivi di V8, potremmo aver bisogno della correzione che ha subito il backport. In qualsiasi momento ci sono [due branch attivi](https://build.chromium.org/p/client.v8.branches/console) (beta e stable) oltre al master. I passaggi seguenti sono necessari per eseguire il backport della correzione:
 
 * Identify which version of V8 the bug was fixed in.
 * Identify if any active V8 branches still contain the bug:
