@@ -6,7 +6,7 @@ V8 segue il programma di rilascio di Chromium. Il fronte di supporto per Chromiu
 
 Questo documento tenta di delineare gli attuali processi di manutenzione, propone un workflow per il mantenimento dei branch di V8 sia in Node.js LTS sia nelle versioni attuali, e discute su come i team di Node.js e V8 possono aiutare su Google.
 
-## V8 Release Schedule
+## Programma di rilascio di V8
 
 V8 and Chromium follow a [roughly 6-week release cadence](https://www.chromium.org/developers/calendar). At any given time there are three V8 branches that are **active**.
 
