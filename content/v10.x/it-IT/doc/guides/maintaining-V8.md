@@ -31,77 +31,77 @@ Il processo per il backporting delle correzioni dei bug ai branch attivi è uffi
 
 ## Requisiti di Supporto di Node.js
 
-At any given time Node.js needs to be maintaining a few different V8 branches for the various Current, LTS, and nightly releases. At present this list includes the following branches<sup>1</sup>:
+In qualsiasi momento, Node.js deve mantenere alcuni diversi branch di V8 per le varie versioni Attuale, LTS e nightly. Attualmente questo elenco include i seguenti branch<sup>1</sup>:
 
 <table>
   <tr>
-   <td><strong>Release</strong>
+   <td><strong>Rilascio</strong>
    </td>
-   <td><strong>Support Start</strong>
+   <td><strong>Inizio Supporto</strong>
    </td>
-   <td><strong>Support End</strong>
+   <td><strong>Fine Supporto</strong>
    </td>
-   <td><strong>V8 version</strong>
+   <td><strong>Versione V8</strong>
    </td>
-   <td><strong>V8 branch released</strong>
+   <td><strong>Branch V8 rilasciato</strong>
    </td>
-   <td><strong>V8 branch abandoned</strong>
+   <td><strong>Branch V8 abbandonato</strong>
    </td>
   </tr>
   <tr>
    <td>Node.js 4.x
    </td>
-   <td>2015-10-01
+   <td>01-10-2015
    </td>
-   <td>April 2018
+   <td>Aprile 2018
    </td>
    <td>4.5
    </td>
-   <td>2015-09-01
+   <td>01-09-2015
    </td>
-   <td>2015-10-13
+   <td>13-10-2015
    </td>
   </tr>
   <tr>
    <td>Node.js 6.x
    </td>
-   <td>2016-04-01
+   <td>01-04-2016
    </td>
-   <td>April 2019
+   <td>Aprile 2019
    </td>
    <td>5.1
    </td>
-   <td>2016-05-31
+   <td>31-05-2016
    </td>
-   <td>2016-06-26
+   <td>26-06-2016
    </td>
   </tr>
   <tr>
    <td>Node.js 8.x
    </td>
-   <td>2017-05-30
+   <td>30-05-2017
    </td>
-   <td>December 2019
+   <td>Dicembre 2019
    </td>
-   <td>6.1 (soon to be 6.2)
+   <td>6.1 (a breve 6.2)
    </td>
-   <td>2017-10-17 (6.2)
+   <td>17-10-2017 (6.2)
    </td>
-   <td>~2017-12-05 (6.2)
+   <td>~05-12-2017 (6.2)
    </td>
   </tr>
     <tr>
    <td>Node.js 9.x
    </td>
-   <td>2017-10-31
+   <td>31-10-2017
    </td>
-   <td>April 2018
+   <td>Aprile 2018
    </td>
    <td>6.2
    </td>
-   <td>2017-10-17
+   <td>17-10-2017
    </td>
-   <td>~2017-12-05
+   <td>~05-12-2017
    </td>
   </tr>
   <tr>
@@ -113,14 +113,14 @@ At any given time Node.js needs to be maintaining a few different V8 branches fo
    </td>
    <td>6.2
    </td>
-   <td>2017-10-17
+   <td>17-10-2017
    </td>
-   <td>~2017-12-05
+   <td>~05-12-2017
    </td>
   </tr>
 </table>
 
-The versions of V8 used in Node.js v4.x, v6.x, and 8.x have already been abandoned by upstream V8. However, Node.js needs to continue supporting these branches for many months (Current branches) or several years (LTS branches).
+Le versioni di V8 utilizzate in Node.js v4.x, v6.x e 8.x sono già state abbandonate dall'upstream V8. However, Node.js needs to continue supporting these branches for many months (Current branches) or several years (LTS branches).
 
 ## Maintenance Process
 
