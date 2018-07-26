@@ -154,15 +154,15 @@ Se il bug esiste in uno dei branch attivi di V8, potremmo aver bisogno della cor
     * Aggiungi un riferimento al problema GitHub.
     * Allega le etichette *merge-request-x.x* al bug per eventuali branch attivi che lo contengono ancora. (es. merge-request-5.3, merge-request-5.4)
     * Aggiungi ofrobots-at-google.com alla cc list.
-* Una volta che l'unione è stata approvata, deve essere inserita usando lo [script di unione documentato nel wiki di V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). L'unione richiede l'accesso di commit al repository di V8. If you don't have commit access you can indicate someone on the V8 team can do the merge for you.
-* It is possible that the merge request may not get approved, for example if it is considered to be a feature or otherwise too risky for V8 stable. In such cases we float the patch on the Node.js side. See the process on 'Backporting to Abandoned branches'.
-* Once the fix has been merged upstream, it can be picked up during an update of the V8 branch (see below).
+* Una volta che l'unione è stata approvata, deve essere inserita usando lo [script di unione documentato nel wiki di V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). L'unione richiede l'accesso di commit al repository di V8. Se non hai accesso al commit, puoi indicare qualcuno del team di V8 che possa fare l'unione per te.
+* È possibile che la richiesta di unione non venga approvata, ad esempio se è considerata come una funzionalità o qualsiasi cosa troppo rischiosa per V8 stable. In questi casi, la patch viene spostata su Node.js. Vedi il processo su 'Backporting ai Branch Abbandonati'.
+* Una volta che la correzione è stata unita in modo upstream, può essere rilevata durante un aggiornamento del branch di V8 (vedi sotto).
 
-### Backporting to Abandoned Branches
+### Backporting ai Branch Abbandonati
 
-Abandoned V8 branches are supported in the Node.js repository. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
+I branch abbandonati di V8 sono supportati nel repository di Node.js. La correzione deve essere selezionata in modo accurato nel repository di Node.js e V8-CI deve testare la modifica.
 
-* For each abandoned V8 branch corresponding to an LTS branch that is affected by the bug: 
+* Per ogni branch abbandonato di V8 corrispondente ad un branch LTS colpito dal bug: 
   * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
   * Cherry-pick the commit(s) from the V8 repository.
   * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. This will not cause any problems with versioning because V8 will not publish other patches for this branch, so Node.js can effectively bump the patch version.
