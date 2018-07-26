@@ -3102,7 +3102,7 @@ napi_status napi_make_callback(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] async_context`: Context per l'operazione asincrona che invoca il callback. Questo dovrebbe normalmente essere un valore precedentemente ottenuto da [`napi_async_init`][]. Tuttavia è consentito anche `NULL`, che indica che l'async context corrente (se presente) deve essere utilizzato per il callback.
+- `[in] async_context`: Context per l'operazione asincrona che sta invocando il callback. Questo dovrebbe normalmente essere un valore precedentemente ottenuto da [`napi_async_init`][]. Tuttavia è consentito anche `NULL`, che indica che l'async context corrente (se presente) deve essere utilizzato per il callback.
 - `[in] recv`: L'object `this` è passato alla funzione chiamata.
 - `[in] func`: `napi_value` che rappresenta la funzione JavaScript da invocare.
 - `[in] argc`: Il count degli elementi nell'array `argv`.
@@ -3128,12 +3128,12 @@ NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env,
                                                  napi_callback_scope* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] resource_object`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] context`: Context for the async operation that is invoking the callback. This should be a value previously obtained from [`napi_async_init`][].
-- `[out] result`: The newly created scope.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] resource_object`: Un object facoltativo associato all'async work che verrà passato a possibili `async_hooks` [`init` hooks][].
+- `[in] context`: Context per l'operazione asincrona che sta invocando il callback. Questo dovrebbe essere un valore precedentemente ottenuto da [`napi_async_init`][].
+- `[out] result`: Lo scope appena creato.
 
-There are cases (for example resolving promises) where it is necessary to have the equivalent of the scope associated with a callback in place when making certain N-API calls. If there is no other script on the stack the [`napi_open_callback_scope`][] and [`napi_close_callback_scope`][] functions can be used to open/close the required scope.
+Ci sono casi (ad esempio, la risoluzione di promise) in cui è necessario avere l'equivalente dello scope associato ad un callback nel momento in cui si effettuano determinate N-API calls. If there is no other script on the stack the [`napi_open_callback_scope`][] and [`napi_close_callback_scope`][] functions can be used to open/close the required scope.
 
 ### napi_close_callback_scope
 
