@@ -8,9 +8,9 @@ Questo documento tenta di delineare gli attuali processi di manutenzione, propon
 
 ## Programma di rilascio di V8
 
-V8 and Chromium follow a [roughly 6-week release cadence](https://www.chromium.org/developers/calendar). At any given time there are three V8 branches that are **active**.
+V8 e Chromium seguono una [cadenza di rilascio delle nuove versioni di circa 6 settimane](https://www.chromium.org/developers/calendar). In qualsiasi momento ci sono tre branch V8 che sono **active**.
 
-For example, at the time of this writing:
+Ad esempio, al momento della stesura di questo documento:
 
 * **Stable**: V8 5.4 is currently shipping as part of Chromium stable. This branch was created approx. 6 weeks before from when V8 5.3 shipped as stable.
 * **Beta**: V8 5.5 is currently in beta. It will be promoted to stable next; approximately 6 weeks after V8 5.4 shipped as stable.
