@@ -3231,27 +3231,27 @@ Questa funzione fornisce a V8 un'indicazione della quantità di memoria allocata
 
 ## Promises
 
-N-API fornisce agevolazioni per la creazione di `Promise` objects come descritto nella [Section 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) dell'ECMA specification. Implementa i promise come una coppia di objects. When a promise is created by `napi_create_promise()`, a "deferred" object is created and returned alongside the `Promise`. The deferred object is bound to the created `Promise` and is the only means to resolve or reject the `Promise` using `napi_resolve_deferred()` or `napi_reject_deferred()`. The deferred object that is created by `napi_create_promise()` is freed by `napi_resolve_deferred()` or `napi_reject_deferred()`. The `Promise` object may be returned to JavaScript where it can be used in the usual fashion.
+N-API fornisce agevolazioni per la creazione di `Promise` objects come descritto nella [Section 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) dell'ECMA specification. Implementa i promise come una coppia di objects. Quando un promise viene creato da `napi_create_promise()`, un "deferred" object (object differito) viene creato e restituito affianco a `Promise`. Il deferred object è associato al `Promise` creato ed è l'unico mezzo per risolvere o rifiutare il `Promise` utilizzando `napi_resolve_deferred()` oppure `napi_reject_deferred()`. Il deferred object creato da `napi_create_promise()` è liberato da `napi_resolve_deferred()` oppure `napi_reject_deferred()`. Il `Promise` object può essere restituito a JavaScript dove può essere usato nel modo più consueto.
 
-For example, to create a promise and pass it to an asynchronous worker:
+Ad esempio, per creare un promise e passarlo ad un worker asincrono:
 
 ```c
 napi_deferred deferred;
 napi_value promise;
 napi_status status;
 
-// Create the promise.
+// Crea il promise.
 status = napi_create_promise(env, &deferred, &promise);
 if (status != napi_ok) return NULL;
 
-// Pass the deferred to a function that performs an asynchronous action.
+// Passa il deferred ad una funzione che esegue un'azione asincrona.
 do_something_asynchronous(deferred);
 
-// Return the promise to JS
+// Restituisce il promise a JS
 return promise;
 ```
 
-The above function `do_something_asynchronous()` would perform its asynchronous action and then it would resolve or reject the deferred, thereby concluding the promise and freeing the deferred:
+La funzione `do_something_asynchronous()` qui sopra eseguirebbe la sua azione asincrona e quindi risolverebbe o rifiuterebbe il deferred, concludendo così il promise e liberando il deferred:
 
 ```c
 napi_deferred deferred;
