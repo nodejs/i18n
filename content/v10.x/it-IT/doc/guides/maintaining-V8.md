@@ -18,7 +18,7 @@ Ad esempio, al momento della stesura di questo documento:
 
 Tutti i branch più vecchi vengono abbandonati e non vengono gestiti dal team di V8.
 
-### V8 merge process overview
+### Panoramica del processo di unione di V8
 
 The process for backporting bug fixes to active branches is officially documented [on the V8 wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). The summary of the process is:
 
