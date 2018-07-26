@@ -153,8 +153,8 @@ Se il bug esiste in uno dei branch attivi di V8, potremmo aver bisogno della cor
   * Se un bug esiste già 
     * Aggiungi un riferimento al problema GitHub.
     * Allega le etichette *merge-request-x.x* al bug per eventuali branch attivi che lo contengono ancora. (es. merge-request-5.3, merge-request-5.4)
-    * Add ofrobots-at-google.com to the cc list.
-* Once the merge has been approved, it should be merged using the [merge script documented in the V8 wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Merging requires commit access to the V8 repository. If you don't have commit access you can indicate someone on the V8 team can do the merge for you.
+    * Aggiungi ofrobots-at-google.com alla cc list.
+* Una volta che l'unione è stata approvata, deve essere inserita usando lo [script di unione documentato nel wiki di V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). L'unione richiede l'accesso di commit al repository di V8. If you don't have commit access you can indicate someone on the V8 team can do the merge for you.
 * It is possible that the merge request may not get approved, for example if it is considered to be a feature or otherwise too risky for V8 stable. In such cases we float the patch on the Node.js side. See the process on 'Backporting to Abandoned branches'.
 * Once the fix has been merged upstream, it can be picked up during an update of the V8 branch (see below).
 
