@@ -3308,12 +3308,12 @@ napi_status napi_resolve_deferred(napi_env env,
 ```
 
 - `[in] env`: L'ambiente in cui viene invocata l'API.
-- `[in] deferred`: The deferred object whose associated promise to resolve.
-- `[in] resolution`: The value with which to resolve the promise.
+- `[in] deferred`: Il deferred object del quale bisogna risolvere il promise associato.
+- `[in] resolution`: Il valore con cui risolvere il promise.
 
-This API resolves a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to resolve JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
+Quest'API risolve un JavaScript promise tramite il deferred object a cui è associato. Pertanto, può essere utilizzata solo per risolvere i JavaScript promise per i quali è disponibile il corrispondente deferred object. Ciò significa in effetti che il promise dev'essere stato creato utilizzando `napi_create_promise()` e che il deferred object restituito da tale chiamata dev'essere stato mantenuto per essere passato a quest'API.
 
-The deferred object is freed upon successful completion.
+Il deferred object viene liberato al completamento avvenuto con successo.
 
 ### napi_reject_deferred
 
@@ -3327,11 +3327,11 @@ napi_status napi_reject_deferred(napi_env env,
                                  napi_value rejection);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] deferred`: The deferred object whose associated promise to resolve.
-- `[in] rejection`: The value with which to reject the promise.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] deferred`: Il deferred object del quale bisogna risolvere il promise associato.
+- `[in] rejection`: Il valore con cui rifiutare il promise.
 
-This API rejects a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to reject JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
+Quest'API rifiuta un JavaScript promise tramite il deferred object a cui è associato. Thus, it can only be used to reject JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
 
 The deferred object is freed upon successful completion.
 
