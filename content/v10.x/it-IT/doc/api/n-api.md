@@ -3331,9 +3331,9 @@ napi_status napi_reject_deferred(napi_env env,
 - `[in] deferred`: Il deferred object del quale bisogna risolvere il promise associato.
 - `[in] rejection`: Il valore con cui rifiutare il promise.
 
-Quest'API rifiuta un JavaScript promise tramite il deferred object a cui è associato. Thus, it can only be used to reject JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
+Quest'API rifiuta un JavaScript promise tramite il deferred object a cui è associato. Pertanto, può essere utilizzata solo per rifiutare i JavaScript promise per i quali è disponibile il corrispondente deferred object. Ciò significa in effetti che il promise dev'essere stato creato utilizzando `napi_create_promise()` e che il deferred object restituito da tale chiamata dev'essere stato mantenuto per essere passato a quest'API.
 
-The deferred object is freed upon successful completion.
+Il deferred object viene liberato al completamento avvenuto con successo.
 
 ### napi_is_promise
 
@@ -3347,13 +3347,13 @@ napi_status napi_is_promise(napi_env env,
                             bool* is_promise);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] promise`: The promise to examine
-- `[out] is_promise`: Flag indicating whether `promise` is a native promise object - that is, a promise object created by the underlying engine.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] promise`: Il promise da esaminare
+- `[out] is_promise`: Flag che indica se `promise` è un promise object nativo - ovvero un promise object creato dall'engine sottostante.
 
 ## Script execution
 
-N-API provides an API for executing a string containing JavaScript using the underlying JavaScript engine.
+N-API fornisce un'API per l'esecuzione di una stringa contenente JavaScript utilizzando il JavaScript engine sottostante.
 
 ### napi_run_script
 
@@ -3367,13 +3367,13 @@ NAPI_EXTERN napi_status napi_run_script(napi_env env,
                                         napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] script`: A JavaScript string containing the script to execute.
-- `[out] result`: The value resulting from having executed the script.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] script`: Una stringa JavaScript contenente lo script da eseguire.
+- `[out] result`: Il valore risultante dell'aver eseguito lo script.
 
 ## libuv event loop
 
-N-API provides a function for getting the current event loop associated with a specific `napi_env`.
+N-API fornisce una funzione per ottenere l'attuale event loop associato ad uno specifico `napi_env`.
 
 ### napi_get_uv_event_loop
 
@@ -3386,5 +3386,5 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
                                                uv_loop_t** loop);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] loop`: The current libuv loop instance.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] loop`: L'attuale istanza del libuv loop.
