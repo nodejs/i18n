@@ -23,13 +23,13 @@ Tutti i branch più vecchi vengono abbandonati e non vengono gestiti dal team di
 Il processo per il backporting delle correzioni dei bug ai branch attivi è ufficialmente documentato [sul wiki di V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Il riepilogo del processo è:
 
 * V8 supporta solo branch attivi. Non è stato effettuato alcun test sui branch più vecchi dell'attuale stable/beta/master.
-* Una correzione che richiede il backport è taggata con il tag *merge-request-x.x*. Questo può essere fatto da chiunque sia interessato ad ottenere la correzione del backport. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
-* Fixes need some 'baking time' before they can be approved for backporting. This means waiting a few days to ensure that no issues are detected on the canary/beta builds.
-* Once ready, the issue is tagged w/ *merge-approved-x.x* and one can do the actual merge by using the scripts on the [wiki page](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
-* Merge requests to an abandoned branch will be rejected.
-* Only bug fixes are accepted for backporting.
+* Una correzione che richiede il backport è taggata con il tag *merge-request-x.x*. Questo può essere fatto da chiunque sia interessato ad ottenere la correzione del backport. I problemi con questo tag vengono regolarmente esaminati dal team di V8 come candidati per il backporting.
+* Le correzioni richiedono un po di 'tempo di cottura' ('baking time') prima che possano essere approvate per il backport. Ciò significa attendere alcuni giorni per garantire che non vengano rilevati problemi nelle builds canary/beta.
+* Una volta pronto, il problema viene contrassegnato con *merge-approved-x.x* ed uno può eseguire l'unione effettiva utilizzando gli script sulla [pagina wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
+* Le richieste di unione ad un branch abbandonato verranno rifiutate.
+* Sono accettate solo le correzioni di bug per il backporting.
 
-## Node.js Support Requirements
+## Requisiti di Supporto di Node.js
 
 At any given time Node.js needs to be maintaining a few different V8 branches for the various Current, LTS, and nightly releases. At present this list includes the following branches<sup>1</sup>:
 
