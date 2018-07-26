@@ -3258,12 +3258,12 @@ napi_deferred deferred;
 napi_value undefined;
 napi_status status;
 
-// Create a value with which to conclude the deferred.
+// Crea un valore con cui concludere il deferred.
 status = napi_get_undefined(env, &undefined);
 if (status != napi_ok) return NULL;
 
-// Resolve or reject the promise associated with the deferred depending on
-// whether the asynchronous action succeeded.
+// Risolve o rifiuta il promise associato al deferred dipendendo
+// dal successo dell'azione asincrona.
 if (asynchronous_action_succeeded) {
   status = napi_resolve_deferred(env, deferred, undefined);
 } else {
@@ -3271,7 +3271,7 @@ if (asynchronous_action_succeeded) {
 }
 if (status != napi_ok) return NULL;
 
-// At this point the deferred has been freed, so we should assign NULL to it.
+// A questo punto il deferred è stato liberato, quindi dovremmo assegnargli NULL.
 deferred = NULL;
 ```
 
@@ -3287,13 +3287,13 @@ napi_status napi_create_promise(napi_env env,
                                 napi_value* promise);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] deferred`: A newly created deferred object which can later be passed to `napi_resolve_deferred()` or `napi_reject_deferred()` to resolve resp. reject the associated promise.
-- `[out] promise`: The JavaScript promise associated with the deferred object.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] deferred`: Un deferred object appena creato che in seguito può essere passato a `napi_resolve_deferred()` oppure `napi_reject_deferred()` per risolvere resp. rifiuta il promise associato.
+- `[out] promise`: Il JavaScript promise associato con il deferred object.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API creates a deferred object and a JavaScript promise.
+Quest'API crea un deferred object ed un JavaScript promise.
 
 ### napi_resolve_deferred
 
@@ -3307,7 +3307,7 @@ napi_status napi_resolve_deferred(napi_env env,
                                   napi_value resolution);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
 - `[in] deferred`: The deferred object whose associated promise to resolve.
 - `[in] resolution`: The value with which to resolve the promise.
 
