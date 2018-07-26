@@ -140,9 +140,9 @@ Se il bug può essere riprodotto sul [branch Node.js `canary`], sul Chromium can
 * Assicurati di includere un collegamento al problema Node.js corrispondente (se ne esiste uno).
 * Se la correzione è abbastanza semplice, puoi correggerla tu stesso; le [contributions](https://github.com/v8/v8/wiki/Contributing) sono le benvenute.
 * Il "build waterfall" di V8 mette alla prova le tue modifiche.
-* Una volta risolto il bug, potrebbe essere necessario il backporting, se esiste in altri branch di V8 che sono ancora attivi o che sono interessati a Node.js. Follow the process for backporting below.
+* Una volta risolto il bug, potrebbe essere necessario il backporting, se esiste in altri branch di V8 che sono ancora attivi o che sono interessati a Node.js. Segui la procedura per il backporting qui sotto.
 
-### Backporting to Active Branches
+### Backporting ai Branch Attivi
 
 If the bug exists in any of the active V8 branches, we may need to get the fix backported. At any given time there are [two active branches](https://build.chromium.org/p/client.v8.branches/console) (beta and stable) in addition to master. The following steps are needed to backport the fix:
 
