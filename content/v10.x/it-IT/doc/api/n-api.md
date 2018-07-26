@@ -3201,9 +3201,9 @@ Quest'API restituisce la versione N-API più recente supportata dal runtime Node
 - Chiama `napi_get_version()` per determinare se l'API è disponibile.
 - Se disponibile, carica in modo dinamico un puntatore alla funzione usando `uv_dlsym()`.
 - Usa il puntatore caricato in modo dinamico per invocare la funzione.
-- If the function is not available, provide an alternate implementation that does not use the function.
+- Se la funzione non è disponibile, fornisci un'implementazione alternativa che non utilizza la funzione.
 
-## Memory Management
+## Gestione della Memoria
 
 ### napi_adjust_external_memory
 
@@ -3217,13 +3217,13 @@ NAPI_EXTERN napi_status napi_adjust_external_memory(napi_env env,
                                                     int64_t* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] change_in_bytes`: The change in externally allocated memory that is kept alive by JavaScript objects.
-- `[out] result`: The adjusted value
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] change_in_bytes`: La modifica nella memoria allocata esternamente che viene mantenuta attiva dagli JavaScript objects.
+- `[out] result`: Il valore regolato
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This function gives V8 an indication of the amount of externally allocated memory that is kept alive by JavaScript objects (i.e. a JavaScript object that points to its own memory allocated by a native module). Registering externally allocated memory will trigger global garbage collections more often than it would otherwise.
+Questa funzione fornisce a V8 un'indicazione della quantità di memoria allocata esternamente che viene mantenuta attiva dagli JavaScript objects (es. un JavaScript object che punta alla propria memoria allocata da un modulo nativo). La registrazione di memoria allocata esternamente attiverà le garbage collection globali più spesso di quanto non farebbe altrimenti.
 
 <!-- it's very convenient to have all the anchors indexed -->
 
@@ -3231,7 +3231,7 @@ This function gives V8 an indication of the amount of externally allocated memor
 
 ## Promises
 
-N-API provides facilities for creating `Promise` objects as described in [Section 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) of the ECMA specification. It implements promises as a pair of objects. When a promise is created by `napi_create_promise()`, a "deferred" object is created and returned alongside the `Promise`. The deferred object is bound to the created `Promise` and is the only means to resolve or reject the `Promise` using `napi_resolve_deferred()` or `napi_reject_deferred()`. The deferred object that is created by `napi_create_promise()` is freed by `napi_resolve_deferred()` or `napi_reject_deferred()`. The `Promise` object may be returned to JavaScript where it can be used in the usual fashion.
+N-API fornisce agevolazioni per la creazione di `Promise` objects come descritto nella [Section 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) dell'ECMA specification. Implementa i promise come una coppia di objects. When a promise is created by `napi_create_promise()`, a "deferred" object is created and returned alongside the `Promise`. The deferred object is bound to the created `Promise` and is the only means to resolve or reject the `Promise` using `napi_resolve_deferred()` or `napi_reject_deferred()`. The deferred object that is created by `napi_create_promise()` is freed by `napi_resolve_deferred()` or `napi_reject_deferred()`. The `Promise` object may be returned to JavaScript where it can be used in the usual fashion.
 
 For example, to create a promise and pass it to an asynchronous worker:
 
