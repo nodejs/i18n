@@ -3133,7 +3133,7 @@ NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env,
 - `[in] context`: Context per l'operazione asincrona che sta invocando il callback. Questo dovrebbe essere un valore precedentemente ottenuto da [`napi_async_init`][].
 - `[out] result`: Lo scope appena creato.
 
-Ci sono casi (ad esempio, la risoluzione di promise) in cui è necessario avere l'equivalente dello scope associato ad un callback nel momento in cui si effettuano determinate N-API calls. If there is no other script on the stack the [`napi_open_callback_scope`][] and [`napi_close_callback_scope`][] functions can be used to open/close the required scope.
+Ci sono casi (ad esempio, la risoluzione di promise) in cui è necessario avere l'equivalente dello scope associato ad un callback nel momento in cui si effettuano determinate N-API calls. Se non ci sono altri script nello stack, le funzioni [`napi_open_callback_scope`][] e [`napi_close_callback_scope`][] possono essere utilizzate per aprire/chiudere lo scope richiesto.
 
 ### napi_close_callback_scope
 
@@ -3146,12 +3146,12 @@ NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env,
                                                   napi_callback_scope scope)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: The scope to be closed.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[in] scope`: Lo scope da chiudere.
 
-This API can be called even if there is a pending JavaScript exception.
+Quest'API può essere chiamata anche se è presente un'eccezione JavaScript in sospeso.
 
-## Version Management
+## Gestione delle Versioni
 
 ### napi_get_node_version
 
@@ -3171,14 +3171,14 @@ napi_status napi_get_node_version(napi_env env,
                                   const napi_node_version** version);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] version`: A pointer to version information for Node.js itself.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] version`: Un puntatore alle informazioni della versione per Node.js stesso.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
-This function fills the `version` struct with the major, minor, and patch version of Node.js that is currently running, and the `release` field with the value of [`process.release.name`][`process.release`].
+Questa funzione riempie la struttura `version` con la versione principale, quella meno importante e la versione patch di Node.js attualmente in esecuzione, ed il campo `release` con il valore di [`process.release.name`][`process.release`].
 
-The returned buffer is statically allocated and does not need to be freed.
+Il buffer restituito è allocato in modo statico e non è necessario liberarlo.
 
 ### napi_get_version
 
@@ -3191,10 +3191,10 @@ napi_status napi_get_version(napi_env env,
                              uint32_t* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The highest version of N-API supported.
+- `[in] env`: L'ambiente in cui viene invocata l'API.
+- `[out] result`: La versione di N-API più recente supportata.
 
-Returns `napi_ok` if the API succeeded.
+Restituisce `napi_ok` se l'API ha esito positivo.
 
 This API returns the highest N-API version supported by the Node.js runtime. N-API is planned to be additive such that newer releases of Node.js may support additional API functions. In order to allow an addon to use a newer function when running with versions of Node.js that support it, while providing fallback behavior when running with Node.js versions that don't support it:
 
