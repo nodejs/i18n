@@ -3196,11 +3196,11 @@ napi_status napi_get_version(napi_env env,
 
 Restituisce `napi_ok` se l'API ha esito positivo.
 
-This API returns the highest N-API version supported by the Node.js runtime. N-API is planned to be additive such that newer releases of Node.js may support additional API functions. In order to allow an addon to use a newer function when running with versions of Node.js that support it, while providing fallback behavior when running with Node.js versions that don't support it:
+Quest'API restituisce la versione N-API più recente supportata dal runtime Node.js. N-API è programmato per essere additivo in modo che le nuove release di Node.js possano supportare funzioni API aggiuntive. Per consentire ad un addon di utilizzare una funzione più recente quando è in esecuzione con versioni di Node.js che lo supportano, pur fornendo un comportamento di fallback durante l'esecuzione con versioni di Node.js che non lo supportano:
 
-- Call `napi_get_version()` to determine if the API is available.
-- If available, dynamically load a pointer to the function using `uv_dlsym()`.
-- Use the dynamically loaded pointer to invoke the function.
+- Chiama `napi_get_version()` per determinare se l'API è disponibile.
+- Se disponibile, carica in modo dinamico un puntatore alla funzione usando `uv_dlsym()`.
+- Usa il puntatore caricato in modo dinamico per invocare la funzione.
 - If the function is not available, provide an alternate implementation that does not use the function.
 
 ## Memory Management
