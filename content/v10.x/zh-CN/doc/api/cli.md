@@ -16,11 +16,11 @@ Node.js 提供了各式各样的 CLI 选项。 这些选项公开内置调试、
 
 `node --v8-options`
 
-Execute without arguments to start the [REPL](repl.html).
+不附加参数运行以启动 [REPL](repl.html)。
 
-*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
+*有关 `node debug` 的更多信息，请参阅 [调试器](debugger.html) 文档。*
 
-## Options
+## 选项
 
 ### `-`
 
@@ -28,7 +28,7 @@ Execute without arguments to start the [REPL](repl.html).
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+作为标准输入的别名，类似于在其他命令行实用程序中 - 的使用，意味着脚本会从标准输入被读取，且剩余的选项将会传递给该脚本。
 
 ### `--`
 
@@ -36,7 +36,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+表示 node 选项的结束。 将剩余的参数传递给脚本。 如果在此之前没有提供脚本文件名或 eval/打印脚本, 则下一个参数将用作脚本文件名。
 
 ### `--abort-on-uncaught-exception`
 
@@ -54,7 +54,7 @@ If this flag is passed, the behavior can still be set to not abort through [`pro
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
+启动时启用 FIPS 兼容的加密。 (Requires Node.js to be built with `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
