@@ -173,7 +173,7 @@ I branch abbandonati di V8 sono supportati nel repository di Node.js. La correzi
 
 Lo strumento [`update-v8`] può essere utilizzato per semplificare quest'attività. Esegui `update-v8 backport --sha=SHA` per selezionare accuratamente un commit.
 
-Un esempio per il workflow su come eseguire la scelta accurata considera che il bug [RegExp mostra risultati incoerenti con altri browser](https://crbug.com/v8/5199). From the bug we can see that it was merged by V8 into 5.2 and 5.3, and not into V8 5.1 (since it was already abandoned). Since Node.js `v6.x` uses V8 5.1, the fix needed to be cherry-picked. To cherry-pick, here's an example workflow:
+Un esempio per il workflow su come eseguire il cherry-pick (selezione accurata) considera che il bug [RegExp mostra risultati incoerenti con altri browser](https://crbug.com/v8/5199). Dal bug possiamo vedere che è stato unito da V8 all'interno di 5.2 e 5.3, e non all'interno di V8 5.1 (poiché era già stato abbandonato). Poiché Node.js `v6.x` utilizza V8 5.1, la correzione doveva subire il cherry-pick. To cherry-pick, here's an example workflow:
 
 * Download and apply the commit linked-to in the issue (in this case a51f429). `curl -L https://github.com/v8/v8/commit/a51f429.patch | git am -3
 --directory=deps/v8`. If the branches have diverged significantly, this may not apply cleanly. It may help to try to cherry-pick the merge to the oldest branch that was done upstream in V8. In this example, this would be the patch from the merge to 5.2. The hope is that this would be closer to the V8 5.1, and has a better chance of applying cleanly. If you're stuck, feel free to ping @ofrobots for help.
