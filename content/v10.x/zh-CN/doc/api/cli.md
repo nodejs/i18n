@@ -10,9 +10,9 @@ Node.js 提供了各式各样的 CLI 选项。 这些选项公开内置调试、
 
 ## 概要
 
-`node [选项] [V8 选项] [脚本文件 | -e "脚本" | -] [--] [参数]`
+`node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
-`node debug [脚本文件 | -e "脚本" | <宿主>:<端口>] …`
+`node debug [script.js | -e "script" | <host>:<port>] …`
 
 `node --v8-options`
 
@@ -54,7 +54,7 @@ If this flag is passed, the behavior can still be set to not abort through [`pro
 added: v6.0.0
 -->
 
-启动时启用 FIPS 兼容的加密。 (Requires Node.js to be built with `./configure --openssl-fips`.)
+启动时启用 FIPS 兼容的加密。 (需要使用 `./configure --openssl-fips` 构建 Node.js。)
 
 ### `--experimental-modules`
 
@@ -62,7 +62,7 @@ added: v6.0.0
 added: v8.5.0
 -->
 
-Enable experimental ES module support and caching modules.
+启用实验性 ES 模块支持和缓存模块。
 
 ### `--experimental-repl-await`
 
@@ -70,7 +70,7 @@ Enable experimental ES module support and caching modules.
 added: v10.0.0
 -->
 
-Enable experimental top-level `await` keyword support in REPL.
+在 REPL 中启用实验性顶级 `await` 关键字支持。
 
 ### `--experimental-vm-modules`
 
@@ -86,25 +86,25 @@ Enable experimental ES Module support in the `vm` module.
 added: v6.0.0
 -->
 
-Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
+启动时强制 FIPS 兼容的加密。 (不能从脚本代码中禁用。) (具有和 `--enable-fips` 相同的需求。)
 
-### `--icu-data-dir=file`
+### `--icu-data-dir=文件`
 
 <!-- YAML
 added: v0.11.15
 -->
 
-Specify ICU data load path. (Overrides `NODE_ICU_DATA`.)
+指定 ICU 数据加载路径。 (覆盖 `NODE_ICU_DATA`。)
 
-### `--inspect-brk[=[host:]port]`
+### `--inspect-brk[=[主机:]端口]`
 
 <!-- YAML
 added: v7.6.0
 -->
 
-Activate inspector on `host:port` and break at start of user script. Default `host:port` is `127.0.0.1:9229`.
+Activate inspector on `host:port` and break at start of user script. 默认的 `主机:端口` 是 `127.0.0.1:9229`。
 
-### `--inspect-port=[host:]port`
+### `--inspect-port=[主机:]端口`
 
 <!-- YAML
 added: v7.6.0
@@ -112,15 +112,15 @@ added: v7.6.0
 
 Set the `host:port` to be used when the inspector is activated. Useful when activating the inspector by sending the `SIGUSR1` signal.
 
-Default host is `127.0.0.1`.
+默认主机是 `127.0.0.1`。
 
-### `--inspect[=[host:]port]`
+### `--inspect[=[主机:]端口]`
 
 <!-- YAML
 added: v6.3.0
 -->
 
-Activate inspector on `host:port`. Default is `127.0.0.1:9229`.
+Activate inspector on `host:port`. 默认是 `127.0.0.1:9229`。
 
 V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
@@ -130,7 +130,7 @@ V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug 
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+这是一个空选项。 它为兼容性保留。
 
 ### `--no-deprecation`
 
@@ -138,7 +138,7 @@ This option is a no-op. It is kept for compatibility.
 added: v0.8.0
 -->
 
-Silence deprecation warnings.
+禁用弃用警告。
 
 ### `--no-force-async-hooks-checks`
 
@@ -146,7 +146,7 @@ Silence deprecation warnings.
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+禁用对 `async_hooks` 的运行时检测。 These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 
@@ -154,15 +154,15 @@ Disables runtime checks for `async_hooks`. These will still be enabled dynamical
 added: v6.0.0
 -->
 
-Silence all process warnings (including deprecations).
+禁用所有进程警告 (包括弃用)。
 
-### `--openssl-config=file`
+### `--openssl-config=文件`
 
 <!-- YAML
 added: v6.9.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+启动时加载一个 OpenSSL 配置文件。 Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 
@@ -170,7 +170,7 @@ Load an OpenSSL configuration file on startup. Among other uses, this can be use
 added: v8.0.0
 -->
 
-Emit pending deprecation warnings.
+发出待定的弃用警告。
 
 Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
@@ -210,7 +210,7 @@ added: v5.2.0
 
 Process V8 profiler output generated using the V8 option `--prof`.
 
-### `--redirect-warnings=file`
+### `--redirect-warnings=文件`
 
 <!-- YAML
 added: v8.0.0
@@ -224,9 +224,9 @@ Write process warnings to the given file instead of printing to stderr. The file
 added: v0.11.14
 -->
 
-Throw errors for deprecations.
+为弃用抛出错误。
 
-### `--tls-cipher-list=list`
+### `--tls-cipher-list=列表`
 
 <!-- YAML
 added: v4.0.0
