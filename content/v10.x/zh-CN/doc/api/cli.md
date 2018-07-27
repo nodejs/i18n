@@ -240,7 +240,7 @@ Specify an alternative default TLS cipher list. Requires Node.js to be built wit
 added: v0.8.0
 -->
 
-Print stack traces for deprecations.
+打印对弃用的堆栈追踪。
 
 ### `--trace-event-categories`
 
@@ -280,7 +280,7 @@ Prints a stack trace whenever synchronous I/O is detected after the first turn o
 added: v6.0.0
 -->
 
-Print stack traces for process warnings (including deprecations).
+打印对进程警告的堆栈追踪(包括弃用)。
 
 ### `--track-heap-objects`
 
@@ -302,7 +302,7 @@ The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store 
 
 Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
-See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
+参见 `SSL_CERT_DIR` 和 `SSL_CERT_FILE`。
 
 ### `--v8-options`
 
