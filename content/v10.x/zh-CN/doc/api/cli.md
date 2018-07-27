@@ -1,18 +1,18 @@
-# Command Line Options
+# 命令行选项
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js 提供了各式各样的 CLI 选项。 这些选项公开内置调试、执行脚本的多种方法以及其他有用的运行时选项。
 
-To view this documentation as a manual page in a terminal, run `man node`.
+要将此文档在终端中以手册页的形式查看，运行 `man node`。
 
-## Synopsis
+## 概要
 
-`node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
+`node [选项] [V8 选项] [脚本文件 | -e "脚本" | -] [--] [参数]`
 
-`node debug [script.js | -e "script" | <host>:<port>] …`
+`node debug [脚本文件 | -e "脚本" | <宿主>:<端口>] …`
 
 `node --v8-options`
 
