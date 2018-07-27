@@ -169,9 +169,9 @@ I branch abbandonati di V8 sono supportati nel repository di Node.js. La correzi
   * Su Node.js >= 9.0.0: Aumenta il numero di `v8_embedder_string` in `common.gypi`.
   * In alcuni casi, la patch potrebbe richiedere uno sforzo supplementare per l'unione nel caso in cui V8 sia stato cambiato sostanzialmente. Per questioni importanti potremmo essere in grado di appoggiare il team di V8 in modo da ottenere aiuto con la re-implementazione della patch.
   * Apri una PR scelta accuratamente su `nodejs/node` che si rivolge al branch *vY.x-staging* e notifica il team di `@nodejs/v8`.
-  * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). Note: The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
+  * Esegui il [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) di Node.js oltre al [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). Nota: Il CI utilizza la destinazione di `test-v8` nel <`Makefile`, che utilizza `tools/make-v8.sh` per ricostruire un git tree nella directory `deps/v8` per eseguire i test di V8.
 
-The [`update-v8`] tool can be used to simplify this task. Run `update-v8 backport --sha=SHA` to cherry-pick a commit.
+Lo strumento [`update-v8`] può essere utilizzato per semplificare quest'attività. Esegui `update-v8 backport --sha=SHA` per selezionare accuratamente un commit.
 
 An example for workflow how to cherry-pick consider the bug [RegExp show inconsistent result with other browsers](https://crbug.com/v8/5199). From the bug we can see that it was merged by V8 into 5.2 and 5.3, and not into V8 5.1 (since it was already abandoned). Since Node.js `v6.x` uses V8 5.1, the fix needed to be cherry-picked. To cherry-pick, here's an example workflow:
 
