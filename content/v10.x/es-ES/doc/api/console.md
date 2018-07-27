@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+La clase `console` puede utilizarse para crear un logger sencillo con flujos de salida configurable y se puede acceder ya sea usando `require('console').Console` ó `console.Console` (o sus contrapartes desestructuradas):
 
 ```js
 const { Console } = require('console');
