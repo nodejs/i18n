@@ -200,9 +200,9 @@ Refs: https://github.com/v8/v8/commit/a51f429772d1e796744244128c9feeab4c26a854
 PR-URL: https://github.com/nodejs/node/pull/7833
 ```
 
-* Apri una PR contro il branch `v6.x-staging` nel repository di Node.js. Avvia il normal e [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) utilizzando il sistema CI di Node.js. We only needed to backport to `v6.x` as the other LTS branches weren't affected by this bug.
+* Apri una PR contro il branch `v6.x-staging` nel repository di Node.js. Avvia il normal e [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) utilizzando il sistema CI di Node.js. Abbiamo solo bisogno di eseguire il backport su `v6.x` poiché gli altri branch LTS non sono stati colpiti da questo bug.
 
-### Backports Identified by the V8 team
+### Backport identificati dal team di V8
 
 For bugs found through the browser or other channels, the V8 team marks bugs that might be applicable to the abandoned branches in use by Node.js. This is done through manual tagging by the V8 team and through an automated process that tags any fix that gets backported to the stable branch (as it is likely candidate for backporting further).
 
