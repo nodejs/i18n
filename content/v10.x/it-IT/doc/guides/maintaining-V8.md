@@ -273,19 +273,19 @@ Questo dovrebbe essere seguito con il refloating manuale di tutte le patch rilev
 Il fatto che Node.js mantenga una copia di vendita di V8 potenzialmente modificata in deps/ rende i processi sopracitati un pò complicati. Una proposta alternativa sarebbe quella di creare un fork di V8 su `nodejs/v8` che verrebbe utilizzato per mantenere i branch di V8. Questo ha diversi vantaggi:
 
 * Il processo per aggiornare la versione di V8 in Node.js potrebbe essere automatizzato per tracciare i suggerimenti dei vari branch di V8 in `nodejs/v8`.
-* Semplificherebbe la selezione accurata ed il porting delle correzioni tra i branch, dato che gli errori di versione in `v8-version.h` si verificherebbero come parte di questo aggiornamento anziché ad ogni modifica.
+* Semplificherebbe la selezione accurata ed il porting delle correzioni tra i branch, dato che i bump di versione in `v8-version.h` si verificherebbero come parte di questo aggiornamento anziché ad ogni modifica.
 * Semplificherebbe V8-CI e lo renderebbe più automatico.
 * La cronologia del branch di V8 in `nodejs/v8` diventerebbe più pura e renderebbe più semplice il coinvolgimento del team di V8 nella revisione.
 * Semplificherebbe l'installazione di una build automatizzata che tenga traccia del master di Node.js + l'integration build di V8.
 
 Fare questo richiede alcuni strumenti:
 
-* A script that would update the V8 in a specific Node.js branch with V8 from upstream (dependent on branch abandoned vs. active).
-* We need a script to bump V8 version numbers when a new version of V8 is promoted from `nodejs/v8` to `nodejs/node`.
-* Enabled the V8-CI build in Jenkins to build from the `nodejs/v8` fork.
+* Uno script che aggiornerebbe il V8 in un branch specifico di Node.js con V8 da upstream (dipendente dal branch abbandonato contro il branch attivo).
+* Uno script per eseguire il bump dei numeri delle versioni V8 quando una nuova versione di V8 viene promossa da `nodejs/v8` a `nodejs/node`.
+* Build di V8-CI abilitato in Jenkins per costruire dal fork di `nodejs/v8`.
 
 <!-- Footnotes themselves at the bottom. -->
 
-### Notes
+### Note
 
 <sup>1</sup>Node.js 0.12 and older are intentionally omitted from this document as their support has ended.
