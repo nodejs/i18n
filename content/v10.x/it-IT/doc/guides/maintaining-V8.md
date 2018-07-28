@@ -2,7 +2,7 @@
 
 ## Background
 
-V8 segue il programma di rilascio di Chromium. Il fronte di supporto per Chromium è diverso rispetto a quello per Node.js. As a result, Node.js needs to support multiple versions of V8 longer than what upstream needs to support. I branch di V8 in Node.js mancano di un processo di manutenzione ufficiale per la mancanza di un branch supportato da LTS.
+V8 segue il programma di rilascio di Chromium. Il fronte di supporto per Chromium è diverso rispetto a quello per Node.js. Di conseguenza, Node.js deve supportare molteplici versioni di V8 in più rispetto a quanto deve supportare l'upstream. I branch di V8 in Node.js mancano di un processo di manutenzione ufficiale per la mancanza di un branch supportato da LTS.
 
 Questo documento tenta di delineare gli attuali processi di manutenzione, propone un workflow per il mantenimento dei branch di V8 sia in Node.js LTS sia nelle versioni attuali, e discute su come i team di Node.js e V8 possono aiutare su Google.
 
@@ -288,4 +288,4 @@ Fare questo richiede alcuni strumenti:
 
 ### Note
 
-<sup>1</sup>Node.js 0.12 and older are intentionally omitted from this document as their support has ended.
+<sup>1</sup>Node.js 0.12 e le versioni precedenti vengono omessi intenzionalmente da questo documento in quanto non vengono più supportate.
