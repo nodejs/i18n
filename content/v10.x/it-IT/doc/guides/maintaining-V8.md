@@ -217,11 +217,11 @@ Il backlog di tali problemi viene regolarmente rivisto dal node-team di Google p
 
 ## Aggiornamento di V8
 
-Node.js conserva una copia di vendita di V8 all'interno della directory deps/. In addition, Node.js may need to float patches that do not exist upstream. This means that some care may need to be taken to update the vendored copy of V8.
+Node.js conserva una copia di vendita di V8 all'interno della directory deps/. Inoltre, Node.js potrebbe dover rendere mobili le patch che non esistono in upstream. Ciò significa che potrebbe essere necessario prestare attenzione per aggiornare la copia di vendita di V8.
 
-### Minor updates (patch level)
+### Aggiornamenti minori (patch level)
 
-Because there may be floating patches on the version of V8 in Node.js, it is safest to apply the patch level updates as a patch. For example, imagine that upstream V8 is at 5.0.71.47 and Node.js is at 5.0.71.32. It would be best to compute the diff between these tags on the V8 repository, and then apply that patch on the copy of V8 in Node.js. This should preserve the patches/backports that Node.js may be floating (or else cause a merge conflict).
+Poiché potrebbero esserci patch mobili sulla versione di V8 in Node.js, è più sicuro applicare gli aggiornamenti di patch level come una patch. For example, imagine that upstream V8 is at 5.0.71.47 and Node.js is at 5.0.71.32. It would be best to compute the diff between these tags on the V8 repository, and then apply that patch on the copy of V8 in Node.js. This should preserve the patches/backports that Node.js may be floating (or else cause a merge conflict).
 
 The rough outline of the process is:
 
