@@ -312,7 +312,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 
 Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
 
-To test it, run the following JavaScript:
+Para probarlo, ejecute el siguiente JavaScript:
 
 ```js
 // test.js
