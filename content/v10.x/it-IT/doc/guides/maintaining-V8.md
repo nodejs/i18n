@@ -204,7 +204,7 @@ PR-URL: https://github.com/nodejs/node/pull/7833
 
 ### Backport identificati dal team di V8
 
-For bugs found through the browser or other channels, the V8 team marks bugs that might be applicable to the abandoned branches in use by Node.js. This is done through manual tagging by the V8 team and through an automated process that tags any fix that gets backported to the stable branch (as it is likely candidate for backporting further).
+Per i bug rilevati tramite il browser od altri canali, il team di V8 contrassegna quelli che potrebbero essere applicabili ai branch abbandonati in uso da Node.js. This is done through manual tagging by the V8 team and through an automated process that tags any fix that gets backported to the stable branch (as it is likely candidate for backporting further).
 
 Such fixes are tagged with the following labels in the V8 issue tracker:
 
