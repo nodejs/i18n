@@ -199,7 +199,7 @@ En casos donde hay más de un archivo `.cc`, simplemente agregue el nombre de ar
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Una vez que el archivo `binding.gyp` esté listo, los Complementos de ejemplo podrán ser configurados y construidos utilizando `node-gyp`:
 
 ```console
 $ node-gyp configure build
@@ -328,7 +328,7 @@ Note that, in this example, the callback function is invoked synchronously.
 
 ### Object factory
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++ como se ilustra en el siguiente ejemplo. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
 ```cpp
 // addon.cc
@@ -361,7 +361,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Para probarlo en JavaScript:
 
 ```js
 // test.js
@@ -418,7 +418,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Para probar:
 
 ```js
 // test.js
@@ -576,7 +576,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Prueba con:
 
 ```js
 // test.js
@@ -870,7 +870,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+La implementación de `myobject.cc` es similar a la anterior:
 
 ```cpp
 // myobject.cc
