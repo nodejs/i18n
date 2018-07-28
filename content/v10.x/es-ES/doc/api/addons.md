@@ -114,7 +114,7 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### Vincular a las dependencias de Node.js
 
 Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
 
