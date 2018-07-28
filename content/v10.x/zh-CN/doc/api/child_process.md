@@ -1,10 +1,10 @@
-# Child Process
+# 子进程
 
 <!--introduced_in=v0.10.0-->
 
 <!--lint disable maximum-line-length-->
 
-> Stability: 2 - Stable
+> 稳定性: 2 - 稳定
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -46,7 +46,7 @@ For convenience, the `child_process` module provides a handful of synchronous an
 
 For certain use cases, such as automating shell scripts, the [synchronous counterparts](#child_process_synchronous_process_creation) may be more convenient. In many cases, however, the synchronous methods can have significant impact on performance due to stalling the event loop while spawned processes complete.
 
-## Asynchronous Process Creation
+## 异步进程创建
 
 The [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], and [`child_process.execFile()`][] methods all follow the idiomatic asynchronous programming pattern typical of other Node.js APIs.
 
@@ -59,7 +59,7 @@ The [`child_process.exec()`][] and [`child_process.execFile()`][] methods additi
 The importance of the distinction between [`child_process.exec()`][] and [`child_process.execFile()`][] can vary based on platform. On Unix-type operating systems (Unix, Linux, macOS) [`child_process.execFile()`][] can be more efficient because it does not spawn a shell by default. On Windows, however, `.bat` and `.cmd` files are not executable on their own without a terminal, and therefore cannot be launched using [`child_process.execFile()`][]. When running on Windows, `.bat` and `.cmd` files can be invoked using [`child_process.spawn()`][] with the `shell` option set, with [`child_process.exec()`][], or by spawning `cmd.exe` and passing the `.bat` or `.cmd` file as an argument (which is what the `shell` option and [`child_process.exec()`][] do). In any case, if the script filename contains spaces it needs to be quoted.
 
 ```js
-// On Windows Only ...
+// 只在 Windows 上 ...
 const { spawn } = require('child_process');
 const bat = spawn('cmd.exe', ['/c', 'my.bat']);
 
@@ -77,7 +77,7 @@ bat.on('exit', (code) => {
 ```
 
 ```js
-// OR...
+// 或者...
 const { exec } = require('child_process');
 exec('my.bat', (err, stdout, stderr) => {
   if (err) {
