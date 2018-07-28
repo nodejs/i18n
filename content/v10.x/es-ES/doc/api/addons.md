@@ -193,7 +193,7 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+En casos donde hay más de un archivo `.cc`, simplemente agregue el nombre de archivo adicional a la matriz de `sources`:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
