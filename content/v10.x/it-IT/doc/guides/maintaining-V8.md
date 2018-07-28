@@ -228,21 +228,21 @@ Il profilo approssimativo del processo è:
 ```shell
 # Supponendo che il tuo fork di Node.js sia controllato in $NODE_DIR 
 # e tu voglia aggiornare il master branch di Node.js.
-# Find the current (OLD) version in
+# Trova l'attuale (VECCHIA) versione in
 # $NODE_DIR/deps/v8/include/v8-version.h
 cd $NODE_DIR
 git checkout master
 git merge --ff-only origin/master
 git checkout -b V8_NEW_VERSION
 curl -L https://github.com/v8/v8/compare/${V8_OLD_VERSION}...${V8_NEW_VERSION}.patch | git apply --directory=deps/v8
-# You may want to amend the commit message to describe the nature of the update
+# Si consiglia di modificare il commit message per descrivere la natura dell'aggiornamento
 ```
 
-V8 also keeps tags of the form *5.4-lkgr* which point to the *Last Known Good Revision* from the 5.4 branch that can be useful in the update process above.
+V8 mantiene anche i tag della forma *5.4-lkgr* che punta alla *Last Known Good Revision* (Ultima Buona Revisione Conosciuta) dal branch 5.4 che può essere utile nel processo di aggiornamento qui sopra.
 
-The [`update-v8`](https://github.com/targos/update-v8) tool can be used to simplify this task. Run `update-v8 minor` to apply a minor update.
+Lo strumento [`update-v8`](https://github.com/targos/update-v8) può essere utilizzato per semplificare quest'attività. Esegui `update-v8 minor` per applicare un aggiornamento minore.
 
-### Major Updates
+### Aggiornamenti Importanti
 
 We upgrade the version of V8 in Node.js master whenever a V8 release goes stable upstream, that is, whenever a new release of Chrome comes out.
 
