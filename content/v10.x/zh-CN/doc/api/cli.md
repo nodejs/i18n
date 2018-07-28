@@ -298,7 +298,7 @@ added: v6.11.0
 
 Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. The default store is selectable at build-time.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
+The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. 在所有受支持的平台上都相同。
 
 Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
@@ -429,9 +429,9 @@ added: v0.1.32
 added: v0.3.0
 -->
 
-When set to `1` colors will not be used in the REPL.
+当设置为 `1` 时 REPL 中不会使用颜色。
 
-### `NODE_EXTRA_CA_CERTS=file`
+### `NODE_EXTRA_CA_CERTS=文件`
 
 <!-- YAML
 added: v7.3.0
@@ -441,7 +441,7 @@ When set, the well known "root" CAs (like VeriSign) will be extended with the ex
 
 Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
 
-### `NODE_ICU_DATA=file`
+### `NODE_ICU_DATA=文件`
 
 <!-- YAML
 added: v0.11.15
@@ -455,9 +455,9 @@ Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled
 added: v6.11.0
 -->
 
-When set to `1`, process warnings are silenced.
+当设置为 `1` 时，线程警告会被禁用。
 
-### `NODE_OPTIONS=options...`
+### `NODE_OPTIONS=选项...`
 
 <!-- YAML
 added: v8.0.0
@@ -465,7 +465,7 @@ added: v8.0.0
 
 一个用空格分隔的命令行选项列表。 `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
-Node options that are allowed are:
+允许的 node 选项有：
 
 - `--enable-fips`
 - `--force-fips`
@@ -492,7 +492,7 @@ Node options that are allowed are:
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-V8 options that are allowed are:
+允许的 V8 选项有：
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
@@ -500,7 +500,7 @@ V8 options that are allowed are:
 - `--perf-prof`
 - `--stack-trace-limit`
 
-### `NODE_PATH=path[:…]`
+### `NODE_PATH=路径[:…]`
 
 <!-- YAML
 added: v0.1.32
@@ -516,7 +516,7 @@ On Windows, this is a `';'`-separated list instead.
 added: v8.0.0
 -->
 
-When set to `1`, emit pending deprecation warnings.
+当设置为 `1` 时，发送待定弃用警告。
 
 Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
@@ -528,7 +528,7 @@ added: v7.1.0
 
 When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
 
-### `NODE_REDIRECT_WARNINGS=file`
+### `NODE_REDIRECT_WARNINGS=文件`
 
 <!-- YAML
 added: v8.0.0
@@ -536,7 +536,7 @@ added: v8.0.0
 
 When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
 
-### `NODE_REPL_HISTORY=file`
+### `NODE_REPL_HISTORY=文件`
 
 <!-- YAML
 added: v3.0.0
@@ -544,7 +544,7 @@ added: v3.0.0
 
 Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
 
-### `OPENSSL_CONF=file`
+### `OPENSSL_CONF=文件`
 
 <!-- YAML
 added: v6.11.0
@@ -555,7 +555,7 @@ Load an OpenSSL configuration file on startup. Among other uses, this can be use
 
 If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
 
-### `SSL_CERT_DIR=dir`
+### `SSL_CERT_DIR=目录`
 
 <!-- YAML
 added: v7.7.0
@@ -565,7 +565,7 @@ If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory co
 
 Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
-### `SSL_CERT_FILE=file`
+### `SSL_CERT_FILE=文件`
 
 <!-- YAML
 added: v7.7.0
@@ -575,11 +575,11 @@ If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file contain
 
 Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
-### `UV_THREADPOOL_SIZE=size`
+### `UV_THREADPOOL_SIZE=尺寸`
 
 Set the number of threads used in libuv's threadpool to `size` threads.
 
-Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. Node.js APIs that use the threadpool are:
+Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. 使用线程池的 Node.js API 有：
 
 - all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
 - `crypto.pbkdf2()`
@@ -588,4 +588,4 @@ Asynchronous system APIs are used by Node.js whenever possible, but where they d
 - `dns.lookup()`
 - all `zlib` APIs, other than those that are explicitly synchronous
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). 更多信息参见 [libuv 线程池文档](http://docs.libuv.org/en/latest/threadpool.html)。
