@@ -182,7 +182,7 @@ added: v6.3.0
 
 Instructs the module loader to preserve symbolic links when resolving and caching modules.
 
-By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
+By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. 在大多数情况下, 此默认行为是可接受的。 However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
 
 ```text
 {appDir}
@@ -310,11 +310,11 @@ Using OpenSSL store allows for external modifications of the store. For most Lin
 added: v0.1.3
 -->
 
-Print V8 command line options.
+打印 V8 的命令行选项。
 
 V8 options allow words to be separated by both dashes (`-`) or underscores (`_`).
 
-For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
+例如，`--stack-trace-limit` 等价于 `--stack_trace_limit`。
 
 ### `--v8-pool-size=num`
 
@@ -349,9 +349,9 @@ changes:
     description: The `--require` option is now supported when checking a file.
 -->
 
-Syntax check the script without executing.
+对脚本进行语法检查但不执行。
 
-### `-e`, `--eval "script"`
+### `-e`, `--eval "脚本"`
 
 <!-- YAML
 added: v0.5.2
@@ -362,9 +362,9 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
+将跟随的参数作为 JavaScript 执行。 The modules which are predefined in the REPL can also be used in `script`.
 
-On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. 在 Powershell 和 Git bash中，`'` 和 `"` 都可用。
 
 ### `-h`, `--help`
 
@@ -372,7 +372,7 @@ On Windows, using `cmd.exe` a single quote will not work correctly because it on
 added: v0.1.3
 -->
 
-Print node command line options. The output of this option is less detailed than this document.
+打印 node 的命令行选项。 The output of this option is less detailed than this document.
 
 ### `-i`, `--interactive`
 
@@ -382,7 +382,7 @@ added: v0.7.7
 
 Opens the REPL even if stdin does not appear to be a terminal.
 
-### `-p`, `--print "script"`
+### `-p`, `--print "脚本"`
 
 <!-- YAML
 added: v0.6.4
@@ -393,17 +393,17 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Identical to `-e` but prints the result.
+等价于 `-e` 但打印结果。
 
-### `-r`, `--require module`
+### `-r`, `--require 模块`
 
 <!-- YAML
 added: v1.6.0
 -->
 
-Preload the specified module at startup.
+启动时预加载指定模块。
 
-Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
+遵循 `require()` 的模块的解析规则。 `module` 可能是到文件的路径，或一个 node 模块名。
 
 ### `-v`, `--version`
 
@@ -411,11 +411,11 @@ Follows `require()`'s module resolution rules. `module` may be either a path to 
 added: v0.1.3
 -->
 
-Print node's version.
+打印 node 的版本。
 
-## Environment Variables
+## 环境变量
 
-### `NODE_DEBUG=module[,…]`
+### `NODE_DEBUG=模块[,…]`
 
 <!-- YAML
 added: v0.1.32
