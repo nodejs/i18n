@@ -270,15 +270,15 @@ Questo dovrebbe essere seguito con il refloating manuale di tutte le patch rilev
 
 ## Proposta: Utilizzo di un fork repo per tracciare upstream V8
 
-Il fatto che Node.js mantenga una copia di vendita di V8 potenzialmente modificata in deps/ rende i processi sopracitati un pò complicati. An alternative proposal would be to create a fork of V8 at `nodejs/v8` that would be used to maintain the V8 branches. This has several benefits:
+Il fatto che Node.js mantenga una copia di vendita di V8 potenzialmente modificata in deps/ rende i processi sopracitati un pò complicati. Una proposta alternativa sarebbe quella di creare un fork di V8 su `nodejs/v8` che verrebbe utilizzato per mantenere i branch di V8. Questo ha diversi vantaggi:
 
-* The process to update the version of V8 in Node.js could be automated to track the tips of various V8 branches in `nodejs/v8`.
-* It would simplify cherry-picking and porting of fixes between branches as the version bumps in `v8-version.h` would happen as part of this update instead of on every change.
-* It would simplify the V8-CI and make it more automatable.
-* The history of the V8 branch in `nodejs/v8` becomes purer and it would make it easier to pull in the V8 team for help with reviewing.
-* It would make it simpler to setup an automated build that tracks Node.js master + V8 lkgr integration build.
+* Il processo per aggiornare la versione di V8 in Node.js potrebbe essere automatizzato per tracciare i suggerimenti dei vari branch di V8 in `nodejs/v8`.
+* Semplificherebbe la selezione accurata ed il porting delle correzioni tra i branch, dato che gli errori di versione in `v8-version.h` si verificherebbero come parte di questo aggiornamento anziché ad ogni modifica.
+* Semplificherebbe V8-CI e lo renderebbe più automatico.
+* La cronologia del branch di V8 in `nodejs/v8` diventerebbe più pura e renderebbe più semplice il coinvolgimento del team di V8 nella revisione.
+* Semplificherebbe l'installazione di una build automatizzata che tenga traccia del master di Node.js + l'integration build di V8.
 
-This would require some tooling to:
+Fare questo richiede alcuni strumenti:
 
 * A script that would update the V8 in a specific Node.js branch with V8 from upstream (dependent on branch abandoned vs. active).
 * We need a script to bump V8 version numbers when a new version of V8 is promoted from `nodejs/v8` to `nodejs/node`.
