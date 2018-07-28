@@ -204,12 +204,12 @@ PR-URL: https://github.com/nodejs/node/pull/7833
 
 ### Backport identificati dal team di V8
 
-Per i bug rilevati tramite il browser od altri canali, il team di V8 contrassegna quelli che potrebbero essere applicabili ai branch abbandonati in uso da Node.js. This is done through manual tagging by the V8 team and through an automated process that tags any fix that gets backported to the stable branch (as it is likely candidate for backporting further).
+Per i bug rilevati tramite il browser od altri canali, il team di V8 contrassegna quelli che potrebbero essere applicabili ai branch abbandonati in uso da Node.js. Ciò avviene tramite il tagging manuale da parte del team di V8 e attraverso un processo automatizzato che tagga qualsiasi correzione che viene trasferita allo stable branch (poiché è probabile che sia scelto per un ulteriore backporting).
 
-Such fixes are tagged with the following labels in the V8 issue tracker:
+Tali correzioni sono taggate con le seguenti etichette nell'issue tracker di V8:
 
-* `NodeJS-Backport-Review` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Review), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Review)): to be reviewed if this is applicable to abandoned branches in use by Node.js. This list if regularly reviewed by the Node.js team at Google to determine applicability to Node.js.
-* `NodeJS-Backport-Approved` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Approved), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Approved)): marks bugs that are deemed relevant to Node.js and should be backported.
+* `NodeJS-Backport-Review` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Review), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Review)): da rivedere se questo è applicabile ai branch abbandonati in uso da Node.js. Questo elenco se rivisto regolarmente dal team Node.js di Google per determinare l'applicabilità a Node.js.
+* `NodeJS-Backport-Approved` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Approved), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Approved)): contrassegna i bug che sono ritenuti rilevanti per Node.js e che devono subire il backport.
 * `NodeJS-Backport-Done` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Done), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Done)): Backport for Node.js has been performed already.
 * `NodeJS-Backport-Rejected` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Rejected), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Rejected)): Backport for Node.js is not desired.
 
