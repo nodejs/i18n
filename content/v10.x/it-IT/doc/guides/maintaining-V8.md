@@ -213,11 +213,11 @@ Tali correzioni sono taggate con le seguenti etichette nell'issue tracker di V8:
 * `NodeJS-Backport-Done` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Done), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Done)): Backport per Node.js che è già stato eseguito.
 * `NodeJS-Backport-Rejected` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Rejected), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Rejected)): Backport per Node.js che è indesiderato.
 
-The backlog of issues with such is regularly reviewed by the node-team at Google to shepherd through the backport process. External contributors are welcome to collaborate on the backport process as well. Note that some of the bugs may be security issues and will not be visible to external collaborators.
+Il backlog di tali problemi viene regolarmente rivisto dal node-team di Google per seguire il processo di backport. I contributors esterni sono invitati a collaborare anche sul processo di backport. Nota che alcuni dei bug potrebbero essere problemi di sicurezza e non saranno visibili ai contributors esterni.
 
-## Updating V8
+## Aggiornamento di V8
 
-Node.js keeps a vendored copy of V8 inside of the deps/ directory. In addition, Node.js may need to float patches that do not exist upstream. This means that some care may need to be taken to update the vendored copy of V8.
+Node.js conserva una copia di vendita di V8 all'interno della directory deps/. In addition, Node.js may need to float patches that do not exist upstream. This means that some care may need to be taken to update the vendored copy of V8.
 
 ### Minor updates (patch level)
 
