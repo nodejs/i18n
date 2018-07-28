@@ -265,7 +265,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Una vez compilado, el complemento de ejemplo puede ser requerido y utilizado desde dentro de Node.js:
 
 ```js
 // test.js
