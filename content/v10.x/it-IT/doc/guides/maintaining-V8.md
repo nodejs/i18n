@@ -176,19 +176,19 @@ Lo strumento [`update-v8`] può essere utilizzato per semplificare quest'attivit
 Un esempio per il workflow su come eseguire la selezione accurata considera che il bug [RegExp mostra risultati incoerenti con altri browser](https://crbug.com/v8/5199). Dal bug possiamo vedere che è stato unito da V8 all'interno di 5.2 e 5.3, e non all'interno di V8 5.1 (poiché era già stato abbandonato). Poiché Node.js `v6.x` utilizza V8 5.1, la correzione doveva essere selezionata accuratamente. Per eseguire la sezione accurata, ecco qui un esempio di workflow:
 
 * Scarica ed applica il commit collegato al problema (in questo caso a51f429). `curl -L https://github.com/v8/v8/commit/a51f429.patch | git am -3
---directory=deps/v8`. Se i branch si sono divisi in modo significativo, questo potrebbe non essere applicato in modo pulito. Potrebbe essere utile provare a selezionare l'unione con il branch più vecchio eseguito in modo upstream in V8. In this example, this would be the patch from the merge to 5.2. The hope is that this would be closer to the V8 5.1, and has a better chance of applying cleanly. If you're stuck, feel free to ping @ofrobots for help.
-* Modify the commit message to match the format we use for V8 backports and replace yourself as the author. `git commit --amend --reset-author`. You may want to add extra description if necessary to indicate the impact of the fix on Node.js. In this case the original issue was descriptive enough. Example:
+--directory=deps/v8`. Se i branch si sono divisi in modo significativo, questo potrebbe non essere applicato in modo pulito. Potrebbe essere utile provare a selezionare l'unione con il branch più vecchio eseguito in modo upstream in V8. In questo esempio, questa sarebbe la patch ricevuta dall'unione alla 5.2. La speranza è che questa sia più vicina al V8 5.1, ed abbia una migliore possibilità di essere applicata in modo pulito. Se sei bloccato, sentiti libero di chiamare @ofrobots per un aiuto.
+* Modifica il commit message in modo che corrisponda al formato che utilizziamo per i backport di V8 e sostituisci te stesso come autore. `git commit --amend --reset-author`. Se necessario è possibile aggiungere una descrizione extra per indicare l'impatto della correzione su Node.js. In questo caso il problema originale era abbastanza descrittivo. Esempio:
 
 ```console
-deps: cherry-pick a51f429 from V8 upstream
+deps: scelta accurata di a51f429 da V8 upstream
 
-Original commit message:
-  [regexp] Fix case-insensitive matching for one-byte subjects.
+Commit message originale:
+  [regexp] Correzione della corrispondenza senza distinzione tra maiuscole e minuscole per i soggetti ad un byte.
 
-  The bug occurs because we do not canonicalize character class ranges
-  before adding case equivalents. While adding case equivalents, we abort
-  early for one-byte subject strings, assuming that the ranges are sorted.
-  Which they are not.
+  Il bug si verifica perché non si rendono canonici gli intervalli delle character class
+  prima di aggiungere equivalenti. Aggiungendo i casi equivalenti, abortiamo
+  presto per le stringhe del soggetto ad un byte, supponendo che gli intervalli siano ordinati.
+  I quali però non lo sono.
 
   R=marja@chromium.org
   BUG=v8:5199
@@ -200,7 +200,7 @@ Refs: https://github.com/v8/v8/commit/a51f429772d1e796744244128c9feeab4c26a854
 PR-URL: https://github.com/nodejs/node/pull/7833
 ```
 
-* Open a PR against the `v6.x-staging` branch in the Node.js repo. Launch the normal and [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) using the Node.js CI system. We only needed to backport to `v6.x` as the other LTS branches weren't affected by this bug.
+* Apri una PR contro il branch `v6.x-staging` nel repository di Node.js. Avvia il normal e [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) utilizzando il sistema CI di Node.js. We only needed to backport to `v6.x` as the other LTS branches weren't affected by this bug.
 
 ### Backports Identified by the V8 team
 
