@@ -221,13 +221,13 @@ Node.js conserva una copia di vendita di V8 all'interno della directory deps/. I
 
 ### Aggiornamenti minori (patch level)
 
-Poiché potrebbero esserci patch mobili sulla versione di V8 in Node.js, è più sicuro applicare gli aggiornamenti di patch level come una patch. For example, imagine that upstream V8 is at 5.0.71.47 and Node.js is at 5.0.71.32. It would be best to compute the diff between these tags on the V8 repository, and then apply that patch on the copy of V8 in Node.js. This should preserve the patches/backports that Node.js may be floating (or else cause a merge conflict).
+Poiché potrebbero esserci patch mobili sulla versione di V8 in Node.js, è più sicuro applicare gli aggiornamenti di patch level come una patch. Ad esempio, immagina che upstream V8 è a 5.0.71.47 e Node.js è a 5.0.71.32. Sarebbe meglio calcolare la differenza tra questi tag sul repository di V8, e successivamente applicare quella patch sulla copia di V8 in Node.js. Questo dovrebbe preservare le/i patch/backport che Node.js potrebbe rendere mobili (oppure causare un conflitto di unione).
 
-The rough outline of the process is:
+Il profilo approssimativo del processo è:
 
 ```shell
-# Assuming your fork of Node.js is checked out in $NODE_DIR
-# and you want to update the Node.js master branch.
+# Supponendo che il tuo fork di Node.js sia controllato in $NODE_DIR 
+# e tu voglia aggiornare il master branch di Node.js.
 # Find the current (OLD) version in
 # $NODE_DIR/deps/v8/include/v8-version.h
 cd $NODE_DIR
