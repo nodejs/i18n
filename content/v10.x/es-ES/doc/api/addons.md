@@ -126,7 +126,7 @@ Node.js utiliza un número de bibliotecas vinculadas estáticamente tales como V
 
 The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). La función [`require()`](modules.html#modules_require) está escrita para buscar archivos con la extensión `.node` e inicializarlos como bibliotecas vinculadas dinámicamente.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Sin embargo, una de las advertencias es que Node.js intentará primero localizar y cargar los módulos y los archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Una de las advertencias, sin embargo, es que Node.js intentará primero localizar y cargar los módulos o los archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
 ## Native Abstractions for Node.js
 
@@ -180,7 +180,7 @@ Las funciones disponibles y cómo utilizarlas están documentadas en la sección
 
 Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de los APIs V8. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
-Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp`:
+Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp` :
 
 ```json
 {
