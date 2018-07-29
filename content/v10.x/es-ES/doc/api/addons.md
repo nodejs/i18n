@@ -102,9 +102,9 @@ console.log(addon.hello());
 
 Por favor vea los ejemplos a continuación para más información o <https://github.com/arturadib/node-qt> para ver un ejemplo en producción.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Porque la ruta exacta hacia el Complemento binario compilado puede variar dependiendo de cómo está compilado (por ejemplo, a veces puede estar en `./build/Debug/`), los Complementos pueden utilizar el paquete [bindings](https://github.com/TooTallNate/node-bindings) para cargar el módulo compilado.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Tenga en cuenta que mientras el paquete de implementación `bindings` es más sofisticado en cómo localiza los módulos de los Complementos, esencialmente está utilizando un patrón de intento de captura similar a:
 
 ```js
 try {
