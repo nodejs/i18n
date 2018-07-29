@@ -4,17 +4,17 @@
 
 > Stabilità: 2 - Stabile
 
-Il modulo `assert` fornisce un semplice insieme di test di assertion che possono essere utilizzati per verificare gli invariant.
+Il modulo `assert` fornisce un semplice insieme di assertion test che possono essere utilizzati per verificare gli invariant.
 
 Esistono una `strict` mode ed una `legacy` mode, anche se è consigliato utilizzare solo la [`strict mode`][].
 
 Per ulteriori informazioni sui confronti di uguaglianza utilizzati, vedi la [guida MDN sui confronti di uguaglianza ed uniformità](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Class: assert.AssertionError
+## Classe: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Una sottoclasse di `Error` che indica il fallimento di un'assertion. Tutti gli errori generati dal modulo `assert` saranno istanze della classe `AssertionError`.
 
-### new assert.AssertionError(options)
+### nuova assert.AssertionError(options)
 
 <!-- YAML
 added: v0.1.21
