@@ -4,7 +4,7 @@
 
 > Stabilità: 2 - Stabile
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+Il modulo `assert` fornisce un semplice insieme di test di assertion che possono essere utilizzati per verificare gli invariant.
 
 A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
