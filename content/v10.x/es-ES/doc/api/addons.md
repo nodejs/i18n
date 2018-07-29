@@ -69,7 +69,7 @@ Entonces, en el ejemplo `hola.cc`, la función de inicialización es `init` y el
 
 ### Construir
 
-Una vez que el código de fuente haya sido escrito, debe ser compilado en el archivo binario `addon.node` . Para hacerlo, haga un archivo llamado `binding.gyp` en el nivel superior del proyecto, describiendo la configuración de construcción del módulo utilizando un formato similar a JSON. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Una vez que el código de fuente haya sido escrito, debe ser compilado en el archivo binario `addon.node` . Para hacerlo, haga un archivo llamado `binding.gyp` en el nivel superior del proyecto, describiendo la configuración de construcción del módulo utilizando un formato similar a JSON. Este archivo es utilizado por [node-gyp](https://github.com/nodejs/node-gyp) — una herramienta escrita específicamente para compilar complementos de Node.js.
 
 ```json
 {
@@ -82,7 +82,7 @@ Una vez que el código de fuente haya sido escrito, debe ser compilado en el arc
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Esta versión no está hecha directamente disponible para que los desarrolladores la utilicen y está diseñada sólo para apoyar la habilidad del uso del comando `npm install` para compilar e instalar complementos. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
 
 Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
