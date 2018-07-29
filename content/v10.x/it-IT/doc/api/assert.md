@@ -6,9 +6,9 @@
 
 Il modulo `assert` fornisce un semplice insieme di test di assertion che possono essere utilizzati per verificare gli invariant.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Esistono una `strict` mode ed una `legacy` mode, anche se è consigliato utilizzare solo la [`strict mode`][].
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Per ulteriori informazioni sui confronti di uguaglianza utilizzati, vedi la [guida MDN sui confronti di uguaglianza ed uniformità](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Class: assert.AssertionError
 
