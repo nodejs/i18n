@@ -126,7 +126,7 @@ Node.js utiliza un número de bibliotecas vinculadas estáticamente tales como V
 
 La extensión del nombre de archivo del Complemento binario compilado es `.node` ( a diferencia de `.dll` or `.so`). La función [`require()`](modules.html#modules_require) está escrita para buscar archivos con la extensión `.node` e inicializarlos como bibliotecas vinculadas dinámicamente.
 
-Al llamar [`require()`](modules.html#modules_require), generalmente se puede omitir la extensión `.node` y aún así Node.js encontrará e inicializará el Complemento. Una de las advertencias, sin embargo, es que Node.js intentará primero localizar y cargar los módulos o los archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Al llamar [`require()`](modules.html#modules_require), generalmente se puede omitir la extensión `.node` y aún así Node.js encontrará e inicializará el Complemento. Una de las advertencias, sin embargo, es que Node.js intentará primero localizar y cargar los módulos o los archivos de JavaScript que compartan el mismo nombre de base. Por ejemplo, si hay un archivo `addon.js` en el mismo directorio que el archivo binario `addon.node`, entonces [`require('addon')`](modules.html#modules_require) le dará prioridad al archivo `addon.js` y lo cargará en su lugar.
 
 ## Native Abstractions for Node.js
 
@@ -751,7 +751,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Una vez más, para construir este ejemplo, el archivo `myobject.cc` debe ser agregado a `binding.gyp`:
 
 ```json
 {
