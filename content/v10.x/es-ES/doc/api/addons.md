@@ -14,7 +14,7 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * Bibliotecas internas de Node.js. Node.js exporta un número de APIs de C++ que los complementos pueden utilizar &mdash; de las cuales la más importante es la de clase `node::ObjectWrap`.
 
-* Node.js incluye un número de otras bibliotecas vinculadas estáticamente incluyendo OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/` en el árbol de fuente de Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js incluye un número de otras bibliotecas vinculadas estáticamente incluyendo OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/` en el árbol de fuente de Node.js. Sólo los símbolos libuv, OpenSSL, V8 y zlib son deliberadamente reexportados por Node.js y pueden ser utilizados en diferentes niveles por los complementos. Vea [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) para más información.
 
 Todos los ejemplos a continuación están disponibles para [descargar](https://github.com/nodejs/node-addon-examples) y pueden ser usados como punto de inicio para un Complemento.
 
@@ -67,9 +67,9 @@ El `module_name` debe debe coincidir con el nombre del archivo del binario final
 
 Entonces, en el ejemplo `hola.cc`, la función de inicialización es `init` y el nombre del módulo Addon es `addon`.
 
-### Building
+### Construir
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Una vez que el código de fuente haya sido escrito, debe ser compilado en el archivo binario `addon.node` . Para hacerlo, haga un archivo llamado `binding.gyp` en el nivel superior del proyecto, describiendo la configuración de construcción del módulo utilizando un formato similar a JSON. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
