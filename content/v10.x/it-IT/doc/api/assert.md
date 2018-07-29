@@ -24,8 +24,8 @@ added: v0.1.21
   * `message` {string} Se fornito, il messaggio di errore verrà impostato su questo valore.
   * `actual` {any} La proprietà `actual` sull'istanza dell'errore contiene questo valore. Utilizzato internamente per l'input di errore `actual` nel caso in cui, ad esempio, sia usato [`assert.strictEqual()`].
   * `expected` {any} La proprietà `expected` sull'istanza dell'errore contiene questo valore. Utilizzato internamente per l'input di errore `expected` nel caso in cui, ad esempio, sia usato [`assert.strictEqual()`].
-  * `operator` {string} La proprietà `operator` sull'istanza dell'errore contiene questo valore. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
-  * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
+  * `operator` {string} La proprietà `operator` sull'istanza dell'errore contiene questo valore. Utilizzato internamente per indicare quale operazione è stata utilizzata per il confronto (o quale funzione assertion ha attivato l'errore).
+  * `stackStartFn` {Function} Se fornito, la traccia dello stack generato rimuove tutti i frame fino alla funzione fornita.
 
 A subclass of `Error` that indicates the failure of an assertion.
 
