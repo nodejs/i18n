@@ -21,8 +21,8 @@ added: v0.1.21
 -->
 
 * `options` {Object} 
-  * `message` {string} If provided, the error message is going to be set to this value.
-  * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
+  * `message` {string} Se fornito, il messaggio di errore verrà impostato su questo valore.
+  * `actual` {any} La proprietà `actual` sull'istanza dell'errore contiene questo valore. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
   * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
