@@ -32,7 +32,7 @@ Una sottoclasse di `Error` che indica il fallimento di un'assertion.
 Tutte le istanze contengono le proprietà integrate di `Error` (`message` e `name`) e:
 
 * `actual` {any} Imposta sul valore actual nel caso in cui, ad esempio, venga utilizzato [`assert.strictEqual()`].
-* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
+* `expected` {any} Imposta sul valore expected nel caso in cui, ad esempio, venga utilizzato [`assert.strictEqual()`].
 * `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
 * `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
 * `operator` {string} Set to the passed in operator value.
