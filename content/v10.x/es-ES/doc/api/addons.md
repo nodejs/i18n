@@ -88,9 +88,9 @@ Una vez que se haya creado el archivo `binding.gyp`, utilice `node-gyp configure
 
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Al utilizar `npm install` para instalar un complemento de Node.js, npm utiliza su propia versión agrupada de `node-gyp` para realizar el mismo conjunto de acciones, generando una versión compilada del complemento para la plataforma solicitada del usuario.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Una vez construido, el complemento binario puede ser utilizado desde dentro de Node.js señalando [`require()`](modules.html#modules_require) al módulo construido `addon.node` :
 
 ```js
 // hello.js
