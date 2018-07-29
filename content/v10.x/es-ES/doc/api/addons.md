@@ -838,7 +838,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+En `myobject.h`, se agrega un nuevo método público para permitir el acceso a los valores privados después de desenvolver el objeto.
 
 ```cpp
 // myobject.h
@@ -971,7 +971,7 @@ Registers exit hooks that run after the event loop has ended but before the VM i
 
 `AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
-Callbacks are run in last-in first-out order.
+Los callbacks se ejecutan por orden de última entrada y primera salida.
 
 The following `addon.cc` implements `AtExit`:
 
