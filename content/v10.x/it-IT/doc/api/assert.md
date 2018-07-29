@@ -27,11 +27,11 @@ added: v0.1.21
   * `operator` {string} La proprietà `operator` sull'istanza dell'errore contiene questo valore. Utilizzato internamente per indicare quale operazione è stata utilizzata per il confronto (o quale funzione assertion ha attivato l'errore).
   * `stackStartFn` {Function} Se fornito, la traccia dello stack generato rimuove tutti i frame fino alla funzione fornita.
 
-A subclass of `Error` that indicates the failure of an assertion.
+Una sottoclasse di `Error` che indica il fallimento di un'assertion.
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+Tutte le istanze contengono le proprietà integrate di `Error` (`message` e `name`) e:
 
-* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
+* `actual` {any} Imposta sul valore actual nel caso in cui, ad esempio, venga utilizzato [`assert.strictEqual()`].
 * `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
 * `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
 * `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
