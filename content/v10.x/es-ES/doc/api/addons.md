@@ -14,7 +14,7 @@ Por el momento, el método para implementar Complementos es algo complicado, imp
 
 * Bibliotecas internas de Node.js. Node.js exporta un número de APIs de C++ que los complementos pueden utilizar &mdash; de las cuales la más importante es la de clase `node::ObjectWrap`.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js incluye un número de otras bibliotecas vinculadas estáticamente incluyendo OpenSSL. Estas otras bibliotecas se encuentran en el directorio `deps/` en el árbol de fuente de Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 Todos los ejemplos a continuación están disponibles para [descargar](https://github.com/nodejs/node-addon-examples) y pueden ser usados como punto de inicio para un Complemento.
 
