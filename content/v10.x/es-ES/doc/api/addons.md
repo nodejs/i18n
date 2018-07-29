@@ -116,7 +116,7 @@ try {
 
 ### Vincular a las dependencias de Node.js
 
-Node.js utiliza un número de bibliotecas vinculadas estáticamente tales como V8, libuv y OpenSSL. Todos los complementos deben vincularse a V8 y también se pueden vincular a cualquiera de las otras dependencias. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. Sin embargo, existen algunas advertencias a tener en cuenta:
+Node.js utiliza un número de bibliotecas vinculadas estáticamente tales como V8, libuv y OpenSSL. Todos los complementos deben vincularse a V8 y también se pueden vincular a cualquiera de las otras dependencias. Por lo general, esto es tan simple como incluir las sentencias apropiadas `#include <...>` (por ejemplo, `#include <v8.h>`) y `node-gyp` localizará los encabezados apropiados automáticamente. Sin embargo, existen algunas advertencias a tener en cuenta:
 
 * When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. Si se descarga completamente la fuente, los complementos tendrán acceso completo a todo el conjunto de dependencias de Node.js. Sin embargo, si sólo se descargan los encabezados de Node.js, entonces sólo los símbolos exportados por Node.js estarán disponibles.
 
