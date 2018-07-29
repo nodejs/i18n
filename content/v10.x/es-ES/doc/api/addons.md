@@ -118,15 +118,15 @@ try {
 
 Node.js utiliza un número de bibliotecas vinculadas estáticamente tales como V8, libuv y OpenSSL. Todos los complementos deben vincularse a V8 y también se pueden vincular a cualquiera de las otras dependencias. Por lo general, esto es tan simple como incluir las sentencias apropiadas `#include <...>` (por ejemplo, `#include <v8.h>`) y `node-gyp` localizará los encabezados apropiados automáticamente. Sin embargo, existen algunas advertencias a tener en cuenta:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. Si se descarga completamente la fuente, los complementos tendrán acceso completo a todo el conjunto de dependencias de Node.js. Sin embargo, si sólo se descargan los encabezados de Node.js, entonces sólo los símbolos exportados por Node.js estarán disponibles.
+* Cuando se ejecuta `node-gyp`, detectará la versión de lanzamiento específica de Node.js y descargará ya sea el tarball de la fuente completa o sólo los encabezados. Si se descarga completamente la fuente, los complementos tendrán acceso completo a todo el conjunto de dependencias de Node.js. Sin embargo, si sólo se descargan los encabezados de Node.js, entonces sólo los símbolos exportados por Node.js estarán disponibles.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Al usar esta opción, el complemento tendrá acceso a todo el conjunto de dependencias.
+* `node-gyp` se puede ejecutar utilizando la bandera `--nodedir` apuntando a una imagen de fuente local de Node.js. Al usar esta opción, el complemento tendrá acceso a todo el conjunto de dependencias.
 
 ### Cargar complementos usando require()
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). La función [`require()`](modules.html#modules_require) está escrita para buscar archivos con la extensión `.node` e inicializarlos como bibliotecas vinculadas dinámicamente.
+La extensión del nombre de archivo del Complemento binario compilado es `.node` ( a diferencia de `.dll` or `.so`). La función [`require()`](modules.html#modules_require) está escrita para buscar archivos con la extensión `.node` e inicializarlos como bibliotecas vinculadas dinámicamente.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Una de las advertencias, sin embargo, es que Node.js intentará primero localizar y cargar los módulos o los archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Al llamar [`require()`](modules.html#modules_require), generalmente se puede omitir la extensión `.node` y aún así Node.js encontrará e inicializará el Complemento. Una de las advertencias, sin embargo, es que Node.js intentará primero localizar y cargar los módulos o los archivos de JavaScript que compartan el mismo nombre de base. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
 ## Native Abstractions for Node.js
 
