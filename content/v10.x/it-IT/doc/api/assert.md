@@ -107,15 +107,15 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
+Per disattivare i colori, utilizza la variabile di ambiente `NODE_DISABLE_COLORS`. Si prega di notare che questa disattiverà anche i colori nel REPL.
 
 ## Legacy mode
 
-> Stability: 0 - Deprecated: Use strict mode instead.
+> Stabilità: 0 - Deprecato: Utilizza invece la strict mode.
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+Quando si accede direttamente all'`assert` invece di utilizzare la proprietà `strict`, verrà utilizzato l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) per qualsiasi funzione senza "strict" nel suo nome, come ad esempio [`assert.deepEqual()`][].
 
-It can be accessed using:
+Ci si può accedere utilizzando:
 
 ```js
 const assert = require('assert');
