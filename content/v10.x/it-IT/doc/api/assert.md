@@ -550,7 +550,7 @@ changes:
 
 > Stabilità: 0 - Obsoleto: Utilizza invece `assert.fail([message])` oppure altre funzioni assert.
 
-Se `message` è falsy, il messaggio di errore viene impostato come vengono impostati i valori di `actual` ed `expected` separati dall'`operator` fornito. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
+Se `message` è falsy, il messaggio di errore viene impostato come vengono impostati i valori di `actual` ed `expected` separati dall'`operator` fornito. Se vengono specificati solo i due argomenti `actual` ed `expected`, l'`operator` sarà impostato in modo predefinito su `'!='`. Se il `message` viene fornito come terzo argomento, verrà utilizzato come messaggio di errore e gli altri argomenti verranno archiviati come proprietà dell'object generato. Se viene fornito `stackStartFunction`, tutti gli stack frames sopra quella funzione verranno rimossi da stacktrace (vedi [`Error.captureStackTrace`]). Se non vengono forniti argomenti, verrà utilizzato il messaggio predefinito `Failed`.
 
 ```js
 const assert = require('assert').strict;
@@ -571,9 +571,9 @@ assert.fail(1, 2, new TypeError('need array'));
 // TypeError: need array
 ```
 
-In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
+Negli ultimi tre casi `actual`, `expected`, ed `operator` non hanno alcuna influenza sul messaggio di errore.
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+Esempio d'uso di `stackStartFunction` per troncare lo stacktrace dell'eccezione:
 
 ```js
 function suppressFrame() {
@@ -604,7 +604,7 @@ changes:
 
 * `value` {any}
 
-Throws `value` if `value` is not `undefined` or `null`. This is useful when testing the `error` argument in callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. See below for an example.
+Genera `value` se `value` non è `undefined` o `null`. Questo è utile quando si verifica l'argomento `error` nei callback. Lo stacktrace contiene tutti i frames dall'errore passato ad `ifError()` inclusi i potenziali nuovi frames per `ifError()` stesso. Di seguito un esempio.
 
 ```js
 const assert = require('assert').strict;
@@ -618,7 +618,7 @@ assert.ifError('error');
 assert.ifError(new Error());
 // AssertionError [ERR_ASSERTION]: ifError got unwanted exception: Error
 
-// Create some random error frames.
+// Creare alcuni frames di errore casuali.
 let err;
 (function errorFrame() {
   err = new Error('test error');
