@@ -374,7 +374,7 @@ added: v10.0.0
 
 Attende il `block` promise oppure, se `block` è una funzione, chiama immediatamente la funzione ed attende il promise restituito per il completamento. Controllerà quindi che il promise non sia respinto.
 
-If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Se `block` è una funzione e genera un errore in modo sincrono, `assert.doesNotReject()` restituirà un `Promise` respinto con quell'errore. Se la funzione non restituisce un promise, `assert.doesNotReject()` restituirà un `Promise` respinto con un errore [`ERR_INVALID_RETURN_VALUE`][]. In entrambi i casi viene saltato l'error handler.
 
 Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
 
