@@ -176,7 +176,7 @@ Un alias di [`assert.deepStrictEqual()`][].
 
 Test per la deep equality tra i parametri `actual` ed `expected`. I valori primitivi sono confrontati con l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Sono prese in considerazione solo [le proprietà "own" enumerabili](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Sono prese in considerazione solo [le proprietà "own" enumerabili](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). L'implementazione [`assert.deepEqual()`][] non verifica il [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) degli objects o le proprietà own [`Symbol`][] enumerabili. Per tali controlli invece prendere in considerazione l'utilizzo di [`assert.deepStrictEqual()`][]. [`assert.deepEqual()`][] può avere risultati potenzialmente sorprendenti. L'esempio seguente non genera un `AssertionError` perché le proprietà sul [`RegExp`][] object non sono enumerabili:
 
 ```js
 // WARNING: This does not throw an AssertionError!
