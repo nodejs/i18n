@@ -111,7 +111,7 @@ Per disattivare i colori, utilizza la variabile di ambiente `NODE_DISABLE_COLORS
 
 ## Legacy mode
 
-> Stabilità: 0 - Deprecato: Utilizza invece la strict mode.
+> Stabilità: 0 - Obsoleto: Utilizza invece la strict mode.
 
 Quando si accede direttamente all'`assert` invece di utilizzare la proprietà `strict`, verrà utilizzato l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) per qualsiasi funzione senza "strict" nel suo nome, come ad esempio [`assert.deepEqual()`][].
 
@@ -172,7 +172,7 @@ Un alias di [`assert.deepStrictEqual()`][].
 
 **Legacy mode**
 
-> Stabilità: 0 - Deprecato: Utilizza invece [`assert.deepStrictEqual()`][].
+> Stabilità: 0 - Obsoleto: Utilizza invece [`assert.deepStrictEqual()`][].
 
 Test per la deep equality tra i parametri `actual` ed `expected`. I valori primitivi sono confrontati con l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
@@ -485,7 +485,7 @@ Un alias di [`assert.strictEqual()`][].
 
 **Legacy mode**
 
-> Stabilità: 0 - Deprecato: Utilizza invece [`assert.strictEqual()`][].
+> Stabilità: 0 - Obsoleto: Utilizza invece [`assert.strictEqual()`][].
 
 Verifica l'uguaglianza superficiale e coercitiva tra i parametri `actual` ed `expected` utilizzando l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
@@ -503,7 +503,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-Se i valori non sono uguali, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. If the `message` parameter is undefined, a default error message is assigned. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà lanciato al posto di `AssertionError`.
+Se i valori non sono uguali, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. Se il parametro `message` è undefined (indefinito), viene assegnato un messaggio di errore predefinito. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà lanciato al posto di `AssertionError`.
 
 ## assert.fail([message])
 
@@ -513,7 +513,7 @@ added: v0.1.21
 
 * `message` {any} **Default:** `'Failed'`
 
-Throws an `AssertionError` with the provided error message or a default error message. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Genera un `AssertionError` con uno specifico messaggio di errore oppure un messaggio di errore predefinito. Se il parametro `message` è un'istanza di un [`Error`][] allora verrà generato al posto di `AssertionError`.
 
 ```js
 const assert = require('assert').strict;
@@ -528,7 +528,7 @@ assert.fail(new TypeError('need array'));
 // TypeError: need array
 ```
 
-Using `assert.fail()` with more than two arguments is possible but deprecated. See below for further details.
+L'utilizzo di `assert.fail()` con più di due argomenti è possibile ma obsoleto. Vedi sotto per ulteriori dettagli.
 
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
 
@@ -548,7 +548,7 @@ changes:
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
-> Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert functions instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece `assert.fail([message])` oppure altre funzioni assert.
 
 If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
 
@@ -836,7 +836,7 @@ Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, mes
 
 If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà lanciato al posto di `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
+Be aware that in the `repl` the error message will be different to the one thrown in a file! Vedi sotto per ulteriori dettagli.
 
 ```js
 const assert = require('assert').strict;
