@@ -80,13 +80,13 @@ Quando si utilizza la `strict mode`, qualsiasi funzione `assert` utilizzerà l'u
 
 Oltre a questo, i messaggi di errore che coinvolgono gli objects generano un error diff invece di visualizzare entrambi gli objects. Questo non succede nella legacy mode.
 
-It can be accessed using:
+Ci si può accedere utilizzando:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+Esempio di error diff:
 
 ```js
 const assert = require('assert').strict;
