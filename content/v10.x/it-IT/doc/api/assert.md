@@ -287,20 +287,20 @@ assert.deepStrictEqual({ a: 1 }, { a: '1' });
 // +   a: '1'
 //   }
 
-// The following objects don't have own properties
+// I seguenti objects non hanno proprietà proprie
 const date = new Date();
 const object = {};
 const fakeDate = {};
 Object.setPrototypeOf(fakeDate, Date.prototype);
 
-// Different [[Prototype]]:
+// [[Prototype]] diverso:
 assert.deepStrictEqual(object, fakeDate);
 // AssertionError: Input A expected to strictly deep-equal input B:
 // + expected - actual
 // - {}
 // + Date {}
 
-// Different type tags:
+// Type tags diversi:
 assert.deepStrictEqual(date, fakeDate);
 // AssertionError: Input A expected to strictly deep-equal input B:
 // + expected - actual
@@ -308,9 +308,9 @@ assert.deepStrictEqual(date, fakeDate);
 // + Date {}
 
 assert.deepStrictEqual(NaN, NaN);
-// OK, because of the SameValue comparison
+// OK, a causa del SameValue comparison
 
-// Different unwrapped numbers:
+// Numeri che hanno subito l'unwrap diversi:
 assert.deepStrictEqual(new Number(1), new Number(2));
 // AssertionError: Input A expected to strictly deep-equal input B:
 // + expected - actual
@@ -318,12 +318,12 @@ assert.deepStrictEqual(new Number(1), new Number(2));
 // + [Number: 2]
 
 assert.deepStrictEqual(new String('foo'), Object('foo'));
-// OK because the object and the string are identical when unwrapped.
+// OK perché l'object e la stringa sono identici una volta che hanno subito l'unwrap.
 
 assert.deepStrictEqual(-0, -0);
 // OK
 
-// Different zeros using the SameValue Comparison:
+// Diversi zeri usando il SameValue Comparison:
 assert.deepStrictEqual(0, -0);
 // AssertionError: Input A expected to strictly deep-equal input B:
 // + expected - actual
@@ -333,7 +333,7 @@ assert.deepStrictEqual(0, -0);
 const symbol1 = Symbol();
 const symbol2 = Symbol();
 assert.deepStrictEqual({ [symbol1]: 1 }, { [symbol1]: 1 });
-// OK, because it is the same symbol on both objects.
+// OK, perché è lo stesso symbol su entrambi gli objects.
 assert.deepStrictEqual({ [symbol1]: 1 }, { [symbol2]: 1 });
 // AssertionError [ERR_ASSERTION]: Input objects not identical:
 // {
