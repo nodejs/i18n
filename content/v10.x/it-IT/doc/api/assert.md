@@ -376,7 +376,7 @@ Attende il `block` promise oppure, se `block` è una funzione, chiama immediatam
 
 Se `block` è una funzione e genera un errore in modo sincrono, `assert.doesNotReject()` restituirà un `Promise` respinto con quell'errore. Se la funzione non restituisce un promise, `assert.doesNotReject()` restituirà un `Promise` respinto con un errore [`ERR_INVALID_RETURN_VALUE`][]. In entrambi i casi viene saltato l'error handler.
 
-Si prega di notare: L'utilizzo di `assert.doesNotReject()` in realtà non è utile perché c'è poco vantaggio nel rilevare un promise respinto e dopo respingerlo nuovamente. Invece, considera di aggiungere un commento accanto al percorso del codice specifico che non dovrebbe respingere e mantiene i messaggi di errore il più espressivi possibile.
+Da notare: L'utilizzo di `assert.doesNotReject()` in realtà non è utile perché c'è poco vantaggio nel rilevare un promise respinto e dopo respingerlo nuovamente. Invece, considera di aggiungere un commento accanto al percorso del codice specifico che non dovrebbe respingere e che mantiene i messaggi di errore il più espressivi possibile.
 
 Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][] oppure una funzione di convalida. Vedi [`assert.throws()`][] per maggiori dettagli.
 
@@ -418,17 +418,17 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Asserts that the function `block` does not throw an error.
+Afferma che la funzione `block` non genera un errore.
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+Da notare: L'utilizzo di `assert.doesNotThrow()` in realtà non è utile perché non c'è alcun vantaggio nel rilevare un errore e dopo rilanciarlo. Invece, considera di aggiungere un commento accanto al percorso del codice specifico che non dovrebbe lanciare e che mantiene i messaggi di errore il più espressivi possibile.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+Quando viene chiamato `assert.doesNotThrow()`, esso chiamerà immediatamente la funzione `block`.
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+Se viene generato un errore ed è dello stesso tipo specificato dal parametro `error`, allora viene generato un `AssertionError`. Se l'errore è di un tipo diverso o se il parametro dell'`error` è undefined (indefinito), l'errore viene propagato indietro al caller.
 
 Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][] oppure una funzione di convalida. Vedi [`assert.throws()`][] per maggiori dettagli.
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+Il seguente codice, ad esempio, genererà il [`TypeError`][] perché non c'è un tipo di errore corrispondente nell'assertion:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -441,7 +441,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+Tuttavia, il seguente darà come risultato un `AssertionError` con il messaggio 'Got unwanted exception...' (C'è un'eccezione indesiderata):
 
 <!-- eslint-disable no-restricted-syntax -->
 
