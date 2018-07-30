@@ -121,10 +121,10 @@ Ci si può accedere utilizzando:
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Si raccomanda di utilizzare la [`strict mode`][] in quanto l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) può avere spesso risultati sorprendenti. Questo è particolarmente vero per [`assert.deepEqual()`][], dove le regole di confronto sono negligenti:
 
 ```js
-// WARNING: This does not throw an AssertionError!
+// ATTENZIONE: Questo non lancia un AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Un alias di [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -168,11 +168,11 @@ changes:
 
 **Strict mode**
 
-An alias of [`assert.deepStrictEqual()`][].
+Un alias di [`assert.deepStrictEqual()`][].
 
 **Legacy mode**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> Stabilità: 0 - Deprecato: Utilizza invece [`assert.deepStrictEqual()`][].
 
 Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
