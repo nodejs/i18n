@@ -265,12 +265,12 @@ Test per la deep equality tra i parametri `actual` ed `expected`. Per "deep" equ
 
 * I valori primitivi vengono confrontati utilizzando il [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), utilizzato tramite [`Object.is()`][].
 * [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) degli objects dovrebbero essere gli stessi.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
-* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
-* [`Error`][] names and messages are always compared, even if these are not enumerable properties.
-* Enumerable own [`Symbol`][] properties are compared as well.
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
-* `Object` properties are compared unordered.
+* Il [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots)degli objects vengono confrontati utilizzando lo [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* Sono prese in considerazione solo [le proprietà "own" enumerabili](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
+* Gli [`Error`][] name e message vengono sempre confrontati, anche se non si tratta di proprietà enumerabili.
+* Anche le proprietà own [`Symbol`][] enumerabili vengono confrontate.
+* Gli [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) vengono confrontati sia come objects che come valori che hanno subito l'unwrap.
+* Le proprietà dell'`Object` vengono confrontate in modo non ordinato.
 * `Map` keys and `Set` items are compared unordered.
 * Recursion stops when both sides differ or both sides encounter a circular reference.
 * [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
