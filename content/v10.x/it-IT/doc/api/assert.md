@@ -376,11 +376,11 @@ Attende il `block` promise oppure, se `block` è una funzione, chiama immediatam
 
 Se `block` è una funzione e genera un errore in modo sincrono, `assert.doesNotReject()` restituirà un `Promise` respinto con quell'errore. Se la funzione non restituisce un promise, `assert.doesNotReject()` restituirà un `Promise` respinto con un errore [`ERR_INVALID_RETURN_VALUE`][]. In entrambi i casi viene saltato l'error handler.
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+Si prega di notare: L'utilizzo di `assert.doesNotReject()` in realtà non è utile perché c'è poco vantaggio nel rilevare un promise respinto e dopo respingerlo nuovamente. Invece, considera di aggiungere un commento accanto al percorso del codice specifico che non dovrebbe respingere e mantiene i messaggi di errore il più espressivi possibile.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][] oppure una funzione di convalida. Vedi [`assert.throws()`][] per maggiori dettagli.
 
-Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
+Inoltre la natura asincrona di attendere il completamento si comporta in modo identico a [`assert.doesNotThrow()`][].
 
 ```js
 (async () => {
@@ -426,7 +426,7 @@ When `assert.doesNotThrow()` is called, it will immediately call the `block` fun
 
 If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][] oppure una funzione di convalida. Vedi [`assert.throws()`][] per maggiori dettagli.
 
 The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
