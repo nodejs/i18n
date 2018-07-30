@@ -454,7 +454,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+Se viene generato un `AssertionError` e viene fornito un valore per il parametro di `message`, il valore di `message` verrà aggiunto al messaggio dell'`AssertionError`:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -466,7 +466,7 @@ assert.doesNotThrow(
   /Wrong value/,
   'Whoops'
 );
-// Throws: AssertionError: Got unwanted exception: Whoops
+// Genera: AssertionError: Ha un'eccezione indesiderata: Whoops
 ```
 
 ## assert.equal(actual, expected[, message])
@@ -481,13 +481,13 @@ added: v0.1.21
 
 **Strict mode**
 
-An alias of [`assert.strictEqual()`][].
+Un alias di [`assert.strictEqual()`][].
 
 **Legacy mode**
 
-> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
+> Stabilità: 0 - Deprecato: Utilizza invece [`assert.strictEqual()`][].
 
-Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Verifica l'uguaglianza superficiale e coercitiva tra i parametri `actual` ed `expected` utilizzando l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
 ```js
 const assert = require('assert');
@@ -503,7 +503,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà lanciato al posto di `AssertionError`.
+Se i valori non sono uguali, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. If the `message` parameter is undefined, a default error message is assigned. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà lanciato al posto di `AssertionError`.
 
 ## assert.fail([message])
 
