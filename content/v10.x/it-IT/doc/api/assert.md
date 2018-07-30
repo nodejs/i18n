@@ -179,11 +179,11 @@ Test per la deep equality tra i parametri `actual` ed `expected`. I valori primi
 Sono prese in considerazione solo [le proprietà "own" enumerabili](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). L'implementazione [`assert.deepEqual()`][] non verifica il [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) degli objects o le proprietà own [`Symbol`][] enumerabili. Per tali controlli invece prendere in considerazione l'utilizzo di [`assert.deepStrictEqual()`][]. [`assert.deepEqual()`][] può avere risultati potenzialmente sorprendenti. L'esempio seguente non genera un `AssertionError` perché le proprietà sul [`RegExp`][] object non sono enumerabili:
 
 ```js
-// WARNING: This does not throw an AssertionError!
+// ATTENZIONE: Questo non lancia un AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
+Viene fatta un'eccezione per [`Map`][] e [`Set`][]. I `Map` ed i `Set` hanno confrontato anche gli elementi al loro interno, come previsto.
 
 "Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
 
