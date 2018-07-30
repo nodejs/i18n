@@ -185,7 +185,7 @@ assert.deepEqual(/a/gi, new Date());
 
 Viene fatta un'eccezione per [`Map`][] e [`Set`][]. I `Map` ed i `Set` hanno confrontato anche gli elementi al loro interno, come previsto.
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+Per "deep" equality si intende che vengono valutate anche le proprietà "own" enumerabili dei child objects:
 
 ```js
 const assert = require('assert');
@@ -208,18 +208,18 @@ const obj3 = {
 const obj4 = Object.create(obj1);
 
 assert.deepEqual(obj1, obj1);
-// OK, object is equal to itself
+// OK, l'object è uguale a se stesso
 
 assert.deepEqual(obj1, obj2);
 // AssertionError: { a: { b: 1 } } deepEqual { a: { b: 2 } }
-// values of b are different
+// i valori di b sono diversi
 
 assert.deepEqual(obj1, obj3);
-// OK, objects are equal
+// OK, gli objects sono uguali
 
 assert.deepEqual(obj1, obj4);
 // AssertionError: { a: { b: 1 } } deepEqual {}
-// Prototypes are ignored
+// I prototipi (prototype) sono ignorati
 ```
 
 If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
