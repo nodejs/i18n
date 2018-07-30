@@ -76,9 +76,9 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-Quando si utilizza la `strict mode`, qualsiasi funzione `assert` utilizzerà l'uguaglianza utilizzata nella strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
+Quando si utilizza la `strict mode`, qualsiasi funzione `assert` utilizzerà l'uguaglianza utilizzata nella strict function mode. Quindi [`assert.deepEqual()`][] funzionerà, ad esempio, allo stesso modo di [`assert.deepStrictEqual()`][].
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
+Oltre a questo, i messaggi di errore che coinvolgono gli objects generano un error diff invece di visualizzare entrambi gli objects. Questo non succede nella legacy mode.
 
 It can be accessed using:
 
