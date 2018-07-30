@@ -271,14 +271,14 @@ Test per la deep equality tra i parametri `actual` ed `expected`. Per "deep" equ
 * Anche le proprietà own [`Symbol`][] enumerabili vengono confrontate.
 * Gli [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) vengono confrontati sia come objects che come valori che hanno subito l'unwrap.
 * Le proprietà dell'`Object` vengono confrontate in modo non ordinato.
-* `Map` keys and `Set` items are compared unordered.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
-* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
+* Le `Map` key ed i `Set` item vengono confrontati in modo non ordinato.
+* La ricorsione si interrompe quando entrambi i lati sono diversi oppure quando incontrano un riferimento circolare.
+* I confronti [`WeakMap`][] e [`WeakSet`][] non si basano sui loro valori. Vedi sotto per ulteriori dettagli.
 
 ```js
 const assert = require('assert').strict;
 
-// This fails because 1 !== '1'.
+// Questo fallisce perché 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
 // AssertionError: Input A expected to strictly deep-equal input B:
 // + expected - actual
