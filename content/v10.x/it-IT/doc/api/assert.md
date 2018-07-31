@@ -661,13 +661,13 @@ changes:
 
 **Strict mode**
 
-An alias of [`assert.notDeepStrictEqual()`][].
+Un alias di [`assert.notDeepStrictEqual()`][].
 
 **Legacy mode**
 
-> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`assert.notDeepStrictEqual()`][].
 
-Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
+Test per qualsiasi deep inequality. Opposto di [`assert.deepEqual()`][].
 
 ```js
 const assert = require('assert');
