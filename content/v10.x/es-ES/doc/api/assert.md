@@ -4,25 +4,25 @@
 
 > Stability: 2 - Stable
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+El módulo `assert` proporciona un conjunto simple de pruebas de afirmación que pueden ser utilizadas para probar invariantes.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Existe un modo `strict` y un modo `legacy`, pero se recomiendo utilizar solo el [`strict mode`][].
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Para mayor información acerca de las comparaciones de igualdad utilizadas vea la [Guía de MDN en comparaciones de igualdad y uniformidad](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Class: assert.AssertionError
+## Clase: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Una subclase de `Error` que indica un fallo en una afirmación. Todos los errores arrojados por el módulo `assert` serán instancias de la clase `AssertionError`.
 
-### new assert.AssertionError(options)
+### new assert.AssertionError(opciones)
 
 <!-- YAML
 added: v0.1.21
 -->
 
-* `options` {Object} 
-  * `message` {string} If provided, the error message is going to be set to this value.
-  * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
+* `opciones` {Object} 
+  * `message` {string} si se proporciona, el mensaje de error se establecerá a este valor.
+  * `actual` {any} La propiedad `actual` en la instancia de error contendrá este valor. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
   * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
