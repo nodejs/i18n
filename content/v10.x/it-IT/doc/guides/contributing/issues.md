@@ -4,8 +4,8 @@
 * [Chiedere Aiuto Generale](#asking-for-general-help)
 * [Discutere di argomenti non tecnici](#discussing-non-technical-topics)
 * [Inviare un Bug Report](#submitting-a-bug-report)
-* [Triaging a Bug Report](#triaging-a-bug-report)
-* [Resolving a Bug Report](#resolving-a-bug-report)
+* [Smistamento di un Bug Report](#triaging-a-bug-report)
+* [Risoluzione di un Bug Report](#resolving-a-bug-report)
 
 ## How to Contribute in Issues
 
