@@ -373,11 +373,11 @@ added: v10.0.0
 
 Espera la promesa de `block` o, si el `block` es una función, inmediatamente llama a la función y espera la promesa de vuelta para completar. Luego comprobará que la promesa no sea rechazada.
 
-Si el `block` es una función y arroja un error sincrónicamente, `assert.doesNotReject()` devolverá una `Promise` rechazada con ese error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Si el `block` es una función y arroja un error sincrónicamente, `assert.doesNotReject()` devolverá una `Promise` rechazada con ese error. Si la función no devuelve una promesa, `assert.doesNotReject()` devolverá una `Promise` rechazada con un error [`ERR_INVALID_RETURN_VALUE`][]. En ambos casos se omitirá el controlador de errores.
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+Por favor, note: El uso de `assert.doesNotReject()` no es realmente útil porque hay muy poco beneficio por coger un rechazo y luego rechazarlo de nuevo. En su lugar, considere añadir un comentario al lado de la ruta de código específica que no deba rechazar y mantenga los mensajes de error lo más expresivos posibles.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Si se especifica, el `error` puede ser una función de [`Class`][], de [`RegExp`][] o una validación. Vea [`assert.throws()`][] para más detalles.
 
 Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
 
@@ -419,13 +419,13 @@ changes:
 
 Asserts that the function `block` does not throw an error.
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. En su lugar, considere añadir un comentario al lado de la ruta de código específica que no deba arrojar y mantenga los mensajes de error lo más expresivos posibles.
 
 When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
 
 If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+Si se especifica, el `error` puede ser una función de [`Class`][], de [`RegExp`][] o una validación. Vea [`assert.throws()`][] para más detalles.
 
 The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
