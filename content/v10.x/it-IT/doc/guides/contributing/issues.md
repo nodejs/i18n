@@ -17,26 +17,26 @@ Per qualsiasi issue, ci sono fondamentalmente tre modi con i quali una persona p
 
 ## Chiedere Aiuto Generale
 
-Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
+Visto che il livello di attività nel repository di `nodejs/node` è così elevato, le domande o le richieste di aiuto generale che utilizzano Node.js devono essere indirizzate al [Node.js help repository](https://github.com/nodejs/help/issues).
 
 ## Discutere di argomenti non tecnici
 
-Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
+La discussione di argomenti non tecnici (come possono essere la proprietà intellettuale ed il trademark) deve essere indirizzata al [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues) (Repository del Comitato Tecnico Direttivo).
 
 ## Inviare un Bug Report
 
-When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
+Quando si apre un nuovo issue nell'issue tracker di `nodejs/node`, agli utenti verrà presentato un modello di base da compilare.
 
 ```markdown
 <!--
-Thank you for reporting an issue.
+Grazie per aver segnalato un issue.
 
-This issue tracker is for bugs and issues found within Node.js core.
-If you require more general support please file an issue on our help
-repo. https://github.com/nodejs/help
+Questo issue tracker riguarda bug ed issue rilevati nel Node.js core.
+Se hai bisogno di maggiore supporto generale, inviaci un issue sul 
+nostro "help repository". https://github.com/nodejs/help
 
 
-Please fill in as much of the template below as you're able.
+Si prega di compilare il più possibile il modello qui sotto.
 
 Version: output of `node -v`
 Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
