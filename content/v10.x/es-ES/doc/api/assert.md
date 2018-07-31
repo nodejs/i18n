@@ -76,24 +76,24 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
+Al utilizar el `strict mode`, cualquier función `assert` utilizará la igualdad utilizada en el modo de función estricta. Por lo tanto, [`assert.deepEqual()`][] trabajará, por ejemplo, al igual que [`assert.deepStrictEqual()`][].
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
+Además de eso, los mensajes de error que involucran objetos, producen un error diff en lugar de mostrar ambos objetos. Ese no es el caso para el modo legado.
 
-It can be accessed using:
+Puede ser accedido utilizando:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+Ejemplo de error diff:
 
 ```js
 const assert = require('assert').strict;
 
 assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 // AssertionError: Input A expected to strictly deep-equal input B:
-// + expected - actual ... Lines skipped
+// + expected - actual ... Lineas saltadas
 //
 //   [
 //     [
@@ -107,21 +107,21 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
+Para desactivar los colores, use la variable de entorno `NODE_DISABLE_COLORS`. Por favor, note que esto también desactivará los colores en el REPL.
 
-## Legacy mode
+## Modo legado
 
-> Stability: 0 - Deprecated: Use strict mode instead.
+> Estabilidad: 0 - Obsoleto: Utilice el modo estricto en su lugar.
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+Al acceder a `assert` directamente en lugar de utilizar la propiedad `strict`, la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) será utilizada para cualquier función si el "strict" en su nombre, como [`assert.deepEqual()`][].
 
-It can be accessed using:
+Puede ser accedido utilizando:
 
 ```js
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Se recomienda usar el [`strict mode`][] en su lugar ya que la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) a menudo puede obtener resultados sorprendentes. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -170,7 +170,7 @@ changes:
 
 An alias of [`assert.deepStrictEqual()`][].
 
-**Legacy mode**
+**Modo legado**
 
 > Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
@@ -482,7 +482,7 @@ added: v0.1.21
 
 An alias of [`assert.strictEqual()`][].
 
-**Legacy mode**
+**Modo legado**
 
 > Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
@@ -662,7 +662,7 @@ changes:
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
-**Legacy mode**
+**Modo legado**
 
 > Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
@@ -763,7 +763,7 @@ added: v0.1.21
 
 An alias of [`assert.notStrictEqual()`][].
 
-**Legacy mode**
+**Modo legado**
 
 > Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
