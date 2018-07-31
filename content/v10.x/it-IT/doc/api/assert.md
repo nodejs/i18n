@@ -999,22 +999,22 @@ assert.throws(
   {
     name: 'TypeError',
     message: 'Wrong value'
-    // Note that only properties on the error object will be tested!
+    // Da notare che verranno testate solo le proprietà sull'error object!
   }
 );
 
-// Fails due to the different `message` and `name` properties:
+// Fallisce a causa delle diverse proprietà di `message` e `name`:
 assert.throws(
   () => {
     const otherErr = new Error('Not found');
     otherErr.code = 404;
     throw otherErr;
   },
-  err // This tests for `message`, `name` and `code`.
+  err // Questo testa for `message`, `name` e `code`.
 );
 ```
 
-Validate instanceof using constructor:
+Convalida instanceof utilizzando il constructor:
 
 ```js
 assert.throws(
@@ -1025,9 +1025,9 @@ assert.throws(
 );
 ```
 
-Validate error message using [`RegExp`][]:
+Convalida il messsaggio d'errore utilizzando [`RegExp`][]:
 
-Using a regular expression runs `.toString` on the error object, and will therefore also include the error name.
+L'utilizzo di un'espressione regolare esegue `.toString` sull'error object e di conseguenza includerà anche il l'error name.
 
 ```js
 assert.throws(
@@ -1038,7 +1038,7 @@ assert.throws(
 );
 ```
 
-Custom error validation:
+Convalida del custom error:
 
 ```js
 assert.throws(
