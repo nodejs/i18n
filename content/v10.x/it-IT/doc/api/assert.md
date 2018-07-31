@@ -895,9 +895,9 @@ Se `block` è una funzione e genera un errore in modo sincrono, `assert.rejects(
 
 Inoltre la natura asincrona di attendere il completamento si comporta in modo identico ad [`assert.throws()`][].
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][], una funzione di convalida, un object in cui verrà testata ogni proprietà, oppure un'istanza di errore in cui verrà testata ogni proprietà per includere anche le proprietà non enumarabili `message` e `name`.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to reject.
+Se specificato, `message` sarà il messaggio fornito da `AssertionError` se il block fallisce nel respingere.
 
 ```js
 (async () => {
@@ -922,7 +922,7 @@ assert.rejects(
 });
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
+Da notare che `error` non può essere una stringa. Se viene fornita una stringa come secondo argomento, si presume che l'`error` venga omesso e che venga utilizzata la stringa per `message`. Questo può portare ad errori easy-to-miss (facili da perdere). Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -982,7 +982,7 @@ changes:
 
 Expects the function `block` to throw an error.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][], una funzione di convalida, un object in cui verrà testata ogni proprietà, oppure un'istanza di errore in cui verrà testata ogni proprietà per includere anche le proprietà non enumarabili `message` e `name`.
 
 If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
 
@@ -1054,7 +1054,7 @@ assert.throws(
 );
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Da notare che `error` non può essere una stringa. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. Questo può portare ad errori easy-to-miss (facili da perdere). Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
 
 <!-- eslint-disable no-restricted-syntax -->
 
