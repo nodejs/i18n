@@ -922,7 +922,7 @@ assert.rejects(
 });
 ```
 
-Da notare che `error` non può essere una stringa. Se viene fornita una stringa come secondo argomento, si presume che l'`error` venga omesso e che venga utilizzata la stringa per `message`. Questo può portare ad errori easy-to-miss (facili da perdere). Si prega di leggere attentamente l'esempio in [`assert.throws()`][] se si utilizza una stringa mentre viene considerato il secondo argomento.
+Da notare che `error` non può essere una stringa. Se viene fornita una stringa come secondo argomento, si presume che l'`error` venga omesso e che la stringa venga utilizzata per `message`. Questo può portare ad errori easy-to-miss (facili da perdere). Si prega di leggere attentamente l'esempio in [`assert.throws()`][] se si utilizza una stringa mentre viene considerato il secondo argomento.
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -1054,7 +1054,7 @@ assert.throws(
 );
 ```
 
-Da notare che `error` non può essere una stringa. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. Questo può portare ad errori easy-to-miss (facili da perdere). Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Da notare che `error` non può essere una stringa. Se viene fornita una stringa come secondo argomento, si presume che l'`error` venga omesso e che la stringa venga utilizzata per `message`. Questo può portare ad errori easy-to-miss (facili da perdere). Utilizzare lo stesso messaggio del messaggio di errore generato causerà un errore `ERR_AMBIGUOUS_ARGUMENT`. Si prega di leggere di leggere attentamente l'esempio seguente se si utilizza una stringa mentre viene considerato il secondo argomento:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -1067,13 +1067,14 @@ function throwingSecond() {
 }
 function notThrowing() {}
 
-// The second argument is a string and the input function threw an Error.
-// The first case will not throw as it does not match for the error message
-// thrown by the input function!
+// Il secondo argomento è una stringa e la funzione di input ha generato un errore.
+// Il primo caso non verrà generato in quanto non corrisponde al messaggio di errore 
+// generato dalla funzione di input!
 assert.throws(throwingFirst, 'Second');
-// In the next example the message has no benefit over the message from the
-// error and since it is not clear if the user intended to actually match
-// against the error message, Node.js thrown an `ERR_AMBIGUOUS_ARGUMENT` error.
+// Nel prossimo esempio il messaggio non ha alcun vantaggio sul messaggio proveniente 
+// dall'errore e poiché non è chiaro se l'utente intendesse effettivamente farlo 
+// corrispondere al messaggio di errore, Node.js ha generato un 
+errore `ERR_AMBIGUOUS_ARGUMENT`.
 assert.throws(throwingSecond, 'Second');
 // Throws an error:
 // TypeError [ERR_AMBIGUOUS_ARGUMENT]
