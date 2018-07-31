@@ -259,18 +259,18 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep equality between the `actual` and `expected` parameters. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
+Pruebas para igualdad profunda entre los parámetros `actual` y `expected`. Igualdad "profunda" significa que las propiedades enumerables "propias" de objetos secundarios son evaluadas recursivamente también por las siguientes reglas.
 
-### Comparison details
+### Detalles de compración
 
-* Primitive values are compared using the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), used by [`Object.is()`][].
-* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* Los valor primitivos son comparados utilizando la [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), usada por [`Object.is()`][].
+* Las [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) de objetos deben ser las mismas.
+* Los [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) de objetos son comparados utilizando la [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
 * Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
 * [`Error`][] names and messages are always compared, even if these are not enumerable properties.
-* Enumerable own [`Symbol`][] properties are compared as well.
+* Las propiedades [`Symbol`][] enumerables propias también son comparadas.
 * [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
-* `Object` properties are compared unordered.
+* Las propiedades `Object` son comparadas sin orden.
 * `Map` keys and `Set` items are compared unordered.
 * Recursion stops when both sides differ or both sides encounter a circular reference.
 * [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
@@ -278,7 +278,7 @@ Tests for deep equality between the `actual` and `expected` parameters. "Deep" e
 ```js
 const assert = require('assert').strict;
 
-// This fails because 1 !== '1'.
+// Esto falla porque 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
 // AssertionError: Input A expected to strictly deep-equal input B:
 // + expected - actual
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
+Si los valores no son iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -371,9 +371,9 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
+Espera la promesa de `block` o, si el `block` es una función, inmediatamente llama a la función y espera la promesa de vuelta para completar. Luego comprobará que la promesa no sea rechazada.
 
-If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Si el `block` es una función y arroja un error sincrónicamente, `assert.doesNotReject()` devolverá una `Promise` rechazada con ese error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 
 Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
 
@@ -888,7 +888,7 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
+Espera la promesa de `block` o, si el `block` es una función, inmediatamente llama a la función y espera la promesa de vuelta para completar. It will then check that the promise is rejected.
 
 If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 
