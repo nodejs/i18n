@@ -22,32 +22,32 @@ added: v0.1.21
 
 * `opciones` {Object} 
   * `message` {string} si se proporciona, el mensaje de error se establecerá a este valor.
-  * `actual` {any} La propiedad `actual` en la instancia de error contendrá este valor. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
-  * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
+  * `actual` {any} La propiedad `actual` en la instancia de error va a contener este valor. Utilizado internamente para la entrada de error `actual` en el caso p. ej., [`assert.strictEqual()`] es utilizado.
+  * `expected` {any} La propiedad `expected` en la instancia de error va a contener este valor. Utilizado internamente para la entrada de error `expected` en el caso p. ej., [`assert.strictEqual()`] es utilizado.
+  * `operator` {string} La propiedad `operator` en la instancia de error va a contener este valor. Utilizado internamente para indicar qué operación fue utilizada para la comparación (o que función de afirmación desencadenó el error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
-A subclass of `Error` that indicates the failure of an assertion.
+Una subclase de `Error` que indica la falla de una afirmación.
 
-All instances contain the built-in `Error` properties (`message` and `name`) and:
+Todas las instancias contienen la propiedades integradas de `Error` (`message` y `name`) y:
 
-* `actual` {any} Set to the actual value in case e.g., [`assert.strictEqual()`] is used.
+* `actual` {any} Establecer al valor actual en el caso, p. ej., [`assert.strictEqual()`] es utilizado.
 * `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
-* `generatedMessage` {boolean} Indicates if the message was auto-generated (`true`) or not.
-* `code` {string} This is always set to the string `ERR_ASSERTION` to indicate that the error is actually an assertion error.
+* `generatedMessage` {boolean} Indica si el mensaje fue generado automáticamente (`true`) o no.
+* `code` {string} Esto siempre está establecido a la string `ERR_ASSERTION` para indicar que el error es en realidad un error de afirmación.
 * `operator` {string} Set to the passed in operator value.
 
 ```js
 const assert = require('assert');
 
-// Generate an AssertionError to compare the error message later:
+//Generar un AssertionError para comparar el mensaje después:
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Verify error output:
+//Verificar la salida del error:
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode
+## Modo estricto
 
 <!-- YAML
 added: v9.9.0
@@ -166,7 +166,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Modo estricto**
 
 An alias of [`assert.deepStrictEqual()`][].
 
@@ -478,7 +478,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Modo estricto**
 
 An alias of [`assert.strictEqual()`][].
 
@@ -658,7 +658,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Modo estricto**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
@@ -759,7 +759,7 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode**
+**Modo estricto**
 
 An alias of [`assert.notStrictEqual()`][].
 
