@@ -1,9 +1,9 @@
 # Problemi (Issues)
 
-* [How to Contribute in Issues](#how-to-contribute-in-issues)
-* [Asking for General Help](#asking-for-general-help)
-* [Discussing non-technical topics](#discussing-non-technical-topics)
-* [Submitting a Bug Report](#submitting-a-bug-report)
+* [Come Contribuire nei Problemi (Issues)](#how-to-contribute-in-issues)
+* [Chiedere Aiuto Generale](#asking-for-general-help)
+* [Discutere di argomenti non tecnici](#discussing-non-technical-topics)
+* [Inviare un Bug Report](#submitting-a-bug-report)
 * [Triaging a Bug Report](#triaging-a-bug-report)
 * [Resolving a Bug Report](#resolving-a-bug-report)
 
