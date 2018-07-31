@@ -1092,4 +1092,4 @@ assert.throws(throwingFirst, /Second$/);
 //     at throwingFirst (repl:2:9)
 ```
 
-A causa della notazione confusa, si raccomanda di non usare una stringa come secondo argomento. This might lead to difficult-to-spot errors.
+A causa della notazione confusionaria, si raccomanda di non usare una stringa come secondo argomento. Ciò potrebbe portare ad errori difficult-to-sport (difficili da individuare).
