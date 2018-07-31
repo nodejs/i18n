@@ -124,7 +124,7 @@ const assert = require('assert');
 Se recomienda usar el [`strict mode`][] en su lugar ya que la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) a menudo puede obtener resultados sorprendentes. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
-// WARNING: This does not throw an AssertionError!
+// ADVERTENCIA: ¡Esto no arroja un AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-An alias of [`assert.ok()`][].
+Un alias de [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -168,24 +168,24 @@ changes:
 
 **Modo estricto**
 
-An alias of [`assert.deepStrictEqual()`][].
+Un alias de [`assert.deepStrictEqual()`][].
 
 **Modo legado**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> Estabilidad: 0 - Obsoleto: Use [`assert.deepStrictEqual()`][] en su lugar.
 
-Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Pruebas para igualdad profunda entre los parámetros `actual` y `expected`. Los valores primitivos son comparados con la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. La implementación de [`assert.deepEqual()`][] no realiza una prueba de [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) de objetos o de propiedades [`Symbol`][] enumerables propias. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] puede obtener resultados potencialmente sorprendentes. El siguiente ejemplo no arroja un `AssertionError` porque la propiedades en el objeto [`RegExp`][] no son enumerables:
 
 ```js
-// WARNING: This does not throw an AssertionError!
+// ADVERTENCIA: ¡Esto no arroja un AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
+Se hace una excepción para [`Map`][] y para [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+Igualdad "profunda" significa que las propiedades enumerables "propias" de objetos secundarios también son evaluadas:
 
 ```js
 const assert = require('assert');
@@ -208,21 +208,21 @@ const obj3 = {
 const obj4 = Object.create(obj1);
 
 assert.deepEqual(obj1, obj1);
-// OK, object is equal to itself
+// OK, el objeto es igual a si mismo
 
 assert.deepEqual(obj1, obj2);
 // AssertionError: { a: { b: 1 } } deepEqual { a: { b: 2 } }
-// values of b are different
+// los valores de b son diferentes
 
 assert.deepEqual(obj1, obj3);
-// OK, objects are equal
+// OK, los objetos son iguales
 
 assert.deepEqual(obj1, obj4);
 // AssertionError: { a: { b: 1 } } deepEqual {}
-// Prototypes are ignored
+//Los prototipos son ignorados
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Si los valores no son iguales, se arroja un `AssertionError` con una propiedad `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.fail([message])
 
@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.ok(value[, message])
 
@@ -833,7 +833,7 @@ changes:
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
 
