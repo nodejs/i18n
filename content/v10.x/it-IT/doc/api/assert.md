@@ -550,7 +550,7 @@ changes:
 
 > Stabilità: 0 - Obsoleto: Utilizza invece `assert.fail([message])` oppure altre funzioni assert.
 
-Se `message` è falsy, il messaggio di errore viene impostato come vengono impostati i valori di `actual` ed `expected` separati dall'`operator` fornito. Se vengono specificati solo i due argomenti `actual` ed `expected`, l'`operator` sarà impostato in modo predefinito su `'!='`. Se il `message` viene fornito come terzo argomento, verrà utilizzato come messaggio di errore e gli altri argomenti verranno archiviati come proprietà dell'object generato. Se viene fornito `stackStartFunction`, tutti gli stack frames sopra quella funzione verranno rimossi da stacktrace (vedi [`Error.captureStackTrace`]). Se non vengono forniti argomenti, verrà utilizzato il messaggio predefinito `Failed`.
+Se il `message` è falso, il messaggio di errore viene impostato come vengono impostati i valori di `actual` ed `expected` separati dall'`operator` fornito. Se vengono specificati solo i due argomenti `actual` ed `expected`, l'`operator` sarà impostato in modo predefinito su `'!='`. Se il `message` viene fornito come terzo argomento, verrà utilizzato come messaggio di errore e gli altri argomenti verranno archiviati come proprietà dell'object generato. Se viene fornito `stackStartFunction`, tutti gli stack frames sopra quella funzione verranno rimossi da stacktrace (vedi [`Error.captureStackTrace`]). Se non vengono forniti argomenti, verrà utilizzato il messaggio predefinito `Failed`.
 
 ```js
 const assert = require('assert').strict;
@@ -889,11 +889,11 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Attende il `block` promise oppure, se `block` è una funzione, chiama immediatamente la funzione ed attende il promise restituito per il completamento. It will then check that the promise is rejected.
+Attende il `block` promise oppure, se `block` è una funzione, chiama immediatamente la funzione ed attende il promise restituito per il completamento. Controllerà quindi che il promise sia respinto.
 
-If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Se `block` è una funzione e genera un errore in modo sincrono, `assert.rejects()` restituirà un `Promise` respinto con quell'errore. Se la funzione non restituisce un promise, `assert.rejects()` restituirà un `Promise` respinto con un errore [`ERR_INVALID_RETURN_VALUE`][]. In entrambi i casi viene saltato l'error handler.
 
-Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
+Inoltre la natura asincrona di attendere il completamento si comporta in modo identico ad [`assert.throws()`][].
 
 If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
 
