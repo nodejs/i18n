@@ -7,13 +7,13 @@
 * [Smistamento di un Bug Report](#triaging-a-bug-report)
 * [Risoluzione di un Bug Report](#resolving-a-bug-report)
 
-## Come Contribuire nei Problemi (Issues)
+## Come Contribuire in Issues
 
-Per qualsiasi problema, ci sono fondamentalmente tre modi con i quali una persona può dare il suo contributo:
+Per qualsiasi issue, ci sono fondamentalmente tre modi con i quali una persona può dare il suo contributo:
 
-1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
-2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
-3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
+1. Aprendo l'issue per la discussione: Ad esempio, se ritieni di aver scoperto un bug in Node.js, la creazione di un nuovo issue nell'issue tracker di `nodejs/node` è il modo giusto per segnalarlo.
+2. Aiutando a valutare l'issue: Questo può essere fatto fornendo dettagli di supporto (un test case che dimostri un bug), o fornendo suggerimenti su come affrontare l'issue.
+3. Aiutando a risolvere l'issue: In genere questo viene fatto sia dimostrando che l'issue segnalato dopo tutto non è un problema, oppure più spesso, aprendo una Pull Request che modifica un pò qualcosa in `nodejs/node` in modo concreto e revisionabile.
 
 ## Chiedere Aiuto Generale
 
@@ -61,7 +61,7 @@ In order to rule out the possibility of bugs introduced by userland code, test c
 
 See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 
-## Smistamento di un Bug Report
+## Valutazione di un Bug Report
 
 Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
