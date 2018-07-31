@@ -922,7 +922,7 @@ assert.rejects(
 });
 ```
 
-Da notare che `error` non può essere una stringa. Se viene fornita una stringa come secondo argomento, si presume che l'`error` venga omesso e che venga utilizzata la stringa per `message`. Questo può portare ad errori easy-to-miss (facili da perdere). Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
+Da notare che `error` non può essere una stringa. Se viene fornita una stringa come secondo argomento, si presume che l'`error` venga omesso e che venga utilizzata la stringa per `message`. Questo può portare ad errori easy-to-miss (facili da perdere). Si prega di leggere attentamente l'esempio in [`assert.throws()`][] se si utilizza una stringa mentre viene considerato il secondo argomento.
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -939,7 +939,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests strict equality between the `actual` and `expected` parameters as determined by the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
+Verifica la strict equality tra i parametri `actual` ed `expected` come determinato dal [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
 
 ```js
 const assert = require('assert').strict;
@@ -960,7 +960,7 @@ assert.strictEqual(1, '1');
 // + '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà generato al posto di `AssertionError`.
+Se i valori non sono strict equal, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. Se il parametro di `message` è undefined (indefinito), viene assegnato un messaggio di errore predefinito. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà generato al posto di `AssertionError`.
 
 ## assert.throws(block\[, error\]\[, message\])
 
@@ -980,11 +980,11 @@ changes:
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Expects the function `block` to throw an error.
+Prevede che la funzione `block` generi un errore.
 
 Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][], una funzione di convalida, un object in cui verrà testata ogni proprietà, oppure un'istanza di errore in cui verrà testata ogni proprietà per includere anche le proprietà non enumarabili `message` e `name`.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
+Se specificato, `message` sarà il messaggio fornito da `AssertionError` se il block fallisce nel generare.
 
 Custom error object / error instance:
 
