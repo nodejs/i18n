@@ -693,16 +693,16 @@ assert.notDeepEqual(obj1, obj1);
 // AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj2);
-// OK: obj1 and obj2 are not deeply equal
+// OK: obj1 ed obj2 non sono deep equal
 
 assert.notDeepEqual(obj1, obj3);
 // AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj4);
-// OK: obj1 and obj4 are not deeply equal
+// OK: obj1 ed obj4 non sono deep equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà lanciato al posto di `AssertionError`.
+Se i valori sono deep equal, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. Se il parametro `message` è undefined (indefinito), viene assegnato un messaggio di errore predefinito. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà lanciato al posto di `AssertionError`.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -739,7 +739,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
+Test per la deep strict inequality. Opposto di [`assert.deepStrictEqual()`][].
 
 ```js
 const assert = require('assert').strict;
@@ -748,7 +748,7 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 // OK
 ```
 
-If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Se i valori sono deep strict equal, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. Se il parametro `message` è undefined (indefinito), viene assegnato un messaggio di errore predefinito. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## assert.notEqual(actual, expected[, message])
 
