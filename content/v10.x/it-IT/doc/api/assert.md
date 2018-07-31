@@ -748,7 +748,7 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 // OK
 ```
 
-Se i valori sono deep strict equal, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. Se il parametro `message` è undefined (indefinito), viene assegnato un messaggio di errore predefinito. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Se i valori sono deep strict equal, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. Se il parametro `message` è undefined (indefinito), viene assegnato un messaggio di errore predefinito. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà generato al posto di `AssertionError`.
 
 ## assert.notEqual(actual, expected[, message])
 
@@ -762,13 +762,13 @@ added: v0.1.21
 
 **Strict mode**
 
-An alias of [`assert.notStrictEqual()`][].
+Un alias di [`assert.notStrictEqual()`][].
 
 **Legacy mode**
 
-> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`assert.notStrictEqual()`][].
 
-Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
+Verifica l'inequality superficiale e coercitiva con l'[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
 ```js
 const assert = require('assert');
@@ -783,7 +783,7 @@ assert.notEqual(1, '1');
 // AssertionError: 1 != '1'
 ```
 
-If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Se i valori sono uguali, viene generato un `AssertionError` con una proprietà di `message` impostata uguale al valore del parametro di `message`. Se il parametro di `message` è undefined (indefinito), viene assegnato un messaggio di errore predefinito. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà generato al posto di `AssertionError`.
 
 ## assert.notStrictEqual(actual, expected[, message])
 
@@ -800,7 +800,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests strict inequality between the `actual` and `expected` parameters as determined by the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
+Verifica la strict inequality tra i parametri `actual` ed `expected` come determinato dal [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
 
 ```js
 const assert = require('assert').strict;
@@ -809,7 +809,7 @@ assert.notStrictEqual(1, 2);
 // OK
 
 assert.notStrictEqual(1, 1);
-// AssertionError [ERR_ASSERTION]: Identical input passed to notStrictEqual: 1
+// AssertionError [ERR_ASSERTION]: Input identico passato a notStrictEqual: 1
 
 assert.notStrictEqual(1, '1');
 // OK
@@ -960,7 +960,7 @@ assert.strictEqual(1, '1');
 // + '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Se il parametro di `message` è un'istanza di un [`Error`][] allora verrà generato al posto di `AssertionError`.
 
 ## assert.throws(block\[, error\]\[, message\])
 
