@@ -4,7 +4,7 @@
 
 > Stabilità: 1 - Sperimentale
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
+Il modulo `async_hooks` fornisce un'API per registrare i callback che tracciano la durata delle risorse asincrone create all'interno di un'applicazione Node.js. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
