@@ -113,7 +113,7 @@ Para desactivar los colores, use la variable de entorno `NODE_DISABLE_COLORS`. P
 
 > Estabilidad: 0 - Obsoleto: Utilice el modo estricto en su lugar.
 
-Al acceder a `assert` directamente en lugar de utilizar la propiedad `strict`, la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) será utilizada para cualquier función si el "strict" en su nombre, como [`assert.deepEqual()`][].
+Al acceder a `assert` directamente en lugar de utilizar la propiedad `strict`, la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) será utilizada para cualquier función sin el "strict" en su nombre, como [`assert.deepEqual()`][].
 
 Puede ser accedido utilizando:
 
@@ -373,7 +373,7 @@ added: v10.0.0
 
 Espera la promesa de `block` o, si el `block` es una función, inmediatamente llama a la función y espera la promesa de vuelta para completar. Luego comprobará que la promesa no sea rechazada.
 
-Si el `block` es una función y arroja un error sincrónicamente, `assert.doesNotReject()` devolverá una `Promise` rechazada con ese error. Si la función no devuelve una promesa, `assert.doesNotReject()` devolverá una `Promise` rechazada con un error [`ERR_INVALID_RETURN_VALUE`][]. En ambos casos se omitirá el controlador de errores.
+Si el `block` es una función y arroja un error sincrónicamente `assert.doesNotReject()` devolverá una `Promise` rechazada con ese error. Si la función no devuelve una promesa, `assert.doesNotReject()` devolverá una `Promise` rechazada con un error [`ERR_INVALID_RETURN_VALUE`][]. En ambos casos se omitirá el controlador de errores.
 
 Por favor, note: El uso de `assert.doesNotReject()` no es realmente útil porque hay muy poco beneficio por coger un rechazo y luego rechazarlo de nuevo. En su lugar, considere añadir un comentario al lado de la ruta de código específica que no deba rechazar y mantenga los mensajes de error lo más expresivos posibles.
 
