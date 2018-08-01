@@ -601,7 +601,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+En primer lugar, se implementa el método `createObject()` en `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -664,7 +664,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+La implementación en `myobject.cc` es similar al ejemplo anterior:
 
 ```cpp
 // myobject.cc
