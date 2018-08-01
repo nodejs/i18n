@@ -63,9 +63,9 @@ Vedi [Come creare un esempio Minimo, Completo e Verificabile](https://stackoverf
 
 ## Valutazione di un Bug Report
 
-Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
+Una volta aperto un'issue, succede spesso che se ne discuti a riguardo. Alcuni contributors potrebbero avere opinioni diverse riguardo l'issue, includendo anche se il comportamento visto è un bug oppure una funzionalità. Questa discussione è parte del processo e dovrebbe essere mantenuta focalizzata, utile e professionale.
 
-Short, clipped responses—that provide neither additional context nor supporting detail—are not helpful or professional. To many, such responses are simply annoying and unfriendly.
+Le risposte brevi e troncate—che non forniscono né un contesto aggiuntivo né dettagli di supporto—non sono né utili né professionali. Per molti, risposte del genere sono semplicemente fastidiose e scortesi.
 
 Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
