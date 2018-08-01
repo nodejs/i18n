@@ -23,18 +23,18 @@ Di seguito è riportata una semplice panoramica dell'API pubblica.
 ```js
 const async_hooks = require('async_hooks');
 
-// Restituisce l'ID dell'execution context corrente.
+// Restituisce l'ID dell'attuale execution context.
 const eid = async_hooks.executionAsyncId();
 
-// Return the ID of the handle responsible for triggering the callback of the
-// current execution scope to call.
+// Restituisce l'ID dell'handle responsabile per l'attivazione del callback 
+// dell'attuale execution scope da chiamare.
 const tid = async_hooks.triggerAsyncId();
 
-// Create a new AsyncHook instance. All of these callbacks are optional.
+// Crea una nuova istanza AsyncHook. Tutti questi callback sono facoltativi.
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
-// Allow callbacks of this AsyncHook instance to call. This is not an implicit
+// Permette ai callback, di questa istanza di AsyncHook, di chiamare. This is not an implicit
 // action after running the constructor, and must be explicitly run to begin
 // executing callbacks.
 asyncHook.enable();
