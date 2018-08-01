@@ -310,7 +310,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Tenga en cuenta que este ejemplo utiliza una forma de dos argumentos de `Init()` que recibe completamente el objeto `module` como el segundo argumento. Esto permite que el Complemento reescriba completamente `exports` con una sóla función, en vez de añadir la función como una propiedad de `exports`.
 
 Para probarlo, ejecute el siguiente JavaScript:
 
