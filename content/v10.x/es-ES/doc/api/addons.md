@@ -373,9 +373,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### Función factory
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Otra posibilidad común es crear funciones de JavaScript que envuelvan funciones de C++ y regresarlas a JavaScript:
 
 ```cpp
 // addon.cc
@@ -429,9 +429,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Envolviendo objetos de C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+También es posible envolver objetos/clases de C++ de manera que permita la creación de nuevas instancias mediante el uso del operador `new` de JavaScript:
 
 ```cpp
 // addon.cc
@@ -483,7 +483,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-En `myobject.cc`, implemente los métodos varios que deben ser expuestos. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+En `myobject.cc`, implemente los métodos varios que deben ser expuestos. A continuación, se expone el método `plusOne()` añadiéndolo al prototipo del constructor:
 
 ```cpp
 // myobject.cc
