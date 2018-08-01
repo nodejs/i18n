@@ -85,7 +85,7 @@ Registra le funzioni da chiamare per gli eventi di diversa durata di ogni operaz
 
 I callback `init()`/`before()`/`after()`/`destroy()` vengono chiamati per i rispettivi eventi asincroni nel corso della durata di una risorsa.
 
-All callbacks are optional. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+Tutti i callback sono facoltativi. Ad esempio, se è necessario tenere traccia solo della pulizia delle risorse, allora bisogna passare solo il `destroy` callback. Le specifiche di tutte le funzioni che possono essere passate ai `callbacks` si trovano nella sezione [Hook Callbacks](#async_hooks_hook_callbacks).
 
 ```js
 const async_hooks = require('async_hooks');
@@ -96,7 +96,7 @@ const asyncHook = async_hooks.createHook({
 });
 ```
 
-Note that the callbacks will be inherited via the prototype chain:
+Da notare che i callback verranno tramandati tramite la prototype chain:
 
 ```js
 class MyAsyncCallbacks {
@@ -112,7 +112,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Error Handling
+##### Gestione degli Errori
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
