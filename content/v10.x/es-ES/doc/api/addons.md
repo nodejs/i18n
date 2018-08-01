@@ -767,7 +767,7 @@ Una vez más, para construir este ejemplo, el archivo `myobject.cc` debe ser agr
 }
 ```
 
-Test it with:
+Prueba con:
 
 ```js
 // test.js
@@ -973,7 +973,7 @@ Registers exit hooks that run after the event loop has ended but before the VM i
 
 Los callbacks se ejecutan por orden de última entrada y primera salida.
 
-The following `addon.cc` implements `AtExit`:
+El siguiente `addon.cc` implementa `AtExit`:
 
 ```cpp
 // addon.cc
