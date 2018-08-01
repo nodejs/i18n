@@ -328,7 +328,7 @@ Tenga en cuenta que, en este ejemplo, la función callback se invoca de manera s
 
 ### Objeto factory
 
-Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++ como se ilustra en el siguiente ejemplo. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++ como se ilustra en el siguiente ejemplo. Se crea y se devuelve un objeto con una propiedad `msg` que hace un echo en la string pasada a `createObject()`:
 
 ```cpp
 // addon.cc
@@ -944,7 +944,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Prueba con:
 
 ```js
 // test.js
@@ -964,12 +964,12 @@ Un hook de `AtExit` es una función que se invoca luego de que el bucle de event
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Un puntero dirigido a la función para llamar a la salida.
+* `args` <span class="type">&lt;void\*&gt;</span> Un puntero para pasar al callback a la salida.
 
 Registra hooks de salida que se ejecutan luego de que el bucle de eventos ha finalizado pero antes de que muera el VM.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` toma dos parámetros: un puntero dirigido a una función callback para ejecutarse a la salida, y un puntero dirigido a datos de contexto no escritos para ser pasados a ese callback.
 
 Los callbacks se ejecutan por orden de última entrada y primera salida.
 
@@ -1024,7 +1024,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Prueba en JavaScript mediante la ejecución de:
 
 ```js
 // test.js
