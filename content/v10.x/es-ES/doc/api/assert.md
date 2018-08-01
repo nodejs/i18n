@@ -835,7 +835,7 @@ Prueba si el `value` es truthy. Es equivalente a `assert.equal(!!value, true, me
 
 Si el valor `value` no es truthy, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` está `undefined`, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! Vea abajo para más detalles.
+¡Tenga en cuenta de que en `repl` el mensaje de error será diferente al arrojado en un archivo! Vea abajo para más detalles.
 
 ```js
 const assert = require('assert').strict;
@@ -846,10 +846,10 @@ assert.ok(1);
 // OK
 
 assert.ok();
-// AssertionError: No value argument passed to `assert.ok()`
+// AssertionError: No se pasó ningún argumento válido a `assert.ok()`
 
 assert.ok(false, 'it\'s false');
-// AssertionError: it's false
+// AssertionError: es falso
 
 // In the repl:
 assert.ok(typeof 123 === 'string');
@@ -857,23 +857,23 @@ assert.ok(typeof 123 === 'string');
 
 // In a file (e.g. test.js):
 assert.ok(typeof 123 === 'string');
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: Expresión evaluada a un valor falsy:
 //
 //   assert.ok(typeof 123 === 'string')
 
 assert.ok(false);
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: Expresión evaluada a un valor falsy:
 //
 //   assert.ok(false)
 
 assert.ok(0);
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: Expresión evaluada a un valor falsy:
 //
 //   assert.ok(0)
 
-// Using `assert()` works the same:
+// El uso de `assert()` trabaja igual:
 assert(0);
-// AssertionError: The expression evaluated to a falsy value:
+// AssertionError: Expresión evaluada a un valor falsy:
 //
 //   assert(0)
 ```
@@ -888,15 +888,15 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Espera la promesa de `block` o, si el `block` es una función, inmediatamente llama a la función y espera la promesa de vuelta para completar. It will then check that the promise is rejected.
+Espera la promesa de `block` o, si el `block` es una función, inmediatamente llama a la función y espera la promesa de vuelta para completar. Luego comprobará de que la promesa sea rechazada.
 
-If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+Si `block` es una función y arroja un error sincrónicamente, `assert.rejects()` devolverá una `Promise` rechazada con ese error. Si la función no devuelve una promesa, `assert.rejects()` devolverá una `Promise` rechazada con un error [`ERR_INVALID_RETURN_VALUE`][]. En ambos casos se omitirá el controlador de errores.
 
 Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+Si se especifica, el `error` puede ser [`Class`][], [`RegExp`][], una función de validación, un objeto en el cual cada propiedad será probada o una instancia de error en la cual cada propiedad será probada para incluir el `message` innumerable y propiedades de `name`.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to reject.
+Si se especifica, el `message` será el mensaje proporcionado por el `AssertionError` si el bloque falla al rechazar.
 
 ```js
 (async () => {
@@ -921,7 +921,7 @@ assert.rejects(
 });
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
+Note que el `error` no puede ser una string. Si se proporciona una string como segundo argumento, entonces se asume que el `error` se omitirá y que la string será utilizada para el `message` en su lugar. Esto puede conducir a errores fáciles de perder. Por favor, lea el ejemplo en [`assert.throws()`][] cuidadosamente si se considera usar una string como segundo argumento.
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -981,7 +981,7 @@ changes:
 
 Expects the function `block` to throw an error.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+Si se especifica, el `error` puede ser [`Class`][], [`RegExp`][], una función de validación, un objeto en el cual cada propiedad será probada o una instancia de error en la cual cada propiedad será probada para incluir el `message` innumerable y propiedades de `name`.
 
 If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
 
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Note que el `error` no puede ser una string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. Esto puede conducir a errores fáciles de perder. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
 
 <!-- eslint-disable no-restricted-syntax -->
 
