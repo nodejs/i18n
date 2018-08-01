@@ -12,13 +12,13 @@ const async_hooks = require('async_hooks');
 
 ## Terminología
 
-Un recurso asíncrono representa un objeto con un callback asociado. Este callback se puede llamar varias veces, por ejemplo, el evento `'connection'` en `net.createServer()`, o simplemente una sóla vez como en `fs.open()`. A resource can also be closed before the callback is called. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+Un recurso asíncrono representa un objeto con un callback asociado. Este callback se puede llamar varias veces, por ejemplo, el evento `'connection'` en `net.createServer()`, o simplemente una sóla vez como en `fs.open()`. Un recurso también puede cerrarse antes de que se llame un callback. `AsyncHook` no distingue explícitamente entre estos casos diferentes pero los representará como el concepto abstracto que es un recurso.
 
-## Public API
+## API Pública
 
-### Overview
+### Resumen
 
-Following is a simple overview of the public API.
+La siguiente es un simple resumen de la API pública.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -81,7 +81,7 @@ added: v8.1.0
   * `destroy` {Function} The [`destroy` callback][].
 * Returns: {AsyncHook} Instance used for disabling and enabling hooks
 
-Registers functions to be called for different lifetime events of each async operation.
+Registra funciones para que sean llamadas por diferentes eventos en el tiempo de vida de cada operación asincrónica.
 
 The callbacks `init()`/`before()`/`after()`/`destroy()` are called for the respective asynchronous event during a resource's lifetime.
 
@@ -464,7 +464,7 @@ The class `AsyncResource` is designed to be extended by the embedder's async res
 
 The `init` hook will trigger when an `AsyncResource` is instantiated.
 
-The following is an overview of the `AsyncResource` API.
+A continuación se muestra un resumen de la API `AsyncResource` .
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
@@ -509,7 +509,7 @@ asyncResource.emitAfter();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Example usage:
+Ejemplo de uso:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -567,7 +567,7 @@ Call all `after` callbacks. If nested calls to `emitBefore()` were made, then ma
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
 
 #### asyncResource.emitDestroy()
 
