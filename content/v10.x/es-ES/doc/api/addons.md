@@ -82,11 +82,11 @@ Una vez que el código de fuente haya sido escrito, debe ser compilado en el arc
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Esta versión no está hecha directamente disponible para que los desarrolladores la utilicen y está diseñada sólo para apoyar la habilidad del uso del comando `npm install` para compilar e instalar complementos. Los desarrolladores que deseen utilizar `node-gyp` directamente, pueden instalarlo usando el comando `npm install -g node-gyp`. Vea `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) para más información, incluyendo los requisitos específicos de la plataforma.
+Una versión de la utilidad de `node-gyp` está agrupada y distribuida con Node.js como parte de `npm`. Esta versión no está hecha directamente disponible para que los desarrolladores la utilicen y está diseñada sólo para apoyar la habilidad del uso del comando `npm install` para compilar e instalar complementos. Los desarrolladores que deseen utilizar `node-gyp` directamente, pueden instalarlo usando el comando `npm install -g node-gyp`. Vea `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) para más información, incluyendo los requisitos específicos de la plataforma.
 
 Una vez que se haya creado el archivo `binding.gyp`, utilice `node-gyp configure` para generar los archivos de construcción apropiados del proyecto para la plataforma actual. Esto generará o un `Makefile` (en plataformas Unix) o un archivo `vcxproj` (en Windows) en el directorio `build/` .
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Después, invoque el comando `node-gyp build` para generar el archivo compilado `addon.node` . Esto se pondrá en el directorio de `build/Release/` .
 
 Al utilizar `npm install` para instalar un complemento de Node.js, npm utiliza su propia versión agrupada de `node-gyp` para realizar el mismo conjunto de acciones, generando una versión compilada del complemento para la plataforma solicitada del usuario.
 
@@ -128,9 +128,9 @@ La extensión del nombre de archivo del Complemento binario compilado es `.node`
 
 Al llamar [`require()`](modules.html#modules_require), generalmente se puede omitir la extensión `.node` y aún así Node.js encontrará e inicializará el Complemento. Una de las advertencias, sin embargo, es que Node.js intentará primero localizar y cargar los módulos o los archivos de JavaScript que compartan el mismo nombre de base. Por ejemplo, si hay un archivo `addon.js` en el mismo directorio que el archivo binario `addon.node`, entonces [`require('addon')`](modules.html#modules_require) le dará prioridad al archivo `addon.js` y lo cargará en su lugar.
 
-## Native Abstractions for Node.js
+## Abstracciones Nativas para Node.js
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Cada uno de los ejemplos ilustrados en este documento hacen uso directo de los APIs de Node.js y V8 para la implementación de Complementos. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
