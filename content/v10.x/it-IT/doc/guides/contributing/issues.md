@@ -38,28 +38,28 @@ nostro "help repository". https://github.com/nodejs/help
 
 Si prega di compilare il più possibile il modello qui sotto.
 
-Version: output of `node -v`
-Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
-Subsystem: if known, please specify affected core module name
+Version: output di `node -v`
+Platform: output di `uname -a` (UNIX), oppure version e 32 o 64-bit (Windows)
+Subsystem: se noto, specificare il nome del modulo principale colpito
 
-If possible, please provide code that demonstrates the problem, keeping it as
-simple and free of external dependencies as you are able.
+Se possibile, si prega di fornire un codice che mostri il problema, mantenendolo 
+semplice e libero da dipendenze esterne, nel limite della possibilità.
 -->
 
 * **Version**:
 * **Platform**:
 * **Subsystem**:
 
-<!-- Enter your issue details below this comment. -->
+<!-- Inserisci i dettagli del tuo issue sotto questo commento. -->
 ```
 
-If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
+Se credi di aver scoperto un bug in Node.js, compila questo modulo, seguendo il modello al meglio delle tue capacità. Non ti preoccupare se non puoi rispondere ad ogni dettaglio, riempi quello che puoi.
 
-The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
+Le due informazioni più importanti di cui abbiamo bisogno per valutare correttamente il report sono una descrizione del comportamento che si sta vedendo ed un semplice test case che possiamo utilizzare per ricreare il problema da soli. Se non riusciamo a ricreare l'issue, diventa impossibile per noi risolverlo.
 
-In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+Per escludere la possibilità di bug introdotti dal codice userland, i test case dovrebbero essere limitati, per quanto possibile, al *solo* utilizzo delle API di Node.js. Se il bug si verifica solo quando si utilizza un modulo userland specifico, c'è una buona possibilità che (a) il modulo abbia un bug o (b) qualcosa in Node.js è cambiato ed ha interrotto il modulo.
 
-See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
+Vedi [Come creare un esempio Minimo, Completo e Verificabile](https://stackoverflow.com/help/mcve).
 
 ## Valutazione di un Bug Report
 
