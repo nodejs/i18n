@@ -1,4 +1,4 @@
-# Maintaining V8 in Node.js
+# Manutenzione di V8 in Node.js
 
 ## Background
 
