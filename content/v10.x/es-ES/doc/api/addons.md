@@ -207,7 +207,7 @@ $ node-gyp configure build
 
 ### Argumentos de función
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Los complementos generalmente expondrán objetos y funciones que pueden ser accedidos desde JavaScript, ejecutándose dentro de Node.js. Cuando se invocan funciones desde JavaScript, los argumentos de entrada y el valor de devolución deben ser mapeados para y desde el código C/C++.
 
 En el siguiente ejemplo se ilustra cómo leer argumentos de función pasados desde JavaScript y cómo devolver un resultado:
 
