@@ -938,13 +938,13 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests strict equality between the `actual` and `expected` parameters as determined by the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
+Prueba la igualdad estricta entre los parámetros `actual` y `expected` como se determina por la [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
 
 ```js
 const assert = require('assert').strict;
 
 assert.strictEqual(1, 2);
-// AssertionError [ERR_ASSERTION]: Input A expected to strictly equal input B:
+// AssertionError [ERR_ASSERTION]: Se esperaba que input A fuese estrictamente igual a input B:
 // + expected - actual
 // - 1
 // + 2
@@ -953,13 +953,13 @@ assert.strictEqual(1, 1);
 // OK
 
 assert.strictEqual(1, '1');
-// AssertionError [ERR_ASSERTION]: Input A expected to strictly equal input B:
+// AssertionError [ERR_ASSERTION]:Se esperaba que input A fuese estrictamente igual a input B:
 // + expected - actual
 // - 1
 // + '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces será arrojado en lugar del `AssertionError`.
+Si los valores no son estrictamente iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces será arrojado en lugar del `AssertionError`.
 
 ## assert.throws(block\[, error\]\[, message\])
 
@@ -979,11 +979,11 @@ changes:
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Expects the function `block` to throw an error.
+Espera que la función `block` arroje un error.
 
 Si se especifica, el `error` puede ser [`Class`][], [`RegExp`][], una función de validación, un objeto en el cual cada propiedad será probada o una instancia de error en la cual cada propiedad será probada para incluir el `message` innumerable y propiedades de `name`.
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
+Si se especifica, el `message` será el mensaje proporcionado por el `AssertionError` si el bloque falla al arrojar.
 
 Custom error object / error instance:
 
@@ -998,18 +998,18 @@ assert.throws(
   {
     name: 'TypeError',
     message: 'Wrong value'
-    // Note that only properties on the error object will be tested!
+    // ¡Note que sólo las propiedades en el objeto error serán probadas!
   }
 );
 
-// Fails due to the different `message` and `name` properties:
+// Fallo debido a propiedades diferentes de `message` y `name`:
 assert.throws(
   () => {
     const otherErr = new Error('Not found');
     otherErr.code = 404;
     throw otherErr;
   },
-  err // This tests for `message`, `name` and `code`.
+  err // Esto realiza pruebas para `message`, `name` y `code`.
 );
 ```
 
@@ -1024,9 +1024,9 @@ assert.throws(
 );
 ```
 
-Validate error message using [`RegExp`][]:
+Validar mensaje de error usando [`RegExp`][]:
 
-Using a regular expression runs `.toString` on the error object, and will therefore also include the error name.
+El uso de una expresión regular ejecuta `.toString` en el objeto error y por lo tanto también incluirá el nombre del error.
 
 ```js
 assert.throws(
@@ -1037,7 +1037,7 @@ assert.throws(
 );
 ```
 
-Custom error validation:
+Validación de error personalidada:
 
 ```js
 assert.throws(
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-Note que el `error` no puede ser una string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. Esto puede conducir a errores fáciles de perder. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Note que el `error` no puede ser una string. Si se proporciona una string como segundo argumento, entonces se asume que el `error` se omitirá y que la string será utilizada para el `message` en su lugar. Esto puede conducir a errores fáciles de perder. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
 
 <!-- eslint-disable no-restricted-syntax -->
 
