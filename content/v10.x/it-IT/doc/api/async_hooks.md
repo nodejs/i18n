@@ -34,12 +34,12 @@ const tid = async_hooks.triggerAsyncId();
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
-// Permette ai callback, di questa istanza di AsyncHook, di chiamare. This is not an implicit
-// action after running the constructor, and must be explicitly run to begin
-// executing callbacks.
+// Permette ai callback, di questa istanza di AsyncHook, di chiamare. Dopo aver 
+// eseguito il constructor questa non è un'azione implicita quindi dev'essere 
+// eseguita esplicitamente per iniziare l'esecuzione dei callback.
 asyncHook.enable();
 
-// Disable listening for new asynchronous events.
+// Disabilita l'ascolto di nuovi eventi asincroni.
 asyncHook.disable();
 
 //
