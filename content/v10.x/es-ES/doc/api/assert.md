@@ -666,7 +666,7 @@ Un alias de [`assert.notDeepStrictEqual()`][].
 
 > Estabilidad: 0 - Obsoleto: Use [`assert.notDeepStrictEqual()`][] en su lugar.
 
-Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
+Realiza una prueba por cualquier desigualdad profunda. Opuesto de [`assert.deepEqual()`][].
 
 ```js
 const assert = require('assert');
@@ -692,16 +692,16 @@ assert.notDeepEqual(obj1, obj1);
 // AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj2);
-// OK: obj1 and obj2 are not deeply equal
+// OK: obj1 y obj2 no son profundamente iguales
 
 assert.notDeepEqual(obj1, obj3);
 // AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj4);
-// OK: obj1 and obj4 are not deeply equal
+// OK: obj1 y obj4 no son profundamente iguales
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
+Si los valores son profundamente iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -738,7 +738,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
+Tests for deep strict inequality. Opuesto de [`assert.deepStrictEqual()`][].
 
 ```js
 const assert = require('assert').strict;
