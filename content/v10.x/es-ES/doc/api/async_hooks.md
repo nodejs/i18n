@@ -2,17 +2,17 @@
 
 <!--introduced_in=v8.1.0-->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
+El módulo de `async_hooks` proporciona una API para registrar los callbacks que rastrean el tiempo de vida de recursos asíncronos creados dentro de una aplicación de Node.js. Puede ser accedido utilizando:
 
 ```js
 const async_hooks = require('async_hooks');
 ```
 
-## Terminology
+## Terminología
 
-An asynchronous resource represents an object with an associated callback. This callback may be called multiple times, for example, the `'connection'` event in `net.createServer()`, or just a single time like in `fs.open()`. A resource can also be closed before the callback is called. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+Un recurso asíncrono representa un objeto con un callback asociado. Este callback se puede llamar varias veces, por ejemplo, el evento `'connection'` en `net.createServer()`, o simplemente una sóla vez como en `fs.open()`. A resource can also be closed before the callback is called. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
 
 ## Public API
 
