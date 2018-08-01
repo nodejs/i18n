@@ -79,11 +79,11 @@ added: v8.1.0
   * `before` {Function} Il [`before` callback][].
   * `after` {Function} L'[`after` callback][].
   * `destroy` {Function} Il [`destroy` callback][].
-* Returns: {AsyncHook} Instance used for disabling and enabling hooks
+* Restituisce: L'istanza {AsyncHook} utilizzata per disabilitare ed abilitare gli hooks
 
-Registers functions to be called for different lifetime events of each async operation.
+Registra le funzioni da chiamare per gli eventi di diversa durata di ogni operazione asincrona.
 
-The callbacks `init()`/`before()`/`after()`/`destroy()` are called for the respective asynchronous event during a resource's lifetime.
+I callback `init()`/`before()`/`after()`/`destroy()` vengono chiamati per i rispettivi eventi asincroni nel corso della durata di una risorsa.
 
 All callbacks are optional. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
 
