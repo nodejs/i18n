@@ -132,13 +132,13 @@ Al llamar [`require()`](modules.html#modules_require), generalmente se puede omi
 
 Cada uno de los ejemplos ilustrados en este documento hacen uso directo de los APIs de Node.js y V8 para la implementación de Complementos. Es importante entender que el API V8 puede, y ha cambiado drásticamente de una versión de V8 a la siguiente ( y de una versión de Node.js a la siguiente). Con cada cambio, puede que los Complementos necesiten ser actualizados o recompilados para poder continuar funcionando. La fecha de lanzamiento de Node.js está diseñada para minimizar la frecuencia y el impacto de tales cambios, pero no hay mucho que Node.js pueda hacer actualmente para asegurar la estabilidad de los APIs de V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+Las [Native Abstractions for Node.js](https://github.com/nodejs/nan) (ó `nan`) proporcionan un conjunto de herramientas recomendadas para ser utilizadas por los desarrolladores de Complementos para mantener la compatibilidad entre versiones anteriores y futuras de V8 y Node.js. Vea los [examples](https://github.com/nodejs/nan/tree/master/examples/) de `nan` para una ilustración de cómo se puede utilizar.
 
 ## N-API
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-N-API es un API usado para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Los complementos son construidos/empaquetados con el mismo enfoque/herramientas descritos en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizados por el código nativo. En lugar de utilizar el V8 o los API´s de [Native Abstractions for Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en el N-API.
+N-API es un API usado para construir Complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Los complementos son construidos/empaquetados con el mismo enfoque/herramientas descritos en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizados por el código nativo. En lugar de utilizar el V8 o los API´s de [Native Abstractions for Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en el N-API.
 
 Para utilizar N-API en el ejemplo anterior de "Hello World", reemplace el contenido de `hello.cc` con lo siguiente. Todas las demás instrucciones siguen siendo las mismas.
 
@@ -591,7 +591,7 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### Factory de objetos envueltos
 
 Alternativamente, es posible utilizar un patrón Factory para evitar explícitamente crear instancias de objetos utilizando el operador `new` de Javascript:
 
