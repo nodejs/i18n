@@ -603,7 +603,7 @@ changes:
 
 * `value` {any}
 
-Throws `value` if `value` is not `undefined` or `null`. This is useful when testing the `error` argument in callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. See below for an example.
+Throws `value` if `value` is not `undefined` or `null`. Esto es útil al probar el argumento `error` en callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. Revise a continuación un ejemplo.
 
 ```js
 const assert = require('assert').strict;
@@ -611,13 +611,13 @@ const assert = require('assert').strict;
 assert.ifError(null);
 // OK
 assert.ifError(0);
-// AssertionError [ERR_ASSERTION]: ifError got unwanted exception: 0
+// AssertionError [ERR_ASSERTION]: ifError obtuvo una excepción no deseada: 0
 assert.ifError('error');
-// AssertionError [ERR_ASSERTION]: ifError got unwanted exception: 'error'
+// AssertionError [ERR_ASSERTION]: ifError obtuvo una excepción no deseada: 'error'
 assert.ifError(new Error());
-// AssertionError [ERR_ASSERTION]: ifError got unwanted exception: Error
+// AssertionError [ERR_ASSERTION]: ifError obtuvo una excepción no deseada: Error
 
-// Create some random error frames.
+// Cree algunos marcos de error aleatorios.
 let err;
 (function errorFrame() {
   err = new Error('test error');
@@ -626,9 +626,9 @@ let err;
 (function ifErrorFrame() {
   assert.ifError(err);
 })();
-// AssertionError [ERR_ASSERTION]: ifError got unwanted exception: test error
-//     at ifErrorFrame
-//     at errorFrame
+// AssertionError [ERR_ASSERTION]: ifError obtuvo una excepción no deseada: error de prueba
+//     en ifErrorFrame
+//     en errorFrame
 ```
 
 ## assert.notDeepEqual(actual, expected[, message])
@@ -660,11 +660,11 @@ changes:
 
 **Modo estricto**
 
-An alias of [`assert.notDeepStrictEqual()`][].
+Un alias de [`assert.notDeepStrictEqual()`][].
 
 **Modo legado**
 
-> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
+> Estabilidad: 0 - Obsoleto: Use [`assert.notDeepStrictEqual()`][] en su lugar.
 
 Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
