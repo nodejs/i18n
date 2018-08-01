@@ -1085,7 +1085,7 @@ assert.throws(notThrowing, 'Second');
 
 // Se è stato ideato per corrispondere al messaggio di errore, allora fai questo:
 assert.throws(throwingSecond, /Second$/);
-// Non genera poichè i messaggi di errore corrispondono.
+// Non genera poiché i messaggi di errore corrispondono.
 assert.throws(throwingFirst, /Second$/);
 // Genera un errore:
 // Error: First
