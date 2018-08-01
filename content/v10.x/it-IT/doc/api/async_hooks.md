@@ -62,9 +62,9 @@ function after(asyncId) { }
 // la funzione destroy viene chiamata quando un'istanza AsyncWrap viene distrutta.
 function destroy(asyncId) { }
 
-// promiseResolve is called only for promise resources, when the
-// `resolve` function passed to the `Promise` constructor is invoked
-// (either directly or through other means of resolving a promise).
+// la funzione promiseResolve viene chiamata solo per le risorse promise, quando la 
+// funzione `resolve` passata al constructor `Promise` viene invocata 
+// (direttamente oppure tramite altri mezzi per risolvere un promise).
 function promiseResolve(asyncId) { }
 ```
 
@@ -74,11 +74,11 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
-  * `init` {Function} The [`init` callback][].
-  * `before` {Function} The [`before` callback][].
-  * `after` {Function} The [`after` callback][].
-  * `destroy` {Function} The [`destroy` callback][].
+* `callbacks` {Object} Gli [Hook Callbacks](#async_hooks_hook_callbacks) per la registrazione 
+  * `init` {Function} L'[`init` callback][].
+  * `before` {Function} Il [`before` callback][].
+  * `after` {Function} L'[`after` callback][].
+  * `destroy` {Function} Il [`destroy` callback][].
 * Returns: {AsyncHook} Instance used for disabling and enabling hooks
 
 Registers functions to be called for different lifetime events of each async operation.
