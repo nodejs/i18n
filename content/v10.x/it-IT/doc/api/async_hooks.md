@@ -51,15 +51,15 @@ asyncHook.disable();
 // della risorsa a cui fa riferimento "asyncId" potrebbero non essere stati compilati.
 function init(asyncId, type, triggerAsyncId, resource) { }
 
-// before is called just before the resource's callback is called. Può essere 
-// chiamato 0 volte per gli handle (es. TCPWrap), e verrà chiamato esattamente 
+// la funzione before viene chiamata subito prima che venga chiamato il callback della risorsa. Può essere 
+// chiamata 0 volte per gli handle (es. TCPWrap), e verrà chiamato esattamente 
 // 1 volta per le request (es. FSReqWrap).
 function before(asyncId) { }
 
-// after is called just after the resource's callback has finished.
+// la funzione after viene chiamata subito dopo la fine del callback della risorsa.
 function after(asyncId) { }
 
-// destroy is called when an AsyncWrap instance is destroyed.
+// la funzione destroy viene chiamata quando un'istanza AsyncWrap viene distrutta.
 function destroy(asyncId) { }
 
 // promiseResolve is called only for promise resources, when the
