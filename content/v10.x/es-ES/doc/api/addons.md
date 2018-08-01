@@ -130,7 +130,7 @@ Al llamar [`require()`](modules.html#modules_require), generalmente se puede omi
 
 ## Abstracciones Nativas para Node.js
 
-Cada uno de los ejemplos ilustrados en este documento hacen uso directo de los APIs de Node.js y V8 para la implementación de Complementos. Es importante entender que el API V8 puede, y ha cambiado drásticamente de una versión de V8 a la siguiente ( y de una versión de Node.js a la siguiente). Con cada cambio, puede que los Complementos necesiten ser actualizados o recompilados para poder continuar funcionando. La fecha de lanzamiento de Node.js está diseñada para minimizar la frecuencia y el impacto de tales cambios, pero no hay mucho que Node.js pueda hacer actualmente para asegurar la estabilidad de los APIs de V8.
+Cada uno de los ejemplos ilustrados en este documento hacen uso directo de las APIs de Node.js y V8 para la implementación de Complementos. Es importante entender que la API V8 puede, y ha cambiado drásticamente de una versión de V8 a la siguiente ( y de una versión de Node.js a la siguiente). Con cada cambio, puede que los Complementos necesiten ser actualizados o recompilados para poder continuar funcionando. La fecha de lanzamiento de Node.js está diseñada para minimizar la frecuencia y el impacto de tales cambios, pero no hay mucho que Node.js pueda hacer actualmente para asegurar la estabilidad de las APIs de V8.
 
 Las [Native Abstractions for Node.js](https://github.com/nodejs/nan) (ó `nan`) proporcionan un conjunto de herramientas recomendadas para ser utilizadas por los desarrolladores de Complementos para mantener la compatibilidad entre versiones anteriores y futuras de V8 y Node.js. Vea los [examples](https://github.com/nodejs/nan/tree/master/examples/) de `nan` para una ilustración de cómo se puede utilizar.
 
@@ -138,7 +138,7 @@ Las [Native Abstractions for Node.js](https://github.com/nodejs/nan) (ó `nan`) 
 
 > Estabilidad: 1 - Experimental
 
-N-API es un API usado para construir Complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Los complementos son construidos/empaquetados con el mismo enfoque/herramientas descritos en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizados por el código nativo. En lugar de utilizar el V8 o los API´s de [Native Abstractions for Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en el N-API.
+N-API es una API utilizada para construir Complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. This API will be Application Binary Interface (ABI) stable across version of Node.js. Está diseñado para aislar los Complementos de los cambios en el motor subyacente de JavaScript y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin recompilación. Los complementos son construidos/empaquetados con el mismo enfoque/herramientas descritos en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizados por el código nativo. En lugar de utilizar el V8 o las API´s de [Native Abstractions for Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en el N-API.
 
 Para utilizar N-API en el ejemplo anterior de "Hello World", reemplace el contenido de `hello.cc` con lo siguiente. Todas las demás instrucciones siguen siendo las mismas.
 
@@ -178,7 +178,7 @@ Las funciones disponibles y cómo utilizarlas están documentadas en la sección
 
 ## Ejemplos de complemento
 
-Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de los APIs V8. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de las APIs V8. Consulte el [V8 reference](https://v8docs.nodesource.com/) en línea para obtener ayuda referente a las diferentes llamadas de V8, y el [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) de V8 para una explicación acerca de varios conceptos utilizados, tales como handles, scopes, plantillas de función, etc.
 
 Cada uno de estos ejemplos utilizan el siguiente archivo `binding.gyp` :
 
@@ -960,7 +960,7 @@ console.log(result);
 
 ### Hooks de AtExit
 
-Un hook de `AtExit` es una función que se invoca luego de que el bucle de eventos de Node.js ha finalizado pero antes de que haya terminado el VM de JavaScript y se haya apagado Node.js. Los hooks de `AtExit` se registran usando el API `node::AtExit` .
+Un hook de `AtExit` es una función que se invoca luego de que el bucle de eventos de Node.js ha finalizado pero antes de que haya terminado el VM de JavaScript y se haya apagado Node.js. Los hooks de `AtExit` se registran usando la API `node::AtExit` .
 
 #### void AtExit(callback, args)
 
