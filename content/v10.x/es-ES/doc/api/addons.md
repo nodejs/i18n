@@ -138,7 +138,7 @@ The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) 
 
 > Stability: 1 - Experimental
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API es un API usado para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizados por el código nativo. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
 To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
@@ -176,7 +176,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 Las funciones disponibles y cómo utilizarlas están documentadas en la sección titulada [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## Ejemplos de complemento
 
 Los siguientes son algunos Complementos de ejemplo diseñados para ayudar a comenzar a los desarrolladores. Los ejemplos hacen uso de los APIs V8. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
