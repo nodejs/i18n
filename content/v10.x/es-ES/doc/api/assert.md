@@ -8,7 +8,7 @@ El módulo `assert` proporciona un conjunto simple de pruebas de afirmación que
 
 Existe un modo `strict` y un modo `legacy`, pero se recomiendo utilizar solo el [`strict mode`][].
 
-Para mayor información acerca de las comparaciones de igualdad utilizadas vea la [Guía de MDN en comparaciones de igualdad y uniformidad](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Para mayor información acerca de las comparaciones de igualdad utilizadas vea la [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Clase: assert.AssertionError
 
