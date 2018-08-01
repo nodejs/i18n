@@ -13,11 +13,11 @@
 * [Cluster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
-* [Crypto](crypto.html)
+* [التشفير (Crypto)](crypto.html)
 * [Debugger](debugger.html)
-* [DNS](dns.html)
-* [Domain](domain.html)
-* [Errors](errors.html)
+* [نظام أسماء النطاقات (DNS)](dns.html)
+* [النطاق](domain.html)
+* [الأخطاء](errors.html)
 * [Events](events.html)
 * [File System](fs.html)
 * [Globals](globals.html)
@@ -48,4 +48,4 @@
 <div class="line"></div>
 
 * [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
-* [Mailing List](http://groups.google.com/group/nodejs)
+* [القائمة البريدية](http://groups.google.com/group/nodejs)
