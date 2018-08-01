@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
+Si los valores no son iguales, se arroja un `AssertionError` con una propiedad `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, se asigna un mensaje de error predeterminado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.fail([message])
 
@@ -512,22 +512,22 @@ added: v0.1.21
 
 * `message` {any} **Default:** `'Failed'`
 
-Throws an `AssertionError` with the provided error message or a default error message. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Arroja un `AssertionError` con el mensaje de error proporcionado o un mensaje de error predeterminado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar del `AssertionError`.
 
 ```js
 const assert = require('assert').strict;
 
 assert.fail();
-// AssertionError [ERR_ASSERTION]: Failed
+// AssertionError [ERR_ASSERTION]: Fallido
 
 assert.fail('boom');
 // AssertionError [ERR_ASSERTION]: boom
 
 assert.fail(new TypeError('need array'));
-// TypeError: need array
+// TypeError: se necesita un array
 ```
 
-Using `assert.fail()` with more than two arguments is possible but deprecated. See below for further details.
+El uso de `assert.fail()` con más de dos argumentos es posible, pero está obsoleto. Vea abajo para más detalles.
 
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
 
@@ -835,7 +835,7 @@ Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, mes
 
 If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
+Be aware that in the `repl` the error message will be different to the one thrown in a file! Vea abajo para más detalles.
 
 ```js
 const assert = require('assert').strict;
