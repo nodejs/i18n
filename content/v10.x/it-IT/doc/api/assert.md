@@ -895,7 +895,7 @@ Se `block` è una funzione e genera un errore in modo sincrono, `assert.rejects(
 
 Inoltre la natura asincrona di attendere il completamento si comporta in modo identico ad [`assert.throws()`][].
 
-Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][], una funzione di convalida, un object in cui verrà testata ogni proprietà, oppure un'istanza di errore in cui verrà testata ogni proprietà per includere anche le proprietà non enumarabili `message` e `name`.
+Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][], una funzione di convalida, un object in cui verrà testata ogni proprietà, oppure un'istanza di errore in cui verrà testata ogni proprietà per includere anche le proprietà non enumerabili `message` e `name`.
 
 Se specificato, `message` sarà il messaggio fornito da `AssertionError` se il block fallisce nel respingere.
 
@@ -982,7 +982,7 @@ changes:
 
 Prevede che la funzione `block` generi un errore.
 
-Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][], una funzione di convalida, un object in cui verrà testata ogni proprietà, oppure un'istanza di errore in cui verrà testata ogni proprietà per includere anche le proprietà non enumarabili `message` e `name`.
+Se specificato, l'`error` può essere una [`Class`][], un [`RegExp`][], una funzione di convalida, un object in cui verrà testata ogni proprietà, oppure un'istanza di errore in cui verrà testata ogni proprietà per includere anche le proprietà non enumerabili `message` e `name`.
 
 Se specificato, `message` sarà il messaggio fornito da `AssertionError` se il block fallisce nel generare.
 
