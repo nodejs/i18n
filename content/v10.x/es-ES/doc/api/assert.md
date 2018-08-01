@@ -421,7 +421,7 @@ Afirma que la función `block` no arroja un error.
 
 Por favor, note: El uso de `assert.doesNotThrow()` no es realmente útil porque hay muy poco beneficio por coger un rechazo y luego devolverlo. En su lugar, considere añadir un comentario al lado de la ruta de código específica que no deba arrojar y mantenga los mensajes de error lo más expresivos posibles.
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+Cuando se llama a `assert.doesNotThrow()`, se llamará inmediatamente a la función `block`.
 
 Si se arroja un error y es el del mismo tipo que el especificado por el parámetro `error`, entonces se arroja un `AssertionError`. Si el error es de un tipo diferente, o si el parámetro `error` no está definido, el error se propaga de nuevo a la persona que llama.
 
@@ -547,9 +547,9 @@ changes:
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
-> Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert functions instead.
+> Estabilidad: 0 - Obsoleto: Use `assert.fail([message])` u otras funciones de afirmación en su lugar.
 
-If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
+If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. Si sólo se proporcionan los dos argumentos `actual` y `expected`, el `operator` se colocará por defecto `'!='`. Si el `message` es proporcionado como tercer argumento, será utilizado como el mensaje de error y los otros argumentos se almacenarán como propiedades del objeto arrojado. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). Si no se proporciona ningún argumento, el mensaje predeterminado `Failed` será utilizado.
 
 ```js
 const assert = require('assert').strict;
@@ -561,16 +561,16 @@ assert.fail(1, 2, undefined, '>');
 // AssertionError [ERR_ASSERTION]: 1 > 2
 
 assert.fail(1, 2, 'fail');
-// AssertionError [ERR_ASSERTION]: fail
+// AssertionError [ERR_ASSERTION]: fallido
 
 assert.fail(1, 2, 'whoops', '>');
-// AssertionError [ERR_ASSERTION]: whoops
+// AssertionError [ERR_ASSERTION]: ups
 
 assert.fail(1, 2, new TypeError('need array'));
-// TypeError: need array
+// TypeError: se necesita un array
 ```
 
-In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
+En los últimos tres casos `actual`, `expected` y `operator` no tienen influencia en el mensaje de error.
 
 Example use of `stackStartFunction` for truncating the exception's stacktrace:
 
