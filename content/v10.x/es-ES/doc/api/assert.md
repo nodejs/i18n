@@ -417,17 +417,17 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Asserts that the function `block` does not throw an error.
+Afirma que la función `block` no arroja un error.
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. En su lugar, considere añadir un comentario al lado de la ruta de código específica que no deba arrojar y mantenga los mensajes de error lo más expresivos posibles.
+Por favor, note: El uso de `assert.doesNotThrow()` no es realmente útil porque hay muy poco beneficio por coger un rechazo y luego devolverlo. En su lugar, considere añadir un comentario al lado de la ruta de código específica que no deba arrojar y mantenga los mensajes de error lo más expresivos posibles.
 
 When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+Si se arroja un error y es el del mismo tipo que el especificado por el parámetro `error`, entonces se arroja un `AssertionError`. Si el error es de un tipo diferente, o si el parámetro `error` no está definido, el error se propaga de nuevo a la persona que llama.
 
 Si se especifica, el `error` puede ser una función de [`Class`][], de [`RegExp`][] o una validación. Vea [`assert.throws()`][] para más detalles.
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+Lo siguiente, por ejemplo, arrojará el [`TypeError`][] porque no hay un tipo de error de coincidencia en la afirmación:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -440,7 +440,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+Sin embargo, lo siguiente resultará en un `AssertionError` con el mensaje 'Se obtuvo una excepción no deseada...':
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -453,7 +453,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+Si se arroja un `AssertionError` y se provee un valor para el parámetro `message`, el valor de `message` será agregado al mensaje de `AssertionError`:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -465,7 +465,7 @@ assert.doesNotThrow(
   /Wrong value/,
   'Whoops'
 );
-// Throws: AssertionError: Got unwanted exception: Whoops
+// Arroja: AssertionError: Se obtuvo una excepción no deseada: Ups
 ```
 
 ## assert.equal(actual, expected[, message])
@@ -480,11 +480,11 @@ added: v0.1.21
 
 **Modo estricto**
 
-An alias of [`assert.strictEqual()`][].
+Un alias de [`assert.strictEqual()`][].
 
 **Modo legado**
 
-> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
+> Estabilidad: 0 - Obsoleto: Use [`assert.strictEqual()`][] en su lugar.
 
 Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
