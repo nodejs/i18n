@@ -12,18 +12,18 @@ const async_hooks = require('async_hooks');
 
 ## Terminologia
 
-Una risorsa asincrona rappresenta un object con un callback associato. Questo callback può essere chiamato più volte, ad esempio, l'evento `'connection'` in `net.createServer()`, oppure una sola volta come in `fs.open()`. Una risorsa può anche essere chiusa prima che il callback venga chiamato. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+Una risorsa asincrona rappresenta un object con un callback associato. Questo callback può essere chiamato più volte, ad esempio, l'evento `'connection'` in `net.createServer()`, oppure una sola volta come in `fs.open()`. Una risorsa può anche essere chiusa prima che il callback venga chiamato. `AsyncHook` non distingue esplicitamente questi diversi casi ma li rappresenta come il concetto astratto che è una risorsa.
 
-## Public API
+## API Pubblica
 
-### Overview
+### Panoramica
 
-Following is a simple overview of the public API.
+Di seguito è riportata una semplice panoramica dell'API pubblica.
 
 ```js
 const async_hooks = require('async_hooks');
 
-// Return the ID of the current execution context.
+// Restituisce l'ID dell'execution context corrente.
 const eid = async_hooks.executionAsyncId();
 
 // Return the ID of the handle responsible for triggering the callback of the
