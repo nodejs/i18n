@@ -43,12 +43,12 @@ asyncHook.enable();
 asyncHook.disable();
 
 //
-// The following are the callbacks that can be passed to createHook().
+// Di seguito sono riportati i callback che possono essere passati a createHook().
 //
 
-// init is called during object construction. The resource may not have
-// completed construction when this callback runs, therefore all fields of the
-// resource referenced by "asyncId" may not have been populated.
+// init viene chiamato durante la costruzione dell'object. La risorsa potrebbe non aver ancora 
+// completato la costruzione durante l'esecuzione di questo callback, pertanto tutti i campi
+// della risorsa a cui fa riferimento "asyncId" potrebbero non essere stati compilati.
 function init(asyncId, type, triggerAsyncId, resource) { }
 
 // before is called just before the resource's callback is called. It can be
