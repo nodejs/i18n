@@ -483,7 +483,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+En `myobject.cc`, implemente los métodos varios que deben ser expuestos. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
 
 ```cpp
 // myobject.cc
@@ -560,7 +560,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Para construir este ejemplo, el archivo `myobject.cc` debe ser agregado a `binding.gyp`:
 
 ```json
 {
@@ -593,7 +593,7 @@ console.log(obj.plusOne());
 
 ### Factory of wrapped objects
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Alternativamente, es posible utilizar un patrón Factory para evitar explícitamente crear instancias de objetos utilizando el operador `new` de Javascript:
 
 ```js
 const obj = addon.createObject();
