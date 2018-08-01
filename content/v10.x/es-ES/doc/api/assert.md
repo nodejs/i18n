@@ -747,7 +747,7 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 // OK
 ```
 
-If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Si los valores son profunda y estrictamente iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces será arrojado en lugar del `AssertionError`.
 
 ## assert.notEqual(actual, expected[, message])
 
@@ -761,11 +761,11 @@ added: v0.1.21
 
 **Modo estricto**
 
-An alias of [`assert.notStrictEqual()`][].
+Un alias de [`assert.notStrictEqual()`][].
 
 **Modo legado**
 
-> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
+> Estabilidad: 0 - Obsoleto: Use [`assert.notStrictEqual()`][] en su lugar.
 
 Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
@@ -782,7 +782,7 @@ assert.notEqual(1, '1');
 // AssertionError: 1 != '1'
 ```
 
-If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+Si los valores son iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si e parámetro `message` no está definido, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces será arrojado en lugar del `AssertionError`.
 
 ## assert.notStrictEqual(actual, expected[, message])
 
@@ -808,13 +808,13 @@ assert.notStrictEqual(1, 2);
 // OK
 
 assert.notStrictEqual(1, 1);
-// AssertionError [ERR_ASSERTION]: Identical input passed to notStrictEqual: 1
+// AssertionError [ERR_ASSERTION]: Entrada idéntica pasada a notStrictEqual: 1
 
 assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
+Si los valores son estrictamente iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`.
 
 ## assert.ok(value[, message])
 
@@ -831,9 +831,9 @@ changes:
 * `value` {any}
 * `message` {any}
 
-Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
+Prueba si el `value` es truthy. Es equivalente a `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+Si el valor `value` no es truthy, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` está `undefined`, un mensaje de error predeterminado es asignado. Si el parámetro `message` es una instancia de un [`Error`][], entonces se arrojará en lugar de `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! Vea abajo para más detalles.
 
@@ -959,7 +959,7 @@ assert.strictEqual(1, '1');
 // + '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. Si el parámetro `message` es una instancia de un [`Error`][], entonces será arrojado en lugar del `AssertionError`.
 
 ## assert.throws(block\[, error\]\[, message\])
 
