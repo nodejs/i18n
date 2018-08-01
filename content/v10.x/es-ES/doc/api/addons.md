@@ -205,11 +205,11 @@ Una vez que el archivo `binding.gyp` esté listo, los Complementos de ejemplo po
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Argumentos de función
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+En el siguiente ejemplo se ilustra cómo leer argumentos de función pasados desde JavaScript y cómo devolver un resultado:
 
 ```cpp
 // addon.cc
@@ -276,7 +276,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Es una práctica común dentro de los Complementos pasar funciones de JavaScript a una función de C++ y ejecutarlas desde allí. El siguiente ejemplo ilustra cómo invocar dichos callbacks:
 
 ```cpp
 // addon.cc
@@ -324,9 +324,9 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Tenga en cuenta que, en este ejemplo, la función callback se invoca de manera sincronizada.
 
-### Object factory
+### Objeto factory
 
 Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++ como se ilustra en el siguiente ejemplo. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
@@ -632,7 +632,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+En `myobject.h`, se añade el método estático `NewInstance()` para manejar la instancia del objeto. Este método toma el lugar de la utilización de `new` en JavaScript:
 
 ```cpp
 // myobject.h
