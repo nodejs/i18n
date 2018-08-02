@@ -307,9 +307,9 @@ Utilizzando solo `execution` per rappresentare graficamente l'allocazione delle 
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+Il `TCPSERVERWRAP` non fa parte di questo grafico, anche se era il motivo per cui veniva chiamato `console.log()`. Questo perché il binding ad una porta senza un hostname è un'operazione *sincrona*, ma per mantenere un'API completamente asincrona il callback dell'utente viene inserito in un `process.nextTick()`.
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
+Il grafico mostra solo *quando* è stata creata una risorsa, non il *perché*, quindi per ottenere il *perché* utilizza `triggerAsyncId`.
 
 ##### before(asyncId)
 
