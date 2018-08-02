@@ -234,9 +234,9 @@ Nel caso di più Promise, il `resource` object avrà la proprietà `promise` che
 
 In alcuni casi il resource object viene riutilizzato per motivi di prestazioni, quindi non è sicuro utilizzarlo come chiave in una `WeakMap` od aggiungerci delle proprietà.
 
-###### Asynchronous context example
+###### Esempio di Context Asincrono
 
-The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
+Di seguito è riportato un esempio con informazioni aggiuntive sulle chiamate ad `init` tra le chiamate `before` ed `after`, in particolare come sarà il callback su `listen()`. La formattazione dell'output è leggermente più elaborata per facilitare la visione del context delle chiamate.
 
 ```js
 let indent = 0;
@@ -266,14 +266,14 @@ async_hooks.createHook({
 }).enable();
 
 require('net').createServer(() => {}).listen(8080, () => {
-  // Let's wait 10ms before logging the server started.
+  // Aspetta 10 minuti prima di accedere al server avviato.
   setTimeout(() => {
     console.log('>>>', async_hooks.executionAsyncId());
   }, 10);
 });
 ```
 
-Output from only starting the server:
+Output dal solo avvio del server:
 
 ```console
 TCPSERVERWRAP(2): trigger: 1 execution: 1
@@ -299,7 +299,7 @@ destroy: 9
 destroy: 5
 ```
 
-As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
+Come illustrato nell'esempio, `executionAsyncId()` ed `execution` specificano ciascuno il valore dell'execution context corrente; il quale è delineato dalle chiamate a `before` ed `after`.
 
 Only using `execution` to graph resource allocation results in the following:
 
