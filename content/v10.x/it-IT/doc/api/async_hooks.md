@@ -476,29 +476,29 @@ const asyncResource = new AsyncResource(
   type, { triggerAsyncId: executionAsyncId(), requireManualDestroy: false }
 );
 
-// Run a function in the execution context of the resource. This will
-// * establish the context of the resource
-// * trigger the AsyncHooks before callbacks
-// * call the provided function `fn` with the supplied arguments
-// * trigger the AsyncHooks after callbacks
-// * restore the original execution context
+// Esegue una funzione nell'execution context della risorsa. Questo
+// * stabilirà il context della risorsa
+// * attiverà gli AsyncHooks before callbacks
+// * chiamerà la funzione `fn` data con gli argomenti forniti
+// * attiverà gli AsyncHooks after callbacks
+// * ripristinerà l'execution context originale
 asyncResource.runInAsyncScope(fn, thisArg, ...args);
 
-// Call AsyncHooks destroy callbacks.
+// Chiama gli AsyncHooks destroy callbacks.
 asyncResource.emitDestroy();
 
-// Return the unique ID assigned to the AsyncResource instance.
+// Restituisce l'ID univoco assegnato all'istanza di AsyncResource.
 asyncResource.asyncId();
 
-// Return the trigger ID for the AsyncResource instance.
+// Restituisce l'ID di attivazione per l'istanza di AsyncResource.
 asyncResource.triggerAsyncId();
 
-// Call AsyncHooks before callbacks.
+// Chiama gli AsyncHooks before callbacks.
 // Deprecated: Use asyncResource.runInAsyncScope instead.
 asyncResource.emitBefore();
 
-// Call AsyncHooks after callbacks.
-// Deprecated: Use asyncResource.runInAsyncScope instead.
+// Chiama gli AsyncHooks after callbacks.
+// Obsoleto: Utilizza invece asyncResource.runInAsyncScope.
 asyncResource.emitAfter();
 ```
 
