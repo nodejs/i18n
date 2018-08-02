@@ -436,17 +436,17 @@ Promise.resolve(1729).then(() => {
 // eid 1 tid 0
 ```
 
-Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the `triggerAsyncId` value is `0`, which means that we are missing context about the resource that caused (triggered) the `then()` callback to be executed.
+Osserva che il `then()` callback afferma di aver eseguito nel context dello scope esterno anche se era coinvolto un hop asincrono. Da notare inoltre che il valore di `triggerAsyncId` è `0`, il che significa che manca il context relativo alla risorsa che ha causato (attivato) il `then()` callback da eseguire.
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
+L'installazione di async hooks tramite `async_hooks.createHook` attiva il promise execution tracking. Esempio:
 
 ```js
 const ah = require('async_hooks');
-ah.createHook({ init() {} }).enable(); // forces PromiseHooks to be enabled.
+ah.createHook({ init() {} }).enable(); // forza PromiseHooks ad essere attivato.
 Promise.resolve(1729).then(() => {
   console.log(`eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}`);
 });
-// produces:
+// produce:
 // eid 7 tid 6
 ```
 
