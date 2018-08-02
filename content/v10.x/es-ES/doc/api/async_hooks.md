@@ -541,7 +541,7 @@ added: v9.6.0
 * `thisArg` {any} The receiver to be used for the function call.
 * `...args` {any} Optional arguments to pass to the function.
 
-Call the provided function with the provided arguments in the execution context of the async resource. This will establish the context, trigger the AsyncHooks before callbacks, call the function, trigger the AsyncHooks after callbacks, and then restore the original execution context.
+Call the provided function with the provided arguments in the execution context of the async resource. Esto establecerá el contexto, activará el AsyncHooks antes de los callbacks, llamará la función, activará el AsyncHooks después de los callbacks, y después restaurará el contexto de ejecución original.
 
 #### asyncResource.emitBefore()
 
