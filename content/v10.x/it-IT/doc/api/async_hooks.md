@@ -228,11 +228,11 @@ Il `TCPWRAP` è la nuova connessione ricevuta dal client. Quando viene effettuat
 
 ###### `resource`
 
-`resource` è un object che rappresenta la risorsa asincrona effettiva che è stata inizializzata. Questo può contenere informazioni utili che possono variare in base al valore di `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
+`resource` è un object che rappresenta la risorsa asincrona effettiva che è stata inizializzata. Questo può contenere informazioni utili che possono variare in base al valore di `type`. Ad esempio, per il tipo di risorsa `GETADDRINFOREQWRAP`, `resource` fornisce l'hostname utilizzato quando si cerca l'indirizzo IP per quell'hostname in `net.Server.listen()`. L'API per accedere a queste informazioni attualmente non è considerata pubblica, ma utilizzando l'Embedder API, gli utenti possono fornire e documentare i propri resource objects. Ad esempio, un resource object del genere potrebbe contenere la SQL query in esecuzione.
 
-In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Here, `b` is considered a chained promise.
+Nel caso di più Promise, il `resource` object avrà la proprietà `promise` che fa riferimento al `Promise` inizializzato, ed una proprietà `isChainedPromise`, impostata su `true` se il promise ha un parent promise e su `false` in caso contrario. Ad esempio, nel caso di `b = a.then(handler)`, `a` è considerato un parent `Promise` di `b`. Qui, `b` è considerato un chained promise (promise concatenato).
 
-In some cases the resource object is reused for performance reasons, it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
+In alcuni casi il resource object viene riutilizzato per motivi di prestazioni, quindi non è sicuro utilizzarlo come chiave in una `WeakMap` od aggiungerci delle proprietà.
 
 ###### Asynchronous context example
 
