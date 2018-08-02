@@ -132,15 +132,15 @@ function debug(...args) {
 }
 ```
 
-Se per la registrazione è necessaria un'operazione asincrona, è possibile tenere traccia di ciò che ha causato l'operazione asincrona utilizzando le informazioni fornite da AsyncHooks stesso. Quindi la registrazione dovrebbe essere trascurata nel momento in cui è stata la registrazione stessa a causare la chiamata di AsyncHooks callback. By doing this the otherwise infinite recursion is broken.
+Se per la registrazione è necessaria un'operazione asincrona, è possibile tenere traccia di ciò che ha causato l'operazione asincrona utilizzando le informazioni fornite da AsyncHooks stesso. Quindi la registrazione dovrebbe essere trascurata nel momento in cui è stata la registrazione stessa a causare la chiamata di AsyncHooks callback. Trascurando la registrazione, la ricorsione infinita viene interrotta.
 
 #### asyncHook.enable()
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* Restituisce: {AsyncHook} Un riferimento ad `asyncHook`.
 
-Enable the callbacks for a given `AsyncHook` instance. If no callbacks are provided enabling is a noop.
+Abilita i callback per una determinata istanza `AsyncHook`. Se non viene fornito alcun callback, l'abilitazione è un noop.
 
-The `AsyncHook` instance is disabled by default. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
+L'istanza `AsyncHook` è disabilitata di default. Se l'istanza `AsyncHook` deve essere abilitata immediatamente dopo la creazione, è possibile utilizzare il seguente modello.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -150,7 +150,7 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 #### asyncHook.disable()
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* Restituisce {AsyncHook} Un riferimento ad `asyncHook`.
 
 Disable the callbacks for a given `AsyncHook` instance from the global pool of `AsyncHook` callbacks to be executed. Once a hook has been disabled it will not be called again until enabled.
 
