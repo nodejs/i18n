@@ -138,7 +138,7 @@ Las [Native Abstractions for Node.js](https://github.com/nodejs/nan) (ó `nan`) 
 
 > Estabilidad: 1 - Experimental
 
-N-API es una API utilizada para construir Complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. Esta API será estable como Application Binary Interface (ABI) en versiones de Node.js. Está diseñado para aislar los Complementos de los cambios en el motor subyacente de JavaScript y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin recompilación. Los complementos son construidos/empaquetados con el mismo enfoque/herramientas descritos en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizados por el código nativo. En lugar de utilizar el V8 o las API´s de [Native Abstractions for Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en el N-API.
+N-API es una API utilizada para construir Complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. Esta API será estable como Application Binary Interface (ABI) en versiones de Node.js. Está diseñado para aislar los Complementos de los cambios en el motor subyacente de JavaScript y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin recopilación. Los complementos son construidos/empaquetados con el mismo enfoque/herramientas descritos en este documento (node-gyp, etc.). La única diferencia es el conjunto de APIs que son utilizados por el código nativo. En lugar de utilizar el V8 o las API´s de [Native Abstractions for Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en el N-API.
 
 Para utilizar N-API en el ejemplo anterior de "Hello World", reemplace el contenido de `hello.cc` con lo siguiente. Todas las demás instrucciones siguen siendo las mismas.
 
@@ -326,9 +326,9 @@ addon((msg) => {
 
 Tenga en cuenta que, en este ejemplo, la función callback se invoca de manera sincronizada.
 
-### Objeto factory
+### Fábrica de objetos
 
-Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++ como se ilustra en el siguiente ejemplo. Se crea y se devuelve un objeto con una propiedad `msg` que hace un echo en la string pasada a `createObject()`:
+Los complementos pueden crear y devolver objetos nuevos desde dentro de una función de C++ como se ilustra en el siguiente ejemplo. Se crea y se devuelve un objeto con una propiedad `msg` que hace eco en la string pasada a `createObject()`:
 
 ```cpp
 // addon.cc
@@ -373,7 +373,7 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Función factory
+### Fábrica de funciones
 
 Otra posibilidad común es crear funciones de JavaScript que envuelvan funciones de C++ y regresarlas a JavaScript:
 
