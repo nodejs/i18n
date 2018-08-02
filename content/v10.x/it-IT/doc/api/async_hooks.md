@@ -114,7 +114,7 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 ##### Gestione degli Errori
 
-Se vengono generati eventuali callback `AsyncHook`, l'applicazione stamperà lo stack trace ed exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
+Se vengono generati eventuali callback `AsyncHook`, l'applicazione stamperà lo stack trace ed uscirà. Il percorso di exit segue quello di uncaught exception (eccezione non rilevata), ma tutti i listener `'uncaughtException'` vengono rimossi, forzando così il processo di exit. Gli `'exit'` callback saranno ancora chiamati a meno che l'applicazione non venga eseguita con `--abort-on-uncaught-exception`, nel cui caso l'applicazione stamperà lo stack trace ed uscirà, lasciando un core file.
 
 The reason for this error handling behavior is that these callbacks are running at potentially volatile points in an object's lifetime, for example during class construction and destruction. Because of this, it is deemed necessary to bring down the process quickly in order to prevent an unintentional abort in the future. This is subject to change in the future if a comprehensive analysis is performed to ensure an exception can follow the normal control flow without unintentional side effects.
 
