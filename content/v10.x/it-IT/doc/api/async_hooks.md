@@ -325,13 +325,13 @@ Il `before` callback sarà chiamato da 0 a N volte. In genera il `before` callba
 
 Chiamato immediatamente dopo il completamento del callback specificato in `before`.
 
-If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
+Se si verifica una uncaught exception (eccezione non rilevata) durante l'esecuzione del callback, allora `after` verrà eseguito *dopo* che l'evento `'uncaughtException'` viene emesso oppure dopo che viene eseguito l'handler di un `domain`.
 
 ##### destroy(asyncId)
 
 * `asyncId` {number}
 
-Called after the resource corresponding to `asyncId` is destroyed. It is also called asynchronously from the embedder API `emitDestroy()`.
+Chiamato dopo che la risorsa corrispondente ad `asyncId` è stata distrutta. Viene anche chiamato in modo asincrono dall'embedder API `emitDestroy()`.
 
 Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. If the resource does not depend on garbage collection, then this will not be an issue.
 
