@@ -315,15 +315,15 @@ Il grafico mostra solo *quando* è stata creata una risorsa, non il *perché*, q
 
 * `asyncId` {number}
 
-Quando un'operazione asincrona viene avviata (come ad esempio un server TCP che riceve una nuova connessione) oppure quando viene completata (come ad esempio la scrittura di dati su un disco) viene chiamato un callback per avvisare l'utente. Il `before` callback viene chiamato subito prima che venga eseguito il callback. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
+Quando un'operazione asincrona viene avviata (come ad esempio un server TCP che riceve una nuova connessione) oppure quando viene completata (come ad esempio la scrittura di dati su un disco) viene chiamato un callback per avvisare l'utente. Il `before` callback viene chiamato subito prima che venga eseguito il callback. `asyncId` è l'identificatore univoco assegnato alla risorsa che sta per eseguire il callback.
 
-The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
+Il `before` callback sarà chiamato da 0 a N volte. In genera il `before` callback verrà chiamato 0 volte se l'operazione asincrona è stata annullata oppure, ad esempio, se un server TCP non ha ricevuto nessuna connessione. Le risorse asincrone persistenti, come ad esempio un server TCP, in genere chiameranno il `before` callback più volte, mentre altre operazioni, come `fs.open()`, lo chiameranno una sola volta.
 
 ##### after(asyncId)
 
 * `asyncId` {number}
 
-Called immediately after the callback specified in `before` is completed.
+Chiamato immediatamente dopo il completamento del callback specificato in `before`.
 
 If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
 
