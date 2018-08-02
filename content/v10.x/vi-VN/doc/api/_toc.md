@@ -2,12 +2,12 @@
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Về tài liệu này](documentation.html)
+* [Cách sử dụng và ví dụ](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
+* [Thử nghiệm đã khẳng định](assert.html)
 * [Async Hooks](async_hooks.html)
 * [Buffer](buffer.html)
 * [C++ Addons](addons.html)
