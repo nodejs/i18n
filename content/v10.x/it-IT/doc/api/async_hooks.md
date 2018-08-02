@@ -494,7 +494,7 @@ asyncResource.asyncId();
 asyncResource.triggerAsyncId();
 
 // Chiama gli AsyncHooks before callbacks.
-// Deprecated: Use asyncResource.runInAsyncScope instead.
+// Obsoleto: Utilizza invece asyncResource.runInAsyncScope.
 asyncResource.emitBefore();
 
 // Chiama gli AsyncHooks after callbacks.
@@ -537,11 +537,11 @@ class DBQuery extends AsyncResource {
 added: v9.6.0
 -->
 
-* `fn` {Function} The function to call in the execution context of this async resource.
-* `thisArg` {any} The receiver to be used for the function call.
-* `...args` {any} Optional arguments to pass to the function.
+* `fn` {Function} La funzione per chiamare l'execution context di questa risorsa asincrona.
+* `thisArg` {any} Il receiver da utilizzare per la function call.
+* `...args` {any} Argomenti opzionali da passare alla funzione.
 
-Call the provided function with the provided arguments in the execution context of the async resource. This will establish the context, trigger the AsyncHooks before callbacks, call the function, trigger the AsyncHooks after callbacks, and then restore the original execution context.
+Chiama la funzione data con gli argomenti forniti nell'execution context della risorsa asincrona. Questo stabilirà il context, attiverà gli AsyncHooks before callbacks, chiamerà la funzione, attiverà gli AsyncHooks after callbacks e ripristinerà l'execution context originale.
 
 #### asyncResource.emitBefore()
 
@@ -549,7 +549,7 @@ Call the provided function with the provided arguments in the execution context 
 deprecated: v9.6.0
 -->
 
-> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`asyncResource.runInAsyncScope()`][].
 
 Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
@@ -561,7 +561,7 @@ Call all `before` callbacks to notify that a new asynchronous execution context 
 deprecated: v9.6.0
 -->
 
-> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`asyncResource.runInAsyncScope()`][].
 
 Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
 
