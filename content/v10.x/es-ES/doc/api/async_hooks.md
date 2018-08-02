@@ -423,7 +423,7 @@ Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`
 
 ## Promise execution tracking
 
-By default, promise executions are not assigned `asyncId`s due to the relatively expensive nature of the [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) provided by V8. This means that programs using promises or `async`/`await` will not get correct execution and trigger ids for promise callback contexts by default.
+By default, promise executions are not assigned `asyncId`s due to the relatively expensive nature of the [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) provided by V8. Esto significa que los programas que utilizan promesas ó `async`/`await` no obtendrán una ejecución correcta y activarán identificaciones para contextos de callbacks de promesas por defecto.
 
 Aquí tiene un ejemplo:
 
