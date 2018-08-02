@@ -450,7 +450,7 @@ Promise.resolve(1729).then(() => {
 // eid 7 tid 6
 ```
 
-In this example, adding any actual hook function enabled the tracking of promises. There are two promises in the example above; the promise created by `Promise.resolve()` and the promise returned by the call to `then()`. In the example above, the first promise got the `asyncId` `6` and the latter got `asyncId` `7`. During the execution of the `then()` callback, we are executing in the context of promise with `asyncId` `7`. This promise was triggered by async resource `6`.
+En este ejemplo, agregar cualquier función real de un hook habilitó el rastreo de las promesas. There are two promises in the example above; the promise created by `Promise.resolve()` and the promise returned by the call to `then()`. In the example above, the first promise got the `asyncId` `6` and the latter got `asyncId` `7`. During the execution of the `then()` callback, we are executing in the context of promise with `asyncId` `7`. This promise was triggered by async resource `6`.
 
 Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
 
@@ -553,7 +553,7 @@ deprecated: v9.6.0
 
 Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
+`before` and `after` calls must be unwound in the same order that they are called. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
 
 #### asyncResource.emitAfter()
 
