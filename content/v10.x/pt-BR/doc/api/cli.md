@@ -4,7 +4,7 @@
 
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. Essas opções expõem a depuração interna, múltiplas formas de executar scripts, e outras opções úteis em tempo de execução.
+Node.js vem com uma variedade de opções CLI. Essas opções expõem a depuração interna, múltiplas formas de executar scripts, e outras opções úteis em tempo de execução.
 
 Para ver essa documentação como uma página de manual no terminal, execute `man node `.
 
@@ -46,7 +46,7 @@ added: v0.10
 
 Abortar ao invés de sair faz com que um arquivo principal seja gerado para post-mortem [Pós-Morte] análise usando um depurador (tal qual `lldb`,`gdb`, e `mdb`).
 
-If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
+Se esse sinal é passado, o comportamento ainda pode ser definido para não abortar através do [`process.setUncaughtExceptionCaptureCallback()`][] (e utilizando do módulo `domain`).
 
 ### `--enable-fips`
 
