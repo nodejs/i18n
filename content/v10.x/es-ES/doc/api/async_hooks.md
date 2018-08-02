@@ -323,7 +323,7 @@ The `before` callback will be called 0 to N times. The `before` callback will ty
 
 * `asyncId` {number}
 
-Called immediately after the callback specified in `before` is completed.
+Se llama inmediatamente después que el callback especificado en `before` se completa.
 
 If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
 
@@ -349,7 +349,7 @@ The `Promise` is not necessarily fulfilled or rejected at this point if the `Pro
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-calls the following callbacks:
+llama a los siguientes callbacks:
 
 ```text
 init for PROMISE with id 5, trigger id: 1
@@ -571,7 +571,7 @@ If the user's callback throws an exception, `emitAfter()` will automatically be 
 
 #### asyncResource.emitDestroy()
 
-Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+Llame a todos los hooks `destroy`. Este sólo se debe llamar una vez. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
 #### asyncResource.asyncId()
 
