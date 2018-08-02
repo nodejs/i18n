@@ -10,9 +10,9 @@ Sadece [`strict mode`][] kullanımı önerildiğinde `strict` ve `legacy` modlar
 
 For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Class: assert.AssertionError
+## Sınıf: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Karşılaştırmada hata olduğunu gösteren bir `Error` alt sınıfıdır. `assert` modülü tarafından oluşturulan bütün hatalar `AssertionError` sınıfının nesneleridir.
 
 ### new assert.AssertionError(options)
 
