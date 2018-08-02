@@ -169,7 +169,7 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 
 Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
 
-This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
+Se puede observar este comportamiento al hacer algo como abrir un recurso, y después cerrarlo antes de que el recurso pueda ser utilizado. The following snippet demonstrates this.
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
@@ -177,7 +177,7 @@ require('net').createServer().listen(function() { this.close(); });
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-Every new resource is assigned an ID that is unique within the scope of the current process.
+A cada nuevo recurso se le asigna una identificación que es única dentro del scope del proceso actual.
 
 ###### `tipo`
 
@@ -228,7 +228,7 @@ El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva co
 
 ###### `recurso`
 
-`resource` is an object that represents the actual async resource that has been initialized. Esto puede contener información útil que puede variar en base al valor de `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
+`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar en base al valor de `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
 
 In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Aquí, `b` es considerado como una promesa encadenada.
 
