@@ -460,7 +460,7 @@ Gli sviluppatori delle library, che gestiscono le proprie risorse asincrone eseg
 
 ### Classe: AsyncResource
 
-The class `AsyncResource` is designed to be extended by the embedder's async resources. Using this, users can easily trigger the lifetime events of their own resources.
+La classe `AsyncResource` è progettata per essere estesa tramite le risorse asincrone dell'embedder. Using this, users can easily trigger the lifetime events of their own resources.
 
 The `init` hook will trigger when an `AsyncResource` is instantiated.
 
