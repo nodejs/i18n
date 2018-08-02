@@ -30,7 +30,7 @@ const eid = async_hooks.executionAsyncId();
 // current execution scope to call.
 const tid = async_hooks.triggerAsyncId();
 
-// Create a new AsyncHook instance. All of these callbacks are optional.
+// Create a new AsyncHook instance. Todos estos callbacks son opcionales.
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
 
@@ -140,7 +140,7 @@ If an asynchronous operation is needed for logging, it is possible to keep track
 
 Enable the callbacks for a given `AsyncHook` instance. If no callbacks are provided enabling is a noop.
 
-The `AsyncHook` instance is disabled by default. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
+La instancia de `AsyncHook` está inhabilitada por defecto. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -195,7 +195,7 @@ There is also the `PROMISE` resource type, which is used to track `Promise` inst
 
 Users are able to define their own `type` when using the public embedder API.
 
-It is possible to have type name collisions. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
+Es posible tener colisiones de nombres de tipo. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
 
 ###### `triggerAsyncId`
 
@@ -230,7 +230,7 @@ The `TCPWRAP` is the new connection from the client. When a new connection is ma
 
 `resource` is an object that represents the actual async resource that has been initialized. This can contain useful information that can vary based on the value of `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
 
-In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Here, `b` is considered a chained promise.
+In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Aquí, `b` es considerado como una promesa encadenada.
 
 In some cases the resource object is reused for performance reasons, it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
 
@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
+* Returns: {number} The `asyncId` of the current execution context. Útil para rastrear cuando algo llama.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -504,7 +504,7 @@ asyncResource.emitAfter();
 
 #### new AsyncResource(type[, options])
 
-* `type` {string} The type of async event.
+* `type` {string} El tipo de evento asincrónico.
 * `opciones` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
@@ -563,7 +563,7 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
+Llamar a todos los callbacks `after` . If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. De otra manera ocurrirá un error.
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
@@ -571,7 +571,7 @@ If the user's callback throws an exception, `emitAfter()` will automatically be 
 
 #### asyncResource.emitDestroy()
 
-Llame a todos los hooks `destroy`. Este sólo se debe llamar una vez. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+Llame a todos los hooks `destroy`. Este sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
 #### asyncResource.asyncId()
 
