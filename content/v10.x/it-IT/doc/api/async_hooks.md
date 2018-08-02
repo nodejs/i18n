@@ -127,12 +127,12 @@ const fs = require('fs');
 const util = require('util');
 
 function debug(...args) {
-  // use a function like this one when debugging inside an AsyncHooks callback
+  // utilizza una funzione come questa durante il debug all'interno di un AsyncHooks callback
   fs.writeSync(1, `${util.format(...args)}\n`);
 }
 ```
 
-If an asynchronous operation is needed for logging, it is possible to keep track of what caused the asynchronous operation using the information provided by AsyncHooks itself. The logging should then be skipped when it was the logging itself that caused AsyncHooks callback to call. By doing this the otherwise infinite recursion is broken.
+Se per la registrazione è necessaria un'operazione asincrona, è possibile tenere traccia di ciò che ha causato l'operazione asincrona utilizzando le informazioni fornite da AsyncHooks stesso. Quindi la registrazione dovrebbe essere trascurata nel momento in cui è stata la registrazione stessa a causare la chiamata di AsyncHooks callback. By doing this the otherwise infinite recursion is broken.
 
 #### asyncHook.enable()
 
