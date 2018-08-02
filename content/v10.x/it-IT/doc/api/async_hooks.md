@@ -315,7 +315,7 @@ Il grafico mostra solo *quando* è stata creata una risorsa, non il *perché*, q
 
 * `asyncId` {number}
 
-When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. The `before` callback is called just before said callback is executed. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
+Quando un'operazione asincrona viene avviata (come ad esempio un server TCP che riceve una nuova connessione) oppure quando viene completata (come ad esempio la scrittura di dati su un disco) viene chiamato un callback per avvisare l'utente. Il `before` callback viene chiamato subito prima che venga eseguito il callback. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
 
 The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
 
