@@ -6,7 +6,7 @@
 
 The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Sadece [`strict mode`][] kullanımı önerildiğinde `strict` ve `legacy` modları vardır.
 
 For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
