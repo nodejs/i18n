@@ -1,12 +1,12 @@
-# Command Line Options
+# Opções de linha de comando
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. Essas opções expõem a depuração interna, múltiplas formas de executar scripts, e outras opções úteis em tempo de execução.
 
-To view this documentation as a manual page in a terminal, run `man node`.
+Para ver essa documentação como uma página de manual no terminal, execute ` man node `.
 
 ## Synopsis
 
