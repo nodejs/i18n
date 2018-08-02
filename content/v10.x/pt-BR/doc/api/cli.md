@@ -54,7 +54,7 @@ Se esse sinal é passado, o comportamento ainda pode ser definido para não abor
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
+Habilite a criptografia compatível com FIPS na inicialização. (Necessita que seja feito no Node.js `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -62,7 +62,7 @@ Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./c
 added: v8.5.0
 -->
 
-Enable experimental ES module support and caching modules.
+Ativa suporte ao módulo ES experimental e módulos de armazenamento em cache.
 
 ### `--experimental-repl-await`
 
