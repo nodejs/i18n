@@ -333,7 +333,7 @@ If an uncaught exception occurs during execution of the callback, then `after` w
 
 Called after the resource corresponding to `asyncId` is destroyed. It is also called asynchronously from the embedder API `emitDestroy()`.
 
-Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. If the resource does not depend on garbage collection, then this will not be an issue.
+Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. Si el recurso no depende de la recolección de basura, entonces esto no será un problema.
 
 ##### promiseResolve(asyncId)
 
@@ -398,7 +398,7 @@ const server = net.createServer(function onConnection(conn) {
 });
 ```
 
-Note that promise contexts may not get precise `executionAsyncIds` by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Tenga en cuenta que los contextos de promesa no podrán recibir `executionAsyncIds` precisos por defecto. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 #### async_hooks.triggerAsyncId()
 
@@ -419,7 +419,7 @@ const server = net.createServer((conn) => {
 });
 ```
 
-Note that promise contexts may not get valid `triggerAsyncId`s by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`s válidos por defecto. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Promise execution tracking
 
