@@ -199,9 +199,9 @@ Gli utenti sono in grado di definire il proprio `type` quando utilizzano il publ
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` è l'`asyncId` della risorsa che ha causato (od "attivato") la nuova risorsa da inizializzare e l'`init` da chiamare. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` è l'`asyncId` della risorsa che ha causato (od "attivato") la nuova risorsa da inizializzare e l'`init` da chiamare. E' diverso da `async_hooks.executionAsyncId()` che mostra solo *quando* è stata creata una risorsa, infatti `triggerAsyncId` mostra *perché* una risorsa è stata creata.
 
-The following is a simple demonstration of `triggerAsyncId`:
+Di seguito una semplice dimostrazione di `triggerAsyncId`:
 
 ```js
 async_hooks.createHook({
@@ -215,16 +215,16 @@ async_hooks.createHook({
 require('net').createServer((conn) => {}).listen(8080);
 ```
 
-Output when hitting the server with `nc localhost 8080`:
+Output quando si colpisce il server con `nc localhost 8080`:
 
 ```console
 TCPSERVERWRAP(2): trigger: 1 execution: 1
 TCPWRAP(4): trigger: 2 execution: 0
 ```
 
-The `TCPSERVERWRAP` is the server which receives the connections.
+Il `TCPSERVERWRAP` è il server che riceve le connessioni.
 
-The `TCPWRAP` is the new connection from the client. When a new connection is made, the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
+Il `TCPWRAP` è la nuova connessione ricevuta dal client. Quando viene effettuata una nuova connessione, viene immediatamente costruita l'istanza `TCPWrap`. Questo accade al di fuori di qualsiasi JavaScript stack. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
 
 ###### `resource`
 
