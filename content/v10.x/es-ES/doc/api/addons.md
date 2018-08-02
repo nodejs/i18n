@@ -960,7 +960,7 @@ console.log(result);
 
 ### Hooks de AtExit
 
-Un hook de `AtExit` es una función que se invoca luego de que el bucle de eventos de Node.js ha finalizado pero antes de que haya terminado el VM de JavaScript y se haya apagado Node.js. Los hooks de `AtExit` se registran usando la API `node::AtExit` .
+Un hook de `AtExit` es una función que se invoca luego de que el bucle de eventos de Node.js ha finalizado, pero antes de que haya terminado el VM de JavaScript y se haya apagado Node.js. Los hooks de `AtExit` se registran usando la API `node::AtExit` .
 
 #### void AtExit(callback, args)
 
