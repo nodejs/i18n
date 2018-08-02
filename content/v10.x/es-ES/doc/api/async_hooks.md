@@ -12,13 +12,13 @@ const async_hooks = require('async_hooks');
 
 ## Terminología
 
-Un recurso asíncrono representa un objeto con un callback asociado. Este callback se puede llamar varias veces, por ejemplo, el evento `'connection'` en `net.createServer()`, o simplemente una sóla vez como en `fs.open()`. Un recurso también puede cerrarse antes de que se llame un callback. `AsyncHook` no distingue explícitamente entre estos casos diferentes pero los representará como el concepto abstracto que es un recurso.
+Un recurso asíncrono representa un objeto con un callback asociado. Este callback se puede llamar varias veces, por ejemplo, el evento `'connection'` en `net.createServer()`, o simplemente una sóla vez como en `fs.open()`. Un recurso también puede cerrarse antes de que se llame un callback. `AsyncHook` no distingue explícitamente entre estos casos diferentes, pero los representará como el concepto abstracto que es un recurso.
 
 ## API Pública
 
 ### Resumen
 
-La siguiente es un simple resumen de la API pública.
+A continuación, está un simple resumen de la API pública.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -464,7 +464,7 @@ The class `AsyncResource` is designed to be extended by the embedder's async res
 
 The `init` hook will trigger when an `AsyncResource` is instantiated.
 
-A continuación se muestra un resumen de la API `AsyncResource` .
+A continuación, se muestra un resumen de la API `AsyncResource` .
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
@@ -567,7 +567,7 @@ Call all `after` callbacks. If nested calls to `emitBefore()` were made, then ma
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
+`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
 
 #### asyncResource.emitDestroy()
 
