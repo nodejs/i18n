@@ -333,15 +333,15 @@ Se si verifica una uncaught exception (eccezione non rilevata) durante l'esecuzi
 
 Chiamato dopo che la risorsa corrispondente ad `asyncId` è stata distrutta. Viene anche chiamato in modo asincrono dall'embedder API `emitDestroy()`.
 
-Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. If the resource does not depend on garbage collection, then this will not be an issue.
+Alcune risorse dipendono dalla garbage collection per la pulizia, quindi se viene fatto un riferimento al `resource` object passato ad `init` è possibile che `destroy` non verrà mai chiamato, causando così un memory leak (una perdita di memoria) nell'applicazione. Se la risorsa non dipende dalla garbage collection, allora non sarà un problema.
 
 ##### promiseResolve(asyncId)
 
 * `asyncId` {number}
 
-Called when the `resolve` function passed to the `Promise` constructor is invoked (either directly or through other means of resolving a promise).
+Chiamato quando la funzione `resolve`, passata al constructor di `Promise`, viene invocata (direttamente oppure tramite altri mezzi per risolvere un promise).
 
-Note that `resolve()` does not do any observable synchronous work.
+Da notare che `resolve()` non esegue alcun lavoro sincrono visibile.
 
 The `Promise` is not necessarily fulfilled or rejected at this point if the `Promise` was resolved by assuming the state of another `Promise`.
 
