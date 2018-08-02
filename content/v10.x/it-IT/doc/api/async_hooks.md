@@ -382,32 +382,32 @@ fs.open(path, 'r', (err, fd) => {
 });
 ```
 
-The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`):
+L'ID restituito da `executionAsyncId()` è correlato al tempo di execution, non alla causalità (che è coperta da `triggerAsyncId()`):
 
 ```js
 const server = net.createServer(function onConnection(conn) {
-  // Returns the ID of the server, not of the new connection, because the
-  // onConnection callback runs in the execution scope of the server's
-  // MakeCallback().
+  // Restituisce l'ID del server, non della nuova connessione, poiché 
+  // l'onConnection callback viene eseguito nell'execution scope del 
+  // MakeCallback() del server.
   async_hooks.executionAsyncId();
 
 }).listen(port, function onListening() {
-  // Returns the ID of a TickObject (i.e. process.nextTick()) because all
-  // callbacks passed to .listen() are wrapped in a nextTick().
+  // Restituisce l'ID di un TickObject (ad esempio process.nextTick()) poiché tutti
+  // i callback passati a .listen() sono stati racchiusi con il wrapping all'interno di un nextTick().
   async_hooks.executionAsyncId();
 });
 ```
 
-Note that promise contexts may not get precise `executionAsyncIds` by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Da notare che i promise context potrebbero non riuscire ad ottenere `executionAsyncIds` precisi in modo predefinito. Vedi la sezione sul [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 #### async_hooks.triggerAsyncId()
 
-* Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
+* Restituisce: {number} L'ID della risorsa responsabile della chiamata del callback attualmente in esecuzione.
 
 ```js
 const server = net.createServer((conn) => {
-  // The resource that caused (or triggered) this callback to be called
-  // was that of the new connection. Thus the return value of triggerAsyncId()
+  // La risorsa che ha causato (od attivato) la chiamata di questo callback 
+  // era quella della nuova connessione. Thus the return value of triggerAsyncId()
   // is the asyncId of "conn".
   async_hooks.triggerAsyncId();
 
