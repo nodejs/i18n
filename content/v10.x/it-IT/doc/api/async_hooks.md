@@ -343,13 +343,13 @@ Chiamato quando la funzione `resolve`, passata al constructor di `Promise`, vien
 
 Da notare che `resolve()` non esegue alcun lavoro sincrono visibile.
 
-The `Promise` is not necessarily fulfilled or rejected at this point if the `Promise` was resolved by assuming the state of another `Promise`.
+A questo punto il `Promise` non è necessariamente soddisfatto o respinto se è stato risolto assumendo lo stato di un altro `Promise`.
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-calls the following callbacks:
+chiama i seguenti callback:
 
 ```text
 init for PROMISE with id 5, trigger id: 1
@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
+* Restituisce: {number} L'`asyncId` dell'attuale execution context. Utile a tracciare quando qualcosa chiama.
 
 ```js
 const async_hooks = require('async_hooks');
