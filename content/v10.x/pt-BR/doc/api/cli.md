@@ -28,7 +28,7 @@ Execute sem argumentos para iniciar o [REPL](repl.html).
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+Chamada por stdin, análogo ao uso de - em outros terminais de linha de comando, significando que o script será lido de stdin, e o restante das opções serão passados para esse script.
 
 ### `--`
 
@@ -36,7 +36,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indica o fim das opções do node. Passa o restante dos argumentos para o script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--abort-on-uncaught-exception`
 
