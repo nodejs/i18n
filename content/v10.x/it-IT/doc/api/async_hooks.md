@@ -460,18 +460,18 @@ Gli sviluppatori delle library, che gestiscono le proprie risorse asincrone eseg
 
 ### Classe: AsyncResource
 
-La classe `AsyncResource` è progettata per essere estesa tramite le risorse asincrone dell'embedder. Using this, users can easily trigger the lifetime events of their own resources.
+La classe `AsyncResource` è progettata per essere estesa tramite le risorse asincrone dell'embedder. Usandola, gli utenti possono facilmente attivare i lifestime events delle proprie risorse.
 
-The `init` hook will trigger when an `AsyncResource` is instantiated.
+L'`init` hook si innesca quando viene creata un'istanza di `AsyncResource`.
 
-The following is an overview of the `AsyncResource` API.
+Di seguito è riportata una panoramica dell'API `AsyncResource`.
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
 
-// AsyncResource() is meant to be extended. Instantiating a
-// new AsyncResource() also triggers init. If triggerAsyncId is omitted then
-// async_hook.executionAsyncId() is used.
+// AsyncResource() è pensato per essere esteso. Anche la creazione 
+// di un'istanza di un nuovo AsyncResource() attiva init. Se triggerAsyncId 
+// viene omesso, allora viene utilizzato async_hook.executionAsyncId().
 const asyncResource = new AsyncResource(
   type, { triggerAsyncId: executionAsyncId(), requireManualDestroy: false }
 );
