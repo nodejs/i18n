@@ -85,7 +85,7 @@ Registra funciones para que sean llamadas por diferentes eventos en el tiempo de
 
 Los callbacks `init()`/`before()`/`after()`/`destroy()` son llamados para el respectivo evento asincrónico durante el tiempo de vida de un recurso.
 
-Todos los callbacks son opcionales. Por ejemplo, si sólo se necesita rastrear la limpieza de recursos, entonces sólo se necesitará pasar el callback `destroy` . The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+Todos los callbacks son opcionales. Por ejemplo, si solamente se necesita rastrear la limpieza de recursos, entonces sólo se necesitará pasar el callback `destroy` . The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -179,7 +179,7 @@ clearTimeout(setTimeout(() => {}, 10));
 
 Every new resource is assigned an ID that is unique within the scope of the current process.
 
-###### `type`
+###### `tipo`
 
 The `type` is a string identifying the type of resource that caused `init` to be called. Generally, it will correspond to the name of the resource's constructor.
 
@@ -226,7 +226,7 @@ The `TCPSERVERWRAP` is the server which receives the connections.
 
 The `TCPWRAP` is the new connection from the client. When a new connection is made, the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
 
-###### `resource`
+###### `recurso`
 
 `resource` is an object that represents the actual async resource that has been initialized. This can contain useful information that can vary based on the value of `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
 
@@ -425,7 +425,7 @@ Note that promise contexts may not get valid `triggerAsyncId`s by default. See t
 
 By default, promise executions are not assigned `asyncId`s due to the relatively expensive nature of the [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) provided by V8. This means that programs using promises or `async`/`await` will not get correct execution and trigger ids for promise callback contexts by default.
 
-Here's an example:
+Aquí tiene un ejemplo:
 
 ```js
 const ah = require('async_hooks');
@@ -438,7 +438,7 @@ Promise.resolve(1729).then(() => {
 
 Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the `triggerAsyncId` value is `0`, which means that we are missing context about the resource that caused (triggered) the `then()` callback to be executed.
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
+Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Ejemplo:
 
 ```js
 const ah = require('async_hooks');
@@ -458,7 +458,7 @@ Another subtlety with promises is that `before` and `after` callbacks are run on
 
 Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
 
-### Class: AsyncResource
+### Clase: AsyncResource
 
 The class `AsyncResource` is designed to be extended by the embedder's async resources. Using this, users can easily trigger the lifetime events of their own resources.
 
@@ -505,7 +505,7 @@ asyncResource.emitAfter();
 #### new AsyncResource(type[, options])
 
 * `type` {string} The type of async event.
-* `options` {Object} 
+* `opciones` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
