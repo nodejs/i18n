@@ -452,11 +452,11 @@ Promise.resolve(1729).then(() => {
 
 In questo esempio, l'aggiunta di una funzione hook effettiva ha attivato il tracking dei promise. Ci sono due promise nell'esempio sopracitato; il promise creato da `Promise.resolve()` ed il promise restituito dalla chiamata a `then()`. Il primo promise ha ottenuto l'`asyncId` `6` ed il secondo ed ultimo promise ha ottenuto l'`asyncId` `7`. Durante l'execution del `then()` callback, stiamo facendo l'execution nel context del promise con `asyncId` `7`. Questo promise è stato attivato dalla risorsa asincrona `6`.
 
-Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
+Un'altra sottigliezza dei promise è che i callback `before` ed `after` vengono eseguiti solo sui chained promise (promise concatenati). Ciò significa che i promise che non sono stati creati tramite `then()`/`catch()` non avranno i callback `before` ed `after` attivati su di essi. Per ulteriori informazioni vedi i dettagli del [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API di V8.
 
 ## JavaScript Embedder API
 
-Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
+Gli sviluppatori delle library, che gestiscono le proprie risorse asincrone eseguendo attività come I/O, connection pooling oppure gestione delle callback queue, possono utilizzare l'API JavaScript `AsyncWrap` in modo che vengano chiamati tutti i callback appropriati.
 
 ### Classe: AsyncResource
 
