@@ -567,16 +567,16 @@ Chiama tutti gli `after` callbacks. Se sono state effettuate chiamate annidate v
 
 Se il callback dell'utente genera un'eccezione, `emitAfter()` verrà automaticamente chiamato per tutti gli `asyncId` sullo stack se l'errore viene gestito da un domain (dominio) oppure da un handler di `'uncaughtException'`.
 
-Le chiamate `before` ed `after` devono essere scomposte nello stesso ordine in cui vengono chiamate. Otherwise, an unrecoverable exception will occur and the process will abort. Per questo motivo, le API `emitBefore` ed `emitAfter` sono considerate obsolete. Sei pregato di utilizzare `runInAsyncScope`, in quanto fornisce un'alternativa molto più sicura.
+Le chiamate `before` ed `after` devono essere scomposte nello stesso ordine in cui vengono chiamate. Altrimenti, si verificherà un'eccezione irrecuperabile ed il processo si interromperà. Per questo motivo, le API `emitBefore` ed `emitAfter` sono considerate obsolete. Sei pregato di utilizzare `runInAsyncScope`, in quanto fornisce un'alternativa molto più sicura.
 
 #### asyncResource.emitDestroy()
 
-Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+Chiama tutti gli `destroy` hooks. Questo dovrebbe essere chiamato sempre una sola volta. Se viene chiamato più di una volta verrà generato un errore. Quindi **deve** essere chiamato manualmente. Se la risorsa viene lasciata per essere raccolta dal GC (Garbage Collector), allora gli `destroy` hooks non verranno mai chiamati.
 
 #### asyncResource.asyncId()
 
-* Returns: {number} The unique `asyncId` assigned to the resource.
+* Restituisce: {number} L'`asyncId` univoco assegnato alla risorsa.
 
 #### asyncResource.triggerAsyncId()
 
-* Returns: {number} The same `triggerAsyncId` that is passed to the `AsyncResource` constructor.
+* Restituisce: {number} Lo stesso `triggerAsyncId` che viene passato dal constructor di `AsyncResource`.
