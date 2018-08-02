@@ -165,23 +165,23 @@ Gli eventi chiave nel corso degli eventi asincroni sono stati suddivisi in quatt
 * `asyncId` {number} Un ID univoco per la risorsa asincrona.
 * `type` {string} Il tipo della risorsa asincrona.
 * `triggerAsyncId` {number} L'ID univoco della risorsa asincrona nel cui execution context è stata creata questa risorsa asincrona.
-* `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
+* `resource` {Object} Riferimento alla risorsa che rappresenta l'operazione asincrona, dev'essere rilasciato nel corso di *destroy*.
 
-Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+Chiamato quando viene costruita una classe che ha la *possibilità* di emettere un evento asincrono. Questo *non* significa che l'istanza deve chiamare `before`/`after` prima che venga chiamato `destroy`, ma solo che esiste la possibilità di farlo.
 
-This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
+Questo comportamento può essere osservato facendo qualcosa come ad esempio aprire una risorsa e richiuderla prima che possa essere utilizzata. Il seguente frammento lo dimostra.
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
-// OR
+// OPPURE
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-Every new resource is assigned an ID that is unique within the scope of the current process.
+Ad ogni nuova risorsa viene assegnato un ID che è unico nello scope del processo corrente.
 
 ###### `type`
 
-The `type` is a string identifying the type of resource that caused `init` to be called. Generally, it will correspond to the name of the resource's constructor.
+Il `type` è una stringa che identifica il tipo di risorsa che ha causato la chiamata di `init`. Generalmente corrisponderà al nome del constructor della risorsa.
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -191,15 +191,15 @@ UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
 RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 ```
 
-There is also the `PROMISE` resource type, which is used to track `Promise` instances and asynchronous work scheduled by them.
+Esiste anche il tipo di risorsa `PROMISE`, che viene utilizzato per tenere traccia delle istanze `Promise` e del lavoro asincrono da esse pianificato.
 
-Users are able to define their own `type` when using the public embedder API.
+Gli utenti sono in grado di definire il proprio `type` quando utilizzano il public embedder API.
 
-It is possible to have type name collisions. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
+È possibile avere conflitti di type name. Gli embedders sono incoraggiati ad utilizzare prefissi univoci, come il nome del pacchetto npm, per evitare conflitti durante l'ascolto degli hooks.
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` è l'`asyncId` della risorsa che ha causato (od "attivato") la nuova risorsa da inizializzare e l'`init` da chiamare. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
 
 The following is a simple demonstration of `triggerAsyncId`:
 
