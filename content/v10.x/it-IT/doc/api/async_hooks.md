@@ -152,19 +152,19 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 * Restituisce {AsyncHook} Un riferimento ad `asyncHook`.
 
-Disable the callbacks for a given `AsyncHook` instance from the global pool of `AsyncHook` callbacks to be executed. Once a hook has been disabled it will not be called again until enabled.
+Disabilita i callback per una determinata istanza `AsyncHook` dal global pool degli `AsyncHook` callbacks da eseguire. Una volta che un hook è stato disabilitato, non verrà chiamato nuovamente fino a quando non verrà abilitato.
 
-For API consistency `disable()` also returns the `AsyncHook` instance.
+Per coerenza dell'API, `disable()` restituisce anche l'istanza `AsyncHook`.
 
 #### Hook Callbacks
 
-Key events in the lifetime of asynchronous events have been categorized into four areas: instantiation, before/after the callback is called, and when the instance is destroyed.
+Gli eventi chiave nel corso degli eventi asincroni sono stati suddivisi in quattro aree: instantiation (creazione dell'istanza), ciò che succede prima e dopo la chiamata del callback, e quando l'istanza viene distrutta.
 
 ##### init(asyncId, type, triggerAsyncId, resource)
 
-* `asyncId` {number} A unique ID for the async resource.
-* `type` {string} The type of the async resource.
-* `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
+* `asyncId` {number} Un ID univoco per la risorsa asincrona.
+* `type` {string} Il tipo della risorsa asincrona.
+* `triggerAsyncId` {number} L'ID univoco della risorsa asincrona nel cui execution context è stata creata questa risorsa asincrona.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
 Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
