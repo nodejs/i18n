@@ -6,7 +6,7 @@
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
+* Yazım ve dil bilgisi gibi mekanik konular mümkün olduğunca araçlarla tanımlanmalıdır. Eğer bir araçla tanımlanmadıysa gözlemciler tarafından belirtilmesi gerekir.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Though controversial, the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) is preferred for clarity's sake.
 * Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
