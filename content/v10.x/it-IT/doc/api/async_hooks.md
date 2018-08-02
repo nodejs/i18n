@@ -407,19 +407,19 @@ Da notare che i promise context potrebbero non riuscire ad ottenere `executionAs
 ```js
 const server = net.createServer((conn) => {
   // La risorsa che ha causato (od attivato) la chiamata di questo callback 
-  // era quella della nuova connessione. Thus the return value of triggerAsyncId()
-  // is the asyncId of "conn".
+  // era quella della nuova connessione. Quindi il valore di ritorno di triggerAsyncId() 
+  // è l'asyncId di "conn".
   async_hooks.triggerAsyncId();
 
 }).listen(port, () => {
-  // Even though all callbacks passed to .listen() are wrapped in a nextTick()
-  // the callback itself exists because the call to the server's .listen()
-  // was made. So the return value would be the ID of the server.
+  // Anche se tutti i callback passati a .listen() sono racchiusi con  il wrapping 
+  // in un nextTick() il callback stesso esiste perché è stata effettuata la chiamata 
+  // al .listen() del server. Quindi il valore di ritorno sarebbe l'ID del server.
   async_hooks.triggerAsyncId();
 });
 ```
 
-Note that promise contexts may not get valid `triggerAsyncId`s by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Da notare che i promise context potrebbero non ottenere `triggerAsyncId` validi in modo predefinito. Vedi la sezione sul [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Promise execution tracking
 
