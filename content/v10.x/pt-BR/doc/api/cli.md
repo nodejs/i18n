@@ -6,9 +6,9 @@
 
 Node.js comes with a variety of CLI options. Essas opções expõem a depuração interna, múltiplas formas de executar scripts, e outras opções úteis em tempo de execução.
 
-Para ver essa documentação como uma página de manual no terminal, execute ` man node `.
+Para ver essa documentação como uma página de manual no terminal, execute `man node `.
 
-## Synopsis
+## Sinopse
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
@@ -16,9 +16,9 @@ Para ver essa documentação como uma página de manual no terminal, execute ` m
 
 `node --v8-options`
 
-Execute without arguments to start the [REPL](repl.html).
+Execute sem argumentos para iniciar o [REPL](repl.html).
 
-*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
+*Para mais informações sobre `node debug`, por favor consulte a documentação de [depurador [debugger]](debugger.html).*
 
 ## Options
 
