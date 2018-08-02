@@ -301,7 +301,7 @@ destroy: 5
 
 Come illustrato nell'esempio, `executionAsyncId()` ed `execution` specificano ciascuno il valore dell'execution context corrente; il quale è delineato dalle chiamate a `before` ed `after`.
 
-Only using `execution` to graph resource allocation results in the following:
+Utilizzando solo `execution` per rappresentare graficamente l'allocazione delle risorse si ottiene quanto segue:
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
