@@ -138,7 +138,7 @@ If an asynchronous operation is needed for logging, it is possible to keep track
 
 * Returns: {AsyncHook} A reference to `asyncHook`.
 
-Enable the callbacks for a given `AsyncHook` instance. If no callbacks are provided enabling is a noop.
+Habilita las callbacks para una instancia determinada de `AsyncHook` . If no callbacks are provided enabling is a noop.
 
 La instancia de `AsyncHook` está inhabilitada por defecto. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
 
