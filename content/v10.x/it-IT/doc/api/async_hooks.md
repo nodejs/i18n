@@ -551,9 +551,9 @@ deprecated: v9.6.0
 
 > Stabilità: 0 - Obsoleto: Utilizza invece [`asyncResource.runInAsyncScope()`][].
 
-Chiama tutti i `before` callbacks per notificare che viene inserito un nuovo execution context asincrono. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+Chiama tutti i `before` callbacks per notificare che viene inserito un nuovo execution context asincrono. Se vengono effettuate chiamate annidate verso `emitBefore()`, lo stack degli `asyncId` verrà tracciato e scomposto correttamente.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+Le chiamate `before` ed `after` devono essere scomposte nello stesso ordine in cui vengono chiamate. Altrimenti, si verificherà un'eccezione irrecuperabile ed il processo si interromperà. Per questo motivo, le API `emitBefore` ed `emitAfter` sono considerate obsolete. Sei pregato di utilizzare `runInAsyncScope`, in quanto fornisce un'alternativa molto più sicura.
 
 #### asyncResource.emitAfter()
 
@@ -563,11 +563,11 @@ deprecated: v9.6.0
 
 > Stabilità: 0 - Obsoleto: Utilizza invece [`asyncResource.runInAsyncScope()`][].
 
-Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
+Chiama tutti gli `after` callbacks. Se sono state effettuate chiamate annidate verso `emitBefore()`, allora assicurati che lo stack sia scomposto correttamente. Altrimenti verrà generato un errore.
 
-If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
+Se il callback dell'utente genera un'eccezione, `emitAfter()` verrà automaticamente chiamato per tutti gli `asyncId` sullo stack se l'errore viene gestito da un domain (dominio) oppure da un handler di `'uncaughtException'`.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
+Le chiamate `before` ed `after` devono essere scomposte nello stesso ordine in cui vengono chiamate. Otherwise, an unrecoverable exception will occur and the process will abort. Per questo motivo, le API `emitBefore` ed `emitAfter` sono considerate obsolete. Sei pregato di utilizzare `runInAsyncScope`, in quanto fornisce un'alternativa molto più sicura.
 
 #### asyncResource.emitDestroy()
 
