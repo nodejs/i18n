@@ -152,7 +152,7 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 * Returns: {AsyncHook} A reference to `asyncHook`.
 
-Disable the callbacks for a given `AsyncHook` instance from the global pool of `AsyncHook` callbacks to be executed. Once a hook has been disabled it will not be called again until enabled.
+Disable the callbacks for a given `AsyncHook` instance from the global pool of `AsyncHook` callbacks to be executed. Una vez que un hook haya sido inhabilitado, no volverá a ser llamado hasta que se habilite.
 
 For API consistency `disable()` also returns the `AsyncHook` instance.
 
@@ -162,7 +162,7 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 
 ##### init(asyncId, type, triggerAsyncId, resource)
 
-* `asyncId` {number} A unique ID for the async resource.
+* `asyncId` {number} Una identificación única para el recurso asincrónico.
 * `type` {string} The type of the async resource.
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
@@ -201,7 +201,7 @@ Es posible tener colisiones de nombres de tipo. Embedders are encouraged to use 
 
 `triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
 
-The following is a simple demonstration of `triggerAsyncId`:
+A continuación se muestra una simple demostración de `triggerAsyncId`:
 
 ```js
 async_hooks.createHook({
@@ -224,7 +224,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 The `TCPSERVERWRAP` is the server which receives the connections.
 
-The `TCPWRAP` is the new connection from the client. When a new connection is made, the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
+El `TCPWRAP` es la nueva conexión desde el cliente. When a new connection is made, the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
 
 ###### `recurso`
 
@@ -234,7 +234,7 @@ In the case of Promises, the `resource` object will have `promise` property that
 
 In some cases the resource object is reused for performance reasons, it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
 
-###### Asynchronous context example
+###### Ejemplo de contexto asincrónico
 
 The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
 
