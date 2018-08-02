@@ -436,7 +436,7 @@ Promise.resolve(1729).then(() => {
 // eid 1 tid 0
 ```
 
-Osserva che il `then()` callback afferma di aver eseguito nel context dello scope esterno anche se era coinvolto un hop asincrono. Da notare inoltre che il valore di `triggerAsyncId` è `0`, il che significa che manca il context relativo alla risorsa che ha causato (attivato) il `then()` callback da eseguire.
+Osserva che il `then()` callback afferma di esser stato eseguito nel context dello scope esterno anche se era coinvolto un hop asincrono. Da notare inoltre che il valore di `triggerAsyncId` è `0`, il che significa che manca il context relativo alla risorsa che ha causato (attivato) il `then()` callback da eseguire.
 
 L'installazione di async hooks tramite `async_hooks.createHook` attiva il promise execution tracking. Esempio:
 
@@ -450,7 +450,7 @@ Promise.resolve(1729).then(() => {
 // eid 7 tid 6
 ```
 
-In this example, adding any actual hook function enabled the tracking of promises. There are two promises in the example above; the promise created by `Promise.resolve()` and the promise returned by the call to `then()`. In the example above, the first promise got the `asyncId` `6` and the latter got `asyncId` `7`. During the execution of the `then()` callback, we are executing in the context of promise with `asyncId` `7`. This promise was triggered by async resource `6`.
+In questo esempio, l'aggiunta di una funzione hook effettiva ha attivato il tracking dei promise. Ci sono due promise nell'esempio sopracitato; il promise creato da `Promise.resolve()` ed il promise restituito dalla chiamata a `then()`. Il primo promise ha ottenuto l'`asyncId` `6` ed il secondo ed ultimo promise ha ottenuto l'`asyncId` `7`. Durante l'execution del `then()` callback, stiamo facendo l'execution nel context del promise con `asyncId` `7`. Questo promise è stato attivato dalla risorsa asincrona `6`.
 
 Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
 
@@ -458,7 +458,7 @@ Another subtlety with promises is that `before` and `after` callbacks are run on
 
 Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
 
-### Class: AsyncResource
+### Classe: AsyncResource
 
 The class `AsyncResource` is designed to be extended by the embedder's async resources. Using this, users can easily trigger the lifetime events of their own resources.
 
