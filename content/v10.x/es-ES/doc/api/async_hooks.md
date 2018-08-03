@@ -132,7 +132,7 @@ function debug(...args) {
 }
 ```
 
-Si se necesita una operación asincrónica para registrarse, es posible realizar un seguimiento de lo que causó la operación asincrónica que utiliza la información proporcionada por AsyncHooks. The logging should then be skipped when it was the logging itself that caused AsyncHooks callback to call. By doing this the otherwise infinite recursion is broken.
+Si se necesita una operación asincrónica para registrarse, es posible realizar un seguimiento de lo que causó la operación asincrónica que utiliza la información proporcionada por AsyncHooks. El registro debe omitirse cuando era el registro en sí el que causaba que el callback de AsyncHooks llamara. By doing this the otherwise infinite recursion is broken.
 
 #### asyncHook.enable()
 
@@ -317,7 +317,7 @@ The graph only shows *when* a resource was created, not *why*, so to track the *
 
 When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. The `before` callback is called just before said callback is executed. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
 
-The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
+The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Recursos asincrónicos persistentes como un servidor TCP generalmente llamarán al callback de `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán sólo una vez.
 
 ##### after(asyncId)
 
