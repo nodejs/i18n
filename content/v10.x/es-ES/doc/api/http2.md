@@ -646,7 +646,7 @@ All `Http2Stream` instances are [`Duplex`][] streams. The `Writable` side of the
 
 #### Http2Stream Lifecycle
 
-##### Creation
+##### Creación
 
 On the server side, instances of [`ServerHttp2Stream`][] are created either when:
 
@@ -657,7 +657,7 @@ On the client side, instances of [`ClientHttp2Stream`][] are created when the `h
 
 On the client, the `Http2Stream` instance returned by `http2session.request()` may not be immediately ready for use if the parent `Http2Session` has not yet been fully established. In such cases, operations called on the `Http2Stream` will be buffered until the `'ready'` event is emitted. User code should rarely, if ever, need to handle the `'ready'` event directly. The ready status of an `Http2Stream` can be determined by checking the value of `http2stream.id`. If the value is `undefined`, the stream is not yet ready for use.
 
-##### Destruction
+##### Destrucción
 
 All [`Http2Stream`][] instances are destroyed either when:
 
@@ -794,7 +794,7 @@ Set to `true` if the `Http2Stream` instance has not yet been assigned a numeric 
 added: v8.4.0
 -->
 
-* `options` {Object} 
+* `opciones` {Object} 
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Default:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
@@ -1023,7 +1023,7 @@ added: v8.4.0
 -->
 
 * `headers` {HTTP/2 Headers Object}
-* `options` {Object} 
+* `opciones` {Object} 
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
 * `callback` {Function} Callback that is called once the push stream has been initiated. 
@@ -1056,7 +1056,7 @@ added: v8.4.0
 -->
 
 * `headers` {HTTP/2 Headers Object}
-* `options` {Object} 
+* `opciones` {Object} 
   * `endStream` {boolean} Set to `true` to indicate that the response will not include payload data.
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
@@ -1099,7 +1099,7 @@ changes:
 
 * `fd` {number} A readable file descriptor.
 * `headers` {HTTP/2 Headers Object}
-* `options` {Object} 
+* `opciones` {Object} 
   * `statCheck` {Function}
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
   * `offset` {number} The offset position at which to begin reading.
@@ -1175,7 +1175,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `headers` {HTTP/2 Headers Object}
-* `options` {Object} 
+* `opciones` {Object} 
   * `statCheck` {Function}
   * `onError` {Function} Callback function invoked in the case of an error before send.
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
@@ -1497,7 +1497,7 @@ changes:
                  option.
 -->
 
-* `options` {Object} 
+* `opciones` {Object} 
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. The minimum value allowed is `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `4`. **Default:** `128`.
@@ -1558,7 +1558,7 @@ changes:
                  128 header pairs.
 -->
 
-* `options` {Object} 
+* `opciones` {Object} 
   * `allowHTTP1` {boolean} Incoming client connections that do not support HTTP/2 will be downgraded to HTTP/1.x when set to `true`. See the [`'unknownProtocol'`][] event. See [ALPN negotiation](#http2_alpn_negotiation). **Default:** `false`.
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. The minimum value allowed is `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
@@ -1618,7 +1618,7 @@ changes:
 -->
 
 * `authority` {string|URL}
-* `options` {Object} 
+* `opciones` {Object} 
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. The minimum value allowed is `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `1`. **Default:** `128`.
@@ -1659,22 +1659,22 @@ added: v8.4.0
 
 <a id="error_codes"></a>
 
-| Value  | Name                | Constant                                      |
-| ------ | ------------------- | --------------------------------------------- |
-| `0x00` | No Error            | `http2.constants.NGHTTP2_NO_ERROR`            |
-| `0x01` | Protocol Error      | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
-| `0x02` | Internal Error      | `http2.constants.NGHTTP2_INTERNAL_ERROR`      |
-| `0x03` | Flow Control Error  | `http2.constants.NGHTTP2_FLOW_CONTROL_ERROR`  |
-| `0x04` | Settings Timeout    | `http2.constants.NGHTTP2_SETTINGS_TIMEOUT`    |
-| `0x05` | Stream Closed       | `http2.constants.NGHTTP2_STREAM_CLOSED`       |
-| `0x06` | Frame Size Error    | `http2.constants.NGHTTP2_FRAME_SIZE_ERROR`    |
-| `0x07` | Refused Stream      | `http2.constants.NGHTTP2_REFUSED_STREAM`      |
-| `0x08` | Cancel              | `http2.constants.NGHTTP2_CANCEL`              |
-| `0x09` | Compression Error   | `http2.constants.NGHTTP2_COMPRESSION_ERROR`   |
-| `0x0a` | Connect Error       | `http2.constants.NGHTTP2_CONNECT_ERROR`       |
-| `0x0b` | Enhance Your Calm   | `http2.constants.NGHTTP2_ENHANCE_YOUR_CALM`   |
-| `0x0c` | Inadequate Security | `http2.constants.NGHTTP2_INADEQUATE_SECURITY` |
-| `0x0d` | HTTP/1.1 Required   | `http2.constants.NGHTTP2_HTTP_1_1_REQUIRED`   |
+| Valor  | Nombre                    | Constant                                      |
+| ------ | ------------------------- | --------------------------------------------- |
+| `0x00` | Sin errores               | `http2.constants.NGHTTP2_NO_ERROR`            |
+| `0x01` | Error de protocolo        | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
+| `0x02` | Error interno             | `http2.constants.NGHTTP2_INTERNAL_ERROR`      |
+| `0x03` | Error de control de flujo | `http2.constants.NGHTTP2_FLOW_CONTROL_ERROR`  |
+| `0x04` | Settings Timeout          | `http2.constants.NGHTTP2_SETTINGS_TIMEOUT`    |
+| `0x05` | Stream Closed             | `http2.constants.NGHTTP2_STREAM_CLOSED`       |
+| `0x06` | Frame Size Error          | `http2.constants.NGHTTP2_FRAME_SIZE_ERROR`    |
+| `0x07` | Refused Stream            | `http2.constants.NGHTTP2_REFUSED_STREAM`      |
+| `0x08` | Cancelar                  | `http2.constants.NGHTTP2_CANCEL`              |
+| `0x09` | Compression Error         | `http2.constants.NGHTTP2_COMPRESSION_ERROR`   |
+| `0x0a` | Error de conexión         | `http2.constants.NGHTTP2_CONNECT_ERROR`       |
+| `0x0b` | Enhance Your Calm         | `http2.constants.NGHTTP2_ENHANCE_YOUR_CALM`   |
+| `0x0c` | Seguridad inadecuada      | `http2.constants.NGHTTP2_INADEQUATE_SECURITY` |
+| `0x0d` | HTTP/1.1 Required         | `http2.constants.NGHTTP2_HTTP_1_1_REQUIRED`   |
 
 The `'timeout'` event is emitted when there is no activity on the Server for a given number of milliseconds set using `http2server.setTimeout()`.
 
@@ -1903,7 +1903,7 @@ req.on('end', () => {
 req.end('Jane');
 ```
 
-## Compatibility API
+## API de compatibilidad
 
 The Compatibility API has the goal of providing a similar developer experience of HTTP/1 when using HTTP/2, making it possible to develop applications that support both [HTTP/1](http.html) and HTTP/2. This API targets only the **public API** of the [HTTP/1](http.html). However many modules use internal methods or state, and those *are not supported* as it is a completely different implementation.
 
@@ -2015,7 +2015,7 @@ added: v8.4.0
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Key-value pairs of header names and values. Header names are lower-cased. Ejemplo:
 
 ```js
 // Prints something like:
@@ -2157,7 +2157,7 @@ added: v8.4.0
 
 * {string}
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+Solicitar string de URL. This contains only the URL that is present in the actual HTTP request. Si la solicitud es:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2173,7 +2173,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Ejemplo:
 
 ```txt
 $ node
@@ -2193,7 +2193,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Ejemplo:
 
 ```txt
 $ node
@@ -2306,7 +2306,7 @@ added: v8.4.0
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2322,7 +2322,7 @@ added: v8.4.0
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2344,7 +2344,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2365,7 +2365,7 @@ added: v8.4.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2391,7 +2391,7 @@ added: v8.4.0
 
 Removes a header that has been queued for implicit sending.
 
-Example:
+Ejemplo:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2420,13 +2420,13 @@ added: v8.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+o
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2480,7 +2480,7 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but ap
 
 All other interactions will be routed directly to the socket.
 
-Example:
+Ejemplo:
 
 ```js
 const http2 = require('http2');
@@ -2501,7 +2501,7 @@ added: v8.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusCode = 404;
@@ -2576,7 +2576,7 @@ Sends a response header to the request. The status code is a 3-digit HTTP status
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Example:
+Ejemplo:
 
 ```js
 const body = 'hello world';
