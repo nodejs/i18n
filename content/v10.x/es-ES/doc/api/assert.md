@@ -32,7 +32,7 @@ Una subclase de `Error` que indica la falla de una afirmación.
 Todas las instancias contienen la propiedades integradas de `Error` (`message` y `name`) y:
 
 * `actual` {any} Establecer al valor actual en el caso, p. ej., [`assert.strictEqual()`] es utilizado.
-* `expected` {any} Set to the expected value in case e.g., [`assert.strictEqual()`] is used.
+* `expected` {any} Establecer al valor esperado en el caso que, p. ej., [`assert.strictEqual()`] es utilizado.
 * `generatedMessage` {boolean} Indica si el mensaje fue generado automáticamente (`true`) o no.
 * `code` {string} Esto siempre está establecido a la string `ERR_ASSERTION` para indicar que el error es en realidad un error de afirmación.
 * `operator` {string} Set to the passed in operator value.
@@ -121,7 +121,7 @@ Puede ser accedido utilizando:
 const assert = require('assert');
 ```
 
-Se recomienda usar el [`strict mode`][] en su lugar ya que la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) a menudo puede obtener resultados sorprendentes. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+Se recomienda usar el [`strict mode`][] en su lugar ya que la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) a menudo puede obtener resultados sorprendentes. Esto es especialmente verdadero para [`assert.deepEqual()`][],, en donde las reglas de comparación son poco exigentes:
 
 ```js
 // ADVERTENCIA: ¡Esto no arroja un AssertionError!
@@ -176,7 +176,7 @@ Un alias de [`assert.deepStrictEqual()`][].
 
 Pruebas para igualdad profunda entre los parámetros `actual` y `expected`. Los valores primitivos son comparados con la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Sólo se consideran las [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). La implementación de [`assert.deepEqual()`][] no realiza una prueba de [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) de objetos o de propiedades [`Symbol`][] enumerables propias. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] puede obtener resultados potencialmente sorprendentes. El siguiente ejemplo no arroja un `AssertionError` porque la propiedades en el objeto [`RegExp`][] no son enumerables:
+Sólo se consideran las [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). La implementación de [`assert.deepEqual()`][] no realiza una prueba de [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) de objetos o de propiedades [`Symbol`][] enumerables propias. Para tales comprobaciones, considere usar [`assert.deepStrictEqual()`][] en su lugar. [`assert.deepEqual()`][] puede obtener resultados potencialmente sorprendentes. El siguiente ejemplo no arroja un `AssertionError` porque la propiedades en el objeto [`RegExp`][] no son enumerables:
 
 ```js
 // ADVERTENCIA: ¡Esto no arroja un AssertionError!
@@ -603,7 +603,7 @@ changes:
 
 * `value` {any}
 
-Throws `value` if `value` is not `undefined` or `null`. Esto es útil al probar el argumento `error` en callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. Revise a continuación un ejemplo.
+Arroja `value` si el `value` está `undefined` o `null`. Esto es útil al probar el argumento `error` en callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. Revise a continuación un ejemplo.
 
 ```js
 const assert = require('assert').strict;
@@ -799,7 +799,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests strict inequality between the `actual` and `expected` parameters as determined by the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
+Prueba la desigualdad estricta entre los parámetros `actual` y `expected` como se determina por la [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
 
 ```js
 const assert = require('assert').strict;
