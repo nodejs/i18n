@@ -121,7 +121,7 @@ Puede ser accedido utilizando:
 const assert = require('assert');
 ```
 
-Se recomienda usar el [`strict mode`][] en su lugar ya que la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) a menudo puede obtener resultados sorprendentes. Esto es especialmente verdadero para [`assert.deepEqual()`][],, en donde las reglas de comparación son poco exigentes:
+Se recomienda usar el [`strict mode`][] en su lugar ya que la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) a menudo puede obtener resultados sorprendentes. Esto es especialmente verdadero para [`assert.deepEqual()`][], en donde las reglas de comparación son poco exigentes:
 
 ```js
 // ADVERTENCIA: ¡Esto no arroja un AssertionError!
