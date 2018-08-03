@@ -571,7 +571,7 @@ If the user's callback throws an exception, `emitAfter()` will automatically be 
 
 #### asyncResource.emitDestroy()
 
-Llama a todos los hooks `destroy`. Este sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. Si se deja el recurso para que sea recolectado por el GC, entonces los hooks `destroy` nunca serán llamados.
+Llama a todos los hooks `destroy`. Esto sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. Si se deja el recurso para que sea recolectado por el GC, entonces los hooks `destroy` nunca serán llamados.
 
 #### asyncResource.asyncId()
 
