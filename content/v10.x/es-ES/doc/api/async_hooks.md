@@ -79,7 +79,7 @@ added: v8.1.0
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
   * `destroy` {Function} The [`destroy` callback][].
-* Returns: {AsyncHook} Instance used for disabling and enabling hooks
+* Devoluciones: {AsyncHook} Instancia utilizada para inhabilitar y habilitar hooks
 
 Registra funciones para que sean llamadas por diferentes eventos en el tiempo de vida de cada operación asincrónica.
 
@@ -96,7 +96,7 @@ const asyncHook = async_hooks.createHook({
 });
 ```
 
-Note that the callbacks will be inherited via the prototype chain:
+Tenga en cuenta que los callbacks serán heredados por medio de la cadena del prototipo:
 
 ```js
 class MyAsyncCallbacks {
@@ -228,7 +228,7 @@ El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva co
 
 ###### `recurso`
 
-`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar en base al valor de `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
+`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar en base al valor de `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. La API para acceder a esta información actualmente no se considera como pública, pero al usar la API del Embebedor, los usuarios pueden proporcionar y documentar sus propios objetos de recurso. For example, such a resource object could contain the SQL query being executed.
 
 In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Aquí, `b` es considerado como una promesa encadenada.
 
@@ -317,7 +317,7 @@ The graph only shows *when* a resource was created, not *why*, so to track the *
 
 When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. The `before` callback is called just before said callback is executed. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
 
-The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Recursos asincrónicos persistentes como un servidor TCP generalmente llamarán al callback de `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán sólo una vez.
+El callback `before` será llamado de 0 a N veces. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Recursos asincrónicos persistentes como un servidor TCP generalmente llamarán al callback de `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán sólo una vez.
 
 ##### after(asyncId)
 
@@ -460,7 +460,7 @@ Library developers that handle their own asynchronous resources performing tasks
 
 ### Clase: AsyncResource
 
-The class `AsyncResource` is designed to be extended by the embedder's async resources. Al usar esto, los usuarios podrán fácilmente activar los eventos del tiempo de vida de sus propios recursos.
+La clase `AsyncResource` está diseñada para extenderse por los registros asincrónicos del embebedor. Al usar esto, los usuarios podrán fácilmente activar los eventos del tiempo de vida de sus propios recursos.
 
 The `init` hook will trigger when an `AsyncResource` is instantiated.
 
