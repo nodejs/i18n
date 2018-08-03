@@ -266,8 +266,8 @@ Pruebas para igualdad profunda entre los parámetros `actual` y `expected`. Igua
 * Los valor primitivos son comparados utilizando la [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), usada por [`Object.is()`][].
 * Las [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) de objetos deben ser las mismas.
 * Los [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) de objetos son comparados utilizando la [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
-* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
-* [`Error`][] names and messages are always compared, even if these are not enumerable properties.
+* Sólo se consideran las [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
+* [`Error`][] los nombres y los mensajes siempre son comparados, incluso si no son propiedades innumerables.
 * Las propiedades [`Symbol`][] enumerables propias también son comparadas.
 * [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
 * Las propiedades `Object` son comparadas sin orden.
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-Note que el `error` no puede ser una string. Si se proporciona una string como segundo argumento, entonces se asume que el `error` se omitirá y que la string será utilizada para el `message` en su lugar. Esto puede conducir a errores fáciles de perder. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+Note que el `error` no puede ser una string. Si se proporciona una string como segundo argumento, entonces se asume que el `error` se omitirá y que la string será utilizada para el `message` en su lugar. Esto puede conducir a errores fáciles de perder. El uso del mismo mensaje que el mensaje de error arrojado va a resultar en un error `ERR_AMBIGUOUS_ARGUMENT`. Por favor, lea el ejemplo a continuación cuidadosamente si se considera usar una string como segundo argumento:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -1066,13 +1066,14 @@ function throwingSecond() {
 }
 function notThrowing() {}
 
-// The second argument is a string and the input function threw an Error.
-// The first case will not throw as it does not match for the error message
-// thrown by the input function!
+// El segundo argumento es una string y la función de entrada arrojo un Error.
+// ¡El primer caso no arrojará, ya que no coincide con el mensaje de error
+// arrojado por la función de entrada!
 assert.throws(throwingFirst, 'Second');
-// In the next example the message has no benefit over the message from the
-// error and since it is not clear if the user intended to actually match
-// against the error message, Node.js thrown an `ERR_AMBIGUOUS_ARGUMENT` error.
+// En el siguiente ejemplo, el mensaje no tiene beneficio por encima del mensaje del
+// error, y como no es claro si el usuario pretendía realmente coincidir
+// con el mensaje de error, Node.js arrojó un
+error `ERR_AMBIGUOUS_ARGUMENT`.
 assert.throws(throwingSecond, 'Second');
 // Throws an error:
 // TypeError [ERR_AMBIGUOUS_ARGUMENT]
