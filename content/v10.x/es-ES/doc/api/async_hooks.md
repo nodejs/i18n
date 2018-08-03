@@ -454,7 +454,7 @@ En este ejemplo, agregar cualquier función real de un hook habilitó el rastreo
 
 Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
 
-## JavaScript Embedder API
+## API del Embebedor de JavaScript
 
 Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
 
@@ -567,7 +567,7 @@ Llamar a todos los callbacks `after` . If nested calls to `emitBefore()` were ma
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
+`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
 
 #### asyncResource.emitDestroy()
 
