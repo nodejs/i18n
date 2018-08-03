@@ -195,13 +195,13 @@ There is also the `PROMISE` resource type, which is used to track `Promise` inst
 
 Los usuarios son capaces de definir su propio `type` al usar la API pública del embebedor.
 
-Es posible tener colisiones de nombres de tipo. A los embebedores se les anima utilizar prefijos únicos, tales como el nombre de paquete del npm, para prevenir colisiones al escuchar a los hooks.
+Es posible tener colisiones de nombres de tipo. A los embebedores se les anima a utilizar prefijos únicos, tales como el nombre de paquete del npm, para prevenir colisiones al escuchar a los hooks.
 
 ###### `triggerAsyncId`
 
 `triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
 
-A continuación se muestra una simple demostración de `triggerAsyncId`:
+La siguiente es una demostracion simple de `triggerAsyncId`:
 
 ```js
 async_hooks.createHook({
@@ -228,7 +228,7 @@ El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva co
 
 ###### `recurso`
 
-`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar en base al valor de `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. La API para acceder a esta información actualmente no se considera como pública, pero al usar la API del Embebedor, los usuarios pueden proporcionar y documentar sus propios objetos de recurso. For example, such a resource object could contain the SQL query being executed.
+`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar con base en el valor de `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. La API para acceder a esta información actualmente no se considera como pública, pero al usar la API del Embebedor, los usuarios pueden proporcionar y documentar sus propios objetos de recurso. For example, such a resource object could contain the SQL query being executed.
 
 In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Aquí, `b` es considerado como una promesa encadenada.
 
