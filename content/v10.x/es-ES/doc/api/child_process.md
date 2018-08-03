@@ -29,7 +29,7 @@ By default, pipes for `stdin`, `stdout`, and `stderr` are established between th
 
 The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente de manera síncrona que bloquea el bucle del evento hasta que el proceso engendrado exista o finalice.
 
-Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicos y asincrónicos a [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementados por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
+Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas a [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementadas por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
 
     * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
       passing the `stdout` and `stderr` to a callback function when complete.
@@ -50,7 +50,7 @@ Para ciertos casos de uso, como la automatización de scripts de shell, las [syn
 
 Los métodos [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], y [`child_process.execFile()`][], todos siguen el patrón de programación asincrónico idiomático típico de otros APIs de Node.js.
 
-Cada uno de los métodos devuelve una instancia de [`ChildProcess`][]. Estos objetos implemente el API [`EventEmitter`][] de Node.js, permitiendo que el proceso primario registre funciones de oyente que son llamadas cuando ciertos eventos ocurrente durante el ciclo de vida del proceso secundario.
+Cada uno de los métodos devuelve una instancia de [`ChildProcess`][]. Estos objetos implementan el API [`EventEmitter`][] de Node.js, permitiendo que el proceso primario registre funciones de oyente que son llamadas cuando ciertos eventos ocurren durante el ciclo de vida del proceso secundario.
 
 Los métodos [`child_process.exec()`][] y [`child_process.execFile()`][] adicionalmente permiten que se especifique una función `callback` opcional que es invocada cuando el proceso secundario finaliza.
 
@@ -109,7 +109,7 @@ changes:
 
 * `command` {string} El comando a ejecutar, con los argumentos separados con espacios.
 * `opciones` {Object} 
-  * `cwd` {string} El directorio actualmente trabajando del proceso secundario. **Default:** `null`.
+  * `cwd` {string} El directorio del proceso secundario actualmente operativo. **Default:** `null`.
   * `env` {Object} Environment key-value pairs. **Default:** `null`.
   * `encoding` {string} **Default:** `'utf8'`
   * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
@@ -118,7 +118,7 @@ changes:
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Establece la identidad del usuario de los procesos (vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso (vea setgid(2)).
-  * `windowsHide` {boolean} Ocultar el la ventana de la consola de sub proceso que normalmente estaría creada en sistemas Windows. **Default:** `false`.
+  * `windowsHide` {boolean} Ocultar la ventana de la consola de sub-proceso que normalmente estaría creada en sistemas Windows. **Default:** `false`.
 * `callback` {Function} llamada con la salida cuando el proceso finaliza. 
   * `error` {Error}
   * `stdout` {string|Buffer}
@@ -152,7 +152,7 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 
 Si se proporciona una función `callback`, se llama con los argumentos `(error, stdout, stderr)`. En éxito, el `error` será `null`. En error, el `error` será una instancia de [`Error`][]. La propiedad `error.code` será el código de salida del proceso secundario, mientras que `error.signal` se establecerá a la señal que finalizó el proceso. Cualquier otro código de salida distinto a `0` se considera como un error.
 
-Los argumentos `stdout` y `stderr` pasado al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
+Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
 
 If `timeout` is greater than `0`, the parent will send the signal identified by the `killSignal` property (the default is `'SIGTERM'`) if the child runs longer than `timeout` milliseconds.
 
