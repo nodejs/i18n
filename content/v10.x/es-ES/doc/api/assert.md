@@ -269,11 +269,11 @@ Pruebas para igualdad profunda entre los parámetros `actual` y `expected`. Igua
 * Sólo se consideran las [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
 * [`Error`][] los nombres y los mensajes siempre son comparados, incluso si no son propiedades innumerables.
 * Las propiedades [`Symbol`][] enumerables propias también son comparadas.
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
+* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) son comparados como objetos y como valores desenvueltos.
 * Las propiedades `Object` son comparadas sin orden.
-* `Map` keys and `Set` items are compared unordered.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
-* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
+* Las claves de `Map` y los artículos de `Set` son comparados sin orden.
+* La recursión se detiene cuando ambos lados difieren o cuando ambos lados encuentran una referencia circular.
+* La comparación de [`WeakMap`][] y [`WeakSet`][] no depende de sus valores. Vea abajo para más detalles.
 
 ```js
 const assert = require('assert').strict;
@@ -379,7 +379,7 @@ Por favor, note: El uso de `assert.doesNotReject()` no es realmente útil porque
 
 Si se especifica, el `error` puede ser una función de [`Class`][], de [`RegExp`][] o una validación. Vea [`assert.throws()`][] para más detalles.
 
-Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
+Aparte de la naturaleza asíncrona de esperar, la finalización se comporta igual a [`assert.doesNotThrow()`][].
 
 ```js
 (async () => {
@@ -486,7 +486,7 @@ Un alias de [`assert.strictEqual()`][].
 
 > Estabilidad: 0 - Obsoleto: Use [`assert.strictEqual()`][] en su lugar.
 
-Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Prueba la igualdad superficial y coercitiva entre los parámetros `actual` y `expected` usando la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
 ```js
 const assert = require('assert');
@@ -549,7 +549,7 @@ changes:
 
 > Estabilidad: 0 - Obsoleto: Use `assert.fail([message])` u otras funciones de afirmación en su lugar.
 
-If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. Si sólo se proporcionan los dos argumentos `actual` y `expected`, el `operator` se colocará por defecto en `'!='`. Si el `message` es proporcionado como tercer argumento, será utilizado como el mensaje de error y los otros argumentos se almacenarán como propiedades del objeto arrojado. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). Si no se proporciona ningún argumento, el mensaje predeterminado `Failed` será utilizado.
+Si el `message` es falsy, el mensaje de error es establecido como los valores de `actual` y `expected`, separados por el `operator` proporcionado. Si sólo se proporcionan los dos argumentos `actual` y `expected`, el `operator` se colocará por defecto en `'!='`. Si el `message` es proporcionado como tercer argumento, será utilizado como el mensaje de error y los otros argumentos se almacenarán como propiedades del objeto arrojado. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). Si no se proporciona ningún argumento, el mensaje predeterminado `Failed` será utilizado.
 
 ```js
 const assert = require('assert').strict;
@@ -767,7 +767,7 @@ Un alias de [`assert.notStrictEqual()`][].
 
 > Estabilidad: 0 - Obsoleto: Use [`assert.notStrictEqual()`][] en su lugar.
 
-Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
+Prueba la desigualdad superficial y coercitiva con la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
 ```js
 const assert = require('assert');
@@ -892,7 +892,7 @@ Espera la promesa de `block` o, si el `block` es una función, inmediatamente ll
 
 Si `block` es una función y arroja un error sincrónicamente, `assert.rejects()` devolverá una `Promise` rechazada con ese error. Si la función no devuelve una promesa, `assert.rejects()` devolverá una `Promise` rechazada con un error [`ERR_INVALID_RETURN_VALUE`][]. En ambos casos se omitirá el controlador de errores.
 
-Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
+Aparte de la naturaleza asíncrona de esperar, la finalización se comporta igual a [`assert.throws()`][].
 
 Si se especifica, el `error` puede ser [`Class`][], [`RegExp`][], una función de validación, un objeto en el cual cada propiedad será probada o una instancia de error en la cual cada propiedad será probada para incluir el `message` innumerable y propiedades de `name`.
 
@@ -985,7 +985,7 @@ Si se especifica, el `error` puede ser [`Class`][], [`RegExp`][], una función d
 
 Si se especifica, el `message` será el mensaje proporcionado por el `AssertionError` si el bloque falla al arrojar.
 
-Custom error object / error instance:
+Objeto error / instancia error personalizada:
 
 ```js
 const err = new TypeError('Wrong value');
