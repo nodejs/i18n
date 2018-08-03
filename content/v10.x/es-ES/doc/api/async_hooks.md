@@ -193,9 +193,9 @@ RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 
 There is also the `PROMISE` resource type, which is used to track `Promise` instances and asynchronous work scheduled by them.
 
-Users are able to define their own `type` when using the public embedder API.
+Los usuarios son capaces de definir su propio `type` al usar la API pública del embebedor.
 
-Es posible tener colisiones de nombres de tipo. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
+Es posible tener colisiones de nombres de tipo. A los embebedores se les anima utilizar prefijos únicos, tales como el nombre de paquete del npm, para prevenir colisiones al escuchar a los hooks.
 
 ###### `triggerAsyncId`
 
@@ -331,7 +331,7 @@ If an uncaught exception occurs during execution of the callback, then `after` w
 
 * `asyncId` {number}
 
-Called after the resource corresponding to `asyncId` is destroyed. It is also called asynchronously from the embedder API `emitDestroy()`.
+Called after the resource corresponding to `asyncId` is destroyed. También es llamado de manera asincrónica desde la API del embebedor `emitDestroy()`.
 
 Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. Si el recurso no depende de la recolección de basura, entonces esto no será un problema.
 
