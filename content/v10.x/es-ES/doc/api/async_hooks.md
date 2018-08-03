@@ -85,7 +85,7 @@ Registra funciones para que sean llamadas por diferentes eventos en el tiempo de
 
 Los callbacks `init()`/`before()`/`after()`/`destroy()` son llamados para el respectivo evento asincrónico durante el tiempo de vida de un recurso.
 
-Todos los callbacks son opcionales. Por ejemplo, si solamente se necesita rastrear la limpieza de recursos, entonces sólo se necesitará pasar el callback `destroy` . The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
+Todos los callbacks son opcionales. Por ejemplo, si solamente se necesita rastrear la limpieza de recursos, entonces sólo se necesitará pasar el callback `destroy` . Las especificaciones de todas las funciones que pueden ser pasadas a `callbacks` están en la sección [Hook Callbacks](#async_hooks_hook_callbacks) .
 
 ```js
 const async_hooks = require('async_hooks');
