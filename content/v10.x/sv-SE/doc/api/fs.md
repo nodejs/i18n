@@ -2028,7 +2028,7 @@ The callback gets two arguments `(err, fd)`.
 
 Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
-Functions based on `fs.open()` exhibit this behavior as well. eg. `fs.writeFile()`, `fs.readFile()`, etc.
+Functions based on `fs.open()` exhibit this behavior as well. t.ex. `fs.writeFile()`, `fs.readFile()`, etc.
 
 ## fs.openSync(path, flags[, mode])
 
