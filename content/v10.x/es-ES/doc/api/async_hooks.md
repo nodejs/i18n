@@ -462,7 +462,7 @@ Library developers that handle their own asynchronous resources performing tasks
 
 La clase `AsyncResource` está diseñada para extenderse por los registros asincrónicos del embebedor. Al usar esto, los usuarios podrán fácilmente activar los eventos del tiempo de vida de sus propios recursos.
 
-The `init` hook will trigger when an `AsyncResource` is instantiated.
+El hook de `init` se activará cuando un `AsyncResource` sea instanciado.
 
 A continuación, se muestra un resumen de la API `AsyncResource` .
 
@@ -563,15 +563,15 @@ deprecated: v9.6.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-Llamar a todos los callbacks `after` . If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. De otra manera ocurrirá un error.
+Llama a todos los callbacks `after` . If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. De otra manera ocurrirá un error.
 
 If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
-`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
+`before` and `after` calls must be unwound in the same order that they are called. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
 
 #### asyncResource.emitDestroy()
 
-Llama a todos los hooks `destroy`. Este sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+Llama a todos los hooks `destroy`. Este sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. Si se deja el recurso para que sea recolectado por el GC, entonces los hooks `destroy` nunca serán llamados.
 
 #### asyncResource.asyncId()
 
