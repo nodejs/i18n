@@ -1013,7 +1013,7 @@ assert.throws(
 );
 ```
 
-Validate instanceof using constructor:
+Validación de instanceof utilizando el constructor:
 
 ```js
 assert.throws(
