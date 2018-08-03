@@ -181,7 +181,7 @@ A cada nuevo recurso se le asigna una identificación que es única dentro del s
 
 ###### `tipo`
 
-El `type` es una string que identifica el tipo de recurso que causó que `init` fuese llamado. Generally, it will correspond to the name of the resource's constructor.
+El `type` es una string que identifica el tipo de recurso que causó que `init` fuese llamado. Generalmente, corresponderá al nombre del constructor del recurso.
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -398,7 +398,7 @@ const server = net.createServer(function onConnection(conn) {
 });
 ```
 
-Tenga en cuenta que los contextos de promesa no podrán recibir `executionAsyncIds` precisos por defecto. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Tenga en cuenta que los contextos de promesa no podrán recibir `executionAsyncIds` precisos por defecto. Consulte la sección sobre [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 #### async_hooks.triggerAsyncId()
 
@@ -419,7 +419,7 @@ const server = net.createServer((conn) => {
 });
 ```
 
-Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`s válidos por defecto. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
+Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`s válidos por defecto. Consulte la sección sobre [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Promise execution tracking
 
