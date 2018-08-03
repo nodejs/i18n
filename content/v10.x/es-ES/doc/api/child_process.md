@@ -29,7 +29,7 @@ By default, pipes for `stdin`, `stdout`, and `stderr` are established between th
 
 The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente de manera síncrona que bloquea el bucle del evento hasta que el proceso engendrado exista o finalice.
 
-Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas síncronas y asíncronas a [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementados por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
+Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicos y asincrónicos a [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementados por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
 
     * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
       passing the `stdout` and `stderr` to a callback function when complete.
@@ -48,18 +48,19 @@ Para ciertos casos de uso, como la automatización de scripts de shell, las [syn
 
 ## Creación de Procesos Asincrónicos
 
-The [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], and [`child_process.execFile()`][] methods all follow the idiomatic asynchronous programming pattern typical of other Node.js APIs.
+Los métodos [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], y [`child_process.execFile()`][], todos siguen el patrón de programación asincrónico idiomático típico de otros APIs de Node.js.
 
-Each of the methods returns a [`ChildProcess`][] instance. These objects implement the Node.js [`EventEmitter`][] API, allowing the parent process to register listener functions that are called when certain events occur during the life cycle of the child process.
+Cada uno de los métodos devuelve una instancia de [`ChildProcess`][]. Estos objetos implemente el API [`EventEmitter`][] de Node.js, permitiendo que el proceso primario registre funciones de oyente que son llamadas cuando ciertos eventos ocurrente durante el ciclo de vida del proceso secundario.
 
-The [`child_process.exec()`][] and [`child_process.execFile()`][] methods additionally allow for an optional `callback` function to be specified that is invoked when the child process terminates.
+Los métodos [`child_process.exec()`][] y [`child_process.execFile()`][] adicionalmente permiten que se especifique una función `callback` opcional que es invocada cuando el proceso secundario finaliza.
 
-### Spawning `.bat` and `.cmd` files on Windows
+### Generando archivos `.bat` y `.cmd` en Windows
 
-The importance of the distinction between [`child_process.exec()`][] and [`child_process.execFile()`][] can vary based on platform. On Unix-type operating systems (Unix, Linux, macOS) [`child_process.execFile()`][] can be more efficient because it does not spawn a shell by default. On Windows, however, `.bat` and `.cmd` files are not executable on their own without a terminal, and therefore cannot be launched using [`child_process.execFile()`][]. When running on Windows, `.bat` and `.cmd` files can be invoked using [`child_process.spawn()`][] with the `shell` option set, with [`child_process.exec()`][], or by spawning `cmd.exe` and passing the `.bat` or `.cmd` file as an argument (which is what the `shell` option and [`child_process.exec()`][] do). In any case, if the script filename contains spaces it needs to be quoted.
+La importancia de la distinción entre [`child_process.exec()`][] y [`child_process.execFile()`][] puede variar basándose en la plataforma. En sistemas operativos de tipo Unix (Unix, Linux, macOS) [`child_process.execFile()`][] puede ser más eficiente debido a que no genera un shell por defecto. En Windows, sin embargo, los archivos `.bat` y `.cmd` no son ejecutables por su propia cuenta sin un terminal, y por lo tanto no pueden ser ejecutados utilizando [`child_process.execFile()`][]. Al correr en Windows, los archivos `.bat` y `.cmd` son invocados utilizando [`child_process.spawn()`][] con la opción `shell` establecida, con [`child_process.exec()`][] o generando `cmd.exe</0 y pasando el archivo
+<code>.bat` o `.cmd` como un argumento (que es lo que la opción `shell` y [`child_process.exec()`][] hacen). En cualquier caso, si el script filename contiene espacios, necesita ser citado.
 
 ```js
-// On Windows Only ...
+// Sólo en Windows ...
 const { spawn } = require('child_process');
 const bat = spawn('cmd.exe', ['/c', 'my.bat']);
 
@@ -77,7 +78,7 @@ bat.on('exit', (code) => {
 ```
 
 ```js
-// OR...
+// O...
 const { exec } = require('child_process');
 exec('my.bat', (err, stdout, stderr) => {
   if (err) {
@@ -87,9 +88,9 @@ exec('my.bat', (err, stdout, stderr) => {
   console.log(stdout);
 });
 
-// Script with spaces in the filename:
+// Script con espacios en el filename:
 const bat = spawn('"my script.cmd"', ['a', 'b'], { shell: true });
-// or:
+// o:
 exec('"my script.cmd" a b', (err, stdout, stderr) => {
   // ...
 });
@@ -106,7 +107,7 @@ changes:
     description: The `windowsHide` option is supported now.
 -->
 
-* `command` {string} The command to run, with space-separated arguments.
+* `command` {string} El comando a ejecutar, con los argumentos separados con espacios.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process. **Default:** `null`.
   * `env` {Object} Environment key-value pairs. **Default:** `null`.
