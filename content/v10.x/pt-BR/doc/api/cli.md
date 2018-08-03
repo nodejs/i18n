@@ -20,7 +20,7 @@ Execute sem argumentos para iniciar o [REPL](repl.html).
 
 *Para mais informações sobre `node debug`, por favor consulte a documentação de [depurador [debugger]](debugger.html).*
 
-## Options
+## Opções
 
 ### `-`
 
@@ -70,7 +70,7 @@ Ativa suporte ao módulo ES experimental e módulos de armazenamento em cache.
 added: v10.0.0
 -->
 
-Enable experimental top-level `await` keyword support in REPL.
+Ativa o suporte top-level experimental `await` palavra-chave em REPL.
 
 ### `--experimental-vm-modules`
 
@@ -78,7 +78,7 @@ Enable experimental top-level `await` keyword support in REPL.
 added: v9.6.0
 -->
 
-Enable experimental ES Module support in the `vm` module.
+Ativa suporte ao módulo ES experimental e ao módulo `vm`.
 
 ### `--force-fips`
 
