@@ -236,7 +236,7 @@ En algunos casos, se reutiliza el objeto de recurso por motivos de rendimiento, 
 
 ###### Ejemplo de contexto asincrónico
 
-The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
+Lo siguiente es un ejemplo con información adicional sobre las llamadas a `init` entre las llamadas `before` y `after`, específicamente cómo se verá el callback a `listen()` . The output formatting is slightly more elaborate to make calling context easier to see.
 
 ```js
 let indent = 0;
@@ -299,7 +299,7 @@ destroy: 9
 destroy: 5
 ```
 
-As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
+Como se ilustra en el ejemplo, `executionAsyncId()` y `execution` cada uno especifica el valor del contexto de ejecución actual; el cual está delineado por las llamadas a `before` y `after`.
 
 Only using `execution` to graph resource allocation results in the following:
 
@@ -315,7 +315,7 @@ The graph only shows *when* a resource was created, not *why*, so to track the *
 
 * `asyncId` {number}
 
-When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. The `before` callback is called just before said callback is executed. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
+When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. El callback de `before` es llamado justo antes de que se ejecute dicho callback. `asyncId` es el único identificador asignado al recurso que está por ejecutar el callback.
 
 El callback `before` será llamado de 0 a N veces. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Recursos asincrónicos persistentes como un servidor TCP generalmente llamarán al callback de `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán sólo una vez.
 
