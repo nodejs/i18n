@@ -1075,20 +1075,18 @@ assert.throws(throwingFirst, 'Second');
 // con el mensaje de error, Node.js arrojó un
 error `ERR_AMBIGUOUS_ARGUMENT`.
 assert.throws(throwingSecond, 'Second');
-// Throws an error:
+// Arroja un error:
 // TypeError [ERR_AMBIGUOUS_ARGUMENT]
 
-// The string is only used (as message) in case the function does not throw:
-assert.throws(notThrowing, 'Second');
-// AssertionError [ERR_ASSERTION]: Missing expected exception: Second
+// La string sólo es usada (como mensaje) en caso de que la función no arroje: assert.throws(notThrowing, 'Second');
+// AssertionError [ERR_ASSERTION]: Hace falta la excepción esperada: Segundo
 
-// If it was intended to match for the error message do this instead:
-assert.throws(throwingSecond, /Second$/);
-// Does not throw because the error messages match.
+// Si se pretendía coincidir con el mensaje de error, haga esto en su lugar: assert.throws(throwingSecond, /Second$/);
+// No arroja debido a que los mensajes de error coinciden.
 assert.throws(throwingFirst, /Second$/);
-// Throws an error:
-// Error: First
-//     at throwingFirst (repl:2:9)
+// Arroja un error:
+// Error: Primero
+//     en throwingFirst (repl:2:9)
 ```
 
-Due to the confusing notation, it is recommended not to use a string as the second argument. This might lead to difficult-to-spot errors.
+Debido a la confusa notación, se recomiendo no utilizar una string como segundo argumento. Esto puede llevar a errores difíciles de conseguir.
