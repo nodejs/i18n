@@ -116,7 +116,7 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
-The reason for this error handling behavior is that these callbacks are running at potentially volatile points in an object's lifetime, for example during class construction and destruction. Because of this, it is deemed necessary to bring down the process quickly in order to prevent an unintentional abort in the future. Esto está sujeto a cambio en el futuro si un análisis comprensivo se realiza para asegurar que una excepción puede seguir el flujo de control normal sin efectos secundarios no intencionados.
+El motivo de este comportamiento de manejo de error es que estos callbacks se ejecutan en puntos potencialmente volátiles en el tiempo de vida de un objeto, por ejemplo, durante la construcción y destrucción de una clase. Debido a esto, se considera necesario reducir el proceso rápidamente para evitar una anulación no intencionada en el futuro. Esto está sujeto a cambio en el futuro si un análisis comprensivo se realiza para asegurar que una excepción puede seguir el flujo de control normal sin efectos secundarios no intencionados.
 
 ##### Printing in AsyncHooks callbacks
 
@@ -571,7 +571,7 @@ If the user's callback throws an exception, `emitAfter()` will automatically be 
 
 #### asyncResource.emitDestroy()
 
-Llame a todos los hooks `destroy`. Este sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
+Llama a todos los hooks `destroy`. Este sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
 #### asyncResource.asyncId()
 
