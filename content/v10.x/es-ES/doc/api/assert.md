@@ -1,8 +1,8 @@
-# Assert
+# Afirmación
 
 <!--introduced_in=v0.1.21-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 El módulo `assert` proporciona un conjunto simple de pruebas de afirmación que pueden ser utilizadas para probar invariantes.
 
@@ -176,7 +176,7 @@ Un alias de [`assert.deepStrictEqual()`][].
 
 Pruebas para igualdad profunda entre los parámetros `actual` y `expected`. Los valores primitivos son comparados con la [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. La implementación de [`assert.deepEqual()`][] no realiza una prueba de [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) de objetos o de propiedades [`Symbol`][] enumerables propias. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] puede obtener resultados potencialmente sorprendentes. El siguiente ejemplo no arroja un `AssertionError` porque la propiedades en el objeto [`RegExp`][] no son enumerables:
+Sólo se consideran las [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). La implementación de [`assert.deepEqual()`][] no realiza una prueba de [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) de objetos o de propiedades [`Symbol`][] enumerables propias. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] puede obtener resultados potencialmente sorprendentes. El siguiente ejemplo no arroja un `AssertionError` porque la propiedades en el objeto [`RegExp`][] no son enumerables:
 
 ```js
 // ADVERTENCIA: ¡Esto no arroja un AssertionError!
