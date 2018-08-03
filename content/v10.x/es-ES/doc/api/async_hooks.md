@@ -140,7 +140,7 @@ Si se necesita una operación asincrónica para registrarse, es posible realizar
 
 Habilita las callbacks para una instancia determinada de `AsyncHook` . If no callbacks are provided enabling is a noop.
 
-La instancia de `AsyncHook` está inhabilitada por defecto. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
+La instancia de `AsyncHook` está inhabilitada por defecto. Si la instancia de `AsyncHook` debe ser habilitada inmediatamente después de la creación, se puede utilizar el siguiente patrón.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -181,7 +181,7 @@ A cada nuevo recurso se le asigna una identificación que es única dentro del s
 
 ###### `tipo`
 
-The `type` is a string identifying the type of resource that caused `init` to be called. Generally, it will correspond to the name of the resource's constructor.
+El `type` es una string que identifica el tipo de recurso que causó que `init` fuese llamado. Generally, it will correspond to the name of the resource's constructor.
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -541,7 +541,7 @@ added: v9.6.0
 * `thisArg` {any} The receiver to be used for the function call.
 * `...args` {any} Optional arguments to pass to the function.
 
-Call the provided function with the provided arguments in the execution context of the async resource. Esto establecerá el contexto, activará el AsyncHooks antes de los callbacks, llamará la función, activará el AsyncHooks después de los callbacks, y después restaurará el contexto de ejecución original.
+Llama a la función proporcionada con los argumentos proporcionados en el contexto de ejecución del recurso asincrónico. Esto establecerá el contexto, activará el AsyncHooks antes de los callbacks, llamará la función, activará el AsyncHooks después de los callbacks, y después restaurará el contexto de ejecución original.
 
 #### asyncResource.emitBefore()
 
