@@ -1264,7 +1264,7 @@ console.log(buf.readDoubleLE());
 console.log(buf.readDoubleLE(1));
 
 // Warning: reads passed end of buffer!
-// This will result in a segmentation fault! Don't do this!
+// This will result in a segmentation fault! Gör inte detta!
 console.log(buf.readDoubleLE(1, true));
 ```
 
@@ -1299,7 +1299,7 @@ console.log(buf.readFloatLE());
 console.log(buf.readFloatLE(1));
 
 // Warning: reads passed end of buffer!
-// This will result in a segmentation fault! Don't do this!
+// This will result in a segmentation fault! Gör inte detta!
 console.log(buf.readFloatLE(1, true));
 ```
 
