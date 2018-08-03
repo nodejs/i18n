@@ -1289,7 +1289,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
+Emitido cada vez que hay una solicitud. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -2165,7 +2165,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Entonces `request.url` será:
 
 <!-- eslint-disable semi -->
 
