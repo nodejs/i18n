@@ -228,7 +228,7 @@ El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva co
 
 ###### `recurso`
 
-`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar con base en el valor de `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. La API para acceder a esta información actualmente no se considera como pública, pero al usar la API del Embebedor, los usuarios pueden proporcionar y documentar sus propios objetos de recurso. For example, such a resource object could contain the SQL query being executed.
+`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar con base en el valor de `type`. Por ejemplo, para el tipo de recurso `GETADDRINFOREQWRAP`, `resource` proporciona el nombre de host utilizado cuando se busca la dirección IP para el nombre de host en `net.Server.listen()`. La API para acceder a esta información actualmente no se considera como pública, pero al usar la API del Embebedor, los usuarios pueden proporcionar y documentar sus propios objetos de recurso. For example, such a resource object could contain the SQL query being executed.
 
 In the case of Promises, the `resource` object will have `promise` property that refers to the `Promise` that is being initialized, and an `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Aquí, `b` es considerado como una promesa encadenada.
 
