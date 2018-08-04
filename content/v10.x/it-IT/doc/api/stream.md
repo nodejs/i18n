@@ -20,22 +20,22 @@ Mentre è importante capire come funzionano gli stream, il modulo `stream` è di
 
 ## Organizzazione di questo Documento
 
-This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
+Questo documento è diviso in due sezioni principali con una terza sezione per le note aggiuntive. La prima sezione spiega gli elementi dello stream API richiesti per *utilizzare* gli stream all'interno di un'applicazione. La seconda sezione spiega gli elementi dell'API necessari per *implementare* nuovi tipi di stream.
 
-## Types of Streams
+## Tipi di Stream
 
-There are four fundamental stream types within Node.js:
+Esistono quattro tipi fondamentali di stream all'interno di Node.js:
 
-* [`Readable`][] - streams from which data can be read (for example [`fs.createReadStream()`][]).
-* [`Writable`][] - streams to which data can be written (for example [`fs.createWriteStream()`][]).
-* [`Duplex`][] - streams that are both `Readable` and `Writable` (for example [`net.Socket`][]).
-* [`Transform`][] - `Duplex` streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
+* [`Readable`][] - stream da cui è possibile leggere i dati (ad esempio [`fs.createReadStream()`][]).
+* [`Writable`][] - stream su cui possono essere scritti i dati (ad esempio [`fs.createWriteStream()`][]).
+* [`Duplex`][] - stream che sono sia `Readable` che `Writable` (ad esempio [`net.Socket`][]).
+* [`Transform`][] - `Duplex` stream che possono modificare o trasformare i dati così come sono scritti e letti (ad esempio [`zlib.createDeflate()`][]).
 
-Additionally this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback) and [finished](#stream_stream_finished_stream_callback).
+Inoltre questo modulo include le funzioni di utility [pipeline](#stream_stream_pipeline_streams_callback) e [finished](#stream_stream_finished_stream_callback).
 
 ### Object Mode
 
-All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
+Tutti gli stream creati dalle API di Node.js operano esclusivamente su stringhe e `Buffer` (o `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 
 Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
 
