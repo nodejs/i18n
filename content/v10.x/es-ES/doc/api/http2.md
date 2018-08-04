@@ -2069,7 +2069,7 @@ The raw request/response headers list exactly as they were received.
 
 Tenga en cuenta que las claves y los valores están en la misma lista. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Header names are not lowercased, and duplicates are not merged.
+Los nombres de los encabezados no están en minúsculas, y los duplicados no están fusionados.
 
 ```js
 // Prints something like:
