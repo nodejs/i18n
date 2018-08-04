@@ -272,7 +272,7 @@ added: v9.4.0
 
 * `callback` {Function}
 
-Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Once closed, `http2session.destroy()` *might* be called if there are no open `Http2Stream` instances.
+Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Una vez cerrado, `http2session.destroy()` *might* ser llamado si no hay instancias de `Http2Stream` abiertas.
 
 If specified, the `callback` function is registered as a handler for the `'close'` event.
 
@@ -536,7 +536,7 @@ Sending an `ALTSVC` frame with a specific stream ID indicates that the alternate
 
 The `alt` and origin string *must* contain only ASCII bytes and are strictly interpreted as a sequence of ASCII bytes. The special value `'clear'` may be passed to clear any previously set alternative service for a given domain.
 
-When a string is passed for the `originOrStream` argument, it will be parsed as a URL and the origin will be derived. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
+Cuando se pasa una string para el argumento de `originOrStream`, será pasado como una URL y el origen será derivado. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
 
 A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. The value of the `origin` property *must* be a properly serialized ASCII origin.
 
@@ -636,7 +636,7 @@ added: v8.4.0
 
 * Extends: {stream.Duplex}
 
-Each instance of the `Http2Stream` class represents a bidirectional HTTP/2 communications stream over an `Http2Session` instance. Any single `Http2Session` may have up to 2<sup>31</sup>-1 `Http2Stream` instances over its lifetime.
+Each instance of the `Http2Stream` class represents a bidirectional HTTP/2 communications stream over an `Http2Session` instance. Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
 
 Código de usuario no construirá instancias de `Http2Stream` directamente. Rather, these are created, managed, and provided to user code through the `Http2Session` instance. On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. On the client, `Http2Stream` instances are created and returned when either the `http2session.request()` method is called, or in response to an incoming `'push'` event.
 
@@ -677,7 +677,7 @@ After the `Http2Stream` has been destroyed, the `http2stream.destroyed` property
 added: v8.4.0
 -->
 
-The `'aborted'` event is emitted whenever a `Http2Stream` instance is abnormally aborted in mid-communication.
+El evento de `'aborted'` se emite cuando una instancia de `Http2Stream` se anula de manera anormal a la mitad de una comunicación.
 
 El evento de `'aborted'` sólo será emitido si el lado grabable de `Http2Stream` no ha sido finalizado.
 
@@ -921,7 +921,7 @@ added: v8.4.0
 
 * Extends {Http2Stream}
 
-The `ClientHttp2Stream` class is an extension of `Http2Stream` that is used exclusively on HTTP/2 Clients. `Http2Stream` instances on the client provide events such as `'response'` and `'push'` that are only relevant on the client.
+La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. `Http2Stream` instances on the client provide events such as `'response'` and `'push'` that are only relevant on the client.
 
 #### Event: 'continue'
 
@@ -1132,7 +1132,7 @@ The optional `options.statCheck` function may be specified to give user code an 
 
 The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
 
-The file descriptor is not closed when the stream is closed, so it will need to be closed manually once it is no longer needed. Note that using the same file descriptor concurrently for multiple streams is not supported and may result in data loss. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
+El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Note that using the same file descriptor concurrently for multiple streams is not supported and may result in data loss. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be used to sent trailing header fields to the peer.
 
@@ -2655,6 +2655,6 @@ If `name` is equal to `Http2Session`, the `PerformanceEntry` will contain the fo
 * `framesSent` {number} The number of HTTP/2 frames sent by the `Http2Session`.
 * `maxConcurrentStreams` {number} The maximum number of streams concurrently open during the lifetime of the `Http2Session`.
 * `pingRTT` {number} The number of milliseconds elapsed since the transmission of a `PING` frame and the reception of its acknowledgment. Only present if a `PING` frame has been sent on the `Http2Session`.
-* `streamAverageDuration` {number} The average duration (in milliseconds) for all `Http2Stream` instances.
-* `streamCount` {number} The number of `Http2Stream` instances processed by the `Http2Session`.
+* `streamAverageDuration` {number} La duración promedio (en milisegundos) para todas las instancias de `Http2Stream` .
+* `streamCount` {number} El número de instancias de `Http2Stream` procesadas por la `Http2Session`.
 * `type` {string} Either `'server'` or `'client'` to identify the type of `Http2Session`.
