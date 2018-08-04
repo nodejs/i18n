@@ -200,7 +200,7 @@ session.on('remoteSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `stream` {Http2Stream} A reference to the stream
+* `stream` {Http2Stream} Una referencia para el stream
 * `headers` {HTTP/2 Headers Object} An object describing the headers
 * `flags` {number} The associated numeric flags
 * `rawHeaders` {Array} An array containing the raw header names followed by their respective values.
@@ -651,7 +651,7 @@ All `Http2Stream` instances are [`Duplex`][] streams. The `Writable` side of the
 On the server side, instances of [`ServerHttp2Stream`][] are created either when:
 
 * A new HTTP/2 `HEADERS` frame with a previously unused stream ID is received;
-* The `http2stream.pushStream()` method is called.
+* El método `http2stream.pushStream()` es llamado.
 
 On the client side, instances of [`ClientHttp2Stream`][] are created when the `http2session.request()` method is called.
 
@@ -800,7 +800,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. El valor es un número entre `1` y `256` (inclusivo).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
 
-Updates the priority for this `Http2Stream` instance.
+Actualiza la prioridad para esta instancia `Http2Stream` .
 
 #### http2stream.rstCode
 
@@ -887,7 +887,7 @@ added: v8.4.0
   * `sumDependencyWeight` {number} The sum weight of all `Http2Stream` instances that depend on this `Http2Stream` as specified using `PRIORITY` frames.
   * `weight` {number} El peso de prioridad de esta `Http2Stream`.
 
-A current state of this `Http2Stream`.
+Un estado actual de este `Http2Stream`.
 
 #### http2stream.sendTrailers(headers)
 
@@ -1132,7 +1132,7 @@ The optional `options.statCheck` function may be specified to give user code an 
 
 The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
 
-The file descriptor is not closed when the stream is closed, so it will need to be closed manually once it is no longer needed. Note that using the same file descriptor concurrently for multiple streams is not supported and may result in data loss. Re-using a file descriptor after a stream has finished is supported.
+The file descriptor is not closed when the stream is closed, so it will need to be closed manually once it is no longer needed. Note that using the same file descriptor concurrently for multiple streams is not supported and may result in data loss. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be used to sent trailing header fields to the peer.
 
@@ -1188,7 +1188,7 @@ When used, the `Http2Stream` object's `Duplex` interface will be closed automati
 
 The optional `options.statCheck` function may be specified to give user code an opportunity to set additional content headers based on the `fs.Stat` details of the given file:
 
-If an error occurs while attempting to read the file data, the `Http2Stream` will be closed using an `RST_STREAM` frame using the standard `INTERNAL_ERROR` code. If the `onError` callback is defined, then it will be called. Otherwise the stream will be destroyed.
+If an error occurs while attempting to read the file data, the `Http2Stream` will be closed using an `RST_STREAM` frame using the standard `INTERNAL_ERROR` code. If the `onError` callback is defined, then it will be called. De lo contrario el stream sera destruido.
 
 Ejemplo utilizando una ruta de archivo:
 
@@ -1236,7 +1236,7 @@ The `content-length` header field will be automatically set.
 
 The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
 
-The `options.onError` function may also be used to handle all the errors that could happen before the delivery of the file is initiated. The default behavior is to destroy the stream.
+The `options.onError` function may also be used to handle all the errors that could happen before the delivery of the file is initiated. El comportamiento predeterminado es destruir el stream.
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrilers()` method can then be used to sent trailing header fields to the peer.
 
@@ -1313,7 +1313,7 @@ The `'sessionError'` event is emitted when an `'error'` event is emitted by an `
 added: v8.5.0
 -->
 
-If a `ServerHttp2Stream` emits an `'error'` event, it will be forwarded here. The stream will already be destroyed when this event is triggered.
+If a `ServerHttp2Stream` emits an `'error'` event, it will be forwarded here. El stream ya estará destruido cuando se active este evento.
 
 #### Event: 'stream'
 
@@ -1666,9 +1666,9 @@ added: v8.4.0
 | `0x02` | Error interno             | `http2.constants.NGHTTP2_INTERNAL_ERROR`      |
 | `0x03` | Error de control de flujo | `http2.constants.NGHTTP2_FLOW_CONTROL_ERROR`  |
 | `0x04` | Settings Timeout          | `http2.constants.NGHTTP2_SETTINGS_TIMEOUT`    |
-| `0x05` | Stream Closed             | `http2.constants.NGHTTP2_STREAM_CLOSED`       |
+| `0x05` | Stream cerrado            | `http2.constants.NGHTTP2_STREAM_CLOSED`       |
 | `0x06` | Frame Size Error          | `http2.constants.NGHTTP2_FRAME_SIZE_ERROR`    |
-| `0x07` | Refused Stream            | `http2.constants.NGHTTP2_REFUSED_STREAM`      |
+| `0x07` | Stream negado             | `http2.constants.NGHTTP2_REFUSED_STREAM`      |
 | `0x08` | Cancelar                  | `http2.constants.NGHTTP2_CANCEL`              |
 | `0x09` | Compression Error         | `http2.constants.NGHTTP2_COMPRESSION_ERROR`   |
 | `0x0a` | Error de conexión         | `http2.constants.NGHTTP2_CONNECT_ERROR`       |
@@ -2003,7 +2003,7 @@ added: v8.4.0
 
 Calls `destroy()` on the [`Http2Stream`][] that received the [`Http2ServerRequest`][]. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
 
-It does nothing if the stream was already destroyed.
+No hace nada si el stream ya fue destruido.
 
 #### request.headers
 
