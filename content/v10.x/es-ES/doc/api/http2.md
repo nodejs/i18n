@@ -797,7 +797,7 @@ added: v8.4.0
 * `opciones` {Object} 
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Default:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
-  * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
+  * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. El valor es un número entre `1` y `256` (inclusivo).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
 
 Updates the priority for this `Http2Stream` instance.
@@ -1927,7 +1927,7 @@ The HTTP/2 compatibility API is composed of [`Http2ServerRequest`]() and [`Http2
 
 ALPN negotiation allows supporting both [HTTPS](https.html) and HTTP/2 over the same socket. The `req` and `res` objects can be either HTTP/1 or HTTP/2, and an application **must** restrict itself to the public API of [HTTP/1](http.html), and detect if it is possible to use the more advanced features of HTTP/2.
 
-The following example creates a server that supports both protocols:
+El siguiente ejemplo crea un servidor que soporta a ambos protocolos:
 
 ```js
 const { createSecureServer } = require('http2');
