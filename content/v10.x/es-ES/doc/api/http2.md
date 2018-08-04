@@ -1004,7 +1004,7 @@ added: v8.4.0
 
 * {boolean}
 
-True if headers were sent, false otherwise (read-only).
+Verdadero si los encabezados fueron enviados, de lo contrario falso (sólo lectura).
 
 #### http2stream.pushAllowed
 
@@ -1097,7 +1097,7 @@ changes:
                  regular file, is supported now.
 -->
 
-* `fd` {number} A readable file descriptor.
+* `fd` {number} Un descriptor de archivo legible.
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `statCheck` {Function}
@@ -1105,7 +1105,7 @@ changes:
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} The amount of data from the fd to send.
 
-Initiates a response whose data is read from the given file descriptor. No validation is performed on the given file descriptor. If an error occurs while attempting to read data using the file descriptor, the `Http2Stream` will be closed using an `RST_STREAM` frame using the standard `INTERNAL_ERROR` code.
+Inicia una respuesta cuyos datos son leídos desde el descriptor de archivo dado. No validation is performed on the given file descriptor. If an error occurs while attempting to read data using the file descriptor, the `Http2Stream` will be closed using an `RST_STREAM` frame using the standard `INTERNAL_ERROR` code.
 
 When used, the `Http2Stream` object's `Duplex` interface will be closed automatically.
 
@@ -1721,7 +1721,7 @@ Returns a [HTTP/2 Settings Object](#http2_settings_object) containing the deseri
 
 ### Headers Object
 
-Headers are represented as own-properties on JavaScript objects. The property keys will be serialized to lower-case. Property values should be strings (if they are not they will be coerced to strings) or an `Array` of strings (in order to send more than one value per header field).
+Los encabezados están representados como propiedades propias sobre los objetos de JavaScript. The property keys will be serialized to lower-case. Property values should be strings (if they are not they will be coerced to strings) or an `Array` of strings (in order to send more than one value per header field).
 
 ```js
 const headers = {
@@ -2055,7 +2055,7 @@ added: v8.4.0
 
 * {string}
 
-The request method as a string. Read-only. Example: `'GET'`, `'DELETE'`.
+The request method as a string. Sólo lectura. Example: `'GET'`, `'DELETE'`.
 
 #### request.rawHeaders
 
@@ -2379,7 +2379,7 @@ added: v8.4.0
 
 * {boolean}
 
-True if headers were sent, false otherwise (read-only).
+Verdadero si los encabezados fueron enviados, de lo contrario falso (sólo lectura).
 
 #### response.removeHeader(name)
 
