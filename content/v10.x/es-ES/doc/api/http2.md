@@ -810,7 +810,7 @@ added: v8.4.0
 
 * {number}
 
-Set to the `RST_STREAM` [error code](#error_codes) reported when the `Http2Stream` is destroyed after either receiving an `RST_STREAM` frame from the connected peer, calling `http2stream.close()`, or `http2stream.destroy()`. Will be `undefined` if the `Http2Stream` has not been closed.
+Set to the `RST_STREAM` [error code](#error_codes) reported when the `Http2Stream` is destroyed after either receiving an `RST_STREAM` frame from the connected peer, calling `http2stream.close()`, or `http2stream.destroy()`. Será `undefined` si el `Http2Stream` no ha sido cerrado.
 
 #### http2stream.sentHeaders
 
@@ -2642,7 +2642,7 @@ If `name` is equal to `Http2Stream`, the `PerformanceEntry` will contain the fol
 
 * `bytesRead` {number} The number of `DATA` frame bytes received for this `Http2Stream`.
 * `bytesWritten` {number} The number of `DATA` frame bytes sent for this `Http2Stream`.
-* `id` {number} The identifier of the associated `Http2Stream`
+* `id` {number} El identificador del `Http2Stream` asociado
 * `timeToFirstByte` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and the reception of the first `DATA` frame.
 * `timeToFirstByteSent` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and sending of the first `DATA` frame.
 * `timeToFirstHeader` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and the reception of the first header.
