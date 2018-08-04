@@ -18,7 +18,7 @@ The `http2` Core API is much more symmetric between client and server than the `
 
 ### Server-side example
 
-The following illustrates a simple HTTP/2 server using the Core API. Since there are no browsers known that support [unencrypted HTTP/2](https://http2.github.io/faq/#does-http2-require-encryption), the use of [`http2.createSecureServer()`][] is necessary when communicating with browser clients.
+La siguiente ilustra un servidor simple de HTTP/2 utilizando la API de núcleo. Since there are no browsers known that support [unencrypted HTTP/2](https://http2.github.io/faq/#does-http2-require-encryption), the use of [`http2.createSecureServer()`][] is necessary when communicating with browser clients.
 
 ```js
 const http2 = require('http2');
@@ -441,7 +441,7 @@ added: v8.4.0
 
 Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but limits available methods to ones safe to use with HTTP/2.
 
-`destroy`, `emit`, `end`, `pause`, `read`, `resume`, and `write` will throw an error with code `ERR_HTTP2_NO_SOCKET_MANIPULATION`. See [`Http2Session` and Sockets][] for more information.
+`destroy`, `emit`, `end`, `pause`, `read`, `resume`, and `write` will throw an error with code `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` and Sockets][] para más información.
 
 `setTimeout` method will be called on this `Http2Session`.
 
@@ -929,7 +929,7 @@ The `ClientHttp2Stream` class is an extension of `Http2Stream` that is used excl
 added: v8.5.0
 -->
 
-Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. This is an instruction that the client should send the request body.
+Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. Esta es una instrucción en la que el cliente debería enviar el cuerpo de la solicitud.
 
 #### Event: 'headers'
 
@@ -1961,7 +1961,7 @@ The `'request'` event works identically on both [HTTPS](https.html) and HTTP/2.
 added: v8.4.0
 -->
 
-A `Http2ServerRequest` object is created by [`http2.Server`][] or [`http2.SecureServer`][] and passed as the first argument to the [`'request'`][] event. It may be used to access a request status, headers, and data.
+A `Http2ServerRequest` object is created by [`http2.Server`][] or [`http2.SecureServer`][] and passed as the first argument to the [`'request'`][] event. Puede ser utilizado para acceder a un estado de solicitud, encabezados, y datos.
 
 It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
 
@@ -2026,7 +2026,7 @@ Key-value pairs of header names and values. Los nombres de los encabezados está
 console.log(request.headers);
 ```
 
-See [HTTP/2 Headers Object](#http2_headers_object).
+Vea [HTTP/2 Headers Object](#http2_headers_object).
 
 In HTTP/2, the request path, hostname, protocol, and method are represented as special headers prefixed with the `:` character (e.g. `':path'`). These special headers will be included in the `request.headers` object. Care must be taken not to inadvertently modify these special headers or errors may occur. For instance, removing all headers from the request will cause errors to occur:
 
@@ -2572,7 +2572,7 @@ added: v8.4.0
 * `statusMessage` {string}
 * `headers` {Object}
 
-Envía un encabezado de respuesta a la solicitud. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
+Envía un encabezado de respuesta a la solicitud. The status code is a 3-digit HTTP status code, like `404`. El último argumento, `headers`, son los encabezados de respuesta.
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
