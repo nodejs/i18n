@@ -593,7 +593,7 @@ added: v8.4.0
   
   * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
-  * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
+  * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
@@ -638,7 +638,7 @@ added: v8.4.0
 
 Each instance of the `Http2Stream` class represents a bidirectional HTTP/2 communications stream over an `Http2Session` instance. Any single `Http2Session` may have up to 2<sup>31</sup>-1 `Http2Stream` instances over its lifetime.
 
-User code will not construct `Http2Stream` instances directly. Rather, these are created, managed, and provided to user code through the `Http2Session` instance. On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. On the client, `Http2Stream` instances are created and returned when either the `http2session.request()` method is called, or in response to an incoming `'push'` event.
+Código de usuario no construirá instancias de `Http2Stream` directamente. Rather, these are created, managed, and provided to user code through the `Http2Session` instance. On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. On the client, `Http2Stream` instances are created and returned when either the `http2session.request()` method is called, or in response to an incoming `'push'` event.
 
 The `Http2Stream` class is a base for the [`ServerHttp2Stream`][] and [`ClientHttp2Stream`][] classes, each of which is used specifically by either the Server or Client side, respectively.
 
@@ -655,11 +655,11 @@ On the server side, instances of [`ServerHttp2Stream`][] are created either when
 
 On the client side, instances of [`ClientHttp2Stream`][] are created when the `http2session.request()` method is called.
 
-On the client, the `Http2Stream` instance returned by `http2session.request()` may not be immediately ready for use if the parent `Http2Session` has not yet been fully established. In such cases, operations called on the `Http2Stream` will be buffered until the `'ready'` event is emitted. User code should rarely, if ever, need to handle the `'ready'` event directly. The ready status of an `Http2Stream` can be determined by checking the value of `http2stream.id`. If the value is `undefined`, the stream is not yet ready for use.
+On the client, the `Http2Stream` instance returned by `http2session.request()` may not be immediately ready for use if the parent `Http2Session` has not yet been fully established. In such cases, operations called on the `Http2Stream` will be buffered until the `'ready'` event is emitted. User code should rarely, if ever, need to handle the `'ready'` event directly. The ready status of an `Http2Stream` can be determined by checking the value of `http2stream.id`. Si el valor es `undefined`, el stream aún no está listo para utilizarse.
 
 ##### Destrucción
 
-All [`Http2Stream`][] instances are destroyed either when:
+Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 
 * An `RST_STREAM` frame for the stream is received by the connected peer.
 * The `http2stream.close()` method is called.
@@ -669,7 +669,7 @@ When an `Http2Stream` instance is destroyed, an attempt will be made to send an 
 
 When the `Http2Stream` instance is destroyed, the `'close'` event will be emitted. Because `Http2Stream` is an instance of `stream.Duplex`, the `'end'` event will also be emitted if the stream data is currently flowing. The `'error'` event may also be emitted if `http2stream.destroy()` was called with an `Error` passed as the first argument.
 
-After the `Http2Stream` has been destroyed, the `http2stream.destroyed` property will be `true` and the `http2stream.rstCode` property will specify the `RST_STREAM` error code. The `Http2Stream` instance is no longer usable once destroyed.
+After the `Http2Stream` has been destroyed, the `http2stream.destroyed` property will be `true` and the `http2stream.rstCode` property will specify the `RST_STREAM` error code. La instancia de `Http2Stream` ya no es utilizable una vez destruida.
 
 #### Event: 'aborted'
 
@@ -697,7 +697,7 @@ The HTTP/2 error code used when closing the stream can be retrieved using the `h
 added: v8.4.0
 -->
 
-The `'error'` event is emitted when an error occurs during the processing of an `Http2Stream`.
+El evento de `'error'` se emite cuando ocurre un error durante el procesamiento de un `Http2Stream`.
 
 #### Event: 'frameError'
 
@@ -1025,7 +1025,7 @@ added: v8.4.0
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
-  * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
+  * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
 * `callback` {Function} Callback that is called once the push stream has been initiated. 
   * `err` {Error}
   * `pushStream` {ServerHttp2Stream} The returned `pushStream` object.
@@ -1981,7 +1981,7 @@ The `'aborted'` event will only be emitted if the `Http2ServerRequest` writable 
 added: v8.4.0
 -->
 
-Indicates that the underlying [`Http2Stream`][] was closed. Just like `'end'`, this event occurs only once per response.
+Indica que el [`Http2Stream`][] subyacente fue cerrado. Just like `'end'`, this event occurs only once per response.
 
 #### request.aborted
 
