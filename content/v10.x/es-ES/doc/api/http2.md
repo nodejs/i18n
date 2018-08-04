@@ -536,7 +536,7 @@ Sending an `ALTSVC` frame with a specific stream ID indicates that the alternate
 
 The `alt` and origin string *must* contain only ASCII bytes and are strictly interpreted as a sequence of ASCII bytes. The special value `'clear'` may be passed to clear any previously set alternative service for a given domain.
 
-Cuando se pasa una string para el argumento de `originOrStream`, será pasado como una URL y el origen será derivado. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
+Cuando se pasa una string para el argumento de `originOrStream`, será analizado como una URL y el origen será derivado. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
 
 A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. The value of the `origin` property *must* be a properly serialized ASCII origin.
 
@@ -677,9 +677,9 @@ After the `Http2Stream` has been destroyed, the `http2stream.destroyed` property
 added: v8.4.0
 -->
 
-El evento de `'aborted'` se emite cuando una instancia de `Http2Stream` se anula de manera anormal a la mitad de una comunicación.
+El evento `'aborted'` se emite cuando una instancia de `Http2Stream` se anula de manera anormal a la mitad de una comunicación.
 
-El evento de `'aborted'` sólo será emitido si el lado grabable de `Http2Stream` no ha sido finalizado.
+El evento `'aborted'` sólo será emitido si el lado grabable de `Http2Stream` no ha sido finalizado.
 
 #### Event: 'close'
 
