@@ -745,7 +745,7 @@ added: v8.4.0
 
 * {boolean}
 
-Set to `true` if the `Http2Stream` instance was aborted abnormally. Cuando se establece, el evento `'aborted'` habrá sido emitido.
+Set to `true` if the `Http2Stream` instance was aborted abnormally. Cuando se establezca, el evento `'aborted'` habrá sido emitido.
 
 #### http2stream.close(code[, callback])
 
@@ -2613,7 +2613,7 @@ added: v8.4.0
 
 Call [`http2stream.pushStream()`][] with the given headers, and wraps the given newly created [`Http2Stream`] on `Http2ServerRespose`.
 
-El callback será llamado con un error con código de `ERR_HTTP2_STREAM_CLOSED` si se cierra el stream.
+El callback será llamado con un error con código `ERR_HTTP2_STREAM_CLOSED` si se cierra el stream.
 
 ## Collecting HTTP/2 Performance Metrics
 
