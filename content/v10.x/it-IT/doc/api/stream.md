@@ -55,9 +55,9 @@ I dati vengono memorizzati nel buffer nei `Writable` stream quando il metodo [`w
 
 Un obiettivo chiave dello `stream` API, in particolare il metodo [`stream.pipe()`], è di limitare il buffering dei dati a livelli accettabili in modo che sorgenti e destinazioni di diverse velocità non sovraccarichino la memoria disponibile.
 
-Poiché gli stream [`Duplex`][] e [`Transform`][] sono entrambi sia `Readable` che `Writable`, ciascuno di essi mantiene *due* buffer interni separati utilizzati per la lettura e la scrittura, consentendo a ciascuna parte di operare indipendentemente dall'altra mantenendo un flusso di dati appropriato ed efficiente. For example, [`net.Socket`][] instances are [`Duplex`][] streams whose `Readable` side allows consumption of data received *from* the socket and whose `Writable` side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
+Poiché gli stream [`Duplex`][] e [`Transform`][] sono entrambi sia `Readable` che `Writable`, ciascuno di essi mantiene *due* buffer interni separati utilizzati per la lettura e la scrittura, consentendo a ciascuna parte di operare indipendentemente dall'altra mantenendo un flusso di dati appropriato ed efficiente. Ad esempio, le istanze di [`net.Socket`][] sono gli [`Duplex`][] stream di cui la parte `Readable` consente il consumo dei dati ricevuti *dal* socket e la parte `Writable` consente di scrivere i dati *sul* socket. Poiché i dati possono essere scritti sul socket ad una velocità maggiore o minore rispetto a quella dei dati ricevuti, è importante che ciascuna parte funzioni (ed esegua il buffer) indipendentemente dall'altra.
 
-## API for Stream Consumers
+## API per gli Stream Consumer
 
 <!--type=misc-->
 
