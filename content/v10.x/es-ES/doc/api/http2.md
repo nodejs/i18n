@@ -351,7 +351,7 @@ added: v8.4.0
 
 * {HTTP/2 Settings Object}
 
-A prototype-less object describing the current local settings of this `Http2Session`. The local settings are local to *this* `Http2Session` instance.
+A prototype-less object describing the current local settings of this `Http2Session`. Las configuraciones locales son locales para *this* `Http2Session` instancia.
 
 #### http2session.originSet
 
@@ -569,7 +569,7 @@ added: v9.4.0
 * `origin`: {string}
 * `streamId`: {number}
 
-The `'altsvc'` event is emitted whenever an `ALTSVC` frame is received by the client. The event is emitted with the `ALTSVC` value, origin, and stream ID. If no `origin` is provided in the `ALTSVC` frame, `origin` will be an empty string.
+The `'altsvc'` event is emitted whenever an `ALTSVC` frame is received by the client. El evento es emitido con el valor de `ALTSVC`, origen, e identificación del stream. If no `origin` is provided in the `ALTSVC` frame, `origin` will be an empty string.
 
 ```js
 const http2 = require('http2');
@@ -766,7 +766,7 @@ added: v9.4.0
 
 * {boolean}
 
-Set to `true` if the `Http2Stream` instance has been closed.
+Establecida para `true` si la instancia `Http2Stream` ha sido cerrada.
 
 #### http2stream.destroyed
 
@@ -885,7 +885,7 @@ added: v8.4.0
   * `localClose` {number} `true` if this `Http2Stream` has been closed locally.
   * `remoteClose` {number} `true` if this `Http2Stream` has been closed remotely.
   * `sumDependencyWeight` {number} The sum weight of all `Http2Stream` instances that depend on this `Http2Stream` as specified using `PRIORITY` frames.
-  * `weight` {number} The priority weight of this `Http2Stream`.
+  * `weight` {number} El peso de prioridad de esta `Http2Stream`.
 
 A current state of this `Http2Stream`.
 
@@ -1755,7 +1755,7 @@ changes:
     description: The `maxHeaderListSize` setting is now strictly enforced.
 --> The 
 
-`http2.getDefaultSettings()`, `http2.getPackedSettings()`, `http2.createServer()`, `http2.createSecureServer()`, `http2session.settings()`, `http2session.localSettings`, and `http2session.remoteSettings` APIs either return or receive as input an object that defines configuration settings for an `Http2Session` object. These objects are ordinary JavaScript objects containing the following properties.
+`http2.getDefaultSettings()`, `http2.getPackedSettings()`, `http2.createServer()`, `http2.createSecureServer()`, `http2session.settings()`, `http2session.localSettings`, and `http2session.remoteSettings` APIs either return or receive as input an object that defines configuration settings for an `Http2Session` object. Estos objetos son objetos ordinarios de JavaScript que contienen las siguientes propiedades.
 
 * `headerTableSize` {number} Specifies the maximum number of bytes used for header compression. El valor mínimo permitido es 0. The maximum allowed value is 2<sup>32</sup>-1. **Default:** `4,096 octets`.
 * `enablePush` {boolean} Specifies `true` if HTTP/2 Push Streams are to be permitted on the `Http2Session` instances.
@@ -2028,7 +2028,7 @@ console.log(request.headers);
 
 Vea [HTTP/2 Headers Object](#http2_headers_object).
 
-In HTTP/2, the request path, hostname, protocol, and method are represented as special headers prefixed with the `:` character (e.g. `':path'`). These special headers will be included in the `request.headers` object. Care must be taken not to inadvertently modify these special headers or errors may occur. For instance, removing all headers from the request will cause errors to occur:
+In HTTP/2, the request path, hostname, protocol, and method are represented as special headers prefixed with the `:` character (e.g. `':path'`). Estos encabezados especiales serán incluidos en el objeto de `request.headers` . Care must be taken not to inadvertently modify these special headers or errors may occur. Por ejemplo, remover todos los encabezados de la solicitud ocasionará que ocurran errores:
 
 ```js
 removeAllHeaders(request.headers);
