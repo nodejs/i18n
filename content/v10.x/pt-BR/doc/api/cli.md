@@ -1,14 +1,14 @@
-# Command Line Options
+# Opções de linha de comando
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js vem com uma variedade de opções CLI. Essas opções expõem a depuração interna, múltiplas formas de executar scripts, e outras opções úteis em tempo de execução.
 
-To view this documentation as a manual page in a terminal, run `man node`.
+Para ver essa documentação como uma página de manual no terminal, execute `man node `.
 
-## Synopsis
+## Sinopse
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
@@ -16,11 +16,11 @@ To view this documentation as a manual page in a terminal, run `man node`.
 
 `node --v8-options`
 
-Execute without arguments to start the [REPL](repl.html).
+Execute sem argumentos para iniciar o [REPL](repl.html).
 
-*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
+*Para mais informações sobre `node debug`, por favor consulte a documentação de [depurador [debugger]](debugger.html).*
 
-## Options
+## Opções
 
 ### `-`
 
@@ -28,7 +28,7 @@ Execute without arguments to start the [REPL](repl.html).
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+Chamada por stdin, análogo ao uso de - em outros terminais de linha de comando, significando que o script será lido de stdin, e o restante das opções serão passados para esse script.
 
 ### `--`
 
@@ -36,7 +36,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indica o fim das opções do node. Passa o restante dos argumentos para o script. Se o script for passado sem nome ou eval/print antes disso, então o próximo argumento será utilizado como o nome do script.
 
 ### `--abort-on-uncaught-exception`
 
@@ -44,9 +44,9 @@ Indicate the end of node options. Pass the rest of the arguments to the script. 
 added: v0.10
 -->
 
-Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
+Abortar ao invés de sair faz com que um arquivo principal seja gerado para post-mortem [Pós-Morte] análise usando um depurador (tal qual `lldb`,`gdb`, e `mdb`).
 
-If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
+Se esse sinal é passado, o comportamento ainda pode ser definido para não abortar através do [`process.setUncaughtExceptionCaptureCallback()`][] (e utilizando do módulo `domain`).
 
 ### `--enable-fips`
 
@@ -54,7 +54,7 @@ If this flag is passed, the behavior can still be set to not abort through [`pro
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
+Habilite a criptografia compatível com FIPS na inicialização. (Necessita que seja feito no Node.js `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -62,7 +62,7 @@ Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./c
 added: v8.5.0
 -->
 
-Enable experimental ES module support and caching modules.
+Ativa suporte ao módulo ES experimental e módulos de armazenamento em cache.
 
 ### `--experimental-repl-await`
 
@@ -70,7 +70,7 @@ Enable experimental ES module support and caching modules.
 added: v10.0.0
 -->
 
-Enable experimental top-level `await` keyword support in REPL.
+Ativa o suporte top-level experimental `await` palavra-chave em REPL.
 
 ### `--experimental-vm-modules`
 
@@ -78,7 +78,7 @@ Enable experimental top-level `await` keyword support in REPL.
 added: v9.6.0
 -->
 
-Enable experimental ES Module support in the `vm` module.
+Ativa suporte ao módulo ES experimental e ao módulo `vm`.
 
 ### `--force-fips`
 

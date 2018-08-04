@@ -4,7 +4,7 @@
 
 <!--lint disable maximum-line-length-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -27,9 +27,9 @@ ls.on('close', (code) => {
 
 By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Use the `{ stdio: 'ignore' }` option if the output will not be consumed.
 
-The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. The [`child_process.spawnSync()`][] function provides equivalent functionality in a synchronous manner that blocks the event loop until the spawned process either exits or is terminated.
+The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente de manera síncrona que bloquea el bucle del evento hasta que el proceso engendrado exista o finalice.
 
-For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
+Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas a [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementadas por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
 
     * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
       passing the `stdout` and `stderr` to a callback function when complete.
@@ -44,22 +44,23 @@ For convenience, the `child_process` module provides a handful of synchronous an
       [`child_process.execFile()`][] that *will* block the Node.js event loop.
     
 
-For certain use cases, such as automating shell scripts, the [synchronous counterparts](#child_process_synchronous_process_creation) may be more convenient. In many cases, however, the synchronous methods can have significant impact on performance due to stalling the event loop while spawned processes complete.
+Para ciertos casos de uso, como la automatización de scripts de shell, las [synchronous counterparts](#child_process_synchronous_process_creation) pueden ser más convenientes. En muchos casos, sin embargo, los métodos sincrónicos pueden tener un impacto significativo en el rendimiento debido al bloqueo del bucle de eventos mientras se completan los procesos generados.
 
-## Asynchronous Process Creation
+## Creación de Procesos Asincrónicos
 
-The [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], and [`child_process.execFile()`][] methods all follow the idiomatic asynchronous programming pattern typical of other Node.js APIs.
+Los métodos [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], y [`child_process.execFile()`][], todos siguen el patrón de programación asincrónico idiomático típico de otros APIs de Node.js.
 
-Each of the methods returns a [`ChildProcess`][] instance. These objects implement the Node.js [`EventEmitter`][] API, allowing the parent process to register listener functions that are called when certain events occur during the life cycle of the child process.
+Cada uno de los métodos devuelve una instancia de [`ChildProcess`][]. Estos objetos implementan el API [`EventEmitter`][] de Node.js, permitiendo que el proceso primario registre funciones de oyente que son llamadas cuando ciertos eventos ocurren durante el ciclo de vida del proceso secundario.
 
-The [`child_process.exec()`][] and [`child_process.execFile()`][] methods additionally allow for an optional `callback` function to be specified that is invoked when the child process terminates.
+Los métodos [`child_process.exec()`][] y [`child_process.execFile()`][] adicionalmente permiten que se especifique una función `callback` opcional que es invocada cuando el proceso secundario finaliza.
 
-### Spawning `.bat` and `.cmd` files on Windows
+### Generando archivos `.bat` y `.cmd` en Windows
 
-The importance of the distinction between [`child_process.exec()`][] and [`child_process.execFile()`][] can vary based on platform. On Unix-type operating systems (Unix, Linux, macOS) [`child_process.execFile()`][] can be more efficient because it does not spawn a shell by default. On Windows, however, `.bat` and `.cmd` files are not executable on their own without a terminal, and therefore cannot be launched using [`child_process.execFile()`][]. When running on Windows, `.bat` and `.cmd` files can be invoked using [`child_process.spawn()`][] with the `shell` option set, with [`child_process.exec()`][], or by spawning `cmd.exe` and passing the `.bat` or `.cmd` file as an argument (which is what the `shell` option and [`child_process.exec()`][] do). In any case, if the script filename contains spaces it needs to be quoted.
+La importancia de la distinción entre [`child_process.exec()`][] y [`child_process.execFile()`][] puede variar basándose en la plataforma. En sistemas operativos de tipo Unix (Unix, Linux, macOS) [`child_process.execFile()`][] puede ser más eficiente debido a que no genera un shell por defecto. En Windows, sin embargo, los archivos `.bat` y `.cmd` no son ejecutables por su propia cuenta sin un terminal, y por lo tanto no pueden ser ejecutados utilizando [`child_process.execFile()`][]. Al correr en Windows, los archivos `.bat` y `.cmd` son invocados utilizando [`child_process.spawn()`][] con la opción `shell` establecida, con [`child_process.exec()`][] o generando `cmd.exe</0 y pasando el archivo
+<code>.bat` o `.cmd` como un argumento (que es lo que la opción `shell` y [`child_process.exec()`][] hacen). En cualquier caso, si el script filename contiene espacios, necesita ser citado.
 
 ```js
-// On Windows Only ...
+// Sólo en Windows ...
 const { spawn } = require('child_process');
 const bat = spawn('cmd.exe', ['/c', 'my.bat']);
 
@@ -77,7 +78,7 @@ bat.on('exit', (code) => {
 ```
 
 ```js
-// OR...
+// O...
 const { exec } = require('child_process');
 exec('my.bat', (err, stdout, stderr) => {
   if (err) {
@@ -87,9 +88,9 @@ exec('my.bat', (err, stdout, stderr) => {
   console.log(stdout);
 });
 
-// Script with spaces in the filename:
+// Script con espacios en el filename:
 const bat = spawn('"my script.cmd"', ['a', 'b'], { shell: true });
-// or:
+// o:
 exec('"my script.cmd" a b', (err, stdout, stderr) => {
   // ...
 });
@@ -106,36 +107,36 @@ changes:
     description: The `windowsHide` option is supported now.
 -->
 
-* `command` {string} The command to run, with space-separated arguments.
-* `options` {Object} 
-  * `cwd` {string} Current working directory of the child process. **Default:** `null`.
+* `command` {string} El comando a ejecutar, con los argumentos separados con espacios.
+* `opciones` {Object} 
+  * `cwd` {string} El directorio del proceso secundario actualmente operativo. **Default:** `null`.
   * `env` {Object} Environment key-value pairs. **Default:** `null`.
   * `encoding` {string} **Default:** `'utf8'`
-  * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `timeout` {number} **Default:** `0`
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* `callback` {Function} called with the output when process terminates. 
+  * `uid` {number} Establece la identidad del usuario de los procesos (vea setuid(2)).
+  * `gid` {number} Establece la identidad del grupo del proceso (vea setgid(2)).
+  * `windowsHide` {boolean} Ocultar la ventana de la consola de sub-proceso que normalmente estaría creada en sistemas Windows. **Default:** `false`.
+* `callback` {Function} llamada con la salida cuando el proceso finaliza. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* Returns: {ChildProcess}
+* Devuelve: {ChildProcess}
 
-Spawns a shell then executes the `command` within that shell, buffering any generated output. The `command` string passed to the exec function is processed directly by the shell and special characters (vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) need to be dealt with accordingly:
+Genera un shell, luego ejecuta el `command` dentro de esa shell, cargando cualquier salida generada. The `command` string passed to the exec function is processed directly by the shell and special characters (vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) need to be dealt with accordingly:
 
 ```js
 exec('"/path/to/test file/test.sh" arg1 arg2');
-// Double quotes are used so that the space in the path is not interpreted as
-// multiple arguments
+// Se utilizan las comillas dobles para que el espacio en la ruta no sea interpretado como
+// múltiples argumentos
 
 exec('echo "The \\$HOME variable is $HOME"');
-// The $HOME variable is escaped in the first instance, but not in the second
+// La variable $HOME se escapó en la primera instancia, pero no en la segunda
 ```
 
-**Never pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Nunca pase la entrada del usuario no optimizado a esta función. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
 
 ```js
 const { exec } = require('child_process');
@@ -149,9 +150,9 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 });
 ```
 
-If a `callback` function is provided, it is called with the arguments `(error, stdout, stderr)`. On success, `error` will be `null`. On error, `error` will be an instance of [`Error`][]. The `error.code` property will be the exit code of the child process while `error.signal` will be set to the signal that terminated the process. Any exit code other than `0` is considered to be an error.
+Si se proporciona una función `callback`, se llama con los argumentos `(error, stdout, stderr)`. En éxito, el `error` será `null`. En error, el `error` será una instancia de [`Error`][]. La propiedad `error.code` será el código de salida del proceso secundario, mientras que `error.signal` se establecerá a la señal que finalizó el proceso. Cualquier otro código de salida distinto a `0` se considera como un error.
 
-The `stdout` and `stderr` arguments passed to the callback will contain the stdout and stderr output of the child process. By default, Node.js will decode the output as UTF-8 and pass strings to the callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
+Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
 
 If `timeout` is greater than `0`, the parent will send the signal identified by the `killSignal` property (the default is `'SIGTERM'`) if the child runs longer than `timeout` milliseconds.
 
@@ -557,7 +558,7 @@ changes:
   * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
-  * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `uid` {number} Sets the user identity of the process. (See setuid(2)).
   * `gid` {number} Sets the group identity of the process. (See setgid(2)).
   * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
@@ -571,7 +572,7 @@ The `child_process.execSync()` method is generally identical to [`child_process.
 
 If the process times out or has a non-zero exit code, this method ***will*** throw. The [`Error`][] object will contain the entire result from [`child_process.spawnSync()`][].
 
-**Never pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Nunca pase la entrada del usuario no optimizado a esta función. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
 
 ### child_process.spawnSync(command\[, args\]\[, options\])
 
