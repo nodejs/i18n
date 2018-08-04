@@ -118,7 +118,7 @@ added: v8.4.0
 
 The `'connect'` event is emitted once the `Http2Session` has been successfully connected to the remote peer and communication may begin.
 
-User code will typically not listen for this event directly.
+El código de usuario generalmente no escuchará directamente a este evento.
 
 #### Event: 'error'
 
@@ -309,7 +309,7 @@ Immediately terminates the `Http2Session` and the associated `net.Socket` or `tl
 
 Once destroyed, the `Http2Session` will emit the `'close'` event. If `error` is not undefined, an `'error'` event will be emitted immediately before the `'close'` event.
 
-If there are any remaining open `Http2Streams` associated with the `Http2Session`, those will also be destroyed.
+Si queda algún `Http2Streams` abierto, asociado con la `Http2Session`, esos también serán destruidos.
 
 #### http2session.destroyed
 
@@ -2221,7 +2221,7 @@ added: v8.4.0
 
 This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. Esto es un [`EventEmitter`][] con los siguientes eventos:
+La respuesta implementa, pero no hereda, la interfaz de [Writable Stream](stream.html#stream_writable_streams) . Esto es un [`EventEmitter`][] con los siguientes eventos:
 
 #### Event: 'close'
 
@@ -2389,7 +2389,7 @@ added: v8.4.0
 
 * `name` {string}
 
-Removes a header that has been queued for implicit sending.
+Elimina un encabezado que ha sido puesto en cola para un envío implícito.
 
 Ejemplo:
 
@@ -2517,7 +2517,7 @@ added: v8.4.0
 
 * {string}
 
-Status message is not supported by HTTP/2 (RFC7540 8.1.2.4). Devuelve una string vacía.
+Mensaje de estado no es soportado por HTTP/2 (RFC7540 8.1.2.4). Devuelve una string vacía.
 
 #### response.stream
 
@@ -2572,7 +2572,7 @@ added: v8.4.0
 * `statusMessage` {string}
 * `headers` {Object}
 
-Envía un encabezado de respuesta a la solicitud. The status code is a 3-digit HTTP status code, like `404`. El último argumento, `headers`, son los encabezados de respuesta.
+Envía un encabezado de respuesta a la solicitud. El código de estado es un código de estado de 3 dígitos, como el `404`. El último argumento, `headers`, son los encabezados de respuesta.
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
