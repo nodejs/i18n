@@ -45,13 +45,13 @@ Le istanze di stream vengono trasformate in object mode utilizzando l'opzione `o
 
 Entrambi gli stream sia [`Writable`][] che [`Readable`][] memorizzeranno i dati in un buffer interno che può essere recuperato usando rispettivamente `writable.writableBuffer` oppure `readable.readableBuffer`.
 
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the streams constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
+La quantità di dati potenzialmente inseriti in un buffer dipende dall'opzione `highWaterMark` passata all'interno del constructor degli stream. Per gli stream normali, l'opzione `highWaterMark` specifica un [numero totale di bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Per gli stream che operano in object mode, l'`highWaterMark` specifica un numero totale di objects.
 
-Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
+I dati vengono memorizzati nel buffer nei `Readable` stream quando l'implementazione chiama [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). Se il consumer dello Stream non chiama [`stream.read()`](#stream_readable_read_size), i dati si fermeranno nella queue interna fino a quando non verranno consumati/utilizzati.
 
-Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
+Una volta che la dimensione totale del read buffer interno raggiunge la soglia specificata da `highWaterMark`, lo stream interromperà temporaneamente la lettura dei dati da parte della risorsa sottostante fino a quando i dati attualmente memorizzati nel buffer non potranno essere consumati (ovvero, lo stream si arresterà chiamando il metodo interno `readable._read()` utilizzato per riempire il read buffer).
 
-Data is buffered in `Writable` streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
+I dati vengono memorizzati nel buffer nei `Writable` stream quando il metodo [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) viene chiamato ripetutamente. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
 
 A key goal of the `stream` API, particularly the [`stream.pipe()`] method, is to limit the buffering of data to acceptable levels such that sources and destinations of differing speeds will not overwhelm the available memory.
 
