@@ -121,10 +121,10 @@ Gli sviluppatori che desiderano implementare nuovi tipi di stream devono fare ri
 
 Gli writable stream sono un'abstraction per una *destinazione* nella quale vengono scritti i dati.
 
-Examples of [`Writable`][] streams include:
+Gli esempi di [`Writable`][] stream includono:
 
-* [HTTP requests, on the client](http.html#http_class_http_clientrequest)
-* [HTTP responses, on the server](http.html#http_class_http_serverresponse)
+* [Richieste HTTP, sul client](http.html#http_class_http_clientrequest)
+* [Risposte HTTP, sul server](http.html#http_class_http_serverresponse)
 * [fs write streams](fs.html#fs_class_fs_writestream)
 * [zlib streams](zlib.html)
 * [crypto streams](crypto.html)
@@ -132,11 +132,11 @@ Examples of [`Writable`][] streams include:
 * [child process stdin](child_process.html#child_process_subprocess_stdin)
 * [`process.stdout`][], [`process.stderr`][]
 
-Some of these examples are actually [`Duplex`][] streams that implement the [`Writable`][] interface.
+Alcuni di questi esempi sono in realtà dei [`Duplex`][] stream che implementano la [`Writable`][] interface.
 
-All [`Writable`][] streams implement the interface defined by the `stream.Writable` class.
+Tutti gli [`Writable`][] stream implementano l'interface definita dalla classe `stream.Writable`.
 
-While specific instances of [`Writable`][] streams may differ in various ways, all `Writable` streams follow the same fundamental usage pattern as illustrated in the example below:
+Mentre le istanze specifiche degli [`Writable`][] stream possono variare in diversi modi, tutti gli `Writable` stream seguono lo stesso schema di utilizzo fondamentale illustrato nell'esempio seguente:
 
 ```js
 const myStream = getWritableStreamSomehow();
@@ -159,9 +159,9 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+L'evento `'close'` viene emesso quando lo stream ed una qualsiasi delle sue risorse sottostanti (ad esempio un file descriptor) sono stati chiusi. L'evento indica che non verrà emesso nessun altro evento e non si verificheranno ulteriori calcoli.
 
-Not all `Writable` streams will emit the `'close'` event.
+Non tutti gli `Writable` stream emetteranno l'evento `'close'`.
 
 ##### Event: 'drain'
 
