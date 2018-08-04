@@ -61,34 +61,34 @@ Poiché gli stream [`Duplex`][] e [`Transform`][] sono entrambi sia `Readable` c
 
 <!--type=misc-->
 
-Almost all Node.js applications, no matter how simple, use streams in some manner. The following is an example of using streams in a Node.js application that implements an HTTP server:
+Quasi tutte le applicazioni Node.js, non importa quanto semplici, utilizzano in qualche modo gli stream. Di seguito è riportato un esempio dell'utilizzo degli stream in un'applicazione Node.js che implementa un server HTTP:
 
 ```js
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  // req is an http.IncomingMessage, which is a Readable Stream
-  // res is an http.ServerResponse, which is a Writable Stream
+  // req è un http.IncomingMessage, il quale è un Readable Stream
+  // res è un http.ServerResponse, il quale è un Writable Stream
 
   let body = '';
-  // Get the data as utf8 strings.
-  // If an encoding is not set, Buffer objects will be received.
+  // Ottiene i dati come stringhe utf8.
+  // Se non è impostata una codifica, i Buffer objects verranno ricevuti.
   req.setEncoding('utf8');
 
-  // Readable streams emit 'data' events once a listener is added
+  // Gli Readable stream emettono eventi 'data' una volta che viene aggiunto un listener
   req.on('data', (chunk) => {
     body += chunk;
   });
 
-  // the 'end' event indicates that the entire body has been received
+  // l'evento 'end' indica che l'intero body è stato ricevuto
   req.on('end', () => {
     try {
       const data = JSON.parse(body);
-      // write back something interesting to the user:
+      // Risponde scrivendo qualcosa di interessante per l'utente:
       res.write(typeof data);
       res.end();
     } catch (er) {
-      // uh oh! bad json!
+      // uh oh! cattivo json!
       res.statusCode = 400;
       return res.end(`error: ${er.message}`);
     }
@@ -105,9 +105,9 @@ server.listen(1337);
 // error: Unexpected token o in JSON at position 1
 ```
 
-[`Writable`][] streams (such as `res` in the example) expose methods such as `write()` and `end()` that are used to write data onto the stream.
+Gli [`Writable`][] stream (come ad esempio `res`) espongono metodi come `write()` e `end()` che vengono utilizzati per scrivere dati nello stream.
 
-[`Readable`][] streams use the [`EventEmitter`][] API for notifying application code when data is available to be read off the stream. That available data can be read from the stream in multiple ways.
+Gli [`Readable`][] stream utilizzano l'API [`EventEmitter`][] per la notificare il codice dell'applicazione quando i dati sono disponibili per essere letti dallo stream. That available data can be read from the stream in multiple ways.
 
 Both [`Writable`][] and [`Readable`][] streams use the [`EventEmitter`][] API in various ways to communicate the current state of the stream.
 
