@@ -655,7 +655,7 @@ On the server side, instances of [`ServerHttp2Stream`][] are created either when
 
 On the client side, instances of [`ClientHttp2Stream`][] are created when the `http2session.request()` method is called.
 
-On the client, the `Http2Stream` instance returned by `http2session.request()` may not be immediately ready for use if the parent `Http2Session` has not yet been fully established. In such cases, operations called on the `Http2Stream` will be buffered until the `'ready'` event is emitted. User code should rarely, if ever, need to handle the `'ready'` event directly. The ready status of an `Http2Stream` can be determined by checking the value of `http2stream.id`. Si el valor es `undefined`, el stream aún no está listo para utilizarse.
+On the client, the `Http2Stream` instance returned by `http2session.request()` may not be immediately ready for use if the parent `Http2Session` has not yet been fully established. In such cases, operations called on the `Http2Stream` will be buffered until the `'ready'` event is emitted. User code should rarely, if ever, need to handle the `'ready'` event directly. El estado listo de un `Http2Stream` se puede determinar comprobando el valor de `http2stream.id`. Si el valor es `undefined`, el stream aún no está listo para utilizarse.
 
 ##### Destrucción
 
@@ -679,7 +679,7 @@ added: v8.4.0
 
 The `'aborted'` event is emitted whenever a `Http2Stream` instance is abnormally aborted in mid-communication.
 
-The `'aborted'` event will only be emitted if the `Http2Stream` writable side has not been ended.
+El evento de `'aborted'` sólo será emitido si el lado grabable de `Http2Stream` no ha sido finalizado.
 
 #### Event: 'close'
 
@@ -689,7 +689,7 @@ added: v8.4.0
 
 The `'close'` event is emitted when the `Http2Stream` is destroyed. Una vez que se emite este evento, la instancia de `Http2Stream` no es utilizable.
 
-The HTTP/2 error code used when closing the stream can be retrieved using the `http2stream.rstCode` property. If the code is any value other than `NGHTTP2_NO_ERROR` (`0`), an `'error'` event will have also been emitted.
+El código de error HTTP/2 que se utiliza al cerrar el stream se puede recuperar utilizando la propiedad de `http2stream.rstCode` . If the code is any value other than `NGHTTP2_NO_ERROR` (`0`), an `'error'` event will have also been emitted.
 
 #### Event: 'error'
 
@@ -776,7 +776,7 @@ added: v8.4.0
 
 * {boolean}
 
-Set to `true` if the `Http2Stream` instance has been destroyed and is no longer usable.
+Establecida para `true` si la instancia de `Http2Stream` ha sido destruida y ya no es utilizable.
 
 #### http2stream.pending
 
@@ -883,7 +883,7 @@ added: v8.4.0
   * `localWindowSize` {number} The number of bytes the connected peer may send for this `Http2Stream` without receiving a `WINDOW_UPDATE`.
   * `state` {number} A flag indicating the low-level current state of the `Http2Stream` as determined by `nghttp2`.
   * `localClose` {number} `true` if this `Http2Stream` has been closed locally.
-  * `remoteClose` {number} `true` if this `Http2Stream` has been closed remotely.
+  * `remoteClose` {number} `true` si este `Http2Stream` ha sido cerrado de manera remota.
   * `sumDependencyWeight` {number} The sum weight of all `Http2Stream` instances that depend on this `Http2Stream` as specified using `PRIORITY` frames.
   * `weight` {number} El peso de prioridad de esta `Http2Stream`.
 
@@ -2001,7 +2001,7 @@ added: v8.4.0
 
 * `error` {Error}
 
-Calls `destroy()` on the [`Http2Stream`][] that received the [`Http2ServerRequest`][]. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
+Llama a `destroy()` en el [`Http2Stream`][] que recibió el [`Http2ServerRequest`][]. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
 
 No hace nada si el stream ya fue destruido.
 
@@ -2613,7 +2613,7 @@ added: v8.4.0
 
 Call [`http2stream.pushStream()`][] with the given headers, and wraps the given newly created [`Http2Stream`] on `Http2ServerRespose`.
 
-The callback will be called with an error with code `ERR_HTTP2_STREAM_CLOSED` if the stream is closed.
+El callback será llamado con un error con código de `ERR_HTTP2_STREAM_CLOSED` si se cierra el stream.
 
 ## Collecting HTTP/2 Performance Metrics
 
