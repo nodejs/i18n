@@ -1,4 +1,4 @@
-# Domain
+# Domena
 
 <!-- YAML
 changes:
@@ -22,7 +22,7 @@ changes:
 
 Domains provide a way to handle multiple different IO operations as a single group. If any of the event emitters or callbacks registered to a domain emit an `'error'` event, or throw an error, then the domain object will be notified, rather than losing the context of the error in the `process.on('uncaughtException')` handler, or causing the program to exit immediately with an error code.
 
-## Warning: Don't Ignore Errors!
+## Uwaga: Nie ignoruj błędów!
 
 <!-- type=misc -->
 
@@ -36,7 +36,7 @@ The better approach is to send an error response to the request that triggered t
 
 In this way, `domain` usage goes hand-in-hand with the cluster module, since the master process can fork a new worker when a worker encounters an error. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
 
-For example, this is not a good idea:
+Na przykład, to nie jest dobry pomysł:
 
 ```js
 // XXX WARNING! BAD IDEA!
@@ -229,7 +229,7 @@ serverDomain.run(() => {
 
 * Returns: {Domain}
 
-## Class: Domain
+## Klasa: Domena
 
 The `Domain` class encapsulates the functionality of routing errors and uncaught exceptions to the active `Domain` object.
 
@@ -258,7 +258,7 @@ If the Timer or `EventEmitter` was already bound to a domain, it is removed from
 
 The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
 
-#### Example
+#### Przykład
 
 ```js
 const d = domain.create();
@@ -300,7 +300,7 @@ This method is almost identical to [`domain.bind(callback)`][]. However, in addi
 
 In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
 
-#### Example
+#### Przykład
 
 ```js
 const d = domain.create();
