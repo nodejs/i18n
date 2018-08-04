@@ -8,17 +8,17 @@ Uno stream è un'abstract interface per lavorare con gli streaming data in Node.
 
 Esistono molti stream objects forniti da Node.js. Ad esempio, una [richiesta ad un server HTTP](http.html#http_class_http_incomingmessage) e [`process.stdout`][] sono tutti e due istanze di stream.
 
-Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
+Gli stream possono essere readable (leggibiliI), writeable (scrivibili) oppure entrambi. Tutti gli stream sono istanze di [`EventEmitter`][].
 
-The `stream` module can be accessed using:
+È possibile accedere al modulo `stream` utilizzando:
 
 ```js
 const stream = require('stream');
 ```
 
-While it is important to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
+Mentre è importante capire come funzionano gli stream, il modulo `stream` è di per sé più utile per gli sviluppatori che stanno creando nuovi tipi di istanze di stream. Gli sviluppatori che *utilizzano* principalmente gli stream objects raramente hanno bisogno di utilizzare direttamente il modulo `stream`.
 
-## Organization of this Document
+## Organizzazione di questo Documento
 
 This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
 
