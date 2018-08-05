@@ -165,7 +165,7 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 * `asyncId` {number} Una identificación única para el recurso asincrónico.
 * `type` {string} El tipo del recurso asincrónico.
 * `triggerAsyncId` {number} La identificación única del recurso asincrónico en cuyo contexto de ejecución fue creado este recurso asincrónico.
-* `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
+* `resource` {Object} Referencia al recurso que representa la operación asincrónica, necesita ser liberada durante *destroy*.
 
 Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
 
@@ -230,7 +230,7 @@ El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva co
 
 `resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar con base en el valor de `type`. Por ejemplo, para el tipo de recurso `GETADDRINFOREQWRAP`, `resource` proporciona el nombre de host utilizado cuando se busca la dirección IP para el nombre de host en `net.Server.listen()`. La API para acceder a esta información actualmente no se considera como pública, pero al usar la API del Embebedor, los usuarios pueden proporcionar y documentar sus propios objetos de recurso. For example, such a resource object could contain the SQL query being executed.
 
-En el caso de las Promesas, el objeto de `resource` tendrá la propiedad de `promise` que se refiere a la `Promise` que está siendo inicializada, y una propiedad de `isChainedPromise`, establecida para `true` si la promesa tiene una promesa mayor, y `false` en caso contrario. For example, in the case of `b = a.then(handler)`, `a` is considered a parent `Promise` of `b`. Aquí, `b` es considerado como una promesa encadenada.
+En el caso de las Promesas, el objeto de `resource` tendrá la propiedad de `promise` que se refiere a la `Promise` que está siendo inicializada, y una propiedad de `isChainedPromise`, establecida para `true` si la promesa tiene una promesa mayor, y `false` en caso contrario. Por ejemplo, en el caso de `b = a.then(handler)`, `a` es considerado como un `Promise` mayor de `b`. Aquí, `b` es considerado como una promesa encadenada.
 
 En algunos casos, se reutiliza el objeto de recurso por motivos de rendimiento, por lo tanto, no es seguro utilizarlo como una clave en una `WeakMap` o agregarle propiedades.
 
@@ -309,7 +309,7 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 El `TCPSERVERWRAP` no es parte de este gráfico, a pesar de que fue el motivo por el cual `console.log()` fue llamado. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
+El gráfico sólo muestra un recurso *when* que fue creado, no a *why*, así que para rastrear a *why* utilice `triggerAsyncId`.
 
 ##### before(asyncId)
 
@@ -325,7 +325,7 @@ El callback `before` será llamado de 0 a N veces. The `before` callback will ty
 
 Se llama inmediatamente después que el callback especificado en `before` se completa.
 
-If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
+Si se produce una excepción no capturada durante la ejecución de un callback, entonces `after` ejecutará a *after* el evento de `'uncaughtException'` es emitido o un handler de `domain` se ejecuta.
 
 ##### destroy(asyncId)
 
