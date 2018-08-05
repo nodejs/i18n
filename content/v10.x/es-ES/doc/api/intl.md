@@ -13,9 +13,9 @@ Node.js tiene muchas funcionalidades que hacen más fácil el desarrollo de prog
 - Todas las funcionalidades descritas en [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
     - [`Intl`][] object
     - Métodos susceptibles a la configuración regional como [`String.prototype.localeCompare()`][] y [`Date.prototype.toLocaleString()`][]
-- The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
+- Soporte de [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs)
 - [`require('buffer').transcode()`][]
-- More accurate [REPL](repl.html#repl_repl) line editing
+- Una edición de linea mas precisa en [REPL](repl.html#repl_repl)
 - [`require('util').TextDecoder`][]
 - [`RegExp` Unicode Property Escapes][]
 
