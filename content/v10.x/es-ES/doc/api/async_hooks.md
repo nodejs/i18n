@@ -163,7 +163,7 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 ##### init(asyncId, type, triggerAsyncId, resource)
 
 * `asyncId` {number} Una identificación única para el recurso asincrónico.
-* `type` {string} The type of the async resource.
+* `type` {string} El tipo del recurso asincrónico.
 * `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
@@ -539,7 +539,7 @@ added: v9.6.0
 
 * `fn` {Function} The function to call in the execution context of this async resource.
 * `thisArg` {any} The receiver to be used for the function call.
-* `...args` {any} Optional arguments to pass to the function.
+* `...args` {any} Argumentos opcionales para pasar a la función.
 
 Llama a la función proporcionada con los argumentos proporcionados en el contexto de ejecución del recurso asincrónico. Esto establecerá el contexto, activará el AsyncHooks antes de los callbacks, llamará la función, activará el AsyncHooks después de los callbacks, y después restaurará el contexto de ejecución original.
 
