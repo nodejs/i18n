@@ -93,7 +93,7 @@ Each `Http2Session` instance will exhibit slightly different behaviors depending
 
 #### `Http2Session` and Sockets
 
-Every `Http2Session` instance is associated with exactly one [`net.Socket`][] or [`tls.TLSSocket`][] when it is created. When either the `Socket` or the `Http2Session` are destroyed, both will be destroyed.
+Every `Http2Session` instance is associated with exactly one [`net.Socket`][] or [`tls.TLSSocket`][] when it is created. Cuando se destruye ya sea el `Socket` o el `Http2Session`, ambos serán destruidos.
 
 Because the of the specific serialization and processing requirements imposed by the HTTP/2 protocol, it is not recommended for user code to read data from or write data to a `Socket` instance bound to a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
 
@@ -2507,7 +2507,7 @@ Ejemplo:
 response.statusCode = 404;
 ```
 
-After response header was sent to the client, this property indicates the status code which was sent out.
+Después de que el encabezado de respuesta fue enviado al cliente, esta propiedad indica el código de estado que fue enviado.
 
 #### response.statusMessage
 
@@ -2546,7 +2546,7 @@ Esto envía una parte del cuerpo de la respuesta. This method may be called mult
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. Por defecto, el `encoding` es `'utf8'`. `callback` will be called when this chunk of data is flushed.
+`chunk` can be a string or a buffer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. Por defecto, el `encoding` es `'utf8'`. `callback` will be called when this chunk of data is flushed.
 
 This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
@@ -2560,7 +2560,7 @@ Returns `true` if the entire data was flushed successfully to the kernel buffer.
 added: v8.4.0
 -->
 
-Sends a status `100 Continue` to the client, indicating that the request body should be sent. See the [`'checkContinue'`][] event on `Http2Server` and `Http2SecureServer`.
+Envía un estado de `100 Continue` al cliente, indicando que el cuerpo de solicitud debería ser enviado. See the [`'checkContinue'`][] event on `Http2Server` and `Http2SecureServer`.
 
 #### response.writeHead(statusCode\[, statusMessage\]\[, headers\])
 
@@ -2585,9 +2585,9 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-Note that Content-Length is given in bytes not characters. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
+Note that Content-Length is given in bytes not characters. La API de `Buffer.byteLength()` puede ser utilizada para determinar el número de bytes en una codificación dada. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
 
-This method may be called at most one time on a message before [`response.end()`][] is called.
+Este método puede ser llamado máximo una vez en un mensaje antes de que [`response.end()`][] sea llamado.
 
 If [`response.write()`][] or [`response.end()`][] are called before calling this, the implicit/mutable headers will be calculated and call this function.
 
