@@ -307,7 +307,7 @@ added: v8.4.0
 
 Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
 
-Once destroyed, the `Http2Session` will emit the `'close'` event. If `error` is not undefined, an `'error'` event will be emitted immediately before the `'close'` event.
+Una vez destruido, el `Http2Session` emitirá el evento de `'close'` . If `error` is not undefined, an `'error'` event will be emitted immediately before the `'close'` event.
 
 Si queda algún `Http2Streams` abierto, asociado con la `Http2Session`, esos también serán destruidos.
 
@@ -453,7 +453,7 @@ All other interactions will be routed directly to the socket.
 added: v8.4.0
 -->
 
-Provides miscellaneous information about the current state of the `Http2Session`.
+Proporciona información miscelánea sobre el estado actual de `Http2Session`.
 
 * {Object} 
   * `effectiveLocalWindowSize` {number} The current local (receive) flow control window size for the `Http2Session`.
@@ -546,7 +546,7 @@ The format of the `alt` parameter is strictly defined by [RFC 7838](https://tool
 
 For example, the value `'h2="example.org:81"'` indicates that the HTTP/2 protocol is available on the host `'example.org'` on TCP/IP port 81. The host and port *must* be contained within the quote (`"`) characters.
 
-Multiple alternatives may be specified, for instance: `'h2="example.org:81",
+Se pueden especificar múltiples alternativas, por ejemplo: `'h2="example.org:81",
 h2=":82"'`.
 
 The protocol identifier (`'h2'` in the examples) may be any valid [ALPN Protocol ID](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids).
@@ -1313,7 +1313,7 @@ The `'sessionError'` event is emitted when an `'error'` event is emitted by an `
 added: v8.5.0
 -->
 
-If a `ServerHttp2Stream` emits an `'error'` event, it will be forwarded here. El stream ya estará destruido cuando se active este evento.
+Si un `ServerHttp2Stream` emite un evento de `'error'`, será reenviado aquí. El stream ya estará destruido cuando se active este evento.
 
 #### Event: 'stream'
 
@@ -1786,7 +1786,7 @@ The `options.selectPadding()` function is invoked once for *every* `HEADERS` and
 
 ### Error Handling
 
-There are several types of error conditions that may arise when using the `http2` module:
+Hay varios tipos de condiciones de error que pueden surgir al utilizar el módulo de `http2` :
 
 Validation errors occur when an incorrect argument, option, or setting value is passed in. Estos siempre serán reportados por un `throw` sincrónico.
 
@@ -2405,7 +2405,7 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+Al ser verdadero, la Fecha del encabezado será generada automáticamente y enviada en la respuesta si no está presente en los encabezados. Defaults to true.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2418,7 +2418,7 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
+Sets a single header value for implicit headers. Si este encabezado ya existe en los envíos de encabezados pendientes, su valor será reemplazado. Use an array of strings here to send multiple headers with the same name.
 
 Ejemplo:
 
@@ -2542,7 +2542,7 @@ added: v8.4.0
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-Esto envía una parte del cuerpo de la respuesta. This method may be called multiple times to provide successive parts of the body.
+Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
