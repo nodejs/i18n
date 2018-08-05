@@ -105,7 +105,7 @@ Once a `Socket` has been bound to an `Http2Session`, user code should rely solel
 added: v8.4.0
 -->
 
-The `'close'` event is emitted once the `Http2Session` has been destroyed. Its listener does not expect any arguments.
+El evento de `'close'` se emite una vez que la `Http2Session` haya sido destruida. Its listener does not expect any arguments.
 
 #### Event: 'connect'
 
@@ -338,7 +338,7 @@ added: v9.4.0
 -->
 
 * `code` {number} An HTTP/2 error code
-* `lastStreamID` {number} The numeric ID of the last processed `Http2Stream`
+* `lastStreamID` {number} La identificación numérica del último `Http2Stream` procesado
 * `opaqueData` {Buffer|TypedArray|DataView} A `TypedArray` or `DataView` instance containing additional data to be carried within the `GOAWAY` frame.
 
 Transmits a `GOAWAY` frame to the connected peer *without* shutting down the `Http2Session`.
