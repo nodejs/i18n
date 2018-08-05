@@ -164,7 +164,7 @@ Key events in the lifetime of asynchronous events have been categorized into fou
 
 * `asyncId` {number} Una identificación única para el recurso asincrónico.
 * `type` {string} El tipo del recurso asincrónico.
-* `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
+* `triggerAsyncId` {number} La identificación única del recurso asincrónico en cuyo contexto de ejecución fue creado este recurso asincrónico.
 * `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
 Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
@@ -307,7 +307,7 @@ Only using `execution` to graph resource allocation results in the following:
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+El `TCPSERVERWRAP` no es parte de este gráfico, a pesar de que fue el motivo por el cual `console.log()` fue llamado. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
 
 The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
 
@@ -507,7 +507,7 @@ asyncResource.emitAfter();
 * `type` {string} El tipo de evento asincrónico.
 * `opciones` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
+  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. Esto usualmente no necesita ser establecido (incluso si `emitDestroy` es llamado manualmente), a menos que el `asyncId` del recurso sea recuperado y las API´s sensibles de `emitDestroy` sean llamadas con ello. **Default:** `false`.
 
 Ejemplo de uso:
 
