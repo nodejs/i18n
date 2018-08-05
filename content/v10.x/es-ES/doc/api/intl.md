@@ -1,10 +1,10 @@
-# Internationalization Support
+# Soporte de internacionalización
 
 <!--introduced_in=v8.2.0-->
 
 <!-- type=misc -->
 
-Node.js has many features that make it easier to write internationalized programs. Some of them are:
+Node.js tiene muchas funcionalidades que hacen más fácil el desarrollo de programas internacionalizados. Some of them are:
 
 - Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
     - [`String.prototype.normalize()`][]
