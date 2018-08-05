@@ -429,7 +429,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. The given `callback` is registered as a listener on the `'timeout'` event.
+Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. El `callback` dado, está registrado como un oyente en el evento de `'timeout'` .
 
 #### http2session.socket
 
@@ -638,7 +638,7 @@ added: v8.4.0
 
 Each instance of the `Http2Stream` class represents a bidirectional HTTP/2 communications stream over an `Http2Session` instance. Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
 
-Código de usuario no construirá instancias de `Http2Stream` directamente. Rather, these are created, managed, and provided to user code through the `Http2Session` instance. On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. On the client, `Http2Stream` instances are created and returned when either the `http2session.request()` method is called, or in response to an incoming `'push'` event.
+Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. On the client, `Http2Stream` instances are created and returned when either the `http2session.request()` method is called, or in response to an incoming `'push'` event.
 
 The `Http2Stream` class is a base for the [`ServerHttp2Stream`][] and [`ClientHttp2Stream`][] classes, each of which is used specifically by either the Server or Client side, respectively.
 
@@ -796,7 +796,7 @@ added: v8.4.0
 
 * `opciones` {Object} 
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Default:** `false`.
-  * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
+  * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente este stream.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. El valor es un número entre `1` y `256` (inclusivo).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
 
@@ -1107,7 +1107,7 @@ changes:
 
 Inicia una respuesta cuyos datos son leídos desde el descriptor de archivo dado. No validation is performed on the given file descriptor. If an error occurs while attempting to read data using the file descriptor, the `Http2Stream` will be closed using an `RST_STREAM` frame using the standard `INTERNAL_ERROR` code.
 
-When used, the `Http2Stream` object's `Duplex` interface will be closed automatically.
+Al ser utilizada, la interfaz de `Duplex` del objeto de `Http2Stream` se cerrará automáticamente.
 
 ```js
 const http2 = require('http2');
@@ -1184,7 +1184,7 @@ changes:
 
 Envía un archivo normal como respuesta. The `path` must specify a regular file or an `'error'` event will be emitted on the `Http2Stream` object.
 
-When used, the `Http2Stream` object's `Duplex` interface will be closed automatically.
+Al ser utilizada, la interfaz de `Duplex` del objeto de `Http2Stream` se cerrará automáticamente.
 
 The optional `options.statCheck` function may be specified to give user code an opportunity to set additional content headers based on the `fs.Stat` details of the given file:
 
@@ -1953,7 +1953,7 @@ function onRequest(req, res) {
 }
 ```
 
-The `'request'` event works identically on both [HTTPS](https.html) and HTTP/2.
+El evento de `'request'` funciona de manera idéntica en [HTTPS](https.html) y HTTP/2.
 
 ### Class: http2.Http2ServerRequest
 
@@ -1991,7 +1991,7 @@ added: v10.1.0
 
 * {boolean}
 
-The `request.aborted` property will be `true` if the request has been aborted.
+La propiedad de `request.aborted` será `true` si la solicitud ha sido anulada.
 
 #### request.destroy([error])
 
@@ -2649,7 +2649,7 @@ If `name` is equal to `Http2Stream`, the `PerformanceEntry` will contain the fol
 
 If `name` is equal to `Http2Session`, the `PerformanceEntry` will contain the following additional properties:
 
-* `bytesRead` {number} The number of bytes received for this `Http2Session`.
+* `bytesRead` {number} El número de bytes recibidos para este `Http2Session`.
 * `bytesWritten` {number} El número de bytes enviados para este `Http2Session`.
 * `framesReceived` {number} The number of HTTP/2 frames received by the `Http2Session`.
 * `framesSent` {number} The number of HTTP/2 frames sent by the `Http2Session`.
