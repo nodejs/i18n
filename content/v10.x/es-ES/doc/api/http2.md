@@ -1686,7 +1686,7 @@ added: v8.4.0
 
 * Returns: {HTTP/2 Settings Object}
 
-Returns an object containing the default settings for an `Http2Session` instance. This method returns a new object instance every time it is called so instances returned may be safely modified for use.
+Devuelve a un objeto que contiene las configuraciones predeterminadas para una instancia de `Http2Session` . This method returns a new object instance every time it is called so instances returned may be safely modified for use.
 
 ### http2.getPackedSettings(settings)
 
@@ -1905,7 +1905,7 @@ req.end('Jane');
 
 ## API de compatibilidad
 
-The Compatibility API has the goal of providing a similar developer experience of HTTP/1 when using HTTP/2, making it possible to develop applications that support both [HTTP/1](http.html) and HTTP/2. This API targets only the **public API** of the [HTTP/1](http.html). However many modules use internal methods or state, and those *are not supported* as it is a completely different implementation.
+The Compatibility API has the goal of providing a similar developer experience of HTTP/1 when using HTTP/2, making it possible to develop applications that support both [HTTP/1](http.html) and HTTP/2. Esta API sólo se dirige a la **public API** de [HTTP/1](http.html). However many modules use internal methods or state, and those *are not supported* as it is a completely different implementation.
 
 The following example creates an HTTP/2 server using the compatibility API:
 
