@@ -6,13 +6,13 @@
 
 Node.js tiene muchas funcionalidades que hacen más fácil el desarrollo de programas internacionalizados. Algunos de ellos son:
 
-- Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
+- Funcionalidades susceptibles a la configuración regional o que soportan caracteres Unicode en [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
     - [`String.prototype.normalize()`][]
     - [`String.prototype.toLowerCase()`][]
     - [`String.prototype.toUpperCase()`][]
-- All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
+- Todas las funcionalidades descritas en [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
     - [`Intl`][] object
-    - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
+    - Métodos susceptibles a la configuración regional como [`String.prototype.localeCompare()`][] y [`Date.prototype.toLocaleString()`][]
 - The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
 - [`require('buffer').transcode()`][]
 - More accurate [REPL](repl.html#repl_repl) line editing
