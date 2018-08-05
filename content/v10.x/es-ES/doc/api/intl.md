@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Node.js tiene muchas funcionalidades que hacen más fácil el desarrollo de programas internacionalizados. Some of them are:
+Node.js tiene muchas funcionalidades que hacen más fácil el desarrollo de programas internacionalizados. Algunos de ellos son:
 
 - Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
     - [`String.prototype.normalize()`][]
