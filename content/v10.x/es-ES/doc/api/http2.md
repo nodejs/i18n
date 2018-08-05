@@ -601,7 +601,7 @@ added: v8.4.0
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
-This method is only available if `http2session.type` is equal to `http2.constants.NGHTTP2_SESSION_CLIENT`.
+Este método sólo está disponible si `http2session.type` es igual a `http2.constants.NGHTTP2_SESSION_CLIENT`.
 
 ```js
 const http2 = require('http2');
@@ -1406,7 +1406,7 @@ Emitido cada vez que hay una solicitud. Tenga en cuenta que pueden haber múltip
 added: v8.4.0
 -->
 
-The `'session'` event is emitted when a new `Http2Session` is created by the `Http2SecureServer`.
+El evento de `'session'` se emite cuando `Http2SecureServer` crea un nuevo `Http2Session` .
 
 #### Event: 'sessionError'
 
