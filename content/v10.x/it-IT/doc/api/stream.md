@@ -422,7 +422,7 @@ Mentre uno stream non subisce il drain, le chiamate a `write()` eseguiranno il b
 
 Scrivere i dati mentre lo stream non subisce il drain è particolarmente problematico per un [`Transform`][], perché gli stream `Transform` sono messi in pausa per impostazione predefinita fino a quando non vengono reindirizzati (piping) oppure finchè non viene aggiunto un handler del evento `'data'` o del evento `'readable'`.
 
-If the data to be written can be generated or fetched on demand, it is recommended to encapsulate the logic into a [`Readable`][] and use [`stream.pipe()`][]. However, if calling `write()` is preferred, it is possible to respect backpressure and avoid memory issues using the [`'drain'`][] event:
+Se i dati da scrivere possono essere generati o scaricati su richiesta, si consiglia di incapsulare la logica in un [`Readable`][] ed utilizzare [`stream.pipe()`][]. Tuttavia, se è preferibile chiamare `write()`, è possibile rispettare il backpressure ed evitare problemi di memoria usando l'evento [`'drain'`][]:
 
 ```js
 function write(data, cb) {
