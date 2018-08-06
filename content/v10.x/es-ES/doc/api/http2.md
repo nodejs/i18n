@@ -371,7 +371,7 @@ added: v8.4.0
 
 * {boolean}
 
-Indicates whether or not the `Http2Session` is currently waiting for an acknowledgment for a sent `SETTINGS` frame. Will be `true` after calling the `http2session.settings()` method. Will be `false` once all sent SETTINGS frames have been acknowledged.
+Indicates whether or not the `Http2Session` is currently waiting for an acknowledgment for a sent `SETTINGS` frame. Will be `true` after calling the `http2session.settings()` method. Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
 
 #### http2session.ping([payload, ]callback)
 
@@ -661,7 +661,7 @@ On the client, the `Http2Stream` instance returned by `http2session.request()` m
 
 Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 
-* An `RST_STREAM` frame for the stream is received by the connected peer.
+* Un frame de `RST_STREAM` para el stream es recibido por el peer conectado.
 * The `http2stream.close()` method is called.
 * The `http2stream.destroy()` or `http2session.destroy()` methods are called.
 
