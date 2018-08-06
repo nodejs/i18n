@@ -279,11 +279,11 @@ reader.unpipe(writer);
 added: v0.11.2
 -->
 
-Il metodo `writable.cork()` forza tutti i dati scritti a subire il buffer all'intenro della memoria. I dati che hanno subito il buffer verranno svuotati quando verrà chiamato il metodo [`stream.uncork()`][] oppure il metodo [`stream.end()`](#stream_writable_end_chunk_encoding_callback).
+Il metodo `writable.cork()` forza tutti i dati scritti a subire il buffer all'interno della memoria. I dati che hanno subito il buffer verranno svuotati quando verrà chiamato il metodo [`stream.uncork()`][] oppure il metodo [`stream.end()`](#stream_writable_end_chunk_encoding_callback).
 
-The primary intent of `writable.cork()` is to avoid a situation where writing many small chunks of data to a stream do not cause a backup in the internal buffer that would have an adverse impact on performance. In such situations, implementations that implement the `writable._writev()` method can perform buffered writes in a more optimized manner.
+L'intento primario di `writable.cork()` è quello di evitare una situazione in cui la scrittura di molti piccoli chunk di dati in uno stream non causi un backup nel buffer interno il quale avrebbe un impatto negativo sulle prestazioni. In tali situazioni, le implementazioni del metodo `writable._writev()` possono eseguire scritture memorizzate nei buffer in un modo più ottimizzato.
 
-See also: [`writable.uncork()`][].
+Vedi anche: [`writable.uncork()`][].
 
 ##### writable.destroy([error])
 
@@ -291,9 +291,9 @@ See also: [`writable.uncork()`][].
 added: v8.0.0
 -->
 
-* Returns: {this}
+* Restituisce: {this}
 
-Destroy the stream, and emit the passed `'error'` and a `'close'` event. After this call, the writable stream has ended and subsequent calls to `write()` / `end()` will give an `ERR_STREAM_DESTROYED` error. Implementors should not override this method, but instead implement [`writable._destroy()`](#stream_writable_destroy_err_callback).
+Distrugge lo stream ed emette l'`'error'` passato ed un evento `'close'`. Dopo questa chiamata, il writable stream è terminato e le successive chiamate a `write()` / `end()` daranno un errore `ERR_STREAM_DESTROYED`. Gli implementors non dovrebbero sovrascrivere questo metodo, ma implementare [`writable._destroy()`](#stream_writable_destroy_err_callback).
 
 ##### writable.end(\[chunk\]\[, encoding\][, callback])
 
