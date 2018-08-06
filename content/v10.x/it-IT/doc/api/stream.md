@@ -479,9 +479,9 @@ Il `Readable` può tornare alla paused mode usando uno dei seguenti modi:
 
 Il concetto importante da ricordare è che un `Readable` non genererà dati finché non verrà fornito un meccanismo per consumare od ignorare tali dati. Se il meccanismo di consumo è disabilitato o tolto, il `Readable` *tenterà* di interrompere la generazione dei dati.
 
-Per motivi di compatibilità con le versioni precedenti, la rimozione degli handler degli eventi [`'data'`][] **non** interromperà automaticamente lo stream. Also, if there are piped destinations, then calling [`stream.pause()`](#stream_readable_pause) will not guarantee that the stream will *remain* paused once those destinations drain and ask for more data.
+Per motivi di compatibilità con le versioni precedenti, la rimozione degli handler degli eventi [`'data'`][] **non** interromperà automaticamente lo stream. Inoltre, se ci sono destinazioni che hanno subito il piping, la chiamata di [`stream.pause()`](#stream_readable_pause) non garantisce che lo stream *rimarrà* in pausa una volta che tali destinazioni subiscono il drain e richiedono ulteriori dati.
 
-If a [`Readable`][] is switched into flowing mode and there are no consumers available to handle the data, that data will be lost. This can occur, for instance, when the `readable.resume()` method is called without a listener attached to the `'data'` event, or when a `'data'` event handler is removed from the stream.
+Se un [`Readable`][] viene cambiato nella flowing mode e non ci sono consumer disponibili a gestire i dati, questi andranno persi. Ciò può verificarsi, ad esempio, quando il metodo `readable.resume()` viene chiamato senza un listener collegato all'evento `'data'` oppure quando un handler degli eventi `'data'` viene rimosso dallo stream.
 
 #### Three States
 
