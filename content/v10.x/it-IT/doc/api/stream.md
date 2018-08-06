@@ -310,21 +310,21 @@ changes:
 -->
 
 * `chunk` {string|Buffer|Uint8Array|any} Dati opzionali da scrivere. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript diverso da `null`.
-* `encoding` {string} The encoding, if `chunk` is a string
-* `callback` {Function} Optional callback for when the stream is finished
-* Returns: {this}
+* `encoding` {string} La codifica, se `chunk` è una stringa
+* `callback` {Function} Callback opzionale per quando la conclusione dello stream
+* Restituisce: {this}
 
-Calling the `writable.end()` method signals that no more data will be written to the [`Writable`][]. The optional `chunk` and `encoding` arguments allow one final additional chunk of data to be written immediately before closing the stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
+Chiamando il metodo `writable.end()` si segnala che non verranno scritti più dati su [`Writable`][]. Gli argomenti facoltativi `chunk` ed `encoding` consentono di scrivere un'ultimo chuck di dati aggiuntivo immediatamente prima di chiudere lo stream. Se fornita, la funzione facoltativa `callback` è allegata come listener per l'evento [`'finish'`][].
 
-Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
+Chiamando il metodo [`stream.write()`](#stream_writable_write_chunk_encoding_callback) dopo aver chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) genererà un errore.
 
 ```js
-// write 'hello, ' and then end with 'world!'
+// scrive 'hello, ' e poi termina con 'world!'
 const fs = require('fs');
 const file = fs.createWriteStream('example.txt');
 file.write('hello, ');
 file.end('world!');
-// writing more now is not allowed!
+// scrivere di più ora non è permesso!
 ```
 
 ##### writable.setDefaultEncoding(encoding)
@@ -338,10 +338,10 @@ changes:
     description: This method now returns a reference to `writable`.
 -->
 
-* `encoding` {string} The new default encoding
-* Returns: {this}
+* `encoding` {string} Il nuovo encoding predefinito
+* Restituisce: {this}
 
-The `writable.setDefaultEncoding()` method sets the default `encoding` for a [`Writable`][] stream.
+Il metodo `writable.setDefaultEncoding()` imposta l'`encoding` predefinito per un [`Writable`][] stream.
 
 ##### writable.uncork()
 
