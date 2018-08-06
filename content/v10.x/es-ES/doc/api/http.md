@@ -385,11 +385,11 @@ Emitido luego de que se asigna un socket a esta solicitud.
 added: v0.7.8
 -->
 
-Emitted when the underlying socket times out from inactivity. This only notifies that the socket has been idle. The request must be aborted manually.
+Emitido cuando el socket subyacente agota el tiempo de espera por inactividad. Esto solo notifica que el socket ha estado inactivo. La solicitud debe ser abortada manualmente.
 
-See also: [`request.setTimeout()`][].
+Ver también: [`request.setTimeout()`][].
 
-### Event: 'upgrade'
+### Evento: 'upgrade'
 
 <!-- YAML
 added: v0.1.94
@@ -399,7 +399,7 @@ added: v0.1.94
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitted each time a server responds to a request with an upgrade. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
+Emitido cada vez que un servidor responde a una solicitud con un upgrade. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
 
 A client server pair demonstrating how to listen for the `'upgrade'` event.
 

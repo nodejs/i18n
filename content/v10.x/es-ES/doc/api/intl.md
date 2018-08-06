@@ -1,25 +1,25 @@
-# Internationalization Support
+# Soporte de internacionalización
 
 <!--introduced_in=v8.2.0-->
 
 <!-- type=misc -->
 
-Node.js has many features that make it easier to write internationalized programs. Some of them are:
+Node.js tiene muchas funcionalidades que hacen más fácil el desarrollo de programas internacionalizados. Algunos de ellos son:
 
-- Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
+- Funcionalidades susceptibles a la configuración regional o que soportan caracteres Unicode en [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
     - [`String.prototype.normalize()`][]
     - [`String.prototype.toLowerCase()`][]
     - [`String.prototype.toUpperCase()`][]
-- All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
+- Todas las funcionalidades descritas en [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
     - [`Intl`][] object
-    - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
-- The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
+    - Métodos susceptibles a la configuración regional como [`String.prototype.localeCompare()`][] y [`Date.prototype.toLocaleString()`][]
+- Soporte de [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs)
 - [`require('buffer').transcode()`][]
-- More accurate [REPL](repl.html#repl_repl) line editing
+- Una edición de linea mas precisa en [REPL](repl.html#repl_repl)
 - [`require('util').TextDecoder`][]
 - [`RegExp` Unicode Property Escapes][]
 
-Node.js (and its underlying V8 engine) uses [ICU](http://icu-project.org/) to implement these features in native C/C++ code. However, some of them require a very large ICU data file in order to support all locales of the world. Because it is expected that most Node.js users will make use of only a small portion of ICU functionality, only a subset of the full ICU data set is provided by Node.js by default. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
+Node.js (y su subyacente motor V8 JavaScript) usan [ICU](http://icu-project.org/) para implementar estas funcionalidades en código C/C++ nativo. However, some of them require a very large ICU data file in order to support all locales of the world. Because it is expected that most Node.js users will make use of only a small portion of ICU functionality, only a subset of the full ICU data set is provided by Node.js by default. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
 
 ## Options for building Node.js
 
