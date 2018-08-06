@@ -14,7 +14,7 @@ const http2 = require('http2');
 
 La API de Núcleo proporciona una interfaz de bajo nivel diseñada específicamente alrededor del soporte para las funciones del protocolo de HTTP/2. It is specifically *not* designed for compatibility with the existing [HTTP/1](http.html) module API. However, the [Compatibility API](#http2_compatibility_api) is.
 
-The `http2` Core API is much more symmetric between client and server than the `http` API. For instance, most events, like `'error'`, `'connect'` and `'stream'`, can be emitted either by client-side code or server-side code.
+La API de Núcleo `http2` es mucho más simétrica entre cliente y servidor que la API `http` . For instance, most events, like `'error'`, `'connect'` and `'stream'`, can be emitted either by client-side code or server-side code.
 
 ### Server-side example
 
@@ -87,7 +87,7 @@ added: v8.4.0
 
 * Extends: {EventEmitter}
 
-Instances of the `http2.Http2Session` class represent an active communications session between an HTTP/2 client and server. Instances of this class are *not* intended to be constructed directly by user code.
+Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instances of this class are *not* intended to be constructed directly by user code.
 
 Each `Http2Session` instance will exhibit slightly different behaviors depending on whether it is operating as a server or a client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
 
@@ -984,7 +984,7 @@ added: v8.4.0
 
 * Extends: {Http2Stream}
 
-The `ServerHttp2Stream` class is an extension of [`Http2Stream`][] that is used exclusively on HTTP/2 Servers. `Http2Stream` instances on the server provide additional methods such as `http2stream.pushStream()` and `http2stream.respond()` that are only relevant on the server.
+La clase `ServerHttp2Stream` es una extensión de [`Http2Stream`][] que se utiliza exclusivamente en Servidores HTTP/2. `Http2Stream` instances on the server provide additional methods such as `http2stream.pushStream()` and `http2stream.respond()` that are only relevant on the server.
 
 #### http2stream.additionalHeaders(headers)
 
@@ -2363,7 +2363,7 @@ added: v8.4.0
 * `name` {string}
 * Returns: {boolean}
 
-Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
+Devuelve `true` si el encabezado identificado por `name` está actualmente establecido en los encabezados salientes. Note that the header name matching is case-insensitive.
 
 Ejemplo:
 
@@ -2634,7 +2634,7 @@ const obs = new PerformanceObserver((items) => {
 obs.observe({ entryTypes: ['http2'] });
 ```
 
-The `entryType` property of the `PerformanceEntry` will be equal to `'http2'`.
+La propiedad de `entryType` de la `PerformanceEntry` será igual a `'http2'`.
 
 The `name` property of the `PerformanceEntry` will be equal to either `'Http2Stream'` or `'Http2Session'`.
 
