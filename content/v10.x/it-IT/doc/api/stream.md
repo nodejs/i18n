@@ -169,11 +169,11 @@ Non tutti gli `Writable` stream emetteranno l'evento `'close'`.
 added: v0.9.4
 -->
 
-If a call to [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) returns `false`, the `'drain'` event will be emitted when it is appropriate to resume writing data to the stream.
+Se una chiamata a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) restituisce `false`, verrà emesso l'evento `'drain'` quando è opportuno riprendere la scrittura dei dati sullo stream.
 
 ```js
-// Write the data to the supplied writable stream one million times.
-// Be attentive to back-pressure.
+// Scrive i dati nel dato writable stream un milione di volte.
+// Sta attento al back-pressure.
 function writeOneMillionTimes(writer, data, encoding, callback) {
   let i = 1000000;
   write();
@@ -182,7 +182,7 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
     do {
       i--;
       if (i === 0) {
-        // last time!
+        // ultima volta!
         writer.write(data, encoding, callback);
       } else {
         // see if we should continue, or wait
