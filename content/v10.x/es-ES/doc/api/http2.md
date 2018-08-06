@@ -105,7 +105,7 @@ Once a `Socket` has been bound to an `Http2Session`, user code should rely solel
 added: v8.4.0
 -->
 
-El evento de `'close'` se emite una vez que la `Http2Session` haya sido destruida. Its listener does not expect any arguments.
+El evento de `'close'` se emite una vez que la `Http2Session` ha sido destruida. Its listener does not expect any arguments.
 
 #### Event: 'connect'
 
@@ -2043,7 +2043,7 @@ added: v8.4.0
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. En el caso de la respuesta del cliente, la versión HTTP del servidor conectado. Returns `'2.0'`.
+In case of server request, the HTTP version sent by the client. En el caso de la respuesta del cliente, la versión HTTP del servidor conectado al servidor. Returns `'2.0'`.
 
 Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
@@ -2560,7 +2560,7 @@ Returns `true` if the entire data was flushed successfully to the kernel buffer.
 added: v8.4.0
 -->
 
-Envía un estado de `100 Continue` al cliente, indicando que el cuerpo de solicitud debería ser enviado. See the [`'checkContinue'`][] event on `Http2Server` and `Http2SecureServer`.
+Envía un estado `100 Continue` al cliente, indicando que el cuerpo de solicitud debería ser enviado. See the [`'checkContinue'`][] event on `Http2Server` and `Http2SecureServer`.
 
 #### response.writeHead(statusCode\[, statusMessage\]\[, headers\])
 
@@ -2587,7 +2587,7 @@ response.writeHead(200, {
 
 Tenga en cuenta que la longitud del contenido se da en bytes, no en caracteres. La API de `Buffer.byteLength()` puede ser utilizada para determinar el número de bytes en una codificación dada. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
 
-Este método puede ser llamado máximo una vez en un mensaje antes de que [`response.end()`][] sea llamado.
+Este método puede ser llamado una vez en un mensaje, como máximo, antes de que [`response.end()`][] sea llamado.
 
 If [`response.write()`][] or [`response.end()`][] are called before calling this, the implicit/mutable headers will be calculated and call this function.
 
