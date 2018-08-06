@@ -207,7 +207,7 @@ added: v0.9.4
 
 * {Error}
 
-L'evento `'error'` viene emesso se si verifica un errore durante la scrittura o il piping dei dati. Il callback del listener riceve un singolo argomento `Error` quando chiamato.
+L'evento `'error'` viene emesso se si verifica un errore durante la scrittura od il piping dei dati. Il callback del listener riceve un singolo argomento `Error` quando chiamato.
 
 Lo stream non viene chiuso quando viene emesso l'evento `'error'`.
 
@@ -238,7 +238,7 @@ added: v0.9.4
 
 * `src` {stream.Readable} source stream che esegue il piping a questo writable
 
-The `'pipe'` event is emitted when the [`stream.pipe()`][] method is called on a readable stream, adding this writable to its set of destinations.
+L'evento `'pipe'` viene emesso quando il metodo [`stream.pipe()`][] viene chiamato su un readable stream, aggiungendo questo writable al suo insieme di destinazioni.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -256,7 +256,7 @@ reader.pipe(writer);
 added: v0.9.4
 -->
 
-* `src` {stream.Readable} The source stream that [unpiped][`stream.unpipe()`] this writable
+* `src` {stream.Readable} Il source stream che esegue lo [unpiped][`stream.unpipe()`] su questo writable
 
 The `'unpipe'` event is emitted when the [`stream.unpipe()`][] method is called on a [`Readable`][] stream, removing this [`Writable`][] from its set of destinations.
 
