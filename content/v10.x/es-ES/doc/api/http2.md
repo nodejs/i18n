@@ -383,7 +383,7 @@ added: v8.9.3
 * `callback` {Function}
 * Returns: {boolean}
 
-Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
+Envía un frame de `PING` a un peer de HTTP/2 conectado. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
 
 The maximum number of outstanding (unacknowledged) pings is determined by the `maxOutstandingPings` configuration option. El máximo valor por defecto es 10.
 
@@ -1667,7 +1667,7 @@ added: v8.4.0
 | `0x03` | Error de control de flujo | `http2.constants.NGHTTP2_FLOW_CONTROL_ERROR`  |
 | `0x04` | Settings Timeout          | `http2.constants.NGHTTP2_SETTINGS_TIMEOUT`    |
 | `0x05` | Stream cerrado            | `http2.constants.NGHTTP2_STREAM_CLOSED`       |
-| `0x06` | Frame Size Error          | `http2.constants.NGHTTP2_FRAME_SIZE_ERROR`    |
+| `0x06` | Error de tamaño de frame  | `http2.constants.NGHTTP2_FRAME_SIZE_ERROR`    |
 | `0x07` | Stream negado             | `http2.constants.NGHTTP2_REFUSED_STREAM`      |
 | `0x08` | Cancelar                  | `http2.constants.NGHTTP2_CANCEL`              |
 | `0x09` | Compression Error         | `http2.constants.NGHTTP2_COMPRESSION_ERROR`   |
