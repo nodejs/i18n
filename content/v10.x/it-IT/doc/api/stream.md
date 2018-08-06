@@ -433,40 +433,40 @@ function write(data, cb) {
   }
 }
 
-// Wait for cb to be called before doing any other write.
+// Aspetta che cb venga chiamato prima di fare qualsiasi altra scrittura.
 write('hello', () => {
   console.log('write completed, do more writes now');
 });
 ```
 
-A `Writable` stream in object mode will always ignore the `encoding` argument.
+Un `Writable` stream in object mode ignorerà sempre l'argomento `encoding`.
 
 ### Readable Streams
 
-Readable streams are an abstraction for a *source* from which data is consumed.
+Gli readable stream sono un'abstraction per una *sorgente* da cui vengono utilizzati i dati.
 
-Examples of `Readable` streams include:
+Gli esempi di stream `Readable` stream includono:
 
-* [HTTP responses, on the client](http.html#http_class_http_incomingmessage)
-* [HTTP requests, on the server](http.html#http_class_http_incomingmessage)
+* [Risposte HTTP, sul client](http.html#http_class_http_incomingmessage)
+* [Richieste HTTP, sul server](http.html#http_class_http_incomingmessage)
 * [fs read streams](fs.html#fs_class_fs_readstream)
 * [zlib streams](zlib.html)
 * [crypto streams](crypto.html)
 * [TCP sockets](net.html#net_class_net_socket)
-* [child process stdout and stderr](child_process.html#child_process_subprocess_stdout)
+* [child process stdout ed stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
-All [`Readable`][] streams implement the interface defined by the `stream.Readable` class.
+Tutti gli [`Readable`][] stream implementano l'interface definita dalla classe `stream.Readable`.
 
-#### Two Modes
+#### Due Modalità
 
-`Readable` streams effectively operate in one of two modes: flowing and paused.
+I `Readable` stream funzionano efficacemente in una delle due modalità: flowing (scorrevole) e paused (in pausa).
 
-When in flowing mode, data is read from the underlying system automatically and provided to an application as quickly as possible using events via the [`EventEmitter`][] interface.
+In flowing mode, i dati vengono letti automaticamente dal sistema sottostante e forniti ad un'applicazione il più rapidamente possibile utilizzando gli eventi tramite l'[`EventEmitter`][] interface.
 
-In paused mode, the [`stream.read()`](#stream_readable_read_size) method must be called explicitly to read chunks of data from the stream.
+In paused mode, il metodo [`stream.read()`](#stream_readable_read_size) deve essere chiamato esplicitamente per leggere chunk di dati dallo stream.
 
-All [`Readable`][] streams begin in paused mode but can be switched to flowing mode in one of the following ways:
+Tutti gli [`Readable`][] stream iniziano in paused mode ma possono essere passati alla flowing mode in uno dei seguenti modi:
 
 * Adding a [`'data'`][] event handler.
 * Calling the [`stream.resume()`](#stream_readable_resume) method.
