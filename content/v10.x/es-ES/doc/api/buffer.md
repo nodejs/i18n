@@ -1,10 +1,10 @@
-# Búfer
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
 > Estabilidad: 2 - Estable
 
-Antes de la introducción de [`TypedArray`], el lenguaje JavaScript no tenía ningún mecanismo para leer o manipular flujos de datos binarios. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+Antes de la introducción de [`TypedArray`], el lenguaje JavaScript no tenía ningún mecanismo para leer o manipular flujos de datos binarios. La clase `Buffer` fue introducida como parte de la API de Node.js para habilitar la interacción con secuencias de octetos en flujos TCP, operaciones del sistema de archivo, y otros contextos.
 
 Con [`TypedArray`] ahora disponible, la clase `Buffer` implementa la API [`Uint8Array`] de una manera que es más optimizada y adecuada para Node.js.
 
