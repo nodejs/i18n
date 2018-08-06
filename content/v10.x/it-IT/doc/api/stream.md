@@ -384,7 +384,7 @@ added: v9.3.0
 
 * {number}
 
-Return the value of `highWaterMark` passed when constructing this `Writable`.
+Restituisce il valore di `highWaterMark` passato quando si costruisce questo `Writable`.
 
 ##### writable.writableLength
 
