@@ -185,14 +185,14 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
         // ultima volta!
         writer.write(data, encoding, callback);
       } else {
-        // see if we should continue, or wait
-        // don't pass the callback, because we're not done yet.
+        // vedi se si deve continuare, od aspettare
+        // non passare il callback, perché non si è ancora finito.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      // had to stop early!
-      // write some more once it drains
+      // da fermare subito!
+      // scrivi qualcosa in più quando esegue il drain
       writer.once('drain', write);
     }
   }
@@ -207,7 +207,7 @@ added: v0.9.4
 
 * {Error}
 
-The `'error'` event is emitted if an error occurred while writing or piping data. The listener callback is passed a single `Error` argument when called.
+L'evento `'error'` viene emesso se si verifica un errore durante la scrittura o il piping dei dati. Il callback del listener passa un singolo argomento `Error` quando viene chiamato.
 
 The stream is not closed when the `'error'` event is emitted.
 
