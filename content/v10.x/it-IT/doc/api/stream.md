@@ -392,7 +392,7 @@ Restituisce il valore di `highWaterMark` passato quando si costruisce questo `Wr
 added: v9.4.0
 -->
 
-This property contains the number of bytes (or objects) in the queue ready to be written. The value provides introspection data regarding the status of the `highWaterMark`.
+Questa proprietà contiene il numero di bytes (od objects) nella queue pronti per essere scritti. The value provides introspection data regarding the status of the `highWaterMark`.
 
 ##### writable.write(chunk\[, encoding\]\[, callback\])
 
