@@ -392,7 +392,7 @@ Restituisce il valore di `highWaterMark` passato quando si costruisce questo `Wr
 added: v9.4.0
 -->
 
-Questa proprietà contiene il numero di bytes (od objects) nella queue pronti per essere scritti. The value provides introspection data regarding the status of the `highWaterMark`.
+Questa proprietà contiene il numero di bytes (od objects) nella queue pronti per essere scritti. Il valore fornisce dati di introspezione relativi allo status di `highWaterMark`.
 
 ##### writable.write(chunk\[, encoding\]\[, callback\])
 
@@ -409,14 +409,14 @@ changes:
                  considered invalid now, even in object mode.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} Optional data to write. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
-* `encoding` {string} The encoding, if `chunk` is a string
-* `callback` {Function} Callback for when this chunk of data is flushed
-* Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
+* `chunk` {string|Buffer|Uint8Array|any} Dati opzionali da scrivere. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript diverso da `null`.
+* `encoding` {string} La codifica, se `chunk` è una stringa
+* `callback` {Function} Callback per quando questo chunck di dati viene svuotato
+* Restituisce: {boolean} `false` se lo stream desidera che il calling code attenda l'evento `'drain'` da emettere prima di continuare a scrivere dati aggiuntivi; in caso contrario `true`.
 
-The `writable.write()` method writes some data to the stream, and calls the supplied `callback` once the data has been fully handled. If an error occurs, the `callback` *may or may not* be called with the error as its first argument. To reliably detect write errors, add a listener for the `'error'` event.
+Il metodo `writable.write()` scrive alcuni dati nello stream e chiama il `callback` fornito una volta che i dati sono stati completamente gestiti. Se si verifica un errore, il `callback` *può o non può* essere chiamato con l'errore come suo primo argomento. Per rilevare in modo affidabile gli errori di scrittura, aggiungi un listener per l'evento `'error'`.
 
-The return value is `true` if the internal buffer is less than the `highWaterMark` configured when the stream was created after admitting `chunk`. If `false` is returned, further attempts to write data to the stream should stop until the [`'drain'`][] event is emitted.
+Il return value è `true` se il buffer interno è inferiore all'`highWaterMark` configurato quando lo stream è stato creato in seguito all'ammissione del `chunk`. If `false` is returned, further attempts to write data to the stream should stop until the [`'drain'`][] event is emitted.
 
 While a stream is not draining, calls to `write()` will buffer `chunk`, and return false. Once all currently buffered chunks are drained (accepted for delivery by the operating system), the `'drain'` event will be emitted. It is recommended that once `write()` returns false, no more chunks be written until the `'drain'` event is emitted. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Even before it aborts, high memory usage will cause poor garbage collector performance and high RSS (which is not typically released back to the system, even after the memory is no longer required). Since TCP sockets may never drain if the remote peer does not read the data, writing a socket that is not draining may lead to a remotely exploitable vulnerability.
 
@@ -800,7 +800,7 @@ added: v9.4.0
 
 * Returns: {number}
 
-This property contains the number of bytes (or objects) in the queue ready to be read. The value provides introspection data regarding the status of the `highWaterMark`.
+This property contains the number of bytes (or objects) in the queue ready to be read. Il valore fornisce dati di introspezione relativi allo status di `highWaterMark`.
 
 ##### readable.resume()
 
