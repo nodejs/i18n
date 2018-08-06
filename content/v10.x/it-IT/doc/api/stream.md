@@ -309,7 +309,7 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} Optional data to write. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
+* `chunk` {string|Buffer|Uint8Array|any} Dati opzionali da scrivere. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript diverso da `null`.
 * `encoding` {string} The encoding, if `chunk` is a string
 * `callback` {Function} Optional callback for when the stream is finished
 * Returns: {this}
