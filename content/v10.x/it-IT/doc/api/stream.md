@@ -351,7 +351,7 @@ added: v0.11.2
 
 Il metodo `writable.uncork()` svuota tutti i dati memorizzati nel buffer da quando è stato chiamato [`stream.cork()`][].
 
-When using [`writable.cork()`][] and `writable.uncork()` to manage the buffering of writes to a stream, it is recommended that calls to `writable.uncork()` be deferred using `process.nextTick()`. Doing so allows batching of all `writable.write()` calls that occur within a given Node.js event loop phase.
+Quando si utilizzano [`writable.cork()`][] e `writable.uncork()` per gestire il buffering di ciò che viene scritto su uno stream, si consiglia di rinviare le chiamate a `writable.uncork()` utilizzando `process.nextTick()`. Ciò consente il dosaggio di tutte le chiamate `writable.write()` che si verificano all'interno di una determinata fase dell'event loop di Node.js.
 
 ```js
 stream.cork();
@@ -360,7 +360,7 @@ stream.write('data ');
 process.nextTick(() => stream.uncork());
 ```
 
-If the [`writable.cork()`][] method is called multiple times on a stream, the same number of calls to `writable.uncork()` must be called to flush the buffered data.
+Se il metodo [`writable.cork()`][] viene chiamato più volte su uno stream, lo stesso numero di chiamate a `writable.uncork()` deve essere chiamato per svuotare i dati memorizzati nel buffer.
 
 ```js
 stream.cork();
@@ -369,12 +369,12 @@ stream.cork();
 stream.write('data ');
 process.nextTick(() => {
   stream.uncork();
-  // The data will not be flushed until uncork() is called a second time.
+  // I dati non verranno svuotati fino a quando uncork() non verrà chiamato una seconda volta.
   stream.uncork();
 });
 ```
 
-See also: [`writable.cork()`][].
+Vedi anche: [`writable.cork()`][].
 
 ##### writable.writableHighWaterMark
 
