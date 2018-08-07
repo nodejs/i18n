@@ -839,7 +839,7 @@ added: v0.9.4
 * `encoding` {string} L'encoding da utilizzare.
 * Restituisce: {this}
 
-The `readable.setEncoding()` method sets the character encoding for data read from the `Readable` stream.
+Il metodo `readable.setEncoding()` imposta l'encoding dei caratteri per i dati letti dagli `Readable` stream.
 
 By default, no encoding is assigned and stream data will be returned as `Buffer` objects. Setting an encoding causes the stream data to be returned as strings of the specified encoding rather than as `Buffer` objects. For instance, calling `readable.setEncoding('utf8')` will cause the output data to be interpreted as UTF-8 data, and passed as strings. Calling `readable.setEncoding('hex')` will cause the data to be encoded in hexadecimal string format.
 
