@@ -12,7 +12,7 @@ Xử lý sự kiện trong Java sẽ được chi tiết hóa bằng các giá t
 
 Nếu người dịch phát hiện ra lỗi trong tài liệu này, xin vui lòng vào phần [gửi yêu cầu](https://github.com/nodejs/node/issues/new) hoặc xem trong phần [hướng dẫn đóng góp ý kiến](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) để được hướng dẫn cụ thể cách gửi yêu cầu của mình.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Mỗi tệp tin được tạo ra đều có đuôi là `.md` và nằm ở thư mục `doc/api/` được lưu trong phần mềm Source Tree của Node.js. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
 ## Stability Index
 
