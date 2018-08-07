@@ -1,16 +1,16 @@
-# Búfer
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
 > Estabilidad: 2 - Estable
 
-Antes de la introducción de [`TypedArray`], el lenguaje JavaScript no tenía ningún mecanismo para leer o manipular flujos de datos binarios. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+Antes de la introducción de [`TypedArray`], el lenguaje JavaScript no tenía ningún mecanismo para leer o manipular flujos de datos binarios. La clase `Buffer` fue introducida como parte de la API de Node.js para habilitar la interacción con secuencias de octetos en flujos TCP, operaciones del sistema de archivo, y otros contextos.
 
 Con [`TypedArray`] ahora disponible, la clase `Buffer` implementa la API [`Uint8Array`] de una manera que es más optimizada y adecuada para Node.js.
 
-Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. El tamaño del `Buffer` se establece cuando se crea y no puede ser cambiado.
+Instancias de la clase de `Buffer` son similares a arreglos de enteros pero corresponden a tamaño fijo de las asignaciones de memoria sin procesar fuera del montón de V8. El tamaño del `Buffer` se establece cuando se crea y no puede ser cambiado.
 
-The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
+La clase de `Buffer` está dentro del alcance global, por lo que es poco probable que alguna vez uno necesite utilizar `require('buffer').Buffer`.
 
 ```js
 // Crea un Buffer lleno de ceros de longitud 10.
@@ -20,9 +20,9 @@ const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(10, 1);
 
 // Crea un buffer sin inicializar de longitud 10.
-// This is faster than calling Buffer.alloc() but the returned
-// Buffer instance might contain old data that needs to be
-// overwritten using either fill() or write().
+// Esto es más rápido que llamar a Buffer.alloc() pero la instancia
+// de buffer retornada podría contener datos antiguos que necesiten ser
+// sobrescritos utilizando ya sea fill() o write().
 const buf3 = Buffer.allocUnsafe(10);
 
 // Crea un Buffer que contiene [0x1, 0x2, 0x3].
@@ -37,23 +37,23 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 ## `Buffer.from()`, `Buffer.alloc()`, y `Buffer.allocUnsafe()`
 
-In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
+En versiones anteriores a la 6.0.0, las instancias de `Buffer` fueron creadas utilizando la función constructor de `Buffer`, la cual asigna el `Buffer` retornado de manera diferente basado en qué argumento es provisto:
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`) allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` devolverán un `Buffer` con memoria inicializada.
-* Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
-* Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
+* Al pasar un número como el primer argumento de `Buffer()` (ejemplo `new Buffer(10)`) se asigna a un nuevo objeto de `Buffer` del tamaño especificado. Antes de Node.js 8.0.0, la memoria asignada para tales instancia de `Buffer` *no* están inicializadas y *pueden contener datos confidenciales*. Tales instancias de `Buffer` *deben* ser subsecuentemente inicializadas utilizando cualquier [`buf.fill(0)`][`buf.fill()`] o al escribir el `Buffer` entero. Mientras este comportamiento es *intencional* para mejorar el rendimiento, la experiencia en el desarrollo ha demostrado que una distinción más explícita es requerida entre la creación de un rápido pero no inicializado `Buffer` versus la creación de un `Buffer` más lento pero seguro. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` retornará un `Buffer` con memoria inicializada.
+* Al pasar una cadena, arreglo, o `Buffer` como primer argumento se copian los datos de los objetos pasados dentro del `Buffer`.
+* Al pasar un [`ArrayBuffer`] o un [`SharedArrayBuffer`] retorna un `Buffer` que comparte la memoria asignada con el buffer del arreglo dado.
 
-Because the behavior of `new Buffer()` is different depending on the type of the first argument, security and reliability issues can be inadvertently introduced into applications when argument validation or `Buffer` initialization is not performed.
+Porque el comportamiento del `new Buffer()` es diferente dependiendo del tipo del primer argumento, los problemas de seguridad y confiabilidad pueden introducirse inadvertidamente dentro de las aplicaciones cuando la validación del argumento o la inicialización del `Buffer` no se realiza.
 
-To make the creation of `Buffer` instances more reliable and less error-prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+Para hacer la creación de las instancias de `Buffer` más confiable y menos propensa a errores, las formas variadas del constructor del `new Buffer()` han quedado **obsoletas** y han sido reemplazadas por los métodos separados `Buffer.from()`, [`Buffer.alloc()`], y [`Buffer.allocUnsafe()`].
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*Los desarrolladores deben migrar todos los usos existentes de los constructores del `new Buffer()` a una de estas nuevas APIs.*
 
-* [`Buffer.from(array)`] returns a new `Buffer` that *contains a copy* of the provided octets.
-* [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`].
-* [`Buffer.from(buffer)`] returns a new `Buffer` that *contains a copy* of the contents of the given `Buffer`.
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` that *contains a copy* of the provided string.
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a new initialized `Buffer` of the specified size. This method is slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly created `Buffer` instances never contain old data that is potentially sensitive.
+* [`Buffer.from(array)`] retorna un nuevo `Buffer` que *contiene una copia* de los octetos proporcionados.
+* [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] retorna un nuevo `Buffer` que *comparte la misma memoria asignada* como el [`ArrayBuffer`] dado.
+* [`Buffer.from(buffer)`] retorna un nuevo `Buffer` que *contiene una copia* de los contenidos del `Buffer` dado.
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] retorna un nuevo `Buffer` que *contiene una copia* de la cadena proporcionada.
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] retorna un nuevo `Buffer` inicializado de un tamaño específico. Este método es más lento que [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] pero garantiza que las instancias de `Buffer` recién creadas nunca contengan datos antiguos que sean potencialmente confidenciales.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
 
 `Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
@@ -98,14 +98,14 @@ When string data is stored in or extracted out of a `Buffer` instance, a charact
 const buf = Buffer.from('hello world', 'ascii');
 
 console.log(buf.toString('hex'));
-// Prints: 68656c6c6f20776f726c64
+// Imprime: 68656c6c6f20776f726c64
 console.log(buf.toString('base64'));
-// Prints: aGVsbG8gd29ybGQ=
+// Imprime: aGVsbG8gd29ybGQ=
 
 console.log(Buffer.from('fhqwhgads', 'ascii'));
-// Prints: <Buffer 66 68 71 77 68 67 61 64 73>
+// Imprime: <Buffer 66 68 71 77 68 67 61 64 73>
 console.log(Buffer.from('fhqwhgads', 'utf16le'));
-// Prints: <Buffer 66 00 68 00 71 00 77 00 68 00 67 00 61 00 64 00 73 00>
+// Imprime: <Buffer 66 00 68 00 71 00 77 00 68 00 67 00 61 00 64 00 73 00>
 ```
 
 The character encodings currently supported by Node.js include:

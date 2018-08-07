@@ -309,7 +309,7 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 El `TCPSERVERWRAP` no es parte de este gráfico, a pesar de que fue el motivo por el cual `console.log()` fue llamado. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
 
-El gráfico sólo muestra un recurso *when* que fue creado, no a *why*, así que para rastrear a *why* utilice `triggerAsyncId`.
+El gráfico sólo muestra *when* un recurso fue creado, no muestra *why*, así que para rastrear *why* utilice `triggerAsyncId`.
 
 ##### before(asyncId)
 
@@ -436,7 +436,7 @@ Promise.resolve(1729).then(() => {
 // eid 1 tid 0
 ```
 
-Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. También tenga en cuenta que el valor de `triggerAsyncId` es `0`, lo que significa que nos falta contexto sobre el recurso que causó que (activó) el callback `then()` fuese ejecutado.
+Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. También tenga en cuenta que el valor de `triggerAsyncId` es `0`, lo que significa que nos falta contexto sobre el recurso que causó (activó) que el callback `then()` fuese ejecutado.
 
 Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Ejemplo:
 
