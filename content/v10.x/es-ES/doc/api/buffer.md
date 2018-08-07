@@ -8,7 +8,7 @@ Antes de la introducción de [`TypedArray`], el lenguaje JavaScript no tenía ni
 
 Con [`TypedArray`] ahora disponible, la clase `Buffer` implementa la API [`Uint8Array`] de una manera que es más optimizada y adecuada para Node.js.
 
-Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. El tamaño del `Buffer` se establece cuando se crea y no puede ser cambiado.
+Instancias de la clase de `Buffer` son similares a arreglos de enteros pero corresponden a tamaño fijo de las asignaciones de memoria sin procesar fuera del montón de V8. El tamaño del `Buffer` se establece cuando se crea y no puede ser cambiado.
 
 The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 
