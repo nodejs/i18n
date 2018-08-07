@@ -714,19 +714,19 @@ added: v0.9.4
 
 Il metodo `readable.pipe()` associa il [`Writable`][] stream al `readable`, provocando il passaggio automatico alla flowing mode ed il push di tutti i suoi dati sul [`Writable`][] associato. Il flusso di dati verrà gestito automaticamente in modo che il `Writable` stream di destinazione non sia sopraffatto da un `Readable` stream più veloce.
 
-The following example pipes all of the data from the `readable` into a file named `file.txt`:
+Nell'esempio seguente tutti i dati vengono sottoposti al piping conducendoli dal `readable` all'interno di un file chiamato `file.txt`:
 
 ```js
 const fs = require('fs');
 const readable = getReadableStreamSomehow();
 const writable = fs.createWriteStream('file.txt');
-// All the data from readable goes into 'file.txt'
+// Tutti i dati dal readable vanno all'interno di 'file.txt'
 readable.pipe(writable);
 ```
 
-It is possible to attach multiple `Writable` streams to a single `Readable` stream.
+È possibile collegare molteplici `Writable` stream in un singolo `Readable` stream.
 
-The `readable.pipe()` method returns a reference to the *destination* stream making it possible to set up chains of piped streams:
+Il metodo `readable.pipe()` restituisce un riferimento allo stream di *destinazione* che consente di impostare catene di stream che sono stati sottoposti al piping:
 
 ```js
 const fs = require('fs');
@@ -736,7 +736,7 @@ const w = fs.createWriteStream('file.txt.gz');
 r.pipe(z).pipe(w);
 ```
 
-By default, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) is called on the destination `Writable` stream when the source `Readable` stream emits [`'end'`][], so that the destination is no longer writable. To disable this default behavior, the `end` option can be passed as `false`, causing the destination stream to remain open, as illustrated in the following example:
+Per impostazione predefinita, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) viene chiamato nel `Writable` stream di destinazione quando il `Readable` stream di origine emette [`'end'`][], in modo che la destinazione non sia più scrivibile. Per disattivare questo comportamento predefinito, l'opzione `end` può essere passata come `false`, facendo sì che lo stream di destinazione rimanga aperto, come mostrato nell'esempio seguente:
 
 ```js
 reader.pipe(writer, { end: false });
