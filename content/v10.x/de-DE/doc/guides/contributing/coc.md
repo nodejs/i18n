@@ -6,7 +6,7 @@ Als Mitwirkender von Node.js wirkt sich sowohl die Verhaltensweise gegenüber an
 
 Sollte eine Einzelperson in irgendeiner Weise agieren, die die [Verhaltensgrundsätze](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) missachtet, werden Korrekturmaßnahmen ergriffen. Hingegen ist es dennoch möglich für eine beliebige Person in einer Weise zu *agieren*, die keine Missachtung der strikten Verhaltensgrundsätze darstellt aber trotzdem entgegen der allgemeinen Stimmung gehen, die die Grundsätze vorsehen zu erzielen.
 
-Open, diverse, and inclusive communities live and die on the basis of trust. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
+Offene, vielfältige und inklusive Gemeinschaften beruhen auf der Basis von Vertrauen. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
 
 ## Bad actors
 
