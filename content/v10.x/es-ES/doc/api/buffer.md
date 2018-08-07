@@ -50,9 +50,9 @@ Para hacer la creación de las instancias de `Buffer` más confiable y menos pro
 *Los desarrolladores deben migrar todos los usos existentes de los constructores del `new Buffer()` a una de estas nuevas APIs.*
 
 * [`Buffer.from(array)`] retorna un nuevo `Buffer` que *contiene una copia* de los octetos proporcionados.
-* [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`].
-* [`Buffer.from(buffer)`] returns a new `Buffer` that *contains a copy* of the contents of the given `Buffer`.
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` that *contains a copy* of the provided string.
+* [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] retorna un nuevo `Buffer` que *comparte la misma memoria asignada* como el [`ArrayBuffer`] dado.
+* [`Buffer.from(buffer)`] retorna un nuevo `Buffer` que *contiene una copia* de los contenidos del `Buffer` dado.
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] retorna un nuevo `Buffer` que *contiene una copia* de la cadena proporcionada.
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a new initialized `Buffer` of the specified size. This method is slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly created `Buffer` instances never contain old data that is potentially sensitive.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
 
