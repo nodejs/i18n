@@ -49,7 +49,7 @@ Para hacer la creación de las instancias de `Buffer` más confiable y menos pro
 
 *Los desarrolladores deben migrar todos los usos existentes de los constructores del `new Buffer()` a una de estas nuevas APIs.*
 
-* [`Buffer.from(array)`] returns a new `Buffer` that *contains a copy* of the provided octets.
+* [`Buffer.from(array)`] retorna un nuevo `Buffer` que *contiene una copia* de los octetos proporcionados.
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`].
 * [`Buffer.from(buffer)`] returns a new `Buffer` that *contains a copy* of the contents of the given `Buffer`.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` that *contains a copy* of the provided string.
