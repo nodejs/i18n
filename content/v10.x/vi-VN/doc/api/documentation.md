@@ -4,9 +4,9 @@
 
 <!-- type=misc -->
 
-Tài liệu này sẽ giới thiệu một cách đầy đủ về hệ thống phần mềm Node.js, API, cũng như một số tài liệu tham khảo và những khái niệm. Mỗi một phần sẽ giới thiệu các module và những khái niệm bậc cao khác nhau.
+Tài liệu này sẽ giới thiệu một cách đầy đủ về hệ thống phần mềm Node.js, API, cũng như một số tài liệu tham khảo và những khái niệm. Mỗi một phần sẽ giới thiệu các module được tạo thành và những khái niệm bậc cao khác nhau (Module là một chức năng mà người lập trình tạo ra và có thể "tháo rời").
 
-Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
+Xử lý sự kiện trong Java sẽ được chi tiết hóa bằng các giá trị cấu hình thích hợp, các đối số truyền vào phương thức hay những đối số, tất cả sẽ được liệt kê dưới dạng danh sách bên dưới tiêu đề.
 
 ## Contributing
 
