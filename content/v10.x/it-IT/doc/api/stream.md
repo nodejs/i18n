@@ -622,7 +622,7 @@ readable.on('readable', function() {
 
 L'evento `'readable'` verrà emesso anche una volta raggiunta la fine dei dati dello stream ma prima che venga emesso l'evento `'end'`.
 
-In effetti, l'evento `'readable'` indica che lo stream ha nuove informazioni: sono disponibili nuovi dati oppure è stata raggiunta la fine dello stream. In the former case, [`stream.read()`](#stream_readable_read_size) will return the available data. In the latter case, [`stream.read()`](#stream_readable_read_size) will return `null`. For instance, in the following example, `foo.txt` is an empty file:
+In effetti, l'evento `'readable'` indica che lo stream ha nuove informazioni: sono disponibili nuovi dati oppure è stata raggiunta la fine dello stream. Nel primo caso, [`stream.read()`](#stream_readable_read_size) restituirà i dati disponibili. Nel secondo ed ultimo caso, [`stream.read()`](#stream_readable_read_size) restituirà `null`. Ad esempio, nel caso seguente, `foo.txt` è un file vuoto (empty file):
 
 ```js
 const fs = require('fs');
@@ -635,7 +635,7 @@ rr.on('end', () => {
 });
 ```
 
-The output of running this script is:
+L'output dell'esecuzione di questo script è:
 
 ```txt
 $ node test.js
@@ -643,7 +643,7 @@ readable: null
 end
 ```
 
-In general, the `readable.pipe()` and `'data'` event mechanisms are easier to understand than the `'readable'` event. However, handling `'readable'` might result in increased throughput.
+In generale, i meccanismi degli eventi <`readable.pipe()` e `'data'` sono più facili da comprendere rispetto a quelli dell'evento `'readable'`. However, handling `'readable'` might result in increased throughput.
 
 If both `'readable'` and [`'data'`][] are used at the same time, `'readable'` takes precedence in controlling the flow, i.e. `'data'` will be emitted only when [`stream.read()`](#stream_readable_read_size) is called.
 
