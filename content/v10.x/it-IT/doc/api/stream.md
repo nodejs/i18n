@@ -493,9 +493,9 @@ In particolare, in qualsiasi momento specifico, ogni `Readable` si trova in uno 
 * `readable.readableFlowing = false`
 * `readable.readableFlowing = true`
 
-Quando `readable.readableFlowing` è `null`, non viene fornito alcun meccanismo per consumare i dati degli stream in modo che lo stream non generi i suoi dati. In questo stato, associando un listener per l'evento `'data'`, chiamando il metodo `readable.pipe()` oppure chiamando il metodo `readable.resume()` farà sì che `readable.readableFlowing` passi a `true`, così che il `Readable` inizi a emettere attivamente gli eventi man mano che i dati vengono generati.
+Quando `readable.readableFlowing` è `null`, non viene fornito alcun meccanismo per consumare i dati degli stream in modo che lo stream non generi i suoi dati. In questo stato, associare un listener per l'evento `'data'`, chiamare il metodo `readable.pipe()` oppure chiamare il metodo `readable.resume()` farà sì che `readable.readableFlowing` passi a `true`, così che il `Readable` inizi a emettere attivamente gli eventi man mano che i dati vengono generati.
 
-Calling `readable.pause()`, `readable.unpipe()`, or receiving "back pressure" will cause the `readable.readableFlowing` to be set as `false`, temporarily halting the flowing of events but *not* halting the generation of data. While in this state, attaching a listener for the `'data'` event would not cause `readable.readableFlowing` to switch to `true`.
+Chiamare `readable.pause()`, `readable.unpipe()`, oppure ricevere "back pressure", farà sì che `readable.readableFlowing` passi a `false`, interrompendo temporaneamente lo scorrere degli eventi ma *non* interrompendo la generazione di dati. In questo stato, associare un listener per l'evento `'data'` non farebbe sì che `readable.readableFlowing` passi a `true`.
 
 ```js
 const { PassThrough, Writable } = require('stream');
@@ -504,16 +504,16 @@ const writable = new Writable();
 
 pass.pipe(writable);
 pass.unpipe(writable);
-// readableFlowing is now false
+// readableFlowing è false ora
 
 pass.on('data', (chunk) => { console.log(chunk.toString()); });
-pass.write('ok'); // will not emit 'data'
-pass.resume(); // must be called to make 'data' being emitted
+pass.write('ok'); // non emetterà 'data'
+pass.resume(); // deve essere chiamato per far sì che 'data' venga emesso
 ```
 
-While `readable.readableFlowing` is `false`, data may be accumulating within the streams internal buffer.
+Mentre `readable.readableFlowing` è `false`, i dati potrebbero accumularsi all'interno del buffer interno degli stream.
 
-#### Choose One
+#### Scegline Uno
 
 The `Readable` stream API evolved across multiple Node.js versions and provides multiple methods of consuming stream data. In general, developers should choose *one* of the methods of consuming data and *should never* use multiple methods to consume data from a single stream.
 
