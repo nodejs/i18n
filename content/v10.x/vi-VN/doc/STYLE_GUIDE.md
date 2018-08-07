@@ -1,4 +1,4 @@
-# Hướng dẫn phong cách
+# Style Guide
 
 * Tài liệu được viết trong các tập tin markdown và đặt tên theo định dạng là `chữ-thường-và-gạch-ngang.md`. 
   * Các dấu gạch chân trong tên tập tin chỉ được phép dùng khi chúng xuất hiện trong chủ đề mà tài liệu sẽ mô tả (ví dụ `child_process`).
