@@ -483,9 +483,9 @@ Per motivi di compatibilità con le versioni precedenti, la rimozione degli hand
 
 Se un [`Readable`][] viene cambiato nella flowing mode e non ci sono consumer disponibili a gestire i dati, questi andranno persi. Ciò può verificarsi, ad esempio, quando il metodo `readable.resume()` viene chiamato senza un listener collegato all'evento `'data'` oppure quando un handler degli eventi `'data'` viene rimosso dallo stream.
 
-#### Three States
+#### Tre Stati
 
-The "two modes" of operation for a `Readable` stream are a simplified abstraction for the more complicated internal state management that is happening within the `Readable` stream implementation.
+Le "due modalità" di operazione per un `Readable` stream sono un'abstraction semplificata per la gestione dello stato interno più complicato che avviene all'interno dell'implementazione del `Readable` stream.
 
 Specifically, at any given point in time, every `Readable` is in one of three possible states:
 
