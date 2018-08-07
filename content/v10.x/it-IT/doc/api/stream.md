@@ -384,7 +384,7 @@ added: v9.3.0
 
 * {number}
 
-Restituisce il valore di `highWaterMark` passato quando si costruisce questo `Writable`.
+Restituisce il valore di `highWaterMark` passato durante la costruzione di questo `Writable`.
 
 ##### writable.writableLength
 
@@ -762,9 +762,9 @@ Il metodo `readable.read()` estrae alcuni dati dal buffer interno e li restituis
 
 L'argomento facoltativo `size` specifica un numero specifico di bytes da leggere. Se i `size` bytes non sono disponibili per la lettura, sarà restituito `null` *a meno che* lo stream non sia terminato, in tal caso tutti i dati rimanenti nel buffer interno verranno restituiti.
 
-If the `size` argument is not specified, all of the data contained in the internal buffer will be returned.
+Se l'argomento `size` non è specificato, verranno restituiti tutti i dati contenuti nel buffer interno.
 
-The `readable.read()` method should only be called on `Readable` streams operating in paused mode. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
+Il metodo `readable.read()` deve essere richiamato solo sugli `Readable` stream che operano in paused mode. Nella flowing mode, `readable.read()` viene chiamato automaticamente fino a quando il buffer interno non viene sottoposto completamente al drain.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -776,11 +776,11 @@ readable.on('readable', () => {
 });
 ```
 
-A `Readable` stream in object mode will always return a single item from a call to [`readable.read(size)`](#stream_readable_read_size), regardless of the value of the `size` argument.
+Un `Readable` stream in object mode restituirà sempre un singolo elemento da una chiamata a [`readable.read(size)`](#stream_readable_read_size), indipendentemente dal valore dell'argomento `size`.
 
-If the `readable.read()` method returns a chunk of data, a `'data'` event will also be emitted.
+Se il metodo `readable.read()` restituisce un chunk di dati, verrà emesso anche un evento `'data'`.
 
-Calling [`stream.read([size])`](#stream_readable_read_size) after the [`'end'`][] event has been emitted will return `null`. No runtime error will be raised.
+Chiamare [`stream.read([size])`](#stream_readable_read_size) dopo che l'evento [`'end'`][] è stato emesso restituirà `null`. Non verrà generato nessun errore di runtime.
 
 ##### readable.readableHighWaterMark
 
@@ -788,9 +788,9 @@ Calling [`stream.read([size])`](#stream_readable_read_size) after the [`'end'`][
 added: v9.3.0
 -->
 
-* Returns: {number}
+* Restituisce: {number}
 
-Returns the value of `highWaterMark` passed when constructing this `Readable`.
+Restituisce il valore di `highWaterMark` passato durante la costruzione di questo `Readable`.
 
 ##### readable.readableLength
 
