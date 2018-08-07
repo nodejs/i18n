@@ -760,7 +760,7 @@ added: v0.9.4
 
 Il metodo `readable.read()` estrae alcuni dati dal buffer interno e li restituisce. Se non ci sono dati disponibili da leggere, viene restituito `null`. Per impostazione predefinita, i dati verranno restituiti come `Buffer` object a meno che non sia stato specificato un encoding utilizzando il metodo `readable.setEncoding()` o a meno che lo stream stia operando in object mode.
 
-L'argomento facoltativo `size` specifica un numero specifico di bytes da leggere. If `size` bytes are not available to be read, `null` will be returned *unless* the stream has ended, in which case all of the data remaining in the internal buffer will be returned.
+L'argomento facoltativo `size` specifica un numero specifico di bytes da leggere. Se i `size` bytes non sono disponibili per la lettura, sarà restituito `null` *a meno che* lo stream non sia terminato, in tal caso tutti i dati rimanenti nel buffer interno verranno restituiti.
 
 If the `size` argument is not specified, all of the data contained in the internal buffer will be returned.
 
