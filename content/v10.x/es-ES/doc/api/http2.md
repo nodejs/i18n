@@ -592,7 +592,7 @@ added: v8.4.0
 * `options` {Object}
   
   * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
+  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se hace la única dependencia directa del Stream mayor, con todas las otras dependientes existentes hechas dependientes del stream creado recientemente. **Default:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
@@ -1024,7 +1024,7 @@ added: v8.4.0
 
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
+  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se hace la única dependencia directa del Stream mayor, con todas las otras dependientes existentes hechas dependientes del stream creado recientemente. **Default:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
 * `callback` {Function} Callback that is called once the push stream has been initiated. 
   * `err` {Error}
@@ -1274,7 +1274,7 @@ added: v8.5.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-If a [`'request'`][] listener is registered or [`http2.createServer()`][] is supplied a callback function, the `'checkContinue'` event is emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
+Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
