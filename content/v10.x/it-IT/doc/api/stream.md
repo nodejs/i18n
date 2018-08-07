@@ -745,9 +745,9 @@ reader.on('end', () => {
 });
 ```
 
-One important caveat is that if the `Readable` stream emits an error during processing, the `Writable` destination *is not closed* automatically. If an error occurs, it will be necessary to *manually* close each stream in order to prevent memory leaks.
+Un avvertimento importante è che se il `Readable` stream emette un errore durante l'elaborazione, la destinazione `Writable` *non viene chiusa* automaticamente. Se si verifica un errore, sarà necessario chiudere *manualmente* ogni stream così da evitare perdite di memoria.
 
-The [`process.stderr`][] and [`process.stdout`][] `Writable` streams are never closed until the Node.js process exits, regardless of the specified options.
+Gli `Writable` stream [`process.stderr`][] e [`process.stdout`][] non vengono mai chiusi fino alla chiusura del processo Node.js, indipendentemente dalle opzioni specificate.
 
 ##### readable.read([size])
 
@@ -755,8 +755,8 @@ The [`process.stderr`][] and [`process.stdout`][] `Writable` streams are never c
 added: v0.9.4
 -->
 
-* `size` {number} Optional argument to specify how much data to read.
-* Returns: {string|Buffer|null}
+* `size` {number} Argomento facoltativo per specificare la quantità di dati da leggere.
+* Restituisce: {string|Buffer|null}
 
 The `readable.read()` method pulls some data out of the internal buffer and returns it. If no data available to be read, `null` is returned. By default, the data will be returned as a `Buffer` object unless an encoding has been specified using the `readable.setEncoding()` method or the stream is operating in object mode.
 
