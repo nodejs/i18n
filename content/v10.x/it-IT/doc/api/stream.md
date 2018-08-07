@@ -515,9 +515,9 @@ Mentre `readable.readableFlowing` è `false`, i dati potrebbero accumularsi all'
 
 #### Scegline Uno
 
-The `Readable` stream API evolved across multiple Node.js versions and provides multiple methods of consuming stream data. In general, developers should choose *one* of the methods of consuming data and *should never* use multiple methods to consume data from a single stream.
+L'API del `Readable` stream si è evoluta in più versioni di Node.js e fornisce più metodi di consumo dei dati dello stream. In generale, gli sviluppatori dovrebbero scegliere *uno* dei metodi di consumo dei dati e *non utilizzare mai* più metodi per consumare i dati da un singolo stream.
 
-Use of the `readable.pipe()` method is recommended for most users as it has been implemented to provide the easiest way of consuming stream data. Developers that require more fine-grained control over the transfer and generation of data can use the [`EventEmitter`][] and `readable.pause()`/`readable.resume()` APIs.
+L'uso del metodo `readable.pipe()` è consigliato per la maggior parte degli utenti poiché è stato implementato per fornire il modo più semplice di utilizzare i dati dello stream. Gli sviluppatori che richiedono un controllo più preciso sul trasferimento e sulla generazione dei dati possono utilizzare [`EventEmitter`][] e le API `readable.pause()`/`readable.resume()`.
 
 #### Class: stream.Readable
 
@@ -533,9 +533,9 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+L'evento `'close'` viene emesso quando lo stream ed una qualsiasi delle sue risorse sottostanti (ad esempio un file descriptor) sono stati chiusi. L'evento indica che non verrà emesso nessun altro evento e non si verificheranno ulteriori calcoli.
 
-Not all [`Readable`][] streams will emit the `'close'` event.
+Non tutti gli [`Readable`][] stream emetteranno l'evento `'close'`.
 
 ##### Event: 'data'
 
@@ -543,7 +543,7 @@ Not all [`Readable`][] streams will emit the `'close'` event.
 added: v0.9.4
 -->
 
-* `chunk` {Buffer|string|any} The chunk of data. For streams that are not operating in object mode, the chunk will be either a string or `Buffer`. For streams that are in object mode, the chunk can be any JavaScript value other than `null`.
+* `chunk` {Buffer|string|any} Il chunk di dati. Per gli stream che non funzionano in object mode, il chunk sarà una stringa od un `Buffer`. Per gli stream che sono in object mode, il chunk può essere qualsiasi valore JavaScript diverso da `null`.
 
 The `'data'` event is emitted whenever the stream is relinquishing ownership of a chunk of data to a consumer. This may occur whenever the stream is switched in flowing mode by calling `readable.pipe()`, `readable.resume()`, or by attaching a listener callback to the `'data'` event. The `'data'` event will also be emitted whenever the `readable.read()` method is called and a chunk of data is available to be returned.
 
