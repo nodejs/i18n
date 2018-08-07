@@ -6,9 +6,9 @@
 
 Tài liệu này sẽ giới thiệu một cách đầy đủ về hệ thống phần mềm Node.js, API, cũng như một số tài liệu tham khảo và những khái niệm. Mỗi một phần sẽ giới thiệu các module được tạo thành và những khái niệm bậc cao khác nhau (Module là một chức năng mà người lập trình tạo ra và có thể "tháo rời").
 
-Xử lý sự kiện trong Java sẽ được chi tiết hóa bằng các giá trị cấu hình thích hợp, các đối số truyền vào phương thức hay những đối số, tất cả sẽ được liệt kê dưới dạng danh sách bên dưới tiêu đề.
+Xử lý sự kiện trong Java sẽ được chi tiết hóa bằng các giá trị cấu hình thích hợp, các đối số truyền vào phương thức hay những đối số khác, tất cả sẽ được liệt kê dưới dạng danh sách bên dưới tiêu đề.
 
-## Contributing
+## Nhứng đóng góp của người dịch
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
