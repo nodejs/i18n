@@ -709,10 +709,10 @@ added: v0.9.4
 
 * `destination` {stream.Writable} La destinazione per la quale scrivere i dati
 * `options` {Object} Opzioni Pipe 
-  * `end` {boolean} End the writer when the reader ends. **Default:** `true`.
-* Returns: {stream.Writable} making it possible to set up chains of piped streams
+  * `end` {boolean} Termina il writer quando finisce il reader. **Default:** `true`.
+* Restituisce: {stream.Writable} rendendo possibile l'installazione di catene di stream che sono stati sottoposti al piping
 
-The `readable.pipe()` method attaches a [`Writable`][] stream to the `readable`, causing it to switch automatically into flowing mode and push all of its data to the attached [`Writable`][]. The flow of data will be automatically managed so that the destination `Writable` stream is not overwhelmed by a faster `Readable` stream.
+Il metodo `readable.pipe()` associa il [`Writable`][] stream al `readable`, provocando il passaggio automatico alla flowing mode ed il push di tutti i suoi dati sul [`Writable`][] associato. Il flusso di dati verrà gestito automaticamente in modo che il `Writable` stream di destinazione non sia sopraffatto da un `Readable` stream più veloce.
 
 The following example pipes all of the data from the `readable` into a file named `file.txt`:
 
