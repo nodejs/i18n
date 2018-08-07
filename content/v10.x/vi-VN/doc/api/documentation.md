@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
+Tài liệu này sẽ giới thiệu một cách đầy đủ về hệ thống phần mềm Node.js, API, cũng như một số tài liệu tham khảo và những khái niệm. Mỗi một phần sẽ giới thiệu các module và những khái niệm bậc cao khác nhau.
 
 Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 
