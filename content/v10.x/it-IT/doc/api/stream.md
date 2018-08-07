@@ -798,9 +798,9 @@ Restituisce il valore di `highWaterMark` passato durante la costruzione di quest
 added: v9.4.0
 -->
 
-* Returns: {number}
+* Restituisce: {number}
 
-This property contains the number of bytes (or objects) in the queue ready to be read. Il valore fornisce dati di introspezione relativi allo status di `highWaterMark`.
+Questa proprietà contiene il numero di bytes (od objects) nella queue pronti per essere letti. Il valore fornisce dati di introspezione relativi allo status di `highWaterMark`.
 
 ##### readable.resume()
 
@@ -814,11 +814,11 @@ changes:
                  listening.
 -->
 
-* Returns: {this}
+* Restituisce: {this}
 
-The `readable.resume()` method causes an explicitly paused `Readable` stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
+Il metodo `readable.resume()` causa un `Readable` stream esplicitamente sospeso per riprendere l'emissione di eventi [`'data'`][], passando lo stream alla flowing mode.
 
-The `readable.resume()` method can be used to fully consume the data from a stream without actually processing any of that data as illustrated in the following example:
+Il metodo `readable.resume()` può essere utilizzato per consumare completamente i dati da uno stream senza effettivamente elaborare alcun dato come mostrato nel seguente esempio:
 
 ```js
 getReadableStreamSomehow()
@@ -828,7 +828,7 @@ getReadableStreamSomehow()
   });
 ```
 
-The `readable.resume()` method has no effect if there is a `'readable'` event listener.
+Il metodo `readable.resume()` non ha effetto se esiste un listener di eventi `'readable'`.
 
 ##### readable.setEncoding(encoding)
 
@@ -836,8 +836,8 @@ The `readable.resume()` method has no effect if there is a `'readable'` event li
 added: v0.9.4
 -->
 
-* `encoding` {string} The encoding to use.
-* Returns: {this}
+* `encoding` {string} L'encoding da utilizzare.
+* Restituisce: {this}
 
 The `readable.setEncoding()` method sets the character encoding for data read from the `Readable` stream.
 
