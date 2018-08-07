@@ -656,7 +656,7 @@ added: v8.0.0
 * `error` {Error} Errore che verrà passato come payload nell'evento `'error'`
 * Restituisce: {this}
 
-Distrugge lo stream ed emette l'`'error'` e l'evento `'close'`. Dopo questa chiamata, il readable stream rilascerà tutte le risorse interne e le successive chiamate a `push()` verranno ignorate. Implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback).
+Distrugge lo stream ed emette l'`'error'` e l'evento `'close'`. Dopo questa chiamata, il readable stream rilascerà tutte le risorse interne e le successive chiamate a `push()` verranno ignorate. Gli implementors non dovrebbero sovrascrivere questo metodo, ma implementare [`readable._destroy()`](#stream_readable_destroy_err_callback).
 
 ##### readable.isPaused()
 
@@ -664,9 +664,9 @@ Distrugge lo stream ed emette l'`'error'` e l'evento `'close'`. Dopo questa chia
 added: v0.11.14
 -->
 
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-The `readable.isPaused()` method returns the current operating state of the `Readable`. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
+Il metodo `readable.isPaused()` restituisce l'attuale stato operativo del `Readable`. Questo è usato principalmente dal meccanismo che sta alla base del metodo `readable.pipe()`. Nella maggior parte dei casi tipici, non ci sarà alcun motivo per utilizzare direttamente questo metodo.
 
 ```js
 const readable = new stream.Readable();
@@ -684,9 +684,9 @@ readable.isPaused(); // === false
 added: v0.9.4
 -->
 
-* Returns: {this}
+* Restituisce: {this}
 
-The `readable.pause()` method will cause a stream in flowing mode to stop emitting [`'data'`][] events, switching out of flowing mode. Any data that becomes available will remain in the internal buffer.
+Il metodo `readable.pause()` causerà uno stream in flowing mode per interrompere l'emissione degli eventi [`'data'`][] tramite l'uscita dalla flowing mode stessa. Tutti i dati che diventano disponibili rimarranno nel buffer interno.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -707,8 +707,8 @@ readable.on('data', (chunk) => {
 added: v0.9.4
 -->
 
-* `destination` {stream.Writable} The destination for writing data
-* `options` {Object} Pipe options 
+* `destination` {stream.Writable} La destinazione per la quale scrivere i dati
+* `options` {Object} Opzioni Pipe 
   * `end` {boolean} End the writer when the reader ends. **Default:** `true`.
 * Returns: {stream.Writable} making it possible to set up chains of piped streams
 
