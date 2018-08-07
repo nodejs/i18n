@@ -487,13 +487,13 @@ Se un [`Readable`][] viene cambiato nella flowing mode e non ci sono consumer di
 
 Le "due modalità" di operazione per un `Readable` stream sono un'abstraction semplificata per la gestione dello stato interno più complicato che avviene all'interno dell'implementazione del `Readable` stream.
 
-Specifically, at any given point in time, every `Readable` is in one of three possible states:
+In particolare, in qualsiasi momento specifico, ogni `Readable` si trova in uno qualsiasi tra questi tre possibili stati:
 
 * `readable.readableFlowing = null`
 * `readable.readableFlowing = false`
 * `readable.readableFlowing = true`
 
-When `readable.readableFlowing` is `null`, no mechanism for consuming the streams data is provided so the stream will not generate its data. While in this state, attaching a listener for the `'data'` event, calling the `readable.pipe()` method, or calling the `readable.resume()` method will switch `readable.readableFlowing` to `true`, causing the `Readable` to begin actively emitting events as data is generated.
+Quando `readable.readableFlowing` è `null`, non viene fornito alcun meccanismo per consumare i dati degli stream in modo che lo stream non generi i suoi dati. In questo stato, associando un listener per l'evento `'data'`, chiamando il metodo `readable.pipe()` oppure chiamando il metodo `readable.resume()` farà sì che `readable.readableFlowing` passi a `true`, così che il `Readable` inizi a emettere attivamente gli eventi man mano che i dati vengono generati.
 
 Calling `readable.pause()`, `readable.unpipe()`, or receiving "back pressure" will cause the `readable.readableFlowing` to be set as `false`, temporarily halting the flowing of events but *not* halting the generation of data. While in this state, attaching a listener for the `'data'` event would not cause `readable.readableFlowing` to switch to `true`.
 
