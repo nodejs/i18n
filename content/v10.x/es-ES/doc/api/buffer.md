@@ -10,7 +10,7 @@ Con [`TypedArray`] ahora disponible, la clase `Buffer` implementa la API [`Uint8
 
 Instancias de la clase de `Buffer` son similares a arreglos de enteros pero corresponden a tamaño fijo de las asignaciones de memoria sin procesar fuera del montón de V8. El tamaño del `Buffer` se establece cuando se crea y no puede ser cambiado.
 
-The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
+La clase de `Buffer` está dentro del alcance global, por lo que es poco probable que alguna vez uno necesite utilizar `require('buffer').Buffer`.
 
 ```js
 // Crea un Buffer lleno de ceros de longitud 10.
