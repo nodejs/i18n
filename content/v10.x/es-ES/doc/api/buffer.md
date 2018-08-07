@@ -43,9 +43,9 @@ En versiones anteriores a la 6.0.0, las instancias de `Buffer` fueron creadas ut
 * Al pasar una cadena, arreglo, o `Buffer` como primer argumento se copian los datos de los objetos pasados dentro del `Buffer`.
 * Al pasar un [`ArrayBuffer`] o un [`SharedArrayBuffer`] retorna un `Buffer` que comparte la memoria asignada con el buffer del arreglo dado.
 
-Because the behavior of `new Buffer()` is different depending on the type of the first argument, security and reliability issues can be inadvertently introduced into applications when argument validation or `Buffer` initialization is not performed.
+Porque el comportamiento del `new Buffer()` es diferente dependiendo del tipo del primer argumento, los problemas de seguridad y confiabilidad pueden introducirse inadvertidamente dentro de las aplicaciones cuando la validación del argumento o la inicialización del `Buffer` no se realiza.
 
-To make the creation of `Buffer` instances more reliable and less error-prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+Para hacer la creación de las instancias de `Buffer` más confiable y menos propensa a errores, las formas variadas del constructor del `new Buffer()` han quedado **obsoletas** y han sido reemplazadas por los métodos separados `Buffer.from()`, [`Buffer.alloc()`], y [`Buffer.allocUnsafe()`].
 
 *Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
 
