@@ -37,9 +37,9 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 ## `Buffer.from()`, `Buffer.alloc()`, y `Buffer.allocUnsafe()`
 
-In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
+En versiones anteriores a la 6.0.0, las instancias de `Buffer` fueron creadas utilizando la función constructor de `Buffer`, la cual asigna el `Buffer` retornado de manera diferente basado en qué argumento es provisto:
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`) allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` devolverán un `Buffer` con memoria inicializada.
+* Al pasar un número como el primer argumento de `Buffer()` (ejemplo `new Buffer(10)`) se asigna a un nuevo objeto de `Buffer` del tamaño especificado. Antes de Node.js 8.0.0, la memoria asignada para tales instancia de `Buffer` *no* están inicializadas y *pueden contener datos confidenciales*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` devolverán un `Buffer` con memoria inicializada.
 * Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
 
