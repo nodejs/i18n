@@ -2,9 +2,9 @@
 
 Das Node.js Projekt hat [Verhaltensgrundsätze](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), die von *allen* Mitwirkenden befolgt werden sollten. Diese Grundsätze beschreiben ein *Mindestmaß* an Verhaltenserwartungen von allen Mitwirkenden.
 
-As a contributor to Node.js, how you choose to act and interact towards your fellow contributors, as well as to the community, will reflect back not only on yourself but on the project as a whole. The Code of Conduct is designed and intended, above all else, to help establish a culture within the project that allows anyone and everyone who wants to contribute to feel safe doing so.
+Als Mitwirkender von Node.js wirkt sich sowohl die Verhaltensweise gegenüber anderen Mitwirkenden als auch der Gemeinschaft nicht nur auf Sie selbst aus sondern auch auf das Projekt als Ganzes. Die Verhaltensgrundsätze sind über allem dafür bestimmt dabei zu helfen eine Atmosphäre zu schaffen die es jeder Person, die beitragen möchte, erlaubt, sich dabei sicher zu fühlen.
 
-Should any individual act in any way that is considered in violation of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), corrective actions will be taken. It is possible, however, for any individual to *act* in such a manner that is not in violation of the strict letter of the Code of Conduct guidelines while still going completely against the spirit of what that Code is intended to accomplish.
+Sollte eine Einzelperson in irgendeiner Weise agieren, die die [Verhaltensgrundsätze](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) missachtet, werden Korrekturmaßnahmen ergriffen. It is possible, however, for any individual to *act* in such a manner that is not in violation of the strict letter of the Code of Conduct guidelines while still going completely against the spirit of what that Code is intended to accomplish.
 
 Open, diverse, and inclusive communities live and die on the basis of trust. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
 
