@@ -20,9 +20,9 @@ const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(10, 1);
 
 // Crea un buffer sin inicializar de longitud 10.
-// This is faster than calling Buffer.alloc() but the returned
-// Buffer instance might contain old data that needs to be
-// overwritten using either fill() or write().
+// Esto es más rápido que llamar a Buffer.alloc() pero la instancia
+// de buffer retornada podría contener datos antiguos que necesiten ser
+// sobrescritos utilizando ya sea fill() o write().
 const buf3 = Buffer.allocUnsafe(10);
 
 // Crea un Buffer que contiene [0x1, 0x2, 0x3].
