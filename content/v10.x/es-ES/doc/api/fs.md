@@ -258,7 +258,7 @@ added: v0.5.8
 * `eventType` {string} The type of change event that has occurred
 * `filename` {string|Buffer} The filename that changed (if relevant/available)
 
-Emitted when something changes in a watched directory or file. See more details in [`fs.watch()`][].
+Emitted when something changes in a watched directory or file. Vea más detalles en [`fs.watch()`][].
 
 The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
 
@@ -344,7 +344,7 @@ added: v6.4.0
 
 * {number}
 
-The number of bytes that have been read so far.
+El número de bytes que han sido leídos hasta el momento.
 
 ### readStream.path
 
@@ -890,7 +890,7 @@ If `options` is a string, then it specifies the encoding. Ejemplo:
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
 ```
 
-The `path` may be specified as a numeric file descriptor that has been opened for appending (using `fs.open()` or `fs.openSync()`). The file descriptor will not be closed automatically.
+The `path` may be specified as a numeric file descriptor that has been opened for appending (using `fs.open()` or `fs.openSync()`). El descriptor de archivo no se cerrará automáticamente.
 
 ```js
 fs.open('message.txt', 'a', (err, fd) => {
@@ -985,7 +985,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously changes the permissions of a file. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica los permisos de un archivo. No arguments other than a possible exception are given to the completion callback.
 
 See also: chmod(2).
 
@@ -1020,7 +1020,7 @@ An easier method of constructing the `mode` is to use a sequence of three octal 
 
 For example, the octal value `0o765` means:
 
-* The owner may read, write and execute the file.
+* El propietario puede leer, escribir y ejecutar el archivo.
 * El grupo puede leer y escribir el archivo.
 * Otros pueden leer y ejecutar el archivo.
 
@@ -1039,7 +1039,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer}
 
-Synchronously changes the permissions of a file. Returns `undefined`. This is the synchronous version of [`fs.chmod()`][].
+Cambia de manera sincrónica los permisos de un archivo. Returns `undefined`. This is the synchronous version of [`fs.chmod()`][].
 
 See also: chmod(2).
 
@@ -1069,7 +1069,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously changes owner and group of a file. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica el propietario y el grupo de un archivo. No arguments other than a possible exception are given to the completion callback.
 
 See also: chown(2).
 
@@ -1089,7 +1089,7 @@ changes:
 * `uid` {integer}
 * `gid` {integer}
 
-Synchronously changes owner and group of a file. Returns `undefined`. This is the synchronous version of [`fs.chown()`][].
+Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. This is the synchronous version of [`fs.chown()`][].
 
 See also: chown(2).
 
@@ -1411,7 +1411,7 @@ changes:
 * `path` {string|Buffer|URL}
 * Returns: {boolean}
 
-Synchronous version of [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
+Versión sincrónica de [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
 
 Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` does not use a callback.)
 
@@ -2047,7 +2047,7 @@ changes:
 * `mode` {integer} **Default:** `0o666`
 * Returns: {number}
 
-Synchronous version of [`fs.open()`][]. Returns an integer representing the file descriptor.
+Versión sincrónica de [`fs.open()`][]. Returns an integer representing the file descriptor.
 
 ## fs.read(fd, buffer, offset, length, position, callback)
 
@@ -2177,7 +2177,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Ejemplo:
+Lee de manera asincrónica todos los contenidos de un archivo. Ejemplo:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -2323,7 +2323,7 @@ changes:
 * `position` {integer}
 * Returns: {number}
 
-Synchronous version of [`fs.read()`][]. Devuelve el número de `bytesRead`.
+Versión sincrónica de [`fs.read()`][]. Devuelve el número de `bytesRead`.
 
 ## fs.realpath(path[, options], callback)
 
@@ -2724,7 +2724,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously removes a file or symbolic link. No arguments other than a possible exception are given to the completion callback.
+Elimina de manera asincrónica un archivo o enlace simbólico. No arguments other than a possible exception are given to the completion callback.
 
 ```js
 // Assuming that 'path/file.txt' is a regular file.
@@ -2834,7 +2834,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Synchronous version of [`fs.utimes()`][]. Returns `undefined`.
+Versión sincrónica de [`fs.utimes()`][]. Returns `undefined`.
 
 ## fs.watch(filename\[, options\]\[, listener\])
 
@@ -2885,8 +2885,8 @@ The recursive option is only supported on macOS and Windows.
 
 This feature depends on the underlying operating system providing a way to be notified of filesystem changes.
 
-* On Linux systems, this uses [`inotify`]
-* On BSD systems, this uses [`kqueue`]
+* En sistemas Linux, esto utiliza [`inotify`]
+* En sistemas BSD, esto utiliza [`kqueue`]
 * On macOS, this uses [`kqueue`] for files and [`FSEvents`] for directories.
 * On SunOS systems (including Solaris and SmartOS), this uses [`event ports`].
 * On Windows systems, this feature depends on [`ReadDirectoryChangesW`].
@@ -2943,7 +2943,7 @@ changes:
 
 Watch for changes on `filename`. The callback `listener` will be called each time the file is accessed.
 
-The `options` argument may be omitted. Si se proporciona, debería ser un objeto. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
+El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
 
 The `listener` gets two arguments the current stat object and the previous stat object:
 
@@ -2958,7 +2958,7 @@ These stat objects are instances of `fs.Stat`.
 
 To be notified when the file was modified, not just accessed, it is necessary to compare `curr.mtime` and `prev.mtime`.
 
-When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). In Windows, `blksize` and `blocks` fields will be `undefined`, instead of zero. If the file is created later on, the listener will be called again, with the latest stat objects. This is a change in functionality since v0.10.
+When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). In Windows, `blksize` and `blocks` fields will be `undefined`, instead of zero. If the file is created later on, the listener will be called again, with the latest stat objects. Este es un cambio en la funcionalidad desde v0.10.
 
 Using [`fs.watch()`][] is more efficient than `fs.watchFile` and `fs.unwatchFile`. `fs.watch` should be used instead of `fs.watchFile` and `fs.unwatchFile` when possible.
 
@@ -3172,7 +3172,7 @@ changes:
 * `encoding` {string}
 * Returns: {number}
 
-Synchronous versions of [`fs.write()`][]. Devuelve el número de bytes escritos.
+Versiones sincrónicas de [`fs.write()`][]. Devuelve el número de bytes escritos.
 
 ## fs Promises API
 
@@ -3309,7 +3309,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
 
-Asynchronously reads the entire contents of a file.
+Lee de manera asincrónica todos los contenidos de un archivo.
 
 The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. De lo contrario, los datos serán una string.
 
@@ -3831,7 +3831,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
 
-Asynchronously reads the entire contents of a file.
+Lee de manera asincrónica todos los contenidos de un archivo.
 
 The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. De lo contrario, los datos serán una string.
 
@@ -4285,9 +4285,9 @@ The following flags are available wherever the `flag` option takes a string:
 
 * `'as+'` - Open file for reading and appending in synchronous mode. El archivo se crea si no existe.
 
-* `'r'` - Open file for reading. An exception occurs if the file does not exist.
+* `'r'` - Open file for reading. Una excepción ocurre si el archivo no existe.
 
-* `'r+'` - Open file for reading and writing. An exception occurs if the file does not exist.
+* `'r+'` - Open file for reading and writing. Una excepción ocurre si el archivo no existe.
 
 * `'rs+'` - Open file for reading and writing in synchronous mode. Instructs the operating system to bypass the local file system cache.
   
