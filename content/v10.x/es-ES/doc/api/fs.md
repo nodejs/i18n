@@ -866,7 +866,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -920,7 +920,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -1007,7 +1007,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Description              |
+| Número | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
@@ -1229,7 +1229,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'r'`.
   * `encoding` {string} **Default:** `null`
   * `fd` {integer} **Default:** `null`
@@ -1280,7 +1280,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
   * `fd` {integer} **Default:** `null`
@@ -1934,7 +1934,7 @@ changes:
 -->
 
 * `prefix` {string}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -1990,7 +1990,7 @@ added: v5.10.0
 -->
 
 * `prefix` {string}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string}
 
@@ -2111,7 +2111,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2134,7 +2134,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string[]} An array of filenames excluding `'.'` and `'..'`.
 
@@ -2170,7 +2170,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * `callback` {Function} 
@@ -2232,7 +2232,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {string|Buffer}
@@ -2273,7 +2273,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2297,7 +2297,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2356,7 +2356,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2387,7 +2387,7 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2426,7 +2426,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2451,7 +2451,7 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2852,7 +2852,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
@@ -2934,7 +2934,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `options` {Object} 
+* `opciones` {Object} 
   * `persistent` {boolean} **Default:** `true`
   * `interval` {integer} **Default:** `5007`
 * `listener` {Function} 
@@ -3079,7 +3079,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3127,7 +3127,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3199,7 +3199,7 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -3304,7 +3304,7 @@ Following successful read, the `Promise` is resolved with an object with a `byte
 added: v10.0.0
 -->
 
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
@@ -3429,7 +3429,7 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3480,7 +3480,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -3747,7 +3747,7 @@ added: v10.0.0
 -->
 
 * `prefix` {string}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -3811,7 +3811,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -3826,7 +3826,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
@@ -3848,7 +3848,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -3863,7 +3863,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `options` {string|Object} 
+* `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -4000,7 +4000,7 @@ added: v10.0.0
 
 * `file` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer|Uint8Array}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
