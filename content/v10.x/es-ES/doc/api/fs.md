@@ -441,7 +441,7 @@ added: v0.1.10
 
 * Returns: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a regular file.
+Devuelve `true` si el objeto de `fs.Stats` describe un archivo normal.
 
 ### stats.isSocket()
 
@@ -1005,7 +1005,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 | `fs.constants.S_IWOTH` | `0o2`   | write by others          |
 | `fs.constants.S_IXOTH` | `0o1`   | execute/search by others |
 
-An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
+An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. El dígito medio (`6` en el ejemplo), especifica los permisos para el grupo. The right-most digit (`5` in the example), specifies the permissions for others.
 
 | Número | Descripción              |
 | ------ | ------------------------ |
@@ -1608,7 +1608,7 @@ Asynchronous ftruncate(2). No arguments other than a possible exception are give
 
 If the file referred to by the file descriptor was larger than `len` bytes, only the first `len` bytes will be retained in the file.
 
-For example, the following program retains only the first four bytes of the file:
+Por ejemplo, el siguiente programa retiene sólo los primeros cuatro bytes del archivo:
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -1944,7 +1944,7 @@ Crea un único directorio temporal.
 
 Generates six random characters to be appended behind a required `prefix` to create a unique temporary directory.
 
-The created folder path is passed as a string to the callback's second parameter.
+La ruta de archivo creada se pasa como una string al segundo parámetro del callback.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
@@ -2083,7 +2083,7 @@ Lee datos del archivo especificado por `fd`.
 
 `position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
 
-The callback is given the three arguments, `(err, bytesRead, buffer)`.
+Al callback se le dan tres argumentos, `(err, bytesRead, buffer)`.
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `bytesRead` and `buffer` properties.
 
@@ -2372,7 +2372,7 @@ This function behaves like realpath(3), with some exceptions:
 
 2. The maximum number of symbolic links is platform-independent and generally (much) higher than what the native realpath(3) implementation supports.
 
-The `callback` gets two arguments `(err, resolvedPath)`. Puede utilizar `process.cwd` para resolver rutas relativas.
+El `callback` obtiene dos argumentos `(err, resolvedPath)`. Puede utilizar `process.cwd` para resolver rutas relativas.
 
 Only paths that can be converted to UTF8 strings are supported.
 
@@ -2395,7 +2395,7 @@ added: v9.2.0
 
 Asynchronous realpath(3).
 
-The `callback` gets two arguments `(err, resolvedPath)`.
+El `callback` obtiene dos argumentos `(err, resolvedPath)`.
 
 Only paths that can be converted to UTF8 strings are supported.
 
@@ -2889,7 +2889,7 @@ This feature depends on the underlying operating system providing a way to be no
 * En sistemas BSD, esto utiliza [`kqueue`]
 * On macOS, this uses [`kqueue`] for files and [`FSEvents`] for directories.
 * On SunOS systems (including Solaris and SmartOS), this uses [`event ports`].
-* On Windows systems, this feature depends on [`ReadDirectoryChangesW`].
+* En el sistema de Windows, esta función depende de [`ReadDirectoryChangesW`].
 * On Aix systems, this feature depends on [`AHAFS`], which must be enabled.
 
 If the underlying functionality is not available for some reason, then `fs.watch` will not be able to function. For example, watching files or directories can be unreliable, and in some cases impossible, on network file systems (NFS, SMB, etc), or host file systems when using virtualization software such as Vagrant, Docker, etc.
@@ -2941,7 +2941,7 @@ changes:
   * `current` {fs.Stats}
   * `previous` {fs.Stats}
 
-Watch for changes on `filename`. The callback `listener` will be called each time the file is accessed.
+Watch for changes on `filename`. El callback de `listener` será llamado cada vez que el archivo sea accedido.
 
 El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
 
@@ -3272,7 +3272,7 @@ Asynchronous fdatasync(2). The `Promise` is resolved with no arguments upon succ
 added: v10.0.0
 -->
 
-* {number} The numeric file descriptor managed by the `FileHandle` object.
+* {number} El descriptor de archivo numérico gestionado por el objeto de `FileHandle` .
 
 #### filehandle.read(buffer, offset, length, position)
 
@@ -3352,7 +3352,7 @@ Truncates the file then resolves the `Promise` with no arguments upon success.
 
 If the file was larger than `len` bytes, only the first `len` bytes will be retained in the file.
 
-For example, the following program retains only the first four bytes of the file:
+Por ejemplo, el siguiente programa retiene sólo los primeros cuatro bytes del archivo:
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -3633,7 +3633,7 @@ Truncates the file represented by `filehandle` then resolves the `Promise` with 
 
 If the file referred to by the `FileHandle` was larger than `len` bytes, only the first `len` bytes will be retained in the file.
 
-For example, the following program retains only the first four bytes of the file:
+Por ejemplo, el siguiente programa retiene sólo los primeros cuatro bytes del archivo:
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
