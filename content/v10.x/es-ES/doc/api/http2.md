@@ -638,7 +638,7 @@ added: v8.4.0
 
 Each instance of the `Http2Stream` class represents a bidirectional HTTP/2 communications stream over an `Http2Session` instance. Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
 
-Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. On the client, `Http2Stream` instances are created and returned when either the `http2session.request()` method is called, or in response to an incoming `'push'` event.
+Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. En el cliente, las instancias de `Http2Stream` se crean y se devuelven cuando el método de `http2session.request()` es llamado, o en respuesta a un evento de `'push'` entrante.
 
 The `Http2Stream` class is a base for the [`ServerHttp2Stream`][] and [`ClientHttp2Stream`][] classes, each of which is used specifically by either the Server or Client side, respectively.
 
@@ -1509,7 +1509,7 @@ changes:
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
     * `http2.constants.PADDING_STRATEGY_ALIGNED` - Will *attempt* to apply enough padding to ensure that the total frame length, including the 9-byte header, is a multiple of 8. For each frame, however, there is a maximum allowed number of padding bytes that is determined by current flow control state and settings. If this maximum is less than the calculated amount needed to ensure alignment, the maximum will be used and the total frame length will *not* necessarily be aligned at 8 bytes.
   * `peerMaxConcurrentStreams` {number} Sets the maximum number of concurrent streams for the remote peer as if a `SETTINGS` frame had been received. Will be overridden if the remote peer sets its own value for `maxConcurrentStreams`. **Default:** `100`.
-  * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. See [Using `options.selectPadding()`][].
+  * `selectPadding` {Function} Cuando `options.paddingStrategy` es igual a `http2.constants.PADDING_STRATEGY_CALLBACK`, proporciona la función de callback utilizada para determinar el relleno. See [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} Las configuraciones iniciales para enviar al peer remoto al conectarse.
   * `Http1IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to used for HTTP/1 fallback. Útil para extender el `http.IncomingMessage` original. **Default:** `http.IncomingMessage`.
   * `Http1ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to used for HTTP/1 fallback. Útil para extender el `http.ServerResponse` original. **Default:** `http.ServerResponse`.
@@ -1571,7 +1571,7 @@ changes:
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
     * `http2.constants.PADDING_STRATEGY_ALIGNED` - Will *attempt* to apply enough padding to ensure that the total frame length, including the 9-byte header, is a multiple of 8. For each frame, however, there is a maximum allowed number of padding bytes that is determined by current flow control state and settings. If this maximum is less than the calculated amount needed to ensure alignment, the maximum will be used and the total frame length will *not* necessarily be aligned at 8 bytes.
   * `peerMaxConcurrentStreams` {number} Sets the maximum number of concurrent streams for the remote peer as if a `SETTINGS` frame had been received. Will be overridden if the remote peer sets its own value for `maxConcurrentStreams`. **Default:** `100`.
-  * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. See [Using `options.selectPadding()`][].
+  * `selectPadding` {Function} Cuando `options.paddingStrategy` es igual a `http2.constants.PADDING_STRATEGY_CALLBACK`, proporciona la función de callback utilizada para determinar el relleno. See [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} Las configuraciones iniciales para enviar al peer remoto al conectarse.
   * ...: Any [`tls.createServer()`][] options can be provided. Para los servidores, usualmente se requieren las opciones de identidad (`pfx` ó `key`/`cert`).
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
@@ -1631,7 +1631,7 @@ changes:
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
     * `http2.constants.PADDING_STRATEGY_ALIGNED` - Will *attempt* to apply enough padding to ensure that the total frame length, including the 9-byte header, is a multiple of 8. For each frame, however, there is a maximum allowed number of padding bytes that is determined by current flow control state and settings. If this maximum is less than the calculated amount needed to ensure alignment, the maximum will be used and the total frame length will *not* necessarily be aligned at 8 bytes.
   * `peerMaxConcurrentStreams` {number} Sets the maximum number of concurrent streams for the remote peer as if a `SETTINGS` frame had been received. Will be overridden if the remote peer sets its own value for `maxConcurrentStreams`. **Default:** `100`.
-  * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. See [Using `options.selectPadding()`][].
+  * `selectPadding` {Function} Cuando `options.paddingStrategy` es igual a `http2.constants.PADDING_STRATEGY_CALLBACK`, proporciona la función de callback utilizada para determinar el relleno. See [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} Las configuraciones iniciales para enviar al peer remoto al conectarse.
   * `createConnection` {Function} Un callback opcional que recibe la instancia de `URL` pasada a `connect` y el objeto de `options`, y devuelve cualquier stream de [`Duplex`][] que deberá ser utilizado como la conexión para esta sesión.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
@@ -1800,7 +1800,7 @@ Protocol errors occur when various HTTP/2 protocol constraints are violated. Est
 
 The HTTP/2 implementation applies stricter handling of invalid characters in HTTP header names and values than the HTTP/1 implementation.
 
-Header field names are *case-insensitive* and are transmitted over the wire strictly as lower-case strings. The API provided by Node.js allows header names to be set as mixed-case strings (e.g. `Content-Type`) but will convert those to lower-case (e.g. `content-type`) upon transmission.
+Header field names are *case-insensitive* and are transmitted over the wire strictly as lower-case strings. La API proporcionada por Node.js permite que los nombres de los encabezados sean establecidos como strings de caso combinado (por ejemplo, `Content-Type`) pero los convertirá a minúsculas (por ejemplo, `content-type`) al ser transmitidos.
 
 Header field-names *must only* contain one or more of the following ASCII characters: `a`-`z`, `A`-`Z`, `0`-`9`, `!`, `#`, `$`, `%`, `&`, `'`, `*`, `+`, `-`, `.`, `^`, `_`, `` ` `` (backtick), `|`, and `~`.
 
