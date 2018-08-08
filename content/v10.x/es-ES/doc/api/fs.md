@@ -298,7 +298,7 @@ added: v0.5.8
 
 Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the `fs.FSWatcher` object is no longer usable.
 
-## Class: fs.ReadStream
+## Clase: fs.ReadStream
 
 <!-- YAML
 added: v0.1.93
@@ -511,7 +511,7 @@ A numeric device identifier if the file is considered "special".
 
 * {number}
 
-The size of the file in bytes.
+El tamaño del archivo en bytes.
 
 ### stats.blksize
 
@@ -614,7 +614,7 @@ The times in the stat object have the following semantics:
 * `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
 * `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
 * `ctime` "Change Time" - Time when file status was last changed (inode data modification). Changed by the chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2) system calls.
-* `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
+* `birthtime` "Birth Time" - Time of file creation. Se establece una vez que se crea el archivo. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
 
 Prior to Node.js v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
 
@@ -660,7 +660,7 @@ Fires immediately after `'open'`.
 added: v0.4.7
 -->
 
-The number of bytes written so far. Does not include data that is still queued for writing.
+El número de bytes escritos hasta el momento. Does not include data that is still queued for writing.
 
 ### writeStream.path
 
@@ -993,28 +993,28 @@ See also: chmod(2).
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Constante              | Octal   | Description              |
+| Constante              | Octal   | Descripción              |
 | ---------------------- | ------- | ------------------------ |
-| `fs.constants.S_IRUSR` | `0o400` | read by owner            |
+| `fs.constants.S_IRUSR` | `0o400` | leído por el propietario |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
 | `fs.constants.S_IXUSR` | `0o100` | execute/search by owner  |
-| `fs.constants.S_IRGRP` | `0o40`  | read by group            |
+| `fs.constants.S_IRGRP` | `0o40`  | leído por el grupo       |
 | `fs.constants.S_IWGRP` | `0o20`  | write by group           |
 | `fs.constants.S_IXGRP` | `0o10`  | execute/search by group  |
-| `fs.constants.S_IROTH` | `0o4`   | read by others           |
+| `fs.constants.S_IROTH` | `0o4`   | leído por otros          |
 | `fs.constants.S_IWOTH` | `0o2`   | write by others          |
 | `fs.constants.S_IXOTH` | `0o1`   | execute/search by others |
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Número | Description              |
+| Número | Descripción              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
 | `4`    | sólo lectura             |
 | `3`    | write and execute        |
-| `2`    | write only               |
+| `2`    | sólo escritura           |
 | `1`    | execute only             |
 | `0`    | no permission            |
 
@@ -1022,7 +1022,7 @@ For example, the octal value `0o765` means:
 
 * The owner may read, write and execute the file.
 * The group may read and write the file.
-* Others may read and execute the file.
+* Otros pueden leer y ejecutar el archivo.
 
 ## fs.chmodSync(path, mode)
 
@@ -1625,7 +1625,7 @@ fs.ftruncate(fd, 4, (err) => {
 // Prints: Node
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). For example,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). Por ejemplo,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -1891,7 +1891,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously creates a directory. No arguments other than a possible exception are given to the completion callback.
+Crea un directorio de manera asincrónica. No arguments other than a possible exception are given to the completion callback.
 
 See also: mkdir(2).
 
@@ -1910,7 +1910,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
 
-Synchronously creates a directory. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
+Crea un directorio de manera sincrónica. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
 
 See also: mkdir(2).
 
@@ -1994,7 +1994,7 @@ added: v5.10.0
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string}
 
-The synchronous version of [`fs.mkdtemp()`][]. Returns the created folder path.
+The synchronous version of [`fs.mkdtemp()`][]. Devuelve la ruta de archivo creada.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
@@ -2117,7 +2117,7 @@ changes:
   * `err` {Error}
   * `files` {string[]|Buffer[]}
 
-Asynchronous readdir(3). Reads the contents of a directory. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
+Asynchronous readdir(3). Lee los contenidos de un directorio. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
 
@@ -2863,7 +2863,7 @@ changes:
 
 Watch for changes on `filename`, where `filename` is either a file or a directory.
 
-The second argument is optional. If `options` is provided as a string, it specifies the `encoding`. Otherwise `options` should be passed as an object.
+El segundo argumento es opcional. If `options` is provided as a string, it specifies the `encoding`. Otherwise `options` should be passed as an object.
 
 The listener callback gets two arguments `(eventType, filename)`. `eventType` is either `'rename'` or `'change'`, and `filename` is the name of the file which triggered the event.
 
@@ -2879,7 +2879,7 @@ The `fs.watch` API is not 100% consistent across platforms, and is unavailable i
 
 The recursive option is only supported on macOS and Windows.
 
-#### Availability
+#### Disponibilidad
 
 <!--type=misc-->
 
@@ -2943,7 +2943,7 @@ changes:
 
 Watch for changes on `filename`. The callback `listener` will be called each time the file is accessed.
 
-The `options` argument may be omitted. If provided, it should be an object. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
+The `options` argument may be omitted. Si se proporciona, debería ser un objeto. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
 
 The `listener` gets two arguments the current stat object and the previous stat object:
 
@@ -3099,7 +3099,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Ejemplo:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -3172,7 +3172,7 @@ changes:
 * `encoding` {string}
 * Returns: {number}
 
-Synchronous versions of [`fs.write()`][]. Returns the number of bytes written.
+Synchronous versions of [`fs.write()`][]. Devuelve el número de bytes escritos.
 
 ## fs Promises API
 
@@ -3242,7 +3242,7 @@ added: v10.0.0
 
 * Returns: {Promise} A `Promise` that will be resolved once the underlying file descriptor is closed, or will be rejected if an error occurs while closing.
 
-Closes the file descriptor.
+Cierra el descriptor de archivos.
 
 ```js
 async function openAndClose() {
@@ -3367,7 +3367,7 @@ async function doTruncate() {
 doTruncate().catch(console.error);
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). For example,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). Por ejemplo,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -3538,7 +3538,7 @@ Node.js makes no guarantees about the atomicity of the copy operation. If an err
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
-Example:
+Ejemplo:
 
 ```js
 const fs = require('fs');
@@ -3648,7 +3648,7 @@ async function doTruncate() {
 doTruncate().catch(console.error);
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). For example,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). Por ejemplo,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -4028,8 +4028,8 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -4057,8 +4057,8 @@ The following constants are meant for use with [`fs.copyFile()`][].
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>COPYFILE_EXCL</code></td>
@@ -4085,8 +4085,8 @@ The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -4174,7 +4174,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 <table>
   <tr>
     <th>Constante</th>
-    <th>Description</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -4217,7 +4217,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 <table>
   <tr>
     <th>Constante</th>
-    <th>Description</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
