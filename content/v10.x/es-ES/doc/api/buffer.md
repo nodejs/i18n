@@ -31,7 +31,7 @@ const buf4 = Buffer.from([1, 2, 3]);
 // Crea un Buffer que contiene bytes UTF-8 [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Crea un Buffer que contiene byter Latin-1 [0x74, 0xe9, 0x73, 0x74].
+// Crea un Buffer que contiene bytes Latin-1 [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
@@ -39,7 +39,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 En versiones anteriores a la 6.0.0, las instancias de `Buffer` fueron creadas utilizando la función constructor de `Buffer`, la cual asigna el `Buffer` retornado de manera diferente basado en qué argumento es provisto:
 
-* Al pasar un número como el primer argumento de `Buffer()` (ejemplo `new Buffer(10)`) se asigna a un nuevo objeto de `Buffer` del tamaño especificado. Antes de Node.js 8.0.0, la memoria asignada para tales instancia de `Buffer` *no* están inicializadas y *pueden contener datos confidenciales*. Tales instancias de `Buffer` *deben* ser subsecuentemente inicializadas utilizando cualquier [`buf.fill(0)`][`buf.fill()`] o al escribir el `Buffer` entero. Mientras este comportamiento es *intencional* para mejorar el rendimiento, la experiencia en el desarrollo ha demostrado que una distinción más explícita es requerida entre la creación de un rápido pero no inicializado `Buffer` versus la creación de un `Buffer` más lento pero seguro. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` retornará un `Buffer` con memoria inicializada.
+* Al pasar un número como el primer argumento de `Buffer()` (ejemplo `new Buffer(10)`) se asigna a un nuevo objeto de `Buffer` del tamaño especificado. Antes de Node.js 8.0.0, la memoria asignada para tales instancias de `Buffer` *no* está inicializada y *puede contener datos confidenciales*. Tales instancias de `Buffer` *deben* ser subsecuentemente inicializadas utilizando cualquier [`buf.fill(0)`][`buf.fill()`] o al escribir el `Buffer` entero. Mientras este comportamiento es *intencional* para mejorar el rendimiento, la experiencia en el desarrollo ha demostrado que una distinción más explícita es requerida entre la creación de un rápido pero no inicializado `Buffer` versus la creación de un `Buffer` más lento pero seguro. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` retornará un `Buffer` con memoria inicializada.
 * Al pasar una cadena, arreglo, o `Buffer` como primer argumento se copian los datos de los objetos pasados dentro del `Buffer`.
 * Al pasar un [`ArrayBuffer`] o un [`SharedArrayBuffer`] retorna un `Buffer` que comparte la memoria asignada con el buffer del arreglo dado.
 
