@@ -1925,7 +1925,7 @@ The HTTP/2 compatibility API is composed of [`Http2ServerRequest`]() and [`Http2
 
 ### ALPN negotiation
 
-ALPN negotiation allows supporting both [HTTPS](https.html) and HTTP/2 over the same socket. The `req` and `res` objects can be either HTTP/1 or HTTP/2, and an application **must** restrict itself to the public API of [HTTP/1](http.html), and detect if it is possible to use the more advanced features of HTTP/2.
+ALPN negotiation allows supporting both [HTTPS](https.html) and HTTP/2 over the same socket. Los objetos `req` y `res` pueden ser HTTP/1 ó HTTP/2, y una aplicación **must** se limita a la API pública de [HTTP/1](http.html), y detecta si es posible utilizar las funciones más avanzadas de HTTP/2.
 
 El siguiente ejemplo crea un servidor que soporta a ambos protocolos:
 
