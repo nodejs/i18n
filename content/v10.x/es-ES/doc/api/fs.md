@@ -332,7 +332,7 @@ Emitted when the `fs.ReadStream`'s file descriptor has been opened.
 added: v9.11.0
 -->
 
-Emitted when the `fs.ReadStream` is ready to be used.
+Se emite cuando el `fs.ReadStream` está listo para ser utilizado.
 
 Fires immediately after `'open'`.
 
@@ -367,7 +367,7 @@ changes:
     description: Added times as numbers.
 -->
 
-A `fs.Stats` object provides information about a file.
+Un objeto de `fs.Stats` proporciona información acerca de un archivo.
 
 Objects returned from [`fs.stat()`][], [`fs.lstat()`][] and [`fs.fstat()`][] and their synchronous counterparts are of this type.
 
@@ -463,7 +463,7 @@ added: v0.1.10
 
 Returns `true` if the `fs.Stats` object describes a symbolic link.
 
-This method is only valid when using [`fs.lstat()`][].
+Este método sólo es válido cuando se utiliza [`fs.lstat()`][].
 
 ### stats.dev
 
@@ -493,7 +493,7 @@ The number of hard-links that exist for the file.
 
 * {number}
 
-The numeric user identifier of the user that owns the file (POSIX).
+El identificador de usuario numérico del usuario que posee el archivo (POSIX).
 
 ### stats.gid
 
@@ -505,7 +505,7 @@ The numeric group identifier of the group that owns the file (POSIX).
 
 * {number}
 
-A numeric device identifier if the file is considered "special".
+Un identificador de dispositivo numérico si el archivo es considerado "especial".
 
 ### stats.size
 
@@ -650,7 +650,7 @@ Se emite cuando se abre el archivo de `WriteStream` .
 added: v9.11.0
 -->
 
-Emitted when the `fs.WriteStream` is ready to be used.
+Se emite cuando el `fs.WriteStream` está listo para ser utilizado.
 
 Fires immediately after `'open'`.
 
@@ -884,7 +884,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Ejemplo:
+Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -938,7 +938,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Ejemplo:
+Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -1142,7 +1142,7 @@ added: v8.5.0
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * `callback` {Function}
 
-Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Asynchronously copies `src` to `dest`. Por defecto, `dest` se sobrescribe si ya existe. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -1182,7 +1182,7 @@ added: v8.5.0
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 
-Copia de manera sincrónica `src` a `dest`. By default, `dest` is overwritten if it already exists. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Copia de manera sincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -1256,7 +1256,7 @@ An example to read the last 10 bytes of a file which is 100 bytes long:
 fs.createReadStream('sample.txt', { start: 90, end: 99 });
 ```
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 ## fs.createWriteStream(path[, options])
 
@@ -1295,7 +1295,7 @@ If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the 
 
 Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 ## fs.exists(path, callback)
 
@@ -1910,7 +1910,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
 
-Crea un directorio de manera sincrónica. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
+Crea un directorio de manera sincrónica. Returns `undefined`. Esta es la versión sincrónica de [`fs.mkdir()`][].
 
 See also: mkdir(2).
 
@@ -2190,7 +2190,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Ejemplo:
+Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -3099,7 +3099,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Ejemplo:
+Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -3205,9 +3205,9 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Asynchronously append data to this file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
+Asynchronously append data to this file, creating the file if it does not yet exist. `data` puede ser una string o un [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 The `FileHandle` must have been opened for appending.
 
@@ -3313,7 +3313,7 @@ Lee de manera asincrónica todos los contenidos de un archivo.
 
 The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. De lo contrario, los datos serán una string.
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. On macOS, Linux, and Windows, the promise will be rejected with an error. On FreeBSD, a representation of the directory's contents will be returned.
 
@@ -3439,7 +3439,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 The `FileHandle` has to support writing.
 
@@ -3486,9 +3486,9 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
+Asynchronously append data to a file, creating the file if it does not yet exist. `data` puede ser una string o un [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 The `path` may be specified as a `FileHandle` that has been opened for appending (using `fsPromises.open()`).
 
@@ -3528,7 +3528,7 @@ added: v10.0.0
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * Returns: {Promise}
 
-Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. The `Promise` will be resolved with no arguments upon success.
+Asynchronously copies `src` to `dest`. Por defecto, `dest` se sobrescribe si ya existe. The `Promise` will be resolved with no arguments upon success.
 
 Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
@@ -4018,7 +4018,7 @@ It is unsafe to use `fsPromises.writeFile()` multiple times on the same file wit
 
 ## FS Constants
 
-The following constants are exported by `fs.constants`.
+Las siguientes constantes son exportadas por `fs.constants`.
 
 Not every constant will be available on every operating system.
 
