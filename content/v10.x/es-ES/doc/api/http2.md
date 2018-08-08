@@ -361,7 +361,7 @@ added: v9.4.0
 
 * {string[]|undefined}
 
-If the `Http2Session` is connected to a `TLSSocket`, the `originSet` property will return an `Array` of origins for which the `Http2Session` may be considered authoritative.
+Si la `Http2Session` se conecta a un `TLSSocket`, la propiedad de `originSet` devolverá un `Array` de orígenes para los cuales el `Http2Session` podría considerarse autoritativo.
 
 #### http2session.pendingSettingsAck
 
@@ -389,7 +389,7 @@ The maximum number of outstanding (unacknowledged) pings is determined by the `m
 
 If provided, the `payload` must be a `Buffer`, `TypedArray`, or `DataView` containing 8 bytes of data that will be transmitted with the `PING` and returned with the ping acknowledgment.
 
-The callback will be invoked with three arguments: an error argument that will be `null` if the `PING` was successfully acknowledged, a `duration` argument that reports the number of milliseconds elapsed since the ping was sent and the acknowledgment was received, and a `Buffer` containing the 8-byte `PING` payload.
+El callback será invocado con tres argumentos: un argumento de error que será `null` si el `PING` fue reconocido con éxito, un argumento de `duration` que reporta el número de milisegundos transcurridos desde que el ping fue enviado y desde que el reconocimiento fue recibido, y un `Buffer` que contiene la carga `PING` de 8-byte.
 
 ```js
 session.ping(Buffer.from('abcdefgh'), (err, duration, payload) => {
