@@ -92,7 +92,7 @@ Most `fs` operations accept filepaths that may be specified in the form of a str
 
 String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
 
-Example using an absolute path on POSIX:
+Ejemplo utilizando una ruta absoluta en POSIX:
 
 ```js
 const fs = require('fs');
@@ -118,7 +118,7 @@ fs.open('file.txt', 'r', (err, fd) => {
 
 Paths specified using a [`Buffer`][] are useful primarily on certain POSIX operating systems that treat file paths as opaque byte sequences. On such systems, it is possible for a single file path to contain sub-sequences that use multiple character encodings. As with string paths, `Buffer` paths may be relative or absolute:
 
-Example using an absolute path on POSIX:
+Ejemplo utilizando una ruta absoluta en POSIX:
 
 ```js
 fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
@@ -697,7 +697,7 @@ changes:
 
 Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Default if no `mode` is specified.
+* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` can be read by the calling process.
 * `fs.constants.W_OK` - `path` can be written by the calling process.
 * `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
@@ -826,7 +826,7 @@ changes:
 
 Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Default if no `mode` is specified.
+* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` can be read by the calling process.
 * `fs.constants.W_OK` - `path` can be written by the calling process.
 * `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
@@ -1021,7 +1021,7 @@ An easier method of constructing the `mode` is to use a sequence of three octal 
 For example, the octal value `0o765` means:
 
 * The owner may read, write and execute the file.
-* The group may read and write the file.
+* El grupo puede leer y escribir el archivo.
 * Otros pueden leer y ejecutar el archivo.
 
 ## fs.chmodSync(path, mode)
@@ -1940,7 +1940,7 @@ changes:
   * `err` {Error}
   * `folder` {string}
 
-Creates a unique temporary directory.
+Crea un único directorio temporal.
 
 Generates six random characters to be appended behind a required `prefix` to create a unique temporary directory.
 
@@ -2026,7 +2026,7 @@ Asynchronous file open. See open(2).
 
 The callback gets two arguments `(err, fd)`.
 
-Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
+Algunos caracteres (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
 Functions based on `fs.open()` exhibit this behavior as well. eg. `fs.writeFile()`, `fs.readFile()`, etc.
 
@@ -2237,7 +2237,7 @@ changes:
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {string|Buffer}
 
-Synchronous version of [`fs.readFile()`][]. Returns the contents of the `path`.
+Synchronous version of [`fs.readFile()`][]. Devuelve los contenidos del `path`.
 
 If the `encoding` option is specified then this function returns a string. Otherwise it returns a buffer.
 
@@ -2323,7 +2323,7 @@ changes:
 * `position` {integer}
 * Returns: {number}
 
-Synchronous version of [`fs.read()`][]. Returns the number of `bytesRead`.
+Synchronous version of [`fs.read()`][]. Devuelve el número de `bytesRead`.
 
 ## fs.realpath(path[, options], callback)
 
@@ -2401,7 +2401,7 @@ Only paths that can be converted to UTF8 strings are supported.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path passed to the callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
-On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc does not have this restriction.
+On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc no tiene esta restricción.
 
 ## fs.realpathSync(path[, options])
 
@@ -2461,7 +2461,7 @@ Only paths that can be converted to UTF8 strings are supported.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path passed to the callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
-On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc does not have this restriction.
+On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc no tiene esta restricción.
 
 ## fs.rename(oldPath, newPath, callback)
 
@@ -2900,7 +2900,7 @@ It is still possible to use `fs.watchFile()`, which uses stat polling, but this 
 
 <!--type=misc-->
 
-On Linux and macOS systems, `fs.watch()` resolves the path to an [inode](https://en.wikipedia.org/wiki/Inode) and watches the inode. If the watched path is deleted and recreated, it is assigned a new inode. The watch will emit an event for the delete but will continue watching the *original* inode. Events for the new inode will not be emitted. This is expected behavior.
+On Linux and macOS systems, `fs.watch()` resolves the path to an [inode](https://en.wikipedia.org/wiki/Inode) and watches the inode. If the watched path is deleted and recreated, it is assigned a new inode. The watch will emit an event for the delete but will continue watching the *original* inode. No se emitirán eventos para el nuevo inode. This is expected behavior.
 
 AIX files retain the same inode for the lifetime of a file. Saving and closing a watched file on AIX will result in two notifications (one for adding new content, and one for truncation).
 
@@ -3220,7 +3220,7 @@ added: v10.0.0
 * `mode` {integer}
 * Returns: {Promise}
 
-Modifies the permissions on the file. The `Promise` is resolved with no arguments upon success.
+Modifica los permisos en el archivo. The `Promise` is resolved with no arguments upon success.
 
 #### filehandle.chown(uid, gid)
 
@@ -3311,7 +3311,7 @@ added: v10.0.0
 
 Asynchronously reads the entire contents of a file.
 
-The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
+The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. De lo contrario, los datos serán una string.
 
 If `options` is a string, then it specifies the encoding.
 
@@ -3457,7 +3457,7 @@ added: v10.0.0
 
 Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Default if no `mode` is specified.
+* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` can be read by the calling process.
 * `fs.constants.W_OK` - `path` can be written by the calling process.
 * `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
@@ -3690,7 +3690,7 @@ deprecated: v10.0.0
 * `mode` {integer}
 * Returns: {Promise}
 
-Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. This method is only implemented on macOS.
+Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
 
 ### fsPromises.lchown(path, uid, gid)
 
@@ -3703,7 +3703,7 @@ deprecated: v10.0.0
 * `gid` {integer}
 * Returns: {Promise}
 
-Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success. This method is only implemented on macOS.
+Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
 
 ### fsPromises.link(existingPath, newPath)
 
@@ -3777,7 +3777,7 @@ Asynchronous file open that returns a `Promise` that, when resolved, yields a `F
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
-Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
+Algunos caracteres (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
 ### fsPromises.read(filehandle, buffer, offset, length, position)
 
@@ -3833,7 +3833,7 @@ added: v10.0.0
 
 Asynchronously reads the entire contents of a file.
 
-The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
+The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. De lo contrario, los datos serán una string.
 
 If `options` is a string, then it specifies the encoding.
 
@@ -3873,7 +3873,7 @@ Only paths that can be converted to UTF8 strings are supported.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
-On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc does not have this restriction.
+On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc no tiene esta restricción.
 
 ### fsPromises.rename(oldPath, newPath)
 
@@ -4273,17 +4273,17 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 The following flags are available wherever the `flag` option takes a string:
 
-* `'a'` - Open file for appending. The file is created if it does not exist.
+* `'a'` - Open file for appending. El archivo se crea si no existe.
 
 * `'ax'` - Like `'a'` but fails if the path exists.
 
-* `'a+'` - Open file for reading and appending. The file is created if it does not exist.
+* `'a+'` - Open file for reading and appending. El archivo se crea si no existe.
 
 * `'ax+'` - Like `'a+'` but fails if the path exists.
 
-* `'as'` - Open file for appending in synchronous mode. The file is created if it does not exist.
+* `'as'` - Open file for appending in synchronous mode. El archivo se crea si no existe.
 
-* `'as+'` - Open file for reading and appending in synchronous mode. The file is created if it does not exist.
+* `'as+'` - Open file for reading and appending in synchronous mode. El archivo se crea si no existe.
 
 * `'r'` - Open file for reading. An exception occurs if the file does not exist.
 
