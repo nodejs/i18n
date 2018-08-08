@@ -469,7 +469,7 @@ This method is only valid when using [`fs.lstat()`][].
 
 * {number}
 
-The numeric identifier of the device containing the file.
+El identificador numérico del dispositivo que contiene el archivo.
 
 ### stats.ino
 
@@ -660,7 +660,7 @@ Fires immediately after `'open'`.
 added: v0.4.7
 -->
 
-El número de bytes escritos hasta el momento. Does not include data that is still queued for writing.
+El número de bytes escritos hasta el momento. No incluye datos que todavía están en cola para escritura.
 
 ### writeStream.path
 
@@ -944,7 +944,7 @@ If `options` is a string, then it specifies the encoding. Ejemplo:
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
 ```
 
-The `path` may be specified as a numeric file descriptor that has been opened for appending (using `fs.open()` or `fs.openSync()`). The file descriptor will not be closed automatically.
+The `path` may be specified as a numeric file descriptor that has been opened for appending (using `fs.open()` or `fs.openSync()`). El descriptor de archivo no se cerrará automáticamente.
 
 ```js
 let fd;
@@ -1413,7 +1413,7 @@ changes:
 
 Versión sincrónica de [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
 
-Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` does not use a callback.)
+Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` no utiliza un callback.)
 
 ## fs.fchmod(fd, mode, callback)
 
@@ -1702,7 +1702,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Synchronous version of [`fs.futimes()`][]. Returns `undefined`.
+Versión sincrónica de [`fs.futimes()`][]. Returns `undefined`.
 
 ## fs.lchmod(path, mode, callback)
 
@@ -2024,7 +2024,7 @@ Asynchronous file open. See open(2).
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
-The callback gets two arguments `(err, fd)`.
+El callback recibe dos argumentos `(err, fd)`.
 
 Algunos caracteres (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
@@ -2073,7 +2073,7 @@ changes:
   * `bytesRead` {integer}
   * `buffer` {Buffer}
 
-Read data from the file specified by `fd`.
+Lee datos del archivo especificado por `fd`.
 
 `buffer` is the buffer that the data will be written to.
 
@@ -2210,7 +2210,7 @@ fs.readFile('<directory>', (err, data) => {
 });
 ```
 
-Any specified file descriptor has to support reading.
+Cualquier descriptor de archivo especificado tiene que soportar la lectura.
 
 If a file descriptor is specified as the `path`, it will not be closed automatically.
 
@@ -2237,7 +2237,7 @@ changes:
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {string|Buffer}
 
-Synchronous version of [`fs.readFile()`][]. Devuelve los contenidos del `path`.
+Versión sincrónica de [`fs.readFile()`][]. Devuelve los contenidos del `path`.
 
 If the `encoding` option is specified then this function returns a string. Otherwise it returns a buffer.
 
@@ -2696,7 +2696,7 @@ added: v0.8.6
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
 
-Synchronous truncate(2). Returns `undefined`. A file descriptor can also be passed as the first argument. In this case, `fs.ftruncateSync()` is called.
+Synchronous truncate(2). Returns `undefined`. A file descriptor can also be passed as the first argument. En este caso, `fs.ftruncateSync()` es llamado.
 
 Passing a file descriptor is deprecated and may result in an error being thrown in the future.
 
@@ -2734,7 +2734,7 @@ fs.unlink('path/file.txt', (err) => {
 });
 ```
 
-`fs.unlink()` will not work on a directory, empty or otherwise. To remove a directory, use [`fs.rmdir()`][].
+`fs.unlink()` will not work on a directory, empty or otherwise. Para eliminar un directorio, utilice [`fs.rmdir()`][].
 
 See also: unlink(2).
 
@@ -3047,7 +3047,7 @@ Write `string` to the file specified by `fd`. If `string` is not a string, then 
 
 `position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'` the data will be written at the current position. See pwrite(2).
 
-`encoding` is the expected string encoding.
+`encoding` es la codificación de string esperada.
 
 The callback will receive the arguments `(err, written, string)` where `written` specifies how many *bytes* the passed string required to be written. Note that bytes written is not the same as string characters. See [`Buffer.byteLength`][].
 
@@ -3105,7 +3105,7 @@ If `options` is a string, then it specifies the encoding. Ejemplo:
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
 ```
 
-Any specified file descriptor has to support writing.
+Cualquier descriptor de archivo especificado tiene que soportar la escritura.
 
 Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
@@ -3327,7 +3327,7 @@ added: v10.0.0
 
 * Returns: {Promise}
 
-Retrieves the [`fs.Stats`][] for the file.
+Recupera el [`fs.Stats`][] para el archivo.
 
 #### filehandle.sync()
 
