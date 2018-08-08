@@ -1305,7 +1305,7 @@ The `'session'` event is emitted when a new `Http2Session` is created by the `Ht
 added: v8.4.0
 -->
 
-The `'sessionError'` event is emitted when an `'error'` event is emitted by an `Http2Session` object associated with the `Http2Server`.
+El evento de `'sessionError'` se emite cuando un evento de `'error'` es emitido por un objeto de `Http2Session` asociado con el `Http2Server`.
 
 #### Event: 'streamError'
 
@@ -2342,7 +2342,7 @@ added: v8.4.0
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. Las claves del objeto devuelto son los nombres de encabezado y los valores de los respectivos valores de encabezado. Todos los nombres de los encabezados están en minúsculas.
 
-The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. Esto significa que métodos típicos de `Object` tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *will not work*.
 
 Ejemplo:
 
@@ -2645,7 +2645,7 @@ If `name` is equal to `Http2Stream`, the `PerformanceEntry` will contain the fol
 * `id` {number} El identificador del `Http2Stream` asociado
 * `timeToFirstByte` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and the reception of the first `DATA` frame.
 * `timeToFirstByteSent` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and sending of the first `DATA` frame.
-* `timeToFirstHeader` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and the reception of the first header.
+* `timeToFirstHeader` {number} El número de milisegundos transcurridos entre el `PerformanceEntry` `startTime` y la recepción del primer encabezado.
 
 If `name` is equal to `Http2Session`, the `PerformanceEntry` will contain the following additional properties:
 
