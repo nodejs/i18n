@@ -296,7 +296,7 @@ Emitted when an error occurs while watching the file.
 added: v0.5.8
 -->
 
-Stop watching for changes on the given `fs.FSWatcher`. Once stopped, the `fs.FSWatcher` object is no longer usable.
+Stop watching for changes on the given `fs.FSWatcher`. Una vez detenido, el objeto de `fs.FSWatcher` ya no es utilizable.
 
 ## Clase: fs.ReadStream
 
@@ -324,7 +324,7 @@ added: v0.1.93
 
 * `fd` {integer} Integer file descriptor used by the `ReadStream`.
 
-Emitted when the `fs.ReadStream`'s file descriptor has been opened.
+Se emite cuando el descriptor de archivos de `fs.ReadStream` ha sido abierto.
 
 ### Event: 'ready'
 
@@ -499,7 +499,7 @@ El identificador de usuario numérico del usuario que posee el archivo (POSIX).
 
 * {number}
 
-The numeric group identifier of the group that owns the file (POSIX).
+El identificador de grupo numérico del grupo que posee el archivo (POSIX).
 
 ### stats.rdev
 
@@ -1316,7 +1316,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Ejemplo:
+Test whether or not the given path exists by checking with the file system. Después llama al argumento de `callback` con verdadero o falso. Ejemplo:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -2489,7 +2489,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously rename file at `oldPath` to the pathname provided as `newPath`. In the case that `newPath` already exists, it will be overwritten. No arguments other than a possible exception are given to the completion callback.
+Asynchronously rename file at `oldPath` to the pathname provided as `newPath`. En caso de que `newPath` ya exista, será reescrito. No arguments other than a possible exception are given to the completion callback.
 
 See also: rename(2).
 
@@ -3011,7 +3011,7 @@ The callback will be given three arguments `(err, bytesWritten, buffer)` where `
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `bytesWritten` and `buffer` properties.
 
-Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
+Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -3051,7 +3051,7 @@ Write `string` to the file specified by `fd`. If `string` is not a string, then 
 
 The callback will receive the arguments `(err, written, string)` where `written` specifies how many *bytes* the passed string required to be written. Tenga en cuenta que bytes escritos no es igual a caracteres de string. See [`Buffer.byteLength`][].
 
-Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
+Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -3107,7 +3107,7 @@ fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
 
 Cualquier descriptor de archivos especificado tiene que soportar la escritura.
 
-Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
+Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 If a file descriptor is specified as the `file`, it will not be closed automatically.
 
@@ -3315,7 +3315,7 @@ The `Promise` is resolved with the contents of the file. If no encoding is speci
 
 Si `options` es una string, entonces especifica la codificación.
 
-When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. On macOS, Linux, and Windows, the promise will be rejected with an error. On FreeBSD, a representation of the directory's contents will be returned.
+When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. En macOS, Linux, y Windows, la promesa será rechazada con un error. On FreeBSD, a representation of the directory's contents will be returned.
 
 The `FileHandle` has to support reading.
 
@@ -3418,7 +3418,7 @@ The `Promise` is resolved with an object containing a `bytesWritten` property id
 
 `position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
 
-It is unsafe to use `filehandle.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). For this scenario, `fs.createWriteStream` is strongly recommended.
+It is unsafe to use `filehandle.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -3837,7 +3837,7 @@ The `Promise` is resolved with the contents of the file. If no encoding is speci
 
 If `options` is a string, then it specifies the encoding.
 
-When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. On macOS, Linux, and Windows, the promise will be rejected with an error. On FreeBSD, a representation of the directory's contents will be returned.
+When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. En macOS, Linux, y Windows, la promesa será rechazada con un error. On FreeBSD, a representation of the directory's contents will be returned.
 
 Cualquier `FileHandle` especificado tiene que apoyar la lectura.
 
@@ -3988,7 +3988,7 @@ The `Promise` is resolved with an object containing a `bytesWritten` property id
 
 `position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
 
-It is unsafe to use `fsPromises.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). For this scenario, `fs.createWriteStream` is strongly recommended.
+It is unsafe to use `fsPromises.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -4010,7 +4010,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 Cualquier `FileHandle` especificado tiene que apoyar la escritura.
 
