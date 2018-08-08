@@ -592,7 +592,7 @@ added: v8.4.0
 * `options` {Object}
   
   * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
-  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se hace la única dependencia directa del Stream mayor, con todas las otras dependientes existentes hechas dependientes del stream creado recientemente. **Default:** `false`.
+  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas dependientes del stream creado recientemente. **Default:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
@@ -669,7 +669,7 @@ When an `Http2Stream` instance is destroyed, an attempt will be made to send an 
 
 Cuando se destruye la instancia de `Http2Stream`, el evento de `'close'` será emitido. Because `Http2Stream` is an instance of `stream.Duplex`, the `'end'` event will also be emitted if the stream data is currently flowing. The `'error'` event may also be emitted if `http2stream.destroy()` was called with an `Error` passed as the first argument.
 
-After the `Http2Stream` has been destroyed, the `http2stream.destroyed` property will be `true` and the `http2stream.rstCode` property will specify the `RST_STREAM` error code. La instancia de `Http2Stream` ya no es utilizable una vez destruida.
+Después de que el `Http2Stream` haya sido destruido, la propiedad de `http2stream.destroyed` será `true` y la propiedad de `http2stream.rstCode` especificará el código de error de `RST_STREAM` . La instancia de `Http2Stream` ya no es utilizable una vez destruida.
 
 #### Event: 'aborted'
 
@@ -795,7 +795,7 @@ added: v8.4.0
 -->
 
 * `opciones` {Object} 
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Default:** `false`.
+  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas una dependiente de este stream. **Default:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente este stream.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. El valor es un número entre `1` y `256` (inclusivo).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
@@ -1024,7 +1024,7 @@ added: v8.4.0
 
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
-  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se hace la única dependencia directa del Stream mayor, con todas las otras dependientes existentes hechas dependientes del stream creado recientemente. **Default:** `false`.
+  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas dependientes del stream creado recientemente. **Default:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
 * `callback` {Function} Callback that is called once the push stream has been initiated. 
   * `err` {Error}
@@ -1770,7 +1770,7 @@ Se ignoran todas las propiedades adicionales del objeto de las configuraciones.
 
 Cuando `options.paddingStrategy` es igual a `http2.constants.PADDING_STRATEGY_CALLBACK`, la implementación de HTTP/2 consultará la función de callback de `options.selectPadding()`, si es proporcionada, para determinar la cantidad específica de relleno a usar por `HEADERS` y frame de `DATA` .
 
-The `options.selectPadding()` function receives two numeric arguments, `frameLen` and `maxFrameLen` and must return a number `N` such that `frameLen <= N <= maxFrameLen`.
+La función de `options.selectPadding()` recibe dos argumentos numéricos, `frameLen` y `maxFrameLen` y debe devolver un número `N` para que `frameLen <= N <= maxFrameLen`.
 
 ```js
 const http2 = require('http2');
