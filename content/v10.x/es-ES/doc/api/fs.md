@@ -86,7 +86,7 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-## File paths
+## Rutas de archivo
 
 Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
 
@@ -875,7 +875,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Example:
+Ejemplo:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -884,7 +884,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Ejemplo:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -927,7 +927,7 @@ changes:
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Example:
+Ejemplo:
 
 ```js
 try {
@@ -938,7 +938,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Ejemplo:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -993,7 +993,7 @@ See also: chmod(2).
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Constant               | Octal   | Description              |
+| Constante              | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -1012,7 +1012,7 @@ An easier method of constructing the `mode` is to use a sequence of three octal 
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
-| `4`    | read only                |
+| `4`    | sólo lectura             |
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
@@ -1150,7 +1150,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
-Example:
+Ejemplo:
 
 ```js
 const fs = require('fs');
@@ -1190,7 +1190,7 @@ Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it al
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
-Example:
+Ejemplo:
 
 ```js
 const fs = require('fs');
@@ -1316,7 +1316,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Ejemplo:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -2177,7 +2177,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Example:
+Asynchronously reads the entire contents of a file. Ejemplo:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -2190,7 +2190,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Example:
+If `options` is a string, then it specifies the encoding. Ejemplo:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -2856,7 +2856,7 @@ changes:
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
-* `listener` {Function|undefined} **Default:** `undefined` 
+* `listener` {Function|undefined} **Default:** `no definido` 
   * `eventType` {string}
   * `filename` {string|Buffer}
 * Returns: {fs.FSWatcher}
@@ -3090,7 +3090,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Example:
+Ejemplo:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -4173,7 +4173,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constant</th>
+    <th>Constante</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -4216,7 +4216,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constant</th>
+    <th>Constante</th>
     <th>Description</th>
   </tr>
   <tr>
