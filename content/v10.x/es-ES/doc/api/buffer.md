@@ -56,9 +56,9 @@ Para hacer la creación de las instancias de `Buffer` más confiable y menos pro
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] retorna un nuevo `Buffer` inicializado de un tamaño específico. Este método es más lento que [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] pero garantiza que las instancias de `Buffer` recién creadas nunca contengan datos antiguos que sean potencialmente confidenciales.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] y [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] cada uno retorna un nuevo `Buffer` no inicializado del `size` especificado. Porque el `Buffer` no está inicializado, el segmento asignado en la memoria puede contender datos antiguos que son potencialmente confidenciales.
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+Las instancias de `Buffer` retornadas por [`Buffer.allocUnsafe()`] *deben* ser asignadas a un grupo de memoria interna compartida si `size` es menor o igual que la mitad de [`Buffer.poolSize`]. Las instancias retornadas por [`Buffer.allocUnsafeSlow()`] *nunca* utilizan el grupo de memoria interna compartida.
 
-### The `--zero-fill-buffers` command line option
+### La opción de línea de comando `--zero-fill-buffers`
 
 <!-- YAML
 added: v5.10.0
