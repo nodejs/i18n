@@ -54,7 +54,7 @@ Para hacer la creación de las instancias de `Buffer` más confiable y menos pro
 * [`Buffer.from(buffer)`] retorna un nuevo `Buffer` que *contiene una copia* de los contenidos del `Buffer` dado.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] retorna un nuevo `Buffer` que *contiene una copia* de la cadena proporcionada.
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] retorna un nuevo `Buffer` inicializado de un tamaño específico. Este método es más lento que [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] pero garantiza que las instancias de `Buffer` recién creadas nunca contengan datos antiguos que sean potencialmente confidenciales.
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] y [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] retorna cada una un nuevo `Buffer` no inicializado del `size` especificado. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
 
 `Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
 
