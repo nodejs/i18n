@@ -865,16 +865,16 @@ added: v0.9.4
 
 Il metodo `readable.unpipe()` scollega un `Writable` stream precedentemente collegato utilizzando il metodo [`stream.pipe()`][].
 
-If the `destination` is not specified, then *all* pipes are detached.
+Se la `destination` non è specificata, allora *tutti* i pipe vengono scollegati.
 
-If the `destination` is specified, but no pipe is set up for it, then the method does nothing.
+Se la `destination` è specificata, ma non è stata impostato alcun pipe per essa, il metodo non esegue nulla.
 
 ```js
 const fs = require('fs');
 const readable = getReadableStreamSomehow();
 const writable = fs.createWriteStream('file.txt');
-// All the data from readable goes into 'file.txt',
-// but only for the first second
+// Tutti i dati vanno da readable all'interno del 'file.txt', 
+// ma solo per il primo secondo
 readable.pipe(writable);
 setTimeout(() => {
   console.log('Stop writing to file.txt');
@@ -895,7 +895,7 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|any} Chunk of data to unshift onto the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
+* `chunk` {Buffer|Uint8Array|string|any} Chunk di dati da passare alla read queue. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript diverso da `null`.
 
 The `readable.unshift()` method pushes a chunk of data back into the internal buffer. This is useful in certain situations where a stream is being consumed by code that needs to "un-consume" some amount of data that it has optimistically pulled out of the source, so that the data can be passed on to some other party.
 
