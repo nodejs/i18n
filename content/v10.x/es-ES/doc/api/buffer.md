@@ -64,8 +64,8 @@ Las instancias de `Buffer` retornadas por [`Buffer.allocUnsafe()`] *deben* ser a
 added: v5.10.0
 -->
 
-Node.js can be started using the `--zero-fill-buffers` command line option to cause all newly allocated `Buffer` instances to be zero-filled upon creation by default, including buffers returned by `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`], and `new
-SlowBuffer(size)`. Use of this flag can have a significant negative impact on performance. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain old data that is potentially sensitive.
+Node.js se puede iniciar utilizando la opción de línea de comando `--zero-fill-buffers` para hacer que todas las instancias de `Buffer` recién asignadas se llenen con ceros al crearlas por defecto, incluyendo a buffers retornados por `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`], y `new
+SlowBuffer(size)`. Utilizar esta bandera puede tener un significativo impacto negativo sobre el rendimiento. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain old data that is potentially sensitive.
 
 ```txt
 $ node --zero-fill-buffers
