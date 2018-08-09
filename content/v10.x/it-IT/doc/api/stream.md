@@ -904,9 +904,9 @@ Il metodo `stream.unshift(chunk)` non può essere chiamato dopo che è stato eme
 Gli sviluppatori che utilizzano `stream.unshift()` spesso dovrebbero prendere in considerazione di passare all'utilizzo di un [`Transform`][] stream. Vedi la sezione [API per gli Stream Implementer](#stream_api_for_stream_implementers) per maggiori informazioni.
 
 ```js
-// Pull off a header delimited by \n\n
-// use unshift() if we get too much
-// Call the callback with (error, header, stream)
+// Estrae un header delimitato da \n\n
+// usa unshift() se otteniamo troppo
+// Chiama il callback con (error, header, stream)
 const { StringDecoder } = require('string_decoder');
 function parseHeader(stream, callback) {
   stream.on('error', callback);
@@ -918,20 +918,20 @@ function parseHeader(stream, callback) {
     while (null !== (chunk = stream.read())) {
       const str = decoder.write(chunk);
       if (str.match(/\n\n/)) {
-        // found the header boundary
+        // limite dell'header trovato
         const split = str.split(/\n\n/);
         header += split.shift();
         const remaining = split.join('\n\n');
         const buf = Buffer.from(remaining, 'utf8');
         stream.removeListener('error', callback);
-        // remove the 'readable' listener before unshifting
+        // rimuove il 'readable' listener prima dell'unshift
         stream.removeListener('readable', onReadable);
         if (buf.length)
           stream.unshift(buf);
         // now the body of the message can be read from the stream.
         callback(null, header, stream);
       } else {
-        // still reading the header.
+        // sta ancora leggendo l'header.
         header += str;
       }
     }
@@ -939,7 +939,7 @@ function parseHeader(stream, callback) {
 }
 ```
 
-Unlike [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` will not end the reading process by resetting the internal reading state of the stream. This can cause unexpected results if `readable.unshift()` is called during a read (i.e. from within a [`stream._read()`](#stream_readable_read_size_1) implementation on a custom stream). Following the call to `readable.unshift()` with an immediate [`stream.push('')`](#stream_readable_push_chunk_encoding) will reset the reading state appropriately, however it is best to simply avoid calling `readable.unshift()` while in the process of performing a read.
+A differenza di [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` non terminerà il processo di lettura reimpostando lo stato di lettura interna dello stream. Ciò può causare risultati imprevisti se `readable.unshift()` viene chiamato durante una lettura (ad esempio all'interno di un'implementazione [`stream._read()`](#stream_readable_read_size_1) su uno stream personalizzato). Following the call to `readable.unshift()` with an immediate [`stream.push('')`](#stream_readable_push_chunk_encoding) will reset the reading state appropriately, however it is best to simply avoid calling `readable.unshift()` while in the process of performing a read.
 
 ##### readable.wrap(stream)
 
