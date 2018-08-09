@@ -860,10 +860,10 @@ readable.on('data', (chunk) => {
 added: v0.9.4
 -->
 
-* `destination` {stream.Writable} Optional specific stream to unpipe
-* Returns: {this}
+* `destination` {stream.Writable} Stream specifico opzionale da sottoporre al unpiping
+* Restituisce: {this}
 
-The `readable.unpipe()` method detaches a `Writable` stream previously attached using the [`stream.pipe()`][] method.
+Il metodo `readable.unpipe()` scollega un `Writable` stream precedentemente collegato utilizzando il metodo [`stream.pipe()`][].
 
 If the `destination` is not specified, then *all* pipes are detached.
 
