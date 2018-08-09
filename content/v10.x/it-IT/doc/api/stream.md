@@ -897,11 +897,11 @@ changes:
 
 * `chunk` {Buffer|Uint8Array|string|any} Chunk di dati da passare alla read queue. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript diverso da `null`.
 
-Il metodo `readable.unshift()` inserisce nuovamente un chunk di dati nel buffer interno. This is useful in certain situations where a stream is being consumed by code that needs to "un-consume" some amount of data that it has optimistically pulled out of the source, so that the data can be passed on to some other party.
+Il metodo `readable.unshift()` inserisce nuovamente un chunk di dati nel buffer interno. Ciò è utile in determinate situazioni nelle quali uno stream viene utilizzato/consumato dal codice che deve "non-consumare" una certa quantità di dati che è stata ottimisticamente estratta dalla sorgente, in modo che i dati possano essere trasmessi da un'altra parte.
 
-The `stream.unshift(chunk)` method cannot be called after the [`'end'`][] event has been emitted or a runtime error will be thrown.
+Il metodo `stream.unshift(chunk)` non può essere chiamato dopo che è stato emesso l'evento [`'end'`][] altrimeni verrà generato un errore di runtime.
 
-Developers using `stream.unshift()` often should consider switching to use of a [`Transform`][] stream instead. See the [API for Stream Implementers](#stream_api_for_stream_implementers) section for more information.
+Gli sviluppatori che utilizzano `stream.unshift()` spesso dovrebbero prendere in considerazione di passare all'utilizzo di un [`Transform`][] stream. Vedi la sezione [API per gli Stream Implementer](#stream_api_for_stream_implementers) per maggiori informazioni.
 
 ```js
 // Pull off a header delimited by \n\n
