@@ -954,7 +954,7 @@ Le versioni di Node.js precedenti alla v0.10 avevano stream che non implementava
 
 Quando si utilizza una precedente libreria Node.js che emette eventi [`'data'`][] ed ha un metodo [`stream.pause()`](#stream_readable_pause) che è di sola consulenza, il metodo `readable.wrap()` può essere utilizzato per creare un [`Readable`][] stream che utilizza il vecchio stream come la sua sorgente dati.
 
-It will rarely be necessary to use `readable.wrap()` but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
+Raramente sarà necessario utilizzare `readable.wrap()` ma questo metodo è stato fornito come soluzione per interagire con le applicazioni e librerie Node.js precedenti.
 
 ```js
 const { OldReader } = require('./old-api-module.js');
@@ -963,7 +963,7 @@ const oreader = new OldReader();
 const myReader = new Readable().wrap(oreader);
 
 myReader.on('readable', () => {
-  myReader.read(); // etc.
+  myReader.read(); // ecc.
 });
 ```
 
@@ -973,9 +973,9 @@ myReader.on('readable', () => {
 added: v10.0.0
 -->
 
-> Stability: 1 - Experimental
+> Stabilità: 1 - Sperimentale
 
-* Returns: {AsyncIterator} to fully consume the stream.
+* Restituisce: {AsyncIterator} per consumare completamente lo stream.
 
 ```js
 const fs = require('fs');
@@ -992,7 +992,7 @@ async function print(readable) {
 print(fs.createReadStream('file')).catch(console.log);
 ```
 
-If the loop terminates with a `break` or a `throw`, the stream will be destroyed. In other terms, iterating over a stream will consume the stream fully. The stream will be read in chunks of size equal to the `highWaterMark` option. In the code example above, data will be in a single chunk if the file has less then 64kb of data because no `highWaterMark` option is provided to [`fs.createReadStream()`][].
+Se il ciclo termina con un `break` oppure un `throw`, lo stream verrà distrutto. In altre parole, l'iterazione su uno stream consumerà completamente lo stream stesso. The stream will be read in chunks of size equal to the `highWaterMark` option. In the code example above, data will be in a single chunk if the file has less then 64kb of data because no `highWaterMark` option is provided to [`fs.createReadStream()`][].
 
 ### Duplex and Transform Streams
 
