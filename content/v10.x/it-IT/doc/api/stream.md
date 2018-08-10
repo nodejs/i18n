@@ -4,9 +4,9 @@
 
 > Stabilità: 2 - Stabile
 
-Uno stream è un'abstract interface per lavorare con gli streaming data in Node.js. Il modulo `stream` fornisce un'API di base che semplifica la creazione di objects che implementano la stream interface.
+Uno stream è un'abstract interface per lavorare con gli streaming data in Node.js. Il modulo `stream` fornisce un'API di base che semplifica la creazione di object che implementano la stream interface.
 
-Esistono molti stream objects forniti da Node.js. Ad esempio, una [richiesta ad un server HTTP](http.html#http_class_http_incomingmessage) e [`process.stdout`][] sono tutti e due istanze di stream.
+Esistono molti stream object forniti da Node.js. Ad esempio, una [richiesta ad un server HTTP](http.html#http_class_http_incomingmessage) e [`process.stdout`][] sono tutti e due istanze di stream.
 
 Gli stream possono essere readable (leggibiliI), writeable (scrivibili) oppure entrambi. Tutti gli stream sono istanze di [`EventEmitter`][].
 
@@ -16,7 +16,7 @@ Gli stream possono essere readable (leggibiliI), writeable (scrivibili) oppure e
 const stream = require('stream');
 ```
 
-Mentre è importante capire come funzionano gli stream, il modulo `stream` è di per sé più utile per gli sviluppatori che stanno creando nuovi tipi di istanze di stream. Gli sviluppatori che *utilizzano* principalmente gli stream objects raramente hanno bisogno di utilizzare direttamente il modulo `stream`.
+Mentre è importante capire come funzionano gli stream, il modulo `stream` è di per sé più utile per gli sviluppatori che stanno creando nuovi tipi di istanze di stream. Gli sviluppatori che *utilizzano* principalmente gli stream object raramente hanno bisogno di utilizzare direttamente il modulo `stream`.
 
 ## Organizzazione di questo Documento
 
@@ -35,7 +35,7 @@ Inoltre questo modulo include le funzioni di utility [pipeline](#stream_stream_p
 
 ### Object Mode
 
-Tutti gli stream creati dalle API di Node.js operano esclusivamente su stringhe e `Buffer` (o `Uint8Array`) objects. Tuttavia, è possibile che le implementazioni dello stream funzionino con altri tipi di valori JavaScript (ad eccezione di `null`, che ha uno scopo speciale all'interno degli stream). Tali stream sono considerati operanti in "object mode".
+Tutti gli stream creati dalle API di Node.js operano esclusivamente su stringhe e `Buffer` (o `Uint8Array`) object. Tuttavia, è possibile che le implementazioni dello stream funzionino con altri tipi di valori JavaScript (ad eccezione di `null`, che ha uno scopo speciale all'interno degli stream). Tali stream sono considerati operanti in "object mode".
 
 Le istanze di stream vengono trasformate in object mode utilizzando l'opzione `objectMode` quando viene creato lo stream. Provare a cambiare uno stream esistente in object mode non è sicuro.
 
@@ -45,7 +45,7 @@ Le istanze di stream vengono trasformate in object mode utilizzando l'opzione `o
 
 Entrambi gli stream sia [`Writable`][] che [`Readable`][] memorizzeranno i dati in un buffer interno che può essere recuperato usando rispettivamente `writable.writableBuffer` oppure `readable.readableBuffer`.
 
-La quantità di dati potenzialmente inseriti in un buffer dipende dall'opzione `highWaterMark` passata all'interno del constructor degli stream. Per gli stream normali, l'opzione `highWaterMark` specifica un [numero totale di bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Per gli stream che operano in object mode, l'`highWaterMark` specifica un numero totale di objects.
+La quantità di dati potenzialmente inseriti in un buffer dipende dall'opzione `highWaterMark` passata all'interno del constructor degli stream. Per gli stream normali, l'opzione `highWaterMark` specifica un [numero totale di bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Per gli stream che operano in object mode, l'`highWaterMark` specifica un numero totale di object.
 
 I dati vengono memorizzati nel buffer nei `Readable` stream quando l'implementazione chiama [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). Se il consumer dello Stream non chiama [`stream.read()`](#stream_readable_read_size), i dati si fermeranno nella queue interna fino a quando non verranno consumati/utilizzati.
 
@@ -55,7 +55,7 @@ I dati vengono memorizzati nel buffer nei `Writable` stream quando il metodo [`w
 
 Un obiettivo chiave dello `stream` API, in particolare il metodo [`stream.pipe()`], è di limitare il buffering dei dati a livelli accettabili in modo che sorgenti e destinazioni di diverse velocità non sovraccarichino la memoria disponibile.
 
-Poiché gli stream [`Duplex`][] e [`Transform`][] sono entrambi sia `Readable` che `Writable`, ciascuno di essi mantiene *due* buffer interni separati utilizzati per la lettura e la scrittura, consentendo a ciascuna parte di operare indipendentemente dall'altra mantenendo un flusso di dati appropriato ed efficiente. Ad esempio, le istanze di [`net.Socket`][] sono gli [`Duplex`][] stream di cui la parte `Readable` consente il consumo dei dati ricevuti *dal* socket e la parte `Writable` consente di scrivere i dati *sul* socket. Poiché i dati possono essere scritti sul socket ad una velocità maggiore o minore rispetto a quella dei dati ricevuti, è importante che ciascuna parte funzioni (ed esegua il buffer) indipendentemente dall'altra.
+Poiché gli stream [`Duplex`][] e [`Transform`][] sono entrambi sia `Readable` che `Writable`, ciascuno di essi mantiene *due* buffer interni separati utilizzati per la lettura e la scrittura, consentendo a ciascuna parte di operare indipendentemente dall'altra mantenendo un flusso di dati appropriato ed efficiente. Ad esempio, le istanze di [`net.Socket`][] sono i [`Duplex`][] stream di cui la parte `Readable` consente il consumo dei dati ricevuti *dal* socket e la parte `Writable` consente di scrivere i dati *sul* socket. Poiché i dati possono essere scritti sul socket ad una velocità maggiore o minore rispetto a quella dei dati ricevuti, è importante che ciascuna parte funzioni (ed esegua il buffer) indipendentemente dall'altra.
 
 ## API per gli Stream Consumer
 
@@ -1552,9 +1552,9 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|null|any} Chunk of data to push into the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value.
-* `encoding` {string} Encoding of string chunks. Must be a valid `Buffer` encoding, such as `'utf8'` or `'ascii'`.
-* Returns: {boolean} `true` if additional chunks of data may continued to be pushed; `false` otherwise.
+* `chunk` {Buffer|Uint8Array|string|null|any} Chunk di dati da inserire tramite push nella read queue. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript.
+* `encoding` {string} Encoding degli string chunk. Deve essere una `Buffer` encoding valido, come ad esempio `'utf8'` oppure `'ascii'`.
+* Restituisce: {boolean} `true` se è possibile continuare ad eseguire il push di ulteriori chunk di dati; in caso contrario `false`.
 
 When `chunk` is a `Buffer`, `Uint8Array` or `string`, the `chunk` of data will be added to the internal queue for users of the stream to consume. Passing `chunk` as `null` signals the end of the stream (EOF), after which no more data can be written.
 
