@@ -1290,7 +1290,7 @@ class MyWritable extends Writable {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+Oppure, quando si utilizzano constructor di stili pre-ES6:
 
 ```js
 const { Writable } = require('stream');
@@ -1304,7 +1304,7 @@ function MyWritable(options) {
 util.inherits(MyWritable, Writable);
 ```
 
-Or, using the Simplified Constructor approach:
+Oppure, utilizzando l'approccio del Constructor semplificato:
 
 ```js
 const { Writable } = require('stream');
@@ -1321,13 +1321,13 @@ const myWritable = new Writable({
 
 #### writable.\_write(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} The chunk to be written. Will **always** be a buffer unless the `decodeStrings` option was set to `false` or the stream is operating in object mode.
-* `encoding` {string} If the chunk is a string, then `encoding` is the character encoding of that string. If chunk is a `Buffer`, or if the stream is operating in object mode, `encoding` may be ignored.
-* `callback` {Function} Call this function (optionally with an error argument) when processing is complete for the supplied chunk.
+* `chunk` {Buffer|string|any} Il chunk da scrivere. Sarà **sempre** un buffer a meno che l'opzione `decodeStrings` sia impostata su `false` oppure che lo stream stia operando in object mode.
+* `encoding` {string} Se il chunk è una stringa, allora `encoding` è l'encoding del carattere di quella stringa. Se il chunk è un `Buffer`, o se lo stream sta operando in object mode, l'`encoding` potrebbe essere ignorato.
+* `callback` {Function} Chiama questa funzione (facoltativamente con un argomento error) quando l'elaborazione per il chunk fornito è completa.
 
 All `Writable` stream implementations must provide a [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1) method to send data to the underlying resource.
 
-[`Transform`][] streams provide their own implementation of the [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1).
+Gli [`Transform`][] stream forniscono la loro personale implementazione del [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1).
 
 This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Writable` class methods only.
 
