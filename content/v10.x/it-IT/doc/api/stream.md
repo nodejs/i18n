@@ -1095,17 +1095,17 @@ added: v10.0.0
 * `...streams` {Stream} Due o più stream da collegare tramite il piping.
 * `callback` {Function} Una funzione di callback che accetta un argomento error opzionale.
 
-A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
+Un metodo module per il piping tra gli stream che inoltrano gli errori ed eseguono una corretta pulizia e che forniscono un callback quando la pipeline è completa.
 
 ```js
 const { pipeline } = require('stream');
 const fs = require('fs');
 const zlib = require('zlib');
 
-// Use the pipeline API to easily pipe a series of streams
-// together and get notified when the pipeline is fully done.
+// Utilizza la pipeline API per unire facilmente tramite il piping una serie
+// di stream e ricevere notifiche quando la pipeline è completa.
 
-// A pipeline to gzip a potentially huge tar file efficiently:
+// Una pipeline per eseguire il gzip di un file tar potenzialmente enorme in modo efficiente:
 
 pipeline(
   fs.createReadStream('archive.tar'),
@@ -1121,7 +1121,7 @@ pipeline(
 );
 ```
 
-The `pipeline` API is promisify'able as well:
+L'API `pipeline` è anche promisify-able:
 
 ```js
 const pipeline = util.promisify(stream.pipeline);
@@ -1138,7 +1138,7 @@ async function run() {
 run().catch(console.error);
 ```
 
-## API for Stream Implementers
+## API per gli Stream Implementer
 
 <!--type=misc-->
 
@@ -1163,19 +1163,19 @@ The new stream class must then implement one or more specific methods, depending
   <thead>
     <tr>
       <th>
-        <p>Use-case</p>
+        <p>Caso d'utilizzo</p>
       </th>
       <th>
-        <p>Class</p>
+        <p>Classe</p>
       </th>
       <th>
-        <p>Method(s) to implement</p>
+        <p>Metodo(i) da implementare</p>
       </th>
     </tr>
   </thead>
   <tr>
     <td>
-      <p>Reading only</p>
+      <p>Solo lettura</p>
     </td>
     <td>
       <p>[`Readable`](#stream_class_stream_readable)</p>
@@ -1186,7 +1186,7 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
   <tr>
     <td>
-      <p>Writing only</p>
+      <p>Solo scrittura</p>
     </td>
     <td>
       <p>[`Writable`](#stream_class_stream_writable)</p>
@@ -1201,7 +1201,7 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
   <tr>
     <td>
-      <p>Reading and writing</p>
+      <p>Lettura e scrittura</p>
     </td>
     <td>
       <p>[`Duplex`](#stream_class_stream_duplex)</p>
@@ -1216,7 +1216,7 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
   <tr>
     <td>
-      <p>Operate on written data, then read the result</p>
+      <p>Operazione su dati scritti e lettura del risultato</p>
     </td>
     <td>
       <p>[`Transform`](#stream_class_stream_transform)</p>
