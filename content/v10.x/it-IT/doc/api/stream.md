@@ -656,7 +656,7 @@ added: v8.0.0
 * `error` {Error} Errore che verrà passato come payload nell'evento `'error'`
 * Restituisce: {this}
 
-Distrugge lo stream ed emette l'`'error'` e l'evento `'close'`. Dopo questa chiamata, il readable stream rilascerà tutte le risorse interne e le successive chiamate a `push()` verranno ignorate. Gli implementors non dovrebbero sovrascrivere questo metodo, ma implementare [`readable._destroy()`](#stream_readable_destroy_err_callback).
+Distrugge lo stream ed emette l'`'error'` e l'evento `'close'`. Dopo questa chiamata, il readable stream rilascerà tutte le risorse interne e le successive chiamate a `push()` verranno ignorate. Gli implementor non dovrebbero sovrascrivere questo metodo, ma implementare [`readable._destroy()`](#stream_readable_destroy_err_callback).
 
 ##### readable.isPaused()
 
@@ -708,7 +708,7 @@ added: v0.9.4
 -->
 
 * `destination` {stream.Writable} La destinazione per la quale scrivere i dati
-* `options` {Object} Opzioni Pipe 
+* `option` {Object} Opzioni Pipe 
   * `end` {boolean} Termina il writer quando finisce il reader. **Default:** `true`.
 * Restituisce: {stream.Writable} rendendo possibile l'installazione di catene di stream che sono stati sottoposti al piping
 
