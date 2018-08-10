@@ -1047,10 +1047,10 @@ Distrugge lo stream ed emette `'error'`. Dopo questa chiamata, il transform stre
 added: v10.0.0
 -->
 
-* `stream` {Stream} A readable and/or writable stream.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `stream` {Stream} Un readable stream e/o un writable stream.
+* `callback` {Function} Una funzione di callback che accetta un argomento error opzionale.
 
-A function to get notified when a stream is no longer readable, writable or has experienced an error or a premature close event.
+Una funzione per ricevere una notifica quando uno stream non è più readable, writable oppure se ha subito un errore od un evento close prematuro.
 
 ```js
 const { finished } = require('stream');
@@ -1065,7 +1065,7 @@ finished(rs, (err) => {
   }
 });
 
-rs.resume(); // drain the stream
+rs.resume(); // lo stream viene sottoposto al drain
 ```
 
 Especially useful in error handling scenarios where a stream is destroyed prematurely (like an aborted HTTP request), and will not emit `'end'` or `'finish'`.
