@@ -1335,20 +1335,20 @@ Il metodo `callback` deve essere chiamato per segnalare che la scrittura è stat
 
 Tutte le chiamate a `writable.write()` che si verificano tra il momento in cui `writable._write()` viene chiamato ed il momento in cui il `callback` viene chiamato faranno sì che i dati scritti siano memorizzati in un buffer. Quando viene invocato il `callback`, lo stream potrebbe emettere un evento [`'drain'`][]. Se un'implementazione di stream è in grado di elaborare molteplici chunk di dati contemporaneamente, è necessario implementare il metodo `writable._writev()`.
 
-If the `decodeStrings` property is explicitly set to `false` in the constructor options, then `chunk` will remain the same object that is passed to `.write()`, and may be a string rather than a `Buffer`. This is to support implementations that have an optimized handling for certain string data encodings. In that case, the `encoding` argument will indicate the character encoding of the string. Otherwise, the `encoding` argument can be safely ignored.
+Se la proprietà `decodeStrings` è impostata esplicitamente su `false` nelle opzioni del constructor, allora il `chunk` rimarrà lo stesso object passato a `.write()`, il quale potrebbe essere una stringa piuttosto che un `Buffer`. Questo è per supportare le implementazioni che hanno una gestione ottimizzata per determinati encoding degli string data. In tal caso, l'argomento `encoding` indicherà l'encoding del carattere della stringa. In caso contrario, l'argomento `encoding` può essere tranquillamente ignorato.
 
-The `writable._write()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+Il metodo `writable._write()` è preceduto da un trattino basso (underscore) perché è interno alla classe che lo definisce e non dovrebbe mai essere chiamato direttamente dai programmi utente.
 
 #### writable.\_writev(chunks, callback)
 
-* `chunks` {Object[]} The chunks to be written. Each chunk has following format: `{ chunk: ..., encoding: ... }`.
-* `callback` {Function} A callback function (optionally with an error argument) to be invoked when processing is complete for the supplied chunks.
+* `chunks` {Object[]} Il chunk da scrivere. Ogni chunk ha il seguente formato: `{ chunk: ..., encoding: ... }`.
+* `callback` {Function} Una funzione di callback (facoltativamente con un argomento error) da invocare quando l'elaborazione per i chunk forniti è completa.
 
 Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Writable`.
 
-The `writable._writev()` method may be implemented in addition to `writable._write()` in stream implementations that are capable of processing multiple chunks of data at once. If implemented, the method will be called with all chunks of data currently buffered in the write queue.
+Il metodo `writable._writev()` può essere implementato in aggiunta a `writable._write()` nelle implementazioni di stream in grado di elaborare molteplici chunk di dati contemporaneamente. Se implementato, il metodo verrà chiamato con tutti i chunk di dati attualmente memorizzati tramite il buffering nella write queue.
 
-The `writable._writev()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+Il metodo `writable._writev()` è preceduto da un trattino basso (underscore) perché è interno alla classe che lo definisce e non dovrebbe mai essere chiamato direttamente dai programmi utente.
 
 #### writable.\_destroy(err, callback)
 
@@ -1356,10 +1356,10 @@ The `writable._writev()` method is prefixed with an underscore because it is int
 added: v8.0.0
 -->
 
-* `err` {Error} A possible error.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `err` {Error} Un possibile errore.
+* `callback` {Function} Una funzione di callback che accetta un argomento error opzionale.
 
-The `_destroy()` method is called by [`writable.destroy()`](#stream_writable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
+Il metodo `_destroy()` è chiamato da [`writable.destroy()`](#stream_writable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
 
 #### writable.\_final(callback)
 
