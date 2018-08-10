@@ -1095,7 +1095,7 @@ added: v10.0.0
 * `...streams` {Stream} Due o più stream da collegare tramite il piping.
 * `callback` {Function} Una funzione di callback che accetta un argomento error opzionale.
 
-Un metodo module per il piping tra gli stream che inoltrano gli errori ed eseguono una corretta pulizia e che forniscono un callback quando la pipeline è completa.
+Un metodo modulo per il piping tra gli stream che inoltrano gli errori ed eseguono una corretta pulizia e che forniscono un callback quando la pipeline è completa.
 
 ```js
 const { pipeline } = require('stream');
@@ -1142,7 +1142,7 @@ run().catch(console.error);
 
 <!--type=misc-->
 
-The `stream` module API has been designed to make it possible to easily implement streams using JavaScript's prototypal inheritance model.
+L'API del modulo `stream` è stata progettata per rendere possibile la facile implementazione degli stream utilizzando il modello dell'ereditarietà prototipale di JavaScript.
 
 First, a stream developer would declare a new JavaScript class that extends one of the four basic stream classes (`stream.Writable`, `stream.Readable`, `stream.Duplex`, or `stream.Transform`), making sure they call the appropriate parent class constructor:
 
