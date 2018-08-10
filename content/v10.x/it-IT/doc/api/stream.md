@@ -899,7 +899,7 @@ changes:
 
 Il metodo `readable.unshift()` inserisce nuovamente un chunk di dati nel buffer interno. Ciò è utile in determinate situazioni nelle quali uno stream viene utilizzato/consumato dal codice che deve "non-consumare" una certa quantità di dati che è stata ottimisticamente estratta dalla sorgente, in modo che i dati possano essere trasmessi da un'altra parte.
 
-Il metodo `stream.unshift(chunk)` non può essere chiamato dopo che è stato emesso l'evento [`'end'`][] altrimeni verrà generato un errore di runtime.
+Il metodo `stream.unshift(chunk)` non può essere chiamato dopo che è stato emesso l'evento [`'end'`][] altrimenti verrà generato un errore di runtime.
 
 Gli sviluppatori che utilizzano `stream.unshift()` spesso dovrebbero prendere in considerazione di passare all'utilizzo di un [`Transform`][] stream. Vedi la sezione [API per gli Stream Implementer](#stream_api_for_stream_implementers) per maggiori informazioni.
 
@@ -952,7 +952,7 @@ added: v0.9.4
 
 Le versioni di Node.js precedenti alla v0.10 avevano stream che non implementavano l'intera API del modulo `stream` così com'è attualmente definita. (Vedi [Compatibilità](#stream_compatibility_with_older_node_js_versions) per maggiori informazioni.)
 
-Quando si utilizza una precedente libreria Node.js che emette eventi [`'data'`][] ed ha un metodo [`stream.pause()`](#stream_readable_pause) che è di sola consulenza, il metodo `readable.wrap()` può essere utilizzato per creare un [`Readable`][] stream che utilizza il vecchio stream come la sua sorgente dati.
+Quando si utilizza una precedente libreria Node.js che emette eventi [`'data'`][] ed ha un metodo [`stream.pause()`](#stream_readable_pause) che è di sola consulenza, il metodo `readable.wrap()` può essere utilizzato per creare un [`Readable`][] stream che utilizza il vecchio stream come sua sorgente dati.
 
 Raramente sarà necessario utilizzare `readable.wrap()` ma questo metodo è stato fornito come soluzione per interagire con le applicazioni e librerie Node.js precedenti.
 
