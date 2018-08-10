@@ -1480,7 +1480,7 @@ class MyReadable extends Readable {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+Oppure, quando si utilizzano constructor di stili pre-ES6:
 
 ```js
 const { Readable } = require('stream');
@@ -1494,7 +1494,7 @@ function MyReadable(options) {
 util.inherits(MyReadable, Readable);
 ```
 
-Or, using the Simplified Constructor approach:
+Oppure, utilizzando l'approccio del Constructor semplificato:
 
 ```js
 const { Readable } = require('stream');
@@ -1517,9 +1517,9 @@ changes:
     description: call `_read()` only once per microtick
 -->
 
-* `size` {number} Number of bytes to read asynchronously
+* `size` {number} Numero di bytes da leggere in modo asincrono
 
-Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
 All `Readable` stream implementations must provide an implementation of the `readable._read()` method to fetch data from the underlying resource.
 
@@ -1847,7 +1847,7 @@ The [`'finish'`][] and [`'end'`][] events are from the `stream.Writable` and `st
 
 * `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
 
-Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
 In some cases, a transform operation may need to emit an additional bit of data at the end of the stream. For example, a `zlib` compression stream will store an amount of internal state used to optimally compress the output. When the stream ends, however, that additional data needs to be flushed so that the compressed data will be complete.
 
@@ -1863,7 +1863,7 @@ The `transform._flush()` method is prefixed with an underscore because it is int
 * `encoding` {string} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value - 'buffer', ignore it in this case.
 * `callback` {Function} A callback function (optionally with an error argument and data) to be called after the supplied `chunk` has been processed.
 
-Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
 All `Transform` stream implementations must provide a `_transform()` method to accept input and produce output. The `transform._transform()` implementation handles the bytes being written, computes an output, then passes that output off to the readable portion using the `readable.push()` method.
 
