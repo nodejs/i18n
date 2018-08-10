@@ -1269,21 +1269,21 @@ changes:
 -->
 
 * `options` {Object} 
-  * `highWaterMark` {number} Buffer level when [`stream.write()`](#stream_writable_write_chunk_encoding_callback) starts returning `false`. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
-  * `decodeStrings` {boolean} Whether or not to decode strings into `Buffer`s before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Default:** `true`.
-  * `objectMode` {boolean} Whether or not the [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) is a valid operation. When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **Default:** `false`.
-  * `emitClose` {boolean} Whether or not the stream should emit `'close'` after it has been destroyed. **Default:** `true`.
-  * `write` {Function} Implementation for the [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) method.
-  * `writev` {Function} Implementation for the [`stream._writev()`](#stream_writable_writev_chunks_callback) method.
-  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
-  * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
+  * `highWaterMark` {number} Livello del buffer quando [`stream.write()`](#stream_writable_write_chunk_encoding_callback) inizia a restituire `false`. **Default:** `16384` (16kb), oppure `16` per gli stream `objectMode`.
+  * `decodeStrings` {boolean} Decodifica o meno delle stringhe all'interno dei `Buffer` prima di passarle a [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Default:** `true`.
+  * `objectMode` {boolean} Indipendentemente dal fatto che [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) sia un'operazione valida. Quando è impostato, diventa possibile scrivere valori JavaScript diversi da una stringa, un `Buffer` od un `Uint8Array` se supportati dall'implementazione dello stream. **Default:** `false`.
+  * `emitClose` {boolean} Indipendentemente dal fatto che lo stream debba emettere `'close'` dopo esser stato distrutto. **Default:** `true`.
+  * `write` {Function} Implementazione per il metodo [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1).
+  * `writev` {Function} Implementazione per il metodo [`stream._writev()`](#stream_writable_writev_chunks_callback).
+  * `destroy` {Function} Implementazione per il metodo [`stream._destroy()`](#stream_writable_destroy_err_callback).
+  * `final` {Function} Implementazione per il metodo [`stream._final()`](#stream_writable_final_callback).
 
 ```js
 const { Writable } = require('stream');
 
 class MyWritable extends Writable {
   constructor(options) {
-    // Calls the stream.Writable() constructor
+    // Chiama il constructor stream.Writable()
     super(options);
     // ...
   }
