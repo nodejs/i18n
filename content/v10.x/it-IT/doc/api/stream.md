@@ -1416,9 +1416,9 @@ class MyWritable extends Writable {
 }
 ```
 
-#### Decoding dei buffer in un Writable Stream
+#### Decodifica dei buffer in un Writable Stream
 
-Il decoding dei buffer è un'attività comune, ad esempio, quando si usano dei transformer il cui input è una stringa. Non è un processo banale quando si utilizza l'encoding di caratteri multi-byte, come ad esempio UTF-8. The following example shows how to decode multi-byte strings using `StringDecoder` and [`Writable`][].
+La decodifica dei buffer è un'attività comune, ad esempio, quando si usano dei transformer il cui input è una stringa. Non è un processo banale quando si utilizza la codifica di caratteri multi-byte, come ad esempio UTF-8. L'esempio seguente mostra come decodificare le stringhe multi-byte utilizzando `StringDecoder` e [`Writable`][].
 
 ```js
 const { Writable } = require('stream');
@@ -1450,22 +1450,22 @@ w.write('currency: ');
 w.write(euro[0]);
 w.end(euro[1]);
 
-console.log(w.data); // currency: €
+console.log(w.data); // valuta: €
 ```
 
-### Implementing a Readable Stream
+### Implementazione di un Readable Stream
 
-The `stream.Readable` class is extended to implement a [`Readable`][] stream.
+La classe `stream.Readable` viene estesa per implementare un [`Readable`][] stream.
 
-Custom `Readable` streams *must* call the `new stream.Readable([options])` constructor and implement the `readable._read()` method.
+Gli `Readable` stream personalizzati *devono* chiamare il nuovo constructor `new stream.Readable([options])` ed implementare il metodo `readable._read()`.
 
 #### new stream.Readable([options])
 
 * `options` {Object} 
-  * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
-  * `encoding` {string} If specified, then buffers will be decoded to strings using the specified encoding. **Default:** `null`.
-  * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Default:** `false`.
-  * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
+  * `highWaterMark` {number} Il massimo [numero di bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) da memorizzare nel buffer interno prima di interrompere la lettura dalla risorsa sottostante. **Default:** `16384` (16kb), oppure `16` per gli stream `objectMode`.
+  * `encoding` {string} Se specificato, i buffer verranno decodificati in stringhe utilizzando tale encoding. **Default:** `null`.
+  * `objectMode` {boolean} Se questo stream dovrebbe comportarsi come uno stream di objects. Il che significa che [`stream.read(n)`](#stream_readable_read_size) restituisce un singolo valore invece di un `Buffer` di dimensione `n`. **Default:** `false`.
+  * `read` {Function} Implementazione per il metodo [`stream._read()`](#stream_readable_read_size_1).
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
 
 ```js
