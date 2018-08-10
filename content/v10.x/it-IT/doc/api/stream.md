@@ -1325,15 +1325,15 @@ const myWritable = new Writable({
 * `encoding` {string} Se il chunk è una stringa, allora `encoding` è l'encoding del carattere di quella stringa. Se il chunk è un `Buffer`, o se lo stream sta operando in object mode, l'`encoding` potrebbe essere ignorato.
 * `callback` {Function} Chiama questa funzione (facoltativamente con un argomento error) quando l'elaborazione per il chunk fornito è completa.
 
-All `Writable` stream implementations must provide a [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1) method to send data to the underlying resource.
+Tutte le implementazioni di `Writable` stream devono fornire un metodo [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1) per inviare dati alla risorsa sottostante.
 
 Gli [`Transform`][] stream forniscono la loro personale implementazione del [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1).
 
-This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Writable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Writable`.
 
-The `callback` method must be called to signal either that the write completed successfully or failed with an error. The first argument passed to the `callback` must be the `Error` object if the call failed or `null` if the write succeeded.
+Il metodo `callback` deve essere chiamato per segnalare che la scrittura è stata completata correttamente oppure che ha avuto esito negativo con un errore. Il primo argomento passato al `callback` deve essere l'`Error` object se la chiamata non è riuscita oppure `null` se la scrittura è andata a buon fine.
 
-All calls to `writable.write()` that occur between the time `writable._write()` is called and the `callback` is called will cause the written data to be buffered. When the `callback` is invoked, the stream might emit a [`'drain'`][] event. If a stream implementation is capable of processing multiple chunks of data at once, the `writable._writev()` method should be implemented.
+Tutte le chiamate a `writable.write()` che si verificano tra il momento in cui `writable._write()` viene chiamato ed il momento in cui il `callback` viene chiamato faranno sì che i dati scritti siano memorizzati in un buffer. Quando viene invocato il `callback`, lo stream potrebbe emettere un evento [`'drain'`][]. Se un'implementazione di stream è in grado di elaborare molteplici chunk di dati contemporaneamente, è necessario implementare il metodo `writable._writev()`.
 
 If the `decodeStrings` property is explicitly set to `false` in the constructor options, then `chunk` will remain the same object that is passed to `.write()`, and may be a string rather than a `Buffer`. This is to support implementations that have an optimized handling for certain string data encodings. In that case, the `encoding` argument will indicate the character encoding of the string. Otherwise, the `encoding` argument can be safely ignored.
 
@@ -1344,7 +1344,7 @@ The `writable._write()` method is prefixed with an underscore because it is inte
 * `chunks` {Object[]} The chunks to be written. Each chunk has following format: `{ chunk: ..., encoding: ... }`.
 * `callback` {Function} A callback function (optionally with an error argument) to be invoked when processing is complete for the supplied chunks.
 
-This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Writable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Writable`.
 
 The `writable._writev()` method may be implemented in addition to `writable._write()` in stream implementations that are capable of processing multiple chunks of data at once. If implemented, the method will be called with all chunks of data currently buffered in the write queue.
 
@@ -1519,7 +1519,7 @@ changes:
 
 * `size` {number} Number of bytes to read asynchronously
 
-This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. It should be implemented by child classes, and called by the internal `Readable` class methods only.
 
 All `Readable` stream implementations must provide an implementation of the `readable._read()` method to fetch data from the underlying resource.
 
@@ -1847,7 +1847,7 @@ The [`'finish'`][] and [`'end'`][] events are from the `stream.Writable` and `st
 
 * `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
 
-This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. It should be implemented by child classes, and called by the internal `Readable` class methods only.
 
 In some cases, a transform operation may need to emit an additional bit of data at the end of the stream. For example, a `zlib` compression stream will store an amount of internal state used to optimally compress the output. When the stream ends, however, that additional data needs to be flushed so that the compressed data will be complete.
 
@@ -1863,7 +1863,7 @@ The `transform._flush()` method is prefixed with an underscore because it is int
 * `encoding` {string} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value - 'buffer', ignore it in this case.
 * `callback` {Function} A callback function (optionally with an error argument and data) to be called after the supplied `chunk` has been processed.
 
-This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. It should be implemented by child classes, and called by the internal `Readable` class methods only.
 
 All `Transform` stream implementations must provide a `_transform()` method to accept input and produce output. The `transform._transform()` implementation handles the bytes being written, computes an output, then passes that output off to the readable portion using the `readable.push()` method.
 
