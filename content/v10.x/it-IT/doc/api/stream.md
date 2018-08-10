@@ -860,7 +860,7 @@ readable.on('data', (chunk) => {
 added: v0.9.4
 -->
 
-* `destination` {stream.Writable} Stream specifico opzionale da sottoporre al unpiping
+* `destination` {stream.Writable} Stream specifico opzionale da sottoporre all’unpiping
 * Restituisce: {this}
 
 Il metodo `readable.unpipe()` scollega un `Writable` stream precedentemente collegato utilizzando il metodo [`stream.pipe()`][].
@@ -1010,7 +1010,7 @@ changes:
 
 <!--type=class-->
 
-Gli duplex stream sono stream che implementano sia la [`Readable`][] interface che la [`Writable`][] interface.
+I duplex stream sono stream che implementano sia la [`Readable`][] interface che la [`Writable`][] interface.
 
 Gli esempi di `Duplex` stream includono:
 
@@ -1026,7 +1026,7 @@ added: v0.9.4
 
 <!--type=class-->
 
-Gli transform stream sono [`Duplex`][] stream in cui l'output è in qualche modo correlato all'input. Come tutti gli [`Duplex`][] stream, gli `Transform` stream implementano sia la [`Readable`][] interface che la [`Writable`][] interface.
+I transform stream sono [`Duplex`][] stream in cui l'output è in qualche modo correlato all'input. Come tutti gli [`Duplex`][] stream, i `Transform` stream implementano sia la [`Readable`][] interface che la [`Writable`][] interface.
 
 Gli esempi di `Transform` stream includono:
 
