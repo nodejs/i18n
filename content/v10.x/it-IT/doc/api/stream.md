@@ -1525,11 +1525,11 @@ Tutte le implementazioni di `Readable` stream devono fornire un metodo `readable
 
 Quando viene chiamato `readable._read()`, se i dati sono disponibili dalla risorsa, l'implementazione dovrebbe iniziare ad eseguire il push dei dati nella read queue utilizzando il metodo [`this.push(dataChunk)`](#stream_readable_push_chunk_encoding). `_read()` dovrebbe continuare la lettura dalla risorsa ed eseguire il push dei dati finché `readable.push()` restituisce `false`. Solo quando `_read()` viene chiamato ancora dopo essersi fermato, dovrebbe riprendere ad eseguire il push degli altri dati nella queue.
 
-Una volta chiamato il metodo `readable._read()`, esso non verrà chiamato ancora fino a quando non viene chiamato il metodo [`readable.push()`](#stream_readable_push_chunk_encoding). `readable._read()` is guaranteed to be called only once within a synchronous execution, i.e. a microtick.
+Una volta chiamato il metodo `readable._read()`, esso non verrà chiamato ancora fino a quando non viene chiamato il metodo [`readable.push()`](#stream_readable_push_chunk_encoding). E' sicuro che `readable._read()` venga chiamato solo una volta all'interno di un'esecuzione sincrona, cioè un microtick.
 
-The `size` argument is advisory. For implementations where a "read" is a single operation that returns data can use the `size` argument to determine how much data to fetch. Other implementations may ignore this argument and simply provide data whenever it becomes available. There is no need to "wait" until `size` bytes are available before calling [`stream.push(chunk)`](#stream_readable_push_chunk_encoding).
+L'argomento `size` è di consulenza. Per le implementazioni in cui una "lettura" è una singola operazione che restituisce i dati, è possibile utilizzare l'argomento `size` per determinare la quantità di dati da recuperare. Altre implementazioni possono ignorare questo argomento e fornire dati semplicemente ogni volta che diventano disponibili. Non è necessario "attendere" che i `size` bytes siano disponibili prima di chiamare [`stream.push(chunk)`](#stream_readable_push_chunk_encoding).
 
-The `readable._read()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+Il metodo `readable._read()` è precedetuo da un trattino basso (underscore) perché è interno alla classe che lo definisce e non dovrebbe mai essere chiamato direttamente dai programmi utente.
 
 #### readable.\_destroy(err, callback)
 
@@ -1537,10 +1537,10 @@ The `readable._read()` method is prefixed with an underscore because it is inter
 added: v8.0.0
 -->
 
-* `err` {Error} A possible error.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `err` {Error} Un possibile errore.
+* `callback` {Function} Una funzione di callback che accetta un argomento error opzionale.
 
-The `_destroy()` method is called by [`readable.destroy()`](#stream_readable_destroy_error). Può essere sovrascritto dalle child class ma **non deve** essere chiamato direttamente.
+Il metodo `_destroy()` è chiamato da [`readable.destroy()`](#stream_readable_destroy_error). Può essere sovrascritto dalle child class ma **non deve** essere chiamato direttamente.
 
 #### readable.push(chunk[, encoding])
 
