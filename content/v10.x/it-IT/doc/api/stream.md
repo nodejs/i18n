@@ -1369,7 +1369,7 @@ added: v8.0.0
 
 * `callback` {Function} Chiama questa funzione (facoltativamente con un argomento error) quando si è conclusa la scrittura di qualsiasi dato rimanente.
 
-Il metodo `_final()` **non deve** essere chiamato direttamente. Può essere implementato dalle child chass e, in tal caso, verrà chiamato solo dai metodi di classe interni `Writable`.
+Il metodo `_final()` **non deve** essere chiamato direttamente. Può essere implementato dalle child class e, in tal caso, verrà chiamato solo dai metodi di classe interni `Writable`.
 
 Questa funzione facoltativa verrà chiamata prima che lo stream si chiuda, ritardando l'evento `'finish'` fino a quando viene chiamato il `callback`. Questo è utile per chiudere le risorse o scrivere dati memorizzati nel buffer prima che uno stream finisca.
 
