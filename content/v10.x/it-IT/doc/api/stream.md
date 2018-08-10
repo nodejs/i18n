@@ -1144,7 +1144,7 @@ run().catch(console.error);
 
 L'API del modulo `stream` è stata progettata per rendere possibile la facile implementazione degli stream utilizzando il modello dell'ereditarietà prototipale di JavaScript.
 
-First, a stream developer would declare a new JavaScript class that extends one of the four basic stream classes (`stream.Writable`, `stream.Readable`, `stream.Duplex`, or `stream.Transform`), making sure they call the appropriate parent class constructor:
+Innanzitutto, uno sviluppatore di stream dichiarerebbe una nuova classe JavaScript che estende una delle quattro classi base dello stream (`stream.Writable`, `stream.Readable`, `stream.Duplex`, oppure `stream.Transform`), assicurandosi che chiamino l'appropriato constructor della parent class:
 
 ```js
 const { Writable } = require('stream');
@@ -1157,7 +1157,7 @@ class MyWritable extends Writable {
 }
 ```
 
-The new stream class must then implement one or more specific methods, depending on the type of stream being created, as detailed in the chart below:
+La nuova classe dello stream deve quindi implementare uno o più metodi specifici, in base al tipo di stream che viene creato, come descritto nel grafico seguente:
 
 <table>
   <thead>
@@ -1231,15 +1231,15 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
 </table>
 
-The implementation code for a stream should *never* call the "public" methods of a stream that are intended for use by consumers (as described in the [API for Stream Consumers](#stream_api_for_stream_consumers) section). Doing so may lead to adverse side effects in application code consuming the stream.
+Il codice di implementazione per uno stream non deve *mai* chiamare i metodi "pubblici" di uno stream che sono destinati all'uso da parte dei consumer (come descritto nella sezione [API per gli Stream Consumer](#stream_api_for_stream_consumers)). Ciò potrebbe causare effetti collaterali negativi nel codice dell'applicazione che utilizza/consuma lo stream.
 
-### Simplified Construction
+### Costruzione semplificata
 
 <!-- YAML
 added: v1.2.0
 -->
 
-For many simple cases, it is possible to construct a stream without relying on inheritance. This can be accomplished by directly creating instances of the `stream.Writable`, `stream.Readable`, `stream.Duplex` or `stream.Transform` objects and passing appropriate methods as constructor options.
+Per molti semplici casi, è possibile costruire uno stream senza fare affidamento sull'ereditarietà. Questo può essere ottenuto creando direttamente istanze degli objects `stream.Writable`, `stream.Readable`, `stream.Duplex` oppure `stream.Transform` e passando metodi appropriati come opzioni di constructor.
 
 ```js
 const { Writable } = require('stream');
@@ -1251,11 +1251,11 @@ const myWritable = new Writable({
 });
 ```
 
-### Implementing a Writable Stream
+### Implementazione di un Writable Stream
 
-The `stream.Writable` class is extended to implement a [`Writable`][] stream.
+La classe `stream.Writable` viene estesa per implementare un [`Writable`][] stream.
 
-Custom `Writable` streams *must* call the `new stream.Writable([options])` constructor and implement the `writable._write()` method. The `writable._writev()` method *may* also be implemented.
+Gli `Writable` stream personalizzati *devono* chiamare il nuovo constructor `new stream.Writable([options])` ed implementare il metodo `writable._write()`. Anche il metodo `writable._writev()` *potrebbe* essere implementato.
 
 #### Constructor: new stream.Writable([options])
 
