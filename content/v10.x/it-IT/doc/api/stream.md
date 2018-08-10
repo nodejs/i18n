@@ -72,7 +72,7 @@ const server = http.createServer((req, res) => {
 
   let body = '';
   // Ottiene i dati come stringhe utf8.
-  // Se non è impostata una codifica, i Buffer objects verranno ricevuti.
+  // Se non è impostata una codifica, i Buffer object verranno ricevuti.
   req.setEncoding('utf8');
 
   // Gli Readable stream emettono eventi 'data' una volta che viene aggiunto un listener
@@ -107,7 +107,7 @@ server.listen(1337);
 
 Gli [`Writable`][] stream (come ad esempio `res`) espongono metodi come `write()` e `end()` che vengono utilizzati per scrivere dati nello stream.
 
-Gli [`Readable`][] stream utilizzano l'API [`EventEmitter`][] per la notificare il codice dell'applicazione quando i dati sono disponibili per essere letti dallo stream. I dati disponibili possono essere letti dallo stream in diversi modi.
+Gli [`Readable`][] stream utilizzano l'API [`EventEmitter`][] per notificare il codice dell'applicazione quando i dati sono disponibili per essere letti dallo stream. I dati disponibili possono essere letti dallo stream in diversi modi.
 
 Entrambi gli stream sia [`Writable`][] che [`Readable`][], per comunicare lo stato attuale dello stream, utilizzano l'API [`EventEmitter`][] in vari modi.
 
@@ -125,8 +125,8 @@ Gli esempi di [`Writable`][] stream includono:
 
 * [Richieste HTTP, sul client](http.html#http_class_http_clientrequest)
 * [Risposte HTTP, sul server](http.html#http_class_http_serverresponse)
-* [fs write streams](fs.html#fs_class_fs_writestream)
-* [zlib streams](zlib.html)
+* [fs write stream](fs.html#fs_class_fs_writestream)
+* [zlib stream](zlib.html)
 * [crypto streams](crypto.html)
 * [TCP sockets](net.html#net_class_net_socket)
 * [child process stdin](child_process.html#child_process_subprocess_stdin)
@@ -420,7 +420,7 @@ Il valore restituito è `true` se il buffer interno è inferiore all'`highWaterM
 
 Mentre uno stream non subisce il drain, le chiamate a `write()` eseguiranno il buffer di `chunk` e restituiranno false. Una volta che tutti gli attuali chunk memorizzati nel buffer hanno subito il drain (accettati per la consegna dal sistema operativo), verrà emesso l'evento `'drain'`. E' consigliato che, una volta che `write()` restituisce false, non vengano scritti più chunk finché non viene emesso l'evento `'drain'`. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Ancor prima che si interrompa, l'uso elevato della memoria causerà scarso rendimento del garbage collector ed alti livelli di RSS (che in genere non vengono ripristinati nel sistema, anche dopo che la memoria non è più necessaria). Poiché i socket TCP potrebbero non subire mai il drain se il peer remoto non legge i dati, scrivere un socket che non subisce mai il drain può portare ad una vulnerabilità sfruttabile da remoto.
 
-Scrivere i dati mentre lo stream non subisce il drain è particolarmente problematico per un [`Transform`][], perché gli stream `Transform` sono messi in pausa per impostazione predefinita fino a quando non vengono reindirizzati (piping) oppure finchè non viene aggiunto un handler del evento `'data'` o del evento `'readable'`.
+Scrivere i dati mentre lo stream non subisce il drain è particolarmente problematico per un [`Transform`][], perché gli stream `Transform` sono messi in pausa per impostazione predefinita fino a quando non vengono reindirizzati (piping) oppure finchè non viene aggiunto un handler dell’evento `'data'` o dell’evento `'readable'`.
 
 Se i dati da scrivere possono essere generati o scaricati su richiesta, si consiglia di incapsulare la logica in un [`Readable`][] ed utilizzare [`stream.pipe()`][]. Tuttavia, se è preferibile chiamare `write()`, è possibile rispettare il backpressure ed evitare problemi di memoria usando l'evento [`'drain'`][]:
 
@@ -441,7 +441,7 @@ write('hello', () => {
 
 Un `Writable` stream in object mode ignorerà sempre l'argomento `encoding`.
 
-### Readable Streams
+### Readable Stream
 
 Gli readable stream sono un'abstraction per una *sorgente* da cui vengono utilizzati i dati.
 
@@ -449,9 +449,9 @@ Gli esempi di stream `Readable` stream includono:
 
 * [Risposte HTTP, sul client](http.html#http_class_http_incomingmessage)
 * [Richieste HTTP, sul server](http.html#http_class_http_incomingmessage)
-* [fs read streams](fs.html#fs_class_fs_readstream)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
+* [fs read stream](fs.html#fs_class_fs_readstream)
+* [zlib stream](zlib.html)
+* [crypto stream](crypto.html)
 * [TCP sockets](net.html#net_class_net_socket)
 * [child process stdout ed stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
@@ -477,7 +477,7 @@ Il `Readable` può tornare alla paused mode usando uno dei seguenti modi:
 * Se non ci sono destinazioni pipe, chiamando il metodo [`stream.pause()`](#stream_readable_pause).
 * Se ci sono destinazioni pipe, rimuovendole tutte. Le destinazioni pipe multiple possono essere rimosse chiamando il metodo [`stream.unpipe()`][].
 
-Il concetto importante da ricordare è che un `Readable` non genererà dati finché non verrà fornito un meccanismo per consumare od ignorare tali dati. Se il meccanismo di consumo è disabilitato o tolto, il `Readable` *tenterà* di interrompere la generazione dei dati.
+Il concetto importante da ricordare è che un `Readable` non genererà dati finché non verrà fornito un meccanismo per consumare o ignorare tali dati. Se il meccanismo di consumo è disabilitato o tolto, il `Readable` *tenterà* di interrompere la generazione dei dati.
 
 Per motivi di compatibilità con le versioni precedenti, la rimozione degli handler degli eventi [`'data'`][] **non** interromperà automaticamente lo stream. Inoltre, se ci sono destinazioni che hanno subito il piping, la chiamata di [`stream.pause()`](#stream_readable_pause) non garantisce che lo stream *rimarrà* in pausa una volta che tali destinazioni subiscono il drain e richiedono ulteriori dati.
 
