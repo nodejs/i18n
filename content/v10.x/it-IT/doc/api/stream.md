@@ -1068,9 +1068,9 @@ finished(rs, (err) => {
 rs.resume(); // lo stream viene sottoposto al drain
 ```
 
-Especially useful in error handling scenarios where a stream is destroyed prematurely (like an aborted HTTP request), and will not emit `'end'` or `'finish'`.
+Particolarmente utile negli scenari di gestione degli errori in cui uno stream viene distrutto prematuramente (come una richiesta HTTP interrotta) e non emetterà `'end'` o `'finish'`.
 
-The `finished` API is promisify'able as well;
+L'API `finished` è anche promisify-able;
 
 ```js
 const finished = util.promisify(stream.finished);
@@ -1083,7 +1083,7 @@ async function run() {
 }
 
 run().catch(console.error);
-rs.resume(); // drain the stream
+rs.resume(); // lo stream viene sottoposto al drain
 ```
 
 ### stream.pipeline(...streams[, callback])
@@ -1092,8 +1092,8 @@ rs.resume(); // drain the stream
 added: v10.0.0
 -->
 
-* `...streams` {Stream} Two or more streams to pipe between.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `...streams` {Stream} Due o più stream da collegare tramite il piping.
+* `callback` {Function} Una funzione di callback che accetta un argomento error opzionale.
 
 A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
 
