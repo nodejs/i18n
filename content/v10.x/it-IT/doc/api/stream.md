@@ -1373,11 +1373,11 @@ Il metodo `_final()` **non deve** essere chiamato direttamente. Può essere impl
 
 Questa funzione facoltativa verrà chiamata prima che lo stream si chiuda, ritardando l'evento `'finish'` fino a quando viene chiamato il `callback`. Questo è utile per chiudere le risorse o scrivere dati memorizzati nel buffer prima che uno stream finisca.
 
-#### Errori durante la scrittura
+#### Errori Durante la Scrittura
 
-Si raccomanda di segnalare gli errori che si verificano durante l'elaborazione dei metodi `writable._write()` e `writable._writev()` invocando il callback e passando l'errore come primo argomento. Ciò causerà un evento `'error'` che deve essere emesso dal `Writable`. Throwing an `Error` from within `writable._write()` can result in unexpected and inconsistent behavior depending on how the stream is being used. Using the callback ensures consistent and predictable handling of errors.
+Si raccomanda di segnalare gli errori che si verificano durante l'elaborazione dei metodi `writable._write()` e `writable._writev()` invocando il callback e passando l'errore come primo argomento. Ciò causerà un evento `'error'` che deve essere emesso dal `Writable`. Lanciare un `Error` da `writable._write()` può portare un comportamento inaspettato ed incoerente a seconda di come viene utilizzato lo stream. L'utilizzo del callback garantisce una gestione degli errori coerente e prevedibile.
 
-If a `Readable` stream pipes into a `Writable` stream when `Writable` emits an error, the `Readable` stream will be unpiped.
+Se un `Readable` stream esegue il piping in un `Writable` stream quando `Writable` emette un errore, il `Readable` stream sarà sottoposto all'unpiping.
 
 ```js
 const { Writable } = require('stream');
@@ -1393,9 +1393,9 @@ const myWritable = new Writable({
 });
 ```
 
-#### An Example Writable Stream
+#### Un Esempio di Writable Stream
 
-The following illustrates a rather simplistic (and somewhat pointless) custom `Writable` stream implementation. While this specific `Writable` stream instance is not of any real particular usefulness, the example illustrates each of the required elements of a custom [`Writable`][] stream instance:
+Quanto segue mostra un'implementazione di `Writable` stream personalizzata piuttosto semplice (ed alquanto inutile). While this specific `Writable` stream instance is not of any real particular usefulness, the example illustrates each of the required elements of a custom [`Writable`][] stream instance:
 
 ```js
 const { Writable } = require('stream');
