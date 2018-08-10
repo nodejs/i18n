@@ -1466,14 +1466,14 @@ Gli `Readable` stream personalizzati *devono* chiamare il nuovo constructor `new
   * `encoding` {string} Se specificato, i buffer verranno decodificati in stringhe utilizzando tale encoding. **Default:** `null`.
   * `objectMode` {boolean} Se questo stream dovrebbe comportarsi come uno stream di objects. Il che significa che [`stream.read(n)`](#stream_readable_read_size) restituisce un singolo valore invece di un `Buffer` di dimensione `n`. **Default:** `false`.
   * `read` {Function} Implementazione per il metodo [`stream._read()`](#stream_readable_read_size_1).
-  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
+  * `destroy` {Function} Implementazione per il metodo [`stream._destroy()`](#stream_readable_destroy_err_callback).
 
 ```js
 const { Readable } = require('stream');
 
 class MyReadable extends Readable {
   constructor(options) {
-    // Calls the stream.Readable(options) constructor
+    // Chiama il constructor stream.Readable(options)
     super(options);
     // ...
   }
