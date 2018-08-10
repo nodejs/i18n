@@ -1028,7 +1028,7 @@ added: v0.9.4
 
 Gli transform stream sono [`Duplex`][] stream in cui l'output è in qualche modo correlato all'input. Come tutti gli [`Duplex`][] stream, gli `Transform` stream implementano sia la [`Readable`][] interface che la [`Writable`][] interface.
 
-Examples of `Transform` streams include:
+Gli esempi di `Transform` stream includono:
 
 * [zlib streams](zlib.html)
 * [crypto streams](crypto.html)
@@ -1039,7 +1039,7 @@ Examples of `Transform` streams include:
 added: v8.0.0
 -->
 
-Destroy the stream, and emit `'error'`. After this call, the transform stream would release any internal resources. implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback). The default implementation of `_destroy()` for `Transform` also emit `'close'`.
+Distrugge lo stream ed emette `'error'`. Dopo questa chiamata, il transform stream rilascerebbe qualsiasi risorsa interna. gli implementors non dovrebbero sovrascrivere questo metodo, ma implementare [`readable._destroy()`](#stream_readable_destroy_err_callback). L'implementazione predefinita di `_destroy()` per `Transform` emette anche `'close'`.
 
 ### stream.finished(stream, callback)
 
