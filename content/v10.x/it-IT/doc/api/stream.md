@@ -1359,7 +1359,7 @@ added: v8.0.0
 * `err` {Error} Un possibile errore.
 * `callback` {Function} Una funzione di callback che accetta un argomento error opzionale.
 
-Il metodo `_destroy()` è chiamato da [`writable.destroy()`](#stream_writable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
+Il metodo `_destroy()` è chiamato da [`writable.destroy()`](#stream_writable_destroy_error). Può essere sovrascritto dalle child class ma **non deve** essere chiamato direttamente.
 
 #### writable.\_final(callback)
 
@@ -1367,11 +1367,11 @@ Il metodo `_destroy()` è chiamato da [`writable.destroy()`](#stream_writable_de
 added: v8.0.0
 -->
 
-* `callback` {Function} Call this function (optionally with an error argument) when finished writing any remaining data.
+* `callback` {Function} Chiama questa funzione (facoltativamente con un argomento error) quando si è conclusa la scrittura di qualsiasi dato rimanente.
 
-The `_final()` method **must not** be called directly. It may be implemented by child classes, and if so, will be called by the internal `Writable` class methods only.
+Il metodo `_final()` **non deve** essere chiamato direttamente. Può essere implementato dalle child chass e, in tal caso, verrà chiamato solo dai metodi di classe interni `Writable`.
 
-This optional function will be called before the stream closes, delaying the `'finish'` event until `callback` is called. This is useful to close resources or write buffered data before a stream ends.
+Questa funzione facoltativa verrà chiamata prima che lo stream si chiuda, ritardando l'evento `'finish'` fino a quando viene chiamato il `callback`. Questo è utile per chiudere le risorse o scrivere dati memorizzati nel buffer prima che uno stream finisca.
 
 #### Errors While Writing
 
@@ -1540,7 +1540,7 @@ added: v8.0.0
 * `err` {Error} A possible error.
 * `callback` {Function} A callback function that takes an optional error argument.
 
-The `_destroy()` method is called by [`readable.destroy()`](#stream_readable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
+The `_destroy()` method is called by [`readable.destroy()`](#stream_readable_destroy_error). Può essere sovrascritto dalle child class ma **non deve** essere chiamato direttamente.
 
 #### readable.push(chunk[, encoding])
 
