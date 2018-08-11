@@ -1619,7 +1619,7 @@ const myReadable = new Readable({
 });
 ```
 
-#### An Example Counting Stream
+#### Un esempio di Counting Stream
 
 <!--type=example-->
 
