@@ -1784,7 +1784,7 @@ myTransform.write(100);
 // Stampa: 64
 ```
 
-### Implementing a Transform Stream
+### Implementazione di un Transform Stream
 
 A [`Transform`][] stream is a [`Duplex`][] stream where the output is computed in some way from the input. Examples include [zlib](zlib.html) streams or [crypto](crypto.html) streams that compress, encrypt, or decrypt data.
 
