@@ -1718,7 +1718,7 @@ const myDuplex = new Duplex({
 
 #### Un Esempio di Duplex Stream
 
-Di seguito viene mostrato un semplice esempio di un `Duplex` stream che esegue il wrapping di un ipotetico source object di livello inferiore su cui è possibile scrivere dati e da cui è possibile leggerli, utilizzando un'API non compatibile con gli stream di Node.js. The following illustrates a simple example of a `Duplex` stream that buffers incoming written data via the [`Writable`][] interface that is read back out via the [`Readable`][] interface.
+Di seguito viene mostrato un semplice esempio di un `Duplex` stream che esegue il wrapping di un ipotetico source object di livello inferiore su cui è possibile scrivere dati e da cui è possibile leggerli, utilizzando un'API non compatibile con gli stream di Node.js. Di seguito viene mostrato un semplice esempio di un `Duplex` stream che memorizza tramite buffering i dati scritti in arrivo tramite la [`Writable`][] interface e che viene riletto tramite la [`Readable`][] interface.
 
 ```js
 const { Duplex } = require('stream');
@@ -1731,7 +1731,7 @@ class MyDuplex extends Duplex {
   }
 
   _write(chunk, encoding, callback) {
-    // The underlying source only deals with strings
+    // Il source sottostante si occupa solo di stringhe
     if (Buffer.isBuffer(chunk))
       chunk = chunk.toString();
     this[kSource].writeSomeData(chunk);
@@ -1746,13 +1746,13 @@ class MyDuplex extends Duplex {
 }
 ```
 
-The most important aspect of a `Duplex` stream is that the `Readable` and `Writable` sides operate independently of one another despite co-existing within a single object instance.
+L'aspetto più importante di un `Duplex` stream è che entrambe le parti sia `Readable` che `Writable` operano indipendentemente l'una dall'altra nonostante coesistano all'interno di una singola istanza di object.
 
-#### Object Mode Duplex Streams
+#### Object Mode per gli Duplex Stream
 
-For `Duplex` streams, `objectMode` can be set exclusively for either the `Readable` or `Writable` side using the `readableObjectMode` and `writableObjectMode` options respectively.
+Per gli `Duplex` stream, l'`objectMode` può essere impostata esclusivamente o per la parte `Readable` oppure per la parte `Writable` utilizzando rispettivamente l'opzione `readableObjectMode` oppure l'opzione `writableObjectMode`.
 
-In the following example, for instance, a new `Transform` stream (which is a type of [`Duplex`][] stream) is created that has an object mode `Writable` side that accepts JavaScript numbers that are converted to hexadecimal strings on the `Readable` side.
+Di seguito, ad esempio, viene creato un nuovo `Transform` stream (che è un tipo di [`Duplex`][] stream) con una object mode della parte `Writable` che accetta i numeri JavaScript che vengono convertiti in stringhe esadecimali nella parte `Readable`.
 
 ```js
 const { Transform } = require('stream');
