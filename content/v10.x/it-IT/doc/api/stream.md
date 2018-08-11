@@ -1652,11 +1652,11 @@ class Counter extends Readable {
 
 Un [`Duplex`][] stream è uno stream che implementa sia [`Readable`][] che [`Writable`][], come ad esempio una connessione socket TCP.
 
-Because JavaScript does not have support for multiple inheritance, the `stream.Duplex` class is extended to implement a [`Duplex`][] stream (as opposed to extending the `stream.Readable` *and* `stream.Writable` classes).
+Poiché JavaScript non supporta l'ereditarietà multipla, la classe `stream.Duplex` viene estesa per implementare un [`Duplex`][] stream (al contrario dell'estensione delle classi `stream.Readable` *e* `stream.Writable`).
 
-The `stream.Duplex` class prototypically inherits from `stream.Readable` and parasitically from `stream.Writable`, but `instanceof` will work properly for both base classes due to overriding [`Symbol.hasInstance`][] on `stream.Writable`.
+La classe `stream.Duplex` eredita prototipicamente da `stream.Readable` e parassiticamente da `stream.Writable`, ma `instanceof` funzionerà correttamente per entrambe le classi di base a causa della sovrascrizione di [`Symbol.hasInstance`][] su `stream.Writable`.
 
-Custom `Duplex` streams *must* call the `new stream.Duplex([options])` constructor and implement *both* the `readable._read()` and `writable._write()` methods.
+Gli `Duplex` stream personalizzati *devono* chiamare il nuovo constructor `new stream.Duplex([options])` ed implementare *entrambi* i metodi sia `readable._read()` che `writable._write()`.
 
 #### new stream.Duplex(options)
 
@@ -1669,12 +1669,12 @@ changes:
                  are supported now.
 -->
 
-* `options` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
-  * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Default:** `true`.
-  * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
-  * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
-  * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
-  * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
+* `options` {Object} Passato ad entrambi i constructor sia `Writable` che `Readable`. Inoltre ha le seguenti voci: 
+  * `allowHalfOpen` {boolean} Se impostato su `false`, lo stream terminerà automaticamente la parte writable quando termina la parte readable. **Default:** `true`.
+  * `readableObjectMode` {boolean} Imposta `objectMode` per la parte readable dello stream. Non ha effetto se `objectMode` è `true`. **Default:** `false`.
+  * `writableObjectMode` {boolean} Imposta `objectMode` per la parte writable dello stream. Non ha effetto se `objectMode` è `true`. **Default:** `false`.
+  * `readableHighWaterMark` {number} Imposta `highWaterMark` per la parte readable dello stream. Non ha effetto se `highWaterMark` viene fornito.
+  * `writableHighWaterMark` {number} Imposta `highWaterMark` per la parte writable dello stream. Non ha effetto se `highWaterMark` viene fornito.
 
 ```js
 const { Duplex } = require('stream');
@@ -1687,7 +1687,7 @@ class MyDuplex extends Duplex {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+Oppure, quando si utilizzano constructor di stili pre-ES6:
 
 ```js
 const { Duplex } = require('stream');
@@ -1701,7 +1701,7 @@ function MyDuplex(options) {
 util.inherits(MyDuplex, Duplex);
 ```
 
-Or, using the Simplified Constructor approach:
+Oppure, utilizzando l'approccio del Constructor semplificato:
 
 ```js
 const { Duplex } = require('stream');
@@ -1798,7 +1798,7 @@ Care must be taken when using `Transform` streams in that data written to the st
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
+* `options` {Object} Passato ad entrambi i constructor sia `Writable` che `Readable`. Also has the following fields: 
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
