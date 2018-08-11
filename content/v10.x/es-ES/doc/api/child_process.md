@@ -1,4 +1,4 @@
-# Child Process
+# Proceso Secundario
 
 <!--introduced_in=v0.10.0-->
 
@@ -6,7 +6,7 @@
 
 > Estabilidad: 2 - Estable
 
-The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
+El módulo `child_process` proporciona la habilidad de generar procesos secundarios en una manera similar, pero no idéntica, a popen(3). Esta capacidad es proporcionada principalmente por la función [`child_process.spawn()`][]:
 
 ```js
 const { spawn } = require('child_process');
