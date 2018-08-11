@@ -25,9 +25,9 @@ ls.on('close', (code) => {
 });
 ```
 
-By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Use the `{ stdio: 'ignore' }` option if the output will not be consumed.
+By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Utilice la opción `{ stdio: 'ignore' }` si la salida no será consumida.
 
-The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente de manera síncrona que bloquea el bucle del evento hasta que el proceso engendrado exista o finalice.
+El método [`child_process.spawn()`][] genera el proceso secundario asincrónicamente, sin bloquear el bucle de evento Node.js. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente de manera síncrona que bloquea el bucle del evento hasta que el proceso engendrado exista o finalice.
 
 Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas a [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementadas por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
 
@@ -152,7 +152,7 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 
 Si se proporciona una función `callback`, se llama con los argumentos `(error, stdout, stderr)`. En éxito, el `error` será `null`. En error, el `error` será una instancia de [`Error`][]. La propiedad `error.code` será el código de salida del proceso secundario, mientras que `error.signal` se establecerá a la señal que finalizó el proceso. Cualquier otro código de salida distinto a `0` se considera como un error.
 
-Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
+Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `codificación` puede ser utilizada para especificar la codificación de caracteres para decodificar las salida stdout y stderr. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
 
 If `timeout` is greater than `0`, the parent will send the signal identified by the `killSignal` property (the default is `'SIGTERM'`) if the child runs longer than `timeout` milliseconds.
 
