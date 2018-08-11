@@ -1575,7 +1575,7 @@ class SourceWrapper extends Readable {
 
     this._source = getLowlevelSourceObject();
 
-    // Every time there's data, push it into the internal buffer.
+    // Ogni volta che ci sono dati, inserirli tramite il push nel buffer interno.
     this._source.ondata = (chunk) => {
       // if push() returns false, then stop reading from source
       if (!this.push(chunk))
