@@ -31,7 +31,7 @@ const buf4 = Buffer.from([1, 2, 3]);
 // Crea un Buffer que contiene bytes UTF-8 [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Crea un Buffer que contiene byter Latin-1 [0x74, 0xe9, 0x73, 0x74].
+// Crea un Buffer que contiene bytes Latin-1 [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
@@ -39,7 +39,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 En versiones anteriores a la 6.0.0, las instancias de `Buffer` fueron creadas utilizando la función constructor de `Buffer`, la cual asigna el `Buffer` retornado de manera diferente basado en qué argumento es provisto:
 
-* Al pasar un número como el primer argumento de `Buffer()` (ejemplo `new Buffer(10)`) se asigna a un nuevo objeto de `Buffer` del tamaño especificado. Antes de Node.js 8.0.0, la memoria asignada para tales instancia de `Buffer` *no* están inicializadas y *pueden contener datos confidenciales*. Tales instancias de `Buffer` *deben* ser subsecuentemente inicializadas utilizando cualquier [`buf.fill(0)`][`buf.fill()`] o al escribir el `Buffer` entero. Mientras este comportamiento es *intencional* para mejorar el rendimiento, la experiencia en el desarrollo ha demostrado que una distinción más explícita es requerida entre la creación de un rápido pero no inicializado `Buffer` versus la creación de un `Buffer` más lento pero seguro. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` retornará un `Buffer` con memoria inicializada.
+* Al pasar un número como el primer argumento de `Buffer()` (ejemplo `new Buffer(10)`) se asigna a un nuevo objeto de `Buffer` del tamaño especificado. Antes de Node.js 8.0.0, la memoria asignada para tales instancias de `Buffer` *no* está inicializada y *puede contener datos confidenciales*. Tales instancias de `Buffer` *deben* ser subsecuentemente inicializadas utilizando cualquier [`buf.fill(0)`][`buf.fill()`] o al escribir el `Buffer` entero. Mientras este comportamiento es *intencional* para mejorar el rendimiento, la experiencia en el desarrollo ha demostrado que una distinción más explícita es requerida entre la creación de un rápido pero no inicializado `Buffer` versus la creación de un `Buffer` más lento pero seguro. Comenzando en Node.js 8.0.0, `Buffer(num)` y `new Buffer(num)` retornará un `Buffer` con memoria inicializada.
 * Al pasar una cadena, arreglo, o `Buffer` como primer argumento se copian los datos de los objetos pasados dentro del `Buffer`.
 * Al pasar un [`ArrayBuffer`] o un [`SharedArrayBuffer`] retorna un `Buffer` que comparte la memoria asignada con el buffer del arreglo dado.
 
@@ -54,18 +54,18 @@ Para hacer la creación de las instancias de `Buffer` más confiable y menos pro
 * [`Buffer.from(buffer)`] retorna un nuevo `Buffer` que *contiene una copia* de los contenidos del `Buffer` dado.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] retorna un nuevo `Buffer` que *contiene una copia* de la cadena proporcionada.
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] retorna un nuevo `Buffer` inicializado de un tamaño específico. Este método es más lento que [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] pero garantiza que las instancias de `Buffer` recién creadas nunca contengan datos antiguos que sean potencialmente confidenciales.
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] y [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] cada uno retorna un nuevo `Buffer` no inicializado del `size` especificado. Porque el `Buffer` no está inicializado, el segmento asignado en la memoria puede contender datos antiguos que son potencialmente confidenciales.
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+Las instancias de `Buffer` retornadas por [`Buffer.allocUnsafe()`] *deben* ser asignadas a un grupo de memoria interna compartida si `size` es menor o igual que la mitad de [`Buffer.poolSize`]. Las instancias retornadas por [`Buffer.allocUnsafeSlow()`] *nunca* utilizan el grupo de memoria interna compartida.
 
-### The `--zero-fill-buffers` command line option
+### La opción de línea de comando `--zero-fill-buffers`
 
 <!-- YAML
 added: v5.10.0
 -->
 
-Node.js can be started using the `--zero-fill-buffers` command line option to cause all newly allocated `Buffer` instances to be zero-filled upon creation by default, including buffers returned by `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`], and `new
-SlowBuffer(size)`. Use of this flag can have a significant negative impact on performance. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain old data that is potentially sensitive.
+Node.js se puede iniciar utilizando la opción de línea de comando `--zero-fill-buffers` para hacer que todas las instancias de `Buffer` recién asignadas se llenen con ceros al crearlas por defecto, incluyendo a buffers retornados por `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`], y `new
+SlowBuffer(size)`. Utilizar esta bandera puede tener un significativo impacto negativo sobre el rendimiento. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain old data that is potentially sensitive.
 
 ```txt
 $ node --zero-fill-buffers
@@ -73,13 +73,13 @@ $ node --zero-fill-buffers
 <Buffer 00 00 00 00 00>
 ```
 
-### What makes `Buffer.allocUnsafe()` and `Buffer.allocUnsafeSlow()` "unsafe"?
+### ¿Qué hace a `Buffer.allocUnsafe()` y `Buffer.allocUnsafeSlow()` "inseguros"?
 
-When calling [`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow()`], the segment of allocated memory is *uninitialized* (it is not zeroed-out). While this design makes the allocation of memory quite fast, the allocated segment of memory might contain old data that is potentially sensitive. Using a `Buffer` created by [`Buffer.allocUnsafe()`] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
+When calling [`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow()`], the segment of allocated memory is *uninitialized* (it is not zeroed-out). Mientras este diseño hace la asignación de memoria muy rápido, el segmento asignado de memoria puede contener datos antiguos que son potencialmente confidenciales. Utilizando un `Buffer` creado por [`Buffer.allocUnsafe()`] sin sobrescribir *completamente* la memoria se puede permitir que estos datos antiguos se filtren cuando la memoria del `Buffer` se lee.
 
-While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
+Mientras que hay claras ventajas de rendimiento al utilizar [`Buffer.allocUnsafe()`], se *debe* tener cuidado adicional para evitar la introducción de vulnerabilidades de seguridad dentro de una aplicación.
 
-## Buffers and Character Encodings
+## Buffer y Codificaciones de Caracteres
 
 <!-- YAML
 changes:

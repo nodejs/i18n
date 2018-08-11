@@ -1,4 +1,4 @@
-# C++ Addons
+# Phần mở rộng C++
 
 <!--introduced_in=v0.10.0-->
 
