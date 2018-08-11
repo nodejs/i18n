@@ -1556,7 +1556,7 @@ changes:
 * `encoding` {string} Encoding degli string chunk. Deve essere una `Buffer` encoding valido, come ad esempio `'utf8'` oppure `'ascii'`.
 * Restituisce: {boolean} `true` se è possibile continuare ad eseguire il push di ulteriori chunk di dati; in caso contrario `false`.
 
-When `chunk` is a `Buffer`, `Uint8Array` or `string`, the `chunk` of data will be added to the internal queue for users of the stream to consume. Passing `chunk` as `null` signals the end of the stream (EOF), after which no more data can be written.
+Quando `chunk` è un `Buffer`, un `Uint8Array` oppure una `string`, il `chunk` dei dati verrà aggiunto alla queue interna per gli utenti dello stream da consumare. Passing `chunk` as `null` signals the end of the stream (EOF), after which no more data can be written.
 
 When the `Readable` is operating in paused mode, the data added with `readable.push()` can be read out by calling the [`readable.read()`](#stream_readable_read_size) method when the [`'readable'`][] event is emitted.
 
