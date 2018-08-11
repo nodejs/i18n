@@ -1556,18 +1556,18 @@ changes:
 * `encoding` {string} Encoding degli string chunk. Deve essere una `Buffer` encoding valido, come ad esempio `'utf8'` oppure `'ascii'`.
 * Restituisce: {boolean} `true` se è possibile continuare ad eseguire il push di ulteriori chunk di dati; in caso contrario `false`.
 
-Quando `chunk` è un `Buffer`, un `Uint8Array` oppure una `string`, il `chunk` dei dati verrà aggiunto alla queue interna per gli utenti dello stream da consumare. Passing `chunk` as `null` signals the end of the stream (EOF), after which no more data can be written.
+Quando `chunk` è un `Buffer`, un `Uint8Array` oppure una `string`, il `chunk` dei dati verrà aggiunto alla queue interna per gli utenti dello stream da consumare. Passare `chunk` come `null` segnala la fine dello stream (EOF), dopo di che non è più possibile scrivere dati.
 
-When the `Readable` is operating in paused mode, the data added with `readable.push()` can be read out by calling the [`readable.read()`](#stream_readable_read_size) method when the [`'readable'`][] event is emitted.
+Quando il `Readable` funziona in paused mode, i dati aggiunti con `readable.push()` possono essere letti chiamando il metodo [`readable.read()`](#stream_readable_read_size) quando viene emesso l'evento [`'readable'`][].
 
-When the `Readable` is operating in flowing mode, the data added with `readable.push()` will be delivered by emitting a `'data'` event.
+Quando il `Readable` funziona in flowing mode, i dati aggiunti con `readable.push()` verranno consegnati emettendo un evento `'data'`.
 
-The `readable.push()` method is designed to be as flexible as possible. For example, when wrapping a lower-level source that provides some form of pause/resume mechanism, and a data callback, the low-level source can be wrapped by the custom `Readable` instance as illustrated in the following example:
+Il metodo `readable.push()` è progettato per essere il più flessibile possibile. Ad esempio, quando si esegue il wrapping di una sorgente di livello inferiore che fornisce una qualche forma di meccanismo di pausa/ripresa, ed un data callback, la sorgente di basso livello può essere sottoposta al wrapping dall'istanza personalizzata `Readable` come mostrato nel seguente esempio:
 
 ```js
-// source is an object with readStop() and readStart() methods,
-// and an `ondata` member that gets called when it has data, and
-// an `onend` member that gets called when the data is over.
+// source (sorgente) è un object con i metodi readStop() e readStart(),
+// ed un membro `ondata` che viene chiamato quando ha dati, 
+// ed un membro `onend` che viene chiamato quando i dati sono finiti.
 
 class SourceWrapper extends Readable {
   constructor(options) {
