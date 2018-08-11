@@ -1619,7 +1619,7 @@ const myReadable = new Readable({
 });
 ```
 
-#### Un esempio di Counting Stream
+#### Un Esempio di Counting Stream
 
 <!--type=example-->
 
@@ -1716,9 +1716,9 @@ const myDuplex = new Duplex({
 });
 ```
 
-#### An Example Duplex Stream
+#### Un Esempio di Duplex Stream
 
-The following illustrates a simple example of a `Duplex` stream that wraps a hypothetical lower-level source object to which data can be written, and from which data can be read, albeit using an API that is not compatible with Node.js streams. The following illustrates a simple example of a `Duplex` stream that buffers incoming written data via the [`Writable`][] interface that is read back out via the [`Readable`][] interface.
+Di seguito viene mostrato un semplice esempio di un `Duplex` stream che esegue il wrapping di un ipotetico source object di livello inferiore su cui è possibile scrivere dati e da cui è possibile leggerli, utilizzando un'API non compatibile con gli stream di Node.js. The following illustrates a simple example of a `Duplex` stream that buffers incoming written data via the [`Writable`][] interface that is read back out via the [`Readable`][] interface.
 
 ```js
 const { Duplex } = require('stream');
