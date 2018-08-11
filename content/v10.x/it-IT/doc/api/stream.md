@@ -1577,31 +1577,31 @@ class SourceWrapper extends Readable {
 
     // Ogni volta che ci sono dati, inserirli tramite il push nel buffer interno.
     this._source.ondata = (chunk) => {
-      // if push() returns false, then stop reading from source
+      // se push() restituisce false, allora interrompe la lettura del source
       if (!this.push(chunk))
         this._source.readStop();
     };
 
-    // When the source ends, push the EOF-signaling `null` chunk
+    // Quando source finisce, esegue il push del chunk `null` di segnalazione EOF.
     this._source.onend = () => {
       this.push(null);
     };
   }
-  // _read will be called when the stream wants to pull more data in
-  // the advisory size argument is ignored in this case.
+  //_read verrà chiamato quando lo stream vuole attirare più dati
+  // l'argomento size di consulenza è ignorato in questo caso.
   _read(size) {
     this._source.readStart();
   }
 }
 ```
 
-The `readable.push()` method is intended be called only by `Readable` implementers, and only from within the `readable._read()` method.
+Il metodo `readable.push()` deve essere chiamato solo dagli `Readable` implementer, e solo dal metodo `readable._read()`.
 
-For streams not operating in object mode, if the `chunk` parameter of `readable.push()` is `undefined`, it will be treated as empty string or buffer. See [`readable.push('')`][] for more information.
+Per gli stream che non operano in object mode, se il parametro `chunk` di `readable.push()` è `undefined`, verrà considerato come stringa vuota o buffer. Vedi [`readable.push('')`][] per maggiori informazioni.
 
-#### Errors While Reading
+#### Errori Durante la Lettura
 
-It is recommended that errors occurring during the processing of the `readable._read()` method are emitted using the `'error'` event rather than being thrown. Throwing an `Error` from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
+E' consigliato emettere gli errori, che si verificano durante l'elaborazione del metodo `readable._read()`, utilizzando l'evento `'error'` anziché lanciandoli. Throwing an `Error` from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
 
 <!-- eslint-disable no-useless-return -->
 
