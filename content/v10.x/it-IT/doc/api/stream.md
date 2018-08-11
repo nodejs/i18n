@@ -1623,7 +1623,7 @@ const myReadable = new Readable({
 
 <!--type=example-->
 
-The following is a basic example of a `Readable` stream that emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
+Di seguito è riportato un esempio di base di un `Readable` stream che emette i numeri da 1 ad 1,000,000 in ordine ascendente, e successivamente termina.
 
 ```js
 const { Readable } = require('stream');
@@ -1648,9 +1648,9 @@ class Counter extends Readable {
 }
 ```
 
-### Implementing a Duplex Stream
+### Implementazione di un Duplex Stream
 
-A [`Duplex`][] stream is one that implements both [`Readable`][] and [`Writable`][], such as a TCP socket connection.
+Un [`Duplex`][] stream è uno stream che implementa sia [`Readable`][] che [`Writable`][], come ad esempio una connessione socket TCP.
 
 Because JavaScript does not have support for multiple inheritance, the `stream.Duplex` class is extended to implement a [`Duplex`][] stream (as opposed to extending the `stream.Readable` *and* `stream.Writable` classes).
 
