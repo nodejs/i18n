@@ -1601,7 +1601,7 @@ Per gli stream che non operano in object mode, se il parametro `chunk` di `reada
 
 #### Errori Durante la Lettura
 
-E' consigliato emettere gli errori, che si verificano durante l'elaborazione del metodo `readable._read()`, utilizzando l'evento `'error'` anziché lanciandoli. Throwing an `Error` from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
+E' consigliato emettere gli errori, che si verificano durante l'elaborazione del metodo `readable._read()`, utilizzando l'evento `'error'` anziché lanciandoli. Lanciare un `Error` da `readable._read()` può portare un comportamento inaspettato ed incoerente a seconda che lo stream stia funzionando in flowing mode oppure in paused mode. L'utilizzo dell'evento `'error'` garantisce una gestione degli errori coerente e prevedibile.
 
 <!-- eslint-disable no-useless-return -->
 
@@ -1614,7 +1614,7 @@ const myReadable = new Readable({
       process.nextTick(() => this.emit('error', err));
       return;
     }
-    // do some work
+    // fa del lavoro
   }
 });
 ```
