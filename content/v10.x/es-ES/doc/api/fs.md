@@ -866,7 +866,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -920,7 +920,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -1229,7 +1229,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'r'`.
   * `encoding` {string} **Default:** `null`
   * `fd` {integer} **Default:** `null`
@@ -1280,7 +1280,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
   * `fd` {integer} **Default:** `null`
