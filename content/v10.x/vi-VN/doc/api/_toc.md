@@ -8,9 +8,9 @@
 <div class="line"></div>
 
 * [Thử nghiệm đã khẳng định](assert.html)
-* [Async Hooks](async_hooks.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
+* [Đồng bộ hook](async_hooks.html)
+* [Bộ đệm](buffer.html)
+* [Phần mở rộng C++](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Cluster](cluster.html)
