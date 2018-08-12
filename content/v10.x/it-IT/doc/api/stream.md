@@ -1656,7 +1656,7 @@ Poiché JavaScript non supporta l'ereditarietà multipla, la classe `stream.Dupl
 
 La classe `stream.Duplex` eredita prototipicamente da `stream.Readable` e parassiticamente da `stream.Writable`, ma `instanceof` funzionerà correttamente per entrambe le classi di base a causa della sovrascrizione di [`Symbol.hasInstance`][] su `stream.Writable`.
 
-Gli `Duplex` stream personalizzati *devono* chiamare il nuovo constructor `new stream.Duplex([options])` ed implementare *entrambi* i metodi sia `readable._read()` che `writable._write()`.
+I `Duplex` stream personalizzati *devono* chiamare il nuovo constructor `new stream.Duplex([options])` ed implementare *entrambi* i metodi sia `readable._read()` che `writable._write()`.
 
 #### new stream.Duplex(options)
 
