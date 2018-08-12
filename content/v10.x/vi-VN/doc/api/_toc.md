@@ -17,7 +17,7 @@
 * [Tùy chọn dòng lệnh](cli.html)
 * [Điều khiển](console.html)
 * [Crypto](crypto.html)
-* [Debugger](debugger.html)
+* [Trình gỡ lỗi](debugger.html)
 * [Deprecated APIs](deprecations.html)
 * [DNS](dns.html)
 * [Domain](domain.html)
