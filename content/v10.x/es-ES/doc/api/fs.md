@@ -1142,7 +1142,7 @@ added: v8.5.0
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * `callback` {Function}
 
-Asynchronously copies `src` to `dest`. Por defecto, `dest` se sobrescribe si ya existe. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Asynchronously copies `src` to `dest`. Por defecto, se sobrescribe `dest` si ya existe. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
