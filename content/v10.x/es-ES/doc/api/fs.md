@@ -866,7 +866,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `options` {Object|string} 
+* `opciones` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
