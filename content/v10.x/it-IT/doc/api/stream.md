@@ -1595,7 +1595,7 @@ class SourceWrapper extends Readable {
 }
 ```
 
-Il metodo `readable.push()` deve essere chiamato solo dagli `Readable` implementer, e solo dal metodo `readable._read()`.
+Il metodo `readable.push()` deve essere chiamato solo dai `Readable` implementer, e solo dal metodo `readable._read()`.
 
 Per gli stream che non operano in object mode, se il parametro `chunk` di `readable.push()` è `undefined`, verrà considerato come stringa vuota o buffer. Vedi [`readable.push('')`][] per maggiori informazioni.
 
