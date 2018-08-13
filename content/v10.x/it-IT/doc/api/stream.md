@@ -1919,9 +1919,9 @@ Ad esempio, considera il seguente codice:
 // ATTENZIONE!  DANNEGGIATO!
 net.createServer((socket) => {
 
-  // we add an 'end' listener, but never consume the data
+  // aggiungiamo un 'end' listener, ma senza consumare i dati
   socket.on('end', () => {
-    // It will never get here.
+    // Non arriverà mai qui.
     socket.end('The message was received but was not processed.\n');
   });
 
