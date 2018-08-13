@@ -1909,14 +1909,14 @@ In Node.js v0.10, è stata aggiunta la classe [`Readable`][]. Per la retro compa
 
 Mentre la maggior parte delle applicazioni continueranno a funzionare normalmente, questo introduce un caso limite nelle seguenti condizioni:
 
-* No [`'data'`][] event listener is added.
-* The [`stream.resume()`](#stream_readable_resume) method is never called.
-* The stream is not piped to any writable destination.
+* Non viene aggiunto nessun listener di eventi [`'data'`][].
+* Il metodo [`stream.resume()`](#stream_readable_resume) non viene mai chiamato.
+* Lo stream non è collegato tramite piping a nessuna destinazione writable.
 
-For example, consider the following code:
+Ad esempio, considera il seguente codice:
 
 ```js
-// WARNING!  BROKEN!
+// ATTENZIONE!  DANNEGGIATO!
 net.createServer((socket) => {
 
   // we add an 'end' listener, but never consume the data
