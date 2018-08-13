@@ -110,7 +110,7 @@ console.log(Buffer.from('fhqwhgads', 'utf16le'));
 
 Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
-* `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip the high bit if set.
+* `'ascii'` - Solo para datos ASCII de 7-bit. This encoding is fast and will strip the high bit if set.
 
 * `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other document formats use UTF-8.
 
