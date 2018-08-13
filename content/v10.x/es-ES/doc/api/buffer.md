@@ -92,7 +92,7 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-When string data is stored in or extracted out of a `Buffer` instance, a character encoding may be specified.
+Cuando los datos de cadena se almacenan o extraen de una instancia de `Buffer`, una codificación de caracteres puede ser especificada.
 
 ```js
 const buf = Buffer.from('hello world', 'ascii');
@@ -108,7 +108,7 @@ console.log(Buffer.from('fhqwhgads', 'utf16le'));
 // Imprime: <Buffer 66 00 68 00 71 00 77 00 68 00 67 00 61 00 64 00 73 00>
 ```
 
-The character encodings currently supported by Node.js include:
+Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
 * `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip the high bit if set.
 
