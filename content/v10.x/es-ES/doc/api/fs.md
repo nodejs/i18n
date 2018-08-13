@@ -233,7 +233,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-La mayoría de los sistemas operativos limitan el número de descriptores de archivo que pueden ser abiertos en un momento dado, por lo que es crucial cerrar el descriptor cuando se completan las operaciones. Failure to do so will result in a memory leak that will eventually cause an application to crash.
+La mayoría de los sistemas operativos limitan el número de descriptores de archivo que pueden ser abiertos en un momento dado, por lo que es crucial cerrar el descriptor cuando se completan las operaciones. Si no se logra, resultará en una pérdida de memoria que eventualmente hará que una aplicación falle.
 
 ## Threadpool Usage
 
