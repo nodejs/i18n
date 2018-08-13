@@ -114,9 +114,9 @@ Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
 * `'utf8'` - Multibyte encoded Unicode characters. Muchas páginas web y otros formatos de documentos utilizan UTF-8.
 
-* `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters. Los pares sustituidos (U+10000 a U+10FFFF) están soportados.
+* `'utf16le'` - caracteres Unicode codificados en little-endian, de 2 o 4 bytes. Los pares sustituidos (U+10000 a U+10FFFF) están soportados.
 
-* `'ucs2'` - Alias of `'utf16le'`.
+* `'ucs2'` - Alias de `'utf16le'`.
 
 * `'base64'` - Codificación de Base64. When creating a `Buffer` from a string, this encoding will also correctly accept "URL and Filename Safe Alphabet" as specified in [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
 
