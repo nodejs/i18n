@@ -1792,15 +1792,15 @@ Non è necessario che l'output abbia le stesse dimensioni dell'input, lo stesso 
 
 La classe `stream.Transform` viene estesa per implementare un [`Transform`][] stream.
 
-The `stream.Transform` class prototypically inherits from `stream.Duplex` and implements its own versions of the `writable._write()` and `readable._read()` methods. Custom `Transform` implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
+La classe `stream.Transform` eredita prototipicamente da `stream.Duplex` ed implementa le proprie versioni dei metodi `writable._write()` e `readable._read()`. Le implementazioni `Transform` personalizzate *devono* implementare il metodo [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) e *potrebbero* implementare anche il metodo [`transform._flush()`](#stream_transform_flush_callback).
 
-Care must be taken when using `Transform` streams in that data written to the stream can cause the `Writable` side of the stream to become paused if the output on the `Readable` side is not consumed.
+È necessario prestare attenzione quando si utilizzano gli `Transform` stream in quei dati scritti nello stream che possono far sì che la parte `Writable` dello stream venga sospesa se non viene consumato l'output sulla parte `Readable`.
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passato ad entrambi i constructor sia `Writable` che `Readable`. Also has the following fields: 
-  * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
-  * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
+* `options` {Object} Passato ad entrambi i constructor sia `Writable` che `Readable`. Inoltre ha le seguenti voci: 
+  * `transform` {Function} Implementazione per il metodo [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback).
+  * `flush` {Function} Implementazione per il metodo [`stream._flush()`](#stream_transform_flush_callback).
 
 ```js
 const { Transform } = require('stream');
@@ -1813,7 +1813,7 @@ class MyTransform extends Transform {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+Oppure, quando si utilizzano constructor di stili pre-ES6:
 
 ```js
 const { Transform } = require('stream');
@@ -1827,7 +1827,7 @@ function MyTransform(options) {
 util.inherits(MyTransform, Transform);
 ```
 
-Or, using the Simplified Constructor approach:
+Oppure, utilizzando l'approccio del Constructor semplificato:
 
 ```js
 const { Transform } = require('stream');
