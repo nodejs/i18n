@@ -1928,9 +1928,9 @@ net.createServer((socket) => {
 }).listen(1337);
 ```
 
-In versions of Node.js prior to v0.10, the incoming message data would be simply discarded. However, in Node.js v0.10 and beyond, the socket remains paused forever.
+Nelle versioni di Node.js precedenti alla v0.10, i dati dei messaggi in entrata venivano semplicemente scartati. Tuttavia, in Node.js v0.10 e nelle versioni successive, il socket rimane sospeso per sempre.
 
-The workaround in this situation is to call the [`stream.resume()`](#stream_readable_resume) method to begin the flow of data:
+Il workaround (la soluzione) in questa situazione è chiamare il metodo [`stream.resume()`](#stream_readable_resume) per iniziare il flusso dei dati:
 
 ```js
 // Workaround
@@ -1939,31 +1939,31 @@ net.createServer((socket) => {
     socket.end('The message was received but was not processed.\n');
   });
 
-  // start the flow of data, discarding it.
+  // avvia il flusso di dati, scartandolo.
   socket.resume();
 }).listen(1337);
 ```
 
-In addition to new `Readable` streams switching into flowing mode, pre-v0.10 style streams can be wrapped in a `Readable` class using the [`readable.wrap()`][`stream.wrap()`] method.
+Oltre ai nuovi `Readable` stream che passano alla flowing mode, gli stream di stile pre-v0.10 possono essere inclusi in una classe `Readable` utilizzando il metodo [`readable.wrap()`][`stream.wrap()`].
 
 ### `readable.read(0)`
 
-There are some cases where it is necessary to trigger a refresh of the underlying readable stream mechanisms, without actually consuming any data. In such cases, it is possible to call `readable.read(0)`, which will always return `null`.
+Ci sono alcuni casi in cui è necessario ri-aggiornare i meccanismi sottostanti di readable stream, senza effettivamente consumare alcun dato. In questi casi, è possibile chiamare `readable.read(0)`, che restituirà sempre `null`.
 
-If the internal read buffer is below the `highWaterMark`, and the stream is not currently reading, then calling `stream.read(0)` will trigger a low-level [`stream._read()`](#stream_readable_read_size_1) call.
+Se il read buffer interno è inferiore all'`highWaterMark`, e lo stream non sta leggendo in quel momento, allora chiamare `stream.read(0)` attiverà la chiamata di un [`stream._read()`](#stream_readable_read_size_1) di livello inferiore.
 
-While most applications will almost never need to do this, there are situations within Node.js where this is done, particularly in the `Readable` stream class internals.
+Anche se la maggior parte delle applicazioni non avrà bisogno quasi mai di farlo, ci sono situazioni all'interno di Node.js dove questo viene fatto, in particolare nelle classi interne di `Readable` stream.
 
 ### `readable.push('')`
 
-Use of `readable.push('')` is not recommended.
+L'utilizzo di `readable.push('')` non è raccomandato.
 
-Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. Because it *is* a call to [`readable.push()`](#stream_readable_push_chunk_encoding), the call will end the reading process. However, because the argument is an empty string, no data is added to the readable buffer so there is nothing for a user to consume.
+Il push di una stringa, un `Buffer` oppure un `Uint8Array` di zero-byte in uno stream che non è in object mode ha un effetto collaterale interessante. Poiché *è* una chiamata a [`readable.push()`](#stream_readable_push_chunk_encoding), la chiamata terminerà il processo di lettura. Tuttavia, poiché l'argomento è una stringa vuota, non viene aggiunto nessun dato al readable buffer, perciò non c'è nulla che un utente possa consumare.
 
-### `highWaterMark` discrepancy after calling `readable.setEncoding()`
+### discrepanza di `highWaterMark` dopo aver chiamato `readable.setEncoding()`
 
-The use of `readable.setEncoding()` will change the behavior of how the `highWaterMark` operates in non-object mode.
+L'utilizzo di `readable.setEncoding()` cambierà il modo in cui `highWaterMark` opera al di fuori dell'object mode.
 
-Typically, the size of the current buffer is measured against the `highWaterMark` in *bytes*. However, after `setEncoding()` is called, the comparison function will begin to measure the buffer's size in *characters*.
+In genere, la dimensione del buffer attuale viene misurata rispetto all'`highWaterMark` in *bytes*. Tuttavia, dopo aver chiamato `setEncoding()`, la funzione di confronto inizierà a misurare la dimensione del buffer in *characters* (caratteri).
 
 This is not a problem in common cases with `latin1` or `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
