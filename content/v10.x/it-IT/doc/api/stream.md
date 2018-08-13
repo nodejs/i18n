@@ -1853,23 +1853,23 @@ In alcuni casi, un'operazione transform potrebbe dover emettere un ulteriore bit
 
 Le implementazioni [`Transform`][] personalizzate *potrebbero* implementare il metodo `transform._flush()`. Questo verrà chiamato quando non ci sono più dati scritti da consumare, ma prima che l'evento [`'end'`][] venga emesso segnalando la fine del [`Readable`][] stream.
 
-Nell'implementazione `transform._flush()`, il metodo `readable.push()` può essere chiamato zero o più volte, a seconda dei casi. The `callback` function must be called when the flush operation is complete.
+Nell'implementazione `transform._flush()`, il metodo `readable.push()` può essere chiamato zero o più volte, a seconda dei casi. La funzione `callback` deve essere chiamata quando l'operazione flush è completa.
 
-The `transform._flush()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+Il metodo `transform._flush()` è preceduto da un trattino basso (underscore) perché è interno alla classe che lo definisce e non dovrebbe mai essere chiamato direttamente dai programmi utente.
 
 #### transform.\_transform(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} The chunk to be transformed. Will **always** be a buffer unless the `decodeStrings` option was set to `false` or the stream is operating in object mode.
-* `encoding` {string} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value - 'buffer', ignore it in this case.
-* `callback` {Function} A callback function (optionally with an error argument and data) to be called after the supplied `chunk` has been processed.
+* `chunk` {Buffer|string|any} Il chunk da trasformare. Sarà **sempre** un buffer a meno che l'opzione `decodeStrings` sia impostata su `false` oppure che lo stream stia operando in object mode.
+* `encoding` {string} Se il chunk è una stringa, allora questo è il tipo di encoding. Se il chunk è un buffer, allora questo è il valore speciale - 'buffer', ignorarlo in questo caso.
+* `callback` {Function} Una funzione di callback (facoltativamente con un argomento error e data) da chiamare dopo che il `chunk` fornito è stato elaborato.
 
 Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
-All `Transform` stream implementations must provide a `_transform()` method to accept input and produce output. The `transform._transform()` implementation handles the bytes being written, computes an output, then passes that output off to the readable portion using the `readable.push()` method.
+Tutte le implementazioni di `Transform` stream devono fornire un metodo `_transform()` per accettare l'input e produrre l'output. L'implementazione `transform._transform()` gestisce i byte scritti, calcola un output, e di conseguenza passa quell'output alla porzione readable utilizzando il metodo `readable.push()`.
 
-The `transform.push()` method may be called zero or more times to generate output from a single input chunk, depending on how much is to be output as a result of the chunk.
+Il metodo `transform.push()` può essere chiamato zero o più volte per generare l'output da un singolo input chunk, a seconda di quanto deve essere prodotto come risultato del chunk.
 
-It is possible that no output is generated from any given chunk of input data.
+È possibile che nessun output sia generato da un determinato chunk di dati input.
 
 The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
 
