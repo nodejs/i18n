@@ -1871,7 +1871,7 @@ Il metodo `transform.push()` può essere chiamato zero o più volte per generare
 
 È possibile che nessun output sia generato da un determinato chunk di dati input.
 
-The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
+La funzione `callback` deve essere chiamata solo quando il chunk attuale è completamente consumato. Il primo argomento passato al `callback` deve essere un `Error` object se si verifica un errore durante l'elaborazione dell'input oppure `null` in caso contrario. Se viene passato un secondo argomento al `callback`, esso verrà inoltrato al metodo `readable.push()`. In altre parole, i seguenti sono equivalenti:
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
@@ -1884,19 +1884,19 @@ transform.prototype._transform = function(data, encoding, callback) {
 };
 ```
 
-The `transform._transform()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+Il metodo `transform._transform()` è preceduto da un trattino basso (underscore) perché è interno alla classe che lo definisce e non dovrebbe mai essere chiamato direttamente dai programmi utente.
 
-`transform._transform()` is never called in parallel; streams implement a queue mechanism, and to receive the next chunk, `callback` must be called, either synchronously or asynchronously.
+`transform._transform()` non viene mai chiamato in parallelo; gli stream implementano un meccanismo di queue, quindi per ricevere il chunk successivo è necessario chiamare `callback`, in modo sincrono oppure asincrono.
 
 #### Class: stream.PassThrough
 
-The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] stream that simply passes the input bytes across to the output. Its purpose is primarily for examples and testing, but there are some use cases where `stream.PassThrough` is useful as a building block for novel sorts of streams.
+La classe `stream.PassThrough` è un'implementazione banale di un [`Transform`][] stream che passa semplicemente i byte d'input all'output. E' utile principalmente per gli esempi e per il testing, ma ci sono alcuni casi d'uso in cui `stream.PassThrough` è utile anche come base per nuovi tipi di stream.
 
-## Additional Notes
+## Note aggiuntive
 
 <!--type=misc-->
 
-### Compatibility with Older Node.js Versions
+### Compatibilità con le Versioni Precedenti di Node.js
 
 <!--type=misc-->
 
