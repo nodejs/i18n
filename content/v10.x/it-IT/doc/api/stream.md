@@ -1595,7 +1595,7 @@ class SourceWrapper extends Readable {
 }
 ```
 
-Il metodo `readable.push()` deve essere chiamato solo dagli `Readable` implementer, e solo dal metodo `readable._read()`.
+Il metodo `readable.push()` deve essere chiamato solo dai `Readable` implementer, e solo dal metodo `readable._read()`.
 
 Per gli stream che non operano in object mode, se il parametro `chunk` di `readable.push()` è `undefined`, verrà considerato come stringa vuota o buffer. Vedi [`readable.push('')`][] per maggiori informazioni.
 
@@ -1656,7 +1656,7 @@ Poiché JavaScript non supporta l'ereditarietà multipla, la classe `stream.Dupl
 
 La classe `stream.Duplex` eredita prototipicamente da `stream.Readable` e parassiticamente da `stream.Writable`, ma `instanceof` funzionerà correttamente per entrambe le classi di base a causa della sovrascrizione di [`Symbol.hasInstance`][] su `stream.Writable`.
 
-Gli `Duplex` stream personalizzati *devono* chiamare il nuovo constructor `new stream.Duplex([options])` ed implementare *entrambi* i metodi sia `readable._read()` che `writable._write()`.
+I `Duplex` stream personalizzati *devono* chiamare il nuovo constructor `new stream.Duplex([options])` ed implementare *entrambi* i metodi sia `readable._read()` che `writable._write()`.
 
 #### new stream.Duplex(options)
 
@@ -1748,7 +1748,7 @@ class MyDuplex extends Duplex {
 
 L'aspetto più importante di un `Duplex` stream è che entrambe le parti sia `Readable` che `Writable` operano indipendentemente l'una dall'altra nonostante coesistano all'interno di una singola istanza di object.
 
-#### Object Mode per gli Duplex Stream
+#### Object Mode per i Duplex Stream
 
 Per gli `Duplex` stream, l'`objectMode` può essere impostata esclusivamente o per la parte `Readable` oppure per la parte `Writable` utilizzando rispettivamente l'opzione `readableObjectMode` oppure l'opzione `writableObjectMode`.
 
@@ -1784,13 +1784,13 @@ myTransform.write(100);
 // Stampa: 64
 ```
 
-### Implementing a Transform Stream
+### Implementazione di un Transform Stream
 
-A [`Transform`][] stream is a [`Duplex`][] stream where the output is computed in some way from the input. Examples include [zlib](zlib.html) streams or [crypto](crypto.html) streams that compress, encrypt, or decrypt data.
+Un [`Transform`][] stream è un [`Duplex`][] stream in cui l'output viene calcolato in qualche modo dall'input. Gli esempi includono gli [zlib](zlib.html) stream oppure i [crypto](crypto.html) stream che comprimono, codificano o decodificano i dati.
 
-There is no requirement that the output be the same size as the input, the same number of chunks, or arrive at the same time. For example, a `Hash` stream will only ever have a single chunk of output which is provided when the input is ended. A `zlib` stream will produce output that is either much smaller or much larger than its input.
+Non è necessario che l'output abbia le stesse dimensioni dell'input, lo stesso numero di chunk o che arrivi nello stesso momento. Ad esempio, un `Hash` stream avrà sempre un singolo chunk di output il quale viene fornito quando l'input si conclude. Un `zlib` stream produrrà un output che è molto più piccolo oppure molto più grande del suo input.
 
-The `stream.Transform` class is extended to implement a [`Transform`][] stream.
+La classe `stream.Transform` viene estesa per implementare un [`Transform`][] stream.
 
 The `stream.Transform` class prototypically inherits from `stream.Duplex` and implements its own versions of the `writable._write()` and `readable._read()` methods. Custom `Transform` implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
 

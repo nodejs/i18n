@@ -866,7 +866,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -920,7 +920,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -1142,7 +1142,7 @@ added: v8.5.0
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * `callback` {Function}
 
-Asynchronously copies `src` to `dest`. Por defecto, `dest` se sobrescribe si ya existe. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Asynchronously copies `src` to `dest`. Por defecto, se sobrescribe `dest` si ya existe. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -1182,7 +1182,7 @@ added: v8.5.0
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 
-Copia de manera sincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Copia de manera sincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -1229,7 +1229,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'r'`.
   * `encoding` {string} **Default:** `null`
   * `fd` {integer} **Default:** `null`
@@ -1280,7 +1280,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
   * `fd` {integer} **Default:** `null`
@@ -2111,7 +2111,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2134,7 +2134,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string[]} An array of filenames excluding `'.'` and `'..'`.
 
@@ -2170,7 +2170,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * `callback` {Function} 
@@ -2232,7 +2232,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {string|Buffer}
@@ -2273,7 +2273,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2297,7 +2297,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2356,7 +2356,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2387,7 +2387,7 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2426,7 +2426,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2451,7 +2451,7 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2852,11 +2852,11 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
-* `listener` {Function|undefined} **Default:** `no definido` 
+* `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}
   * `filename` {string|Buffer}
 * Returns: {fs.FSWatcher}
@@ -2887,10 +2887,10 @@ This feature depends on the underlying operating system providing a way to be no
 
 * En sistemas Linux, esto utiliza [`inotify`]
 * En sistemas BSD, esto utiliza [`kqueue`]
-* On macOS, this uses [`kqueue`] for files and [`FSEvents`] for directories.
-* On SunOS systems (including Solaris and SmartOS), this uses [`event ports`].
+* En macOC, esto utiliza [`kqueue`] para archivos y [`FSEvents`] para directorios.
+* En sistemas SunOS (incluyendo Solaris y SmartOS), esto utiliza [`event ports`].
 * En el sistema de Windows, esta función depende de [`ReadDirectoryChangesW`].
-* On Aix systems, this feature depends on [`AHAFS`], which must be enabled.
+* En sistemas Aix, esta función depende de [`AHAFS`], la cual debe ser habilitada.
 
 If the underlying functionality is not available for some reason, then `fs.watch` will not be able to function. For example, watching files or directories can be unreliable, and in some cases impossible, on network file systems (NFS, SMB, etc), or host file systems when using virtualization software such as Vagrant, Docker, etc.
 
@@ -2934,7 +2934,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `opciones` {Object} 
+* `options` {Object} 
   * `persistent` {boolean} **Default:** `true`
   * `interval` {integer} **Default:** `5007`
 * `listener` {Function} 
@@ -3079,7 +3079,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3127,7 +3127,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3199,7 +3199,7 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -3304,7 +3304,7 @@ Following successful read, the `Promise` is resolved with an object with a `byte
 added: v10.0.0
 -->
 
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
@@ -3429,7 +3429,7 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3480,7 +3480,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -3747,7 +3747,7 @@ added: v10.0.0
 -->
 
 * `prefix` {string}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -3811,7 +3811,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -3826,7 +3826,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
@@ -3848,7 +3848,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -3863,7 +3863,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opciones` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -4000,7 +4000,7 @@ added: v10.0.0
 
 * `file` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer|Uint8Array}
-* `opciones` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
