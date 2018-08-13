@@ -260,7 +260,7 @@ added: v0.9.4
 
 L'evento `'unpipe'` viene emesso quando il metodo [`stream.unpipe()`][] viene chiamato su un [`Readable`][] stream, rimuovendo questo [`Writable`][] dal suo set di destinazioni.
 
-Questo viene anche emesso nel caso in cui questo [`Writable`][] stream emetta un errore quando [`Readable`][] stream esegue il piping al suo interno.
+Questo viene emesso anche nel caso in cui questo [`Writable`][] stream emetta un errore quando [`Readable`][] stream esegue il piping al suo interno.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -311,12 +311,12 @@ changes:
 
 * `chunk` {string|Buffer|Uint8Array|any} Dati opzionali da scrivere. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript diverso da `null`.
 * `encoding` {string} La codifica, se `chunk` è una stringa
-* `callback` {Function} Callback opzionale per quando la conclusione dello stream
+* `callback` {Function} Callback opzionale per quando lo stream si conclude
 * Restituisce: {this}
 
 Chiamando il metodo `writable.end()` si segnala che non verranno scritti più dati su [`Writable`][]. Gli argomenti facoltativi `chunk` ed `encoding` consentono di scrivere un'ultimo chuck di dati aggiuntivo immediatamente prima di chiudere lo stream. Se fornita, la funzione facoltativa `callback` è allegata come listener per l'evento [`'finish'`][].
 
-Chiamando il metodo [`stream.write()`](#stream_writable_write_chunk_encoding_callback) dopo aver chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) genererà un errore.
+Chiamare il metodo [`stream.write()`](#stream_writable_write_chunk_encoding_callback) dopo aver chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) genererà un errore.
 
 ```js
 // scrive 'hello, ' e poi termina con 'world!'
@@ -1905,7 +1905,7 @@ Nelle versioni Node.js precedenti alla v0.10, la `Readable` stream interface era
 * Anziché aspettare di chiamare il metodo [`stream.read()`](#stream_readable_read_size), gli eventi [`'data'`][] iniziavano ad emettere immediatamente. Le applicazioni che avevano bisogno di eseguire una certa quantità di lavoro per decidere come gestire i dati erano necessarie per memorizzare i read data all'interno dei buffer in modo che non andassero persi.
 * Il metodo [`stream.pause()`](#stream_readable_pause) era di tipo consultivo, piuttosto che garantito. Ciò significava che era ancora necessario essere preparati a ricevere eventi [`'data'`][] *anche quando lo stream era in uno stato di pausa*.
 
-In Node.js v0.10, è stata aggiunta la classe [`Readable`][]. For backwards compatibility with older Node.js programs, `Readable` streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
+In Node.js v0.10, è stata aggiunta la classe [`Readable`][]. Per la retro compatibilità con i programmi Node.js precedenti, gli `Readable` stream passano in "flowing mode" quando viene aggiunto un handler di eventi [`'data'`][] oppure quando viene chiamato il metodo [`stream.resume()`](#stream_readable_resume). The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
 
 While most applications will continue to function normally, this introduces an edge case in the following conditions:
 
