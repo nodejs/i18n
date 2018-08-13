@@ -1839,13 +1839,13 @@ const myTransform = new Transform({
 });
 ```
 
-#### Events: 'finish' and 'end'
+#### Eventi: 'finish' ed 'end'
 
-The [`'finish'`][] and [`'end'`][] events are from the `stream.Writable` and `stream.Readable` classes, respectively. The `'finish'` event is emitted after [`stream.end()`](#stream_writable_end_chunk_encoding_callback) is called and all chunks have been processed by [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). The `'end'` event is emitted after all data has been output, which occurs after the callback in [`transform._flush()`](#stream_transform_flush_callback) has been called.
+Gli eventi [`'finish'`][] ed [`'end'`][] provengono rispettivamente dalle classi `stream.Writable` e `stream.Readable`. L'evento `'finish'` viene emesso dopo che viene chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) e che tutti i chunk siano stati elaborati da [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). L'evento `'end'` viene emesso dopo l'emissione di tutti i dati, il che avviene dopo la chiamata del callback in [`transform._flush()`](#stream_transform_flush_callback).
 
 #### transform.\_flush(callback)
 
-* `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
+* `callback` {Function} Una funzione di callback (facoltativamente con un argomento error e data) da chiamare quando i dati rimanenti sono stati svuotati.
 
 Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
