@@ -1841,7 +1841,7 @@ const myTransform = new Transform({
 
 #### Eventi: 'finish' ed 'end'
 
-Gli eventi [`'finish'`][] ed [`'end'`][] provengono rispettivamente dalle classi `stream.Writable` e `stream.Readable`. L'evento `'finish'` viene emesso dopo che viene chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) e che tutti i chunk siano stati elaborati da [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). L'evento `'end'` viene emesso dopo l'emissione di tutti i dati, il che avviene dopo la chiamata del callback in [`transform._flush()`](#stream_transform_flush_callback).
+Gli eventi [`'finish'`][] ed [`'end'`][] provengono rispettivamente dalle classi `stream.Writable` e `stream.Readable`. L'evento `'finish'` viene emesso dopo che viene chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) e che tutti i chunk sono stati elaborati da [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). L'evento `'end'` viene emesso dopo l'emissione di tutti i dati, il che avviene dopo la chiamata del callback in [`transform._flush()`](#stream_transform_flush_callback).
 
 #### transform.\_flush(callback)
 
