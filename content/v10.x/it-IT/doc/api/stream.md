@@ -1900,7 +1900,7 @@ La classe `stream.PassThrough` è un'implementazione banale di un [`Transform`][
 
 <!--type=misc-->
 
-In versions of Node.js prior to v0.10, the `Readable` stream interface was simpler, but also less powerful and less useful.
+Nelle versioni Node.js precedenti alla v0.10, la `Readable` stream interface era più semplice, ma anche meno potente e meno utile.
 
 * Rather than waiting for calls the [`stream.read()`](#stream_readable_read_size) method, [`'data'`][] events would begin emitting immediately. Applications that would need to perform some amount of work to decide how to handle data were required to store read data into buffers so the data would not be lost.
 * The [`stream.pause()`](#stream_readable_pause) method was advisory, rather than guaranteed. This meant that it was still necessary to be prepared to receive [`'data'`][] events *even when the stream was in a paused state*.
