@@ -120,13 +120,13 @@ Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
 * `'base64'` - Codificación de Base64. Cuando se crea un `Buffer` desde una cadena, esta codificación también aceptará correctamente el "URL y Nombre de Archivo del Alfabeto Seguro" como se especifica en [RFC4648, Sección 5](https://tools.ietf.org/html/rfc4648#section-5).
 
-* `'latin1'` - A way of encoding the `Buffer` into a one-byte encoded string (as defined by the IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), page 63, to be the Latin-1 supplement block and C0/C1 control codes).
+* `'latin1'` - Una manera de codificar el `Buffer` dentro de una cadena codficada de one-byte (como se define por el IANA en [RFC1345](https://tools.ietf.org/html/rfc1345), página 63, en el bloque de suplemento de Latin-1 y los códigos de control C0/C1).
 
 * `'binary'` - Alias de `'latin1'`.
 
 * `'hex'` - Codifica cada byte como dos caracteres hexadecimales.
 
-Los navegadores Web modernos siguen la [Codificación Estándar de WHATWG](https://encoding.spec.whatwg.org/) que distorsiona a `'latin1'` y de `'ISO-8859-1'` a `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+Los navegadores Web modernos siguen la [Codificación Estándar de WHATWG](https://encoding.spec.whatwg.org/) que distorsiona a `'latin1'` y de `'ISO-8859-1'` a `'win-1252'`. Esto significa que al hacer algo como `http.get()`, si el conjunto de caracteres devueltos es uno de los enumerados en las especificaciones de WHATWG es posible que el servidor realmente devolviera los datos codificados en `'win-1252'` y utilizar la codificación `'latin1'` puede decodificar incorrectamente los caracteres.
 
 ## Buffers y TypedArray
 
@@ -142,7 +142,7 @@ Las instancias de `Buffer` también son instancias de [`Uint8Array`]. Sin embarg
 
 It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
 
-1. The `Buffer` object's memory is copied to the [`TypedArray`], not shared.
+1. La memoria del objeto de `Buffer` se copia en el [`TypedArray`], no se comparte.
 
 2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
 
