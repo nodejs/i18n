@@ -137,7 +137,7 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 added: v7.6.0
 --> Para la mayoría de las funciones de módulo de 
 
-`fs`, el `path` o el argumento de `filename` pueden ser pasados como un objeto de [`URL`][] de WHATWG. Only [`URL`][] objects using the `file:` protocol are supported.
+`fs`, el `path` o el argumento de `filename` pueden ser pasados como un objeto de [`URL`][] de WHATWG. Sólo los objetos de [`URL`][] que utilizan el protocolo de `file:` son soportados.
 
 ```js
 const fs = require('fs');
@@ -148,7 +148,7 @@ fs.readFileSync(fileUrl);
 
 `file:` URLs are always absolute paths.
 
-Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
+Utilizar objetos de [`URL`][] de WHATWG podría introducir comportamientos específicos a la plataforma.
 
 On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw:
 
@@ -212,9 +212,9 @@ fs.readFileSync(new URL('file:///C:/path/%5c'));
 \ or / characters */
 ```
 
-## File Descriptors
+## Descriptores de archivo
 
-On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. Each open file is assigned a simple numeric identifier called a *file descriptor*. At the system-level, all file system operations use these file descriptors to identify and track each specific file. Windows systems use a different but conceptually similar mechanism for tracking resources. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
+On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. A cada archivo abierto se le asigna un identificador numérico simple llamado *file descriptor*. At the system-level, all file system operations use these file descriptors to identify and track each specific file. Windows systems use a different but conceptually similar mechanism for tracking resources. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
 
 The `fs.open()` method is used to allocate a new file descriptor. Once allocated, the file descriptor may be used to read data from, write data to, or request information about the file.
 
