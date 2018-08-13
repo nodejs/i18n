@@ -88,7 +88,7 @@ Error: EISDIR: illegal operation on a directory, read
 
 ## Rutas de archivo
 
-Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
+La mayoría de las operaciones de `fs` aceptan rutas de archivo que pueden ser especificadas en la forma de una string, un [`Buffer`][], o un objeto de [`URL`][] utilizando el protocolo `file:` .
 
 String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
 
@@ -105,7 +105,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-Example using a relative path on POSIX (relative to `process.cwd()`):
+Ejemplo utilizando una ruta relativa en POSIX (con relación a `process.cwd()`):
 
 ```js
 fs.open('file.txt', 'r', (err, fd) => {
