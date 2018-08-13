@@ -214,7 +214,7 @@ fs.readFileSync(new URL('file:///C:/path/%5c'));
 
 ## Descriptores de archivo
 
-On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. A cada archivo abierto se le asigna un identificador numérico simple llamado *file descriptor*. At the system-level, all file system operations use these file descriptors to identify and track each specific file. Windows systems use a different but conceptually similar mechanism for tracking resources. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
+On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. A cada archivo abierto se le asigna un identificador numérico simple llamado *file descriptor*. A nivel de sistema, todas las operaciones del sistema de archivos utilizan estos descriptores de archivo para identificar y rastrear cada archivo específico. Windows systems use a different but conceptually similar mechanism for tracking resources. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
 
 The `fs.open()` method is used to allocate a new file descriptor. Once allocated, the file descriptor may be used to read data from, write data to, or request information about the file.
 
