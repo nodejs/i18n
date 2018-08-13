@@ -128,7 +128,7 @@ Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
 Modern Web browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
 
-## Buffers and TypedArray
+## Buffers y TypedArray
 
 <!-- YAML
 changes:
