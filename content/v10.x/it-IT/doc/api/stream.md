@@ -1849,11 +1849,11 @@ Gli eventi [`'finish'`][] ed [`'end'`][] provengono rispettivamente dalle classi
 
 Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
-In alcuni casi, un'operazione transform potrebbe dover emettere un ulteriore bit di dati alla fine dello stream. For example, a `zlib` compression stream will store an amount of internal state used to optimally compress the output. When the stream ends, however, that additional data needs to be flushed so that the compressed data will be complete.
+In alcuni casi, un'operazione transform potrebbe dover emettere un ulteriore bit di dati alla fine dello stream. Ad esempio, uno stream di compressione `zlib` memorizzerà una quantità di stato interno utilizzato per comprimere in modo ottimale l'output. Al termine dello stream, tuttavia, è necessario svuotare i dati aggiuntivi per completare i dati compressi.
 
-Custom [`Transform`][] implementations *may* implement the `transform._flush()` method. This will be called when there is no more written data to be consumed, but before the [`'end'`][] event is emitted signaling the end of the [`Readable`][] stream.
+Le implementazioni [`Transform`][] personalizzate *potrebbero* implementare il metodo `transform._flush()`. Questo verrà chiamato quando non ci sono più dati scritti da consumare, ma prima che l'evento [`'end'`][] venga emesso segnalando la fine del [`Readable`][] stream.
 
-Within the `transform._flush()` implementation, the `readable.push()` method may be called zero or more times, as appropriate. The `callback` function must be called when the flush operation is complete.
+Nell'implementazione `transform._flush()`, il metodo `readable.push()` può essere chiamato zero o più volte, a seconda dei casi. The `callback` function must be called when the flush operation is complete.
 
 The `transform._flush()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
 
