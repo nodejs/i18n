@@ -1905,9 +1905,9 @@ Nelle versioni Node.js precedenti alla v0.10, la `Readable` stream interface era
 * Anziché aspettare di chiamare il metodo [`stream.read()`](#stream_readable_read_size), gli eventi [`'data'`][] iniziavano ad emettere immediatamente. Le applicazioni che avevano bisogno di eseguire una certa quantità di lavoro per decidere come gestire i dati erano necessarie per memorizzare i read data all'interno dei buffer in modo che non andassero persi.
 * Il metodo [`stream.pause()`](#stream_readable_pause) era di tipo consultivo, piuttosto che garantito. Ciò significava che era ancora necessario essere preparati a ricevere eventi [`'data'`][] *anche quando lo stream era in uno stato di pausa*.
 
-In Node.js v0.10, è stata aggiunta la classe [`Readable`][]. Per la retro compatibilità con i programmi Node.js precedenti, gli `Readable` stream passano in "flowing mode" quando viene aggiunto un handler di eventi [`'data'`][] oppure quando viene chiamato il metodo [`stream.resume()`](#stream_readable_resume). The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
+In Node.js v0.10, è stata aggiunta la classe [`Readable`][]. Per la retro compatibilità con i programmi Node.js precedenti, gli `Readable` stream passano in "flowing mode" quando viene aggiunto un handler di eventi [`'data'`][] oppure quando viene chiamato il metodo [`stream.resume()`](#stream_readable_resume). L'effetto è che, anche quando non si utilizza il nuovo metodo [`stream.read()`](#stream_readable_read_size) e l'evento [`'readable'`][], non è più necessario preoccuparsi di perdere dei chunk di [`'data'`][].
 
-While most applications will continue to function normally, this introduces an edge case in the following conditions:
+Mentre la maggior parte delle applicazioni continueranno a funzionare normalmente, questo introduce un caso limite nelle seguenti condizioni:
 
 * No [`'data'`][] event listener is added.
 * The [`stream.resume()`](#stream_readable_resume) method is never called.
