@@ -112,7 +112,7 @@ Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
 * `'ascii'` - Solo para datos ASCII de 7-bit. Esta codificación es rápida y eliminará el high bit si está configurado.
 
-* `'utf8'` - Multibyte encoded Unicode characters. Muchas páginas web y otros formatos de documentos utilizan UTF-8.
+* `'utf8'` - Caracteres Unicode codificados en multibyte. Muchas páginas web y otros formatos de documentos utilizan UTF-8.
 
 * `'utf16le'` - caracteres Unicode codificados en little-endian, de 2 o 4 bytes. Los pares sustituidos (U+10000 a U+10FFFF) están soportados.
 
@@ -126,7 +126,7 @@ Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
 * `'hex'` - Codifica cada byte como dos caracteres hexadecimales.
 
-Modern Web browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+Los navegadores Web modernos siguen la [Codificación Estándar de WHATWG](https://encoding.spec.whatwg.org/) que distorsiona a `'latin1'` y de `'ISO-8859-1'` a `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
 
 ## Buffers y TypedArray
 
@@ -138,7 +138,7 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instances are also [`Uint8Array`] instances. However, there are subtle incompatibilities with [`TypedArray`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+Las instancias de `Buffer` también son instancias de [`Uint8Array`]. Sin embargo, hay sutiles incompatibilidades con [`TypedArray`]. Por ejemplo, mientras [`ArrayBuffer#slice()`] crea una copia del sector, la implementación de [`Buffer#slice()`][`buf.slice()`] crea una vista sobre el `Buffer` existente sin copiar, haciendo a [`Buffer#slice()`][`buf.slice()`] mucho más eficiente.
 
 It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
 
