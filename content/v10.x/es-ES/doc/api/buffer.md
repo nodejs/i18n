@@ -182,11 +182,11 @@ console.log(buf.length);
 // Imprime: 16
 ```
 
-El `Buffer.from()` y el [`TypedArray.from()`] tienen diferentes firmas e implementaciones. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+El `Buffer.from()` y el [`TypedArray.from()`] tienen diferentes firmas e implementaciones. Específicamente, las variantes de [`TypedArray`] aceptan un segundo argumento que es una función de mapeo que se invoca sobre cada elemento del arreglo escrito:
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-The `Buffer.from()` method, however, does not support the use of a mapping function:
+El método `Buffer.from()`, sin embargo, no permite el uso de una función de mapeo:
 
 * [`Buffer.from(array)`]
 * [`Buffer.from(buffer)`]
@@ -195,12 +195,12 @@ The `Buffer.from()` method, however, does not support the use of a mapping funct
 
 ## Buffers and iteration
 
-`Buffer` instances can be iterated over using `for..of` syntax:
+Las instancias de `Buffer` pueden iterarse utilizando la sintaxis `for..of`:
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
 
-// Prints:
+// Imprime:
 //   1
 //   2
 //   3
