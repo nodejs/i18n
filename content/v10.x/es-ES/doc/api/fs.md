@@ -354,7 +354,7 @@ added: v0.1.93
 
 * {string|Buffer}
 
-The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. If `path` is passed as a `Buffer`, then `readStream.path` will be a `Buffer`.
+The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. Si `path` se pasa como un `Buffer`, entonces `readStream.path` será un `Buffer`.
 
 ## Class: fs.Stats
 
@@ -369,7 +369,7 @@ changes:
 
 Un objeto de `fs.Stats` proporciona información acerca de un archivo.
 
-Objects returned from [`fs.stat()`][], [`fs.lstat()`][] and [`fs.fstat()`][] and their synchronous counterparts are of this type.
+Objetos devueltos desde [`fs.stat()`][], [`fs.lstat()`][] y [`fs.fstat()`][] y sus contrapartes sincrónicas son de este tipo.
 
 ```console
 Stats {
