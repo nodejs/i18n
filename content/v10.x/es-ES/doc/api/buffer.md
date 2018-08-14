@@ -144,9 +144,9 @@ También es posible crear nuevas instancias de [`TypedArray`] desde un `Buffer` 
 
 1. La memoria del objeto de `Buffer` se copia en el [`TypedArray`], no se comparte.
 
-2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. La memoria del objeto de `Buffer` es interpretada como un arreglo de distintos elementos, y no como un arreglo de byte del tipo objetivo. Eso es, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un [`Uint32Array`] de 4 elementos con elementos `[1, 2, 3, 4]`, no un [`Uint32Array`] con un elemento único `[0x1020304]` o `[0x4030201]`.
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the `TypeArray` object's `.buffer` property.
+Es posible crear un nuevo `Buffer` que comparte la misma memoria asignada como una instancia de [`TypedArray`] al utilizar la propiedad `.buffer` del objeto `TypeArray`.
 
 ```js
 const arr = new Uint16Array(2);
@@ -154,22 +154,22 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Copies the contents of `arr`
+// Copia el contenido de `arr`
 const buf1 = Buffer.from(arr);
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf2 = Buffer.from(arr.buffer);
 
 console.log(buf1);
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf2);
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 
 arr[1] = 6000;
 
 console.log(buf1);
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf2);
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 ```
 
 Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
