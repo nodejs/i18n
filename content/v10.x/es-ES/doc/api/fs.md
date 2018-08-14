@@ -1113,7 +1113,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous close(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous close(2). Ningún otro argumento que no sea una posible excepción es dado a la terminación del callback.
 
 ## fs.closeSync(fd)
 
@@ -1129,7 +1129,7 @@ Synchronous close(2). Returns `undefined`.
 
 * {Object}
 
-Returns an object containing commonly used constants for file system operations. The specific constants currently defined are described in [FS Constants](#fs_fs_constants_1).
+Returns an object containing commonly used constants for file system operations. Las constantes específicas actualmente definidas se describen en [Constantes de FS](#fs_fs_constants_1).
 
 ## fs.copyFile(src, dest[, flags], callback)
 
