@@ -1244,13 +1244,13 @@ Unlike the 16 kb default `highWaterMark` for a readable stream, the stream retur
 
 `options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. `start` y `end` son inclusivos y empiezan a contar desde 0. Si se especifica `fd` y se omite `start` o es `undefined`, `fs.createReadStream()` lee de manera secuencial desde la posición actual del archivo. El `encoding` puede ser cualquiera de los aceptados por [`Buffer`][].
 
-Si se especifica `fd`, `ReadStream` ignorará el argumento de `path` y utilizará el descriptor de archivo especificado. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+Si se especifica `fd`, `ReadStream` ignorará el argumento de `path` y utilizará el descriptor de archivo especificado. Esto significa que no se emitirán eventos `'open'` . Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak. If `autoClose` is set to true (default behavior), on `'error'` or `'end'` the file descriptor will be closed automatically.
+Si `autoClose` es falso, entonces el descriptor de archivo no se cerrará, incluso si hay un error. Es responsabilidad de la aplicación cerrarla y asegurarse que no hayan pérdidas del descriptor de archivo. Si `autoClose` se establece a verdadero (comportamiento predeterminado), en `'error'` ó `'end'` el descriptor de archivo se cerrará automáticamente.
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
-An example to read the last 10 bytes of a file which is 100 bytes long:
+Un ejemplo para leer los últimos 10 bytes de un archivo que tiene 100 bytes de longitud:
 
 ```js
 fs.createReadStream('sample.txt', { start: 90, end: 99 });
@@ -1289,7 +1289,7 @@ changes:
   * `start` {integer}
 * Returns: {fs.WriteStream} See [Writable Stream](stream.html#stream_class_stream_writable).
 
-`options` may also include a `start` option to allow writing data at some position past the beginning of the file. Modifying a file rather than replacing it may require a `flags` mode of `r+` rather than the default mode `w`. The `encoding` can be any one of those accepted by [`Buffer`][].
+`options` también puede incluir una opción de `start` para permitir la escritura de datos en una posición más allá del inicio del archivo. Modifying a file rather than replacing it may require a `flags` mode of `r+` rather than the default mode `w`. El `encoding` puede ser cualquiera de los aceptados por [`Buffer`][].
 
 If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the file descriptor will be closed automatically. If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak.
 
