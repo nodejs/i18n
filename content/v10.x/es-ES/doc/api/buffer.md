@@ -172,7 +172,7 @@ console.log(buf2);
 // Imprime: <Buffer 88 13 70 17>
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+Tenga en cuenta que cuando se crea un `Buffer` utilizando un `.buffer` de [`TypedArray`] es posible utilizar solo una parte del [`ArrayBuffer`] subyacente al pasar los parámetros `byteOffset` y `length`.
 
 ```js
 const arr = new Uint16Array(20);
