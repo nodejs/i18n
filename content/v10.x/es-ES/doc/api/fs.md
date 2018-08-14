@@ -632,7 +632,7 @@ added: v0.1.93
 added: v0.1.93
 -->
 
-Emitted when the `WriteStream`'s underlying file descriptor has been closed.
+Emitido cuando el descriptor de archivo subyacente de `WriteStream` ha sido cerrado.
 
 ### Event: 'open'
 
@@ -695,7 +695,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los valores posibles de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` can be read by the calling process.
