@@ -697,7 +697,7 @@ changes:
 
 Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los valores posibles de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
+* `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` can be read by the calling process.
 * `fs.constants.W_OK` - `path` can be written by the calling process.
 * `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
