@@ -1146,7 +1146,7 @@ Copia de manera asincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` 
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
-* `fs.constants.COPYFILE_EXCL` - The copy operation will fail if `dest` already exists.
+* `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
@@ -1162,7 +1162,7 @@ fs.copyFile('source.txt', 'destination.txt', (err) => {
 });
 ```
 
-If the third argument is a number, then it specifies `flags`, as shown in the following example.
+Si el tercer argumento es un número, entonces especifica `flags`, como se muestra en el siguiente ejemplo.
 
 ```js
 const fs = require('fs');
@@ -1186,7 +1186,7 @@ Copia de manera sincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` s
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
-* `fs.constants.COPYFILE_EXCL` - The copy operation will fail if `dest` already exists.
+* `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
@@ -3534,7 +3534,7 @@ Node.js makes no guarantees about the atomicity of the copy operation. If an err
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
-* `fs.constants.COPYFILE_EXCL` - The copy operation will fail if `dest` already exists.
+* `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
 * `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
 
