@@ -274,7 +274,7 @@ changes:
 
 Esto crea una vista del [`ArrayBuffer`] o [`SharedArrayBuffer`] sin copiar la memoria subyacente. Por ejemplo, cuando se pasa una referencia a la propiedad `.buffer` de una instancia de [`TypedArray`], el `Buffer` recientemente creado compartirá la misma memoria asignada como el [`TypedArray`].
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 ```js
 const arr = new Uint16Array(2);
@@ -282,20 +282,20 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf = new Buffer(arr.buffer);
 
 console.log(buf);
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 
-// Changing the original Uint16Array changes the Buffer also
+// Cambiar el Uint16Array original también cambia el Buffer
 arr[1] = 6000;
 
 console.log(buf);
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 ```
 
-### new Buffer(buffer)
+### nuevo Buffer(buffer)
 
 <!-- YAML
 deprecated: v6.0.0
