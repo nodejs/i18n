@@ -140,7 +140,7 @@ changes:
 
 Las instancias de `Buffer` también son instancias de [`Uint8Array`]. Sin embargo, hay sutiles incompatibilidades con [`TypedArray`]. Por ejemplo, mientras [`ArrayBuffer#slice()`] crea una copia del sector, la implementación de [`Buffer#slice()`][`buf.slice()`] crea una vista sobre el `Buffer` existente sin copiar, haciendo a [`Buffer#slice()`][`buf.slice()`] mucho más eficiente.
 
-It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
+También es posible crear nuevas instancias de [`TypedArray`] desde un `Buffer` con las siguientes salvedades:
 
 1. La memoria del objeto de `Buffer` se copia en el [`TypedArray`], no se comparte.
 
