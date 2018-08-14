@@ -240,11 +240,11 @@ changes:
 Allocates a new `Buffer` using an `array` of octets.
 
 ```js
-// Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
+// Crea un nuevo Buffer que contiene los bytes UTF-8 de la cadena 'buffer'
 const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-### new Buffer(arrayBuffer[, byteOffset[, length]])
+### nuevo Buffer(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v3.0.0
@@ -266,10 +266,10 @@ changes:
     description: The `byteOffset` and `length` parameters are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] en su lugar.
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`] o la propiedad `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte para exponer. **Default:** `0`.
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
