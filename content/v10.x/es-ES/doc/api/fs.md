@@ -245,7 +245,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v0.5.8
 -->
 
-A successful call to [`fs.watch()`][] method will return a new `fs.FSWatcher` object.
+Una llamada exitosa al método de [`fs.watch()`][] devolverá un nuevo objeto de `fs.FSWatcher` .
 
 All `fs.FSWatcher` objects are [`EventEmitter`][]'s that will emit a `'change'` event whenever a specific watched file is modified.
 
