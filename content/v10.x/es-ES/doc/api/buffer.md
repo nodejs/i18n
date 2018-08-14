@@ -179,10 +179,10 @@ const arr = new Uint16Array(20);
 const buf = Buffer.from(arr.buffer, 0, 16);
 
 console.log(buf.length);
-// Prints: 16
+// Imprime: 16
 ```
 
-The `Buffer.from()` and [`TypedArray.from()`] have different signatures and implementations. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+El `Buffer.from()` y el [`TypedArray.from()`] tienen diferentes firmas e implementaciones. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
