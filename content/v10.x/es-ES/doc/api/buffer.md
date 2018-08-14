@@ -209,13 +209,13 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+Adicionalmente, los métodos [`buf.values()`], [`buf.keys()`], y [`buf.entries()`] pueden utilizarse para crear iteradores.
 
-## Class: Buffer
+## Clase: Buffer
 
-The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+La clase `Buffer` es un tipo global para tratar con datos binarios directamente. Pueden construirse en una variedad de maneras.
 
-### new Buffer(array)
+### nuevo Buffer(array)
 
 <!-- YAML
 deprecated: v6.0.0
@@ -233,7 +233,7 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(array)`] en su lugar.
 
 * `array` {integer[]} An array of bytes to copy from.
 
