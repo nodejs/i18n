@@ -807,7 +807,7 @@ fs.open('myfile', 'r', (err, fd) => {
 
 Los ejemplos anteriores "no recomendados" verifican la accesibilidad y luego utilizan el archivo; los ejemplos "recomendados" son mejores porque utilizan el archivo directamente y manejan el error, si los hay.
 
-In general, check for the accessibility of a file only if the file will not be used directly, for example when its accessibility is a signal from another process.
+En general, verifique la accesibilidad de un archivo sólo si el archivo no será utilizado directamente, por ejemplo, cuando su accesibilidad es una señal de otro proceso.
 
 ## fs.accessSync(path[, mode])
 
@@ -824,9 +824,9 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
 
-Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba de manera sincrónica los permisos de un usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
+* `fs.constants.F_OK` - `path` es visible para el proceso de llamada. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` can be read by the calling process.
 * `fs.constants.W_OK` - `path` can be written by the calling process.
 * `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
