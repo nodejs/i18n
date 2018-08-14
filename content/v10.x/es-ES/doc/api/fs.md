@@ -1005,7 +1005,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 | `fs.constants.S_IWOTH` | `0o2`   | write by others          |
 | `fs.constants.S_IXOTH` | `0o1`   | execute/search by others |
 
-An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. El dígito medio (`6` en el ejemplo), especifica los permisos para el grupo. The right-most digit (`5` in the example), specifies the permissions for others.
+Un método más sencillo de construir el `mode` es utilizar una secuencia de tres dígitos octales (por ejemplo, `765`). El primer dígito a la izquierda (`7` en el ejemplo), especifica los permisos para el propietario del archivo. El dígito medio (`6` en el ejemplo), especifica los permisos para el grupo. El primer dígito a la derecha (`5` en el ejemplo), especifica los permisos para otros.
 
 | Número | Descripción              |
 | ------ | ------------------------ |
