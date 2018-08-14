@@ -314,7 +314,7 @@ Todos los objetos de `fs.ReadStream` son [Streams Legibles](stream.html#stream_c
 added: v0.1.93
 -->
 
-Emitted when the `fs.ReadStream`'s underlying file descriptor has been closed.
+Emitido cuando el descriptor de archivo subyacente de `fs.ReadStream` ha sido cerrado.
 
 ### Event: 'open'
 
@@ -354,7 +354,7 @@ added: v0.1.93
 
 * {string|Buffer}
 
-The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. If `path` is passed as a string, then `readStream.path` will be a string. If `path` is passed as a `Buffer`, then `readStream.path` will be a `Buffer`.
+The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. If `path` is passed as a `Buffer`, then `readStream.path` will be a `Buffer`.
 
 ## Class: fs.Stats
 
