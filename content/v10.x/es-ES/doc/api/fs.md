@@ -260,7 +260,7 @@ added: v0.5.8
 
 Emitted when something changes in a watched directory or file. Vea más detalles en [`fs.watch()`][].
 
-El argumento de `filename` puede no estar proporcionado dependiendo del soporte del sistema operativo. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
+El argumento de `filename` puede no estar proporcionado dependiendo del soporte del sistema operativo. Si se proporciona `filename`, será proporcionado como un `Buffer` si `fs.watch()` es llamado con su opción de `encoding` establecido a `'buffer'`, de lo contrario `filename` será una string de UTF-8.
 
 ```js
 // Example when handled through fs.watch() listener
@@ -304,9 +304,9 @@ Stop watching for changes on the given `fs.FSWatcher`. Una vez detenido, el obje
 added: v0.1.93
 -->
 
-A successful call to `fs.createReadStream()` will return a new `fs.ReadStream` object.
+Una llamada exitosa a `fs.createReadStream()` devolverá un nuevo objeto de `fs.ReadStream` .
 
-All `fs.ReadStream` objects are [Readable Streams](stream.html#stream_class_stream_readable).
+Todos los objetos de `fs.ReadStream` son [Streams Legibles](stream.html#stream_class_stream_readable).
 
 ### Event: 'close'
 
