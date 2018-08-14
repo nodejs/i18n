@@ -1069,7 +1069,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Cambia de manera asincrónica el propietario y el grupo de un archivo. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica el propietario y el grupo de un archivo. Ningún otro argumento que no sea una posible excepción es dado a la terminación del callback.
 
 See also: chown(2).
 
