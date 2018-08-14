@@ -247,7 +247,7 @@ added: v0.5.8
 
 Una llamada exitosa al método de [`fs.watch()`][] devolverá un nuevo objeto de `fs.FSWatcher` .
 
-All `fs.FSWatcher` objects are [`EventEmitter`][]'s that will emit a `'change'` event whenever a specific watched file is modified.
+Todos los objetos de `fs.FSWatcher` son [`EventEmitter`][]'s que emitirán un evento de `'change'` cuando se modifique un archivo específico visto.
 
 ### Event: 'change'
 
@@ -260,7 +260,7 @@ added: v0.5.8
 
 Emitted when something changes in a watched directory or file. Vea más detalles en [`fs.watch()`][].
 
-The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
+El argumento de `filename` puede no estar proporcionado dependiendo del soporte del sistema operativo. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a UTF-8 string.
 
 ```js
 // Example when handled through fs.watch() listener
