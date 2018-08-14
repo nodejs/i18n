@@ -1182,7 +1182,7 @@ added: v8.5.0
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 
-Copia de manera sincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Copia de manera sincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. Si ocurre un error luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -1200,7 +1200,7 @@ fs.copyFileSync('source.txt', 'destination.txt');
 console.log('source.txt was copied to destination.txt');
 ```
 
-If the third argument is a number, then it specifies `flags`, as shown in the following example.
+Si el tercer argumento es un número, entonces especifica `flags`, como se muestra en el siguiente ejemplo.
 
 ```js
 const fs = require('fs');
