@@ -1,10 +1,10 @@
-# Node.js Release Process
+# Proceso de lanzamiento de Node.js
 
-This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+Este documento describe los aspectos técnicos del proceso de lanzamiento de Node.js. La audiencia prevista son quienes han sido autorizados por el Comité de Dirección Técnica (TSC) de la Fundación Node.js para crear, promover y firmar versiones oficiales de lanzamiento para Node.js, alojadas en <https://nodejs.org/>.
 
-## Who can make a release?
+## ¿Quién puede hacer un lanzamiento?
 
-Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
+La autorización del lanzamiento es dada por el TSC de Node.js. Una vez autorizado, un individuo debe tener lo siguiente:
 
 ### 1. Jenkins Release Access
 

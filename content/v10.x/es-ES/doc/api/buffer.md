@@ -65,7 +65,7 @@ added: v5.10.0
 -->
 
 Node.js se puede iniciar utilizando la opción de línea de comando `--zero-fill-buffers` para hacer que todas las instancias de `Buffer` recién asignadas se llenen con ceros al crearlas por defecto, incluyendo a buffers retornados por `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`], y `new
-SlowBuffer(size)`. Utilizar esta bandera puede tener un significativo impacto negativo sobre el rendimiento. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain old data that is potentially sensitive.
+SlowBuffer(size)`. Utilizar esta bandera puede tener un significativo impacto negativo sobre el rendimiento. Se recomienda el uso de la opción `--zero-fill-buffers` solo cuando es necesario asegurar que las instancias de `Buffer` recientemente asignadas no puedan contener datos antiguos que son potencialmente confidenciales.
 
 ```txt
 $ node --zero-fill-buffers
@@ -92,7 +92,7 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-When string data is stored in or extracted out of a `Buffer` instance, a character encoding may be specified.
+Cuando los datos de cadena se almacenan o extraen de una instancia de `Buffer`, una codificación de caracteres puede ser especificada.
 
 ```js
 const buf = Buffer.from('hello world', 'ascii');
@@ -108,27 +108,27 @@ console.log(Buffer.from('fhqwhgads', 'utf16le'));
 // Imprime: <Buffer 66 00 68 00 71 00 77 00 68 00 67 00 61 00 64 00 73 00>
 ```
 
-The character encodings currently supported by Node.js include:
+Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
-* `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip the high bit if set.
+* `'ascii'` - Solo para datos ASCII de 7-bit. Esta codificación es rápida y eliminará el high bit si está configurado.
 
-* `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other document formats use UTF-8.
+* `'utf8'` - Caracteres Unicode codificados en multibyte. Muchas páginas web y otros formatos de documentos utilizan UTF-8.
 
-* `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters. Surrogate pairs (U+10000 to U+10FFFF) are supported.
+* `'utf16le'` - caracteres Unicode codificados en little-endian, de 2 o 4 bytes. Los pares sustituidos (U+10000 a U+10FFFF) están soportados.
 
-* `'ucs2'` - Alias of `'utf16le'`.
+* `'ucs2'` - Alias de `'utf16le'`.
 
-* `'base64'` - Base64 encoding. When creating a `Buffer` from a string, this encoding will also correctly accept "URL and Filename Safe Alphabet" as specified in [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
+* `'base64'` - Codificación de Base64. Cuando se crea un `Buffer` desde una cadena, esta codificación también aceptará correctamente el "URL y Nombre de Archivo del Alfabeto Seguro" como se especifica en [RFC4648, Sección 5](https://tools.ietf.org/html/rfc4648#section-5).
 
-* `'latin1'` - A way of encoding the `Buffer` into a one-byte encoded string (as defined by the IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), page 63, to be the Latin-1 supplement block and C0/C1 control codes).
+* `'latin1'` - Una manera de codificar el `Buffer` dentro de una cadena codficada de one-byte (como se define por el IANA en [RFC1345](https://tools.ietf.org/html/rfc1345), página 63, en el bloque de suplemento de Latin-1 y los códigos de control C0/C1).
 
-* `'binary'` - Alias for `'latin1'`.
+* `'binary'` - Alias de `'latin1'`.
 
-* `'hex'` - Encode each byte as two hexadecimal characters.
+* `'hex'` - Codifica cada byte como dos caracteres hexadecimales.
 
-Modern Web browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+Los navegadores Web modernos siguen la [Codificación Estándar de WHATWG](https://encoding.spec.whatwg.org/) que distorsiona a `'latin1'` y de `'ISO-8859-1'` a `'win-1252'`. Esto significa que al hacer algo como `http.get()`, si el conjunto de caracteres devueltos es uno de los enumerados en las especificaciones de WHATWG es posible que el servidor realmente devolviera los datos codificados en `'win-1252'` y utilizar la codificación `'latin1'` puede decodificar incorrectamente los caracteres.
 
-## Buffers and TypedArray
+## Buffers y TypedArray
 
 <!-- YAML
 changes:
@@ -138,15 +138,15 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instances are also [`Uint8Array`] instances. However, there are subtle incompatibilities with [`TypedArray`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+Las instancias de `Buffer` también son instancias de [`Uint8Array`]. Sin embargo, hay sutiles incompatibilidades con [`TypedArray`]. Por ejemplo, mientras [`ArrayBuffer#slice()`] crea una copia del sector, la implementación de [`Buffer#slice()`][`buf.slice()`] crea una vista sobre el `Buffer` existente sin copiar, haciendo a [`Buffer#slice()`][`buf.slice()`] mucho más eficiente.
 
-It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
+También es posible crear nuevas instancias de [`TypedArray`] desde un `Buffer` con las siguientes salvedades:
 
-1. The `Buffer` object's memory is copied to the [`TypedArray`], not shared.
+1. La memoria del objeto de `Buffer` se copia en el [`TypedArray`], no se comparte.
 
-2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. La memoria del objeto de `Buffer` es interpretada como un arreglo de distintos elementos, y no como un arreglo de byte del tipo objetivo. Eso es, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un [`Uint32Array`] de 4 elementos con elementos `[1, 2, 3, 4]`, no un [`Uint32Array`] con un elemento único `[0x1020304]` o `[0x4030201]`.
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the `TypeArray` object's `.buffer` property.
+Es posible crear un nuevo `Buffer` que comparte la misma memoria asignada como una instancia de [`TypedArray`] al utilizar la propiedad `.buffer` del objeto `TypeArray`.
 
 ```js
 const arr = new Uint16Array(2);
@@ -154,53 +154,53 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Copies the contents of `arr`
+// Copia el contenido de `arr`
 const buf1 = Buffer.from(arr);
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf2 = Buffer.from(arr.buffer);
 
 console.log(buf1);
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf2);
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 
 arr[1] = 6000;
 
 console.log(buf1);
-// Prints: <Buffer 88 a0>
+// Imprime: <Buffer 88 a0>
 console.log(buf2);
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+Tenga en cuenta que cuando se crea un `Buffer` utilizando un `.buffer` de [`TypedArray`] es posible utilizar solo una parte del [`ArrayBuffer`] subyacente al pasar los parámetros `byteOffset` y `length`.
 
 ```js
 const arr = new Uint16Array(20);
 const buf = Buffer.from(arr.buffer, 0, 16);
 
 console.log(buf.length);
-// Prints: 16
+// Imprime: 16
 ```
 
-The `Buffer.from()` and [`TypedArray.from()`] have different signatures and implementations. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+El `Buffer.from()` y el [`TypedArray.from()`] tienen diferentes firmas e implementaciones. Específicamente, las variantes de [`TypedArray`] aceptan un segundo argumento que es una función de mapeo que se invoca sobre cada elemento del arreglo escrito:
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-The `Buffer.from()` method, however, does not support the use of a mapping function:
+El método `Buffer.from()`, sin embargo, no permite el uso de una función de mapeo:
 
 * [`Buffer.from(array)`]
 * [`Buffer.from(buffer)`]
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and iteration
+## Buffers e Iteración
 
-`Buffer` instances can be iterated over using `for..of` syntax:
+Las instancias de `Buffer` pueden iterarse utilizando la sintaxis `for..of`:
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
 
-// Prints:
+// Imprime:
 //   1
 //   2
 //   3
@@ -209,13 +209,13 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+Adicionalmente, los métodos [`buf.values()`], [`buf.keys()`], y [`buf.entries()`] pueden utilizarse para crear iteradores.
 
-## Class: Buffer
+## Clase: Buffer
 
-The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+La clase `Buffer` es un tipo global para tratar con datos binarios directamente. Pueden construirse en una variedad de maneras.
 
-### new Buffer(array)
+### nuevo Buffer(array)
 
 <!-- YAML
 deprecated: v6.0.0
@@ -233,18 +233,18 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(array)`] en su lugar.
 
-* `array` {integer[]} An array of bytes to copy from.
+* `array` {integer[]} un arreglo de bytes desde el cual copiar.
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` utilizando un `array` de octetos.
 
 ```js
-// Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
+// Crea un nuevo Buffer que contiene los bytes UTF-8 de la cadena 'buffer'
 const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-### new Buffer(arrayBuffer[, byteOffset[, length]])
+### nuevo Buffer(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v3.0.0
@@ -266,15 +266,15 @@ changes:
     description: The `byteOffset` and `length` parameters are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] en su lugar.
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`] o la propiedad `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte para exponer. **Predeterminado:** `0`.
+* `length` {integer} Número de bytes para exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`.
 
-This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Esto crea una vista del [`ArrayBuffer`] o [`SharedArrayBuffer`] sin copiar la memoria subyacente. Por ejemplo, cuando se pasa una referencia a la propiedad `.buffer` de una instancia de [`TypedArray`], el `Buffer` recientemente creado compartirá la misma memoria asignada como el [`TypedArray`].
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 ```js
 const arr = new Uint16Array(2);
@@ -282,20 +282,20 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Comparte memoria con `arr`
 const buf = new Buffer(arr.buffer);
 
 console.log(buf);
-// Prints: <Buffer 88 13 a0 0f>
+// Imprime: <Buffer 88 13 a0 0f>
 
-// Changing the original Uint16Array changes the Buffer also
+// Cambiar el Uint16Array original también cambia el Buffer
 arr[1] = 6000;
 
 console.log(buf);
-// Prints: <Buffer 88 13 70 17>
+// Imprime: <Buffer 88 13 70 17>
 ```
 
-### new Buffer(buffer)
+### nuevo Buffer(buffer)
 
 <!-- YAML
 deprecated: v6.0.0
@@ -313,11 +313,11 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(buffer)`] en su lugar.
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] existente desde donde copiar los datos.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
 
 ```js
 const buf1 = new Buffer('buffer');
@@ -326,12 +326,12 @@ const buf2 = new Buffer(buf1);
 buf1[0] = 0x61;
 
 console.log(buf1.toString());
-// Prints: auffer
+// Imprime: auffer
 console.log(buf2.toString());
-// Prints: buffer
+// Imprime: buffer
 ```
 
-### new Buffer(size)
+### nuevo Buffer(size)
 
 <!-- YAML
 deprecated: v6.0.0
@@ -353,22 +353,22 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> Estabilidad: 0 - Obsoleto: Utilizar [`Buffer.alloc()`] en su lugar (también ver [`Buffer.allocUnsafe()`]).
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` with zeroes.
+Antes de Node.js 8.0.0, la memoria subyacente para las instancias de `Buffer` creadas de esta manera están *no inicializadas*. Los contenidos de un `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc(size)`][`Buffer.alloc()`] en lugar de inicializar un `Buffer` con ceros.
 
 ```js
 const buf = new Buffer(10);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
 
-### new Buffer(string[, encoding])
+### nuevo Buffer(string[, encoding])
 
 <!-- YAML
 deprecated: v6.0.0
@@ -386,10 +386,10 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] en su lugar.
 
-* `string` {string} String to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
+* `string` {string} Cadena para codificar.
+* `encoding` {string} La codificación del `string`. **Predeterminado:** `'utf8'`.
 
 Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
 
@@ -427,7 +427,7 @@ changes:
 
 * `size` {integer} The desired length of the new `Buffer`.
 * `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
-* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`.
+* `encoding` {string} If `fill` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
@@ -438,7 +438,7 @@ console.log(buf);
 // Prints: <Buffer 00 00 00 00 00>
 ```
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
 If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
 
@@ -475,7 +475,7 @@ changes:
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances with zeroes.
 
@@ -505,7 +505,7 @@ added: v5.12.0
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances with zeroes.
 
@@ -550,7 +550,7 @@ changes:
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`.
+* `encoding` {string} If `string` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
 * Returns: {integer} The number of bytes contained within `string`.
 
 Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
@@ -661,7 +661,7 @@ added: v5.10.0
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
 * `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
+* `length` {integer} Number of bytes to expose. **Predeterminado:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
@@ -702,7 +702,7 @@ A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`S
 added: v5.10.0
 -->
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] existente desde donde copiar los datos.
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
@@ -727,7 +727,7 @@ added: v5.10.0
 -->
 
 * `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
+* `encoding` {string} The encoding of `string`. **Predeterminado:** `'utf8'`.
 
 Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
 
@@ -1034,7 +1034,7 @@ changes:
 * `value` {string|Buffer|integer} The value with which to fill `buf`.
 * `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
 * `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
-* `encoding` {string} The encoding for `value` if `value` is a string. **Default:** `'utf8'`.
+* `encoding` {string} The encoding for `value` if `value` is a string. **Predeterminado:** `'utf8'`.
 * Returns: {Buffer} A reference to `buf`.
 
 Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled:
@@ -1080,7 +1080,7 @@ added: v5.3.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`.
+* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
@@ -1121,7 +1121,7 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
+* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Predeterminado:** `'utf8'`.
 * Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
 If `value` is:
@@ -1214,7 +1214,7 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
+* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Predeterminado:** `'utf8'`.
 * Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
 Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
@@ -1812,7 +1812,7 @@ console.log(copy);
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
+* `encoding` {string} The character encoding to use. **Predeterminado:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
 * Returns: {string}
@@ -1889,7 +1889,7 @@ added: v0.1.90
 * `string` {string} String to write to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`.
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`.
-* `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`.
+* `encoding` {string} The character encoding of `string`. **Predeterminado:** `'utf8'`.
 * Returns: {integer} Number of bytes written.
 
 Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only part of `string` will be written. However, partially encoded characters will not be written.
@@ -2335,7 +2335,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` with zeroes.
 

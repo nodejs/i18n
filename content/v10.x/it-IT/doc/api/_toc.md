@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
+@// NB(chrisdickinson): se sposti questo file, assicurati di aggiornare @// tools/doc/html.js in modo che punti nella nuova posizione.
 
 <!--introduced_in=v0.10.0-->
 
@@ -18,10 +18,10 @@
 * [Console](console.html)
 * [Crypto](crypto.html)
 * [Debugger](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [API obsoleti](deprecations.html)
 * [DNS](dns.html)
 * [Dominio](domain.html)
-* [ECMAScript Modules](esm.html)
+* [Moduli ECMAScript](esm.html)
 * [Errori](errors.html)
 * [Eventi](events.html)
 * [File System](fs.html)
@@ -45,7 +45,7 @@
 * [String Decoder](string_decoder.html)
 * [Timers](timers.html)
 * [TLS/SSL](tls.html)
-* [Trace Events](tracing.html)
+* [Traccia Eventi](tracing.html)
 * [TTY](tty.html)
 * [UDP/Datagram](dgram.html)
 * [URL](url.html)

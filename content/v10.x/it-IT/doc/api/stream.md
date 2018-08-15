@@ -260,7 +260,7 @@ added: v0.9.4
 
 L'evento `'unpipe'` viene emesso quando il metodo [`stream.unpipe()`][] viene chiamato su un [`Readable`][] stream, rimuovendo questo [`Writable`][] dal suo set di destinazioni.
 
-Questo viene anche emesso nel caso in cui questo [`Writable`][] stream emetta un errore quando [`Readable`][] stream esegue il piping al suo interno.
+Questo viene emesso anche nel caso in cui questo [`Writable`][] stream emetta un errore quando [`Readable`][] stream esegue il piping al suo interno.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -311,12 +311,12 @@ changes:
 
 * `chunk` {string|Buffer|Uint8Array|any} Dati opzionali da scrivere. Per gli stream che non funzionano in object mode, `chunk` deve essere una stringa, un `Buffer` oppure un `Uint8Array`. Per gli stream in object mode, `chunk` può essere qualsiasi valore JavaScript diverso da `null`.
 * `encoding` {string} La codifica, se `chunk` è una stringa
-* `callback` {Function} Callback opzionale per quando la conclusione dello stream
+* `callback` {Function} Callback opzionale per quando lo stream si conclude
 * Restituisce: {this}
 
 Chiamando il metodo `writable.end()` si segnala che non verranno scritti più dati su [`Writable`][]. Gli argomenti facoltativi `chunk` ed `encoding` consentono di scrivere un'ultimo chuck di dati aggiuntivo immediatamente prima di chiudere lo stream. Se fornita, la funzione facoltativa `callback` è allegata come listener per l'evento [`'finish'`][].
 
-Chiamando il metodo [`stream.write()`](#stream_writable_write_chunk_encoding_callback) dopo aver chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) genererà un errore.
+Chiamare il metodo [`stream.write()`](#stream_writable_write_chunk_encoding_callback) dopo aver chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) genererà un errore.
 
 ```js
 // scrive 'hello, ' e poi termina con 'world!'
@@ -418,7 +418,7 @@ Il metodo `writable.write()` scrive alcuni dati nello stream e chiama il `callba
 
 Il valore restituito è `true` se il buffer interno è inferiore all'`highWaterMark` configurato quando lo stream è stato creato in seguito all'ammissione del `chunk`. Se viene restituito `false`, è necessario interrompere ulteriori tentativi di scrittura dei dati nello stream fino a quando non viene emesso l'evento [`'drain'`][].
 
-Mentre uno stream non subisce il drain, le chiamate a `write()` eseguiranno il buffer di `chunk` e restituiranno false. Una volta che tutti gli attuali chunk memorizzati nel buffer hanno subito il drain (accettati per la consegna dal sistema operativo), verrà emesso l'evento `'drain'`. E' consigliato che, una volta che `write()` restituisce false, non vengano scritti più chunk finché non viene emesso l'evento `'drain'`. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Ancor prima che si interrompa, l'uso elevato della memoria causerà scarso rendimento del garbage collector ed alti livelli di RSS (che in genere non vengono ripristinati nel sistema, anche dopo che la memoria non è più necessaria). Poiché i socket TCP potrebbero non subire mai il drain se il peer remoto non legge i dati, scrivere un socket che non subisce mai il drain può portare ad una vulnerabilità sfruttabile da remoto.
+Mentre uno stream non subisce il drain, le chiamate a `write()` eseguiranno il buffer di `chunk` e restituiranno false. Una volta che tutti gli attuali chunk memorizzati nel buffer hanno subito il drain (accettati per la consegna dal sistema operativo), verrà emesso l'evento `'drain'`. E' consigliato che, una volta che `write()` restituisce false, non vengano scritti più chunk finché non viene emesso l'evento `'drain'`. Quando è permesso chiamare `write()` su uno stream che non è sottoposto al drain, Node.js memorizzerà tramite il buffering tutti i chunk scritti finché non viene raggiunto l'utilizzo massimo della memoria, a quel punto si interromperà incondizionatamente. Ancor prima che si interrompa, l'uso elevato della memoria causerà scarso rendimento del garbage collector ed alti livelli di RSS (che in genere non vengono ripristinati nel sistema, anche dopo che la memoria non è più necessaria). Poiché i socket TCP potrebbero non subire mai il drain se il peer remoto non legge i dati, scrivere un socket che non subisce mai il drain può portare ad una vulnerabilità sfruttabile da remoto.
 
 Scrivere i dati mentre lo stream non subisce il drain è particolarmente problematico per un [`Transform`][], perché gli stream `Transform` sono messi in pausa per impostazione predefinita fino a quando non vengono reindirizzati (piping) oppure finchè non viene aggiunto un handler dell’evento `'data'` o dell’evento `'readable'`.
 
@@ -1792,15 +1792,15 @@ Non è necessario che l'output abbia le stesse dimensioni dell'input, lo stesso 
 
 La classe `stream.Transform` viene estesa per implementare un [`Transform`][] stream.
 
-The `stream.Transform` class prototypically inherits from `stream.Duplex` and implements its own versions of the `writable._write()` and `readable._read()` methods. Custom `Transform` implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
+La classe `stream.Transform` eredita prototipicamente da `stream.Duplex` ed implementa le proprie versioni dei metodi `writable._write()` e `readable._read()`. Le implementazioni `Transform` personalizzate *devono* implementare il metodo [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) e *potrebbero* implementare anche il metodo [`transform._flush()`](#stream_transform_flush_callback).
 
-Care must be taken when using `Transform` streams in that data written to the stream can cause the `Writable` side of the stream to become paused if the output on the `Readable` side is not consumed.
+È necessario prestare attenzione quando si utilizzano gli `Transform` stream in quei dati scritti nello stream che possono far sì che la parte `Writable` dello stream venga sospesa se non viene consumato l'output sulla parte `Readable`.
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passato ad entrambi i constructor sia `Writable` che `Readable`. Also has the following fields: 
-  * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
-  * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
+* `options` {Object} Passato ad entrambi i constructor sia `Writable` che `Readable`. Inoltre ha le seguenti voci: 
+  * `transform` {Function} Implementazione per il metodo [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback).
+  * `flush` {Function} Implementazione per il metodo [`stream._flush()`](#stream_transform_flush_callback).
 
 ```js
 const { Transform } = require('stream');
@@ -1813,7 +1813,7 @@ class MyTransform extends Transform {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+Oppure, quando si utilizzano constructor di stili pre-ES6:
 
 ```js
 const { Transform } = require('stream');
@@ -1827,7 +1827,7 @@ function MyTransform(options) {
 util.inherits(MyTransform, Transform);
 ```
 
-Or, using the Simplified Constructor approach:
+Oppure, utilizzando l'approccio del Constructor semplificato:
 
 ```js
 const { Transform } = require('stream');
@@ -1839,39 +1839,39 @@ const myTransform = new Transform({
 });
 ```
 
-#### Events: 'finish' and 'end'
+#### Eventi: 'finish' ed 'end'
 
-The [`'finish'`][] and [`'end'`][] events are from the `stream.Writable` and `stream.Readable` classes, respectively. The `'finish'` event is emitted after [`stream.end()`](#stream_writable_end_chunk_encoding_callback) is called and all chunks have been processed by [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). The `'end'` event is emitted after all data has been output, which occurs after the callback in [`transform._flush()`](#stream_transform_flush_callback) has been called.
+Gli eventi [`'finish'`][] ed [`'end'`][] provengono rispettivamente dalle classi `stream.Writable` e `stream.Readable`. L'evento `'finish'` viene emesso dopo che viene chiamato [`stream.end()`](#stream_writable_end_chunk_encoding_callback) e che tutti i chunk sono stati elaborati da [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). L'evento `'end'` viene emesso dopo l'emissione di tutti i dati, il che avviene dopo la chiamata del callback in [`transform._flush()`](#stream_transform_flush_callback).
 
 #### transform.\_flush(callback)
 
-* `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
+* `callback` {Function} Una funzione di callback (facoltativamente con un argomento error e data) da chiamare quando i dati rimanenti sono stati svuotati.
 
 Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
-In some cases, a transform operation may need to emit an additional bit of data at the end of the stream. For example, a `zlib` compression stream will store an amount of internal state used to optimally compress the output. When the stream ends, however, that additional data needs to be flushed so that the compressed data will be complete.
+In alcuni casi, un'operazione transform potrebbe dover emettere un ulteriore bit di dati alla fine dello stream. Ad esempio, uno stream di compressione `zlib` memorizzerà una quantità di stato interno utilizzato per comprimere in modo ottimale l'output. Al termine dello stream, tuttavia, è necessario svuotare i dati aggiuntivi per completare i dati compressi.
 
-Custom [`Transform`][] implementations *may* implement the `transform._flush()` method. This will be called when there is no more written data to be consumed, but before the [`'end'`][] event is emitted signaling the end of the [`Readable`][] stream.
+Le implementazioni [`Transform`][] personalizzate *potrebbero* implementare il metodo `transform._flush()`. Questo verrà chiamato quando non ci sono più dati scritti da consumare, ma prima che l'evento [`'end'`][] venga emesso segnalando la fine del [`Readable`][] stream.
 
-Within the `transform._flush()` implementation, the `readable.push()` method may be called zero or more times, as appropriate. The `callback` function must be called when the flush operation is complete.
+Nell'implementazione `transform._flush()`, il metodo `readable.push()` può essere chiamato zero o più volte, a seconda dei casi. La funzione `callback` deve essere chiamata quando l'operazione flush è completa.
 
-The `transform._flush()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+Il metodo `transform._flush()` è preceduto da un trattino basso (underscore) perché è interno alla classe che lo definisce e non dovrebbe mai essere chiamato direttamente dai programmi utente.
 
 #### transform.\_transform(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} The chunk to be transformed. Will **always** be a buffer unless the `decodeStrings` option was set to `false` or the stream is operating in object mode.
-* `encoding` {string} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value - 'buffer', ignore it in this case.
-* `callback` {Function} A callback function (optionally with an error argument and data) to be called after the supplied `chunk` has been processed.
+* `chunk` {Buffer|string|any} Il chunk da trasformare. Sarà **sempre** un buffer a meno che l'opzione `decodeStrings` sia impostata su `false` oppure che lo stream stia operando in object mode.
+* `encoding` {string} Se il chunk è una stringa, allora questo è il tipo di encoding. Se il chunk è un buffer, allora questo è il valore speciale - 'buffer', ignorarlo in questo caso.
+* `callback` {Function} Una funzione di callback (facoltativamente con un argomento error e data) da chiamare dopo che il `chunk` fornito è stato elaborato.
 
 Questa funzione NON DEVE essere chiamata direttamente dal codice dell'applicazione. Dovrebbe essere implementata dalle child class e chiamata solo dai metodi della classe interna `Readable`.
 
-All `Transform` stream implementations must provide a `_transform()` method to accept input and produce output. The `transform._transform()` implementation handles the bytes being written, computes an output, then passes that output off to the readable portion using the `readable.push()` method.
+Tutte le implementazioni di `Transform` stream devono fornire un metodo `_transform()` per accettare l'input e produrre l'output. L'implementazione `transform._transform()` gestisce i byte scritti, calcola un output, e di conseguenza passa quell'output alla porzione readable utilizzando il metodo `readable.push()`.
 
-The `transform.push()` method may be called zero or more times to generate output from a single input chunk, depending on how much is to be output as a result of the chunk.
+Il metodo `transform.push()` può essere chiamato zero o più volte per generare l'output da un singolo input chunk, a seconda di quanto deve essere prodotto come risultato del chunk.
 
-It is possible that no output is generated from any given chunk of input data.
+È possibile che nessun output sia generato da un determinato chunk di dati input.
 
-The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
+La funzione `callback` deve essere chiamata solo quando il chunk attuale è completamente consumato. Il primo argomento passato al `callback` deve essere un `Error` object se si verifica un errore durante l'elaborazione dell'input oppure `null` in caso contrario. Se viene passato un secondo argomento al `callback`, esso verrà inoltrato al metodo `readable.push()`. In altre parole, i seguenti sono equivalenti:
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
@@ -1884,53 +1884,53 @@ transform.prototype._transform = function(data, encoding, callback) {
 };
 ```
 
-The `transform._transform()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+Il metodo `transform._transform()` è preceduto da un trattino basso (underscore) perché è interno alla classe che lo definisce e non dovrebbe mai essere chiamato direttamente dai programmi utente.
 
-`transform._transform()` is never called in parallel; streams implement a queue mechanism, and to receive the next chunk, `callback` must be called, either synchronously or asynchronously.
+`transform._transform()` non viene mai chiamato in parallelo; gli stream implementano un meccanismo di queue, quindi per ricevere il chunk successivo è necessario chiamare `callback`, in modo sincrono oppure asincrono.
 
 #### Class: stream.PassThrough
 
-The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] stream that simply passes the input bytes across to the output. Its purpose is primarily for examples and testing, but there are some use cases where `stream.PassThrough` is useful as a building block for novel sorts of streams.
+La classe `stream.PassThrough` è un'implementazione banale di un [`Transform`][] stream che passa semplicemente i byte d'input all'output. E' utile principalmente per gli esempi e per il testing, ma ci sono alcuni casi d'uso in cui `stream.PassThrough` è utile anche come base per nuovi tipi di stream.
 
-## Additional Notes
-
-<!--type=misc-->
-
-### Compatibility with Older Node.js Versions
+## Note aggiuntive
 
 <!--type=misc-->
 
-In versions of Node.js prior to v0.10, the `Readable` stream interface was simpler, but also less powerful and less useful.
+### Compatibilità con le Versioni Precedenti di Node.js
 
-* Rather than waiting for calls the [`stream.read()`](#stream_readable_read_size) method, [`'data'`][] events would begin emitting immediately. Applications that would need to perform some amount of work to decide how to handle data were required to store read data into buffers so the data would not be lost.
-* The [`stream.pause()`](#stream_readable_pause) method was advisory, rather than guaranteed. This meant that it was still necessary to be prepared to receive [`'data'`][] events *even when the stream was in a paused state*.
+<!--type=misc-->
 
-In Node.js v0.10, the [`Readable`][] class was added. For backwards compatibility with older Node.js programs, `Readable` streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
+Nelle versioni Node.js precedenti alla v0.10, la `Readable` stream interface era più semplice, ma anche meno potente e meno utile.
 
-While most applications will continue to function normally, this introduces an edge case in the following conditions:
+* Anziché aspettare di chiamare il metodo [`stream.read()`](#stream_readable_read_size), gli eventi [`'data'`][] iniziavano ad emettere immediatamente. Le applicazioni che avevano bisogno di eseguire una certa quantità di lavoro per decidere come gestire i dati erano necessarie per memorizzare i read data all'interno dei buffer in modo che non andassero persi.
+* Il metodo [`stream.pause()`](#stream_readable_pause) era di tipo consultivo, piuttosto che garantito. Ciò significava che era ancora necessario essere preparati a ricevere eventi [`'data'`][] *anche quando lo stream era in uno stato di pausa*.
 
-* No [`'data'`][] event listener is added.
-* The [`stream.resume()`](#stream_readable_resume) method is never called.
-* The stream is not piped to any writable destination.
+In Node.js v0.10, è stata aggiunta la classe [`Readable`][]. Per la retro compatibilità con i programmi Node.js precedenti, gli `Readable` stream passano in "flowing mode" quando viene aggiunto un handler di eventi [`'data'`][] oppure quando viene chiamato il metodo [`stream.resume()`](#stream_readable_resume). L'effetto è che, anche quando non si utilizza il nuovo metodo [`stream.read()`](#stream_readable_read_size) e l'evento [`'readable'`][], non è più necessario preoccuparsi di perdere dei chunk di [`'data'`][].
 
-For example, consider the following code:
+Mentre la maggior parte delle applicazioni continueranno a funzionare normalmente, questo introduce un caso limite nelle seguenti condizioni:
+
+* Non viene aggiunto nessun listener di eventi [`'data'`][].
+* Il metodo [`stream.resume()`](#stream_readable_resume) non viene mai chiamato.
+* Lo stream non è collegato tramite piping a nessuna destinazione writable.
+
+Ad esempio, considera il seguente codice:
 
 ```js
-// WARNING!  BROKEN!
+// ATTENZIONE!  DANNEGGIATO!
 net.createServer((socket) => {
 
-  // we add an 'end' listener, but never consume the data
+  // aggiungiamo un 'end' listener, ma senza consumare i dati
   socket.on('end', () => {
-    // It will never get here.
+    // Non arriverà mai qui.
     socket.end('The message was received but was not processed.\n');
   });
 
 }).listen(1337);
 ```
 
-In versions of Node.js prior to v0.10, the incoming message data would be simply discarded. However, in Node.js v0.10 and beyond, the socket remains paused forever.
+Nelle versioni di Node.js precedenti alla v0.10, i dati dei messaggi in entrata venivano semplicemente scartati. Tuttavia, in Node.js v0.10 e nelle versioni successive, il socket rimane sospeso per sempre.
 
-The workaround in this situation is to call the [`stream.resume()`](#stream_readable_resume) method to begin the flow of data:
+Il workaround (la soluzione) in questa situazione è chiamare il metodo [`stream.resume()`](#stream_readable_resume) per iniziare il flusso dei dati:
 
 ```js
 // Workaround
@@ -1939,31 +1939,31 @@ net.createServer((socket) => {
     socket.end('The message was received but was not processed.\n');
   });
 
-  // start the flow of data, discarding it.
+  // avvia il flusso di dati, scartandolo.
   socket.resume();
 }).listen(1337);
 ```
 
-In addition to new `Readable` streams switching into flowing mode, pre-v0.10 style streams can be wrapped in a `Readable` class using the [`readable.wrap()`][`stream.wrap()`] method.
+Oltre ai nuovi `Readable` stream che passano alla flowing mode, gli stream di stile pre-v0.10 possono essere inclusi in una classe `Readable` utilizzando il metodo [`readable.wrap()`][`stream.wrap()`].
 
 ### `readable.read(0)`
 
-There are some cases where it is necessary to trigger a refresh of the underlying readable stream mechanisms, without actually consuming any data. In such cases, it is possible to call `readable.read(0)`, which will always return `null`.
+Ci sono alcuni casi in cui è necessario ri-aggiornare i meccanismi sottostanti di readable stream, senza effettivamente consumare alcun dato. In questi casi, è possibile chiamare `readable.read(0)`, che restituirà sempre `null`.
 
-If the internal read buffer is below the `highWaterMark`, and the stream is not currently reading, then calling `stream.read(0)` will trigger a low-level [`stream._read()`](#stream_readable_read_size_1) call.
+Se il read buffer interno è inferiore all'`highWaterMark`, e lo stream non sta leggendo in quel momento, allora chiamare `stream.read(0)` attiverà la chiamata di un [`stream._read()`](#stream_readable_read_size_1) di livello inferiore.
 
-While most applications will almost never need to do this, there are situations within Node.js where this is done, particularly in the `Readable` stream class internals.
+Anche se la maggior parte delle applicazioni non avrà bisogno quasi mai di farlo, ci sono situazioni all'interno di Node.js dove questo viene fatto, in particolare nelle classi interne di `Readable` stream.
 
 ### `readable.push('')`
 
-Use of `readable.push('')` is not recommended.
+L'utilizzo di `readable.push('')` non è raccomandato.
 
-Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. Because it *is* a call to [`readable.push()`](#stream_readable_push_chunk_encoding), the call will end the reading process. However, because the argument is an empty string, no data is added to the readable buffer so there is nothing for a user to consume.
+Il push di una stringa, un `Buffer` oppure un `Uint8Array` di zero-byte in uno stream che non è in object mode ha un effetto collaterale interessante. Poiché *è* una chiamata a [`readable.push()`](#stream_readable_push_chunk_encoding), la chiamata terminerà il processo di lettura. Tuttavia, poiché l'argomento è una stringa vuota, non viene aggiunto nessun dato al readable buffer, perciò non c'è nulla che un utente possa consumare.
 
-### `highWaterMark` discrepancy after calling `readable.setEncoding()`
+### discrepanza di `highWaterMark` dopo aver chiamato `readable.setEncoding()`
 
-The use of `readable.setEncoding()` will change the behavior of how the `highWaterMark` operates in non-object mode.
+L'utilizzo di `readable.setEncoding()` cambierà il modo in cui `highWaterMark` opera al di fuori dell'object mode.
 
-Typically, the size of the current buffer is measured against the `highWaterMark` in *bytes*. However, after `setEncoding()` is called, the comparison function will begin to measure the buffer's size in *characters*.
+In genere, la dimensione del buffer attuale viene misurata rispetto all'`highWaterMark` in *bytes*. Tuttavia, dopo aver chiamato `setEncoding()`, la funzione di confronto inizierà a misurare la dimensione del buffer in *characters* (caratteri).
 
-This is not a problem in common cases with `latin1` or `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
+Questo non è un problema nei casi comuni con `latin1` oppure `ascii`. Ma si consiglia di essere consapevoli di tale comportamento quando si lavora con stringhe che potrebbero contenere caratteri multi-byte.

@@ -1,4 +1,4 @@
-# Node.js ChangeLog Archive
+# Archivo de registro de cambios de Node.js
 
 <!--lint disable prohibited-strings-->
 
@@ -167,7 +167,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras versiones 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -179,16 +179,16 @@
 
 <a id="0.11.14"></a>
 
-## 2014.09.24, Version 0.11.14 (Unstable)
+## 2014.09.24, Versión 0.11.14 (inestable)
 
-* uv: Upgrade to v1.0.0-rc1
-* http_parser: Upgrade to v2.3.0
-* npm: Upgrade to v2.0.0
-* openssl: Upgrade to v1.0.1i
-* v8: Upgrade to 3.26.33
-* Add fast path for simple URL parsing (Gabriel Wicke)
-* Added support for options parameter in console.dir() (Xavi Magrinyà)
-* Cluster: fix shared handles on Windows (Alexis Campailla)
+* uv: Actualiza a v1.0.0-rc1
+* http_parser: Actualiza a v2.3.0
+* npm: Actualiza a v2.0.0
+* openssl: Actualiza a v1.0.1i
+* v8: Actualiza a 3.26.33
+* Agrega una ruta rápida para el análisis simple de URL (Gabriel Wicke)
+* Se ha agregado soporte para el parámetro de opciones en console.dir() (Xavi Magrinyà)
+* Cluster: se arreglaron los identificadores compartidos en Windows (Alexis Campailla)
 * buffer: Fix incorrect Buffer.compare behavior (Feross Aboukhadijeh)
 * buffer: construct new buffer from buffer toJSON() output (cjihrig)
 * buffer: improve Buffer constructor (Kang-Hao Kenny)
