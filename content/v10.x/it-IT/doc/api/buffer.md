@@ -390,18 +390,18 @@ changes:
 * `string` {string} Stringa da codificare.
 * `encoding` {string} La codifica di `string`. **Default:** `'utf8'`.
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+Crea un nuovo `Buffer` contenente `string`. Il parametro `encoding` identifica la codifica dei caratteri di `string`.
 
 ```js
 const buf1 = new Buffer('this is a tést');
 const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
 
 console.log(buf1.toString());
-// Prints: this is a tést
+// Stampa: this is a tést
 console.log(buf2.toString());
-// Prints: this is a tést
+// Stampa: this is a tést
 console.log(buf1.toString('ascii'));
-// Prints: this is a tC)st
+// Stampa: this is a tC)st
 ```
 
 ### Class Method: Buffer.alloc(size[, fill[, encoding]])
@@ -728,7 +728,7 @@ added: v5.10.0
 * `string` {string} A string to encode.
 * `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+Crea un nuovo `Buffer` contenente `string`. Il parametro `encoding` identifica la codifica dei caratteri di `string`.
 
 ```js
 const buf1 = Buffer.from('this is a tést');
