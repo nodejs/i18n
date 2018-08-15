@@ -143,9 +143,9 @@ Le istanze di `Buffer` sono anche istanze di [`Uint8Array`]. Tuttavia, esistono 
 
 1. La memoria del `Buffer` object viene copiata su [`TypedArray`], non condivisa.
 
-2. La memoria del `Buffer` object viene interpretata come un array di elementi distinti e non come un byte array del tipo di target. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. La memoria del `Buffer` object viene interpretata come un array di elementi distinti e non come un byte array del tipo di target. Cioè, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un [`Uint32Array`] con 4 elementi quali `[1, 2, 3, 4]`, anziché un [`Uint32Array`] con un singolo elemento il quale può essere `[0x1020304]` oppure `[0x4030201]`.
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the `TypeArray` object's `.buffer` property.
+È possibile creare un nuovo `Buffer` che condivide la stessa memoria allocata di un'istanza di [`TypedArray`] utilizzando la proprietà `.buffer` del `TypeArray` object.
 
 ```js
 const arr = new Uint16Array(2);
@@ -153,48 +153,48 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Copies the contents of `arr`
+// Copia il contenuto di `arr`
 const buf1 = Buffer.from(arr);
-// Shares memory with `arr`
+// Condivide la memoria con `arr`
 const buf2 = Buffer.from(arr.buffer);
 
 console.log(buf1);
-// Prints: <Buffer 88 a0>
+// Stampa: <Buffer 88 a0>
 console.log(buf2);
-// Prints: <Buffer 88 13 a0 0f>
+// Stampa: <Buffer 88 13 a0 0f>
 
 arr[1] = 6000;
 
 console.log(buf1);
-// Prints: <Buffer 88 a0>
+// Stampa: <Buffer 88 a0>
 console.log(buf2);
-// Prints: <Buffer 88 13 70 17>
+// Stampa: <Buffer 88 13 70 17>
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+Da notare che quando si crea un `Buffer` utilizzando un `.buffer` di [`TypedArray`], è possibile usare solo una parte del sottostante [`ArrayBuffer`] passando i parametri `byteOffset` e `length`.
 
 ```js
 const arr = new Uint16Array(20);
 const buf = Buffer.from(arr.buffer, 0, 16);
 
 console.log(buf.length);
-// Prints: 16
+// Stampa: 16
 ```
 
-The `Buffer.from()` and [`TypedArray.from()`] have different signatures and implementations. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+Il `Buffer.from()` e [`TypedArray.from()`] hanno diverse diciture ed implementazioni. Nello specifico, le varianti di [`TypedArray`] accettano un secondo argomento che è una funzione di mapping invocata su ogni elemento del typed array (array tipizzato):
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-The `Buffer.from()` method, however, does not support the use of a mapping function:
+Tuttavia, il metodo `Buffer.from()` non supporta l'uso di una funzione di mapping:
 
 * [`Buffer.from(array)`]
 * [`Buffer.from(buffer)`]
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and iteration
+## Buffer ed iterazione
 
-`Buffer` instances can be iterated over using `for..of` syntax:
+Le istanze di `Buffer` possono essere iterate usando la sintassi `for..of`:
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
