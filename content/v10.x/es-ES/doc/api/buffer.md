@@ -235,9 +235,9 @@ changes:
 
 > Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(array)`] en su lugar.
 
-* `array` {integer[]} An array of bytes to copy from.
+* `array` {integer[]} un arreglo de bytes desde el cual copiar.
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` utilizando un `array` de octetos.
 
 ```js
 // Crea un nuevo Buffer que contiene los bytes UTF-8 de la cadena 'buffer'
@@ -313,7 +313,7 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(buffer)`] en su lugar.
 
 * `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
 
