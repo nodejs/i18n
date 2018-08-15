@@ -326,12 +326,12 @@ const buf2 = new Buffer(buf1);
 buf1[0] = 0x61;
 
 console.log(buf1.toString());
-// Prints: auffer
+// Imprime: auffer
 console.log(buf2.toString());
-// Prints: buffer
+// Imprime: buffer
 ```
 
-### new Buffer(size)
+### nuevo Buffer(size)
 
 <!-- YAML
 deprecated: v6.0.0
@@ -353,9 +353,9 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> Estabilidad: 0 - Obsoleto: Utilizar [`Buffer.alloc()`] en su lugar (también ver [`Buffer.allocUnsafe()`]).
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
 Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
 
