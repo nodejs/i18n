@@ -65,7 +65,7 @@ added: v5.10.0
 -->
 
 Node.js se puede iniciar utilizando la opción de línea de comando `--zero-fill-buffers` para hacer que todas las instancias de `Buffer` recién asignadas se llenen con ceros al crearlas por defecto, incluyendo a buffers retornados por `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`], y `new
-SlowBuffer(size)`. Utilizar esta bandera puede tener un significativo impacto negativo sobre el rendimiento. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain old data that is potentially sensitive.
+SlowBuffer(size)`. Utilizar esta bandera puede tener un significativo impacto negativo sobre el rendimiento. Se recomienda el uso de la opción `--zero-fill-buffers` solo cuando es necesario asegurar que las instancias de `Buffer` recientemente asignadas no puedan contener datos antiguos que son potencialmente confidenciales.
 
 ```txt
 $ node --zero-fill-buffers
@@ -193,7 +193,7 @@ El método `Buffer.from()`, sin embargo, no permite el uso de una función de ma
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and iteration
+## Buffers e Iteración
 
 Las instancias de `Buffer` pueden iterarse utilizando la sintaxis `for..of`:
 
