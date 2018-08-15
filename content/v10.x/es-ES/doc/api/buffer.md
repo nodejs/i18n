@@ -315,7 +315,7 @@ changes:
 
 > Estabilidad: 0 - Obsoleto: Utilice [`Buffer.from(buffer)`] en su lugar.
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] existente desde donde copiar los datos.
 
 Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
 
@@ -359,7 +359,7 @@ changes:
 
 Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. A zero-length `Buffer` is created if `size` is 0.
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` with zeroes.
+Antes de Node.js 8.0.0, la memoria subyacente para las instancias de `Buffer` creadas de esta manera están *no inicializadas*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` with zeroes.
 
 ```js
 const buf = new Buffer(10);
@@ -702,7 +702,7 @@ A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`S
 added: v5.10.0
 -->
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] existente desde donde copiar los datos.
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
