@@ -6,14 +6,14 @@
 
 <!--name=module-->
 
-En el sistema de módulo Node.js, cada archivo es tratado como un módulo separado. For example, consider a file named `foo.js`:
+En el sistema de módulo Node.js, cada archivo es tratado como un módulo separado. Por ejemplo, considere un archivo llamado `foo.js`:
 
 ```js
 const circle = require('./circle.js');
 console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
-On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
+En la primera linea, `foo.js` carga el módulo `circle.js` que está en el mismo directorio como `foo.js`.
 
 Here are the contents of `circle.js`:
 
