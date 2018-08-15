@@ -125,9 +125,9 @@ Le codifiche dei caratteri attualmente supportate da Node.js includono:
 
 * `'hex'` - Codifica ogni byte come due caratteri esadecimali.
 
-Modern Web browsers follow the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) which aliases both `'latin1'` and `'ISO-8859-1'` to `'win-1252'`. This means that while doing something like `http.get()`, if the returned charset is one of those listed in the WHATWG specification it is possible that the server actually returned `'win-1252'`-encoded data, and using `'latin1'` encoding may incorrectly decode the characters.
+I moderni browser web seguono la [Codifica Standard WHATWG](https://encoding.spec.whatwg.org/) che attribuiscono sia a `'latin1'` che ad `'ISO-8859-1'` l'alias `'win-1252'`. Ciò significa che mentre si fa qualcosa come `http.get()`, se il set di caratteri restituito è uno di quelli elencati nella specifica WHATWG è possibile che il server abbia effettivamente restituito dati con codifica `'win-1252'` e l'utilizzo della codifica `'latin1'` potrebbe decodificare i caratteri in modo errato.
 
-## Buffers and TypedArray
+## Buffer e TypedArray
 
 <!-- YAML
 changes:
@@ -137,13 +137,13 @@ changes:
     description: The `Buffer`s class now inherits from `Uint8Array`.
 -->
 
-`Buffer` instances are also [`Uint8Array`] instances. However, there are subtle incompatibilities with [`TypedArray`]. For example, while [`ArrayBuffer#slice()`] creates a copy of the slice, the implementation of [`Buffer#slice()`][`buf.slice()`] creates a view over the existing `Buffer` without copying, making [`Buffer#slice()`][`buf.slice()`] far more efficient.
+Le istanze di `Buffer` sono anche istanze di [`Uint8Array`]. Tuttavia, esistono sottili incompatibilità con [`TypedArray`]. Ad esempio, mentre [`ArrayBuffer#slice()`] crea una copia dello slice, l'implementazione di [`Buffer#slice()`][`buf.slice()`] crea una visuale sul `Buffer` esistente senza copiare, rendendo così [`Buffer#slice()`][`buf.slice()`] molto più efficiente.
 
-It is also possible to create new [`TypedArray`] instances from a `Buffer` with the following caveats:
+È anche possibile creare nuove istanze di [`TypedArray`] da un `Buffer` con le seguenti raccomandazioni:
 
-1. The `Buffer` object's memory is copied to the [`TypedArray`], not shared.
+1. La memoria del `Buffer` object viene copiata su [`TypedArray`], non condivisa.
 
-2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. La memoria del `Buffer` object viene interpretata come un array di elementi distinti e non come un byte array del tipo di target. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
 
 It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the `TypeArray` object's `.buffer` property.
 
