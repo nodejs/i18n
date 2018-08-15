@@ -43,17 +43,17 @@ Nelle versioni di Node.js precedenti alla 6.0.0, le istanze di `Buffer` sono sta
 * Passando una stringa, un array oppure un `Buffer` come primo argomento copiava i dati dell'object passato all'interno del `Buffer`.
 * Passando un [`ArrayBuffer`] od un [`SharedArrayBuffer`] restituiva un `Buffer` che condivideva la memoria allocata con l'array buffer specificato.
 
-Poiché il comportamento di `new Buffer()` è diverso a seconda del tipo di primo argomento, possono essere inavvertitamente introdotti nelle applicazioni problemi di sicurezza ed affidabilità quando la convalida dell'argomento o l'inizializzazione di `Buffer` non vengono eseguite.
+Poiché il comportamento di `new Buffer()` è diverso a seconda del tipo di primo argomento, potevano essere inavvertitamente introdotti nelle applicazioni problemi di sicurezza ed affidabilità quando la convalida dell'argomento o l'inizializzazione di `Buffer` non venivano eseguite.
 
-To make the creation of `Buffer` instances more reliable and less error-prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+Per rendere la creazione delle istanze di `Buffer` più affidabili e meno soggette ad errori, le varie forme del `new Buffer()` constructor sono state **deprecate** e sostituite dai metodi suddivisi `Buffer.from()`, [`Buffer.alloc()`], e [`Buffer.allocUnsafe()`].
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*Gli sviluppatori dovrebbero migrare tutti gli usi esistenti di `new Buffer()` su una di queste nuove API.*
 
-* [`Buffer.from(array)`] returns a new `Buffer` that *contains a copy* of the provided octets.
-* [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`].
-* [`Buffer.from(buffer)`] returns a new `Buffer` that *contains a copy* of the contents of the given `Buffer`.
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` that *contains a copy* of the provided string.
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a new initialized `Buffer` of the specified size. This method is slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly created `Buffer` instances never contain old data that is potentially sensitive.
+* [`Buffer.from(array)`] restituisce un nuovo `Buffer` che *contiene una copia* degli octet forniti.
+* [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] restituisce un nuovo `Buffer` che *condivide la stessa memoria allocata* dell'[`ArrayBuffer`] specificato.
+* [`Buffer.from(buffer)`] restituisce un nuovo `Buffer` che *contiene una copia* dei contenuti del `Buffer` specificato.
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] restituisce un nuovo `Buffer` che *contiene una copia* della stringa fornita.
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] restituisce un nuovo `Buffer` inizializzato della dimensione specificata. Questo metodo è più lento di [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] ma garantisce che le istanze `Buffer` appena create non contengano mai vecchi dati potenzialmente sensibili.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
 
 `Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
