@@ -6,11 +6,11 @@ Als Mitwirkender von Node.js wirkt sich sowohl die Verhaltensweise gegenüber an
 
 Sollte eine Einzelperson in irgendeiner Weise agieren, die die [Verhaltensgrundsätze](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) missachtet, werden Korrekturmaßnahmen ergriffen. Hingegen ist es dennoch möglich für eine beliebige Person in einer Weise zu *agieren*, die keine Missachtung der strikten Verhaltensgrundsätze darstellt aber trotzdem entgegen der allgemeinen Stimmung gehen, die die Grundsätze vorsehen zu erzielen.
 
-Offene, vielfältige und inklusive Gemeinschaften beruhen auf der Basis von Vertrauen. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
+Offene, vielfältige und inklusive Gemeinschaften beruhen auf der Basis von Vertrauen. Mitwirkende können einander widersprechen, solange sie darin vertrauen, dass diese Widersprüche gutwillig sind und die Beteiligten an einem gemeinsamen Ziel arbeiten.
 
-## Bad actors
+## Schädliche Mitwirkende
 
-All contributors to Node.js tacitly agree to abide by both the letter and spirit of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
+Alle Mitwirkende an Node.js stimmen sowohl dem Wortlaut als auch dem Geiste der [Verhaltensgrundsätze](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) stillschweigend zu. Versagen oder Unwillen, den Verhaltensgrundsätzen zuzustimmen wird dazu führen, dass die Beiträge respektvoll abgelehnt werden.
 
 A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
 
