@@ -317,7 +317,7 @@ changes:
 
 * `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
 
 ```js
 const buf1 = new Buffer('buffer');
