@@ -4,7 +4,7 @@ Este documento describe los aspectos técnicos del proceso de lanzamiento de Nod
 
 ## ¿Quién puede hacer un lanzamiento?
 
-La autorización del lanzamiento es dada por el TSC de Node.js. Once authorized, an individual must be have the following:
+La autorización del lanzamiento es dada por el TSC de Node.js. Una vez autorizado, un individuo debe tener lo siguiente:
 
 ### 1. Jenkins Release Access
 
