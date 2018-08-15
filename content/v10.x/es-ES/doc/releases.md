@@ -2,9 +2,9 @@
 
 Este documento describe los aspectos técnicos del proceso de lanzamiento de Node.js. La audiencia prevista son quienes han sido autorizados por el Comité de Dirección Técnica (TSC) de la Fundación Node.js para crear, promover y firmar versiones oficiales de lanzamiento para Node.js, alojadas en <https://nodejs.org/>.
 
-## Who can make a release?
+## ¿Quién puede hacer un lanzamiento?
 
-Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
+La autorización del lanzamiento es dada por el TSC de Node.js. Once authorized, an individual must be have the following:
 
 ### 1. Jenkins Release Access
 
