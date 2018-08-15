@@ -199,7 +199,7 @@ Le istanze di `Buffer` possono essere iterate usando la sintassi `for..of`:
 ```js
 const buf = Buffer.from([1, 2, 3]);
 
-// Prints:
+// Stampa:
 //   1
 //   2
 //   3
@@ -208,11 +208,11 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+Inoltre, i metodi [`buf.values()`], [`buf.keys()`], e [`buf.entries()`] possono essere utilizzati per creare degli iterator.
 
 ## Class: Buffer
 
-The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+La classe `Buffer` è un tipo globale per gestire direttamente i dati binari. Può essere costruita in vari modi.
 
 ### new Buffer(array)
 
@@ -232,14 +232,14 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`Buffer.from(array)`].
 
-* `array` {integer[]} An array of bytes to copy from.
+* `array` {integer[]} Un array di byte da cui copiare.
 
-Allocates a new `Buffer` using an `array` of octets.
+Alloca un nuovo `Buffer` usando un `array` di octet.
 
 ```js
-// Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
+// Crea un nuovo Buffer contenente i byte UTF-8 della stringa 'buffer'
 const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
@@ -265,13 +265,13 @@ changes:
     description: The `byteOffset` and `length` parameters are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`].
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], un [`SharedArrayBuffer`] oppure la proprietà `.buffer` di un [`TypedArray`].
+* `byteOffset` {integer} Indice del primo byte da esporre. **Default:** `0`.
+* `length` {integer} Numero di byte da esporre. **Default:** `arrayBuffer.length - byteOffset`.
 
-This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Ciò crea una visuale di [`ArrayBuffer`] oppure [`SharedArrayBuffer`] senza copiare la memoria sottostante. Ad esempio, quando viene passato un riferimento alla proprietà `.buffer` di un'istanza di [`TypedArray`], il `Buffer` appena creato condividerà la stessa memoria allocata in [`TypedArray`].
 
 The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
