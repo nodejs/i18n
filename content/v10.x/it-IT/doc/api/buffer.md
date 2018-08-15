@@ -10,32 +10,32 @@ Con [`TypedArray`] ora disponibile, la classe `Buffer` implementa l'API [`Uint8A
 
 Le istanze della classe `Buffer` sono simili agli array di numeri interi ma corrispondono ad allocazioni di memoria raw di dimensioni fisse all'esterno di V8 heap. La dimensione del `Buffer` viene stabilita quando viene creato e non può essere modificata.
 
-The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
+La classe `Buffer` rientra nel global scope, il che rende improbabile la necessità di utilizzare mai `require('buffer').Buffer`.
 
 ```js
-// Creates a zero-filled Buffer of length 10.
+// Crea un Buffer a riempimento zero di lunghezza 10.
 const buf1 = Buffer.alloc(10);
 
-// Creates a Buffer of length 10, filled with 0x1.
+// Crea un Buffer di lunghezza 10, riempito con 0x1.
 const buf2 = Buffer.alloc(10, 1);
 
-// Creates an uninitialized buffer of length 10.
-// This is faster than calling Buffer.alloc() but the returned
-// Buffer instance might contain old data that needs to be
-// overwritten using either fill() or write().
+// Crea un buffer non inizializzato di lunghezza 10.
+// Questo procedimento è più veloce di chiamare Buffer.alloc() ma l'istanza
+// di Buffer restituita potrebbe contenere vecchi dati che devono essere 
+// sovrascritti usando fill() oppure write().
 const buf3 = Buffer.allocUnsafe(10);
 
-// Creates a Buffer containing [0x1, 0x2, 0x3].
+// Crea un Buffer contenente [0x1, 0x2, 0x3].
 const buf4 = Buffer.from([1, 2, 3]);
 
-// Creates a Buffer containing UTF-8 bytes [0x74, 0xc3, 0xa9, 0x73, 0x74].
+// Crea un Buffer contenente byte UTF-8 [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Creates a Buffer containing Latin-1 bytes [0x74, 0xe9, 0x73, 0x74].
+// Crea un Buffer contenente byte Latin-1 [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
-## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
+## `Buffer.from()`, `Buffer.alloc()`, e `Buffer.allocUnsafe()`
 
 In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
