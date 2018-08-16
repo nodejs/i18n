@@ -646,11 +646,11 @@ added: v5.10.0
 Alloca un nuovo `Buffer` usando un `array` di octet.
 
 ```js
-// Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
+// Crea un nuovo Buffer contenente i byte UTF-8 della stringa 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+Verrà generato un `TypeError` se `array` non è un `Array`.
 
 ### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
 
@@ -658,11 +658,11 @@ A `TypeError` will be thrown if `array` is not an `Array`.
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
-* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], un [`SharedArrayBuffer`], oppure una proprietà `.buffer` di un [`TypedArray`].
+* `byteOffset` {integer} Indice del primo byte da esporre. **Default:** `0`.
+* `length` {integer} Numero di byte da esporre. **Default:** `arrayBuffer.length - byteOffset`.
 
-This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Questo crea una visuale di [`ArrayBuffer`] senza copiare la memoria sottostante. Ad esempio, quando viene passato un riferimento alla proprietà `.buffer` di un'istanza [`TypedArray`], il `Buffer` appena creato condividerà la stessa memoria allocata in [`TypedArray`].
 
 ```js
 const arr = new Uint16Array(2);
@@ -670,30 +670,30 @@ const arr = new Uint16Array(2);
 arr[0] = 5000;
 arr[1] = 4000;
 
-// Shares memory with `arr`
+// Condivide la memoria con `arr`
 const buf = Buffer.from(arr.buffer);
 
 console.log(buf);
-// Prints: <Buffer 88 13 a0 0f>
+// Stampa: <Buffer 88 13 a0 0f>
 
-// Changing the original Uint16Array changes the Buffer also
+// La modifica dell'originale Uint16Array cambia anche il Buffer
 arr[1] = 6000;
 
 console.log(buf);
-// Prints: <Buffer 88 13 70 17>
+// Stampa: <Buffer 88 13 70 17>
 ```
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Gli argomenti facoltativi `byteOffset` e `length` specificano un intervallo di memoria all'interno di `arrayBuffer` che sarà condiviso tramite il `Buffer`.
 
 ```js
 const ab = new ArrayBuffer(10);
 const buf = Buffer.from(ab, 0, 2);
 
 console.log(buf.length);
-// Prints: 2
+// Stampa: 2
 ```
 
-A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`SharedArrayBuffer`].
+Verrà generato un `TypeError` se `arrayBuffer` non è un [`ArrayBuffer`] od un [`SharedArrayBuffer`].
 
 ### Class Method: Buffer.from(buffer)
 
@@ -703,7 +703,7 @@ added: v5.10.0
 
 * `buffer` {Buffer|Uint8Array} Un `Buffer` esistente oppure un [`Uint8Array`] da cui copiare i dati.
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+Copia i dati passati del `buffer` su una nuova istanza di `Buffer`.
 
 ```js
 const buf1 = Buffer.from('buffer');
@@ -712,12 +712,12 @@ const buf2 = Buffer.from(buf1);
 buf1[0] = 0x61;
 
 console.log(buf1.toString());
-// Prints: auffer
+// Stampa: auffer
 console.log(buf2.toString());
-// Prints: buffer
+// Stampa: buffer
 ```
 
-A `TypeError` will be thrown if `buffer` is not a `Buffer`.
+Verrà generato un `TypeError` se `buffer` non è un `Buffer`.
 
 ### Class Method: Buffer.from(string[, encoding])
 
@@ -725,8 +725,8 @@ A `TypeError` will be thrown if `buffer` is not a `Buffer`.
 added: v5.10.0
 -->
 
-* `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
+* `string` {string} Una striga da codificare.
+* `encoding` {string} La codifica di `string`. **Default:** `'utf8'`.
 
 Crea un nuovo `Buffer` contenente `string`. Il parametro `encoding` identifica la codifica dei caratteri di `string`.
 
@@ -735,14 +735,14 @@ const buf1 = Buffer.from('this is a tést');
 const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
 
 console.log(buf1.toString());
-// Prints: this is a tést
+// Stampa: this is a tést
 console.log(buf2.toString());
-// Prints: this is a tést
+// Stampa: this is a tést
 console.log(buf1.toString('ascii'));
-// Prints: this is a tC)st
+// Stampa: this is a tC)st
 ```
 
-A `TypeError` will be thrown if `string` is not a string.
+Verrà generato un `TypeError` se `string` non è una stringa.
 
 ### Class Method: Buffer.from(object[, offsetOrEncoding[, length]])
 
