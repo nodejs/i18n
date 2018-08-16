@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
@@ -354,7 +354,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -380,7 +380,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -428,7 +428,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -452,7 +452,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -489,7 +489,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -516,7 +516,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -540,7 +540,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -564,7 +564,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -590,7 +590,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -616,7 +616,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -652,7 +652,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -676,7 +676,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -702,7 +702,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 
@@ -726,7 +726,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * `object` {any}
 

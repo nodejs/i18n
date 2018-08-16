@@ -204,7 +204,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 * {Object}
 

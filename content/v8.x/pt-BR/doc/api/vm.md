@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 <!--name=vm-->
 
@@ -257,7 +257,7 @@ console.log(util.inspect(sandbox));
 added: v0.11.14
 -->
 
-> Stability: 0 - Deprecated. An alternative is in development.
+> Estabilidade: 0 - Descontinuado. An alternative is in development.
 
 * `code` {string} The JavaScript code to compile and run.
 

@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Estabilidade: 2 - Estável
 
 HTTPS é o protocolo HTTP sobre SSL/TLS. Em node. js, isso é implementado como um módulo separado.
 
@@ -14,13 +14,13 @@ added: v0.4.5
 
 Um objeto de [] de [`Agent`] para HTTPS semelhante ao [`http. Agent`] []. Consulte [`https.request()`] [-] para obter mais informações.
 
-## Classe: https. Server
+## Class: https.Server
 
 <!-- YAML
 added: v0.3.4
 -->
 
-Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. Consulte [`https.request()`] [-] para obter mais informações.
+Essa classe é uma subclasse de `tls. Server` e emite os eventos igual ao [`http. Server`] []. See [`http.Server`][] for more information.
 
 ### server.close ([callback])
 
@@ -40,7 +40,7 @@ Inicia o servidor HTTPS escutando para conexões criptografadas. Esse método é
 
 - {number} **Padrão:** `2000`
 
-Consulte [`http. Server #maxHeadersCount`] [].
+Consulte [`http.Server#maxHeadersCount`][].
 
 ### server.setTimeout (\[msecs\]\[, callback\])
 
@@ -61,7 +61,7 @@ added: v0.11.2
 
 - {number} **Padrão:** `120000` (2 minutos)
 
-Consulte [`http. Server #timeout`] [].
+Consulte [`http.Server#maxHeadersCount`][].
 
 ### server.keepAliveTimeout
 
@@ -71,9 +71,9 @@ added: v8.0.0
 
 - {number} **Padrão:** `5000` (5 segundos)
 
-Consulte [`http. Server #keepAliveTimeout`] [].
+Consulte [`http.Server#keepAliveTimeout`][].
 
-## https.createServer (\[options\]\[, requestListener\])
+## https.createServer(\[options\]\[, requestListener\])
 
 <!-- YAML
 added: v0.3.4
@@ -183,8 +183,7 @@ changes:
 
 Faz uma requesição para um web server seguro.
 
-As seguintes `opções` adicionais de [`tls.connect()</ 0>][] também são aceitas:
-<code>ca`,`cert`,`cifras`,`clientCertEngine`,`crl`,`dhparam`,`ecdhCurve `, `honorCipherOrder`,`chave`,`senha`,`pfx`,`rejectUnauthorized`, `secureOptions`,`secureProtocol`,`servername`,`sessionIdContext`.
+The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
 `options` pode ser um objeto, uma string, ou um objeto [`URL`][]. Se `options` é uma string, é automaticamente parseada com [`url.parse()`][]. Se é um objeto [`URL`][], vai ser automaticamente convertido para um objeto comum `options`.
 

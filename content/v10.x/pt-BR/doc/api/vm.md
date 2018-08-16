@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 <!--name=vm-->
 
@@ -41,7 +41,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> Stability: 1 - Experimental
+> Estabilidade: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 

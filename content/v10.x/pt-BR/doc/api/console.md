@@ -8,10 +8,10 @@ O módulo `console` fornece um console de depuração simples que é semelhante 
 
 O módulo exporta dois componentes específicos:
 
-* Uma classe de `Console` tem métodos como `console.log()`, `console.error()` e `console.warn()` que pode ser usado para gravar qualquer fluxo de Node. js.
+* Uma classe de `Console` tem métodos como `console.log()`, `console.error()` e `console.warn()` que pode ser usado para gravar qualquer fluxo de Node.js.
 * Uma instância global `console` configurada para gravar em [`process.stdout`] [] e [`process.stderr`] []. O global `console` pode ser usado sem a chamada `require('console')`.
 
-***Aviso***: métodos do objeto global console nem assemelham-se consistentemente síncronos como o navegador APIs, nem consistentemente assíncronos como todos os outros fluxos de Node. js. Veja a nota no processo I / O </ 0> para Mais Informações.</p> 
+***Aviso***: métodos do objeto global console nem assemelham-se consistentemente síncronos como o navegador APIs, nem consistentemente assíncronos como todos os outros fluxos de Node.js. Veja a [nota de processo I/O](process.html#process_a_note_on_process_i_o) para mais Informações.
 
 Exemplo usando o `console` global:
 
@@ -28,18 +28,22 @@ console.warn(`Danger ${name}! Danger!`);
 // Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
-Examplo usando a classe `Console`:
+Exemplo usando a classe `Console`:
 
 ```js
-console.log('hello world');
-// Prints: hello world, to stdout
-console.log('hello %s', 'world');
-// Prints: hello world, to stdout
-console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+const out = getStreamSomehow();
+const err = getStreamSomehow();
+const myConsole = new console.Console(out, err);
+
+myConsole.log('hello world');
+// Prints: hello world, to out
+myConsole.log('hello %s', 'world');
+// Prints: hello world, to out
+myConsole.error(new Error('Whoops, something bad happened'));
+// Prints: [Error: Whoops, something bad happened], to err
 
 const name = 'Will Robinson';
-console.warn(`Danger ${name}! Danger!`);
+myConsole.warn(`Danger ${name}! Danger!`);
 // Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
@@ -101,7 +105,7 @@ logger.log('count: %d', count);
 // in stdout.log: count 5
 ```
 
-Uma instância global `console` configurada para gravar em [`process.stdout`] e [`process.stderr`]. É equivalente a chamar:
+Uma instância global `console` é um especial `Console` cuja saída é enviada para [`process.stdout`][] e [`process.stderr`][]. É equivalente a chamar:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
