@@ -428,24 +428,24 @@ changes:
 * `fill` {string|Buffer|integer} Un valore con il quale precompilare il nuovo `Buffer`. **Default:** `0`.
 * `encoding` {string} Se `fill` è una stringa, questa è la sua codifica. **Default:** `'utf8'`.
 
-Alloca un nuovo `Buffer` di `size` byte. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Alloca un nuovo `Buffer` di `size` byte. Se `fill` è `undefined`, il `Buffer` sarà *riempito a zero*.
 
 ```js
 const buf = Buffer.alloc(5);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00>
+// Stampa: <Buffer 00 00 00 00 00>
 ```
 
-Allocates a new `Buffer` of `size` bytes. Se `size` è maggiore di [`buffer.constants.MAX_LENGTH`] o minore di 0, viene generato [`ERR_INVALID_OPT_VALUE`]. Viene creato un `Buffer` di lunghezza zero se `size` è 0.
+Alloca un nuovo `Buffer` di `size` byte. Se `size` è maggiore di [`buffer.constants.MAX_LENGTH`] o minore di 0, viene generato [`ERR_INVALID_OPT_VALUE`]. Viene creato un `Buffer` di lunghezza zero se `size` è 0.
 
-If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
+Se `fill` è specificato, il `Buffer` allocato verrà inizializzato chiamando [`buf.fill(fill)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(5, 'a');
 
 console.log(buf);
-// Prints: <Buffer 61 61 61 61 61>
+// Stampa: <Buffer 61 61 61 61 61>
 ```
 
 If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
