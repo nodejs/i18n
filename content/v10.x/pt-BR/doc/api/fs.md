@@ -129,16 +129,15 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-* Nota: </ 0> No Windows, o Node.js segue o conceito de diretório de trabalho por unidade. Esse comportamento pode ser observado quando usamos um caminho sem colocar uma /. Por exemplo ` fs.readdirSync ('c: \\') </ 0> pode potencialmente retornar um resultado diferente <code> fs.readdirSync ('c:') </ 0>. Para mais informações, veja <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths">this MSDN page</a>.</p>
+*Nota:* No Windows, o Node.js segue o conceito de diretório de trabalho por unidade. Esse comportamento pode ser observado quando usamos um caminho sem colocar uma /. Por exemplo `fs.readdirSync('c: \\')` pode potencialmente retornar um resultado diferente do que `fs.readdirSync('c:')`. Para mais informações, veja [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
-<h3>URL object support</h3>
+### URL object support
 
-<p><!-- YAML
+<!-- YAML
 added: v7.6.0
--->
-For most <code>fs` module functions, the 
+--> For most 
 
-`path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.</p> 
+`fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
 ```js
 const fs = require('fs');
