@@ -783,7 +783,7 @@ added: v0.1.101
 * `obj` {Object}
 * Restituisce: {boolean}
 
-Returns `true` if `obj` is a `Buffer`, `false` otherwise.
+Restituisce `true` se `obj` è un `Buffer`, in caso contrario `false`.
 
 ### Class Method: Buffer.isEncoding(encoding)
 
@@ -791,10 +791,10 @@ Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 added: v0.9.1
 -->
 
-* `encoding` {string} A character encoding name to check.
-* Returns: {boolean}
+* `encoding` {string} Un nome di una codifica di caratteri da verificare.
+* Restituisce: {boolean}
 
-Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
+Restituisce `true` se l'`encoding` contiene una codifica di caratteri supportata od in caso contrario `false`.
 
 ### Class Property: Buffer.poolSize
 
@@ -804,7 +804,7 @@ added: v0.11.3
 
 * {integer} **Default:** `8192`
 
-This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. This value may be modified.
+Questa è la dimensione (in byte) delle istanze di `Buffer` interne pre-allocate utilizzate per il pooling. Questo valore potrebbe essere modificato.
 
 ### buf[index]
 
@@ -813,7 +813,7 @@ type: property
 name: [index]
 -->
 
-The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
+L'operatore indice `[index]` può essere usato per ottenere ed impostare l'octet nella posizione `index` all'interno di `buf`. I valori si riferiscono a singoli byte, quindi l'intervallo di valori è compreso tra `0x00` e `0xFF` (esadecimale) oppure tra `0` e `255` (decimale).
 
 This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
 
