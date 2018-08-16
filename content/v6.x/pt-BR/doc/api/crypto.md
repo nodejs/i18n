@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions.
 
@@ -533,7 +533,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidade: 0 - Descontinuado
 
 Sets the EC Diffie-Hellman public key. Key encoding can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided `public_key` is expected to be a string; otherwise a [`Buffer`][] is expected.
 
