@@ -508,30 +508,30 @@ Alloca un nuovo `Buffer` di `size` byte. Se `size` è maggiore di [`buffer.const
 
 La memoria sottostante per le istanze di `Buffer` create in questo modo *non è inizializzata*. I contenuti del `Buffer` appena creato sono sconosciuti e *potrebbero contenere dati sensibili*. Utilizza [`buf.fill(0)`][`buf.fill()`] per inizializzare tali istanze di `Buffer` con gli zeri.
 
-Quando si utilizza [`Buffer.allocUnsafe()`] per allocare nuove istanze di `Buffer`, le allocazioni sotto i 4KB vengono suddivise da un singolo `Buffer` pre-allocato. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and clean up as many persistent objects.
+Quando si utilizza [`Buffer.allocUnsafe()`] per allocare nuove istanze di `Buffer`, le allocazioni sotto i 4KB vengono suddivise da un singolo `Buffer` pre-allocato. Ciò consente alle applicazioni di evitare il sovraccarico della garbage collection per la creazione di numerose istanze di `Buffer` allocate individualmente. Questo approccio migliora sia le prestazioni che l'utilizzo della memoria eliminando la necessità di tenere traccia e ripulire il maggior numero di persistent object.
 
-However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` and then copying out the relevant bits.
+Tuttavia, nel caso in cui uno sviluppatore possa aver bisogno di conservare un piccolo chunk di memoria da un pool per un periodo di tempo indeterminato, potrebbe essere opportuno creare un'istanza un-pooled `Buffer` utilizzando `Buffer.allocUnsafeSlow()` e quindi copiando i bit rilevanti.
 
 ```js
-// Need to keep around a few small chunks of memory
+// Bisogna mantenere a disposizione alcuni piccoli chunk di memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Allocate per i dati conservati
   const sb = Buffer.allocUnsafeSlow(10);
 
-  // Copy the data into the new allocation
+  // Copia i dati nella nuova allocazione
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
 });
 ```
 
-`Buffer.allocUnsafeSlow()` should be used only as a last resort after a developer has observed undue memory retention in their applications.
+`Buffer.allocUnsafeSlow()` dovrebbe essere usato solo come ultima risorsa in seguito che uno sviluppatore abbia osservato un'indebita conservazione della memoria nelle sue applicazioni.
 
-A `TypeError` will be thrown if `size` is not a number.
+Verrà generato un `TypeError` se `size` non è un numero.
 
 ### Class Method: Buffer.byteLength(string[, encoding])
 
@@ -548,7 +548,7 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valore di cui calcolare la lunghezza.
 * `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`.
 * Returns: {integer} The number of bytes contained within `string`.
 
