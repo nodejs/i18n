@@ -614,10 +614,10 @@ Se l'elenco (list) non contiene elementi o se `totalLength` è 0, viene restitui
 
 Se `totalLength` non viene fornito, viene calcolato dalle istanze di `Buffer` nella `list`. Questo tuttavia causa l'esecuzione di un ciclo aggiuntivo per calcolare `totalLength`, quindi se la lunghezza è già nota è più rapido fornirla esplicitamente.
 
-Se viene fornito `totalLength`, viene assegnato forzatamente ad un unsigned integer (intero senza segno). If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+Se viene fornito `totalLength`, viene assegnato forzatamente ad un unsigned integer (intero senza segno). Se la lunghezza combinata dei `Buffer` nella `list` supera `totalLength`, il risultato viene troncato a `totalLength`.
 
 ```js
-// Create a single `Buffer` from a list of three `Buffer` instances.
+// Crea un singolo `Buffer` da una list di tre istanze di `Buffer`.
 
 const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(14);
@@ -625,14 +625,14 @@ const buf3 = Buffer.alloc(18);
 const totalLength = buf1.length + buf2.length + buf3.length;
 
 console.log(totalLength);
-// Prints: 42
+// Stampa: 42
 
 const bufA = Buffer.concat([buf1, buf2, buf3], totalLength);
 
 console.log(bufA);
-// Prints: <Buffer 00 00 00 00 ...>
+// Stampa: <Buffer 00 00 00 00 ...>
 console.log(bufA.length);
-// Prints: 42
+// Stampa: 42
 ```
 
 ### Class Method: Buffer.from(array)
@@ -643,7 +643,7 @@ added: v5.10.0
 
 * `array` {integer[]}
 
-Allocates a new `Buffer` using an `array` of octets.
+Alloca un nuovo `Buffer` usando un `array` di octet.
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
