@@ -549,22 +549,22 @@ changes:
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valore di cui calcolare la lunghezza.
-* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`.
-* Returns: {integer} The number of bytes contained within `string`.
+* `encoding` {string} Se `string` è una stringa, questa è la sua codifica. **Default:** `'utf8'`.
+* Restituisce: {integer} Il numero di byte contenuti all'interno di una `string`.
 
-Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
+Restituisce la lunghezza effettiva del byte di una stringa. Questo non è uguale a [`String.prototype.length`] poiché restituisce il numero di *caratteri* in una stringa.
 
-For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+Per `'base64'` ed `'hex'`, questa funzione assume input validi. Per le stringhe che contengono dati con codifica diversa da Base64/Hex (es. whitespace), il valore restituito potrebbe essere maggiore della lunghezza di un `Buffer` creato dalla stringa.
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
 
 console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
-// Prints: ½ + ¼ = ¾: 9 characters, 12 bytes
+// Stampa: ½ + ¼ = ¾: 9 characters, 12 bytes
 ```
 
-When `string` is a `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], the actual byte length is returned.
+Quando `string` è un `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/[`SharedArrayBuffer`], viene restituita la lunghezza effettiva del byte.
 
 ### Class Method: Buffer.compare(buf1, buf2)
 
@@ -579,9 +579,9 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* Restituisce: {integer}
 
-Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
+Solitamente confronta `buf1` a `buf2` allo scopo di ordinare gli array delle istanze di `Buffer`. Equivale a chiamare [`buf1.compare(buf2)`][`buf.compare()`].
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -589,8 +589,8 @@ const buf2 = Buffer.from('0123');
 const arr = [buf1, buf2];
 
 console.log(arr.sort(Buffer.compare));
-// Prints: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
-// (This result is equal to: [buf2, buf1])
+// Stampa: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
+// (Questo risultato è uguale a: [buf2, buf1])
 ```
 
 ### Class Method: Buffer.concat(list[, totalLength])
