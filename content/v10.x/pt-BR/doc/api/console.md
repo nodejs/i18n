@@ -8,7 +8,7 @@ O módulo `console` fornece um console de depuração simples que é semelhante 
 
 O módulo exporta dois componentes específicos:
 
-* Uma classe de `Console` tem métodos como `console.log()`, `console.error()` e `console.warn()` que pode ser usado para gravar qualquer fluxo de Node. js.
+* Uma classe de `Console` tem métodos como `console.log()`, `console.error()` e `console.warn()` que pode ser usado para gravar qualquer fluxo de Node.js.
 * Uma instância global `console` configurada para gravar em [`process.stdout`] [] e [`process.stderr`] []. O global `console` pode ser usado sem a chamada `require('console')`.
 
 ***Aviso***: métodos do objeto global console nem assemelham-se consistentemente síncronos como o navegador APIs, nem consistentemente assíncronos como todos os outros fluxos de Node. js. Veja a nota no processo I / O </ 0> para Mais Informações.</p> 
