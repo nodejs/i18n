@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-> Stability: 1 - Experimental
+> Estabilidade: 1 - Experimental
 
 <!--name=esm-->
 
