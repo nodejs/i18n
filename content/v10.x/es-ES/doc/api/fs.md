@@ -1246,7 +1246,7 @@ Unlike the 16 kb default `highWaterMark` for a readable stream, the stream retur
 
 Si se especifica `fd`, `ReadStream` ignorará el argumento de `path` y utilizará el descriptor de archivo especificado. Esto significa que no se emitirán eventos `'open'` . Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-Si `autoClose` es falso, entonces el descriptor de archivo no se cerrará, incluso si hay un error. Es responsabilidad de la aplicación cerrarla y asegurarse que no hayan pérdidas del descriptor de archivo. Si `autoClose` se establece a verdadero (comportamiento predeterminado), en `'error'` ó `'end'` el descriptor de archivo se cerrará automáticamente.
+Si `autoClose` es falso, entonces el descriptor de archivo no se cerrará, incluso si hay un error. Es responsabilidad de la aplicación cerrarla y asegurarse de que no hayan pérdidas del descriptor de archivo. Si `autoClose` se establece a verdadero (comportamiento predeterminado), en `'error'` ó `'end'` el descriptor de archivo se cerrará automáticamente.
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
