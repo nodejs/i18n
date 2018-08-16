@@ -4,11 +4,11 @@
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node. js e C/C++.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node.js e C/C++.
 
 No momento, o método para a implementação de Addons é bastante complicado, envolvendo o conhecimento de vários componentes e APIs:
 
-* V8: biblioteca C++ node. js usada atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamar funções, etc. API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore de fonte do node. js), que também está disponível [on-line](https://v8docs.nodesource.com/).
+* V8: biblioteca C++ Node.js usada atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamar funções, etc. API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore de fonte do node. js), que também está disponível [on-line](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos de Node. js, seus threads de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração de plataforma cruzada, dando acesso fácil, POSIX, como em todos os principais sistemas operacionais para muitas tarefas comuns de sistema, tais como interagir com os sistema de arquivos, soquetes, temporizadores e sistema de eventos. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar mais sofisticados assíncrono Addons que precisam ir além do loop de eventos padrão. Addon autores são incentivados a pensar sobre como evitar o bloquear o ciclo de eventos com e/s ou outras tarefas demorada por off-loading trabalham através de libuv sem bloqueiar operações do sistema, threads de trabalho ou uma utilização personalizada dos segmentos do libuv.
 
