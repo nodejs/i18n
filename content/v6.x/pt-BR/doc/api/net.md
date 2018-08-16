@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 The `net` module provides you with an asynchronous network wrapper. It contains functions for creating both servers and clients (called streams). You can include this module with `require('net');`.
 
