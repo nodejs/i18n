@@ -1069,7 +1069,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Cambia de manera asincrónica el propietario y el grupo de un archivo. Ningún otro argumento que no sea una posible excepción es dado a la terminación del callback.
+Cambia de manera asincrónica el propietario y el grupo de un archivo. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 See also: chown(2).
 
@@ -1113,7 +1113,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous close(2). Ningún otro argumento que no sea una posible excepción es dado a la terminación del callback.
+Asynchronous close(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.closeSync(fd)
 
