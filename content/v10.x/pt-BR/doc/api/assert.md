@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
