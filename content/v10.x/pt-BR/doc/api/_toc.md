@@ -56,5 +56,5 @@
 
 <div class="line"></div>
 
-* [Github Repo & Rastreador de Problemas](https://github.com/nodejs/node)
+* [GitHub Repo & Rastreador de Problemas](https://github.com/nodejs/node)
 * [Lista de Mensagens](https://groups.google.com/group/nodejs)
