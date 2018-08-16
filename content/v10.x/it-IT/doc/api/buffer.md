@@ -1038,7 +1038,7 @@ changes:
 Riempie `buf` con il `value` specificato. Se `offset` ed `end` non vengono specificati, verrà riempito l'intero `buf`:
 
 ```js
-// Riempe un `Buffer` con un carattere ASCII 'h'.
+// Riempie un `Buffer` con un carattere ASCII 'h'.
 
 const b = Buffer.allocUnsafe(50).fill('h');
 
@@ -1048,26 +1048,26 @@ console.log(b.toString());
 
 `value` è forzatamente impostato ad un valore `uint32` se non è una stringa od un integer (intero).
 
-If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
+Se la scrittura finale di un'operazione `fill()` ricade su un carattere a più byte, vengono scritti solo i byte di quel carattere che si adattano a `buf`:
 
 ```js
-// Fill a `Buffer` with a two-byte character.
+// Riempie un `Buffer` con un carattere a due byte.
 
 console.log(Buffer.allocUnsafe(3).fill('\u0222'));
-// Prints: <Buffer c8 a2 c8>
+// Stampa: <Buffer c8 a2 c8>
 ```
 
-If `value` contains invalid characters, it is truncated; if no valid fill data remains, an exception is thrown:
+Se `value` contiene caratteri non validi, viene troncato; se non rimangono dati di riempimento validi, viene generata un'eccezione:
 
 ```js
 const buf = Buffer.allocUnsafe(5);
 
 console.log(buf.fill('a'));
-// Prints: <Buffer 61 61 61 61 61>
+// Stampa: <Buffer 61 61 61 61 61>
 console.log(buf.fill('aazz', 'hex'));
-// Prints: <Buffer aa aa aa aa aa>
+// Stampa: <Buffer aa aa aa aa aa>
 console.log(buf.fill('zz', 'hex'));
-// Throws an exception.
+// Genera un'eccezione.
 ```
 
 ### buf.includes(value\[, byteOffset\]\[, encoding\])
