@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
