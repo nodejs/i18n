@@ -424,11 +424,11 @@ changes:
                  zero-filled buffer.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
-* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`.
+* `size` {integer} La lunghezza desiderata del nuovo `Buffer`.
+* `fill` {string|Buffer|integer} Un valore con il quale precompilare il nuovo `Buffer`. **Default:** `0`.
+* `encoding` {string} Se `fill` è una stringa, questa è la sua codifica. **Default:** `'utf8'`.
 
-Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Alloca un nuovo `Buffer` di `size` byte. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
 ```js
 const buf = Buffer.alloc(5);
