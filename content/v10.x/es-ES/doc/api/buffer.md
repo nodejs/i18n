@@ -126,7 +126,7 @@ Las codificaciones de caracteres soportadas actualmente por Node.js incluyen:
 
 * `'hex'` - Codifica cada byte como dos caracteres hexadecimales.
 
-Los navegadores Web modernos siguen la [Codificación Estándar de WHATWG](https://encoding.spec.whatwg.org/) que distorsiona a `'latin1'` y de `'ISO-8859-1'` a `'win-1252'`. Esto significa que al hacer algo como `http.get()`, si el conjunto de caracteres devueltos es uno de los enumerados en las especificaciones de WHATWG es posible que el servidor realmente devolviera los datos codificados en `'win-1252'` y utilizar la codificación `'latin1'` puede decodificar incorrectamente los caracteres.
+Los navegadores Web modernos siguen la [Codificación Estándar de WHATWG](https://encoding.spec.whatwg.org/) que distorsiona a `'latin1'` y de `'ISO-8859-1'` a `'win-1252'`. Esto significa que al hacer algo como `http.get()`, si el conjunto de caracteres devueltos es uno de los enumerados en las especificaciones de WHATWG, es posible que el servidor realmente devolviera los datos codificados en `'win-1252'`, y utilizar la codificación `'latin1'` puede decodificar incorrectamente los caracteres.
 
 ## Buffers y TypedArray
 
