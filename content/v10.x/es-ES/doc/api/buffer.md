@@ -213,7 +213,7 @@ Adicionalmente, los métodos [`buf.values()`], [`buf.keys()`], y [`buf.entries()
 
 ## Clase: Buffer
 
-La clase `Buffer` es un tipo global para tratar con datos binarios directamente. Pueden construirse en una variedad de maneras.
+La clase `Buffer` es un tipo global para tratar con datos binarios directamente. Hay una variedad de maneras en las que puede ser construido.
 
 ### nuevo Buffer(array)
 
