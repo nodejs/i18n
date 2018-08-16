@@ -43,7 +43,7 @@ Estabilidade: 2 - Estável. A API foi aprovada. A compatibilidade com o ambiente
 added: v0.6.12
 -->
 
-> Stability: 1 - Experimental
+> Estabilidade: 1 - Experimental
 
 Todo documento `.html` tem um documento `.json` correspondente, que apresenta as mesmas informações de forma estruturada. Essa é uma feature experimental, adicionada para benefício de IDEs ou outras ferramentas utilitárias para quem deseja fazer coisas através da programação com essa documentação.
 
