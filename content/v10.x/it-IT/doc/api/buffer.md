@@ -604,17 +604,17 @@ changes:
     description: The elements of `list` can now be `Uint8Array`s.
 -->
 
-* `list` {Buffer[] | Uint8Array[]} List of `Buffer` or [`Uint8Array`] instances to concat.
-* `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Returns: {Buffer}
+* `list` {Buffer[] | Uint8Array[]} Elenco delle istanze di `Buffer` o di [`Uint8Array`] per cui eseguire il concat.
+* `totalLength` {integer} Lunghezza totale delle istanze di `Buffer` nella `list` quando vengono concatenate.
+* Restituisce: {Buffer}
 
-Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
+Restituisce un nuovo `Buffer` che è il risultato della concatenazione di tutte le istanze di `Buffer` nella `list`.
 
-If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
+Se l'elenco (list) non contiene elementi o se `totalLength` è 0, viene restituito un nuovo `Buffer` di lunghezza zero.
 
-If `totalLength` is not provided, it is calculated from the `Buffer` instances in `list`. This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
+Se `totalLength` non viene fornito, viene calcolato dalle istanze di `Buffer` nella `list`. Questo tuttavia causa l'esecuzione di un ciclo aggiuntivo per calcolare `totalLength`, quindi se la lunghezza è già nota è più rapido fornirla esplicitamente.
 
-If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+Se viene fornito `totalLength`, viene assegnato forzatamente ad un unsigned integer (intero senza segno). If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
 ```js
 // Create a single `Buffer` from a list of three `Buffer` instances.
