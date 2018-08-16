@@ -47,14 +47,14 @@ Poiché il comportamento di `new Buffer()` è diverso a seconda del tipo di prim
 
 Per rendere la creazione delle istanze di `Buffer` più affidabili e meno soggette ad errori, le varie forme del `new Buffer()` constructor sono state **deprecate** e sostituite dai metodi suddivisi `Buffer.from()`, [`Buffer.alloc()`], e [`Buffer.allocUnsafe()`].
 
-*Gli sviluppatori dovrebbero migrare tutti gli usi esistenti di `new Buffer()` su una di queste nuove API.*
+*Gli sviluppatori dovrebbero migrare tutti gli usi esistenti dei constructor `new Buffer()` su una di queste nuove API.*
 
 * [`Buffer.from(array)`] restituisce un nuovo `Buffer` che *contiene una copia* degli octet forniti.
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] restituisce un nuovo `Buffer` che *condivide la stessa memoria allocata* dell'[`ArrayBuffer`] specificato.
 * [`Buffer.from(buffer)`] restituisce un nuovo `Buffer` che *contiene una copia* dei contenuti del `Buffer` specificato.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] restituisce un nuovo `Buffer` che *contiene una copia* della stringa fornita.
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] restituisce un nuovo `Buffer` inizializzato della dimensione specificata. Questo metodo è più lento di [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] ma garantisce che le istanze `Buffer` appena create non contengano mai vecchi dati potenzialmente sensibili.
-* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] e [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] restituiscono ciascuno un nuovo `Buffer` non inizializzato del `size` specificato. Poiché il `Buffer` non è inizializzato, il segmento di memoria allocato potrebbe contenere vecchi dati potenzialmente sensibili.
+* [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] e [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] restituiscono ciascuno un nuovo `Buffer` non inizializzato della `size` specificata. Poiché il `Buffer` non è inizializzato, il segmento di memoria allocato potrebbe contenere vecchi dati potenzialmente sensibili.
 
 Le istanze di `Buffer` restituite da [`Buffer.allocUnsafe()`] *potrebbero* essere allocate su un pool di memoria interno condiviso se `size` è minore o uguale a metà di [`Buffer.poolSize`]. Le istanze restituite da [`Buffer.allocUnsafeSlow()`] non usano *mai* il pool di memoria interno condiviso.
 
@@ -78,7 +78,7 @@ Quando si chiamano [`Buffer.allocUnsafe()`] e [`Buffer.allocUnsafeSlow()`], il s
 
 Sebbene ci siano chiari vantaggi in termini di prestazioni nell'uso di [`Buffer.allocUnsafe()`], è *necessario* prestare particolare attenzione per evitare l'introduzione di possibili vulnerabilità di sicurezza all'interno di un'applicazione.
 
-## Buffer ed Codifica (Encoding) dei Caratteri
+## Buffer e Codifica (Encoding) dei Caratteri
 
 <!-- YAML
 changes:
@@ -119,7 +119,7 @@ Le codifiche dei caratteri attualmente supportate da Node.js includono:
 
 * `'base64'` - Codifica base64. Quando si crea un `Buffer` da una stringa, questa codifica accetterà anche correttamente "L'Alfabeto Sicuro per l'URL ed il Filename" come specificato in [RFC4648, Section 5](https://tools.ietf.org/html/rfc4648#section-5).
 
-* `'latin1'` - Un modo per codificare il `Buffer` in una stringa codificata ad un byte (come definito da IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), pagina 63, per essere il blocco di supplemento Latin-1 ed i codici di controllo C0/C1).
+* `'latin1'` - Un modo per codificare il `Buffer` in una stringa codificata ad un byte (definita da IANA in [RFC1345](https://tools.ietf.org/html/rfc1345), pagina 63, come il blocco di supplemento Latin-1 ed i codici di controllo C0/C1).
 
 * `'binary'` - Alias di `'latin1'`.
 
@@ -143,7 +143,7 @@ Le istanze di `Buffer` sono anche istanze di [`Uint8Array`]. Tuttavia, esistono 
 
 1. La memoria del `Buffer` object viene copiata su [`TypedArray`], non condivisa.
 
-2. La memoria del `Buffer` object viene interpretata come un array di elementi distinti e non come un byte array del tipo di target. Cioè, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un [`Uint32Array`] con 4 elementi quali `[1, 2, 3, 4]`, anziché un [`Uint32Array`] con un singolo elemento il quale può essere `[0x1020304]` oppure `[0x4030201]`.
+2. La memoria del `Buffer` object viene interpretata come un array di elementi distinti e non come un byte array di tipo specifico. Cioè, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` crea un [`Uint32Array`] con 4 elementi quali `[1, 2, 3, 4]`, anziché un [`Uint32Array`] con un singolo elemento il quale può essere `[0x1020304]` oppure `[0x4030201]`.
 
 È possibile creare un nuovo `Buffer` che condivide la stessa memoria allocata di un'istanza di [`TypedArray`] utilizzando la proprietà `.buffer` del `TypeArray` object.
 
@@ -358,7 +358,7 @@ changes:
 
 Alloca un nuovo `Buffer` di `size` byte. Se `size` è maggiore di [`buffer.constants.MAX_LENGTH`] o minore di 0, viene generato [`ERR_INVALID_OPT_VALUE`]. Viene creato un `Buffer` di lunghezza zero se `size` è 0.
 
-Prima di Node.js 8.0.0, la memoria sottostante per le istanze di `Buffer` create in questo modo *non era inizializzata*. I contenuti di un `Buffer` appena creato sono sconosciuti e *potrebbero contenere dati sensibili*. Utilizza [`Buffer.alloc(size)`][`Buffer.alloc()`] invece di inizializzare un `Buffer` con gli zeri.
+Prima di Node.js 8.0.0, la memoria sottostante per le istanze di `Buffer` create in questo modo *non era inizializzata*. I contenuti di un `Buffer` appena creato sono sconosciuti e *potrebbero contenere dati sensibili*. Utilizza invece [`Buffer.alloc(size)`][`Buffer.alloc()`] per inizializzare un `Buffer` con gli zeri.
 
 ```js
 const buf = new Buffer(10);
