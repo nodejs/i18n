@@ -359,7 +359,7 @@ changes:
 
 Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-Antes de Node.js 8.0.0, la memoria subyacente para las instancias de `Buffer` creadas de esta manera están *no inicializadas*. Los contenidos de un `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc(size)`][`Buffer.alloc()`] en lugar de inicializar un `Buffer` con ceros.
+Antes de Node.js 8.0.0, la memoria subyacente para las instancias de `Buffer` creadas de esta manera está *no inicializada*. Los contenidos de un `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc(size)`][`Buffer.alloc()`] en lugar de inicializar un `Buffer` con ceros.
 
 ```js
 const buf = new Buffer(10);
