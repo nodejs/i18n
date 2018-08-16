@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.9.12-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 <!-- type=misc -->
 
