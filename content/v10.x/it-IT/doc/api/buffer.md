@@ -818,7 +818,7 @@ L'operatore indice `[index]` può essere usato per ottenere ed impostare l'octet
 Quest'operatore è ereditato da `Uint8Array`, quindi il suo comportamento sull'accesso off-limits è uguale a quello di `UInt8Array` - cioè, ottiene dei return `undefined` e l'impostazione non esegue nulla.
 
 ```js
-// Copy an ASCII string into a `Buffer` one byte at a time.
+// Copia una stringa ASCII all'interno di un `Buffer` un byte alla volta.
 
 const str = 'Node.js';
 const buf = Buffer.allocUnsafe(str.length);
@@ -828,19 +828,19 @@ for (let i = 0; i < str.length; i++) {
 }
 
 console.log(buf.toString('ascii'));
-// Prints: Node.js
+// Stampa: Node.js
 ```
 
 ### buf.buffer
 
-* {ArrayBuffer} The underlying `ArrayBuffer` object based on which this `Buffer` object is created.
+* {ArrayBuffer} L'`ArrayBuffer` object sottostante in base al quale viene creato questo `Buffer` object.
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
 const buffer = Buffer.from(arrayBuffer);
 
 console.log(buffer.buffer === arrayBuffer);
-// Prints: true
+// Stampa: true
 ```
 
 ### buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])
@@ -857,16 +857,16 @@ changes:
     description: Additional parameters for specifying offsets are supported now.
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`.
-* `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`.
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`].
-* Returns: {integer}
+* `target` {Buffer|Uint8Array} Un `Buffer` oppure un [`Uint8Array`] con cui confrontare `buf`.
+* `targetStart` {integer} L'offset all'interno del `target` sul quale iniziare il confronto. **Default:** `0`.
+* `targetEnd` {integer} L'offset all'interno del `target` sul quale iniziare il confronto (non incluso). **Default:** `target.length`.
+* `sourceStart` {integer} L'offset all'interno di `buf` sul quale iniziare il confronto. **Default:** `0`.
+* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale iniziare il confronto (non incluso). **Default:** [`buf.length`].
+* Restituisce: {integer}
 
-Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+Confronta `buf` con `target` e restituisce un numero che indica se `buf` viene prima, dopo oppure se è uguale a `target` nella sequenza di ordinamento. Il confronto si basa sulla sequenza effettiva di byte in ciascun `Buffer`.
 
-* `0` is returned if `target` is the same as `buf`
+* Viene restituito `0` se `target` è uguale a `buf`
 * `1` is returned if `target` should come *before* `buf` when sorted.
 * `-1` is returned if `target` should come *after* `buf` when sorted.
 
