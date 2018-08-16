@@ -867,8 +867,8 @@ changes:
 Confronta `buf` con `target` e restituisce un numero che indica se `buf` viene prima, dopo oppure se è uguale a `target` nella sequenza di ordinamento. Il confronto si basa sulla sequenza effettiva di byte in ciascun `Buffer`.
 
 * Viene restituito `0` se `target` è uguale a `buf`
-* `1` is returned if `target` should come *before* `buf` when sorted.
-* `-1` is returned if `target` should come *after* `buf` when sorted.
+* Viene restituito `1` se `target` dovrebbe venire *prima* di `buf` quando viene ordinato.
+* Viene restituito `-1` se `target` dovrebbe venire *dopo* di `buf` quando viene ordinato.
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -876,35 +876,35 @@ const buf2 = Buffer.from('BCD');
 const buf3 = Buffer.from('ABCD');
 
 console.log(buf1.compare(buf1));
-// Prints: 0
+// Stampa: 0
 console.log(buf1.compare(buf2));
-// Prints: -1
+// Stampa: -1
 console.log(buf1.compare(buf3));
-// Prints: -1
+// Stampa: -1
 console.log(buf2.compare(buf1));
-// Prints: 1
+// Stampa: 1
 console.log(buf2.compare(buf3));
-// Prints: 1
+// Stampa: 1
 console.log([buf1, buf2, buf3].sort(Buffer.compare));
-// Prints: [ <Buffer 41 42 43>, <Buffer 41 42 43 44>, <Buffer 42 43 44> ]
-// (This result is equal to: [buf1, buf3, buf2])
+// Stampa: [ <Buffer 41 42 43>, <Buffer 41 42 43 44>, <Buffer 42 43 44> ]
+// (Questo risultato è uguale a: [buf1, buf3, buf2])
 ```
 
-The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
+Gli argomenti facoltativi `targetStart`, `targetEnd`, `sourceStart`, e `sourceEnd` possono essere utilizzati per limitare il confronto ad intervalli specifici rispettivamente all'interno di `target` e `buf`.
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 const buf2 = Buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
 
 console.log(buf1.compare(buf2, 5, 9, 0, 4));
-// Prints: 0
+// Stampa: 0
 console.log(buf1.compare(buf2, 0, 6, 4));
-// Prints: -1
+// Stampa: -1
 console.log(buf1.compare(buf2, 5, 6, 5));
-// Prints: 1
+// Stampa: 1
 ```
 
-[`ERR_INDEX_OUT_OF_RANGE`] is thrown if `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength`, or `sourceEnd > source.byteLength`.
+Viene generato [`ERR_INDEX_OUT_OF_RANGE`] se `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength`, oppure `sourceEnd > source.byteLength`.
 
 ### buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])
 
