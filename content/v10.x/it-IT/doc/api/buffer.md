@@ -859,9 +859,9 @@ changes:
 
 * `target` {Buffer|Uint8Array} Un `Buffer` oppure un [`Uint8Array`] con cui confrontare `buf`.
 * `targetStart` {integer} L'offset all'interno del `target` sul quale iniziare il confronto. **Default:** `0`.
-* `targetEnd` {integer} L'offset all'interno del `target` sul quale iniziare il confronto (non incluso). **Default:** `target.length`.
+* `targetEnd` {integer} L'offset all'interno del `target` sul quale finire il confronto (non incluso). **Default:** `target.length`.
 * `sourceStart` {integer} L'offset all'interno di `buf` sul quale iniziare il confronto. **Default:** `0`.
-* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale iniziare il confronto (non incluso). **Default:** [`buf.length`].
+* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale finire il confronto (non incluso). **Default:** [`buf.length`].
 * Restituisce: {integer}
 
 Confronta `buf` con `target` e restituisce un numero che indica se `buf` viene prima, dopo oppure se è uguale a `target` nella sequenza di ordinamento. Il confronto si basa sulla sequenza effettiva di byte in ciascun `Buffer`.
@@ -912,34 +912,33 @@ Viene generato [`ERR_INDEX_OUT_OF_RANGE`] se `targetStart < 0`, `sourceStart < 0
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
-* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`].
-* Returns: {integer} The number of bytes copied.
+* `target` {Buffer|Uint8Array} Un `Buffer` od un [`Uint8Array`] da cui copiare.
+* `targetStart` {integer} L'offset all'interno del `target` sul quale iniziare a scrivere. **Default:** `0`.
+* `sourceStart` {integer} L'offset all'interno di `buf` dal quale iniziare a copiare. **Default:** `0`.
+* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale finire di copiare (non incluso). **Default:** [`buf.length`].
+* Restituisce: {integer} Il numero di byte copiati.
 
-Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+Copia i dati da un'area di `buf` ad un'area in `target` anche se l'area di memoria `target` si sovrappone a `buf`.
 
 ```js
-// Create two `Buffer` instances.
+// Crea due istanze `Buffer`.
 const buf1 = Buffer.allocUnsafe(26);
 const buf2 = Buffer.allocUnsafe(26).fill('!');
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 è il valore ASCII decimale per 'a'
   buf1[i] = i + 97;
 }
 
-// Copy `buf1` bytes 16 through 19 into `buf2` starting at byte 8 of `buf2`
+// Copia i byte `buf1` da 16 a 19 in` buf2` a partire dal byte 8 di `buf2`
 buf1.copy(buf2, 8, 16, 20);
 
 console.log(buf2.toString('ascii', 0, 25));
-// Prints: !!!!!!!!qrst!!!!!!!!!!!!!
+// Stampa: !!!!!!!!qrst!!!!!!!!!!!!!
 ```
 
 ```js
-// Create a `Buffer` and copy data from one region to an overlapping region
-// within the same `Buffer`.
+// Crea un `Buffer` e copia i dati da un'area in un'altra area sovrapposta all'interno dello stesso `Buffer`.
 
 const buf = Buffer.allocUnsafe(26);
 
