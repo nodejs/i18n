@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidade: 2 - Estável
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
