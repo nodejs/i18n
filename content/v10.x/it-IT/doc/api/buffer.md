@@ -750,18 +750,18 @@ Verrà generato un `TypeError` se `string` non è una stringa.
 added: v8.2.0
 -->
 
-* `object` {Object} An object supporting `Symbol.toPrimitive` or `valueOf()`
-* `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
-* `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
+* `object` {Object} Un object che supporta `Symbol.toPrimitive` oppure `valueOf()`
+* `offsetOrEncoding` {number|string} Un byte-offset od una codifica, a seconda del valore restituito da `object.valueOf()` oppure da `object[Symbol.toPrimitive]()`.
+* `length` {number} Una lunghezza, a seconda del valore restituito da `object.valueOf()` oppure da `object[Symbol.toPrimitive]()`.
 
-For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
+Per gli object la cui funzione `valueOf()` restituisce un valore non strettamente uguale ad `object`, restituisce `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
 
 ```js
 const buf = Buffer.from(new String('this is a test'));
-// Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
+// Stampa: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-For objects that support `Symbol.toPrimitive`, returns `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
+Per gli object che supportano `Symbol.toPrimitive`, restituisce `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
 
 ```js
 class Foo {
@@ -771,7 +771,7 @@ class Foo {
 }
 
 const buf = Buffer.from(new Foo(), 'utf8');
-// Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
+// Stampa: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
 ### Class Method: Buffer.isBuffer(obj)
@@ -781,7 +781,7 @@ added: v0.1.101
 -->
 
 * `obj` {Object}
-* Returns: {boolean}
+* Restituisce: {boolean}
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
