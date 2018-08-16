@@ -448,18 +448,18 @@ console.log(buf);
 // Stampa: <Buffer 61 61 61 61 61>
 ```
 
-If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
+Se sono specificati sia `fill` che `encoding`, il `Buffer` allocato verrà inizializzato chiamando [`buf.fill(fill, encoding)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 
 console.log(buf);
-// Prints: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
+// Stampa: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
 ```
 
-Calling [`Buffer.alloc()`] can be significantly slower than the alternative [`Buffer.allocUnsafe()`] but ensures that the newly created `Buffer` instance contents will *never contain sensitive data*.
+Chiamare [`Buffer.alloc()`] può essere molto più lento dell'alternativa di chiamare [`Buffer.allocUnsafe()`] ma assicura che i contenuti dell'istanza di `Buffer` appena creata *non contengono mai dati sensibili*.
 
-A `TypeError` will be thrown if `size` is not a number.
+Verrà generato un `TypeError` se `size` non è un numero.
 
 ### Class Method: Buffer.allocUnsafe(size)
 
@@ -472,11 +472,11 @@ changes:
     description: Passing a negative `size` will now throw an error.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La lunghezza desiderata del nuovo `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. Se `size` è maggiore di [`buffer.constants.MAX_LENGTH`] o minore di 0, viene generato [`ERR_INVALID_OPT_VALUE`]. Viene creato un `Buffer` di lunghezza zero se `size` è 0.
+Alloca un nuovo `Buffer` di `size` byte. Se `size` è maggiore di [`buffer.constants.MAX_LENGTH`] o minore di 0, viene generato [`ERR_INVALID_OPT_VALUE`]. Viene creato un `Buffer` di lunghezza zero se `size` è 0.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances with zeroes.
+La memoria sottostante per le istanze di `Buffer` create in questo modo *non è inizializzata*. I contenuti del `Buffer` appena creato sono sconosciuti e *potrebbero contenere dati sensibili*. Utilizza [`Buffer.alloc()`] per inizializzare istanze di `Buffer` con gli zeri.
 
 ```js
 const buf = Buffer.allocUnsafe(10);
