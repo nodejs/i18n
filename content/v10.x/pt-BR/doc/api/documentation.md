@@ -51,6 +51,6 @@ Todo documento `.html` tem um documento `.json` correspondente, que apresenta as
 
 Chamadas de sistema (system calls) como open(2) e read(2) definem a interface de uso entre programas de usuário e o sistema operacional subjacente. Funções Node.js que somente envolvem uma syscall, como [`fs.open()`][], vão documentar isso. O link do documento para sua página correspondente no manual (abreviação de man pages) que descreve como a chamada de sistema funciona.
 
-Algumas chamadas de sistema, como lchown(2), são específicas do BSD. Isso significa que, por exemplo, [`fs.lchown()`][] só funciona no macOS e oustros sistemas BSD semelhantes, e não está disponível no Linux.
+Algumas chamadas de sistema, como lchown(2), são específicas do BSD. Isso significa que, por exemplo, [`fs.lchown()`][] só funciona no macOS e outros sistemas BSD semelhantes, e não está disponível no Linux.
 
-Muitas chamadas de sistema Unix possuem equivalentes no Windows, mas o comportamento pode ser diferente no Windows em relação a Lunix e macOS. Um exemplo dessas sutilezas é que às vezes é impossível substituir no Windows uma chamada de sistema Unix, veja [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+Muitas chamadas de sistema Unix possuem equivalentes no Windows, mas o comportamento pode ser diferente no Windows em relação a Linux e macOS. Um exemplo dessas sutilezas é que às vezes é impossível substituir no Windows uma chamada de sistema Unix, veja [Node issue 4760](https://github.com/nodejs/node/issues/4760).
