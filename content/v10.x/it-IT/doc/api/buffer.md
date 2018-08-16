@@ -943,14 +943,14 @@ console.log(buf2.toString('ascii', 0, 25));
 const buf = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 è il valore ASCII decimale per 'a'
   buf[i] = i + 97;
 }
 
 buf.copy(buf, 0, 4, 10);
 
 console.log(buf.toString());
-// Prints: efghijghijklmnopqrstuvwxyz
+// Stampa: efghijghijklmnopqrstuvwxyz
 ```
 
 ### buf.entries()
@@ -959,19 +959,19 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Restituisce: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
+Crea e restituisce un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) di coppie `[index, byte]` dal contenuto di `buf`.
 
 ```js
-// Log the entire contents of a `Buffer`.
+// Registra l'intero contenuto di un `Buffer`.
 
 const buf = Buffer.from('buffer');
 
 for (const pair of buf.entries()) {
   console.log(pair);
 }
-// Prints:
+// Stampa:
 //   [0, 98]
 //   [1, 117]
 //   [2, 102]
@@ -991,10 +991,10 @@ changes:
     description: The arguments can now be `Uint8Array`s.
 -->
 
-* `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* Returns: {boolean}
+* `otherBuffer` {Buffer} Un `Buffer` oppure un [`Uint8Array`] con cui confrontare `buf`.
+* Restituisce: {boolean}
 
-Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
+Restituisce `true` se sia `buf` che `otherBuffer` hanno esattamente gli stessi byte, in caso contrario `false`.
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1002,9 +1002,9 @@ const buf2 = Buffer.from('414243', 'hex');
 const buf3 = Buffer.from('ABCD');
 
 console.log(buf1.equals(buf2));
-// Prints: true
+// Stampa: true
 console.log(buf1.equals(buf3));
-// Prints: false
+// Stampa: false
 ```
 
 ### buf.fill(value\[, offset[, end]\]\[, encoding\])
@@ -1029,24 +1029,24 @@ changes:
     description: The `encoding` parameter is supported now.
 -->
 
-* `value` {string|Buffer|integer} The value with which to fill `buf`.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
-* `encoding` {string} The encoding for `value` if `value` is a string. **Default:** `'utf8'`.
-* Returns: {Buffer} A reference to `buf`.
+* `value` {string|Buffer|integer} Il valore con cui riempire `buf`.
+* `offset` {integer} Numero di byte da saltare prima di iniziare a riempire `buf`. **Default:** `0`.
+* `end` {integer} Dove smettere di riempire `buf` (non incluso). **Default:** [`buf.length`].
+* `encoding` {string} La codifica per `value` se `value` è una stringa. **Default:** `'utf8'`.
+* Restituisce: {Buffer} Un riferimento a `buf`.
 
-Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled:
+Riempie `buf` con il `value` specificato. Se `offset` ed `end` non vengono specificati, verrà riempito l'intero `buf`:
 
 ```js
-// Fill a `Buffer` with the ASCII character 'h'.
+// Riempe un `Buffer` con un carattere ASCII 'h'.
 
 const b = Buffer.allocUnsafe(50).fill('h');
 
 console.log(b.toString());
-// Prints: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+// Stampa: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
-`value` is coerced to a `uint32` value if it is not a string or integer.
+`value` è forzatamente impostato ad un valore `uint32` se non è una stringa od un integer (intero).
 
 If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
 
