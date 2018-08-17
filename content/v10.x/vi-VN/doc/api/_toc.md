@@ -37,7 +37,7 @@
 * [Đường dẫn](path.html)
 * [Hiệu suất](perf_hooks.html)
 * [Tiến trình](process.html)
-* [Punycode](punycode.html)
+* [Ký tự Punnycode](punycode.html)
 * [Chuỗi truy vấn](querystring.html)
 * [Readline](readline.html)
 * [REPL](repl.html)
