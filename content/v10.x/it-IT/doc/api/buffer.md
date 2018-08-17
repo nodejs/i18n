@@ -1490,19 +1490,19 @@ changes:
 * `byteLength` {integer} Numero di byte da leggere. Deve soddisfare `0 < byteLength <= 6`.
 * Restituisce: {integer}
 
-Legge il numero di byte di `byteLength` da `buf` all'`offset` specificato ed interpreta il risultato come valore signed a complemento a due. Supports up to 48 bits of accuracy.
+Legge il numero di byte di `byteLength` da `buf` all'`offset` specificato ed interpreta il risultato come valore signed a complemento a due. Supporta fino a 48 bit di accuracy (precisione).
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 
 console.log(buf.readIntLE(0, 6).toString(16));
-// Prints: -546f87a9cbee
+// Stampa: -546f87a9cbee
 console.log(buf.readIntBE(0, 6).toString(16));
-// Prints: 1234567890ab
+// Stampa: 1234567890ab
 console.log(buf.readIntBE(1, 6).toString(16));
-// Throws ERR_INDEX_OUT_OF_RANGE
+// Genera ERR_INDEX_OUT_OF_RANGE
 console.log(buf.readIntBE(1, 0).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUInt8(offset)
@@ -1517,20 +1517,20 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 1`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 1`.
+* Restituisce: {integer}
 
-Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
+Legge un unsigned integer a 8 bit da `buf` all'`offset` specificato.
 
 ```js
 const buf = Buffer.from([1, -2]);
 
 console.log(buf.readUInt8(0));
-// Prints: 1
+// Stampa: 1
 console.log(buf.readUInt8(1));
-// Prints: 254
+// Stampa: 254
 console.log(buf.readUInt8(2));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUInt16BE(offset)
@@ -1547,24 +1547,24 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 2`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 2`.
+* Restituisce: {integer}
 
-Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
+Legge un unsigned integer a 16 bit da `buf` all'`offset` specificato con un formato endian specificato (`readUInt16BE()` restituisce big endian, `readUInt16LE()` restituisce little endian).
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56]);
 
 console.log(buf.readUInt16BE(0).toString(16));
-// Prints: 1234
+// Stampa: 1234
 console.log(buf.readUInt16LE(0).toString(16));
-// Prints: 3412
+// Stampa: 3412
 console.log(buf.readUInt16BE(1).toString(16));
-// Prints: 3456
+// Stampa: 3456
 console.log(buf.readUInt16LE(1).toString(16));
-// Prints: 5634
+// Stampa: 5634
 console.log(buf.readUInt16LE(2).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUInt32BE(offset)
@@ -1581,20 +1581,20 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 4`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 4`.
+* Restituisce: {integer}
 
-Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
+Legge un unsigned integer a 32 bit da `buf` all'`offset` specificato con un formato endian specificato (`readUInt32BE()` restituisce big endian, `readUInt32LE()` restituisce little endian).
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
 
 console.log(buf.readUInt32BE(0).toString(16));
-// Prints: 12345678
+// Stampa: 12345678
 console.log(buf.readUInt32LE(0).toString(16));
-// Prints: 78563412
+// Stampa: 78563412
 console.log(buf.readUInt32LE(1).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUIntBE(offset, byteLength)
@@ -1611,21 +1611,21 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Deve soddisfare `0 < byteLength <= 6`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Numero di byte da leggere. Deve soddisfare `0 < byteLength <= 6`.
+* Restituisce: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
+Legge il numero di byte di `byteLength` da `buf` all'`offset` specificato ed interpreta il risultato come un unsigned integer. Supporta fino a 48 bit di accuracy (precisione).
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 
 console.log(buf.readUIntBE(0, 6).toString(16));
-// Prints: 1234567890ab
+// Stampa: 1234567890ab
 console.log(buf.readUIntLE(0, 6).toString(16));
-// Prints: ab9078563412
+// Stampa: ab9078563412
 console.log(buf.readUIntBE(1, 6).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.slice([start[, end]])
@@ -1644,9 +1644,9 @@ changes:
                  calculations with them.
 -->
 
-* `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
-* Returns: {Buffer}
+* `start` {integer} Dove inizierà il nuovo `Buffer`. **Default:** `0`.
+* `end` {integer} Dove terminerà il nuovo `Buffer` (non incluso). **Default:** [`buf.length`].
+* Restituisce: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
