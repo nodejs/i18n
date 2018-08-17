@@ -1985,9 +1985,9 @@ changes:
 * `offset` {integer} Numero di byte da saltare prima di iniziare a scrivere. Deve soddisfare `0 <= offset <= buf.length - 1`.
 * Restituisce: {integer} `offset` più il numero di byte scritti.
 
-Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
+Scrive `value` da `buf` all'`offset` specificato. `value` *dovrebbe* essere un signed integer (numero intero con segno) a 8 bit valido. Il comportamento è undefined (indefinito) quando `value` è diverso da un signed integer (numero intero con segno) a 8 bit.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` è interpretato e scritto come signed integer di un complemento di due.
 
 ```js
 const buf = Buffer.allocUnsafe(2);
@@ -1996,7 +1996,7 @@ buf.writeInt8(2, 0);
 buf.writeInt8(-2, 1);
 
 console.log(buf);
-// Prints: <Buffer 02 fe>
+// Stampa: <Buffer 02 fe>
 ```
 
 ### buf.writeInt16BE(value, offset)
@@ -2013,13 +2013,13 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 2`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {integer} Numero da scrivere su `buf`.
+* `offset` {integer} Numero di byte da saltare prima di iniziare a scrivere. Deve soddisfare `0 <= offset <= buf.length - 2`.
+* Restituisce: {integer} `offset` più il numero di byte scritti.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
+Scrive `value` da `buf` all'`offset` specificato con il formato endian specificato (`writeInt16BE()` scrive big endian, `writeInt16LE()` scrive little endian). `value` *dovrebbe* essere un signed integer (numero intero con segno) a 16 bit valido. Il comportamento è undefined (indefinito) quando `value` è diverso da un signed integer (numero intero con segno) a 16 bit.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` è interpretato e scritto come signed integer di un complemento di due.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2028,7 +2028,7 @@ buf.writeInt16BE(0x0102, 0);
 buf.writeInt16LE(0x0304, 2);
 
 console.log(buf);
-// Prints: <Buffer 01 02 04 03>
+// Stampa: <Buffer 01 02 04 03>
 ```
 
 ### buf.writeInt32BE(value, offset)
@@ -2045,13 +2045,13 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 4`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {integer} Numero da scrivere su `buf`.
+* `offset` {integer} Numero di byte da saltare prima di iniziare a scrivere. Deve soddisfare `0 <= offset <= buf.length - 4`.
+* Restituisce: {integer} `offset` più il numero di byte scritti.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
+Scrive `value` da `buf` all'`offset` specificato con il formato endian specificato (`writeInt32BE()` scrive big endian, `writeInt32LE()` scrive little endian). `value` *dovrebbe* essere un signed integer (numero intero con segno) a 32 bit valido. Il comportamento è undefined (indefinito) quando `value` è diverso da un signed integer (numero intero con segno) a 32 bit.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` è interpretato e scritto come signed integer di un complemento di due.
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -2060,7 +2060,7 @@ buf.writeInt32BE(0x01020304, 0);
 buf.writeInt32LE(0x05060708, 4);
 
 console.log(buf);
-// Prints: <Buffer 01 02 03 04 08 07 06 05>
+// Stampa: <Buffer 01 02 03 04 08 07 06 05>
 ```
 
 ### buf.writeIntBE(value, offset, byteLength)
@@ -2077,12 +2077,12 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Deve soddisfare `0 < byteLength <= 6`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {integer} Numero da scrivere su `buf`.
+* `offset` {integer} Numero di byte da saltare prima di iniziare a scrivere. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Numero di byte da scrivere. Deve soddisfare `0 < byteLength <= 6`.
+* Restituisce: {integer} `offset` più il numero di byte scritti.
 
-Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
+Scrive `byteLength` byte di `value` da `buf` all'`offset` specificato. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
 
 ```js
 const buf = Buffer.allocUnsafe(6);
