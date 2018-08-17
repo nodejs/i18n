@@ -1124,37 +1124,37 @@ changes:
 
 Se `value` è:
 
-* a string, `value` is interpreted according to the character encoding in `encoding`.
-* a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
-* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
+* una stringa, `value` viene interpretato in base alla codifica dei caratteri in `encoding`.
+* un `Buffer` oppure un [`Uint8Array`], `value` sarà usato nella sua interezza. Per confrontare un `Buffer` parziale, utilizza [`buf.slice()`].
+* un numero, `value` verrà interpretato come un valore unsigned integer a 8 bit (intero senza segno) tra `0` e `255`.
 
 ```js
 const buf = Buffer.from('this is a buffer');
 
 console.log(buf.indexOf('this'));
-// Prints: 0
+// Stampa: 0
 console.log(buf.indexOf('is'));
-// Prints: 2
+// Stampa: 2
 console.log(buf.indexOf(Buffer.from('a buffer')));
-// Prints: 8
+// Stampa: 8
 console.log(buf.indexOf(97));
-// Prints: 8 (97 is the decimal ASCII value for 'a')
+// Stampa: 8 (97 is the decimal ASCII value for 'a')
 console.log(buf.indexOf(Buffer.from('a buffer example')));
-// Prints: -1
+// Stampa: -1
 console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
-// Prints: 8
+// Stampa: 8
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.indexOf('\u03a3', 0, 'utf16le'));
-// Prints: 4
+// Stampa: 4
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
-// Prints: 6
+// Stampa: 6
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+Se `value` non è una stringa, un numero oppure un `Buffer`, questo metodo genererà un `TypeError`. Se `value` è un numero, verrà forzato ad un valore in byte valido, un integer (numero intero) compreso tra 0 e 255.
 
-If `byteOffset` is not a number, it will be coerced to a number. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
+Se `byteOffset` non è un numero, sarà forzato ad un numero. Se il risultato della coercizione è `NaN` oppure `0`, allora verrà cercato l'intero buffer. Questo comportamento corrisponde a [`String#indexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
