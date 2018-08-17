@@ -405,7 +405,7 @@ console.log(buf1.toString('ascii'));
 // Prints: this is a tC)st
 ```
 
-### Class Method: Buffer.alloc(size[, fill[, encoding]])
+### Método de Clase: Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
@@ -425,11 +425,11 @@ changes:
                  zero-filled buffer.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
-* `encoding` {string} If `fill` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
+* `fill` {string|Buffer|integer} Un valor con el que llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`.
+* `encoding` {string} Si `fill` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
 
-Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Asigna un nuevo `Buffer` de bytes de `size`. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
 ```js
 const buf = Buffer.alloc(5);
