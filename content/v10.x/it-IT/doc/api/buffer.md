@@ -1335,17 +1335,17 @@ changes:
 * `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 8`.
 * Restituisce: {number}
 
-Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
+Legge un double a 64 bit da `buf` all'`offset` specificato con il formato endian specificato (`readDoubleBE()` restituisce big endian, `readDoubleLE()` restituisce little endian).
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
 
 console.log(buf.readDoubleBE(0));
-// Prints: 8.20788039913184e-304
+// Stampa: 8.20788039913184e-304
 console.log(buf.readDoubleLE(0));
-// Prints: 5.447603722011605e-270
+// Stampa: 5.447603722011605e-270
 console.log(buf.readDoubleLE(1));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readFloatBE(offset)
@@ -1362,20 +1362,20 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
-* Returns: {number}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 4`.
+* Restituisce: {number}
 
-Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
+Legge un float a 32 bit da `buf` all'`offset` specificato con il formato endian specificato (`readFloatBE()` restituisce big endian, `readFloatLE()` restituisce little endian).
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4]);
 
 console.log(buf.readFloatBE(0));
-// Prints: 2.387939260590663e-38
+// Stampa: 2.387939260590663e-38
 console.log(buf.readFloatLE(0));
-// Prints: 1.539989614439558e-36
+// Stampa: 1.539989614439558e-36
 console.log(buf.readFloatLE(1));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readInt8(offset)
@@ -1390,22 +1390,22 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 1`.
+* Restituisce: {integer}
 
-Reads a signed 8-bit integer from `buf` at the specified `offset`.
+Legge un signed integer (numero intero con segno) a 8 bit da `buf` all'`offset` specificato.
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Gli integer (numeri interi) letti da un `Buffer` sono interpretati come valori signed a complemento di due.
 
 ```js
 const buf = Buffer.from([-1, 5]);
 
 console.log(buf.readInt8(0));
-// Prints: -1
+// Stampa: -1
 console.log(buf.readInt8(1));
-// Prints: 5
+// Stampa: 5
 console.log(buf.readInt8(2));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readInt16BE(offset)
@@ -1422,8 +1422,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 2`.
+* Restituisce: {integer}
 
 Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
 
@@ -1454,7 +1454,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 4`.
 * Returns: {integer}
 
 Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
@@ -1517,7 +1517,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 1`.
 * Returns: {integer}
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
@@ -1547,7 +1547,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 2`.
 * Returns: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
@@ -1581,7 +1581,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 4`.
 * Returns: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
@@ -1950,7 +1950,7 @@ changes:
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 4`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
@@ -1982,7 +1982,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 1`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
@@ -2014,7 +2014,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 2`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
@@ -2046,7 +2046,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 4`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
@@ -2111,7 +2111,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 1`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
@@ -2143,7 +2143,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 2`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
@@ -2179,7 +2179,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 4`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
