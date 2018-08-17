@@ -794,7 +794,7 @@ added: v0.9.1
 * `encoding` {string} Un nome di una codifica di caratteri da verificare.
 * Restituisce: {boolean}
 
-Restituisce `true` se l'`encoding` contiene una codifica di caratteri supportata od in caso contrario `false`.
+Restituisce `true` se l'`encoding` contiene una codifica di caratteri supportata o in caso contrario `false`.
 
 ### Class Property: Buffer.poolSize
 
@@ -859,9 +859,9 @@ changes:
 
 * `target` {Buffer|Uint8Array} Un `Buffer` oppure un [`Uint8Array`] con cui confrontare `buf`.
 * `targetStart` {integer} L'offset all'interno del `target` sul quale iniziare il confronto. **Default:** `0`.
-* `targetEnd` {integer} L'offset all'interno del `target` sul quale finire il confronto (non incluso). **Default:** `target.length`.
+* `targetEnd` {integer} L'offset all'interno del `target` sul quale finire il confronto (non inclusivo). **Default:** `target.length`.
 * `sourceStart` {integer} L'offset all'interno di `buf` sul quale iniziare il confronto. **Default:** `0`.
-* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale finire il confronto (non incluso). **Default:** [`buf.length`].
+* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale finire il confronto (non inclusivo). **Default:** [`buf.length`].
 * Restituisce: {integer}
 
 Confronta `buf` con `target` e restituisce un numero che indica se `buf` viene prima, dopo oppure se è uguale a `target` nella sequenza di ordinamento. Il confronto si basa sulla sequenza effettiva di byte in ciascun `Buffer`.
@@ -912,10 +912,10 @@ Viene generato [`ERR_INDEX_OUT_OF_RANGE`] se `targetStart < 0`, `sourceStart < 0
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} Un `Buffer` od un [`Uint8Array`] da cui copiare.
+* `target` {Buffer|Uint8Array} Un `Buffer` od un [`Uint8Array`] su cui copiare.
 * `targetStart` {integer} L'offset all'interno del `target` sul quale iniziare a scrivere. **Default:** `0`.
 * `sourceStart` {integer} L'offset all'interno di `buf` dal quale iniziare a copiare. **Default:** `0`.
-* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale finire di copiare (non incluso). **Default:** [`buf.length`].
+* `sourceEnd` {integer} L'offset all'interno di `buf` sul quale finire di copiare (non inclusivo). **Default:** [`buf.length`].
 * Restituisce: {integer} Il numero di byte copiati.
 
 Copia i dati da un'area di `buf` ad un'area in `target` anche se l'area di memoria `target` si sovrappone a `buf`.
@@ -1046,7 +1046,7 @@ console.log(b.toString());
 // Stampa: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
-`value` è forzatamente impostato ad un valore `uint32` se non è una stringa od un integer (intero).
+`value` è forzatamente impostato ad un valore `uint32` se non è una stringa o un integer (intero).
 
 Se la scrittura finale di un'operazione `fill()` ricade su un carattere a più byte, vengono scritti solo i byte di quel carattere che si adattano a `buf`:
 
