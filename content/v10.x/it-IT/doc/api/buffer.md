@@ -1756,26 +1756,26 @@ added: v6.3.0
 
 * Restituisce: {Buffer} Un riferimento a `buf`.
 
-Interprets `buf` as an array of 64-bit numbers and swaps byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 8.
+Interpreta `buf` come un array di numeri a 64 bit e scambia l'ordine dei byte *in-place* (sul posto). Genera [`ERR_INVALID_BUFFER_SIZE`] se [`buf.length`] non è un multiplo di 8.
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
 console.log(buf1);
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Stampa: <Buffer 01 02 03 04 05 06 07 08>
 
 buf1.swap64();
 
 console.log(buf1);
-// Prints: <Buffer 08 07 06 05 04 03 02 01>
+// Stampa: <Buffer 08 07 06 05 04 03 02 01>
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 buf2.swap64();
-// Throws ERR_INVALID_BUFFER_SIZE
+// Genera ERR_INVALID_BUFFER_SIZE
 ```
 
-Note that JavaScript cannot encode 64-bit integers. This method is intended for working with 64-bit floats.
+Da notare che JavaScript non può codificare degli integer (numeri interi) a 64 bit. Questo metodo è pensato per lavorare con i float a 64 bit.
 
 ### buf.toJSON()
 
@@ -1783,16 +1783,16 @@ Note that JavaScript cannot encode 64-bit integers. This method is intended for 
 added: v0.9.2
 -->
 
-* Returns: {Object}
+* Restituisce: {Object}
 
-Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
+Restituisce una rappresentazione JSON di `buf`. [`JSON.stringify()`] chiama implicitamente questa funzione quando trasforma un'istanza di `Buffer` in una stringa.
 
 ```js
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
 const json = JSON.stringify(buf);
 
 console.log(json);
-// Prints: {"type":"Buffer","data":[1,2,3,4,5]}
+// Stampa: {"type":"Buffer","data":[1,2,3,4,5]}
 
 const copy = JSON.parse(json, (key, value) => {
   return value && value.type === 'Buffer' ?
@@ -1801,7 +1801,7 @@ const copy = JSON.parse(json, (key, value) => {
 });
 
 console.log(copy);
-// Prints: <Buffer 01 02 03 04 05>
+// Stampa: <Buffer 01 02 03 04 05>
 ```
 
 ### buf.toString([encoding[, start[, end]]])
@@ -1810,12 +1810,12 @@ console.log(copy);
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
-* `start` {integer} The byte offset to start decoding at. **Default:** `0`.
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
-* Returns: {string}
+* `encoding` {string} La codifica dei caratteri da utilizzare. **Default:** `'utf8'`.
+* `start` {integer} Il byte offset da cui iniziare la decodifica. **Default:** `0`.
+* `end` {integer} Il byte offset a cui concludere la decodifica (non incluso). **Default:** [`buf.length`].
+* Restituisce: {string}
 
-Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
+Decodifica `buf` in una stringa in base alla codifica dei caratteri specificata in `encoding`. `start` ed `end` possono essere passati per decodificare solo un sottoinsieme di `buf`.
 
 The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
 
