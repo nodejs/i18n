@@ -1076,7 +1076,7 @@ console.log(buf.fill('zz', 'hex'));
 added: v5.3.0
 -->
 
-* `value` {string|Buffer|integer} Cosa cercare.
+* `value` {string|Buffer|integer} Su cosa eseguire la ricerca.
 * `byteOffset` {integer} Dove iniziare la ricerca in `buf`. **Default:** `0`.
 * `encoding` {string} Se `value` è una stringa, questa è la sua codifica. **Default:** `'utf8'`.
 * Restituisce: {boolean} `true` se `value` è stato trovato in `buf`, in caso contrario `false`.
@@ -1117,9 +1117,9 @@ changes:
                  is no longer required.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} Cosa cercare.
+* `value` {string|Buffer|Uint8Array|integer} Su cosa eseguire la ricerca.
 * `byteOffset` {integer} Dove iniziare la ricerca in `buf`. **Default:** `0`.
-* `encoding` {string} Se `value` è una stringa, questa è la codifica utilizzata per determinare la rappresentazione binaria della stringa che verrà cercata in `buf`. **Default:** `'utf8'`.
+* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
 * Restituisce: {integer} L'indice della prima apparizione di `value` in `buf`, oppure `-1` se `buf` non contiene `value`.
 
 Se `value` è:
@@ -1154,7 +1154,7 @@ console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
 
 Se `value` non è una stringa, un numero oppure un `Buffer`, questo metodo genererà un `TypeError`. Se `value` è un numero, verrà forzato ad un valore in byte valido, un integer (numero intero) compreso tra 0 e 255.
 
-Se `byteOffset` non è un numero, sarà forzato ad un numero. Se il risultato della coercizione è `NaN` oppure `0`, allora verrà cercato l'intero buffer. Questo comportamento corrisponde a [`String#indexOf()`].
+Se `byteOffset` non è un numero, sarà forzato ad un numero. Se il risultato della coercizione è `NaN` oppure `0`, allora verrà eseguita la ricerca sull'intero buffer. Questo comportamento corrisponde a [`String#indexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1165,7 +1165,7 @@ console.log(b.indexOf(99.9));
 console.log(b.indexOf(256 + 99));
 
 // Passa un byteOffset che forza il valore a NaN oppure 0
-// Stampa: 1, cerca l'intero buffer
+// Stampa: 1, eseguendo la ricerca sull'intero buffer
 console.log(b.indexOf('b', undefined));
 console.log(b.indexOf('b', {}));
 console.log(b.indexOf('b', null));
@@ -1210,9 +1210,9 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} Cosa cercare.
+* `value` {string|Buffer|Uint8Array|integer} Su cosa eseguire la ricerca.
 * `byteOffset` {integer} Dove iniziare la ricerca in `buf`. **Default:** [`buf.length`]`- 1`.
-* `encoding` {string} Se `value` è una stringa, questa è la codifica utilizzata per determinare la rappresentazione binaria della stringa che verrà cercata in `buf`. **Default:** `'utf8'`.
+* `encoding` {string} Se `value` è una stringa, questa è la codifica utilizzata per determinare la rappresentazione binaria della stringa per cui verrà eseguita la ricerca in `buf`. **Default:** `'utf8'`.
 * Restituisce: {integer} L'indice dell'ultima apparizione di `value` in `buf`, oppure `-1` se `buf` non contiene `value`.
 
 Identico a [`buf.indexOf()`], eccetto che l'ultima apparizione di `value` rispetto alla prima viene trovata.
@@ -1245,18 +1245,18 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
 
 Se `value` non è una stringa, un numero oppure un `Buffer`, questo metodo genererà un `TypeError`. Se `value` è un numero, verrà forzato ad un valore in byte valido, un integer (numero intero) compreso tra 0 e 255.
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
+Se `byteOffset` non è un numero, sarà forzato ad un numero. Qualsiasi argomento che forza il valore a `NaN`, come possono essere `{}` oppure `undefined`, eseguiranno la ricerca sull'intero buffer. Questo comportamento corrisponde a [`String#lastIndexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
 
-// Passing a value that's a number, but not a valid byte
-// Prints: 2, equivalent to searching for 99 or 'c'
+// Passa un valore che è un numero, ma non un byte valido
+// Stampa: 2, equivalente alla ricerca di 99 o 'c'
 console.log(b.lastIndexOf(99.9));
 console.log(b.lastIndexOf(256 + 99));
 
-// Passing a byteOffset that coerces to NaN
-// Prints: 1, searching the whole buffer
+// Passa un byteOffset che forza il valore a NaN
+// Stampa: 1, eseguendo la ricerca sull'intero buffer
 console.log(b.lastIndexOf('b', undefined));
 console.log(b.lastIndexOf('b', {}));
 
@@ -1266,7 +1266,7 @@ console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
+Se `value` è una stringa vuota oppure un `Buffer` vuoto, verrà restituito `byteOffset`.
 
 ### buf.length
 
@@ -1276,7 +1276,7 @@ added: v0.1.90
 
 * {integer}
 
-Returns the amount of memory allocated for `buf` in bytes. Note that this does not necessarily reflect the amount of "usable" data within `buf`.
+Restituisce la quantità di memoria allocata per `buf` in byte. Da notare che questo non rispecchia necessariamente la quantità di dati "usable" (utilizzabili) all'interno di `buf`.
 
 ```js
 // Create a `Buffer` and write a shorter ASCII string to it.
