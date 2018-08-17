@@ -1,4 +1,4 @@
-# Trace Events
+# Theo dõi sự kiện
 
 <!--introduced_in=v7.7.0-->
 
