@@ -1850,7 +1850,7 @@ added: v1.1.0
 
 * Restituisce: {Iterator}
 
-Crea e restituisce un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) per i valori di `buf` (in byte). This function is called automatically when a `Buffer` is used in a `for..of` statement.
+Crea e restituisce un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) per i valori di `buf` (in byte). Questa funzione è chiamata automaticamente quando un `Buffer` viene usato in un'istruzione `for..of`.
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1858,7 +1858,7 @@ const buf = Buffer.from('buffer');
 for (const value of buf.values()) {
   console.log(value);
 }
-// Prints:
+// Stampa:
 //   98
 //   117
 //   102
@@ -1869,7 +1869,7 @@ for (const value of buf.values()) {
 for (const value of buf) {
   console.log(value);
 }
-// Prints:
+// Stampa:
 //   98
 //   117
 //   102
