@@ -1159,20 +1159,20 @@ Se `byteOffset` non è un numero, sarà forzato ad un numero. Se il risultato de
 ```js
 const b = Buffer.from('abcdef');
 
-// Passing a value that's a number, but not a valid byte
-// Prints: 2, equivalent to searching for 99 or 'c'
+// Passa un valore che è un numero, ma non un byte valido
+// Stampa: 2, equivalente alla ricerca di 99 o 'c'
 console.log(b.indexOf(99.9));
 console.log(b.indexOf(256 + 99));
 
-// Passing a byteOffset that coerces to NaN or 0
-// Prints: 1, searching the whole buffer
+// Passa un byteOffset che forza il valore a NaN oppure 0
+// Stampa: 1, cerca l'intero buffer
 console.log(b.indexOf('b', undefined));
 console.log(b.indexOf('b', {}));
 console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `buf.length`, `byteOffset` will be returned. If `value` is empty and `byteOffset` is at least `buf.length`, `buf.length` will be returned.
+Se `value` è una stringa vuota od un `Buffer` vuoto e `byteOffset` è inferiore rispetto a `buf.length`, verrà restituito `byteOffset`. Se `value` è vuoto e `byteOffset` è almeno quanto `buf.length`, verrà restituito `buf.length`.
 
 ### buf.keys()
 
@@ -1180,9 +1180,9 @@ If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `b
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Restituisce: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
+Crea e restituisce un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) delle `buf` key (indici).
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1190,7 +1190,7 @@ const buf = Buffer.from('buffer');
 for (const key of buf.keys()) {
   console.log(key);
 }
-// Prints:
+// Stampa:
 //   0
 //   1
 //   2
@@ -1210,40 +1210,40 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`.
+* `value` {string|Buffer|Uint8Array|integer} Cosa cercare.
+* `byteOffset` {integer} Dove iniziare la ricerca in `buf`. **Default:** [`buf.length`]`- 1`.
 * `encoding` {string} Se `value` è una stringa, questa è la codifica utilizzata per determinare la rappresentazione binaria della stringa che verrà cercata in `buf`. **Default:** `'utf8'`.
-* Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* Restituisce: {integer} L'indice dell'ultima apparizione di `value` in `buf`, oppure `-1` se `buf` non contiene `value`.
 
-Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
+Identico a [`buf.indexOf()`], eccetto che l'ultima apparizione di `value` rispetto alla prima viene trovata.
 
 ```js
 const buf = Buffer.from('this buffer is a buffer');
 
 console.log(buf.lastIndexOf('this'));
-// Prints: 0
+// Stampa: 0
 console.log(buf.lastIndexOf('buffer'));
-// Prints: 17
+// Stampa: 17
 console.log(buf.lastIndexOf(Buffer.from('buffer')));
-// Prints: 17
+// Stampa: 17
 console.log(buf.lastIndexOf(97));
-// Prints: 15 (97 is the decimal ASCII value for 'a')
+// Stampa: 15 (97 è il valore ASCII decimale per 'a')
 console.log(buf.lastIndexOf(Buffer.from('yolo')));
-// Prints: -1
+// Stampa: -1
 console.log(buf.lastIndexOf('buffer', 5));
-// Prints: 5
+// Stampa: 5
 console.log(buf.lastIndexOf('buffer', 4));
-// Prints: -1
+// Stampa: -1
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'utf16le'));
-// Prints: 6
+// Stampa: 6
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
-// Prints: 4
+// Stampa: 4
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+Se `value` non è una stringa, un numero oppure un `Buffer`, questo metodo genererà un `TypeError`. Se `value` è un numero, verrà forzato ad un valore in byte valido, un integer (numero intero) compreso tra 0 e 255.
 
 If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
 
