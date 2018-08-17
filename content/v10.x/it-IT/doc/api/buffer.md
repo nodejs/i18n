@@ -1648,9 +1648,9 @@ changes:
 * `end` {integer} Dove terminerà il nuovo `Buffer` (non incluso). **Default:** [`buf.length`].
 * Restituisce: {Buffer}
 
-Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
+Restituisce un nuovo `Buffer` che fa riferimento alla stessa memoria dell'originale, ma compensato (offset) e ritagliato (cropped) dagli indici `start` ed `end`.
 
-Specifying `end` greater than [`buf.length`] will return the same result as that of `end` equal to [`buf.length`].
+Specificare `end` maggiore di [`buf.length`] restituirà lo stesso risultato di `end` uguale a [`buf.length`].
 
 Modifying the new `Buffer` slice will modify the memory in the original `Buffer` because the allocated memory of the two objects overlap.
 
