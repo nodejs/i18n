@@ -2082,7 +2082,7 @@ changes:
 * `byteLength` {integer} Numero di byte da scrivere. Deve soddisfare `0 < byteLength <= 6`.
 * Restituisce: {integer} `offset` più il numero di byte scritti.
 
-Scrive `byteLength` byte di `value` da `buf` all'`offset` specificato. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
+Scrive `byteLength` byte di `value` da `buf` all'`offset` specificato. Supporta fino a 48 bit di accuracy (precisione). Il comportamento è undefined (indefinito) quando `value` è diverso da un signed integer (numero intero con segno).
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -2090,12 +2090,12 @@ const buf = Buffer.allocUnsafe(6);
 buf.writeIntBE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Prints: <Buffer 12 34 56 78 90 ab>
+// Stampa: <Buffer 12 34 56 78 90 ab>
 
 buf.writeIntLE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Prints: <Buffer ab 90 78 56 34 12>
+// Stampa: <Buffer ab 90 78 56 34 12>
 ```
 
 ### buf.writeUInt8(value, offset)
@@ -2110,11 +2110,11 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 1`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {integer} Numero da scrivere su `buf`.
+* `offset` {integer} Numero di byte da saltare prima di iniziare a scrivere. Deve soddisfare `0 <= offset <= buf.length - 1`.
+* Restituisce: {integer} `offset` più il numero di byte scritti.
 
-Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
+Scrive `value` da `buf` all'`offset` specificato. `value` *dovrebbe* essere un unsigned integer (numero intero senza segno) a 8 bit valido. Il comportamento è undefined (indefinito) quando `value` è diverso da un unsigned integer (numero intero senza segno) a 8 bit.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2125,7 +2125,7 @@ buf.writeUInt8(0x23, 2);
 buf.writeUInt8(0x42, 3);
 
 console.log(buf);
-// Prints: <Buffer 03 04 23 42>
+// Stampa: <Buffer 03 04 23 42>
 ```
 
 ### buf.writeUInt16BE(value, offset)
@@ -2142,9 +2142,9 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 2`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {integer} Numero da scrivere su `buf`.
+* `offset` {integer} Numero di byte da saltare prima di iniziare a scrivere. Deve soddisfare `0 <= offset <= buf.length - 2`.
+* Restituisce: {integer} `offset` più il numero di byte scritti.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
