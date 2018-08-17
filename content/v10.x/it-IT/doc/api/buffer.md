@@ -1817,29 +1817,29 @@ added: v0.1.90
 
 Decodifica `buf` in una stringa in base alla codifica dei caratteri specificata in `encoding`. `start` ed `end` possono essere passati per decodificare solo un sottoinsieme di `buf`.
 
-The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
+La lunghezza massima di un'istanza di string (in unità di codice UTF-16) è disponibile come [`buffer.constants.MAX_STRING_LENGTH`][].
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 è il valore ASCII decimale per 'a'
   buf1[i] = i + 97;
 }
 
 console.log(buf1.toString('ascii'));
-// Prints: abcdefghijklmnopqrstuvwxyz
+// Stampa: abcdefghijklmnopqrstuvwxyz
 console.log(buf1.toString('ascii', 0, 5));
-// Prints: abcde
+// Stampa: abcde
 
 const buf2 = Buffer.from('tést');
 
 console.log(buf2.toString('hex'));
-// Prints: 74c3a97374
+// Stampa: 74c3a97374
 console.log(buf2.toString('utf8', 0, 3));
-// Prints: té
+// Stampa: té
 console.log(buf2.toString(undefined, 0, 3));
-// Prints: té
+// Stampa: té
 ```
 
 ### buf.values()
@@ -1848,9 +1848,9 @@ console.log(buf2.toString(undefined, 0, 3));
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Restituisce: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
+Crea e restituisce un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) per i valori di `buf` (in byte). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
 ```js
 const buf = Buffer.from('buffer');
