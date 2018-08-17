@@ -529,7 +529,7 @@ socket.on('readable', () => {
 });
 ```
 
-`Buffer.allocUnsafeSlow()` dovrebbe essere usato solo come ultima risorsa in seguito che uno sviluppatore abbia osservato un'indebita conservazione della memoria nelle sue applicazioni.
+`Buffer.allocUnsafeSlow()` dovrebbe essere usato solo come ultima risorsa dopo che uno sviluppatore abbia osservato un'indebita conservazione della memoria nelle sue applicazioni.
 
 Verrà generato un `TypeError` se `size` non è un numero.
 
@@ -552,7 +552,7 @@ changes:
 * `encoding` {string} Se `string` è una stringa, questa è la sua codifica. **Default:** `'utf8'`.
 * Restituisce: {integer} Il numero di byte contenuti all'interno di una `string`.
 
-Restituisce la lunghezza effettiva del byte di una stringa. Questo non è uguale a [`String.prototype.length`] poiché restituisce il numero di *caratteri* in una stringa.
+Restituisce la lunghezza effettiva in byte di una stringa. Questo non è uguale a [`String.prototype.length`] poiché quest’ultimo restituisce il numero di *caratteri* in una stringa.
 
 Per `'base64'` ed `'hex'`, questa funzione assume input validi. Per le stringhe che contengono dati con codifica diversa da Base64/Hex (es. whitespace), il valore restituito potrebbe essere maggiore della lunghezza di un `Buffer` creato dalla stringa.
 
@@ -564,7 +564,7 @@ console.log(`${str}: ${str.length} characters, ` +
 // Stampa: ½ + ¼ = ¾: 9 characters, 12 bytes
 ```
 
-Quando `string` è un `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/[`SharedArrayBuffer`], viene restituita la lunghezza effettiva del byte.
+Quando `string` è un `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/[`SharedArrayBuffer`], viene restituita la lunghezza effettiva in byte.
 
 ### Class Method: Buffer.compare(buf1, buf2)
 
