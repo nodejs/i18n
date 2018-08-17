@@ -49,7 +49,7 @@
 * [TTY](tty.html)
 * [UDP/Datagram](dgram.html)
 * [URL](url.html)
-* [Utilities](util.html)
+* [Tiện ích](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
 * [ZLIB](zlib.html)
