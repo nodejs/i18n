@@ -1425,19 +1425,19 @@ changes:
 * `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 2`.
 * Restituisce: {integer}
 
-Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
+Legge un signed integer a 16 bit da `buf` all'`offset` specificato con il formato endian specificato (`readInt16BE()` restituisce big endian, `readInt16LE()` restituisce little endian).
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Gli integer (numeri interi) letti da un `Buffer` sono interpretati come valori signed a complemento di due.
 
 ```js
 const buf = Buffer.from([0, 5]);
 
 console.log(buf.readInt16BE(0));
-// Prints: 5
+// Stampa: 5
 console.log(buf.readInt16LE(0));
-// Prints: 1280
+// Stampa: 1280
 console.log(buf.readInt16LE(1));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readInt32BE(offset)
@@ -1454,22 +1454,22 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - 4`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 4`.
+* Restituisce: {integer}
 
-Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt32BE()` returns big endian, `readInt32LE()` returns little endian).
+Legge un signed integer a 32 bit da `buf` all'`offset` specificato con il formato endian specificato (`readInt32BE()` restituisce big endian, `readInt32LE()` restituisce little endian).
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Gli integer (numeri interi) letti da un `Buffer` sono interpretati come valori signed a complemento di due.
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
 
 console.log(buf.readInt32BE(0));
-// Prints: 5
+// Stampa: 5
 console.log(buf.readInt32LE(0));
-// Prints: 83886080
+// Stampa: 83886080
 console.log(buf.readInt32LE(1));
-// Throws ERR_OUT_OF_RANGE
+// Genera ERR_OUT_OF_RANGE
 ```
 
 ### buf.readIntBE(offset, byteLength)
@@ -1486,11 +1486,11 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
-* Returns: {integer}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Numero di byte da leggere. Deve soddisfare `0 < byteLength <= 6`.
+* Restituisce: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
+Legge il numero di byte di `byteLength` da `buf` all'`offset` specificato ed interpreta il risultato come valore signed a complemento a due. Supports up to 48 bits of accuracy.
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1611,8 +1611,8 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
+* `offset` {integer} Number of bytes to skip before starting to read. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Number of bytes to read. Deve soddisfare `0 < byteLength <= 6`.
 * Returns: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
@@ -2078,8 +2078,8 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Number of bytes to write. Deve soddisfare `0 < byteLength <= 6`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
@@ -2213,8 +2213,8 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Number of bytes to write. Deve soddisfare `0 < byteLength <= 6`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
