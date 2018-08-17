@@ -1279,20 +1279,20 @@ added: v0.1.90
 Restituisce la quantità di memoria allocata per `buf` in byte. Da notare che questo non rispecchia necessariamente la quantità di dati "usable" (utilizzabili) all'interno di `buf`.
 
 ```js
-// Create a `Buffer` and write a shorter ASCII string to it.
+// Crea un `Buffer` e scrive su di esso una stringa ASCII più breve.
 
 const buf = Buffer.alloc(1234);
 
 console.log(buf.length);
-// Prints: 1234
+// Stampa: 1234
 
 buf.write('some string', 0, 'ascii');
 
 console.log(buf.length);
-// Prints: 1234
+// Stampa: 1234
 ```
 
-While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
+Sebbene la proprietà `length` (lunghezza) non sia immutabile, la modifica del valore di `length` può causare un comportamento indefinito ed incoerente. Le applicazioni che desiderano modificare la lunghezza di un `Buffer` dovrebbero pertanto trattare `length` come un valore "read-only" (di sola lettura) ed utilizzare [`buf.slice()`] per creare un nuovo `Buffer`.
 
 ```js
 let buf = Buffer.allocUnsafe(10);
@@ -1300,12 +1300,12 @@ let buf = Buffer.allocUnsafe(10);
 buf.write('abcdefghj', 0, 'ascii');
 
 console.log(buf.length);
-// Prints: 10
+// Stampa: 10
 
 buf = buf.slice(0, 5);
 
 console.log(buf.length);
-// Prints: 5
+// Stampa: 5
 ```
 
 ### buf.parent
@@ -1314,9 +1314,9 @@ console.log(buf.length);
 deprecated: v8.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`buf.buffer`] instead.
+> Stabilità: 0 - Obsoleto: Utilizza invece [`buf.buffer`].
 
-The `buf.parent` property is a deprecated alias for `buf.buffer`.
+La proprietà `buf.parent` è un alias obsoleto di `buf.buffer`.
 
 ### buf.readDoubleBE(offset)
 
@@ -1332,8 +1332,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`.
-* Returns: {number}
+* `offset` {integer} Numero di byte da saltare prima di iniziare la lettura. Deve soddisfare `0 <= offset <= buf.length - 8`.
+* Restituisce: {number}
 
 Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
 
@@ -1916,7 +1916,7 @@ changes:
 -->
 
 * `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`.
+* `offset` {integer} Number of bytes to skip before starting to write. Deve soddisfare `0 <= offset <= buf.length - 8`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
