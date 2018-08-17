@@ -1652,46 +1652,46 @@ Restituisce un nuovo `Buffer` che fa riferimento alla stessa memoria dell'origin
 
 Specificare `end` maggiore di [`buf.length`] restituirà lo stesso risultato di `end` uguale a [`buf.length`].
 
-Modifying the new `Buffer` slice will modify the memory in the original `Buffer` because the allocated memory of the two objects overlap.
+La modifica della nuova sezione del `Buffer` modificherà la memoria nel `Buffer` originale perché la memoria allocata dei due object si sovrappone.
 
 ```js
-// Create a `Buffer` with the ASCII alphabet, take a slice, and modify one byte
-// from the original `Buffer`.
+// Crea un `Buffer` con l'alfabeto ASCII, ne prende una sezione (slice)
+// e modifica un byte dal `Buffer` originale.
 
 const buf1 = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 è il valore ASCII decimale per 'a'
   buf1[i] = i + 97;
 }
 
 const buf2 = buf1.slice(0, 3);
 
 console.log(buf2.toString('ascii', 0, buf2.length));
-// Prints: abc
+// Stampa: abc
 
 buf1[0] = 33;
 
 console.log(buf2.toString('ascii', 0, buf2.length));
-// Prints: !bc
+// Stampa: !bc
 ```
 
-Specifying negative indexes causes the slice to be generated relative to the end of `buf` rather than the beginning.
+Specificando gli indici negativi, la sezione (slice) viene generata in relazione alla fine di `buf` piuttosto che in relazione all'inizio.
 
 ```js
 const buf = Buffer.from('buffer');
 
 console.log(buf.slice(-6, -1).toString());
-// Prints: buffe
-// (Equivalent to buf.slice(0, 5))
+// Stampa: buffe
+// (Equivalente a buf.slice(0, 5))
 
 console.log(buf.slice(-6, -2).toString());
-// Prints: buff
-// (Equivalent to buf.slice(0, 4))
+// Stampa: buff
+// (Equivalente a buf.slice(0, 4))
 
 console.log(buf.slice(-5, -2).toString());
-// Prints: uff
-// (Equivalent to buf.slice(1, 4))
+// Stampa: uff
+// (Equivalente di buf.slice(1, 4))
 ```
 
 ### buf.swap16()
@@ -1700,7 +1700,7 @@ console.log(buf.slice(-5, -2).toString());
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Restituisce: {Buffer} Un riferimento a `buf`.
 
 Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 2.
 
