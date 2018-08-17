@@ -391,7 +391,7 @@ changes:
 * `string` {string} Cadena para codificar.
 * `encoding` {string} La codificación del `string`. **Predeterminado:** `'utf8'`.
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene `string`. El parámetro de `encoding` identifica la codificación de caracteres del `string`.
 
 ```js
 const buf1 = new Buffer('this is a tést');
@@ -729,7 +729,7 @@ added: v5.10.0
 * `string` {string} A string to encode.
 * `encoding` {string} The encoding of `string`. **Predeterminado:** `'utf8'`.
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene `string`. El parámetro de `encoding` identifica la codificación de caracteres del `string`.
 
 ```js
 const buf1 = Buffer.from('this is a tést');
