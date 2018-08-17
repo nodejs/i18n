@@ -1702,23 +1702,23 @@ added: v5.10.0
 
 * Restituisce: {Buffer} Un riferimento a `buf`.
 
-Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 2.
+Interpreta `buf` come un array di unsigned integer a 16 bit e scambia l'ordine dei byte *in-place* (sul posto). Genera [`ERR_INVALID_BUFFER_SIZE`] se [`buf.length`] non è un multiplo di 2.
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
 console.log(buf1);
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Stampa: <Buffer 01 02 03 04 05 06 07 08>
 
 buf1.swap16();
 
 console.log(buf1);
-// Prints: <Buffer 02 01 04 03 06 05 08 07>
+// Stampa: <Buffer 02 01 04 03 06 05 08 07>
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 buf2.swap16();
-// Throws ERR_INVALID_BUFFER_SIZE
+// Genera ERR_INVALID_BUFFER_SIZE
 ```
 
 ### buf.swap32()
@@ -1727,25 +1727,25 @@ buf2.swap16();
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Restituisce: {Buffer} Un riferimento a `buf`.
 
-Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 4.
+Interpreta `buf` come un array di unsigned integer a 32 bit e scambia l'ordine dei byte *in-place* (sul posto). Genera [`ERR_INVALID_BUFFER_SIZE`] se [`buf.length`] non è un multiplo di 4.
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
 console.log(buf1);
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Stampa: <Buffer 01 02 03 04 05 06 07 08>
 
 buf1.swap32();
 
 console.log(buf1);
-// Prints: <Buffer 04 03 02 01 08 07 06 05>
+// Stampa: <Buffer 04 03 02 01 08 07 06 05>
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 buf2.swap32();
-// Throws ERR_INVALID_BUFFER_SIZE
+// Genera ERR_INVALID_BUFFER_SIZE
 ```
 
 ### buf.swap64()
@@ -1754,7 +1754,7 @@ buf2.swap32();
 added: v6.3.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Restituisce: {Buffer} Un riferimento a `buf`.
 
 Interprets `buf` as an array of 64-bit numbers and swaps byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 8.
 
