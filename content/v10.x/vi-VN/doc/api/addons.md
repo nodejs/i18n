@@ -1,4 +1,4 @@
-# Phần mở rộng C++
+# Thành phần mở rộng C++
 
 <!--introduced_in=v0.10.0-->
 
