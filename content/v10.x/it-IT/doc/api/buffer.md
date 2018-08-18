@@ -1172,7 +1172,7 @@ console.log(b.indexOf('b', null));
 console.log(b.indexOf('b', []));
 ```
 
-Se `value` è una stringa vuota od un `Buffer` vuoto e `byteOffset` è inferiore rispetto a `buf.length`, verrà restituito `byteOffset`. Se `value` è vuoto e `byteOffset` è almeno quanto `buf.length`, verrà restituito `buf.length`.
+Se `value` è una stringa vuota o un `Buffer` vuoto e `byteOffset` è inferiore rispetto a `buf.length`, verrà restituito `byteOffset`. Se `value` è vuoto e `byteOffset` è almeno equivalente a `buf.length`, verrà restituito `buf.length`.
 
 ### buf.keys()
 
