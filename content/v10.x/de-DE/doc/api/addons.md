@@ -20,13 +20,13 @@ Alle der folgenden Beispiele stehen zum [Download](https://github.com/nodejs/nod
 
 ## Hallo Welt
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Dieses "Hallo Welt"-Beispiel ist eine einfache, in C++ geschriebene, Erweiterung, die dem folgenden JavaScript-Code entspricht:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Erstellen Sie zunächst die Datei `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -55,7 +55,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Beachten Sie, dass alle Node.js-Erweiterungen eine Initialisierungsfunktion nach folgendem Muster exportieren müssen:
 
 ```cpp
 void Initialize(Local<Object> exports);
