@@ -1427,7 +1427,7 @@ changes:
 
 Legge un signed integer a 16 bit da `buf` all'`offset` specificato con il formato endian specificato (`readInt16BE()` restituisce big endian, `readInt16LE()` restituisce little endian).
 
-Gli integer (numeri interi) letti da un `Buffer` sono interpretati come valori signed a complemento di due.
+Gli integer (numeri interi) letti da un `Buffer` sono interpretati come valori signed a complemento a due.
 
 ```js
 const buf = Buffer.from([0, 5]);
@@ -2051,7 +2051,7 @@ changes:
 
 Scrive `value` da `buf` all'`offset` specificato con il formato endian specificato (`writeInt32BE()` scrive big endian, `writeInt32LE()` scrive little endian). `value` *dovrebbe* essere un signed integer (numero intero con segno) a 32 bit valido. Il comportamento è undefined (indefinito) quando `value` è diverso da un signed integer (numero intero con segno) a 32 bit.
 
-`value` è interpretato e scritto come signed integer di un complemento di due.
+`value` è interpretato e scritto come signed integer di un complemento a due.
 
 ```js
 const buf = Buffer.allocUnsafe(8);
