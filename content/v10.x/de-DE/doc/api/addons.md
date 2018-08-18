@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Node.js-Erweiterungen sind dynamisch-verknüpfte freigegebene Objekte, die in C++ geschrieben sind und in Node.js mit der [`require()`](modules.html#modules_require) Funktion geladen werden können und verwendet werden können, als wären sie ein gewöhnliches Node.js Modul. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Node.js-Erweiterungen sind dynamisch-verknüpfte freigegebene Objekte, die in C++ geschrieben sind und in Node.js mit der [`require()`](modules.html#modules_require) Funktion geladen und verwendet werden können, als wären sie ein gewöhnliches Node.js Modul. Sie werden in erster Linie dazu eingesetzt, um eine Schnittstelle zwischen JavaScript in Node.js und C/C++ Bibliotheken zu bieten.
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
