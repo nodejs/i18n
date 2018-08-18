@@ -62,11 +62,11 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Es gibt keinen Strichpunkt nach `NODE_MODULE`, da es keine Funktion ist (siehe `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+Der `module_name` muss mit dem Dateinamen der endgültigen Binärdatei übereinstimmen (außer dem Suffix `.node`).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+Im Beispiel `hello.cc` ist die Initialisierungsfunktion `init` und der Erweiterungsmodulname `addon`.
 
 ### Building
 
