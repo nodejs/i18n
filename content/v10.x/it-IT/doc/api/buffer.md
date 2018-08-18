@@ -1276,7 +1276,7 @@ added: v0.1.90
 
 * {integer}
 
-Restituisce la quantità di memoria allocata per `buf` in byte. Da notare che questo non rispecchia necessariamente la quantità di dati "usable" (utilizzabili) all'interno di `buf`.
+Restituisce la quantità di memoria allocata per `buf` in byte. Da notare che questo non rispecchia necessariamente la quantità di dati "utilizzabili” all'interno di `buf`.
 
 ```js
 // Crea un `Buffer` e scrive su di esso una stringa ASCII più breve.
@@ -1292,7 +1292,7 @@ console.log(buf.length);
 // Stampa: 1234
 ```
 
-Sebbene la proprietà `length` (lunghezza) non sia immutabile, la modifica del valore di `length` può causare un comportamento indefinito ed incoerente. Le applicazioni che desiderano modificare la lunghezza di un `Buffer` dovrebbero pertanto trattare `length` come un valore "read-only" (di sola lettura) ed utilizzare [`buf.slice()`] per creare un nuovo `Buffer`.
+Sebbene la proprietà `length` (lunghezza) non sia immutabile, la modifica del valore di `length` può causare un comportamento indefinito ed incoerente. Le applicazioni che desiderano modificare la lunghezza di un `Buffer` dovrebbero pertanto trattare `length` come un valore di sola lettura ed utilizzare [`buf.slice()`] per creare un nuovo `Buffer`.
 
 ```js
 let buf = Buffer.allocUnsafe(10);
