@@ -1016,9 +1016,9 @@ Un método más sencillo de construir el `mode` es utilizar una secuencia de tre
 | `3`    | write and execute        |
 | `2`    | sólo escritura           |
 | `1`    | execute only             |
-| `0`    | no permission            |
+| `0`    | sin permisos             |
 
-For example, the octal value `0o765` means:
+Por ejemplo, el valor octal `0o765` significa:
 
 * El propietario puede leer, escribir y ejecutar el archivo.
 * El grupo puede leer y escribir el archivo.
@@ -1039,7 +1039,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer}
 
-Cambia de manera sincrónica los permisos de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chmod()`][].
+Cambia de manera sincrónica los permisos de un archivo. Devuelve: `undefined`. Esta es la versión sincrónica de [`fs.chmod()`][].
 
 Vea también: chmod(2).
 
@@ -1071,7 +1071,7 @@ changes:
 
 Cambia de manera asincrónica el propietario y el grupo de un archivo. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
-See also: chown(2).
+Vea también: chown(2).
 
 ## fs.chownSync(path, uid, gid)
 
@@ -1089,9 +1089,9 @@ changes:
 * `uid` {integer}
 * `gid` {integer}
 
-Cambia de manera sincrónica el propietario y el grupo de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chown()`][].
+Cambia de manera sincrónica el propietario y el grupo de un archivo. Devuelve `undefined`. Esta es la versión sincrónica de [`fs.chown()`][].
 
-See also: chown(2).
+Vea también: chown(2).
 
 ## fs.close(fd, callback)
 
@@ -1129,7 +1129,7 @@ Synchronous close(2). Returns `undefined`.
 
 * {Object}
 
-Returns an object containing commonly used constants for file system operations. Las constantes específicas actualmente definidas se describen en [Constantes de FS](#fs_fs_constants_1).
+Devuelve un objeto que contiene constantes utilizadas comúnmente para operaciones del sistema de archivos. Las constantes específicas actualmente definidas se describen en [Constantes de FS](#fs_fs_constants_1).
 
 ## fs.copyFile(src, dest[, flags], callback)
 
@@ -1142,7 +1142,7 @@ added: v8.5.0
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * `callback` {Function}
 
-Copia de manera asincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Ningún otro argumento que no sea una posible excepción es dado a la función de callback. Node.js makes no guarantees about the atomicity of the copy operation. Si ocurre un error luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
+Copia de manera asincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Ningún otro argumento que no sea una posible excepción es dado a la función de callback. Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. Si ocurre un error luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -1182,7 +1182,7 @@ added: v8.5.0
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 
-Copia de manera sincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. Si ocurre un error luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
+Copia de manera sincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Devuelve `undefined`. Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. Si ocurre un error luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -1238,7 +1238,7 @@ changes:
   * `start` {integer}
   * `end` {integer} **Default:** `Infinity`
   * `highWaterMark` {integer} **Default:** `64 * 1024`
-* Returns: {fs.ReadStream} See [Readable Streams](stream.html#stream_class_stream_readable).
+* Devuelve: {fs.ReadStream} Vea [Streams Legibles](stream.html#stream_class_stream_readable).
 
 Unlike the 16 kb default `highWaterMark` for a readable stream, the stream returned by this method has a default `highWaterMark` of 64 kb.
 
