@@ -3205,7 +3205,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Asynchronously append data to this file, creating the file if it does not yet exist. `data` puede ser una string o un [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
+Anexa los datos de manera asincrónica a este archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
 Si `options` es una string, entonces especifica la codificación.
 
@@ -3486,7 +3486,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Asynchronously append data to a file, creating the file if it does not yet exist. `data` puede ser una string o un [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
+Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
 Si `options` es una string, entonces especifica la codificación.
 
@@ -4123,7 +4123,7 @@ The following constants are meant for use with `fs.open()`.
   </tr>
   <tr>
     <td><code>O_APPEND</code></td>
-    <td>Flag indicating that data will be appended to the end of the file.</td>
+    <td>Bandera que indica que los datos serán anexados al final del archivo.</td>
   </tr>
   <tr>
     <td><code>O_DIRECTORY</code></td>
