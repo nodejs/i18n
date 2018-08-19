@@ -256,7 +256,7 @@ added: v0.5.8
 -->
 
 * `eventType` {string} El tipo de evento de cambio que ha ocurrido
-* `filename` {string|Buffer} The filename that changed (if relevant/available)
+* `filename` {string|Buffer} El nombre de archivo que cambió (si es relevante/disponible)
 
 Emitted when something changes in a watched directory or file. Vea más detalles en [`fs.watch()`][].
 
@@ -401,7 +401,7 @@ added: v0.1.10
 
 * Returns: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a block device.
+Devuelve `true` si el objeto de `fs.Stats` describe un dispositivo de bloques.
 
 ### stats.isCharacterDevice()
 
@@ -411,7 +411,7 @@ added: v0.1.10
 
 * Returns: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a character device.
+Devuelve `true` si el objeto de `fs.Stats` describe un dispositivo de caracteres.
 
 ### stats.isDirectory()
 
@@ -421,7 +421,7 @@ added: v0.1.10
 
 * Returns: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a file system directory.
+Devuelve `true` si el objeto de `fs.Stats` describe un directorio de sistema de archivos.
 
 ### stats.isFIFO()
 
@@ -451,7 +451,7 @@ added: v0.1.10
 
 * Returns: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a socket.
+Devuelve `true` si el objeto de `fs.Stats` describe un socket.
 
 ### stats.isSymbolicLink()
 
@@ -461,7 +461,7 @@ added: v0.1.10
 
 * Returns: {boolean}
 
-Returns `true` if the `fs.Stats` object describes a symbolic link.
+Devuelve `true` si el objeto de `fs.Stats` describe un enlace simbólico.
 
 Este método sólo es válido cuando se utiliza [`fs.lstat()`][].
 
@@ -607,7 +607,7 @@ The timestamp indicating the creation time of this file.
 
 ### Stat Time Values
 
-The `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` properties are [numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) that hold the corresponding times in milliseconds. Their precision is platform specific. `atime`, `mtime`, `ctime`, and `birthtime` are [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object alternate representations of the various times. La `Date` y los valores numéricos no están conectados. Assigning a new number value, or mutating the `Date` value, will not be reflected in the corresponding alternate representation.
+Las propiedades de `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` son [números](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) que contienen los tiempos correspondientes en milisegundos. Su precisión es específica en la plataforma. `atime`, `mtime`, `ctime`, and `birthtime` are [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object alternate representations of the various times. La `Date` y los valores numéricos no están conectados. Assigning a new number value, or mutating the `Date` value, will not be reflected in the corresponding alternate representation.
 
 The times in the stat object have the following semantics:
 
