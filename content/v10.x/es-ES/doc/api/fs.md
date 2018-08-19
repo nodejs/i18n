@@ -146,7 +146,7 @@ const fileUrl = new URL('file:///tmp/hello');
 fs.readFileSync(fileUrl);
 ```
 
-`file:` URLs are always absolute paths.
+`file:` Las URLs siempre son rutas absolutas.
 
 Utilizar objetos de [`URL`][] de WHATWG podría introducir comportamientos específicos a la plataforma.
 
