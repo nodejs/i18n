@@ -171,7 +171,7 @@ fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
 
 `file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
 
-On all other platforms, `file:` URLs with a hostname are unsupported and will result in a throw:
+En todas las demás plataformas, las URLs de `file:` con un nombre de host no son soportadas y resultarán en un lanzamiento:
 
 ```js
 // On other platforms:
@@ -255,7 +255,7 @@ Todos los objetos de `fs.FSWatcher` son [`EventEmitter`][]'s que emitirán un ev
 added: v0.5.8
 -->
 
-* `eventType` {string} The type of change event that has occurred
+* `eventType` {string} El tipo de evento de cambio que ha ocurrido
 * `filename` {string|Buffer} The filename that changed (if relevant/available)
 
 Emitted when something changes in a watched directory or file. Vea más detalles en [`fs.watch()`][].
