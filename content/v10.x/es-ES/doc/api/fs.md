@@ -873,7 +873,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que no exista. `data` puede ser una string o un [`Buffer`][].
+Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][].
 
 Ejemplo:
 
@@ -925,7 +925,7 @@ changes:
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 
-Synchronously append data to a file, creating the file if it does not yet exist. `data` puede ser una string o un [`Buffer`][].
+Anexa los datos de manera sincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][].
 
 Ejemplo:
 
