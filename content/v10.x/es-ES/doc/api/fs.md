@@ -1571,7 +1571,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fsync(2). No arguments other than a possible exception are given to the completion callback.
+fsync(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fsyncSync(fd)
 
@@ -1581,7 +1581,7 @@ added: v0.1.96
 
 * `fd` {integer}
 
-Synchronous fsync(2). Returns `undefined`.
+fsync(2) asincrónico. Devuelve `undefined`.
 
 ## fs.ftruncate(fd[, len], callback)
 
@@ -1604,9 +1604,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous ftruncate(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous ftruncate(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
-If the file referred to by the file descriptor was larger than `len` bytes, only the first `len` bytes will be retained in the file.
+Si el archivo referido por el descriptor de archivos fuese más grande que los bytes `len`, sólo los primeros bytes `len` serán retenidos en el archivo.
 
 Por ejemplo, el siguiente programa retiene sólo los primeros cuatro bytes del archivo:
 
@@ -1654,7 +1654,7 @@ added: v0.8.6
 * `fd` {integer}
 * `len` {integer} **Default:** `0`
 
-Synchronous ftruncate(2). Returns `undefined`.
+ftruncate(2) sincrónico. Devuelve `undefined`.
 
 ## fs.futimes(fd, atime, mtime, callback)
 
@@ -1682,9 +1682,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Change the file system timestamps of the object referenced by the supplied file descriptor. See [`fs.utimes()`][].
+Change the file system timestamps of the object referenced by the supplied file descriptor. Vea [`fs.utimes()`][].
 
-This function does not work on AIX versions before 7.1, it will return the error `UV_ENOSYS`.
+Esta función no funciona en versiones AIX anteriores a 7.1, devolverá el error `UV_ENOSYS`.
 
 ## fs.futimesSync(fd, atime, mtime)
 
@@ -1702,7 +1702,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Versión sincrónica de [`fs.futimes()`][]. Returns `undefined`.
+Versión sincrónica de [`fs.futimes()`][]. Devuelve `undefined`.
 
 ## fs.lchmod(path, mode, callback)
 
@@ -1725,9 +1725,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
+lchmod(2) asincrónico. No arguments other than a possible exception are given to the completion callback.
 
-Only available on macOS.
+Sólo disponible en macOS.
 
 ## fs.lchmodSync(path, mode)
 
@@ -1738,7 +1738,7 @@ deprecated: v0.4.7
 * `path` {string|Buffer|URL}
 * `mode` {integer}
 
-Synchronous lchmod(2). Returns `undefined`.
+Synchronous lchmod(2). Devuelve `undefined`.
 
 ## fs.lchown(path, uid, gid, callback)
 
