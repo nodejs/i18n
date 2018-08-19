@@ -1725,7 +1725,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-lchmod(2) asincrónico. No arguments other than a possible exception are given to the completion callback.
+lchmod(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 Sólo disponible en macOS.
 
@@ -1738,7 +1738,7 @@ deprecated: v0.4.7
 * `path` {string|Buffer|URL}
 * `mode` {integer}
 
-Synchronous lchmod(2). Devuelve `undefined`.
+lchmod(2) sincrónico. Devuelve `undefined`.
 
 ## fs.lchown(path, uid, gid, callback)
 
@@ -1762,7 +1762,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous lchown(2). No arguments other than a possible exception are given to the completion callback.
+lchwon(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.lchownSync(path, uid, gid)
 
@@ -1774,7 +1774,7 @@ deprecated: v0.4.7
 * `uid` {integer}
 * `gid` {integer}
 
-Synchronous lchown(2). Returns `undefined`.
+Synchronous lchown(2). Devuelve `undefined`.
 
 ## fs.link(existingPath, newPath, callback)
 
@@ -1802,7 +1802,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous link(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous link(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.linkSync(existingPath, newPath)
 
@@ -1891,9 +1891,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Crea un directorio de manera asincrónica. No arguments other than a possible exception are given to the completion callback.
+Crea un directorio de manera asincrónica. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
-See also: mkdir(2).
+Vea también: mkdir(2).
 
 ## fs.mkdirSync(path[, mode])
 
@@ -1910,9 +1910,9 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
 
-Crea un directorio de manera sincrónica. Returns `undefined`. Esta es la versión sincrónica de [`fs.mkdir()`][].
+Crea un directorio de manera sincrónica. Devuelve `undefined`. Esta es la versión sincrónica de [`fs.mkdir()`][].
 
-See also: mkdir(2).
+Vea también: mkdir(2).
 
 ## fs.mkdtemp(prefix[, options], callback)
 
@@ -1946,7 +1946,7 @@ Generates six random characters to be appended behind a required `prefix` to cre
 
 La ruta de archivo creada se pasa como una string al segundo parámetro del callback.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar.
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
