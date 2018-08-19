@@ -69,7 +69,7 @@ En procesos difíciles, el programador es *fuertemente aconsejado* que use la ve
 
 Aunque no es recomendado, la mayoría de las funciones fs permiten que el argumento de devolución de llamada sea omitido, en este caso, una devolución de llamada predeterminada sea usada para regenerar errores. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
 
-Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
+Omitir la función de callback en funciones fs asincrónicas es obsoleto y resultado puede ser un error que ocurrirá en el futuro.
 
 ```txt
 $ cat script.js
@@ -90,7 +90,7 @@ Error: EISDIR: illegal operation on a directory, read
 
 La mayoría de las operaciones de `fs` aceptan rutas de archivo que pueden ser especificadas en la forma de una string, un [`Buffer`][], o un objeto de [`URL`][] utilizando el protocolo `file:` .
 
-String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
+String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Las rutas relativas serán resueltas en relación al actual directorio funcional como lo especifica `process.cwd()`.
 
 Ejemplo utilizando una ruta absoluta en POSIX:
 
@@ -116,7 +116,7 @@ fs.open('file.txt', 'r', (err, fd) => {
 });
 ```
 
-Paths specified using a [`Buffer`][] are useful primarily on certain POSIX operating systems that treat file paths as opaque byte sequences. On such systems, it is possible for a single file path to contain sub-sequences that use multiple character encodings. As with string paths, `Buffer` paths may be relative or absolute:
+Las rutas especificadas mediante un [`Buffer`][] son útiles principalmente en ciertos sistemas operativos de POSIX que tratan las rutas de archivo como secuencias de bytes opacas. En tales sistemas, es posible que una única ruta de archivo contenga sub-secuencias que utilicen múltiples codificaciones de caracteres. As with string paths, `Buffer` paths may be relative or absolute:
 
 Ejemplo utilizando una ruta absoluta en POSIX:
 
