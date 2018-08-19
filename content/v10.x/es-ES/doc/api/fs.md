@@ -873,7 +873,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously append data to a file, creating the file if it does not yet exist. `data` puede ser una string o un [`Buffer`][].
+Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que no exista. `data` puede ser una string o un [`Buffer`][].
 
 Ejemplo:
 
@@ -3286,7 +3286,7 @@ added: v10.0.0
 * `position` {integer}
 * Returns: {Promise}
 
-Read data from the file.
+Leer datos del archivo.
 
 `buffer` is the buffer that the data will be written to.
 
@@ -3549,7 +3549,7 @@ fsPromises.copyFile('source.txt', 'destination.txt')
   .catch(() => console.log('The file could not be copied'));
 ```
 
-If the third argument is a number, then it specifies `flags`, as shown in the following example.
+Si el tercer argumento es un número, entonces especifica `flags`, como se muestra en el siguiente ejemplo.
 
 ```js
 const fs = require('fs');
