@@ -1436,7 +1436,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fchmod(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous fchmod(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchmodSync(fd, mode)
 
@@ -1447,7 +1447,7 @@ added: v0.4.7
 * `fd` {integer}
 * `mode` {integer}
 
-Synchronous fchmod(2). Returns `undefined`.
+fchmod(2) sincrónico. Devuelve `undefined`.
 
 ## fs.fchown(fd, uid, gid, callback)
 
@@ -1471,7 +1471,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fchown(2). No arguments other than a possible exception are given to the completion callback.
+fchown(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchownSync(fd, uid, gid)
 
@@ -1483,7 +1483,7 @@ added: v0.4.7
 * `uid` {integer}
 * `gid` {integer}
 
-Synchronous fchown(2). Returns `undefined`.
+fchown(2) sincrónico. Devuelve `undefined`.
 
 ## fs.fdatasync(fd, callback)
 
@@ -1505,7 +1505,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fdatasync(2). No arguments other than a possible exception are given to the completion callback.
+fdatasync(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fdatasyncSync(fd)
 
@@ -1515,7 +1515,7 @@ added: v0.1.96
 
 * `fd` {integer}
 
-Synchronous fdatasync(2). Returns `undefined`.
+fdatasync(2) sincrónico. Devuelve `undefined`.
 
 ## fs.fstat(fd, callback)
 
@@ -1538,7 +1538,7 @@ changes:
   * `err` {Error}
   * `stats` {fs.Stats}
 
-Asynchronous fstat(2). The callback gets two arguments `(err, stats)` where `stats` is an [`fs.Stats`][] object. `fstat()` is identical to [`stat()`][], except that the file to be stat-ed is specified by the file descriptor `fd`.
+fstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)` donde `stats` es un objeto de [`fs.Stats`][]. `fstat()` is identical to [`stat()`][], except that the file to be stat-ed is specified by the file descriptor `fd`.
 
 ## fs.fstatSync(fd)
 
@@ -1549,7 +1549,7 @@ added: v0.1.95
 * `fd` {integer}
 * Returns: {fs.Stats}
 
-Synchronous fstat(2).
+fstat(2) sincrónica.
 
 ## fs.fsync(fd, callback)
 
