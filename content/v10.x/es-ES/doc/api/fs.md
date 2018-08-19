@@ -668,7 +668,7 @@ El número de bytes escritos hasta el momento. No incluye datos que todavía est
 added: v0.1.93
 -->
 
-The path to the file the stream is writing to as specified in the first argument to `fs.createWriteStream()`. If `path` is passed as a string, then `writeStream.path` will be a string. If `path` is passed as a `Buffer`, then `writeStream.path` will be a `Buffer`.
+The path to the file the stream is writing to as specified in the first argument to `fs.createWriteStream()`. Si se pasa a `path` como una string, entonces `writeStream.path` será una string. Si se pasa a `path` como un `Buffer`, entonces `writeStream.path` será un `Buffer`.
 
 ## fs.access(path[, mode], callback)
 
@@ -698,8 +698,8 @@ changes:
 Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los valores posibles de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
-* `fs.constants.R_OK` - `path` can be read by the calling process.
-* `fs.constants.W_OK` - `path` can be written by the calling process.
+* `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
+* `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
 * `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
 El argumento final, `callback`, es una función de callback que se invoca con un posible argumento de error. If any of the accessibility checks fail, the error argument will be an `Error` object. Los siguientes ejemplos verifican si `package.json` existe, y si es legible o editable.
@@ -827,9 +827,9 @@ changes:
 Prueba de manera sincrónica los permisos de un usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
-* `fs.constants.R_OK` - `path` can be read by the calling process.
-* `fs.constants.W_OK` - `path` can be written by the calling process.
-* `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
+* `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
+* `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
+* `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
 If any of the accessibility checks fail, an `Error` will be thrown. De lo contrario, el método devolverá `undefined`.
 
@@ -890,7 +890,7 @@ Si `options` es una string, entonces especifica la codificación. Ejemplo:
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
 ```
 
-The `path` may be specified as a numeric file descriptor that has been opened for appending (using `fs.open()` or `fs.openSync()`). El descriptor de archivos no se cerrará automáticamente.
+El `path` puede ser especificado como un descriptor numérico de archivos que ha sido abierto para ser anexado (utilizando `fs.open()` ó `fs.openSync()`). El descriptor de archivos no se cerrará automáticamente.
 
 ```js
 fs.open('message.txt', 'a', (err, fd) => {
@@ -985,9 +985,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Cambia de manera asincrónica los permisos de un archivo. No arguments other than a possible exception are given to the completion callback.
+Cambia de manera asincrónica los permisos de un archivo. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
-See also: chmod(2).
+Vea también: chmod(2).
 
 ### File modes
 
@@ -1041,7 +1041,7 @@ changes:
 
 Cambia de manera sincrónica los permisos de un archivo. Returns `undefined`. Esta es la versión sincrónica de [`fs.chmod()`][].
 
-See also: chmod(2).
+Vea también: chmod(2).
 
 ## fs.chown(path, uid, gid, callback)
 
