@@ -293,45 +293,45 @@ const configs = {
   // Numero di operazioni, specificato qui in modo che vengano mostrate nel report.
   // La maggior parte dei benchmark usa solo un valore per tutte le esecuzioni.
   n: [1024],
-  type: ['fast', 'slow'],  // Custom configurations
-  size: [16, 128, 1024]  // Custom configurations
+  type: ['fast', 'slow'],  // Configurazioni personalizzate
+  size: [16, 128, 1024]  // Configurazioni personalizzate
 };
 
 const options = {
-  // Add --expose-internals in order to require internal modules in main
+  // Aggiungi --expose-internals in modo da richiedere i moduli interni in main
   flags: ['--zero-fill-buffers']
 };
 
-// main and configs are required, options is optional.
+// main e configs sono necessari, options è facoltativo.
 const bench = common.createBenchmark(main, configs, options);
 
-// Note that any code outside main will be run twice,
-// in different processes, with different command line arguments.
+// Si noti che qualsiasi codice esterno a main verrà eseguito due volte, 
+// in processi diversi, con diversi argomenti della command line.
 
 function main(conf) {
-  // Only flags that have been passed to createBenchmark
-  // earlier when main is run will be in effect.
-  // In order to benchmark the internal modules, require them here. For example:
+  // Saranno in vigore solo i flag che sono stati passati a createBenchmark 
+  // in precedenza quando è stato eseguito main.
+  // Al fine di eseguire il benchmark per i moduli interni, richiedili qui. For example:
   // const URL = require('internal/url').URL
 
-  // Start the timer
+  // Avvia il timer
   bench.start();
 
-  // Do operations here
+  // Fa operazioni qui
   const BufferConstructor = conf.type === 'fast' ? Buffer : SlowBuffer;
 
   for (let i = 0; i < conf.n; i++) {
     new BufferConstructor(conf.size);
   }
 
-  // End the timer, pass in the number of operations
+  // Termina il timer, passa il numero di operazioni
   bench.end(conf.n);
 }
 ```
 
-### Creating an HTTP benchmark
+### Creare un benchmark HTTP
 
-The `bench` object returned by `createBenchmark` implements `http(options, callback)` method. It can be used to run external tool to benchmark HTTP servers.
+Il `bench` object restituito da `createBenchmark` implementa il metodo `http(options, callback)`. Può essere utilizzato per eseguire strumenti esterni per il benchmark dei server HTTP.
 
 ```js
 'use strict';
@@ -361,10 +361,10 @@ function main(conf) {
 }
 ```
 
-Supported options keys are:
+Le option key supportate sono:
 
-* `port` - defaults to `common.PORT`
-* `path` - defaults to `/`
-* `connections` - number of concurrent connections to use, defaults to 100
-* `duration` - duration of the benchmark in seconds, defaults to 10
-* `benchmarker` - benchmarker to use, defaults to `common.default_http_benchmarker`
+* `port` - `common.PORT` di default
+* `path` - `/` di default
+* `connections` - numero di connessioni simultanee da utilizzare, 100 di default
+* `duration` - durata del benchmark in secondi, 10 di default
+* `benchmarker` - benchmarker da utilizzare, `common.default_http_benchmarker` di default
