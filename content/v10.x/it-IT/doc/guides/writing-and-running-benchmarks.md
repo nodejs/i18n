@@ -53,21 +53,21 @@ install.packages("plyr")
 
 Nel caso in cui venga segnalato un messaggio per indicare che deve essere selezionato per primo un CRAN mirror, specifica un mirror aggiungendo il parametro repo.
 
-If we used the "http://cran.us.r-project.org" mirror, it could look something like this:
+Se usassimo il mirror "http://cran.us.r-project.org", si potrebbe scrivere qualcosa del genere:
 
 ```R
 install.packages("ggplot2", repo="http://cran.us.r-project.org")
 ```
 
-Of course, use an appropriate mirror based on location. A list of mirrors is [located here](https://cran.r-project.org/mirrors.html).
+Naturalmente, utilizza un mirror appropriato in base alla posizione (location). Una lista dei mirror è [disponibile qui](https://cran.r-project.org/mirrors.html).
 
-## Running benchmarks
+## Eseguire i benchmark
 
-### Running individual benchmarks
+### Eseguire i singoli benchmark
 
-This can be useful for debugging a benchmark or doing a quick performance measure. But it does not provide the statistical information to make any conclusions about the performance.
+Questo può essere utile per eseguire il debug di un benchmark oppure per eseguire una misura rapida delle prestazioni (performance). Ma non fornisce le informazioni statistiche per trarre conclusioni delle conclusioni sulle prestazioni (performance).
 
-Individual benchmarks can be executed by simply executing the benchmark script with node.
+I singoli benchmark possono essere eseguiti semplicemente eseguendo lo script di benchmark con node.
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js
@@ -82,9 +82,9 @@ buffers/buffer-tostring.js n=10000000 len=64 arg=false: 8718280.70650129
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 4103857.0726124765
 ```
 
-Each line represents a single benchmark with parameters specified as `${variable}=${value}`. Each configuration combination is executed in a separate process. This ensures that benchmark results aren't affected by the execution order due to V8 optimizations. **The last number is the rate of operations measured in ops/sec (higher is better).**
+Ogni riga rappresenta un singolo benchmark con parametri specificati come `${variable}=${value}`. Ogni combinazione di configurazione viene eseguita in un processo separato. Ciò garantisce che i risultati del benchmark non siano influenzati dall'ordine di esecuzione a causa delle ottimizzazioni di V8. **L'ultimo numero è il rate delle operazioni misurato in ops/sec (più è alto meglio è).**
 
-Furthermore a subset of the configurations can be specified, by setting them in the process arguments:
+Inoltre, è possibile specificare un sottoinsieme delle configurazioni, impostandole negli argomenti del processo:
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js len=1024
@@ -93,9 +93,9 @@ buffers/buffer-tostring.js n=10000000 len=1024 arg=true: 3498295.68561504
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 3783071.1678948295
 ```
 
-### Running all benchmarks
+### Eseguire tutti i benchmark
 
-Similar to running individual benchmarks, a group of benchmarks can be executed by using the `run.js` tool. To see how to use this script, run `node benchmark/run.js`. Again this does not provide the statistical information to make any conclusions.
+Simile all'esecuzione dei singoli benchmark, un gruppo di benchmark può essere eseguito utilizzando lo strumento `run.js`. Per vedere come utilizzare questo script, esegui `node benchmark/run.js`. Ancora una volta questo non fornisce le informazioni statistiche per trarre delle conclusioni.
 
 ```console
 $ node benchmark/run.js arrays
