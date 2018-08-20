@@ -35,15 +35,15 @@ Di default, `wrk` sarà utilizzato come benchmarker. Se non è disponibile, sar�
 
 #### Requisiti del Benchmark HTTP/2
 
-Per eseguire i benchmark `http2`, è necessario utilizzare il benchmarker `h2load`. The `h2load` tool is a component of the `nghttp2` project and may be installed from [nghttp2.org](http://nghttp2.org) or built from source.
+Per eseguire i benchmark `http2`, è necessario utilizzare il benchmarker `h2load`. Lo strumento `h2load` è una componente del progetto `nghttp2` e può essere installato da [nghttp2.org](http://nghttp2.org) oppure può essere creato dalla sorgente.
 
 `node benchmark/http2/simple.js benchmarker=autocannon`
 
-### Benchmark Analysis Requirements
+### Requisiti per l'Analisi del Benchmark
 
-To analyze the results, `R` should be installed. Use one of the available package managers or download it from https://www.r-project.org/.
+Per analizzare i risultati, dovrebbe essere installato `R`. Utilizza uno dei manager dei pacchetti disponibili o scaricalo da https://www.r-project.org/.
 
-The R packages `ggplot2` and `plyr` are also used and can be installed using the R REPL.
+Vengono usati anche i pacchetti R `ggplot2` e `plyr` e possono essere installati usando R REPL.
 
 ```R
 $ R
@@ -51,7 +51,7 @@ install.packages("ggplot2")
 install.packages("plyr")
 ```
 
-In the event that a message is reported stating that a CRAN mirror must be selected first, specify a mirror by adding in the repo parameter.
+Nel caso in cui venga segnalato un messaggio per indicare che deve essere selezionato per primo un CRAN mirror, specifica un mirror aggiungendo il parametro repo.
 
 If we used the "http://cran.us.r-project.org" mirror, it could look something like this:
 
