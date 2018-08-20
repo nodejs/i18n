@@ -151,15 +151,15 @@ $ node benchmark/compare.js --old ./node-master --new ./node-pr-5134 string_deco
 *Suggerimenti: ci sono alcune opzioni utili di `benchmark/compare.js`. Ad esempio, se desideri confrontare il benchmark di un singolo script anziché di un intero modulo, puoi utilizzare l'opzione `--filter`:*
 
 ```console
-  --new      ./new-node-binary  new node binary (required)
-  --old      ./old-node-binary  old node binary (required)
-  --runs     30                 number of samples
-  --filter   pattern            string to filter benchmark scripts
-  --set      variable=value     set benchmark variable (can be repeated)
-  --no-progress                 don't show benchmark progress indicator
+  --new      ./new-node-binary  nuovo node binary (richiesto)
+  --old      ./old-node-binary  vecchio node binary (richiesto)
+  --runs     30                 numero di campioni
+  --filter   pattern            stringa per filtrare gli script di benchmark
+  --set      variable=value     imposta la variabile benchmark (può essere ripetuto)
+  --no-progress                 non mostra l'indicatore di progresso del benchmark
 ```
 
-For analysing the benchmark results use the `compare.R` tool.
+Per analizzare i risultati del benchmark utilizza lo strumento `compare.R`.
 
 ```console
 $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
@@ -172,9 +172,9 @@ $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
 ...
 ```
 
-In the output, *improvement* is the relative improvement of the new version, hopefully this is positive. *confidence* tells if there is enough statistical evidence to validate the *improvement*. If there is enough evidence then there will be at least one star (`*`), more stars is just better. **However if there are no stars, then don't make any conclusions based on the *improvement*.** Sometimes this is fine, for example if no improvements are expected, then there shouldn't be any stars.
+Nell'output, *improvement* è il miglioramento relativo alla nuova versione, si spera quindi che sia positivo. *confidence* indica se vi sono sufficienti prove statistiche per convalidare l'*improvement*. Se ci sono abbastanza prove allora ci sarà almeno una stella (`*`), è sempre meglio avere più stelle possibili. **Tuttavia, se non ci sono stelle, non formulare conclusioni basate sull'*improvement*.** A volte questo va bene, per esempio se non ci si aspetta miglioramenti (improvement) non ci dovrebbero essere stelle.
 
-**A word of caution:** Statistics is not a foolproof tool. If a benchmark shows a statistical significant difference, there is a 5% risk that this difference doesn't actually exist. For a single benchmark this is not an issue. But when considering 20 benchmarks it's normal that one of them will show significance, when it shouldn't. A possible solution is to instead consider at least two stars (`**`) as the threshold, in that case the risk is 1%. If three stars (`***`) is considered the risk is 0.1%. However this may require more runs to obtain (can be set with `--runs`).
+**Una parola di avvertenza:** Le statistiche non sono uno strumento infallibile. Se un benchmark mostra una differenza statistica significativa, c'è un rischio del 5% che questa differenza in realtà non esista. For a single benchmark this is not an issue. But when considering 20 benchmarks it's normal that one of them will show significance, when it shouldn't. A possible solution is to instead consider at least two stars (`**`) as the threshold, in that case the risk is 1%. If three stars (`***`) is considered the risk is 0.1%. However this may require more runs to obtain (can be set with `--runs`).
 
 *For the statistically minded, the R script performs an [independent/unpaired 2-group t-test](https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_or_unequal_sample_sizes.2C_unequal_variances), with the null hypothesis that the performance is the same for both versions. The confidence field will show a star if the p-value is less than `0.05`.*
 
