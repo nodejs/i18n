@@ -257,19 +257,19 @@ chunk     encoding       mean confidence.interval
 
 ### Eseguire i Benchmark sulla CI
 
-To see the performance impact of a Pull Request by running benchmarks on the CI, check out [How to: Running core benchmarks on Node.js CI](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
+Per vedere l'impatto di una Pull Request sulle prestazioni eseguendo i benchmark sulla CI, dai un'occhiata a [How to: Eseguire dei core benchmark su Node.js CI](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
 
-## Creating a benchmark
+## Creare un benchmark
 
-### Basics of a benchmark
+### Nozioni di base su un benchmark
 
-All benchmarks use the `require('../common.js')` module. This contains the `createBenchmark(main, configs[, options])` method which will setup the benchmark.
+Tutti i benchmark utilizzato il modulo `require('../common.js')`. Questo contiene il metodo `createBenchmark(main, configs[, options])` che creerà il setup del benchmark.
 
-The arguments of `createBenchmark` are:
+Gli argomenti di `createBenchmark` sono:
 
-* `main` {Function} The benchmark function, where the code running operations and controlling timers should go
-* `configs` {Object} The benchmark parameters. `createBenchmark` will run all possible combinations of these parameters, unless specified otherwise. Each configuration is a property with an array of possible values. Note that the configuration values can only be strings or numbers.
-* `options` {Object} The benchmark options. At the moment only the `flags` option for specifying command line flags is supported.
+* `main` {Function} La funzione benchmark, in cui devono essere eseguite le operazioni di esecuzione del codice ed i timer di controllo
+* `configs` {Object} I parametri del benchmark. `createBenchmark` eseguirà tutte le possibili combinazioni di questi parametri, se non viene specificato diversamente. Ogni configurazione è una proprietà con un array di valori possibili. Da notare che i valori di configurazione possono essere solo stringhe o numeri.
+* `options` {Object} Le opzioni del benchmark. Al momento è supportata solo l'opzione `flags` per specificare i flag della command line.
 
 `createBenchmark` returns a `bench` object, which is used for timing the runtime of the benchmark. Run `bench.start()` after the initialization and `bench.end(n)` when the benchmark is done. `n` is the number of operations performed in the benchmark.
 
