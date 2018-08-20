@@ -133,7 +133,7 @@ Beim Aufruf von [`require()`](modules.html#modules_require) kann die Erweiterung
 
 Jedes der in diesem Dokument dargestellten Beispiele verwendet direkt die Node.js und die V8-Programmierschnittstellen für die Implementierung von Erweiterungen. Es ist wichtig zu verstehen, dass sich die V8-Programmierschnittstelle von einer V8-Version zur nächsten (und von einer großen Node.js-Version zur nächsten) grundlegend verändern kann und tatsächlich verändert hat. Bei jeder Änderung müssen Erweiterungen aktualisiert und neu kompiliert werden, damit sie weiter funktionieren. Der Zeitplan für die Veröffentlichung von Node.js wurde entwickelt, um die Häufigkeit und die Auswirkungen solcher Änderungen zu minimieren, aber es gibt wenig, was Node.js derzeit tun kann, um die Stabilität der V8-Programmierschnittstellen zu gewährleisten.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+Die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan) (oder `nan`) bieten eine Reihe von Tools, die Erweiterungs-Entwicklern empfohlen werden, um die Kompatibilität zwischen früheren und zukünftigen Versionen von V8 und Node.js zu gewährleisten. Siehe `nan` [Beispiele](https://github.com/nodejs/nan/tree/master/examples/) für eine Veranschaulichung, wie sie verwendet werden können.
 
 ## N-API
 
