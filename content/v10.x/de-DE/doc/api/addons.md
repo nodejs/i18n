@@ -177,11 +177,11 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 Die verfügbaren Funktionen und deren Verwendung sind im Abschnitt [C/C++ Erweiterungen - N-API](n-api.html) dokumentiert.
 
-## Beispiele für Erweiterungen
+## Addon examples
 
-Nachfolgend finden Sie einige Beispiele für Erweiterungen, die den Entwicklern den Einstieg erleichtern sollen. Die Beispiele nutzen die V8-Programmierschnittstellen. Für eine Erklärung verschiedener Konzepte wie Handles, Scopes, Funktionsvorlagen, etc. und für Hilfe bei den verschiedenen V8-Calls siehe die [V8-Referenz](https://v8docs.nodesource.com/) und V8's [Einbettungsanleitung](https://github.com/v8/v8/wiki/Embedder's%20Guide).
+Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
-Jedes dieser Beispiele nutzt die folgende `binding.gyp`-Datei:
+Each of these examples using the following `binding.gyp` file:
 
 ```json
 {
@@ -194,13 +194,13 @@ Jedes dieser Beispiele nutzt die folgende `binding.gyp`-Datei:
 }
 ```
 
-In Fällen, in denen es mehr als eine `.cc`-Datei gibt, fügen Sie einfach den zusätzlichen Dateinamen zum `sources`-Array hinzu:
+In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Sobald die Datei `binding.gyp` fertig ist, können die Beispielserweiterungen mit `node-gyp` konfiguriert und gebaut werden:
+Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
 
 ```console
 $ node-gyp configure build
