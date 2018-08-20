@@ -158,7 +158,7 @@ If `timeout` is greater than `0`, the parent will send the signal identified by 
 
 Unlike the exec(3) POSIX system call, `child_process.exec()` does not replace the existing process and uses a shell to execute the command.
 
-If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `stdout` and `stderr` properties. In case of an error (including any error resulting in an exit code other than 0), a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
+Si se invoca este método en su versión [`util.promisify()`][]ed, devuelve una `Promesa` para un `Objeto` con propiedades `stdout` y `stderr`. En el caso de un error (incluyendo cualquier error que resulte en una salida de código diferente a 0), se devolverá una promesa con el mismo objeto `error` dado en el callback, pero con dos propiedades adicionales `stdout` y `stderr`.
 
 ```js
 const util = require('util');
@@ -183,16 +183,16 @@ changes:
     description: The `windowsHide` option is supported now.
 -->
 
-* `file` {string} The name or path of the executable file to run.
-* `args` {string[]} List of string arguments.
-* `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
+* `archivo` {string} El nombre o la ruta del archivo a ejecutar.
+* `args` {string[]} Lista de argumentos de strings.
+* `opciones` {Object} 
+  * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `env` {Object} Environment key-value pairs.
   * `encoding` {string} **Default:** `'utf8'`
   * `timeout` {number} **Default:** `0`
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} Cantidad más grande de datos en bytes permitidos en stdout o stderr. Si se excede, se finaliza el proceso secundario. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `uid` {number} Establece la identidad del usuario del proceso (vea setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
@@ -219,7 +219,7 @@ const child = execFile('node', ['--version'], (error, stdout, stderr) => {
 
 The `stdout` and `stderr` arguments passed to the callback will contain the stdout and stderr output of the child process. By default, Node.js will decode the output as UTF-8 and pass strings to the callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
 
-If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `stdout` and `stderr` properties. In case of an error (including any error resulting in an exit code other than 0), a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
+Si se invoca este método en su versión [`util.promisify()`][]ed, devuelve una `Promesa` para un `Objeto` con propiedades `stdout` y `stderr`. In case of an error (including any error resulting in an exit code other than 0), a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
 
 ```js
 const util = require('util');
