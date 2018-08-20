@@ -2964,10 +2964,10 @@ Using [`fs.watch()`][] is more efficient than `fs.watchFile` and `fs.unwatchFile
 
 When a file being watched by `fs.watchFile()` disappears and reappears, then the `previousStat` reported in the second callback event (the file's reappearance) will be the same as the `previousStat` of the first callback event (its disappearance).
 
-This happens when:
+Esto ocurre cuando:
 
-* the file is deleted, followed by a restore
-* the file is renamed twice - the second time back to its original name
+* el archivo es eliminado, seguido de una restauración
+* el archivo es renombrado dos veces - la segunda vez de vuelta a su nombre original
 
 ## fs.write(fd, buffer[, offset[, length[, position]]], callback)
 
@@ -3001,17 +3001,17 @@ changes:
   * `bytesWritten` {integer}
   * `buffer` {Buffer|Uint8Array}
 
-Write `buffer` to the file specified by `fd`.
+Escribe `buffer` al archivo especificado por `fd`.
 
 `offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
 
-`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
+`position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
-The callback will be given three arguments `(err, bytesWritten, buffer)` where `bytesWritten` specifies how many *bytes* were written from `buffer`.
+Al callback se le darán tres argumentos `(err, bytesWritten, buffer)` en donde `bytesWritten` especificará cuántos *bytes* fueron escritos desde `buffer`.
 
-If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `bytesWritten` and `buffer` properties.
+Si se invoca este método en su versión [`util.promisify()`][], devolverá una `Promise` para un `Object` con `bytesWritten` y propiedades de `buffer` .
 
-Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
+Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
