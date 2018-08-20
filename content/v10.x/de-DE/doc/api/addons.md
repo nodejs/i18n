@@ -139,9 +139,9 @@ Die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan) (oder `n
 
 > Stabilität: 1 - Experimentell
 
-N-API ist eine Programmierschnittstelle zum Erstellen von nativen Erweiterungen. Sie ist unabhängig von der zugrundeliegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst gepflegt. Diese Programmierschnittstelle wird über alle Versionen von Node.js hinweg, Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Erweiterungen von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können. Erweiterungen werden mit den in diesem Dokument beschriebenen Methoden und Werkzeugen (node-gyp, etc.) erstellt. Der einzige Unterschied ist das Set an Programmierschnittstellen, die von dem ursprünglichen Code verwendet werden. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API ist eine Programmierschnittstelle zum Erstellen von nativen Erweiterungen. Sie ist unabhängig von der zugrundeliegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst gepflegt. Diese Programmierschnittstelle wird über alle Versionen von Node.js hinweg, Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Erweiterungen von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können. Erweiterungen werden mit den in diesem Dokument beschriebenen Methoden und Werkzeugen (node-gyp, etc.) erstellt. Der einzige Unterschied ist das Set an Programmierschnittstellen, die von dem ursprünglichen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-Programmierschnittstellen zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Um N-API im obigen Beispiel "Hello world" zu verwenden, ersetzen Sie den Inhalt von `hello.cc` durch den folgenden. Alle anderen Anweisungen bleiben dieselben.
 
 ```cpp
 // hello.cc using N-API
@@ -175,11 +175,11 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+Die verfügbaren Funktionen und deren Verwendung sind im Abschnitt [C/C++ Erweiterungen - N-API](n-api.html) dokumentiert.
 
-## Addon examples
+## Beispiele für Erweiterungen
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Nachfolgend finden Sie einige Beispiele für Erweiterungen, die den Entwicklern den Einstieg erleichtern sollen. Die Beispiele nutzen die V8-Programmierschnittstellen. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
 Each of these examples using the following `binding.gyp` file:
 
