@@ -69,7 +69,7 @@ En procesos difíciles, el programador es *fuertemente aconsejado* que use la ve
 
 Aunque no es recomendado, la mayoría de las funciones fs permiten que el argumento de devolución de llamada sea omitido, en este caso, una devolución de llamada predeterminada sea usada para regenerar errores. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
 
-Omitir la función de callback en funciones fs asincrónicas es obsoleto y resultado puede ser un error que ocurrirá en el futuro.
+Omitir la función de callback en funciones fs asincrónicas es obsoleto y su resultado puede ser un error que ocurrirá en el futuro.
 
 ```txt
 $ cat script.js
@@ -985,7 +985,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Cambia de manera asincrónica los permisos de un archivo. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+Cambia de manera asincrónica los permisos de un archivo. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Vea también: chmod(2).
 
@@ -1413,7 +1413,7 @@ changes:
 
 Versión sincrónica de [`fs.exists()`][]. Devuelve `true` si la ruta existe, de lo contrario `false`.
 
-Tenga en cuenta que `fs.exists()` es obsoleto, pero `fs.existsSync()` no. (El parámetro de `callback` a `fs.exists()` acepta los parámetros que son inconsistente con otros callbacks de Node.js. `fs.existsSync()` no utiliza un callback.)
+Tenga en cuenta que `fs.exists()` es obsoleto, pero `fs.existsSync()` no. (El parámetro de `callback` a `fs.exists()` acepta los parámetros que son inconsistentes con otros callbacks de Node.js. `fs.existsSync()` no utiliza un callback.)
 
 ## fs.fchmod(fd, mode, callback)
 
@@ -1436,7 +1436,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fchmod(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+Asynchronous fchmod(2). Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchmodSync(fd, mode)
 
@@ -1471,7 +1471,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-fchown(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+fchown(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchownSync(fd, uid, gid)
 
@@ -1505,7 +1505,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-fdatasync(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+fdatasync(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fdatasyncSync(fd)
 
@@ -1571,7 +1571,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-fsync(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+fsync(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fsyncSync(fd)
 
@@ -1604,7 +1604,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous ftruncate(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+Asynchronous ftruncate(2). Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Si el archivo referido por el descriptor de archivos fuese más grande que los bytes `len`, sólo los primeros bytes `len` serán retenidos en el archivo.
 
@@ -1725,7 +1725,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-lchmod(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+lchmod(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Sólo disponible en macOS.
 
@@ -1762,7 +1762,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-lchwon(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+lchwon(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.lchownSync(path, uid, gid)
 
