@@ -1,18 +1,18 @@
-# How to Write and Run Benchmarks in Node.js Core
+# Come Scrivere ed Eseguire i Benchmark nel Node.js Core
 
-## Table of Contents
+## Sommario
 
-* [Prerequisites](#prerequisites) 
-  * [HTTP Benchmark Requirements](#http-benchmark-requirements)
-  * [Benchmark Analysis Requirements](#benchmark-analysis-requirements)
-* [Running benchmarks](#running-benchmarks) 
-  * [Running individual benchmarks](#running-individual-benchmarks)
-  * [Running all benchmarks](#running-all-benchmarks)
-  * [Comparing Node.js versions](#comparing-nodejs-versions)
-  * [Comparing parameters](#comparing-parameters)
-  * [Running Benchmarks on the CI](#running-benchmarks-on-the-ci)
-* [Creating a benchmark](#creating-a-benchmark) 
-  * [Basics of a benchmark](#basics-of-a-benchmark)
+* [Prerequisiti](#prerequisites) 
+  * [Requisiti del Benchmark HTTP](#http-benchmark-requirements)
+  * [Requisiti per l'Analisi del Benchmark](#benchmark-analysis-requirements)
+* [Eseguire i benchmark](#running-benchmarks) 
+  * [Eseguire i singoli benchmark](#running-individual-benchmarks)
+  * [Eseguire tutti i benchmark](#running-all-benchmarks)
+  * [Confronto tra le versioni di Node.js](#comparing-nodejs-versions)
+  * [Confronto dei parametri](#comparing-parameters)
+  * [Eseguire i Benchmark sulla CI](#running-benchmarks-on-the-ci)
+* [Creare un benchmark](#creating-a-benchmark) 
+  * [Nozioni di base su un benchmark](#basics-of-a-benchmark)
   * [Creating an HTTP benchmark](#creating-an-http-benchmark)
 
 ## Prerequisites
