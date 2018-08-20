@@ -178,7 +178,7 @@ Nell'output, *improvement* è il miglioramento relativo alla nuova versione, si 
 
 *Per quanto riguarda la statistica, lo script R esegue un [independent/unpaired 2-group t-test](https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_or_unequal_sample_sizes.2C_unequal_variances), con l'ipotesi nulla che le prestazioni siano le stesse per entrambe le versioni. Il campo confidence mostrerà una stella se il p-value è inferiore a `0.05`.*
 
-Lo strumento `compare.R` può anche produrre un box plot utilizzando l'opzione `--plot filename`. In this case there are 48 different benchmark combinations, and there may be a need to filter the csv file. This can be done while benchmarking using the `--set` parameter (e.g. `--set encoding=ascii`) or by filtering results afterwards using tools such as `sed` or `grep`. In the `sed` case be sure to keep the first line since that contains the header information.
+Lo strumento `compare.R` può anche produrre un box plot utilizzando l'opzione `--plot filename`. In questo caso ci sono 48 diverse combinazioni di benchmark e potrebbe essere necessario filtrare il file csv. Questo può essere fatto durante il benchmarking usando il parametro `--set` (es. `--set encoding=ascii`) oppure filtrando successivamente i risultati usando strumenti come `sed` o `grep`. Nel caso di `sed` assicurati di mantenere così la prima riga dal momento che contiene le informazioni dell'header.
 
 ```console
 $ cat compare-pr-5134.csv | sed '1p;/encoding='"'"ascii"'"'/!d' | Rscript benchmark/compare.R --plot compare-plot.png
@@ -193,17 +193,17 @@ $ cat compare-pr-5134.csv | sed '1p;/encoding='"'"ascii"'"'/!d' | Rscript benchm
 
 ![compare tool boxplot](doc_img/compare-boxplot.png)
 
-### Comparing parameters
+### Confronto dei parametri
 
-It can be useful to compare the performance for different parameters, for example to analyze the time complexity.
+Può essere utile confrontare le prestazioni per diversi parametri, ad esempio per analizzare la complessità temporale.
 
-To do this use the `scatter.js` tool, this will run a benchmark multiple times and generate a csv with the results. To see how to use this script, run `node benchmark/scatter.js`.
+Per farlo utilizza lo strumento `scatter.js`, eseguirà un benchmark più volte e genererà un csv con i risultati. Per vedere come utilizzare questo script, esegui `node benchmark/scatter.js`.
 
 ```console
 $ node benchmark/scatter.js benchmark/string_decoder/string-decoder.js > scatter.csv
 ```
 
-After generating the csv, a comparison table can be created using the `scatter.R` tool. Even more useful it creates an actual scatter plot when using the `--plot filename` option.
+Dopo aver generato il csv, è possibile creare una tabella di confronto utilizzando lo strumento `scatter.R`. Ancora più utile, tramite l'opzione `--plot filename`, si può creare uno scatter plot reale.
 
 ```console
 $ cat scatter.csv | Rscript benchmark/scatter.R --xaxis chunk --category encoding --plot scatter-plot.png --log
@@ -229,7 +229,7 @@ chunk     encoding      mean confidence.interval
  1024         utf8 1554832.5           237532.07
 ```
 
-Because the scatter plot can only show two variables (in this case *chunk* and *encoding*) the rest is aggregated. Sometimes aggregating is a problem, this can be solved by filtering. This can be done while benchmarking using the `--set` parameter (e.g. `--set encoding=ascii`) or by filtering results afterwards using tools such as `sed` or `grep`. In the `sed` case be sure to keep the first line since that contains the header information.
+Poiché lo scatter plot può mostrare solo due variabili (in questo caso *chunk* ed *encoding*) il resto viene aggregato. A volte l'aggregazione è un problema, che però può essere risolto tramite il filtro. Questo può essere fatto durante il benchmarking usando il parametro `--set` (es. `--set encoding=ascii`) oppure filtrando successivamente i risultati usando strumenti come `sed` o `grep`. Nel caso di `sed` assicurati di mantenere così la prima riga dal momento che contiene le informazioni dell'header.
 
 ```console
 $ cat scatter.csv | sed -E '1p;/([^,]+, ){3}128,/!d' | Rscript benchmark/scatter.R --xaxis chunk --category encoding --plot scatter-plot.png --log
@@ -255,7 +255,7 @@ chunk     encoding       mean confidence.interval
 
 ![compare tool boxplot](doc_img/scatter-plot.png)
 
-### Running Benchmarks on the CI
+### Eseguire i Benchmark sulla CI
 
 To see the performance impact of a Pull Request by running benchmarks on the CI, check out [How to: Running core benchmarks on Node.js CI](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
 
