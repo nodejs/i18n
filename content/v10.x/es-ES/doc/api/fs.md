@@ -3286,7 +3286,7 @@ added: v10.0.0
 * `position` {integer}
 * Returns: {Promise}
 
-Leer datos del archivo.
+Leer datos desde el archivo.
 
 `buffer` is the buffer that the data will be written to.
 
