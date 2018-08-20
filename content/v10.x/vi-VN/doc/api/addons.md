@@ -89,9 +89,9 @@ Sau khi tạo xong tệp tin `binding.gyp`, có thể sử dụng `node-gyp conf
 
 Tiếp theo, sử dụng lệnh `node-gyp build` để tạo ra tệp `addon.node` đã được biên soạn. This will be put into the `build/Release/` directory.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Khi sử dụng `npm install` để cài đặt phần mở rộng cho Node.js, npm sẽ sử dụng riêng phiên bản đã được gói lại `node-gyp` để thống nhất các thao tác, giúp người dùng có được thành phần mở rộng với phiên bản đã được biên soạn theo yêu cầu.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Sau khi xây dựng, phần mở rộng nhị phân có thể được sử dụng trong Node.js thông qua [`require()`](modules.html#modules_require) để hoàn thiện mô-đun `addon.node`:
 
 ```js
 // hello.js
@@ -101,7 +101,7 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Để biết thêm thông tin, hãy xem các ví dụ bên dưới hoặc truy cập <https://github.com/arturadib/node-qt> để biết các ví dụ trong môi trường sản xuất.
 
 Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
 
