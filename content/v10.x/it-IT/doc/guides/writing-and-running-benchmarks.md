@@ -116,21 +116,21 @@ arrays/zero-int.js n=25 type=Buffer: 90.49906662339653
 ...
 ```
 
-It is possible to execute more groups by adding extra process arguments.
+È possibile eseguire più gruppi aggiungendo ulteriori argomenti del processo.
 
 ```console
 $ node benchmark/run.js arrays buffers
 ```
 
-### Comparing Node.js versions
+### Confronto tra le versioni di Node.js
 
-To compare the effect of a new Node.js version use the `compare.js` tool. This will run each benchmark multiple times, making it possible to calculate statistics on the performance measures. To see how to use this script, run `node benchmark/compare.js`.
+Per confrontare l'effetto di una nuova versione di Node.js, utilizza lo strumento `compare.js`. Questo eseguirà ogni benchmark più volte, rendendo possibile il calcolo delle statistiche sulle misure delle prestazioni (performance). Per vedere come utilizzare questo script, esegui `node benchmark/compare.js`.
 
-As an example on how to check for a possible performance improvement, the [#5134](https://github.com/nodejs/node/pull/5134) pull request will be used as an example. This pull request *claims* to improve the performance of the `string_decoder` module.
+Come esempio su come verificare un possibile miglioramento delle prestazioni verrà utilizzata la pull request [#5134](https://github.com/nodejs/node/pull/5134). Questa pull request *pretende* di migliorare le prestazioni del modulo `string_decoder`.
 
-First build two versions of Node.js, one from the master branch (here called `./node-master`) and another with the pull request applied (here called `./node-pr-5134`).
+Prima costruisci due versioni di Node.js, una dal master branch (qui chiamato`./node-master`) ed un'altra con l'applicazione della pull request (qui chiamata `./node-pr-5134`).
 
-To run multiple compiled versions in parallel you need to copy the output of the build: `cp ./out/Release/node ./node-master`. Check out the following example:
+Per eseguire più versioni compilate in parallelo è necessario copiare l'output della build: `cp ./out/Release/node ./node-master`. Guarda il seguente esempio:
 
 ```console
 $ git checkout master
@@ -142,13 +142,13 @@ $ ./configure && make -j4
 $ cp ./out/Release/node ./node-pr-5134
 ```
 
-The `compare.js` tool will then produce a csv file with the benchmark results.
+Lo strumento `compare.js` produrrà quindi un file csv con i risultati del benchmark.
 
 ```console
 $ node benchmark/compare.js --old ./node-master --new ./node-pr-5134 string_decoder > compare-pr-5134.csv
 ```
 
-*Tips: there are some useful options of `benchmark/compare.js`. For example, if you want to compare the benchmark of a single script instead of a whole module, you can use the `--filter` option:*
+*Suggerimenti: ci sono alcune opzioni utili di `benchmark/compare.js`. Ad esempio, se desideri confrontare il benchmark di un singolo script anziché di un intero modulo, puoi utilizzare l'opzione `--filter`:*
 
 ```console
   --new      ./new-node-binary  new node binary (required)
