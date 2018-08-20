@@ -119,11 +119,11 @@ try {
 
 Node.js verwendet eine Reihe von statisch-gelinkten Bibliotheken wie V8, libuv und OpenSSL. Alle Erweiterungen müssen auf V8 verweisen und können auch auf andere Abhängigkeitsbeziehungen verweisen. Normalerweise ist dies so einfach wie das Einfügen der entsprechenden `#include <...>` Anweisungen (z.B. `#include <v8.h> `) und `node-gyp` findet die entsprechenden Überschriften automatisch. Es gibt jedoch einige Einschränkungen zu beachten:
 
-* Wenn `node-gyp` läuft, erkennt es die spezifische Version von Node.js und lädt entweder den vollständigen Quelltext oder nur die Überschriften herunter. Wenn der vollständige Quellcode heruntergeladen wird, haben Erweiterungen vollständigen Zugriff auf das gesamte Set der Abhängigkeitsbeziehungen von Node.js. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Wenn `node-gyp` läuft, erkennt es die spezifische Version von Node.js und lädt entweder den vollständigen Quelltext oder nur die Überschriften herunter. Wenn der vollständige Quellcode heruntergeladen wird, haben Erweiterungen vollständigen Zugriff auf das gesamte Set der Abhängigkeitsbeziehungen von Node.js. Wenn jedoch nur die Node.js-Überschriften heruntergeladen werden, stehen nur die von Node.js exportierten Symbole zur Verfügung.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* `node-gyp` kann mit dem `--nodedir` Flag ausgeführt werden, das auf ein lokales Node.js Quellbild verweist. Mit dieser Option hat die Erweiterung Zugriff auf das volle Set von Abhängigkeitsbeziehungen.
 
-### Loading Addons using require()
+### Laden von Erweiterungen mit require()
 
 The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
