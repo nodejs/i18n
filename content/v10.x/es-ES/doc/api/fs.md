@@ -3043,15 +3043,15 @@ changes:
   * `written` {integer}
   * `string` {string}
 
-Write `string` to the file specified by `fd`. If `string` is not a string, then the value will be coerced to one.
+Escribe `string` al archivo especificado por `fd`. Si `string` no es una string, entonces el valor será forzado a uno.
 
-`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'` the data will be written at the current position. See pwrite(2).
+`position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
 `encoding` es la codificación de string esperada.
 
-The callback will receive the arguments `(err, written, string)` where `written` specifies how many *bytes* the passed string required to be written. Tenga en cuenta que bytes escritos no es igual a caracteres de string. See [`Buffer.byteLength`][].
+El callback recibirá los argumentos `(err, written, string)`, en donde `written` especificará cuántos *bytes* necesitó la string pasada para ser escrita. Tenga en cuenta que bytes escritos no es igual a caracteres de string. Vea [`Buffer.byteLength`][].
 
-Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
+Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
