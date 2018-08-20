@@ -2660,7 +2660,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
 
-Synchronous symlink(2). Returns `undefined`.
+Synchronous symlink(2). Devuelve `undefined`.
 
 ## fs.truncate(path[, len], callback)
 
@@ -2683,7 +2683,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous truncate(2). No arguments other than a possible exception are given to the completion callback. Un descriptor de archivos también puede ser pasado como el primer argumento. In this case, `fs.ftruncate()` is called.
+Asynchronous truncate(2). No arguments other than a possible exception are given to the completion callback. Un descriptor de archivos también puede ser pasado como el primer argumento. En este caso, `fs.ftruncate()` es llamado.
 
 Passing a file descriptor is deprecated and may result in an error being thrown in the future.
 
@@ -2834,7 +2834,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Versión sincrónica de [`fs.utimes()`][]. Returns `undefined`.
+Versión sincrónica de [`fs.utimes()`][]. Devuelve `undefined`.
 
 ## fs.watch(filename\[, options\]\[, listener\])
 
@@ -2863,7 +2863,7 @@ changes:
 
 Watch for changes on `filename`, where `filename` is either a file or a directory.
 
-El segundo argumento es opcional. If `options` is provided as a string, it specifies the `encoding`. Otherwise `options` should be passed as an object.
+El segundo argumento es opcional. Si se proporciona `options` como una string, especificará el `encoding`. De lo contrario, `options` debería ser pasado como un objeto.
 
 The listener callback gets two arguments `(eventType, filename)`. `eventType` is either `'rename'` or `'change'`, and `filename` is the name of the file which triggered the event.
 
@@ -2904,11 +2904,11 @@ On Linux and macOS systems, `fs.watch()` resolves the path to an [inode](https:/
 
 AIX files retain the same inode for the lifetime of a file. Saving and closing a watched file on AIX will result in two notifications (one for adding new content, and one for truncation).
 
-#### Filename Argument
+#### Argumento de Nombre de archivo
 
 <!--type=misc-->
 
-Providing `filename` argument in the callback is only supported on Linux, macOS, Windows, and AIX. Even on supported platforms, `filename` is not always guaranteed to be provided. Therefore, don't assume that `filename` argument is always provided in the callback, and have some fallback logic if it is `null`.
+Proporcionar un argumento de `filename` en el callback sólo es soportado en Linux, macOS, WIndows, y AIX. Incluso en las plataformas que lo soportan, no se garantiza que `filename` siempre será proporcionado. Therefore, don't assume that `filename` argument is always provided in the callback, and have some fallback logic if it is `null`.
 
 ```js
 fs.watch('somedir', (eventType, filename) => {
