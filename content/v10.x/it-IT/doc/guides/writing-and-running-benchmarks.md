@@ -13,29 +13,29 @@
   * [Eseguire i Benchmark sulla CI](#running-benchmarks-on-the-ci)
 * [Creare un benchmark](#creating-a-benchmark) 
   * [Nozioni di base su un benchmark](#basics-of-a-benchmark)
-  * [Creating an HTTP benchmark](#creating-an-http-benchmark)
+  * [Creare un benchmark HTTP](#creating-an-http-benchmark)
 
-## Prerequisites
+## Prerequisiti
 
-Basic Unix tools are required for some benchmarks. [Git for Windows](http://git-scm.com/download/win) includes Git Bash and the necessary tools, which need to be included in the global Windows `PATH`.
+Per alcuni benchmark sono necessari strumenti Basic Unix. [Git per Windows](http://git-scm.com/download/win) include Git Bash e gli strumenti necessari, che devono essere inclusi nel Windows `PATH` globale.
 
-### HTTP Benchmark Requirements
+### Requisiti del Benchmark HTTP
 
-Most of the HTTP benchmarks require a benchmarker to be installed. This can be either [`wrk`](https://github.com/wg/wrk) or [`autocannon`](https://github.com/mcollina/autocannon).
+La maggior parte dei benchmark HTTP richiede l'installazione di un benchmarker. Questo può essere [`wrk`](https://github.com/wg/wrk) oppure [`autocannon`](https://github.com/mcollina/autocannon).
 
-`Autocannon` is a Node.js script that can be installed using `npm install -g autocannon`. It will use the Node.js executable that is in the path. In order to compare two HTTP benchmark runs, make sure that the Node.js version in the path is not altered.
+`Autocannon` è uno script Node.js che può essere installato utilizzando `npm install -g autocannon`. Utilizzerà l'eseguibile Node.js che si trova nel path (percorso). Per mettere a confronto due esecuzioni di benchmark HTTP, assicurarsi che la versione Node.js nel path (percorso) non sia alterata.
 
-`wrk` may be available through one of the available package managers. If not, it can be easily built [from source](https://github.com/wg/wrk) via `make`.
+`wrk` potrebbe essere disponibile attraverso uno dei manager dei pacchetti disponibili. In caso contrario, può essere facilmente creato [dalla sorgente](https://github.com/wg/wrk) tramite `make`.
 
-By default, `wrk` will be used as the benchmarker. If it is not available, `autocannon` will be used in its place. When creating an HTTP benchmark, the benchmarker to be used should be specified by providing it as an argument:
+Di default, `wrk` sarà utilizzato come benchmarker. Se non è disponibile, sarà utilizzato `autocannon` al suo posto. Quando si crea un benchmark HTTP, è necessario specificare il benchmarker da utilizzare fornendolo come un argomento:
 
 `node benchmark/run.js --set benchmarker=autocannon http`
 
 `node benchmark/http/simple.js benchmarker=autocannon`
 
-#### HTTP/2 Benchmark Requirements
+#### Requisiti del Benchmark HTTP/2
 
-To run the `http2` benchmarks, the `h2load` benchmarker must be used. The `h2load` tool is a component of the `nghttp2` project and may be installed from [nghttp2.org](http://nghttp2.org) or built from source.
+Per eseguire i benchmark `http2`, è necessario utilizzare il benchmarker `h2load`. The `h2load` tool is a component of the `nghttp2` project and may be installed from [nghttp2.org](http://nghttp2.org) or built from source.
 
 `node benchmark/http2/simple.js benchmarker=autocannon`
 
