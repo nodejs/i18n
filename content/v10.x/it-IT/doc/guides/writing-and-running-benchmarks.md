@@ -279,7 +279,7 @@ Il primo passaggio configurerà il benchmark con la combinazione di parametri sp
 
 Nel secondo passaggio verrà eseguita la funzione `main` ed il processo verrà avviato con:
 
-* I frag passati all'interno di `createBenchmark` (il terzo argomento)
+* I flag passati all'interno di `createBenchmark` (il terzo argomento)
 * I flag nel comando passati quando veniva eseguito il benchmark
 
 Assicurati che qualsiasi codice al di fuori della funzione `main` venga eseguito due volte in processi diversi. Ciò potrebbe essere problematico se il codice al di fuori della funzione `main` ha effetti collaterali. In genere, si preferisce inserire il codice nella funzione `main` se è più di una semplice istruzione.
