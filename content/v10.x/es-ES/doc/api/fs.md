@@ -1802,7 +1802,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous link(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+Asynchronous link(2). Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.linkSync(existingPath, newPath)
 
@@ -1891,7 +1891,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Crea un directorio de manera asincrónica. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+Crea un directorio de manera asincrónica. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Vea también: mkdir(2).
 
