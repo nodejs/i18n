@@ -3408,17 +3408,17 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Escribe `buffer` al archivo.
 
-The `Promise` is resolved with an object containing a `bytesWritten` property identifying the number of bytes written, and a `buffer` property containing a reference to the `buffer` written.
+La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritten` que identifique el número de bytes escritos, y una propiedad de `buffer` que contenga una referencia al `buffer` escrito.
 
 `offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
 
-`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
+`position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
-It is unsafe to use `filehandle.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). Para este caso, `fs.createWriteStream` es altamente recomendado.
+No es seguro utilizar `filehandle.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -3433,17 +3433,17 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
+Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
 
-The `encoding` option is ignored if `data` is a buffer.
+La opción de `encoding` se ignora si `data` es un búfer.
 
 Si `options` es una string, entonces especifica la codificación.
 
-The `FileHandle` has to support writing.
+El `FileHandle` debe soportar la lectura.
 
-It is unsafe to use `filehandle.writeFile()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected).
+No es seguro utilizar `filehandle.writeFile()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada).
 
 ### fsPromises.access(path[, mode])
 
@@ -3453,9 +3453,9 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` can be read by the calling process.
@@ -3982,7 +3982,7 @@ added: v10.0.0
 
 Write `buffer` to the file specified by `filehandle`.
 
-The `Promise` is resolved with an object containing a `bytesWritten` property identifying the number of bytes written, and a `buffer` property containing a reference to the `buffer` written.
+La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritten` que identifique el número de bytes escritos, y una propiedad de `buffer` que contenga una referencia al `buffer` escrito.
 
 `offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
 
@@ -4006,7 +4006,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
 * Returns: {Promise}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
+Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
 
 The `encoding` option is ignored if `data` is a buffer.
 
