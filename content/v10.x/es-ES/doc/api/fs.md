@@ -3262,9 +3262,9 @@ async function openAndClose() {
 added: v10.0.0
 -->
 
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fdatasync(2). The `Promise` is resolved with no arguments upon success.
+fdatasync(2) asincrónico. The `Promise` is resolved with no arguments upon success.
 
 #### filehandle.fd
 
