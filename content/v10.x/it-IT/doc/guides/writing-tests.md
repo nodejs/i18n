@@ -221,15 +221,15 @@ assert.throws(
 
 Per considerazioni relative alle prestazioni, utilizziamo solo un sottoinsieme selezionato di funzionalità ES.Next nel codice JavaScript nella directory `lib`. Tuttavia, durante la scrittura dei test, per facilitare il backport, è consigliato utilizzare le funzionalità ES.Next utilizzabili direttamente senza un flag in [tutti i branch mantenuti](https://github.com/nodejs/lts). [node.green](http://node.green/) elenca le funzionalità disponibili in ogni versione, ad esempio:
 
-- `let` and `const` over `var`
-- Template literals over string concatenation
-- Arrow functions when appropriate
+- `let` e `const` al posto di `var`
+- Template letterali al posto della concatenazione delle stringhe
+- Funzioni Arrow quando opportune
 
-## Naming Test Files
+## Denominazione dei Test File
 
-Test files are named using kebab casing. The first component of the name is `test`. The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
+I test file sono denominati utilizzando il kebab casing. Il primo componente del nome è `test`. Il secondo è il modulo od il sottosistema in fase di test. Il terzo è solitamente il metodo od il nome dell'evento in fase di test. I componenti successivi del nome aggiungono ulteriori informazioni su ciò che viene testato.
 
-For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
+Ad esempio, un test per l'evento `beforeExit` sul `process` object potrebbe essere denominato `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
 
 ## Imported Tests
 
