@@ -1436,7 +1436,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous fchmod(2). Ningún argumento que no sea una posible excepción es dado al callback de terminación.
+fchmod(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.fchmodSync(fd, mode)
 
@@ -1604,7 +1604,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous ftruncate(2). Ningún argumento que no sea una posible excepción es dado al callback de terminación.
+ftruncate(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Si el archivo referido por el descriptor de archivos fuese más grande que los bytes `len`, sólo los primeros bytes `len` serán retenidos en el archivo.
 
@@ -1625,7 +1625,7 @@ fs.ftruncate(fd, 4, (err) => {
 // Prints: Node
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). Por ejemplo,
+Si el archivo previamente era más corto que bytes `len`, se extiende, y la parte extendida se llena con bytes nulos (`'\0'`). Por ejemplo,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -3367,7 +3367,7 @@ async function doTruncate() {
 doTruncate().catch(console.error);
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). Por ejemplo,
+Si el archivo previamente era más corto que bytes `len`, se extiende, y la parte extendida se llena con bytes nulos (`'\0'`). Por ejemplo,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -3648,7 +3648,7 @@ async function doTruncate() {
 doTruncate().catch(console.error);
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes (`'\0'`). Por ejemplo,
+Si el archivo previamente era más corto que bytes `len`, se extiende, y la parte extendida se llena con bytes nulos (`'\0'`). Por ejemplo,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
