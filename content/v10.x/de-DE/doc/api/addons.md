@@ -64,7 +64,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Es gibt keinen Strichpunkt nach `NODE_MODULE`, da es keine Funktion ist (siehe `node.h`).
 
-Der `module_name` muss mit dem Dateinamen der endgültigen Binärdatei übereinstimmen (außer dem Suffix `.node`).
+Der `module_name` muss mit dem Dateinamen der endgültigen Binärdatei übereinstimmen (außer der Nachsilbe `.node`).
 
 Im Beispiel `hello.cc` ist die Initialisierungsfunktion `init` und der Erweiterungsmodulname `addon`.
 
@@ -83,9 +83,9 @@ Nachdem der Quellcode geschrieben wurde, muss er in die Binärdatei `addon.node`
 }
 ```
 
-Eine Version des Programmes `node-gyp` wird mit Node.js als Teil von `npm` gebündelt und verteilt. Diese Version wird den Entwicklern nicht direkt zur Verfügung gestellt und soll nur die Möglichkeit bieten, den Befehl `npm install` zum Kompilieren und Installieren von Erweiterungen zu verwenden. Entwickler, die `node-gyp` direkt verwenden möchten, können es mit dem Befehl `npm install -g node-gyp` installieren. Sehen Sie die `node-gyp` [Installationsanleitung](https://github.com/nodejs/node-gyp#installation), einschließlich plattformspezifischer Anforderungen, für weitere Informationen.
+Eine Version des Programmes `node-gyp` wird mit Node.js als Teil von `npm` gebündelt und verteilt. Diese Version wird den Entwicklern nicht direkt zur Verfügung gestellt und soll nur die Möglichkeit bieten, den Befehl `npm install` zum Kompilieren und Installieren von Erweiterungen zu verwenden. Entwickler, die `node-gyp` direkt verwenden möchten, können es mit dem Befehl `npm install -g node-gyp` installieren. Sehen Sie die `node-gyp` [Installationsanleitung](https://github.com/nodejs/node-gyp#installation) für weitere Informationen, einschließlich plattformspezifischer Anforderungen.
 
-Nachdem die Datei `binding.gyp` erstellt wurde, verwenden Sie `node-gyp configure`, um die entsprechenden Projekt-Build-Dateien für die aktuelle Plattform zu erzeugen. Dies erzeugt entweder eine `Makefile` (auf Unix-Plattformen) oder eine `vcxproj` Datei (auf Windows) im Verzeichnis `build/`.
+Nachdem die Datei `binding.gyp` erstellt wurde, verwenden Sie `node-gyp configure`, um die entsprechenden Projekt-Build-Dateien für die aktuelle Plattform zu erzeugen. Dies erzeugt entweder eine `Makefile` (auf Unix-Plattformen) oder eine `vcxproj`-Datei (auf Windows) im Verzeichnis `build/`.
 
 Als nächstes rufen Sie den Befehl `node-gyp build` auf, um die übersetzte Datei `addon.node` zu erzeugen. Diese wird in das Verzeichnis `build/Release/` abgelegt.
 
