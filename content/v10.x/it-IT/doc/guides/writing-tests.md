@@ -2,26 +2,26 @@
 
 ## Cos'è un test?
 
-La maggior parte dei test nel Node.js core sono programmi JavaScript che esercitano una funzionalità fornita da Node.js e controllano che si comporti come previsto. I test dovrebbero uscire con il codice `0` in caso di successo. A test will fail if:
+La maggior parte dei test nel Node.js core sono programmi JavaScript che esercitano una funzionalità fornita da Node.js e controllano che si comporti come previsto. I test dovrebbero uscire con il codice `0` in caso di successo. Un test fallirà se:
 
-- It exits by setting `process.exitCode` to a non-zero number. 
-  - This is usually done by having an assertion throw an uncaught Error.
-  - Occasionally, using `process.exit(code)` may be appropriate.
-- It never exits. In this case, the test runner will terminate the test because it sets a maximum time limit.
+- Esce impostando `process.exitCode` su un numero diverso da zero. 
+  - Di solito ciò avviene facendo in modo che un assertion generi un uncaught Error.
+  - Occasionalmente, l'utilizzo di `process.exit(code)` potrebbe essere appropriato.
+- Non esce mai. In questo caso, il test runner terminerà il test perché imposta un limite di tempo massimo.
 
-Add tests when:
+Aggiungi i test quando:
 
-- Adding new functionality.
-- Fixing regressions and bugs.
-- Expanding test coverage.
+- Vengono aggiunte nuove funzionalità.
+- Vengono corretti regressioni e bug.
+- Viene ampliato il test coverage.
 
 ## Test directory structure
 
-See [directory structure overview](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) for outline of existing test & locations. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
+Vedi la [panoramica della directory structure](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) per la descrizione dei test & delle posizioni esistenti. Al momento di decidere se espandere un file di test esistente o crearne uno nuovo, prendi in considerazione la possibilità di passare attraverso i file relativi al sottosistema. Ad esempio, cerca `test-streams` durante la scrittura di un test per `lib/streams.js`.
 
 ## Test structure
 
-Let's analyze this basic test from the Node.js test suite:
+Analizziamo questo test di base dall'insieme dei test di Node.js:
 
 ```javascript
 'use strict';                                                          // 1
