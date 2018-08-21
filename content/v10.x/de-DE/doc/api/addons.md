@@ -592,9 +592,9 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### Fabrik der umwickelten Objekte
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Alternativ ist es möglich, ein Fabrikmuster zu verwenden, um das explizite Anlegen von Objektinstanzen mit dem JavaScript-`new`-Operator zu vermeiden:
 
 ```js
 const obj = addon.createObject();
@@ -602,7 +602,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Zunächst wird die Methode `createObject()` in `addon.cc` implementiert:
 
 ```cpp
 // addon.cc
@@ -633,7 +633,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+In `myobject.h` wird die statische Methode `NewInstance()` hinzugefügt, um das Objekt zu erstellen. Diese Methode ersetzt die Verwendung von `new` in JavaScript:
 
 ```cpp
 // myobject.h
@@ -665,7 +665,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+Die Implementierung in `myobject.cc` ist ähnlich dem vorherigen Beispiel:
 
 ```cpp
 // myobject.cc
@@ -752,7 +752,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Nocheinmal, um dieses Beispiel zu erstellen, muss die `myobject.cc`-Datei zur `binding.gyp`-Datei hinzugefügt werden:
 
 ```json
 {
@@ -768,7 +768,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Testen Sie es mit:
 
 ```js
 // test.js
