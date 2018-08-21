@@ -3240,7 +3240,7 @@ Changes the ownership of the file then resolves the `Promise` with no arguments 
 added: v10.0.0
 -->
 
-* Returns: {Promise} A `Promise` that will be resolved once the underlying file descriptor is closed, or will be rejected if an error occurs while closing.
+* Devuelve: {Promise} Una `Promise` que se resolverá una vez que se cierre el descriptor de archivo subyacente, o será rechazada si un error ocurre durante el cierre.
 
 Cierra el descriptor de archivos.
 
@@ -3294,9 +3294,9 @@ Leer datos desde el archivo.
 
 `length` is an integer specifying the number of bytes to read.
 
-`position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
+`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. If `position` is an integer, the file position will remain unchanged.
 
-Following successful read, the `Promise` is resolved with an object with a `bytesRead` property specifying the number of bytes read, and a `buffer` property that is a reference to the passed in `buffer` argument.
+Luego de una lectura exitosa, la `Promise` se resuelve con un objeto con una propiedad de `bytesRead` que especifique el número de bytes leídos, y una propiedad de `buffer` que sea una referencia a lo que fue pasado en el argumento de `buffer` .
 
 #### filehandle.readFile(options)
 
@@ -3311,13 +3311,13 @@ added: v10.0.0
 
 Lee de manera asincrónica todos los contenidos de un archivo.
 
-The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. De lo contrario, los datos serán una string.
+La `Promise` se resuelve con los contenidos del archivo. Si no se especifica ninguna codificación (utilizando `options.encoding`), los datos son devueltos como un objeto de `Buffer` . De lo contrario, los datos serán una string.
 
 Si `options` es una string, entonces especifica la codificación.
 
-When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. En macOS, Linux, y Windows, la promesa será rechazada con un error. On FreeBSD, a representation of the directory's contents will be returned.
+Cuando el `path` es un directorio, el comportamiento de `fsPromises.readFile()` es específico en la plataforma. En macOS, Linux, y Windows, la promesa será rechazada con un error. En FreeBSD, una representación de los contenidos del directorio será devuelta.
 
-The `FileHandle` has to support reading.
+El `FileHandle` debe soportar la lectura.
 
 #### filehandle.stat()
 
@@ -3325,7 +3325,7 @@ The `FileHandle` has to support reading.
 added: v10.0.0
 -->
 
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Recupera el [`fs.Stats`][] para el archivo.
 
@@ -3335,9 +3335,9 @@ Recupera el [`fs.Stats`][] para el archivo.
 added: v10.0.0
 -->
 
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fsync(2). The `Promise` is resolved with no arguments upon success.
+fsync(2) asincrónico. La `Promise` se resuelve sin argumentos al hacerlo con éxito.
 
 #### filehandle.truncate(len)
 
@@ -3410,7 +3410,7 @@ added: v10.0.0
 * `position` {integer}
 * Returns: {Promise}
 
-Write `buffer` to the file.
+Escribe `buffer` al archivo.
 
 The `Promise` is resolved with an object containing a `bytesWritten` property identifying the number of bytes written, and a `buffer` property containing a reference to the `buffer` written.
 
@@ -3802,7 +3802,7 @@ Lee datos del archivo especificado por `filehandle`.
 
 `position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
 
-Following successful read, the `Promise` is resolved with an object with a `bytesRead` property specifying the number of bytes read, and a `buffer` property that is a reference to the passed in `buffer` argument.
+Luego de una lectura exitosa, la `Promise` se resuelve con un objeto con una propiedad de `bytesRead` que especifique el número de bytes leídos, y una propiedad de `buffer` que sea una referencia a lo que fue pasado en el argumento de `buffer` .
 
 ### fsPromises.readdir(path[, options])
 
@@ -3833,11 +3833,11 @@ added: v10.0.0
 
 Lee de manera asincrónica todos los contenidos de un archivo.
 
-The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. De lo contrario, los datos serán una string.
+La `Promise` se resuelve con los contenidos del archivo. Si no se especifica ninguna codificación (utilizando `options.encoding`), los datos son devueltos como un objeto de `Buffer` . De lo contrario, los datos serán una string.
 
 If `options` is a string, then it specifies the encoding.
 
-When the `path` is a directory, the behavior of `fsPromises.readFile()` is platform-specific. En macOS, Linux, y Windows, la promesa será rechazada con un error. On FreeBSD, a representation of the directory's contents will be returned.
+Cuando el `path` es un directorio, el comportamiento de `fsPromises.readFile()` es específico en la plataforma. En macOS, Linux, y Windows, la promesa será rechazada con un error. En FreeBSD, una representación de los contenidos del directorio será devuelta.
 
 Cualquier `FileHandle` especificado tiene que apoyar la lectura.
 
