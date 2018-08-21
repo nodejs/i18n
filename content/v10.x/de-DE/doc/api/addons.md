@@ -105,7 +105,7 @@ Weitere Informationen finden Sie in den folgenden Beispielen oder unter [https:/
 
 Da der genaue Pfad zur kompilierten Erweiterungs-Binary je nach Kompilierung variieren kann (d.h. manchmal in `./build/Debug/`), können Erweiterungen das Paket [bindings](https://github.com/TooTallNate/node-bindings) verwenden, um das kompilierte Modul zu laden.
 
-Beachten Sie, dass die `bindings`-Paketimplementierung zwar anspruchsvoller ist, wie sie Erweiterungs-Module lokalisiert, aber im Wesentlichen ein Try-Catch-Muster nutzt, ähnlich dem:
+Beachten Sie, dass die `bindings`-Paketimplementierung zwar anspruchsvoller ist, wie es Erweiterungs-Module lokalisiert, aber im Wesentlichen ein Try-Catch-Muster nutzt, ähnlich dem:
 
 ```js
 try {
@@ -121,13 +121,13 @@ Node.js verwendet eine Reihe von statisch-gelinkten Bibliotheken wie V8, libuv u
 
 * Wenn `node-gyp` läuft, erkennt es die spezifische Version von Node.js und lädt entweder den vollständigen Quelltext oder nur die Überschriften herunter. Wenn der vollständige Quellcode heruntergeladen wird, haben Erweiterungen vollständigen Zugriff auf das gesamte Set der Abhängigkeitsbeziehungen von Node.js. Wenn jedoch nur die Node.js-Überschriften heruntergeladen werden, stehen nur die von Node.js exportierten Symbole zur Verfügung.
 
-* `node-gyp` kann mit dem `--nodedir` Flag ausgeführt werden, das auf ein lokales Node.js Quellbild verweist. Mit dieser Option hat die Erweiterung Zugriff auf das volle Set von Abhängigkeitsbeziehungen.
+* `node-gyp` kann mit dem `--nodedir`-Flag ausgeführt werden, das auf ein lokales Node.js-Quellbild verweist. Mit dieser Option hat die Erweiterung Zugriff auf das volle Set von Abhängigkeitsbeziehungen.
 
 ### Laden von Erweiterungen mit require()
 
-Die Dateinamenerweiterung des kompilierten Erweiterungs-Binary ist `.node` (im Gegensatz zu `.dll` oder `.so`). Die Funktion [`require()`](modules.html#modules_require) wird geschrieben, um nach Dateien mit der Dateiendung `.node` zu suchen und diese als dynamisch verknüpfte Bibliotheken zu initialisieren.
+Die Dateinamenserweiterung des kompilierten Erweiterungs-Binary ist `.node` (im Gegensatz zu `.dll` oder `.so`). Die Funktion [`require()`](modules.html#modules_require) wird geschrieben, um nach Dateien mit der Dateiendung `.node` zu suchen und diese als dynamisch-verknüpfte Bibliotheken zu initialisieren.
 
-Beim Aufruf von [`require()`](modules.html#modules_require) kann die Erweiterung `.node` in der Regel weggelassen werden und Node.js wird die Erweiterung trotzdem finden und initialisieren. Ein Nachteil ist jedoch, dass Node.js zuerst versucht, Module oder JavaScript-Dateien zu finden und zu laden, die den gleichen Basisnamen haben. Zum Beispiel, wenn es eine Datei namens `addon.js` im selben Verzeichnis wie die binäre `addon.node`-Datei gibt, dann wird [`require('addon')`](modules.html#modules_require) der Datei `addon.js` Vorrang geben und sie stattdessen laden.
+Beim Aufruf von [`require()`](modules.html#modules_require) kann die Erweiterung `.node` in der Regel weggelassen werden, trotzdem wird Node.js die Erweiterung finden und initialisieren. Ein Nachteil ist jedoch, dass Node.js zuerst versucht, Module oder JavaScript-Dateien zu finden und zu laden, die den gleichen Basisnamen haben. Zum Beispiel, wenn es eine Datei namens `addon.js` im selben Verzeichnis wie die binäre `addon.node`-Datei gibt, dann wird [`require('addon')`](modules.html#modules_require) der Datei `addon.js` Vorrang geben und sie stattdessen laden.
 
 ## Native Abstraktionen für Node.js
 
