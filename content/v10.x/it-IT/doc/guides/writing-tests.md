@@ -109,15 +109,15 @@ Nel caso in cui un test abbia bisogno di un timer, considera l'utilizzo del meto
 const timer = setTimeout(fail, common.platformTimeout(4000));
 ```
 
-will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
+creerà un timeout di 4 secondi sulla maggior parte delle platform (piattaforme) ma un timeout più lungo sulle platform più lente.
 
-### The *common* API
+### La *common* API
 
-Make use of the helpers from the `common` module as much as possible. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
+Utilizza il più possibile gli helper del modulo `common`. Fai riferimento alla [documentazione del file common](https://github.com/nodejs/node/tree/master/test/common) per i dettagli completi riguardanti gli helper.
 
 #### common.mustCall
 
-One interesting case is `common.mustCall`. The use of `common.mustCall` may avoid the use of extra variables and the corresponding assertions. Let's explain this with a real test from the test suite.
+Un caso interessante è `common.mustCall`. L'utilizzo di `common.mustCall` può evitare l'uso di variabili extra e delle assertion corrispondenti. Spieghiamolo con un test reale presente nell'insieme dei test di Node.js.
 
 ```javascript
 'use strict';
@@ -148,7 +148,7 @@ const server = http.createServer(function(req, res) {
 });
 ```
 
-This test could be greatly simplified by using `common.mustCall` like this:
+Questo test potrebbe essere notevolmente semplificato utilizzando `common.mustCall` in questo modo:
 
 ```javascript
 'use strict';
@@ -170,9 +170,9 @@ const server = http.createServer(common.mustCall(function(req, res) {
 
 ```
 
-#### Countdown Module
+#### Modulo Countdown
 
-The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
+Il [modulo common Countdown](https://github.com/nodejs/node/tree/master/test/common#countdown-module) fornisce un semplice meccanismo di countdown per i test che richiedono una determinata azione da intraprendere dopo un dato numero di attività completate (ad esempio, arrestando un server HTTP dopo un numero specifico di richieste).
 
 ```javascript
 const Countdown = require('../common/countdown');
@@ -182,12 +182,12 @@ const countdown = new Countdown(2, function() {
 });
 
 countdown.dec();
-countdown.dec(); // The countdown callback will be invoked now.
+countdown.dec(); // Il countdown callback sarà invocato adesso.
 ```
 
-### Flags
+### Flag
 
-Some tests will require running Node.js with specific command line flags set. To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
+Alcuni test richiedono l'esecuzione di Node.js con uno specifico set di command line flag. Per fare ciò, aggiungi un commento `// Flags:` nel preambolo del test seguito dai flag. Ad esempio, per consentire ad un test di richiedere alcuni dei moduli `internal/*`, aggiungi il flag `--expose-internals`. Un test che richiede `internal/freelist` potrebbe iniziare in questo modo:
 
 ```javascript
 'use strict';
