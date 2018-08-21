@@ -238,8 +238,7 @@ Ad esempio, un test per l'evento `beforeExit` sul `process` object potrebbe esse
 Alcuni dei test per l'implementazione del WHATWG URL (denominati `test-whatwg-url-*.js`) vengono importati dal [Web Platform Tests Project](https://github.com/w3c/web-platform-tests/tree/master/url). Questi test importati verranno sottoposti al wrapping nel seguente modo:
 
 ```js
-/* I seguenti test sono copiati da WPT. Le modifiche ad esse dovrebbero essere 
-   prima installate. Refs:
+/* I seguenti test sono copiati da WPT. Le relative modifiche dovrebbero essere prima installate. Refs:
    https://github.com/w3c/web-platform-tests/blob/8791bed/url/urlsearchparams-stringifier.html
    License: http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html
 */
@@ -250,7 +249,7 @@ Alcuni dei test per l'implementazione del WHATWG URL (denominati `test-whatwg-ur
 /* eslint-enable */
 ```
 
-Per migliorare i test che sono stati importati in questo modo, inviare prima una PR al progetto sopracitato. Quando la modifica proposta viene inserita nel progetto sopracitato, invia un altra PR qui per aggiornare di conseguenza anche Node.js. Assicurati di aggiornare l'hash nell'URL seguente `WPT Refs:`.
+Per migliorare i test che sono stati importati in questo modo, inviare prima una PR al progetto sopracitato. Quando la modifica proposta viene inserita nel progetto sopracitato, invia un altra PR qui per aggiornare di conseguenza anche Node.js. Assicurati di aggiornare l'hash nell'URL dopo `WPT Refs:`.
 
 ## Test dell'unità C++
 
