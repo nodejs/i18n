@@ -2119,7 +2119,7 @@ changes:
 
 Asynchronous readdir(3). Lee los contenidos de un directorio. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
+The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. Si el `encoding` se establece a `'buffer'`, los nombres de archivo devueltos serán pasados como objetos de `Buffer` .
 
 ## fs.readdirSync(path[, options])
 
@@ -3337,7 +3337,7 @@ added: v10.0.0
 
 * Devuelve: {Promise}
 
-fsync(2) asincrónico. La `Promise` se resuelve sin argumentos al hacerlo con éxito.
+fsync(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 #### filehandle.truncate(len)
 
@@ -3435,7 +3435,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
 * Devuelve: {Promise}
 
-Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
+Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
 La opción de `encoding` se ignora si `data` es un búfer.
 
@@ -3486,7 +3486,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
+Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
 Si `options` es una string, entonces especifica la codificación.
 
@@ -3528,7 +3528,7 @@ added: v10.0.0
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * Returns: {Promise}
 
-Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
+Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
 Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
@@ -4006,7 +4006,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
 * Returns: {Promise}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
+Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
 The `encoding` option is ignored if `data` is a buffer.
 
