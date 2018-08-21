@@ -959,22 +959,22 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit-Aufhänger
+### AtExit-Hooks
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+Ein `AtExit`-Hook ist eine Funktion, die aufgerufen wird, nachdem die Event-Schleife Node.js beendet wurde, aber bevor die JavaScript-VM beendet wird und Node.js heruntergefahren wird. `AtExit`-Hooks werden mit der `node::AtExit`-Programmierschnittstelle registriert.
 
-#### void AtExit(callback, args)
+#### void AtExit(Callback, Args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Ein Zeiger auf die Funktion, der beim Beenden aufgerufen werden soll.
+* `args` <span class="type">&lt;void\*&gt;</span> Ein Zeiger, der beim Beenden zum Callback führt.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Registriert Exit-Hooks, die laufen, nachdem die Ereignisschleife beendet wurde, aber bevor die VM beendet wird.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` nimmt zwei Parameter: einen Zeiger auf eine Callback-Funktion, der beim Beenden ausgeführt wird, und einen Zeiger auf untypisierte Kontextdaten, die an diesen Callback übergeben werden.
 
-Callbacks are run in last-in first-out order.
+Callbacks werden in der Reihenfolge des letzten Eingangs ausgeführt.
 
-The following `addon.cc` implements `AtExit`:
+Das folgende `addon.cc` implementiert `AtExit`:
 
 ```cpp
 // addon.cc
@@ -1025,7 +1025,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Testen Sie in JavaScript durch das Ausführen von:
 
 ```js
 // test.js
