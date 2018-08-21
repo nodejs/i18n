@@ -1643,7 +1643,7 @@ fs.ftruncate(fd, 10, (err) => {
 // ('Node.js\0\0\0' in UTF8)
 ```
 
-The last three bytes are null bytes (`'\0'`), to compensate the over-truncation.
+Los últimos tres bytes son bytes nulos (`'\0'`), para compensar el sobre-truncamiento.
 
 ## fs.ftruncateSync(fd[, len])
 
@@ -1774,7 +1774,7 @@ deprecated: v0.4.7
 * `uid` {integer}
 * `gid` {integer}
 
-Synchronous lchown(2). Devuelve `undefined`.
+lchwon(2) sincrónico. Devuelve `undefined`.
 
 ## fs.link(existingPath, newPath, callback)
 
@@ -1802,7 +1802,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous link(2). Ningún argumento que no sea una posible excepción es dado al callback de terminación.
+link(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.linkSync(existingPath, newPath)
 
@@ -1820,7 +1820,7 @@ changes:
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
 
-Synchronous link(2). Returns `undefined`.
+link(2) sincrónico. Devuelve `undefined`.
 
 ## fs.lstat(path, callback)
 
@@ -1847,7 +1847,7 @@ changes:
   * `err` {Error}
   * `stats` {fs.Stats}
 
-Asynchronous lstat(2). The callback gets two arguments `(err, stats)` where `stats` is a [`fs.Stats`][] object. `lstat()` is identical to `stat()`, except that if `path` is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
+lstat(2) asincrónico. The callback gets two arguments `(err, stats)` where `stats` is a [`fs.Stats`][] object. `lstat()` is identical to `stat()`, except that if `path` is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
 
 ## fs.lstatSync(path)
 
@@ -1864,7 +1864,7 @@ changes:
 * `path` {string|Buffer|URL}
 * Returns: {fs.Stats}
 
-Synchronous lstat(2).
+lstat(2) sincrónico.
 
 ## fs.mkdir(path[, mode], callback)
 
@@ -3382,7 +3382,7 @@ async function doTruncate() {
 doTruncate().catch(console.error);
 ```
 
-The last three bytes are null bytes (`'\0'`), to compensate the over-truncation.
+Los últimos tres bytes son bytes nulos (`'\0'`), para compensar el sobre-truncamiento.
 
 #### filehandle.utimes(atime, mtime)
 
@@ -3663,7 +3663,7 @@ async function doTruncate() {
 doTruncate().catch(console.error);
 ```
 
-The last three bytes are null bytes (`'\0'`), to compensate the over-truncation.
+Los últimos tres bytes son bytes nulos (`'\0'`), para compensar el sobre-truncamiento.
 
 ### fsPromises.futimes(filehandle, atime, mtime)
 
