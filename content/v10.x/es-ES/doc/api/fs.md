@@ -3455,12 +3455,12 @@ added: v10.0.0
 * `mode` {integer} **Default:** `fs.constants.F_OK`
 * Devuelve: {Promise}
 
-Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Predeterminado si no se especifica ningún `mode` .
-* `fs.constants.R_OK` - `path` can be read by the calling process.
-* `fs.constants.W_OK` - `path` can be written by the calling process.
-* `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
+* `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
+* `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
+* `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
+* `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
 If the accessibility check is successful, the `Promise` is resolved with no value. If any of the accessibility checks fail, the `Promise` is rejected with an `Error` object. The following example checks if the file `/etc/passwd` can be read and written by the current process.
 
@@ -3486,11 +3486,11 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
+Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
 
 Si `options` es una string, entonces especifica la codificación.
 
-The `path` may be specified as a `FileHandle` that has been opened for appending (using `fsPromises.open()`).
+El `path` puede ser especificado como un `FileHandle` que ha sido abierto para ser anexado (utilizando `fsPromises.open()`).
 
 ### fsPromises.chmod(path, mode)
 
@@ -3502,7 +3502,7 @@ added: v10.0.0
 * `mode` {integer}
 * Returns: {Promise}
 
-Changes the permissions of a file then resolves the `Promise` with no arguments upon succces.
+Cambia los permisos de un archivo, luego resuelve la `Promise` sin argumentos al hacerlo con éxito.
 
 ### fsPromises.chown(path, uid, gid)
 
@@ -3528,7 +3528,7 @@ added: v10.0.0
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * Returns: {Promise}
 
-Asynchronously copies `src` to `dest`. Por defecto, `dest` se sobrescribe si ya existe. The `Promise` will be resolved with no arguments upon success.
+Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al hacerlo con éxito.
 
 Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
