@@ -1847,7 +1847,7 @@ changes:
   * `err` {Error}
   * `stats` {fs.Stats}
 
-lstat(2) asincrónico. The callback gets two arguments `(err, stats)` where `stats` is a [`fs.Stats`][] object. `lstat()` is identical to `stat()`, except that if `path` is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
+lstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)`, en donde `stats` es un objeto de [`fs.Stats`][]. `lstat()` is identical to `stat()`, except that if `path` is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
 
 ## fs.lstatSync(path)
 
@@ -1942,7 +1942,7 @@ changes:
 
 Crea un único directorio temporal.
 
-Generates six random characters to be appended behind a required `prefix` to create a unique temporary directory.
+Genera seis caracteres aleatorios para ser anexados detrás de un `prefix` necesario, para crear un directorio temporal único.
 
 La ruta de archivo creada se pasa como una string al segundo parámetro del callback.
 
