@@ -74,28 +74,28 @@ require('../common');
 // nell'http header.
 ```
 
-A test should start with a comment containing a brief description of what it is designed to test.
+Un test dovrebbe iniziare con un commento contenente una breve descrizione che spiega cosa va a testare.
 
-### **Lines 8-9**
+### **Righe 8-9**
 
 ```javascript
 const assert = require('assert');
 const http = require('http');
 ```
 
-The test checks functionality in the `http` module.
+Il test controlla le funzionalità nel modulo `http`.
 
-Most tests use the `assert` module to confirm expectations of the test.
+La maggior parte dei test utilizza il modulo `assert` per confermare le proprie aspettative.
 
-The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) order (digits, upper case, `_`, lower case).
+Le istruzioni require sono ordinate secondo l'[ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) (cifre, lettere maiuscole, `_`, lettere minuscole).
 
-### **Lines 11-22**
+### **Righe 11-22**
 
-This is the body of the test. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
+Questo è il body (corpo) del test. Questo test è semplice, verifica solo che un server HTTP accetti i caratteri `non-ASCII` negli header di una richiesta in entrata. Cose interessanti da notare:
 
-- If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
-- The use of `common.mustCall` to check that some callbacks/listeners are called.
-- The HTTP server closes once all the checks have run. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
+- Se il test non dipende da un numero di porta specifico, utilizza sempre 0 invece di un valore arbitrario, in quanto consente ai test di eseguire in parallelo in modo sicuro, visto che il sistema operativo assegnerà una porta casuale. Se il test richiede una porta specifica, ad esempio se il test verifica che l'assegnazione di una porta specifica funzioni come previsto, allora è giusto assegnare un numero di porta specifico.
+- L'utilizzo di `common.mustCall` per controllare che vengano chiamati alcuni callback/listener.
+- Il server HTTP si chiude dopo l'esecuzione di tutti i controlli. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
 
 ## General recommendations
 
