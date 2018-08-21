@@ -258,7 +258,7 @@ Il codice C++ può essere testato utilizzando [Google Test](https://github.com/g
 
 ### Aggiungere un nuovo test
 
-Lo unit test deve essere inserito in `test/cctest` e deve essere denominato con il prefisso `test` seguito dal nome dell'unità testata. For example, the code below would be placed in `test/cctest/test_env.cc`:
+Lo unit test deve essere inserito in `test/cctest` e deve essere denominato con il prefisso `test` seguito dal nome dell'unità testata. Ad esempio, il codice seguente verrà inserito in `test/cctest/test_env.cc`:
 
 ```c++
 #include "gtest/gtest.h"
@@ -288,7 +288,7 @@ static void at_exit_callback(void* arg) {
 }
 ```
 
-Next add the test to the `sources` in the `cctest` target in node.gyp:
+Successivamente aggiungi il test alle `sources` nel `cctest` target in node.gyp:
 
 ```console
 'sources': [
@@ -297,20 +297,20 @@ Next add the test to the `sources` in the `cctest` target in node.gyp:
 ],
 ```
 
-Note that the only sources that should be included in the cctest target are actual test or helper source files. There might be a need to include specific object files that are compiled by the `node` target and this can be done by adding them to the `libraries` section in the cctest target.
+Si noti che le sole sources (fonti) che dovrebbero essere incluse nel cctest target sono i veri e propri test source file od helper source file. Potrebbe essere necessario includere object file specifici compilati dal `node` target e questo può essere fatto aggiungendoli alla sezione `libraries` nel cctest target.
 
-The test can be executed by running the `cctest` target:
+Il test può essere eseguito tramite l'eseguzione del `cctest` target:
 
 ```console
 $ make cctest
 ```
 
-### Node.js test fixture
+### Test fixture di Node.js
 
-There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
+C'è un [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) denominato `node_test_fixture.h` che può essere incluso dagli unit test. Il fixture si occupa di configurare l'ambiente di Node.js e di abbatterlo al termine dei test.
 
-It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
+Contiene anche un helper per creare argomenti da passare all'interno di Node.js. In base a cosa viene testato si decide se questo è richiesto oppure no.
 
 ### Test Coverage
 
-To generate a test coverage report, see the [Test Coverage section of the Pull Requests guide](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#test-coverage).
+Per generare un test coverage report, vedi la [Sezione Test Coverage della guida sulle Pull Request](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#test-coverage).
