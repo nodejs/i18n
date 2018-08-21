@@ -87,7 +87,7 @@ Eine Version des Programmes `node-gyp` wird mit Node.js als Teil von `npm` gebü
 
 Nachdem die Datei `binding.gyp` erstellt wurde, verwenden Sie `node-gyp configure`, um die entsprechenden Projekt-Build-Dateien für die aktuelle Plattform zu erzeugen. Dies erzeugt entweder eine `Makefile` (auf Unix-Plattformen) oder eine `vcxproj`-Datei (auf Windows) im Verzeichnis `build/`.
 
-Als nächstes rufen Sie den Befehl `node-gyp build` auf, um die übersetzte Datei `addon.node` zu erzeugen. Diese wird in das Verzeichnis `build/Release/` abgelegt.
+Als nächstes führen Sie den Befehl `node-gyp build` aus, um die übersetzte Datei `addon.node` zu erzeugen. Diese wird in das Verzeichnis `build/Release/` abgelegt.
 
 Wenn Sie `npm install` verwenden, um ein Node.js-Erweiterung zu installieren, verwendet npm seine eigene Paketversion von `node-gyp`, um das gleiche Set von Aktionen auszuführen und eine kompilierte Version der Erweiterung für die Plattform des Benutzers bei Bedarf zu erzeugen.
 
@@ -208,7 +208,7 @@ $ node-gyp configure build
 
 ### Funktionsargumente
 
-Erweiterungen zeigen typischerweise Objekte und Funktionen an, auf die über JavaScript in Node.js zugegriffen werden kann. Wenn Funktionen aus JavaScript aufgerufen werden, müssen die Eingabeargumente und der Rückgabewert auf dem C/C++-Code abgebildet werden.
+Erweiterungen zeigen typischerweise Objekte und Funktionen an, auf die über JavaScript in Node.js zugegriffen werden kann. Wenn Funktionen aus JavaScript ausgeführt werden, müssen die Eingabeargumente und der Rückgabewert in dem C/C++-Code abgebildet werden.
 
 Das folgende Beispiel zeigt, wie man von JavaScript übergebene Funktionsargumente liest und wie man ein Ergebnis wiedergibt:
 
@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-Es ist in Erweiterungen üblich, JavaScript-Funktionen an eine C++-Funktion zu übergeben und von dort aus auszuführen. The following example illustrates how to invoke such callbacks:
+Es ist in Erweiterungen üblich, JavaScript-Funktionen an eine C++-Funktion zu übergeben und von dort aus auszuführen. Das folgende Beispiel veranschaulicht, wie man solche Callbacks aufrufen kann:
 
 ```cpp
 // addon.cc
@@ -311,9 +311,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Beachten Sie, dass dieses Beispiel eine Zwei-Argumente-Form von `Init()` verwendet, die das vollständige `Modul`-Objekt als zweites Argument erhält. Dadurch kann die Erweiterung `exports` mit einer einzigen Funktion komplett überschreiben, anstatt die Funktion als Eigenschaft von `exports` hinzuzufügen.
 
-To test it, run the following JavaScript:
+Um es zu testen, führen Sie das folgende JavaScript aus:
 
 ```js
 // test.js
@@ -325,11 +325,11 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Beachten Sie, dass in diesem Beispiel die Callback-Funktion synchron ausgeführt wird.
 
-### Object factory
+### Objektfabrik
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Erweiterungen können neue Objekte aus einer C++-Funktion heraus erstellen und wiedergeben, wie im folgenden Beispiel dargestellt. Ein Objekt wird erzeugt und mit einer Eigenschaft `msg` zurückgesendet, die den an `createObject()` übergebenen String widerspiegelt:
 
 ```cpp
 // addon.cc
@@ -362,7 +362,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Um es in JavaScript zu testen:
 
 ```js
 // test.js
@@ -374,9 +374,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### Funktionsfabrik
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Ein weiteres häufiges Szenario ist die Erstellung von JavaScript-Funktionen, die C++-Funktionen umwickeln und diese wieder an JavaScript zurücksenden:
 
 ```cpp
 // addon.cc
@@ -419,7 +419,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Um zu testen:
 
 ```js
 // test.js
