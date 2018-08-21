@@ -8,9 +8,9 @@
 
 N-API (ausgesprochen N wie im Buchstaben, gefolgt von API) ist eine Programmierschnittstelle zum Erstellen von nativen Erweiterungen. Sie ist unabhängig von der zugrundeliegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst gepflegt. Diese Programmierschnittstelle wird über alle Versionen von Node.js hinweg, Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Erweiterungen von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können.
 
-Erweiterungen werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, wie im Abschnitt [C++ Addons](addons.html) beschrieben wird. Der einzige Unterschied ist das Set an Programmierschnittstellen, die von dem nativen Code verwendet werden. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+Erweiterungen werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, wie im Abschnitt [C++ Addons](addons.html) beschrieben wird. Der einzige Unterschied ist das Set an Programmierschnittstellen, die von dem nativen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-Programmierschnittstellen zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
 
-APIs exposed by N-API are generally used to create and manipulate JavaScript values. Concepts and operations generally map to ideas specified in the ECMA262 Language Specification. The APIs have the following properties:
+Programmierschnittstellen, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die Programmierschnittstellen haben folgende Eigenschaften:
 
 - All N-API calls return a status code of type `napi_status`. This status indicates whether the API call succeeded or failed.
 - The API's return value is passed via an out parameter.
