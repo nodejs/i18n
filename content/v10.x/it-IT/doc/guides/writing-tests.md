@@ -229,17 +229,17 @@ Per considerazioni relative alle prestazioni, utilizziamo solo un sottoinsieme s
 
 I test file sono denominati utilizzando il kebab casing. Il primo componente del nome è `test`. Il secondo è il modulo od il sottosistema in fase di test. Il terzo è solitamente il metodo od il nome dell'evento in fase di test. I componenti successivi del nome aggiungono ulteriori informazioni su ciò che viene testato.
 
-Ad esempio, un test per l'evento `beforeExit` sul `process` object potrebbe essere denominato `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
+Ad esempio, un test per l'evento `beforeExit` sul `process` object potrebbe essere denominato `test-process-before-exit.js`. Se il test ha verificato in modo specifico che le funzioni arrow funzionassero correttamente con l'evento `beforeExit`, potrebbe essere denominato `test-process-before-exit-arrow-functions.js`.
 
-## Imported Tests
+## Test Importati
 
 ### Web Platform Tests
 
-Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js`) are imported from the [Web Platform Tests Project](https://github.com/w3c/web-platform-tests/tree/master/url). These imported tests will be wrapped like this:
+Alcuni dei test per l'implementazione del WHATWG URL (denominati `test-whatwg-url-*.js`) vengono importati dal [Web Platform Tests Project](https://github.com/w3c/web-platform-tests/tree/master/url). Questi test importati verranno sottoposti al wrapping nel seguente modo:
 
 ```js
-/* The following tests are copied from WPT. Modifications to them should be
-   upstreamed first. Refs:
+/* I seguenti test sono copiati da WPT. Le modifiche ad esse dovrebbero essere 
+   prima installate. Refs:
    https://github.com/w3c/web-platform-tests/blob/8791bed/url/urlsearchparams-stringifier.html
    License: http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html
 */
@@ -250,7 +250,7 @@ Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js
 /* eslint-enable */
 ```
 
-To improve tests that have been imported this way, please send a PR to the upstream project first. When the proposed change is merged in the upstream project, send another PR here to update Node.js accordingly. Be sure to update the hash in the URL following `WPT Refs:`.
+Per migliorare i test che sono stati importati in questo modo, inviare prima una PR al progetto sopracitato. Quando la modifica proposta viene inserita nel progetto sopracitato, invia un altra PR qui per aggiornare di conseguenza anche Node.js. Assicurati di aggiornare l'hash nell'URL seguente `WPT Refs:`.
 
 ## C++ Unit test
 
