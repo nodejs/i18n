@@ -2085,7 +2085,7 @@ Lee datos del archivo especificado por `fd`.
 
 Al callback se le dan tres argumentos, `(err, bytesRead, buffer)`.
 
-If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `bytesRead` and `buffer` properties.
+SI se invoca este método en su versión de [`util.promisify()`][], devolverá una `Promise` a un `Object` con `bytesRead` y propiedades de `buffer` .
 
 ## fs.readdir(path[, options], callback)
 
@@ -2117,9 +2117,9 @@ changes:
   * `err` {Error}
   * `files` {string[]|Buffer[]}
 
-Asynchronous readdir(3). Lee los contenidos de un directorio. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
+readdir(3) asincrónico. Lee los contenidos de un directorio. El callback obtiene dos argumentos `(err, files)`, en donde `files` es una matriz de los nombres de los archivos en el directorio excluyendo `'.'` y `'..'`.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. Si el `encoding` se establece a `'buffer'`, los nombres de archivo devueltos serán pasados como objetos de `Buffer` .
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para los nombres de archivo pasados al callback. Si el `encoding` se establece a `'buffer'`, los nombres de archivo devueltos serán pasados como objetos de `Buffer` .
 
 ## fs.readdirSync(path[, options])
 
