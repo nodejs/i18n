@@ -430,9 +430,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Umwickeln von C++-Objekten
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+Es ist auch möglich, C++-Objekte/Klassen so zu umwickeln, dass neue Instanzen mit dem JavaScript-`new`-Operator erzeugt werden können:
 
 ```cpp
 // addon.cc
@@ -453,7 +453,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Dann, in `myobject.h`, übernimmt die Wrapper-Klasse von `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+Implementieren Sie in `myobject.cc` die verschiedenen Methoden, die aufgedeckt werden sollen. Nachfolgend wird die Methode `plusOne()` durch Hinzufügen zum Prototyp des Konstruktors aufgedeckt:
 
 ```cpp
 // myobject.cc
@@ -561,7 +561,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Um dieses Beispiel zu erstellen, muss die `myobject.cc`-Datei zur `binding.gyp`-Datei hinzugefügt werden:
 
 ```json
 {
@@ -577,7 +577,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+Testen Sie es mit:
 
 ```js
 // test.js
