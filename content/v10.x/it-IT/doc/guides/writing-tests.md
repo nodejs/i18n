@@ -185,7 +185,7 @@ countdown.dec();
 countdown.dec(); // Il countdown callback sarà invocato adesso.
 ```
 
-### Flag
+### Flags
 
 Alcuni test richiedono l'esecuzione di Node.js con uno specifico set di command line flag. Per fare ciò, aggiungi un commento `// Flags:` nel preambolo del test seguito dai flag. Ad esempio, per consentire ad un test di richiedere alcuni dei moduli `internal/*`, aggiungi il flag `--expose-internals`. Un test che richiede `internal/freelist` potrebbe iniziare in questo modo:
 
@@ -201,25 +201,25 @@ const freelist = require('internal/freelist');
 
 ### Assertions
 
-When writing assertions, prefer the strict versions:
+Quando vengono scritte le assertion, sono preferibili le versioni strict:
 
-- `assert.strictEqual()` over `assert.equal()`
-- `assert.deepStrictEqual()` over `assert.deepEqual()`
+- `assert.strictEqual()` al posto di `assert.equal()`
+- `assert.deepStrictEqual()` al posto di `assert.deepEqual()`
 
-When using `assert.throws()`, if possible, provide the full error message:
+Quando si utilizza `assert.throws()`, se possibile, fornire l'error message completo:
 
 ```js
 assert.throws(
   () => {
     throw new Error('Wrong value');
   },
-  /^Error: Wrong value$/ // Instead of something like /Wrong value/
+  /^Error: Wrong value$/ // Invece di qualcosa tipo /Wrong value/
 );
 ```
 
-### ES.Next features
+### Funzionalità ES.Next
 
-For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
+Per considerazioni relative alle prestazioni, utilizziamo solo un sottoinsieme selezionato di funzionalità ES.Next nel codice JavaScript nella directory `lib`. Tuttavia, durante la scrittura dei test, per facilitare il backport, è consigliato utilizzare le funzionalità ES.Next utilizzabili direttamente senza un flag in [tutti i branch mantenuti](https://github.com/nodejs/lts). [node.green](http://node.green/) elenca le funzionalità disponibili in ogni versione, ad esempio:
 
 - `let` and `const` over `var`
 - Template literals over string concatenation
