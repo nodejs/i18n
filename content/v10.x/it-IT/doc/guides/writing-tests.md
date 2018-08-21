@@ -28,8 +28,8 @@ Analizziamo questo test di base dall'insieme dei test di Node.js:
 const common = require('../common');                                   // 2
 const fixtures = require('../common/fixtures');                        // 3
 
-// This test ensures that the http-parser can handle UTF-8 characters  // 5
-// in the http header.                                                 // 6
+// Questo test assicura che l'http-parser possa gestire i caratteri UTF-8 // 5 
+// nell'http header.                                                 // 6
 
 const assert = require('assert');                                      // 8
 const http = require('http');                                          // 9
@@ -49,7 +49,7 @@ server.listen(0, () => {                                               // 14
 // ...                                                                 // 23
 ```
 
-### **Lines 1-3**
+### **Righe 1-3**
 
 ```javascript
 'use strict';
@@ -57,21 +57,21 @@ const common = require('../common');
 const fixtures = require('../common/fixtures');
 ```
 
-The first line enables strict mode. All tests should be in strict mode unless the nature of the test requires that the test run without it.
+La prima riga attiva la strict mode. Tutti i test dovrebbero essere in strict mode a meno che la natura del test richieda che funzioni senza tale modalità.
 
-The second line loads the `common` module. The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
+La seconda riga carica il modulo `common`. Il modulo [`common` module][] è un modulo helper (di supporto) che fornisce strumenti utili per i test. Alcune funzionalità di common sono state estratte in sottomoduli, che sono richiesti separatamente come in ad esempio in questo caso il modulo fixtures.
 
-Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
+Anche se un test non utilizza funzioni od altre proprietà esportate da `common`, il test dovrebbe comunque includere il modulo `common` prima di qualsiasi altro modulo. Questo perché il modulo `common` include il codice che causerà il fallimento di un test nel caso in cui il test perda le variabili all'interno del global space. In situazioni in cui un test non utilizza funzioni od altre proprietà esportate da `common`, includilo senza assegnarlo a un identifier (identificatore):
 
 ```javascript
 require('../common');
 ```
 
-### **Lines 5-6**
+### **Righe 5-6**
 
 ```javascript
-// This test ensures that the http-parser can handle UTF-8 characters
-// in the http header.
+// Questo test assicura che l'http-parser possa gestire i caratteri UTF-8
+// nell'http header.
 ```
 
 A test should start with a comment containing a brief description of what it is designed to test.
