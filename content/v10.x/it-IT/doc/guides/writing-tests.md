@@ -95,15 +95,15 @@ Questo è il body (corpo) del test. Questo test è semplice, verifica solo che u
 
 - Se il test non dipende da un numero di porta specifico, utilizza sempre 0 invece di un valore arbitrario, in quanto consente ai test di eseguire in parallelo in modo sicuro, visto che il sistema operativo assegnerà una porta casuale. Se il test richiede una porta specifica, ad esempio se il test verifica che l'assegnazione di una porta specifica funzioni come previsto, allora è giusto assegnare un numero di porta specifico.
 - L'utilizzo di `common.mustCall` per controllare che vengano chiamati alcuni callback/listener.
-- Il server HTTP si chiude dopo l'esecuzione di tutti i controlli. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
+- Il server HTTP si chiude dopo l'esecuzione di tutti i controlli. In questo modo, il test può uscire tranquillamente. Ricorda che per far sì che un test riesca, deve uscire con uno status code pari a 0.
 
-## General recommendations
+## Raccomandazioni Generali
 
 ### Timers
 
-Avoid timers unless the test is specifically testing timers. There are multiple reasons for this. Mainly, they are a source of flakiness. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
+Evitare i timer a meno che il test non li stia testando specificamente. Ci sono molte ragioni per farlo. Principalmente, sono una fonte di problematiche. Per una spiegazione approfondita vai [qui](https://github.com/nodejs/testing/issues/27).
 
-In the event a test needs a timer, consider using the `common.platformTimeout()` method. It allows setting specific timeouts depending on the platform:
+Nel caso in cui un test abbia bisogno di un timer, considera l'utilizzo del metodo `common.platformTimeout()`. Permette di impostare specifici timeout a seconda della platform (piattaforma):
 
 ```javascript
 const timer = setTimeout(fail, common.platformTimeout(4000));
