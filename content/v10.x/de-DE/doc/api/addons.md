@@ -181,7 +181,7 @@ Die verfügbaren Funktionen und deren Verwendung sind im Abschnitt [C/C++ Erweit
 
 Nachfolgend einige Beispiele für Erweiterungen, die Entwicklern den Einstieg erleichtern sollen. Die Beispiele verwenden die V8-Programmierschnittstellen. Für Hilfe bei den verschiedenen V8-Aufrufen siehe online die [V8-Referenz](https://v8docs.nodesource.com/) und das V8-[Embedderhandbuch](https://github.com/v8/v8/wiki/Embedder's%20Guide) für eine Erklärung verschiedener Konzepte wie Handles, Scopes, Funktionsvorlagen, etc.
 
-Each of these examples using the following `binding.gyp` file:
+Jedes dieser Beispiele verwendet die folgende `binding.gyp`-Datei:
 
 ```json
 {
@@ -194,23 +194,23 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+In Fällen, in denen es mehr als eine `.cc`-Datei gibt, fügen Sie einfach den zusätzlichen Dateinamen zum `sources`-Array hinzu:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Sobald die `binding.gyp`-Datei fertig ist, kann die Beispielserweiterung mit `node-gyp` konfiguriert und gebaut werden:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Funktionsargumente
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Erweiterungen zeigen typischerweise Objekte und Funktionen an, auf die über JavaScript in Node.js zugegriffen werden kann. Wenn Funktionen aus JavaScript aufgerufen werden, müssen die Eingabeargumente und der Rückgabewert auf dem C/C++-Code abgebildet werden.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Das folgende Beispiel zeigt, wie man von JavaScript übergebene Funktionsargumente liest und wie man ein Ergebnis wiedergibt:
 
 ```cpp
 // addon.cc
@@ -266,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Einmal kompiliert, kann die Beispielserweiterung aus Node.js heraus aufgerufen und verwendet werden:
 
 ```js
 // test.js
@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Es ist in Erweiterungen üblich, JavaScript-Funktionen an eine C++-Funktion zu übergeben und von dort aus auszuführen. The following example illustrates how to invoke such callbacks:
 
 ```cpp
 // addon.cc
