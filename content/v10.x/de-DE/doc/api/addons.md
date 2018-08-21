@@ -127,7 +127,7 @@ Node.js verwendet eine Reihe von statisch-gelinkten Bibliotheken wie V8, libuv u
 
 Die Dateinamenserweiterung des kompilierten Erweiterungs-Binary ist `.node` (im Gegensatz zu `.dll` oder `.so`). Die Funktion [`require()`](modules.html#modules_require) wird geschrieben, um nach Dateien mit der Dateiendung `.node` zu suchen und diese als dynamisch-verknüpfte Bibliotheken zu initialisieren.
 
-Beim Aufruf von [`require()`](modules.html#modules_require) kann die Erweiterung `.node` in der Regel weggelassen werden, trotzdem wird Node.js die Erweiterung finden und initialisieren. Ein Nachteil ist jedoch, dass Node.js zuerst versucht, Module oder JavaScript-Dateien zu finden und zu laden, die den gleichen Basisnamen haben. Zum Beispiel, wenn es eine Datei namens `addon.js` im selben Verzeichnis wie die binäre `addon.node`-Datei gibt, dann wird [`require('addon')`](modules.html#modules_require) der Datei `addon.js` Vorrang geben und sie stattdessen laden.
+Beim Aufruf von [`require()`](modules.html#modules_require) kann die Erweiterung `.node` in der Regel weggelassen werden, trotzdem wird Node.js die Erweiterung finden und initialisieren. Ein Nachteil ist jedoch, dass Node.js zuerst versucht, Module oder JavaScript-Dateien zu finden und zu laden, die den gleichen Basisnamen haben. Zum Beispiel, wenn es eine Datei namens `addon.js` im selben Verzeichnis wie die binäre `addon.node`-Datei gibt, dann wird [`require('addon')`](modules.html#modules_require) der Datei `addon.js` den Vorrang geben und sie stattdessen laden.
 
 ## Native Abstraktionen für Node.js
 
@@ -177,9 +177,9 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 Die verfügbaren Funktionen und deren Verwendung sind im Abschnitt [C/C++ Erweiterungen - N-API](n-api.html) dokumentiert.
 
-## Addon examples
+## Beispiele für Erweiterungen
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Nachfolgend einige Beispiele für Erweiterungen, die Entwicklern den Einstieg erleichtern sollen. Die Beispiele verwenden die V8-Programmierschnittstellen. Für Hilfe bei den verschiedenen V8-Aufrufen siehe online die [V8-Referenz](https://v8docs.nodesource.com/) und das V8-[Embedderhandbuch](https://github.com/v8/v8/wiki/Embedder's%20Guide) für eine Erklärung verschiedener Konzepte wie Handles, Scopes, Funktionsvorlagen, etc.
 
 Each of these examples using the following `binding.gyp` file:
 
