@@ -791,9 +791,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Passing wrapped objects around
+### Umwickelte Objekte umherreichen
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+Neben dem Umwickeln und Zurücksenden von C++-Objekten ist es möglich, umwickelte Objekte umherzureichen, indem man sie mit der Node.js-Hilfsfunktion `node::ObjectWrap::Unwrap` entpackt. Das folgende Beispiel zeigt eine `add()`-Funktion, die zwei `MyObject`-Objekte als Eingabeargumente verwenden kann:
 
 ```cpp
 // addon.cc
@@ -839,7 +839,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+In `myobject.h` wird eine neue öffentliche Methode hinzugefügt, um den Zugriff auf private Werte nach dem Entpacken des Objekts zu ermöglichen.
 
 ```cpp
 // myobject.h
@@ -871,7 +871,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+Die Implementierung von `myobject.cc` ist ähnlich wie zuvor:
 
 ```cpp
 // myobject.cc
@@ -945,7 +945,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+Testen Sie es mit:
 
 ```js
 // test.js
@@ -959,7 +959,7 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### AtExit-Aufhänger
 
 An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
 
