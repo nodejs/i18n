@@ -252,13 +252,13 @@ Alcuni dei test per l'implementazione del WHATWG URL (denominati `test-whatwg-ur
 
 Per migliorare i test che sono stati importati in questo modo, inviare prima una PR al progetto sopracitato. Quando la modifica proposta viene inserita nel progetto sopracitato, invia un altra PR qui per aggiornare di conseguenza anche Node.js. Assicurati di aggiornare l'hash nell'URL seguente `WPT Refs:`.
 
-## C++ Unit test
+## Test dell'unità C++
 
-C++ code can be tested using [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
+Il codice C++ può essere testato utilizzando [Google Test](https://github.com/google/googletest). La maggior parte delle funzionalità in Node.js può essere testata utilizzando i metodi descritti in precedenza in questo documento. Ma ci sono casi in cui questi potrebbero non essere sufficienti, ad esempio scrivere codice per Node.js che verrà chiamato solo quando viene incorporato Node.js.
 
-### Adding a new test
+### Aggiungere un nuovo test
 
-The unit test should be placed in `test/cctest` and be named with the prefix `test` followed by the name of unit being tested. For example, the code below would be placed in `test/cctest/test_env.cc`:
+Lo unit test deve essere inserito in `test/cctest` e deve essere denominato con il prefisso `test` seguito dal nome dell'unità testata. For example, the code below would be placed in `test/cctest/test_env.cc`:
 
 ```c++
 #include "gtest/gtest.h"
