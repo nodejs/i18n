@@ -2140,7 +2140,7 @@ changes:
 
 readdir(3) sincrónico.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para los nombres de archivo pasados al callback. Si el `encoding` se establece a `'buffer'`, los nombres de archivo devueltos serán pasados como objetos de `Buffer` .
 
 ## fs.readFile(path[, options], callback)
 
@@ -2186,7 +2186,7 @@ fs.readFile('/etc/passwd', (err, data) => {
 });
 ```
 
-The callback is passed two arguments `(err, data)`, where `data` is the contents of the file.
+El callback se le pasan dos argumentos `(err, data)`, en donde `data` son los contenidos del archivo.
 
 If no encoding is specified, then the raw buffer is returned.
 
@@ -2212,7 +2212,7 @@ fs.readFile('<directory>', (err, data) => {
 
 Cualquier descriptor de archivos especificado tiene que soportar la lectura.
 
-If a file descriptor is specified as the `path`, it will not be closed automatically.
+Si un descriptor de archivo se especifica como el `path`, no será cerrado automáticamente.
 
 The `fs.readFile()` function buffers the entire file. To minimize memory costs, when possible prefer streaming via `fs.createReadStream()`.
 
@@ -2239,9 +2239,9 @@ changes:
 
 Versión sincrónica de [`fs.readFile()`][]. Devuelve los contenidos del `path`.
 
-If the `encoding` option is specified then this function returns a string. Otherwise it returns a buffer.
+Si la opción de `encoding` es especificada, entonces esta función devuelve una string. De lo contrario, devuelve un búfer.
 
-Similar to [`fs.readFile()`][], when the path is a directory, the behavior of `fs.readFileSync()` is platform-specific.
+Similar a [`fs.readFile()`][], cuando la ruta es un directorio, el comportamiento de `fs.readFileSync()` es específico en la plataforma.
 
 ```js
 // macOS, Linux, and Windows
@@ -2279,7 +2279,7 @@ changes:
   * `err` {Error}
   * `linkString` {string|Buffer}
 
-Asynchronous readlink(2). The callback gets two arguments `(err,
+readlink(2) asincrónico. The callback gets two arguments `(err,
 linkString)`.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path passed to the callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
