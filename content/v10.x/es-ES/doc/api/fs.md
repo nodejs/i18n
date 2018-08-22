@@ -2081,7 +2081,7 @@ Lee datos del archivo especificado por `fd`.
 
 `length` is an integer specifying the number of bytes to read.
 
-`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
+`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. If `position` is an integer, the file position will remain unchanged.
 
 Al callback se le dan tres argumentos, `(err, bytesRead, buffer)`.
 
@@ -2138,7 +2138,7 @@ changes:
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string[]} An array of filenames excluding `'.'` and `'..'`.
 
-Synchronous readdir(3).
+readdir(3) sincrónico.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
 
