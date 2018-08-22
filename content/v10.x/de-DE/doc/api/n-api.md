@@ -66,7 +66,7 @@ typedef struct {
 } napi_extended_error_info;
 ```
 
-- `error_message`: UTF8-encoded string containing a VM-neutral description of the error.
+- `Fehlermeldung`: UTF8-kodierter String, der eine VM-neutrale Beschreibung des Fehlers enthält.
 - `engine_reserved`: Reserved for VM-specific error details. This is currently not implemented for any VM.
 - `engine_error_code`: VM-specific error code. This is currently not implemented for any VM.
 - `error_code`: The N-API status code that originated with the last error.
