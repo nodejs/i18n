@@ -644,7 +644,7 @@ changes:
 -->
 
 * {Object} 
-  * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **Default:** `process.execArgv`.
+  * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **Predeterminado:** `process.execArgv`.
   * `exec` {string} File path to worker file. **Default:** `process.argv[1]`.
   * `args` {string[]} String arguments passed to worker. **Default:** `process.argv.slice(2)`.
   * `cwd` {string} Current working directory of the worker process. **Default:** `undefined` (inherits from parent process).
