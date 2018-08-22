@@ -460,9 +460,9 @@ console.log(buf);
 
 Llamar a [`Buffer.alloc()`] puede ser significativamente más lento que la alternativa [`Buffer.allocUnsafe()`] pero garantiza que el contenido de la instancia de `Buffer` creada recientemente *nunca contendrá datos confidenciales*.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es un número.
 
-### Class Method: Buffer.allocUnsafe(size)
+### Método de Clase: Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
@@ -473,22 +473,22 @@ changes:
     description: Passing a negative `size` will now throw an error.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances with zeroes.
+La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *no inicializada*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc()`] en su lugar para inicializar las instancias de `Buffer` con ceros.
 
 ```js
 const buf = Buffer.allocUnsafe(10);
 
 console.log(buf);
-// Prints: (contents may vary): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
+// Imprime: (puede variar el contenido): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
 
 buf.fill(0);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
 
 A `TypeError` will be thrown if `size` is not a number.
