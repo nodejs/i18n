@@ -514,27 +514,27 @@ Cuando se utiliza [`Buffer.allocUnsafe()`] para asignar nuevas instancias de `Bu
 Sin embargo, en el caso donde un desarrollador puede necesitar retener un pequeño pedazo de memoria desde un conjunto por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `Buffer.allocUnsafeSlow()` y luego copiando los bits relevantes.
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita mantener alrededor algunos pedazos pequeños de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asigna para datos retenidos
   const sb = Buffer.allocUnsafeSlow(10);
 
-  // Copy the data into the new allocation
+  // Copia los datos en la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
 });
 ```
 
-`Buffer.allocUnsafeSlow()` should be used only as a last resort after a developer has observed undue memory retention in their applications.
+`Buffer.allocUnsafeSlow()` debe utilizarse solo como el último recurso después de que un desarrollador haya observado retención indebida de memoria en sus aplicaciones.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es un número.
 
-### Class Method: Buffer.byteLength(string[, encoding])
+### Método de Clase: Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
