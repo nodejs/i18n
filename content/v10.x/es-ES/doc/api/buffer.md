@@ -491,7 +491,7 @@ console.log(buf);
 // Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es un número.
 
 Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
 
