@@ -509,7 +509,7 @@ Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffe
 
 La memoria subyacente para instancias de `Buffer` creadas de esta manera está *no inicializadas*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`buf.fill(0)`][`buf.fill()`] para inicializar dichas instancias de `Buffer` con ceros.
 
-Cuando se utiliza [`Buffer.allocUnsafe()`] para asignar nuevas instancias de `Buffer`, las asignaciones menores a 4KB se segmentan desde un solo `Buffer` asignado previamente. Esto permite a las aplicaciones evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente. This approach improves both performance and memory usage by eliminating the need to track and clean up as many persistent objects.
+Cuando se utiliza [`Buffer.allocUnsafe()`] para asignar nuevas instancias de `Buffer`, las asignaciones menores a 4KB se segmentan desde un solo `Buffer` asignado previamente. Esto permite a las aplicaciones evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente. Este enfoque mejora el rendimiento y el uso de la memoria al eliminar la necesidad de rastrear y limpiar muchos objetos persistentes.
 
 However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` and then copying out the relevant bits.
 
