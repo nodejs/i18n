@@ -191,21 +191,21 @@ changes:
   * `encoding` {string} **Predeterminado:** `'utf8'`
   * `timeout` {number} **Predeterminado:** `0`
   * `maxBuffer` {number} Cantidad más grande de datos en bytes permitidos en stdout o stderr. Si se excede, se finaliza el proceso secundario. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
-  * `killSignal` {string|integer} **Default:** `'SIGTERM'`
+  * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
   * `uid` {number} Establece la identidad del usuario del proceso (vea setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-* `callback` {Function} Called with the output when process terminates. 
+  * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
+  * `windowsHide` {boolean} Oculta la ventada de la consola de subproceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
+  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. **Predeterminado:** `false`.
+  * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+* `callback` {Function} Llamada con la salida cuando el proceso finaliza. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* Returns: {ChildProcess}
+* Devuelve: {ChildProcess}
 
-The `child_process.execFile()` function is similar to [`child_process.exec()`][] except that it does not spawn a shell by default. Rather, the specified executable `file` is spawned directly as a new process making it slightly more efficient than [`child_process.exec()`][].
+La función `child_process.execFile()` es similar a [`child_process.exec()`][] excepto que no genera un shell por defecto. Más bien, el `file` ejecutable especificado es generado directamente como un nuevo proceso, haciéndolo ligeramente más eficiente que [`child_process.exec()`][].
 
-The same options as [`child_process.exec()`][] are supported. Since a shell is not spawned, behaviors such as I/O redirection and file globbing are not supported.
+Se admiten las mismas opciones como [`child_process.exec()`][]. Since a shell is not spawned, behaviors such as I/O redirection and file globbing are not supported.
 
 ```js
 const { execFile } = require('child_process');
@@ -217,9 +217,9 @@ const child = execFile('node', ['--version'], (error, stdout, stderr) => {
 });
 ```
 
-The `stdout` and `stderr` arguments passed to the callback will contain the stdout and stderr output of the child process. By default, Node.js will decode the output as UTF-8 and pass strings to the callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
+Los argumentos `stdout` y `stderr` pasados al callback contendrán las salidas stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `encoding` puede ser usada para especificar la codificación de caracter usada para decodificar las salidas stdout y stderr. Si `encoding` es `'buffer'` o una codificación de caracter no reconocida, los objetos `Buffer` serán pasados al callback en su lugar.
 
-Si se invoca este método en su versión [`util.promisify()`][]ed, devuelve una `Promesa` para un `Objeto` con propiedades `stdout` y `stderr`. In case of an error (including any error resulting in an exit code other than 0), a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
+Si se invoca este método en su versión [`util.promisify()`][]ed, devuelve una `Promesa` para un `Objeto` con propiedades `stdout` y `stderr`. En caso de un error (incluyendo cualquier error que resulta en una salida de código distinta a 0), se devolverá una promesa rechazada con el mismo objeto `error` dado en el callback, pero con dos propiedades `stdout` y `stderr` adicionales.
 
 ```js
 const util = require('util');
@@ -231,7 +231,7 @@ async function getVersion() {
 getVersion();
 ```
 
-**If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Si la opción `shell` está habilitada, no pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.**
 
 ### child_process.fork(modulePath\[, args\]\[, options\])
 
@@ -247,17 +247,17 @@ changes:
     description: The `stdio` option is supported now.
 -->
 
-* `modulePath` {string} The module to run in the child.
-* `args` {string[]} List of string arguments.
-* `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
+* `modulePath` {string} El módulo a ejecutar en el proceso secundario.
+* `args` {string[]} Lista de argumentos de strings.
+* `opciones` {Object} 
+  * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `env` {Object} Environment key-value pairs.
   * `execPath` {string} Executable used to create the child process.
-  * `execArgv` {string[]} List of string arguments passed to the executable. **Default:** `process.execArgv`.
-  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Default:** `false`.
-  * `stdio` {Array|string} See [`child_process.spawn()`][]'s [`stdio`][]. When this option is provided, it overrides `silent`. If the array variant is used, it must contain exactly one item with value `'ipc'` or an error will be thrown. For instance `[0, 1, 2, 'ipc']`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `execArgv` {string[]} Lista de argumentos de strings pasados al ejecutable. **Predeterminado:** `process.execArgv`.
+  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Predeterminado:** `false`.
+  * `stdio` {Array|string} Vea el [`stdio`][] del [`child_process.spawn()`][]'. Cuando se proporciona esta opción, se anula `silent`. Si la variante del array es usada, debe contener exactamente un artículo con el valor `'ipc'` o se arrojará un error. Por ejemplo: `[0, 1, 2, 'ipc']`.
+  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. **Predeterminado:** `false`.
+  * `uid` {number} Establece la identidad del usuario del proceso (vea setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
 * Returns: {ChildProcess}
 
@@ -307,7 +307,7 @@ changes:
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
 
-**If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Si la opción `shell` está habilitada, no pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.**
 
 A third argument may be used to specify additional options, with these defaults:
 
@@ -536,7 +536,7 @@ If the child process intercepts and handles the `SIGTERM` signal and does not ex
 
 If the process times out or has a non-zero exit code, this method ***will*** throw an [`Error`][] that will include the full result of the underlying [`child_process.spawnSync()`][].
 
-**If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Si la opción `shell` está habilitada, no pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.**
 
 ### child_process.execSync(command[, options])
 
@@ -621,7 +621,7 @@ changes:
 
 The `child_process.spawnSync()` method is generally identical to [`child_process.spawn()`][] with the exception that the function will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. Note that if the process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.
 
-**If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Si la opción `shell` está habilitada, no pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.**
 
 ## Class: ChildProcess
 
