@@ -2186,7 +2186,7 @@ fs.readFile('/etc/passwd', (err, data) => {
 });
 ```
 
-El callback se le pasan dos argumentos `(err, data)`, en donde `data` son los contenidos del archivo.
+Al callback se le pasan dos argumentos `(err, data)`, en donde `data` son los contenidos del archivo.
 
 If no encoding is specified, then the raw buffer is returned.
 
@@ -2279,10 +2279,10 @@ changes:
   * `err` {Error}
   * `linkString` {string|Buffer}
 
-readlink(2) asincrónico. The callback gets two arguments `(err,
+readlink(2) asincrónico. El callback obtiene dos argumentos `(err,
 linkString)`.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path passed to the callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta de enlace pasada al callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
 
 ## fs.readlinkSync(path[, options])
 
@@ -3502,7 +3502,7 @@ added: v10.0.0
 * `mode` {integer}
 * Returns: {Promise}
 
-Cambia los permisos de un archivo, luego resuelve la `Promise` sin argumentos al hacerlo con éxito.
+Cambia los permisos de un archivo, luego resuelve la `Promise` sin argumentos al realizarlo con éxito.
 
 ### fsPromises.chown(path, uid, gid)
 
