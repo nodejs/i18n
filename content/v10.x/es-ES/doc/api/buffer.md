@@ -493,7 +493,7 @@ console.log(buf);
 
 Se producirá un `TypeError` si `size` no es un número.
 
-Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
+Tenga en cuenta que el módulo `Buffer` asigna previamente una instancia de `Buffer` interna de tamaño [`Buffer.poolSize`] que es usado como un repositorio para la rápida asignación de las nuevas instancias de `Buffer` creadas utilizando [`Buffer.allocUnsafe()`] y el constructor obsoleto `new Buffer(size)` solo cuando `size` es menor o igual que `Buffer.poolSize >> 1` (piso de [`Buffer.poolSize`] dividido entre dos).
 
 El uso de este conjunto de memoria interna asignada previamente es una diferencia clave entre llamar a `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Específicamente, `Buffer.alloc(size, fill)` *nunca* utilizará el conjunto interno de `Buffer`, mientras que `Buffer.allocUnsafe(size).fill(fill)` *utilizará* el conjunto interno de `Buffer` si `size` es menor o igual que la mitad de [`Buffer.poolSize`]. La diferencia es sutil, pero puede ser importante cuando una aplicación requiere el rendimiento adicional que proporciona [`Buffer.allocUnsafe()`].
 
