@@ -110,22 +110,22 @@ changes:
 * `command` {string} El comando a ejecutar, con los argumentos separados con espacios.
 * `opciones` {Object} 
   * `cwd` {string} El directorio del proceso secundario actualmente operativo. **Default:** `null`.
-  * `env` {Object} Environment key-value pairs. **Default:** `null`.
-  * `encoding` {string} **Default:** `'utf8'`
+  * `env` {Object} Environment key-value pairs. **Predeterminado:** `null`.
+  * `codificación` {string} **Predeterminado:** `'utf8'`
   * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
-  * `timeout` {number} **Default:** `0`
+  * `timeout` {number} **Predeterminado:** `0`
   * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
-  * `killSignal` {string|integer} **Default:** `'SIGTERM'`
+  * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
   * `uid` {number} Establece la identidad del usuario de los procesos (vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso (vea setgid(2)).
-  * `windowsHide` {boolean} Ocultar la ventana de la consola de sub-proceso que normalmente estaría creada en sistemas Windows. **Default:** `false`.
+  * `windowsHide` {boolean} Ocultar la ventana de la consola de sub-proceso que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
 * `callback` {Function} llamada con la salida cuando el proceso finaliza. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
 * Devuelve: {ChildProcess}
 
-Genera un shell, luego ejecuta el `command` dentro de esa shell, cargando cualquier salida generada. The `command` string passed to the exec function is processed directly by the shell and special characters (vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) need to be dealt with accordingly:
+Genera un shell, luego ejecuta el `command` dentro de esa shell, cargando cualquier salida generada. La string `command` pasada a la función exec procesada directamente por el shell y por los caracteres especiales (varía dependiendo del [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) necesita ser tratada en consecuencia:
 
 ```js
 exec('"/path/to/test file/test.sh" arg1 arg2');
@@ -136,7 +136,7 @@ exec('echo "The \\$HOME variable is $HOME"');
 // La variable $HOME se escapó en la primera instancia, pero no en la segunda
 ```
 
-**Nunca pase la entrada del usuario no optimizado a esta función. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Nunca pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell pueden ser usadas para activar la ejecución de comando arbitrario.**
 
 ```js
 const { exec } = require('child_process');
@@ -152,11 +152,11 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 
 Si se proporciona una función `callback`, se llama con los argumentos `(error, stdout, stderr)`. En éxito, el `error` será `null`. En error, el `error` será una instancia de [`Error`][]. La propiedad `error.code` será el código de salida del proceso secundario, mientras que `error.signal` se establecerá a la señal que finalizó el proceso. Cualquier otro código de salida distinto a `0` se considera como un error.
 
-Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `codificación` puede ser utilizada para especificar la codificación de caracteres para decodificar las salida stdout y stderr. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
+Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `codificación` puede ser utilizada para especificar la codificación de caracteres para decodificar las salida stdout y stderr. Si `encoding` es `'buffer'` o una codificación de caracter no reconocido, los objetos `Buffer` serán pasados al callback en su lugar.
 
-If `timeout` is greater than `0`, the parent will send the signal identified by the `killSignal` property (the default is `'SIGTERM'`) if the child runs longer than `timeout` milliseconds.
+Si `timeout` es mayor que `0`, el proceso primario enviarán la señal identificado por la propiedad `killSignal` (la señal predeterminada es `'SIGTERM'`) si el proceso secundario se ejecuta por mayor tiempo que `timeout` milisegundos.
 
-Unlike the exec(3) POSIX system call, `child_process.exec()` does not replace the existing process and uses a shell to execute the command.
+A diferencia de la llamada de sistema exec(3) POSIX, el `child_process.exec()` no remplaza el proceso existente y utiliza un shell para ejecutar el comando.
 
 Si se invoca este método en su versión [`util.promisify()`][]ed, devuelve una `Promesa` para un `Objeto` con propiedades `stdout` y `stderr`. En el caso de un error (incluyendo cualquier error que resulte en una salida de código diferente a 0), se devolverá una promesa con el mismo objeto `error` dado en el callback, pero con dos propiedades adicionales `stdout` y `stderr`.
 
@@ -188,8 +188,8 @@ changes:
 * `opciones` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `env` {Object} Environment key-value pairs.
-  * `encoding` {string} **Default:** `'utf8'`
-  * `timeout` {number} **Default:** `0`
+  * `encoding` {string} **Predeterminado:** `'utf8'`
+  * `timeout` {number} **Predeterminado:** `0`
   * `maxBuffer` {number} Cantidad más grande de datos en bytes permitidos en stdout o stderr. Si se excede, se finaliza el proceso secundario. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Establece la identidad del usuario del proceso (vea setuid(2)).
@@ -572,7 +572,7 @@ The `child_process.execSync()` method is generally identical to [`child_process.
 
 If the process times out or has a non-zero exit code, this method ***will*** throw. The [`Error`][] object will contain the entire result from [`child_process.spawnSync()`][].
 
-**Nunca pase la entrada del usuario no optimizado a esta función. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
+**Nunca pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell pueden ser usadas para activar la ejecución de comando arbitrario.**
 
 ### child_process.spawnSync(command\[, args\]\[, options\])
 
