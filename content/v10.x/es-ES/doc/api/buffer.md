@@ -438,27 +438,27 @@ console.log(buf);
 // Imprime: <Buffer 00 00 00 00 00>
 ```
 
-Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
+Si `fill` es especificado, el `Buffer` asignado se inicializará al llamar a [`buf.fill(fill)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(5, 'a');
 
 console.log(buf);
-// Prints: <Buffer 61 61 61 61 61>
+// Imprime: <Buffer 61 61 61 61 61>
 ```
 
-If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
+Si se especifican tanto `fill` como `encoding`, el `Buffer` asignado se inicializará al llamar a [`buf.fill(fill, encoding)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 
 console.log(buf);
-// Prints: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
+// Imprime: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
 ```
 
-Calling [`Buffer.alloc()`] can be significantly slower than the alternative [`Buffer.allocUnsafe()`] but ensures that the newly created `Buffer` instance contents will *never contain sensitive data*.
+Llamar a [`Buffer.alloc()`] puede ser significativamente más lento que la alternativa [`Buffer.allocUnsafe()`] pero garantiza que el contenido de la instancia de `Buffer` creada recientemente *nunca contendrá datos confidenciales*.
 
 A `TypeError` will be thrown if `size` is not a number.
 
