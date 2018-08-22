@@ -507,7 +507,7 @@ added: v5.12.0
 
 Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances with zeroes.
+La memoria subyacente para instancias de `Buffer` creadas de esta manera está *no inicializadas*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`buf.fill(0)`][`buf.fill()`] para inicializar dichas instancias de `Buffer` con ceros.
 
 When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocations under 4KB are sliced from a single pre-allocated `Buffer`. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and clean up as many persistent objects.
 
