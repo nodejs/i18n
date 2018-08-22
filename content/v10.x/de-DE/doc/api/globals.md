@@ -24,7 +24,7 @@ added: v0.1.103
 
 * {Function}
 
-Used to handle binary data. See the [buffer section](buffer.html).
+Used to handle binary data. Siehe [Abschnitt Puffer](buffer.html).
 
 ## \_\_dirname
 
