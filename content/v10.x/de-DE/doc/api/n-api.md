@@ -12,8 +12,8 @@ Erweiterungen werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, 
 
 Programmierschnittstellen, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die Programmierschnittstellen haben folgende Eigenschaften:
 
-- All N-API calls return a status code of type `napi_status`. This status indicates whether the API call succeeded or failed.
-- The API's return value is passed via an out parameter.
+- Alle N-API-Aufrufe liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob der Programmierschnittstellen-Aufruf erfolgreich war oder nicht.
+- Der Rückgabewert der Programmierschnittstelle wird über einen Out-Parameter übergeben.
 - All JavaScript values are abstracted behind an opaque type named `napi_value`.
 - In case of an error status code, additional information can be obtained using `napi_get_last_error_info`. More information can be found in the error handling section [Error Handling](#n_api_error_handling).
 
