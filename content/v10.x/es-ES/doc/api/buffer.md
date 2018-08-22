@@ -75,7 +75,7 @@ $ node --zero-fill-buffers
 
 ### ¿Qué hace a `Buffer.allocUnsafe()` y `Buffer.allocUnsafeSlow()` "inseguros"?
 
-When calling [`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow()`], the segment of allocated memory is *uninitialized* (it is not zeroed-out). Mientras este diseño hace la asignación de memoria muy rápido, el segmento asignado de memoria puede contener datos antiguos que son potencialmente confidenciales. Utilizando un `Buffer` creado por [`Buffer.allocUnsafe()`] sin sobrescribir *completamente* la memoria se puede permitir que estos datos antiguos se filtren cuando la memoria del `Buffer` se lee.
+Cuando se llama a [`Buffer.allocUnsafe()`] y a [`Buffer.allocUnsafeSlow()`], el segmento de memoria asignada está *no inicializada* (no es cero a cero). Mientras este diseño hace la asignación de memoria muy rápido, el segmento asignado de memoria puede contener datos antiguos que son potencialmente confidenciales. Utilizando un `Buffer` creado por [`Buffer.allocUnsafe()`] sin sobrescribir *completamente* la memoria se puede permitir que estos datos antiguos se filtren cuando la memoria del `Buffer` se lee.
 
 Mientras que hay claras ventajas de rendimiento al utilizar [`Buffer.allocUnsafe()`], se *debe* tener cuidado adicional para evitar la introducción de vulnerabilidades de seguridad dentro de una aplicación.
 
@@ -429,13 +429,13 @@ changes:
 * `fill` {string|Buffer|integer} Un valor con el que llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`.
 * `encoding` {string} Si `fill` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
 
-Asigna un nuevo `Buffer` de bytes de `size`. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `fill` es `undefined`, el `Buffer` estará *lleno de ceros*.
 
 ```js
 const buf = Buffer.alloc(5);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 ```
 
 Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
