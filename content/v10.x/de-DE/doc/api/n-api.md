@@ -12,26 +12,26 @@ Erweiterungen werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, 
 
 Programmierschnittstellen, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die Programmierschnittstellen haben folgende Eigenschaften:
 
-- Alle N-API-Aufrufe liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob der Programmierschnittstellen-Aufruf erfolgreich war oder nicht.
+- Alle N-API-Anfragen liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob die Programmierschnittstellen-Anfrage erfolgreich war oder nicht.
 - Der Rückgabewert der Programmierschnittstelle wird über einen Out-Parameter übergeben.
 - Alle JavaScript-Werte werden hinter einem undurchsichtigen Typ namens `napi_value` abstrahiert.
 - Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie in dem Fehlermeldungs-Handlingbereich [Fehlerbehandlung](#n_api_error_handling).
 
-Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-API bereitstellen. Binaries built with these wrapper modules will depend on the symbols for the N-API C based functions exported by Node.js. These wrappers are not part of N-API, nor will they be maintained as part of Node.js. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
+Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-Programmierschnittstelle bereitstellen. Binärdateien, die mit diesen Wrapper-Modulen erstellt wurden, hängen von den Symbolen für die N-API C-basierten Funktionen ab, die von Node.js exportiert wurden. Diese Wrapper sind weder Teil der N-API, noch werden sie als Teil von Node.js verwaltet. Ein solches Beispiel ist: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
-In order to use the N-API functions, include the file [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree:
+Um die N-API-Funktionen zu verwenden, fügen Sie die [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h)-Datei ein, die sich im src-Verzeichnis im Node-Development-Tree befindet:
 
 ```C
 #include <node_api.h>
 ```
 
-## Basic N-API Data Types
+## Grundlegende N-API-Datentypen
 
-N-API exposes the following fundamental datatypes as abstractions that are consumed by the various APIs. These APIs should be treated as opaque, introspectable only with other N-API calls.
+N-API stellt die folgenden grundlegenden Datentypen als Abstraktionen dar, die von den verschiedenen Programmierschnittstellen verbraucht werden. Diese Programmierschnittstellen sollten nur mit anderen N-API-Anfragen als undurchsichtig und introspektierbar behandelt werden.
 
 ### napi_status
 
-Integral status code indicating the success or failure of a N-API call. Currently, the following status codes are supported.
+Integrierter Statuscode, der den Erfolg oder Misserfolg einer N-Programmierschnittstellen-Anfrage anzeigt. Derzeit werden die folgenden Statuscodes unterstützt.
 
 ```C
 typedef enum {
@@ -53,7 +53,7 @@ typedef enum {
 } napi_status;
 ```
 
-If additional information is required upon an API returning a failed status, it can be obtained by calling `napi_get_last_error_info`.
+Werden zusätzliche Informationen benötigt, wenn eine Programmierschnittstelle einen fehlgeschlagenen Status zurücksendet, können diese durch eine Anfrage von `napi_get_last_error_info` erlangt werden.
 
 ### napi_extended_error_info
 
