@@ -407,9 +407,9 @@ En plataformas distintas de Windows, si `options.detached` se establece a `true`
 
 Por defecto, el proceso primario esperará que el proceso secundario independiente se cierre. Para prevenir que el proceso primario espere por un `subprocess` dado, utilice el método `subprocess.unref()`. Haciendo esto causará que el bucle del evento del proceso primario no incluya al proceso secundario en su cuenta de referencia, permitiendo que el proceso primario se cierre independientemente del proceso secundario, a menos que haya un canal IPC establecido entre ambos procesos.
 
-When using the `detached` option to start a long-running process, the process will not stay running in the background after the parent exits unless it is provided with a `stdio` configuration that is not connected to the parent. If the parent's `stdio` is inherited, the child will remain attached to the controlling terminal.
+Al utilizar la opción `detached` para iniciar un proceso de larga duración, el proceso no se mantendrá corriendo en segundo plano después de que el proceso primario se cierre, a menos que sea provisto con una configuración `stdio` que no esté conectada al proceso primario. Si el `stdio` del proceso primario es heredado, el proceso secundario permanecerá unico al terminal de control.
 
-Example of a long-running process, by detaching and also ignoring its parent `stdio` file descriptors, in order to ignore the parent's termination:
+Ejemplo de un proceso de larga duración al separar y también ignorando sus descriptores de archivo `stdio` del proceso primario, para ignorar la terminación del proceso primario:
 
 ```js
 const { spawn } = require('child_process');
@@ -422,7 +422,7 @@ const subprocess = spawn(process.argv[0], ['child_program.js'], {
 subprocess.unref();
 ```
 
-Alternatively one can redirect the child process' output into files:
+Alternativamente, uno puede redirigir la salida del proceso secundario a archivos:
 
 ```js
 const fs = require('fs');
@@ -449,18 +449,18 @@ changes:
     description: The value `0` is now accepted as a file descriptor.
 -->
 
-The `options.stdio` option is used to configure the pipes that are established between the parent and child process. By default, the child's stdin, stdout, and stderr are redirected to corresponding [`subprocess.stdin`][], [`subprocess.stdout`][], and [`subprocess.stderr`][] streams on the [`ChildProcess`][] object. This is equivalent to setting the `options.stdio` equal to `['pipe', 'pipe', 'pipe']`.
+The `options.stdio` option is used to configure the pipes that are established between the parent and child process. Por defecto, el stdin, stdout y stderr del proceso secundario son redireccionados a streams [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][] correspondientes en el objeto [`ChildProcess`][]. Esto es equivalente a configurar el `options.stdio` igual a `['pipe', 'pipe', 'pipe']`.
 
-For convenience, `options.stdio` may be one of the following strings:
+Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 
-* `'pipe'` - equivalent to `['pipe', 'pipe', 'pipe']` (the default)
-* `'ignore'` - equivalent to `['ignore', 'ignore', 'ignore']`
-* `'inherit'` - equivalent to `[process.stdin, process.stdout, process.stderr]` or `[0,1,2]`
+* `'pipe'` - equivalente a `['pipe', 'pipe', 'pipe']` (el predeterminado)
+* `'ignore'` - equivalente a `['ignore', 'ignore', 'ignore']`
+* `'inherit'` - equivalente a `[process.stdin, process.stdout, process.stderr]` o `[0,1,2]`
 
-Otherwise, the value of `options.stdio` is an array where each index corresponds to an fd in the child. The fds 0, 1, and 2 correspond to stdin, stdout, and stderr, respectively. Additional fds can be specified to create additional pipes between the parent and child. The value is one of the following:
+De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Additional fds can be specified to create additional pipes between the parent and child. El valor es uno de los siguientes:
 
 1. `'pipe'` - Create a pipe between the child process and the parent process. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
-2. `'ipc'` - Create an IPC channel for passing messages/file descriptors between parent and child. A [`ChildProcess`][] may have at most *one* IPC stdio file descriptor. Setting this option enables the [`subprocess.send()`][] method. If the child is a Node.js process, the presence of an IPC channel will enable [`process.send()`][] and [`process.disconnect()`][] methods, as well as [`'disconnect'`][] and [`'message'`][] events within the child.
+2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurando esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][] and [`process.disconnect()`][], al igual que los eventos [`'disconnect'`][] y [`'message'`][] dentro del proceso secundario.
   
   Accessing the IPC channel fd in any way other than [`process.send()`][] or using the IPC channel with a child process that is not a Node.js instance is not supported.
 
