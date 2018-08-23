@@ -486,15 +486,15 @@ spawn('prg', [], { stdio: ['pipe', 'pipe', process.stderr] });
 spawn('prg', [], { stdio: ['pipe', null, null, null, 'pipe'] });
 ```
 
-*It is worth noting that when an IPC channel is established between the parent and child processes, and the child is a Node.js process, the child is launched with the IPC channel unreferenced (using `unref()`) until the child registers an event handler for the [`'disconnect'`][] event or the [`'message'`][] event. This allows the child to exit normally without the process being held open by the open IPC channel.*
+*It is worth noting that when an IPC channel is established between the parent and child processes, and the child is a Node.js process, the child is launched with the IPC channel unreferenced (using `unref()`) until the child registers an event handler for the [`'disconnect'`][] event or the [`'message'`][] event. Esto permite que el proceso secundario se cierre normalmente sin que se mantenga el proceso abierto por el canal IPC abierto.*
 
-See also: [`child_process.exec()`][] and [`child_process.fork()`][].
+Vea también: [`child_process.exec()`][] y [`child_process.fork()`][].
 
-## Synchronous Process Creation
+## Creación de Procesos Sincrónicos
 
-The [`child_process.spawnSync()`][], [`child_process.execSync()`][], and [`child_process.execFileSync()`][] methods are **synchronous** and **WILL** block the Node.js event loop, pausing execution of any additional code until the spawned process exits.
+Los métodos [`child_process.spawnSync()`][], [`child_process.execSync()`][] y [`child_process.execFileSync()`][] son **sincrónicos** y **WILL** bloquerá el bucle del evento Node.js, pausando la ejecución de cualquier código adicional hasta que se cierre el proceso generado.
 
-Blocking calls like these are mostly useful for simplifying general-purpose scripting tasks and for simplifying the loading/processing of application configuration at startup.
+El bloquear llamadas como estas son sobretodo útiles para la simplificación de tareas de uso general y para simplificar la carga/el procesamiento de la configuración de aplicación en el inicio.
 
 ### child_process.execFileSync(file\[, args\]\[, options\])
 
@@ -513,17 +513,17 @@ changes:
     description: The `encoding` option can now explicitly be set to `buffer`.
 -->
 
-* `file` {string} The name or path of the executable file to run.
-* `args` {string[]} List of string arguments.
-* `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+* `file` {string} El nombre o la ruta del archivo ejecutable a ejecutar.
+* `args` {string[]} Lista de argumentos de strings.
+* `opciones` {Object} 
+  * `cwd` {string} El directorio del proceso secundario actualmente operativo.
+  * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
+  * `stdio` {string|Array} Configuración del stdio del proceso secundario. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Predeterminado:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
+  * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
+  * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
+  * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que permite que se ejecute el proceso. **Predeterminado:** `undefined`.
+  * `killSignal` {string|integer} El valor señal a ser usado cuando el proceso generado se aniquile. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
@@ -555,14 +555,14 @@ changes:
 * `command` {string} The command to run.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
+  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Predeterminado:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
   * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `uid` {number} Sets the user identity of the process. (See setuid(2)).
   * `gid` {number} Sets the group identity of the process. (See setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
+  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Predeterminado:** `undefined`.
+  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
@@ -598,13 +598,13 @@ changes:
 * `args` {string[]} List of string arguments.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
+  * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
   * `stdio` {string|Array} Child's stdio configuration.
   * `env` {Object} Environment key-value pairs.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
+  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Predeterminado:** `undefined`.
+  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
