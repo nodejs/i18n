@@ -4,9 +4,9 @@
 
 > Estabilidade: 2 - Estável
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+O módulo `assert` provê um simples conjunto de testes assertivos que podem ser usados para testar invariantes.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Existem os modos `strict` e o `legacy`, no entanto é recomendado usar apenas [`strict mode`][].
 
 For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
