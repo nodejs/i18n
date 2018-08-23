@@ -1014,7 +1014,7 @@ added: v0.0.6
 -->
 
 * `pid` {number} A process ID
-* `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
+* `signal` {string|number} The signal to send, either as a string or number. **Predeterminado:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
 
