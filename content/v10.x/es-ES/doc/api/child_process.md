@@ -324,7 +324,7 @@ Utilice `env` para especificar las variables de ambiente que serán visibles par
 
 Los valores `undefined` en `env` serán ignorados.
 
-Example of running `ls -lh /usr`, capturing `stdout`, `stderr`, and the exit code:
+Ejemplo de `ls -lh /usr` ejecutándose, capturando `stdout`, `stderr` y el código de salida:
 
 ```js
 const { spawn } = require('child_process');
@@ -343,7 +343,7 @@ ls.on('close', (code) => {
 });
 ```
 
-Example: A very elaborate way to run `ps ax | grep ssh`
+Ejemplo: Una manera muy elaborado para ejecutar `ps ax | grep ssh`
 
 ```js
 const { spawn } = require('child_process');
@@ -391,7 +391,7 @@ subprocess.on('error', (err) => {
 });
 ```
 
-Certain platforms (macOS, Linux) will use the value of `argv[0]` for the process title while others (Windows, SunOS) will use `command`.
+Ciertas plataformas (macOS, Linux) utilizarán el valor de `argv[0]` para el título del proceso mientras que otros (Windows, SunOS) utilizarán `command`.
 
 Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `process.argv[0]` in a Node.js child process will not match the `argv0` parameter passed to `spawn` from the parent, retrieve it with the `process.argv0` property instead.
 
