@@ -297,11 +297,11 @@ changes:
   * `env` {Object} Environment key-value pairs.
   * `argv0` {string} Establecer explícitamente el valor de `argv[0]` enviado al proceso secundario. Esto será establecido en el `command` si no se especifica.
   * `stdio` {Array|string} Configuración stdio del proceso secundario (vea [`options.stdio`][`stdio`]).
-  * `detached` {boolean} Prepare child to run independently of its parent process. Specific behavior depends on the platform, see [`options.detached`][]).
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
+  * `detached` {boolean} Prepare el proceso secundario para ejecutar independientemente de su proceso primario. El comportamiento específico depende de la plataforma, vea [`options.detached`][]).
+  * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
+  * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
+  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
 * Returns: {ChildProcess}
 
