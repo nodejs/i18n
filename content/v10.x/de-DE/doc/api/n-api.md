@@ -117,7 +117,7 @@ typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 
 #### napi_finalize
 
-Funktionszeigertyp für zusätzlich zur Verfügung gestellte Funktionen, der es dem Benutzer ermöglicht, benachrichtigt zu werden, wenn externe Daten bereit sind, bereinigt zu werden, weil das Objekt, mit dem sie verknüpft waren, unbrauchbar geworden ist. Der Benutzer muss eine Funktion zur Verfügung stellen, die die folgende Signatur erfüllt, die auf die Sammlung des Objekts angewandt wird. Currently, `napi_finalize` can be used for finding out when objects that have external data are collected.
+Funktionszeigertyp für zusätzlich zur Verfügung gestellte Funktionen, der es dem Benutzer ermöglicht, benachrichtigt zu werden, wenn externe Daten bereit sind, bereinigt zu werden, weil das Objekt, mit dem sie verknüpft waren, unbrauchbar geworden ist. Der Benutzer muss eine Funktion zur Verfügung stellen, die die folgende Signatur erfüllt, die auf die Sammlung des Objekts angewandt wird. Derzeit kann `napi_finalize` verwendet werden, um herauszufinden, wann Objekte mit externen Daten gesammelt werden.
 
 ```C
 typedef void (*napi_finalize)(napi_env env,
@@ -127,7 +127,7 @@ typedef void (*napi_finalize)(napi_env env,
 
 #### napi_async_execute_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Funktionszeiger, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env, void* data);
@@ -135,7 +135,7 @@ typedef void (*napi_async_execute_callback)(napi_env env, void* data);
 
 #### napi_async_complete_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Funktionszeiger, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
 typedef void (*napi_async_complete_callback)(napi_env env,
@@ -143,13 +143,13 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-## Error Handling
+## Fehlerbehandlung
 
-N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
+Die N-API verwendet sowohl Rückgabewerte als auch JavaScript-Ausnahmen zur Fehlerbehandlung. Die folgenden Abschnitte erklären die Vorgehensweise für den jeweiligen Fall.
 
-### Return values
+### Rückgabewerte
 
-All of the N-API functions share the same error handling pattern. The return type of all API functions is `napi_status`.
+Alle N-API-Funktionen haben das gleiche Fehlerbehandlungsmuster. Der Rückgabetyp aller API-Funktionen ist `napi_status`.
 
 The return value will be `napi_ok` if the request was successful and no uncaught JavaScript exception was thrown. If an error occurred AND an exception was thrown, the `napi_status` value for the error will be returned. If an exception was thrown, and no error occurred, `napi_pending_exception` will be returned.
 
