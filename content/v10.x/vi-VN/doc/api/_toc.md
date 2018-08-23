@@ -3,7 +3,7 @@
 <!--introduced_in=v0.10.0-->
 
 * [Về tài liệu này](documentation.html)
-* [Cách sử dụng và ví dụ](synopsis.html)
+* [Cách sử dụng & ví dụ](synopsis.html)
 
 <div class="line"></div>
 
@@ -56,5 +56,5 @@
 
 <div class="line"></div>
 
-* [Github Repo và theo dõi lỗi](https://github.com/nodejs/node)
+* [Github Repo & theo dõi lỗi](https://github.com/nodejs/node)
 * [Danh sách thư](https://groups.google.com/group/nodejs)
