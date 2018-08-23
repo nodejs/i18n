@@ -175,9 +175,9 @@ typedef struct napi_extended_error_info {
 - `engine_error_code`: VM-spezifischer Error-Code.
 - `error_code`: N-API-Statuscode für den letzten Fehler.
 
-[`napi_get_last_error_info`][] returns the information for the last N-API call that was made.
+[`napi_get_last_error_info`][] liefert die Informationen für die letzte N-API-Anfrage.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+Verlassen Sie sich nicht auf den Inhalt oder das Format der erweiterten Informationen, da diese nicht dem SemVer unterliegen und sich jederzeit ändern können. Sie sind nur für die Protokollierung bestimmt.
 
 #### napi_get_last_error_info
 
@@ -194,15 +194,15 @@ napi_get_last_error_info(napi_env env,
 - `[in] env`: The environment that the API is invoked under.
 - `[out] result`: The `napi_extended_error_info` structure with more information about the error.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API retrieves a `napi_extended_error_info` structure with information about the last error that occurred.
+Diese API liefert eine `napi_extended_error_info`-Struktur mit Informationen über den zuletzt aufgetretenen Fehler.
 
 The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+Verlassen Sie sich nicht auf den Inhalt oder das Format der erweiterten Informationen, da diese nicht dem SemVer unterliegen und sich jederzeit ändern können. Sie sind nur für die Protokollierung bestimmt.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ansteht.
 
 ### Exceptions
 
