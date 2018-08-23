@@ -101,11 +101,11 @@ Dies ist die Abstraktion, die verwendet wird, um auf eine `napi_value` zu verwei
 
 Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_object_lifetime_management).
 
-### N-API Callback types
+### N-API Callback-Typen
 
 #### napi_callback_info
 
-Opaque datatype that is passed to a callback function. It can be used for getting additional information about the context in which the callback was invoked.
+Undurchsichtiger Datentyp, der an eine Callback-Funktion weitergegeben wird. Er kann verwendet werden, um zusätzliche Informationen über den Kontext zu erhalten, in dem der Callback aufgerufen wurde.
 
 #### napi_callback
 
