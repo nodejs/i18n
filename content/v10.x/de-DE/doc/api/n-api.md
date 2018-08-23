@@ -171,9 +171,9 @@ typedef struct napi_extended_error_info {
 ```
 
 - `error_message`: Textliche Darstellung des aufgetretenen Fehlers.
-- `engine_reserved`: Opaque handle reserved for engine use only.
-- `engine_error_code`: VM specific error code.
-- `error_code`: n-api status code for the last error.
+- `engine_reserved`: Undurchsichtiger Handle, der nur für den Engine-Betrieb reserviert ist.
+- `engine_error_code`: VM-spezifischer Error-Code.
+- `error_code`: N-API-Statuscode für den letzten Fehler.
 
 [`napi_get_last_error_info`][] returns the information for the last N-API call that was made.
 
