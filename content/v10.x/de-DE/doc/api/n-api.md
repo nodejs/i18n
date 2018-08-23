@@ -79,7 +79,7 @@ Siehe Abschnitt [Fehlerbehandlung](#n_api_error_handling) für weitere Informati
 
 ### napi_value
 
-This is an opaque pointer that is used to represent a JavaScript value.
+Dies ist ein undurchsichtiger Zeiger, der verwendet wird, um einen JavaScript-Wert darzustellen.
 
 ### N-API Memory Management types
 
