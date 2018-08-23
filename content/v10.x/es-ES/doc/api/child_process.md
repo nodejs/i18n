@@ -524,10 +524,10 @@ changes:
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
   * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que permite que se ejecute el proceso. **Predeterminado:** `undefined`.
   * `killSignal` {string|integer} El valor señal a ser usado cuando el proceso generado se aniquile. **Predeterminado:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
-  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
+  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `encoding` {string} La codificación usada para todas entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
+  * `windowsHide` {boolean} Oculta la ventada de la consola de sub-procesos que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
+  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
 * Returns: {Buffer|string} The stdout from the command.
 
 The `child_process.execFileSync()` method is generally identical to [`child_process.execFile()`][] with the exception that the method will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited.
@@ -564,7 +564,7 @@ changes:
   * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Predeterminado:** `undefined`.
   * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
-  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
+  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Predeterminado:** `'buffer'`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
 * Returns: {Buffer|string} The stdout from the command.
 
@@ -606,7 +606,7 @@ changes:
   * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Predeterminado:** `undefined`.
   * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
-  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
+  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Predeterminado:** `'buffer'`.
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
