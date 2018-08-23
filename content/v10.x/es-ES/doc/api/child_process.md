@@ -111,7 +111,7 @@ changes:
 * `opciones` {Object} 
   * `cwd` {string} El directorio del proceso secundario actualmente operativo. **Default:** `null`.
   * `env` {Object} Environment key-value pairs. **Predeterminado:** `null`.
-  * `codificación` {string} **Predeterminado:** `'utf8'`
+  * `encoding` {string} **Predeterminado:** `'utf8'`
   * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `timeout` {number} **Predeterminado:** `0`
   * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
@@ -125,7 +125,7 @@ changes:
   * `stderr` {string|Buffer}
 * Devuelve: {ChildProcess}
 
-Genera un shell, luego ejecuta el `command` dentro de esa shell, cargando cualquier salida generada. La string `command` pasada a la función exec procesada directamente por el shell y por los caracteres especiales (varía dependiendo del [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) necesita ser tratada en consecuencia:
+Genera un shell, luego ejecuta el `command` dentro de esa shell, cargando cualquier salida generada. La string `command` pasada a la función exec es procesada directamente por el shell y los caracteres especiales (varía dependiendo del [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) necesitan ser tratados en consecuencia:
 
 ```js
 exec('"/path/to/test file/test.sh" arg1 arg2');
@@ -154,7 +154,7 @@ Si se proporciona una función `callback`, se llama con los argumentos `(error, 
 
 Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `codificación` puede ser utilizada para especificar la codificación de caracteres para decodificar las salida stdout y stderr. Si `encoding` es `'buffer'` o una codificación de caracter no reconocido, los objetos `Buffer` serán pasados al callback en su lugar.
 
-Si `timeout` es mayor que `0`, el proceso primario enviarán la señal identificado por la propiedad `killSignal` (la señal predeterminada es `'SIGTERM'`) si el proceso secundario se ejecuta por mayor tiempo que `timeout` milisegundos.
+Si `timeout` es mayor que `0`, el proceso primario enviará la señal identificada por la propiedad `killSignal` (la señal predeterminada es `'SIGTERM'`) si el proceso secundario se ejecuta por mayor tiempo que `timeout` milisegundos.
 
 A diferencia de la llamada de sistema exec(3) POSIX, el `child_process.exec()` no remplaza el proceso existente y utiliza un shell para ejecutar el comando.
 
@@ -263,7 +263,7 @@ changes:
 
 El método `child_process.fork()` es un caso especial de [`child_process.spawn()`][] usado específicamente para generar nuevos procesos Node.js. Al igual que [`child_process.spawn()`][], se devuelve un objeto [`ChildProcess`][]. El [`ChildProcess`][] devuelto tendrá un canal de comunicación integrado que permite que los mensajes se pasen de un lado a otro entre el proceso primario y el proceso secundario. Vea [`subprocess.send()`][] para más detalles.
 
-Es importante mantener en mente que los procesos secundarios Node.js generados son independientes de los procesos primarios a excepción del canal de comunicación IPC que se establece entre ambos. Cada proceso tiene su propia memoria con sus propias instancias V8. Debido a las asignaciones de recursos adicionales requeridas, la generación de un número más grande de procesos secundarios Node.js no es recomendado.
+Es importante tener presente que los procesos secundarios Node.js generados son independientes de los procesos primarios a excepción del canal de comunicación IPC que se establece entre ambos. Cada proceso tiene su propia memoria con sus propias instancias V8. Debido a las asignaciones de recursos adicionales requeridas, la generación de un número más grande de procesos secundarios Node.js no es recomendado.
 
 Por defecto, `child_process.fork()` generará nuevas instancias Node.js usando el [`process.execPath`][] del proceso primario. La propiedad `execPath` en el objeto `options` permite usar una ruta de ejecución alternativa.
 
