@@ -93,13 +93,13 @@ Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_objec
 
 #### napi_escapable_handle_scope
 
-Escapable handle scopes are a special type of handle scope to return values created within a particular handle scope to a parent scope.
+Escapable-Handle-Bereiche sind eine spezielle Art von Handle-Bereiche, deren Zweck es ist, die innerhalb eines bestimmten Handle-Bereichs erzeugten Werte an einen übergeordneten Bereich zurückzusenden.
 
 #### napi_ref
 
-This is the abstraction to use to reference a `napi_value`. This allows for users to manage the lifetimes of JavaScript values, including defining their minimum lifetimes explicitly.
+Dies ist die Abstraktion, die verwendet wird, um auf eine `napi_value` zu verweisen. Dies ermöglicht es den Benutzern, die Lebensdauer von JavaScript-Werten, einschließlich der genauen Festlegung ihrer Mindestlebensdauer, zu verwalten.
 
-For more details, review the [Object Lifetime Management](#n_api_object_lifetime_management).
+Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_object_lifetime_management).
 
 ### N-API Callback types
 
