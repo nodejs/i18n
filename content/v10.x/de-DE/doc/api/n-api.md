@@ -191,14 +191,14 @@ napi_get_last_error_info(napi_env env,
                          const napi_extended_error_info** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The `napi_extended_error_info` structure with more information about the error.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: Die `napi_extended_error_info`-Struktur mit mehr Informationen über den Fehler.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API liefert eine `napi_extended_error_info`-Struktur mit Informationen über den zuletzt aufgetretenen Fehler.
 
-The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
+Der Inhalt der zurückgegebenen `napi_extended_error_info` ist nur solange gültig, bis eine N-API-Funktion auf derselben `env` aufgerufen wird.
 
 Verlassen Sie sich nicht auf den Inhalt oder das Format der erweiterten Informationen, da diese nicht dem SemVer unterliegen und sich jederzeit ändern können. Sie sind nur für die Protokollierung bestimmt.
 
