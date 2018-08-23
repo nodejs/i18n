@@ -157,9 +157,9 @@ In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_
 
 Das vollständige Set der möglichen `napi_status`-Werte ist in `napi_api_types.h` definiert.
 
-The `napi_status` return value provides a VM-independent representation of the error which occurred. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
+Der `napi_status`-Rückgabewert liefert eine VM-unabhängige Darstellung von dem aufgetretenen Fehler. In manchen Fällen ist es sinnvoll, detailliertere Informationen zu erhalten, einschließlich eines Strings, der den Fehler darstellt, sowie VM (Engine)-spezifische Informationen.
 
-In order to retrieve this information [`napi_get_last_error_info`][] is provided which returns a `napi_extended_error_info` structure. The format of the `napi_extended_error_info` structure is as follows:
+Um diese Informationen abzurufen, wird [`napi_get_last_error_info`][] bereitgestellt, die eine `napi_extended_error_info`-Struktur liefert. Das Format der `napi_extended_error_info`-Struktur ist wie folgt:
 
 ```C
 typedef struct napi_extended_error_info {
@@ -170,7 +170,7 @@ typedef struct napi_extended_error_info {
 };
 ```
 
-- `error_message`: Textual representation of the error that occurred.
+- `error_message`: Textliche Darstellung des aufgetretenen Fehlers.
 - `engine_reserved`: Opaque handle reserved for engine use only.
 - `engine_error_code`: VM specific error code.
 - `error_code`: n-api status code for the last error.
