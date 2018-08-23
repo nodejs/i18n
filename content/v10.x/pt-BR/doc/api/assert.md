@@ -12,7 +12,7 @@ Para mais informações sobre as comparações de igualdade, veja [o guia MDN so
 
 ## Class: assert.AssertionError
 
-Uma subclasse de `Error` que indica a falha de uma asserção. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Uma subclasse de `Error` que indica a falha de uma asserção. Todos os erros disparados pelo módulo `assert` pertencerá a instâncias da classe `AssertionError`.
 
 ### new assert.AssertionError(options)
 
