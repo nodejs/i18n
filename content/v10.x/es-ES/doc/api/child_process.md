@@ -301,15 +301,15 @@ changes:
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
   * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
-  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* Returns: {ChildProcess}
+  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica `shell`. **Predeterminado:** `false`.
+  * `windowsHide` {boolean} Ocultar la ventada de la consola de sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
+* Devuelve: {ChildProcess}
 
-The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
+El método `child_process.spawn()` genera un nuevo proceso usando el `command` dado con los argumentos de línea de comando en `args`. If omitted, `args` defaults to an empty array.
 
 **Si la opción `shell` está habilitada, no pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.**
 
-A third argument may be used to specify additional options, with these defaults:
+Se puede utilizar un tercer argumento para especificar opciones adicionales con estos valores predeterminados:
 
 ```js
 const defaults = {
@@ -318,11 +318,11 @@ const defaults = {
 };
 ```
 
-Use `cwd` to specify the working directory from which the process is spawned. If not given, the default is to inherit the current working directory.
+Utilice `cwd` para especificar el directorio de trabajo del cual se genera el proceso. Si no se proporciona, lo predeterminado es heredar el directorio actualmente trabajando.
 
-Use `env` to specify environment variables that will be visible to the new process, the default is [`process.env`][].
+Utilice `env` para especificar las variables de ambiente que serán visibles para el nuevo proceso, el predeterminado es [`process.env`][].
 
-`undefined` values in `env` will be ignored.
+Los valores `undefined` en `env` serán ignorados.
 
 Example of running `ls -lh /usr`, capturing `stdout`, `stderr`, and the exit code:
 
