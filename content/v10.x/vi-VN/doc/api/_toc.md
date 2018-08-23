@@ -43,7 +43,7 @@
 * [REPL](repl.html)
 * [Luồng](stream.html)
 * [Giải mã chuỗi](string_decoder.html)
-* [Đồng hồ đếm ngược](timers.html)
+* [Bộ hẹn giờ](timers.html)
 * [TLS/SSL](tls.html)
 * [Theo dõi sự kiện](tracing.html)
 * [TTY](tty.html)
