@@ -109,7 +109,7 @@ Undurchsichtiger Datentyp, der an eine Callback-Funktion weitergegeben wird. Er 
 
 #### napi_callback
 
-Function pointer type for user-provided native functions which are to be exposed to JavaScript via N-API. Callback functions should satisfy the following signature:
+Funktionszeigertyp für vom Benutzer bereitgestellte native Funktionen, die in JavaScript über die N-API eingebunden werden sollen. Callback-Funktionen sollten die folgende Signatur erfüllen:
 
 ```C
 typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
