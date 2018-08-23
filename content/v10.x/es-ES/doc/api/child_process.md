@@ -114,7 +114,7 @@ changes:
   * `encoding` {string} **Predeterminado:** `'utf8'`
   * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `timeout` {number} **Predeterminado:** `0`
-  * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
   * `uid` {number} Establece la identidad del usuario de los procesos (vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso (vea setgid(2)).
@@ -269,9 +269,9 @@ Por defecto, `child_process.fork()` generará nuevas instancias Node.js usando e
 
 Los procesos Node.js iniciados con una `execPath` personalizada se comunicarán con el proceso primario usando el descriptor de archivo (fd) identificado usando la variable ambiente `NODE_CHANNEL_FD` en el proceso secundario.
 
-Unlike the fork(2) POSIX system call, `child_process.fork()` does not clone the current process.
+A diferencia de la llamada de sistema fork(2) POSIX, `child_process.fork()` no clona el proceso actual.
 
-The `shell` option available in [`child_process.spawn()`][] is not supported by `child_process.fork()` and will be ignored if set.
+La opción `shell` disponible en [`child_process.spawn()`][] no está soportada por `child_process.fork()` y será ignorada si se establece.
 
 ### child_process.spawn(command\[, args\]\[, options\])
 
@@ -290,13 +290,13 @@ changes:
     description: The `shell` option is supported now.
 -->
 
-* `command` {string} The command to run.
-* `args` {string[]} List of string arguments.
-* `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
+* `command` {string} El comando a ejecutar.
+* `args` {string[]} Lista de argumentos de strings.
+* `opciones` {Object} 
+  * `cwd` {string} El directorio del proceso secundario actualmente operativo.
   * `env` {Object} Environment key-value pairs.
-  * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. This will be set to `command` if not specified.
-  * `stdio` {Array|string} Child's stdio configuration (see [`options.stdio`][`stdio`]).
+  * `argv0` {string} Establecer explícitamente el valor de `argv[0]` enviado al proceso secundario. Esto será establecido en el `command` si no se especifica.
+  * `stdio` {Array|string} Configuración stdio del proceso secundario (vea [`options.stdio`][`stdio`]).
   * `detached` {boolean} Prepare child to run independently of its parent process. Specific behavior depends on the platform, see [`options.detached`][]).
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
