@@ -151,11 +151,11 @@ Die N-API verwendet sowohl Rückgabewerte als auch JavaScript-Ausnahmen zur Fehl
 
 Alle N-API-Funktionen haben das gleiche Fehlerbehandlungsmuster. Der Rückgabetyp aller API-Funktionen ist `napi_status`.
 
-The return value will be `napi_ok` if the request was successful and no uncaught JavaScript exception was thrown. If an error occurred AND an exception was thrown, the `napi_status` value for the error will be returned. If an exception was thrown, and no error occurred, `napi_pending_exception` will be returned.
+Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Ausnahme aufgetreten ist. Wenn ein Fehler UND eine Ausnahme aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgegeben. Wenn eine Ausnahme, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgegeben.
 
-In cases where a return value other than `napi_ok` or `napi_pending_exception` is returned, [`napi_is_exception_pending`][] must be called to check if an exception is pending. See the section on exceptions for more details.
+In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_exception` zurückgegeben wird, muss [`napi_is_exception_pending`][] aufgerufen werden, um zu prüfen, ob eine Ausnahme ansteht. Weitere Details finden Sie im Abschnitt über Ausnahmen.
 
-The full set of possible `napi_status` values is defined in `napi_api_types.h`.
+Das vollständige Set der möglichen `napi_status`-Werte ist in `napi_api_types.h` definiert.
 
 The `napi_status` return value provides a VM-independent representation of the error which occurred. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
 
