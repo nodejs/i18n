@@ -608,39 +608,39 @@ changes:
   * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas las entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
-  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* Returns: {Object} 
-  * `pid` {number} Pid of the child process.
-  * `output` {Array} Array of results from stdio output.
-  * `stdout` {Buffer|string} The contents of `output[1]`.
-  * `stderr` {Buffer|string} The contents of `output[2]`.
-  * `status` {number} The exit code of the child process.
-  * `signal` {string} The signal used to kill the child process.
-  * `error` {Error} The error object if the child process failed or timed out.
+  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica el `shell`. **Predeterminado:** `false`.
+  * `windowsHide` {boolean} Oculta la ventana de la consola de sub-procesos que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
+* Devuelve: {Object} 
+  * `pid` {number} Pid del proceso secundario.
+  * `output` {Array} Array de los resultados de la salida stdio.
+  * `stdout` {Buffer|string} Los contenidos de `output[1]`.
+  * `stderr` {Buffer|string} Los contenidos de `output[2]`.
+  * `status` {number} El código de salida del proceso secundario.
+  * `signal` {string} La señal usada para aniquilar el proceso secundario.
+  * `error` {Error} El objeto error si el proceso secundario falla o expira.
 
-The `child_process.spawnSync()` method is generally identical to [`child_process.spawn()`][] with the exception that the function will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. Note that if the process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.
+El método `child_process.spawnSync()` es generalmente idéntico a [`child_process.spawn()`][] a excepción de que la función no se devolverá hasta que el proceso secundario haya sido completamente cerrado. Cuando se ha encontrado un timeout y se ha enviado una `killSignal`, el método no se devolverá hasta que el proceso haya sido completamente cerrado. Note que si el proceso intercepta y maneja la señal `SIGTERM` y no se cierra, el proceso primario esperará hasta que el proceso secundario se haya cerrado.
 
 **Si la opción `shell` está habilitada, no pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.**
 
-## Class: ChildProcess
+## Clase: ChildProcess
 
 <!-- YAML
 added: v2.2.0
 -->
 
-Instances of the `ChildProcess` class are [`EventEmitters`][`EventEmitter`] that represent spawned child processes.
+Las instancias de la clase `ChildProcess` son [`EventEmitters`][`EventEmitter`] que representan procesos secundarios generados.
 
-Instances of `ChildProcess` are not intended to be created directly. Rather, use the [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][], or [`child_process.fork()`][] methods to create instances of `ChildProcess`.
+Las instancias del `ChildProcess` no tienen la intención de ser creadas directamente. En su lugar, utilice los métodos [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][] o [`child_process.fork()`][] para crear instancias de `ChildProcess`.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-* `code` {number} The exit code if the child exited on its own.
-* `signal` {string} The signal by which the child process was terminated.
+* `code` {number} El código de salida si el proceso secundario se cierra por sí solo.
+* `signal` {string} La señal por la cual el proceso secundario fue terminado.
 
 The `'close'` event is emitted when the stdio streams of a child process have been closed. This is distinct from the [`'exit'`][] event, since multiple processes might share the same stdio streams.
 
