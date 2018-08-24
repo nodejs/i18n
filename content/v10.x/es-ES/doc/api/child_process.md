@@ -633,7 +633,7 @@ Las instancias de la clase `ChildProcess` son [`EventEmitters`][`EventEmitter`] 
 
 Las instancias del `ChildProcess` no tienen la intención de ser creadas directamente. En su lugar, utilice los métodos [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][] o [`child_process.fork()`][] para crear instancias de `ChildProcess`.
 
-### Evento: 'close'
+### Evento: 'close' (cerrar)
 
 <!-- YAML
 added: v0.7.7
@@ -644,38 +644,38 @@ added: v0.7.7
 
 The `'close'` event is emitted when the stdio streams of a child process have been closed. This is distinct from the [`'exit'`][] event, since multiple processes might share the same stdio streams.
 
-### Event: 'disconnect'
+### Evento: 'disconnect' (desconectar)
 
 <!-- YAML
 added: v0.7.2
 -->
 
-The `'disconnect'` event is emitted after calling the [`subprocess.disconnect()`][] method in parent process or [`process.disconnect()`][] in child process. After disconnecting it is no longer possible to send or receive messages, and the [`subprocess.connected`][] property is `false`.
+El evento `'disconnect'` es emitido luego de llamar al proceso [`subprocess.disconnect()`][] en el proceso primario o [`process.disconnect()`][] en el proceso secundario. Luego de desconectarlo, no es posible enviar o recibir mensajes, y la propiedad [`subprocess.connected`][] es `false`.
 
-### Event: 'error'
+### Evento: 'error'
 
-* `err` {Error} The error.
+* `err` {Error} El error.
 
-The `'error'` event is emitted whenever:
+El evento `'error'` es emitido cuando:
 
-1. The process could not be spawned, or
-2. The process could not be killed, or
-3. Sending a message to the child process failed.
+1. El proceso no pudo ser generado o
+2. El proceso no pudo ser aniquilado o
+3. Falló el envío de un mensaje al proceso secundario.
 
-The `'exit'` event may or may not fire after an error has occurred. When listening to both the `'exit'` and `'error'` events, it is important to guard against accidentally invoking handler functions multiple times.
+El evento `'exit'` puede o no disparar luego de que haya ocurrido un error. When listening to both the `'exit'` and `'error'` events, it is important to guard against accidentally invoking handler functions multiple times.
 
-See also [`subprocess.kill()`][] and [`subprocess.send()`][].
+Vea también [`subprocess.kill()`][] y [`subprocess.send()`][].
 
-### Event: 'exit'
+### Evento: 'exit' (salida)
 
 <!-- YAML
 added: v0.1.90
 -->
 
-* `code` {number} The exit code if the child exited on its own.
-* `signal` {string} The signal by which the child process was terminated.
+* `code` {number} El código de salida si el proceso secundario se cierra por sí solo.
+* `signal` {string} La señal por la cual el proceso secundario fue terminado.
 
-The `'exit'` event is emitted after the child process ends. If the process exited, `code` is the final exit code of the process, otherwise `null`. If the process terminated due to receipt of a signal, `signal` is the string name of the signal, otherwise `null`. One of the two will always be non-null.
+El evento `'exit'` es emitido luego de que el proceso secundario finaliza. If the process exited, `code` is the final exit code of the process, otherwise `null`. If the process terminated due to receipt of a signal, `signal` is the string name of the signal, otherwise `null`. One of the two will always be non-null.
 
 Note that when the `'exit'` event is triggered, child process stdio streams might still be open.
 
