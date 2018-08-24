@@ -675,26 +675,26 @@ added: v0.1.90
 * `code` {number} El código de salida si el proceso secundario se cierra por sí solo.
 * `signal` {string} La señal por la cual el proceso secundario fue terminado.
 
-El evento `'exit'` es emitido luego de que el proceso secundario finaliza. If the process exited, `code` is the final exit code of the process, otherwise `null`. If the process terminated due to receipt of a signal, `signal` is the string name of the signal, otherwise `null`. One of the two will always be non-null.
+El evento `'exit'` es emitido luego de que el proceso secundario finaliza. Si se cierra el proceso, `code` es el código de salida final del proceso, o de otra manera es `null`. Si el proceso se termina debido a la recepción de una señal, `signal` es el nombre de la string de la señal, si no, es `null`. Una de las dos siempre será no nula.
 
 Note that when the `'exit'` event is triggered, child process stdio streams might still be open.
 
-Also, note that Node.js establishes signal handlers for `SIGINT` and `SIGTERM` and Node.js processes will not terminate immediately due to receipt of those signals. Rather, Node.js will perform a sequence of cleanup actions and then will re-raise the handled signal.
+También note que Node.js establece manejadores de señal para `SIGINT` y `SIGTERM` y que los procesos Node.js no se terminarán inmediatamente debido a la recepción de esas señales. Por lo contrario, Node.js llevará a cabo una secuencia de acciones de limpieza y luego volverá a subir la señal manejada.
 
-See waitpid(2).
+Vea waitpid(2).
 
-### Event: 'message'
+### Evento: 'message' (mensaje)
 
 <!-- YAML
 added: v0.5.9
 -->
 
-* `message` {Object} A parsed JSON object or primitive value.
-* `sendHandle` {Handle} A [`net.Socket`][] or [`net.Server`][] object, or undefined.
+* `message` {Object} Un objeto JSON analizado o un valor primitivo.
+* `sendHandle` {Handle} Un objeto [`net.Socket`][] o [`net.Server`][] o indefinido.
 
-The `'message'` event is triggered when a child process uses [`process.send()`][] to send messages.
+El evento `'message'` se desencadena cuando un proceso secundario utiliza [`process.send()`][] para enviar mensajes.
 
-The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
+El mensaje pasa a través de la serialización y análisis. El mensaje resultante puede no ser el mismo al que se envió originalmente.
 
 ### subprocess.channel
 
@@ -702,7 +702,7 @@ The message goes through serialization and parsing. The resulting message might 
 added: v7.1.0
 -->
 
-* {Object} A pipe representing the IPC channel to the child process.
+* {Object} Un pipe que representa el canal IPC al proceso secundario.
 
 The `subprocess.channel` property is a reference to the child's IPC channel. If no IPC channel currently exists, this property is `undefined`.
 
@@ -837,7 +837,7 @@ changes:
 
 When an IPC channel has been established between the parent and child ( i.e. when using [`child_process.fork()`][]), the `subprocess.send()` method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the [`'message'`][] event.
 
-The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
+El mensaje pasa a través de la serialización y análisis. The resulting message might not be the same as what is originally sent.
 
 For example, in the parent script:
 
