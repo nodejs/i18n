@@ -965,12 +965,12 @@ Ein `AtExit`-Hook ist eine Funktion, die aufgerufen wird, nachdem die Event-Schl
 
 #### void AtExit(Callback, Args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Ein Zeiger auf die Funktion, der beim Beenden aufgerufen werden soll.
-* `args` <span class="type">&lt;void\*&gt;</span> Ein Zeiger, der beim Beenden zum Callback führt.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> Ein Verweis auf die Funktion, die beim Beenden aufgerufen werden soll.
+* `args` <span class="type">&lt;void\*&gt;</span> Ein Verweis, der beim Beenden zum Callback führt.
 
 Registriert Exit-Hooks, die laufen, nachdem die Ereignisschleife beendet wurde, aber bevor die VM beendet wird.
 
-`AtExit` nimmt zwei Parameter: einen Zeiger auf eine Callback-Funktion, der beim Beenden ausgeführt wird, und einen Zeiger auf untypisierte Kontextdaten, die an diesen Callback übergeben werden.
+`AtExit` nimmt zwei Parameter: einen Verweis auf eine Callback-Funktion, der beim Beenden ausgeführt wird, und einen Verweis auf untypisierte Kontextdaten, die an diesen Callback übergeben werden.
 
 Callbacks werden in der Reihenfolge des letzten Eingangs ausgeführt.
 
