@@ -66,11 +66,11 @@ Há não ponto e vírgula depois de `NODE_MODULE` já que não é uma função (
 
 O `module_name` deve coincidir com o nome do arquivo do binário final (excluindo o sufixo `.node`).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+No exemplo `hello.cc`, em seguida, a função de inicialização é `init` e o nome do módulo Addon é `addon`.
 
 ### Building
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Uma vez que o código fonte tenha sido escrito, ele precisa se compilado no arquivo binário `addon.node`. Para fazer isso, crie um arquivo chamado `binding.gyp` na raiz do projeto descrevendo a build de configuração do módulo utilizando um formato estilo JSON. Esse arquivo é utilizado pelo [node-gyp](https://github.com/nodejs/node-gyp) — uma ferramenta escrita especificamente para compilar Addons de Node.js.
 
 ```json
 {
