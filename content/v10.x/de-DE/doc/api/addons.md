@@ -87,9 +87,9 @@ Eine Version des Programmes `node-gyp` wird mit Node.js als Teil von `npm` gebü
 
 Nachdem die Datei `binding.gyp` erstellt wurde, verwenden Sie `node-gyp configure`, um die entsprechenden Projekt-Build-Dateien für die aktuelle Plattform zu erzeugen. Dies erzeugt entweder eine `Makefile` (auf Unix-Plattformen) oder eine `vcxproj`-Datei (auf Windows) im Verzeichnis `build/`.
 
-Als nächstes führen Sie den Befehl `node-gyp build` aus, um die übersetzte Datei `addon.node` zu erzeugen. Diese wird in das Verzeichnis `build/Release/` abgelegt.
+Als nächstes führen Sie den Befehl `node-gyp build` aus, um die kompilierte Datei `addon.node` zu erzeugen. Diese wird in das Verzeichnis `build/Release/` abgelegt.
 
-Wenn Sie `npm install` verwenden, um ein Node.js-Erweiterung zu installieren, verwendet npm seine eigene Paketversion von `node-gyp`, um das gleiche Set von Aktionen auszuführen und eine kompilierte Version der Erweiterung für die Plattform des Benutzers bei Bedarf zu erzeugen.
+Wenn Sie `npm install` verwenden, um eine Node.js-Erweiterung zu installieren, verwendet npm seine eigene Paketversion von `node-gyp`, um das gleiche Set von Aktionen auszuführen und eine kompilierte Version der Erweiterung für die Plattform des Benutzers bei Bedarf zu erzeugen.
 
 Einmal erstellt, kann die binäre Erweiterung aus Node.js heraus verwendet werden, indem man [`require()`](modules.html#modules_require) auf das gebaute `addon.node`-Modul verweist:
 
@@ -103,7 +103,7 @@ console.log(addon.hello());
 
 Weitere Informationen finden Sie in den folgenden Beispielen oder unter [https://github.com/arturadib/node qt](https://github.com/arturadib/node-qt) für ein Anwendungsbeispiel in der Praxis.
 
-Da der genaue Pfad zur kompilierten Erweiterungs-Binary je nach Kompilierung variieren kann (d.h. manchmal in `./build/Debug/`), können Erweiterungen das Paket [bindings](https://github.com/TooTallNate/node-bindings) verwenden, um das kompilierte Modul zu laden.
+Da der genaue Pfad zur kompilierten Addon-Binärdatei je nach Kompilierung variieren kann (d.h. manchmal in `./build/Debug/`), können Erweiterungen das Paket [bindings](https://github.com/TooTallNate/node-bindings) verwenden, um das kompilierte Modul zu laden.
 
 Beachten Sie, dass die `bindings`-Paketimplementierung zwar anspruchsvoller ist, wie es Erweiterungs-Module lokalisiert, aber im Wesentlichen ein Try-Catch-Muster nutzt, ähnlich dem:
 
