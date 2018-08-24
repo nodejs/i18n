@@ -343,7 +343,7 @@ ls.on('close', (code) => {
 });
 ```
 
-Ejemplo: Una manera muy elaborado para ejecutar `ps ax | grep ssh`
+Ejemplo: Una manera muy elaborada para ejecutar `ps ax | grep ssh`
 
 ```js
 const { spawn } = require('child_process');
@@ -391,7 +391,7 @@ subprocess.on('error', (err) => {
 });
 ```
 
-Ciertas plataformas (macOS, Linux) utilizarán el valor de `argv[0]` para el título del proceso mientras que otros (Windows, SunOS) utilizarán `command`.
+Ciertas plataformas (macOS, Linux) utilizarán el valor de `argv[0]` para el título del proceso mientras que otras (Windows, SunOS) utilizarán `command`.
 
 Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `process.argv[0]` in a Node.js child process will not match the `argv0` parameter passed to `spawn` from the parent, retrieve it with the `process.argv0` property instead.
 
@@ -401,15 +401,15 @@ Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `p
 added: v0.7.10
 -->
 
-En Windows, configurando `options.detached` a `true` hace posible que el proceso secundario continúe funcionando después de que el proceso primario se cierre. El proceso secundario tendrá su propia ventana de consola. *Una vez activado para un proceso secundario, no puede ser desactivado*.
+En Windows, configurar `options.detached` a `true` hace posible que el proceso secundario continúe funcionando después de que el proceso primario se cierre. El proceso secundario tendrá su propia ventana de consola. *Una vez activado para un proceso secundario, no puede ser desactivado*.
 
-En plataformas distintas de Windows, si `options.detached` se establece a `true`, el proceso secundario se volverá el líder de un grupo de proceso y sesión nuevos. Note que los procesos secundarios pueden continuar funcionando después de que el proceso primario se cierre independientemente de si se separan o no. Vea setsid(2) para más información.
+En plataformas distintas de Windows, si `options.detached` se establece a `true`, el proceso secundario se volverá el líder de un grupo de proceso y sesión nuevos. Note que los procesos secundarios pueden continuar funcionando después de que el proceso primario se cierre, independientemente de si se separan o no. Vea setsid(2) para más información.
 
 Por defecto, el proceso primario esperará que el proceso secundario independiente se cierre. Para prevenir que el proceso primario espere por un `subprocess` dado, utilice el método `subprocess.unref()`. Haciendo esto causará que el bucle del evento del proceso primario no incluya al proceso secundario en su cuenta de referencia, permitiendo que el proceso primario se cierre independientemente del proceso secundario, a menos que haya un canal IPC establecido entre ambos procesos.
 
-Al utilizar la opción `detached` para iniciar un proceso de larga duración, el proceso no se mantendrá corriendo en segundo plano después de que el proceso primario se cierre, a menos que sea provisto con una configuración `stdio` que no esté conectada al proceso primario. Si el `stdio` del proceso primario es heredado, el proceso secundario permanecerá unico al terminal de control.
+Al utilizar la opción `detached` para iniciar un proceso de larga duración, el proceso no se mantendrá corriendo en segundo plano después de que el proceso primario se cierre, a menos que sea provisto con una configuración `stdio` que no esté conectada al proceso primario. Si el `stdio` del proceso primario es heredado, el proceso secundario permanecerá unido al terminal de control.
 
-Ejemplo de un proceso de larga duración al separar y también ignorando sus descriptores de archivo `stdio` del proceso primario, para ignorar la terminación del proceso primario:
+Ejemplo de un proceso de larga duración, al separar y también ignorar los descriptores de archivo `stdio` de su proceso primario, para ignorar la terminación del proceso primario:
 
 ```js
 const { spawn } = require('child_process');
@@ -453,21 +453,21 @@ The `options.stdio` option is used to configure the pipes that are established b
 
 Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 
-* `'pipe'` - equivalente a `['pipe', 'pipe', 'pipe']` (el predeterminado)
+* `'pipe'` - equivalente a `['pipe', 'pipe', 'pipe']` (lo predeterminado)
 * `'ignore'` - equivalente a `['ignore', 'ignore', 'ignore']`
 * `'inherit'` - equivalente a `[process.stdin, process.stdout, process.stderr]` o `[0,1,2]`
 
 De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Additional fds can be specified to create additional pipes between the parent and child. El valor es uno de los siguientes:
 
 1. `'pipe'` - Create a pipe between the child process and the parent process. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
-2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurando esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][] and [`process.disconnect()`][], al igual que los eventos [`'disconnect'`][] y [`'message'`][] dentro del proceso secundario.
+2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurar esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][] and [`process.disconnect()`][], al igual que los eventos [`'disconnect'`][] y [`'message'`][] dentro del proceso secundario.
   
-  Acceder al fd del canal IPC en cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
+  Acceder al fd del canal IPC de cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
 
-3. `'ignore'` - Enseña a Node.js a ignorar el fd en el proceso secundario. Mientras que Node.js siempre abrirá los fds 0 - 2 para los procesos que genera, configurando el fd a `'ignore'` causará que Node.js abra `/dev/null` y lo adjunte al del proceso secundario.
+3. `'ignore'` - Enseña a Node.js a ignorar el fd en el proceso secundario. Mientras que Node.js siempre abrirá los fds 0 - 2 para los procesos que genera, configurar el fd a `'ignore'` causará que Node.js abra `/dev/null` y lo adjunte al del proceso secundario.
 
 4. {Stream} object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process. The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index in the `stdio` array. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
-5. Entero positivo - El valor enter es interpretado como un descriptor de archivo que está actualmente abierto en el proceso primario. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden compartirse.
+5. Entero positivo - El valor del entero es interpretado como un descriptor de archivo que está actualmente abierto en el proceso primario. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden compartirse.
 6. `null`, `undefined` - Utiliza el valor por defecto. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. Para fd 3 y mayores, el predeterminado es `'ignore'`.
 
 Ejemplo:
@@ -492,9 +492,9 @@ Vea también: [`child_process.exec()`][] y [`child_process.fork()`][].
 
 ## Creación de Procesos Sincrónicos
 
-Los métodos [`child_process.spawnSync()`][], [`child_process.execSync()`][] y [`child_process.execFileSync()`][] son **sincrónicos** y **WILL** bloquerá el bucle del evento Node.js, pausando la ejecución de cualquier código adicional hasta que se cierre el proceso generado.
+Los métodos [`child_process.spawnSync()`][], [`child_process.execSync()`][] y [`child_process.execFileSync()`][] son **sincrónicos** y **VAN** a bloquear el bucle del evento Node.js, pausando la ejecución de cualquier código adicional hasta que se cierre el proceso generado.
 
-El bloquear llamadas como estas son sobretodo útiles para la simplificación de tareas de uso general y para simplificar la carga/el procesamiento de la configuración de aplicación en el inicio.
+El bloquear llamadas como estas es sobre todo útil para la simplificación de tareas de uso general y para simplificar la carga/el procesamiento de la configuración de aplicación en el inicio.
 
 ### child_process.execFileSync(file\[, args\]\[, options\])
 
@@ -523,7 +523,7 @@ changes:
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
   * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que permite que se ejecute el proceso. **Predeterminado:** `undefined`.
-  * `killSignal` {string|integer} El valor señal a ser usado cuando el proceso generado se aniquile. **Predeterminado:** `'SIGTERM'`.
+  * `killSignal` {string|integer} El valor de la señal a ser usado cuando el proceso generado vaya a ser aniquilado. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `windowsHide` {boolean} Oculta la ventada de la consola de sub-procesos que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
