@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-Es ist in Erweiterungen üblich, JavaScript-Funktionen an eine C++-Funktion zu übergeben und von dort aus auszuführen. Das folgende Beispiel veranschaulicht, wie man solche Callbacks aufrufen kann:
+Es ist in Erweiterungen üblich, JavaScript-Funktionen an eine C++-Funktion zu übergeben und von dort auszuführen. Das folgende Beispiel veranschaulicht, wie man solche Callbacks aufrufen kann:
 
 ```cpp
 // addon.cc
@@ -376,7 +376,7 @@ console.log(obj1.msg, obj2.msg);
 
 ### Funktionsfabrik
 
-Ein weiteres häufiges Szenario ist die Erstellung von JavaScript-Funktionen, die C++-Funktionen umwickeln und diese wieder an JavaScript zurücksenden:
+Ein weiteres häufiges Szenario ist die Erstellung von JavaScript-Funktionen, die C++-Funktionen einschließen und diese wieder an JavaScript zurücksenden:
 
 ```cpp
 // addon.cc
@@ -430,9 +430,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Umwickeln von C++-Objekten
+### Einschließen von C++-Objekten
 
-Es ist auch möglich, C++-Objekte/Klassen so zu umwickeln, dass neue Instanzen mit dem JavaScript-`new`-Operator erzeugt werden können:
+Es ist auch möglich, C++-Objekte/Klassen so einzuschließen, dass neue Instanzen mit dem JavaScript-`new`-Operator erzeugt werden können:
 
 ```cpp
 // addon.cc
@@ -752,7 +752,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Nocheinmal, um dieses Beispiel zu erstellen, muss die `myobject.cc`-Datei zur `binding.gyp`-Datei hinzugefügt werden:
+Noch einmal, um dieses Beispiel zu erstellen, muss die `myobject.cc`-Datei zur `binding.gyp`-Datei hinzugefügt werden:
 
 ```json
 {
@@ -791,9 +791,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Umwickelte Objekte umherreichen
+### Eingeschlossene Objekte umherreichen
 
-Neben dem Umwickeln und Zurücksenden von C++-Objekten ist es möglich, umwickelte Objekte umherzureichen, indem man sie mit der Node.js-Hilfsfunktion `node::ObjectWrap::Unwrap` entpackt. Das folgende Beispiel zeigt eine `add()`-Funktion, die zwei `MyObject`-Objekte als Eingabeargumente verwenden kann:
+Neben des Einschließens und Zurücksendens von C++-Objekten ist es möglich, eingeschlossene Objekte umherzureichen, indem man sie mit der Node.js-Hilfsfunktion `node::ObjectWrap::Unwrap` entpackt. Das folgende Beispiel zeigt eine `add()`-Funktion, die zwei `MyObject`-Objekte als Eingabeargumente verwenden kann:
 
 ```cpp
 // addon.cc
