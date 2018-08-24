@@ -16,17 +16,17 @@ No momento, o método para a implementação de Addons é bastante complicado, e
 
 * Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Todos os exemplos a seguir estão disponíveis para [download](https://github.com/nodejs/node-addon-examples) e podem ser usados como um ponto de partida para um Addon.
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Este exemplo "Hello world" é um simples Addon, escrito em C++, que é o equivalente do seguinte código JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Primeiro, crie o arquivo `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -55,16 +55,16 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Observe que todos os Addons de Node. js devem exportar uma função de inicialização seguindo o padrão a seguir:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Há não ponto e vírgula depois de `NODE_MODULE` já que não é uma função (veja em `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+O `module_name` deve coincidir com o nome do arquivo do binário final (excluindo o sufixo `.node`).
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
