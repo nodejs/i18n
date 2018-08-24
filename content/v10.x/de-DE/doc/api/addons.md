@@ -62,7 +62,7 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-Es gibt keinen Strichpunkt nach `NODE_MODULE`, da es keine Funktion ist (siehe `node.h`).
+Es gibt kein Semikolon nach `NODE_MODULE`, da es keine Funktion ist (siehe `node.h`).
 
 Der `module_name` muss mit dem Dateinamen der endgültigen Binärdatei übereinstimmen (außer der Nachsilbe `.node`).
 
