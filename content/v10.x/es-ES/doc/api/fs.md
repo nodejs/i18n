@@ -2589,13 +2589,13 @@ changes:
   * `err` {Error}
   * `stats` {fs.Stats}
 
-Asynchronous stat(2). The callback gets two arguments `(err, stats)` where `stats` is an [`fs.Stats`][] object.
+stat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)`, en donde `stats` es un objeto de [`fs.Stats`][].
 
-In case of an error, the `err.code` will be one of [Common System Errors](errors.html#errors_common_system_errors).
+En caso de que ocurra un error, el `err.code` será uno de los [Errores de Sistema Comunes](errors.html#errors_common_system_errors). 
 
-Using `fs.stat()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Instead, user code should open/read/write the file directly and handle the error raised if the file is not available.
+Utilizar `fs.stat()` para verificar la existencia de un archivo antes de llamar a `fs.open()`, `fs.readFile()` ó `fs.writeFile()` no es recomendado. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no está disponible.
 
-To check if a file exists without manipulating it afterwards, [`fs.access()`] is recommended.
+Para verificar si un archivo existe sin manipularlo posteriormente, se recomienda [`fs.access()`].
 
 ## fs.statSync(path)
 
@@ -2612,7 +2612,7 @@ changes:
 * `path` {string|Buffer|URL}
 * Returns: {fs.Stats}
 
-Synchronous stat(2).
+stat(2) sincrónico.
 
 ## fs.symlink(target, path[, type], callback)
 
@@ -2633,7 +2633,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-symlink(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. The `type` argument can be set to `'dir'`, `'file'`, or `'junction'` and is only available on Windows (ignored on other platforms). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+symlink(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. El argumento de `type` puede ser establecido a `'dir'`, `'file'`, ó `'junction'` y sólo está disponible en Windows (se ignora en otras plataformas). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
 
 Aquí hay un ejemplo a continuación:
 
@@ -2660,7 +2660,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
 
-Synchronous symlink(2). Devuelve `undefined`.
+symlink(2) sincrónico. Devuelve `undefined`.
 
 ## fs.truncate(path[, len], callback)
 
