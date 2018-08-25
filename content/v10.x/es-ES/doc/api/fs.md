@@ -2455,7 +2455,7 @@ added: v9.2.0
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
-Synchronous realpath(3).
+realpath(3) sincrónico.
 
 Only paths that can be converted to UTF8 strings are supported.
 
@@ -2489,9 +2489,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously rename file at `oldPath` to the pathname provided as `newPath`. En caso de que `newPath` ya exista, será reescrito. No arguments other than a possible exception are given to the completion callback.
+Asynchronously rename file at `oldPath` to the pathname provided as `newPath`. En caso de que `newPath` ya exista, será reescrito. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
-See also: rename(2).
+Vea también: rename(2).
 
 ```js
 fs.rename('oldFile.txt', 'newFile.txt', (err) => {
@@ -2516,7 +2516,7 @@ changes:
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
 
-Synchronous rename(2). Returns `undefined`.
+rename(2) sincrónico. Devuelve `undefined`.
 
 ## fs.rmdir(path, callback)
 
@@ -2542,9 +2542,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
+rmdir(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
-Using `fs.rmdir()` on a file (not a directory) results in an `ENOENT` error on Windows and an `ENOTDIR` error on POSIX.
+Utilizar `fs.rmdir()` en un archivo (no un directorio) da como resultado un error de `ENOENT` en Windows y un error de `ENOTDIR` en POSIX.
 
 ## fs.rmdirSync(path)
 
@@ -2560,9 +2560,9 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Synchronous rmdir(2). Returns `undefined`.
+rmdir(2) sincrónico. Devuelve `undefined`.
 
-Using `fs.rmdirSync()` on a file (not a directory) results in an `ENOENT` error on Windows and an `ENOTDIR` error on POSIX.
+Utilizar `fs.rmdirSync()` en un archivo (no un directorio) da como resultado un error de `ENOENT` en Windows y un error de `ENOTDIR` en POSIX.
 
 ## fs.stat(path, callback)
 
