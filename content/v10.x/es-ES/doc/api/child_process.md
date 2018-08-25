@@ -876,7 +876,7 @@ No se provee ninguna función `callback` y el mensaje no puede ser enviado, un e
 
 `subprocess.send()` will return `false` if the channel has closed or when the backlog of unsent messages exceeds a threshold that makes it unwise to send more. De otro modo, el método devuelve `true`. La función `callback` puede ser usada para implementar control de flujo.
 
-#### Example: sending a server object
+#### Ejemplo: enviado un objeto del servidor
 
 The `sendHandle` argument can be used, for instance, to pass the handle of a TCP server object to the child process as illustrated in the example below:
 
@@ -893,7 +893,7 @@ server.listen(1337, () => {
 });
 ```
 
-The child would then receive the server object as:
+El proceso secundario luego recibirá el objeto del servidor como:
 
 ```js
 process.on('message', (m, server) => {
@@ -905,9 +905,9 @@ process.on('message', (m, server) => {
 });
 ```
 
-Once the server is now shared between the parent and child, some connections can be handled by the parent and some by the child.
+Una vez el servidor se haya compartido entre el proceso primario y el secundario, algunas conexiones pueden ser manejadas por el primario y algunas por el secundario.
 
-While the example above uses a server created using the `net` module, `dgram` module servers use exactly the same workflow with the exceptions of listening on a `'message'` event instead of `'connection'` and using `server.bind()` instead of `server.listen()`. This is, however, currently only supported on UNIX platforms.
+While the example above uses a server created using the `net` module, `dgram` module servers use exactly the same workflow with the exceptions of listening on a `'message'` event instead of `'connection'` and using `server.bind()` instead of `server.listen()`. Esto es, sin embargo, actualmente soportado únicamente en plataformas UNIX.
 
 #### Example: sending a socket object
 
@@ -949,7 +949,7 @@ process.on('message', (m, socket) => {
 });
 ```
 
-Once a socket has been passed to a child, the parent is no longer capable of tracking when the socket is destroyed. To indicate this, the `.connections` property becomes `null`. It is recommended not to use `.maxConnections` when this occurs.
+Once a socket has been passed to a child, the parent is no longer capable of tracking when the socket is destroyed. Para indicar esto, la propiedad `.connections` se convierte en `null`. Se recomiendo no utilizar `.maxConnections` cuando esto ocurre.
 
 It is also recommended that any `'message'` handlers in the child process verify that `socket` exists, as the connection may have been closed during the time it takes to send the connection to the child.
 
@@ -961,11 +961,11 @@ added: v0.1.90
 
 * {stream.Readable}
 
-A `Readable Stream` that represents the child process's `stderr`.
+Un `Readable Stream` que represente el `stderr` del proceso secundario.
 
-If the child was spawned with `stdio[2]` set to anything other than `'pipe'`, then this will be `null`.
+Si el proceso secundario fue generado con el `stdio[2]` establecido a cualquier otra diferente a `'pipe'`, entonces esto será `null`.
 
-`subprocess.stderr` is an alias for `subprocess.stdio[2]`. Both properties will refer to the same value.
+`subprocess.stderr` es un alias de `subprocess.stdio[2]`. Ambas propiedades se referirán al mismo valor.
 
 ### subprocess.stdin
 
@@ -975,7 +975,7 @@ added: v0.1.90
 
 * {stream.Writable}
 
-A `Writable Stream` that represents the child process's `stdin`.
+Un `Writable Stream` que representa al `stdin` del proceso secundario.
 
 *Note that if a child process waits to read all of its input, the child will not continue until this stream has been closed via `end()`.*
 
