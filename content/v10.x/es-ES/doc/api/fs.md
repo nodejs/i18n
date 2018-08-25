@@ -2633,15 +2633,15 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback. The `type` argument can be set to `'dir'`, `'file'`, or `'junction'` and is only available on Windows (ignored on other platforms). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+symlink(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. The `type` argument can be set to `'dir'`, `'file'`, or `'junction'` and is only available on Windows (ignored on other platforms). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
 
-Here is an example below:
+Aquí hay un ejemplo a continuación:
 
 ```js
 fs.symlink('./foo', './new-port', callback);
 ```
 
-It creates a symbolic link named "new-port" that points to "foo".
+Crea un enlace simbólico llamado "new-port" que apunta a "foo".
 
 ## fs.symlinkSync(target, path[, type])
 
@@ -2683,9 +2683,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous truncate(2). No arguments other than a possible exception are given to the completion callback. Un descriptor de archivos también puede ser pasado como el primer argumento. En este caso, `fs.ftruncate()` es llamado.
+truncate(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. Un descriptor de archivos también puede ser pasado como el primer argumento. En este caso, `fs.ftruncate()` es llamado.
 
-Passing a file descriptor is deprecated and may result in an error being thrown in the future.
+Pasar un descriptor de archivo es obsoleto y su resultado puede ser un error que ocurrirá en el futuro.
 
 ## fs.truncateSync(path[, len])
 
@@ -2696,9 +2696,9 @@ added: v0.8.6
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
 
-Synchronous truncate(2). Returns `undefined`. A file descriptor can also be passed as the first argument. En este caso, `fs.ftruncateSync()` es llamado.
+truncate(2) sincrónico. Devuelve `undefined`. Un descriptor de archivo también puede ser pasado como el primer argumento. En este caso, `fs.ftruncateSync()` es llamado.
 
-Passing a file descriptor is deprecated and may result in an error being thrown in the future.
+Pasar un descriptor de archivo es obsoleto y su resultado puede ser un error que ocurrirá en el futuro.
 
 ## fs.unlink(path, callback)
 
@@ -2724,7 +2724,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Elimina de manera asincrónica un archivo o enlace simbólico. No arguments other than a possible exception are given to the completion callback.
+Elimina de manera asincrónica un archivo o enlace simbólico. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 ```js
 // Assuming that 'path/file.txt' is a regular file.
@@ -2734,9 +2734,9 @@ fs.unlink('path/file.txt', (err) => {
 });
 ```
 
-`fs.unlink()` will not work on a directory, empty or otherwise. Para eliminar un directorio, utilice [`fs.rmdir()`][].
+`fs.unlink()` no funcionará en un directorio, vacío o no. Para eliminar un directorio, utilice [`fs.rmdir()`][].
 
-See also: unlink(2).
+Vea también: unlink(2).
 
 ## fs.unlinkSync(path)
 
@@ -2752,7 +2752,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Synchronous unlink(2). Returns `undefined`.
+unlink(2) sincrónico. Devuelve `undefined`.
 
 ## fs.unwatchFile(filename[, listener])
 
@@ -2767,7 +2767,7 @@ Stop watching for changes on `filename`. If `listener` is specified, only that p
 
 Calling `fs.unwatchFile()` with a filename that is not being watched is a no-op, not an error.
 
-Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile()` y `fs.unwatchFile()`. `fs.watch()` should be used instead of `fs.watchFile()` and `fs.unwatchFile()` when possible.
+Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile()` y `fs.unwatchFile()`. `fs.watch()` debería ser utilizado en lugar de `fs.watchFile()` y `fs.unwatchFile()` cuando sea posible.
 
 ## fs.utimes(path, atime, mtime, callback)
 
