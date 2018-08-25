@@ -2767,7 +2767,7 @@ Stop watching for changes on `filename`. If `listener` is specified, only that p
 
 Calling `fs.unwatchFile()` with a filename that is not being watched is a no-op, not an error.
 
-Using [`fs.watch()`][] is more efficient than `fs.watchFile()` and `fs.unwatchFile()`. `fs.watch()` should be used instead of `fs.watchFile()` and `fs.unwatchFile()` when possible.
+Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile()` y `fs.unwatchFile()`. `fs.watch()` should be used instead of `fs.watchFile()` and `fs.unwatchFile()` when possible.
 
 ## fs.utimes(path, atime, mtime, callback)
 
@@ -2865,9 +2865,9 @@ Watch for changes on `filename`, where `filename` is either a file or a director
 
 El segundo argumento es opcional. Si se proporciona `options` como una string, especificará el `encoding`. De lo contrario, `options` debería ser pasado como un objeto.
 
-The listener callback gets two arguments `(eventType, filename)`. `eventType` is either `'rename'` or `'change'`, and `filename` is the name of the file which triggered the event.
+The listener callback gets two arguments `(eventType, filename)`. `eventType` es `'rename'` ó `'change'`, y `filename` es el nombre del archivo que activó el evento.
 
-Note that on most platforms, `'rename'` is emitted whenever a filename appears or disappears in the directory.
+Tenga en cuenta que en la mayoría de las plataformas, `'rename'` es emitido cuando un nombre de archivo aparece o desaparece en el directorio.
 
 Also note the listener callback is attached to the `'change'` event fired by [`fs.FSWatcher`][], but it is not the same thing as the `'change'` value of `eventType`.
 
@@ -2877,13 +2877,13 @@ Also note the listener callback is attached to the `'change'` event fired by [`f
 
 The `fs.watch` API is not 100% consistent across platforms, and is unavailable in some situations.
 
-The recursive option is only supported on macOS and Windows.
+La opción recursiva sólo es soportada en macOS y Windows.
 
 #### Disponibilidad
 
 <!--type=misc-->
 
-This feature depends on the underlying operating system providing a way to be notified of filesystem changes.
+Esta función depende del sistema operativo subyacente, proporcionando una manera para estar notificado de los cambios del sistema de archivos.
 
 * En sistemas Linux, esto utiliza [`inotify`]
 * En sistemas BSD, esto utiliza [`kqueue`]
@@ -2892,7 +2892,7 @@ This feature depends on the underlying operating system providing a way to be no
 * En el sistema de Windows, esta función depende de [`ReadDirectoryChangesW`].
 * En sistemas Aix, esta función depende de [`AHAFS`], la cual debe ser habilitada.
 
-If the underlying functionality is not available for some reason, then `fs.watch` will not be able to function. For example, watching files or directories can be unreliable, and in some cases impossible, on network file systems (NFS, SMB, etc), or host file systems when using virtualization software such as Vagrant, Docker, etc.
+Si la funcionalidad subyacente no está disponible por algún motivo, entonces `fs.watch` no podrá funcionar. For example, watching files or directories can be unreliable, and in some cases impossible, on network file systems (NFS, SMB, etc), or host file systems when using virtualization software such as Vagrant, Docker, etc.
 
 It is still possible to use `fs.watchFile()`, which uses stat polling, but this method is slower and less reliable.
 
