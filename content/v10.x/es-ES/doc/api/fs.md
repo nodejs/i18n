@@ -3003,7 +3003,7 @@ changes:
 
 Escribe `buffer` al archivo especificado por `fd`.
 
-`offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
+`offset` determina la parte del búfer que será escrita, y `length` es un entero que especifica el número de bytes a escribir.
 
 `position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
@@ -3086,9 +3086,9 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer.
+Escribe datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer.
 
-The `encoding` option is ignored if `data` is a buffer.
+La opción de `encoding` se ignora si `data` es un búfer.
 
 Ejemplo:
 
@@ -3107,9 +3107,9 @@ fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
 
 Cualquier descriptor de archivos especificado tiene que soportar la escritura.
 
-Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
+Tenga en cuenta que no es seguro utilizar `fs.writeFile` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-If a file descriptor is specified as the `file`, it will not be closed automatically.
+Si un descriptor de archivo se especifica como el `file`, no será cerrado automáticamente.
 
 ## fs.writeFileSync(file, data[, options])
 
@@ -3132,7 +3132,7 @@ changes:
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
 
-The synchronous version of [`fs.writeFile()`][]. Returns `undefined`.
+La versión sincrónica de [`fs.writeFile()`][]. Devuelve `undefined`.
 
 ## fs.writeSync(fd, buffer[, offset[, length[, position]]])
 
@@ -3176,9 +3176,9 @@ Versiones sincrónicas de [`fs.write()`][]. Devuelve el número de bytes escrito
 
 ## fs Promises API
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. La API es accesible por medio de `require('fs').promises`.
+La API de `fs.promises` proporciona un conjunto alternativo de métodos de sistema de archivos asincrónicos que devuelven objetos de `Promise` en lugar de utilizar callbacks. La API es accesible por medio de `require('fs').promises`.
 
 ### class: FileHandle
 
