@@ -751,13 +751,13 @@ grep.on('close', (code, signal) => {
 grep.kill('SIGHUP');
 ```
 
-The [`ChildProcess`][] object may emit an [`'error'`][] event if the signal cannot be delivered. Sending a signal to a child process that has already exited is not an error but may have unforeseen consequences. Specifically, if the process identifier (PID) has been reassigned to another process, the signal will be delivered to that process instead which can have unexpected results.
+El objeto [`ChildProcess`][] puede emitir un evento [`'error'`][] si la señal no puede ser enviada. El envío de una señal a un proceso secundario que ya se haya cerrado no es un error, pero puede tener consecuencias imprevistas. Específicamente, si el identificador proceso (PID) ha sido reasignado a otro proceso, la señal será enviada a ese proceso en su lugar, lo cual puede tener resultados inesperados.
 
-Note that while the function is called `kill`, the signal delivered to the child process may not actually terminate the process.
+Note que aunque que la función se llame `kill`, la señal enviada al proceso secundario puede no terminar el proceso.
 
-See kill(2) for reference.
+Vea kill(2) para referencias.
 
-Also note: on Linux, child processes of child processes will not be terminated when attempting to kill their parent. This is likely to happen when running a new process in a shell or with use of the `shell` option of `ChildProcess`, such as in this example:
+También observe: en Linux, los proceso secundario de procesos secundarios no serán terminados al intentar aniquilar a su proceso primario. Esto es probable que suceda cuando se ejecuta un nuevo proceso en un shell o con el uso de la opción `shell` de `ChildProcess`, como en este ejemplo:
 
 ```js
 'use strict';
@@ -786,9 +786,9 @@ setTimeout(() => {
 added: v0.5.10
 -->
 
-* {boolean} Set to `true` after `subprocess.kill()` is used to successfully send a signal to the child process.
+* {boolean} Establecido a `true` luego de que se haya usado `subprocess.kill()` para enviar una señal con éxito al proceso secundario.
 
-The `subprocess.killed` property indicates whether the child process successfully received a signal from `subprocess.kill()`. The `killed` property does not indicate that the child process has been terminated.
+La propiedad `subprocess.killed` indica si el proceso secundario recibió con éxito una señal desde `subprocess.kill()`. La propiedad `killed` no indica que el proceso secundario haya sido terminado.
 
 ### subprocess.pid
 
@@ -798,9 +798,9 @@ added: v0.1.90
 
 * {integer}
 
-Returns the process identifier (PID) of the child process.
+Devuelve el identificador del proceso (PID) del proceso secundario.
 
-Example:
+Ejemplo:
 
 ```js
 const { spawn } = require('child_process');
@@ -830,12 +830,12 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
-  * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
+* `opciones` {Object} El argumento `options`, si está presente, es un objeto usad para parametizar el envío de ciertos tipos de manejos. `options` soporta las siguientes propiedades: 
+  * `keepOpen` {boolean} Un valor que puede ser usado al pasar instancias de `net.Socket`. When `true`, the socket is kept open in the sending process. **Predeterminado:** `false`.
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-When an IPC channel has been established between the parent and child ( i.e. when using [`child_process.fork()`][]), the `subprocess.send()` method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the [`'message'`][] event.
+Cuando un canal IPC ha sido establecido entre el proceso primario y el secundario (p. ej. al usar [`child_process.fork()`][]), el método `subprocess.send()` puede ser usado para enviar mensajes al proceso secundario. When the child process is a Node.js instance, these messages can be received via the [`'message'`][] event.
 
 El mensaje pasa a través de la serialización y análisis. The resulting message might not be the same as what is originally sent.
 
