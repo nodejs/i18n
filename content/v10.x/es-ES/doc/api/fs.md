@@ -2434,13 +2434,13 @@ Synchronously computes the canonical pathname by resolving `.`, `..` and symboli
 
 Note that "canonical" does not mean "unique": hard links and bind mounts can expose a file system entity through many pathnames.
 
-This function behaves like realpath(3), with some exceptions:
+Esta función se comporta como realpath(3), con algunas excepciones:
 
 1. No case conversion is performed on case-insensitive file systems.
 
-2. The maximum number of symbolic links is platform-independent and generally (much) higher than what the native realpath(3) implementation supports.
+2. El número máximo de enlaces simbólicos es independiente de la plataforma y por lo general (mucho) más alto que lo que soporta la implementación nativa de realpath(3).
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the returned value. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para el valor devuelto. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
 If `path` resolves to a socket or a pipe, the function will return a system dependent name for that object.
 
@@ -2457,9 +2457,9 @@ added: v9.2.0
 
 realpath(3) sincrónico.
 
-Only paths that can be converted to UTF8 strings are supported.
+Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path passed to the callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
 On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc no tiene esta restricción.
 
