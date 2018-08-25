@@ -556,7 +556,7 @@ changes:
 * `opciones` {Object} 
   * `cwd` {string} El directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
-  * `stdio` {string|Array} La configuración del stdio del proceso secundario. `stderr` por defecto será la salida del stderr del proceso secundario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
+  * `stdio` {string|Array} La configuración del stdio del proceso secundario. `stderr` por defecto será la salida del stderr del proceso primario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
   * `shell` {string} Shell con el que ejecutar el comando. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `uid` {number} Establece la identidad del usuario del proceso. (Vea setuid(2)).
@@ -631,7 +631,7 @@ added: v2.2.0
 
 Las instancias de la clase `ChildProcess` son [`EventEmitters`][`EventEmitter`] que representan procesos secundarios generados.
 
-Las instancias del `ChildProcess` no tienen la intención de ser creadas directamente. En su lugar, utilice los métodos [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][] o [`child_process.fork()`][] para crear instancias de `ChildProcess`.
+Las instancias del `ChildProcess` no se suponen que sean creadas directamente. En su lugar, utilice los métodos [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][] o [`child_process.fork()`][] para crear instancias de `ChildProcess`.
 
 ### Evento: 'close' (cerrar)
 
@@ -639,7 +639,7 @@ Las instancias del `ChildProcess` no tienen la intención de ser creadas directa
 added: v0.7.7
 -->
 
-* `code` {number} El código de salida si el proceso secundario se cierra por sí solo.
+* `code` {number} El código de salida si el proceso secundario se cerró por sí solo.
 * `signal` {string} La señal por la cual el proceso secundario fue terminado.
 
 The `'close'` event is emitted when the stdio streams of a child process have been closed. This is distinct from the [`'exit'`][] event, since multiple processes might share the same stdio streams.
@@ -650,7 +650,7 @@ The `'close'` event is emitted when the stdio streams of a child process have be
 added: v0.7.2
 -->
 
-El evento `'disconnect'` es emitido luego de llamar al proceso [`subprocess.disconnect()`][] en el proceso primario o [`process.disconnect()`][] en el proceso secundario. Luego de desconectarlo, no es posible enviar o recibir mensajes, y la propiedad [`subprocess.connected`][] es `false`.
+El evento `'disconnect'` es emitido luego de llamar al método [`subprocess.disconnect()`][] en el proceso primario o [`process.disconnect()`][] en el proceso secundario. Luego de desconectarlo, no es posible enviar o recibir mensajes, y la propiedad [`subprocess.connected`][] es `false`.
 
 ### Evento: 'error'
 
@@ -672,10 +672,10 @@ Vea también [`subprocess.kill()`][] y [`subprocess.send()`][].
 added: v0.1.90
 -->
 
-* `code` {number} El código de salida si el proceso secundario se cierra por sí solo.
+* `code` {number} El código de salida si el proceso secundario se cerró por sí solo.
 * `signal` {string} La señal por la cual el proceso secundario fue terminado.
 
-El evento `'exit'` es emitido luego de que el proceso secundario finaliza. Si se cierra el proceso, `code` es el código de salida final del proceso, o de otra manera es `null`. Si el proceso se termina debido a la recepción de una señal, `signal` es el nombre de la string de la señal, si no, es `null`. Una de las dos siempre será no nula.
+El evento `'exit'` es emitido luego de que el proceso secundario finaliza. Si se cierra el proceso, `code` es el código de salida final del proceso, o de otra manera es `null`. Si el proceso se termina debido a la recepción de una señal, `signal` es el nombre de la string de la señal, sino es `null`. Una de las dos siempre será no nula.
 
 Note that when the `'exit'` event is triggered, child process stdio streams might still be open.
 
@@ -694,7 +694,7 @@ added: v0.5.9
 
 El evento `'message'` se desencadena cuando un proceso secundario utiliza [`process.send()`][] para enviar mensajes.
 
-El mensaje pasa a través de la serialización y análisis. El mensaje resultante puede no ser el mismo al que se envió originalmente.
+El mensaje pasa a través de la serialización y análisis. El mensaje resultante puede no ser el mismo que lo originalmente enviado.
 
 ### subprocess.channel
 
