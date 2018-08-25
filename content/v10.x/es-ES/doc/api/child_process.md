@@ -25,7 +25,7 @@ ls.on('close', (code) => {
 });
 ```
 
-By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Utilice la opción `{ stdio: 'ignore' }` si la salida no será consumida.
+Por defecto, los pies para `stdin`, `stdout` y `stderr` son establecidos entre el proceso Node.js primario y el proceso secundario generado. Estos pipes tienen capacidad (y plataforma específica) limitada. Si el proceso secundario escribe en stdout superior a ese límite sin que se haya capturado la salida, el proceso secundario lo bloqueará, esperando a que el búfer del pipe acepte más datos. Esto es idéntico al comportamiento de los pies en el shell. Utilice la opción `{ stdio: 'ignore' }` si la salida no será consumida.
 
 El método [`child_process.spawn()`][] genera el proceso secundario asincrónicamente, sin bloquear el bucle de evento Node.js. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente de manera síncrona que bloquea el bucle del evento hasta que el proceso engendrado exista o finalice.
 
@@ -109,7 +109,7 @@ changes:
 
 * `command` {string} El comando a ejecutar, con los argumentos separados con espacios.
 * `opciones` {Object} 
-  * `cwd` {string} El directorio del proceso secundario actualmente operativo. **Default:** `null`.
+  * `cwd` {string} El directorio del proceso secundario actualmente operativo. **Predeterminado:** `null`.
   * `env` {Object} Environment key-value pairs. **Predeterminado:** `null`.
   * `encoding` {string} **Predeterminado:** `'utf8'`
   * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
@@ -252,7 +252,7 @@ changes:
 * `opciones` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `env` {Object} Environment key-value pairs.
-  * `execPath` {string} Executable used to create the child process.
+  * `execPath` {string} Ejecutable utilizado para crear el proceso secundario.
   * `execArgv` {string[]} Lista de argumentos de strings pasados al ejecutable. **Predeterminado:** `process.execArgv`.
   * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Predeterminado:** `false`.
   * `stdio` {Array|string} Vea el [`stdio`][] del [`child_process.spawn()`][]'. Cuando se proporciona esta opción, se anula `silent`. Si la variante del array es usada, debe contener exactamente un artículo con el valor `'ipc'` o se arrojará un error. Por ejemplo: `[0, 1, 2, 'ipc']`.
@@ -393,7 +393,7 @@ subprocess.on('error', (err) => {
 
 Ciertas plataformas (macOS, Linux) utilizarán el valor de `argv[0]` para el título del proceso mientras que otras (Windows, SunOS) utilizarán `command`.
 
-Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `process.argv[0]` in a Node.js child process will not match the `argv0` parameter passed to `spawn` from the parent, retrieve it with the `process.argv0` property instead.
+Actualmente, Node.s sobrescribe a `argv[0]` con `process.execPath` en el inicio, por lo que `process.argv[0]` en un proceso secundario de Node.js no coincidirá con el parámetro `argv0` pasado a `spawn` desde el proceso primario, en su lugar, recupérelo con la propiedad `process.argv0`.
 
 #### options.detached
 
@@ -449,7 +449,7 @@ changes:
     description: The value `0` is now accepted as a file descriptor.
 -->
 
-The `options.stdio` option is used to configure the pipes that are established between the parent and child process. Por defecto, el stdin, stdout y stderr del proceso secundario son redireccionados a streams [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][] correspondientes en el objeto [`ChildProcess`][]. Esto es equivalente a configurar el `options.stdio` igual a `['pipe', 'pipe', 'pipe']`.
+La opción `options.stdio` es utilizada para configurar los pipes que son establecidos entre el proceso primario y el proceso secundario. Por defecto, el stdin, stdout y stderr del proceso secundario son redireccionados a streams [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][] correspondientes en el objeto [`ChildProcess`][]. Esto es equivalente a configurar el `options.stdio` igual a `['pipe', 'pipe', 'pipe']`.
 
 Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 
