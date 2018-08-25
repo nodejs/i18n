@@ -3190,7 +3190,7 @@ A `FileHandle` object is a wrapper for a numeric file descriptor. Las instancias
 
 Las instancias del objeto de `FileHandle` son creadas internamente por el método de `fsPromises.open()` .
 
-Unlike the callback-based API (`fs.fstat()`, `fs.fchown()`, `fs.fchmod()`, and so on), a numeric file descriptor is not used by the promise-based API. Instead, the promise-based API uses the `FileHandle` class in order to help avoid accidental leaking of unclosed file descriptors after a `Promise` is resolved or rejected.
+A diferencia de la API basada en el callback (`fs.fstat()`, `fs.fchown()`, `fs.fchmod()`, y así sucesivamente), un descriptor de archivos numéricos no es utilizado por la API basada en la promesa. En lugar de ello, la API basada en la promesa utiliza la clase de `FileHandle` para ayudar a evitar la fuga accidental de los descriptores de archivos no cerrados luego de que se resuelve o se rechaza una `Promise` .
 
 #### filehandle.appendFile(data, options)
 
@@ -3264,7 +3264,7 @@ added: v10.0.0
 
 * Devuelve: {Promise}
 
-fdatasync(2) asincrónico. The `Promise` is resolved with no arguments upon success.
+fdatasync(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 #### filehandle.fd
 
@@ -3292,9 +3292,9 @@ Leer datos desde el archivo.
 
 `offset` is the offset in the buffer to start writing at.
 
-`length` is an integer specifying the number of bytes to read.
+`length` es un entero que especifica el número de bytes a leer.
 
-`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. If `position` is an integer, the file position will remain unchanged.
+`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. Si `position` es un entero, la posición del archivo permanecerá sin cambios.
 
 Luego de una lectura exitosa, la `Promise` se resuelve con un objeto con una propiedad de `bytesRead` que especifique el número de bytes leídos, y una propiedad de `buffer` que sea una referencia a lo que fue pasado en el argumento de `buffer` .
 
@@ -3350,7 +3350,7 @@ added: v10.0.0
 
 Truncates the file then resolves the `Promise` with no arguments upon success.
 
-If the file was larger than `len` bytes, only the first `len` bytes will be retained in the file.
+Si el archivo era más grande que `len` bytes, sólo los primeros `len` bytes serán retenidos en el archivo.
 
 Por ejemplo, el siguiente programa retiene sólo los primeros cuatro bytes del archivo:
 
@@ -3571,7 +3571,7 @@ added: v10.0.0
 * `mode` {integer}
 * Returns: {Promise}
 
-Asynchronous fchmod(2). The `Promise` is resolved with no arguments upon success.
+Asynchronous fchmod(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.fchown(filehandle, uid, gid)
 
@@ -3595,7 +3595,7 @@ added: v10.0.0
 * `filehandle` {FileHandle}
 * Returns: {Promise}
 
-Asynchronous fdatasync(2). The `Promise` is resolved with no arguments upon success.
+Asynchronous fdatasync(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.fstat(filehandle)
 
@@ -3617,7 +3617,7 @@ added: v10.0.0
 * `filehandle` {FileHandle}
 * Returns: {Promise}
 
-Asynchronous fsync(2). The `Promise` is resolved with no arguments upon success.
+Asynchronous fsync(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.ftruncate(filehandle[, len])
 
@@ -3947,7 +3947,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * Returns: {Promise}
 
-Asynchronous unlink(2). The `Promise` is resolved with no arguments upon success.
+Asynchronous unlink(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.utimes(path, atime, mtime)
 
