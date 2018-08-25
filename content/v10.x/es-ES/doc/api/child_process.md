@@ -977,11 +977,11 @@ added: v0.1.90
 
 Un `Writable Stream` que representa al `stdin` del proceso secundario.
 
-*Note that if a child process waits to read all of its input, the child will not continue until this stream has been closed via `end()`.*
+*Note que si un proceso secundario espera a leer todas sus entradas, el proceso secundario no continuará hasta que este stream haya sido cerrado a través de `end()`.*
 
-If the child was spawned with `stdio[0]` set to anything other than `'pipe'`, then this will be `null`.
+Si el proceso secundario fue generado con el `stdio[0]` establecido a cualquier otro diferente a `'pipe'`, entonces esto será `null`.
 
-`subprocess.stdin` is an alias for `subprocess.stdio[0]`. Both properties will refer to the same value.
+`subprocess.stdin` es un alias de `subprocess.stdio[0]`. Both properties will refer to the same value.
 
 ### subprocess.stdio
 
