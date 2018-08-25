@@ -2374,9 +2374,9 @@ This function behaves like realpath(3), with some exceptions:
 
 El `callback` obtiene dos argumentos `(err, resolvedPath)`. Puede utilizar `process.cwd` para resolver rutas relativas.
 
-Only paths that can be converted to UTF8 strings are supported.
+Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path passed to the callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
 If `path` resolves to a socket or a pipe, the function will return a system dependent name for that object.
 
@@ -2393,13 +2393,13 @@ added: v9.2.0
   * `err` {Error}
   * `resolvedPath` {string|Buffer}
 
-Asynchronous realpath(3).
+realpath(3) asincrónico.
 
 El `callback` obtiene dos argumentos `(err, resolvedPath)`.
 
-Only paths that can be converted to UTF8 strings are supported.
+Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path passed to the callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
 On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc no tiene esta restricción.
 
