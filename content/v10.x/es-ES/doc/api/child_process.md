@@ -835,11 +835,11 @@ changes:
 * `callback` {Function}
 * Devuelve: {boolean}
 
-Cuando un canal IPC ha sido establecido entre el proceso primario y el secundario (p. ej. al usar [`child_process.fork()`][]), el método `subprocess.send()` puede ser usado para enviar mensajes al proceso secundario. When the child process is a Node.js instance, these messages can be received via the [`'message'`][] event.
+Cuando un canal IPC ha sido establecido entre el proceso primario y el secundario (p. ej. al usar [`child_process.fork()`][]), el método `subprocess.send()` puede ser usado para enviar mensajes al proceso secundario. Cuando el proceso secundario es una instancia Node.js, estos mensajes pueden ser recibidos a través del evento [`'message'`][].
 
-El mensaje pasa a través de la serialización y análisis. The resulting message might not be the same as what is originally sent.
+El mensaje pasa a través de la serialización y análisis. El mensaje resultante puede no ser el mismo que lo originalmente enviado.
 
-For example, in the parent script:
+Por ejemplo, en el script primario:
 
 ```js
 const cp = require('child_process');
@@ -853,7 +853,7 @@ n.on('message', (m) => {
 n.send({ hello: 'world' });
 ```
 
-And then the child script, `'sub.js'` might look like this:
+Y luego el script secundario, `'sub.js'` puede lucir así:
 
 ```js
 process.on('message', (m) => {
@@ -864,17 +864,17 @@ process.on('message', (m) => {
 process.send({ foo: 'bar', baz: NaN });
 ```
 
-Child Node.js processes will have a [`process.send()`][] method of their own that allows the child to send messages back to the parent.
+Los procesos Node.js secundarios tendrán un propio método [`process.send()`][] que permite que el proceso secundario envíe mensajes de vuelta al proceso primario.
 
-There is a special case when sending a `{cmd: 'NODE_foo'}` message. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`'message'`][] event. Rather, such messages are emitted using the `'internalMessage'` event and are consumed internally by Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
+Hay un caso especial al enviar un mensaje `{cmd: 'NODE_foo'}`. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`'message'`][] event. En su lugar, dichos mensajes son emitidos usando el evento `'internalMessage'` y son consumidos internamente por Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
 
-The optional `sendHandle` argument that may be passed to `subprocess.send()` is for passing a TCP server or socket object to the child process. The child will receive the object as the second argument passed to the callback function registered on the [`'message'`][] event. Any data that is received and buffered in the socket will not be sent to the child.
+The optional `sendHandle` argument that may be passed to `subprocess.send()` is for passing a TCP server or socket object to the child process. El proceso secundario recibirá el objeto como el segundo argumento pasado a la función callback registrada en el evento [`'message'`][]. Any data that is received and buffered in the socket will not be sent to the child.
 
-The optional `callback` is a function that is invoked after the message is sent but before the child may have received it. The function is called with a single argument: `null` on success, or an [`Error`][] object on failure.
+El `callback` opcional es una opción que es invocada luego de que el mensaje es enviado pero antes de que el proceso secundario pudiera haber sido recibido. La función es llamada con un argumento simple: `null` en éxito, o con un objeto [`Error`][] en fracaso.
 
-If no `callback` function is provided and the message cannot be sent, an `'error'` event will be emitted by the [`ChildProcess`][] object. This can happen, for instance, when the child process has already exited.
+No se provee ninguna función `callback` y el mensaje no puede ser enviado, un evento `'error'` será emitido por el objeto [`ChildProcess`][]. Esto puede pasar, por ejemplo, cuando el proceso secundario ya se haya cerrado.
 
-`subprocess.send()` will return `false` if the channel has closed or when the backlog of unsent messages exceeds a threshold that makes it unwise to send more. Otherwise, the method returns `true`. The `callback` function can be used to implement flow control.
+`subprocess.send()` will return `false` if the channel has closed or when the backlog of unsent messages exceeds a threshold that makes it unwise to send more. De otro modo, el método devuelve `true`. La función `callback` puede ser usada para implementar control de flujo.
 
 #### Example: sending a server object
 
