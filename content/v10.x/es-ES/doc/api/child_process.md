@@ -459,7 +459,7 @@ Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 
 De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Additional fds can be specified to create additional pipes between the parent and child. El valor es uno de los siguientes:
 
-1. `'pipe'` - Create a pipe between the child process and the parent process. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
+1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Los pies creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][] respectivamente.
 2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurar esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][] and [`process.disconnect()`][], al igual que los eventos [`'disconnect'`][] y [`'message'`][] dentro del proceso secundario.
   
   Acceder al fd del canal IPC de cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
@@ -468,7 +468,7 @@ De otra manera, el valor de `options.stdio` es un array en donde cada índice co
 
 4. {Stream} object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process. The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index in the `stdio` array. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
 5. Entero positivo - El valor del entero es interpretado como un descriptor de archivo que está actualmente abierto en el proceso primario. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden compartirse.
-6. `null`, `undefined` - Utiliza el valor por defecto. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. Para fd 3 y mayores, el predeterminado es `'ignore'`.
+6. `null`, `undefined` - Utiliza el valor por defecto. Para los fds stdio 0, 1 y 2 (en otras palabras, stdin, stdout y stderr) se crea un pipe. Para fd 3 y mayores, el predeterminado es `'ignore'`.
 
 Ejemplo:
 
@@ -530,7 +530,7 @@ changes:
   * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
 * Devuelve: {Buffer|string} El stdout desde el comando.
 
-El método `child_process.execFileSync()` es generalmente idéntico a [`child_process.execFile()`][] con la excepción de que el método no se devolverá hasta que el proceso secundario haya sido completamente cerrado. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited.
+El método `child_process.execFileSync()` es generalmente idéntico a [`child_process.execFile()`][] con la excepción de que el método no se devolverá hasta que el proceso secundario haya sido completamente cerrado. Cuando se haya encontrado un timeout y se haya enviado una `killSignal`, el método no se devolverá hasta que el proceso haya sido completamente cerrado.
 
 Si el proceso secundario intercepta y maneja la señal `SIGTERM` y no se cierra, el proceso primario todavía esperará hasta que el proceso secundario se haya cerrado.
 
@@ -704,7 +704,7 @@ added: v7.1.0
 
 * {Object} Un pipe que representa el canal IPC al proceso secundario.
 
-The `subprocess.channel` property is a reference to the child's IPC channel. If no IPC channel currently exists, this property is `undefined`.
+La propiedad `subprocess.channel` es una referencia al canal IPC del proceso secundario. Si no existe actualmente un canal IPC, esta propiedad es `undefined`.
 
 ### subprocess.connected
 
@@ -712,9 +712,9 @@ The `subprocess.channel` property is a reference to the child's IPC channel. If 
 added: v0.7.2
 -->
 
-* {boolean} Set to `false` after `subprocess.disconnect()` is called.
+* {boolean} Establece a `false` luego de que se llame a `subprocess.disconnect()`.
 
-The `subprocess.connected` property indicates whether it is still possible to send and receive messages from a child process. When `subprocess.connected` is `false`, it is no longer possible to send or receive messages.
+La propiedad `subprocess.connected` indica si todavía es posible enviar y recibir mensajes de un proceso secundario. Cuando `subprocess.connected` es `false`, no es posible enviar o recibir mensajes.
 
 ### subprocess.disconnect()
 
@@ -722,11 +722,11 @@ The `subprocess.connected` property indicates whether it is still possible to se
 added: v0.7.2
 -->
 
-Closes the IPC channel between parent and child, allowing the child to exit gracefully once there are no other connections keeping it alive. After calling this method the `subprocess.connected` and `process.connected` properties in both the parent and child (respectively) will be set to `false`, and it will be no longer possible to pass messages between the processes.
+Cierra el canal IPC entre el proceso primario y el proceso secundario, permitiendo que el secundario salga con gracia una vez no hayan otras conexiones que lo mantengan con vida. Luego de llamar a este método, las propiedades `subprocess.connected` y `process.connected` en el proceso primario y el proceso secundario (respectivamente), se establecerá a `false` y ya no será posible pasar mensajes entre los procesos.
 
-The `'disconnect'` event will be emitted when there are no messages in the process of being received. This will most often be triggered immediately after calling `subprocess.disconnect()`.
+El evento `'disconnect'` será emitido cuando no hayan mensajes en el proceso de ser recibidos. Esto generalmente se activará inmediatamente después de llamar a `subprocess.disconnect()`.
 
-Note that when the child process is a Node.js instance (e.g. spawned using [`child_process.fork()`]), the `process.disconnect()` method can be invoked within the child process to close the IPC channel as well.
+Note que cuando el proceso secundario es una instancia Node.js (e.g. generado utilizando [`child_process.fork()`]), el método `process.disconnect()` puede ser invocado dentro del proceso secundario para cerrar el canal IPC también.
 
 ### subprocess.kill([signal])
 
@@ -736,7 +736,7 @@ added: v0.1.90
 
 * `signal` {string}
 
-The `subprocess.kill()` method sends a signal to the child process. If no argument is given, the process will be sent the `'SIGTERM'` signal. See signal(7) for a list of available signals.
+El método `subprocess.kill()` envía una señal al proceso secundario. Si no se proporciona ningún argumento, se le enviará la señal `'SIGTERM'` al proceso. Vea signal(7) para una lista de señales disponibles.
 
 ```js
 const { spawn } = require('child_process');
