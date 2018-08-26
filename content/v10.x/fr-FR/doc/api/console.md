@@ -143,9 +143,9 @@ Appeler `console.assert()` avec une assertion fausse ne provoquera que l'écritu
 added: v8.3.0
 -->
 
-When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
+Lorsque `stdout` est un terminal, appeler `console.clear()` tentera d’effacer le terminal. Lorsque `stdout` n’est pas un terminal, cette méthode ne fait rien.
 
-The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
+L’opération spécifique de `console.clear()` peut varier selon les systèmes d’exploitation et les types de terminaux. Pour la plupart des systèmes d’exploitation Linux, `console.clear()` fonctionne de manière similaire à la commande shell `clear`. Sous Windows, `console.clear()` effacera uniquement la sortie dans la fenêtre courante de terminal pour l'exécutable Node.js.
 
 ### console.count([label='default'])
 
@@ -153,7 +153,7 @@ The specific operation of `console.clear()` can vary across operating systems an
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} l’étiquette d’affichage pour le compteur. **Default:** `'default'`.
 
 Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
 
