@@ -438,7 +438,7 @@ added: v0.1.100
 
 La fonction `console.warn()` est un alias pour [`console.error()`][].
 
-## Inspector only methods
+## Méthodes spécifiques à l'inspecteur
 
 The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
 
