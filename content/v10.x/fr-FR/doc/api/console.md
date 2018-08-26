@@ -259,7 +259,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Écrit dans `stderr` avec une nouvelle ligne. Plusieurs paramètres peuvent être transmis, le premier servant de message primaire et tous les autres de valeurs de substitution, à la manière de printf(3) (tous les paramètres sont passés à [`util.format()`][]).
 
 ```js
 const code = 5;
