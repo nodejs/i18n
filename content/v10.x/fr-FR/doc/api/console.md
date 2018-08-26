@@ -440,7 +440,7 @@ La fonction `console.warn()` est un alias pour [`console.error()`][].
 
 ## Méthodes spécifiques à l'inspecteur
 
-The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
+Les méthodes suivantes sont présentées par le moteur V8 dans l'API générale, mais n'affichent rien à moins d'être utilisées en conjonction avec l'[inspecteur](debugger.html) (option `--inspect`).
 
 ### console.markTimeline(label)
 
@@ -450,7 +450,7 @@ added: v8.0.0
 
 * `label` {string} **Par défaut :** `'default'`
 
-This method does not display anything unless used in the inspector. The `console.markTimeline()` method is the deprecated form of [`console.timeStamp()`][].
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.markTimeline()` est la forme obsolète de [`console.timeStamp()`][].
 
 ### console.profile([label])
 
@@ -460,7 +460,7 @@ added: v8.0.0
 
 * `label` {string}
 
-This method does not display anything unless used in the inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.profile()` démarre un profilage CPU JavaScript avec un label optionnel, jusqu'à l'appel de [`console.profileEnd()`][]. The profile is then added to the **Profile** panel of the inspector.
 
 ```js
 console.profile('MyLabel');
@@ -475,7 +475,7 @@ console.profileEnd();
 added: v8.0.0
 -->
 
-This method does not display anything unless used in the inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
 
 ### console.timeStamp([label])
 
@@ -485,7 +485,7 @@ added: v8.0.0
 
 * `label` {string}
 
-This method does not display anything unless used in the inspector. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
 
 ### console.timeline([label])
 
@@ -495,7 +495,7 @@ added: v8.0.0
 
 * `label` {string} **Par défaut :** `'default'`
 
-This method does not display anything unless used in the inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.timeline()` method is the deprecated form of [`console.time()`][].
 
 ### console.timelineEnd([label])
 
@@ -505,4 +505,4 @@ added: v8.0.0
 
 * `label` {string} **Par défaut :** `'default'`
 
-This method does not display anything unless used in the inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
