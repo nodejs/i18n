@@ -2591,7 +2591,7 @@ changes:
 
 stat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)`, en donde `stats` es un objeto de [`fs.Stats`][].
 
-En caso de que ocurra un error, el `err.code` será uno de los [Errores de Sistema Comunes](errors.html#errors_common_system_errors). 
+En caso de que ocurra un error, el `err.code` será uno de los [Errores de Sistema Comunes](errors.html#errors_common_system_errors).
 
 Utilizar `fs.stat()` para verificar la existencia de un archivo antes de llamar a `fs.open()`, `fs.readFile()` ó `fs.writeFile()` no es recomendado. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no está disponible.
 
@@ -2635,7 +2635,7 @@ changes:
 
 symlink(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. El argumento de `type` puede ser establecido a `'dir'`, `'file'`, ó `'junction'` y sólo está disponible en Windows (se ignora en otras plataformas). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
 
-Aquí hay un ejemplo a continuación:
+A continuación, hay un ejemplo:
 
 ```js
 fs.symlink('./foo', './new-port', callback);
@@ -2685,7 +2685,7 @@ changes:
 
 truncate(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. Un descriptor de archivos también puede ser pasado como el primer argumento. En este caso, `fs.ftruncate()` es llamado.
 
-Pasar un descriptor de archivo es obsoleto y su resultado puede ser un error que ocurrirá en el futuro.
+Pasar un descriptor de archivo es obsoleto y puede ocasionar que se arroje un error en el futuro.
 
 ## fs.truncateSync(path[, len])
 
@@ -2698,7 +2698,7 @@ added: v0.8.6
 
 truncate(2) sincrónico. Devuelve `undefined`. Un descriptor de archivo también puede ser pasado como el primer argumento. En este caso, `fs.ftruncateSync()` es llamado.
 
-Pasar un descriptor de archivo es obsoleto y su resultado puede ser un error que ocurrirá en el futuro.
+Pasar un descriptor de archivo es obsoleto y puede ocasionar que se arroje un error en el futuro.
 
 ## fs.unlink(path, callback)
 
