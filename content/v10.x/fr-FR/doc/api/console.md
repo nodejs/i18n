@@ -4,7 +4,7 @@
 
 > Stability: 2 - Stable
 
-The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
+Le module `console` fournit une console de débogage simple, similaire au mécanisme de console JavaScript fourni par les navigateurs web.
 
 The module exports two specific components:
 
