@@ -105,7 +105,7 @@ logger.log('count: %d', count);
 // dans stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+L'instance globale `console` est une `Console` spéciale dont la sortie est envoyée à [`process.stdout`][] et [`process.stderr`][]. Cela équivaut à l’appel :
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
