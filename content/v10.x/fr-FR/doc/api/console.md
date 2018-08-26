@@ -36,18 +36,18 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Prints: hello world, to out
+// Écrit : hello world dans out
 myConsole.log('hello %s', 'world');
-// Prints: hello world, to out
+// Écrit : hello world dans out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to err
+// Écrit [Error: Whoops, something bad happened] dans err
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+// Écrit : Danger Will Robinson! Danger! dans err
 ```
 
-## Class: Console
+## Classe : Console
 
 <!-- YAML
 changes:
