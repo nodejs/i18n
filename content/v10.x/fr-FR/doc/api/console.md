@@ -155,7 +155,7 @@ added: v8.3.0
 
 * `label` {string} l’étiquette d’affichage pour le compteur. **Par défaut :** `'default'`.
 
-Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
+Maintient un compteur interne spécifique à `label` et écrit dans `stdout` le nombre de fois où `console.count()` a été appelé avec le `label` donné.
 
 <!-- eslint-skip -->
 
@@ -187,9 +187,9 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Par défaut :** `'default'`.
+* `label` {string} l’étiquette d’affichage pour le compteur. **Par défaut :** `'default'`.
 
-Resets the internal counter specific to `label`.
+Réinitialise le compteur interne spécifique à `label`.
 
 <!-- eslint-skip -->
 
@@ -219,7 +219,7 @@ changes:
 * `data` {any}
 * `...args` {any}
 
-The `console.debug()` function is an alias for [`console.log()`][].
+La fonction `console.debug()` est un alias pour [`console.log()`][].
 
 ### console.dir(obj[, options])
 
