@@ -89,7 +89,7 @@ changes:
 * `options` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
-  * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
+  * `ignoreErrors` {boolean} ignore les erreurs lors de l’écriture dans les flux sous-jacents. **Par défaut :** `true`.
   * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
 
 Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
