@@ -11,9 +11,9 @@ Le module exporte deux composants spécifiques :
 * Une classe `Console` avec des méthodes telles que `console.log()`, `console.error()` et `console.warn()`, qui peut être utilisée pour écrire dans n’importe quel flux Node.js.
 * Une instance globale `console` configurée pour écrire dans [`process.stdout`][] et [`process.stderr`][]. La `console` globale peut être utilisée sans appeler `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+***Avertissement*** : les méthodes de l’objet global console ne sont ni systématiquement synchrones comme celles de l'API de navigateur auxquelles elles ressemblent, ni systématiquement asynchrones comme tous les autres flux Node.js. Voir la [note sur les processus I/O](process.html#process_a_note_on_process_i_o) pour plus d’informations.
 
-Example using the global `console`:
+Exemple d’utilisation de la globale `console` :
 
 ```js
 console.log('hello world');
