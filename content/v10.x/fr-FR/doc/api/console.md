@@ -90,9 +90,9 @@ changes:
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
   * `ignoreErrors` {boolean} ignore les erreurs lors de l’écriture dans les flux sous-jacents. **Par défaut :** `true`.
-  * `colorMode` {boolean|string} Définit la prise en charge des couleurs pour cette instance de `Console`. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `colorMode` {boolean|string} Définit la prise en charge des couleurs pour cette instance de `Console`. Définir à `true` active le support des couleurs lors de l'inspection des valeurs, définir à `'auto'` rendra le support des couleurs dépendant de la valeur de la propriété `isTTY` et de la valeur retournée par `getColorDepth()` sur le flux respectif. **Par défaut :** `'auto'`.
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Crée une nouvelle `Console` avec une ou deux instances de flux accessibles en écriture. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
