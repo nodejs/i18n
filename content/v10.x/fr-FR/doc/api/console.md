@@ -9,11 +9,11 @@ Le module `console` fournit une console de débogage simple, similaire au mécan
 Le module exporte deux composants spécifiques :
 
 * Une classe `Console` avec des méthodes telles que `console.log()`, `console.error()` et `console.warn()`, qui peut être utilisée pour écrire dans n’importe quel flux Node.js.
-* Une instance globale `console` configurée pour écrire dans [`process.stdout`][] et [`process.stderr`][]. La `console` globale peut être utilisée sans appeler `require('console')`.
+* Une instance globale `console` configurée pour écrire dans [`process.stdout`][] et [`process.stderr`][]. L'instance globale `console` peut être utilisée sans appeler `require('console')`.
 
 ***Avertissement*** : les méthodes de l’objet global console ne sont ni systématiquement synchrones comme celles de l'API de navigateur auxquelles elles ressemblent, ni systématiquement asynchrones comme tous les autres flux Node.js. Voir la [note sur les processus I/O](process.html#process_a_note_on_process_i_o) pour plus d’informations.
 
-Exemple d’utilisation de la globale `console` :
+Exemple d’utilisation de l'instance globale `console` :
 
 ```js
 console.log('hello world');
@@ -97,12 +97,12 @@ Crée une nouvelle `Console` avec une ou deux instances de flux accessibles en �
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// custom simple logger
+// simple logger personnalisé
 const logger = new Console({ stdout: output, stderr: errorOutput });
-// use it like console
+// à utiliser comme console
 const count = 5;
 logger.log('count: %d', count);
-// in stdout.log: count 5
+// dans stdout.log: count 5
 ```
 
 The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
