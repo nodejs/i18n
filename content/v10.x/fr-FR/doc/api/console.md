@@ -409,7 +409,7 @@ added: v0.1.104
 * `message` {any}
 * `...args` {any}
 
-Prints to `stderr` the string `'Trace: '`, followed by the [`util.format()`][] formatted message and stack trace to the current position in the code.
+Écrit dans `stderr` la chaîne `'Trace: '`, suivie du message formatté par [`util.format()`][] et le suivi de pile à la position courante dans le code.
 
 ```js
 console.trace('Show me');
