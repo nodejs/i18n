@@ -17,18 +17,18 @@ Exemple d’utilisation de la globale `console` :
 
 ```js
 console.log('hello world');
-// Prints: hello world, to stdout
+// Écrit : hello world dans la sortie standard
 console.log('hello %s', 'world');
-// Prints: hello world, to stdout
+// Écrit : hello world dans la sortie standard
 console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+ // Écrit : [Error: Whoops, something bad happened] dans la sortie standard
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+// Écrit : Danger Will Robinson! Danger! dans la sortie standard
 ```
 
-Example using the `Console` class:
+Exemple d’utilisation de la classe `Console` :
 
 ```js
 const out = getStreamSomehow();
