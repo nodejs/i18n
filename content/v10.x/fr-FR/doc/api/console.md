@@ -230,8 +230,8 @@ added: v0.1.101
 * `obj` {any}
 * `options` {Object} 
   * `showHidden` {boolean} Si `true`, alors les propriétés non énumérables et de type symbole de l'objet seront aussi montrées. **Par défaut :** `false`.
-  * `depth` {number} Indique à [`util.inspect()`][] le nombre de récursions à effectuer lors du formatage de l'objet. Utile pour inspecter des objets volumineux et complexes. To make it recurse indefinitely, pass `null`. **Default:** `2`.
-  * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
+  * `depth` {number} Indique à [`util.inspect()`][] le nombre de récursions à effectuer lors du formatage de l'objet. Utile pour inspecter des objets volumineux et complexes. `null` supprime la limite du nombre de récursions. **Par défaut :** `2`.
+  * `colors` {boolean} Si `true`, la sortie sera stylée avec les codes couleur ANSI. Les couleurs sont personnalisables ; voir [customizing `util.inspect()` colors][]. **Par défaut :** `false`.
 
 Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
 
