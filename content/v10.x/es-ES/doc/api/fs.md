@@ -3738,7 +3738,7 @@ added: v10.0.0
 * `mode` {integer} **Default:** `0o777`
 * Returns: {Promise}
 
-Crea de manera asincrónica un directorio y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
+De manera asincrónica, crea un directorio y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.mkdtemp(prefix[, options])
 
