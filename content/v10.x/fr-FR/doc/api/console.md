@@ -153,7 +153,7 @@ L’opération spécifique de `console.clear()` peut varier selon les systèmes 
 added: v8.3.0
 -->
 
-* `label` {string} l’étiquette d’affichage pour le compteur. **Default:** `'default'`.
+* `label` {string} l’étiquette d’affichage pour le compteur. **Par défaut :** `'default'`.
 
 Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
 
@@ -187,7 +187,7 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} The display label for the counter. **Par défaut :** `'default'`.
 
 Resets the internal counter specific to `label`.
 
