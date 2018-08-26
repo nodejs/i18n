@@ -409,11 +409,11 @@ added: v0.1.104
 * `message` {any}
 * `...args` {any}
 
-Écrit dans `stderr` la chaîne `'Trace: '`, suivie du message formatté par [`util.format()`][] et le suivi de pile à la position courante dans le code.
+Écrit dans `stderr` la chaîne `'Trace: '`, le message formatté par [`util.format()`][], et la trace d'appels à la position courante dans le code.
 
 ```js
 console.trace('Show me');
-// Prints: (stack trace will vary based on where trace is called)
+// Écrit : (la trace d'appels varie selon l'endroit où est appelé trace)
 //  Trace: Show me
 //    at repl:2:9
 //    at REPLServer.defaultEval (repl.js:248:27)
@@ -436,7 +436,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-The `console.warn()` function is an alias for [`console.error()`][].
+La fonction `console.warn()` est un alias pour [`console.error()`][].
 
 ## Inspector only methods
 
