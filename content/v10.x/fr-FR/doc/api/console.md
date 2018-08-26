@@ -460,13 +460,13 @@ added: v8.0.0
 
 * `label` {string}
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.profile()` démarre un profilage CPU JavaScript avec un label optionnel, jusqu'à l'appel de [`console.profileEnd()`][]. The profile is then added to the **Profile** panel of the inspector.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.profile()` démarre un profilage CPU JavaScript avec un label optionnel, jusqu'à l'appel de [`console.profileEnd()`][]. Le profil est alors ajouté au panneau **Profiles** de l'inspecteur.
 
 ```js
 console.profile('MyLabel');
-// Some code
+// Du code
 console.profileEnd();
-// Adds the profile 'MyLabel' to the Profiles panel of the inspector.
+// Ajoute le profil 'MyLabel' au panneau Profiles de l'inspecteur.
 ```
 
 ### console.profileEnd()
@@ -475,7 +475,7 @@ console.profileEnd();
 added: v8.0.0
 -->
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. Arrête la session de profilage CPU Javascript courante si une a été démarrée et écrit le rapport dans le panneau **Profiles** de l'inspecteur. Voir [`console.profile()`][] pour un exemple.
 
 ### console.timeStamp([label])
 
@@ -485,7 +485,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.timeStamp()` ajoute un événement avec l'étiquette `'label'` au panneau **Timeline** de l'inspecteur.
 
 ### console.timeline([label])
 
