@@ -375,7 +375,7 @@ added: v0.1.104
 
 * `label` {string} **Par défaut :** `'default'`
 
-Démarre un timer qui peut servir à calculer la durée dune opération. Les timers sont identifiés par un `label` unique. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Démarre un timer qui peut servir à calculer la durée dune opération. Les timers sont identifiés par un `label` unique. Utilisez le même `label` quand vous appelez [`console.timeEnd()`][] pour arrêter le timer et écrire le temps écoulé en millisecondes dans `stdout`. Les durées des timers sont précises jusque sous la milliseconde.
 
 ### console.timeEnd(label)
 
@@ -391,13 +391,13 @@ changes:
 
 * `label` {string} **Par défaut :** `'default'`
 
-Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
+Arrête un timer précédemment démarré en appelant [`console.time()`][] et écrit le résultat dans `stdout` :
 
 ```js
 console.time('100-elements');
 for (let i = 0; i < 100; i++) {}
 console.timeEnd('100-elements');
-// prints 100-elements: 225.438ms
+// Écrit 100-elements: 225.438ms
 ```
 
 ### console.trace(\[message\]\[, ...args\])
