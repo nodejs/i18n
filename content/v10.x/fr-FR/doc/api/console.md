@@ -126,16 +126,16 @@ changes:
 * `value` {any} La valeur testée devant être vraie.
 * `...message` {any} Tous les arguments en plus de `valeur` sont utilisés comme message d’erreur.
 
-A simple assertion test that verifies whether `value` is truthy. Si ce n’est pas le cas, `Assertion failed` est loggé. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+Un simple test d'assertion qui vérifie si la `valeur` est effectivement vraie. Si ce n’est pas le cas, `Assertion failed` est loggé. S'il est fourni, le `message` d’erreur est formaté via [`util.format()`][] en lui passant tous les arguments de message. La sortie est utilisée comme le message d’erreur.
 
 ```js
 console.assert(true, 'does nothing');
 // OK
 console.assert(false, 'Whoops %s work', 'didn\'t');
-// Assertion failed: Whoops didn't work
+// Assertion fausse : Whoops didn't work
 ```
 
-Calling `console.assert()` with a falsy assertion will only cause the `message` to be printed to the console without interrupting execution of subsequent code.
+Appeler `console.assert()` avec une assertion fausse ne provoquera que l'écriture du `message` dans la console, sans interrompre le code qui suit.
 
 ### console.clear()
 
