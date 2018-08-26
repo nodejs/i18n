@@ -3178,7 +3178,7 @@ Versiones sincrónicas de [`fs.write()`][]. Devuelve el número de bytes escrito
 
 > Estabilidad: 1 - Experimental
 
-La API de `fs.promises` proporciona un conjunto alternativo de métodos de sistema de archivos asincrónicos que devuelven objetos de `Promise` en lugar de utilizar callbacks. La API es accesible por medio de `require('fs').promises`.
+La API de `fs.promises` proporciona un conjunto alternativo de métodos de sistema de archivos asincrónicos que devuelven objetos de `Promise`, en lugar de utilizar callbacks. La API es accesible por medio de `require('fs').promises`.
 
 ### class: FileHandle
 
