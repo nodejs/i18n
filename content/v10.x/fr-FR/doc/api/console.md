@@ -440,7 +440,7 @@ La fonction `console.warn()` est un alias pour [`console.error()`][].
 
 ## Méthodes spécifiques à l'inspecteur
 
-Les méthodes suivantes sont présentées par le moteur V8 dans l'API générale, mais n'affichent rien à moins d'être utilisées en conjonction avec l'[inspecteur](debugger.html) (option `--inspect`).
+Les méthodes suivantes sont présentées par le moteur V8 dans l'API générale, mais n'affichent rien à moins d'être utilisées en conjonction avec l'[inspecteur](debugger.html) (argument `--inspect`).
 
 ### console.markTimeline(label)
 
@@ -495,7 +495,7 @@ added: v8.0.0
 
 * `label` {string} **Par défaut :** `'default'`
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.timeline()` est la forme obsolète de [`console.time()`][].
 
 ### console.timelineEnd([label])
 
@@ -505,4 +505,4 @@ added: v8.0.0
 
 * `label` {string} **Par défaut :** `'default'`
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.timelineEnd()` est la forme obsolète de [`console.timeEnd()`][].
