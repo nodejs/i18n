@@ -123,10 +123,10 @@ changes:
                  anymore.
 -->
 
-* `value` {any} The value tested for being truthy.
-* `...message` {any} All arguments besides `value` are used as error message.
+* `value` {any} La valeur testée devant être vraie.
+* `...message` {any} Tous les arguments en plus de `valeur` sont utilisés comme message d’erreur.
 
-A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+A simple assertion test that verifies whether `value` is truthy. Si ce n’est pas le cas, `Assertion failed` est loggé. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
 
 ```js
 console.assert(true, 'does nothing');
