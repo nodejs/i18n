@@ -248,7 +248,7 @@ changes:
 
 * `...data` {any}
 
-Cette méthode appelle `console.log()` en lui passant les paramètres reçus. Notez que cette méthode ne produit aucun formatage XML.
+Cette méthode appelle `console.log()` en lui passant les arguments reçus. Notez que cette méthode ne produit aucun formatage XML.
 
 ### console.error(\[data\]\[, ...args\])
 
@@ -259,17 +259,17 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Écrit dans `stderr` avec une nouvelle ligne. Plusieurs paramètres peuvent être transmis, le premier servant de message primaire et tous les autres de valeurs de substitution, à la manière de printf(3) (tous les paramètres sont passés à [`util.format()`][]).
+Écrit dans `stderr` avec une nouvelle ligne. Plusieurs arguments peuvent être transmis, le premier servant de message primaire et tous les autres de valeurs de substitution, à la manière de printf(3) (tous les arguments sont passés à [`util.format()`][]).
 
 ```js
 const code = 5;
 console.error('error #%d', code);
-// Prints: error #5, to stderr
+// Écrit : error #5, dans stderr
 console.error('error', code);
-// Prints: error 5, to stderr
+// Écrit : error 5, dans stderr
 ```
 
-If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
+Si aucun élément de formatage (par exemple `%d`) n'est trouvé dans la première chaîne, [`util.inspect()`][] est appelé pour chaque argument et les valeurs de chaînes résultantes sont concaténées. See [`util.format()`][] for more information.
 
 ### console.group([...label])
 
