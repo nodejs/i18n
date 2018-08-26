@@ -25,7 +25,7 @@ ls.on('close', (code) => {
 });
 ```
 
-Por defecto, los pies para `stdin`, `stdout` y `stderr` son establecidos entre el proceso Node.js primario y el proceso secundario generado. Estos pipes tienen capacidad (y plataforma específica) limitada. Si el proceso secundario escribe en stdout superior a ese límite sin que se haya capturado la salida, el proceso secundario lo bloqueará, esperando a que el búfer del pipe acepte más datos. Esto es idéntico al comportamiento de los pies en el shell. Utilice la opción `{ stdio: 'ignore' }` si la salida no será consumida.
+Por defecto, los pipes para `stdin`, `stdout` y `stderr` son establecidos entre el proceso Node.js primario y el proceso secundario generado. Estos pipes tienen capacidad (y plataforma específica) limitada. Si el proceso secundario escribe a stdout, excediendo ese límite sin que se haya capturado la salida, el proceso secundario lo bloqueará esperando a que el búfer del pipe acepte más datos. Esto es idéntico al comportamiento de los pies en el shell. Utilice la opción `{ stdio: 'ignore' }` si la salida no será consumida.
 
 El método [`child_process.spawn()`][] genera el proceso secundario asincrónicamente, sin bloquear el bucle de evento Node.js. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente de manera síncrona que bloquea el bucle del evento hasta que el proceso engendrado exista o finalice.
 
@@ -393,7 +393,7 @@ subprocess.on('error', (err) => {
 
 Ciertas plataformas (macOS, Linux) utilizarán el valor de `argv[0]` para el título del proceso mientras que otras (Windows, SunOS) utilizarán `command`.
 
-Actualmente, Node.s sobrescribe a `argv[0]` con `process.execPath` en el inicio, por lo que `process.argv[0]` en un proceso secundario de Node.js no coincidirá con el parámetro `argv0` pasado a `spawn` desde el proceso primario, en su lugar, recupérelo con la propiedad `process.argv0`.
+Actualmente, Node.js sobrescribe a `argv[0]` con `process.execPath` en el inicio, por lo que `process.argv[0]` en un proceso secundario de Node.js no coincidirá con el parámetro `argv0` pasado a `spawn` desde el proceso primario, en su lugar, recupérelo con la propiedad `process.argv0`.
 
 #### options.detached
 
@@ -459,7 +459,7 @@ Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 
 De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Additional fds can be specified to create additional pipes between the parent and child. El valor es uno de los siguientes:
 
-1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Los pies creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][] respectivamente.
+1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Los pipes creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][], respectivamente.
 2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurar esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][] and [`process.disconnect()`][], al igual que los eventos [`'disconnect'`][] y [`'message'`][] dentro del proceso secundario.
   
   Acceder al fd del canal IPC de cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
@@ -631,7 +631,7 @@ added: v2.2.0
 
 Las instancias de la clase `ChildProcess` son [`EventEmitters`][`EventEmitter`] que representan procesos secundarios generados.
 
-Las instancias del `ChildProcess` no se suponen que sean creadas directamente. En su lugar, utilice los métodos [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][] o [`child_process.fork()`][] para crear instancias de `ChildProcess`.
+Las instancias del `ChildProcess` no se supone que sean creadas directamente. En su lugar, utilice los métodos [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][] o [`child_process.fork()`][] para crear instancias de `ChildProcess`.
 
 ### Evento: 'close' (cerrar)
 
@@ -722,11 +722,11 @@ La propiedad `subprocess.connected` indica si todavía es posible enviar y recib
 added: v0.7.2
 -->
 
-Cierra el canal IPC entre el proceso primario y el proceso secundario, permitiendo que el secundario salga con gracia una vez no hayan otras conexiones que lo mantengan con vida. Luego de llamar a este método, las propiedades `subprocess.connected` y `process.connected` en el proceso primario y el proceso secundario (respectivamente), se establecerá a `false` y ya no será posible pasar mensajes entre los procesos.
+Cierra el canal IPC entre el proceso primario y el secundario, permitiendo que el secundario se cierre exitosamente, una vez que no hayan otras conexiones que lo mantengan activo. Luego de llamar a este método, las propiedades `subprocess.connected` y `process.connected` en el proceso primario y el proceso secundario (respectivamente), se establecerá a `false` y ya no será posible pasar mensajes entre los procesos.
 
-El evento `'disconnect'` será emitido cuando no hayan mensajes en el proceso de ser recibidos. Esto generalmente se activará inmediatamente después de llamar a `subprocess.disconnect()`.
+El evento `'disconnect'` será emitido cuando no hayan mensajes en el proceso de ser recibidos. Generalmente, esto se activará inmediatamente después de llamar a `subprocess.disconnect()`.
 
-Note que cuando el proceso secundario es una instancia Node.js (e.g. generado utilizando [`child_process.fork()`]), el método `process.disconnect()` puede ser invocado dentro del proceso secundario para cerrar el canal IPC también.
+Note que cuando el proceso secundario es una instancia Node.js (por ejemplo, cuando ha sido generado utilizando [`child_process.fork()`]), el método `process.disconnect()` puede ser invocado dentro del proceso secundario para cerrar también el canal IPC.
 
 ### subprocess.kill([signal])
 
@@ -757,7 +757,7 @@ Note que aunque que la función se llame `kill`, la señal enviada al proceso se
 
 Vea kill(2) para referencias.
 
-También observe: en Linux, los proceso secundario de procesos secundarios no serán terminados al intentar aniquilar a su proceso primario. Esto es probable que suceda cuando se ejecuta un nuevo proceso en un shell o con el uso de la opción `shell` de `ChildProcess`, como en este ejemplo:
+También observe: en Linux, los procesos secundarios de procesos secundarios no serán terminados al intentar aniquilar a su proceso primario. Esto es probable que suceda cuando se ejecuta un nuevo proceso en un shell o con el uso de la opción `shell` de `ChildProcess`, como en este ejemplo:
 
 ```js
 'use strict';
@@ -830,7 +830,7 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `opciones` {Object} El argumento `options`, si está presente, es un objeto usad para parametizar el envío de ciertos tipos de manejos. `options` soporta las siguientes propiedades: 
+* `opciones` {Object} El argumento `options`, si está presente, es un objeto usado para parametizar el envío de ciertos tipos de manejos. `options` soporta las siguientes propiedades: 
   * `keepOpen` {boolean} Un valor que puede ser usado al pasar instancias de `net.Socket`. When `true`, the socket is kept open in the sending process. **Predeterminado:** `false`.
 * `callback` {Function}
 * Devuelve: {boolean}
@@ -853,7 +853,7 @@ n.on('message', (m) => {
 n.send({ hello: 'world' });
 ```
 
-Y luego el script secundario, `'sub.js'` puede lucir así:
+Y, entonces, el script secundario, `'sub.js'` puede lucir así:
 
 ```js
 process.on('message', (m) => {
@@ -864,13 +864,13 @@ process.on('message', (m) => {
 process.send({ foo: 'bar', baz: NaN });
 ```
 
-Los procesos Node.js secundarios tendrán un propio método [`process.send()`][] que permite que el proceso secundario envíe mensajes de vuelta al proceso primario.
+Los procesos Node.js secundarios tendrán un método [`process.send()`][] propio que permita que el proceso secundario envíe mensajes de vuelta al proceso primario.
 
 Hay un caso especial al enviar un mensaje `{cmd: 'NODE_foo'}`. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`'message'`][] event. En su lugar, dichos mensajes son emitidos usando el evento `'internalMessage'` y son consumidos internamente por Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
 
 The optional `sendHandle` argument that may be passed to `subprocess.send()` is for passing a TCP server or socket object to the child process. El proceso secundario recibirá el objeto como el segundo argumento pasado a la función callback registrada en el evento [`'message'`][]. Any data that is received and buffered in the socket will not be sent to the child.
 
-El `callback` opcional es una opción que es invocada luego de que el mensaje es enviado pero antes de que el proceso secundario pudiera haber sido recibido. La función es llamada con un argumento simple: `null` en éxito, o con un objeto [`Error`][] en fracaso.
+El `callback` opcional es una opción que es invocada luego de que el mensaje es enviado, pero antes de que el proceso secundario pudiera haber sido recibido. La función es llamada con un argumento simple: `null` en éxito, o con un objeto [`Error`][] en fracaso.
 
 No se provee ninguna función `callback` y el mensaje no puede ser enviado, un evento `'error'` será emitido por el objeto [`ChildProcess`][]. Esto puede pasar, por ejemplo, cuando el proceso secundario ya se haya cerrado.
 
@@ -963,7 +963,7 @@ added: v0.1.90
 
 Un `Readable Stream` que represente el `stderr` del proceso secundario.
 
-Si el proceso secundario fue generado con el `stdio[2]` establecido a cualquier otra diferente a `'pipe'`, entonces esto será `null`.
+Si el proceso secundario fue generado con el `stdio[2]` establecido a cualquier otro diferente a `'pipe'`, entonces esto será `null`.
 
 `subprocess.stderr` es un alias de `subprocess.stdio[2]`. Ambas propiedades se referirán al mismo valor.
 
