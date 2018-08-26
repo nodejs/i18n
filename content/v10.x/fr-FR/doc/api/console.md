@@ -126,7 +126,7 @@ changes:
 * `value` {any} La valeur testée devant être vraie.
 * `...message` {any} Tous les arguments en plus de `valeur` sont utilisés comme message d’erreur.
 
-Un simple test d'assertion qui vérifie si la `valeur` est effectivement vraie. Si ce n’est pas le cas, `Assertion failed` est loggé. S'il est fourni, le `message` d’erreur est formaté via [`util.format()`][] en lui passant tous les arguments de message. La sortie est utilisée comme le message d’erreur.
+Un simple test d'assertion qui vérifie si la `valeur` est effectivement vraie. Si ce n’est pas le cas, `Assertion failed` est écrit. S'il est fourni, le `message` d’erreur est formaté via [`util.format()`][] en lui passant tous les arguments de message. La sortie est utilisée comme le message d’erreur.
 
 ```js
 console.assert(true, 'does nothing');
@@ -340,10 +340,10 @@ added: v10.0.0
 * `tabularData` {any}
 * `properties` {string[]} Autres propriétés pour la construction du tableau.
 
-Essaie de construire un tableau avec les colonnes des propriétés de `tabularData` (ou utilise `properties`) et les rangées de `tabularData` et les logge. Falls back to just logging the argument if it can’t be parsed as tabular.
+Essaie de construire un tableau avec les colonnes des propriétés de `tabularData` (ou utilise `properties`) et les rangées de `tabularData` et l'écrit. Se contente d'écrire l’argument si il ne peut pas être analysé sous forme de tableau.
 
 ```js
-// These can't be parsed as tabular data
+// Ceux-ci ne peuvent être analysés comme données tabulaires
 console.table(Symbol());
 // Symbol()
 
@@ -373,9 +373,9 @@ console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }], ['a']);
 added: v0.1.104
 -->
 
-* `label` {string} **Default:** `'default'`
+* `label` {string} **Par défaut :** `'default'`
 
-Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Démarre un timer qui peut servir à calculer la durée dune opération. Les timers sont identifiés par un `label` unique. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
 ### console.timeEnd(label)
 
@@ -389,7 +389,7 @@ changes:
                  to individual `console.time()` calls; see below for details.
 -->
 
-* `label` {string} **Default:** `'default'`
+* `label` {string} **Par défaut :** `'default'`
 
 Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
 
@@ -448,7 +448,7 @@ The following methods are exposed by the V8 engine in the general API but do not
 added: v8.0.0
 -->
 
-* `label` {string} **Default:** `'default'`
+* `label` {string} **Par défaut :** `'default'`
 
 This method does not display anything unless used in the inspector. The `console.markTimeline()` method is the deprecated form of [`console.timeStamp()`][].
 
@@ -493,7 +493,7 @@ This method does not display anything unless used in the inspector. The `console
 added: v8.0.0
 -->
 
-* `label` {string} **Default:** `'default'`
+* `label` {string} **Par défaut :** `'default'`
 
 This method does not display anything unless used in the inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
 
@@ -503,6 +503,6 @@ This method does not display anything unless used in the inspector. The `console
 added: v8.0.0
 -->
 
-* `label` {string} **Default:** `'default'`
+* `label` {string} **Par défaut :** `'default'`
 
 This method does not display anything unless used in the inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
