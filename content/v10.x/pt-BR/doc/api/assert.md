@@ -4,15 +4,15 @@
 
 > Estabilidade: 2 - Estável
 
-The `assert` module provides a simple set of assertion tests that can be used to test invariants.
+O módulo `assert` provê um simples conjunto de testes assertivos que podem ser usados para testar invariantes.
 
-A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
+Existem os modos `strict` e o `legacy`, no entanto é recomendado usar apenas [`strict mode`][].
 
-For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+Para mais informações sobre as comparações de igualdade, veja [o guia MDN sobre comparações de igualdade e uniformidade](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Class: assert.AssertionError
 
-A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+Uma subclasse de `Error` que indica a falha de uma asserção. Todos os erros disparados pelo módulo `assert` pertencerá a instâncias da classe `AssertionError`.
 
 ### new assert.AssertionError(options)
 
@@ -27,7 +27,7 @@ added: v0.1.21
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
-A subclass of `Error` that indicates the failure of an assertion.
+Uma subclasse de `Error` que indica a falha de uma asserção.
 
 All instances contain the built-in `Error` properties (`message` and `name`) and:
 

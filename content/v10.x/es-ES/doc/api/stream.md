@@ -1463,7 +1463,7 @@ Custom `Readable` streams *must* call the `new stream.Readable([options])` const
 
 * `options` {Object} 
   * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
-  * `encoding` {string} If specified, then buffers will be decoded to strings using the specified encoding. **Default:** `null`.
+  * `encoding` {string} If specified, then buffers will be decoded to strings using the specified encoding. **Predeterminado:** `null`.
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Default:** `false`.
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.

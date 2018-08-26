@@ -75,7 +75,7 @@ $ node --zero-fill-buffers
 
 ### ¿Qué hace a `Buffer.allocUnsafe()` y `Buffer.allocUnsafeSlow()` "inseguros"?
 
-When calling [`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow()`], the segment of allocated memory is *uninitialized* (it is not zeroed-out). Mientras este diseño hace la asignación de memoria muy rápido, el segmento asignado de memoria puede contener datos antiguos que son potencialmente confidenciales. Utilizando un `Buffer` creado por [`Buffer.allocUnsafe()`] sin sobrescribir *completamente* la memoria se puede permitir que estos datos antiguos se filtren cuando la memoria del `Buffer` se lee.
+Cuando se llama a [`Buffer.allocUnsafe()`] y a [`Buffer.allocUnsafeSlow()`], el segmento de memoria asignada está *no inicializada* (no es cero a cero). Mientras este diseño hace la asignación de memoria muy rápido, el segmento asignado de memoria puede contener datos antiguos que son potencialmente confidenciales. Utilizando un `Buffer` creado por [`Buffer.allocUnsafe()`] sin sobrescribir *completamente* la memoria se puede permitir que estos datos antiguos se filtren cuando la memoria del `Buffer` se lee.
 
 Mientras que hay claras ventajas de rendimiento al utilizar [`Buffer.allocUnsafe()`], se *debe* tener cuidado adicional para evitar la introducción de vulnerabilidades de seguridad dentro de una aplicación.
 
@@ -391,7 +391,7 @@ changes:
 * `string` {string} Cadena para codificar.
 * `encoding` {string} La codificación del `string`. **Predeterminado:** `'utf8'`.
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene `string`. El parámetro de `encoding` identifica la codificación de caracteres del `string`.
 
 ```js
 const buf1 = new Buffer('this is a tést');
@@ -405,7 +405,7 @@ console.log(buf1.toString('ascii'));
 // Prints: this is a tC)st
 ```
 
-### Class Method: Buffer.alloc(size[, fill[, encoding]])
+### Método de Clase: Buffer.alloc(size[, fill[, encoding]])
 
 <!-- YAML
 added: v5.10.0
@@ -425,44 +425,44 @@ changes:
                  zero-filled buffer.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
-* `encoding` {string} If `fill` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
+* `fill` {string|Buffer|integer} Un valor con el que llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`.
+* `encoding` {string} Si `fill` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
 
-Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `fill` es `undefined`, el `Buffer` estará *lleno de ceros*.
 
 ```js
 const buf = Buffer.alloc(5);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 ```
 
-Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
+Si `fill` es especificado, el `Buffer` asignado se inicializará al llamar a [`buf.fill(fill)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(5, 'a');
 
 console.log(buf);
-// Prints: <Buffer 61 61 61 61 61>
+// Imprime: <Buffer 61 61 61 61 61>
 ```
 
-If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
+Si se especifican tanto `fill` como `encoding`, el `Buffer` asignado se inicializará al llamar a [`buf.fill(fill, encoding)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 
 console.log(buf);
-// Prints: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
+// Imprime: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
 ```
 
-Calling [`Buffer.alloc()`] can be significantly slower than the alternative [`Buffer.allocUnsafe()`] but ensures that the newly created `Buffer` instance contents will *never contain sensitive data*.
+Llamar a [`Buffer.alloc()`] puede ser significativamente más lento que la alternativa [`Buffer.allocUnsafe()`] pero garantiza que el contenido de la instancia de `Buffer` creada recientemente *nunca contendrá datos confidenciales*.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es un número.
 
-### Class Method: Buffer.allocUnsafe(size)
+### Método de Clase: Buffer.allocUnsafe(size)
 
 <!-- YAML
 added: v5.10.0
@@ -473,68 +473,68 @@ changes:
     description: Passing a negative `size` will now throw an error.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances with zeroes.
+La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *no inicializada*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc()`] en su lugar para inicializar las instancias de `Buffer` con ceros.
 
 ```js
 const buf = Buffer.allocUnsafe(10);
 
 console.log(buf);
-// Prints: (contents may vary): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
+// Imprime: (puede variar el contenido): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
 
 buf.fill(0);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es un número.
 
-Note that the `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`] divided by two).
+Tenga en cuenta que el módulo `Buffer` asigna previamente una instancia de `Buffer` interna de tamaño [`Buffer.poolSize`] que es usado como un repositorio para la rápida asignación de las nuevas instancias de `Buffer` creadas utilizando [`Buffer.allocUnsafe()`] y el constructor obsoleto `new Buffer(size)` solo cuando `size` es menor o igual que `Buffer.poolSize >> 1` (piso de [`Buffer.poolSize`] dividido entre dos).
 
-Use of this pre-allocated internal memory pool is a key difference between calling `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Specifically, `Buffer.alloc(size, fill)` will *never* use the internal `Buffer` pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal `Buffer` pool if `size` is less than or equal to half [`Buffer.poolSize`]. The difference is subtle but can be important when an application requires the additional performance that [`Buffer.allocUnsafe()`] provides.
+El uso de este conjunto de memoria interna asignada previamente es una diferencia clave entre llamar a `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Específicamente, `Buffer.alloc(size, fill)` *nunca* utilizará el conjunto interno de `Buffer`, mientras que `Buffer.allocUnsafe(size).fill(fill)` *utilizará* el conjunto interno de `Buffer` si `size` es menor o igual que la mitad de [`Buffer.poolSize`]. La diferencia es sutil, pero puede ser importante cuando una aplicación requiere el rendimiento adicional que proporciona [`Buffer.allocUnsafe()`].
 
-### Class Method: Buffer.allocUnsafeSlow(size)
+### Método de Clase: Buffer.allocUnsafeSlow(size)
 
 <!-- YAML
 added: v5.12.0
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances with zeroes.
+La memoria subyacente para instancias de `Buffer` creadas de esta manera está *no inicializadas*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`buf.fill(0)`][`buf.fill()`] para inicializar dichas instancias de `Buffer` con ceros.
 
-When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocations under 4KB are sliced from a single pre-allocated `Buffer`. This allows applications to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances. This approach improves both performance and memory usage by eliminating the need to track and clean up as many persistent objects.
+Cuando se utiliza [`Buffer.allocUnsafe()`] para asignar nuevas instancias de `Buffer`, las asignaciones menores a 4KB se segmentan desde un solo `Buffer` asignado previamente. Esto permite a las aplicaciones evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente. Este enfoque mejora el rendimiento y el uso de la memoria al eliminar la necesidad de rastrear y limpiar muchos objetos persistentes.
 
-However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` and then copying out the relevant bits.
+Sin embargo, en el caso donde un desarrollador puede necesitar retener un pequeño pedazo de memoria desde un conjunto por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `Buffer.allocUnsafeSlow()` y luego copiando los bits relevantes.
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita mantener alrededor algunos pedazos pequeños de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asigna para datos retenidos
   const sb = Buffer.allocUnsafeSlow(10);
 
-  // Copy the data into the new allocation
+  // Copia los datos en la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
 });
 ```
 
-`Buffer.allocUnsafeSlow()` should be used only as a last resort after a developer has observed undue memory retention in their applications.
+`Buffer.allocUnsafeSlow()` debe utilizarse solo como el último recurso después de que un desarrollador haya observado retención indebida de memoria en sus aplicaciones.
 
-A `TypeError` will be thrown if `size` is not a number.
+Se producirá un `TypeError` si `size` no es un número.
 
-### Class Method: Buffer.byteLength(string[, encoding])
+### Método de Clase: Buffer.byteLength(string[, encoding])
 
 <!-- YAML
 added: v0.1.90
@@ -729,7 +729,7 @@ added: v5.10.0
 * `string` {string} A string to encode.
 * `encoding` {string} The encoding of `string`. **Predeterminado:** `'utf8'`.
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+Crea un nuevo `Buffer` que contiene `string`. El parámetro de `encoding` identifica la codificación de caracteres del `string`.
 
 ```js
 const buf1 = Buffer.from('this is a tést');

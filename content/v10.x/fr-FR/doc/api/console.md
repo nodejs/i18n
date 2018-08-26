@@ -2,33 +2,33 @@
 
 <!--introduced_in=v0.10.13-->
 
-> Stability: 2 - Stable
+> Stabilité: 2 - stable
 
-The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
+Le module `console` fournit une console de débogage simple, similaire au mécanisme de console JavaScript fourni par les navigateurs web.
 
-The module exports two specific components:
+Le module exporte deux composants spécifiques :
 
-* A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
-* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
+* Une classe `Console` avec des méthodes telles que `console.log()`, `console.error()` et `console.warn()`, qui peut être utilisée pour écrire dans n’importe quel flux Node.js.
+* Une instance globale `console` configurée pour écrire dans [`process.stdout`][] et [`process.stderr`][]. L'instance globale `console` peut être utilisée sans appeler `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+***Avertissement*** : les méthodes de l’objet global console ne sont ni systématiquement synchrones comme celles de l'API de navigateur auxquelles elles ressemblent, ni systématiquement asynchrones comme tous les autres flux Node.js. Voir la [note sur les processus I/O](process.html#process_a_note_on_process_i_o) pour plus d’informations.
 
-Example using the global `console`:
+Exemple d’utilisation de l'instance globale `console` :
 
 ```js
 console.log('hello world');
-// Prints: hello world, to stdout
+// Écrit : hello world dans la sortie standard
 console.log('hello %s', 'world');
-// Prints: hello world, to stdout
+// Écrit : hello world dans la sortie standard
 console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+ // Écrit : [Error: Whoops, something bad happened] dans la sortie standard
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+// Écrit : Danger Will Robinson! Danger! dans la sortie standard
 ```
 
-Example using the `Console` class:
+Exemple d’utilisation de la classe `Console` :
 
 ```js
 const out = getStreamSomehow();
@@ -36,18 +36,18 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Prints: hello world, to out
+// Écrit : hello world dans out
 myConsole.log('hello %s', 'world');
-// Prints: hello world, to out
+// Écrit : hello world dans out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to err
+// Écrit [Error: Whoops, something bad happened] dans err
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+// Écrit : Danger Will Robinson! Danger! dans err
 ```
 
-## Class: Console
+## Classe : Console
 
 <!-- YAML
 changes:
@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+La classe `Console` peut-être utilisée pour créer un simple logger ayant des flux de sortie configurables et est accessible en utilisant soit `require('console').Console`, soit `console.Console` (ou leurs équivalents déstructurés) :
 
 ```js
 const { Console } = require('console');
@@ -89,23 +89,23 @@ changes:
 * `options` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
-  * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
-  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `ignoreErrors` {boolean} ignore les erreurs lors de l’écriture dans les flux sous-jacents. **Par défaut :** `true`.
+  * `colorMode` {boolean|string} Définit la prise en charge des couleurs pour cette instance de `Console`. Définir à `true` active le support des couleurs lors de l'inspection des valeurs, définir à `'auto'` rendra le support des couleurs dépendant de la valeur de la propriété `isTTY` et de la valeur retournée par `getColorDepth()` sur le flux respectif. **Par défaut :** `'auto'`.
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Crée une nouvelle `Console` avec une ou deux instances de flux accessibles en écriture. `stdout` est un flux accessible en écriture pour écrire des sorties de log ou d'information. `stderr` est utilisé pour des sorties d'avertissement ou d'erreur. Si `stderr` n’est pas fourni, `stdout` est utilisé comme `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// custom simple logger
+// simple logger personnalisé
 const logger = new Console({ stdout: output, stderr: errorOutput });
-// use it like console
+// à utiliser comme console
 const count = 5;
 logger.log('count: %d', count);
-// in stdout.log: count 5
+// dans stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+L'instance globale `console` est une `Console` spéciale dont la sortie est envoyée à [`process.stdout`][] et [`process.stderr`][]. Cela équivaut à l’appel :
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
@@ -123,10 +123,10 @@ changes:
                  anymore.
 -->
 
-* `value` {any} The value tested for being truthy.
-* `...message` {any} All arguments besides `value` are used as error message.
+* `value` {any} La valeur testée devant être vraie.
+* `...message` {any} Tous les arguments en plus de `valeur` sont utilisés comme message d’erreur.
 
-A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+A simple assertion test that verifies whether `value` is truthy. Si ce n’est pas le cas, `Assertion failed` est loggé. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
 
 ```js
 console.assert(true, 'does nothing');

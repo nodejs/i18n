@@ -4,34 +4,34 @@
 
 <!-- type=misc -->
 
-> Stability: 2 - Stable
+> Stabilität: 2 - Stabil
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
+N-API (ausgesprochen N wie im Buchstaben, gefolgt von API) ist eine API zum Erstellen von nativen Erweiterungen. Sie ist unabhängig von der zugrundeliegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst gepflegt. Diese API wird über alle Versionen von Node.js hinweg, Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Erweiterungen von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können.
 
-Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+Erweiterungen werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, wie im Abschnitt [C++-Addons](addons.html) beschrieben wird. Der einzige Unterschied ist das Set an APIs, die von dem nativen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-APIs zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
 
-APIs exposed by N-API are generally used to create and manipulate JavaScript values. Concepts and operations generally map to ideas specified in the ECMA262 Language Specification. The APIs have the following properties:
+APIs, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die Programmierschnittstellen haben folgende Eigenschaften:
 
-- All N-API calls return a status code of type `napi_status`. This status indicates whether the API call succeeded or failed.
-- The API's return value is passed via an out parameter.
-- All JavaScript values are abstracted behind an opaque type named `napi_value`.
-- In case of an error status code, additional information can be obtained using `napi_get_last_error_info`. More information can be found in the error handling section [Error Handling](#n_api_error_handling).
+- Alle N-API-Anfragen liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob die API-Anfrage erfolgreich war oder nicht.
+- Der Rückgabewert der API wird über einen Out-Parameter übertragen.
+- Alle JavaScript-Werte werden hinter einem undurchsichtigen Typ namens `napi_value` abstrahiert.
+- Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie in dem Fehlermeldungs-Handlingbereich [Fehlerbehandlung](#n_api_error_handling).
 
-The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. However, we also understand that a C++ API can be easier to use in many cases. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaries built with these wrapper modules will depend on the symbols for the N-API C based functions exported by Node.js. These wrappers are not part of N-API, nor will they be maintained as part of Node.js. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
+Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-API bereitstellen. Binärdateien, die mit diesen Wrapper-Modulen erstellt wurden, hängen von den Symbolen für die N-API C-basierten Funktionen ab, die von Node.js exportiert wurden. Diese Wrapper sind weder Teil der N-API, noch werden sie als Teil von Node.js verwaltet. Ein solches Beispiel ist: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
-In order to use the N-API functions, include the file [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree:
+Um die N-API-Funktionen zu verwenden, fügen Sie die [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h)-Datei ein, die sich im src-Verzeichnis im Node-Development-Tree befindet:
 
 ```C
 #include <node_api.h>
 ```
 
-## Basic N-API Data Types
+## Grundlegende N-API-Datentypen
 
-N-API exposes the following fundamental datatypes as abstractions that are consumed by the various APIs. These APIs should be treated as opaque, introspectable only with other N-API calls.
+N-API stellt die folgenden grundlegenden Datentypen als Abstraktionen dar, die von den verschiedenen APIs verbraucht werden. Diese APIs sollten nur mit anderen N-API-Anfragen als undurchsichtig und introspektierbar behandelt werden.
 
 ### napi_status
 
-Integral status code indicating the success or failure of a N-API call. Currently, the following status codes are supported.
+Integrierter Statuscode, der den Erfolg oder Misserfolg einer N-API-Anfrage anzeigt. Derzeit werden die folgenden Statuscodes unterstützt.
 
 ```C
 typedef enum {
@@ -53,7 +53,7 @@ typedef enum {
 } napi_status;
 ```
 
-If additional information is required upon an API returning a failed status, it can be obtained by calling `napi_get_last_error_info`.
+Werden zusätzliche Informationen benötigt, wenn eine API einen fehlgeschlagenen Status zurücksendet, können diese durch eine Anfrage von `napi_get_last_error_info` erlangt werden.
 
 ### napi_extended_error_info
 
@@ -66,50 +66,50 @@ typedef struct {
 } napi_extended_error_info;
 ```
 
-- `error_message`: UTF8-encoded string containing a VM-neutral description of the error.
-- `engine_reserved`: Reserved for VM-specific error details. This is currently not implemented for any VM.
-- `engine_error_code`: VM-specific error code. This is currently not implemented for any VM.
-- `error_code`: The N-API status code that originated with the last error.
+- `error_message`: UTF8-kodierter String, der eine VM-neutrale Beschreibung des Fehlers enthält.
+- `engine_reserved`: Reserviert für VM-spezifische Fehlerdetails. Dies ist derzeit für keine VM implementiert.
+- `engine_error_code`: VM-spezifischer Fehlercode. Dies ist derzeit für keine VM implementiert.
+- `error_code`: Der N-API-Statuscode, der mit dem letzten Fehler entstanden ist.
 
-See the [Error Handling](#n_api_error_handling) section for additional information.
+Siehe Abschnitt [Fehlerbehandlung](#n_api_error_handling) für weitere Informationen.
 
 ### napi_env
 
-`napi_env` is used to represent a context that the underlying N-API implementation can use to persist VM-specific state. This structure is passed to native functions when they're invoked, and it must be passed back when making N-API calls. Specifically, the same `napi_env` that was passed in when the initial native function was called must be passed to any subsequent nested N-API calls. Caching the `napi_env` for the purpose of general reuse is not allowed.
+`napi_env` wird verwendet, um einen Kontext darzustellen, den die zugrunde liegende N-API-Implementierung verwenden kann, um den VM-spezifischen Zustand zu erhalten. Diese Struktur wird an native Funktionen übertragen, wenn sie aufgerufen werden, und sie muss bei N-API-Anfragen rückübertragen werden. Insbesondere müssen die gleichen `napi_env`, die beim Aufruf der ursprünglichen nativen Funktion übergeben wurden, an alle nachfolgenden geschachtelten N-API-Anfragen übergeben werden. Das Zwischenspeichern der `napi_env`-Datei zum Zwecke der allgemeinen Wiederverwendung ist nicht erlaubt.
 
 ### napi_value
 
-This is an opaque pointer that is used to represent a JavaScript value.
+Dies ist ein undurchsichtiger Zeiger, der verwendet wird, um einen JavaScript-Wert darzustellen.
 
 ### N-API Memory Management types
 
 #### napi_handle_scope
 
-This is an abstraction used to control and modify the lifetime of objects created within a particular scope. In general, N-API values are created within the context of a handle scope. When a native method is called from JavaScript, a default handle scope will exist. If the user does not explicitly create a new handle scope, N-API values will be created in the default handle scope. For any invocations of code outside the execution of a native method (for instance, during a libuv callback invocation), the module is required to create a scope before invoking any functions that can result in the creation of JavaScript values.
+Dies ist eine Abstraktion, die verwendet wird, um die Lebensdauer von Objekten, die in einem bestimmten Bereich erstellt wurden, zu steuern und zu verändern. Im Allgemeinen werden N-API-Werte im Rahmen eines Handle-Scopes erstellt. Wenn eine native Methode von JavaScript abgerufen wird, existiert ein Standard-Handle-Bereich. Wenn der Benutzer nicht explizit einen neuen Handle-Bereich anlegt, werden N-API-Werte im Standard-Handle-Bereich angelegt. Für alle Aufrufe von Code außerhalb der Ausführung einer nativen Methode (z.B. während einer libuv-Callback-Anfrage) muss das Modul einen Bereich erstellen, bevor es Funktionen aufruft, die zur Erzeugung von JavaScript-Werten führen können.
 
-Handle scopes are created using [`napi_open_handle_scope`][] and are destroyed using [`napi_close_handle_scope`][]. Closing the scope can indicate to the GC that all `napi_value`s created during the lifetime of the handle scope are no longer referenced from the current stack frame.
+Handle-Scopes werden mit [`napi_open_handle_scope`][] erstellt und mit [`napi_close_handle_scope`][] zerstört. Das Schließen des Bereichs kann der GC anzeigen, dass alle `napi_value`s, die während der Lebensdauer des Handle-Bereichs erzeugt wurden, nicht mehr vom aktuellen Stack-Frame bezogen werden.
 
-For more details, review the [Object Lifetime Management](#n_api_object_lifetime_management).
+Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_object_lifetime_management).
 
 #### napi_escapable_handle_scope
 
-Escapable handle scopes are a special type of handle scope to return values created within a particular handle scope to a parent scope.
+Escapable-Handle-Bereiche sind eine spezielle Art von Handle-Bereiche, deren Zweck es ist, die innerhalb eines bestimmten Handle-Bereichs erzeugten Werte an einen übergeordneten Bereich zurückzusenden.
 
 #### napi_ref
 
-This is the abstraction to use to reference a `napi_value`. This allows for users to manage the lifetimes of JavaScript values, including defining their minimum lifetimes explicitly.
+Dies ist die Abstraktion, die verwendet wird, um auf eine `napi_value` zu verweisen. Dies ermöglicht es den Benutzern, die Lebensdauer von JavaScript-Werten, einschließlich der genauen Festlegung ihrer Mindestlebensdauer, zu verwalten.
 
-For more details, review the [Object Lifetime Management](#n_api_object_lifetime_management).
+Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_object_lifetime_management).
 
-### N-API Callback types
+### N-API Callback-Typen
 
 #### napi_callback_info
 
-Opaque datatype that is passed to a callback function. It can be used for getting additional information about the context in which the callback was invoked.
+Undurchsichtiger Datentyp, der an eine Callback-Funktion weitergegeben wird. Er kann verwendet werden, um zusätzliche Informationen über den Kontext zu erhalten, in dem der Callback aufgerufen wurde.
 
 #### napi_callback
 
-Function pointer type for user-provided native functions which are to be exposed to JavaScript via N-API. Callback functions should satisfy the following signature:
+Funktionszeigertyp für vom Benutzer bereitgestellte native Funktionen, die in JavaScript über die N-API eingebunden werden sollen. Callback-Funktionen sollten die folgende Signatur erfüllen:
 
 ```C
 typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
@@ -117,7 +117,7 @@ typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 
 #### napi_finalize
 
-Function pointer type for add-on provided functions that allow the user to be notified when externally-owned data is ready to be cleaned up because the object with which it was associated with, has been garbage-collected. The user must provide a function satisfying the following signature which would get called upon the object's collection. Currently, `napi_finalize` can be used for finding out when objects that have external data are collected.
+Funktionszeigertyp für zusätzlich zur Verfügung gestellte Funktionen, der es dem Benutzer ermöglicht, benachrichtigt zu werden, wenn externe Daten bereit sind, bereinigt zu werden, weil das Objekt, mit dem sie verknüpft waren, unbrauchbar geworden ist. Der Benutzer muss eine Funktion zur Verfügung stellen, die die folgende Signatur erfüllt, die auf die Sammlung des Objekts angewandt wird. Derzeit kann `napi_finalize` verwendet werden, um herauszufinden, wann Objekte mit externen Daten gesammelt werden.
 
 ```C
 typedef void (*napi_finalize)(napi_env env,
@@ -127,7 +127,7 @@ typedef void (*napi_finalize)(napi_env env,
 
 #### napi_async_execute_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Funktionszeiger, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env, void* data);
@@ -135,7 +135,7 @@ typedef void (*napi_async_execute_callback)(napi_env env, void* data);
 
 #### napi_async_complete_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Funktionszeiger, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
 typedef void (*napi_async_complete_callback)(napi_env env,
@@ -143,23 +143,23 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-## Error Handling
+## Fehlerbehandlung
 
-N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
+Die N-API verwendet sowohl Rückgabewerte als auch JavaScript-Ausnahmen zur Fehlerbehandlung. Die folgenden Abschnitte erklären die Vorgehensweise für den jeweiligen Fall.
 
-### Return values
+### Rückgabewerte
 
-All of the N-API functions share the same error handling pattern. The return type of all API functions is `napi_status`.
+Alle N-API-Funktionen haben das gleiche Fehlerbehandlungsmuster. Der Rückgabetyp aller API-Funktionen ist `napi_status`.
 
-The return value will be `napi_ok` if the request was successful and no uncaught JavaScript exception was thrown. If an error occurred AND an exception was thrown, the `napi_status` value for the error will be returned. If an exception was thrown, and no error occurred, `napi_pending_exception` will be returned.
+Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Ausnahme aufgetreten ist. Wenn ein Fehler UND eine Ausnahme aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgegeben. Wenn eine Ausnahme, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgegeben.
 
-In cases where a return value other than `napi_ok` or `napi_pending_exception` is returned, [`napi_is_exception_pending`][] must be called to check if an exception is pending. See the section on exceptions for more details.
+In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_exception` zurückgegeben wird, muss [`napi_is_exception_pending`][] aufgerufen werden, um zu prüfen, ob eine Ausnahme ansteht. Weitere Details finden Sie im Abschnitt über Ausnahmen.
 
-The full set of possible `napi_status` values is defined in `napi_api_types.h`.
+Das vollständige Set der möglichen `napi_status`-Werte ist in `napi_api_types.h` definiert.
 
-The `napi_status` return value provides a VM-independent representation of the error which occurred. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
+Der `napi_status`-Rückgabewert liefert eine VM-unabhängige Darstellung von dem aufgetretenen Fehler. In manchen Fällen ist es sinnvoll, detailliertere Informationen zu erhalten, einschließlich eines Strings, der den Fehler darstellt, sowie VM (Engine)-spezifische Informationen.
 
-In order to retrieve this information [`napi_get_last_error_info`][] is provided which returns a `napi_extended_error_info` structure. The format of the `napi_extended_error_info` structure is as follows:
+Um diese Informationen abzurufen, wird [`napi_get_last_error_info`][] bereitgestellt, die eine `napi_extended_error_info`-Struktur liefert. Das Format der `napi_extended_error_info`-Struktur ist wie folgt:
 
 ```C
 typedef struct napi_extended_error_info {
@@ -170,14 +170,14 @@ typedef struct napi_extended_error_info {
 };
 ```
 
-- `error_message`: Textual representation of the error that occurred.
-- `engine_reserved`: Opaque handle reserved for engine use only.
-- `engine_error_code`: VM specific error code.
-- `error_code`: n-api status code for the last error.
+- `error_message`: Textliche Darstellung des aufgetretenen Fehlers.
+- `engine_reserved`: Undurchsichtiger Handle, der nur für den Engine-Betrieb reserviert ist.
+- `engine_error_code`: VM-spezifischer Error-Code.
+- `error_code`: N-API-Statuscode für den letzten Fehler.
 
-[`napi_get_last_error_info`][] returns the information for the last N-API call that was made.
+[`napi_get_last_error_info`][] liefert die Informationen für die letzte N-API-Anfrage.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+Verlassen Sie sich nicht auf den Inhalt oder das Format der erweiterten Informationen, da diese nicht dem SemVer unterliegen und sich jederzeit ändern können. Sie sind nur für die Protokollierung bestimmt.
 
 #### napi_get_last_error_info
 
@@ -191,22 +191,22 @@ napi_get_last_error_info(napi_env env,
                          const napi_extended_error_info** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The `napi_extended_error_info` structure with more information about the error.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: Die `napi_extended_error_info`-Struktur mit mehr Informationen über den Fehler.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API retrieves a `napi_extended_error_info` structure with information about the last error that occurred.
+Diese API liefert eine `napi_extended_error_info`-Struktur mit Informationen über den zuletzt aufgetretenen Fehler.
 
-The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
+Der Inhalt der zurückgegebenen `napi_extended_error_info` ist nur solange gültig, bis eine N-API-Funktion auf derselben `env` aufgerufen wird.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+Verlassen Sie sich nicht auf den Inhalt oder das Format der erweiterten Informationen, da diese nicht dem SemVer unterliegen und sich jederzeit ändern können. Sie sind nur für die Protokollierung bestimmt.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ansteht.
 
-### Exceptions
+### Ausnahmen
 
-Any N-API function call may result in a pending JavaScript exception. This is obviously the case for any function that may cause the execution of JavaScript, but N-API specifies that an exception may be pending on return from any of the API functions.
+Jeder N-API-Funktionsaufruf kann zu einer ausstehenden JavaScript-Ausnahme führen. Dies ist natürlich der Fall für jede Funktion, die die Ausführung von JavaScript verursachen kann, aber die N-API gibt an, dass eine Ausnahme bei der Rückkehr von einer der vielen API-Funktionen anhängig sein kann.
 
 If the `napi_status` returned by a function is `napi_ok` then no exception is pending and no additional action is required. If the `napi_status` returned is anything other than `napi_ok` or `napi_pending_exception`, in order to try to recover and continue instead of simply returning immediately, [`napi_is_exception_pending`][] must be called in order to determine if an exception is pending or not.
 
