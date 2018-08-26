@@ -269,7 +269,7 @@ console.error('error', code);
 // Écrit : error 5, dans stderr
 ```
 
-Si aucun élément de formatage (par exemple `%d`) n'est trouvé dans la première chaîne, [`util.inspect()`][] est appelé pour chaque argument et les valeurs de chaînes résultantes sont concaténées. See [`util.format()`][] for more information.
+Si aucun élément de formatage (par exemple `%d`) n'est trouvé dans la première chaîne, [`util.inspect()`][] est appelé pour chaque argument et les valeurs de chaînes résultantes sont concaténées. Voir [`util.format()`][] pour plus d’informations.
 
 ### console.group([...label])
 
@@ -279,9 +279,9 @@ added: v8.5.0
 
 * `...label` {any}
 
-Increases indentation of subsequent lines by two spaces.
+Augmente l'indentation des lignes suivantes de deux espaces.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Si un ou plusieurs `label`(s) sont fournis, ceux sont imprimées en premier sans l’indentation supplémentaire.
 
 ### console.groupCollapsed()
 
@@ -289,7 +289,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Un alias pour [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -297,7 +297,7 @@ An alias for [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Réduit l'indentation des lignes suivantes de deux espaces.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -308,7 +308,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+La fonction `console.info()` est un alias pour [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -319,17 +319,17 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Écrit dans `stdout` avec une nouvelle ligne. Plusieurs arguments peuvent être transmis, le premier servant de message primaire et tous les autres de valeurs de substitution, à la manière de printf(3) (tous les arguments sont passés à [`util.format()`][]).
 
 ```js
 const count = 5;
 console.log('count: %d', count);
-// Prints: count: 5, to stdout
+// Écrit : count: 5, dans stdout
 console.log('count:', count);
-// Prints: count: 5, to stdout
+// Écrit : count: 5, dans stdout
 ```
 
-See [`util.format()`][] for more information.
+Voir [`util.format()`][] pour plus d’informations.
 
 ### console.table(tabularData[, properties])
 
@@ -338,9 +338,9 @@ added: v10.0.0
 -->
 
 * `tabularData` {any}
-* `properties` {string[]} Alternate properties for constructing the table.
+* `properties` {string[]} Autres propriétés pour la construction du tableau.
 
-Try to construct a table with the columns of the properties of `tabularData` (or use `properties`) and rows of `tabularData` and log it. Falls back to just logging the argument if it can’t be parsed as tabular.
+Essaie de construire un tableau avec les colonnes des propriétés de `tabularData` (ou utilise `properties`) et les rangées de `tabularData` et les logge. Falls back to just logging the argument if it can’t be parsed as tabular.
 
 ```js
 // These can't be parsed as tabular data
