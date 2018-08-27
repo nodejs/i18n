@@ -10,25 +10,25 @@ Las aplicaciones que se ejecutan en Node.js generalmente experimentarán cuatro 
   - {EvalError} : arrojado cuando falla una llamada a `eval()`.
   - {SyntaxError} : arrojados en respuesta a sintaxis incorrecta del lenguaje JavaScript.
   - {RangeError} : arrojado cuando un valor no está dentro de un rango esperado
-  - {ReferenceError} : thrown when using undefined variables
-  - {TypeError} : thrown when passing arguments of the wrong type
-  - {URIError} : thrown when a global URI handling function is misused.
-- System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist, attempting to send data over a closed socket, etc;
-- And User-specified errors triggered by application code.
+  - {ReferenceError} : arrojado al utilizar variables indefinidas
+  - {TypeError} : arrojado al pasar argumentos de tipo incorrecto
+  - {URIError} : arrojado cuando se utiliza de manera incorrecta una función de manejo URI global.
+- Errores de sistemas provocados por limitaciones de sistema operativo subyacientes tale como intentar abrir un archivo que no existe, intentar enviar datos sobre un conector cerrado, etc;
+- Y errores de usuario específico provocados por códigos de aplicación.
 - `AssertionError`s are a special class of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
 
-All JavaScript and System errors raised by Node.js inherit from, or are instances of, the standard JavaScript {Error} class and are guaranteed to provide *at least* the properties available on that class.
+Todos los errores de JavaScript y Sistema planteados por Node.js se heredan, o son ejemplos, de la clase {Error} de JavaScript estándar y está garantizados para proporcionar *al menos* las propiedades disponibles en esa clase.
 
 ## Error Propagation and Interception
 
 <!--type=misc-->
 
-Node.js supports several mechanisms for propagating and handling errors that occur while an application is running. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
+Node.js soporta varios mecanismos para la propagación y manejo de errores que puedan ocurrir cuando una aplicación se está ejecutando. La manera en como estos errores se reportan y manejan depende completamente en el tipo de `Error` y en el estilo del API que se llame.
 
-All JavaScript errors are handled as exceptions that *immediately* generate and throw an error using the standard JavaScript `throw` mechanism. These are handled using the [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
+Todos los errores de JavaScript son manejados como excepciones que *inmediatamente* generan y arrojan un error usando el mecanismo `throw` de JavaScript estándar. These are handled using the [`try / catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
 
 ```js
-// Throws with a ReferenceError because z is undefined
+// Arroja con un ReferenceError porque z está indefinido
 try {
   const m = 1;
   const n = m + z;
