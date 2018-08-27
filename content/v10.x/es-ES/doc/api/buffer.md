@@ -553,7 +553,7 @@ changes:
 * `encoding` {string} Si `string` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} El número de bytes contenidos en `string`.
 
-Devuelve la longitud real de bytes de una cadena. Esto no es lo mismo que [`String.prototype.length`] pues eso devuelve el número de *caracteres* en una cadena.
+Devuelve la longitud del byte real de una cadena. Esto no es lo mismo que [`String.prototype.length`] pues eso devuelve el número de *caracteres* en una cadena.
 
 Para `'base64'` y `'hex'`, esta función asume una entrada válida. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
 
@@ -565,9 +565,9 @@ console.log(`${str}: ${str.length} characters, ` +
 // Imprime: ½ + ¼ = ¾: 9 caracteres, 12 bytes
 ```
 
-When `string` is a `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], the actual byte length is returned.
+Cuando `string` es un `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], se devuelve la longitud del byte real.
 
-### Class Method: Buffer.compare(buf1, buf2)
+### Método de Clase: Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
@@ -580,7 +580,7 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* Devuelve: {integer}
 
 Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
 
