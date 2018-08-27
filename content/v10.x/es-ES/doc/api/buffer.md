@@ -549,7 +549,7 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor para calcular la longitud.
 * `encoding` {string} If `string` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
 * Returns: {integer} The number of bytes contained within `string`.
 
