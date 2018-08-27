@@ -59,11 +59,11 @@ El módulo clúster soporta dos métodos de distribución de conexiones entrante
 
 El primer método (y el predeterminado en todas las plataformas menos Windows), es la planificación round-robin, donde el proceso maestro escucha en un puerto, acepta las nuevas conexiones y las distribuye a través de los workers de una manera round-robin, con mecanismos incorporados para evitar sobrecargar un proceso worker.
 
-El segundo método es donde el proceso maestro crea el socket listen y lo envía a los workers interesados. Los workers entonces aceptan las conexiones entrantes directamente.
+El segundo método es donde el proceso maestro crea el conector listen y lo envía a los workers interesados. Los workers entonces aceptan las conexiones entrantes directamente.
 
-El segundo método debería, en teoría, dar el mejor rendimiento. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
+El segundo método debería, en teoría, dar el mejor rendimiento. En la práctica sin embargo, la distribución tiende a ser muy desequilibrada debido a las divagancias del planificador del sistema operativo. Se han observado cargas donde más del 70% de todas las conexiones terminaron en solo dos procesos, de ocho en total.
 
-Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
+Porque `server.listen()` delega la mayoría del trabajo a el proceso maestro, hay tres casos donde el comportamiento entre un proceso Node.js normal y un clúster difieren:
 
 1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
 2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
