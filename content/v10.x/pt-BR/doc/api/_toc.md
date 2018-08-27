@@ -33,7 +33,7 @@
 * [Internacionalização](intl.html)
 * [Módulos](modules.html)
 * [Net](net.html)
-* [Sistema Operacional](os.html)
+* [Sistema operacional](os.html)
 * [Caminho](path.html)
 * [Performance Hooks](perf_hooks.html)
 * [Processo](process.html)
