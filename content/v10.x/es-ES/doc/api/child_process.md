@@ -909,17 +909,17 @@ Una vez el servidor se haya compartido entre el proceso primario y el secundario
 
 While the example above uses a server created using the `net` module, `dgram` module servers use exactly the same workflow with the exceptions of listening on a `'message'` event instead of `'connection'` and using `server.bind()` instead of `server.listen()`. Esto es, sin embargo, actualmente soportado únicamente en plataformas UNIX.
 
-#### Example: sending a socket object
+#### Ejemplo: enviando un objeto conector
 
-Similarly, the `sendHandler` argument can be used to pass the handle of a socket to the child process. The example below spawns two children that each handle connections with "normal" or "special" priority:
+De manera parecido, el argumento `sendHandler` puede ser usando para pasar el manejador de un conector al proceso secundario. El siguiente ejemplo genero dos procesos secundarios que cada uno maneja conexiones con prioridad "normal" o "especial":
 
 ```js
 const { fork } = require('child_process');
 const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
-// Open up the server and send sockets to child. Use pauseOnConnect to prevent
-// the sockets from being read before they are sent to the child process.
+// Abre el servidor y envía conectores al proceso secundario. Use pauseOnConnect para prevenir
+// que los conectores sean leídos antes de ser enviado al proceso secundario.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
 
@@ -940,18 +940,18 @@ The `subprocess.js` would receive the socket handle as the second argument passe
 process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
-      // Check that the client socket exists.
-      // It is possible for the socket to be closed between the time it is
-      // sent and the time it is received in the child process.
+      // Verifica la existencia de una conexión cliente.
+      // Es posible que se cierre el conector entre el tiempo en que se
+      // envía y el tiempo en el que se recibe en el proceso secundario.
       socket.end(`Request handled with ${process.argv[2]} priority`);
     }
   }
 });
 ```
 
-Once a socket has been passed to a child, the parent is no longer capable of tracking when the socket is destroyed. Para indicar esto, la propiedad `.connections` se convierte en `null`. Se recomiendo no utilizar `.maxConnections` cuando esto ocurre.
+Una vez un conector haya sido pasado al proceso secundario, el proceso primario ya no es capaz de rastrear cuando la conexión es destruida. Para indicar esto, la propiedad `.connections` se convierte en `null`. Se recomienda no utilizar `.maxConnections` cuando esto ocurre.
 
-It is also recommended that any `'message'` handlers in the child process verify that `socket` exists, as the connection may have been closed during the time it takes to send the connection to the child.
+También se recomienda que cualquier manejador de `'message'` en el proceso secundario verifique la existencia de `socket`, ya que la conexión puede haber sido cerrada durante el tiempo que toma enviar la conexión al proceso secundario.
 
 ### subprocess.stderr
 
@@ -991,7 +991,7 @@ added: v0.7.10
 
 * {Array}
 
-A sparse array of pipes to the child process, corresponding with positions in the [`stdio`][] option passed to [`child_process.spawn()`][] that have been set to the value `'pipe'`. Note that `subprocess.stdio[0]`, `subprocess.stdio[1]`, and `subprocess.stdio[2]` are also available as `subprocess.stdin`, `subprocess.stdout`, and `subprocess.stderr`, respectively.
+Un array disperso de pipes al proceso secundario, correspondiente con posiciones en la opción [`stdio`][] pasada a [`child_process.spawn()`][] que puede ser establecida al valor `'pipe'`. Note que `subprocess.stdio[0]`, `subprocess.stdio[1]` y `subprocess.stdio[2]` también están disponibles como `subprocess.stdin`, `subprocess.stdout` y `subprocess.stderr` respectivamente.
 
 In the following example, only the child's fd `1` (stdout) is configured as a pipe, so only the parent's `subprocess.stdio[1]` is a stream, all other values in the array are `null`.
 
@@ -1026,7 +1026,7 @@ added: v0.1.90
 
 * {stream.Readable}
 
-A `Readable Stream` that represents the child process's `stdout`.
+Un `Readable Stream` que representa el `stdout` del proceso secundario.
 
 If the child was spawned with `stdio[1]` set to anything other than `'pipe'`, then this will be `null`.
 
