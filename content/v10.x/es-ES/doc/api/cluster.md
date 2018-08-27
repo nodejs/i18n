@@ -16,7 +16,7 @@ const numCPUs = require('os').cpus().length;
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
-  // Para los trabajadores.
+  // Bifurcar workers.
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
@@ -25,7 +25,7 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  // Los trabajadores pueden compartir cualquier conección TCP
+  // Los workers pueden compartir cualquier conexión TCP
   // En este caso es un servidor HTTP
   http.createServer((req, res) => {
     res.writeHead(200);
@@ -36,7 +36,7 @@ if (cluster.isMaster) {
 }
 ```
 
-Ejecutar Node.js ahora compartirá el puerto 8000 entre los trabajadores:
+Ejecutar Node.js ahora compartirá el puerto 8000 entre los workers:
 
 ```txt
 $ node server.js
@@ -47,9 +47,9 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
+Por favor ten en cuenta que en Windows, aún no es posible establecer un servidor pipe en un worker.
 
-## How It Works
+## Cómo Funciona
 
 <!--type=misc-->
 
