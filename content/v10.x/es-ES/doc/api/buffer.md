@@ -555,7 +555,7 @@ changes:
 
 Devuelve la longitud del byte real de una cadena. Esto no es lo mismo que [`String.prototype.length`] pues eso devuelve el número de *caracteres* en una cadena.
 
-Para `'base64'` y `'hex'`, esta función asume una entrada válida. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+Para `'base64'` y `'hex'`, esta función asume una entrada válida. Para cadenas que contienen datos no-Base64/codificados-Hex (por ejemplo, espacios en blanco), el valor de retorno puede ser mayor que la longitud de un `Buffer` creado desde la cadena.
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
@@ -582,7 +582,7 @@ changes:
 * `buf2` {Buffer|Uint8Array}
 * Devuelve: {integer}
 
-Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
+Compara `buf1` con `buf2` típicamente con el propósito de clasificar arreglos de instancias de `Buffer`. Esto es equivalente a llamar a [`buf1.compare(buf2)`][`buf.compare()`].
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -590,11 +590,11 @@ const buf2 = Buffer.from('0123');
 const arr = [buf1, buf2];
 
 console.log(arr.sort(Buffer.compare));
-// Prints: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
-// (This result is equal to: [buf2, buf1])
+// Imprime: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
+// (Este resultado es igual a: [buf2, buf1])
 ```
 
-### Class Method: Buffer.concat(list[, totalLength])
+### Método de Clase: Buffer.concat(list[, totalLength])
 
 <!-- YAML
 added: v0.7.11
