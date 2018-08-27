@@ -6,7 +6,7 @@
 
 Una sola instancia de Node.js corre en un solo hilo. Para tomar ventaja de sistemas multi-núcleos, el usuario en algunas ocasiones querrá ejecutar un clúster de procesos Node.js para manejar la carga.
 
-The cluster module allows easy creation of child processes that all share server ports.
+El módulo clúster permite la creación fácil de procesos secundarios que todos comparten puertos del servidor.
 
 ```js
 const cluster = require('cluster');
@@ -16,7 +16,7 @@ const numCPUs = require('os').cpus().length;
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
-  // Fork workers.
+  // Para los trabajadores.
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
@@ -25,8 +25,8 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  // Workers can share any TCP connection
-  // In this case it is an HTTP server
+  // Los trabajadores pueden compartir cualquier conección TCP
+  // En este caso es un servidor HTTP
   http.createServer((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
@@ -36,7 +36,7 @@ if (cluster.isMaster) {
 }
 ```
 
-Running Node.js will now share port 8000 between the workers:
+Ejecutar Node.js ahora compartirá el puerto 8000 entre los trabajadores:
 
 ```txt
 $ node server.js
