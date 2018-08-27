@@ -615,10 +615,10 @@ Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `B
 
 Si no se proporciona `totalLength`, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así que es más rápido proporcionar explícitamente la longitud si ya se conoce.
 
-Si se proporciona `totalLength`, se coacciona con un entero sin signo. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+Si se proporciona `totalLength`, se coacciona con un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede la `totalLength`, el resultado se trunca a `totalLength`.
 
 ```js
-// Create a single `Buffer` from a list of three `Buffer` instances.
+// Crea un `Buffer` único desde una lista de tres instancias de `Buffer`.
 
 const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(14);
@@ -626,17 +626,17 @@ const buf3 = Buffer.alloc(18);
 const totalLength = buf1.length + buf2.length + buf3.length;
 
 console.log(totalLength);
-// Prints: 42
+// Imprime: 42
 
 const bufA = Buffer.concat([buf1, buf2, buf3], totalLength);
 
 console.log(bufA);
-// Prints: <Buffer 00 00 00 00 ...>
+// Imprime: <Buffer 00 00 00 00 ...>
 console.log(bufA.length);
-// Prints: 42
+// Imprime: 42
 ```
 
-### Class Method: Buffer.from(array)
+### Método de Clase: Buffer.from(array)
 
 <!-- YAML
 added: v5.10.0
@@ -644,23 +644,23 @@ added: v5.10.0
 
 * `array` {integer[]}
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` utilizando un `array` de octetos.
 
 ```js
-// Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
+// Crea un nuevo Buffer que contiene bytes UTF-8 de la cadena 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+Se producirá un `TypeError` si `array` no es un `Array`.
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### Método de Clase: Buffer.from(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`], o la propiedad `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte a exponer. **Predeterminado:** `0`.
 * `length` {integer} Number of bytes to expose. **Predeterminado:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
