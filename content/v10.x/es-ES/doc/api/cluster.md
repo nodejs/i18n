@@ -53,7 +53,7 @@ Por favor ten en cuenta que en Windows, aún no es posible establecer un servido
 
 <!--type=misc-->
 
-The worker processes are spawned using the [`child_process.fork()`][] method, so that they can communicate with the parent via IPC and pass server handles back and forth.
+Los procesos worker son generados usando el método [`child_process.fork()`][], para que puedan comunicarse con su padre vía IPC y pasar los el identificador del servidor de de un lado a otro.
 
 El módulo clúster soporta dos métodos de distribución de conexiones entrantes.
 
