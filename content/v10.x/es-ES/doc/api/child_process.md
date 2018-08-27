@@ -457,9 +457,9 @@ Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 * `'ignore'` - equivalente a `['ignore', 'ignore', 'ignore']`
 * `'inherit'` - equivalente a `[process.stdin, process.stdout, process.stderr]` o `[0,1,2]`
 
-De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Additional fds can be specified to create additional pipes between the parent and child. El valor es uno de los siguientes:
+De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Fds adicionales pueden especificarse para crear pipes adicionales entre el proceso primario y el proceso secundario. El valor es uno de los siguientes:
 
-1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Los pipes creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][], respectivamente.
+1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. El final del proceso primario del pipe es expuesto al proceso primario como una propiedad en el objeto `child_process` como [`subprocess.stdio[fd]`][`stdio`]. Los pipes creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][], respectivamente.
 2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurar esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][] and [`process.disconnect()`][], al igual que los eventos [`'disconnect'`][] y [`'message'`][] dentro del proceso secundario.
   
   Acceder al fd del canal IPC de cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
@@ -568,7 +568,7 @@ changes:
   * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
 * Devuelve: {Buffer|string} El stdout desde el comando.
 
-El método `child_process.execSync()` es generalmente idéntico a [`child_process.exec()`][] a excepción de que el método no se devolverá hasta que el proceso secundario haya sido completamente cerrado. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. *Note que si el proceso secundario intercepta y maneja la señal `SIGTERM` y no se cierra, el proceso primario todavía esperará hasta que el proceso secundario se haya cerrado.*
+El método `child_process.execSync()` es generalmente idéntico a [`child_process.exec()`][] a excepción de que el método no se devolverá hasta que el proceso secundario haya sido completamente cerrado. Cuando se ha encontrado un timeout y se ha enviado una `killSignal`, el método no se devolverá hasta que el proceso haya sido completamente cerrado. *Note que si el proceso secundario intercepta y maneja la señal `SIGTERM` y no se cierra, el proceso primario todavía esperará hasta que el proceso secundario se haya cerrado.*
 
 Si el proceso expira o tiene un código de salida diferente a cero, este método ***arrojará***. El objeto [`Error`][] contendrá el resultado entero de [`child_process.spawnSync()`][].
 
@@ -662,7 +662,7 @@ El evento `'error'` es emitido cuando:
 2. El proceso no pudo ser aniquilado o
 3. Falló el envío de un mensaje al proceso secundario.
 
-El evento `'exit'` puede o no disparar luego de que haya ocurrido un error. When listening to both the `'exit'` and `'error'` events, it is important to guard against accidentally invoking handler functions multiple times.
+El evento `'exit'` puede o no disparar luego de que haya ocurrido un error. Al escuchar los eventos `'exit'` y `'error'`, es importante proteger ante funciones de manejador invocadas accidentalmente varias veces.
 
 Vea también [`subprocess.kill()`][] y [`subprocess.send()`][].
 
@@ -831,7 +831,7 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `opciones` {Object} El argumento `options`, si está presente, es un objeto usado para parametizar el envío de ciertos tipos de manejos. `options` soporta las siguientes propiedades: 
-  * `keepOpen` {boolean} Un valor que puede ser usado al pasar instancias de `net.Socket`. When `true`, the socket is kept open in the sending process. **Predeterminado:** `false`.
+  * `keepOpen` {boolean} Un valor que puede ser usado al pasar instancias de `net.Socket`. Cuando es `true`, la conexión se mantiene abierta en el proceso de envío. **Predeterminado:** `false`.
 * `callback` {Function}
 * Devuelve: {boolean}
 
@@ -866,24 +866,24 @@ process.send({ foo: 'bar', baz: NaN });
 
 Los procesos Node.js secundarios tendrán un método [`process.send()`][] propio que permita que el proceso secundario envíe mensajes de vuelta al proceso primario.
 
-Hay un caso especial al enviar un mensaje `{cmd: 'NODE_foo'}`. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`'message'`][] event. En su lugar, dichos mensajes son emitidos usando el evento `'internalMessage'` y son consumidos internamente por Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
+Hay un caso especial al enviar un mensaje `{cmd: 'NODE_foo'}`. Los mensajes que contengan un prefijo `NODE_` en la propiedad `cmd` son reservados para usar dentro del core de Node.js y no serán emitidos en el evento [`'message'`][] del proceso secundario. En su lugar, dichos mensajes son emitidos usando el evento `'internalMessage'` y son consumidos internamente por Node.js. Las aplicaciones deben evitar usar dichos mensajes o escuchar los eventos `'internalMessage'` ya que están sujetos a cambiar sin previo aviso.
 
-The optional `sendHandle` argument that may be passed to `subprocess.send()` is for passing a TCP server or socket object to the child process. El proceso secundario recibirá el objeto como el segundo argumento pasado a la función callback registrada en el evento [`'message'`][]. Any data that is received and buffered in the socket will not be sent to the child.
+El argumento `sendHandle` opcional que puede ser pasado a `subprocess.send()` es por pasar un servidor TCP un objeto conector al proceso secundario. El proceso secundario recibirá el objeto como el segundo argumento pasado a la función callback registrada en el evento [`'message'`][]. Cualquier data que sea recibida y almacenada en la conexión, no será enviada al proceso secundario.
 
 El `callback` opcional es una opción que es invocada luego de que el mensaje es enviado, pero antes de que el proceso secundario pudiera haber sido recibido. La función es llamada con un argumento simple: `null` en éxito, o con un objeto [`Error`][] en fracaso.
 
 No se provee ninguna función `callback` y el mensaje no puede ser enviado, un evento `'error'` será emitido por el objeto [`ChildProcess`][]. Esto puede pasar, por ejemplo, cuando el proceso secundario ya se haya cerrado.
 
-`subprocess.send()` will return `false` if the channel has closed or when the backlog of unsent messages exceeds a threshold that makes it unwise to send more. De otro modo, el método devuelve `true`. La función `callback` puede ser usada para implementar control de flujo.
+`subprocess.send()` devolverá `false` si el canal se ha cerrado o cuando la reserva de mensajes sin enviar exceda el límite que hace imprudente enviar más. De otro modo, el método devuelve `true`. La función `callback` puede ser usada para implementar control de flujo.
 
 #### Ejemplo: enviado un objeto del servidor
 
-The `sendHandle` argument can be used, for instance, to pass the handle of a TCP server object to the child process as illustrated in the example below:
+El argumento `sendHandle` puede ser usado, por ejemplo, para pasar el manejador de un objeto de servidor TCP al proceso secundario como se ilustra en el siguiente ejemplo:
 
 ```js
 const subprocess = require('child_process').fork('subprocess.js');
 
-// Open up the server object and send the handle.
+// Abre el objeto de servidor y envía el manejador.
 const server = require('net').createServer();
 server.on('connection', (socket) => {
   socket.end('handled by parent');
