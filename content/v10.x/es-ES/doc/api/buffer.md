@@ -661,7 +661,7 @@ added: v5.10.0
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`], o la propiedad `.buffer` de un [`TypedArray`].
 * `byteOffset` {integer} Índice del primer byte a exponer. **Predeterminado:** `0`.
-* `length` {integer} Number of bytes to expose. **Predeterminado:** `arrayBuffer.length - byteOffset`.
+* `length` {integer} número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
