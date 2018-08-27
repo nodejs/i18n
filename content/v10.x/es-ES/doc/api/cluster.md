@@ -73,9 +73,9 @@ Node.js no provee lógica de enrutación. Es, por lo tanto importante diseñar u
 
 Porque los workers son todos procesos separados, pueden ser eliminados o regenerados dependiendo de las necesidades del programa, sin afectar a los otros workers. Mientras que existan workers vivos, el servidor va a seguir aceptando conexiones. Si ningún worker sigue vivo, las conexiones existentes van a ser perdidas y las nuevas conexiones serán rechazadas. Sin embargo, Node.js no maneja automáticamente el número de workers. Es la responsabilidad de la aplicación de manejar el grupo de worker basado en sus propias necesidades.
 
-Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
+Aunque un caso de uso primario del módulo `cluster` es la creación de redes, también puede ser usado para otros casos que requieran procesos worker.
 
-## Class: Worker
+## Clase: Worker
 
 <!-- YAML
 added: v0.7.0
