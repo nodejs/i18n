@@ -110,11 +110,11 @@ changes:
 * `command` {string} El comando a ejecutar, con los argumentos separados con espacios.
 * `opciones` {Object} 
   * `cwd` {string} El directorio del proceso secundario actualmente operativo. **Predeterminado:** `null`.
-  * `env` {Object} Environment key-value pairs. **Predeterminado:** `null`.
+  * `env` {Object} Pares clave-valor del entorno. **Predeterminado:** `null`.
   * `encoding` {string} **Predeterminado:** `'utf8'`
   * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `timeout` {number} **Predeterminado:** `0`
-  * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
   * `uid` {number} Establece la identidad del usuario de los procesos (vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso (vea setgid(2)).
@@ -187,10 +187,10 @@ changes:
 * `args` {string[]} Lista de argumentos de strings.
 * `opciones` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
-  * `env` {Object} Environment key-value pairs.
+  * `env` {Object} Pares clave-valor del entorno.
   * `encoding` {string} **Predeterminado:** `'utf8'`
   * `timeout` {number} **Predeterminado:** `0`
-  * `maxBuffer` {number} Cantidad más grande de datos en bytes permitidos en stdout o stderr. Si se excede, se finaliza el proceso secundario. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `maxBuffer` {number} Cantidad más grande de datos en bytes permitidos en stdout o stderr. Si se excede, se finaliza el proceso secundario. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
   * `uid` {number} Establece la identidad del usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
@@ -251,7 +251,7 @@ changes:
 * `args` {string[]} Lista de argumentos de strings.
 * `opciones` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
-  * `env` {Object} Environment key-value pairs.
+  * `env` {Object} Pares clave-valor del entorno.
   * `execPath` {string} Ejecutable utilizado para crear el proceso secundario.
   * `execArgv` {string[]} Lista de argumentos de strings pasados al ejecutable. **Predeterminado:** `process.execArgv`.
   * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Predeterminado:** `false`.
@@ -294,7 +294,7 @@ changes:
 * `args` {string[]} Lista de argumentos de strings.
 * `opciones` {Object} 
   * `cwd` {string} El directorio del proceso secundario actualmente operativo.
-  * `env` {Object} Environment key-value pairs.
+  * `env` {Object} Pares clave-valor del entorno.
   * `argv0` {string} Establecer explícitamente el valor de `argv[0]` enviado al proceso secundario. Esto será establecido en el `command` si no se especifica.
   * `stdio` {Array|string} Configuración stdio del proceso secundario (vea [`options.stdio`][`stdio`]).
   * `detached` {boolean} Prepare el proceso secundario para ejecutar independientemente de su proceso primario. El comportamiento específico depende de la plataforma, vea [`options.detached`][]).
@@ -305,7 +305,7 @@ changes:
   * `windowsHide` {boolean} Ocultar la ventada de la consola de sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
 * Devuelve: {ChildProcess}
 
-El método `child_process.spawn()` genera un nuevo proceso usando el `command` dado con los argumentos de línea de comando en `args`. If omitted, `args` defaults to an empty array.
+El método `child_process.spawn()` genera un nuevo proceso usando el `command` dado con los argumentos de línea de comando en `args`. Si se omite, `args` se establece de manera predeterminada a un array vacío.
 
 **Si la opción `shell` está habilitada, no pase la entrada del usuario no optimizado a esta función. Cualquier entrada que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.**
 
@@ -466,7 +466,7 @@ De otra manera, el valor de `options.stdio` es un array en donde cada índice co
 
 3. `'ignore'` - Enseña a Node.js a ignorar el fd en el proceso secundario. Mientras que Node.js siempre abrirá los fds 0 - 2 para los procesos que genera, configurar el fd a `'ignore'` causará que Node.js abra `/dev/null` y lo adjunte al del proceso secundario.
 
-4. {Stream} object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process. The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index in the `stdio` array. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
+4. {Stream} objeto - Comparte un stream legible o grabable que se refiere a un tty, archivo, conector o un pipe con el proceso secundario. El descriptor del archivo subyaciente del stream es duplicado en el proceso secundario a el fd que corresponde al índice en el array `stdio`. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
 5. Entero positivo - El valor del entero es interpretado como un descriptor de archivo que está actualmente abierto en el proceso primario. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden compartirse.
 6. `null`, `undefined` - Utiliza el valor por defecto. Para los fds stdio 0, 1 y 2 (en otras palabras, stdin, stdout y stderr) se crea un pipe. Para fd 3 y mayores, el predeterminado es `'ignore'`.
 
@@ -518,13 +518,13 @@ changes:
 * `opciones` {Object} 
   * `cwd` {string} El directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
-  * `stdio` {string|Array} Configuración del stdio del proceso secundario. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Predeterminado:** `'pipe'`.
-  * `env` {Object} Environment key-value pairs.
+  * `stdio` {string|Array} Configuración del stdio del proceso secundario. Por defecto, `stderr` será la salida del stderr del proceso primario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
+  * `env` {Object} Pares clave-valor del entorno.
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
   * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que permite que se ejecute el proceso. **Predeterminado:** `undefined`.
   * `killSignal` {string|integer} El valor de la señal a ser usado cuando el proceso generado vaya a ser aniquilado. **Predeterminado:** `'SIGTERM'`.
-  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `windowsHide` {boolean} Oculta la ventada de la consola de sub-procesos que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
   * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
@@ -557,7 +557,7 @@ changes:
   * `cwd` {string} El directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
   * `stdio` {string|Array} La configuración del stdio del proceso secundario. `stderr` por defecto será la salida del stderr del proceso primario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
-  * `env` {Object} Environment key-value pairs.
+  * `env` {Object} Pares clave-valor del entorno.
   * `shell` {string} Shell con el que ejecutar el comando. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `uid` {number} Establece la identidad del usuario del proceso. (Vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso. (Vea setgid(2)).
