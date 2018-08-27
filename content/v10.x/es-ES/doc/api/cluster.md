@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+Una sola instancia de Node.js corre en un solo hilo. Para tomar ventaja de sistemas multi-núcleos, el usuario en algunas ocasiones querrá ejecutar un clúster de procesos Node.js para manejar la carga.
 
 The cluster module allows easy creation of child processes that all share server ports.
 
