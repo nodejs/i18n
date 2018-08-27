@@ -611,11 +611,11 @@ changes:
 
 Devuelve un nuevo `Buffer` el cual es el resultado de concatenar todas las instancias de `Buffer` juntas en la `list`.
 
-If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
+Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `Buffer` de longitud cero será devuelto.
 
-If `totalLength` is not provided, it is calculated from the `Buffer` instances in `list`. This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
+Si no se proporciona `totalLength`, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así que es más rápido proporcionar explícitamente la longitud si ya se conoce.
 
-If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+Si se proporciona `totalLength`, se coacciona con un entero sin signo. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
 ```js
 // Create a single `Buffer` from a list of three `Buffer` instances.
