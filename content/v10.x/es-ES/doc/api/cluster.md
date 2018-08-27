@@ -53,7 +53,7 @@ Por favor ten en cuenta que en Windows, aún no es posible establecer un servido
 
 <!--type=misc-->
 
-Los procesos worker son generados usando el método [`child_process.fork()`][], para que puedan comunicarse con su padre vía IPC y pasar los el identificador del servidor de de un lado a otro.
+Los procesos worker son generados usando el método [`child_process.fork()`][], para que puedan comunicarse con su padre vía IPC y pasar los handles del servidor de de un lado a otro.
 
 El módulo clúster soporta dos métodos de distribución de conexiones entrantes.
 
@@ -66,8 +66,8 @@ El segundo método debería, en teoría, dar el mejor rendimiento. En la prácti
 Porque `server.listen()` delega la mayoría del trabajo a el proceso maestro, hay tres casos donde el comportamiento entre un proceso Node.js normal y un clúster difieren:
 
 1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
-2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
-3. `server.listen(0)` Normally, this will cause servers to listen on a random port. However, in a cluster, each worker will receive the same "random" port each time they do `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
+2. `server.listen(handle)` Escuchar a los handles explícitamente causará que el worker use el handle suministrado, en vez de hablar con el proceso maestro.
+3. `server.listen(0)` Normalmente, esto causará que los servidores escuchen a un puerto aleatorio. Sin embargo, en un clúster, cada trabajador recibirá el mismo puerto "aleatorio" cada vez que hagan `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
 
 Node.js does not provide routing logic. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
 
