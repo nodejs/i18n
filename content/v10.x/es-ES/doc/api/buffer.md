@@ -663,7 +663,7 @@ added: v5.10.0
 * `byteOffset` {integer} Índice del primer byte a exponer. **Predeterminado:** `0`.
 * `length` {integer} número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`.
 
-This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Esto crea una vista del [`ArrayBuffer`] sin copiar la memoria subyacente. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
 ```js
 const arr = new Uint16Array(2);
