@@ -605,11 +605,11 @@ changes:
     description: The elements of `list` can now be `Uint8Array`s.
 -->
 
-* `list` {Buffer[] | Uint8Array[]} List of `Buffer` or [`Uint8Array`] instances to concat.
-* `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Returns: {Buffer}
+* `list` {Buffer[] | Uint8Array[]} Lista de instancias de `Buffer` o [`Uint8Array`] para concatenar.
+* `totalLength` {integer} Longitud total de las instancias de `Buffer` en `list` cuando están concatenadas.
+* Devuelve: {Buffer}
 
-Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
+Devuelve un nuevo `Buffer` el cual es el resultado de concatenar todas las instancias de `Buffer` juntas en la `list`.
 
 If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
 
