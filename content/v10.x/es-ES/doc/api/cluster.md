@@ -55,7 +55,7 @@ Por favor ten en cuenta que en Windows, aún no es posible establecer un servido
 
 The worker processes are spawned using the [`child_process.fork()`][] method, so that they can communicate with the parent via IPC and pass server handles back and forth.
 
-The cluster module supports two methods of distributing incoming connections.
+El módulo clúster soporta dos métodos de distribución de conexiones entrantes.
 
 The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
 
