@@ -563,7 +563,7 @@ changes:
   * `gid` {number} Establece la identidad del grupo del proceso. (Vea setgid(2)).
   * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que permite que se ejecute el proceso. **Predeterminado:** `undefined`.
   * `killSignal` {string|integer} El valor de la señal a ser usado cuando el proceso generado vaya a ser aniquilado. **Predeterminado:** `'SIGTERM'`.
-  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas las entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
 * Devuelve: {Buffer|string} El stdout desde el comando.
@@ -600,12 +600,12 @@ changes:
   * `cwd` {string} El directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
   * `stdio` {string|Array} La configuración del stdio del proceso secundario.
-  * `env` {Object} Environment key-value pairs.
+  * `env` {Object} Pares clave-valor del entorno.
   * `uid` {number} Establece la identidad del usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso (vea setgid(2)).
   * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que permite que se ejecute el proceso. **Predeterminado:** `undefined`.
   * `killSignal` {string|integer} El valor de la señal a ser usado cuando el proceso generado vaya a ser aniquilado. **Predeterminado:** `'SIGTERM'`.
-  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. See caveat at [`maxBuffer` and Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas las entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
   * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica el `shell`. **Predeterminado:** `false`.
@@ -642,7 +642,7 @@ added: v0.7.7
 * `code` {number} El código de salida si el proceso secundario se cerró por sí solo.
 * `signal` {string} La señal por la cual el proceso secundario fue terminado.
 
-The `'close'` event is emitted when the stdio streams of a child process have been closed. This is distinct from the [`'exit'`][] event, since multiple processes might share the same stdio streams.
+El evento `'close'` es emitido cuando los streams stdio de un proceso secundario han sido cerrados. Esto es distinto del evento [`'exit'`][] ya que múltiples procesos pueden compartir los mismos streams stdio.
 
 ### Evento: 'disconnect' (desconectar)
 
@@ -677,7 +677,7 @@ added: v0.1.90
 
 El evento `'exit'` es emitido luego de que el proceso secundario finaliza. Si se cierra el proceso, `code` es el código de salida final del proceso, o de otra manera es `null`. Si el proceso se termina debido a la recepción de una señal, `signal` es el nombre de la string de la señal, sino es `null`. Una de las dos siempre será no nula.
 
-Note that when the `'exit'` event is triggered, child process stdio streams might still be open.
+Note que cuando se activa el evento `'exit'`, los streams stdio del proceso secundario pueden todavía seguir abiertos.
 
 También note que Node.js establece manejadores de señal para `SIGINT` y `SIGTERM` y que los procesos Node.js no se terminarán inmediatamente debido a la recepción de esas señales. Por lo contrario, Node.js llevará a cabo una secuencia de acciones de limpieza y luego volverá a subir la señal manejada.
 
@@ -1028,18 +1028,18 @@ added: v0.1.90
 
 Un `Readable Stream` que representa el `stdout` del proceso secundario.
 
-If the child was spawned with `stdio[1]` set to anything other than `'pipe'`, then this will be `null`.
+Si el proceso secundario fue generado con el `stdio[1]` establecido a cualquier otro diferente a `'pipe'`, entonces esto será `null`.
 
-`subprocess.stdout` is an alias for `subprocess.stdio[1]`. Both properties will refer to the same value.
+`subprocess.stdout` es un alias de `subprocess.stdio[1]`. Ambas propiedades se referirán al mismo valor.
 
-## `maxBuffer` and Unicode
+## `maxBuffer` y Unicode
 
-The `maxBuffer` option specifies the largest number of bytes allowed on `stdout` or `stderr`. If this value is exceeded, then the child process is terminated. This impacts output that includes multibyte character encodings such as UTF-8 or UTF-16. For instance, `console.log('中文测试')` will send 13 UTF-8 encoded bytes to `stdout` although there are only 4 characters.
+La opción `maxBuffer` especifica al mayor número de bytes permitidos en `stdout` o `stderr`. Si se excede este valor, entonces el proceso secundario se finaliza. This impacts output that includes multibyte character encodings such as UTF-8 or UTF-16. Por ejemplo, `console.log('中文测试')` enviará 13 UTF-8 bytes codificados a `stdout` aunque sólo hayan 4 caracteres.
 
-## Shell Requirements
+## Requerimientos de Shell
 
-The shell should understand the `-c` switch on UNIX or `/d /s /c` on Windows. On Windows, command line parsing should be compatible with `'cmd.exe'`.
+El shell debe entender el interruptor `-c` en UNIX o `/d /s /c` en Windows. En Windows, el análisis de línea de comandos debe ser compatible con `'cmd.exe'`.
 
-## Default Windows Shell
+## Shell de Windows Predeterminado
 
-Although Microsoft specifies `%COMSPEC%` must contain the path to `'cmd.exe'` in the root environment, child processes are not always subject to the same requirement. Thus, in `child_process` functions where a shell can be spawned, `'cmd.exe'` is used as a fallback if `process.env.ComSpec` is unavailable.
+Aunque Microsoft especifique que `%COMSPEC%` debe contener la ruta a `'cmd.exe'` en el entorno raíz, los procesos secundarios no siempre están sujetos a el mismo requerimiento. Así, en las funciones `child_process` donde un shell puede ser generado, se utiliza `'cmd.exe'` como un fallback si `process.env.ComSpec` no está disponible.
