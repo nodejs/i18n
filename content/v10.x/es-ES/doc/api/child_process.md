@@ -459,14 +459,14 @@ Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 
 De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Fds adicionales pueden especificarse para crear pipes adicionales entre el proceso primario y el proceso secundario. El valor es uno de los siguientes:
 
-1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. El final del proceso primario del pipe es expuesto al proceso primario como una propiedad en el objeto `child_process` como [`subprocess.stdio[fd]`][`stdio`]. Los pipes creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][], respectivamente.
+1. `'pipe'` - Crea un pipe entre el proceso secundario y el proceso primario. El final del pipe del proceso primario le es expuesto a éste como una propiedad en el objeto `child_process`, como [`subprocess.stdio[fd]`][`stdio`]. Los pipes creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][], respectivamente.
 2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurar esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][] and [`process.disconnect()`][], al igual que los eventos [`'disconnect'`][] y [`'message'`][] dentro del proceso secundario.
   
   Acceder al fd del canal IPC de cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
 
 3. `'ignore'` - Enseña a Node.js a ignorar el fd en el proceso secundario. Mientras que Node.js siempre abrirá los fds 0 - 2 para los procesos que genera, configurar el fd a `'ignore'` causará que Node.js abra `/dev/null` y lo adjunte al del proceso secundario.
 
-4. {Stream} objeto - Comparte un stream legible o grabable que se refiere a un tty, archivo, conector o un pipe con el proceso secundario. El descriptor del archivo subyaciente del stream es duplicado en el proceso secundario a el fd que corresponde al índice en el array `stdio`. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
+4. {Stream} objeto - Comparte un stream legible o grabable que se refiere a un tty, archivo, conector o un pipe con el proceso secundario. El descriptor del archivo subyaciente del stream es duplicado en el proceso secundario al fd que corresponde al índice en el array `stdio`. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
 5. Entero positivo - El valor del entero es interpretado como un descriptor de archivo que está actualmente abierto en el proceso primario. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden compartirse.
 6. `null`, `undefined` - Utiliza el valor por defecto. Para los fds stdio 0, 1 y 2 (en otras palabras, stdin, stdout y stderr) se crea un pipe. Para fd 3 y mayores, el predeterminado es `'ignore'`.
 
@@ -518,7 +518,7 @@ changes:
 * `opciones` {Object} 
   * `cwd` {string} El directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
-  * `stdio` {string|Array} Configuración del stdio del proceso secundario. Por defecto, `stderr` será la salida del stderr del proceso primario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
+  * `stdio` {string|Array} Configuración del stdio del proceso secundario. Por defecto, `stderr` será la salida del stderr del proceso primario, a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
   * `env` {Object} Pares clave-valor del entorno.
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
@@ -642,7 +642,7 @@ added: v0.7.7
 * `code` {number} El código de salida si el proceso secundario se cerró por sí solo.
 * `signal` {string} La señal por la cual el proceso secundario fue terminado.
 
-El evento `'close'` es emitido cuando los streams stdio de un proceso secundario han sido cerrados. Esto es distinto del evento [`'exit'`][] ya que múltiples procesos pueden compartir los mismos streams stdio.
+El evento `'close'` es emitido cuando los streams stdio de un proceso secundario han sido cerrados. Esto es distinto del evento [`'exit'`][], ya que múltiples procesos pueden compartir los mismos streams stdio.
 
 ### Evento: 'disconnect' (desconectar)
 
