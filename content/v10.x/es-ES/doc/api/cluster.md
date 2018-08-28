@@ -81,7 +81,7 @@ Aunque un caso de uso primario del módulo `cluster` es la creación de redes, t
 added: v0.7.0
 -->
 
-Un objeto `Worker` contiene toda la información pública y el método sobre un worker. En el maestro, puede ser obtenido usando `cluster.workers`. En un worker puede ser obtenido usando `cluster.worker`.
+Un objeto `Worker` contiene toda la información pública y el método sobre un worker. En el maestro, puede ser obtenido usando `cluster.workers`. En un worker, puede ser obtenido usando `cluster.worker`.
 
 ### Evento: 'disconnect'
 
@@ -185,7 +185,7 @@ if (cluster.isMaster) {
     }
   }
 
-  // Comenzar los workers y listen para los mensakes que contengan notifyRequest
+  // Dar inicio a los workers y escuchar atendiendo a mensajes que contengan notifyRequest
   const numCPUs = require('os').cpus().length;
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -239,7 +239,7 @@ changes:
 
 En un worker, esta función cierra todos los servidores, espera por el evento `'close'` en esos servidores, y luego desconecta el canal IPC.
 
-En el maestro, un mensaje interno es enviado al worker causando que llame a `.disconnect()` en si mismo.
+En el maestro, un mensaje interno es enviado al worker causando que llame a `.disconnect()` en sí mismo.
 
 Causa que se establezca `.exitedAfterDisconnect`.
 
