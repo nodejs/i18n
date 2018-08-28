@@ -662,7 +662,7 @@ El evento `'error'` es emitido cuando:
 2. El proceso no pudo ser aniquilado o
 3. Falló el envío de un mensaje al proceso secundario.
 
-El evento `'exit'` puede o no disparar luego de que haya ocurrido un error. Al escuchar los eventos `'exit'` y `'error'`, es importante proteger ante funciones de manejador invocadas accidentalmente varias veces.
+El evento `'exit'` puede o no disparar luego de que haya ocurrido un error. Al escuchar los eventos `'exit'` y `'error'`, es importante salvaguardarse de invocar múltiples veces, por accidente, funciones de manejador.
 
 Vea también [`subprocess.kill()`][] y [`subprocess.send()`][].
 
@@ -866,9 +866,9 @@ process.send({ foo: 'bar', baz: NaN });
 
 Los procesos Node.js secundarios tendrán un método [`process.send()`][] propio que permita que el proceso secundario envíe mensajes de vuelta al proceso primario.
 
-Hay un caso especial al enviar un mensaje `{cmd: 'NODE_foo'}`. Los mensajes que contengan un prefijo `NODE_` en la propiedad `cmd` son reservados para usar dentro del core de Node.js y no serán emitidos en el evento [`'message'`][] del proceso secundario. En su lugar, dichos mensajes son emitidos usando el evento `'internalMessage'` y son consumidos internamente por Node.js. Las aplicaciones deben evitar usar dichos mensajes o escuchar los eventos `'internalMessage'` ya que están sujetos a cambiar sin previo aviso.
+Hay un caso especial al enviar un mensaje `{cmd: 'NODE_foo'}`. Los mensajes que contengan un prefijo `NODE_` en la propiedad `cmd` son reservados para usar dentro del core de Node.js y no serán emitidos en el evento [`'message'`][] del proceso secundario. En su lugar, dichos mensajes son emitidos usando el evento `'internalMessage'` y son consumidos internamente por Node.js. Las aplicaciones deben evitar usar dichos mensajes o escuchar los eventos `'internalMessage'`, ya que están sujetos a cambiar sin previo aviso.
 
-El argumento `sendHandle` opcional que puede ser pasado a `subprocess.send()` es por pasar un servidor TCP un objeto conector al proceso secundario. El proceso secundario recibirá el objeto como el segundo argumento pasado a la función callback registrada en el evento [`'message'`][]. Cualquier data que sea recibida y almacenada en la conexión, no será enviada al proceso secundario.
+El argumento `sendHandle` opcional que puede ser pasado a `subprocess.send()` es para pasar un servidor TCP un objeto conector al proceso secundario. El proceso secundario recibirá el objeto como el segundo argumento pasado a la función callback registrada en el evento [`'message'`][]. Cualquier data que sea recibida y almacenada en el socket no será enviada al proceso secundario.
 
 El `callback` opcional es una opción que es invocada luego de que el mensaje es enviado, pero antes de que el proceso secundario pudiera haber sido recibido. La función es llamada con un argumento simple: `null` en éxito, o con un objeto [`Error`][] en fracaso.
 
@@ -878,12 +878,12 @@ No se provee ninguna función `callback` y el mensaje no puede ser enviado, un e
 
 #### Ejemplo: enviado un objeto del servidor
 
-El argumento `sendHandle` puede ser usado, por ejemplo, para pasar el manejador de un objeto de servidor TCP al proceso secundario como se ilustra en el siguiente ejemplo:
+El argumento `sendHandle` puede ser usado, por ejemplo, para pasar el handle de un objeto de servidor TCP al proceso secundario, como se ilustra en el siguiente ejemplo:
 
 ```js
 const subprocess = require('child_process').fork('subprocess.js');
 
-// Abre el objeto de servidor y envía el manejador.
+// Abre el objeto de servidor y envía el handle.
 const server = require('net').createServer();
 server.on('connection', (socket) => {
   socket.end('handled by parent');
@@ -911,7 +911,7 @@ While the example above uses a server created using the `net` module, `dgram` mo
 
 #### Ejemplo: enviando un objeto conector
 
-De manera parecido, el argumento `sendHandler` puede ser usando para pasar el manejador de un conector al proceso secundario. El siguiente ejemplo genero dos procesos secundarios que cada uno maneja conexiones con prioridad "normal" o "especial":
+De manera similar, el argumento `sendHandler` puede ser usado para pasar el handle de un conector al proceso secundario. El siguiente ejemplo genera dos procesos secundarios, cada uno maneja conexiones con prioridad "normal" o "especial":
 
 ```js
 const { fork } = require('child_process');
@@ -919,7 +919,7 @@ const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
 // Abre el servidor y envía conectores al proceso secundario. Use pauseOnConnect para prevenir
-// que los conectores sean leídos antes de ser enviado al proceso secundario.
+// que los sockets sean leídos antes de ser enviados al proceso secundario.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
 
@@ -940,7 +940,7 @@ The `subprocess.js` would receive the socket handle as the second argument passe
 process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
-      // Verifica la existencia de una conexión cliente.
+      // Verifica la existencia de un socket de cliente.
       // Es posible que se cierre el conector entre el tiempo en que se
       // envía y el tiempo en el que se recibe en el proceso secundario.
       socket.end(`Request handled with ${process.argv[2]} priority`);
@@ -949,7 +949,7 @@ process.on('message', (m, socket) => {
 });
 ```
 
-Una vez un conector haya sido pasado al proceso secundario, el proceso primario ya no es capaz de rastrear cuando la conexión es destruida. Para indicar esto, la propiedad `.connections` se convierte en `null`. Se recomienda no utilizar `.maxConnections` cuando esto ocurre.
+Una vez que un conector ha sido pasado al proceso secundario, el proceso primario ya no es capaz de monitorear cuando éste es destruido. Para indicar esto, la propiedad `.connections` se convierte en `null`. Se recomienda no utilizar `.maxConnections` cuando esto ocurre.
 
 También se recomienda que cualquier manejador de `'message'` en el proceso secundario verifique la existencia de `socket`, ya que la conexión puede haber sido cerrada durante el tiempo que toma enviar la conexión al proceso secundario.
 
@@ -991,7 +991,7 @@ added: v0.7.10
 
 * {Array}
 
-Un array disperso de pipes al proceso secundario, correspondiente con posiciones en la opción [`stdio`][] pasada a [`child_process.spawn()`][] que puede ser establecida al valor `'pipe'`. Note que `subprocess.stdio[0]`, `subprocess.stdio[1]` y `subprocess.stdio[2]` también están disponibles como `subprocess.stdin`, `subprocess.stdout` y `subprocess.stderr` respectivamente.
+Un array disperso de pipes al proceso secundario, correspondiente con posiciones en la opción [`stdio`][] pasada a [`child_process.spawn()`][] que ha sido establecida al valor `'pipe'`. Note que `subprocess.stdio[0]`, `subprocess.stdio[1]` y `subprocess.stdio[2]` también están disponibles como `subprocess.stdin`, `subprocess.stdout` y `subprocess.stderr` respectivamente.
 
 In the following example, only the child's fd `1` (stdout) is configured as a pipe, so only the parent's `subprocess.stdio[1]` is a stream, all other values in the array are `null`.
 
