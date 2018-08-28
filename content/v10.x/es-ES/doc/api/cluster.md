@@ -65,7 +65,7 @@ El segundo método debería, en teoría, dar el mejor rendimiento. En la prácti
 
 Porque `server.listen()` delega la mayoría del trabajo al proceso maestro, hay tres casos en los que el comportamiento entre un proceso Node.js normal y un clúster difieren:
 
-1. `server.listen({fd: 7})` Porque el mensaje es pasado al maestro, el descriptor del archivo 7 **en el padre** va a ser listened, y el handle pasado a el worker, en vez de hacer listening a la idea del worker de que hace referencia el descriptor del archivo número 7.
+1. `server.listen({fd: 7})` Porque el mensaje es pasado al maestro, el descriptor del archivo 7 **en el proceso primario** va a ser escuchado, y el handle será pasado al worker, en vez de escuchar la idea del worker de aquello a lo que hace referencia el descriptor del archivo número 7.
 2. `server.listen(handle)` Usar Listen en los handles explícitamente causará que el worker use el handle suministrado, en vez de hablar con el proceso maestro.
 3. `server.listen(0)` Normalmente, esto causará que los servidores escuchen a un puerto aleatorio. Sin embargo, en un clúster, cada trabajador recibirá el mismo puerto "aleatorio" cada vez que hagan `listen(0)`. En esencia, el puerto es aleatorio la primera vez, pero predecible después de eso. Para hacer listen en un puerto único, genera un número de puerto basado en el ID del worker en el clúster.
 
