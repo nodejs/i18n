@@ -437,9 +437,9 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Met à jour decipher avec `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Met à jour decipher avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'latin1'`, `'base64'` ou `'hex'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` n'est pas fourni, `data` doit être un [`Buffer`][]. Si `data` est un [`Buffer`][] alors `inputEncoding` est ignoré.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'ascii'` ou `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
 The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
 
