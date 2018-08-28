@@ -249,7 +249,7 @@ Lo anterior aplica *solamente* a las conexiones del servidor, las conexiones del
 
 Tenga en cuenta que, dentro de un worker, existe `process.disconnect`, pero no es esta función, es [`disconnect`][].
 
-Porque las conexiones de servidor de vida larga pueden bloquear a los workers de desconectarse, pudiera ser útil enviar un mensaje, para que las acciones específicas de la aplicación pueda ser llevada a cerrarlos. Pudiera ser util implementar un tiempo de espera, matando a un worker si el evento `'disconnect'` no ha sido emitido después de un tiempo.
+Ya que las conexiones de servidor de vida larga pueden bloquear a los workers de desconectarse, pudiera ser útil enviar un mensaje, de modo que acciones específicas de la aplicación puedan ser tomadas para cerrarlos. Pudiera ser útil implementar un tiempo de espera, matando a un worker si el evento `'disconnect'` no ha sido emitido después de un tiempo.
 
 ```js
 if (cluster.isMaster) {
@@ -317,7 +317,7 @@ added: v0.8.0
 
 A cada nuevo worker se le da su identificador único, este identificador es almacenado en `id`.
 
-Mientras un worker viva, esta es la llave que lo indica `cluster.workers`.
+Mientras un worker viva, esta es la clave que lo indexa en `cluster.workers`.
 
 ### worker.isConnected()
 
