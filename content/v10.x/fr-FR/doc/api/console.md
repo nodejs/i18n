@@ -464,9 +464,9 @@ Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La m
 
 ```js
 console.profile('MyLabel');
-// Du code
+// Some code
 console.profileEnd();
-// Ajoute le profil 'MyLabel' au panneau Profiles de l'inspecteur.
+// Adds the profile 'MyLabel' to the Profiles panel of the inspector.
 ```
 
 ### console.profileEnd()
@@ -485,7 +485,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.timeStamp()` ajoute un événement avec l'étiquette `'label'` au panneau **Timeline** de l'inspecteur.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.timeStamp()` ajoute un événement avec le libellé `'label'` au panneau **Timeline** de l'inspecteur.
 
 ### console.timeline([label])
 
