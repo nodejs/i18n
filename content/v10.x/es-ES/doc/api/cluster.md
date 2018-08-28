@@ -69,9 +69,9 @@ Porque `server.listen()` delega la mayoría del trabajo al proceso maestro, hay 
 2. `server.listen(handle)` Usar Listen en los handles explícitamente causará que el worker use el handle suministrado, en vez de hablar con el proceso maestro.
 3. `server.listen(0)` Normalmente, esto causará que los servidores escuchen a un puerto aleatorio. Sin embargo, en un clúster, cada trabajador recibirá el mismo puerto "aleatorio" cada vez que hagan `listen(0)`. En esencia, el puerto es aleatorio la primera vez, pero predecible después de eso. Para hacer listen en un puerto único, genera un número de puerto basado en el ID del worker en el clúster.
 
-Node.js no provee lógica de enrutación. Es, por lo tanto importante diseñar una aplicación tal que no dependa mucho de objetos de data en la memoria para cosas como sesiones e inicios de sesiones.
+Node.js no provee lógica de enrutación. Es, por lo tanto, importante diseñar una aplicación tal que no dependa mucho de objetos de data en la memoria para asuntos como sesiones e inicios de sesiones.
 
-Porque los workers son todos procesos separados, pueden ser eliminados o regenerados dependiendo de las necesidades del programa, sin afectar a los otros workers. Mientras que existan workers vivos, el servidor va a seguir aceptando conexiones. Si ningún worker sigue vivo, las conexiones existentes van a ser perdidas y las nuevas conexiones serán rechazadas. Sin embargo, Node.js no maneja automáticamente el número de workers. Es la responsabilidad de la aplicación de manejar el grupo de worker basado en sus propias necesidades.
+Porque los workers son todos procesos separados, pueden ser eliminados o regenerados dependiendo de las necesidades del programa, sin afectar a los otros workers. Mientras que existan workers vivos, el servidor va a seguir aceptando conexiones. Si ningún worker sigue vivo, las conexiones existentes van a ser perdidas y las nuevas conexiones serán rechazadas. Sin embargo, Node.js no maneja automáticamente el número de workers. Es responsabilidad de la aplicación manejar el grupo de workers, basándose en sus propias necesidades.
 
 Aunque un caso de uso primario del módulo `cluster` es la creación de redes, también puede ser usado para otros casos que requieran procesos worker.
 
