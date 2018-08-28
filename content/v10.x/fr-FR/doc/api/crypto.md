@@ -441,17 +441,17 @@ Met à jour decipher avec `data`. Si l'argument `inputEncoding` est fourni, sa v
 
 `outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'ascii'` ou `'utf8'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
 
-The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
+La méthode `decipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`decipher.final()`][]. Appeler `decipher.update()` après [`decipher.final()`][] génèrera une erreur.
 
-## Class: DiffieHellman
+## Classe : DiffieHellman
 
 <!-- YAML
 added: v0.5.0
 -->
 
-The `DiffieHellman` class is a utility for creating Diffie-Hellman key exchanges.
+La classe `DiffieHellman` est un utilitaire permettant de créer des échanges de clés Diffie-Hellman.
 
-Instances of the `DiffieHellman` class can be created using the [`crypto.createDiffieHellman()`][] function.
+Les instances de la classe `DiffieHellman` peuvent être créées en utilisant la fonction [`crypto.createDiffieHellman()`][].
 
 ```js
 const crypto = require('crypto');
