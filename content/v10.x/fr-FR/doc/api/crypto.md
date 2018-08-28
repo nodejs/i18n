@@ -253,9 +253,9 @@ La méthode `cipher.setAAD()` doit être appelée avant [`cipher.update()`][].
 added: v1.0.0
 -->
 
-- Returns: {Buffer} When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the *authentication tag* that has been computed from the given data.
+- Renvoie : {Buffer} Lorsque vous utilisez un mode de chiffrement authentifié (seuls `GCM` et `CCM` sont supportés pour l'instant), la méthode `cipher.getAuthTag()` renvoie un [`Buffer`][] contenant *tag d'authentification* calculé à partir des données fournies.
 
-The `cipher.getAuthTag()` method should only be called after encryption has been completed using the [`cipher.final()`][] method.
+La méthode `cipher.getAuthTag()` ne devrait être appelée qu'après la finalisation du cryptage par l'appel à la méthode [`cipher.final()`][].
 
 ### cipher.setAutoPadding([autoPadding])
 
@@ -263,7 +263,7 @@ The `cipher.getAuthTag()` method should only be called after encryption has been
 added: v0.7.1
 -->
 
-- `autoPadding` {boolean} **Default:** `true`
+- `autoPadding` {boolean} **Par défaut :** `true`
 - Renvoie : {Cipher} for pour le chaînage de méthodes.
 
 When using block encryption algorithms, the `Cipher` class will automatically add padding to the input data to the appropriate block size. To disable the default padding call `cipher.setAutoPadding(false)`.
@@ -412,7 +412,7 @@ The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
 added: v0.7.1
 -->
 
-- `autoPadding` {boolean} **Default:** `true`
+- `autoPadding` {boolean} **Par défaut :** `true`
 - Renvoie : {Cipher} for pour le chaînage de méthodes.
 
 When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
