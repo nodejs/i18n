@@ -37,13 +37,13 @@ try {
 }
 ```
 
-Any use of the JavaScript `throw` mechanism will raise an exception that *must* be handled using `try / catch` or the Node.js process will exit immediately.
+Cualquier uso del mecanismo `throw` de JavaScript elevará una excepción que *debe* ser manejada usando `try / catch` o el proceso Node.js se cerrará inmediatamente.
 
-With few exceptions, *Synchronous* APIs (any blocking method that does not accept a `callback` function, such as [`fs.readFileSync`][]), will use `throw` to report errors.
+Con pocas excepciones, las APIs *Sincrónicas* (cualquier método de bloqueo que no acepte una función `callback`, como [`fs.readFileSync`][]), utilizará `throw` para informar errores.
 
-Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
+Errores que ocurren dentro de *APIs Asincrónicas* pueden ser reportados de múltiples maneras:
 
-- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
+- La mayoría de los métodos asincrónicos que aceptan una función `callback` aceptarán un objeto `Error` pasado como el primer argumento a esa función. Si ese primer argumento no es `null` y es una instancia de `Error`, entonces ocurrió un error que debe ser manejado.
 
 <!-- eslint-disable no-useless-return -->
 
@@ -54,10 +54,10 @@ Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
           console.error('There was an error reading the file!', err);
           return;
         }
-        // Otherwise handle the data
+        // De lo contrario, maneje los datos
       });
 
-- When an asynchronous method is called on an object that is an [`EventEmitter`][], errors can be routed to that object's `'error'` event.
+- Cuando se llama a un método asincrónico en un objeto que es un [`EventEmitter`][], los errores pueden enrutarse al evento `'error'` de ese objeto.
   
   ```js
   const net = require('net');
