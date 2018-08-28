@@ -227,7 +227,7 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Renvoie : {Buffer | string} Tout contenu chiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'base64'` ou `'hex'`, une chaîne est revoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
+- Renvoie : {Buffer | string} Tout contenu chiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'base64'` ou `'hex'`, une chaîne est revoyée. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 Une fois la méthode `cipher.final()` appelée, l'objet `Cipher` ne peut plus être utilisé pour crypter des données. Appeler `cipher.final()` plus d'une fois génèrera une erreur.
 
@@ -290,7 +290,7 @@ changes:
 
 Met à jour le chiffrement avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'utf8'`, `'ascii'` ou `'latin1'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` est omis, `data` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
-`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'base64'` ou `'hex'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
+`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'base64'` ou `'hex'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 La méthode `cipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`cipher.final()`][]. Appeler `cipher.update()` après [`cipher.final()`][] génèrera une erreur.
 
@@ -364,7 +364,7 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Renvoie : {Buffer | string} Tout contenu déchiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'ascii'` ou `'utf8'`, une chaîne est renvoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
+- Renvoie : {Buffer | string} Tout contenu déchiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'ascii'` ou `'utf8'`, une chaîne est renvoyée. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 Une fois la méthode `decipher.final()` appelée, l'objet `Decipher` ne peut plus être utilisé pour décrypter des données. Appeler `decipher.final()` plus d'une fois génèrera une erreur.
 
@@ -437,9 +437,9 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Met à jour decipher avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'latin1'`, `'base64'` ou `'hex'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` n'est pas fourni, `data` doit être un [`Buffer`][]. Si `data` est un [`Buffer`][] alors `inputEncoding` est ignoré.
+Met à jour decipher avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'latin1'`, `'base64'` ou `'hex'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` est omis, `data` doit être un [`Buffer`][]. Si `data` est un [`Buffer`][] alors `inputEncoding` est ignoré.
 
-`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'ascii'` ou `'utf8'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
+`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'ascii'` ou `'utf8'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 La méthode `decipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`decipher.final()`][]. Appeler `decipher.update()` après [`decipher.final()`][] génèrera une erreur.
 
@@ -484,7 +484,7 @@ added: v0.5.0
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret est codé à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray`, ou un `DataView`.
 
 If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
 
