@@ -623,7 +623,7 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Renvoie : {Buffer | string}
 
-Convertit la clé publique de Courbe Elliptique Diffie-Hellman spécifié par `key` et `curve` au format spécifié par `format`. L'argument `format` spécifie l'encodage du point et peut être `'compressed'`, `'uncompressed'` ou `'hybrid'`. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et la clé renvoyée est encodée à l’aide de l'`outputEncoding` spécifié. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`.
+Convertit la clé publique de Courbe Elliptique Diffie-Hellman spécifié par `key` et `curve` au format spécifié par `format`. L'argument `format` spécifie l'encodage du point et peut être `'compressed'`, `'uncompressed'` ou `'hybrid'`. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et la clé renvoyée est encodée à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`.
 
 Utilisez [`crypto.getCurves()`][] pour obtenir une liste des noms de courbes disponibles. Sur les versions OpenSSL récentes, `openssl ecparam -list_curves` affichera également le noms et la description de chaque courbe elliptique disponible.
 
@@ -671,7 +671,7 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret renvoyé est encodé à l’aide de l'`outputEncoding` spécifié. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
+Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret renvoyé est encodé à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 Si `outputEncoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
@@ -725,9 +725,9 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Définit la clé privée de Courbe Elliptique Diffie-Hellman. L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Définit la clé privée de Courbe Elliptique Diffie-Hellman. L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. Si `encoding` est fourni, `privateKey` doit être une chaîne ; sinon `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
+Si `privateKey` n'est pas valide pour la courbe spécifiée quand l'objet `ECDH` a été créé, une erreur est générée. À la définition de la clé privée, le point (clé) public associé est également défini dans l'objet `ECDH`.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
