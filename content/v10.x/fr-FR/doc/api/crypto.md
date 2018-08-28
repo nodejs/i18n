@@ -852,7 +852,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Met à jour le contenu du hachage avec `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
+Met à jour le contenu du hachage avec le `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
@@ -920,9 +920,9 @@ added: v0.1.94
 - `encoding` {string}
 - Renvoie : {Buffer | string}
 
-Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
+Calcule le condensé HMAC de toutes les données passées via [`hmac.update()`][]. L'`encoding` peut être `'hex'`, `'latin1'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné;
 
-The `Hmac` object can not be used again after `hmac.digest()` has been called. Multiple calls to `hmac.digest()` will result in an error being thrown.
+L'objet `Hmac` ne peut pas être à nouveau utilisé une fois la méthode `hmac.digest()` appelée. Plusieurs appels à `hmac.digest()` génèreront une erreur.
 
 ### hmac.update(data[, inputEncoding])
 
@@ -938,20 +938,20 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Hmac` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le contenu `Hmac` avec le `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
-This can be called many times with new data as it is streamed.
+Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
-## Class: Sign
+## Classe : Sign
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Sign` Class is a utility for generating signatures. It can be used in one of two ways:
+La classe `Sign` est un utilitaire pour générer des signatures. Elle peut être utilisée de deux manières :
 
-- As a writable [stream](stream.html), where data to be signed is written and the [`sign.sign()`][] method is used to generate and return the signature, or
-- Using the [`sign.update()`][] and [`sign.sign()`][] methods to produce the signature.
+- En tant que [stream](stream.html), où les données à signer sont écrites et la méthode [`sign.sign()`][] est utilisée pour générer et renvoyer la signature, ou bien
+- En utilisant les méthodes [`sign.update()`][] et [`sign.sign()`][] pour produire la signature.
 
 The [`crypto.createSign()`][] method is used to create `Sign` instances. The argument is the string name of the hash function to use. `Sign` objects are not to be created directly using the `new` keyword.
 
