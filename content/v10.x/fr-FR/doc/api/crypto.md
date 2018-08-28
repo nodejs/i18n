@@ -736,12 +736,12 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> Stabilité : 0 - obsolète
 
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman public key. Key encoding can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided `publicKey` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Définit la clé publique de Courbe Elliptique Diffie-Hellman. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`. Si `encoding` est fourni, `publicKey` doit être une chaîne ; sinon `publicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 Note that there is not normally a reason to call this method because `ECDH` only requires a private key and the other party's public key to compute the shared secret. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
 
