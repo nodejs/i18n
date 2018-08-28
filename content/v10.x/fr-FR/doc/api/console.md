@@ -308,7 +308,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-La fonction `console.info()` est un alias pour [`console.log()`][].
+La fonction `console.info()` est un alias de [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -324,9 +324,9 @@ added: v0.1.100
 ```js
 const count = 5;
 console.log('count: %d', count);
-// Écrit : count: 5, dans stdout
+// Prints: count: 5, to stdout
 console.log('count:', count);
-// Écrit : count: 5, dans stdout
+// Prints: count: 5, to stdout
 ```
 
 Voir [`util.format()`][] pour plus d’informations.
@@ -340,10 +340,10 @@ added: v10.0.0
 * `tabularData` {any}
 * `properties` {string[]} Autres propriétés pour la construction du tableau.
 
-Essaie de construire un tableau avec les colonnes des propriétés de `tabularData` (ou utilise `properties`) et les rangées de `tabularData` et l'écrit. Se contente d'écrire l’argument si il ne peut pas être analysé sous forme de tableau.
+Essaie de construire un tableau avec les colonnes des propriétés de `tabularData` (ou utilise `properties`) et les lignes de `tabularData` et l'écrit. Se contente d'écrire l’argument si il ne peut pas être analysé sous forme de tableau.
 
 ```js
-// Ceux-ci ne peuvent être analysés comme données tabulaires
+// These can't be parsed as tabular data
 console.table(Symbol());
 // Symbol()
 
@@ -397,7 +397,7 @@ Arrête un timer précédemment démarré en appelant [`console.time()`][] et é
 console.time('100-elements');
 for (let i = 0; i < 100; i++) {}
 console.timeEnd('100-elements');
-// Écrit 100-elements: 225.438ms
+// prints 100-elements: 225.438ms
 ```
 
 ### console.trace(\[message\]\[, ...args\])
@@ -413,7 +413,7 @@ added: v0.1.104
 
 ```js
 console.trace('Show me');
-// Écrit : (la trace d'appels varie selon l'endroit où est appelé trace)
+// Prints: (stack trace will vary based on where trace is called)
 //  Trace: Show me
 //    at repl:2:9
 //    at REPLServer.defaultEval (repl.js:248:27)
@@ -440,7 +440,7 @@ La fonction `console.warn()` est un alias pour [`console.error()`][].
 
 ## Méthodes spécifiques à l'inspecteur
 
-Les méthodes suivantes sont présentées par le moteur V8 dans l'API générale, mais n'affichent rien à moins d'être utilisées en conjonction avec l'[inspecteur](debugger.html) (argument `--inspect`).
+Les méthodes suivantes sont présentées par le moteur V8 dans l'API générale, mais n'affichent rien à moins d'être utilisées en conjonction avec l'[inspecteur](debugger.html) (option `--inspect`).
 
 ### console.markTimeline(label)
 
