@@ -81,7 +81,7 @@ Aunque un caso de uso primario del módulo `cluster` es la creación de redes, t
 added: v0.7.0
 -->
 
-Un objeto `Worker` contiene toda la información pública y el método sonre un worker. En el maestro puede ser obtenido usando `cluster.workers`. En un worker puede ser obtenido usando `cluster.worker`.
+Un objeto `Worker` contiene toda la información pública y el método sobre un worker. En el maestro, puede ser obtenido usando `cluster.workers`. En un worker puede ser obtenido usando `cluster.worker`.
 
 ### Evento: 'disconnect'
 
