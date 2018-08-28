@@ -687,11 +687,11 @@ added: v0.11.14
 - `format` {string} **Default:** `'uncompressed'`
 - Renvoie : {Buffer | string}
 
-Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
+Génère des valeurs de clés Diffie-Hellman privée et publique, et retourne la clé publique dans le `format` et l'`encoding` spécifiés. Cette clé devrait être transférée à l'autre partie.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
+L'argument `format` spécifie l'encodage du point et peut être `'compressed'` ou `'uncompressed'`. Si `format` est omis, le point sera renvoyé au format `'uncompressed'`.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### ecdh.getPrivateKey([encoding])
 
@@ -700,7 +700,7 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string} The EC Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+- Renvoie : {Buffer | string} La clé privée de Courbe Elliptique Diffie-Hellman dans l'`encoding` spécifié, qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### ecdh.getPublicKey(\[encoding\]\[, format\])
 
@@ -710,11 +710,11 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Returns: {Buffer | string} The EC Diffie-Hellman public key in the specified `encoding` and `format`.
+- Renvoie : {Buffer | string} La clé publique de Courbe Elliptique Diffie-Hellman dans l'`encoding` et au `format` spécifiés.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified the point will be returned in `'uncompressed'` format.
+L'argument `format` spécifie l'encodage du point et peut être `'compressed'` ou `'uncompressed'`. Si `format` est omis, le point sera renvoyé au format `'uncompressed'`.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is specified, a string is returned; otherwise a [`Buffer`][] is returned.
+L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### ecdh.setPrivateKey(privateKey[, encoding])
 
@@ -725,7 +725,7 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman private key. The `encoding` can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Définit la clé privée de Courbe Elliptique Diffie-Hellman. L'`encoding` peut être `'latin1'`, `'hex'` ou `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
 If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
 
