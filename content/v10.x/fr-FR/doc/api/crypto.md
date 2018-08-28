@@ -776,7 +776,7 @@ console.log(aliceSecret === bobSecret);
 added: v0.1.92
 -->
 
-The `Hash` class is a utility for creating hash digests of data. It can be used in one of two ways:
+La classe `Hash` est un utilitaire pour créer des condensés de données de hachage. Elle peut être utilisée de deux manières :
 
 - As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed hash digest on the readable side, or
 - Using the [`hash.update()`][] and [`hash.digest()`][] methods to produce the computed hash.
