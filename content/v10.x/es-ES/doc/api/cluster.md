@@ -164,7 +164,7 @@ Dentro de un worker, `process.on('message')` también pudiera ser usado.
 
 Ve [`process` event: `'message'`][].
 
-As an example, here is a cluster that keeps count of the number of requests in the master process using the message system:
+Como ejemplo, aquí está un clúster que mantiene la cuenta del número de solicitudes en el proceso maestro usando el sistema de mensaje:
 
 ```js
 const cluster = require('cluster');
@@ -172,13 +172,13 @@ const http = require('http');
 
 if (cluster.isMaster) {
 
-  // Mantener un seguimiento de las peticiones http
+  // Mantener un seguimiento de las solicitudes http
   let numReqs = 0;
   setInterval(() => {
     console.log(`numReqs = ${numReqs}`);
   }, 1000);
 
-  // Contar peticiones
+  // Contar solicitudes
   function messageHandler(msg) {
     if (msg.cmd && msg.cmd === 'notifyRequest') {
       numReqs += 1;
@@ -202,27 +202,27 @@ if (cluster.isMaster) {
     res.writeHead(200);
     res.end('hello world\n');
 
-    // notify master about the request
+    // notificar al maestro sobre la solicitud
     process.send({ cmd: 'notifyRequest' });
   }).listen(8000);
 }
 ```
 
-### Event: 'online'
+### Evento: 'online'
 
 <!-- YAML
 added: v0.7.0
 -->
 
-Similar to the `cluster.on('online')` event, but specific to this worker.
+Similar al evento `cluster.on('online')`, pero específico a este worker.
 
 ```js
 cluster.fork().on('online', () => {
-  // Worker is online
+  // Worker está en línea
 });
 ```
 
-It is not emitted in the worker.
+No está emitido en el worker.
 
 ### worker.disconnect()
 
@@ -235,11 +235,11 @@ changes:
     description: This method now returns a reference to `worker`.
 -->
 
-* Returns: {cluster.Worker} A reference to `worker`.
+* Retorna: {cluster.Worker} Una referencia a `worker`.
 
-In a worker, this function will close all servers, wait for the `'close'` event on those servers, and then disconnect the IPC channel.
+En un worker, esta función cierra todos los servidores, espera por el evento `'close'` en esos servidores, y luego desconecta el canal IPC.
 
-In the master, an internal message is sent to the worker causing it to call `.disconnect()` on itself.
+En el maestro, un mensaje interno es enviado al worker causando que llame a `.disconnect()` en si mismo.
 
 Causes `.exitedAfterDisconnect` to be set.
 
