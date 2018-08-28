@@ -96,13 +96,13 @@ console.log(Certificate.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 ```
 
-### Legacy API
+### API obsolète
 
-As a still supported legacy interface, it is possible (but not recommended) to create new instances of the `crypto.Certificate` class as illustrated in the examples below.
+Comme l'interface obsolète est toujours supporté, il est possible (mais non recommandé), de créer de nouvelles instances de la classe `crypto.Certificate` comme illustré dans les exemples ci-dessous.
 
 #### new crypto.Certificate()
 
-Instances of the `Certificate` class can be created using the `new` keyword or by calling `crypto.Certificate()` as a function:
+Des instances de la classe `Certificate` peuvent être créées en utilisant le mot-clé `new` ou en appelant `crypto.Certificate()` comme une fonction :
 
 ```js
 const crypto = require('crypto');
