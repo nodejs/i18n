@@ -415,11 +415,11 @@ added: v0.7.1
 - `autoPadding` {boolean} **Default:** `true`
 - Renvoie : {Cipher} pour le chaînage de méthodes.
 
-When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
+Lorsque des données ont été cryptées sans remplissage de bloc standard, l'appel à `decipher.setAutoPadding(false)` désactivera le remplissage automatique pour empêcher [`decipher.final()`][] de rechercher et supprimer le remplissage.
 
-Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
+Désactiver le remplissage automatique ne fonctionnera que si la longueur des données entrées est un multiple de la taille du bloc de chiffrement.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+La méthode `decipher.setAutoPadding()` doit être appelée avant [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -437,7 +437,7 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Met à jour decipher avec `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
 The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
