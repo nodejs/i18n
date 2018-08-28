@@ -1020,16 +1020,16 @@ Calcule la signature de toutes les données transmises en utilisant soit [`sign.
 
 L'argument `privateKey` peut être un objet ou une chaîne. Si `privateKey` est une chaîne, elle est traitée comme une clé brute sans phrase secrète. Si `privateKey` est un objet, il doit contenir au moins une des propriétés suivantes :
 
-- `key`: {string} - Clé privée encodée au format PEM (requise)
-- `passphrase`: {string} - passphrase for the private key
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - clé privée encodée au format PEM (requise)
+- `passphrase`: {string} - phrase secrète pour la clé privée
+- `padding`: {integer} - valeur de remplissage optionnelle pour RSA, une des suivantes :
   
-  - `crypto.constants.RSA_PKCS1_PADDING` (default)
+  - `crypto.constants.RSA_PKCS1_PADDING` (par défaut)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to sign the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Notez que `RSA_PKCS1_PSS_PADDING` utilisera MGF1 avec la même fonction de hachage utilisée pour signer le message comme spécifié dans la section 3.1 de la [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (default) sets it to the maximum permissible value.
+- `saltLength`: {integer} - longueur du salage quand le remplissage est `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (default) sets it to the maximum permissible value.
 
 The `outputFormat` can specify one of `'latin1'`, `'hex'` or `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
