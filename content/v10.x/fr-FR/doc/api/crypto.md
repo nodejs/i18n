@@ -195,7 +195,7 @@ cipher.write('some clear text data');
 cipher.end();
 ```
 
-Example: Using `Cipher` and piped streams:
+Exemple : Utiliser `Cipher` et les piped streams :
 
 ```js
 const crypto = require('crypto');
