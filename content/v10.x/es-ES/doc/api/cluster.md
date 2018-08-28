@@ -47,13 +47,13 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Por favor ten en cuenta que en Windows, aún no es posible establecer un servidor pipe en un worker.
+Por favor, ten en cuenta que, en Windows, aún no es posible establecer un servidor pipe en un worker.
 
 ## Cómo Funciona
 
 <!--type=misc-->
 
-Los procesos worker son generados usando el método [`child_process.fork()`][], para que puedan comunicarse con su padre vía IPC y pasar los handles del servidor de de un lado a otro.
+Los procesos worker son generados usando el método [`child_process.fork()`][], para que puedan comunicarse con su proceso primario vía IPC y pasar los handles del servidor de un lado a otro.
 
 El módulo clúster soporta dos métodos de distribución de conexiones entrantes.
 
