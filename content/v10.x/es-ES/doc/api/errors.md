@@ -63,22 +63,22 @@ Errores que ocurren dentro de *APIs Asincrónicas* pueden ser reportados de múl
   const net = require('net');
   const connection = net.connect('localhost');
   
-  // Adding an 'error' event handler to a stream:
+  // Añadiendo un manejador del evento 'error' a un stream:
   connection.on('error', (err) => {
-    // If the connection is reset by the server, or if it can't
-    // connect at all, or on any sort of error encountered by
-    // the connection, the error will be sent here.
+    // Si la conexión es restablecida por el servidor, si no puede
+    // conectarse en lo absoluto o cualquier tipo de error encontrado por
+    // la conexión, el error se enviará a acá.
     console.error(err);
   });
   
   connection.pipe(process.stdout);
   ```
 
-- A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try / catch`. There is no comprehensive list of such methods; please refer to the documentation of each method to determine the appropriate error handling mechanism required.
+- Un puñado de métodos típicamente asincrónicos en el API Node.js puede todavía usar el mecanismo `throw` para elevar excepciones que deben ser manejadas utilizando `try / catch`. No hay una lista comprensiva de dichos método; por favor, refiérase a la documentación de cada método para determinar el mecanismo manejador de errores apropiado requerido.
 
-The use of the `'error'` event mechanism is most common for [stream-based](stream.html) and [event emitter-based](events.html#events_class_eventemitter) APIs, which themselves represent a series of asynchronous operations over time (as opposed to a single operation that may pass or fail).
+El uso del mecanismo del evento `'error'` es más común para APIs [basadas en streams](stream.html) y [basadas en emisor de eventos ](events.html#events_class_eventemitter), los cuales representan una serie de operaciones asincrónicas a lo largo del tiempo (a diferencia de una simple operación que puede aprobar o reprobar).
 
-For *all* [`EventEmitter`][] objects, if an `'error'` event handler is not provided, the error will be thrown, causing the Node.js process to report an uncaught exception and crash unless either: The [`domain`](domain.html) module is used appropriately or a handler has been registered for the [`'uncaughtException'`][] event.
+Para *todos* los objetos [`EventEmitter`][], si no se proporciona un manejador del evento `'error'`, se arrojará el error, causando que el proceso Node.js reporte una excepción no detectada y ocasione un fallo, a menos que: El módulo [`dominio`](domain.html) sea usado apropiadamente, o se haya registrado un manejador para el evento [`'uncaughtException'`][].
 
 ```js
 const EventEmitter = require('events');
