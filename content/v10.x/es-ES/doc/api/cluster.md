@@ -241,9 +241,9 @@ En un worker, esta función cierra todos los servidores, espera por el evento `'
 
 En el maestro, un mensaje interno es enviado al worker causando que llame a `.disconnect()` en si mismo.
 
-Causes `.exitedAfterDisconnect` to be set.
+Causa que se establezca `.exitedAfterDisconnect`.
 
-Note that after a server is closed, it will no longer accept new connections, but connections may be accepted by any other listening worker. Existing connections will be allowed to close as usual. When no more connections exist, see [`server.close()`][], the IPC channel to the worker will close allowing it to die gracefully.
+Ten en cuenta que después que un servidor es cerrado, no va a aceptar nuevas conexiones, pero conexiones pueden ser aceptadas por cualquier otro worker que esté haciendo listening. Las conexiones existentes van permitir cerrarse de manera usual. Cuando no existan más conexiones, ver [`server.close()`][], el canal IPC del worker va a cerrarse permitiendo que muera con elegancia.
 
 The above applies *only* to server connections, client connections are not automatically closed by workers, and disconnect does not wait for them to close before exiting.
 
