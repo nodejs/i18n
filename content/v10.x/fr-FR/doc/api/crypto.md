@@ -852,7 +852,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Met à jour le contenu du hachage avec `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le contenu du hachage avec `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
 This can be called many times with new data as it is streamed.
 
