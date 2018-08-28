@@ -294,7 +294,7 @@ added: v6.0.0
 
 Establecido al llamar `.kill()` o `.disconnect()`. Hasta entonces, es `undefined`.
 
-The boolean [`worker.exitedAfterDisconnect`][] allows distinguishing between voluntary and accidental exit, the master may choose not to respawn a worker based on this value.
+El booleano [`worker.exitedAfterDisconnect`][] permite distinguir entre salidas voluntarias y accidentales, el maestro puede escoger entre no regenerar un worker basado en este valor.
 
 ```js
 cluster.on('exit', (worker, code, signal) => {
@@ -315,9 +315,9 @@ added: v0.8.0
 
 * {number}
 
-Each new worker is given its own unique id, this id is stored in the `id`.
+A cada nuevo worker se le da su identificador único, este identificador es almacenado en `id`.
 
-While a worker is alive, this is the key that indexes it in `cluster.workers`.
+Mientras un worker viva, esta es la llave que lo indica `cluster.workers`.
 
 ### worker.isConnected()
 
@@ -325,7 +325,7 @@ While a worker is alive, this is the key that indexes it in `cluster.workers`.
 added: v0.11.14
 -->
 
-This function returns `true` if the worker is connected to its master via its IPC channel, `false` otherwise. A worker is connected to its master after it has been created. It is disconnected after the `'disconnect'` event is emitted.
+Esta función retorna `true` si el worker está conectado a su maestro via a su canal IPC, en caso contrario `false`. Un worker es conectado a su maestro después que se ha creado. Es desconectado después que el evento `'disconnect'` es emitido.
 
 ### worker.isDead()
 
@@ -333,7 +333,7 @@ This function returns `true` if the worker is connected to its master via its IP
 added: v0.11.14
 -->
 
-This function returns `true` if the worker's process has terminated (either because of exiting or being signaled). Otherwise, it returns `false`.
+La función retorna `true` si el proceso del worker ha terminado (ya sea porque se salió o está siendo señalado). De otra manera, retorna `false`.
 
 ### worker.kill([signal='SIGTERM'])
 
@@ -341,9 +341,9 @@ This function returns `true` if the worker's process has terminated (either beca
 added: v0.9.12
 -->
 
-* `signal` {string} Name of the kill signal to send to the worker process.
+* `signal` {string} Nombre de la señar que matará al proceso del worker.
 
-This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
+Esta función matará al worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
 
 Causes `.exitedAfterDisconnect` to be set.
 
