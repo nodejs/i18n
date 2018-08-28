@@ -6,7 +6,7 @@
 
 Una sola instancia de Node.js corre en un solo hilo. Para tomar ventaja de sistemas multi-núcleos, el usuario en algunas ocasiones querrá ejecutar un clúster de procesos Node.js para manejar la carga.
 
-El módulo clúster permite la creación fácil de procesos secundarios que todos comparten puertos del servidor.
+El módulo clúster permite la creación fácil de procesos secundarios que todos compartan puertos del servidor.
 
 ```js
 const cluster = require('cluster');
