@@ -22,7 +22,7 @@ console.log(hash);
 
 ## Déterminer si le support de crypto est indisponible
 
-Il est possible que Node.js soit construit sans le support du module `crypto`. Dans ce cas, l'appel à `require('crypto')` lèvera une erreur.
+Il est possible que Node.js soit construit sans le support du module `crypto`. Dans ce cas, l'appel à `require('crypto')` générera une erreur.
 
 ```js
 let crypto;
@@ -227,9 +227,9 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Returns: {Buffer | string} Any remaining enciphered contents. If `outputEncoding` is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+- Renvoie : {Buffer | string} Tout contenu chiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'base64'` or `'hex'`, une chaîne est revoyée. Si aucun `outputEncoding` n'est fourni, un [`Buffer`][] est renvoyé.
 
-Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
+Une fois la méthode `cipher.final()` appelée, l'objet `Cipher` ne peut plus être utilisé pour crypter des données. Appeler `cipher.final()` plus d'une fois générera une erreur.
 
 ### cipher.setAAD(buffer[, options])
 
@@ -239,13 +239,13 @@ added: v1.0.0
 
 - `buffer` {Buffer}
 - `options` {Object}
-- Returns: {Cipher} for method chaining.
+- Renvoie : {Cipher} for pour le chaînage de méthodes.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+Lorsque vous utilisez un mode de chiffrement authentifié (seuls `GCM` et `CCM` sont supportés pour l'instant), la méthode `cipher.setAAD()` définit la valeur utilisée pour le paramètre d'entrée *additional authenticated data* (AAD).
 
-The `options` argument is optional for `GCM`. When using `CCM`, the `plaintextLength` option must be specified and its value must match the length of the plaintext in bytes. See [CCM mode](#crypto_ccm_mode).
+L'argument `options` est optionnel pour `GCM`. Lorsque vous utilisez `CCM`, l'option `plaintextLength` doit être spécifiée et ses valeurs doivent correspondre à la longueur du texte brut en octets. Voir [mode CCM](#crypto_ccm_mode).
 
-The `cipher.setAAD()` method must be called before [`cipher.update()`][].
+La méthode `cipher.setAAD()` doit être appelée avant [`cipher.update()`][].
 
 ### cipher.getAuthTag()
 
@@ -264,7 +264,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Default:** `true`
-- Returns: {Cipher} for method chaining.
+- Renvoie : {Cipher} for pour le chaînage de méthodes.
 
 When using block encryption algorithms, the `Cipher` class will automatically add padding to the input data to the appropriate block size. To disable the default padding call `cipher.setAutoPadding(false)`.
 
@@ -380,7 +380,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Cipher} for method chaining.
+- Renvoie : {Cipher} for pour le chaînage de méthodes.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
@@ -398,7 +398,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Cipher} for method chaining.
+- Renvoie : {Cipher} for pour le chaînage de méthodes.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
 
@@ -413,7 +413,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Default:** `true`
-- Returns: {Cipher} for method chaining.
+- Renvoie : {Cipher} for pour le chaînage de méthodes.
 
 When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
 
