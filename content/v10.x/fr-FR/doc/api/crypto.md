@@ -402,9 +402,9 @@ changes:
 
 Lorsque vous utilisez un mode de chiffrement authentifié (seuls `GCM` et `CCM` sont supportés pour l'instant), la méthode `decipher.setAuthTag()` est utilisée pour transmettre le *tag d'authentification* reçu. Si aucun tag n'est fourni ou si le texte chiffré a été falsifié [`decipher.final()`][] sera lancé, isera lancé, indiquant que le texte chiffré devrait être rejeté en raison de l'échec de l'authentification.
 
-Notez que cette version de Node.js ne vérifie pas la longueur du tag d'authentification GCM. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Notez que cette version de Node.js ne vérifie pas la longueur du tag d'authentification GCM. Un tel contrôle *doit* doit être implémenté par les applications et est crucial pour l'authenticité des données cryptées, sinon une attaque peut utiliser un tag d'authentification arbitrairement court pour augmenter ses chances de passer l'authentification avec succès (jusqu'à 0.39%). Il est fortement recommandé d'associer à chaque clé une des valeurs 16, 15, 14, 13, 12, 8 ou 4 octets, et de ne permettre que des tags d'authentification de cette longueur, voir [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
-The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
+La méthode `decipher.setAuthTag()` doit être appelée avant [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
 
@@ -412,7 +412,7 @@ The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
 added: v0.7.1
 -->
 
-- `autoPadding` {boolean} **Par défaut :** `true`
+- `autoPadding` {boolean} **Default:** `true`
 - Renvoie : {Cipher} pour le chaînage de méthodes.
 
 When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
