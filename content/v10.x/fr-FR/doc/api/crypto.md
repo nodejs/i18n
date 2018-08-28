@@ -623,7 +623,7 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Renvoie : {Buffer | string}
 
-Convertit la clé publique de Courbe Elliptique Diffie-Hellman spécifié par `key` et `curve` au format spécifié par `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
+Convertit la clé publique de Courbe Elliptique Diffie-Hellman spécifié par `key` et `curve` au format spécifié par `format`. L'argument `format` spécifie l'encodage du point et peut être `'compressed'`, `'uncompressed'` ou `'hybrid'`. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et la clé renvoyée est encodée à l’aide de l'`outputEncoding` spécifié. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`.
 
 Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
