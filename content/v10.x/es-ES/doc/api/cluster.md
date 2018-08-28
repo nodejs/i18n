@@ -47,7 +47,7 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Por favor, ten en cuenta que, en Windows, aún no es posible establecer un servidor pipe en un worker.
+Por favor, tenga en cuenta que, en Windows, aún no es posible establecer un servidor pipe en un worker.
 
 ## Cómo Funciona
 
@@ -61,7 +61,7 @@ El primer método (y el predeterminado en todas las plataformas menos Windows) e
 
 El segundo método es donde el proceso maestro crea el conector listen y lo envía a los workers interesados. Los workers, entonces, aceptan las conexiones entrantes directamente.
 
-El segundo método debería, en teoría, dar el mejor rendimiento. En la práctica sin embargo, la distribución tiende a ser muy desequilibrada debido a las divagancias del planificador del sistema operativo. Se han observado cargas donde más del 70% de todas las conexiones terminaron en solo dos procesos, de ocho en total.
+El segundo método debería, en teoría, dar el mejor rendimiento. En la práctica, sin embargo, la distribución tiende a ser muy desequilibrada, debido a las divagancias del planificador del sistema operativo. Se han observado cargas donde más del 70% de todas las conexiones terminaron en solo dos procesos, de ocho en total.
 
 Porque `server.listen()` delega la mayoría del trabajo al proceso maestro, hay tres casos en los que el comportamiento entre un proceso Node.js normal y un clúster difieren:
 
@@ -113,7 +113,7 @@ Dentro de un worker, `process.on('error')` también pudiera ser usado.
 added: v0.11.2
 -->
 
-* `code` {number} El código de salida, si se cerró por sí solo.
+* `code` {number} El código de salida, si se cerró de manera normal.
 * `signal` {string} El nombre de la señal (p. ej. `'SIGHUP'`) que causó que el proceso muriera.
 
 Similar al evento `cluster.on('exit')`, pero especifico a este worker.
@@ -243,7 +243,7 @@ En el maestro, un mensaje interno es enviado al worker causando que llame a `.di
 
 Causa que se establezca `.exitedAfterDisconnect`.
 
-Ten en cuenta que después que un servidor es cerrado, no va a aceptar nuevas conexiones, pero conexiones pueden ser aceptadas por cualquier otro worker que esté haciendo listening. A las conexiones existentes se les permitirá cerrarse de manera usual. Cuando no existan más conexiones, ver [`server.close()`][], el canal IPC del worker va a cerrarse permitiendo que muera con elegancia.
+Tenga en cuenta que, después de que un servidor es cerrado, no va a aceptar nuevas conexiones, pero conexiones pueden ser aceptadas por cualquier otro worker que esté escuchando. A las conexiones existentes se les permitirá cerrarse de manera usual. Cuando no existan más conexiones, ver [`server.close()`][], el canal IPC del worker va a cerrarse permitiendo que muera con elegancia.
 
 Lo anterior aplica *solamente* a las conexiones del servidor, las conexiones del cliente no son cerradas automáticamente por los workers, y la desconexión no espera a que ellos se cierren antes de salir.
 
