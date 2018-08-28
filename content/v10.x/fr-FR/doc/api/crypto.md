@@ -87,7 +87,7 @@ added: v9.0.0
 -->
 
 - `spkac` {Buffer | TypedArray | DataView}
-- Renvoie : {boolean} `true` isi la structure de données `spkac` est valide, `false` dans le cas contraire.
+- Renvoie : {boolean} `true` si la structure de données `spkac` est valide, `false` dans le cas contraire.
 
 ```js
 const { Certificate } = require('crypto');
@@ -102,7 +102,7 @@ Comme l'interface obsolète est toujours supporté, il est possible (mais non re
 
 #### new crypto.Certificate()
 
-Des instances de la classe `Certificate` peuvent être créées en utilisant le mot-clé `new` ou en appelant `crypto.Certificate()` comme une fonction :
+Les instances de la classe `Certificate` peuvent être créées en utilisant le mot-clé `new` ou en appelant `crypto.Certificate()` comme une fonction :
 
 ```js
 const crypto = require('crypto');
@@ -152,7 +152,7 @@ added: v0.11.8
 -->
 
 - `spkac` {Buffer | TypedArray | DataView}
-- Renvoie : {boolean} `true` isi la structure de données `spkac` est valide, `false` dans le cas contraire.
+- Renvoie : {boolean} `true` si la structure de données `spkac` est valide, `false` dans le cas contraire.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -161,13 +161,13 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 ```
 
-## Class: Cipher
+## Classe : Cipher
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Instances of the `Cipher` class are used to encrypt data. The class can be used in one of two ways:
+Les instances de la classe `Cipher` sont utilisées pour crypter des données. La classe peut être utilisée de deux manières :
 
 - As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
 - Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
