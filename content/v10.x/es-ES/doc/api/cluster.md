@@ -81,40 +81,40 @@ Aunque un caso de uso primario del módulo `cluster` es la creación de redes, t
 added: v0.7.0
 -->
 
-Un objeto `Worker` contiene toda la información pública y el método sonre un worker. En el maestro puede ser obtenido usando `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
+Un objeto `Worker` contiene toda la información pública y el método sonre un worker. En el maestro puede ser obtenido usando `cluster.workers`. En un worker puede ser obtenido usando `cluster.worker`.
 
-### Event: 'disconnect'
+### Evento: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-Similar to the `cluster.on('disconnect')` event, but specific to this worker.
+Similar al evento `cluster.on('disconnect')`, pero especifico a este worker.
 
 ```js
 cluster.fork().on('disconnect', () => {
-  // Worker has disconnected
+  // Worker se ha desconectado
 });
 ```
 
-### Event: 'error'
+### Evento: 'error'
 
 <!-- YAML
 added: v0.7.3
 -->
 
-This event is the same as the one provided by [`child_process.fork()`][].
+Este evento es igual que el proporcionado por [`child_process.fork()`][].
 
-Within a worker, `process.on('error')` may also be used.
+Dentro de un worker, `process.on('error')` también pudiera ser usado.
 
-### Event: 'exit'
+### Evento: 'exit'
 
 <!-- YAML
 added: v0.11.2
 -->
 
-* `code` {number} The exit code, if it exited normally.
-* `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
+* `code` {number} El código de salida, si se cerró por sí solo.
+* `signal` {string} El nombre de la señal (p. ej. `'SIGHUP'`) que causó que el proceso muriera.
 
 Similar to the `cluster.on('exit')` event, but specific to this worker.
 
