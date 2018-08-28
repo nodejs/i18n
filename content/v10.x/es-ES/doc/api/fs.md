@@ -4309,9 +4309,9 @@ The exclusive flag `'x'` (`O_EXCL` flag in open(2)) ensures that path is newly c
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
-Modifying a file rather than replacing it may require a flags mode of `'r+'` rather than the default mode `'w'`.
+Modificar un archivo en vez de reemplazarlo puede que requiera un modo de banderas de `'r+'` en lugar del modo predeterminado `'w'`.
 
-The behavior of some flags are platform-specific. As such, opening a directory on macOS and Linux with the `'a+'` flag - see example below - will return an error. In contrast, on Windows and FreeBSD, a file descriptor or a `FileHandle` will be returned.
+El comportamiento de algunas banderas son específicas en la plataforma. As such, opening a directory on macOS and Linux with the `'a+'` flag - see example below - will return an error. En contraste, en Windows y FreeBSD, un descriptor de archivo o un `FileHandle` será devuelto.
 
 ```js
 // macOS and Linux
@@ -4325,6 +4325,6 @@ fs.open('<directory>', 'a+', (err, fd) => {
 });
 ```
 
-On Windows, opening an existing hidden file using the `'w'` flag (either through `fs.open()` or `fs.writeFile()` or `fsPromises.open()`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `'r+'` flag.
+En Windows, abrir un archivo oculto existente utilizando la bandera `'w'` (ya sea mediante `fs.open()` ó `fs.writeFile()` ó `fsPromises.open()`) fallará con `EPERM`. Los archivos ocultos existentes pueden ser abiertos para ser escritos con la bandera `'r+'` .
 
 Una llamada a `fs.ftruncate()` ó `fsPromises.ftruncate()` puede ser utilizada para reiniciar los contenidos del archivo.
