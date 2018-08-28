@@ -288,9 +288,9 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Met à jour le chiffrement avec `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Met à jour le chiffrement avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'utf8'`, `'ascii'` ou `'latin1'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` est omis, `data` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'base64'` ou `'hex'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
 The `cipher.update()` method can be called multiple times with new data until [`cipher.final()`][] is called. Calling `cipher.update()` after [`cipher.final()`][] will result in an error being thrown.
 
