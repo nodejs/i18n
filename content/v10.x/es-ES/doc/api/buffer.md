@@ -549,25 +549,25 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
-* Returns: {integer} The number of bytes contained within `string`.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor para calcular la longitud.
+* `encoding` {string} Si `string` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
+* Devuelve: {integer} El número de bytes contenidos en `string`.
 
-Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
+Devuelve la longitud del byte real de una cadena. Esto no es lo mismo que [`String.prototype.length`] pues eso devuelve el número de *caracteres* en una cadena.
 
-For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+Para `'base64'` y `'hex'`, esta función asume una entrada válida. Para cadenas que contienen datos no-Base64/codificados-Hex (por ejemplo, espacios en blanco), el valor de retorno puede ser mayor que la longitud de un `Buffer` creado desde la cadena.
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
 
 console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
-// Prints: ½ + ¼ = ¾: 9 characters, 12 bytes
+// Imprime: ½ + ¼ = ¾: 9 caracteres, 12 bytes
 ```
 
-When `string` is a `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], the actual byte length is returned.
+Cuando `string` es un `Buffer`/[`DataView`]/[`TypedArray`]/[`ArrayBuffer`]/ [`SharedArrayBuffer`], se devuelve la longitud del byte real.
 
-### Class Method: Buffer.compare(buf1, buf2)
+### Método de Clase: Buffer.compare(buf1, buf2)
 
 <!-- YAML
 added: v0.11.13
@@ -580,9 +580,9 @@ changes:
 
 * `buf1` {Buffer|Uint8Array}
 * `buf2` {Buffer|Uint8Array}
-* Returns: {integer}
+* Devuelve: {integer}
 
-Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
+Compara `buf1` con `buf2` típicamente con el propósito de clasificar arreglos de instancias de `Buffer`. Esto es equivalente a llamar a [`buf1.compare(buf2)`][`buf.compare()`].
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -590,11 +590,11 @@ const buf2 = Buffer.from('0123');
 const arr = [buf1, buf2];
 
 console.log(arr.sort(Buffer.compare));
-// Prints: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
-// (This result is equal to: [buf2, buf1])
+// Imprime: [ <Buffer 30 31 32 33>, <Buffer 31 32 33 34> ]
+// (Este resultado es igual a: [buf2, buf1])
 ```
 
-### Class Method: Buffer.concat(list[, totalLength])
+### Método de Clase: Buffer.concat(list[, totalLength])
 
 <!-- YAML
 added: v0.7.11
@@ -605,20 +605,20 @@ changes:
     description: The elements of `list` can now be `Uint8Array`s.
 -->
 
-* `list` {Buffer[] | Uint8Array[]} List of `Buffer` or [`Uint8Array`] instances to concat.
-* `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Returns: {Buffer}
+* `list` {Buffer[] | Uint8Array[]} Lista de instancias de `Buffer` o [`Uint8Array`] para concatenar.
+* `totalLength` {integer} Longitud total de las instancias de `Buffer` en `list` cuando están concatenadas.
+* Devuelve: {Buffer}
 
-Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
+Devuelve un nuevo `Buffer` el cual es el resultado de concatenar todas las instancias de `Buffer` juntas en la `list`.
 
-If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
+Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `Buffer` de longitud cero será devuelto.
 
-If `totalLength` is not provided, it is calculated from the `Buffer` instances in `list`. This however causes an additional loop to be executed in order to calculate the `totalLength`, so it is faster to provide the length explicitly if it is already known.
+Si no se proporciona `totalLength`, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así que es más rápido proporcionar explícitamente la longitud si ya se conoce.
 
-If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
+Si se proporciona `totalLength`, se coacciona con un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede la `totalLength`, el resultado se trunca a `totalLength`.
 
 ```js
-// Create a single `Buffer` from a list of three `Buffer` instances.
+// Crea un `Buffer` único desde una lista de tres instancias de `Buffer`.
 
 const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(14);
@@ -626,17 +626,17 @@ const buf3 = Buffer.alloc(18);
 const totalLength = buf1.length + buf2.length + buf3.length;
 
 console.log(totalLength);
-// Prints: 42
+// Imprime: 42
 
 const bufA = Buffer.concat([buf1, buf2, buf3], totalLength);
 
 console.log(bufA);
-// Prints: <Buffer 00 00 00 00 ...>
+// Imprime: <Buffer 00 00 00 00 ...>
 console.log(bufA.length);
-// Prints: 42
+// Imprime: 42
 ```
 
-### Class Method: Buffer.from(array)
+### Método de Clase: Buffer.from(array)
 
 <!-- YAML
 added: v5.10.0
@@ -644,26 +644,26 @@ added: v5.10.0
 
 * `array` {integer[]}
 
-Allocates a new `Buffer` using an `array` of octets.
+Asigna un nuevo `Buffer` utilizando un `array` de octetos.
 
 ```js
-// Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
+// Crea un nuevo Buffer que contiene bytes UTF-8 de la cadena 'buffer'
 const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
-A `TypeError` will be thrown if `array` is not an `Array`.
+Se producirá un `TypeError` si `array` no es un `Array`.
 
-### Class Method: Buffer.from(arrayBuffer[, byteOffset[, length]])
+### Método de Clase: Buffer.from(arrayBuffer[, byteOffset[, length]])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
-* `length` {integer} Number of bytes to expose. **Predeterminado:** `arrayBuffer.length - byteOffset`.
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} Un [`ArrayBuffer`], [`SharedArrayBuffer`], o la propiedad `.buffer` de un [`TypedArray`].
+* `byteOffset` {integer} Índice del primer byte a exponer. **Predeterminado:** `0`.
+* `length` {integer} número de bytes a exponer. **Predeterminado:** `arrayBuffer.length - byteOffset`.
 
-This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
+Esto crea una vista del [`ArrayBuffer`] sin copiar la memoria subyacente. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
 ```js
 const arr = new Uint16Array(2);

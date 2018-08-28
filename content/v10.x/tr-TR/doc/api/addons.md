@@ -68,7 +68,7 @@ The `module_name` must match the filename of the final binary (excluding the `.n
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
-### Building
+### Derleme
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
@@ -123,7 +123,7 @@ Node.js uses a number of statically linked libraries such as V8, libuv and OpenS
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
-### Loading Addons using require()
+### Eklentileri require() kullanarak yükleme
 
 The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 

@@ -4269,25 +4269,25 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
 </table>
 
-## File System Flags
+## Banderas del Sistema de Archivos
 
-The following flags are available wherever the `flag` option takes a string:
+Las siguientes banderas están disponibles en donde sea que la opción de `flag` tome una string:
 
-* `'a'` - Open file for appending. El archivo se crea si no existe.
+* `'a'` - Archivo abierto para anexar. El archivo se crea si no existe.
 
-* `'ax'` - Like `'a'` but fails if the path exists.
+* `'ax'` - Como `'a'` pero falla si la ruta existe.
 
-* `'a+'` - Open file for reading and appending. El archivo se crea si no existe.
+* `'a+'` - Archivo abierto para leer y anexar. El archivo se crea si no existe.
 
-* `'ax+'` - Like `'a+'` but fails if the path exists.
+* `'ax+'` - Como `'a+'` pero falla si la ruta existe.
 
-* `'as'` - Open file for appending in synchronous mode. El archivo se crea si no existe.
+* `'as'` - Archivo abierto para anexar en modo sincrónico. El archivo se crea si no existe.
 
-* `'as+'` - Open file for reading and appending in synchronous mode. El archivo se crea si no existe.
+* `'as+'` - Archivo abierto para leer y anexar en modo sincrónico. El archivo se crea si no existe.
 
-* `'r'` - Open file for reading. Una excepción ocurre si el archivo no existe.
+* `'r'` - Archivo abierto para leer. Una excepción ocurre si el archivo no existe.
 
-* `'r+'` - Open file for reading and writing. Una excepción ocurre si el archivo no existe.
+* `'r+'` - Archivo abierto para leer y escribir. Una excepción ocurre si el archivo no existe.
 
 * `'rs+'` - Open file for reading and writing in synchronous mode. Instructs the operating system to bypass the local file system cache.
   
@@ -4297,21 +4297,21 @@ The following flags are available wherever the `flag` option takes a string:
 
 * `'w'` - Open file for writing. The file is created (if it does not exist) or truncated (if it exists).
 
-* `'wx'` - Like `'w'` but fails if the path exists.
+* `'wx'` - Como `'w'` pero falla si la ruta existe.
 
 * `'w+'` - Open file for reading and writing. The file is created (if it does not exist) or truncated (if it exists).
 
-* `'wx+'` - Like `'w+'` but fails if the path exists.
+* `'wx+'` - Como `'w+'` pero falla si la ruta existe.
 
-`flag` can also be a number as documented by open(2); commonly used constants are available from `fs.constants`. On Windows, flags are translated to their equivalent ones where applicable, e.g. `O_WRONLY` to `FILE_GENERIC_WRITE`, or `O_EXCL|O_CREAT` to `CREATE_NEW`, as accepted by `CreateFileW`.
+`flag` también puede ser un número como lo documenta open(2); las constantes comúnmente utilizadas están disponibles desde `fs.constants`. En WIndows, las banderas son traducidas a sus equivalentes si aplica, por ejemplo, `O_WRONLY` a `FILE_GENERIC_WRITE`, ó `O_EXCL|O_CREAT` a `CREATE_NEW`, como las acepta `CreateFileW`.
 
-The exclusive flag `'x'` (`O_EXCL` flag in open(2)) ensures that path is newly created. On POSIX systems, path is considered to exist even if it is a symlink to a non-existent file. The exclusive flag may or may not work with network file systems.
+La bandera exclusiva `'x'` (bandera `O_EXCL` en open(2)) asegura que esa ruta sea creada recientemente. En sistemas de POSIX, se considera que la ruta existe incluso si es un enlace simbólico a un archivo inexistente. La bandera exclusiva puede o no que funcione con sistemas de archivos de red.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
-Modifying a file rather than replacing it may require a flags mode of `'r+'` rather than the default mode `'w'`.
+Modificar un archivo en vez de reemplazarlo puede que requiera un modo de banderas de `'r+'` en lugar del modo predeterminado `'w'`.
 
-The behavior of some flags are platform-specific. As such, opening a directory on macOS and Linux with the `'a+'` flag - see example below - will return an error. In contrast, on Windows and FreeBSD, a file descriptor or a `FileHandle` will be returned.
+El comportamiento de algunas banderas son específicas en la plataforma. Y así, abrir un directorio en macOS y Linux con la bandera `'a+'` - vea el ejemplo a continuación - devolverá un error. En contraste, en Windows y FreeBSD, un descriptor de archivo o un `FileHandle` será devuelto.
 
 ```js
 // macOS and Linux
@@ -4325,6 +4325,6 @@ fs.open('<directory>', 'a+', (err, fd) => {
 });
 ```
 
-On Windows, opening an existing hidden file using the `'w'` flag (either through `fs.open()` or `fs.writeFile()` or `fsPromises.open()`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `'r+'` flag.
+En Windows, abrir un archivo oculto existente utilizando la bandera `'w'` (ya sea mediante `fs.open()` ó `fs.writeFile()` ó `fsPromises.open()`) fallará con `EPERM`. Los archivos ocultos existentes pueden ser abiertos para ser escritos con la bandera `'r+'` .
 
-A call to `fs.ftruncate()` or `fsPromises.ftruncate()` can be used to reset the file contents.
+Una llamada a `fs.ftruncate()` ó `fsPromises.ftruncate()` puede ser utilizada para reiniciar los contenidos del archivo.
