@@ -153,7 +153,7 @@ L’opération spécifique de `console.clear()` peut varier selon les systèmes 
 added: v8.3.0
 -->
 
-* `label` {string} l’étiquette d’affichage pour le compteur. **Par défaut :** `'default'`.
+* `label` {string} le libellé d’affichage pour le compteur. **Par défaut :** `'default'`.
 
 Maintient un compteur interne spécifique à `label` et écrit dans `stdout` le nombre de fois où `console.count()` a été appelé avec le `label` donné.
 
@@ -187,7 +187,7 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} l’étiquette d’affichage pour le compteur. **Par défaut :** `'default'`.
+* `label` {string} le libellé d’affichage pour le compteur. **Par défaut :** `'default'`.
 
 Réinitialise le compteur interne spécifique à `label`.
 
@@ -219,7 +219,7 @@ changes:
 * `data` {any}
 * `...args` {any}
 
-La fonction `console.debug()` est un alias pour [`console.log()`][].
+La fonction `console.debug()` est un alias de [`console.log()`][].
 
 ### console.dir(obj[, options])
 
@@ -264,9 +264,9 @@ added: v0.1.100
 ```js
 const code = 5;
 console.error('error #%d', code);
-// Écrit : error #5, dans stderr
+// Prints: error #5, to stderr
 console.error('error', code);
-// Écrit : error 5, dans stderr
+// Prints: error 5, to stderr
 ```
 
 Si aucun élément de formatage (par exemple `%d`) n'est trouvé dans la première chaîne, [`util.inspect()`][] est appelé pour chaque argument et les valeurs de chaînes résultantes sont concaténées. Voir [`util.format()`][] pour plus d’informations.
@@ -289,7 +289,7 @@ Si un ou plusieurs `label`(s) sont fournis, ceux sont imprimées en premier sans
   added: v8.5.0
 -->
 
-Un alias pour [`console.group()`][].
+Un alias de [`console.group()`][].
 
 ### console.groupEnd()
 
