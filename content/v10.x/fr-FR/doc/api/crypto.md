@@ -586,9 +586,9 @@ Les valeurs suivantes sont valides pour cette propriété (comme définies dans 
 added: v0.11.14
 -->
 
-The `ECDH` class is a utility for creating Elliptic Curve Diffie-Hellman (ECDH) key exchanges.
+La classe `ECDH` est un utilitaire pour créer des échanges de clés de Courbe Elliptique Diffie-Hellman (ECDH : Elliptic Curve Diffie-Hellman).
 
-Instances of the `ECDH` class can be created using the [`crypto.createECDH()`][] function.
+Les instances de la classe `ECDH` peuvent être créées en utilisant le fonction [`crypto.createECDH()`][].
 
 ```js
 const crypto = require('crypto');
@@ -623,7 +623,7 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Renvoie : {Buffer | string}
 
-Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
+Convertit la clé publique de Courbe Elliptique Diffie-Hellman spécifié par `key` et `curve` au format spécifié par `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
 
 Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
