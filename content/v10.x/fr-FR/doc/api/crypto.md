@@ -836,7 +836,7 @@ added: v0.1.92
 
 Calcule le condensé de toutes les données passées pour le hachage (via la méthode [`hash.update()`][]). L'`encoding` peut être `'hex'`, `'latin1'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
-L'objet `Hash` ne peut pas être à nouveau utilisé une fois la méthode `hash.digest()` appelée. Multiple calls will cause an error to be thrown.
+L'objet `Hash` ne peut pas être à nouveau utilisé une fois la méthode `hash.digest()` appelée. Plusieurs appels génèreront une erreur.
 
 ### hash.update(data[, inputEncoding])
 
