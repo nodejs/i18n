@@ -57,13 +57,13 @@ Los procesos worker son generados usando el método [`child_process.fork()`][], 
 
 El módulo clúster soporta dos métodos de distribución de conexiones entrantes.
 
-El primer método (y el predeterminado en todas las plataformas menos Windows), es la planificación round-robin, donde el proceso maestro escucha en un puerto, acepta las nuevas conexiones y las distribuye a través de los workers de una manera round-robin, con mecanismos incorporados para evitar sobrecargar un proceso worker.
+El primer método (y el predeterminado en todas las plataformas menos Windows) es la planificación round-robin, donde el proceso maestro escucha en un puerto, acepta las nuevas conexiones y las distribuye a través de los workers de una manera round-robin, con mecanismos incorporados para evitar sobrecargar un proceso worker.
 
-El segundo método es donde el proceso maestro crea el conector listen y lo envía a los workers interesados. Los workers entonces aceptan las conexiones entrantes directamente.
+El segundo método es donde el proceso maestro crea el conector listen y lo envía a los workers interesados. Los workers, entonces, aceptan las conexiones entrantes directamente.
 
 El segundo método debería, en teoría, dar el mejor rendimiento. En la práctica sin embargo, la distribución tiende a ser muy desequilibrada debido a las divagancias del planificador del sistema operativo. Se han observado cargas donde más del 70% de todas las conexiones terminaron en solo dos procesos, de ocho en total.
 
-Porque `server.listen()` delega la mayoría del trabajo a el proceso maestro, hay tres casos donde el comportamiento entre un proceso Node.js normal y un clúster difieren:
+Porque `server.listen()` delega la mayoría del trabajo al proceso maestro, hay tres casos en los que el comportamiento entre un proceso Node.js normal y un clúster difieren:
 
 1. `server.listen({fd: 7})` Porque el mensaje es pasado al maestro, el descriptor del archivo 7 **en el padre** va a ser listened, y el handle pasado a el worker, en vez de hacer listening a la idea del worker de que hace referencia el descriptor del archivo número 7.
 2. `server.listen(handle)` Usar Listen en los handles explícitamente causará que el worker use el handle suministrado, en vez de hablar con el proceso maestro.
