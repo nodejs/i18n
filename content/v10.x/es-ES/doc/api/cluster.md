@@ -116,7 +116,7 @@ added: v0.11.2
 * `code` {number} El código de salida, si se cerró por sí solo.
 * `signal` {string} El nombre de la señal (p. ej. `'SIGHUP'`) que causó que el proceso muriera.
 
-Similar to the `cluster.on('exit')` event, but specific to this worker.
+Similar al evento `cluster.on('exit')`, pero especifico a este worker.
 
 ```js
 const worker = cluster.fork();
@@ -131,7 +131,7 @@ worker.on('exit', (code, signal) => {
 });
 ```
 
-### Event: 'listening'
+### Evento: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -139,15 +139,15 @@ added: v0.7.0
 
 * `address` {Object}
 
-Similar to the `cluster.on('listening')` event, but specific to this worker.
+Similar al evento `cluster.on('listening')`, pero especifico a este worker.
 
 ```js
 cluster.fork().on('listening', (address) => {
-  // Worker is listening
+  // Worker está listening
 });
 ```
 
-It is not emitted in the worker.
+No está emitido en el worker.
 
 ### Event: 'message'
 
