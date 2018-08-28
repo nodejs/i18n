@@ -991,7 +991,7 @@ added: v0.7.10
 
 * {Array}
 
-Un array disperso de pipes al proceso secundario, correspondiente con posiciones en la opción [`stdio`][] pasada a [`child_process.spawn()`][] que ha sido establecida al valor `'pipe'`. Note que `subprocess.stdio[0]`, `subprocess.stdio[1]` y `subprocess.stdio[2]` también están disponibles como `subprocess.stdin`, `subprocess.stdout` y `subprocess.stderr` respectivamente.
+Un array disperso de pipes al proceso secundario, correspondiente con posiciones en la opción [`stdio`][] pasada a [`child_process.spawn()`][] que ha sido establecida al valor `'pipe'`. Note que `subprocess.stdio[0]`, `subprocess.stdio[1]` y `subprocess.stdio[2]` también están disponibles como `subprocess.stdin`, `subprocess.stdout` y `subprocess.stderr`, respectivamente.
 
 In the following example, only the child's fd `1` (stdout) is configured as a pipe, so only the parent's `subprocess.stdio[1]` is a stream, all other values in the array are `null`.
 
@@ -1034,7 +1034,7 @@ Si el proceso secundario fue generado con el `stdio[1]` establecido a cualquier 
 
 ## `maxBuffer` y Unicode
 
-La opción `maxBuffer` especifica al mayor número de bytes permitidos en `stdout` o `stderr`. Si se excede este valor, entonces el proceso secundario se finaliza. This impacts output that includes multibyte character encodings such as UTF-8 or UTF-16. Por ejemplo, `console.log('中文测试')` enviará 13 UTF-8 bytes codificados a `stdout` aunque sólo hayan 4 caracteres.
+La opción `maxBuffer` especifica al mayor número de bytes permitidos en `stdout` o `stderr`. Si se excede este valor, entonces el proceso secundario se finaliza. This impacts output that includes multibyte character encodings such as UTF-8 or UTF-16. Por ejemplo, `console.log('中文测试')` enviará 13 UTF-8 bytes codificados a `stdout`, aunque sólo hayan 4 caracteres.
 
 ## Requerimientos de Shell
 
@@ -1042,4 +1042,4 @@ El shell debe entender el interruptor `-c` en UNIX o `/d /s /c` en Windows. En W
 
 ## Shell de Windows Predeterminado
 
-Aunque Microsoft especifique que `%COMSPEC%` debe contener la ruta a `'cmd.exe'` en el entorno raíz, los procesos secundarios no siempre están sujetos a el mismo requerimiento. Así, en las funciones `child_process` donde un shell puede ser generado, se utiliza `'cmd.exe'` como un fallback si `process.env.ComSpec` no está disponible.
+Aunque Microsoft especifique que `%COMSPEC%` debe contener la ruta a `'cmd.exe'` en el entorno root, los procesos secundarios no siempre están sujetos al mismo requerimiento. Así, en las funciones `child_process` donde un shell puede ser generado, se utiliza `'cmd.exe'` como un fallback si `process.env.ComSpec` no está disponible.
