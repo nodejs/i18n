@@ -382,9 +382,9 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Renvoie : {Decipher} pour le chaînage de méthodes.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+Lorsque vous utilisez un mode de chiffrement authentifié (seuls `GCM` et `CCM` sont supportés pour l'instant), la méthode `decipher.setAAD()` définit la valeur utilisée pour le paramètre d'entrée *additional authenticated data* (AAD).
 
-The `decipher.setAAD()` method must be called before [`decipher.update()`][].
+La méthode `decipher.setAAD()` doit être appelée avant [`decipher.update()`][].
 
 ### decipher.setAuthTag(buffer)
 
@@ -398,7 +398,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Renvoie : {Cipher} pour le chaînage de méthodes.
+- Renvoie : {Decipher} pour le chaînage de méthodes.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
 
