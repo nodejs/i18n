@@ -4271,23 +4271,23 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 ## Banderas del Sistema de Archivos
 
-The following flags are available wherever the `flag` option takes a string:
+Las siguientes banderas están disponibles en donde sea que la opción de `flag` tome una string:
 
-* `'a'` - Open file for appending. El archivo se crea si no existe.
+* `'a'` - Archivo abierto para anexar. El archivo se crea si no existe.
 
-* `'ax'` - Like `'a'` but fails if the path exists.
+* `'ax'` - Como `'a'` pero falla si la ruta existe.
 
-* `'a+'` - Open file for reading and appending. El archivo se crea si no existe.
+* `'a+'` - Archivo abierto para leer y anexar. El archivo se crea si no existe.
 
-* `'ax+'` - Like `'a+'` but fails if the path exists.
+* `'ax+'` - Como `'a+'` pero falla si la ruta existe.
 
-* `'as'` - Open file for appending in synchronous mode. El archivo se crea si no existe.
+* `'as'` - Archivo abierto para anexar en modo sincrónico. El archivo se crea si no existe.
 
-* `'as+'` - Open file for reading and appending in synchronous mode. El archivo se crea si no existe.
+* `'as+'` - Archivo abierto para leer y anexar en modo sincrónico. El archivo se crea si no existe.
 
-* `'r'` - Open file for reading. Una excepción ocurre si el archivo no existe.
+* `'r'` - Archivo abierto para leer. Una excepción ocurre si el archivo no existe.
 
-* `'r+'` - Open file for reading and writing. Una excepción ocurre si el archivo no existe.
+* `'r+'` - Archivo abierto para leer y escribir. Una excepción ocurre si el archivo no existe.
 
 * `'rs+'` - Open file for reading and writing in synchronous mode. Instructs the operating system to bypass the local file system cache.
   
@@ -4297,11 +4297,11 @@ The following flags are available wherever the `flag` option takes a string:
 
 * `'w'` - Open file for writing. The file is created (if it does not exist) or truncated (if it exists).
 
-* `'wx'` - Like `'w'` but fails if the path exists.
+* `'wx'` - Como `'w'` pero falla si la ruta existe.
 
 * `'w+'` - Open file for reading and writing. The file is created (if it does not exist) or truncated (if it exists).
 
-* `'wx+'` - Like `'w+'` but fails if the path exists.
+* `'wx+'` - Como `'w+'` pero falla si la ruta existe.
 
 `flag` can also be a number as documented by open(2); commonly used constants are available from `fs.constants`. On Windows, flags are translated to their equivalent ones where applicable, e.g. `O_WRONLY` to `FILE_GENERIC_WRITE`, or `O_EXCL|O_CREAT` to `CREATE_NEW`, as accepted by `CreateFileW`.
 
