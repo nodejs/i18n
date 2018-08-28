@@ -17,15 +17,15 @@ Exemple d’utilisation de l'instance globale `console` :
 
 ```js
 console.log('hello world');
-// Écrit : hello world dans la sortie standard
+// Prints: hello world, to stdout
 console.log('hello %s', 'world');
-// Écrit : hello world dans la sortie standard
+// Prints: hello world, to stdout
 console.error(new Error('Whoops, something bad happened'));
- // Écrit : [Error: Whoops, something bad happened] dans la sortie standard
+// Prints: [Error: Whoops, something bad happened], to stderr
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Écrit : Danger Will Robinson! Danger! dans la sortie standard
+// Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
 Exemple d’utilisation de la classe `Console` :
@@ -36,15 +36,15 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Écrit : hello world dans out
+// Prints: hello world, to out
 myConsole.log('hello %s', 'world');
-// Écrit : hello world dans out
+// Prints: hello world, to out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Écrit [Error: Whoops, something bad happened] dans err
+// Prints: [Error: Whoops, something bad happened], to err
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Écrit : Danger Will Robinson! Danger! dans err
+// Prints: Danger Will Robinson! Danger!, to err
 ```
 
 ## Classe : Console
