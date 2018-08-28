@@ -227,7 +227,7 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Renvoie : {Buffer | string} Tout contenu chiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'base64'` or `'hex'`, une chaîne est revoyée. Si aucun `outputEncoding` n'est fourni, un [`Buffer`][] est renvoyé.
+- Renvoie : {Buffer | string} Tout contenu chiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'base64'` or `'hex'`, une chaîne est revoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
 
 Une fois la méthode `cipher.final()` appelée, l'objet `Cipher` ne peut plus être utilisé pour crypter des données. Appeler `cipher.final()` plus d'une fois génèrera une erreur.
 
@@ -290,22 +290,22 @@ changes:
 
 Met à jour le chiffrement avec `data`. Si l'argument `inputEncoding` est fourni, sa valeur doit être `'utf8'`, `'ascii'` ou `'latin1'` et l'argument `data` une chaîne dans l'encodage spécifié. Si l'argument `inputEncoding` est omis, `data` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
-`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'base64'` ou `'hex'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+`outputEncoding` spécifie le format de sortie des données chiffrées, et peut être `'latin1'`, `'base64'` ou `'hex'`. Si `outputEncoding` est spécifié, un chaîne utilisant cet encodage est renvoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
 
-The `cipher.update()` method can be called multiple times with new data until [`cipher.final()`][] is called. Calling `cipher.update()` after [`cipher.final()`][] will result in an error being thrown.
+La méthode `cipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`cipher.final()`][]. Appeler `cipher.update()` après [`cipher.final()`][] génèrera une erreur.
 
-## Class: Decipher
+## Classe : Decipher
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Instances of the `Decipher` class are used to decrypt data. The class can be used in one of two ways:
+Les instances de la classe `Decipher` sont utilisées pour déchiffre des données. La classe peut être utilisée de deux manières :
 
-- As a [stream](stream.html) that is both readable and writable, where plain encrypted data is written to produce unencrypted data on the readable side, or
-- Using the [`decipher.update()`][] and [`decipher.final()`][] methods to produce the unencrypted data.
+- En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données brutes cryptées sont écrites pour produire des données non cryptées côté lecture, ou bien
+- En utilisant les méthodes [`decipher.update()`][] and [`decipher.final()`][] pour produire les données non cryptées.
 
-The [`crypto.createDecipher()`][] or [`crypto.createDecipheriv()`][] methods are used to create `Decipher` instances. `Decipher` objects are not to be created directly using the `new` keyword.
+Les méthodes [`crypto.createDecipher()`][] ou [`crypto.createDecipheriv()`][] sont utilisées pour créer des instances de `Decipher`. `Decipher` objects are not to be created directly using the `new` keyword.
 
 Example: Using `Decipher` objects as streams:
 
