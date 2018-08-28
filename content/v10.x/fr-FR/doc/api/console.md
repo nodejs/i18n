@@ -92,17 +92,17 @@ changes:
   * `ignoreErrors` {boolean} ignore les erreurs lors de l’écriture dans les flux sous-jacents. **Par défaut :** `true`.
   * `colorMode` {boolean|string} Définit la prise en charge des couleurs pour cette instance de `Console`. Définir à `true` active le support des couleurs lors de l'inspection des valeurs, définir à `'auto'` rendra le support des couleurs dépendant de la valeur de la propriété `isTTY` et de la valeur retournée par `getColorDepth()` sur le flux respectif. **Par défaut :** `'auto'`.
 
-Crée une nouvelle `Console` avec une ou deux instances de flux accessibles en écriture. `stdout` est un flux accessible en écriture pour écrire des sorties de log ou d'information. `stderr` est utilisé pour des sorties d'avertissement ou d'erreur. Si `stderr` n’est pas fourni, `stdout` est utilisé comme `stderr`.
+Crée une nouvelle `Console` avec une ou deux instances de flux accessibles en écriture. `stdout` est un flux accessible en écriture pour écrire des sorties de log ou d'information. `stderr` est utilisé pour des sorties d'avertissement ou d'erreur. Si `stderr` n’est pas fourni, `stdout` est utilisé en tant que `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// simple logger personnalisé
+// custom simple logger
 const logger = new Console({ stdout: output, stderr: errorOutput });
-// à utiliser comme console
+// use it like console
 const count = 5;
 logger.log('count: %d', count);
-// dans stdout.log: count 5
+// in stdout.log: count 5
 ```
 
 L'instance globale `console` est une `Console` spéciale dont la sortie est envoyée à [`process.stdout`][] et [`process.stderr`][]. Cela équivaut à l’appel :
@@ -123,16 +123,16 @@ changes:
                  anymore.
 -->
 
-* `value` {any} La valeur testée devant être vraie.
+* `value` {any} La valeur testée comme étant vraie.
 * `...message` {any} Tous les arguments en plus de `valeur` sont utilisés comme message d’erreur.
 
-Un simple test d'assertion qui vérifie si la `valeur` est effectivement vraie. Si ce n’est pas le cas, `Assertion failed` est écrit. S'il est fourni, le `message` d’erreur est formaté via [`util.format()`][] en lui passant tous les arguments de message. La sortie est utilisée comme le message d’erreur.
+Un simple test d'assertion qui vérifie si la `valeur` est effectivement vraie. Si ce n’est pas le cas, `Assertion failed` est écrit. S'il est fourni, le `message` d’erreur est formaté via [`util.format()`][] en lui passant tous les arguments de message. Le résultat est utilisée comme le message d’erreur.
 
 ```js
 console.assert(true, 'does nothing');
 // OK
 console.assert(false, 'Whoops %s work', 'didn\'t');
-// Assertion fausse : Whoops didn't work
+// Assertion failed: Whoops didn't work
 ```
 
 Appeler `console.assert()` avec une assertion fausse ne provoquera que l'écriture du `message` dans la console, sans interrompre le code qui suit.
@@ -143,7 +143,7 @@ Appeler `console.assert()` avec une assertion fausse ne provoquera que l'écritu
 added: v8.3.0
 -->
 
-Lorsque `stdout` est un terminal, appeler `console.clear()` tentera d’effacer le terminal. Lorsque `stdout` n’est pas un terminal, cette méthode ne fait rien.
+Lorsque `stdout` est un terminal, appeler `console.clear()` tentera de vider le terminal. Lorsque `stdout` n’est pas un terminal, cette méthode ne fait rien.
 
 L’opération spécifique de `console.clear()` peut varier selon les systèmes d’exploitation et les types de terminaux. Pour la plupart des systèmes d’exploitation Linux, `console.clear()` fonctionne de manière similaire à la commande shell `clear`. Sous Windows, `console.clear()` effacera uniquement la sortie dans la fenêtre courante de terminal pour l'exécutable Node.js.
 
