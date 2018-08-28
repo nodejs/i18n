@@ -508,7 +508,7 @@ added: v0.5.0
 - `encoding` {string}
 - Renvoie : {Buffer | string}
 
-Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Renvoie le générateur Diffie-Hellman dans l'`encoding` spécifié, qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getPrime([encoding])
 
@@ -519,7 +519,7 @@ added: v0.5.0
 - `encoding` {string}
 - Renvoie : {Buffer | string}
 
-Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Renvoie le nombre premier Diffie-Hellman dans l'`encoding` spécifié, qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getPrivateKey([encoding])
 
@@ -530,7 +530,7 @@ added: v0.5.0
 - `encoding` {string}
 - Renvoie : {Buffer | string}
 
-Returns the Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Renvoie la clé privée Diffie-Hellman dans l'`encoding` spécifié, qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getPublicKey([encoding])
 
@@ -541,7 +541,7 @@ added: v0.5.0
 - `encoding` {string}
 - Renvoie : {Buffer | string}
 
-Returns the Diffie-Hellman public key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Renvoie la clé publique Diffie-Hellman dans l'`encoding` spécifié, qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.setPrivateKey(privateKey[, encoding])
 
@@ -552,7 +552,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the Diffie-Hellman private key. If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `privateKey` is expected to be a string. If no `encoding` is provided, `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Définit la clé privée Diffie-Hellman. Si l'argument `encoding` est fourni et de valeur `'latin1'`, `'hex'` ou `'base64'`, `privateKey` doit être une chaîne. Si `encoding` est omis, `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -563,7 +563,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the Diffie-Hellman public key. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `publicKey` is expected to be a string. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Définit la clé publique Diffie-Hellman. Si l'argument `encoding` est fourni et de valeur `'latin1'`, `'hex'` ou `'base64'`, `publicKey` doit être une chaîne. Si `encoding` est omis, `publicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 ### diffieHellman.verifyError
 
@@ -571,16 +571,16 @@ Sets the Diffie-Hellman public key. If the `encoding` argument is provided and i
 added: v0.11.12
 -->
 
-A bit field containing any warnings and/or errors resulting from a check performed during initialization of the `DiffieHellman` object.
+Un champ de bits contenant tous les avertissements et erreurs résultant d'un contrôle opéré lors de l'initialisation de l'objet `DiffieHellman`.
 
-The following values are valid for this property (as defined in `constants` module):
+Les valeurs suivantes sont valides pour cette propriété (comme définies dans le module `constants`) :
 
 - `DH_CHECK_P_NOT_SAFE_PRIME`
 - `DH_CHECK_P_NOT_PRIME`
 - `DH_UNABLE_TO_CHECK_GENERATOR`
 - `DH_NOT_SUITABLE_GENERATOR`
 
-## Class: ECDH
+## Classe : ECDH
 
 <!-- YAML
 added: v0.11.14
