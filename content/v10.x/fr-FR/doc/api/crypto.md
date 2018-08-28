@@ -400,9 +400,9 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Renvoie : {Decipher} pour le chaînage de méthodes.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
+Lorsque vous utilisez un mode de chiffrement authentifié (seuls `GCM` et `CCM` sont supportés pour l'instant), la méthode `decipher.setAuthTag()` est utilisée pour transmettre le *tag d'authentification* reçu. Si aucun tag n'est fourni ou si le texte chiffré a été falsifié [`decipher.final()`][] sera lancé, isera lancé, indiquant que le texte chiffré devrait être rejeté en raison de l'échec de l'authentification.
 
-Note that this Node.js version does not verify the length of GCM authentication tags. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Notez que cette version de Node.js ne vérifie pas la longueur du tag d'authentification GCM. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
 
