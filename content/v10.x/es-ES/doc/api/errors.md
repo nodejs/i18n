@@ -257,7 +257,7 @@ makeFaster();
 //       at node.js:906:3
 ```
 
-The location information will be one of:
+La información de ubicación será una de estas:
 
 - `native`, if the frame represents a call internal to V8 (as in `[].forEach`).
 - `plain-filename.js:line:column`, if the frame represents a call internal to Node.js.
@@ -269,24 +269,24 @@ The number of frames captured by the stack trace is bounded by the smaller of `E
 
 System-level errors are generated as augmented `Error` instances, which are detailed [here](#errors_system_errors).
 
-## Class: AssertionError
+## Clase: AssertionError (Error de Afirmación)
 
-A subclass of `Error` that indicates the failure of an assertion. For details, see [`Class: assert.AssertionError`][].
+Una subclase de `Error` que indica el fallo de una afirmación. Para detalles, vea [`Class: assert.AssertionError`][].
 
-## Class: RangeError
+## Clase: RangeError (Error de Rango)
 
-A subclass of `Error` that indicates that a provided argument was not within the set or range of acceptable values for a function; whether that is a numeric range, or outside the set of options for a given function parameter.
+Una subclase de `Error` que indica que un argumento proporcionado no estaba dentro del conjunto o rango de valores aceptables para una función, ya sea un rango númerico o esté fuera del conjunto de opciones para un parámetro de función dado.
 
 ```js
 require('net').connect(-1);
 // throws "RangeError: "port" option should be >= 0 and < 65536: -1"
 ```
 
-Node.js will generate and throw `RangeError` instances *immediately* as a form of argument validation.
+Node.js generará y arrojará instancias de `RangeError` *inmediatamente* como forma de validación de argumento.
 
-## Class: ReferenceError
+## Clase: ReferenceError (Error de Referencia)
 
-A subclass of `Error` that indicates that an attempt is being made to access a variable that is not defined. Such errors commonly indicate typos in code, or an otherwise broken program.
+Una subclase de `Error` que indica que se está haciendo un intento para acceder a una variable que no está definida. Such errors commonly indicate typos in code, or an otherwise broken program.
 
 While client code may generate and propagate these errors, in practice, only V8 will do so.
 
@@ -295,7 +295,7 @@ doesNotExist;
 // throws ReferenceError, doesNotExist is not a variable in this program.
 ```
 
-Unless an application is dynamically generating and running code, `ReferenceError` instances should always be considered a bug in the code or its dependencies.
+A menos que una aplicación esté dinámicamente generando y ejecutando código, instancias de `ReferenceError` deberían siempre ser consideradas un bug en el código o en sus dependencias.
 
 ## Class: SyntaxError
 
