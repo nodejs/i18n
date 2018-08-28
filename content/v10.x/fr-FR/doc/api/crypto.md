@@ -4,7 +4,7 @@
 
 > Stabilité: 2 - stable
 
-Le module `crypto` fournit des fonctionnalités cryptographiques incluant un jeu de wrappers pour les fonctions OpenSSL hash, HMAC, cipher, decipher, sign, et verify.
+Le module `crypto` fournit des fonctionnalités cryptographiques incluant un jeu de wrappers pour les fonctions de hachage, de HMAC, de chiffrement, de déchiffrement, de signature et de vérification d'OpenSSL.
 
 Utilisez `require('crypto')` pour accéder à ce module.
 
@@ -22,7 +22,7 @@ console.log(hash);
 
 ## Déterminer si le support de crypto est indisponible
 
-It is possible for Node.js to be built without including support for the `crypto` module. In such cases, calling `require('crypto')` will result in an error being thrown.
+Il est possible que Node.js soit construit sans le support du module `crypto`. Dans ce cas, l'appel à `require('crypto')` lèvera une erreur.
 
 ```js
 let crypto;
@@ -33,7 +33,7 @@ try {
 }
 ```
 
-## Class: Certificate
+## Classe : Certificate
 
 <!-- YAML
 added: v0.11.8
