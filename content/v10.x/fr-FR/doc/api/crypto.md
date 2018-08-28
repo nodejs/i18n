@@ -484,7 +484,7 @@ added: v0.5.0
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret est codé à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray`, ou un `DataView`.
+Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret est encodé à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 Si `outputEncoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
@@ -625,13 +625,13 @@ added: v10.0.0
 
 Convertit la clé publique de Courbe Elliptique Diffie-Hellman spécifié par `key` et `curve` au format spécifié par `format`. L'argument `format` spécifie l'encodage du point et peut être `'compressed'`, `'uncompressed'` ou `'hybrid'`. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et la clé renvoyée est encodée à l’aide de l'`outputEncoding` spécifié. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`.
 
-Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Utilisez [`crypto.getCurves()`][] pour obtenir une liste des noms de courbes disponibles. Sur les versions OpenSSL récentes, `openssl ecparam -list_curves` affichera également le noms et la description de chaque courbe elliptique disponible.
 
-If `format` is not specified the point will be returned in `'uncompressed'` format.
+Si `format` est omis, le point sera renvoyé au format `'uncompressed'`.
 
-If the `inputEncoding` is not provided, `key` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Si `inputEncoding` est omis, `key` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-Example (uncompressing a key):
+Exemple (décompression d'une clé) :
 
 ```js
 const { ECDH } = require('crypto');
@@ -671,7 +671,7 @@ changes:
 - `outputEncoding` {string}
 - Renvoie : {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret renvoyé est encodé à l’aide de l'`outputEncoding` spécifié. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
 If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
 
