@@ -65,7 +65,7 @@ El segundo método debería, en teoría, dar el mejor rendimiento. En la prácti
 
 Porque `server.listen()` delega la mayoría del trabajo a el proceso maestro, hay tres casos donde el comportamiento entre un proceso Node.js normal y un clúster difieren:
 
-1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
+1. `server.listen({fd: 7})` Porque el mensaje es pasado al maestro, el descriptor del archivo 7 **en el padre** va a ser listened, y el handle pasado a el worker, en vez de hacer listening a la idea del worker de que hace referencia el descriptor del archivo número 7.
 2. `server.listen(handle)` Usar Listen en los handles explícitamente causará que el worker use el handle suministrado, en vez de hablar con el proceso maestro.
 3. `server.listen(0)` Normalmente, esto causará que los servidores escuchen a un puerto aleatorio. Sin embargo, en un clúster, cada trabajador recibirá el mismo puerto "aleatorio" cada vez que hagan `listen(0)`. En esencia, el puerto es aleatorio la primera vez, pero predecible después de eso. Para hacer listen en un puerto único, genera un número de puerto basado en el ID del worker en el clúster.
 
@@ -158,11 +158,11 @@ added: v0.7.0
 * `message` {Object}
 * `handle` {undefined|Object}
 
-Similar to the `'message'` event of `cluster`, but specific to this worker.
+Similar al evento `'message'` del `cluster`, pero específico a este worker.
 
-Within a worker, `process.on('message')` may also be used.
+Dentro de un worker, `process.on('message')` también pudiera ser usado.
 
-See [`process` event: `'message'`][].
+Ve [`process` event: `'message'`][].
 
 As an example, here is a cluster that keeps count of the number of requests in the master process using the message system:
 
@@ -172,20 +172,20 @@ const http = require('http');
 
 if (cluster.isMaster) {
 
-  // Keep track of http requests
+  // Mantener un seguimiento de las peticiones http
   let numReqs = 0;
   setInterval(() => {
     console.log(`numReqs = ${numReqs}`);
   }, 1000);
 
-  // Count requests
+  // Contar peticiones
   function messageHandler(msg) {
     if (msg.cmd && msg.cmd === 'notifyRequest') {
       numReqs += 1;
     }
   }
 
-  // Start workers and listen for messages containing notifyRequest
+  // Comenzar los workers y listen para los mensakes que contengan notifyRequest
   const numCPUs = require('os').cpus().length;
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -197,7 +197,7 @@ if (cluster.isMaster) {
 
 } else {
 
-  // Worker processes have a http server.
+  // Los procesos Worker tienen un servidor http.
   http.Server((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
