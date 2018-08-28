@@ -862,14 +862,14 @@ Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en f
 added: v0.1.94
 -->
 
-The `Hmac` Class is a utility for creating cryptographic HMAC digests. It can be used in one of two ways:
+La classe `Hmac` est un utilitaire pour la création de condensés cryptographiques HMAC. Elle peut être utilisée de deux manières :
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed HMAC digest on the readable side, or
-- Using the [`hmac.update()`][] and [`hmac.digest()`][] methods to produce the computed HMAC digest.
+- En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données sont écrites pour produire un condensé HMAC côté lecture, ou bien
+- En utilisant les méthodes [`hmac.update()`][] et [`hmac.digest()`][] pour produire le condensé HMAC.
 
-The [`crypto.createHmac()`][] method is used to create `Hmac` instances. `Hmac` objects are not to be created directly using the `new` keyword.
+La méthode [`crypto.createHmac()`][] est utilisée pour créer les instances de `Hash`. Les objets `Hmac` ne doivent pas être créés directement avec le mot-clé `new`.
 
-Example: Using `Hmac` objects as streams:
+Exemple : Utilisation d'objets `Hmac` en tant que flux :
 
 ```js
 const crypto = require('crypto');
@@ -888,7 +888,7 @@ hmac.write('some data to hash');
 hmac.end();
 ```
 
-Example: Using `Hmac` and piped streams:
+Exemple : Utiliser `Hmac` et les flux bidirectionnels :
 
 ```js
 const crypto = require('crypto');
@@ -899,7 +899,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hmac).pipe(process.stdout);
 ```
 
-Example: Using the [`hmac.update()`][] and [`hmac.digest()`][] methods:
+Exemple : utilisation des méthodes [`hmac.update()`][] et [`hmac.digest()`][] :
 
 ```js
 const crypto = require('crypto');
