@@ -953,9 +953,9 @@ La classe `Sign` est un utilitaire pour générer des signatures. Elle peut êtr
 - En tant que [stream](stream.html), où les données à signer sont écrites et la méthode [`sign.sign()`][] est utilisée pour générer et renvoyer la signature, ou bien
 - En utilisant les méthodes [`sign.update()`][] et [`sign.sign()`][] pour produire la signature.
 
-The [`crypto.createSign()`][] method is used to create `Sign` instances. The argument is the string name of the hash function to use. `Sign` objects are not to be created directly using the `new` keyword.
+La méthode [`crypto.createSign()`][] est utilisée pour créer les instances de `Sign`. L’argument est le nom de chaîne de la fonction de hachage à utiliser. Les objets `Sign` ne doivent pas être créés directement avec le mot-clé `new`.
 
-Example: Using `Sign` objects as streams:
+Exemple : Utilisation d'objets `Sign` en tant que flux :
 
 ```js
 const crypto = require('crypto');
@@ -971,7 +971,7 @@ console.log(sign.sign(privateKey, 'hex'));
 // parameter below for RSASSA-PSS). For EC keys, the algorithm is ECDSA.
 ```
 
-Example: Using the [`sign.update()`][] and [`sign.sign()`][] methods:
+Exemple : utilisation des méthodes [`sign.update()`][] et [`sign.sign()`][] :
 
 ```js
 const crypto = require('crypto');
@@ -984,7 +984,7 @@ console.log(sign.sign(privateKey, 'hex'));
 // Prints: the calculated signature
 ```
 
-In some cases, a `Sign` instance can also be created by passing in a signature algorithm name, such as 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
+Dans certains cas, une instance de `Sign` peut aussi être créée en fournissant un nom de signature d’algorithme, tel que 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
 
 Example: signing using legacy signature algorithm name
 
