@@ -497,7 +497,7 @@ added: v0.5.0
 - `encoding` {string}
 - Renvoie : {Buffer | string}
 
-Génère des valeurs de clés Diffie-Hellman privée et publique, et retourne la clé publique dans l'`encoding` spécifié. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Génère des valeurs de clés Diffie-Hellman privée et publique, et retourne la clé publique dans l'`encoding` spécifié. Cette clé devrait être transférée à l'autre partie. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getGenerator([encoding])
 
