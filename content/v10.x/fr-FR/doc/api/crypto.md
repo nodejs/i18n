@@ -778,12 +778,12 @@ added: v0.1.92
 
 La classe `Hash` est un utilitaire pour créer des condensés de données de hachage. Elle peut être utilisée de deux manières :
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed hash digest on the readable side, or
-- Using the [`hash.update()`][] and [`hash.digest()`][] methods to produce the computed hash.
+- En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données sont écrites pour produire un condensé de données de hachage côté lecture, ou bien
+- En utilisant les méthodes [`hash.update()`][] et [`hash.digest()`][] pour produire le hachage.
 
-The [`crypto.createHash()`][] method is used to create `Hash` instances. `Hash` objects are not to be created directly using the `new` keyword.
+La méthode [`crypto.createHash()`][] est utilisée pour créer les instances de `Hash`. Les objets `Hash` ne doivent pas être créés directement avec le mot-clé `new`.
 
-Example: Using `Hash` objects as streams:
+Exemple : Utilisation d'objets `Hash` en tant que flux :
 
 ```js
 const crypto = require('crypto');
@@ -802,7 +802,7 @@ hash.write('some data to hash');
 hash.end();
 ```
 
-Example: Using `Hash` and piped streams:
+Exemple : Utiliser `Hash` et les flux bidirectionnels :
 
 ```js
 const crypto = require('crypto');
@@ -813,7 +813,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hash).pipe(process.stdout);
 ```
 
-Example: Using the [`hash.update()`][] and [`hash.digest()`][] methods:
+Exemple : utilisation des méthodes [`hash.update()`][] et [`hash.digest()`][] :
 
 ```js
 const crypto = require('crypto');
@@ -834,9 +834,9 @@ added: v0.1.92
 - `encoding` {string}
 - Renvoie : {Buffer | string}
 
-Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
+Calcule le condensé de toutes les données passées pour le hachage (via la méthode [`hash.update()`][]). L'`encoding` peut être `'hex'`, `'latin1'` ou `'base64'`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
-The `Hash` object can not be used again after `hash.digest()` method has been called. Multiple calls will cause an error to be thrown.
+L'objet `Hash` ne peut pas être à nouveau utilisé une fois la méthode `hash.digest()` appelée. Multiple calls will cause an error to be thrown.
 
 ### hash.update(data[, inputEncoding])
 
