@@ -227,7 +227,7 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Renvoie : {Buffer | string} Tout contenu chiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'base64'` or `'hex'`, une chaîne est revoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
+- Renvoie : {Buffer | string} Tout contenu chiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'base64'` ou `'hex'`, une chaîne est revoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
 
 Une fois la méthode `cipher.final()` appelée, l'objet `Cipher` ne peut plus être utilisé pour crypter des données. Appeler `cipher.final()` plus d'une fois génèrera une erreur.
 
@@ -239,7 +239,7 @@ added: v1.0.0
 
 - `buffer` {Buffer}
 - `options` {Object}
-- Renvoie : {Cipher} for pour le chaînage de méthodes.
+- Renvoie : {Cipher} pour le chaînage de méthodes.
 
 Lorsque vous utilisez un mode de chiffrement authentifié (seuls `GCM` et `CCM` sont supportés pour l'instant), la méthode `cipher.setAAD()` définit la valeur utilisée pour le paramètre d'entrée *additional authenticated data* (AAD).
 
@@ -264,7 +264,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Par défaut :** `true`
-- Renvoie : {Cipher} for pour le chaînage de méthodes.
+- Renvoie : {Cipher} pour le chaînage de méthodes.
 
 Lors de l'utilisation d'algorithmes de chiffrement par blocs, la classe `Cipher` ajoutera automatiquement du remplissage aux données d'entrée pour obtenir la taille de bloc appropriée. Pour désactiver le remplissage par défaut, appelez `cipher.setAutoPadding(false)`.
 
@@ -305,9 +305,9 @@ Les instances de la classe `Decipher` sont utilisées pour déchiffre des donné
 - En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données brutes cryptées sont écrites pour produire des données non cryptées côté lecture, ou bien
 - En utilisant les méthodes [`decipher.update()`][] and [`decipher.final()`][] pour produire les données non cryptées.
 
-Les méthodes [`crypto.createDecipher()`][] ou [`crypto.createDecipheriv()`][] sont utilisées pour créer des instances de `Decipher`. `Decipher` objects are not to be created directly using the `new` keyword.
+Les méthodes [`crypto.createDecipher()`][] ou [`crypto.createDecipheriv()`][] sont utilisées pour créer des instances de `Decipher`. Les objets `Decipher` ne doivent pas être créés directement avec le mot-clé `new`.
 
-Example: Using `Decipher` objects as streams:
+Exemple : Utilisation d'objets `Decipher` en tant que flux :
 
 ```js
 const crypto = require('crypto');
@@ -330,7 +330,7 @@ decipher.write(encrypted, 'hex');
 decipher.end();
 ```
 
-Example: Using `Decipher` and piped streams:
+Exemple : Utiliser `Decipher` et les flux bidirectionnels :
 
 ```js
 const crypto = require('crypto');
@@ -343,7 +343,7 @@ const output = fs.createWriteStream('test.js');
 input.pipe(decipher).pipe(output);
 ```
 
-Example: Using the [`decipher.update()`][] and [`decipher.final()`][] methods:
+Exemple : Utilisation des méthodes [`decipher.update()`][] et [`decipher.final()`][] :
 
 ```js
 const crypto = require('crypto');
@@ -364,9 +364,9 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Returns: {Buffer | string} Any remaining deciphered contents. If `outputEncoding` is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+- Renvoie : {Buffer | string} Tout contenu déchiffré restant. Si `outputEncoding` a pour valeur `'latin1'`, `'ascii'` ou `'utf8'`, une chaîne est renvoyée. Si `outputEncoding` n'est pas fourni, un [`Buffer`][] est renvoyé.
 
-Once the `decipher.final()` method has been called, the `Decipher` object can no longer be used to decrypt data. Attempts to call `decipher.final()` more than once will result in an error being thrown.
+Une fois la méthode `decipher.final()` appelée, l'objet `Decipher` ne peut plus être utilisé pour décrypter des données. Appeler `decipher.final()` plus d'une fois génèrera une erreur.
 
 ### decipher.setAAD(buffer)
 
@@ -380,7 +380,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Renvoie : {Cipher} for pour le chaînage de méthodes.
+- Renvoie : {Decipher} pour le chaînage de méthodes.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
@@ -398,7 +398,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Renvoie : {Cipher} for pour le chaînage de méthodes.
+- Renvoie : {Cipher} pour le chaînage de méthodes.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
 
@@ -413,7 +413,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Par défaut :** `true`
-- Renvoie : {Cipher} for pour le chaînage de méthodes.
+- Renvoie : {Cipher} pour le chaînage de méthodes.
 
 When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
 
