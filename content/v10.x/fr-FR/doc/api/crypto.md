@@ -486,7 +486,7 @@ added: v0.5.0
 
 Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de l’autre partie et retourne le secret partagé calculé. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et secret est codé à l’aide de l'`outputEncoding` spécifié. Les encodages peuvent être `'latin1'`, `'hex'` ou `'base64'`. Si `inputEncoding` est omis, `otherPublicKey` doit être un [`Buffer`][], un `TypedArray`, ou un `DataView`.
 
-If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Si `outputEncoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.generateKeys([encoding])
 
