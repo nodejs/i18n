@@ -4269,7 +4269,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
 </table>
 
-## File System Flags
+## Banderas del Sistema de Archivos
 
 The following flags are available wherever the `flag` option takes a string:
 
@@ -4305,13 +4305,13 @@ The following flags are available wherever the `flag` option takes a string:
 
 `flag` can also be a number as documented by open(2); commonly used constants are available from `fs.constants`. On Windows, flags are translated to their equivalent ones where applicable, e.g. `O_WRONLY` to `FILE_GENERIC_WRITE`, or `O_EXCL|O_CREAT` to `CREATE_NEW`, as accepted by `CreateFileW`.
 
-The exclusive flag `'x'` (`O_EXCL` flag in open(2)) ensures that path is newly created. On POSIX systems, path is considered to exist even if it is a symlink to a non-existent file. The exclusive flag may or may not work with network file systems.
+La bandera exclusiva `'x'` (bandera `O_EXCL` en open(2)) asegura que esa ruta sea creada recientemente. On POSIX systems, path is considered to exist even if it is a symlink to a non-existent file. The exclusive flag may or may not work with network file systems.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
 Modificar un archivo en vez de reemplazarlo puede que requiera un modo de banderas de `'r+'` en lugar del modo predeterminado `'w'`.
 
-El comportamiento de algunas banderas son específicas en la plataforma. As such, opening a directory on macOS and Linux with the `'a+'` flag - see example below - will return an error. En contraste, en Windows y FreeBSD, un descriptor de archivo o un `FileHandle` será devuelto.
+El comportamiento de algunas banderas son específicas en la plataforma. Y así, abrir un directorio en macOS y Linux con la bandera `'a+'` - vea el ejemplo a continuación - devolverá un error. En contraste, en Windows y FreeBSD, un descriptor de archivo o un `FileHandle` será devuelto.
 
 ```js
 // macOS and Linux
