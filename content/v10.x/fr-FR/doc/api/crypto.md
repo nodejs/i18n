@@ -743,9 +743,9 @@ deprecated: v5.2.0
 
 Définit la clé publique de Courbe Elliptique Diffie-Hellman. L'encodage peut être `'latin1'`, `'hex'` ou `'base64'`. Si `encoding` est fourni, `publicKey` doit être une chaîne ; sinon `publicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-Notez qu'il n'y a normalement pas de raison d'appeler cette méthode, parce qu'`ECDH` ne requiert qu'une clé privée et la clé publique de l'autre partie pour calculer le secret partagé. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
+Notez qu'il n'y a normalement pas de raison d'appeler cette méthode, parce qu'`ECDH` ne requiert qu'une clé privée et la clé publique de l'autre partie pour calculer le secret partagé. Généralement [`ecdh.generateKeys()`][] ou [`ecdh.setPrivateKey()`][] seront appelés. La méthode [`ecdh.setPrivateKey()`][] essaie de générer le point/clé public associé à la clé privée étant définie.
 
-Example (obtaining a shared secret):
+Exemple (obtenir un secret partagé) :
 
 ```js
 const crypto = require('crypto');
@@ -770,7 +770,7 @@ const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 console.log(aliceSecret === bobSecret);
 ```
 
-## Class: Hash
+## Classe : Hash
 
 <!-- YAML
 added: v0.1.92
