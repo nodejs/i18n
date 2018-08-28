@@ -195,7 +195,7 @@ cipher.write('some clear text data');
 cipher.end();
 ```
 
-Exemple : Utiliser `Cipher` et les piped streams :
+Exemple : Utiliser `Cipher` et les flux bidirectionnels :
 
 ```js
 const crypto = require('crypto');
@@ -208,7 +208,7 @@ const output = fs.createWriteStream('test.enc');
 input.pipe(cipher).pipe(output);
 ```
 
-Example: Using the [`cipher.update()`][] and [`cipher.final()`][] methods:
+Exemple : Utilisation des méthodes [`cipher.update()`][] et [`cipher.final()`][] :
 
 ```js
 const crypto = require('crypto');
