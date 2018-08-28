@@ -854,9 +854,9 @@ changes:
 
 Met à jour le contenu du hachage avec `data` fourni, dont l'encodage est donné dans `inputEncoding` et peut être `'utf8'`, `'ascii'` ou `'latin1'`. Si `encoding` est omis, et`data` est une chaîne, un encodage `'utf8'` est appliqué. Si `data` est un [`Buffer`][], un `TypedArray` ou un `DataView`, `inputEncoding` est ignoré.
 
-This can be called many times with new data as it is streamed.
+Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
-## Class: Hmac
+## Classe : Hmac
 
 <!-- YAML
 added: v0.1.94
