@@ -243,11 +243,11 @@ En el maestro, un mensaje interno es enviado al worker causando que llame a `.di
 
 Causa que se establezca `.exitedAfterDisconnect`.
 
-Ten en cuenta que después que un servidor es cerrado, no va a aceptar nuevas conexiones, pero conexiones pueden ser aceptadas por cualquier otro worker que esté haciendo listening. Las conexiones existentes van permitir cerrarse de manera usual. Cuando no existan más conexiones, ver [`server.close()`][], el canal IPC del worker va a cerrarse permitiendo que muera con elegancia.
+Ten en cuenta que después que un servidor es cerrado, no va a aceptar nuevas conexiones, pero conexiones pueden ser aceptadas por cualquier otro worker que esté haciendo listening. A las conexiones existentes se les permitirá cerrarse de manera usual. Cuando no existan más conexiones, ver [`server.close()`][], el canal IPC del worker va a cerrarse permitiendo que muera con elegancia.
 
-Lo anterior aplica *solamente* a las conexiones del servidor, las conexiones del cliente no son cerradas automáticamente por los workers, y al desconectar no espera a que ellos cierren antes de salir.
+Lo anterior aplica *solamente* a las conexiones del servidor, las conexiones del cliente no son cerradas automáticamente por los workers, y la desconexión no espera a que ellos se cierren antes de salir.
 
-Ten en cuenta que dentro de un worker, existe `process.disconnect`, pero no es está función, es [`disconnect`][].
+Tenga en cuenta que, dentro de un worker, existe `process.disconnect`, pero no es esta función, es [`disconnect`][].
 
 Porque las conexiones de servidor de vida larga pueden bloquear a los workers de desconectarse, pudiera ser útil enviar un mensaje, para que las acciones específicas de la aplicación pueda ser llevada a cerrarlos. Pudiera ser util implementar un tiempo de espera, matando a un worker si el evento `'disconnect'` no ha sido emitido después de un tiempo.
 
