@@ -15,7 +15,7 @@ Las aplicaciones que se ejecutan en Node.js generalmente experimentarán cuatro 
   - {URIError} : arrojado cuando se utiliza de manera incorrecta una función de manejo URI global.
 - Errores de sistema provocados por limitaciones de sistema operativo subyacentes, tales como intentar abrir un archivo que no existe, intentar enviar datos a través de un socket cerrado, etc;
 - Y errores de usuario específico provocados por códigos de aplicación.
-- Los `AssertionError` son una clase especial de error que pueden desencadenarse cada vez que Node.js detecta una violación lógica excepcional que nunca debería ocurrir. These are raised typically by the `assert` module.
+- Los `AssertionError` son una clase especial de error que pueden desencadenarse cada vez que Node.js detecta una violación lógica excepcional que nunca debería ocurrir. Estos son levantados típicamente por el módulo `assert`.
 
 Todos los errores de JavaScript y Sistema planteados por Node.js se heredan, o son casos, de la clase {Error} de JavaScript estándar y se garantiza que proporcionen, *al menos*, las propiedades disponibles en dicha clase.
 
@@ -116,7 +116,7 @@ fs.readFile('/some/file/that/does-not-exist', errorFirstCallback);
 fs.readFile('/some/file/that/does-exist', errorFirstCallback);
 ```
 
-El mecanismo `try / catch` de JavaScript **no puede** ser utilizado para interceptar errores generados por APIs asincrónicas. A common mistake for beginners is to try to use `throw` inside an error-first callback:
+El mecanismo `try / catch` de JavaScript **no puede** ser utilizado para interceptar errores generados por APIs asincrónicas. Un error común de principiantes es intentar utilizar `throw` dentro de un callback error-first:
 
 ```js
 // ESTO NO FUNCIONARÁ:
@@ -141,9 +141,9 @@ Esto no funcionará porque la función callback pasada a `fs.readFile()` es llam
 
 <!--type=class-->
 
-Un objeto `Error` de JavaScript genérico que no denota ninguna circunstancia específica de porqué el error ocurrió. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
+Un objeto `Error` de JavaScript genérico que no denota ninguna circunstancia específica de porqué el error ocurrió. Los objetos `Error` capturan un "stack trace" detallando el punto en el código en el cual el `Error` fue instanciado, y puede proporcionar una descripción de texto del error.
 
-For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
+Sólo para criptos, los objetos `Error` incluirán el stack de error de OpenSSL en una propiedad separada llamada `opensslErrorStack` si está disponible cuando se arroja el error.
 
 Todos los errores generados por Node.js, incluyendo todos los errores de Sistema y JavaScript, serán instancias o serán heredados de la clase `Error`.
 
@@ -151,14 +151,14 @@ Todos los errores generados por Node.js, incluyendo todos los errores de Sistema
 
 - `message` {string}
 
-Crea un nuevo objeto `Error` y establece la propiedad `error.message` al mensaje de texto proporcionado. Si se pasa un objeto como `message`, el mensaje de texto es generado llamando a `message.toString()`. La propiedad `error.stack` representará el punto en el código en el cual `new Error()` fue llamado. Stack traces are dependent on [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
+Crea un nuevo objeto `Error` y establece la propiedad `error.message` al mensaje de texto proporcionado. Si se pasa un objeto como `message`, el mensaje de texto es generado llamando a `message.toString()`. La propiedad `error.stack` representará el punto en el código en el cual `new Error()` fue llamado. Stack traces are dependent on [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Los stack traces se extienden a (a) el inicio de la *ejecución sincrónica de código* o (b) el número de frames dados por la propiedad `Error.stackTraceLimit`, lo que sea más pequeño.
 
 ### Error.captureStackTrace(targetObject[, constructorOpt])
 
 - `targetObject` {Object}
 - `constructorOpt` {Function}
 
-Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called.
+Crea una nueva propiedad `.stack` en `targetObject`, el cual al ser accedido devuelve una string que representa la ubicación en el código en la cual `Error.captureStackTrace()` fue llamado.
 
 ```js
 const myObject = {};
@@ -168,7 +168,7 @@ myObject.stack;  // similar a `new Error().stack`
 
 La primera línea de la traza tendrá como prefijo `${myObject.name}: ${myObject.message}`.
 
-El argumento opcional `constructorOpt` acepta una función. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
+El argumento opcional `constructorOpt` acepta una función. Si se le otorga, todos los cuerpos encima de `constructorOpt`, incluyendo `constructorOpt`, serán omitidos del stack trace generado.
 
 El argumento `constructorOpt` es útil para ocultar detalles de implementación de generación de errores de un usuario final. Por ejemplo:
 
@@ -187,11 +187,11 @@ new MyError().stack;
 
 - {number}
 
-The `Error.stackTraceLimit` property specifies the number of stack frames collected by a stack trace (whether generated by `new Error().stack` or `Error.captureStackTrace(obj)`).
+La propiedad `Error.stackTraceLimit` especifica el número de stack frames recogidos por un stack trace (ya sean generados por `new Error().stack` o `Error.captureStackTrace(obj)`).
 
-El valor por defecto es `10`, pero puede establecerse a cualquier número de JavaScript válido. Changes will affect any stack trace captured *after* the value has been changed.
+El valor por defecto es `10`, pero puede establecerse a cualquier número de JavaScript válido. Los cambos afectarán cualquier stack trace capturado *después* de que el valor haya sido cambiado.
 
-If set to a non-number value, or set to a negative number, stack traces will not capture any frames.
+Si se establece a un valor no numérico o a un valor negativo, los stack traces no capturarán ningún frame.
 
 ### error.code
 
