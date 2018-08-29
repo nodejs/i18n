@@ -4078,9 +4078,9 @@ The following constants are meant for use with [`fs.access()`][].
   </tr>
 </table>
 
-### File Copy Constants
+### Constantes de Copia de Archivo
 
-The following constants are meant for use with [`fs.copyFile()`][].
+Las siguientes constantes están destinadas para ser utilizadas con [`fs.copyFile()`][].
 
 <table>
   <tr>
