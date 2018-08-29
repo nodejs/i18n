@@ -385,7 +385,7 @@ Envía un mensaje a un worker o un maestro, opcionalmente con un handle.
 
 En el maestro, esto envía un mensaje a un worker específico. Es idéntico a [`ChildProcess.send()`][].
 
-In a worker this sends a message to the master. It is identical to `process.send()`.
+En un trabajador, esto envía un mensaje al maestro. Es idéntico a `process.send()`.
 
 This example will echo back all messages from the master:
 
