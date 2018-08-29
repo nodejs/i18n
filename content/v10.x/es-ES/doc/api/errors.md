@@ -6,7 +6,7 @@
 
 Las aplicaciones que se ejecutan en Node.js generalmente experimentarán cuatro categorías de errores:
 
-- Errores estándar de JavaScript tales como: 
+- Errores estándar de JavaScript, tales como: 
   - {EvalError} : arrojado cuando falla una llamada a `eval()`.
   - {SyntaxError} : arrojados en respuesta a sintaxis incorrecta del lenguaje JavaScript.
   - {RangeError} : arrojado cuando un valor no está dentro de un rango esperado
@@ -37,9 +37,9 @@ try {
 }
 ```
 
-Cualquier uso del mecanismo `throw` de JavaScript elevará una excepción que *debe* ser manejada usando `try / catch` o el proceso Node.js se cerrará inmediatamente.
+Cualquier uso del mecanismo `throw` de JavaScript levantará una excepción que *debe* ser manejada usando `try / catch`, o el proceso Node.js se cerrará inmediatamente.
 
-Con pocas excepciones, las APIs *Sincrónicas* (cualquier método de bloqueo que no acepte una función `callback`, como [`fs.readFileSync`][]), utilizará `throw` para informar errores.
+Con pocas excepciones, las APIs *Sincrónicas* (cualquier método de bloqueo que no acepte una función `callback`, como [`fs.readFileSync`][]) utilizarán `throw` para informar errores.
 
 Errores que ocurren dentro de *APIs Asincrónicas* pueden ser reportados de múltiples maneras:
 
@@ -74,7 +74,7 @@ Errores que ocurren dentro de *APIs Asincrónicas* pueden ser reportados de múl
   connection.pipe(process.stdout);
   ```
 
-- Un puñado de métodos típicamente asincrónicos en el API Node.js puede todavía usar el mecanismo `throw` para elevar excepciones que deben ser manejadas utilizando `try / catch`. No hay una lista comprensiva de dichos método; por favor, refiérase a la documentación de cada método para determinar el mecanismo manejador de errores apropiado requerido.
+- Un puñado de métodos típicamente asincrónicos en el API de Node.js puede todavía usar el mecanismo `throw` para levantar excepciones que deben ser manejadas utilizando `try / catch`. No hay una lista comprensiva de dichos método; por favor, refiérase a la documentación de cada método para determinar el mecanismo manejador de errores apropiado requerido.
 
 El uso del mecanismo del evento `'error'` es más común para APIs [basadas en streams](stream.html) y [basadas en emisor de eventos ](events.html#events_class_eventemitter), los cuales representan una serie de operaciones asincrónicas a lo largo del tiempo (a diferencia de una simple operación que puede aprobar o reprobar).
 
@@ -91,15 +91,15 @@ setImmediate(() => {
 });
 ```
 
-Los errores generados de esta manera *no pueden* ser interceptados usando `try / catch` ya que son arrojados *después* de que el código de llamada ha sido cerrado.
+Los errores generados de esta manera *no pueden* ser interceptados usando `try / catch`, ya que son arrojados *después* de que el código de llamada ha sido cerrado.
 
-Los desarrolladores deben referirse a la documentación de cada método para determinar exactamente cómo los errores elevados por estos métodos son propagados.
+Los desarrolladores deben referirse a la documentación de cada método para determinar exactamente cómo los errores levantados por estos métodos son propagados.
 
 ### Error-first callbacks
 
 <!--type=misc-->
 
-La mayoría de los métodos asincrónicos expuestos por el API core Node.js siguen un patrón idiomático denominado *error-first callback* (algunes veces referido como *callback de estilo Node.js*). Con este patrón se pasa una función callback al método como un argumento. Cuando la operación se complete o se eleve un error, se llama a la función callback con el objeto `Error` (si existe) pasado como el primer argumento. Si no se elevó ningún error, el primer argumento será pasado como `null`.
+La mayoría de los métodos asincrónicos expuestos por el API core de Node.js siguen un patrón idiomático denominado *error-first callback* (algunas veces referido como *callback de estilo Node.js*). Con este patrón, se pasa una función callback al método como un argumento. Cuando la operación se complete o se levante un error, se llama a la función callback con el objeto `Error` (si existe) pasado como el primer argumento. Si no se levantó ningún error, el primer argumento será pasado como `null`.
 
 ```js
 const fs = require('fs');
@@ -141,7 +141,7 @@ Esto no funcionará porque la función callback pasada a `fs.readFile()` es llam
 
 <!--type=class-->
 
-Un objeto `Error` de JavaScript genérico que no denote ninguna circunstancia específica de que el error ocurrió. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
+Un objeto `Error` de JavaScript genérico que no denota ninguna circunstancia específica de porqué el error ocurrió. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
 
 For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
 
@@ -189,7 +189,7 @@ new MyError().stack;
 
 The `Error.stackTraceLimit` property specifies the number of stack frames collected by a stack trace (whether generated by `new Error().stack` or `Error.captureStackTrace(obj)`).
 
-El valor por defecto es `10` pero puede establecerse a cualquier número de JavaScript válido. Changes will affect any stack trace captured *after* the value has been changed.
+El valor por defecto es `10`, pero puede establecerse a cualquier número de JavaScript válido. Changes will affect any stack trace captured *after* the value has been changed.
 
 If set to a non-number value, or set to a negative number, stack traces will not capture any frames.
 
@@ -225,7 +225,7 @@ Error: ¡Siguen ocurriendo cosas!
    at increaseSynergy (/home/gbusey/actors.js:701:6)
 ```
 
-The first line is formatted as `<error class name>: <error message>`, and is followed by a series of stack frames (each line beginning with "at "). Each frame describes a call site within the code that lead to the error being generated. V8 intenta mostrar un nombre por cada función (por nombre de la variable, nombre de la función o nombre del método del objeto), pero ocasionalmente no podrá encontrar un nombre adecuado. If V8 cannot determine a name for the function, only location information will be displayed for that frame. De lo contrario, el nombre de la función determinada será mostrada con la información de ubicación adjunta en paréntesis.
+The first line is formatted as `<error class name>: <error message>`, and is followed by a series of stack frames (each line beginning with "at "). Each frame describes a call site within the code that lead to the error being generated. V8 intenta mostrar un nombre para cada función (por nombre de la variable, nombre de la función o nombre del método del objeto), pero ocasionalmente no podrá encontrar un nombre adecuado. If V8 cannot determine a name for the function, only location information will be displayed for that frame. De lo contrario, el nombre de la función determinada será mostrado con la información de ubicación adjunta en paréntesis.
 
 Frames are only generated for JavaScript functions. If, for example, execution synchronously passes through a C++ addon function called `cheetahify` which itself calls a JavaScript function, the frame representing the `cheetahify` call will not be present in the stack traces:
 

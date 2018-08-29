@@ -6,7 +6,7 @@
 
 Una sola instancia de Node.js corre en un solo hilo. Para tomar ventaja de sistemas multi-núcleos, el usuario en algunas ocasiones querrá ejecutar un clúster de procesos Node.js para manejar la carga.
 
-El módulo clúster permite la creación fácil de procesos secundarios que todos comparten puertos del servidor.
+El módulo clúster permite la creación fácil de procesos secundarios que todos compartan puertos del servidor.
 
 ```js
 const cluster = require('cluster');
@@ -47,31 +47,31 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Por favor ten en cuenta que en Windows, aún no es posible establecer un servidor pipe en un worker.
+Por favor, tenga en cuenta que, en Windows, aún no es posible establecer un servidor pipe en un worker.
 
 ## Cómo Funciona
 
 <!--type=misc-->
 
-Los procesos worker son generados usando el método [`child_process.fork()`][], para que puedan comunicarse con su padre vía IPC y pasar los handles del servidor de de un lado a otro.
+Los procesos worker son generados usando el método [`child_process.fork()`][], para que puedan comunicarse con su proceso primario vía IPC y pasar los handles del servidor de un lado a otro.
 
 El módulo clúster soporta dos métodos de distribución de conexiones entrantes.
 
-El primer método (y el predeterminado en todas las plataformas menos Windows), es la planificación round-robin, donde el proceso maestro escucha en un puerto, acepta las nuevas conexiones y las distribuye a través de los workers de una manera round-robin, con mecanismos incorporados para evitar sobrecargar un proceso worker.
+El primer método (y el predeterminado en todas las plataformas menos Windows) es la planificación round-robin, donde el proceso maestro escucha en un puerto, acepta las nuevas conexiones y las distribuye a través de los workers de una manera round-robin, con mecanismos incorporados para evitar sobrecargar un proceso worker.
 
-El segundo método es donde el proceso maestro crea el conector listen y lo envía a los workers interesados. Los workers entonces aceptan las conexiones entrantes directamente.
+El segundo método es donde el proceso maestro crea el conector listen y lo envía a los workers interesados. Los workers, entonces, aceptan las conexiones entrantes directamente.
 
-El segundo método debería, en teoría, dar el mejor rendimiento. En la práctica sin embargo, la distribución tiende a ser muy desequilibrada debido a las divagancias del planificador del sistema operativo. Se han observado cargas donde más del 70% de todas las conexiones terminaron en solo dos procesos, de ocho en total.
+El segundo método debería, en teoría, dar el mejor rendimiento. En la práctica, sin embargo, la distribución tiende a ser muy desequilibrada, debido a las divagancias del planificador del sistema operativo. Se han observado cargas donde más del 70% de todas las conexiones terminaron en solo dos procesos, de ocho en total.
 
-Porque `server.listen()` delega la mayoría del trabajo a el proceso maestro, hay tres casos donde el comportamiento entre un proceso Node.js normal y un clúster difieren:
+Porque `server.listen()` delega la mayoría del trabajo al proceso maestro, hay tres casos en los que el comportamiento entre un proceso Node.js normal y un clúster difieren:
 
-1. `server.listen({fd: 7})` Porque el mensaje es pasado al maestro, el descriptor del archivo 7 **en el padre** va a ser listened, y el handle pasado a el worker, en vez de hacer listening a la idea del worker de que hace referencia el descriptor del archivo número 7.
+1. `server.listen({fd: 7})` Porque el mensaje es pasado al maestro, el descriptor del archivo 7 **en el proceso primario** va a ser escuchado, y el handle será pasado al worker, en vez de escuchar la idea del worker de aquello a lo que hace referencia el descriptor del archivo número 7.
 2. `server.listen(handle)` Usar Listen en los handles explícitamente causará que el worker use el handle suministrado, en vez de hablar con el proceso maestro.
 3. `server.listen(0)` Normalmente, esto causará que los servidores escuchen a un puerto aleatorio. Sin embargo, en un clúster, cada trabajador recibirá el mismo puerto "aleatorio" cada vez que hagan `listen(0)`. En esencia, el puerto es aleatorio la primera vez, pero predecible después de eso. Para hacer listen en un puerto único, genera un número de puerto basado en el ID del worker en el clúster.
 
-Node.js no provee lógica de enrutación. Es, por lo tanto importante diseñar una aplicación tal que no dependa mucho de objetos de data en la memoria para cosas como sesiones e inicios de sesiones.
+Node.js no provee lógica de enrutación. Es, por lo tanto, importante diseñar una aplicación tal que no dependa mucho de objetos de data en la memoria para asuntos como sesiones e inicios de sesiones.
 
-Porque los workers son todos procesos separados, pueden ser eliminados o regenerados dependiendo de las necesidades del programa, sin afectar a los otros workers. Mientras que existan workers vivos, el servidor va a seguir aceptando conexiones. Si ningún worker sigue vivo, las conexiones existentes van a ser perdidas y las nuevas conexiones serán rechazadas. Sin embargo, Node.js no maneja automáticamente el número de workers. Es la responsabilidad de la aplicación de manejar el grupo de worker basado en sus propias necesidades.
+Porque los workers son todos procesos separados, pueden ser eliminados o regenerados dependiendo de las necesidades del programa, sin afectar a los otros workers. Mientras que existan workers vivos, el servidor va a seguir aceptando conexiones. Si ningún worker sigue vivo, las conexiones existentes van a ser perdidas y las nuevas conexiones serán rechazadas. Sin embargo, Node.js no maneja automáticamente el número de workers. Es responsabilidad de la aplicación manejar el grupo de workers, basándose en sus propias necesidades.
 
 Aunque un caso de uso primario del módulo `cluster` es la creación de redes, también puede ser usado para otros casos que requieran procesos worker.
 
@@ -81,7 +81,7 @@ Aunque un caso de uso primario del módulo `cluster` es la creación de redes, t
 added: v0.7.0
 -->
 
-Un objeto `Worker` contiene toda la información pública y el método sonre un worker. En el maestro puede ser obtenido usando `cluster.workers`. En un worker puede ser obtenido usando `cluster.worker`.
+Un objeto `Worker` contiene toda la información pública y el método sobre un worker. En el maestro, puede ser obtenido usando `cluster.workers`. En un worker, puede ser obtenido usando `cluster.worker`.
 
 ### Evento: 'disconnect'
 
@@ -113,7 +113,7 @@ Dentro de un worker, `process.on('error')` también pudiera ser usado.
 added: v0.11.2
 -->
 
-* `code` {number} El código de salida, si se cerró por sí solo.
+* `code` {number} El código de salida, si se cerró de manera normal.
 * `signal` {string} El nombre de la señal (p. ej. `'SIGHUP'`) que causó que el proceso muriera.
 
 Similar al evento `cluster.on('exit')`, pero especifico a este worker.
@@ -185,7 +185,7 @@ if (cluster.isMaster) {
     }
   }
 
-  // Comenzar los workers y listen para los mensakes que contengan notifyRequest
+  // Dar inicio a los workers y escuchar atendiendo a mensajes que contengan notifyRequest
   const numCPUs = require('os').cpus().length;
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -239,17 +239,17 @@ changes:
 
 En un worker, esta función cierra todos los servidores, espera por el evento `'close'` en esos servidores, y luego desconecta el canal IPC.
 
-En el maestro, un mensaje interno es enviado al worker causando que llame a `.disconnect()` en si mismo.
+En el maestro, un mensaje interno es enviado al worker causando que llame a `.disconnect()` en sí mismo.
 
 Causa que se establezca `.exitedAfterDisconnect`.
 
-Ten en cuenta que después que un servidor es cerrado, no va a aceptar nuevas conexiones, pero conexiones pueden ser aceptadas por cualquier otro worker que esté haciendo listening. Las conexiones existentes van permitir cerrarse de manera usual. Cuando no existan más conexiones, ver [`server.close()`][], el canal IPC del worker va a cerrarse permitiendo que muera con elegancia.
+Tenga en cuenta que, después de que un servidor es cerrado, no va a aceptar nuevas conexiones, pero conexiones pueden ser aceptadas por cualquier otro worker que esté escuchando. A las conexiones existentes se les permitirá cerrarse de manera usual. Cuando no existan más conexiones, ver [`server.close()`][], el canal IPC del worker va a cerrarse permitiendo que muera con elegancia.
 
-Lo anterior aplica *solamente* a las conexiones del servidor, las conexiones del cliente no son cerradas automáticamente por los workers, y al desconectar no espera a que ellos cierren antes de salir.
+Lo anterior aplica *solamente* a las conexiones del servidor, las conexiones del cliente no son cerradas automáticamente por los workers, y la desconexión no espera a que ellos se cierren antes de salir.
 
-Ten en cuenta que dentro de un worker, existe `process.disconnect`, pero no es está función, es [`disconnect`][].
+Tenga en cuenta que, dentro de un worker, existe `process.disconnect`, pero no es esta función, es [`disconnect`][].
 
-Porque las conexiones de servidor de vida larga pueden bloquear a los workers de desconectarse, pudiera ser útil enviar un mensaje, para que las acciones específicas de la aplicación pueda ser llevada a cerrarlos. Pudiera ser util implementar un tiempo de espera, matando a un worker si el evento `'disconnect'` no ha sido emitido después de un tiempo.
+Ya que las conexiones de servidor de vida larga pueden bloquear a los workers de desconectarse, pudiera ser útil enviar un mensaje, de modo que acciones específicas de la aplicación puedan ser tomadas para cerrarlos. Pudiera ser útil implementar un tiempo de espera, matando a un worker si el evento `'disconnect'` no ha sido emitido después de un tiempo.
 
 ```js
 if (cluster.isMaster) {
@@ -317,7 +317,7 @@ added: v0.8.0
 
 A cada nuevo worker se le da su identificador único, este identificador es almacenado en `id`.
 
-Mientras un worker viva, esta es la llave que lo indica `cluster.workers`.
+Mientras un worker viva, esta es la clave que lo indexa en `cluster.workers`.
 
 ### worker.isConnected()
 

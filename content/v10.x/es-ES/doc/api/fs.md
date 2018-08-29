@@ -989,7 +989,7 @@ Cambia de manera asincrónica los permisos de un archivo. Ningún argumento que 
 
 Vea también: chmod(2).
 
-### File modes
+### Modos de archivo
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
@@ -2378,7 +2378,7 @@ Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
-If `path` resolves to a socket or a pipe, the function will return a system dependent name for that object.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
 
 ## fs.realpath.native(path[, options], callback)
 
@@ -2442,7 +2442,7 @@ Esta función se comporta como realpath(3), con algunas excepciones:
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para el valor devuelto. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
-If `path` resolves to a socket or a pipe, the function will return a system dependent name for that object.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
 
 ## fs.realpathSync.native(path[, options])
 
@@ -4167,9 +4167,9 @@ The following constants are meant for use with `fs.open()`.
   </tr>
 </table>
 
-### File Type Constants
+### Constantes de Tipo de Archivo
 
-The following constants are meant for use with the [`fs.Stats`][] object's `mode` property for determining a file's type.
+Las siguientes constantes están destinadas para ser utilizadas con la propiedad de `mode` del objeto de [`fs.Stats`][] para determinar el tipo de un archivo.
 
 <table>
   <tr>
@@ -4206,7 +4206,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IFSOCK</code></td>
-    <td>File type constant for a socket.</td>
+    <td>Constante de tipo de archivo para un socket.</td>
   </tr>
 </table>
 
@@ -4221,51 +4221,51 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
-    <td>File mode indicating readable, writable, and executable by owner.</td>
+    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRUSR</code></td>
-    <td>File mode indicating readable by owner.</td>
+    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IWUSR</code></td>
-    <td>File mode indicating writable by owner.</td>
+    <td>Modo de archivo que indica que puede ser editado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IXUSR</code></td>
-    <td>File mode indicating executable by owner.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRWXG</code></td>
-    <td>File mode indicating readable, writable, and executable by group.</td>
+    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IRGRP</code></td>
-    <td>File mode indicating readable by group.</td>
+    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IWGRP</code></td>
-    <td>File mode indicating writable by group.</td>
+    <td>Modo de archivo que indica que puede ser editado por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IXGRP</code></td>
-    <td>File mode indicating executable by group.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IRWXO</code></td>
-    <td>File mode indicating readable, writable, and executable by others.</td>
+    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por otros.</td>
   </tr>
   <tr>
     <td><code>S_IROTH</code></td>
-    <td>File mode indicating readable by others.</td>
+    <td>Modo de archivo que indica que puede ser leído por otros.</td>
   </tr>
   <tr>
     <td><code>S_IWOTH</code></td>
-    <td>File mode indicating writable by others.</td>
+    <td>Modo de archivo que indica que puede ser editado por otros.</td>
   </tr>
   <tr>
     <td><code>S_IXOTH</code></td>
-    <td>File mode indicating executable by others.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por otros.</td>
   </tr>
 </table>
 
@@ -4289,17 +4289,17 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'r+'` - Archivo abierto para leer y escribir. Una excepción ocurre si el archivo no existe.
 
-* `'rs+'` - Open file for reading and writing in synchronous mode. Instructs the operating system to bypass the local file system cache.
+* `'rs+'` - Archivo abierto para leer y escribir en modo sincrónico. Instructs the operating system to bypass the local file system cache.
   
   This is primarily useful for opening files on NFS mounts as it allows skipping the potentially stale local cache. It has a very real impact on I/O performance so using this flag is not recommended unless it is needed.
   
-  Note that this doesn't turn `fs.open()` or `fsPromises.open()` into a synchronous blocking call. If synchronous operation is desired, something like `fs.openSync()` should be used.
+  Tenga en cuenta que esto no convierte a `fs.open()` o a `fsPromises.open()` en una llamada sincrónica de bloqueo. Si se desea una operación sincrónica, debería utilizarse algo como `fs.openSync()` .
 
-* `'w'` - Open file for writing. The file is created (if it does not exist) or truncated (if it exists).
+* `'w'` - Archivo abierto para escribir. El archivo es creado (si no existe) o truncado (si existe).
 
 * `'wx'` - Como `'w'` pero falla si la ruta existe.
 
-* `'w+'` - Open file for reading and writing. The file is created (if it does not exist) or truncated (if it exists).
+* `'w+'` - Archivo abierto para leer y escribir. El archivo es creado (si no existe) o truncado (si existe).
 
 * `'wx+'` - Como `'w+'` pero falla si la ruta existe.
 
