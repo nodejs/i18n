@@ -4028,26 +4028,53 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>F_OK</code></td>
-    <td>Flag indicating that the file is visible to the calling process.</td>
+    <td>
+      <code>F_OK</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file is visible to the calling process.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>R_OK</code></td>
-    <td>Flag indicating that the file can be read by the calling process.</td>
+    <td>
+      <code>R_OK</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file can be read by the calling process.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>W_OK</code></td>
-    <td>Flag indicating that the file can be written by the calling
-    process.</td>
+    <td>
+      <code>W_OK</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file can be written by the calling process.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>X_OK</code></td>
-    <td>Flag indicating that the file can be executed by the calling
-    process.</td>
+    <td>
+      <code>X_OK</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file can be executed by the calling process.
+    </td>
   </tr>
 </table>
 
@@ -4057,113 +4084,219 @@ The following constants are meant for use with [`fs.copyFile()`][].
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>COPYFILE_EXCL</code></td>
-    <td>If present, the copy operation will fail with an error if the
-    destination path already exists.</td>
+    <td>
+      <code>COPYFILE_EXCL</code>
+    </td>
+    
+    <td>
+      If present, the copy operation will fail with an error if the destination path already exists.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>COPYFILE_FICLONE</code></td>
-    <td>If present, the copy operation will attempt to create a
-    copy-on-write reflink. If the underlying platform does not support
-    copy-on-write, then a fallback copy mechanism is used.</td>
+    <td>
+      <code>COPYFILE_FICLONE</code>
+    </td>
+    
+    <td>
+      If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform does not support copy-on-write, then a fallback copy mechanism is used.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>COPYFILE_FICLONE_FORCE</code></td>
-    <td>If present, the copy operation will attempt to create a
-    copy-on-write reflink. If the underlying platform does not support
-    copy-on-write, then the operation will fail with an error.</td>
+    <td>
+      <code>COPYFILE_FICLONE_FORCE</code>
+    </td>
+    
+    <td>
+      If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform does not support copy-on-write, then the operation will fail with an error.
+    </td>
   </tr>
 </table>
 
-### File Open Constants
+### Constantes Abiertas de Archivo
 
-The following constants are meant for use with `fs.open()`.
+Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>O_RDONLY</code></td>
-    <td>Flag indicating to open a file for read-only access.</td>
+    <td>
+      <code>O_RDONLY</code>
+    </td>
+    
+    <td>
+      Bandera que indica que al abrir un archivo, este sólo dará acceso para ser leído.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_WRONLY</code></td>
-    <td>Flag indicating to open a file for write-only access.</td>
+    <td>
+      <code>O_WRONLY</code>
+    </td>
+    
+    <td>
+      Bandera que indica que al abrir un archivo, este sólo dará acceso para ser editado.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_RDWR</code></td>
-    <td>Flag indicating to open a file for read-write access.</td>
+    <td>
+      <code>O_RDWR</code>
+    </td>
+    
+    <td>
+      Bandera que indica que al abrir un archivo, este dará acceso para ser leído o editado.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_CREAT</code></td>
-    <td>Flag indicating to create the file if it does not already exist.</td>
+    <td>
+      <code>O_CREAT</code>
+    </td>
+    
+    <td>
+      Bandera que indica que creará un archivo, si este aún no existe.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_EXCL</code></td>
-    <td>Flag indicating that opening a file should fail if the
-    <code>O_CREAT</code> flag is set and the file already exists.</td>
+    <td>
+      <code>O_EXCL</code>
+    </td>
+    
+    <td>
+      Bandera que indica que al abrir un archivo deberían haber fallas si la bandera <code>O_CREAT</code> está establecida y el archivo ya existe.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_NOCTTY</code></td>
-    <td>Flag indicating that if path identifies a terminal device, opening the
-    path shall not cause that terminal to become the controlling terminal for
-    the process (if the process does not already have one).</td>
+    <td>
+      <code>O_NOCTTY</code>
+    </td>
+    
+    <td>
+      Flag indicating that if path identifies a terminal device, opening the path shall not cause that terminal to become the controlling terminal for the process (if the process does not already have one).
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_TRUNC</code></td>
-    <td>Flag indicating that if the file exists and is a regular file, and the
-    file is opened successfully for write access, its length shall be truncated
-    to zero.</td>
+    <td>
+      <code>O_TRUNC</code>
+    </td>
+    
+    <td>
+      Flag indicating that if the file exists and is a regular file, and the file is opened successfully for write access, its length shall be truncated to zero.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_APPEND</code></td>
-    <td>Bandera que indica que los datos serán anexados al final del archivo.</td>
+    <td>
+      <code>O_APPEND</code>
+    </td>
+    
+    <td>
+      Bandera que indica que los datos serán anexados al final del archivo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_DIRECTORY</code></td>
-    <td>Flag indicating that the open should fail if the path is not a
-    directory.</td>
+    <td>
+      <code>O_DIRECTORY</code>
+    </td>
+    
+    <td>
+      Flag indicating that the open should fail if the path is not a directory.
+    </td>
   </tr>
+  
   <tr>
-  <td><code>O_NOATIME</code></td>
-    <td>Flag indicating reading accesses to the file system will no longer
-    result in an update to the `atime` information associated with the file.
-    This flag is available on Linux operating systems only.</td>
+    <td>
+      <code>O_NOATIME</code>
+    </td>
+    
+    <td>
+      Flag indicating reading accesses to the file system will no longer result in an update to the `atime` information associated with the file. This flag is available on Linux operating systems only.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_NOFOLLOW</code></td>
-    <td>Flag indicating that the open should fail if the path is a symbolic
-    link.</td>
+    <td>
+      <code>O_NOFOLLOW</code>
+    </td>
+    
+    <td>
+      Flag indicating that the open should fail if the path is a symbolic link.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_SYNC</code></td>
-    <td>Flag indicating that the file is opened for synchronized I/O with write
-    operations waiting for file integrity.</td>
+    <td>
+      <code>O_SYNC</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file is opened for synchronized I/O with write operations waiting for file integrity.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_DSYNC</code></td>
-    <td>Flag indicating that the file is opened for synchronized I/O with write
-    operations waiting for data integrity.</td>
+    <td>
+      <code>O_DSYNC</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file is opened for synchronized I/O with write operations waiting for data integrity.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_SYMLINK</code></td>
-    <td>Flag indicating to open the symbolic link itself rather than the
-    resource it is pointing to.</td>
+    <td>
+      <code>O_SYMLINK</code>
+    </td>
+    
+    <td>
+      Flag indicating to open the symbolic link itself rather than the resource it is pointing to.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_DIRECT</code></td>
-    <td>When set, an attempt will be made to minimize caching effects of file
-    I/O.</td>
+    <td>
+      <code>O_DIRECT</code>
+    </td>
+    
+    <td>
+      When set, an attempt will be made to minimize caching effects of file I/O.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_NONBLOCK</code></td>
-    <td>Flag indicating to open the file in nonblocking mode when possible.</td>
+    <td>
+      <code>O_NONBLOCK</code>
+    </td>
+    
+    <td>
+      Flag indicating to open the file in nonblocking mode when possible.
+    </td>
   </tr>
 </table>
 
@@ -4173,99 +4306,229 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>S_IFMT</code></td>
-    <td>Bit mask used to extract the file type code.</td>
+    <td>
+      <code>S_IFMT</code>
+    </td>
+    
+    <td>
+      Bit mask used to extract the file type code.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFREG</code></td>
-    <td>File type constant for a regular file.</td>
+    <td>
+      <code>S_IFREG</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un archivo normal.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFDIR</code></td>
-    <td>File type constant for a directory.</td>
+    <td>
+      <code>S_IFDIR</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un directorio.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFCHR</code></td>
-    <td>File type constant for a character-oriented device file.</td>
+    <td>
+      <code>S_IFCHR</code>
+    </td>
+    
+    <td>
+      File type constant for a character-oriented device file.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFBLK</code></td>
-    <td>File type constant for a block-oriented device file.</td>
+    <td>
+      <code>S_IFBLK</code>
+    </td>
+    
+    <td>
+      File type constant for a block-oriented device file.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFIFO</code></td>
-    <td>File type constant for a FIFO/pipe.</td>
+    <td>
+      <code>S_IFIFO</code>
+    </td>
+    
+    <td>
+      File type constant for a FIFO/pipe.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFLNK</code></td>
-    <td>File type constant for a symbolic link.</td>
+    <td>
+      <code>S_IFLNK</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un enlace simbólico.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFSOCK</code></td>
-    <td>Constante de tipo de archivo para un socket.</td>
+    <td>
+      <code>S_IFSOCK</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un socket.
+    </td>
   </tr>
 </table>
 
-### File Mode Constants
+### Constantes de Modo de Archivo
 
-The following constants are meant for use with the [`fs.Stats`][] object's `mode` property for determining the access permissions for a file.
+Las siguientes constantes están destinadas para ser utilizadas con la propiedad `mode` del objeto de [`fs.Stats`][] para determinar los permisos de acceso de una archivo.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>S_IRWXU</code></td>
-    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el propietario.</td>
+    <td>
+      <code>S_IRWXU</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRUSR</code></td>
-    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
+    <td>
+      <code>S_IRUSR</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser leído por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IWUSR</code></td>
-    <td>Modo de archivo que indica que puede ser editado por el propietario.</td>
+    <td>
+      <code>S_IWUSR</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser editado por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IXUSR</code></td>
-    <td>Modo de archivo que indica que puede ser ejecutado por el propietario.</td>
+    <td>
+      <code>S_IXUSR</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser ejecutado por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRWXG</code></td>
-    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el grupo.</td>
+    <td>
+      <code>S_IRWXG</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el grupo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRGRP</code></td>
-    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
+    <td>
+      <code>S_IRGRP</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser leído por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IWGRP</code></td>
-    <td>Modo de archivo que indica que puede ser editado por el grupo.</td>
+    <td>
+      <code>S_IWGRP</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser editado por el grupo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IXGRP</code></td>
-    <td>Modo de archivo que indica que puede ser ejecutado por el grupo.</td>
+    <td>
+      <code>S_IXGRP</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser ejecutado por el grupo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRWXO</code></td>
-    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por otros.</td>
+    <td>
+      <code>S_IRWXO</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que es legible, editable y que puede ser ejecutado por otros.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IROTH</code></td>
-    <td>Modo de archivo que indica que puede ser leído por otros.</td>
+    <td>
+      <code>S_IROTH</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser leído por otros.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IWOTH</code></td>
-    <td>Modo de archivo que indica que puede ser editado por otros.</td>
+    <td>
+      <code>S_IWOTH</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser editado por otros.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IXOTH</code></td>
-    <td>Modo de archivo que indica que puede ser ejecutado por otros.</td>
+    <td>
+      <code>S_IXOTH</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser ejecutado por otros.
+    </td>
   </tr>
 </table>
 
