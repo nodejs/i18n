@@ -558,7 +558,7 @@ added: v0.7.1
 
 Emitido cada vez que se llama `.setupMaster()`.
 
-The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
+El objeto `settings` es el objeto `cluster.settings` al momento que `.setupMaster()` fue llamado y solo es consultivo, ya que pueden hacerse varias llamadas a `.setupMaster()` en un solo tic.
 
 If accuracy is important, use `cluster.settings`.
 
