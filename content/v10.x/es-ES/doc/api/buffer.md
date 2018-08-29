@@ -786,24 +786,24 @@ added: v0.1.101
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
-### Class Method: Buffer.isEncoding(encoding)
+### Método de Clase: Buffer.isEncoding(encoding)
 
 <!-- YAML
 added: v0.9.1
 -->
 
-* `encoding` {string} A character encoding name to check.
-* Returns: {boolean}
+* `encoding` {string} Un nombre de codificación de caracteres para verificar.
+* Devuelve: {boolean}
 
-Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
+Devuelve `true` si `encoding` contiene una codificación de caracteres admitida, o `false` de lo contrario.
 
-### Class Property: Buffer.poolSize
+### Propiedad de Clase: Buffer.poolSize
 
 <!-- YAML
 added: v0.11.3
 -->
 
-* {integer} **Default:** `8192`
+* {integer} **Predeterminado:** `8192`
 
 This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. This value may be modified.
 
