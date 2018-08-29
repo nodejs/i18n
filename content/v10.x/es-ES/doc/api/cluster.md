@@ -387,7 +387,7 @@ En el maestro, esto envía un mensaje a un worker específico. Es idéntico a [`
 
 En un trabajador, esto envía un mensaje al maestro. Es idéntico a `process.send()`.
 
-This example will echo back all messages from the master:
+Este ejemplo va a devolver todos los mensajes del maestro:
 
 ```js
 if (cluster.isMaster) {
@@ -401,7 +401,7 @@ if (cluster.isMaster) {
 }
 ```
 
-## Event: 'disconnect'
+## Evento: 'disconnect'
 
 <!-- YAML
 added: v0.7.9
@@ -409,9 +409,9 @@ added: v0.7.9
 
 * `worker` {cluster.Worker}
 
-Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed, or is disconnected manually (such as with `worker.disconnect()`).
+Emitido después que el canal IPC del worker ha sido desconectado. Esto puede ocurrir cuando un trabajador sale con elegancia, es matado, o es desconectado manualmente (por ejemplo `worker.disconnect()`).
 
-There may be a delay between the `'disconnect'` and `'exit'` events. These events can be used to detect if the process is stuck in a cleanup or if there are long-living connections.
+Puede existir una demora entre los eventos `'disconnect'` y `'exit'`. These events can be used to detect if the process is stuck in a cleanup or if there are long-living connections.
 
 ```js
 cluster.on('disconnect', (worker) => {
