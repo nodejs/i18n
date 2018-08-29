@@ -784,7 +784,7 @@ added: v0.1.101
 * `obj` {Object}
 * Devuelve: {boolean}
 
-Returns `true` if `obj` is a `Buffer`, `false` otherwise.
+Devuelve `true` si `obj` es un `Buffer`, de lo contrario devuelve `false`.
 
 ### Método de Clase: Buffer.isEncoding(encoding)
 
@@ -805,7 +805,7 @@ added: v0.11.3
 
 * {integer} **Predeterminado:** `8192`
 
-This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. This value may be modified.
+This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. Este valor puede ser modificado.
 
 ### buf[index]
 
