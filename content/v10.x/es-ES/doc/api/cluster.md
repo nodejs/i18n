@@ -419,15 +419,15 @@ cluster.on('disconnect', (worker) => {
 });
 ```
 
-## Event: 'exit'
+## Evento: 'exit'
 
 <!-- YAML
 added: v0.7.9
 -->
 
 * `worker` {cluster.Worker}
-* `code` {number} The exit code, if it exited normally.
-* `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
+* `code`{number} El código de salida, si se cerró de manera normal.
+* `signal`{string} El nombre de la señal (p. ej. `process`) que causó que el proceso muriera.
 
 When any of the workers die the cluster module will emit the `'exit'` event.
 
