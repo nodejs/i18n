@@ -1061,12 +1061,12 @@ added: v0.1.92
 
 La classe `Verify` est un utilitaire pour vérifier des signatures. Elle peut être utilisée de deux manières :
 
-- As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
-- Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
+- En tant que [stream](stream.html), où les données écrites sont utilisées pour valider avec la signature fournie, ou bien
+- En utilisant les méthodes [`verify.update()`][] et [`verify.verify()`][] pour vérifier la signature.
 
-The [`crypto.createVerify()`][] method is used to create `Verify` instances. `Verify` objects are not to be created directly using the `new` keyword.
+La méthode [`crypto.createVerify()`][] est utilisée pour créer les instances de `Verify`. Les objets `Verify` ne doivent pas être créés directement avec le mot-clé `new`.
 
-Example: Using `Verify` objects as streams:
+Exemple : Utilisation d'objets `Sign` en tant que flux :
 
 ```js
 const crypto = require('crypto');
@@ -1081,7 +1081,7 @@ console.log(verify.verify(publicKey, signature));
 // Prints: true or false
 ```
 
-Example: Using the [`verify.update()`][] and [`verify.verify()`][] methods:
+Exemple : utilisation des méthodes [`verify.update()`][] et [`verify.verify()`][] :
 
 ```js
 const crypto = require('crypto');
