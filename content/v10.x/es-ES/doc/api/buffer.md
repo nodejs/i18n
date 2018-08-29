@@ -477,7 +477,7 @@ changes:
 
 Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *sin inicializar*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc()`] en su lugar para inicializar las instancias de `Buffer` con ceros.
+La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *sin inicializar*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. En su lugar, utilice [`Buffer.alloc()`] para inicializar las instancias de `Buffer` con ceros.
 
 ```js
 const buf = Buffer.allocUnsafe(10);
@@ -507,7 +507,7 @@ added: v5.12.0
 
 Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-La memoria subyacente para instancias de `Buffer` creadas de esta manera está *no inicializadas*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`buf.fill(0)`][`buf.fill()`] para inicializar dichas instancias de `Buffer` con ceros.
+La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *sin inicializar*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`buf.fill(0)`][`buf.fill()`] para inicializar dichas instancias de `Buffer` con ceros.
 
 Cuando se utiliza [`Buffer.allocUnsafe()`] para asignar nuevas instancias de `Buffer`, las asignaciones menores a 4KB se segmentan desde un solo `Buffer` asignado previamente. Esto permite a las aplicaciones evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente. Este enfoque mejora el rendimiento y el uso de la memoria al eliminar la necesidad de rastrear y limpiar muchos objetos persistentes.
 
