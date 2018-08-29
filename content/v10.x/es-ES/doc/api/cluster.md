@@ -540,7 +540,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-After forking a new worker, the worker should respond with an online message. When the master receives an online message it will emit this event. The difference between `'fork'` and `'online'` is that fork is emitted when the master forks a worker, and `'online'` is emitted when the worker is running.
+Después de bifurcar un nuevo worker, el worker debería responder con un mensaje en línea. Cuando el maestro reciba un mensaje en línea va a emitir este evento. La diferencia entre `'fork'` y `'online'` es que, el evento bifurcar es emitido cuando el maestro bifurca un worker, y el evento `'online'` es emitido cuando el worker está corriendo.
 
 ```js
 cluster.on('online', (worker) => {
@@ -548,7 +548,7 @@ cluster.on('online', (worker) => {
 });
 ```
 
-## Event: 'setup'
+## Evento: 'setup'
 
 <!-- YAML
 added: v0.7.1
@@ -556,7 +556,7 @@ added: v0.7.1
 
 * `settings` {Object}
 
-Emitted every time `.setupMaster()` is called.
+Emitido cada vez que se llama `.setupMaster()`.
 
 The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
 
