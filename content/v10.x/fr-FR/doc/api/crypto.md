@@ -1129,15 +1129,15 @@ changes:
 - `signatureFormat` {string}
 - Renvoie : {boolean} `true` or `false` selon la validité de la signature pour les données et la clé publique.
 
-Vérifie les données fournies en utilisant `object` et `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Vérifie les données fournies en utilisant `object` et `signature`. L'argument `object` peut être soit un chaîne contenant un objet encodé au format PEM - pouvant être une clé publique RSA, une clé publique DSA ou un certificat X.509 - soit un objet avec au moins une des propriétés suivantes :
 
-- `key`: {string} - PEM encoded public key (required)
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - clé publique encodée au format PEM (requis)
+- `padding`: {integer} - valeur de remplissage optionnelle pour RSA, une des suivantes :
   
-  - `crypto.constants.RSA_PKCS1_PADDING` (default)
+  - `crypto.constants.RSA_PKCS1_PADDING` (par défaut)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Notez que `RSA_PKCS1_PSS_PADDING` utilisera MGF1 avec la même fonction de hachage utilisée pour vérifier le message comme spécifié dans la section 3.1 de la [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
 - `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
 
