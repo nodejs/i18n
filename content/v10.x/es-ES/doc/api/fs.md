@@ -4022,9 +4022,9 @@ Las siguientes constantes son exportadas por `fs.constants`.
 
 Not every constant will be available on every operating system.
 
-### File Access Constants
+### Constantes de Acceso de Archivo
 
-The following constants are meant for use with [`fs.access()`][].
+Las siguientes constantes están destinadas para ser utilizadas con [`fs.access()`][].
 
 <table>
   <tr>
@@ -4043,7 +4043,7 @@ The following constants are meant for use with [`fs.access()`][].
     </td>
     
     <td>
-      Flag indicating that the file is visible to the calling process.
+      Bandera que indica que el archivo es visible para el proceso de llamada.
     </td>
   </tr>
   
@@ -4053,7 +4053,7 @@ The following constants are meant for use with [`fs.access()`][].
     </td>
     
     <td>
-      Flag indicating that the file can be read by the calling process.
+      Bandera que indica que el archivo puede ser leído por el proceso de llamada.
     </td>
   </tr>
   
@@ -4063,7 +4063,7 @@ The following constants are meant for use with [`fs.access()`][].
     </td>
     
     <td>
-      Flag indicating that the file can be written by the calling process.
+      Bandera que indica que el archivo puede ser escrito por el proceso de llamada.
     </td>
   </tr>
   
@@ -4099,7 +4099,7 @@ Las siguientes constantes están destinadas para ser utilizadas con [`fs.copyFil
     </td>
     
     <td>
-      If present, the copy operation will fail with an error if the destination path already exists.
+      Si está presente, la operación de copia fallará con un error si la ruta de destino ya existe.
     </td>
   </tr>
   
