@@ -6,7 +6,7 @@
 
 Las aplicaciones que se ejecutan en Node.js generalmente experimentarán cuatro categorías de errores:
 
-- Errores estándar de JavaScript tales como: 
+- Errores estándar de JavaScript, tales como: 
   - {EvalError} : arrojado cuando falla una llamada a `eval()`.
   - {SyntaxError} : arrojados en respuesta a sintaxis incorrecta del lenguaje JavaScript.
   - {RangeError} : arrojado cuando un valor no está dentro de un rango esperado
@@ -37,7 +37,7 @@ try {
 }
 ```
 
-Cualquier uso del mecanismo `throw` de JavaScript elevará una excepción que *debe* ser manejada usando `try / catch` o el proceso Node.js se cerrará inmediatamente.
+Cualquier uso del mecanismo `throw` de JavaScript levantará una excepción que *debe* ser manejada usando `try / catch`, o el proceso Node.js se cerrará inmediatamente.
 
 Con pocas excepciones, las APIs *Sincrónicas* (cualquier método de bloqueo que no acepte una función `callback`, como [`fs.readFileSync`][]), utilizará `throw` para informar errores.
 
