@@ -4289,13 +4289,13 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'r+'` - Archivo abierto para leer y escribir. Una excepción ocurre si el archivo no existe.
 
-* `'rs+'` - Open file for reading and writing in synchronous mode. Instructs the operating system to bypass the local file system cache.
+* `'rs+'` - Archivo abierto para leer y escribir en modo sincrónico. Instructs the operating system to bypass the local file system cache.
   
   This is primarily useful for opening files on NFS mounts as it allows skipping the potentially stale local cache. It has a very real impact on I/O performance so using this flag is not recommended unless it is needed.
   
-  Note that this doesn't turn `fs.open()` or `fsPromises.open()` into a synchronous blocking call. If synchronous operation is desired, something like `fs.openSync()` should be used.
+  Tenga en cuenta que esto no convierte a `fs.open()` o a `fsPromises.open()` en una llamada sincrónica de bloqueo. Si se desea una operación sincrónica, debería utilizarse algo como `fs.openSync()` .
 
-* `'w'` - Open file for writing. The file is created (if it does not exist) or truncated (if it exists).
+* `'w'` - Archivo abierto para escribir. The file is created (if it does not exist) or truncated (if it exists).
 
 * `'wx'` - Como `'w'` pero falla si la ruta existe.
 
