@@ -4205,7 +4205,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating that if the file exists and is a regular file, and the file is opened successfully for write access, its length shall be truncated to zero.
+      Bandera que indica que si el archivo existe y es un archivo normal, y el archivo se abre exitosamente con acceso para ser escrito, su longitud deberá ser truncada a cero.
     </td>
   </tr>
   
@@ -4225,7 +4225,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating that the open should fail if the path is not a directory.
+      Bandera que indica que la apertura debería fallar si la ruta no es un directorio.
     </td>
   </tr>
   
