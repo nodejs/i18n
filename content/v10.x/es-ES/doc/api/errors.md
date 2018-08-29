@@ -349,7 +349,7 @@ Las siguientes propiedades son proporcionadas:
 - `code` {string} La string código de error
 - `errno` {number} El número de error proporcionado por el sistema
 - `message` {string} Una descripción del error legible por humanos proporcionada por el sistema
-- `syscall` {string} The name of the system call that triggered the error
+- `syscall` {string} El nombre de la llamada de sistema que desencadenó el error
 - `path` {Buffer} When reporting a file system error, the `path` will identify the file path.
 - `dest` {Buffer} When reporting a file system error, the `dest` will identify the file path destination (if any).
 
@@ -357,43 +357,43 @@ Las siguientes propiedades son proporcionadas:
 
 - {string}
 
-The `error.code` property is a string representing the error code, which is typically `E` followed by a sequence of capital letters.
+La propiedad `error.code` es una string que representa el código de error, el cual es típicamente `E`, seguido por una secuencia de letras mayúsculas.
 
 #### error.errno
 
 - {string|number}
 
-The `error.errno` property is a number or a string. The number is a **negative** value which corresponds to the error code defined in [`libuv Error handling`]. See `uv-errno.h` header file (`deps/uv/include/uv-errno.h` in the Node.js source tree) for details. In case of a string, it is the same as `error.code`.
+La propiedad `error.errno` es un número o una string. El número es un valor **negativo** que le corresponde al código de error definido en [`libuv Error handling`]. Vea el archivo encabezado `uv-errno.h` (`deps/uv/include/uv-errno.h` en el árbol fuente de Node.js) para detalles. En caso de una string, el el mismo que `error.code`.
 
 #### error.syscall
 
 - {string}
 
-The `error.syscall` property is a string describing the [syscall](http://man7.org/linux/man-pages/man2/syscall.2.html) that failed.
+La propiedad `error.syscall` es una string que describe la [syscall](http://man7.org/linux/man-pages/man2/syscall.2.html) que falló.
 
 #### error.path
 
 - {string}
 
-When present (e.g. in `fs` or `child_process`), the `error.path` property is a string containing a relevant invalid pathname.
+Cuando está presente (e. g. en `fs` o `child_process`), la propiedad `error.path` es una string que contiene un nombre de ruta inválido relevante.
 
 #### error.address
 
 - {string}
 
-When present (e.g. in `net` or `dgram`), the `error.address` property is a string describing the address to which the connection failed.
+Cuando está presente (e.g. en `net` or `dgram`), la propiedad `error.address` es una string que describe la dirección en la cual la conexión falló.
 
 #### error.port
 
 - {number}
 
-When present (e.g. in `net` or `dgram`), the `error.port` property is a number representing the connection's port that is not available.
+Cuando está presente (e. g. en `net` or `dgram`), la propiedad `error.port` es un número que representa el puerto de la conexión que no está disponible.
 
-### Common System Errors
+### Errores de Sistema Comunes
 
-This list is **not exhaustive**, but enumerates many of the common system errors encountered when writing a Node.js program. An exhaustive list may be found [here](http://man7.org/linux/man-pages/man3/errno.3.html).
+Esta lista **no es exhaustiva**, pero enumera muchos de los errores de sistema encontrados al escribir un programa de Node.js. Una lista exhaustiva puede ser encontrada [aquí](http://man7.org/linux/man-pages/man3/errno.3.html).
 
-- `EACCES` (Permission denied): An attempt was made to access a file in a way forbidden by its file access permissions.
+- `EACCES` (Permiso denegado): Se intentó acceder a un archivo de una manera prohibida por sus permisos de acceso de archivo.
 
 - `EADDRINUSE` (Address already in use): An attempt to bind a server ([`net`][], [`http`][], or [`https`][]) to a local address failed due to another server on the local system already occupying that address.
 
