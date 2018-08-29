@@ -4347,11 +4347,11 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
   
   <tr>
     <td>
-      <code>S_IFCHR</code>
+      <code>S_IFDIR</code>
     </td>
     
     <td>
-      File type constant for a character-oriented device file.
+      Constante de tipo de archivo para un archivo de dispositivo orientado a caracteres.
     </td>
   </tr>
   
