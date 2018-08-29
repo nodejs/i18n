@@ -513,9 +513,9 @@ changes:
 * `message` {Object}
 * `handle` {undefined|Object}
 
-Emitted when the cluster master receives a message from any worker.
+Emitido cuando el clúster maestro recibe un mensaje de cualquier worker.
 
-See [`child_process` event: `'message'`][].
+Ve [`child_process` event: `'message'`][].
 
 Before Node.js v6.0, this event emitted only the message and the handle, but not the worker object, contrary to what the documentation stated.
 
