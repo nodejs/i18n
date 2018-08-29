@@ -429,7 +429,7 @@ changes:
 * `fill` {string|Buffer|integer} Un valor con el que llenar previamente el nuevo `Buffer`. **Predeterminado:** `0`.
 * `encoding` {string} Si `fill` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
 
-Asigna un nuevo `Buffer` de bytes de `size`. Si `fill` es `undefined`, el `Buffer` estará *lleno de ceros*.
+Asigna un nuevo `Buffer` de `size` bytes. Si `fill` es `undefined`, el `Buffer` estará *lleno de ceros*.
 
 ```js
 const buf = Buffer.alloc(5);
@@ -438,7 +438,7 @@ console.log(buf);
 // Imprime: <Buffer 00 00 00 00 00>
 ```
 
-Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
 Si `fill` es especificado, el `Buffer` asignado se inicializará al llamar a [`buf.fill(fill)`][`buf.fill()`].
 
@@ -475,7 +475,7 @@ changes:
 
 * `size` {integer} La longitud deseada del nuevo `Buffer`.
 
-Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
 La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *sin inicializar*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. En su lugar, utilice [`Buffer.alloc()`] para inicializar las instancias de `Buffer` con ceros.
 
