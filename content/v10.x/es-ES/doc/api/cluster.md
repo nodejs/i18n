@@ -644,10 +644,10 @@ changes:
 -->
 
 * {Object} 
-  * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **Predeterminado:** `process.execArgv`.
-  * `exec` {string} File path to worker file. **Default:** `process.argv[1]`.
-  * `args` {string[]} String arguments passed to worker. **Default:** `process.argv.slice(2)`.
-  * `cwd` {string} Current working directory of the worker process. **Default:** `undefined` (inherits from parent process).
+  * `execArgv` {string[]} Lista de argumentos de strings pasados al Node.js ejecutable. **Predeterminado:** `process.execArgv`.
+  * `exec` {string} Camino del archivo al archivo worker. **Default:** `process.argv[1]`.
+  * `args` {string[]} Argumentos strings pasados al worker. **Default:** `process.argv.slice(2)`.
+  * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (heredados del proceso primario).
   * `silent` {boolean} Whether or not to send output to parent's stdio. **Default:** `false`.
   * `stdio` {Array} Configures the stdio of forked processes. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. When this option is provided, it overrides `silent`.
   * `uid` {number} Sets the user identity of the process. (See setuid(2).)
