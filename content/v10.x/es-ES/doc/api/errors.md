@@ -15,7 +15,7 @@ Las aplicaciones que se ejecutan en Node.js generalmente experimentarán cuatro 
   - {URIError} : arrojado cuando se utiliza de manera incorrecta una función de manejo URI global.
 - Errores de sistema provocados por limitaciones de sistema operativo subyacentes, tales como intentar abrir un archivo que no existe, intentar enviar datos a través de un socket cerrado, etc;
 - Y errores de usuario específico provocados por códigos de aplicación.
-- `AssertionError`s are a special class of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
+- Los `AssertionError` son una clase especial de error que pueden desencadenarse cada vez que Node.js detecta una violación lógica excepcional que nunca debería ocurrir. These are raised typically by the `assert` module.
 
 Todos los errores de JavaScript y Sistema planteados por Node.js se heredan, o son casos, de la clase {Error} de JavaScript estándar y se garantiza que proporcionen, *al menos*, las propiedades disponibles en dicha clase.
 
