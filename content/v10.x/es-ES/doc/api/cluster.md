@@ -451,7 +451,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-When a new worker is forked the cluster module will emit a `'fork'` event. This can be used to log worker activity, and create a custom timeout.
+Cuando un nuevo worker es bifurcado, el módulo clúster va a emitir el evento `'fork'`. This can be used to log worker activity, and create a custom timeout.
 
 ```js
 const timeouts = [];
