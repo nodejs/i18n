@@ -2378,7 +2378,7 @@ Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
-Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente al sistema para ese objeto.
 
 ## fs.realpath.native(path[, options], callback)
 
@@ -2442,7 +2442,7 @@ Esta función se comporta como realpath(3), con algunas excepciones:
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para el valor devuelto. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
-Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente al sistema para ese objeto.
 
 ## fs.realpathSync.native(path[, options])
 
@@ -4169,7 +4169,7 @@ The following constants are meant for use with `fs.open()`.
 
 ### Constantes de Tipo de Archivo
 
-Las siguientes constantes están destinadas para ser utilizadas con la propiedad de `mode` del objeto de [`fs.Stats`][] para determinar el tipo de un archivo.
+Las siguientes constantes están destinadas para ser utilizadas con la propiedad `mode` del objeto de [`fs.Stats`][] para determinar el tipo de un archivo.
 
 <table>
   <tr>
@@ -4275,11 +4275,11 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'a'` - Archivo abierto para anexar. El archivo se crea si no existe.
 
-* `'ax'` - Como `'a'` pero falla si la ruta existe.
+* `'ax'` - Como `'a'`, pero falla si la ruta existe.
 
 * `'a+'` - Archivo abierto para leer y anexar. El archivo se crea si no existe.
 
-* `'ax+'` - Como `'a+'` pero falla si la ruta existe.
+* `'ax+'` - Como `'a+'`, pero falla si la ruta existe.
 
 * `'as'` - Archivo abierto para anexar en modo sincrónico. El archivo se crea si no existe.
 
@@ -4297,11 +4297,11 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'w'` - Archivo abierto para escribir. El archivo es creado (si no existe) o truncado (si existe).
 
-* `'wx'` - Como `'w'` pero falla si la ruta existe.
+* `'wx'` - Como `'w'`, pero falla si la ruta existe.
 
 * `'w+'` - Archivo abierto para leer y escribir. El archivo es creado (si no existe) o truncado (si existe).
 
-* `'wx+'` - Como `'w+'` pero falla si la ruta existe.
+* `'wx+'` - Como `'w+'`, pero falla si la ruta existe.
 
 `flag` también puede ser un número como lo documenta open(2); las constantes comúnmente utilizadas están disponibles desde `fs.constants`. En WIndows, las banderas son traducidas a sus equivalentes si aplica, por ejemplo, `O_WRONLY` a `FILE_GENERIC_WRITE`, ó `O_EXCL|O_CREAT` a `CREATE_NEW`, como las acepta `CreateFileW`.
 
