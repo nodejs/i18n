@@ -4167,9 +4167,9 @@ The following constants are meant for use with `fs.open()`.
   </tr>
 </table>
 
-### File Type Constants
+### Constantes de Tipo de Archivo
 
-The following constants are meant for use with the [`fs.Stats`][] object's `mode` property for determining a file's type.
+Las siguientes constantes están destinadas para ser utilizadas con la propiedad de `mode` del objeto de [`fs.Stats`][] para determinar el tipo de un archivo.
 
 <table>
   <tr>
@@ -4221,35 +4221,35 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
-    <td>File mode indicating readable, writable, and executable by owner.</td>
+    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRUSR</code></td>
-    <td>Modo de archivo que indica que es legible para el propietario.</td>
+    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IWUSR</code></td>
-    <td>File mode indicating writable by owner.</td>
+    <td>Modo de archivo que indica que puede ser editado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IXUSR</code></td>
-    <td>Modo de archivo que indica que puede ejecutarlo el propietario.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRWXG</code></td>
-    <td>File mode indicating readable, writable, and executable by group.</td>
+    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IRGRP</code></td>
-    <td>File mode indicating readable by group.</td>
+    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IWGRP</code></td>
-    <td>File mode indicating writable by group.</td>
+    <td>Modo de archivo que indica que puede ser editado por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IXGRP</code></td>
-    <td>Modo de archivo que indica que puede ejecutarlo el grupo.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IRWXO</code></td>
@@ -4257,7 +4257,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IROTH</code></td>
-    <td>Modo de archivo que indica que es legible para otros.</td>
+    <td>Modo de archivo que indica que puede ser leído por otros.</td>
   </tr>
   <tr>
     <td><code>S_IWOTH</code></td>
