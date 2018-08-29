@@ -4225,7 +4225,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IRUSR</code></td>
-    <td>File mode indicating readable by owner.</td>
+    <td>Modo de archivo que indica que es legible para el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IWUSR</code></td>
@@ -4233,7 +4233,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IXUSR</code></td>
-    <td>Modo de archivo que indica lo ejecutable por el propietario.</td>
+    <td>Modo de archivo que indica que puede ejecutarlo el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRWXG</code></td>
@@ -4249,23 +4249,23 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IXGRP</code></td>
-    <td>Modo de archivo que indica lo ejecutable por el grupo.</td>
+    <td>Modo de archivo que indica que puede ejecutarlo el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IRWXO</code></td>
-    <td>File mode indicating readable, writable, and executable by others.</td>
+    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por otros.</td>
   </tr>
   <tr>
     <td><code>S_IROTH</code></td>
-    <td>File mode indicating readable by others.</td>
+    <td>Modo de archivo que indica que es legible para otros.</td>
   </tr>
   <tr>
     <td><code>S_IWOTH</code></td>
-    <td>File mode indicating writable by others.</td>
+    <td>Modo de archivo que indica que puede ser editado por otros.</td>
   </tr>
   <tr>
     <td><code>S_IXOTH</code></td>
-    <td>File mode indicating executable by others.</td>
+    <td>Modo de archivo que indica que puede ser ejecutado por otros.</td>
   </tr>
 </table>
 
