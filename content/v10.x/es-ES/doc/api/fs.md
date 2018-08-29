@@ -989,7 +989,7 @@ Cambia de manera asincrónica los permisos de un archivo. Ningún argumento que 
 
 Vea también: chmod(2).
 
-### File modes
+### Modos de archivo
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
