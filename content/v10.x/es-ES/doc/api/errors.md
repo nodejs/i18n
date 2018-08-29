@@ -203,7 +203,7 @@ La propiedad `error.code` es una etiqueta de string que identifica el tipo de er
 
 - {string}
 
-La propiedad `error.message` es la descripción de string del error establecida al llamar a `new Error(message)`. The `message` passed to the constructor will also appear in the first line of the stack trace of the `Error`, however changing this property after the `Error` object is created *may not* change the first line of the stack trace (for example, when `error.stack` is read before this property is changed).
+La propiedad `error.message` es la descripción de string del error establecida al llamar a `new Error(message)`. El `message` pasado al constructor también aparecerá en la primera línea del stack trace del `Error`, sin embargo, cambiar esta propiedad después de creado el objeto `Error` *puede no* cambiar la primera línea del stack trace (por ejemplo, cuando `error.stack` es leído antes de que esta propiedad fuese cambiada).
 
 ```js
 const err = new Error('The message');
@@ -225,9 +225,9 @@ Error: ¡Siguen ocurriendo cosas!
    at increaseSynergy (/home/gbusey/actors.js:701:6)
 ```
 
-The first line is formatted as `<error class name>: <error message>`, and is followed by a series of stack frames (each line beginning with "at "). Each frame describes a call site within the code that lead to the error being generated. V8 intenta mostrar un nombre para cada función (por nombre de la variable, nombre de la función o nombre del método del objeto), pero ocasionalmente no podrá encontrar un nombre adecuado. If V8 cannot determine a name for the function, only location information will be displayed for that frame. De lo contrario, el nombre de la función determinada será mostrado con la información de ubicación adjunta en paréntesis.
+La primera línea está formateada como `<error class name>: <error message>` y es seguida por una serie de stack frames (cada línea comenzando con "at"). Cada frame describe un sitio de llamada dentro del código que conduce al error generado. V8 intenta mostrar un nombre para cada función (por nombre de la variable, nombre de la función o nombre del método del objeto), pero ocasionalmente no podrá encontrar un nombre adecuado. Si V8 no puede determinar un nombre para la función, sólo se mostrará información de ubicación para ese frame. De lo contrario, el nombre de la función determinada será mostrado con la información de ubicación adjunta en paréntesis.
 
-Frames are only generated for JavaScript functions. If, for example, execution synchronously passes through a C++ addon function called `cheetahify` which itself calls a JavaScript function, the frame representing the `cheetahify` call will not be present in the stack traces:
+Los frames sólo son generados para funciones JavaScript. If, for example, execution synchronously passes through a C++ addon function called `cheetahify` which itself calls a JavaScript function, the frame representing the `cheetahify` call will not be present in the stack traces:
 
 ```js
 const cheetahify = require('./native-binding.node');
@@ -259,15 +259,15 @@ makeFaster();
 
 La información de ubicación será una de estas:
 
-- `native`, if the frame represents a call internal to V8 (as in `[].forEach`).
-- `plain-filename.js:line:column`, if the frame represents a call internal to Node.js.
-- `/absolute/path/to/file.js:line:column`, if the frame represents a call in a user program, or its dependencies.
+- `native`, si el frame representa una llamada interna a V8 (como en `[].forEach`).
+- `plain-filename.js:line:column`, si el frame representa una llamada interna a Node.js.
+- `/absolute/path/to/file.js:line:column`, si el frame representa una llamada en un programa de usuario o en sus dependencias.
 
-The string representing the stack trace is lazily generated when the `error.stack` property is **accessed**.
+La string que representa al stack trace es flojamente creada cuando la propiedad `error.stack` es **accedida**.
 
-The number of frames captured by the stack trace is bounded by the smaller of `Error.stackTraceLimit` or the number of available frames on the current event loop tick.
+El número de frames capturados por el stack trace es limitado por el menor de `Error.stackTraceLimit` o el número de frames disponibles en el tic del bucle del evento actual.
 
-System-level errors are generated as augmented `Error` instances, which are detailed [here](#errors_system_errors).
+Los errores a nivel de sistema son generados como instancias de `Error` aumentadas, las cuales se detallan [aquí](#errors_system_errors).
 
 ## Clase: AssertionError (Error de Afirmación)
 
@@ -286,20 +286,20 @@ Node.js generará y arrojará instancias de `RangeError` *inmediatamente* como f
 
 ## Clase: ReferenceError (Error de Referencia)
 
-Una subclase de `Error` que indica que se está haciendo un intento para acceder a una variable que no está definida. Such errors commonly indicate typos in code, or an otherwise broken program.
+Una subclase de `Error` que indica que se está haciendo un intento para acceder a una variable que no está definida. Dichos errores usualmente indican typos en el código, o de lo contrario, indican un programa dañado.
 
-While client code may generate and propagate these errors, in practice, only V8 will do so.
+Mientras que el código cliente puede generar y propagar estos errores, en la práctica, sólo lo hará el V8.
 
 ```js
 doesNotExist;
-// throws ReferenceError, doesNotExist is not a variable in this program.
+// arroja un ReferenceError, doesNotExist no es una variable en este programa.
 ```
 
 A menos que una aplicación esté dinámicamente generando y ejecutando código, instancias de `ReferenceError` deberían siempre ser consideradas un bug en el código o en sus dependencias.
 
-## Class: SyntaxError
+## Clase: SyntaxError (Error de Sintaxis)
 
-A subclass of `Error` that indicates that a program is not valid JavaScript. These errors may only be generated and propagated as a result of code evaluation. Code evaluation may happen as a result of `eval`, `Function`, `require`, or [vm](vm.html). These errors are almost always indicative of a broken program.
+A subclass of `Error` that indicates that a program is not valid JavaScript. Estos errores solo pueden ser generados y propagados como un resultado de evaluación de código. La evaluación de código puede ocurrir como resultado de `eval`, `Function`, `require` o [vm](vm.html). These errors are almost always indicative of a broken program.
 
 ```js
 try {
