@@ -482,7 +482,7 @@ added: v0.7.0
 
 Después de llamar `listen()` de un trabajador, cuando el evento `'listening'` es emitido en el servidor un evento `'listening'` también será emitido en el `cluster` en el maestro.
 
-The event handler is executed with two arguments, the `worker` contains the worker object and the `address` object contains the following connection properties: `address`, `port` and `addressType`. This is very useful if the worker is listening on more than one address.
+El evento manejador es ejecutado con dos argumentos, el `worker` contiene el objeto worker y el objeto `address` contiene las siguientes propiedades de conexión: `address`, `port` y `addressType`. Esto es muy útil si el worker está escuchando en más de una dirección.
 
 ```js
 cluster.on('listening', (worker, address) => {
@@ -491,14 +491,14 @@ cluster.on('listening', (worker, address) => {
 });
 ```
 
-The `addressType` is one of:
+`addressType` es una de:
 
 * `4` (TCPv4)
 * `6` (TCPv6)
-* `-1` (unix domain socket)
-* `'udp4'` or `'udp6'` (UDP v4 or v6)
+* `-1` (socket de dominio unix)
+* `'udp4'` o `'udp6'` (UDP v4 or v6)
 
-## Event: 'message'
+## Evento: 'message'
 
 <!-- YAML
 added: v2.5.0
