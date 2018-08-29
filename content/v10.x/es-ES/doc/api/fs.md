@@ -4233,7 +4233,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IXUSR</code></td>
-    <td>File mode indicating executable by owner.</td>
+    <td>Modo de archivo que indica lo ejecutable por el propietario.</td>
   </tr>
   <tr>
     <td><code>S_IRWXG</code></td>
@@ -4249,7 +4249,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IXGRP</code></td>
-    <td>File mode indicating executable by group.</td>
+    <td>Modo de archivo que indica lo ejecutable por el grupo.</td>
   </tr>
   <tr>
     <td><code>S_IRWXO</code></td>
@@ -4295,11 +4295,11 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
   
   Tenga en cuenta que esto no convierte a `fs.open()` o a `fsPromises.open()` en una llamada sincrónica de bloqueo. Si se desea una operación sincrónica, debería utilizarse algo como `fs.openSync()` .
 
-* `'w'` - Archivo abierto para escribir. The file is created (if it does not exist) or truncated (if it exists).
+* `'w'` - Archivo abierto para escribir. El archivo es creado (si no existe) o truncado (si existe).
 
 * `'wx'` - Como `'w'` pero falla si la ruta existe.
 
-* `'w+'` - Open file for reading and writing. The file is created (if it does not exist) or truncated (if it exists).
+* `'w+'` - Archivo abierto para leer y escribir. El archivo es creado (si no existe) o truncado (si existe).
 
 * `'wx+'` - Como `'w+'` pero falla si la ruta existe.
 
