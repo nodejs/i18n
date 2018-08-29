@@ -517,9 +517,9 @@ Emitido cuando el clúster maestro recibe un mensaje de cualquier worker.
 
 Ve [`child_process` event: `'message'`][].
 
-Before Node.js v6.0, this event emitted only the message and the handle, but not the worker object, contrary to what the documentation stated.
+Antes de Node.js v6.0, este evento emitía solo el mensaje y el handle, pero no el objeto worker, al contrario de lo que decía la documentación.
 
-If support for older versions is required but a worker object is not required, it is possible to work around the discrepancy by checking the number of arguments:
+Si se requiere soporte para versiones anteriores, pero un objeto worker no es requerido, es posible evitar la discrepancia verificando los números de los argumentos:
 
 ```js
 cluster.on('message', (worker, message, handle) => {
@@ -532,7 +532,7 @@ cluster.on('message', (worker, message, handle) => {
 });
 ```
 
-## Event: 'online'
+## Evento: 'online'
 
 <!-- YAML
 added: v0.7.0
