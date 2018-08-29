@@ -834,14 +834,14 @@ console.log(buf.toString('ascii'));
 
 ### buf.buffer
 
-* {ArrayBuffer} The underlying `ArrayBuffer` object based on which this `Buffer` object is created.
+* {ArrayBuffer} El objeto subyacente `ArrayBuffer` basado en que se crea este objeto de `Buffer`.
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
 const buffer = Buffer.from(arrayBuffer);
 
 console.log(buffer.buffer === arrayBuffer);
-// Prints: true
+// Imprime: true
 ```
 
 ### buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])
@@ -858,9 +858,9 @@ changes:
     description: Additional parameters for specifying offsets are supported now.
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`.
-* `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`.
+* `target` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] con el que comparar `buf`.
+* `targetStart` {integer} El desplazamiento dentro del `target` en el que debe comenzar la comparación. **Predeterminado:** `0`.
+* `targetEnd` {integer} El desplazamiento con el `target` con el que debe terminar la comparación (no incluido). **Predeterminado:** `target.length`.
 * `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`.
 * `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`].
 * Returns: {integer}
