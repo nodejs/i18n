@@ -363,7 +363,7 @@ Todos los workers son creados usando [`child_process.fork()`][], el objeto devue
 
 Ver: [Módulo del Proceso secundario](child_process.html#child_process_child_process_fork_modulepath_args_options).
 
-Note that workers will call `process.exit(0)` if the `'disconnect'` event occurs on `process` and `.exitedAfterDisconnect` is not `true`. This protects against accidental disconnection.
+Tenga en cuenta que, los workers van a llamar a `process.exit(0)` si el evento `'disconnect'` ocurre en `process`, y `.exitedAfterDisconnect` no es `true`. Esto protege contra desconexiones accidentales.
 
 ### worker.send(message\[, sendHandle\]\[, callback\])
 
@@ -379,11 +379,11 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Send a message to a worker or master, optionally with a handle.
+Envía un mensaje a un worker o un maestro, opcionalmente con un handle.
 
-In the master this sends a message to a specific worker. It is identical to [`ChildProcess.send()`][].
+En el maestro, esto envía un mensaje a un worker específico. Es idéntico a [`ChildProcess.send()`][].
 
 In a worker this sends a message to the master. It is identical to `process.send()`.
 
