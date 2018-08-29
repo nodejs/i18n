@@ -572,11 +572,11 @@ added: v0.7.7
 
 Llama a `.disconnect()` a cada worker en `cluster.workers`.
 
-When they are disconnected all internal handles will be closed, allowing the master process to die gracefully if no other event is waiting.
+Cuando son desconectados todos los handles internos serán cerrados, permitiendo al proceso maestro morir con elegancia si ningún otro evento está esperando.
 
-The method takes an optional callback argument which will be called when finished.
+El método toma un argumento callback opcional que va a ser llamado cuando haya terminado.
 
-This can only be called from the master process.
+Esto solo puede ser llamado del proceso maestro.
 
 ## cluster.fork([env])
 
@@ -585,11 +585,11 @@ added: v0.6.0
 -->
 
 * `env` {Object} Key/value pairs to add to worker process environment.
-* Returns: {cluster.Worker}
+* Devuelve: {cluster.Worker}
 
-Spawn a new worker process.
+Genera un nuevo proceso worker.
 
-This can only be called from the master process.
+Esto solo puede ser llamado del proceso maestro.
 
 ## cluster.isMaster
 
@@ -599,7 +599,7 @@ added: v0.8.1
 
 * {boolean}
 
-True if the process is a master. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+Verdadero si el proceso es un maestro. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
 
 ## cluster.isWorker
 
