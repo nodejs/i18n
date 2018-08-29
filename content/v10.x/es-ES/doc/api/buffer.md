@@ -684,19 +684,19 @@ console.log(buf);
 // Imprime: <Buffer 88 13 70 17>
 ```
 
-The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
+Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
 
 ```js
 const ab = new ArrayBuffer(10);
 const buf = Buffer.from(ab, 0, 2);
 
 console.log(buf.length);
-// Prints: 2
+// Imprime: 2
 ```
 
-A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`SharedArrayBuffer`].
+Se producirá un `TypeError` si `arrayBuffer` no es un [`ArrayBuffer`] o un [`SharedArrayBuffer`].
 
-### Class Method: Buffer.from(buffer)
+### Método de Clase: Buffer.from(buffer)
 
 <!-- YAML
 added: v5.10.0
