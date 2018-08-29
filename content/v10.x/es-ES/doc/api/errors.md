@@ -299,40 +299,40 @@ A menos que una aplicación esté dinámicamente generando y ejecutando código,
 
 ## Clase: SyntaxError (Error de Sintaxis)
 
-A subclass of `Error` that indicates that a program is not valid JavaScript. Estos errores solo pueden ser generados y propagados como un resultado de evaluación de código. La evaluación de código puede ocurrir como resultado de `eval`, `Function`, `require` o [vm](vm.html). These errors are almost always indicative of a broken program.
+A subclass of `Error` that indicates that a program is not valid JavaScript. Estos errores solo pueden ser generados y propagados como un resultado de evaluación de código. La evaluación de código puede ocurrir como resultado de `eval`, `Function`, `require` o [vm](vm.html). Estos errores casi siempre son indicadores de un programa roto.
 
 ```js
 try {
   require('vm').runInThisContext('binary ! isNotOk');
 } catch (err) {
-  // err will be a SyntaxError
+  // err será un SyntaxError
 }
 ```
 
-`SyntaxError` instances are unrecoverable in the context that created them – they may only be caught by other contexts.
+Las instancias de `SyntaxError` son irrecuperables en el contexto que las creó - sólo pueden ser atrapadas por otros contextos.
 
-## Class: TypeError
+## Clase: TypeError (Error de Tecleado)
 
-A subclass of `Error` that indicates that a provided argument is not an allowable type. For example, passing a function to a parameter which expects a string would be considered a `TypeError`.
+Una sub-clase de `Error` que indica que un argumento proporcionado no es un tipo permitido. Por ejemplo, el pasar una función a un parámetro que espera una string sería considerado un `TypeError`.
 
 ```js
 require('url').parse(() => { });
-// throws TypeError, since it expected a string
+// arroja un TypeError, ya que espera una string
 ```
 
-Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
+Node.js generará y arrojará instancias de `TypeError` *inmediatamente* como forma de una validación de argumento.
 
-## Exceptions vs. Errors
+## Excepciones vs. Errores
 
 <!--type=misc-->
 
-A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+Una excepción JavaScript es un valor que es arrojado como resultado de una operación inválida o como el objetivo de una declaración `throw`. Si bien no es obligatorio que estos valores sean instancias de `Error` o clases heredadas de `Error`, todas las excepciones arrojadas por Node.js o por el tiempo de ejecución de JavaScript *serán* instancias de `Error`.
 
-Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
+Algunas excepciones son *irrecuperables* en la capa de JavaScript. Dichas excepciones *siempre* causarán que el proceso Node.js se detenga. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
-## System Errors
+## Errores de Sistema
 
-System errors are generated when exceptions occur within the Node.js runtime environment. Typically, these are operational errors that occur when an application violates an operating system constraint such as attempting to read a file that does not exist or when the user does not have sufficient permissions.
+Los errores de sistema son generados cuando ocurren excepciones dentro del entorno del tiempo de ejecución de Node.js. Typically, these are operational errors that occur when an application violates an operating system constraint such as attempting to read a file that does not exist or when the user does not have sufficient permissions.
 
 System errors are typically generated at the syscall level: an exhaustive list of error codes and their meanings is available by running `man 2 intro` or `man 3 errno` on most Unices; or [online](http://man7.org/linux/man-pages/man3/errno.3.html).
 
