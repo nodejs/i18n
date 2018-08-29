@@ -752,37 +752,37 @@ added: v8.2.0
 -->
 
 * `object` {Object} Un objeto que admite `Symbol.toPrimitive` o `valueOf()`
-* `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
-* `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
+* `offsetOrEncoding` {number|string} Un byte-offset o codificación, dependiendo del valor devuelto por `object.valueOf()` o `object[Symbol.toPrimitive]()`.
+* `length` {number} Una longitud, dependiendo del valor devuelto por `object.valueOf()` o `object[Symbol.toPrimitive]()`.
 
-For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
-
-```js
-const buf = Buffer.from(new String('this is a test'));
-// Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
-```
-
-For objects that support `Symbol.toPrimitive`, returns `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
+Para objetos cuya función `valueOf()` devuelve un valor que no es estrictamente igual a `object`, devuelve `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
 
 ```js
-class Foo {
-  [Symbol.toPrimitive]() {
-    return 'this is a test';
-  }
-}
-
-const buf = Buffer.from(new Foo(), 'utf8');
-// Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
+const buf = Buffer.from(new String('this is a test')); 
+// Imprime: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
-### Class Method: Buffer.isBuffer(obj)
+Para objetos que admiten `Symbol.toPrimitive`, devuelve `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
+
+```js
+class Foo { 
+  [Symbol.toPrimitive]() { 
+    return 'this is a test'; 
+  } 
+} 
+
+const buf = Buffer.from(new Foo(), 'utf8'); //
+Imprime: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
+```
+
+### Método de Clase: Buffer.isBuffer(obj)
 
 <!-- YAML
 added: v0.1.101
 -->
 
 * `obj` {Object}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
