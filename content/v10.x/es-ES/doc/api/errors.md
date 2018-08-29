@@ -332,23 +332,23 @@ Algunas excepciones son *irrecuperables* en la capa de JavaScript. Dichas excepc
 
 ## Errores de Sistema
 
-Los errores de sistema son generados cuando ocurren excepciones dentro del entorno del tiempo de ejecución de Node.js. Typically, these are operational errors that occur when an application violates an operating system constraint such as attempting to read a file that does not exist or when the user does not have sufficient permissions.
+Los errores de sistema son generados cuando ocurren excepciones dentro del entorno del tiempo de ejecución de Node.js. Típicamente estos errores son errores operacionales que ocurren cuando una aplicación viola una restricción de sistema operativo, como lo es intentar leer un archivo que no existe o cuando el usuario no tiene permisos suficientes.
 
 System errors are typically generated at the syscall level: an exhaustive list of error codes and their meanings is available by running `man 2 intro` or `man 3 errno` on most Unices; or [online](http://man7.org/linux/man-pages/man3/errno.3.html).
 
-In Node.js, system errors are represented as augmented `Error` objects with added properties.
+En Node.js, los errores de sistema son representados como objetos de `Error` aumentados con propiedades añadidas.
 
-### Class: SystemError
+### Clase: SystemError (Error de Sistema)
 
 ### error.info
 
-`SystemError` instances may have an additional `info` property whose value is an object with additional details about the error conditions.
+Las instancias de `SystemError` pueden tener una propiedad de `info` adicional cuyo valor es un objeto con detalles adicionales acerca de las condiciones de error.
 
-The following properties are provided:
+Las siguientes propiedades son proporcionadas:
 
-- `code` {string} The string error code
-- `errno` {number} The system-provided error number
-- `message` {string} A system-provided human readable description of the error
+- `code` {string} La string código de error
+- `errno` {number} El número de error proporcionado por el sistema
+- `message` {string} Una descripción del error legible por humanos proporcionada por el sistema
 - `syscall` {string} The name of the system call that triggered the error
 - `path` {Buffer} When reporting a file system error, the `path` will identify the file path.
 - `dest` {Buffer} When reporting a file system error, the `dest` will identify the file path destination (if any).
