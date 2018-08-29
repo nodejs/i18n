@@ -553,7 +553,7 @@ changes:
 * `encoding` {string} Si `string` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} El número de bytes contenidos en `string`.
 
-Devuelve la longitud del byte real de una cadena. Esto no es lo mismo que [`String.prototype.length`] pues eso devuelve el número de *caracteres* en una cadena.
+Devuelve la longitud del byte real de una cadena. Esto no es lo mismo que [`String.prototype.length`], pues eso devuelve el número de *caracteres* en una cadena.
 
 Para `'base64'` y `'hex'`, esta función asume una entrada válida. Para cadenas que contienen datos no-Base64/codificados-Hex (por ejemplo, espacios en blanco), el valor de retorno puede ser mayor que la longitud de un `Buffer` creado desde la cadena.
 
@@ -582,7 +582,7 @@ changes:
 * `buf2` {Buffer|Uint8Array}
 * Devuelve: {integer}
 
-Compara `buf1` con `buf2` típicamente con el propósito de clasificar arreglos de instancias de `Buffer`. Esto es equivalente a llamar a [`buf1.compare(buf2)`][`buf.compare()`].
+Compara `buf1` con `buf2`, típicamente con el propósito de clasificar arreglos de instancias de `Buffer`. Esto es equivalente a llamar a [`buf1.compare(buf2)`][`buf.compare()`].
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -615,7 +615,7 @@ Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `B
 
 Si no se proporciona `totalLength`, se calcula desde las instancias de `Buffer` en `list`. Sin embargo, esto ocasiona que se ejecute un bucle adicional para calcular la `totalLength`, así que es más rápido proporcionar explícitamente la longitud si ya se conoce.
 
-Si se proporciona `totalLength`, se coacciona con un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede la `totalLength`, el resultado se trunca a `totalLength`.
+Si se proporciona `totalLength`, se forza a ser un número entero, sin signos. Si la longitud combinada de los `Buffer`s en `list` excede la `totalLength`, el resultado se trunca a `totalLength`.
 
 ```js
 // Crea un `Buffer` único desde una lista de tres instancias de `Buffer`.
