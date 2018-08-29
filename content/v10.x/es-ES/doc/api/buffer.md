@@ -865,7 +865,7 @@ changes:
 * `sourceEnd` {integer} El desplazamiento dentro de `buf` con el que se debe terminar la comparación (no incluido). **Predeterminado:** [`buf.length`].
 * Devuelve: {integer}
 
-Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
+Compara `buf` con `target` y devuelve un número que indica si `buf` aparece antes, después, o es igual a `target` en el orden de clasificación. Comparison is based on the actual sequence of bytes in each `Buffer`.
 
 * `0` is returned if `target` is the same as `buf`
 * `1` is returned if `target` should come *before* `buf` when sorted.
