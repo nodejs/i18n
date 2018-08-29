@@ -617,11 +617,11 @@ Verdadero si el proceso no es maestro (es la negación de `cluster.isMaster`).
 added: v0.11.2
 -->
 
-La política de planificación, ya sea `cluster.SCHED_RR` para round-robin o `cluster.SCHED_NONE` para dejarselo al sistema operativo. This is a global setting and effectively frozen once either the first worker is spawned, or `cluster.setupMaster()` is called, whichever comes first.
+La política de planificación, ya sea `cluster.SCHED_RR` para round-robin o `cluster.SCHED_NONE` para dejarselo al sistema operativo. Esto es una configuración global y es efectivamente detenida una vez que el primer worker es generado, o cuando `cluster.setupMaster()` es llamado, cualquiera que ocurra primero.
 
-`SCHED_RR` es el predeterminado en todos los sistemas operativos menos Windows. Windows will change to `SCHED_RR` once libuv is able to effectively distribute IOCP handles without incurring a large performance hit.
+`SCHED_RR` es el predeterminado en todos los sistemas operativos menos Windows. Windows cambiará a `SCHED_RR` una vez libuv sea capaz de distribuir handles IOCP, sin incurrir en golpes fuertes en el rendimiento.
 
-`cluster.schedulingPolicy` can also be set through the `NODE_CLUSTER_SCHED_POLICY` environment variable. Valid values are `'rr'` and `'none'`.
+`cluster.schedulingPolicy` también puede ser configurada a través de la variable de ambiente `NODE_CLUSTER_SCHED_POLICY`. Los valores válidos son `'rr'` y `'none'`.
 
 ## cluster.settings
 
