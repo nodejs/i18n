@@ -2378,7 +2378,7 @@ Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
-If `path` resolves to a socket or a pipe, the function will return a system dependent name for that object.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
 
 ## fs.realpath.native(path[, options], callback)
 
@@ -2442,7 +2442,7 @@ Esta función se comporta como realpath(3), con algunas excepciones:
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para el valor devuelto. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
-If `path` resolves to a socket or a pipe, the function will return a system dependent name for that object.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
 
 ## fs.realpathSync.native(path[, options])
 
@@ -4206,7 +4206,7 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
   </tr>
   <tr>
     <td><code>S_IFSOCK</code></td>
-    <td>File type constant for a socket.</td>
+    <td>Constante de tipo de archivo para un socket.</td>
   </tr>
 </table>
 
