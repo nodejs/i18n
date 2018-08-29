@@ -713,21 +713,21 @@ const buf2 = Buffer.from(buf1);
 buf1[0] = 0x61;
 
 console.log(buf1.toString());
-// Prints: auffer
+// Imprime: auffer
 console.log(buf2.toString());
-// Prints: buffer
+// Imprime: buffer
 ```
 
-A `TypeError` will be thrown if `buffer` is not a `Buffer`.
+Se producirá un `TypeError` si `buffer` no es un `Buffer`.
 
-### Class Method: Buffer.from(string[, encoding])
+### Método de Clase: Buffer.from(string[, encoding])
 
 <!-- YAML
 added: v5.10.0
 -->
 
-* `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Predeterminado:** `'utf8'`.
+* `string` {string} Una cadena para codificar.
+* `encoding` {string} La codificación del `string`. **Predeterminado:** `'utf8'`.
 
 Crea un nuevo `Buffer` que contiene `string`. El parámetro de `encoding` identifica la codificación de caracteres del `string`.
 
@@ -736,22 +736,22 @@ const buf1 = Buffer.from('this is a tést');
 const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
 
 console.log(buf1.toString());
-// Prints: this is a tést
-console.log(buf2.toString());
-// Prints: this is a tést
-console.log(buf1.toString('ascii'));
-// Prints: this is a tC)st
+// Imprime: this is a tést
+console.log(buf2.toString()); 
+// Imprime: this is a tést 
+console.log(buf1.toString('ascii')); 
+// Imprime: this is a tC)st
 ```
 
-A `TypeError` will be thrown if `string` is not a string.
+Se producirá un `TypeError` si `string` no es una cadena.
 
-### Class Method: Buffer.from(object[, offsetOrEncoding[, length]])
+### Método de Clase: Buffer.from(object[, offsetOrEncoding[, length]])
 
 <!-- YAML
 added: v8.2.0
 -->
 
-* `object` {Object} An object supporting `Symbol.toPrimitive` or `valueOf()`
+* `object` {Object} Un objeto que admite `Symbol.toPrimitive` o `valueOf()`
 * `offsetOrEncoding` {number|string} A byte-offset or encoding, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
 * `length` {number} A length, depending on the value returned either by `object.valueOf()` or `object[Symbol.toPrimitive]()`.
 
