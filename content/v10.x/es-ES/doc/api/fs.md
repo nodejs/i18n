@@ -4235,7 +4235,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating reading accesses to the file system will no longer result in an update to the `atime` information associated with the file. This flag is available on Linux operating systems only.
+      Bandera que indica que los accesos de lectura al sistema de archivos ya no resultarán en una actualización de la información de `atime` asociada al archivo. Esta bandera sólo está disponible en sistemas operativos de Linux.
     </td>
   </tr>
   
@@ -4245,7 +4245,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating that the open should fail if the path is a symbolic link.
+      Bandera que indica que la apertura debería fallar si el archivo es un link simbólico.
     </td>
   </tr>
   
