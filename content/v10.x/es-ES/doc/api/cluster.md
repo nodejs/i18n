@@ -560,7 +560,7 @@ Emitido cada vez que se llama `.setupMaster()`.
 
 El objeto `settings` es el objeto `cluster.settings` al momento que `.setupMaster()` fue llamado y solo es consultivo, ya que pueden hacerse varias llamadas a `.setupMaster()` en un solo tic.
 
-If accuracy is important, use `cluster.settings`.
+Si la precisión es importante, usa `cluster.settings`.
 
 ## cluster.disconnect([callback])
 
