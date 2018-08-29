@@ -4145,7 +4145,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica que al abrir un archivo, este sólo dará acceso para ser leído.
+      Bandera que indica abrir un archivo con acceso de solo-lectura.
     </td>
   </tr>
   
@@ -4155,7 +4155,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica que al abrir un archivo, este sólo dará acceso para ser editado.
+      Bandera que indica abrir un archivo con acceso de solo-escritura.
     </td>
   </tr>
   
@@ -4165,7 +4165,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica que al abrir un archivo, este dará acceso para ser leído o editado.
+      Bandera que indica abrir un archivo con acceso de lectura-escritura.
     </td>
   </tr>
   
