@@ -347,7 +347,7 @@ Esta función matará al worker. En el maestro, lo hace al desconectar el `worke
 
 Causa que se establezca `.exitedAfterDisconnect`.
 
-This method is aliased as `worker.destroy()` for backwards compatibility.
+Este método tiene su alias como `worker.destroy()` para compatibilidad con versiones anteriores.
 
 Ten en cuenta que dentro de un worker, existe `process.kill()`, pero no es esta función, es [`kill`][].
 
@@ -359,7 +359,7 @@ added: v0.7.0
 
 * {ChildProcess}
 
-Todos los workers son creados usando [`child_process.fork()`][], el objeto devuelto de esta función se almacena como `.process`. In a worker, the global `process` is stored.
+Todos los workers son creados usando [`child_process.fork()`][], el objeto devuelto de esta función se almacena como `.process`. En un worker, es guardado el `process` global.
 
 Ver: [Módulo del Proceso secundario](child_process.html#child_process_child_process_fork_modulepath_args_options).
 
