@@ -477,7 +477,7 @@ changes:
 
 Asigna un nuevo `Buffer` de bytes de `size`. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *no inicializada*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc()`] en su lugar para inicializar las instancias de `Buffer` con ceros.
+La memoria subyacente para las instancias de `Buffer` creadas de esta manera está *sin inicializar*. Los contenidos del `Buffer` creado recientemente son desconocidos y *pueden contener datos confidenciales*. Utilice [`Buffer.alloc()`] en su lugar para inicializar las instancias de `Buffer` con ceros.
 
 ```js
 const buf = Buffer.allocUnsafe(10);
