@@ -4175,7 +4175,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica que creará un archivo, si este aún no existe.
+      Bandera que indica crear el archivo, si este aún no existe.
     </td>
   </tr>
   
@@ -4275,7 +4275,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating to open the symbolic link itself rather than the resource it is pointing to.
+      Bandera que indica abrir el enlace simbólico en vez del recurso al cual este apunta.
     </td>
   </tr>
   
@@ -4295,7 +4295,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating to open the file in nonblocking mode when possible.
+      Bandera que indica abrir el archivo en modo de no bloqueo cuando sea posible.
     </td>
   </tr>
 </table>
