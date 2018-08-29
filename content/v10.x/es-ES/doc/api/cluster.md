@@ -568,9 +568,9 @@ Si la precisión es importante, usa `cluster.settings`.
 added: v0.7.7
 -->
 
-* `callback` {Function} Called when all workers are disconnected and handles are closed.
+* `callback` {Function} Llamada cuando todos los workers están desconectados y los handles están cerrados.
 
-Calls `.disconnect()` on each worker in `cluster.workers`.
+Llama a `.disconnect()` a cada worker en `cluster.workers`.
 
 When they are disconnected all internal handles will be closed, allowing the master process to die gracefully if no other event is waiting.
 
