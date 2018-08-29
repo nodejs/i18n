@@ -451,7 +451,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-Cuando un nuevo worker es bifurcado, el módulo clúster va a emitir el evento `'fork'`. This can be used to log worker activity, and create a custom timeout.
+Cuando un nuevo worker es bifurcado, el módulo clúster va a emitir el evento `'fork'`. Esto puede ser usado para registrar la actividad de un worker, y crear un tiempo de desconexión personalizado.
 
 ```js
 const timeouts = [];
@@ -471,7 +471,7 @@ cluster.on('exit', (worker, code, signal) => {
 });
 ```
 
-## Event: 'listening'
+## Evento: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -480,7 +480,7 @@ added: v0.7.0
 * `worker` {cluster.Worker}
 * `address` {Object}
 
-After calling `listen()` from a worker, when the `'listening'` event is emitted on the server a `'listening'` event will also be emitted on `cluster` in the master.
+Después de llamar `listen()` de un trabajador, cuando el evento `'listening'` es emitido en el servidor un evento `'listening'` también será emitido en el `cluster` en el maestro.
 
 The event handler is executed with two arguments, the `worker` contains the worker object and the `address` object contains the following connection properties: `address`, `port` and `addressType`. This is very useful if the worker is listening on more than one address.
 
