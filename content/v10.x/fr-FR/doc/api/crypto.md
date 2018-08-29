@@ -1059,7 +1059,7 @@ Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en f
 added: v0.1.92
 -->
 
-The `Verify` class is a utility for verifying signatures. It can be used in one of two ways:
+La classe `Verify` est un utilitaire pour vérifier des signatures. Elle peut être utilisée de deux manières :
 
 - As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
 - Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
