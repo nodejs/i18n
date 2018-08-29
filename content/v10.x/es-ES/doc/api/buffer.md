@@ -861,9 +861,9 @@ changes:
 * `target` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] con el que comparar `buf`.
 * `targetStart` {integer} El desplazamiento dentro del `target` en el que debe comenzar la comparación. **Predeterminado:** `0`.
 * `targetEnd` {integer} El desplazamiento con el `target` con el que debe terminar la comparación (no incluido). **Predeterminado:** `target.length`.
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`].
-* Returns: {integer}
+* `sourceStart` {integer} El desplazamiento dentro de `buf` con el que debe comenzar la comparación. **Predeterminado:** `0`.
+* `sourceEnd` {integer} El desplazamiento dentro de `buf` con el que se debe terminar la comparación (no incluido). **Predeterminado:** [`buf.length`].
+* Devuelve: {integer}
 
 Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
 
@@ -916,7 +916,7 @@ added: v0.1.90
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
 * `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
 * `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`].
+* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Predeterminado:** [`buf.length`].
 * Returns: {integer} The number of bytes copied.
 
 Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
@@ -1647,7 +1647,7 @@ changes:
 -->
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
+* `end` {integer} Where the new `Buffer` will end (not inclusive). **Predeterminado:** [`buf.length`].
 * Returns: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
@@ -1814,7 +1814,7 @@ added: v0.1.90
 
 * `encoding` {string} The character encoding to use. **Predeterminado:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
+* `end` {integer} The byte offset to stop decoding at (not inclusive). **Predeterminado:** [`buf.length`].
 * Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
