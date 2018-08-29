@@ -599,7 +599,7 @@ added: v0.8.1
 
 * {boolean}
 
-Verdadero si el proceso es un maestro. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+Verdadero si el proceso es un maestro. Esto es determinado por `process.env.NODE_UNIQUE_ID`. Si `process.env.NODE_UNIQUE_ID` está sin definir, entonces `isMaster` es `true`.
 
 ## cluster.isWorker
 
@@ -609,7 +609,7 @@ added: v0.6.0
 
 * {boolean}
 
-True if the process is not a master (it is the negation of `cluster.isMaster`).
+Verdadero si el proceso no es maestro (es la negación de `cluster.isMaster`).
 
 ## cluster.schedulingPolicy
 
