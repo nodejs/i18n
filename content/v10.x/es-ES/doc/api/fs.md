@@ -3986,9 +3986,9 @@ La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritt
 
 `offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
 
-`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
+`position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
-It is unsafe to use `fsPromises.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). Para este caso, `fs.createWriteStream` es altamente recomendado.
+No es seguro utilizar `fsPromises.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -4002,11 +4002,11 @@ added: v10.0.0
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
-  * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-* Returns: {Promise}
+  * `mode` {integer} **Predeterminado:** `0o666`
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
+* Devuelve: {Promise}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
+Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
 La opción de `encoding` se ignora si `data` es un búfer.
 
