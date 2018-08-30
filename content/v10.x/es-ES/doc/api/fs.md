@@ -3936,7 +3936,7 @@ added: v10.0.0
 * `len` {integer} **Default:** `0`
 * Returns: {Promise}
 
-Truncates the `path` then resolves the `Promise` with no arguments upon success. The `path` *must* be a string or `Buffer`.
+Trunca el `path` y luego resuelve la `Promise` sin argumentos al realizarse con éxito. El `path` *debe* ser una string o `Buffer`.
 
 ### fsPromises.unlink(path)
 
@@ -3945,9 +3945,9 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous unlink(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+unlink(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.utimes(path, atime, mtime)
 
@@ -3958,14 +3958,14 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Change the file system timestamps of the object referenced by `path` then resolves the `Promise` with no arguments upon success.
 
-The `atime` and `mtime` arguments follow these rules:
+Los argumentos `atime` y `mtime` siguen estas reglas:
 
 * Values can be either numbers representing Unix epoch time, `Date`s, or a numeric string like `'123456789.0'`.
-* If the value can not be converted to a number, or is `NaN`, `Infinity` or `-Infinity`, an `Error` will be thrown.
+* Si el valor no puede ser convertido a un número, o es `NaN`, `Infinity` o `-Infinity`, se arrojará un `Error` .
 
 ### fsPromises.write(filehandle, buffer[, offset[, length[, position]]])
 
@@ -3980,7 +3980,7 @@ added: v10.0.0
 * `position` {integer}
 * Returns: {Promise}
 
-Write `buffer` to the file specified by `filehandle`.
+Escribe `buffer` al archivo especificado por `filehandle`.
 
 La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritten` que identifique el número de bytes escritos, y una propiedad de `buffer` que contenga una referencia al `buffer` escrito.
 
