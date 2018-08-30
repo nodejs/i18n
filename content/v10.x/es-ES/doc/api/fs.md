@@ -2378,7 +2378,7 @@ Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
-Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente al sistema para ese objeto.
 
 ## fs.realpath.native(path[, options], callback)
 
@@ -2442,7 +2442,7 @@ Esta función se comporta como realpath(3), con algunas excepciones:
 
 El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para el valor devuelto. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
-Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente a un sistema para ese objeto.
+Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente al sistema para ese objeto.
 
 ## fs.realpathSync.native(path[, options])
 
@@ -3922,9 +3922,9 @@ added: v10.0.0
 * `type` {string} **Default:** `'file'`
 * Returns: {Promise}
 
-Creates a symbolic link then resolves the `Promise` with no arguments upon success.
+Crea un enlace simbólico y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-The `type` argument is only used on Windows platforms and can be one of `'dir'`, `'file'`, or `'junction'`. Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+El argumento de `type` sólo se utiliza en plataformas de Windows y puede ser uno de `'dir'`, `'file'`, o `'junction'`. Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
 
 ### fsPromises.truncate(path[, len])
 
@@ -3936,7 +3936,7 @@ added: v10.0.0
 * `len` {integer} **Default:** `0`
 * Returns: {Promise}
 
-Truncates the `path` then resolves the `Promise` with no arguments upon success. The `path` *must* be a string or `Buffer`.
+Trunca el `path` y luego resuelve la `Promise` sin argumentos al realizarse con éxito. El `path` *debe* ser una string o `Buffer`.
 
 ### fsPromises.unlink(path)
 
@@ -3945,9 +3945,9 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous unlink(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+unlink(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.utimes(path, atime, mtime)
 
@@ -3958,14 +3958,14 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Change the file system timestamps of the object referenced by `path` then resolves the `Promise` with no arguments upon success.
 
-The `atime` and `mtime` arguments follow these rules:
+Los argumentos `atime` y `mtime` siguen estas reglas:
 
 * Values can be either numbers representing Unix epoch time, `Date`s, or a numeric string like `'123456789.0'`.
-* If the value can not be converted to a number, or is `NaN`, `Infinity` or `-Infinity`, an `Error` will be thrown.
+* Si el valor no puede ser convertido a un número, o es `NaN`, `Infinity` o `-Infinity`, se arrojará un `Error` .
 
 ### fsPromises.write(filehandle, buffer[, offset[, length[, position]]])
 
@@ -3980,15 +3980,15 @@ added: v10.0.0
 * `position` {integer}
 * Returns: {Promise}
 
-Write `buffer` to the file specified by `filehandle`.
+Escribe `buffer` al archivo especificado por `filehandle`.
 
 La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritten` que identifique el número de bytes escritos, y una propiedad de `buffer` que contenga una referencia al `buffer` escrito.
 
-`offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
+`offset` determina la parte del búfer que será escrita, y `length` es un entero que especifica el número de bytes a escribir.
 
-`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
+`position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
-It is unsafe to use `fsPromises.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). Para este caso, `fs.createWriteStream` es altamente recomendado.
+No es seguro utilizar `fsPromises.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
 On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -4002,270 +4002,533 @@ added: v10.0.0
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
-  * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-* Returns: {Promise}
+  * `mode` {integer} **Predeterminado:** `0o666`
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
+* Devuelve: {Promise}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
+Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
-The `encoding` option is ignored if `data` is a buffer.
+La opción de `encoding` se ignora si `data` es un búfer.
 
 Si `options` es una string, entonces especifica la codificación.
 
 Cualquier `FileHandle` especificado tiene que apoyar la escritura.
 
-It is unsafe to use `fsPromises.writeFile()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected).
+No es seguro utilizar `fsPromises.writeFile()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada).
 
-## FS Constants
+## Constantes FS
 
 Las siguientes constantes son exportadas por `fs.constants`.
 
-Not every constant will be available on every operating system.
+No todas las constantes estarán disponibles en cada sistema operativo.
 
-### File Access Constants
+### Constantes de Acceso de Archivo
 
-The following constants are meant for use with [`fs.access()`][].
+Las siguientes constantes están destinadas para ser utilizadas con [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>F_OK</code></td>
-    <td>Flag indicating that the file is visible to the calling process.</td>
+    <td>
+      <code>F_OK</code>
+    </td>
+    
+    <td>
+      Bandera que indica que el archivo es visible para el proceso de llamada.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>R_OK</code></td>
-    <td>Flag indicating that the file can be read by the calling process.</td>
+    <td>
+      <code>R_OK</code>
+    </td>
+    
+    <td>
+      Bandera que indica que el archivo puede ser leído por el proceso de llamada.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>W_OK</code></td>
-    <td>Flag indicating that the file can be written by the calling
-    process.</td>
+    <td>
+      <code>W_OK</code>
+    </td>
+    
+    <td>
+      Bandera que indica que el archivo puede ser escrito por el proceso de llamada.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>X_OK</code></td>
-    <td>Flag indicating that the file can be executed by the calling
-    process.</td>
+    <td>
+      <code>X_OK</code>
+    </td>
+    
+    <td>
+      Bandera que indica que el archivo puede ser ejecutado por el proceso de llamada.
+    </td>
   </tr>
 </table>
 
-### File Copy Constants
+### Constantes de Copia de Archivo
 
-The following constants are meant for use with [`fs.copyFile()`][].
+Las siguientes constantes están destinadas para ser utilizadas con [`fs.copyFile()`][].
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>COPYFILE_EXCL</code></td>
-    <td>If present, the copy operation will fail with an error if the
-    destination path already exists.</td>
+    <td>
+      <code>COPYFILE_EXCL</code>
+    </td>
+    
+    <td>
+      Si está presente, la operación de copia fallará con un error si la ruta de destino ya existe.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>COPYFILE_FICLONE</code></td>
-    <td>If present, the copy operation will attempt to create a
-    copy-on-write reflink. If the underlying platform does not support
-    copy-on-write, then a fallback copy mechanism is used.</td>
+    <td>
+      <code>COPYFILE_FICLONE</code>
+    </td>
+    
+    <td>
+      If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform does not support copy-on-write, then a fallback copy mechanism is used.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>COPYFILE_FICLONE_FORCE</code></td>
-    <td>If present, the copy operation will attempt to create a
-    copy-on-write reflink. If the underlying platform does not support
-    copy-on-write, then the operation will fail with an error.</td>
+    <td>
+      <code>COPYFILE_FICLONE_FORCE</code>
+    </td>
+    
+    <td>
+      If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform does not support copy-on-write, then the operation will fail with an error.
+    </td>
   </tr>
 </table>
 
-### File Open Constants
+### Constantes Abiertas de Archivo
 
-The following constants are meant for use with `fs.open()`.
+Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>O_RDONLY</code></td>
-    <td>Flag indicating to open a file for read-only access.</td>
+    <td>
+      <code>O_RDONLY</code>
+    </td>
+    
+    <td>
+      Bandera que indica abrir un archivo con acceso de solo-lectura.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_WRONLY</code></td>
-    <td>Flag indicating to open a file for write-only access.</td>
+    <td>
+      <code>O_WRONLY</code>
+    </td>
+    
+    <td>
+      Bandera que indica abrir un archivo con acceso de solo-escritura.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_RDWR</code></td>
-    <td>Flag indicating to open a file for read-write access.</td>
+    <td>
+      <code>O_RDWR</code>
+    </td>
+    
+    <td>
+      Bandera que indica abrir un archivo con acceso de lectura-escritura.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_CREAT</code></td>
-    <td>Flag indicating to create the file if it does not already exist.</td>
+    <td>
+      <code>O_CREAT</code>
+    </td>
+    
+    <td>
+      Bandera que indica crear el archivo, si este aún no existe.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_EXCL</code></td>
-    <td>Flag indicating that opening a file should fail if the
-    <code>O_CREAT</code> flag is set and the file already exists.</td>
+    <td>
+      <code>O_EXCL</code>
+    </td>
+    
+    <td>
+      Bandera que indica que al abrir un archivo deberían haber fallas si la bandera <code>O_CREAT</code> está establecida y el archivo ya existe.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_NOCTTY</code></td>
-    <td>Flag indicating that if path identifies a terminal device, opening the
-    path shall not cause that terminal to become the controlling terminal for
-    the process (if the process does not already have one).</td>
+    <td>
+      <code>O_NOCTTY</code>
+    </td>
+    
+    <td>
+      Flag indicating that if path identifies a terminal device, opening the path shall not cause that terminal to become the controlling terminal for the process (if the process does not already have one).
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_TRUNC</code></td>
-    <td>Flag indicating that if the file exists and is a regular file, and the
-    file is opened successfully for write access, its length shall be truncated
-    to zero.</td>
+    <td>
+      <code>O_TRUNC</code>
+    </td>
+    
+    <td>
+      Bandera que indica que si el archivo existe y es un archivo normal, y el archivo se abre exitosamente con acceso para ser escrito, su longitud deberá ser truncada a cero.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_APPEND</code></td>
-    <td>Bandera que indica que los datos serán anexados al final del archivo.</td>
+    <td>
+      <code>O_APPEND</code>
+    </td>
+    
+    <td>
+      Bandera que indica que los datos serán anexados al final del archivo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_DIRECTORY</code></td>
-    <td>Flag indicating that the open should fail if the path is not a
-    directory.</td>
+    <td>
+      <code>O_DIRECTORY</code>
+    </td>
+    
+    <td>
+      Bandera que indica que la apertura debería fallar si la ruta no es un directorio.
+    </td>
   </tr>
+  
   <tr>
-  <td><code>O_NOATIME</code></td>
-    <td>Flag indicating reading accesses to the file system will no longer
-    result in an update to the `atime` information associated with the file.
-    This flag is available on Linux operating systems only.</td>
+    <td>
+      <code>O_NOATIME</code>
+    </td>
+    
+    <td>
+      Bandera que indica que los accesos de lectura al sistema de archivos ya no resultarán en una actualización de la información de `atime` asociada al archivo. Esta bandera sólo está disponible en sistemas operativos de Linux.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_NOFOLLOW</code></td>
-    <td>Flag indicating that the open should fail if the path is a symbolic
-    link.</td>
+    <td>
+      <code>O_NOFOLLOW</code>
+    </td>
+    
+    <td>
+      Bandera que indica que la apertura debería fallar si el archivo es un link simbólico.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_SYNC</code></td>
-    <td>Flag indicating that the file is opened for synchronized I/O with write
-    operations waiting for file integrity.</td>
+    <td>
+      <code>O_SYNC</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file is opened for synchronized I/O with write operations waiting for file integrity.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_DSYNC</code></td>
-    <td>Flag indicating that the file is opened for synchronized I/O with write
-    operations waiting for data integrity.</td>
+    <td>
+      <code>O_DSYNC</code>
+    </td>
+    
+    <td>
+      Flag indicating that the file is opened for synchronized I/O with write operations waiting for data integrity.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_SYMLINK</code></td>
-    <td>Flag indicating to open the symbolic link itself rather than the
-    resource it is pointing to.</td>
+    <td>
+      <code>O_SYMLINK</code>
+    </td>
+    
+    <td>
+      Bandera que indica abrir el enlace simbólico en vez del recurso al cual este apunta.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_DIRECT</code></td>
-    <td>When set, an attempt will be made to minimize caching effects of file
-    I/O.</td>
+    <td>
+      <code>O_DIRECT</code>
+    </td>
+    
+    <td>
+      When set, an attempt will be made to minimize caching effects of file I/O.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>O_NONBLOCK</code></td>
-    <td>Flag indicating to open the file in nonblocking mode when possible.</td>
+    <td>
+      <code>O_NONBLOCK</code>
+    </td>
+    
+    <td>
+      Bandera que indica abrir el archivo en modo de no bloqueo cuando sea posible.
+    </td>
   </tr>
 </table>
 
 ### Constantes de Tipo de Archivo
 
-Las siguientes constantes están destinadas para ser utilizadas con la propiedad de `mode` del objeto de [`fs.Stats`][] para determinar el tipo de un archivo.
+Las siguientes constantes están destinadas para ser utilizadas con la propiedad `mode` del objeto de [`fs.Stats`][] para determinar el tipo de un archivo.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>S_IFMT</code></td>
-    <td>Bit mask used to extract the file type code.</td>
+    <td>
+      <code>S_IFMT</code>
+    </td>
+    
+    <td>
+      Bit mask used to extract the file type code.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFREG</code></td>
-    <td>File type constant for a regular file.</td>
+    <td>
+      <code>S_IFREG</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un archivo normal.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFDIR</code></td>
-    <td>File type constant for a directory.</td>
+    <td>
+      <code>S_IFDIR</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un directorio.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFCHR</code></td>
-    <td>File type constant for a character-oriented device file.</td>
+    <td>
+      <code>S_IFDIR</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un archivo de dispositivo orientado a caracteres.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFBLK</code></td>
-    <td>File type constant for a block-oriented device file.</td>
+    <td>
+      <code>S_IFBLK</code>
+    </td>
+    
+    <td>
+      File type constant for a block-oriented device file.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFIFO</code></td>
-    <td>File type constant for a FIFO/pipe.</td>
+    <td>
+      <code>S_IFIFO</code>
+    </td>
+    
+    <td>
+      File type constant for a FIFO/pipe.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFLNK</code></td>
-    <td>File type constant for a symbolic link.</td>
+    <td>
+      <code>S_IFLNK</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un enlace simbólico.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IFSOCK</code></td>
-    <td>Constante de tipo de archivo para un socket.</td>
+    <td>
+      <code>S_IFSOCK</code>
+    </td>
+    
+    <td>
+      Constante de tipo de archivo para un socket.
+    </td>
   </tr>
 </table>
 
-### File Mode Constants
+### Constantes de Modo de Archivo
 
-The following constants are meant for use with the [`fs.Stats`][] object's `mode` property for determining the access permissions for a file.
+Las siguientes constantes están destinadas para ser utilizadas con la propiedad `mode` del objeto de [`fs.Stats`][] para determinar los permisos de acceso de una archivo.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descripción</th>
+    <th>
+      Constante
+    </th>
+    
+    <th>
+      Descripción
+    </th>
   </tr>
+  
   <tr>
-    <td><code>S_IRWXU</code></td>
-    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el propietario.</td>
+    <td>
+      <code>S_IRWXU</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRUSR</code></td>
-    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
+    <td>
+      <code>S_IRUSR</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser leído por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IWUSR</code></td>
-    <td>Modo de archivo que indica que puede ser editado por el propietario.</td>
+    <td>
+      <code>S_IWUSR</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser editado por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IXUSR</code></td>
-    <td>Modo de archivo que indica que puede ser ejecutado por el propietario.</td>
+    <td>
+      <code>S_IXUSR</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser ejecutado por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRWXG</code></td>
-    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el grupo.</td>
+    <td>
+      <code>S_IRWXG</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que es legible, editable y que puede ser ejecutado por el grupo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRGRP</code></td>
-    <td>Modo de archivo que indica que puede ser leído por el propietario.</td>
+    <td>
+      <code>S_IRGRP</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser leído por el propietario.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IWGRP</code></td>
-    <td>Modo de archivo que indica que puede ser editado por el grupo.</td>
+    <td>
+      <code>S_IWGRP</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser editado por el grupo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IXGRP</code></td>
-    <td>Modo de archivo que indica que puede ser ejecutado por el grupo.</td>
+    <td>
+      <code>S_IXGRP</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser ejecutado por el grupo.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IRWXO</code></td>
-    <td>Modo de archivo que indica que es legible, editable y que puede ser ejecutado por otros.</td>
+    <td>
+      <code>S_IRWXO</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que es legible, editable y que puede ser ejecutado por otros.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IROTH</code></td>
-    <td>Modo de archivo que indica que puede ser leído por otros.</td>
+    <td>
+      <code>S_IROTH</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser leído por otros.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IWOTH</code></td>
-    <td>Modo de archivo que indica que puede ser editado por otros.</td>
+    <td>
+      <code>S_IWOTH</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser editado por otros.
+    </td>
   </tr>
+  
   <tr>
-    <td><code>S_IXOTH</code></td>
-    <td>Modo de archivo que indica que puede ser ejecutado por otros.</td>
+    <td>
+      <code>S_IXOTH</code>
+    </td>
+    
+    <td>
+      Modo de archivo que indica que puede ser ejecutado por otros.
+    </td>
   </tr>
 </table>
 
@@ -4275,11 +4538,11 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'a'` - Archivo abierto para anexar. El archivo se crea si no existe.
 
-* `'ax'` - Como `'a'` pero falla si la ruta existe.
+* `'ax'` - Como `'a'`, pero falla si la ruta existe.
 
 * `'a+'` - Archivo abierto para leer y anexar. El archivo se crea si no existe.
 
-* `'ax+'` - Como `'a+'` pero falla si la ruta existe.
+* `'ax+'` - Como `'a+'`, pero falla si la ruta existe.
 
 * `'as'` - Archivo abierto para anexar en modo sincrónico. El archivo se crea si no existe.
 
@@ -4297,11 +4560,11 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'w'` - Archivo abierto para escribir. El archivo es creado (si no existe) o truncado (si existe).
 
-* `'wx'` - Como `'w'` pero falla si la ruta existe.
+* `'wx'` - Como `'w'`, pero falla si la ruta existe.
 
 * `'w+'` - Archivo abierto para leer y escribir. El archivo es creado (si no existe) o truncado (si existe).
 
-* `'wx+'` - Como `'w+'` pero falla si la ruta existe.
+* `'wx+'` - Como `'w+'`, pero falla si la ruta existe.
 
 `flag` también puede ser un número como lo documenta open(2); las constantes comúnmente utilizadas están disponibles desde `fs.constants`. En WIndows, las banderas son traducidas a sus equivalentes si aplica, por ejemplo, `O_WRONLY` a `FILE_GENERIC_WRITE`, ó `O_EXCL|O_CREAT` a `CREATE_NEW`, como las acepta `CreateFileW`.
 

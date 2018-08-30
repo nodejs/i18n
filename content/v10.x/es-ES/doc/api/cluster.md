@@ -271,14 +271,14 @@ if (cluster.isMaster) {
 } else if (cluster.isWorker) {
   const net = require('net');
   const server = net.createServer((socket) => {
-    // connections never end
+    // conexiones nuncan terminan
   });
 
   server.listen(8000);
 
   process.on('message', (msg) => {
     if (msg === 'shutdown') {
-      // initiate graceful close of any connections to server
+      // iniciar el elegante cierre de cualquier conexión al servidor
     }
   });
 }
@@ -303,7 +303,7 @@ cluster.on('exit', (worker, code, signal) => {
   }
 });
 
-// kill worker
+// matar worker
 worker.kill();
 ```
 
@@ -347,7 +347,7 @@ Esta función matará al worker. En el maestro, lo hace al desconectar el `worke
 
 Causa que se establezca `.exitedAfterDisconnect`.
 
-This method is aliased as `worker.destroy()` for backwards compatibility.
+Este método tiene su alias como `worker.destroy()` para compatibilidad con versiones anteriores.
 
 Ten en cuenta que dentro de un worker, existe `process.kill()`, pero no es esta función, es [`kill`][].
 
@@ -359,11 +359,11 @@ added: v0.7.0
 
 * {ChildProcess}
 
-All workers are created using [`child_process.fork()`][], the returned object from this function is stored as `.process`. In a worker, the global `process` is stored.
+Todos los workers son creados usando [`child_process.fork()`][], el objeto devuelto de esta función se almacena como `.process`. En un worker, es guardado el `process` global.
 
-See: [Child Process module](child_process.html#child_process_child_process_fork_modulepath_args_options).
+Ver: [Módulo del Proceso secundario](child_process.html#child_process_child_process_fork_modulepath_args_options).
 
-Note that workers will call `process.exit(0)` if the `'disconnect'` event occurs on `process` and `.exitedAfterDisconnect` is not `true`. This protects against accidental disconnection.
+Tenga en cuenta que, los workers van a llamar a `process.exit(0)` si el evento `'disconnect'` ocurre en `process`, y `.exitedAfterDisconnect` no es `true`. Esto protege contra desconexiones accidentales.
 
 ### worker.send(message\[, sendHandle\]\[, callback\])
 
@@ -379,15 +379,15 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Send a message to a worker or master, optionally with a handle.
+Envía un mensaje a un worker o un maestro, opcionalmente con un handle.
 
-In the master this sends a message to a specific worker. It is identical to [`ChildProcess.send()`][].
+En el maestro, esto envía un mensaje a un worker específico. Es idéntico a [`ChildProcess.send()`][].
 
-In a worker this sends a message to the master. It is identical to `process.send()`.
+En un trabajador, esto envía un mensaje al maestro. Es idéntico a `process.send()`.
 
-This example will echo back all messages from the master:
+Este ejemplo va a devolver todos los mensajes del maestro:
 
 ```js
 if (cluster.isMaster) {
@@ -401,7 +401,7 @@ if (cluster.isMaster) {
 }
 ```
 
-## Event: 'disconnect'
+## Evento: 'disconnect'
 
 <!-- YAML
 added: v0.7.9
@@ -409,9 +409,9 @@ added: v0.7.9
 
 * `worker` {cluster.Worker}
 
-Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed, or is disconnected manually (such as with `worker.disconnect()`).
+Emitido después que el canal IPC del worker ha sido desconectado. Esto puede ocurrir cuando un trabajador sale con elegancia, es matado, o es desconectado manualmente (por ejemplo `worker.disconnect()`).
 
-There may be a delay between the `'disconnect'` and `'exit'` events. These events can be used to detect if the process is stuck in a cleanup or if there are long-living connections.
+Puede existir una demora entre los eventos `'disconnect'` y `'exit'`. Estos eventos pueden ser usados para detectar si el proceso está atascado en una limpieza, o si hay conecciones de vida larga.
 
 ```js
 cluster.on('disconnect', (worker) => {
@@ -419,19 +419,19 @@ cluster.on('disconnect', (worker) => {
 });
 ```
 
-## Event: 'exit'
+## Evento: 'exit'
 
 <!-- YAML
 added: v0.7.9
 -->
 
 * `worker` {cluster.Worker}
-* `code` {number} The exit code, if it exited normally.
-* `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
+* `code`{number} El código de salida, si se cerró de manera normal.
+* `signal`{string} El nombre de la señal (p. ej. `process`) que causó que el proceso muriera.
 
-When any of the workers die the cluster module will emit the `'exit'` event.
+Cuando cualquiera de los workes muere, el módulo clúster va a emitir el evento `'exit'`.
 
-This can be used to restart the worker by calling `.fork()` again.
+Esto puede ser usado para reiniciar el worker llamando otra vez a `.fork()`.
 
 ```js
 cluster.on('exit', (worker, code, signal) => {
@@ -441,9 +441,9 @@ cluster.on('exit', (worker, code, signal) => {
 });
 ```
 
-See [`child_process` event: `'exit'`][].
+Ve [`child_process` event: `'exit'`][].
 
-## Event: 'fork'
+## Evento: 'fork'
 
 <!-- YAML
 added: v0.7.0
@@ -451,7 +451,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-When a new worker is forked the cluster module will emit a `'fork'` event. This can be used to log worker activity, and create a custom timeout.
+Cuando un nuevo worker es bifurcado, el módulo clúster va a emitir el evento `'fork'`. Esto puede ser usado para registrar la actividad de un worker, y crear un tiempo de desconexión personalizado.
 
 ```js
 const timeouts = [];
@@ -471,7 +471,7 @@ cluster.on('exit', (worker, code, signal) => {
 });
 ```
 
-## Event: 'listening'
+## Evento: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -480,9 +480,9 @@ added: v0.7.0
 * `worker` {cluster.Worker}
 * `address` {Object}
 
-After calling `listen()` from a worker, when the `'listening'` event is emitted on the server a `'listening'` event will also be emitted on `cluster` in the master.
+Después de llamar `listen()` de un trabajador, cuando el evento `'listening'` es emitido en el servidor un evento `'listening'` también será emitido en el `cluster` en el maestro.
 
-The event handler is executed with two arguments, the `worker` contains the worker object and the `address` object contains the following connection properties: `address`, `port` and `addressType`. This is very useful if the worker is listening on more than one address.
+El evento manejador es ejecutado con dos argumentos, el `worker` contiene el objeto worker y el objeto `address` contiene las siguientes propiedades de conexión: `address`, `port` y `addressType`. Esto es muy útil si el worker está escuchando en más de una dirección.
 
 ```js
 cluster.on('listening', (worker, address) => {
@@ -491,14 +491,14 @@ cluster.on('listening', (worker, address) => {
 });
 ```
 
-The `addressType` is one of:
+`addressType` es una de:
 
 * `4` (TCPv4)
 * `6` (TCPv6)
-* `-1` (unix domain socket)
-* `'udp4'` or `'udp6'` (UDP v4 or v6)
+* `-1` (socket de dominio unix)
+* `'udp4'` o `'udp6'` (UDP v4 or v6)
 
-## Event: 'message'
+## Evento: 'message'
 
 <!-- YAML
 added: v2.5.0
@@ -513,13 +513,13 @@ changes:
 * `message` {Object}
 * `handle` {undefined|Object}
 
-Emitted when the cluster master receives a message from any worker.
+Emitido cuando el clúster maestro recibe un mensaje de cualquier worker.
 
-See [`child_process` event: `'message'`][].
+Ve [`child_process` event: `'message'`][].
 
-Before Node.js v6.0, this event emitted only the message and the handle, but not the worker object, contrary to what the documentation stated.
+Antes de Node.js v6.0, este evento emitía solo el mensaje y el handle, pero no el objeto worker, al contrario de lo que decía la documentación.
 
-If support for older versions is required but a worker object is not required, it is possible to work around the discrepancy by checking the number of arguments:
+Si se requiere soporte para versiones anteriores, pero un objeto worker no es requerido, es posible evitar la discrepancia verificando los números de los argumentos:
 
 ```js
 cluster.on('message', (worker, message, handle) => {
@@ -532,7 +532,7 @@ cluster.on('message', (worker, message, handle) => {
 });
 ```
 
-## Event: 'online'
+## Evento: 'online'
 
 <!-- YAML
 added: v0.7.0
@@ -540,7 +540,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-After forking a new worker, the worker should respond with an online message. When the master receives an online message it will emit this event. The difference between `'fork'` and `'online'` is that fork is emitted when the master forks a worker, and `'online'` is emitted when the worker is running.
+Después de bifurcar un nuevo worker, el worker debería responder con un mensaje en línea. Cuando el maestro reciba un mensaje en línea va a emitir este evento. La diferencia entre `'fork'` y `'online'` es que, el evento bifurcar es emitido cuando el maestro bifurca un worker, y el evento `'online'` es emitido cuando el worker está corriendo.
 
 ```js
 cluster.on('online', (worker) => {
@@ -548,7 +548,7 @@ cluster.on('online', (worker) => {
 });
 ```
 
-## Event: 'setup'
+## Evento: 'setup'
 
 <!-- YAML
 added: v0.7.1
@@ -556,11 +556,11 @@ added: v0.7.1
 
 * `settings` {Object}
 
-Emitted every time `.setupMaster()` is called.
+Emitido cada vez que se llama `.setupMaster()`.
 
-The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
+El objeto `settings` es el objeto `cluster.settings` al momento que `.setupMaster()` fue llamado y solo es consultivo, ya que pueden hacerse varias llamadas a `.setupMaster()` en un solo tic.
 
-If accuracy is important, use `cluster.settings`.
+Si la precisión es importante, usa `cluster.settings`.
 
 ## cluster.disconnect([callback])
 
@@ -568,15 +568,15 @@ If accuracy is important, use `cluster.settings`.
 added: v0.7.7
 -->
 
-* `callback` {Function} Called when all workers are disconnected and handles are closed.
+* `callback` {Function} Llamada cuando todos los workers están desconectados y los handles están cerrados.
 
-Calls `.disconnect()` on each worker in `cluster.workers`.
+Llama a `.disconnect()` a cada worker en `cluster.workers`.
 
-When they are disconnected all internal handles will be closed, allowing the master process to die gracefully if no other event is waiting.
+Cuando son desconectados todos los handles internos serán cerrados, permitiendo al proceso maestro morir con elegancia si ningún otro evento está esperando.
 
-The method takes an optional callback argument which will be called when finished.
+El método toma un argumento callback opcional que va a ser llamado cuando haya terminado.
 
-This can only be called from the master process.
+Esto solo puede ser llamado del proceso maestro.
 
 ## cluster.fork([env])
 
@@ -584,12 +584,12 @@ This can only be called from the master process.
 added: v0.6.0
 -->
 
-* `env` {Object} Key/value pairs to add to worker process environment.
-* Returns: {cluster.Worker}
+* `env` {Object} Llave/valor conecta para añadir el ambiente del proceso worker.
+* Devuelve: {cluster.Worker}
 
-Spawn a new worker process.
+Genera un nuevo proceso worker.
 
-This can only be called from the master process.
+Esto solo puede ser llamado del proceso maestro.
 
 ## cluster.isMaster
 
@@ -599,7 +599,7 @@ added: v0.8.1
 
 * {boolean}
 
-True if the process is a master. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+Verdadero si el proceso es un maestro. Esto es determinado por `process.env.NODE_UNIQUE_ID`. Si `process.env.NODE_UNIQUE_ID` está sin definir, entonces `isMaster` es `true`.
 
 ## cluster.isWorker
 
@@ -609,7 +609,7 @@ added: v0.6.0
 
 * {boolean}
 
-True if the process is not a master (it is the negation of `cluster.isMaster`).
+Verdadero si el proceso no es maestro (es la negación de `cluster.isMaster`).
 
 ## cluster.schedulingPolicy
 
@@ -617,11 +617,11 @@ True if the process is not a master (it is the negation of `cluster.isMaster`).
 added: v0.11.2
 -->
 
-The scheduling policy, either `cluster.SCHED_RR` for round-robin or `cluster.SCHED_NONE` to leave it to the operating system. This is a global setting and effectively frozen once either the first worker is spawned, or `cluster.setupMaster()` is called, whichever comes first.
+La política de planificación, ya sea `cluster.SCHED_RR` para round-robin o `cluster.SCHED_NONE` para dejarselo al sistema operativo. Esto es una configuración global y es efectivamente detenida una vez que el primer worker es generado, o cuando `cluster.setupMaster()` es llamado, cualquiera que ocurra primero.
 
-`SCHED_RR` is the default on all operating systems except Windows. Windows will change to `SCHED_RR` once libuv is able to effectively distribute IOCP handles without incurring a large performance hit.
+`SCHED_RR` es el predeterminado en todos los sistemas operativos menos Windows. Windows cambiará a `SCHED_RR` una vez libuv sea capaz de distribuir handles IOCP, sin incurrir en golpes fuertes en el rendimiento.
 
-`cluster.schedulingPolicy` can also be set through the `NODE_CLUSTER_SCHED_POLICY` environment variable. Valid values are `'rr'` and `'none'`.
+`cluster.schedulingPolicy` también puede ser configurada a través de la variable de ambiente `NODE_CLUSTER_SCHED_POLICY`. Los valores válidos son `'rr'` y `'none'`.
 
 ## cluster.settings
 
@@ -644,20 +644,20 @@ changes:
 -->
 
 * {Object} 
-  * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **Predeterminado:** `process.execArgv`.
-  * `exec` {string} File path to worker file. **Default:** `process.argv[1]`.
-  * `args` {string[]} String arguments passed to worker. **Default:** `process.argv.slice(2)`.
-  * `cwd` {string} Current working directory of the worker process. **Default:** `undefined` (inherits from parent process).
-  * `silent` {boolean} Whether or not to send output to parent's stdio. **Default:** `false`.
-  * `stdio` {Array} Configures the stdio of forked processes. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. When this option is provided, it overrides `silent`.
-  * `uid` {number} Sets the user identity of the process. (See setuid(2).)
-  * `gid` {number} Sets the group identity of the process. (See setgid(2).)
-  * `inspectPort` {number|Function} Sets inspector port of worker. This can be a number, or a function that takes no arguments and returns a number. By default each worker gets its own port, incremented from the master's `process.debugPort`.
-  * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Default:** `false`.
+  * `execArgv` {string[]} Lista de argumentos de strings pasados al Node.js ejecutable. **Predeterminado:** `process.execArgv`.
+  * `exec` {string} Camino del archivo al archivo worker. **Predeterminado:** `process.argv[1]`.
+  * `args` {string[]} Argumentos strings pasados al worker. **Predeterminado:** `process.argv.slice(2)`.
+  * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (heredados del proceso primario).
+  * `silent` {boolean} Ya bien sea enviar la salida a stdio secundario o no. **Predeterminado:** `false`.
+  * `stdio` {Array} Configura el stdio de procesos bifurcados. Porque el módulo clúster depende del IPC para funcionar, esta configuración debe contener una entrada `'ipc'`. Cuando se proporciona esta opción, se anula `silent`.
+  * `uid` {number} Establece la identidad del usuario del proceso. (Ver setuid(2).)
+  * `gid` {number} Establece la identidad del grupo del proceso. (Ver setgid(2).)
+  * `inspectPort` {number|Function} Establece puerto inspector del worker. Esto puede ser un número o una función que no toma ningún argumento y devuelve un número. De manera predeterminada cada worker tiene su propio puerto, incrementado de `process.debugPort` del maestro.
+  * `windowsHide` {boolean} Oculta la ventana de consola de los procesos bifurcados que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
 
-After calling `.setupMaster()` (or `.fork()`) this settings object will contain the settings, including the default values.
+Después de llamar `.setupMaster()` (o `.fork()`) este objeto de configuraciones contiene las configuraciones, incluyendo los valores predeterminados.
 
-This object is not intended to be changed or set manually.
+Este objeto no está diseñado para ser cambiado o ajustado manualmente.
 
 ## cluster.setupMaster([settings])
 
@@ -670,17 +670,17 @@ changes:
     description: The `stdio` option is supported now.
 -->
 
-* `settings` {Object} See [`cluster.settings`][].
+* `settings` {Object} Ver [`cluster.settings`][].
 
-`setupMaster` is used to change the default 'fork' behavior. Once called, the settings will be present in `cluster.settings`.
+`setupMaster` es usado para cambiar el comportamiento predeterminado de 'bifurcar'. Una vez llamado, las configuraciones estarán presentes en `cluster.settings`.
 
-Note that:
+Tenga en cuenta que:
 
-* Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
-* The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
-* The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
+* Cualquier cambio en las configuraciones solo afecta futuras llamadas a `.fork()` y no tienen ningún efecto en workers que ya están en ejecución.
+* El *único* atributo de un trabajador que no se puede establecer mediante `.setupMaster()` es `env` pasado a `.fork()`.
+* Los valores predeterminados anteriores aplican solo a la primera llamada, los predeterminados para llamadas siguientes es el valor actual en el momento que `cluster.setupMaster()` es llamado.
 
-Example:
+Ejemplo:
 
 ```js
 const cluster = require('cluster');
@@ -697,7 +697,7 @@ cluster.setupMaster({
 cluster.fork(); // http worker
 ```
 
-This can only be called from the master process.
+Esto solo puede ser llamado desde el proceso maestro.
 
 ## cluster.worker
 
@@ -707,7 +707,7 @@ added: v0.7.0
 
 * {Object}
 
-A reference to the current worker object. Not available in the master process.
+Una referencia al objeto worker actual. No disponible en el proceso maestro.
 
 ```js
 const cluster = require('cluster');
@@ -729,12 +729,12 @@ added: v0.7.0
 
 * {Object}
 
-A hash that stores the active worker objects, keyed by `id` field. Makes it easy to loop through all the workers. It is only available in the master process.
+Un hash que guarda los objetos del worker activo, escrito por el campo `id`. Hace fácil hacer un bucle a través de todos los workers. Solo está disponible en el proceso maestro.
 
-A worker is removed from `cluster.workers` after the worker has disconnected *and* exited. The order between these two events cannot be determined in advance. However, it is guaranteed that the removal from the `cluster.workers` list happens before last `'disconnect'` or `'exit'` event is emitted.
+Un worker es removido de `cluster.workers` después de que el worker ha salido *y* ha sido desconectado. El orden entre estos dos eventos no pueden ser determinados de antemano. Sin embargo, es garantizado que, la eliminación desde la lista `cluster.workers` ocurre antes de que el último evento `'disconnect'` or `'exit'` es emitido.
 
 ```js
-// Go through all workers
+// Pasar a través de todos los workers
 function eachWorker(callback) {
   for (const id in cluster.workers) {
     callback(cluster.workers[id]);
@@ -745,7 +745,7 @@ eachWorker((worker) => {
 });
 ```
 
-Using the worker's unique id is the easiest way to locate the worker.
+Usando la identificación única del worker es la manera más fácil de localizar el worker.
 
 ```js
 socket.on('data', (id) => {
