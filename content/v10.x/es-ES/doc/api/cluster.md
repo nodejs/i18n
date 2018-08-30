@@ -677,10 +677,10 @@ changes:
 Tenga en cuenta que:
 
 * Cualquier cambio en las configuraciones solo afecta futuras llamadas a `.fork()` y no tienen ningún efecto en workers que ya están en ejecución.
-* The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
-* The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
+* El *único* atributo de un trabajador que no se puede establecer mediante `.setupMaster()` es `env` pasado a `.fork()`.
+* Los valores predeterminados anteriores aplican solo a la primera llamada, los predeterminados para llamadas siguientes es el valor actual en el momento que `cluster.setupMaster()` es llamado.
 
-Example:
+Ejemplo:
 
 ```js
 const cluster = require('cluster');
@@ -697,7 +697,7 @@ cluster.setupMaster({
 cluster.fork(); // http worker
 ```
 
-This can only be called from the master process.
+Esto solo puede ser llamado desde el proceso maestro.
 
 ## cluster.worker
 
@@ -707,7 +707,7 @@ added: v0.7.0
 
 * {Object}
 
-A reference to the current worker object. Not available in the master process.
+Una referencia al objeto worker actual. No disponible en el proceso maestro.
 
 ```js
 const cluster = require('cluster');
