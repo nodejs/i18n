@@ -271,14 +271,14 @@ if (cluster.isMaster) {
 } else if (cluster.isWorker) {
   const net = require('net');
   const server = net.createServer((socket) => {
-    // connections never end
+    // conexiones nuncan terminan
   });
 
   server.listen(8000);
 
   process.on('message', (msg) => {
     if (msg === 'shutdown') {
-      // initiate graceful close of any connections to server
+      // iniciar el elegante cierre de cualquier conexión al servidor
     }
   });
 }
@@ -303,7 +303,7 @@ cluster.on('exit', (worker, code, signal) => {
   }
 });
 
-// kill worker
+// matar worker
 worker.kill();
 ```
 
@@ -584,7 +584,7 @@ Esto solo puede ser llamado del proceso maestro.
 added: v0.6.0
 -->
 
-* `env` {Object} Key/value pairs to add to worker process environment.
+* `env` {Object} Llave/valor conecta para añadir el ambiente del proceso worker.
 * Devuelve: {cluster.Worker}
 
 Genera un nuevo proceso worker.
@@ -645,8 +645,8 @@ changes:
 
 * {Object} 
   * `execArgv` {string[]} Lista de argumentos de strings pasados al Node.js ejecutable. **Predeterminado:** `process.execArgv`.
-  * `exec` {string} Camino del archivo al archivo worker. **Default:** `process.argv[1]`.
-  * `args` {string[]} Argumentos strings pasados al worker. **Default:** `process.argv.slice(2)`.
+  * `exec` {string} Camino del archivo al archivo worker. **Predeterminado:** `process.argv[1]`.
+  * `args` {string[]} Argumentos strings pasados al worker. **Predeterminado:** `process.argv.slice(2)`.
   * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (heredados del proceso primario).
   * `silent` {boolean} Ya bien sea enviar la salida a stdio secundario o no. **Predeterminado:** `false`.
   * `stdio` {Array} Configura el stdio de procesos bifurcados. Porque el módulo clúster depende del IPC para funcionar, esta configuración debe contener una entrada `'ipc'`. Cuando se proporciona esta opción, se anula `silent`.
@@ -731,10 +731,10 @@ added: v0.7.0
 
 Un hash que guarda los objetos del worker activo, escrito por el campo `id`. Hace fácil hacer un bucle a través de todos los workers. Solo está disponible en el proceso maestro.
 
-Un worker es removido de `cluster.workers` después de que el worker ha salido *y* ha sido desconectado. El orden entre estos dos eventos no pueden ser determinados de antemano. However, it is guaranteed that the removal from the `cluster.workers` list happens before last `'disconnect'` or `'exit'` event is emitted.
+Un worker es removido de `cluster.workers` después de que el worker ha salido *y* ha sido desconectado. El orden entre estos dos eventos no pueden ser determinados de antemano. Sin embargo, es garantizado que, la eliminación desde la lista `cluster.workers` ocurre antes de que el último evento `'disconnect'` or `'exit'` es emitido.
 
 ```js
-// Go through all workers
+// Pasar a través de todos los workers
 function eachWorker(callback) {
   for (const id in cluster.workers) {
     callback(cluster.workers[id]);
@@ -745,7 +745,7 @@ eachWorker((worker) => {
 });
 ```
 
-Using the worker's unique id is the easiest way to locate the worker.
+Usando la identificación única del worker es la manera más fácil de localizar el worker.
 
 ```js
 socket.on('data', (id) => {
