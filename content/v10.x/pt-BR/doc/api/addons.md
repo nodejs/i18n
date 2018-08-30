@@ -55,7 +55,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Observe que todos os Addons de Node. js devem exportar uma função de inicialização seguindo o padrão a seguir:
+Observe que todos os complementos de Node.js devem exportar uma função de inicialização seguindo o padrão a seguir:
 
 ```cpp
 void Initialize(Local<Object> exports);
@@ -70,7 +70,7 @@ No exemplo `hello.cc`, em seguida, a função de inicialização é `init` e o n
 
 ### Building
 
-Uma vez que o código fonte tenha sido escrito, ele precisa se compilado no arquivo binário `addon.node`. Para fazer isso, crie um arquivo chamado `binding.gyp` na raiz do projeto descrevendo a build de configuração do módulo utilizando um formato estilo JSON. Esse arquivo é utilizado pelo [node-gyp](https://github.com/nodejs/node-gyp) — uma ferramenta escrita especificamente para compilar Addons de Node.js.
+Uma vez que o código fonte tenha sido escrito, ele precisa se compilado no arquivo binário `addon.node`. Para fazer isso, crie um arquivo chamado `binding.gyp` na raiz do projeto descrevendo a build de configuração do módulo utilizando um formato estilo JSON. Esse arquivo é utilizado pelo [node-gyp](https://github.com/nodejs/node-gyp) — uma ferramenta escrita especificamente para compilar complementos de Node.js.
 
 ```json
 {
