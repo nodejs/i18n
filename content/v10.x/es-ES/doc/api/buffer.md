@@ -805,7 +805,7 @@ added: v0.11.3
 
 * {integer} **Predeterminado:** `8192`
 
-This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. Este valor puede ser modificado.
+Este es el tamaño (en bytes) de las instancias internas de `Buffer` preasignadas, utilizadas para la agrupación. Este valor puede ser modificado.
 
 ### buf[index]
 
@@ -814,7 +814,7 @@ type: property
 name: [index]
 -->
 
-The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
+El operador de índice `[index]` puede ser utilizado para mantener y establecer el octeto en la posición `index` en `buf`. Los valores refieren a bytes individuales, por lo que el rango de valores legales está entre `0x00` y `0xFF` (hex) o `0` y `255` (decimal).
 
 This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
 
