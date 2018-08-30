@@ -913,10 +913,10 @@ Se producirá [`ERR_INDEX_OUT_OF_RANGE`] si `targetStart < 0`, `sourceStart < 0`
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
-* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
-* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Predeterminado:** [`buf.length`].
+* `target` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] para copiar.
+* `targetStart` {integer} El desplazamiento dentro del `target` en el que comenzar a escribir. **Predeterminado:** `0`.
+* `sourceStart` {integer} El desplazamiento dentro del `buf` desde el que comenzar a copiar. **Predeterminado:** `0`.
+* `sourceEnd` {integer} El desplazamiento dentro de `buf` en el que detener la copia (no incluido). **Predeterminado:** [`buf.length`].
 * Returns: {integer} The number of bytes copied.
 
 Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
