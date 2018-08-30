@@ -653,11 +653,11 @@ changes:
   * `uid` {number} Establece la identidad del usuario del proceso. (Ver setuid(2).)
   * `gid` {number} Establece la identidad del grupo del proceso. (Ver setgid(2).)
   * `inspectPort` {number|Function} Establece puerto inspector del worker. Esto puede ser un número o una función que no toma ningún argumento y devuelve un número. De manera predeterminada cada worker tiene su propio puerto, incrementado de `process.debugPort` del maestro.
-  * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsHide` {boolean} Oculta la ventana de consola de los procesos bifurcados que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
 
-After calling `.setupMaster()` (or `.fork()`) this settings object will contain the settings, including the default values.
+Después de llamar `.setupMaster()` (o `.fork()`) este objeto de configuraciones contiene las configuraciones, incluyendo los valores predeterminados.
 
-This object is not intended to be changed or set manually.
+Este objeto no está diseñado para ser cambiado o ajustado manualmente.
 
 ## cluster.setupMaster([settings])
 
@@ -670,11 +670,11 @@ changes:
     description: The `stdio` option is supported now.
 -->
 
-* `settings` {Object} See [`cluster.settings`][].
+* `settings` {Object} Ver [`cluster.settings`][].
 
-`setupMaster` is used to change the default 'fork' behavior. Once called, the settings will be present in `cluster.settings`.
+`setupMaster` es usado para cambiar el comportamiento predeterminado de 'bifurcar'. Una vez llamado, las configuraciones estarán presentes en `cluster.settings`.
 
-Note that:
+Tenga en cuenta que:
 
 * Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
