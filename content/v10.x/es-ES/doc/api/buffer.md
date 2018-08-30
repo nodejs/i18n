@@ -993,10 +993,10 @@ changes:
     description: The arguments can now be `Uint8Array`s.
 -->
 
-* `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* Returns: {boolean}
+* `otherBuffer` {Buffer} Un `Buffer` o [`Uint8Array`] con el que comparar el `buf`.
+* Devuelve: {boolean}
 
-Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
+Devuelve `true` si ambos, `buf` y `otherBuffer`, tienen exactamente los mismo bytes, de lo contrario devuelve `false`.
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1004,9 +1004,9 @@ const buf2 = Buffer.from('414243', 'hex');
 const buf3 = Buffer.from('ABCD');
 
 console.log(buf1.equals(buf2));
-// Prints: true
+// Imprime: true
 console.log(buf1.equals(buf3));
-// Prints: false
+// Imprime: false
 ```
 
 ### buf.fill(value\[, offset[, end]\]\[, encoding\])
@@ -1031,16 +1031,16 @@ changes:
     description: The `encoding` parameter is supported now.
 -->
 
-* `value` {string|Buffer|integer} The value with which to fill `buf`.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
-* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
-* `encoding` {string} The encoding for `value` if `value` is a string. **Predeterminado:** `'utf8'`.
-* Returns: {Buffer} A reference to `buf`.
+* `value` {string|Buffer|integer} El valor con el que llenar `buf`.
+* `offset` {integer} Número de bytes a omitir antes de empezar a llenar `buf`. **Predeterminado:** `0`.
+* `end` {integer} Donde detener el llenado del `buf` (no incluido). **Predeterminado:** [`buf.length`].
+* `encoding` {string} La codificación para el `value` si `value` es una cadena. **Predeterminado:** `'utf8'`.
+* Devuelve: {Buffer} Una referencia a `buf`.
 
-Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled:
+Llena `buf` con el `value` especificado. Si el `offset` y el `end` no se dan, el `buf` entero se llenará:
 
 ```js
-// Fill a `Buffer` with the ASCII character 'h'.
+// Llena un `Buffer`con el caracter ASCII 'h'.
 
 const b = Buffer.allocUnsafe(50).fill('h');
 
