@@ -939,20 +939,20 @@ console.log(buf2.toString('ascii', 0, 25));
 ```
 
 ```js
-// Create a `Buffer` and copy data from one region to an overlapping region
-// within the same `Buffer`.
+// Crea un `Buffer` y copia datos desde una región a una región superpuesta
+// dentro del mismo `Buffer`.
 
 const buf = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf[i] = i + 97;
 }
 
 buf.copy(buf, 0, 4, 10);
 
 console.log(buf.toString());
-// Prints: efghijghijklmnopqrstuvwxyz
+// Imprime: efghijghijklmnopqrstuvwxyz
 ```
 
 ### buf.entries()
@@ -961,19 +961,19 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
+Crea y devuelve un [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de pares `[index, byte]` desde el contenido de `buf`.
 
 ```js
-// Log the entire contents of a `Buffer`.
+// Registra el contenido completo de un `Buffer`.
 
 const buf = Buffer.from('buffer');
 
 for (const pair of buf.entries()) {
   console.log(pair);
 }
-// Prints:
+// Imprime:
 //   [0, 98]
 //   [1, 117]
 //   [2, 102]
