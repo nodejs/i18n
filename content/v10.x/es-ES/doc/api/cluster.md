@@ -649,8 +649,8 @@ changes:
   * `args` {string[]} Argumentos strings pasados al worker. **Default:** `process.argv.slice(2)`.
   * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (heredados del proceso primario).
   * `silent` {boolean} Ya bien sea enviar la salida a stdio secundario o no. **Default:** `false`.
-  * `stdio` {Array} Configura el stdio de procesos bifurcados. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. When this option is provided, it overrides `silent`.
-  * `uid` {number} Sets the user identity of the process. (See setuid(2).)
+  * `stdio` {Array} Configura el stdio de procesos bifurcados. Porque el módulo clúster depende del IPC para funcionar, esta configuración debe contener una entrada `'ipc'`. Cuando se proporciona esta opción, se anula `silent`.
+  * `uid` {number} Establece la identidad del usuario del proceso. (See setuid(2).)
   * `gid` {number} Sets the group identity of the process. (See setgid(2).)
   * `inspectPort` {number|Function} Sets inspector port of worker. This can be a number, or a function that takes no arguments and returns a number. By default each worker gets its own port, incremented from the master's `process.debugPort`.
   * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Default:** `false`.
