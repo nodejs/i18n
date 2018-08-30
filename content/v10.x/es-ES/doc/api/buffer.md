@@ -1045,7 +1045,7 @@ Llena `buf` con el `value` especificado. Si el `offset` y el `end` no se dan, el
 const b = Buffer.allocUnsafe(50).fill('h');
 
 console.log(b.toString());
-// Prints: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+// Imprime: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
 `value` is coerced to a `uint32` value if it is not a string or integer.
