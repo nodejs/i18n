@@ -676,7 +676,7 @@ changes:
 
 Tenga en cuenta que:
 
-* Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
+* Cualquier cambio en las configuraciones solo afecta futuras llamadas a `.fork()` y no tienen ningún efecto en workers que ya están en ejecución.
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
 * The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
 
