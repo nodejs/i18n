@@ -648,11 +648,11 @@ changes:
   * `exec` {string} Camino del archivo al archivo worker. **Default:** `process.argv[1]`.
   * `args` {string[]} Argumentos strings pasados al worker. **Default:** `process.argv.slice(2)`.
   * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (heredados del proceso primario).
-  * `silent` {boolean} Ya bien sea enviar la salida a stdio secundario o no. **Default:** `false`.
+  * `silent` {boolean} Ya bien sea enviar la salida a stdio secundario o no. **Predeterminado:** `false`.
   * `stdio` {Array} Configura el stdio de procesos bifurcados. Porque el módulo clúster depende del IPC para funcionar, esta configuración debe contener una entrada `'ipc'`. Cuando se proporciona esta opción, se anula `silent`.
-  * `uid` {number} Establece la identidad del usuario del proceso. (See setuid(2).)
-  * `gid` {number} Sets the group identity of the process. (See setgid(2).)
-  * `inspectPort` {number|Function} Sets inspector port of worker. This can be a number, or a function that takes no arguments and returns a number. By default each worker gets its own port, incremented from the master's `process.debugPort`.
+  * `uid` {number} Establece la identidad del usuario del proceso. (Ver setuid(2).)
+  * `gid` {number} Establece la identidad del grupo del proceso. (Ver setgid(2).)
+  * `inspectPort` {number|Function} Establece puerto inspector del worker. Esto puede ser un número o una función que no toma ningún argumento y devuelve un número. De manera predeterminada cada worker tiene su propio puerto, incrementado de `process.debugPort` del maestro.
   * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Default:** `false`.
 
 After calling `.setupMaster()` (or `.fork()`) this settings object will contain the settings, including the default values.
