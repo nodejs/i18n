@@ -3984,7 +3984,7 @@ Write `buffer` to the file specified by `filehandle`.
 
 La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritten` que identifique el número de bytes escritos, y una propiedad de `buffer` que contenga una referencia al `buffer` escrito.
 
-`offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
+`offset` determina la parte del búfer que será escrita, y `length` es un entero que especifica el número de bytes a escribir.
 
 `position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
