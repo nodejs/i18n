@@ -4008,19 +4008,19 @@ added: v10.0.0
 
 Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
-The `encoding` option is ignored if `data` is a buffer.
+La opción de `encoding` se ignora si `data` es un búfer.
 
 Si `options` es una string, entonces especifica la codificación.
 
 Cualquier `FileHandle` especificado tiene que apoyar la escritura.
 
-It is unsafe to use `fsPromises.writeFile()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected).
+No es seguro utilizar `fsPromises.writeFile()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada).
 
-## FS Constants
+## Constantes FS
 
 Las siguientes constantes son exportadas por `fs.constants`.
 
-Not every constant will be available on every operating system.
+No todas las constantes estarán disponibles en cada sistema operativo.
 
 ### Constantes de Acceso de Archivo
 
@@ -4073,7 +4073,7 @@ Las siguientes constantes están destinadas para ser utilizadas con [`fs.access(
     </td>
     
     <td>
-      Flag indicating that the file can be executed by the calling process.
+      Bandera que indica que el archivo puede ser ejecutado por el proceso de llamada.
     </td>
   </tr>
 </table>
