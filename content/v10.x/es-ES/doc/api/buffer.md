@@ -917,25 +917,25 @@ added: v0.1.90
 * `targetStart` {integer} El desplazamiento dentro del `target` en el que comenzar a escribir. **Predeterminado:** `0`.
 * `sourceStart` {integer} El desplazamiento dentro del `buf` desde el que comenzar a copiar. **Predeterminado:** `0`.
 * `sourceEnd` {integer} El desplazamiento dentro de `buf` en el que detener la copia (no incluido). **Predeterminado:** [`buf.length`].
-* Returns: {integer} The number of bytes copied.
+* Devuelve: {integer} El número de bytes copiados.
 
-Copies data from a region of `buf` to a region in `target` even if the `target` memory region overlaps with `buf`.
+Copia datos desde una región de `buf` a una región en `target` incluso si la región de la memoria de `target` se superpone con `buf`.
 
 ```js
-// Create two `Buffer` instances.
+// Crea dos instancias de `Buffer`.
 const buf1 = Buffer.allocUnsafe(26);
 const buf2 = Buffer.allocUnsafe(26).fill('!');
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf1[i] = i + 97;
 }
 
-// Copy `buf1` bytes 16 through 19 into `buf2` starting at byte 8 of `buf2`
+// Copia de `buf1` los bytes del 16 al 19 en` buf2` comenzando en el byte 8 de `buf2`
 buf1.copy(buf2, 8, 16, 20);
 
 console.log(buf2.toString('ascii', 0, 25));
-// Prints: !!!!!!!!qrst!!!!!!!!!!!!!
+// Imprime: !!!!!!!!qrst!!!!!!!!!!!!!
 ```
 
 ```js
