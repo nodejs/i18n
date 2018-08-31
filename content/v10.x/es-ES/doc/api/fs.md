@@ -2803,12 +2803,12 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Change the file system timestamps of the object referenced by `path`.
+Cambia la marca de tiempo del sistema de archivos del objeto referenciado por `path`.
 
 Los argumentos `atime` y `mtime` siguen las siguientes reglas:
 
 * Values can be either numbers representing Unix epoch time, `Date`s, or a numeric string like `'123456789.0'`.
-* If the value can not be converted to a number, or is `NaN`, `Infinity` or `-Infinity`, an `Error` will be thrown.
+* Si el valor no se puede convertir a un número, o es `NaN`, `Infinity` o `-Infinity`, se arrojará un `Error` .
 
 ## fs.utimesSync(path, atime, mtime)
 
@@ -2853,7 +2853,7 @@ changes:
 
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
+  * `persistent` {boolean} Indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. **Predeterminado:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Predeterminado:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
