@@ -819,7 +819,7 @@ El operador de índice `[index]` puede ser utilizado para mantener y establecer 
 Este operador se hereda desde `Uint8Array`, así que su comportamiento de acceso fuera de los límites es igual al de `UInt8Array`, eso es, mantener las devoluciones `undefined` y la configuración no hace nada.
 
 ```js
-// Copy an ASCII string into a `Buffer` one byte at a time.
+// Copia una cadena ASCII dentro de un `Buffer`, un byte a la vez.
 
 const str = 'Node.js';
 const buf = Buffer.allocUnsafe(str.length);
@@ -829,7 +829,7 @@ for (let i = 0; i < str.length; i++) {
 }
 
 console.log(buf.toString('ascii'));
-// Prints: Node.js
+// Imprime: Node.js
 ```
 
 ### buf.buffer
