@@ -40,13 +40,13 @@ The `dgram.Socket` object is an [`EventEmitter`][] that encapsulates the datagra
 
 Nuevas instancias de `dgram.Socket` se crean usando [`dgram.createSocket()`][]. La palabra clave `new` no debe ser utilizada para crear instancias `dgram.Socket`.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.99
 -->
 
-The `'close'` event is emitted after a socket is closed with [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
+El evento `'close'` se emite luego de que un socket es cerrado con [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
 
 ### Event: 'error'
 
