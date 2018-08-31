@@ -1996,7 +1996,7 @@ added: v5.10.0
 
 La versión sincrónica de [`fs.mkdtemp()`][]. Devuelve la ruta de archivo creada.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar.
 
 ## fs.open(path, flags[, mode], callback)
 
@@ -2020,15 +2020,15 @@ changes:
   * `err` {Error}
   * `fd` {integer}
 
-Asynchronous file open. See open(2).
+Apertura de archivo asincrónica. Vea open(2).
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
 El callback recibe dos argumentos `(err, fd)`.
 
-Algunos caracteres (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
+Algunos caracteres (`< > : " / \ | ? *`) están reservados bajo Windows como documentados por [Nombrar Archivos, Rutas, y Espacios de Nombres](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Bajo NTFS, si el nombre de archivo contiene dos puntos, Node.js abrirá un stream del sistema de archivo, como lo describe [esta página de MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
-Functions based on `fs.open()` exhibit this behavior as well. eg. `fs.writeFile()`, `fs.readFile()`, etc.
+Las funciones basadas en `fs.open()` también exhiben este comportamiento. por ejemplo, `fs.writeFile()`, `fs.readFile()`, etc.
 
 ## fs.openSync(path, flags[, mode])
 
@@ -2047,7 +2047,7 @@ changes:
 * `mode` {integer} **Default:** `0o666`
 * Returns: {number}
 
-Versión sincrónica de [`fs.open()`][]. Returns an integer representing the file descriptor.
+Versión sincrónica de [`fs.open()`][]. Devuelve un entero que representa el descriptor de archivo.
 
 ## fs.read(fd, buffer, offset, length, position, callback)
 
@@ -2079,7 +2079,7 @@ Lee datos del archivo especificado por `fd`.
 
 `offset` is the offset in the buffer to start writing at.
 
-`length` is an integer specifying the number of bytes to read.
+`length` es un entero que especifica el número de bytes a leer.
 
 `position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. If `position` is an integer, the file position will remain unchanged.
 
