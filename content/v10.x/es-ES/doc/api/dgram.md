@@ -110,9 +110,9 @@ added: v0.1.99
 
 * `port` {integer}
 * `address` {string}
-* `callback` {Function} sin parámetros. Called when binding is complete.
+* `callback` {Function} sin parámetros. Llamado cuando el enlace es completado.
 
-For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address`. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
+Para sockets UDP, causa que `dgram.Socket` escuche por mensajes datagrama en un `port` llamado y `address` opcional. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazar a un puerto aleatorio. Si no se especifica el `address`, el sistema operativo va a intentar escuchar a todas las direcciones. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
