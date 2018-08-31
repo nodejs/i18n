@@ -1324,7 +1324,7 @@ fs.exists('/etc/passwd', (exists) => {
 });
 ```
 
-**Tenga en cuenta que el parámetro para este callback no concuerda con otros callbacks de Node.js.** Normalmente, el primer parámetro para un callback de Node.js es un parámetro `err`, seguido de manera opcional por otros parámetros. El callback de `fs.exists()` sólo tiene un parámetro booleano. Esta es una razón por la que se recomienda `fs.access()` en lugar de `fs.exists()`.
+**Tenga en cuenta que el parámetro para este callback no es consistente con otros callbacks de Node.js.** Normalmente, el primer parámetro para un callback de Node.js es un parámetro `err`, seguido de manera opcional por otros parámetros. El callback de `fs.exists()` sólo tiene un parámetro booleano. Esta es una razón por la que se recomienda `fs.access()` en lugar de `fs.exists()`.
 
 Utilizar `fs.exists()` para verificar la existencia de un archivo antes de llamar a `fs.open()`, `fs.readFile()` ó `fs.writeFile()` no es recomendado. Hacer eso introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre las dos llamadas. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no existe.
 
@@ -2875,7 +2875,7 @@ Tenga en cuenta también que el callback del listener está acoplado al evento d
 
 <!--type=misc-->
 
-La API de `fs.watch` no concuerda 100% entre plataformas, y en algunas situaciones no está disponible.
+La API de `fs.watch` no es 100% consistente entre plataformas, y en algunas situaciones no está disponible.
 
 La opción recursiva sólo es soportada en macOS y Windows.
 
