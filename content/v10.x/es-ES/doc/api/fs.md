@@ -116,7 +116,7 @@ fs.open('file.txt', 'r', (err, fd) => {
 });
 ```
 
-Las rutas especificadas mediante un [`Buffer`][] son útiles principalmente en ciertos sistemas operativos de POSIX que tratan las rutas de archivo como secuencias de bytes opacas. En tales sistemas, es posible que una única ruta de archivo contenga sub-secuencias que utilicen múltiples codificaciones de caracteres. As with string paths, `Buffer` paths may be relative or absolute:
+Las rutas especificadas mediante un [`Buffer`][] son útiles principalmente en ciertos sistemas operativos de POSIX que tratan las rutas de archivo como secuencias de bytes opacas. En tales sistemas, es posible que una única ruta de archivo contenga sub-secuencias que utilicen múltiples codificaciones de caracteres. En cuanto a rutas de strings, las rutas de `Buffer` pueden ser relativas o absolutas:
 
 Ejemplo utilizando una ruta absoluta en POSIX:
 
