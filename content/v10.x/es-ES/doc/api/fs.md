@@ -2902,13 +2902,13 @@ Aún es posible utilizar `fs.watchFile()`, el cual utiliza el estudio de estadí
 
 En Linux y sistemas de macOS, `fs.watch()` resuelve la ruta a un [inode](https://en.wikipedia.org/wiki/Inode) y observa el inode. Si la ruta observada es eliminada y recreada, se le asigna un nuevo inode. La observación emitirá un evento para la eliminación, pero continuará observando el inode *original* . No se emitirán eventos para el nuevo inode. Este comportamiento es esperado.
 
-AIX files retain the same inode for the lifetime of a file. Saving and closing a watched file on AIX will result in two notifications (one for adding new content, and one for truncation).
+Los archivos AIX retienen el mismo inode durante el tiempo de vida de un archivo. Guardar y cerrar un archivo observado en AIX tendrá como resultado dos notificaciones (una para añadir nuevo contenido, y una para el truncamiento).
 
 #### Argumento de Nombre de archivo
 
 <!--type=misc-->
 
-Proporcionar un argumento de `filename` en el callback sólo es soportado en Linux, macOS, WIndows, y AIX. Incluso en las plataformas que lo soportan, no se garantiza que `filename` siempre será proporcionado. Therefore, don't assume that `filename` argument is always provided in the callback, and have some fallback logic if it is `null`.
+Proporcionar un argumento de `filename` en el callback sólo es soportado en Linux, macOS, WIndows, y AIX. Incluso en las plataformas que lo soportan, no se garantiza que `filename` siempre será proporcionado. Por lo tanto, no asuma que el argumento de `filename` siempre se proporcionará en el callback, y tendrá lógica de reserva si es `null`.
 
 ```js
 fs.watch('somedir', (eventType, filename) => {
@@ -2943,7 +2943,7 @@ changes:
 
 Watch for changes on `filename`. El callback de `listener` será llamado cada vez que el archivo sea accedido.
 
-El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
+El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. El objeto de `options` puede contener un booleano llamado `persistent` que indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
 
 The `listener` gets two arguments the current stat object and the previous stat object:
 
