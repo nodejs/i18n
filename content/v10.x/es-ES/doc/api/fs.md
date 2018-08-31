@@ -2941,9 +2941,9 @@ changes:
   * `current` {fs.Stats}
   * `previous` {fs.Stats}
 
-Watch for changes on `filename`. El callback de `listener` será llamado cada vez que el archivo sea accedido.
+Buscar cambios en `filename`. El callback de `listener` será llamado cada vez que el archivo sea accedido.
 
-El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. El objeto de `options` puede contener un booleano llamado `persistent` que indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
+El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. El objeto de `options` puede contener un booleano llamado `persistent` que indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. El objeto de `options` puede especificar una propiedad de `interval` que indique qué tan seguido debería estudiarse el objetivo en milisegundos.
 
 The `listener` gets two arguments the current stat object and the previous stat object:
 
@@ -2954,7 +2954,7 @@ fs.watchFile('message.text', (curr, prev) => {
 });
 ```
 
-These stat objects are instances of `fs.Stat`.
+Estos objetos de estadísticas son instancias de `fs.Stat`.
 
 To be notified when the file was modified, not just accessed, it is necessary to compare `curr.mtime` and `prev.mtime`.
 
