@@ -1,4 +1,4 @@
-# UDP / Datagram Sockets
+# UDP / Sockets de Datagrama
 
 <!--introduced_in=v0.10.0-->
 
@@ -48,7 +48,7 @@ added: v0.1.99
 
 El evento `'close'` se emite luego de que un socket es cerrado con [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
 
-### Event: 'error'
+### Evento: 'error'
 
 <!-- YAML
 added: v0.1.99
@@ -56,7 +56,7 @@ added: v0.1.99
 
 * `exception` {Error}
 
-The `'error'` event is emitted whenever any error occurs. The event handler function is passed a single `Error` object.
+El evento `'error'` es emitido cuando ocurre cualquier error. The event handler function is passed a single `Error` object.
 
 ### Event: 'listening'
 
