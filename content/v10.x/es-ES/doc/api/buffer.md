@@ -1048,7 +1048,7 @@ console.log(b.toString());
 // Imprime: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
-`value` is coerced to a `uint32` value if it is not a string or integer.
+`value` se fuerza a un valor `uint32` si no es una cadena o un entero.
 
 If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
 
