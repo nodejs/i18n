@@ -4185,7 +4185,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica que al abrir un archivo deberían haber fallas si la bandera <code>O_CREAT</code> está establecida y el archivo ya existe.
+      Bandera que indica que fallará la apertura de un archivo si la bandera <code>O_CREAT</code> está establecida y el archivo ya existe.
     </td>
   </tr>
   
@@ -4295,7 +4295,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica abrir el archivo en modo de no bloqueo cuando sea posible.
+      Bandera que indica abrir el archivo en modo de no-bloqueo, cuando sea posible.
     </td>
   </tr>
 </table>
@@ -4398,7 +4398,7 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
 
 ### Constantes de Modo de Archivo
 
-Las siguientes constantes están destinadas para ser utilizadas con la propiedad `mode` del objeto de [`fs.Stats`][] para determinar los permisos de acceso de una archivo.
+Las siguientes constantes están destinadas para ser utilizadas con la propiedad `mode` del objeto de [`fs.Stats`][] para determinar los permisos de acceso para un archivo.
 
 <table>
   <tr>
@@ -4566,7 +4566,7 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'wx+'` - Como `'w+'`, pero falla si la ruta existe.
 
-`flag` también puede ser un número como lo documenta open(2); las constantes comúnmente utilizadas están disponibles desde `fs.constants`. En WIndows, las banderas son traducidas a sus equivalentes si aplica, por ejemplo, `O_WRONLY` a `FILE_GENERIC_WRITE`, ó `O_EXCL|O_CREAT` a `CREATE_NEW`, como las acepta `CreateFileW`.
+`flag` también puede ser un número como lo documenta open(2); las constantes comúnmente utilizadas están disponibles desde `fs.constants`. En Windows, donde esto sea aplicable, las banderas son traducidas a sus equivalentes, por ejemplo, `O_WRONLY` a `FILE_GENERIC_WRITE`, o `O_EXCL|O_CREAT` para `CREATE_NEW`, como las acepta `CreateFileW`.
 
 La bandera exclusiva `'x'` (bandera `O_EXCL` en open(2)) asegura que esa ruta sea creada recientemente. En sistemas de POSIX, se considera que la ruta existe incluso si es un enlace simbólico a un archivo inexistente. La bandera exclusiva puede o no que funcione con sistemas de archivos de red.
 
