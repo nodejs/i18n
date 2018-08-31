@@ -4175,7 +4175,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica crear el archivo, si este aún no existe.
+      Bandera que indica crear el archivo, si éste aún no existe.
     </td>
   </tr>
   
@@ -4275,7 +4275,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Bandera que indica abrir el enlace simbólico en vez del recurso al cual este apunta.
+      Bandera que indica abrir el enlace simbólico en vez del recurso al cual éste apunta.
     </td>
   </tr>
   
@@ -4351,7 +4351,7 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
     </td>
     
     <td>
-      Constante de tipo de archivo para un archivo de dispositivo orientado a caracteres.
+      Constante de tipo de archivo para un archivo de dispositivo orientado por caracteres.
     </td>
   </tr>
   
@@ -4467,7 +4467,7 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
     </td>
     
     <td>
-      Modo de archivo que indica que puede ser leído por el propietario.
+      Modo de archivo que indica que puede ser leído por el grupo.
     </td>
   </tr>
   
