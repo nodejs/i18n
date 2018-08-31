@@ -141,9 +141,9 @@ Esto no funcionará porque la función callback pasada a `fs.readFile()` es llam
 
 <!--type=class-->
 
-Un objeto `Error` de JavaScript genérico que no denota ninguna circunstancia específica de porqué el error ocurrió. Los objetos `Error` capturan un "stack trace" detallando el punto en el código en el cual el `Error` fue instanciado, y puede proporcionar una descripción de texto del error.
+Un objeto `Error` de JavaScript genérico que no denota ninguna circunstancia específica de porqué el error ocurrió. Los objetos `Error` capturan un "stack trace" detallando el punto en el código en el cual el `Error` fue instanciado, y pueden proporcionar una descripción de texto del error.
 
-Sólo para criptos, los objetos `Error` incluirán el stack de error de OpenSSL en una propiedad separada llamada `opensslErrorStack` si está disponible cuando se arroja el error.
+Sólo para criptos, los objetos `Error` incluirán el stack de error de OpenSSL en una propiedad separada llamada `opensslErrorStack`, si está disponible cuando se arroja el error.
 
 Todos los errores generados por Node.js, incluyendo todos los errores de Sistema y JavaScript, serán instancias o serán heredados de la clase `Error`.
 
@@ -286,7 +286,7 @@ Node.js generará y arrojará instancias de `RangeError` *inmediatamente* como f
 
 ## Clase: ReferenceError (Error de Referencia)
 
-Una subclase de `Error` que indica que se está haciendo un intento para acceder a una variable que no está definida. Dichos errores usualmente indican typos en el código, o de lo contrario, indican un programa dañado.
+Una subclase de `Error` que indica que se está haciendo un intento para acceder a una variable que no está definida. Dichos errores usualmente indican typos en el código o, de lo contrario, un programa dañado.
 
 Mientras que el código cliente puede generar y propagar estos errores, en la práctica, sólo lo hará el V8.
 
@@ -311,16 +311,16 @@ try {
 
 Las instancias de `SyntaxError` son irrecuperables en el contexto que las creó - sólo pueden ser atrapadas por otros contextos.
 
-## Clase: TypeError (Error de Tecleado)
+## Clase: TypeError (Error de Tipo)
 
-Una sub-clase de `Error` que indica que un argumento proporcionado no es un tipo permitido. Por ejemplo, el pasar una función a un parámetro que espera una string sería considerado un `TypeError`.
+Una sub-clase de `Error` que indica que un argumento proporcionado no es de un tipo permitido. Por ejemplo, el pasar una función a un parámetro que espera una string sería considerado un `TypeError`.
 
 ```js
 require('url').parse(() => { });
 // arroja un TypeError, ya que espera una string
 ```
 
-Node.js generará y arrojará instancias de `TypeError` *inmediatamente* como forma de una validación de argumento.
+Node.js generará y arrojará instancias de `TypeError` *inmediatamente* como una forma de validación de argumento.
 
 ## Excepciones vs. Errores
 
@@ -332,7 +332,7 @@ Algunas excepciones son *irrecuperables* en la capa de JavaScript. Dichas excepc
 
 ## Errores de Sistema
 
-Los errores de sistema son generados cuando ocurren excepciones dentro del entorno del tiempo de ejecución de Node.js. Típicamente estos errores son errores operacionales que ocurren cuando una aplicación viola una restricción de sistema operativo, como lo es intentar leer un archivo que no existe o cuando el usuario no tiene permisos suficientes.
+Los errores de sistema son generados cuando ocurren excepciones dentro del entorno del tiempo de ejecución (runtime environment) de Node.js. Típicamente, estos son errores operacionales que ocurren cuando una aplicación viola una restricción de sistema operativo, como lo es intentar leer un archivo que no existe o cuando el usuario no tiene permisos suficientes.
 
 System errors are typically generated at the syscall level: an exhaustive list of error codes and their meanings is available by running `man 2 intro` or `man 3 errno` on most Unices; or [online](http://man7.org/linux/man-pages/man3/errno.3.html).
 
@@ -346,7 +346,7 @@ Las instancias de `SystemError` pueden tener una propiedad de `info` adicional c
 
 Las siguientes propiedades son proporcionadas:
 
-- `code` {string} La string código de error
+- `code` {string} El código de error de la string
 - `errno` {number} El número de error proporcionado por el sistema
 - `message` {string} Una descripción del error legible por humanos proporcionada por el sistema
 - `syscall` {string} El nombre de la llamada de sistema que desencadenó el error
@@ -363,7 +363,7 @@ La propiedad `error.code` es una string que representa el código de error, el c
 
 - {string|number}
 
-La propiedad `error.errno` es un número o una string. El número es un valor **negativo** que le corresponde al código de error definido en [`libuv Error handling`]. Vea el archivo encabezado `uv-errno.h` (`deps/uv/include/uv-errno.h` en el árbol fuente de Node.js) para detalles. En caso de una string, el el mismo que `error.code`.
+La propiedad `error.errno` es un número o una string. El número es un valor **negativo** que corresponde al código de error definido en [`libuv Error handling`]. Vea el archivo encabezado `uv-errno.h` (`deps/uv/include/uv-errno.h` en el árbol fuente de Node.js) para detalles. En caso de una string, es el mismo que `error.code`.
 
 #### error.syscall
 
@@ -375,19 +375,19 @@ La propiedad `error.syscall` es una string que describe la [syscall](http://man7
 
 - {string}
 
-Cuando está presente (e. g. en `fs` o `child_process`), la propiedad `error.path` es una string que contiene un nombre de ruta inválido relevante.
+Cuando está presente (por ejemplo, en `fs` o `child_process`), la propiedad `error.path` es una string que contiene un nombre de ruta inválido relevante.
 
 #### error.address
 
 - {string}
 
-Cuando está presente (e.g. en `net` or `dgram`), la propiedad `error.address` es una string que describe la dirección en la cual la conexión falló.
+Cuando está presente (por ejemplo, en `net` or `dgram`), la propiedad `error.address` es una string que describe la dirección hacia la cual la conexión falló.
 
 #### error.port
 
 - {number}
 
-Cuando está presente (e. g. en `net` or `dgram`), la propiedad `error.port` es un número que representa el puerto de la conexión que no está disponible.
+Cuando está presente (por ejemplo, en `net` or `dgram`), la propiedad `error.port` es un número que representa el puerto de la conexión que no está disponible.
 
 ### Errores de Sistema Comunes
 
