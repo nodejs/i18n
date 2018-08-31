@@ -816,7 +816,7 @@ name: [index]
 
 El operador de índice `[index]` puede ser utilizado para mantener y establecer el octeto en la posición `index` en `buf`. Los valores refieren a bytes individuales, por lo que el rango de valores legales está entre `0x00` y `0xFF` (hex) o `0` y `255` (decimal).
 
-This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `UInt8Array` - that is, getting returns `undefined` and setting does nothing.
+Este operador se hereda desde `Uint8Array`, así que su comportamiento de acceso fuera de los límites es igual al de `UInt8Array`, eso es, mantener las devoluciones `undefined` y la configuración no hace nada.
 
 ```js
 // Copy an ASCII string into a `Buffer` one byte at a time.
