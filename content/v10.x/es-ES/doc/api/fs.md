@@ -2875,7 +2875,7 @@ Tenga en cuenta también que el callback del listener está acoplado al evento d
 
 <!--type=misc-->
 
-The `fs.watch` API is not 100% consistent across platforms, and is unavailable in some situations.
+La API de `fs.watch` no concuerda 100% entre plataformas, y en algunas situaciones no está disponible.
 
 La opción recursiva sólo es soportada en macOS y Windows.
 
