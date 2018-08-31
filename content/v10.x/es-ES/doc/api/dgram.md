@@ -100,7 +100,7 @@ added: v0.1.99
 
 * Devuelve: {Object}
 
-Devuelve un objeto que contiene la información de la dirección para un socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
+Devuelve un objeto que contiene la información de la dirección para un socket. Para sockets UDP, este objeto va a contener `address`, `family` y propiedades de `port`.
 
 ### socket.bind(\[port\]\[, address\][, callback])
 
@@ -110,7 +110,7 @@ added: v0.1.99
 
 * `port` {integer}
 * `address` {string}
-* `callback` {Function} with no parameters. Called when binding is complete.
+* `callback` {Function} sin parámetros. Called when binding is complete.
 
 For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address`. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
 
