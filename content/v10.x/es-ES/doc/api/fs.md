@@ -2075,13 +2075,13 @@ changes:
 
 Lee datos del archivo especificado por `fd`.
 
-`buffer` is the buffer that the data will be written to.
+`buffer` es el búfer al cual se escribirán los datos.
 
 `offset` is the offset in the buffer to start writing at.
 
 `length` es un entero que especifica el número de bytes a leer.
 
-`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. If `position` is an integer, the file position will remain unchanged.
+`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. Si `position` es un entero, la posición del archivo permanecerá sin cambios.
 
 Al callback se le dan tres argumentos, `(err, bytesRead, buffer)`.
 
@@ -2136,7 +2136,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string[]} An array of filenames excluding `'.'` and `'..'`.
+* Devuelve: {string[]} una matriz de nombres de archivo excepto `'.'` y `'..'`.
 
 readdir(3) sincrónico.
 
@@ -2169,7 +2169,7 @@ changes:
     description: The `path` parameter can be a file descriptor now.
 -->
 
-* `path` {string|Buffer|URL|integer} filename or file descriptor
+* `path` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
@@ -2196,7 +2196,7 @@ Si `options` es una string, entonces especifica la codificación. Ejemplo:
 fs.readFile('/etc/passwd', 'utf8', callback);
 ```
 
-When the path is a directory, the behavior of `fs.readFile()` and [`fs.readFileSync()`][] is platform-specific. On macOS, Linux, and Windows, an error will be returned. On FreeBSD, a representation of the directory's contents will be returned.
+Cuando la ruta es un directorio, el comportamiento de `fs.readFile()` y [`fs.readFileSync()`][] es específico en la plataforma. En macOS, Linux, y Windows, se devolverá un error. En FreeBSD, se devolverá una representación de los contenidos del directorio.
 
 ```js
 // macOS, Linux, and Windows
@@ -2231,7 +2231,7 @@ changes:
     description: The `path` parameter can be a file descriptor now.
 -->
 
-* `path` {string|Buffer|URL|integer} filename or file descriptor
+* `path` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
@@ -2282,7 +2282,7 @@ changes:
 readlink(2) asincrónico. El callback obtiene dos argumentos `(err,
 linkString)`.
 
-El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta de enlace pasada al callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta de enlace pasada al callback. Si el `encoding` se establece a `'buffer'`, la ruta de enlace devuelta será pasada como un objeto de `Buffer` .
 
 ## fs.readlinkSync(path[, options])
 
@@ -2301,7 +2301,7 @@ changes:
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
-Synchronous readlink(2). Returns the symbolic link's string value.
+readlink(2) sincrónico. Returns the symbolic link's string value.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path passed to the callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
 
