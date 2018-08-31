@@ -616,7 +616,7 @@ The times in the stat object have the following semantics:
 * `ctime` "Hora de Cambio" - La hora en la que se cambiaron por última vez los estados de archivo (modificación de datos inode). Cambiados por las llamadas de sistema chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2).
 * `birthtime` "Hora de Creación" - La hora de creación de un archivo. Se establece una vez que se crea el archivo. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Tenga en cuenta que este valor puede que sea mayor que `atime` o `mtime` en este caso. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
 
-Antes de Node.js v0.12, el `ctime` mantuvo al `birthtime` en sistemas de Windows. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
+Antes de Node.js v0.12, el `ctime` mantuvo al `birthtime` en sistemas de Windows. Tenga en cuenta que a partir de v0.12, `ctime` ya no es la "hora de la creación", y en sistemas de Unix, nunca la fue.
 
 ## Class: fs.WriteStream
 
@@ -640,7 +640,7 @@ Emitido cuando el descriptor de archivo subyacente de `WriteStream` ha sido cerr
 added: v0.1.93
 -->
 
-* `fd` {integer} Integer file descriptor used by the `WriteStream`.
+* `fd` {integer} Descriptor de archivo de enteros utilizado por el `WriteStream`.
 
 Se emite cuando se abre el archivo de `WriteStream` .
 
@@ -668,7 +668,7 @@ El número de bytes escritos hasta el momento. No incluye datos que todavía est
 added: v0.1.93
 -->
 
-The path to the file the stream is writing to as specified in the first argument to `fs.createWriteStream()`. Si se pasa a `path` como una string, entonces `writeStream.path` será una string. Si se pasa a `path` como un `Buffer`, entonces `writeStream.path` será un `Buffer`.
+La ruta hacia el archivo al que escribe el stream, como se especifica en el primer argumento a `fs.createWriteStream()`. Si se pasa a `path` como una string, entonces `writeStream.path` será una string. Si se pasa a `path` como un `Buffer`, entonces `writeStream.path` será un `Buffer`.
 
 ## fs.access(path[, mode], callback)
 
@@ -695,14 +695,14 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los valores posibles de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba los permisos del usuario para el archivo o directorio especificado por `path`. El argumento `mode` es un entero opcional que especifica las verificaciones de accesibilidad que serán realizadas. Las siguientes constantes definen los valores posibles de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
 * `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
 * `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
-El argumento final, `callback`, es una función de callback que se invoca con un posible argumento de error. If any of the accessibility checks fail, the error argument will be an `Error` object. Los siguientes ejemplos verifican si `package.json` existe, y si es legible o editable.
+El argumento final, `callback`, es una función de callback que se invoca con un posible argumento de error. Si alguna verificación de accesibilidad falla, el argumento de error será un objeto de `Error` . Los siguientes ejemplos verifican si `package.json` existe, y si es legible o editable.
 
 ```js
 const file = 'package.json';
