@@ -1053,10 +1053,10 @@ console.log(b.toString());
 If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
 
 ```js
-// Fill a `Buffer` with a two-byte character.
+// Llena un `Buffer`con un caracter de dos bytes.
 
 console.log(Buffer.allocUnsafe(3).fill('\u0222'));
-// Prints: <Buffer c8 a2 c8>
+// Imprime: <Buffer c8 a2 c8>
 ```
 
 If `value` contains invalid characters, it is truncated; if no valid fill data remains, an exception is thrown:
@@ -1065,11 +1065,11 @@ If `value` contains invalid characters, it is truncated; if no valid fill data r
 const buf = Buffer.allocUnsafe(5);
 
 console.log(buf.fill('a'));
-// Prints: <Buffer 61 61 61 61 61>
+// Imprime: <Buffer 61 61 61 61 61>
 console.log(buf.fill('aazz', 'hex'));
-// Prints: <Buffer aa aa aa aa aa>
+// Imprime: <Buffer aa aa aa aa aa>
 console.log(buf.fill('zz', 'hex'));
-// Throws an exception.
+// Se produce una excepción.
 ```
 
 ### buf.includes(value\[, byteOffset\]\[, encoding\])
