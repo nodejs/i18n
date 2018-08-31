@@ -322,7 +322,7 @@ Emitido cuando el descriptor de archivo subyacente de `fs.ReadStream` ha sido ce
 added: v0.1.93
 -->
 
-* `fd` {integer} Integer file descriptor used by the `ReadStream`.
+* `fd` {integer} Descriptor de archivo de enteros utilizado por el `ReadStream`.
 
 Se emite cuando el descriptor de archivos de `fs.ReadStream` ha sido abierto.
 
@@ -399,7 +399,7 @@ Stats {
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Devuelve `true` si el objeto de `fs.Stats` describe un dispositivo de bloques.
 
@@ -409,7 +409,7 @@ Devuelve `true` si el objeto de `fs.Stats` describe un dispositivo de bloques.
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Devuelve `true` si el objeto de `fs.Stats` describe un dispositivo de caracteres.
 
@@ -419,7 +419,7 @@ Devuelve `true` si el objeto de `fs.Stats` describe un dispositivo de caracteres
 added: v0.1.10
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Devuelve `true` si el objeto de `fs.Stats` describe un directorio de sistema de archivos.
 
