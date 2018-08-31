@@ -76,10 +76,10 @@ El evento `'message'` es emitido cuando un nuevo datagrama está disponible en u
 
 * `msg` {Buffer} El mensaje.
 * `rinfo` {Object} Información de dirección remota. 
-  * `address` {string} The sender address.
-  * `family` {string} The address family (`'IPv4'` or `'IPv6'`).
-  * `port` {number} The sender port.
-  * `size` {number} The message size.
+  * `address` {string} La dirección del transmisor.
+  * `family` {string} La familia de direcciones (`'IPv4'` or `'IPv6'`).
+  * `port` {number} El puerto del transmisor.
+  * `size` {number} El tamaño del mensaje.
 
 ### socket.addMembership(multicastAddress[, multicastInterface])
 
@@ -98,9 +98,9 @@ Tells the kernel to join a multicast group at the given `multicastAddress` and `
 added: v0.1.99
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns an object containing the address information for a socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
+Devuelve un objeto que contiene la información de la dirección para un socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
 
 ### socket.bind(\[port\]\[, address\][, callback])
 
