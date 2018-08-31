@@ -834,7 +834,7 @@ console.log(buf.toString('ascii'));
 
 ### buf.buffer
 
-* {ArrayBuffer} El objeto subyacente `ArrayBuffer` basado en que se crea este objeto de `Buffer`.
+* {ArrayBuffer} El objeto `ArrayBuffer` subyacente en que se basa la creación de este objeto `Buffer`.
 
 ```js
 const arrayBuffer = new ArrayBuffer(16);
@@ -891,7 +891,7 @@ console.log([buf1, buf2, buf3].sort(Buffer.compare));
 // (Este resultado es igual a: [buf1, buf3, buf2])
 ```
 
-Los argumentos opcionales `targetStart`, `targetEnd`, `sourceStart`, y `sourceEnd` pueden ser utilizados para limitar la comparación de rangos específicos dentro de `target` y `buf` respectivamente.
+Los argumentos opcionales `targetStart`, `targetEnd`, `sourceStart`, y `sourceEnd` pueden ser utilizados para limitar la comparación a rangos específicos dentro de `target` y `buf`, respectivamente.
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -913,13 +913,13 @@ Se producirá [`ERR_INDEX_OUT_OF_RANGE`] si `targetStart < 0`, `sourceStart < 0`
 added: v0.1.90
 -->
 
-* `target` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] para copiar.
+* `target` {Buffer|Uint8Array} Un `Buffer` o [`Uint8Array`] en el cual copiar.
 * `targetStart` {integer} El desplazamiento dentro del `target` en el que comenzar a escribir. **Predeterminado:** `0`.
 * `sourceStart` {integer} El desplazamiento dentro del `buf` desde el que comenzar a copiar. **Predeterminado:** `0`.
 * `sourceEnd` {integer} El desplazamiento dentro de `buf` en el que detener la copia (no incluido). **Predeterminado:** [`buf.length`].
 * Devuelve: {integer} El número de bytes copiados.
 
-Copia datos desde una región de `buf` a una región en `target` incluso si la región de la memoria de `target` se superpone con `buf`.
+Copia datos desde una región de `buf` a una región en `target`, incluso si la región de la memoria de `target` se superpone con `buf`.
 
 ```js
 // Crea dos instancias de `Buffer`.
@@ -996,7 +996,7 @@ changes:
 * `otherBuffer` {Buffer} Un `Buffer` o [`Uint8Array`] con el que comparar el `buf`.
 * Devuelve: {boolean}
 
-Devuelve `true` si ambos, `buf` y `otherBuffer`, tienen exactamente los mismo bytes, de lo contrario devuelve `false`.
+Devuelve `true` si ambos, `buf` y `otherBuffer`, tienen exactamente los mismos bytes, de lo contrario devuelve `false`.
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1033,7 +1033,7 @@ changes:
 
 * `value` {string|Buffer|integer} El valor con el que llenar `buf`.
 * `offset` {integer} Número de bytes a omitir antes de empezar a llenar `buf`. **Predeterminado:** `0`.
-* `end` {integer} Donde detener el llenado del `buf` (no incluido). **Predeterminado:** [`buf.length`].
+* `end` {integer} Dónde detener el llenado del `buf` (no incluido). **Predeterminado:** [`buf.length`].
 * `encoding` {string} La codificación para el `value` si `value` es una cadena. **Predeterminado:** `'utf8'`.
 * Devuelve: {Buffer} Una referencia a `buf`.
 
