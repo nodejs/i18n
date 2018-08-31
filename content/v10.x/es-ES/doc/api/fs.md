@@ -2855,23 +2855,23 @@ changes:
 * `options` {string|Object} 
   * `persistent` {boolean} Indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. **Predeterminado:** `true`.
   * `recursive` {boolean} Indica si todos los sub-directorios deberían ser observados, o solamente el directorio actual. Esto aplica cuando un directorio es especificado, y solamente en plataformas soportadas (Vea [Advertencias](#fs_caveats)). **Predeterminado:** `false`.
-  * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Predeterminado:** `'utf8'`.
+  * `encoding` {string} Especifica la codificación de caracteres que será utilizada para el nombre de archivo pasado al listener. **Predeterminado:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}
   * `filename` {string|Buffer}
-* Returns: {fs.FSWatcher}
+* Devuelve: {fs.FSWatcher}
 
 Watch for changes on `filename`, where `filename` is either a file or a directory.
 
 El segundo argumento es opcional. Si se proporciona `options` como una string, especificará el `encoding`. De lo contrario, `options` debería ser pasado como un objeto.
 
-The listener callback gets two arguments `(eventType, filename)`. `eventType` es `'rename'` ó `'change'`, y `filename` es el nombre del archivo que activó el evento.
+El callback del listener recibe dos argumentos `(eventType, filename)`. `eventType` es `'rename'` ó `'change'`, y `filename` es el nombre del archivo que activó el evento.
 
 Tenga en cuenta que en la mayoría de las plataformas, `'rename'` es emitido cuando un nombre de archivo aparece o desaparece en el directorio.
 
-Also note the listener callback is attached to the `'change'` event fired by [`fs.FSWatcher`][], but it is not the same thing as the `'change'` value of `eventType`.
+Tenga en cuenta también que el callback del listener está acoplado al evento de `'change'` activado por [`fs.FSWatcher`][], pero no es lo mismo que el valor de `'change'` de `eventType`.
 
-### Caveats
+### Advertencias
 
 <!--type=misc-->
 
