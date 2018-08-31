@@ -1324,11 +1324,11 @@ fs.exists('/etc/passwd', (exists) => {
 });
 ```
 
-**Note that the parameter to this callback is not consistent with other Node.js callbacks.** Normally, the first parameter to a Node.js callback is an `err` parameter, optionally followed by other parameters. El callback de `fs.exists()` sólo tiene un parámetro booleano. Esta es una razón por la que se recomienda `fs.access()` en lugar de `fs.exists()`.
+**Tenga en cuenta que el parámetro para este callback no concuerda con otros callbacks de Node.js.** Normalmente, el primer parámetro para un callback de Node.js es un parámetro `err`, seguido de manera opcional por otros parámetros. El callback de `fs.exists()` sólo tiene un parámetro booleano. Esta es una razón por la que se recomienda `fs.access()` en lugar de `fs.exists()`.
 
 Utilizar `fs.exists()` para verificar la existencia de un archivo antes de llamar a `fs.open()`, `fs.readFile()` ó `fs.writeFile()` no es recomendado. Hacer eso introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre las dos llamadas. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no existe.
 
-**write (NOT RECOMMENDED)**
+**escribir (NO SE RECOMIENDA)**
 
 ```js
 fs.exists('myfile', (exists) => {
@@ -1343,7 +1343,7 @@ fs.exists('myfile', (exists) => {
 });
 ```
 
-**write (RECOMMENDED)**
+**escribir (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'wx', (err, fd) => {
@@ -1360,7 +1360,7 @@ fs.open('myfile', 'wx', (err, fd) => {
 });
 ```
 
-**read (NOT RECOMMENDED)**
+**leer (NO SE RECOMIENDA)**
 
 ```js
 fs.exists('myfile', (exists) => {
@@ -1375,7 +1375,7 @@ fs.exists('myfile', (exists) => {
 });
 ```
 
-**read (RECOMMENDED)**
+**leer (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'r', (err, fd) => {
@@ -1682,7 +1682,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Change the file system timestamps of the object referenced by the supplied file descriptor. Vea [`fs.utimes()`][].
+Cambia la marca de tiempo del sistema de archivos del objeto referenciado por el descriptor de archivo proporcionado. Vea [`fs.utimes()`][].
 
 Esta función no funciona en versiones AIX anteriores a 7.1, devolverá el error `UV_ENOSYS`.
 
