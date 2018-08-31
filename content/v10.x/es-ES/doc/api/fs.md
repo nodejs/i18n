@@ -735,7 +735,7 @@ fs.access(file, fs.constants.F_OK | fs.constants.W_OK, (err) => {
 
 Utilizar `fs.access()` para verificar la accesibilidad de un archivo antes de llamar a `fs.open()`, `fs.readFile()` ó `fs.writeFile()` no es recomendado. Hacerlo introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre las dos llamadas. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no es accesible.
 
-**write (NOT RECOMMENDED)**
+**escribir (NO SE RECOMIENDA)**
 
 ```js
 fs.access('myfile', (err) => {
@@ -751,7 +751,7 @@ fs.access('myfile', (err) => {
 });
 ```
 
-**write (RECOMMENDED)**
+**escribir (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'wx', (err, fd) => {
@@ -768,7 +768,7 @@ fs.open('myfile', 'wx', (err, fd) => {
 });
 ```
 
-**read (NOT RECOMMENDED)**
+**leer (NO SE RECOMIENDA)**
 
 ```js
 fs.access('myfile', (err) => {
@@ -788,7 +788,7 @@ fs.access('myfile', (err) => {
 });
 ```
 
-**read (RECOMMENDED)**
+**leer (RECOMENDADO)**
 
 ```js
 fs.open('myfile', 'r', (err, fd) => {
@@ -824,14 +824,14 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
 
-Prueba de manera sincrónica los permisos de un usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba de manera sincrónica los permisos de un usuario para el archivo o directorio especificado por `path`. El argumento `mode` es un entero opcional que especifica las verificaciones de accesibilidad que serán realizadas. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
 * `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
 * `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
-If any of the accessibility checks fail, an `Error` will be thrown. De lo contrario, el método devolverá `undefined`.
+Si alguna verificación de accesibilidad falla, se arrojará un `Error` . De lo contrario, el método devolverá `undefined`.
 
 ```js
 try {
@@ -1113,7 +1113,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronous close(2). Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
+close(2) asincrónico. Ningún otro argumento que no sea una posible excepción es dado al callback de terminación.
 
 ## fs.closeSync(fd)
 
@@ -1123,7 +1123,7 @@ added: v0.1.21
 
 * `fd` {integer}
 
-Synchronous close(2). Returns `undefined`.
+close(2) sincrónico. Devuelve `undefined`.
 
 ## fs.constants
 
@@ -1138,13 +1138,13 @@ added: v8.5.0
 -->
 
 * `src` {string|Buffer|URL} source filename to copy
-* `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Default:** `0`.
+* `dest` {string|Buffer|URL} nombre de archivo de destino de la operación de copia
+* `flags` {number} modificadores para la operación de copia. **Predeterminado:** `0`.
 * `callback` {Function}
 
 Copia de manera asincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` si ya existe. Ningún otro argumento que no sea una posible excepción es dado a la función de callback. Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. Si ocurre un error luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
 
-`flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
+`flags` es un entero opcional que especifica el comportamiento de la operación de copia. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
 * `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
