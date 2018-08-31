@@ -2633,7 +2633,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-symlink(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. El argumento de `type` puede ser establecido a `'dir'`, `'file'`, ó `'junction'` y sólo está disponible en Windows (se ignora en otras plataformas). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+symlink(2) asincrónico. Ningún argumento que no sea una posible excepción es dado al callback de terminación. El argumento de `type` puede ser establecido a `'dir'`, `'file'`, ó `'junction'` y sólo está disponible en Windows (se ignora en otras plataformas). Note that Windows junction points require the destination path to be absolute. Cuando se utiliza `'junction'`, el argumento de `target` será automáticamente normalizado a la ruta absoluta.
 
 A continuación, hay un ejemplo:
 
@@ -2761,9 +2761,9 @@ added: v0.1.31
 -->
 
 * `filename` {string|Buffer|URL}
-* `listener` {Function} Optional, a listener previously attached using `fs.watchFile()`
+* `listener` {Function} Opcional, un listener previamente acoplado utilizando `fs.watchFile()`
 
-Stop watching for changes on `filename`. If `listener` is specified, only that particular listener is removed. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
+Stop watching for changes on `filename`. Si se especifica `listener`, sólo se eliminará a ese listener en específico. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
 
 Calling `fs.unwatchFile()` with a filename that is not being watched is a no-op, not an error.
 
@@ -2805,7 +2805,7 @@ changes:
 
 Change the file system timestamps of the object referenced by `path`.
 
-The `atime` and `mtime` arguments follow these rules:
+Los argumentos `atime` y `mtime` siguen las siguientes reglas.
 
 * Values can be either numbers representing Unix epoch time, `Date`s, or a numeric string like `'123456789.0'`.
 * If the value can not be converted to a number, or is `NaN`, `Infinity` or `-Infinity`, an `Error` will be thrown.
