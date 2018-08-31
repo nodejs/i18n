@@ -30,7 +30,7 @@ server.bind(41234);
 // server listening 0.0.0.0:41234
 ```
 
-## Class: dgram.Socket
+## Clase: dgram.Socket
 
 <!-- YAML
 added: v0.1.99
@@ -38,7 +38,7 @@ added: v0.1.99
 
 The `dgram.Socket` object is an [`EventEmitter`][] that encapsulates the datagram functionality.
 
-New instances of `dgram.Socket` are created using [`dgram.createSocket()`][]. The `new` keyword is not to be used to create `dgram.Socket` instances.
+Nuevas instancias de `dgram.Socket` se crean usando [`dgram.createSocket()`][]. La palabra clave `new` no debe ser utilizada para crear instancias `dgram.Socket`.
 
 ### Event: 'close'
 
