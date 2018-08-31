@@ -2301,9 +2301,9 @@ changes:
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
-readlink(2) sincrónico. Returns the symbolic link's string value.
+readlink(2) sincrónico. Devuelve el valor de la string del enlace simbólico.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path passed to the callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta de enlace pasada al callback. Si el `encoding` se establece a `'buffer'`, la ruta de enlace devuelta será pasada como un objeto de `Buffer` .
 
 ## fs.readSync(fd, buffer, offset, length, position)
 
@@ -2366,17 +2366,17 @@ Asynchronously computes the canonical pathname by resolving `.`, `..` and symbol
 
 Note that "canonical" does not mean "unique": hard links and bind mounts can expose a file system entity through many pathnames.
 
-This function behaves like realpath(3), with some exceptions:
+Esta función se comporta como realpath(3), con algunas excepciones:
 
 1. No case conversion is performed on case-insensitive file systems.
 
-2. The maximum number of symbolic links is platform-independent and generally (much) higher than what the native realpath(3) implementation supports.
+2. El número máximo de enlaces simbólicos es independiente de la plataforma y es por lo general, (mucho) más alto que lo que soporta la implementación nativa de realpath(3).
 
 El `callback` obtiene dos argumentos `(err, resolvedPath)`. Puede utilizar `process.cwd` para resolver rutas relativas.
 
 Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
-El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
 Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente al sistema para ese objeto.
 
@@ -2489,7 +2489,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Asynchronously rename file at `oldPath` to the pathname provided as `newPath`. En caso de que `newPath` ya exista, será reescrito. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
+Renombra de manera asincrónica a un archivo en `oldPath` al nombre de ruta proporcionado como `newPath`. En caso de que `newPath` ya exista, será reescrito. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Vea también: rename(2).
 
