@@ -363,7 +363,7 @@ Todos los workers son creados usando [`child_process.fork()`][], el objeto devue
 
 Ver: [Módulo del Proceso secundario](child_process.html#child_process_child_process_fork_modulepath_args_options).
 
-Tenga en cuenta que, los workers van a llamar a `process.exit(0)` si el evento `'disconnect'` ocurre en `process`, y `.exitedAfterDisconnect` no es `true`. Esto protege contra desconexiones accidentales.
+Tenga en cuenta que los workers van a llamar a `process.exit(0)` si el evento `'disconnect'` ocurre en `process`, y `.exitedAfterDisconnect` no es `true`. Esto protege contra desconexiones accidentales.
 
 ### worker.send(message\[, sendHandle\]\[, callback\])
 
@@ -409,7 +409,7 @@ added: v0.7.9
 
 * `worker` {cluster.Worker}
 
-Emitido después que el canal IPC del worker ha sido desconectado. Esto puede ocurrir cuando un trabajador sale con elegancia, es matado, o es desconectado manualmente (por ejemplo `worker.disconnect()`).
+Emitido después que el canal IPC del worker ha sido desconectado. Esto puede ocurrir cuando un worker se cierra con gracia, es matado, o es desconectado manualmente (por ejemplo `worker.disconnect()`).
 
 Puede existir una demora entre los eventos `'disconnect'` y `'exit'`. Estos eventos pueden ser usados para detectar si el proceso está atascado en una limpieza, o si hay conecciones de vida larga.
 
@@ -429,7 +429,7 @@ added: v0.7.9
 * `code`{number} El código de salida, si se cerró de manera normal.
 * `signal`{string} El nombre de la señal (p. ej. `process`) que causó que el proceso muriera.
 
-Cuando cualquiera de los workes muere, el módulo clúster va a emitir el evento `'exit'`.
+Cuando cualquiera de los workers muere, el módulo clúster va a emitir el evento `'exit'`.
 
 Esto puede ser usado para reiniciar el worker llamando otra vez a `.fork()`.
 
@@ -480,9 +480,9 @@ added: v0.7.0
 * `worker` {cluster.Worker}
 * `address` {Object}
 
-Después de llamar `listen()` de un trabajador, cuando el evento `'listening'` es emitido en el servidor un evento `'listening'` también será emitido en el `cluster` en el maestro.
+Después de llamar `listen()` desde un worker, cuando el evento `'listening'` es emitido en el servidor, un evento `'listening'` también será emitido en el `cluster` en el maestro.
 
-El evento manejador es ejecutado con dos argumentos, el `worker` contiene el objeto worker y el objeto `address` contiene las siguientes propiedades de conexión: `address`, `port` y `addressType`. Esto es muy útil si el worker está escuchando en más de una dirección.
+El manejador de eventos es ejecutado con dos argumentos, el `worker` contiene el objeto worker y el objeto `address` contiene las siguientes propiedades de conexión: `address`, `port` y `addressType`. Esto es muy útil si el worker está escuchando en más de una dirección.
 
 ```js
 cluster.on('listening', (worker, address) => {
@@ -540,7 +540,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-Después de bifurcar un nuevo worker, el worker debería responder con un mensaje en línea. Cuando el maestro reciba un mensaje en línea va a emitir este evento. La diferencia entre `'fork'` y `'online'` es que, el evento bifurcar es emitido cuando el maestro bifurca un worker, y el evento `'online'` es emitido cuando el worker está corriendo.
+Después de bifurcar un nuevo worker, el worker debería responder con un mensaje en línea. Cuando el maestro reciba un mensaje en línea, va a emitir este evento. La diferencia entre `'fork'` y `'online'` es que el evento "fork" es emitido cuando el maestro bifurca un worker, y el evento `'online'` es emitido cuando el worker está ejecutándose.
 
 ```js
 cluster.on('online', (worker) => {
@@ -556,7 +556,7 @@ added: v0.7.1
 
 * `settings` {Object}
 
-Emitido cada vez que se llama `.setupMaster()`.
+Emitido cada vez que se llama a `.setupMaster()`.
 
 El objeto `settings` es el objeto `cluster.settings` al momento que `.setupMaster()` fue llamado y solo es consultivo, ya que pueden hacerse varias llamadas a `.setupMaster()` en un solo tic.
 
@@ -676,9 +676,9 @@ changes:
 
 Tenga en cuenta que:
 
-* Cualquier cambio en las configuraciones solo afecta futuras llamadas a `.fork()` y no tienen ningún efecto en workers que ya están en ejecución.
-* El *único* atributo de un trabajador que no se puede establecer mediante `.setupMaster()` es `env` pasado a `.fork()`.
-* Los valores predeterminados anteriores aplican solo a la primera llamada, los predeterminados para llamadas siguientes es el valor actual en el momento que `cluster.setupMaster()` es llamado.
+* Cualquier cambio en las configuraciones solo afecta a futuras llamadas a `.fork()` y no tiene ningún efecto en workers que ya estén en ejecución.
+* El *único* atributo de un worker que no se puede establecer mediante `.setupMaster()` es el `env` pasado a `.fork()`.
+* Los valores predeterminados anteriores aplican solo a la primera llamada, los predeterminados para llamadas posteriores son los valores en el momento que `cluster.setupMaster()` es llamado.
 
 Ejemplo:
 
@@ -729,9 +729,9 @@ added: v0.7.0
 
 * {Object}
 
-Un hash que guarda los objetos del worker activo, escrito por el campo `id`. Hace fácil hacer un bucle a través de todos los workers. Solo está disponible en el proceso maestro.
+Un hash que guarda los objetos del worker activo, escritos por el campo `id`. Hace fácil hacer un bucle a través de todos los workers. Solo está disponible en el proceso maestro.
 
-Un worker es removido de `cluster.workers` después de que el worker ha salido *y* ha sido desconectado. El orden entre estos dos eventos no pueden ser determinados de antemano. Sin embargo, es garantizado que, la eliminación desde la lista `cluster.workers` ocurre antes de que el último evento `'disconnect'` or `'exit'` es emitido.
+Un worker es removido de `cluster.workers` después de que el worker se ha desconectado *y* cerrado. El orden entre estos dos eventos no puede ser determinado de antemano. Sin embargo, es garantizado que, la eliminación desde la lista `cluster.workers` ocurre antes de que el último evento `'disconnect'` or `'exit'` es emitido.
 
 ```js
 // Pasar a través de todos los workers
