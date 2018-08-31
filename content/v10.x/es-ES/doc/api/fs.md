@@ -2892,7 +2892,7 @@ Esta función depende del sistema operativo subyacente, proporcionando una maner
 * En el sistema de Windows, esta función depende de [`ReadDirectoryChangesW`].
 * En sistemas Aix, esta función depende de [`AHAFS`], la cual debe ser habilitada.
 
-Si la funcionalidad subyacente no está disponible por algún motivo, entonces `fs.watch` no podrá funcionar. For example, watching files or directories can be unreliable, and in some cases impossible, on network file systems (NFS, SMB, etc), or host file systems when using virtualization software such as Vagrant, Docker, etc.
+Si la funcionalidad subyacente no está disponible por algún motivo, entonces `fs.watch` no podrá funcionar. Por ejemplo, observar archivos o directorios puede no ser seguro, y en algunos casos imposible, en sistemas de archivos de red (NFS, SMB, etc), o sistemas de alojamiento de archivos cuando se utiliza un software de virtualización, tales como Vagrant, Docker, etc.
 
 It is still possible to use `fs.watchFile()`, which uses stat polling, but this method is slower and less reliable.
 
