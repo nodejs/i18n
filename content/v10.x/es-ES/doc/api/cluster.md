@@ -570,9 +570,9 @@ added: v0.7.7
 
 * `callback` {Function} Llamada cuando todos los workers están desconectados y los handles están cerrados.
 
-Llama a `.disconnect()` a cada worker en `cluster.workers`.
+Llama a `.disconnect()` en cada worker en `cluster.workers`.
 
-Cuando son desconectados todos los handles internos serán cerrados, permitiendo al proceso maestro morir con elegancia si ningún otro evento está esperando.
+Cuando son desconectados, todos los handles internos serán cerrados, permitiendo al proceso maestro morir con gracia si ningún otro evento está esperando.
 
 El método toma un argumento callback opcional que va a ser llamado cuando haya terminado.
 
@@ -617,7 +617,7 @@ Verdadero si el proceso no es maestro (es la negación de `cluster.isMaster`).
 added: v0.11.2
 -->
 
-La política de planificación, ya sea `cluster.SCHED_RR` para round-robin o `cluster.SCHED_NONE` para dejarselo al sistema operativo. Esto es una configuración global y es efectivamente detenida una vez que el primer worker es generado, o cuando `cluster.setupMaster()` es llamado, cualquiera que ocurra primero.
+La política de planificación, ya sea `cluster.SCHED_RR` para round-robin o `cluster.SCHED_NONE` para dejárselo al sistema operativo. Esto es una configuración global y es efectivamente detenida una vez que el primer worker es generado, o cuando `cluster.setupMaster()` es llamado, cualquiera que ocurra primero.
 
 `SCHED_RR` es el predeterminado en todos los sistemas operativos menos Windows. Windows cambiará a `SCHED_RR` una vez libuv sea capaz de distribuir handles IOCP, sin incurrir en golpes fuertes en el rendimiento.
 
@@ -644,18 +644,18 @@ changes:
 -->
 
 * {Object} 
-  * `execArgv` {string[]} Lista de argumentos de strings pasados al Node.js ejecutable. **Predeterminado:** `process.execArgv`.
-  * `exec` {string} Camino del archivo al archivo worker. **Predeterminado:** `process.argv[1]`.
+  * `execArgv` {string[]} Lista de argumentos de strings pasados al ejecutable de Node.js. **Predeterminado:** `process.execArgv`.
+  * `exec` {string} Ruta del archivo al archivo worker. **Predeterminado:** `process.argv[1]`.
   * `args` {string[]} Argumentos strings pasados al worker. **Predeterminado:** `process.argv.slice(2)`.
   * `cwd` {string} Directorio del proceso worker actualmente operativo. **Default:** `undefined` (heredados del proceso primario).
-  * `silent` {boolean} Ya bien sea enviar la salida a stdio secundario o no. **Predeterminado:** `false`.
+  * `silent` {boolean} Sea enviar la salida a stdio secundario o no hacerlo. **Predeterminado:** `false`.
   * `stdio` {Array} Configura el stdio de procesos bifurcados. Porque el módulo clúster depende del IPC para funcionar, esta configuración debe contener una entrada `'ipc'`. Cuando se proporciona esta opción, se anula `silent`.
   * `uid` {number} Establece la identidad del usuario del proceso. (Ver setuid(2).)
   * `gid` {number} Establece la identidad del grupo del proceso. (Ver setgid(2).)
-  * `inspectPort` {number|Function} Establece puerto inspector del worker. Esto puede ser un número o una función que no toma ningún argumento y devuelve un número. De manera predeterminada cada worker tiene su propio puerto, incrementado de `process.debugPort` del maestro.
+  * `inspectPort` {number|Function} Establece puerto inspector del worker. Esto puede ser un número o una función que no toma ningún argumento y devuelve un número. De manera predeterminada, cada worker tiene su propio puerto, incrementado desde el `process.debugPort` del maestro.
   * `windowsHide` {boolean} Oculta la ventana de consola de los procesos bifurcados que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
 
-Después de llamar `.setupMaster()` (o `.fork()`) este objeto de configuraciones contiene las configuraciones, incluyendo los valores predeterminados.
+Después de llamar a `.setupMaster()` (o `.fork()`), este objeto de configuraciones contendrá las configuraciones, incluyendo los valores predeterminados.
 
 Este objeto no está diseñado para ser cambiado o ajustado manualmente.
 
@@ -731,7 +731,7 @@ added: v0.7.0
 
 Un hash que guarda los objetos del worker activo, escritos por el campo `id`. Hace fácil hacer un bucle a través de todos los workers. Solo está disponible en el proceso maestro.
 
-Un worker es removido de `cluster.workers` después de que el worker se ha desconectado *y* cerrado. El orden entre estos dos eventos no puede ser determinado de antemano. Sin embargo, es garantizado que, la eliminación desde la lista `cluster.workers` ocurre antes de que el último evento `'disconnect'` or `'exit'` es emitido.
+Un worker es removido de `cluster.workers` después de que el worker se ha desconectado *y* cerrado. El orden entre estos dos eventos no puede ser determinado de antemano. Sin embargo, se garantiza que la eliminación desde la lista `cluster.workers` ocurre antes de que el último evento `'disconnect'` o `'exit'` es emitido.
 
 ```js
 // Pasar a través de todos los workers
