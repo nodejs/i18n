@@ -2763,7 +2763,7 @@ added: v0.1.31
 * `filename` {string|Buffer|URL}
 * `listener` {Function} Opcional, un listener previamente acoplado utilizando `fs.watchFile()`
 
-Stop watching for changes on `filename`. Si se especifica `listener`, sólo se eliminará a ese listener en específico. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
+Stop watching for changes on `filename`. Si se especifica `listener`, sólo se eliminará ese listener en específico. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
 
 Calling `fs.unwatchFile()` with a filename that is not being watched is a no-op, not an error.
 
@@ -2805,7 +2805,7 @@ changes:
 
 Change the file system timestamps of the object referenced by `path`.
 
-Los argumentos `atime` y `mtime` siguen las siguientes reglas.
+Los argumentos `atime` y `mtime` siguen las siguientes reglas:
 
 * Values can be either numbers representing Unix epoch time, `Date`s, or a numeric string like `'123456789.0'`.
 * If the value can not be converted to a number, or is `NaN`, `Infinity` or `-Infinity`, an `Error` will be thrown.
