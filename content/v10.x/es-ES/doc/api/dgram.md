@@ -1,12 +1,12 @@
-# UDP / Datagram Sockets
+# Sockets de UDP / Datagrama
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Stable
 
 <!-- name=dgram -->
 
-The `dgram` module provides an implementation of UDP Datagram sockets.
+El módulo `dgram` proporciona una implementación de sockets de UDP Datagrama.
 
 ```js
 const dgram = require('dgram');
@@ -30,25 +30,25 @@ server.bind(41234);
 // server listening 0.0.0.0:41234
 ```
 
-## Class: dgram.Socket
+## Clase: dgram.Socket
 
 <!-- YAML
 added: v0.1.99
 -->
 
-The `dgram.Socket` object is an [`EventEmitter`][] that encapsulates the datagram functionality.
+El objeto `dgram.Socket` es un [`EventEmitter`][] que encapsula la funcionalidad de datagrama.
 
-New instances of `dgram.Socket` are created using [`dgram.createSocket()`][]. The `new` keyword is not to be used to create `dgram.Socket` instances.
+Nuevas instancias de `dgram.Socket` se crean usando [`dgram.createSocket()`][]. La palabra clave `new` no debe ser utilizada para crear instancias `dgram.Socket`.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.99
 -->
 
-The `'close'` event is emitted after a socket is closed with [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
+El evento `'close'` se emite luego de que un socket es cerrado con [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
 
-### Event: 'error'
+### Evento: 'error'
 
 <!-- YAML
 added: v0.1.99
@@ -56,30 +56,30 @@ added: v0.1.99
 
 * `exception` {Error}
 
-The `'error'` event is emitted whenever any error occurs. The event handler function is passed a single `Error` object.
+El evento `'error'` es emitido cuando ocurre cualquier error. La función de manejador de eventos es pasada en un solo objeto `Error`.
 
-### Event: 'listening'
-
-<!-- YAML
-added: v0.1.99
--->
-
-The `'listening'` event is emitted whenever a socket begins listening for datagram messages. This occurs as soon as UDP sockets are created.
-
-### Event: 'message'
+### Evento: 'listening'
 
 <!-- YAML
 added: v0.1.99
 -->
 
-The `'message'` event is emitted when a new datagram is available on a socket. The event handler function is passed two arguments: `msg` and `rinfo`.
+El evento `'listening'` es emitido cuando un socket comienza a escuchar por mensajes de datagrama. Eso ocurre tan pronto los sockets UDP son creados.
 
-* `msg` {Buffer} The message.
-* `rinfo` {Object} Remote address information. 
-  * `address` {string} The sender address.
-  * `family` {string} The address family (`'IPv4'` or `'IPv6'`).
-  * `port` {number} The sender port.
-  * `size` {number} The message size.
+### Evento: 'message'
+
+<!-- YAML
+added: v0.1.99
+-->
+
+El evento `'message'` es emitido cuando un nuevo datagrama está disponible en un socket. The event handler function is passed two arguments: `msg` and `rinfo`.
+
+* `msg` {Buffer} El mensaje.
+* `rinfo` {Object} Información de dirección remota. 
+  * `address` {string} La dirección del transmisor.
+  * `family` {string} La familia de direcciones (`'IPv4'` or `'IPv6'`).
+  * `port` {number} El puerto del transmisor.
+  * `size` {number} El tamaño del mensaje.
 
 ### socket.addMembership(multicastAddress[, multicastInterface])
 
@@ -98,9 +98,9 @@ Tells the kernel to join a multicast group at the given `multicastAddress` and `
 added: v0.1.99
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns an object containing the address information for a socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
+Devuelve un objeto que contiene la información de la dirección para un socket. Para sockets UDP, este objeto va a contener `address`, `family` y propiedades de `port`.
 
 ### socket.bind(\[port\]\[, address\][, callback])
 
@@ -110,9 +110,9 @@ added: v0.1.99
 
 * `port` {integer}
 * `address` {string}
-* `callback` {Function} with no parameters. Called when binding is complete.
+* `callback` {Function} sin parámetros. Llamado cuando el enlace es completado.
 
-For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address`. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
+Para sockets UDP, causa que `dgram.Socket` escuche por mensajes datagrama en un `port` llamado y `address` opcional. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazar a un puerto aleatorio. Si no se especifica el `address`, el sistema operativo va a intentar escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido y la función opcional `callback` es llamada.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 

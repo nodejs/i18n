@@ -141,9 +141,9 @@ Esto no funcionará porque la función callback pasada a `fs.readFile()` es llam
 
 <!--type=class-->
 
-Un objeto `Error` de JavaScript genérico que no denota ninguna circunstancia específica de porqué el error ocurrió. Los objetos `Error` capturan un "stack trace" detallando el punto en el código en el cual el `Error` fue instanciado, y puede proporcionar una descripción de texto del error.
+Un objeto `Error` de JavaScript genérico que no denota ninguna circunstancia específica de porqué el error ocurrió. Los objetos `Error` capturan un "stack trace" detallando el punto en el código en el cual el `Error` fue instanciado, y pueden proporcionar una descripción de texto del error.
 
-Sólo para criptos, los objetos `Error` incluirán el stack de error de OpenSSL en una propiedad separada llamada `opensslErrorStack` si está disponible cuando se arroja el error.
+Sólo para criptos, los objetos `Error` incluirán el stack de error de OpenSSL en una propiedad separada llamada `opensslErrorStack`, si está disponible cuando se arroja el error.
 
 Todos los errores generados por Node.js, incluyendo todos los errores de Sistema y JavaScript, serán instancias o serán heredados de la clase `Error`.
 
@@ -286,7 +286,7 @@ Node.js generará y arrojará instancias de `RangeError` *inmediatamente* como f
 
 ## Clase: ReferenceError (Error de Referencia)
 
-Una subclase de `Error` que indica que se está haciendo un intento para acceder a una variable que no está definida. Dichos errores usualmente indican typos en el código, o de lo contrario, indican un programa dañado.
+Una subclase de `Error` que indica que se está haciendo un intento para acceder a una variable que no está definida. Dichos errores usualmente indican typos en el código o, de lo contrario, un programa dañado.
 
 Mientras que el código cliente puede generar y propagar estos errores, en la práctica, sólo lo hará el V8.
 
@@ -311,16 +311,16 @@ try {
 
 Las instancias de `SyntaxError` son irrecuperables en el contexto que las creó - sólo pueden ser atrapadas por otros contextos.
 
-## Clase: TypeError (Error de Tecleado)
+## Clase: TypeError (Error de Tipo)
 
-Una sub-clase de `Error` que indica que un argumento proporcionado no es un tipo permitido. Por ejemplo, el pasar una función a un parámetro que espera una string sería considerado un `TypeError`.
+Una sub-clase de `Error` que indica que un argumento proporcionado no es de un tipo permitido. Por ejemplo, el pasar una función a un parámetro que espera una string sería considerado un `TypeError`.
 
 ```js
 require('url').parse(() => { });
 // arroja un TypeError, ya que espera una string
 ```
 
-Node.js generará y arrojará instancias de `TypeError` *inmediatamente* como forma de una validación de argumento.
+Node.js generará y arrojará instancias de `TypeError` *inmediatamente* como una forma de validación de argumento.
 
 ## Excepciones vs. Errores
 
@@ -332,7 +332,7 @@ Algunas excepciones son *irrecuperables* en la capa de JavaScript. Dichas excepc
 
 ## Errores de Sistema
 
-Los errores de sistema son generados cuando ocurren excepciones dentro del entorno del tiempo de ejecución de Node.js. Típicamente estos errores son errores operacionales que ocurren cuando una aplicación viola una restricción de sistema operativo, como lo es intentar leer un archivo que no existe o cuando el usuario no tiene permisos suficientes.
+Los errores de sistema son generados cuando ocurren excepciones dentro del entorno del tiempo de ejecución (runtime environment) de Node.js. Típicamente, estos son errores operacionales que ocurren cuando una aplicación viola una restricción de sistema operativo, como lo es intentar leer un archivo que no existe o cuando el usuario no tiene permisos suficientes.
 
 System errors are typically generated at the syscall level: an exhaustive list of error codes and their meanings is available by running `man 2 intro` or `man 3 errno` on most Unices; or [online](http://man7.org/linux/man-pages/man3/errno.3.html).
 
@@ -346,7 +346,7 @@ Las instancias de `SystemError` pueden tener una propiedad de `info` adicional c
 
 Las siguientes propiedades son proporcionadas:
 
-- `code` {string} La string código de error
+- `code` {string} El código de error de la string
 - `errno` {number} El número de error proporcionado por el sistema
 - `message` {string} Una descripción del error legible por humanos proporcionada por el sistema
 - `syscall` {string} El nombre de la llamada de sistema que desencadenó el error
@@ -363,7 +363,7 @@ La propiedad `error.code` es una string que representa el código de error, el c
 
 - {string|number}
 
-La propiedad `error.errno` es un número o una string. El número es un valor **negativo** que le corresponde al código de error definido en [`libuv Error handling`]. Vea el archivo encabezado `uv-errno.h` (`deps/uv/include/uv-errno.h` en el árbol fuente de Node.js) para detalles. En caso de una string, el el mismo que `error.code`.
+La propiedad `error.errno` es un número o una string. El número es un valor **negativo** que corresponde al código de error definido en [`libuv Error handling`]. Vea el archivo encabezado `uv-errno.h` (`deps/uv/include/uv-errno.h` en el árbol fuente de Node.js) para detalles. En caso de una string, es el mismo que `error.code`.
 
 #### error.syscall
 
@@ -375,19 +375,19 @@ La propiedad `error.syscall` es una string que describe la [syscall](http://man7
 
 - {string}
 
-Cuando está presente (e. g. en `fs` o `child_process`), la propiedad `error.path` es una string que contiene un nombre de ruta inválido relevante.
+Cuando está presente (por ejemplo, en `fs` o `child_process`), la propiedad `error.path` es una string que contiene un nombre de ruta inválido relevante.
 
 #### error.address
 
 - {string}
 
-Cuando está presente (e.g. en `net` or `dgram`), la propiedad `error.address` es una string que describe la dirección en la cual la conexión falló.
+Cuando está presente (por ejemplo, en `net` or `dgram`), la propiedad `error.address` es una string que describe la dirección hacia la cual la conexión falló.
 
 #### error.port
 
 - {number}
 
-Cuando está presente (e. g. en `net` or `dgram`), la propiedad `error.port` es un número que representa el puerto de la conexión que no está disponible.
+Cuando está presente (por ejemplo, en `net` or `dgram`), la propiedad `error.port` es un número que representa el puerto de la conexión que no está disponible.
 
 ### Errores de Sistema Comunes
 
@@ -397,103 +397,103 @@ Esta lista **no es exhaustiva**, pero enumera muchos de los errores de sistema e
 
 - `EADDRINUSE` (Dirección ya en uso): Un intento de enlazar un servidor ([`net`][], [`http`][] o [`https`][]) a una dirección local falló debido a que otro servidor en el sistema local ya está ocupando esa dirección.
 
-- `ECONNREFUSED` (Connection refused): No connection could be made because the target machine actively refused it. This usually results from trying to connect to a service that is inactive on the foreign host.
+- `ECONNREFUSED` (Conexión rechazada): No se pudo realizar ninguna conexión porque la máquina objetivo lo rechazó activamente. Estoy resulta generalmente de internet conectar a un servicio que está inactivo en el host extranjero.
 
-- `ECONNRESET` (Connection reset by peer): A connection was forcibly closed by a peer. This normally results from a loss of the connection on the remote socket due to a timeout or reboot. Commonly encountered via the [`http`][] and [`net`][] modules.
+- `ECONNRESET` (Conexión reiniciada por el peer): Una conexión fue cerrada a la fuerza por un peer. This normally results from a loss of the connection on the remote socket due to a timeout or reboot. Comúnmente encontrado mediante los módulos [`http`][] y [`net`][].
 
-- `EEXIST` (File exists): An existing file was the target of an operation that required that the target not exist.
+- `EEXIST` (El archivo existe): Un archivo existente fue el objetivo de una operación que requería que el objetivo no existiese.
 
-- `EISDIR` (Is a directory): An operation expected a file, but the given pathname was a directory.
+- `EISDIR` (Es un directorio): Una operación esperaba un archivo, pero el nombre de la ruta dada era un directorio.
 
-- `EMFILE` (Too many open files in system): Maximum number of [file descriptors](https://en.wikipedia.org/wiki/File_descriptor) allowable on the system has been reached, and requests for another descriptor cannot be fulfilled until at least one has been closed. This is encountered when opening many files at once in parallel, especially on systems (in particular, macOS) where there is a low file descriptor limit for processes. To remedy a low limit, run `ulimit -n 2048` in the same shell that will run the Node.js process.
+- `EMFILE` (Muchos archivos abiertos en el sistema): El número máximo de [descriptores de archivos](https://en.wikipedia.org/wiki/File_descriptor) permitidos en el sistema ha sido alcanzado y las solicitudes para otro descriptor no pueden cumplirse hasta que al menos uno haya sido cerrado. Esto ocurre al abrir muchos archivos a la vez en paralelo, especialmente en sistemas (macOS en particular) donde hay un límite de descriptor de archivos bajo para procesos. Para remediar un límite bajo, ejecute `ulimit -n 2048` en el mismo shell que ejecutara el proceso Node.js.
 
-- `ENOENT` (No such file or directory): Commonly raised by [`fs`][] operations to indicate that a component of the specified pathname does not exist — no entity (file or directory) could be found by the given path.
+- `ENOENT` (No existe el archivo o directorio): Comúnmente levantado por operaciones [`fs`][] para indicar que un componente del nombre de ruta especificado no existe — no se pudo encontrar ninguna entidad (archivo o directorio) con la ruta dada.
 
-- `ENOTDIR` (Not a directory): A component of the given pathname existed, but was not a directory as expected. Commonly raised by [`fs.readdir`][].
+- `ENOTDIR` (No es un directorio): Un componente del nombre de ruta dado existe, pero no era un directorio, como se esperaba. Comúnmente levantado por [`fs.readdir`][].
 
-- `ENOTEMPTY` (Directory not empty): A directory with entries was the target of an operation that requires an empty directory — usually [`fs.unlink`][].
+- `ENOTEMPTY` (Directorio no vacío): Un directorio con entradas fue el objetivo de una operación que requiere un directorio vacío — usualmente [`fs.unlink`][].
 
-- `EPERM` (Operation not permitted): An attempt was made to perform an operation that requires elevated privileges.
+- `EPERM` (Operación no permitida): Se intentó realizar una operación que requiere privilegios elevados.
 
-- `EPIPE` (Broken pipe): A write on a pipe, socket, or FIFO for which there is no process to read the data. Commonly encountered at the [`net`][] and [`http`][] layers, indicative that the remote side of the stream being written to has been closed.
+- `EPIPE` (Broken pipe): A write on a pipe, socket, or FIFO for which there is no process to read the data. Comúnmente encontrado en las capas [`net`][] y [`http`][], indicativos de que el lado remoto del stream en el que se escribe ha sido cerrado.
 
-- `ETIMEDOUT` (Operation timed out): A connect or send request failed because the connected party did not properly respond after a period of time. Usually encountered by [`http`][] or [`net`][] — often a sign that a `socket.end()` was not properly called.
+- `ETIMEDOUT` (Se agotó el tiempo de la operación): Una conexión o una solicitud enviada falló porque la parte conectada no respondió adecuadamente luego de un período de tiempo. Usualmente encontrado por [`http`][] o [`net`][] — a menudo, una señal de que `socket.end()` no fue llamado adecuadamente.
 
 <a id="nodejs-error-codes"></a>
 
-## Node.js Error Codes
+## Códigos de Error de Node.js
 
 <a id="ERR_AMBIGUOUS_ARGUMENT"></a>
 
 ### ERR_AMBIGUOUS_ARGUMENT
 
-This is triggered by the `assert` module in case e.g., `assert.throws(fn, message)` is used in a way that the message is the thrown error message. This is ambiguous because the message is not verifying the error message and will only be thrown in case no error is thrown.
+Esto es accionado por el módulo `assert` en caso de que, por ejemplo, `assert.throws(fn, message)` sea usado de una manera en que el mensaje es el mensaje de error arrojado. Esto es ambiguo porque el mensaje no verifica el mensaje de error y sólo será arrojado en caso de que no se arroje ningún error.
 
 <a id="ERR_ARG_NOT_ITERABLE"></a>
 
 ### ERR_ARG_NOT_ITERABLE
 
-An iterable argument (i.e. a value that works with `for...of` loops) was required, but not provided to a Node.js API.
+Un argumento iterable (es decir, un valor que funciona con loops `for...of`) era requerido, pero no fue proporcionado a un API de Node.js.
 
 <a id="ERR_ASSERTION"></a>
 
 ### ERR_ASSERTION
 
-A special type of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
+Un tipo especial de error que puede desencadenarse cada vez que Node.js detecte una violación lógica excepcional que nunca debería ocurrir. Estos son típicamente levantados por el módulo `assert`.
 
 <a id="ERR_ASYNC_CALLBACK"></a>
 
 ### ERR_ASYNC_CALLBACK
 
-An attempt was made to register something that is not a function as an `AsyncHooks` callback.
+Se intentó registrar algo que no es una función como un callback `AsyncHooks`.
 
 <a id="ERR_ASYNC_TYPE"></a>
 
 ### ERR_ASYNC_TYPE
 
-The type of an asynchronous resource was invalid. Note that users are also able to define their own types if using the public embedder API.
+El tipo de una fuente asincrónica era inválido. Note that users are also able to define their own types if using the public embedder API.
 
 <a id="ERR_BUFFER_OUT_OF_BOUNDS"></a>
 
 ### ERR_BUFFER_OUT_OF_BOUNDS
 
-An operation outside the bounds of a `Buffer` was attempted.
+Se intentó una operación afuera de los límites de un `Buffer`.
 
 <a id="ERR_BUFFER_TOO_LARGE"></a>
 
 ### ERR_BUFFER_TOO_LARGE
 
-An attempt has been made to create a `Buffer` larger than the maximum allowed size.
+Se intentó crear un `Buffer` más grande que el tamaño máximo permitido.
 
 <a id="ERR_CANNOT_WATCH_SIGINT"></a>
 
 ### ERR_CANNOT_WATCH_SIGINT
 
-Node.js was unable to watch for the `SIGINT` signal.
+Node.js no pudo ver la señal `SIGINT`.
 
 <a id="ERR_CHILD_CLOSED_BEFORE_REPLY"></a>
 
 ### ERR_CHILD_CLOSED_BEFORE_REPLY
 
-A child process was closed before the parent received a reply.
+Se cerró un proceso secundario antes de que el proceso primario recibiese una respuesta.
 
 <a id="ERR_CHILD_PROCESS_IPC_REQUIRED"></a>
 
 ### ERR_CHILD_PROCESS_IPC_REQUIRED
 
-Used when a child process is being forked without specifying an IPC channel.
+Utilizado cuando se bifurca un proceso secundario sin especificar un canal IPC.
 
 <a id="ERR_CHILD_PROCESS_STDIO_MAXBUFFER"></a>
 
 ### ERR_CHILD_PROCESS_STDIO_MAXBUFFER
 
-Used when the main process is trying to read data from the child process's STDERR / STDOUT, and the data's length is longer than the `maxBuffer` option.
+Utilizado cuando el proceso principal está intentando leer datos de los STDERR / STDOUT del proceso secundario y cuando el tamaño de los datos es mayor que la opción `maxBuffer`.
 
 <a id="ERR_CONSOLE_WRITABLE_STREAM"></a>
 
 ### ERR_CONSOLE_WRITABLE_STREAM
 
-`Console` was instantiated without `stdout` stream, or `Console` has a non-writable `stdout` or `stderr` stream.
+La `Console` fue iniciada sin el stream `stdout` o la `Console` tiene un stream `stdout` o `stderr` no escribible.
 
 <a id="ERR_CPU_USAGE"></a>
 
@@ -523,37 +523,37 @@ An invalid value for the `key` argument has been passed to the `crypto.ECDH()` c
 
 ### ERR_CRYPTO_ENGINE_UNKNOWN
 
-An invalid crypto engine identifier was passed to [`require('crypto').setEngine()`][].
+Se pasó un identificador de motor criptográfico inválido a [`require('crypto').setEngine()`][].
 
 <a id="ERR_CRYPTO_FIPS_FORCED"></a>
 
 ### ERR_CRYPTO_FIPS_FORCED
 
-The [`--force-fips`][] command-line argument was used but there was an attempt to enable or disable FIPS mode in the `crypto` module.
+El argumento de línea de comando [`--force-fips`][] fue utilizado, pero hubo un intento para habilitar o inhabilitar el modo FIPS en el módulo `crypto`.
 
 <a id="ERR_CRYPTO_FIPS_UNAVAILABLE"></a>
 
 ### ERR_CRYPTO_FIPS_UNAVAILABLE
 
-An attempt was made to enable or disable FIPS mode, but FIPS mode was not available.
+Se intentó habilitar o inhabilitar el modo FIPS, pero el modo FIPS no estaba disponible.
 
 <a id="ERR_CRYPTO_HASH_DIGEST_NO_UTF16"></a>
 
 ### ERR_CRYPTO_HASH_DIGEST_NO_UTF16
 
-The UTF-16 encoding was used with [`hash.digest()`][]. While the `hash.digest()` method does allow an `encoding` argument to be passed in, causing the method to return a string rather than a `Buffer`, the UTF-16 encoding (e.g. `ucs` or `utf16le`) is not supported.
+La codificación UTF-16 fue usada con [`hash.digest()`][]. Mientras que el método `hash.digest()` permite que se pase un argumento `encoding`, causando que el método devuelva una string en lugar de un `Buffer`, la codificación UTF-16 (por ejemplo, `ucs` o `utf16le`) no es soportada.
 
 <a id="ERR_CRYPTO_HASH_FINALIZED"></a>
 
 ### ERR_CRYPTO_HASH_FINALIZED
 
-[`hash.digest()`][] was called multiple times. The `hash.digest()` method must be called no more than one time per instance of a `Hash` object.
+[`hash.digest()`][] fue llamado múltiples veces. El método `hash.digest()` debe ser llamado no más de una vez por instancia de un objeto `Hash`.
 
 <a id="ERR_CRYPTO_HASH_UPDATE_FAILED"></a>
 
 ### ERR_CRYPTO_HASH_UPDATE_FAILED
 
-[`hash.update()`][] failed for any reason. This should rarely, if ever, happen.
+[`hash.update()`][] falló por alguna razón. This should rarely, if ever, happen.
 
 <a id="ERR_CRYPTO_INVALID_DIGEST"></a>
 
@@ -565,7 +565,7 @@ An invalid [crypto digest algorithm](crypto.html#crypto_crypto_gethashes) was sp
 
 ### ERR_CRYPTO_INVALID_STATE
 
-A crypto method was used on an object that was in an invalid state. For instance, calling [`cipher.getAuthTag()`][] before calling `cipher.final()`.
+A crypto method was used on an object that was in an invalid state. Por ejemplo, el llamar a [`cipher.getAuthTag()`][] antes de llamar a `cipher.final()`.
 
 <a id="ERR_CRYPTO_SIGN_KEY_REQUIRED"></a>
 
@@ -577,13 +577,13 @@ A signing `key` was not provided to the [`sign.sign()`][] method.
 
 ### ERR_CRYPTO_TIMING_SAFE_EQUAL_LENGTH
 
-[`crypto.timingSafeEqual()`][] was called with `Buffer`, `TypedArray`, or `DataView` arguments of different lengths.
+[`crypto.timingSafeEqual()`][] fue llamado con argumentos `Buffer`, `TypedArray` o `DataView` de diferentes tamaños.
 
 <a id="ERR_DNS_SET_SERVERS_FAILED"></a>
 
 ### ERR_DNS_SET_SERVERS_FAILED
 
-`c-ares` failed to set the DNS server.
+`c-ares` falló al establecer el servidor DNS.
 
 <a id="ERR_DOMAIN_CALLBACK_NOT_AVAILABLE"></a>
 
@@ -595,21 +595,21 @@ The `domain` module was not usable since it could not establish the required err
 
 ### ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE
 
-[`process.setUncaughtExceptionCaptureCallback()`][] could not be called because the `domain` module has been loaded at an earlier point in time.
+[`process.setUncaughtExceptionCaptureCallback()`][] no pudo ser llamado porque el módulo `domain` ha sido cargado en un punto anterior en el tiempo.
 
-The stack trace is extended to include the point in time at which the `domain` module had been loaded.
+El stack trace es extendido para incluir el punto en el tiempo en el cual el módulo `domain` haya sido cargado.
 
 <a id="ERR_ENCODING_INVALID_ENCODED_DATA"></a>
 
 ### ERR_ENCODING_INVALID_ENCODED_DATA
 
-Data provided to `util.TextDecoder()` API was invalid according to the encoding provided.
+Los datos proporcionados a la API `util.TextDecoder()` eran inválidos, de acuerdo a la codificación proporcionada.
 
 <a id="ERR_ENCODING_NOT_SUPPORTED"></a>
 
 ### ERR_ENCODING_NOT_SUPPORTED
 
-Encoding provided to `util.TextDecoder()` API was not one of the [WHATWG Supported Encodings](util.html#util_whatwg_supported_encodings).
+La codificación proporcionada a la API `util.TextDecoder()` no era una de las [Codificaciones Soportadas por WHATWG](util.html#util_whatwg_supported_encodings).
 
 <a id="ERR_FALSY_VALUE_REJECTION"></a>
 
@@ -621,37 +621,37 @@ A `Promise` that was callbackified via `util.callbackify()` was rejected with a 
 
 ### ERR_FS_FILE_TOO_LARGE
 
-An attempt has been made to read a file whose size is larger than the maximum allowed size for a `Buffer`.
+Se intentó leer un archivo cuyo tamaño era mayor que el tamaño máximo permitido para un `Buffer`.
 
 <a id="ERR_FS_INVALID_SYMLINK_TYPE"></a>
 
 ### ERR_FS_INVALID_SYMLINK_TYPE
 
-An invalid symlink type was passed to the [`fs.symlink()`][] or [`fs.symlinkSync()`][] methods.
+Se pasó un tipo de symlink inválido a los métodos [`fs.symlink()`][] o [`fs.symlinkSync()`][].
 
 <a id="ERR_HTTP_HEADERS_SENT"></a>
 
 ### ERR_HTTP_HEADERS_SENT
 
-An attempt was made to add more headers after the headers had already been sent.
+Se intentó añadir más encabezados después de que los encabezados ya fueron enviados.
 
 <a id="ERR_HTTP_INVALID_HEADER_VALUE"></a>
 
 ### ERR_HTTP_INVALID_HEADER_VALUE
 
-An invalid HTTP header value was specified.
+Se especifico un valor de encabezado HTTP inválido.
 
 <a id="ERR_HTTP_INVALID_STATUS_CODE"></a>
 
 ### ERR_HTTP_INVALID_STATUS_CODE
 
-Status code was outside the regular status code range (100-999).
+El código de estado estaba fuera del rango de código de estado regular (100-999).
 
 <a id="ERR_HTTP_TRAILER_INVALID"></a>
 
 ### ERR_HTTP_TRAILER_INVALID
 
-The `Trailer` header was set even though the transfer encoding does not support that.
+El encabezado `Trailer` fue establecido incluso a pesar de que la codificación de transferencia no soporta eso.
 
 <a id="ERR_HTTP2_ALTSVC_INVALID_ORIGIN"></a>
 
@@ -669,31 +669,31 @@ HTTP/2 ALTSVC frames are limited to a maximum of 16,382 payload bytes.
 
 ### ERR_HTTP2_CONNECT_AUTHORITY
 
-For HTTP/2 requests using the `CONNECT` method, the `:authority` pseudo-header is required.
+Para las solicitudes HTTP/2 que utilizan el método `CONNECT`, el pseudo encabezado `:authority` es requerido.
 
 <a id="ERR_HTTP2_CONNECT_PATH"></a>
 
 ### ERR_HTTP2_CONNECT_PATH
 
-For HTTP/2 requests using the `CONNECT` method, the `:path` pseudo-header is forbidden.
+Para las solicitudes HTTP/2 que utilizan el método `CONNECT`, el pseudo encabezado `:path` está prohibido.
 
 <a id="ERR_HTTP2_CONNECT_SCHEME"></a>
 
 ### ERR_HTTP2_CONNECT_SCHEME
 
-For HTTP/2 requests using the `CONNECT` method, the `:scheme` pseudo-header is forbidden.
+Para las solicitudes HTTP/2 que utilizan el método `CONNECT`, el pseudo encabezado `:scheme` está prohibido.
 
 <a id="ERR_HTTP2_GOAWAY_SESSION"></a>
 
 ### ERR_HTTP2_GOAWAY_SESSION
 
-New HTTP/2 Streams may not be opened after the `Http2Session` has received a `GOAWAY` frame from the connected peer.
+Los nuevos Streams HTTP/2 pueden no estar abiertos luego de que `Http2Session` haya recibido un frame `GOAWAY` del peer conectado.
 
 <a id="ERR_HTTP2_HEADER_SINGLE_VALUE"></a>
 
 ### ERR_HTTP2_HEADER_SINGLE_VALUE
 
-Multiple values were provided for an HTTP/2 header field that was required to have only a single value.
+Se proporcionaron múltiples valores para un campo de encabezado HTTP/2 que requería tener sólo un valor simple.
 
 <a id="ERR_HTTP2_HEADERS_AFTER_RESPOND"></a>
 
@@ -705,43 +705,43 @@ An additional headers was specified after an HTTP/2 response was initiated.
 
 ### ERR_HTTP2_HEADERS_SENT
 
-An attempt was made to send multiple response headers.
+Se intentó enviar múltiples encabezados de respuesta.
 
 <a id="ERR_HTTP2_INFO_STATUS_NOT_ALLOWED"></a>
 
 ### ERR_HTTP2_INFO_STATUS_NOT_ALLOWED
 
-Informational HTTP status codes (`1xx`) may not be set as the response status code on HTTP/2 responses.
+Los códigos de estado HTTP informativos (`1xx`) puede no estar establecidos como el código de estado de respuesta en respuestas de HTTP/2.
 
 <a id="ERR_HTTP2_INVALID_CONNECTION_HEADERS"></a>
 
 ### ERR_HTTP2_INVALID_CONNECTION_HEADERS
 
-HTTP/1 connection specific headers are forbidden to be used in HTTP/2 requests and responses.
+Los encabezados específicos de conexión HTTP/1 están prohibidos de ser usados en solicitudes y respuestas de HTTP/2.
 
 <a id="ERR_HTTP2_INVALID_HEADER_VALUE"></a>
 
 ### ERR_HTTP2_INVALID_HEADER_VALUE
 
-An invalid HTTP/2 header value was specified.
+Se especificó un valor de encabezado HTTP/2 inválido.
 
 <a id="ERR_HTTP2_INVALID_INFO_STATUS"></a>
 
 ### ERR_HTTP2_INVALID_INFO_STATUS
 
-An invalid HTTP informational status code has been specified. Informational status codes must be an integer between `100` and `199` (inclusive).
+Se especificó un código de estado informativo de HTTP inválido. Códigos de estado informativos deben ser un número entero entre `100` y `199` (ambos incluidos).
 
 <a id="ERR_HTTP2_INVALID_PACKED_SETTINGS_LENGTH"></a>
 
 ### ERR_HTTP2_INVALID_PACKED_SETTINGS_LENGTH
 
-Input `Buffer` and `Uint8Array` instances passed to the `http2.getUnpackedSettings()` API must have a length that is a multiple of six.
+Las instancias de entrada `Buffer` y `Uint8Array` pasadas a la API `http2.getUnpackedSettings()` deben tener un tamaño que sea múltiplo de seis.
 
 <a id="ERR_HTTP2_INVALID_PSEUDOHEADER"></a>
 
 ### ERR_HTTP2_INVALID_PSEUDOHEADER
 
-Only valid HTTP/2 pseudoheaders (`:status`, `:path`, `:authority`, `:scheme`, and `:method`) may be used.
+Sólo pueden ser usados los pseudo encabezados de HTTP/2 (`:status`, `:path`, `:authority`, `:scheme` y `:method`).
 
 <a id="ERR_HTTP2_INVALID_SESSION"></a>
 

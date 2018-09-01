@@ -1139,13 +1139,13 @@ Vérifie les données fournies en utilisant `object` et `signature`. L'argument 
   
   Notez que `RSA_PKCS1_PSS_PADDING` utilisera MGF1 avec la même fonction de hachage utilisée pour vérifier le message comme spécifié dans la section 3.1 de la [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+- `saltLength`: {integer} - longueur du salage quand le remplissage est `RSA_PKCS1_PSS_PADDING`. La valeur spéciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` définit la longueur du salage égale à celle de l'empreinte, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (par défaut) la détermine automatiquement.
 
-The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+L'argument `signature` est la signature précédemment calculée pour les données, au format `signatureFormat` qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `signatureFormat` est fourni, `signature` doit être une chaîne ; sinon `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+L'objet `verify` ne peut pas être à nouveau utilisé une fois la méthode `verify.verify()` appelée. Plusieurs appels à `verify.verify()` génèreront une erreur.
 
-## `crypto` module methods and properties
+## Méthodes et propriétés du module `crypto`
 
 ### crypto.constants
 
@@ -1153,7 +1153,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Renvoie : {Object} Un objet contenant les constants couramment utilisées pour la cryptographie et les opérations de sécurité liées. Les constantes spécifiques actuellement définies sont décrites dans [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1162,13 +1162,13 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+L'encodage par défaut à utiliser pour les fonctions qui peuvent accepter des chaînes ou des [buffers][`Buffer`]. La valeur par défaut est `'buffer'`, qui donne par défaut aux méthodes des objets [`Buffer`][].
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+Le mécanisme `crypto.DEFAULT_ENCODING` est fourni pour rétro-compatibilité avec des programmes obsolètes qui attendent `'latin1'` comme encodage par défaut.
 
-New applications should expect the default to be `'buffer'`.
+Les nouvelles applications devraient attendre `'buffer'` comme encodage par défaut.
 
-This property is deprecated.
+Cette propriété est obsolète.
 
 ### crypto.fips
 
@@ -1177,9 +1177,9 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Propriété pour vérifier et contrôler si un fournisseur crypto conforme à FIPS est actuellement utilisé. Définir à true requiert une version FIPS de Node.js.
 
-This property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Cette propriété est obsolète. Utilisez `crypto.setFips()` et `crypto.getFips()` à la place.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1188,12 +1188,12 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
+> Stabilité : 0 - obsolète : utilisez [`crypto.createCipheriv()`][] à la place.
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Renvoie : {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
 
@@ -1223,7 +1223,7 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Renvoie : {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
