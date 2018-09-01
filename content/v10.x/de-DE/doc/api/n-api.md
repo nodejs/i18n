@@ -13,9 +13,9 @@ Addons werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, wie im 
 APIs, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die APIs haben folgende Eigenschaften:
 
 - Alle N-API-Anfragen liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob die API-Anfrage erfolgreich war oder nicht.
-- Der Rückgabewert der API wird über einen Out-Parameter übertragen.
+- Der Rückgabewert der API wird über einen Out-Parameter ausgegeben.
 - Alle JavaScript-Werte werden hinter einem undurchsichtigen Typ namens `napi_value` abstrahiert.
-- Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie in dem Fehlermeldungs-Handlingbereich [Fehlerbehandlung](#n_api_error_handling).
+- Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie in dem Fehlermeldungshandlingbereich [Fehlerbehandlung](#n_api_error_handling).
 
 Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-API bereitstellen. Binärdateien, die mit diesen Wrapper-Modulen erstellt wurden, hängen von den Symbolen für die N-API C-basierten Funktionen ab, die von Node.js exportiert wurden. Diese Wrapper sind weder Teil der N-API, noch werden sie als Teil von Node.js verwaltet. Ein solches Beispiel ist: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
@@ -75,11 +75,11 @@ Siehe Abschnitt [Fehlerbehandlung](#n_api_error_handling) für weitere Informati
 
 ### napi_env
 
-`napi_env` wird verwendet, um einen Kontext darzustellen, den die zugrunde liegende N-API-Implementierung verwenden kann, um den VM-spezifischen Zustand zu erhalten. Diese Struktur wird an native Funktionen übertragen, wenn sie aufgerufen werden, und sie muss bei N-API-Anfragen rückübertragen werden. Insbesondere müssen die gleichen `napi_env`, die beim Aufruf der ursprünglichen nativen Funktion übergeben wurden, an alle nachfolgenden geschachtelten N-API-Anfragen übergeben werden. Das Zwischenspeichern der `napi_env`-Datei zum Zwecke der allgemeinen Wiederverwendung ist nicht erlaubt.
+`napi_env` wird verwendet, um einen Kontext darzustellen, den die zugrunde liegende N-API-Implementierung verwenden kann, um den VM-spezifischen Zustand zu erhalten. Diese Struktur wird an native Funktionen übertragen, wenn sie aufgerufen werden und sie muss bei N-API-Anfragen rückübertragen werden. Insbesondere müssen die gleichen `napi_env`, die beim Aufruf der ursprünglichen nativen Funktion übergeben wurden, an alle nachfolgenden geschachtelten N-API-Anfragen übergeben werden. Das Zwischenspeichern der `napi_env`-Datei zum Zwecke der allgemeinen Wiederverwendung ist nicht erlaubt.
 
 ### napi_value
 
-Dies ist ein undurchsichtiger Zeiger, der verwendet wird, um einen JavaScript-Wert darzustellen.
+Dies ist ein undurchsichtiger Verweis, der verwendet wird, um einen JavaScript-Wert darzustellen.
 
 ### N-API Memory Management types
 
