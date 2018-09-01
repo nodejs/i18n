@@ -621,37 +621,37 @@ A `Promise` that was callbackified via `util.callbackify()` was rejected with a 
 
 ### ERR_FS_FILE_TOO_LARGE
 
-An attempt has been made to read a file whose size is larger than the maximum allowed size for a `Buffer`.
+Se intentó leer un archivo cuyo tamaño era mayor que el tamaño máximo permitido para un `Buffer`.
 
 <a id="ERR_FS_INVALID_SYMLINK_TYPE"></a>
 
 ### ERR_FS_INVALID_SYMLINK_TYPE
 
-An invalid symlink type was passed to the [`fs.symlink()`][] or [`fs.symlinkSync()`][] methods.
+Se pasó un tipo de symlink inválido a los métodos [`fs.symlink()`][] o [`fs.symlinkSync()`][].
 
 <a id="ERR_HTTP_HEADERS_SENT"></a>
 
 ### ERR_HTTP_HEADERS_SENT
 
-An attempt was made to add more headers after the headers had already been sent.
+Se intentó añadir más encabezados después de que los encabezados ya fueron enviados.
 
 <a id="ERR_HTTP_INVALID_HEADER_VALUE"></a>
 
 ### ERR_HTTP_INVALID_HEADER_VALUE
 
-An invalid HTTP header value was specified.
+Se especifico un valor de encabezado HTTP inválido.
 
 <a id="ERR_HTTP_INVALID_STATUS_CODE"></a>
 
 ### ERR_HTTP_INVALID_STATUS_CODE
 
-Status code was outside the regular status code range (100-999).
+El código de estado estaba fuera del rango de código de estado regular (100-999).
 
 <a id="ERR_HTTP_TRAILER_INVALID"></a>
 
 ### ERR_HTTP_TRAILER_INVALID
 
-The `Trailer` header was set even though the transfer encoding does not support that.
+El encabezado `Trailer` fue establecido incluso a pesar de que la codificación de transferencia no soporta eso.
 
 <a id="ERR_HTTP2_ALTSVC_INVALID_ORIGIN"></a>
 
@@ -669,31 +669,31 @@ HTTP/2 ALTSVC frames are limited to a maximum of 16,382 payload bytes.
 
 ### ERR_HTTP2_CONNECT_AUTHORITY
 
-For HTTP/2 requests using the `CONNECT` method, the `:authority` pseudo-header is required.
+Para las solicitudes HTTP/2 que utilizan el método `CONNECT`, el pseudo encabezado `:authority` es requerido.
 
 <a id="ERR_HTTP2_CONNECT_PATH"></a>
 
 ### ERR_HTTP2_CONNECT_PATH
 
-For HTTP/2 requests using the `CONNECT` method, the `:path` pseudo-header is forbidden.
+Para las solicitudes HTTP/2 que utilizan el método `CONNECT`, el pseudo encabezado `:path` está prohibido.
 
 <a id="ERR_HTTP2_CONNECT_SCHEME"></a>
 
 ### ERR_HTTP2_CONNECT_SCHEME
 
-For HTTP/2 requests using the `CONNECT` method, the `:scheme` pseudo-header is forbidden.
+Para las solicitudes HTTP/2 que utilizan el método `CONNECT`, el pseudo encabezado `:scheme` está prohibido.
 
 <a id="ERR_HTTP2_GOAWAY_SESSION"></a>
 
 ### ERR_HTTP2_GOAWAY_SESSION
 
-New HTTP/2 Streams may not be opened after the `Http2Session` has received a `GOAWAY` frame from the connected peer.
+Los nuevos Streams HTTP/2 pueden no estar abiertos luego de que `Http2Session` haya recibido un frame `GOAWAY` del peer conectado.
 
 <a id="ERR_HTTP2_HEADER_SINGLE_VALUE"></a>
 
 ### ERR_HTTP2_HEADER_SINGLE_VALUE
 
-Multiple values were provided for an HTTP/2 header field that was required to have only a single value.
+Se proporcionaron múltiples valores para un campo de encabezado HTTP/2 que requería tener sólo un valor simple.
 
 <a id="ERR_HTTP2_HEADERS_AFTER_RESPOND"></a>
 
@@ -705,25 +705,25 @@ An additional headers was specified after an HTTP/2 response was initiated.
 
 ### ERR_HTTP2_HEADERS_SENT
 
-An attempt was made to send multiple response headers.
+Se intentó enviar múltiples encabezados de respuesta.
 
 <a id="ERR_HTTP2_INFO_STATUS_NOT_ALLOWED"></a>
 
 ### ERR_HTTP2_INFO_STATUS_NOT_ALLOWED
 
-Informational HTTP status codes (`1xx`) may not be set as the response status code on HTTP/2 responses.
+Los códigos de estado HTTP informativos (`1xx`) puede no estar establecidos como el código de estado de respuesta en respuestas de HTTP/2.
 
 <a id="ERR_HTTP2_INVALID_CONNECTION_HEADERS"></a>
 
 ### ERR_HTTP2_INVALID_CONNECTION_HEADERS
 
-HTTP/1 connection specific headers are forbidden to be used in HTTP/2 requests and responses.
+Los encabezados específicos de conexión HTTP/1 están prohibidos de ser usados en solicitudes y respuestas de HTTP/2.
 
 <a id="ERR_HTTP2_INVALID_HEADER_VALUE"></a>
 
 ### ERR_HTTP2_INVALID_HEADER_VALUE
 
-An invalid HTTP/2 header value was specified.
+Se especificó un valor de encabezado HTTP/2 inválido.
 
 <a id="ERR_HTTP2_INVALID_INFO_STATUS"></a>
 
