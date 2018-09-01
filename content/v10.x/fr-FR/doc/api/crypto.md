@@ -1141,11 +1141,11 @@ Vérifie les données fournies en utilisant `object` et `signature`. L'argument 
 
 - `saltLength`: {integer} - longueur du salage quand le remplissage est `RSA_PKCS1_PSS_PADDING`. La valeur spéciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` définit la longueur du salage égale à celle de l'empreinte, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (par défaut) la détermine automatiquement.
 
-The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+L'argument `signature` est la signature précédemment calculée pour les données, au format `signatureFormat` qui peut être `'latin1'`, `'hex'` ou `'base64'`. Si `signatureFormat` est fourni, `signature` doit être une chaîne ; sinon `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+L'objet `verify` ne peut pas être à nouveau utilisé une fois la méthode `verify.verify()` appelée. Plusieurs appels à `verify.verify()` génèreront une erreur.
 
-## `crypto` module methods and properties
+## Méthodes et propriétés du module `crypto`
 
 ### crypto.constants
 
@@ -1153,7 +1153,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Renvoie : {Object} Un objet contenant les constants couramment utilisées pour la cryptographie et les opérations de sécurité liées. Les constantes spécifiques actuellement définies sont décrites dans [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
