@@ -457,43 +457,43 @@ El tipo de una fuente asincrónica era inválido. Note that users are also able 
 
 ### ERR_BUFFER_OUT_OF_BOUNDS
 
-An operation outside the bounds of a `Buffer` was attempted.
+Se intentó una operación afuera de los límites de un `Buffer`.
 
 <a id="ERR_BUFFER_TOO_LARGE"></a>
 
 ### ERR_BUFFER_TOO_LARGE
 
-An attempt has been made to create a `Buffer` larger than the maximum allowed size.
+Se intentó crear un `Buffer` más grande que el tamaño máximo permitido.
 
 <a id="ERR_CANNOT_WATCH_SIGINT"></a>
 
 ### ERR_CANNOT_WATCH_SIGINT
 
-Node.js was unable to watch for the `SIGINT` signal.
+Node.js no pudo ver la señal `SIGINT`.
 
 <a id="ERR_CHILD_CLOSED_BEFORE_REPLY"></a>
 
 ### ERR_CHILD_CLOSED_BEFORE_REPLY
 
-A child process was closed before the parent received a reply.
+Se cerró un proceso secundario antes de que el proceso primario recibiese una respuesta.
 
 <a id="ERR_CHILD_PROCESS_IPC_REQUIRED"></a>
 
 ### ERR_CHILD_PROCESS_IPC_REQUIRED
 
-Used when a child process is being forked without specifying an IPC channel.
+Utilizado cuando se bifurca un proceso secundario sin especificar un canal IPC.
 
 <a id="ERR_CHILD_PROCESS_STDIO_MAXBUFFER"></a>
 
 ### ERR_CHILD_PROCESS_STDIO_MAXBUFFER
 
-Used when the main process is trying to read data from the child process's STDERR / STDOUT, and the data's length is longer than the `maxBuffer` option.
+Utilizado cuando el proceso principal está intentando leer datos de los STDERR / STDOUT del proceso secundario y cuando el tamaño de los datos es mayor que la opción `maxBuffer`.
 
 <a id="ERR_CONSOLE_WRITABLE_STREAM"></a>
 
 ### ERR_CONSOLE_WRITABLE_STREAM
 
-`Console` was instantiated without `stdout` stream, or `Console` has a non-writable `stdout` or `stderr` stream.
+La `Console` fue iniciada sin el stream `stdout` o la `Console` tiene un stream `stdout` o `stderr` no escribible.
 
 <a id="ERR_CPU_USAGE"></a>
 
@@ -523,7 +523,7 @@ An invalid value for the `key` argument has been passed to the `crypto.ECDH()` c
 
 ### ERR_CRYPTO_ENGINE_UNKNOWN
 
-An invalid crypto engine identifier was passed to [`require('crypto').setEngine()`][].
+Se pasó un identificador de motor criptográfico inválido a [`require('crypto').setEngine()`][].
 
 <a id="ERR_CRYPTO_FIPS_FORCED"></a>
 
