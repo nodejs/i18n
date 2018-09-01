@@ -1162,13 +1162,13 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+L'encodage par défaut à utiliser pour les fonctions qui peuvent accepter des chaînes ou des [buffers][`Buffer`]. La valeur par défaut est `'buffer'`, qui donne par défaut aux méthodes des objets [`Buffer`][].
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+Le mécanisme `crypto.DEFAULT_ENCODING` est fourni pour rétro-compatibilité avec des programmes obsolètes qui attendent `'latin1'` comme encodage par défaut.
 
-New applications should expect the default to be `'buffer'`.
+Les nouvelles applications devraient attendre `'buffer'` comme encodage par défaut.
 
-This property is deprecated.
+Cette propriété est dépréciée.
 
 ### crypto.fips
 
@@ -1179,7 +1179,7 @@ deprecated: v10.0.0
 
 Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
 
-This property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Cette propriété est dépréciée. Please use `crypto.setFips()` and `crypto.getFips()` instead.
 
 ### crypto.createCipher(algorithm, password[, options])
 
