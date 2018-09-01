@@ -405,15 +405,15 @@ Esta lista **no es exhaustiva**, pero enumera muchos de los errores de sistema e
 
 - `EISDIR` (Es un directorio): Una operación esperaba un archivo, pero el nombre de la ruta dada era un directorio.
 
-- `EMFILE` (Too many open files in system): Maximum number of [file descriptors](https://en.wikipedia.org/wiki/File_descriptor) allowable on the system has been reached, and requests for another descriptor cannot be fulfilled until at least one has been closed. This is encountered when opening many files at once in parallel, especially on systems (in particular, macOS) where there is a low file descriptor limit for processes. To remedy a low limit, run `ulimit -n 2048` in the same shell that will run the Node.js process.
+- `EMFILE` (Muchos archivos abiertos en el sistema): El número máximo de [descriptores de archivos](https://en.wikipedia.org/wiki/File_descriptor) permitidos en el sistema ha sido alcanzado y las solicitudes para otro descriptor no pueden cumplirse hasta que al menos uno haya sido cerrado. Esto ocurre al abrir muchos archivos a la vez en paralelo, especialmente en sistemas (macOS en particular) donde hay un límite de descriptor de archivos bajo para procesos. Para remediar un límite bajo, ejecute `ulimit -n 2048` en el mismo shell que ejecutara el proceso Node.js.
 
-- `ENOENT` (No such file or directory): Commonly raised by [`fs`][] operations to indicate that a component of the specified pathname does not exist — no entity (file or directory) could be found by the given path.
+- `ENOENT` (No existe el archivo o directorio): Comúnmente levantado por operaciones [`fs`][] para indicar que un componente del nombre de ruta especificado no existe — no se pudo encontrar ninguna entidad (archivo o directorio) con la ruta dada.
 
-- `ENOTDIR` (Not a directory): A component of the given pathname existed, but was not a directory as expected. Commonly raised by [`fs.readdir`][].
+- `ENOTDIR` (No es un directorio): Un componente del nombre de ruta dado existe, pero no era un directorio, como se esperaba. Comúnmente levantado por [`fs.readdir`][].
 
-- `ENOTEMPTY` (Directory not empty): A directory with entries was the target of an operation that requires an empty directory — usually [`fs.unlink`][].
+- `ENOTEMPTY` (Directorio no vacío): Un directorio con entradas fue el objetivo de una operación que requiere un directorio vacío — usualmente [`fs.unlink`][].
 
-- `EPERM` (Operation not permitted): An attempt was made to perform an operation that requires elevated privileges.
+- `EPERM` (Operación no permitida): Se intentó realizar una operación que requiere privilegios elevados.
 
 - `EPIPE` (Broken pipe): A write on a pipe, socket, or FIFO for which there is no process to read the data. Commonly encountered at the [`net`][] and [`http`][] layers, indicative that the remote side of the stream being written to has been closed.
 
