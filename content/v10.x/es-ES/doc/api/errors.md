@@ -415,43 +415,43 @@ Esta lista **no es exhaustiva**, pero enumera muchos de los errores de sistema e
 
 - `EPERM` (Operación no permitida): Se intentó realizar una operación que requiere privilegios elevados.
 
-- `EPIPE` (Broken pipe): A write on a pipe, socket, or FIFO for which there is no process to read the data. Commonly encountered at the [`net`][] and [`http`][] layers, indicative that the remote side of the stream being written to has been closed.
+- `EPIPE` (Broken pipe): A write on a pipe, socket, or FIFO for which there is no process to read the data. Comúnmente encontrado en las capas [`net`][] y [`http`][], indicativos de que el lado remoto del stream en el que se escribe ha sido cerrado.
 
-- `ETIMEDOUT` (Operation timed out): A connect or send request failed because the connected party did not properly respond after a period of time. Usually encountered by [`http`][] or [`net`][] — often a sign that a `socket.end()` was not properly called.
+- `ETIMEDOUT` (Se agotó el tiempo de la operación): Una conexión o una solicitud enviada falló porque la parte conectada no respondió adecuadamente luego de un período de tiempo. Usualmente encontrado por [`http`][] o [`net`][] — a menudo, una señal de que `socket.end()` no fue llamado adecuadamente.
 
 <a id="nodejs-error-codes"></a>
 
-## Node.js Error Codes
+## Códigos de Error de Node.js
 
 <a id="ERR_AMBIGUOUS_ARGUMENT"></a>
 
 ### ERR_AMBIGUOUS_ARGUMENT
 
-This is triggered by the `assert` module in case e.g., `assert.throws(fn, message)` is used in a way that the message is the thrown error message. This is ambiguous because the message is not verifying the error message and will only be thrown in case no error is thrown.
+Esto es accionado por el módulo `assert` en caso de que, por ejemplo, `assert.throws(fn, message)` sea usado de una manera en que el mensaje es el mensaje de error arrojado. Esto es ambiguo porque el mensaje no verifica el mensaje de error y sólo será arrojado en caso de que no se arroje ningún error.
 
 <a id="ERR_ARG_NOT_ITERABLE"></a>
 
 ### ERR_ARG_NOT_ITERABLE
 
-An iterable argument (i.e. a value that works with `for...of` loops) was required, but not provided to a Node.js API.
+Un argumento iterable (es decir, un valor que funciona con loops `for...of`) era requerido, pero no fue proporcionado a un API de Node.js.
 
 <a id="ERR_ASSERTION"></a>
 
 ### ERR_ASSERTION
 
-A special type of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
+Un tipo especial de error que puede desencadenarse cada vez que Node.js detecte una violación lógica excepcional que nunca debería ocurrir. Estos son típicamente levantados por el módulo `assert`.
 
 <a id="ERR_ASYNC_CALLBACK"></a>
 
 ### ERR_ASYNC_CALLBACK
 
-An attempt was made to register something that is not a function as an `AsyncHooks` callback.
+Se intentó registrar algo que no es una función como un callback `AsyncHooks`.
 
 <a id="ERR_ASYNC_TYPE"></a>
 
 ### ERR_ASYNC_TYPE
 
-The type of an asynchronous resource was invalid. Note that users are also able to define their own types if using the public embedder API.
+El tipo de una fuente asincrónica era inválido. Note that users are also able to define their own types if using the public embedder API.
 
 <a id="ERR_BUFFER_OUT_OF_BOUNDS"></a>
 
