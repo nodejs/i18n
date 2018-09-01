@@ -729,19 +729,19 @@ Se especificó un valor de encabezado HTTP/2 inválido.
 
 ### ERR_HTTP2_INVALID_INFO_STATUS
 
-An invalid HTTP informational status code has been specified. Informational status codes must be an integer between `100` and `199` (inclusive).
+Se especificó un código de estado informativo de HTTP inválido. Códigos de estado informativos deben ser un número entero entre `100` y `199` (ambos incluidos).
 
 <a id="ERR_HTTP2_INVALID_PACKED_SETTINGS_LENGTH"></a>
 
 ### ERR_HTTP2_INVALID_PACKED_SETTINGS_LENGTH
 
-Input `Buffer` and `Uint8Array` instances passed to the `http2.getUnpackedSettings()` API must have a length that is a multiple of six.
+Las instancias de entrada `Buffer` y `Uint8Array` pasadas a la API `http2.getUnpackedSettings()` deben tener un tamaño que sea múltiplo de seis.
 
 <a id="ERR_HTTP2_INVALID_PSEUDOHEADER"></a>
 
 ### ERR_HTTP2_INVALID_PSEUDOHEADER
 
-Only valid HTTP/2 pseudoheaders (`:status`, `:path`, `:authority`, `:scheme`, and `:method`) may be used.
+Sólo pueden ser usados los pseudo encabezados de HTTP/2 (`:status`, `:path`, `:authority`, `:scheme` y `:method`).
 
 <a id="ERR_HTTP2_INVALID_SESSION"></a>
 
