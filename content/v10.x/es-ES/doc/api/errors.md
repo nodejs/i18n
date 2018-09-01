@@ -529,31 +529,31 @@ Se pasó un identificador de motor criptográfico inválido a [`require('crypto'
 
 ### ERR_CRYPTO_FIPS_FORCED
 
-The [`--force-fips`][] command-line argument was used but there was an attempt to enable or disable FIPS mode in the `crypto` module.
+El argumento de línea de comando [`--force-fips`][] fue utilizado, pero hubo un intento para habilitar o inhabilitar el modo FIPS en el módulo `crypto`.
 
 <a id="ERR_CRYPTO_FIPS_UNAVAILABLE"></a>
 
 ### ERR_CRYPTO_FIPS_UNAVAILABLE
 
-An attempt was made to enable or disable FIPS mode, but FIPS mode was not available.
+Se intentó habilitar o inhabilitar el modo FIPS, pero el modo FIPS no estaba disponible.
 
 <a id="ERR_CRYPTO_HASH_DIGEST_NO_UTF16"></a>
 
 ### ERR_CRYPTO_HASH_DIGEST_NO_UTF16
 
-The UTF-16 encoding was used with [`hash.digest()`][]. While the `hash.digest()` method does allow an `encoding` argument to be passed in, causing the method to return a string rather than a `Buffer`, the UTF-16 encoding (e.g. `ucs` or `utf16le`) is not supported.
+La codificación UTF-16 fue usada con [`hash.digest()`][]. Mientras que el método `hash.digest()` permite que se pase un argumento `encoding`, causando que el método devuelva una string en lugar de un `Buffer`, la codificación UTF-16 (por ejemplo, `ucs` o `utf16le`) no es soportada.
 
 <a id="ERR_CRYPTO_HASH_FINALIZED"></a>
 
 ### ERR_CRYPTO_HASH_FINALIZED
 
-[`hash.digest()`][] was called multiple times. The `hash.digest()` method must be called no more than one time per instance of a `Hash` object.
+[`hash.digest()`][] fue llamado múltiples veces. El método `hash.digest()` debe ser llamado no más de una vez por instancia de un objeto `Hash`.
 
 <a id="ERR_CRYPTO_HASH_UPDATE_FAILED"></a>
 
 ### ERR_CRYPTO_HASH_UPDATE_FAILED
 
-[`hash.update()`][] failed for any reason. This should rarely, if ever, happen.
+[`hash.update()`][] falló por alguna razón. This should rarely, if ever, happen.
 
 <a id="ERR_CRYPTO_INVALID_DIGEST"></a>
 
@@ -565,7 +565,7 @@ An invalid [crypto digest algorithm](crypto.html#crypto_crypto_gethashes) was sp
 
 ### ERR_CRYPTO_INVALID_STATE
 
-A crypto method was used on an object that was in an invalid state. For instance, calling [`cipher.getAuthTag()`][] before calling `cipher.final()`.
+A crypto method was used on an object that was in an invalid state. Por ejemplo, el llamar a [`cipher.getAuthTag()`][] antes de llamar a `cipher.final()`.
 
 <a id="ERR_CRYPTO_SIGN_KEY_REQUIRED"></a>
 
@@ -577,13 +577,13 @@ A signing `key` was not provided to the [`sign.sign()`][] method.
 
 ### ERR_CRYPTO_TIMING_SAFE_EQUAL_LENGTH
 
-[`crypto.timingSafeEqual()`][] was called with `Buffer`, `TypedArray`, or `DataView` arguments of different lengths.
+[`crypto.timingSafeEqual()`][] fue llamado con argumentos `Buffer`, `TypedArray` o `DataView` de diferentes tamaños.
 
 <a id="ERR_DNS_SET_SERVERS_FAILED"></a>
 
 ### ERR_DNS_SET_SERVERS_FAILED
 
-`c-ares` failed to set the DNS server.
+`c-ares` falló al establecer el servidor DNS.
 
 <a id="ERR_DOMAIN_CALLBACK_NOT_AVAILABLE"></a>
 
@@ -595,21 +595,21 @@ The `domain` module was not usable since it could not establish the required err
 
 ### ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE
 
-[`process.setUncaughtExceptionCaptureCallback()`][] could not be called because the `domain` module has been loaded at an earlier point in time.
+[`process.setUncaughtExceptionCaptureCallback()`][] no pudo ser llamado porque el módulo `domain` ha sido cargado en un punto anterior en el tiempo.
 
-The stack trace is extended to include the point in time at which the `domain` module had been loaded.
+El stack trace es extendido para incluir el punto en el tiempo en el cual el módulo `domain` haya sido cargado.
 
 <a id="ERR_ENCODING_INVALID_ENCODED_DATA"></a>
 
 ### ERR_ENCODING_INVALID_ENCODED_DATA
 
-Data provided to `util.TextDecoder()` API was invalid according to the encoding provided.
+Los datos proporcionados a la API `util.TextDecoder()` eran inválidos, de acuerdo a la codificación proporcionada.
 
 <a id="ERR_ENCODING_NOT_SUPPORTED"></a>
 
 ### ERR_ENCODING_NOT_SUPPORTED
 
-Encoding provided to `util.TextDecoder()` API was not one of the [WHATWG Supported Encodings](util.html#util_whatwg_supported_encodings).
+La codificación proporcionada a la API `util.TextDecoder()` no era una de las [Codificaciones Soportadas por WHATWG](util.html#util_whatwg_supported_encodings).
 
 <a id="ERR_FALSY_VALUE_REJECTION"></a>
 
