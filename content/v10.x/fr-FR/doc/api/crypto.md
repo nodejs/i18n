@@ -1168,7 +1168,7 @@ Le mécanisme `crypto.DEFAULT_ENCODING` est fourni pour rétro-compatibilité av
 
 Les nouvelles applications devraient attendre `'buffer'` comme encodage par défaut.
 
-Cette propriété est dépréciée.
+Cette propriété est obsolète.
 
 ### crypto.fips
 
@@ -1177,9 +1177,9 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Propriété pour vérifier et contrôler si un fournisseur crypto conforme à FIPS est actuellement utilisé. Définir à true requiert une version FIPS de Node.js.
 
-Cette propriété est dépréciée. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Cette propriété est obsolète. Utilisez `crypto.setFips()` et `crypto.getFips()` à la place.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1188,12 +1188,12 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
+> Stabilité : 0 - obsolète : utilisez [`crypto.createCipheriv()`][] à la place.
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Renvoie : {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
 
@@ -1223,7 +1223,7 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Renvoie : {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
