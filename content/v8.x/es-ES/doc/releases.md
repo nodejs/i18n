@@ -10,9 +10,9 @@ La autorización del lanzamiento es otorgada por el CDT de Node.js. Una vez auto
 
 Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liberado:
 
-**a.** **Pruebas:** **[nodo-de-prueba-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** es usado para una prueba final completa que asegura que la *CABEZA* actual es estable.
+**a.** **Pruebas:** **[nodo-de-prueba-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** es usado para una prueba final completa que asegura que el *ENCABEZADO* actual es estable.
 
-**b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)**puede ser usado para crear una versión nocturna de la actual *CABEZA* si se requiere un lanzamiento de prueba pública. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y están disponibles para su descarga pública.
+**b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)**puede ser usado para crear una versión nocturna del actual *ENCABEZADO* si se requiere un lanzamiento de prueba pública. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y están disponibles para su descarga pública.
 
 **c.** **Release builds:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** does all of the work to build all required release assets. Promotion of the release files is a manual step once they are ready (see below).
 
