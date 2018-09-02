@@ -837,31 +837,31 @@ Se intentó conectar un objeto `Http2Session` a un `net.Socket` o `tls.TLSSocket
 
 ### ERR_HTTP2_STATUS_101
 
-Use of the `101` Informational status code is forbidden in HTTP/2.
+El uso del código de estado Informativo `101` está prohibido en HTTP/2.
 
 <a id="ERR_HTTP2_STATUS_INVALID"></a>
 
 ### ERR_HTTP2_STATUS_INVALID
 
-An invalid HTTP status code has been specified. Status codes must be an integer between `100` and `599` (inclusive).
+Se especificó un código de estado HTTP inválido. Los códigos de estado deben ser un número entero entre `100` y `599` (ambos incluidos).
 
 <a id="ERR_HTTP2_STREAM_CANCEL"></a>
 
 ### ERR_HTTP2_STREAM_CANCEL
 
-An `Http2Stream` was destroyed before any data was transmitted to the connected peer.
+Se destruyó un `Http2Stream` antes de que se transmitiera cualquier dato al peer conectado.
 
 <a id="ERR_HTTP2_STREAM_ERROR"></a>
 
 ### ERR_HTTP2_STREAM_ERROR
 
-A non-zero error code was been specified in an `RST_STREAM` frame.
+Se especificó un código de error distinto de cero en un frame `RST_STREAM`.
 
 <a id="ERR_HTTP2_STREAM_SELF_DEPENDENCY"></a>
 
 ### ERR_HTTP2_STREAM_SELF_DEPENDENCY
 
-When setting the priority for an HTTP/2 stream, the stream may be marked as a dependency for a parent stream. This error code is used when an attempt is made to mark a stream and dependent of itself.
+Al configurar la prioridad a un stream HTTP/2, el stream puede ser marcado como una dependencia para un stream primario. Este código de error es utilizado cuando se intenta marcar un stream y depende de él.
 
 <a id="ERR_HTTP2_TRAILERS_ALREADY_SENT"></a>
 
@@ -873,19 +873,19 @@ Trailing headers have already been sent on the `Http2Stream`.
 
 ### ERR_HTTP2_TRAILERS_NOT_READY
 
-The `http2stream.sendTrailers()` method cannot be called until after the `'wantTrailers'` event is emitted on an `Http2Stream` object. The `'wantTrailers'` event will only be emitted if the `waitForTrailers` option is set for the `Http2Stream`.
+El método `http2stream.sendTrailers()` no puede ser llamado hasta después de emitido el evento `'wantTrailers'` en un objeto `Http2Stream`. El evento `'wantTrailers'` sólo será emitido si la opción `waitForTrailers` es establecida para el `Http2Stream`.
 
 <a id="ERR_HTTP2_UNSUPPORTED_PROTOCOL"></a>
 
 ### ERR_HTTP2_UNSUPPORTED_PROTOCOL
 
-`http2.connect()` was passed a URL that uses any protocol other than `http:` or `https:`.
+Se le pasó una URL a `http2.connect()` que utiliza cualquier protocolo distinto de `http:` o `https:`.
 
 <a id="ERR_INDEX_OUT_OF_RANGE"></a>
 
 ### ERR_INDEX_OUT_OF_RANGE
 
-A given index was out of the accepted range (e.g. negative offsets).
+Un índice dado estaba afuera del rango aceptado (p. ej, offsets negativos).
 
 <a id="ERR_INSPECTOR_ALREADY_CONNECTED"></a>
 
@@ -903,13 +903,13 @@ While using the `inspector` module, an attempt was made to use the inspector aft
 
 ### ERR_INSPECTOR_NOT_AVAILABLE
 
-The `inspector` module is not available for use.
+No está disponible el uso del módulo `inspector`.
 
 <a id="ERR_INSPECTOR_NOT_CONNECTED"></a>
 
 ### ERR_INSPECTOR_NOT_CONNECTED
 
-While using the `inspector` module, an attempt was made to use the inspector before it was connected.
+Mientras se utilizaba el módulo `inspector`, se intentó utilizar el inspector antes de que se conectara.
 
 <a id="ERR_INVALID_ADDRESS_FAMILY"></a>
 
@@ -921,13 +921,13 @@ The provided address family is not understood by the Node.js API.
 
 ### ERR_INVALID_ARG_TYPE
 
-An argument of the wrong type was passed to a Node.js API.
+Se pasó un argumento de tipo erróneo a un API Node.js.
 
 <a id="ERR_INVALID_ARG_VALUE"></a>
 
 ### ERR_INVALID_ARG_VALUE
 
-An invalid or unsupported value was passed for a given argument.
+Se pasó un valor inválido o no soportado por un argumento dado.
 
 <a id="ERR_INVALID_ARRAY_LENGTH"></a>
 
@@ -939,7 +939,7 @@ An array was not of the expected length or in a valid range.
 
 ### ERR_INVALID_ASYNC_ID
 
-An invalid `asyncId` or `triggerAsyncId` was passed using `AsyncHooks`. An id less than -1 should never happen.
+Se pasó un `asyncId` o `triggerAsyncId` inválido usando `AsyncHooks`. An id less than -1 should never happen.
 
 <a id="ERR_INVALID_BUFFER_SIZE"></a>
 
