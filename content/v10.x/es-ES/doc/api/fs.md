@@ -2136,7 +2136,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Devuelve: {string[]} una matriz de nombres de archivo excepto `'.'` y `'..'`.
+* Devuelve: {string[]} una matriz de nombres de archivo que excluye a `'.'` y `'..'`.
 
 readdir(3) sincrónico.
 
@@ -2892,9 +2892,9 @@ Esta función depende del sistema operativo subyacente, proporcionando una maner
 * En el sistema de Windows, esta función depende de [`ReadDirectoryChangesW`].
 * En sistemas Aix, esta función depende de [`AHAFS`], la cual debe ser habilitada.
 
-Si la funcionalidad subyacente no está disponible por algún motivo, entonces `fs.watch` no podrá funcionar. Por ejemplo, observar archivos o directorios puede no ser seguro, y en algunos casos imposible, en sistemas de archivos de red (NFS, SMB, etc), o sistemas de alojamiento de archivos cuando se utiliza un software de virtualización, tales como Vagrant, Docker, etc.
+Si la funcionalidad subyacente no está disponible por algún motivo, entonces `fs.watch` no podrá funcionar. Por ejemplo, observar archivos o directorios puede no ser seguro, y en algunos casos imposible, en sistemas de archivos de red (NFS, SMB, etc), o sistemas de alojamiento de archivos cuando se utilizan softwares de virtualización tales como Vagrant, Docker, etc.
 
-Aún es posible utilizar `fs.watchFile()`, el cual utiliza el estudio de estadísticas, pero este método es más lento y menos seguro.
+Aún es posible utilizar `fs.watchFile()`, el cual utiliza el polling de estadísticas, pero este método es más lento y menos seguro.
 
 #### Inodes
 
