@@ -10,28 +10,28 @@ Questo documento è una descrizione delle cose che vengono dette ai nuovi Collab
 
 ## Quindici minuti prima della sessione di onboarding
 
-* Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators).
-* Ask them if they want to join any subsystem teams. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Prima della sessione di onboarding, aggiungere il nuovo Collaboratore al [team dei Collaboratori](https://github.com/orgs/nodejs/teams/collaborators).
+* Chiedere ai nuovi collaboratori se vogliono unirsi a qualsiasi team del sottosistema. Vedi [Chi per CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
-## Onboarding session
+## Sessione di Onboarding
 
-* This session will cover: 
-  * [local setup](#local-setup)
-  * [project goals & values](#project-goals--values)
-  * [managing the issue tracker](#managing-the-issue-tracker)
-  * [reviewing PRs](#reviewing-prs)
-  * [landing PRs](#landing-prs)
+* Questa sessione coprirà: 
+  * [la configurazione locale](#local-setup)
+  * [gli obiettivi & valori del progetto](#project-goals--values)
+  * [la gestione dell'issue tracker](#managing-the-issue-tracker)
+  * [la revisione delle PR](#reviewing-prs)
+  * [la conferma delle PR](#landing-prs)
 
-## Local setup
+## La configurazione locale
 
 * git:
   
-  * Make sure you have whitespace=fix: `git config --global --add
+  * Assicurati di avere whitespace=fix: `git config --global --add
 apply.whitespace fix`
-  * Always continue to PR from your own GitHub fork 
-    * Branches in the `nodejs/node` repository are only for release lines
-  * See [Updating Node.js from Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
-  * Make a new branch for each PR you submit.
+  * Continua sempre la PR dal tuo GitHub fork 
+    * I branch nel repository `nodejs/node` sono solo per le righe di rilascio
+  * Vedi [Aggiornamento di Node.js dall'Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
+  * Crea un nuovo branch per ogni PR che invii.
   * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
 * Notifications:
