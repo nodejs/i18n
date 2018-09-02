@@ -499,7 +499,7 @@ La `Console` fue instanciada sin el stream `stdout` o la `Console` tiene un stre
 
 ### ERR_CPU_USAGE
 
-The native call from `process.cpuUsage` could not be processed.
+La llamada nativa de `process.cpuUsage` no pudo ser procesada.
 
 <a id="ERR_CRYPTO_CUSTOM_ENGINE_NOT_SUPPORTED"></a>
 
@@ -565,7 +565,7 @@ An invalid [crypto digest algorithm](crypto.html#crypto_crypto_gethashes) was sp
 
 ### ERR_CRYPTO_INVALID_STATE
 
-A crypto method was used on an object that was in an invalid state. Por ejemplo, el llamar a [`cipher.getAuthTag()`][] antes de llamar a `cipher.final()`.
+Se utilizó un método criptográfico en un objeto que estaba en un estado inválido. Por ejemplo, el llamar a [`cipher.getAuthTag()`][] antes de llamar a `cipher.final()`.
 
 <a id="ERR_CRYPTO_SIGN_KEY_REQUIRED"></a>
 
@@ -747,19 +747,19 @@ Sólo pueden ser usados los pseudo encabezados de HTTP/2 (`:status`, `:path`, `:
 
 ### ERR_HTTP2_INVALID_SESSION
 
-An action was performed on an `Http2Session` object that had already been destroyed.
+Se realizó una acción en un objeto `Http2Session` que ya se había destruido.
 
 <a id="ERR_HTTP2_INVALID_SETTING_VALUE"></a>
 
 ### ERR_HTTP2_INVALID_SETTING_VALUE
 
-An invalid value has been specified for an HTTP/2 setting.
+Se ha especificado un valor inválido para una configuración de HTTP/2.
 
 <a id="ERR_HTTP2_INVALID_STREAM"></a>
 
 ### ERR_HTTP2_INVALID_STREAM
 
-An operation was performed on a stream that had already been destroyed.
+Se realizó una operación en un stream que ya había sido destruido.
 
 <a id="ERR_HTTP2_MAX_PENDING_SETTINGS_ACK"></a>
 
