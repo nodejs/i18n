@@ -17,7 +17,7 @@ Questo documento è una descrizione delle cose che vengono dette ai nuovi Collab
 
 * Questa sessione coprirà: 
   * [la configurazione locale](#local-setup)
-  * [gli obiettivi & valori del progetto](#project-goals--values)
+  * [gli obiettivi & i valori del progetto](#project-goals--values)
   * [la gestione dell'issue tracker](#managing-the-issue-tracker)
   * [la revisione delle PR](#reviewing-prs)
   * [la conferma delle PR](#landing-prs)
@@ -41,19 +41,19 @@ apply.whitespace fix`
 
 * `#node-dev` su [webchat.freenode.net](https://webchat.freenode.net/) è il posto migliore per interagire con il TSC / gli altri Collaboratori
   
-  * If there are any questions after the session, a good place to ask is there!
-  * Presence is not mandatory, but please drop a note there if force-pushing to `master`
+  * Se dopo la sessione ci sono delle domande, questo è il luogo adatto per farle!
+  * La presenza non è obbligatoria, ma si prega di lasciare una nota se la si vuole far arrivare a `master`
 
-## Project goals & values
+## Gli obiettivi & i valori del progetto
 
-* Collaborators are the collective owners of the project
+* I Collaboratori sono i proprietari collettivi del progetto
   
-  * The project has the goals of its contributors
+  * Il progetto ha gli obiettivi dei suoi contributor
 
-* There are some higher-level goals and values
+* Ci sono alcuni obiettivi e valori di livello superiore
   
-  * Empathy towards users matters (this is in part why we onboard people)
-  * Generally: try to be nice to people!
+  * L'empatia nei confronti degli utenti è importante (questo è in parte il motivo per cui permettiamo l'onboarding di nuove persone)
+  * In generale: cerca di essere gentile con le persone!
   * The best outcome is for people who come to our issue tracker to feel like they can come back again.
 
 * You are expected to follow *and* hold others accountable to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
