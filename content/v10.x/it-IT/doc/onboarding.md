@@ -4,11 +4,11 @@ Questo documento è una descrizione delle cose che vengono dette ai nuovi Collab
 
 ## Una settimana prima della sessione di onboarding
 
-* If the new Collaborator is not yet a member of the nodejs GitHub organization, confirm that they are using [two-factor authentication](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/). It will not be possible to add them to the organization if they are not using two-factor authentication. If they cannot receive SMS messages from GitHub, try [using a TOTP mobile app](https://help.github.com/articles/configuring-two-factor-authentication-via-a-totp-mobile-app/).
-* Announce the accepted nomination in a TSC meeting and in the TSC mailing list.
-* Suggest the new Collaborator install [`node-core-utils`][] and [set up the credentials](https://github.com/nodejs/node-core-utils#setting-up-credentials) for it.
+* Se il nuovo Collaboratore non è ancora membro dell'organizzazione GitHub di nodejs, confermare l'utilizzo dell'[autenticazione a due fattori](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/). Non sarà possibile aggiungere nuovi collaboratori all'organizzazione se non utilizzano l'autenticazione a due fattori. Se non riescono a ricevere messaggi SMS da GitHub, provare [l'utilizzo di un'app mobile TOTP](https://help.github.com/articles/configuring-two-factor-authentication-via-a-totp-mobile-app/).
+* Annunciare la nomination accettata in un meeting TSC e nella mailing list TSC.
+* Suggerire al nuovo Collaboratore l'installazione di [`node-core-utils`][] e [le impostazioni per le credenziali](https://github.com/nodejs/node-core-utils#setting-up-credentials) di quest'ultimo.
 
-## Fifteen minutes before the onboarding session
+## Quindici minuti prima della sessione di onboarding
 
 * Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators).
 * Ask them if they want to join any subsystem teams. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
