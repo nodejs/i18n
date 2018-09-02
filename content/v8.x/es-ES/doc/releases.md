@@ -4,11 +4,11 @@ Este documento describe los aspectos técnicos del proceso de lanzamiento de Nod
 
 ## ¿Quién puede realizar un lanzamiento?
 
-Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
+La autorización del lanzamiento es otorgada por el CDT de Node.js. Una vez autorizado, el individuo debe tener lo siguiente:
 
-### 1. Jenkins Release Access
+### 1. El acceso de lanzamiento Jenkins
 
-There are three relevant Jenkins jobs that should be used for a release flow:
+Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liberado:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
