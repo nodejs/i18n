@@ -14,11 +14,11 @@ Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liber
 
 **b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)**puede ser usado para crear una versión nocturna del actual *ENCABEZADO* si se requiere un lanzamiento de prueba pública. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y están disponibles para su descarga pública.
 
-**c.** **Compilaciones liberadas** **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** hace todo el trabajo de compilar todos los activos de lanzamiento requeridos. Promotion of the release files is a manual step once they are ready (see below).
+**c.** **Compilaciones liberadas** **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** hace todo el trabajo de compilar todos los activos de lanzamiento requeridos. La promoción de los archivos de lanzamiento es un paso manual una vez que estén listos (véase acontinuación).
 
-The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
+El [Equipo de Compilación de Node.js](https://github.com/nodejs/build) puede otorgar este acceso a personas autorizadas por el CDT.
 
-### 2. <nodejs.org> Access
+### 2. <nodejs.org> Acceso
 
 The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
