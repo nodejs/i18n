@@ -993,61 +993,61 @@ Un API Node.js que consume URLs de `file:` (como ciertas funciones en el módulo
 
 ### ERR_INVALID_FILE_URL_PATH
 
-A Node.js API that consumes `file:` URLs (such as certain functions in the [`fs`][] module) encountered a file URL with an incompatible path. The exact semantics for determining whether a path can be used is platform-dependent.
+Un API Node.js que consume URLs de `file:` (como ciertas funciones en el módulo [`fs`][]) encontró una URL de de un archivo con una ruta incompatible. La semántica exacta para determinar si se puede usar una ruta es dependiente de la plataforma.
 
 <a id="ERR_INVALID_HANDLE_TYPE"></a>
 
 ### ERR_INVALID_HANDLE_TYPE
 
-An attempt was made to send an unsupported "handle" over an IPC communication channel to a child process. See [`subprocess.send()`] and [`process.send()`] for more information.
+Se intentó enviar un "handle" no soportado sobre un canal de comunicación IPC a un proceso secundario. Vea [`subprocess.send()`] y [`process.send()`] para más información.
 
 <a id="ERR_INVALID_HTTP_TOKEN"></a>
 
 ### ERR_INVALID_HTTP_TOKEN
 
-An invalid HTTP token was supplied.
+Se proporcionó un token de HTTP inválido.
 
 <a id="ERR_INVALID_IP_ADDRESS"></a>
 
 ### ERR_INVALID_IP_ADDRESS
 
-An IP address is not valid.
+Una dirección IP no es válida.
 
 <a id="ERR_INVALID_OPT_VALUE"></a>
 
 ### ERR_INVALID_OPT_VALUE
 
-An invalid or unexpected value was passed in an options object.
+Se pasó un valor inválido o inesperado en un objeto de opciones.
 
 <a id="ERR_INVALID_OPT_VALUE_ENCODING"></a>
 
 ### ERR_INVALID_OPT_VALUE_ENCODING
 
-An invalid or unknown file encoding was passed.
+Se pasó una codificación de archivo inválida o desconocida.
 
 <a id="ERR_INVALID_PERFORMANCE_MARK"></a>
 
 ### ERR_INVALID_PERFORMANCE_MARK
 
-While using the Performance Timing API (`perf_hooks`), a performance mark is invalid.
+Al usar el API de Tiempo de Rendimiento (`perf_hooks`), una marca de rendimiento es inválida.
 
 <a id="ERR_INVALID_PROTOCOL"></a>
 
 ### ERR_INVALID_PROTOCOL
 
-An invalid `options.protocol` was passed.
+Se pasó un `options.protocol` inválido.
 
 <a id="ERR_INVALID_REPL_EVAL_CONFIG"></a>
 
 ### ERR_INVALID_REPL_EVAL_CONFIG
 
-Both `breakEvalOnSigint` and `eval` options were set in the REPL config, which is not supported.
+Las opciones `breakEvalOnSigint` y `eval` se establecieron en la configuración REPL, la cual no es soportada.
 
 <a id="ERR_INVALID_RETURN_VALUE"></a>
 
 ### ERR_INVALID_RETURN_VALUE
 
-Thrown in case a function option does not return an expected value on execution. For example when a function is expected to return a promise.
+Arrojado en caso de que una opción de función no devuelve un valor esperado en ejecución. For example when a function is expected to return a promise.
 
 <a id="ERR_INVALID_SYNC_FORK_INPUT"></a>
 
