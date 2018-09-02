@@ -54,11 +54,11 @@ apply.whitespace fix`
   
   * L'empatia nei confronti degli utenti è importante (questo è in parte il motivo per cui permettiamo l'onboarding di nuove persone)
   * In generale: cerca di essere gentile con le persone!
-  * The best outcome is for people who come to our issue tracker to feel like they can come back again.
+  * Il miglior risultato è quando le persone che vengono nel nostro issue tracker se ne vanno sentendosi tranquille di poter tornare di nuovo.
 
-* You are expected to follow *and* hold others accountable to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+* Dovresti seguire *e* ritenere gli altri responsabili verso il [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-## Managing the issue tracker
+## La gestione dell'issue tracker
 
 * You have (mostly) free rein; don't hesitate to close an issue if you are confident that it should be closed
   
