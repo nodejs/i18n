@@ -397,7 +397,7 @@ Esta lista **no es exhaustiva**, pero enumera muchos de los errores de sistema e
 
 - `EADDRINUSE` (Dirección ya en uso): Un intento de enlazar un servidor ([`net`][], [`http`][] o [`https`][]) a una dirección local falló debido a que otro servidor en el sistema local ya está ocupando esa dirección.
 
-- `ECONNREFUSED` (Conexión rechazada): No se pudo realizar ninguna conexión porque la máquina objetivo lo rechazó activamente. Estoy resulta generalmente de internet conectar a un servicio que está inactivo en el host extranjero.
+- `ECONNREFUSED` (Conexión rechazada): No se pudo realizar ninguna conexión porque la máquina objetivo lo rechazó activamente. Esto generalmente resulta de intentar la conexión a un servicio que está inactivo en el host extranjero.
 
 - `ECONNRESET` (Conexión reiniciada por el peer): Una conexión fue cerrada a la fuerza por un peer. This normally results from a loss of the connection on the remote socket due to a timeout or reboot. Comúnmente encontrado mediante los módulos [`http`][] y [`net`][].
 
@@ -405,7 +405,7 @@ Esta lista **no es exhaustiva**, pero enumera muchos de los errores de sistema e
 
 - `EISDIR` (Es un directorio): Una operación esperaba un archivo, pero el nombre de la ruta dada era un directorio.
 
-- `EMFILE` (Muchos archivos abiertos en el sistema): El número máximo de [descriptores de archivos](https://en.wikipedia.org/wiki/File_descriptor) permitidos en el sistema ha sido alcanzado y las solicitudes para otro descriptor no pueden cumplirse hasta que al menos uno haya sido cerrado. Esto ocurre al abrir muchos archivos a la vez en paralelo, especialmente en sistemas (macOS en particular) donde hay un límite de descriptor de archivos bajo para procesos. Para remediar un límite bajo, ejecute `ulimit -n 2048` en el mismo shell que ejecutara el proceso Node.js.
+- `EMFILE` (Muchos archivos abiertos en el sistema): El número máximo de [descriptores de archivos](https://en.wikipedia.org/wiki/File_descriptor) permitidos en el sistema ha sido alcanzado y las solicitudes para otro descriptor no pueden cumplirse hasta que al menos uno haya sido cerrado. Esto ocurre al abrir muchos archivos a la vez en paralelo, especialmente en sistemas (macOS en particular) donde hay un límite de descriptor de archivos bajo para procesos. Para remediar un límite bajo, ejecute `ulimit -n 2048` en el mismo shell que ejecutará el proceso Node.js.
 
 - `ENOENT` (No existe el archivo o directorio): Comúnmente levantado por operaciones [`fs`][] para indicar que un componente del nombre de ruta especificado no existe — no se pudo encontrar ninguna entidad (archivo o directorio) con la ruta dada.
 
@@ -487,13 +487,13 @@ Utilizado cuando se bifurca un proceso secundario sin especificar un canal IPC.
 
 ### ERR_CHILD_PROCESS_STDIO_MAXBUFFER
 
-Utilizado cuando el proceso principal está intentando leer datos de los STDERR / STDOUT del proceso secundario y cuando el tamaño de los datos es mayor que la opción `maxBuffer`.
+Utilizado cuando el proceso principal está intentando leer datos de los STDERR / STDOUT del proceso secundario y el tamaño de los datos es mayor que la opción `maxBuffer`.
 
 <a id="ERR_CONSOLE_WRITABLE_STREAM"></a>
 
 ### ERR_CONSOLE_WRITABLE_STREAM
 
-La `Console` fue iniciada sin el stream `stdout` o la `Console` tiene un stream `stdout` o `stderr` no escribible.
+La `Console` fue instanciada sin el stream `stdout` o la `Console` tiene un stream `stdout` o `stderr` no escribible.
 
 <a id="ERR_CPU_USAGE"></a>
 
@@ -711,7 +711,7 @@ Se intentó enviar múltiples encabezados de respuesta.
 
 ### ERR_HTTP2_INFO_STATUS_NOT_ALLOWED
 
-Los códigos de estado HTTP informativos (`1xx`) puede no estar establecidos como el código de estado de respuesta en respuestas de HTTP/2.
+Los códigos de estado HTTP informativos (`1xx`) pueden no estar establecidos como el código de estado de respuesta en respuestas de HTTP/2.
 
 <a id="ERR_HTTP2_INVALID_CONNECTION_HEADERS"></a>
 
@@ -729,7 +729,7 @@ Se especificó un valor de encabezado HTTP/2 inválido.
 
 ### ERR_HTTP2_INVALID_INFO_STATUS
 
-Se especificó un código de estado informativo de HTTP inválido. Códigos de estado informativos deben ser un número entero entre `100` y `199` (ambos incluidos).
+Se especificó un código de estado informativo de HTTP inválido. Los códigos de estado informativos deben ser un número entero entre `100` y `199` (ambos incluidos).
 
 <a id="ERR_HTTP2_INVALID_PACKED_SETTINGS_LENGTH"></a>
 
