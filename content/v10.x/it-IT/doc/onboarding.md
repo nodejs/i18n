@@ -32,14 +32,14 @@ apply.whitespace fix`
     * I branch nel repository `nodejs/node` sono solo per le righe di rilascio
   * Vedi [Aggiornamento di Node.js dall'Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
   * Crea un nuovo branch per ogni PR che invii.
-  * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
+  * Membership: Considera la possibilità di rendere pubblica la tua membership (iscrizione) all'organizzazione GitHub di Node.js. Ciò semplifica l'identificazione dei Collaboratori. Le istruzioni su come farlo sono disponibili in [Rendere pubblica o nascondere la membership all'organizzazione](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
-* Notifications:
+* Notifiche:
   
-  * Use <https://github.com/notifications> or set up email
-  * Watching the main repo will flood your inbox (several hundred notifications on typical weekdays), so be prepared
+  * Utilizza <https://github.com/notifications> oppure imposta una email
+  * Stai attento poiché la repository principale invaderà la tua email (diverse centinaia di notifiche durante una normale settimana), quindi preparati
 
-* `#node-dev` on [webchat.freenode.net](https://webchat.freenode.net/) is the best place to interact with the TSC / other Collaborators
+* `#node-dev` su [webchat.freenode.net](https://webchat.freenode.net/) è il posto migliore per interagire con il TSC / gli altri Collaboratori
   
   * If there are any questions after the session, a good place to ask is there!
   * Presence is not mandatory, but please drop a note there if force-pushing to `master`
