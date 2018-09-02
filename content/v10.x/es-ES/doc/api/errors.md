@@ -765,73 +765,73 @@ Se realizó una operación en un stream que ya había sido destruido.
 
 ### ERR_HTTP2_MAX_PENDING_SETTINGS_ACK
 
-Whenever an HTTP/2 `SETTINGS` frame is sent to a connected peer, the peer is required to send an acknowledgment that it has received and applied the new `SETTINGS`. By default, a maximum number of unacknowledged `SETTINGS` frames may be sent at any given time. This error code is used when that limit has been reached.
+Cada vez que un frame `SETTINGS` de HTTP/2 es enviado a un peer conectado, se le solicita al peer enviar una confirmación de que ha recibido y aplicado la nueva `SETTINGS`. Por defecto, el número máximo de frames `SETTINGS` sin confirmar puede ser enviado en cualquier momento. Este código error es utilizado cuando se ha alcanzado ese límite.
 
 <a id="ERR_HTTP2_NO_SOCKET_MANIPULATION"></a>
 
 ### ERR_HTTP2_NO_SOCKET_MANIPULATION
 
-An attempt was made to directly manipulate (read, write, pause, resume, etc.) a socket attached to an `Http2Session`.
+Se intentó manipular directamente (leer, escribir, pausar, resumir, etc.) un socket adjunto a un `Http2Session`.
 
 <a id="ERR_HTTP2_OUT_OF_STREAMS"></a>
 
 ### ERR_HTTP2_OUT_OF_STREAMS
 
-The number of streams created on a single HTTP/2 session reached the maximum limit.
+El número de streams creados en una sesión de HTTP/2 simple alcanzó el límite máximo.
 
 <a id="ERR_HTTP2_PAYLOAD_FORBIDDEN"></a>
 
 ### ERR_HTTP2_PAYLOAD_FORBIDDEN
 
-A message payload was specified for an HTTP response code for which a payload is forbidden.
+Una carga de mensajes fue especificada para un código de respuesta HTTP al cual se le prohibió una carga de mensajes.
 
 <a id="ERR_HTTP2_PING_CANCEL"></a>
 
 ### ERR_HTTP2_PING_CANCEL
 
-An HTTP/2 ping was canceled.
+Se canceló un ping HTTP/2.
 
 <a id="ERR_HTTP2_PING_LENGTH"></a>
 
 ### ERR_HTTP2_PING_LENGTH
 
-HTTP/2 ping payloads must be exactly 8 bytes in length.
+Las cargas de ping HTTP/2 debe ser exactamente de 8 bytes de longitud.
 
 <a id="ERR_HTTP2_PSEUDOHEADER_NOT_ALLOWED"></a>
 
 ### ERR_HTTP2_PSEUDOHEADER_NOT_ALLOWED
 
-An HTTP/2 pseudo-header has been used inappropriately. Pseudo-headers are header key names that begin with the `:` prefix.
+Se utilizó un pseudo encabezado HTTP/2 inapropiadamente. Los pseudo encabezados son nombres de claves de encabezado que empiezan con el prefijo `:`.
 
 <a id="ERR_HTTP2_PUSH_DISABLED"></a>
 
 ### ERR_HTTP2_PUSH_DISABLED
 
-An attempt was made to create a push stream, which had been disabled by the client.
+Se intentó crear un push stream, el cual había sido inhabilitado por el cliente.
 
 <a id="ERR_HTTP2_SEND_FILE"></a>
 
 ### ERR_HTTP2_SEND_FILE
 
-An attempt was made to use the `Http2Stream.prototype.responseWithFile()` API to send a directory.
+Se intentó utilizar el API `Http2Stream.prototype.responseWithFile()` para enviar un directorio.
 
 <a id="ERR_HTTP2_SEND_FILE_NOSEEK"></a>
 
 ### ERR_HTTP2_SEND_FILE_NOSEEK
 
-An attempt was made to use the `Http2Stream.prototype.responseWithFile()` API to send something other than a regular file, but `offset` or `length` options were provided.
+Se intentó utilizar el API `Http2Stream.prototype.responseWithFile()` para enviar algo distinto a un archivo regular, pero se proporcionaron las opciones `offset` o `length`.
 
 <a id="ERR_HTTP2_SESSION_ERROR"></a>
 
 ### ERR_HTTP2_SESSION_ERROR
 
-The `Http2Session` closed with a non-zero error code.
+La `Http2Session` cerró con un código de error distinto de cero.
 
 <a id="ERR_HTTP2_SOCKET_BOUND"></a>
 
 ### ERR_HTTP2_SOCKET_BOUND
 
-An attempt was made to connect a `Http2Session` object to a `net.Socket` or `tls.TLSSocket` that had already been bound to another `Http2Session` object.
+Se intentó conectar un objeto `Http2Session` a un `net.Socket` o `tls.TLSSocket` que ya había sido ligado a otro objeto `Http2Session`.
 
 <a id="ERR_HTTP2_STATUS_101"></a>
 
