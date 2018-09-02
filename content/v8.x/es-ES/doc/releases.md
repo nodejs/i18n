@@ -14,7 +14,7 @@ Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liber
 
 **b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)**puede ser usado para crear una versión nocturna del actual *ENCABEZADO* si se requiere un lanzamiento de prueba pública. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y están disponibles para su descarga pública.
 
-**c.** **Release builds:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** does all of the work to build all required release assets. Promotion of the release files is a manual step once they are ready (see below).
+**c.** **Compilaciones liberadas** **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** hace todo el trabajo de compilar todos los activos de lanzamiento requeridos. Promotion of the release files is a manual step once they are ready (see below).
 
 The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
