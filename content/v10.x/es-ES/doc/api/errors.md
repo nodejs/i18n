@@ -1047,47 +1047,47 @@ Las opciones `breakEvalOnSigint` y `eval` se establecieron en la configuración 
 
 ### ERR_INVALID_RETURN_VALUE
 
-Arrojado en caso de que una opción de función no devuelve un valor esperado en ejecución. For example when a function is expected to return a promise.
+Arrojado en caso de que una opción de función no devuelve un valor esperado en ejecución. Por ejemplo, cuando se espera que una función devuelva una promesa.
 
 <a id="ERR_INVALID_SYNC_FORK_INPUT"></a>
 
 ### ERR_INVALID_SYNC_FORK_INPUT
 
-A `Buffer`, `Uint8Array` or `string` was provided as stdio input to a synchronous fork. See the documentation for the [`child_process`][] module for more information.
+A `Buffer`, `Uint8Array` or `string` was provided as stdio input to a synchronous fork. Vea la documentación para el módulo [`child_process`][] para más información.
 
 <a id="ERR_INVALID_THIS"></a>
 
 ### ERR_INVALID_THIS
 
-A Node.js API function was called with an incompatible `this` value.
+Se llamó una función API de Node.js con un valor `this` incompatible.
 
-Example:
+Ejemplo:
 
 ```js
 const urlSearchParams = new URLSearchParams('foo=bar&baz=new');
 
 const buf = Buffer.alloc(1);
 urlSearchParams.has.call(buf, 'foo');
-// Throws a TypeError with code 'ERR_INVALID_THIS'
+// Arroja un TypeError con el código 'ERR_INVALID_THIS'
 ```
 
 <a id="ERR_INVALID_TUPLE"></a>
 
 ### ERR_INVALID_TUPLE
 
-An element in the `iterable` provided to the [WHATWG](url.html#url_the_whatwg_url_api) [`URLSearchParams` constructor][`new URLSearchParams(iterable)`] did not represent a `[name, value]` tuple – that is, if an element is not iterable, or does not consist of exactly two elements.
+Un elemento en el `iterable` proporcionado al [WHATWG](url.html#url_the_whatwg_url_api) [`URLSearchParams` constructor][`new URLSearchParams(iterable)`] no representó una dupla `[name, value]` - es decir, si un elemento no es iterable o no consiste de dos elementos exactos.
 
 <a id="ERR_INVALID_URI"></a>
 
 ### ERR_INVALID_URI
 
-An invalid URI was passed.
+Se pasó una URI inválida.
 
 <a id="ERR_INVALID_URL"></a>
 
 ### ERR_INVALID_URL
 
-An invalid URL was passed to the [WHATWG](url.html#url_the_whatwg_url_api) [`URL` constructor][`new URL(input)`] to be parsed. The thrown error object typically has an additional property `'input'` that contains the URL that failed to parse.
+Se pasó una URL inválida al [WHATWG](url.html#url_the_whatwg_url_api) [`URL` constructor][`new URL(input)`] para ser analizada. El objeto de error arrojado típicamente tiene una propiedad `'input'` adicional que contiene la URL que falló al analisar.
 
 <a id="ERR_INVALID_URL_SCHEME"></a>
 
@@ -1099,59 +1099,59 @@ An attempt was made to use a URL of an incompatible scheme (protocol) for a spec
 
 ### ERR_IPC_CHANNEL_CLOSED
 
-An attempt was made to use an IPC communication channel that was already closed.
+Se intentó usar un canal de comunicación IPC que ya estaba cerrado.
 
 <a id="ERR_IPC_DISCONNECTED"></a>
 
 ### ERR_IPC_DISCONNECTED
 
-An attempt was made to disconnect an IPC communication channel that was already disconnected. See the documentation for the [`child_process`][] module for more information.
+Se intentó desconectar un canal de comunicación IPC que ya estaba desconectado. Vea la documentación para el módulo [`child_process`][] para más información.
 
 <a id="ERR_IPC_ONE_PIPE"></a>
 
 ### ERR_IPC_ONE_PIPE
 
-An attempt was made to create a child Node.js process using more than one IPC communication channel. See the documentation for the [`child_process`][] module for more information.
+Se intentó crear un proceso Node.js secundario utilizando más de un canal de comunicación IPC. Vea la documentación para el módulo [`child_process`][] para más información.
 
 <a id="ERR_IPC_SYNC_FORK"></a>
 
 ### ERR_IPC_SYNC_FORK
 
-An attempt was made to open an IPC communication channel with a synchronously forked Node.js process. See the documentation for the [`child_process`][] module for more information.
+An attempt was made to open an IPC communication channel with a synchronously forked Node.js process. Vea la documentación para el módulo [`child_process`][] para más información.
 
 <a id="ERR_MEMORY_ALLOCATION_FAILED"></a>
 
 ### ERR_MEMORY_ALLOCATION_FAILED
 
-An attempt was made to allocate memory (usually in the C++ layer) but it failed.
+Se intentó asignar memoria (usualmente en la capa C++), pero falló.
 
 <a id="ERR_METHOD_NOT_IMPLEMENTED"></a>
 
 ### ERR_METHOD_NOT_IMPLEMENTED
 
-A method is required but not implemented.
+Se requiere un método pero no se implementa.
 
 <a id="ERR_MISSING_ARGS"></a>
 
 ### ERR_MISSING_ARGS
 
-A required argument of a Node.js API was not passed. This is only used for strict compliance with the API specification (which in some cases may accept `func(undefined)` but not `func()`). In most native Node.js APIs, `func(undefined)` and `func()` are treated identically, and the [`ERR_INVALID_ARG_TYPE`][] error code may be used instead.
+No se pasó un argumento de API de Node.js requerido. Esto sólo se usa para el cumplimiento estricto con la especificación API (la cual, en algunos casos, puede aceptar `func(undefined)`, pero no `func()`). In most native Node.js APIs, `func(undefined)` and `func()` are treated identically, and the [`ERR_INVALID_ARG_TYPE`][] error code may be used instead.
 
 <a id="ERR_MISSING_MODULE"></a>
 
 ### ERR_MISSING_MODULE
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-An [ES6 module](esm.html) could not be resolved.
+No se pudo resolver un [módulo ES6](esm.html).
 
 <a id="ERR_MODULE_RESOLUTION_LEGACY"></a>
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-A failure occurred resolving imports in an [ES6 module](esm.html).
+Ocurrió un fallo al resolver importaciones en un [módulo ES6](esm.html).
 
 <a id="ERR_MULTIPLE_CALLBACK"></a>
 
