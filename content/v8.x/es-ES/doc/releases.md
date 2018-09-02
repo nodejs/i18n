@@ -1,8 +1,8 @@
 # Proceso de Lanzamiento de Node.js
 
-Este documento describe los aspectos técnicos del proceso de lanzamiento de Node.js. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+Este documento describe los aspectos técnicos del proceso de lanzamiento de Node.js. La audiencia prevista son los que han sido autorizados por el Comité de Dirección Técnica (CDT) de la Fundación Node.js para crear, promover y firmar versiones oficiales del lanzamiento para Node.js alojadas en <https://nodejs.org/>.
 
-## Who can make a release?
+## ¿Quién puede realizar un lanzamiento?
 
 Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
 
