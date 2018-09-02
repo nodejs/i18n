@@ -939,55 +939,55 @@ An array was not of the expected length or in a valid range.
 
 ### ERR_INVALID_ASYNC_ID
 
-Se pasó un `asyncId` o `triggerAsyncId` inválido usando `AsyncHooks`. An id less than -1 should never happen.
+Se pasó un `asyncId` o `triggerAsyncId` inválido usando `AsyncHooks`. No debe ocurrir nunca un id menor que -1.
 
 <a id="ERR_INVALID_BUFFER_SIZE"></a>
 
 ### ERR_INVALID_BUFFER_SIZE
 
-A swap was performed on a `Buffer` but its size was not compatible with the operation.
+Se realizó un intercambio en un `Buffer`, pero su tamaño no era compatible con la operación.
 
 <a id="ERR_INVALID_CALLBACK"></a>
 
 ### ERR_INVALID_CALLBACK
 
-A callback function was required but was not been provided to a Node.js API.
+Se requirió una función callback, pero no fue proporcionada a un API Node.js.
 
 <a id="ERR_INVALID_CHAR"></a>
 
 ### ERR_INVALID_CHAR
 
-Invalid characters were detected in headers.
+Se detectaron caracteres inválidos en encabezados.
 
 <a id="ERR_INVALID_CURSOR_POS"></a>
 
 ### ERR_INVALID_CURSOR_POS
 
-A cursor on a given stream cannot be moved to a specified row without a specified column.
+No se puede mover un cursor en un stream dado a una file especificada sin una columna especificada.
 
 <a id="ERR_INVALID_DOMAIN_NAME"></a>
 
 ### ERR_INVALID_DOMAIN_NAME
 
-`hostname` can not be parsed from a provided URL.
+`hostname` no puede ser analizado desde una URL proporcionada.
 
 <a id="ERR_INVALID_FD"></a>
 
 ### ERR_INVALID_FD
 
-A file descriptor ('fd') was not valid (e.g. it was a negative value).
+Un descriptor de archivo ('fd') no era válido (p. ej., era un valor negativo).
 
 <a id="ERR_INVALID_FD_TYPE"></a>
 
 ### ERR_INVALID_FD_TYPE
 
-A file descriptor ('fd') type was not valid.
+Un tipo de descriptor de archivo ('fd') no era válido.
 
 <a id="ERR_INVALID_FILE_URL_HOST"></a>
 
 ### ERR_INVALID_FILE_URL_HOST
 
-A Node.js API that consumes `file:` URLs (such as certain functions in the [`fs`][] module) encountered a file URL with an incompatible host. This situation can only occur on Unix-like systems where only `localhost` or an empty host is supported.
+Un API Node.js que consume URLs de `file:` (como ciertas funciones en el módulo [`fs`][]) encontró una URL de un archivo con un host incompatible. Esta situación sólo puede ocurrir en sistemas tipo Unix donde sólo se soportan `localhost` o un host vacío.
 
 <a id="ERR_INVALID_FILE_URL_PATH"></a>
 
