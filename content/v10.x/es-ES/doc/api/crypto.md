@@ -170,11 +170,11 @@ added: v0.1.94
 Instancias de clase `Cipher` son usadas para encriptar datos. La clase puede ser usada de una o dos maneras:
 
 - Como una [stream](stream.html) que es legible y escribible, donde los datos planos sin encriptar están escritos para producir datos encriptados en el lado legible, o
-- Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
+- Usando los métodos [`cipher.update()`][] y [`cipher.final()`][] para producir datos encriptados.
 
-The [`crypto.createCipher()`][] or [`crypto.createCipheriv()`][] methods are used to create `Cipher` instances. `Cipher` objects are not to be created directly using the `new` keyword.
+Los métodos [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] son usados para crear instancias `Cipher`. Los objetos `Cipher` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Cipher` objects as streams:
+Por ejemplo: Usando objetos `Cipher` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -195,7 +195,7 @@ cipher.write('some clear text data');
 cipher.end();
 ```
 
-Example: Using `Cipher` and piped streams:
+Por ejemplo: Usando `Cipher` y piped streams:
 
 ```js
 const crypto = require('crypto');
@@ -208,7 +208,7 @@ const output = fs.createWriteStream('test.enc');
 input.pipe(cipher).pipe(output);
 ```
 
-Example: Using the [`cipher.update()`][] and [`cipher.final()`][] methods:
+Por ejemplo: Usando los métodos [`cipher.update()`][] y [`cipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -227,7 +227,7 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Returns: {Buffer | string} Any remaining enciphered contents. If `outputEncoding` is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+- Devuelve: {Buffer | string} Cualquier contenido cifrado restante. Si `outputEncoding` es alguno de estos, `'latin1'`, `'base64'` o `'hex'`, una string es devuelta. Si no se provee una `outputEncoding`, un [`Buffer`][] es devuelto.
 
 Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
 
