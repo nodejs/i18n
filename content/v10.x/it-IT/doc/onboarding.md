@@ -66,15 +66,15 @@ apply.whitespace fix`
 
 * [**Vedi "Etichette"**](./onboarding-extras.md#labels)
   
-  * There is [a bot](https://github.com/nodejs-github-bot/github-bot) that applies subsystem labels (for example, `doc`, `test`, `assert`, or `buffer`) so that we know what parts of the code base the pull request modifies. It is not perfect, of course. Feel free to apply relevant labels and remove irrelevant labels from pull requests and issues.
-  * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
+  * C'è [un bot](https://github.com/nodejs-github-bot/github-bot) che applica le etichette del sottosistema (per esempio,`doc`, `test`, `assert`, o `buffer`) in modo da sapere quali parti del codice sono la base della modifica del Pr. Non è perfetto, ovviamente. Sii libero di applicare etichette pertinenti e rimuovere etichette irrilevanti da problemi e le Pr.
+  * Utilizza l'etichetta ` tsc-review ` se un argomento è controverso o non è stato concluso dopo un tempo prolungato.
   * `semver-{minor,major}`: 
     * If a change has the remote *chance* of breaking something, use the `semver-major` label
-    * When adding a `semver-*` label, add a comment explaining why you're adding it. Do it right away so you don't forget!
-  * Please add the `author-ready` label for PRs where: 
-    * the CI has been started (not necessarily finished),
-    * no outstanding review comments exist and
-    * at least one collaborator approved the PR.
+    * Quando si aggiunge l'etichetta `semver-*` aggiungi un commento in cui spieghi perché la stai aggiungendo. Fallo subito così non lo dimentichi!
+  * Si prega di aggiungere l'etichetta `author-ready` per PR dove: 
+    * iC è stato avviato (non necessariamente terminato),
+    * non esistono commenti di revisione rilevanti e
+    * almeno un collaboratore ha approvato il PR.
 
 * See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
