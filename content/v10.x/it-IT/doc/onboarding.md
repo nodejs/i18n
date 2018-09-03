@@ -96,16 +96,16 @@ apply.whitespace fix`
 * Siate consapevoli: la vostra opinione è molto importante!
 * Nits (richieste di piccole modifiche che non sono essenziali) vanno bene, ma provate a evitare di bloccare la Pr. 
   * Note that they are nits when you comment: `Nit: change foo() to bar().`
-  * If they are stalling the pull request, fix them yourself on merge.
-* Insofar as possible, issues should be identified by tools rather than human reviewers. If you are leaving comments about issues that could be identified by tools but are not, consider implementing the necessary tooling.
-* Minimum wait for comments time 
-  * There is a minimum waiting time which we try to respect for non-trivial changes so that people who may have important input in such a distributed project are able to respond.
-  * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
+  * Se bloccano la Pr, correggili da solo.
+* Nella misura del possibile, i problemi dovrebbero essere identificati da strumenti piuttosto che da revisori umani. Se si lasciano commenti su problemi che potrebbero essere identificati dagli strumenti ma non lo sono, prendete in considerazione l'implementazione degli strumenti necessari.
+* Attesa minima dei commenti 
+  * C'è un tempo di attesa minimo che cerchiamo di rispettare per i cambiamenti non banali in modo che le persone che possono avere un input importante in un progetto così distribuito siano in grado di rispondere.
+  * Per modifiche non banali, lasciare aperta la Pr per almeno 48 ore (72 ore nel fine settimana).
   * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
 
-* Approving a change
+* Approvazione di un cambiamento
   
-  * Collaborators indicate that they have reviewed and approve of the changes in a pull request using Github’s approval interface
+  * I collaboratori indicano di aver esaminato e approvato le modifiche in una Pr utilizzando l'interfaccia di approvazione di Github
   * Some people like to comment `LGTM` (“Looks Good To Me”)
   * You have the authority to approve any other collaborator’s work.
   * You cannot approve your own pull requests.
