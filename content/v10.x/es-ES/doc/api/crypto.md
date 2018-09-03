@@ -20,9 +20,9 @@ console.log(hash);
 //   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
 ```
 
-## Determining if crypto support is unavailable
+## Determinar si el soporte de cripto no está disponible
 
-It is possible for Node.js to be built without including support for the `crypto` module. In such cases, calling `require('crypto')` will result in an error being thrown.
+Es posible que Node.js se construya sin incluir soporte para el módulo `crypto`. En esos casos, llamar a `require('crypto')` resultará en un error al correr el código.
 
 ```js
 let crypto;
@@ -33,13 +33,13 @@ try {
 }
 ```
 
-## Class: Certificate
+## Clase: Certificado
 
 <!-- YAML
 added: v0.11.8
 -->
 
-SPKAC is a Certificate Signing Request mechanism originally implemented by Netscape and was specified formally as part of [HTML5's `keygen` element][].
+SPKAC es un mecanismo de solicitud de firma certificado implementado originalmente por Netscape y fue especificado formalmente como parte del [elemento `keygen` de HTML5][].
 
 Note that `<keygen>` is deprecated since [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) and new projects should not use this element anymore.
 
