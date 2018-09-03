@@ -1247,28 +1247,28 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
 
 Si `value` no es una cadena, o `Buffer`, este método producirá un `TypeError`. Si `value` es un número, se forzará a un valor byte válido, un entero entre 0 y 255.
 
-Si `byteOffset` no es un número, se forzará a un número. Cualquier argumento que force a `NaN`, como `{}` or `undefined`, buscará todo el buffer. This behavior matches [`String#lastIndexOf()`].
+Si `byteOffset` no es un número, se forzará a un número. Cualquier argumento que force a `NaN`, como `{}` or `undefined`, buscará todo el buffer. Este comportamiento coincide con [`String#lastIndexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
 
-// Passing a value that's a number, but not a valid byte
-// Prints: 2, equivalent to searching for 99 or 'c'
+// Pasa un valor que es un número, pero no un byte válido
+// Imprime: 2, equivalente a buscar 99 o 'c'
 console.log(b.lastIndexOf(99.9));
 console.log(b.lastIndexOf(256 + 99));
 
-// Passing a byteOffset that coerces to NaN
-// Prints: 1, searching the whole buffer
+// Pasa un byteOffset que fuerza a NaN
+// Imprime: 1, buscando todo el buffer
 console.log(b.lastIndexOf('b', undefined));
 console.log(b.lastIndexOf('b', {}));
 
-// Passing a byteOffset that coerces to 0
-// Prints: -1, equivalent to passing 0
+// Pasa un byteOffset que fuerza a 0
+// Imprime: -1, equivalent to passing 0
 console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
 
-If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
+Si `value` es una cadena vacía o un `Buffer` vacío, se devolverá `byteOffset`.
 
 ### buf.length
 
@@ -1278,20 +1278,20 @@ added: v0.1.90
 
 * {integer}
 
-Returns the amount of memory allocated for `buf` in bytes. Note that this does not necessarily reflect the amount of "usable" data within `buf`.
+Devuelve la cantidad de memoria asignada para `buf` en bytes. Tenga en cuenta que esto no necesariamente refleja la cantidad de datos "utilizables" dentro de `buf`.
 
 ```js
-// Create a `Buffer` and write a shorter ASCII string to it.
+// Crea un `Buffer`y escribe una cadena ASCII más corta en él.
 
 const buf = Buffer.alloc(1234);
 
 console.log(buf.length);
-// Prints: 1234
+// Imprime: 1234
 
 buf.write('some string', 0, 'ascii');
 
 console.log(buf.length);
-// Prints: 1234
+// Imprime: 1234
 ```
 
 While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
