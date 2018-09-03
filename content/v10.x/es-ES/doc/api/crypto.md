@@ -4,9 +4,9 @@
 
 > Estabilidad: 2 - Estable
 
-The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+El módulo `crypto` provee funcionalidad criptográfica que incluye un conjunto de empaquetadores para hash de OpenSSL, HMAC, cifrar, descifrar, firmar, y verificar funciones.
 
-Use `require('crypto')` to access this module.
+Usar `require('crypto')` para acceder a este módulo.
 
 ```js
 const crypto = require('crypto');
