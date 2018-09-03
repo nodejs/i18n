@@ -1217,37 +1217,37 @@ changes:
 * `encoding` {string} Si `value` es una cadena, esta es la codificación utilizada para determinar la representación binaria de la cadena que se buscará en `buf`. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} El índice de la última aparición de `value` en `buf`, o `-1` si `buf` no contiene `value`.
 
-Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
+Idéntico a [`buf.indexOf()`], excepto que se encuentra la última aparición de `value` en lugar de la primera aparición.
 
 ```js
 const buf = Buffer.from('this buffer is a buffer');
 
 console.log(buf.lastIndexOf('this'));
-// Prints: 0
+// Imprime: 0
 console.log(buf.lastIndexOf('buffer'));
-// Prints: 17
+// Imprime: 17
 console.log(buf.lastIndexOf(Buffer.from('buffer')));
-// Prints: 17
+// Imprime: 17
 console.log(buf.lastIndexOf(97));
-// Prints: 15 (97 is the decimal ASCII value for 'a')
+// Imprime: 15 (97 es el valor ASCII decimal para 'a')
 console.log(buf.lastIndexOf(Buffer.from('yolo')));
-// Prints: -1
+// Imprime: -1
 console.log(buf.lastIndexOf('buffer', 5));
-// Prints: 5
+// Imprime: 5
 console.log(buf.lastIndexOf('buffer', 4));
-// Prints: -1
+// Imprime: -1
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'utf16le'));
-// Prints: 6
+// Imprime: 6
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
-// Prints: 4
+// Imprime: 4
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+Si `value` no es una cadena, o `Buffer`, este método producirá un `TypeError`. Si `value` es un número, se forzará a un valor byte válido, un entero entre 0 y 255.
 
-If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`].
+Si `byteOffset` no es un número, se forzará a un número. Cualquier argumento que force a `NaN`, como `{}` or `undefined`, buscará todo el buffer. This behavior matches [`String#lastIndexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
