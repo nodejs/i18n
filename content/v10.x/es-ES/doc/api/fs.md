@@ -1547,7 +1547,7 @@ added: v0.1.95
 -->
 
 * `fd` {integer}
-* Returns: {fs.Stats}
+* Devuelve: {fs.Stats}
 
 fstat(2) sincrónica.
 
@@ -1862,7 +1862,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {fs.Stats}
+* Devuelve: {fs.Stats}
 
 lstat(2) sincrónico.
 
@@ -2610,7 +2610,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {fs.Stats}
+* Devuelve: {fs.Stats}
 
 stat(2) sincrónico.
 
