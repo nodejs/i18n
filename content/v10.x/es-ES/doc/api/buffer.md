@@ -1343,11 +1343,11 @@ Lee un doble de 64-bit desde `buf` como el `offset` especificado con el formato 
 const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
 
 console.log(buf.readDoubleBE(0));
-// Prints: 8.20788039913184e-304
+// Imprime: 8.20788039913184e-304
 console.log(buf.readDoubleLE(0));
-// Prints: 5.447603722011605e-270
+// Imprime: 5.447603722011605e-270
 console.log(buf.readDoubleLE(1));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.readFloatBE(offset)
