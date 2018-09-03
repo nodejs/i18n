@@ -78,11 +78,11 @@ apply.whitespace fix`
 
 * See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
-  * This will come more naturally over time
-  * For many of the teams listed there, you can ask to be added if you are interested 
-    * Some are WGs with some process around adding people, others are only there for notifications
+  * Questo arriverà più sicuramente nel tempo
+  * Per molte delle squadre elencate qui, puoi chiedere di essere aggiunto se sei interessato 
+    * Alcuni WG sono con qualche processo di aggiunta di persone, altri sono solo lì per le notifiche
 
-* When a discussion gets heated, you can request that other Collaborators keep an eye on it by opening an issue at the private [nodejs/moderation](https://github.com/nodejs/moderation) repository.
+* Quando una discussione si anima, puoi chiedere agli altri Collaboratori di tenerlo d'occhio aprendo un problema in privato [nodejs/moderation](https://github.com/nodejs/moderation).
   
   * This is a repository to which all members of the `nodejs` GitHub organization (not just Collaborators on Node.js core) have access. Its contents should not be shared externally.
   * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
