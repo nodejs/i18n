@@ -1127,8 +1127,8 @@ changes:
 Si `value` es:
 
 * a string, `value` is interpreted according to the character encoding in `encoding`.
-* a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
-* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
+* un `Buffer` o [`Uint8Array`], `value` se utilizará en su totalidad. Para comparar un `Buffer` parcial, utilice [`buf.slice()`].
+* un número, `value` se interpretará como un valor entero de 8-bit sin signo entre `0` y `255`.
 
 ```js
 const buf = Buffer.from('this is a buffer');
