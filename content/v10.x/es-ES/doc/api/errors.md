@@ -861,7 +861,7 @@ Se especificó un código de error distinto de cero en un frame `RST_STREAM`.
 
 ### ERR_HTTP2_STREAM_SELF_DEPENDENCY
 
-Al configurar la prioridad a un stream HTTP/2, el stream puede ser marcado como una dependencia para un stream primario. Este código de error es utilizado cuando se intenta marcar un stream y depende de él.
+Al configurar la prioridad para un stream HTTP/2, el stream puede ser marcado como una dependencia para un stream primario. Este código de error es utilizado cuando se intenta marcar un stream y depende de él.
 
 <a id="ERR_HTTP2_TRAILERS_ALREADY_SENT"></a>
 
@@ -879,7 +879,7 @@ El método `http2stream.sendTrailers()` no puede ser llamado hasta después de e
 
 ### ERR_HTTP2_UNSUPPORTED_PROTOCOL
 
-Se le pasó una URL a `http2.connect()` que utiliza cualquier protocolo distinto de `http:` o `https:`.
+Se le pasó a `http2.connect()` una URL que utiliza cualquier protocolo distinto de `http:` o `https:`.
 
 <a id="ERR_INDEX_OUT_OF_RANGE"></a>
 
@@ -951,7 +951,7 @@ Se realizó un intercambio en un `Buffer`, pero su tamaño no era compatible con
 
 ### ERR_INVALID_CALLBACK
 
-Se requirió una función callback, pero no fue proporcionada a un API Node.js.
+Se requirió una función callback, pero no fue proporcionada a un API de Node.js.
 
 <a id="ERR_INVALID_CHAR"></a>
 
@@ -1047,7 +1047,7 @@ Las opciones `breakEvalOnSigint` y `eval` se establecieron en la configuración 
 
 ### ERR_INVALID_RETURN_VALUE
 
-Arrojado en caso de que una opción de función no devuelve un valor esperado en ejecución. Por ejemplo, cuando se espera que una función devuelva una promesa.
+Arrojado en caso de que una opción de función no devuelva un valor esperado en ejecución. Por ejemplo, cuando se espera que una función devuelva una promesa.
 
 <a id="ERR_INVALID_SYNC_FORK_INPUT"></a>
 
@@ -1075,7 +1075,7 @@ urlSearchParams.has.call(buf, 'foo');
 
 ### ERR_INVALID_TUPLE
 
-Un elemento en el `iterable` proporcionado al [WHATWG](url.html#url_the_whatwg_url_api) [`URLSearchParams` constructor][`new URLSearchParams(iterable)`] no representó una dupla `[name, value]` - es decir, si un elemento no es iterable o no consiste de dos elementos exactos.
+Un elemento en el `iterable` proporcionado al [WHATWG](url.html#url_the_whatwg_url_api) [`URLSearchParams` constructor][`new URLSearchParams(iterable)`] no representó una dupla `[name, value]` - es decir, si un elemento no es iterable o no consiste en dos elementos exactos.
 
 <a id="ERR_INVALID_URI"></a>
 
@@ -1123,7 +1123,7 @@ An attempt was made to open an IPC communication channel with a synchronously fo
 
 ### ERR_MEMORY_ALLOCATION_FAILED
 
-Se intentó asignar memoria (usualmente en la capa C++), pero falló.
+Se hizo un intento de asignar memoria (usualmente en la capa C++), pero falló.
 
 <a id="ERR_METHOD_NOT_IMPLEMENTED"></a>
 
