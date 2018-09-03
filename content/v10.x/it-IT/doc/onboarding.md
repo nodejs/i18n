@@ -106,19 +106,19 @@ apply.whitespace fix`
 * Approvazione di un cambiamento
   
   * I collaboratori indicano di aver esaminato e approvato le modifiche in una Pr utilizzando l'interfaccia di approvazione di Github
-  * Some people like to comment `LGTM` (“Looks Good To Me”)
-  * You have the authority to approve any other collaborator’s work.
-  * You cannot approve your own pull requests.
-  * When explicitly using `Changes requested`, show empathy – comments will usually be addressed even if you don’t use it. 
-    * If you do, it is nice if you are available later to check whether your comments have been addressed
+  * Ad alcune persone piace commentare `LGTM` ("Sembra buono per me")
+  * Hai l'autorità per approvare il lavoro di qualsiasi altro collaboratore.
+  * Non puoi approvare le tue Pr.
+  * Quando si utilizzano esplicitamente `le modifiche richieste`, mostrate empatia: i consigli saranno solitamente indirizzati anche se non li si usano. 
+    * Se lo fai, è bello se sei disponibile in seguito per controllare se i tuoi consigli sono stati affrontati
     * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
     * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
 
-* What belongs in Node.js:
+* Ciò che appartiene a Node.js:
   
-  * Opinions vary – it’s good to have a broad collaborator base for that reason!
-  * If Node.js itself needs it (due to historical reasons), then it belongs in Node.js. 
-    * That is to say, `url` is there because of `http`, `freelist` is there because of `http`, etc.
+  * Le opinioni variano - è bello avere una vasta base di collaboratori per questo motivo!
+  * Se Node.js ne ha bisogno (a causa di ragioni storiche), quindi appartiene a Node.js. 
+    * Vale a dire, `url` è lì a causa di `http`, `freelist` è lì a causa di `http`, etc.
   * Things that cannot be done outside of core, or only with significant pain such as `async_hooks`.
 
 * Continuous Integration (CI) Testing:
@@ -160,11 +160,11 @@ Note that commits in one PR that belong to one logical change should be squashed
   * [`node-core-utils`][] automates the generation of metadata and the landing process. See the documentation of [`git-node`][].
   * [`core-validate-commit`][] automates the validation of commit messages. This will be run during `git node land --final` of the [`git-node`][] command.
 
-## Final notes
+## Note finali
 
-* Don't worry about making mistakes: everybody makes them, there's a lot to internalize and that takes time (and we recognize that!)
+* Non preoccuparti di sbagliare: tutti li fanno, c'è molto da c'è molto da interiorizzare e ci vuole tempo (e lo riconosciamo!)
 * Almost any mistake you could make can be fixed or reverted.
-* The existing Collaborators trust you and are grateful for your help!
+* I Collaboratori si fidano di te e sono grati per il tuo aiuto!
 * Other repositories: 
   * <https://github.com/nodejs/TSC>
   * <https://github.com/nodejs/build>
