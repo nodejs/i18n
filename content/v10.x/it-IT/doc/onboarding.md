@@ -84,17 +84,17 @@ apply.whitespace fix`
 
 * Quando una discussione si anima, puoi chiedere agli altri Collaboratori di tenerlo d'occhio aprendo un problema in privato [nodejs/moderation](https://github.com/nodejs/moderation).
   
-  * This is a repository to which all members of the `nodejs` GitHub organization (not just Collaborators on Node.js core) have access. Its contents should not be shared externally.
-  * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
+  * This is a repository to which all members of the `nodejs` GitHub organization (not just Collaborators on Node.js core) have access. I contenuti non dovrebbero essere condivisi esternamente.
+  * Puoi trovare la politica di moderazione completa [qui](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
-## Reviewing PRs
+## Revisione di PR
 
-* The primary goal is for the codebase to improve.
-* Secondary (but not far off) is for the person submitting code to succeed. A pull request from a new contributor is an opportunity to grow the community.
-* Review a bit at a time. Do not overwhelm new contributors. 
-  * It is tempting to micro-optimize. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
-* Be aware: Your opinion carries a lot of weight!
-* Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
+* L'obiettivo principale è quello di migliorare la base di codici.
+* Secondario (ma non per importanza) è per la persona che invia il codice per avere successo. Un Pr da un nuovo contributore è un'opportunità per far crescere la comunità.
+* Ripassa un po 'alla volta. Non sovraccaricare i nuovi contributori. 
+  * Si è tentati di micro-ottimizzare. Non cadere in quella tentazione. Noi cambiamo spesso il V8. Le tecniche che offrono prestazioni migliori oggi potrebbero essere inutili in futuro.
+* Siate consapevoli: la vostra opinione è molto importante!
+* Nits (richieste di piccole modifiche che non sono essenziali) vanno bene, ma provate a evitare di bloccare la Pr. 
   * Note that they are nits when you comment: `Nit: change foo() to bar().`
   * If they are stalling the pull request, fix them yourself on merge.
 * Insofar as possible, issues should be identified by tools rather than human reviewers. If you are leaving comments about issues that could be identified by tools but are not, consider implementing the necessary tooling.
