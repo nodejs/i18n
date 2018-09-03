@@ -1294,7 +1294,7 @@ console.log(buf.length);
 // Imprime: 1234
 ```
 
-While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
+Aunque la propiedad `length` no es inmutable, cambiar el valor de `length` puede resultar en un comportamiento indefinido e incoherente. Las aplicaciones que deseen modificar la longitud de un `Buffer`, por lo tanto, deberían tratar a `length` como de solo lectura y utilizar a [`buf.slice()`] para crear un nuevo `Buffer`.
 
 ```js
 let buf = Buffer.allocUnsafe(10);
@@ -1302,12 +1302,12 @@ let buf = Buffer.allocUnsafe(10);
 buf.write('abcdefghj', 0, 'ascii');
 
 console.log(buf.length);
-// Prints: 10
+// Imprime: 10
 
 buf = buf.slice(0, 5);
 
 console.log(buf.length);
-// Prints: 5
+// Imprime: 5
 ```
 
 ### buf.parent
@@ -1316,9 +1316,9 @@ console.log(buf.length);
 deprecated: v8.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`buf.buffer`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`buf.buffer`] en su lugar.
 
-The `buf.parent` property is a deprecated alias for `buf.buffer`.
+La propiedad `buf.parent` es un alias obsoleto para `buf.buffer`.
 
 ### buf.readDoubleBE(offset)
 
