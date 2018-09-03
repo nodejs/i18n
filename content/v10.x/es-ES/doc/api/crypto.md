@@ -266,11 +266,11 @@ added: v0.7.1
 - `autoPadding` {boolean} **Por defecto:** `true`
 - Devuelve: {Cipher} como método cadena.
 
-When using block encryption algorithms, the `Cipher` class will automatically add padding to the input data to the appropriate block size. To disable the default padding call `cipher.setAutoPadding(false)`.
+Cuando se usan los algoritmos de encriptación por bloque, de clase `Cipher` automáticamente rellenará los datos de entrada al tamaño de bloque apropiado. Para desactivar el llenado por defecto llame a `cipher.setAutoPadding(false)`.
 
-When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an error. Disabling automatic padding is useful for non-standard padding, for instance using `0x0` instead of PKCS padding.
+Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un múltiplo del tamaño del bloque cipher o [`cipher.final()`][] arrojará un error. Desactivar el llenado automático es útil para un llenado no estandard, por ejemplo usando `0x0` en vez del llenado PKCS.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+El método `cipher.setAutoPadding()` debe llamarse antes del [`cipher.final()`][].
 
 ### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -286,9 +286,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
-Updates the cipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el cifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
 The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
@@ -435,7 +435,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
@@ -482,7 +482,7 @@ added: v0.5.0
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -495,7 +495,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -506,7 +506,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -517,7 +517,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -528,7 +528,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Returns the Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -539,7 +539,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Returns the Diffie-Hellman public key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -621,7 +621,7 @@ added: v10.0.0
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
 
@@ -669,7 +669,7 @@ changes:
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -685,7 +685,7 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
 
@@ -832,7 +832,7 @@ added: v0.1.92
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
@@ -918,7 +918,7 @@ added: v0.1.94
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
 
@@ -1014,7 +1014,7 @@ changes:
   - `key` {string}
   - `passphrase` {string}
 - `outputFormat` {string}
-- Returns: {Buffer | string}
+- Devuelve: {Buffer | string}
 
 Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
