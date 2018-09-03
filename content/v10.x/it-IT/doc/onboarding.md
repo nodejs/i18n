@@ -60,11 +60,11 @@ apply.whitespace fix`
 
 ## La gestione dell'issue tracker
 
-* You have (mostly) free rein; don't hesitate to close an issue if you are confident that it should be closed
+* Hai (soprattutto) libero sfogo; non esitare a chiudere un problema se sei sicuro che questo andrebbe chiuso
   
-  * Be nice about closing issues! Let people know why, and that issues and PRs can be reopened if necessary
+  * Sii gentile con i problemi chiusi! Fai sapere alla gente i motivi, i problemi e le PR possono essere riaperti se necessario
 
-* [**See "Labels"**](./onboarding-extras.md#labels)
+* [**Vedi "Etichette"**](./onboarding-extras.md#labels)
   
   * There is [a bot](https://github.com/nodejs-github-bot/github-bot) that applies subsystem labels (for example, `doc`, `test`, `assert`, or `buffer`) so that we know what parts of the code base the pull request modifies. It is not perfect, of course. Feel free to apply relevant labels and remove irrelevant labels from pull requests and issues.
   * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
