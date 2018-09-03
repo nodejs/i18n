@@ -15,7 +15,7 @@ APIs, die von N-API zur Verfügung gestellt werden, werden generell verwendet, u
 - Alle N-API-Anfragen liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob die API-Anfrage erfolgreich war oder nicht.
 - Der Rückgabewert der API wird über einen Out-Parameter ausgegeben.
 - Alle JavaScript-Werte werden hinter einem undurchsichtigen Typ namens `napi_value` abstrahiert.
-- Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie in dem Fehlermeldungshandlingbereich [Fehlerbehandlung](#n_api_error_handling).
+- Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie im Bereich [Fehlerbehandlung](#n_api_error_handling).
 
 Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-API bereitstellen. Binärdateien, die mit diesen Wrapper-Modulen erstellt wurden, hängen von den Symbolen für die N-API C-basierten Funktionen ab, die von Node.js exportiert wurden. Diese Wrapper sind weder Teil der N-API, noch werden sie als Teil von Node.js verwaltet. Ein solches Beispiel ist: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
