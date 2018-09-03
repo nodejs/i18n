@@ -1134,29 +1134,29 @@ Si `value` es:
 const buf = Buffer.from('this is a buffer');
 
 console.log(buf.indexOf('this'));
-// Prints: 0
+// Imprime: 0
 console.log(buf.indexOf('is'));
-// Prints: 2
+// Imprime: 2
 console.log(buf.indexOf(Buffer.from('a buffer')));
-// Prints: 8
+// Imprime: 8
 console.log(buf.indexOf(97));
-// Prints: 8 (97 is the decimal ASCII value for 'a')
+// Imprime: 8 (97 es el valor ASCII decimal para 'a')
 console.log(buf.indexOf(Buffer.from('a buffer example')));
-// Prints: -1
+// Imprime: -1
 console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
-// Prints: 8
+// Imprime: 8
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.indexOf('\u03a3', 0, 'utf16le'));
-// Prints: 4
+// Imprime: 4
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
-// Prints: 6
+// Imprime: 6
 ```
 
-If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
+Si `value` no es una cadena, número, o `Buffer`, este método producirá un `TypeError`. Si `value` es un número, se forzará a un valor byte válido, un entero entre 0 y 255.
 
-If `byteOffset` is not a number, it will be coerced to a number. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
+Si `byteOffset` no es un número, se forzará a un número. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
