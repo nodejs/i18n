@@ -96,9 +96,9 @@ console.log(Certificate.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 ```
 
-### Legacy API
+### Legado API
 
-As a still supported legacy interface, it is possible (but not recommended) to create new instances of the `crypto.Certificate` class as illustrated in the examples below.
+Como una interfaz heredada que todavía es compatible, es posible (pero no se recomienda) crear nuevas instancias de `crypto.Certificate` como se ilustra en los ejemplos acontinuación.
 
 #### new crypto.Certificate()
 
@@ -161,15 +161,15 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 ```
 
-## Class: Cipher
+## Clase: Cifrar
 
 <!-- YAML
 added: v0.1.94
 -->
 
-Instances of the `Cipher` class are used to encrypt data. The class can be used in one of two ways:
+Instancias de clase `Cipher` son usadas para encriptar datos. La clase puede ser usada de una o dos maneras:
 
-- As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
+- Como una [stream](stream.html) que es legible y escribible, donde los datos planos sin encriptar están escritos para producir datos encriptados en el lado legible, o
 - Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
 
 The [`crypto.createCipher()`][] or [`crypto.createCipheriv()`][] methods are used to create `Cipher` instances. `Cipher` objects are not to be created directly using the `new` keyword.
