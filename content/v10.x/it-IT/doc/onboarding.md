@@ -148,7 +148,7 @@ Note that commits in one PR that belong to one logical change should be squashed
 
 ## Exercise: Make a PR adding yourself to the README
 
-* Example: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
+* Esempio: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
   * For raw commit message: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
 * Collaborators are in alphabetical order by GitHub username.
@@ -172,4 +172,4 @@ Note that commits in one PR that belong to one logical change should be squashed
   * <https://github.com/nodejs/readable-stream>
   * <https://github.com/nodejs/LTS>
   * <https://github.com/nodejs/citgm>
-* The Node.js Foundation hosts regular summits for active contributors to the Node.js project, where we have face-to-face discussions about our work on the project. The Foundation has travel funds to cover participants' expenses including accommodations, transportation, visa fees, etc. if needed. Check out the [summit](https://github.com/nodejs/summit) repository for details.
+* The Node.js Foundation hosts regular summits for active contributors to the Node.js project, where we have face-to-face discussions about our work on the project. La Fondazione ha fondi di viaggio per coprire le spese dei partecipanti, inclusi alloggio, trasporto, tasse sui visti, ecc. se necessario. Check out the [summit](https://github.com/nodejs/summit) repository for details.
