@@ -52,7 +52,7 @@ added: v9.0.0
 -->
 
 - `spkac` {string | Buffer | TypedArray | DataView}
-- Devuelve: {Buffer} El componente desafío de la estructura de datos `spkac`, que incluye una llave pública y un desafío.
+- Devuelve: {Buffer} El componente desafío de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const { Certificate } = require('crypto');
@@ -70,7 +70,7 @@ added: v9.0.0
 
 - `spkac` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
-- Returns: {Buffer} The public key component of the `spkac` data structure, which includes a public key and a challenge.
+- Devuelve: {Buffer} El componente público de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const { Certificate } = require('crypto');
@@ -87,7 +87,7 @@ added: v9.0.0
 -->
 
 - `spkac` {Buffer | TypedArray | DataView}
-- Returns: {boolean} `true` if the given `spkac` data structure is valid, `false` otherwise.
+- Devuelve: {boolean} `true` si la estructura de datos `spkac` dada es válida, `false` si no lo es.
 
 ```js
 const { Certificate } = require('crypto');
@@ -118,7 +118,7 @@ added: v0.11.8
 -->
 
 - `spkac` {string | Buffer | TypedArray | DataView}
-- Devuelve: {Buffer} El componente desafío de la estructura de datos `spkac`, que incluye una llave pública y un desafío.
+- Devuelve: {Buffer} El componente desafío de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -135,7 +135,7 @@ added: v0.11.8
 -->
 
 - `spkac` {string | Buffer | TypedArray | DataView}
-- Returns: {Buffer} The public key component of the `spkac` data structure, which includes a public key and a challenge.
+- Devuelve: {Buffer} El componente público de la estructura de datos `spkac`, que incluye una clave pública y un desafío.
 
 ```js
 const cert = require('crypto').Certificate();
@@ -152,7 +152,7 @@ added: v0.11.8
 -->
 
 - `spkac` {Buffer | TypedArray | DataView}
-- Returns: {boolean} `true` if the given `spkac` data structure is valid, `false` otherwise.
+- Devuelve: {boolean} `true` si la estructura de datos `spkac` dada es válida, `false` si no lo es.
 
 ```js
 const cert = require('crypto').Certificate();
