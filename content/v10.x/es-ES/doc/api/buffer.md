@@ -1184,7 +1184,7 @@ added: v1.1.0
 
 * Devuelve: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
+Crea y devuelve un [iterador](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de claves `buf` (índices).
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1192,7 +1192,7 @@ const buf = Buffer.from('buffer');
 for (const key of buf.keys()) {
   console.log(key);
 }
-// Prints:
+// Imprime:
 //   0
 //   1
 //   2
@@ -1213,9 +1213,9 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`.
+* `byteOffset` {integer} Dónde comenzar a buscar la búsqueda en `buf`. **Predeterminado:** [`buf.length`]`- 1`.
 * `encoding` {string} Si `value` es una cadena, esta es la codificación utilizada para determinar la representación binaria de la cadena que se buscará en `buf`. **Predeterminado:** `'utf8'`.
-* Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
+* Devuelve: {integer} El índice de la última aparición de `value` en `buf`, o `-1` si `buf` no contiene `value`.
 
 Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
 
