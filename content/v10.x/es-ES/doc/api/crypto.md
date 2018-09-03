@@ -33,15 +33,15 @@ try {
 }
 ```
 
-## Clase: Certificado
+## Clase: Certificate
 
 <!-- YAML
 added: v0.11.8
 -->
 
-SPKAC es un mecanismo de solicitud de firma certificado implementado originalmente por Netscape y fue especificado formalmente como parte del [elemento `keygen` de HTML5][].
+SPKAC es un mecanismo de Solicitud de Firma Certificado implementado originalmente por Netscape y fue especificado formalmente como parte del [elemento `keygen` de HTML5][].
 
-Note que `<keygen>` es obsoleto desde que [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) y nuevos proyectos ya no usan este elemento.
+Note que `<keygen>` es obsoleto desde que [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) y nuevos proyectos ya no deben usar este elemento.
 
 El módulo `crypto` provee la clase `Certificate` para trabajar con datos SPKAC. El uso más común es el manejo de la salida generada por el elemento HTML5 `<keygen>`. Node.js usa la [implementación de SPKAC de OpenSSL](https://www.openssl.org/docs/man1.1.0/apps/openssl-spkac.html) internamente.
 
@@ -98,7 +98,7 @@ console.log(Certificate.verifySpkac(Buffer.from(spkac)));
 
 ### Legado API
 
-Como una interfaz heredada que todavía es compatible, es posible (pero no se recomienda) crear nuevas instancias de `crypto.Certificate` como se ilustra en los ejemplos acontinuación.
+Como una interfaz heredada que todavía es compatible, es posible (pero no se recomienda) crear nuevas instancias de la clase `crypto.Certificate` como se ilustra en los ejemplos a continuación.
 
 #### new crypto.Certificate()
 
@@ -161,7 +161,7 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 // Prints: true or false
 ```
 
-## Clase: Cifrar
+## Clase: Cipher
 
 <!-- YAML
 added: v0.1.94
@@ -268,7 +268,7 @@ added: v0.7.1
 
 Cuando se usan los algoritmos de encriptación por bloque, de clase `Cipher` automáticamente rellenará los datos de entrada al tamaño de bloque apropiado. Para desactivar el llenado por defecto llame a `cipher.setAutoPadding(false)`.
 
-Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un múltiplo del tamaño del bloque cipher o [`cipher.final()`][] arrojará un error. Desactivar el llenado automático es útil para un llenado no estandard, por ejemplo usando `0x0` en vez del llenado PKCS.
+Cuando `autoPadding` es `false`, la longitud de los datos de entrada debe ser un múltiplo del tamaño del bloque cipher o [`cipher.final()`][] arrojará un error. Desactivar el llenado automático es útil para un llenado no estándar, por ejemplo usando `0x0` en vez del llenado PKCS.
 
 El método `cipher.setAutoPadding()` debe llamarse antes del [`cipher.final()`][].
 
