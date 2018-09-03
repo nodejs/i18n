@@ -1079,29 +1079,29 @@ added: v5.3.0
 -->
 
 * `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
-* `encoding` {string} If `value` is a string, this is its encoding. **Predeterminado:** `'utf8'`.
-* Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
+* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** `0`.
+* `encoding` {string} Si `value` es una cadena, esta es su codificación. **Predeterminado:** `'utf8'`.
+* Devuelve: {boolean} `true` si `value` se encontró en `buf`, y `false` de lo contrario.
 
-Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
+Equivalente a [`buf.indexOf() !== -1`][`buf.indexOf()`].
 
 ```js
 const buf = Buffer.from('this is a buffer');
 
 console.log(buf.includes('this'));
-// Prints: true
+// Imprime: true
 console.log(buf.includes('is'));
-// Prints: true
+// Imprime: true
 console.log(buf.includes(Buffer.from('a buffer')));
-// Prints: true
+// Imprime: true
 console.log(buf.includes(97));
-// Prints: true (97 is the decimal ASCII value for 'a')
+// Imprime: true (97 is the decimal ASCII value for 'a')
 console.log(buf.includes(Buffer.from('a buffer example')));
-// Prints: false
+// Imprime: false
 console.log(buf.includes(Buffer.from('a buffer example').slice(0, 8)));
-// Prints: true
+// Imprime: true
 console.log(buf.includes('this', 4));
-// Prints: false
+// Imprime: false
 ```
 
 ### buf.indexOf(value\[, byteOffset\]\[, encoding\])
@@ -1120,7 +1120,7 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
+* `byteOffset` {integer} Donde comenzar la búsqueda en `buf`. **Predeterminado:** `0`.
 * `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Predeterminado:** `'utf8'`.
 * Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
