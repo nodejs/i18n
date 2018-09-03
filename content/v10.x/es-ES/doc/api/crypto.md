@@ -229,7 +229,7 @@ added: v0.1.94
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string} Cualquier contenido cifrado restante. Si `outputEncoding` es alguno de estos, `'latin1'`, `'base64'` o `'hex'`, una string es devuelta. Si no se provee una `outputEncoding`, un [`Buffer`][] es devuelto.
 
-Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
+Una vez que el método `cipher.final()` ha sido llamado, el objeto `Cipher` no puede ser usado para encriptar datos. Intentar llamar a `cipher.final()` más de una vez producirá un error.
 
 ### cipher.setAAD(buffer[, options])
 
@@ -239,11 +239,11 @@ added: v1.0.0
 
 - `buffer` {Buffer}
 - `options` {Object}
-- Returns: {Cipher} for method chaining.
+- Devuelve: {Cipher} como método cadena.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+Cuando se usa un modo de cifrado autenticado (solamente `GCM` y `CCM` están siendo respaldados actualmente), el método `cipher.setAAD()` establece el valor usado por el parámetro de entrada de *datos adicional autenticado* (DAA).
 
-The `options` argument is optional for `GCM`. When using `CCM`, the `plaintextLength` option must be specified and its value must match the length of the plaintext in bytes. See [CCM mode](#crypto_ccm_mode).
+El argumento `options` es opcional para `GCM`. When using `CCM`, the `plaintextLength` option must be specified and its value must match the length of the plaintext in bytes. See [CCM mode](#crypto_ccm_mode).
 
 The `cipher.setAAD()` method must be called before [`cipher.update()`][].
 
@@ -264,7 +264,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Default:** `true`
-- Returns: {Cipher} for method chaining.
+- Devuelve: {Cipher} como método cadena.
 
 When using block encryption algorithms, the `Cipher` class will automatically add padding to the input data to the appropriate block size. To disable the default padding call `cipher.setAutoPadding(false)`.
 
@@ -380,7 +380,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Cipher} for method chaining.
+- Devuelve: {Cipher} como método cadena.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
@@ -398,7 +398,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Cipher} for method chaining.
+- Devuelve: {Cipher} como método cadena.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
 
@@ -413,7 +413,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Default:** `true`
-- Returns: {Cipher} for method chaining.
+- Devuelve: {Cipher} como método cadena.
 
 When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
 
