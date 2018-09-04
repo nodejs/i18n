@@ -5,8 +5,8 @@
   * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
 * Preferowane jest formatowanie opisane w `.editorconfig`. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
+  * [Wtyczka](http://editorconfig.org/#download) jest dostępna dla niektórych edytorów do automatycznego stosowania tych zasad.
+* Problemy mechaniczne, takie jak pisownia i gramatyka, powinny być identyfikowane za pomocą narzędzi, o ile to możliwe. If not caught by a tool, they should be pointed out by human reviewers.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
