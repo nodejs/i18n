@@ -1403,11 +1403,11 @@ Integers read from a `Buffer` are interpreted as two's complement signed values.
 const buf = Buffer.from([-1, 5]);
 
 console.log(buf.readInt8(0));
-// Prints: -1
+// Imprime: -1
 console.log(buf.readInt8(1));
-// Prints: 5
+// Imprime: 5
 console.log(buf.readInt8(2));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.readInt16BE(offset)
@@ -1424,7 +1424,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 2`.
 * Returns: {integer}
 
 Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified endian format (`readInt16BE()` returns big endian, `readInt16LE()` returns little endian).
