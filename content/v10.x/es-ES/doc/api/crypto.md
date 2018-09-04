@@ -404,7 +404,7 @@ Cuando se usa un modo de encriptación autenticado (solamente `GCM` y `CCM` est�
 
 Note que esta versión de Node.js no verifica la longitud de la etiqueta de autenticación de GCM. Tal control *debe* ser implementado por las aplicaciones y es crucial para la autenticidad de los datos encriptados, de otro modo, un atacante puede usar una etiqueta de autenticación arbitraria corta para aumentar las posibilidades de pasar la autenticación de manera efectiva (hasta un 0.39%). Es altamente recomendable asociar uno de los valores 16, 15, 14, 13, 12, 8 o 4 bytes con cada clave, y solo para permitir etiquetas de autenticación de esa longitud, ver [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
-The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
+El método `decipher.setAuthTag()` debe ser llamado antes de [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
 
@@ -415,11 +415,11 @@ added: v0.7.1
 - `autoPadding` {boolean} **Por defecto:** `true`
 - Devuelve: {Cipher} como método cadena.
 
-When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
+Cuando los datos han sido encriptados sin un llenado de bloques estándar, llamar a `decipher.setAutoPadding(false)` va a deshabilitar automáticamente el llenado automático para prevenir a [`decipher.final()`][] de verificar y remover el llenado.
 
-Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
+Desactivar el llenado automático sólo funciona si la longitud de datos de entrada es un múltiplo del tamaño de bloques cifrados.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+El método `decipher.setAutoPadding()` debe ser llamado antes de [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -437,7 +437,7 @@ changes:
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string}
 
-Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Actualiza el descifrado con `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
 The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
