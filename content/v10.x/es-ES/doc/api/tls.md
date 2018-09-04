@@ -59,8 +59,8 @@ Perfect Forward Secrecy se logra generando aleatoriamente un par de claves para 
 
 Actualmente, se utilizan dos métodos para lograr Perfect Forward Secrecy (tenga en cuenta el carácter "E" anexado a las abreviaturas tradicionales):
 
-* [DHE](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) - An ephemeral version of the Diffie Hellman key-agreement protocol.
-* [ECDHE](https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman) - An ephemeral version of the Elliptic Curve Diffie Hellman key-agreement protocol.
+* [DHE](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) - Una versión efímera del protocolo de acuerdo clave de Diffie Hellman.
+* [ECDHE](https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman) - Una versión efímera del protocolo de acuerdo clave de Diffie Hellman de curva elíptica.
 
 Ephemeral methods may have some performance drawbacks, because key generation is expensive.
 
