@@ -100,7 +100,7 @@ apply.whitespace fix`
 * Nella misura del possibile, gli issue dovrebbero essere identificati dagli strumenti piuttosto che dai revisori umani. Se lasci dei commenti riguardo degli issue che potrebbero essere identificati dagli strumenti ma non vengono identificati, prendi in considerazione l'implementazione degli strumenti necessari.
 * Attesa minima per i commenti 
   * C'è un tempo di attesa minimo che cerchiamo di rispettare per le modifiche significative in modo che le persone che possono avere un input importante in un progetto così distribuito siano in grado di rispondere.
-  * Per modifiche non banali, lasciare aperta la Pr per almeno 48 ore (72 ore nel fine settimana).
+  * Per le modifiche significative, lascia aperta la pull request per almeno 48 ore (72 ore nel weekend).
   * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
 
 * Approvazione di un cambiamento
