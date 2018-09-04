@@ -57,7 +57,7 @@ El término "[Forward Secrecy](https://en.wikipedia.org/wiki/Perfect_forward_sec
 
 Perfect Forward Secrecy se logra generando aleatoriamente un par de claves para el acuerdo de clave en cada establecimiento de comunicación de TLS/SSL (en contraste con el uso de la misma clave para todas las sesiones). Los métodos que implementan esta técnica se llaman "efímeros".
 
-Currently two methods are commonly used to achieve Perfect Forward Secrecy (note the character "E" appended to the traditional abbreviations):
+Actualmente, se utilizan dos métodos para lograr Perfect Forward Secrecy (tenga en cuenta el carácter "E" anexado a las abreviaturas tradicionales):
 
 * [DHE](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) - An ephemeral version of the Diffie Hellman key-agreement protocol.
 * [ECDHE](https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman) - An ephemeral version of the Elliptic Curve Diffie Hellman key-agreement protocol.
