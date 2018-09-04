@@ -1552,21 +1552,21 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - 2`.
 * Devuelve: {integer}
 
-Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
+Lee un entero de 16-bit sin signo desde `buf` en el `offset` especificado con el formato endian especificado (`readUInt16BE()` devuelve big endian, `readUInt16LE()` devuelve little endian).
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56]);
 
 console.log(buf.readUInt16BE(0).toString(16));
-// Prints: 1234
+// Imprime: 1234
 console.log(buf.readUInt16LE(0).toString(16));
-// Prints: 3412
+// Imprime: 3412
 console.log(buf.readUInt16BE(1).toString(16));
-// Prints: 3456
+// Imprime: 3456
 console.log(buf.readUInt16LE(1).toString(16));
-// Prints: 5634
+// Imprime: 5634
 console.log(buf.readUInt16LE(2).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUInt32BE(offset)
@@ -1583,20 +1583,20 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Debe satisfacer `0 <= offset <= buf.length - 4`.
-* Returns: {integer}
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - 4`.
+* Devuelve: {integer}
 
-Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
+Lee un entero de 32-bit sin signo desde `buf` en el `offset` especificado con el formato endian especificado (`readUInt32BE()` devuelve big endian, `readUInt32LE()` devuelve little endian).
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
 
 console.log(buf.readUInt32BE(0).toString(16));
-// Prints: 12345678
+// Imprime: 12345678
 console.log(buf.readUInt32LE(0).toString(16));
-// Prints: 78563412
+// Imprime: 78563412
 console.log(buf.readUInt32LE(1).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUIntBE(offset, byteLength)
@@ -1613,11 +1613,11 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Debe satisfacer `0 < byteLength <= 6`.
-* Returns: {integer}
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Número de bytes a leer. Debe satisfacer `0 < byteLength <= 6`.
+* Devuelve: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
+Lee el número `byteLength` de bytes desde `buf` en el `offset` especificado e interpreta el resultado como un entero sin signo. Soporta hasta 48 bits de precisión.
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
