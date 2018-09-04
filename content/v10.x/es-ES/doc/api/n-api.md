@@ -97,19 +97,19 @@ Los alcances controlados escapables son un tipo especial de alcance controlado p
 
 #### napi_ref
 
-Esta es la abstracción utilizada para referenciar a `napi_value`. This allows for users to manage the lifetimes of JavaScript values, including defining their minimum lifetimes explicitly.
+Esta es la abstracción utilizada para referenciar a `napi_value`. Este permite que los usuarios puedan controlar el tiempo de vida de los valores JavaScript, incluyendo definir su tiempo de vida mínimos de forma explícita.
 
-For more details, review the [Object Lifetime Management](#n_api_object_lifetime_management).
+Para más detalles, revisar la [Gestión de tiempo de vida del objeto](#n_api_object_lifetime_management).
 
-### N-API Callback types
+### Tipos de devolución de llamadas N-API
 
 #### napi_callback_info
 
-Opaque datatype that is passed to a callback function. It can be used for getting additional information about the context in which the callback was invoked.
+Tipo de dato opaco que se pasa a una función de devolución de llamada. Puede ser utilizada para obtener información adicional sobre el contexto en el que la devolución de llamada fue invocada.
 
 #### napi_callback
 
-Function pointer type for user-provided native functions which are to be exposed to JavaScript via N-API. Callback functions should satisfy the following signature:
+Tipo de función puntero para las funciones nativas proveídas por el usuario que son expuestas a JavaScript por medio de N-API. Las devoluciones de llamadas deben satisfacer las siguientes firmas:
 
 ```C
 typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
@@ -117,7 +117,7 @@ typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 
 #### napi_finalize
 
-Function pointer type for add-on provided functions that allow the user to be notified when externally-owned data is ready to be cleaned up because the object with which it was associated with, has been garbage-collected. The user must provide a function satisfying the following signature which would get called upon the object's collection. Currently, `napi_finalize` can be used for finding out when objects that have external data are collected.
+Tipo de función puntero para funciones proveídas por los complementos que permiten al usuario ser notificado cuando datos de dominio externo están listos para ser limpiados porque el objeto al que estaban asociados fue clasificado como basura. El usuario debe suministrar una función que satisface la siguiente firma, que sería invocado sobre la recolección de objetos. Actualmente, `napi_finalize` puede ser utilizado para averiguar cuándo los objetos que tienen datos externos, son tomados.
 
 ```C
 typedef void (*napi_finalize)(napi_env env,
@@ -127,7 +127,7 @@ typedef void (*napi_finalize)(napi_env env,
 
 #### napi_async_execute_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Función puntero utilizada con funciones que soportan operaciones asincrónicas. Las devoluciones de llamadas deben satisfaces la siguiente firma:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env, void* data);
@@ -135,7 +135,7 @@ typedef void (*napi_async_execute_callback)(napi_env env, void* data);
 
 #### napi_async_complete_callback
 
-Function pointer used with functions that support asynchronous operations. Callback functions must statisfy the following signature:
+Función puntero utilizada con funciones que soportan operaciones asincrónicas. Las devoluciones de llamadas deben satisfaces la siguiente firma:
 
 ```C
 typedef void (*napi_async_complete_callback)(napi_env env,
@@ -143,15 +143,15 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-## Error Handling
+## Manejo de errores
 
-N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
+N-API utiliza valores de retorno y excepciones de JavaScript para el manejo de errores. Las siguientes secciones explican la aproximación a cada caso.
 
-### Return values
+### Valores de retorno
 
-All of the N-API functions share the same error handling pattern. The return type of all API functions is `napi_status`.
+Todas las funciones de N-API comparten el mismo patrón de manejo de errores. El tipo de retorno de todas las funciones API es `napi_status`.
 
-The return value will be `napi_ok` if the request was successful and no uncaught JavaScript exception was thrown. If an error occurred AND an exception was thrown, the `napi_status` value for the error will be returned. If an exception was thrown, and no error occurred, `napi_pending_exception` will be returned.
+El valor de retorno será `napi_ok` si la petición fue exitosa y no se capturó ninguna excepción arrojada por JavaScript. Si ha ocurrido un error y una excepción fue arrojada, el valor de `napi_status` para el error, será devuelto. Si no hubo excepción y no ocurrió ningún error, `napi_pending_exception` será devuelto.
 
 In cases where a return value other than `napi_ok` or `napi_pending_exception` is returned, [`napi_is_exception_pending`][] must be called to check if an exception is pending. See the section on exceptions for more details.
 
