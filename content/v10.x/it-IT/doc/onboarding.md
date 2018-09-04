@@ -158,18 +158,18 @@ Si noti che in una PR i commit che appartengono ad una modifica logica dovrebber
 * Dopo una o due approvazioni, conferma la PR (le PR di questo tipo non necessitano di attendere 48/72 ore per essere confermate). 
   * Assicurati di aggiungere `PR-URL: <full-pr-url>` e il metadata `Reviewed-By:` appropriato.
   * [`node-core-utils`][] automatizza la generazione dei metadata ed il processo di conferma (landing). Vedi la documentazione di [`git-node`][].
-  * [`core-validate-commit`][] automatizza la convalida dei commit message. This will be run during `git node land --final` of the [`git-node`][] command.
+  * [`core-validate-commit`][] automatizza la convalida dei commit message. Questo verrà eseguito durante `git node land --final` del comando [`git-node`][].
 
 ## Note finali
 
-* Non preoccuparti di sbagliare: tutti li fanno, c'è molto da c'è molto da interiorizzare e ci vuole tempo (e lo riconosciamo!)
-* Almost any mistake you could make can be fixed or reverted.
-* I Collaboratori si fidano di te e sono grati per il tuo aiuto!
-* Other repositories: 
+* Non preoccuparti di commette qualche errore: tutti li fanno, c'è molto da interiorizzare/assimilare e ci vuole tempo (e ne siamo consapevoli!)
+* Quasi ogni errore che potresti fare può essere corretto o ripristinato.
+* I Collaboratori attuali si fidano di te e ti sono grati per l'aiuto che dai!
+* Altri repository: 
   * <https://github.com/nodejs/TSC>
   * <https://github.com/nodejs/build>
   * <https://github.com/nodejs/nodejs.org>
   * <https://github.com/nodejs/readable-stream>
   * <https://github.com/nodejs/LTS>
   * <https://github.com/nodejs/citgm>
-* The Node.js Foundation hosts regular summits for active contributors to the Node.js project, where we have face-to-face discussions about our work on the project. La Fondazione ha fondi di viaggio per coprire le spese dei partecipanti, inclusi alloggio, trasporto, tasse sui visti, ecc. se necessario. Check out the [summit](https://github.com/nodejs/summit) repository for details.
+* La Node.js Foundation ospita regolarmente summit per contribuire attivamente al progetto Node.js, dove abbiamo discussioni faccia a faccia riguardo il nostro lavoro svolto sul progetto. La Foundation ha fondi di viaggio per coprire le spese dei partecipanti, inclusi alloggio, trasporto, tasse sui visti, ecc. se necessario. Consulta il repository [summit](https://github.com/nodejs/summit) per i dettagli.
