@@ -10,7 +10,7 @@ El módulo `tls` proporciona una implementación de Transport Layer Security (TL
 const tls = require('tls');
 ```
 
-## TLS/SSL Concepts
+## Conceptos TLS/SSL
 
 The TLS/SSL is a public/private key infrastructure (PKI). For most common cases, each client and server must have a *private key*.
 
