@@ -66,10 +66,10 @@ apply.whitespace fix`
 
 * [**Vedi "Etichette"**](./onboarding-extras.md#labels)
   
-  * C'è [un bot](https://github.com/nodejs-github-bot/github-bot) che applica le etichette del sottosistema (ad esempio, `doc`, `test`, `assert`, o `buffer`) in modo da sapere quali parti del codice base sono modificate dalla pull request. Non è perfetto, ovviamente. Sii libero di applicare etichette pertinenti e rimuovere etichette irrilevanti da problemi e le Pr.
-  * Utilizza l'etichetta ` tsc-review ` se un argomento è controverso o non è stato concluso dopo un tempo prolungato.
+  * C'è [un bot](https://github.com/nodejs-github-bot/github-bot) che applica le etichette del sottosistema (ad esempio, `doc`, `test`, `assert`, o `buffer`) in modo da sapere quali parti del codice base sono modificate dalla pull request. Non è perfetto, ovviamente. Sentiti libero di applicare etichette pertinenti e di rimuovere quelle irrilevanti dalle pull request o dagli issue.
+  * Utilizza l'etichetta `tsc-review` se un argomento è controverso o non giunge ad una conclusione dopo un periodo di tempo prolungato.
   * `semver-{minor,major}`: 
-    * If a change has the remote *chance* of breaking something, use the `semver-major` label
+    * Se una modifica ha la remota *possibilità* di danneggiare qualcosa, utilizza l'etichetta `semver-major`
     * Quando si aggiunge l'etichetta `semver-*` aggiungi un commento in cui spieghi perché la stai aggiungendo. Fallo subito così non lo dimentichi!
   * Si prega di aggiungere l'etichetta `author-ready` per PR dove: 
     * iC è stato avviato (non necessariamente terminato),
