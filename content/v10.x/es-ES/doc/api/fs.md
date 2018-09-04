@@ -2960,7 +2960,7 @@ To be notified when the file was modified, not just accessed, it is necessary to
 
 When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. Si el archivo es creado más tarde, el listener será llamado nuevamente, con los últimos objetos de estadística. Este es un cambio en la funcionalidad desde v0.10.
 
-Using [`fs.watch()`][] is more efficient than `fs.watchFile` and `fs.unwatchFile`. `fs.watch` should be used instead of `fs.watchFile` and `fs.unwatchFile` when possible.
+Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile` y `fs.unwatchFile`. `fs.watch` should be used instead of `fs.watchFile` and `fs.unwatchFile` when possible.
 
 When a file being watched by `fs.watchFile()` disappears and reappears, then the `previousStat` reported in the second callback event (the file's reappearance) will be the same as the `previousStat` of the first callback event (its disappearance).
 
@@ -3462,7 +3462,7 @@ Prueba los permisos del usuario para el archivo o directorio especificado por `p
 * `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
 * `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
-Si la verificación de accesibilidad tiene éxito, la `Promise` se resuelve sin ningún valor. If any of the accessibility checks fail, the `Promise` is rejected with an `Error` object. The following example checks if the file `/etc/passwd` can be read and written by the current process.
+Si la verificación de accesibilidad tiene éxito, la `Promise` se resuelve sin ningún valor. Si alguna verificación de accesibilidad falla, la `Promise` será rechazada con un objeto de `Error` . El siguiente ejemplo verifica si el archivo `/etc/passwd` puede ser leído y escrito por el proceso actual.
 
 ```js
 fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
@@ -3909,7 +3909,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * Devuelve: {Promise}
 
-The `Promise` is resolved with the [`fs.Stats`][] object for the given `path`.
+La `Promise` se resuelve con el objeto de [`fs.Stats`][] para el `path` dado.
 
 ### fsPromises.symlink(target, path[, type])
 
