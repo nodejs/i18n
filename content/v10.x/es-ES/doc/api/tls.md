@@ -76,9 +76,9 @@ Si usa Perfect Forward Secrecy usando `ECDHE`, no se requieren los parámetros d
 
 <!-- type=misc -->
 
-ALPN (Application-Layer Protocol Negotiation Extension) and SNI (Server Name Indication) are TLS handshake extensions:
+ALPN (Application Layer Protocol Negotiation Extension) y SNI (Server Name Indication) son extensiones de protocolo de enlace de TLS:
 
-* ALPN - Allows the use of one TLS server for multiple protocols (HTTP, HTTP/2)
+* ALPN - Permite el uso de un servidor TLS para múltiples protocolos (HTTP, HTTP/2)
 * SNI - Allows the use of one TLS server for multiple hostnames with different SSL certificates.
 
 ### Client-initiated renegotiation attack mitigation
