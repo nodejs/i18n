@@ -152,13 +152,13 @@ Si noti che in una PR i commit che appartengono ad una modifica logica dovrebber
   * Per commit message non elaborato: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
 * I Collaboratori sono in ordine alfabetico in base all'username di GitHub.
-* Optionally, include your personal pronouns.
-* Label your pull request with the `doc` subsystem label.
-* Run CI on the PR. Because the PR does not affect any code, use the `node-test-pull-request-lite` CI task. Alternatively, use the usual `node-test-pull-request` CI task and cancel it after the linter and one other subtask have passed.
-* After one or two approvals, land the PR (PRs of this type do not need to wait for 48/72 hours to land). 
-  * Be sure to add the `PR-URL: <full-pr-url>` and appropriate `Reviewed-By:` metadata.
-  * [`node-core-utils`][] automates the generation of metadata and the landing process. See the documentation of [`git-node`][].
-  * [`core-validate-commit`][] automates the validation of commit messages. This will be run during `git node land --final` of the [`git-node`][] command.
+* Facoltativamente, includi i tuoi pronomi personali.
+* Etichetta la tua pull request con l'etichetta del sottosistema `doc`.
+* Esegui la CI sulla PR. Poiché la PR non influenza alcun codice, utilizza la CI task `node-test-pull-request-lite`. In alternativa, utilizza la solita CI task `node-test-pull-request` e annullala dopo che il linter e l'altra task secondaria sono stati passati.
+* Dopo una o due approvazioni, conferma la PR (le PR di questo tipo non necessitano di attendere 48/72 ore per essere confermate). 
+  * Assicurati di aggiungere `PR-URL: <full-pr-url>` e il metadata `Reviewed-By:` appropriato.
+  * [`node-core-utils`][] automatizza la generazione dei metadata ed il processo di conferma (landing). Vedi la documentazione di [`git-node`][].
+  * [`core-validate-commit`][] automatizza la convalida dei commit message. This will be run during `git node land --final` of the [`git-node`][] command.
 
 ## Note finali
 
