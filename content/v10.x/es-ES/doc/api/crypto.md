@@ -305,9 +305,9 @@ Instancias de la clase `Decipher` son usadas para descifrar datos. La clase pued
 - Como un [stream](stream.html) que es legible y escribible, donde los datos planos encriptados están escritos para producir datos no encriptados en el lado legible, o
 - Usando los métodos [`decipher.update()`][] y [`decipher.final()`][] para producir datos no encriptados.
 
-Los métodos [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] son usados para crear instancias `Decipher`. `Decipher` objects are not to be created directly using the `new` keyword.
+Los métodos [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] son usados para crear instancias `Decipher`. Los objetos `Decipher` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Decipher` objects as streams:
+Ejemplo: Usando objetos `Decipher` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -330,7 +330,7 @@ decipher.write(encrypted, 'hex');
 decipher.end();
 ```
 
-Example: Using `Decipher` and piped streams:
+Ejemplo: Usando `Decipher` y piped streams:
 
 ```js
 const crypto = require('crypto');
@@ -343,7 +343,7 @@ const output = fs.createWriteStream('test.js');
 input.pipe(decipher).pipe(output);
 ```
 
-Example: Using the [`decipher.update()`][] and [`decipher.final()`][] methods:
+Ejemplo: Usando los métodos [`decipher.update()`][] y [`decipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
