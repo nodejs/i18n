@@ -3348,7 +3348,7 @@ added: v10.0.0
 * `len` {integer} **Default:** `0`
 * Devuelve: {Promise}
 
-Truncates the file then resolves the `Promise` with no arguments upon success.
+Trunca el archivo y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 Si el archivo era más grande que `len` bytes, sólo los primeros `len` bytes serán retenidos en el archivo.
 
@@ -3420,7 +3420,7 @@ La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritt
 
 No es seguro utilizar `filehandle.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
 
 #### filehandle.writeFile(data, options)
 
@@ -3462,7 +3462,7 @@ Prueba los permisos del usuario para el archivo o directorio especificado por `p
 * `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
 * `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
-If the accessibility check is successful, the `Promise` is resolved with no value. If any of the accessibility checks fail, the `Promise` is rejected with an `Error` object. The following example checks if the file `/etc/passwd` can be read and written by the current process.
+Si la verificación de accesibilidad tiene éxito, la `Promise` se resuelve sin ningún valor. If any of the accessibility checks fail, the `Promise` is rejected with an `Error` object. The following example checks if the file `/etc/passwd` can be read and written by the current process.
 
 ```js
 fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
@@ -3532,7 +3532,7 @@ Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe 
 
 Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
-`flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
+`flags` es un entero opcional que especifica el comportamiento de la operación de copia. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
 * `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
@@ -3800,7 +3800,7 @@ Lee datos del archivo especificado por `filehandle`.
 
 `length` es un entero que especifica el número de bytes a leer.
 
-`position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
+`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. If `position` is `null`, data will be read from the current file position, and the file position will be updated. Si `position` es un entero, la posición del archivo permanecerá sin cambios.
 
 Luego de una lectura exitosa, la `Promise` se resuelve con un objeto con una propiedad de `bytesRead` que especifique el número de bytes leídos, y una propiedad de `buffer` que sea una referencia a lo que fue pasado en el argumento de `buffer` .
 
@@ -3852,7 +3852,7 @@ added: v10.0.0
   * `encoding` {string} **Default:** `'utf8'`
 * Devuelve: {Promise}
 
-Asynchronous readlink(2). The `Promise` is resolved with the `linkString` upon success.
+Asynchronous readlink(2). La `Promise` se resuelve con el `linkString` al realizarse con éxito.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path returned. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
 
@@ -3990,7 +3990,7 @@ La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritt
 
 No es seguro utilizar `fsPromises.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
 
 ### fsPromises.writeFile(file, data[, options])
 
@@ -4570,7 +4570,7 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 La bandera exclusiva `'x'` (bandera `O_EXCL` en open(2)) asegura que esa ruta sea creada recientemente. En sistemas de POSIX, se considera que la ruta existe incluso si es un enlace simbólico a un archivo inexistente. La bandera exclusiva puede o no que funcione con sistemas de archivos de red.
 
-On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
 
 Modificar un archivo en vez de reemplazarlo puede que requiera un modo de banderas de `'r+'` en lugar del modo predeterminado `'w'`.
 
