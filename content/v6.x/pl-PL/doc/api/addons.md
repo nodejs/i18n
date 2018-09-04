@@ -6,15 +6,15 @@ Node.js Addons są dynamicznie połączonymi obiektami współdzielonymi, napisa
 
 W chwili obecnej metoda wykonania Addons jest dość skomplikowana, obejmująca znajomość kilku komponentów i interfejsów API:
 
-* V8: biblioteka C ++, którą Node.js obecnie używa do zapewnienia wykonania JavaScript. V8 zapewnia mechanizmy tworzenia obiektów, funkcji dzwoniących itp. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+* V8: biblioteka C ++, którą Node.js obecnie używa do zapewnienia wykonania JavaScript. V8 zapewnia mechanizmy tworzenia obiektów, funkcji dzwoniących itp. API V8 jest udokumentowane głównie w `v8.h` plik nagłówkowy (`deps/v8/include/v8.h` w drzewie źródłowym Node.js), które jest również dostępne [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. To także służy jako wieloplatformowa biblioteka abstrakcji, zapewniająca łatwy, podobne do POSIX dostęp we wszystkich głównych systemach operacyjnych do wielu typowych zadań systemowych, takich jak interakcja z systemem plików, gniazdami, zegarami i zdarzeniami systemowymi. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Autorzy Addon zachęcani są do przemyślenia, jak uniknąć blokowania pętli zdarzeń za pomocą I/O lub innych czasochłonnych zadań przez odciążanie pracy poprzez libuv do nieblokujących operacji systemowych, wątków roboczych lub korzystania z niestandardowych libuv's wątków.
 
 * Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the V8 and OpenSSL symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js zawiera szereg innych bibliotek statycznych, w tym OpenSSL. Te inne biblioteki znajdują się w katalogu `deps/` katalog w drzewie źródłowym Node.js. Tylko symbole V8 i OpenSSL są celowo ponownie wyeksportowane przez Node.js i może być używany w różnych zakresach przez Addons. Aby uzyskać dodatkowe informacje, zobacz [Łączenie z własnymi zależnościami Node.js](#addons_linking_to_node_js_own_dependencies).
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as a starting-point for your own Addon.
+Wszystkie poniższe przykłady są dostępne dla [pobierania](https://github.com/nodejs/node-addon-examples) i mogą być użyte jako punkt wyjścia dla twojego własnego Addon.
 
 ## Hello world
 
