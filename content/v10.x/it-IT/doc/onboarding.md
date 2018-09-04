@@ -136,11 +136,11 @@ apply.whitespace fix`
   * Se hai bisogno di altro aiuto in relazione alla CI: 
     * Utilizza #node-dev (IRC) per parlare con altri Collaboratori.
     * Utilizza #node-build (IRC) per parlare con i membri del Build WG che gestiscono l'infrastruttura della CI.
-    * Use the [Build WG repo](https://github.com/nodejs/build) to file issues for the Build WG members who maintain the CI infrastructure.
+    * Utilizza il [repository Build WG](https://github.com/nodejs/build) per i file issue per i membri del Build WG che gestiscono l'infrastruttura della CI.
 
-## Landing PRs
+## Conferma delle PR
 
-See the Collaborator Guide: [Landing Pull Requests](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
+Vedi la Guida per i Collaboratori: [Confermare le Pull Request](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
 Note that commits in one PR that belong to one logical change should be squashed. It is rarely the case in onboarding exercises, so this needs to be pointed out separately during the onboarding.
 
