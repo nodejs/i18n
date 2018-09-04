@@ -30,24 +30,24 @@ openssl req -new -sha256 -key ryans-key.pem -out ryans-csr.pem
 
 Una vez que se genera el archivo CSR, puede enviarse a una Autoridad de certificación para firmar o utilizarse para generar un certificado auto-firmado.
 
-Creating a self-signed certificate using the OpenSSL command-line interface is illustrated in the example below:
+La creación de un certificado auto-firmado utilizando la interfaz de línea de comandos de OpenSSL se ilustra en el siguiente ejemplo:
 
 ```sh
 openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 ```
 
-Once the certificate is generated, it can be used to generate a `.pfx` or `.p12` file:
+Una vez que se genera el certificado, se puede usar para generar un archivo `.pfx` o `.p12`:
 
 ```sh
 openssl pkcs12 -export -in ryans-cert.pem -inkey ryans-key.pem \
       -certfile ca-cert.pem -out ryans.pfx
 ```
 
-Where:
+Donde:
 
-* `in`: is the signed certificate
-* `inkey`: is the associated private key
-* `certfile`: is a concatenation of all Certificate Authority (CA) certs into a single file, e.g. `cat ca1-cert.pem ca2-cert.pem > ca-cert.pem`
+* `in`: es el certificado firmado
+* `inkey`: es la clave privada asociada
+* `certfile`: es una concatenación de todos los certificados de la Autoridad de Certificación (CA) en un único archivo, p.ej. `cat ca1-cert.pem ca2-cert.pem > ca-cert.pem`
 
 ### Perfect Forward Secrecy
 
