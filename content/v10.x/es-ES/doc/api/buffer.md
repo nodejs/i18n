@@ -1367,17 +1367,17 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - 4`.
 * Devuelve: {number}
 
-Reads a 32-bit float from `buf` at the specified `offset` with specified endian format (`readFloatBE()` returns big endian, `readFloatLE()` returns little endian).
+Lee un float de 32-bit desde `buf` en el `offset` especificado con el formato endian especificado (`readFloatBE()` devuelve big endian, `readFloatLE()` devuelve little endian).
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4]);
 
 console.log(buf.readFloatBE(0));
-// Prints: 2.387939260590663e-38
+// Imprime: 2.387939260590663e-38
 console.log(buf.readFloatLE(0));
-// Prints: 1.539989614439558e-36
+// Imprime: 1.539989614439558e-36
 console.log(buf.readFloatLE(1));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.readInt8(offset)
@@ -1392,10 +1392,10 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`.
-* Returns: {integer}
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - 1`.
+* Devuelve: {integer}
 
-Reads a signed 8-bit integer from `buf` at the specified `offset`.
+Lee un entero de 8-bit con signo desde `buf` en el `offset` especificado.
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
@@ -1519,7 +1519,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to read. Debe satisfacer `0 <= offset <= buf.length - 1`.
 * Returns: {integer}
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
@@ -1984,7 +1984,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 1`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
@@ -2113,7 +2113,7 @@ changes:
 -->
 
 * `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`.
+* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 1`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
