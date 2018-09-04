@@ -22,7 +22,7 @@ Questo documento è una descrizione delle cose che vengono dette ai nuovi Collab
   * [la revisione delle PR](#reviewing-prs)
   * [la conferma delle PR](#landing-prs)
 
-## La configurazione locale
+## Configurazione Locale
 
 * git:
   
@@ -44,7 +44,7 @@ apply.whitespace fix`
   * Se dopo la sessione ci sono delle domande, questo è il luogo adatto per farle!
   * La presenza non è obbligatoria, ma si prega di lasciare una nota se la si vuole far arrivare a `master`
 
-## Gli obiettivi & i valori del progetto
+## Obiettivi & Valori del progetto
 
 * I Collaboratori sono i proprietari collettivi del progetto
   
@@ -58,7 +58,7 @@ apply.whitespace fix`
 
 * Dovresti seguire *e* ritenere gli altri responsabili verso il [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-## La gestione dell'issue tracker
+## Gestione dell'issue tracker
 
 * Hai (soprattutto) molta libertà di azione; non esitare a chiudere un issue se sei sicuro che debba essere chiuso
   
@@ -66,7 +66,7 @@ apply.whitespace fix`
 
 * [**Vedi "Etichette"**](./onboarding-extras.md#labels)
   
-  * C'è [un bot](https://github.com/nodejs-github-bot/github-bot) che applica le etichette del sottosistema (ad esempio, `doc`, `test`, `assert`, o `buffer`) in modo da sapere quali parti del codice base sono modificate dalla pull request. Non è perfetto, ovviamente. Sentiti libero di applicare etichette pertinenti e di rimuovere quelle irrilevanti dalle pull request o dagli issue.
+  * C'è [un bot](https://github.com/nodejs-github-bot/github-bot) che applica le etichette del sottosistema (ad esempio, `doc`, `test`, `assert`, o `buffer`) in modo da sapere quali parti della code base sono modificate dalla pull request. Non è perfetto, ovviamente. Sentiti libero di applicare etichette pertinenti e di rimuovere quelle irrilevanti dalle pull request o dagli issue.
   * Utilizza l'etichetta `tsc-review` se un argomento è controverso o non giunge ad una conclusione dopo un periodo di tempo prolungato.
   * `semver-{minor,major}`: 
     * Se una modifica ha la remota *possibilità* di danneggiare qualcosa, utilizza l'etichetta `semver-major`
@@ -85,11 +85,11 @@ apply.whitespace fix`
 * Quando una discussione si anima, puoi chiedere agli altri Collaboratori di tenerla d'occhio aprendo un issue nel repository privato [nodejs/moderation](https://github.com/nodejs/moderation).
   
   * Questo è un repository a cui tutti i membri dell'organizzazione `nodejs` di GitHub (non solo i Collaboratori del Node.js core) hanno accesso. I suoi contenuti non dovrebbero essere condivisi esternamente.
-  * Puoi trovare la politica di moderazione completa [qui](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
+  * Puoi trovare la completa moderation policy [qui](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
-## Revisione di PR
+## Revisione delle PR
 
-* L'obiettivo principale è quello di migliorare la base di codici.
+* L'obiettivo principale è quello di migliorare la codebase.
 * Secondario (ma non per importanza) è per la persona che invia il codice per avere successo. Un Pr da un nuovo contributore è un'opportunità per far crescere la comunità.
 * Ripassa un po 'alla volta. Non sovraccaricare i nuovi contributori. 
   * Si è tentati di micro-ottimizzare. Non cadere in quella tentazione. Noi cambiamo spesso il V8. Le tecniche che offrono prestazioni migliori oggi potrebbero essere inutili in futuro.
