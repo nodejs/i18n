@@ -101,9 +101,9 @@ apply.whitespace fix`
 * Attesa minima per i commenti 
   * C'è un tempo di attesa minimo che cerchiamo di rispettare per le modifiche significative in modo che le persone che possono avere un input importante in un progetto così distribuito siano in grado di rispondere.
   * Per le modifiche significative, lascia aperta la pull request per almeno 48 ore (72 ore nel weekend).
-  * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
+  * Se una pull request viene abbandonata, prima di prenderla chiedere ai creatori se è un problema (soprattutto se è rimasta solo con dei nits).
 
-* Approvazione di un cambiamento
+* Approvare una modifica
   
   * I collaboratori indicano di aver esaminato e approvato le modifiche in una Pr utilizzando l'interfaccia di approvazione di Github
   * Ad alcune persone piace commentare `LGTM` ("Sembra buono per me")
