@@ -3470,7 +3470,7 @@ fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
   .catch(() => console.error('cannot access'));
 ```
 
-Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Hacerlo, introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
+Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Hacerlo introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
 
 ### fsPromises.appendFile(path, data[, options])
 
