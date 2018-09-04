@@ -60,13 +60,13 @@ apply.whitespace fix`
 
 ## La gestione dell'issue tracker
 
-* Hai (soprattutto) libero sfogo; non esitare a chiudere un problema se sei sicuro che questo andrebbe chiuso
+* Hai (soprattutto) molta libertà di azione; non esitare a chiudere un issue se sei sicuro che debba essere chiuso
   
-  * Sii gentile con i problemi chiusi! Fai sapere alla gente i motivi, i problemi e le PR possono essere riaperti se necessario
+  * Sii moderato nella chiusura degli issue! Fai sapere alle persone il perché della chiusura, e che gli issue e le PR possono essere riaperti se necessario
 
 * [**Vedi "Etichette"**](./onboarding-extras.md#labels)
   
-  * C'è [un bot](https://github.com/nodejs-github-bot/github-bot) che applica le etichette del sottosistema (per esempio,`doc`, `test`, `assert`, o `buffer`) in modo da sapere quali parti del codice sono la base della modifica del Pr. Non è perfetto, ovviamente. Sii libero di applicare etichette pertinenti e rimuovere etichette irrilevanti da problemi e le Pr.
+  * C'è [un bot](https://github.com/nodejs-github-bot/github-bot) che applica le etichette del sottosistema (ad esempio, `doc`, `test`, `assert`, o `buffer`) in modo da sapere quali parti del codice base sono modificate dalla pull request. Non è perfetto, ovviamente. Sii libero di applicare etichette pertinenti e rimuovere etichette irrilevanti da problemi e le Pr.
   * Utilizza l'etichetta ` tsc-review ` se un argomento è controverso o non è stato concluso dopo un tempo prolungato.
   * `semver-{minor,major}`: 
     * If a change has the remote *chance* of breaking something, use the `semver-major` label
