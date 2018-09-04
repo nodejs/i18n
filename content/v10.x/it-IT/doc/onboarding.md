@@ -94,8 +94,8 @@ apply.whitespace fix`
 * Revisionare un pò alla volta. Senza appesantire troppo i nuovi contributors. 
   * Si tende a micro-ottimizzare. Non cascarci. V8 viene modificato spesso. Le tecniche che oggi offrono prestazioni migliori in futuro potrebbero non essere necessarie.
 * Siate consapevoli: la vostra opinione è molto importante!
-* Nits (richieste di piccole modifiche che non sono essenziali) vanno bene, ma provate a evitare di bloccare la Pr. 
-  * Note that they are nits when you comment: `Nit: change foo() to bar().`
+* I Nits (le request di piccole modifiche che non sono essenziali) vanno bene, ma cerca di evitare che una pull request venga bloccata. 
+  * Da notare che sono dei nits quando si commenta: `Nit: change foo() to bar().`
   * Se bloccano la Pr, correggili da solo.
 * Nella misura del possibile, i problemi dovrebbero essere identificati da strumenti piuttosto che da revisori umani. Se si lasciano commenti su problemi che potrebbero essere identificati dagli strumenti ma non lo sono, prendete in considerazione l'implementazione degli strumenti necessari.
 * Attesa minima dei commenti 
