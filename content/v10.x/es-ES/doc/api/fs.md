@@ -2945,7 +2945,7 @@ Buscar cambios en `filename`. El callback de `listener` será llamado cada vez q
 
 El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. El objeto de `options` puede contener un booleano llamado `persistent` que indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. El objeto de `options` puede especificar una propiedad de `interval` que indique qué tan seguido debería estudiarse el objetivo en milisegundos.
 
-The `listener` gets two arguments the current stat object and the previous stat object:
+El `listener` obtiene dos argumentos, el objeto de estadística actual y el objeto de estadística previo:
 
 ```js
 fs.watchFile('message.text', (curr, prev) => {
@@ -2958,7 +2958,7 @@ Estos objetos de estadísticas son instancias de `fs.Stat`.
 
 To be notified when the file was modified, not just accessed, it is necessary to compare `curr.mtime` and `prev.mtime`.
 
-When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. If the file is created later on, the listener will be called again, with the latest stat objects. Este es un cambio en la funcionalidad desde v0.10.
+When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. Si el archivo es creado más tarde, el listener será llamado nuevamente, con los últimos objetos de estadística. Este es un cambio en la funcionalidad desde v0.10.
 
 Using [`fs.watch()`][] is more efficient than `fs.watchFile` and `fs.unwatchFile`. `fs.watch` should be used instead of `fs.watchFile` and `fs.unwatchFile` when possible.
 
@@ -3232,7 +3232,7 @@ added: v10.0.0
 * `gid` {integer}
 * Devuelve: {Promise}
 
-Changes the ownership of the file then resolves the `Promise` with no arguments upon success.
+Cambia la pertenencia del archivo, y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 #### filehandle.close()
 
@@ -3455,7 +3455,7 @@ added: v10.0.0
 * `mode` {integer} **Default:** `fs.constants.F_OK`
 * Devuelve: {Promise}
 
-Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba los permisos del usuario para el archivo o directorio especificado por `path`. El argumento de `mode` es un entero opcional que especifica las verificaciones de accesibilidad que serán realizadas. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
@@ -3470,7 +3470,7 @@ fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
   .catch(() => console.error('cannot access'));
 ```
 
-Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
+Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Hacerlo, introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
 
 ### fsPromises.appendFile(path, data[, options])
 
@@ -3515,7 +3515,7 @@ added: v10.0.0
 * `gid` {integer}
 * Devuelve: {Promise}
 
-Changes the ownership of a file then resolves the `Promise` with no arguments upon success.
+Cambia la pertenencia de un archivo, y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.copyFile(src, dest[, flags])
 
