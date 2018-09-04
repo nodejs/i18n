@@ -62,9 +62,9 @@ Actualmente, se utilizan dos métodos para lograr Perfect Forward Secrecy (tenga
 * [DHE](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) - Una versión efímera del protocolo de acuerdo clave de Diffie Hellman.
 * [ECDHE](https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman) - Una versión efímera del protocolo de acuerdo clave de Diffie Hellman de curva elíptica.
 
-Ephemeral methods may have some performance drawbacks, because key generation is expensive.
+Los métodos efímeros pueden tener algunos inconvenientes de rendimiento, porque la generación de claves es costosa.
 
-To use Perfect Forward Secrecy using `DHE` with the `tls` module, it is required to generate Diffie-Hellman parameters and specify them with the `dhparam` option to [`tls.createSecureContext()`][]. The following illustrates the use of the OpenSSL command-line interface to generate such parameters:
+Para usar Perfect Forward Secrecy usando `DHE` con el módulo `tls`, se requiere generar parámetros de Diffie-Hellman y especificarlos con la opción `dhparam` para [`tls.createSecureContext()`][]. The following illustrates the use of the OpenSSL command-line interface to generate such parameters:
 
 ```sh
 openssl dhparam -outform PEM -out dhparam.pem 2048
