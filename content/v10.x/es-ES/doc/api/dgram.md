@@ -120,7 +120,7 @@ A bound datagram socket keeps the Node.js process running to receive datagram me
 
 If binding fails, an `'error'` event is generated. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
 
-Example of a UDP server listening on port 41234:
+Ejemplo de un servidor UDP escuchando en el puerto 41234:
 
 ```js
 const dgram = require('dgram');
@@ -150,13 +150,13 @@ server.bind(41234);
 added: v0.11.14
 -->
 
-* `options` {Object} Required. Supports the following properties: 
+* `opciones` {Object} Requerido. Soporta las siguientes propiedades: 
   * `port` {integer}
   * `address` {string}
   * `exclusive` {boolean}
 * `callback` {Function}
 
-For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address` that are passed as properties of an `options` object passed as the first argument. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
+For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address` that are passed as properties of an `options` object passed as the first argument. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazar a un puerto aleatorio. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
