@@ -70,7 +70,7 @@ Para usar Perfect Forward Secrecy usando `DHE` con el módulo `tls`, se requiere
 openssl dhparam -outform PEM -out dhparam.pem 2048
 ```
 
-Si usa Perfect Forward Secrecy usando `ECDHE`, no se requieren los parámetros de Diffie-Hellman y se usará una curva ECDHE predeterminada. The `ecdhCurve` property can be used when creating a TLS Server to specify the list of names of supported curves to use, see [`tls.createServer()`] for more info.
+Si usa Perfect Forward Secrecy usando `ECDHE`, no se requieren los parámetros de Diffie-Hellman y se usará una curva ECDHE predeterminada. La propiedad `ecdhCurve` se puede usar al crear un servidor TLS para especificar la lista de nombres de curvas admitidas a usar, consulte [`tls.createServer()`] para más información.
 
 ### ALPN and SNI
 
