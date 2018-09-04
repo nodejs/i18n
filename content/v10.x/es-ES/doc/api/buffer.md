@@ -1247,7 +1247,7 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
 
 Si `value` no es una cadena, número, o `Buffer`, este método producirá un `TypeError`. Si `value` es un número, se forzará a un valor byte válido, un entero entre 0 y 255.
 
-Si `byteOffset` no es un número, se forzará a un número. Cualquier argumento que force a `NaN`, como `{}` or `undefined`, buscará todo el buffer. Este comportamiento coincide con [`String#lastIndexOf()`].
+Si `byteOffset` no es un número, se forzará a un número. Cualquier argumento que fuerce a `NaN`, como `{}` or `undefined`, buscará todo el buffer. Este comportamiento coincide con [`String#lastIndexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
