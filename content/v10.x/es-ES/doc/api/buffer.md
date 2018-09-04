@@ -1397,7 +1397,7 @@ changes:
 
 Lee un entero de 8-bit con signo desde `buf` en el `offset` especificado.
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Los enteros leídos desde un `Buffer` se interpretan como valores con signo del complemento de dos.
 
 ```js
 const buf = Buffer.from([-1, 5]);
@@ -1429,7 +1429,7 @@ changes:
 
 Lee un entero de 16-bit con signo desde `buf` en el `offset` especificado con el formato endian especificado (`readInt16BE()` devuelve big endian, `readInt16LE()` devuelve little endian).
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Los enteros leídos desde un `Buffer` se interpretan como valores con signo con complemento de dos.
 
 ```js
 const buf = Buffer.from([0, 5]);
@@ -1461,7 +1461,7 @@ changes:
 
 Lee un entero de 32-bit desde `buf` en el `offset` especificado con el formato endian especificado (`readInt32BE()` devuelve big endian, `readInt32LE()` devuelve little endian).
 
-Integers read from a `Buffer` are interpreted as two's complement signed values.
+Los enteros leídos desde un `Buffer` se interpretan como valores con signo con complemento de dos.
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
@@ -1492,7 +1492,7 @@ changes:
 * `byteLength` {integer} Número de bytes a leer. Debe satisfacer `0 < byteLength <= 6`.
 * Devuelve: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Soporta hasta 48 bits de precisión.
+Lee el número `byteLength` de bytes desde `buf` en el `offset` especificado e interpreta el resultado como un valor con signo con complemento de dos. Soporta hasta 48 bits de precisión.
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1678,7 +1678,7 @@ console.log(buf2.toString('ascii', 0, buf2.length));
 // Imprime: !bc
 ```
 
-Specifying negative indexes causes the slice to be generated relative to the end of `buf` rather than the beginning.
+La especificación de índices negativos causa que el segmento se genere en relación al final de `buf` en lugar de al inicio.
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1777,7 +1777,7 @@ buf2.swap64();
 // Lanza ERR_INVALID_BUFFER_SIZE
 ```
 
-Note that JavaScript cannot encode 64-bit integers. This method is intended for working with 64-bit floats.
+Tenga en cuenta que JavaScript no puede codificar enteros de 64-bit. Este método está diseñado para trabajar con floats de 64-bit.
 
 ### buf.toJSON()
 
