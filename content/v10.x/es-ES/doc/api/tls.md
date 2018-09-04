@@ -14,13 +14,13 @@ const tls = require('tls');
 
 El TLS/SSL es una infraestructura de clave pública/privada (PKI). Para los casos más comunes, cada cliente y servidor debe tener una *clave privada*.
 
-Las claves privadas se pueden generar de múltiples maneras. The example below illustrates use of the OpenSSL command-line interface to generate a 2048-bit RSA private key:
+Las claves privadas se pueden generar de múltiples maneras. El siguiente ejemplo demuestra el uso de la interfaz de línea de comandos de OpenSSL para generar una clave privada RSA de 2048 bits:
 
 ```sh
 openssl genrsa -out ryans-key.pem 2048
 ```
 
-With TLS/SSL, all servers (and some clients) must have a *certificate*. Certificates are *public keys* that correspond to a private key, and that are digitally signed either by a Certificate Authority or by the owner of the private key (such certificates are referred to as "self-signed"). The first step to obtaining a certificate is to create a *Certificate Signing Request* (CSR) file.
+Con TLS/SSL, todos los servidores (y algunos clientes) deben tener un *certificado*. Certificates are *public keys* that correspond to a private key, and that are digitally signed either by a Certificate Authority or by the owner of the private key (such certificates are referred to as "self-signed"). The first step to obtaining a certificate is to create a *Certificate Signing Request* (CSR) file.
 
 The OpenSSL command-line interface can be used to generate a CSR for a private key:
 
