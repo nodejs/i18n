@@ -214,7 +214,7 @@ fs.readFileSync(new URL('file:///C:/path/%5c'));
 
 ## Descriptores de archivo
 
-On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. A cada archivo abierto se le asigna un identificador numérico simple llamado *file descriptor*. A nivel de sistema, todas las operaciones del sistema de archivos utilizan estos descriptores de archivo para identificar y rastrear cada archivo específico. Los sistemas de Windows utilizan un mecanismo que es diferente, pero conceptualmente similar para los recursos de rastreo. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
+En sistemas de POSIX, para cada proceso, el núcleo mantiene un tablero de archivos actualmente abiertos y recursos. A cada archivo abierto se le asigna un identificador numérico simple llamado *file descriptor*. A nivel de sistema, todas las operaciones del sistema de archivos utilizan estos descriptores de archivo para identificar y rastrear cada archivo específico. Los sistemas de Windows utilizan un mecanismo que es diferente, pero conceptualmente similar para los recursos de rastreo. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
 
 El método `fs.open()` se utiliza para asignar un nuevo descriptor de archivo. Una vez asignado, el descriptor de archivo puede ser utilizado para leer datos desde, escribir datos a, o solicitar información sobre el archivo.
 
@@ -3013,7 +3013,7 @@ Si se invoca este método en su versión [`util.promisify()`][], devolverá una 
 
 Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 ## fs.write(fd, string[, position[, encoding]], callback)
 
@@ -3053,7 +3053,7 @@ El callback recibirá los argumentos `(err, written, string)`, en donde `written
 
 Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 ## fs.writeFile(file, data[, options], callback)
 
@@ -3420,7 +3420,7 @@ La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritt
 
 No es seguro utilizar `filehandle.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 #### filehandle.writeFile(data, options)
 
@@ -3990,7 +3990,7 @@ La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritt
 
 No es seguro utilizar `fsPromises.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 ### fsPromises.writeFile(file, data[, options])
 
@@ -4570,7 +4570,7 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 La bandera exclusiva `'x'` (bandera `O_EXCL` en open(2)) asegura que esa ruta sea creada recientemente. En sistemas de POSIX, se considera que la ruta existe incluso si es un enlace simbólico a un archivo inexistente. La bandera exclusiva puede o no que funcione con sistemas de archivos de red.
 
-En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 Modificar un archivo en vez de reemplazarlo puede que requiera un modo de banderas de `'r+'` en lugar del modo predeterminado `'w'`.
 
