@@ -20,7 +20,7 @@ Las claves privadas se pueden generar de múltiples maneras. El siguiente ejempl
 openssl genrsa -out ryans-key.pem 2048
 ```
 
-Con TLS/SSL, todos los servidores (y algunos clientes) deben tener un *certificado*. Certificates are *public keys* that correspond to a private key, and that are digitally signed either by a Certificate Authority or by the owner of the private key (such certificates are referred to as "self-signed"). The first step to obtaining a certificate is to create a *Certificate Signing Request* (CSR) file.
+Con TLS/SSL, todos los servidores (y algunos clientes) deben tener un *certificado*. Los certificados son *claves públicas* que corresponden a una clave privada y que están firmadas digitalmente por una Autoridad de Certificación o por el propietario de la clave privada (dichos certificados se denominan "auto-firmados"). The first step to obtaining a certificate is to create a *Certificate Signing Request* (CSR) file.
 
 The OpenSSL command-line interface can be used to generate a CSR for a private key:
 
