@@ -90,9 +90,9 @@ apply.whitespace fix`
 ## Revisione delle PR
 
 * L'obiettivo principale è quello di migliorare la codebase.
-* Secondario (ma non per importanza) è per la persona che invia il codice per avere successo. Un Pr da un nuovo contributore è un'opportunità per far crescere la comunità.
-* Ripassa un po 'alla volta. Non sovraccaricare i nuovi contributori. 
-  * Si è tentati di micro-ottimizzare. Non cadere in quella tentazione. Noi cambiamo spesso il V8. Le tecniche che offrono prestazioni migliori oggi potrebbero essere inutili in futuro.
+* Secondario (ma non per importanza) è che la persona che invia il codice deve avere successo. Una pull request da parte di un nuovo contributor è un'opportunità per far crescere la community.
+* Revisionare un pò alla volta. Senza appesantire troppo i nuovi contributors. 
+  * Si tende a micro-ottimizzare. Non cascarci. V8 viene modificato spesso. Le tecniche che oggi offrono prestazioni migliori in futuro potrebbero non essere necessarie.
 * Siate consapevoli: la vostra opinione è molto importante!
 * Nits (richieste di piccole modifiche che non sono essenziali) vanno bene, ma provate a evitare di bloccare la Pr. 
   * Note that they are nits when you comment: `Nit: change foo() to bar().`
