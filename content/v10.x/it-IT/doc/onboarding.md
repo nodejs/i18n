@@ -70,15 +70,15 @@ apply.whitespace fix`
   * Utilizza l'etichetta `tsc-review` se un argomento è controverso o non giunge ad una conclusione dopo un periodo di tempo prolungato.
   * `semver-{minor,major}`: 
     * Se una modifica ha la remota *possibilità* di danneggiare qualcosa, utilizza l'etichetta `semver-major`
-    * Quando si aggiunge l'etichetta `semver-*` aggiungi un commento in cui spieghi perché la stai aggiungendo. Fallo subito così non lo dimentichi!
-  * Si prega di aggiungere l'etichetta `author-ready` per PR dove: 
-    * iC è stato avviato (non necessariamente terminato),
+    * Quando si aggiunge un'etichetta `semver-*`, aggiungi un commento che spiega il perché di quell'etichetta. Fallo subito così non te ne dimentichi!
+  * Si prega di aggiungere l'etichetta `author-ready` per le PR dove: 
+    * il CI è stato avviato (non necessariamente concluso),
     * non esistono commenti di revisione rilevanti e
-    * almeno un collaboratore ha approvato il PR.
+    * almeno un collaboratore ha approvato la PR.
 
-* See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Vedi [Chi per CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
-  * Questo arriverà più sicuramente nel tempo
+  * Questo arriverà più autonomamente nel tempo
   * Per molte delle squadre elencate qui, puoi chiedere di essere aggiunto se sei interessato 
     * Alcuni WG sono con qualche processo di aggiunta di persone, altri sono solo lì per le notifiche
 
