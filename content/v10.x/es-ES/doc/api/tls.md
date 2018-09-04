@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-El módulo `tls` proporciona una implementación de Transport Layer Security (TLS) y protocolos Secure Socket Layer (SSL) que se construyen sobre OpenSSL. The module can be accessed using:
+El módulo `tls` proporciona una implementación de Transport Layer Security (TLS) y protocolos Secure Socket Layer (SSL) que se construyen sobre OpenSSL. Se puede acceder al módulo usando:
 
 ```js
 const tls = require('tls');
