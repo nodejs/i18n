@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+Diese Objekte sind in jedem Modul verfügbar. Die folgenden Variablen sehen zwar aus, als wären sie Global, aber das sind sie nicht. Sie existieren nur im Modul-bereich. Mehr Informationen darüber, sind in der [Modul-System Dokumentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
