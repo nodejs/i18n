@@ -96,10 +96,10 @@ apply.whitespace fix`
 * Siate consapevoli: la vostra opinione è molto importante!
 * I Nits (le request di piccole modifiche che non sono essenziali) vanno bene, ma cerca di evitare che una pull request venga bloccata. 
   * Da notare che sono dei nits quando si commenta: `Nit: change foo() to bar().`
-  * Se bloccano la Pr, correggili da solo.
-* Nella misura del possibile, i problemi dovrebbero essere identificati da strumenti piuttosto che da revisori umani. Se si lasciano commenti su problemi che potrebbero essere identificati dagli strumenti ma non lo sono, prendete in considerazione l'implementazione degli strumenti necessari.
-* Attesa minima dei commenti 
-  * C'è un tempo di attesa minimo che cerchiamo di rispettare per i cambiamenti non banali in modo che le persone che possono avere un input importante in un progetto così distribuito siano in grado di rispondere.
+  * Se bloccano le pull request, correggili direttamente nella fase di merge (unione).
+* Nella misura del possibile, gli issue dovrebbero essere identificati dagli strumenti piuttosto che dai revisori umani. Se lasci dei commenti riguardo degli issue che potrebbero essere identificati dagli strumenti ma non vengono identificati, prendi in considerazione l'implementazione degli strumenti necessari.
+* Attesa minima per i commenti 
+  * C'è un tempo di attesa minimo che cerchiamo di rispettare per le modifiche significative in modo che le persone che possono avere un input importante in un progetto così distribuito siano in grado di rispondere.
   * Per modifiche non banali, lasciare aperta la Pr per almeno 48 ore (72 ore nel fine settimana).
   * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
 
