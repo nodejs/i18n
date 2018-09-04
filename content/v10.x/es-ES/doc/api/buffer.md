@@ -1120,9 +1120,9 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Donde comenzar la búsqueda en `buf`. **Predeterminado:** `0`.
+* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** `0`.
 * `encoding` {string} Si `value` es una cadena, esta es la codificación utilizada para determinar la representación binaria de la cadena que se buscará en `buf`. **Predeterminado:** `'utf8'`.
-* Devuelve: {integer} El índice de la primera aparación de `value` en `buf`, o `-1` si `buf` no contiene `value`.
+* Devuelve: {integer} El índice de la primera aparición de `value` en `buf`, o `-1` si `buf` no contiene `value`.
 
 Si `value` es:
 
@@ -1213,11 +1213,11 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Dónde comenzar a buscar la búsqueda en `buf`. **Predeterminado:** [`buf.length`]`- 1`.
+* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** [`buf.length`]`- 1`.
 * `encoding` {string} Si `value` es una cadena, esta es la codificación utilizada para determinar la representación binaria de la cadena que se buscará en `buf`. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} El índice de la última aparición de `value` en `buf`, o `-1` si `buf` no contiene `value`.
 
-Idéntico a [`buf.indexOf()`], excepto que se encuentra la última aparición de `value` en lugar de la primera aparición.
+Idéntico a [`buf.indexOf()`], excepto que se encuentra la última aparición de `value`, en lugar de la primera aparición.
 
 ```js
 const buf = Buffer.from('this buffer is a buffer');
@@ -1245,7 +1245,7 @@ console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
 // Imprime: 4
 ```
 
-Si `value` no es una cadena, o `Buffer`, este método producirá un `TypeError`. Si `value` es un número, se forzará a un valor byte válido, un entero entre 0 y 255.
+Si `value` no es una cadena, número, o `Buffer`, este método producirá un `TypeError`. Si `value` es un número, se forzará a un valor byte válido, un entero entre 0 y 255.
 
 Si `byteOffset` no es un número, se forzará a un número. Cualquier argumento que force a `NaN`, como `{}` or `undefined`, buscará todo el buffer. Este comportamiento coincide con [`String#lastIndexOf()`].
 
