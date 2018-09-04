@@ -85,19 +85,19 @@ Este es un apuntador opaco que se utilizado para representar un valor de JavaScr
 
 #### napi_handle_scope
 
-Esta es una abstracción utilizada para controlar y modificar el tiempo de vida de objetos creados dentro de un alcance particular. En general, los valores N-API son creados dentro de un contexto de alcance controlado. Cuando se llama a un método nativo de JavaScript, existirá un alcance controlado por defecto. If the user does not explicitly create a new handle scope, N-API values will be created in the default handle scope. For any invocations of code outside the execution of a native method (for instance, during a libuv callback invocation), the module is required to create a scope before invoking any functions that can result in the creation of JavaScript values.
+Esta es una abstracción utilizada para controlar y modificar el tiempo de vida de objetos creados dentro de un alcance particular. En general, los valores N-API son creados dentro de un contexto de alcance controlado. Cuando se llama a un método nativo de JavaScript, existirá un alcance controlado por defecto. Si el usuario no crea explícitamente un nuevo alcance controlado, los valores N-API serán creados en el alcance controlado por defecto. Para cualquier invocación de código fuera de la ejecución de un método nativo (por ejemplo, durante una invocación a la llamada libuv), el módulo es requerido para crear el alcance antes de invocar cualquier función que pueda resultar en la creación de valores JavaScript.
 
-Handle scopes are created using [`napi_open_handle_scope`][] and are destroyed using [`napi_close_handle_scope`][]. Closing the scope can indicate to the GC that all `napi_value`s created during the lifetime of the handle scope are no longer referenced from the current stack frame.
+Los alcances controlados con creados utilizando [`napi_open_handle_scope`][] y son destruidos utilizando [`napi_close_handle_scope`][]. El cierre del alcance puede indicar al GC que todos los `napi_value`s creados durante el tiempo de vida del alcance controlado ya no son referenciados desde el marco de la pila actual.
 
-For more details, review the [Object Lifetime Management](#n_api_object_lifetime_management).
+Para más detalles, revisar la [Gestión de tiempo de vida del objeto](#n_api_object_lifetime_management).
 
 #### napi_escapable_handle_scope
 
-Escapable handle scopes are a special type of handle scope to return values created within a particular handle scope to a parent scope.
+Los alcances controlados escapables son un tipo especial de alcance controlado para devolver valores creados dentro de un alcance controlado particular al alcance padre.
 
 #### napi_ref
 
-This is the abstraction to use to reference a `napi_value`. This allows for users to manage the lifetimes of JavaScript values, including defining their minimum lifetimes explicitly.
+Esta es la abstracción utilizada para referenciar a `napi_value`. This allows for users to manage the lifetimes of JavaScript values, including defining their minimum lifetimes explicitly.
 
 For more details, review the [Object Lifetime Management](#n_api_object_lifetime_management).
 
