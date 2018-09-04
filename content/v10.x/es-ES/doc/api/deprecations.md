@@ -4,9 +4,9 @@
 
 <!-- type=misc -->
 
-Node.js may deprecate APIs when either: (a) use of the API is considered to be unsafe, (b) an improved alternative API has been made available, or (c) breaking changes to the API are expected in a future major release.
+Node.js puede rechazar APIs cuando: (a) el uso de la API es considerado como inseguro, (b) una API alternativa y mejorada estuvo disponible, o (c) cambios importantes para la API están planificados en una importante actualización futura.
 
-Node.js utilizes three kinds of Deprecations:
+Node.js utiliza tres tipos de Deprecaciones:
 
 - Documentation-only
 - Runtime
