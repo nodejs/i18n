@@ -64,13 +64,13 @@ Actualmente, se utilizan dos métodos para lograr Perfect Forward Secrecy (tenga
 
 Los métodos efímeros pueden tener algunos inconvenientes de rendimiento, porque la generación de claves es costosa.
 
-Para usar Perfect Forward Secrecy usando `DHE` con el módulo `tls`, se requiere generar parámetros de Diffie-Hellman y especificarlos con la opción `dhparam` para [`tls.createSecureContext()`][]. The following illustrates the use of the OpenSSL command-line interface to generate such parameters:
+Para usar Perfect Forward Secrecy usando `DHE` con el módulo `tls`, se requiere generar parámetros de Diffie-Hellman y especificarlos con la opción `dhparam` para [`tls.createSecureContext()`][]. A continuación, se ilustra el uso de la interfaz de línea de comandos de OpenSSL para generar dichos parámetros:
 
 ```sh
 openssl dhparam -outform PEM -out dhparam.pem 2048
 ```
 
-If using Perfect Forward Secrecy using `ECDHE`, Diffie-Hellman parameters are not required and a default ECDHE curve will be used. The `ecdhCurve` property can be used when creating a TLS Server to specify the list of names of supported curves to use, see [`tls.createServer()`] for more info.
+Si usa Perfect Forward Secrecy usando `ECDHE`, no se requieren los parámetros de Diffie-Hellman y se usará una curva ECDHE predeterminada. The `ecdhCurve` property can be used when creating a TLS Server to specify the list of names of supported curves to use, see [`tls.createServer()`] for more info.
 
 ### ALPN and SNI
 
