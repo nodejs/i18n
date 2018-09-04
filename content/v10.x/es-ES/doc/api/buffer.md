@@ -1704,23 +1704,23 @@ added: v5.10.0
 
 * Devuelve: {Buffer} Una referencia a `buf`.
 
-Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 2.
+Interpreta a `buf` como un arreglo de enteros de 16-bit sin signos y cambia el orden de bytes *in situ*. Produce [`ERR_INVALID_BUFFER_SIZE`] si [`buf.length`] no es un múltiplo de 2.
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
 console.log(buf1);
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Imprime: <Buffer 01 02 03 04 05 06 07 08>
 
 buf1.swap16();
 
 console.log(buf1);
-// Prints: <Buffer 02 01 04 03 06 05 08 07>
+// Imprime: <Buffer 02 01 04 03 06 05 08 07>
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 buf2.swap16();
-// Throws ERR_INVALID_BUFFER_SIZE
+// Lanza ERR_INVALID_BUFFER_SIZE
 ```
 
 ### buf.swap32()
@@ -1729,25 +1729,25 @@ buf2.swap16();
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Devuelve: {Buffer} Una referencia a `buf`.
 
-Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 4.
+Interpreta `buf` como un arreglo de entero de 32-bit sin signos y cambia el orden de bytes *in situ*. Produce [`ERR_INVALID_BUFFER_SIZE`] si [`buf.length`] no es un múltiplo de 4.
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
 console.log(buf1);
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Imprime: <Buffer 01 02 03 04 05 06 07 08>
 
 buf1.swap32();
 
 console.log(buf1);
-// Prints: <Buffer 04 03 02 01 08 07 06 05>
+// Imprime: <Buffer 04 03 02 01 08 07 06 05>
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 buf2.swap32();
-// Throws ERR_INVALID_BUFFER_SIZE
+// Lanza ERR_INVALID_BUFFER_SIZE
 ```
 
 ### buf.swap64()
@@ -1756,25 +1756,25 @@ buf2.swap32();
 added: v6.3.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Devuelve: {Buffer} Una referencia a `buf`.
 
-Interprets `buf` as an array of 64-bit numbers and swaps byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 8.
+Interpreta a `buf` como un arreglo de número de 64-bit y cambia el orden de los bytes *in situ*. Produce [`ERR_INVALID_BUFFER_SIZE`] si [`buf.length`] no es un múltiplo de 8.
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
 
 console.log(buf1);
-// Prints: <Buffer 01 02 03 04 05 06 07 08>
+// Imprime: <Buffer 01 02 03 04 05 06 07 08>
 
 buf1.swap64();
 
 console.log(buf1);
-// Prints: <Buffer 08 07 06 05 04 03 02 01>
+// Imprime: <Buffer 08 07 06 05 04 03 02 01>
 
 const buf2 = Buffer.from([0x1, 0x2, 0x3]);
 
 buf2.swap64();
-// Throws ERR_INVALID_BUFFER_SIZE
+// Lanza ERR_INVALID_BUFFER_SIZE
 ```
 
 Note that JavaScript cannot encode 64-bit integers. This method is intended for working with 64-bit floats.
