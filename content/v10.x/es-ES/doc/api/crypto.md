@@ -439,11 +439,11 @@ changes:
 
 Actualiza el descifrado con `data`. Si el argumento `inputEncoding` es dado, su valor debe ser `'latin1'`, `'base64'`, o `'hex'` y el argumento `data` es una string usando el código específico. Si el argumento `inputEncoding` no es dado, `data` debe ser un [`Buffer`][]. Si `data` es un [`Buffer`][] entonces `inputEncoding` es ignorado.
 
-El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, una string que usa el código especificado es devuelta. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+El `outputEncoding` especifica el formato de salida de los datos cifrados, y puede ser `'latin1'`, `'ascii'` o `'utf8'`. Si el `outputEncoding` es especificado, una string que usa el código especificado es devuelta. Si no se provee `outputEncoding`, un [`Buffer`][] es devuelto.
 
-The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
+El método `decipher.update()` puede ser llamado múltiples veces con nuevos datos hasta que es llamado [`decipher.final()`][]. Si se llama a `decipher.update()` después de [`decipher.final()`][] se producirá un error.
 
-## Class: DiffieHellman
+## Clase: DiffieHellman
 
 <!-- YAML
 added: v0.5.0
