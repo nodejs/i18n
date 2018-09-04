@@ -3220,7 +3220,7 @@ added: v10.0.0
 * `mode` {integer}
 * Devuelve: {Promise}
 
-Modifica los permisos en el archivo. The `Promise` is resolved with no arguments upon success.
+Modifica los permisos en el archivo. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 #### filehandle.chown(uid, gid)
 
@@ -3690,7 +3690,7 @@ deprecated: v10.0.0
 * `mode` {integer}
 * Devuelve: {Promise}
 
-Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
+Cambia los permisos en un enlace simbólico, luego resuelve la `Promise` sin argumentos al realizarse con éxito. Este método sólo se implementa en macOS.
 
 ### fsPromises.lchown(path, uid, gid)
 
