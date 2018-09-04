@@ -1623,11 +1623,11 @@ Lee el número `byteLength` de bytes desde `buf` en el `offset` especificado e i
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 
 console.log(buf.readUIntBE(0, 6).toString(16));
-// Prints: 1234567890ab
+// Imprime: 1234567890ab
 console.log(buf.readUIntLE(0, 6).toString(16));
-// Prints: ab9078563412
+// Imprime: ab9078563412
 console.log(buf.readUIntBE(1, 6).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.slice([start[, end]])
@@ -1646,36 +1646,36 @@ changes:
                  calculations with them.
 -->
 
-* `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
-* `end` {integer} Where the new `Buffer` will end (not inclusive). **Predeterminado:** [`buf.length`].
-* Returns: {Buffer}
+* `start` {integer} Dónde comenzará el nuevo `Buffer`. **Predeterminado:** `0`.
+* `end` {integer} Dón de terminará el nuevo `Buffer` (no incluido). **Predeterminado:** [`buf.length`].
+* Devuelve: {Buffer}
 
-Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
+Devuelve un nuevo `Buffer` que hace referencia a la misma memoria del original, pero se desplaza y se recorta por los índices `start` y `end`.
 
-Specifying `end` greater than [`buf.length`] will return the same result as that of `end` equal to [`buf.length`].
+La especificación de que `end` es mayor que [`buf.length`] devolverá el mismo resultado que el de `end` igual a [`buf.length`].
 
-Modifying the new `Buffer` slice will modify the memory in the original `Buffer` because the allocated memory of the two objects overlap.
+La modificación del nuevo segmento de `Buffer` modificará la memoria en el `Buffer` original porque la memoria asignada de los dos objetos se superpone.
 
 ```js
-// Create a `Buffer` with the ASCII alphabet, take a slice, and modify one byte
-// from the original `Buffer`.
+// Crea un `Buffer`con el alfabeto ASCII, toma un segmento, y modifica un byte
+// desde el `Buffer`original.
 
 const buf1 = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf1[i] = i + 97;
 }
 
 const buf2 = buf1.slice(0, 3);
 
 console.log(buf2.toString('ascii', 0, buf2.length));
-// Prints: abc
+// Imprime: abc
 
 buf1[0] = 33;
 
 console.log(buf2.toString('ascii', 0, buf2.length));
-// Prints: !bc
+// Imprime: !bc
 ```
 
 Specifying negative indexes causes the slice to be generated relative to the end of `buf` rather than the beginning.
@@ -1684,16 +1684,16 @@ Specifying negative indexes causes the slice to be generated relative to the end
 const buf = Buffer.from('buffer');
 
 console.log(buf.slice(-6, -1).toString());
-// Prints: buffe
-// (Equivalent to buf.slice(0, 5))
+// Imprime: buffe
+// (Equivalente a buf.slice(0, 5))
 
 console.log(buf.slice(-6, -2).toString());
-// Prints: buff
-// (Equivalent to buf.slice(0, 4))
+// Imprime: buff
+// (Equivalente a buf.slice(0, 4))
 
 console.log(buf.slice(-5, -2).toString());
-// Prints: uff
-// (Equivalent to buf.slice(1, 4))
+// Imprime: uff
+// (Equivalente a buf.slice(1, 4))
 ```
 
 ### buf.swap16()
@@ -1702,7 +1702,7 @@ console.log(buf.slice(-5, -2).toString());
 added: v5.10.0
 -->
 
-* Returns: {Buffer} A reference to `buf`.
+* Devuelve: {Buffer} Una referencia a `buf`.
 
 Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`] if [`buf.length`] is not a multiple of 2.
 
