@@ -384,7 +384,7 @@ changes:
 
 Cuando se usa un modo de encriptación autenticado (solamente `GCM` y `CCM` están siendo respaldados actualmente), el método `decipher.setAAD()` establece el valor usado para el parámetro de entrada *Datos Autenticados Adicionales* (DAA).
 
-The `decipher.setAAD()` method must be called before [`decipher.update()`][].
+El método `decipher.setAAD()` debe llamarse antes de [`decipher.update()`][].
 
 ### decipher.setAuthTag(buffer)
 
@@ -400,7 +400,7 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Cipher} como método cadena.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
+Cuando se usa un modo de encriptación autenticado (solamente `GCM` y `CCM` están siendo respaldados actualmente), el método `decipher.setAuthTag()` es usado para pasar el recibido de la *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
 
 Note that this Node.js version does not verify the length of GCM authentication tags. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
