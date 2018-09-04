@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](globals.html#globals_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
+Node.js Addons są dynamicznie połączonymi obiektami współdzielonymi, napisanymi w C ++, które można załadować do Node.js za pomocą funkcji [`require()`](globals.html#globals_require) i używane tak, jakby były zwykłym modułem Node.js. Są one używane głównie w celu zapewnienia interfejsu między JavaScriptem uruchomionym w Node.js i bibliotekami C / C ++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs :
+W chwili obecnej metoda wykonania Addons jest dość skomplikowana, obejmująca znajomość kilku komponentów i interfejsów API:
 
-* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+* V8: biblioteka C ++, którą Node.js obecnie używa do zapewnienia wykonania JavaScript. V8 zapewnia mechanizmy tworzenia obiektów, funkcji dzwoniących itp. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
