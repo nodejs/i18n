@@ -105,11 +105,11 @@ apply.whitespace fix`
 
 * Approvare una modifica
   
-  * I collaboratori indicano di aver esaminato e approvato le modifiche in una Pr utilizzando l'interfaccia di approvazione di Github
-  * Ad alcune persone piace commentare `LGTM` ("Sembra buono per me")
+  * I Collaboratori indicano di aver revisionato ed approvato le modifiche in una pull request utilizzando l'interfaccia di approvazione di Github
+  * Ad alcune persone piace commentare con `LGTM` ("A me sembra buono")
   * Hai l'autorità per approvare il lavoro di qualsiasi altro collaboratore.
-  * Non puoi approvare le tue Pr.
-  * Quando si utilizzano esplicitamente `le modifiche richieste`, mostrate empatia: i consigli saranno solitamente indirizzati anche se non li si usano. 
+  * Non puoi approvare le tue stesse pull request.
+  * Quando si utilizzano esplicitamente le `Changes requested` (modifiche richieste) mostra empatia - i commenti saranno solitamente indirizzati anche se non li si usa. 
     * Se lo fai, è bello se sei disponibile in seguito per controllare se i tuoi consigli sono stati affrontati
     * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
     * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
