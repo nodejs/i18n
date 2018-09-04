@@ -3394,7 +3394,7 @@ added: v10.0.0
 * `mtime` {number|string|Date}
 * Devuelve: {Promise}
 
-Change the file system timestamps of the object referenced by the `FileHandle` then resolves the `Promise` with no arguments upon success.
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por el `FileHandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 This function does not work on AIX versions before 7.1, it will resolve the `Promise` with an error using code `UV_ENOSYS`.
 
@@ -3676,7 +3676,7 @@ added: v10.0.0
 * `mtime` {number|string|Date}
 * Devuelve: {Promise}
 
-Change the file system timestamps of the object referenced by the supplied `FileHandle` then resolves the `Promise` with no arguments upon success.
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por el `FileHandle` proporcionado, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 This function does not work on AIX versions before 7.1, it will resolve the `Promise` with an error using code `UV_ENOSYS`.
 
@@ -3960,7 +3960,7 @@ added: v10.0.0
 * `mtime` {number|string|Date}
 * Devuelve: {Promise}
 
-Change the file system timestamps of the object referenced by `path` then resolves the `Promise` with no arguments upon success.
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por `path`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 Los argumentos `atime` y `mtime` siguen estas reglas:
 
