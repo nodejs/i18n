@@ -55,7 +55,7 @@ Donde:
 
 El término "[Forward Secrecy](https://en.wikipedia.org/wiki/Perfect_forward_secrecy)" o "Perfect Forward Secrecy" describe una característica de los métodos de acuerdo clave (es decir, intercambio de claves). Es decir, las claves del servidor y del cliente se utilizan para negociar nuevas claves temporales que se usan específicamente y solo para la sesión de comunicación actual. Prácticamente, esto significa que incluso si la clave privada del servidor se ve comprometida, la comunicación solo puede ser descifrada por espías si el atacante logra obtener el par de claves específicamente generadas para la sesión.
 
-Perfect Forward Secrecy is achieved by randomly generating a key pair for key-agreement on every TLS/SSL handshake (in contrast to using the same key for all sessions). Methods implementing this technique are called "ephemeral".
+Perfect Forward Secrecy se logra generando aleatoriamente un par de claves para el acuerdo de clave en cada establecimiento de comunicación de TLS/SSL (en contraste con el uso de la misma clave para todas las sesiones). Los métodos que implementan esta técnica se llaman "efímeros".
 
 Currently two methods are commonly used to achieve Perfect Forward Secrecy (note the character "E" appended to the traditional abbreviations):
 
