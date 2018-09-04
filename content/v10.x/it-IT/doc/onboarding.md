@@ -128,9 +128,9 @@ apply.whitespace fix`
   * L'acceso alla CI è integrato con GitHub. Prova ad accedere ora!
   * La maggior parte delle volte utilizzerai `node-test-pull-request`. Vacci subito! 
     * Considera di inserirlo tra i preferiti: https://ci.nodejs.org/job/node-test-pull-request/
-  * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
-  * To start CI testing from this screen, you need to fill in two elements on the form: 
-    * The `CERTIFY_SAFE` box should be checked. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
+  * Per accedere al modulo da compilare per iniziare un lavoro, clicca su `Build with Parameters`. (Se non lo vedi, probabilmente significa che non hai effettuato l'accesso) Cliccalo ora!
+  * Per avviare il CI testing da questa schermata, è necessario compilare due elementi nel modulo: 
+    * La casella `CERTIFY_SAFE` deve essere selezionata. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
     * The `PR_ID` box should be filled in with the number identifying the pull request containing the code you wish to test. For example, if the URL for the pull request is `https://github.com/nodejs/node/issues/7006`, then put `7006` in the `PR_ID`.
     * The remaining elements on the form are typically unchanged with the exception of `POST_STATUS_TO_PR`. Check that if you want a CI status indicator to be automatically inserted into the PR.
   * If you need help with something CI-related: 
