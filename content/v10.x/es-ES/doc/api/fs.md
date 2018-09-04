@@ -1992,7 +1992,7 @@ added: v5.10.0
 * `prefix` {string}
 * `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string}
+* Devuelve: {string}
 
 La versión sincrónica de [`fs.mkdtemp()`][]. Devuelve la ruta de archivo creada.
 
@@ -2045,7 +2045,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} See [support of file system `flags`][].
 * `mode` {integer} **Default:** `0o666`
-* Returns: {number}
+* Devuelve: {number}
 
 Versión sincrónica de [`fs.open()`][]. Devuelve un entero que representa el descriptor de archivo.
 
@@ -2235,7 +2235,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Returns: {string|Buffer}
+* Devuelve: {string|Buffer}
 
 Versión sincrónica de [`fs.readFile()`][]. Devuelve los contenidos del `path`.
 
@@ -2428,7 +2428,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string|Buffer}
+* Devuelve: {string|Buffer}
 
 Synchronously computes the canonical pathname by resolving `.`, `..` and symbolic links.
 
@@ -2453,7 +2453,7 @@ added: v9.2.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string|Buffer}
+* Devuelve: {string|Buffer}
 
 realpath(3) sincrónico.
 
@@ -3153,7 +3153,7 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {number}
+* Devuelve: {number}
 
 ## fs.writeSync(fd, string[, position[, encoding]])
 
@@ -3170,7 +3170,7 @@ changes:
 * `string` {string}
 * `position` {integer}
 * `encoding` {string}
-* Returns: {number}
+* Devuelve: {number}
 
 Versiones sincrónicas de [`fs.write()`][]. Devuelve el número de bytes escritos.
 
@@ -3203,7 +3203,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a este archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
@@ -3218,7 +3218,7 @@ added: v10.0.0
 -->
 
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Modifica los permisos en el archivo. The `Promise` is resolved with no arguments upon success.
 
@@ -3230,7 +3230,7 @@ added: v10.0.0
 
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Changes the ownership of the file then resolves the `Promise` with no arguments upon success.
 
@@ -3284,7 +3284,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Leer datos desde el archivo.
 
@@ -3307,7 +3307,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
 
@@ -3346,7 +3346,7 @@ added: v10.0.0
 -->
 
 * `len` {integer} **Default:** `0`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Truncates the file then resolves the `Promise` with no arguments upon success.
 
@@ -3392,7 +3392,7 @@ added: v10.0.0
 
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Change the file system timestamps of the object referenced by the `FileHandle` then resolves the `Promise` with no arguments upon success.
 
@@ -3484,7 +3484,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
@@ -3500,7 +3500,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Cambia los permisos de un archivo, luego resuelve la `Promise` sin argumentos al realizarlo con éxito.
 
@@ -3513,7 +3513,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Changes the ownership of a file then resolves the `Promise` with no arguments upon success.
 
@@ -3526,7 +3526,7 @@ added: v10.0.0
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
@@ -3569,9 +3569,9 @@ added: v10.0.0
 
 * `filehandle` {FileHandle}
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fchmod(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+fchmod(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.fchown(filehandle, uid, gid)
 
@@ -3582,7 +3582,7 @@ added: v10.0.0
 * `filehandle` {FileHandle}
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Changes the ownership of the file represented by `filehandle` then resolves the `Promise` with no arguments upon success.
 
@@ -3593,9 +3593,9 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fdatasync(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+fdatasync(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.fstat(filehandle)
 
@@ -3604,7 +3604,7 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Retrieves the [`fs.Stats`][] for the given `filehandle`.
 
@@ -3615,9 +3615,9 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fsync(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+fsync(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.ftruncate(filehandle[, len])
 
@@ -3627,7 +3627,7 @@ added: v10.0.0
 
 * `filehandle` {FileHandle}
 * `len` {integer} **Default:** `0`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Truncates the file represented by `filehandle` then resolves the `Promise` with no arguments upon success.
 
@@ -3674,7 +3674,7 @@ added: v10.0.0
 * `filehandle` {FileHandle}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Change the file system timestamps of the object referenced by the supplied `FileHandle` then resolves the `Promise` with no arguments upon success.
 
@@ -3688,7 +3688,7 @@ deprecated: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
 
@@ -3701,7 +3701,7 @@ deprecated: v10.0.0
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
 
@@ -3713,9 +3713,9 @@ added: v10.0.0
 
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous link(2). The `Promise` is resolved with no arguments upon success.
+link(2) asincrónico. The `Promise` is resolved with no arguments upon success.
 
 ### fsPromises.lstat(path)
 
@@ -3724,7 +3724,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 lstat(2) asincrónico. La `Promise` se resuelve con el objeto de [`fs.Stats`][] para el enlace simbólico de `path` dado.
 
@@ -3736,7 +3736,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 De manera asincrónica, crea un directorio y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
@@ -3749,7 +3749,7 @@ added: v10.0.0
 * `prefix` {string}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Crea un directorio temporal único y resuelve la `Promise` con la ruta de carpeta creada. Se genera un nombre de directorio único anexando seis caracteres al azar al final del `prefix` proporcionado.
 
@@ -3771,7 +3771,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `flags` {string|number} See [support of file system `flags`][].
 * `mode` {integer} **Default:** `0o666` (readable and writable)
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Asynchronous file open that returns a `Promise` that, when resolved, yields a `FileHandle` object. See open(2).
 
@@ -3790,7 +3790,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Lee datos del archivo especificado por `filehandle`.
 
@@ -3813,7 +3813,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Reads the contents of a directory then resolves the `Promise` with an array of the names of the files in the directory excludiing `'.'` and `'..'`.
 
@@ -3829,7 +3829,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
 
@@ -3850,7 +3850,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Asynchronous readlink(2). The `Promise` is resolved with the `linkString` upon success.
 
@@ -3865,7 +3865,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Determines the actual location of `path` using the same semantics as the `fs.realpath.native()` function then resolves the `Promise` with the resolved path.
 
@@ -3883,7 +3883,7 @@ added: v10.0.0
 
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Renames `oldPath` to `newPath` and resolves the `Promise` with no arguments upon success.
 
@@ -3894,7 +3894,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Removes the directory identified by `path` then resolves the `Promise` with no arguments upon success.
 
@@ -3907,7 +3907,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 The `Promise` is resolved with the [`fs.Stats`][] object for the given `path`.
 
@@ -3920,7 +3920,7 @@ added: v10.0.0
 * `target` {string|Buffer|URL}
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Crea un enlace simbólico y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
@@ -3934,7 +3934,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Trunca el `path` y luego resuelve la `Promise` sin argumentos al realizarse con éxito. El `path` *debe* ser una string o `Buffer`.
 
@@ -3978,7 +3978,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Escribe `buffer` al archivo especificado por `filehandle`.
 
