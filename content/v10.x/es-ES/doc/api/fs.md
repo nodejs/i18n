@@ -3013,7 +3013,7 @@ Si se invoca este método en su versión [`util.promisify()`][], devolverá una 
 
 Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
 
 ## fs.write(fd, string[, position[, encoding]], callback)
 
@@ -3053,7 +3053,7 @@ El callback recibirá los argumentos `(err, written, string)`, en donde `written
 
 Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. The kernel ignores the position argument and always appends the data to the end of the file.
 
 ## fs.writeFile(file, data[, options], callback)
 
@@ -3530,7 +3530,7 @@ added: v10.0.0
 
 Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
-Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -3798,7 +3798,7 @@ Lee datos del archivo especificado por `filehandle`.
 
 `offset` is the offset in the buffer to start writing at.
 
-`length` is an integer specifying the number of bytes to read.
+`length` es un entero que especifica el número de bytes a leer.
 
 `position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
 
@@ -3835,7 +3835,7 @@ Lee de manera asincrónica todos los contenidos de un archivo.
 
 La `Promise` se resuelve con los contenidos del archivo. Si no se especifica ninguna codificación (utilizando `options.encoding`), los datos son devueltos como un objeto de `Buffer` . De lo contrario, los datos serán una string.
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 Cuando el `path` es un directorio, el comportamiento de `fsPromises.readFile()` es específico en la plataforma. En macOS, Linux, y Windows, la promesa será rechazada con un error. En FreeBSD, una representación de los contenidos del directorio será devuelta.
 
@@ -3924,7 +3924,7 @@ added: v10.0.0
 
 Crea un enlace simbólico y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-El argumento de `type` sólo se utiliza en plataformas de Windows y puede ser uno de `'dir'`, `'file'`, o `'junction'`. Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+El argumento de `type` sólo se utiliza en plataformas de Windows y puede ser uno de `'dir'`, `'file'`, o `'junction'`. Tenga en cuenta que los puntos de unión de Windows requieren que la ruta de destino sea absoluta. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
 
 ### fsPromises.truncate(path[, len])
 
