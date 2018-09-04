@@ -75,17 +75,17 @@ Mira la sección [Manejo de Errores](#n_api_error_handling) para información ad
 
 ### napi_env
 
-`napi_env` is used to represent a context that the underlying N-API implementation can use to persist VM-specific state. This structure is passed to native functions when they're invoked, and it must be passed back when making N-API calls. Specifically, the same `napi_env` that was passed in when the initial native function was called must be passed to any subsequent nested N-API calls. Caching the `napi_env` for the purpose of general reuse is not allowed.
+`napi_env` es utilizada para representar un contexto que la implementación de N-API subyacente puede utilizar para persistir en un estado específico de la VM. Esta estructura es pasada a funciones nativas cuando son invocadas y debe ser pasada devuelta cuando se hacen llamadas N-API. Específicamente, el mismo `napi_env` que fue pasado cuando la función nativa inicial fue llamada, debe ser pasado a cualquier llamada N-API subsecuente anidada. El almacenamiento en caché de `napi_env` para el propósito de reutilización general, no está permitido.
 
 ### napi_value
 
-This is an opaque pointer that is used to represent a JavaScript value.
+Este es un apuntador opaco que se utilizado para representar un valor de JavaScript.
 
-### N-API Memory Management types
+### Tipos de gestión de memoria de N-API
 
 #### napi_handle_scope
 
-This is an abstraction used to control and modify the lifetime of objects created within a particular scope. In general, N-API values are created within the context of a handle scope. When a native method is called from JavaScript, a default handle scope will exist. If the user does not explicitly create a new handle scope, N-API values will be created in the default handle scope. For any invocations of code outside the execution of a native method (for instance, during a libuv callback invocation), the module is required to create a scope before invoking any functions that can result in the creation of JavaScript values.
+Esta es una abstracción utilizada para controlar y modificar el tiempo de vida de objetos creados dentro de un alcance particular. En general, los valores N-API son creados dentro de un contexto de alcance controlado. Cuando se llama a un método nativo de JavaScript, existirá un alcance controlado por defecto. If the user does not explicitly create a new handle scope, N-API values will be created in the default handle scope. For any invocations of code outside the execution of a native method (for instance, during a libuv callback invocation), the module is required to create a scope before invoking any functions that can result in the creation of JavaScript values.
 
 Handle scopes are created using [`napi_open_handle_scope`][] and are destroyed using [`napi_close_handle_scope`][]. Closing the scope can indicate to the GC that all `napi_value`s created during the lifetime of the handle scope are no longer referenced from the current stack frame.
 
