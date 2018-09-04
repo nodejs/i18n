@@ -6,18 +6,18 @@
 
 > Estabilidad: 2 - Estable
 
-N-API (pronunciando N como la letra, seguido por API) es una API para crear complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. Esta API será una Interfaz Binaria de Aplicación (ABI) estable entre versiones de Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
+N-API (pronunciando N como la letra, seguido por API) es una API para crear complementos nativos. Es independiente del tiempo de ejecución subyacente de JavaScript (por ejemplo, V8) y se mantiene como parte de Node.js. Esta API será una Interfaz Binaria de Aplicación (ABI) estable entre versiones de Node.js. Está diseñado para aislar los complementos de los cambios del motor subyacente de JavaScripts y permitir que los módulos compilados para una versión se ejecuten en versiones posteriores de Node.js sin compilación.
 
 Los complementos son programados y empaquetados con el mismo enfoque y herramientas descritos en la sección titulada [Complementos de C++](addons.html). La única diferencia es el conjunto de APIs que son utilizadas por el código nativo. En lugar de utilizar V8 o las APIs [Abstracciones Nativas para Node.js](https://github.com/nodejs/nan), se utilizan las funciones disponibles en la N-API.
 
-Las APIs expuestas por la N-API son, generalmente, utilizadas para crear y manipulas valores de JavaScript. Los conceptos y las operaciones, generalmente, conllevan a ideas especificadas en las especificaciones del lenguaje ECMA262. Las APIs tienen las siguientes propiedades:
+Las APIs expuestas por la N-API son, generalmente, utilizadas para crear y manipular valores de JavaScript. Los conceptos y operaciones, generalmente, mapean hacia ideas especificadas en las especificaciones del lenguaje ECMA262. Las APIs tienen las siguientes propiedades:
 
 - Todas las llamadas a N-API devuelven un código de estado del tipo `napi_status`. Este estado indica si la llamada a la API fue exitosa o no.
 - El valor retornado por la API se pasa a través de un parámetro de salida.
-- Todos los valores de JavaScript se abstraen detrás de una tipo opaco llamada `napi_value`.
+- Todos los valores de JavaScript se abstraen detrás de un tipo opaco llamado `napi_value`.
 - En caso de un estado de error, se puede obtener información adicional utilizando `napi_get_last_error_info`. Se puede encontrar más información en la sección de manejo de errores [Manejo de Errores](#n_api_error_handling).
 
-La N-API es una C API que garantiza la estabilidad de la ABI a través de las versiones y los diferentes niveles de compilación de Node.js. Sin embargo, también entendemos que una API de C++ puede ser más fácil de usar en muchos casos. Para apoyar estos casos, esperamos que existan uno o más módulos de envoltura de C++ que provea una API de C++ inlineable. Los binarios construidos con estos módulos de envoltura dependerán de los símbolos para la N-API, basados en las funciones exportadas por Node.js. Estas envolturas no son parte de la N-API, ni se mantendrán como parte de Node.js. Un ejemplo es: [node_addon_api](https://github.com/nodejs/node-addon-api).
+La N-API es una C API que garantiza la estabilidad de la ABI a través de las versiones y los diferentes niveles de compilación de Node.js. Sin embargo, también entendemos que una API de C++ puede ser más fácil de usar en muchos casos. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Los binarios construidos con estos módulos de envoltura dependerán de los símbolos para la N-API, basados en las funciones exportadas por Node.js. Estas envolturas no son parte de la N-API, ni se mantendrán como parte de Node.js. Un ejemplo es: [node_addon_api](https://github.com/nodejs/node-addon-api).
 
 Para poder utilizar las funciones de N-API, incluir el archivo [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) que se encuentra en el directorio src en el árbol de nodos de desarrollo:
 
