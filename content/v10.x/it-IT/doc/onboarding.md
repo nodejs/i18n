@@ -142,16 +142,16 @@ apply.whitespace fix`
 
 Vedi la Guida per i Collaboratori: [Confermare le Pull Request](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
-Note that commits in one PR that belong to one logical change should be squashed. It is rarely the case in onboarding exercises, so this needs to be pointed out separately during the onboarding.
+Si noti che in una PR i commit che appartengono ad una modifica logica dovrebbero essere compressi. Accade raramente negli esercizi di onboarding, quindi deve essere indicato separatamente durante l'onboarding stesso.
 
 <!-- TODO(joyeechueng): provide examples about "one logical change" -->
 
-## Exercise: Make a PR adding yourself to the README
+## Esercizio: Fai una PR aggiungendoti al README
 
 * Esempio: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
-  * For raw commit message: `git log ce986de829457c39257cd205067602e765768fb0
+  * Per commit message non elaborato: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
-* Collaborators are in alphabetical order by GitHub username.
+* I Collaboratori sono in ordine alfabetico in base all'username di GitHub.
 * Optionally, include your personal pronouns.
 * Label your pull request with the `doc` subsystem label.
 * Run CI on the PR. Because the PR does not affect any code, use the `node-test-pull-request-lite` CI task. Alternatively, use the usual `node-test-pull-request` CI task and cancel it after the linter and one other subtask have passed.
