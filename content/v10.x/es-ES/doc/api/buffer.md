@@ -1156,7 +1156,7 @@ console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
 
 Si `value` no es una cadena, número, o `Buffer`, este método producirá un `TypeError`. Si `value` es un número, se forzará a un valor byte válido, un entero entre 0 y 255.
 
-Si `byteOffset` no es un número, se forzará a un número. Si el resultado de la coección es `NaN` o `0`, entonces el buffer entero se buscará. Este comportamiento coincide con [`String#indexOf()`].
+Si `byteOffset` no es un número, se forzará a un número. Si el resultado de forzar es `NaN` o `0`, entonces el buffer entero se buscará. Este comportamiento coincide con [`String#indexOf()`].
 
 ```js
 const b = Buffer.from('abcdef');
