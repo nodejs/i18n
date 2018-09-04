@@ -1498,13 +1498,13 @@ Reads `byteLength` number of bytes from `buf` at the specified `offset` and inte
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
 
 console.log(buf.readIntLE(0, 6).toString(16));
-// Prints: -546f87a9cbee
+// Imprime: -546f87a9cbee
 console.log(buf.readIntBE(0, 6).toString(16));
-// Prints: 1234567890ab
+// Imprime: 1234567890ab
 console.log(buf.readIntBE(1, 6).toString(16));
-// Throws ERR_INDEX_OUT_OF_RANGE
+// Lanza ERR_INDEX_OUT_OF_RANGE
 console.log(buf.readIntBE(1, 0).toString(16));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUInt8(offset)
@@ -1519,20 +1519,20 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Debe satisfacer `0 <= offset <= buf.length - 1`.
-* Returns: {integer}
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - 1`.
+* Devuelve: {integer}
 
-Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
+Lee un entero de 8-bit sin signo desde `buf` en el `offset` especificado.
 
 ```js
 const buf = Buffer.from([1, -2]);
 
 console.log(buf.readUInt8(0));
-// Prints: 1
+// Imprime: 1
 console.log(buf.readUInt8(1));
-// Prints: 254
+// Imprime: 254
 console.log(buf.readUInt8(2));
-// Throws ERR_OUT_OF_RANGE
+// Lanza ERR_OUT_OF_RANGE
 ```
 
 ### buf.readUInt16BE(offset)
@@ -1549,8 +1549,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Number of bytes to skip before starting to read. Debe satisfacer `0 <= offset <= buf.length - 2`.
-* Returns: {integer}
+* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - 2`.
+* Devuelve: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
 
