@@ -126,8 +126,8 @@ apply.whitespace fix`
   * <https://ci.nodejs.org/> 
     * Non viene eseguita automaticamente. È necessario avviarla manualmente.
   * L'acceso alla CI è integrato con GitHub. Prova ad accedere ora!
-  * You will be using `node-test-pull-request` most of the time. Go there now! 
-    * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
+  * La maggior parte delle volte utilizzerai `node-test-pull-request`. Vacci subito! 
+    * Considera di inserirlo tra i preferiti: https://ci.nodejs.org/job/node-test-pull-request/
   * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
   * To start CI testing from this screen, you need to fill in two elements on the form: 
     * The `CERTIFY_SAFE` box should be checked. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
