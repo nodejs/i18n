@@ -110,22 +110,22 @@ apply.whitespace fix`
   * Hai l'autorità per approvare il lavoro di qualsiasi altro collaboratore.
   * Non puoi approvare le tue stesse pull request.
   * Quando si utilizzano esplicitamente le `Changes requested` (modifiche richieste) mostra empatia - i commenti saranno solitamente indirizzati anche se non li si usa. 
-    * Se lo fai, è bello se sei disponibile in seguito per controllare se i tuoi consigli sono stati affrontati
-    * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
-    * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
+    * Se lo fai, sii gentile e dispobile anche in seguito per controllare se i tuoi commenti sono stati indirizzati
+    * Se noti che le modifiche richieste sono state fatte, puoi cancellare la revisione `Changes requested` di un altro collaborator.
+    * Utilizza `Changes requested` per indicare che stai prendendo in considerazione alcuni dei tuoi commenti per bloccare l'accettazione (landing) di una PR.
 
-* Ciò che appartiene a Node.js:
+* Ciò che fa parte di Node.js:
   
   * Le opinioni variano - è bello avere una vasta base di collaboratori per questo motivo!
-  * Se Node.js ne ha bisogno (a causa di ragioni storiche), quindi appartiene a Node.js. 
-    * Vale a dire, `url` è lì a causa di `http`, `freelist` è lì a causa di `http`, etc.
-  * Things that cannot be done outside of core, or only with significant pain such as `async_hooks`.
+  * Se Node.js stesso ne ha bisogno (a causa di ragioni storiche), allora fa parte di Node.js. 
+    * Nel senso che, `url` è presente a causa di `http`, `freelist` è presente a causa di `http`, ecc.
+  * Le cose che non possono essere svolte al di fuori del core, se non solo con una fatica significativa come ad esempio gli `async_hooks`.
 
 * Continuous Integration (CI) Testing:
   
   * <https://ci.nodejs.org/> 
-    * It is not automatically run. You need to start it manually.
-  * Log in on CI is integrated with GitHub. Try to log in now!
+    * Non viene eseguita automaticamente. È necessario avviarla manualmente.
+  * L'acceso alla CI è integrato con GitHub. Prova ad accedere ora!
   * You will be using `node-test-pull-request` most of the time. Go there now! 
     * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
   * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
