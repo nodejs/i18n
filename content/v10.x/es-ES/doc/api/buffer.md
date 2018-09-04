@@ -1647,14 +1647,14 @@ changes:
 -->
 
 * `start` {integer} Dónde comenzará el nuevo `Buffer`. **Predeterminado:** `0`.
-* `end` {integer} Dón de terminará el nuevo `Buffer` (no incluido). **Predeterminado:** [`buf.length`].
+* `end` {integer} Dónde terminará el nuevo `Buffer` (no incluido). **Predeterminado:** [`buf.length`].
 * Devuelve: {Buffer}
 
 Devuelve un nuevo `Buffer` que hace referencia a la misma memoria del original, pero se desplaza y se recorta por los índices `start` y `end`.
 
 La especificación de que `end` es mayor que [`buf.length`] devolverá el mismo resultado que el de `end` igual a [`buf.length`].
 
-La modificación del nuevo segmento de `Buffer` modificará la memoria en el `Buffer` original porque la memoria asignada de los dos objetos se superpone.
+La modificación de la nuevo porción de `Buffer` modificará la memoria en el `Buffer` original porque la memoria asignada de los dos objetos se superpone.
 
 ```js
 // Crea un `Buffer`con el alfabeto ASCII, toma un segmento, y modifica un byte
@@ -1678,7 +1678,7 @@ console.log(buf2.toString('ascii', 0, buf2.length));
 // Imprime: !bc
 ```
 
-La especificación de índices negativos causa que el segmento se genere en relación al final de `buf` en lugar de al inicio.
+La especificación de índices negativos causa que la porción se genere en relación al final de `buf` en lugar de al inicio.
 
 ```js
 const buf = Buffer.from('buffer');
