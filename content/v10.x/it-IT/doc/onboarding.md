@@ -79,8 +79,8 @@ apply.whitespace fix`
 * Vedi [Chi per CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
   * Questo arriverà più autonomamente nel tempo
-  * Per molte delle squadre elencate qui, puoi chiedere di essere aggiunto se sei interessato 
-    * Alcuni WG sono con qualche processo di aggiunta di persone, altri sono solo lì per le notifiche
+  * Per molti dei team qui elencati, puoi chiedere di esserne aggiunto se ne sei interessato 
+    * Alcuni sono WG con qualche processo per l'aggiunta di nuove persone, altri sono lì solo per le notifiche
 
 * Quando una discussione si anima, puoi chiedere agli altri Collaboratori di tenerlo d'occhio aprendo un problema in privato [nodejs/moderation](https://github.com/nodejs/moderation).
   
