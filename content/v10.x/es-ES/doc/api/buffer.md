@@ -1050,7 +1050,7 @@ console.log(b.toString());
 
 `value` se fuerza a un valor `uint32` si no es una cadena o un entero.
 
-If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
+Si la escritura final de una operación `fill()` falla sobre un caracter multi-byte, entonces solo se escriben los bytes de ese caracter que encajen dentro de `buf`:
 
 ```js
 // Llena un `Buffer`con un caracter de dos bytes.
@@ -1059,7 +1059,7 @@ console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 // Imprime: <Buffer c8 a2 c8>
 ```
 
-If `value` contains invalid characters, it is truncated; if no valid fill data remains, an exception is thrown:
+Si `value` contiene caracteres inválidos, se trunca; si no quedan datos de relleno válidos, se produce una excepción:
 
 ```js
 const buf = Buffer.allocUnsafe(5);
