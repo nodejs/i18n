@@ -3629,7 +3629,7 @@ added: v10.0.0
 * `len` {integer} **Default:** `0`
 * Devuelve: {Promise}
 
-Truncates the file represented by `filehandle` then resolves the `Promise` with no arguments upon success.
+Trunca el archivo representado por `filehandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 If the file referred to by the `FileHandle` was larger than `len` bytes, only the first `len` bytes will be retained in the file.
 
@@ -3703,7 +3703,7 @@ deprecated: v10.0.0
 * `gid` {integer}
 * Devuelve: {Promise}
 
-Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
+Cambia la pertenencia en un enlace simbólico, luego resuelve la `Promise` sin argumentos al realizarse con éxito. Este método sólo se implementa en macOS.
 
 ### fsPromises.link(existingPath, newPath)
 
@@ -3715,7 +3715,7 @@ added: v10.0.0
 * `newPath` {string|Buffer|URL}
 * Devuelve: {Promise}
 
-link(2) asincrónico. The `Promise` is resolved with no arguments upon success.
+link(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.lstat(path)
 
@@ -3885,7 +3885,7 @@ added: v10.0.0
 * `newPath` {string|Buffer|URL}
 * Devuelve: {Promise}
 
-Renames `oldPath` to `newPath` and resolves the `Promise` with no arguments upon success.
+Renombra a `oldPath` como `newPath` y resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.rmdir(path)
 
@@ -3896,7 +3896,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * Devuelve: {Promise}
 
-Removes the directory identified by `path` then resolves the `Promise` with no arguments upon success.
+Elimina el directorio identificado por `path`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 Using `fsPromises.rmdir()` on a file (not a directory) results in the `Promise` being rejected with an `ENOENT` error on Windows and an `ENOTDIR` error on POSIX.
 
