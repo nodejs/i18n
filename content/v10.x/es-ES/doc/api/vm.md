@@ -255,7 +255,7 @@ The URL of the current module, as set in the constructor.
 * `options` {Object} 
   * `timeout` {number} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Evaluate the module.
 
@@ -281,7 +281,7 @@ Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma26
 ### module.link(linker)
 
 * `linker` {Function}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Link module dependencies. This method must be called before instantiation, and can only be called once per module.
 
