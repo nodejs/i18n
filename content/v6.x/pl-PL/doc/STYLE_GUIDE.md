@@ -13,7 +13,7 @@
   * Zaimki są dopuszczalne w bardziej potocznej dokumentacji, np. poradników.
   * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
     * OK: "they", "their", "them", "folks", "people", "developers", "cats"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+    * NIE OK: "jego", "jej", "mu", "jej", "chłopaki", "kolesie"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
