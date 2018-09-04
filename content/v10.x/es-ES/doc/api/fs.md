@@ -3584,7 +3584,7 @@ added: v10.0.0
 * `gid` {integer}
 * Devuelve: {Promise}
 
-Changes the ownership of the file represented by `filehandle` then resolves the `Promise` with no arguments upon success.
+Cambia la pertenencia del archivo representado por `filehandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.fdatasync(filehandle)
 
