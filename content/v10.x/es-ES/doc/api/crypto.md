@@ -102,7 +102,7 @@ Como una interfaz heredada que todavía es compatible, es posible (pero no se re
 
 #### new crypto.Certificate()
 
-Instances of the `Certificate` class can be created using the `new` keyword or by calling `crypto.Certificate()` as a function:
+Instancias de la clase `Certificate` pueden ser creadas usando la palabra clave `new` o llamando a `crypto.Certificate()` como una función:
 
 ```js
 const crypto = require('crypto');
@@ -300,12 +300,12 @@ El método `cipher.update()` puede ser llamado múltiples veces con nuevos datos
 added: v0.1.94
 -->
 
-Instances of the `Decipher` class are used to decrypt data. The class can be used in one of two ways:
+Instancias de la clase `Decipher` son usadas para descifrar datos. La clase puede ser usada de una de las dos maneras:
 
-- As a [stream](stream.html) that is both readable and writable, where plain encrypted data is written to produce unencrypted data on the readable side, or
-- Using the [`decipher.update()`][] and [`decipher.final()`][] methods to produce the unencrypted data.
+- Como un [stream](stream.html) que es legible y escribible, donde los datos planos encriptados están escritos para producir datos no encriptados en el lado legible, o
+- Usando los métodos [`decipher.update()`][] y [`decipher.final()`][] para producir datos no encriptados.
 
-The [`crypto.createDecipher()`][] or [`crypto.createDecipheriv()`][] methods are used to create `Decipher` instances. `Decipher` objects are not to be created directly using the `new` keyword.
+Los métodos [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] son usados para crear instancias `Decipher`. `Decipher` objects are not to be created directly using the `new` keyword.
 
 Example: Using `Decipher` objects as streams:
 
