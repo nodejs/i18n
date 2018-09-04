@@ -130,12 +130,12 @@ apply.whitespace fix`
     * Considera di inserirlo tra i preferiti: https://ci.nodejs.org/job/node-test-pull-request/
   * Per accedere al modulo da compilare per iniziare un lavoro, clicca su `Build with Parameters`. (Se non lo vedi, probabilmente significa che non hai effettuato l'accesso) Cliccalo ora!
   * Per avviare il CI testing da questa schermata, è necessario compilare due elementi nel modulo: 
-    * La casella `CERTIFY_SAFE` deve essere selezionata. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
-    * The `PR_ID` box should be filled in with the number identifying the pull request containing the code you wish to test. For example, if the URL for the pull request is `https://github.com/nodejs/node/issues/7006`, then put `7006` in the `PR_ID`.
-    * The remaining elements on the form are typically unchanged with the exception of `POST_STATUS_TO_PR`. Check that if you want a CI status indicator to be automatically inserted into the PR.
-  * If you need help with something CI-related: 
-    * Use #node-dev (IRC) to talk to other Collaborators.
-    * Use #node-build (IRC) to talk to the Build WG members who maintain the CI infrastructure.
+    * La casella `CERTIFY_SAFE` deve essere selezionata. Selezionandola, stai indicando che hai revisionato il codice che stai per testare e sei sicuro che non contenga alcun codice maligno. (Non vogliamo che le persone dirottino i nostri host di CI per attaccare altri host su internet, ad esempio!)
+    * La casella `PR_ID` deve essere compilata con il numero che identifica la pull request contenente il codice che desideri testare. Ad esempio, se l'URL per la pull request è `https://github.com/nodejs/node/issues/7006`, allora inserisci `7006` all'interno di `PR_ID`.
+    * Gli elementi rimanenti nel modulo in genere rimangono invariati ad eccezione di `POST_STATUS_TO_PR`. Selezionarlo se si desidera che venga automaticamente inserito nella PR un indicatore di stato della CI.
+  * Se hai bisogno di altro aiuto in relazione alla CI: 
+    * Utilizza #node-dev (IRC) per parlare con altri Collaboratori.
+    * Utilizza #node-build (IRC) per parlare con i membri del Build WG che gestiscono l'infrastruttura della CI.
     * Use the [Build WG repo](https://github.com/nodejs/build) to file issues for the Build WG members who maintain the CI infrastructure.
 
 ## Landing PRs
