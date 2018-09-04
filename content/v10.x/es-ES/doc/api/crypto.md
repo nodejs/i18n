@@ -364,9 +364,9 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Returns: {Buffer | string} Any remaining deciphered contents. If `outputEncoding` is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+- Devuelve: {Buffer | string} Cualquier contenido descifrado restante. Si `outputEncoding` es alguno de estos, `'latin1'`, `'ascii'` o `'utf8'`, una string es devuelta. Si no se provee un `outputEncoding`, es devuelto un [`Buffer`][].
 
-Once the `decipher.final()` method has been called, the `Decipher` object can no longer be used to decrypt data. Attempts to call `decipher.final()` more than once will result in an error being thrown.
+Una vez que el método `decipher.final()` ha sido llamado, el objeto `Decipher` no puede ser usado para descifrar datos. Intentar llamar mas de una vez a `decipher.final()` producirá un error.
 
 ### decipher.setAAD(buffer)
 
@@ -382,7 +382,7 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Cipher} como método cadena.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+Cuando se usa un modo de encriptación autenticado (solamente `GCM` y `CCM` están siendo respaldados actualmente), el método `decipher.setAAD()` establece el valor usado para el parámetro de entrada *Datos Autenticados Adicionales* (DAA).
 
 The `decipher.setAAD()` method must be called before [`decipher.update()`][].
 
