@@ -6,11 +6,11 @@
 * Documents should be word-wrapped at 80 characters.
 * Preferowane jest formatowanie opisane w `.editorconfig`. 
   * [Wtyczka](http://editorconfig.org/#download) jest dostępna dla niektórych edytorów do automatycznego stosowania tych zasad.
-* Problemy mechaniczne, takie jak pisownia i gramatyka, powinny być identyfikowane za pomocą narzędzi, o ile to możliwe. If not caught by a tool, they should be pointed out by human reviewers.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
-* Though controversial, the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) is preferred for clarity's sake.
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
+* Problemy mechaniczne, takie jak pisownia i gramatyka, powinny być identyfikowane za pomocą narzędzi, o ile to możliwe. Jeśli nie zostaną złapane przez narzędzie, powinny zostać wskazane przez recenzentów.
+* Preferowana jest amerykańska pisownia. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Choć kontrowersyjny, [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) jest preferowany ze względu na jasność.
+* Generalnie należy unikać zaimków osobowych w dokumentacji referencyjnej ("ja", "ty", "my"). 
+  * Zaimki są dopuszczalne w bardziej potocznej dokumentacji, np. poradników.
   * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
     * OK: "they", "their", "them", "folks", "people", "developers", "cats"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
