@@ -28,7 +28,7 @@ La interfaz de línea de comandos de OpenSSL se puede usar para generar un CSR p
 openssl req -new -sha256 -key ryans-key.pem -out ryans-csr.pem
 ```
 
-Una vez que se genera el archivo CSR, puede enviarse a una Autoridad de certificación para firmar o utilizarse para generar un certificado auto-firmado.
+Una vez que se genera el archivo CSR, puede enviarse a una Autoridad de Certificación para firmar o utilizarse para generar un certificado auto-firmado.
 
 La creación de un certificado auto-firmado utilizando la interfaz de línea de comandos de OpenSSL se ilustra en el siguiente ejemplo:
 
