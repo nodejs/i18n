@@ -449,9 +449,9 @@ El método `decipher.update()` puede ser llamado múltiples veces con nuevos dat
 added: v0.5.0
 -->
 
-The `DiffieHellman` class is a utility for creating Diffie-Hellman key exchanges.
+La clase `DiffieHellman` es una herramienta útil para crear intercambios de clave Diffie-Hellman.
 
-Instances of the `DiffieHellman` class can be created using the [`crypto.createDiffieHellman()`][] function.
+Las instancias de la clase `DiffieHellman` pueden ser creadas usando la función [`crypto.createDiffieHellman()`][].
 
 ```js
 const crypto = require('crypto');
@@ -484,7 +484,7 @@ added: v0.5.0
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave dada es interpretada usando el `inputEncoding` especificado, y el secreto es codificado usando el `outputEncoding` especificado. Las codificaciones pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `inputEncoding` no es dado, `otherPublicKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
 If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
 
