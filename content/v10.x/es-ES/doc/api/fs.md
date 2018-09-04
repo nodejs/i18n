@@ -2861,7 +2861,7 @@ changes:
   * `filename` {string|Buffer}
 * Devuelve: {fs.FSWatcher}
 
-Watch for changes on `filename`, where `filename` is either a file or a directory.
+Buscar cambios en `filename`, donde `filename` es o un archivo o un directorio.
 
 El segundo argumento es opcional. Si se proporciona `options` como una string, especificará el `encoding`. De lo contrario, `options` debería ser pasado como un objeto.
 
@@ -3606,7 +3606,7 @@ added: v10.0.0
 * `filehandle` {FileHandle}
 * Devuelve: {Promise}
 
-Retrieves the [`fs.Stats`][] for the given `filehandle`.
+Recupera el [`fs.Stats`][] para el `filehandle` dado.
 
 ### fsPromises.fsync(filehandle)
 
