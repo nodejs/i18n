@@ -17,7 +17,7 @@ Las APIs expuestas por la N-API son, generalmente, utilizadas para crear y manip
 - Todos los valores de JavaScript se abstraen detrás de un tipo opaco llamado `napi_value`.
 - En caso de un estado de error, se puede obtener información adicional utilizando `napi_get_last_error_info`. Se puede encontrar más información en la sección de manejo de errores [Manejo de Errores](#n_api_error_handling).
 
-La N-API es una C API que garantiza la estabilidad de la ABI a través de las versiones y los diferentes niveles de compilación de Node.js. Sin embargo, también entendemos que una API de C++ puede ser más fácil de usar en muchos casos. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Los binarios construidos con estos módulos de envoltura dependerán de los símbolos para la N-API, basados en las funciones exportadas por Node.js. Estas envolturas no son parte de la N-API, ni se mantendrán como parte de Node.js. Un ejemplo es: [node_addon_api](https://github.com/nodejs/node-addon-api).
+La N-API es una C API que garantiza la estabilidad de la ABI a través de las versiones y los diferentes niveles de compilación de Node.js. Sin embargo, también entendemos que una API de C++ puede ser más fácil de usar en muchos casos. Para apoyar estos casos, esperamos que existan uno o más módulos de envoltura de C++ que provean una API de C++ inlineable. Los binarios construidos con estos módulos de envoltura dependerán de los símbolos para las funciones basadas en N-API exportadas por Node.js. Estas envolturas no son parte de la N-API, ni se mantendrán como parte de Node.js. Un ejemplo es: [node_addon_api](https://github.com/nodejs/node-addon-api).
 
 Para poder utilizar las funciones de N-API, incluir el archivo [`node_api.h`](https://github.com/nodejs/node/blob/master/src/node_api.h) que se encuentra en el directorio src en el árbol de nodos de desarrollo:
 
@@ -25,9 +25,9 @@ Para poder utilizar las funciones de N-API, incluir el archivo [`node_api.h`](ht
 #include <node_api.h>
 ```
 
-## Tipos básicos de datos de N-API
+## Tipos Básicos de Datos de N-API
 
-N-API expone los siguientes tipos de datos fundamentales como abstracciones que son consumidas por las diversas APIs. Estas APIs deben tratarse como opacas, introspectible sólo con otras llamadas N-API.
+N-API expone los siguientes tipos de datos fundamentales como abstracciones que son consumidas por las diversas APIs. Estas APIs deben tratarse como opacas, sólo siendo posible una revisión introspectiva mediante otras llamadas N-API.
 
 ### napi_staus
 
@@ -67,7 +67,7 @@ typedef struct {
 ```
 
 - `error_message`: cadena UTF8-codificada que contiene una descripción neutral VM del error.
-- `engine_reserved`: reservado para los detalles específicos de la VM del error. Este, actualmente no está implementado para ninguna VM.
+- `engine_reserved`: Reservado para los detalles de error específico de la VM. Este, actualmente, no está implementado para ninguna VM.
 - `engine_error_code`: código de error específico de la VM. Actualmente no está implementado para ninguna VM.
 - `error_code`: El código de estado de la N-API que se originó con el último error.
 
@@ -75,19 +75,19 @@ Mira la sección [Manejo de Errores](#n_api_error_handling) para información ad
 
 ### napi_env
 
-`napi_env` es utilizada para representar un contexto que la implementación de N-API subyacente puede utilizar para persistir en un estado específico de la VM. Esta estructura es pasada a funciones nativas cuando son invocadas y debe ser pasada devuelta cuando se hacen llamadas N-API. Específicamente, el mismo `napi_env` que fue pasado cuando la función nativa inicial fue llamada, debe ser pasado a cualquier llamada N-API subsecuente anidada. El almacenamiento en caché de `napi_env` para el propósito de reutilización general, no está permitido.
+`napi_env` es utilizada para representar un contexto que la implementación de N-API subyacente puede utilizar para persistir en un estado específico de la VM. Esta estructura es pasada a funciones nativas cuando son invocadas y debe ser pasada devuelta cuando se hacen llamadas N-API. Específicamente, el mismo `napi_env` que fue pasado cuando la función nativa inicial fue llamada debe ser pasado a cualquier llamada N-API subsecuente anidada. El almacenamiento en caché de `napi_env` para el propósito de reutilización general no está permitido.
 
 ### napi_value
 
-Este es un apuntador opaco que se utilizado para representar un valor de JavaScript.
+Este es un apuntador opaco que se utiliza para representar un valor de JavaScript.
 
-### Tipos de gestión de memoria de N-API
+### Tipos de Gestión de Memoria de N-API
 
 #### napi_handle_scope
 
-Esta es una abstracción utilizada para controlar y modificar el tiempo de vida de objetos creados dentro de un alcance particular. En general, los valores N-API son creados dentro de un contexto de alcance controlado. Cuando se llama a un método nativo de JavaScript, existirá un alcance controlado por defecto. Si el usuario no crea explícitamente un nuevo alcance controlado, los valores N-API serán creados en el alcance controlado por defecto. Para cualquier invocación de código fuera de la ejecución de un método nativo (por ejemplo, durante una invocación a la llamada libuv), el módulo es requerido para crear el alcance antes de invocar cualquier función que pueda resultar en la creación de valores JavaScript.
+Esta es una abstracción utilizada para controlar y modificar el tiempo de vida de objetos creados dentro de un ámbito particular. En general, los valores N-API son creados dentro de un contexto de ámbito controlado. Cuando se llama a un método nativo de JavaScript, existirá un ámbito controlado por defecto. Si el usuario no crea explícitamente un nuevo ámbito controlado, los valores N-API serán creados en el ámbito controlado por defecto. Para cualquier invocación de código fuera de la ejecución de un método nativo (por ejemplo, durante una invocación a la llamada libuv), el módulo es requerido para crear el ámbito antes de invocar cualquier función que pueda resultar en la creación de valores JavaScript.
 
-Los alcances controlados con creados utilizando [`napi_open_handle_scope`][] y son destruidos utilizando [`napi_close_handle_scope`][]. El cierre del alcance puede indicar al GC que todos los `napi_value`s creados durante el tiempo de vida del alcance controlado ya no son referenciados desde el marco de la pila actual.
+Los ámbitos controlados con creados utilizando [`napi_open_handle_scope`][] y son destruidos utilizando [`napi_close_handle_scope`][]. El cierre del ámbito puede indicar al GC que todos los `napi_value`s creados durante el tiempo de vida del alcance controlado ya no son referenciados desde el stack frame actual.
 
 Para más detalles, revisar la [Gestión de tiempo de vida del objeto](#n_api_object_lifetime_management).
 
