@@ -1489,10 +1489,10 @@ changes:
 -->
 
 * `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
-* Returns: {integer}
+* `byteLength` {integer} Número de bytes a leer. Debe satisfacer `0 < byteLength <= 6`.
+* Devuelve: {integer}
 
-Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
+Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Soporta hasta 48 bits de precisión.
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1614,7 +1614,7 @@ changes:
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
+* `byteLength` {integer} Number of bytes to read. Debe satisfacer `0 < byteLength <= 6`.
 * Returns: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
@@ -2081,7 +2081,7 @@ changes:
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* `byteLength` {integer} Number of bytes to write. Debe satisfacer `0 < byteLength <= 6`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
@@ -2216,7 +2216,7 @@ changes:
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* `byteLength` {integer} Number of bytes to write. Debe satisfacer `0 < byteLength <= 6`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
