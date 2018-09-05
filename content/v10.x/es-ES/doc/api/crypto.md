@@ -486,7 +486,7 @@ added: v0.5.0
 
 Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave dada es interpretada usando el `inputEncoding` especificado, y el secreto es codificado usando el `outputEncoding` especificado. Las codificaciones pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `inputEncoding` no es dado, `otherPublicKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-Si el `outputEncoding` es dado una string es devuelta; de no ser así, un [`Buffer`][] es devuelto.
+Si el `outputEncoding` es dado, una string es devuelta; de no ser así, un [`Buffer`][] es devuelto.
 
 ### diffieHellman.generateKeys([encoding])
 
@@ -497,7 +497,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Genera valores de claves Diffie-Hellman privadas y públicas, y devuelve la clave pública en el `encoding` especificado. Esta clave debe ser transferida a la otra parte. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta; de no ser así, un [`Buffer`][] es devuelto.
+Genera valores de claves Diffie-Hellman privadas y públicas, y devuelve la clave pública en el `encoding` especificado. Esta clave debe ser transferida a la otra parte. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así, un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getGenerator([encoding])
 
@@ -508,7 +508,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Regresa el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta, de no ser así un [`Buffer`][] es devuelto.
+Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta, de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrime([encoding])
 
