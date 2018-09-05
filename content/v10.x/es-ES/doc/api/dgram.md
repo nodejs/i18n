@@ -266,7 +266,7 @@ Una función opcional `callback` puede ser especificada como una manera de repor
 
 La única manera de saber con certeza que se ha enviado el datagrama es usando un `callback`. Si ocurre un error y se da un `callback`, el error será pasado como el primer argumento pare el `callback`. Si no se da un `callback`, el error es emitido como un evento `'error'` en el objeto `socket`.
 
-Offset and length are optional but both *must* be set if either are used. They are supported only when the first argument is a `Buffer` or `Uint8Array`.
+Offset and length are optional but both *must* be set if either are used. Solo son soportados cuando el primer argumento es un `Buffer` o `Uint8Array`.
 
 Ejemplo de enviar un paquete UDP a un puerto en `localhost`;
 
@@ -291,7 +291,7 @@ client.send([buf1, buf2], 41234, (err) => {
 });
 ```
 
-Sending multiple buffers might be faster or slower depending on the application and operating system. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. Generally speaking, however, sending multiple buffers is faster.
+Enviar múltiples búferes puede ser más rápido o más lento dependiendo de la aplicación y del sistema operativo. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. En general, sin embargo, enviar múltiples búferes es más rápido.
 
 **Una nota sobre el tamaño de datagrama UDP**
 
