@@ -161,14 +161,14 @@ dns.lookup('example.com', options, (err, addresses) =>
 // addresses: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
-If this method is invoked as its [`util.promisify()`][]ed version, and `all` is not set to `true`, it returns a `Promise` for an `Object` with `address` and `family` properties.
+Si este método es invocado como su versión [`util.promisify()`][]ed, y `all` no es establecido como `true`, devuelve una `Promise` por un `Object` con propiedades `address` y `family`.
 
-### Supported getaddrinfo flags
+### Banderas getaddrinfo apoyadas
 
-The following flags can be passed as hints to [`dns.lookup()`][].
+Las siguientes banderas pueden ser pasadas como sugerencias a [`dns.lookup()`][].
 
-- `dns.ADDRCONFIG`: Returned address types are determined by the types of addresses supported by the current system. For example, IPv4 addresses are only returned if the current system has at least one IPv4 address configured. Loopback addresses are not considered.
-- `dns.V4MAPPED`: If the IPv6 family was specified, but no IPv6 addresses were found, then return IPv4 mapped IPv6 addresses. Note that it is not supported on some operating systems (e.g FreeBSD 10.1).
+- `dns.ADDRCONFIG`: Tipos de direcciones devueltas son determinadas por los tipos de direcciones apoyadas por el sistema actual. Por ejemplo, las direcciones IPv4 solo son devueltas si el sistema actual tiene al menos una dirección IPv4 configurada. Direcciones de loopback no son consideradas.
+- `dns.V4MAPPED`: Si la familia IPv6 fue especificada, pero ninguna dirección IPv6 fue encontrada, luego devuelve las direcciones IPv4 asignadas IPv6. Note that it is not supported on some operating systems (e.g FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
