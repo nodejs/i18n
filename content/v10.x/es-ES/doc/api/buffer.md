@@ -1119,7 +1119,7 @@ changes:
                  is no longer required.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `value` {string|Buffer|Uint8Array|integer} Qué buscar.
 * `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** `0`.
 * `encoding` {string} Si `value` es una cadena, esta es la codificación utilizada para determinar la representación binaria de la cadena que se buscará en `buf`. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} El índice de la primera aparición de `value` en `buf`, o `-1` si `buf` no contiene `value`.
