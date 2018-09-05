@@ -12,7 +12,7 @@ Node.js utiliza tres tipos de Deprecaciones:
 - Runtime
 - End-of-Life
 
-Una deprecación de solo-documentación es una que está expresada solo dentro de los documentos API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas deprecaciones que son de solo-documentación, provocan una advertencia en el tiempo de ejecución cuando son ejecutadas con el indicador [`--pending-deprecation`][] (o su alternativa, `NODE_PENDING_DEPRECATION=1` variable de ambiente), similar a las deprecaciones Runtime mostradas abajo. Documentation-only deprecations that support that flag are explicitly labeled as such in the [list of Deprecated APIs](#deprecations_list_of_deprecated_apis).
+Una deprecación de solo-documentación es una que está expresada solo dentro de los documentos API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas deprecaciones que son de solo-documentación, provocan una advertencia en el tiempo de ejecución cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, `NODE_PENDING_DEPRECATION=1` variable de ambiente), similar a las deprecaciones Runtime mostradas abajo. Las deprecaciones de solo-documentación que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Deprecadas](#deprecations_list_of_deprecated_apis).
 
 A Runtime deprecation will, by default, generate a process warning that will be printed to `stderr` the first time the deprecated API is used. When the `--throw-deprecation` command-line flag is used, a Runtime deprecation will cause an error to be thrown.
 
