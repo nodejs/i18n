@@ -354,7 +354,7 @@ added: v0.1.93
 
 * {string|Buffer}
 
-The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. Si `path` se pasa como un `Buffer`, entonces `readStream.path` será un `Buffer`.
+La ruta al archivo desde el cual lee el stream, como se especifica en el primer argumento a `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. Si `path` se pasa como un `Buffer`, entonces `readStream.path` será un `Buffer`.
 
 ## Class: fs.Stats
 
@@ -3530,7 +3530,7 @@ added: v10.0.0
 
 Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
-Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. Si un error ocurre luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
 
 `flags` es un entero opcional que especifica el comportamiento de la operación de copia. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
@@ -3871,7 +3871,7 @@ Determines the actual location of `path` using the same semantics as the `fs.rea
 
 Only paths that can be converted to UTF8 strings are supported.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
+The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
 On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc no tiene esta restricción.
 
