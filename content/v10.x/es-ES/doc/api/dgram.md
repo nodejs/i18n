@@ -260,7 +260,7 @@ El argumento `msg` contiene el mensaje que será enviado. Dependiendo de su tipo
 
 The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. Si la `address` no es proporcionada o de lo contrario, falsa, van a ser usados de manera predeterminada `'127.0.0.1'` (para sockets `udp4`) or `'::1'` (para sockets `udp6`).
 
-If the socket has not been previously bound with a call to `bind`, the socket is assigned a random port number and is bound to the "all interfaces" address (`'0.0.0.0'` for `udp4` sockets, `'::0'` for `udp6` sockets.)
+Si el socket no ha sido anteriormente enlazado con un llamado a `bind`, el socket es asignado a un número de puerto aleatorio y es enlazado a la dirección de "todas las interfaces" (`'0.0.0.0'` para sockets `udp4`, `'::0'` para sockets `udp6`.)
 
 Una función opcional `callback` puede ser especificada como una manera de reportar los errores DNS o para determinar cuando es seguro reutilizar el objeto `buf`. Note that DNS lookups delay the time to send for at least one tick of the Node.js event loop.
 
@@ -291,7 +291,7 @@ client.send([buf1, buf2], 41234, (err) => {
 });
 ```
 
-Enviar múltiples búferes puede ser más rápido o más lento dependiendo de la aplicación y del sistema operativo. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. En general, sin embargo, enviar múltiples búferes es más rápido.
+Enviar múltiples búferes puede ser más rápido o más lento dependiendo de la aplicación y del sistema operativo. Es importante ejecutar pruebas de rendimiento para determinar la estrategia óptima en una base de caso por caso. En general, sin embargo, enviar múltiples búferes es más rápido.
 
 **Una nota sobre el tamaño de datagrama UDP**
 
@@ -313,7 +313,7 @@ added: v0.6.9
 
 * `flag` {boolean}
 
-Sets or clears the `SO_BROADCAST` socket option. When set to `true`, UDP packets may be sent to a local interface's broadcast address.
+Establece o borra la opción socket `SO_BROADCAST`. When set to `true`, UDP packets may be sent to a local interface's broadcast address.
 
 ### socket.setMulticastInterface(multicastInterface)
 
