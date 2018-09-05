@@ -167,9 +167,9 @@ Los eventos clave en el tiempo de vida de eventos asincrónicos han sido categor
 * `triggerAsyncId` {number} La identificación única del recurso asincrónico en cuyo contexto de ejecución fue creado este recurso asincrónico.
 * `resource` {Object} Referencia al recurso que representa la operación asincrónica, necesita ser liberada durante *destroy*.
 
-Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
+Se llama cuando se construye una clase que tiene la *posibilidad* de emitir un evento asincrónico. Esto *no* significa que la instancia debe llamar a `before`/`after` antes de que `destroy` sea llamado, solo que la posibilidad existe.
 
-Se puede observar este comportamiento al hacer algo como abrir un recurso, y después cerrarlo antes de que el recurso pueda ser utilizado. The following snippet demonstrates this.
+Se puede observar este comportamiento al hacer algo como abrir un recurso, y después cerrarlo antes de que el recurso pueda ser utilizado. El siguiente fragmento demuestra esto.
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
@@ -199,7 +199,7 @@ Es posible tener colisiones de nombres de tipo. A los embebedores se les anima a
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` es el `asyncId` del recurso que causó (o "activó") que el nuevo recurso se inicializara y que causó que `init` llamara. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
 
 La siguiente es una demostracion simple de `triggerAsyncId`:
 
