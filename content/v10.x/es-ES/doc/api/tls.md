@@ -96,9 +96,9 @@ Los límites de renegociación predeterminados no deben modificarse sin un compl
 
 Para probar los límites de renegociación en un servidor, conéctese usando el cliente de línea de comandos de OpenSSL (`openssl s_client -connect address:port`) y luego ingrese `R<CR>` (es decir, la letra `R` seguida de un retorno de carro) varias veces.
 
-## Modifying the Default TLS Cipher suite
+## Modificar el conjunto de cifrado TLS predeterminado
 
-Node.js is built with a default suite of enabled and disabled TLS ciphers. Currently, the default cipher suite is:
+Node.js se crea con un conjunto predeterminado de cifrados TLS habilitados y deshabilitados. Actualmente, el conjunto de cifrado predeterminado es:
 
 ```txt
 ECDHE-RSA-AES128-GCM-SHA256:
@@ -124,7 +124,7 @@ HIGH:
 !CAMELLIA
 ```
 
-This default can be replaced entirely using the `--tls-cipher-list` command line switch. For instance, the following makes `ECDHE-RSA-AES128-GCM-SHA256:!RC4` the default TLS cipher suite:
+Este valor predeterminado se puede reemplazar por completo usando el modificador de línea de comando `--tls-cipher-list`. For instance, the following makes `ECDHE-RSA-AES128-GCM-SHA256:!RC4` the default TLS cipher suite:
 
 ```sh
 node --tls-cipher-list="ECDHE-RSA-AES128-GCM-SHA256:!RC4"
