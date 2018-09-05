@@ -256,7 +256,7 @@ changes:
 
 Broadcasts a datagram on the socket. The destination `port` and `address` must be specified.
 
-El argumento `msg` contiene el mensaje que será enviado. Dependiendo de su tipo, se puede aplicar distintos comportamientos. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. If `msg` is a `String`, then it is automatically converted to a `Buffer` with `'utf8'` encoding. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
+El argumento `msg` contiene el mensaje que será enviado. Dependiendo de su tipo, se puede aplicar distintos comportamientos. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. Si `msg` es un `String`, entonces se convierte automáticamente en un `Buffer` con codificación `'utf8'`. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
 
 The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. If `address` is not provided or otherwise falsy, `'127.0.0.1'` (for `udp4` sockets) or `'::1'` (for `udp6` sockets) will be used by default.
 
@@ -293,9 +293,9 @@ client.send([buf1, buf2], 41234, (err) => {
 
 Sending multiple buffers might be faster or slower depending on the application and operating system. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. Generally speaking, however, sending multiple buffers is faster.
 
-**A Note about UDP datagram size**
+**Una nota sobre el tamaño de datagrama UDP**
 
-The maximum size of an `IPv4/v6` datagram depends on the `MTU` (*Maximum Transmission Unit*) and on the `Payload Length` field size.
+El tamaño máximo de un datagrama `IPv4/v6` depende del `MTU` (*Unidad Máxima de Transmisión*), y del tamaño del campo de `Payload Length`.
 
 * The `Payload Length` field is `16 bits` wide, which means that a normal payload exceed 64K octets *including* the internet header and data (65,507 bytes = 65,535 − 8 bytes UDP header − 20 bytes IP header); this is generally true for loopback interfaces, but such long datagram messages are impractical for most hosts and networks.
 
@@ -303,7 +303,7 @@ The maximum size of an `IPv4/v6` datagram depends on the `MTU` (*Maximum Transmi
   
   For `IPv6`, the minimum `MTU` is `1280` octets, however, the mandatory minimum fragment reassembly buffer size is `1500` octets. The value of `68` octets is very small, since most current link layer technologies, like Ethernet, have a minimum `MTU` of `1500`.
 
-It is impossible to know in advance the MTU of each link through which a packet might travel. Sending a datagram greater than the receiver `MTU` will not work because the packet will get silently dropped without informing the source that the data did not reach its intended recipient.
+Es imposible saber con anterioridad el MTU de cada enlace por medio del cual un paquete podría viajar. Sending a datagram greater than the receiver `MTU` will not work because the packet will get silently dropped without informing the source that the data did not reach its intended recipient.
 
 ### socket.setBroadcast(flag)
 
