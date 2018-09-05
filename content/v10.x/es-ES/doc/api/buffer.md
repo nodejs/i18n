@@ -1813,7 +1813,7 @@ added: v0.1.90
 -->
 
 * `encoding` {string} La codificación de caracteres a utilizar. **Predeterminado:** `'utf8'`.
-* `start` {integer} The byte offset to start decoding at. **Default:** `0`.
+* `start` {integer} El desplazamiento de byte para empezar a decodificarlo. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Predeterminado:** [`buf.length`].
 * Returns: {string}
 
