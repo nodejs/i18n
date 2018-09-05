@@ -1538,7 +1538,7 @@ changes:
   * `err` {Error}
   * `stats` {fs.Stats}
 
-fstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)` donde `stats` es un objeto de [`fs.Stats`][]. `fstat()` is identical to [`stat()`][], except that the file to be stat-ed is specified by the file descriptor `fd`.
+fstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)` donde `stats` es un objeto de [`fs.Stats`][]. `fstat()` es idéntico a [`stat()`][], excepto que el archivo que será añadido a las estadísticas se especifica por el descriptor de archivo `fd`.
 
 ## fs.fstatSync(fd)
 
@@ -3414,7 +3414,7 @@ Escribe `buffer` al archivo.
 
 La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritten` que identifique el número de bytes escritos, y una propiedad de `buffer` que contenga una referencia al `buffer` escrito.
 
-`offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
+`offset` determina la parte del búfer que será escrita, y `length` es un entero que especifica el número de bytes a escribir.
 
 `position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
