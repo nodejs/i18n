@@ -339,9 +339,9 @@ Algunos recursos dependen de la recolección de basura para la limpieza, por lo 
 
 * `asyncId` {number}
 
-Called when the `resolve` function passed to the `Promise` constructor is invoked (either directly or through other means of resolving a promise).
+Se llama cuando la función de `resolve` pasada al constructor de `Promise` es invocada (directamente o a través de otros medios de resolución de una promesa).
 
-Note that `resolve()` does not do any observable synchronous work.
+Tenga en cuenta que `resolve()` no hace ningún trabajo sincrónico observable.
 
 The `Promise` is not necessarily fulfilled or rejected at this point if the `Promise` was resolved by assuming the state of another `Promise`.
 
@@ -371,7 +371,7 @@ changes:
     description: Renamed from `currentId`
 -->
 
-* Returns: {number} The `asyncId` of the current execution context. Útil para rastrear cuando algo llama.
+* Devuelve: {number} El `asyncId` del contexto de ejecución actual. Útil para rastrear cuando algo llama.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -402,7 +402,7 @@ Tenga en cuenta que los contextos de promesa no podrán recibir `executionAsyncI
 
 #### async_hooks.triggerAsyncId()
 
-* Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
+* Devuelve: {number} La ID del recurso responsable de llamar al callback que está siendo actualmente ejecutado.
 
 ```js
 const server = net.createServer((conn) => {
