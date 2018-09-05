@@ -98,15 +98,15 @@ En una versión previa de el `cluster` Node.js, una propiedad booleana con el no
 
 Tipo: Solo-documentación
 
-El módulo `constants` ha sido desaprobado. When requiring access to constants relevant to specific Node.js builtin modules, developers should instead refer to the `constants` property exposed by the relevant module. For instance, `require('fs').constants` and `require('os').constants`.
+El módulo `constants` ha sido desaprobado. Cuando se requiere acceso a constantes relevantes a específicos módulos integrados a Node.js, los desarrolladores en cambio, deberían referir a la propiedad `constants` expuesta por el módulo relevante. Por ejemplo, `require('fs').constants` y `require('os').constants`.
 
 <a id="DEP0009"></a>
 
-### DEP0009: crypto.pbkdf2 without digest
+### DEP0009: crypto.pbkdf2 sin resumen
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-Use of the [`crypto.pbkdf2()`][] API without specifying a digest was deprecated in Node.js 6.0 because the method defaulted to using the non-recommended `'SHA1'` digest. Previously, a deprecation warning was printed. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
+El uso de la API [`crypto.pbkdf2()`][] sin especificar que un resumen fue desaprobado en Node.js 6.0 porque el método de manera predeterminada usó el resumen no recomendado `'SHA1'`. Previamente, una advertencia de desaprobación fue estampada. Empezando en Node.js 8.0.0, llamando a `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinido dará como resultado un `TypeError`.
 
 <a id="DEP0010"></a>
 
