@@ -64,7 +64,7 @@ El evento `'error'` es emitido cuando ocurre cualquier error. La función de man
 added: v0.1.99
 -->
 
-El evento `'listening'` es emitido cuando un socket comienza a escuchar por mensajes de datagrama. Eso ocurre tan pronto los sockets UDP son creados.
+El evento `'listening'` es emitido cuando un socket comienza a escuchar por mensajes de datagrama. Esto ocurre tan pronto los sockets UDP son creados.
 
 ### Evento: 'message'
 
@@ -77,7 +77,7 @@ El evento `'message'` es emitido cuando un nuevo datagrama está disponible en u
 * `msg` {Buffer} El mensaje.
 * `rinfo` {Object} Información de dirección remota. 
   * `address` {string} La dirección del transmisor.
-  * `family` {string} La familia de direcciones (`'IPv4'` or `'IPv6'`).
+  * `family` {string} La familia de direcciones (`'IPv4'` o `'IPv6'`).
   * `port` {number} El puerto del transmisor.
   * `size` {number} El tamaño del mensaje.
 
@@ -112,7 +112,7 @@ added: v0.1.99
 * `address` {string}
 * `callback` {Function} sin parámetros. Llamado cuando el enlace es completado.
 
-Para sockets UDP, causa que `dgram.Socket` escuche por mensajes datagrama en un `port` llamado y `address` opcional. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazar a un puerto aleatorio. Si no se especifica el `address`, el sistema operativo va a intentar escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido y la función opcional `callback` es llamada.
+Para sockets UDP, causa que `dgram.Socket` escuche por mensajes datagrama en un `port` llamado y `address` opcional. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazarse a un puerto aleatorio. Si no se especifica el `address`, el sistema operativo va a intentar escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido y la función opcional `callback` es llamada.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
@@ -156,7 +156,7 @@ added: v0.11.14
   * `exclusive` {boolean}
 * `callback` {Function}
 
-Para sockets UDP, causa que el `dgram.Socket` escuche por mensajes de datagrama en un `port` llamado, y `address` opcionales que son pasadas como propiedades de un objeto `options` pasen como el primer argumento. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazar a un puerto aleatorio. Si la `address` no es especificada, el sistema operativo intentará escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido, y la función opcional `callback` es llamada.
+Para sockets UDP, causa que el `dgram.Socket` escuche por mensajes de datagrama en un `port` cuyo nombre fue dado, y `address` opcionales que son pasadas como propiedades de un objeto `options` pasado en el primer argumento. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazarse a un puerto aleatorio. Si la `address` no es especificada, el sistema operativo intentará escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido, y la función opcional `callback` es llamada.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
