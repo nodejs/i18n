@@ -74,7 +74,7 @@ La semantica della funzione `require()` di Node.js è stata progettata per esser
 
 Di seguito forniamo una directory structure consigliata che potrebbe funzionare:
 
-C'è da dire che volevamo che la cartella in `/usr/lib/node/<some-package>/<some-version>` avesse il contenuto di una versione specifica di un pacchetto.
+C'è da dire che volevamo che la cartella in `/usr/lib/node/<some-package>/<some-version>` contenesse una versione specifica di un pacchetto.
 
 I pacchetti possono dipendere l'uno dall'altro. Per installare il pacchetto `foo`, potrebbe essere necessario installare una versione specifica del pacchetto `bar`. Il pacchetto `bar` può avere delle proprie dipendenze ed, in alcuni casi, queste possono persino scontrarsi tra loro oppure formare dipendenze cicliche.
 
@@ -91,7 +91,7 @@ Quando il codice nel pacchetto `foo` esegue `require('bar')`, otterrà la versio
 
 Inoltre, per rendere il processo di ricerca dei moduli ancora più ottimale, piuttosto che mettere i pacchetti direttamente in `/usr/lib/node`, potremmo inserirli all'interno di `/usr/lib/node_modules/<name>/<version>`. Così Node.js non si preoccuperà di cercare le dipendenze mancanti all'interno di `/usr/node_modules` o di `/node_modules`.
 
-In order to make modules available to the Node.js REPL, it might be useful to also add the `/usr/lib/node_modules` folder to the `$NODE_PATH` environment variable. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Per rendere i moduli disponibili al REPL di Node.js, potrebbe essere utile aggiungere anche la cartella `/usr/lib/node_modules` alla variabile d'ambiente `$NODE_PATH`. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
 
 ## All Together...
 
