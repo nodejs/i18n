@@ -806,21 +806,21 @@ La propiedad [`crypto.DEFAULT_ENCODING`][] está desaprobada.
 
 Type: Documentation-only
 
-Assigning properties to the top-level `this` as an alternative to `module.exports` is deprecated. Developers should use `exports` or `module.exports` instead.
+Asignar propiedades al nivel top `this` como una alternativa al módulo `module.exports` está desaprobado. Desarrolladores deberían en cambio, usar `exports` o `module.exports`.
 
 <a id="DEP0093"></a>
 
-### DEP0093: crypto.fips is deprecated and replaced.
+### DEP0093: crypto.fips está desaprobado y reemplazado.
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`crypto.fips`][] property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+La propiedad [`crypto.fips`][] está desaprobada. En cambio, por favor use `crypto.setFips()` y `crypto.getFips()`.
 
 <a id="DEP0094"></a>
 
-### DEP0094: Using `assert.fail()` with more than one argument.
+### DEP0094: Usar `assert.fail()` con más de un argumento.
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
 Using `assert.fail()` with more than one argument is deprecated. Use `assert.fail()` with only one argument or use a different `assert` module method.
 
