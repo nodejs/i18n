@@ -103,7 +103,7 @@ Mettendo insieme tutto quel che è stato detto sopra, ecco l'algoritmo di alto l
 
 ```txt
 require(X) dal modulo al path Y
-1. If X is a core module,
+1. Se X è un core module,
    a. return the core module
    b. STOP
 2. If X begins with '/'
