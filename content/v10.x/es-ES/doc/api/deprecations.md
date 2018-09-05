@@ -790,15 +790,15 @@ Importing assert directly is not recommended as the exposed functions will use l
 
 Type: Runtime
 
-Node.js soporta toda la extensión de las etiquetas de autentificación GCM que sean aceptatadas por OpenSSL al llamar a [`decipher.setAuthTag()`][]. This behavior will change in a future version at which point only authentication tag lengths of 128, 120, 112, 104, 96, 64, and 32 bits will be allowed. Authentication tags whose length is not included in this list will be considered invalid in compliance with [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Node.js soporta toda la extensión de las etiquetas de autentificación GCM que sean aceptatadas por OpenSSL al llamar a [`decipher.setAuthTag()`][]. Este comportamiento cambiará en una versión futura en cuyo momento solo la extensión de las etiquetas de autentificación de 28, 120, 112, 104, 96, 64, y 32 bits serán permitidas. Las etiquetas de autentificación cuya extensión no se encuentre incluida en esta lista será considerada inválida en conformidad con [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 <a id="DEP0091"></a>
 
 ### DEP0091: crypto.DEFAULT_ENCODING
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-The [`crypto.DEFAULT_ENCODING`][] property is deprecated.
+La propiedad [`crypto.DEFAULT_ENCODING`][] está desaprobada.
 
 <a id="DEP0092"></a>
 
