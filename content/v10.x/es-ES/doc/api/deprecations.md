@@ -74,13 +74,13 @@ Como alternativa, el uso de los siguientes métodos de construcción de objetos 
 - [`Buffer.from(buffer)`][] - Crear un `Buffer` que copie a `buffer`.
 - [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Crear un `Buffer` que copie a `string`.
 
-Desde la v10.0.0, una advertencia de desaprobación es estampada al momento de que haya un tiempo de ejecución, siempre y cuando `--pending-deprecation` sea usado o cuando el código de llamada está afuera de `node_modules` para poder apuntar mejor a los desarrolladores, y no a los usuarios.
+Desde la v10.0.0, una advertencia de desaprobación es emitida en runtime cuando `--pending-deprecation` es usada o cuando el código de llamada está afuera de `node_modules`, de modo que se apunte mejor a los desarrolladores, y no a los usuarios.
 
 <a id="DEP0006"></a>
 
 ### DEP0006: child\_process options.customFds
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 Dentro de [`child_process`][] los métodos de los módulos `spawn()`, `fork()`, y `exec()`, la opción `options.customFds` está desaprobada. La opción `options.stdio` debería ser usada en su lugar.
 
@@ -90,7 +90,7 @@ Dentro de [`child_process`][] los métodos de los módulos `spawn()`, `fork()`, 
 
 Tipo: Fin-de-Vida
 
-En una versión previa de el `cluster` Node.js, una propiedad booleana con el nombre `suicide` fue agregada al objeto `Worker`. La intención de esta propiedad fue proveer una indicación sobre cómo y por qué la instancia `Worker` salió. En Node.js 6.0.0, la vieja propiedad fue desaprobada y reemplazada con una nueva propiedad [`worker.exitedAfterDisconnect`][]. El nombre de la vieja propiedad no describía precisamente la verdadera semántica y fue innecesariamente cargada de emoción.
+En una versión previa del `cluster` Node.js, una propiedad booleana con el nombre `suicide` fue agregada al objeto `Worker`. La intención de esta propiedad fue proveer una indicación sobre cómo y por qué la instancia `Worker` salió. En Node.js 6.0.0, la vieja propiedad fue desaprobada y reemplazada con una nueva propiedad [`worker.exitedAfterDisconnect`][]. El nombre de la vieja propiedad no describía precisamente la verdadera semántica y fue innecesariamente cargada de emoción.
 
 <a id="DEP0008"></a>
 
