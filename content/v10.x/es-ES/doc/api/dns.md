@@ -161,14 +161,14 @@ dns.lookup('example.com', options, (err, addresses) =>
 // addresses: [{"address":"2606:2800:220:1:248:1893:25c8:1946","family":6}]
 ```
 
-Si este método es invocado como su versión [`util.promisify()`][]ed, y `all` no es establecido como `true`, devuelve una `Promise` por un `Object` con propiedades `address` y `family`.
+Si este método es invocado como su versión [`util.promisify()`][]ed, y `all` no es establecido como `true`, devuelve una `Promise` para un `Object` con propiedades `address` y `family`.
 
 ### Banderas getaddrinfo apoyadas
 
 Las siguientes banderas pueden ser pasadas como sugerencias a [`dns.lookup()`][].
 
 - `dns.ADDRCONFIG`: Los tipos de direcciones devueltas son determinadas por los tipos de direcciones apoyadas por el sistema actual. Por ejemplo, las direcciones IPv4 solo son devueltas si el sistema actual tiene al menos una dirección IPv4 configurada. Direcciones de loopback no son consideradas.
-- `dns.V4MAPPED`: Si la familia IPv6 fue especificada, pero ninguna dirección IPv6 fue encontrada, luego devuelve las direcciones IPv4 asignadas IPv6. Tenga en cuenta que no es soportado en algunos sistemas operativos (p. e.j FreeBSD 10.1).
+- `dns.V4MAPPED`: Si la familia IPv6 fue especificada, pero ninguna dirección IPv6 fue encontrada, luego devuelve las direcciones IPv6 mapeadas por IPv4. Tenga en cuenta que no es soportado en algunos sistemas operativos (p. e.j FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
@@ -178,14 +178,14 @@ added: v0.11.14
 
 - `address` {string}
 - `port` {number}
-- `callback {Function}` {Function} 
+- `callback` {Function} 
   - `err` {Error}
   - `hostname` {string} p. e.j. `ejemplo.com`
   - `service` {string} p. e.j. `http`
 
 Resuelve los `address` y `port` dados en un hostname y servicio, usando el sistema operativo subyacente como implementación `getnameinfo`.
 
-Si `address` no es una dirección IP válida, un `TypeError` será arrojado. El `port` será coaccionado a un número. Si no es un puerto legal, un `TypeError` será arrojado.
+Si `address` no es una dirección IP válida, un `TypeError` será arrojado. El `port` será forzado a un número. Si no es un puerto legal, un `TypeError` será arrojado.
 
 En caso de error, `err` es un objeto [`Error`][], donde `err.code` es el código de error.
 
@@ -193,11 +193,11 @@ En caso de error, `err` es un objeto [`Error`][], donde `err.code` es el código
 const dns = require('dns');
 dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
   console.log(hostname, service);
-  // Prints: localhost ssh
+  // Imprime: localhost ssh
 });
 ```
 
-Si este método es invocado en su versión [`util.promisify()`][]ed, devuelve una `Promise` por un `Object` con propiedades `hostname` y `service`.
+Si este método es invocado en su versión [`util.promisify()`][]ed, devuelve una `Promise` para un `Object` con propiedades `hostname` y `service`.
 
 ## dns.resolve(hostname[, rrtype], callback)
 
