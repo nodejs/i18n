@@ -258,7 +258,7 @@ Transmite un datagrama en el socket. El `port` y la `address` de destino deben s
 
 El argumento `msg` contiene el mensaje que será enviado. Dependiendo de su tipo, se pueden aplicar distintos comportamientos. Si `msg` es un `Buffer` o un `Uint8Array`, el `offset` y el `length` especifican, respectivamente, el offset dentro del `Buffer`, dónde el mensaje comienza y el número de bytes en el mensaje. Si `msg` es un `String`, entonces se convierte automáticamente en un `Buffer` con codificación `'utf8'`. Con mensajes que contienen caracteres multi-bytes, `offset` y `length` serán calculados con respecto a [longitud de bytes](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) y no con la posición del carácter. Si `msg` es un array, `offset` y `length` no deben ser especificados.
 
-The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. Si la `address` no es proporcionada o es falsa, van a ser usados de manera predeterminada `'127.0.0.1'` (para sockets `udp4`) o `'::1'` (para sockets `udp6`).
+El argumento `address` es un string. Si el valor de `address` es un nombre del host, el DNS será usado para resolver la dirección del host. Si la `address` no es proporcionada o es falsa, van a ser usados de manera predeterminada `'127.0.0.1'` (para sockets `udp4`) o `'::1'` (para sockets `udp6`).
 
 Si el socket no ha sido anteriormente enlazado con un llamado a `bind`, el socket es asignado a un número de puerto aleatorio y es enlazado a la dirección de "todas las interfaces" (`'0.0.0.0'` para sockets `udp4`, `'::0'` para sockets `udp6`.)
 
