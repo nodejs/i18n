@@ -1787,14 +1787,14 @@ added: v0.9.2
 
 * Devuelve: {Object}
 
-Devuelve una representación JSON de `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
+Devuelve una representación JSON de `buf`. [`JSON.stringify()`] implícitamente llama a esta función cuando se encadena una instancia de `Buffer`.
 
 ```js
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
 const json = JSON.stringify(buf);
 
 console.log(json);
-// Prints: {"type":"Buffer","data":[1,2,3,4,5]}
+// Imprime: {"type":"Buffer","data":[1,2,3,4,5]}
 
 const copy = JSON.parse(json, (key, value) => {
   return value && value.type === 'Buffer' ?
@@ -1803,7 +1803,7 @@ const copy = JSON.parse(json, (key, value) => {
 });
 
 console.log(copy);
-// Prints: <Buffer 01 02 03 04 05>
+// Imprime: <Buffer 01 02 03 04 05>
 ```
 
 ### buf.toString([encoding[, start[, end]]])
@@ -1812,7 +1812,7 @@ console.log(copy);
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to use. **Predeterminado:** `'utf8'`.
+* `encoding` {string} La codificación de caracteres a utilizar. **Predeterminado:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Predeterminado:** [`buf.length`].
 * Returns: {string}
