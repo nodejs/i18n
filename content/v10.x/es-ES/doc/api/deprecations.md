@@ -790,7 +790,7 @@ Importing assert directly is not recommended as the exposed functions will use l
 
 Type: Runtime
 
-Node.js supports all GCM authentication tag lengths which are accepted by OpenSSL when calling [`decipher.setAuthTag()`][]. This behavior will change in a future version at which point only authentication tag lengths of 128, 120, 112, 104, 96, 64, and 32 bits will be allowed. Authentication tags whose length is not included in this list will be considered invalid in compliance with [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Node.js soporta toda la extensión de las etiquetas de autentificación GCM que sean aceptatadas por OpenSSL al llamar a [`decipher.setAuthTag()`][]. This behavior will change in a future version at which point only authentication tag lengths of 128, 120, 112, 104, 96, 64, and 32 bits will be allowed. Authentication tags whose length is not included in this list will be considered invalid in compliance with [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 <a id="DEP0091"></a>
 
@@ -852,43 +852,43 @@ Users of `MakeCallback` that add the `domain` property to carry context, should 
 
 ### DEP0098: AsyncHooks Embedder AsyncResource.emitBefore and AsyncResource.emitAfter APIs
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-The embedded API provided by AsyncHooks exposes `.emitBefore()` and `.emitAfter()` methods which are very easy to use incorrectly which can lead to unrecoverable errors.
+La API incrustrada proveída por AsyncHooks expone los métodos `.emitBefore()` y `.emitAfter()` que son muy fáciles de usar incorrectamente lo que puede resultar en errores irrecuperables.
 
-Use [`asyncResource.runInAsyncScope()`][] API instead which provides a much safer, and more convenient, alternative. See https://github.com/nodejs/node/pull/18513 for more details.
+En cambio use la API [`asyncResource.runInAsyncScope()`][] que provee una alternativa mucho más segura y conveniente. Vea https://github.com/nodejs/node/pull/18513 para más detalles.
 
 <a id="DEP0099"></a>
 
 ### DEP0099: async context-unaware node::MakeCallback C++ APIs
 
-Type: Compile-time
+Tipo: Compilar-tiempo
 
-Certain versions of `node::MakeCallback` APIs available to native modules are deprecated. Please use the versions of the API that accept an `async_context` parameter.
+Ciertas versiones de las APIs `node::MakeCallback` disponibles para módulos nativos están desaprobadas. Por favor use las versiones de la API que acepten un parámetro `async_context`.
 
 <a id="DEP0100"></a>
 
 ### DEP0100: process.assert()
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-`process.assert()` is deprecated. Please use the [`assert`][] module instead.
+`process.assert()` está desaprobado. En cambio, por favor use el módulo [`assert`][].
 
-This was never a documented feature.
+Esta nunca fue una característica documetada.
 
 <a id="DEP0101"></a>
 
 ### DEP0101: --with-lttng
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-The `--with-lttng` compile-time option has been removed.
+La opción de compilar-tiempo `--with-lttng` ha sido removida.
 
 <a id="DEP0102"></a>
 
-### DEP0102: Using `noAssert` in Buffer#(read|write) operations.
+### DEP0102: Usando `noAssert` en Buffer#(read|write) operaciones.
 
-Type: End-of-Life
+Tipo: Final-de-Vida
 
 Usar el argumento `noAssert` ya no tiene ninguna funcionalidad. Todo lo que entre va a ser verificado, sin importar si debería ser cierto o no. Omitir la verificación puede resultar en errores y fallas difíciles de conseguir.
 
@@ -922,7 +922,7 @@ Tipo: Tiempo de ejecución
 
 Tipo: Solo-documentación
 
-Debería evitarse usar [`crypto.createCipher()`][] y [`crypto.createDecipher()`][] debido a que usan una función de derivación de clave débil (MD5 sin salt) y vectores de inicialización estáticos. It is recommended to derive a key using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] and [`crypto.createDecipheriv()`][] to obtain the [`Cipher`][] and [`Decipher`][] objects respectively.
+Debería evitarse usar [`crypto.createCipher()`][] y [`crypto.createDecipher()`][] debido a que usan una función de derivación de clave débil (MD5 sin salt) y vectores de inicialización estáticos. Es recomendado derivar una llave usando [`crypto.pbkdf2()`][] y usar [`crypto.createCipheriv()`][] y [`crypto.createDecipheriv()`][] para obtener los objectos [`Cipher`][] y [`Decipher`][] respectivamente.
 
 <a id="DEP0107"></a>
 
