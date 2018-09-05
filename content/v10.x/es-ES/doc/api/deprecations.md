@@ -66,9 +66,9 @@ La función `Buffer()` y el constructor `new Buffer()` están desaprobados debid
 
 Como alternativa, el uso de los siguientes métodos de construcción de objetos `Buffer` es fuertemente recomendado:
 
-- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Crear un `Buffer` con memoria *initialized*.
-- [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Crear un `Buffer` con memoria *uninitialized*.
-- [`Buffer.allocUnsafeSlow(size)`][] - Crear un `Buffer` con memoria *uninitialized*.
+- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Crear un `Buffer` con memoria *inicializada*.
+- [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Crear un `Buffer` con memoria *sin inicializar*.
+- [`Buffer.allocUnsafeSlow(size)`][] - Crear un `Buffer` con memoria *sin inicializar*.
 - [`Buffer.from(array)`][] - Crear un `Buffer` con una copia de `array`
 - [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Crear un `Buffer` que envuelva al `arrayBuffer` dado.
 - [`Buffer.from(buffer)`][] - Crear un `Buffer` que copie a `buffer`.
