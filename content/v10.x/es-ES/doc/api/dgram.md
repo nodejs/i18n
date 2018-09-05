@@ -156,7 +156,7 @@ added: v0.11.14
   * `exclusive` {boolean}
 * `callback` {Function}
 
-For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address` that are passed as properties of an `options` object passed as the first argument. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazar a un puerto aleatorio. Si la `address` no es especificada, el sistema operativo intentará escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido, y la función opcional `callback` es llamada.
+Para sockets UDP, causa que el `dgram.Socket` escuche por mensajes de datagrama en un `port` llamado, y `address` opcionales que son pasadas como propiedades de un objeto `options` pasen como el primer argumento. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazar a un puerto aleatorio. Si la `address` no es especificada, el sistema operativo intentará escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido, y la función opcional `callback` es llamada.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
