@@ -74,7 +74,7 @@ Como alternativa, el uso de los siguientes métodos de construcción de objetos 
 - [`Buffer.from(buffer)`][] - Crear un `Buffer` que copie a `buffer`.
 - [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Crear un `Buffer` que copie a `string`.
 
-Desde la v10.0.0, una advertencia de desaprobación es estampada al momento de que haya un tiempo de ejecución, siempre y cuando `--pending-deprecation` es usado o cuando el código de llamada está afuera de `node_modules` para poder apuntar mejor a los desarrolladores, y no a los usuarios.
+Desde la v10.0.0, una advertencia de desaprobación es estampada al momento de que haya un tiempo de ejecución, siempre y cuando `--pending-deprecation` sea usado o cuando el código de llamada está afuera de `node_modules` para poder apuntar mejor a los desarrolladores, y no a los usuarios.
 
 <a id="DEP0006"></a>
 
@@ -818,7 +818,7 @@ La propiedad [`crypto.fips`][] está desaprobada. En cambio, por favor use `cryp
 
 <a id="DEP0094"></a>
 
-### DEP0094: Usar `assert.fail()` con más de un argumento.
+### DEP0094: Usando `assert.fail()` con más de un argumento.
 
 Tipo: Tiempo de ejecución
 
