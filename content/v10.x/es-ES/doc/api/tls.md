@@ -160,21 +160,21 @@ El evento `'newSession'` se emite al crear una nueva sesión de TLS. Esto puede 
 
 * `sessionId` - El identificador de sesión TLS
 * `sessionData` - Los datos de la sesión TLS
-* `callback` {Function} A callback function taking no arguments that must be invoked in order for data to be sent or received over the secure connection.
+* `callback` {Function} Una función callback que no toma argumentos que deben invocarse para que los datos se envíen o reciban a través de la conexión segura.
 
-Listening for this event will have an effect only on connections established after the addition of the event listener.
+Escuchar este evento tendrá un efecto solo en las conexiones establecidas después de la adición del listener del evento.
 
-### Event: 'OCSPRequest'
+### Evento: 'OCSPRequest'
 
 <!-- YAML
 added: v0.11.13
 -->
 
-The `'OCSPRequest'` event is emitted when the client sends a certificate status request. The listener callback is passed three arguments when called:
+El evento `'OCSPRequest'` se emite cuando el cliente envía una solicitud de estado de certificado. El listener callback recibe tres argumentos cuando se le llama:
 
-* `certificate` {Buffer} The server certificate
-* `issuer` {Buffer} The issuer's certificate
-* `callback` {Function} A callback function that must be invoked to provide the results of the OCSP request.
+* `certificate` {Buffer} El certificado del servidor
+* `issuer` {Buffer} El certificado del emisor
+* `callback` {Function} Una función callback que debe invocarse para proporcionar los resultados de la solicitud OCSP.
 
 The server's current certificate can be parsed to obtain the OCSP URL and certificate ID; after obtaining an OCSP response, `callback(null, resp)` is then invoked, where `resp` is a `Buffer` instance containing the OCSP response. Both `certificate` and `issuer` are `Buffer` DER-representations of the primary and issuer's certificates. These can be used to obtain the OCSP certificate ID and OCSP endpoint URL.
 
@@ -192,7 +192,7 @@ The typical flow of an OCSP Request is as follows:
 
 The `issuer` can be `null` if the certificate is either self-signed or the issuer is not in the root certificates list. (An issuer may be provided via the `ca` option when establishing the TLS connection.)
 
-Listening for this event will have an effect only on connections established after the addition of the event listener.
+Escuchar este evento tendrá un efecto solo en las conexiones establecidas después de la adición del listener del evento.
 
 An npm module like [asn1.js](https://npmjs.org/package/asn1.js) may be used to parse the certificates.
 
@@ -209,7 +209,7 @@ The `'resumeSession'` event is emitted when the client requests to resume a prev
 
 When called, the event listener may perform a lookup in external storage using the given `sessionId` and invoke `callback(null, sessionData)` once finished. If the session cannot be resumed (i.e., doesn't exist in storage) the callback may be invoked as `callback(null, null)`. Calling `callback(err)` will terminate the incoming connection and destroy the socket.
 
-Listening for this event will have an effect only on connections established after the addition of the event listener.
+Escuchar este evento tendrá un efecto solo en las conexiones establecidas después de la adición del listener del evento.
 
 The following illustrates resuming a TLS session:
 
