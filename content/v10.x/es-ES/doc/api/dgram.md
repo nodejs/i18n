@@ -156,11 +156,11 @@ added: v0.11.14
   * `exclusive` {boolean}
 * `callback` {Function}
 
-Para sockets UDP, causa que el `dgram.Socket` escuche por mensajes de datagrama en un `port` cuyo nombre fue dado, y `address` opcionales que son pasadas como propiedades de un objeto `options` pasado en el primer argumento. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazarse a un puerto aleatorio. Si la `address` no es especificada, el sistema operativo intentará escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido, y la función opcional `callback` es llamada.
+Para sockets UDP, causa que el `dgram.Socket` escuche por mensajes de datagrama en un `port` cuyo nombre fue dado, y `address` opcionales que son pasadas como propiedades de un objeto `options` pasado en el primer argumento. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazarse a un puerto aleatorio. Si la `address` no es especificada, el sistema operativo intentará escuchar en todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido, y la función opcional `callback` es llamada.
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
-El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. Cuando `exclusive` es establecida como `false` (la manera predeterminada), los workers del clúster usan el mismo handle socket subyacente permitiendo que el manejo de los deberes de las conexiones sean compartidos. Cuando `exclusive` es `true`, sin embargo, el handle no es compartido y los intentos de compartir el puerto resulta en un error.
+El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. Cuando `exclusive` sea establecida como `false` (la manera predeterminada), los workers del clúster utilizarán el mismo handle del socket subyacente, permitiendo que las tareas del manejo de la conexión sean compartidas. Cuando `exclusive` es `true`, sin embargo, el handle no es compartido y los intentos de compartir el puerto resulta en un error.
 
 Un socket de datagrama enlazado mantiene el proceso Node.js en marcha para recibir mensajes de datagrama.
 
