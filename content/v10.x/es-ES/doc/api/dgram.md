@@ -264,7 +264,7 @@ If the socket has not been previously bound with a call to `bind`, the socket is
 
 Una función opcional `callback` puede ser especificada como una manera de reportar los errores DNS o para determinar cuando es seguro reutilizar el objeto `buf`. Note that DNS lookups delay the time to send for at least one tick of the Node.js event loop.
 
-La única manera de saber con certeza que se ha enviado el datagrama es usando un `callback`. If an error occurs and a `callback` is given, the error will be passed as the first argument to the `callback`. If a `callback` is not given, the error is emitted as an `'error'` event on the `socket` object.
+La única manera de saber con certeza que se ha enviado el datagrama es usando un `callback`. Si ocurre un error y se da un `callback`, el error será pasado como el primer argumento pare el `callback`. Si no se da un `callback`, el error es emitido como un evento `'error'` en el objeto `socket`.
 
 Offset and length are optional but both *must* be set if either are used. They are supported only when the first argument is a `Buffer` or `Uint8Array`.
 
@@ -303,7 +303,7 @@ El tamaño máximo de un datagrama `IPv4/v6` depende del `MTU` (*Unidad Máxima 
   
   For `IPv6`, the minimum `MTU` is `1280` octets, however, the mandatory minimum fragment reassembly buffer size is `1500` octets. The value of `68` octets is very small, since most current link layer technologies, like Ethernet, have a minimum `MTU` of `1500`.
 
-Es imposible saber con anterioridad el MTU de cada enlace por medio del cual un paquete podría viajar. Sending a datagram greater than the receiver `MTU` will not work because the packet will get silently dropped without informing the source that the data did not reach its intended recipient.
+Es imposible saber con anterioridad el MTU de cada enlace por medio del cual un paquete podría viajar. Enviar un datagrama mayor que el `MTU` del receptor no funcionará porque el paquete será abandonado silenciosamente sin informar a la fuente que los datos no llegaron al destinatario deseado.
 
 ### socket.setBroadcast(flag)
 
