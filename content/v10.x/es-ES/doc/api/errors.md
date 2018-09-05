@@ -1222,91 +1222,91 @@ Hubo un intento para `require()` un [módulo ES6](esm.html).
 
 ### ERR_SCRIPT_EXECUTION_INTERRUPTED
 
-Script execution was interrupted by `SIGINT` (For example, when Ctrl+C was pressed).
+La ejecución de script fue interrumpida por `SIGINT` (Por ejemplo, cuando se presionó Ctrl+C).
 
 <a id="ERR_SERVER_ALREADY_LISTEN"></a>
 
 ### ERR_SERVER_ALREADY_LISTEN
 
-The [`server.listen()`][] method was called while a `net.Server` was already listening. This applies to all instances of `net.Server`, including HTTP, HTTPS, and HTTP/2 `Server` instances.
+Se llamó al método [`server.listen()`][] mientras que un `net.Server` ya estaba escuchando. Esto aplica a todas las instancias de `net.Server`, incluyendo las instancias del `Server` HTTP, HTTPS y HTTP/2.
 
 <a id="ERR_SERVER_NOT_RUNNING"></a>
 
 ### ERR_SERVER_NOT_RUNNING
 
-The [`server.close()`][] method was called when a `net.Server` was not running. This applies to all instances of `net.Server`, including HTTP, HTTPS, and HTTP/2 `Server` instances.
+Se llamó al método [`server.close()`][] cuando un `net.Server` no se estaba ejecutando. Esto aplica a todas las instancias de `net.Server`, incluyendo las instancias del `Server` HTTP, HTTPS y HTTP/2.
 
 <a id="ERR_SOCKET_ALREADY_BOUND"></a>
 
 ### ERR_SOCKET_ALREADY_BOUND
 
-An attempt was made to bind a socket that has already been bound.
+Se intentó enlazar un socket que ya se había enlazado.
 
 <a id="ERR_SOCKET_BAD_BUFFER_SIZE"></a>
 
 ### ERR_SOCKET_BAD_BUFFER_SIZE
 
-An invalid (negative) size was passed for either the `recvBufferSize` or `sendBufferSize` options in [`dgram.createSocket()`][].
+Se pasó un tamaño inválido (negativo) para la opción `recvBufferSize` o `sendBufferSize` en [`dgram.createSocket()`][].
 
 <a id="ERR_SOCKET_BAD_PORT"></a>
 
 ### ERR_SOCKET_BAD_PORT
 
-An API function expecting a port > 0 and < 65536 received an invalid value.
+Una función API que esperaba un puerto > 0 y < 65536 recibió un valor inválido.
 
 <a id="ERR_SOCKET_BAD_TYPE"></a>
 
 ### ERR_SOCKET_BAD_TYPE
 
-An API function expecting a socket type (`udp4` or `udp6`) received an invalid value.
+Una función que esperaba un tipo de socket (`udp4` o `udp6`) recibió un valor inválido.
 
 <a id="ERR_SOCKET_BUFFER_SIZE"></a>
 
 ### ERR_SOCKET_BUFFER_SIZE
 
-While using [`dgram.createSocket()`][], the size of the receive or send `Buffer` could not be determined.
+Al usar [`dgram.createSocket()`][], el tamaño del `Buffer` de recepción o envío no pudo ser determinado.
 
 <a id="ERR_SOCKET_CANNOT_SEND"></a>
 
 ### ERR_SOCKET_CANNOT_SEND
 
-Data could be sent on a socket.
+Los datos pudieron ser enviados en un socket.
 
 <a id="ERR_SOCKET_CLOSED"></a>
 
 ### ERR_SOCKET_CLOSED
 
-An attempt was made to operate on an already closed socket.
+Se intentó operar en un socket que ya estaba cerrado.
 
 <a id="ERR_SOCKET_DGRAM_NOT_RUNNING"></a>
 
 ### ERR_SOCKET_DGRAM_NOT_RUNNING
 
-A call was made and the UDP subsystem was not running.
+Se hizo una llamada y el subsistema UDP no estaba corriendo.
 
 <a id="ERR_STDERR_CLOSE"></a>
 
 ### ERR_STDERR_CLOSE
 
-An attempt was made to close the `process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
+Se intentó cerrar el stream `process.stderr`. Por diseño, Node.js no permite que los streams `stdout` o `stderr` sean cerrados por código de usuario.
 
 <a id="ERR_STDOUT_CLOSE"></a>
 
 ### ERR_STDOUT_CLOSE
 
-An attempt was made to close the `process.stdout` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
+Se intentó cerrar el stream `process.stdout`. Por diseño, Node.js no permite que los streams `stdout` o `stderr` sean cerrados por código de usuario.
 
 <a id="ERR_STREAM_CANNOT_PIPE"></a>
 
 ### ERR_STREAM_CANNOT_PIPE
 
-An attempt was made to call [`stream.pipe()`][] on a [`Writable`][] stream.
+Se intentó llamar a [`stream.pipe()`][] en un stream [`Writable`][].
 
 <a id="ERR_STREAM_NULL_VALUES"></a>
 
 ### ERR_STREAM_NULL_VALUES
 
-An attempt was made to call [`stream.write()`][] with a `null` chunk.
+Se intentó llamar a [`stream.write()`][] con una cantidad `null`.
 
 <a id="ERR_STREAM_PREMATURE_CLOSE"></a>
 
