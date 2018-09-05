@@ -16,62 +16,62 @@ Una desaprobación que sea de solo-documentación es una que está expresada sol
 
 Una desaprobación de tiempo de ejecución generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, un desaprobación de tiempo de ejecución causará que se arroje un error.
 
-An End-of-Life deprecation is used to identify code that either has been removed or will soon be removed from Node.js.
+Una desaprobación Fin-de-Vida es usada para identificar código que o ha sido removido, o pronto será removido de Node.js.
 
-## Revoking deprecations
+## Revocando desaprobaciones
 
-Occasionally, the deprecation of an API may be reversed. In such situations, this document will be updated with information relevant to the decision. However, the deprecation identifier will not be modified.
+Ocasionalmente, la desaprobación de una API puede ser revertida. En estas situaciones, el documento será actualizado con información relevante a la decisión. Sin embargo, el identificador de la desaprobación no será modificado.
 
-## List of Deprecated APIs
+## Lista de APIs Desaprobadas
 
 <a id="DEP0001"></a>
 
 ### DEP0001: http.OutgoingMessage.prototype.flush
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-The `OutgoingMessage.prototype.flush()` method is deprecated. Use `OutgoingMessage.prototype.flushHeaders()` instead.
+El método `OutgoingMessage.prototype.flush()` está desaprobado. En cambio, use `OutgoingMessage.prototype.flushHeaders()`.
 
 <a id="DEP0002"></a>
 
-### DEP0002: require('\_linklist')
+### DEP0002: requiere('\_linklist')
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-The `_linklist` module is deprecated. Please use a userland alternative.
+El módulo `_linklist` está desaprobado. Por favor use un espacio de usuario alternativo.
 
 <a id="DEP0003"></a>
 
 ### DEP0003: \_writableState.buffer
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-The `_writableState.buffer` property is deprecated. Use the `_writableState.getBuffer()` method instead.
+La propiedad `_writableState.buffer` está desaprobada. En cambio, use el método `_writableState.getBuffer()`.
 
 <a id="DEP0004"></a>
 
 ### DEP0004: CryptoStream.prototype.readyState
 
-Type: Documentation-only
+Tipo: solo-documentación
 
-The `CryptoStream.prototype.readyState` property is deprecated and should not be used.
+La propiedad `CryptoStream.prototype.readyState` está desaprobada y no debería ser usada.
 
 <a id="DEP0005"></a>
 
 ### DEP0005: Buffer() constructor
 
-Type: Runtime (supports [`--pending-deprecation`][])
+Tipo: Tiempo de ejecución (soporta [`--pending-deprecation`][])
 
-The `Buffer()` function and `new Buffer()` constructor are deprecated due to API usability issues that can potentially lead to accidental security issues.
+La función `Buffer()` y el constructor `new Buffer()` están desaprobados debido a problemas de usabilidad con la API que pueden potencialmente resultar en problemas accidentales de securidad.
 
-As an alternative, use of the following methods of constructing `Buffer` objects is strongly recommended:
+Como alternativa, el uso de los siguientes métodos de construcción de objetos `Buffer` es fuertemente recomendado:
 
-- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Create a `Buffer` with *initialized* memory.
-- [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Create a `Buffer` with *uninitialized* memory.
-- [`Buffer.allocUnsafeSlow(size)`][] - Create a `Buffer` with *uninitialized* memory.
-- [`Buffer.from(array)`][] - Create a `Buffer` with a copy of `array`
-- [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Create a `Buffer` that wraps the given `arrayBuffer`.
-- [`Buffer.from(buffer)`][] - Create a `Buffer` that copies `buffer`.
+- [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Crear un `Buffer` con memoria *initialized*.
+- [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Crear un `Buffer` con memoria *uninitialized*.
+- [`Buffer.allocUnsafeSlow(size)`][] - Crear un `Buffer` con memoria *uninitialized*.
+- [`Buffer.from(array)`][] - Crear un `Buffer` con una copia de `array`
+- [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Crear un `Buffer` que envuelva al `arrayBuffer` dado.
+- [`Buffer.from(buffer)`][] - Crear un `Buffer` que copie a `buffer`.
 - [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Create a `Buffer` that copies `string`.
 
 As of v10.0.0, a deprecation warning is printed at runtime when `--pending-deprecation` is used or when the calling code is outside `node_modules` in order to better target developers, rather than users.
