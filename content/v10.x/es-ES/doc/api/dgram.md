@@ -90,7 +90,7 @@ added: v0.6.9
 * `multicastAddress` {string}
 * `multicastInterface` {string}
 
-Le dice al núcleo que se una a un grupo de multidifusión en los `multicastAddress` y `multicastInterface` dados, usando la opción del socket `IP_ADD_MEMBERSHIP`. If the `multicastInterface` argument is not specified, the operating system will choose one interface and will add membership to it. To add membership to every available interface, call `addMembership` multiple times, once per interface.
+Le dice al núcleo que se una a un grupo de multidifusión en los `multicastAddress` y `multicastInterface` dados, usando la opción del socket `IP_ADD_MEMBERSHIP`. Si el argumento `multicastInterface` no es especificado, el sistema operativo va a escoger una interfaz y le añadirá una membresía. Para añadir una membresía a cada interfaz disponible, llama múltiples veces a `addMembership`, una vez por interfaz.
 
 ### socket.address()
 
