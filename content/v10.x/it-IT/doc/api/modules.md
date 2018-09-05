@@ -76,7 +76,7 @@ Di seguito forniamo una directory structure consigliata che potrebbe funzionare:
 
 C'è da dire che volevamo che la cartella in `/usr/lib/node/<some-package>/<some-version>` avesse il contenuto di una versione specifica di un pacchetto.
 
-Packages can depend on one another. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
+I pacchetti possono dipendere l'uno dall'altro. Per installare il pacchetto `foo`, potrebbe essere necessario installare una versione specifica del pacchetto `bar`. Il pacchetto `bar` può avere delle proprie dipendenze ed, in alcuni casi, queste possono persino scontrarsi tra loro oppure formare dipendenze cicliche.
 
 Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
 
