@@ -3760,7 +3760,7 @@ fsPromises.mkdtemp(path.join(os.tmpdir(), 'foo-'))
   .catch(console.error);
 ```
 
-The `fsPromises.mkdtemp()` method will append the six randomly selected characters directly to the `prefix` string. For instance, given a directory `/tmp`, if the intention is to create a temporary directory *within* `/tmp`, the `prefix` must end with a trailing platform-specific path separator (`require('path').sep`).
+El método de `fsPromises.mkdtemp()` anexará los seis caracteres seleccionados aleatoriamente, directamente a la string de `prefix` . For instance, given a directory `/tmp`, if the intention is to create a temporary directory *within* `/tmp`, the `prefix` must end with a trailing platform-specific path separator (`require('path').sep`).
 
 ### fsPromises.open(path, flags[, mode])
 
@@ -3800,7 +3800,7 @@ Lee datos del archivo especificado por `filehandle`.
 
 `length` es un entero que especifica el número de bytes a leer.
 
-`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. If `position` is `null`, data will be read from the current file position, and the file position will be updated. Si `position` es un entero, la posición del archivo permanecerá sin cambios.
+`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. Si `position` es un entero, la posición del archivo permanecerá sin cambios.
 
 Luego de una lectura exitosa, la `Promise` se resuelve con un objeto con una propiedad de `bytesRead` que especifique el número de bytes leídos, y una propiedad de `buffer` que sea una referencia a lo que fue pasado en el argumento de `buffer` .
 
@@ -3817,7 +3817,7 @@ added: v10.0.0
 
 Reads the contents of a directory then resolves the `Promise` with an array of the names of the files in the directory excludiing `'.'` and `'..'`.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
+The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames. Si el `encoding` se establece a `'buffer'`, los nombres de archivo devueltos serán pasados como un objeto de `Buffer` .
 
 ### fsPromises.readFile(path[, options])
 
