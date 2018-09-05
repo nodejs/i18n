@@ -1817,7 +1817,7 @@ added: v0.1.90
 * `end` {integer} El desplazamiento de bytes para detener la codificación (no incluido). **Predeterminado:** [`buf.length`].
 * Devuelve: {string}
 
-Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
+Decodifica el `buf` en una cadena de acuerdo a la codificación de caracteres especificados en `enconding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
 The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
 
