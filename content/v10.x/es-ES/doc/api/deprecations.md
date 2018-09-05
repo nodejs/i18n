@@ -822,29 +822,29 @@ La propiedad [`crypto.fips`][] está desaprobada. En cambio, por favor use `cryp
 
 Tipo: Tiempo de ejecución
 
-Using `assert.fail()` with more than one argument is deprecated. Use `assert.fail()` with only one argument or use a different `assert` module method.
+Usar `assert.fail()` con más de un argumento está desaprobado. Use `assert.fail()` con un solo argumento o use un diferente método de módulo `assert`.
 
 <a id="DEP0095"></a>
 
 ### DEP0095: timers.enroll()
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-`timers.enroll()` is deprecated. Please use the publicly documented [`setTimeout()`][] or [`setInterval()`][] instead.
+`timers.enroll()` está desaprobado. En cambio, por favor use el públicamente documentado [`setTimeout()`][] o [`setInterval()`][].
 
 <a id="DEP0096"></a>
 
 ### DEP0096: timers.unenroll()
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-`timers.unenroll()` is deprecated. Please use the publicly documented [`clearTimeout()`][] or [`clearInterval()`][] instead.
+`timers.unenroll()` está desaprobado. En cambio, por favor use el públicamente documentado [`clearTimeout()`][] o [`clearInterval()`][].
 
 <a id="DEP0097"></a>
 
-### DEP0097: MakeCallback with domain property
+### DEP0097: MakeCallback con propiedad del dominio
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
 Users of `MakeCallback` that add the `domain` property to carry context, should start using the `async_context` variant of `MakeCallback` or `CallbackScope`, or the high-level `AsyncResource` class.
 
