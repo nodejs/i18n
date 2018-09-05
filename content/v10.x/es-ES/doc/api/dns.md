@@ -167,7 +167,7 @@ Si este método es invocado como su versión [`util.promisify()`][]ed, y `all` n
 
 Las siguientes banderas pueden ser pasadas como sugerencias a [`dns.lookup()`][].
 
-- `dns.ADDRCONFIG`: Tipos de direcciones devueltas son determinadas por los tipos de direcciones apoyadas por el sistema actual. Por ejemplo, las direcciones IPv4 solo son devueltas si el sistema actual tiene al menos una dirección IPv4 configurada. Direcciones de loopback no son consideradas.
+- `dns.ADDRCONFIG`: Los tipos de direcciones devueltas son determinadas por los tipos de direcciones apoyadas por el sistema actual. Por ejemplo, las direcciones IPv4 solo son devueltas si el sistema actual tiene al menos una dirección IPv4 configurada. Direcciones de loopback no son consideradas.
 - `dns.V4MAPPED`: Si la familia IPv6 fue especificada, pero ninguna dirección IPv6 fue encontrada, luego devuelve las direcciones IPv4 asignadas IPv6. Tenga en cuenta que no es soportado en algunos sistemas operativos (p. e.j FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
