@@ -109,8 +109,8 @@ apply.whitespace fix`
   * Ad alcune persone piace commentare con `LGTM` ("A me sembra buono")
   * Hai l'autorità per approvare il lavoro di qualsiasi altro collaboratore.
   * Non puoi approvare le tue stesse pull request.
-  * Quando si utilizzano esplicitamente le `Changes requested` (modifiche richieste) mostra empatia - i commenti saranno solitamente indirizzati anche se non li si usa. 
-    * Se lo fai, sii gentile e dispobile anche in seguito per controllare se i tuoi commenti sono stati indirizzati
+  * Quando si utilizzano esplicitamente `Changes requested` (modifiche richieste) mostra empatia - in genere i commenti vengono presi in considerazione anche se non lo si usa. 
+    * Se lo fai, è carino che tu sia in seguito disponibile per controllare se i tuoi commenti sono stati presi in considerazione
     * Se noti che le modifiche richieste sono state fatte, puoi cancellare la revisione `Changes requested` di un altro collaborator.
     * Utilizza `Changes requested` per indicare che stai prendendo in considerazione alcuni dei tuoi commenti per bloccare l'accettazione (landing) di una PR.
 
