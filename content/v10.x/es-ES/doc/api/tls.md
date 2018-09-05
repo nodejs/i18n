@@ -156,10 +156,10 @@ La clase `tls.Server` es una subclase de `net.Server` que acepta conexiones cifr
 added: v0.9.2
 -->
 
-El evento `'newSession'` se emite al crear una nueva sesión de TLS. Esto puede ser usado para almacenar sesiones en el almacenamiento externo. The listener callback is passed three arguments when called:
+El evento `'newSession'` se emite al crear una nueva sesión de TLS. Esto puede ser usado para almacenar sesiones en el almacenamiento externo. El listener callback recibe tres argumentos cuando se le llama:
 
-* `sessionId` - The TLS session identifier
-* `sessionData` - The TLS session data
+* `sessionId` - El identificador de sesión TLS
+* `sessionData` - Los datos de la sesión TLS
 * `callback` {Function} A callback function taking no arguments that must be invoked in order for data to be sent or received over the secure connection.
 
 Listening for this event will have an effect only on connections established after the addition of the event listener.
