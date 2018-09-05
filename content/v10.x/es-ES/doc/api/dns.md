@@ -44,15 +44,15 @@ dns.resolve4('archive.org', (err, addresses) => {
 
 Hay consecuencias sutiles en la elección de uno sobre el otro, por favor consulte la [Sección de implementación de consideraciones](#dns_implementation_considerations) para más información.
 
-## Clase:dns.Resolver
+## Clase: dns.Resolver
 
 <!-- YAML
 added: v8.3.0
 -->
 
-Una resolución independiente de las solicitudes DNS.
+Un resolver independiente de las solicitudes DNS.
 
-Tenga en cuenta que crear una nueva resolución utiliza la configuración predeterminada del servidor. Ajustar los servidores utilizados por una resolución usando [`resolver.setServers()`][`dns.setServers()`] no afecta otra resolución:
+Tenga en cuenta que crear un nuevo resolver utiliza la configuración predeterminada del servidor. Ajustar los servidores utilizados por un resolver usando [`resolver.setServers()`][`dns.setServers()`] no afecta otra resolución:
 
 ```js
 const { Resolver } = require('dns');
@@ -89,7 +89,7 @@ Los siguientes métodos desde el módulo `dns` están disponibles:
 added: v8.3.0
 -->
 
-Cancelar todas las consultas DNS pendientes realizadas por esta resolución. Las correspondientes callbacks serán llamadas con un error con código `ECANCELLED`.
+Cancelar todas las consultas DNS pendientes realizadas por este resolver. Las correspondientes callbacks serán llamadas con un error con código `ECANCELLED`.
 
 ## dns.getServers()
 
@@ -136,9 +136,9 @@ changes:
 
 Resolves a hostname (e.g. `'nodejs.org'`) into the first found A (IPv4) or AAAA (IPv6) record. Todas las propiedades `option` son opcionales. Si `options` es un entero, entonces debe ser `4` o `6` – si `options` no es proporcionado, entonces las direcciones IPv4 e IPV6 son ambas devueltas si son encontradas.
 
-Con la opción `all` en `true`, los argumentos por `callback` cambian a `(err, addresses)`, con `addresses` siendo una matriz de objetos con las propiedades `address` y `family`.
+Con la opción `all` en `true`, los argumentos para `callback` cambian a `(err, addresses)`, con `addresses` siendo una matriz de objetos con las propiedades `address` y `family`.
 
-En caso de error, `err` es un objeto [`Error`][], donde `err.code` es el código de error. Tenga en cuenta que `err.code` se establecerá en `'ENOENT'` no solo cuando el hostname no exista, pero también cuando la búsqueda falla de otras maneras, como descriptores de archivo no disponibles.
+En caso de error, `err` es un objeto [`Error`][], donde `err.code` es el código de error. Tenga en cuenta que `err.code` se establecerá en `'ENOENT'` no solo cuando el hostname no exista, sino también cuando la búsqueda falla de otras maneras, como cuando no hay descriptores de archivo disponibles.
 
 `dns.lookup()` No tiene necesariamente nada que ver con el protocolo DNS. La implementación utiliza una instalación de sistema operativo que puede asociar nombres con direcciones, y viceversa. Esta implementación puede tener sutil pero importantes consecuencias en el comportamiento de cualquier programa Node.js. Por favor, tómese algo su tiempo para consultar [Sección de implementación de consideraciones](#dns_implementation_considerations) antes de usar `dns.lookup()`.
 
