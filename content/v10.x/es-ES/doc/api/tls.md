@@ -236,20 +236,20 @@ El evento `'secureConnection'` se emite después del proceso de establecimiento 
 
 La propiedad `tlsSocket.authorized` es un `boolean` que indica si el cliente ha sido verificado por una de las autoridades de certificación suministradas para el servidor. Si `tlsSocket.authorized` es `falso`, entonces `socket.authorizationError` está configurado para describir cómo falló la autorización. Tenga en cuenta que, dependiendo de la configuración del servidor TLS, aún se pueden aceptar conexiones no autorizadas.
 
-The `tlsSocket.alpnProtocol` property is a string that contains the selected ALPN protocol. When ALPN has no selected protocol, `tlsSocket.alpnProtocol` equals `false`.
+La propiedad `tlsSocket.alpnProtocol` es una cadena que contiene el protocolo ALPN seleccionado. Cuando ALPN no tiene un protocolo seleccionado, `tlsSocket.alpnProtocol` es igual a `false`.
 
-The `tlsSocket.servername` property is a string containing the server name requested via SNI.
+La propiedad `tlsSocket.servername` es una cadena que contiene el nombre del servidor solicitado a través de SNI.
 
-### Event: 'tlsClientError'
+### Evento: 'tlsClientError'
 
 <!-- YAML
 added: v6.0.0
 -->
 
-The `'tlsClientError'` event is emitted when an error occurs before a secure connection is established. The listener callback is passed two arguments when called:
+El evento `'tlsClientError'` se emite cuando se produce un error antes de que se establezca una conexión segura. El listener callback recibe dos argumentos cuando se le llama:
 
-* `exception` {Error} The `Error` object describing the error
-* `tlsSocket` {tls.TLSSocket} The `tls.TLSSocket` instance from which the error originated.
+* `exception` {Error} El objeto `Error` que describe el error
+* `tlsSocket` {tls.TLSSocket} La instancia de `tls.TLSSocket` a partir de la cual se originó el error.
 
 ### server.addContext(hostname, context)
 
