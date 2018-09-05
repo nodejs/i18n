@@ -2958,7 +2958,7 @@ Estos objetos de estadísticas son instancias de `fs.Stat`.
 
 Para ser notificado de cuándo se modificó el archivo, no sólo cuando fue accedido, es necesario comparar `curr.mtime` y `prev.mtime`.
 
-When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. Si el archivo es creado más tarde, el listener será llamado nuevamente, con los últimos objetos de estadística. Este es un cambio en la funcionalidad desde v0.10.
+Cuando una operación de `fs.watchFile` tiene como resultado un error de `ENOENT`, invocará al listener una vez, con todos los campos en cero (o, para las fechas, la época de Unix). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. Si el archivo es creado más tarde, el listener será llamado nuevamente, con los últimos objetos de estadística. Este es un cambio en la funcionalidad desde v0.10.
 
 Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile` y `fs.unwatchFile`. `fs.watch` debería ser utilizado en lugar de `fs.watchFile` y `fs.unwatchFile` cuando sea posible.
 
@@ -3631,7 +3631,7 @@ added: v10.0.0
 
 Trunca el archivo representado por `filehandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-If the file referred to by the `FileHandle` was larger than `len` bytes, only the first `len` bytes will be retained in the file.
+Si el archivo referido por `FileHandle` fuese más grande que `len` bytes, solo los primeros `len` bytes serán retenidos en el archivo.
 
 Por ejemplo, el siguiente programa retiene sólo los primeros cuatro bytes del archivo:
 
@@ -3815,7 +3815,7 @@ added: v10.0.0
   * `encoding` {string} **Default:** `'utf8'`
 * Devuelve: {Promise}
 
-Reads the contents of a directory then resolves the `Promise` with an array of the names of the files in the directory excludiing `'.'` and `'..'`.
+Lee los contenidos de un directorio, luego resuelve la `Promise` con una matriz de los nombres de los archivos en el directorio excluyendo a `'.'` y `'..'`.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames. Si el `encoding` se establece a `'buffer'`, los nombres de archivo devueltos serán pasados como un objeto de `Buffer` .
 
