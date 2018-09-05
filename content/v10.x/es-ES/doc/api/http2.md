@@ -2318,7 +2318,7 @@ const contentType = response.getHeader('content-type');
 added: v8.4.0
 -->
 
-* Returns: {string[]}
+* Devuelve: {string[]}
 
 Returns an array containing the unique names of the current outgoing headers. Todos los nombres de los encabezados están en minúsculas.
 
