@@ -187,7 +187,7 @@ Resuelve los `address` y `port` dados en un hostname y servicio, usando el siste
 
 Si `address` no es una dirección IP válida, un `TypeError` será arrojado. El `port` será coaccionado a un número. Si no es un puerto legal, un `TypeError` será arrojado.
 
-On an error, `err` is an [`Error`][] object, where `err.code` is the error code.
+En caso de error, `err` es un objeto [`Error`][], donde `err.code` es el código de error.
 
 ```js
 const dns = require('dns');
@@ -197,7 +197,7 @@ dns.lookupService('127.0.0.1', 22, (err, hostname, service) => {
 });
 ```
 
-If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `hostname` and `service` properties.
+Si este método es invocado en su versión [`util.promisify()`][]ed, devuelve una `Promise` por un `Object` con propiedades `hostname` y `service`.
 
 ## dns.resolve(hostname[, rrtype], callback)
 
@@ -211,7 +211,7 @@ added: v0.1.27
   - `err` {Error}
   - `records` {string[] | Object[] | Object}
 
-Uses the DNS protocol to resolve a hostname (e.g. `'nodejs.org'`) into an array of the resource records. The `callback` function has arguments `(err, records)`. When successful, `records` will be an array of resource records. The type and structure of individual results varies based on `rrtype`:
+Usa el protocolo DNS para resolver un hostname (p. e.j. `'nodejs.org'`) en una matriz de los registros de recursos. La función `callback` tiene argumentos `(err, records)`. Cuando sea exitoso, `records` tendrá una matriz de los registros de recursos. El tipo y la estructura de resultados individuales varía basado en `rrtype`:
 
 | `rrtype`  | `records` contains             | Result type | Shorthand method         |
 | --------- | ------------------------------ | ----------- | ------------------------ |
