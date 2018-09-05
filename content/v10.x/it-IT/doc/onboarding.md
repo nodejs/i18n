@@ -60,7 +60,7 @@ apply.whitespace fix`
 
 ## Gestione dell'issue tracker
 
-* Hai (soprattutto) molta libertà di azione; non esitare a chiudere un issue se sei sicuro che debba essere chiuso
+* Hai (per lo più) libertà di azione; non esitare a chiudere un issue se sei sicuro che debba essere chiuso
   
   * Sii moderato nella chiusura degli issue! Fai sapere alle persone il perché della chiusura, e che gli issue e le PR possono essere riaperti se necessario
 
