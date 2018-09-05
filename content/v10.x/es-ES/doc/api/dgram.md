@@ -248,13 +248,13 @@ changes:
 -->
 
 * `msg` {Buffer|Uint8Array|string|Array} Mensaje para ser enviado.
-* `offset` {integer} Offset in the buffer where the message starts.
+* `offset` {integer} Offset en el búfer donde comienza el mensaje.
 * `length` {integer} Número de bytes en el mensaje.
 * `port` {integer} Puerto de destino.
 * `address` {string} Nombre de host de destino o dirección IP.
 * `callback` {Function} Llamada cuando el mensaje ha sido enviado.
 
-Broadcasts a datagram on the socket. The destination `port` and `address` must be specified.
+Transmite un datagrama en el socket. El `port` y la `address` de destino deben ser especificada.
 
 El argumento `msg` contiene el mensaje que será enviado. Dependiendo de su tipo, se pueden aplicar distintos comportamientos. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. Si `msg` es un `String`, entonces se convierte automáticamente en un `Buffer` con codificación `'utf8'`. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
 
