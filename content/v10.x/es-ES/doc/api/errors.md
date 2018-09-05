@@ -1565,4 +1565,4 @@ El estado del módulo actual no permite esta operación. El significado específ
 
 ### ERR_ZLIB_INITIALIZATION_FAILED
 
-Creation of a [`zlib`][] object failed due to incorrect configuration.
+La creación de un objeto [`zlib`][] falló debido a una configuración incorrecta.
