@@ -168,7 +168,7 @@ Si este método es invocado como su versión [`util.promisify()`][]ed, y `all` n
 Las siguientes banderas pueden ser pasadas como sugerencias a [`dns.lookup()`][].
 
 - `dns.ADDRCONFIG`: Tipos de direcciones devueltas son determinadas por los tipos de direcciones apoyadas por el sistema actual. Por ejemplo, las direcciones IPv4 solo son devueltas si el sistema actual tiene al menos una dirección IPv4 configurada. Direcciones de loopback no son consideradas.
-- `dns.V4MAPPED`: Si la familia IPv6 fue especificada, pero ninguna dirección IPv6 fue encontrada, luego devuelve las direcciones IPv4 asignadas IPv6. Note that it is not supported on some operating systems (e.g FreeBSD 10.1).
+- `dns.V4MAPPED`: Si la familia IPv6 fue especificada, pero ninguna dirección IPv6 fue encontrada, luego devuelve las direcciones IPv4 asignadas IPv6. Tenga en cuenta que no es soportado en algunos sistemas operativos (p. e.j FreeBSD 10.1).
 
 ## dns.lookupService(address, port, callback)
 
@@ -178,14 +178,14 @@ added: v0.11.14
 
 - `address` {string}
 - `port` {number}
-- `callback` {Function} 
+- `callback {Function}` {Function} 
   - `err` {Error}
-  - `hostname` {string} e.g. `example.com`
-  - `service` {string} e.g. `http`
+  - `hostname` {string} p. e.j. `ejemplo.com`
+  - `service` {string} p. e.j. `http`
 
-Resolves the given `address` and `port` into a hostname and service using the operating system's underlying `getnameinfo` implementation.
+Resuelve los `address` y `port` dados en un hostname y servicio, usando el sistema operativo subyacente como implementación `getnameinfo`.
 
-If `address` is not a valid IP address, a `TypeError` will be thrown. The `port` will be coerced to a number. If it is not a legal port, a `TypeError` will be thrown.
+Si `address` no es una dirección IP válida, un `TypeError` será arrojado. El `port` será coaccionado a un número. Si no es un puerto legal, un `TypeError` será arrojado.
 
 On an error, `err` is an [`Error`][] object, where `err.code` is the error code.
 
