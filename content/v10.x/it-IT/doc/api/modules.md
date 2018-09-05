@@ -87,9 +87,9 @@ Poiché Node.js cerca il `realpath` di tutti i moduli caricati (ovvero risolve i
 
 Quindi, anche se si incontra un ciclo oppure se ci sono conflitti di dipendenze, ogni modulo sarà in grado di ottenere una versione della propria dipendenza da poter utilizzare.
 
-When the code in the `foo` package does `require('bar')`, it will get the version that is symlinked into `/usr/lib/node/foo/1.2.3/node_modules/bar`. Then, when the code in the `bar` package calls `require('quux')`, it'll get the version that is symlinked into `/usr/lib/node/bar/4.3.2/node_modules/quux`.
+Quando il codice nel pacchetto `foo` esegue `require('bar')`, otterrà la versione che è simbolicamente collegata all'interno di `/usr/lib/node/foo/1.2.3/node_modules/bar`. Quindi, quando il codice nel pacchetto `bar` chiama `require('quux')`, otterrà la versione che è simbolicamente collegata all'interno di `/usr/lib/node/bar/4.3.2/node_modules/quux`.
 
-Furthermore, to make the module lookup process even more optimal, rather than putting packages directly in `/usr/lib/node`, we could put them in `/usr/lib/node_modules/<name>/<version>`. Then Node.js will not bother looking for missing dependencies in `/usr/node_modules` or `/node_modules`.
+Inoltre, per rendere il processo di ricerca dei moduli ancora più ottimale, piuttosto che mettere i pacchetti direttamente in `/usr/lib/node`, potremmo inserirli all'interno di `/usr/lib/node_modules/<name>/<version>`. Così Node.js non si preoccuperà di cercare le dipendenze mancanti all'interno di `/usr/node_modules` o di `/node_modules`.
 
 In order to make modules available to the Node.js REPL, it might be useful to also add the `/usr/lib/node_modules` folder to the `$NODE_PATH` environment variable. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
 
