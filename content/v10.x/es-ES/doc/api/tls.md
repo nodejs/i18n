@@ -202,16 +202,16 @@ Se puede usar un módulo npm como [asn1.js](https://npmjs.org/package/asn1.js) p
 added: v0.9.2
 -->
 
-El evento `'resumeSession'` se emite cuando el cliente solicita reanudar una sesión anterior de TLS. The listener callback is passed two arguments when called:
+El evento `'resumeSession'` se emite cuando el cliente solicita reanudar una sesión anterior de TLS. El listener callback recibe dos argumentos cuando se le llama:
 
-* `sessionId` - The TLS/SSL session identifier
-* `callback` {Function} A callback function to be called when the prior session has been recovered.
+* `sessionId` - El identificador de sesión TLS / SSL
+* `callback` {Function} Una función callback que se llamará cuando se haya recuperado la sesión anterior.
 
-When called, the event listener may perform a lookup in external storage using the given `sessionId` and invoke `callback(null, sessionData)` once finished. If the session cannot be resumed (i.e., doesn't exist in storage) the callback may be invoked as `callback(null, null)`. Calling `callback(err)` will terminate the incoming connection and destroy the socket.
+Cuando se le llama, el listener del evento puede realizar una búsqueda en el almacenamiento externo utilizando el `sessionId` dado e invocar `callback(null, sessionData)` una vez finalizado. Si la sesión no se puede reanudar (es decir, no existe en el almacenamiento), el callback se puede invocar como `callback(null, null)`. Llamar a `callback(err)` terminará la conexión entrante y destruirá el socket.
 
 Escuchar este evento tendrá un efecto solo en las conexiones establecidas después de la adición del listener del evento.
 
-The following illustrates resuming a TLS session:
+Lo siguiente ilustra la reanudación de una sesión de TLS:
 
 ```js
 const tlsSessionStore = {};
