@@ -1489,77 +1489,77 @@ Se intentó cargar un módulo con un formato desconocido o no soportado.
 
 ### ERR_UNKNOWN_SIGNAL
 
-An invalid or unknown process signal was passed to an API expecting a valid signal (such as [`subprocess.kill()`][]).
+Se pasó una señal de proceso inválida o desconocida a un API que esperaba una señal válida (como [`subprocess.kill()`][]).
 
 <a id="ERR_UNKNOWN_STDIN_TYPE"></a>
 
 ### ERR_UNKNOWN_STDIN_TYPE
 
-An attempt was made to launch a Node.js process with an unknown `stdin` file type. This error is usually an indication of a bug within Node.js itself, although it is possible for user code to trigger it.
+Se intentó iniciar un proceso Node.js con un tipo de archivo `stdin` desconocido. Este error es usualmente una indicación de un bug dentro del mismo Node.js, aunque es posible que el código de usuario lo desencadene.
 
 <a id="ERR_UNKNOWN_STREAM_TYPE"></a>
 
 ### ERR_UNKNOWN_STREAM_TYPE
 
-An attempt was made to launch a Node.js process with an unknown `stdout` or `stderr` file type. This error is usually an indication of a bug within Node.js itself, although it is possible for user code to trigger it.
+Se intentó iniciar un proceso Node.js con un tipo de archivo `stdout` o `stderr` desconocido. Este error es usualmente una indicación de un bug dentro del mismo Node.js, aunque es posible que el código de usuario lo desencadene.
 
 <a id="ERR_V8BREAKITERATOR"></a>
 
 ### ERR_V8BREAKITERATOR
 
-The V8 `BreakIterator` API was used but the full ICU data set is not installed.
+El API V8 `BreakIterator` fue usado, pero el conjunto de los datos ICU completos no está instalado.
 
 <a id="ERR_VALID_PERFORMANCE_ENTRY_TYPE"></a>
 
 ### ERR_VALID_PERFORMANCE_ENTRY_TYPE
 
-While using the Performance Timing API (`perf_hooks`), no valid performance entry types were found.
+Mientras su usaba el API de Tiempo de Rendimiento (`perf_hooks`), no se encontraron tipos de entrada de rendimiento válidos.
 
 <a id="ERR_VALUE_OUT_OF_RANGE"></a>
 
 ### ERR_VALUE_OUT_OF_RANGE
 
-Superseded by `ERR_OUT_OF_RANGE`.
+Reemplazado por `ERR_OUT_OF_RANGE`.
 
 <a id="ERR_VM_MODULE_ALREADY_LINKED"></a>
 
 ### ERR_VM_MODULE_ALREADY_LINKED
 
-The module attempted to be linked is not eligible for linking, because of one of the following reasons:
+El módulo que se intentó vincular no es elegible para vincular, por una de las siguientes razones:
 
-- It has already been linked (`linkingStatus` is `'linked'`)
-- It is being linked (`linkingStatus` is `'linking'`)
-- Linking has failed for this module (`linkingStatus` is `'errored'`)
+- Ya se ha vinculado (`linkingStatus` es `'linked'`)
+- Se está vinculando (`linkingStatus` es `'linking'`)
+- La vinculación para este módulo ha fallado (`linkingStatus` es `'errored'`)
 
 <a id="ERR_VM_MODULE_DIFFERENT_CONTEXT"></a>
 
 ### ERR_VM_MODULE_DIFFERENT_CONTEXT
 
-The module being returned from the linker function is from a different context than the parent module. Linked modules must share the same context.
+El módulo que se está devolviendo de la función vinculadora es de un contexto diferente al módulo primario. Los módulos vinculados deben compartir el mismo contexto.
 
 <a id="ERR_VM_MODULE_LINKING_ERRORED"></a>
 
 ### ERR_VM_MODULE_LINKING_ERRORED
 
-The linker function returned a module for which linking has failed.
+La función vinculadora devolvió un módulo por el cual la vinculación ha fallado.
 
 <a id="ERR_VM_MODULE_NOT_LINKED"></a>
 
 ### ERR_VM_MODULE_NOT_LINKED
 
-The module must be successfully linked before instantiation.
+El módulo debe ser vinculado exitosamente antes de la instanciación.
 
 <a id="ERR_VM_MODULE_NOT_MODULE"></a>
 
 ### ERR_VM_MODULE_NOT_MODULE
 
-The fulfilled value of a linking promise is not a `vm.Module` object.
+El valor cumplido de una promesa de vinculación no es un objeto `vm.Module`.
 
 <a id="ERR_VM_MODULE_STATUS"></a>
 
 ### ERR_VM_MODULE_STATUS
 
-The current module's status does not allow for this operation. The specific meaning of the error depends on the specific function.
+El estado del módulo actual no permite esta operación. El significado específico de este error depende de la función específica.
 
 <a id="ERR_ZLIB_INITIALIZATION_FAILED"></a>
 
