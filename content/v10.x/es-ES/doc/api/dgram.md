@@ -325,9 +325,9 @@ added: v8.6.0
 
 *Nota: Todas las referencias a investigar en esta sección se refieren a los [Índices de Zona IPv6](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), que son definidos por [RFC 4007](https://tools.ietf.org/html/rfc4007). En forma string, una IP con un índice scope es escrita como `'IP%scope'`, donde scope es el nombre o número de la interfaz.*
 
-Sets the default outgoing multicast interface of the socket to a chosen interface or back to system interface selection. The `multicastInterface` must be a valid string representation of an IP from the socket's family.
+Sets the default outgoing multicast interface of the socket to a chosen interface or back to system interface selection. EL `multicastInterface` debe ser una representación string válida de una IP, de la familia del socket.
 
-Para sockets IPv4, este debería ser el IP configurado para la interfaz física deseada. All packets sent to multicast on the socket will be sent on the interface determined by the most recent successful use of this call.
+Para sockets IPv4, este debería ser el IP configurado para la interfaz física deseada. Todos los paquetes enviados a hacer multidifusión en el socket serán enviados a la interfaz, determinado por el uso exitoso más reciente de esta llamada.
 
 For IPv6 sockets, `multicastInterface` should include a scope to indicate the interface as in the examples that follow. In IPv6, individual `send` calls can also use explicit scope in addresses, so only packets sent to a multicast address without specifying an explicit scope are affected by the most recent successful use of this call.
 
