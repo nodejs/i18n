@@ -922,15 +922,15 @@ Tipo: Runtime
 
 Tipo: Solo-documentación
 
-Debería evitarse usar [`crypto.createCipher()`][] y [`crypto.createDecipher()`][] debido a que usan una función de derivación de clave débil (MD5 sin salt) y vectores de inicialización estáticos. Es recomendado derivar una llave usando [`crypto.pbkdf2()`][] y usar [`crypto.createCipheriv()`][] y [`crypto.createDecipheriv()`][] para obtener los objectos [`Cipher`][] y [`Decipher`][] respectivamente.
+Debería evitarse usar [`crypto.createCipher()`][] y [`crypto.createDecipher()`][], debido a que utilizan una función de derivación de clave débil (MD5 sin salt) y vectores de inicialización estáticos. Es recomendado derivar una clave utilizando [`crypto.pbkdf2()`][] y usar [`crypto.createCipheriv()`][] y [`crypto.createDecipheriv()`][] para obtener los objectos [`Cipher`][] y [`Decipher`][], respectivamente.
 
 <a id="DEP0107"></a>
 
 ### DEP0107: tls.convertNPNProtocols()
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
-Esto fue una indocumentada función auxiliar no destinada al uso afuera de Node.js core y obsoleta por la eliminación del soporte NPN (Next Protocol Negotiation).
+Esto fue una función auxiliar indocumentada no destinada al uso afuera del core Node.js y obsoleta por la eliminación del soporte NPN (Next Protocol Negotiation).
 
 <a id="DEP0108"></a>
 
