@@ -154,11 +154,11 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 Disable the callbacks for a given `AsyncHook` instance from the global pool of `AsyncHook` callbacks to be executed. Una vez que un hook haya sido inhabilitado, no volverá a ser llamado hasta que se habilite.
 
-For API consistency `disable()` also returns the `AsyncHook` instance.
+Para la consistencia de una API, `disable()` también devuelve la instancia de `AsyncHook` .
 
 #### Hook Callbacks
 
-Key events in the lifetime of asynchronous events have been categorized into four areas: instantiation, before/after the callback is called, and when the instance is destroyed.
+Los eventos clave en el tiempo de vida de eventos asincrónicos han sido categorizados en cuatro áreas: instanciación, antes/después de que un callback es llamado, y cuando la instancia es destruida.
 
 ##### init(asyncId, type, triggerAsyncId, resource)
 
