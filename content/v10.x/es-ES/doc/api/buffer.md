@@ -1892,7 +1892,7 @@ added: v0.1.90
 * `encoding` {string} La codificación de caracteres del `string`. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} Número de bytes escritos.
 
-Escribe el `string` a `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro de `length` es el número de bytes para escribir. If `buf` did not contain enough space to fit the entire string, only part of `string` will be written. However, partially encoded characters will not be written.
+Escribe el `string` a `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro de `length` es el número de bytes para escribir. Si `buf` no contiene suficiente espacio para ajustar la cadena entera, solo parte del `string` se escribirá. Sin embargo, no se escribirán caracteres codificados parcialmente.
 
 ```js
 const buf = Buffer.alloc(256);
@@ -1900,7 +1900,7 @@ const buf = Buffer.alloc(256);
 const len = buf.write('\u00bd + \u00bc = \u00be', 0);
 
 console.log(`${len} bytes: ${buf.toString('utf8', 0, len)}`);
-// Prints: 12 bytes: ½ + ¼ = ¾
+// Imprime: 12 bytes: ½ + ¼ = ¾
 ```
 
 ### buf.writeDoubleBE(value, offset)
@@ -1917,7 +1917,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {number} Number to be written to `buf`.
+* `value` {number} Número para escribir en `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 8`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
