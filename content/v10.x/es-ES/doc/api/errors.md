@@ -1399,7 +1399,7 @@ Mientras se utilizaba TLS, se llamó al método `server.addContext()` sin propor
 
 ### ERR_TLS_SESSION_ATTACK
 
-An excessive amount of TLS renegotiations is detected, which is a potential vector for denial-of-service attacks.
+Se detectó una cantidad excesiva de renegociaciones TLS, lo cual es un vector potencial para ataques de negación de servicio.
 
 <a id="ERR_TLS_SNI_FROM_SERVER"></a>
 
@@ -1411,45 +1411,45 @@ An attempt was made to issue Server Name Indication from a TLS server-side socke
 
 ### ERR_TLS_RENEGOTIATION_DISABLED
 
-An attempt was made to renegotiate TLS on a socket instance with TLS disabled.
+Se intentó renegociar TLS en una instancia de socket con TLS inhabilitado.
 
 <a id="ERR_TRACE_EVENTS_CATEGORY_REQUIRED"></a>
 
 ### ERR_TRACE_EVENTS_CATEGORY_REQUIRED
 
-The `trace_events.createTracing()` method requires at least one trace event category.
+El método `trace_events.createTracing()` requiere al menos una categoría de evento trace.
 
 <a id="ERR_TRACE_EVENTS_UNAVAILABLE"></a>
 
 ### ERR_TRACE_EVENTS_UNAVAILABLE
 
-The `trace_events` module could not be loaded because Node.js was compiled with the `--without-v8-platform` flag.
+El módulo `trace_events` no pudo ser cargado porque Node.js fue compilado con el flag `--without-v8-platform`.
 
 <a id="ERR_TRANSFORM_ALREADY_TRANSFORMING"></a>
 
 ### ERR_TRANSFORM_ALREADY_TRANSFORMING
 
-A `Transform` stream finished while it was still transforming.
+Un stream `Transform` terminó mientras todavía se estaba transformando.
 
 <a id="ERR_TRANSFORM_WITH_LENGTH_0"></a>
 
 ### ERR_TRANSFORM_WITH_LENGTH_0
 
-A `Transform` stream finished with data still in the write buffer.
+Un stream `Transform` terminó con datos que todavía se encontraban en el búfer de escritura.
 
 <a id="ERR_TTY_INIT_FAILED"></a>
 
 ### ERR_TTY_INIT_FAILED
 
-The initialization of a TTY failed due to a system error.
+La inicialización de un TTY falló debido a un error de sistema.
 
 <a id="ERR_UNCAUGHT_EXCEPTION_CAPTURE_ALREADY_SET"></a>
 
 ### ERR_UNCAUGHT_EXCEPTION_CAPTURE_ALREADY_SET
 
-[`process.setUncaughtExceptionCaptureCallback()`][] was called twice, without first resetting the callback to `null`.
+Se llamó dos veces a [`process.setUncaughtExceptionCaptureCallback()`][], sin primero reiniciar el callback a `null`.
 
-This error is designed to prevent accidentally overwriting a callback registered from another module.
+Este error está diseñado para prevenir sobrescribir accidentalmente un callback registrado desde otro módulo.
 
 <a id="ERR_UNESCAPED_CHARACTERS"></a>
 
@@ -1461,29 +1461,29 @@ A string that contained unescaped characters was received.
 
 ### ERR_UNHANDLED_ERROR
 
-An unhandled error occurred (for instance, when an `'error'` event is emitted by an [`EventEmitter`][] but an `'error'` handler is not registered).
+Ocurrió un error no controlado (por ejemplo, cuando un evento `'error'` es emitido por un [`EventEmitter`][], pero un manejador de `'error'` no está registrado).
 
 <a id="ERR_UNKNOWN_ENCODING"></a>
 
 ### ERR_UNKNOWN_ENCODING
 
-An invalid or unknown encoding option was passed to an API.
+Se pasó una opción de codificación inválida o desconocida a un API.
 
 <a id="ERR_UNKNOWN_FILE_EXTENSION"></a>
 
 ### ERR_UNKNOWN_FILE_EXTENSION
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-An attempt was made to load a module with an unknown or unsupported file extension.
+Se intentó cargar un módulo con una extensión de archivo desconocida o no soportada.
 
 <a id="ERR_UNKNOWN_MODULE_FORMAT"></a>
 
 ### ERR_UNKNOWN_MODULE_FORMAT
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-An attempt was made to load a module with an unknown or unsupported format.
+Se intentó cargar un módulo con un formato desconocido o no soportado.
 
 <a id="ERR_UNKNOWN_SIGNAL"></a>
 
