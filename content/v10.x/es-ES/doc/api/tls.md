@@ -140,7 +140,7 @@ El conjunto de cifrado predeterminado prefiere los cifrados de GCM para la confi
 
 Se prefiere 128 bits AES a 192 y 256 bits AES a la luz de [ataques específicos que afectan tamaños de clave AES más grandes ](https://www.schneier.com/blog/archives/2009/07/another_new_aes.html).
 
-Los clientes antiguos que dependen de cifrados inseguros y obsoletos RC4 o basados en DES (como Internet Explorer 6) no pueden completar el proceso de establecimiento de la comunicación con la configuración predeterminada. Si estos clientes *deben* ser compatibles, las [recomendaciones de TLS ](https://wiki.mozilla.org/Security/Server_Side_TLS) pueden ofrecer un paquete de cifrado compatible. For more details on the format, see the [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT).
+Los clientes antiguos que dependen de cifrados inseguros y obsoletos RC4 o basados en DES (como Internet Explorer 6) no pueden completar el proceso de establecimiento de la comunicación con la configuración predeterminada. Si estos clientes *deben* ser compatibles, las [recomendaciones de TLS ](https://wiki.mozilla.org/Security/Server_Side_TLS) pueden ofrecer un paquete de cifrado compatible. Para más detalles sobre el formato, visite [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT).
 
 ## Class: tls.Server
 
