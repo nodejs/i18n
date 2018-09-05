@@ -922,7 +922,7 @@ Tipo: Tiempo de ejecución
 
 Tipo: Solo-documentación
 
-Using [`crypto.createCipher()`][] and [`crypto.createDecipher()`][] should be avoided as they use a weak key derivation function (MD5 with no salt) and static initialization vectors. It is recommended to derive a key using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] and [`crypto.createDecipheriv()`][] to obtain the [`Cipher`][] and [`Decipher`][] objects respectively.
+Debería evitarse usar [`crypto.createCipher()`][] y [`crypto.createDecipher()`][] debido a que usan una función de derivación de clave débil (MD5 sin salt) y vectores de inicialización estáticos. It is recommended to derive a key using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] and [`crypto.createDecipheriv()`][] to obtain the [`Cipher`][] and [`Decipher`][] objects respectively.
 
 <a id="DEP0107"></a>
 
