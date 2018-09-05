@@ -164,9 +164,9 @@ El objeto `options` puede contener una propiedad `exclusive` adicional que es ut
 
 Un socket de datagrama enlazado mantiene el proceso Node.js en marcha para recibir mensajes de datagrama.
 
-Si tratar de enlazar falla, es generado un evento `'error'`. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
+Si el enlace falla, es generado un evento `'error'`. En casos raros (p. ej. intentar enlazar con un socket cerrado), un [`Error`][] puede ser arrojado.
 
-An example socket listening on an exclusive port is shown below.
+Un ejemplo de un socket escuchando a un puerto exclusivo es mostrado a continuación.
 
 ```js
 socket.bind({
