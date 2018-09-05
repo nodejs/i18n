@@ -142,21 +142,21 @@ Se prefiere 128 bits AES a 192 y 256 bits AES a la luz de [ataques específicos 
 
 Los clientes antiguos que dependen de cifrados inseguros y obsoletos RC4 o basados en DES (como Internet Explorer 6) no pueden completar el proceso de establecimiento de la comunicación con la configuración predeterminada. Si estos clientes *deben* ser compatibles, las [recomendaciones de TLS ](https://wiki.mozilla.org/Security/Server_Side_TLS) pueden ofrecer un paquete de cifrado compatible. Para más detalles sobre el formato, visite [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT).
 
-## Class: tls.Server
+## Clase: tls.Server
 
 <!-- YAML
 added: v0.3.2
 -->
 
-The `tls.Server` class is a subclass of `net.Server` that accepts encrypted connections using TLS or SSL.
+La clase `tls.Server` es una subclase de `net.Server` que acepta conexiones cifradas mediante TLS o SSL.
 
-### Event: 'newSession'
+### Evento: 'newSession'
 
 <!-- YAML
 added: v0.9.2
 -->
 
-The `'newSession'` event is emitted upon creation of a new TLS session. This may be used to store sessions in external storage. The listener callback is passed three arguments when called:
+El evento `'newSession'` se emite al crear una nueva sesión de TLS. Esto puede ser usado para almacenar sesiones en el almacenamiento externo. The listener callback is passed three arguments when called:
 
 * `sessionId` - The TLS session identifier
 * `sessionData` - The TLS session data
