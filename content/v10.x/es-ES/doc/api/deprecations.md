@@ -112,7 +112,7 @@ El uso de la API [`crypto.pbkdf2()`][] sin especificar que un resumen fue desapr
 
 ### DEP0010: crypto.createCredentials
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
 The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createSecureContext()`][] instead.
 
