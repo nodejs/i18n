@@ -42,17 +42,17 @@ dns.resolve4('archive.org', (err, addresses) => {
 });
 ```
 
-There are subtle consequences in choosing one over the other, please consult the [Implementation considerations section](#dns_implementation_considerations) for more information.
+Hay consecuencias sutiles en la elección de uno sobre el otro, por favor consulte la [Sección de implementación de consideraciones](#dns_implementation_considerations) para más información.
 
-## Class: dns.Resolver
+## Clase:dns.Resolver
 
 <!-- YAML
 added: v8.3.0
 -->
 
-An independent resolver for DNS requests.
+Una resolución independiente de las solicitudes DNS.
 
-Note that creating a new resolver uses the default server settings. Setting the servers used for a resolver using [`resolver.setServers()`][`dns.setServers()`] does not affect other resolver:
+Tenga en cuenta que crear una nueva resolución utiliza la configuración predeterminada del servidor. Setting the servers used for a resolver using [`resolver.setServers()`][`dns.setServers()`] does not affect other resolver:
 
 ```js
 const { Resolver } = require('dns');
