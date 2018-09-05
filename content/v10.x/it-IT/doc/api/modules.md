@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
 <!--name=module-->
 
-In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
+Nel sistema modulo di Node.js, ogni file viene trattato come un modulo separato. For example, consider a file named `foo.js`:
 
 ```js
 const circle = require('./circle.js');
