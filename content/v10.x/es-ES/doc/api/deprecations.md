@@ -14,7 +14,7 @@ Node.js utiliza tres tipos de Desaprobaciones:
 
 Una desaprobación que sea de solo-documentación es una que está expresada solo dentro de los documentos API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas desaprobaciones que son de solo-documentación, provocan una advertencia en el tiempo de ejecución cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, `NODE_PENDING_DEPRECATION=1` variable de ambiente), similar a las deprecaciones de tiempo de ejecución mostradas abajo. Las desaprobaciones de solo-documentación que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Desaprobadas](#deprecations_list_of_deprecated_apis).
 
-Una desaprobación de tiempo de ejecución generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. When the `--throw-deprecation` command-line flag is used, a Runtime deprecation will cause an error to be thrown.
+Una desaprobación de tiempo de ejecución generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, un desaprobación de tiempo de ejecución causará que se arroje un error.
 
 An End-of-Life deprecation is used to identify code that either has been removed or will soon be removed from Node.js.
 
