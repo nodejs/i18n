@@ -1126,7 +1126,7 @@ changes:
 
 Si `value` es:
 
-* a string, `value` is interpreted according to the character encoding in `encoding`.
+* una cadena, `value` se interpreta de acuerdo a la codificación de caracteres en `enconding`.
 * un `Buffer` o [`Uint8Array`], `value` se utilizará en su totalidad. Para comparar un `Buffer` parcial, utilice [`buf.slice()`].
 * un número, `value` se interpretará como un valor entero de 8-bit sin signo entre `0` y `255`.
 
@@ -1212,7 +1212,7 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `value` {string|Buffer|Uint8Array|integer} Qué buscar.
 * `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. **Predeterminado:** [`buf.length`]`- 1`.
 * `encoding` {string} Si `value` es una cadena, esta es la codificación utilizada para determinar la representación binaria de la cadena que se buscará en `buf`. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} El índice de la última aparición de `value` en `buf`, o `-1` si `buf` no contiene `value`.
@@ -1785,9 +1785,9 @@ Tenga en cuenta que JavaScript no puede codificar enteros de 64-bit. Este métod
 added: v0.9.2
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
+Devuelve una representación JSON de `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
 
 ```js
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
