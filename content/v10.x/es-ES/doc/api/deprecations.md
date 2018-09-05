@@ -806,7 +806,7 @@ La propiedad [`crypto.DEFAULT_ENCODING`][] está desaprobada.
 
 Type: Documentation-only
 
-Asignar propiedades al nivel top `this` como una alternativa al módulo `module.exports` está desaprobado. Desarrolladores deberían en cambio, usar `exports` o `module.exports`.
+Asignar propiedades al nivel top `this` como una alternativa al módulo `module.exports` está desaprobado. Los desarrolladores deberían, en cambio, usar `exports` o `module.exports`.
 
 <a id="DEP0093"></a>
 
@@ -818,9 +818,9 @@ La propiedad [`crypto.fips`][] está desaprobada. En cambio, por favor use `cryp
 
 <a id="DEP0094"></a>
 
-### DEP0094: Usando `assert.fail()` con más de un argumento.
+### DEP0094: Usar `assert.fail()` con más de un argumento.
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 Usar `assert.fail()` con más de un argumento está desaprobado. Use `assert.fail()` con un solo argumento o use un diferente método de módulo `assert`.
 
@@ -828,7 +828,7 @@ Usar `assert.fail()` con más de un argumento está desaprobado. Use `assert.fai
 
 ### DEP0095: timers.enroll()
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 `timers.enroll()` está desaprobado. En cambio, por favor use el públicamente documentado [`setTimeout()`][] o [`setInterval()`][].
 
@@ -836,7 +836,7 @@ Tipo: Tiempo de ejecución
 
 ### DEP0096: timers.unenroll()
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 `timers.unenroll()` está desaprobado. En cambio, por favor use el públicamente documentado [`clearTimeout()`][] o [`clearInterval()`][].
 
@@ -844,7 +844,7 @@ Tipo: Tiempo de ejecución
 
 ### DEP0097: MakeCallback con propiedad del dominio
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 Usuarios de `MakeCallback` que agreguen la propiedad `domain` para llevar el contexto, deberían empezar a usar la variante `async_context` de `MakeCallback` o `CallbackScope`, o la clase de nivel alto `AsyncResource`.
 
@@ -852,25 +852,25 @@ Usuarios de `MakeCallback` que agreguen la propiedad `domain` para llevar el con
 
 ### DEP0098: AsyncHooks Embedder AsyncResource.emitBefore and AsyncResource.emitAfter APIs
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
-La API incrustrada proveída por AsyncHooks expone los métodos `.emitBefore()` y `.emitAfter()` que son muy fáciles de usar incorrectamente lo que puede resultar en errores irrecuperables.
+La API incrustrada provista por AsyncHooks expone los métodos `.emitBefore()` y `.emitAfter()` los cuales son muy fáciles de usar incorrectamente, pudiendo conducir a errores irrecuperables.
 
-En cambio use la API [`asyncResource.runInAsyncScope()`][] que provee una alternativa mucho más segura y conveniente. Vea https://github.com/nodejs/node/pull/18513 para más detalles.
+En cambio, use la API [`asyncResource.runInAsyncScope()`][] la cual provee una alternativa mucho más segura y conveniente. Vea https://github.com/nodejs/node/pull/18513 para más detalles.
 
 <a id="DEP0099"></a>
 
 ### DEP0099: async context-unaware node::MakeCallback C++ APIs
 
-Tipo: Compilar-tiempo
+Tipo: Tiempo-de-compilación
 
-Ciertas versiones de las APIs `node::MakeCallback` disponibles para módulos nativos están desaprobadas. Por favor use las versiones de la API que acepten un parámetro `async_context`.
+Ciertas versiones de las APIs `node::MakeCallback` disponibles para módulos nativos están desaprobadas. Por favor, use las versiones de la API que acepten un parámetro `async_context`.
 
 <a id="DEP0100"></a>
 
 ### DEP0100: process.assert()
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 `process.assert()` está desaprobado. En cambio, por favor use el módulo [`assert`][].
 
@@ -882,15 +882,15 @@ Esta nunca fue una característica documetada.
 
 Tipo: Fin-de-Vida
 
-La opción de compilar-tiempo `--with-lttng` ha sido removida.
+La opción de tiempo-de-compilación`--with-lttng` ha sido removida.
 
 <a id="DEP0102"></a>
 
-### DEP0102: Usando `noAssert` en Buffer#(read|write) operaciones.
+### DEP0102: Usar `noAssert` en operaciones Buffer#(read|write).
 
 Tipo: Final-de-Vida
 
-Usar el argumento `noAssert` ya no tiene ninguna funcionalidad. Todo lo que entre va a ser verificado, sin importar si debería ser cierto o no. Omitir la verificación puede resultar en errores y fallas difíciles de conseguir.
+Usar el argumento `noAssert` ya no tiene ninguna funcionalidad. Todo lo que entre va a ser verificado, sin importar si está establecido a true o no. Omitir la verificación puede resultar en errores y fallas difíciles de conseguir.
 
 <a id="DEP0103"></a>
 
@@ -912,7 +912,7 @@ Cuando se asigna una propiedad sin cadenas de caracteres a [`process.env`][], el
 
 ### DEP0105: decipher.finaltol
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 `decipher.finaltol()` nunca ha sido documentato y actualmente es un alias para [`decipher.final()`][]. En el futuro, esta API seguramente sea removida, y en cambio se recomienda usar [`decipher.final()`][].
 
