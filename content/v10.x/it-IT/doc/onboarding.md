@@ -151,13 +151,13 @@ Si noti che in una PR i commit che appartengono ad una modifica logica dovrebber
 * Esempio: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
   * Per commit message non elaborato: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
-* I Collaboratori sono in ordine alfabetico in base all'username di GitHub.
+* I Collaboratori sono in ordine alfabetico in base allo username di GitHub.
 * Facoltativamente, includi i tuoi pronomi personali.
 * Etichetta la tua pull request con l'etichetta del sottosistema `doc`.
 * Esegui la CI sulla PR. Poiché la PR non influenza alcun codice, utilizza la CI task `node-test-pull-request-lite`. In alternativa, utilizza la solita CI task `node-test-pull-request` e annullala dopo che il linter e l'altra task secondaria sono stati passati.
 * Dopo una o due approvazioni, conferma la PR (le PR di questo tipo non necessitano di attendere 48/72 ore per essere confermate). 
-  * Assicurati di aggiungere `PR-URL: <full-pr-url>` e il metadata `Reviewed-By:` appropriato.
-  * [`node-core-utils`][] automatizza la generazione dei metadata ed il processo di conferma (landing). Vedi la documentazione di [`git-node`][].
+  * Assicurati di aggiungere `PR-URL: <full-pr-url>` e il metadato `Reviewed-By:` appropriato.
+  * [`node-core-utils`][] automatizza la generazione dei metadati e il processo di conferma (landing). Vedi la documentazione di [`git-node`][].
   * [`core-validate-commit`][] automatizza la convalida dei commit message. Questo verrà eseguito durante `git node land --final` del comando [`git-node`][].
 
 ## Note finali
