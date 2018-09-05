@@ -184,25 +184,25 @@ Llamar a `callback(err)` dará como resultado una llamada `socket.destroy(err)`.
 
 El flujo típico de una Solicitud OCSP es el siguiente:
 
-1. Client connects to the server and sends an `'OCSPRequest'` (via the status info extension in ClientHello).
-2. Server receives the request and emits the `'OCSPRequest'` event, calling the listener if registered.
-3. Server extracts the OCSP URL from either the `certificate` or `issuer` and performs an [OCSP request](https://en.wikipedia.org/wiki/OCSP_stapling) to the CA.
-4. Server receives `'OCSPResponse'` from the CA and sends it back to the client via the `callback` argument
-5. Client validates the response and either destroys the socket or performs a handshake.
+1. El cliente se conecta al servidor y envía un `'OCSPRequest'` (a través de la extensión de información de estado en ClientHello).
+2. El servidor recibe la solicitud y emite el evento `'OCSPRequest'`, llamando al listener si está registrado.
+3. El servidor extrae la URL OCSP del `certificate` o del `issuer` y realiza una [OCSP request](https://en.wikipedia.org/wiki/OCSP_stapling) a la CA.
+4. El servidor recibe `'OCSPResponse'` de la CA y lo envía de vuelta al cliente a través del argumento `callback`
+5. El cliente valida la respuesta y destruye el socket o realiza un establecimiento de comunicación.
 
-The `issuer` can be `null` if the certificate is either self-signed or the issuer is not in the root certificates list. (An issuer may be provided via the `ca` option when establishing the TLS connection.)
+El `issuer` puede ser `null` si el certificado está autofirmado o el emisor no está en la lista de certificados de origen. (Se puede proporcionar un emisor a través de la opción `ca` al establecer la conexión TLS.)
 
 Escuchar este evento tendrá un efecto solo en las conexiones establecidas después de la adición del listener del evento.
 
-An npm module like [asn1.js](https://npmjs.org/package/asn1.js) may be used to parse the certificates.
+Se puede usar un módulo npm como [asn1.js](https://npmjs.org/package/asn1.js) para analizar los certificados.
 
-### Event: 'resumeSession'
+### Evento: 'resumeSession'
 
 <!-- YAML
 added: v0.9.2
 -->
 
-The `'resumeSession'` event is emitted when the client requests to resume a previous TLS session. The listener callback is passed two arguments when called:
+El evento `'resumeSession'` se emite cuando el cliente solicita reanudar una sesión anterior de TLS. The listener callback is passed two arguments when called:
 
 * `sessionId` - The TLS/SSL session identifier
 * `callback` {Function} A callback function to be called when the prior session has been recovered.
