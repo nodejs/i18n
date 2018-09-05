@@ -98,7 +98,7 @@ En una versión previa del `cluster` Node.js, una propiedad booleana con el nomb
 
 Tipo: Solo-documentación
 
-El módulo `constants` ha sido desaprobado. Cuando se requiere acceso a constantes relevantes a específicos módulos integrados a Node.js, los desarrolladores en cambio, deberían referir a la propiedad `constants` expuesta por el módulo relevante. Por ejemplo, `require('fs').constants` y `require('os').constants`.
+El módulo `constants` ha sido desaprobado. Cuando se requiere acceso a constantes relevantes a módulos específicos integrados a Node.js, los desarrolladores, en cambio, deberían referir a la propiedad `constants` expuesta por el módulo relevante. Por ejemplo, `require('fs').constants` y `require('os').constants`.
 
 <a id="DEP0009"></a>
 
@@ -106,13 +106,13 @@ El módulo `constants` ha sido desaprobado. Cuando se requiere acceso a constant
 
 Tipo: Fin-de-Vida
 
-El uso de la API [`crypto.pbkdf2()`][] sin especificar que un resumen fue desaprobado en Node.js 6.0 porque el método de manera predeterminada usó el resumen no recomendado `'SHA1'`. Previamente, una advertencia de desaprobación fue estampada. Empezando en Node.js 8.0.0, llamando a `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinido dará como resultado un `TypeError`.
+El uso de la API [`crypto.pbkdf2()`][] sin especificar un resumen fue desaprobado en Node.js 6.0, porque el método usó de manera predeterminada el resumen no recomendado `'SHA1'`. Previamente, una advertencia de desaprobación fue emitida. A partir de Node.js 8.0.0, llamar a `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinido dará como resultado un `TypeError`.
 
 <a id="DEP0010"></a>
 
 ### DEP0010: crypto.createCredentials
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createSecureContext()`][] instead.
 
@@ -758,7 +758,7 @@ Since Node.js versions 4.4.0 and 5.2.0, several modules only intended for intern
 
 The `v8/*` modules do not have any exports, and if not imported in a specific order would in fact throw errors. As such there are virtually no legitimate use cases for importing them through `require()`.
 
-Por otra parte, `node-inspect` puede ser instalado localmente por medio de un paquete de gerente, ya que es publicado en el registro npm bajo el mismo nombre. No source code modification is necessary if that is done.
+Por otra parte, `node-inspect` puede ser instalado localmente por medio de un administrador de paquetes, como se explica en el registro npm que lleva el mismo nombre. No source code modification is necessary if that is done.
 
 <a id="DEP0085"></a>
 
@@ -790,13 +790,13 @@ Importing assert directly is not recommended as the exposed functions will use l
 
 Type: Runtime
 
-Node.js soporta toda la extensión de las etiquetas de autentificación GCM que sean aceptatadas por OpenSSL al llamar a [`decipher.setAuthTag()`][]. Este comportamiento cambiará en una versión futura en cuyo momento solo la extensión de las etiquetas de autentificación de 28, 120, 112, 104, 96, 64, y 32 bits serán permitidas. Las etiquetas de autentificación cuya extensión no se encuentre incluida en esta lista será considerada inválida en conformidad con [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Node.js soporta toda la extensión de las etiquetas de autentificación GCM que sean aceptatadas por OpenSSL al llamar a [`decipher.setAuthTag()`][]. Este comportamiento cambiará en una versión futura, en cuyo momento solo la extensión de las etiquetas de autentificación de 28, 120, 112, 104, 96, 64, y 32 bits serán permitidas. Las etiquetas de autentificación cuya extensión no se encuentre incluida en esta lista será considerada inválida en conformidad con [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 <a id="DEP0091"></a>
 
 ### DEP0091: crypto.DEFAULT_ENCODING
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 La propiedad [`crypto.DEFAULT_ENCODING`][] está desaprobada.
 
