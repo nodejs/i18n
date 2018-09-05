@@ -140,9 +140,9 @@ Con la opción `all` en `true`, los argumentos por `callback` cambian a `(err, a
 
 En caso de error, `err` es un objeto [`Error`][], donde `err.code` es el código de error. Tenga en cuenta que `err.code` se establecerá en `'ENOENT'` no solo cuando el hostname no exista, pero también cuando la búsqueda falla de otras maneras, como descriptores de archivo no disponibles.
 
-`dns.lookup()` No tiene necesariamente nada que ver con el protocolo DNS. La implementación utiliza una instalación de sistema operativo que puede asociar nombres con direcciones, y viceversa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
+`dns.lookup()` No tiene necesariamente nada que ver con el protocolo DNS. La implementación utiliza una instalación de sistema operativo que puede asociar nombres con direcciones, y viceversa. Esta implementación puede tener sutil pero importantes consecuencias en el comportamiento de cualquier programa Node.js. Por favor, tómese algo su tiempo para consultar [Sección de implementación de consideraciones](#dns_implementation_considerations) antes de usar `dns.lookup()`.
 
-Example usage:
+Ejemplo de uso:
 
 ```js
 const dns = require('dns');
@@ -154,7 +154,7 @@ dns.lookup('example.com', options, (err, address, family) =>
   console.log('address: %j family: IPv%s', address, family));
 // address: "2606:2800:220:1:248:1893:25c8:1946" family: IPv6
 
-// When options.all is true, the result will be an Array.
+// Cuando options.all es true, el resultado será una Matriz.
 options.all = true;
 dns.lookup('example.com', options, (err, addresses) =>
   console.log('addresses: %j', addresses));
