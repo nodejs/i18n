@@ -2960,7 +2960,7 @@ To be notified when the file was modified, not just accessed, it is necessary to
 
 When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. Si el archivo es creado más tarde, el listener será llamado nuevamente, con los últimos objetos de estadística. Este es un cambio en la funcionalidad desde v0.10.
 
-Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile` y `fs.unwatchFile`. `fs.watch` should be used instead of `fs.watchFile` and `fs.unwatchFile` when possible.
+Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile` y `fs.unwatchFile`. `fs.watch` debería ser utilizado en lugar de `fs.watchFile` y `fs.unwatchFile` cuando sea posible.
 
 When a file being watched by `fs.watchFile()` disappears and reappears, then the `previousStat` reported in the second callback event (the file's reappearance) will be the same as the `previousStat` of the first callback event (its disappearance).
 
@@ -3232,7 +3232,7 @@ added: v10.0.0
 * `gid` {integer}
 * Devuelve: {Promise}
 
-Cambia la pertenencia del archivo, y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
+Cambia la pertenencia del archivo, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 #### filehandle.close()
 
@@ -3470,7 +3470,7 @@ fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
   .catch(() => console.error('cannot access'));
 ```
 
-Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Hacerlo introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
+Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Hacerlo introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no es accesible.
 
 ### fsPromises.appendFile(path, data[, options])
 
@@ -3515,7 +3515,7 @@ added: v10.0.0
 * `gid` {integer}
 * Devuelve: {Promise}
 
-Cambia la pertenencia de un archivo, y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
+Cambia la pertenencia de un archivo, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.copyFile(src, dest[, flags])
 
@@ -3773,7 +3773,7 @@ added: v10.0.0
 * `mode` {integer} **Default:** `0o666` (readable and writable)
 * Devuelve: {Promise}
 
-Asynchronous file open that returns a `Promise` that, when resolved, yields a `FileHandle` object. See open(2).
+Apertura asincrónica de archivo que devuelve una `Promise` que, cuando se resuelve, produce un objeto de `FileHandle` . See open(2).
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
@@ -3924,7 +3924,7 @@ added: v10.0.0
 
 Crea un enlace simbólico y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-El argumento de `type` sólo se utiliza en plataformas de Windows y puede ser uno de `'dir'`, `'file'`, o `'junction'`. Tenga en cuenta que los puntos de unión de Windows requieren que la ruta de destino sea absoluta. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+El argumento de `type` sólo se utiliza en plataformas de Windows y puede ser uno de `'dir'`, `'file'`, o `'junction'`. Tenga en cuenta que los puntos de unión de Windows requieren que la ruta de destino sea absoluta. Cuando se utiliza `'junction'`, el argumento de `target` será automáticamente normalizado a la ruta absoluta.
 
 ### fsPromises.truncate(path[, len])
 
