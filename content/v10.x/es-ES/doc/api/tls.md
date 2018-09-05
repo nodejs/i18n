@@ -124,13 +124,13 @@ HIGH:
 !CAMELLIA
 ```
 
-Este valor predeterminado se puede reemplazar por completo usando el modificador de línea de comando `--tls-cipher-list`. For instance, the following makes `ECDHE-RSA-AES128-GCM-SHA256:!RC4` the default TLS cipher suite:
+Este valor predeterminado se puede reemplazar por completo usando el modificador de línea de comando `--tls-cipher-list`. Por ejemplo, lo siguiente hace `ECDHE-RSA-AES128-GCM-SHA256:!RC4` el conjunto de cifrado de TLS predeterminado:
 
 ```sh
 node --tls-cipher-list="ECDHE-RSA-AES128-GCM-SHA256:!RC4"
 ```
 
-The default can also be replaced on a per client or server basis using the `ciphers` option from [`tls.createSecureContext()`][], which is also available in [`tls.createServer()`], [`tls.connect()`], and when creating new [`tls.TLSSocket`]s.
+El valor predeterminado también se puede reemplazar por cliente o servidor utilizando la opción `ciphers` de [`tls.createSecureContext()`][], que también está disponible en [`tls.createServer()`], [`tls.connect()`] y al crear nuevos [`tls.TLSSocket`].
 
 Consult [OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.0/apps/ciphers.html#CIPHER-LIST-FORMAT) for details on the format.
 
