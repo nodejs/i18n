@@ -2861,7 +2861,7 @@ changes:
   * `filename` {string|Buffer}
 * Devuelve: {fs.FSWatcher}
 
-Buscar cambios en `filename`, donde `filename` es o un archivo o un directorio.
+Busca cambios en `filename`, donde `filename` es o un archivo o un directorio.
 
 El segundo argumento es opcional. Si se proporciona `options` como una string, especificará el `encoding`. De lo contrario, `options` debería ser pasado como un objeto.
 
