@@ -78,14 +78,14 @@ C'è da dire che volevamo che la cartella in `/usr/lib/node/<some-package>/<some
 
 I pacchetti possono dipendere l'uno dall'altro. Per installare il pacchetto `foo`, potrebbe essere necessario installare una versione specifica del pacchetto `bar`. Il pacchetto `bar` può avere delle proprie dipendenze ed, in alcuni casi, queste possono persino scontrarsi tra loro oppure formare dipendenze cicliche.
 
-Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
+Poiché Node.js cerca il `realpath` di tutti i moduli caricati (ovvero risolve i collegamenti simbolici), e successivamente cerca le loro dipendenze nelle cartelle `node_modules` come descritto [qui](#modules_loading_from_node_modules_folders), questa situazione è molto semplice da risolvere tramite la seguente architettura:
 
-* `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` package, version 1.2.3.
-* `/usr/lib/node/bar/4.3.2/` - Contents of the `bar` package that `foo` depends on.
-* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Symbolic link to `/usr/lib/node/bar/4.3.2/`.
-* `/usr/lib/node/bar/4.3.2/node_modules/*` - Symbolic links to the packages that `bar` depends on.
+* `/usr/lib/node/foo/1.2.3/` - Contenuto del pacchetto `foo`, versione 1.2.3.
+* `/usr/lib/node/bar/4.3.2/` - Contenuto del pacchetto `bar` da cui dipende `foo`.
+* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Collegamento simbolico a `/usr/lib/node/bar/4.3.2/`.
+* `/usr/lib/node/bar/4.3.2/node_modules/*` - Collegamenti simbolici ai pacchetti da cui dipende `bar`.
 
-Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
+Quindi, anche se si incontra un ciclo oppure se ci sono conflitti di dipendenze, ogni modulo sarà in grado di ottenere una versione della propria dipendenza da poter utilizzare.
 
 When the code in the `foo` package does `require('bar')`, it will get the version that is symlinked into `/usr/lib/node/foo/1.2.3/node_modules/bar`. Then, when the code in the `bar` package calls `require('quux')`, it'll get the version that is symlinked into `/usr/lib/node/bar/4.3.2/node_modules/quux`.
 
