@@ -46,7 +46,7 @@ Nuevas instancias de `dgram.Socket` se crean usando [`dgram.createSocket()`][]. 
 added: v0.1.99
 -->
 
-El evento `'close'` se emite luego de que un socket es cerrado con [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
+El evento `'close'` se emite luego de que un socket es cerrado con [`close()`][]. Una vez activado, no van a ser emitidos nuevos eventos `'message'` en este socket.
 
 ### Evento: 'error'
 
@@ -116,9 +116,9 @@ Para sockets UDP, causa que `dgram.Socket` escuche por mensajes datagrama en un 
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
-A bound datagram socket keeps the Node.js process running to receive datagram messages.
+Un socket de datagrama enlazado mantiene el proceso Node.js en marcha para recibir mensajes de datagrama.
 
-If binding fails, an `'error'` event is generated. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
+Si el enlace falla, es generado un evento `'error'`. En casos raros (p. ej. intentar enlazar con un socket cerrado), un [`Error`][] puede ser arrojado.
 
 Ejemplo de un servidor UDP escuchando en el puerto 41234:
 
@@ -160,7 +160,7 @@ For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a 
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
-El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. When `exclusive` is set to `false` (the default), cluster workers will use the same underlying socket handle allowing connection handling duties to be shared. Cuando `exclusive` es `true`, sin embargo, el handle no es compartido y los intentos de compartir el puerto resulta en un error.
+El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. Cuando `exclusive` es establecida como `false` (la manera predeterminada), los workers del clúster usan el mismo handle socket subyacente permitiendo que el manejo de los deberes de las conexiones sean compartidos. Cuando `exclusive` es `true`, sin embargo, el handle no es compartido y los intentos de compartir el puerto resulta en un error.
 
 Un socket de datagrama enlazado mantiene el proceso Node.js en marcha para recibir mensajes de datagrama.
 
@@ -182,7 +182,7 @@ socket.bind({
 added: v0.1.99
 -->
 
-Close the underlying socket and stop listening for data on it. If a callback is provided, it is added as a listener for the [`'close'`][] event.
+Cierra el socket subyacente y deja de escuchar por datos en él. Si se provee un callback, es añadido como un listener para el evento [`'close'`][].
 
 ### socket.dropMembership(multicastAddress[, multicastInterface])
 
