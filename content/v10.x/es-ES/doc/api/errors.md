@@ -1312,33 +1312,33 @@ Se intentó llamar a [`stream.write()`][] con una cantidad `null`.
 
 ### ERR_STREAM_PREMATURE_CLOSE
 
-An error returned by `stream.finished()` and `stream.pipeline()`, when a stream or a pipeline ends non gracefully with no explicit error.
+Un error devuelto por `stream.finished()` y `stream.pipeline()`, cuando un stream o un pipeline termina sin gracia con ningún error explícito.
 
 <a id="ERR_STREAM_PUSH_AFTER_EOF"></a>
 
 ### ERR_STREAM_PUSH_AFTER_EOF
 
-An attempt was made to call [`stream.push()`][] after a `null`(EOF) had been pushed to the stream.
+Se intentó llamar a [`stream.push()`][] luego de que un `null`(EOF) haya sido empujado al stream.
 
 <a id="ERR_STREAM_READ_NOT_IMPLEMENTED"></a>
 
 ### ERR_STREAM_READ_NOT_IMPLEMENTED
 
-An attempt was made to use a readable stream that did not implement [`readable._read()`][].
+Se intentó utilizar un stream legible que no implementaba [`readable._read()`][].
 
 <a id="ERR_STREAM_UNSHIFT_AFTER_END_EVENT"></a>
 
 ### ERR_STREAM_UNSHIFT_AFTER_END_EVENT
 
-An attempt was made to call [`stream.unshift()`][] after the `'end'` event was emitted.
+Se intentó llamar a [`stream.unshift()`][] luego de que el evento `'end'` fuera emitido.
 
 <a id="ERR_STREAM_WRAP"></a>
 
 ### ERR_STREAM_WRAP
 
-Prevents an abort if a string decoder was set on the Socket or if the decoder is in `objectMode`.
+Impide un aborto si un decodificador de string fue establecido en el Socket o si el decodificador está en `objectMode`.
 
-Example
+Ejemplo
 
 ```js
 const Socket = require('net').Socket;
@@ -1351,25 +1351,25 @@ instance.setEncoding('utf8');
 
 ### ERR_STREAM_WRITE_AFTER_END
 
-An attempt was made to call [`stream.write()`][] after `stream.end()` has been called.
+Se intentó llamar a [`stream.write()`][] luego de que `stream.end()` haya sido llamado.
 
 <a id="ERR_SYSTEM_ERROR"></a>
 
 ### ERR_SYSTEM_ERROR
 
-An unspecified or non-specific system error has occurred within the Node.js process. The error object will have an `err.info` object property with additional details.
+Ha ocurrido un error de sistema no específico o sin especificar dentro del proceso de Node.js. El objeto error tendrá una propiedad de objeto `err.info` con detalles adicionales.
 
 <a id="ERR_STREAM_DESTROYED"></a>
 
 ### ERR_STREAM_DESTROYED
 
-A stream method was called that cannot complete because the stream was destroyed using `stream.destroy()`.
+Se llamó a un método de stream que no puede completarse porque el stream fue destruido utilizando `stream.destroy()`.
 
 <a id="ERR_STRING_TOO_LONG"></a>
 
 ### ERR_STRING_TOO_LONG
 
-An attempt has been made to create a string longer than the maximum allowed length.
+Se intentó crear una string más grande que el tamaño máximo permitido.
 
 <a id="ERR_TLS_CERT_ALTNAME_INVALID"></a>
 
@@ -1381,19 +1381,19 @@ While using TLS, the hostname/IP of the peer did not match any of the `subjectAl
 
 ### ERR_TLS_DH_PARAM_SIZE
 
-While using TLS, the parameter offered for the Diffie-Hellman (`DH`) key-agreement protocol is too small. By default, the key length must be greater than or equal to 1024 bits to avoid vulnerabilities, even though it is strongly recommended to use 2048 bits or larger for stronger security.
+Mientras se utilizaba TLS, el parámetro ofrecido para el protocolo de acuerdo de clave Diffle-Hellman (`DH`) es muy peuqeño. Por defecto, el tamaño de la clave debe ser mayor que o igual a 1024 bits para evitar vulnerabilidades, a pesar de que es altamente recomendado utilizar 2048 bits o más para una mayor seguridad.
 
 <a id="ERR_TLS_HANDSHAKE_TIMEOUT"></a>
 
 ### ERR_TLS_HANDSHAKE_TIMEOUT
 
-A TLS/SSL handshake timed out. In this case, the server must also abort the connection.
+A TLS/SSL handshake timed out. En este caso, el servidor debe también abortar la conexión.
 
 <a id="ERR_TLS_REQUIRED_SERVER_NAME"></a>
 
 ### ERR_TLS_REQUIRED_SERVER_NAME
 
-While using TLS, the `server.addContext()` method was called without providing a hostname in the first parameter.
+Mientras se utilizaba TLS, se llamó al método `server.addContext()` sin proporcionar un nombre de host en el primer parámetro.
 
 <a id="ERR_TLS_SESSION_ATTACK"></a>
 
