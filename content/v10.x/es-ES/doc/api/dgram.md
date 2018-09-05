@@ -72,7 +72,7 @@ El evento `'listening'` es emitido cuando un socket comienza a escuchar por mens
 added: v0.1.99
 -->
 
-El evento `'message'` es emitido cuando un nuevo datagrama está disponible en un socket. The event handler function is passed two arguments: `msg` and `rinfo`.
+El evento `'message'` es emitido cuando un nuevo datagrama está disponible en un socket. La función manejador de eventos es pasada con dos argumentos: `msg` y `rinfo`.
 
 * `msg` {Buffer} El mensaje.
 * `rinfo` {Object} Información de dirección remota. 
