@@ -1918,8 +1918,8 @@ changes:
 -->
 
 * `value` {number} Número para escribir en `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 8`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 8`.
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
 
