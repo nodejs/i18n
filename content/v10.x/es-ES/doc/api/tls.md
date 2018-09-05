@@ -176,7 +176,7 @@ El evento `'OCSPRequest'` se emite cuando el cliente envía una solicitud de est
 * `issuer` {Buffer} El certificado del emisor
 * `callback` {Function} Una función callback que debe invocarse para proporcionar los resultados de la solicitud OCSP.
 
-The server's current certificate can be parsed to obtain the OCSP URL and certificate ID; after obtaining an OCSP response, `callback(null, resp)` is then invoked, where `resp` is a `Buffer` instance containing the OCSP response. Both `certificate` and `issuer` are `Buffer` DER-representations of the primary and issuer's certificates. These can be used to obtain the OCSP certificate ID and OCSP endpoint URL.
+El certificado actual del servidor se puede analizar para obtener la URL OCSP y la identificación del certificado; después de obtener una respuesta OCSP, se invoca `callback(null, resp)`, donde `resp` es una instancia `Buffer` que contiene la respuesta OCSP. Both `certificate` and `issuer` are `Buffer` DER-representations of the primary and issuer's certificates. These can be used to obtain the OCSP certificate ID and OCSP endpoint URL.
 
 Alternatively, `callback(null, null)` may be called, indicating that there was no OCSP response.
 
