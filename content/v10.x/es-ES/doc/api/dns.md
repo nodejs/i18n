@@ -52,20 +52,20 @@ added: v8.3.0
 
 Una resolución independiente de las solicitudes DNS.
 
-Tenga en cuenta que crear una nueva resolución utiliza la configuración predeterminada del servidor. Setting the servers used for a resolver using [`resolver.setServers()`][`dns.setServers()`] does not affect other resolver:
+Tenga en cuenta que crear una nueva resolución utiliza la configuración predeterminada del servidor. Ajustar los servidores utilizados por una resolución usando [`resolver.setServers()`][`dns.setServers()`] no afecta otra resolución:
 
 ```js
 const { Resolver } = require('dns');
 const resolver = new Resolver();
 resolver.setServers(['4.4.4.4']);
 
-// This request will use the server at 4.4.4.4, independent of global settings.
+// Esta solicitud utilizará el servidor en 4.4.4.4, independiente de los ajustes globales.
 resolver.resolve4('example.org', (err, addresses) => {
   // ...
 });
 ```
 
-The following methods from the `dns` module are available:
+Los siguientes métodos desde el módulo `dns` están disponibles:
 
 - [`resolver.getServers()`][`dns.getServers()`]
 - [`resolver.setServers()`][`dns.setServers()`]
@@ -89,7 +89,7 @@ The following methods from the `dns` module are available:
 added: v8.3.0
 -->
 
-Cancel all outstanding DNS queries made by this resolver. The corresponding callbacks will be called with an error with code `ECANCELLED`.
+Cancelar todas las consultas DNS pendientes realizadas por esta resolución. Las correspondientes callbacks serán llamadas con un error con código `ECANCELLED`.
 
 ## dns.getServers()
 
@@ -97,7 +97,7 @@ Cancel all outstanding DNS queries made by this resolver. The corresponding call
 added: v0.11.3
 -->
 
-- Returns: {string[]}
+- Devuelve: {string[]}
 
 Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 
