@@ -82,23 +82,23 @@ Desde la v10.0.0, una advertencia de desaprobación es estampada al momento de q
 
 Tipo: Tiempo de ejecución
 
-Within the [`child_process`][] module's `spawn()`, `fork()`, and `exec()` methods, the `options.customFds` option is deprecated. The `options.stdio` option should be used instead.
+Dentro de [`child_process`][] los métodos de los módulos `spawn()`, `fork()`, y `exec()`, la opción `options.customFds` está desaprobada. La opción `options.stdio` debería ser usada en su lugar.
 
 <a id="DEP0007"></a>
 
-### DEP0007: Replace cluster worker.suicide with worker.exitedAfterDisconnect
+### DEP0007: Reemplace el grupo worker.suicide con worker.exitedAfterDisconnect
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-In an earlier version of the Node.js `cluster`, a boolean property with the name `suicide` was added to the `Worker` object. The intent of this property was to provide an indication of how and why the `Worker` instance exited. In Node.js 6.0.0, the old property was deprecated and replaced with a new [`worker.exitedAfterDisconnect`][] property. The old property name did not precisely describe the actual semantics and was unnecessarily emotion-laden.
+En una versión previa de el `cluster` Node.js, una propiedad booleana con el nombre `suicide` fue agregada al objeto `Worker`. La intención de esta propiedad fue proveer una indicación sobre cómo y por qué la instancia `Worker` salió. En Node.js 6.0.0, la vieja propiedad fue desaprobada y reemplazada con una nueva propiedad [`worker.exitedAfterDisconnect`][]. El nombre de la vieja propiedad no describía precisamente la verdadera semántica y fue innecesariamente cargada de emoción.
 
 <a id="DEP0008"></a>
 
-### DEP0008: require('constants')
+### DEP0008: requiere('constants')
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The `constants` module has been deprecated. When requiring access to constants relevant to specific Node.js builtin modules, developers should instead refer to the `constants` property exposed by the relevant module. For instance, `require('fs').constants` and `require('os').constants`.
+El módulo `constants` ha sido desaprobado. When requiring access to constants relevant to specific Node.js builtin modules, developers should instead refer to the `constants` property exposed by the relevant module. For instance, `require('fs').constants` and `require('os').constants`.
 
 <a id="DEP0009"></a>
 
