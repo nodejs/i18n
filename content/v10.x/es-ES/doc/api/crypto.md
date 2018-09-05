@@ -508,7 +508,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta, de no ser así un [`Buffer`][] es devuelto.
+Devuelve el generador de Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta, de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrime([encoding])
 
@@ -519,7 +519,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Regresa el Diffie-Hellman prime al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
+Regresa el Diffie-Hellman prime al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPrivateKey([encoding])
 
@@ -530,7 +530,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Regresa la llave privada Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
+Regresa la llave privada Diffie-Hellman en el `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.getPublicKey([encoding])
 
@@ -541,7 +541,7 @@ added: v0.5.0
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Regresa la llave pública Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` proporcionado una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
+Regresa la llave pública Diffie-Hellman al `encoding` especificado, el cual puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### diffieHellman.setPrivateKey(privateKey[, encoding])
 
@@ -586,7 +586,7 @@ Los valores a continuación son válidos para esta propiedad (como es definido e
 added: v0.11.14
 -->
 
-La clase `ECDH` es una utilidad para crear la Curva Elíptica Curve Diffie-Hellman (ECDH) de intercambios de claves.
+La clase `ECDH` es una utilidad para crear la Curva Elíptica Diffie-Hellman (ECDH) de intercambios de claves.
 
 Las instancias de clase `ECDH` pueden ser creadas usando la función [`crypto.createECDH()`][].
 
