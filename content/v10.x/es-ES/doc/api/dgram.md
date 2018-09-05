@@ -114,7 +114,7 @@ added: v0.1.99
 
 Para sockets UDP, causa que `dgram.Socket` escuche por mensajes datagrama en un `port` llamado y `address` opcional. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazarse a un puerto aleatorio. Si no se especifica el `address`, el sistema operativo va a intentar escuchar a todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido y la función opcional `callback` es llamada.
 
-Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
+Tenga en cuenta que especificar tanto a un evento listener `'listening'` y pasar un `callback` por el método `socket.bind()` no es dañino pero no es muy útil.
 
 Un socket de datagrama enlazado mantiene el proceso Node.js en marcha para recibir mensajes de datagrama.
 
