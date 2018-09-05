@@ -8,7 +8,7 @@ Node.js puede rechazar APIs cuando: (a) el uso de la API es considerado como ins
 
 Node.js utiliza tres tipos de Desaprobaciones:
 
-- Documentation-only
+- Solo-documentación
 - Runtime
 - End-of-Life
 
@@ -72,15 +72,15 @@ Como alternativa, el uso de los siguientes métodos de construcción de objetos 
 - [`Buffer.from(array)`][] - Crear un `Buffer` con una copia de `array`
 - [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Crear un `Buffer` que envuelva al `arrayBuffer` dado.
 - [`Buffer.from(buffer)`][] - Crear un `Buffer` que copie a `buffer`.
-- [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Create a `Buffer` that copies `string`.
+- [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Crear un `Buffer` que copie a `string`.
 
-As of v10.0.0, a deprecation warning is printed at runtime when `--pending-deprecation` is used or when the calling code is outside `node_modules` in order to better target developers, rather than users.
+Desde la v10.0.0, una advertencia de desaprobación es estampada al momento de que haya un tiempo de ejecución, siempre y cuando `--pending-deprecation` es usado o cuando el código de llamada está afuera de `node_modules` para poder apuntar mejor a los desarrolladores, y no a los usuarios.
 
 <a id="DEP0006"></a>
 
 ### DEP0006: child\_process options.customFds
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
 Within the [`child_process`][] module's `spawn()`, `fork()`, and `exec()` methods, the `options.customFds` option is deprecated. The `options.stdio` option should be used instead.
 
