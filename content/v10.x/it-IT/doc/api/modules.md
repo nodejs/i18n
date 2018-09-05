@@ -29,9 +29,9 @@ Il modulo `circle.js` ha esportato le funzioni `area()` e `circumference()`. Le 
 
 Le variabili locali assegnate al modulo saranno private, questo perché il modulo è sottoposto al wrapping all'interno di una funzione attraverso Node.js (vedi [wrapping di un modulo](#modules_the_module_wrapper)). In questo esempio, la variabile `PI` assegnata a `circle.js` è privata.
 
-The `module.exports` property can be assigned a new value (such as a function or object).
+Alla proprietà `module.exports` può essere assegnato un nuovo valore (come ad esempio una funzione oppure un object).
 
-Below, `bar.js` makes use of the `square` module, which exports a Square class:
+Di seguito, `bar.js` fa uso del modulo `square`, che esporta una classe Square:
 
 ```js
 const Square = require('./square.js');
@@ -39,10 +39,10 @@ const mySquare = new Square(2);
 console.log(`The area of mySquare is ${mySquare.area()}`);
 ```
 
-The `square` module is defined in `square.js`:
+Il modulo `square` è definito all'interno di `square.js`:
 
 ```js
-// assigning to exports will not modify module, must use module.exports
+// l'assegnazione ad exports non modificherà il modulo, va utilizzato module.exports
 module.exports = class Square {
   constructor(width) {
     this.width = width;
@@ -54,9 +54,9 @@ module.exports = class Square {
 };
 ```
 
-The module system is implemented in the `require('module')` module.
+Il sistema modulo è implementato nel modulo `require('module')`.
 
-## Accessing the main module
+## Accesso al modulo principale
 
 <!-- type=misc -->
 
