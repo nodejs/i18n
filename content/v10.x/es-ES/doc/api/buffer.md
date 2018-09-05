@@ -1892,7 +1892,7 @@ added: v0.1.90
 * `encoding` {string} La codificación de caracteres del `string`. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} Número de bytes escritos.
 
-Escribe el `string` a `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only part of `string` will be written. However, partially encoded characters will not be written.
+Escribe el `string` a `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro de `length` es el número de bytes para escribir. If `buf` did not contain enough space to fit the entire string, only part of `string` will be written. However, partially encoded characters will not be written.
 
 ```js
 const buf = Buffer.alloc(256);
