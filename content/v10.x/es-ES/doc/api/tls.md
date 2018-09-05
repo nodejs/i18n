@@ -79,15 +79,15 @@ Si usa Perfect Forward Secrecy usando `ECDHE`, no se requieren los parámetros d
 ALPN (Application Layer Protocol Negotiation Extension) y SNI (Server Name Indication) son extensiones de protocolo de enlace de TLS:
 
 * ALPN - Permite el uso de un servidor TLS para múltiples protocolos (HTTP, HTTP/2)
-* SNI - Allows the use of one TLS server for multiple hostnames with different SSL certificates.
+* SNI - Permite el uso de un servidor TLS para múltiples hostnames con diferentes certificados SSL.
 
-### Client-initiated renegotiation attack mitigation
+### Mitigación del ataque de renegociación iniciada por el cliente
 
 <!-- type=misc -->
 
-The TLS protocol allows clients to renegotiate certain aspects of the TLS session. Unfortunately, session renegotiation requires a disproportionate amount of server-side resources, making it a potential vector for denial-of-service attacks.
+El protocolo TLS permite a los clientes renegociar ciertos aspectos de la sesión TLS. Desafortunadamente, la renegociación de la sesión requiere una cantidad desproporcionada de recursos del lado del servidor, lo que lo convierte en un vector potencial para los ataques de denegación de servicio.
 
-To mitigate the risk, renegotiation is limited to three times every ten minutes. An `'error'` event is emitted on the [`tls.TLSSocket`][] instance when this threshold is exceeded. The limits are configurable:
+Para mitigar el riesgo, la renegociación se limita a tres veces cada diez minutos. Se emite un evento `'error'` en la instancia [`tls.TLSSocket`][] cuando se excede este umbral. The limits are configurable:
 
 * `tls.CLIENT_RENEG_LIMIT` {number} Specifies the number of renegotiation requests. **Default:** `3`.
 * `tls.CLIENT_RENEG_WINDOW` {number} Specifies the time renegotiation window in seconds. **Default:** `600` (10 minutes).
