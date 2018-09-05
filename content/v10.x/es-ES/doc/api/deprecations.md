@@ -890,7 +890,7 @@ The `--with-lttng` compile-time option has been removed.
 
 Type: End-of-Life
 
-Using the `noAssert` argument has no functionality anymore. All input is going to be verified, no matter if it is set to true or not. Skipping the verification could lead to hard to find errors and crashes.
+Usar el argumento `noAssert` ya no tiene ninguna funcionalidad. Todo lo que entre va a ser verificado, sin importar si debería ser cierto o no. Omitir la verificación puede resultar en errores y fallas difíciles de conseguir.
 
 <a id="DEP0103"></a>
 
@@ -906,21 +906,21 @@ Using `process.binding()` in general should be avoided. The type checking method
 
 Type: Documentation-only (supports [`--pending-deprecation`][])
 
-When assigning a non-string property to [`process.env`][], the assigned value is implicitly converted to a string. This behavior is deprecated if the assigned value is not a string, boolean, or number. In the future, such assignment may result in a thrown error. Please convert the property to a string before assigning it to `process.env`.
+Cuando se asigna una propiedad sin cadenas de caracteres a [`process.env`][], el valor asignado es implícitamente convertido a una cadena de caracteres. Este comportamiento es desaprobado si el valor asignado no es una cadena de caracteres, un booleano, o un número. En el futuro, dicha asignación puede resultar en un error. Por favor convierta la propiedad a una cadena de caracteres antes de asignarla a `process.env`.
 
 <a id="DEP0105"></a>
 
 ### DEP0105: decipher.finaltol
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-`decipher.finaltol()` has never been documented and is currently an alias for [`decipher.final()`][]. In the future, this API will likely be removed, and it is recommended to use [`decipher.final()`][] instead.
+`decipher.finaltol()` nunca ha sido documentato y actualmente es un alias para [`decipher.final()`][]. En el futuro, esta API seguramente sea removida, y en cambio se recomienda usar [`decipher.final()`][].
 
 <a id="DEP0106"></a>
 
-### DEP0106: crypto.createCipher and crypto.createDecipher
+### DEP0106: crypto.createCipher y crypto.createDecipher
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
 Using [`crypto.createCipher()`][] and [`crypto.createDecipher()`][] should be avoided as they use a weak key derivation function (MD5 with no salt) and static initialization vectors. It is recommended to derive a key using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] and [`crypto.createDecipheriv()`][] to obtain the [`Cipher`][] and [`Decipher`][] objects respectively.
 
@@ -928,14 +928,14 @@ Using [`crypto.createCipher()`][] and [`crypto.createDecipher()`][] should be av
 
 ### DEP0107: tls.convertNPNProtocols()
 
-Type: Runtime
+Tipo: Tiempo de ejecución
 
-This was an undocumented helper function not intended for use outside Node.js core and obsoleted by the removal of NPN (Next Protocol Negotiation) support.
+Esto fue una indocumentada función auxiliar no destinada al uso afuera de Node.js core y obsoleta por la eliminación del soporte NPN (Next Protocol Negotiation).
 
 <a id="DEP0108"></a>
 
 ### DEP0108: zlib.bytesRead
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-Deprecated alias for [`zlib.bytesWritten`][]. This original name was chosen because it also made sense to interpret the value as the number of bytes read by the engine, but is inconsistent with other streams in Node.js that expose values under these names.
+Alias desaprobado para [`zlib.bytesWritten`][]. El nombre original fue elegido porque también tenía sentido interpretar el valor como el número de bytes leídos por el motor, pero es inconsistente con otros streams en Node.js que exponen valores bajo estos nombres.
