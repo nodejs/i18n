@@ -906,7 +906,7 @@ Using `process.binding()` in general should be avoided. The type checking method
 
 Type: Documentation-only (supports [`--pending-deprecation`][])
 
-Cuando se asigna una propiedad sin cadenas de caracteres a [`process.env`][], el valor asignado es implícitamente convertido a una cadena de caracteres. Este comportamiento es desaprobado si el valor asignado no es una cadena de caracteres, un booleano, o un número. En el futuro, dicha asignación puede resultar en un error. Por favor convierta la propiedad a una cadena de caracteres antes de asignarla a `process.env`.
+Cuando se asigna una propiedad sin string a [`process.env`][], el valor asignado es implícitamente convertido a una string. Este comportamiento es desaprobado si el valor asignado no es una string, un booleano, o un número. En el futuro, dicha asignación puede resultar en un error. Por favor convierta la propiedad a una string antes de asignarla a `process.env`.
 
 <a id="DEP0105"></a>
 
