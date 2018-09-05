@@ -2956,7 +2956,7 @@ fs.watchFile('message.text', (curr, prev) => {
 
 Estos objetos de estadísticas son instancias de `fs.Stat`.
 
-To be notified when the file was modified, not just accessed, it is necessary to compare `curr.mtime` and `prev.mtime`.
+Para ser notificado de cuándo se modificó el archivo, no sólo cuando fue accedido, es necesario comparar `curr.mtime` y `prev.mtime`.
 
 When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. Si el archivo es creado más tarde, el listener será llamado nuevamente, con los últimos objetos de estadística. Este es un cambio en la funcionalidad desde v0.10.
 
@@ -3396,7 +3396,7 @@ added: v10.0.0
 
 Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por el `FileHandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-This function does not work on AIX versions before 7.1, it will resolve the `Promise` with an error using code `UV_ENOSYS`.
+Esta función no funciona en versiones AIX anteriores a 7.1, resolverá la `Promise` con un error, utilizando el código `UV_ENOSYS`.
 
 #### filehandle.write(buffer, offset, length, position)
 
@@ -3470,7 +3470,7 @@ fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
   .catch(() => console.error('cannot access'));
 ```
 
-Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Hacerlo introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no es accesible.
+Utilizar `fsPromises.access()` para verificar la accesibilidad de un archivo antes de llamar a `fsPromises.open()` no es recomendado. Hacerlo introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no es accesible.
 
 ### fsPromises.appendFile(path, data[, options])
 
@@ -3678,7 +3678,7 @@ added: v10.0.0
 
 Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por el `FileHandle` proporcionado, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-This function does not work on AIX versions before 7.1, it will resolve the `Promise` with an error using code `UV_ENOSYS`.
+Esta función no funciona en versiones AIX anteriores a 7.1, resolverá la `Promise` con un error, utilizando el código `UV_ENOSYS`.
 
 ### fsPromises.lchmod(path, mode)
 
@@ -3854,7 +3854,7 @@ added: v10.0.0
 
 Asynchronous readlink(2). La `Promise` se resuelve con el `linkString` al realizarse con éxito.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path returned. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
+The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path returned. Si el `encoding` se establece a `'buffer'`, la ruta de enlace devuelta será pasada como un objeto de `Buffer` .
 
 ### fsPromises.realpath(path[, options])
 
