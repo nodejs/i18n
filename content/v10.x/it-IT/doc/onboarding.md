@@ -6,12 +6,12 @@ Questo documento è una descrizione delle cose che vengono dette ai nuovi Collab
 
 * Se il nuovo Collaboratore non è ancora membro dell'organizzazione GitHub di nodejs, confermare l'utilizzo dell'[autenticazione a due fattori](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/). Non sarà possibile aggiungere nuovi collaboratori all'organizzazione se non utilizzano l'autenticazione a due fattori. Se non riescono a ricevere messaggi SMS da GitHub, provare [l'utilizzo di un'app mobile TOTP](https://help.github.com/articles/configuring-two-factor-authentication-via-a-totp-mobile-app/).
 * Annunciare la nomination accettata in un meeting TSC e nella mailing list TSC.
-* Suggerire al nuovo Collaboratore l'installazione di [`node-core-utils`][] e [le impostazioni per le credenziali](https://github.com/nodejs/node-core-utils#setting-up-credentials) di quest'ultimo.
+* Suggerire al nuovo Collaboratore di l'installare [`node-core-utils`][] e di [impostarne le credenziali](https://github.com/nodejs/node-core-utils#setting-up-credentials).
 
 ## Quindici minuti prima della sessione di onboarding
 
 * Prima della sessione di onboarding, aggiungere il nuovo Collaboratore al [team dei Collaboratori](https://github.com/orgs/nodejs/teams/collaborators).
-* Chiedere ai nuovi collaboratori se vogliono unirsi a qualsiasi team del sottosistema. Vedi [Chi per CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Chiedere ai nuovi collaboratori se vogliono unirsi a qualsiasi team del sottosistema. Vedi [Chi impostare come CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
 ## Sessione di Onboarding
 
@@ -41,10 +41,10 @@ apply.whitespace fix`
 
 * `#node-dev` su [webchat.freenode.net](https://webchat.freenode.net/) è il posto migliore per interagire con il TSC / gli altri Collaboratori
   
-  * Se dopo la sessione ci sono delle domande, questo è il luogo adatto per farle!
+  * Se dopo la sessione ci sono delle domande, quello è il luogo adatto per farle!
   * La presenza non è obbligatoria, ma si prega di lasciare una nota se la si vuole far arrivare a `master`
 
-## Obiettivi & Valori del progetto
+## Obiettivi & valori del progetto
 
 * I Collaboratori sono i proprietari collettivi del progetto
   
