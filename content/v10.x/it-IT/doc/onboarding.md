@@ -76,10 +76,10 @@ apply.whitespace fix`
     * non esistono commenti di revisione rilevanti e
     * almeno un collaboratore ha approvato la PR.
 
-* Vedi [Chi per CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Vedi [Chi indicare come CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
   * Questo arriverà più autonomamente nel tempo
-  * Per molti dei team qui elencati, puoi chiedere di esserne aggiunto se ne sei interessato 
+  * Per molti dei team qui elencati, puoi chiedere di esservi aggiunto se interessato 
     * Alcuni sono WG con qualche processo per l'aggiunta di nuove persone, altri sono lì solo per le notifiche
 
 * Quando una discussione si anima, puoi chiedere agli altri Collaboratori di tenerla d'occhio aprendo un issue nel repository privato [nodejs/moderation](https://github.com/nodejs/moderation).
@@ -90,7 +90,7 @@ apply.whitespace fix`
 ## Revisione delle PR
 
 * L'obiettivo principale è quello di migliorare la codebase.
-* Secondario (ma non per importanza) è che la persona che invia il codice deve avere successo. Una pull request da parte di un nuovo contributor è un'opportunità per far crescere la community.
+* Secondario (ma non per importanza) è che la persona che invia il codice abbia successo. Una pull request da parte di un nuovo contributor è un'opportunità per far crescere la community.
 * Revisionare un pò alla volta. Senza appesantire troppo i nuovi contributors. 
   * Si tende a micro-ottimizzare. Non cascarci. V8 viene modificato spesso. Le tecniche che oggi offrono prestazioni migliori in futuro potrebbero non essere necessarie.
 * Siate consapevoli: la vostra opinione è molto importante!
