@@ -91,18 +91,18 @@ Quando il codice nel pacchetto `foo` esegue `require('bar')`, otterrà la versio
 
 Inoltre, per rendere il processo di ricerca dei moduli ancora più ottimale, piuttosto che mettere i pacchetti direttamente in `/usr/lib/node`, potremmo inserirli all'interno di `/usr/lib/node_modules/<name>/<version>`. Così Node.js non si preoccuperà di cercare le dipendenze mancanti all'interno di `/usr/node_modules` o di `/node_modules`.
 
-Per rendere i moduli disponibili al REPL di Node.js, potrebbe essere utile aggiungere anche la cartella `/usr/lib/node_modules` alla variabile d'ambiente `$NODE_PATH`. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Per rendere i moduli disponibili al REPL di Node.js, potrebbe essere utile aggiungere anche la cartella `/usr/lib/node_modules` alla variabile d'ambiente `$NODE_PATH`. Poiché le ricerche dei moduli utilizzando le cartelle `node_modules` sono tutte relative, e in base al real path (percorso reale) dei file che effettuano le chiamate a `require()`, i pacchetti stessi possono essere ovunque.
 
-## All Together...
+## Tutti Insieme...
 
 <!-- type=misc -->
 
-To get the exact filename that will be loaded when `require()` is called, use the `require.resolve()` function.
+Per ottenere l'esatto filename che verrà caricato quando viene chiamato `require()`, utilizza la funzione `require.resolve()`.
 
-Putting together all of the above, here is the high-level algorithm in pseudocode of what `require.resolve()` does:
+Mettendo insieme tutto quel che è stato detto sopra, ecco l'algoritmo di alto livello in pseudocodice di ciò che fa `require.resolve()`:
 
 ```txt
-require(X) from module at path Y
+require(X) dal modulo al path Y
 1. If X is a core module,
    a. return the core module
    b. STOP
