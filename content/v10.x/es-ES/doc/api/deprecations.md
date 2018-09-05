@@ -4,17 +4,17 @@
 
 <!-- type=misc -->
 
-Node.js puede rechazar APIs cuando: (a) el uso de la API es considerado como inseguro, (b) una API alternativa y mejorada estuvo disponible, o (c) cambios importantes para la API están planificados en una importante actualización futura.
+Node.js puede desaprobar APIs cuando: (a) el uso de la API es considerado como inseguro, (b) una API alternativa y mejorada ha comenzado a estar disponible, o (c) cambios importantes para la API están planificados en una importante actualización futura.
 
 Node.js utiliza tres tipos de Desaprobaciones:
 
 - Solo-documentación
-- Tiempo de ejecución
+- Runtime
 - Fin-de-Vida
 
-Una desaprobación que sea de solo-documentación es una que está expresada solo dentro de los documentos API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas desaprobaciones que son de solo-documentación, provocan una advertencia en el tiempo de ejecución cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, `NODE_PENDING_DEPRECATION=1` variable de ambiente), similar a las deprecaciones de tiempo de ejecución mostradas abajo. Las desaprobaciones de solo-documentación que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Desaprobadas](#deprecations_list_of_deprecated_apis).
+Una desaprobación que sea de solo-documentación es una que está expresada solo dentro de los documentos de API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas desaprobaciones que son de solo-documentación, provocan una advertencia en runtime cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, la variable de ambiente `NODE_PENDING_DEPRECATION=1`), de manera similar a las desaprobaciones mostradas abajo. Las desaprobaciones de solo-documentación que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Desaprobadas](#deprecations_list_of_deprecated_apis).
 
-Una desaprobación de tiempo de ejecución generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, un desaprobación de tiempo de ejecución causará que se arroje un error.
+Una desaprobación de Runtime generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, un desaprobación de tiempo de ejecución causará que se arroje un error.
 
 Una desaprobación Fin-de-Vida es usada para identificar código que o ha sido removido, o pronto será removido de Node.js.
 
