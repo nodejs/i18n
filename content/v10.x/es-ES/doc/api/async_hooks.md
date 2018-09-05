@@ -199,7 +199,7 @@ Es posible tener colisiones de nombres de tipo. A los embebedores se les anima a
 
 ###### `triggerAsyncId`
 
-`triggerAsyncId` es el `asyncId` del recurso que causó (o "activó") que el nuevo recurso se inicializara y que causó que `init` llamara. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
+`triggerAsyncId` es el `asyncId` del recurso que causó (o "activó") que el nuevo recurso se inicializara y que causó que `init` llamara. Esto es diferente a `async_hooks.executionAsyncId()`, el cual solamente muestra *cuándo* se creó un recurso, mientras que `triggerAsyncId` muestra *por qué* se creó un recurso.
 
 La siguiente es una demostracion simple de `triggerAsyncId`:
 
@@ -222,7 +222,7 @@ TCPSERVERWRAP(2): trigger: 1 execution: 1
 TCPWRAP(4): trigger: 2 execution: 0
 ```
 
-The `TCPSERVERWRAP` is the server which receives the connections.
+El `TCPSERVERWRAP` es el servidor que recibe las conexiones.
 
 El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia de `TCPWrap` . This happens outside of any JavaScript stack. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
 
@@ -315,9 +315,9 @@ El gráfico sólo muestra *when* un recurso fue creado, no muestra *why*, así q
 
 * `asyncId` {number}
 
-When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. El callback de `before` es llamado justo antes de que se ejecute dicho callback. `asyncId` es el único identificador asignado al recurso que está por ejecutar el callback.
+Cuando una operación asincrónica es iniciada (tal como un servidor de TCP que reciba una nueva conexión) o completa (tal como escribir datos a un disco) un callback es llamado para notificar al usuario. El callback de `before` es llamado justo antes de que se ejecute dicho callback. `asyncId` es el único identificador asignado al recurso que está por ejecutar el callback.
 
-El callback `before` será llamado de 0 a N veces. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Recursos asincrónicos persistentes como un servidor TCP generalmente llamarán al callback de `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán sólo una vez.
+El callback `before` será llamado de 0 a N veces. El callback `before` generalmente será llamado 0 veces si la operación asincrónica fue cancelada o, por ejemplo, si el servidor de TCP no recibe ninguna conexión. Recursos asincrónicos persistentes como un servidor TCP generalmente llamarán al callback de `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán sólo una vez.
 
 ##### after(asyncId)
 
