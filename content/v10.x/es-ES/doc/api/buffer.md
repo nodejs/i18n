@@ -1817,31 +1817,31 @@ added: v0.1.90
 * `end` {integer} El desplazamiento de bytes para detener la codificación (no incluido). **Predeterminado:** [`buf.length`].
 * Devuelve: {string}
 
-Decodifica el `buf` en una cadena de acuerdo a la codificación de caracteres especificados en `enconding`. `start` and `end` may be passed to decode only a subset of `buf`.
+Decodifica el `buf` en una cadena de acuerdo a la codificación de caracteres especificados en `enconding`. `start` y `end` pueden pasarse para decodificar solo un subconjunto de `buf`.
 
-The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
+La máxima longitud de una instancia de cadena (en unidades de código UTF-16) está disponible como [`buffer.constants.MAX_STRING_LENGTH`][].
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
-  // 97 is the decimal ASCII value for 'a'
+  // 97 es el valor ASCII decimal para 'a'
   buf1[i] = i + 97;
 }
 
 console.log(buf1.toString('ascii'));
-// Prints: abcdefghijklmnopqrstuvwxyz
+// Imprime: abcdefghijklmnopqrstuvwxyz
 console.log(buf1.toString('ascii', 0, 5));
-// Prints: abcde
+// Imprime: abcde
 
 const buf2 = Buffer.from('tést');
 
 console.log(buf2.toString('hex'));
-// Prints: 74c3a97374
+// Imprime: 74c3a97374
 console.log(buf2.toString('utf8', 0, 3));
-// Prints: té
+// Imprime: té
 console.log(buf2.toString(undefined, 0, 3));
-// Prints: té
+// Imprime: té
 ```
 
 ### buf.values()
@@ -1850,9 +1850,9 @@ console.log(buf2.toString(undefined, 0, 3));
 added: v1.1.0
 -->
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
+Crea y devuelve un [iterador](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) para valores de `buf` (bytes). Esta función se llama automáticamente cuando un `Buffer` se utiliza en una declaración `for..of`.
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1860,7 +1860,7 @@ const buf = Buffer.from('buffer');
 for (const value of buf.values()) {
   console.log(value);
 }
-// Prints:
+// Imprime:
 //   98
 //   117
 //   102
@@ -1871,7 +1871,7 @@ for (const value of buf.values()) {
 for (const value of buf) {
   console.log(value);
 }
-// Prints:
+// Imprime:
 //   98
 //   117
 //   102
@@ -1886,7 +1886,7 @@ for (const value of buf) {
 added: v0.1.90
 -->
 
-* `string` {string} String to write to `buf`.
+* `string` {string} Cadena para escribir en `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`.
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`.
 * `encoding` {string} The character encoding of `string`. **Predeterminado:** `'utf8'`.
