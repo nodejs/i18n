@@ -758,7 +758,7 @@ Since Node.js versions 4.4.0 and 5.2.0, several modules only intended for intern
 
 The `v8/*` modules do not have any exports, and if not imported in a specific order would in fact throw errors. As such there are virtually no legitimate use cases for importing them through `require()`.
 
-On the other hand, `node-inspect` may be installed locally through a package manager, as it is published on the npm registry under the same name. No source code modification is necessary if that is done.
+Por otra parte, `node-inspect` puede ser instalado localmente por medio de un paquete de gerente, ya que es publicado en el registro npm bajo el mismo nombre. No source code modification is necessary if that is done.
 
 <a id="DEP0085"></a>
 
@@ -846,7 +846,7 @@ Tipo: Tiempo de ejecución
 
 Tipo: Tiempo de ejecución
 
-Users of `MakeCallback` that add the `domain` property to carry context, should start using the `async_context` variant of `MakeCallback` or `CallbackScope`, or the high-level `AsyncResource` class.
+Usuarios de `MakeCallback` que agreguen la propiedad `domain` para llevar el contexto, deberían empezar a usar la variante `async_context` de `MakeCallback` o `CallbackScope`, o la clase de nivel alto `AsyncResource`.
 
 <a id="DEP0098"></a>
 
