@@ -14,11 +14,11 @@ Node.js utiliza tres tipos de Desaprobaciones:
 
 Una desaprobación que sea de solo-documentación es una que está expresada solo dentro de los documentos de API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas desaprobaciones que son de solo-documentación, provocan una advertencia en runtime cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, la variable de ambiente `NODE_PENDING_DEPRECATION=1`), de manera similar a las desaprobaciones mostradas abajo. Las desaprobaciones de solo-documentación que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Desaprobadas](#deprecations_list_of_deprecated_apis).
 
-Una desaprobación de Runtime generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, un desaprobación de tiempo de ejecución causará que se arroje un error.
+Una desaprobación de Runtime generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, una desaprobación de Runtime causará que se arroje un error.
 
 Una desaprobación Fin-de-Vida es usada para identificar código que o ha sido removido, o pronto será removido de Node.js.
 
-## Revocando desaprobaciones
+## Revocación de desaprobaciones
 
 Ocasionalmente, la desaprobación de una API puede ser revertida. En estas situaciones, el documento será actualizado con información relevante a la decisión. Sin embargo, el identificador de la desaprobación no será modificado.
 
@@ -28,7 +28,7 @@ Ocasionalmente, la desaprobación de una API puede ser revertida. En estas situa
 
 ### DEP0001: http.OutgoingMessage.prototype.flush
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 El método `OutgoingMessage.prototype.flush()` está desaprobado. En cambio, use `OutgoingMessage.prototype.flushHeaders()`.
 
@@ -44,7 +44,7 @@ El módulo `_linklist` está desaprobado. Por favor use un espacio de usuario al
 
 ### DEP0003: \_writableState.buffer
 
-Tipo: Tiempo de ejecución
+Tipo: Runtime
 
 La propiedad `_writableState.buffer` está desaprobada. En cambio, use el método `_writableState.getBuffer()`.
 
@@ -60,9 +60,9 @@ La propiedad `CryptoStream.prototype.readyState` está desaprobada y no debería
 
 ### DEP0005: Buffer() constructor
 
-Tipo: Tiempo de ejecución (soporta [`--pending-deprecation`][])
+Tipo: Runtime (soporta [`--pending-deprecation`][])
 
-La función `Buffer()` y el constructor `new Buffer()` están desaprobados debido a problemas de usabilidad con la API que pueden potencialmente resultar en problemas accidentales de securidad.
+La función `Buffer()` y el constructor `new Buffer()` están desaprobados debido a problemas de usabilidad con la API que pueden potencialmente resultar en problemas accidentales de seguridad.
 
 Como alternativa, el uso de los siguientes métodos de construcción de objetos `Buffer` es fuertemente recomendado:
 
