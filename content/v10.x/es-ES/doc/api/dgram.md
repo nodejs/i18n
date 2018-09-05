@@ -219,11 +219,11 @@ added: v8.7.0
 added: v0.9.1
 -->
 
-By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
+De manera predeterminada, enlazar un socket causará que bloquee el proceso Node.js de salir mientras el socket esté abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
 
-Calling `socket.ref()` multiples times will have no additional effect.
+Llamar a `socket.ref()` multiples veces, no tendrá ningún efecto adicional.
 
-The `socket.ref()` method returns a reference to the socket so calls can be chained.
+El método `socket.ref()` devuelve una referencia al socket para que las llamadas puedan ser encadenadas.
 
 ### socket.send(msg, \[offset, length,] port [, address\] \[, callback\])
 
