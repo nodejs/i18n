@@ -87,14 +87,14 @@ ALPN (Application Layer Protocol Negotiation Extension) y SNI (Server Name Indic
 
 El protocolo TLS permite a los clientes renegociar ciertos aspectos de la sesión TLS. Desafortunadamente, la renegociación de la sesión requiere una cantidad desproporcionada de recursos del lado del servidor, lo que lo convierte en un vector potencial para los ataques de denegación de servicio.
 
-Para mitigar el riesgo, la renegociación se limita a tres veces cada diez minutos. Se emite un evento `'error'` en la instancia [`tls.TLSSocket`][] cuando se excede este umbral. The limits are configurable:
+Para mitigar el riesgo, la renegociación se limita a tres veces cada diez minutos. Se emite un evento `'error'` en la instancia [`tls.TLSSocket`][] cuando se excede este umbral. Los límites son configurables:
 
-* `tls.CLIENT_RENEG_LIMIT` {number} Specifies the number of renegotiation requests. **Default:** `3`.
-* `tls.CLIENT_RENEG_WINDOW` {number} Specifies the time renegotiation window in seconds. **Default:** `600` (10 minutes).
+* `tls.CLIENT_RENEG_LIMIT` {number} Especifica el número de solicitudes de renegociación. **Predeterminado:** `3`.
+* `tls.CLIENT_RENEG_WINDOW` {number} Especifica la ventana de renegociación de tiempo en segundos. **Predeterminado:** `600` (10 minutes).
 
-The default renegotiation limits should not be modified without a full understanding of the implications and risks.
+Los límites de renegociación predeterminados no deben modificarse sin un completo entendimiento de las implicaciones y los riesgos.
 
-To test the renegotiation limits on a server, connect to it using the OpenSSL command-line client (`openssl s_client -connect address:port`) then input `R<CR>` (i.e., the letter `R` followed by a carriage return) multiple times.
+Para probar los límites de renegociación en un servidor, conéctese usando el cliente de línea de comandos de OpenSSL (`openssl s_client -connect address:port`) y luego ingrese `R<CR>` (es decir, la letra `R` seguida de un retorno de carro) varias veces.
 
 ## Modifying the Default TLS Cipher suite
 
