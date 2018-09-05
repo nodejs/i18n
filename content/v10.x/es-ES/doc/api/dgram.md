@@ -262,11 +262,11 @@ El argumento `address` es un string. Si el valor de `address` es un nombre del h
 
 Si el socket no ha sido anteriormente enlazado con un llamado a `bind`, el socket es asignado a un número de puerto aleatorio y es enlazado a la dirección de "todas las interfaces" (`'0.0.0.0'` para sockets `udp4`, `'::0'` para sockets `udp6`.)
 
-Una función `callback` opcional puede ser especificada como una manera de reportar los errores DNS o para determinar cuándo es seguro reutilizar el objeto `buf`. Note that DNS lookups delay the time to send for at least one tick of the Node.js event loop.
+Una función `callback` opcional puede ser especificada como una manera de reportar los errores DNS o para determinar cuándo es seguro reutilizar el objeto `buf`. Tenga en cuenta que la búsqueda de DNS demora el tiempo para enviar al menos un tick al bucle del evento Node.js.
 
 La única manera de saber con certeza que se ha enviado el datagrama es usando un `callback`. Si ocurre un error y se da un `callback`, el error será pasado como el primer argumento pare el `callback`. Si no se da un `callback`, el error es emitido como un evento `'error'` en el objeto `socket`.
 
-Offset and length are optional but both *must* be set if either are used. Solo son soportados cuando el primer argumento es un `Buffer` o `Uint8Array`.
+El offset y la longitud son opcionales, pero ambos *deben* ser establecidos si ninguno es usado. Solo son soportados cuando el primer argumento es un `Buffer` o `Uint8Array`.
 
 Ejemplo de enviar un paquete UDP a un puerto en `localhost`;
 
@@ -323,7 +323,7 @@ added: v8.6.0
 
 * `multicastInterface` {string}
 
-*Note: All references to scope in this section are referring to [IPv6 Zone Indices](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), which are defined by [RFC 4007](https://tools.ietf.org/html/rfc4007). In string form, an IP with a scope index is written as `'IP%scope'` where scope is an interface name or interface number.*
+*Nota: Todas las referencias a investigar en esta sección se refieren a los [Índices de Zona IPv6](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), que son definidos por [RFC 4007](https://tools.ietf.org/html/rfc4007). In string form, an IP with a scope index is written as `'IP%scope'` where scope is an interface name or interface number.*
 
 Sets the default outgoing multicast interface of the socket to a chosen interface or back to system interface selection. The `multicastInterface` must be a valid string representation of an IP from the socket's family.
 
