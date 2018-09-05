@@ -1135,7 +1135,7 @@ Se requiere un método pero no se implementa.
 
 ### ERR_MISSING_ARGS
 
-No se pasó un argumento de API de Node.js requerido. Esto sólo se usa para el cumplimiento estricto con la especificación API (la cual, en algunos casos, puede aceptar `func(undefined)`, pero no `func()`). In most native Node.js APIs, `func(undefined)` and `func()` are treated identically, and the [`ERR_INVALID_ARG_TYPE`][] error code may be used instead.
+No se pasó un argumento de API de Node.js requerido. Esto sólo se usa para el cumplimiento estricto con la especificación API (la cual, en algunos casos, puede aceptar `func(undefined)`, pero no `func()`). En la mayoría de las APIs de Node.js nativas, `func(undefined)` y `func()` son tratados iguales, y el código de error [`ERR_INVALID_ARG_TYPE`][] puede ser utilizado en su lugar.
 
 <a id="ERR_MISSING_MODULE"></a>
 
@@ -1165,26 +1165,26 @@ A callback is almost always meant to only be called once as the query can either
 
 ### ERR_NAPI_CONS_FUNCTION
 
-While using `N-API`, a constructor passed was not a function.
+Mientras se utilizaba `N-API`, se pasó un constructor que no era una función.
 
 <a id="ERR_NAPI_INVALID_DATAVIEW_ARGS"></a>
 
 ### ERR_NAPI_INVALID_DATAVIEW_ARGS
 
-While calling `napi_create_dataview()`, a given `offset` was outside the bounds of the dataview or `offset + length` was larger than a length of given `buffer`.
+Mientras se llamaba a `napi_create_dataview()`, un `offset` dado estaba fuera de los límites del dataview o `offset + length` era más grande que una longitud del `buffer` dado.
 
 <a id="ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT"></a>
 
 ### ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT
 
-While calling `napi_create_typedarray()`, the provided `offset` was not a multiple of the element size.
+Mientras se llamaba a `napi_create_typedarray()`, el `offset` proporcionado no era un múltiplo del tamaño del elemento.
 
 <a id="ERR_NAPI_INVALID_TYPEDARRAY_LENGTH"></a>
 
 ### ERR_NAPI_INVALID_TYPEDARRAY_LENGTH
 
-While calling `napi_create_typedarray()`, `(length * size_of_element) +
-byte_offset` was larger than the length of given `buffer`.
+Mientras se llamaba a `napi_create_typedarray()`, `(length * size_of_element) +
+byte_offset` era más grande que la longitud del `buffer` dado.
 
 <a id="ERR_NO_CRYPTO"></a>
 
@@ -1196,27 +1196,27 @@ An attempt was made to use crypto features while Node.js was not compiled with O
 
 ### ERR_NO_ICU
 
-An attempt was made to use features that require [ICU](intl.html#intl_internationalization_support), but Node.js was not compiled with ICU support.
+Se intentó utilizar características que requieren [ICU](intl.html#intl_internationalization_support), pero Node.js no fue compilado con soporte de ICU.
 
 <a id="ERR_NO_LONGER_SUPPORTED"></a>
 
 ### ERR_NO_LONGER_SUPPORTED
 
-A Node.js API was called in an unsupported manner, such as `Buffer.write(string, encoding, offset[, length])`.
+Se llamó a un API de Node.js de una manera no soportada, como lo es `Buffer.write(string, encoding, offset[, length])`.
 
 <a id="ERR_OUT_OF_RANGE"></a>
 
 ### ERR_OUT_OF_RANGE
 
-A given value is out of the accepted range.
+Un valor dado está fuera del rango aceptado.
 
 <a id="ERR_REQUIRE_ESM"></a>
 
 ### ERR_REQUIRE_ESM
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-An attempt was made to `require()` an [ES6 module](esm.html).
+Hubo un intento para `require()` un [módulo ES6](esm.html).
 
 <a id="ERR_SCRIPT_EXECUTION_INTERRUPTED"></a>
 
