@@ -325,15 +325,15 @@ El callback `before` será llamado de 0 a N veces. El callback `before` generalm
 
 Se llama inmediatamente después que el callback especificado en `before` se completa.
 
-If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
+Si ocurre una excepción no capturada durante la ejecución del callback, entonces `after` se ejecutará *después* de que el evento de `'uncaughtException'` sea emitido o un handler de `domain` se ejecute.
 
 ##### destroy(asyncId)
 
 * `asyncId` {number}
 
-Called after the resource corresponding to `asyncId` is destroyed. También es llamado de manera asincrónica desde la API del embebedor `emitDestroy()`.
+Se llama después de que se destruye el recurso correspondiente a `asyncId` . También es llamado de manera asincrónica desde la API del embebedor `emitDestroy()`.
 
-Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. Si el recurso no depende de la recolección de basura, entonces esto no será un problema.
+Algunos recursos dependen de la recolección de basura para la limpieza, por lo que si una referencia se crea para el objeto de `resource` pasado a `init`, es posible que `destroy` nunca sea llamado, causando una pérdida de memoria en la aplicación. Si el recurso no depende de la recolección de basura, entonces esto no será un problema.
 
 ##### promiseResolve(asyncId)
 
