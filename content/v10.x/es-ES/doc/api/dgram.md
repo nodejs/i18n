@@ -219,7 +219,7 @@ added: v8.7.0
 added: v0.9.1
 -->
 
-De manera predeterminada, enlazar un socket causará que este bloquee el cierre del proceso de Node.js mientras permanezca abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. El método `socket.ref()` añade el socket de vuelta a la cuenta de referencia y restaura el comportamiento predeterminado.
+De manera predeterminada, enlazar un socket causará que este bloquee el cierre del proceso de Node.js mientras permanezca abierto. El método `socket.unref()` puede ser usado para excluir el socket de la cuenta de referencia, que mantiene el proceso Node.js activo. El método `socket.ref()` añade el socket de vuelta a la cuenta de referencia y restaura el comportamiento predeterminado.
 
 Llamar a `socket.ref()` múltiples veces, no tendrá ningún efecto adicional.
 
