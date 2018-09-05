@@ -176,13 +176,13 @@ El evento `'OCSPRequest'` se emite cuando el cliente envía una solicitud de est
 * `issuer` {Buffer} El certificado del emisor
 * `callback` {Function} Una función callback que debe invocarse para proporcionar los resultados de la solicitud OCSP.
 
-El certificado actual del servidor se puede analizar para obtener la URL OCSP y la identificación del certificado; después de obtener una respuesta OCSP, se invoca `callback(null, resp)`, donde `resp` es una instancia `Buffer` que contiene la respuesta OCSP. Both `certificate` and `issuer` are `Buffer` DER-representations of the primary and issuer's certificates. These can be used to obtain the OCSP certificate ID and OCSP endpoint URL.
+El certificado actual del servidor se puede analizar para obtener la URL OCSP y la identificación del certificado; después de obtener una respuesta OCSP, se invoca `callback(null, resp)`, donde `resp` es una instancia `Buffer` que contiene la respuesta OCSP. Tanto el `certificate` como el `issuer` son representaciones `Buffer` DER de los certificados primarios y del emisor. Estos pueden usarse para obtener el ID del certificado OCSP y el URL del punto final OCSP.
 
-Alternatively, `callback(null, null)` may be called, indicating that there was no OCSP response.
+Alternativamente, puede llamarse a `callback(null, null)` para indicar que no hubo respuesta OCSP.
 
-Calling `callback(err)` will result in a `socket.destroy(err)` call.
+Llamar a `callback(err)` dará como resultado una llamada `socket.destroy(err)`.
 
-The typical flow of an OCSP Request is as follows:
+El flujo típico de una Solicitud OCSP es el siguiente:
 
 1. Client connects to the server and sends an `'OCSPRequest'` (via the status info extension in ClientHello).
 2. Server receives the request and emits the `'OCSPRequest'` event, calling the listener if registered.
