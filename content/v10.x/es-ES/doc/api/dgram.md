@@ -158,7 +158,7 @@ added: v0.11.14
 
 Para sockets UDP, causa que el `dgram.Socket` escuche por mensajes de datagrama en un `port` cuyo nombre fue dado, y `address` opcionales que son pasadas como propiedades de un objeto `options` pasado en el primer argumento. Si `port` no es especificado o es `0`, el sistema operativo intentará enlazarse a un puerto aleatorio. Si la `address` no es especificada, el sistema operativo intentará escuchar en todas las direcciones. Una vez que el enlace es completado, un evento `'listening'` es emitido, y la función opcional `callback` es llamada.
 
-Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
+Tenga en cuenta que especificar tanto a un evento listener `'listening'` y pasar un `callback` por el método `socket.bind()` no es dañino pero no es muy útil.
 
 El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. Cuando `exclusive` sea establecida como `false` (la manera predeterminada), los workers del clúster utilizarán el mismo handle del socket subyacente, permitiendo que las tareas del manejo de la conexión sean compartidas. Sin embargo, cuando `exclusive` es `true`, el handle no es compartido y los intentos de compartir el puerto resultan en un error.
 
@@ -193,9 +193,9 @@ added: v0.6.9
 * `multicastAddress` {string}
 * `multicastInterface` {string}
 
-Instructs the kernel to leave a multicast group at `multicastAddress` using the `IP_DROP_MEMBERSHIP` socket option. This method is automatically called by the kernel when the socket is closed or the process terminates, so most apps will never have reason to call this.
+Instruye al núcleo para que deje un grupo de multidifusión en `multicastAddress` usando la opción del socket `IP_DROP_MEMBERSHIP`. Este método es llamado automáticamente por el núcleo cuando el socket es cerrado, o cuando el proceso termina, para que la mayoría de las aplicaciones nunca tengan una razón para llamar a este método.
 
-If `multicastInterface` is not specified, the operating system will attempt to drop membership on all valid interfaces.
+Si `multicastInterface` no es especificada, el sistema operativo intentará abandonar la membresía en todas las interfaces válidas.
 
 ### socket.getRecvBufferSize()
 
