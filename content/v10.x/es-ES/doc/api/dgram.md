@@ -160,7 +160,7 @@ Para sockets UDP, causa que el `dgram.Socket` escuche por mensajes de datagrama 
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
-El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. Cuando `exclusive` sea establecida como `false` (la manera predeterminada), los workers del clúster utilizarán el mismo handle del socket subyacente, permitiendo que las tareas del manejo de la conexión sean compartidas. Cuando `exclusive` es `true`, sin embargo, el handle no es compartido y los intentos de compartir el puerto resulta en un error.
+El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. Cuando `exclusive` sea establecida como `false` (la manera predeterminada), los workers del clúster utilizarán el mismo handle del socket subyacente, permitiendo que las tareas del manejo de la conexión sean compartidas. Sin embargo, cuando `exclusive` es `true`, el handle no es compartido y los intentos de compartir el puerto resultan en un error.
 
 Un socket de datagrama enlazado mantiene el proceso Node.js en marcha para recibir mensajes de datagrama.
 
@@ -219,9 +219,9 @@ added: v8.7.0
 added: v0.9.1
 -->
 
-De manera predeterminada, enlazar un socket causará que bloquee el proceso Node.js de salir mientras el socket esté abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. El método `socket.ref()` añade el socket de vuelta a la cuenta de referencia y restaura el comportamiento predeterminado.
+De manera predeterminada, enlazar un socket causará que este bloquee el cierre del proceso de Node.js mientras permanezca abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. El método `socket.ref()` añade el socket de vuelta a la cuenta de referencia y restaura el comportamiento predeterminado.
 
-Llamar a `socket.ref()` multiples veces, no tendrá ningún efecto adicional.
+Llamar a `socket.ref()` múltiples veces, no tendrá ningún efecto adicional.
 
 El método `socket.ref()` devuelve una referencia al socket para que las llamadas puedan ser encadenadas.
 
@@ -256,13 +256,13 @@ changes:
 
 Broadcasts a datagram on the socket. The destination `port` and `address` must be specified.
 
-El argumento `msg` contiene el mensaje que será enviado. Dependiendo de su tipo, se puede aplicar distintos comportamientos. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. Si `msg` es un `String`, entonces se convierte automáticamente en un `Buffer` con codificación `'utf8'`. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
+El argumento `msg` contiene el mensaje que será enviado. Dependiendo de su tipo, se pueden aplicar distintos comportamientos. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. Si `msg` es un `String`, entonces se convierte automáticamente en un `Buffer` con codificación `'utf8'`. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
 
-The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. Si la `address` no es proporcionada o de lo contrario, falsa, van a ser usados de manera predeterminada `'127.0.0.1'` (para sockets `udp4`) or `'::1'` (para sockets `udp6`).
+The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. Si la `address` no es proporcionada o es falsa, van a ser usados de manera predeterminada `'127.0.0.1'` (para sockets `udp4`) o `'::1'` (para sockets `udp6`).
 
 Si el socket no ha sido anteriormente enlazado con un llamado a `bind`, el socket es asignado a un número de puerto aleatorio y es enlazado a la dirección de "todas las interfaces" (`'0.0.0.0'` para sockets `udp4`, `'::0'` para sockets `udp6`.)
 
-Una función opcional `callback` puede ser especificada como una manera de reportar los errores DNS o para determinar cuando es seguro reutilizar el objeto `buf`. Note that DNS lookups delay the time to send for at least one tick of the Node.js event loop.
+Una función `callback` opcional puede ser especificada como una manera de reportar los errores DNS o para determinar cuándo es seguro reutilizar el objeto `buf`. Note that DNS lookups delay the time to send for at least one tick of the Node.js event loop.
 
 La única manera de saber con certeza que se ha enviado el datagrama es usando un `callback`. Si ocurre un error y se da un `callback`, el error será pasado como el primer argumento pare el `callback`. Si no se da un `callback`, el error es emitido como un evento `'error'` en el objeto `socket`.
 
