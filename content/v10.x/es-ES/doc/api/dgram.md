@@ -219,7 +219,7 @@ added: v8.7.0
 added: v0.9.1
 -->
 
-De manera predeterminada, enlazar un socket causará que bloquee el proceso Node.js de salir mientras el socket esté abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
+De manera predeterminada, enlazar un socket causará que bloquee el proceso Node.js de salir mientras el socket esté abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. El método `socket.ref()` añade el socket de vuelta a la cuenta de referencia y restaura el comportamiento predeterminado.
 
 Llamar a `socket.ref()` multiples veces, no tendrá ningún efecto adicional.
 
@@ -247,12 +247,12 @@ changes:
                  and `length` parameters are optional now.
 -->
 
-* `msg` {Buffer|Uint8Array|string|Array} Message to be sent.
+* `msg` {Buffer|Uint8Array|string|Array} Mensaje para ser enviado.
 * `offset` {integer} Offset in the buffer where the message starts.
-* `length` {integer} Number of bytes in the message.
-* `port` {integer} Destination port.
-* `address` {string} Destination hostname or IP address.
-* `callback` {Function} Called when the message has been sent.
+* `length` {integer} Número de bytes en el mensaje.
+* `port` {integer} Puerto de destino.
+* `address` {string} Nombre de host de destino o dirección IP.
+* `callback` {Function} Llamada cuando el mensaje ha sido enviado.
 
 Broadcasts a datagram on the socket. The destination `port` and `address` must be specified.
 
