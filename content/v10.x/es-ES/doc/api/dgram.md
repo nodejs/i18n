@@ -160,11 +160,11 @@ For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a 
 
 Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
-El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. When `exclusive` is set to `false` (the default), cluster workers will use the same underlying socket handle allowing connection handling duties to be shared. When `exclusive` is `true`, however, the handle is not shared and attempted port sharing results in an error.
+El objeto `options` puede contener una propiedad `exclusive` adicional que es utilizada cuando se usan objetos `dgram.Socket` con el módulo [`cluster`]. When `exclusive` is set to `false` (the default), cluster workers will use the same underlying socket handle allowing connection handling duties to be shared. Cuando `exclusive` es `true`, sin embargo, el handle no es compartido y los intentos de compartir el puerto resulta en un error.
 
-A bound datagram socket keeps the Node.js process running to receive datagram messages.
+Un socket de datagrama enlazado mantiene el proceso Node.js en marcha para recibir mensajes de datagrama.
 
-If binding fails, an `'error'` event is generated. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
+Si tratar de enlazar falla, es generado un evento `'error'`. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
 
 An example socket listening on an exclusive port is shown below.
 
