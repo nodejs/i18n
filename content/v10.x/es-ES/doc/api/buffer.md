@@ -1813,9 +1813,9 @@ added: v0.1.90
 -->
 
 * `encoding` {string} La codificación de caracteres a utilizar. **Predeterminado:** `'utf8'`.
-* `start` {integer} El desplazamiento de byte para empezar a decodificarlo. **Default:** `0`.
-* `end` {integer} The byte offset to stop decoding at (not inclusive). **Predeterminado:** [`buf.length`].
-* Returns: {string}
+* `start` {integer} El desplazamiento de byte para empezar a decodificarlo. **Predeterminado:** `0`.
+* `end` {integer} El desplazamiento de bytes para detener la codificación (no incluido). **Predeterminado:** [`buf.length`].
+* Devuelve: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
