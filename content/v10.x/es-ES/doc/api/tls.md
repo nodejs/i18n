@@ -224,17 +224,17 @@ server.on('resumeSession', (id, cb) => {
 });
 ```
 
-### Event: 'secureConnection'
+### Evento: 'secureConnection'
 
 <!-- YAML
 added: v0.3.2
 -->
 
-The `'secureConnection'` event is emitted after the handshaking process for a new connection has successfully completed. The listener callback is passed a single argument when called:
+El evento `'secureConnection'` se emite después del proceso de establecimiento de conexión para que una nueva conexión se haya completado con éxito. The listener callback pasa un solo argumento cuando se le llama:
 
-* `tlsSocket` {tls.TLSSocket} The established TLS socket.
+* `tlsSocket` {tls.TLSSocket} El socket TLS establecido.
 
-The `tlsSocket.authorized` property is a `boolean` indicating whether the client has been verified by one of the supplied Certificate Authorities for the server. If `tlsSocket.authorized` is `false`, then `socket.authorizationError` is set to describe how authorization failed. Note that depending on the settings of the TLS server, unauthorized connections may still be accepted.
+La propiedad `tlsSocket.authorized` es un `boolean` que indica si el cliente ha sido verificado por una de las autoridades de certificación suministradas para el servidor. Si `tlsSocket.authorized` es `falso`, entonces `socket.authorizationError` está configurado para describir cómo falló la autorización. Tenga en cuenta que, dependiendo de la configuración del servidor TLS, aún se pueden aceptar conexiones no autorizadas.
 
 The `tlsSocket.alpnProtocol` property is a string that contains the selected ALPN protocol. When ALPN has no selected protocol, `tlsSocket.alpnProtocol` equals `false`.
 
