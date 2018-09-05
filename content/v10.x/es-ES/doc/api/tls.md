@@ -257,10 +257,10 @@ El evento `'tlsClientError'` se emite cuando se produce un error antes de que se
 added: v0.5.3
 -->
 
-* `hostname` {string} A SNI hostname or wildcard (e.g. `'*'`)
-* `context` {Object} An object containing any of the possible properties from the [`tls.createSecureContext()`][] `options` arguments (e.g. `key`, `cert`, `ca`, etc).
+* `hostname` {string} Un hostname o comodín de SNI (por ejemplo, `'*'`)
+* `context` {Object} Un objeto que contiene cualquiera de las posibles propiedades de los argumentos [`tls.createSecureContext()`][] `options` (por ejemplo, `key`, `cert`, `ca`, etc).
 
-The `server.addContext()` method adds a secure context that will be used if the client request's SNI hostname matches the supplied `hostname` (or wildcard).
+El método `server.addContext()` agrega un contexto seguro que se utilizará si el hostname de SNI de la solicitud del cliente coincide con el `hostname` (o comodín) suministrado.
 
 ### server.address()
 
@@ -268,9 +268,9 @@ The `server.addContext()` method adds a secure context that will be used if the 
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns the bound address, the address family name, and port of the server as reported by the operating system. See [`net.Server.address()`][] for more information.
+Devuelve la dirección enlazada, el apellido de la dirección y el puerto del servidor según lo informado por el sistema operativo. Ver [`net.Server.address()`][] para más información.
 
 ### server.close([callback])
 
