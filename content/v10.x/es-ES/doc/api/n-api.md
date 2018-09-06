@@ -159,7 +159,7 @@ Todo el conjunto de valores posibles `napi_status` está definido en `napi_api_t
 
 El valor de retorno `napi_status` proporciona una representación del error ocurrido, independiente de la VM. En algunos casos es útil poder conseguir más información detallada, incluyendo una cadena que representa al error, así como información específica del motor de la VM.
 
-In order to retrieve this information [`napi_get_last_error_info`][] is provided which returns a `napi_extended_error_info` structure. The format of the `napi_extended_error_info` structure is as follows:
+Con el fin de recuperar esta información, el [`napi_get_last_error_info`][] es proporcionado, el cual devuelve una estructura `napi_extended_error_info`. El formato de la estructura `napi_extended_error_info` es de la siguiente manera:
 
 ```C
 typedef struct napi_extended_error_info {
@@ -170,14 +170,14 @@ typedef struct napi_extended_error_info {
 };
 ```
 
-- `error_message`: Textual representation of the error that occurred.
-- `engine_reserved`: Opaque handle reserved for engine use only.
-- `engine_error_code`: VM specific error code.
-- `error_code`: n-api status code for the last error.
+- `error_message`: Representación textual del error ocurrido.
+- `engine_reserved`: Handle opaco reservado sólo para uso del motor.
+- `engine_error_code`: Código de error específico de la VM.
+- `error_code`: Código de estado de N-Api para el último error.
 
-[`napi_get_last_error_info`][] returns the information for the last N-API call that was made.
+[`napi_get_last_error_info`][] devuelve la información de la última llamada N-API que fue realizada.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+No confíe en el contenido o formato de ninguna información extendida, ya que no está sujeta a SemVer y puede cambiar en cualquier momento. Está diseñado sólo para propósitos de registro.
 
 #### napi_get_last_error_info
 
@@ -200,7 +200,7 @@ This API retrieves a `napi_extended_error_info` structure with information about
 
 The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
 
-Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
+No confíe en el contenido o formato de ninguna información extendida, ya que no está sujeta a SemVer y puede cambiar en cualquier momento. Está diseñado sólo para propósitos de registro.
 
 This API can be called even if there is a pending JavaScript exception.
 
