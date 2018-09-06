@@ -531,16 +531,16 @@ Cada consulta DNS puede devolver uno de los siguientes códigos de error:
 - `dns.TIMEOUT`: Tiempo de espera al ponerse en contacto con los servidores DNS agotado.
 - `dns.EOF`: Final de archivo.
 - `dns.FILE`: Error al leer el archivo.
-- `dns.NOMEM`: Out of memory.
-- `dns.DESTRUCTION`: Channel is being destroyed.
-- `dns.BADSTR`: Misformatted string.
-- `dns.BADFLAGS`: Illegal flags specified.
-- `dns.NONAME`: Given hostname is not numeric.
-- `dns.BADHINTS`: Illegal hints flags specified.
-- `dns.NOTINITIALIZED`: c-ares library initialization not yet performed.
-- `dns.LOADIPHLPAPI`: Error loading `iphlpapi.dll`.
-- `dns.ADDRGETNETWORKPARAMS`: Could not find `GetNetworkParams` function.
-- `dns.CANCELLED`: DNS query cancelled.
+- `dns.NOMEM`: Sin memoria.
+- `dns.DESTRUCTION`: El canal está siendo destruido.
+- `dns.BADSTR`: String mal formateada.
+- `dns.BADFLAGS`: Banderas ilegales especificadas.
+- `dns.NONAME`: Hostname dado no es numérico.
+- `dns.BADHINTS`: Señales de banderas ilegales especificadas.
+- `dns.NOTINITIALIZED`: Inicialización de biblioteca c-ares no ha sido realizada.
+- `dns.LOADIPHLPAPI`: Error cargando `iphlpapi.dll`.
+- `dns.ADDRGETNETWORKPARAMS`: No se pudo encontrar la función `GetNetworkParams`.
+- `dns.CANCELLED`: Consulta DNS cancelada.
 
 ## Implementation considerations
 
