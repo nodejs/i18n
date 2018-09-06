@@ -208,13 +208,13 @@ Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScr
 
 Cualquier llamada a una función N-API puede resultar en una excepción pendiente de JavaScript. Este es, obviamente, el caso para cualquier función que pueda causar la ejecución de JavaScript, pero N-API especifica que una excepción puede estar pendiente al ser devuelta por cualquier función de la API.
 
-Si el `napi_status` devuelto por una función es `napi_ok` entonces no hay excepciones pendientes y no se requieren acciones adicionales. Si el `napi_status` devuelto es cualquier otro que `napi_ok` o `napi_pending_exception`, para tratar de recuperar y continuar, en lugar de simplemente retornar inmediatamente, [`napi_is_exception_pending`][] debe ser llamada para determinar si una excepción está pendiente o no.
+Si el `napi_status` devuelto por una función es `napi_ok` entonces no hay excepciones pendientes y no se requieren acciones adicionales. Si el `napi_status` devuelto es cualquiera distinto a`napi_ok` o `napi_pending_exception`, para tratar de recuperar y continuar, en lugar de simplemente retornar inmediatamente, [`napi_is_exception_pending`][] debe ser llamada para determinar si una excepción está pendiente o no.
 
-Cuando una excepción está pendiente, uno de los dos enfoques puede ser empleado.
+Cuando una excepción está pendiente, uno de dos enfoques puede ser empleado.
 
-El primer enfoque es realizar una limpieza apropiada y luego regresar, así la ejecución regresará a JavaScript. Como parte de la transición de regreso a JavaScript, la excepción se arrojará en el punto, en el código de JavaScript, en el que el método nativo fue invocado. El comportamiento de la mayoría de las llamadas N-API no se especifica mientras hay una excepción pendiente y muchas simplemente regresarán `napi_pending_exception`, así que es importante hacer lo menos posible y regresar a JavaScript donde la excepción puede ser manejada.
+El primer enfoque es realizar una limpieza apropiada y luego regresar, así la ejecución regresará a JavaScript. Como parte de la transición de regreso a JavaScript, la excepción se arrojará en el punto, en el código de JavaScript, en el que el método nativo fue invocado. El comportamiento de la mayoría de las llamadas N-API no se especifica mientras hay una excepción pendiente y muchas simplemente regresarán `napi_pending_exception`, así que es importante hacer lo menos posible y regresar a JavaScript, donde la excepción puede ser manejada.
 
-El segundo enfoque es intentar manejar la excepción. Habrá casos en los que el código nativo pueda capturar la excepción, tomar la acción apropiada y luego continuar. Esto sólo es recomendado en casos específicos donde se sabe que la excepción puede ser manejada de forma segura. En estos casos [`napi_get_and_clear_last_exception`][] puede ser utilizada para obtener y eliminar la excepción. En caso de éxito, el resultado contendrá el handle hacia el último `Object` de JavaScript arrojado. Si se determina que, luego de recuperar la excepción, esta no puede ser manejada después de todo, puede ser soltada de nuevo con [`napi_throw`][] donde el error es el objeto JavaScript `Error` que se lanzará.
+El segundo enfoque es intentar manejar la excepción. Habrá casos en los que el código nativo pueda capturar la excepción, tomar la acción apropiada y luego continuar. Esto sólo es recomendado en casos específicos donde se sabe que la excepción puede ser manejada de forma segura. En estos casos [`napi_get_and_clear_last_exception`][] puede ser utilizada para obtener y eliminar la excepción. En caso de éxito, el resultado contendrá el handle hacia el último `Object` de JavaScript arrojado. Si se determina que, luego de recuperar la excepción, esta no puede ser manejada después de todo, puede ser arrojada de nuevo con [`napi_throw`][] donde el error es el objeto JavaScript `Error` que se lanzará.
 
 Las siguientes funciones de utilidad también están disponibles en caso de que el código nativo necesite soltar una excepción o determinar si un `napi_value` es una instancia de un objeto `Error` de JavaScript: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] y [`napi_is_error`][].
 
@@ -243,7 +243,7 @@ NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] error`: El valor JavaScript a ser suelto.
+- `[in] error`: The JavaScript value to be thrown.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
