@@ -479,11 +479,11 @@ Esta API puede ser llamada incluso si existe una excepción JavaScript pendiente
 
 A medida que se realizan llamadas N-API, los handles a objetos en el montón para la VM subyacente pueden ser devueltos como `napi_values`. Estos handles deben mantener "vivos" a los objetos hasta que ya no sean requeridos por el código nativo, de otra manera los objetos pueden ser recolectados antes de que el código nativo haya terminado de utilizarlos.
 
-A medida que se devuelven los handles de los objetos, se asocian con un "ámbito". La vida útil para el ámbito por defecto está ligada a la vida útil de la llamada del método nativo. The result is that, by default, handles remain valid and the objects associated with these handles will be held live for the lifespan of the native method call.
+A medida que se devuelven los handles de los objetos, se asocian con un "ámbito". La vida útil para el ámbito por defecto está ligada a la vida útil de la llamada del método nativo. El resultado es que, por defecto, los handles permanecen válidos y los objetos asociados con estos handles se mantendrán vivos durante la vida útil de la llamada del método nativo.
 
-In many cases, however, it is necessary that the handles remain valid for either a shorter or longer lifespan than that of the native method. The sections which follow describe the N-API functions than can be used to change the handle lifespan from the default.
+En muchos casos, sin embargo, es necesario que los handles permanezcan válidos para una vida útil más corta o larga que la del método nativo. Las secciones siguientes describen las funciones N-API que pueden ser utilizadas para cambiar el handle de vida útil por el predeterminado.
 
-### Making handle lifespan shorter than that of the native method
+### Hacer al handle de vida útil más corto que la del método nativo
 
 It is often necessary to make the lifespan of handles shorter than the lifespan of a native method. For example, consider a native method that has a loop which iterates through the elements in a large array:
 
