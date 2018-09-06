@@ -119,48 +119,48 @@ LOAD_AS_FILE(X)
 1. Se X è un file, carica X come JavaScript text.  STOP
 2. Se X.js è un file, carica X.js come JavaScript text.  STOP
 3. Se X.json è un file, analizza (parsing) X.json in cerca di un JavaScript Object.  STOP
-4. Se X.node è un file, carica X.node as binary addon.  STOP
+4. Se X.node è un file, carica X.node come addon binario.  STOP
 
 LOAD_INDEX(X)
 
 1. Se X/index.js è un file, carica X/index.js come JavaScript text.  STOP
 2. Se X/index.json è un file, analizza (parsing) X/index.json in cerca di un JavaScript object. STOP
-3. If X/index.node is a file, load X/index.node as binary addon.  STOP
+3. Se X/index.node è un file, carica X/index.node come addon binario.  STOP
 
 LOAD_AS_DIRECTORY(X)
 
-1. If X/package.json is a file,
-   a. Parse X/package.json, and look for "main" field.
-   b. let M = X + (json main field)
+1. Se X/package.json è un file,
+   a. Analizza (parsing) X/package.json, e cerca il "main" field.
+   b. lascia M = X + (json main field)
    c. LOAD_AS_FILE(M)
    d. LOAD_INDEX(M)
 2. LOAD_INDEX(X)
 
 LOAD_NODE_MODULES(X, START)
 
-1. let DIRS=NODE_MODULES_PATHS(START)
-2. for each DIR in DIRS:
+1. lascia DIRS=NODE_MODULES_PATHS(START)
+2. per ogni DIR in DIRS:
    a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
 
 NODE_MODULES_PATHS(START)
 
-1. let PARTS = path split(START)
-2. let I = count of PARTS - 1
-3. let DIRS = []
-4. while I >= 0,
-   a. if PARTS[I] = "node_modules" CONTINUE
+1. lascia PARTS = path split(START)
+2. lascia I = count of PARTS - 1
+3. lascia DIRS = []
+4. mentre I >= 0,
+   a. se PARTS[I] = "node_modules" CONTINUE
    b. DIR = path join(PARTS[0 .. I] + "node_modules")
    c. DIRS = DIRS + DIR
-   d. let I = I - 1
-5. return DIRS
+   d. lascia I = I - 1
+5. restituisce DIRS
 ```
 
 ## Caching
 
 <!--type=misc-->
 
-Modules are cached after the first time they are loaded. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+I moduli vengono memorizzati nella cache dopo il loro primo caricamento. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
 
 Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
