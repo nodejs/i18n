@@ -343,7 +343,7 @@ Se llama cuando la función de `resolve` pasada al constructor de `Promise` es i
 
 Tenga en cuenta que `resolve()` no hace ningún trabajo sincrónico observable.
 
-The `Promise` is not necessarily fulfilled or rejected at this point if the `Promise` was resolved by assuming the state of another `Promise`.
+La `Promise` no necesariamente se cumple ni se rechaza en este punto si la `Promise` fue resuelta asumiendo el estado de otra `Promise`.
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
@@ -398,7 +398,7 @@ const server = net.createServer(function onConnection(conn) {
 });
 ```
 
-Tenga en cuenta que los contextos de promesa no podrán recibir `executionAsyncIds` precisos por defecto. Consulte la sección sobre [promise execution tracking](#async_hooks_promise_execution_tracking).
+Tenga en cuenta que los contextos de promesa no podrán recibir `executionAsyncIds` precisos por defecto. Consulte la sección sobre [rastreo de ejecución de promesas](#async_hooks_promise_execution_tracking).
 
 #### async_hooks.triggerAsyncId()
 
@@ -421,7 +421,7 @@ const server = net.createServer((conn) => {
 
 Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`s válidos por defecto. Consulte la sección sobre [promise execution tracking](#async_hooks_promise_execution_tracking).
 
-## Promise execution tracking
+## Rastreo de ejecución de promesas
 
 Por defecto, a las ejecuciones de promesas no se les asignan `asyncId`s, debido a la relativamente costosa naturaleza de la [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) proporcionada por V8. Esto significa que los programas que utilizan promesas ó `async`/`await` no obtendrán una ejecución correcta y activarán identificaciones para contextos de callbacks de promesas por defecto.
 
@@ -438,7 +438,7 @@ Promise.resolve(1729).then(() => {
 
 Observe that the `then()` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. También tenga en cuenta que el valor de `triggerAsyncId` es `0`, lo que significa que nos falta contexto sobre el recurso que causó (activó) que el callback `then()` fuese ejecutado.
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Ejemplo:
+Instalar hooks asincrónicos mediante `async_hooks.createHook` habilita el rastreo de ejecución de promesas. Ejemplo:
 
 ```js
 const ah = require('async_hooks');
@@ -452,7 +452,7 @@ Promise.resolve(1729).then(() => {
 
 En este ejemplo, agregar cualquier función real de un hook habilitó el rastreo de las promesas. Hay dos promesas en el ejemplo anterior; la promesa creada por `Promise.resolve()` y la promesa devuelta por la llamada a `then()`. En el ejemplo anterior, la primera promesa recibió el `asyncId` `6`, y la última recibió `asyncId` `7`. Durante la ejecución del callback de `then()`, estamos ejecutando en el contexto de la promesa con `asyncId` `7`. Esta promesa fue activada por el recurso asincrónico `6`.
 
-Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. Para más detalles vea los detalles de la API [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) de V8.
+Otra sutileza con las promesas es que los callbacks de `before` y `after` se ejecutan sólo en promesas encadenadas. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. Para más detalles vea los detalles de la API [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) de V8.
 
 ## API del Embebedor de JavaScript
 
@@ -506,8 +506,8 @@ asyncResource.emitAfter();
 
 * `type` {string} El tipo de evento asincrónico.
 * `opciones` {Object} 
-  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. Esto usualmente no necesita ser establecido (incluso si `emitDestroy` es llamado manualmente), a menos que el `asyncId` del recurso sea recuperado y las API´s sensibles de `emitDestroy` sean llamadas con ello. **Default:** `false`.
+  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Predeterminado:** `executionAsyncId()`.
+  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. Esto usualmente no necesita ser establecido (incluso si `emitDestroy` es llamado manualmente), a menos que el `asyncId` del recurso sea recuperado y las API´s sensibles de `emitDestroy` sean llamadas con ello. **Predeterminado:** `false`.
 
 Ejemplo de uso:
 
