@@ -224,7 +224,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 El `TCPSERVERWRAP` es el servidor que recibe las conexiones.
 
-El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia de `TCPWrap` . Esto ocurre fuera de cualquier pila de JavaScript. (An `executionAsyncId()` of `0` means that it is being executed from C++ with no JavaScript stack above it.) With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
+El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia de `TCPWrap` . Esto ocurre fuera de cualquier pila de JavaScript. (Un `executionAsyncId()` de `0` significa que está siendo ejecutado desde C++ sin pilas de JavaScript sobre ello.) Con sólo esa información, sería imposible enlazar recursos en terminos de qué causó que fueran creados, por lo que a `triggerAsyncId` se le da la tarea de propagar qué recurso es responsable de la existencia del nuevo recurso.
 
 ###### `recurso`
 
