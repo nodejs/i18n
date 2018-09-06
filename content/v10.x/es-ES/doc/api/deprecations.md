@@ -128,9 +128,9 @@ La clase `crypto.Credentials` está desaprobada. En cambio, porfavor use [`tls.S
 
 ### DEP0012: Domain.dispose
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-`Domain.dispose()` has been removed. Recover from failed I/O actions explicitly via error event handlers set on the domain instead.
+`Domain.dispose()` ha sido removido. Recover from failed I/O actions explicitly via error event handlers set on the domain instead.
 
 <a id="DEP0013"></a>
 
