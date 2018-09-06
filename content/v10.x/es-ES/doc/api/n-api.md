@@ -526,11 +526,11 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-Al anidar ámbitos, hay casos en los que un handle de un ámbito interno necesita vivir más allá de la vida útil de ese ámbito. N-API soporta un "ámbito escapable" para soportar este caso. An escapable scope allows one handle to be 'promoted' so that it 'escapes' the current scope and the lifespan of the handle changes from the current scope to that of the outer scope.
+Al anidar ámbitos, hay casos en los que un handle de un ámbito interno necesita vivir más allá de la vida útil de ese ámbito. N-API soporta un "ámbito escapable" para soportar este caso. Un ámbito escapable permite que un handle sea "promovido" para "escapar" del ámbito actual y la vida útil del handle cambia del ámbito actual al del ámbito externo.
 
-The methods available to open/close escapable scopes are [`napi_open_escapable_handle_scope`][] and [`napi_close_escapable_handle_scope`][].
+Los métodos disponibles para abrir/cerrar ámbitos escapables son [`napi_open_escapable_handle_scope`][] y [`napi_close_escapable_handle_scope`][].
 
-The request to promote a handle is made through [`napi_escape_handle`][] which can only be called once.
+La solicitud para promover un handle se realiza a través de [`napi_escape_handle`][] que sólo puede ser llamado una vez.
 
 #### napi_open_handle_scope
 
@@ -543,12 +543,12 @@ NODE_EXTERN napi_status napi_open_handle_scope(napi_env env,
                                                napi_handle_scope* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing the new scope.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa al nuevo ámbito.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API open a new scope.
+Esta API abre un nuevo ámbito.
 
 #### napi_close_handle_scope
 
@@ -561,14 +561,14 @@ NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
                                                 napi_handle_scope scope);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: `napi_value` representing the scope to be closed.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] scope`: `napi_value` que representa al ámbito que será cerrado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
+Esta API cierra el ámbito pasado. Los ámbitos deben ser cerrados en el orden inverso en el que fueron creados.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
 #### napi_open_escapable_handle_scope
 
@@ -582,10 +582,10 @@ NODE_EXTERN napi_status
                                      napi_handle_scope* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing the new scope.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa al nuevo ámbito.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 This API open a new scope from which one object can be promoted to the outer scope.
 
