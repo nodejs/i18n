@@ -148,7 +148,7 @@ Los clientes antiguos que dependen de cifrados inseguros y obsoletos RC4 o basad
 added: v0.3.2
 -->
 
-La clase `tls.Server` es una subclase de `net.Server` que acepta conexiones cifradas mediante TLS o SSL.
+La clase `tls.Server` es una subclase de `net.Server` que acepta conexiones encriptadas mediante TLS o SSL.
 
 ### Evento: 'newSession'
 
@@ -234,7 +234,7 @@ El evento `'secureConnection'` se emite después del proceso de establecimiento 
 
 * `tlsSocket` {tls.TLSSocket} El socket TLS establecido.
 
-La propiedad `tlsSocket.authorized` es un `boolean` que indica si el cliente ha sido verificado por una de las autoridades de certificación suministradas para el servidor. Si `tlsSocket.authorized` es `falso`, entonces `socket.authorizationError` está configurado para describir cómo falló la autorización. Tenga en cuenta que, dependiendo de la configuración del servidor TLS, aún se pueden aceptar conexiones no autorizadas.
+La propiedad `tlsSocket.authorized` es un `boolean` que indica si el cliente ha sido verificado por una de las Autoridades de Certificación suministradas para el servidor. Si `tlsSocket.authorized` es `falso`, entonces `socket.authorizationError` está configurado para describir cómo falló la autorización. Tenga en cuenta que, dependiendo de la configuración del servidor TLS, aún se pueden aceptar conexiones no autorizadas.
 
 La propiedad `tlsSocket.alpnProtocol` es una cadena que contiene el protocolo ALPN seleccionado. Cuando ALPN no tiene un protocolo seleccionado, `tlsSocket.alpnProtocol` es igual a `false`.
 
