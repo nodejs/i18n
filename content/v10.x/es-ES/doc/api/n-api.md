@@ -191,20 +191,20 @@ napi_get_last_error_info(napi_env env,
                          const napi_extended_error_info** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The `napi_extended_error_info` structure with more information about the error.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: La estructura `napi_extended_error_info` con más información sobre el error.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API retrieves a `napi_extended_error_info` structure with information about the last error that occurred.
+Esta API recupera una estructura `napi_extended_error_info` con información sobre el último error ocurrido.
 
-The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
+El contenido devuelto por `napi_extended_error_info` es válido sólo hasta que una función N-Api es llamada en el mismo `env`.
 
 No confíe en el contenido o formato de ninguna información extendida, ya que no está sujeta a SemVer y puede cambiar en cualquier momento. Está diseñado sólo para propósitos de registro.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
-### Exceptions
+### Excepciones
 
 Any N-API function call may result in a pending JavaScript exception. This is obviously the case for any function that may cause the execution of JavaScript, but N-API specifies that an exception may be pending on return from any of the API functions.
 
