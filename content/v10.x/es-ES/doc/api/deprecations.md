@@ -224,49 +224,49 @@ El método `os.getNetworkInterfaces()` está desaprobado. En cambio, por favor u
 
 ### DEP0024: REPLServer.prototype.convertToContext()
 
-Type: End-of-Life
+Tipo: Final-de-Vida
 
-The `REPLServer.prototype.convertToContext()` API is deprecated and should not be used.
+La API `REPLServer.prototype.convertToContext()` está desaprobada y no debería ser usada.
 
 <a id="DEP0025"></a>
 
 ### DEP0025: require('sys')
 
-Type: Runtime
+Tipo: Runtime
 
-The `sys` module is deprecated. Please use the [`util`][] module instead.
+El módulo `sys` está desaprobado. En cambio, por favor use el módulo [`util`][].
 
 <a id="DEP0026"></a>
 
 ### DEP0026: util.print()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
+La API [`util.print()`][] está desaprobada. En cambio, por favor use [`console.log()`][].
 
 <a id="DEP0027"></a>
 
 ### DEP0027: util.puts()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.puts()`][] API is deprecated. Please use [`console.log()`][] instead.
+La API [`util.puts()`][] está desaprobada. En cambio, por favor use [`console.log()`][].
 
 <a id="DEP0028"></a>
 
 ### DEP0028: util.debug()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
+La API [`util.debug()`][] está desaprobada. En cambio, por favor use [`console.error()`][].
 
 <a id="DEP0029"></a>
 
 ### DEP0029: util.error()
 
-Type: Runtime
+Tipo: Runtime
 
-The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
+La API [`util.error()`][] está desaprobada. Please use [`console.error()`][] instead.
 
 <a id="DEP0030"></a>
 
