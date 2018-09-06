@@ -328,41 +328,41 @@ La API [`fs.lchmodSync(path, mode)`][] ha sido desaprobada.
 
 ### DEP0037: fs.lchown(path, uid, gid, callback)
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`fs.lchown(path, uid, gid, callback)`][] API has been deprecated.
+La API [`fs.lchown(path, uid, gid, callback)`][] ha sido desaprobada.
 
 <a id="DEP0038"></a>
 
 ### DEP0038: fs.lchownSync(path, uid, gid)
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`fs.lchownSync(path, uid, gid)`][] API has been deprecated.
+La API [`fs.lchownSync(path, uid, gid)`][] ha sido desaprobada.
 
 <a id="DEP0039"></a>
 
 ### DEP0039: require.extensions
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`require.extensions`][] property has been deprecated.
+La propiedad [`require.extensions`][] ha sido desaprobada.
 
 <a id="DEP0040"></a>
 
-### DEP0040: punycode module
+### DEP0040: módulo punycode
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`punycode`][] module has been deprecated. Please use a userland alternative instead.
+El módulo [`punycode`][] ha sido desaprobado. En cambio, por favor use un espacio de usuario alternativo.
 
 <a id="DEP0041"></a>
 
-### DEP0041: NODE\_REPL\_HISTORY\_FILE environment variable
+### DEP0041: NODE\_REPL\_HISTORY\_FILE variable de ambiente
 
-Type: End-of-Life
+Tipo: Final-de-Vida
 
-The `NODE_REPL_HISTORY_FILE` environment variable was removed. Please use `NODE_REPL_HISTORY` instead.
+La variable de ambiente `NODE_REPL_HISTORY_FILE` ha sido removida. En cambio, por favor use `NODE_REPL_HISTORY`.
 
 <a id="DEP0042"></a>
 
