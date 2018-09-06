@@ -432,7 +432,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API devuelve true si una excepción está pendiente.
 
-Esta API puede se llamada incluso si existe una excepción pendiente de JavaScript.
+Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
 #### napi_fatal_exception
 
@@ -467,9 +467,9 @@ NAPI_NO_RETURN void napi_fatal_error(const char* location,
 ```
 
 - `[in] location`: Ubicación opcional en la que se produjo el error.
-- `[in] location_len`: La longitud de la ubicación en bytes o `NAPI_AUTO_LENGTH` si está terminada en NULL.
+- `[in] location_len`: La longitud de la ubicación en bytes o `NAPI_AUTO_LENGTH`, si está terminada en NULL.
 - `[in] message`: El mensaje asociado con el error.
-- `[in] message_len`: La longitud del mensaje en bytes o `NAPI_AUTO_LENGTH` si está terminada en NULL.
+- `[in] message_len`: La longitud del mensaje en bytes o `NAPI_AUTO_LENGTH`, si está terminada en NULL.
 
 La llamada a la función no regresa, el proceso terminará.
 
