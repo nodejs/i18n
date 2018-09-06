@@ -160,7 +160,7 @@ NODE_MODULES_PATHS(START)
 
 <!--type=misc-->
 
-I moduli vengono memorizzati nella cache dopo il loro primo caricamento. Ciò significa che (tra le altre cose) ogni chiamata a `require('foo')`, se finisse nello stesso file, darebbe esattamente lo stesso object restituito.
+I moduli vengono memorizzati nella cache dopo il loro primo caricamento. Ciò significa che (tra le altre cose) ogni chiamata a `require('foo')`, se si risolvesse nello stesso file, darebbe esattamente lo stesso object restituito.
 
 Le chiamate multiple a `require('foo')` potrebbero causare la mancata esecuzione del codice del modulo più volte. Questa è una caratteristica importante. Con essa, gli object "parzialmente completi" possono essere restituiti, consentendo così il caricamento delle dipendenze transitive anche quando avrebbero causato dei cicli.
 
