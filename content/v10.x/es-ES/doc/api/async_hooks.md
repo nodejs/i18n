@@ -1,4 +1,4 @@
-# Async Hooks
+# Hooks Asincrónicos
 
 <!--introduced_in=v8.1.0-->
 
@@ -112,7 +112,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Error Handling
+##### Manejo de Errores
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. La ruta de salida sí sigue a una excepción no capturada, pero se eliminan todos los oyentes de `'uncaughtException'`, forzando la salida del proceso. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -120,7 +120,7 @@ El motivo de este comportamiento de manejo de error es que estos callbacks se ej
 
 ##### Printing in AsyncHooks callbacks
 
-Because printing to the console is an asynchronous operation, `console.log()` will cause the AsyncHooks callbacks to be called. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. An easy solution to this when debugging is to use a synchronous logging operation such as `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
+Because printing to the console is an asynchronous operation, `console.log()` will cause the AsyncHooks callbacks to be called. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una fácil solución para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
 
 ```js
 const fs = require('fs');
@@ -236,7 +236,7 @@ En algunos casos, se reutiliza el objeto de recurso por motivos de rendimiento, 
 
 ###### Ejemplo de contexto asincrónico
 
-Lo siguiente es un ejemplo con información adicional sobre las llamadas a `init` entre las llamadas `before` y `after`, específicamente cómo se verá el callback a `listen()` . The output formatting is slightly more elaborate to make calling context easier to see.
+Lo siguiente es un ejemplo con información adicional sobre las llamadas a `init` entre las llamadas `before` y `after`, específicamente cómo se verá el callback a `listen()` . El formateo de salida está un poco más elaborado para hacer que el contexto de llamada sea más fácil de ver.
 
 ```js
 let indent = 0;
