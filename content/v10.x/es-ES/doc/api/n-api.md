@@ -344,12 +344,12 @@ NODE_EXTERN napi_status napi_create_error(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] code`: `napi_value` opcional con la cadena para el código de error a ser asociado con el error.
-- `[in] msg`: `napi_value` that references a JavaScript `String` to be used as the message for the `Error`.
-- `[out] result`: `napi_value` representing the error created.
+- `[in] msg`: `napi_value` que se refiere a una `String` JavaScript a ser utilizado como el mensaje para el `Error`.
+- `[out] result`: `napi_value` que representa al error creado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns a JavaScript `Error` with the text provided.
+Esta API devuelve un `Error` de JavaScript con el texto proporcionado.
 
 #### napi_create_type_error
 
@@ -364,14 +364,14 @@ NODE_EXTERN napi_status napi_create_type_error(napi_env env,
                                                napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] code`: `napi_value` opcional con la cadena para el código de error a ser asociado con el error.
-- `[in] msg`: `napi_value` that references a JavaScript `String` to be used as the message for the `Error`.
-- `[out] result`: `napi_value` representing the error created.
+- `[in] msg`: `napi_value` que se refiere a una `String` JavaScript a ser utilizado como el mensaje para el `Error`.
+- `[out] result`: `napi_value` que representa al error creado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns a JavaScript `TypeError` with the text provided.
+Esta API devuelve un `TypeError` de JavaScript con el texto proporcionado.
 
 #### napi_create_range_error
 
@@ -386,14 +386,14 @@ NODE_EXTERN napi_status napi_create_range_error(napi_env env,
                                                 napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] code`: `napi_value` opcional con la cadena para el código de error a ser asociado con el error.
-- `[in] msg`: `napi_value` that references a JavaScript `String` to be used as the message for the `Error`.
-- `[out] result`: `napi_value` representing the error created.
+- `[in] msg`: `napi_value` que se refiere a una `String` JavaScript a ser utilizado como el mensaje para el `Error`.
+- `[out] result`: `napi_value` que representa al error creado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns a JavaScript `RangeError` with the text provided.
+Esta API devuelve un `RangeError` de JavaScript con el texto proporcionado.
 
 #### napi_get_and_clear_last_exception
 
@@ -406,14 +406,14 @@ napi_status napi_get_and_clear_last_exception(napi_env env,
                                               napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The exception if one is pending, NULL otherwise.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: Si es uno, la excepción está pendiente; de otra forma es NULL.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns true if an exception is pending.
+Esta API devuelve true si una excepción está pendiente.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede se llamada incluso si existe una excepción pendiente de JavaScript.
 
 #### napi_is_exception_pending
 
@@ -425,14 +425,14 @@ added: v8.0.0
 napi_status napi_is_exception_pending(napi_env env, bool* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: Boolean value that is set to true if an exception is pending.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: Valor Booleano que se establece true si una excepción está pendiente.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns true if an exception is pending.
+Esta API devuelve true si una excepción está pendiente.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede se llamada incluso si existe una excepción pendiente de JavaScript.
 
 #### napi_fatal_exception
 
@@ -444,14 +444,14 @@ added: v9.10.0
 napi_status napi_fatal_exception(napi_env env, napi_value err);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] err`: The error you want to pass to `'uncaughtException'`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] err`: El error que quieres pasar a `'uncaughtException'`.
 
-Trigger an `'uncaughtException'` in JavaScript. Useful if an async callback throws an exception with no way to recover.
+Dispara un `'uncaughtException'` en JavaScript. Es útil si un callback asíncrono arroja un excepción sin manera de recuperarla.
 
-### Fatal Errors
+### Errores Fatales
 
-In the event of an unrecoverable error in a native module, a fatal error can be thrown to immediately terminate the process.
+En el evento de un error no recuperable en un módulo nativo, un error fatal puede ser arrojado para terminar el proceso inmediatamente.
 
 #### napi_fatal_error
 
