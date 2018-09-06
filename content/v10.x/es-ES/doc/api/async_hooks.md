@@ -118,9 +118,9 @@ If any `AsyncHook` callbacks throw, the application will print the stack trace a
 
 El motivo de este comportamiento de manejo de error es que estos callbacks se ejecutan en puntos potencialmente volátiles en el tiempo de vida de un objeto, por ejemplo, durante la construcción y destrucción de una clase. Debido a esto, se considera necesario reducir el proceso rápidamente para evitar una anulación no intencionada en el futuro. Esto está sujeto a cambio en el futuro si un análisis comprensivo se realiza para asegurar que una excepción puede seguir el flujo de control normal sin efectos secundarios no intencionados.
 
-##### Printing in AsyncHooks callbacks
+##### Impresión en los Callbacks de AsyncHooks
 
-Because printing to the console is an asynchronous operation, `console.log()` will cause the AsyncHooks callbacks to be called. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una fácil solución para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
+Ya que imprimir a la consola es una operación asincrónica, `console.log()` causará que los callbacks de AsyncHooks sean llamados. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una fácil solución para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
 
 ```js
 const fs = require('fs');
@@ -152,7 +152,7 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 * Devuelve: {AsyncHook} Una referencia a `asyncHook`.
 
-Inhabilitar los callbacks para una instancia de `AsyncHook` dada desde el pool global de callbacks de `AsyncHook` que serán ejecutadas. Una vez que un hook haya sido inhabilitado, no volverá a ser llamado hasta que se habilite.
+Inhabilita los callbacks para una instancia dada de `AsyncHook`, desde el grupo global de callbacks de `AsyncHook` que serán ejecutados. Una vez que un hook haya sido inhabilitado, no volverá a ser llamado hasta que se habilite.
 
 Para la consistencia de una API, `disable()` también devuelve la instancia de `AsyncHook` .
 
@@ -456,7 +456,7 @@ Otra sutileza con las promesas es que los callbacks de `before` y `after` se eje
 
 ## API del Embebedor de JavaScript
 
-Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
+Los desarrolladores de bibliotecas que manejan sus propios recursos asincrónicos que realizan tareas como E/S, agrupamiento de conexiones, o la administración de filas de callbacks pueden utilizar la API de JavaScript de `AsyncWrap` para que los callbacks apropiados sean llamados.
 
 ### Clase: AsyncResource
 
