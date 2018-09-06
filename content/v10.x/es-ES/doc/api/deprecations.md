@@ -154,23 +154,23 @@ La interfaz de `String` antigua [`fs.read()`][] está desaprobada. En cambio, us
 
 Tipo: Fin-de-Vida
 
-The [`fs.readSync()`][] legacy `String` interface is deprecated. Use the `Buffer` API as mentioned in the documentation instead.
+La interfaz de `String` antigua [`fs.readSync()`][] está desaprobada. En cambio, use la API `Buffer` como se menciona en la documentación.
 
 <a id="DEP0016"></a>
 
 ### DEP0016: GLOBAL/root
 
-Type: Runtime
+Tipo: Runtime
 
-The `GLOBAL` and `root` aliases for the `global` property have been deprecated and should no longer be used.
+Los alias `GLOBAL` y `root` para la propiedad `global` han sido desaprobados y no deberían seguir siendo usados.
 
 <a id="DEP0017"></a>
 
 ### DEP0017: Intl.v8BreakIterator
 
-Type: End-of-Life
+Tipo: Final-de-Vida
 
-`Intl.v8BreakIterator` was a non-standard extension and has been removed. See [`Intl.Segmenter`](https://github.com/tc39/proposal-intl-segmenter).
+`Intl.v8BreakIterator` fue una extensión no estándar y ha sido removida. Vea [`Intl.Segmenter`](https://github.com/tc39/proposal-intl-segmenter).
 
 <a id="DEP0018"></a>
 
