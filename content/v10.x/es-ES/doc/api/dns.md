@@ -431,7 +431,7 @@ added: v0.1.27
   - `err` {Error}
   - `records` {string[][]}
 
-Utiliza el protocolo DNS para resolver consultas de texto (registros `TXT`) para el `hostname`. El argumento `records` pasado a la función `callback` es un array bidimensional de los registros de texto disponibles para `hostname` (p. e.j `[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Cada sub-array contiene pedazos de TXT para un registro. Depending on the use case, these could be either joined together or treated separately.
+Utiliza el protocolo DNS para resolver consultas de texto (registros `TXT`) para el `hostname`. El argumento `records` pasado a la función `callback` es un array bidimensional de los registros de texto disponibles para `hostname` (p. e.j `[ ['v=spf1 ip4:0.0.0.0 ', '~all' ] ]`). Cada sub-array contiene pedazos de TXT para un registro. Dependiendo del caso de uso, estos podrían unirse o ser tratados por separado.
 
 ## dns.resolveAny(hostname, callback)
 
@@ -440,22 +440,22 @@ Utiliza el protocolo DNS para resolver consultas de texto (registros `TXT`) para
   - `err` {Error}
   - `ret` {Object[]}
 
-Uses the DNS protocol to resolve all records (also known as `ANY` or `*` query). The `ret` argument passed to the `callback` function will be an array containing various types of records. Each object has a property `type` that indicates the type of the current record. And depending on the `type`, additional properties will be present on the object:
+Utiliza el protocolo DNS para resolver todos los registros (también conocidos como consultas `ANY` o `*`). El argumento `ret` pasado a la función `callback` será un array con varios tipos de registros. Cada objeto tiene una propiedad `type` que indica el tipo del registro actual. Y dependiendo del `type`, propiedades adicionales estarán presentes en el objeto:
 
-| Type      | Properties                                                                                                                                      |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `'A'`     | `address` / `ttl`                                                                                                                               |
-| `'AAAA'`  | `address` / `ttl`                                                                                                                               |
-| `'CNAME'` | `value`                                                                                                                                         |
-| `'MX'`    | Refer to [`dns.resolveMx()`][]                                                                                                                  |
-| `'NAPTR'` | Refer to [`dns.resolveNaptr()`][]                                                                                                               |
-| `'NS'`    | `value`                                                                                                                                         |
-| `'PTR'`   | `value`                                                                                                                                         |
-| `'SOA'`   | Refer to [`dns.resolveSoa()`][]                                                                                                                 |
-| `'SRV'`   | Refer to [`dns.resolveSrv()`][]                                                                                                                 |
-| `'TXT'`   | This type of record contains an array property called `entries` which refers to [`dns.resolveTxt()`][], eg. `{ entries: ['...'], type: 'TXT' }` |
+| Tipo      | Propiedades                                                                                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'A'`     | `address` / `ttl`                                                                                                                                             |
+| `'AAAA'`  | `address` / `ttl`                                                                                                                                             |
+| `'CNAME'` | `value`                                                                                                                                                       |
+| `'MX'`    | Referirse a [`dns.resolveMx()`][]                                                                                                                             |
+| `'NAPTR'` | Referirse a [`dns.resolveNaptr()`][]                                                                                                                          |
+| `'NS'`    | `value`                                                                                                                                                       |
+| `'PTR'`   | `value`                                                                                                                                                       |
+| `'SOA'`   | Referirse a [`dns.resolveSoa()`][]                                                                                                                            |
+| `'SRV'`   | Referirse a [`dns.resolveSrv()`][]                                                                                                                            |
+| `'TXT'`   | Este tipo de registro contiene un propiedad array llamada `entries`, la cual se refiere a [`dns.resolveTxt()`][], p. e.j. `{ entries: ['...'], type: 'TXT' }` |
 
-Here is an example of the `ret` object passed to the callback:
+A continuación, hay un ejemplo del objeto `ret` pasado a callback:
 
 <!-- eslint-disable semi -->
 
