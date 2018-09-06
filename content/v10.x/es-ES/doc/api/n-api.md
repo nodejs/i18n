@@ -587,7 +587,7 @@ NODE_EXTERN napi_status
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-This API open a new scope from which one object can be promoted to the outer scope.
+Esta API abre un nuevo ámbito desde el cual un objeto puede ser promovido al ámbito externo.
 
 #### napi_close_escapable_handle_scope
 
@@ -601,14 +601,14 @@ NODE_EXTERN napi_status
                                       napi_handle_scope scope);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: `napi_value` representing the scope to be closed.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] scope`: `napi_value` que representa al ámbito que será cerrado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
+Esta API cierra el ámbito pasado. Los ámbitos deben ser cerrados en el orden inverso en el que fueron creados.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si existe una excepción JavaScript pendiente.
 
 #### napi_escape_handle
 
@@ -623,18 +623,18 @@ napi_status napi_escape_handle(napi_env env,
                                napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: `napi_value` representing the current scope.
-- `[in] escapee`: `napi_value` representing the JavaScript `Object` to be escaped.
-- `[out] result`: `napi_value` representing the handle to the escaped `Object` in the outer scope.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] scope`: `napi_value` que representa el ámbito actual.
+- `[in] escapee`: `napi_value` que representa al `Object` de JavaScript que será escapado.
+- `[out] result`: `napi_value` que representa al handle al `Object` escapado en el ámbito externo.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API promotes the handle to the JavaScript object so that it is valid for the lifetime of the outer scope. It can only be called once per scope. If it is called more than once an error will be returned.
+Esta API promueve al handle al objeto de JavaScript para que sea válido durante el tiempo de vida del ámbito externo. Sólo se puede llamar uno por ámbito. Si es llamado más de una vez, se devolverá un error.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
-### References to objects with a lifespan longer than that of the native method
+### Referencias a Objetos con Vida Útil más larga que la del Método Nativo
 
 In some cases an addon will need to be able to create and reference objects with a lifespan longer than that of a single native method invocation. For example, to create a constructor and later use that constructor in a request to creates instances, it must be possible to reference the constructor object across many different instance creation requests. This would not be possible with a normal handle returned as a `napi_value` as described in the earlier section. The lifespan of a normal handle is managed by scopes and all scopes must be closed before the end of a native method.
 
