@@ -1892,7 +1892,7 @@ added: v0.1.90
 * `encoding` {string} La codificación de caracteres del `string`. **Predeterminado:** `'utf8'`.
 * Devuelve: {integer} Número de bytes escritos.
 
-Escribe el `string` a `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro de `length` es el número de bytes para escribir. Si `buf` no contiene suficiente espacio para ajustar la cadena entera, solo parte del `string` se escribirá. Sin embargo, no se escribirán caracteres codificados parcialmente.
+Escribe el `string` al `buf` de `offset` de acuerdo a la codificación de caracteres en `encoding`. El parámetro de `length` es el número de bytes para escribir. Si `buf` no contiene suficiente espacio para ajustar la cadena entera, solo parte del `string` se escribirá. Sin embargo, no se escribirán caracteres codificados parcialmente.
 
 ```js
 const buf = Buffer.alloc(256);
@@ -1921,7 +1921,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 8`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeDoubleBE()` escribe big endian, `writeDoubleLE()` escribe little endian). `value` *debe* ser un doble de 64-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un doble de 64-bit.
+Escribe el `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeDoubleBE()` escribe big endian, `writeDoubleLE()` escribe little endian). `value` *debe* ser un doble de 64-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un doble de 64-bit.
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -1955,7 +1955,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 4`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeFloatBE()` escribe big endian, `writeFloatLE()` escribe little endian). `value` *debe* ser un float de 32-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un float de 32-bit.
+Escribe el `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeFloatBE()` escribe big endian, `writeFloatLE()` escribe little endian). `value` *debe* ser un float de 32-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un float de 32-bit.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -1987,7 +1987,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 1`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` a `buff` en el `offset` especificado. `value` *debe* se un entero con signo de 8-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un estero con signo de 8-bit válido.
+Escribe el `value` al `buff` en el `offset` especificado. `value` *debe* se un entero con signo de 8-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un estero con signo de 8-bit válido.
 
 `value` se interpreta y escribe como un entero con signo con complemento de dos.
 
