@@ -182,43 +182,43 @@ Los rechazos de promesas sin gestionar están desaprobados. En el futuro, rechaz
 
 <a id="DEP0019"></a>
 
-### DEP0019: require('.') resolved outside directory
+### DEP0019: require('.') resuelto afuera del directorio
 
 Tipo: Runtime
 
-En ciertos casos, `require('.')` puede resolver afuera del directorio de paquetes. This behavior is deprecated and will be removed in a future major Node.js release.
+En ciertos casos, `require('.')` puede resolver afuera del directorio de paquetes. Este comportamiento está desaprobado y será removido en una importante actualización future de Node.js.
 
 <a id="DEP0020"></a>
 
 ### DEP0020: Server.connections
 
-Type: Runtime
+Tipo: Runtime
 
-The [`Server.connections`][] property is deprecated. Please use the [`Server.getConnections()`][] method instead.
+La propiedad [`Server.connections`][] está desaprobada. En cambio, por favor use el método [`Server.getConnections()`][].
 
 <a id="DEP0021"></a>
 
 ### DEP0021: Server.listenFD
 
-Type: Runtime
+Tipo: Runtime
 
-The `Server.listenFD()` method is deprecated. Please use [`Server.listen({fd: <number>})`][] instead.
+El método `Server.listenFD()` está desaprobado. En cambio, por favor use [`Server.listen({fd: <number>})`][].
 
 <a id="DEP0022"></a>
 
 ### DEP0022: os.tmpDir()
 
-Type: Runtime
+Tipo: Runtime
 
-The `os.tmpDir()` API is deprecated. Please use [`os.tmpdir()`][] instead.
+La API `os.tmpDir()` está desaprobada. En cambio, por favor use [`os.tmpdir()`][].
 
 <a id="DEP0023"></a>
 
 ### DEP0023: os.getNetworkInterfaces()
 
-Type: Runtime
+Tipo: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
+El método `os.getNetworkInterfaces()` está desaprobado. En cambio, por favor use [`os.networkInterfaces`][].
 
 <a id="DEP0024"></a>
 
