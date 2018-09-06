@@ -1654,7 +1654,7 @@ Devuelve un nuevo `Buffer` que hace referencia a la misma memoria del original, 
 
 La especificación de que `end` es mayor que [`buf.length`] devolverá el mismo resultado que el de `end` igual a [`buf.length`].
 
-La modificación de la nuevo porción de `Buffer` modificará la memoria en el `Buffer` original porque la memoria asignada de los dos objetos se superpone.
+La modificación de la porción del nuevo `Buffer` modificará la memoria en el `Buffer` original porque la memoria asignada de los dos objetos se superpone.
 
 ```js
 // Crea un `Buffer`con el alfabeto ASCII, toma un segmento, y modifica un byte
