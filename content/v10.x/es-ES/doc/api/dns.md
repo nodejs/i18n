@@ -224,10 +224,10 @@ Usa el protocolo DNS para resolver un hostname (p. e.j. `'nodejs.org'`) en una m
 | `'PTR'`   | registros de puntero                        | {string}          | [`dns.resolvePtr()`][]   |
 | `'SOA'`   | inicio de registros de autoridad            | {Object}          | [`dns.resolveSoa()`][]   |
 | `'SRV'`   | registros de servicios                      | {Object}          | [`dns.resolveSrv()`][]   |
-| `'TXT'`   | text records                                | {string[]}        | [`dns.resolveTxt()`][]   |
-| `'ANY'`   | any records                                 | {Object}          | [`dns.resolveAny()`][]   |
+| `'TXT'`   | registros de texto                          | {string[]}        | [`dns.resolveTxt()`][]   |
+| `'ANY'`   | cualquier registro                          | {Object}          | [`dns.resolveAny()`][]   |
 
-On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
+En caso de error, `err` es un objeto [`Error`][], donde `err.code` es uno de los [códigos de error DNS](#dns_error_codes).
 
 ## dns.resolve4(hostname[, options], callback)
 
@@ -241,9 +241,9 @@ changes:
                  specifically `options.ttl`.
 -->
 
-- `hostname` {string} Hostname to resolve.
+- `hostname` {string} Nombre de host para resolver.
 - `options` {Object} 
-  - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '1.2.3.4', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
+  - `ttl` {boolean} Recupere el valor de Time-To-Live (TTL) de cada registro. Cuando sea `true`, la callback recibe un array de objetos `{ address: '1.2.3.4', ttl: 60 }`, en lugar de un array de strings con la expresión TTL en segundos.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
