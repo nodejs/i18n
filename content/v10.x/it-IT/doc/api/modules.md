@@ -162,7 +162,7 @@ NODE_MODULES_PATHS(START)
 
 I moduli vengono memorizzati nella cache dopo il loro primo caricamento. Ciò significa (tra le altre cose) che ogni chiamata a `require('foo')`, se si risolvesse nello stesso file, restituirebbe esattamente lo stesso object.
 
-Le chiamate multiple a `require('foo')` potrebbero causare la mancata esecuzione del codice del modulo più volte. Questa è una caratteristica importante. Con essa, gli object "parzialmente completi" possono essere restituiti, consentendo così il caricamento delle dipendenze transitive anche quando avrebbero causato dei cicli.
+Chiamate multiple a `require('foo')` potrebbero non portare alla ripetuta esecuzione del codice del modulo. Questa è una caratteristica importante. Con essa, gli object "parzialmente completi" possono essere restituiti, consentendo così il caricamento delle dipendenze transitive anche quando avrebbero causato dei cicli.
 
 Per fare in modo che un modulo esegua più volte il codice, esporta una funzione e chiamala.
 
