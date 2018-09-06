@@ -30,17 +30,17 @@ added: v0.1.90
 
 - `callback` {Function}
 
-See [`server.close()`][`http.close()`] from the HTTP module for details.
+Vea [`server.close()`][`http.close()`] desde el módulo HTTP para detalles.
 
 ### server.listen()
 
-Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
+Inicia el servidor HTTPS escuchando conexiones encriptadas. Este método es idéntico a [`server.listen()`][] de [`net.Server`][].
 
 ### server.maxHeadersCount
 
-- {number} **Default:** `2000`
+- {number} **Predeterminado:** `2000`
 
-See [`http.Server#maxHeadersCount`][].
+Vea [`http.Server#maxHeadersCount`][].
 
 ### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -48,10 +48,10 @@ See [`http.Server#maxHeadersCount`][].
 added: v0.11.2
 -->
 
-- `msecs` {number} **Default:** `120000` (2 minutes)
+- `msecs` {number} **Predeterminado:** `120000` (2 minutos)
 - `callback` {Function}
 
-See [`http.Server#setTimeout()`][].
+Vea [`http.Server#setTimeout()`][].
 
 ### server.timeout
 
@@ -59,9 +59,9 @@ See [`http.Server#setTimeout()`][].
 added: v0.11.2
 -->
 
-- {number} **Default:** `120000` (2 minutes)
+- {number} **Predeterminado:** `120000` (2 minutos)
 
-See [`http.Server#timeout`][].
+Vea [`http.Server#timeout`][].
 
 ### server.keepAliveTimeout
 
@@ -69,9 +69,9 @@ See [`http.Server#timeout`][].
 added: v8.0.0
 -->
 
-- {number} **Default:** `5000` (5 seconds)
+- {number} **Predeterminado:** `5000` (5 segundos)
 
-See [`http.Server#keepAliveTimeout`][].
+Vea [`http.Server#keepAliveTimeout`][].
 
 ## https.createServer(\[options\]\[, requestListener\])
 
@@ -79,10 +79,10 @@ See [`http.Server#keepAliveTimeout`][].
 added: v0.3.4
 -->
 
-- `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
-- `requestListener` {Function} A listener to be added to the `'request'` event.
+- `options` {Object} Acepta `options` de [`tls.createServer()`][], [`tls.createSecureContext()`][] y [`http.createServer()`][].
+- `requestListener` {Function} Un oyente a ser añadido al evento `'request'`.
 
-Example:
+Ejemplo:
 
 ```js
 // curl -k https://localhost:8000/
@@ -100,7 +100,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-Or
+O
 
 ```js
 const https = require('https');
@@ -128,14 +128,14 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
+- `options` {Object | string | URL} Acepta las mismas `options` como [`https.request()`][], con el `method` siempre establecido a `GET`.
 - `callback` {Function}
 
-Like [`http.get()`][] but for HTTPS.
+Como [`http.get()`][] pero para HTTPS.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string o un objeto [`URL`][]. Si `options` es una string, es analizado automáticamente con [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
 
-Example:
+Ejemplo:
 
 ```js
 const https = require('https');
@@ -159,7 +159,7 @@ https.get('https://encrypted.google.com/', (res) => {
 added: v0.5.9
 -->
 
-Global instance of [`https.Agent`][] for all HTTPS client requests.
+Instancia global de [`https.Agent`][] para todas las solicitudes de cliente HTTPS.
 
 ## https.request(options[, callback])
 
@@ -175,19 +175,19 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-    - `protocol` **Default:** `'https:'`
-    - `port` **Default:** `443`
-    - `agent` **Default:** `https.globalAgent`
+- `opciones` {Object | string | URL} Acepta todas las `options` de [`http.request()`][], con algunas diferencia en valores predeterminados: 
+    - `protocol` **Predeterminado:** `'https:'`
+    - `port` **Predeterminado:** `443`
+    - `agent` **Predeterminado:** `https.globalAgent`
 - `callback` {Function}
 
-Makes a request to a secure web server.
+Hace una solicitud a un servidor web seguro.
 
-The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
+Las siguientes `options` adicionales de [`tls.connect()`][] también son aceptadas: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string o un objeto [`URL`][]. Si `options` es una string, es analizada automáticamente con [`url.parse()`][]. Si es un objeto [`URL`][], será convertida en un objeto `options` ordinario.
 
-Example:
+Ejemplo:
 
 ```js
 const https = require('https');
@@ -214,7 +214,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Example using options from [`tls.connect()`][]:
+Ejemplo utilizando opciones como [`tls.connect()`][]:
 
 ```js
 const options = {
@@ -234,7 +234,7 @@ const req = https.request(options, (res) => {
 
 Alternatively, opt out of connection pooling by not using an [`Agent`][].
 
-Example:
+Ejemplo:
 
 ```js
 const options = {
@@ -252,7 +252,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example using a [`URL`][] as `options`:
+Ejemplo utilizando un [`URL`][] como `options`:
 
 ```js
 const options = new URL('https://abc:xyz@example.com');
