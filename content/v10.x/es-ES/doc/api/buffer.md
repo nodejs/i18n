@@ -1955,7 +1955,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 4`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeFloatBE()` escribe big endian, `writeFloatLE()` escribe little endian). `value` *debe* ser un float de 32-bit válido. El comportamiento está indefinido cuando `value` es otra cosa que un float de 32-bit.
+Escribe el `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeFloatBE()` escribe big endian, `writeFloatLE()` escribe little endian). `value` *debe* ser un float de 32-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un float de 32-bit.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -1984,12 +1984,12 @@ changes:
 -->
 
 * `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 1`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 1`.
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
+Escribe el `value` a `buff` en el `offset` especificado. `value` *debe* se un entero con signo de 8-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un estero con signo de 8-bit válido.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` se interpreta y escribe como un entero con signo con complemento de dos.
 
 ```js
 const buf = Buffer.allocUnsafe(2);
@@ -1998,7 +1998,7 @@ buf.writeInt8(2, 0);
 buf.writeInt8(-2, 1);
 
 console.log(buf);
-// Prints: <Buffer 02 fe>
+// Imprime: <Buffer 02 fe>
 ```
 
 ### buf.writeInt16BE(value, offset)
