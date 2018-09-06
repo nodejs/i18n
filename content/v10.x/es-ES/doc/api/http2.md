@@ -594,7 +594,7 @@ added: v8.4.0
   * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
   * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas dependientes del stream creado recientemente. **Default:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
-  * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
+  * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. El valor es un número entre `1` y `256` (inclusivo).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
 * Returns: {ClientHttp2Stream}
@@ -642,7 +642,7 @@ Código de usuario no construirá instancias de `Http2Stream` directamente. Más
 
 La clase `Http2Stream` es una base para las clases de [`ServerHttp2Stream`][] y [`ClientHttp2Stream`][], las cuales son utilizadas específicamente por el Servidor o el lado del Cliente, respectivamente.
 
-All `Http2Stream` instances are [`Duplex`][] streams. The `Writable` side of the `Duplex` is used to send data to the connected peer, while the `Readable` side is used to receive data sent by the connected peer.
+Todas las instancias de `Http2Stream` son streams de [`Duplex`][]. The `Writable` side of the `Duplex` is used to send data to the connected peer, while the `Readable` side is used to receive data sent by the connected peer.
 
 #### Http2Stream Lifecycle
 
@@ -662,7 +662,7 @@ En el cliente, la instancia de `Http2Stream` devuelta por `http2session.request(
 Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 
 * Un frame de `RST_STREAM` para el stream es recibido por el peer conectado.
-* The `http2stream.close()` method is called.
+* El método de `http2stream.close()` es llamado.
 * The `http2stream.destroy()` or `http2session.destroy()` methods are called.
 
 When an `Http2Stream` instance is destroyed, an attempt will be made to send an `RST_STREAM` frame will be sent to the connected peer.
@@ -1463,7 +1463,7 @@ The `'timeout'` event is emitted when there is no activity on the Server for a g
 added: v8.4.0
 -->
 
-The `'unknownProtocol'` event is emitted when a connecting client fails to negotiate an allowed protocol (i.e. HTTP/2 or HTTP/1.1). The event handler receives the socket for handling. If no listener is registered for this event, the connection is terminated. Vea la [Compatibility API](#http2_compatibility_api).
+The `'unknownProtocol'` event is emitted when a connecting client fails to negotiate an allowed protocol (i.e. HTTP/2 or HTTP/1.1). The event handler receives the socket for handling. Si no se registra ningún listener para este evento, la conexión será terminada. Vea la [Compatibility API](#http2_compatibility_api).
 
 #### server.close([callback])
 
@@ -1794,7 +1794,7 @@ State errors occur when an action is attempted at an incorrect time (for instanc
 
 Los errores internos ocurren cuando una sesión HTTP/2 falla inesperadamente. Estos serán reportados por medio de un evento de `'error'` en el `Http2Session` u objetos del servidor de HTTP/2.
 
-Protocol errors occur when various HTTP/2 protocol constraints are violated. Estos serán reportados utilizando un `throw` sincrónico o por medio de un evento de `'error'` en el `Http2Stream`, `Http2Session` o en los objetos del Servidor de HTTP/2, dependiendo de dónde y cuándo ocurran los errores.
+Se producen errores de protocolo cuando se violan varias restricciones del protocolo de HTTP/2. Estos serán reportados utilizando un `throw` sincrónico o por medio de un evento de `'error'` en el `Http2Stream`, `Http2Session` o en los objetos del Servidor de HTTP/2, dependiendo de dónde y cuándo ocurran los errores.
 
 ### Invalid character handling in header names and values
 
@@ -1907,7 +1907,7 @@ req.end('Jane');
 
 La API de Compatibilidad tiene el objetivo de proporcionar una experiencia para el desarrollador similar a HTTP/1 al utilizar HTTP/2, haciendo posible el desarrollo de aplicaciones que soporten [HTTP/1](http.html) y HTTP/2. Esta API sólo se dirige a la **public API** de [HTTP/1](http.html). However many modules use internal methods or state, and those *are not supported* as it is a completely different implementation.
 
-The following example creates an HTTP/2 server using the compatibility API:
+El siguiente ejemplo crea un servidor de HTTP/2 utilizando la API de compatibilidad:
 
 ```js
 const http2 = require('http2');
@@ -2123,7 +2123,7 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but ap
 
 `destroy`, `emit`, `end`, `on` and `once` methods will be called on `request.stream`.
 
-`setTimeout` method will be called on `request.stream.session`.
+El método de `setTimeout` será llamado en `request.stream.session`.
 
 `pause`, `read`, `resume`, and `write` will throw an error with code `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` y Sockets][] para más información.
 
@@ -2304,7 +2304,7 @@ added: v8.4.0
 * `name` {string}
 * Returns: {string}
 
-Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
+Lee un encabezado que ya ha sido puesto en cola, pero que no ha sido al cliente. Note that the name is case insensitive.
 
 Ejemplo:
 
@@ -2320,7 +2320,7 @@ added: v8.4.0
 
 * Devuelve: {string[]}
 
-Returns an array containing the unique names of the current outgoing headers. Todos los nombres de los encabezados están en minúsculas.
+Devuelve una matriz que contiene los nombres únicos de los actuales encabezados salientes. Todos los nombres de los encabezados están en minúsculas.
 
 Ejemplo:
 
@@ -2474,7 +2474,7 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but ap
 
 `destroy`, `emit`, `end`, `on` and `once` methods will be called on `response.stream`.
 
-`setTimeout` method will be called on `response.stream.session`.
+El método de `setTimeout` será llamado en `response.stream.session`.
 
 `pause`, `read`, `resume`, and `write` will throw an error with code `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` y Sockets][] para más información.
 
