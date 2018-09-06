@@ -1135,7 +1135,7 @@ Se requiere un método pero no se implementa.
 
 ### ERR_MISSING_ARGS
 
-No se pasó un argumento de API de Node.js requerido. Esto sólo se usa para el cumplimiento estricto con la especificación API (la cual, en algunos casos, puede aceptar `func(undefined)`, pero no `func()`). En la mayoría de las APIs de Node.js nativas, `func(undefined)` y `func()` son tratados iguales, y el código de error [`ERR_INVALID_ARG_TYPE`][] puede ser utilizado en su lugar.
+No se pasó un argumento de API de Node.js requerido. Esto sólo se usa para el cumplimiento estricto con la especificación API (la cual, en algunos casos, puede aceptar `func(undefined)`, pero no `func()`). En la mayoría de las APIs de Node.js nativas, `func(undefined)` y `func()` son tratados de igual manera, y el código de error [`ERR_INVALID_ARG_TYPE`][] puede ser utilizado en su lugar.
 
 <a id="ERR_MISSING_MODULE"></a>
 
@@ -1171,7 +1171,7 @@ Mientras se utilizaba `N-API`, se pasó un constructor que no era una función.
 
 ### ERR_NAPI_INVALID_DATAVIEW_ARGS
 
-Mientras se llamaba a `napi_create_dataview()`, un `offset` dado estaba fuera de los límites del dataview o `offset + length` era más grande que una longitud del `buffer` dado.
+Mientras se llamaba a `napi_create_dataview()`, un `offset` dado estaba fuera de los límites del dataview u `offset + length` era más grande que una longitud del `buffer` dado.
 
 <a id="ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT"></a>
 
@@ -1306,7 +1306,7 @@ Se intentó llamar a [`stream.pipe()`][] en un stream [`Writable`][].
 
 ### ERR_STREAM_NULL_VALUES
 
-Se intentó llamar a [`stream.write()`][] con una cantidad `null`.
+Se intentó llamar a [`stream.write()`][] con un fragmento `null`.
 
 <a id="ERR_STREAM_PREMATURE_CLOSE"></a>
 
