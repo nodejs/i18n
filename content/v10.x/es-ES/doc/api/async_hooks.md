@@ -506,8 +506,8 @@ asyncResource.emitAfter();
 
 * `type` {string} El tipo de evento asincrónico.
 * `opciones` {Object} 
-  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Predeterminado:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. Esto usualmente no necesita ser establecido (incluso si `emitDestroy` es llamado manualmente), a menos que el `asyncId` del recurso sea recuperado y las API´s sensibles de `emitDestroy` sean llamadas con ello. **Predeterminado:** `false`.
+  * `triggerAsyncId` {number} La ID del contexto de ejecución que creó este evento asincrónico. **Predeterminado:** `executionAsyncId()`.
+  * `requireManualDestroy` {boolean} Inhabilita la función automática de `emitDestroy` cuando el objeto es recolectado en la basura. Esto usualmente no necesita ser establecido (incluso si `emitDestroy` es llamado manualmente), a menos que el `asyncId` del recurso sea recuperado y las API´s sensibles de `emitDestroy` sean llamadas con ello. **Predeterminado:** `false`.
 
 Ejemplo de uso:
 
@@ -537,8 +537,8 @@ class DBQuery extends AsyncResource {
 added: v9.6.0
 -->
 
-* `fn` {Function} The function to call in the execution context of this async resource.
-* `thisArg` {any} The receiver to be used for the function call.
+* `fn` {Function} La función para llamar en el contexto de ejecución de este recurso asincrónico.
+* `thisArg` {any} El receptor que será utilizado para la función de llamada.
 * `...args` {any} Argumentos opcionales para pasar a la función.
 
 Llama a la función proporcionada con los argumentos proporcionados en el contexto de ejecución del recurso asincrónico. Esto establecerá el contexto, activará el AsyncHooks antes de los callbacks, llamará la función, activará el AsyncHooks después de los callbacks, y después restaurará el contexto de ejecución original.
@@ -549,11 +549,11 @@ Llama a la función proporcionada con los argumentos proporcionados en el contex
 deprecated: v9.6.0
 -->
 
-> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
 
-Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+Llama a todos los callbacks de `before` para notificar que un nuevo contexto de ejecución asincrónico está siendo accedido. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
-`before` and `after` calls must be unwound in the same order that they are called. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
+`before` and `after` calls must be unwound in the same order that they are called. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
 
 #### asyncResource.emitAfter()
 
@@ -561,7 +561,7 @@ Call all `before` callbacks to notify that a new asynchronous execution context 
 deprecated: v9.6.0
 -->
 
-> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
 
 Llama a todos los callbacks `after` . If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. De otra manera ocurrirá un error.
 
@@ -575,7 +575,7 @@ Llama a todos los hooks `destroy`. Esto sólo se debe llamar una vez. Ocurrirá 
 
 #### asyncResource.asyncId()
 
-* Returns: {number} The unique `asyncId` assigned to the resource.
+* Devuelve: {number} El único `asyncId` asignado al recurso.
 
 #### asyncResource.triggerAsyncId()
 
