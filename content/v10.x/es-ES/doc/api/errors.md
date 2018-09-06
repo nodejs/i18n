@@ -1312,13 +1312,13 @@ Se intentó llamar a [`stream.write()`][] con un fragmento `null`.
 
 ### ERR_STREAM_PREMATURE_CLOSE
 
-Un error devuelto por `stream.finished()` y `stream.pipeline()`, cuando un stream o un pipeline termina sin gracia con ningún error explícito.
+Un error devuelto por `stream.finished()` y `stream.pipeline()`, cuando, sin ningún error explícito, un stream o pipeline se cierra sin gracia.
 
 <a id="ERR_STREAM_PUSH_AFTER_EOF"></a>
 
 ### ERR_STREAM_PUSH_AFTER_EOF
 
-Se intentó llamar a [`stream.push()`][] luego de que un `null`(EOF) haya sido empujado al stream.
+Se intentó llamar a [`stream.push()`][] luego de que un `null`(EOF) fuera empujado al stream.
 
 <a id="ERR_STREAM_READ_NOT_IMPLEMENTED"></a>
 
@@ -1351,7 +1351,7 @@ instance.setEncoding('utf8');
 
 ### ERR_STREAM_WRITE_AFTER_END
 
-Se intentó llamar a [`stream.write()`][] luego de que `stream.end()` haya sido llamado.
+Se intentó llamar a [`stream.write()`][] luego de que `stream.end()` fuera llamado.
 
 <a id="ERR_SYSTEM_ERROR"></a>
 
@@ -1435,7 +1435,7 @@ Un stream `Transform` terminó mientras todavía se estaba transformando.
 
 ### ERR_TRANSFORM_WITH_LENGTH_0
 
-Un stream `Transform` terminó con datos que todavía se encontraban en el búfer de escritura.
+Un stream `Transform` terminó mientras aún tenía datos en el búfer de escritura.
 
 <a id="ERR_TTY_INIT_FAILED"></a>
 
@@ -1513,7 +1513,7 @@ El API V8 `BreakIterator` fue usado, pero el conjunto de los datos ICU completos
 
 ### ERR_VALID_PERFORMANCE_ENTRY_TYPE
 
-Mientras su usaba el API de Tiempo de Rendimiento (`perf_hooks`), no se encontraron tipos de entrada de rendimiento válidos.
+Mientras se usaba el API de Tiempo de Rendimiento (`perf_hooks`), no se encontraron tipos de entrada de rendimiento válidos.
 
 <a id="ERR_VALUE_OUT_OF_RANGE"></a>
 
@@ -1541,7 +1541,7 @@ El módulo que se está devolviendo de la función vinculadora es de un contexto
 
 ### ERR_VM_MODULE_LINKING_ERRORED
 
-La función vinculadora devolvió un módulo por el cual la vinculación ha fallado.
+La función vinculante devolvió un módulo por el cual la vinculación ha fallado.
 
 <a id="ERR_VM_MODULE_NOT_LINKED"></a>
 
