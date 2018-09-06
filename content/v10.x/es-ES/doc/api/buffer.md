@@ -1678,7 +1678,7 @@ console.log(buf2.toString('ascii', 0, buf2.length));
 // Imprime: !bc
 ```
 
-La especificación de índices negativos causa que la porción se genere en relación al final de `buf` en lugar de al inicio.
+La especificación de índices negativos causa que la porción se genere en relación al final de `buf`, en lugar de al inicio.
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1758,7 +1758,7 @@ added: v6.3.0
 
 * Devuelve: {Buffer} Una referencia a `buf`.
 
-Interpreta a `buf` como un arreglo de número de 64-bit y cambia el orden de los bytes *in situ*. Produce [`ERR_INVALID_BUFFER_SIZE`] si [`buf.length`] no es un múltiplo de 8.
+Interpreta a `buf` como un arreglo de números de 64-bit y cambia el orden de los bytes *in situ*. Produce [`ERR_INVALID_BUFFER_SIZE`] si [`buf.length`] no es un múltiplo de 8.
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
