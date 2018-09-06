@@ -517,20 +517,20 @@ El método `dns.setServers()` no debe ser llamado mientras que una consulta DNS 
 
 Cada consulta DNS puede devolver uno de los siguientes códigos de error:
 
-- `dns.NODATA`: DNS server returned answer with no data.
-- `dns.FORMERR`: DNS server claims query was misformatted.
-- `dns.SERVFAIL`: DNS server returned general failure.
-- `dns.NOTFOUND`: Domain name not found.
-- `dns.NOTIMP`: DNS server does not implement requested operation.
-- `dns.REFUSED`: DNS server refused query.
-- `dns.BADQUERY`: Misformatted DNS query.
-- `dns.BADNAME`: Misformatted hostname.
-- `dns.BADFAMILY`: Unsupported address family.
-- `dns.BADRESP`: Misformatted DNS reply.
-- `dns.CONNREFUSED`: Could not contact DNS servers.
-- `dns.TIMEOUT`: Timeout while contacting DNS servers.
-- `dns.EOF`: End of file.
-- `dns.FILE`: Error reading file.
+- `dns.NODATA`: El servidor DNS devolvió una respuesta sin datos.
+- `dns.FORMERR`: La consulta de reclamos del servidor DNS no se formateó correctamente.
+- `dns.SERVFAIL`: El servidor DNS devolvió un fallo general.
+- `dns.NOTFOUND`: Nombre de dominio no encontrado.
+- `dns.NOTIMP`: El servidor DNS no implementa la operación solicitada.
+- `dns.REFUSED`: El servidor DNS negó la consulta.
+- `dns.BADQUERY`: La consulta DNS no se formateó correctamente.
+- `dns.BADNAME`: Hostname mal formateado.
+- `dns.BADFAMILY`: Familia de direcciones no soportada.
+- `dns.BADRESP`: Respuesta DNS mal formateada.
+- `dns.CONNREFUSED`: No se pudo contactar servidores DNS.
+- `dns.TIMEOUT`: Tiempo de espera al ponerse en contacto con los servidores DNS agotado.
+- `dns.EOF`: Final de archivo.
+- `dns.FILE`: Error al leer el archivo.
 - `dns.NOMEM`: Out of memory.
 - `dns.DESTRUCTION`: Channel is being destroyed.
 - `dns.BADSTR`: Misformatted string.
