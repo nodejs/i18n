@@ -466,7 +466,7 @@ Proporciona información miscelánea sobre el estado actual de `Http2Session`.
   * `deflateDynamicTableSize` {number} The current size in bytes of the outbound header compression state table.
   * `inflateDynamicTableSize` {number} The current size in bytes of the inbound header compression state table.
 
-An object describing the current status of this `Http2Session`.
+Un objeto que describe el estado actual de este `Http2Session`.
 
 #### http2session.settings(settings)
 
@@ -1981,7 +1981,7 @@ The `'aborted'` event will only be emitted if the `Http2ServerRequest` writable 
 added: v8.4.0
 -->
 
-Indica que el [`Http2Stream`][] subyacente fue cerrado. Just like `'end'`, this event occurs only once per response.
+Indica que el [`Http2Stream`][] subyacente fue cerrado. Al igual que `'end'`, este evento ocurre una sóla vez por respuesta.
 
 #### request.aborted
 
@@ -2418,7 +2418,7 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Sets a single header value for implicit headers. Si este encabezado ya existe en los envíos de encabezados pendientes, su valor será reemplazado. Use an array of strings here to send multiple headers with the same name.
+Sets a single header value for implicit headers. Si este encabezado ya existe en los envíos de encabezados pendientes, su valor será reemplazado. Utilice aquí una matriz de strings para enviar varios encabezados con el mismo nombre.
 
 Ejemplo:
 
