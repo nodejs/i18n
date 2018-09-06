@@ -178,19 +178,19 @@ Inoltre, sui file system o sui sistemi operativi case-insensitive (che non fanno
 
 <!--type=misc-->
 
-Node.js has several modules compiled into the binary. These modules are described in greater detail elsewhere in this documentation.
+Node.js ha diversi moduli compilati nel binario. Questi moduli sono descritti in modo più dettagliato in un altro punto di questa documentazione.
 
-The core modules are defined within Node.js's source and are located in the `lib/` folder.
+I core module sono definiti nella sorgente (source) di Node.js e si trovano nella cartella `lib/`.
 
-Core modules are always preferentially loaded if their identifier is passed to `require()`. For instance, `require('http')` will always return the built in HTTP module, even if there is a file by that name.
+I core module vengono sempre caricati prima di tutti se il loro identificatore viene passato a `require()`. Ad esempio, `require('http')` restituirà sempre il modulo HTTP integrato, anche se esiste un file con quel nome.
 
-## Cycles
+## Cicli
 
 <!--type=misc-->
 
-When there are circular `require()` calls, a module might not have finished executing when it is returned.
+Quando ci sono le chiamate circolari `require()`, un modulo potrebbe non aver completato l'esecuzione nel momento in cui viene restituito.
 
-Consider this situation:
+Considera questa situazione:
 
 `a.js`:
 
@@ -223,9 +223,9 @@ const b = require('./b.js');
 console.log('in main, a.done = %j, b.done = %j', a.done, b.done);
 ```
 
-When `main.js` loads `a.js`, then `a.js` in turn loads `b.js`. At that point, `b.js` tries to load `a.js`. In order to prevent an infinite loop, an **unfinished copy** of the `a.js` exports object is returned to the `b.js` module. `b.js` then finishes loading, and its `exports` object is provided to the `a.js` module.
+Quando `main.js` carica `a.js`, di conseguenza a sua volta `a.js` carica `b.js`. A quel punto, `b.js` prova a caricare `a.js`. Al fine di impedire un ciclo infinito, una **copia incompleta** dell'exports object `a.js` viene restituita al modulo `b.js`. Dopo `b.js` termina il caricamento e il suo `exports` object viene fornito al modulo `a.js`.
 
-By the time `main.js` has loaded both modules, they're both finished. The output of this program would thus be:
+Nel momento in cui `main.js` ha caricato entrambi i moduli, sono entrambi conclusi. L'output di questo programma sarebbe quindi:
 
 ```txt
 $ node main.js
@@ -239,9 +239,9 @@ a done
 in main, a.done = true, b.done = true
 ```
 
-Careful planning is required to allow cyclic module dependencies to work correctly within an application.
+È necessaria un'attenta pianificazione per consentire alle dipendenze dei moduli ciclici di funzionare correttamente all'interno di un'applicazione.
 
-## File Modules
+## I File Module
 
 <!--type=misc-->
 
