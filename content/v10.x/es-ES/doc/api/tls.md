@@ -278,11 +278,11 @@ Devuelve la dirección enlazada, el apellido de la dirección y el puerto del se
 added: v0.3.2
 -->
 
-* `callback` {Function} An optional listener callback that will be registered to listen for the server instance's `'close'` event.
+* `callback` {Function} Un listener opcional callback que se registrará para escuchar el evento `'close'` de la instancia del servidor.
 
-The `server.close()` method stops the server from accepting new connections.
+El método `server.close()` evita que el servidor acepte nuevas conexiones.
 
-This function operates asynchronously. The `'close'` event will be emitted when the server has no more open connections.
+Esta función funciona de forma asíncrona. El evento `'close'` se emitirá cuando el servidor no tenga más conexiones abiertas.
 
 ### server.connections
 
@@ -291,11 +291,11 @@ added: v0.3.2
 deprecated: v0.9.7
 -->
 
-> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
+> Estabilidad: 0 - Obsoleto: Use [`server.getConnections()`][] en su lugar.
 
 * {number}
 
-Returns the current number of concurrent connections on the server.
+Devuelve el número actual de conexiones simultáneas en el servidor.
 
 ### server.getTicketKeys()
 
@@ -303,13 +303,13 @@ Returns the current number of concurrent connections on the server.
 added: v3.0.0
 -->
 
-* Returns: {Buffer}
+* Devuelve: {Buffer}
 
-Returns a `Buffer` instance holding the keys currently used for encryption/decryption of the [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
+Devuelve una instancia `Buffer` que contiene las claves actualmente utilizadas para el cifrado/descifrado de los [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
 
 ### server.listen()
 
-Starts the server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
+Inicia el servidor escuchando conexiones encriptadas. Este método es idéntico a [`server.listen()`][] from [`net.Server`][].
 
 ### server.setTicketKeys(keys)
 
@@ -317,9 +317,9 @@ Starts the server listening for encrypted connections. This method is identical 
 added: v3.0.0
 -->
 
-* `keys` {Buffer} The keys used for encryption/decryption of the [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
+* `keys` {Buffer} Las claves utilizadas para el cifrado/descifrado de los [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
 
-Updates the keys for encryption/decryption of the [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
+Actualiza las claves para el cifrado/descifrado de la [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
 
 The key's `Buffer` should be 48 bytes long. See `ticketKeys` option in [`tls.createServer()`] for more information on how it is used.
 
