@@ -114,7 +114,7 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 
 ##### Manejo de Errores
 
-Si alguno de los callbacks de `AsyncHook` arrojan, la aplicación imprimirá el trazado de pila y salida. La ruta de salida sí sigue a una excepción no capturada, pero se eliminan todos los oyentes de `'uncaughtException'`, forzando la salida del proceso. Los callbacks de `'exit'` seguirán siendo llamados a menos que la aplicación se ejecute con `--abort-on-uncaught-exception`, en cuyo caso un trazado de pila será impreso y la aplicación saldrá, dejando un archivo principal.
+Si alguno de los callbacks de `AsyncHook` arrojan, la aplicación imprimirá el trazado de pila y saldrá. La ruta de salida sí sigue a una excepción no capturada, pero se eliminan todos los oyentes de `'uncaughtException'`, forzando la salida del proceso. Los callbacks de `'exit'` seguirán siendo llamados a menos que la aplicación se ejecute con `--abort-on-uncaught-exception`, en cuyo caso un trazado de pila será impreso y la aplicación saldrá, dejando un archivo principal.
 
 El motivo de este comportamiento de manejo de error es que estos callbacks se ejecutan en puntos potencialmente volátiles en el tiempo de vida de un objeto, por ejemplo, durante la construcción y destrucción de una clase. Debido a esto, se considera necesario reducir el proceso rápidamente para evitar una anulación no intencionada en el futuro. Esto está sujeto a cambio en el futuro si un análisis comprensivo se realiza para asegurar que una excepción puede seguir el flujo de control normal sin efectos secundarios no intencionados.
 
