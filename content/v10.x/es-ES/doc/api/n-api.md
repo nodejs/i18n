@@ -153,11 +153,11 @@ Todas las funciones de N-API comparten el mismo patrón de manejo de errores. El
 
 El valor de retorno será `napi_ok` si la petición fue exitosa y no se arrojó ninguna excepción de no-captura de JavaScript. Si ha ocurrido un error y una excepción fue arrojada, el valor de `napi_status` para el error será devuelto. Si una excepción fue arrojada y no ocurrió ningún error, `napi_pending_exception` será devuelto.
 
-In cases where a return value other than `napi_ok` or `napi_pending_exception` is returned, [`napi_is_exception_pending`][] must be called to check if an exception is pending. See the section on exceptions for more details.
+En los casos donde un valor de retorno distinto a `napi_ok` o `napi_is_exception_pending` sea devuelto, [`napi_is_exception_pending`][] debe ser llamado para verificar si una hay una excepción pendiente. Vea la sección sobre las excepciones para más detalles.
 
-The full set of possible `napi_status` values is defined in `napi_api_types.h`.
+Todo el conjunto de valores posibles `napi_status` está definido en `napi_api_types.h`.
 
-The `napi_status` return value provides a VM-independent representation of the error which occurred. In some cases it is useful to be able to get more detailed information, including a string representing the error as well as VM (engine)-specific information.
+El valor de retorno `napi_status` proporciona una representación del error ocurrido, independiente de la VM. En algunos casos es útil poder conseguir más información detallada, incluyendo una cadena que representa al error, así como información específica del motor de la VM.
 
 In order to retrieve this information [`napi_get_last_error_info`][] is provided which returns a `napi_extended_error_info` structure. The format of the `napi_extended_error_info` structure is as follows:
 
