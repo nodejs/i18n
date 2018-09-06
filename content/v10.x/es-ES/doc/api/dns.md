@@ -262,14 +262,14 @@ changes:
                  specifically `options.ttl`.
 -->
 
-- `hostname` {string} Hostname to resolve.
+- `hostname`{string} Hostname para resolver.
 - `options` {Object} 
-  - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
+  - `ttl` {boolean} Recupere el valor Time-To-Live (TTL) para cada registro. Cuando sea `true`, la callback recibe un array de objetos `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }`, en lugar de un array de strings con la expresión TTL en segundos.
 - `callback` {Function} 
   - `err` {Error}
   - `addresses` {string[] | Object[]}
 
-Uses the DNS protocol to resolve a IPv6 addresses (`AAAA` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of IPv6 addresses.
+Utiliza el protocolo DNS para resolver direcciones IPv6 (registros `AAAA`) para el `hostname`. El argumento `addresses` pasado a la función `callback` contendrá un array de direcciones IPv6.
 
 ## dns.resolveCname(hostname, callback)
 
@@ -282,7 +282,7 @@ added: v0.3.2
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve `CNAME` records for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of canonical name records available for the `hostname` (e.g. `['bar.example.com']`).
+Utiliza el protocolo DNS para resolver los registros `CNAME` para el `hostname`. El argumento `addresses` pasado a la función `callback` contendrá un array de registros de nombres canónicos disponibles para el `hostname` (p. e.j `['bar.example.com']`).
 
 ## dns.resolveMx(hostname, callback)
 
@@ -295,7 +295,7 @@ added: v0.1.27
   - `err` {Error}
   - `addresses` {Object[]}
 
-Uses the DNS protocol to resolve mail exchange records (`MX` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects containing both a `priority` and `exchange` property (e.g. `[{priority: 10, exchange: 'mx.example.com'}, ...]`).
+Utiliza el protocolo DNS para resolver el registro de intercambios de correo (registros `MX`) para el `hostname`. El argumento `addresses` pasado a la función `callback` contendrá un array de objetos con ambas propiedades `priority` y `exchange` (p. e.j `[{priority: 10, exchange: 'mx.example.com'}, ...]`).
 
 ## dns.resolveNaptr(hostname, callback)
 
@@ -308,7 +308,7 @@ added: v0.9.12
   - `err` {Error}
   - `addresses` {Object[]}
 
-Uses the DNS protocol to resolve regular expression based records (`NAPTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects with the following properties:
+Utiliza el protocolo DNS para resolver los registros basados en expresiones regulares (registros `NAPTR`) para el `hostname`. El argumento `addresses` pasado a la función `callback` contendrá un array de objetos con las siguientes propiedades:
 
 - `flags`
 - `service`
@@ -341,7 +341,7 @@ added: v0.1.90
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve name server records (`NS` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of name server records available for `hostname` (e.g. `['ns1.example.com', 'ns2.example.com']`).
+Utiliza el protocolo DNS para resolver los registros de servidor de nombres (registros `NS`) para el `hostname`. El argumento `addresses` pasado a la función `callback` contendrá un array de registros de servidor de nombres disponibles para el `hostname` (p. e.j `['ns1.example.com', 'ns2.example.com']`).
 
 ## dns.resolvePtr(hostname, callback)
 
@@ -354,7 +354,7 @@ added: v6.0.0
   - `err` {Error}
   - `addresses` {string[]}
 
-Uses the DNS protocol to resolve pointer records (`PTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will be an array of strings containing the reply records.
+Utiliza el protocolo DNS para resolver los registros de punteros (registros `PTR`) para el `hostname`. El argumento `addresses` pasado a la función `callback` contendrá un array de strings con los registros de respuesta.
 
 ## dns.resolveSoa(hostname, callback)
 
