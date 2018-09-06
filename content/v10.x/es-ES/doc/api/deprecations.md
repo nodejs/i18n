@@ -138,21 +138,21 @@ Tipo: Fin-de-Vida
 
 Tipo: Fin-de-Vida
 
-Calling an asynchronous function without a callback throws a `TypeError` in Node.js 10.0.0 onwards. (See https://github.com/nodejs/node/pull/12562.)
+Llamar a una función asincrónica sin un callback nos lanza un `TypeError` en Node.js 10.0.0 y en adelante. (Vea https://github.com/nodejs/node/pull/12562.)
 
 <a id="DEP0014"></a>
 
-### DEP0014: fs.read legacy String interface
+### DEP0014: fs.read interfaz de String antigua
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-The [`fs.read()`][] legacy `String` interface is deprecated. Use the `Buffer` API as mentioned in the documentation instead.
+La interfaz de `String` antigua [`fs.read()`][] está desaprobada. En cambio, use la API `Buffer` como se menciona en la documentación.
 
 <a id="DEP0015"></a>
 
-### DEP0015: fs.readSync legacy String interface
+### DEP0015: fs.readSync interfaz de String antigua
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
 The [`fs.readSync()`][] legacy `String` interface is deprecated. Use the `Buffer` API as mentioned in the documentation instead.
 
