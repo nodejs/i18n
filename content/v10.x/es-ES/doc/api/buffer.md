@@ -1921,7 +1921,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 8`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe el `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeDoubleBE()` escribe big endian, `writeDoubleLE()` escribe little endian). `value` *debe* ser un doble de 64-bit válido. Behavior is undefined when `value` is anything other than a 64-bit double.
+Escribe el `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeDoubleBE()` escribe big endian, `writeDoubleLE()` escribe little endian). `value` *debe* ser un doble de 64-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un doble de 64-bit.
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -1929,12 +1929,12 @@ const buf = Buffer.allocUnsafe(8);
 buf.writeDoubleBE(0xdeadbeefcafebabe, 0);
 
 console.log(buf);
-// Prints: <Buffer 43 eb d5 b7 dd f9 5f d7>
+// Imprime: <Buffer 43 eb d5 b7 dd f9 5f d7>
 
 buf.writeDoubleLE(0xdeadbeefcafebabe, 0);
 
 console.log(buf);
-// Prints: <Buffer d7 5f f9 dd b7 d5 eb 43>
+// Imprime: <Buffer d7 5f f9 dd b7 d5 eb 43>
 ```
 
 ### buf.writeFloatBE(value, offset)
@@ -1951,11 +1951,11 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {number} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 4`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* `value` {number} Número a ser escrito en `buf`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 4`.
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
+Escribe el `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeFloatBE()` escribe big endian, `writeFloatLE()` escribe little endian). `value` *debe* ser un float de 32-bit válido. El comportamiento está indefinido cuando `value` es otra cosa que un float de 32-bit.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -1963,12 +1963,12 @@ const buf = Buffer.allocUnsafe(4);
 buf.writeFloatBE(0xcafebabe, 0);
 
 console.log(buf);
-// Prints: <Buffer 4f 4a fe bb>
+// Imprime: <Buffer 4f 4a fe bb>
 
 buf.writeFloatLE(0xcafebabe, 0);
 
 console.log(buf);
-// Prints: <Buffer bb fe 4a 4f>
+// Imprime: <Buffer bb fe 4a 4f>
 ```
 
 ### buf.writeInt8(value, offset)
@@ -1983,7 +1983,7 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
+* `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 1`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
