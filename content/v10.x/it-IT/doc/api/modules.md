@@ -280,7 +280,7 @@ Se manca il file specificato dalla voce `'main'` di `package.json` e non può es
 Errore: Impossibile trovare il modulo 'some-library'
 ```
 
-Se non c'è nessun file `package.json` nella directory, allora Node.js tenterà di caricare un file `index.js` o un file `index.node` al di fuori di quella directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
+Se non c'è nessun file `package.json` nella directory, allora Node.js tenterà di caricare un file `index.js` o un file `index.node` al di fuori di quella directory. Ad esempio, se non c'era un file `package.json` nell'esempio precedente, allora `require('./some-library')` avrebbe tentato di caricare:
 
 * `./some-library/index.js`
 * `./some-library/index.node`
