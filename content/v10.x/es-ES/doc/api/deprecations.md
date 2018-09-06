@@ -266,63 +266,63 @@ La API [`util.debug()`][] está desaprobada. En cambio, por favor use [`console.
 
 Tipo: Runtime
 
-La API [`util.error()`][] está desaprobada. Please use [`console.error()`][] instead.
+La API [`util.error()`][] está desaprobada. En cambio, por favor use [`console.error()`][].
 
 <a id="DEP0030"></a>
 
 ### DEP0030: SlowBuffer
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`SlowBuffer`][] class has been deprecated. Please use [`Buffer.allocUnsafeSlow(size)`][] instead.
+La clase [`SlowBuffer`][] ha sido desaprobada. En cambio, por favor use [`Buffer.allocUnsafeSlow(size)`][].
 
 <a id="DEP0031"></a>
 
 ### DEP0031: ecdh.setPublicKey()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
+El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusión en la API no es útil.
 
 <a id="DEP0032"></a>
 
-### DEP0032: domain module
+### DEP0032: módulo de dominio
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`domain`][] module is deprecated and should not be used.
+El módulo [`domain`][] está desaprobado y no debería ser usado.
 
 <a id="DEP0033"></a>
 
 ### DEP0033: EventEmitter.listenerCount()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated. Please use [`emitter.listenerCount(eventName)`][] instead.
+La API [`EventEmitter.listenerCount(emitter, eventName)`][] ha sido desaprobada. En cambio, por favor use [`emitter.listenerCount(eventName)`][].
 
 <a id="DEP0034"></a>
 
 ### DEP0034: fs.exists(path, callback)
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`fs.exists(path, callback)`][] API has been deprecated. Please use [`fs.stat()`][] or [`fs.access()`][] instead.
+La API [`fs.exists(path, callback)`][] ha sido desaprobada. En cambio, por favor use [`fs.stat()`][] or [`fs.access()`][].
 
 <a id="DEP0035"></a>
 
 ### DEP0035: fs.lchmod(path, mode, callback)
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`fs.lchmod(path, mode, callback)`][] API has been deprecated.
+La API [`fs.lchmod(path, mode, callback)`][] ha sido desaprobada.
 
 <a id="DEP0036"></a>
 
 ### DEP0036: fs.lchmodSync(path, mode)
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`fs.lchmodSync(path, mode)`][] API has been deprecated.
+La API [`fs.lchmodSync(path, mode)`][] ha sido desaprobada.
 
 <a id="DEP0037"></a>
 
