@@ -243,7 +243,7 @@ NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] error`: The JavaScript value to be thrown.
+- `[in] error`: El valor JavaScript a ser arrojado.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
@@ -475,7 +475,7 @@ La llamada a la función no regresa, el proceso terminará.
 
 Esta API puede ser llamada incluso si existe una excepción JavaScript pendiente.
 
-## Object Lifetime management
+## Administración del Tiempo de Vida de los Objetos
 
 As N-API calls are made, handles to objects in the heap for the underlying VM may be returned as `napi_values`. These handles must hold the objects 'live' until they are no longer required by the native code, otherwise the objects could be collected before the native code was finished using them.
 
