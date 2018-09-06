@@ -385,7 +385,7 @@ added: v0.3.8
 
 * `flag` {boolean}
 
-Sets or clears the `IP_MULTICAST_LOOP` socket option. When set to `true`, multicast packets will also be received on the local interface.
+Establece o borra la opción del socket `IP_MULTICAST_LOOP`. Cuando se establece como `true`, los paquetes de multidifusión también serán recibidos en la interfaz local.
 
 ### socket.setMulticastTTL(ttl)
 
@@ -395,9 +395,9 @@ added: v0.3.8
 
 * `ttl` {integer}
 
-Sets the `IP_MULTICAST_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through, specifically for multicast traffic. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.
+Establece la opción del socket `IP_MULTICAST_TTL`. Mientras que TTL generalmente significa "Tiempo Para Vivir", en este contexto especifica el número de saltos IP que un paquete es permitido viajar, específicamente para tráfico de multidifusión. Cada router o puerta de enlace que reenvía un paquete disminuye el TTL. Si el TTL es disminuido a 0 por un router, no se reenviará.
 
-The argument passed to `socket.setMulticastTTL()` is a number of hops between 0 and 255. The default on most systems is `1` but can vary.
+El argumento pasado a `socket.setMulticastTTL()` es un número que salta entre 0 y 255. El predeterminado en la mayoría de los sistemas es `1` pero puede variar.
 
 ### socket.setRecvBufferSize(size)
 
@@ -407,7 +407,7 @@ added: v8.7.0
 
 * `size` {integer}
 
-Sets the `SO_RCVBUF` socket option. Sets the maximum socket receive buffer in bytes.
+Establece la opción del socket `SO_RCVBUF`. Establece el búfer de recibir del máximo socket en bytes.
 
 ### socket.setSendBufferSize(size)
 
@@ -417,7 +417,7 @@ added: v8.7.0
 
 * `size` {integer}
 
-Sets the `SO_SNDBUF` socket option. Sets the maximum socket send buffer in bytes.
+Establece la opción del socket `SO_SNDBUF`. Establece el búfer de enviar del máximo socket en bytes.
 
 ### socket.setTTL(ttl)
 
@@ -427,7 +427,7 @@ added: v0.1.101
 
 * `ttl` {integer}
 
-Sets the `IP_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.
+Establece la opción del socket `IP_TTL`. Mientras que TTL generalmente significa "Tiempo Para Vivir", en este contexto especifica el número de saltos de IP que un paquete tiene permitido viajar. Cada router o puerta de enlace que reenvía un paquete disminuye el TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.
 
 The argument to `socket.setTTL()` is a number of hops between 1 and 255. The default on most systems is 64 but can vary.
 
