@@ -114,15 +114,15 @@ El uso de la API [`crypto.pbkdf2()`][] sin especificar un resumen fue desaprobad
 
 Tipo: Runtime
 
-The [`crypto.createCredentials()`][] API is deprecated. Please use [`tls.createSecureContext()`][] instead.
+La API [`crypto.createCredentials()`][] está desaprobada. En cambio, porfavor use [`tls.createSecureContext()`][].
 
 <a id="DEP0011"></a>
 
 ### DEP0011: crypto.Credentials
 
-Type: Runtime
+Tipo: Runtime
 
-The `crypto.Credentials` class is deprecated. Please use [`tls.SecureContext`][] instead.
+La clase `crypto.Credentials` está desaprobada. En cambio, porfavor use [`tls.SecureContext`][].
 
 <a id="DEP0012"></a>
 
