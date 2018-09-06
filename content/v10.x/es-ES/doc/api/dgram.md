@@ -369,9 +369,9 @@ socket.bind(1234, () => {
 
 Una llamada en un socket que no está listo para enviar, o no está abierto, puede arrojar un *No se está ejecutando* [`Error`][].
 
-If `multicastInterface` can not be parsed into an IP then an *EINVAL* [`System Error`][] is thrown.
+Si `multicastInterface` no puede ser analizado en un IP, entonces un se arroja *EINVAL* [`System Error`][].
 
-On IPv4, if `multicastInterface` is a valid address but does not match any interface, or if the address does not match the family then a [`System Error`][] such as `EADDRNOTAVAIL` or `EPROTONOSUP` is thrown.
+En IPv4, si `multicastInterface` es una dirección válida, pero no coincide con ninguna interfaz, o si la dirección no coincide con la familia entonces se arroja un [`System Error`][], tales como `EADDRNOTAVAIL` o `EPROTONOSUP`.
 
 On IPv6, most errors with specifying or omitting scope will result in the socket continuing to use (or returning to) the system's default interface selection.
 
