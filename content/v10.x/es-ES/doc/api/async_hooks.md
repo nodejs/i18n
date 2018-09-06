@@ -236,7 +236,7 @@ En algunos casos, se reutiliza el objeto de recurso por motivos de rendimiento, 
 
 ###### Ejemplo de contexto asincrónico
 
-Lo siguiente es un ejemplo con información adicional sobre las llamadas a `init` entre las llamadas `before` y `after`, específicamente cómo se verá el callback a `listen()` . El formateo de salida está un poco más elaborado para hacer que el contexto de llamada sea más fácil de ver.
+Lo siguiente es un ejemplo con información adicional sobre las llamadas a `init` entre las llamadas `before` y `after`, específicamente cómo se verá el callback a `listen()` . El formateo de salida está un poco más elaborado para hacer que el contexto de llamada sea visto más fácilmente.
 
 ```js
 let indent = 0;
