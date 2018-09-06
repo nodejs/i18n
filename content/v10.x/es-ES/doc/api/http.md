@@ -730,7 +730,7 @@ server.listen(8000);
 
 When the `'clientError'` event occurs, there is no `request` or `response` object, so any HTTP response sent, including response headers and payload, *must* be written directly to the `socket` object. Care must be taken to ensure the response is a properly formatted HTTP response message.
 
-`err` is an instance of `Error` with two extra columns:
+`err` es una instancia de `Error` con dos columnas adicionales:
 
 * `bytesParsed`: the bytes count of request packet that Node.js may have parsed correctly;
 * `rawPacket`: the raw packet of current request.
@@ -741,7 +741,7 @@ When the `'clientError'` event occurs, there is no `request` or `response` objec
 added: v0.1.4
 -->
 
-Emitted when the server closes.
+Se emite cuando el servidor se cierra.
 
 ### Event: 'connect'
 
@@ -753,11 +753,11 @@ added: v0.7.0
 * `socket` {net.Socket} Network socket between the server and client
 * `head` {Buffer} The first packet of the tunneling stream (may be empty)
 
-Emitted each time a client requests an HTTP `CONNECT` method. If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
+Se emite cada vez que un cliente solicita un método de HTTP `CONNECT` . If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
-### Event: 'connection'
+### Evento: 'connection'
 
 <!-- YAML
 added: v0.1.0
@@ -808,7 +808,7 @@ added: v0.1.90
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. See [`net.Server.close()`][].
+Detiene al servidor de aceptar nuevas conexiones. Vea [`net.Server.close()`][].
 
 ### server.listen()
 
@@ -884,9 +884,9 @@ added: v0.1.17
 
 This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. Esto es un [`EventEmitter`][] con los siguientes eventos:
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.6.7
@@ -902,7 +902,7 @@ added: v0.3.6
 
 Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. It does not imply that the client has received anything yet.
 
-After this event, no more events will be emitted on the response object.
+Después de este evento, no se emitirán más eventos en el objeto de respuesta.
 
 ### response.addTrailers(headers)
 
@@ -981,7 +981,7 @@ added: v0.4.0
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1044,11 +1044,11 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1213,11 +1213,11 @@ added: v0.1.29
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
+This sends a chunk of the response body. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. `callback` will be called when this chunk of data is flushed.
+`chunk` puede ser una string o un búfer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. `callback` will be called when this chunk of data is flushed.
 
 This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
