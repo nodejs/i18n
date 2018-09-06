@@ -452,7 +452,7 @@ Promise.resolve(1729).then(() => {
 
 En este ejemplo, agregar cualquier función real de un hook habilitó el rastreo de las promesas. Hay dos promesas en el ejemplo anterior; la promesa creada por `Promise.resolve()` y la promesa devuelta por la llamada a `then()`. En el ejemplo anterior, la primera promesa recibió el `asyncId` `6`, y la última recibió `asyncId` `7`. Durante la ejecución del callback de `then()`, estamos ejecutando en el contexto de la promesa con `asyncId` `7`. Esta promesa fue activada por el recurso asincrónico `6`.
 
-Otra sutileza con las promesas es que los callbacks de `before` y `after` se ejecutan sólo en promesas encadenadas. That means promises not created by `then()`/`catch()` will not have the `before` and `after` callbacks fired on them. Para más detalles vea los detalles de la API [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) de V8.
+Otra sutileza con las promesas es que los callbacks de `before` y `after` se ejecutan sólo en promesas encadenadas. Esto significa que las promesas no creadas por `then()`/`catch()` no tendrán los callbacks de `before` y `after` activadas en ellos. Para más detalles vea los detalles de la API [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) de V8.
 
 ## API del Embebedor de JavaScript
 
@@ -551,9 +551,9 @@ deprecated: v9.6.0
 
 > Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
 
-Llama a todos los callbacks de `before` para notificar que un nuevo contexto de ejecución asincrónico está siendo accedido. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
+Llama a todos los callbacks de `before` para notificar que un nuevo contexto de ejecución asincrónico está siendo accedido. Si se realizan llamadas anidadas a `emitBefore()`, la pila de `asyncId`s será rastreada y desenrollada correctamente.
 
-`before` and `after` calls must be unwound in the same order that they are called. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
+Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en el cual son llamadas. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
 
 #### asyncResource.emitAfter()
 
@@ -563,11 +563,11 @@ deprecated: v9.6.0
 
 > Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
 
-Llama a todos los callbacks `after` . If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. De otra manera ocurrirá un error.
+Llama a todos los callbacks `after` . Si se realizaron llamadas anidadas a `emitBefore()`, entonces asegúrese de que la pila se desenrolle correctamente. De otra manera ocurrirá un error.
 
-If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
+Si el callback del usuario arroja una excepción, `emitAfter()` será llamado automáticamente para todos los `asyncId`s en la pila si el error es manejado por un dominio o un handler de `'uncaughtException'` .
 
-`before` and `after` calls must be unwound in the same order that they are called. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
+Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en el cual son llamadas. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
 
 #### asyncResource.emitDestroy()
 
@@ -579,4 +579,4 @@ Llama a todos los hooks `destroy`. Esto sólo se debe llamar una vez. Ocurrirá 
 
 #### asyncResource.triggerAsyncId()
 
-* Returns: {number} The same `triggerAsyncId` that is passed to the `AsyncResource` constructor.
+* Devuelve: {number} El mismo `triggerAsyncId` que es pasado al constructor de `AsyncResource` .
