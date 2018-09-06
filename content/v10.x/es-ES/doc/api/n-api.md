@@ -247,7 +247,7 @@ NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API suelta el valor JavaScript proporcionado.
+Esta API arroja el valor JavaScript proporcionado.
 
 #### napi_throw_error
 
@@ -323,7 +323,7 @@ NODE_EXTERN napi_status napi_is_error(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] msg`: El `napi_value` a ser verificado.
-- `[out] result`: Valor Booleano que se establece true si `napi_value` representa un error; de lo contrario, establece falso.
+- `[out] result`: Valor Booleano que se establece true si `napi_value` representa un error; de lo contrario, se establece false.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
