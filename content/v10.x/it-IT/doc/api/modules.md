@@ -108,7 +108,7 @@ require(X) dal modulo al path Y
    b. STOP
 2. Se X inizia con '/'
    a. imposta Y come root del filesystem
-3. Se X iniziano con './' o '/' or '../'
+3. Se X inizia con './' o '/' or '../'
    a. LOAD_AS_FILE(Y + X)
    b. LOAD_AS_DIRECTORY(Y + X)
 4. LOAD_NODE_MODULES(X, dirname(Y))
