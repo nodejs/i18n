@@ -485,7 +485,7 @@ En muchos casos, sin embargo, es necesario que los handles permanezcan válidos 
 
 ### Hacer al handle de vida útil más corto que la del método nativo
 
-It is often necessary to make the lifespan of handles shorter than the lifespan of a native method. For example, consider a native method that has a loop which iterates through the elements in a large array:
+A menudo es necesario hacer la vida útil de los handles más corto que la vida útil de un método nativo. Por ejemplo, considere un método nativo que tiene un loop que itera a través de los elementos de un arreglo de gran tamaño:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -494,13 +494,13 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // do something with element
+  // hacer algo con el elemento
 }
 ```
 
-This would result in a large number of handles being created, consuming substantial resources. In addition, even though the native code could only use the most recent handle, all of the associated objects would also be kept alive since they all share the same scope.
+Esto resultaría en la creación de un gran número de handles que consumen una cantidad sustancial de recursos. Además, aunque el código nativo sólo podría utilizar el handle más reciente, todos los objetos asociados podrían ser mantenidos vivos, ya que todos ellos comparten el mismo ámbito.
 
-To handle this case, N-API provides the ability to establish a new 'scope' to which newly created handles will be associated. Once those handles are no longer required, the scope can be 'closed' and any handles associated with the scope are invalidated. The methods available to open/close scopes are [`napi_open_handle_scope`][] and [`napi_close_handle_scope`][].
+Para manejar este caso, N-API proporciona la capacidad de establecer un nuevo "ámbito" al que se asociarán los handles recientemente creados. Una vez que esos handles ya no sean requeridos, el ámbito puede ser "cerrado" y cualquier handles asociado con el ámbito se invalida. Los métodos disponibles para abrir/cerrar ámbitos son [`napi_open_handle_scope`][] y [`napi_close_handle_scope`][].
 
 N-API only supports a single nested hierarchy of scopes. There is only one active scope at any time, and all new handles will be associated with that scope while it is active. Scopes must be closed in the reverse order from which they are opened. In addition, all scopes created within a native method must be closed before returning from that method.
 
