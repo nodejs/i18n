@@ -10,9 +10,9 @@
 
 Node.js contiene soporte para los Módulos ES basado en el [EP de Node.js para Módulos ES](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
-Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Error messages are still being polished.
+Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Los mensajes de error todavía están siendo pulidos.
 
-## Enabling
+## Habilitación
 
 <!-- type=misc -->
 
