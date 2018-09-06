@@ -120,7 +120,7 @@ El motivo de este comportamiento de manejo de error es que estos callbacks se ej
 
 ##### Impresión en los Callbacks de AsyncHooks
 
-Ya que imprimir a la consola es una operación asincrónica, `console.log()` causará que los callbacks de AsyncHooks sean llamados. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una fácil solución para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
+Ya que imprimir hacia la consola es una operación asincrónica, `console.log()` causará que los callbacks de AsyncHooks sean llamados. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una fácil solución para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. Esto imprimirá hacia stdout porque `1` es el descriptor de archivo para stdout y no invocará a AsyncHooks de manera recursiva porque es sincrónico.
 
 ```js
 const fs = require('fs');
