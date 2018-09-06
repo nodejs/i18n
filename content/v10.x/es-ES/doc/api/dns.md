@@ -213,19 +213,19 @@ added: v0.1.27
 
 Usa el protocolo DNS para resolver un hostname (p. e.j. `'nodejs.org'`) en una matriz de los registros de recursos. La función `callback` tiene argumentos `(err, records)`. Cuando sea exitoso, `records` tendrá una matriz de los registros de recursos. El tipo y la estructura de resultados individuales varía basado en `rrtype`:
 
-| `rrtype`  | `records` contiene                | Tipo de resultado | Método de taquigrafía    |
-| --------- | --------------------------------- | ----------------- | ------------------------ |
-| `'A'`     | direcciones IPv4 (predeterminado) | {string}          | [`dns.resolve4()`][]     |
-| `'AAAA'`  | direcciones IPv6                  | {string}          | [`dns.resolve6()`][]     |
-| `'CNAME'` | canonical name records            | {string}          | [`dns.resolveCname()`][] |
-| `'MX'`    | mail exchange records             | {Object}          | [`dns.resolveMx()`][]    |
-| `'NAPTR'` | name authority pointer records    | {Object}          | [`dns.resolveNaptr()`][] |
-| `'NS'`    | name server records               | {string}          | [`dns.resolveNs()`][]    |
-| `'PTR'`   | pointer records                   | {string}          | [`dns.resolvePtr()`][]   |
-| `'SOA'`   | start of authority records        | {Object}          | [`dns.resolveSoa()`][]   |
-| `'SRV'`   | service records                   | {Object}          | [`dns.resolveSrv()`][]   |
-| `'TXT'`   | text records                      | {string[]}        | [`dns.resolveTxt()`][]   |
-| `'ANY'`   | any records                       | {Object}          | [`dns.resolveAny()`][]   |
+| `rrtype`  | `records` contiene                          | Tipo de resultado | Método de taquigrafía    |
+| --------- | ------------------------------------------- | ----------------- | ------------------------ |
+| `'A'`     | direcciones IPv4 (predeterminado)           | {string}          | [`dns.resolve4()`][]     |
+| `'AAAA'`  | direcciones IPv6                            | {string}          | [`dns.resolve6()`][]     |
+| `'CNAME'` | registros de nombres canónicos              | {string}          | [`dns.resolveCname()`][] |
+| `'MX'`    | registros de intercambio de correos         | {Object}          | [`dns.resolveMx()`][]    |
+| `'NAPTR'` | registros de puntero de autoridad de nombre | {Object}          | [`dns.resolveNaptr()`][] |
+| `'NS'`    | registros de servidor de nombres            | {string}          | [`dns.resolveNs()`][]    |
+| `'PTR'`   | registros de puntero                        | {string}          | [`dns.resolvePtr()`][]   |
+| `'SOA'`   | inicio de registros de autoridad            | {Object}          | [`dns.resolveSoa()`][]   |
+| `'SRV'`   | registros de servicios                      | {Object}          | [`dns.resolveSrv()`][]   |
+| `'TXT'`   | text records                                | {string[]}        | [`dns.resolveTxt()`][]   |
+| `'ANY'`   | any records                                 | {Object}          | [`dns.resolveAny()`][]   |
 
 On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
 
