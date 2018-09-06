@@ -504,7 +504,7 @@ Para manejar este caso, N-API proporciona la capacidad de establecer un nuevo "�
 
 N-API sólo soporta una jerarquía anidada única de ámbitos. Sólo hay un ámbito activo en cualquier momento y todos los nuevos handles serán asociados con ese ámbito mientras esté activo. Los ámbitos deben ser cerrados en el orden inverso en el que fueron abiertos. Además, todos los ámbitos creados dentro de un método nativo debe ser cerrado antes de regresar de ese método.
 
-Taking the earlier example, adding calls to [`napi_open_handle_scope`][] and [`napi_close_handle_scope`][] would ensure that at most a single handle is valid throughout the execution of the loop:
+Tomando el ejemplo anterior, añadir llamadas a [`napi_open_handle_scope`][] y [`napi_close_handle_scope`][] garantizaría que, como máximo, un único identificador sea válido durante la ejecución del loop:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -518,7 +518,7 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // do something with element
+  // hacer algo con el elemento
   status = napi_close_handle_scope(env, scope);
   if (status != napi_ok) {
     break;
@@ -526,7 +526,7 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-When nesting scopes, there are cases where a handle from an inner scope needs to live beyond the lifespan of that scope. N-API supports an 'escapable scope' in order to support this case. An escapable scope allows one handle to be 'promoted' so that it 'escapes' the current scope and the lifespan of the handle changes from the current scope to that of the outer scope.
+Al anidar ámbitos, hay casos en los que un handle de un ámbito interno necesita vivir más allá de la vida útil de ese ámbito. N-API soporta un "ámbito escapable" para soportar este caso. An escapable scope allows one handle to be 'promoted' so that it 'escapes' the current scope and the lifespan of the handle changes from the current scope to that of the outer scope.
 
 The methods available to open/close escapable scopes are [`napi_open_escapable_handle_scope`][] and [`napi_close_escapable_handle_scope`][].
 
