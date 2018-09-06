@@ -174,19 +174,19 @@ Tipo: Final-de-Vida
 
 <a id="DEP0018"></a>
 
-### DEP0018: Unhandled promise rejections
+### DEP0018: rechazos de promesas sin gestionar
 
 Tipo: Runtime
 
-Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+Los rechazos de promesas sin gestionar están desaprobados. En el futuro, rechazos de promesas que no sean gestionados terminarán el proceso de Node.js con un código de salida non-zero.
 
 <a id="DEP0019"></a>
 
 ### DEP0019: require('.') resolved outside directory
 
-Type: Runtime
+Tipo: Runtime
 
-In certain cases, `require('.')` may resolve outside the package directory. This behavior is deprecated and will be removed in a future major Node.js release.
+En ciertos casos, `require('.')` puede resolver afuera del directorio de paquetes. This behavior is deprecated and will be removed in a future major Node.js release.
 
 <a id="DEP0020"></a>
 
