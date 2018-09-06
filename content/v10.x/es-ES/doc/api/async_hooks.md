@@ -132,13 +132,13 @@ function debug(...args) {
 }
 ```
 
-Si se necesita una operación asincrónica para registrarse, es posible realizar un seguimiento de lo que causó la operación asincrónica que utiliza la información proporcionada por AsyncHooks. El registro debe omitirse cuando era el registro en sí el que causaba que el callback de AsyncHooks llamara. By doing this the otherwise infinite recursion is broken.
+Si se necesita una operación asincrónica para registrarse, es posible realizar un seguimiento de lo que causó la operación asincrónica que utiliza la información proporcionada por AsyncHooks. El registro debe omitirse cuando era el registro en sí el que causaba que el callback de AsyncHooks llamara. Al hacer esto la recursión que sería infinita se rompe.
 
 #### asyncHook.enable()
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* Devuelve: {AsyncHook} Una referencia a `asyncHook`.
 
-Habilita las callbacks para una instancia determinada de `AsyncHook` . If no callbacks are provided enabling is a noop.
+Habilita las callbacks para una instancia determinada de `AsyncHook` . Si no se proporcionan callbacks, habilitarlos sería un noop.
 
 La instancia de `AsyncHook` está inhabilitada por defecto. Si la instancia de `AsyncHook` debe ser habilitada inmediatamente después de la creación, se puede utilizar el siguiente patrón.
 
@@ -150,13 +150,13 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 #### asyncHook.disable()
 
-* Returns: {AsyncHook} A reference to `asyncHook`.
+* Devuelve: {AsyncHook} Una referencia a `asyncHook`.
 
-Disable the callbacks for a given `AsyncHook` instance from the global pool of `AsyncHook` callbacks to be executed. Una vez que un hook haya sido inhabilitado, no volverá a ser llamado hasta que se habilite.
+Inhabilitar los callbacks para una instancia de `AsyncHook` dada desde el pool global de callbacks de `AsyncHook` que serán ejecutadas. Una vez que un hook haya sido inhabilitado, no volverá a ser llamado hasta que se habilite.
 
 Para la consistencia de una API, `disable()` también devuelve la instancia de `AsyncHook` .
 
-#### Hook Callbacks
+#### Callbacks de Hook
 
 Los eventos clave en el tiempo de vida de eventos asincrónicos han sido categorizados en cuatro áreas: instanciación, antes/después de que un callback es llamado, y cuando la instancia es destruida.
 
