@@ -27,7 +27,7 @@ server.on('listening', () => {
 });
 
 server.bind(41234);
-// server listening 0.0.0.0:41234
+// servidor escucha a 0.0.0.0:41234
 ```
 
 ## Clase: dgram.Socket
@@ -141,7 +141,7 @@ server.on('listening', () => {
 });
 
 server.bind(41234);
-// server listening 0.0.0.0:41234
+// servidor escucha a 0.0.0.0:41234
 ```
 
 ### socket.bind(options[, callback])
@@ -427,9 +427,9 @@ added: v0.1.101
 
 * `ttl` {integer}
 
-Establece la opción del socket `IP_TTL`. Mientras que TTL generalmente significa "Tiempo Para Vivir", en este contexto especifica el número de saltos de IP que un paquete tiene permitido viajar. Cada router o puerta de enlace que reenvía un paquete disminuye el TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.
+Establece la opción del socket `IP_TTL`. Mientras que TTL generalmente significa "Tiempo Para Vivir", en este contexto especifica el número de saltos de IP que un paquete tiene permitido viajar. Cada router o puerta de enlace que reenvía un paquete disminuye el TTL. Si el TTL es disminuido a 0 por un router, no se reenviará. Valores TTL cambiantes son hechos por sondeos de red, o cuando se hace multidifusión.
 
-The argument to `socket.setTTL()` is a number of hops between 1 and 255. The default on most systems is 64 but can vary.
+El argumento para `socket.setTTL()` es un número que salta entre 1 y 255. El predeterminado en la mayoría de los sistemas es 64 pero puede variar.
 
 ### socket.unref()
 
@@ -437,7 +437,7 @@ The argument to `socket.setTTL()` is a number of hops between 1 and 255. The def
 added: v0.9.1
 -->
 
-By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
+De manera predeterminada, enlazar un socket causará que este bloquee el cierre del proceso Node.js mientras permanezca el socket permanezca abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
 
 Calling `socket.unref()` multiple times will have no addition effect.
 
