@@ -104,11 +104,11 @@ Mettendo insieme tutto quel che è stato detto sopra, ecco l'algoritmo di alto l
 ```txt
 require(X) dal modulo al path Y
 1. Se X è un core module,
-   a. return the core module
+   a. restituisce il core module
    b. STOP
-2. If X begins with '/'
-   a. set Y to be the filesystem root
-3. If X begins with './' or '/' or '../'
+2. Se X inizia con '/'
+   a. imposta Y come root del filesystem
+3. Se X iniziano con './' o '/' or '../'
    a. LOAD_AS_FILE(Y + X)
    b. LOAD_AS_DIRECTORY(Y + X)
 4. LOAD_NODE_MODULES(X, dirname(Y))
@@ -116,8 +116,8 @@ require(X) dal modulo al path Y
 
 LOAD_AS_FILE(X)
 
-1. If X is a file, load X as JavaScript text.  STOP
-2. If X.js is a file, load X.js as JavaScript text.  STOP
+1. Se X è un file, carica X come JavaScript text.  STOP
+2. Se X.js è un file, carica X.js come JavaScript text.  STOP
 3. If X.json is a file, parse X.json to a JavaScript Object.  STOP
 4. If X.node is a file, load X.node as binary addon.  STOP
 
