@@ -249,15 +249,15 @@ Se il filename esatto non viene trovato, Node.js tenterà di caricare il filenam
 
 I file `.js` sono interpretati come file JavaScript text ed i file `.json` sono analizzati (parsing) come file JSON text. I file `.node` sono interpretati come degli addon module compilati caricati con `dlopen`.
 
-A required module prefixed with `'/'` is an absolute path to the file. For example, `require('/home/marco/foo.js')` will load the file at `/home/marco/foo.js`.
+Un modulo richiesto con il prefisso `'/'` è un percorso assoluto verso il file. Ad esempio, `require('/home/marco/foo.js')` caricherà il file su `/home/marco/foo.js`.
 
-A required module prefixed with `'./'` is relative to the file calling `require()`. That is, `circle.js` must be in the same directory as `foo.js` for `require('./circle')` to find it.
+Un modulo richiesto con il prefisso `'./'` è relativo al file che chiama `require()`. Cioè, `circle.js` deve essere nella stessa directory di `foo.js` per far sì che `require('./circle')` lo trovi.
 
-Without a leading `'/'`, `'./'`, or `'../'` to indicate a file, the module must either be a core module or is loaded from a `node_modules` folder.
+Senza un prefisso `'/'`, `'./'`, o `'../'` per indicare un file, il modulo deve essere un core module oppure deve essere caricato da una cartella `node_modules`.
 
-If the given path does not exist, `require()` will throw an [`Error`][] with its `code` property set to `'MODULE_NOT_FOUND'`.
+Se il percorso specificato non esiste, `require()` genererà un [`Error`][] con la sua proprietà `code` impostata su `'MODULE_NOT_FOUND'`.
 
-## Folders as Modules
+## Cartelle come Moduli
 
 <!--type=misc-->
 
