@@ -321,21 +321,21 @@ added: v3.0.0
 
 Actualiza las claves para el cifrado/descifrado de la [TLS Session Tickets](https://www.ietf.org/rfc/rfc5077.txt).
 
-The key's `Buffer` should be 48 bytes long. See `ticketKeys` option in [`tls.createServer()`] for more information on how it is used.
+El `Buffer` de la clave debe tener 48 bytes de longitud. Consulte la opción `ticketKeys` en [`tls.createServer()`] para obtener más información sobre cómo se usa.
 
-Changes to the ticket keys are effective only for future server connections. Existing or currently pending server connections will use the previous keys.
+Los cambios en las claves de ticket son efectivos solo para futuras conexiones de servidor. Las conexiones de servidor existentes o actualmente pendientes usarán las claves anteriores.
 
-## Class: tls.TLSSocket
+## Clase: tls.TLSSocket
 
 <!-- YAML
 added: v0.11.4
 -->
 
-The `tls.TLSSocket` is a subclass of [`net.Socket`][] that performs transparent encryption of written data and all required TLS negotiation.
+El `tls.TLSSocket` es una subclase de [`net.Socket`][] que realiza un cifrado transparente de los datos escritos y todas las negociaciones de TLS necesarias.
 
-Instances of `tls.TLSSocket` implement the duplex [Stream](stream.html#stream_stream) interface.
+Las instancias de `tls.TLSSocket` implementan la interfaz dúplex [Stream](stream.html#stream_stream).
 
-Methods that return TLS connection metadata (e.g. [`tls.TLSSocket.getPeerCertificate()`][] will only return data while the connection is open.
+Métodos que devuelven los metadatos de conexión TLS (por ejemplo [`tls.TLSSocket.getPeerCertificate()`][] solo devolverá los datos mientras la conexión esté abierta.
 
 ### new tls.TLSSocket(socket[, options])
 
