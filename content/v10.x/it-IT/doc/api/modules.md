@@ -261,7 +261,7 @@ Se il percorso specificato non esiste, `require()` genererà un [`Error`][] con 
 
 <!--type=misc-->
 
-It is convenient to organize programs and libraries into self-contained directories, and then provide a single entry point to that library. There are three ways in which a folder may be passed to `require()` as an argument.
+È conveniente organizzare programmi e librerie in directory autonome e quindi fornire un singolo punto di accesso alla libreria. Esistono tre modi in cui una cartella può essere passata a `require()` come un argomento.
 
 The first is to create a `package.json` file in the root of the folder, which specifies a `main` module. An example `package.json` file might look like this:
 
