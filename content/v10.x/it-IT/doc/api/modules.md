@@ -160,13 +160,13 @@ NODE_MODULES_PATHS(START)
 
 <!--type=misc-->
 
-I moduli vengono memorizzati nella cache dopo il loro primo caricamento. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+I moduli vengono memorizzati nella cache dopo il loro primo caricamento. Ciò significa che (tra le altre cose) ogni chiamata a `require('foo')`, se finisse nello stesso file, darebbe esattamente lo stesso object restituito.
 
-Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
+Le chiamate multiple a `require('foo')` potrebbero causare la mancata esecuzione del codice del modulo più volte. Questa è una caratteristica importante. Con essa, gli object "parzialmente completi" possono essere restituiti, consentendo così il caricamento delle dipendenze transitive anche quando avrebbero causato dei cicli.
 
-To have a module execute code multiple times, export a function, and call that function.
+Per fare in modo che un modulo esegua più volte il codice, esporta una funzione e chiamala.
 
-### Module Caching Caveats
+### Avvertenze sul Caching dei Moduli
 
 <!--type=misc-->
 
