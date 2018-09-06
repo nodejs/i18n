@@ -368,41 +368,41 @@ La variable de ambiente `NODE_REPL_HISTORY_FILE` ha sido removida. En cambio, po
 
 ### DEP0042: tls.CryptoStream
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`tls.CryptoStream`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+La clase [`tls.CryptoStream`][] ha sido desaprobada. En cambio, por favor use [`tls.TLSSocket`][].
 
 <a id="DEP0043"></a>
 
 ### DEP0043: tls.SecurePair
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`tls.SecurePair`][] class has been deprecated. Please use [`tls.TLSSocket`][] instead.
+La clase [`tls.SecurePair`][] ha sido desaprobada. En cambio, por favor use [`tls.TLSSocket`][].
 
 <a id="DEP0044"></a>
 
 ### DEP0044: util.isArray()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isArray()`][] API has been deprecated. Please use `Array.isArray()` instead.
+La API [`util.isArray()`][] ha sido desaprobada. En cambio, por favor use `Array.isArray()`.
 
 <a id="DEP0045"></a>
 
 ### DEP0045: util.isBoolean()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isBoolean()`][] API has been deprecated.
+La API [`util.isBoolean()`][] ha sido desaprobada.
 
 <a id="DEP0046"></a>
 
 ### DEP0046: util.isBuffer()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isBuffer()`][] API has been deprecated. Please use [`Buffer.isBuffer()`][] instead.
+La API [`util.isBuffer()`][] ha sido desaprobada. En cambio, por favor use [`Buffer.isBuffer()`][].
 
 <a id="DEP0047"></a>
 
