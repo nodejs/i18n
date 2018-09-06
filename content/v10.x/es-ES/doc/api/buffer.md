@@ -2019,7 +2019,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 2`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *debe* se un entero con sigo de 16-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero con signo de 16-bit.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *debe* se un entero con sigo de 16-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero con signo de 16-bit.
 
 `value` se interpreta y escribe como un entero con signo con complemento de dos.
 
@@ -2051,7 +2051,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 4`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeInt32BE()` escribe big endian, `writeInt32LE()` escribe little endian). `value` *debe* se un entero con signo de 32-bit válido. El comportamiento está indefinido cuando `value` es cualquier otro que un entero con signo de 32-bit.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt32BE()` escribe big endian, `writeInt32LE()` escribe little endian). `value` *debe* se un entero con signo de 32-bit válido. El comportamiento está indefinido cuando `value` es cualquier otro que un entero con signo de 32-bit.
 
 `value` se interpreta y escribe como un entero con signo con complemento de dos.
 
@@ -2084,7 +2084,7 @@ changes:
 * `byteLength` {integer} Número de bytes a escribir. Debe satisfacer `0 < byteLength <= 6`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe los bytes de `byteLength` del `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero con signo.
+Escribe los bytes de `byteLength` del `value` al `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero con signo.
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -2116,7 +2116,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 1`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `value` a `buf` en el `offset` especificado. `value` *debe* ser un entero sin signo de 8-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero sin signo de 8-bit.
+Escribe `value` al `buf` en el `offset` especificado. `value` *debe* ser un entero sin signo de 8-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero sin signo de 8-bit.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2148,7 +2148,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 2`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt16BE()` escribe big endian, `writeUInt16LE()` escribe little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
