@@ -70,13 +70,13 @@ Poiché `module` fornisce una proprietà `filename` (normalmente equivalente a `
 
 <!-- type=misc -->
 
-La semantica della funzione `require()` di Node.js è stata progettata per essere abbastanza generica da supportare un numero ragionevole di directory structure. Si spera che i programmi di Package Manager come `dpkg`, `rpm`, ed `npm` trovino la possibilità di creare pacchetti nativi dai moduli Node.js senza modifiche.
+La semantica della funzione `require()` di Node.js è stata progettata per essere abbastanza generica da supportare un numero ragionevole di directory structure. Si spera che i programmi di Package Manager come `dpkg`, `rpm`, e `npm` siano in grado di creare pacchetti nativi dai moduli Node.js senza modifiche.
 
 Di seguito forniamo una directory structure consigliata che potrebbe funzionare:
 
-C'è da dire che volevamo che la cartella in `/usr/lib/node/<some-package>/<some-version>` contenesse una versione specifica di un pacchetto.
+Diciamo che volevamo che la cartella in `/usr/lib/node/<some-package>/<some-version>` contenesse una versione specifica di un pacchetto.
 
-I pacchetti possono dipendere l'uno dall'altro. Per installare il pacchetto `foo`, potrebbe essere necessario installare una versione specifica del pacchetto `bar`. Il pacchetto `bar` può avere delle proprie dipendenze ed, in alcuni casi, queste possono persino scontrarsi tra loro oppure formare dipendenze cicliche.
+I pacchetti possono dipendere l'uno dall'altro. Per installare il pacchetto `foo`, potrebbe essere necessario installare una versione specifica del pacchetto `bar`. Il pacchetto `bar` può avere delle proprie dipendenze e, in alcuni casi, queste possono persino scontrarsi tra loro oppure formare dipendenze cicliche.
 
 Poiché Node.js cerca il `realpath` di tutti i moduli caricati (ovvero risolve i collegamenti simbolici), e successivamente cerca le loro dipendenze nelle cartelle `node_modules` come descritto [qui](#modules_loading_from_node_modules_folders), questa situazione è molto semplice da risolvere tramite la seguente architettura:
 
