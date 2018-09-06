@@ -1,10 +1,10 @@
-# ECMAScript Modules
+# Módulos ECMAScript
 
 <!--introduced_in=v8.5.0-->
 
 <!-- type=misc -->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
 <!--name=esm-->
 
