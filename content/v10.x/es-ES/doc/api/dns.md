@@ -486,9 +486,9 @@ added: v0.1.16
   - `err` {Error}
   - `hostnames` {string[]}
 
-Performs a reverse DNS query that resolves an IPv4 or IPv6 address to an array of hostnames.
+Realiza una consulta DNS inversa que resuelve una dirección IPv4 o IPv6 para un array de hostnames.
 
-On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS error codes](#dns_error_codes).
+En caso de error, `err` es un objeto [`Error`][], donde `err.code` es uno de los [códigos de error DNS](#dns_error_codes).
 
 ## dns.setServers(servers)
 
@@ -496,9 +496,9 @@ On error, `err` is an [`Error`][] object, where `err.code` is one of the [DNS er
 added: v0.11.3
 -->
 
-- `servers` {string[]} array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses
+- `servers` {string[]} array de [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) direcciones formateadas
 
-Sets the IP address and port of servers to be used when performing DNS resolution. The `servers` argument is an array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses. If the port is the IANA default DNS port (53) it can be omitted.
+Establece la dirección IP y el puerto de servidores para ser usados al realizar la resolución DNS. El argumento `servers` es un array de [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) direcciones formateadas. Si el puerto es el puerto DNS (53) predeterminado de IANA, puede ser omitido.
 
 ```js
 dns.setServers([
@@ -509,13 +509,13 @@ dns.setServers([
 ]);
 ```
 
-An error will be thrown if an invalid address is provided.
+Se produce un error si se proporciona una dirección inválida.
 
-The `dns.setServers()` method must not be called while a DNS query is in progress.
+El método `dns.setServers()` no debe ser llamado mientras que una consulta DNS está en progreso.
 
-## Error codes
+## Códigos de error
 
-Each DNS query can return one of the following error codes:
+Cada consulta DNS puede devolver uno de los siguientes códigos de error:
 
 - `dns.NODATA`: DNS server returned answer with no data.
 - `dns.FORMERR`: DNS server claims query was misformatted.
