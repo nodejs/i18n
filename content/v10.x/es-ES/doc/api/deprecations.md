@@ -130,13 +130,13 @@ La clase `crypto.Credentials` está desaprobada. En cambio, porfavor use [`tls.S
 
 Tipo: Fin-de-Vida
 
-`Domain.dispose()` ha sido removido. Recover from failed I/O actions explicitly via error event handlers set on the domain instead.
+`Domain.dispose()` ha sido removido. En cambio, recuperesé de acciones I/O fallidas explícitamente por medio de los gestores de eventos de error establecidos en el dominio.
 
 <a id="DEP0013"></a>
 
-### DEP0013: fs asynchronous function without callback
+### DEP0013: fs función asincrónica sin callback
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
 Calling an asynchronous function without a callback throws a `TypeError` in Node.js 10.0.0 onwards. (See https://github.com/nodejs/node/pull/12562.)
 
