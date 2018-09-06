@@ -2049,7 +2049,7 @@ changes:
 
 * `value` {integer} Número a ser escrito en `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 4`.
-* Returns: {integer} `offset` plus the number of bytes written.
+* Devuelve: {integer} `offset` más el número de bytes escritos.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
 
