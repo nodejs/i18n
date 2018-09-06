@@ -263,24 +263,24 @@ Se il percorso specificato non esiste, `require()` genererà un [`Error`][] con 
 
 È conveniente organizzare programmi e librerie in directory autonome e quindi fornire un singolo punto di accesso alla libreria. Esistono tre modi in cui una cartella può essere passata a `require()` come un argomento.
 
-The first is to create a `package.json` file in the root of the folder, which specifies a `main` module. An example `package.json` file might look like this:
+Il primo è creare un file `package.json` nel root della cartella, che specifica un `main` module. Un esempio di file `package.json` potrebbe essere il seguente:
 
 ```json
 { "name" : "some-library",
   "main" : "./lib/some-library.js" }
 ```
 
-If this was in a folder at `./some-library`, then `require('./some-library')` would attempt to load `./some-library/lib/some-library.js`.
+Se questo era in una cartella all'interno di `./some-library`, allora `require('./some-library')` avrebbe tentato di caricare `./some-library/lib/some-library.js`.
 
-This is the extent of Node.js's awareness of `package.json` files.
+Questo è il grado di consapevolezza di Node.js riguardo i file `package.json`.
 
-If the file specified by the `'main'` entry of `package.json` is missing and can not be resolved, Node.js will report the entire module as missing with the default error:
+Se manca il file specificato dalla voce `'main'` di `package.json` e non può essere risolto, Node.js segnalerà l'intero modulo come mancante con l'errore predefinito:
 
 ```txt
-Error: Cannot find module 'some-library'
+Errore: Impossibile trovare il modulo 'some-library'
 ```
 
-If there is no `package.json` file present in the directory, then Node.js will attempt to load an `index.js` or `index.node` file out of that directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
+Se non c'è nessun file `package.json` nella directory, allora Node.js tenterà di caricare un file `index.js` o un file `index.node` al di fuori di quella directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
 
 * `./some-library/index.js`
 * `./some-library/index.node`
