@@ -2019,9 +2019,9 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 2`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
+Escribe `value` a `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *debe* se un entero con sigo de 16-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero con signo de 16-bit.
 
-`value` is interpreted and written as a two's complement signed integer.
+`value` se interpreta y escribe como un entero con signo con complemento de dos.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2030,7 +2030,7 @@ buf.writeInt16BE(0x0102, 0);
 buf.writeInt16LE(0x0304, 2);
 
 console.log(buf);
-// Prints: <Buffer 01 02 04 03>
+// Imprime: <Buffer 01 02 04 03>
 ```
 
 ### buf.writeInt32BE(value, offset)
@@ -2047,8 +2047,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - 4`.
+* `value` {integer} Número a ser escrito en `buf`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 4`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
