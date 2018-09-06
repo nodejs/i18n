@@ -118,13 +118,13 @@ LOAD_AS_FILE(X)
 
 1. Se X è un file, carica X come JavaScript text.  STOP
 2. Se X.js è un file, carica X.js come JavaScript text.  STOP
-3. If X.json is a file, parse X.json to a JavaScript Object.  STOP
-4. If X.node is a file, load X.node as binary addon.  STOP
+3. Se X.json è un file, analizza (parsing) X.json in cerca di un JavaScript Object.  STOP
+4. Se X.node è un file, carica X.node as binary addon.  STOP
 
 LOAD_INDEX(X)
 
-1. If X/index.js is a file, load X/index.js as JavaScript text.  STOP
-2. If X/index.json is a file, parse X/index.json to a JavaScript object. STOP
+1. Se X/index.js è un file, carica X/index.js come JavaScript text.  STOP
+2. Se X/index.json è un file, analizza (parsing) X/index.json in cerca di un JavaScript object. STOP
 3. If X/index.node is a file, load X/index.node as binary addon.  STOP
 
 LOAD_AS_DIRECTORY(X)
