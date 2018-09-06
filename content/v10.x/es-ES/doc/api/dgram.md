@@ -297,7 +297,7 @@ Enviar múltiples búferes puede ser más rápido o más lento dependiendo de la
 
 El tamaño máximo de un datagrama `IPv4/v6` depende del `MTU` (*Unidad Máxima de Transmisión*), y del tamaño del campo de `Payload Length`.
 
-* The `Payload Length` field is `16 bits` wide, which means that a normal payload exceed 64K octets *including* the internet header and data (65,507 bytes = 65,535 − 8 bytes UDP header − 20 bytes IP header); this is generally true for loopback interfaces, but such long datagram messages are impractical for most hosts and networks.
+* El campo de `Payload Length` tiene `16 bits` de ancho, lo que significa que una carga normal sobrepasa 64K octets *incluyendo* el encabezado de internet y los datos (65,507 bytes = 65,535 − 8 bytes encabezado UDP − 20 bytes encabezado IP).
 
 * The `MTU` is the largest size a given link layer technology can support for datagram messages. For any link, `IPv4` mandates a minimum `MTU` of `68` octets, while the recommended `MTU` for IPv4 is `576` (typically recommended as the `MTU` for dial-up type applications), whether they arrive whole or in fragments.
   
