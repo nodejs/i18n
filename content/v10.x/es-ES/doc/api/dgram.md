@@ -331,9 +331,9 @@ Para sockets IPv4, este debería ser el IP configurado para la interfaz física 
 
 Para sockets IPv6, `multicastInterface` debería incluir un scope para indicar la interfaz como en el siguiente ejemplo. En IPv6, llamadas `send` individualmente también pueden usar scope explícito en las direcciones, para que solo los paquetes enviados a una dirección de multidifusión sin especificar un scope explícito sean afectadas por el uso exitoso más reciente de esta llamada.
 
-#### Examples: IPv6 Outgoing Multicast Interface
+#### Ejemplos: IPv6 Interfaz de Multidifusión Saliente
 
-On most systems, where scope format uses the interface name:
+En la mayoría de los sistemas, donde el formato scope usa el nombre de la interfaz:
 
 ```js
 const socket = dgram.createSocket('udp6');
@@ -343,7 +343,7 @@ socket.bind(1234, () => {
 });
 ```
 
-On Windows, where scope format uses an interface number:
+En Windows, donde el formato scope usa un número de interfaz:
 
 ```js
 const socket = dgram.createSocket('udp6');
@@ -353,9 +353,9 @@ socket.bind(1234, () => {
 });
 ```
 
-#### Example: IPv4 Outgoing Multicast Interface
+#### Ejemplo: IPv4 Interfaz de Multidifusión Saliente
 
-All systems use an IP of the host on the desired physical interface:
+Todos los sistemas usan un IP del host en la interfaz física deseada:
 
 ```js
 const socket = dgram.createSocket('udp4');
@@ -365,9 +365,9 @@ socket.bind(1234, () => {
 });
 ```
 
-#### Call Results
+#### Resultados de la Llamada
 
-A call on a socket that is not ready to send or no longer open may throw a *Not running* [`Error`][].
+Una llamada en un socket que no está listo para enviar, o no está abierto, puede arrojar un *No se está ejecutando* [`Error`][].
 
 If `multicastInterface` can not be parsed into an IP then an *EINVAL* [`System Error`][] is thrown.
 
