@@ -262,7 +262,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Example pinning on certificate fingerprint, or the public key (similar to `pin-sha256`):
+Ejemplo fijando en la huella digital del certificado o en la clave pública (similar a `pin-sha256`):
 
 ```js
 const tls = require('tls');
@@ -278,7 +278,7 @@ const options = {
   path: '/',
   method: 'GET',
   checkServerIdentity: function(host, cert) {
-    // Make sure the certificate is issued to the host we are connected to
+    // Asegúrese de que el certificado sea emitido al host al cual estamos conectados
     const err = tls.checkServerIdentity(host, cert);
     if (err) {
       return err;
@@ -304,10 +304,10 @@ const options = {
     }
 
     // This loop is informational only.
-    // Print the certificate and public key fingerprints of all certs in the
-    // chain. Its common to pin the public key of the issuer on the public
-    // internet, while pinning the public key of the service in sensitive
-    // environments.
+    // Imprima el certificado y las huellas dactilares de clave pública de todos los certs en la
+    // cadena. Es común fijar la clave público del emisor en el internet
+    // público, mientras fija la clave público del servicio en entornos
+    // sensibles.
     do {
       console.log('Subject Common Name:', cert.subject.CN);
       console.log('  Certificate SHA256 fingerprint:', cert.fingerprint256);
@@ -326,7 +326,7 @@ options.agent = new https.Agent(options);
 const req = https.request(options, (res) => {
   console.log('All OK. Server matched our pinned cert or public key');
   console.log('statusCode:', res.statusCode);
-  // Print the HPKP values
+  // Imprimir los valores HPKP
   console.log('headers:', res.headers['public-key-pins']);
 
   res.on('data', (d) => {});
@@ -338,7 +338,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Outputs for example:
+Salidas de ejemplo:
 
 ```text
 Subject Common Name: github.com
