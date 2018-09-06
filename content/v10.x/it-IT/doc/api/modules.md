@@ -245,9 +245,9 @@ in main, a.done = true, b.done = true
 
 <!--type=misc-->
 
-If the exact filename is not found, then Node.js will attempt to load the required filename with the added extensions: `.js`, `.json`, and finally `.node`.
+Se il filename esatto non viene trovato, Node.js tenterà di caricare il filename richiesto con le estensioni aggiunte: `.js`, `.json`, e infine `.node`.
 
-`.js` files are interpreted as JavaScript text files, and `.json` files are parsed as JSON text files. `.node` files are interpreted as compiled addon modules loaded with `dlopen`.
+I file `.js` sono interpretati come file JavaScript text ed i file `.json` sono analizzati (parsing) come file JSON text. `.node` files are interpreted as compiled addon modules loaded with `dlopen`.
 
 A required module prefixed with `'/'` is an absolute path to the file. For example, `require('/home/marco/foo.js')` will load the file at `/home/marco/foo.js`.
 
