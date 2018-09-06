@@ -299,9 +299,9 @@ El tamaño máximo de un datagrama `IPv4/v6` depende del `MTU` (*Unidad Máxima 
 
 * El campo de `Payload Length` tiene `16 bits` de ancho, lo que significa que una carga normal sobrepasa 64K octets *incluyendo* el encabezado de internet y los datos (65,507 bytes = 65,535 − 8 bytes encabezado UDP − 20 bytes encabezado IP).
 
-* El `MTU` es el tamaño más grande que una tecnología de capa de enlace puede soportar para mensajes de datagrama. For any link, `IPv4` mandates a minimum `MTU` of `68` octets, while the recommended `MTU` for IPv4 is `576` (typically recommended as the `MTU` for dial-up type applications), whether they arrive whole or in fragments.
+* El `MTU` es el tamaño más grande que una tecnología de capa de enlace puede soportar para mensajes de datagrama. Para cualquier enlace, `IPv4` exige un `MTU` mínimo de `68` octets, mientras que el `MTU` para IPv4 es `576` (recomendado comúnmente como el `MTU` para aplicaciones con un tipo de conexión por línea conmutada), ya bien si llegan completos o en fragmentos.
   
-  Para `IPv6`, el `MTU` mínimo es `1280` octets, sin embargo, el tamaño mínimo obligatorio del búfer del reensamblaje de fragmento es `1500` octets. The value of `68` octets is very small, since most current link layer technologies, like Ethernet, have a minimum `MTU` of `1500`.
+  Para `IPv6`, el `MTU` mínimo es `1280` octets, sin embargo, el tamaño mínimo obligatorio del búfer del reensamblaje de fragmento es `1500` octets. El valor de `68` octets es muy pequeño, puesto que las tecnologías de capa de enlace más recientes, como Ethernet, tienen un `MTU` mínimo de `1500`.
 
 Es imposible saber con anterioridad el MTU de cada enlace por medio del cual un paquete podría viajar. Enviar un datagrama mayor que el `MTU` del receptor no funcionará porque el paquete será abandonado silenciosamente sin informar a la fuente que los datos no llegaron al destinatario deseado.
 
@@ -313,7 +313,7 @@ added: v0.6.9
 
 * `flag` {boolean}
 
-Establece o borra la opción socket `SO_BROADCAST`. When set to `true`, UDP packets may be sent to a local interface's broadcast address.
+Establece o borra la opción socket `SO_BROADCAST`. Cuando se establece como `true`, los paquetes UDP pudieran ser enviados a una dirección de transmisión de la interfaz local.
 
 ### socket.setMulticastInterface(multicastInterface)
 
@@ -325,7 +325,7 @@ added: v8.6.0
 
 *Nota: Todas las referencias a investigar en esta sección se refieren a los [Índices de Zona IPv6](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), que son definidos por [RFC 4007](https://tools.ietf.org/html/rfc4007). En forma string, una IP con un índice scope es escrita como `'IP%scope'`, donde scope es el nombre o número de la interfaz.*
 
-Sets the default outgoing multicast interface of the socket to a chosen interface or back to system interface selection. EL `multicastInterface` debe ser una representación string válida de una IP, de la familia del socket.
+Establece la interfaz de multidifusión saliente predeterminada del socket a una interfaz escogida, o devuelve al sistema de selección de interfaces. EL `multicastInterface` debe ser una representación string válida de una IP, de la familia del socket.
 
 Para sockets IPv4, este debería ser el IP configurado para la interfaz física deseada. Todos los paquetes enviados a hacer multidifusión en el socket serán enviados a la interfaz, determinado por el uso exitoso más reciente de esta llamada.
 
@@ -462,7 +462,7 @@ s.bind(1234, () => {
 });
 ```
 
-## `dgram` module functions
+## `dgram` funciones del módulo
 
 ### dgram.createSocket(options[, callback])
 
