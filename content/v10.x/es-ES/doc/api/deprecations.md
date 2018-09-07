@@ -594,47 +594,47 @@ Tipo: Runtime
 
 Tipo: Fin-de-Vida
 
-DebugContext has been removed in V8 and is not available in Node.js 10+.
+DebugContext ha sido removido en V8 y no está disponible en Node.js 10+.
 
-DebugContext was an experimental API.
+DebugContext fue una API experimental.
 
 <a id="DEP0070"></a>
 
 ### DEP0070: async_hooks.currentId()
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-`async_hooks.currentId()` was renamed to `async_hooks.executionAsyncId()` for clarity.
+`async_hooks.currentId()` fue renombrado a `async_hooks.executionAsyncId()` para mayor claridad.
 
-This change was made while `async_hooks` was an experimental API.
+Este cambio se hizo mientras `async_hooks` era una API experimental.
 
 <a id="DEP0071"></a>
 
 ### DEP0071: async_hooks.triggerId()
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-`async_hooks.triggerId()` was renamed to `async_hooks.triggerAsyncId()` for clarity.
+`async_hooks.triggerId()` fue renombrado a `async_hooks.triggerAsyncId()` para mayor claridad.
 
-This change was made while `async_hooks` was an experimental API.
+Este cambio se hizo mientras `async_hooks` era una API experimental.
 
 <a id="DEP0072"></a>
 
 ### DEP0072: async_hooks.AsyncResource.triggerId()
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-`async_hooks.AsyncResource.triggerId()` was renamed to `async_hooks.AsyncResource.triggerAsyncId()` for clarity.
+`async_hooks.AsyncResource.triggerId()` fue renombrado a `async_hooks.AsyncResource.triggerAsyncId()` para mayor claridad.
 
-This change was made while `async_hooks` was an experimental API.
+Este cambio se hizo mientras `async_hooks` era una API experimental.
 
 <a id="DEP0073"></a>
 
-### DEP0073: Several internal properties of net.Server
+### DEP0073: Varias propiedades internas de net.Server
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-Accessing several internal, undocumented properties of `net.Server` instances with inappropriate names has been deprecated.
+Acceder a varias propiedades internas e indocumentadas de instancias de `net.Server` con nombres inapropiados ha sido desaprobado.
 
 As the original API was undocumented and not generally useful for non-internal code, no replacement API is provided.
 
