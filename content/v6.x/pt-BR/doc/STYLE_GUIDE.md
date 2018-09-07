@@ -1,8 +1,8 @@
 # Guia de estilos
 
-* Documentação escrita em arquivos markdown com nomes formatados em letra `minuscula-com-hifens`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g., `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
+* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens`. 
+  * Underline em nomes de arquivo são permitidos apenas quando eles estão presentes no tópico que irá descrever o documento (por exemplo, `child_process`).
+  * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
   * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
