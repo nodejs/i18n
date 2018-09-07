@@ -480,10 +480,10 @@ changes:
 -->
 
 * `opciones` {Object} Las opciones disponibles son: 
-  * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
-  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Default:** `false`.
-  * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
-  * `sendBufferSize` {number} - Sets the `SO_SNDBUF` socket value.
+  * `type` {string} La familia del socket. Debe ser `'udp4'` o `'udp6'`. Requerido.
+  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Predeterminado:** `false`.
+  * `recvBufferSize` {number} - Establece el valor del socket `SO_RCVBUF`.
+  * `sendBufferSize` {number} - Establece el valor del socket `SO_SNDBUF`.
   * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
 * `callback` {Function} Attached as a listener for `'message'` events. Optional.
 * Returns: {dgram.Socket}
