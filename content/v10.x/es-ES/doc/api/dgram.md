@@ -485,10 +485,10 @@ changes:
   * `recvBufferSize` {number} - Establece el valor del socket `SO_RCVBUF`.
   * `sendBufferSize` {number} - Establece el valor del socket `SO_SNDBUF`.
   * `lookup` {Function} Custom lookup function. **Predeterminado:** [`dns.lookup()`][].
-* `callback` {Function} Attached as a listener for `'message'` events. Optional.
-* Returns: {dgram.Socket}
+* `callback` {Function} Adjuntada como un listener para eventos `'message'`. Opcional.
+* Devuelve: {dgram.Socket}
 
-Creates a `dgram.Socket` object. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
+Crea un objeto `dgram.Socket`. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
 ### dgram.createSocket(type[, callback])
 
