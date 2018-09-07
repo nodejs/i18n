@@ -507,7 +507,7 @@ For TCP connections, available `options` are:
 * `localPort` {number} Local port the socket should connect from.
 * `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
 * `hints` {number} Optional [`dns.lookup()` hints][].
-* `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
+* `lookup` {Function} Custom lookup function. **Predeterminado:** [`dns.lookup()`][].
 
 For [IPC](#net_ipc_support) connections, available `options` are:
 
