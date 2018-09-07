@@ -2184,7 +2184,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 4`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt32BE()` escribe big endian, `writeUInt32LE()` escribe little endian). `value` debe ser un entero sin signo de 32-bit válido. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt32BE()` escribe big endian, `writeUInt32LE()` escribe little endian). `value` debe ser un entero sin signo de 32-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra casa que un entero sin signo de 32-bit.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2192,12 +2192,12 @@ const buf = Buffer.allocUnsafe(4);
 buf.writeUInt32BE(0xfeedface, 0);
 
 console.log(buf);
-// Prints: <Buffer fe ed fa ce>
+// Escribe: <Buffer fe ed fa ce>
 
 buf.writeUInt32LE(0xfeedface, 0);
 
 console.log(buf);
-// Prints: <Buffer ce fa ed fe>
+// Escribe: <Buffer ce fa ed fe>
 ```
 
 ### buf.writeUIntBE(value, offset, byteLength)
@@ -2214,8 +2214,8 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `value` {integer} Number to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
+* `value` {integer} Número a ser escrito en `buf`.
+* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Debe satisfacer `0 < byteLength <= 6`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
