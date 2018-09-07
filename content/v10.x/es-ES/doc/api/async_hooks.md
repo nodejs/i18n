@@ -120,7 +120,7 @@ El motivo de este comportamiento de manejo de error es que estos callbacks se ej
 
 ##### Impresión en los Callbacks de AsyncHooks
 
-Ya que imprimir hacia la consola es una operación asincrónica, `console.log()` causará que los callbacks de AsyncHooks sean llamados. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una fácil solución para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. Esto imprimirá hacia stdout porque `1` es el descriptor de archivo para stdout y no invocará a AsyncHooks de manera recursiva porque es sincrónico.
+Ya que imprimir hacia la consola es una operación asincrónica, `console.log()` causará que los callbacks de AsyncHooks sean llamados. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una solución fácil para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. Esto imprimirá hacia stdout porque `1` es el descriptor de archivo para stdout y no invocará a AsyncHooks de manera recursiva porque es sincrónico.
 
 ```js
 const fs = require('fs');
@@ -224,7 +224,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 El `TCPSERVERWRAP` es el servidor que recibe las conexiones.
 
-El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia de `TCPWrap` . Esto ocurre fuera de cualquier pila de JavaScript. (Un `executionAsyncId()` de `0` significa que está siendo ejecutado desde C++ sin pilas de JavaScript sobre ello.) Con sólo esa información, sería imposible enlazar recursos en terminos de qué causó que fueran creados, por lo que a `triggerAsyncId` se le da la tarea de propagar qué recurso es responsable de la existencia del nuevo recurso.
+El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia de `TCPWrap` . Esto ocurre fuera de cualquier stack de JavaScript. (Un `executionAsyncId()` de `0` significa que está siendo ejecutado desde C++ sin pilas de JavaScript sobre ello.) Con sólo esa información, sería imposible enlazar recursos en terminos de qué causó que fueran creados, por lo que a `triggerAsyncId` se le da la tarea de propagar qué recurso es responsable de la existencia del nuevo recurso.
 
 ###### `recurso`
 
@@ -421,7 +421,7 @@ const server = net.createServer((conn) => {
 
 Tenga en cuenta que los contextos de promesa no podrán recibir `triggerAsyncId`s válidos por defecto. Consulte la sección sobre [promise execution tracking](#async_hooks_promise_execution_tracking).
 
-## Rastreo de ejecución de promesas
+## Rastreo de ejecución de promises
 
 Por defecto, a las ejecuciones de promesas no se les asignan `asyncId`s, debido a la relativamente costosa naturaleza de la [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) proporcionada por V8. Esto significa que los programas que utilizan promesas ó `async`/`await` no obtendrán una ejecución correcta y activarán identificaciones para contextos de callbacks de promesas por defecto.
 
