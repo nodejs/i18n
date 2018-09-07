@@ -1813,8 +1813,8 @@ added: v0.1.90
 -->
 
 * `encoding` {string} La codificación de caracteres a utilizar. **Predeterminado:** `'utf8'`.
-* `start` {integer} El desplazamiento de byte para empezar a decodificarlo. **Predeterminado:** `0`.
-* `end` {integer} El desplazamiento de bytes para detener la codificación (no incluido). **Predeterminado:** [`buf.length`].
+* `start` {integer} El desplazamiento de bytes donde comenzar la decodificación. **Predeterminado:** `0`.
+* `end` {integer} El desplazamiento de bytes donde detener la codificación (no incluido). **Predeterminado:** [`buf.length`].
 * Devuelve: {string}
 
 Decodifica el `buf` en una cadena de acuerdo a la codificación de caracteres especificados en `enconding`. `start` y `end` pueden pasarse para decodificar solo un subconjunto de `buf`.
@@ -1886,7 +1886,7 @@ for (const value of buf) {
 added: v0.1.90
 -->
 
-* `string` {string} Cadena para escribir en `buf`.
+* `string` {string} Cadena para escribir al `buf`.
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir el `string`. **Predeterminado:** `0`.
 * `length` {integer} Número de bytes a escribir. **Predeterminado:** `buf.length - offset`.
 * `encoding` {string} La codificación de caracteres del `string`. **Predeterminado:** `'utf8'`.
