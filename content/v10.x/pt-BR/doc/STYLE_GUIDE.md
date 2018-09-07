@@ -15,9 +15,9 @@
     * OK: "they", "their", "them", "folks", "people", "developers"
     * ERRADO: "ele", "dela", "ele", "ela", "rapazes", "caras"
 * Ao combinar elementos de envolvimento (parênteses e aspas), a pontuação final deve ser colocada: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Fora do elemento de envolvimento se o elemento de quebra contém apenas um fragmento de de uma cláusula.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
+  * Dentro do elemento envolto se o elemento de quebra contém uma cláusula completa — um sujeito, verbo e um objeto.
+  * Fora do elemento envolto se o elemento de quebra contém apenas um fragmento de de uma cláusula.
+* Coloque a pontuação de fim-de-frase dentro dos elementos envoltos — pontos finais vão dentro de parênteses e aspas, não depois.
 * Documents must start with a level-one heading.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
