@@ -1831,7 +1831,7 @@ const req = client.request({ ':path': '/' });
 
 The `CONNECT` method is used to allow an HTTP/2 server to be used as a proxy for TCP/IP connections.
 
-A simple TCP Server:
+Un servidor simple de TCP:
 
 ```js
 const net = require('net');
