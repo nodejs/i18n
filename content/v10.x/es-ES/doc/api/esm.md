@@ -18,64 +18,64 @@ Not all features of the EP are complete and will be landing as both VM support a
 
 The `--experimental-modules` flag can be used to enable features for loading ESM modules.
 
-Once this has been set, files ending with `.mjs` will be able to be loaded as ES Modules.
+Una vez esto haya sido establecido, los archivos que terminan en `.mjs` serán capaces de ser cargados como Módulos ES.
 
 ```sh
 node --experimental-modules my-app.mjs
 ```
 
-## Features
+## Funcionalidades
 
 <!-- type=misc -->
 
-### Supported
+### Soportado
 
-Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
+Sólo el argumento CLI para el punto principal de entrada al programa puede ser un punto de entrada a un gráfico ESM. La importación dinámica también puede ser usada para crear puntos de entrada a gráficos ESM en tiempo de ejecución.
 
 #### import.meta
 
 * {Object}
 
-The `import.meta` metaproperty is an `Object` that contains the following property:
+La metapropiedad `import.meta` es un `Object` que contiene la siguiente propiedad:
 
-* `url` {string} The absolute `file:` URL of the module.
+* `url` {string} La URL del `file:` absoluta del módulo.
 
-### Unsupported
+### No Soportado
 
-| Feature                | Reason                                                              |
-| ---------------------- | ------------------------------------------------------------------- |
-| `require('./foo.mjs')` | ES Modules have differing resolution and timing, use dynamic import |
+| Funcionalidad          | Razón                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------- |
+| `require('./foo.mjs')` | Los Módulos ES tiene diferente resolución y sincronización, utilice importación dinámica |
 
-## Notable differences between `import` and `require`
+## Diferencias notables entre `import` y `require`
 
-### No NODE_PATH
+### No hay NODE_PATH
 
-`NODE_PATH` is not part of resolving `import` specifiers. Please use symlinks if this behavior is desired.
+`NODE_PATH` no es parte de la resolución de especificadores de `import`. Por favor, utilice symlinks si se desea este comportamiento.
 
-### No `require.extensions`
+### No hay `require.extensions`
 
-`require.extensions` is not used by `import`. The expectation is that loader hooks can provide this workflow in the future.
+`require.extensions` no es utilizado por `import`. Lo que se espera es que los loader hooks puedan proporcionar este flujo de trabajo en el futuro.
 
 ### No `require.cache`
 
-`require.cache` is not used by `import`. It has a separate cache.
+`require.cache` no es usado por `import`. Tiene un caché separado.
 
-### URL based paths
+### Rutas basadas en URL
 
-ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) semantics. This means that files containing special characters such as `#` and `?` need to be escaped.
+Los ESM son resueltos y almacenados en caché basándose en la semántica de [URL](https://url.spec.whatwg.org/). Esto significa que los archivos que contienen caracteres especiales, como `#` y `?`, necesitan escaparse.
 
-Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
+Los módulos serán cargados múltiples veces si el especificador `import` utilizado para resolverlos tiene una consulta o fragmento diferente.
 
 ```js
 import './foo?query=1'; // loads ./foo with query of "?query=1"
 import './foo?query=2'; // loads ./foo with query of "?query=2"
 ```
 
-For now, only modules using the `file:` protocol can be loaded.
+Por ahora, sólo los módulos que utilicen el protocolo `file:` pueden ser cargados.
 
 ## Interop with existing modules
 
-All CommonJS, JSON, and C++ modules can be used with `import`.
+Todos los módulos CommonJS, JSON y C++ pueden ser utilizados con `import`.
 
 Modules loaded this way will only be loaded once, even if their query or fragment string differs between `import` statements.
 
