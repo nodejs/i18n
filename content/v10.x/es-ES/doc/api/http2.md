@@ -2105,7 +2105,7 @@ added: v8.4.0
 * `callback` {Function}
 * Returns: {http2.Http2ServerRequest}
 
-Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Sets the [`Http2Stream`]()'s timeout value to `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento de `'timeout'` en el objeto de respuesta.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2119,13 +2119,13 @@ added: v8.4.0
 
 Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but applies getters, setters, and methods based on HTTP/2 logic.
 
-`destroyed`, `readable`, and `writable` properties will be retrieved from and set on `request.stream`.
+Las propiedades de `destroyed`, `readable`, y `writable` serán recuperadas desde y establecidas en `request.stream`.
 
-`destroy`, `emit`, `end`, `on` and `once` methods will be called on `request.stream`.
+Los métodos de `destroy`, `emit`, `end`, `on` y `once` serán llamados en `request.stream`.
 
 El método de `setTimeout` será llamado en `request.stream.session`.
 
-`pause`, `read`, `resume`, and `write` will throw an error with code `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` y Sockets][] para más información.
+`pause`, `read`, `resume`, y `write` arrojarán un error con el código `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` y Sockets][] para más información.
 
 All other interactions will be routed directly to the socket. With TLS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
 
@@ -2219,7 +2219,7 @@ Url {
 added: v8.4.0
 -->
 
-This object is created internally by an HTTP server — not by the user. Se pasa como el segundo parámetro al evento de [`'request'`][].
+Este objeto es creado internamente por un servidor de HTTP — no por el usuario. Se pasa como el segundo parámetro al evento de [`'request'`][].
 
 La respuesta implementa, pero no hereda, la interfaz del [Stream Editable](stream.html#stream_writable_streams) . Esto es un [`EventEmitter`][] con los siguientes eventos:
 
@@ -2261,7 +2261,7 @@ added: v8.4.0
 
 * {net.Socket|tls.TLSSocket}
 
-See [`response.socket`][].
+Vea [`response.socket`][].
 
 #### response.end(\[data\]\[, encoding\][, callback])
 
@@ -2279,9 +2279,9 @@ changes:
 * `callback` {Function}
 * Returns: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. Este método, `response.end()`, DEBE ser llamado en cada respuesta.
+Este método señala al servidor que todos los encabezados de respuesta y el cuerpo han sido enviados; y que el servidor debería considerar este mensaje como completo. Este método, `response.end()`, DEBE ser llamado en cada respuesta.
 
-If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
+Si se especifica `data`, es equivalente a llamar a [`response.write(data, encoding)`][] seguido por `response.end(callback)`.
 
 Si se especifica el `callback`, será llamado cuando el stream de respuesta haya finalizado.
 
@@ -2405,7 +2405,7 @@ added: v8.4.0
 
 * {boolean}
 
-Al ser verdadero, la Fecha del encabezado será generada automáticamente y enviada en la respuesta si no está presente en los encabezados. Defaults to true.
+Al ser verdadero, la Fecha del encabezado será generada automáticamente y enviada en la respuesta si no está presente en los encabezados. Por defecto es verdadero.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2418,7 +2418,7 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Sets a single header value for implicit headers. Si este encabezado ya existe en los envíos de encabezados pendientes, su valor será reemplazado. Utilice aquí una matriz de strings para enviar varios encabezados con el mismo nombre.
+Establece un único valor de encabezado para encabezados implícitos. Si este encabezado ya existe en los envíos de encabezados pendientes, su valor será reemplazado. Utilice aquí una matriz de strings para enviar varios encabezados con el mismo nombre.
 
 Ejemplo:
 
