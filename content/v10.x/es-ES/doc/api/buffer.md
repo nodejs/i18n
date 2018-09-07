@@ -1429,7 +1429,7 @@ changes:
 
 Lee un entero de 16-bit con signo desde `buf` en el `offset` especificado con el formato endian especificado (`readInt16BE()` devuelve big endian, `readInt16LE()` devuelve little endian).
 
-Los enteros leídos desde un `Buffer` se interpretan como valores con signo con complemento de dos.
+Los enteros leídos desde un `Buffer` se interpretan como valores con signo del complemento de dos.
 
 ```js
 const buf = Buffer.from([0, 5]);
@@ -1461,7 +1461,7 @@ changes:
 
 Lee un entero de 32-bit desde `buf` en el `offset` especificado con el formato endian especificado (`readInt32BE()` devuelve big endian, `readInt32LE()` devuelve little endian).
 
-Los enteros leídos desde un `Buffer` se interpretan como valores con signo con complemento de dos.
+Los enteros leídos desde un `Buffer` se interpretan como valores con signo del complemento de dos.
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
@@ -1492,7 +1492,7 @@ changes:
 * `byteLength` {integer} Número de bytes a leer. Debe satisfacer `0 < byteLength <= 6`.
 * Devuelve: {integer}
 
-Lee el número `byteLength` de bytes desde `buf` en el `offset` especificado e interpreta el resultado como un valor con signo con complemento de dos. Soporta hasta 48 bits de precisión.
+Lee el número `byteLength` de bytes desde `buf` en el `offset` especificado e interpreta el resultado como un valor con signo del complemento de dos. Soporta hasta 48 bits de precisión.
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1989,7 +1989,7 @@ changes:
 
 Escribe el `value` al `buff` en el `offset` especificado. `value` *debe* se un entero con signo de 8-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un estero con signo de 8-bit válido.
 
-`value` se interpreta y escribe como un entero con signo con complemento de dos.
+`value` se interpreta y escribe como un complemento de dos entero con signo.
 
 ```js
 const buf = Buffer.allocUnsafe(2);
@@ -2021,7 +2021,7 @@ changes:
 
 Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt16BE()` escribe big endian, `writeInt16LE()` escribe little endian). `value` *debe* se un entero con sigo de 16-bit válido. El comportamiento está indefinido cuando `value` es cualquier otra cosa que un entero con signo de 16-bit.
 
-`value` se interpreta y escribe como un entero con signo con complemento de dos.
+`value` se interpreta y escribe como un complemento de dos entero con signo.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2053,7 +2053,7 @@ changes:
 
 Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeInt32BE()` escribe big endian, `writeInt32LE()` escribe little endian). `value` *debe* se un entero con signo de 32-bit válido. El comportamiento está indefinido cuando `value` es cualquier otro que un entero con signo de 32-bit.
 
-`value` se interpreta y escribe como un entero con signo con complemento de dos.
+`value` se interpreta y escribe como un complemento de dos entero con signo.
 
 ```js
 const buf = Buffer.allocUnsafe(8);
