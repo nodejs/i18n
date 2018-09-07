@@ -530,13 +530,13 @@ La clase `fs.SyncWriteStream` nunca estuvo destinada a ser una API públicamente
 
 Tipo: Runtime
 
-`--debug` activates the legacy V8 debugger interface, which has been removed as of V8 5.8. It is replaced by Inspector which is activated with `--inspect` instead.
+`--debug` activa la interfaz de depuración antigua V8, la cual ha sido removida a partir de la V8 5.8. Está reemplazada por Inspector el cual, en cambio, es activado con `--inspect`.
 
 <a id="DEP0063"></a>
 
 ### DEP0063: ServerResponse.prototype.writeHeader()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
 The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecated. Please use `ServerResponse.prototype.writeHead()` instead.
 
