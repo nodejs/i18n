@@ -14,9 +14,9 @@
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
     * ERRADO: "ele", "dela", "ele", "ela", "rapazes", "caras"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
+* Ao combinar elementos de envolvimento (parênteses e aspas), a pontuação final deve ser colocada: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
+  * Fora do elemento de envolvimento se o elemento de quebra contém apenas um fragmento de de uma cláusula.
 * Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
 * Documents must start with a level-one heading.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
