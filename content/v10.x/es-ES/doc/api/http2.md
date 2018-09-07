@@ -1905,7 +1905,7 @@ req.end('Jane');
 
 ## API de compatibilidad
 
-La API de Compatibilidad tiene el objetivo de proporcionar una experiencia para el desarrollador similar a HTTP/1 al utilizar HTTP/2, haciendo posible el desarrollo de aplicaciones que soporten [HTTP/1](http.html) y HTTP/2. Esta API sólo se dirige a la **API pública** del [HTTP/1](http.html). However many modules use internal methods or state, and those *are not supported* as it is a completely different implementation.
+La API de Compatibilidad tiene el objetivo de proporcionar una experiencia para el desarrollador similar a HTTP/1 al utilizar HTTP/2, haciendo posible el desarrollo de aplicaciones que soporten [HTTP/1](http.html) y HTTP/2. Esta API sólo se dirige a la **API pública** del [HTTP/1](http.html). Sin embargo varios módulos utilizan métodos internos o estado, y esos *no son soportados* ya que es una implementación completamente diferente.
 
 El siguiente ejemplo crea un servidor de HTTP/2 utilizando la API de compatibilidad:
 
@@ -1965,17 +1965,17 @@ A `Http2ServerRequest` object is created by [`http2.Server`][] or [`http2.Secure
 
 Implementa la interfaz del [Stream Legible](stream.html#stream_class_stream_readable), así como los siguientes eventos adicionales, métodos, y propiedades.
 
-#### Event: 'aborted'
+#### Evento: 'aborted'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-The `'aborted'` event is emitted whenever a `Http2ServerRequest` instance is abnormally aborted in mid-communication.
+El evento de `'aborted'` se emite cuando una instancia de `Http2ServerRequest` se aborta de manera anormal a mitad de una comunicación.
 
-The `'aborted'` event will only be emitted if the `Http2ServerRequest` writable side has not been ended.
+El evento de `'aborted'` sólo será emitido si el lado editable de `Http2ServerRequest` no se ha finalizado.
 
-#### Event: 'close'
+#### Evento: 'close'
 
 <!-- YAML
 added: v8.4.0
