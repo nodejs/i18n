@@ -1192,7 +1192,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1213,7 +1213,7 @@ added: v0.1.29
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-This sends a chunk of the response body. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
+Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
@@ -1312,7 +1312,7 @@ Emitted when the request has been aborted.
 added: v0.4.2
 -->
 
-Indicates that the underlying connection was closed. Just like `'end'`, this event occurs only once per response.
+Indica que la conexión subyacente fue cerrada. Al igual que `'end'`, este evento ocurre una sóla vez por respuesta.
 
 ### message.aborted
 
@@ -1322,7 +1322,7 @@ added: v10.1.0
 
 * {boolean}
 
-The `message.aborted` property will be `true` if the request has been aborted.
+La propiedad de `message.aborted` será `true` si la solicitud ha sido abortada.
 
 ### message.destroy([error])
 
@@ -1332,7 +1332,7 @@ added: v0.3.0
 
 * `error` {Error}
 
-Calls `destroy()` on the socket that received the `IncomingMessage`. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
+Llama a `destroy()` en el socket que recibió el `IncomingMessage`. Si se proporciona `error`, un evento de `'error'` será emitido y `error` será pasado como un argumento a cualquiera de los listeners en el evento.
 
 ### message.headers
 
@@ -1358,8 +1358,8 @@ console.log(request.headers);
 Duplicates in raw headers are handled in the following ways, depending on the header name:
 
 * Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
-* `set-cookie` is always an array. Duplicates are added to the array.
-* For all other headers, the values are joined together with ', '.
+* `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
+* Para todos los otros encabezados, los valores se unen con ', '.
 
 ### message.httpVersion
 
@@ -1371,7 +1371,7 @@ added: v0.1.1
 
 In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Probably either `'1.1'` or `'1.0'`.
 
-Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
+Además, `message.httpVersionMajor` es el primer entero y `message.httpVersionMinor` es el segundo.
 
 ### message.method
 
@@ -1383,7 +1383,7 @@ added: v0.1.1
 
 **Only valid for request obtained from [`http.Server`][].**
 
-The request method as a string. Read only. Example: `'GET'`, `'DELETE'`.
+El método de solicitud es una string. Sólo lectura. Ejemplo: `'GET'`, `'DELETE'`.
 
 ### message.rawHeaders
 
@@ -1397,7 +1397,7 @@ The raw request/response headers list exactly as they were received.
 
 Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Header names are not lowercased, and duplicates are not merged.
+Los nombres de los encabezados no están en minúsculas, y los duplicados no están fusionados.
 
 ```js
 // Prints something like:
