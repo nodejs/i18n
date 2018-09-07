@@ -502,4 +502,4 @@ added: v0.1.99
 
 Crea un objeto `dgram.Socket` del `type` especificado. El argumento `type` puede ser o bien `'udp4'` o `'udp6'`. Una función `callback` opcional puede ser pasada, que es añadida como un listener para eventos `'message'`.
 
-Una vez que el socket es creado, llamar a [`socket.bind()`][] le dirá al socket que empiece a escuchar por mensajes de datagrama. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
+Una vez que el socket es creado, llamar a [`socket.bind()`][] le dirá al socket que empiece a escuchar por mensajes de datagrama. Cuando ni `address` ni `port` son pasados a [`socket.bind()`][], el método enlazará el socket a la dirección "todas las interfaces" en un puerto aleatorio (hace lo correcto tanto para el socket `udp4` como para el socket `udp6`). La dirección y puerto enlazados pueden ser recuperados usando [`socket.address().address`][] y [`socket.address().port`][].
