@@ -528,9 +528,9 @@ added: v5.7.0
 
 * Devuelve: {string}
 
-Returns a string containing the negotiated SSL/TLS protocol version of the current connection. The value `'unknown'` will be returned for connected sockets that have not completed the handshaking process. The value `null` will be returned for server sockets or disconnected client sockets.
+Devuelve una cadena que contiene la versión negociada del protocolo SSL/TLS de la conexión actual. El valor `'unknown'` se devolverá para sockets conectados que no hayan completado el proceso de establecimiento de comunicación. El valor `null` se devolverá para sockets de servidor o sockets de cliente desconectados.
 
-Example responses include:
+Las respuestas de ejemplo incluyen:
 
 * `SSLv3`
 * `TLSv1`
@@ -538,7 +538,7 @@ Example responses include:
 * `TLSv1.2`
 * `unknown`
 
-See https://www.openssl.org/docs/man1.1.0/ssl/SSL_get_version.html for more information.
+Vea https://www.openssl.org/docs/man1.1.0/ssl/SSL_get_version.html para más información.
 
 ### tlsSocket.getSession()
 
@@ -546,7 +546,7 @@ See https://www.openssl.org/docs/man1.1.0/ssl/SSL_get_version.html for more info
 added: v0.11.4
 -->
 
-Returns the ASN.1 encoded TLS session or `undefined` if no session was negotiated. Can be used to speed up handshake establishment when reconnecting to the server.
+Devuelve la sesión TLS codificada en ASN.1 o `undefined` si no se negoció ninguna sesión. Se puede usar para acelerar el establecimiento del protocolo de enlace cuando se vuelva a conectar al servidor.
 
 ### tlsSocket.getTLSTicket()
 
@@ -554,9 +554,9 @@ Returns the ASN.1 encoded TLS session or `undefined` if no session was negotiate
 added: v0.11.4
 -->
 
-Returns the TLS session ticket or `undefined` if no session was negotiated.
+Devuelve el ticket de sesión de TLS o `undefined` si no se negoció ninguna sesión.
 
-This only works with client TLS sockets. Useful only for debugging, for session reuse provide `session` option to [`tls.connect()`][].
+Esto solo funciona con los sockets TLS del cliente. Useful only for debugging, for session reuse provide `session` option to [`tls.connect()`][].
 
 ### tlsSocket.localAddress
 
