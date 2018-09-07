@@ -357,8 +357,8 @@ changes:
   * `ALPNProtocols`: Opcional, vea [`tls.createServer()`][]
   * `SNICallback`: Opcional, vea [`tls.createServer()`][]
   * `session` {Buffer} Una instancia opcional de `Buffer` que contiene una sesión TLS.
-  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication
-  * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
+  * `requestOCSP` {boolean} Si `verdadero`, especifica que la extensión de solicitud de estado OCSP se agregará al hola del cliente y se emitirá un evento `'OCSPResponse'` en el socket antes de establecer una comunicación segura
+  * `secureContext`: Objeto de contexto TLS opcional creado con [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
   * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
 
 Construct a new `tls.TLSSocket` object from an existing TCP socket.
