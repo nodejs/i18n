@@ -11,7 +11,7 @@
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Em geral, evitar pronomes pessoais na documentação de referência ("I", "you", "we"). 
   * Pronomes são aceitáveis em documentação mais coloquial, como guias.
-  * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
+  * Use substantivos massivos e pronomes de gênero neutro. Exemplos não abrangentes: 
     * OK: "they", "their", "them", "folks", "people", "developers", "cats"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
