@@ -3,11 +3,11 @@
 * Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+* Documentos devem ter quebra de palavras (word-wrap) em 80 caracteres.
+* A formatação descrita no `.editorconfig` é preferencial. 
+  * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
 * Changes to documentation should be checked with `make lint-md`.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Ortografia do inglês americano de preferência. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
