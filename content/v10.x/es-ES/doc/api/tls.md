@@ -352,18 +352,18 @@ changes:
 * `opciones` {Object} 
   * `isServer`: El protocolo SSL/TLS es asimétrico. TLSSockets debe saber si deben comportarse como un servidor o un cliente. Si `true`, se creará una instancia del socket TLS como servidor. **Default:** `false`.
   * `server` {net.Server} Una instancia opcional [`net.Server`][].
-  * `requestCert`: Ya sea para autenticar, o no, al par remoto solicitando un certificado. Los clientes siempre solicitan un certificado de servidor. Los servidores (`isServer` es verdadero) pueden establecer opcionalmente `requestCert` en verdadero para solicitar un certificado de cliente.
+  * `requestCert`: Autentica o no al par remoto, por medio de la solicitud de un certificado. Los clientes siempre solicitan un certificado de servidor. Los servidores (`isServer` es verdadero) pueden establecer opcionalmente `requestCert` en verdadero para solicitar un certificado de cliente.
   * `rejectUnauthorized`: Opcional, vea [`tls.createServer()`][]
   * `ALPNProtocols`: Opcional, vea [`tls.createServer()`][]
   * `SNICallback`: Opcional, vea [`tls.createServer()`][]
   * `session` {Buffer} Una instancia opcional de `Buffer` que contiene una sesión TLS.
   * `requestOCSP` {boolean} Si `verdadero`, especifica que la extensión de solicitud de estado OCSP se agregará al hola del cliente y se emitirá un evento `'OCSPResponse'` en el socket antes de establecer una comunicación segura
-  * `secureContext`: Objeto de contexto TLS opcional creado con [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
-  * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
+  * `secureContext`: Objeto de contexto TLS opcional creado con [`tls.createSecureContext()`][]. Si *no* se proporciona un `secureContext`, se creará uno pasando el objeto `options` completo a `tls.createSecureContext()`.
+  * ...: Opciones opcionales [`tls.createSecureContext()`][] que se utilizan si falta la opción `secureContext`, de lo contrario, son ignoradas.
 
-Construct a new `tls.TLSSocket` object from an existing TCP socket.
+Construya un nuevo objeto `tls.TLSSocket` desde un socket TCP existente.
 
-### Event: 'OCSPResponse'
+### Evento: 'OCSPResponse'
 
 <!-- YAML
 added: v0.11.13
