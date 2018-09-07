@@ -354,9 +354,9 @@ changes:
   * `server` {net.Server} Una instancia opcional [`net.Server`][].
   * `requestCert`: Ya sea para autenticar, o no, al par remoto solicitando un certificado. Los clientes siempre solicitan un certificado de servidor. Los servidores (`isServer` es verdadero) pueden establecer opcionalmente `requestCert` en verdadero para solicitar un certificado de cliente.
   * `rejectUnauthorized`: Opcional, vea [`tls.createServer()`][]
-  * `ALPNProtocols`: Optional, see [`tls.createServer()`][]
-  * `SNICallback`: Optional, see [`tls.createServer()`][]
-  * `session` {Buffer} An optional `Buffer` instance containing a TLS session.
+  * `ALPNProtocols`: Opcional, vea [`tls.createServer()`][]
+  * `SNICallback`: Opcional, vea [`tls.createServer()`][]
+  * `session` {Buffer} Una instancia opcional de `Buffer` que contiene una sesión TLS.
   * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication
   * `secureContext`: Optional TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is *not* provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
   * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
