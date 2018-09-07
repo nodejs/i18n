@@ -2647,7 +2647,7 @@ Si `name` es igual a `Http2Stream`, el `PerformanceEntry` contendrá las siguien
 * `timeToFirstByteSent` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and sending of the first `DATA` frame.
 * `timeToFirstHeader` {number} El número de milisegundos transcurridos entre el `PerformanceEntry` `startTime` y la recepción del primer encabezado.
 
-If `name` is equal to `Http2Session`, the `PerformanceEntry` will contain the following additional properties:
+Si `name` es igual a `Http2Session`, el `PerformanceEntry` contendrá las siguientes propiedades adicionales:
 
 * `bytesRead` {number} El número de bytes recibidos para este `Http2Session`.
 * `bytesWritten` {number} El número de bytes enviados para este `Http2Session`.
