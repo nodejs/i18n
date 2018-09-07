@@ -18,7 +18,7 @@
   * Dentro do elemento envolto se o elemento de quebra contém uma cláusula completa — um sujeito, verbo e um objeto.
   * Fora do elemento envolto se o elemento de quebra contém apenas um fragmento de de uma cláusula.
 * Coloque a pontuação de fim-de-frase dentro dos elementos envoltos — pontos finais vão dentro de parênteses e aspas, não depois.
-* Documents must start with a level-one heading.
+* Documentos devem começar com um título de nível 1.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
