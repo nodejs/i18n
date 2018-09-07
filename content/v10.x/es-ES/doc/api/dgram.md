@@ -479,7 +479,7 @@ changes:
                  supported now.
 -->
 
-* `options` {Object} Available options are: 
+* `opciones` {Object} Las opciones disponibles son: 
   * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
   * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Default:** `false`.
   * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
