@@ -488,7 +488,7 @@ changes:
 * `callback` {Function} Adjuntada como un listener para eventos `'message'`. Opcional.
 * Devuelve: {dgram.Socket}
 
-Crea un objeto `dgram.Socket`. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
+Crea un objeto `dgram.Socket`. Una vez que el socket es creado, llamar a [`socket.bind()`][] le dirá al socket que empiece a escuchar por mensajes de datagrama. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
 ### dgram.createSocket(type[, callback])
 
