@@ -453,7 +453,7 @@ s.bind(1234);
 s.addMembership('224.0.0.114');
 ```
 
-Must be changed to pass a callback function to the [`dgram.Socket#bind()`][] function:
+Debe ser cambiado para pasar una función callback a la función [`dgram.Socket#bind()`][]:
 
 ```js
 const s = dgram.createSocket('udp4');
@@ -500,6 +500,6 @@ added: v0.1.99
 * `callback` {Function} - Adjuntada como un listener para los eventos `'message'`.
 * Devuelve: {dgram.Socket}
 
-Crea un objeto `dgram.Socket` del `type` especificado. El argumento `type` puede ser o bien `'udp4'` o `'udp6'`. An optional `callback` function can be passed which is added as a listener for `'message'` events.
+Crea un objeto `dgram.Socket` del `type` especificado. El argumento `type` puede ser o bien `'udp4'` o `'udp6'`. Una función `callback` opcional puede ser pasada, que es añadida como un listener para eventos `'message'`.
 
 Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
