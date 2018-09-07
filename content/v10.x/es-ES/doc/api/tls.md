@@ -352,8 +352,8 @@ changes:
 * `opciones` {Object} 
   * `isServer`: El protocolo SSL/TLS es asimétrico. TLSSockets debe saber si deben comportarse como un servidor o un cliente. Si `true`, se creará una instancia del socket TLS como servidor. **Default:** `false`.
   * `server` {net.Server} Una instancia opcional [`net.Server`][].
-  * `requestCert`: Whether to authenticate the remote peer by requesting a certificate. Los clientes siempre solicitan un certificado de servidor. Servers (`isServer` is true) may optionally set `requestCert` to true to request a client certificate.
-  * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
+  * `requestCert`: Ya sea para autenticar, o no, al par remoto solicitando un certificado. Los clientes siempre solicitan un certificado de servidor. Los servidores (`isServer` es verdadero) pueden establecer opcionalmente `requestCert` en verdadero para solicitar un certificado de cliente.
+  * `rejectUnauthorized`: Opcional, vea [`tls.createServer()`][]
   * `ALPNProtocols`: Optional, see [`tls.createServer()`][]
   * `SNICallback`: Optional, see [`tls.createServer()`][]
   * `session` {Buffer} An optional `Buffer` instance containing a TLS session.
