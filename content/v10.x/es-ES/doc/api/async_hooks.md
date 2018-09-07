@@ -563,7 +563,7 @@ deprecated: v9.6.0
 
 > Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
 
-Llama a todos los callbacks `after` . Si se realizaron llamadas anidadas a `emitBefore()`, entonces asegúrese de que la pila se desenrolle correctamente. De otra manera ocurrirá un error.
+Llama a todos los callbacks `after` . Si se realizaron llamadas anidadas a `emitBefore()`, entonces asegúrese de que el stack se desenrolle correctamente. De otra manera ocurrirá un error.
 
 Si el callback del usuario arroja una excepción, `emitAfter()` será llamado automáticamente para todos los `asyncId`s en la pila si el error es manejado por un dominio o un handler de `'uncaughtException'` .
 
