@@ -548,23 +548,23 @@ El método `ServerResponse.prototype.writeHeader()` nunca fue documentado como u
 
 Tipo: Runtime
 
-The `tls.createSecurePair()` API was deprecated in documentation in Node.js 0.11.3. Users should use `tls.Socket` instead.
+La API `tls.createSecurePair()` fue desaprobada en la documentación en Node.js 0.11.3. En cambio, los usuarios deberían usar `tls.Socket`.
 
 <a id="DEP0065"></a>
 
 ### DEP0065: repl.REPL_MODE_MAGIC and NODE_REPL_MODE=magic
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
-The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been removed. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js 6.0.0, when V8 5.0 was imported. Please use `REPL_MODE_SLOPPY` instead.
+La constante `REPL_MODE_MAGIC` del módulo `repl`, usada para la opción `replMode`, ha sido removida. Su comportamiento ha sido funcionalmente idéntico al de `REPL_MODE_SLOPPY` desde Node.js 6.0.0, cuando V8 5.0 fue importada. En cambio, por favor use `REPL_MODE_SLOPPY`.
 
-The `NODE_REPL_MODE` environment variable is used to set the underlying `replMode` of an interactive `node` session. Its value, `magic`, is also removed. Please use `sloppy` instead.
+La variable de ambiente `NODE_REPL_MODE` es usada para fijar el `replMode` subyacente de una sesión interactiva `node`. Su valor, `magic`, también está removido. En cambio, por favor use `sloppy`.
 
 <a id="DEP0066"></a>
 
 ### DEP0066: outgoingMessage.\_headers, outgoingMessage.\_headerNames
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
 The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Please instead use one of the public methods (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) for working with outgoing headers.
 
