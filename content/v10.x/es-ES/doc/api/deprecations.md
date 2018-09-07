@@ -566,33 +566,33 @@ La variable de ambiente `NODE_REPL_MODE` es usada para fijar el `replMode` subya
 
 Tipo: Solo-documentación
 
-The `http` module `outgoingMessage._headers` and `outgoingMessage._headerNames` properties have been deprecated. Please instead use one of the public methods (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) for working with outgoing headers.
+Las propiedades `outgoingMessage._headers` y `outgoingMessage._headerNames` del módulo `http` han sido desaprobadas. En cambio, por favor use uno de los métodos públicos (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) para trabajar con encabezados salientes.
 
-The `outgoingMessage._headers` and `outgoingMessage._headerNames` properties were never documented as officially supported properties.
+Las propiedades `outgoingMessage._headers` y `outgoingMessage._headerNames` nunca fueron documentadas como propiedades oficialmente soportadas.
 
 <a id="DEP0067"></a>
 
 ### DEP0067: OutgoingMessage.prototype.\_renderHeaders
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The `http` module `OutgoingMessage.prototype._renderHeaders()` API has been deprecated.
+La API `OutgoingMessage.prototype._renderHeaders()` del módulo `http` ha sido desaprobada.
 
-The `OutgoingMessage.prototype._renderHeaders` property was never documented as an officially supported API.
+La propiedad `OutgoingMessage.prototype._renderHeaders` nunca fue documentada como una API oficialmente soportada.
 
 <a id="DEP0068"></a>
 
 ### DEP0068: node debug
 
-Type: Runtime
+Tipo: Runtime
 
-`node debug` corresponds to the legacy CLI debugger which has been replaced with a V8-inspector based CLI debugger available through `node inspect`.
+`node debug` corresponde al debugger antiguo CLI el cual fue reemplazado con un debugger CLI basado en V8-inspector disponible por medio de `node inspect`.
 
 <a id="DEP0069"></a>
 
 ### DEP0069: vm.runInDebugContext(string)
 
-Type: End-of-Life
+Tipo: Fin-de-Vida
 
 DebugContext has been removed in V8 and is not available in Node.js 10+.
 
