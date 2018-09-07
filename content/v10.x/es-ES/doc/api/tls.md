@@ -381,7 +381,7 @@ Normalmente, la `response` es un objeto firmado digitalmente de la CA del servid
 added: v0.11.4
 -->
 
-El evento `'secureConnect'` se emite después de que el proceso de establecimiento de comunicación para una nueva conexión se haya completado con éxito. Se llamará al listener callback independientemente de si el certificado del servidor ha sido autorizado o no. Es responsabilidad del cliente verificar la propiedad `tlsSocket.authorized` para determinar si el certificado del servidor fue firmado por una de las CA especificadas. If `tlsSocket.authorized === false`, then the error can be found by examining the `tlsSocket.authorizationError` property. If ALPN was used, the `tlsSocket.alpnProtocol` property can be checked to determine the negotiated protocol.
+El evento `'secureConnect'` se emite después de que el proceso de establecimiento de comunicación para una nueva conexión se haya completado con éxito. Se llamará al listener callback independientemente de si el certificado del servidor ha sido autorizado o no. Es responsabilidad del cliente verificar la propiedad `tlsSocket.authorized` para determinar si el certificado del servidor fue firmado por una de las CA especificadas. Si `tlsSocket.authorized === false`, se puede encontrar el error examinando la propiedad `tlsSocket.authorizationError`. Si se utilizó ALPN, se puede verificar la propiedad `tlsSocket.alpnProtocol` para determinar el protocolo negociado.
 
 ### tlsSocket.address()
 
@@ -389,9 +389,9 @@ El evento `'secureConnect'` se emite después de que el proceso de establecimien
 added: v0.11.4
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns the bound `address`, the address `family` name, and `port` of the underlying socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
+Devuelve el límite `address`, la dirección `family` nombre y `port` del socket subyacente según lo informado por el sistema operativo: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
 ### tlsSocket.authorizationError
 
@@ -399,7 +399,7 @@ Returns the bound `address`, the address `family` name, and `port` of the underl
 added: v0.11.4
 -->
 
-Returns the reason why the peer's certificate was not been verified. This property is set only when `tlsSocket.authorized === false`.
+Returns the reason why the peer's certificate was not been verified. Esta propiedad se establece solo cuando `tlsSocket.authorized === false`.
 
 ### tlsSocket.authorized
 
@@ -407,7 +407,7 @@ Returns the reason why the peer's certificate was not been verified. This proper
 added: v0.11.4
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the peer certificate was signed by one of the CAs specified when creating the `tls.TLSSocket` instance, otherwise `false`.
 
