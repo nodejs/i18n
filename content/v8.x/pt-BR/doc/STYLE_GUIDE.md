@@ -12,8 +12,8 @@
 * Em geral, evitar pronomes pessoais na documentação de referência ("I", "you", "we"). 
   * Pronomes são aceitáveis em documentação mais coloquial, como guias.
   * Use substantivos massivos e pronomes de gênero neutro. Exemplos não abrangentes: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+    * CERTO: "eles(as)", "seus", "lhes", "pessoal", "pessoas", "desenvolvedores(as)", "gatos(as)"
+    * ERRADO: "ele", "dela", "ele", "ela", "rapazes", "caras"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
