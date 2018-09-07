@@ -408,41 +408,41 @@ La API [`util.isBuffer()`][] ha sido desaprobada. En cambio, por favor use [`Buf
 
 ### DEP0047: util.isDate()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isDate()`][] API has been deprecated.
+La API [`util.isDate()`][] ha sido desaprobada.
 
 <a id="DEP0048"></a>
 
 ### DEP0048: util.isError()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isError()`][] API has been deprecated.
+La API [`util.isError()`][] ha sido desaprobada.
 
 <a id="DEP0049"></a>
 
 ### DEP0049: util.isFunction()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isFunction()`][] API has been deprecated.
+La API [`util.isFunction()`][] ha sido desaprobada.
 
 <a id="DEP0050"></a>
 
 ### DEP0050: util.isNull()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isNull()`][] API has been deprecated.
+La API [`util.isNull()`][] ha sido desaprobada.
 
 <a id="DEP0051"></a>
 
 ### DEP0051: util.isNullOrUndefined()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isNullOrUndefined()`][] API has been deprecated.
+La API [`util.isNullOrUndefined()`][] ha sido desaprobada.
 
 <a id="DEP0052"></a>
 
