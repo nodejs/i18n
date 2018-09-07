@@ -203,7 +203,7 @@ Si `multicastInterface` no es especificada, el sistema operativo intentará aban
 added: v8.7.0
 -->
 
-* Returns: {number} the `SO_RCVBUF` socket receive buffer size in bytes.
+* Devuelve: {number} el socket `SO_RCVBUF` recibe el tamaño del búfer en bytes.
 
 ### socket.getSendBufferSize()
 
@@ -211,7 +211,7 @@ added: v8.7.0
 added: v8.7.0
 -->
 
-* Returns: {number} the `SO_SNDBUF` socket send buffer size in bytes.
+* Devuelve: {number} el socket `SO_SNDBUF` envía el tamaño del búfer en bytes.
 
 ### socket.ref()
 
@@ -481,10 +481,10 @@ changes:
 
 * `opciones` {Object} Las opciones disponibles son: 
   * `type` {string} La familia del socket. Debe ser `'udp4'` o `'udp6'`. Requerido.
-  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Predeterminado:** `false`.
+  * `reuseAddr` {boolean} Cuando sea `true`, [`socket.bind()`][] reutilizará la dirección, incluso si otro proceso ya ha enlazado un socket. **Predeterminado:** `false`.
   * `recvBufferSize` {number} - Establece el valor del socket `SO_RCVBUF`.
   * `sendBufferSize` {number} - Establece el valor del socket `SO_SNDBUF`.
-  * `lookup` {Function} Custom lookup function. **Predeterminado:** [`dns.lookup()`][].
+  * `lookup` {Function} Función de búsqueda personalizada. **Predeterminado:** [`dns.lookup()`][].
 * `callback` {Function} Adjuntada como un listener para eventos `'message'`. Opcional.
 * Devuelve: {dgram.Socket}
 
