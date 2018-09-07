@@ -441,11 +441,11 @@ De manera predeterminada, enlazar un socket causará que este bloquee el cierre 
 
 Llamar a `socket.unref()` múltiple veces no tendrá ningún efecto.
 
-The `socket.unref()` method returns a reference to the socket so calls can be chained.
+El método `socket.unref()` devuelve una referencia al socket para que las llamadas puedan ser encadenadas.
 
-### Change to asynchronous `socket.bind()` behavior
+### Cambiar al comportamiento `socket.bind()` asincrónico
 
-As of Node.js v0.10, [`dgram.Socket#bind()`][] changed to an asynchronous execution model. Legacy code that assumes synchronous behavior, as in the following example:
+A partir de Node.js v0.10, [`dgram.Socket#bind()`][] cambió a un modelo de ejecución asincrónico. Código heredado que asume comportamiento sincrónico, como en el siguiente ejemplo:
 
 ```js
 const s = dgram.createSocket('udp4');
