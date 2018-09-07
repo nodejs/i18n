@@ -2546,7 +2546,7 @@ Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. Por defecto, el `encoding` es `'utf8'`. `callback` will be called when this chunk of data is flushed.
+`chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. Por defecto, el `encoding` es `'utf8'`. `callback` will be called when this chunk of data is flushed.
 
 This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
@@ -2560,7 +2560,7 @@ Returns `true` if the entire data was flushed successfully to the kernel buffer.
 added: v8.4.0
 -->
 
-Envía un estado `100 Continue` al cliente, indicando que el cuerpo de solicitud debería ser enviado. See the [`'checkContinue'`][] event on `Http2Server` and `Http2SecureServer`.
+Envía un estado `100 Continue` al cliente, indicando que el cuerpo de solicitud debería ser enviado. Vea el evento de [`'checkContinue'`][] en `Http2Server` y `Http2SecureServer`.
 
 #### response.writeHead(statusCode\[, statusMessage\]\[, headers\])
 
@@ -2636,9 +2636,9 @@ obs.observe({ entryTypes: ['http2'] });
 
 La propiedad de `entryType` de la `PerformanceEntry` será igual a `'http2'`.
 
-The `name` property of the `PerformanceEntry` will be equal to either `'Http2Stream'` or `'Http2Session'`.
+La propiedad de `name` del `PerformanceEntry` será igual a `'Http2Stream'` o a `'Http2Session'`.
 
-If `name` is equal to `Http2Stream`, the `PerformanceEntry` will contain the following additional properties:
+Si `name` es igual a `Http2Stream`, el `PerformanceEntry` contendrá las siguientes propiedades adicionales:
 
 * `bytesRead` {number} The number of `DATA` frame bytes received for this `Http2Stream`.
 * `bytesWritten` {number} The number of `DATA` frame bytes sent for this `Http2Stream`.
