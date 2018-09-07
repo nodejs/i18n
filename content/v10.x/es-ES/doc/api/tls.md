@@ -556,7 +556,7 @@ added: v0.11.4
 
 Devuelve el ticket de sesión de TLS o `undefined` si no se negoció ninguna sesión.
 
-Esto solo funciona con los sockets TLS del cliente. Useful only for debugging, for session reuse provide `session` option to [`tls.connect()`][].
+Esto solo funciona con los sockets TLS del cliente. Útil solo para la depuración, para la reutilización de sesión proporcione la opción `session` a [`tls.connect()`][].
 
 ### tlsSocket.localAddress
 
