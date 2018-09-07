@@ -9,14 +9,14 @@
 * Problemas mecânicos, como a ortografia e a gramática, devem ser identificados por ferramentas, na medida em que for possível. Se não for pego por uma ferramenta, então deverá ser apontado aos revisores humanos.
 * Ortografia do inglês americano de preferência. "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
 * Embora controverso, a [vírgula de Oxford](https://en.wikipedia.org/wiki/Serial_comma) é preferida em favor da clareza.
-* Em geral, evitar pronomes pessoais na documentação de referência ("I", "you", "we"). 
-  * Pronomes são aceitáveis em documentação mais coloquial, como guias.
+* Em geral, evitar pronomes pessoais na documentação de referência ("Eu", "você", "nós"). 
+  * Pronomes são aceitáveis na documentação mais coloquial, como os guias.
   * Use substantivos massivos e pronomes de gênero neutro. Exemplos não abrangentes: 
     * CERTO: "eles(as)", "seus", "lhes", "pessoal", "pessoas", "desenvolvedores(as)", "gatos(as)"
     * ERRADO: "ele", "dela", "ele", "ela", "rapazes", "caras"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
+* Ao combinar elementos de envolvimento (parênteses e aspas), a pontuação final deve ser colocada: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
+  * Fora do elemento de envolvimento se o elemento de quebra contém apenas um fragmento de de uma cláusula.
 * Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
 * Documents must start with a level-one heading. An example document will be linked here eventually.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
