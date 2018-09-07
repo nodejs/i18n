@@ -1395,7 +1395,7 @@ added: v0.11.6
 
 The raw request/response headers list exactly as they were received.
 
-Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Tenga en cuenta que las llaves y los valores están en la misma lista. *no* es una lista de tuplas. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
 Los nombres de los encabezados no están en minúsculas, y los duplicados no están fusionados.
 
@@ -1443,7 +1443,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-The [`net.Socket`][] object associated with the connection.
+El objeto de [`net.Socket`][] asociado a la conexión.
 
 With HTTPS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
 
@@ -1455,9 +1455,9 @@ added: v0.1.1
 
 * {number}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The 3-digit HTTP response status code. E.G. `404`.
+The 3-digit HTTP response status code. Por ejemplo, `404`.
 
 ### message.statusMessage
 
@@ -1467,9 +1467,9 @@ added: v0.11.10
 
 * {string}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The HTTP response status message (reason phrase). E.G. `OK` or `Internal Server
+The HTTP response status message (reason phrase). Por ejemplo, `OK` o `Internal Server
 Error`.
 
 ### message.trailers
@@ -1500,7 +1500,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Entonces `request.url` será:
 
 <!-- eslint-disable semi -->
 
@@ -1566,7 +1566,7 @@ added: v0.1.22
 
 * {Object}
 
-A collection of all the standard HTTP response status codes, and the short description of each. For example, `http.STATUS_CODES[404] === 'Not
+Una colección de todos los códigos de estado estándar de respuesta de HTTP, y la descripción corta de cada uno. Por ejemplo, `http.STATUS_CODES[404] === 'Not
 Found'`.
 
 ## http.createServer(\[options\]\[, requestListener\])
@@ -1581,8 +1581,8 @@ changes:
 -->
 
 * `options` {Object} 
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Useful for extending the original `IncomingMessage`. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Default:** `ServerResponse`.
+  * `IncomingMessage` {http.IncomingMessage} Especifica la clase de `IncomingMessage` que será utilizada. Útil para extender el `IncomingMessage` original. **Predeterminado:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Predeterminado:** `ServerResponse`.
 
 * `requestListener` {Function}
 
