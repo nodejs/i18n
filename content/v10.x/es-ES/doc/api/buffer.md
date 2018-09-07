@@ -1787,7 +1787,7 @@ added: v0.9.2
 
 * Devuelve: {Object}
 
-Devuelve una representación JSON de `buf`. [`JSON.stringify()`] implícitamente llama a esta función cuando se encadena una instancia de `Buffer`.
+Devuelve una representación JSON de `buf`. [`JSON.stringify()`] implícitamente llama a esta función al convertir en cadena a una instancia de `Buffer`.
 
 ```js
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
