@@ -500,11 +500,11 @@ for (int i = 0; i < 1000000; i++) {
 
 Esto resultaría en la creación de un gran número de handles que consumen una cantidad sustancial de recursos. Además, aunque el código nativo sólo podría utilizar el handle más reciente, todos los objetos asociados podrían ser mantenidos vivos, ya que todos ellos comparten el mismo ámbito.
 
-Para manejar este caso, N-API proporciona la capacidad de establecer un nuevo "ámbito" al que se asociarán los handles recientemente creados. Una vez que esos handles ya no sean requeridos, el ámbito puede ser "cerrado" y cualquier handles asociado con el ámbito se invalida. Los métodos disponibles para abrir/cerrar ámbitos son [`napi_open_handle_scope`][] y [`napi_close_handle_scope`][].
+Para manejar este caso, N-API proporciona la capacidad de establecer un nuevo "ámbito" al que se asociarán los handles recientemente creados. Una vez que esos handles ya no sean requeridos, el ámbito puede ser "cerrado", con lo que los handles asociados con este serán invalidados. Los métodos disponibles para abrir/cerrar ámbitos son [`napi_open_handle_scope`][] y [`napi_close_handle_scope`][].
 
-N-API sólo soporta una jerarquía anidada única de ámbitos. Sólo hay un ámbito activo en cualquier momento y todos los nuevos handles serán asociados con ese ámbito mientras esté activo. Los ámbitos deben ser cerrados en el orden inverso en el que fueron abiertos. Además, todos los ámbitos creados dentro de un método nativo debe ser cerrado antes de regresar de ese método.
+N-API sólo soporta una jerarquía de anidamiento único de ámbitos. Sólo hay un ámbito activo en cualquier momento y todos los nuevos handles serán asociados con ese ámbito mientras esté activo. Los ámbitos deben ser cerrados en el orden inverso al que fueron abiertos. Además, todos los ámbitos creados dentro de un método nativo deben ser cerrados antes de regresar de ese método.
 
-Tomando el ejemplo anterior, añadir llamadas a [`napi_open_handle_scope`][] y [`napi_close_handle_scope`][] garantizaría que, como máximo, un único identificador sea válido durante la ejecución del loop:
+Tomando el ejemplo anterior, añadir llamadas a [`napi_open_handle_scope`][] y [`napi_close_handle_scope`][] garantizaría que, como máximo, un único identificador sea válido durante la ejecución del bucle:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -526,11 +526,11 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-Al anidar ámbitos, hay casos en los que un handle de un ámbito interno necesita vivir más allá de la vida útil de ese ámbito. N-API soporta un "ámbito escapable" para soportar este caso. Un ámbito escapable permite que un handle sea "promovido" para "escapar" del ámbito actual y la vida útil del handle cambia del ámbito actual al del ámbito externo.
+Al anidar ámbitos, hay casos en los que un handle de un ámbito interno necesita vivir más allá de la vida útil de ese ámbito. N-API soporta un "ámbito escapable" para soportar este caso. Un ámbito escapable permite que un handle sea "promovido" para "escapar" del ámbito actual, y la vida útil del handle cambia del ámbito actual al del ámbito externo.
 
 Los métodos disponibles para abrir/cerrar ámbitos escapables son [`napi_open_escapable_handle_scope`][] y [`napi_close_escapable_handle_scope`][].
 
-La solicitud para promover un handle se realiza a través de [`napi_escape_handle`][] que sólo puede ser llamado una vez.
+La solicitud para promover un handle se realiza a través de [`napi_escape_handle`][], el cual solo puede ser llamado una vez.
 
 #### napi_open_handle_scope
 
@@ -566,7 +566,7 @@ NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API cierra el ámbito pasado. Los ámbitos deben ser cerrados en el orden inverso en el que fueron creados.
+Esta API cierra el ámbito pasado. Los ámbitos deben ser cerrados en el orden inverso al que fueron creados.
 
 Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
@@ -625,16 +625,16 @@ napi_status napi_escape_handle(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] scope`: `napi_value` que representa el ámbito actual.
-- `[in] escapee`: `napi_value` que representa al `Object` de JavaScript que será escapado.
-- `[out] result`: `napi_value` que representa al handle al `Object` escapado en el ámbito externo.
+- `[in] escapee`: `napi_value` que representa al `Object` de JavaScript que se escapará.
+- `[out] result`: `napi_value` que representa al handle del `Object` en el ámbito externo del que se escapará.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API promueve al handle al objeto de JavaScript para que sea válido durante el tiempo de vida del ámbito externo. Sólo se puede llamar uno por ámbito. Si es llamado más de una vez, se devolverá un error.
+Esta API promueve al handle al objeto de JavaScript para que sea válido durante el tiempo de vida del ámbito externo. Sólo se puede llamar una vez por ámbito. Si es llamado más de una vez, se devolverá un error.
 
 Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
-### Referencias a Objetos con Vida Útil más larga que la del Método Nativo
+### Referencias a objetos con vida útil más larga que la del método nativo
 
 In some cases an addon will need to be able to create and reference objects with a lifespan longer than that of a single native method invocation. For example, to create a constructor and later use that constructor in a request to creates instances, it must be possible to reference the constructor object across many different instance creation requests. This would not be possible with a normal handle returned as a `napi_value` as described in the earlier section. The lifespan of a normal handle is managed by scopes and all scopes must be closed before the end of a native method.
 
