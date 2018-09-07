@@ -224,7 +224,7 @@ TCPWRAP(4): trigger: 2 execution: 0
 
 El `TCPSERVERWRAP` es el servidor que recibe las conexiones.
 
-El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia de `TCPWrap` . Esto ocurre fuera de cualquier stack de JavaScript. (Un `executionAsyncId()` de `0` significa que está siendo ejecutado desde C++ sin pilas de JavaScript sobre ello.) Con sólo esa información, sería imposible enlazar recursos en terminos de qué causó que fueran creados, por lo que a `triggerAsyncId` se le da la tarea de propagar qué recurso es responsable de la existencia del nuevo recurso.
+El `TCPWRAP` es la nueva conexión desde el cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia de `TCPWrap` . Esto ocurre fuera de cualquier stack de JavaScript. (Un `executionAsyncId()` de `0` significa que está siendo ejecutado desde C++ sin stacks de JavaScript sobre ello.) Con sólo esa información, sería imposible enlazar recursos en terminos de qué causó que fueran creados, por lo que a `triggerAsyncId` se le da la tarea de propagar qué recurso es responsable de la existencia del nuevo recurso.
 
 ###### `recurso`
 
@@ -438,7 +438,7 @@ Promise.resolve(1729).then(() => {
 
 Observe que el callback de `then()` reclama haber ejecutado en el contexto del ámbito externo a pesar de que hubo un salto asincrónico involucrado. También tenga en cuenta que el valor de `triggerAsyncId` es `0`, lo que significa que nos falta contexto sobre el recurso que causó (activó) que el callback `then()` fuese ejecutado.
 
-Instalar hooks asincrónicos mediante `async_hooks.createHook` habilita el rastreo de ejecución de promesas. Ejemplo:
+Instalar hooks asincrónicos mediante `async_hooks.createHook` habilita el rastreo de ejecución de promises. Ejemplo:
 
 ```js
 const ah = require('async_hooks');
@@ -452,7 +452,7 @@ Promise.resolve(1729).then(() => {
 
 En este ejemplo, agregar cualquier función real de un hook habilitó el rastreo de las promesas. Hay dos promesas en el ejemplo anterior; la promesa creada por `Promise.resolve()` y la promesa devuelta por la llamada a `then()`. En el ejemplo anterior, la primera promesa recibió el `asyncId` `6`, y la última recibió `asyncId` `7`. Durante la ejecución del callback de `then()`, estamos ejecutando en el contexto de la promesa con `asyncId` `7`. Esta promesa fue activada por el recurso asincrónico `6`.
 
-Otra sutileza con las promesas es que los callbacks de `before` y `after` se ejecutan sólo en promesas encadenadas. Esto significa que las promesas no creadas por `then()`/`catch()` no tendrán los callbacks de `before` y `after` activadas en ellos. Para más detalles vea los detalles de la API [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) de V8.
+Otra sutileza con las promises es que los callbacks de `before` y `after` se ejecutan sólo en promises encadenadas. Esto significa que las promesas no creadas por `then()`/`catch()` no tendrán los callbacks de `before` y `after` activadas en ellos. Para más detalles vea los detalles de la API [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) de V8.
 
 ## API del Embebedor de JavaScript
 
@@ -565,7 +565,7 @@ deprecated: v9.6.0
 
 Llama a todos los callbacks `after` . Si se realizaron llamadas anidadas a `emitBefore()`, entonces asegúrese de que el stack se desenrolle correctamente. De otra manera ocurrirá un error.
 
-Si el callback del usuario arroja una excepción, `emitAfter()` será llamado automáticamente para todos los `asyncId`s en la pila si el error es manejado por un dominio o un handler de `'uncaughtException'` .
+Si el callback del usuario arroja una excepción, `emitAfter()` será llamado automáticamente para todos los `asyncId`s en el stack si el error es manejado por un dominio o un handler de `'uncaughtException'` .
 
 Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en el cual son llamadas. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
 
