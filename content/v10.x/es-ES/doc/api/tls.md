@@ -435,11 +435,11 @@ added: v0.11.4
 
 * Devuelve: {Object}
 
-Devuelve un objeto que representa el nombre de cifrado. The `version` key is a legacy field which always contains the value `'TLSv1/SSLv3'`.
+Devuelve un objeto que representa el nombre de cifrado. La clave `version` es un campo heredado que siempre contiene el valor `'TLSv1/SSLv3'`.
 
-For example: `{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`.
+Por ejemplo: `{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`.
 
-See `SSL_CIPHER_get_name()` in https://www.openssl.org/docs/man1.1.0/ssl/SSL_CIPHER_get_name.html for more information.
+Vea `SSL_CIPHER_get_name()` in https://www.openssl.org/docs/man1.1.0/ssl/SSL_CIPHER_get_name.html para más información.
 
 ### tlsSocket.getEphemeralKeyInfo()
 
@@ -447,11 +447,11 @@ See `SSL_CIPHER_get_name()` in https://www.openssl.org/docs/man1.1.0/ssl/SSL_CIP
 added: v5.0.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns an object representing the type, name, and size of parameter of an ephemeral key exchange in [Perfect Forward Secrecy](#tls_perfect_forward_secrecy) on a client connection. It returns an empty object when the key exchange is not ephemeral. As this is only supported on a client socket; `null` is returned if called on a server socket. The supported types are `'DH'` and `'ECDH'`. The `name` property is available only when type is `'ECDH'`.
+Devuelve un objeto que representa el tipo, nombre y tamaño del parámetro de un intercambio de clave efímera en [Perfect Forward Secrecy](#tls_perfect_forward_secrecy) en una conexión de cliente. Devuelve un objeto vacío cuando el intercambio de claves no es efímero. Como esto solo se admite en un socket de cliente; se devuelve `nulo` si se llama a un socket de servidor. Los tipos soportados son `'DH'` y `'ECDH'`. La propiedad `name` está disponible solo cuando el tipo es `'ECDH'`.
 
-For example: `{ type: 'ECDH', name: 'prime256v1', size: 256 }`.
+Por ejemplo: `{ type: 'ECDH', name: 'prime256v1', size: 256 }`.
 
 ### tlsSocket.getFinished()
 
@@ -459,7 +459,7 @@ For example: `{ type: 'ECDH', name: 'prime256v1', size: 256 }`.
 added: v9.9.0
 -->
 
-* Returns: {Buffer|undefined} The latest `Finished` message that has been sent to the socket as part of a SSL/TLS handshake, or `undefined` if no `Finished` message has been sent yet.
+* Devuelve: {Buffer|undefined} El último mensaje `Finished` que se ha enviado al socket como parte de un protocolo de enlace SSL / TLS, o `undefined` si aún no se ha enviado ningún mensaje `Finished`.
 
 As the `Finished` messages are message digests of the complete handshake (with a total of 192 bits for TLS 1.0 and more for SSL 3.0), they can be used for external authentication procedures when the authentication provided by SSL/TLS is not desired or is not enough.
 
