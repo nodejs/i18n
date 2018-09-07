@@ -1582,15 +1582,15 @@ changes:
 
 * `options` {Object} 
   * `IncomingMessage` {http.IncomingMessage} Especifica la clase de `IncomingMessage` que será utilizada. Útil para extender el `IncomingMessage` original. **Predeterminado:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Predeterminado:** `ServerResponse`.
+  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Útil para extender el `ServerResponse` original. **Predeterminado:** `ServerResponse`.
 
 * `requestListener` {Function}
 
-* Returns: {http.Server}
+* Devuelve: {http.Server}
 
-Returns a new instance of [`http.Server`][].
+Devuelve una nueva instancia de [`http.Server`][].
 
-The `requestListener` is a function which is automatically added to the [`'request'`][] event.
+El `requestListener` es una función que se añade automáticamente al evento de [`'request'`][].
 
 ## http.get(options[, callback])
 
@@ -1603,13 +1603,13 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
+* `options` {Object | string | URL} Acepta las mismas `options` que [`http.request()`][], con el `method` siempre establecido a `GET`. Las propiedades que se heredan desde el prototipo son ignoradas.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Devuelve: {http.ClientRequest}
 
-Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
+Ya que la mayoría de las solicitudes son solicitudes de GET sin cuerpos, Node.js proporciona este método de conveniencia. La única diferencia entre este método y [`http.request()`][] es que establece el método a GET y llama a `req.end()` automáticamente. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
-The `callback` is invoked with a single argument that is an instance of [`http.IncomingMessage`][].
+El `callback` se invoca con un único argumento que es una instancia de [`http.IncomingMessage`][].
 
 JSON Fetching Example:
 
@@ -1657,7 +1657,7 @@ added: v0.5.9
 
 * {http.Agent}
 
-Global instance of `Agent` which is used as the default for all HTTP client requests.
+Instancia global de `Agent` que es utilizada de modo predeterminado para todas las solicitudes del cliente de HTTP.
 
 ## http.request(options[, callback])
 
