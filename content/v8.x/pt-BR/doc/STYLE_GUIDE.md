@@ -7,10 +7,10 @@
 * A formatação descrita no `.editorconfig` é preferencial. 
   * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
 * Problemas mecânicos, como a ortografia e a gramática, devem ser identificados por ferramentas, na medida em que for possível. Se não for pego por uma ferramenta, então deverá ser apontado aos revisores humanos.
-* Ortografia do inglês americano de preferência. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Ortografia do inglês americano de preferência. "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
+* Em geral, evitar pronomes pessoais na documentação de referência ("I", "you", "we"). 
+  * Pronomes são aceitáveis em documentação mais coloquial, como guias.
   * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
     * OK: "they", "their", "them", "folks", "people", "developers", "cats"
     * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
