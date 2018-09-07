@@ -425,7 +425,7 @@ Deshabilita la renegociación de TLS para la instancia `TLSSocket`. Una vez llam
 added: v0.11.4
 -->
 
-Siempre devuelve `true`. This may be used to distinguish TLS sockets from regular `net.Socket` instances.
+Siempre devuelve `true`. Esto se puede usar para distinguir los sockets TLS de las instancias normales de `net.Socket`.
 
 ### tlsSocket.getCipher()
 
@@ -433,9 +433,9 @@ Siempre devuelve `true`. This may be used to distinguish TLS sockets from regula
 added: v0.11.4
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns an object representing the cipher name. The `version` key is a legacy field which always contains the value `'TLSv1/SSLv3'`.
+Devuelve un objeto que representa el nombre de cifrado. The `version` key is a legacy field which always contains the value `'TLSv1/SSLv3'`.
 
 For example: `{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`.
 
