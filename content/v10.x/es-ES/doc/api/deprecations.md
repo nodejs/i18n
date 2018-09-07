@@ -448,87 +448,87 @@ La API [`util.isNullOrUndefined()`][] ha sido desaprobada.
 
 ### DEP0052: util.isNumber()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isNumber()`][] API has been deprecated.
+La API [`util.isNumber()`][] ha sido desaprobada.
 
 <a id="DEP0053"></a>
 
 ### DEP0053 util.isObject()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isObject()`][] API has been deprecated.
+La API [`util.isObject()`][] ha sido desaprobada.
 
 <a id="DEP0054"></a>
 
 ### DEP0054: util.isPrimitive()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isPrimitive()`][] API has been deprecated.
+La API [`util.isPrimitive()`][] ha sido desaprobada.
 
 <a id="DEP0055"></a>
 
 ### DEP0055: util.isRegExp()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isRegExp()`][] API has been deprecated.
+La API [`util.isRegExp()`][] ha sido desaprobada.
 
 <a id="DEP0056"></a>
 
 ### DEP0056: util.isString()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isString()`][] API has been deprecated.
+La API [`util.isString()`][] ha sido desaprobada.
 
 <a id="DEP0057"></a>
 
 ### DEP0057: util.isSymbol()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isSymbol()`][] API has been deprecated.
+La API [`util.isSymbol()`][] ha sido desaprobada.
 
 <a id="DEP0058"></a>
 
 ### DEP0058: util.isUndefined()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.isUndefined()`][] API has been deprecated.
+La API [`util.isUndefined()`][] ha sido desaprobada.
 
 <a id="DEP0059"></a>
 
 ### DEP0059: util.log()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util.log()`][] API has been deprecated.
+La API [`util.log()`][] ha sido desaprobada.
 
 <a id="DEP0060"></a>
 
 ### DEP0060: util.\_extend()
 
-Type: Documentation-only
+Tipo: Solo-documentación
 
-The [`util._extend()`][] API has been deprecated.
+La API [`util._extend()`][] ha sido desaprobada.
 
 <a id="DEP0061"></a>
 
 ### DEP0061: fs.SyncWriteStream
 
-Type: Runtime
+Tipo: Runtime
 
-The `fs.SyncWriteStream` class was never intended to be a publicly accessible API. No alternative API is available. Please use a userland alternative.
+La clase `fs.SyncWriteStream` nunca estuvo destinada a ser una API públicamente accesible. No hay disponible ninguna API alternativa. Por favor use un espacio de usuario alternativo.
 
 <a id="DEP0062"></a>
 
 ### DEP0062: node --debug
 
-Type: Runtime
+Tipo: Runtime
 
 `--debug` activates the legacy V8 debugger interface, which has been removed as of V8 5.8. It is replaced by Inspector which is activated with `--inspect` instead.
 
