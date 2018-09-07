@@ -488,7 +488,7 @@ changes:
 * `callback` {Function} Adjuntada como un listener para eventos `'message'`. Opcional.
 * Devuelve: {dgram.Socket}
 
-Crea un objeto `dgram.Socket`. Una vez que el socket es creado, llamar a [`socket.bind()`][] le dirá al socket que empiece a escuchar por mensajes de datagrama. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
+Crea un objeto `dgram.Socket`. Una vez que el socket es creado, llamar a [`socket.bind()`][] le dirá al socket que empiece a escuchar por mensajes de datagrama. Cuando `address` y `port` no son pasados a [`socket.bind()`][], el método enlazará el socket a la dirección "todas las interfaces" en un puerto aleatorio (hace lo correcto tanto para el socket `udp4` como para el socket `udp6`). La dirección y puerto enlazados pueden ser recuperados usando [`socket.address().address`][] y [`socket.address().port`][].
 
 ### dgram.createSocket(type[, callback])
 
@@ -496,9 +496,9 @@ Crea un objeto `dgram.Socket`. Una vez que el socket es creado, llamar a [`socke
 added: v0.1.99
 -->
 
-* `type` {string} - Either `'udp4'` or `'udp6'`.
-* `callback` {Function} - Attached as a listener to `'message'` events.
-* Returns: {dgram.Socket}
+* `type` {string} - Sea `'udp4'` o `'udp6'`.
+* `callback` {Function} - Adjuntada como un listener para los eventos `'message'`.
+* Devuelve: {dgram.Socket}
 
 Creates a `dgram.Socket` object of the specified `type`. The `type` argument can be either `'udp4'` or `'udp6'`. An optional `callback` function can be passed which is added as a listener for `'message'` events.
 
