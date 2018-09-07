@@ -1963,7 +1963,7 @@ added: v8.4.0
 
 A `Http2ServerRequest` object is created by [`http2.Server`][] or [`http2.SecureServer`][] and passed as the first argument to the [`'request'`][] event. Puede ser utilizado para acceder a un estado de solicitud, encabezados, y datos.
 
-It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
+Implementa la interfaz del [Stream Legible](stream.html#stream_class_stream_readable), así como los siguientes eventos adicionales, métodos, y propiedades.
 
 #### Event: 'aborted'
 
@@ -2001,7 +2001,7 @@ added: v8.4.0
 
 * `error` {Error}
 
-Llama a `destroy()` en el [`Http2Stream`][] que recibió el [`Http2ServerRequest`][]. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
+Llama a `destroy()` en el [`Http2Stream`][] que recibió el [`Http2ServerRequest`][]. Si se proporciona `error`, un evento de `'error'` será emitido y `error` será pasado como un argumento a cualquiera de los listeners en el evento.
 
 No hace nada si el stream ya fue destruido.
 
@@ -2043,9 +2043,9 @@ added: v8.4.0
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. En el caso de la respuesta del cliente, la versión HTTP del servidor conectado al servidor. Returns `'2.0'`.
+En caso de una solicitud del servidor, la versión HTTP enviada por el cliente. En el caso de la respuesta del cliente, la versión HTTP del servidor conectado al servidor. Devuelve `'2.0'`.
 
-Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
+Además, `message.httpVersionMajor` es el primer entero y `message.httpVersionMinor` es el segundo.
 
 #### request.method
 
@@ -2055,7 +2055,7 @@ added: v8.4.0
 
 * {string}
 
-The request method as a string. Sólo lectura. Example: `'GET'`, `'DELETE'`.
+El método de solicitud como una string. Sólo lectura. Ejemplo: `'GET'`, `'DELETE'`.
 
 #### request.rawHeaders
 
