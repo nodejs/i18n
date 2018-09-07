@@ -77,9 +77,9 @@ Por ahora, sólo los módulos que utilicen el protocolo `file:` pueden ser carga
 
 Todos los módulos CommonJS, JSON y C++ pueden ser utilizados con `import`.
 
-Modules loaded this way will only be loaded once, even if their query or fragment string differs between `import` statements.
+Los módulos que se carguen de esta manera sólo se cargarán una vez, incluso si su string de consulta o fragmento difiere entre las declaraciones de `import`.
 
-When loaded via `import` these modules will provide a single `default` export representing the value of `module.exports` at the time they finished evaluating.
+Al cargarlos a través de `import`, estos módulos proporcionarán una exportación `default` simple que representa el valor de `module.exports` al momento de culminar la evaluación.
 
 ```js
 import fs from 'fs';
@@ -96,7 +96,7 @@ fs.readFile('./foo.txt', (err, body) => {
 
 <!-- type=misc -->
 
-To customize the default module resolution, loader hooks can optionally be provided via a `--loader ./loader-name.mjs` argument to Node.js.
+Para personalizar la resolución del módulo predeterminado, los loader hooks pueden, opcionalmente, ser proporcionados a través de un argumento `--loader ./loader-name.mjs` a Node.js.
 
 When hooks are used they only apply to ES module loading and not to any CommonJS modules loaded.
 
@@ -118,19 +118,19 @@ export async function resolve(specifier,
 }
 ```
 
-The `parentModuleURL` is provided as `undefined` when performing main Node.js load itself.
+El `parentModuleURL` es proporcionado como `undefined` al realizar la carga principal de Node.js.
 
 The default Node.js ES module resolution function is provided as a third argument to the resolver for easy compatibility workflows.
 
-In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
+In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. Esto puede ser uno de los siguientes:
 
-| `format`    | Description                                                     |
+| `formato`   | Descripción                                                     |
 | ----------- | --------------------------------------------------------------- |
-| `'esm'`     | Load a standard JavaScript module                               |
-| `'cjs'`     | Load a node-style CommonJS module                               |
+| `'esm'`     | Carga un módulo de JavaScript estándar                          |
+| `'cjs'`     | Carga un módulo de CommonJS de estilo nodo                      |
 | `'builtin'` | Load a node builtin CommonJS module                             |
-| `'json'`    | Load a JSON file                                                |
-| `'addon'`   | Load a [C++ Addon](addons.html)                                 |
+| `'json'`    | Carga un archivo JSON                                           |
+| `'addon'`   | Carga un [Addon de C++](addons.html)                            |
 | `'dynamic'` | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
 
 For example, a dummy loader to load JavaScript restricted to browser resolution rules with only JS file extension and Node.js builtin modules support could be written:
@@ -172,7 +172,7 @@ export function resolve(specifier, parentModuleURL = baseURL, defaultResolve) {
 }
 ```
 
-With this loader, running:
+Con este cargador, corriendo:
 
 ```console
 NODE_OPTIONS='--experimental-modules --loader ./custom-loader.mjs' node x.js
