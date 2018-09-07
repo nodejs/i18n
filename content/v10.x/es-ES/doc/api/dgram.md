@@ -437,7 +437,7 @@ El argumento para `socket.setTTL()` es un número que salta entre 1 y 255. El pr
 added: v0.9.1
 -->
 
-De manera predeterminada, enlazar un socket causará que este bloquee el cierre del proceso Node.js mientras permanezca el socket permanezca abierto. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
+De manera predeterminada, enlazar un socket causará que este bloquee el cierre del proceso Node.js mientras permanezca el socket permanezca abierto. El método `socket.unref()` puede ser usado para excluir el socket de la referencia, teniendo en cuenta que mantiene el proceso Node.js activo, permitiendo al proceso salir incluso si el socket sigue escuchando.
 
 Calling `socket.unref()` multiple times will have no addition effect.
 
