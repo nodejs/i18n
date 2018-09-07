@@ -484,7 +484,7 @@ changes:
   * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Predeterminado:** `false`.
   * `recvBufferSize` {number} - Establece el valor del socket `SO_RCVBUF`.
   * `sendBufferSize` {number} - Establece el valor del socket `SO_SNDBUF`.
-  * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
+  * `lookup` {Function} Custom lookup function. **Predeterminado:** [`dns.lookup()`][].
 * `callback` {Function} Attached as a listener for `'message'` events. Optional.
 * Returns: {dgram.Socket}
 
