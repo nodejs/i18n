@@ -399,7 +399,7 @@ Devuelve el límite `address`, la dirección `family` nombre y `port` del socket
 added: v0.11.4
 -->
 
-Returns the reason why the peer's certificate was not been verified. Esta propiedad se establece solo cuando `tlsSocket.authorized === false`.
+Devuelve la razón por la cual el certificado del peer no ha sido verificado. Esta propiedad se establece solo cuando `tlsSocket.authorized === false`.
 
 ### tlsSocket.authorized
 
@@ -417,7 +417,7 @@ Devuelve `verdadero` si el certificado peer fue firmado por una de las CA especi
 added: v8.4.0
 -->
 
-Disables TLS renegotiation for this `TLSSocket` instance. Once called, attempts to renegotiate will trigger an `'error'` event on the `TLSSocket`.
+Deshabilita la renegociación de TLS para la instancia `TLSSocket`. Una vez llamado, los intentos de renegociar desencadenarán un evento `'error'` en el `TLSSocket `.
 
 ### tlsSocket.encrypted
 
@@ -425,7 +425,7 @@ Disables TLS renegotiation for this `TLSSocket` instance. Once called, attempts 
 added: v0.11.4
 -->
 
-Always returns `true`. This may be used to distinguish TLS sockets from regular `net.Socket` instances.
+Siempre devuelve `true`. This may be used to distinguish TLS sockets from regular `net.Socket` instances.
 
 ### tlsSocket.getCipher()
 
