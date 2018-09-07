@@ -636,38 +636,38 @@ Tipo: Fin-de-Vida
 
 Acceder a varias propiedades internas e indocumentadas de instancias de `net.Server` con nombres inapropiados ha sido desaprobado.
 
-As the original API was undocumented and not generally useful for non-internal code, no replacement API is provided.
+Como la API original estaba indocumentada y generalmente no era útil para código no interno, ninguna API de reemplazo fue prevista.
 
 <a id="DEP0074"></a>
 
 ### DEP0074: REPLServer.bufferedCommand
 
-Type: Runtime
+Tipo: Runtime
 
-The `REPLServer.bufferedCommand` property was deprecated in favor of [`REPLServer.clearBufferedCommand()`][].
+La propiedad `REPLServer.bufferedCommand` fue desaprobada en favor de [`REPLServer.clearBufferedCommand()`][].
 
 <a id="DEP0075"></a>
 
 ### DEP0075: REPLServer.parseREPLKeyword()
 
-Type: Runtime
+Tipo: Runtime
 
-`REPLServer.parseREPLKeyword()` was removed from userland visibility.
+`REPLServer.parseREPLKeyword()` fue removido de la visibilidad del espacio de usuario.
 
 <a id="DEP0076"></a>
 
 ### DEP0076: tls.parseCertString()
 
-Type: Runtime
+Tipo: Runtime
 
-`tls.parseCertString()` is a trivial parsing helper that was made public by mistake. This function can usually be replaced with:
+`tls.parseCertString()` is a trivial parsing helper that was made public by mistake. Esta función puede usualmente ser reemplazada con:
 
 ```js
 const querystring = require('querystring');
 querystring.parse(str, '\n', '=');
 ```
 
-This function is not completely equivalent to `querystring.parse()`. One difference is that `querystring.parse()` does url decoding:
+Esta función no es completamente equivalente a `querystring.parse()`. Una diferencia es que `querystring.parse()` hace url decoding:
 
 ```sh
 > querystring.parse('%E5%A5%BD=1', '\n', '=');
@@ -680,7 +680,7 @@ This function is not completely equivalent to `querystring.parse()`. One differe
 
 ### DEP0077: Module.\_debug()
 
-Type: Runtime
+Tipo: Runtime
 
 `Module._debug()` has been deprecated.
 
