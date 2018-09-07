@@ -471,12 +471,12 @@ Corresponde a la rutina `SSL_get_finished` en OpenSSL y se puede usar para imple
 added: v0.11.4
 -->
 
-* `detailed` {boolean} Include the full certificate chain if `true`, otherwise include just the peer's certificate.
-* Returns: {Object}
+* `detailed` {boolean} Incluya la cadena de certificados completa si `true`, de lo contrario incluya solo el certificado del peer.
+* Devuelve: {Object}
 
-Returns an object representing the peer's certificate. The returned object has some properties corresponding to the fields of the certificate.
+Devuelve un objeto que representa el certificado del peer. El objeto devuelto tiene algunas propiedades correspondientes a los campos del certificado.
 
-If the full certificate chain was requested, each certificate will include an `issuerCertificate` property containing an object representing its issuer's certificate.
+Si se solicitó la cadena de certificados completa, cada certificado incluirá una propiedad `issuerCertificate` que contiene un objeto que representa el certificado de su emisor.
 
 For example:
 
@@ -506,7 +506,7 @@ For example:
   serialNumber: 'B9B0D332A1AA5635' }
 ```
 
-If the peer does not provide a certificate, an empty object will be returned.
+Si el peer no proporciona un certificado, se devolverá un objeto vacío.
 
 ### tlsSocket.getPeerFinished()
 
@@ -514,11 +514,11 @@ If the peer does not provide a certificate, an empty object will be returned.
 added: v9.9.0
 -->
 
-* Returns: {Buffer|undefined} The latest `Finished` message that is expected or has actually been received from the socket as part of a SSL/TLS handshake, or `undefined` if there is no `Finished` message so far.
+* Devuelve: {Buffer|undefined} El último mensaje `Finished` que se espera o se ha recibido realmente del socket como parte de un protocolo de enlace SSL/TLS, o `undefined` si no existe ningún mensaje `Finished` hasta el momento.
 
 Como los mensajes `Finished` son resúmenes de mensajes del protocolo de enlace completo (con un total de 192 bits para TLS 1.0 y más para SSL 3.0), se pueden usar para procedimientos de autenticación externos cuando la autenticación proporcionada por SSL/TLS no es deseado o no es suficiente.
 
-Corresponds to the `SSL_get_peer_finished` routine in OpenSSL and may be used to implement the `tls-unique` channel binding from [RFC 5929](https://tools.ietf.org/html/rfc5929).
+Corresponde a la rutina `SSL_get_peer_finished` en OpenSSL y se puede usar para implementar el enlace de canal `tls-unique` de [RFC 5929](https://tools.ietf.org/html/rfc5929).
 
 ### tlsSocket.getProtocol()
 
@@ -526,7 +526,7 @@ Corresponds to the `SSL_get_peer_finished` routine in OpenSSL and may be used to
 added: v5.7.0
 -->
 
-* Returns: {string}
+* Devuelve: {string}
 
 Returns a string containing the negotiated SSL/TLS protocol version of the current connection. The value `'unknown'` will be returned for connected sockets that have not completed the handshaking process. The value `null` will be returned for server sockets or disconnected client sockets.
 
