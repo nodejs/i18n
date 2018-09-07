@@ -481,11 +481,11 @@ A medida que se realizan llamadas N-API, los handles a objetos en el montón par
 
 A medida que se devuelven los handles de los objetos, se asocian con un "ámbito". La vida útil para el ámbito por defecto está ligada a la vida útil de la llamada del método nativo. El resultado es que, por defecto, los handles permanecen válidos y los objetos asociados con estos handles se mantendrán vivos durante la vida útil de la llamada del método nativo.
 
-En muchos casos, sin embargo, es necesario que los handles permanezcan válidos para una vida útil más corta o larga que la del método nativo. Las secciones siguientes describen las funciones N-API que pueden ser utilizadas para cambiar el handle de vida útil por el predeterminado.
+En muchos casos, sin embargo, es necesario que los handles permanezcan válidos para una vida útil más corta o larga que la del método nativo. Las secciones siguientes describen las funciones N-API que pueden ser utilizadas para cambiar la de vida útil del handle desde la configuración predeterminada.
 
-### Hacer al handle de vida útil más corto que la del método nativo
+### Hacer a la vida útil del handle más corta que la vida útil del método nativo
 
-A menudo es necesario hacer la vida útil de los handles más corto que la vida útil de un método nativo. Por ejemplo, considere un método nativo que tiene un loop que itera a través de los elementos de un arreglo de gran tamaño:
+A menudo es necesario hacer la vida útil de los handles más corto que la vida útil de un método nativo. Por ejemplo, considere un método nativo que tiene un bucle que itera a través de los elementos de un arreglo de gran tamaño:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
