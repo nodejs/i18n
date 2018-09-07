@@ -2148,7 +2148,7 @@ changes:
 * `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Debe satisfacer `0 <= offset <= buf.length - 2`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt16BE()` escribe big endian, `writeUInt16LE()` escribe little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
+Escribe `value` al `buf` en el `offset` especificado con el formato endian especificado (`writeUInt16BE()` escribe big endian, `writeUInt16LE()` escribe little endian). `value` debe ser un entero sin signo de 16-bit válido. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
