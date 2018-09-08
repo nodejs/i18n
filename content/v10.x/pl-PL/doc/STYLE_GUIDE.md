@@ -14,14 +14,17 @@
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
     * NIE OK: "jego", "jej", "mu", "jej", "chłopaki", "kolesie"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
-* Documents must start with a level-one heading.
-* Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
-* When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
-* When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
+* Podczas łączenia elementów wyodrębniających (nawiasy i cudzysłów), ostateczna interpunkcja powinna być umieszczona: 
+  * Wewnątrz elementu wyodrębniającego, jeśli element wyodrębniający zawiera kompletną klauzulę - podmiot, czasownik i obiekt.
+  * Poza elementem wyodrębniającym, jeśli element wyodrębniający zawiera tylko fragment zdania.
+* Wprowadź interpunkcję końca zdania w elementach wyodrębniających - kropki są wewnątrz nawiasów i cytatów, nie po.
+* Dokumenty muszą zaczynać się od nagłówka pierwszego poziomu.
+* Preferuj dołączać linki od linków w linii - preferuj ` [link] [] </ 0> od
+<code> [link] (http://example.com) </ 0>.</li>
+<li>Podczas dokumentowania interfejsów API zwróć uwagę na wersję, w której interfejs API został wprowadzony na
+koniec sekcji. If an API has been deprecated, also note the first
+version that the API appeared deprecated in.</li>
+<li>When using dashes, use <a href="https://en.wikipedia.org/wiki/Dash#Em_dash">Em dashes</a> ("—" or <code>Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
   * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
