@@ -536,12 +536,12 @@ Utilizza il sistema `require()` interno per cercare la posizione di un modulo ma
 added: v8.9.0
 -->
 
-* `request` {string} The module path whose lookup paths are being retrieved.
-* Returns: {string[]|null}
+* `request` {string} Il percorso del modulo da cui vengono recuperati i percorsi di ricerca.
+* Restituisce: {string[]|null}
 
-Returns an array containing the paths searched during resolution of `request` or `null` if the `request` string references a core module, for example `http` or `fs`.
+Restituisce un array contenente i percorsi cercati durante la risoluzione di `request` oppure di `null` se la stringa `request` fa riferimento ad un core module, ad esempio `http` oppure `fs`.
 
-## The `module` Object
+## L'Object `module`
 
 <!-- YAML
 added: v0.1.16
@@ -553,7 +553,7 @@ added: v0.1.16
 
 * {Object}
 
-In each module, the `module` free variable is a reference to the object representing the current module. For convenience, `module.exports` is also accessible via the `exports` module-global. `module` is not actually a global but rather local to each module.
+In ogni modulo, la variabile libera `module` è un riferimento all'object che rappresenta il modulo attuale. Per comodità, `module.exports` è accessibile anche tramite il modulo globale `exports`. `module` is not actually a global but rather local to each module.
 
 ### module.children
 
