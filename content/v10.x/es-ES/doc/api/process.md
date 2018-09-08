@@ -1,22 +1,22 @@
-# Process
+# Proceso
 
 <!-- introduced_in=v0.10.0 -->
 
 <!-- type=global -->
 
-The `process` object is a `global` that provides information about, and control over, the current Node.js process. As a global, it is always available to Node.js applications without using `require()`.
+El objeto `process` es un `global` que proporciona información acerca de, y control sobre, el proceso Node.js actual. Como un global, siempre está disponible para aplicaciones Node.js sin el uso de `require()`.
 
-## Process Events
+## Eventos del Proceso
 
-The `process` object is an instance of [`EventEmitter`][].
+El objeto `process` es una instancia de [`EventEmitter`][].
 
-### Event: 'beforeExit'
+### Evento: 'beforeExit'
 
 <!-- YAML
 added: v0.11.12
 -->
 
-The `'beforeExit'` event is emitted when Node.js empties its event loop and has no additional work to schedule. Normally, the Node.js process will exit when there is no work scheduled, but a listener registered on the `'beforeExit'` event can make asynchronous calls, and thereby cause the Node.js process to continue.
+El evento `'beforeExit'` es emitido cuando Node.js vacía su bucle de evento y no tiene trabajo adicional a programar. Normally, the Node.js process will exit when there is no work scheduled, but a listener registered on the `'beforeExit'` event can make asynchronous calls, and thereby cause the Node.js process to continue.
 
 The listener callback function is invoked with the value of [`process.exitCode`][] passed as the only argument.
 
