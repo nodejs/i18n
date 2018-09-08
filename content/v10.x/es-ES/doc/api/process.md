@@ -138,15 +138,15 @@ console.log('This will not run.');
 
 Note que `'uncaughtException'` es un mecanismo crudo para el manejo de excepciones destinadas a ser usada sólo como último recurso. El evento *no debe* ser usado como un equivalente a `On Error Resume Next`. Excepciones sin controlar inherentemente significan que una aplicación está en un estado no definido. Attempting to resume application code without properly recovering from the exception can cause additional unforeseen and unpredictable issues.
 
-Exceptions thrown from within the event handler will not be caught. Instead the process will exit with a non-zero exit code and the stack trace will be printed. This is to avoid infinite recursion.
+Las excepciones arrojadas desde dentro del manejador de eventos no serán capturadas. En su lugar, el proceso se cerrará con un código de salida distinto de cero y se imprimirá el stack trace. Esto es para evitar una recursión infinita.
 
 Attempting to resume normally after an uncaught exception can be similar to pulling out of the power cord when upgrading a computer — nine out of ten times nothing happens - but the 10th time, the system becomes corrupted.
 
-The correct use of `'uncaughtException'` is to perform synchronous cleanup of allocated resources (e.g. file descriptors, handles, etc) before shutting down the process. **It is not safe to resume normal operation after `'uncaughtException'`.**
+The correct use of `'uncaughtException'` is to perform synchronous cleanup of allocated resources (e.g. file descriptors, handles, etc) before shutting down the process. **No es seguro reanudar el funcionamiento normal después de `'uncaughtException'`.**
 
 To restart a crashed application in a more reliable way, whether `'uncaughtException'` is emitted or not, an external monitor should be employed in a separate process to detect application failures and recover or restart as needed.
 
-### Event: 'unhandledRejection'
+### Evento: 'unhandledRejection'
 
 <!-- YAML
 added: v1.4.1
@@ -161,12 +161,12 @@ changes:
                  a process warning.
 -->
 
-The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. When programming with Promises, exceptions are encapsulated as "rejected promises". Rejections can be caught and handled using [`promise.catch()`][] and are propagated through a `Promise` chain. The `'unhandledRejection'` event is useful for detecting and keeping track of promises that were rejected whose rejections have not yet been handled.
+El evento `'unhandledRejection'` es emitido cada vez que una `Promise` es rechazada y no hay un manejador de error adjunto a la promesa dentro de un turno del bucle de evento. Al programar con Promises, las excepciones son encapsuladas como "promesas rechazadas". Los rechazos pueden ser capturados y manejados utilizando [`promise.catch()`][], y son propagados a través de una cadena `Promise`. El evento `'unhandledRejection'` es útil para detectar y hacer seguimiento de promesas que fueron rechazadas y cuyos rechazos todavía no han sido manejados.
 
-The listener function is called with the following arguments:
+La función oyente es llamada con los siguientes argumentos:
 
-* `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
-* `p` the `Promise` that was rejected.
+* `reason` {Error|any} El objeto con el cual la promesa fue rechazada (típicamente un objeto [`Error`][]).
+* `p` la `Promise` fue rechazada.
 
 ```js
 process.on('unhandledRejection', (reason, p) => {
@@ -179,7 +179,7 @@ somePromise.then((res) => {
 }); // no `.catch()` or `.then()`
 ```
 
-The following will also trigger the `'unhandledRejection'` event to be emitted:
+Lo siguiente también desencadenará al evento `'unhandledRejection'` a ser emitido:
 
 ```js
 function SomeResource() {
