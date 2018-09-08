@@ -90,13 +90,13 @@ The `'rejectionHandled'` event is emitted whenever a `Promise` has been rejected
 
 El objeto `Promise` habría sido emitido previamente en un evento `'unhandledRejection'`, pero durante el curso del proceso, ganó un manejador de rechazo.
 
-No hay noción de un nivel superior para una cadena `Promise` en el cual los rechazos pueden ser manejados siempre. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time — possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
+No hay noción de un nivel superior para una cadena `Promise` en el cual los rechazos pueden ser controlados siempre. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time — possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
 
 Otra manera de decir esto es que, a diferencia del código asincrónico donde hay una lista de excepciones sin manejar que está en constante crecimiento, con las Promises (Promesas), puede haber una lista creciente y decreciente de rechazos sin controlar.
 
-In synchronous code, the `'uncaughtException'` event is emitted when the list of unhandled exceptions grows.
+En el código sincrónico, el evento `'uncaughtException'` es emitido cuando la lista de excepciones sin controlar crece.
 
-In asynchronous code, the `'unhandledRejection'` event is emitted when the list of unhandled rejections grows, and the `'rejectionHandled'` event is emitted when the list of unhandled rejections shrinks.
+En el código asincrónico, el evento `'unhandledRejection'` es emitido cuando la lista de rechazos sin controlar crece, y el evento `'rejectionHandled'` es emitido cuando la lista de rechazos sin controlar decrece.
 
 ```js
 const unhandledRejections = new Map();
@@ -108,17 +108,17 @@ process.on('rejectionHandled', (promise) => {
 });
 ```
 
-In this example, the `unhandledRejections` `Map` will grow and shrink over time, reflecting rejections that start unhandled and then become handled. It is possible to record such errors in an error log, either periodically (which is likely best for long-running application) or upon process exit (which is likely most convenient for scripts).
+En este ejemplo, el `Map` de `unhandledRejections` crecerá y decrecerá con el tiempo, reflejando los rechazos que comenzaron sin controlar y luego fueron controlados. Es posible registrar dichos errores en un registro de error, ya sea periódicamente (lo que probablemente sea lo mejor para aplicaciones de larga ejecución) o al salir del proceso (lo que probablemente sea más conveniente para scripts).
 
-### Event: 'uncaughtException'
+### Evento: 'uncaughtException'
 
 <!-- YAML
 added: v0.1.18
 -->
 
-The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting. Adding a handler for the `'uncaughtException'` event overrides this default behavior.
+The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. Por defecto, Node.js maneja dichas excepciones imprimiendo el stack strace en `stderr` y cerrándose. Añadir un manejador para el evento `'uncaughtException'` anula este comportamiento predeterminado.
 
-The listener function is called with the `Error` object passed as the only argument.
+La función oyente es llamada con el objeto `Error` pasado como el único argumento.
 
 ```js
 process.on('uncaughtException', (err) => {
@@ -129,14 +129,14 @@ setTimeout(() => {
   console.log('This will still run.');
 }, 500);
 
-// Intentionally cause an exception, but don't catch it.
+// Causa intencionalmente una excepción, pero no la atrapa.
 nonexistentFunc();
 console.log('This will not run.');
 ```
 
-#### Warning: Using `'uncaughtException'` correctly
+#### Advertencia: Usando `'uncaughtException'` correctamente
 
-Note that `'uncaughtException'` is a crude mechanism for exception handling intended to be used only as a last resort. The event *should not* be used as an equivalent to `On Error Resume Next`. Unhandled exceptions inherently mean that an application is in an undefined state. Attempting to resume application code without properly recovering from the exception can cause additional unforeseen and unpredictable issues.
+Note que `'uncaughtException'` es un mecanismo crudo para el manejo de excepciones destinadas a ser usada sólo como último recurso. El evento *no debe* ser usado como un equivalente a `On Error Resume Next`. Excepciones sin controlar inherentemente significan que una aplicación está en un estado no definido. Attempting to resume application code without properly recovering from the exception can cause additional unforeseen and unpredictable issues.
 
 Exceptions thrown from within the event handler will not be caught. Instead the process will exit with a non-zero exit code and the stack trace will be printed. This is to avoid infinite recursion.
 
