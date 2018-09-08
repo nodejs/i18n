@@ -725,7 +725,7 @@ La función de `callback`, si se especifica, se agregará como listener para el 
 
 `tls.connect()` devuelve un objeto [`tls.TLSSocket`][].
 
-The following implements a simple "echo server" example:
+A continuación, se implementa un ejemplo simple de "echo server":
 
 ```js
 const tls = require('tls');
@@ -755,7 +755,7 @@ socket.on('end', () => {
 });
 ```
 
-Or
+O
 
 ```js
 const tls = require('tls');
