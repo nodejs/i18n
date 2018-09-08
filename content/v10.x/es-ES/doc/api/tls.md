@@ -576,7 +576,7 @@ added: v0.11.4
 
 * {number}
 
-Returns the numeric representation of the local port.
+Devuelve la representación numérica del puerto local.
 
 ### tlsSocket.remoteAddress
 
@@ -586,7 +586,7 @@ added: v0.11.4
 
 * {string}
 
-Returns the string representation of the remote IP address. For example, `'74.125.127.100'` or `'2001:4860:a005::68'`.
+Devuelve la representación de cadena de la dirección IP remota. Por ejemplo, `'74.125.127.100'` o `'2001:4860:a005::68'`.
 
 ### tlsSocket.remoteFamily
 
@@ -596,7 +596,7 @@ added: v0.11.4
 
 * {string}
 
-Returns the string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
+Devuelve la representación de cadena de la familia de IP remota. `'IPv4'` or `'IPv6'`.
 
 ### tlsSocket.remotePort
 
@@ -606,18 +606,18 @@ added: v0.11.4
 
 * {number}
 
-Returns the numeric representation of the remote port. For example, `443`.
+Devuelve la representación numérica del puerto remoto. Por ejemplo, `443`.
 
-### tlsSocket.renegotiate(options, callback)
+### tlsSocket.renegotiate(opciones, callback)
 
 <!-- YAML
 added: v0.11.8
 -->
 
-* `options` {Object} 
-  * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Default:** `true`.
+* `opciones` {Object} 
+  * `rejectUnauthorized` {boolean} Si no es `false`, el certificado del servidor se verifica con la lista de CA proporcionadas. Se produce un evento `'error'` si la verificación falla; `err.code` contiene el código de error OpenSSL. **Predeterminado:** `true`.
   * `requestCert`
-* `callback` {Function} A function that will be called when the renegotiation request has been completed.
+* `callback` {Function} Una función que se invocará cuando se haya completado la solicitud de renegociación.
 
 The `tlsSocket.renegotiate()` method initiates a TLS renegotiation process. Upon completion, the `callback` function will be passed a single argument that is either an `Error` (if the request failed) or `null`.
 
@@ -710,7 +710,7 @@ changes:
   * `port` {number} Port the client should connect to.
   * `path` {string} Creates unix socket connection to path. If this option is specified, `host` and `port` are ignored.
   * `socket` {stream.Duplex} Establish secure connection on a given socket rather than creating a new socket. Typically, this is an instance of [`net.Socket`][], but any `Duplex` stream is allowed. If this option is specified, `path`, `host` and `port` are ignored, except for certificate validation. Usually, a socket is already connected when passed to `tls.connect()`, but it can be connected later. Note that connection/disconnection/destruction of `socket` is the user's responsibility, calling `tls.connect()` will not cause `net.connect()` to be called.
-  * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Default:** `true`.
+  * `rejectUnauthorized` {boolean} Si no es `false`, el certificado del servidor se verifica con la lista de CA proporcionadas. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Predeterminado:** `true`.
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`.
   * `servername`: {string} Server name for the SNI (Server Name Indication) TLS extension.
   * `checkServerIdentity(servername, cert)` {Function} A callback function to be used (instead of the builtin `tls.checkServerIdentity()` function) when checking the server's hostname (or the provided `servername` when explicitly set) against the certificate. This should return an {Error} if verification fails. The method should return `undefined` if the `servername` and `cert` are verified.
