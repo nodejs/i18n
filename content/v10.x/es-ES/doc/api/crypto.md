@@ -776,14 +776,14 @@ console.log(aliceSecret === bobSecret);
 added: v0.1.92
 -->
 
-The `Hash` class is a utility for creating hash digests of data. Puede ser usado de una de las dos maneras:
+La clase `Hash` es una utilidad para crear resúmenes hash de datos. Puede ser usado de una de las dos maneras:
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed hash digest on the readable side, or
-- Using the [`hash.update()`][] and [`hash.digest()`][] methods to produce the computed hash.
+- Como una [stream](stream.html) que es legible y escribible, donde los datos son escritos para producir un resumen hash computado en el lado legible, o
+- Usando el método [`hash.update()`][] y [`hash.digest()`][] para producir el hash computado.
 
-The [`crypto.createHash()`][] method is used to create `Hash` instances. `Hash` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createHash()`][] es usado para crear las instancias `Hash`. Los objetos `Hash` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Hash` objects as streams:
+Ejemplo: Usando los objetos `Hash` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -802,7 +802,7 @@ hash.write('some data to hash');
 hash.end();
 ```
 
-Example: Using `Hash` and piped streams:
+Ejemplo: Usando `Hash` y piped streams:
 
 ```js
 const crypto = require('crypto');
@@ -813,7 +813,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hash).pipe(process.stdout);
 ```
 
-Example: Using the [`hash.update()`][] and [`hash.digest()`][] methods:
+Ejemplo: Usando los métodos [`hash.update()`][] y [`hash.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -834,7 +834,7 @@ added: v0.1.92
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
+Calcula el resumen de todos los datos pasados para ser hashed (usando el método [`hash.update()`][]). El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
 The `Hash` object can not be used again after `hash.digest()` method has been called. Multiple calls will cause an error to be thrown.
 
