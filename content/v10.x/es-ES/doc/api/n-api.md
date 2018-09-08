@@ -751,7 +751,7 @@ Si aún es válido, esta API devuelve el `napi_value` que representa al `Object`
 
 ## Registro de Módulos
 
-Los módulos N-API son registrados de forma similar a otros módulos, excepto que en lugar de utilizar el macro `NODE_MODULE`, se utiliza el siguiente:
+Los módulos N-API son registrados de forma similar a otros módulos, excepto que en lugar de utilizar la macro `NODE_MODULE`, se utiliza el siguiente:
 
 ```C
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
@@ -763,9 +763,9 @@ La siguiente diferencia es la firma para el método `Init`. Para un módulo de N
 napi_value Init(napi_env env, napi_value exports);
 ```
 
-El valor devuelto de `Init` es tratado como el objeto `exports` para el módulo. El método `Init` se pasa un objeto vacío a través del parámetro `exports` como una conveniencia. Si `Init` devuelve NULL, el parámetro pasado como `exports` es exportado por el módulo. N-API modules cannot modify the `module` object but can specify anything as the `exports` property of the module.
+El valor devuelto de `Init` es tratado como el objeto `exports` para el módulo. El método `Init` se pasa un objeto vacío a través del parámetro `exports` como una conveniencia. Si `Init` devuelve NULL, el parámetro pasado como `exports` es exportado por el módulo. Los módulos N-API no pueden modificar el objeto `module` pero pueden especificar cualquiera como la propiedad `exports` del módulo.
 
-To add the method `hello` as a function so that it can be called as a method provided by the addon:
+Para agregar el método `hello` como una función para que pueda ser llamada como un método proporcionado por el complemento:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -778,7 +778,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To set a function to be returned by the `require()` for the addon:
+Para establecer una función que sea devuelta por el `require()` para el complemento:
 
 ```C
 napi_value Init(napi_env env, napi_value exports) {
@@ -790,10 +790,10 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
+Para definir una clase para que nuevas instancias puedan ser creadas (a menudo utilizadas con [Objeto Envuelto](#n_api_object_wrap)):
 
 ```C
-// NOTE: partial example, not all referenced code is included
+// NOTA: ejemplo parcial, no todo el código referenciadp está incluido 
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
@@ -817,7 +817,7 @@ napi_value Init(napi_env env, napi_value exports) {
 }
 ```
 
-If you expect that your module will be loaded multiple times during the lifetime of the Node.js process, you can use the `NAPI_MODULE_INIT` macro to initialize your module:
+Si esperas que tu módulo sea cargado varias veces durante el tiempo de vida del proceso Node.js, puedes utilizar la macro `NAPI_MODULE_INIT` para inicializar tu módulo:
 
 ```C
 NAPI_MODULE_INIT() {
@@ -834,11 +834,11 @@ NAPI_MODULE_INIT() {
 }
 ```
 
-This macro includes `NAPI_MODULE`, and declares an `Init` function with a special name and with visibility beyond the addon. This will allow Node.js to initialize the module even if it is loaded multiple times.
+Esta macro incluye a `NAPI_MODULE`, y declara una función `Init` con un nombre especial y con visibilidad más allá del complemento. Esto permite que Node.js inicialice el módulo, incluso si es cargado varias veces.
 
-The variables `env` and `exports` will be available inside the function body following the macro invocation.
+Las variables `env` y `exports` estarán disponibles dentro del cuerpo de la función, siguiendo la invocación macro.
 
-For more details on setting properties on objects, see the section on [Working with JavaScript Properties](#n_api_working_with_javascript_properties).
+Para obtener más detalles sobre la configuración de propiedades en objetos, consulte la sección sobre [Trabajando con las Propiedades de JavaScript](#n_api_working_with_javascript_properties).
 
 For more details on building addon modules in general, refer to the existing API.
 
