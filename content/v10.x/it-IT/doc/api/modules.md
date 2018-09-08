@@ -473,7 +473,7 @@ Poiché il sistema modulo è bloccato, questa funzione probabilmente non se ne a
 
 Da notare che il numero di operazioni del file system, che il sistema modulo deve eseguire per risolvere un'istruzione `require(...)` su un filename, viene scalato linearmente con il numero di estensioni registrate.
 
-In other words, adding extensions slows down the module loader and should be discouraged.
+In altre parole, l'aggiunta di estensioni rallenta il caricatore (loader) dei moduli e dovrebbe essere evitata.
 
 #### require.main
 
@@ -483,7 +483,7 @@ added: v0.1.17
 
 * {Object}
 
-The `Module` object representing the entry script loaded when the Node.js process launched. See ["Accessing the main module"](#modules_accessing_the_main_module).
+L'object `Module` che rappresenta lo script d'input caricato all'avvio del processo di Node.js. See ["Accessing the main module"](#modules_accessing_the_main_module).
 
 In `entry.js` script:
 
