@@ -93,27 +93,27 @@ added: v0.1.90
 
 * Devuelve: {Object}
 
-Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
+Devuelve la `address` enlazada, el nombre de la dirección de la `family`, y el `port` del servidor como fue reportado por el sistema operativo si se estaba escuchando en un socket de IP (útil para encontrar cuál puerto fue asignado cuando se obtiene una dirección asignada por el sistema operativo): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
-For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
+Para un servidor escuchando en un socket de dominio UNIX o pipe, el nombre es devuelto como un string.
 
-Example:
+Ejemplo:
 
 ```js
 const server = net.createServer((socket) => {
   socket.end('goodbye\n');
 }).on('error', (err) => {
-  // handle errors here
+  // errores del handle aquí
   throw err;
 });
 
-// grab an arbitrary unused port.
+// agarra un puerto sin usar arbitrario.
 server.listen(() => {
   console.log('opened server on', server.address());
 });
 ```
 
-Don't call `server.address()` until the `'listening'` event has been emitted.
+No llames a `server.address()` hasta que el evento `'listening'` ha sido emitido.
 
 ### server.close([callback])
 
@@ -121,7 +121,7 @@ Don't call `server.address()` until the `'listening'` event has been emitted.
 added: v0.1.90
 -->
 
-* Returns: {net.Server}
+* Devuelve: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
