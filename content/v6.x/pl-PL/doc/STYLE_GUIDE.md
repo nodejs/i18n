@@ -22,13 +22,18 @@
 * Preferuj dołączać linki od linków w linii - preferuj ` [link] [] </ 0> od
 <code> [link] (http://example.com) </ 0>.</li>
 <li>Podczas dokumentowania interfejsów API zwróć uwagę na wersję, w której interfejs API został wprowadzony na
-koniec sekcji. If an API has been deprecated, also note the first
-version that the API appeared deprecated in.</li>
-<li>When using dashes, use <a href="https://en.wikipedia.org/wiki/Dash#Em_dash">Em dashes</a> ("—" or <code>Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
-* Including assets: 
-  * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
-  * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
-  * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
+koniec sekcji. Jeśli interfejs API został uznany za przestarzały, zwróć także uwagę na pierwszą
+wersję, w której interfejs API wydawał się przestarzały.</li>
+<li>Używając myślników, użyj <a href="https://en.wikipedia.org/wiki/Dash#Em_dash"> kreski Emisji </ 0> ("-" lub <code> Opcja + Shift + "-" </ 1> na macOS)
+otoczone spacjami, zgodnie z <a href="https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage"> Przewodnik New York Times po Stylu i Zastosowaniu </ 2>.</li>
+<li>W tym aktywa:
+
+<ul>
+<li>Jeśli chcesz dodać ilustrację lub pełny program, dodaj go do odpowiedniego podkatalogu
+w <code>aktywa /` kat.
+* Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
+* For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.</li> 
+
 * For code blocks: 
   * Use language aware fences. ("```js")
   * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
@@ -42,4 +47,4 @@ version that the API appeared deprecated in.</li>
   * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`
-  * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
+  * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code></ul>
