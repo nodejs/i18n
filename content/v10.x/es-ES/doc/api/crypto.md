@@ -862,14 +862,14 @@ Esto puede ser llamado muchas veces con nuevos datos a medida en que son transmi
 added: v0.1.94
 -->
 
-The `Hmac` Class is a utility for creating cryptographic HMAC digests. It can be used in one of two ways:
+La clase `Hmac` es una utilidad para crear resúmenes criptográficos HMAC. Puede ser usado de una de las dos maneras:
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed HMAC digest on the readable side, or
-- Using the [`hmac.update()`][] and [`hmac.digest()`][] methods to produce the computed HMAC digest.
+- Como una [stream](stream.html) que es tanto legible como escribible, donde los datos son escritos para producir un resúmen computado HMAC en el lado legible, o
+- Usando los métodos [`hmac.update()`][] y [`hmac.digest()`][] para producir el resúmen HMAC.
 
-The [`crypto.createHmac()`][] method is used to create `Hmac` instances. `Hmac` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createHmac()`][] es usado para crear instancias `Hmac`. Los objetos `Hmac` no deben crearse directamente usando la palabra clave `new`.
 
-Example: Using `Hmac` objects as streams:
+Ejemplo: Usando objetos `Hmac` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -888,7 +888,7 @@ hmac.write('some data to hash');
 hmac.end();
 ```
 
-Example: Using `Hmac` and piped streams:
+Ejemplo: Usando `Hmac` y piped streams:
 
 ```js
 const crypto = require('crypto');
@@ -899,7 +899,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hmac).pipe(process.stdout);
 ```
 
-Example: Using the [`hmac.update()`][] and [`hmac.digest()`][] methods:
+Ejemplo: Usando los métodos [`hmac.update()`][] y [`hmac.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -920,9 +920,9 @@ added: v0.1.94
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
+Calcula el resúmen HMAC de todos los datos pasados usando [`hmac.update()`][]. El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto;
 
-The `Hmac` object can not be used again after `hmac.digest()` has been called. Multiple calls to `hmac.digest()` will result in an error being thrown.
+El objeto `Hmac` no puede ser usado nuevamente después de que `hmac.digest()` ha sido llamado. Llamadas múltiples a `hmac.digest()` resultará en producir un error.
 
 ### hmac.update(data[, inputEncoding])
 
