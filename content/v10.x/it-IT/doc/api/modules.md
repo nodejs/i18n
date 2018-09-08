@@ -289,11 +289,11 @@ Se non c'è nessun file `package.json` nella directory, allora Node.js tenterà 
 
 <!--type=misc-->
 
-If the module identifier passed to `require()` is not a [core](#modules_core_modules) module, and does not begin with `'/'`, `'../'`, or `'./'`, then Node.js starts at the parent directory of the current module, and adds `/node_modules`, and attempts to load the module from that location. Node will not append `node_modules` to a path already ending in `node_modules`.
+Se l'identificatore del modulo passato a `require()` non è un [core](#modules_core_modules) module, e non inizia con `'/'`, `'../'` o `'./'`, allora Node.js inizia nella parent directory del modulo attuale, e aggiunge `/node_modules`, tentando di caricare il modulo da quella posizione. Node.js non aggiungerà `node_modules` ad un percorso che termina già in `node_modules`.
 
-If it is not found there, then it moves to the parent directory, and so on, until the root of the file system is reached.
+Se non viene trovato lì, allora passa alla parent directory e così via fino a raggiungere il root del file system.
 
-For example, if the file at `'/home/ry/projects/foo.js'` called `require('bar.js')`, then Node.js would look in the following locations, in this order:
+Ad esempio, se il file all'interno di `'/home/ry/projects/foo.js'` ha chiamato `require('bar.js')`, allora Node.js cercherà nelle seguenti posizioni, in quest'ordine:
 
 * `/home/ry/projects/node_modules/bar.js`
 * `/home/ry/node_modules/bar.js`
