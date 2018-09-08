@@ -300,17 +300,17 @@ Ad esempio, se il file all'interno di `'/home/ry/projects/foo.js'` ha chiamato `
 * `/home/node_modules/bar.js`
 * `/node_modules/bar.js`
 
-This allows programs to localize their dependencies, so that they do not clash.
+Ciò consente ai programmi di localizzare le loro dipendenze, in modo che non entrino in conflitto.
 
-It is possible to require specific files or sub modules distributed with a module by including a path suffix after the module name. For instance `require('example-module/path/to/file')` would resolve `path/to/file` relative to where `example-module` is located. The suffixed path follows the same module resolution semantics.
+È possibile richiedere file o sotto-moduli specifici distribuiti con un modulo includendo un suffiso di percorso dopo il nome del modulo. Ad esempio `require('example-module/path/to/file')` risolverà `path/to/file` in relazione a dove si trova `example-module`. Il percorso con il suffisso segue la stessa semantica di risoluzione del modulo.
 
-## Loading from the global folders
+## Caricamento dalle cartelle globali
 
 <!-- type=misc -->
 
-If the `NODE_PATH` environment variable is set to a colon-delimited list of absolute paths, then Node.js will search those paths for modules if they are not found elsewhere.
+Se la variabile di ambiente `NODE_PATH` è impostata su un elenco delimitato da due punti di percorsi assoluti, allora Node.js cercherà quei percorsi per i moduli se non vengono trovati da nessuna parte.
 
-On Windows, `NODE_PATH` is delimited by semicolons (`;`) instead of colons.
+Su Windows, `NODE_PATH` è delimitato da punti e virgola (`;`) anziché da due punti.
 
 `NODE_PATH` was originally created to support loading modules from varying paths before the current [module resolution](#modules_all_together) algorithm was frozen.
 
