@@ -123,7 +123,7 @@ added: v0.1.90
 
 * Devuelve: {net.Server}
 
-Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
+Detiene al servidor de aceptar nuevas conexiones, y de mantener conexiones existentes. Esta función es asincrónica, el servidor es finalmente cerrado cuando todas las conexiones son terminadas, y el servidor emite un evento [`'close'`]. El `callback` opcional será llamado una vez el evento `'close'` ocurra. A diferencia de ese evento, será llamado con un `Error` como su único argumento si el servidor no fue abierto cuando estaba cerrado.
 
 ### server.connections
 
@@ -136,7 +136,7 @@ deprecated: v0.9.7
 
 The number of concurrent connections on the server.
 
-This becomes `null` when sending a socket to a child with [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
+Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
 
 ### server.getConnections(callback)
 
@@ -144,24 +144,24 @@ This becomes `null` when sending a socket to a child with [`child_process.fork()
 added: v0.9.7
 -->
 
-* Returns: {net.Server}
+* Devuelve: {net.Server}
 
-Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
+Asynchronously get the number of concurrent connections on the server. Funciona cuando los sockets fueron enviados a las bifurcaciones.
 
-Callback should take two arguments `err` and `count`.
+El callback debería tomar dos argumentos, `err` y `count`.
 
 ### server.listen()
 
-Start a server listening for connections. A `net.Server` can be a TCP or an [IPC](#net_ipc_support) server depending on what it listens to.
+Inicia un servidor escuchando conexiones. Un `net.Server` puede ser un servidor TCP o un servidor [IPC](#net_ipc_support), dependiendo de lo que escuche.
 
-Possible signatures:
+Firmas posibles:
 
 * [`server.listen(handle[, backlog][, callback])`][`server.listen(handle)`]
 * [`server.listen(options[, callback])`][`server.listen(options)`]
-* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] for [IPC](#net_ipc_support) servers
-* [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) for TCP servers
+* [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] para servidores [IPC](#net_ipc_support)
+* [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) para servidores TCP
 
-This function is asynchronous. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
+Esta función es asincrónica. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
 
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
 
