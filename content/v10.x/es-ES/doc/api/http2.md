@@ -621,7 +621,7 @@ req.on('response', (headers) => {
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event is emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be called to send trailing headers to the peer.
 
-It is important to note that when `options.waitForTrailers` is set, the `Http2Stream` will *not* automatically close when the final `DATA` frame is transmitted. User code *must* call either `http2stream.sendTrailers()` or `http2stream.close()` to close the `Http2Stream`.
+Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *no* se cerrará automáticamente cuando se transmita el último frame de `DATA` . User code *must* call either `http2stream.sendTrailers()` or `http2stream.close()` to close the `Http2Stream`.
 
 The `:method` and `:path` pseudo-headers are not specified within `headers`, they respectively default to:
 
@@ -1188,7 +1188,7 @@ Al ser utilizada, la interfaz de `Duplex` del objeto de `Http2Stream` se cerrar�
 
 The optional `options.statCheck` function may be specified to give user code an opportunity to set additional content headers based on the `fs.Stat` details of the given file:
 
-If an error occurs while attempting to read the file data, the `Http2Stream` will be closed using an `RST_STREAM` frame using the standard `INTERNAL_ERROR` code. Si se define el callback de `onError`, entonces será llamado. De lo contrario el stream sera destruido.
+Si ocurre un error al intentar leer los datos del archivo, el `Http2Stream` se cerrará utilizando un frame de `RST_STREAM`, utilizando el código estándar `INTERNAL_ERROR` . Si se define el callback de `onError`, entonces será llamado. De lo contrario el stream sera destruido.
 
 Ejemplo utilizando una ruta de archivo:
 
