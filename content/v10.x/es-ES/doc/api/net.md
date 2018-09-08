@@ -75,15 +75,15 @@ added: v0.1.90
 
 * {Error}
 
-Emitido cuando ocurre un error. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
+Emitido cuando ocurre un error. A diferencia de [`net.Socket`][], el evento [`'close'`][] **no** será emitido directamente siguiendo este evento a menos que [`server.close()`][] sea llamado manualmente. Vea el ejemplo en discusión de [`server.listen()`][].
 
-### Event: 'listening'
+### Evento: 'listening'
 
 <!-- YAML
 added: v0.1.90
 -->
 
-Emitted when the server has been bound after calling [`server.listen()`][].
+Emitido cundo el servidor ha sido enlazado después de llamar a [`server.listen()`][].
 
 ### server.address()
 
@@ -91,7 +91,7 @@ Emitted when the server has been bound after calling [`server.listen()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
 Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
