@@ -24,32 +24,32 @@ The `net` module supports IPC with named pipes on Windows, and UNIX domain socke
 
 En UNIX, el dominio local es también conocido como el dominio UNIX. La ruta es un nombre de ruta del sistema de archivos. Es truncado a `sizeof(sockaddr_un.sun_path) - 1`, que varía en diferentes sistemas operativos, entre 91 y 107 bytes. Los valores típicos son 107 en Linux y 103 en macOS. La ruta está sujeta a las mismas convenciones para colocar nombres y verificar permisos, como se haría en la creación de archivos. Si el socket de dominio UNIX (que es visible como una ruta del sistema de archivo) es creado y usado en conjunción con una abstracción API de Node.js tal como [`net.createServer()`][], va a ser desenlazado como parte de [`server.close()`][]. Por otro lado, si es creado y usado fuera de estas abstracciones, el usuario tendrá que quitarlo manualmente. Lo mismo aplica cuando la ruta fue creada por una API de Node.js, pero el programa falla bruscamente. En resumen, un socket de dominio UNIX una vez creado exitosamente será visible en el sistema de archivos, y persistirá ahí hasta que sea desenlazado.
 
-En windows, el dominio local es implementado usando un pipe que ya tiene nombre. La ruta *debe* referir a una entrada en `\\?\pipe` o `\\.\pipe`. Cualquier carácter es permitido, pero este último puede hacer algún procesamiento de nombres de pipes, tales como resolver secuencias `..`. A pesar de como podría verse, el espacio de nombre pipe es plano. Pipes will *not persist*. They are removed when the last reference to them is closed. Unlike UNIX domain sockets, Windows will close and remove the pipe when the owning process exits.
+En windows, el dominio local es implementado usando un pipe que ya tiene nombre. La ruta *debe* referir a una entrada en `\\?\pipe` o `\\.\pipe`. Cualquier carácter es permitido, pero este último puede hacer algún procesamiento de nombres de pipes, tales como resolver secuencias `..`. A pesar de como podría verse, el espacio de nombre pipe es plano. Los pipes *no persestirán*. Son removidos cuando la última referencia a ellos es cerrada. A diferencia de los sockets de dominio UNIX, Windows cerrará y removerá el pipe cuando el proceso de posesión existe.
 
-JavaScript string escaping requires paths to be specified with extra backslash escaping such as:
+El escape de string de JavaScript requiere que las rutas sean especificadas con reacción extra, tal como:
 
 ```js
 net.createServer().listen(
   path.join('\\\\?\\pipe', process.cwd(), 'myctl'));
 ```
 
-## Class: net.Server
+## Clase: net.Server
 
 <!-- YAML
 added: v0.1.90
 -->
 
-This class is used to create a TCP or [IPC](#net_ipc_support) server.
+Esta clase es usada para crear un servidor TCP o [IPC](#net_ipc_support).
 
-### new net.Server(\[options\]\[, connectionListener\])
+### nuevo net.Server(\[options\]\[, connectionListener\])
 
-* Returns: {net.Server}
+* Devuelve: {net.Server}
 
-See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
+Vea [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
-`net.Server` is an [`EventEmitter`][] with the following events:
+`net.Server` es un [`EventEmitter`][] con los siguientes eventos:
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.5.0
