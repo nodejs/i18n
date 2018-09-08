@@ -215,10 +215,10 @@ added: v0.11.14
 * `callback` {Function} Parámetro común de las funciones [`server.listen()`][].
 * Devuelve: {net.Server}
 
-If `port` is specified, it behaves the same as <a href="#net_server_listen_port_host_backlog_callback">
-<code>server.listen([port[, host[, backlog]]][, callback])</code></a>. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. If none of them is specified, an error will be thrown.
+Si el `port` es especificado, se comporta de la misma manera que <a href="#net_server_listen_port_host_backlog_callback">
+<code>server.listen([port[, host[, backlog]]][, callback])</code></a>. De otra manera, si se especifica `path`, se comporta de la misma manera que [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. Si ninguno es especificado, se arrojará un error.
 
-If `exclusive` is `false` (default), then cluster workers will use the same underlying handle, allowing connection handling duties to be shared. When `exclusive` is `true`, the handle is not shared, and attempted port sharing results in an error. An example which listens on an exclusive port is shown below.
+Si `exclusive` es `false` (forma predeterminada), entonces los workers del clúster usarán el mismo handle subyacente, permitiendo que las tareas del manejo de conexiones sean compartidas. Cuando `exclusive` es `true`, el handle no es compartido, e intentar compartir el puerto resultará en un error. Un ejemplo que escucha en un puerto exclusivo es mostrado a continuación.
 
 ```js
 server.listen({
@@ -234,12 +234,12 @@ server.listen({
 added: v0.1.90
 -->
 
-* `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `backlog` {number} Common parameter of [`server.listen()`][] functions.
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* `path` {string} La ruta que el servidor debería escuchar. Vea [Identificando rutas para conexiones IPC](#net_identifying_paths_for_ipc_connections).
+* `backlog` {number} Párametro común de las funciones [`server.listen()`][].
+* `callback` {Function} Parámetro común de las funciones [`server.listen()`][].
+* Devuelve: {net.Server}
 
-Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
+Inicia un servidor [IPC](#net_ipc_support) escuchando por conexiones en el `path` dado.
 
 #### server.listen(\[port[, host[, backlog]]\]\[, callback\])
 
@@ -249,9 +249,9 @@ added: v0.1.90
 
 * `port` {number}
 * `host` {string}
-* `backlog` {number} Common parameter of [`server.listen()`][] functions.
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+* `backlog` {number} Parámetro común de las funciones [`server.listen()`][].
+* `callback` {Function} Parámetro común de las funciones [`server.listen()`][].
+* Devuelve: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
