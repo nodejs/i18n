@@ -31,8 +31,8 @@ otoczone spacjami, zgodnie z <a href="https://en.wikipedia.org/wiki/The_New_York
 <ul>
 <li>Jeśli chcesz dodać ilustrację lub pełny program, dodaj go do odpowiedniego podkatalogu
 w <code>aktywa /` kat.
-* Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
-* For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.</li> 
+* Podłącz do tego jak: `[Zasób](/xasoby/{podkat}/{nazwapliku})` dla zasobów plikowych, i `![Zasób](/xasoby/{podkat}/{nazwapliku})` dla zasobów obrazowych.
+* Dla ilustracji, preferuj SVG od innych zasobów. Kiedy SVG nie jest możliwe, proszę uważnie śledzić rozmiar pliku zasobów, które wprowadzasz.</li> 
 
 * For code blocks: 
   * Use language aware fences. ("```js")
