@@ -683,9 +683,9 @@ NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-This API deletes the reference passed in.
+Esta API elimina la referencia pasada.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si existe una excepción JavaScript pendiente.
 
 #### napi_reference_ref
 
@@ -699,13 +699,13 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
                                            int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which the reference count will be incremented.
-- `[out] result`: The new reference count.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] ref`: `napi_ref` para la cual se incrementará el recuento de referencia.
+- `[out] result`: El nuevo recuento de referencia.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API increments the reference count for the reference passed in and returns the resulting reference count.
+Esta API incrementa el recuento de referencia para la referencia pasada y devuelve el recuento de referencia resultante.
 
 #### napi_reference_unref
 
@@ -719,13 +719,13 @@ NODE_EXTERN napi_status napi_reference_unref(napi_env env,
                                              int* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which the reference count will be decremented.
-- `[out] result`: The new reference count.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] ref`: `napi_ref` para la cual se disminuirá el recuento de referencia.
+- `[out] result`: El nuevo recuento de referencia.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API decrements the reference count for the reference passed in and returns the resulting reference count.
+Esta API disminuye el recuento de referencia para la referencia pasada y devuelve el recuento de referencia resultante.
 
 #### napi_get_reference_value
 
@@ -739,15 +739,15 @@ NODE_EXTERN napi_status napi_get_reference_value(napi_env env,
                                                  napi_value* result);
 ```
 
-the `napi_value passed` in or out of these methods is a handle to the object to which the reference is related.
+el `napi_value passed` dentro o fuera de estos métodos es un handle para el objeto con el que se relaciona la referencia.
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` for which we requesting the corresponding `Object`.
-- `[out] result`: The `napi_value` for the `Object` referenced by the `napi_ref`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] ref`: `napi_ref` para la cual solicitamos el correspondiente `Object`.
+- `[out] result`: El `napi_value` para el `Object` referenciado por la `napi_ref`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-If still valid, this API returns the `napi_value` representing the JavaScript `Object` associated with the `napi_ref`. Otherwise, result will be NULL.
+Si aún es válido, esta API devuelve el `napi_value` que representa al `Object` JavaScript asociado con la `napi_ref`. Otherwise, result will be NULL.
 
 ## Module registration
 
