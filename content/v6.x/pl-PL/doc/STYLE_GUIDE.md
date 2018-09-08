@@ -36,15 +36,15 @@ w <code>aktywa /` kat.
 
 * Dla bloków kodu: 
   * Używaj zapór wrażliwych językowo. ("'' ' js")
-  * Kod nie musi być pełen — traktuj bloki kodu jako ilustrację lub pomoc dla Twojego stanowiska, nie jako kompletne uruchomione programy. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
+  * Kod nie musi być pełen — traktuj bloki kodu jako ilustrację lub pomoc dla Twojego stanowiska, nie jako kompletne uruchomione programy. Jeśli konieczne jest pełen uruchomiony program, dołącz go jako zasób w `zasoby/ przykłady-kodów` i umieść link do tego. .
 * Podczas używania podkreśleń, gwiazdek i grawisów użyj odpowiedniego wyjścia (`\_`, `\*` i `` \` `` zamiast `_`,`*` i `` ` ``).
 * Odniesienia do funkcji konstruktora powinny korzystać z PascalCase.
 * Odniesienia do wystąpień konstruktora powinny korzystać z camelCase.
 * W nawiasach należy używać odwołań do metod: na przykład, `socket.end()` zamiast `socket.end`.
 * Argumenty funkcji lub właściwości obiektu powinny mieć następujący format: 
-  * `* \<code>name` {type|type2} Opcjonalny opis. **Default:** `defaultValue`</code>
-  * E.g. `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`</code>
-  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
-* Function returns should use the following format: 
-  * `* Returns: {type|type2} Optional description.`
-  * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code></ul>
+  * `* \<code>name` {type|type2} Opcjonalny opis. \ ** Domyślne: \ ** \ `domyślnaWartość`</code>
+  * Np. `* <code>bajtOffset` {całość} indeks pierwszego bajtu do udostępnienia. **Domyślne:** `0`</code>
+  * `Typu` powinno odnosić się do typu Node.js lub [typu JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types)
+* Funkcja zwrotna powinna używać następującego formatu: 
+  * `* Zwrot: {typ|typ2} Opcjonalny opis.`
+  * Np. `* Zwroty: {AsyncHook} Odwołanie do <code>asyncHook`.</code></ul>
