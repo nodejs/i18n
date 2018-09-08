@@ -408,7 +408,7 @@ La API [`util.isBuffer()`][] ha sido desaprobada. En cambio, por favor use [`Buf
 
 ### DEP0047: util.isDate()
 
-Tipo: Solo-documentación
+Type: Documentation-only
 
 La API [`util.isDate()`][] ha sido desaprobada.
 
@@ -416,7 +416,7 @@ La API [`util.isDate()`][] ha sido desaprobada.
 
 ### DEP0048: util.isError()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isError()`][] ha sido desaprobada.
 
@@ -424,7 +424,7 @@ La API [`util.isError()`][] ha sido desaprobada.
 
 ### DEP0049: util.isFunction()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isFunction()`][] ha sido desaprobada.
 
@@ -432,7 +432,7 @@ La API [`util.isFunction()`][] ha sido desaprobada.
 
 ### DEP0050: util.isNull()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isNull()`][] ha sido desaprobada.
 
@@ -440,7 +440,7 @@ La API [`util.isNull()`][] ha sido desaprobada.
 
 ### DEP0051: util.isNullOrUndefined()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isNullOrUndefined()`][] ha sido desaprobada.
 
@@ -448,7 +448,7 @@ La API [`util.isNullOrUndefined()`][] ha sido desaprobada.
 
 ### DEP0052: util.isNumber()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isNumber()`][] ha sido desaprobada.
 
@@ -456,7 +456,7 @@ La API [`util.isNumber()`][] ha sido desaprobada.
 
 ### DEP0053 util.isObject()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isObject()`][] ha sido desaprobada.
 
@@ -464,7 +464,7 @@ La API [`util.isObject()`][] ha sido desaprobada.
 
 ### DEP0054: util.isPrimitive()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isPrimitive()`][] ha sido desaprobada.
 
@@ -472,7 +472,7 @@ La API [`util.isPrimitive()`][] ha sido desaprobada.
 
 ### DEP0055: util.isRegExp()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isRegExp()`][] ha sido desaprobada.
 
@@ -480,7 +480,7 @@ La API [`util.isRegExp()`][] ha sido desaprobada.
 
 ### DEP0056: util.isString()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isString()`][] ha sido desaprobada.
 
@@ -488,7 +488,7 @@ La API [`util.isString()`][] ha sido desaprobada.
 
 ### DEP0057: util.isSymbol()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isSymbol()`][] ha sido desaprobada.
 
@@ -496,7 +496,7 @@ La API [`util.isSymbol()`][] ha sido desaprobada.
 
 ### DEP0058: util.isUndefined()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isUndefined()`][] ha sido desaprobada.
 
@@ -504,7 +504,7 @@ La API [`util.isUndefined()`][] ha sido desaprobada.
 
 ### DEP0059: util.log()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.log()`][] ha sido desaprobada.
 
@@ -512,7 +512,7 @@ La API [`util.log()`][] ha sido desaprobada.
 
 ### DEP0060: util.\_extend()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util._extend()`][] ha sido desaprobada.
 
@@ -536,7 +536,7 @@ Tipo: Runtime
 
 ### DEP0063: ServerResponse.prototype.writeHeader()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API `ServerResponse.prototype.writeHeader()` del módulo `http` ha sido desaprobada. En cambio, por favor use `ServerResponse.prototype.writeHead()`.
 
@@ -564,7 +564,7 @@ La variable de ambiente `NODE_REPL_MODE` es usada para fijar el `replMode` subya
 
 ### DEP0066: outgoingMessage.\_headers, outgoingMessage.\_headerNames
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 Las propiedades `outgoingMessage._headers` y `outgoingMessage._headerNames` del módulo `http` han sido desaprobadas. En cambio, por favor use uno de los métodos públicos (e.g. `outgoingMessage.getHeader()`, `outgoingMessage.getHeaders()`, `outgoingMessage.getHeaderNames()`, `outgoingMessage.hasHeader()`, `outgoingMessage.removeHeader()`, `outgoingMessage.setHeader()`) para trabajar con encabezados salientes.
 
@@ -574,7 +574,7 @@ Las propiedades `outgoingMessage._headers` y `outgoingMessage._headerNames` nunc
 
 ### DEP0067: OutgoingMessage.prototype.\_renderHeaders
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API `OutgoingMessage.prototype._renderHeaders()` del módulo `http` ha sido desaprobada.
 
