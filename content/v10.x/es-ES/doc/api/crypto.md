@@ -770,13 +770,13 @@ const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 console.log(aliceSecret === bobSecret);
 ```
 
-## Class: Hash
+## Clase: Hash
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Hash` class is a utility for creating hash digests of data. It can be used in one of two ways:
+The `Hash` class is a utility for creating hash digests of data. Puede ser usado de una de las dos maneras:
 
 - As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed hash digest on the readable side, or
 - Using the [`hash.update()`][] and [`hash.digest()`][] methods to produce the computed hash.
