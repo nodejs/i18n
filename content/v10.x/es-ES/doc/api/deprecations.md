@@ -146,7 +146,7 @@ Llamar a una función asincrónica sin un callback nos lanza un `TypeError` en N
 
 Tipo: Fin-de-Vida
 
-La interfaz de `String` antigua [`fs.read()`][] está desaprobada. En cambio, use la API `Buffer` como se menciona en la documentación.
+La interfaz de `String` legacy [`fs.read()`][] está desaprobada. En cambio, use la API `Buffer` como se menciona en la documentación.
 
 <a id="DEP0015"></a>
 
@@ -182,11 +182,11 @@ Los rechazos de promesas sin gestionar están desaprobados. En el futuro, rechaz
 
 <a id="DEP0019"></a>
 
-### DEP0019: require('.') resuelto afuera del directorio
+### DEP0019: require('.') resuelto fuera del directorio
 
 Tipo: Runtime
 
-En ciertos casos, `require('.')` puede resolver afuera del directorio de paquetes. Este comportamiento está desaprobado y será removido en una importante actualización future de Node.js.
+En ciertos casos, `require('.')` puede resolver fuera del directorio de paquetes. Este comportamiento está desaprobado y será removido en una importante actualización futura de Node.js.
 
 <a id="DEP0020"></a>
 
@@ -358,11 +358,11 @@ El módulo [`punycode`][] ha sido desaprobado. En cambio, por favor use un espac
 
 <a id="DEP0041"></a>
 
-### DEP0041: NODE\_REPL\_HISTORY\_FILE variable de ambiente
+### DEP0041: NODE\_REPL\_HISTORY\_FILE variable de entorno
 
 Tipo: Final-de-Vida
 
-La variable de ambiente `NODE_REPL_HISTORY_FILE` ha sido removida. En cambio, por favor use `NODE_REPL_HISTORY`.
+La variable de entorno `NODE_REPL_HISTORY_FILE` ha sido removida. En cambio, por favor use `NODE_REPL_HISTORY`.
 
 <a id="DEP0042"></a>
 
