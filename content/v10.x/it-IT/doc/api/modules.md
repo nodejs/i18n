@@ -582,14 +582,14 @@ const EventEmitter = require('events');
 
 module.exports = new EventEmitter();
 
-// Do some work, and after some time emit
-// the 'ready' event from the module itself.
+// Fai un pò di lavoro, e dopo un po' di tempo emetti
+// l'evento 'ready' dal modulo stesso.
 setTimeout(() => {
   module.exports.emit('ready');
 }, 1000);
 ```
 
-Then in another file we could do:
+Quindi in un altro file potremmo fare:
 
 ```js
 const a = require('./a');
@@ -598,7 +598,7 @@ a.on('ready', () => {
 });
 ```
 
-Note that assignment to `module.exports` must be done immediately. It cannot be done in any callbacks. This does not work:
+Da notare che l'assegnazione a `module.exports` deve essere eseguita immediatamente. Non può essere eseguita in qualsiasi callback. Questo non funziona:
 
 `x.js`:
 
@@ -621,13 +621,13 @@ console.log(x.a);
 added: v0.1.16
 -->
 
-The `exports` variable is available within a module's file-level scope, and is assigned the value of `module.exports` before the module is evaluated.
+La variabile `exports` è disponibile all'interno dello scope al livello del file di un modulo e gli viene assegnato il valore di `module.exports` prima che il modulo venga valutato.
 
-It allows a shortcut, so that `module.exports.f = ...` can be written more succinctly as `exports.f = ...`. However, be aware that like any variable, if a new value is assigned to `exports`, it is no longer bound to `module.exports`:
+Permette uno shortcut, in modo che `module.exports.f = ...` possa essere scritto più comodamente come `exports.f = ...`. Tuttavia, tieni presente che, come qualsiasi variabile, se un nuovo valore viene assegnato a `exports`, non è più vincolato a `module.exports`:
 
 ```js
-module.exports.hello = true; // Exported from require of module
-exports = { hello: false };  // Not exported, only available in the module
+module.exports.hello = true; // Esportato da require del modulo
+exports = { hello: false };  // Non esportato, solo disponibile nel modulo
 ```
 
 When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`:
