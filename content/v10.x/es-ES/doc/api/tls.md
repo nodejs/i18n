@@ -566,7 +566,7 @@ added: v0.11.4
 
 * {string}
 
-Returns the string representation of the local IP address.
+Devuelve la representación de cadena de la dirección IP local.
 
 ### tlsSocket.localPort
 
