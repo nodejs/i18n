@@ -1103,7 +1103,7 @@ changes:
   * `statCheck` {Function}
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
   * `offset` {number} The offset position at which to begin reading.
-  * `length` {number} The amount of data from the fd to send.
+  * `length` {number} La cantidad de datos de la fd a enviar.
 
 Inicia una respuesta cuyos datos son leídos desde el descriptor de archivo dado. Ninguna validación se realiza en el descriptor de archivos dado. Si ocurre un error al intentar leer datos utilizando el descriptor de archivos, se cerrará el `Http2Stream` utilizando un frame de `RST_STREAM` utilizando el código estándar `INTERNAL_ERROR` .
 
@@ -1180,7 +1180,7 @@ changes:
   * `onError` {Function} Función de callback invocada en caso de que ocurra un error antes de un envío.
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
   * `offset` {number} The offset position at which to begin reading.
-  * `length` {number} The amount of data from the fd to send.
+  * `length` {number} La cantidad de datos de la fd a enviar.
 
 Envía un archivo normal como respuesta. The `path` must specify a regular file or an `'error'` event will be emitted on the `Http2Stream` object.
 
@@ -1670,7 +1670,7 @@ added: v8.4.0
 | `0x06` | Error de tamaño de frame  | `http2.constants.NGHTTP2_FRAME_SIZE_ERROR`    |
 | `0x07` | Stream negado             | `http2.constants.NGHTTP2_REFUSED_STREAM`      |
 | `0x08` | Cancelar                  | `http2.constants.NGHTTP2_CANCEL`              |
-| `0x09` | Compression Error         | `http2.constants.NGHTTP2_COMPRESSION_ERROR`   |
+| `0x09` | Error de Compresión       | `http2.constants.NGHTTP2_COMPRESSION_ERROR`   |
 | `0x0a` | Error de conexión         | `http2.constants.NGHTTP2_CONNECT_ERROR`       |
 | `0x0b` | Enhance Your Calm         | `http2.constants.NGHTTP2_ENHANCE_YOUR_CALM`   |
 | `0x0c` | Seguridad inadecuada      | `http2.constants.NGHTTP2_INADEQUATE_SECURITY` |
