@@ -16,7 +16,7 @@ const net = require('net');
 
 ## Soporte IPC
 
-The `net` module supports IPC with named pipes on Windows, and UNIX domain sockets on other operating systems.
+El módulo `net` soporta IPC con pipes ya nombrados en Windows, y en sockets con dominio UNIX en otro sistema operativo.
 
 ### Identificando las rutas para las conexiones IPC
 
@@ -132,7 +132,7 @@ added: v0.2.0
 deprecated: v0.9.7
 -->
 
-> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
+> Estabilidad: 0 - Desaprobado: Usa en su lugar [`server.getConnections()`][].
 
 El número de conexiones simultáneas en el servidor.
 
@@ -146,7 +146,7 @@ added: v0.9.7
 
 * Devuelve: {net.Server}
 
-Asynchronously get the number of concurrent connections on the server. Funciona cuando los sockets fueron enviados a las bifurcaciones.
+Obtiene el número de conexiones simultáneas en el servidor de forma asincrónica. Funciona cuando los sockets fueron enviados a las bifurcaciones.
 
 El callback debería tomar dos argumentos, `err` y `count`.
 
