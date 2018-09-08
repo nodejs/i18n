@@ -412,7 +412,7 @@ added: v0.1.12
 
 <!-- type=var -->
 
-Un riferimento a `module.exports` più facile da digitare. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
+Un riferimento a `module.exports` più facile da digitare. Vedi la sezione [exports shortcut](#modules_exports_shortcut) per capire quando utilizzare `exports` e quando utilizzare `module.exports`.
 
 ### module
 
@@ -424,7 +424,7 @@ added: v0.1.16
 
 * {Object}
 
-A reference to the current module, see the section about the [`module` object][]. In particular, `module.exports` is used for defining what a module exports and makes available through `require()`.
+Un riferimento al modulo attuale, vedi la sezione [`module` object][]. In particolare, `module.exports` è usato per definire ciò che un modulo esporta e rende disponibile attraverso `require()`.
 
 ### require()
 
@@ -436,7 +436,7 @@ added: v0.1.13
 
 * {Function}
 
-To require modules.
+Per richiedere i moduli.
 
 #### require.cache
 
@@ -446,7 +446,7 @@ added: v0.3.0
 
 * {Object}
 
-Modules are cached in this object when they are required. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
+I moduli vengono sottoposti al caching all'interno di quest'object quando sono richiesti. Eliminando un valore chiave (key value) da quest'object, il prossimo `require` ricaricherà il modulo. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
 
 #### require.extensions
 
