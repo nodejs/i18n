@@ -938,24 +938,24 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Hmac` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Hmac` con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces el`inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
-## Class: Sign
+## Clase: Sign
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Sign` Class is a utility for generating signatures. It can be used in one of two ways:
+La clase `Sign` es una utilidad para generar firmas. Puede ser usada de una de las dos maneras:
 
-- As a writable [stream](stream.html), where data to be signed is written and the [`sign.sign()`][] method is used to generate and return the signature, or
-- Using the [`sign.update()`][] and [`sign.sign()`][] methods to produce the signature.
+- Como una [stream](stream.html) escribible, donde los datos a ser firmados están escritos y el método [`sign.sign()`][] es usado para generar y devolver la firma, o
+- Usando los métodos [`sign.update()`][] y [`sign.sign()`][] para producir la firma.
 
-The [`crypto.createSign()`][] method is used to create `Sign` instances. The argument is the string name of the hash function to use. `Sign` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createSign()`][] es usado para creai instancias `Sign`. El argumento es el nombre de la string de la función hash a utilizar. Los objetos `Sign` no deben crearse usando directamente la palabra clave `new`.
 
-Example: Using `Sign` objects as streams:
+Ejemplo: Usando objetos`Sign` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -1051,7 +1051,7 @@ changes:
 
 Updates the `Sign` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
 ## Class: Verify
 
