@@ -663,7 +663,7 @@ Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 
 * Un frame de `RST_STREAM` para el stream es recibido por el peer conectado.
 * El método de `http2stream.close()` es llamado.
-* The `http2stream.destroy()` or `http2session.destroy()` methods are called.
+* Los métodos de `http2stream.destroy()` o `http2session.destroy()` son llamados.
 
 When an `Http2Stream` instance is destroyed, an attempt will be made to send an `RST_STREAM` frame will be sent to the connected peer.
 
