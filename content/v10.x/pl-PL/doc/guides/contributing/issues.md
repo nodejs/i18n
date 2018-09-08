@@ -13,7 +13,7 @@ Dla każdego Problemu można wyróżnić trzy fundamentalne sposoby kontrybucji:
 
 1. Przez otwarcie Problemu w celu dyskusyjnym, na przykład: Jeżeli wierzysz, że znalazłeś błąd w Node.js, tworzenie nowego problemu w liście problemów `nodejs/node` to sposób na zgłoszenie go.
 2. Pomagając ocenić problem: Można to osiągnąć zarówno dostarczając pomocnych detali (test demonstrujący błąd) lub dostarczając sugestii dotyczących rozwiązania problemu.
-3. Pomagając rozwiązać problem: Zazwyczaj jest to osiągnięte przez demonstrację, że zgłoszony problem nie jest wcale defektem, lub częściej przez otwarcie Prośbny o Wcielenie, która zmienia część `nodejs/node` w konkretny i łatwo sprawdzalny sposób.
+3. Pomagając rozwiązać problem: Zazwyczaj jest to osiągnięte przez demonstrację, że zgłoszony problem nie jest wcale defektem, lub częściej przez otwarcie Żądania zmiany, które zmienia część `nodejs/node` w konkretny i łatwo sprawdzalny sposób.
 
 ## Pytanie o Ogólną Pomoc
 
@@ -68,4 +68,4 @@ Kontrybutorzy są zachęcani do wzajemnej pomocy w celu postanowienia jak najwi�
 
 ## Rozwiązywanie Raportu o Błędzie
 
-W znacznej większości przypadków, problemy rozwiązywane są przez otwieranie Prośby o Wcielenie. Proces otwierania i oceniania Próśb o Wcielenie jest podobny do otwierania i oceniania problemów, ale ciągnie za sobą niezbędny przepływ pracy skupiony na ocenie i akceptacji, który gwarantuje, że proponowane zmiany odpowiadają minimalnym wymogom jakości i funkcyjnym wytycznym projektu Node.js.
+W znacznej większości przypadków, problemy rozwiązywane są przez otwarcie Żądania zmiany. Proces otwierania i oceniania Żądań zmiany jest podobny do otwierania i oceniania problemów, ale ciągnie za sobą niezbędny przepływ pracy skupiony na ocenie i akceptacji, który gwarantuje, że proponowane zmiany odpowiadają minimalnym wymogom jakości i funkcyjnym wytycznym projektu Node.js.
