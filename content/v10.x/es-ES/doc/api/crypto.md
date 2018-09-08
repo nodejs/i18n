@@ -743,9 +743,9 @@ deprecated: v5.2.0
 
 Establece la clave pública EC Diffie-Hellman. El código clave puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que `publicKey` sea una string; de no ser así un [`Buffer`][], `TypedArray`, o `DataView` es esperado.
 
-Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
+Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Tipicamente [`ecdh.generateKeys()`][] o [`ecdh.setPrivateKey()`][] serán llamados. El método [`ecdh.setPrivateKey()`][] intenta generar la clave/punto público asociado con la clave privada que se está configurando.
 
-Example (obtaining a shared secret):
+Ejemplo (obteniendo un secreto compartido):
 
 ```js
 const crypto = require('crypto');
