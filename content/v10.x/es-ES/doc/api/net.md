@@ -253,9 +253,9 @@ added: v0.1.90
 * `callback` {Function} Parámetro común de las funciones [`server.listen()`][].
 * Devuelve: {net.Server}
 
-Start a TCP server listening for connections on the given `port` and `host`.
+Inicia un servidor TCP que escucha por conexiones en un `port` y `host` dados.
 
-If `port` is omitted or is 0, the operating system will assign an arbitrary unused port, which can be retrieved by using `server.address().port` after the [`'listening'`][] event has been emitted.
+Si es omitido `port` o es 0, el sistema operativo va a asignar un puerto sin usar arbitrario, que puede ser recuperado usando `server.address().port` después del evento [`'listening'`][] ha sido emitido.
 
 If `host` is omitted, the server will accept connections on the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) when IPv6 is available, or the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`) otherwise.
 
