@@ -631,10 +631,10 @@ Cuando se ejecuta como servidor, el socket se destruirá con un error después d
 added: v0.11.11
 -->
 
-* `size` {number} The maximum TLS fragment size. The maximum value is `16384`. **Default:** `16384`.
-* Returns: {boolean}
+* `size` {number} El tamaño máximo de fragmento TLS. El valor máximo es `16384`. **Predeterminado:** `16384`.
+* Devuelve: {boolean}
 
-The `tlsSocket.setMaxSendFragment()` method sets the maximum TLS fragment size. Returns `true` if setting the limit succeeded; `false` otherwise.
+El método `tlsSocket.setMaxSendFragment()` establece el tamaño máximo del fragmento TLS. Devuelve `true` si se establece correctamente el límite; de lo contrario `false`.
 
 Smaller fragment sizes decrease the buffering latency on the client: larger fragments are buffered by the TLS layer until the entire fragment is received and its integrity is verified; large fragments can span multiple roundtrips and their processing can be delayed due to packet loss or reordering. However, smaller fragments add extra TLS framing bytes and CPU overhead, which may decrease overall server throughput.
 
