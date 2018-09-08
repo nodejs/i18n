@@ -190,9 +190,9 @@ added: v0.5.10
 -->
 
 * `handle` {Object}
-* `backlog` {number} Common parameter of [`server.listen()`][] functions
-* `callback` {Function} Common parameter of [`server.listen()`][] functions
-* Returns: {net.Server}
+* `backlog` {number} Parámetro común de las funciones [`server.listen()`][]
+* `callback` {Function} Parámetro común de las funciones [`server.listen()`][]
+* Devuelve: {net.Server}
 
 Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
 
