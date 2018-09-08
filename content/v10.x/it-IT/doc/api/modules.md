@@ -483,9 +483,9 @@ added: v0.1.17
 
 * {Object}
 
-L'object `Module` che rappresenta lo script d'input caricato all'avvio del processo di Node.js. See ["Accessing the main module"](#modules_accessing_the_main_module).
+L'object `Module` che rappresenta lo script d'input caricato all'avvio del processo di Node.js. Vedi ["Accesso al modulo principale"](#modules_accessing_the_main_module).
 
-In `entry.js` script:
+Nello script `entry.js`:
 
 ```js
 console.log(require.main);
@@ -523,12 +523,12 @@ changes:
     description: The `paths` option is now supported.
 -->
 
-* `request` {string} The module path to resolve.
+* `request` {string} Il percorso del modulo da risolvere.
 * `options` {Object} 
-  * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Returns: {string}
+  * `paths` {string[]} Percorsi dai quali risolvere la posizione dei moduli. Se presenti, questi percorsi vengono utilizzati al posto dei percorsi di risoluzione predefiniti. Da notare che ognuno di questi percorsi viene utilizzato come punto di partenza per l'algoritmo di risoluzione del modulo, nel senso che la gerarchia di `node_modules` viene controllata da questa posizione.
+* Restituisce: {string}
 
-Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
+Utilizza il sistema `require()` interno per cercare la posizione di un modulo ma, anziché caricare il modulo, è sufficiente restituire il filename risolto.
 
 #### require.resolve.paths(request)
 
