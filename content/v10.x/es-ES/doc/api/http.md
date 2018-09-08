@@ -1332,7 +1332,7 @@ added: v0.3.0
 
 * `error` {Error}
 
-Llama a `destroy()` en el socket que recibió el `IncomingMessage`. Si se proporciona `error`, un evento de `'error'` será emitido y `error` será pasado como un argumento a cualquiera de los listeners en el evento.
+Llama a `destroy()` en el socket que recibió el `IncomingMessage`. Si se proporciona `error`, un evento de `'error'` será emitido y `error` será pasado como un argumento a los listeners que estén en el evento.
 
 ### message.headers
 
