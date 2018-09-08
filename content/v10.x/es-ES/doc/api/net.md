@@ -161,7 +161,7 @@ Firmas posibles:
 * [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] para servidores [IPC](#net_ipc_support)
 * [ `server.listen([port[, host[, backlog]]][, callback])`](#net_server_listen_port_host_backlog_callback) para servidores TCP
 
-Esta función es asincrónica. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
+Esta función es asincrónica. Cuando el servidor empieza a escuchar, el evento [`'listening'`][] es emitido. El último parámetro `callback` será añadido como un listener para el evento [`'listening'`][].
 
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
 
@@ -169,7 +169,7 @@ All [`net.Socket`][] are set to `SO_REUSEADDR` (See [socket(7)](http://man7.org/
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()` call or `server.close()` has been called. Otherwise, an `ERR_SERVER_ALREADY_LISTEN` error will be thrown.
 
-One of the most common errors raised when listening is `EADDRINUSE`. This happens when another server is already listening on the requested `port` / `path` / `handle`. One way to handle this would be to retry after a certain amount of time:
+Uno de los errores más comunes cuando se escucha es `EADDRINUSE`. Esto ocurre cuando otro servidor está escuchando en el `port` / `path` / `handle` requerido. Una manera de manejar esto sería intentar de nuevo luego de una cierta cantidad de tiempo:
 
 ```js
 server.on('error', (e) => {
