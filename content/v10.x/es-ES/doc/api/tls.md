@@ -786,13 +786,13 @@ socket.on('end', () => {
 added: v0.11.3
 -->
 
-* `path` {string} Default value for `options.path`.
-* `options` {Object} See [`tls.connect()`][].
-* `callback` {Function} See [`tls.connect()`][].
+* `path` {string} Valor predeterminado para `options.path`.
+* `options` {Object} Vea [`tls.connect()`][].
+* `callback` {Function} Vea [`tls.connect()`][].
 
-Same as [`tls.connect()`][] except that `path` can be provided as an argument instead of an option.
+Igual que [`tls.connect()`][] excepto que `path` se puede proporcionar como un argumento en lugar de una opción.
 
-A path option, if specified, will take precedence over the path argument.
+Una opción de ruta, si se especifica, tendrá prioridad sobre el argumento ruta.
 
 ## tls.connect(port\[, host\]\[, options\][, callback])
 
@@ -800,7 +800,7 @@ A path option, if specified, will take precedence over the path argument.
 added: v0.11.3
 -->
 
-* `port` {number} Default value for `options.port`.
+* `port` {number} Valor predeterminado para `options.port`.
 * `host` {string} Optional default value for `options.host`.
 * `options` {Object} See [`tls.connect()`][].
 * `callback` {Function} See [`tls.connect()`][].
