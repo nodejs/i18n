@@ -375,7 +375,7 @@ En IPv4, si `multicastInterface` es una dirección válida, pero no coincide con
 
 En IPv6, la mayoría de los errores especificando u omitiendo el scope resultará en el socket continúe usando (o retorne a) la selección de interfaz predeterminada del sistema.
 
-A socket's address family's ANY address (IPv4 `'0.0.0.0'` or IPv6 `'::'`) can be used to return control of the sockets default outgoing interface to the system for future multicast packets.
+CUALQUIER dirección de la familia de la direcciones de un socket (IPv4 `'0.0.0.0'` or IPv6 `'::'`) puede ser usada para devolver el control de interfaz saliente predeterminada de los sockets al sistema para futuros paquetes multidifusores.
 
 ### socket.setMulticastLoopback(flag)
 
