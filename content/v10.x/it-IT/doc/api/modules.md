@@ -467,11 +467,11 @@ Elabora i file con l'estensione `.sjs` come file `.js`:
 require.extensions['.sjs'] = require.extensions['.js'];
 ```
 
-**Deprecated** In the past, this list has been used to load non-JavaScript modules into Node.js by compiling them on-demand. However, in practice, there are much better ways to do this, such as loading modules via some other Node.js program, or compiling them to JavaScript ahead of time.
+**Obsoleto** In passato, questo elenco è stato utilizzato per caricare moduli non JavaScript all'interno di Node.js compilandoli su richiesta. Tuttavia, in pratica, ci sono molti modi migliori per farlo, come ad esempio caricare i moduli tramite qualche altro programma di Node.js, oppure compilarli in anticipo su JavaScript.
 
-Since the module system is locked, this feature will probably never go away. However, it may have subtle bugs and complexities that are best left untouched.
+Poiché il sistema modulo è bloccato, questa funzione probabilmente non se ne andrà mai. Tuttavia, potrebbe avere dei bug e delle complicazioni molto delicate che è meglio non toccare.
 
-Note that the number of file system operations that the module system has to perform in order to resolve a `require(...)` statement to a filename scales linearly with the number of registered extensions.
+Da notare che il numero di operazioni del file system, che il sistema modulo deve eseguire per risolvere un'istruzione `require(...)` su un filename, viene scalato linearmente con il numero di estensioni registrate.
 
 In other words, adding extensions slows down the module loader and should be discouraged.
 
