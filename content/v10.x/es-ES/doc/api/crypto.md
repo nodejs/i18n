@@ -727,7 +727,7 @@ added: v0.11.14
 
 Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, `privateKey` se espera que sea una string; de no ser así `privateKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
+Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, un error es producido. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
