@@ -11,8 +11,8 @@
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Generalnie należy unikać zaimków osobowych w dokumentacji referencyjnej ("ja", "ty", "my"). 
   * Zaimki są dopuszczalne w bardziej potocznej dokumentacji, np. poradników.
-  * Używaj zaimków neutralnych płciowo i rzeczowników niepoliczalnych. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
+  * Używaj zaimków neutralnych płciowo i rzeczowników niepoliczalnych. Nie wyczerpujące przykłady: 
+    * OK: "oni", "ich", "oni", "ludzie", "ludziska", "programiści", "koty"
     * NIE OK: "jego", "jej", "mu", "jej", "chłopaki", "kolesie"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
