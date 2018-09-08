@@ -671,9 +671,9 @@ changes:
 - `outputEncoding` {string}
 - Devuelve: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Computa el secreto compartido usando `otherPublicKey` como la clave pública de la otra parte y devuelve el secreto compartido computado. La clave suministrada es interpretada usando `inputEncoding` especificado, y el secreto devuelto es codificado usando `outputEncoding`. Los códigos pueden ser `'latin1'`, `'hex'`, o `'base64'`. Si el `inputEncoding` no es dado, `otherPublicKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
+Si `outputEncoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 `ecdh.computeSecret` will throw an `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` error when `otherPublicKey` lies outside of the elliptic curve. Since `otherPublicKey` is usually supplied from a remote user over an insecure network, its recommended for developers to handle this exception accordingly.
 
