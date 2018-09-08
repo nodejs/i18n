@@ -409,7 +409,7 @@ added: v0.11.4
 
 * Devuelve: {boolean}
 
-Devuelve `verdadero` si el certificado peer fue firmado por una de las CA especificadas al crear la instancia `tls.TLSSocket`, de lo contrario `falso`.
+Devuelve `true` si el certificado peer fue firmado por una de las CA especificadas al crear la instancia `tls.TLSSocket`, de lo contrario `false`.
 
 ### tlsSocket.disableRenegotiation()
 
@@ -461,7 +461,7 @@ added: v9.9.0
 
 * Devuelve: {Buffer|undefined} El último mensaje `Finished` que se ha enviado al socket como parte de un protocolo de enlace SSL/TLS, o `undefined` si aún no se ha enviado ningún mensaje `Finished`.
 
-Como los mensajes `Finished` son resúmenes de mensajes del protocolo de enlace completo (con un total de 192 bits para TLS 1.0 y más para SSL 3.0), se pueden usar para procedimientos de autenticación externos cuando la autenticación proporcionada por SSL/TLS no es deseado o no es suficiente.
+Como los mensajes `Finished` son resúmenes de mensajes del protocolo de enlace completo (con un total de 192 bits para TLS 1.0 y más para SSL 3.0), se pueden usar para procedimientos de autenticación externos cuando la autenticación proporcionada por SSL/TLS no es deseada o no es suficiente.
 
 Corresponde a la rutina `SSL_get_finished` en OpenSSL y se puede usar para implementar el enlace de canal `tls-unique` desde [RFC 5929](https://tools.ietf.org/html/rfc5929).
 
@@ -516,7 +516,7 @@ added: v9.9.0
 
 * Devuelve: {Buffer|undefined} El último mensaje `Finished` que se espera o se ha recibido realmente del socket como parte de un protocolo de enlace SSL/TLS, o `undefined` si no existe ningún mensaje `Finished` hasta el momento.
 
-Como los mensajes `Finished` son resúmenes de mensajes del protocolo de enlace completo (con un total de 192 bits para TLS 1.0 y más para SSL 3.0), se pueden usar para procedimientos de autenticación externos cuando la autenticación proporcionada por SSL/TLS no es deseado o no es suficiente.
+Como los mensajes `Finished` son resúmenes de mensajes del protocolo de enlace completo (con un total de 192 bits para TLS 1.0 y más para SSL 3.0), se pueden usar para procedimientos de autenticación externos cuando la autenticación proporcionada por SSL/TLS no es deseada o no es suficiente.
 
 Corresponde a la rutina `SSL_get_peer_finished` en OpenSSL y se puede usar para implementar el enlace de canal `tls-unique` de [RFC 5929](https://tools.ietf.org/html/rfc5929).
 
@@ -546,7 +546,7 @@ Vea https://www.openssl.org/docs/man1.1.0/ssl/SSL_get_version.html para más inf
 added: v0.11.4
 -->
 
-Devuelve la sesión TLS codificada en ASN.1 o `undefined` si no se negoció ninguna sesión. Se puede usar para acelerar el establecimiento del protocolo de enlace cuando se vuelva a conectar al servidor.
+Devuelve la sesión TLS codificada en ASN.1 o `undefined` si no se negoció ninguna sesión. Se puede usar para acelerar el establecimiento del protocolo de enlace cuando se realice una reconexión al servidor.
 
 ### tlsSocket.getTLSTicket()
 
