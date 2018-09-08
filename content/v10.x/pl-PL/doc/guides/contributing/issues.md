@@ -1,50 +1,47 @@
-# Issues
+# Problemy
 
-* [How to Contribute in Issues](#how-to-contribute-in-issues)
-* [Asking for General Help](#asking-for-general-help)
-* [Discussing non-technical topics](#discussing-non-technical-topics)
-* [Submitting a Bug Report](#submitting-a-bug-report)
-* [Triaging a Bug Report](#triaging-a-bug-report)
-* [Resolving a Bug Report](#resolving-a-bug-report)
+* [Jak kontrybutować przez Problemy](#how-to-contribute-in-issues)
+* [Pytanie o Ogólną Pomoc](#asking-for-general-help)
+* [Dyskusje na tematy nietechniczne](#discussing-non-technical-topics)
+* [Zgłaszanie Raportu o Błędzie](#submitting-a-bug-report)
+* [Ocenianie Raportu o Błędzie](#triaging-a-bug-report)
+* [Rozwiązywanie Raportu o Błędzie](#resolving-a-bug-report)
 
-## How to Contribute in Issues
+## Jak kontrybutować przez Problemy
 
-For any issue, there are fundamentally three ways an individual can contribute:
+Dla każdego Problemu można wyróżnić trzy fundamentalne sposoby kontrybucji:
 
-1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
-2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
-3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
+1. Przez otwarcie Problemu w celu dyskusyjnym, na przykład: Jeżeli wierzysz, że znalazłeś błąd w Node.js, tworzenie nowego problemu w liście problemów `nodejs/node` to sposób na zgłoszenie go.
+2. Pomagając ocenić problem: Można to osiągnąć zarówno dostarczając pomocnych detali (test demonstrujący błąd) lub dostarczając sugestii dotyczących rozwiązania problemu.
+3. Pomagając rozwiązać problem: Zazwyczaj jest to osiągnięte przez demonstrację, że zgłoszony problem nie jest wcale defektem, lub częściej przez otwarcie Prośbny o Połączenie, która zmienia część `nodejs/node` w konkretny i łatwo sprawdzalny sposób.
 
-## Asking for General Help
+## Pytanie o Ogólną Pomoc
 
-Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
+Ponieważ poziom aktywności w repozytorium `nodejs/node` jest tak wysoki, pytania i prośby o ogólną pomoc w używaniu Node.js powinny być kierowane na repozytorium [Pomocy Node.js](https://github.com/nodejs/help/issues).
 
-## Discussing non-technical topics
+## Dyskusje na tematy nietechniczne
 
-Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
+Dyskusje na tematy nietechniczne (takie jak własność intelektualna i znak towarowy) powinny być kierowane do [repozytorium Technical Steering Committee (TSC)](https://github.com/nodejs/TSC/issues).
 
-## Submitting a Bug Report
+## Zgłaszanie Raportu o Błędzie
 
-When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
+Podczas otwierania nowego problemu w liście problemów `nodejs/node`, użytkownikowi do wypełnienia zostanie przedstawiony podstawowy szablon.
 
 ```markdown
-<!--
-Thank you for reporting an issue.
+<!-- Dziękujemy za zgłoszenie błędu.
 
-This issue tracker is for bugs and issues found within Node.js core.
-If you require more general support please file an issue on our help
-repo. https://github.com/nodejs/help
+Ta lista problemów jest dla błędów i problemów znalezionych w rdzeniu Node.js.
+Jeśli potrzebujesz bardziej ogólnej pomocy, wyślij proszę problem do naszego repozytorium pomocy. https://github.com/nodejs/help
 
 
-Please fill in as much of the template below as you're able.
+Proszę, wypełnij poniższy szablon wszędzie, gdzie jest to możliwe.
 
-Version: output of `node -v`
-Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
-Subsystem: if known, please specify affected core module name
+Version: dane wyjściowe `node -v`
+Platform: dane wyjściowe `uname -a` (UNIX), lub wersji 32 i 64-bitowej (Windows)
+Subsystem: jeśli znany, sprecyzuj nazwę rdzennego modułu, w którym znaleziono problem
 
-If possible, please provide code that demonstrates the problem, keeping it as
-simple and free of external dependencies as you are able.
--->
+Jeśli to możliwe, dostarcz proszę kod który demonstruje problem, mając na uwadze by był on tak prosty i wolny od zewnętrznych dependencji jak to tylko możliwe.
+--> 
 
 * **Version**:
 * **Platform**:
@@ -61,7 +58,7 @@ In order to rule out the possibility of bugs introduced by userland code, test c
 
 See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 
-## Triaging a Bug Report
+## Ocenianie Raportu o Błędzie
 
 Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
@@ -69,6 +66,6 @@ Short, clipped responses—that provide neither additional context nor supportin
 
 Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
-## Resolving a Bug Report
+## Rozwiązywanie Raportu o Błędzie
 
 In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
