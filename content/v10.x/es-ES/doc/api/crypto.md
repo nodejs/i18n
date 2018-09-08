@@ -727,7 +727,7 @@ added: v0.11.14
 
 Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, `privateKey` se espera que sea una string; de no ser así `privateKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, un error es producido. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
+Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, un error es producido. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto `ECDH`.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -736,14 +736,14 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desactualizado
 
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman public key. Key encoding can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided `publicKey` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Establece la clave pública EC Diffie-Hellman. El código clave puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, se espera que `publicKey` sea una string; de no ser así un [`Buffer`][], `TypedArray`, o `DataView` es esperado.
 
-Note that there is not normally a reason to call this method because `ECDH` only requires a private key and the other party's public key to compute the shared secret. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
+Note que no hay normalmente una razón para llamar a este método porque `ECDH` solo requiere una clave privada y la clave pública de la otra parte para computar el secreto compartido. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
 
 Example (obtaining a shared secret):
 
