@@ -675,7 +675,7 @@ Computa el secreto compartido usando `otherPublicKey` como la clave pública de 
 
 Si `outputEncoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-`ecdh.computeSecret` will throw an `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` error when `otherPublicKey` lies outside of the elliptic curve. Since `otherPublicKey` is usually supplied from a remote user over an insecure network, its recommended for developers to handle this exception accordingly.
+`ecdh.computeSecret` arrojará un error `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` cuando `otherPublicKey` se encuentre fuera de la curva elíptica. Desde que `otherPublicKey` es usualmente dado, desde un usuario remoto a través de una red insegura, es recomendable para los desarrolladores manejar esta excepción como corresponde.
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -687,11 +687,11 @@ added: v0.11.14
 - `format` {string} **Default:** `'uncompressed'`
 - Devuelve: {Buffer | string}
 
-Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
+Genera los valores de la clave EC Diffie-Hellman privados y públicos, y devuelve la clave pública en el `format` y `encoding` especificado. Esta clave debe ser transferida a la otra parte.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
+El argumento `format` especifica la codificación de puntos y puede ser `'compressed'` o `'uncompressed'`. Si `format` no es especificado, el punto será devuelto en formato `'uncompressed'`.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+El argumento `encoding` puede ser `'latin1'`, `'hex'`, o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
 ### ecdh.getPrivateKey([encoding])
 
