@@ -89,16 +89,16 @@ Once the `binding.gyp` file has been created, use `node-gyp configure` to genera
 
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
+Przy użyciu `npm zainstaluj ` by zainstalować dodatek Node.js, npm używa własną wersję wiązany `węzeł gyp` by wykonać ten sam zestaw działań, generowanie skompilowanej wersji dodatku dla użytkownika platformy na żądanie.
 
 Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
 
 ```js
-// hello.js
-const addon = require('./build/Release/addon');
+Hello.js
+stały dodatek = wymaganie ('./zbudowany/Wydany/dodatek');
 
-console.log(addon.hello());
-// Prints: 'world'
+konsola.log(dodatek.hello());
+/ / druki: 'świat''
 ```
 
 Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
