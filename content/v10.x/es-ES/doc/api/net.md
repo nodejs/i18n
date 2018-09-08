@@ -257,7 +257,7 @@ Inicia un servidor TCP que escucha por conexiones en un `port` y `host` dados.
 
 Si es omitido `port` o es 0, el sistema operativo va a asignar un puerto sin usar arbitrario, que puede ser recuperado usando `server.address().port` después del evento [`'listening'`][] ha sido emitido.
 
-If `host` is omitted, the server will accept connections on the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) when IPv6 is available, or the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`) otherwise.
+Si el `host` es omitido, cuando esté disponible IPv6, el servidor aceptará conexiones en la [dirección IPv6 sin especificar](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`), o de otra manera la [dirección IPv4 sin especificar](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
 
 In most operating systems, listening to the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) may cause the `net.Server` to also listen on the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
 
