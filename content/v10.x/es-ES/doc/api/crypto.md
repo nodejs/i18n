@@ -834,9 +834,9 @@ added: v0.1.92
 - `encoding` {string}
 - Devuelve: {Buffer | string}
 
-Calcula el resumen de todos los datos pasados para ser hashed (usando el método [`hash.update()`][]). El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
+Calcula el resumen de todos los datos pasados para ser hashed (usando el método [`hash.update()`][]). El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si`encoding` es dado, una string será devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-The `Hash` object can not be used again after `hash.digest()` method has been called. Multiple calls will cause an error to be thrown.
+El objeto `Hash` no puede ser usado nuevamente después de que el método `hash.digest()` ha sido llamado. Llamados múltiples causaran que se arroje un error.
 
 ### hash.update(data[, inputEncoding])
 
@@ -852,11 +852,11 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the hash content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido hash con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y `data` es una string, se aplica un código de `'utf8'`. Si los `data` son un [`Buffer`][], `TypedArray`, o `DataView`, entonces `inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son transmitidos.
 
-## Class: Hmac
+## Clase: Hmac
 
 <!-- YAML
 added: v0.1.94
