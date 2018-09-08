@@ -2,16 +2,16 @@
 
 * Dokumentacja jest pisana w plikach obniżek cenowych z nazwami sformatowanymi jako `małe litery-z-myślnikami.md`. 
   * Podkreślenia w nazwach plików są dozwolone tylko wtedy, gdy są obecne w opisanym dokumencie (np. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
+  * Niektóre pliki, takie jak najwyższego poziomu obniżki cen, stanowią wyjątki.
+* Dokumenty powinny być zawijane w słowa po 80 znakach.
 * Preferowane jest formatowanie opisane w `.editorconfig`. 
   * [Wtyczka](http://editorconfig.org/#download) jest dostępna dla niektórych edytorów do automatycznego stosowania tych zasad.
 * Problemy mechaniczne, takie jak pisownia i gramatyka, powinny być identyfikowane za pomocą narzędzi, o ile to możliwe. Jeśli nie zostaną złapane przez narzędzie, powinny zostać wskazane przez recenzentów.
-* Preferowana jest amerykańska pisownia. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Preferowana jest amerykańska pisownia. "Kapitalizować" vs. "Kapitalizować", "kolor" vs. "kolor", etc.
 * Choć kontrowersyjny, [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) jest preferowany ze względu na jasność.
 * Generalnie należy unikać zaimków osobowych w dokumentacji referencyjnej ("ja", "ty", "my"). 
   * Zaimki są dopuszczalne w bardziej potocznej dokumentacji, np. poradników.
-  * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
+  * Używaj zaimków neutralnych płciowo i rzeczowników niepoliczalnych. Non-comprehensive examples: 
     * OK: "they", "their", "them", "folks", "people", "developers", "cats"
     * NIE OK: "jego", "jej", "mu", "jej", "chłopaki", "kolesie"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
