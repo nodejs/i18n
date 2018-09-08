@@ -1,6 +1,6 @@
-# Style Guide
+# Przewodnik stylu
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* Dokumentacja jest pisana w plikach obniżek cenowych z nazwami sformatowanymi jako `małe litery-z-myślnikami.md`. 
   * Podkreślenia w nazwach plików są dozwolone tylko wtedy, gdy są obecne w opisanym dokumencie (np. `child_process`).
   * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
