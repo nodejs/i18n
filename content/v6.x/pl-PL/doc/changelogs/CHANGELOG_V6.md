@@ -4612,16 +4612,16 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 The following significant changes have been made since the previous Node.js v5.0.0 release.
 
-* Buffer 
+* Bufor 
   * New Buffer constructors have been added [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Existing `Buffer()` and `SlowBuffer()` constructors have been deprecated in docs [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Previously deprecated Buffer APIs are removed [#5048](https://github.com/nodejs/node/pull/5048), [#4594](https://github.com/nodejs/node/pull/4594).
   * Improved error handling [#4514](https://github.com/nodejs/node/pull/4514).
   * The `Buffer.prototype.lastIndexOf()` method has been added [#4846](https://github.com/nodejs/node/pull/4846).
-* Cluster 
+* Grono 
   * Worker emitted as first argument in 'message' event [#5361](https://github.com/nodejs/node/pull/5361).
   * The `worker.exitedAfterDisconnect` property replaces `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
-* Console 
+* Konsola 
   * Calling `console.timeEnd()` with an unknown label now emits a process warning rather than throwing [#5901](https://github.com/nodejs/node/pull/5901).
 * Crypto 
   * Improved error handling [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
@@ -4635,10 +4635,10 @@ The following significant changes have been made since the previous Node.js v5.0
   * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
 * Domains 
   * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
-* Events 
+* Zdarzenia 
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
-* File System 
+* System plików 
   * The `fs.realpath()` and `fs.realpathSync()` methods have been updated to use a more efficient libuv-based implementation. This change includes the removal of the `cache` argument and the method can throw new errors [#3594](https://github.com/nodejs/node/pull/3594).
   * FS apis can now accept and return paths as Buffers [#5616](https://github.com/nodejs/node/pull/5616).
   * Error handling and type checking improvements [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
