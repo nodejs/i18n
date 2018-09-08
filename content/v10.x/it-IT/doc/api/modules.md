@@ -285,7 +285,7 @@ Se non c'è nessun file `package.json` nella directory, allora Node.js tenterà 
 * `./some-library/index.js`
 * `./some-library/index.node`
 
-## Loading from `node_modules` Folders
+## Caricamento dalle cartelle `node_modules`
 
 <!--type=misc-->
 
