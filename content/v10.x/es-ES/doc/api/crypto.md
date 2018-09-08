@@ -971,7 +971,7 @@ console.log(sign.sign(privateKey, 'hex'));
 // parameter below for RSASSA-PSS). For EC keys, the algorithm is ECDSA.
 ```
 
-Example: Using the [`sign.update()`][] and [`sign.sign()`][] methods:
+Ejemplo: Usando los métodos [`sign.update()`][] y [`sign.sign()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -984,7 +984,7 @@ console.log(sign.sign(privateKey, 'hex'));
 // Prints: the calculated signature
 ```
 
-In some cases, a `Sign` instance can also be created by passing in a signature algorithm name, such as 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
+En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
 
 Example: signing using legacy signature algorithm name
 
