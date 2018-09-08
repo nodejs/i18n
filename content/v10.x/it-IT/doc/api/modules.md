@@ -342,12 +342,12 @@ Prima che venga eseguito il codice di un modulo, Node.js lo sottoporrà al wrapp
 
 In questo modo, Node.js realizza alcune cose:
 
-* It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
-* It helps to provide some global-looking variables that are actually specific to the module, such as: 
-  * The `module` and `exports` objects that the implementor can use to export values from the module.
-  * The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
+* Mantiene le variabili top-level (definite con `var`, `const` o `let`) nello scope del modulo anziché nel global object.
+* Aiuta a fornire alcune variabili di tipo globale ma che in realtà sono specifiche per il modulo, come ad esempio: 
+  * Gli object `module` ed `exports` che l'implementor può utilizzare per esportare i valori dal modulo.
+  * Le variabili convenienti `__filename` e `__dirname`, contenenti il filename assoluto ed il percorso della directory del modulo.
 
-## The module scope
+## Lo scope di un modulo
 
 ### \_\_dirname
 
@@ -359,7 +359,7 @@ added: v0.1.27
 
 * {string}
 
-The directory name of the current module. This is the same as the [`path.dirname()`][] of the [`__filename`][].
+Il nome della directory del modulo attuale. È uguale a quello di [`path.dirname()`][] del [`__filename`][].
 
 Example: running `node example.js` from `/Users/mjr`
 
