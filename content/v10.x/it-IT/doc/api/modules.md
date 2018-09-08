@@ -361,13 +361,13 @@ added: v0.1.27
 
 Il nome della directory del modulo attuale. È uguale a quello di [`path.dirname()`][] del [`__filename`][].
 
-Example: running `node example.js` from `/Users/mjr`
+Esempio: esecuzione di `node example.js` da `/Users/mjr`
 
 ```js
 console.log(__dirname);
-// Prints: /Users/mjr
+// Stampa: /Users/mjr
 console.log(path.dirname(__filename));
-// Prints: /Users/mjr
+// Stampa: /Users/mjr
 ```
 
 ### \_\_filename
@@ -380,29 +380,29 @@ added: v0.0.1
 
 * {string}
 
-The file name of the current module. This is the resolved absolute path of the current module file.
+Il filename del modulo attuale. E' il percorso assoluto risolto dell'attuale file del modulo.
 
-For a main program this is not necessarily the same as the file name used in the command line.
+Per un programma principale questo non è necessariamente uguale al filename usato nella command line.
 
-See [`__dirname`][] for the directory name of the current module.
+Vedi [`__dirname`][] per il nome della directory dell'attuale modulo.
 
-Examples:
+Esempi:
 
-Running `node example.js` from `/Users/mjr`
+Esecuzione di `node example.js` da `/Users/mjr`
 
 ```js
 console.log(__filename);
-// Prints: /Users/mjr/example.js
+// Stampa: /Users/mjr/example.js
 console.log(__dirname);
-// Prints: /Users/mjr
+// Stampa: /Users/mjr
 ```
 
-Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a directory structure of:
+Dati due moduli: `a` e `b`, dove `b` è una dipendenza di `a` e c'è una directory structure di:
 
 * `/Users/mjr/app/a.js`
 * `/Users/mjr/app/node_modules/b/b.js`
 
-References to `__filename` within `b.js` will return `/Users/mjr/app/node_modules/b/b.js` while references to `__filename` within `a.js` will return `/Users/mjr/app/a.js`.
+I riferimenti a `__filename` all'interno di `b.js` restituiranno `/Users/mjr/app/node_modules/b/b.js` mentre i riferimenti a `__filename` all'interno di `a.js` restituiranno `/Users/mjr/app/a.js`.
 
 ### exports
 
@@ -412,7 +412,7 @@ added: v0.1.12
 
 <!-- type=var -->
 
-A reference to the `module.exports` that is shorter to type. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
+Un riferimento a `module.exports` più facile da digitare. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
 
 ### module
 
