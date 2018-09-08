@@ -114,7 +114,7 @@ El uso de la API [`crypto.pbkdf2()`][] sin especificar un resumen fue desaprobad
 
 Tipo: Runtime
 
-La API [`crypto.createCredentials()`][] está desaprobada. En cambio, porfavor use [`tls.createSecureContext()`][].
+La API [`crypto.createCredentials()`][] está desaprobada. En cambio, por favor use [`tls.createSecureContext()`][].
 
 <a id="DEP0011"></a>
 
@@ -130,7 +130,7 @@ La clase `crypto.Credentials` está desaprobada. En cambio, porfavor use [`tls.S
 
 Tipo: Fin-de-Vida
 
-`Domain.dispose()` ha sido removido. En cambio, recuperesé de acciones I/O fallidas explícitamente por medio de los gestores de eventos de error establecidos en el dominio.
+`Domain.dispose()` ha sido removido. En cambio, recupérese de acciones I/O fallidas explícitamente por medio de los gestores de eventos de error establecidos en el dominio.
 
 <a id="DEP0013"></a>
 
