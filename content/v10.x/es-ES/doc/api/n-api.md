@@ -642,9 +642,9 @@ N-API proporciona métodos para crear referencias persistentes a un objeto. Cada
 
 Las referencias pueden ser creadas con un recuento inicial de referencia. El recuento puede ser modificado a través de [`napi_reference_ref`][] y [`napi_reference_unref`][]. Si un objeto es tomado mientras el recuento para una referencia es 0, todas las llamadas subsecuentes para obtener al objeto asociado con la referencia [`napi_get_reference_value`][] devolverán NULL para el `napi_value` devuelto. Un intento de llamar a [`napi_reference_ref`][] para una referencia cuyo objeto ha sido tomado generará un error.
 
-Las referencias deben ser eliminadas una vez que ya no sean requeridas por el complemento. Cuando una referencia es eliminada, ya no impedirá que el objeto correspondiente sea tomado. Failure to delete a persistent reference will result in a 'memory leak' with both the native memory for the persistent reference and the corresponding object on the heap being retained forever.
+Las referencias deben ser eliminadas una vez que ya no sean requeridas por el complemento. Cuando una referencia es eliminada, ya no impedirá que el objeto correspondiente sea tomado. Una falla al eliminar una referencia persistente resultará en una "pérdida de memoria" con la memoria nativa para la referencia persistente y el objeto correspondiente en el montón que se conservará para siempre.
 
-There can be multiple persistent references created which refer to the same object, each of which will either keep the object live or not based on its individual count.
+Puede haber múltiples referencias persistentes creadas que se refieren al mismo objeto, cada una de las cuales mantendrá vivo, o no, al objeto en función de sus recuentos individuales.
 
 #### napi_create_reference
 
@@ -659,14 +659,14 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
                                               napi_ref* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the `Object` to which we want a reference.
-- `[in] initial_refcount`: Initial reference count for the new reference.
-- `[out] result`: `napi_ref` pointing to the new reference.
+- `[in] env`: El entorno bajo el que se invoca a la API.
+- `[in] value`: `napi_value` que representa el `Object` al que queremos hacer referencia.
+- `[in] initial_refcount`: Recuento inicial de referencia para la nueva referencia.
+- `[out] result`: `napi_ref` que apunta a la nueva referencia.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API create a new reference with the specified reference count to the `Object` passed in.
+Esta API crea una nueva referencia con el recuento de referencia especificado al `Object` pasado.
 
 #### napi_delete_reference
 
@@ -678,10 +678,10 @@ added: v8.0.0
 NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] ref`: `napi_ref` to be deleted.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] ref`: `napi_ref` que será eliminada.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 This API deletes the reference passed in.
 
