@@ -8,11 +8,11 @@ Node.js puede desaprobar APIs cuando: (a) el uso de la API es considerado como i
 
 Node.js utiliza tres tipos de Desaprobaciones:
 
-- Solo-documentación
+- Documentation-only
 - Runtime
 - Fin-de-Vida
 
-Una desaprobación que sea de solo-documentación es una que está expresada solo dentro de los documentos de API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas desaprobaciones que son de solo-documentación, provocan una advertencia en runtime cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, la variable de ambiente `NODE_PENDING_DEPRECATION=1`), de manera similar a las desaprobaciones mostradas abajo. Las desaprobaciones de solo-documentación que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Desaprobadas](#deprecations_list_of_deprecated_apis).
+Una desaprobación de tipo documentation-only es una que está expresada solo dentro de los documentos de API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas desaprobaciones que son de tipo documentation-only, provocan una advertencia en runtime cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, la variable de ambiente `NODE_PENDING_DEPRECATION=1`), de manera similar a las desaprobaciones mostradas abajo. Las desaprobaciones de tipo documentation-only que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Desaprobadas](#deprecations_list_of_deprecated_apis).
 
 Una desaprobación de Runtime generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, una desaprobación de Runtime causará que se arroje un error.
 
@@ -52,7 +52,7 @@ La propiedad `_writableState.buffer` está desaprobada. En cambio, use el métod
 
 ### DEP0004: CryptoStream.prototype.readyState
 
-Tipo: solo-documentación
+Tipo: Documentation-only
 
 La propiedad `CryptoStream.prototype.readyState` está desaprobada y no debería ser usada.
 
@@ -96,7 +96,7 @@ En una versión previa del `cluster` Node.js, una propiedad booleana con el nomb
 
 ### DEP0008: requiere('constants')
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 El módulo `constants` ha sido desaprobado. Cuando se requiere acceso a constantes relevantes a módulos específicos integrados a Node.js, los desarrolladores, en cambio, deberían referir a la propiedad `constants` expuesta por el módulo relevante. Por ejemplo, `require('fs').constants` y `require('os').constants`.
 
@@ -272,7 +272,7 @@ La API [`util.error()`][] está desaprobada. En cambio, por favor use [`console.
 
 ### DEP0030: SlowBuffer
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La clase [`SlowBuffer`][] ha sido desaprobada. En cambio, por favor use [`Buffer.allocUnsafeSlow(size)`][].
 
@@ -280,7 +280,7 @@ La clase [`SlowBuffer`][] ha sido desaprobada. En cambio, por favor use [`Buffer
 
 ### DEP0031: ecdh.setPublicKey()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusión en la API no es útil.
 
@@ -288,7 +288,7 @@ El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusi�
 
 ### DEP0032: módulo de dominio
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 El módulo [`domain`][] está desaprobado y no debería ser usado.
 
@@ -296,7 +296,7 @@ El módulo [`domain`][] está desaprobado y no debería ser usado.
 
 ### DEP0033: EventEmitter.listenerCount()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`EventEmitter.listenerCount(emitter, eventName)`][] ha sido desaprobada. En cambio, por favor use [`emitter.listenerCount(eventName)`][].
 
@@ -304,7 +304,7 @@ La API [`EventEmitter.listenerCount(emitter, eventName)`][] ha sido desaprobada.
 
 ### DEP0034: fs.exists(path, callback)
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`fs.exists(path, callback)`][] ha sido desaprobada. En cambio, por favor use [`fs.stat()`][] or [`fs.access()`][].
 
@@ -312,7 +312,7 @@ La API [`fs.exists(path, callback)`][] ha sido desaprobada. En cambio, por favor
 
 ### DEP0035: fs.lchmod(path, mode, callback)
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`fs.lchmod(path, mode, callback)`][] ha sido desaprobada.
 
@@ -320,7 +320,7 @@ La API [`fs.lchmod(path, mode, callback)`][] ha sido desaprobada.
 
 ### DEP0036: fs.lchmodSync(path, mode)
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`fs.lchmodSync(path, mode)`][] ha sido desaprobada.
 
@@ -328,7 +328,7 @@ La API [`fs.lchmodSync(path, mode)`][] ha sido desaprobada.
 
 ### DEP0037: fs.lchown(path, uid, gid, callback)
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`fs.lchown(path, uid, gid, callback)`][] ha sido desaprobada.
 
@@ -336,7 +336,7 @@ La API [`fs.lchown(path, uid, gid, callback)`][] ha sido desaprobada.
 
 ### DEP0038: fs.lchownSync(path, uid, gid)
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`fs.lchownSync(path, uid, gid)`][] ha sido desaprobada.
 
@@ -344,7 +344,7 @@ La API [`fs.lchownSync(path, uid, gid)`][] ha sido desaprobada.
 
 ### DEP0039: require.extensions
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La propiedad [`require.extensions`][] ha sido desaprobada.
 
@@ -352,7 +352,7 @@ La propiedad [`require.extensions`][] ha sido desaprobada.
 
 ### DEP0040: módulo punycode
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 El módulo [`punycode`][] ha sido desaprobado. En cambio, por favor use un espacio de usuario alternativo.
 
@@ -368,7 +368,7 @@ La variable de entorno `NODE_REPL_HISTORY_FILE` ha sido removida. En cambio, por
 
 ### DEP0042: tls.CryptoStream
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La clase [`tls.CryptoStream`][] ha sido desaprobada. En cambio, por favor use [`tls.TLSSocket`][].
 
@@ -376,7 +376,7 @@ La clase [`tls.CryptoStream`][] ha sido desaprobada. En cambio, por favor use [`
 
 ### DEP0043: tls.SecurePair
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La clase [`tls.SecurePair`][] ha sido desaprobada. En cambio, por favor use [`tls.TLSSocket`][].
 
@@ -384,7 +384,7 @@ La clase [`tls.SecurePair`][] ha sido desaprobada. En cambio, por favor use [`tl
 
 ### DEP0044: util.isArray()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isArray()`][] ha sido desaprobada. En cambio, por favor use `Array.isArray()`.
 
@@ -392,7 +392,7 @@ La API [`util.isArray()`][] ha sido desaprobada. En cambio, por favor use `Array
 
 ### DEP0045: util.isBoolean()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isBoolean()`][] ha sido desaprobada.
 
@@ -400,7 +400,7 @@ La API [`util.isBoolean()`][] ha sido desaprobada.
 
 ### DEP0046: util.isBuffer()
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La API [`util.isBuffer()`][] ha sido desaprobada. En cambio, por favor use [`Buffer.isBuffer()`][].
 
@@ -408,7 +408,7 @@ La API [`util.isBuffer()`][] ha sido desaprobada. En cambio, por favor use [`Buf
 
 ### DEP0047: util.isDate()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
 La API [`util.isDate()`][] ha sido desaprobada.
 
@@ -812,7 +812,7 @@ Asignar propiedades al nivel top `this` como una alternativa al módulo `module.
 
 ### DEP0093: crypto.fips está desaprobado y reemplazado.
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 La propiedad [`crypto.fips`][] está desaprobada. En cambio, por favor use `crypto.setFips()` y `crypto.getFips()`.
 
@@ -920,7 +920,7 @@ Tipo: Runtime
 
 ### DEP0106: crypto.createCipher y crypto.createDecipher
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 Debería evitarse usar [`crypto.createCipher()`][] y [`crypto.createDecipher()`][], debido a que utilizan una función de derivación de clave débil (MD5 sin salt) y vectores de inicialización estáticos. Es recomendado derivar una clave utilizando [`crypto.pbkdf2()`][] y usar [`crypto.createCipheriv()`][] y [`crypto.createDecipheriv()`][] para obtener los objectos [`Cipher`][] y [`Decipher`][], respectivamente.
 
@@ -936,6 +936,6 @@ Esto fue una función auxiliar indocumentada no destinada al uso afuera del core
 
 ### DEP0108: zlib.bytesRead
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 Alias desaprobado para [`zlib.bytesWritten`][]. El nombre original fue elegido porque también tenía sentido interpretar el valor como el número de bytes leídos por el motor, pero es inconsistente con otros streams en Node.js que exponen valores bajo estos nombres.
