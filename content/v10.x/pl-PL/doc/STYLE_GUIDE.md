@@ -2,12 +2,12 @@
 
 * Dokumentacja jest pisana w plikach obniżek cenowych z nazwami sformatowanymi jako `małe litery-z-myślnikami.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
+  * Niektóre pliki, takie jak najwyższego poziomu obniżki cen, stanowią wyjątki.
+* Dokumenty powinny być zawijane w słowa po 80 znakach.
 * Preferowane jest formatowanie opisane w `.editorconfig`. 
   * [Wtyczka](http://editorconfig.org/#download) jest dostępna dla niektórych edytorów do automatycznego stosowania tych zasad.
 * Changes to documentation should be checked with `make lint-md`.
-* Preferowana jest amerykańska pisownia. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Preferowana jest amerykańska pisownia. "Kapitalizować" vs. "Kapitalizować", "kolor" vs. "kolor", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
