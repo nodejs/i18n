@@ -324,23 +324,23 @@ Inoltre, Node.js cercherà nelle seguenti posizioni:
 
 Dove `$HOME` è la home directory dell'utente e `$PREFIX` è il `node_prefix` configurato da Node.js.
 
-Questi sono per lo più per ragioni cronologiche.
+Queste sono per lo più per ragioni cronologiche.
 
-It is strongly encouraged to place dependencies in the local `node_modules` folder. These will be loaded faster, and more reliably.
+E' vivamente consigliato di posizionare le dipendenze nella cartella locale `node_modules`. Queste verranno caricate più velocemente e in modo più affidabile.
 
-## The module wrapper
+## Il wrapping di un modulo
 
 <!-- type=misc -->
 
-Before a module's code is executed, Node.js will wrap it with a function wrapper that looks like the following:
+Prima che venga eseguito il codice di un modulo, Node.js lo sottoporrà al wrapping con una funzione wrapper simile alla seguente:
 
 ```js
 (function(exports, require, module, __filename, __dirname) {
-// Module code actually lives in here
+// Il codice del modulo è davvero qui dentro
 });
 ```
 
-By doing this, Node.js achieves a few things:
+In questo modo, Node.js realizza alcune cose:
 
 * It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
 * It helps to provide some global-looking variables that are actually specific to the module, such as: 
