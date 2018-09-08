@@ -840,7 +840,7 @@ Las variables `env` y `exports` estarán disponibles dentro del cuerpo de la fun
 
 Para obtener más detalles sobre la configuración de propiedades en objetos, consulte la sección sobre [Trabajando con las Propiedades de JavaScript](#n_api_working_with_javascript_properties).
 
-For more details on building addon modules in general, refer to the existing API.
+Para obtener más detalles sobre la construcción de módulos de complemento en general, consulte la API existente.
 
 ## Working with JavaScript Values
 
