@@ -530,7 +530,7 @@ La clase `fs.SyncWriteStream` nunca estuvo destinada a ser una API públicamente
 
 Tipo: Runtime
 
-`--debug` activa la interfaz debugger antigua V8, la cual ha sido removida a partir de la V8 5.8. Está reemplazada por Inspector el cual, en cambio, es activado con `--inspect`.
+`--debug` activa la interfaz legacy V8 debugger, la cual ha sido removida a partir de la V8 5.8. Está reemplazada por Inspector el cual, en cambio, es activado con `--inspect`.
 
 <a id="DEP0063"></a>
 
