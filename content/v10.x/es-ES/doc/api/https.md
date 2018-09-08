@@ -20,7 +20,7 @@ Un objeto [`Agent`][] para HTTPS similar a [`http.Agent`][]. Vea [`https.request
 added: v0.3.4
 -->
 
-Esta clase es una subclase de `tls.Server` y emite eventos al igual que [`http.Server`][]. Vea [`http.Server`][] para más información.
+Esta clase es una subclase de `tls.Server` y emite eventos iguales a[`http.Server`][]. Vea [`http.Server`][] para más información.
 
 ### server.close([callback])
 
@@ -34,7 +34,7 @@ Vea [`server.close()`][`http.close()`] desde el módulo HTTP para detalles.
 
 ### server.listen()
 
-Inicia el servidor HTTPS escuchando conexiones encriptadas. Este método es idéntico a [`server.listen()`][] de [`net.Server`][].
+Inicia el servidor HTTPS escuchando por conexiones encriptadas. Este método es idéntico a [`server.listen()`][] de [`net.Server`][].
 
 ### server.maxHeadersCount
 
@@ -131,7 +131,7 @@ changes:
 - `options` {Object | string | URL} Acepta las mismas `options` como [`https.request()`][], con el `method` siempre establecido a `GET`.
 - `callback` {Function}
 
-Como [`http.get()`][] pero para HTTPS.
+Como [`http.get()`][], pero para HTTPS.
 
 `options` puede ser un objeto, una string o un objeto [`URL`][]. Si `options` es una string, es analizado automáticamente con [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
 
@@ -175,7 +175,7 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-- `opciones` {Object | string | URL} Acepta todas las `options` de [`http.request()`][], con algunas diferencia en valores predeterminados: 
+- `opciones` {Object | string | URL} Acepta todas las `options` de [`http.request()`][], con algunas diferencias en valores predeterminados: 
     - `protocol` **Predeterminado:** `'https:'`
     - `port` **Predeterminado:** `443`
     - `agent` **Predeterminado:** `https.globalAgent`
@@ -284,7 +284,7 @@ const options = {
       return err;
     }
 
-    // Pin the public key, similar to HPKP pin-sha25 pinning
+    // Fije la clave pública, similar a fijar HPKP pin-sha25
     const pubkey256 = 'pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=';
     if (sha256(cert.pubkey) !== pubkey256) {
       const msg = 'Certificate verification error: ' +
@@ -293,7 +293,7 @@ const options = {
       return new Error(msg);
     }
 
-    // Pin the exact certificate, rather then the pub key
+    // Fijar el certificado exacto, en lugar de la clave pública
     const cert256 = '25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:' +
       'D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16';
     if (cert.fingerprint256 !== cert256) {
@@ -303,10 +303,10 @@ const options = {
       return new Error(msg);
     }
 
-    // This loop is informational only.
-    // Imprima el certificado y las huellas dactilares de clave pública de todos los certs en la
-    // cadena. Es común fijar la clave público del emisor en el internet
-    // público, mientras fija la clave público del servicio en entornos
+    // Este bucle es sólo informativo.
+    // Imprima el certificado y las huellas digitales de clave pública de todos los certs en la
+    // cadena. Es común fijar la clave pública del emisor en el internet
+    // público, mientras se fija la clave pública del servicio en entornos
     // sensibles.
     do {
       console.log('Subject Common Name:', cert.subject.CN);
