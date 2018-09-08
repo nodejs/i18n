@@ -630,30 +630,30 @@ module.exports.hello = true; // Esportato da require del modulo
 exports = { hello: false };  // Non esportato, solo disponibile nel modulo
 ```
 
-When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`:
+Quando la proprietà `module.exports` viene completamente sostituita da un nuovo object, di solito si riassegna anche `exports`:
 
 <!-- eslint-disable func-name-matching -->
 
 ```js
 module.exports = exports = function Constructor() {
-  // ... etc.
+  // ... ecc.
 };
 ```
 
-To illustrate the behavior, imagine this hypothetical implementation of `require()`, which is quite similar to what is actually done by `require()`:
+Per mostrare il comportamento, immagina questa implementazione ipotetica di `require()`, che è abbastanza simile a ciò che viene effettivamente fatto da `require()`:
 
 ```js
 function require(/* ... */) {
   const module = { exports: {} };
   ((module, exports) => {
-    // Module code here. In this example, define a function.
+    // Codice del modulo qui. In questo esempio, definisci una funzione.
     function someFunc() {}
     exports = someFunc;
-    // At this point, exports is no longer a shortcut to module.exports, and
-    // this module will still export an empty default object.
+    // A questo punto, exports non è più uno shortcut di module.exports, e     
+    // questo modulo continuerà a esportare un object vuoto predefinito.
     module.exports = someFunc;
-    // At this point, the module will now export someFunc, instead of the
-    // default object.
+    // A questo punto, il modulo esporterà someFunc, invece di
+    // un object predefinito.
   })(module, module.exports);
   return module.exports;
 }
@@ -667,7 +667,7 @@ added: v0.1.16
 
 * {string}
 
-The fully resolved filename to the module.
+Il filename completamente risolto nel modulo.
 
 ### module.id
 
@@ -677,7 +677,7 @@ added: v0.1.16
 
 * {string}
 
-The identifier for the module. Typically this is the fully resolved filename.
+L'identificatore per il modulo. In genere è filename completamente risolto.
 
 ### module.loaded
 
@@ -687,7 +687,7 @@ added: v0.1.16
 
 * {boolean}
 
-Whether or not the module is done loading, or is in the process of loading.
+Indipendentemente dal fatto che il modulo abbia completato il caricamento o sia in fase di caricamento.
 
 ### module.parent
 
