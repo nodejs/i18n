@@ -446,7 +446,7 @@ added: v0.3.0
 
 * {Object}
 
-I moduli vengono sottoposti al caching all'interno di quest'object quando sono richiesti. Eliminando un valore chiave (key value) da quest'object, il prossimo `require` ricaricherà il modulo. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
+I moduli vengono sottoposti al caching all'interno di quest'object quando sono richiesti. Eliminando un valore chiave (key value) da quest'object, il prossimo `require` ricaricherà il modulo. Da notare che questo non viene applicato agli [addon nativi](addons.html), per i quali il ricaricamento darà come risultato un errore.
 
 #### require.extensions
 
@@ -455,13 +455,13 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stability: 0 - Deprecated
+> Stabilità: 0 - Obsoleto
 
 * {Object}
 
-Instruct `require` on how to handle certain file extensions.
+Da istruzioni a `require` su come gestire determinate estensioni dei file.
 
-Process files with the extension `.sjs` as `.js`:
+Elabora i file con l'estensione `.sjs` come file `.js`:
 
 ```js
 require.extensions['.sjs'] = require.extensions['.js'];
