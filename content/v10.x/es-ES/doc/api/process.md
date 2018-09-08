@@ -183,30 +183,30 @@ Lo siguiente también desencadenará al evento `'unhandledRejection'` a ser emit
 
 ```js
 function SomeResource() {
-  // Initially set the loaded status to a rejected promise
+  // Inicialmente establece el estado de carga a una promesa rechazada
   this.loaded = Promise.reject(new Error('Resource not yet loaded!'));
 }
 
 const resource = new SomeResource();
-// no .catch or .then on resource.loaded for at least a turn
+// sin .catch o .then en resource.loaded por el menos un turno
 ```
 
-In this example case, it is possible to track the rejection as a developer error as would typically be the case for other `'unhandledRejection'` events. To address such failures, a non-operational [`.catch(() => { })`][`promise.catch()`] handler may be attached to `resource.loaded`, which would prevent the `'unhandledRejection'` event from being emitted. Alternatively, the [`'rejectionHandled'`][] event may be used.
+En este caso de ejemplo, es posible rastrear el rechazo como un error de desarrollador, como sería típicamente el caso para otros eventos `'unhandledRejection'`. Para abordar dichas fallas, un manejador [`.catch(() => { })`][`promise.catch()`] no operacional puede ser adjuntado a `resource.loaded`, lo cual prevendría que se emitiera el evento `'unhandledRejection'`. Alternativamente, el evento [`'rejectionHandled'`][] puede ser usado.
 
-### Event: 'warning'
+### Evento: 'warning'
 
 <!-- YAML
 added: v6.0.0
 -->
 
-* `warning` {Error} Key properties of the warning are: 
-  * `name` {string} The name of the warning. **Default:** `'Warning'`.
-  * `message` {string} A system-provided description of the warning.
-  * `stack` {string} A stack trace to the location in the code where the warning was issued.
+* `warning` {Error} Las propiedades clave de la advertencia son: 
+  * `name` {string} El nombre de la advertencia. **Predeterminado:** `'Warning'`.
+  * `message` {string} Una descripción de la advertencia proporcionada por el sistema.
+  * `stack` {string} Un stack trace a la ubicación en el código donde se emitió la advertencia.
 
-The `'warning'` event is emitted whenever Node.js emits a process warning.
+El evento `'warning'` es emitido cada vez que Node.js emite una advertencia del proceso.
 
-A process warning is similar to an error in that it describes exceptional conditions that are being brought to the user's attention. However, warnings are not part of the normal Node.js and JavaScript error handling flow. Node.js can emit warnings whenever it detects bad coding practices that could lead to sub-optimal application performance, bugs, or security vulnerabilities.
+A process warning is similar to an error in that it describes exceptional conditions that are being brought to the user's attention. Sin embargo, las advertencias no son parte del flujo de manejo de errores de Node.js y JavaScript normal. Node.js puede emitir advertencias cada vez que detecte malas prácticas de programación que pueden conducir a un rendimiento de la aplicación sub-óptimo, bugs o vulnerabilidades de seguridad.
 
 ```js
 process.on('warning', (warning) => {
@@ -216,7 +216,7 @@ process.on('warning', (warning) => {
 });
 ```
 
-By default, Node.js will print process warnings to `stderr`. The `--no-warnings` command-line option can be used to suppress the default console output but the `'warning'` event will still be emitted by the `process` object.
+Por defecto, Node.js imprimirá advertencias de proceso en `stderr`. The `--no-warnings` command-line option can be used to suppress the default console output but the `'warning'` event will still be emitted by the `process` object.
 
 The following example illustrates the warning that is printed to `stderr` when too many listeners have been added to an event:
 
@@ -564,7 +564,7 @@ added: v8.0.0
 
 * `warning` {string|Error} The warning to emit.
 * `options` {Object} 
-  * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Default:** `'Warning'`.
+  * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Predeterminado:** `'Warning'`.
   * `code` {string} A unique identifier for the warning instance being emitted.
   * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
   * `detail` {string} Additional text to include with the error.
@@ -603,7 +603,7 @@ added: v6.0.0
 -->
 
 * `warning` {string|Error} The warning to emit.
-* `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Default:** `'Warning'`.
+* `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Predeterminado:** `'Warning'`.
 * `code` {string} A unique identifier for the warning instance being emitted.
 * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
 
