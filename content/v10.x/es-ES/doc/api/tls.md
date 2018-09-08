@@ -644,15 +644,15 @@ Los tamaños de fragmentos más pequeños disminuyen la latencia del buffer en e
 added: v0.8.4
 -->
 
-* `host` {string} The hostname to verify the certificate against
-* `cert` {Object} An object representing the peer's certificate. The returned object has some properties corresponding to the fields of the certificate.
-* Returns: {Error|undefined}
+* `host` {string} El hostname para verificar el certificado en contra
+* `cert` {Object} Un objeto que representa el certificado del peer. El objeto devuelto tiene algunas propiedades correspondientes a los campos del certificado.
+* Devuelve: {Error|undefined}
 
-Verifies the certificate `cert` is issued to host `host`.
+Verifica que el certificado `cert` se emita para alojar `host`.
 
-Returns {Error} object, populating it with the reason, host, and cert on failure. On success, returns {undefined}.
+Devuelve el objeto {Error}, rellenándolo con el motivo, el host y el certificado en caso de error. En caso de éxito, devuelve {undefined}.
 
-This function can be overwritten by providing alternative function as part of the `options.checkServerIdentity` option passed to `tls.connect()`. The overwriting function can call `tls.checkServerIdentity()` of course, to augment the checks done with additional verification.
+Esta función se puede sobrescribir proporcionando una función alternativa como parte de la opción `options.checkServerIdentity` pasada a `tls.connect()`. The overwriting function can call `tls.checkServerIdentity()` of course, to augment the checks done with additional verification.
 
 This function is only called if the certificate passed all other checks, such as being issued by trusted CA (`options.ca`).
 
