@@ -1,15 +1,15 @@
-@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+@/ / NB(chrisdickinson): Jeśli ten plik zostanie przeniesiony, należy zaktualizować tools/doc/html.js @/ / punkt w nowej lokalizacji.
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [O tej dokumentacji](documentation.html)
+* [Przykład użycia i zastosowania](synopsis.html)
 
 <div class="line"></div>
 
-* [Assertion Testing](assert.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
+* [Testowanie asercji](assert.html)
+* [Bufor](buffer.html)
+* [Dodatki C++](addons.html)
+* [C/C++ Nakładki - N-API](n-api.html)
+* [Procesy podrzędne](child_process.html)
 * [Cluster](cluster.html)
 * [Command Line Options](cli.html)
 * [Console](console.html)
