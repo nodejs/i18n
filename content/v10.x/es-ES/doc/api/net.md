@@ -134,7 +134,7 @@ deprecated: v0.9.7
 
 > Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
-The number of concurrent connections on the server.
+El número de conexiones simultáneas en el servidor.
 
 Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
 
