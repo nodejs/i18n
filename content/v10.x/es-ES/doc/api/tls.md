@@ -619,11 +619,11 @@ added: v0.11.8
   * `requestCert`
 * `callback` {Function} Una función que se invocará cuando se haya completado la solicitud de renegociación.
 
-The `tlsSocket.renegotiate()` method initiates a TLS renegotiation process. Upon completion, the `callback` function will be passed a single argument that is either an `Error` (if the request failed) or `null`.
+El método `tlsSocket.renegotiate()` inicia un proceso de renegociación de TLS. Una vez completada, la función `callback` recibirá un único argumento que es un `Error` (si la solicitud falló) o `null`.
 
-This method can be used to request a peer's certificate after the secure connection has been established.
+Este método se puede usar para solicitar el certificado de un peer después de que se haya establecido la conexión segura.
 
-When running as the server, the socket will be destroyed with an error after `handshakeTimeout` timeout.
+Cuando se ejecuta como servidor, el socket se destruirá con un error después del tiempo de espera de `handshakeTimeout`.
 
 ### tlsSocket.setMaxSendFragment(size)
 
