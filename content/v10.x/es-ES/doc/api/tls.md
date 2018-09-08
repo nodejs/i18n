@@ -652,11 +652,11 @@ Verifica que el certificado `cert` se emita para alojar `host`.
 
 Devuelve el objeto {Error}, rellenándolo con el motivo, el host y el certificado en caso de error. En caso de éxito, devuelve {undefined}.
 
-Esta función se puede sobrescribir proporcionando una función alternativa como parte de la opción `options.checkServerIdentity` pasada a `tls.connect()`. The overwriting function can call `tls.checkServerIdentity()` of course, to augment the checks done with additional verification.
+Esta función se puede sobrescribir proporcionando una función alternativa como parte de la opción `options.checkServerIdentity` pasada a `tls.connect()`. La función de sobreescritura puede invocar a `tls.checkServerIdentity()`, por supuesto, para aumentar las comprobaciones realizadas con verificación adicional.
 
-This function is only called if the certificate passed all other checks, such as being issued by trusted CA (`options.ca`).
+Esta función solo se invoca si el certificado pasa el resto de las comprobaciones, como las emitidas por la CA de confianza (`options.ca`).
 
-The cert object contains the parsed certificate and will have a structure similar to:
+El objeto cert contiene el certificado analizado y tendrá una estructura similar a:
 
 ```text
 { subject:
@@ -705,9 +705,9 @@ changes:
     description: ALPN options are supported now.
 -->
 
-* `options` {Object} 
-  * `host` {string} Host the client should connect to. **Default:** `'localhost'`.
-  * `port` {number} Port the client should connect to.
+* `opciones` {Object} 
+  * `host` {string} Servidor al que el cliente debe conectarse. **Predeterminado:** `'localhost'`.
+  * `port` {number} Puerto al que el cliente debe conectarse.
   * `path` {string} Creates unix socket connection to path. If this option is specified, `host` and `port` are ignored.
   * `socket` {stream.Duplex} Establish secure connection on a given socket rather than creating a new socket. Typically, this is an instance of [`net.Socket`][], but any `Duplex` stream is allowed. If this option is specified, `path`, `host` and `port` are ignored, except for certificate validation. Usually, a socket is already connected when passed to `tls.connect()`, but it can be connected later. Note that connection/disconnection/destruction of `socket` is the user's responsibility, calling `tls.connect()` will not cause `net.connect()` to be called.
   * `rejectUnauthorized` {boolean} Si no es `false`, el certificado del servidor se verifica con la lista de CA proporcionadas. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Predeterminado:** `true`.
