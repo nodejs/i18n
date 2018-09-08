@@ -697,7 +697,7 @@ added: v0.1.16
 
 * {module}
 
-The module that first required this one.
+Il modulo che ha richiesto per primo questo modulo.
 
 ### module.paths
 
@@ -707,7 +707,7 @@ added: v0.4.0
 
 * {string[]}
 
-The search paths for the module.
+I percorsi di ricerca per il modulo.
 
 ### module.require(id)
 
@@ -716,13 +716,13 @@ added: v0.5.1
 -->
 
 * `id` {string}
-* Returns: {Object} `module.exports` from the resolved module
+* Restituisce: {Object} `module.exports` dal modulo risolto
 
-The `module.require` method provides a way to load a module as if `require()` was called from the original module.
+Il metodo `module.require` fornisce un modo per caricare un modulo come se `require()` fosse chiamato dal modulo originale.
 
-In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
+Per fare ciò, è necessario ottenere un riferimento all'object `module`. Poiché `require()` restituisce `module.exports`, e `module` è in genere disponibile *solo* all'interno del codice di un modulo specifico, deve essere esportato esplicitamente per essere usato.
 
-## The `Module` Object
+## L'Object `Module`
 
 <!-- YAML
 added: v0.3.7
@@ -730,7 +730,7 @@ added: v0.3.7
 
 * {Object}
 
-Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
+Fornisce metodi di utilità generale quando interagisce con istanze di `Module` — la variabile `module` che si vede spesso file module. Accesso effettuato tramite `require('module')`.
 
 ### module.builtinModules
 
@@ -740,9 +740,9 @@ added: v9.3.0
 
 * {string[]}
 
-A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third party or not.
+Un elenco dei nomi di tutti i moduli forniti da Node.js. Può essere usato per verificare se un modulo è gestito da terzi oppure no.
 
-Note that `module` in this context isn't the same object that's provided by the [module wrapper](#modules_the_module_wrapper). To access it, require the `Module` module:
+Da notare che `module` in questo contesto non è lo stesso object fornito dal [wrapping](#modules_the_module_wrapper). Per accedervi, richiedi il modulo `Module`:
 
 ```js
 const builtin = require('module').builtinModules;
