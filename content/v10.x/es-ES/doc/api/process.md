@@ -22,17 +22,17 @@ La función callback del oyente es invocada con el valor de [`process.exitCode`]
 
 El evento `'beforeExit'` *no* es emitido por condiciones que causen la terminación explícita, como lo es llamar a [`process.exit()`][] o excepciones no detectadas.
 
-The `'beforeExit'` should *not* be used as an alternative to the `'exit'` event unless the intention is to schedule additional work.
+El `'beforeExit'` *no* debe ser usado como una alternativa al evento `'exit'`, a menos que la intención sea programar trabajo adicional.
 
-### Event: 'disconnect'
+### Evento: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'disconnect'` event will be emitted when the IPC channel is closed.
+Si el proceso Node.js es generado con un canal IPC (vea el [Proceso Secundario](child_process.html) y la documentación [Cluster](cluster.html)), el evento `'disconnect'` será emitido cuando el canal IPC sea cerrado.
 
-### Event: 'exit'
+### Evento: 'exit'
 
 <!-- YAML
 added: v0.1.7
@@ -40,14 +40,14 @@ added: v0.1.7
 
 * `code` {integer}
 
-The `'exit'` event is emitted when the Node.js process is about to exit as a result of either:
+El evento `'exit'` es emitido cuando el proceso Node.js está cerca de cerrarse como un resultado de:
 
-* The `process.exit()` method being called explicitly;
-* The Node.js event loop no longer having any additional work to perform.
+* El método `process.exit()` es llamado explícitamente;
+* El bucle del evento Node.js ya no tiene ningún trabajo adicional a realizar.
 
-There is no way to prevent the exiting of the event loop at this point, and once all `'exit'` listeners have finished running the Node.js process will terminate.
+No hay manera de prevenir la salida del bucle del evento en este punto, y una vez todos los oyentes de `'exit'` hayan terminado de ejecutarse, el proceso Node.js se terminará.
 
-The listener callback function is invoked with the exit code specified either by the [`process.exitCode`][] property, or the `exitCode` argument passed to the [`process.exit()`] method.
+La función callback del oyente es invocada con el código de salida especificado por la propiedad [`process.exitCode`][] o el argumento `exitCode` pasado al método [`process.exit()`].
 
 ```js
 process.on('exit', (code) => {
@@ -55,7 +55,7 @@ process.on('exit', (code) => {
 });
 ```
 
-Listener functions **must** only perform **synchronous** operations. The Node.js process will exit immediately after calling the `'exit'` event listeners causing any additional work still queued in the event loop to be abandoned. In the following example, for instance, the timeout will never occur:
+Las funciones del oyente sólo **deben** realizar operaciones **sincrónicas**. El proceso Node.js se cerrará inmediatamente después de llamar a los oyentes del evento `'exit'`, causando que se abandone cualquier trabajo adicional que todavía se encuentre en cola en el bucle del evento. En el siguiente ejemplo, el timeout (tiempo de espera) nunca ocurrirá:
 
 ```js
 process.on('exit', (code) => {
