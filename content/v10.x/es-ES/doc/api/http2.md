@@ -136,7 +136,7 @@ El evento de `'error'` se emite cuando ocurre un error durante el procesamiento 
 added: v8.4.0
 -->
 
-* `type` {integer} The frame type.
+* `type` {integer} El tipo de frame.
 * `code` {integer} The error code.
 * `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
 
@@ -154,7 +154,7 @@ added: v8.4.0
 * `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
 * `opaqueData` {Buffer} If additional opaque data was included in the `GOAWAY` frame, a `Buffer` instance will be passed containing that data.
 
-The `'goaway'` event is emitted when a `GOAWAY` frame is received.
+El evento de `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
 
 The `Http2Session` instance will be shut down automatically when the `'goaway'` event is emitted.
 
@@ -994,7 +994,7 @@ added: v8.4.0
 
 * `headers` {HTTP/2 Headers Object}
 
-Sends an additional informational `HEADERS` frame to the connected HTTP/2 peer.
+Envía un frame adicional e informativo de `HEADERS` al peer conectado de HTTP/2.
 
 #### http2stream.headersSent
 
@@ -2654,7 +2654,7 @@ Si `name` es igual a `Http2Session`, el `PerformanceEntry` contendrá las siguie
 * `framesReceived` {number} The number of HTTP/2 frames received by the `Http2Session`.
 * `framesSent` {number} The number of HTTP/2 frames sent by the `Http2Session`.
 * `maxConcurrentStreams` {number} The maximum number of streams concurrently open during the lifetime of the `Http2Session`.
-* `pingRTT` {number} The number of milliseconds elapsed since the transmission of a `PING` frame and the reception of its acknowledgment. Only present if a `PING` frame has been sent on the `Http2Session`.
+* `pingRTT` {number} The number of milliseconds elapsed since the transmission of a `PING` frame and the reception of its acknowledgment. Solo está presente si un frame de `PING` ha sido enviado en la `Http2Session`.
 * `streamAverageDuration` {number} La duración promedio (en milisegundos) para todas las instancias de `Http2Stream` .
 * `streamCount` {number} El número de instancias de `Http2Stream` procesadas por la `Http2Session`.
 * `type` {string} Either `'server'` or `'client'` to identify the type of `Http2Session`.
