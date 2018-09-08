@@ -24,7 +24,7 @@ Una vez esto haya sido establecido, los archivos que terminan en `.mjs` serán c
 node --experimental-modules my-app.mjs
 ```
 
-## Funcionalidades
+## Funciones
 
 <!-- type=misc -->
 
@@ -38,13 +38,13 @@ Sólo el argumento CLI para el punto principal de entrada al programa puede ser 
 
 La metapropiedad `import.meta` es un `Object` que contiene la siguiente propiedad:
 
-* `url` {string} La URL del `file:` absoluta del módulo.
+* `url` {string} La URL del `file:` del módulo absoluta.
 
 ### No Soportado
 
-| Funcionalidad          | Razón                                                                                    |
-| ---------------------- | ---------------------------------------------------------------------------------------- |
-| `require('./foo.mjs')` | Los Módulos ES tiene diferente resolución y sincronización, utilice importación dinámica |
+| Función                | Razón                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| `require('./foo.mjs')` | Los Módulos ES tienen diferente resolución y sincronización, utilice importación dinámica |
 
 ## Diferencias notables entre `import` y `require`
 
@@ -62,7 +62,7 @@ La metapropiedad `import.meta` es un `Object` que contiene la siguiente propieda
 
 ### Rutas basadas en URL
 
-Los ESM son resueltos y almacenados en caché basándose en la semántica de [URL](https://url.spec.whatwg.org/). Esto significa que los archivos que contienen caracteres especiales, como `#` y `?`, necesitan escaparse.
+Los ESM son resueltos y almacenados en caché basándose en la semántica de [URL](https://url.spec.whatwg.org/). Esto significa que se necesita escapar de los archivos que contienen caracteres especiales, como `#` y `?`.
 
 Los módulos serán cargados múltiples veces si el especificador `import` utilizado para resolverlos tiene una consulta o fragmento diferente.
 
@@ -122,7 +122,7 @@ El `parentModuleURL` es proporcionado como `undefined` al realizar la carga prin
 
 The default Node.js ES module resolution function is provided as a third argument to the resolver for easy compatibility workflows.
 
-In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. Esto puede ser uno de los siguientes:
+In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. Este puede ser uno de los siguientes:
 
 | `formato`   | Descripción                                                     |
 | ----------- | --------------------------------------------------------------- |
