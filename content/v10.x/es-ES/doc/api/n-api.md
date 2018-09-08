@@ -747,23 +747,23 @@ el `napi_value passed` dentro o fuera de estos métodos es un handle para el obj
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Si aún es válido, esta API devuelve el `napi_value` que representa al `Object` JavaScript asociado con la `napi_ref`. Otherwise, result will be NULL.
+Si aún es válido, esta API devuelve el `napi_value` que representa al `Object` JavaScript asociado con la `napi_ref`. De lo contrario, el resultado será NULL.
 
-## Module registration
+## Registro de Módulos
 
-N-API modules are registered in a manner similar to other modules except that instead of using the `NODE_MODULE` macro the following is used:
+Los módulos N-API son registrados de forma similar a otros módulos, excepto que en lugar de utilizar el macro `NODE_MODULE`, se utiliza el siguiente:
 
 ```C
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
-The next difference is the signature for the `Init` method. For a N-API module it is as follows:
+La siguiente diferencia es la firma para el método `Init`. Para un módulo de N-API es como sigue:
 
 ```C
 napi_value Init(napi_env env, napi_value exports);
 ```
 
-The return value from `Init` is treated as the `exports` object for the module. The `Init` method is passed an empty object via the `exports` parameter as a convenience. If `Init` returns NULL, the parameter passed as `exports` is exported by the module. N-API modules cannot modify the `module` object but can specify anything as the `exports` property of the module.
+El valor devuelto de `Init` es tratado como el objeto `exports` para el módulo. El método `Init` se pasa un objeto vacío a través del parámetro `exports` como una conveniencia. Si `Init` devuelve NULL, el parámetro pasado como `exports` es exportado por el módulo. N-API modules cannot modify the `module` object but can specify anything as the `exports` property of the module.
 
 To add the method `hello` as a function so that it can be called as a method provided by the addon:
 
