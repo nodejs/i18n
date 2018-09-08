@@ -65,34 +65,34 @@ process.on('exit', (code) => {
 });
 ```
 
-### Event: 'message'
+### Evento: 'message'
 
 <!-- YAML
 added: v0.5.10
 -->
 
 * `message` { Object | boolean | number | string | null } a parsed JSON object or a serializable primitive value.
-* `sendHandle` {net.Server|net.Socket} a [`net.Server`][] or [`net.Socket`][] object, or undefined.
+* `sendHandle` {net.Server|net.Socket} un objeto [`net.Server`][] o [`net.Socket`][] o indefinido.
 
-If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'message'` event is emitted whenever a message sent by a parent process using [`childprocess.send()`][] is received by the child process.
+Si el proceso Node.js es generado con un canal IPC (vea el [Proceso Secundario](child_process.html) y la documentación [Cluster](cluster.html)), el evento `'message'` es emitido cada vez que es recibido por el proceso secundario un mensaje enviado por un proceso primario utilizando [`childprocess.send()`][].
 
-El mensaje pasa a través de la serialización y análisis. The resulting message might not be the same as what is originally sent.
+El mensaje pasa a través de la serialización y análisis. El mensaje resultando podría no ser el mismo que lo originalmente enviado.
 
-### Event: 'rejectionHandled'
+### Evento: 'rejectionHandled'
 
 <!-- YAML
 added: v1.4.1
 -->
 
-* `promise` {Promise} The late handled promise.
+* `promise` {Promise} La promesa manejada tarde.
 
 The `'rejectionHandled'` event is emitted whenever a `Promise` has been rejected and an error handler was attached to it (using [`promise.catch()`][], for example) later than one turn of the Node.js event loop.
 
-The `Promise` object would have previously been emitted in an `'unhandledRejection'` event, but during the course of processing gained a rejection handler.
+El objeto `Promise` habría sido emitido previamente en un evento `'unhandledRejection'`, pero durante el curso del proceso, ganó un manejador de rechazo.
 
-There is no notion of a top level for a `Promise` chain at which rejections can always be handled. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time — possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
+No hay noción de un nivel superior para una cadena `Promise` en el cual los rechazos pueden ser manejados siempre. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time — possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
 
-Another way of stating this is that, unlike in synchronous code where there is an ever-growing list of unhandled exceptions, with Promises there can be a growing-and-shrinking list of unhandled rejections.
+Otra manera de decir esto es que, a diferencia del código asincrónico donde hay una lista de excepciones sin manejar que está en constante crecimiento, con las Promises (Promesas), puede haber una lista creciente y decreciente de rechazos sin controlar.
 
 In synchronous code, the `'uncaughtException'` event is emitted when the list of unhandled exceptions grows.
 
@@ -1299,7 +1299,7 @@ If Node.js is spawned with an IPC channel, the `process.send()` method can be us
 
 If Node.js was not spawned with an IPC channel, `process.send()` will be `undefined`.
 
-El mensaje pasa a través de la serialización y análisis. The resulting message might not be the same as what is originally sent.
+El mensaje pasa a través de la serialización y análisis. El mensaje resultando podría no ser el mismo que lo originalmente enviado.
 
 ## process.setegid(id)
 
