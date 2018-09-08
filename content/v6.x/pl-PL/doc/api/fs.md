@@ -1,4 +1,4 @@
-# File System
+# System plików
 
 <!--introduced_in=v0.10.0-->
 
