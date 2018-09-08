@@ -718,12 +718,12 @@ changes:
   * `minDHSize` {number} Tamaño mínimo del parámetro DH en bits para aceptar una conexión TLS. Cuando un servidor ofrece un parámetro DH con un tamaño inferior a `minDHSize`, la conexión TLS se destruye y se produce un error. **Predeterminado:** `1024`.
   * `secureContext`: Objeto de contexto TLS opcional creado con [`tls.createSecureContext()`][]. Si *no* se proporciona un `secureContext`, se creará uno pasando el objeto entero `options` a `tls.createSecureContext()`.
   * `lookup`: {Function} Función de búsqueda personalizada. **Predeterminado:** [`dns.lookup()`][].
-  * ...: Optional [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
+  * ...: Opciones opcionales [`tls.createSecureContext()`][] que se utilizan si falta la opción `secureContext`; de lo contrario, se ignorarán.
 * `callback` {Function}
 
-The `callback` function, if specified, will be added as a listener for the [`'secureConnect'`][] event.
+La función de `callback`, si se especifica, se agregará como listener para el evento [`'secureConnect'`][].
 
-`tls.connect()` returns a [`tls.TLSSocket`][] object.
+`tls.connect()` devuelve un objeto [`tls.TLSSocket`][].
 
 The following implements a simple "echo server" example:
 
