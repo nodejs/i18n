@@ -10,13 +10,13 @@ Node.js utiliza tres tipos de Desaprobaciones:
 
 - Documentation-only
 - Runtime
-- Fin-de-Vida
+- End-of-Life
 
 Una desaprobación de tipo documentation-only es una que está expresada solo dentro de los documentos de API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js. Algunas desaprobaciones que son de tipo documentation-only, provocan una advertencia en runtime cuando son ejecutadas con la bandera [`--pending-deprecation`][] (o su alternativa, la variable de ambiente `NODE_PENDING_DEPRECATION=1`), de manera similar a las desaprobaciones mostradas abajo. Las desaprobaciones de tipo documentation-only que soporten esa bandera están explicítamente indicadas como tales en la [lista de APIs Desaprobadas](#deprecations_list_of_deprecated_apis).
 
 Una desaprobación de Runtime generará, de forma predeterminada, un proceso de advertencia que será estampado a `stderr` la primera vez que la API desaprobada sea usada. Cuando la bandera de línea de comando `--throw-deprecation` es usada, una desaprobación de Runtime causará que se arroje un error.
 
-Una desaprobación Fin-de-Vida es usada para identificar código que o ha sido removido, o pronto será removido de Node.js.
+Una desaprobación de tipo End-of-Life es usada para identificar código que o ha sido removido, o pronto será removido de Node.js.
 
 ## Revocación de desaprobaciones
 
@@ -36,7 +36,7 @@ El método `OutgoingMessage.prototype.flush()` está desaprobado. En cambio, use
 
 ### DEP0002: requiere('\_linklist')
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 El módulo `_linklist` está desaprobado. Por favor use un espacio de usuario alternativo.
 
@@ -88,7 +88,7 @@ Dentro de [`child_process`][] los métodos de los módulos `spawn()`, `fork()`, 
 
 ### DEP0007: Reemplace el grupo worker.suicide con worker.exitedAfterDisconnect
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 En una versión previa del `cluster` Node.js, una propiedad booleana con el nombre `suicide` fue agregada al objeto `Worker`. La intención de esta propiedad fue proveer una indicación sobre cómo y por qué la instancia `Worker` salió. En Node.js 6.0.0, la vieja propiedad fue desaprobada y reemplazada con una nueva propiedad [`worker.exitedAfterDisconnect`][]. El nombre de la vieja propiedad no describía precisamente la verdadera semántica y fue innecesariamente cargada de emoción.
 
@@ -104,7 +104,7 @@ El módulo `constants` ha sido desaprobado. Cuando se requiere acceso a constant
 
 ### DEP0009: crypto.pbkdf2 sin resumen
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 El uso de la API [`crypto.pbkdf2()`][] sin especificar un resumen fue desaprobado en Node.js 6.0, porque el método usó de manera predeterminada el resumen no recomendado `'SHA1'`. Previamente, una advertencia de desaprobación fue emitida. A partir de Node.js 8.0.0, llamar a `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinido dará como resultado un `TypeError`.
 
@@ -554,7 +554,7 @@ La API `tls.createSecurePair()` fue desaprobada en la documentación en Node.js 
 
 ### DEP0065: repl.REPL_MODE_MAGIC and NODE_REPL_MODE=magic
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 La constante `REPL_MODE_MAGIC` del módulo `repl`, usada para la opción `replMode`, ha sido removida. Su comportamiento ha sido funcionalmente idéntico al de `REPL_MODE_SLOPPY` desde Node.js 6.0.0, cuando V8 5.0 fue importada. En cambio, por favor use `REPL_MODE_SLOPPY`.
 
@@ -592,7 +592,7 @@ Tipo: Runtime
 
 ### DEP0069: vm.runInDebugContext(string)
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 DebugContext ha sido removido en V8 y no está disponible en Node.js 10+.
 
@@ -602,7 +602,7 @@ DebugContext fue una API experimental.
 
 ### DEP0070: async_hooks.currentId()
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 `async_hooks.currentId()` fue renombrado a `async_hooks.executionAsyncId()` para mayor claridad.
 
@@ -612,7 +612,7 @@ Este cambio se hizo mientras `async_hooks` era una API experimental.
 
 ### DEP0071: async_hooks.triggerId()
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 `async_hooks.triggerId()` fue renombrado a `async_hooks.triggerAsyncId()` para mayor claridad.
 
@@ -622,7 +622,7 @@ Este cambio se hizo mientras `async_hooks` era una API experimental.
 
 ### DEP0072: async_hooks.AsyncResource.triggerId()
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 `async_hooks.AsyncResource.triggerId()` fue renombrado a `async_hooks.AsyncResource.triggerAsyncId()` para mayor claridad.
 
@@ -632,7 +632,7 @@ Este cambio se hizo mientras `async_hooks` era una API experimental.
 
 ### DEP0073: Varias propiedades internas de net.Server
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 Acceder a varias propiedades internas e indocumentadas de instancias de `net.Server` con nombres inapropiados ha sido desaprobado.
 
@@ -880,7 +880,7 @@ Esta nunca fue una característica documetada.
 
 ### DEP0101: --with-lttng
 
-Tipo: Fin-de-Vida
+Tipo: End-of-Life
 
 La opción de tiempo-de-compilación`--with-lttng` ha sido removida.
 
