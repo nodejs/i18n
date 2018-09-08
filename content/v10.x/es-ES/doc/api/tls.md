@@ -801,13 +801,13 @@ added: v0.11.3
 -->
 
 * `port` {number} Valor predeterminado para `options.port`.
-* `host` {string} Optional default value for `options.host`.
-* `options` {Object} See [`tls.connect()`][].
-* `callback` {Function} See [`tls.connect()`][].
+* `host` {string} Valor predeterminado opcional para `options.host`.
+* `options` {Object} Vea [`tls.connect()`][].
+* `callback` {Function} Vea [`tls.connect()`][].
 
-Same as [`tls.connect()`][] except that `port` and `host` can be provided as arguments instead of options.
+Igual que [`tls.connect()`][] excepto que se pueden proporcionar `port` y `host` como argumentos en lugar de opciones.
 
-A port or host option, if specified, will take precedence over any port or host argument.
+Una opción de puerto o host, si se especifica, tendrá prioridad sobre cualquier puerto o argumento de host.
 
 ## tls.createSecureContext(options)
 
