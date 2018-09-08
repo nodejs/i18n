@@ -312,19 +312,19 @@ Se la variabile di ambiente `NODE_PATH` è impostata su un elenco delimitato da 
 
 Su Windows, `NODE_PATH` è delimitato da punti e virgola (`;`) anziché da due punti.
 
-`NODE_PATH` was originally created to support loading modules from varying paths before the current [module resolution](#modules_all_together) algorithm was frozen.
+`NODE_PATH` è stato originariamente creato per supportare il caricamento dei moduli da percorsi di vario tipo prima che l'algoritmo dell'attuale [risoluzione del modulo](#modules_all_together) fosse congelato.
 
-`NODE_PATH` is still supported, but is less necessary now that the Node.js ecosystem has settled on a convention for locating dependent modules. Sometimes deployments that rely on `NODE_PATH` show surprising behavior when people are unaware that `NODE_PATH` must be set. Sometimes a module's dependencies change, causing a different version (or even a different module) to be loaded as the `NODE_PATH` is searched.
+`NODE_PATH` è ancora supportato, ma è meno necessario ora che l'ecosistema Node.js ha stabilito una convenzione per la localizzazione dei moduli dipendenti. A volte le distribuzioni che si basano su `NODE_PATH` mostrano comportamenti sorprendenti quando le persone non sanno che `NODE_PATH` deve essere impostato. A volte le dipendenze di un modulo cambiano, causando il caricamento di una versione diversa (o anche di un modulo diverso) durante la ricerca di `NODE_PATH`.
 
-Additionally, Node.js will search in the following locations:
+Inoltre, Node.js cercherà nelle seguenti posizioni:
 
 * 1: `$HOME/.node_modules`
 * 2: `$HOME/.node_libraries`
 * 3: `$PREFIX/lib/node`
 
-Where `$HOME` is the user's home directory, and `$PREFIX` is Node.js's configured `node_prefix`.
+Dove `$HOME` è la home directory dell'utente e `$PREFIX` è il `node_prefix` configurato da Node.js.
 
-These are mostly for historic reasons.
+Questi sono per lo più per ragioni cronologiche.
 
 It is strongly encouraged to place dependencies in the local `node_modules` folder. These will be loaded faster, and more reliably.
 
