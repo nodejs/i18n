@@ -16,11 +16,11 @@ El objeto `process` es una instancia de [`EventEmitter`][].
 added: v0.11.12
 -->
 
-El evento `'beforeExit'` es emitido cuando Node.js vacía su bucle de evento y no tiene trabajo adicional a programar. Normally, the Node.js process will exit when there is no work scheduled, but a listener registered on the `'beforeExit'` event can make asynchronous calls, and thereby cause the Node.js process to continue.
+El evento `'beforeExit'` es emitido cuando Node.js vacía su bucle de evento y no tiene trabajo adicional a programar. Normalmente, el proceso Node.js se cierra cuando no hay ningún trabajo programado, pero un oyente registrado en el evento `'beforeExit'` puede hacer llamadas asincrónicas y así causar que el proceso Node.js continúe.
 
-The listener callback function is invoked with the value of [`process.exitCode`][] passed as the only argument.
+La función callback del oyente es invocada con el valor de [`process.exitCode`][] pasado como el único argumento.
 
-The `'beforeExit'` event is *not* emitted for conditions causing explicit termination, such as calling [`process.exit()`][] or uncaught exceptions.
+El evento `'beforeExit'` *no* es emitido por condiciones que causen la terminación explícita, como lo es llamar a [`process.exit()`][] o excepciones no detectadas.
 
 The `'beforeExit'` should *not* be used as an alternative to the `'exit'` event unless the intention is to schedule additional work.
 
