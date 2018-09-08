@@ -194,11 +194,11 @@ added: v0.5.10
 * `callback` {Function} Parámetro común de las funciones [`server.listen()`][]
 * Devuelve: {net.Server}
 
-Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
+Inicia un servidor escuchando por conexiones en un `handle` dado que ya ha sido enlazado a un puerto, un socket de dominio UNIX, o un pipe que fue nombrado por Windows.
 
-The `handle` object can be either a server, a socket (anything with an underlying `_handle` member), or an object with an `fd` member that is a valid file descriptor.
+El objeto `handle` puede ser un servidor, un socket (cualquiera con un miembro `_handle` subyacente), o un objeto con un miembro `fd` que es un descriptor de archivos válido.
 
-Listening on a file descriptor is not supported on Windows.
+Escuchar en un descriptor de archivo no es soportado en Windows.
 
 #### server.listen(options[, callback])
 
@@ -206,14 +206,14 @@ Listening on a file descriptor is not supported on Windows.
 added: v0.11.14
 -->
 
-* `options` {Object} Required. Supports the following properties: 
+* `opciones` {Object} Requerido. Soporta las siguientes propiedades: 
   * `port` {number}
   * `host` {string}
-  * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-  * `backlog` {number} Common parameter of [`server.listen()`][] functions.
-  * `exclusive` {boolean} **Default:** `false`
-* `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Returns: {net.Server}
+  * `path` {string} Será ignorado si se especifica el `port`. Vea [Identificando rutas para conexiones IPC](#net_identifying_paths_for_ipc_connections).
+  * `backlog` {number} Parámetro común de las funciones [`server.listen()`][].
+  * `exclusive` {boolean} **Predeterminado:** `false`
+* `callback` {Function} Parámetro común de las funciones [`server.listen()`][].
+* Devuelve: {net.Server}
 
 If `port` is specified, it behaves the same as <a href="#net_server_listen_port_host_backlog_callback">
 <code>server.listen([port[, host[, backlog]]][, callback])</code></a>. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. If none of them is specified, an error will be thrown.
