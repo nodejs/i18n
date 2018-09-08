@@ -55,19 +55,19 @@ Vea [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 added: v0.5.0
 -->
 
-Emitted when the server closes. Note that if connections exist, this event is not emitted until all connections are ended.
+Emitido cuando el servidor se cierra. Tenga en cuenta que si las conexiones existen, este evento no es emitido hasta que terminaron todas las conexiones.
 
-### Event: 'connection'
+### Evento: 'connection'
 
 <!-- YAML
 added: v0.1.90
 -->
 
-* {net.Socket} The connection object
+* {net.Socket} El objeto de conexión
 
-Emitted when a new connection is made. `socket` is an instance of `net.Socket`.
+Emitido cuando se hace una nueva conexión. `socket` es una instancia de `net.Socket`.
 
-### Event: 'error'
+### Evento: 'error'
 
 <!-- YAML
 added: v0.1.90
