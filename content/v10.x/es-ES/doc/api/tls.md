@@ -357,7 +357,7 @@ changes:
   * `ALPNProtocols`: Opcional, vea [`tls.createServer()`][]
   * `SNICallback`: Opcional, vea [`tls.createServer()`][]
   * `session` {Buffer} Una instancia opcional de `Buffer` que contiene una sesión TLS.
-  * `requestOCSP` {boolean} Si `verdadero`, especifica que la extensión de solicitud de estado OCSP se agregará al hola del cliente y se emitirá un evento `'OCSPResponse'` en el socket antes de establecer una comunicación segura
+  * `requestOCSP` {boolean} Si es `true`, especifica que la extensión de solicitud de estado OCSP se agregará al hola del cliente y se emitirá un evento `'OCSPResponse'` en el socket antes de establecer una comunicación segura
   * `secureContext`: Objeto de contexto TLS opcional creado con [`tls.createSecureContext()`][]. Si *no* se proporciona un `secureContext`, se creará uno pasando el objeto `options` completo a `tls.createSecureContext()`.
   * ...: Opciones opcionales [`tls.createSecureContext()`][] que se utilizan si falta la opción `secureContext`, de lo contrario, son ignoradas.
 
@@ -391,7 +391,7 @@ added: v0.11.4
 
 * Devuelve: {Object}
 
-Devuelve el límite `address`, la dirección `family` nombre y `port` del socket subyacente según lo informado por el sistema operativo: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
+Devuelve la `address` enlazada, el nombre de la `family` de direcciones y el `port` del socket subyacente, del modo que es reportado por el sistema operativo: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
 ### tlsSocket.authorizationError
 
@@ -439,7 +439,7 @@ Devuelve un objeto que representa el nombre de cifrado. La clave `version` es un
 
 Por ejemplo: `{ name: 'AES256-SHA', version: 'TLSv1/SSLv3' }`.
 
-Vea `SSL_CIPHER_get_name()` in https://www.openssl.org/docs/man1.1.0/ssl/SSL_CIPHER_get_name.html para más información.
+Vea `SSL_CIPHER_get_name()` en https://www.openssl.org/docs/man1.1.0/ssl/SSL_CIPHER_get_name.html para más información.
 
 ### tlsSocket.getEphemeralKeyInfo()
 
@@ -449,7 +449,7 @@ added: v5.0.0
 
 * Devuelve: {Object}
 
-Devuelve un objeto que representa el tipo, nombre y tamaño del parámetro de un intercambio de clave efímera en [Perfect Forward Secrecy](#tls_perfect_forward_secrecy) en una conexión de cliente. Devuelve un objeto vacío cuando el intercambio de claves no es efímero. Como esto solo se admite en un socket de cliente; se devuelve `nulo` si se llama a un socket de servidor. Los tipos soportados son `'DH'` y `'ECDH'`. La propiedad `name` está disponible solo cuando el tipo es `'ECDH'`.
+Devuelve un objeto que representa el tipo, nombre y tamaño del parámetro de un intercambio de clave efímera en [Perfect Forward Secrecy](#tls_perfect_forward_secrecy) en una conexión de cliente. Devuelve un objeto vacío cuando el intercambio de claves no es efímero. Como esto solo se admite en un socket de cliente; se devuelve `null` si se llama a un socket de servidor. Los tipos soportados son `'DH'` y `'ECDH'`. La propiedad `name` está disponible solo cuando el tipo es `'ECDH'`.
 
 Por ejemplo: `{ type: 'ECDH', name: 'prime256v1', size: 256 }`.
 
