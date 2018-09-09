@@ -344,9 +344,9 @@ Emitido una vez que el socket esté completamente cerrado. El argumento `hadErro
 added: v0.1.90
 -->
 
-Emitted when a socket connection is successfully established. See [`net.createConnection()`][].
+Emitido cuando una conexión del socket es establecida con éxito. Vea [`net.createConnection()`][].
 
-### Event: 'data'
+### Evento: 'data'
 
 <!-- YAML
 added: v0.1.90
@@ -354,21 +354,21 @@ added: v0.1.90
 
 * {Buffer|string}
 
-Emitted when data is received. The argument `data` will be a `Buffer` or `String`. Encoding of data is set by [`socket.setEncoding()`][].
+Emitido cuando los datos son recibidos. El argumento `data` será un `Buffer` o un `String`. La codificación de los datos es establecida por [`socket.setEncoding()`][].
 
-Note that the **data will be lost** if there is no listener when a `Socket` emits a `'data'` event.
+Tenga en cuenta que **los datos se perderán** si no hay un listener cuando un `Socket` emite un evento`'data'`.
 
-### Event: 'drain'
+### Evento: 'drain'
 
 <!-- YAML
 added: v0.1.90
 -->
 
-Emitted when the write buffer becomes empty. Can be used to throttle uploads.
+Emitido cuando el búfer de escritura se vacía. Se puede usar para acelerar subidas.
 
-See also: the return values of `socket.write()`.
+Vea también: los valores de retorno de `socket.write()`.
 
-### Event: 'end'
+### Evento: 'end'
 
 <!-- YAML
 added: v0.1.90
