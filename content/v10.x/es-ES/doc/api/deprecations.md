@@ -708,29 +708,29 @@ Usar una propiedad llamada `inspect` en un objecto para especificar una función
 
 Tipo: Documentation-only
 
-El internal `path._makeLong()` no estaba destinado para uso público. Sin embargo, módulos del espacio de usuario lo han encontrado útil. The internal API has been deprecated and replaced with an identical, public `path.toNamespacedPath()` method.
+El internal `path._makeLong()` no estaba destinado para uso público. Sin embargo, módulos del espacio de usuario lo han encontrado útil. La API internal ha sido desaprobada y reemplazada con un método `path.toNamespacedPath()` idéntico y público.
 
 <a id="DEP0081"></a>
 
-### DEP0081: fs.truncate() using a file descriptor
+### DEP0081: fs.truncate() usar un descriptor de archivo
 
-Type: Runtime
+Tipo: Runtime
 
-`fs.truncate()` `fs.truncateSync()` usage with a file descriptor has been deprecated. Please use `fs.ftruncate()` or `fs.ftruncateSync()` to work with file descriptors.
+El uso de `fs.truncate()` `fs.truncateSync()` con un descriptor de archivo ha sido desaprobado. Por favor use `fs.ftruncate()` o `fs.ftruncateSync()` para trabajar con descriptores de archivos.
 
 <a id="DEP0082"></a>
 
 ### DEP0082: REPLServer.prototype.memory()
 
-Type: Runtime
+Tipo: Runtime
 
-`REPLServer.prototype.memory()` is only necessary for the internal mechanics of the `REPLServer` itself. Do not use this function.
+`REPLServer.prototype.memory()` es solo necesario para las mecánicas internas del mismo `REPLServer`. No use esta función.
 
 <a id="DEP0083"></a>
 
-### DEP0083: Disabling ECDH by setting ecdhCurve to false
+### DEP0083: Desabilitar a ECDH fijando a ecdhCurve como falso
 
-Type: Runtime
+Tipo: Runtime
 
 The `ecdhCurve` option to `tls.createSecureContext()` and `tls.TLSSocket` could be set to `false` to disable ECDH entirely on the server only. This mode is deprecated in preparation for migrating to OpenSSL 1.1.0 and consistency with the client. Use the `ciphers` parameter instead.
 
