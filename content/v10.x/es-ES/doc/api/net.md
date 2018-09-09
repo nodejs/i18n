@@ -442,7 +442,7 @@ Devuelve la `address` enlazada, el nombre de la `family` y el `port` del socket,
 added: v0.3.8
 -->
 
-`net.Socket` tiene la propiedad que `socket.write()` siempre funciona. Esto es para ayudar a los usuarios para que se pongan en marcha rápidamente. La computadora no puede siempre seguir el paso con la cantidad de datos que están siendo escritos a un socket - la conexión de red puede ser que simplemente sea muy lenta. Node.js will internally queue up the data written to a socket and send it out over the wire when it is possible. (Internally it is polling on the socket's file descriptor for being writable).
+`net.Socket` tiene la propiedad que `socket.write()` siempre funciona. Esto es para ayudar a los usuarios para que se pongan en marcha rápidamente. La computadora no puede siempre seguir el paso con la cantidad de datos que están siendo escritos a un socket - la conexión de red puede ser que simplemente sea muy lenta. Node.js hará una cola internamente con los datos escritos a un socket y lo enviará sobre el cable cuando sea posible. (internamente está haciendo polling en el descriptor de archivos del socket por ser escibible).
 
 The consequence of this internal buffering is that memory may grow. This property shows the number of characters currently buffered to be written. (Number of characters is approximately equal to the number of bytes to be written, but the buffer may contain strings, and the strings are lazily encoded, so the exact number of bytes is not known.)
 
