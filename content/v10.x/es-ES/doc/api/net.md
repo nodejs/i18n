@@ -386,9 +386,9 @@ added: v0.1.90
 
 * {Error}
 
-Emitido cuando ocurre un error. The `'close'` event will be called directly following this event.
+Emitido cuando ocurre un error. El evento `'close'` será llamado directamente siguiendo este evento.
 
-### Event: 'lookup'
+### Evento: 'lookup'
 
 <!-- YAML
 added: v0.11.3
@@ -399,32 +399,32 @@ changes:
     description: The `host` parameter is supported now.
 -->
 
-Emitted after resolving the hostname but before connecting. Not applicable to UNIX sockets.
+Emitido después de resolver el nombre del host pero antes de conectar. No es aplicable a sockets UNIX.
 
-* `err` {Error|null} The error object. See [`dns.lookup()`][].
-* `address` {string} The IP address.
-* `family` {string|null} The address type. See [`dns.lookup()`][].
-* `host` {string} The hostname.
+* `err` {Error|null} El objeto error. Vea [`dns.lookup()`][].
+* `address` {string} La dirección IP.
+* `family` {string|null} El tipo de dirección. Vea [`dns.lookup()`][].
+* `host` {string} El nombre del host.
 
-### Event: 'ready'
+### Evento: 'ready'
 
 <!-- YAML
 added: v9.11.0
 -->
 
-Emitted when a socket is ready to be used.
+Emitido cuando un socket está listo para ser utilizado.
 
-Triggered immediately after `'connect'`.
+Activado inmediatamente después de `'connect'`.
 
-### Event: 'timeout'
+### Evento: 'timeout'
 
 <!-- YAML
 added: v0.1.90
 -->
 
-Emitted if the socket times out from inactivity. This is only to notify that the socket has been idle. The user must manually close the connection.
+Emitido si el socket agota el tiempo de espera por inactividad. Esto es solo para notificar que el socket ha estado inactivo. El usuario debe cerrar la conexión manualmente.
 
-See also: [`socket.setTimeout()`][].
+Vea también: [`socket.setTimeout()`][].
 
 ### socket.address()
 
@@ -432,9 +432,9 @@ See also: [`socket.setTimeout()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
+Devuelve la `address` enlazada, el nombre de la `family` y el `port` del socket, como es reportado por el sistema operativo: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### socket.bufferSize
 
@@ -442,7 +442,7 @@ Returns the bound `address`, the address `family` name and `port` of the socket 
 added: v0.3.8
 -->
 
-`net.Socket` has the property that `socket.write()` always works. This is to help users get up and running quickly. The computer cannot always keep up with the amount of data that is written to a socket - the network connection simply might be too slow. Node.js will internally queue up the data written to a socket and send it out over the wire when it is possible. (Internally it is polling on the socket's file descriptor for being writable).
+`net.Socket` has the property that `socket.write()` always works. This is to help users get up and running quickly. La computadora no puede siempre seguir el paso con la cantidad de datos que están siendo escritos a un socket - la conexión de red puede ser que simplemente sea muy lenta. Node.js will internally queue up the data written to a socket and send it out over the wire when it is possible. (Internally it is polling on the socket's file descriptor for being writable).
 
 The consequence of this internal buffering is that memory may grow. This property shows the number of characters currently buffered to be written. (Number of characters is approximately equal to the number of bytes to be written, but the buffer may contain strings, and the strings are lazily encoded, so the exact number of bytes is not known.)
 
