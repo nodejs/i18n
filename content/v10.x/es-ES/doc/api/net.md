@@ -374,11 +374,11 @@ Vea también: los valores de retorno de `socket.write()`.
 added: v0.1.90
 -->
 
-Emitted when the other end of the socket sends a FIN packet, thus ending the readable side of the socket.
+Emitido cuando el otro extremo del socket envía un paquete FIN, acabando así con el lado legible del socket.
 
-By default (`allowHalfOpen` is `false`) the socket will send a FIN packet back and destroy its file descriptor once it has written out its pending write queue. However, if `allowHalfOpen` is set to `true`, the socket will not automatically [`end()`][`socket.end()`] its writable side, allowing the user to write arbitrary amounts of data. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
+De manera predeterminada (`allowHalfOpen` es `false`) el socket enviará de vuelta un paquete FIN y destruirá el descriptor de archivos una vez que sea escrito la escritura que tenía pendiente. Sin embargo, si `allowHalfOpen` es establecido como `true`, el socket no va terminar [`end()`][`socket.end()`] su lado escribible, permitiendo al usuario escribir una cantidad de datos arbitraria. El usuario debe llamar explícitamente a [`end()`][`socket.end()`] para cerrar la conexión (p. ej. enviar de vuelta un paquete FIN).
 
-### Event: 'error'
+### Evento: 'error'
 
 <!-- YAML
 added: v0.1.90
@@ -386,7 +386,7 @@ added: v0.1.90
 
 * {Error}
 
-Emitted when an error occurs. The `'close'` event will be called directly following this event.
+Emitido cuando ocurre un error. The `'close'` event will be called directly following this event.
 
 ### Event: 'lookup'
 
