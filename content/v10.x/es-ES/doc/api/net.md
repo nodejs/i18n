@@ -556,11 +556,11 @@ added: v0.1.90
 
 Asegura que ninguna actividad I/O ocurra en este socket. Solo es necesario en caso de errores (como error de análisis u otros).
 
-If `exception` is specified, an [`'error'`][] event will be emitted and any listeners for that event will receive `exception` as an argument.
+Si se especifica la `exception`, un evento[`'error'`][] será emitido y cualquier listener por ese evento recibirá un `exception` como un argumento.
 
 ### socket.destroyed
 
-* {boolean} Indicates if the connection is destroyed or not. Once a connection is destroyed no further data can be transferred using it.
+* {boolean} Indica si la conexión es destruida o no. Una vez que una conexión es destruida ningunos datos futuros pueden ser transferidos usandolo.
 
 ### socket.end(\[data\]\[, encoding\])
 
@@ -568,9 +568,9 @@ If `exception` is specified, an [`'error'`][] event will be emitted and any list
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data.
+Entrecierra el socket. p. ej., envía un paquete FIN. It is possible the server will still send some data.
 
 If `data` is specified, it is equivalent to calling `socket.write(data, encoding)` followed by [`socket.end()`][].
 
