@@ -64,40 +64,40 @@ $ git config user.name "J. Losowy Użytkownik"
 $ git config user.email "j.losowy.uzytkownik@przyklad.com"
 ```
 
-Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
+Proszę upewnij się, że ten lokalny email jest też dodany do twojej [Listy emaili GitHub](https://github.com/settings/emails) tak, że twoje commity mogą być przypisane do twojego konta i otrzymasz promocję do rangi Kontrybutora gdy twój pierwszy commit wyląduje.
 
-### Step 2: Branch
+### Krok 2: Gałąź
 
-As a best practice to keep your development environment as organized as possible, create local branches to work within. These should also be created directly off of the `master` branch.
+By zachować nasze środowisko programowania tak zorganizowanym jak to tylko możliwe, stwórz lokalne rozgałęzienia, w których będziesz pracować. Powinny być one stworzone wprost z gałęzi `master`.
 
 ```text
-$ git checkout -b my-branch -t upstream/master
+$ git checkout -b moja-galaz -t upstream/master
 ```
 
-## The Process of Making Changes
+## Proces wprowadzania zmian
 
-### Step 3: Code
+### Krok 3: Kod
 
-The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
+Znaczna większość Żądań zmian otwarta w repozytorium `nodejs/node` zawiera zmiany do jednego lub więcej z poniższych:
 
-     - the C/C++ code contained in the `src` directory
-     - the JavaScript code contained in the `lib` directory
-     - the documentation in `doc/api`
-     - tests within the `test` directory.
+     - kod C/C++ zawarty w folderze `src`
+     - kod JavaScript zawarty w folderze `lib`
+     - dokumentacja zawarta w `doc/api`
+     - testy zawarte w folderze `test`.
     
 
-If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
+Jeśli wprowadzasz zmiany w kodzie, upewnij się by uruchamiać `make lint` od czasu do czasu w celu sprawdzenia, czy zmiany pasują do zasad stylu kodu Node.js.
 
-Any documentation you write (including code comments and API documentation) should follow the [Style Guide](../../STYLE_GUIDE.md). Code samples included in the API docs will also be checked when running `make lint` (or `vcbuild.bat lint` on Windows).
+Każda dokumentacja, którą napiszesz (włącznie z komentarzami kodu i dokumentacją API) powinny być zgodne z [Zasadami Stylu](../../STYLE_GUIDE.md). Próbki kodu uwzględnione w dokumentachi API powinny być też sprawdzone przy uruchamianiu `make lint` (lub `vcbuild.bat lint` w systemie Windows).
 
-For contributing C++ code, you may want to look at the [C++ Style Guide](../../../CPP_STYLE_GUIDE.md).
+W celu kontrybucji kodu C++, powinieneś zajrzeć do [Zasad Stylu C++](../../../CPP_STYLE_GUIDE.md).
 
-### Step 4: Commit
+### Krok 4: Commit
 
-It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+Poleca się zachowywać swoje zmiany tak logicznie ugrupowane jak to możliwe w pojedyńczych commitach. Nie istnieje limit commitów na każde pojedyńcze Żądanie zmiany i wielu kontrybutorów preferuje przeglądać zmiany podzielone między wiele commitów.
 
 ```text
-$ git add my/changed/files
+$ git add moje/zmienione/pliki
 $ git commit
 ```
 
