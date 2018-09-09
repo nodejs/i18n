@@ -507,16 +507,16 @@ Para conexiones TCP, los `options` son:
 * `localPort` {number} Puerto local al que el socket debería conectarse.
 * `family` {number}: Versión del IP stack, puede ser `4` o `6`. **Predeterminado:** `4`.
 * `hints` {number} [`dns.lookup()` hints][] Opcional.
-* `lookup` {Function} Custom lookup function. **Predeterminado:** [`dns.lookup()`][].
+* `lookup` {Function} Función de búsqueda personalizada. **Predeterminado:** [`dns.lookup()`][].
 
-For [IPC](#net_ipc_support) connections, available `options` are:
+Para las conexiones [IPC](#net_ipc_support), los `options` disponibles son:
 
-* `path` {string} Required. Path the client should connect to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections). If provided, the TCP-specific options above are ignored.
+* `path` {string} Requerido. Rutas al que el cliente debe conectarse. Vea [Identificando rutas para conexiones IPC](#net_identifying_paths_for_ipc_connections). Si son proporcionados, las opciones específicas de TCP anteriores son ignoradas.
 
 #### socket.connect(path[, connectListener])
 
-* `path` {string} Path the client should connect to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Will be added as a listener for the [`'connect'`][] event once.
+* `path` {string} Ruta al que el cliente debe conectarse. Vea [Identificando rutas para conexiones IPC](#net_identifying_paths_for_ipc_connections).
+* `connectListener` {Function} Parámetro común de los métodos [`socket.connect()`][]. Será añadido una vez como un listener para el evento [`'connect'`][].
 * Returns: {net.Socket} The socket itself.
 
 Initiate an [IPC](#net_ipc_support) connection on the given socket.
