@@ -640,11 +640,11 @@ En algunos casos, un complemento necesitará poder crear y referenciar objetos c
 
 N-API proporciona métodos para crear referencias persistentes a un objeto. Cada referencia persistente tiene una recuento asociado con un valor de 0 o superior. El recuento determina si la referencia mantendrá vivo al objeto correspondiente. Las referencias con un conteo de 0 no impiden que el objeto sea tomado y, a menudo, se denominan referencias "débiles". Cualquier recuento mayor que 0 impedirá que el objeto sea tomado.
 
-Las referencias pueden ser creadas con un recuento inicial de referencia. El recuento puede ser modificado a través de [`napi_reference_ref`][] y [`napi_reference_unref`][]. Si un objeto es tomado mientras el recuento para una referencia es 0, todas las llamadas subsecuentes para obtener al objeto asociado con la referencia [`napi_get_reference_value`][] devolverán NULL para el `napi_value` devuelto. Un intento de llamar a [`napi_reference_ref`][] para una referencia cuyo objeto ha sido tomado generará un error.
+Las referencias pueden ser creadas con un recuento inicial de referencia. El recuento puede ser modificado a través de [`napi_reference_ref`][] y [`napi_reference_unref`][]. Si un objeto es tomado mientras el conteo para una referencia es 0, todas las llamadas subsecuentes para obtener al objeto asociado con la referencia [`napi_get_reference_value`][] devolverán NULL para el `napi_value` devuelto. Un intento de llamar a [`napi_reference_ref`][] para una referencia cuyo objeto ha sido tomado generará un error.
 
-Las referencias deben ser eliminadas una vez que ya no sean requeridas por el complemento. Cuando una referencia es eliminada, ya no impedirá que el objeto correspondiente sea tomado. Una falla al eliminar una referencia persistente resultará en una "pérdida de memoria" con la memoria nativa para la referencia persistente y el objeto correspondiente en el montón que se conservará para siempre.
+Las referencias deben ser eliminadas una vez que ya no sean requeridas por el complemento. Cuando una referencia es eliminada, ya no impedirá que el objeto correspondiente sea tomado. Una falla al eliminar una referencia persistente resultará en una "pérdida de memoria", conservándose para siempre la memoria nativa para la referencia persistente y el objeto correspondiente en el montón.
 
-Puede haber múltiples referencias persistentes creadas que se refieren al mismo objeto, cada una de las cuales mantendrá vivo, o no, al objeto en función de sus recuentos individuales.
+Puede haber múltiples referencias persistentes creadas que se refieren al mismo objeto, cada una de las cuales mantendrá vivo, o no, al objeto en función de sus conteos individuales.
 
 #### napi_create_reference
 
@@ -666,7 +666,7 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API crea una nueva referencia con el recuento de referencia especificado al `Object` pasado.
+Esta API crea una nueva referencia con el conteo de referencias especificado al `Object` pasado.
 
 #### napi_delete_reference
 
@@ -700,12 +700,12 @@ NODE_EXTERN napi_status napi_reference_ref(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] ref`: `napi_ref` para la cual se incrementará el recuento de referencia.
-- `[out] result`: El nuevo recuento de referencia.
+- `[in] ref`: `napi_ref` para la cual se incrementará el conteo de referencias.
+- `[out] result`: El nuevo conteo de referencias.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API incrementa el recuento de referencia para la referencia pasada y devuelve el recuento de referencia resultante.
+Esta API incrementa el conteo de referencias para la referencia pasada y devuelve el conteo de referencias resultante.
 
 #### napi_reference_unref
 
@@ -720,12 +720,12 @@ NODE_EXTERN napi_status napi_reference_unref(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] ref`: `napi_ref` para la cual se disminuirá el recuento de referencia.
-- `[out] result`: El nuevo recuento de referencia.
+- `[in] ref`: `napi_ref` para la cual se disminuirá el conteo de referencias.
+- `[out] result`: El nuevo conteo de referencias.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API disminuye el recuento de referencia para la referencia pasada y devuelve el recuento de referencia resultante.
+Esta API disminuye el conteo de referencias para la referencia pasada y devuelve el conteo de referencias resultante.
 
 #### napi_get_reference_value
 
@@ -757,7 +757,7 @@ Los módulos N-API son registrados de forma similar a otros módulos, excepto qu
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
-La siguiente diferencia es la firma para el método `Init`. Para un módulo de N-API es como sigue:
+La siguiente diferencia es la firma para el método `Init`. Para un módulo de N-API, es como sigue:
 
 ```C
 napi_value Init(napi_env env, napi_value exports);
