@@ -632,9 +632,9 @@ La representación numérica del puerto remoto. For example, `80` o `21`.
 
 ### socket.resume()
 
-* Returns: {net.Socket} The socket itself.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Resumes reading after a call to [`socket.pause()`][].
+Reanuda la lectura después de llamar a [`socket.pause()`][].
 
 ### socket.setEncoding([encoding])
 
@@ -642,9 +642,9 @@ Resumes reading after a call to [`socket.pause()`][].
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Set the encoding for the socket as a [Readable Stream](stream.html#stream_class_stream_readable). See [`readable.setEncoding()`][] for more information.
+Establece la codificación para el socket como una [Transmisión Legible](stream.html#stream_class_stream_readable). Vea [`readable.setEncoding()`][] para más información.
 
 ### socket.setKeepAlive(\[enable\]\[, initialDelay\])
 
