@@ -1000,12 +1000,12 @@ napi_status napi_create_buffer_copy(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] size`: Tamaño en bytes del buffer de entrada (debe ser el mismo que el tamaño del nuevo buffer).
 - `[in] data`: Apuntador sin formato al buffer subyacente desde el que se va a copiar.
-- `[out] result_data`: Pointer to the new `Buffer`'s underlying data buffer.
-- `[out] result`: A `napi_value` representing a `node::Buffer`.
+- `[out] result_data`: Apuntador al nuevo buffer de datos subyacente del `Buffer`.
+- `[out] result`: Un `napi_value` que representa un `node::Buffer`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API allocates a `node::Buffer` object and initializes it with data copied from the passed-in buffer. While this is still a fully-supported data structure, in most cases using a `TypedArray` will suffice.
+Esta API asigna un objeto `node::Buffer` y lo inicializa con los datos copiados del buffer pasado. Si bien esta sigue siendo una estructura de datos completamente compatible, en la mayoría de los casos será suficiente utilizar un `TypedArray`.
 
 #### napi_create_external
 
@@ -1021,15 +1021,15 @@ napi_status napi_create_external(napi_env env,
                                  napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] data`: Raw pointer to the external data.
-- `[in] finalize_cb`: Optional callback to call when the external value is being collected.
-- `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
-- `[out] result`: A `napi_value` representing an external value.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] data`: Apuntador sin formato a los datos externos.
+- `[in] finalize_cb`: Callback opcional para llamar cuando el valor externo sea tomado.
+- `[in] finalize_hint`: Sugerencia opcional para pasar a la callback finalizada durante la recopilación.
+- `[out] result`: Un `napi_value` que representa un valor externo.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API allocates a JavaScript value with external data attached to it. This is used to pass external data through JavaScript code, so it can be retrieved later by native code. The API allows the caller to pass in a finalize callback, in case the underlying native resource needs to be cleaned up when the external JavaScript value gets collected.
+Esta API asigna un valor de JavaScript con datos externos adjuntos. Esto se utiliza para pasar datos externos a través del código de JavaScript, para que pueda ser recuperado luego por el código nativo. The API allows the caller to pass in a finalize callback, in case the underlying native resource needs to be cleaned up when the external JavaScript value gets collected.
 
 The created value is not an object, and therefore does not support additional properties. It is considered a distinct value type: calling `napi_typeof()` with an external value yields `napi_external`.
 
@@ -1086,7 +1086,7 @@ napi_status napi_create_external_buffer(napi_env env,
 
 Returns `napi_ok` if the API succeeded.
 
-This API allocates a `node::Buffer` object and initializes it with data backed by the passed in buffer. While this is still a fully-supported data structure, in most cases using a `TypedArray` will suffice.
+This API allocates a `node::Buffer` object and initializes it with data backed by the passed in buffer. Si bien esta sigue siendo una estructura de datos completamente compatible, en la mayoría de los casos será suficiente utilizar un `TypedArray`.
 
 For Node.js >=4 `Buffers` are `Uint8Array`s.
 
