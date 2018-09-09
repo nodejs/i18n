@@ -297,17 +297,17 @@ added: v0.9.1
 
 * Devuelve: {net.Server}
 
-Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
+Llamar a `unref()` en un servidor permitirá al programa salir si este es el único servidor activo en el sistema de eventos. Si en el servidor ya fue llamado `unref`, llamar de nuevo a `unref()` no tendrá ningún efecto.
 
-## Class: net.Socket
+## Clase: net.Socket
 
 <!-- YAML
 added: v0.3.4
 -->
 
-This class is an abstraction of a TCP socket or a streaming [IPC](#net_ipc_support) endpoint (uses named pipes on Windows, and UNIX domain sockets otherwise). A `net.Socket` is also a [duplex stream](stream.html#stream_class_stream_duplex), so it can be both readable and writable, and it is also an [`EventEmitter`][].
+Esta clase es una abstracción de un socket TCP, o un terminal [IPC](#net_ipc_support) de transmición (usa pipes que ya tienen nombre en Windows, o sockets de dominio UNIX). Un `net.Socket` también es una [transmisión dúplex](stream.html#stream_class_stream_duplex), puede ser tanto como legible como escribible, también es un [`EventEmitter`][].
 
-A `net.Socket` can be created by the user and used directly to interact with a server. For example, it is returned by [`net.createConnection()`][], so the user can use it to talk to the server.
+Un `net.Socket` puede ser creada por el usuario y ser usada directamente para interactuar con un servidor. For example, it is returned by [`net.createConnection()`][], so the user can use it to talk to the server.
 
 It can also be created by Node.js and passed to the user when a connection is received. For example, it is passed to the listeners of a [`'connection'`][] event emitted on a [`net.Server`][], so the user can use it to interact with the client.
 
