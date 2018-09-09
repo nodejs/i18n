@@ -612,7 +612,7 @@ De forma contraria a `unref()`, llamar a `ref()` en un socket donde ha sido llam
 added: v0.5.10
 -->
 
-La representación en string de la dirección IP remota. Por ejemplo, `'74.125.127.100'` o `'2001:4860:a005::68'`. Value may be `undefined` if the socket is destroyed (for example, if the client disconnected).
+La representación en string de la dirección IP remota. Por ejemplo, `'74.125.127.100'` o `'2001:4860:a005::68'`. El valor puede estar `undefined` si el socket es destruido (por ejemplo, si el cliente se desconecta).
 
 ### socket.remoteFamily
 
@@ -620,7 +620,7 @@ La representación en string de la dirección IP remota. Por ejemplo, `'74.125.1
 added: v0.11.14
 -->
 
-The string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
+La representación en string de la familia IP remota. `'IPv4'` o `'IPv6'`.
 
 ### socket.remotePort
 
@@ -628,7 +628,7 @@ The string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
 added: v0.5.10
 -->
 
-The numeric representation of the remote port. For example, `80` or `21`.
+La representación numérica del puerto remoto. For example, `80` or `21`.
 
 ### socket.resume()
 
