@@ -628,7 +628,7 @@ La representación en string de la familia IP remota. `'IPv4'` o `'IPv6'`.
 added: v0.5.10
 -->
 
-La representación numérica del puerto remoto. For example, `80` or `21`.
+La representación numérica del puerto remoto. For example, `80` o `21`.
 
 ### socket.resume()
 
