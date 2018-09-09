@@ -147,7 +147,7 @@ changes:
 * `path` {string}
 * Returns: {string}
 
-The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
+El método `path.extname()` retorna la extensión del `path`, desde la última ocurrencia del carácter `.` (punto) hasta el final del string en la última porción del `path`. Si no hay ningún `.` en la última porción del `path`, o si el primer carácter del nombre base del `path` (vea `path.basename()`) es `.`, entonces un string vacío es retornado.
 
 ```js
 path.extname('index.html');
@@ -182,7 +182,7 @@ added: v0.11.15
   * `ext` {string}
 * Returns: {string}
 
-The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
+El método `path.format()` retorna un string de ruta de un objeto. This is the opposite of [`path.parse()`][].
 
 When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
 
