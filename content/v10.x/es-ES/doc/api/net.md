@@ -652,9 +652,9 @@ Establece la codificación para el socket como una [Transmisión Legible](stream
 added: v0.1.92
 -->
 
-* `enable` {boolean} **Default:** `false`
-* `initialDelay` {number} **Default:** `0`
-* Returns: {net.Socket} The socket itself.
+* `enable` {boolean} **Predeterminado:** `false`
+* `initialDelay` {number} **Predeterminado:** `0`
+* Devuelve: {net.Socket} El socket en sí mismo.
 
 Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket.
 
