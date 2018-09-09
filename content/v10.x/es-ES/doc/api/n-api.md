@@ -874,9 +874,9 @@ typedef enum {
 } napi_valuetype;
 ```
 
-Describe el tipo de un `napi_value`. This generally corresponds to the types described in [Section 6.1](https://tc39.github.io/ecma262/#sec-ecmascript-language-types) of the ECMAScript Language Specification. In addition to types in that section, `napi_valuetype` can also represent `Function`s and `Object`s with external data.
+Describe el tipo de un `napi_value`. Esto, generalmente, corresponde a los tipos descritos en la [Sección 6.1](https://tc39.github.io/ecma262/#sec-ecmascript-language-types) de las Especificaciones del Lenguaje ECMAScript. Además de los tipos en esa sección, el `napi_valuetype` también puede representar `Function`s y `Object`s con datos externos.
 
-A JavaScript value of type `napi_external` appears in JavaScript as a plain object such that no properties can be set on it, and no prototype.
+Un valor de JavaScript del tipo `napi_external` aparece en JavaScript como un objeto simple tal que no se pueden establecer propiedades en él, y ningún prototipo.
 
 #### napi_typedarray_type
 
@@ -894,9 +894,9 @@ typedef enum {
 } napi_typedarray_type;
 ```
 
-This represents the underlying binary scalar datatype of the `TypedArray`. Elements of this enum correspond to [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+Esto representa el tipo de dato escalar binario subyacente del `TypedArray`. Algunos elementos de este enum corresponden a la [Sección 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) de las [Especificaciones del Lenguaje ECMAScript](https://tc39.github.io/ecma262/).
 
-### Object Creation Functions
+### Funciones de Creación de Objetos
 
 #### napi_create_array
 
@@ -908,12 +908,12 @@ added: v8.0.0
 napi_status napi_create_array(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[out] result`: A `napi_value` representing a JavaScript `Array`.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[out] result`: Un `napi_value` que representa un `Array` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns an N-API value corresponding to a JavaScript `Array` type. JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
+Esta API devuelve un valor de N-API que corresponde a un tipo de `Array` de JavaScript. JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
 
 #### napi_create_array_with_length
 
@@ -929,11 +929,11 @@ napi_status napi_create_array_with_length(napi_env env,
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] length`: The initial length of the `Array`.
-- `[out] result`: A `napi_value` representing a JavaScript `Array`.
+- `[out] result`: Un `napi_value` que representa un `Array` de JavaScript.
 
 Returns `napi_ok` if the API succeeded.
 
-This API returns an N-API value corresponding to a JavaScript `Array` type. The `Array`'s length property is set to the passed-in length parameter. However, the underlying buffer is not guaranteed to be pre-allocated by the VM when the array is created - that behavior is left to the underlying VM implementation. If the buffer must be a contiguous block of memory that can be directly read and/or written via C, consider using [`napi_create_external_arraybuffer`][].
+Esta API devuelve un valor de N-API que corresponde a un tipo de `Array` de JavaScript. The `Array`'s length property is set to the passed-in length parameter. However, the underlying buffer is not guaranteed to be pre-allocated by the VM when the array is created - that behavior is left to the underlying VM implementation. If the buffer must be a contiguous block of memory that can be directly read and/or written via C, consider using [`napi_create_external_arraybuffer`][].
 
 JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
 
