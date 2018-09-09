@@ -321,9 +321,9 @@ Crea un nuevo objeto socket.
 
 * `opciones` {Object} Las opciones disponibles son: 
   * `fd` {number} Si es especificado, se envuelve alrededor de un socket existente con el descriptor de archivos dado, de lo contrario un nuevo socket será creado.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+  * `allowHalfOpen` {boolean} Indica si se permiten conexiones TCP entreabiertas. Vea [`net.createServer()`][] y el evento [`'end'`][], para detalles. **Predeterminado:** `false`.
+  * `readable` {boolean} Permite la lectura en el socket cuando se pasa `fd`, de otra manera es ignorado. **Predeterminado:** `false`.
+  * `writable` {boolean} Permite la escritura en el socket cuando se pasa `fd`, de otra manera es ignorado. **Default:** `false`.
 * Returns: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
