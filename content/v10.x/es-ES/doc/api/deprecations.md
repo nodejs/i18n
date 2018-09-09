@@ -660,7 +660,7 @@ Tipo: Runtime
 
 Tipo: Runtime
 
-`tls.parseCertString()` is a trivial parsing helper that was made public by mistake. Esta función puede usualmente ser reemplazada con:
+`tls.parseCertString()` es un ayudante trivial de parsing que fue hecho público por error. Esta función puede usualmente ser reemplazada con:
 
 ```js
 const querystring = require('querystring');
@@ -898,7 +898,7 @@ Usar el argumento `noAssert` ya no tiene ninguna funcionalidad. Todo lo que entr
 
 Type: Documentation-only (soporta [`--pending-deprecation`][])
 
-El uso de `process.binding()` en general debería ser evitado. The type checking methods in particular can be replaced by using [`util.types`][].
+El uso de `process.binding()` en general debería ser evitado. Particularmente, los métodos de comprobación de tipos pueden ser reemplazados usando [`util.types`][].
 
 <a id="DEP0104"></a>
 
