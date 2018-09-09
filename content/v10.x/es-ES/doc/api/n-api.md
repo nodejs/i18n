@@ -913,7 +913,7 @@ napi_status napi_create_array(napi_env env, napi_value* result)
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API devuelve un valor de N-API que corresponde a un tipo de `Array` de JavaScript. JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
+Esta API devuelve un valor de N-API que corresponde a un tipo de `Array` de JavaScript. Los arreglos de JavaScript se describen en la [Sección 22.1](https://tc39.github.io/ecma262/#sec-array-objects) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_array_with_length
 
@@ -927,15 +927,15 @@ napi_status napi_create_array_with_length(napi_env env,
                                           napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] length`: The initial length of the `Array`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] length`: La longitud inicial del `Array`.
 - `[out] result`: Un `napi_value` que representa un `Array` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API devuelve un valor de N-API que corresponde a un tipo de `Array` de JavaScript. The `Array`'s length property is set to the passed-in length parameter. However, the underlying buffer is not guaranteed to be pre-allocated by the VM when the array is created - that behavior is left to the underlying VM implementation. If the buffer must be a contiguous block of memory that can be directly read and/or written via C, consider using [`napi_create_external_arraybuffer`][].
+Esta API devuelve un valor de N-API que corresponde a un tipo de `Array` de JavaScript. La propiedad de longitud del `Array` se establece en el parámetro de longitud pasado. Sin embargo, la VM no garantiza que el buffer subyacente sea preasignado cuando se crea el arreglo; ese comportamiento se deja a la implementación de la VM subyacente. Si el buffer debe ser un bloque contiguo de memoria que pueda leer y/o escribir directamente desde C, considere utilizar [`napi_create_external_arraybuffer`][].
 
-JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
+Los arreglos de JavaScript se describen en la [Sección 22.1](https://tc39.github.io/ecma262/#sec-array-objects) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_arraybuffer
 
@@ -950,9 +950,9 @@ napi_status napi_create_arraybuffer(napi_env env,
                                     napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] length`: The length in bytes of the array buffer to create.
-- `[out] data`: Pointer to the underlying byte buffer of the `ArrayBuffer`.
+- `[in] env`: El entorno bajo el que se invoca la API.
+- `[in] length`: La longitud en bytes del buffer de arreglos a crear.
+- `[out] data`: Apuntador al buffer de bytes subyacente del `ArrayBuffer`.
 - `[out] result`: A `napi_value` representing a JavaScript `ArrayBuffer`.
 
 Returns `napi_ok` if the API succeeded.
