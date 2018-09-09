@@ -8,31 +8,31 @@ Istnieją dwa fundamentalne komponenty procesu Żądania zmian: jeden konkretny 
   * [Krok 2: Gałąź](#step-2-branch)
 * [Proces wprowadzania zmian](#the-process-of-making-changes) 
   * [Krok 3: Kod](#step-3-code)
-  * [Krok 4: Zatwierdzanie](#step-4-commit) 
-    * [Wytyczne wiadomości Zatwierdzania](#commit-message-guidelines)
+  * [Krok 4: Commit](#step-4-commit) 
+    * [Wytyczne wiadomości Commit'ów](#commit-message-guidelines)
   * [Krok 5: Rebase](#step-5-rebase)
   * [Krok 6: Test](#step-6-test) 
-    * [Test Coverage](#test-coverage)
-  * [Step 7: Push](#step-7-push)
-  * [Step 8: Opening the Pull Request](#step-8-opening-the-pull-request)
-  * [Step 9: Discuss and Update](#step-9-discuss-and-update) 
-    * [Approval and Request Changes Workflow](#approval-and-request-changes-workflow)
-  * [Step 10: Landing](#step-10-landing)
-* [Reviewing Pull Requests](#reviewing-pull-requests) 
-  * [Review a bit at a time](#review-a-bit-at-a-time)
-  * [Be aware of the person behind the code](#be-aware-of-the-person-behind-the-code)
-  * [Respect the minimum wait time for comments](#respect-the-minimum-wait-time-for-comments)
-  * [Abandoned or Stalled Pull Requests](#abandoned-or-stalled-pull-requests)
-  * [Approving a change](#approving-a-change)
-  * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
-  * [Performance is not everything](#performance-is-not-everything)
-  * [Continuous Integration Testing](#continuous-integration-testing)
-* [Additional Notes](#additional-notes) 
-  * [Commit Squashing](#commit-squashing)
-  * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
-  * [CI Testing](#ci-testing)
-  * [Waiting Until the Pull Request Gets Landed](#waiting-until-the-pull-request-gets-landed)
-  * [Check Out the Collaborator Guide](#check-out-the-collaborator-guide)
+    * [Zakres Testu](#test-coverage)
+  * [Krok 7: Popchnięcie zmian](#step-7-push)
+  * [Krok 8: Otwarcie Żądania zmiany](#step-8-opening-the-pull-request)
+  * [Krok 9: Dyskutuj i Aktualizuj](#step-9-discuss-and-update) 
+    * [Przepływ pracy Zatwierdzania i Propozycji](#approval-and-request-changes-workflow)
+  * [Krok 10: Lądowanie](#step-10-landing)
+* [Wysyłanie Żądań zmian](#reviewing-pull-requests) 
+  * [Nie sprawdzaj wszystkiego na raz](#review-a-bit-at-a-time)
+  * [Bądź świadomy kim jest autor kodu](#be-aware-of-the-person-behind-the-code)
+  * [Respektuj minimalny czas oczekiwania na komentarze](#respect-the-minimum-wait-time-for-comments)
+  * [Opuszczone lub Utknięte Żądania zmiany](#abandoned-or-stalled-pull-requests)
+  * [Zatwierdzanie zmiany](#approving-a-change)
+  * [Zaakceptuj różne opinie na temat tego, co powinno należeć do Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
+  * [Wydajność to nie wszystko](#performance-is-not-everything)
+  * [Testowanie w Continuous Integration](#continuous-integration-testing)
+* [Dodatkowe Notatki](#additional-notes) 
+  * [Zgniatanie Commit'ów](#commit-squashing)
+  * [Zdobywanie Zatwierdzeń dla twojego Żądania zmiany](#getting-approvals-for-your-pull-request)
+  * [Testowanie CI](#ci-testing)
+  * [Zaczekaj aż Żądanie zmiany zostanie Wylądowane](#waiting-until-the-pull-request-gets-landed)
+  * [Sprawdź Poradnik Kolaboracji](#check-out-the-collaborator-guide)
 
 ## Dependencies
 
@@ -437,6 +437,6 @@ Only a Collaborator can start a CI run. Usually one of them will do it for you a
 
 A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### Check Out the Collaborator Guide
+### Sprawdź Poradnik Kolaboracji
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
