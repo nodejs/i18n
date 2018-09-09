@@ -472,7 +472,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 // this returns '/home/myself/node/wwwroot/static_files/gif/image.gif'
 ```
 
-A [`TypeError`][] is thrown if any of the arguments is not a string.
+Un [`TypeError`][] es producido si cualquiera de los argumentos no es un string.
 
 ## path.sep
 
@@ -501,7 +501,7 @@ On Windows:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
+En Windows, tanto el slask inclinado hacie adelante (`/`) como el slash inclinado hacia atrás (``) son aceptados como separadores de segmentos de ruta; sin embargo, los métodos `path` solo agregan slashes inclinados hacia atrás (``).
 
 ## path.toNamespacedPath(path)
 
@@ -524,4 +524,4 @@ added: v0.11.15
 
 * {Object}
 
-The `path.win32` property provides access to Windows-specific implementations of the `path` methods.
+La propiedad `path.win32` provee acceso a implementaciones específicas para Windows de los métodos `path`.
