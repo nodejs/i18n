@@ -842,9 +842,9 @@ Para obtener más detalles sobre la configuración de propiedades en objetos, co
 
 Para obtener más detalles sobre la construcción de módulos de complemento en general, consulte la API existente.
 
-## Working with JavaScript Values
+## Trabajar con las Propiedades de JavaScript
 
-N-API exposes a set of APIs to create all types of JavaScript values. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API expone un conjunto de APIs para crear todos los tipos de valores de JavaScript. Some of these types are documented under [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
 Fundamentally, these APIs are used to do one of the following:
 
