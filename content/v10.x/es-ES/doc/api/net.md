@@ -287,7 +287,7 @@ added: v0.9.1
 
 * Devuelve: {net.Server}
 
-De forma contraria de `unref()`, llamar a `ref()` en un servidor donde ha sido llamado `unref` *no* va a dejar salir si es el único servidor que queda (el comportamiento predeterminado). If the server is `ref`ed calling `ref()` again will have no effect.
+De forma contraria de `unref()`, llamar a `ref()` en un servidor donde ha sido llamado `unref`, *no* va a dejar al programa salir si es el único servidor que queda (el comportamiento predeterminado). Si el servidor fue llamado `ref`, llamar a `ref()` otra vez no tendrá efecto.
 
 ### server.unref()
 
@@ -295,7 +295,7 @@ De forma contraria de `unref()`, llamar a `ref()` en un servidor donde ha sido l
 added: v0.9.1
 -->
 
-* Returns: {net.Server}
+* Devuelve: {net.Server}
 
 Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
 
