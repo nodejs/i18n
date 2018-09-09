@@ -475,7 +475,7 @@ Firmas posibles:
 * [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] para conexiones TCP.
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Esta función es asincrónica. Cuando la conexión es establecida, el evento [`'connect'`][] será emitido. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+Esta función es asincrónica. Cuando la conexión es establecida, el evento [`'connect'`][] será emitido. Si existe un problema al conectar, en vez de un evento [`'connect'`][], se emitirá un evento [`'error'`][], con el error pasado por el listener [`'error'`][]. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
 #### socket.connect(options[, connectListener])
 
