@@ -1,17 +1,17 @@
-# Pull Requests
+# Żądania zmiany
 
-There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
+Istnieją dwa fundamentalne komponenty procesu Żądania zmian: jeden konkretny i techniczny oraz drugi skupiony głównie wokół procesu. Konkretny i techniczny komponent zawiera specyficzne detale przygotowywania twojego lokalnego środowiska abyś mógł wprowadzać faktyczne zmiany. Od tego właśnie zaczniemy.
 
-* [Dependencies](#dependencies)
-* [Setting up your local environment](#setting-up-your-local-environment) 
-  * [Step 1: Fork](#step-1-fork)
-  * [Step 2: Branch](#step-2-branch)
-* [The Process of Making Changes](#the-process-of-making-changes) 
-  * [Step 3: Code](#step-3-code)
-  * [Step 4: Commit](#step-4-commit) 
-    * [Commit message guidelines](#commit-message-guidelines)
-  * [Step 5: Rebase](#step-5-rebase)
-  * [Step 6: Test](#step-6-test) 
+* [Zależności](#dependencies)
+* [Konfigurowanie lokalnego środowiska](#setting-up-your-local-environment) 
+  * [Krok 1: Rozwidlenie](#step-1-fork)
+  * [Krok 2: Gałąź](#step-2-branch)
+* [Proces wprowadzania zmian](#the-process-of-making-changes) 
+  * [Krok 3: Kod](#step-3-code)
+  * [Krok 4: Zatwierdzanie](#step-4-commit) 
+    * [Wytyczne wiadomości Zatwierdzania](#commit-message-guidelines)
+  * [Krok 5: Rebase](#step-5-rebase)
+  * [Krok 6: Test](#step-6-test) 
     * [Test Coverage](#test-coverage)
   * [Step 7: Push](#step-7-push)
   * [Step 8: Opening the Pull Request](#step-8-opening-the-pull-request)
