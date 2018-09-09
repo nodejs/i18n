@@ -320,7 +320,7 @@ added: v0.3.4
 Crea un nuevo objeto socket.
 
 * `opciones` {Object} Las opciones disponibles son: 
-  * `fd` {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
+  * `fd` {number} Si es especificado, se envuelve alrededor de un socket existente con el descriptor de archivos dado, de lo contrario un nuevo socket será creado.
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
   * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
   * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
