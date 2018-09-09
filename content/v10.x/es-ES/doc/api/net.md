@@ -497,14 +497,14 @@ changes:
 * `connectListener` {Function} Parámetro común de los métodos [`socket.connect()`][]. Será añadido una vez como un listener para el evento [`'connect'`][].
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Inicia una conexión en un socket dado. Normally this method is not needed, the socket should be created and opened with [`net.createConnection()`][]. Use this only when implementing a custom Socket.
+Inicia una conexión en un socket dado. Normalmente este método no es necesario, el socket debería ser creado y abierto con [`net.createConnection()`][]. Usa esto solo cuando se implemente un socket personalizado.
 
-For TCP connections, available `options` are:
+Para conexiones TCP, los `options` son:
 
-* `port` {number} Required. Port the socket should connect to.
-* `host` {string} Host the socket should connect to. **Default:** `'localhost'`.
-* `localAddress` {string} Local address the socket should connect from.
-* `localPort` {number} Local port the socket should connect from.
+* `port` {number} Requerido. El puerto al que el socket debería conectarse.
+* `host` {string} El holst al que el socket debería conectarse. **Predeterminado:** `'localhost'`.
+* `localAddress` {string} Las direcciones locales a las que el socket debería conectarse.
+* `localPort` {number} Puerto local al que el socket debería conectarse.
 * `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
 * `hints` {number} Optional [`dns.lookup()` hints][].
 * `lookup` {Function} Custom lookup function. **Predeterminado:** [`dns.lookup()`][].
