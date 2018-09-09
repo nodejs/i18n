@@ -475,7 +475,7 @@ Firmas posibles:
 * [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] para conexiones TCP.
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Esta función es asincrónica. Cuando la conexión es establecida, el evento [`'connect'`][] será emitido. Si existe un problema al conectar, en vez de un evento [`'connect'`][], se emitirá un evento [`'error'`][], con el error pasado por el listener [`'error'`][]. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+Esta función es asincrónica. Cuando la conexión es establecida, el evento [`'connect'`][] será emitido. Si existe un problema al conectar, en vez de un evento [`'connect'`][], se emitirá un evento [`'error'`][], con el error pasado por el listener [`'error'`][]. El último parámetro `connectListener`, si es suministrado, será añadido, **una sola vez**, con un listener para el evento [`'connect'`][].
 
 #### socket.connect(options[, connectListener])
 
@@ -494,10 +494,10 @@ changes:
 -->
 
 * `options` {Object}
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Will be added as a listener for the [`'connect'`][] event once.
-* Returns: {net.Socket} The socket itself.
+* `connectListener` {Function} Parámetro común de los métodos [`socket.connect()`][]. Será añadido una vez como un listener para el evento [`'connect'`][].
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Initiate a connection on a given socket. Normally this method is not needed, the socket should be created and opened with [`net.createConnection()`][]. Use this only when implementing a custom Socket.
+Inicia una conexión en un socket dado. Normally this method is not needed, the socket should be created and opened with [`net.createConnection()`][]. Use this only when implementing a custom Socket.
 
 For TCP connections, available `options` are:
 
