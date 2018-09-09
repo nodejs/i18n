@@ -570,9 +570,9 @@ added: v0.1.90
 
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Entrecierra el socket. p. ej., envía un paquete FIN. It is possible the server will still send some data.
+Entrecierra el socket. p. ej., envía un paquete FIN. Es posible que el servidor envíe algo de datos.
 
-If `data` is specified, it is equivalent to calling `socket.write(data, encoding)` followed by [`socket.end()`][].
+Si se especifica la `data`, es equivalente a llamar `socket.write(data, encoding)`seguido de [`socket.end()`][].
 
 ### socket.localAddress
 
@@ -580,7 +580,7 @@ If `data` is specified, it is equivalent to calling `socket.write(data, encoding
 added: v0.9.6
 -->
 
-The string representation of the local IP address the remote client is connecting on. For example, in a server listening on `'0.0.0.0'`, if a client connects on `'192.168.1.1'`, the value of `socket.localAddress` would be `'192.168.1.1'`.
+La representación en string de la dirección IP local a la que el cliente remoto se está conectando. Por ejemplo, en un servidor escuchando en `'0.0.0.0'`, si un cliente se conecta en `'192.168.1.1'`, el valor de `socket.localAddress` sería `'192.168.1.1'`.
 
 ### socket.localPort
 
@@ -588,13 +588,13 @@ The string representation of the local IP address the remote client is connectin
 added: v0.9.6
 -->
 
-The numeric representation of the local port. For example, `80` or `21`.
+La representación numérica del puerto local. Por ejemplo, `80` o `21`.
 
 ### socket.pause()
 
-* Returns: {net.Socket} The socket itself.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Pauses the reading of data. That is, [`'data'`][] events will not be emitted. Useful to throttle back an upload.
+Pausa los datos que se están leyendo. That is, [`'data'`][] events will not be emitted. Useful to throttle back an upload.
 
 ### socket.ref()
 
