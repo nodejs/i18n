@@ -505,8 +505,8 @@ Para conexiones TCP, los `options` son:
 * `host` {string} El holst al que el socket debería conectarse. **Predeterminado:** `'localhost'`.
 * `localAddress` {string} Las direcciones locales a las que el socket debería conectarse.
 * `localPort` {number} Puerto local al que el socket debería conectarse.
-* `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
-* `hints` {number} Optional [`dns.lookup()` hints][].
+* `family` {number}: Versión del IP stack, puede ser `4` o `6`. **Predeterminado:** `4`.
+* `hints` {number} [`dns.lookup()` hints][] Opcional.
 * `lookup` {Function} Custom lookup function. **Predeterminado:** [`dns.lookup()`][].
 
 For [IPC](#net_ipc_support) connections, available `options` are:
