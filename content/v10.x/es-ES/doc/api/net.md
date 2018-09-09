@@ -444,7 +444,7 @@ added: v0.3.8
 
 `net.Socket` tiene la propiedad que `socket.write()` siempre funciona. Esto es para ayudar a los usuarios para que se pongan en marcha rápidamente. La computadora no puede siempre seguir el paso con la cantidad de datos que están siendo escritos a un socket - la conexión de red puede ser que simplemente sea muy lenta. Node.js hará una cola internamente con los datos escritos a un socket y lo enviará sobre el cable cuando sea posible. (internamente está haciendo polling en el descriptor de archivos del socket por ser escibible).
 
-The consequence of this internal buffering is that memory may grow. This property shows the number of characters currently buffered to be written. (Number of characters is approximately equal to the number of bytes to be written, but the buffer may contain strings, and the strings are lazily encoded, so the exact number of bytes is not known.)
+La consecuencia de este búfer interno es que la memoria puede crecer. Esta propiedad muestra el número de caracteres que están siendo cargados para ser escritos. (El número de caracteres es aproximadamente igual al número de bytes por ser escritos, pero el búfer puede contener strings, y los strings son codificados perezosamente, entonces, el número exacto de bytes no es conocido.)
 
 Users who experience large or growing `bufferSize` should attempt to "throttle" the data flows in their program with [`socket.pause()`][] and [`socket.resume()`][].
 
