@@ -782,13 +782,13 @@ Tipo: End-of-Life
 
 Tipo: Documentation-only
 
-Importing assert directly is not recommended as the exposed functions will use loose equality checks. Use `require('assert').strict` instead. The API is the same as the legacy assert but it will always use strict equality checks.
+Importar directamente a assert no está recomendado ya que, las funciones expuestas usarán chequeos de calidad flojos. En cambio, use `require('assert').strict`. La API es la misma que la legacy assert pero siempre usará controles de calidad estrictos.
 
 <a id="DEP0090"></a>
 
-### DEP0090: Invalid GCM authentication tag lengths
+### DEP0090: Extensión de la etiqueta de autentificación GCM inválida
 
-Type: Runtime
+Tipo: Runtime
 
 Node.js soporta toda la extensión de las etiquetas de autentificación GCM que sean aceptatadas por OpenSSL al llamar a [`decipher.setAuthTag()`][]. Este comportamiento cambiará en una versión futura, en cuyo momento solo la extensión de las etiquetas de autentificación de 28, 120, 112, 104, 96, 64, y 32 bits serán permitidas. Las etiquetas de autentificación cuya extensión no se encuentre incluida en esta lista será considerada inválida en conformidad con [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
@@ -850,7 +850,7 @@ Usuarios de `MakeCallback` que agreguen la propiedad `domain` para llevar el con
 
 <a id="DEP0098"></a>
 
-### DEP0098: AsyncHooks Embedder AsyncResource.emitBefore and AsyncResource.emitAfter APIs
+### DEP0098: APIs AsyncHooks Embedder AsyncResource.emitBefore y AsyncResource.emitAfter
 
 Tipo: Runtime
 
@@ -896,15 +896,15 @@ Usar el argumento `noAssert` ya no tiene ninguna funcionalidad. Todo lo que entr
 
 ### DEP0103: process.binding('util').is[...] typechecks
 
-Type: Documentation-only (supports [`--pending-deprecation`][])
+Type: Documentation-only (soporta [`--pending-deprecation`][])
 
-Using `process.binding()` in general should be avoided. The type checking methods in particular can be replaced by using [`util.types`][].
+El uso de `process.binding()` en general debería ser evitado. The type checking methods in particular can be replaced by using [`util.types`][].
 
 <a id="DEP0104"></a>
 
-### DEP0104: process.env string coercion
+### DEP0104: process.env coerción de string
 
-Type: Documentation-only (supports [`--pending-deprecation`][])
+Tipo: Documentation-only (soporta[`--pending-deprecation`][])
 
 Cuando se asigna una propiedad sin string a [`process.env`][], el valor asignado es implícitamente convertido a una string. Este comportamiento es desaprobado si el valor asignado no es una string, un booleano, o un número. En el futuro, dicha asignación puede resultar en un error. Por favor convierta la propiedad a una string antes de asignarla a `process.env`.
 
