@@ -278,7 +278,7 @@ added: v0.1.16
 
 El método `path.join()` junta a todos los segmentos `path` dados usando el separador específico de plataforma como delimitador, luego normaliza la ruta resultante.
 
-Los segmentos `path` sin extensión son ignorados. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
+Los segmentos `path` sin extensión son ignorados. Si el string de ruta unido es un string sin extensión entonces `'.'` va a ser retornado, representando al directorio de trabajo actual.
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
@@ -288,7 +288,7 @@ path.join('foo', {}, 'bar');
 // throws 'TypeError: Path must be a string. Received {}'
 ```
 
-A [`TypeError`][] is thrown if any of the path segments is not a string.
+Un [`TypeError`][] va a ser producido si cualquiera de los segmentos de ruta no es un string.
 
 ## path.normalize(path)
 
@@ -297,9 +297,9 @@ added: v0.1.23
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retorna: {string}
 
-The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
+El método `path.normalize()` normaliza el `path` dado, resolviendo los segmentos `'..'` y `'.'`.
 
 When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
@@ -391,7 +391,7 @@ path.parse('C:\\path\\dir\\file.txt');
 (todos los espacios en la línea "" deberían ser ignorados — ellos están solamente para el formato)
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.posix
 
