@@ -259,7 +259,7 @@ Si es omitido `port` o es 0, el sistema operativo va a asignar un puerto sin usa
 
 Si el `host` es omitido, cuando esté disponible IPv6, el servidor aceptará conexiones en la [dirección IPv6 sin especificar](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`), o de otra manera la [dirección IPv4 sin especificar](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
 
-In most operating systems, listening to the [unspecified IPv6 address](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) may cause the `net.Server` to also listen on the [unspecified IPv4 address](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
+En la mayoría de los sistemas operativos, escuchar a la [dirección IPv6 sin especificar](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) puede causar que el `net.Server` tambien escuche en la [dirección IPv4 sin especificar](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`).
 
 ### server.listening
 
@@ -267,7 +267,7 @@ In most operating systems, listening to the [unspecified IPv6 address](https://e
 added: v5.7.0
 -->
 
-* {boolean} Indicates whether or not the server is listening for connections.
+* {boolean} Indica si el servidor está o no está escuchando por conexiones.
 
 ### server.maxConnections
 
