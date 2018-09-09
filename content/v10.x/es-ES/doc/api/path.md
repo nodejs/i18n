@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Nota:* En Windows Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* En Windows Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. Por ejemplo `path.resolve('c:\\')` puede potencialmente ocasionar un resultado diferente que `path.resolve('c:')`. Para más información, vea [esta página MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
@@ -62,10 +62,10 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} An optional file extension
-* Returns: {string}
+* `ext` {string} Una extensión de archivo opcional
+* Retorna: {string}
 
-The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
+Los métodos `path.basename()` retornan la última porción de un `path`, similar al comando Unix `basename`. Los separadores de directorios de seguimiento son ignorados, por favor vea [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -75,7 +75,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 // Returns: 'quux'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
+Se produce un [`TypeError`][] si `path` no es un string o si `ext` es dado y no es un string.
 
 ## path.delimiter
 
@@ -85,12 +85,12 @@ added: v0.9.3
 
 * {string}
 
-Provides the platform-specific path delimiter:
+Provee el delimitador de ruta específico de la plataforma:
 
-* `;` for Windows
-* `:` for POSIX
+* `;` para Windows
+* `:` para POSIX
 
-For example, on POSIX:
+Por ejemplo, en POSIX:
 
 ```js
 console.log(process.env.PATH);
@@ -100,7 +100,7 @@ process.env.PATH.split(path.delimiter);
 // Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
-On Windows:
+En Windows:
 
 ```js
 console.log(process.env.PATH);
