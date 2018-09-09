@@ -682,15 +682,15 @@ Esta función no es completamente equivalente a `querystring.parse()`. Una difer
 
 Tipo: Runtime
 
-`Module._debug()` has been deprecated.
+`Module._debug()` ha sido desaprobado.
 
-The `Module._debug()` function was never documented as an officially supported API.
+La función `Module._debug()` nunca fue documentada como una API oficialmente soportada.
 
 <a id="DEP0078"></a>
 
 ### DEP0078: REPLServer.turnOffEditorMode()
 
-Type: Runtime
+Tipo: Runtime
 
 `REPLServer.turnOffEditorMode()` was removed from userland visibility.
 
