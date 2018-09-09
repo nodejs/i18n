@@ -692,23 +692,23 @@ La función `Module._debug()` nunca fue documentada como una API oficialmente so
 
 Tipo: Runtime
 
-`REPLServer.turnOffEditorMode()` was removed from userland visibility.
+`REPLServer.turnOffEditorMode()` fue removido de la visibilidad del espacio de usuario.
 
 <a id="DEP0079"></a>
 
-### DEP0079: Custom inspection function on Objects via .inspect()
+### DEP0079: Función personalizada de inspección en Objects via .inspect()
 
-Type: Runtime
+Tipo: Runtime
 
-Using a property named `inspect` on an object to specify a custom inspection function for [`util.inspect()`][] is deprecated. Use [`util.inspect.custom`][] instead. For backward compatibility with Node.js prior to version 6.4.0, both may be specified.
+Usar una propiedad llamada `inspect` en un objecto para especificar una función de inspección personalizada para [`util.inspect()`][] está desaprobado. En cambio, use [`util.inspect.custom`][]. Para retrocompatibilidad con versiones de Node.js previas a la 6.4.0, ambos pueden ser especificados.
 
 <a id="DEP0080"></a>
 
 ### DEP0080: path.\_makeLong()
 
-Type: Documentation-only
+Tipo: Documentation-only
 
-The internal `path._makeLong()` was not intended for public use. However, userland modules have found it useful. The internal API has been deprecated and replaced with an identical, public `path.toNamespacedPath()` method.
+El internal `path._makeLong()` no estaba destinado para uso público. Sin embargo, módulos del espacio de usuario lo han encontrado útil. The internal API has been deprecated and replaced with an identical, public `path.toNamespacedPath()` method.
 
 <a id="DEP0081"></a>
 
