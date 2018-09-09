@@ -658,7 +658,7 @@ added: v0.1.92
 
 Habilita/deshabilita la funcionalidad de mantener vivo y establecer opcionalmente el retraso antes de que la primera sonda keepalive sea enviada a un socket inactivo.
 
-Establece `initialDelay` (en milisegundos) para establecer el retraso entre los últimos paquetes de datos recibidos y la primera sonda keepalive. Setting `0` for `initialDelay` will leave the value unchanged from the default (or previous) setting.
+Establece `initialDelay` (en milisegundos) para establecer el retraso entre los últimos paquetes de datos recibidos y la primera sonda keepalive. Configurar a `0` para el `initialDelay` dejará sin cambiar el valor de la configuración predeterminada (o la previa).
 
 ### socket.setNoDelay([noDelay])
 
@@ -666,10 +666,10 @@ Establece `initialDelay` (en milisegundos) para establecer el retraso entre los 
 added: v0.1.90
 -->
 
-* `noDelay` {boolean} **Default:** `true`
-* Returns: {net.Socket} The socket itself.
+* `noDelay` {boolean} **Predeterminado:** `true`
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Disables the Nagle algorithm. By default TCP connections use the Nagle algorithm, they buffer data before sending it off. Setting `true` for `noDelay` will immediately fire off data each time `socket.write()` is called.
+Desactiva el algoritmo Nagle. By default TCP connections use the Nagle algorithm, they buffer data before sending it off. Setting `true` for `noDelay` will immediately fire off data each time `socket.write()` is called.
 
 ### socket.setTimeout(timeout[, callback])
 
