@@ -9,7 +9,7 @@ Istnieją dwa fundamentalne komponenty procesu Żądania zmian: jeden konkretny 
 * [Proces wprowadzania zmian](#the-process-of-making-changes) 
   * [Krok 3: Kod](#step-3-code)
   * [Krok 4: Commit](#step-4-commit) 
-    * [Wytyczne wiadomości Commit'ów](#commit-message-guidelines)
+    * [Wytyczne wiadomości Commitów](#commit-message-guidelines)
   * [Krok 5: Rebase](#step-5-rebase)
   * [Krok 6: Test](#step-6-test) 
     * [Zakres Testu](#test-coverage)
@@ -101,51 +101,44 @@ $ git add moje/zmienione/pliki
 $ git commit
 ```
 
-Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
+Pamiętaj, że wiele commitów często zostaje zgniecionych kiedy lądują (zobacz notatki o [zgniataniu commitów](#commit-squashing)).
 
-#### Commit message guidelines
+#### Wytyczne wiadomości Commitów
 
-A good commit message should describe what changed and why.
+Dobra wiadomość commitu powinna opisać co się zmieniło i dlaczego.
 
-1. The first line should:
+1. Pierwsza linijka powinna:
   
-  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
-  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+  * zawierać krótki opis zmian (idealnie 50 znaków lub mniej i nie więcej niż 72 znaków)
+  * być w całości pisane małymi literami oprócz odpowiednych rzeczowników, akronymów i słów które odnoszą się bezpośrednio do kodu, jak nazwy funkcji/zmiennych
+  * posiadać prefiks z nazwą zmienionego subsystemu i zaczynać się czasownikiem w trybie rozkazującym. Zobacz dane wyjściowe `git log --oneline pliki/ktore/zmieniles` by dowiedzieć się na jakie subsystemy wpływają twoje zmiany.
     
-    Examples:
+    Przykłady:
   
   * `net: add localAddress and localPort to Socket`
   
   * `src: fix typos in async_wrap.h`
 
-2. Keep the second line blank.
+2. Pozostaw drugą linijkę pustą.
 
-3. Wrap all other lines at 72 columns (except for long URLs).
+3. Zamknij wszystkie inne linie w 72 kolumnach (oprócz długich URLów).
 
-4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
+4. Jeśli twoja zmiana naprawia jeden z otwartych problemów, możesz o tym wspomnieć na końcu wiadomości. Użyj prefiksu `Fixes:` i pełnego URL problemu. Dla innych referencji użyj `Refs:`.
   
-  Examples:
+  Przykłady:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
   * `Refs: https://github.com/nodejs/node/pull/3615`
 
-5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
+5. Jeśli twój commit wprowadza bardzo dużą zmianę (`semver-major`), powinien on zawierać opis powodu bardzo dużej zmiany, które sytuacje wywołałyby dużą zmianę i co dokładnie się zmieniło.
 
-Sample complete commit message:
+Wzorzec pełnej wiadomości commitu:
 
 ```txt
-subsystem: explain the commit in one line
+subsystem: wyjaśnij commit w jednej linijce.
 
-Body of commit message is a few lines of text, explaining things
-in more detail, possibly giving some background about the issue
-being fixed, etc.
-
-The body of the commit message can be several paragraphs, and
-please do proper word-wrap and keep columns shorter than about
-72 characters or so. That way, `git log` will show things
-nicely even when it is indented.
+Zawartość wiadomości commitu może być kilkoma paragrafami, upewnij się proszę że kolumnty są krótsze niż około 72 znaków. W ten sposób, `git log` pokaże wiadomość w odpowiedni sposób z wcięciami akapitów.
 
 Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
