@@ -656,9 +656,9 @@ added: v0.1.92
 * `initialDelay` {number} **Predeterminado:** `0`
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Enable/disable keep-alive functionality, and optionally set the initial delay before the first keepalive probe is sent on an idle socket.
+Habilita/deshabilita la funcionalidad de mantener vivo y establecer opcionalmente el retraso antes de que la primera sonda keepalive sea enviada a un socket inactivo.
 
-Set `initialDelay` (in milliseconds) to set the delay between the last data packet received and the first keepalive probe. Setting `0` for `initialDelay` will leave the value unchanged from the default (or previous) setting.
+Establece `initialDelay` (en milisegundos) para establecer el retraso entre los últimos paquetes de datos recibidos y la primera sonda keepalive. Setting `0` for `initialDelay` will leave the value unchanged from the default (or previous) setting.
 
 ### socket.setNoDelay([noDelay])
 
