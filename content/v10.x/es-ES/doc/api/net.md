@@ -275,9 +275,9 @@ added: v5.7.0
 added: v0.2.0
 -->
 
-Set this property to reject connections when the server's connection count gets high.
+Establece esta propiedad para rechazar conexiones cuando la cuenta de la conexión del servidor se vuelva alta.
 
-It is not recommended to use this option once a socket has been sent to a child with [`child_process.fork()`][].
+No es recomendado usar esta opción una vez un socket ha sido enviado a un proceso secundario con [`child_process.fork()`][].
 
 ### server.ref()
 
@@ -285,7 +285,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Returns: {net.Server}
+* Devuelve: {net.Server}
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
 
