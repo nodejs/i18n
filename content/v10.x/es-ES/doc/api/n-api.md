@@ -951,13 +951,13 @@ napi_status napi_create_arraybuffer(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que se invoca la API.
-- `[in] length`: La longitud en bytes del buffer de arreglos a crear.
-- `[out] data`: Apuntador al buffer de bytes subyacente del `ArrayBuffer`.
-- `[out] result`: A `napi_value` representing a JavaScript `ArrayBuffer`.
+- `[in] length`: La longitud en bytes del array buffer a crear.
+- `[out] data`: Apuntador al bytes buffer subyacente del `ArrayBuffer`.
+- `[out] result`: El `napi_value` que representa un `ArrayBuffer` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns an N-API value corresponding to a JavaScript `ArrayBuffer`. `ArrayBuffer`s are used to represent fixed-length binary data buffers. They are normally used as a backing-buffer for `TypedArray` objects. The `ArrayBuffer` allocated will have an underlying byte buffer whose size is determined by the `length` parameter that's passed in. The underlying buffer is optionally returned back to the caller in case the caller wants to directly manipulate the buffer. This buffer can only be written to directly from native code. To write to this buffer from JavaScript, a typed array or `DataView` object would need to be created.
+Esta API devuelve un valor de N-API correspondiente a un `ArrayBuffer` de JavaScript. Los `ArrayBuffer`s son utilizados para representar buffers de datos binarios de longitud fija. Normalmente se utilizan como un buffer de respaldo para objetos `TypedArray`. El `ArrayBuffer` asignado tendrá un byte buffer subyacente cuyo tamaño es determinado por el parámetro `length` que es pasado. The underlying buffer is optionally returned back to the caller in case the caller wants to directly manipulate the buffer. This buffer can only be written to directly from native code. To write to this buffer from JavaScript, a typed array or `DataView` object would need to be created.
 
 JavaScript `ArrayBuffer` objects are described in [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) of the ECMAScript Language Specification.
 
@@ -1054,11 +1054,11 @@ napi_create_external_arraybuffer(napi_env env,
 - `[in] byte_length`: The length in bytes of the underlying buffer.
 - `[in] finalize_cb`: Optional callback to call when the `ArrayBuffer` is being collected.
 - `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
-- `[out] result`: A `napi_value` representing a JavaScript `ArrayBuffer`.
+- `[out] result`: El `napi_value` que representa un `ArrayBuffer` de JavaScript.
 
 Returns `napi_ok` if the API succeeded.
 
-This API returns an N-API value corresponding to a JavaScript `ArrayBuffer`. The underlying byte buffer of the `ArrayBuffer` is externally allocated and managed. The caller must ensure that the byte buffer remains valid until the finalize callback is called.
+Esta API devuelve un valor de N-API correspondiente a un `ArrayBuffer` de JavaScript. The underlying byte buffer of the `ArrayBuffer` is externally allocated and managed. The caller must ensure that the byte buffer remains valid until the finalize callback is called.
 
 JavaScript `ArrayBuffer`s are described in [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) of the ECMAScript Language Specification.
 
