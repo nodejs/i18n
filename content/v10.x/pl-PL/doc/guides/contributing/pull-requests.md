@@ -34,34 +34,34 @@ Istnieją dwa fundamentalne komponenty procesu Żądania zmian: jeden konkretny 
   * [Zaczekaj aż Żądanie zmiany zostanie Wylądowane](#waiting-until-the-pull-request-gets-landed)
   * [Sprawdź Poradnik Kolaboracji](#check-out-the-collaborator-guide)
 
-## Dependencies
+## Zależności
 
-Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
+Node.js zawiera 'w pakiecie' kilka zależności w folderach *deps/* i *tools/*, które nie są częścią projektu. Zmiany do plików w tych folderach powinny być wysłane do odpowiadających im projektów. Nie wysyłaj tych zmian do Node.js. Nie możemy zaakceptować takich zmian.
 
-In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
+W razie niepewności, otwórz problem w [liście problemów](https://github.com/nodejs/node/issues/) lub skontaktuj się z jednym z [kolaboratorów projektu](https://github.com/nodejs/node/#current-project-team-members). Node.js operuje na dwóch kanałach IRC: [#Node.js](https://webchat.freenode.net/?channels=node.js) dla pomocy ogólnej i pytań, a także [#Node-dev](https://webchat.freenode.net/?channels=node-dev) dla rozbudowy rdzenia Node.js.
 
-## Setting up your local environment
+## Konfigurowanie lokalnego środowiska
 
-To get started, you will need to have `git` installed locally. Depending on your operating system, there are also a number of other dependencies required. These are detailed in the [Building guide](../../../BUILDING.md).
+Aby zacząć, musisz posiadać zainstalowany lokalnie `git`. W zależności od twojego systemu operacyjnego, możesz też potrzebować kilku zależności. Są one opisane w [Poradniku Konfiguracji](../../../BUILDING.md).
 
-Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
+Gdy już zainstalujesz `git` i masz pewność, że wypełniłeś wymagania co do zależności, czas na stworzenie rozwidlenia.
 
-### Step 1: Fork
+### Krok 1: Rozwidlenie
 
-Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
+Stwórz rozwidlenie projektu [na GitHub](https://github.com/nodejs/node) i zklonuj twoje rozwidlenie lokalnie.
 
 ```text
-$ git clone git@github.com:username/node.git
-$ cd node
-$ git remote add upstream https://github.com/nodejs/node.git
+$ git clone git@github.com:username/node.git 
+$ cd node 
+$ git remote add upstream https://github.com/nodejs/node.git 
 $ git fetch upstream
 ```
 
-It is recommended to configure `git` so that it knows who you are:
+Polecanym jest także skonfigurować `git` tak, by wiedział kim jesteś:
 
 ```text
-$ git config user.name "J. Random User"
-$ git config user.email "j.random.user@example.com"
+$ git config user.name "J. Losowy Użytkownik"
+$ git config user.email "j.losowy.uzytkownik@przyklad.com"
 ```
 
 Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
