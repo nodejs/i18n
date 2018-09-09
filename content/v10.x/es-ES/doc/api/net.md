@@ -521,7 +521,7 @@ Para las conexiones [IPC](#net_ipc_support), los `options` disponibles son:
 
 Inicia una conexión [IPC](#net_ipc_support) en el socket dado.
 
-Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)`] called with `{ path: path }` as `options`.
+Alias a [`socket.connect(options[, connectListener])`][`socket.connect(options)`] llamado con `{ path: path }` como un `options`.
 
 #### socket.connect(port\[, host\]\[, connectListener\])
 
@@ -529,14 +529,14 @@ Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)
 added: v0.1.90
 -->
 
-* `port` {number} Port the client should connect to.
-* `host` {string} Host the client should connect to.
-* `connectListener` {Function} Common parameter of [`socket.connect()`][] methods. Will be added as a listener for the [`'connect'`][] event once.
-* Returns: {net.Socket} The socket itself.
+* `port` {number} Puerto al que el cliente debe conectarse.
+* `host` {string} Host al que el cliente debe conectarse.
+* `connectListener` {Function} Parámetro común de los métodos [`socket.connect()`][]. Será añadido una vez como un listener para el evento [`'connect'`][].
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Initiate a TCP connection on the given socket.
+Inicia una conexión TCP en el socket dado.
 
-Alias to [`socket.connect(options[, connectListener])`][`socket.connect(options)`] called with `{port: port, host: host}` as `options`.
+Alias a [`socket.connect(options[, connectListener])`][`socket.connect(options)`] llamado con `{port: port, host: host}` como un `options`.
 
 ### socket.connecting
 
