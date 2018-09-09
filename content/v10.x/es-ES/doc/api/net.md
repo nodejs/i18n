@@ -307,9 +307,9 @@ added: v0.3.4
 
 Esta clase es una abstracción de un socket TCP, o un terminal [IPC](#net_ipc_support) de transmición (usa pipes que ya tienen nombre en Windows, o sockets de dominio UNIX). Un `net.Socket` también es una [transmisión dúplex](stream.html#stream_class_stream_duplex), puede ser tanto como legible como escribible, también es un [`EventEmitter`][].
 
-Un `net.Socket` puede ser creada por el usuario y ser usada directamente para interactuar con un servidor. For example, it is returned by [`net.createConnection()`][], so the user can use it to talk to the server.
+Un `net.Socket` puede ser creado por el usuario y ser usado directamente para interactuar con un servidor. Por ejemplo, es devuelto por [`net.createConnection()`][], para que el usuario pueda usarlo para hablar con el servidor.
 
-It can also be created by Node.js and passed to the user when a connection is received. For example, it is passed to the listeners of a [`'connection'`][] event emitted on a [`net.Server`][], so the user can use it to interact with the client.
+También puede ser creado por Node.js y pasado al usuario cuando una conexión es recibida. For example, it is passed to the listeners of a [`'connection'`][] event emitted on a [`net.Server`][], so the user can use it to interact with the client.
 
 ### new net.Socket([options])
 
