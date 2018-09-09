@@ -1,13 +1,13 @@
 # Problemy
 
-* [Jak kontrybutować przez Problemy](#how-to-contribute-in-issues)
+* [Jak kontrybuować przez Problemy](#how-to-contribute-in-issues)
 * [Pytanie o Ogólną Pomoc](#asking-for-general-help)
 * [Dyskusje na tematy nietechniczne](#discussing-non-technical-topics)
 * [Zgłaszanie Raportu o Błędzie](#submitting-a-bug-report)
 * [Ocenianie Raportu o Błędzie](#triaging-a-bug-report)
 * [Rozwiązywanie Raportu o Błędzie](#resolving-a-bug-report)
 
-## Jak kontrybutować przez Problemy
+## Jak kontrybuować przez Problemy
 
 Dla każdego Problemu można wyróżnić trzy fundamentalne sposoby kontrybucji:
 
