@@ -763,7 +763,7 @@ La siguiente diferencia es la firma para el método `Init`. Para un módulo de N
 napi_value Init(napi_env env, napi_value exports);
 ```
 
-El valor devuelto de `Init` es tratado como el objeto `exports` para el módulo. El método `Init` se pasa un objeto vacío a través del parámetro `exports` como una conveniencia. Si `Init` devuelve NULL, el parámetro pasado como `exports` es exportado por el módulo. Los módulos N-API no pueden modificar el objeto `module` pero pueden especificar cualquiera como la propiedad `exports` del módulo.
+El valor devuelto de `Init` es tratado como el objeto `exports` para el módulo. Al método `Init` se le pasa un objeto vacío, a través del parámetro `exports` como una conveniencia. Si `Init` devuelve NULL, el parámetro pasado como `exports` es exportado por el módulo. Los módulos N-API no pueden modificar el objeto `module`, pero pueden especificar cualquiera como la propiedad `exports` del módulo.
 
 Para agregar el método `hello` como una función para que pueda ser llamada como un método proporcionado por el complemento:
 
@@ -793,7 +793,7 @@ napi_value Init(napi_env env, napi_value exports) {
 Para definir una clase para que nuevas instancias puedan ser creadas (a menudo utilizadas con [Objeto Envuelto](#n_api_object_wrap)):
 
 ```C
-// NOTA: ejemplo parcial, no todo el código referenciadp está incluido 
+// NOTA: ejemplo parcial, no todo el código referenciado está incluido 
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
@@ -838,7 +838,7 @@ Esta macro incluye a `NAPI_MODULE`, y declara una función `Init` con un nombre 
 
 Las variables `env` y `exports` estarán disponibles dentro del cuerpo de la función, siguiendo la invocación macro.
 
-Para obtener más detalles sobre la configuración de propiedades en objetos, consulte la sección sobre [Trabajando con las Propiedades de JavaScript](#n_api_working_with_javascript_properties).
+Para obtener más detalles sobre la configuración de propiedades en objetos, consulte la sección sobre [Trabajar con las Propiedades de JavaScript](#n_api_working_with_javascript_properties).
 
 Para obtener más detalles sobre la construcción de módulos de complemento en general, consulte la API existente.
 
