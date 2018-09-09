@@ -309,7 +309,7 @@ Esta clase es una abstracción de un socket TCP, o un terminal [IPC](#net_ipc_su
 
 Un `net.Socket` puede ser creado por el usuario y ser usado directamente para interactuar con un servidor. Por ejemplo, es devuelto por [`net.createConnection()`][], para que el usuario pueda usarlo para hablar con el servidor.
 
-También puede ser creado por Node.js y pasado al usuario cuando una conexión es recibida. For example, it is passed to the listeners of a [`'connection'`][] event emitted on a [`net.Server`][], so the user can use it to interact with the client.
+También puede ser creado por Node.js y pasado al usuario cuando una conexión es recibida. Por ejemplo, es pasado a los listeners de un evento [`'connection'`][], emitido en un [`net.Server`][], para que el usuario pueda usarlo para interactuar con el cliente.
 
 ### new net.Socket([options])
 
@@ -317,9 +317,9 @@ También puede ser creado por Node.js y pasado al usuario cuando una conexión e
 added: v0.3.4
 -->
 
-Creates a new socket object.
+Crea un nuevo objeto socket.
 
-* `options` {Object} Available options are: 
+* `opciones` {Object} Las opciones disponibles son: 
   * `fd` {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
   * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
