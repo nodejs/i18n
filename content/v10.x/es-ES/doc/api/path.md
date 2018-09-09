@@ -366,10 +366,10 @@ path.parse('/home/user/dir/file.txt');
 │ root │              │ name │ ext │
 "  /    home/user/dir / file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(todos los espacios en la línea "" deberían ser ignorados — ellos están solamente para el formato)
 ```
 
-On Windows:
+En Windows:
 
 ```js
 path.parse('C:\\path\\dir\\file.txt');
