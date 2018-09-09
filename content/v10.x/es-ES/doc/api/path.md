@@ -244,7 +244,7 @@ The `path.isAbsolute()` method determines if `path` is an absolute path.
 
 If the given `path` is a zero-length string, `false` will be returned.
 
-For example on POSIX:
+Por ejemplo en POSIX:
 
 ```js
 path.isAbsolute('/foo/bar'); // true
@@ -253,7 +253,7 @@ path.isAbsolute('qux/');     // false
 path.isAbsolute('.');        // false
 ```
 
-On Windows:
+En Windows:
 
 ```js
 path.isAbsolute('//server');    // true
@@ -423,14 +423,14 @@ The `path.relative()` method returns the relative path from `from` to `to` based
 
 If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
 
-For example on POSIX:
+Por ejemplo en POSIX:
 
 ```js
 path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
 // Returns: '../../impl/bbb'
 ```
 
-On Windows:
+En Windows:
 
 ```js
 path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
