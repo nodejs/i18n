@@ -544,7 +544,7 @@ Alias a [`socket.connect(options[, connectListener])`][`socket.connect(options)`
 added: v6.1.0
 -->
 
-Si es `true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] fue llamado pero no ha finalizado aún. Will be set to `false` before emitting `'connect'` event and/or calling [`socket.connect(options[, connectListener])`][`socket.connect(options)`]'s callback.
+Si es `true` - [`socket.connect(options[, connectListener])`][`socket.connect(options)`] fue llamado pero no ha finalizado aún. Será establecido como `false` antes de un evento `'connect'`, y/o llamando el callback de [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
 
 ### socket.destroy([exception])
 
@@ -552,7 +552,7 @@ Si es `true` - [`socket.connect(options[, connectListener])`][`socket.connect(op
 added: v0.1.90
 -->
 
-* Returns: {net.Socket}
+* Devuelve: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
