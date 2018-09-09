@@ -182,14 +182,14 @@ added: v0.11.15
   * `ext` {string}
 * Returns: {string}
 
-El método `path.format()` retorna un string de ruta de un objeto. This is the opposite of [`path.parse()`][].
+El método `path.format()` retorna un string de ruta de un objeto. Este es el opuesto de [`path.parse()`][].
 
-When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
+Cuando se provee propiedades al `pathObject` recuerde que hay combinaciones donde una propiedad tiene prioridad sobre otra:
 
-* `pathObject.root` is ignored if `pathObject.dir` is provided
-* `pathObject.ext` and `pathObject.name` are ignored if `pathObject.base` exists
+* `pathObject.root` es ignorado si `pathObject.dir` es provisto
+* `pathObject.ext` y `pathObject.name` son ignorados si `pathObject.base` existe
 
-For example, on POSIX:
+Por ejemplo, en POSIX:
 
 ```js
 // If `dir`, `root` and `base` are provided,
@@ -221,7 +221,7 @@ path.format({
 // Returns: '/file.txt'
 ```
 
-On Windows:
+En Windows:
 
 ```js
 path.format({
@@ -265,7 +265,7 @@ path.isAbsolute('bar/baz');     // false
 path.isAbsolute('.');           // false
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.join([...paths])
 
@@ -273,12 +273,12 @@ A [`TypeError`][] is thrown if `path` is not a string.
 added: v0.1.16
 -->
 
-* `...paths` {string} A sequence of path segments
-* Returns: {string}
+* `...paths` {string} Una secuencia de segmentos de ruta
+* Retorna: {string}
 
-The `path.join()` method joins all given `path` segments together using the platform specific separator as a delimiter, then normalizes the resulting path.
+El método `path.join()` junta a todos los segmentos `path` dados usando el separador específico de plataforma como delimitador, luego normaliza la ruta resultante.
 
-Zero-length `path` segments are ignored. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
+Los segmentos `path` sin extensión son ignorados. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
@@ -388,7 +388,7 @@ path.parse('C:\\path\\dir\\file.txt');
 │ root │              │ name │ ext │
 " C:\      path\dir   \ file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(todos los espacios en la línea "" deberían ser ignorados — ellos están solamente para el formato)
 ```
 
 A [`TypeError`][] is thrown if `path` is not a string.
