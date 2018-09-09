@@ -554,7 +554,7 @@ added: v0.1.90
 
 * Devuelve: {net.Socket}
 
-Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
+Asegura que ninguna actividad I/O ocurra en este socket. Solo es necesario en caso de errores (como error de análisis u otros).
 
 If `exception` is specified, an [`'error'`][] event will be emitted and any listeners for that event will receive `exception` as an argument.
 
