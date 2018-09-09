@@ -594,7 +594,7 @@ La representación numérica del puerto local. Por ejemplo, `80` o `21`.
 
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Pausa los datos que se están leyendo. That is, [`'data'`][] events will not be emitted. Useful to throttle back an upload.
+Pausa los datos que se están leyendo. Es decir, los eventos [`'data'`][] no serán emitidos. Útil para acelerar una subida.
 
 ### socket.ref()
 
@@ -602,7 +602,7 @@ Pausa los datos que se están leyendo. That is, [`'data'`][] events will not be 
 added: v0.9.1
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed socket will *not* let the program exit if it's the only socket left (the default behavior). If the socket is `ref`ed calling `ref` again will have no effect.
 
