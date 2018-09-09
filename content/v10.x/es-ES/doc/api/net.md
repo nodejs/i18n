@@ -323,22 +323,22 @@ Crea un nuevo objeto socket.
   * `fd` {number} Si es especificado, se envuelve alrededor de un socket existente con el descriptor de archivos dado, de lo contrario un nuevo socket será creado.
   * `allowHalfOpen` {boolean} Indica si se permiten conexiones TCP entreabiertas. Vea [`net.createServer()`][] y el evento [`'end'`][], para detalles. **Predeterminado:** `false`.
   * `readable` {boolean} Permite la lectura en el socket cuando se pasa `fd`, de otra manera es ignorado. **Predeterminado:** `false`.
-  * `writable` {boolean} Permite la escritura en el socket cuando se pasa `fd`, de otra manera es ignorado. **Default:** `false`.
-* Returns: {net.Socket}
+  * `writable` {boolean} Permite la escritura en el socket cuando se pasa `fd`, de otra manera es ignorado. **Predeterminado:** `false`.
+* Devuelve: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.90
 -->
 
-* `hadError` {boolean} `true` if the socket had a transmission error.
+* `hadError` {boolean} `true` si el socket tiene un error de transmisión.
 
-Emitted once the socket is fully closed. The argument `hadError` is a boolean which says if the socket was closed due to a transmission error.
+Emitido una vez que el socket esté completamente cerrado. El argumento `hadError` es un booleano que dice si el socket fue cerrado debido a un error de transmisión.
 
-### Event: 'connect'
+### Evento: 'connect'
 
 <!-- YAML
 added: v0.1.90
