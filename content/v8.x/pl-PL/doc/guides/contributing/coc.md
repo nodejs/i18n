@@ -4,7 +4,7 @@
 
 Jako kontrybutor Node.js, to jak postanowisz się zachowywać zarówno z innymi kontrybutorami, ale i także całą społecznością, odbije się nie tylko na tobie ale także na całym projekcie. Kodeks Postępowania został zaprojektowany i zamierzony, ponad wszystkim innym, w celu ustanowienia kultury wewnątrz projektu, która pozwoli każdemu i wszystkim, którzy chcą wnieść coś do projektu, czuć się bezpiecznie podczas pracy.
 
-W razie jakiekogolwiek indywidualnego aktu, który w jakikolwiek sposób postrzegany jest jako złamanie [Kodeksu Postępowania](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), zostaną podjęte akcje poprawcze. Jest to możliwe jednak, dla każdej osoby, by *zachowywać* się w sposób, która nie łamie bezpośrednio zasad Kodu Postępowania, jednakże wciąż podąża kompletnie przeciw celowi, który Kodeks stara się osiągnąć.
+W razie jakiegokolwiek indywidualnego aktu, który w jakikolwiek sposób postrzegany jest jako złamanie [Kodeksu Postępowania](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), zostaną podjęte akcje poprawcze. Jest to możliwe jednak, dla każdej osoby, by *zachowywać* się w sposób, która nie łamie bezpośrednio zasad Kodu Postępowania, jednakże wciąż podąża kompletnie przeciw celowi, który Kodeks stara się osiągnąć.
 
 Otwarte, różnorodne i przyjazne społeczności żyją i umierają na zasadzie zaufania. Kontrybutorzy mogą się ze sobą nie zgadzać tak długo, jak wierzą, że niezgodności te są w dobrej wierze i wszyscy pracują w celu osiągnięcia wspólnego celu.
 
