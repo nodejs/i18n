@@ -728,19 +728,19 @@ Tipo: Runtime
 
 <a id="DEP0083"></a>
 
-### DEP0083: Desabilitar a ECDH fijando a ecdhCurve como falso
+### DEP0083: Deshabilitar a ECDH fijando a ecdhCurve como falso
 
 Tipo: Runtime
 
-The `ecdhCurve` option to `tls.createSecureContext()` and `tls.TLSSocket` could be set to `false` to disable ECDH entirely on the server only. This mode is deprecated in preparation for migrating to OpenSSL 1.1.0 and consistency with the client. Use the `ciphers` parameter instead.
+La opción `ecdhCurve` para `tls.createSecureContext()` y `tls.TLSSocket` podría ser fijada como `false` para deshabilitar enteramente a ECDH solamente en el servidor. Este modo está desaprobado en preparación para la migración a OpenSSL 1.1.0 y consistencia con el cliente. En cambio, use el parámetro `ciphers`.
 
 <a id="DEP0084"></a>
 
-### DEP0084: requiring bundled internal dependencies
+### DEP0084: requerir dependencias internas agrupadas
 
-Type: Runtime
+Tipo: Runtime
 
-Since Node.js versions 4.4.0 and 5.2.0, several modules only intended for internal usage are mistakenly exposed to user code through `require()`. These modules are:
+Desde las versiones 4.4.0 y 5.2.0 de Node.js, varios módulos destinados solo para uso interno están expuestos erróneamente a código de usuario por medio de `require()`. Estos módulos son:
 
 - `v8/tools/codemap`
 - `v8/tools/consarray`
@@ -752,9 +752,9 @@ Since Node.js versions 4.4.0 and 5.2.0, several modules only intended for intern
 - `v8/tools/splaytree`
 - `v8/tools/tickprocessor-driver`
 - `v8/tools/tickprocessor`
-- `node-inspect/lib/_inspect` (from 7.6.0)
-- `node-inspect/lib/internal/inspect_client` (from 7.6.0)
-- `node-inspect/lib/internal/inspect_repl` (from 7.6.0)
+- `node-inspect/lib/_inspect` (desde 7.6.0)
+- `node-inspect/lib/internal/inspect_client` (desde 7.6.0)
+- `node-inspect/lib/internal/inspect_repl` (desde 7.6.0)
 
 The `v8/*` modules do not have any exports, and if not imported in a specific order would in fact throw errors. As such there are virtually no legitimate use cases for importing them through `require()`.
 
