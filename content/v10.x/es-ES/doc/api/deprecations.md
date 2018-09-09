@@ -756,31 +756,31 @@ Desde las versiones 4.4.0 y 5.2.0 de Node.js, varios módulos destinados solo pa
 - `node-inspect/lib/internal/inspect_client` (desde 7.6.0)
 - `node-inspect/lib/internal/inspect_repl` (desde 7.6.0)
 
-The `v8/*` modules do not have any exports, and if not imported in a specific order would in fact throw errors. As such there are virtually no legitimate use cases for importing them through `require()`.
+Los módulos `v8/*` no tienen ninguna exportación, y si no son importados en un orden específico arrojarían errores. Como tal, virtualmente no hay ningún uso legítimo para importarlos por medio de `require()`.
 
-Por otra parte, `node-inspect` puede ser instalado localmente por medio de un administrador de paquetes, como se explica en el registro npm que lleva el mismo nombre. No source code modification is necessary if that is done.
+Por otra parte, `node-inspect` puede ser instalado localmente por medio de un administrador de paquetes, como se explica en el registro npm que lleva el mismo nombre. Ninguna modificación del código fuente es necesaria si eso se hace.
 
 <a id="DEP0085"></a>
 
 ### DEP0085: AsyncHooks Sensitive API
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-The AsyncHooks Sensitive API was never documented and had various minor issues. (See https://github.com/nodejs/node/issues/15572.) Use the `AsyncResource` API instead.
+La AsyncHooks Sensitive API nunca fue documentada y tuvo varios problemas menores. (Vea https://github.com/nodejs/node/issues/15572.) En cambio, use la API `AsyncResource`.
 
 <a id="DEP0086"></a>
 
-### DEP0086: Remove runInAsyncIdScope
+### DEP0086: Remover runInAsyncIdScope
 
-Type: End-of-Life
+Tipo: End-of-Life
 
-`runInAsyncIdScope` doesn't emit the `'before'` or `'after'` event and can thus cause a lot of issues. See https://github.com/nodejs/node/issues/14328 for more details.
+`runInAsyncIdScope` no emite el evento `'before'` o `'after'` y en consecuencia, puede causar muchos problemas. Vea https://github.com/nodejs/node/issues/14328 para más detalles.
 
 <a id="DEP0089"></a>
 
 ### DEP0089: require('assert')
 
-Type: Documentation-only
+Tipo: Documentation-only
 
 Importing assert directly is not recommended as the exposed functions will use loose equality checks. Use `require('assert').strict` instead. The API is the same as the legacy assert but it will always use strict equality checks.
 
