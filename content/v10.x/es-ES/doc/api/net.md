@@ -446,7 +446,7 @@ added: v0.3.8
 
 La consecuencia de este búfer interno es que la memoria puede crecer. Esta propiedad muestra el número de caracteres que están siendo cargados para ser escritos. (El número de caracteres es aproximadamente igual al número de bytes por ser escritos, pero el búfer puede contener strings, y los strings son codificados perezosamente, entonces, el número exacto de bytes no es conocido.)
 
-Users who experience large or growing `bufferSize` should attempt to "throttle" the data flows in their program with [`socket.pause()`][] and [`socket.resume()`][].
+Los usuarios que experimentan un `bufferSize` grande o creciente deberían "acelerar" el flujo de datos en su programa, con [`socket.pause()`][] y [`socket.resume()`][].
 
 ### socket.bytesRead
 
@@ -454,7 +454,7 @@ Users who experience large or growing `bufferSize` should attempt to "throttle" 
 added: v0.5.3
 -->
 
-The amount of received bytes.
+La cantidad de bytes recibidos.
 
 ### socket.bytesWritten
 
@@ -462,18 +462,18 @@ The amount of received bytes.
 added: v0.5.3
 -->
 
-The amount of bytes sent.
+La cantidad de bytes enviados.
 
 ### socket.connect()
 
-Initiate a connection on a given socket.
+Inicia una conexión en un socket dado.
 
-Possible signatures:
+Firmas posibles:
 
 * [`socket.connect(options[, connectListener])`][`socket.connect(options)`]
-* [`socket.connect(path[, connectListener])`][`socket.connect(path)`] for [IPC](#net_ipc_support) connections.
-* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] for TCP connections.
-* Returns: {net.Socket} The socket itself.
+* [`socket.connect(path[, connectListener])`][`socket.connect(path)`] para conexiones [IPC](#net_ipc_support).
+* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] para conexiones TCP.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
 This function is asynchronous. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
