@@ -713,12 +713,12 @@ changes:
   * `rejectUnauthorized` {boolean} Si no es `false`, el certificado del servidor se verifica con la lista de CA proporcionadas. Se produce un evento `'error'` si la verificación falla; `err.code` contiene el código de error OpenSSL. **Predeterminado:** `true`.
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} Una matriz de cadenas, `Buffer`s o `Uint8Array`s, o un solo `Buffer` o `Uint8Array` que contienen los protocolos compatibles ALPN. Los `Buffer`s deben tener el formato `[len][name][len][name]...` e.g. `0x05hello0x05world`, donde el primer byte es la longitud del siguiente nombre de protocolo. Pasar una matriz suele ser mucho más simple, por ejemplo, `['hello', 'world']`.
   * `servername`: {string} Nombre del servidor para la extensión TLS de SNI (Server Name Indication).
-  * `checkServerIdentity(servername, cert)` {Function} Una función callback para ser utilizada (en lugar de la función builtin builtin `tls.checkServerIdentity()`) al verificar el hostname del servidor (o el `servername` proporcionado cuando se establece explícitamente) contra el certificado. Esto debería devolver un {Error} si la verificación falla. El método debería devolver `undefined` si se verifican el `servername` y el `cert`.
+  * `checkServerIdentity(servername, cert)` {Function} Una función callback para ser utilizada (en lugar de la función builtin `tls.checkServerIdentity()`) al verificar el hostname del servidor (o el `servername` proporcionado cuando se establece explícitamente) contra el certificado. Esto debería devolver un {Error} si la verificación falla. El método debería devolver `undefined` si se verifican el `servername` y el `cert`.
   * `session` {Buffer} Una instancia `Buffer` que contiene la sesión TLS.
   * `minDHSize` {number} Tamaño mínimo del parámetro DH en bits para aceptar una conexión TLS. Cuando un servidor ofrece un parámetro DH con un tamaño inferior a `minDHSize`, la conexión TLS se destruye y se produce un error. **Predeterminado:** `1024`.
   * `secureContext`: Objeto de contexto TLS opcional creado con [`tls.createSecureContext()`][]. Si *no* se proporciona un `secureContext`, se creará uno pasando el objeto entero `options` a `tls.createSecureContext()`.
   * `lookup`: {Function} Función de búsqueda personalizada. **Predeterminado:** [`dns.lookup()`][].
-  * ...: Opciones opcionales [`tls.createSecureContext()`][] que se utilizan si falta la opción `secureContext`; de lo contrario, se ignorarán.
+  * ...: Opciones alternativas[`tls.createSecureContext()`][] que se utilizan si falta la opción `secureContext`; de lo contrario, se ignorarán.
 * `callback` {Function}
 
 La función de `callback`, si se especifica, se agregará como listener para el evento [`'secureConnect'`][].
