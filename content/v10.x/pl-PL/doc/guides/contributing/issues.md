@@ -60,7 +60,7 @@ Zobacz [Jak zobaczyć Krótki, Pełny i Sprawdzalny przykład](https://stackover
 
 ## Ocenianie Raportu o Błędzie
 
-Gdy problem zostanie otwarty, częstym jest pojawienie się w okół niego dyskusji. Niektórzy kontrybutorzy mogą mieć różne zdanie o problemie, również o tym czy zaobserwowane zachowanie jest błędem czy cechą Node.js. Dyskusja ta jest częścią procesu i powinna pozostać skupiona, pomocna i profesjonalna.
+Gdy problem zostanie otwarty, częstym jest pojawienie się wokół niego dyskusji. Niektórzy kontrybutorzy mogą mieć różne zdanie o problemie, również o tym czy zaobserwowane zachowanie jest błędem czy cechą Node.js. Dyskusja ta jest częścią procesu i powinna pozostać skupiona, pomocna i profesjonalna.
 
 Krótkie odpowiedzi—nie dostarczające ani dodatkowego kontekstu ani pomocnych detali—nie są pomocne i profesjonalne. Dla wielu, takie odpowiedzi są zwyczajnie irytujące i nieprzyjacielskie.
 
