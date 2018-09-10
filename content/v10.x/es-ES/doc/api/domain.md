@@ -67,14 +67,14 @@ Si (cluster.isMaster) {
 // Un escenario más realista tendría más de dos trabajadores y,
 // quizás, no colocaría al principal y al trabajador en la misma carpeta.
   //
-  // It is also possible to get a bit fancier about logging, and
-  // implement whatever custom logic is needed to prevent DoS
-  // attacks and other bad behavior.
+  // también es posible adornar un poco el registro e 
+ // implementar cualquier lógica personalizada necesaria para evitar que DoS
+  // ataque y otro mal comportamiento.
   //
-  // See the options in the cluster documentation.
+ // Ver las opciones en el cluster de documentación.
   //
-  // The important thing is that the master does very little,
-  // increasing our resilience to unexpected errors.
+ // Lo importante es que el proceso principal hace poco, 
+ // aumentando nuestra resistencia ante errores inesperados.
 
   cluster.fork();
   cluster.fork();
