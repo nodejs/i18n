@@ -18,7 +18,7 @@ added: v0.7.8
 
 * {string}
 
-A string constant defining the operating system-specific end-of-line marker:
+Una constante de linea definiendo el marcador de fin de linea específico del sistema operativo:
 
 * `\n` on POSIX
 * `\r\n` on Windows
