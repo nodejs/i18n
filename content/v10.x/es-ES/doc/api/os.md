@@ -45,7 +45,7 @@ added: v6.3.0
 
 * {Object}
 
-Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
+Retorna un objeto que contiene constantes específicas del sistema operativo comúnmente usadas para códigos de error, señales de proceso, y así sucesivamente. Las constantes específicas actualmente definidas son descritas como [Constantes SO](#os_os_constants_1).
 
 ## os.cpus()
 
@@ -55,18 +55,18 @@ added: v0.3.3
 
 * Returns: {Object[]}
 
-The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
+El método `os.cpus()` retorna un conjunto de objetos conteniendo información acerca de cada core lógico del CPU.
 
-The properties included on each object include:
+Las propiedades incluidas en cada objeto incluyen:
 
-* `model` {string}
-* `speed` {number} (in MHz)
+* `model`{string}
+* `velocidad`{number} (en MHz)
 * `times` {Object} 
-  * `user` {number} The number of milliseconds the CPU has spent in user mode.
-  * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
-  * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
-  * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
-  * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
+  * `user`{number} El número de milisegundos que el CPU ha estado en modo usuario.
+  * `nice` {number} El número de milisegundos que el CPU ha estado en modo nice.
+  * `sys` {number} El número de milisegundos que el CPU ha estado en modo sys.
+  * `idle` {number} El número de milisegundos que el CPU ha estado en modo idle.
+  * `irq` {number} El número de milisegundos que el CPU ha estado en modo irq.
 
 <!-- eslint-disable semi -->
 
@@ -163,7 +163,7 @@ The properties included on each object include:
 ]
 ```
 
-Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
+Porque los valores `nice` son específicos de UNIX, en Windows los valores `nice` todos los procesos son siempre 0.
 
 ## os.endianness()
 
@@ -171,7 +171,7 @@ Because `nice` values are UNIX-specific, on Windows the `nice` values of all pro
 added: v0.9.4
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
