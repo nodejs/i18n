@@ -188,7 +188,7 @@ added: v0.3.3
 
 * Retorna: {integer}
 
-The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
+El método `os.freemem()` retorna la cantidad de memoria libre del sistema en bytes como un entero.
 
 ## os.homedir()
 
@@ -196,9 +196,9 @@ The `os.freemem()` method returns the amount of free system memory in bytes as a
 added: v2.3.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.homedir()` method returns the home directory of the current user as a string.
+El método `os.homedir()` devuelve el directorio hogar del usuario actual como una línea.
 
 ## os.hostname()
 
@@ -206,7 +206,7 @@ The `os.homedir()` method returns the home directory of the current user as a st
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.hostname()` method returns the hostname of the operating system as a string.
 
