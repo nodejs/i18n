@@ -136,7 +136,7 @@ Si (cluster.isMaster) {
     d.add(req);
     d.add(res);
 
-    // Now run the handler function in the domain.
+    // Ahora, ejecuta el controlador de función en el dominio.
     d.run(() => {
       handleRequest(req, res);
     });
@@ -144,7 +144,7 @@ Si (cluster.isMaster) {
   server.listen(PORT);
 }
 
-// This part is not important. Just an example routing thing.
+// Esta parte no es importante. Just an example routing thing.
 // Put fancy application logic here.
 function handleRequest(req, res) {
   switch (req.url) {
