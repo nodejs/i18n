@@ -766,13 +766,13 @@ added: v0.7.7
 
 * {string[]}
 
-The `process.execArgv` property returns the set of Node.js-specific command-line options passed when the Node.js process was launched. These options do not appear in the array returned by the [`process.argv`][] property, and do not include the Node.js executable, the name of the script, or any options following the script name. These options are useful in order to spawn child processes with the same execution environment as the parent.
+La propiedad `process.execArgv` devuelve el conjunto de opciones de línea de comando de Node.js en específico pasadas cuando el proceso Node.js arrancó. Estas opciones no aparecen en el array devuelto por la propiedad [`process.argv`][], y no incluyen el Node.js ejecutable, el nombre del script o cualquier opción que siga el nombre del script. Estas opciones son útiles para generar procesos secundarios con el mismo entorno de ejecución que el proceso primario.
 
 ```console
 $ node --harmony script.js --version
 ```
 
-Results in `process.execArgv`:
+Resulta en `process.execArgv`:
 
 <!-- eslint-disable semi -->
 
@@ -780,7 +780,7 @@ Results in `process.execArgv`:
 ['--harmony']
 ```
 
-And `process.argv`:
+Y `process.argv`:
 
 <!-- eslint-disable semi -->
 
@@ -796,7 +796,7 @@ added: v0.1.100
 
 * {string}
 
-The `process.execPath` property returns the absolute pathname of the executable that started the Node.js process.
+La propiedad `process.execPath` devuelve el nombre de ruta absoluto del ejecutable que inició el proceso Node.js.
 
 <!-- eslint-disable semi -->
 
@@ -810,19 +810,19 @@ The `process.execPath` property returns the absolute pathname of the executable 
 added: v0.1.13
 -->
 
-* `code` {integer} The exit code. **Default:** `0`.
+* `code` {integer} El código de salida. **Predeterminado:** `0`.
 
-The `process.exit()` method instructs Node.js to terminate the process synchronously with an exit status of `code`. If `code` is omitted, exit uses either the 'success' code `0` or the value of `process.exitCode` if it has been set. Node.js will not terminate until all the [`'exit'`] event listeners are called.
+El método `process.exit()` indica a Node.js que finalice el proceso sincrónicamente con un estado de salida de `code`. Si se omite el `code`, la salida utiliza el código 'success' `0` o el valor de `process.exitCode` si se ha establecido. Node.js no terminará hasta que todos los oyentes del evento [`'exit'`] sean llamados.
 
-To exit with a 'failure' code:
+Para salir con un código 'failure':
 
 ```js
 process.exit(1);
 ```
 
-The shell that executed Node.js should see the exit code as `1`.
+La shell que ejecutó Node.js debería ver el código de salida como `1`.
 
-Calling `process.exit()` will force the process to exit as quickly as possible even if there are still asynchronous operations pending that have not yet completed fully, including I/O operations to `process.stdout` and `process.stderr`.
+Llamar a `process.exit()` forzará al proceso a cerrarse tan rápido como sea posible incluso si todavía hay operaciones asincrónicas pendientes que no se han completado en su totalidad, incluyendo operaciones I/O para `process.stdout` y `process.stderr`.
 
 In most situations, it is not actually necessary to call `process.exit()` explicitly. The Node.js process will exit on its own *if there is no additional work pending* in the event loop. The `process.exitCode` property can be set to tell the process which exit code to use when the process exits gracefully.
 
