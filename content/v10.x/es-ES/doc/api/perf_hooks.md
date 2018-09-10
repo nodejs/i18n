@@ -282,7 +282,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which preload module load ended.
+La timestamp de alta resolución en la cual la carga del módulo precarga terminó.
 
 ### performanceNodeTiming.preloadModuleLoadStart
 
