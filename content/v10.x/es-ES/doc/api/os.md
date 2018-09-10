@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-The `os` module provides a number of operating system-related utility methods. It can be accessed using:
+El módulo `so` provee un número de métodos de utilidad relacionados al sistema operativo. Puede ser accesado usando:
 
 ```js
 const os = require('os');
