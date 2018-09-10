@@ -167,7 +167,7 @@ Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especifi
 
 Todos los [`net.Socket`][] son establecidos a `SO_REUSEADDR` (Vea [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) para los detalles).
 
-The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()` call or `server.close()` has been called. De lo contrario, un error `ERR_SERVER_ALREADY_LISTEN` será arrojado.
+El método `server.listen()` puede ser llama otra vez, si y solo si, hubo un error durante la primera llamada de `server.listen()`, o `server.close()` fue llamado. De lo contrario, un error `ERR_SERVER_ALREADY_LISTEN` será arrojado.
 
 Uno de los errores más comunes cuando se escucha es `EADDRINUSE`. Esto ocurre cuando otro servidor está escuchando en el `port` / `path` / `handle` requerido. Una manera de manejar esto sería intentar de nuevo luego de una cierta cantidad de tiempo:
 
@@ -834,7 +834,7 @@ added: v0.1.90
 
 * `port` {number} Puerto al que el socket debería conectarse. Será pasado a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
 * `host` {string} Host al que el socket debería conectarse. Será pasado a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Predeterminado:** `'localhost'`.
-* `connectListener` {Function} Parámetro común de las funcones [`net.createConnection()`][] functions, un listener de "una sola vez" para el evento `'connect'` en el socket que está iniciando. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* `connectListener` {Function} Parámetro común de las funcones [`net.createConnection()`][] functions, un listener de "una sola vez" para el evento `'connect'` en el socket que está iniciando. Será pasado a [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
 * Devuelve: {net.Socket} El socket recién creado usado para iniciar la conexión.
 
 Inicia una conexión TCP.
