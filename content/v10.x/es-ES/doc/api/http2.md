@@ -628,7 +628,7 @@ The `:method` and `:path` pseudo-headers are not specified within `headers`, the
 * `:method` = `'GET'`
 * `:path` = `/`
 
-### Class: Http2Stream
+### Clase: Http2Stream
 
 <!-- YAML
 added: v8.4.0
@@ -636,9 +636,9 @@ added: v8.4.0
 
 * Extiende a: {stream.Duplex}
 
-Each instance of the `Http2Stream` class represents a bidirectional HTTP/2 communications stream over an `Http2Session` instance. Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
+Cada instancia de la clase de `Http2Stream` representa un stream de comunicaciones bidireccionales de HTTP/2 sobre una instancia de `Http2Session` . Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
 
-Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . On the server, `Http2Stream` instances are created either in response to an incoming HTTP request (and handed off to user code via the `'stream'` event), or in response to a call to the `http2stream.pushStream()` method. En el cliente, las instancias de `Http2Stream` se crean y se devuelven cuando el método de `http2session.request()` es llamado, o en respuesta a un evento de `'push'` entrante.
+Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . En el servidor, las instancias de `Http2Stream` son creadas en respuesta a una solicitud entrante de HTTP (y entregadas al código de usuario mediante el evento de `'stream'`), o en respuesta a una llamada al método de `http2stream.pushStream()` . En el cliente, las instancias de `Http2Stream` se crean y se devuelven cuando el método de `http2session.request()` es llamado, o en respuesta a un evento de `'push'` entrante.
 
 La clase `Http2Stream` es una base para las clases de [`ServerHttp2Stream`][] y [`ClientHttp2Stream`][], las cuales son utilizadas específicamente por el Servidor o el lado del Cliente, respectivamente.
 
@@ -648,7 +648,7 @@ Todas las instancias de `Http2Stream` son streams de [`Duplex`][]. El lado `Writ
 
 ##### Creación
 
-On the server side, instances of [`ServerHttp2Stream`][] are created either when:
+En el lado del servidor, las instancias de [`ServerHttp2Stream`][] son creadas cuando:
 
 * A new HTTP/2 `HEADERS` frame with a previously unused stream ID is received;
 * El método `http2stream.pushStream()` es llamado.
