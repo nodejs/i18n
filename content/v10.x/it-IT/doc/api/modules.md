@@ -459,7 +459,7 @@ deprecated: v0.10.6
 
 * {Object}
 
-Da istruzioni a `require` su come gestire determinate estensioni dei file.
+Dà istruzioni a `require` su come gestire determinate estensioni dei file.
 
 Elabora i file con l'estensione `.sjs` come file `.js`:
 
