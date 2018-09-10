@@ -718,9 +718,9 @@ added: v0.1.90
 
 Envía los datos en el scoket. El segundo parámetro especifica la codificación en el caso de un string — se vuelve por defecto la codificación UTF8.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
+Devuelve como `true` si todos los datos fueron arrojados con éxito al búfer del núcleo. Devuelve como `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. [`'drain'`][] será emitido cuando el búfer esté libre de nuevo.
 
-The optional `callback` parameter will be executed when the data is finally written out - this may not be immediately.
+El parámetro opcional `callback` será ejecutado cuando los datos son finalmente escritos - esto podría no ser inmediatamente.
 
 See `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) method for more information.
 
