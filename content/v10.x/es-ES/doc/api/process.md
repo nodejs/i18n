@@ -545,9 +545,9 @@ El argumento `flags` es un entero que permite especificar el comportamiento de d
 
 Si hay razones específicas para usar `process.dlopen()` (por ejemplo, para especificar banderas dlopen), suele ser útil utilizar [`require.resolve()`][] para buscar la ruta del módulo.
 
-An important drawback when calling `process.dlopen()` is that the `module` instance must be passed. Functions exported by the C++ Addon will be accessible via `module.exports`.
+Una desventaja importante al llamar a `process.dlopen()` es que la instancia `module` debe ser pasada. Las funciones exportadas por el Addon de C++ serán accesibles a través de `module.exports`.
 
-The example below shows how to load a C++ Addon, named as `binding`, that exports a `foo` function. All the symbols will be loaded before the call returns, by passing the `RTLD_NOW` constant. In this example the constant is assumed to be available.
+El siguiente ejemplo muestra cómo cargar un Addon de C++, nombrado como `binding`, que exporta una función `foo`. All the symbols will be loaded before the call returns, by passing the `RTLD_NOW` constant. En este ejemplo se asume que la constante está disponible.
 
 ```js
 const os = require('os');
@@ -562,27 +562,27 @@ module.exports.foo();
 added: v8.0.0
 -->
 
-* `warning` {string|Error} The warning to emit.
+* `warning` {string|Error} La advertencia a emitir.
 * `options` {Object} 
-  * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Predeterminado:** `'Warning'`.
-  * `code` {string} A unique identifier for the warning instance being emitted.
-  * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
-  * `detail` {string} Additional text to include with the error.
+  * `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *type* de advertencia que se emite. **Predeterminado:** `'Warning'`.
+  * `code` {string} Un identificador único para la instancia de la advertencia que se emite.
+  * `ctor` {Function} Cuando `warning` es una `String`, `ctor` es una función opcional usada para limitar el stack trace generado. **Predeterminado:** `process.emitWarning`.
+  * `detail` {string} Texto adicional a incluir con el error.
 
-The `process.emitWarning()` method can be used to emit custom or application specific process warnings. These can be listened for by adding a handler to the [`'warning'`](#process_event_warning) event.
+El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden escuchar añadiendo un manejador al evento [`'warning'`](#process_event_warning).
 
 ```js
-// Emit a warning with a code and additional detail.
+// Emitir una advertencia con un código y un detalle adicional.
 process.emitWarning('Something happened!', {
   code: 'MY_WARNING',
   detail: 'This is some additional information'
 });
-// Emits:
-// (node:56338) [MY_WARNING] Warning: Something happened!
-// This is some additional information
+// Emite:
+// (node:56338) [MY_WARNING] Advertencia: Something happened!
+// Esta es una información adicional
 ```
 
-In this example, an `Error` object is generated internally by `process.emitWarning()` and passed through to the [`'warning'`](#process_event_warning) handler.
+En este ejemplo, un objeto `Error` es generado internamente por `process.emitWarning()` y pasado a través del manejador [`'warning'`](#process_event_warning).
 
 ```js
 process.on('warning', (warning) => {
@@ -602,31 +602,31 @@ If `warning` is passed as an `Error` object, the `options` argument is ignored.
 added: v6.0.0
 -->
 
-* `warning` {string|Error} The warning to emit.
-* `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Predeterminado:** `'Warning'`.
-* `code` {string} A unique identifier for the warning instance being emitted.
-* `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
+* `warning` {string|Error} La advertencia a emitir.
+* `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *type* de advertencia que se emite. **Predeterminado:** `'Warning'`.
+* `code` {string} Un identificador único para la instancia de la advertencia que se emite.
+* `ctor` {Function} Cuando `warning` es una `String`, `ctor` es una función opcional usada para limitar el stack trace generado. **Predeterminado:** `process.emitWarning`.
 
-The `process.emitWarning()` method can be used to emit custom or application specific process warnings. These can be listened for by adding a handler to the [`'warning'`](#process_event_warning) event.
+El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden escuchar añadiendo un manejador al evento [`'warning'`](#process_event_warning).
 
 ```js
-// Emit a warning using a string.
+// Emitir una advertencia utilizando una string.
 process.emitWarning('Something happened!');
-// Emits: (node: 56338) Warning: Something happened!
+// Emite: (node: 56338) Advertencia: Something happened!
 ```
 
 ```js
-// Emit a warning using a string and a type.
+// Emitir una advertencia utilizando una string y un tipo.
 process.emitWarning('Something Happened!', 'CustomWarning');
-// Emits: (node:56338) CustomWarning: Something Happened!
+// Emite: (node:56338) CustomWarning: Something Happened!
 ```
 
 ```js
 process.emitWarning('Something happened!', 'CustomWarning', 'WARN001');
-// Emits: (node:56338) [WARN001] CustomWarning: Something happened!
+// Emite: (node:56338) [WARN001] CustomWarning: Something happened!
 ```
 
-In each of the previous examples, an `Error` object is generated internally by `process.emitWarning()` and passed through to the [`'warning'`](#process_event_warning) handler.
+En cada uno de los ejemplos anteriores, un objeto `Error` es generado internamente por `process.emitWarning()` y pasado a través del manejador [`'warning'`](#process_event_warning).
 
 ```js
 process.on('warning', (warning) => {
