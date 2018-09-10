@@ -272,7 +272,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js process was initialized.
+La timestamp de alta resolución en milisegundos en la cual el proceso Node.js fue iniciado.
 
 ### performanceNodeTiming.preloadModuleLoadEnd
 
