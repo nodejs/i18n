@@ -92,7 +92,7 @@ added: v8.5.0
 
 * {number}
 
-The [`timeOrigin`][] specifies the high resolution millisecond timestamp at which the current `node` process began, measured in Unix time.
+El [`timeOrigin`][] especifica la timestamp de alta resolución en milisegundos en la cual el proceso `node` actual comenzó, medido en tiempo Unix.
 
 ### performance.timerify(fn)
 
@@ -102,7 +102,7 @@ added: v8.5.0
 
 * `fn` {Function}
 
-Wraps a function within a new function that measures the running time of the wrapped function. A `PerformanceObserver` must be subscribed to the `'function'` event type in order for the timing details to be accessed.
+Envuelve una función dentro de una nueva función que mide el tiempo de ejecución de la función envuelta. Un `PerformanceObserver` debe ser suscrito al tipo de evento `'function'` en orden para los detalles de sincronización para ser accedido.
 
 ```js
 const {
