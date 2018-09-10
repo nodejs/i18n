@@ -286,16 +286,16 @@ process.on('SIGTERM', handle);
 * `'SIGUSR1'` está reservado por Node.js para iniciar el [depurador](debugger.html). Es posible instalar un oyente, pero el hacerlo podría interferir con el depurador.
 * `'SIGTERM'` y `'SIGINT'` tienen manejadores predeterminados en plataformas distintas a Windows, que reinician el modo terminal antes de salir con el código `128 + signal number`. Si una de estas señales tiene un oyente instalado, su comportamiento predeterminado será eliminado (Node.js ya no se cerrará).
 * `'SIGPIPE'` es ignorado por defecto. Puede tener un oyente instalado.
-* `'SIGHUP'` es generado en Windows cuando la ventana de la consola está cerrada, y en otras plataformas bajo varias condiciones similares, vea signal(7). It can have a listener installed, however Node.js will be unconditionally terminated by Windows about 10 seconds later. On non-Windows platforms, the default behavior of `SIGHUP` is to terminate Node.js, but once a listener has been installed its default behavior will be removed.
-* `'SIGTERM'` is not supported on Windows, it can be listened on.
-* `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when terminal raw mode is enabled.
-* `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on non-Windows platforms it can be listened on, but there is no way to send or generate it.
-* `'SIGWINCH'` is delivered when the console has been resized. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
-* `'SIGKILL'` cannot have a listener installed, it will unconditionally terminate Node.js on all platforms.
-* `'SIGSTOP'` cannot have a listener installed.
-* `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised artificially using kill(2), inherently leave the process in a state from which it is not safe to attempt to call JS listeners. Doing so might lead to the process hanging in an endless loop, since listeners attached using `process.on()` are called asynchronously and therefore unable to correct the underlying problem.
+* `'SIGHUP'` es generado en Windows cuando la ventana de la consola está cerrada, y en otras plataformas bajo varias condiciones similares, vea signal(7). Puede tener un oyente instalado, sin embargo, Node.js será cerrado incondicionalmente por Windows unos 10 segundos después. En plataformas distintas de Windows, el comportamiento por defecto de `SIGHUP` es cerrar Node.js, pero una vez que se haya instalado un oyente, su comportamiento por defecto será eliminado.
+* `'SIGTERM'` no está soportado en Windows, puede ser escuchado.
+* `'SIGINT'` desde el terminal está soportado en todas las plataformas y puede ser generado usualmente con `<Ctrl>+C` (aunque esto puede ser configurable). No es generado cuando está habilitado el modo terminal sin procesar.
+* `'SIGBREAK'` es enviado en Windows cuando se presiona `<Ctrl>+<Break>`, en plataformas distintas de Windows, se puede escuchar, pero no hay manera de enviarlo o generarlo.
+* `'SIGWINCH'` es enviado cuando la consola ha sido redimensionada. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
+* `'SIGKILL'` no puede tener un oyente instalado, esto cerrará incondicionalmente Node.js en todas las plataformas.
+* `'SIGSTOP'` no puede tener un oyente instalado.
+* `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` y `'SIGILL'`, cuando no se levantan artificialmente utilizando kill(2), intrínsicamente abandonan el proceso en un estado en el cual no es seguro intentar llamar a oyentes JS. Hacer esto podría llevar al proceso a colgarse en un bucle infinito, ya que los oyentes adjuntos que utilizan `process.on()` son llamados asincrónicamente, y, por lo tanto, son incapaces de corregir el problema subyaciente.
 
-Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
+Windows no soporta el envío de señales, pero Node.js ofrece una emulación con [`process.kill()`][] y [`subprocess.kill()`][]. El envío de la señal `0` puede ser usado para probar la existencia de un proceso. El envío de `SIGINT`, `SIGTERM`, y `SIGKILL` causa la terminación incondicional del proceso objetivo.
 
 ## process.abort()
 
