@@ -99,33 +99,33 @@ Si (cluster.isMaster) {
     d.on('error', (er) => {
       console.error(`error ${er.stack}`);
 
-      // Note: We're in dangerous territory!
-      // By definition, something unexpected occurred,
-      // which we probably didn't want.
-      // Anything can happen now! Be very careful!
+      // Nota: ¡ Estamos en un territorio peligroso!
+      Por definición, algo inesperado ocurrió,
+      / / que probablemente no queríamos.
+      // ¡Cualquier cosa puede suceder ahora! ¡Ten mucho cuidado!
 
-      try {
-        // make sure we close down within 30 seconds
+      intenta {
+        // asegurarte de cerrar en 30 segundos
         const killtimer = setTimeout(() => {
           process.exit(1);
         }, 30000);
-        // But don't keep the process open just for that!
+        // ¡Pero, no mantengas el proceso abierto solo por eso!
         killtimer.unref();
 
-        // stop taking new requests.
+        // no tomes nuevas solicitudes.
         server.close();
 
-        // Let the master know we're dead. This will trigger a
-        // 'disconnect' in the cluster master, and then it will fork
-        // a new worker.
+        // Deja que el proceso principal sepa que estamos muertos. Esto desencadenará un 
+        // 'desconectar' en el cluster principal y, luego, se bifurcará
+        // un nuevo trabajador.
         cluster.worker.disconnect();
 
-        // try to send an error to the request that triggered the problem
+        // intenta enviar un error a la solicitud que arrojó el problema
         res.statusCode = 500;
         res.setHeader('content-type', 'text/plain');
-        res.end('Oops, there was a problem!\n');
+        res.end('¡Ups, hubo un problema!\n');
       } catch (er2) {
-        // oh well, not much we can do at this point.
+        // Bueno, no se puede hacer mucho en este punto.
         console.error(`Error sending 500! ${er2.stack}`);
       }
     });
