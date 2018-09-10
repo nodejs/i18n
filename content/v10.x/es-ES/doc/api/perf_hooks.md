@@ -149,7 +149,7 @@ added: v8.5.0
 
 * {string}
 
-The name of the performance entry.
+El nombre de la entrada de rendimiento.
 
 ### performanceEntry.startTime
 
@@ -159,7 +159,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp marking the starting time of the Performance Entry.
+La timestamp de alta resolución en milisegundos marcando el inicio de la Entrada de Rendimiento.
 
 ### performanceEntry.entryType
 
@@ -169,7 +169,7 @@ added: v8.5.0
 
 * {string}
 
-The type of the performance entry. Currently it may be one of: `'node'`, `'mark'`, `'measure'`, `'gc'`, `'function'`, or `'http2'`.
+El tipo de la entrada de rendimiento. Actualmente puede ser uno de los siguientes: `'node'`, `'mark'`, `'measure'`, `'gc'`, `'function'`, o `'http2'`.
 
 ### performanceEntry.kind
 
@@ -179,20 +179,20 @@ added: v8.5.0
 
 * {number}
 
-When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` property identifies the type of garbage collection operation that occurred. The value may be one of:
+Cuando `performanceEntry.entryType` es igual a `'gc'`, la propiedad `performance.kind` identifica el tipo de operación de recolección de basura que ocurrió. El valor puede ser uno de los siguientes:
 
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_MAJOR`
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_MINOR`
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_INCREMENTAL`
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_WEAKCB`
 
-## Class: PerformanceNodeTiming extends PerformanceEntry
+## Clase: PerformanceNodeTiming expande PerformanceEntry
 
 <!-- YAML
 added: v8.5.0
 -->
 
-Provides timing details for Node.js itself.
+Proporciona detalles de tiempo para el propio Node.js.
 
 ### performanceNodeTiming.bootstrapComplete
 
@@ -202,7 +202,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el proceso de Node.js completó el bootstrapping. Si el bootstrapping no ha terminado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.clusterSetupEnd
 
