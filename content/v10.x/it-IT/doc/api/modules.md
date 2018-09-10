@@ -289,7 +289,7 @@ Se non c'è nessun file `package.json` nella directory, allora Node.js tenterà 
 
 <!--type=misc-->
 
-Se l'identificatore del modulo passato a `require()` non è un [core](#modules_core_modules) module, e non inizia con `'/'`, `'../'` o `'./'`, allora Node.js inizia nella parent directory del modulo attuale, e aggiunge `/node_modules`, tentando di caricare il modulo da quella posizione. Node.js non aggiungerà `node_modules` ad un percorso che termina già in `node_modules`.
+Se l'identificatore del modulo passato a `require()` non è un [core](#modules_core_modules) module, e non inizia con `'/'`, `'../'` o `'./'`, allora Node.js inizia nella parent directory del modulo attuale, e aggiunge `/node_modules`, tentando di caricare il modulo da quella posizione. Node non aggiungerà `node_modules` ad un percorso che termina già in `node_modules`.
 
 Se non viene trovato lì, allora passa alla parent directory e così via fino a raggiungere il root del file system.
 
@@ -336,7 +336,7 @@ Prima che venga eseguito il codice di un modulo, Node.js lo sottoporrà al wrapp
 
 ```js
 (function(exports, require, module, __filename, __dirname) {
-// Il codice del modulo è davvero qui dentro
+// Il codice del modulo di fatto vive qui
 });
 ```
 
