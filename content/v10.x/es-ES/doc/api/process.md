@@ -30,7 +30,7 @@ El `'beforeExit'` *no* debe ser usado como una alternativa al evento `'exit'`, a
 added: v0.7.7
 -->
 
-Si el proceso Node.js es generado con un canal IPC (vea el [Proceso Secundario](child_process.html) y la documentación [Cluster](cluster.html)), el evento `'disconnect'` será emitido cuando el canal IPC sea cerrado.
+Si el proceso Node.js es generado con un canal IPC (vea la documentación del [Proceso Secundario](child_process.html) y de [Cluster](cluster.html)), el evento `'disconnect'` será emitido cuando el canal IPC sea cerrado.
 
 ### Evento: 'exit'
 
@@ -74,9 +74,9 @@ added: v0.5.10
 * `message` { Object | boolean | number | string | null } a parsed JSON object or a serializable primitive value.
 * `sendHandle` {net.Server|net.Socket} un objeto [`net.Server`][] o [`net.Socket`][] o indefinido.
 
-Si el proceso Node.js es generado con un canal IPC (vea el [Proceso Secundario](child_process.html) y la documentación [Cluster](cluster.html)), el evento `'message'` es emitido cada vez que es recibido por el proceso secundario un mensaje enviado por un proceso primario utilizando [`childprocess.send()`][].
+Si el proceso Node.js es generado con un canal IPC (vea la documentación de [Proceso Secundario](child_process.html) y de [Cluster](cluster.html)), el evento `'message'` es emitido cada vez que el proceso secundario recibe un mensaje enviado por el proceso primario, utilizando [`childprocess.send()`][].
 
-El mensaje pasa a través de la serialización y análisis. El mensaje resultando podría no ser el mismo que lo originalmente enviado.
+El mensaje pasa a través de la serialización y análisis. El mensaje resultante podría no ser el mismo enviado originalmente.
 
 ### Evento: 'rejectionHandled'
 
@@ -92,11 +92,11 @@ El objeto `Promise` habría sido emitido previamente en un evento `'unhandledRej
 
 No hay noción de un nivel superior para una cadena `Promise` en el cual los rechazos pueden ser controlados siempre. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time — possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
 
-Otra manera de decir esto es que, a diferencia del código asincrónico donde hay una lista de excepciones sin manejar que está en constante crecimiento, con las Promises (Promesas), puede haber una lista creciente y decreciente de rechazos sin controlar.
+Otra manera de decir esto es que, a diferencia del código asincrónico donde hay una lista de excepciones sin manejar que está en constante crecimiento, con las Promises (Promesas), puede haber una lista creciente y decreciente de rechazos no controlados.
 
-En el código sincrónico, el evento `'uncaughtException'` es emitido cuando la lista de excepciones sin controlar crece.
+En el código sincrónico, el evento `'uncaughtException'` es emitido cuando la lista de excepciones no controladas crece.
 
-En el código asincrónico, el evento `'unhandledRejection'` es emitido cuando la lista de rechazos sin controlar crece, y el evento `'rejectionHandled'` es emitido cuando la lista de rechazos sin controlar decrece.
+En el código asincrónico, el evento `'unhandledRejection'` es emitido cuando la lista de rechazos no controlados crece, y el evento `'rejectionHandled'` es emitido cuando la lista de rechazos no controlados decrece.
 
 ```js
 const unhandledRejections = new Map();
@@ -108,7 +108,7 @@ process.on('rejectionHandled', (promise) => {
 });
 ```
 
-En este ejemplo, el `Map` de `unhandledRejections` crecerá y decrecerá con el tiempo, reflejando los rechazos que comenzaron sin controlar y luego fueron controlados. Es posible registrar dichos errores en un registro de error, ya sea periódicamente (lo que probablemente sea lo mejor para aplicaciones de larga ejecución) o al salir del proceso (lo que probablemente sea más conveniente para scripts).
+En este ejemplo, el `Map` de `unhandledRejections` crecerá y decrecerá con el tiempo, reflejando los rechazos que comenzaron siendo no controlados y luego fueron controlados. Es posible registrar dichos errores en un registro de error, ya sea periódicamente (lo que probablemente sea lo mejor para aplicaciones de larga ejecución) o al salir del proceso (lo que probablemente sea más conveniente para scripts).
 
 ### Evento: 'uncaughtException'
 
@@ -116,7 +116,7 @@ En este ejemplo, el `Map` de `unhandledRejections` crecerá y decrecerá con el 
 added: v0.1.18
 -->
 
-The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. Por defecto, Node.js maneja dichas excepciones imprimiendo el stack strace en `stderr` y cerrándose. Añadir un manejador para el evento `'uncaughtException'` anula este comportamiento predeterminado.
+The `'uncaughtException'` event is emitted when an uncaught JavaScript exception bubbles all the way back to the event loop. Por defecto, Node.js maneja dichas excepciones imprimiendo el stack trace en `stderr` y cerrándose. Añadir un manejador para el evento `'uncaughtException'` anula este comportamiento predeterminado.
 
 La función oyente es llamada con el objeto `Error` pasado como el único argumento.
 
@@ -136,7 +136,7 @@ console.log('This will not run.');
 
 #### Advertencia: Usando `'uncaughtException'` correctamente
 
-Note que `'uncaughtException'` es un mecanismo crudo para el manejo de excepciones destinadas a ser usada sólo como último recurso. El evento *no debe* ser usado como un equivalente a `On Error Resume Next`. Excepciones sin controlar inherentemente significan que una aplicación está en un estado no definido. Attempting to resume application code without properly recovering from the exception can cause additional unforeseen and unpredictable issues.
+Note que `'uncaughtException'` es un mecanismo crudo para el manejo de excepciones destinadas a ser usada sólo como último recurso. El evento *no debe* ser usado como un equivalente a `On Error Resume Next`. Excepciones no controladas intrínsecamente significan que una aplicación está en un estado no definido. Attempting to resume application code without properly recovering from the exception can cause additional unforeseen and unpredictable issues.
 
 Las excepciones arrojadas desde dentro del manejador de eventos no serán capturadas. En su lugar, el proceso se cerrará con un código de salida distinto de cero y se imprimirá el stack trace. Esto es para evitar una recursión infinita.
 
@@ -188,7 +188,7 @@ function SomeResource() {
 }
 
 const resource = new SomeResource();
-// sin .catch o .then en resource.loaded por el menos un turno
+// sin .catch o .then en resource.loaded por al menos un turno
 ```
 
 En este caso de ejemplo, es posible rastrear el rechazo como un error de desarrollador, como sería típicamente el caso para otros eventos `'unhandledRejection'`. Para abordar dichas fallas, un manejador [`.catch(() => { })`][`promise.catch()`] no operacional puede ser adjuntado a `resource.loaded`, lo cual prevendría que se emitiera el evento `'unhandledRejection'`. Alternativamente, el evento [`'rejectionHandled'`][] puede ser usado.
@@ -1299,7 +1299,7 @@ If Node.js is spawned with an IPC channel, the `process.send()` method can be us
 
 If Node.js was not spawned with an IPC channel, `process.send()` will be `undefined`.
 
-El mensaje pasa a través de la serialización y análisis. El mensaje resultando podría no ser el mismo que lo originalmente enviado.
+El mensaje pasa a través de la serialización y análisis. El mensaje resultante podría no ser el mismo enviado originalmente.
 
 ## process.setegid(id)
 
