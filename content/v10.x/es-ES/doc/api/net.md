@@ -832,12 +832,12 @@ Esta función crea un nuevo [`net.Socket`][] con todas las opciones en su manera
 added: v0.1.90
 -->
 
-* `port` {number} Port the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `port` {number} Puerto al que el socket debería conectarse. Será pasado a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
+* `host` {string} Host al que el socket debería conectarse. Será pasado a [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Predeterminado:** `'localhost'`.
+* `connectListener` {Function} Parámetro común de las funcones [`net.createConnection()`][] functions, un listener de "una sola vez" para el evento `'connect'` en el socket que está iniciando. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
+* Devuelve: {net.Socket} El socket recién creado usado para iniciar la conexión.
 
-Initiates a TCP connection.
+Inicia una conexión TCP.
 
 This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], then returns the `net.Socket` that starts the connection.
 
@@ -855,7 +855,7 @@ Creates a new TCP or [IPC](#net_ipc_support) server.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
 * Returns: {net.Server}
 
-If `allowHalfOpen` is set to `true`, when the other end of the socket sends a FIN packet, the server will only send a FIN packet back when [`socket.end()`][] is explicitly called, until then the connection is half-closed (non-readable but still writable). See [`'end'`][] event and [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13) for more information.
+Si `allowHalfOpen` es establecido como `true`, cuando el otro terminal del socket envíe un paquete FIN, el servidor solo enviará un paquete FIN devuelta cuando [`socket.end()`][] es llamado explícitamente, hasta entonces la conexión es entrecerrada (no es legible pero aún así es escribible). Vea el evento [`'end'`][] event y [RFC 1122](https://tools.ietf.org/html/rfc1122) (sección 4.2.2.13) para más información.
 
 If `pauseOnConnect` is set to `true`, then the socket associated with each incoming connection will be paused, and no data will be read from its handle. This allows connections to be passed between processes without any data being read by the original process. To begin reading data from a paused socket, call [`socket.resume()`][].
 
