@@ -32,7 +32,7 @@ Por la naturaleza misma de cómo [`arroja`] [] funciona en JavaScript, casi nunc
 
 Sin embargo, cerrar el proceso es la forma más segura de responde a un error arrojado. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
 
-The better approach is to send an error response to the request that triggered the error, while letting the others finish in their normal time, and stop listening for new requests in that worker.
+La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y deteniendo las emisiones de nuevas solicitudes en ese trabajador.
 
 In this way, `domain` usage goes hand-in-hand with the cluster module, since the master process can fork a new worker when a worker encounters an error. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
 
