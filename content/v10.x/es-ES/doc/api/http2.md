@@ -1029,7 +1029,7 @@ added: v8.4.0
 * `callback` {Function} Callback that is called once the push stream has been initiated. 
   * `err` {Error}
   * `pushStream` {ServerHttp2Stream} El objeto devuelto de `pushStream` .
-  * `headers` {HTTP/2 Headers Object} Headers object the `pushStream` was initiated with.
+  * `headers` {HTTP/2 Headers Object} El objeto de Encabezados con el cual se inició a `pushStream` .
 
 Initiates a push stream. The callback is invoked with the new `Http2Stream` instance created for the push stream passed as the second argument, or an `Error` passed as the first argument.
 
