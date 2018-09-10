@@ -172,7 +172,7 @@ En cualquier momento que un objeto de `Error` es enrutado a través de un domini
 * `error.domainBound` La función de callback que fue agregada al dominio y pasó un error como su primer argumento.
 * `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado por un límite de la función de callback.
 
-## Vinculación implícita
+## Enlace implícito
 
 <!--type=misc-->
 
@@ -184,17 +184,17 @@ De manera que para prevenir el uso excesivo de la memoria, los objetos del `Domi
 
 Para alojar a los objetos del `Dominio` como secundarios de un proceso `Dominio` principal, deben estar explícitamente añadidos.
 
-Las rutas de vinculaciones implícitas arrojan errores y eventos de `'error'` en los eventos de `'error'` del `Dominio`, pero no registra los del `EmisordeEvento` en el `Dominio`. Las vinculaciones implícitas solo se encargan de los errores arrojados y los eventos de `'error'`.
+Las rutas de enlace implícitas arrojan errores y eventos de `'error'` en los eventos de `'error'` del `Dominio`, pero no registra los del `EmisordeEvento` en el `Dominio`. Los enlaces implícitos solo se encargan de los errores arrojados y los eventos de `'error'`.
 
-## Vinculaciones explicitas
+## Enlazado explícito
 
 <!--type=misc-->
 
-Sometimes, the domain in use is not the one that ought to be used for a specific event emitter. Or, the event emitter could have been created in the context of one domain, but ought to instead be bound to some other domain.
+A veces, el dominio en uso no es el que debería utilizarse para un emisor de evento específico. O, el emisor de evento podría haber sido creado en el contexto de un dominio, pero debe regirse en cambio a algunos otros dominios.
 
-For example, there could be one domain in use for an HTTP server, but perhaps we would like to have a separate domain to use for each request.
+Por ejemplo, podría ser un dominio en el uso de un servidor HTTP, pero, quizás, nos gustaría tener un dominio separado para cada solicitud.
 
-That is possible via explicit binding.
+Es posible a través del enlace explícito.
 
 ```js
 // create a top-level domain for the server
