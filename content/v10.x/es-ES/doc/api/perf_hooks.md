@@ -60,9 +60,9 @@ added: v8.5.0
 
 Crea una nueva entrada `PerformanceMeasure` en el Tiempo de Rendimiento. `PerformanceMeasure` es una subclase de `PerformanceEntry`, cuya `performanceEntry.entryType` siempre es `'measure'`, y cuya `performanceEntry.duration` mide el número de milisegundos transcurridos desde `startMark` y `endMark`.
 
-The `startMark` argument may identify any *existing* `PerformanceMark` in the Performance Timeline, or *may* identify any of the timestamp properties provided by the `PerformanceNodeTiming` class. If the named `startMark` does not exist, then `startMark` is set to [`timeOrigin`][] by default.
+El argumento `startMark` puede identificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento, o *puede* identificar cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
 
-The `endMark` argument must identify any *existing* `PerformanceMark` in the Performance Timeline or any of the timestamp properties provided by the `PerformanceNodeTiming` class. If the named `endMark` does not exist, an error will be thrown.
+El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
 
 ### performance.nodeTiming
 
@@ -72,7 +72,7 @@ added: v8.5.0
 
 * {PerformanceNodeTiming}
 
-An instance of the `PerformanceNodeTiming` class that provides performance metrics for specific Node.js operational milestones.
+Una instancia de la clase `PerformanceNodeTiming` que proporciona métricas de rendimiento para objetivos operacionales específicos de Node.js.
 
 ### performance.now()
 
@@ -80,9 +80,9 @@ An instance of the `PerformanceNodeTiming` class that provides performance metri
 added: v8.5.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
-Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
+Devuelve la timestamp de alta resolución en milisegundos actual, donde 0 representa el inicio del proceso `node` actual.
 
 ### performance.timeOrigin
 
