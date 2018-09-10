@@ -292,7 +292,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which preload module load started.
+La timestamp de alta resolución en milisegundos en la cual la carga del módulo precarga comenzó.
 
 ### performanceNodeTiming.thirdPartyMainEnd
 
@@ -302,7 +302,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which third\_party\_main processing ended. If third\_party\_main processing has not yet ended, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento de third\_party\_main terminó. Si el procesamiento de third\_party\_main no ha terminado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.thirdPartyMainStart
 
@@ -312,7 +312,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which third\_party\_main processing started. If third\_party\_main processing has not yet started, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento third\_party\_main comenzó. Si el procesamiento third\_party\_main no ha comenzado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.v8Start
 
