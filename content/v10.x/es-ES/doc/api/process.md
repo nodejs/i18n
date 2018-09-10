@@ -216,9 +216,9 @@ process.on('warning', (warning) => {
 });
 ```
 
-Por defecto, Node.js imprimirá advertencias de proceso en `stderr`. The `--no-warnings` command-line option can be used to suppress the default console output but the `'warning'` event will still be emitted by the `process` object.
+Por defecto, Node.js imprimirá advertencias de proceso en `stderr`. La opción de línea de comando `--no-warnings` puede ser usada para suprimir la salida de la consola predeterminada, pero el evento `'warning'` aún será emitido por el objeto `process`.
 
-The following example illustrates the warning that is printed to `stderr` when too many listeners have been added to an event:
+El siguiente ejemplo ilustra la advertencia que se imprime en `stderr` cuando se han añadido muchos oyentes al evento:
 
 ```txt
 $ node
@@ -229,7 +229,7 @@ $ node
 detected. 2 foo listeners added. Use emitter.setMaxListeners() to increase limit
 ```
 
-In contrast, the following example turns off the default warning output and adds a custom handler to the `'warning'` event:
+En cambio, el siguiente ejemplo desactiva la salida de advertencia predeterminada y añade un manejador personalizado al evento `'warning'`:
 
 ```txt
 $ node --no-warnings
@@ -240,7 +240,7 @@ $ node --no-warnings
 > Do not do that!
 ```
 
-The `--trace-warnings` command-line option can be used to have the default console output for warnings include the full stack trace of the warning.
+La opción de línea de comando `--trace-warnings` puede ser usada para hacer que la salida de la consola predeterminada para advertencias incluya el stack trace completo de la advertencia.
 
 Launching Node.js using the `--throw-deprecation` command line flag will cause custom deprecation warnings to be thrown as exceptions.
 
@@ -250,21 +250,21 @@ Using the `--no-deprecation` command line flag will suppress all reporting of th
 
 The `*-deprecation` command line flags only affect warnings that use the name `'DeprecationWarning'`.
 
-#### Emitting custom warnings
+#### Emisión de advertencias personalizadas
 
-See the [`process.emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) method for issuing custom or application-specific warnings.
+Vea el método [`process.emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) para emitir advertencias personalizadas o específicas de aplicación.
 
-### Signal Events
+### Eventos de Señal
 
 <!--type=event-->
 
 <!--name=SIGINT, SIGHUP, etc.-->
 
-Signal events will be emitted when the Node.js process receives a signal. Please refer to signal(7) for a listing of standard POSIX signal names such as `'SIGINT'`, `'SIGHUP'`, etc.
+Los eventos de señal serán emitidos cuando el proceso Node.js reciba una señal. Por favor, diríjase a signal(7) para obtener un listado de nombres de señales POSIX estándares, como `'SIGINT'`, `'SIGHUP'`, etc.
 
-The signal handler will receive the signal's name (`'SIGINT'`, `'SIGTERM'`, etc.) as the first argument.
+El manejador de señal recibirá el nombre de la señal (`'SIGINT'`, `'SIGTERM'`, etc.) como primer argumento.
 
-The name of each event will be the uppercase common name for the signal (e.g. `'SIGINT'` for `SIGINT` signals).
+El nombre de cada evento será el nombre común en mayúscula para la señal (p. ej., `'SIGINT'` para las señales `SIGINT`).
 
 ```js
 // Begin reading from stdin so the process does not exit.
