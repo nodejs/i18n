@@ -305,7 +305,7 @@ Llamar a `unref()` en un servidor permitirá al programa salir si este es el ún
 added: v0.3.4
 -->
 
-Esta clase es una abstracción de un socket TCP, o un terminal [IPC](#net_ipc_support) de transmición (usa pipes que ya tienen nombre en Windows, o sockets de dominio UNIX). Un `net.Socket` también es una [transmisión dúplex](stream.html#stream_class_stream_duplex), puede ser tanto como legible como escribible, también es un [`EventEmitter`][].
+Esta clase es una abstracción de un socket TCP, o un terminal [IPC](#net_ipc_support) de transmisión (usa pipes que ya tienen nombre en Windows, o sockets de dominio UNIX). Un `net.Socket` también es una [transmisión dúplex](stream.html#stream_class_stream_duplex), puede ser tanto como legible como escribible, también es un [`EventEmitter`][].
 
 Un `net.Socket` puede ser creado por el usuario y ser usado directamente para interactuar con un servidor. Por ejemplo, es devuelto por [`net.createConnection()`][], para que el usuario pueda usarlo para hablar con el servidor.
 
@@ -644,7 +644,7 @@ added: v0.1.90
 
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Establece la codificación para el socket como una [Transmisión Legible](stream.html#stream_class_stream_readable). Vea [`readable.setEncoding()`][] para más información.
+Establece la codificación para el socket como una [Stream Legible](stream.html#stream_class_stream_readable). Vea [`readable.setEncoding()`][] para más información.
 
 ### socket.setKeepAlive(\[enable\]\[, initialDelay\])
 
@@ -722,7 +722,7 @@ Devuelve como `true` si todos los datos fueron arrojados con éxito al búfer de
 
 El parámetro opcional `callback` será ejecutado cuando los datos son finalmente escritos - esto podría no ser inmediatamente.
 
-Vea el método [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) de transmisión `Writable` para más información.
+Vea el método [`write()`](stream. html#stream_writable_write_chunk_encoding_callback) stream `Writable` para más información.
 
 ## net.connect()
 
