@@ -218,7 +218,7 @@ process.on('warning', (warning) => {
 
 Por defecto, Node.js imprimirá advertencias de proceso en `stderr`. La opción de línea de comando `--no-warnings` puede ser usada para suprimir la salida de la consola predeterminada, pero el evento `'warning'` aún será emitido por el objeto `process`.
 
-El siguiente ejemplo ilustra la advertencia que se imprime en `stderr` cuando se han añadido muchos oyentes al evento:
+El siguiente ejemplo ilustra la advertencia que se imprime en `stderr` cuando se han añadido muchos oyentes a un evento:
 
 ```txt
 $ node
@@ -242,9 +242,9 @@ $ node --no-warnings
 
 La opción de línea de comando `--trace-warnings` puede ser usada para hacer que la salida de la consola predeterminada para advertencias incluya el stack trace completo de la advertencia.
 
-La ejecución de Node.js utilizando la bandera de línea de comando `--throw-deprecation` causará que se arrojen advertencias de desaprobación personalizadas como excepciones.
+El arranque de Node.js utilizando la bandera de línea de comando `--throw-deprecation` causará que se arrojen como excepciones advertencias de desaprobación personalizadas.
 
-El uso de la bandera de línea de comando `--trace-deprecation` causa que la depreciación personalizada se imprima en `stderr`, en conjunto con el stack trace.
+El uso de la bandera de línea de comando `--trace-deprecation` causa que la desaprobación personalizada se imprima en `stderr`, en conjunto con el stack trace.
 
 El uso de la bandera de línea de comando `--no-deprecation` suprimirá todos los informes de la desaprobación personalizada.
 
@@ -289,7 +289,7 @@ process.on('SIGTERM', handle);
 * `'SIGHUP'` es generado en Windows cuando la ventana de la consola está cerrada, y en otras plataformas bajo varias condiciones similares, vea signal(7). Puede tener un oyente instalado, sin embargo, Node.js será cerrado incondicionalmente por Windows unos 10 segundos después. En plataformas distintas de Windows, el comportamiento por defecto de `SIGHUP` es cerrar Node.js, pero una vez que se haya instalado un oyente, su comportamiento por defecto será eliminado.
 * `'SIGTERM'` no está soportado en Windows, puede ser escuchado.
 * `'SIGINT'` desde el terminal está soportado en todas las plataformas y puede ser generado usualmente con `<Ctrl>+C` (aunque esto puede ser configurable). No es generado cuando está habilitado el modo terminal sin procesar.
-* `'SIGBREAK'` es enviado en Windows cuando se presiona `<Ctrl>+<Break>`, en plataformas distintas de Windows, se puede escuchar, pero no hay manera de enviarlo o generarlo.
+* `'SIGBREAK'` es enviado en Windows cuando se presiona `<Ctrl>+<Break>`. En plataformas distintas de Windows, se puede escuchar, pero no hay manera de enviarlo o generarlo.
 * `'SIGWINCH'` es enviado cuando la consola ha sido redimensionada. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
 * `'SIGKILL'` no puede tener un oyente instalado, esto cerrará incondicionalmente Node.js en todas las plataformas.
 * `'SIGSTOP'` no puede tener un oyente instalado.
@@ -313,7 +313,7 @@ added: v0.5.0
 
 * {string}
 
-La propiedad `process.arch` devuelve una string que identifica la arquitectura del CPU del sistema operativo para el cual se compiló en binario de Node.js.
+La propiedad `process.arch` devuelve una string que identifica la arquitectura del CPU del sistema operativo para el cual se compiló el binario de Node.js.
 
 Los posibles valores actuales son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'` y `'x64'`.
 
@@ -329,7 +329,7 @@ added: v0.1.27
 
 * {string[]}
 
-La propiedad `process.argv` devuelve un array que contiene los argumentos de línea de comando pasados cuando el proceso Node.js fue ejecutado. El primer elemento será [`process.execPath`]. Vea `process.argv0` si se necesita acceso al valor original de `argv[0]`. El segundo elemento será la ruta para el archivo de JavaScript siendo ejecutado. Los elementos restantes serán cualquier argumento de línea de comando adicional.
+La propiedad `process.argv` devuelve un array que contiene los argumentos de línea de comando pasados cuando se inició el proceso Node.js. El primer elemento será [`process.execPath`]. Vea `process.argv0` si se necesita acceso al valor original de `argv[0]`. El segundo elemento será la ruta para el archivo de JavaScript siendo ejecutado. Los elementos restantes serán argumentos de línea de comando adicional cualesquiera.
 
 Por ejemplo, asumiendo el siguiente script para `process-args.js`:
 
@@ -340,7 +340,7 @@ process.argv.forEach((val, index) => {
 });
 ```
 
-La ejecución del proceso Node.js como:
+Iniciar el proceso Node.js como:
 
 ```console
 $ node process-args.js one two=three four
@@ -392,7 +392,7 @@ added: v0.1.17
 
 * `directory` {string}
 
-El método `process.chdir()` cambia el directorio de trabajo actual del proceso Node.js o arroja una excepción si al hacerlo falla (por ejemplo, si el `directory` especificado no existe).
+El método `process.chdir()` cambia el directorio actualmente operativo del proceso Node.js o arroja una excepción si se falla al hacerlo (por ejemplo, si el `directory` especificado no existe).
 
 ```js
 console.log(`Starting directory: ${process.cwd()}`);
@@ -465,12 +465,12 @@ Una vez que `process.connected` sea `false`, ya no será posible enviar mensajes
 added: v6.1.0
 -->
 
-* `previousValue` {Object} Un valor de devolución previo de llamar `process.cpuUsage()`
+* `previousValue` {Object} Un valor de devolución previo a llamar `process.cpuUsage()`
 * Devuelve: {Object} * `user` {integer} * `system` {integer}
 
 The `process.cpuUsage()` method returns the user and system CPU time usage of the current process, in an object with properties `user` and `system`, whose values are microsecond values (millionth of a second). These values measure time spent in user and system code respectively, and may end up being greater than actual elapsed time if multiple CPU cores are performing work for this process.
 
-El resultado de una llamada previa a `process.cpuUsage()` puede ser pasado como el argumento a la función, para obtener una lectura diferente.
+El resultado de una llamada previa a `process.cpuUsage()` puede ser pasado como el argumento a la función, para obtener una lectura diff.
 
 ```js
 const startUsage = process.cpuUsage();
