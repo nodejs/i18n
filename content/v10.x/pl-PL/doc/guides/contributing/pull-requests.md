@@ -48,7 +48,7 @@ Gdy już zainstalujesz `git` i masz pewność, że wypełniłeś wymagania co do
 
 ### Krok 1: Rozwidlenie
 
-Stwórz rozwidlenie projektu [na GitHub](https://github.com/nodejs/node) i zklonuj twoje rozwidlenie lokalnie.
+Stwórz rozwidlenie projektu [na GitHub](https://github.com/nodejs/node) i sklonuj twoje rozwidlenie lokalnie.
 
 ```text
 $ git clone git@github.com:username/node.git 
@@ -88,13 +88,13 @@ Znaczna większość Żądań zmian otwarta w repozytorium `nodejs/node` zawiera
 
 Jeśli wprowadzasz zmiany w kodzie, upewnij się by uruchamiać `make lint` od czasu do czasu w celu sprawdzenia, czy zmiany pasują do zasad stylu kodu Node.js.
 
-Każda dokumentacja, którą napiszesz (włącznie z komentarzami kodu i dokumentacją API) powinny być zgodne z [Zasadami Stylu](../../STYLE_GUIDE.md). Próbki kodu uwzględnione w dokumentachi API powinny być też sprawdzone przy uruchamianiu `make lint` (lub `vcbuild.bat lint` w systemie Windows).
+Każda dokumentacja, którą napiszesz (włącznie z komentarzami kodu i dokumentacją API) powinny być zgodne z [Zasadami Stylu](../../STYLE_GUIDE.md). Próbki kodu uwzględnione w dokumentach API powinny być też sprawdzone przy uruchamianiu `make lint` (lub `vcbuild.bat lint` w systemie Windows).
 
 W celu kontrybucji kodu C++, powinieneś zajrzeć do [Zasad Stylu C++](../../../CPP_STYLE_GUIDE.md).
 
 ### Krok 4: Commit
 
-Poleca się zachowywać swoje zmiany tak logicznie ugrupowane jak to możliwe w pojedyńczych commitach. Nie istnieje limit commitów na każde pojedyńcze Żądanie zmiany i wielu kontrybutorów preferuje przeglądać zmiany podzielone między wiele commitów.
+Poleca się zachowywać swoje zmiany tak logicznie ugrupowane jak to możliwe w pojedynczych commitach. Nie istnieje limit commitów na każde pojedyncze Żądanie zmiany i wielu kontrybutorów preferuje przeglądać zmiany podzielone między wiele commitów.
 
 ```text
 $ git add moje/zmienione/pliki
@@ -110,7 +110,7 @@ Dobra wiadomość commitu powinna opisać co się zmieniło i dlaczego.
 1. Pierwsza linijka powinna:
   
   * zawierać krótki opis zmian (idealnie 50 znaków lub mniej i nie więcej niż 72 znaków)
-  * być w całości pisane małymi literami oprócz odpowiednych rzeczowników, akronymów i słów które odnoszą się bezpośrednio do kodu, jak nazwy funkcji/zmiennych
+  * być w całości pisane małymi literami oprócz odpowiednich rzeczowników, akronimów i słów które odnoszą się bezpośrednio do kodu, jak nazwy funkcji/zmiennych
   * posiadać prefiks z nazwą zmienionego subsystemu i zaczynać się czasownikiem w trybie rozkazującym. Zobacz dane wyjściowe `git log --oneline pliki/ktore/zmieniles` by dowiedzieć się na jakie subsystemy wpływają twoje zmiany.
     
     Przykłady:
@@ -138,7 +138,7 @@ Wzorzec pełnej wiadomości commitu:
 ```txt
 subsystem: wyjaśnij commit w jednej linijce.
 
-Zawartość wiadomości commitu może być kilkoma paragrafami, upewnij się proszę że kolumnty są krótsze niż około 72 znaków. W ten sposób, `git log` pokaże wiadomość w odpowiedni sposób z wcięciami akapitów.
+Zawartość wiadomości commitu może być kilkoma paragrafami, upewnij się proszę że kolumny są krótsze niż około 72 znaków. W ten sposób, `git log` pokaże wiadomość w odpowiedni sposób z wcięciami akapitów.
 
 Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
