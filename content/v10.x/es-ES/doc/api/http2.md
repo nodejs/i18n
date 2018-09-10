@@ -142,7 +142,7 @@ added: v8.4.0
 
 The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
-If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. If the event is not associated with a stream, the `Http2Session` will be shut down immediately following the `'frameError'` event.
+If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento de `'frameError'` .
 
 #### Event: 'goaway'
 
