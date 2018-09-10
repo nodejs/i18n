@@ -22,7 +22,7 @@ changes:
 
 Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja un error.
 
-## Warning: Don't Ignore Errors!
+## Advertencia: ¡No ignore los errores!
 
 <!-- type=misc -->
 
@@ -30,7 +30,7 @@ Los controladores del dominio de error no son un substituto para el cierre de un
 
 Por la naturaleza misma de cómo [`arroja`] [] funciona en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin perdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
 
-Sin embargo, cerrar el proceso es la forma más segura de responde a un error arrojado. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
+Sin embargo, cerrar el proceso es la forma más segura de responde a un error arrojado. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado pro alguien más.
 
 La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y deteniendo las emisiones de nuevas solicitudes en ese trabajador.
 
@@ -43,29 +43,29 @@ Por ejemplo, no es una buena idea:
 
 const d = require('domain').create();
 d.on('error', (er) => {
-  // The error won't crash the process, but what it does is worse!
+  // ¡El error no colisionará el proceso, hará algo peor!
   // Aunque hemos prevenido el proceso de reinicio abrupto, aún estamos filtrando // recursos como locos por si esto llegase a suceder.
   // ¡Esto no es mejor que process.on('uncaughtException')!
-  console.log(`error, but oh well ${er.message}`);
+  console.log(`error, pero oh bueno ${er.message}`);
 });
 d.run(() => {
-  require('http').createServer((req, res) => {
+  requiere('http').createServer((req, res) => {
     handleRequest(req, res);
   }).listen(PORT);
 });
 ```
 
-By using the context of a domain, and the resilience of separating our program into multiple worker processes, we can react more appropriately, and handle errors with much greater safety.
+Al usar el contexto de un dominio y la elasticidad al separar nuestros programas en procesos de múltiples de trabajo, podemos reaccionar adecuadamente y manejar los errores con mayor seguridad.
 
 ```js
-// Much better!
+// ¡Mucho mejor!
 
 const cluster = require('cluster');
 const PORT = +process.env.PORT || 1337;
 
-if (cluster.isMaster) {
-  // A more realistic scenario would have more than 2 workers,
-  // and perhaps not put the master and worker in the same file.
+Si (cluster.isMaster) {    
+// Un escenario más realista tendría más de dos trabajadores y,
+// quizás, no colocaría al principal y al trabajador en la misma carpeta.
   //
   // It is also possible to get a bit fancier about logging, and
   // implement whatever custom logic is needed to prevent DoS
