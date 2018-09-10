@@ -623,7 +623,7 @@ added: v0.1.16
 
 La variabile `exports` è disponibile all'interno dello scope al livello del file di un modulo e gli viene assegnato il valore di `module.exports` prima che il modulo venga valutato.
 
-Permette uno shortcut, in modo che `module.exports.f = ...` possa essere scritto più comodamente come `exports.f = ...`. Tuttavia, tieni presente che, come qualsiasi variabile, se un nuovo valore viene assegnato a `exports`, non è più vincolato a `module.exports`:
+Permette una scorciatoia, in modo che `module.exports.f = ...` possa essere scritto più comodamente come `exports.f = ...`. Tuttavia, tieni presente che, come qualsiasi variabile, se un nuovo valore viene assegnato a `exports`, non è più vincolato a `module.exports`:
 
 ```js
 module.exports.hello = true; // Esportato da require del modulo
@@ -649,7 +649,7 @@ function require(/* ... */) {
     // Codice del modulo qui. In questo esempio, definisci una funzione.
     function someFunc() {}
     exports = someFunc;
-    // A questo punto, exports non è più uno shortcut di module.exports, e     
+    // A questo punto, exports non è più una scorciatoia di module.exports, e     
     // questo modulo continuerà a esportare un object vuoto predefinito.
     module.exports = someFunc;
     // A questo punto, il modulo esporterà someFunc, invece di
@@ -730,7 +730,7 @@ added: v0.3.7
 
 * {Object}
 
-Fornisce metodi di utilità generale quando interagisce con istanze di `Module` — la variabile `module` che si vede spesso file module. Accesso effettuato tramite `require('module')`.
+Fornisce metodi di utilità generale quando interagisce con istanze di `Module` — la variabile `module` che si vede spesso nei file module. Accesso effettuato tramite `require('module')`.
 
 ### module.builtinModules
 
