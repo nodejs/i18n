@@ -26,11 +26,11 @@ Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO c
 
 <!-- type=misc -->
 
-Domain error handlers are not a substitute for closing down a process when an error occurs.
+Los controladores del dominio de error no son un substituto para el cierre de un proceso cuando se produce un error.
 
-By the very nature of how [`throw`][] works in JavaScript, there is almost never any way to safely "pick up where you left off", without leaking references, or creating some other sort of undefined brittle state.
+Por la naturaleza misma de cómo [`arroja`] [] funciona en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin perdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
 
-The safest way to respond to a thrown error is to shut down the process. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
+Sin embargo, cerrar el proceso es la forma más segura de responde a un error arrojado. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
 
 The better approach is to send an error response to the request that triggered the error, while letting the others finish in their normal time, and stop listening for new requests in that worker.
 
