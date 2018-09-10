@@ -727,7 +727,7 @@ added: v0.11.14
 
 Establece la clave privada EC Diffie-Hellman. El `encoding` puede ser `'latin1'`, `'hex'` o `'base64'`. Si `encoding` es dado, `privateKey` se espera que sea una string; de no ser así `privateKey` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, un error es producido. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto `ECDH`.
+Si `privateKey` no es válido para la curva especificada cuando el objeto `ECDH` fue creado, se produce un error. Sobre la configuración de la clave privada, el punto público asociado (clave) es también generado y establecido en el objeto `ECDH`.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -736,7 +736,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Estabilidad: 0 - Desactualizado
+> Estabilidad: 0 - En desuso
 
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
@@ -922,7 +922,7 @@ added: v0.1.94
 
 Calcula el resúmen HMAC de todos los datos pasados usando [`hmac.update()`][]. El `encoding` puede ser `'hex'`, `'latin1'` o `'base64'`. Si `encoding` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto;
 
-El objeto `Hmac` no puede ser usado nuevamente después de que `hmac.digest()` ha sido llamado. Llamadas múltiples a `hmac.digest()` resultará en producir un error.
+El objeto `Hmac` no puede ser usado nuevamente después de que `hmac.digest()` ha sido llamado. Llamadas múltiples a `hmac.digest()` producirá un error.
 
 ### hmac.update(data[, inputEncoding])
 
@@ -953,7 +953,7 @@ La clase `Sign` es una utilidad para generar firmas. Puede ser usada de una de l
 - Como una [stream](stream.html) escribible, donde los datos a ser firmados están escritos y el método [`sign.sign()`][] es usado para generar y devolver la firma, o
 - Usando los métodos [`sign.update()`][] y [`sign.sign()`][] para producir la firma.
 
-El método [`crypto.createSign()`][] es usado para creai instancias `Sign`. El argumento es el nombre de la string de la función hash a utilizar. Los objetos `Sign` no deben crearse usando directamente la palabra clave `new`.
+El método [`crypto.createSign()`][] es usado para crear instancias `Sign`. El argumento es el nombre de la string de la función hash a utilizar. Los objetos `Sign` no deben crearse usando directamente la palabra clave `new`.
 
 Ejemplo: Usando objetos`Sign` como streams:
 
