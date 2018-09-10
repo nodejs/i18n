@@ -2,52 +2,52 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
+Un stream es una interfaz abstracta para trabajar con transmisión de datos en Node.js. El módulo `stream` proporciona una API base que hace sencillo contruir objetos que implementan la interfaz stream.
 
-There are many stream objects provided by Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
+Existen muchos objetos stream que son proporcionados por Node.js. Por ejemplo, [request to an HTTP server](http.html#http_class_http_incomingmessage) y [`process.stdout`][] ambos son instancias stream.
 
-Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
+Los streams pueden ser legibles, escribibles o ambas. Todos los streams son instancias de [`EventEmitter`][].
 
-The `stream` module can be accessed using:
+El módulo `stream` puede ser accedido usando:
 
 ```js
 const stream = require('stream');
 ```
 
-While it is important to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
+Mientras es importante entender cómo los streams funcionan, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que están creando nuevos tipos de instancias stream. Los desarrolladores que *consumen* primariamente objetos stream raramente necesitaran usar el módulo `stream` directamente.
 
-## Organization of this Document
+## Organización de este Documento
 
-This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
+Este documento está dividido en dos secciones principales, con una tercera sección para notas adicionales. La primera sección explica los elementos del API del stream que son requeridos para usar *usar* streams con una aplicación. La segunda sección explica los elementos de la API que son necesarios para *implementar* nuevos tipos de streams.
 
-## Types of Streams
+## Tipos de Streams
 
-There are four fundamental stream types within Node.js:
+Existen cuatro tipo fundamentales de stream en Node.js:
 
 * [`Readable`][] - streams from which data can be read (for example [`fs.createReadStream()`][]).
 * [`Writable`][] - streams to which data can be written (for example [`fs.createWriteStream()`][]).
 * [`Duplex`][] - streams that are both `Readable` and `Writable` (for example [`net.Socket`][]).
 * [`Transform`][] - `Duplex` streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
 
-Additionally this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback) and [finished](#stream_stream_finished_stream_callback).
+Adicionalmente, este módulo incluye la funciones de utilidad [pipeline](#stream_stream_pipeline_streams_callback) y [finished](#stream_stream_finished_stream_callback).
 
-### Object Mode
+### Modo Objeto
 
-All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
+Todos los streams que son creados por las APIs de Node.js operan exclusivamente en objetos strings y objetos `Buffer` (o `Uint8Array`). Si es posible, sin embargo, para implementaciones stream, trabajar con otros tipos de valores de JavaScript (con la excepción de `null`, que sirve un propósito especial con los streams). Tales streams son considerados para operar en "modo objeto".
 
-Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
+Las instancias stream son cambiadas a modo objeto usando la opción `objectMode` cuando el stream es creado. No es seguro. intentar cambiar un stream existente a modo objeto.
 
-### Buffering
+### Almacenamiento en búfer
 
 <!--type=misc-->
 
-Both [`Writable`][] and [`Readable`][] streams will store data in an internal buffer that can be retrieved using `writable.writableBuffer` or `readable.readableBuffer`, respectively.
+Los streams [`Writable`][] y [`Readable`][] van a almacenar los datos en un búfer interno, que puede ser recuperado usando `writable.writableBuffer` o `readable.readableBuffer`, respectivamente.
 
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the streams constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
+La cantidad de datos potencialmente guardados en un búfer depende de la opción `highWaterMark` pasadas por el constructor de streams. Para streams normales, la opción `highWaterMark` especifica un [número total de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Para operar stream en modo objeto, `highWaterMark` especifica un número total de objetos´.
 
-Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
+Los datos son guardados en streams `Readable` cuando la implementación llama a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). Si el consumidor del stream no llama a [`stream.read()`](#stream_readable_read_size), los datos se quedarán en la cola interna hasta que se consumen.
 
 Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
 

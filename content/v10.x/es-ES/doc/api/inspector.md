@@ -18,32 +18,32 @@ const inspector = require('inspector');
 * `host` {string} Huésped en el cual escuchar para las conexiónes de inspector. Opcional. **Predeterminado:** lo que fue especificado en la CLI.
 * `wait` {boolean} Bloquear hasta que un cliente se haya conectado. Opcional. **Predeterminado:** `false`.
 
-Activate inspector on host and port. Equivalent to `node
---inspect=[[host:]port]`, but can be done programmatically after node has started.
+Active el inspector en el host y en el puerto. Equivalente a `node
+--inspect=[[host:]port]`, pero puede hacerse mediante programación después que el node haya iniciado.
 
-If wait is `true`, will block until a client has connected to the inspect port and flow control has been passed to the debugger client.
+Si la espera es `true`, se bloqueará hasta que un cliente se haya conectado al puerto de inspección y el control de flujo haya sido pasado al cliente depurador.
 
 ### inspector.close()
 
-Deactivate the inspector. Blocks until there are no active connections.
+Desactivar el inspector. Bloquea hasta que no hayan conexiones activas.
 
 ### inspector.url()
 
-* Returns: {string|undefined}
+* Devuelve: {string|undefined}
 
-Return the URL of the active inspector, or `undefined` if there is none.
+Devuelve el URL del inspector activo o `undefined` sin no hay ninguno.
 
-## Class: inspector.Session
+## Clase: inspector.Session
 
-The `inspector.Session` is used for dispatching messages to the V8 inspector back-end and receiving message responses and notifications.
+La `inspector.Session` es utilizada para enviar mensajes al back-end del inspector V8 y para recibir respuestas y notificaciones de mensajes.
 
-### Constructor: new inspector.Session()
+### Constructor: nueva inspector.Session()
 
 <!-- YAML
 added: v8.0.0
 -->
 
-Create a new instance of the `inspector.Session` class. The inspector session needs to be connected through [`session.connect()`][] before the messages can be dispatched to the inspector backend.
+Crea una nueva instancia de la clase `inspector.Session`. La sesión de inspector necesita ser conectada a través de [`session.connect()`][] antes de que los mensajes puedan ser enviados al backend del inspector.
 
 `inspector.Session` is an [`EventEmitter`][] with the following events:
 

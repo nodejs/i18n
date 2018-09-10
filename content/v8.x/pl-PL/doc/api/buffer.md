@@ -1,4 +1,4 @@
-# Buffer
+# Bufor
 
 <!--introduced_in=v0.10.0-->
 
@@ -273,7 +273,7 @@ changes:
 > Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] instead.
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
+* `byteOffset` {integer} Index of first byte to expose. **Domyślne:** `0`
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
 
 This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
@@ -422,7 +422,7 @@ changes:
 -->
 
 * `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`
+* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Domyślne:** `0`
 * `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
@@ -673,7 +673,7 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`
+* `byteOffset` {integer} Index of first byte to expose. **Domyślne:** `0`
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
@@ -889,9 +889,9 @@ changes:
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to compare to.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`
+* `targetStart` {integer} The offset within `target` at which to begin comparison. **Domyślne:** `0`
 * `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`
+* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Domyślne:** `0`
 * `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`]
 * Returns: {integer}
 
@@ -955,8 +955,8 @@ added: v0.1.90
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin copying to. **Default:** `0`
-* `sourceStart` {integer} The offset within `buf` at which to begin copying from. **Default:** `0`
+* `targetStart` {integer} The offset within `target` at which to begin copying to. **Domyślne:** `0`
+* `sourceStart` {integer} The offset within `buf` at which to begin copying from. **Domyślne:** `0`
 * `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`]
 * Returns: {integer} The number of bytes copied.
 
@@ -1064,7 +1064,7 @@ changes:
 -->
 
 * `value` {string|Buffer|integer} The value to fill `buf` with.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`
+* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Domyślne:** `0`
 * `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`]
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
 * Returns: {Buffer} A reference to `buf`.
@@ -1110,7 +1110,7 @@ added: v5.3.0
 -->
 
 * `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
+* `byteOffset` {integer} Where to begin searching in `buf`. **Domyślne:** `0`
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
@@ -1160,7 +1160,7 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`
+* `byteOffset` {integer} Where to begin searching in `buf`. **Domyślne:** `0`
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`
 * Returns: {integer} The index of the first occurrence of `value` in `buf` or `-1` if `buf` does not contain `value`.
 
@@ -1729,7 +1729,7 @@ changes:
                  calculations with them.
 -->
 
-* `start` {integer} Where the new `Buffer` will start. **Default:** `0`
+* `start` {integer} Where the new `Buffer` will start. **Domyślne:** `0`
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`]
 * Returns: {Buffer}
 
@@ -1908,7 +1908,7 @@ added: v0.1.90
 -->
 
 * `encoding` {string} The character encoding to decode to. **Default:** `'utf8'`
-* `start` {integer} The byte offset to start decoding at. **Default:** `0`
+* `start` {integer} The byte offset to start decoding at. **Domyślne:** `0`
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`]
 * Returns: {string}
 
@@ -1990,7 +1990,7 @@ added: v0.1.90
 -->
 
 * `string` {string} String to be written to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`
+* `offset` {integer} Number of bytes to skip before starting to write `string`. **Domyślne:** `0`
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`
 * `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`
 * Returns: {integer} Number of bytes written.

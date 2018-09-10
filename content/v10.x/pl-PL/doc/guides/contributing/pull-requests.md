@@ -1,157 +1,150 @@
-# Pull Requests
+# Żądania zmiany
 
-There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
+Istnieją dwa fundamentalne komponenty procesu Żądania zmian: jeden konkretny i techniczny oraz drugi skupiony głównie wokół procesu. Konkretny i techniczny komponent zawiera specyficzne detale przygotowywania twojego lokalnego środowiska abyś mógł wprowadzać faktyczne zmiany. Od tego właśnie zaczniemy.
 
-* [Dependencies](#dependencies)
-* [Setting up your local environment](#setting-up-your-local-environment) 
-  * [Step 1: Fork](#step-1-fork)
-  * [Step 2: Branch](#step-2-branch)
-* [The Process of Making Changes](#the-process-of-making-changes) 
-  * [Step 3: Code](#step-3-code)
-  * [Step 4: Commit](#step-4-commit) 
-    * [Commit message guidelines](#commit-message-guidelines)
-  * [Step 5: Rebase](#step-5-rebase)
-  * [Step 6: Test](#step-6-test) 
-    * [Test Coverage](#test-coverage)
-  * [Step 7: Push](#step-7-push)
-  * [Step 8: Opening the Pull Request](#step-8-opening-the-pull-request)
-  * [Step 9: Discuss and Update](#step-9-discuss-and-update) 
-    * [Approval and Request Changes Workflow](#approval-and-request-changes-workflow)
-  * [Step 10: Landing](#step-10-landing)
-* [Reviewing Pull Requests](#reviewing-pull-requests) 
-  * [Review a bit at a time](#review-a-bit-at-a-time)
-  * [Be aware of the person behind the code](#be-aware-of-the-person-behind-the-code)
-  * [Respect the minimum wait time for comments](#respect-the-minimum-wait-time-for-comments)
-  * [Abandoned or Stalled Pull Requests](#abandoned-or-stalled-pull-requests)
-  * [Approving a change](#approving-a-change)
-  * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
-  * [Performance is not everything](#performance-is-not-everything)
-  * [Continuous Integration Testing](#continuous-integration-testing)
-* [Additional Notes](#additional-notes) 
-  * [Commit Squashing](#commit-squashing)
-  * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
-  * [CI Testing](#ci-testing)
-  * [Waiting Until the Pull Request Gets Landed](#waiting-until-the-pull-request-gets-landed)
-  * [Check Out the Collaborator Guide](#check-out-the-collaborator-guide)
+* [Zależności](#dependencies)
+* [Konfigurowanie lokalnego środowiska](#setting-up-your-local-environment) 
+  * [Krok 1: Rozwidlenie](#step-1-fork)
+  * [Krok 2: Gałąź](#step-2-branch)
+* [Proces wprowadzania zmian](#the-process-of-making-changes) 
+  * [Krok 3: Kod](#step-3-code)
+  * [Krok 4: Commit](#step-4-commit) 
+    * [Wytyczne wiadomości Commitów](#commit-message-guidelines)
+  * [Krok 5: Rebase](#step-5-rebase)
+  * [Krok 6: Test](#step-6-test) 
+    * [Zakres Testu](#test-coverage)
+  * [Krok 7: Popchnięcie zmian](#step-7-push)
+  * [Krok 8: Otwarcie Żądania zmiany](#step-8-opening-the-pull-request)
+  * [Krok 9: Dyskutuj i Aktualizuj](#step-9-discuss-and-update) 
+    * [Przepływ pracy Zatwierdzania i Propozycji](#approval-and-request-changes-workflow)
+  * [Krok 10: Lądowanie](#step-10-landing)
+* [Wysyłanie Żądań zmian](#reviewing-pull-requests) 
+  * [Nie sprawdzaj wszystkiego na raz](#review-a-bit-at-a-time)
+  * [Bądź świadomy kim jest autor kodu](#be-aware-of-the-person-behind-the-code)
+  * [Respektuj minimalny czas oczekiwania na komentarze](#respect-the-minimum-wait-time-for-comments)
+  * [Opuszczone lub Utknięte Żądania zmiany](#abandoned-or-stalled-pull-requests)
+  * [Zatwierdzanie zmiany](#approving-a-change)
+  * [Zaakceptuj różne opinie na temat tego, co powinno należeć do Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
+  * [Wydajność to nie wszystko](#performance-is-not-everything)
+  * [Testowanie w Continuous Integration](#continuous-integration-testing)
+* [Dodatkowe Notatki](#additional-notes) 
+  * [Zgniatanie Commit'ów](#commit-squashing)
+  * [Zdobywanie Zatwierdzeń dla twojego Żądania zmiany](#getting-approvals-for-your-pull-request)
+  * [Testowanie CI](#ci-testing)
+  * [Zaczekaj aż Żądanie zmiany zostanie Wylądowane](#waiting-until-the-pull-request-gets-landed)
+  * [Sprawdź Poradnik Kolaboracji](#check-out-the-collaborator-guide)
 
-## Dependencies
+## Zależności
 
-Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
+Node.js zawiera 'w pakiecie' kilka zależności w folderach *deps/* i *tools/*, które nie są częścią projektu. Zmiany do plików w tych folderach powinny być wysłane do odpowiadających im projektów. Nie wysyłaj tych zmian do Node.js. Nie możemy zaakceptować takich zmian.
 
-In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
+W razie niepewności, otwórz problem w [liście problemów](https://github.com/nodejs/node/issues/) lub skontaktuj się z jednym z [kolaboratorów projektu](https://github.com/nodejs/node/#current-project-team-members). Node.js operuje na dwóch kanałach IRC: [#Node.js](https://webchat.freenode.net/?channels=node.js) dla pomocy ogólnej i pytań, a także [#Node-dev](https://webchat.freenode.net/?channels=node-dev) dla rozbudowy rdzenia Node.js.
 
-## Setting up your local environment
+## Konfigurowanie lokalnego środowiska
 
-To get started, you will need to have `git` installed locally. Depending on your operating system, there are also a number of other dependencies required. These are detailed in the [Building guide](../../../BUILDING.md).
+Aby zacząć, musisz posiadać zainstalowany lokalnie `git`. W zależności od twojego systemu operacyjnego, możesz też potrzebować kilku zależności. Są one opisane w [Poradniku Konfiguracji](../../../BUILDING.md).
 
-Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
+Gdy już zainstalujesz `git` i masz pewność, że wypełniłeś wymagania co do zależności, czas na stworzenie rozwidlenia.
 
-### Step 1: Fork
+### Krok 1: Rozwidlenie
 
-Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
+Stwórz rozwidlenie projektu [na GitHub](https://github.com/nodejs/node) i sklonuj twoje rozwidlenie lokalnie.
 
 ```text
-$ git clone git@github.com:username/node.git
-$ cd node
-$ git remote add upstream https://github.com/nodejs/node.git
+$ git clone git@github.com:username/node.git 
+$ cd node 
+$ git remote add upstream https://github.com/nodejs/node.git 
 $ git fetch upstream
 ```
 
-It is recommended to configure `git` so that it knows who you are:
+Polecanym jest także skonfigurować `git` tak, by wiedział kim jesteś:
 
 ```text
-$ git config user.name "J. Random User"
-$ git config user.email "j.random.user@example.com"
+$ git config user.name "J. Losowy Użytkownik"
+$ git config user.email "j.losowy.uzytkownik@przyklad.com"
 ```
 
-Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
+Proszę upewnij się, że ten lokalny email jest też dodany do twojej [Listy emaili GitHub](https://github.com/settings/emails) tak, że twoje commity mogą być przypisane do twojego konta i otrzymasz promocję do rangi Kontrybutora gdy twój pierwszy commit wyląduje.
 
-### Step 2: Branch
+### Krok 2: Gałąź
 
-As a best practice to keep your development environment as organized as possible, create local branches to work within. These should also be created directly off of the `master` branch.
+By zachować nasze środowisko programowania tak zorganizowanym jak to tylko możliwe, stwórz lokalne rozgałęzienia, w których będziesz pracować. Powinny być one stworzone wprost z gałęzi `master`.
 
 ```text
-$ git checkout -b my-branch -t upstream/master
+$ git checkout -b moja-galaz -t upstream/master
 ```
 
-## The Process of Making Changes
+## Proces wprowadzania zmian
 
-### Step 3: Code
+### Krok 3: Kod
 
-The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
+Znaczna większość Żądań zmian otwarta w repozytorium `nodejs/node` zawiera zmiany do jednego lub więcej z poniższych:
 
-     - the C/C++ code contained in the `src` directory
-     - the JavaScript code contained in the `lib` directory
-     - the documentation in `doc/api`
-     - tests within the `test` directory.
+     - kod C/C++ zawarty w folderze `src`
+     - kod JavaScript zawarty w folderze `lib`
+     - dokumentacja zawarta w `doc/api`
+     - testy zawarte w folderze `test`.
     
 
-If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
+Jeśli wprowadzasz zmiany w kodzie, upewnij się by uruchamiać `make lint` od czasu do czasu w celu sprawdzenia, czy zmiany pasują do zasad stylu kodu Node.js.
 
-Any documentation you write (including code comments and API documentation) should follow the [Style Guide](../../STYLE_GUIDE.md). Code samples included in the API docs will also be checked when running `make lint` (or `vcbuild.bat lint` on Windows).
+Każda dokumentacja, którą napiszesz (włącznie z komentarzami kodu i dokumentacją API) powinny być zgodne z [Zasadami Stylu](../../STYLE_GUIDE.md). Próbki kodu uwzględnione w dokumentach API powinny być też sprawdzone przy uruchamianiu `make lint` (lub `vcbuild.bat lint` w systemie Windows).
 
-For contributing C++ code, you may want to look at the [C++ Style Guide](../../../CPP_STYLE_GUIDE.md).
+W celu kontrybucji kodu C++, powinieneś zajrzeć do [Zasad Stylu C++](../../../CPP_STYLE_GUIDE.md).
 
-### Step 4: Commit
+### Krok 4: Commit
 
-It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+Poleca się zachowywać swoje zmiany tak logicznie ugrupowane jak to możliwe w pojedynczych commitach. Nie istnieje limit commitów na każde pojedyncze Żądanie zmiany i wielu kontrybutorów preferuje przeglądać zmiany podzielone między wiele commitów.
 
 ```text
-$ git add my/changed/files
+$ git add moje/zmienione/pliki
 $ git commit
 ```
 
-Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
+Pamiętaj, że wiele commitów często zostaje zgniecionych kiedy lądują (zobacz notatki o [zgniataniu commitów](#commit-squashing)).
 
-#### Commit message guidelines
+#### Wytyczne wiadomości Commitów
 
-A good commit message should describe what changed and why.
+Dobra wiadomość commitu powinna opisać co się zmieniło i dlaczego.
 
-1. The first line should:
+1. Pierwsza linijka powinna:
   
-  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
-  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+  * zawierać krótki opis zmian (idealnie 50 znaków lub mniej i nie więcej niż 72 znaków)
+  * być w całości pisane małymi literami oprócz odpowiednich rzeczowników, akronimów i słów które odnoszą się bezpośrednio do kodu, jak nazwy funkcji/zmiennych
+  * posiadać prefiks z nazwą zmienionego subsystemu i zaczynać się czasownikiem w trybie rozkazującym. Zobacz dane wyjściowe `git log --oneline pliki/ktore/zmieniles` by dowiedzieć się na jakie subsystemy wpływają twoje zmiany.
     
-    Examples:
+    Przykłady:
   
   * `net: add localAddress and localPort to Socket`
   
   * `src: fix typos in async_wrap.h`
 
-2. Keep the second line blank.
+2. Pozostaw drugą linijkę pustą.
 
-3. Wrap all other lines at 72 columns (except for long URLs).
+3. Zamknij wszystkie inne linie w 72 kolumnach (oprócz długich URLów).
 
-4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
+4. Jeśli twoja zmiana naprawia jeden z otwartych problemów, możesz o tym wspomnieć na końcu wiadomości. Użyj prefiksu `Fixes:` i pełnego URL problemu. Dla innych referencji użyj `Refs:`.
   
-  Examples:
+  Przykłady:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
   * `Refs: https://github.com/nodejs/node/pull/3615`
 
-5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
+5. Jeśli twój commit wprowadza bardzo dużą zmianę (`semver-major`), powinien on zawierać opis powodu bardzo dużej zmiany, które sytuacje wywołałyby dużą zmianę i co dokładnie się zmieniło.
 
-Sample complete commit message:
+Wzorzec pełnej wiadomości commitu:
 
 ```txt
-subsystem: explain the commit in one line
+subsystem: wyjaśnij commit w jednej linijce.
 
-Body of commit message is a few lines of text, explaining things
-in more detail, possibly giving some background about the issue
-being fixed, etc.
-
-The body of the commit message can be several paragraphs, and
-please do proper word-wrap and keep columns shorter than about
-72 characters or so. That way, `git log` will show things
-nicely even when it is indented.
+Zawartość wiadomości commitu może być kilkoma paragrafami, upewnij się proszę że kolumny są krótsze niż około 72 znaków. W ten sposób, `git log` pokaże wiadomość w odpowiedni sposób z wcięciami akapitów.
 
 Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
 ```
 
-If you are new to contributing to Node.js, please try to do your best at conforming to these guidelines, but do not worry if you get something wrong. One of the existing contributors will help get things situated and the contributor landing the Pull Request will ensure that everything follows the project guidelines.
+Jeśli jesteś nowy w kontrybucjach do Node.js, proszę daj z siebie wszystko by zastosować się do tych zastrzeżeń, ale nie martw się jeśli popełnisz błąd. One of the existing contributors will help get things situated and the contributor landing the Pull Request will ensure that everything follows the project guidelines.
 
 See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
 
@@ -437,6 +430,6 @@ Only a Collaborator can start a CI run. Usually one of them will do it for you a
 
 A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### Check Out the Collaborator Guide
+### Sprawdź Poradnik Kolaboracji
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).

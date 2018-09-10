@@ -1,26 +1,26 @@
-# Node.js Release Process
+# Proceso de Lanzamiento de Node.js
 
-This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+Este documento describe los aspectos técnicos del proceso de lanzamiento de Node.js. La audiencia prevista son los que han sido autorizados por el Comité de Dirección Técnica (CDT) de la Fundación Node.js para crear, promover y firmar versiones oficiales del lanzamiento para Node.js alojadas en <https://nodejs.org/>.
 
-## Who can make a release?
+## ¿Quién puede realizar un lanzamiento?
 
-Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
+La autorización del lanzamiento es otorgada por el CDT de Node.js. Una vez autorizado, el individuo debe tener lo siguiente:
 
-### 1. Jenkins Release Access
+### 1. El acceso de lanzamiento Jenkins
 
-There are three relevant Jenkins jobs that should be used for a release flow:
+Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liberado:
 
-**a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
+**a.** **Pruebas:** **[nodo-de-prueba-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** es usado para una prueba final completa que asegura que el *ENCABEZADO* actual es estable.
 
-**b.** **Nightly builds:** (optional) **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** can be used to create a nightly release for the current *HEAD* if public test releases are required. Builds triggered with this job are published straight to <https://nodejs.org/download/nightly/> and are available for public download.
+**b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)**puede ser usado para crear una versión nocturna del actual *ENCABEZADO* si se requiere un lanzamiento de prueba pública. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y están disponibles para su descarga pública.
 
-**c.** **Release builds:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** does all of the work to build all required release assets. Promotion of the release files is a manual step once they are ready (see below).
+**c.** **Compilaciones liberadas** **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** hace todo el trabajo de compilar todos los activos de lanzamiento requeridos. La promoción de los archivos de lanzamiento es un paso manual una vez que estén listos (véase acontinuación).
 
-The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
+El [Equipo de Compilación de Node.js](https://github.com/nodejs/build) puede otorgar este acceso a personas autorizadas por el CDT.
 
-### 2. <nodejs.org> Access
+### 2. <nodejs.org> Acceso
 
-The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
+El usuario *dist* en nodejs.org controla los activos disponibles en <https://nodejs.org/download/>. <https://nodejs.org/dist/> es un alias para <https://nodejs.org/download/release/>.
 
 The Jenkins release build workers upload their artifacts to the web server as the *staging* user. The *dist* user has access to move these assets to public access while, for security, the *staging* user does not.
 

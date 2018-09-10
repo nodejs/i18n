@@ -12,7 +12,7 @@
 * [Ενδιάμεση Μνήμη](buffer.html)
 * [Επιπρόσθετα C++](addons.html)
 * [Επιπρόσθετα C/C++ - N-API](n-api.html)
-* [Διεργασίες Παιδιά](child_process.html)
+* [Θυγατρικές διεργασίες](child_process.html)
 * [Σύμπλεγμα](cluster.html)
 * [Επιλογές Γραμμής Εντολών](cli.html)
 * [Κονσόλα](console.html)

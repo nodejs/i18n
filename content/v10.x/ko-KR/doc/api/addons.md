@@ -12,7 +12,7 @@ Node.js의 애드온은 C++로 작성되어 동적으로 링크되는 공유 객
 
 * [libuv](https://github.com/libuv/libuv): Node.js의 이벤트 루프, 워커 스레드와 플랫폼의 모든 비동기적 행위를 구현하는 C 라이브러리. 또한 크로스-플랫폼 추상화 라이브러리의 역할을 함으로써, 주요한 모든 운영 체제의 파일 시스템, 소켓, 타이머, 시스템 이벤트와 같은 많은 일반적인 시스템 작업에 대한 사용하기 쉽고, POSIX-like 한 접근을 가능하게 합니다. libuv는 또한 pthreads-like한 스레딩 추상화를 통해, 표준 이벤트 루프보다 강력하고 세련된 비동기 애드온을 제공합니다. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* 내부 Node.js 라이브러리. Node.js는 애드온이 사용할 수 있는 많은 수의 C++ API를 노출합니다 &mdash; 그 중 가장 중요한 것은 `node::ObjectWrap` 클래스.
+* Node.js 내장 라이브러리. Node.js는 애드온이 사용할 수 있는 많은 수의 C++ API를 노출합니다 &mdash; 그 중 가장 중요한 것은 `node::ObjectWrap` 클래스.
 
 * Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
@@ -20,13 +20,13 @@ All of the following examples are available for [download](https://github.com/no
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+이 "Hello world" 예제는 C++로 작성된 간단한 애드온입니다. 아래는 자바스크립트로 작성한 같은 애드온의 코드입니다:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+먼저, `hello.cc` 파일을 만듭니다.
 
 ```cpp
 // hello.cc

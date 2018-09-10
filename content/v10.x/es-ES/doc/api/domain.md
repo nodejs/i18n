@@ -1,4 +1,4 @@
-# Domain
+# Dominio
 
 <!-- YAML
 changes:
@@ -16,66 +16,65 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desactualización
 
-**This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
+**Este módulo esta por convertirse en obsoleto**. Será completamente inútil una vez que el reemplazo de API haya finalizado. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Lo que si deben saber es la funcionalidad que los dominios ofrecen pueden recaer en ella para el momento de uso, pero deben esperar a tener o migrar a una solución diferente en el futuro.
 
-Domains provide a way to handle multiple different IO operations as a single group. If any of the event emitters or callbacks registered to a domain emit an `'error'` event, or throw an error, then the domain object will be notified, rather than losing the context of the error in the `process.on('uncaughtException')` handler, or causing the program to exit immediately with an error code.
+Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja un error.
 
-## Warning: Don't Ignore Errors!
+## Advertencia: ¡No ignore los errores!
 
 <!-- type=misc -->
 
-Domain error handlers are not a substitute for closing down a process when an error occurs.
+Los controladores del dominio de error no son un substituto para el cierre de un proceso cuando se produce un error.
 
-By the very nature of how [`throw`][] works in JavaScript, there is almost never any way to safely "pick up where you left off", without leaking references, or creating some other sort of undefined brittle state.
+Por la naturaleza misma de cómo [`arroja`] [] funciona en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin perdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
 
-The safest way to respond to a thrown error is to shut down the process. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
+Sin embargo, cerrar el proceso es la forma más segura de responde a un error arrojado. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado pro alguien más.
 
-The better approach is to send an error response to the request that triggered the error, while letting the others finish in their normal time, and stop listening for new requests in that worker.
+La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y deteniendo las emisiones de nuevas solicitudes en ese trabajador.
 
-In this way, `domain` usage goes hand-in-hand with the cluster module, since the master process can fork a new worker when a worker encounters an error. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
+Así, el uso del `dominio` se hace en conjunto al modulo cluster debido a que el proceso principal puede bifurcar un nuevo trabajador cuando un trabajador encuentra un error. Para los programas de Node.js que escalan en múltiples máquinas, el proxy final o servicio de registro pude registrar la falla y reaccionar de acuerdo a su naturaleza.
 
-For example, this is not a good idea:
+Por ejemplo, no es una buena idea:
 
 ```js
-// XXX WARNING! BAD IDEA!
+// XXX ¡ADVERTENCIA! ¡MALA IDEA!
 
 const d = require('domain').create();
 d.on('error', (er) => {
-  // The error won't crash the process, but what it does is worse!
-  // Though we've prevented abrupt process restarting, we are leaking
-  // resources like crazy if this ever happens.
-  // This is no better than process.on('uncaughtException')!
-  console.log(`error, but oh well ${er.message}`);
+  // ¡El error no colisionará el proceso, hará algo peor!
+  // Aunque hemos prevenido el proceso de reinicio abrupto, aún estamos filtrando // recursos como locos por si esto llegase a suceder.
+  // ¡Esto no es mejor que process.on('uncaughtException')!
+  console.log(`error, pero oh bueno ${er.message}`);
 });
 d.run(() => {
-  require('http').createServer((req, res) => {
+  requiere('http').createServer((req, res) => {
     handleRequest(req, res);
   }).listen(PORT);
 });
 ```
 
-By using the context of a domain, and the resilience of separating our program into multiple worker processes, we can react more appropriately, and handle errors with much greater safety.
+Al usar el contexto de un dominio y la elasticidad al separar nuestros programas en procesos de múltiples de trabajo, podemos reaccionar adecuadamente y manejar los errores con mayor seguridad.
 
 ```js
-// Much better!
+// ¡Mucho mejor!
 
 const cluster = require('cluster');
 const PORT = +process.env.PORT || 1337;
 
-if (cluster.isMaster) {
-  // A more realistic scenario would have more than 2 workers,
-  // and perhaps not put the master and worker in the same file.
+Si (cluster.isMaster) {    
+// Un escenario más realista tendría más de dos trabajadores y,
+// quizás, no colocaría al principal y al trabajador en la misma carpeta.
   //
-  // It is also possible to get a bit fancier about logging, and
-  // implement whatever custom logic is needed to prevent DoS
-  // attacks and other bad behavior.
+  // también es posible adornar un poco el registro e 
+ // implementar cualquier lógica personalizada necesaria para evitar que DoS
+  // ataque y otro mal comportamiento.
   //
-  // See the options in the cluster documentation.
+ // Ver las opciones en el cluster de documentación.
   //
-  // The important thing is that the master does very little,
-  // increasing our resilience to unexpected errors.
+ // Lo importante es que el proceso principal hace poco, 
+ // aumentando nuestra resistencia ante errores inesperados.
 
   cluster.fork();
   cluster.fork();
@@ -85,59 +84,59 @@ if (cluster.isMaster) {
     cluster.fork();
   });
 
-} else {
-  // the worker
+} otro {
+  // el trabajador
   //
-  // This is where we put our bugs!
+  // ¡Aquí es donde se colocan nuestros errores!
 
   const domain = require('domain');
 
-  // See the cluster documentation for more details about using
-  // worker processes to serve requests. How it works, caveats, etc.
+ // Ver el cluster de documentación para más detalles sobre el uso de
+// procesos de trabajo para atender solicitudes. Cómo funciona, advertencias, entre otras.
 
   const server = require('http').createServer((req, res) => {
     const d = domain.create();
     d.on('error', (er) => {
       console.error(`error ${er.stack}`);
 
-      // Note: We're in dangerous territory!
-      // By definition, something unexpected occurred,
-      // which we probably didn't want.
-      // Anything can happen now! Be very careful!
+      // Nota: ¡ Estamos en un territorio peligroso!
+      Por definición, algo inesperado ocurrió,
+      / / que probablemente no queríamos.
+      // ¡Cualquier cosa puede suceder ahora! ¡Ten mucho cuidado!
 
-      try {
-        // make sure we close down within 30 seconds
+      intenta {
+        // asegurarte de cerrar en 30 segundos
         const killtimer = setTimeout(() => {
           process.exit(1);
         }, 30000);
-        // But don't keep the process open just for that!
+        // ¡Pero, no mantengas el proceso abierto solo por eso!
         killtimer.unref();
 
-        // stop taking new requests.
+        // no tomes nuevas solicitudes.
         server.close();
 
-        // Let the master know we're dead. This will trigger a
-        // 'disconnect' in the cluster master, and then it will fork
-        // a new worker.
+        // Deja que el proceso principal sepa que estamos muertos. Esto desencadenará un 
+        // 'desconectar' en el cluster principal y, luego, se bifurcará
+        // un nuevo trabajador.
         cluster.worker.disconnect();
 
-        // try to send an error to the request that triggered the problem
+        // intenta enviar un error a la solicitud que arrojó el problema
         res.statusCode = 500;
         res.setHeader('content-type', 'text/plain');
-        res.end('Oops, there was a problem!\n');
+        res.end('¡Ups, hubo un problema!\n');
       } catch (er2) {
-        // oh well, not much we can do at this point.
+        // Bueno, no se puede hacer mucho en este punto.
         console.error(`Error sending 500! ${er2.stack}`);
       }
     });
 
-    // Because req and res were created before this domain existed,
-    // we need to explicitly add them.
-    // See the explanation of implicit vs explicit binding below.
+    // Porque req y res  fueron creados antes de que existieran los dominios y
+    //  necesitamos agregarlos explicitamente.
+    // Mira más abajo la explicación de la vinculación implícita y explicita.
     d.add(req);
     d.add(res);
 
-    // Now run the handler function in the domain.
+    // Ahora, ejecuta el controlador de función en el dominio.
     d.run(() => {
       handleRequest(req, res);
     });
@@ -145,14 +144,14 @@ if (cluster.isMaster) {
   server.listen(PORT);
 }
 
-// This part is not important. Just an example routing thing.
-// Put fancy application logic here.
+// Esta parte no es importante. Sólo un ejemplo de enrutamiento.
+// Coloca una aplicación lógica elaborada aquí.
 function handleRequest(req, res) {
   switch (req.url) {
     case '/error':
-      // We do some async stuff, and then...
+      // Hacemos algunas cosas asincrónicas y...
       setTimeout(() => {
-        // Whoops!
+        // ¡Ups!
         flerb.bark();
       }, timeout);
       break;
@@ -162,59 +161,59 @@ function handleRequest(req, res) {
 }
 ```
 
-## Additions to Error objects
+## Nuevos objetos de Errores
 
 <!-- type=misc -->
 
-Any time an `Error` object is routed through a domain, a few extra fields are added to it.
+En cualquier momento que un objeto de `Error` es enrutado a través de un dominio, algunos campos adicionales se agregan.
 
-* `error.domain` The domain that first handled the error.
-* `error.domainEmitter` The event emitter that emitted an `'error'` event with the error object.
-* `error.domainBound` The callback function which was bound to the domain, and passed an error as its first argument.
-* `error.domainThrown` A boolean indicating whether the error was thrown, emitted, or passed to a bound callback function.
+* `error.domain` El dominio que se encargó primero del error.
+* `error.domainEmitter` El evento emisor que originó un evento de `'error'` con el objeto de error.
+* `error.domainBound` La función de callback que fue agregada al dominio y pasó un error como su primer argumento.
+* `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado por un límite de la función de callback.
 
-## Implicit Binding
-
-<!--type=misc-->
-
-If domains are in use, then all **new** `EventEmitter` objects (including Stream objects, requests, responses, etc.) will be implicitly bound to the active domain at the time of their creation.
-
-Additionally, callbacks passed to lowlevel event loop requests (such as to `fs.open()`, or other callback-taking methods) will automatically be bound to the active domain. If they throw, then the domain will catch the error.
-
-In order to prevent excessive memory usage, `Domain` objects themselves are not implicitly added as children of the active domain. If they were, then it would be too easy to prevent request and response objects from being properly garbage collected.
-
-To nest `Domain` objects as children of a parent `Domain` they must be explicitly added.
-
-Implicit binding routes thrown errors and `'error'` events to the `Domain`'s `'error'` event, but does not register the `EventEmitter` on the `Domain`. Implicit binding only takes care of thrown errors and `'error'` events.
-
-## Explicit Binding
+## Enlace implícito
 
 <!--type=misc-->
 
-Sometimes, the domain in use is not the one that ought to be used for a specific event emitter. Or, the event emitter could have been created in the context of one domain, but ought to instead be bound to some other domain.
+Si los dominios están en uso, entonces todos los **nuevos** objetos `Eventosemisores`, tales como los objetos de flujo, solicitudes, respuestas, entre otros, estarán implícitamente añadidos al dominio activo en el momento de su creación.
 
-For example, there could be one domain in use for an HTTP server, but perhaps we would like to have a separate domain to use for each request.
+Asimismo, los callbacks pasados al subnivel de evento de las solicitudes del bucle (como `fs.open()`, u otros métodos de atender callbacks) serán automáticamente añadidas al dominio activo. Entonces, el dominio los percibirá como el error si son arrojados.
 
-That is possible via explicit binding.
+De manera que para prevenir el uso excesivo de la memoria, los objetos del `Dominio` no se añaden implícitamente por sí mismos como secundarios del dominio activo. Y si lo hicieran, seria muy sencillo prevenir solicitudes y dar respuesta a los objetos a partir de la basura recolectada.
+
+Para alojar a los objetos del `Dominio` como secundarios de un proceso `Dominio` principal, deben estar explícitamente añadidos.
+
+Las rutas de enlace implícitas arrojan errores y eventos de `'error'` en los eventos de `'error'` del `Dominio`, pero no registra los del `EmisordeEvento` en el `Dominio`. Los enlaces implícitos solo se encargan de los errores arrojados y los eventos de `'error'`.
+
+## Enlazado explícito
+
+<!--type=misc-->
+
+A veces, el dominio en uso no es el que debería utilizarse para un emisor de evento específico. O, el emisor de evento podría haber sido creado en el contexto de un dominio, pero debe regirse en cambio a algunos otros dominios.
+
+Por ejemplo, podría ser un dominio en el uso de un servidor HTTP, pero, quizás, nos gustaría tener un dominio separado para cada solicitud.
+
+Es posible a través del enlace explícito.
 
 ```js
-// create a top-level domain for the server
+// crea un dominio superior para el servidor
 const domain = require('domain');
 const http = require('http');
 const serverDomain = domain.create();
 
 serverDomain.run(() => {
-  // server is created in the scope of serverDomain
+  // el servidor se crea en el ámbito del ServerDomain
   http.createServer((req, res) => {
-    // req and res are also created in the scope of serverDomain
-    // however, we'd prefer to have a separate domain for each request.
-    // create it first thing, and add req and res to it.
+    // req y res también son creadas en el ámbito del ServerDomain
+    // sin embargo, preferiríamos tener un dominio individual para cada solicitud.
+    // crea su primer objeto y, añade req y res a él.
     const reqd = domain.create();
     reqd.add(req);
     reqd.add(res);
     reqd.on('error', (er) => {
       console.error('Error', er, req.url);
-      try {
+      prueba {
         res.writeHead(500);
         res.end('Error occurred, sorry.');
       } catch (er2) {
@@ -225,11 +224,11 @@ serverDomain.run(() => {
 });
 ```
 
-## domain.create()
+## domain.Create()
 
-* Returns: {Domain}
+* Volver a: {Domain}
 
-## Class: Domain
+## Clase: dominio
 
 The `Domain` class encapsulates the functionality of routing errors and uncaught exceptions to the active `Domain` object.
 

@@ -1,26 +1,26 @@
-# Style Guide
+# Guia de estilos
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
-* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+  * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
+* Documentos devem ter quebra de palavras (word-wrap) em 80 caracteres.
+* A formatação descrita no `.editorconfig` é preferencial. 
+  * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
+* Problemas mecânicos, como a ortografia e a gramática, devem ser identificados por ferramentas, na medida em que for possível. Se não for pego por uma ferramenta, então deverá ser apontado aos revisores humanos.
+* Ortografia do inglês americano de preferência. "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
-  * Pronouns are acceptable in more colloquial documentation, like guides.
-  * Use gender-neutral pronouns and mass nouns. Non-comprehensive examples: 
-    * OK: "they", "their", "them", "folks", "people", "developers", "cats"
-    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
-* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
-* Documents must start with a level-one heading. An example document will be linked here eventually.
-* Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
-* When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
+* Em geral, evitar pronomes pessoais na documentação de referência ("Eu", "você", "nós"). 
+  * Pronomes são aceitáveis na documentação mais coloquial, como os guias.
+  * Use substantivos massivos e pronomes de gênero neutro. Exemplos não abrangentes: 
+    * CERTO: "eles(as)", "seus", "lhes", "pessoal", "pessoas", "desenvolvedores(as)", "gatos(as)"
+    * ERRADO: "ele", "dela", "ele", "ela", "rapazes", "caras"
+* Ao combinar elementos de envolvimento (parênteses e aspas), a pontuação final deve ser colocada: 
+  * Dentro do elemento envolto se o elemento de quebra contém uma cláusula completa — um sujeito, verbo e um objeto.
+  * Fora do elemento envolto se o elemento de quebra contém apenas um fragmento de uma cláusula.
+* Coloque a pontuação de fim-de-frase dentro dos elementos envoltos — pontos finais vão dentro de parênteses e aspas, não depois.
+* Documentos devem começar com um título de nível 1. Eventualmente um documento de exemplo será linkado aqui.
+* Dê preferência em afixar links para endereços inline — prefira `[a link] []` ao invés de `[a link] (http://example.com)`.
+* Quando documentar APIs, observe que a versão da API foi introduzida no fim da seção. Se uma API foi descontinuada, anotar também a primeira versão que a API foi descontinuada.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.

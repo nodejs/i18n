@@ -1,10 +1,10 @@
-# Performance Timing API
+# Tiempo de desempeño API
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
+El Tiempo de Rendimiento API proporciona una implementación de la especificación [Tiempo de rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
 
 ```js
 const { PerformanceObserver, performance } = require('perf_hooks');
@@ -22,7 +22,7 @@ doSomeLongRunningProcess(() => {
 });
 ```
 
-## Class: Performance
+## Clase: Performance
 
 <!-- YAML
 added: v8.5.0
@@ -36,7 +36,7 @@ added: v8.5.0
 
 * `name` {string}
 
-If `name` is not provided, removes all `PerformanceMark` objects from the Performance Timeline. If `name` is provided, removes only the named mark.
+Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` del Tiempo de Rendimiento. Si se proporciona `name`, esto elimina solo la marca nombrada.
 
 ### performance.mark([name])
 
@@ -46,7 +46,7 @@ added: v8.5.0
 
 * `name` {string}
 
-Creates a new `PerformanceMark` entry in the Performance Timeline. A `PerformanceMark` is a subclass of `PerformanceEntry` whose `performanceEntry.entryType` is always `'mark'`, and whose `performanceEntry.duration` is always `0`. Performance marks are used to mark specific significant moments in the Performance Timeline.
+Crea una nueva entrada `PerformanceMark` en el Tiempo de Rendimiento. `PerformanceMark` es una subclase de `PerformanceEntry` cuya `performanceEntry.entryType` siempre es `'mark'`, y cuya `performanceEntry.duration` es siempre `0`. Las marcas de rendimiento son usadas para marcar momentos específicos significativos en el Tiempo de Rendimiento.
 
 ### performance.measure(name, startMark, endMark)
 
@@ -58,11 +58,11 @@ added: v8.5.0
 * `startMark` {string}
 * `endMark` {string}
 
-Creates a new `PerformanceMeasure` entry in the Performance Timeline. A `PerformanceMeasure` is a subclass of `PerformanceEntry` whose `performanceEntry.entryType` is always `'measure'`, and whose `performanceEntry.duration` measures the number of milliseconds elapsed since `startMark` and `endMark`.
+Crea una nueva entrada `PerformanceMeasure` en el Tiempo de Rendimiento. `PerformanceMeasure` es una subclase de `PerformanceEntry`, cuya `performanceEntry.entryType` siempre es `'measure'`, y cuya `performanceEntry.duration` mide el número de milisegundos transcurridos desde `startMark` y `endMark`.
 
-The `startMark` argument may identify any *existing* `PerformanceMark` in the Performance Timeline, or *may* identify any of the timestamp properties provided by the `PerformanceNodeTiming` class. If the named `startMark` does not exist, then `startMark` is set to [`timeOrigin`][] by default.
+El argumento `startMark` puede identificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento, o *puede* identificar cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
 
-The `endMark` argument must identify any *existing* `PerformanceMark` in the Performance Timeline or any of the timestamp properties provided by the `PerformanceNodeTiming` class. If the named `endMark` does not exist, an error will be thrown.
+El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
 
 ### performance.nodeTiming
 
@@ -72,7 +72,7 @@ added: v8.5.0
 
 * {PerformanceNodeTiming}
 
-An instance of the `PerformanceNodeTiming` class that provides performance metrics for specific Node.js operational milestones.
+Una instancia de la clase `PerformanceNodeTiming` que proporciona métricas de rendimiento para objetivos operacionales específicos de Node.js.
 
 ### performance.now()
 
@@ -80,9 +80,9 @@ An instance of the `PerformanceNodeTiming` class that provides performance metri
 added: v8.5.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
-Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
+Devuelve la timestamp de alta resolución en milisegundos actual, donde 0 representa el inicio del proceso `node` actual.
 
 ### performance.timeOrigin
 
@@ -92,7 +92,7 @@ added: v8.5.0
 
 * {number}
 
-The [`timeOrigin`][] specifies the high resolution millisecond timestamp at which the current `node` process began, measured in Unix time.
+El [`timeOrigin`][] especifica la timestamp de alta resolución en milisegundos en la cual el proceso `node` actual comenzó, medido en tiempo Unix.
 
 ### performance.timerify(fn)
 
@@ -102,7 +102,7 @@ added: v8.5.0
 
 * `fn` {Function}
 
-Wraps a function within a new function that measures the running time of the wrapped function. A `PerformanceObserver` must be subscribed to the `'function'` event type in order for the timing details to be accessed.
+Envuelve una función dentro de una nueva función que mide el tiempo de ejecución de la función envuelta. Un `PerformanceObserver` debe ser suscrito al tipo de evento `'function'` en orden para los detalles de sincronización para ser accedido.
 
 ```js
 const {
@@ -122,11 +122,10 @@ const obs = new PerformanceObserver((list) => {
 });
 obs.observe({ entryTypes: ['function'] });
 
-// A performance timeline entry will be created
-wrapped();
+// Una entrada para el tiempo de rendimiento será creada envuelta();
 ```
 
-## Class: PerformanceEntry
+## Clase: PerformanceEntry
 
 <!-- YAML
 added: v8.5.0
@@ -140,7 +139,7 @@ added: v8.5.0
 
 * {number}
 
-The total number of milliseconds elapsed for this entry. This value will not be meaningful for all Performance Entry types.
+El número total de milisegundos transcurridos para esta entrada. Este valor no será significativo para todos los tipos de Entradas de Rendimiento.
 
 ### performanceEntry.name
 
@@ -150,7 +149,7 @@ added: v8.5.0
 
 * {string}
 
-The name of the performance entry.
+El nombre de la entrada de rendimiento.
 
 ### performanceEntry.startTime
 
@@ -160,7 +159,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp marking the starting time of the Performance Entry.
+La timestamp de alta resolución en milisegundos marcando el inicio de la Entrada de Rendimiento.
 
 ### performanceEntry.entryType
 
@@ -170,7 +169,7 @@ added: v8.5.0
 
 * {string}
 
-The type of the performance entry. Currently it may be one of: `'node'`, `'mark'`, `'measure'`, `'gc'`, `'function'`, or `'http2'`.
+El tipo de la entrada de rendimiento. Actualmente puede ser uno de los siguientes: `'node'`, `'mark'`, `'measure'`, `'gc'`, `'function'`, o `'http2'`.
 
 ### performanceEntry.kind
 
@@ -180,20 +179,20 @@ added: v8.5.0
 
 * {number}
 
-When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` property identifies the type of garbage collection operation that occurred. The value may be one of:
+Cuando `performanceEntry.entryType` es igual a `'gc'`, la propiedad `performance.kind` identifica el tipo de operación de recolección de basura que ocurrió. El valor puede ser uno de los siguientes:
 
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_MAJOR`
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_MINOR`
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_INCREMENTAL`
 * `perf_hooks.constants.NODE_PERFORMANCE_GC_WEAKCB`
 
-## Class: PerformanceNodeTiming extends PerformanceEntry
+## Clase: PerformanceNodeTiming expande PerformanceEntry
 
 <!-- YAML
 added: v8.5.0
 -->
 
-Provides timing details for Node.js itself.
+Proporciona detalles de tiempo para el propio Node.js.
 
 ### performanceNodeTiming.bootstrapComplete
 
@@ -203,7 +202,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el proceso de Node.js completó el bootstrapping. Si el bootstrapping no ha terminado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.clusterSetupEnd
 
@@ -213,7 +212,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which cluster processing ended. If cluster processing has not yet ended, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento del cluster terminó. Si el procesamiento de cluster no ha terminado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.clusterSetupStart
 
@@ -223,7 +222,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which cluster processing started. If cluster processing has not yet started, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento del cluster comenzó. Si el procesamiento del cluster no ha comenzado, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.loopExit
 
@@ -233,7 +232,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js event loop exited. If the event loop has not yet exited, the property has the value of -1. It can only have a value of not -1 in a handler of the [`'exit'`][] event.
+La timestamp de alta resolución en milisegundos en la cual el bucle del evento Node.js cerró. Si el bucle del evento aún no ha cerrado, la propiedad tiene el valor de -1. Solo no puede tener un valor de -1 en un manejador del evento [`'exit'`][].
 
 ### performanceNodeTiming.loopStart
 
@@ -243,7 +242,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el bucle del evento Node.js comenzó. Si el bucle del evento no ha comenzado (p. e.j., en la primera señal del script principal), la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.moduleLoadEnd
 
@@ -253,7 +252,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which main module load ended.
+La timestamp de alta resolución en milisegundos en la cual la carga del módulo principal terminó.
 
 ### performanceNodeTiming.moduleLoadStart
 
@@ -263,7 +262,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which main module load started.
+La timestamp de alta resolución en milisegundos en la cual la carga del módulo principal comenzó.
 
 ### performanceNodeTiming.nodeStart
 
@@ -273,7 +272,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js process was initialized.
+La timestamp de alta resolución en milisegundos en la cual el proceso Node.js fue iniciado.
 
 ### performanceNodeTiming.preloadModuleLoadEnd
 
@@ -283,7 +282,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which preload module load ended.
+La timestamp de alta resolución en la cual la carga del módulo precarga terminó.
 
 ### performanceNodeTiming.preloadModuleLoadStart
 
@@ -293,7 +292,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which preload module load started.
+La timestamp de alta resolución en milisegundos en la cual la carga del módulo precarga comenzó.
 
 ### performanceNodeTiming.thirdPartyMainEnd
 
@@ -303,7 +302,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which third\_party\_main processing ended. If third\_party\_main processing has not yet ended, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento de third\_party\_main terminó. Si el procesamiento de third\_party\_main no ha terminado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.thirdPartyMainStart
 
@@ -313,7 +312,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which third\_party\_main processing started. If third\_party\_main processing has not yet started, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento third\_party\_main comenzó. Si el procesamiento third\_party\_main no ha comenzado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.v8Start
 
@@ -323,11 +322,11 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the V8 platform was initialized.
+La timestamp de alta resolución en milisegundos en la cual la plataforma V8 fue iniciada.
 
-## Class: PerformanceObserver
+## Clase: PerformanceObserver
 
-### new PerformanceObserver(callback)
+### nuevo PerformanceObserver(callback)
 
 <!-- YAML
 added: v8.5.0
@@ -337,7 +336,7 @@ added: v8.5.0
   * `list` {PerformanceObserverEntryList}
   * `observer` {PerformanceObserver}
 
-`PerformanceObserver` objects provide notifications when new `PerformanceEntry` instances have been added to the Performance Timeline.
+Los objetos `PerformanceObserver` proporcionan notificaciones cuando nuevas instancias `PerformanceEntry` han sido añadidas al Tiempo de Rendimiento.
 
 ```js
 const {

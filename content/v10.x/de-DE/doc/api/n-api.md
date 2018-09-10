@@ -6,16 +6,16 @@
 
 > Stabilität: 2 - Stabil
 
-N-API (ausgesprochen N wie im Buchstaben, gefolgt von API) ist eine API zum Erstellen von nativen Addons. Sie ist unabhängig von der zugrundeliegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst gepflegt. Diese API wird über alle Versionen von Node.js hinweg, Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Erweiterungen von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können.
+N-API (ausgesprochen N wie der Buchstabe, gefolgt von API) ist eine API zum Erstellen von nativen Addons. Sie ist unabhängig von der zugrunde liegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst verwaltet. Diese API wird über alle Versionen von Node.js hinweg Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Addons von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können.
 
-Erweiterungen werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, wie im Abschnitt [C++-Addons](addons.html) beschrieben wird. Der einzige Unterschied ist das Set an APIs, die von dem nativen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-APIs zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
+Addons werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, wie im Abschnitt [C++-Addons](addons.html) beschrieben wird. Der einzige Unterschied ist das Set an APIs, die vom nativen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-APIs zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
 
-APIs, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die Programmierschnittstellen haben folgende Eigenschaften:
+APIs, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die APIs haben folgende Eigenschaften:
 
 - Alle N-API-Anfragen liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob die API-Anfrage erfolgreich war oder nicht.
-- Der Rückgabewert der API wird über einen Out-Parameter übertragen.
+- Der Rückgabewert der API wird über einen Out-Parameter ausgegeben.
 - Alle JavaScript-Werte werden hinter einem undurchsichtigen Typ namens `napi_value` abstrahiert.
-- Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie in dem Fehlermeldungs-Handlingbereich [Fehlerbehandlung](#n_api_error_handling).
+- Im Falle eines Fehlerstatuscodes können zusätzliche Informationen über `napi_get_last_error_info` abgerufen werden. Weitere Informationen finden Sie im Bereich [Fehlerbehandlung](#n_api_error_handling).
 
 Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-API bereitstellen. Binärdateien, die mit diesen Wrapper-Modulen erstellt wurden, hängen von den Symbolen für die N-API C-basierten Funktionen ab, die von Node.js exportiert wurden. Diese Wrapper sind weder Teil der N-API, noch werden sie als Teil von Node.js verwaltet. Ein solches Beispiel ist: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
@@ -75,11 +75,11 @@ Siehe Abschnitt [Fehlerbehandlung](#n_api_error_handling) für weitere Informati
 
 ### napi_env
 
-`napi_env` wird verwendet, um einen Kontext darzustellen, den die zugrunde liegende N-API-Implementierung verwenden kann, um den VM-spezifischen Zustand zu erhalten. Diese Struktur wird an native Funktionen übertragen, wenn sie aufgerufen werden, und sie muss bei N-API-Anfragen rückübertragen werden. Insbesondere müssen die gleichen `napi_env`, die beim Aufruf der ursprünglichen nativen Funktion übergeben wurden, an alle nachfolgenden geschachtelten N-API-Anfragen übergeben werden. Das Zwischenspeichern der `napi_env`-Datei zum Zwecke der allgemeinen Wiederverwendung ist nicht erlaubt.
+`napi_env` wird verwendet, um einen Kontext darzustellen, den die zugrunde liegende N-API-Implementierung verwenden kann, um den VM-spezifischen Zustand zu erhalten. Diese Struktur wird an native Funktionen übertragen, wenn sie aufgerufen werden und sie muss bei N-API-Anfragen rückübertragen werden. Insbesondere müssen die gleichen `napi_env`, die beim Aufruf der ursprünglichen nativen Funktion übergeben wurden, an alle nachfolgenden geschachtelten N-API-Anfragen übergeben werden. Das Zwischenspeichern der `napi_env`-Datei zum Zweck der allgemeinen Wiederverwendung ist nicht erlaubt.
 
 ### napi_value
 
-Dies ist ein undurchsichtiger Zeiger, der verwendet wird, um einen JavaScript-Wert darzustellen.
+Dies ist ein undurchsichtiger Verweis, der verwendet wird, um einen JavaScript-Wert darzustellen.
 
 ### N-API Memory Management types
 
@@ -87,13 +87,13 @@ Dies ist ein undurchsichtiger Zeiger, der verwendet wird, um einen JavaScript-We
 
 Dies ist eine Abstraktion, die verwendet wird, um die Lebensdauer von Objekten, die in einem bestimmten Bereich erstellt wurden, zu steuern und zu verändern. Im Allgemeinen werden N-API-Werte im Rahmen eines Handle-Scopes erstellt. Wenn eine native Methode von JavaScript abgerufen wird, existiert ein Standard-Handle-Bereich. Wenn der Benutzer nicht explizit einen neuen Handle-Bereich anlegt, werden N-API-Werte im Standard-Handle-Bereich angelegt. Für alle Aufrufe von Code außerhalb der Ausführung einer nativen Methode (z.B. während einer libuv-Callback-Anfrage) muss das Modul einen Bereich erstellen, bevor es Funktionen aufruft, die zur Erzeugung von JavaScript-Werten führen können.
 
-Handle-Scopes werden mit [`napi_open_handle_scope`][] erstellt und mit [`napi_close_handle_scope`][] zerstört. Das Schließen des Bereichs kann der GC anzeigen, dass alle `napi_value`s, die während der Lebensdauer des Handle-Bereichs erzeugt wurden, nicht mehr vom aktuellen Stack-Frame bezogen werden.
+Handle-Scopes werden mit [`napi_open_handle_scope`][] erstellt und mit [`napi_close_handle_scope`][] vernichtet. Das Schließen des Bereichs kann der GC anzeigen, dass alle `napi_value`s, die während der Lebensdauer des Handle-Bereichs erzeugt wurden, nicht mehr vom aktuellen Stack-Frame bezogen werden.
 
 Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_object_lifetime_management).
 
 #### napi_escapable_handle_scope
 
-Escapable-Handle-Bereiche sind eine spezielle Art von Handle-Bereiche, deren Zweck es ist, die innerhalb eines bestimmten Handle-Bereichs erzeugten Werte an einen übergeordneten Bereich zurückzusenden.
+Escapable-Handle-Bereiche sind eine spezielle Art von Handle-Bereichen, deren Zweck es ist, die innerhalb eines bestimmten Handle-Bereichs erzeugten Werte an einen übergeordneten Bereich zurückzusenden.
 
 #### napi_ref
 
@@ -105,11 +105,11 @@ Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_objec
 
 #### napi_callback_info
 
-Undurchsichtiger Datentyp, der an eine Callback-Funktion weitergegeben wird. Er kann verwendet werden, um zusätzliche Informationen über den Kontext zu erhalten, in dem der Callback aufgerufen wurde.
+Undurchsichtiger Datentyp, der an eine Callback-Funktion weitergegeben wird. Er kann verwendet werden, um zusätzliche Informationen über den Kontext, in dem der Callback aufgerufen wurde, zu erhalten.
 
 #### napi_callback
 
-Funktionszeigertyp für vom Benutzer bereitgestellte native Funktionen, die in JavaScript über die N-API eingebunden werden sollen. Callback-Funktionen sollten die folgende Signatur erfüllen:
+Funktionsverweistyp für vom Benutzer bereitgestellte native Funktionen, die in JavaScript über die N-API eingebunden werden sollen. Callback-Funktionen sollten die folgende Signatur erfüllen:
 
 ```C
 typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
@@ -117,7 +117,7 @@ typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 
 #### napi_finalize
 
-Funktionszeigertyp für zusätzlich zur Verfügung gestellte Funktionen, der es dem Benutzer ermöglicht, benachrichtigt zu werden, wenn externe Daten bereit sind, bereinigt zu werden, weil das Objekt, mit dem sie verknüpft waren, unbrauchbar geworden ist. Der Benutzer muss eine Funktion zur Verfügung stellen, die die folgende Signatur erfüllt, die auf die Sammlung des Objekts angewandt wird. Derzeit kann `napi_finalize` verwendet werden, um herauszufinden, wann Objekte mit externen Daten gesammelt werden.
+Funktionsverweistyp für zusätzlich zur Verfügung gestellte Funktionen, der es dem Benutzer ermöglicht benachrichtigt zu werden, wenn externe Daten bereit sind, bereinigt zu werden, weil das Objekt, mit dem sie verknüpft waren, unbrauchbar geworden ist. Der Benutzer muss eine Funktion zur Verfügung stellen, welche die folgende Signatur erfüllt, die auf die Sammlung des Objekts angewandt wird. Derzeit kann `napi_finalize` verwendet werden, um herauszufinden, wann Objekte mit externen Daten gesammelt werden.
 
 ```C
 typedef void (*napi_finalize)(napi_env env,
@@ -127,7 +127,7 @@ typedef void (*napi_finalize)(napi_env env,
 
 #### napi_async_execute_callback
 
-Funktionszeiger, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
+Funktionsverweis, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env, void* data);
@@ -135,7 +135,7 @@ typedef void (*napi_async_execute_callback)(napi_env env, void* data);
 
 #### napi_async_complete_callback
 
-Funktionszeiger, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
+Funktionsverweis, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
 typedef void (*napi_async_complete_callback)(napi_env env,
@@ -157,7 +157,7 @@ In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_
 
 Das vollständige Set der möglichen `napi_status`-Werte ist in `napi_api_types.h` definiert.
 
-Der `napi_status`-Rückgabewert liefert eine VM-unabhängige Darstellung von dem aufgetretenen Fehler. In manchen Fällen ist es sinnvoll, detailliertere Informationen zu erhalten, einschließlich eines Strings, der den Fehler darstellt, sowie VM (Engine)-spezifische Informationen.
+Der `napi_status`-Rückgabewert liefert eine VM-unabhängige Darstellung vom aufgetretenen Fehler. In manchen Fällen ist es sinnvoll, detailliertere Informationen zu erhalten, einschließlich eines Strings, der den Fehler darstellt, sowie VM (Engine)-spezifische Informationen.
 
 Um diese Informationen abzurufen, wird [`napi_get_last_error_info`][] bereitgestellt, die eine `napi_extended_error_info`-Struktur liefert. Das Format der `napi_extended_error_info`-Struktur ist wie folgt:
 

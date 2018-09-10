@@ -214,7 +214,7 @@ fs.readFileSync(new URL('file:///C:/path/%5c'));
 
 ## Descriptores de archivo
 
-On POSIX systems, for every process, the kernel maintains a table of currently open files and resources. A cada archivo abierto se le asigna un identificador numérico simple llamado *file descriptor*. A nivel de sistema, todas las operaciones del sistema de archivos utilizan estos descriptores de archivo para identificar y rastrear cada archivo específico. Los sistemas de Windows utilizan un mecanismo que es diferente, pero conceptualmente similar para los recursos de rastreo. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
+En sistemas de POSIX, para cada proceso, el núcleo mantiene un tablero de archivos actualmente abiertos y recursos. A cada archivo abierto se le asigna un identificador numérico simple llamado *file descriptor*. A nivel de sistema, todas las operaciones del sistema de archivos utilizan estos descriptores de archivo para identificar y rastrear cada archivo específico. Los sistemas de Windows utilizan un mecanismo que es diferente, pero conceptualmente similar para los recursos de rastreo. To simplify things for users, Node.js abstracts away the specific differences between operating systems and assigns all open files a numeric file descriptor.
 
 El método `fs.open()` se utiliza para asignar un nuevo descriptor de archivo. Una vez asignado, el descriptor de archivo puede ser utilizado para leer datos desde, escribir datos a, o solicitar información sobre el archivo.
 
@@ -354,7 +354,7 @@ added: v0.1.93
 
 * {string|Buffer}
 
-The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. Si `path` se pasa como un `Buffer`, entonces `readStream.path` será un `Buffer`.
+La ruta al archivo desde el cual lee el stream, como se especifica en el primer argumento a `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. Si `path` se pasa como un `Buffer`, entonces `readStream.path` será un `Buffer`.
 
 ## Class: fs.Stats
 
@@ -1242,7 +1242,7 @@ changes:
 
 A diferencia de los 16 kb `highWaterMark` predeterminado para un stream legible, el stream devuelto por este método tiene un `highWaterMark` predeterminado de 64 kb.
 
-`options` puede incluir valores de `start` y `end` para leer un rango de bytes desde el archivo en lugar de todo el archivo. `start` y `end` son inclusivos y empiezan a contar desde 0. Si se especifica `fd` y se omite `start` o es `undefined`, `fs.createReadStream()` lee de manera secuencial desde la posición actual del archivo. El `encoding` puede ser cualquiera de los aceptados por [`Buffer`][].
+`options` puede incluir valores de `start` y `end` para leer un rango de bytes desde el archivo, en lugar de todo el archivo. `start` y `end` son inclusivos y empiezan a contar desde 0. Si se especifica `fd` y se omite `start` o es `undefined`, `fs.createReadStream()` lee de manera secuencial desde la posición actual del archivo. El `encoding` puede ser cualquiera de los aceptados por [`Buffer`][].
 
 Si se especifica `fd`, `ReadStream` ignorará el argumento de `path` y utilizará el descriptor de archivo especificado. Esto significa que no se emitirán eventos `'open'` . Tenga en cuenta que `fd` debería estar bloqueando; los `fd`s que no bloquean deberían ser pasados a [`net.Socket`][].
 
@@ -1538,7 +1538,7 @@ changes:
   * `err` {Error}
   * `stats` {fs.Stats}
 
-fstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)` donde `stats` es un objeto de [`fs.Stats`][]. `fstat()` is identical to [`stat()`][], except that the file to be stat-ed is specified by the file descriptor `fd`.
+fstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)` donde `stats` es un objeto de [`fs.Stats`][]. `fstat()` es idéntico a [`stat()`][], excepto que el archivo que será añadido a las estadísticas se especifica por el descriptor de archivo `fd`.
 
 ## fs.fstatSync(fd)
 
@@ -1547,7 +1547,7 @@ added: v0.1.95
 -->
 
 * `fd` {integer}
-* Returns: {fs.Stats}
+* Devuelve: {fs.Stats}
 
 fstat(2) sincrónica.
 
@@ -1682,7 +1682,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Cambia la marca de tiempo del sistema de archivos del objeto referenciado por el descriptor de archivo proporcionado. Vea [`fs.utimes()`][].
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por el descriptor de archivo proporcionado. Vea [`fs.utimes()`][].
 
 Esta función no funciona en versiones AIX anteriores a 7.1, devolverá el error `UV_ENOSYS`.
 
@@ -1847,7 +1847,7 @@ changes:
   * `err` {Error}
   * `stats` {fs.Stats}
 
-lstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)`, en donde `stats` es un objeto de [`fs.Stats`][]. `lstat()` is identical to `stat()`, except that if `path` is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
+lstat(2) asincrónico. El callback obtiene dos argumentos `(err, stats)`, en donde `stats` es un objeto de [`fs.Stats`][]. `lstat()` es idéntico a `stat()`, salvo en caso de que `path` sea un enlace simbólico, entonces el mismo enlace sería parte de las estadísticas, no el archivo al que se refiere.
 
 ## fs.lstatSync(path)
 
@@ -1862,7 +1862,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {fs.Stats}
+* Devuelve: {fs.Stats}
 
 lstat(2) sincrónico.
 
@@ -1992,7 +1992,7 @@ added: v5.10.0
 * `prefix` {string}
 * `opciones` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string}
+* Devuelve: {string}
 
 La versión sincrónica de [`fs.mkdtemp()`][]. Devuelve la ruta de archivo creada.
 
@@ -2045,7 +2045,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} See [support of file system `flags`][].
 * `mode` {integer} **Default:** `0o666`
-* Returns: {number}
+* Devuelve: {number}
 
 Versión sincrónica de [`fs.open()`][]. Devuelve un entero que representa el descriptor de archivo.
 
@@ -2136,7 +2136,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Devuelve: {string[]} una matriz de nombres de archivo excepto `'.'` y `'..'`.
+* Devuelve: {string[]} una matriz de nombres de archivo que excluye a `'.'` y `'..'`.
 
 readdir(3) sincrónico.
 
@@ -2235,7 +2235,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Returns: {string|Buffer}
+* Devuelve: {string|Buffer}
 
 Versión sincrónica de [`fs.readFile()`][]. Devuelve los contenidos del `path`.
 
@@ -2370,13 +2370,13 @@ Esta función se comporta como realpath(3), con algunas excepciones:
 
 1. No case conversion is performed on case-insensitive file systems.
 
-2. El número máximo de enlaces simbólicos es independiente de la plataforma y es por lo general, (mucho) más alto que lo que soporta la implementación nativa de realpath(3).
+2. El número máximo de enlaces simbólicos es independiente de la plataforma y, por lo general, (mucho) más alto que lo que soporta la implementación nativa de realpath(3).
 
 El `callback` obtiene dos argumentos `(err, resolvedPath)`. Puede utilizar `process.cwd` para resolver rutas relativas.
 
 Sólo son soportadas las rutas que pueden ser convertidas a strings UTF8.
 
-El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta pasada al callback. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer`.
 
 Si `path` resuelve a un socket o un pipe, la función devolverá un nombre dependiente al sistema para ese objeto.
 
@@ -2428,7 +2428,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string|Buffer}
+* Devuelve: {string|Buffer}
 
 Synchronously computes the canonical pathname by resolving `.`, `..` and symbolic links.
 
@@ -2453,7 +2453,7 @@ added: v9.2.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {string|Buffer}
+* Devuelve: {string|Buffer}
 
 realpath(3) sincrónico.
 
@@ -2489,7 +2489,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Renombra de manera asincrónica a un archivo en `oldPath` al nombre de ruta proporcionado como `newPath`. En caso de que `newPath` ya exista, será reescrito. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
+De manera asincrónica, renombra a un archivo en `oldPath` al nombre de ruta proporcionado como `newPath`. En caso de que `newPath` ya exista, será reescrito. Ningún argumento que no sea una posible excepción es dado al callback de terminación.
 
 Vea también: rename(2).
 
@@ -2610,7 +2610,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {fs.Stats}
+* Devuelve: {fs.Stats}
 
 stat(2) sincrónico.
 
@@ -2803,7 +2803,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Cambia la marca de tiempo del sistema de archivos del objeto referenciado por `path`.
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por `path`.
 
 Los argumentos `atime` y `mtime` siguen las siguientes reglas:
 
@@ -2861,7 +2861,7 @@ changes:
   * `filename` {string|Buffer}
 * Devuelve: {fs.FSWatcher}
 
-Watch for changes on `filename`, where `filename` is either a file or a directory.
+Busca cambios en `filename`, donde `filename` es o un archivo o un directorio.
 
 El segundo argumento es opcional. Si se proporciona `options` como una string, especificará el `encoding`. De lo contrario, `options` debería ser pasado como un objeto.
 
@@ -2892,9 +2892,9 @@ Esta función depende del sistema operativo subyacente, proporcionando una maner
 * En el sistema de Windows, esta función depende de [`ReadDirectoryChangesW`].
 * En sistemas Aix, esta función depende de [`AHAFS`], la cual debe ser habilitada.
 
-Si la funcionalidad subyacente no está disponible por algún motivo, entonces `fs.watch` no podrá funcionar. Por ejemplo, observar archivos o directorios puede no ser seguro, y en algunos casos imposible, en sistemas de archivos de red (NFS, SMB, etc), o sistemas de alojamiento de archivos cuando se utiliza un software de virtualización, tales como Vagrant, Docker, etc.
+Si la funcionalidad subyacente no está disponible por algún motivo, entonces `fs.watch` no podrá funcionar. Por ejemplo, observar archivos o directorios puede no ser seguro, y en algunos casos imposible, en sistemas de archivos de red (NFS, SMB, etc), o sistemas de alojamiento de archivos cuando se utilizan softwares de virtualización tales como Vagrant, Docker, etc.
 
-Aún es posible utilizar `fs.watchFile()`, el cual utiliza el estudio de estadísticas, pero este método es más lento y menos seguro.
+Aún es posible utilizar `fs.watchFile()`, el cual utiliza el polling de estadísticas, pero este método es más lento y menos seguro.
 
 #### Inodes
 
@@ -2945,7 +2945,7 @@ Buscar cambios en `filename`. El callback de `listener` será llamado cada vez q
 
 El argumento de `options` puede ser omitido. Si se proporciona, debería ser un objeto. El objeto de `options` puede contener un booleano llamado `persistent` que indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. El objeto de `options` puede especificar una propiedad de `interval` que indique qué tan seguido debería estudiarse el objetivo en milisegundos.
 
-The `listener` gets two arguments the current stat object and the previous stat object:
+El `listener` obtiene dos argumentos, el objeto de estadística actual y el objeto de estadística previo:
 
 ```js
 fs.watchFile('message.text', (curr, prev) => {
@@ -2956,11 +2956,11 @@ fs.watchFile('message.text', (curr, prev) => {
 
 Estos objetos de estadísticas son instancias de `fs.Stat`.
 
-To be notified when the file was modified, not just accessed, it is necessary to compare `curr.mtime` and `prev.mtime`.
+Para ser notificado de cuándo se modificó el archivo, no sólo cuando fue accedido, es necesario comparar `curr.mtime` y `prev.mtime`.
 
-When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. If the file is created later on, the listener will be called again, with the latest stat objects. Este es un cambio en la funcionalidad desde v0.10.
+Cuando una operación de `fs.watchFile` tiene como resultado un error de `ENOENT`, invocará al listener una vez, con todos los campos en cero (o, para las fechas, la época de Unix). En Windows, los campos de `blksize` y `blocks` serán `undefined`, en vez de cero. Si el archivo es creado más tarde, el listener será llamado nuevamente, con los últimos objetos de estadística. Este es un cambio en la funcionalidad desde v0.10.
 
-Using [`fs.watch()`][] is more efficient than `fs.watchFile` and `fs.unwatchFile`. `fs.watch` should be used instead of `fs.watchFile` and `fs.unwatchFile` when possible.
+Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile` y `fs.unwatchFile`. `fs.watch` debería ser utilizado en lugar de `fs.watchFile` y `fs.unwatchFile` cuando sea posible.
 
 When a file being watched by `fs.watchFile()` disappears and reappears, then the `previousStat` reported in the second callback event (the file's reappearance) will be the same as the `previousStat` of the first callback event (its disappearance).
 
@@ -3013,7 +3013,7 @@ Si se invoca este método en su versión [`util.promisify()`][], devolverá una 
 
 Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 ## fs.write(fd, string[, position[, encoding]], callback)
 
@@ -3053,7 +3053,7 @@ El callback recibirá los argumentos `(err, written, string)`, en donde `written
 
 Tenga en cuenta que no es seguro utilizar `fs.write` múltiples veces en el mismo archivo sin esperar al callback. Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 ## fs.writeFile(file, data[, options], callback)
 
@@ -3153,7 +3153,7 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {number}
+* Devuelve: {number}
 
 ## fs.writeSync(fd, string[, position[, encoding]])
 
@@ -3170,7 +3170,7 @@ changes:
 * `string` {string}
 * `position` {integer}
 * `encoding` {string}
-* Returns: {number}
+* Devuelve: {number}
 
 Versiones sincrónicas de [`fs.write()`][]. Devuelve el número de bytes escritos.
 
@@ -3203,7 +3203,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a este archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
@@ -3218,9 +3218,9 @@ added: v10.0.0
 -->
 
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Modifica los permisos en el archivo. The `Promise` is resolved with no arguments upon success.
+Modifica los permisos en el archivo. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 #### filehandle.chown(uid, gid)
 
@@ -3230,9 +3230,9 @@ added: v10.0.0
 
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Changes the ownership of the file then resolves the `Promise` with no arguments upon success.
+Cambia la pertenencia del archivo, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 #### filehandle.close()
 
@@ -3284,7 +3284,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Leer datos desde el archivo.
 
@@ -3307,7 +3307,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
 
@@ -3346,9 +3346,9 @@ added: v10.0.0
 -->
 
 * `len` {integer} **Default:** `0`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Truncates the file then resolves the `Promise` with no arguments upon success.
+Trunca el archivo y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 Si el archivo era más grande que `len` bytes, sólo los primeros `len` bytes serán retenidos en el archivo.
 
@@ -3392,11 +3392,11 @@ added: v10.0.0
 
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Change the file system timestamps of the object referenced by the `FileHandle` then resolves the `Promise` with no arguments upon success.
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por el `FileHandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-This function does not work on AIX versions before 7.1, it will resolve the `Promise` with an error using code `UV_ENOSYS`.
+Esta función no funciona en versiones AIX anteriores a 7.1, resolverá la `Promise` con un error, utilizando el código `UV_ENOSYS`.
 
 #### filehandle.write(buffer, offset, length, position)
 
@@ -3414,13 +3414,13 @@ Escribe `buffer` al archivo.
 
 La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritten` que identifique el número de bytes escritos, y una propiedad de `buffer` que contenga una referencia al `buffer` escrito.
 
-`offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
+`offset` determina la parte del búfer que será escrita, y `length` es un entero que especifica el número de bytes a escribir.
 
 `position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
 No es seguro utilizar `filehandle.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 #### filehandle.writeFile(data, options)
 
@@ -3455,14 +3455,14 @@ added: v10.0.0
 * `mode` {integer} **Default:** `fs.constants.F_OK`
 * Devuelve: {Promise}
 
-Prueba los permisos del usuario para el archivo o directorio especificado por `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba los permisos del usuario para el archivo o directorio especificado por `path`. El argumento de `mode` es un entero opcional que especifica las verificaciones de accesibilidad que serán realizadas. Las siguientes constantes definen los posibles valores de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
 * `fs.constants.W_OK` - `path` puede ser escrito por el proceso de llamada.
 * `fs.constants.X_OK` - `path` puede ser ejecutado por el proceso de llamada. Esto no tiene ningún efecto en Windows (se comportará como `fs.constants.F_OK`).
 
-If the accessibility check is successful, the `Promise` is resolved with no value. If any of the accessibility checks fail, the `Promise` is rejected with an `Error` object. The following example checks if the file `/etc/passwd` can be read and written by the current process.
+Si la verificación de accesibilidad tiene éxito, la `Promise` se resuelve sin ningún valor. Si alguna verificación de accesibilidad falla, la `Promise` será rechazada con un objeto de `Error` . El siguiente ejemplo verifica si el archivo `/etc/passwd` puede ser leído y escrito por el proceso actual.
 
 ```js
 fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
@@ -3470,7 +3470,7 @@ fsPromises.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK)
   .catch(() => console.error('cannot access'));
 ```
 
-Using `fsPromises.access()` to check for the accessibility of a file before calling `fsPromises.open()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
+Utilizar `fsPromises.access()` para verificar la accesibilidad de un archivo antes de llamar a `fsPromises.open()` no es recomendado. Hacerlo introduce una condición de carrera, ya que otros procesos pueden cambiar el estado del archivo entre dos llamadas. En lugar de ello, el código de usuario debería abrir/leer/escribir el archivo directamente y manejar el error ocurrido si el archivo no es accesible.
 
 ### fsPromises.appendFile(path, data[, options])
 
@@ -3484,7 +3484,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
@@ -3500,7 +3500,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Cambia los permisos de un archivo, luego resuelve la `Promise` sin argumentos al realizarlo con éxito.
 
@@ -3513,9 +3513,9 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Changes the ownership of a file then resolves the `Promise` with no arguments upon success.
+Cambia la pertenencia de un archivo, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.copyFile(src, dest[, flags])
 
@@ -3526,13 +3526,13 @@ added: v10.0.0
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al realizarse con éxito.
 
-Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copia. Si un error ocurre luego de que el archivo de destino ha sido abierto para escritura, Node.js intentará eliminar el destino.
 
-`flags` is an optional integer that specifies the behavior of the copy operation. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
+`flags` es un entero opcional que especifica el comportamiento de la operación de copia. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.COPYFILE_EXCL | fs.constants.COPYFILE_FICLONE`).
 
 * `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
@@ -3569,9 +3569,9 @@ added: v10.0.0
 
 * `filehandle` {FileHandle}
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fchmod(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+fchmod(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.fchown(filehandle, uid, gid)
 
@@ -3582,9 +3582,9 @@ added: v10.0.0
 * `filehandle` {FileHandle}
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Changes the ownership of the file represented by `filehandle` then resolves the `Promise` with no arguments upon success.
+Cambia la pertenencia del archivo representado por `filehandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.fdatasync(filehandle)
 
@@ -3593,9 +3593,9 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fdatasync(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+fdatasync(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.fstat(filehandle)
 
@@ -3604,9 +3604,9 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Retrieves the [`fs.Stats`][] for the given `filehandle`.
+Recupera el [`fs.Stats`][] para el `filehandle` dado.
 
 ### fsPromises.fsync(filehandle)
 
@@ -3615,9 +3615,9 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous fsync(2). La `Promise` se resuelve sin argumentos al realizarse con éxito.
+fsync(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.ftruncate(filehandle[, len])
 
@@ -3627,11 +3627,11 @@ added: v10.0.0
 
 * `filehandle` {FileHandle}
 * `len` {integer} **Default:** `0`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Truncates the file represented by `filehandle` then resolves the `Promise` with no arguments upon success.
+Trunca el archivo representado por `filehandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-If the file referred to by the `FileHandle` was larger than `len` bytes, only the first `len` bytes will be retained in the file.
+Si el archivo referido por `FileHandle` fuese más grande que `len` bytes, solo los primeros `len` bytes serán retenidos en el archivo.
 
 Por ejemplo, el siguiente programa retiene sólo los primeros cuatro bytes del archivo:
 
@@ -3674,11 +3674,11 @@ added: v10.0.0
 * `filehandle` {FileHandle}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Change the file system timestamps of the object referenced by the supplied `FileHandle` then resolves the `Promise` with no arguments upon success.
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por el `FileHandle` proporcionado, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-This function does not work on AIX versions before 7.1, it will resolve the `Promise` with an error using code `UV_ENOSYS`.
+Esta función no funciona en versiones AIX anteriores a 7.1, resolverá la `Promise` con un error, utilizando el código `UV_ENOSYS`.
 
 ### fsPromises.lchmod(path, mode)
 
@@ -3688,9 +3688,9 @@ deprecated: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
+Cambia los permisos en un enlace simbólico, luego resuelve la `Promise` sin argumentos al realizarse con éxito. Este método sólo se implementa en macOS.
 
 ### fsPromises.lchown(path, uid, gid)
 
@@ -3701,9 +3701,9 @@ deprecated: v10.0.0
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success. Este método sólo se implementa en macOS.
+Cambia la pertenencia en un enlace simbólico, luego resuelve la `Promise` sin argumentos al realizarse con éxito. Este método sólo se implementa en macOS.
 
 ### fsPromises.link(existingPath, newPath)
 
@@ -3713,9 +3713,9 @@ added: v10.0.0
 
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous link(2). The `Promise` is resolved with no arguments upon success.
+link(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con éxito.
 
 ### fsPromises.lstat(path)
 
@@ -3724,7 +3724,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 lstat(2) asincrónico. La `Promise` se resuelve con el objeto de [`fs.Stats`][] para el enlace simbólico de `path` dado.
 
@@ -3736,7 +3736,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 De manera asincrónica, crea un directorio y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
@@ -3749,18 +3749,18 @@ added: v10.0.0
 * `prefix` {string}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Crea un directorio temporal único y resuelve la `Promise` con la ruta de carpeta creada. Se genera un nombre de directorio único anexando seis caracteres al azar al final del `prefix` proporcionado.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
+El argumento opcional de `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar.
 
 ```js
 fsPromises.mkdtemp(path.join(os.tmpdir(), 'foo-'))
   .catch(console.error);
 ```
 
-The `fsPromises.mkdtemp()` method will append the six randomly selected characters directly to the `prefix` string. For instance, given a directory `/tmp`, if the intention is to create a temporary directory *within* `/tmp`, the `prefix` must end with a trailing platform-specific path separator (`require('path').sep`).
+El método de `fsPromises.mkdtemp()` anexará los seis caracteres seleccionados aleatoriamente, directamente a la string de `prefix` . For instance, given a directory `/tmp`, if the intention is to create a temporary directory *within* `/tmp`, the `prefix` must end with a trailing platform-specific path separator (`require('path').sep`).
 
 ### fsPromises.open(path, flags[, mode])
 
@@ -3771,9 +3771,9 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `flags` {string|number} See [support of file system `flags`][].
 * `mode` {integer} **Default:** `0o666` (readable and writable)
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous file open that returns a `Promise` that, when resolved, yields a `FileHandle` object. See open(2).
+Apertura asincrónica de archivo que devuelve una `Promise` que, cuando se resuelve, produce un objeto de `FileHandle` . See open(2).
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
@@ -3790,7 +3790,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Lee datos del archivo especificado por `filehandle`.
 
@@ -3798,9 +3798,9 @@ Lee datos del archivo especificado por `filehandle`.
 
 `offset` is the offset in the buffer to start writing at.
 
-`length` is an integer specifying the number of bytes to read.
+`length` es un entero que especifica el número de bytes a leer.
 
-`position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
+`position` es un argumento que especifica dónde comenzar la lectura desde dentro del archivo. Si `position` es `null`, se leerán los datos desde la posición actual del archivo, y se actualizará la posición del archivo. Si `position` es un entero, la posición del archivo permanecerá sin cambios.
 
 Luego de una lectura exitosa, la `Promise` se resuelve con un objeto con una propiedad de `bytesRead` que especifique el número de bytes leídos, y una propiedad de `buffer` que sea una referencia a lo que fue pasado en el argumento de `buffer` .
 
@@ -3813,11 +3813,11 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Reads the contents of a directory then resolves the `Promise` with an array of the names of the files in the directory excludiing `'.'` and `'..'`.
+Lee los contenidos de un directorio, luego resuelve la `Promise` con una matriz de los nombres de los archivos en el directorio excluyendo a `'.'` y `'..'`.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
+The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames. Si el `encoding` se establece a `'buffer'`, los nombres de archivo devueltos serán pasados como un objeto de `Buffer` .
 
 ### fsPromises.readFile(path[, options])
 
@@ -3829,13 +3829,13 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
 
 La `Promise` se resuelve con los contenidos del archivo. Si no se especifica ninguna codificación (utilizando `options.encoding`), los datos son devueltos como un objeto de `Buffer` . De lo contrario, los datos serán una string.
 
-If `options` is a string, then it specifies the encoding.
+Si `options` es una string, entonces especifica la codificación.
 
 Cuando el `path` es un directorio, el comportamiento de `fsPromises.readFile()` es específico en la plataforma. En macOS, Linux, y Windows, la promesa será rechazada con un error. En FreeBSD, una representación de los contenidos del directorio será devuelta.
 
@@ -3850,11 +3850,11 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Asynchronous readlink(2). The `Promise` is resolved with the `linkString` upon success.
+Asynchronous readlink(2). La `Promise` se resuelve con el `linkString` al realizarse con éxito.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path returned. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
+The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path returned. Si el `encoding` se establece a `'buffer'`, la ruta de enlace devuelta será pasada como un objeto de `Buffer` .
 
 ### fsPromises.realpath(path[, options])
 
@@ -3865,13 +3865,13 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Determines the actual location of `path` using the same semantics as the `fs.realpath.native()` function then resolves the `Promise` with the resolved path.
 
 Only paths that can be converted to UTF8 strings are supported.
 
-The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
+The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
 On Linux, when Node.js is linked against musl libc, the procfs file system must be mounted on `/proc` in order for this function to work. Glibc no tiene esta restricción.
 
@@ -3883,9 +3883,9 @@ added: v10.0.0
 
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Renames `oldPath` to `newPath` and resolves the `Promise` with no arguments upon success.
+Renombra a `oldPath` como `newPath` y resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 ### fsPromises.rmdir(path)
 
@@ -3894,9 +3894,9 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-Removes the directory identified by `path` then resolves the `Promise` with no arguments upon success.
+Elimina el directorio identificado por `path`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 Using `fsPromises.rmdir()` on a file (not a directory) results in the `Promise` being rejected with an `ENOENT` error on Windows and an `ENOTDIR` error on POSIX.
 
@@ -3907,9 +3907,9 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
-The `Promise` is resolved with the [`fs.Stats`][] object for the given `path`.
+La `Promise` se resuelve con el objeto de [`fs.Stats`][] para el `path` dado.
 
 ### fsPromises.symlink(target, path[, type])
 
@@ -3920,11 +3920,11 @@ added: v10.0.0
 * `target` {string|Buffer|URL}
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Crea un enlace simbólico y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
-El argumento de `type` sólo se utiliza en plataformas de Windows y puede ser uno de `'dir'`, `'file'`, o `'junction'`. Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+El argumento de `type` sólo se utiliza en plataformas de Windows y puede ser uno de `'dir'`, `'file'`, o `'junction'`. Tenga en cuenta que los puntos de unión de Windows requieren que la ruta de destino sea absoluta. Cuando se utiliza `'junction'`, el argumento de `target` será automáticamente normalizado a la ruta absoluta.
 
 ### fsPromises.truncate(path[, len])
 
@@ -3934,7 +3934,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Trunca el `path` y luego resuelve la `Promise` sin argumentos al realizarse con éxito. El `path` *debe* ser una string o `Buffer`.
 
@@ -3960,7 +3960,7 @@ added: v10.0.0
 * `mtime` {number|string|Date}
 * Devuelve: {Promise}
 
-Change the file system timestamps of the object referenced by `path` then resolves the `Promise` with no arguments upon success.
+Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por `path`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
 
 Los argumentos `atime` y `mtime` siguen estas reglas:
 
@@ -3978,7 +3978,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Returns: {Promise}
+* Devuelve: {Promise}
 
 Escribe `buffer` al archivo especificado por `filehandle`.
 
@@ -3990,7 +3990,7 @@ La `Promise` se resuelve con un objeto que contenga una propiedad de `bytesWritt
 
 No es seguro utilizar `fsPromises.write()` varias veces en el mismo archivo sin esperar a que la `Promise` sea resuelta (o rechazada). Para este caso, `fs.createWriteStream` es altamente recomendado.
 
-On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 ### fsPromises.writeFile(file, data[, options])
 
@@ -4570,7 +4570,7 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 La bandera exclusiva `'x'` (bandera `O_EXCL` en open(2)) asegura que esa ruta sea creada recientemente. En sistemas de POSIX, se considera que la ruta existe incluso si es un enlace simbólico a un archivo inexistente. La bandera exclusiva puede o no que funcione con sistemas de archivos de red.
 
-On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
+En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en modo de anexo. El núcleo ignora el argumento de posición y siempre anexa los datos al final del archivo.
 
 Modificar un archivo en vez de reemplazarlo puede que requiera un modo de banderas de `'r+'` en lugar del modo predeterminado `'w'`.
 

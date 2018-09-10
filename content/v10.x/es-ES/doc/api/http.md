@@ -488,9 +488,9 @@ changes:
 
 Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
-If `data` is specified, it is equivalent to calling [`request.write(data, encoding)`][] followed by `request.end(callback)`.
+Si se especifica `data`, es equivalente a llamar a [`request.write(data, encoding)`][] seguido de `request.end(callback)`.
 
-If `callback` is specified, it will be called when the request stream is finished.
+Si se especifica `callback`, será llamado cuando el stream de solicitud haya finalizado.
 
 ### request.flushHeaders()
 
@@ -645,7 +645,7 @@ added: v0.1.29
 * `callback` {Function}
 * Returns: {boolean}
 
-Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Envía una parte del cuerpo. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
 The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
 
@@ -730,7 +730,7 @@ server.listen(8000);
 
 When the `'clientError'` event occurs, there is no `request` or `response` object, so any HTTP response sent, including response headers and payload, *must* be written directly to the `socket` object. Care must be taken to ensure the response is a properly formatted HTTP response message.
 
-`err` is an instance of `Error` with two extra columns:
+`err` es una instancia de `Error` con dos columnas adicionales:
 
 * `bytesParsed`: the bytes count of request packet that Node.js may have parsed correctly;
 * `rawPacket`: the raw packet of current request.
@@ -741,7 +741,7 @@ When the `'clientError'` event occurs, there is no `request` or `response` objec
 added: v0.1.4
 -->
 
-Emitted when the server closes.
+Se emite cuando el servidor se cierra.
 
 ### Event: 'connect'
 
@@ -753,11 +753,11 @@ added: v0.7.0
 * `socket` {net.Socket} Network socket between the server and client
 * `head` {Buffer} The first packet of the tunneling stream (may be empty)
 
-Emitted each time a client requests an HTTP `CONNECT` method. If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
+Se emite cada vez que un cliente solicita un método de HTTP `CONNECT` . If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
-### Event: 'connection'
+### Evento: 'connection'
 
 <!-- YAML
 added: v0.1.0
@@ -808,7 +808,7 @@ added: v0.1.90
 
 * `callback` {Function}
 
-Stops the server from accepting new connections. See [`net.Server.close()`][].
+Detiene al servidor de aceptar nuevas conexiones. Vea [`net.Server.close()`][].
 
 ### server.listen()
 
@@ -884,9 +884,9 @@ added: v0.1.17
 
 This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
+The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. Esto es un [`EventEmitter`][] con los siguientes eventos:
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.6.7
@@ -902,7 +902,7 @@ added: v0.3.6
 
 Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. It does not imply that the client has received anything yet.
 
-After this event, no more events will be emitted on the response object.
+Después de este evento, no se emitirán más eventos en el objeto de respuesta.
 
 ### response.addTrailers(headers)
 
@@ -981,7 +981,7 @@ added: v0.4.0
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1001,7 +1001,7 @@ const setCookie = response.getHeader('set-cookie');
 added: v7.7.0
 -->
 
-* Returns: {string[]}
+* Devuelve: {string[]}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
@@ -1044,11 +1044,11 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Example:
+Ejemplo:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1192,7 +1192,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1213,11 +1213,11 @@ added: v0.1.29
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
+Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
 Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. `callback` will be called when this chunk of data is flushed.
+`chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. `callback` will be called when this chunk of data is flushed.
 
 This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
@@ -1312,7 +1312,7 @@ Emitted when the request has been aborted.
 added: v0.4.2
 -->
 
-Indicates that the underlying connection was closed. Just like `'end'`, this event occurs only once per response.
+Indica que la conexión subyacente fue cerrada. Al igual que `'end'`, este evento ocurre una sóla vez por respuesta.
 
 ### message.aborted
 
@@ -1322,7 +1322,7 @@ added: v10.1.0
 
 * {boolean}
 
-The `message.aborted` property will be `true` if the request has been aborted.
+La propiedad de `message.aborted` será `true` si la solicitud ha sido abortada.
 
 ### message.destroy([error])
 
@@ -1332,7 +1332,7 @@ added: v0.3.0
 
 * `error` {Error}
 
-Calls `destroy()` on the socket that received the `IncomingMessage`. If `error` is provided, an `'error'` event is emitted and `error` is passed as an argument to any listeners on the event.
+Llama a `destroy()` en el socket que recibió el `IncomingMessage`. Si se proporciona `error`, un evento de `'error'` será emitido y `error` será pasado como un argumento a los listeners que estén en el evento.
 
 ### message.headers
 
@@ -1358,8 +1358,8 @@ console.log(request.headers);
 Duplicates in raw headers are handled in the following ways, depending on the header name:
 
 * Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
-* `set-cookie` is always an array. Duplicates are added to the array.
-* For all other headers, the values are joined together with ', '.
+* `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
+* Para todos los otros encabezados, los valores se unen con ', '.
 
 ### message.httpVersion
 
@@ -1371,7 +1371,7 @@ added: v0.1.1
 
 In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Probably either `'1.1'` or `'1.0'`.
 
-Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
+Además, `message.httpVersionMajor` es el primer entero y `message.httpVersionMinor` es el segundo.
 
 ### message.method
 
@@ -1383,7 +1383,7 @@ added: v0.1.1
 
 **Only valid for request obtained from [`http.Server`][].**
 
-The request method as a string. Read only. Example: `'GET'`, `'DELETE'`.
+El método de solicitud es una string. Sólo lectura. Ejemplo: `'GET'`, `'DELETE'`.
 
 ### message.rawHeaders
 
@@ -1395,9 +1395,9 @@ added: v0.11.6
 
 The raw request/response headers list exactly as they were received.
 
-Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Tenga en cuenta que las llaves y los valores están en la misma lista. *no* es una lista de tuplas. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Header names are not lowercased, and duplicates are not merged.
+Los nombres de los encabezados no están en minúsculas, y los duplicados no están fusionados.
 
 ```js
 // Prints something like:
@@ -1443,7 +1443,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-The [`net.Socket`][] object associated with the connection.
+El objeto de [`net.Socket`][] asociado a la conexión.
 
 With HTTPS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
 
@@ -1455,9 +1455,9 @@ added: v0.1.1
 
 * {number}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The 3-digit HTTP response status code. E.G. `404`.
+The 3-digit HTTP response status code. Por ejemplo, `404`.
 
 ### message.statusMessage
 
@@ -1467,9 +1467,9 @@ added: v0.11.10
 
 * {string}
 
-**Only valid for response obtained from [`http.ClientRequest`][].**
+**Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The HTTP response status message (reason phrase). E.G. `OK` or `Internal Server
+The HTTP response status message (reason phrase). Por ejemplo, `OK` o `Internal Server
 Error`.
 
 ### message.trailers
@@ -1500,7 +1500,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Then `request.url` will be:
+Entonces `request.url` será:
 
 <!-- eslint-disable semi -->
 
@@ -1566,7 +1566,7 @@ added: v0.1.22
 
 * {Object}
 
-A collection of all the standard HTTP response status codes, and the short description of each. For example, `http.STATUS_CODES[404] === 'Not
+Una colección de todos los códigos de estado estándar de respuesta de HTTP, y la descripción corta de cada uno. Por ejemplo, `http.STATUS_CODES[404] === 'Not
 Found'`.
 
 ## http.createServer(\[options\]\[, requestListener\])
@@ -1581,16 +1581,16 @@ changes:
 -->
 
 * `options` {Object} 
-  * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Useful for extending the original `IncomingMessage`. **Default:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Default:** `ServerResponse`.
+  * `IncomingMessage` {http.IncomingMessage} Especifica la clase de `IncomingMessage` que será utilizada. Útil para extender el `IncomingMessage` original. **Predeterminado:** `IncomingMessage`.
+  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Útil para extender el `ServerResponse` original. **Predeterminado:** `ServerResponse`.
 
 * `requestListener` {Function}
 
-* Returns: {http.Server}
+* Devuelve: {http.Server}
 
-Returns a new instance of [`http.Server`][].
+Devuelve una nueva instancia de [`http.Server`][].
 
-The `requestListener` is a function which is automatically added to the [`'request'`][] event.
+El `requestListener` es una función que se añade automáticamente al evento de [`'request'`][].
 
 ## http.get(options[, callback])
 
@@ -1603,13 +1603,13 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
+* `options` {Object | string | URL} Acepta las mismas `options` que [`http.request()`][], con el `method` siempre establecido a `GET`. Las propiedades que se heredan desde el prototipo son ignoradas.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Devuelve: {http.ClientRequest}
 
-Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
+Ya que la mayoría de las solicitudes son solicitudes de GET sin cuerpos, Node.js proporciona este método de conveniencia. La única diferencia entre este método y [`http.request()`][] es que establece el método a GET y llama a `req.end()` automáticamente. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
-The `callback` is invoked with a single argument that is an instance of [`http.IncomingMessage`][].
+El `callback` se invoca con un único argumento que es una instancia de [`http.IncomingMessage`][].
 
 JSON Fetching Example:
 
@@ -1657,7 +1657,7 @@ added: v0.5.9
 
 * {http.Agent}
 
-Global instance of `Agent` which is used as the default for all HTTP client requests.
+Instancia global de `Agent` que es utilizada de modo predeterminado para todas las solicitudes del cliente de HTTP.
 
 ## http.request(options[, callback])
 
