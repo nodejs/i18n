@@ -857,11 +857,11 @@ Creates a new TCP or [IPC](#net_ipc_support) server.
 
 Si `allowHalfOpen` es establecido como `true`, cuando el otro terminal del socket envíe un paquete FIN, el servidor solo enviará un paquete FIN devuelta cuando [`socket.end()`][] es llamado explícitamente, hasta entonces la conexión es entrecerrada (no es legible pero aún así es escribible). Vea el evento [`'end'`][] event y [RFC 1122](https://tools.ietf.org/html/rfc1122) (sección 4.2.2.13) para más información.
 
-Si `pauseOnConnect` es establecido como `true`, entonces el socket asociado con cada conexión entrante será pausado, y no se leerán ningunos datos de su handle. This allows connections to be passed between processes without any data being read by the original process. To begin reading data from a paused socket, call [`socket.resume()`][].
+Si `pauseOnConnect` es establecido como `true`, entonces el socket asociado con cada conexión entrante será pausado, y no se leerán ningunos datos de su handle. Esto le permite a las conexiones que sean pasadas entre procesos sin que ningunos datos sean leídos por el proceso original. Para empezar a leer los datos de un socket pausado, llama a [`socket.resume()`][].
 
-The server can be a TCP server or an [IPC](#net_ipc_support) server, depending on what it [`listen()`][`server.listen()`] to.
+El servidor puede ser un servidor TCP o un servidor [IPC](#net_ipc_support), dependiendo de que ha sido pasado por [`listen()`][`server.listen()`].
 
-Here is an example of an TCP echo server which listens for connections on port 8124:
+Este es un ejemplo de un servidor echo TCP que escucha por conexiones en el puerto 8124:
 
 ```js
 const net = require('net');
@@ -882,13 +882,13 @@ server.listen(8124, () => {
 });
 ```
 
-Test this by using `telnet`:
+Prueba esto usando `telnet`:
 
 ```console
 $ telnet localhost 8124
 ```
 
-To listen on the socket `/tmp/echo.sock` the third line from the last would just be changed to:
+Para escuchar en el socket `/tmp/echo.sock`, la tercera línea contado desde la última sería cambiada a:
 
 ```js
 server.listen('/tmp/echo.sock', () => {
@@ -896,7 +896,7 @@ server.listen('/tmp/echo.sock', () => {
 });
 ```
 
-Use `nc` to connect to a UNIX domain socket server:
+Usa `nc` para conectarse en un servidor de socket de dominio UNIX:
 
 ```console
 $ nc -U /tmp/echo.sock
@@ -908,9 +908,9 @@ $ nc -U /tmp/echo.sock
 added: v0.3.0
 -->
 
-* Returns: {integer}
+* Devuelve: {integer}
 
-Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
+Prueba si lo introducido es una dirección IP. Devuelve `0` para los strings inválidos, devuelve `4` para versiones IP versión 4, y devuelve `6` para direcciones IP versión 6.
 
 ## net.isIPv4(input)
 
@@ -920,7 +920,7 @@ added: v0.3.0
 
 * Returns: {boolean}
 
-Returns `true` if input is a version 4 IP address, otherwise returns `false`.
+Devuelve `true` si lo introducido es una dirección IP versión 4, de otra manera devuelve `false`.
 
 ## net.isIPv6(input)
 
