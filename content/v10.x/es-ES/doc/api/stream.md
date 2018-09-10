@@ -43,9 +43,9 @@ Las instancias stream son cambiadas a modo objeto usando la opción `objectMode`
 
 <!--type=misc-->
 
-Both [`Writable`][] and [`Readable`][] streams will store data in an internal buffer that can be retrieved using `writable.writableBuffer` or `readable.readableBuffer`, respectively.
+Los streams [`Writable`][] y [`Readable`][] van a almacenar los datos en un búfer interno, que puede ser recuperado usando `writable.writableBuffer` o `readable.readableBuffer`, respectivamente.
 
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the streams constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
+La cantidad de datos potencialmente guardados en un búfer depende de la opción `highWaterMark` pasadas por el constructor de streams. Para streams normales, la opción `highWaterMark` especifica un [número total de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). Para operar stream en modo objeto, `highWaterMark` especifica un número total de objetos´.
 
 Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
 
