@@ -703,7 +703,7 @@ added: v0.9.1
 
 * Devuelve: {net.Socket} El socket en sí mismo.
 
-Llamar a `unref()` en un socket permitirá al programa salir si es el único socket activo en el sistema de eventos. If the socket is already `unref`ed calling `unref()` again will have no effect.
+Llamar a `unref()` en un socket permitirá al programa salir si es el único socket activo en el sistema de eventos. Si el socket ya fue llamado `unref`, llamar a `unref()` de nuevo no tendrá ningún efecto.
 
 ### socket.write(data\[, encoding\]\[, callback\])
 
@@ -712,7 +712,7 @@ added: v0.1.90
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `encoding` {string} Only used when data is `string`. **Predeterminado:** `utf8`.
+* `encoding` {string} Solo se usa cuando los datos son `string`. **Predeterminado:** `utf8`.
 * `callback` {Function}
 * Devuelve: {boolean}
 
@@ -726,7 +726,7 @@ Vea el método [`write()`](stream. html#stream_writable_write_chunk_encoding_cal
 
 ## net.connect()
 
-Aliases to [`net.createConnection()`][`net.createConnection()`].
+Alias a [`net.createConnection()`][`net.createConnection()`].
 
 Firmas posibles:
 
@@ -738,7 +738,7 @@ Firmas posibles:
 
 <!-- YAML
 added: v0.7.0
---> Alias to [
+--> Alias a [
 
 `net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
@@ -748,7 +748,7 @@ added: v0.7.0
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
+Alias a [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
 
 ### net.connect(port\[, host\]\[, connectListener\])
 
@@ -756,7 +756,7 @@ Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
+Alias a [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
 
 ## net.createConnection()
 
@@ -839,7 +839,7 @@ added: v0.1.90
 
 Inicia una conexión TCP.
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], then returns the `net.Socket` that starts the connection.
+Esta función crea un nuevo [`net.Socket`][] con todas las opciones en su manera predeterminada, inicia inmediatamente conexión con[`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], entonces devuelve el `net.Socket` que inicia la conexión.
 
 ## net.createServer(\[options\]\[, connectionListener\])
 
