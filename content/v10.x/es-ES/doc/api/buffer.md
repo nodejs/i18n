@@ -2227,12 +2227,12 @@ const buf = Buffer.allocUnsafe(6);
 buf.writeUIntBE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Prints: <Buffer 12 34 56 78 90 ab>
+// Imprime: <Buffer 12 34 56 78 90 ab>
 
 buf.writeUIntLE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Prints: <Buffer ab 90 78 56 34 12>
+// Imprime: <Buffer ab 90 78 56 34 12>
 ```
 
 ## buffer.INSPECT_MAX_BYTES
@@ -2241,7 +2241,7 @@ console.log(buf);
 added: v0.5.4
 -->
 
-* {integer} **Default:** `50`
+* {integer} **Predeterminado:** `50`
 
 Returns the maximum number of bytes that will be returned when `buf.inspect()` is called. This can be overridden by user modules. See [`util.inspect()`] for more details on `buf.inspect()` behavior.
 
