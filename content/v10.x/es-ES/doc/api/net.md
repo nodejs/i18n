@@ -779,14 +779,14 @@ added: v0.1.90
 -->
 
 * `options` {Object} Requerido. Será pasado tanto como por la llamada [`new net.Socket([options])`][`new net.Socket(options)`] y el método [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
-* `connectListener` {Function} Parámetro común de las funciones [`net.createConnection()`][]. If supplied, will be added as a listener for the [`'connect'`][] event on the returned socket once.
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `connectListener` {Function} Parámetro común de las funciones [`net.createConnection()`][]. Si es proporcionado, será añadido una vez como un listener para el evento [`'connect'`][] en el socket devuelto.
+* Devuelve: {net.Socket} El socket recién creado usado para iniciar la conexión.
 
-For available options, see [`new net.Socket([options])`][`new net.Socket(options)`] and [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
+Para las opciones disponibles, vea [`new net.Socket([options])`][`new net.Socket(options)`] y [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
 
-Additional options:
+Opciones adicionales:
 
-* `timeout` {number} If set, will be used to call [`socket.setTimeout(timeout)`][] after the socket is created, but before it starts the connection.
+* `timeout` {number} Si es establecido, será usado para llamar a [`socket.setTimeout(timeout)`][] después que el socket sea creado, pero antes de que se inicie la conexión.
 
 Following is an example of a client of the echo server described in the [`net.createServer()`][] section:
 
