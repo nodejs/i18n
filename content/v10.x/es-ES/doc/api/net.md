@@ -767,7 +767,7 @@ Cuando la conexión es establecida, un evento [`'connect'`][] será emitido en e
 Possible signatures:
 
 * [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`]
-* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] for [IPC](#net_ipc_support) connections.
+* [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] para conexiones [IPC](#net_ipc_support).
 * [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] for TCP connections.
 
 La función [`net.connect()`][] es un alias de esta función.
@@ -918,7 +918,7 @@ Prueba si lo introducido es una dirección IP. Devuelve `0` para los strings inv
 added: v0.3.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Devuelve `true` si lo introducido es una dirección IP versión 4, de otra manera devuelve `false`.
 
@@ -928,6 +928,6 @@ Devuelve `true` si lo introducido es una dirección IP versión 4, de otra maner
 added: v0.3.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if input is a version 6 IP address, otherwise returns `false`.
+Devuelve `true` si lo introducido es una dirección IP versión 6, de lo contrario devuelve `false`.
