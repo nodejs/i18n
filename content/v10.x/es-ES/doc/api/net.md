@@ -778,8 +778,8 @@ La función [`net.connect()`][] es un alias de esta función.
 added: v0.1.90
 -->
 
-* `options` {Object} Required. Will be passed to both the [`new net.Socket([options])`][`new net.Socket(options)`] call and the [`socket.connect(options[, connectListener])`][`socket.connect(options)`] method.
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions. If supplied, will be added as a listener for the [`'connect'`][] event on the returned socket once.
+* `options` {Object} Requerido. Será pasado tanto como por la llamada [`new net.Socket([options])`][`new net.Socket(options)`] y el método [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
+* `connectListener` {Function} Parámetro común de las funciones [`net.createConnection()`][]. If supplied, will be added as a listener for the [`'connect'`][] event on the returned socket once.
 * Returns: {net.Socket} The newly created socket used to start the connection.
 
 For available options, see [`new net.Socket([options])`][`new net.Socket(options)`] and [`socket.connect(options[, connectListener])`][`socket.connect(options)`].
