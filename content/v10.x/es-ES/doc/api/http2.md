@@ -798,7 +798,7 @@ added: v8.4.0
   * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas una dependiente de este stream. **Predeterminado:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente este stream.
   * `weight` {number} Especifica la dependencia relativa de un stream en relación a otros streams con el mismo `parent`. El valor es un número entre `1` y `256` (inclusivo).
-  * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
+  * `silent` {boolean} Cuando es `true`, cambia la prioridad de manera local sin enviar un frame de `PRIORITY` al peer conectado.
 
 Actualiza la prioridad para esta instancia `Http2Stream` .
 
@@ -850,7 +850,7 @@ added: v8.4.0
 
 * {Http2Session}
 
-Una referencia a la instancia de `Http2Session` que posee este `Http2Stream`. The value will be `undefined` after the `Http2Stream` instance is destroyed.
+Una referencia a la instancia de `Http2Session` que posee este `Http2Stream`. El valor será `undefined` luego de que la instancia de `Http2Stream` sea destruida.
 
 #### http2stream.setTimeout(msecs, callback)
 
@@ -875,14 +875,14 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Provides miscellaneous information about the current state of the 
+--> Proporciona información miscelánea sobre el estado actual del 
 
 `Http2Stream`.
 
 * {Object} 
-  * `localWindowSize` {number} The number of bytes the connected peer may send for this `Http2Stream` without receiving a `WINDOW_UPDATE`.
-  * `state` {number} A flag indicating the low-level current state of the `Http2Stream` as determined by `nghttp2`.
-  * `localClose` {number} `true` if this `Http2Stream` has been closed locally.
+  * `localWindowSize` {number} El número de bytes que el peer conectado puede enviar a este `Http2Stream` sin recibir un `WINDOW_UPDATE`.
+  * `state` {number} Una bandera que indica el estado actual de bajo nivel del `Http2Stream`, como lo determina `nghttp2`.
+  * `localClose` {number} es `true` en caso de que este `Http2Stream` haya sido cerrado de manera local.
   * `remoteClose` {number} `true` si este `Http2Stream` ha sido cerrado de manera remota.
   * `sumDependencyWeight` {number} The sum weight of all `Http2Stream` instances that depend on this `Http2Stream` as specified using `PRIORITY` frames.
   * `weight` {number} El peso de prioridad de esta `Http2Stream`.
