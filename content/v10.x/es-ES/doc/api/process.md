@@ -522,7 +522,7 @@ Si el proceso Node.js es generado con un canal IPC (vea la documentación del [P
 
 El efecto de llamar a `process.disconnect()` es el mismo que llamar a [`ChildProcess.disconnect()`][] del proceso primario.
 
-If the Node.js process was not spawned with an IPC channel, `process.disconnect()` will be `undefined`.
+Si el proceso Node.js no fue generado con un canal IPC, `process.disconnect()` será `undefined`.
 
 ## process.dlopen(module, filename[, flags])
 
@@ -537,13 +537,13 @@ changes:
 
 * `module` {Object}
 * `filename` {string}
-* `flags` {os.constants.dlopen} **Default:** `os.constants.dlopen.RTLD_LAZY`
+* `flags` {os.constants.dlopen} **Predeterminado:** `os.constants.dlopen.RTLD_LAZY`
 
-The `process.dlopen()` method allows to dynamically load shared objects. It is primarily used by `require()` to load C++ Addons, and should not be used directly, except in special cases. In other words, [`require()`][] should be preferred over `process.dlopen()`, unless there are specific reasons.
+El método `process.dlopen()` permite cargar dinámicamente objetos compartidos. Es usado principalmente por `require()` para cargar Addons de C++, y no debería utilizarse directamente, a excepción de casos especiales. En otras palabras, [`require()`][] debe preferirse sobre `process.dlopen()`, a menos que hayan razones específicas.
 
-The `flags` argument is an integer that allows to specify dlopen behavior. See the [`os.constants.dlopen`][] documentation for details.
+El argumento `flags` es un entero que permite especificar el comportamiento de dlopen. Vea la documentación de [`os.constants.dlopen`][] para más detalles.
 
-If there are specific reasons to use `process.dlopen()` (for instance, to specify dlopen flags), it's often useful to use [`require.resolve()`][] to look up the module's path.
+Si hay razones específicas para usar `process.dlopen()` (por ejemplo, para especificar banderas dlopen), suele ser útil utilizar [`require.resolve()`][] para buscar la ruta del módulo.
 
 An important drawback when calling `process.dlopen()` is that the `module` instance must be passed. Functions exported by the C++ Addon will be accessible via `module.exports`.
 
