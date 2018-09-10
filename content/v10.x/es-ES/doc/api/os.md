@@ -173,12 +173,12 @@ added: v0.9.4
 
 * Retorna: {string}
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+El método `os.endianness()` retorna una línea identificando la endianidad del CPU* para la cual el binario Node.js fue compilado*.
 
-Possible values are:
+Posibles valores son:
 
-* `'BE'` for big endian
-* `'LE'` for little endian.
+* `'BE'` para gran Endian
+* `'LE'` para pequeño Endian.
 
 ## os.freemem()
 
@@ -186,7 +186,7 @@ Possible values are:
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
 The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
