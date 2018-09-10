@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Nota:* En Windows Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. Por ejemplo `path.resolve('c:\\')` puede potencialmente ocasionar un resultado diferente que `path.resolve('c:')`. Para más información, vea [esta página MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* En Windows, Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. Por ejemplo `path.resolve('c:\\')` puede potencialmente ocasionar un resultado diferente que `path.resolve('c:')`. Para más información, vea [esta página MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
