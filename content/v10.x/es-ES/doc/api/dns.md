@@ -554,10 +554,10 @@ Aunque la llamada a `dns.lookup()` será asincrónica desde la perspectiva de Ja
 
 Tenga en cuenta que varias APIs de red llamarán a `dns.lookup()` internamente para resolver los nombres del host. Si eso es un problema, considere resolver el hostname para una dirección utilizando `dns.resolve()` y usando la dirección en lugar de un nombre de host. De igual forma, algunas APIs de red (tales como `socket.connect()`][] y [`dgram.createSocket()`][]) permiten que el resolver predeterminado, `dns.lookup()`, sea reemplazado.
 
-### `dns.resolve()`, `dns.resolve*()` and `dns.reverse()`
+### `dns.resolve()`, `dns.resolve*()` y `dns.reverse()`
 
-These functions are implemented quite differently than [`dns.lookup()`][]. They do not use getaddrinfo(3) and they *always* perform a DNS query on the network. This network communication is always done asynchronously, and does not use libuv's threadpool.
+Estas funciones son implementadas de forma muy diferente que las de [`dns.lookup()`][]. Ellas no utilizan getaddrinfo(3) y *siempre* realizan una consulta DNS en la red. Esta comunicación de red siempre es hecha de forma asincrónica, y no utiliza la threadpool de libuv.
 
-As a result, these functions cannot have the same negative impact on other processing that happens on libuv's threadpool that [`dns.lookup()`][] can have.
+Como resultado, estas funciones no pueden tener el mismo impacto negativo en otros procesos que ocurren en la threadpool de libuv, que [`dns.lookup()`][]puede tener.
 
-They do not use the same set of configuration files than what [`dns.lookup()`][] uses. For instance, *they do not use the configuration from `/etc/hosts`*.
+Ellas no utilizan el mismo conjunto de archivos de configuración que utiliza [`dns.lookup()`][]. For instance, *they do not use the configuration from `/etc/hosts`*.
