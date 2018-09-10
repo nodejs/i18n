@@ -180,9 +180,9 @@ Si los dominios están en uso, entonces todos los **nuevos** objetos `Eventosemi
 
 Asimismo, los callbacks pasados al subnivel de evento de las solicitudes del bucle (como `fs.open()`, u otros métodos de atender callbacks) serán automáticamente añadidas al dominio activo. Entonces, el dominio los percibirá como el error si son arrojados.
 
-De manera que para prevenir el uso excesivo de la memoria, los objetos del `Dominio` no se añaden implícitamente por sí mismos como secundarios del dominio activo. If they were, then it would be too easy to prevent request and response objects from being properly garbage collected.
+De manera que para prevenir el uso excesivo de la memoria, los objetos del `Dominio` no se añaden implícitamente por sí mismos como secundarios del dominio activo. Y si lo hicieran, seria muy sencillo prevenir solicitudes y dar respuesta a los objetos a partir de la basura recolectada.
 
-To nest `Domain` objects as children of a parent `Domain` they must be explicitly added.
+Para alojar a los objetos del `Dominio` como secundarios de un proceso `Dominio` principal, deben estar explícitamente añadidos.
 
 Implicit binding routes thrown errors and `'error'` events to the `Domain`'s `'error'` event, but does not register the `EventEmitter` on the `Domain`. Implicit binding only takes care of thrown errors and `'error'` events.
 
