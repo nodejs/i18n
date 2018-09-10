@@ -1,10 +1,10 @@
-# Performance Timing API
+# Tiempo de desempeño API
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
+El Tiempo de Desempeño API proporciona una implementación de la especificación [Funcionamiento de la línea de tiempo de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
 
 ```js
 const { PerformanceObserver, performance } = require('perf_hooks');
