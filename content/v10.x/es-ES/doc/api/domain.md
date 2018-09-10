@@ -170,9 +170,9 @@ En cualquier momento que un objeto de `Error` es enrutado a través de un domini
 * `error.domain` El dominio que se encargó primero del error.
 * `error.domainEmitter` El evento emisor que originó un evento de `'error'` con el objeto de error.
 * `error.domainBound` La función de callback que fue agregada al dominio y pasó un error como su primer argumento.
-* `error.domainThrown` A boolean indicating whether the error was thrown, emitted, or passed to a bound callback function.
+* `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado por un límite de la función de callback.
 
-## Implicit Binding
+## Vinculación implícita
 
 <!--type=misc-->
 
