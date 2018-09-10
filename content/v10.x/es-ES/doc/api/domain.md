@@ -184,9 +184,9 @@ De manera que para prevenir el uso excesivo de la memoria, los objetos del `Domi
 
 Para alojar a los objetos del `Dominio` como secundarios de un proceso `Dominio` principal, deben estar explícitamente añadidos.
 
-Implicit binding routes thrown errors and `'error'` events to the `Domain`'s `'error'` event, but does not register the `EventEmitter` on the `Domain`. Implicit binding only takes care of thrown errors and `'error'` events.
+Las rutas de vinculaciones implícitas arrojan errores y eventos de `'error'` en los eventos de `'error'` del `Dominio`, pero no registra los del `EmisordeEvento` en el `Dominio`. Las vinculaciones implícitas solo se encargan de los errores arrojados y los eventos de `'error'`.
 
-## Explicit Binding
+## Vinculaciones explicitas
 
 <!--type=misc-->
 
