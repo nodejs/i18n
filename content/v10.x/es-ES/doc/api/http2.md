@@ -715,7 +715,7 @@ added: v8.4.0
 
 El evento de `'timeout'` se emite luego de que no se reciba ninguna actividad para este `Http2Stream` dentro del número de milisegundos establecidos utilizando `http2stream.setTimeout()`.
 
-#### Event: 'trailers'
+#### Evento: 'trailers'
 
 <!-- YAML
 added: v8.4.0
