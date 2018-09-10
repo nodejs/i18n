@@ -921,9 +921,9 @@ added: v8.4.0
 
 * Extends {Http2Stream}
 
-La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. `Http2Stream` instances on the client provide events such as `'response'` and `'push'` that are only relevant on the client.
+La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. Las instancias de `Http2Stream` en el cliente proporcionan eventos tales como `'response'` y `'push'`, los cuales son relevantes solamente en el cliente.
 
-#### Event: 'continue'
+#### Evento: 'continue'
 
 <!-- YAML
 added: v8.5.0
