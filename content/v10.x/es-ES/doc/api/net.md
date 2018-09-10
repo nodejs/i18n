@@ -167,7 +167,7 @@ Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especifi
 
 Todos los [`net.Socket`][] son establecidos a `SO_REUSEADDR` (Vea [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) para los detalles).
 
-The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()` call or `server.close()` has been called. Otherwise, an `ERR_SERVER_ALREADY_LISTEN` error will be thrown.
+The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()` call or `server.close()` has been called. De lo contrario, un error `ERR_SERVER_ALREADY_LISTEN` será arrojado.
 
 Uno de los errores más comunes cuando se escucha es `EADDRINUSE`. Esto ocurre cuando otro servidor está escuchando en el `port` / `path` / `handle` requerido. Una manera de manejar esto sería intentar de nuevo luego de una cierta cantidad de tiempo:
 
