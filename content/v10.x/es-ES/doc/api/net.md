@@ -701,9 +701,9 @@ El parámetro `callback` opcional será añadido como un listener de un solo uso
 added: v0.9.1
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Calling `unref()` on a socket will allow the program to exit if this is the only active socket in the event system. If the socket is already `unref`ed calling `unref()` again will have no effect.
+Llamar a `unref()` en un socket permitirá al programa salir si es el único socket activo en el sistema de eventos. If the socket is already `unref`ed calling `unref()` again will have no effect.
 
 ### socket.write(data\[, encoding\]\[, callback\])
 
@@ -712,11 +712,11 @@ added: v0.1.90
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `encoding` {string} Only used when data is `string`. **Default:** `utf8`.
+* `encoding` {string} Only used when data is `string`. **Predeterminado:** `utf8`.
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
+Envía los datos en el scoket. El segundo parámetro especifica la codificación en el caso de un string — se vuelve por defecto la codificación UTF8.
 
 Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
 
