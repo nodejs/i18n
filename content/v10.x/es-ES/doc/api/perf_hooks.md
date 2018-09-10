@@ -324,9 +324,9 @@ added: v8.5.0
 
 La timestamp de alta resolución en milisegundos en la cual la plataforma V8 fue iniciada.
 
-## Class: PerformanceObserver
+## Clase: PerformanceObserver
 
-### new PerformanceObserver(callback)
+### nuevo PerformanceObserver(callback)
 
 <!-- YAML
 added: v8.5.0
@@ -336,7 +336,7 @@ added: v8.5.0
   * `list` {PerformanceObserverEntryList}
   * `observer` {PerformanceObserver}
 
-`PerformanceObserver` objects provide notifications when new `PerformanceEntry` instances have been added to the Performance Timeline.
+Los objetos `PerformanceObserver` proporcionan notificaciones cuando nuevas instancias `PerformanceEntry` han sido añadidas al Tiempo de Rendimiento.
 
 ```js
 const {
