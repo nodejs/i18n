@@ -197,23 +197,23 @@ Por ejemplo, podría ser un dominio en el uso de un servidor HTTP, pero, quizás
 Es posible a través del enlace explícito.
 
 ```js
-// create a top-level domain for the server
+// crea un dominio superior para el servidor
 const domain = require('domain');
 const http = require('http');
 const serverDomain = domain.create();
 
 serverDomain.run(() => {
-  // server is created in the scope of serverDomain
+  // el servidor se crea en el ámbito del ServerDomain
   http.createServer((req, res) => {
-    // req and res are also created in the scope of serverDomain
-    // however, we'd prefer to have a separate domain for each request.
-    // create it first thing, and add req and res to it.
+    // req y res también son creadas en el ámbito del ServerDomain
+    // sin embargo, preferiríamos tener un dominio individual para cada solicitud.
+    // crea su primer objeto y, añade req y res a él.
     const reqd = domain.create();
     reqd.add(req);
     reqd.add(res);
     reqd.on('error', (er) => {
       console.error('Error', er, req.url);
-      try {
+      prueba {
         res.writeHead(500);
         res.end('Error occurred, sorry.');
       } catch (er2) {
@@ -224,11 +224,11 @@ serverDomain.run(() => {
 });
 ```
 
-## domain.create()
+## domain.Create()
 
-* Returns: {Domain}
+* Volver a: {Domain}
 
-## Class: Domain
+## Clase: dominio
 
 The `Domain` class encapsulates the functionality of routing errors and uncaught exceptions to the active `Domain` object.
 
