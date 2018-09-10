@@ -637,32 +637,32 @@ process.on('warning', (warning) => {
 });
 ```
 
-If `warning` is passed as an `Error` object, it will be passed through to the `'warning'` event handler unmodified (and the optional `type`, `code` and `ctor` arguments will be ignored):
+Si `warning` es pasada como un objeto `Error`, será pasada a través del manejador del evento `'warning'` sin modificar (y los argumentos `type`, `code` y `ctor` serán ignorados):
 
 ```js
-// Emit a warning using an Error object.
+// Emitir una advertencia utilizando un objeto Error.
 const myWarning = new Error('Something happened!');
-// Use the Error name property to specify the type name
+// Utilizar la propiedad de nombre Error para especificar el nombre del tipo
 myWarning.name = 'CustomWarning';
 myWarning.code = 'WARN001';
 
 process.emitWarning(myWarning);
-// Emits: (node:56338) [WARN001] CustomWarning: Something happened!
+// Emite: (node:56338) [WARN001] CustomWarning: Something happened!
 ```
 
-A `TypeError` is thrown if `warning` is anything other than a string or `Error` object.
+Se arroja un `TypeError` si `warning` es algo distinto a una string o a un objeto `Error`.
 
-Note that while process warnings use `Error` objects, the process warning mechanism is **not** a replacement for normal error handling mechanisms.
+Note que mientras que las advertencias del proceso utilizan objetos `Error`, el mecanismo de advertencia del proceso **no** es un remplazo para los mecanismos normales manejadores de error.
 
-The following additional handling is implemented if the warning `type` is `'DeprecationWarning'`:
+Se implementa el siguiente manejo adicional si el `type` de advertencia es `'DeprecationWarning'`:
 
-* If the `--throw-deprecation` command-line flag is used, the deprecation warning is thrown as an exception rather than being emitted as an event.
-* If the `--no-deprecation` command-line flag is used, the deprecation warning is suppressed.
-* If the `--trace-deprecation` command-line flag is used, the deprecation warning is printed to `stderr` along with the full stack trace.
+* Si la bandera de línea de comando `--throw-deprecation` es utilizada, se arroja la advertencia de desaprobación como una excepción en lugar de ser emitida como un evento.
+* Si la bandera de línea de comando `--no-deprecation` es utilizada, se suprime la advertencia de desaprobación.
+* Si la bandera de línea de comando `--trace-deprecation` es utilizada, se imprime la advertencia de desaprobación en `stderr` en conjunto con el stack trace completo.
 
-### Avoiding duplicate warnings
+### Evitando advertencias duplicadas
 
-As a best practice, warnings should be emitted only once per process. To do so, it is recommended to place the `emitWarning()` behind a simple boolean flag as illustrated in the example below:
+Como buena práctica, las advertencias deben ser emitidas una sola vez por proceso. Para hacerlo, se recomienda poner la `emitWarning()` detrás de una bandera booleana simple como se ilustra en el siguiente ejemplo:
 
 ```js
 function emitMyWarning() {
@@ -672,9 +672,9 @@ function emitMyWarning() {
   }
 }
 emitMyWarning();
-// Emits: (node: 56339) Warning: Only warn once!
+// Emite: (node: 56339) Warning: Only warn once!
 emitMyWarning();
-// Emits nothing
+// No emite nada
 ```
 
 ## process.env
@@ -690,9 +690,9 @@ changes:
 
 * {Object}
 
-The `process.env` property returns an object containing the user environment. See environ(7).
+La propiedad `process.env` devuelve un objeto que contiene el entorno del usuario. Vea environ(7).
 
-An example of this object looks like:
+Un ejemplo de este objeto luce así:
 
 <!-- eslint-skip -->
 
@@ -711,22 +711,22 @@ An example of this object looks like:
 }
 ```
 
-It is possible to modify this object, but such modifications will not be reflected outside the Node.js process. In other words, the following example would not work:
+Es posible modificar este objeto, pero dichas modificaciones no serán reflejadas afuera del proceso Node.js. En otras palabras, el siguiente ejemplo no funcionaría:
 
 ```console
 $ node -e 'process.env.foo = "bar"' && echo $foo
 ```
 
-While the following will:
+Mientras que el siguiente sí:
 
 ```js
 process.env.foo = 'bar';
 console.log(process.env.foo);
 ```
 
-Assigning a property on `process.env` will implicitly convert the value to a string. **This behavior is deprecated.** Future versions of Node.js may throw an error when the value is not a string, number, or boolean.
+Asignar una propiedad en `process.env` convertirá implícitamente el valor a una string. **Este comportamiento es desaprobado.** Las futuras versiones de Node.js podrían arrojar un error cuando el valor no es una string, un número o un booleano.
 
-Example:
+Ejemplo:
 
 ```js
 process.env.test = null;
@@ -737,9 +737,9 @@ console.log(process.env.test);
 // => 'undefined'
 ```
 
-Use `delete` to delete a property from `process.env`.
+Utilice `delete` para eliminar una propiedad de `process.env`.
 
-Example:
+Ejemplo:
 
 ```js
 process.env.TEST = 1;
@@ -748,9 +748,9 @@ console.log(process.env.TEST);
 // => undefined
 ```
 
-On Windows operating systems, environment variables are case-insensitive.
+En sistemas operativos Windows, las variables de entorno no distinguen entre minúscula y mayúscula.
 
-Example:
+Ejemplo:
 
 ```js
 process.env.TEST = 1;
