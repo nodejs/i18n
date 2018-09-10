@@ -303,7 +303,7 @@ Windows no soporta el envío de señales, pero Node.js ofrece una emulación con
 added: v0.7.0
 -->
 
-The `process.abort()` method causes the Node.js process to exit immediately and generate a core file.
+El método `process.abort()` causa que el proceso Node.js se cierre inmediatamente y genere un archivo core.
 
 ## process.arch
 
@@ -313,9 +313,9 @@ added: v0.5.0
 
 * {string}
 
-The `process.arch` property returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
+La propiedad `process.arch` devuelve una string que identifica la arquitectura del CPU del sistema operativo para el cual se compiló en binario de Node.js.
 
-The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+Los posibles valores actuales son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'` y `'x64'`.
 
 ```js
 console.log(`This processor architecture is ${process.arch}`);
@@ -329,24 +329,24 @@ added: v0.1.27
 
 * {string[]}
 
-The `process.argv` property returns an array containing the command line arguments passed when the Node.js process was launched. The first element will be [`process.execPath`]. See `process.argv0` if access to the original value of `argv[0]` is needed. The second element will be the path to the JavaScript file being executed. The remaining elements will be any additional command line arguments.
+La propiedad `process.argv` devuelve un array que contiene los argumentos de línea de comando pasados cuando el proceso Node.js fue ejecutado. El primer elemento será [`process.execPath`]. Vea `process.argv0` si se necesita acceso al valor original de `argv[0]`. El segundo elemento será la ruta para el archivo de JavaScript siendo ejecutado. Los elementos restantes serán cualquier argumento de línea de comando adicional.
 
-For example, assuming the following script for `process-args.js`:
+Por ejemplo, asumiendo el siguiente script para `process-args.js`:
 
 ```js
-// print process.argv
+// imprimir process.argv
 process.argv.forEach((val, index) => {
   console.log(`${index}: ${val}`);
 });
 ```
 
-Launching the Node.js process as:
+La ejecución del proceso Node.js como:
 
 ```console
 $ node process-args.js one two=three four
 ```
 
-Would generate the output:
+Generaría la salida:
 
 ```text
 0: /usr/local/bin/node
@@ -364,7 +364,7 @@ added: v6.4.0
 
 * {string}
 
-The `process.argv0` property stores a read-only copy of the original value of `argv[0]` passed when Node.js starts.
+La propiedad `process.argv0` almacena una copia de sólo lectura del valor original de `argv[0]` pasado cuando Node.js inicia.
 
 ```console
 $ bash -c 'exec -a customArgv0 ./node'
@@ -382,7 +382,7 @@ added: v7.1.0
 
 * {Object}
 
-If the Node.js process was spawned with an IPC channel (see the [Child Process](child_process.html) documentation), the `process.channel` property is a reference to the IPC channel. If no IPC channel exists, this property is `undefined`.
+Si el proceso Node.js fue generado con un canal IPC (vea la documentación del [Proceso Secundario](child_process.html)), la propiedad `process.channel` es una referencia al canal IPC. No existe un canal IPC, esta propiedad es `undefined`.
 
 ## process.chdir(directory)
 
@@ -392,7 +392,7 @@ added: v0.1.17
 
 * `directory` {string}
 
-The `process.chdir()` method changes the current working directory of the Node.js process or throws an exception if doing so fails (for instance, if the specified `directory` does not exist).
+El método `process.chdir()` cambia el directorio de trabajo actual del proceso Node.js o arroja una excepción si al hacerlo falla (por ejemplo, si el `directory` especificado no existe).
 
 ```js
 console.log(`Starting directory: ${process.cwd()}`);
@@ -412,9 +412,9 @@ added: v0.7.7
 
 * {Object}
 
-The `process.config` property returns an `Object` containing the JavaScript representation of the configure options used to compile the current Node.js executable. This is the same as the `config.gypi` file that was produced when running the `./configure` script.
+La propiedad `process.config` devuelve un `Object` que contiene la representación de JavaScript de las opciones de configuración usadas para compilar el actual Node.js ejecutable. Esto es igual que el archivo `config.gypi` que fue producido al correr el script `./configure`.
 
-An example of the possible output looks like:
+Un ejemplo de la salida posible luce así:
 
 <!-- eslint-skip -->
 
@@ -445,7 +445,7 @@ An example of the possible output looks like:
 }
 ```
 
-The `process.config` property is **not** read-only and there are existing modules in the ecosystem that are known to extend, modify, or entirely replace the value of `process.config`.
+La propiedad `process.config` **no** es de sólo lectura y existen módulos en el ecosistema que son conocidos por extender, modificar o remplazar completamente el valor de `process.config`.
 
 ## process.connected
 
@@ -455,9 +455,9 @@ added: v0.7.2
 
 * {boolean}
 
-If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `process.connected` property will return `true` so long as the IPC channel is connected and will return `false` after `process.disconnect()` is called.
+Si el proceso Node.js es generado con un canal IPC (vea la documentación del [Proceso Secundario](child_process.html) y de [Cluster](cluster.html)), la propiedad `process.connected` devolverá `true` siempre que el canal IPC esté conectado, y devolverá `false` después de que se llame a `process.disconnect()`.
 
-Once `process.connected` is `false`, it is no longer possible to send messages over the IPC channel using `process.send()`.
+Una vez que `process.connected` sea `false`, ya no será posible enviar mensajes por el canal IPC usando `process.send()`.
 
 ## process.cpuUsage([previousValue])
 
@@ -465,18 +465,18 @@ Once `process.connected` is `false`, it is no longer possible to send messages o
 added: v6.1.0
 -->
 
-* `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
-* Returns: {Object} * `user` {integer} * `system` {integer}
+* `previousValue` {Object} Un valor de devolución previo de llamar `process.cpuUsage()`
+* Devuelve: {Object} * `user` {integer} * `system` {integer}
 
 The `process.cpuUsage()` method returns the user and system CPU time usage of the current process, in an object with properties `user` and `system`, whose values are microsecond values (millionth of a second). These values measure time spent in user and system code respectively, and may end up being greater than actual elapsed time if multiple CPU cores are performing work for this process.
 
-The result of a previous call to `process.cpuUsage()` can be passed as the argument to the function, to get a diff reading.
+El resultado de una llamada previa a `process.cpuUsage()` puede ser pasado como el argumento a la función, para obtener una lectura diferente.
 
 ```js
 const startUsage = process.cpuUsage();
 // { user: 38579, system: 6986 }
 
-// spin the CPU for 500 milliseconds
+// gire el CPU por 500 milisegundos
 const now = Date.now();
 while (Date.now() - now < 500);
 
