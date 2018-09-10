@@ -10,17 +10,17 @@ Existen muchos objetos stream que son proporcionados por Node.js. Por ejemplo, [
 
 Los streams pueden ser legibles, escribibles o ambas. Todos los streams son instancias de [`EventEmitter`][].
 
-The `stream` module can be accessed using:
+El módulo `stream` puede ser accedido usando:
 
 ```js
 const stream = require('stream');
 ```
 
-While it is important to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
+Mientras es importante entender cómo los streams funcionan, el módulo `stream`, en sí mismo, es más útil para los desarrolladores que están creando nuevos tipos de instancias stream. Los desarrolladores que *consumen* primariamente objetos stream raramente necesitaran usar el módulo `stream` directamente.
 
-## Organization of this Document
+## Organización de este Documento
 
-This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
+Este documento está dividido en dos secciones principales, con una tercera sección para notas adicionales. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
 
 ## Types of Streams
 
