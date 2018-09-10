@@ -4,7 +4,7 @@
 
 > Estabilidad: 1 - Experimental
 
-El Tiempo de Rendimiento API proporciona una implementación de la especificación [Línea de Tiempo del Rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
+El Tiempo de Rendimiento API proporciona una implementación de la especificación [Tiempo de rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
 
 ```js
 const { PerformanceObserver, performance } = require('perf_hooks');
@@ -36,7 +36,7 @@ added: v8.5.0
 
 * `name` {string}
 
-If `name` is not provided, removes all `PerformanceMark` objects from the Performance Timeline. If `name` is provided, removes only the named mark.
+Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` del Tiempo de Rendimiento. Si se proporciona `name`, esto elimina solo la marca nombrada.
 
 ### performance.mark([name])
 
