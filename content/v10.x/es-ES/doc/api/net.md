@@ -136,7 +136,7 @@ deprecated: v0.9.7
 
 El número de conexiones simultáneas en el servidor.
 
-Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. To poll forks and get current number of active connections use asynchronous [`server.getConnections()`][] instead.
+Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. Para hacer poll en las bifurcaciones y obtener el número de conexiones activas usa en su lugar el [`server.getConnections()`][] asincrónico.
 
 ### server.getConnections(callback)
 
@@ -163,9 +163,9 @@ Firmas posibles:
 
 Esta función es asincrónica. Cuando el servidor empieza a escuchar, el evento [`'listening'`][] es emitido. El último parámetro `callback` será añadido como un listener para el evento [`'listening'`][].
 
-Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especificar la longitud máxima de la cola de conexiones pendientes. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
+Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especificar la longitud máxima de la cola de conexiones pendientes. La longitud real será determinada por el sistema operativo a través de configuraciones sysctl tales como `tcp_max_syn_backlog` y `somaxconn` en Linux. El valor predeterminado de este valor es 511 (no 512).
 
-All [`net.Socket`][] are set to `SO_REUSEADDR` (See [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) for details).
+Todos los [`net.Socket`][] son establecidos a `SO_REUSEADDR` (Vea [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) para los detalles).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()` call or `server.close()` has been called. Otherwise, an `ERR_SERVER_ALREADY_LISTEN` error will be thrown.
 
