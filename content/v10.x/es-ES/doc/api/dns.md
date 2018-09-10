@@ -560,4 +560,4 @@ Estas funciones son implementadas de forma muy diferente que las de [`dns.lookup
 
 Como resultado, estas funciones no pueden tener el mismo impacto negativo en otros procesos que ocurren en la threadpool de libuv, que [`dns.lookup()`][]puede tener.
 
-Ellas no utilizan el mismo conjunto de archivos de configuración que utiliza [`dns.lookup()`][]. For instance, *they do not use the configuration from `/etc/hosts`*.
+Ellas no utilizan el mismo conjunto de archivos de configuración que utiliza [`dns.lookup()`][]. Por ejemplo, *ellas no utilizan la configuración de `/etc/hosts`*.
