@@ -853,7 +853,7 @@ Fundamentalmente, estas APIs son utilizadas para realizar una de las siguientes 
 3. Convertir de un valor de N-API a un tipo primitivo de C
 4. Obtener instancias globales que incluyen `undefined` y `null`
 
-Los valores de N-API están representados por el tipo `napi_value`. Cualquier llamada N-API que requiera un valor de JavaScript se toma en un `napi_value`. En algunos casos, la API verifica el tipo de `napi_value` por adelantado. Sin embargo, para un mejor rendimiento, es mejor para el llamador asegurarse de que el `napi_value` en cuestión sea del tipo de JavaScript que espera la API.
+Los valores de N-API están representados por el tipo `napi_value`. Cualquier llamada N-API que requiera un valor de JavaScript toma un `napi_value`. En algunos casos, la API verifica el tipo de `napi_value` por adelantado. Sin embargo, para un mejor rendimiento, es mejor para el llamador asegurarse de que el `napi_value` en cuestión sea del tipo de JavaScript que espera la API.
 
 ### Tipos de Enum
 
@@ -861,7 +861,7 @@ Los valores de N-API están representados por el tipo `napi_value`. Cualquier ll
 
 ```C
 typedef enum {
-  // ES6 types (corresponds to typeof)
+  // Tipos de ES6 (corresponde a typeof)
   napi_undefined,
   napi_null,
   napi_boolean,
@@ -951,13 +951,13 @@ napi_status napi_create_arraybuffer(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que se invoca la API.
-- `[in] length`: La longitud en bytes del array buffer a crear.
+- `[in] length`: La longitud en bytes del buffer de array a crear.
 - `[out] data`: Apuntador al bytes buffer subyacente del `ArrayBuffer`.
 - `[out] result`: El `napi_value` que representa un `ArrayBuffer` de JavaScript.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API devuelve un valor de N-API correspondiente a un `ArrayBuffer` de JavaScript. Los `ArrayBuffer`s son utilizados para representar buffers de datos binarios de longitud fija. Normalmente se utilizan como un buffer de respaldo para objetos `TypedArray`. El `ArrayBuffer` asignado tendrá un byte buffer subyacente cuyo tamaño es determinado por el parámetro `length` que es pasado. El buffer subyacente se devuelve opcionalmente al llamador en caso de que quiera manipular el buffer directamente. Este buffer sólo se puede escribir directamente desde el código nativo. Para escribir en este buffer desde JavaScript, un tipo arreglo o un objeto `DataView` tendría que ser creado.
+Esta API devuelve un valor de N-API correspondiente a un `ArrayBuffer` de JavaScript. Los `ArrayBuffer`s son utilizados para representar buffers de datos binarios de longitud fija. Normalmente se utilizan como un buffer de respaldo para objetos `TypedArray`. El `ArrayBuffer` asignado tendrá un byte buffer subyacente cuyo tamaño es determinado por el parámetro `length` que es pasado. El buffer subyacente se devuelve opcionalmente al llamador en caso de que quiera manipular el buffer directamente. Este buffer sólo se puede escribir directamente desde el código nativo. Para escribir en este buffer desde JavaScript, un typed array o un objeto `DataView` tendría que ser creado.
 
 Los objetos `ArrayBuffer` de JavaScript se describen en la [Sección 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) de las Especificaciones del Lenguaje ECMAScript.
 
@@ -1023,13 +1023,13 @@ napi_status napi_create_external(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] data`: Apuntador sin formato a los datos externos.
-- `[in] finalize_cb`: Callback opcional para llamar cuando el valor externo sea tomado.
-- `[in] finalize_hint`: Sugerencia opcional para pasar a la callback finalizada durante la recopilación.
+- `[in] finalize_cb`: Callback opcional para llamar cuando el valor externo esté siendo tomado.
+- `[in] finalize_hint`: Sugerencia opcional para pasar a la callback de terminación durante la recopilación.
 - `[out] result`: Un `napi_value` que representa un valor externo.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API asigna un valor de JavaScript con datos externos adjuntos. Esto se utiliza para pasar datos externos a través del código de JavaScript, para que pueda ser recuperado luego por el código nativo. Esta API permite al llamador pasar en una callback finalizada, en caso de que el recurso nativo subyacente necesite ser limpiado cuando el valor externo de JavaScript sea tomado.
+Esta API asigna un valor de JavaScript con datos externos adjuntos. Esto se utiliza para pasar datos externos a través del código de JavaScript, para que pueda ser recuperado luego por el código nativo. Esta API permite al llamador pasar en una callback de terminación, en caso de que el recurso nativo subyacente necesite ser limpiado cuando el valor externo de JavaScript sea tomado.
 
 El valor creado no es un objeto y, por lo tanto, no admite propiedades adicionales. Es considerado un tipo de valor distinto: llamar a `napi_typeof()` con un valor externo produce una `napi_external`.
 
