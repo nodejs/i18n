@@ -48,7 +48,7 @@ path.posix.basename('/tmp/myfile.html');
 // Returns: 'myfile.html'
 ```
 
-*Nota:* En Windows, Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. Por ejemplo `path.resolve('c:\\')` puede potencialmente ocasionar un resultado diferente que `path.resolve('c:')`. Para más información, vea [esta página MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* En Windows, Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. Por ejemplo, `path.resolve('c:\\')` puede potencialmente ocasionar un resultado diferente a `path.resolve('c:')`. Para más información, vea [esta página MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
@@ -184,7 +184,7 @@ added: v0.11.15
 
 El método `path.format()` retorna un string de ruta de un objeto. Este es el opuesto de [`path.parse()`][].
 
-Cuando se provee propiedades al `pathObject` recuerde que hay combinaciones donde una propiedad tiene prioridad sobre otra:
+Al proporcionar propiedades al `pathObject`, recuerde que hay combinaciones donde una propiedad tiene prioridad sobre otra:
 
 * `pathObject.root` es ignorado si `pathObject.dir` es provisto
 * `pathObject.ext` y `pathObject.name` son ignorados si `pathObject.base` existe
@@ -244,7 +244,7 @@ The `path.isAbsolute()` method determines if `path` is an absolute path.
 
 If the given `path` is a zero-length string, `false` will be returned.
 
-Por ejemplo en POSIX:
+Por ejemplo, en POSIX:
 
 ```js
 path.isAbsolute('/foo/bar'); // true
@@ -278,7 +278,7 @@ added: v0.1.16
 
 El método `path.join()` junta a todos los segmentos `path` dados usando el separador específico de plataforma como delimitador, luego normaliza la ruta resultante.
 
-Los segmentos `path` sin extensión son ignorados. Si el string de ruta unido es un string sin extensión entonces `'.'` va a ser retornado, representando al directorio de trabajo actual.
+Los segmentos `path` sin extensión son ignorados. Si el string de ruta unido es un string sin extensión, entonces `'.'` va a ser retornado, representando al directorio de trabajo actual.
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
@@ -423,7 +423,7 @@ The `path.relative()` method returns the relative path from `from` to `to` based
 
 If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
 
-Por ejemplo en POSIX:
+Por ejemplo, en POSIX:
 
 ```js
 path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
@@ -501,7 +501,7 @@ On Windows:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-En Windows, tanto el slask inclinado hacie adelante (`/`) como el slash inclinado hacia atrás (``) son aceptados como separadores de segmentos de ruta; sin embargo, los métodos `path` solo agregan slashes inclinados hacia atrás (``).
+En Windows, tanto el slash inclinado hacia adelante (`/`) como el slash inclinado hacia atrás (``) son aceptados como separadores de segmentos de ruta; sin embargo, los métodos `path` solo agregan slashes inclinados hacia atrás (``).
 
 ## path.toNamespacedPath(path)
 
