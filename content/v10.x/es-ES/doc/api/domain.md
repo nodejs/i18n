@@ -130,9 +130,9 @@ Si (cluster.isMaster) {
       }
     });
 
-    // Because req and res were created before this domain existed,
-    // we need to explicitly add them.
-    // See the explanation of implicit vs explicit binding below.
+    // Porque req y res  fueron creados antes de que existieran los dominios y
+    //  necesitamos agregarlos explicitamente.
+    // Mira más abajo la explicación de la vinculación implícita y explicita.
     d.add(req);
     d.add(res);
 
