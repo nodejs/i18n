@@ -2219,7 +2219,7 @@ changes:
 * `byteLength` {integer} Número de bytes a escribir. Debe satisfacer `0 < byteLength <= 6`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe los bytes de `byteLength` del `value` al `buf` en el `offset` especificado. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
+Escribe los bytes de `byteLength` del `value` al `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero sin signo.
 
 ```js
 const buf = Buffer.allocUnsafe(6);
