@@ -544,7 +544,7 @@ Cada consulta DNS puede devolver uno de los siguientes códigos de error:
 
 ## Consideraciones de implementación
 
-Although [`dns.lookup()`][] and the various `dns.resolve*()/dns.reverse()` functions have the same goal of associating a network name with a network address (or vice versa), their behavior is quite different. These differences can have subtle but significant consequences on the behavior of Node.js programs.
+Aunque [`dns.lookup()`][] y las diversas funciones `dns.resolve*()/dns.reverse()` tienen el mismo objetivo de asociar un nombre de red con una dirección de red (o viceversa), su comportamiento es bastante diferente. Estas diferencias pueden tener sutiles pero significantes consecuencias en el comportamiento de los programas Node.js.
 
 ### `dns.lookup()`
 
