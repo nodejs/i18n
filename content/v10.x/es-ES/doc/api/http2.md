@@ -569,7 +569,7 @@ added: v9.4.0
 * `origin`: {string}
 * `streamId`: {number}
 
-The `'altsvc'` event is emitted whenever an `ALTSVC` frame is received by the client. El evento es emitido con el valor de `ALTSVC`, origen, e identificación del stream. If no `origin` is provided in the `ALTSVC` frame, `origin` will be an empty string.
+El evento de `'altsvc'` se emite cuando un frame de `ALTSVC` es recibido por el cliente. El evento es emitido con el valor de `ALTSVC`, origen, e identificación del stream. Si no se proporciona ningún `origin` en el frame de `ALTSVC`, `origin` será una string vacía.
 
 ```js
 const http2 = require('http2');
@@ -595,9 +595,9 @@ added: v8.4.0
   * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas dependientes del stream creado recientemente. **Predeterminado:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
   * `weight` {number} Especifica la dependencia relativa de un stream en relación a otros streams con el mismo `parent`. El valor es un número entre `1` y `256` (inclusivo).
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
 
-* Returns: {ClientHttp2Stream}
+* Devuelve: {ClientHttp2Stream}
 
 Solamente para instancias de `Http2Session` del Cliente de HTTP/2, la `http2session.request()` crea y devuelve una instancia de `Http2Stream` que puede ser utilizada para enviar una solicitud de HTTP/2 al servidor conectado.
 
@@ -621,7 +621,7 @@ req.on('response', (headers) => {
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event is emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be called to send trailing headers to the peer.
 
-Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *no* se cerrará automáticamente cuando se transmita el último frame de `DATA` . User code *must* call either `http2stream.sendTrailers()` or `http2stream.close()` to close the `Http2Stream`.
+Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *no* se cerrará automáticamente cuando se transmita el último frame de `DATA` . El código de usuario *debe* llamar a `http2stream.sendTrailers()` o a `http2stream.close()` para cerrar el `Http2Stream`.
 
 The `:method` and `:path` pseudo-headers are not specified within `headers`, they respectively default to:
 
@@ -634,7 +634,7 @@ The `:method` and `:path` pseudo-headers are not specified within `headers`, the
 added: v8.4.0
 -->
 
-* Extends: {stream.Duplex}
+* Extiende a: {stream.Duplex}
 
 Each instance of the `Http2Stream` class represents a bidirectional HTTP/2 communications stream over an `Http2Session` instance. Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
 
@@ -1058,7 +1058,7 @@ added: v8.4.0
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `endStream` {boolean} Set to `true` to indicate that the response will not include payload data.
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
 
 ```js
 const http2 = require('http2');
@@ -1071,7 +1071,7 @@ server.on('stream', (stream) => {
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be used to sent trailing header fields to the peer.
 
-Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *not* se cerrará automáticamente cuando se transmita el frame final de `DATA` . User code *must* call either `http2stream.sendTrailers()` or `http2stream.close()` to close the `Http2Stream`.
+Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *not* se cerrará automáticamente cuando se transmita el frame final de `DATA` . El código de usuario *debe* llamar a `http2stream.sendTrailers()` o a `http2stream.close()` para cerrar el `Http2Stream`.
 
 ```js
 const http2 = require('http2');
@@ -1101,7 +1101,7 @@ changes:
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `statCheck` {Function}
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
@@ -1136,7 +1136,7 @@ El descriptor de archivos no se cierra cuando se cierra el stream, entonces nece
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be used to sent trailing header fields to the peer.
 
-Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *not* se cerrará automáticamente cuando se transmita el frame final de `DATA` . User code *must* call either `http2stream.sendTrailers()` or `http2stream.close()` to close the `Http2Stream`.
+Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *not* se cerrará automáticamente cuando se transmita el frame final de `DATA` . El código de usuario *debe* llamar a `http2stream.sendTrailers()` o a `http2stream.close()` para cerrar el `Http2Stream`.
 
 ```js
 const http2 = require('http2');
@@ -1178,7 +1178,7 @@ changes:
 * `opciones` {Object} 
   * `statCheck` {Function}
   * `onError` {Function} Función de callback invocada en caso de que ocurra un error antes de un envío.
-  * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
@@ -1240,7 +1240,7 @@ The `options.onError` function may also be used to handle all the errors that co
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrilers()` method can then be used to sent trailing header fields to the peer.
 
-Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *not* se cerrará automáticamente cuando se transmita el frame final de `DATA` . User code *must* call either `http2stream.sendTrailers()` or `http2stream.close()` to close the `Http2Stream`.
+Es importante señalar que cuando se establece `options.waitForTrailers`, el `Http2Stream` *not* se cerrará automáticamente cuando se transmita el frame final de `DATA` . El código de usuario *debe* llamar a `http2stream.sendTrailers()` o a `http2stream.close()` para cerrar el `Http2Stream`.
 
 ```js
 const http2 = require('http2');
