@@ -20,8 +20,8 @@ added: v0.7.8
 
 Una constante de linea definiendo el marcador de fin de linea específico del sistema operativo:
 
-* `\n` on POSIX
-* `\r\n` on Windows
+* `\n` en POSIX
+* `\r\n\r\n` en Windows
 
 ## os.arch()
 
@@ -29,13 +29,13 @@ Una constante de linea definiendo el marcador de fin de linea específico del si
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
+El método `os.arch()` retorna una línea identificando la arquitectura del CPU del sistema operativo para el cual el binario de Node.js fue compilado.
 
-The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+Los actuales valores posibles son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
-Equivalent to [`process.arch`][].
+Equivalente para [`process.arch`][].
 
 ## os.constants
 
