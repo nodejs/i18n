@@ -84,15 +84,15 @@ Si (cluster.isMaster) {
     cluster.fork();
   });
 
-} else {
-  // the worker
+} otro {
+  // el trabajador
   //
-  // This is where we put our bugs!
+  // ¡Aquí es donde se colocan nuestros errores!
 
   const domain = require('domain');
 
-  // See the cluster documentation for more details about using
-  // worker processes to serve requests. How it works, caveats, etc.
+ // Ver el cluster de documentación para más detalles sobre el uso de
+// procesos de trabajo para atender solicitudes. Cómo funciona, advertencias, entre otras.
 
   const server = require('http').createServer((req, res) => {
     const d = domain.create();
