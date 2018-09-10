@@ -212,7 +212,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which cluster processing ended. If cluster processing has not yet ended, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento del cluster terminó. Si el procesamiento de cluster no ha terminado aún, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.clusterSetupStart
 
@@ -222,7 +222,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which cluster processing started. If cluster processing has not yet started, the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el procesamiento del cluster comenzó. Si el procesamiento del cluster no ha comenzado, la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.loopExit
 
@@ -232,7 +232,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js event loop exited. If the event loop has not yet exited, the property has the value of -1. It can only have a value of not -1 in a handler of the [`'exit'`][] event.
+La timestamp de alta resolución en milisegundos en la cual el bucle del evento Node.js cerró. Si el bucle del evento aún no ha cerrado, la propiedad tiene el valor de -1. Solo no puede tener un valor de -1 en un manejador del evento [`'exit'`][].
 
 ### performanceNodeTiming.loopStart
 
@@ -242,7 +242,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
+La timestamp de alta resolución en milisegundos en la cual el bucle del evento Node.js comenzó. Si el bucle del evento no ha comenzado (p. e.j., en la primera señal del script principal), la propiedad tiene el valor de -1.
 
 ### performanceNodeTiming.moduleLoadEnd
 
@@ -252,7 +252,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which main module load ended.
+La timestamp de alta resolución en milisegundos en la cual la carga del módulo principal terminó.
 
 ### performanceNodeTiming.moduleLoadStart
 
@@ -262,7 +262,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which main module load started.
+La timestamp de alta resolución en milisegundos en la cual la carga del módulo principal comenzó.
 
 ### performanceNodeTiming.nodeStart
 
