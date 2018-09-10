@@ -712,7 +712,7 @@ El internal `path._makeLong()` no estaba destinado para uso público. Sin embarg
 
 <a id="DEP0081"></a>
 
-### DEP0081: fs.truncate() usar un descriptor de archivo
+### DEP0081: fs.truncate() usando un descriptor de archivo
 
 Tipo: Runtime
 
@@ -724,7 +724,7 @@ El uso de `fs.truncate()` `fs.truncateSync()` con un descriptor de archivo ha si
 
 Tipo: Runtime
 
-`REPLServer.prototype.memory()` es solo necesario para las mecánicas internas del mismo `REPLServer`. No use esta función.
+`REPLServer.prototype.memory()` es solo necesario para la mecánica interna del mismo `REPLServer`. No use esta función.
 
 <a id="DEP0083"></a>
 
@@ -756,7 +756,7 @@ Desde las versiones 4.4.0 y 5.2.0 de Node.js, varios módulos destinados solo pa
 - `node-inspect/lib/internal/inspect_client` (desde 7.6.0)
 - `node-inspect/lib/internal/inspect_repl` (desde 7.6.0)
 
-Los módulos `v8/*` no tienen ninguna exportación, y si no son importados en un orden específico arrojarían errores. Como tal, virtualmente no hay ningún uso legítimo para importarlos por medio de `require()`.
+Los módulos `v8/*` no tienen ninguna exportación, y si no son importados en un orden específico arrojarían errores. Como tal, virtualmente no hay ningún caso de uso legítimo para importarlos por medio de `require()`.
 
 Por otra parte, `node-inspect` puede ser instalado localmente por medio de un administrador de paquetes, como se explica en el registro npm que lleva el mismo nombre. Ninguna modificación del código fuente es necesaria si eso se hace.
 
