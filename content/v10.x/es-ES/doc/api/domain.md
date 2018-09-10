@@ -144,14 +144,14 @@ Si (cluster.isMaster) {
   server.listen(PORT);
 }
 
-// Esta parte no es importante. Just an example routing thing.
-// Put fancy application logic here.
+// Esta parte no es importante. Sólo un ejemplo de enrutamiento.
+// Coloca una aplicación lógica elaborada aquí.
 function handleRequest(req, res) {
   switch (req.url) {
     case '/error':
-      // We do some async stuff, and then...
+      // Hacemos algunas cosas asincrónicas y...
       setTimeout(() => {
-        // Whoops!
+        // ¡Ups!
         flerb.bark();
       }, timeout);
       break;
@@ -161,15 +161,15 @@ function handleRequest(req, res) {
 }
 ```
 
-## Additions to Error objects
+## Nuevos objetos de Errores
 
 <!-- type=misc -->
 
-Any time an `Error` object is routed through a domain, a few extra fields are added to it.
+En cualquier momento que un objeto de `Error` es enrutado a través de un dominio, algunos campos adicionales se agregan.
 
-* `error.domain` The domain that first handled the error.
-* `error.domainEmitter` The event emitter that emitted an `'error'` event with the error object.
-* `error.domainBound` The callback function which was bound to the domain, and passed an error as its first argument.
+* `error.domain` El dominio que se encargó primero del error.
+* `error.domainEmitter` El evento emisor que originó un evento de `'error'` con el objeto de error.
+* `error.domainBound` La función de callback que fue agregada al dominio y pasó un error como su primer argumento.
 * `error.domainThrown` A boolean indicating whether the error was thrown, emitted, or passed to a bound callback function.
 
 ## Implicit Binding
