@@ -122,11 +122,10 @@ const obs = new PerformanceObserver((list) => {
 });
 obs.observe({ entryTypes: ['function'] });
 
-// A performance timeline entry will be created
-wrapped();
+// Una entrada para el tiempo de rendimiento será creada envuelta();
 ```
 
-## Class: PerformanceEntry
+## Clase: PerformanceEntry
 
 <!-- YAML
 added: v8.5.0
@@ -140,7 +139,7 @@ added: v8.5.0
 
 * {number}
 
-The total number of milliseconds elapsed for this entry. This value will not be meaningful for all Performance Entry types.
+El número total de milisegundos transcurridos para esta entrada. Este valor no será significativo para todos los tipos de Entradas de Rendimiento.
 
 ### performanceEntry.name
 
