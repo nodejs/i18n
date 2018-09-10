@@ -650,10 +650,10 @@ Todas las instancias de `Http2Stream` son streams de [`Duplex`][]. El lado `Writ
 
 En el lado del servidor, las instancias de [`ServerHttp2Stream`][] son creadas cuando:
 
-* A new HTTP/2 `HEADERS` frame with a previously unused stream ID is received;
+* Se recibe un frame nuevo de HTTP/2 `HEADERS` con ID de un stream no utilizado previamente;
 * El método `http2stream.pushStream()` es llamado.
 
-On the client side, instances of [`ClientHttp2Stream`][] are created when the `http2session.request()` method is called.
+En el lado del cliente, las instancias de [`ClientHttp2Stream`][] son creadas cuando el método de `http2session.request()` es llamado.
 
 En el cliente, la instancia de `Http2Stream` devuelta por `http2session.request()` puede no estar lista para ser utilizada inmediatamente si el `Http2Session` mayor aún no ha sido establecido completamente. In such cases, operations called on the `Http2Stream` will be buffered until the `'ready'` event is emitted. El código de usuario raramente debería, y quizá nunca, tener necesidad de manejar el evento de `'ready'` de manera directa. El estado listo de un `Http2Stream` se puede determinar comprobando el valor de `http2stream.id`. Si el valor es `undefined`, el stream aún no está listo para utilizarse.
 
@@ -671,7 +671,7 @@ Cuando se destruye la instancia de `Http2Stream`, el evento de `'close'` será e
 
 Después de que el `Http2Stream` haya sido destruido, la propiedad de `http2stream.destroyed` será `true` y la propiedad de `http2stream.rstCode` especificará el código de error de `RST_STREAM` . La instancia de `Http2Stream` ya no es utilizable una vez destruida.
 
-#### Event: 'aborted'
+#### Evento: 'aborted'
 
 <!-- YAML
 added: v8.4.0
@@ -681,7 +681,7 @@ El evento `'aborted'` se emite cuando una instancia de `Http2Stream` se anula de
 
 El evento `'aborted'` sólo será emitido si el lado grabable de `Http2Stream` no ha sido finalizado.
 
-#### Event: 'close'
+#### Evento: 'close'
 
 <!-- YAML
 added: v8.4.0
