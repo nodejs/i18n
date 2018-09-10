@@ -929,15 +929,15 @@ La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclu
 added: v8.5.0
 -->
 
-Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. Esta es una instrucción en la que el cliente debería enviar el cuerpo de la solicitud.
+Se emite cuando el servidor envía un estado de `100 Continue`, generalmente a causa de que la solicitud contenía `Expect: 100-continue`. Esta es una instrucción en la que el cliente debería enviar el cuerpo de la solicitud.
 
-#### Event: 'headers'
+#### Evento: 'headers'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-The `'headers'` event is emitted when an additional block of headers is received for a stream, such as when a block of `1xx` informational headers is received. The listener callback is passed the [HTTP/2 Headers Object](#http2_headers_object) and flags associated with the headers.
+El evento de `'headers'` se emite cuando se recibe un bloque adicional de encabezados para un stream, como cuando se recibe un bloque de encabezados informativos de `1xx` . Al callback del listener se le pasa el [Objecto de Encabezados de HTTP/2](#http2_headers_object) y las banderas asociadas a los encabezados.
 
 ```js
 stream.on('headers', (headers, flags) => {
@@ -945,13 +945,13 @@ stream.on('headers', (headers, flags) => {
 });
 ```
 
-#### Event: 'push'
+#### Evento: 'push'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-The `'push'` event is emitted when response headers for a Server Push stream are received. The listener callback is passed the [HTTP/2 Headers Object](#http2_headers_object) and flags associated with the headers.
+El evento de `'push'` se emite cuando se reciben los encabezados de respuesta para un stream de Server Push. Al callback del listener se le pasa el [Objecto de Encabezados de HTTP/2](#http2_headers_object) y las banderas asociadas a los encabezados.
 
 ```js
 stream.on('push', (headers, flags) => {
@@ -959,13 +959,13 @@ stream.on('push', (headers, flags) => {
 });
 ```
 
-#### Event: 'response'
+#### Evento: 'response'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-The `'response'` event is emitted when a response `HEADERS` frame has been received for this stream from the connected HTTP/2 server. The listener is invoked with two arguments: an `Object` containing the received [HTTP/2 Headers Object](#http2_headers_object), and flags associated with the headers.
+El evento de `'response'` se emite cuando un frame de respuesta de `HEADERS` haya sido recibido para este stream desde el servidor conectado de HTTP/2. The listener is invoked with two arguments: an `Object` containing the received [HTTP/2 Headers Object](#http2_headers_object), and flags associated with the headers.
 
 ```js
 const http2 = require('http2');
