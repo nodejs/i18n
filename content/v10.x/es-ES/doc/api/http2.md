@@ -689,9 +689,9 @@ added: v8.4.0
 
 El evento de `'close'` se emite cuando se destruye el `Http2Stream` . Una vez que se emite este evento, la instancia de `Http2Stream` no es utilizable.
 
-El código de error HTTP/2 que se utiliza al cerrar el stream se puede recuperar utilizando la propiedad de `http2stream.rstCode` . If the code is any value other than `NGHTTP2_NO_ERROR` (`0`), an `'error'` event will have also been emitted.
+El código de error HTTP/2 que se utiliza al cerrar el stream se puede recuperar utilizando la propiedad de `http2stream.rstCode` . Si el código es un valor distinto a `NGHTTP2_NO_ERROR` (`0`), un evento de `'error'` también habrá sido emitido.
 
-#### Event: 'error'
+#### Evento: 'error'
 
 <!-- YAML
 added: v8.4.0
@@ -699,21 +699,21 @@ added: v8.4.0
 
 El evento de `'error'` se emite cuando ocurre un error durante el procesamiento de un `Http2Stream`.
 
-#### Event: 'frameError'
+#### Evento: 'frameError'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-The `'frameError'` event is emitted when an error occurs while attempting to send a frame. Cuando se invoca, la función de handler recibirá un argumento de un entero que identifique el tipo de frame, y un argumento de un entero que identifique el código de error. The `Http2Stream` instance will be destroyed immediately after the `'frameError'` event is emitted.
+El evento de `'frameError'` se emite cuando ocurre un error al intentar enviar un frame. Cuando se invoca, la función de handler recibirá un argumento de un entero que identifique el tipo de frame, y un argumento de un entero que identifique el código de error. La instancia de `Http2Stream` se destruirá inmediatamente después de que se emita el evento de `'frameError'` .
 
-#### Event: 'timeout'
+#### Evento: 'timeout'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-The `'timeout'` event is emitted after no activity is received for this `Http2Stream` within the number of milliseconds set using `http2stream.setTimeout()`.
+El evento de `'timeout'` se emite luego de que no se reciba ninguna actividad para este `Http2Stream` dentro del número de milisegundos establecidos utilizando `http2stream.setTimeout()`.
 
 #### Event: 'trailers'
 
