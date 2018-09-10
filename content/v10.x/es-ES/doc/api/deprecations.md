@@ -774,7 +774,7 @@ La AsyncHooks Sensitive API nunca fue documentada y tuvo varios problemas menore
 
 Tipo: End-of-Life
 
-`runInAsyncIdScope` no emite el evento `'before'` o `'after'` y en consecuencia, puede causar muchos problemas. Vea https://github.com/nodejs/node/issues/14328 para más detalles.
+`runInAsyncIdScope` no emite el evento `'before'` o `'after'` y, en consecuencia, puede causar muchos problemas. Vea https://github.com/nodejs/node/issues/14328 para más detalles.
 
 <a id="DEP0089"></a>
 
@@ -782,7 +782,7 @@ Tipo: End-of-Life
 
 Tipo: Documentation-only
 
-Importar directamente a assert no está recomendado ya que, las funciones expuestas usarán chequeos de calidad flojos. En cambio, use `require('assert').strict`. La API es la misma que la legacy assert pero siempre usará controles de calidad estrictos.
+Importar directamente a assert no es recomendado, ya que las funciones expuestas usarán chequeos de calidad flojos. En cambio, use `require('assert').strict`. La API es la misma que la legacy assert pero siempre usará controles de calidad estrictos.
 
 <a id="DEP0090"></a>
 
