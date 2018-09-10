@@ -326,7 +326,7 @@ Crea un nuevo objeto socket.
   * `writable` {boolean} Permite la escritura en el socket cuando se pasa `fd`, de otra manera es ignorado. **Predeterminado:** `false`.
 * Devuelve: {net.Socket}
 
-The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
+El socket recién creado puede ser un socket TCP o un terminal [IPC](#net_ipc_support) en transmisión, dependiendo de donde conectó con [`connect()`][`socket.connect()`].
 
 ### Evento: 'close'
 
