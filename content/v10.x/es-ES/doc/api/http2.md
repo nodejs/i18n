@@ -965,7 +965,7 @@ stream.on('push', (headers, flags) => {
 added: v8.4.0
 -->
 
-El evento de `'response'` se emite cuando un frame de respuesta de `HEADERS` haya sido recibido para este stream desde el servidor conectado de HTTP/2. The listener is invoked with two arguments: an `Object` containing the received [HTTP/2 Headers Object](#http2_headers_object), and flags associated with the headers.
+El evento de `'response'` se emite cuando un frame de respuesta de `HEADERS` haya sido recibido para este stream desde el servidor conectado de HTTP/2. El listener se invoca con dos argumentos: un `Object` que contenga el [Objeto de Encabezados de HTTP/2](#http2_headers_object), y las banderas asociadas a los encabezados.
 
 ```js
 const http2 = require('http2');
@@ -976,15 +976,15 @@ req.on('response', (headers, flags) => {
 });
 ```
 
-### Class: ServerHttp2Stream
+### Clase: ServerHttp2Stream
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* Extends: {Http2Stream}
+* Extiende a: {Http2Stream}
 
-La clase `ServerHttp2Stream` es una extensión de [`Http2Stream`][] que se utiliza exclusivamente en Servidores HTTP/2. `Http2Stream` instances on the server provide additional methods such as `http2stream.pushStream()` and `http2stream.respond()` that are only relevant on the server.
+La clase `ServerHttp2Stream` es una extensión de [`Http2Stream`][] que se utiliza exclusivamente en Servidores HTTP/2. Las instancias de `Http2Stream` en el servidor proporcionan métodos adicionales tales como `http2stream.pushStream()` y `http2stream.respond()`, los cuales son relevantes solamente en el servidor.
 
 #### http2stream.additionalHeaders(headers)
 
@@ -1028,7 +1028,7 @@ added: v8.4.0
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
 * `callback` {Function} Callback that is called once the push stream has been initiated. 
   * `err` {Error}
-  * `pushStream` {ServerHttp2Stream} The returned `pushStream` object.
+  * `pushStream` {ServerHttp2Stream} El objeto devuelto de `pushStream` .
   * `headers` {HTTP/2 Headers Object} Headers object the `pushStream` was initiated with.
 
 Initiates a push stream. The callback is invoked with the new `Http2Stream` instance created for the push stream passed as the second argument, or an `Error` passed as the first argument.
