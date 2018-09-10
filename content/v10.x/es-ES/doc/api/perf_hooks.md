@@ -22,7 +22,7 @@ doSomeLongRunningProcess(() => {
 });
 ```
 
-## Class: Performance
+## Clase: Performance
 
 <!-- YAML
 added: v8.5.0
