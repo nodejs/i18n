@@ -1,8 +1,8 @@
-# OS
+# SO
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
