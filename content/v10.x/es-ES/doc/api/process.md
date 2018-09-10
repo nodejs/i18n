@@ -490,9 +490,9 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Returns: {string}
+* Devuelve: {string}
 
-The `process.cwd()` method returns the current working directory of the Node.js process.
+El método `process.cwd()` devuelve el directorio de trabajo actual del proceso Node.js.
 
 ```js
 console.log(`Current directory: ${process.cwd()}`);
@@ -506,7 +506,7 @@ added: v0.7.2
 
 * {number}
 
-The port used by Node.js's debugger when enabled.
+El puerto usado por el depurador de Node.js cuando está habilitado.
 
 ```js
 process.debugPort = 5858;
@@ -518,9 +518,9 @@ process.debugPort = 5858;
 added: v0.7.2
 -->
 
-If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `process.disconnect()` method will close the IPC channel to the parent process, allowing the child process to exit gracefully once there are no other connections keeping it alive.
+Si el proceso Node.js es generado con un canal IPC (vea la documentación del [Proceso Secundario](child_process.html) y de [Cluster](cluster.html)), el método `process.disconnect()` cerrará el canal IPC para el proceso primario, permitiendo que el proceso secundario se cierre con gracia una vez no haya ninguna otra conexión que lo mantenga con vida.
 
-The effect of calling `process.disconnect()` is that same as calling the parent process's [`ChildProcess.disconnect()`][].
+El efecto de llamar a `process.disconnect()` es el mismo que llamar a [`ChildProcess.disconnect()`][] del proceso primario.
 
 If the Node.js process was not spawned with an IPC channel, `process.disconnect()` will be `undefined`.
 
