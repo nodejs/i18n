@@ -677,11 +677,11 @@ Desactiva el algoritmo Nagle. De manera predeterminada, las conexiones TCP usan 
 added: v0.1.90
 -->
 
-* Returns: {net.Socket} The socket itself.
+* Devuelve: {net.Socket} El socket en sí mismo.
 
-Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. By default `net.Socket` do not have a timeout.
+Establece el socket para que haga un timeout después de `timeout` milisegundos de inactividad en el socket. De manera predeterminada, el `net.Socket` no tiene un timeout.
 
-When an idle timeout is triggered the socket will receive a [`'timeout'`][] event but the connection will not be severed. The user must manually call [`socket.end()`][] or [`socket.destroy()`][] to end the connection.
+Cuando un timeout en espera es activado, el socket recibirá un evento [`'timeout'`][], pero la conexión no será intenrrupida. El usuario debe llamar manualmente a [`socket.end()`][] o [`socket.destroy()`][] para finalizar la conexión.
 
 ```js
 socket.setTimeout(3000);
@@ -691,9 +691,9 @@ socket.on('timeout', () => {
 });
 ```
 
-If `timeout` is 0, then the existing idle timeout is disabled.
+Si el `timeout` es 0, el timeout existente en espera es desactivado.
 
-The optional `callback` parameter will be added as a one-time listener for the [`'timeout'`][] event.
+El parámetro `callback` opcional será añadido como un listener de un solo uso para el evento [`'timeout'`][].
 
 ### socket.unref()
 
