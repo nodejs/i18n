@@ -735,7 +735,7 @@ stream.on('trailers', (headers, flags) => {
 added: v10.0.0
 -->
 
-The `'wantTrailers'` event is emitted when the `Http2Stream` has queued the final `DATA` frame to be sent on a frame and the `Http2Stream` is ready to send trailing headers. When initiating a request or response, the `waitForTrailers` option must be set for this event to be emitted.
+The `'wantTrailers'` event is emitted when the `Http2Stream` has queued the final `DATA` frame to be sent on a frame and the `Http2Stream` is ready to send trailing headers. Cuando se inicia una solicitud o respuesta, la opción de `waitForTrailers` debe ser establecida para que este evento sea emitido.
 
 #### http2stream.aborted
 
@@ -745,7 +745,7 @@ added: v8.4.0
 
 * {boolean}
 
-Set to `true` if the `Http2Stream` instance was aborted abnormally. Cuando se establezca, el evento `'aborted'` habrá sido emitido.
+Se establece a `true` si la instancia de `Http2Stream` fue abortada de manera anormal. Cuando se establezca, el evento `'aborted'` habrá sido emitido.
 
 #### http2stream.close(code[, callback])
 
@@ -753,10 +753,10 @@ Set to `true` if the `Http2Stream` instance was aborted abnormally. Cuando se es
 added: v8.4.0
 -->
 
-* `code` {number} Unsigned 32-bit integer identifying the error code. **Default:** `http2.constants.NGHTTP2_NO_ERROR` (`0x00`).
+* `code` {number} Unsigned 32-bit integer identifying the error code. **Predeterminado:** `http2.constants.NGHTTP2_NO_ERROR` (`0x00`).
 * `callback` {Function} Una función opcional registrada para escuchar para el evento de `'close'` .
 
-Closes the `Http2Stream` instance by sending an `RST_STREAM` frame to the connected HTTP/2 peer.
+Cierra la instancia de `Http2Stream` enviando un frame de `RST_STREAM` al peer conectado de HTTP/2.
 
 #### http2stream.closed
 
@@ -786,7 +786,7 @@ added: v9.4.0
 
 * {boolean}
 
-Set to `true` if the `Http2Stream` instance has not yet been assigned a numeric stream identifier.
+Se establece a `true` si aún no se le ha asignado a la instancia de `Http2Stream` un identificador de stream numérico.
 
 #### http2stream.priority(options)
 
@@ -795,9 +795,9 @@ added: v8.4.0
 -->
 
 * `opciones` {Object} 
-  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas una dependiente de este stream. **Default:** `false`.
+  * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas una dependiente de este stream. **Predeterminado:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente este stream.
-  * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. El valor es un número entre `1` y `256` (inclusivo).
+  * `weight` {number} Especifica la dependencia relativa de un stream en relación a otros streams con el mismo `parent`. El valor es un número entre `1` y `256` (inclusivo).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
 
 Actualiza la prioridad para esta instancia `Http2Stream` .
