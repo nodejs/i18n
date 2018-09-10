@@ -722,13 +722,13 @@ Devuelve como `true` si todos los datos fueron arrojados con éxito al búfer de
 
 El parámetro opcional `callback` será ejecutado cuando los datos son finalmente escritos - esto podría no ser inmediatamente.
 
-See `Writable` stream [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) method for more information.
+Vea el método [`write()`](stream.html#stream_writable_write_chunk_encoding_callback) de transmisión `Writable` para más información.
 
 ## net.connect()
 
 Aliases to [`net.createConnection()`][`net.createConnection()`].
 
-Possible signatures:
+Firmas posibles:
 
 * [`net.connect(options[, connectListener])`][`net.connect(options)`]
 * [`net.connect(path[, connectListener])`][`net.connect(path)`] for [IPC](#net_ipc_support) connections.
@@ -760,9 +760,9 @@ Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createCo
 
 ## net.createConnection()
 
-A factory function, which creates a new [`net.Socket`][], immediately initiates connection with [`socket.connect()`][], then returns the `net.Socket` that starts the connection.
+Una función de fábrica que crea una nueva [`net.Socket`][], inmediatamente inicia conexión con [`socket.connect()`][], entonces devuelve el `net.Socket` que inicia la conexión.
 
-When the connection is established, a [`'connect'`][] event will be emitted on the returned socket. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+Cuando la conexión es establecida, un evento [`'connect'`][] será emitido en el socket devuelto. El último parámetro, `connectListener`, si es suministrado, será añadido **una sola vez** como un listener para el evento [`'connect'`][].
 
 Possible signatures:
 
@@ -770,7 +770,7 @@ Possible signatures:
 * [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] for [IPC](#net_ipc_support) connections.
 * [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] for TCP connections.
 
-The [`net.connect()`][] function is an alias to this function.
+La función [`net.connect()`][] es un alias de esta función.
 
 ### net.createConnection(options[, connectListener])
 
