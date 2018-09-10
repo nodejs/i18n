@@ -242,13 +242,13 @@ $ node --no-warnings
 
 La opción de línea de comando `--trace-warnings` puede ser usada para hacer que la salida de la consola predeterminada para advertencias incluya el stack trace completo de la advertencia.
 
-Launching Node.js using the `--throw-deprecation` command line flag will cause custom deprecation warnings to be thrown as exceptions.
+La ejecución de Node.js utilizando la bandera de línea de comando `--throw-deprecation` causará que se arrojen advertencias de desaprobación personalizadas como excepciones.
 
-Using the `--trace-deprecation` command line flag will cause the custom deprecation to be printed to `stderr` along with the stack trace.
+El uso de la bandera de línea de comando `--trace-deprecation` causa que la depreciación personalizada se imprima en `stderr`, en conjunto con el stack trace.
 
-Using the `--no-deprecation` command line flag will suppress all reporting of the custom deprecation.
+El uso de la bandera de línea de comando `--no-deprecation` suprimirá todos los informes de la desaprobación personalizada.
 
-The `*-deprecation` command line flags only affect warnings that use the name `'DeprecationWarning'`.
+Las banderas de línea de comando `*-deprecation` sólo afectan a las advertencias que utilizan el nombre `'DeprecationWarning'`.
 
 #### Emisión de advertencias personalizadas
 
@@ -267,14 +267,14 @@ El manejador de señal recibirá el nombre de la señal (`'SIGINT'`, `'SIGTERM'`
 El nombre de cada evento será el nombre común en mayúscula para la señal (p. ej., `'SIGINT'` para las señales `SIGINT`).
 
 ```js
-// Begin reading from stdin so the process does not exit.
+// Comience leyendo desde stdin, así el proceso no se cierra.
 process.stdin.resume();
 
 process.on('SIGINT', () => {
   console.log('Received SIGINT. Press Control-D to exit.');
 });
 
-// Using a single function to handle multiple signals
+// Usando una función simple para manejar múltiples señales
 function handle(signal) {
   console.log(`Received ${signal}`);
 }
@@ -283,10 +283,10 @@ process.on('SIGINT', handle);
 process.on('SIGTERM', handle);
 ```
 
-* `'SIGUSR1'` is reserved by Node.js to start the [debugger](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
-* `'SIGTERM'` and `'SIGINT'` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. If one of these signals has a listener installed, its default behavior will be removed (Node.js will no longer exit).
-* `'SIGPIPE'` is ignored by default. It can have a listener installed.
-* `'SIGHUP'` is generated on Windows when the console window is closed, and on other platforms under various similar conditions, see signal(7). It can have a listener installed, however Node.js will be unconditionally terminated by Windows about 10 seconds later. On non-Windows platforms, the default behavior of `SIGHUP` is to terminate Node.js, but once a listener has been installed its default behavior will be removed.
+* `'SIGUSR1'` está reservado por Node.js para iniciar el [depurador](debugger.html). Es posible instalar un oyente, pero el hacerlo podría interferir con el depurador.
+* `'SIGTERM'` y `'SIGINT'` tienen manejadores predeterminados en plataformas distintas a Windows, que reinician el modo terminal antes de salir con el código `128 + signal number`. Si una de estas señales tiene un oyente instalado, su comportamiento predeterminado será eliminado (Node.js ya no se cerrará).
+* `'SIGPIPE'` es ignorado por defecto. Puede tener un oyente instalado.
+* `'SIGHUP'` es generado en Windows cuando la ventana de la consola está cerrada, y en otras plataformas bajo varias condiciones similares, vea signal(7). It can have a listener installed, however Node.js will be unconditionally terminated by Windows about 10 seconds later. On non-Windows platforms, the default behavior of `SIGHUP` is to terminate Node.js, but once a listener has been installed its default behavior will be removed.
 * `'SIGTERM'` is not supported on Windows, it can be listened on.
 * `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when terminal raw mode is enabled.
 * `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on non-Windows platforms it can be listened on, but there is no way to send or generate it.
