@@ -732,7 +732,7 @@ Firmas posibles:
 
 * [`net.connect(options[, connectListener])`][`net.connect(options)`]
 * [`net.connect(path[, connectListener])`][`net.connect(path)`] for [IPC](#net_ipc_support) connections.
-* [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] for TCP connections.
+* [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] para conexiones TCP.
 
 ### net.connect(options[, connectListener])
 
@@ -764,11 +764,11 @@ Una función de fábrica que crea una nueva [`net.Socket`][], inmediatamente ini
 
 Cuando la conexión es establecida, un evento [`'connect'`][] será emitido en el socket devuelto. El último parámetro, `connectListener`, si es suministrado, será añadido **una sola vez** como un listener para el evento [`'connect'`][].
 
-Possible signatures:
+Firmas posibles:
 
 * [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`]
 * [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] para conexiones [IPC](#net_ipc_support).
-* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] for TCP connections.
+* [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`] para conexiones TCP.
 
 La función [`net.connect()`][] es un alias de esta función.
 
@@ -847,13 +847,13 @@ This function creates a new [`net.Socket`][] with all options set to default, im
 added: v0.5.0
 -->
 
-Creates a new TCP or [IPC](#net_ipc_support) server.
+Crea un nuevo servidor TCP o un servidor [IPC](#net_ipc_support).
 
-* `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
-* `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Returns: {net.Server}
+* `opciones` {Object} 
+  * `allowHalfOpen` {boolean} Indica si las conexiones TCP entreabiertas están permitidas. **Predeterminado:** `false`.
+  * `pauseOnConnect` {boolean} Indica si el socket debería ser pausado en conexiones entrantes. **Predeterminado:** `false`.
+* `connectionListener` {Function} Establece automáticamente un listener para el evento [`'connection'`][].
+* Devuelve: {net.Server}
 
 Si `allowHalfOpen` es establecido como `true`, cuando el otro terminal del socket envíe un paquete FIN, el servidor solo enviará un paquete FIN devuelta cuando [`socket.end()`][] es llamado explícitamente, hasta entonces la conexión es entrecerrada (no es legible pero aún así es escribible). Vea el evento [`'end'`][] event y [RFC 1122](https://tools.ietf.org/html/rfc1122) (sección 4.2.2.13) para más información.
 
