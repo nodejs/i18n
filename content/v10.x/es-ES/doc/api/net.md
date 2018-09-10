@@ -788,7 +788,7 @@ Opciones adicionales:
 
 * `timeout` {number} Si es establecido, será usado para llamar a [`socket.setTimeout(timeout)`][] después que el socket sea creado, pero antes de que se inicie la conexión.
 
-Following is an example of a client of the echo server described in the [`net.createServer()`][] section:
+A continuación hay un ejemplo de un cliente en un servidor echo, describido en la sección [`net.createServer()`][]:
 
 ```js
 const net = require('net');
@@ -806,7 +806,7 @@ client.on('end', () => {
 });
 ```
 
-To connect on the socket `/tmp/echo.sock` the second line would just be changed to:
+Para conectar en el socket `/tmp/echo.sock`, la segunda línea sería cambiada a:
 
 ```js
 const client = net.createConnection({ path: '/tmp/echo.sock' });
@@ -818,13 +818,13 @@ const client = net.createConnection({ path: '/tmp/echo.sock' });
 added: v0.1.90
 -->
 
-* `path` {string} Path the socket should connect to. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(path)`]. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
-* `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
-* Returns: {net.Socket} The newly created socket used to start the connection.
+* `path` {string} Ruta a la que el socket debería conectarse. Será pasado a [`socket.connect(path[, connectListener])`][`socket.connect(path)`]. Vea [Identificando rutas para conexiones ICP](#net_identifying_paths_for_ipc_connections).
+* `connectListener` {Function} Parámetro común de las funciones [`net.createConnection()`][], un listener "una sola vez" para el evento `'connect'` en el socket que está iniciando. Será pasado a [`socket.connect(path[, connectListener])`][`socket.connect(path)`].
+* Devuelve: {net.Socket} El socket recién creado usado para iniciar la conexión.
 
-Initiates an [IPC](#net_ipc_support) connection.
+Inicia una conexión [IPC](#net_ipc_support).
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(path[, connectListener])`][`socket.connect(path)`], then returns the `net.Socket` that starts the connection.
+Esta función crea un nuevo [`net.Socket`][] con todas las opciones en su manera predeterminada, inicia inmediatamente conexión con [`socket.connect(path[, connectListener])`][`socket.connect(path)`], entonces devuelve el `net.Socket` que inicia la conexión.
 
 ### net.createConnection(port\[, host\]\[, connectListener\])
 
