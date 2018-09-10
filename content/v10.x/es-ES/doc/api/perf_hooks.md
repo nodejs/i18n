@@ -322,7 +322,7 @@ added: v8.5.0
 
 * {number}
 
-The high resolution millisecond timestamp at which the V8 platform was initialized.
+La timestamp de alta resolución en milisegundos en la cual la plataforma V8 fue iniciada.
 
 ## Class: PerformanceObserver
 
