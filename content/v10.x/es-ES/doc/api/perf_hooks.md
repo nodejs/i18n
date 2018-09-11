@@ -353,7 +353,7 @@ obs.observe({ entryTypes: ['mark'], buffered: true });
 performance.mark('test');
 ```
 
-Because `PerformanceObserver` instances introduce their own additional performance overhead, instances should not be left subscribed to notifications indefinitely. Users should disconnect observers as soon as they are no longer needed.
+Debido a que las instancias `PerformanceObserver` introducen su propia sobrecarga de rendimiento adicional, las instancias no deben quedar suscritas a las notificaciones indefinidamente. Users should disconnect observers as soon as they are no longer needed.
 
 The `callback` is invoked when a `PerformanceObserver` is notified about new `PerformanceEntry` instances. The callback receives a `PerformanceObserverEntryList` instance and a reference to the `PerformanceObserver`.
 
