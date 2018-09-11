@@ -36,7 +36,7 @@ En POSIX y Windows:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+// Retorna: 'myfile.html'
 ```
 
 Para alcanzar resultados consistentes cuando se trabajo con rutas de archivo POSIX en cualquier sistema operativo, use [`path.posix`][]:
@@ -45,7 +45,7 @@ En POSIX y Windows:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
-// Returns: 'myfile.html'
+// Retorna: 'myfile.html'
 ```
 
 *Nota:* En Windows, Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. Por ejemplo, `path.resolve('c:\\')` puede potencialmente ocasionar un resultado diferente a `path.resolve('c:')`. Para más información, vea [esta página MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
@@ -69,10 +69,10 @@ Los métodos `path.basename()` retornan la última porción de un `path`, simila
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
-// Returns: 'quux.html'
+// Retorna: 'quux.html'
 
 path.basename('/foo/bar/baz/asdf/quux.html', '.html');
-// Returns: 'quux'
+// Retorna: 'quux'
 ```
 
 Se produce un [`TypeError`][] si `path` no es un string o si `ext` es dado y no es un string.
@@ -309,7 +309,7 @@ Por ejemplo, en POSIX:
 
 ```js
 path.normalize('/foo/bar//baz/asdf/quux/..');
-// Returns: '/foo/bar/baz/asdf'
+// Retorna: '/foo/bar/baz/asdf'
 ```
 
 En Windows:
@@ -510,11 +510,11 @@ added: v9.0.0
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retorna: {string}
 
-On Windows systems only, returns an equivalent [namespace-prefixed path](https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
+Solo en sistemas Windows, retorna un [namespace-prefixed path](https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces) equivalente por el `path` dado. Si `path` no es un string, `path` va a ser retornado sin modificaciones.
 
-This method is meaningful only on Windows system. On posix systems, the method is non-operational and always returns `path` without modifications.
+Este método es significativo solo en el sistema Windows. En sistemas posix, el método es no-operacional y siempre retorna a `path` sin modificaciones.
 
 ## path.win32
 
