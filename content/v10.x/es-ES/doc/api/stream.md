@@ -207,17 +207,17 @@ added: v0.9.4
 
 * {Error}
 
-El evento `'error'` es emitido si ocurrió un error mientras se escribian datos o se les hacía piping. The listener callback is passed a single `Error` argument when called.
+El evento `'error'` es emitido si ocurrió un error mientras se escribian datos o se les hacía piping. El callback listener pasa un solo argumento `Error` cuando se llama.
 
-The stream is not closed when the `'error'` event is emitted.
+El stream no es cerrado cuando el evento `'error'` es emitido.
 
-##### Event: 'finish'
+##### Evento: 'finish'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-The `'finish'` event is emitted after the [`stream.end()`](#stream_writable_end_chunk_encoding_callback) method has been called, and all data has been flushed to the underlying system.
+El evento `'finish'` es emitido después que el método [`stream.end()`](#stream_writable_end_chunk_encoding_callback) ha sido llamado, y todos los datos han sido arrojados al sistema subyacente.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -230,15 +230,15 @@ writer.on('finish', () => {
 });
 ```
 
-##### Event: 'pipe'
+##### Evento: 'pipe'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-* `src` {stream.Readable} source stream that is piping to this writable
+* `src` {stream.Readable} la fuente del stream que está haciendo piping a este escribible
 
-The `'pipe'` event is emitted when the [`stream.pipe()`][] method is called on a readable stream, adding this writable to its set of destinations.
+El evento `'pipe'` es emitido cuando el método [`stream.pipe()`][] es llamado a un stream legible, añadiendo este escribible al conjunto de destinos.
 
 ```js
 const writer = getWritableStreamSomehow();
