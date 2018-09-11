@@ -159,21 +159,21 @@ added: v0.9.4
 added: v0.9.4
 -->
 
-El evento `'close'` es emitido cuando el stream y cualquiera de sus recursos subyacentes (por ejemplo, un descriptor de archivos) fueron cerrados. The event indicates that no more events will be emitted, and no further computation will occur.
+El evento `'close'` es emitido cuando el stream y cualquiera de sus recursos subyacentes (por ejemplo, un descriptor de archivos) fueron cerrados. El evento indica que no se emitirán más eventos, y no ocurrirá ninguna computación adicional.
 
-Not all `Writable` streams will emit the `'close'` event.
+Tenga en cuenta que los streams `Writable` emitirán el evento `'close'`.
 
-##### Event: 'drain'
+##### Evento: 'drain'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-If a call to [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) returns `false`, the `'drain'` event will be emitted when it is appropriate to resume writing data to the stream.
+Si una llamada a [`stream.write(chunk)`](#stream_writable_write_chunk_encoding_callback) devuelve `false`, el evento `'drain'` será emitido cuando sea apropiado renaudar la escritura de datos al stream.
 
 ```js
-// Write the data to the supplied writable stream one million times.
-// Be attentive to back-pressure.
+// Escribe los datos en el stream escribible suministrado un millón de veces.
+// Está atento a la contrapresión.
 function writeOneMillionTimes(writer, data, encoding, callback) {
   let i = 1000000;
   write();
@@ -199,7 +199,7 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
 }
 ```
 
-##### Event: 'error'
+##### Evento: 'error'
 
 <!-- YAML
 added: v0.9.4
@@ -207,7 +207,7 @@ added: v0.9.4
 
 * {Error}
 
-The `'error'` event is emitted if an error occurred while writing or piping data. The listener callback is passed a single `Error` argument when called.
+El evento `'error'` es emitido si ocurrió un error mientras se escribian datos o se les hacía piping. The listener callback is passed a single `Error` argument when called.
 
 The stream is not closed when the `'error'` event is emitted.
 
