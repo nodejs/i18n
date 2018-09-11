@@ -20,14 +20,14 @@ En POSIX:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Returns: 'C:\\temp\\myfile.html'
+// Retorna: 'C:\\temp\\myfile.html'
 ```
 
 En Windows:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Returns: 'myfile.html'
+// Retorna: 'myfile.html'
 ```
 
 Para alcanzar resultados consistentes cuando se trabaja con rutas de archivo Windows en cualquier sistema operativo, use [`path.win32`][]:
@@ -462,14 +462,14 @@ If no `path` segments are passed, `path.resolve()` will return the absolute path
 
 ```js
 path.resolve('/foo/bar', './baz');
-// Returns: '/foo/bar/baz'
+// Retorna: '/foo/bar/baz'
 
 path.resolve('/foo/bar', '/tmp/file/');
-// Returns: '/tmp/file'
+// Retorna: '/tmp/file'
 
 path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
-// if the current working directory is /home/myself/node,
-// this returns '/home/myself/node/wwwroot/static_files/gif/image.gif'
+// si el directorio de trabajo actual es /home/myself/node,
+// esto retorna '/home/myself/node/wwwroot/static_files/gif/image.gif'
 ```
 
 Un [`TypeError`][] es producido si cualquiera de los argumentos no es un string.
