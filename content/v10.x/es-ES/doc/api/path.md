@@ -347,7 +347,7 @@ The returned object will have the following properties:
 * `name` {string}
 * `ext` {string}
 
-For example on POSIX:
+Por ejemplo, en POSIX:
 
 ```js
 path.parse('/home/user/dir/file.txt');
