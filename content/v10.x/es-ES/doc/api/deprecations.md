@@ -1,4 +1,4 @@
-# Deprecated APIs
+# APIs desaprobadas
 
 <!--introduced_in=v7.7.0-->
 
