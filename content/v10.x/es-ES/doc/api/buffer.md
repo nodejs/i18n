@@ -2274,7 +2274,7 @@ changes:
 * `fromEnc` {string} La codificación actual.
 * `toEnc` {string} Para apuntar a la codificación.
 
-Re-encodes the given `Buffer` or `Uint8Array` instance from one character encoding to another. Returns a new `Buffer` instance.
+Re-codifica la instancia de `Buffer` o `Uint8Array` dada desde una codificación de caracteres a otra. Devuelve una nueva instancia de `Buffer`.
 
 Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if conversion from `fromEnc` to `toEnc` is not permitted.
 
