@@ -107,7 +107,7 @@ server.listen(1337);
 
 [`Writable`][] streams (tales como `res` en el ejemplo) expone métodos como `write()` y `end()` que son usados para escribir datos en el stream.
 
-[`Readable`][] streams use the [`EventEmitter`][] API for notifying application code when data is available to be read off the stream. That available data can be read from the stream in multiple ways.
+Los streams [`Readable`][] usan la API [`EventEmitter`][] para notificar código de la aplicación cuando los datos estén listos para ser leídos del stream. Esos datos disponibles pueden ser leídos del stream de múltiples maneras.
 
 Both [`Writable`][] and [`Readable`][] streams use the [`EventEmitter`][] API in various ways to communicate the current state of the stream.
 
