@@ -220,9 +220,9 @@ added: v0.3.3
 
 El método `os.loadavg()` devuelve un conjunto conteniendo los promedios de carga de 1,5 y 15 minutos.
 
-El promedio de carga es una medida de la actividad del sistema, calculado por el sistema operativo y expresado como un número fraccionario. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
+El promedio de carga es una medida de la actividad del sistema, calculado por el sistema operativo y expresado como un número fraccionario. Como regla general, la carga promedio debería ser idealmente menor que el número de CPUs lógicos en el sistema.
 
-The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
+La carga promedio es un concepto específico de UNIX con ningún equivalente real en las plataformas Windows. En Windows, el valor de retorno siempre es `[0, 0, 0]`.
 
 ## os.networkInterfaces()
 
@@ -230,7 +230,7 @@ The load average is a UNIX-specific concept with no real equivalent on Windows p
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
 The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
