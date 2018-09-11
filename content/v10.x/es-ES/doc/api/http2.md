@@ -87,7 +87,7 @@ added: v8.4.0
 
 * Extends: {EventEmitter}
 
-Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instances of this class are *not* intended to be constructed directly by user code.
+Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instancias de esta clase *no* están destinadas a ser construidas directamente por el código de usuario.
 
 Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si esta operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. En el lado del servidor, el código de usuario raramente debe tener ocasión de trabajar directamente con el objeto `Http2Session`, con la mayoría de las acciones tomadas típicamente a través de interacciones, ya sea con los objetos `Http2Server` o `Http2Stream`.
 
@@ -168,7 +168,7 @@ added: v8.4.0
 
 El evento `'localSettings'` es emitido cuando una confirmación del `SETTINGS` frame ha sido recibida.
 
-When using `http2session.settings()` to submit new settings, the modified settings do not take effect until the `'localSettings'` event is emitted.
+Al usar `http2session.settings()` para enviar nuevas configuración, las configuraciones modificadas no toman efecto hasta que el evento `'localSettings'` es emitido.
 
 ```js
 session.settings({ enablePush: false });
