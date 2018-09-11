@@ -208,9 +208,9 @@ $ node-gyp configure build
 
 ### Đối số hàm
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Thành phần mở rộng sẽ khiến các đối tượng và hàm bị trưng ra và được truy cập từ JavaScript khi đang chạy trong Node.js. Khi các hàm được gọi ra từ JavaScript, các đối số đầu vào và giá trị trả về phải được liên kết tới và từ mã C/C++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Ví dụ sau đây minh họa các đọc hàm đối số được chuyển qua từ JavaScript và cách trả kết quả:
 
 ```cpp
 // addon.cc
@@ -266,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Khi đã được biên soạn, ví dụ thành phần mở rộng có thể được yêu cầu và sử dụng bên trong Node.js:
 
 ```js
 // test.js
@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Đây là một quy trình thông thường trong thành phần mở rộng nhằm chuyển các hàm JavaScript qua hàm C++ và thực thi chúng từ đây. Ví dụ minh họa sau đây giới thiệu cách thực hiện callbacks như vậy:
 
 ```cpp
 // addon.cc
