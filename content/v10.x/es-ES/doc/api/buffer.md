@@ -2245,7 +2245,7 @@ added: v0.5.4
 
 Devuelve el número máximo de bytes que serán devueltos cuando se llama a `buf.inspect()`. Esto puede ser reemplazado por módulos de usuario. Ver [`util.inspect()`] para más detalles sobre el comportamiento de `buf.inspect()`.
 
-Tenga en cuenta que esto es una propiedad sobre el módulo de `buffer` devuelto por `require('buffer')`, no en el `Buffer` global o en una instancia de `Buffer`.
+Tenga en cuenta que esto es una propiedad sobre el módulo de `buffer` devuelto por `require('buffer')`, no sobre el `Buffer` global o una instancia de `Buffer`.
 
 ## buffer.kMaxLength
 
@@ -2253,11 +2253,11 @@ Tenga en cuenta que esto es una propiedad sobre el módulo de `buffer` devuelto 
 added: v3.0.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} El tamaño más grande permitido para una sola instancia de `Buffer`.
 
-An alias for [`buffer.constants.MAX_LENGTH`][].
+Un alias para [`buffer.constants.MAX_LENGTH`][].
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Tenga en cuenta que esto es una propiedad sobre el módulo de `buffer` devuelto por `require('buffer')`, no sobre el `Buffer` global o una instancia de `Buffer`.
 
 ## buffer.transcode(source, fromEnc, toEnc)
 
@@ -2270,9 +2270,9 @@ changes:
     description: The `source` parameter can now be a `Uint8Array`.
 -->
 
-* `source` {Buffer|Uint8Array} A `Buffer` or `Uint8Array` instance.
-* `fromEnc` {string} The current encoding.
-* `toEnc` {string} To target encoding.
+* `source` {Buffer|Uint8Array} Una instancia de `Buffer` o `Uint8Array`.
+* `fromEnc` {string} La codificación actual.
+* `toEnc` {string} Para apuntar a la codificación.
 
 Re-encodes the given `Buffer` or `Uint8Array` instance from one character encoding to another. Returns a new `Buffer` instance.
 
