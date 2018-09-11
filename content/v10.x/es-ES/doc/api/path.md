@@ -94,10 +94,10 @@ Por ejemplo, en POSIX:
 
 ```js
 console.log(process.env.PATH);
-// Prints: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
+// Estampa: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
 
 process.env.PATH.split(path.delimiter);
-// Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
+// Retorna: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
 En Windows:
@@ -303,7 +303,7 @@ El método `path.normalize()` normaliza el `path` dado, resolviendo los segmento
 
 When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
-If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
+Si el `path` es un string sin extensión, `'.'` es retornado, representando el directorio de trabajo actual.
 
 Por ejemplo, en POSIX:
 
@@ -417,7 +417,7 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Returns: {string}
+* Retorna: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
