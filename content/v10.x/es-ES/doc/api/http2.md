@@ -89,7 +89,7 @@ added: v8.4.0
 
 Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instances of this class are *not* intended to be constructed directly by user code.
 
-Each `Http2Session` instance will exhibit slightly different behaviors depending on whether it is operating as a server or a client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
+Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si esta operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
 
 #### `Http2Session` and Sockets
 
@@ -97,7 +97,7 @@ Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][
 
 Debido a los requisitos de serialización y procesamiento específicos impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos en una instancia de `Socket` vinculada a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
 
-Once a `Socket` has been bound to an `Http2Session`, user code should rely solely on the API of the `Http2Session`.
+Una vez que un `Socket` ha sido vinculado a una `Http2Session`, el código de usuario debería confiar únicamente en el API del `Http2Session`.
 
 #### Event: 'close'
 
