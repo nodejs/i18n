@@ -301,7 +301,7 @@ added: v0.1.23
 
 El método `path.normalize()` normaliza el `path` dado, resolviendo los segmentos `'..'` y `'.'`.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
+Cuando múltiples carácteres de separación de segmentos de ruta secuenciales son encontrados (p. ej. `/` en POSIX y cualquiera entre `` o `/` en Windows), ellos son reemplazados por una sola instancia del separador de segmento de ruta específico de la plataforma (`/` en POSIX y `` en Windows). Los separadores de seguimiento son preservados.
 
 Si el `path` es un string sin extensión, `'.'` es retornado, representando el directorio de trabajo actual.
 
@@ -454,7 +454,7 @@ La secuencia dada de rutas es procesada de derecha a izquierda, con cada subsequ
 
 Si después de procesar todos los segmentos `path` dados, una ruta absoluta aún no ha sido generadada, el directorio de trabajo actual es usado.
 
-The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory.
+La ruta resultante es normalizada y los slashes de seguimiento son removidos a menos de que la ruta sea resuelta en el directorio root.
 
 Los segmentos `path` sin extensión son ignorados.
 
