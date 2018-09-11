@@ -23,7 +23,7 @@ path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-On Windows:
+En Windows:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
@@ -401,7 +401,7 @@ added: v0.11.15
 
 * {Object}
 
-The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
+La propiedad `path.posix` provee acceso a implementaciones específicas de POSIX de los métodos `path`.
 
 ## path.relative(from, to)
 
