@@ -218,9 +218,9 @@ added: v0.3.3
 
 * Retorna: {number[]}
 
-The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
+El método `os.loadavg()` devuelve un conjunto conteniendo los promedios de carga de 1,5 y 15 minutos.
 
-The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
+El promedio de carga es una medida de la actividad del sistema, calculado por el sistema operativo y expresado como un número fraccionario. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
 
 The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
 
