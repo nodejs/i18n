@@ -627,11 +627,11 @@ Convierte la clave pública EC Diffie-Hellman especificada por `key` y `curve` a
 
 Use [`crypto.getCurves()`][] para obtener una lista de nombres de curvas disponibles. En las últimas versiones de OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción disponible de cada curva elíptica.
 
-If `format` is not specified the point will be returned in `'uncompressed'` format.
+Si `format` no es especificado el punto será devuelto en formato `'uncompressed'`.
 
-If the `inputEncoding` is not provided, `key` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Si `inputEncoding` no es dado, `key` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-Example (uncompressing a key):
+Ejemplo (descomprimiendo una clave):
 
 ```js
 const { ECDH } = require('crypto');
