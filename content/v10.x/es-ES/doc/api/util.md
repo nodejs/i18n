@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
+El módulo `util` está diseñado principalmente para apoyar las necesidades de las APIs internas del propio Node.js. Sin embargo, muchas de las utilidades son útiles para desarrolladores de aplicaciones y también de módulos. Puede ser accedido usando:
 
 ```js
 const util = require('util');
@@ -16,8 +16,8 @@ const util = require('util');
 added: v8.2.0
 -->
 
-* `original` {Function} An `async` function
-* Returns: {Function} a callback style function
+* `original` {Function} Una función `async`
+* Retorna: {Function} una función de estilo callback
 
 Takes an `async` function (or a function that returns a `Promise`) and returns a function following the error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument. In the callback, the first argument will be the rejection reason (or `null` if the `Promise` resolved), and the second argument will be the resolved value.
 
@@ -76,13 +76,13 @@ const debuglog = util.debuglog('foo');
 debuglog('hello from foo [%d]', 123);
 ```
 
-If this program is run with `NODE_DEBUG=foo` in the environment, then it will output something like:
+Si el programa es ejecutado con `NODE_DEBUG=foo` en el entorno, entonces el resultado va a ser algo como:
 
 ```txt
 FOO 3245: hello from foo [123]
 ```
 
-where `3245` is the process id. If it is not run with that environment variable set, then it will not print anything.
+donde `3245` es la identificación del proceso. If it is not run with that environment variable set, then it will not print anything.
 
 The `section` supports wildcard also:
 
