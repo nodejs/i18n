@@ -142,7 +142,7 @@ added: v8.4.0
 
 The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
-If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento de `'frameError'` .
+If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
 
 #### Event: 'goaway'
 
@@ -154,7 +154,7 @@ added: v8.4.0
 * `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
 * `opaqueData` {Buffer} If additional opaque data was included in the `GOAWAY` frame, a `Buffer` instance will be passed containing that data.
 
-El evento de `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
+El evento `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
 
 The `Http2Session` instance will be shut down automatically when the `'goaway'` event is emitted.
 
@@ -453,7 +453,7 @@ All other interactions will be routed directly to the socket.
 added: v8.4.0
 -->
 
-Proporciona información miscelánea sobre el estado actual de `Http2Session`.
+Proporciona información diversa sobre el estado actual del `Http2Session`.
 
 * {Object} 
   * `effectiveLocalWindowSize` {number} The current local (receive) flow control window size for the `Http2Session`.
@@ -595,7 +595,7 @@ added: v8.4.0
   * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas dependientes del stream creado recientemente. **Predeterminado:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
   * `weight` {number} Especifica la dependencia relativa de un stream en relación a otros streams con el mismo `parent`. El valor es un número entre `1` y `256` (inclusivo).
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
 
 * Devuelve: {ClientHttp2Stream}
 
@@ -1058,7 +1058,7 @@ added: v8.4.0
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `endStream` {boolean} Set to `true` to indicate that the response will not include payload data.
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
 
 ```js
 const http2 = require('http2');
@@ -1101,7 +1101,7 @@ changes:
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `statCheck` {Function}
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
@@ -1178,7 +1178,7 @@ changes:
 * `opciones` {Object} 
   * `statCheck` {Function}
   * `onError` {Function} Función de callback invocada en caso de que ocurra un error antes de un envío.
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
