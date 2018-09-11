@@ -192,19 +192,19 @@ Al proporcionar propiedades al `pathObject`, recuerde que hay combinaciones dond
 Por ejemplo, en POSIX:
 
 ```js
-// If `dir`, `root` and `base` are provided,
+// Si `dir`, `root` and `base` son provistos,
 // `${dir}${path.sep}${base}`
-// will be returned. `root` is ignored.
+// va a ser retornado. `root` es ignorado.
 path.format({
   root: '/ignored',
   dir: '/home/user/dir',
   base: 'file.txt'
 });
-// Returns: '/home/user/dir/file.txt'
+// Retorna: '/home/user/dir/file.txt'
 
-// `root` will be used if `dir` is not specified.
-// If only `root` is provided or `dir` is equal to `root` then the
-// platform separator will not be included. `ext` will be ignored.
+// `root` será usado si `dir` no es especificado.
+// Si solo `root` es provista o `dir` es igual a `root` entonces el
+// separador de plataforma no va a ser incluido. `ext` va a ser ignorado.
 path.format({
   root: '/',
   base: 'file.txt',
@@ -316,14 +316,14 @@ En Windows:
 
 ```js
 path.normalize('C:\\temp\\\\foo\\bar\\..\\');
-// Returns: 'C:\\temp\\foo\\'
+// Retorna: 'C:\\temp\\foo\\'
 ```
 
 Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
-// Returns: 'C:\\temp\\foo\\bar'
+// Retorna: 'C:\\temp\\foo\\bar'
 ```
 
 A [`TypeError`][] is thrown if `path` is not a string.
@@ -351,7 +351,7 @@ Por ejemplo, en POSIX:
 
 ```js
 path.parse('/home/user/dir/file.txt');
-// Returns:
+// Retorna:
 // { root: '/',
 //   dir: '/home/user/dir',
 //   base: 'file.txt',
@@ -373,7 +373,7 @@ En Windows:
 
 ```js
 path.parse('C:\\path\\dir\\file.txt');
-// Returns:
+// Retorna:
 // { root: 'C:\\',
 //   dir: 'C:\\path\\dir',
 //   base: 'file.txt',
@@ -484,21 +484,21 @@ added: v0.7.9
 
 Provides the platform-specific path segment separator:
 
-* `` on Windows
-* `/` on POSIX
+* `` en Windows
+* `/` en POSIX
 
 Por ejemplo, en POSIX:
 
 ```js
 'foo/bar/baz'.split(path.sep);
-// Returns: ['foo', 'bar', 'baz']
+// Retorna: ['foo', 'bar', 'baz']
 ```
 
 En Windows:
 
 ```js
 'foo\\bar\\baz'.split(path.sep);
-// Returns: ['foo', 'bar', 'baz']
+// Retorna: ['foo', 'bar', 'baz']
 ```
 
 En Windows, tanto el slash inclinado hacia adelante (`/`) como el slash inclinado hacia atrás (``) son aceptados como separadores de segmentos de ruta; sin embargo, los métodos `path` solo agregan slashes inclinados hacia atrás (``).
