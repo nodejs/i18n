@@ -145,7 +145,7 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retorna: {string}
 
 El método `path.extname()` retorna la extensión del `path`, desde la última ocurrencia del carácter `.` (punto) hasta el final del string en la última porción del `path`. Si no hay ningún `.` en la última porción del `path`, o si el primer carácter del nombre base del `path` (vea `path.basename()`) es `.`, entonces un string vacío es retornado.
 
@@ -180,7 +180,7 @@ added: v0.11.15
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* Returns: {string}
+* Retorna: {string}
 
 El método `path.format()` retorna un string de ruta de un objeto. Este es el opuesto de [`path.parse()`][].
 
@@ -238,11 +238,11 @@ added: v0.11.2
 -->
 
 * `path` {string}
-* Returns: {boolean}
+* Retorna: {boolean}
 
-The `path.isAbsolute()` method determines if `path` is an absolute path.
+El método `path.isAbsolute()` determina si `path` es una ruta absoluta.
 
-If the given `path` is a zero-length string, `false` will be returned.
+Si el `path` dado es un string sin extensión, `false` va a ser retornado.
 
 Por ejemplo, en POSIX:
 
@@ -282,10 +282,10 @@ Los segmentos `path` sin extensión son ignorados. Si el string de ruta unido es
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
-// Returns: '/foo/bar/baz/asdf'
+// Retorna: '/foo/bar/baz/asdf'
 
 path.join('foo', {}, 'bar');
-// throws 'TypeError: Path must be a string. Received {}'
+// Produce 'TypeError: Path must be a string. Recibido {}'
 ```
 
 Un [`TypeError`][] va a ser producido si cualquiera de los segmentos de ruta no es un string.
@@ -326,7 +326,7 @@ path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 // Retorna: 'C:\\temp\\foo\\bar'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.parse(path)
 
@@ -335,7 +335,7 @@ added: v0.11.15
 -->
 
 * `path` {string}
-* Returns: {Object}
+* Retorna: {Object}
 
 The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -421,23 +421,23 @@ changes:
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
-If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
+Si un string sin extensión es pasado como `from` o `to`, el directorio de trabajo actual será usado en lugar de los strings sin extensión.
 
 Por ejemplo, en POSIX:
 
 ```js
 path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
-// Returns: '../../impl/bbb'
+// Retorna: '../../impl/bbb'
 ```
 
 En Windows:
 
 ```js
 path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
-// Returns: '..\\..\\impl\\bbb'
+// Retorna: '..\\..\\impl\\bbb'
 ```
 
-A [`TypeError`][] is thrown if either `from` or `to` is not a string.
+Un [`TypeError`][] es producido si cualquiera entre `from` o `to` no es un string.
 
 ## path.resolve([...paths])
 
@@ -445,10 +445,10 @@ A [`TypeError`][] is thrown if either `from` or `to` is not a string.
 added: v0.3.4
 -->
 
-* `...paths` {string} A sequence of paths or path segments
-* Returns: {string}
+* `...paths` {string} Una secuencia de rutas o segmentos de rutas
+* Retorna: {string}
 
-The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
+El método `path.resolve()` resuelve una secuencia de rutas o segmentos de rutas en una ruta absoluta.
 
 The given sequence of paths is processed from right to left, with each subsequent `path` prepended until an absolute path is constructed. For instance, given the sequence of path segments: `/foo`, `/bar`, `baz`, calling `path.resolve('/foo', '/bar', 'baz')` would return `/bar/baz`.
 
@@ -456,7 +456,7 @@ If after processing all given `path` segments an absolute path has not yet been 
 
 The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory.
 
-Zero-length `path` segments are ignored.
+Los segmentos `path` sin extensión son ignorados.
 
 If no `path` segments are passed, `path.resolve()` will return the absolute path of the current working directory.
 
