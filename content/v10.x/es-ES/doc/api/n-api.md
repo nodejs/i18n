@@ -1078,17 +1078,17 @@ napi_status napi_create_external_buffer(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] length`: Size in bytes of the input buffer (should be the same as the size of the new buffer).
-- `[in] data`: Raw pointer to the underlying buffer to copy from.
+- `[in] length`: Tamaño en bytes del buffer de entrada (debe ser el mismo que el tamaño del nuevo buffer).
+- `[in] data`: Apuntador sin formato al buffer subyacente desde el que se va a copiar.
 - `[in] finalize_cb`: Callback opcional para llamar cuando el `ArrayBuffer` esté siendo tomado.
-- `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
-- `[out] result`: A `napi_value` representing a `node::Buffer`.
+- `[in] finalize_hint`: Sugerencia opcional para pasar a la callback de terminación durante la recopilación.
+- `[out] result`: Un `napi_value` que representa un `node::Buffer`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API allocates a `node::Buffer` object and initializes it with data backed by the passed in buffer. Si bien esta sigue siendo una estructura de datos completamente compatible, en la mayoría de los casos será suficiente utilizar un `TypedArray`.
+Esta API asigna un objeto `node::Buffer` y lo inicializa con los datos respaldados por el buffer pasado. Si bien esta sigue siendo una estructura de datos completamente compatible, en la mayoría de los casos será suficiente utilizar un `TypedArray`.
 
-For Node.js >=4 `Buffers` are `Uint8Array`s.
+Para Node.js >=4 `Buffers` son `Uint8Array`s.
 
 #### napi_create_function
 
@@ -1105,9 +1105,9 @@ napi_status napi_create_function(napi_env env,
                                  napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] utf8name`: A string representing the name of the function encoded as UTF8.
-- `[in] length`: The length of the `utf8name` in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] utf8name`: Una cadena que representa el nombre de la función codificada como UTF8.
+- `[in] length`: La longitud en bytes del `utf8name`, o `NAPI_AUTO_LENGTH` si tiene terminación en NULL.
 - `[in] cb`: A function pointer to the native function to be invoked when the created function is invoked from JavaScript.
 - `[in] data`: Optional arbitrary context data to be passed into the native function when it is invoked.
 - `[out] result`: A `napi_value` representing a JavaScript function.
