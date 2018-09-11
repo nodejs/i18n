@@ -638,7 +638,7 @@ added: v8.4.0
 
 Cada instancia de la clase de `Http2Stream` representa un stream de comunicaciones bidireccionales de HTTP/2 sobre una instancia de `Http2Session` . Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
 
-Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . En el servidor, las instancias de `Http2Stream` son creadas en respuesta a una solicitud entrante de HTTP (y entregadas al código de usuario mediante el evento de `'stream'`), o en respuesta a una llamada al método de `http2stream.pushStream()` . En el cliente, las instancias de `Http2Stream` se crean y se devuelven cuando el método de `http2session.request()` es llamado, o en respuesta a un evento de `'push'` entrante.
+Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . En el servidor, las instancias `Http2Stream` son creadas en respuesta a una solicitud entrante de HTTP (y entregadas al código de usuario mediante el evento de `'stream'`), o en respuesta a una llamada al método `http2stream.pushStream()` . En el cliente, las instancias de `Http2Stream` se crean y se devuelven cuando el método de `http2session.request()` es llamado, o en respuesta a un evento de `'push'` entrante.
 
 La clase `Http2Stream` es una base para las clases de [`ServerHttp2Stream`][] y [`ClientHttp2Stream`][], las cuales son utilizadas específicamente por el Servidor o el lado del Cliente, respectivamente.
 
@@ -665,7 +665,7 @@ Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 * El método de `http2stream.close()` es llamado.
 * Los métodos de `http2stream.destroy()` o `http2session.destroy()` son llamados.
 
-Cuando se destruye una instancia de `Http2Stream`, se hará un intento de enviar un frame de `RST_STREAM`, será enviado al peer conectado.
+Cuando se destruye una instancia `Http2Stream`, se hará un intento de enviar un frame `RST_STREAM` al peer conectado.
 
 Cuando se destruye la instancia de `Http2Stream`, el evento de `'close'` será emitido. Ya que `Http2Stream` es una instancia de `stream.Duplex`, el evento de `'end'` también será emitido si los datos del stream fluyen actualmente. Puede que el evento de `'error'` también sea emitido si `http2stream.destroy()` fue llamado con un `Error` pasado como el primer argumento.
 
@@ -850,7 +850,7 @@ added: v8.4.0
 
 * {Http2Session}
 
-Una referencia a la instancia de `Http2Session` que posee este `Http2Stream`. El valor será `undefined` luego de que la instancia de `Http2Stream` sea destruida.
+Una referencia a la instancia de `Http2Session` que posee este `Http2Stream`. El valor será `undefined` luego de que la instancia `Http2Stream` sea destruida.
 
 #### http2stream.setTimeout(msecs, callback)
 
@@ -921,7 +921,7 @@ added: v8.4.0
 
 * Extends {Http2Stream}
 
-La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. Las instancias de `Http2Stream` en el cliente proporcionan eventos tales como `'response'` y `'push'`, los cuales son relevantes solamente en el cliente.
+La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. Las instancias `Http2Stream` en el cliente proporcionan eventos tales como `'response'` y `'push'`, los cuales son relevantes solamente en el cliente.
 
 #### Evento: 'continue'
 
