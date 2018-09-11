@@ -419,7 +419,7 @@ changes:
 * `to` {string}
 * Retorna: {string}
 
-The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
+El método `path.relative()` retorna la ruta relativa de `from` a `to` según el directorio de trabajo actual. Si cada uno `from` y `to` se resuelven para la misma ruta (después de llamar `path.resolve()` en cada uno), un string sin extensión es retornado.
 
 Si un string sin extensión es pasado como `from` o `to`, el directorio de trabajo actual será usado en lugar de los strings sin extensión.
 
