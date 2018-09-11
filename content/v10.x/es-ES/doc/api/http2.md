@@ -95,7 +95,7 @@ Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos
 
 Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][] o una [`tls.TLSSocket`][] cuando es creada. Cuando se destruye ya sea el `Socket` o el `Http2Session`, ambos serán destruidos.
 
-Debido a los requisitos de serialización y procesamiento específicos impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos en una instancia de `Socket` vinculada a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
+Debido a los requisitos de serialización y procesamiento específicos impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos en una instancia de `Socket` vinculada a `Http2Session`. Hacerlo, puede poner la sesión HTTP/2 en un estado indeterminado, causando que la sesión y el socket se vuelvan inutilizables.
 
 Una vez que un `Socket` ha sido vinculado a una `Http2Session`, el código de usuario debería confiar únicamente en el API del `Http2Session`.
 
@@ -142,7 +142,7 @@ added: v8.4.0
 
 El evento `'frameError'` es emitido cuando ocurre un error mientras se intenta enviar un frame a la sesión. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
-If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
+Si el evento `'frameError'` esta asociado con un stream, el stream será cerradp y destruido inmediatamente después del evento `'frameError'`. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
 
 #### Event: 'goaway'
 
@@ -156,7 +156,7 @@ added: v8.4.0
 
 El evento `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
 
-The `Http2Session` instance will be shut down automatically when the `'goaway'` event is emitted.
+La instancia `Http2Session` será apagada automáticamente cuando el evento `'goaway'` es emitido.
 
 #### Event: 'localSettings'
 
