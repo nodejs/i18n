@@ -353,17 +353,17 @@ obs.observe({ entryTypes: ['mark'], buffered: true });
 performance.mark('test');
 ```
 
-Debido a que las instancias `PerformanceObserver` introducen su propia sobrecarga de rendimiento adicional, las instancias no deben quedar suscritas a las notificaciones indefinidamente. Users should disconnect observers as soon as they are no longer needed.
+Debido a que las instancias `PerformanceObserver` introducen su propia sobrecarga de rendimiento adicional, las instancias no deben quedar suscritas a las notificaciones indefinidamente. Los usuarios deben desconectar los observadores tan pronto como no sean necesitados.
 
-The `callback` is invoked when a `PerformanceObserver` is notified about new `PerformanceEntry` instances. The callback receives a `PerformanceObserverEntryList` instance and a reference to the `PerformanceObserver`.
+El `callback` es invocado cuando un `PerformanceObserver` es notificado sobre nuevas instancias de `PerformanceEntry`. El callback recibe una instancia `PerformanceObserverEntryList` y una referencia al `PerformanceObserver`.
 
 ### performanceObserver.disconnect()
 
 <!-- YAML
 added: v8.5.0
---> Disconnects the 
+--> Desconecta la instancia 
 
-`PerformanceObserver` instance from all notifications.
+`PerformanceObserver` de todas las notificaciones.
 
 ### performanceObserver.observe(options)
 
@@ -372,8 +372,8 @@ added: v8.5.0
 -->
 
 * `options` {Object} 
-  * `entryTypes` {string[]} An array of strings identifying the types of `PerformanceEntry` instances the observer is interested in. If not provided an error will be thrown.
-  * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. **Default:** `false`.
+  * `entryTypes` {string[]} Un array de strings identificando los tipos de instancias `PerformanceEntry` en las que está interesado el observador. Si no es proporcionado, se produce un error.
+  * `buffered` {boolean} Si es true, la notificación del callback será llamada usando `setImmediate()` y múltiples notificaciones de instancia `PerformanceEntry` serán almacenadas internamente. Si es `false`, las notificaciones serán inmediatas y sincrónicas. **Predeterminado:** `false`.
 
 Subscribes the `PerformanceObserver` instance to notifications of new `PerformanceEntry` instances identified by `options.entryTypes`.
 
