@@ -846,15 +846,15 @@ changes:
   * `secureProtocol` {string} Método SSL opcional para usar. Los valores posibles se catalogan como [SSL_METHODS](https://www.openssl.org/docs/man1.1.0/ssl/ssl.html#Dealing-with-Protocol-Methods), use los nombres de las funciones como strings. Por ejemplo, `'TLSv1_2_method'` para forzar la versión 1.2 de TLS. **Predeterminado:** `'TLS_method'`.
   * `sessionIdContext` {string} Identificador opaco opcional utilizado por los servidores para garantizar que el estado de la sesión no se comparta entre las aplicaciones. No utilizado por los clientes.
 
-[`tls.createServer()`][] sets the default value of the `honorCipherOrder` option to `true`, other APIs that create secure contexts leave it unset.
+[`tls.createServer()`][] establece el valor predeterminado de la opción `honorCipherOrder` a `true`, otras API que crean contextos seguros lo dejan sin configurar.
 
-[`tls.createServer()`][] uses a 128 bit truncated SHA1 hash value generated from `process.argv` as the default value of the `sessionIdContext` option, other APIs that create secure contexts have no default value.
+[`tls.createServer()`][] utiliza un valor de hash SHA1 truncado de 128 bits generado a partir de `process.argv` como el valor predeterminado de la opción`sessionIdContext`, otras API que crean contextos seguros no tienen valor predeterminado.
 
-The `tls.createSecureContext()` method creates a credentials object.
+El método `tls.createSecureContext()` crea un objeto de credenciales.
 
-A key is *required* for ciphers that make use of certificates. Either `key` or `pfx` can be used to provide it.
+Se *requiere* una clave para cifrados que hacen uso de certificados. Se puede usar `key` o `pfx` para proporcionarla.
 
-If the 'ca' option is not given, then Node.js will use the default publicly trusted list of CAs as given in <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt>.
+Si no se proporciona la opción 'ca', entonces Node.js utilizará la lista predeterminada de confianza pública de las CA como se indica en <https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt>.
 
 ## tls.createServer(\[options\]\[, secureConnectionListener\])
 
