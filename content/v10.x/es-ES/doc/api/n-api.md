@@ -1053,14 +1053,14 @@ napi_create_external_arraybuffer(napi_env env,
 - `[in] external_data`: Apuntador al byte buffer subyacente del `ArrayBuffer`.
 - `[in] byte_length`: Longitud en bytes del buffer subyacente.
 - `[in] finalize_cb`: Callback opcional para llamar cuando el `ArrayBuffer` esté siendo tomado.
-- `[in] finalize_hint`: Optional hint to pass to the finalize callback during collection.
+- `[in] finalize_hint`: Sugerencia opcional para pasar el callback de terminación durante la recopilación.
 - `[out] result`: El `napi_value` que representa un `ArrayBuffer` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API devuelve un valor de N-API correspondiente a un `ArrayBuffer` de JavaScript. The underlying byte buffer of the `ArrayBuffer` is externally allocated and managed. The caller must ensure that the byte buffer remains valid until the finalize callback is called.
+Esta API devuelve un valor de N-API correspondiente a un `ArrayBuffer` de JavaScript. El byte buffer subyacente del `ArrayBuffer` se asigna y administra de forma externa. El llamador debe asegurar que el byte buffer permanezca válido hasta que se llame a la callback de terminación.
 
-JavaScript `ArrayBuffer`s are described in [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) of the ECMAScript Language Specification.
+Los `ArrayBuffer`s de JavaScript se describen en la [Sección 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_external_buffer
 
@@ -1077,7 +1077,7 @@ napi_status napi_create_external_buffer(napi_env env,
                                         napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] length`: Size in bytes of the input buffer (should be the same as the size of the new buffer).
 - `[in] data`: Raw pointer to the underlying buffer to copy from.
 - `[in] finalize_cb`: Callback opcional para llamar cuando el `ArrayBuffer` esté siendo tomado.
