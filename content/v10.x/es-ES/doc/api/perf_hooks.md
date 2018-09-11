@@ -447,13 +447,13 @@ added: v8.5.0
 * `type` {string}
 * Devuelve: {PerformanceEntry[]}
 
-Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
+Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`, cuyo `performanceEntry.entryType` es igual a `type`.
 
-## Examples
+## Ejemplos
 
-### Measuring the duration of async operations
+### Midiendo la duración de las operaciones asincrónicas
 
-The following example uses the [Async Hooks](async_hooks.html) and Performance APIs to measure the actual duration of a Timeout operation (including the amount of time it to execute the callback).
+El siguiente ejemplo usa el [Async Hooks](async_hooks.html) y Rendimiento API para medir la verdadera duración de una operación Timeout (incluyendo la cantidad de tiempo para ejecutar la callback).
 
 ```js
 'use strict';
@@ -493,7 +493,7 @@ obs.observe({ entryTypes: ['measure'], buffered: true });
 setTimeout(() => {}, 1000);
 ```
 
-### Measuring how long it takes to load dependencies
+### Midiendo cuánto tiempo tarda en cargar las dependencias
 
 The following example measures the duration of `require()` operations to load dependencies:
 
