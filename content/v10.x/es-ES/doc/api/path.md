@@ -122,16 +122,16 @@ changes:
 -->
 
 * `path` {string}
-* Returns: {string}
+* Retorna: {string}
 
-The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
+El método `path.dirname()` retorna el nombre del directorio de un `path`, similar al comando `dirname` de Unix. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
-// Returns: '/foo/bar/baz/asdf'
+// Retorna: '/foo/bar/baz/asdf'
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.extname(path)
 
@@ -151,22 +151,22 @@ El método `path.extname()` retorna la extensión del `path`, desde la última o
 
 ```js
 path.extname('index.html');
-// Returns: '.html'
+// Retorna: '.html'
 
 path.extname('index.coffee.md');
-// Returns: '.md'
+// Retorna: '.md'
 
 path.extname('index.');
-// Returns: '.'
+// Retorna: '.'
 
 path.extname('index');
-// Returns: ''
+// Retorna: ''
 
 path.extname('.index');
-// Returns: ''
+// Retorna: ''
 ```
 
-A [`TypeError`][] is thrown if `path` is not a string.
+Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.format(pathObject)
 
@@ -210,15 +210,15 @@ path.format({
   base: 'file.txt',
   ext: 'ignored'
 });
-// Returns: '/file.txt'
+// Retorna: '/file.txt'
 
-// `name` + `ext` will be used if `base` is not specified.
+// `name` + `ext` van a ser usados si `base` no es especificado.
 path.format({
   root: '/',
   name: 'file',
   ext: '.txt'
 });
-// Returns: '/file.txt'
+// Retorna: '/file.txt'
 ```
 
 En Windows:
@@ -228,7 +228,7 @@ path.format({
   dir: 'C:\\path\\dir',
   base: 'file.txt'
 });
-// Returns: 'C:\\path\\dir\\file.txt'
+// Retorna: 'C:\\path\\dir\\file.txt'
 ```
 
 ## path.isAbsolute(path)
