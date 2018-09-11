@@ -208,7 +208,7 @@ added: v0.3.3
 
 * Retorna: {string}
 
-The `os.hostname()` method returns the hostname of the operating system as a string.
+El método `os.hostname()` devuelve el nombre del dueño del sistema operativo como una string.
 
 ## os.loadavg()
 
@@ -216,7 +216,7 @@ The `os.hostname()` method returns the hostname of the operating system as a str
 added: v0.3.3
 -->
 
-* Returns: {number[]}
+* Retorna: {number[]}
 
 The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
