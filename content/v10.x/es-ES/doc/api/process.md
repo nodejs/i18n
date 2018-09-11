@@ -465,7 +465,7 @@ Una vez que `process.connected` sea `false`, ya no será posible enviar mensajes
 added: v6.1.0
 -->
 
-* `previousValue` {Object} Un valor de devolución previo a llamar `process.cpuUsage()`
+* `previousValue` {Object} Un valor de devolución previo a llamar a `process.cpuUsage()`
 * Devuelve: {Object} * `user` {integer} * `system` {integer}
 
 The `process.cpuUsage()` method returns the user and system CPU time usage of the current process, in an object with properties `user` and `system`, whose values are microsecond values (millionth of a second). These values measure time spent in user and system code respectively, and may end up being greater than actual elapsed time if multiple CPU cores are performing work for this process.
@@ -520,7 +520,7 @@ added: v0.7.2
 
 Si el proceso Node.js es generado con un canal IPC (vea la documentación del [Proceso Secundario](child_process.html) y de [Cluster](cluster.html)), el método `process.disconnect()` cerrará el canal IPC para el proceso primario, permitiendo que el proceso secundario se cierre con gracia una vez no haya ninguna otra conexión que lo mantenga con vida.
 
-El efecto de llamar a `process.disconnect()` es el mismo que llamar a [`ChildProcess.disconnect()`][] del proceso primario.
+El efecto de llamar a `process.disconnect()` es el mismo que el de llamar a [`ChildProcess.disconnect()`][] del proceso primario.
 
 Si el proceso Node.js no fue generado con un canal IPC, `process.disconnect()` será `undefined`.
 
@@ -564,12 +564,12 @@ added: v8.0.0
 
 * `warning` {string|Error} La advertencia a emitir.
 * `options` {Object} 
-  * `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *type* de advertencia que se emite. **Predeterminado:** `'Warning'`.
+  * `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *tipo* de advertencia que se emite. **Predeterminado:** `'Warning'`.
   * `code` {string} Un identificador único para la instancia de la advertencia que se emite.
   * `ctor` {Function} Cuando `warning` es una `String`, `ctor` es una función opcional usada para limitar el stack trace generado. **Predeterminado:** `process.emitWarning`.
   * `detail` {string} Texto adicional a incluir con el error.
 
-El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden escuchar añadiendo un manejador al evento [`'warning'`](#process_event_warning).
+El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden ser escuchadas añadiendo un manejador al evento [`'warning'`](#process_event_warning).
 
 ```js
 // Emitir una advertencia con un código y un detalle adicional.
@@ -603,11 +603,11 @@ added: v6.0.0
 -->
 
 * `warning` {string|Error} La advertencia a emitir.
-* `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *type* de advertencia que se emite. **Predeterminado:** `'Warning'`.
+* `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *tipo* de advertencia que se emite. **Predeterminado:** `'Warning'`.
 * `code` {string} Un identificador único para la instancia de la advertencia que se emite.
 * `ctor` {Function} Cuando `warning` es una `String`, `ctor` es una función opcional usada para limitar el stack trace generado. **Predeterminado:** `process.emitWarning`.
 
-El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden escuchar añadiendo un manejador al evento [`'warning'`](#process_event_warning).
+El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden ser escuchadas añadiendo un manejador al evento [`'warning'`](#process_event_warning).
 
 ```js
 // Emitir una advertencia utilizando una string.
@@ -652,7 +652,7 @@ process.emitWarning(myWarning);
 
 Se arroja un `TypeError` si `warning` es algo distinto a una string o a un objeto `Error`.
 
-Note que mientras que las advertencias del proceso utilizan objetos `Error`, el mecanismo de advertencia del proceso **no** es un remplazo para los mecanismos normales manejadores de error.
+Note que aunque las advertencias del proceso utilizan objetos `Error`, el mecanismo de advertencia del proceso **no** es un remplazo para los mecanismos normales para el manejo de errores.
 
 Se implementa el siguiente manejo adicional si el `type` de advertencia es `'DeprecationWarning'`:
 
