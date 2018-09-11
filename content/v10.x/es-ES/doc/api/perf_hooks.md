@@ -62,7 +62,7 @@ Crea una nueva entrada `PerformanceMeasure` en la Línea de Tiempo de Rendimient
 
 El argumento `startMark` puede identificar cualquier `PerformanceMark` *existente* en la Línea de Tiempo de Rendimiento, o *puede* identificar cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
 
-El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
+El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en la Línea de Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
 
 ### performance.nodeTiming
 
@@ -102,7 +102,7 @@ added: v8.5.0
 
 * `fn` {Function}
 
-Envuelve una función dentro de una nueva función que mide el tiempo de ejecución de la función envuelta. Un `PerformanceObserver` debe ser suscrito al tipo de evento `'function'` en orden para los detalles de sincronización para ser accedido.
+Envuelve una función dentro de una nueva función que mide el tiempo de ejecución de la función envuelta. Un `PerformanceObserver` debe ser suscrito al tipo de evento `'function'` para que los detalles de timing puedan ser accedidos.
 
 ```js
 const {
@@ -192,7 +192,7 @@ Cuando `performanceEntry.entryType` es igual a `'gc'`, la propiedad `performance
 added: v8.5.0
 -->
 
-Proporciona detalles de tiempo para el propio Node.js.
+Proporciona detalles de timing para el propio Node.js.
 
 ### performanceNodeTiming.bootstrapComplete
 
