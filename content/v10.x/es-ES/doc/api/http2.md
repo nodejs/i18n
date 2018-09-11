@@ -89,7 +89,7 @@ added: v8.4.0
 
 Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instances of this class are *not* intended to be constructed directly by user code.
 
-Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si esta operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
+Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si esta operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. En el lado del servidor, el código de usuario raramente debe tener ocasión de trabajar directamente con el objeto `Http2Session`, con la mayoría de las acciones tomadas típicamente a través de interacciones, ya sea con los objetos `Http2Server` o `Http2Stream`.
 
 #### `Http2Session` and Sockets
 
@@ -105,7 +105,7 @@ Una vez que un `Socket` ha sido vinculado a una `Http2Session`, el código de us
 added: v8.4.0
 -->
 
-El evento de `'close'` se emite una vez que la `Http2Session` ha sido destruida. Its listener does not expect any arguments.
+El evento de `'close'` se emite una vez que la `Http2Session` ha sido destruida. Su oyente no espera ningún argumento.
 
 #### Event: 'connect'
 
@@ -116,7 +116,7 @@ added: v8.4.0
 * `session` {Http2Session}
 * `socket` {net.Socket}
 
-The `'connect'` event is emitted once the `Http2Session` has been successfully connected to the remote peer and communication may begin.
+El evento `'connect'` es emitido una vez que la `Http2Session` ha sido conectada exitosamente al par remoto y la comunicación puede empezar.
 
 El código de usuario generalmente no escuchará directamente a este evento.
 
@@ -140,7 +140,7 @@ added: v8.4.0
 * `code` {integer} The error code.
 * `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
 
-The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
+El evento `'frameError'` es emitido cuando ocurre un error mientras se intenta enviar un frame a la sesión. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
 If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
 
