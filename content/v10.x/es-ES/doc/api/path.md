@@ -419,7 +419,7 @@ changes:
 * `to` {string}
 * Retorna: {string}
 
-El método `path.relative()` retorna la ruta relativa de `from` a `to` según el directorio de trabajo actual. Si cada uno `from` y `to` se resuelven para la misma ruta (después de llamar `path.resolve()` en cada uno), un string sin extensión es retornado.
+El método `path.relative()` retorna la ruta relativa de `from` a `to` según el directorio de trabajo actual. Si tanto `from` como `to` se resuelven para la misma ruta (después de llamar `path.resolve()` en cada uno), un string sin extensión es retornado.
 
 Si un string sin extensión es pasado como `from` o `to`, el directorio de trabajo actual será usado en lugar de los strings sin extensión.
 
@@ -437,7 +437,7 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 // Retorna: '..\\..\\impl\\bbb'
 ```
 
-Un [`TypeError`][] es producido si cualquiera entre `from` o `to` no es un string.
+Un [`TypeError`][] es arrojado si `from` o `to` no son strings.
 
 ## path.resolve([...paths])
 
@@ -450,11 +450,11 @@ added: v0.3.4
 
 El método `path.resolve()` resuelve una secuencia de rutas o segmentos de rutas en una ruta absoluta.
 
-La secuencia dada de rutas es procesada de derecha a izquierda, con cada subsequente `path` antepuesto hasta que una ruta absoluta es construida. Por ejemplo, dada la secuencia de segmentos de ruta `/foo`, `/bar`, `baz`, llamar a `path.resolve('/foo', '/bar', 'baz')` retornaría `/bar/baz`.
+La secuencia dada de rutas es procesada de derecha a izquierda, con cada subsecuente `path` antepuesto hasta que una ruta absoluta sea construida. Por ejemplo, dada la secuencia de segmentos de ruta `/foo`, `/bar`, `baz`, llamar a `path.resolve('/foo', '/bar', 'baz')` retornaría `/bar/baz`.
 
-Si después de procesar todos los segmentos `path` dados, una ruta absoluta aún no ha sido generadada, el directorio de trabajo actual es usado.
+Si después de procesar todos los segmentos `path` dados, una ruta absoluta aún no ha sido generada, el directorio de trabajo actual es usado.
 
-La ruta resultante es normalizada y los slashes de seguimiento son removidos a menos de que la ruta sea resuelta en el directorio root.
+La ruta resultante es normalizada y los slashes de seguimiento son removidos, a menos que la ruta sea resuelta en el directorio root.
 
 Los segmentos `path` sin extensión son ignorados.
 
