@@ -802,9 +802,9 @@ La propiedad [`crypto.DEFAULT_ENCODING`][] está desaprobada.
 
 <a id="DEP0092"></a>
 
-### DEP0092: Top-level `this` bound to `module.exports`
+### DEP0092: `esto` de nivel superior enlazado a `module.exports`
 
-Tipo: Solo-documentación
+Tipo: Documentation-only
 
 Asignar propiedades al nivel top `this` como una alternativa al módulo `module.exports` está desaprobado. Los desarrolladores deberían, en cambio, usar `exports` o `module.exports`.
 
@@ -888,7 +888,7 @@ La opción de tiempo-de-compilación`--with-lttng` ha sido removida.
 
 ### DEP0102: Usar `noAssert` en operaciones Buffer#(read|write).
 
-Tipo: Final-de-Vida
+Tipo: End-of-Life
 
 Usar el argumento `noAssert` ya no tiene ninguna funcionalidad. Todo lo que entre va a ser verificado, sin importar si está establecido a true o no. Omitir la verificación puede resultar en errores y fallas difíciles de conseguir.
 
