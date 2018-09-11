@@ -136,7 +136,7 @@ deprecated: v0.9.7
 
 El número de conexiones simultáneas en el servidor.
 
-Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. Para hacer poll en las bifurcaciones y obtener el número de conexiones activas usa en su lugar el [`server.getConnections()`][] asincrónico.
+Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. Para hacer poll en las bifurcaciones y obtener el número de conexiones activas, usa en su lugar el [`server.getConnections()`][] asincrónico.
 
 ### server.getConnections(callback)
 
@@ -163,11 +163,11 @@ Firmas posibles:
 
 Esta función es asincrónica. Cuando el servidor empieza a escuchar, el evento [`'listening'`][] es emitido. El último parámetro `callback` será añadido como un listener para el evento [`'listening'`][].
 
-Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especificar la longitud máxima de la cola de conexiones pendientes. La longitud real será determinada por el sistema operativo a través de configuraciones sysctl tales como `tcp_max_syn_backlog` y `somaxconn` en Linux. El valor predeterminado de este valor es 511 (no 512).
+Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especificar la longitud máxima de la cola de conexiones pendientes. La longitud real será determinada por el sistema operativo a través de configuraciones sysctl tales como `tcp_max_syn_backlog` y `somaxconn` en Linux. El valor predeterminado de este parámetro es 511 (no 512).
 
 Todos los [`net.Socket`][] son establecidos a `SO_REUSEADDR` (Vea [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) para los detalles).
 
-El método `server.listen()` puede ser llamado otra vez, si y solo si, hubo un error durante la primera llamada de `server.listen()`, o `server.close()` fue llamado. De lo contrario, un error `ERR_SERVER_ALREADY_LISTEN` será arrojado.
+El método `server.listen()` puede ser llamado otra vez si, y solo si, hubo un error durante la primera llamada de `server.listen()`, o `server.close()` fue llamado. De lo contrario, un error `ERR_SERVER_ALREADY_LISTEN` será arrojado.
 
 Uno de los errores más comunes cuando se escucha es `EADDRINUSE`. Esto ocurre cuando otro servidor está escuchando en el `port` / `path` / `handle` requerido. Una manera de manejar esto sería intentar de nuevo luego de una cierta cantidad de tiempo:
 
@@ -852,10 +852,10 @@ Crea un nuevo servidor TCP o un servidor [IPC](#net_ipc_support).
 * `opciones` {Object} 
   * `allowHalfOpen` {boolean} Indica si las conexiones TCP entreabiertas están permitidas. **Predeterminado:** `false`.
   * `pauseOnConnect` {boolean} Indica si el socket debería ser pausado en conexiones entrantes. **Predeterminado:** `false`.
-* `connectionListener` {Function} Establece automáticamente un listener para el evento [`'connection'`][].
+* `connectionListener` {Function} Se establece automáticamente como un listener para el evento [`'connection'`][].
 * Devuelve: {net.Server}
 
-Si `allowHalfOpen` es establecido como `true`, cuando el otro terminal del socket envíe un paquete FIN, el servidor solo enviará un paquete FIN devuelta cuando [`socket.end()`][] es llamado explícitamente, hasta entonces la conexión es entrecerrada (no es legible pero aún así es escribible). Vea el evento [`'end'`][] event y [RFC 1122](https://tools.ietf.org/html/rfc1122) (sección 4.2.2.13) para más información.
+Si `allowHalfOpen` es establecido como `true`, cuando el otro terminal del socket envíe un paquete FIN, el servidor solo enviará un paquete FIN de vuelta cuando [`socket.end()`][] sea llamado explícitamente, hasta entonces la conexión es entrecerrada (no es legible pero aún así es escribible). Vea el evento [`'end'`][] event y [RFC 1122](https://tools.ietf.org/html/rfc1122) (sección 4.2.2.13) para más información.
 
 Si `pauseOnConnect` es establecido como `true`, entonces el socket asociado con cada conexión entrante será pausado, y no se leerán ningunos datos de su handle. Esto le permite a las conexiones que sean pasadas entre procesos sin que ningunos datos sean leídos por el proceso original. Para empezar a leer los datos de un socket pausado, llama a [`socket.resume()`][].
 
