@@ -1155,9 +1155,9 @@ napi_status napi_create_symbol(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a JavaScript `Symbol` object from a UTF8-encoded C string.
+Esta API crea un objeto `Symbol` de JavaScript desde una cadena de C codificada en UTF8.
 
-The JavaScript `Symbol` type is described in [Section 19.4](https://tc39.github.io/ecma262/#sec-symbol-objects) of the ECMAScript Language Specification.
+El tipo `Symbol` de JavaScript se describe en la [Sección 19.4](https://tc39.github.io/ecma262/#sec-symbol-objects) de las Especificaciones del Lenguaje ECMAScripts.
 
 #### napi_create_typedarray
 
@@ -1174,18 +1174,18 @@ napi_status napi_create_typedarray(napi_env env,
                                    napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] type`: Scalar datatype of the elements within the `TypedArray`.
-- `[in] length`: Number of elements in the `TypedArray`.
-- `[in] arraybuffer`: `ArrayBuffer` underlying the typed array.
-- `[in] byte_offset`: The byte offset within the `ArrayBuffer` from which to start projecting the `TypedArray`.
-- `[out] result`: A `napi_value` representing a JavaScript `TypedArray`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] type`: Tipo de dato escalar de los elementos dentro del `TypedArray`.
+- `[in] length`: Número de elementos en el `TypedArray`.
+- `[in] arraybuffer`: `ArrayBuffer` subyacente al typed array.
+- `[in] byte_offset`: El byte offset dentro del `ArrayBuffer` desde el que se empieza a proyectar el `TypedArray`.
+- `[out] result`: Un `napi_value` que representa un `TypedArray` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a JavaScript `TypedArray` object over an existing `ArrayBuffer`. `TypedArray` objects provide an array-like view over an underlying data buffer where each element has the same underlying binary scalar datatype.
+Esta API crea un objeto `TypedArray` de JavaScript sobre un `ArrayBuffer` existente. Los objetos `TypedArray` proporcionan una vista similar a un arreglo sobre un buffer de datos subyacente donde cada elemento tiene el mismo tipo de datos escalares binarios subyacentes.
 
-It's required that `(length * size_of_element) + byte_offset` should be <= the size in bytes of the array passed in. If not, a `RangeError` exception is raised.
+Es necesario que `(length * size_of_element) + byte_offset` sea <= el tamaño en bytes del array pasado. Si no, una excepción `RangeError` es levantada.
 
 JavaScript `TypedArray` objects are described in [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the ECMAScript Language Specification.
 
