@@ -1237,7 +1237,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API se utiliza para convertir del tipo `int32_t` de C al tipo `Number` de JavaScript.
 
-The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
+El tipo `Number` de JavaScript se describe en la [Sección 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_uint32
 
@@ -1249,15 +1249,15 @@ added: v8.4.0
 napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: Unsigned integer value to be represented in JavaScript.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: Valor entero unsigned a representar en JavaScript.
 - `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to convert from the C `uint32_t` type to the JavaScript `Number` type.
+Esta API se utiliza para convertir del tipo `uint32_t` de C al tipo `Number` de JavaScript.
 
-The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
+El tipo `Number` de JavaScript se describe en la [Sección 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_int64
 
@@ -1269,15 +1269,15 @@ added: v8.4.0
 napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: Integer value to be represented in JavaScript.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: Valor entero a ser representado en JavaScript.
 - `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to convert from the C `int64_t` type to the JavaScript `Number` type.
+Esta API se utiliza para convertir el tipo `int64_t` de C al tipo `Number` de JavaScript.
 
-The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification. Note the complete range of `int64_t` cannot be represented with full precision in JavaScript. Integer values outside the range of [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) will lose precision.
+El tipo `Number` de JavaScript se describe en la [Sección 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) de las Especificaciones del Lenguaje ECMAScript. Tenga en cuenta que el rango completo del `int64_t` no puede ser representado con total precisión en JavaScript. Los valores enteros fuera del rango de [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) perderán precisión.
 
 #### napi_create_double
 
@@ -1289,15 +1289,15 @@ added: v8.4.0
 napi_status napi_create_double(napi_env env, double value, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: Double-precision value to be represented in JavaScript.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: Valor de doble precisión a representar en JavaScript.
 - `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to convert from the C `double` type to the JavaScript `Number` type.
+Esta API es utilizada para convertir del tipo `double` de C al tipo `Number` de JavaScript.
 
-The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
+El tipo `Number` de JavaScript se describe en la [Sección 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_string_latin1
 
