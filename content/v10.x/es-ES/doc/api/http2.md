@@ -205,7 +205,7 @@ added: v8.4.0
 * `flags` {number} The associated numeric flags
 * `rawHeaders` {Array} An array containing the raw header names followed by their respective values.
 
-The `'stream'` event is emitted when a new `Http2Stream` is created.
+El evento `'stream'` es emitido cuando un nuevo `Http2Stream` es creado.
 
 ```js
 const http2 = require('http2');
@@ -222,7 +222,7 @@ session.on('stream', (stream, headers, flags) => {
 });
 ```
 
-On the server side, user code will typically not listen for this event directly, and would instead register a handler for the `'stream'` event emitted by the `net.Server` or `tls.Server` instances returned by `http2.createServer()` and `http2.createSecureServer()`, respectively, as in the example below:
+En el lado del servidor, el código de usuario típicamente no escuchará este evento directamente y, en su lugar, registrará un handler para el evento `'stream'` emitido por las instancias `net.Server` or `tls.Server`, regresadas por `http2.createServer()` y `http2.createSecureServer()` respectivamente, como en el ejemplo a continuación:
 
 ```js
 const http2 = require('http2');
