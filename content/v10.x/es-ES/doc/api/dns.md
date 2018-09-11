@@ -548,7 +548,7 @@ Aunque [`dns.lookup()`][] y las diversas funciones `dns.resolve*()/dns.reverse()
 
 ### `dns.lookup()`
 
-Bajo el capó, [`dns.lookup()`][] utiliza las mismas instalaciones de sistema operativo que la mayoría de los otros programas. Por ejemplo, [`dns.lookup()`][] casi siempre resolverá un nombre dado de la misma forma que el comando `ping`. En la mayoría de sistemas operativos POSIX, el comportamiento de la función [`dns.lookup()`][] puede ser modificado cambiando los ajustes en nsswitch.conf(5) y/o resolv.conf(5), pero tenga en cuenta que cambiando estos archivos cambiará el comportamiento de *todos los otros programas que se ejecutan en el mismo sistema operativo*.
+Bajo el capó, [`dns.lookup()`][] utiliza las mismas instalaciones de sistema operativo que la mayoría de los otros programas. Por ejemplo, [`dns.lookup()`][] casi siempre resolverá un nombre dado de la misma forma que el comando `ping`. En la mayoría de sistemas operativos similares a POSIX, el comportamiento de la función [`dns.lookup()`][] puede ser modificado cambiando los ajustes en nsswitch.conf(5) y/o resolv.conf(5), pero tenga en cuenta que cambiando estos archivos cambiará el comportamiento de *todos los otros programas que se ejecutan en el mismo sistema operativo*.
 
 Aunque la llamada a `dns.lookup()` será asincrónica desde la perspectiva de JavaScript, es implementada como una llamada sincrónica para getaddrinfo(3) que se ejecuta en el threadpool de libuv. Esto puede tener sorprendentes implicaciones negativas en el rendimiento para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
@@ -560,4 +560,4 @@ Estas funciones son implementadas de forma muy diferente que las de [`dns.lookup
 
 Como resultado, estas funciones no pueden tener el mismo impacto negativo en otros procesos que ocurren en la threadpool de libuv, que [`dns.lookup()`][]puede tener.
 
-Ellas no utilizan el mismo conjunto de archivos de configuración que utiliza [`dns.lookup()`][]. Por ejemplo, *ellas no utilizan la configuración de `/etc/hosts`*.
+Ellas no utilizan el mismo conjunto de archivos de configuración que utiliza [`dns.lookup()`][]. Por ejemplo, *no utilizan la configuración de `/etc/hosts`*.
