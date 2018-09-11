@@ -311,9 +311,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Ghi nhớ rằng ví dụ này sử dụng một dạng hai đối số của `Init()` nhận đối tượng `mô-đun` đầy đủ làm đối số thứ hai. Việc này cho phép thành phần mở rộng hoàn toàn ghi đè lên `exports` với một hàm đơn thay vì thêm một hàm làm thuộc tính của `exports`.
 
-To test it, run the following JavaScript:
+Để kiểm tra, chạy trình JavaScript sau đây:
 
 ```js
 // test.js
@@ -325,7 +325,7 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Nhớ rằng, trong ví dụ này, hàm callback được gọi đồng bộ.
 
 ### Object factory
 
