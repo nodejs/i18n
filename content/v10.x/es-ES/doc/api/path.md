@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 El módulo `path` provee utilidades para trabajar con rutas de archivos y de directorios. Puede ser accedido usando:
 
