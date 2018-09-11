@@ -843,8 +843,8 @@ changes:
   * `crl` {string|string[]|Buffer|Buffer[]} CRL formateadas PEM opcionales (listas de revocación de certificados).
   * `dhparam` {string|Buffer} Parámetros de Diffie Hellman, necesarios para [Perfect Forward Secrecy](#tls_perfect_forward_secrecy). Use `openssl dhparam` para crear los parámetros. La longitud de la clave debe ser mayor o igual a 1024 bits; de lo contrario, se generará un error. Se recomienda encarecidamente usar 2048 bits o más para una mayor seguridad. Si se omite o no es válido, los parámetros se descartan silenciosamente y las cifras de DHE no estarán disponibles.
   * `secureOptions` {number} Opcionalmente afecta el comportamiento del protocolo OpenSSL, que generalmente no es necesario. ¡Esto debe usarse con cuidado si lo hace! El valor es una máscara de bits numérica de las opciones `SSL_OP_*` de [OpenSSL Options](crypto.html#crypto_openssl_options).
-  * `secureProtocol` {string} Método SSL opcional para usar. The possible values are listed as [SSL_METHODS](https://www.openssl.org/docs/man1.1.0/ssl/ssl.html#Dealing-with-Protocol-Methods), use the function names as strings. For example, `'TLSv1_2_method'` to force TLS version 1.2. **Default:** `'TLS_method'`.
-  * `sessionIdContext` {string} Optional opaque identifier used by servers to ensure session state is not shared between applications. Unused by clients.
+  * `secureProtocol` {string} Método SSL opcional para usar. Los valores posibles se catalogan como [SSL_METHODS](https://www.openssl.org/docs/man1.1.0/ssl/ssl.html#Dealing-with-Protocol-Methods), use los nombres de las funciones como strings. Por ejemplo, `'TLSv1_2_method'` para forzar la versión 1.2 de TLS. **Predeterminado:** `'TLS_method'`.
+  * `sessionIdContext` {string} Identificador opaco opcional utilizado por los servidores para garantizar que el estado de la sesión no se comparta entre las aplicaciones. No utilizado por los clientes.
 
 [`tls.createServer()`][] sets the default value of the `honorCipherOrder` option to `true`, other APIs that create secure contexts leave it unset.
 
