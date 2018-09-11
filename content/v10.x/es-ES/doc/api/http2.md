@@ -95,7 +95,7 @@ Each `Http2Session` instance will exhibit slightly different behaviors depending
 
 Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][] o una [`tls.TLSSocket`][] cuando es creada. Cuando se destruye ya sea el `Socket` o el `Http2Session`, ambos serán destruidos.
 
-Because the of the specific serialization and processing requirements imposed by the HTTP/2 protocol, it is not recommended for user code to read data from or write data to a `Socket` instance bound to a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
+Debido a los requisitos de serialización y procesamiento específicos impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos en una instancia de `Socket` vinculada a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
 
 Once a `Socket` has been bound to an `Http2Session`, user code should rely solely on the API of the `Http2Session`.
 
