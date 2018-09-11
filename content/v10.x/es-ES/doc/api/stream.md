@@ -109,11 +109,11 @@ server.listen(1337);
 
 Los streams [`Readable`][] usan la API [`EventEmitter`][] para notificar código de la aplicación cuando los datos estén listos para ser leídos del stream. Esos datos disponibles pueden ser leídos del stream de múltiples maneras.
 
-Both [`Writable`][] and [`Readable`][] streams use the [`EventEmitter`][] API in various ways to communicate the current state of the stream.
+Los streams [`Writable`][] y [`Readable`][] usan la API [`EventEmitter`][] de varias manera para comunicar el estado actual del stream.
 
-[`Duplex`][] and [`Transform`][] streams are both [`Writable`][] and [`Readable`][].
+Los streams [`Duplex`][] y [`Transform`][] son tanto [`Writable`][] como [`Readable`][].
 
-Applications that are either writing data to or consuming data from a stream are not required to implement the stream interfaces directly and will generally have no reason to call `require('stream')`.
+Las aplicaciones que, o están escribiendo o consumiendo datos de un stream, no requieren implementar la interfaz stream directamente y generalmente no tendrán ninguna razón para llamar `require('stream')`.
 
 Developers wishing to implement new types of streams should refer to the section [API for Stream Implementers](#stream_api_for_stream_implementers).
 
