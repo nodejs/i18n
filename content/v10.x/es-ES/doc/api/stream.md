@@ -61,7 +61,7 @@ Porque ambos streams [`Duplex`][] y [`Transform`][] son `Readable` y `Writable`,
 
 <!--type=misc-->
 
-Almost all Node.js applications, no matter how simple, use streams in some manner. The following is an example of using streams in a Node.js application that implements an HTTP server:
+Casi todas las aplicaciones Node.js, no importa que tan simple sea, usa streams de alguna forma. Lo siguiente es un ejemplo de uso de streams en una aplicación de Node.js que implemente un servidor HTTP:
 
 ```js
 const http = require('http');
@@ -105,7 +105,7 @@ server.listen(1337);
 // error: Unexpected token o in JSON at position 1
 ```
 
-[`Writable`][] streams (such as `res` in the example) expose methods such as `write()` and `end()` that are used to write data onto the stream.
+[`Writable`][] streams (tales como `res` en el ejemplo) expone métodos como `write()` y `end()` que son usados para escribir datos en el stream.
 
 [`Readable`][] streams use the [`EventEmitter`][] API for notifying application code when data is available to be read off the stream. That available data can be read from the stream in multiple ways.
 
