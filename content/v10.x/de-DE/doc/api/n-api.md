@@ -208,7 +208,7 @@ Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ansteh
 
 Jeder N-API-Funktionsaufruf kann zu einer ausstehenden JavaScript-Ausnahme führen. Dies ist natürlich der Fall für jede Funktion, die die Ausführung von JavaScript verursachen kann, aber die N-API gibt an, dass eine Ausnahme bei der Rückkehr von einer der vielen API-Funktionen anhängig sein kann.
 
-If the `napi_status` returned by a function is `napi_ok` then no exception is pending and no additional action is required. If the `napi_status` returned is anything other than `napi_ok` or `napi_pending_exception`, in order to try to recover and continue instead of simply returning immediately, [`napi_is_exception_pending`][] must be called in order to determine if an exception is pending or not.
+Wenn der von einer Funktion zurückgegebene `napi_status` `napi_ok` ist, dann ist keine Ausnahme ausstehend und es ist keine zusätzliche Aktion erforderlich. If the `napi_status` returned is anything other than `napi_ok` or `napi_pending_exception`, in order to try to recover and continue instead of simply returning immediately, [`napi_is_exception_pending`][] must be called in order to determine if an exception is pending or not.
 
 When an exception is pending one of two approaches can be employed.
 
