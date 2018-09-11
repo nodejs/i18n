@@ -1108,15 +1108,15 @@ napi_status napi_create_function(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] utf8name`: Una cadena que representa el nombre de la función codificada como UTF8.
 - `[in] length`: La longitud en bytes del `utf8name`, o `NAPI_AUTO_LENGTH` si tiene terminación en NULL.
-- `[in] cb`: A function pointer to the native function to be invoked when the created function is invoked from JavaScript.
-- `[in] data`: Optional arbitrary context data to be passed into the native function when it is invoked.
-- `[out] result`: A `napi_value` representing a JavaScript function.
+- `[in] cb`: Un apuntador a la función nativa a ser invocada cuando la función creada se invoque desde JavaScript.
+- `[in] data`: Datos de contexto arbitrario opcionales para pasar a la función nativa cuando se invoca.
+- `[out] result`: Un `napi_value` que representa una función de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns an N-API value corresponding to a JavaScript `Function` object. It's used to wrap native functions so that they can be invoked from JavaScript.
+Esta API devuelve un valor de N-API correspondiente a un objeto `Function` de JavaScript. Es utilizada para envolver funciones nativas para que puedan ser invocadas desde JavaScript.
 
-JavaScript `Function`s are described in [Section 19.2](https://tc39.github.io/ecma262/#sec-function-objects) of the ECMAScript Language Specification.
+Las `Function`s de JavaScript se describen en la [Sección 19.2](https://tc39.github.io/ecma262/#sec-function-objects) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_object
 
@@ -1128,14 +1128,14 @@ added: v8.0.0
 napi_status napi_create_object(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: A `napi_value` representing a JavaScript `Object`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: un `napi_value` que representa un `Object` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API allocates a default JavaScript `Object`. It is the equivalent of doing `new Object()` in JavaScript.
+Esta API asigna un `Object` predeterminado de JavaScript. Es equivalente a realizar `new Object()` en JavaScript.
 
-The JavaScript `Object` type is described in [Section 6.1.7](https://tc39.github.io/ecma262/#sec-object-type) of the ECMAScript Language Specification.
+El tipo `Object` de JavaScript se describe en la [Sección 6.1.7](https://tc39.github.io/ecma262/#sec-object-type) de las Especificaciones del Lenguaje de JavaScript.
 
 #### napi_create_symbol
 
@@ -1149,11 +1149,11 @@ napi_status napi_create_symbol(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] description`: Optional `napi_value` which refers to a JavaScript `String` to be set as the description for the symbol.
-- `[out] result`: A `napi_value` representing a JavaScript `Symbol`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] description`: `napi_value` opcional que hace referencia a una `String` de JavaScript que se establecerá como la descripción del símbolo.
+- `[out] result`: Un `napi_value` que representa un `Symbol` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 This API creates a JavaScript `Symbol` object from a UTF8-encoded C string.
 
