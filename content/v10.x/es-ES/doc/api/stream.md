@@ -115,21 +115,21 @@ Los streams [`Duplex`][] y [`Transform`][] son tanto [`Writable`][] como [`Reada
 
 Las aplicaciones que, o están escribiendo o consumiendo datos de un stream, no requieren implementar la interfaz stream directamente y generalmente no tendrán ninguna razón para llamar `require('stream')`.
 
-Developers wishing to implement new types of streams should refer to the section [API for Stream Implementers](#stream_api_for_stream_implementers).
+Los desarrolladores que desean implementar nuevos tipos de stream deberían referirse a la sección [PAI para implementadores de stream](#stream_api_for_stream_implementers).
 
-### Writable Streams
+### Streams Escribibles
 
-Writable streams are an abstraction for a *destination* to which data is written.
+Los streams escribibles son una abstracción para un *destino* al que se le han escrito datos.
 
-Examples of [`Writable`][] streams include:
+Ejemplos de [`Writable`][] streams incluyen:
 
-* [HTTP requests, on the client](http.html#http_class_http_clientrequest)
-* [HTTP responses, on the server](http.html#http_class_http_serverresponse)
+* [Solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
+* [Respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
 * [fs write streams](fs.html#fs_class_fs_writestream)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
-* [TCP sockets](net.html#net_class_net_socket)
-* [child process stdin](child_process.html#child_process_subprocess_stdin)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
+* [proceso secundario stdin](child_process.html#child_process_subprocess_stdin)
 * [`process.stdout`][], [`process.stderr`][]
 
 Some of these examples are actually [`Duplex`][] streams that implement the [`Writable`][] interface.
