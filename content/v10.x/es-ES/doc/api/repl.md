@@ -4,15 +4,15 @@
 
 > Estabilidad: 2 - Estable
 
-The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
+El módulo `repl` provee una implementación Bucle Lectura-Evaluación-Impresión la cual esta disponible tanto como un programa individual o incluido en otras aplicaciones. Puede ser accesada usando:
 
 ```js
 const repl = require('repl');
 ```
 
-## Design and Features
+## Diseño y Características
 
-The `repl` module exports the `repl.REPLServer` class. While running, instances of `repl.REPLServer` will accept individual lines of user input, evaluate those according to a user-defined evaluation function, then output the result. Input and output may be from `stdin` and `stdout`, respectively, or may be connected to any Node.js [stream](stream.html).
+El módulo `repl` exporta la clase `repl.REPLServer`. While running, instances of `repl.REPLServer` will accept individual lines of user input, evaluate those according to a user-defined evaluation function, then output the result. Input and output may be from `stdin` and `stdout`, respectively, or may be connected to any Node.js [stream](stream.html).
 
 Instances of `repl.REPLServer` support automatic completion of inputs, simplistic Emacs-style line editing, multi-line inputs, ANSI-styled output, saving and restoring current REPL session state, error recovery, and customizable evaluation functions.
 
