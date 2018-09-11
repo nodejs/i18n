@@ -226,7 +226,7 @@ Das Projekt Node.js fügt Fehlercodes zu allen intern erzeugten Fehlern hinzu. D
 originalName [code]
 ```
 
-wobei `originalName` der ursprüngliche Name ist, der dem Fehler zugeordnet ist und `code` der angegebene Code ist. For example if the code is `'ERR_ERROR_1'` and a `TypeError` is being created the name will be:
+wobei `originalName` der ursprüngliche Name ist, der dem Fehler zugeordnet ist und `code` der angegebene Code ist. Wenn der Code beispielsweise `'ERR_ERROR_1'` ist und ein `TypeError` erstellt wird, wird der Name lauten:
 
 ```text
 TypeError [ERR_ERROR_1]
@@ -242,12 +242,12 @@ added: v8.0.0
 NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] error`: The JavaScript value to be thrown.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] error`: Der JavaScript-Wert, der ausgeworfen werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API throws the JavaScript value provided.
+Diese API wirft den angegebenen JavaScript-Wert aus.
 
 #### napi_throw_error
 
