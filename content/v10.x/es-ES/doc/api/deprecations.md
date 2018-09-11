@@ -806,7 +806,7 @@ La propiedad [`crypto.DEFAULT_ENCODING`][] está desaprobada.
 
 Tipo: Documentation-only
 
-Asignar propiedades al nivel top `this` como una alternativa al módulo `module.exports` está desaprobado. Los desarrolladores deberían, en cambio, usar `exports` o `module.exports`.
+Asignar propiedades a `esto` de nivel superior, como una alternativa al módulo `module.exports`, está desaprobado. Los desarrolladores deberían, en cambio, usar `exports` o `module.exports`.
 
 <a id="DEP0093"></a>
 
