@@ -132,11 +132,11 @@ Ejemplos de [`Writable`][] streams incluyen:
 * [proceso secundario stdin](child_process.html#child_process_subprocess_stdin)
 * [`process.stdout`][], [`process.stderr`][]
 
-Some of these examples are actually [`Duplex`][] streams that implement the [`Writable`][] interface.
+Algunos de estos ejemplos son en realidad streams [`Duplex`][] que implementan la interfaz [`Writable`][].
 
-All [`Writable`][] streams implement the interface defined by the `stream.Writable` class.
+Todos los streams [`Writable`][] implementan la interfaz definida por la clase `stream.Writable`.
 
-While specific instances of [`Writable`][] streams may differ in various ways, all `Writable` streams follow the same fundamental usage pattern as illustrated in the example below:
+Mientras que instancias específicas de los streams [`Writable`][] pueden diferir en varias maneras, todos los streams `Writable` siguen el mismo patrón de uso fundamental como se ilustra en el siguiente ejemplo:
 
 ```js
 const myStream = getWritableStreamSomehow();
@@ -145,7 +145,7 @@ myStream.write('some more data');
 myStream.end('done writing data');
 ```
 
-#### Class: stream.Writable
+#### Clase: stream.Writable
 
 <!-- YAML
 added: v0.9.4
@@ -153,13 +153,13 @@ added: v0.9.4
 
 <!--type=class-->
 
-##### Event: 'close'
+##### Evento: 'close'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+El evento `'close'` es emitido cuando el stream y cualquiera de sus recursos subyacentes (por ejemplo, un descriptor de archivos) fueron cerrados. The event indicates that no more events will be emitted, and no further computation will occur.
 
 Not all `Writable` streams will emit the `'close'` event.
 
