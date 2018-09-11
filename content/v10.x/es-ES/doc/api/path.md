@@ -104,10 +104,10 @@ En Windows:
 
 ```js
 console.log(process.env.PATH);
-// Prints: 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
+// Estampa: 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
 
 process.env.PATH.split(path.delimiter);
-// Returns ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
+// Retorna ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
 ```
 
 ## path.dirname(path)
@@ -319,7 +319,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Retorna: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
+Ya que Windows reconoce múltiples separadores de ruta, ambos separadores van a ser reemplazados por instancias del separador preferido de Windows (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
