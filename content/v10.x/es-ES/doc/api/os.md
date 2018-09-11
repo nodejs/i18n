@@ -232,16 +232,16 @@ added: v0.6.0
 
 * Retorna: {Object}
 
-The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+El método `os.networkInterfaces()` retorna un objeto conteniendo solamente interfaces en la red que han sido asignados a la dirección de la red.
 
-Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
+Cada tecla en el objeto retornado identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
 
-The properties available on the assigned network address object include:
+Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 
-* `address` {string} The assigned IPv4 or IPv6 address
-* `netmask` {string} The IPv4 or IPv6 network mask
-* `family` {string} Either `IPv4` or `IPv6`
-* `mac` {string} The MAC address of the network interface
+* `address` {string} La dirección IPv4 o IPv6 asignada
+* `netmask` {string} La máscara de red IPv4 o IPv6
+* `family` {string} Para `IPv4` o `IPv6`
+* `mac` {string} La dirección MAC de la interfaz de red
 * `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
 * `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
