@@ -375,9 +375,9 @@ added: v8.5.0
   * `entryTypes` {string[]} Un array de strings identificando los tipos de instancias `PerformanceEntry` en las que está interesado el observador. Si no es proporcionado, se produce un error.
   * `buffered` {boolean} Si es true, la notificación del callback será llamada usando `setImmediate()` y múltiples notificaciones de instancia `PerformanceEntry` serán almacenadas internamente. Si es `false`, las notificaciones serán inmediatas y sincrónicas. **Predeterminado:** `false`.
 
-Subscribes the `PerformanceObserver` instance to notifications of new `PerformanceEntry` instances identified by `options.entryTypes`.
+Suscribe la instancia `PerformanceObserver` a las notificaciones de nuevas instancias `PerformanceEntry`, identificadas por `options.entryTypes`.
 
-When `options.buffered` is `false`, the `callback` will be invoked once for every `PerformanceEntry` instance:
+Cuando `options.buffered` es `false`, el `callback` será invocado una vez por cada instancia `PerformanceEntry`:
 
 ```js
 const {
@@ -386,8 +386,7 @@ const {
 } = require('perf_hooks');
 
 const obs = new PerformanceObserver((list, observer) => {
-  // called three times synchronously. list contains one item
-});
+  // llamado tres veces de forma sincrónica. });
 obs.observe({ entryTypes: ['mark'] });
 
 for (let n = 0; n < 3; n++)
@@ -401,7 +400,7 @@ const {
 } = require('perf_hooks');
 
 const obs = new PerformanceObserver((list, observer) => {
-  // called once. list contains three items
+  // llamado una vez. la lista contiene tres artículos
 });
 obs.observe({ entryTypes: ['mark'], buffered: true });
 
@@ -409,13 +408,13 @@ for (let n = 0; n < 3; n++)
   performance.mark(`test${n}`);
 ```
 
-## Class: PerformanceObserverEntryList
+## Clase: PerformanceObserverEntryList
 
 <!-- YAML
 added: v8.5.0
 -->
 
-The `PerformanceObserverEntryList` class is used to provide access to the `PerformanceEntry` instances passed to a `PerformanceObserver`.
+La clase `PerformanceObserverEntryList` es usada para proporcionar acceso a las instancias `PerformanceEntry` pasadas a un `PerformanceObserver`.
 
 ### performanceObserverEntryList.getEntries()
 
@@ -423,9 +422,9 @@ The `PerformanceObserverEntryList` class is used to provide access to the `Perfo
 added: v8.5.0
 -->
 
-* Returns: {PerformanceEntry[]}
+* Devuelve: {PerformanceEntry[]}
 
-Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
+Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`.
 
 ### performanceObserverEntryList.getEntriesByName(name[, type])
 
@@ -435,9 +434,9 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Returns: {PerformanceEntry[]}
+* Devuelve: {PerformanceEntry[]}
 
-Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
+Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`, cuyo `performanceEntry.name` es igual a `name`, y opcionalmente, cuyo `performanceEntry.entryType` es igual a `type`.
 
 ### performanceObserverEntryList.getEntriesByType(type)
 
@@ -446,7 +445,7 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Returns: {PerformanceEntry[]}
+* Devuelve: {PerformanceEntry[]}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
