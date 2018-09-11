@@ -82,9 +82,9 @@ Si el programa es ejecutado con `NODE_DEBUG=foo` en el entorno, entonces el resu
 FOO 3245: hello from foo [123]
 ```
 
-donde `3245` es la identificación del proceso. If it is not run with that environment variable set, then it will not print anything.
+donde `3245` es la identificación del proceso. Si no es ejecutado con ese grupo de variables de entorno, entonces no va a estampar nada.
 
-The `section` supports wildcard also:
+La `section` también soporta wildcards:
 
 ```js
 const util = require('util');
@@ -93,7 +93,7 @@ const debuglog = util.debuglog('foo-bar');
 debuglog('hi there, it\'s foo-bar [%d]', 2333);
 ```
 
-if it is run with `NODE_DEBUG=foo*` in the environment, then it will output something like:
+si es ejecutado con `NODE_DEBUG=foo*` en el entorno, entonces el resultado va a ser algo como:
 
 ```txt
 FOO-BAR 3257: hi there, it's foo-bar [2333]
@@ -112,8 +112,8 @@ changes:
     description: Deprecation warnings are only emitted once for each code.
 -->
 
-* `fn` {Function} The function that is being deprecated.
-* `msg` {string} A warning message to display when the deprecated function is invoked.
+* `fn` {Function} La función que está siendo desaprobada.
+* `msg` {string} Un mensaje de advertencia para mostrar cuando la función desaprobada es invocada.
 * `code` {string} A deprecation code. See the [list of deprecated APIs](deprecations.html#deprecations_list_of_deprecated_apis) for a list of codes.
 * Returns: {Function} The deprecated function wrapped to emit a warning.
 
