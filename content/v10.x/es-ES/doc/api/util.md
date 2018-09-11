@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-El módulo `util` está diseñado principalmente para apoyar las necesidades de las APIs internas del propio Node.js. Sin embargo, muchas de las utilidades son útiles para desarrolladores de aplicaciones y también de módulos. Puede ser accedido usando:
+El módulo `util` está diseñado principalmente para apoyar las necesidades de las APIs internas del propio Node.js. Sin embargo, muchas de las utilidades también son útiles para desarrolladores de aplicaciones y módulos. Puede ser accedido usando:
 
 ```js
 const util = require('util');
@@ -84,7 +84,7 @@ FOO 3245: hello from foo [123]
 
 donde `3245` es la identificación del proceso. Si no es ejecutado con ese grupo de variables de entorno, entonces no va a estampar nada.
 
-La `section` también soporta wildcards:
+La `section` también soporta wildcard:
 
 ```js
 const util = require('util');
