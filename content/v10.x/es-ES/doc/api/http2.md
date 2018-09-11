@@ -247,7 +247,7 @@ server.listen(80);
 added: v8.4.0
 -->
 
-After the `http2session.setTimeout()` method is used to set the timeout period for this `Http2Session`, the `'timeout'` event is emitted if there is no activity on the `Http2Session` after the configured number of milliseconds.
+Después de que el método `http2session.setTimeout()` es usado para establecer el tiempo de espera para esto `Http2Session`, el evento `'timeout'` es emitido si no hay actividad `Http2Session` después del número de milisegundos configurados.
 
 ```js
 session.setTimeout(2000);
@@ -274,7 +274,7 @@ added: v9.4.0
 
 Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Una vez cerrado, `http2session.destroy()` *might* ser llamado si no hay instancias de `Http2Stream` abiertas.
 
-If specified, the `callback` function is registered as a handler for the `'close'` event.
+Sí está especificado, la función `callback` es registrada como un handler para el evento `'close'`.
 
 #### http2session.closed
 
