@@ -1185,9 +1185,9 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API crea un objeto `TypedArray` de JavaScript sobre un `ArrayBuffer` existente. Los objetos `TypedArray` proporcionan una vista similar a un arreglo sobre un buffer de datos subyacente donde cada elemento tiene el mismo tipo de datos escalares binarios subyacentes.
 
-Es necesario que `(length * size_of_element) + byte_offset` sea <= el tamaño en bytes del array pasado. Si no, una excepción `RangeError` es levantada.
+Es necesario que `(length * size_of_element) + byte_offset` sea <= el tamaño en bytes del arreglo pasado. Si no, una excepción `RangeError` es levantada.
 
-JavaScript `TypedArray` objects are described in [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the ECMAScript Language Specification.
+Los objetos `TypedArray` de JavaScript se describen en la [Sección 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_dataview
 
@@ -1203,21 +1203,21 @@ napi_status napi_create_dataview(napi_env env,
                                  napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] length`: Number of elements in the `DataView`.
-- `[in] arraybuffer`: `ArrayBuffer` underlying the `DataView`.
-- `[in] byte_offset`: The byte offset within the `ArrayBuffer` from which to start projecting the `DataView`.
-- `[out] result`: A `napi_value` representing a JavaScript `DataView`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] length`: Número de elementos en el `DataView`.
+- `[in] arraybuffer`: `ArrayBuffer` subyacente al `DataView`.
+- `[in] byte_offset`: El byte offset dentro del `ArrayBuffer` desde el que se empieza a proyectar el `DataView`.
+- `[out] result`: Un `napi_value` que representa un `DataView` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a JavaScript `DataView` object over an existing `ArrayBuffer`. `DataView` objects provide an array-like view over an underlying data buffer, but one which allows items of different size and type in the `ArrayBuffer`.
+Esta API crea un objeto `DataView` de JavaScript sobre un `ArrayBuffer` existente. Los objetos `DataView` proporcionan una vista similar a un arreglo sobre un buffer de datos subyacente, pero uno que permite elementos de diferentes tamaños y tipos en el `ArrayBuffer`.
 
-It is required that `byte_length + byte_offset` is less than or equal to the size in bytes of the array passed in. If not, a `RangeError` exception is raised.
+Es necesario que `byte_length + byte_offset` sea menor o igual que el tamaño en bytes del arreglo pasado. Si no, se levanta una excepción `RangeError`.
 
-JavaScript `DataView` objects are described in [Section 24.3](https://tc39.github.io/ecma262/#sec-dataview-objects) of the ECMAScript Language Specification.
+Los objetos `DataView` de JavaScript se describen en la [Sección 24.3](https://tc39.github.io/ecma262/#sec-dataview-objects) de las Especificaciones del Lenguaje ECMAScript.
 
-### Functions to convert from C types to N-API
+### Funciones para convertir de C types a N-API
 
 #### napi_create_int32
 
@@ -1229,13 +1229,13 @@ added: v8.4.0
 napi_status napi_create_int32(napi_env env, int32_t value, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: Integer value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: Valor entero a ser representado en JavaScript.
+- `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to convert from the C `int32_t` type to the JavaScript `Number` type.
+Esta API se utiliza para convertir del tipo `int32_t` de C al tipo `Number` de JavaScript.
 
 The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
 
@@ -1251,7 +1251,7 @@ napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] value`: Unsigned integer value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
 Returns `napi_ok` if the API succeeded.
 
@@ -1271,7 +1271,7 @@ napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] value`: Integer value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
 Returns `napi_ok` if the API succeeded.
 
@@ -1291,7 +1291,7 @@ napi_status napi_create_double(napi_env env, double value, napi_value* result)
 
 - `[in] env`: The environment that the API is invoked under.
 - `[in] value`: Double-precision value to be represented in JavaScript.
-- `[out] result`: A `napi_value` representing a JavaScript `Number`.
+- `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
 Returns `napi_ok` if the API succeeded.
 
