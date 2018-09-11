@@ -1,10 +1,10 @@
-# Tiempo de desempeño API
+# API de Timing del Rendimiento
 
 <!--introduced_in=v8.5.0-->
 
 > Estabilidad: 1 - Experimental
 
-El Tiempo de Rendimiento API proporciona una implementación de la especificación [Tiempo de rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
+La API de Timing del Rendimiento proporciona una implementación de la especificación [Línea de Tiempo de Rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
 
 ```js
 const { PerformanceObserver, performance } = require('perf_hooks');
@@ -36,7 +36,7 @@ added: v8.5.0
 
 * `name` {string}
 
-Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` del Tiempo de Rendimiento. Si se proporciona `name`, esto elimina solo la marca nombrada.
+Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` de la Línea de Tiempo de Rendimiento. Si se proporciona `name`, esto elimina solo la marca nombrada.
 
 ### performance.mark([name])
 
@@ -46,7 +46,7 @@ added: v8.5.0
 
 * `name` {string}
 
-Crea una nueva entrada `PerformanceMark` en el Tiempo de Rendimiento. `PerformanceMark` es una subclase de `PerformanceEntry` cuya `performanceEntry.entryType` siempre es `'mark'`, y cuya `performanceEntry.duration` es siempre `0`. Las marcas de rendimiento son usadas para marcar momentos específicos significativos en el Tiempo de Rendimiento.
+Crea una nueva entrada `PerformanceMark` en la Línea de Tiempo de Rendimiento. `PerformanceMark` es una subclase de `PerformanceEntry` cuya `performanceEntry.entryType` siempre es `'mark'`, y cuya `performanceEntry.duration` es siempre `0`. Las marcas de rendimiento son usadas para marcar momentos específicos significativos en la Línea de Tiempo de Rendimiento.
 
 ### performance.measure(name, startMark, endMark)
 
@@ -58,9 +58,9 @@ added: v8.5.0
 * `startMark` {string}
 * `endMark` {string}
 
-Crea una nueva entrada `PerformanceMeasure` en el Tiempo de Rendimiento. `PerformanceMeasure` es una subclase de `PerformanceEntry`, cuya `performanceEntry.entryType` siempre es `'measure'`, y cuya `performanceEntry.duration` mide el número de milisegundos transcurridos desde `startMark` y `endMark`.
+Crea una nueva entrada `PerformanceMeasure` en la Línea de Tiempo de Rendimiento. `PerformanceMeasure` es una subclase de `PerformanceEntry`, cuya `performanceEntry.entryType` siempre es `'measure'`, y cuya `performanceEntry.duration` mide el número de milisegundos transcurridos desde `startMark` y `endMark`.
 
-El argumento `startMark` puede identificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento, o *puede* identificar cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
+El argumento `startMark` puede identificar cualquier `PerformanceMark` *existente* en la Línea de Tiempo de Rendimiento, o *puede* identificar cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
 
 El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
 
