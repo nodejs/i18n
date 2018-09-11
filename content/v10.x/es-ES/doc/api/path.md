@@ -305,7 +305,7 @@ When multiple, sequential path segment separation characters are found (e.g. `/`
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
-For example on POSIX:
+Por ejemplo, en POSIX:
 
 ```js
 path.normalize('/foo/bar//baz/asdf/quux/..');
