@@ -337,7 +337,7 @@ added: v0.11.15
 * `path` {string}
 * Retorna: {Object}
 
-The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
+El método `path.parse()` retorna un objeto cuyas propiedades representan elementos significativos del `path`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
 
 El objeto retornado va a tener las siguientes propiedades:
 
@@ -450,15 +450,15 @@ added: v0.3.4
 
 El método `path.resolve()` resuelve una secuencia de rutas o segmentos de rutas en una ruta absoluta.
 
-The given sequence of paths is processed from right to left, with each subsequent `path` prepended until an absolute path is constructed. For instance, given the sequence of path segments: `/foo`, `/bar`, `baz`, calling `path.resolve('/foo', '/bar', 'baz')` would return `/bar/baz`.
+La secuencia dada de rutas es procesada de derecha a izquierda, con cada subsequente `path` antepuesto hasta que una ruta absoluta es construida. Por ejemplo, dada la secuencia de segmentos de ruta `/foo`, `/bar`, `baz`, llamar a `path.resolve('/foo', '/bar', 'baz')` retornaría `/bar/baz`.
 
-If after processing all given `path` segments an absolute path has not yet been generated, the current working directory is used.
+Si después de procesar todos los segmentos `path` dados, una ruta absoluta aún no ha sido generadada, el directorio de trabajo actual es usado.
 
 The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory.
 
 Los segmentos `path` sin extensión son ignorados.
 
-If no `path` segments are passed, `path.resolve()` will return the absolute path of the current working directory.
+Si ningún segmento de `path` es pasado, `path.resolve()` va a retornar la ruta absoluta del directorio de trabajo actual.
 
 ```js
 path.resolve('/foo/bar', './baz');
@@ -482,7 +482,7 @@ added: v0.7.9
 
 * {string}
 
-Provides the platform-specific path segment separator:
+Provee el separador de segmento de ruta específico de la plataforma:
 
 * `` en Windows
 * `/` en POSIX
