@@ -312,7 +312,7 @@ path.normalize('/foo/bar//baz/asdf/quux/..');
 // Returns: '/foo/bar/baz/asdf'
 ```
 
-On Windows:
+En Windows:
 
 ```js
 path.normalize('C:\\temp\\\\foo\\bar\\..\\');
@@ -339,7 +339,7 @@ added: v0.11.15
 
 The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
 
-The returned object will have the following properties:
+El objeto retornado va a tener las siguientes propiedades:
 
 * `dir` {string}
 * `root` {string}
@@ -487,14 +487,14 @@ Provides the platform-specific path segment separator:
 * `` on Windows
 * `/` on POSIX
 
-For example on POSIX:
+Por ejemplo, en POSIX:
 
 ```js
 'foo/bar/baz'.split(path.sep);
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows:
+En Windows:
 
 ```js
 'foo\\bar\\baz'.split(path.sep);
