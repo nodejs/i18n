@@ -1312,16 +1312,16 @@ napi_status napi_create_string_latin1(napi_env env,
                                       napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] str`: Character buffer representing an ISO-8859-1-encoded string.
-- `[in] length`: The length of the string in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[out] result`: A `napi_value` representing a JavaScript `String`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] str`: Buffer de caracteres que representa una cadena codificada en ISO-8859-1.
+- `[in] length`: La longitud de la cadena en bytes, o `NAPI_AUTO_LENGTH` si está terminada en NULL.
+- `[out] result`: Un `napi_value` que representa una `String` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a JavaScript `String` object from an ISO-8859-1-encoded C string. The native string is copied.
+Esta API crea un objeto `String` de JavaScript de desde una cadena de C codificada en ISO-8859-1. Se copia la cadena nativa.
 
-The JavaScript `String` type is described in [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) of the ECMAScript Language Specification.
+El tipo `String` de JavaScript se describe en la [Sección 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_string_utf16
 
@@ -1336,16 +1336,16 @@ napi_status napi_create_string_utf16(napi_env env,
                                      napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] str`: Character buffer representing a UTF16-LE-encoded string.
-- `[in] length`: The length of the string in two-byte code units, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[out] result`: A `napi_value` representing a JavaScript `String`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] str`: Buffer de caracteres que representa una cadena codificada en UTF16-LE.
+- `[in] length`: La longitud de la cadena en unidades de código de dos bytes, o `NAPI_AUTO_LENGTH` si está terminada en NULL.
+- `[out] result`: Un `napi_value` que representa una `String` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a JavaScript `String` object from a UTF16-LE-encoded C string. The native string is copied.
+Esta API crea un objeto `String` de JavaScript desde una cadena de C codificada en UTF16-LE. Se copia la cadena nativa.
 
-The JavaScript `String` type is described in [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) of the ECMAScript Language Specification.
+El tipo `String` de JavaScript se describe en la [Sección 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_create_string_utf8
 
@@ -1360,16 +1360,16 @@ napi_status napi_create_string_utf8(napi_env env,
                                     napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] str`: Character buffer representing a UTF8-encoded string.
 - `[in] length`: The length of the string in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[out] result`: A `napi_value` representing a JavaScript `String`.
+- `[out] result`: Un `napi_value` que representa una `String` de JavaScript.
 
 Returns `napi_ok` if the API succeeded.
 
-This API creates a JavaScript `String` object from a UTF8-encoded C string. The native string is copied.
+This API creates a JavaScript `String` object from a UTF8-encoded C string. Se copia la cadena nativa.
 
-The JavaScript `String` type is described in [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) of the ECMAScript Language Specification.
+El tipo `String` de JavaScript se describe en la [Sección 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) de las Especificaciones del Lenguaje ECMAScript.
 
 ### Functions to convert from N-API to C types
 
