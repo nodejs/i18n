@@ -281,9 +281,9 @@ added: v0.11.2
 
 El método `writable.cork()` forza que todos los datos escritos sean almacenados en la memoria. Los datos almacenados van a ser arrojados cuando se llame alguno de los métodos [`stream.uncork()`][] o [`stream.end()`](#stream_writable_end_chunk_encoding_callback).
 
-La intención primordial de `writable.cork()` es evitar una situación donde escribir muchos fragmentos pequeños de datos en un stream no cause un respaldo en el búfer interno, eso sería un impacto adverso en el desempeño. In such situations, implementations that implement the `writable._writev()` method can perform buffered writes in a more optimized manner.
+La intención primordial de `writable.cork()` es evitar una situación donde escribir muchos fragmentos pequeños de datos en un stream no cause un respaldo en el búfer interno, eso sería un impacto adverso en el desempeño. En tales situaciones, las implementaciones que implementen el método `writable._writev()` pueden ejecutar escrituras almacenadas de una manera más optimizada.
 
-See also: [`writable.uncork()`][].
+Vea también: [`writable.uncork()`][].
 
 ##### writable.destroy([error])
 
@@ -291,9 +291,9 @@ See also: [`writable.uncork()`][].
 added: v8.0.0
 -->
 
-* Returns: {this}
+* Devuelve: {this}
 
-Destroy the stream, and emit the passed `'error'` and a `'close'` event. After this call, the writable stream has ended and subsequent calls to `write()` / `end()` will give an `ERR_STREAM_DESTROYED` error. Implementors should not override this method, but instead implement [`writable._destroy()`](#stream_writable_destroy_err_callback).
+Destruye el stream, y emite el `'error'` pasado y un evento `'close'`. Después de esta llamada, el stream escribible ha terminado, y llamadas posteriores al `write()` / `end()` darán un error `ERR_STREAM_DESTROYED`. Los implementadores no deberían sobreescribir este método, pero implementa [`writable._destroy()`](#stream_writable_destroy_err_callback) en su lugar.
 
 ##### writable.end(\[chunk\]\[, encoding\][, callback])
 
@@ -314,7 +314,7 @@ changes:
 * `callback` {Function} Optional callback for when the stream is finished
 * Returns: {this}
 
-Calling the `writable.end()` method signals that no more data will be written to the [`Writable`][]. The optional `chunk` and `encoding` arguments allow one final additional chunk of data to be written immediately before closing the stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
+Llamar al método `writable.end()` señala que no se escribirá más datos en el [`Writable`][]. The optional `chunk` and `encoding` arguments allow one final additional chunk of data to be written immediately before closing the stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
 
 Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
 
