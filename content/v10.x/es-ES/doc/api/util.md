@@ -41,7 +41,7 @@ Va a estampar:
 hello world
 ```
 
-El callback es ejecutado asincrónicamente, y va a tener limitado seguimiento de amontonaje. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
+El callback es ejecutado asincrónicamente, y va a tener limitado rastro de pila. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
 
 Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función wrapped rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
 
@@ -140,13 +140,13 @@ fn1(); // emite una advertencia de desaprobación con el código DEP0001
 fn2(); // no emite una advertencia de desaprobación porque tiene el mismo código
 ```
 
-If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
+Si tanto las banderas de línea de comando `--no-deprecation` o `--no-warnings` son usadas, o si la propiedad `process.noDeprecation` está establecida como `true` *prior* para la primera advertencia de desaprobación, el método `util.deprecate()` no hace nada.
 
-If the `--trace-deprecation` or `--trace-warnings` command line flags are set, or the `process.traceDeprecation` property is set to `true`, a warning and a stack trace are printed to `stderr` the first time the deprecated function is called.
+Si las banderas de línea de comando `--trace-deprecation` o `--trace-warnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un rastro de pila son estampados a `stderr` la primera vez que la función obsoleta es llamada.
 
-If the `--throw-deprecation` command line flag is set, or the `process.throwDeprecation` property is set to `true`, then an exception will be thrown when the deprecated function is called.
+Si la bandera de línea de comando `--throw-deprecation` está establecida, o la propiedad `process.throwDeprecation` está establecida en `true`, entonces una excepción va a ser arrojada cuando la función obsoleta sea llamada.
 
-The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
+La bandera de línea de comando `--throw-deprecation` y la propiedad `process.throwDeprecation` toman precedencia sobre `--trace-deprecation` y `process.traceDeprecation`.
 
 ## util.format(format[, ...args])
 
@@ -159,11 +159,11 @@ changes:
     description: The `%o` and `%O` specifiers are supported now.
 -->
 
-* `format` {string} A `printf`-like format string.
+* 0>format</code> {string} Un formato de string parecido a `printf`.
 
-The `util.format()` method returns a formatted string using the first argument as a `printf`-like format.
+El método `util.format()` retorna un string con formato usando el primer argumento como un formato parecido a `printf`.
 
-The first argument is a string containing zero or more *placeholder* tokens. Each placeholder token is replaced with the converted value from the corresponding argument. Supported placeholders are:
+El primer argumento es un string conteniendo cero o más tokens *placeholder*. Cada token placeholder es reemplazado con el valor convertido del argumento correspondiente. Los placeholders soportados son:
 
 * `%s` - `String`.
 * `%d` - `Number` (integer or floating point value).
