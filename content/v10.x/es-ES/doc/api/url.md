@@ -2,19 +2,19 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+El módulo `url` proporciona utilidades para la resolución URL y análisis. Puede ser accedido utilizando:
 
 ```js
 const url = require('url');
 ```
 
-## URL Strings and URL Objects
+## Strings de URL y Objetos URL
 
-A URL string is a structured string containing multiple meaningful components. When parsed, a URL object is returned containing properties for each of these components.
+Una string URL es una string estructurada que contiene múltiples componentes significativos. Cuando es analizada, un objeto URL es devuelto conteniendo propiedades para cada uno de estos componentes.
 
-The `url` module provides two APIs for working with URLs: a legacy API that is Node.js specific, and a newer API that implements the same [WHATWG URL Standard](https://url.spec.whatwg.org/) used by web browsers.
+El módulo `url` proporciona dos APIs para trabajar con URLs: una API heredada que es específica de Node.js, y una API más nueva que implementa el mismo [Estándar URL WHATWG](https://url.spec.whatwg.org/) utilizado por navegadores web.
 
 While the Legacy API has not been deprecated, it is maintained solely for backwards compatibility with existing applications. New application code should use the WHATWG API.
 
