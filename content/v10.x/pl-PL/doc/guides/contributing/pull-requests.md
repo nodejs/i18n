@@ -31,7 +31,7 @@ Istnieją dwa fundamentalne komponenty procesu Żądania zmian: jeden konkretny 
   * [Zgniatanie Commit'ów](#commit-squashing)
   * [Zdobywanie Zatwierdzeń dla twojego Żądania zmiany](#getting-approvals-for-your-pull-request)
   * [Testowanie CI](#ci-testing)
-  * [Zaczekaj aż Żądanie zmiany zostanie Wylądowane](#waiting-until-the-pull-request-gets-landed)
+  * [Zaczekaj aż Żądanie zmiany wyląduje](#waiting-until-the-pull-request-gets-landed)
   * [Sprawdź Poradnik Kolaboracji](#check-out-the-collaborator-guide)
 
 ## Zależności
