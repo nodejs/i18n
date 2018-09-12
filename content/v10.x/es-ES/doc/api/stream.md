@@ -485,7 +485,7 @@ Si un [`Readable`][] es cambiado al modo fluido y no hay consumidores disponible
 
 #### Tres Estados
 
-The "two modes" of operation for a `Readable` stream are a simplified abstraction for the more complicated internal state management that is happening within the `Readable` stream implementation.
+Los "dos modos" de operación para un stream `Readable` son una abstracción simplificada para el manejo del estado interno que es más complicado y está pasando en la implementación del stream `Readable`.
 
 Specifically, at any given point in time, every `Readable` is in one of three possible states:
 
