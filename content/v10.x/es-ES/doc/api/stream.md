@@ -314,7 +314,7 @@ changes:
 * `callback` {Function} Optional callback for when the stream is finished
 * Returns: {this}
 
-Llamar al método `writable.end()` señala que no se escribirá más datos en el [`Writable`][]. The optional `chunk` and `encoding` arguments allow one final additional chunk of data to be written immediately before closing the stream. If provided, the optional `callback` function is attached as a listener for the [`'finish'`][] event.
+Llamar al método `writable.end()` señala que no se escribirá más datos en el [`Writable`][]. Los argumentos `chunk` y `encoding` opcionales permiten un último fragmento de datos sean escritos inmediatamente antes de cerrar el stream. Si es proporcionado, la función `callback` opcional es adjuntada como un listener para el evento [`'finish'`][].
 
 Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
 
@@ -351,7 +351,7 @@ added: v0.11.2
 
 The `writable.uncork()` method flushes all data buffered since [`stream.cork()`][] was called.
 
-When using [`writable.cork()`][] and `writable.uncork()` to manage the buffering of writes to a stream, it is recommended that calls to `writable.uncork()` be deferred using `process.nextTick()`. Doing so allows batching of all `writable.write()` calls that occur within a given Node.js event loop phase.
+Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Doing so allows batching of all `writable.write()` calls that occur within a given Node.js event loop phase.
 
 ```js
 stream.cork();
@@ -392,7 +392,7 @@ Return the value of `highWaterMark` passed when constructing this `Writable`.
 added: v9.4.0
 -->
 
-This property contains the number of bytes (or objects) in the queue ready to be written. The value provides introspection data regarding the status of the `highWaterMark`.
+Esta propiedad contiene el número de bytes (u objetos) en la cola a ser escritos. El valor proporciona datos de introspección con respecto al estatus de `highWaterMark`.
 
 ##### writable.write(chunk\[, encoding\]\[, callback\])
 
@@ -414,7 +414,7 @@ changes:
 * `callback` {Function} Callback for when this chunk of data is flushed
 * Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-The `writable.write()` method writes some data to the stream, and calls the supplied `callback` once the data has been fully handled. If an error occurs, the `callback` *may or may not* be called with the error as its first argument. To reliably detect write errors, add a listener for the `'error'` event.
+El método `writable.write()` escribe algunos datos al stream, y llama al `callback` suministrado una vez que ha sido manejado completamente. Si ocurre un error, el `callback` *puede o no* ser llamado con el error como su primer argumento. To reliably detect write errors, add a listener for the `'error'` event.
 
 The return value is `true` if the internal buffer is less than the `highWaterMark` configured when the stream was created after admitting `chunk`. If `false` is returned, further attempts to write data to the stream should stop until the [`'drain'`][] event is emitted.
 
@@ -800,7 +800,7 @@ added: v9.4.0
 
 * Returns: {number}
 
-This property contains the number of bytes (or objects) in the queue ready to be read. The value provides introspection data regarding the status of the `highWaterMark`.
+This property contains the number of bytes (or objects) in the queue ready to be read. El valor proporciona datos de introspección con respecto al estatus de `highWaterMark`.
 
 ##### readable.resume()
 
