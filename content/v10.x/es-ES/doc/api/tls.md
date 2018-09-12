@@ -1015,7 +1015,7 @@ deprecated: v0.11.3
 
 El evento `'secure'` es emitido por el objeto `SecurePair` una vez que se ha establecido una conexión segura.
 
-As with checking for the server [`'secureConnection'`](#tls_event_secureconnection) event, `pair.cleartext.authorized` should be inspected to confirm whether the certificate used is properly authorized.
+Al igual que con la comprobación del evento [`'secureConnection'`](#tls_event_secureconnection) del servidor, se debe inspeccionar `pair.cleartext.authorized` para confirmar si el certificado utilizado está debidamente autorizado.
 
 ### tls.createSecurePair(\[context\]\[, isServer\]\[, requestCert\]\[, rejectUnauthorized\][, options])
 
@@ -1029,7 +1029,7 @@ changes:
     description: ALPN options are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.TLSSocket`][] instead.
+> Estabilidad: 0 - Obsoleto: Use [`tls.TLSSocket`][] en su lugar.
 
 * `context` {Object} A secure context object as returned by `tls.createSecureContext()`
 * `isServer` {boolean} `true` to specify that this TLS connection should be opened as a server.
