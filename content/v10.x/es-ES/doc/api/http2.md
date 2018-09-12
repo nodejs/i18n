@@ -387,7 +387,7 @@ Envía un frame de `PING` a un peer de HTTP/2 conectado. La función `callback` 
 
 El número máximo de pings sobresalientes (no reconocidos) es determinado por la opción de configuración `maxOutstandingPings`. El máximo valor por defecto es 10.
 
-If provided, the `payload` must be a `Buffer`, `TypedArray`, or `DataView` containing 8 bytes of data that will be transmitted with the `PING` and returned with the ping acknowledgment.
+Si se proporcionan, el `payload` debe ser un `Buffer`, `TypedArray`, o `DataView` conteniendo 8 bytes de datos que serán transmitidos con el `PING` y retornados con el reconocimiento del ping.
 
 El callback será invocado con tres argumentos: un argumento de error que será `null` si el `PING` fue reconocido con éxito, un argumento de `duration` que reporta el número de milisegundos transcurridos desde que el ping fue enviado y desde que el reconocimiento fue recibido, y un `Buffer` que contiene la carga `PING` de 8-byte.
 
@@ -429,7 +429,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. El `callback` dado, está registrado como un oyente en el evento de `'timeout'` .
+Usado para establecer una función de callback, que es llamada cuando no hay actividad en `Http2Session` después de unos milisegundos `msecs`. El `callback` dado, está registrado como un oyente en el evento de `'timeout'` .
 
 #### http2session.socket
 
