@@ -432,7 +432,7 @@ console.log(fn());
 
 ### Bao bọc các đối tượng C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+Các đối tượng/lớp của C++ cũng có thể được bọc mà các thể hiện được tạo ra sử dụng toán tử `new` của JavaScript:
 
 ```cpp
 // addon.cc
@@ -453,7 +453,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+Sau đó, trong `myobject.h`, lớp bọc di truyền từ `node::ObjectWrap`:
 
 ```cpp
 // myobject.h
@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+Trong `myobject.cc`, các phương pháp khác nhau được thực hiện để tiếp xúc với nhau. Dưới đây là phương pháp `plusOne()` được hiển thị bằng việc thêm nó vào nguyên mẫu của hàm tạo:
 
 ```cpp
 // myobject.cc
@@ -561,7 +561,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Để xây dựng ví dụ này, tập tin `myobject.cc` phải được thêm vào `binding.gyp`:
 
 ```json
 {
