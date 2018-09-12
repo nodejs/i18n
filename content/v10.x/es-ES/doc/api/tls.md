@@ -1050,9 +1050,9 @@ Crea un nuevo objeto de par seguro con dos streams, uno de los cuales lee y escr
 
 `tls.createSecurePair()` devuelve un objeto `tls.SecurePair` con `cleartext` y `encrypted` propiedades stream.
 
-Using `cleartext` has the same API as [`tls.TLSSocket`][].
+El uso de `cleartext` tiene la misma API que [`tls.TLSSocket`][].
 
-The `tls.createSecurePair()` method is now deprecated in favor of `tls.TLSSocket()`. For example, the code:
+El método `tls.createSecurePair()` es ahora obsoleto a favor de `tls.TLSSocket()`. Por ejemplo, el código:
 
 ```js
 pair = tls.createSecurePair(/* ... */);
@@ -1060,10 +1060,10 @@ pair.encrypted.pipe(socket);
 socket.pipe(pair.encrypted);
 ```
 
-can be replaced by:
+puede ser reemplazado por:
 
 ```js
 secureSocket = tls.TLSSocket(socket, options);
 ```
 
-where `secureSocket` has the same API as `pair.cleartext`.
+donde `secureSocket` tiene la misma API que `pair.cleartext`.
