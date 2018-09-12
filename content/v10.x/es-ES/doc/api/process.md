@@ -923,7 +923,7 @@ added: v0.9.4
 
 * Devuelve: {integer[]}
 
-El método `process.getgroups()` devuelve un array con los IDs del grupo suplementario. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
+El método `process.getgroups()` devuelve un array con los IDs del grupo suplementario. POSIX lo deja sin especificar si el ID del grupo efectivo está incluida, pero Node.js asegura que siempre lo está.
 
 Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
@@ -933,9 +933,9 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.1.28
 -->
 
-* Returns: {integer}
+* Devuelve: {integer}
 
-The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
+El método `process.getuid()` devuelve la identidad del usuario numérico del proceso. (Vea getuid(2).)
 
 ```js
 if (process.getuid) {
@@ -951,9 +951,9 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v9.3.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
+Indica si un callback ha sido establecido utilizando [`process.setUncaughtExceptionCaptureCallback()`][].
 
 ## process.hrtime([time])
 
@@ -961,14 +961,15 @@ Indicates whether a callback has been set using [`process.setUncaughtExceptionCa
 added: v0.7.6
 -->
 
-* `time` {integer[]} The result of a previous call to `process.hrtime()`
+* `time` {integer[]} El resultado de una llamada previa a `process.hrtime()`
 * Devuelve: {integer[]}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple `Array`, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
-`time` is an optional parameter that must be the result of a previous `process.hrtime()` call to diff with the current time. If the parameter passed in is not a tuple `Array`, a `TypeError` will be thrown. Passing in a user-defined array instead of the result of a previous call to `process.hrtime()` will lead to undefined behavior.
+`time` es un parámetro opcional que debe ser el resultado de una llamada `process.hrtime()</0 previa para diff con el tiempo actual. Si el parámetro
+pasado no es una <code>Array` dupla, se arrojará un `TypeError`. El pasar una array de usuario definido en lugar del resultado de una llamada previa a `process.hrtime()` conducirá a un comportamiento indefinido.
 
-These times are relative to an arbitrary time in the past, and not related to the time of day and therefore not subject to clock drift. The primary use is for measuring performance between intervals:
+These times are relative to an arbitrary time in the past, and not related to the time of day and therefore not subject to clock drift. El uso principal es para medir el rendimiento entre los intervalos:
 
 ```js
 const NS_PER_SEC = 1e9;
@@ -980,7 +981,7 @@ setTimeout(() => {
   // [ 1, 552 ]
 
   console.log(`Benchmark took ${diff[0] * NS_PER_SEC + diff[1]} nanoseconds`);
-  // benchmark took 1000000552 nanoseconds
+  // el punto de referencia tomó 1000000552 nanosegundos
 }, 1000);
 ```
 
@@ -990,10 +991,10 @@ setTimeout(() => {
 added: v0.9.4
 -->
 
-* `user` {string|number} The user name or numeric identifier.
-* `extraGroup` {string|number} A group name or numeric identifier.
+* `user` {string|number} El nombre de usuario o el identificador numérico.
+* `extraGroup` {string|number} Un nombre de grupo o identificador numérico.
 
-The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
+El método `process.initgroups()` lee el archivo `/etc/group` e inicializa la lista de acceso de grupo, utilizando todos los grupos en los cuales el usuario es miembro. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
 Note that care must be taken when dropping privileges. Example:
 
