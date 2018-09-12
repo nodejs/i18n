@@ -18,9 +18,9 @@ El módulo `url` proporciona dos APIs para trabajar con URLs: una API heredada q
 
 Mientras que la API Heredada no ha sido desaprobada, es mantenida únicamente para compatibilidad retrasada con aplicaciones existentes. Código de una nueva aplicación no debe usar la API WHATWG.
 
-A continuación, se proporciona una comparación entre el WHATWG y las APIs heredadas. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
+A continuación, se proporciona una comparación entre el WHATWG y las APIs heredadas. Arriba de la URL` 'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, se muestran propiedades de un objeto devuelto por el legado `url.parse()`. Debajo de la misma, se muestran propiedades de un objeto WHATWG `URL`.
 
-WHATWG URL's `origin` property includes `protocol` and `host`, but not `username` or `password`.
+La propiedad `origin` de WHATWG URL incluye `protocol` y `host`, pero no `username` o `password`.
 
 ```txt
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -40,7 +40,8 @@ WHATWG URL's `origin` property includes `protocol` and `host`, but not `username
 ├─────────────┴─────────────────────┴─────────────────────┴──────────┴────────────────┴───────┤
 │                                            href                                             │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+
+(todos los espacios en la línea "" deben ser ignorados — son simplemente para formatear)
 ```
 
 Parsing the URL string using the WHATWG API:
