@@ -875,7 +875,7 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Proporciona información miscelánea sobre el estado actual del 
+--> Proporciona información diversa sobre el estado actual del 
 
 `Http2Stream`.
 
