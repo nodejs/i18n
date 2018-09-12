@@ -227,7 +227,7 @@ added: v9.7.0
 * `err` {number}
 * Retorna: {string}
 
-Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
+Retorna un nombre de string por un código de error numérico que viene de una API de Node.js. El mapeo entre códigos de error y nombres de error es dependiente de la plataforma. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
 ```js
 fs.access('file/that/does/not/exist', (err) => {
@@ -247,7 +247,7 @@ changes:
     description: The `constructor` parameter can refer to an ES6 class now.
 -->
 
-Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
+El uso de `util.inherits()` está desalentado. Por favor use la `clase` ES6 y `extienda` palabras clave para obtener soporte de herencia de nivel de lenguaje. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
 
 * `constructor` {Function}
 * `superConstructor` {Function}
