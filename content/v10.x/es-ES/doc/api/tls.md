@@ -993,27 +993,27 @@ added: v0.3.4
 deprecated: v0.11.3
 -->
 
-The `cryptoStream.bytesWritten` property returns the total number of bytes written to the underlying socket *including* the bytes required for the implementation of the TLS protocol.
+La propiedad `cryptoStream.bytesWritten` devuelve el número total de bytes escritos en el socket subyacente *incluidos* los bytes necesarios para la implementación del protocolo TLS.
 
-### Class: SecurePair
-
-<!-- YAML
-added: v0.3.2
-deprecated: v0.11.3
--->
-
-> Stability: 0 - Deprecated: Use [`tls.TLSSocket`][] instead.
-
-Returned by [`tls.createSecurePair()`][].
-
-#### Event: 'secure'
+### Clase: SecurePair
 
 <!-- YAML
 added: v0.3.2
 deprecated: v0.11.3
 -->
 
-The `'secure'` event is emitted by the `SecurePair` object once a secure connection has been established.
+> Estabilidad: 0 - Obsoleto: Use [`tls.TLSSocket`][] en su lugar.
+
+Devuelto por [`tls.createSecurePair()`][].
+
+#### Evento: 'secure'
+
+<!-- YAML
+added: v0.3.2
+deprecated: v0.11.3
+-->
+
+El evento `'secure'` es emitido por el objeto `SecurePair` una vez que se ha establecido una conexión segura.
 
 As with checking for the server [`'secureConnection'`](#tls_event_secureconnection) event, `pair.cleartext.authorized` should be inspected to confirm whether the certificate used is properly authorized.
 
