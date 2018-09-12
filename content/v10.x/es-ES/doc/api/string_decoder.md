@@ -10,7 +10,7 @@ El módulo `string_decoder` proporciona una API para decodificar objetos `Buffer
 const { StringDecoder } = require('string_decoder');
 ```
 
-The following example shows the basic use of the `StringDecoder` class.
+El siguiente ejemplo muestra el uso básico de la clase `StringDecoder`.
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -23,7 +23,7 @@ const euro = Buffer.from([0xE2, 0x82, 0xAC]);
 console.log(decoder.write(euro));
 ```
 
-When a `Buffer` instance is written to the `StringDecoder` instance, an internal buffer is used to ensure that the decoded string does not contain any incomplete multibyte characters. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
+Cuando se escribe una instancia `Buffer` en la instancia `StringDecoder`, se utiliza un buffer interno para garantizar que el string decodificado no contenga ningún carácter multibyte incompleto. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
 
 In the following example, the three UTF-8 encoded bytes of the European Euro symbol (`€`) are written over three separate operations:
 
