@@ -1046,7 +1046,7 @@ changes:
   * `session` {Buffer} Una instancia `Buffer` opcional que contiene una sesión TLS.
   * `requestOCSP` {boolean} Si es `true`, especifica que la extensión de solicitud de estado OCSP se agregará al hello del cliente y se emitirá un evento `'OCSPResponse'` en el socket antes de establecer una comunicación segura.
 
-Crea un nuevo objeto de par seguro con dos streams, uno de los cuales lee y escribe los datos encriptados, y el que otro lee y escribe los datos cleartext. En general, el stream encriptado se canaliza a/desde un stream de datos encriptados entrantes y el cleartext se utiliza como reemplazo del stream encriptado inicial.
+Crea un nuevo objeto de par seguro con dos streams, uno de los cuales lee y escribe los datos encriptados, y el que otro lee y escribe los datos cleartext. En general, el stream encriptado se canaliza hacia/desde un stream de datos encriptados entrantes y el de cleartext se utiliza como reemplazo del stream encriptado inicial.
 
 `tls.createSecurePair()` devuelve un objeto `tls.SecurePair` con `cleartext` y `encrypted` propiedades stream.
 
