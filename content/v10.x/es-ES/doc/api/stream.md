@@ -513,7 +513,7 @@ pass.resume(); // must be called to make 'data' being emitted
 
 Mientras `readable.readableFlowing` es `false`, los datos pueden ser que se esten acumulando dentro del búfer interno de los streams.
 
-#### Choose One
+#### Escoge uno
 
 The `Readable` stream API evolved across multiple Node.js versions and provides multiple methods of consuming stream data. In general, developers should choose *one* of the methods of consuming data and *should never* use multiple methods to consume data from a single stream.
 
