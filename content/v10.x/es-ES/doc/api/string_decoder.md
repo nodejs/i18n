@@ -44,9 +44,9 @@ console.log(decoder.end(Buffer.from([0xAC])));
 added: v0.1.99
 -->
 
-* `encoding` {string} The character encoding the `StringDecoder` will use. **Predeterminado:** `'utf8'`.
+* `encoding` {string} Se usará el carácter que codifica el `StringDecoder`. **Predeterminado:** `'utf8'`.
 
-Creates a new `StringDecoder` instance.
+Crea una nueva instancia `StringDecoder`.
 
 ### stringDecoder.end([buffer])
 
@@ -54,12 +54,12 @@ Creates a new `StringDecoder` instance.
 added: v0.9.3
 -->
 
-* `buffer` {Buffer} A `Buffer` containing the bytes to decode.
-* Returns: {string}
+* `buffer` {Buffer} Un `Buffer` que contiene los bytes para decodificar.
+* Devuelve: {string}
 
-Returns any remaining input stored in the internal buffer as a string. Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
+Devuelve cualquier entrada restante almacenada en el buffer interno como un string. Los bytes que representan caracteres incompletos UTF-8 y UTF-16 serán reemplazados por caracteres de sustitución apropiados para la codificación de caracteres.
 
-If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
+Si se proporciona el argumento `buffer`, se realiza una llamada final a `stringDecoder.write()` antes de devolver la entrada restante.
 
 ### stringDecoder.write(buffer)
 
