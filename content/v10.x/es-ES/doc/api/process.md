@@ -994,15 +994,15 @@ added: v0.9.4
 * `user` {string|number} El nombre de usuario o el identificador numérico.
 * `extraGroup` {string|number} Un nombre de grupo o identificador numérico.
 
-El método `process.initgroups()` lee el archivo `/etc/group` e inicializa la lista de acceso de grupo, utilizando todos los grupos en los cuales el usuario es miembro. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
+El método `process.initgroups()` lee el archivo `/etc/group` e inicializa la lista de acceso de grupo, utilizando todos los grupos en los cuales el usuario es miembro. Esto es una operación privilegiada que requiere que el proceso Nothe.js tenga acceso a `root` o la capacidad de `CAP_SETGID`.
 
-Note that care must be taken when dropping privileges. Example:
+Note que se debe tener cuidado al eliminar privilegios. Ejemplo:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
-process.initgroups('bnoordhuis', 1000);   // switch user
+process.initgroups('bnoordhuis', 1000);   // cambia el usuario
 console.log(process.getgroups());         // [ 27, 30, 46, 1000, 0 ]
-process.setgid(1000);                     // drop root gid
+process.setgid(1000);                     // elimina el gid del root
 console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 ```
 
@@ -1014,16 +1014,16 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.0.6
 -->
 
-* `pid` {number} A process ID
-* `signal` {string|number} The signal to send, either as a string or number. **Predeterminado:** `'SIGTERM'`.
+* `pid` {number} Un ID del proceso
+* `signal` {string|number} La señal a enviar, ya sea una string o un número. **Predeterminado:** `'SIGTERM'`.
 
-The `process.kill()` method sends the `signal` to the process identified by `pid`.
+El método `process.kill()` envía la `signal` al proceso identificado por `pid`.
 
-Signal names are strings such as `'SIGINT'` or `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
+Los nombres de las señales son strings como `'SIGINT'` o `'SIGHUP'`. Vea los [Eventos de Señal](#process_signal_events) y kill(2) para más información.
 
-This method will throw an error if the target `pid` does not exist. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
+Este método arrojará un error si el `pid` del objetivo no existe. En un caso especial, una señal de `0` puede ser usada para probar la existencia de un proceso. Las plataformas Windows arrojarán un error si el `pid` es usado para aniquilar un grupo de proceso.
 
-Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
+A pesar de que el nombre de esta función sea `process.kill()`, realmente sólo es un transmisor de señal, como la llamada de sistema `kill`. La señal enviada puede hacer algo distinto a aniquilar el proceso objetivo.
 
 ```js
 process.on('SIGHUP', () => {
@@ -1038,7 +1038,7 @@ setTimeout(() => {
 process.kill(process.pid, 'SIGHUP');
 ```
 
-When `SIGUSR1` is received by a Node.js process, Node.js will start the debugger, see [Signal Events](#process_signal_events).
+Cuando `SIGUSR1` es recibido por el proceso Node.js, Node.js iniciará el depurador. Vea los [Eventos de la Señal](#process_signal_events).
 
 ## process.mainModule
 
@@ -1048,7 +1048,7 @@ added: v0.1.17
 
 * {Object}
 
-The `process.mainModule` property provides an alternative way of retrieving [`require.main`][]. The difference is that if the main module changes at runtime, [`require.main`][] may still refer to the original main module in modules that were required before the change occurred. Generally, it's safe to assume that the two refer to the same module.
+La propiedad `process.mainModule` proporciona una manera alternativa de recuperar [`require.main`][]. The difference is that if the main module changes at runtime, [`require.main`][] may still refer to the original main module in modules that were required before the change occurred. Generally, it's safe to assume that the two refer to the same module.
 
 As with [`require.main`][], `process.mainModule` will be `undefined` if there is no entry script.
 
