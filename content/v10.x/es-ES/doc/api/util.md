@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
+El módulo `util` está diseñado principalmente para apoyar las necesidades de las APIs internas del propio Node.js. Sin embargo, muchas de las utilidades también son útiles para desarrolladores de aplicaciones y módulos. Puede ser accedido usando:
 
 ```js
 const util = require('util');
@@ -16,10 +16,10 @@ const util = require('util');
 added: v8.2.0
 -->
 
-* `original` {Function} An `async` function
-* Returns: {Function} a callback style function
+* `original` {Function} Una función `async`
+* Retorna: {Function} una función de estilo callback
 
-Takes an `async` function (or a function that returns a `Promise`) and returns a function following the error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument. In the callback, the first argument will be the rejection reason (or `null` if the `Promise` resolved), and the second argument will be the resolved value.
+Toma una función `async` (o una función que retorna una `Promise`) y retorna una función siguiendo al estilo de callback error-first p. ej. tomando un callback `(err, value) => ...` como el último argumento. En el callback, el primer argumento va a ser la razón de rechazo (o `null` si la `Promise` se resolvió), y el segundo argumento va a ser el valor resuelto.
 
 ```js
 const util = require('util');
@@ -35,15 +35,15 @@ callbackFunction((err, ret) => {
 });
 ```
 
-Will print:
+Va a estampar:
 
 ```txt
 hello world
 ```
 
-The callback is executed asynchronously, and will have a limited stack trace. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
+El callback es ejecutado asincrónicamente, y va a tener limitado seguimiento de amontonaje. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
 
-Since `null` has a special meaning as the first argument to a callback, if a wrapped function rejects a `Promise` with a falsy value as a reason, the value is wrapped in an `Error` with the original value stored in a field named `reason`.
+Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función envuelta rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
 
 ```js
 function fn() {
@@ -52,8 +52,8 @@ function fn() {
 const callbackFunction = util.callbackify(fn);
 
 callbackFunction((err, ret) => {
-  // When the Promise was rejected with `null` it is wrapped with an Error and
-  // the original value is stored in `reason`.
+  // Cuando la Promise fue rechazada con `null` se envuelve con un Error y
+  // el valor original es almacenado en `reason`.
   err && err.hasOwnProperty('reason') && err.reason === null;  // true
 });
 ```
@@ -64,8 +64,8 @@ callbackFunction((err, ret) => {
 added: v0.11.3
 -->
 
-* `section` {string} A string identifying the portion of the application for which the `debuglog` function is being created.
-* Returns: {Function} The logging function
+* `section` {string} Un string identificando la porción de la aplicación para la cual la función `debuglog` está siendo creada.
+* Retorna: {Function} La función de registro
 
 The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. If not, then the returned function is a no-op.
 
@@ -76,15 +76,15 @@ const debuglog = util.debuglog('foo');
 debuglog('hello from foo [%d]', 123);
 ```
 
-If this program is run with `NODE_DEBUG=foo` in the environment, then it will output something like:
+Si el programa es ejecutado con `NODE_DEBUG=foo` en el entorno, entonces el resultado va a ser algo como:
 
 ```txt
 FOO 3245: hello from foo [123]
 ```
 
-where `3245` is the process id. If it is not run with that environment variable set, then it will not print anything.
+donde `3245` es la identificación del proceso. Si no es ejecutado con ese grupo de variables de entorno, entonces no va a estampar nada.
 
-The `section` supports wildcard also:
+La `section` también soporta wildcard:
 
 ```js
 const util = require('util');
@@ -93,7 +93,7 @@ const debuglog = util.debuglog('foo-bar');
 debuglog('hi there, it\'s foo-bar [%d]', 2333);
 ```
 
-if it is run with `NODE_DEBUG=foo*` in the environment, then it will output something like:
+si es ejecutado con `NODE_DEBUG=foo*` en el entorno, entonces el resultado va a ser algo como:
 
 ```txt
 FOO-BAR 3257: hi there, it's foo-bar [2333]
@@ -112,8 +112,8 @@ changes:
     description: Deprecation warnings are only emitted once for each code.
 -->
 
-* `fn` {Function} The function that is being deprecated.
-* `msg` {string} A warning message to display when the deprecated function is invoked.
+* `fn` {Function} La función que está siendo desaprobada.
+* `msg` {string} Un mensaje de advertencia para mostrar cuando la función desaprobada es invocada.
 * `code` {string} A deprecation code. See the [list of deprecated APIs](deprecations.html#deprecations_list_of_deprecated_apis) for a list of codes.
 * Returns: {Function} The deprecated function wrapped to emit a warning.
 

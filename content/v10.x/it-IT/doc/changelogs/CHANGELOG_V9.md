@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Current</th>
+<th>Versione attuale</th>
 </tr>
   
   <tr>
@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Altre versioni 
   * [10.x](CHANGELOG_V10.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -44,15 +44,15 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.1"></a>
 
-## 2018-04-05, Version 9.11.1 (Current), @MylesBorins
+## 2018-04-05, Versione 9.11.1 (Attuale), @MylesBorins
 
-### Notable Changes
+### Modifiche di rilievo
 
-No additional commits.
+Nessun commit aggiuntivo.
 
 An infrastructure issue caused a non-functioning msi installer for x64 to be promoted. The patch release is to ensure that all binaries and installers work as expected.
 

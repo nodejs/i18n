@@ -208,25 +208,25 @@ Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ansteh
 
 Jeder N-API-Funktionsaufruf kann zu einer ausstehenden JavaScript-Ausnahme führen. Dies ist natürlich der Fall für jede Funktion, die die Ausführung von JavaScript verursachen kann, aber die N-API gibt an, dass eine Ausnahme bei der Rückkehr von einer der vielen API-Funktionen anhängig sein kann.
 
-If the `napi_status` returned by a function is `napi_ok` then no exception is pending and no additional action is required. If the `napi_status` returned is anything other than `napi_ok` or `napi_pending_exception`, in order to try to recover and continue instead of simply returning immediately, [`napi_is_exception_pending`][] must be called in order to determine if an exception is pending or not.
+Wenn der von einer Funktion zurückgegebene `napi_status` `napi_ok` ist, dann ist keine Ausnahme ausstehend und es ist keine zusätzliche Aktion erforderlich. Wenn der zurückgegebene `napi_status` etwas anderes als `napi_ok` oder `napi_pending_exception` ist, muss, um zu versuchen, sich wiederherzustellen und fortzusetzen, anstatt einfach sofort zurückzusenden, [`napi_is_exception_pending`][] aufgerufen werden, um festzustellen, ob eine Ausnahme ausstehend ist oder nicht.
 
-When an exception is pending one of two approaches can be employed.
+Wenn eine Ausnahme ausstehend ist, kann einer von zwei Ansätzen verwendet werden.
 
-The first approach is to do any appropriate cleanup and then return so that execution will return to JavaScript. As part of the transition back to JavaScript the exception will be thrown at the point in the JavaScript code where the native method was invoked. The behavior of most N-API calls is unspecified while an exception is pending, and many will simply return `napi_pending_exception`, so it is important to do as little as possible and then return to JavaScript where the exception can be handled.
+Der erste Ansatz besteht darin, eine entsprechende Bereinigung durchzuführen und dann so zurückzukehren, dass die Ausführung zu JavaScript zurückgesendet wird. Als Teil des Übergangs zurück zu JavaScript wird die Ausnahme an der Stelle im JavaScript-Code ausgelöst, an der die native Methode aufgerufen wurde. Das Verhalten der meisten N-API-Aufrufe ist nicht spezifiziert, während eine Ausnahme ausstehend ist und viele senden einfach `napi_pending_exception` zurück, daher ist es wichtig, so wenig wie möglich zu tun und dann zu JavaScript zurückzukehren, wo die Ausnahme behandelt werden kann.
 
-The second approach is to try to handle the exception. There will be cases where the native code can catch the exception, take the appropriate action, and then continue. This is only recommended in specific cases where it is known that the exception can be safely handled. In these cases [`napi_get_and_clear_last_exception`][] can be used to get and clear the exception. On success, result will contain the handle to the last JavaScript `Object` thrown. If it is determined, after retrieving the exception, the exception cannot be handled after all it can be re-thrown it with [`napi_throw`][] where error is the JavaScript `Error` object to be thrown.
+Der zweite Ansatz ist der Versuch, die Ausnahme zu behandeln. Es wird Fälle geben, in denen der native Code die Ausnahme abfangen, die entsprechenden Maßnahmen ergreifen und dann fortfahren kann. Dies wird nur in bestimmten Fällen empfohlen, in denen bekannt ist, dass die Ausnahme sicher behandelt werden kann. In diesen Fällen kann[`napi_get_and_clear_last_exception`][] verwendet werden, um die Ausnahme zu erfassen und zu löschen. Bei Erfolg enthält das Ergebnis den Handle zum letzten ausgeworfenen JavaScript-`Object`. Wenn es bestimmt ist, die Ausnahme nach dem Abrufen der Ausnahme nicht zu behandeln, kann stattdessen sie mit [`napi_throw`][] neu ausgeworfen werden, wobei der Fehler das zu verwerfende JavaScript `Error`-Objekt ist.
 
-The following utility functions are also available in case native code needs to throw an exception or determine if a `napi_value` is an instance of a JavaScript `Error` object: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] and [`napi_is_error`][].
+Die folgenden Hilfsfunktionen sind auch verfügbar, falls nativer Code eine Ausnahme auslösen muss oder bestimmen soll, ob eine `napi_value` eine Instanz eines JavaScript `Error` Objekts ist: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] and [`napi_is_error`][].
 
-The following utility functions are also available in case native code needs to create an `Error` object: [`napi_create_error`][], [`napi_create_type_error`][], and [`napi_create_range_error`][], where result is the `napi_value` that refers to the newly created JavaScript `Error` object.
+Die folgenden Hilfsfunktionen sind auch verfügbar, falls nativer Code ein `Fehler`-Objekt erstellen muss: [`napi_create_error`][], [`napi_create_type_error`][] und [`napi_create_range_error`][], wo das Ergebnis die `napi_value` ist, das sich auf das neu erstellte JavaScript `Error`-Objekt bezieht.
 
-The Node.js project is adding error codes to all of the errors generated internally. The goal is for applications to use these error codes for all error checking. The associated error messages will remain, but will only be meant to be used for logging and display with the expectation that the message can change without SemVer applying. In order to support this model with N-API, both in internal functionality and for module specific functionality (as its good practice), the `throw_` and `create_` functions take an optional code parameter which is the string for the code to be added to the error object. If the optional parameter is NULL then no code will be associated with the error. If a code is provided, the name associated with the error is also updated to be:
+Das Projekt Node.js fügt Fehlercodes zu allen intern erzeugten Fehlern hinzu. Das Ziel ist es, dass Anwendungen diese Fehlercodes für alle Fehlerüberprüfungen verwenden. Die zugehörigen Fehlermeldungen bleiben erhalten, sind aber nur für die Protokollierung und Anzeige gedacht mit der Erwartung, dass sich die Meldung ohne Anwendung von SemVer ändern kann. Um dieses Modell mit N-API sowohl in der internen Funktionalität als auch für die modulspezifische Funktionalität (wie es die übliche Vorgehensweise ist) zu unterstützen, nehmen die `throw_`- und `create_`-Funktionen einen optionalen Codeparameter, der die Zeichenkette für den Code ist, der dem Fehlerobjekt hinzugefügt werden soll. Wenn der optionale Parameter NULL ist, wird dem Fehler kein Code zugeordnet. Wenn ein Code angegeben wird, wird auch der dem Fehler zugeordnete Name aktualisiert auf:
 
 ```text
 originalName [code]
 ```
 
-where `originalName` is the original name associated with the error and `code` is the code that was provided. For example if the code is `'ERR_ERROR_1'` and a `TypeError` is being created the name will be:
+wobei `originalName` der ursprüngliche Name ist, der dem Fehler zugeordnet ist und `code` der angegebene Code ist. Wenn der Code beispielsweise `'ERR_ERROR_1'` ist und ein `TypeError` erstellt wird, wird der Name lauten:
 
 ```text
 TypeError [ERR_ERROR_1]
@@ -242,12 +242,12 @@ added: v8.0.0
 NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] error`: The JavaScript value to be thrown.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] error`: Der JavaScript-Wert, der ausgeworfen werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API throws the JavaScript value provided.
+Diese API wirft den angegebenen JavaScript-Wert aus.
 
 #### napi_throw_error
 
@@ -261,13 +261,13 @@ NODE_EXTERN napi_status napi_throw_error(napi_env env,
                                          const char* msg);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] code`: Optional error code to be set on the error.
-- `[in] msg`: C string representing the text to be associated with the error.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] code`: Optionaler Fehlercode, der bei einem Fehler eingestellt werden kann.
+- `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API throws a JavaScript `Error` with the text provided.
+Diese API wirft einen JavaScript-`Fehler` mit dem angegebenen Text aus.
 
 #### napi_throw_type_error
 
@@ -281,13 +281,13 @@ NODE_EXTERN napi_status napi_throw_type_error(napi_env env,
                                               const char* msg);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] code`: Optional error code to be set on the error.
-- `[in] msg`: C string representing the text to be associated with the error.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] code`: Möglicher Fehlercode, der bei einem Fehler eingestellt werden kann.
+- `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API throws a JavaScript `TypeError` with the text provided.
+Diese API wirft einen JavaScript-`Schreibfehler` mit dem angegebenen Text aus.
 
 #### napi_throw_range_error
 
@@ -301,13 +301,13 @@ NODE_EXTERN napi_status napi_throw_range_error(napi_env env,
                                                const char* msg);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] code`: Optional error code to be set on the error.
-- `[in] msg`: C string representing the text to be associated with the error.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] code`: Möglicher Fehlercode, der bei einem Fehler eingestellt werden kann.
+- `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API throws a JavaScript `RangeError` with the text provided.
+Diese API wirft einen JavaScript-`Bereichsfehler` mit dem angegebenen Text aus.
 
 #### napi_is_error
 
@@ -321,13 +321,13 @@ NODE_EXTERN napi_status napi_is_error(napi_env env,
                                       bool* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] msg`: The `napi_value` to be checked.
-- `[out] result`: Boolean value that is set to true if `napi_value` represents an error, false otherwise.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] msg`: Die `napi_value`, die überprüft werden soll.
+- `[out] result`: Boolean-Wert, der auf true gesetzt wird, wenn `napi_value` einen Fehler darstellt, sonst false.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API queries a `napi_value` to check if it represents an error object.
+Diese API fragt eine `napi_value` ab, um zu prüfen, ob es sich um ein Fehlerobjekt handelt.
 
 #### napi_create_error
 
@@ -342,14 +342,14 @@ NODE_EXTERN napi_status napi_create_error(napi_env env,
                                           napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] code`: Optional `napi_value` with the string for the error code to be associated with the error.
-- `[in] msg`: `napi_value` that references a JavaScript `String` to be used as the message for the `Error`.
-- `[out] result`: `napi_value` representing the error created.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
+- `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
+- `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns a JavaScript `Error` with the text provided.
+Diese API gibt einen JavaScript-`Fehler` mit dem angegebenen Text aus.
 
 #### napi_create_type_error
 
@@ -364,14 +364,14 @@ NODE_EXTERN napi_status napi_create_type_error(napi_env env,
                                                napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] code`: Optional `napi_value` with the string for the error code to be associated with the error.
-- `[in] msg`: `napi_value` that references a JavaScript `String` to be used as the message for the `Error`.
-- `[out] result`: `napi_value` representing the error created.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
+- `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
+- `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns a JavaScript `TypeError` with the text provided.
+Diese API gibt einen JavaScript-`Schreibfehler` mit dem angegebenen Text aus.
 
 #### napi_create_range_error
 
@@ -386,14 +386,14 @@ NODE_EXTERN napi_status napi_create_range_error(napi_env env,
                                                 napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] code`: Optional `napi_value` with the string for the error code to be associated with the error.
-- `[in] msg`: `napi_value` that references a JavaScript `String` to be used as the message for the `Error`.
-- `[out] result`: `napi_value` representing the error created.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
+- `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
+- `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns a JavaScript `RangeError` with the text provided.
+Diese API gibt einen JavaScript-`Bereichsfehler` mit dem angegebenen Text aus.
 
 #### napi_get_and_clear_last_exception
 
@@ -406,14 +406,14 @@ napi_status napi_get_and_clear_last_exception(napi_env env,
                                               napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The exception if one is pending, NULL otherwise.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: Die Ausnahme, wenn eine ausständig ist, ansonsten NULL.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns true if an exception is pending.
+Diese API gibt true aus, wenn die Ausnahme ausständig ist.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ausständig ist.
 
 #### napi_is_exception_pending
 
@@ -425,14 +425,14 @@ added: v8.0.0
 napi_status napi_is_exception_pending(napi_env env, bool* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: Boolean value that is set to true if an exception is pending.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: Boolean-Wert, der auf true gesetzt wird, wenn eine Ausnahme ansteht.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns true if an exception is pending.
+Diese API gibt true aus, wenn die Ausnahme ausständig ist.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ausständig ist.
 
 #### napi_fatal_exception
 
@@ -444,7 +444,7 @@ added: v9.10.0
 napi_status napi_fatal_exception(napi_env env, napi_value err);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] err`: The error you want to pass to `'uncaughtException'`.
 
 Trigger an `'uncaughtException'` in JavaScript. Useful if an async callback throws an exception with no way to recover.

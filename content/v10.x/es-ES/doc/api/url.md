@@ -2,25 +2,25 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
+El módulo `url` proporciona utilidades para la resolución y análisis URL. Puede ser accedido utilizando:
 
 ```js
 const url = require('url');
 ```
 
-## URL Strings and URL Objects
+## Strings de URL y Objetos URL
 
-A URL string is a structured string containing multiple meaningful components. When parsed, a URL object is returned containing properties for each of these components.
+Una string URL es una string estructurada que contiene múltiples componentes significativos. Cuando es analizado, un objeto URL es devuelto conteniendo propiedades para cada uno de estos componentes.
 
-The `url` module provides two APIs for working with URLs: a legacy API that is Node.js specific, and a newer API that implements the same [WHATWG URL Standard](https://url.spec.whatwg.org/) used by web browsers.
+El módulo `url` proporciona dos APIs para trabajar con URLs: una API heredada que es específica de Node.js, y una API más nueva que implementa el mismo [Estándar URL WHATWG](https://url.spec.whatwg.org/) utilizado por navegadores web.
 
-While the Legacy API has not been deprecated, it is maintained solely for backwards compatibility with existing applications. New application code should use the WHATWG API.
+Mientras que la API Heredada no ha sido desaprobada, es mantenida únicamente para compatibilidad retrasada con aplicaciones existentes. El código de una nueva aplicación debe usar la API WHATWG.
 
-A comparison between the WHATWG and Legacy APIs is provided below. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
+A continuación, se proporciona una comparación entre el WHATWG y las APIs heredadas. Arriba de la URL` 'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, se muestran propiedades de un objeto devuelto por el legado `url.parse()`. Debajo de la misma, se muestran propiedades de un objeto WHATWG `URL`.
 
-WHATWG URL's `origin` property includes `protocol` and `host`, but not `username` or `password`.
+La propiedad `origin` de WHATWG URL incluye `protocol` y `host`, pero no `username` o `password`.
 
 ```txt
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -40,17 +40,18 @@ WHATWG URL's `origin` property includes `protocol` and `host`, but not `username
 ├─────────────┴─────────────────────┴─────────────────────┴──────────┴────────────────┴───────┤
 │                                            href                                             │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+
+(todos los espacios en la línea "" deben ser ignorados — son simplemente para formatear)
 ```
 
-Parsing the URL string using the WHATWG API:
+Analizar la string de URL utilizando la API WHATWG:
 
 ```js
 const myURL =
   new URL('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
 ```
 
-Parsing the URL string using the Legacy API:
+Analizar la string de URL usando la API Heredada:
 
 ```js
 const url = require('url');
@@ -58,9 +59,9 @@ const myURL =
   url.parse('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
 ```
 
-## The WHATWG URL API
+## La WHATWG URL API
 
-### Class: URL
+### Clase: URL
 
 <!-- YAML
 added: v7.0.0
@@ -71,40 +72,40 @@ changes:
     description: The class is now available on the global object.
 -->
 
-Browser-compatible `URL` class, implemented by following the WHATWG URL Standard. [Examples of parsed URLs](https://url.spec.whatwg.org/#example-url-parsing) may be found in the Standard itself. The `URL` class is also available on the global object.
+La clase `URL` compatible con el navegador, implementada siguiendo el estándar URL WHATWG. [Ejemplos de URLs analizadas](https://url.spec.whatwg.org/#example-url-parsing) pueden ser encontradas en el mismo Estándar. La clase `URL` también está disponible en el objeto global.
 
-In accordance with browser conventions, all properties of `URL` objects are implemented as getters and setters on the class prototype, rather than as data properties on the object itself. Thus, unlike [legacy `urlObject`][]s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
-myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still return `true`.
+De acuerdo con las convenciones del navegador, todas las propiedades de los objetos `URL` son implementadas como getters y setters en el prototipo de la clase, en lugar de como propiedades de datos en el objeto mismo. Por lo tanto, a diferencia de [legacy `urlObject`][]s, utilizar la palabra clave `delete` en cualquiera de las propiedades de los objetos `URL` (p. e.j. `delete
+myURL.protocol`, `delete myURL.pathname`, etc) no tiene ningún efecto, pero aún así devolverán `true`.
 
 #### Constructor: new URL(input[, base])
 
-* `input` {string} The absolute or relative input URL to parse. If `input` is relative, then `base` is required. If `input` is absolute, the `base` is ignored.
-* `base` {string|URL} The base URL to resolve against if the `input` is not absolute.
+* `input` {string} La entrada URL absoluta o relativa a analizar. Si `input` es relativa, entonces `base` es necesaria. Si `input` es absoluta, la `base` es ignorada.
+* `base` {string|URL} La URL base a resolver si la `input` no es absoluta.
 
-Creates a new `URL` object by parsing the `input` relative to the `base`. If `base` is passed as a string, it will be parsed equivalent to `new URL(base)`.
+Crea un nuevo objeto `URL` al analizar la `input` relativa a la `base`. Si `base` pasa como una string, será analizada de forma equivalente a `new URL(base)`.
 
 ```js
 const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. For instance:
+Se producirá un `TypeError` si la `input` o `base` no son URLs válidas. Tenga en cuenta que se hará un esfuerzo para obligar a los valores dados a convertirse en cadenas. Por ejemplo:
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
 // https://example.org/
 ```
 
-Unicode characters appearing within the hostname of `input` will be automatically converted to ASCII using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm.
+Caracteres unicode que aparecen dentro del hostname de `input` serán automáticamente convertidos a ASCII usando el algoritmo [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4).
 
 ```js
 const myURL = new URL('https://你好你好');
 // https://xn--6qqa088eba/
 ```
 
-This feature is only available if the `node` executable was compiled with [ICU](intl.html#intl_options_for_building_node_js) enabled. If not, the domain names are passed through unchanged.
+Esta función solo está disponible si el `node` ejecutable fue compilado con el [ICU](intl.html#intl_options_for_building_node_js) habilitado. Si no, los nombres de dominio son pasados sin cambios.
 
-In cases where it is not known in advance if `input` is an absolute URL and a `base` is provided, it is advised to validate that the `origin` of the `URL` object is what is expected.
+En casos donde no es conocido de antemano si `input` es un URL absoluto y una `base` es proporcionada, es recomendable validar que el `origin` del objeto `URL` es lo esperado.
 
 ```js
 let myURL = new URL('http://anotherExample.org/', 'https://example.org/');
@@ -130,43 +131,43 @@ myURL = new URL('foo:anotherExample.org/', 'https://example.org/');
 
 * {string}
 
-Gets and sets the fragment portion of the URL.
+Obtiene y establece la porción del fragmento de la URL.
 
 ```js
 const myURL = new URL('https://example.org/foo#bar');
 console.log(myURL.hash);
-// Prints #bar
+// Imprime #bar
 
 myURL.hash = 'baz';
 console.log(myURL.href);
-// Prints https://example.org/foo#baz
+// Imprime https://example.org/foo#baz
 ```
 
-Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Caracteres URL inválidos incluidos en el valor asignado a la propiedad `hash` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.host
 
 * {string}
 
-Gets and sets the host portion of the URL.
+Obtiene y establece la porción del host de la URL.
 
 ```js
 const myURL = new URL('https://example.org:81/foo');
 console.log(myURL.host);
-// Prints example.org:81
+// Imprime example.org:81
 
 myURL.host = 'example.com:82';
 console.log(myURL.href);
-// Prints https://example.com:82/foo
+// Imprime https://example.com:82/foo
 ```
 
-Invalid host values assigned to the `host` property are ignored.
+Los valores de host inválidos asignados a la propiedad `host` son ignorados.
 
 #### url.hostname
 
 * {string}
 
-Gets and sets the hostname portion of the URL. The key difference between `url.host` and `url.hostname` is that `url.hostname` does *not* include the port.
+Obtiene y establece la porción del hostname de la URL. La diferencia clave entre `url.host` y `url.hostname` es que `url.hostname` *no* incluye el puerto.
 
 ```js
 const myURL = new URL('https://example.org:81/foo');

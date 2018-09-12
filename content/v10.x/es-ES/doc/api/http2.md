@@ -14,9 +14,9 @@ const http2 = require('http2');
 
 La API de Núcleo proporciona una interfaz de bajo nivel diseñada específicamente alrededor del soporte para las funciones del protocolo de HTTP/2. It is specifically *not* designed for compatibility with the existing [HTTP/1](http.html) module API. However, the [Compatibility API](#http2_compatibility_api) is.
 
-La API de Núcleo `http2` es mucho más simétrica entre cliente y servidor que la API `http` . For instance, most events, like `'error'`, `'connect'` and `'stream'`, can be emitted either by client-side code or server-side code.
+La API de Núcleo `http2` es mucho más simétrica entre cliente y servidor que la API `http` . Por ejemplo, la mayoría de los eventos, como `'error'`, `'connect'` y `'stream'`, pueden ser emitidos por el código del lado del cliente o por el código del lado del servidor.
 
-### Server-side example
+### Ejemplo del lado del servidor
 
 La siguiente ilustra un servidor simple de HTTP/2 utilizando la API de núcleo. Dado que no hay navegadores conocidos que soporten [unencrypted HTTP/2](https://http2.github.io/faq/#does-http2-require-encryption), el uso de [`http2.createSecureServer()`][] es necesario al comunicarse con clientes del navegador.
 
@@ -49,9 +49,9 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
   -keyout localhost-privkey.pem -out localhost-cert.pem
 ```
 
-### Client-side example
+### Ejemplo del lado del cliente
 
-The following illustrates an HTTP/2 client:
+Lo siguiente ilustra un cliente HTTP/2:
 
 ```js
 const http2 = require('http2');
@@ -79,25 +79,25 @@ req.on('end', () => {
 req.end();
 ```
 
-### Class: Http2Session
+### Clase: Http2Session
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* Extends: {EventEmitter}
+* Extiende a: {EventEmitter}
 
-Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instances of this class are *not* intended to be constructed directly by user code.
+Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instancias de esta clase *no* están destinadas a ser construidas directamente por el código de usuario.
 
-Each `Http2Session` instance will exhibit slightly different behaviors depending on whether it is operating as a server or a client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
+Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si está operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. En el lado del servidor, el código de usuario raramente debe tener ocasión de trabajar directamente con el objeto `Http2Session`, con la mayoría de las acciones tomadas típicamente a través de interacciones, ya sea con los objetos `Http2Server` o `Http2Stream`.
 
 #### `Http2Session` and Sockets
 
-Every `Http2Session` instance is associated with exactly one [`net.Socket`][] or [`tls.TLSSocket`][] when it is created. Cuando se destruye ya sea el `Socket` o el `Http2Session`, ambos serán destruidos.
+Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][] o una [`tls.TLSSocket`][] cuando es creada. Cuando se destruye ya sea el `Socket` o la `Http2Session`, ambos serán destruidos.
 
-Because the of the specific serialization and processing requirements imposed by the HTTP/2 protocol, it is not recommended for user code to read data from or write data to a `Socket` instance bound to a `Http2Session`. Doing so can put the HTTP/2 session into an indeterminate state causing the session and the socket to become unusable.
+Debido a los requisitos específicos de serialización y procesamiento impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos a una instancia de `Socket` vinculada a una `Http2Session` . Hacerlo, puede poner la sesión HTTP/2 en un estado indeterminado, causando que la sesión y el socket se vuelvan inutilizables.
 
-Once a `Socket` has been bound to an `Http2Session`, user code should rely solely on the API of the `Http2Session`.
+Una vez que un `Socket` haya sido vinculado a una `Http2Session`, el código de usuario debería confiar únicamente en la API de la `Http2Session` .
 
 #### Event: 'close'
 
@@ -105,7 +105,7 @@ Once a `Socket` has been bound to an `Http2Session`, user code should rely solel
 added: v8.4.0
 -->
 
-El evento de `'close'` se emite una vez que la `Http2Session` ha sido destruida. Its listener does not expect any arguments.
+El evento de `'close'` se emite una vez que la `Http2Session` ha sido destruida. Su oyente no espera ningún argumento.
 
 #### Event: 'connect'
 
@@ -116,7 +116,7 @@ added: v8.4.0
 * `session` {Http2Session}
 * `socket` {net.Socket}
 
-The `'connect'` event is emitted once the `Http2Session` has been successfully connected to the remote peer and communication may begin.
+El evento `'connect'` se emite una vez que la `Http2Session` haya sido conectada exitosamente al peer remoto y la comunicación pueda comenzar.
 
 El código de usuario generalmente no escuchará directamente a este evento.
 
@@ -137,12 +137,12 @@ added: v8.4.0
 -->
 
 * `type` {integer} El tipo de frame.
-* `code` {integer} The error code.
+* `code` {integer} El código de error.
 * `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
 
-The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
+El evento `'frameError'` se emite cuando ocurre un error mientras se intenta enviar un frame en la sesión. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
-If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento de `'frameError'` .
+Si el evento `'frameError'` esta asociado con un stream, el stream se cerrará y se destruirá inmediatamente después del evento `'frameError'` . Si el evento no está asociado a un stream, la `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
 
 #### Event: 'goaway'
 
@@ -150,13 +150,13 @@ If the `'frameError'` event is associated with a stream, the stream will be clos
 added: v8.4.0
 -->
 
-* `errorCode` {number} The HTTP/2 error code specified in the `GOAWAY` frame.
+* `errorCode` {number} El código de error HTTP/2 especificado en el frame `GOAWAY` .
 * `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
 * `opaqueData` {Buffer} If additional opaque data was included in the `GOAWAY` frame, a `Buffer` instance will be passed containing that data.
 
-El evento de `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
+El evento `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
 
-The `Http2Session` instance will be shut down automatically when the `'goaway'` event is emitted.
+La instancia `Http2Session` se apagará automáticamente cuando se emita el evento `'goaway'` .
 
 #### Event: 'localSettings'
 
@@ -164,11 +164,11 @@ The `Http2Session` instance will be shut down automatically when the `'goaway'` 
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} A copy of the `SETTINGS` frame received.
+* `settings` {HTTP/2 Settings Object} Una copia recibida del frame `SETTINGS` .
 
-The `'localSettings'` event is emitted when an acknowledgment `SETTINGS` frame has been received.
+El evento `'localSettings'` se emite cuando un reconocimiento del frame `SETTINGS` ha sido recibida.
 
-When using `http2session.settings()` to submit new settings, the modified settings do not take effect until the `'localSettings'` event is emitted.
+Al utilizar `http2session.settings()` para enviar nuevas configuraciones, las configuraciones modificadas no toman efecto hasta que se emite el evento `'localSettings'` .
 
 ```js
 session.settings({ enablePush: false });
@@ -184,9 +184,9 @@ session.on('localSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} A copy of the `SETTINGS` frame received.
+* `settings` {HTTP/2 Settings Object} Una copia recibida del frame `SETTINGS` .
 
-The `'remoteSettings'` event is emitted when a new `SETTINGS` frame is received from the connected peer.
+El evento `'remoteSettings'` se emite cuando un frame `SETTINGS` nuevo es recibido desde el peer conectado.
 
 ```js
 session.on('remoteSettings', (settings) => {
@@ -194,7 +194,7 @@ session.on('remoteSettings', (settings) => {
 });
 ```
 
-#### Event: 'stream'
+#### Evento: 'stream'
 
 <!-- YAML
 added: v8.4.0
@@ -205,7 +205,7 @@ added: v8.4.0
 * `flags` {number} The associated numeric flags
 * `rawHeaders` {Array} An array containing the raw header names followed by their respective values.
 
-The `'stream'` event is emitted when a new `Http2Stream` is created.
+El evento `'stream'` se emite cuando un `Http2Stream` nuevo es creado.
 
 ```js
 const http2 = require('http2');
@@ -222,7 +222,7 @@ session.on('stream', (stream, headers, flags) => {
 });
 ```
 
-On the server side, user code will typically not listen for this event directly, and would instead register a handler for the `'stream'` event emitted by the `net.Server` or `tls.Server` instances returned by `http2.createServer()` and `http2.createSecureServer()`, respectively, as in the example below:
+En el lado del servidor, el código de usuario típicamente no escuchará este evento directamente y, en su lugar, registrará un handler para el evento `'stream'` emitido por las instancias `net.Server` o `tls.Server`, devueltas por `http2.createServer()` y `http2.createSecureServer()` respectivamente, como en el ejemplo a continuación:
 
 ```js
 const http2 = require('http2');
@@ -247,7 +247,7 @@ server.listen(80);
 added: v8.4.0
 -->
 
-After the `http2session.setTimeout()` method is used to set the timeout period for this `Http2Session`, the `'timeout'` event is emitted if there is no activity on the `Http2Session` after the configured number of milliseconds.
+Después de que el método `http2session.setTimeout()` es utilizado para establecer el tiempo de espera para este `Http2Session`, el evento `'timeout'` se emite si no hay actividad en el `Http2Session` luego del número de milisegundos configurados.
 
 ```js
 session.setTimeout(2000);
@@ -274,7 +274,7 @@ added: v9.4.0
 
 Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Una vez cerrado, `http2session.destroy()` *might* ser llamado si no hay instancias de `Http2Stream` abiertas.
 
-If specified, the `callback` function is registered as a handler for the `'close'` event.
+Sí está especificado, la función `callback` se registra como un handler para el evento `'close'`.
 
 #### http2session.closed
 
@@ -305,9 +305,9 @@ added: v8.4.0
 * `error` {Error} An `Error` object if the `Http2Session` is being destroyed due to an error.
 * `code` {number} The HTTP/2 error code to send in the final `GOAWAY` frame. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
 
-Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
+Termina inmediatamente la `Http2Session` y el `net.Socket` o el `tls.TLSSocket` asociados.
 
-Una vez destruido, el `Http2Session` emitirá el evento de `'close'` . If `error` is not undefined, an `'error'` event will be emitted immediately before the `'close'` event.
+Una vez destruido, el `Http2Session` emitirá el evento de `'close'` . Si `error` no está indefinido, un evento `'error'` será emitido inmediatamente antes del evento `'close'`.
 
 Si queda algún `Http2Streams` abierto, asociado con la `Http2Session`, esos también serán destruidos.
 
@@ -329,7 +329,7 @@ added: v9.4.0
 
 * {boolean|undefined}
 
-Value is `undefined` if the `Http2Session` session socket has not yet been connected, `true` if the `Http2Session` is connected with a `TLSSocket`, and `false` if the `Http2Session` is connected to any other kind of socket or stream.
+El valor es `undefined` si el socket de la sesión `Http2Session` no ha sido conectado aún, `true` si el `Http2Session` está conectado con un `TLSSocket`, y `false` si el `Http2Session` está conectado a otro tipo de socket o stream.
 
 #### http2session.goaway([code, [lastStreamID, [opaqueData]]])
 
@@ -371,7 +371,7 @@ added: v8.4.0
 
 * {boolean}
 
-Indicates whether or not the `Http2Session` is currently waiting for an acknowledgment for a sent `SETTINGS` frame. Will be `true` after calling the `http2session.settings()` method. Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
+Indica si `Http2Session` está esperando actualmente una confirmación para un frame `SETTINGS` enviado o no. Será `true` después de llamar al método `http2session.settings()` . Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
 
 #### http2session.ping([payload, ]callback)
 
@@ -383,11 +383,11 @@ added: v8.9.3
 * `callback` {Function}
 * Returns: {boolean}
 
-Envía un frame de `PING` a un peer de HTTP/2 conectado. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
+Envía un frame de `PING` a un peer de HTTP/2 conectado. La función `callback` debe ser proporcionada. El método devolverá a `true` si el `PING` fue enviado, sino, será `false`.
 
-The maximum number of outstanding (unacknowledged) pings is determined by the `maxOutstandingPings` configuration option. El máximo valor por defecto es 10.
+El número máximo de pings sobresalientes (no reconocidos) es determinado por la opción de configuración `maxOutstandingPings`. El máximo valor por defecto es 10.
 
-If provided, the `payload` must be a `Buffer`, `TypedArray`, or `DataView` containing 8 bytes of data that will be transmitted with the `PING` and returned with the ping acknowledgment.
+Si se proporcionan, el `payload` debe ser un `Buffer`, `TypedArray`, o `DataView` conteniendo 8 bytes de datos que serán transmitidos con el `PING` y retornados con el reconocimiento del ping.
 
 El callback será invocado con tres argumentos: un argumento de error que será `null` si el `PING` fue reconocido con éxito, un argumento de `duration` que reporta el número de milisegundos transcurridos desde que el ping fue enviado y desde que el reconocimiento fue recibido, y un `Buffer` que contiene la carga `PING` de 8-byte.
 
@@ -429,7 +429,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. El `callback` dado, está registrado como un oyente en el evento de `'timeout'` .
+Utilizado para establecer una función de callback, que es llamada cuando no hay actividad en la `Http2Session` después de unos milisegundos `msecs`. El `callback` dado, está registrado como un oyente en el evento de `'timeout'` .
 
 #### http2session.socket
 
@@ -443,9 +443,9 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but li
 
 `destroy`, `emit`, `end`, `pause`, `read`, `resume`, y `write` arrojarán un error con código `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` and Sockets][] para más información.
 
-`setTimeout` method will be called on this `Http2Session`.
+El método `setTimeout` será llamado en esta `Http2Session`.
 
-All other interactions will be routed directly to the socket.
+Todas las otras interacciones serán enrutadas directamente al socket.
 
 #### http2session.state
 
@@ -453,7 +453,7 @@ All other interactions will be routed directly to the socket.
 added: v8.4.0
 -->
 
-Proporciona información miscelánea sobre el estado actual de `Http2Session`.
+Proporciona información diversa sobre el estado actual del `Http2Session`.
 
 * {Object} 
   * `effectiveLocalWindowSize` {number} The current local (receive) flow control window size for the `Http2Session`.
@@ -476,11 +476,11 @@ added: v8.4.0
 
 * `settings` {HTTP/2 Settings Object}
 
-Updates the current local settings for this `Http2Session` and sends a new `SETTINGS` frame to the connected HTTP/2 peer.
+Actualiza las configuraciones locales actuales para esta `Http2Session` y envía un nuevo frame `SETTINGS` al peer HTTP/2 conectado.
 
-Once called, the `http2session.pendingSettingsAck` property will be `true` while the session is waiting for the remote peer to acknowledge the new settings.
+Una vez llamado, la propiedad de `http2session.pendingSettingsAck` será `true` mientras que la sesión esté esperando que el peer remoto reconozca las nuevas configuraciones.
 
-The new settings will not become effective until the `SETTINGS` acknowledgment is received and the `'localSettings'` event is emitted. It is possible to send multiple `SETTINGS` frames while acknowledgment is still pending.
+Las nuevas configuraciones no se harán efectivas hasta que el reconocimiento de `SETTINGS` sea recibido y el evento `'localSettings'` sea emitido. Es posible enviar múltiples frames `SETTINGS` mientras aún está pendiente el reconocimiento.
 
 #### http2session.type
 
@@ -544,14 +544,14 @@ A `URL` object, or any object with an `origin` property, may be passed as `origi
 
 The format of the `alt` parameter is strictly defined by [RFC 7838](https://tools.ietf.org/html/rfc7838) as an ASCII string containing a comma-delimited list of "alternative" protocols associated with a specific host and port.
 
-For example, the value `'h2="example.org:81"'` indicates that the HTTP/2 protocol is available on the host `'example.org'` on TCP/IP port 81. The host and port *must* be contained within the quote (`"`) characters.
+Por ejemplo, el valor `'h2="example.org:81"'` indica que el protocolo HTTP/2 está disponible en el host `'example.org'` en TCP/IP puerto 81. The host and port *must* be contained within the quote (`"`) characters.
 
 Se pueden especificar múltiples alternativas, por ejemplo: `'h2="example.org:81",
 h2=":82"'`.
 
 El identificador de protocolo (`'h2'` en los ejemplos) puede ser cualquier [ALPN Protocol ID](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids) válido.
 
-The syntax of these values is not validated by the Node.js implementation and are passed through as provided by the user or received from the peer.
+La sintaxis de estos valores no está validada por la implementación de Node.js, y se transmiten como proporcionadas por el usuario o recibidas desde el peer.
 
 ### Class: ClientHttp2Session
 
@@ -595,7 +595,7 @@ added: v8.4.0
   * `exclusive` {boolean} Cuando `true` y `parent` identifica un Stream mayor, el stream creado se vuelve la única dependencia directa del Stream mayor, con todas las otras dependientes existentes vueltas dependientes del stream creado recientemente. **Predeterminado:** `false`.
   * `parent` {number} Especifica el identificador numérico de un stream del cual es dependiente el stream que se creó recientemente.
   * `weight` {number} Especifica la dependencia relativa de un stream en relación a otros streams con el mismo `parent`. El valor es un número entre `1` y `256` (inclusivo).
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
 
 * Devuelve: {ClientHttp2Stream}
 
@@ -638,7 +638,7 @@ added: v8.4.0
 
 Cada instancia de la clase de `Http2Stream` representa un stream de comunicaciones bidireccionales de HTTP/2 sobre una instancia de `Http2Session` . Cualquier `Http2Session` individual puede tener hasta 2 instancias de <sup>31</sup>-1 `Http2Stream` sobre su tiempo de vida.
 
-Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . En el servidor, las instancias de `Http2Stream` son creadas en respuesta a una solicitud entrante de HTTP (y entregadas al código de usuario mediante el evento de `'stream'`), o en respuesta a una llamada al método de `http2stream.pushStream()` . En el cliente, las instancias de `Http2Stream` se crean y se devuelven cuando el método de `http2session.request()` es llamado, o en respuesta a un evento de `'push'` entrante.
+Código de usuario no construirá instancias de `Http2Stream` directamente. Más bien, estas son creadas, gestionadas, y proporcionadas a código de usuario a través de la instancia de `Http2Session` . En el servidor, las instancias `Http2Stream` son creadas en respuesta a una solicitud entrante de HTTP (y entregadas al código de usuario mediante el evento de `'stream'`), o en respuesta a una llamada al método `http2stream.pushStream()` . En el cliente, las instancias de `Http2Stream` se crean y se devuelven cuando el método de `http2session.request()` es llamado, o en respuesta a un evento de `'push'` entrante.
 
 La clase `Http2Stream` es una base para las clases de [`ServerHttp2Stream`][] y [`ClientHttp2Stream`][], las cuales son utilizadas específicamente por el Servidor o el lado del Cliente, respectivamente.
 
@@ -665,7 +665,7 @@ Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 * El método de `http2stream.close()` es llamado.
 * Los métodos de `http2stream.destroy()` o `http2session.destroy()` son llamados.
 
-Cuando se destruye una instancia de `Http2Stream`, se hará un intento de enviar un frame de `RST_STREAM`, será enviado al peer conectado.
+Cuando se destruye una instancia `Http2Stream`, se hará un intento de enviar un frame `RST_STREAM` al peer conectado.
 
 Cuando se destruye la instancia de `Http2Stream`, el evento de `'close'` será emitido. Ya que `Http2Stream` es una instancia de `stream.Duplex`, el evento de `'end'` también será emitido si los datos del stream fluyen actualmente. Puede que el evento de `'error'` también sea emitido si `http2stream.destroy()` fue llamado con un `Error` pasado como el primer argumento.
 
@@ -850,7 +850,7 @@ added: v8.4.0
 
 * {Http2Session}
 
-Una referencia a la instancia de `Http2Session` que posee este `Http2Stream`. El valor será `undefined` luego de que la instancia de `Http2Stream` sea destruida.
+Una referencia a la instancia de `Http2Session` que posee este `Http2Stream`. El valor será `undefined` luego de que la instancia `Http2Stream` sea destruida.
 
 #### http2stream.setTimeout(msecs, callback)
 
@@ -875,7 +875,7 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Proporciona información miscelánea sobre el estado actual del 
+--> Proporciona información diversa sobre el estado actual del 
 
 `Http2Stream`.
 
@@ -921,7 +921,7 @@ added: v8.4.0
 
 * Extends {Http2Stream}
 
-La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. Las instancias de `Http2Stream` en el cliente proporcionan eventos tales como `'response'` y `'push'`, los cuales son relevantes solamente en el cliente.
+La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. Las instancias `Http2Stream` en el cliente proporcionan eventos tales como `'response'` y `'push'`, los cuales son relevantes solamente en el cliente.
 
 #### Evento: 'continue'
 
@@ -1058,7 +1058,7 @@ added: v8.4.0
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `endStream` {boolean} Set to `true` to indicate that the response will not include payload data.
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
 
 ```js
 const http2 = require('http2');
@@ -1101,7 +1101,7 @@ changes:
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
   * `statCheck` {Function}
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
@@ -1132,7 +1132,7 @@ The optional `options.statCheck` function may be specified to give user code an 
 
 The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
 
-El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Note that using the same file descriptor concurrently for multiple streams is not supported and may result in data loss. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
+El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Tenga en cuenta que utilizar el mismo descriptor de archivo de manera concurrente para múltiples streams no es soportado y puede resultar en pérdida de datos. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be used to sent trailing header fields to the peer.
 
@@ -1178,7 +1178,7 @@ changes:
 * `opciones` {Object} 
   * `statCheck` {Function}
   * `onError` {Function} Función de callback invocada en caso de que ocurra un error antes de un envío.
-  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento de `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
+  * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
@@ -1276,9 +1276,9 @@ added: v8.5.0
 
 Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debería continuar a enviar el cuerpo de la solicitud, o generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tener en cuenta que cuando este evento es emitido y manejado, el evento [`'request'`] no será emitido.
 
 #### Event: 'request'
 
@@ -1297,7 +1297,7 @@ Emitido cada vez que hay una solicitud. Tenga en cuenta que pueden haber múltip
 added: v8.4.0
 -->
 
-The `'session'` event is emitted when a new `Http2Session` is created by the `Http2Server`.
+El evento `'session'` se emite cuando una `Http2Session` nueva es creada por el `Http2Server` .
 
 #### Event: 'sessionError'
 
@@ -1321,7 +1321,7 @@ Si un `ServerHttp2Stream` emite un evento de `'error'`, será reenviado aquí. E
 added: v8.4.0
 -->
 
-The `'stream'` event is emitted when a `'stream'` event has been emitted by an `Http2Session` associated with the server.
+El evento `'stream'` se emite cuando un evento `'stream'` ha sido emitido por una `Http2Session` asociada al servidor.
 
 ```js
 const http2 = require('http2');
@@ -1352,7 +1352,7 @@ server.on('stream', (stream, headers, flags) => {
 added: v8.4.0
 -->
 
-The `'timeout'` event is emitted when there is no activity on the Server for a given number of milliseconds set using `http2server.setTimeout()`.
+El evento `'timeout'` se emite cuando no hay actividad en el Servidor por un número dado de milisegundos establecidos, utilizando `http2server.setTimeout()` .
 
 #### server.close([callback])
 
@@ -1383,11 +1383,11 @@ added: v8.5.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createSecureServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
+Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createSecureServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. Si este evento no se escucha, el servidor automáticamente responderá con un estado `100 Continue` según corresponda.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debería continuar a enviar el cuerpo de la solicitud, o generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tener en cuenta que cuando este evento es emitido y manejado, el evento [`'request'`][] no será emitido.
 
 #### Event: 'request'
 
@@ -1414,7 +1414,7 @@ El evento de `'session'` se emite cuando `Http2SecureServer` crea un nuevo `Http
 added: v8.4.0
 -->
 
-The `'sessionError'` event is emitted when an `'error'` event is emitted by an `Http2Session` object associated with the `Http2SecureServer`.
+El evento `'sessionError'` se emite cuando un evento `'error'` es emitido por un objeto `Http2Session` asociado al `Http2SecureServer` .
 
 #### Event: 'stream'
 
@@ -1422,7 +1422,7 @@ The `'sessionError'` event is emitted when an `'error'` event is emitted by an `
 added: v8.4.0
 -->
 
-The `'stream'` event is emitted when a `'stream'` event has been emitted by an `Http2Session` associated with the server.
+El evento `'stream'` se emite cuando un evento `'stream'` ha sido emitido por una `Http2Session` asociada al servidor.
 
 ```js
 const http2 = require('http2');
@@ -1455,7 +1455,7 @@ server.on('stream', (stream, headers, flags) => {
 added: v8.4.0
 -->
 
-The `'timeout'` event is emitted when there is no activity on the Server for a given number of milliseconds set using `http2secureServer.setTimeout()`.
+El evento `'timeout'` se emite cuando no hay actividad en el Servidor por un número dado de milisegundos establecidos, utilizando `http2secureServer.setTimeout()` .
 
 #### Event: 'unknownProtocol'
 

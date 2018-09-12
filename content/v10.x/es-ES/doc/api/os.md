@@ -173,12 +173,12 @@ added: v0.9.4
 
 * Retorna: {string}
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+El método `os.endianness()` retorna una línea identificando la endianidad del CPU* para la cual el binario Node.js fue compilado*.
 
-Possible values are:
+Posibles valores son:
 
-* `'BE'` for big endian
-* `'LE'` for little endian.
+* `'BE'` para gran Endian
+* `'LE'` para pequeño Endian.
 
 ## os.freemem()
 
@@ -186,9 +186,9 @@ Possible values are:
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
-The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
+El método `os.freemem()` retorna la cantidad de memoria libre del sistema en bytes como un entero.
 
 ## os.homedir()
 
@@ -196,9 +196,9 @@ The `os.freemem()` method returns the amount of free system memory in bytes as a
 added: v2.3.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.homedir()` method returns the home directory of the current user as a string.
+El método `os.homedir()` devuelve el directorio hogar del usuario actual como una línea.
 
 ## os.hostname()
 
@@ -206,9 +206,9 @@ The `os.homedir()` method returns the home directory of the current user as a st
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.hostname()` method returns the hostname of the operating system as a string.
+El método `os.hostname()` devuelve el nombre del dueño del sistema operativo como una string.
 
 ## os.loadavg()
 
@@ -216,13 +216,13 @@ The `os.hostname()` method returns the hostname of the operating system as a str
 added: v0.3.3
 -->
 
-* Returns: {number[]}
+* Retorna: {number[]}
 
-The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
+El método `os.loadavg()` devuelve un conjunto conteniendo los promedios de carga de 1,5 y 15 minutos.
 
-The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
+El promedio de carga es una medida de la actividad del sistema, calculado por el sistema operativo y expresado como un número fraccionario. Como regla general, la carga promedio debería ser idealmente menor que el número de CPUs lógicos en el sistema.
 
-The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
+La carga promedio es un concepto específico de UNIX con ningún equivalente real en las plataformas Windows. En Windows, el valor de retorno siempre es `[0, 0, 0]`.
 
 ## os.networkInterfaces()
 
@@ -230,21 +230,21 @@ The load average is a UNIX-specific concept with no real equivalent on Windows p
 added: v0.6.0
 -->
 
-* Returns: {Object}
+* Retorna: {Object}
 
-The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
+El método `os.networkInterfaces()` retorna un objeto conteniendo solamente interfaces en la red que han sido asignados a la dirección de la red.
 
-Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
+Cada tecla en el objeto retornado identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
 
-The properties available on the assigned network address object include:
+Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 
-* `address` {string} The assigned IPv4 or IPv6 address
-* `netmask` {string} The IPv4 or IPv6 network mask
-* `family` {string} Either `IPv4` or `IPv6`
-* `mac` {string} The MAC address of the network interface
-* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
-* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
-* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
+* `address` {string} La dirección IPv4 o IPv6 asignada
+* `netmask` {string} La máscara de red IPv4 o IPv6
+* `family` {string} Para `IPv4` o `IPv6`
+* `mac` {string} La dirección MAC de la interfaz de red
+* `internal` {boolean} `true` si la interfaz de la red es un loopback o es una interfaz similar que no es remotamente accesible; de otra forma `false`
+* `scopeid` {number} El identificador numérico IPv6 (solamente especificado cuando `family` es `IPv6`)
+* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. Si la `netmask` es invalida, esta propiedad está colocada a `null`.
 
 <!-- eslint-skip -->
 
@@ -295,11 +295,11 @@ The properties available on the assigned network address object include:
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
+El método `os.platform()` retorna un string identificando la plataforma del sistema operativo como fue colocada durante el tiempo de compilación de Node.js.
 
-Currently possible values are:
+Los posibles valores actuales son:
 
 * `'aix'`
 * `'darwin'`
@@ -309,9 +309,9 @@ Currently possible values are:
 * `'sunos'`
 * `'win32'`
 
-Equivalent to [`process.platform`][].
+Equivalente para [`process.platform`][].
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
+El valor `'android'` puede también ser devuelto si Node.js está construido en un sistema operativo Android. Sin embargo, el soporte de Android es considerado[ experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) actualmente.
 
 ## os.release()
 
@@ -319,11 +319,11 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.release()` method returns a string identifying the operating system release.
+El método `os.release()` retorna un string identificando la versión del sistema operativo.
 
-On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
+En sistemas POSIX, la versión del sistema operativo es determinada llamando [uname(3)](https://linux.die.net/man/3/uname). En Windows, `GetVersionExW()` es usado. Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para mayor información.
 
 ## os.tmpdir()
 
@@ -337,9 +337,9 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
+El método `os.tmpdir()` retorna una string que especifica el directorio predeterminado del sistema operativo para los archivos temporales.
 
 ## os.totalmem()
 
@@ -347,9 +347,9 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
-The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
+El método `os.totalmem()` retorna la cantidad total de memoria del sistema en bytes como un entero.
 
 ## os.type()
 
@@ -357,11 +357,11 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
+El método `os.type()` retorna una string identificando el nombre del sistema operativo como es retornado por [uname(3)](https://linux.die.net/man/3/uname). Por ejemplo`'Linux'` en Linux, `'Darwin'` en macOS y `'Windows_NT'` en Windows.
 
-Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
+Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para información adicional sobre los resultados de correr [uname(3)](https://linux.die.net/man/3/uname) en distintos sistemas operativos.
 
 ## os.uptime()
 
@@ -375,9 +375,9 @@ changes:
                  component on Windows.
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
-The `os.uptime()` method returns the system uptime in number of seconds.
+El método de `os.uptime()` retorna el tiempo de operación del sistema en segundos.
 
 ## os.userInfo([options])
 
@@ -385,21 +385,21 @@ The `os.uptime()` method returns the system uptime in number of seconds.
 added: v6.0.0
 -->
 
-* `options` {Object} 
-  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Predeterminado:** `'utf8'`.
-* Returns: {Object}
+* `opciones` {Object} 
+  * `encoding` {string} Cifrado de caracteres usado para interpretar strings resultantes. Si `encoding` esta colocado en `'buffer'`, el `username`, `shell`, y `homedir` valores serán instancias `Buffer`. **Predeterminado:** `'utf8'`.
+* Retorna: {Object}
 
-The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
+El método `os.userInfo()` retorna información acerca del actual usuario efectivo -- en plataformas POSIX, esto es tipicamente un subconjunto en el archivo de contraseñas. El objeto devuelto incluye el `username`, `uid`, `gid`, `shell`, y `homedir`. En Windows, el `uid` y `gid` campos son `-1`, y `shell` es `null`.
 
-The value of `homedir` returned by `os.userInfo()` is provided by the operating system. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
+El valor del `homedir` deveulto por `os.userInfo()` es provisto por el sistema operativo. Esto difiere del resultado de `os.homedir()` el cual consulta distintas variables del entorno para el directorio hogar antes de recurrir a la respuesta del sistema operativo.
 
-## OS Constants
+## Constantes del SO
 
-The following constants are exported by `os.constants`.
+Las siguientes constantes son exportadas por `os.constants`.
 
-Not all constants will be available on every operating system.
+No todas las constantes estarán disponibles en todos los sistemas operativos.
 
-### Signal Constants
+### Constantes Señal
 
 <!-- YAML
 changes:
@@ -409,12 +409,12 @@ changes:
     description: Added support for `SIGINFO`.
 -->
 
-The following signal constants are exported by `os.constants.signals`:
+Las siguientes constantes son exportadas por `os.constants.signals`:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>

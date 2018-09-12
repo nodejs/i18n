@@ -465,7 +465,7 @@ Una vez que `process.connected` sea `false`, ya no será posible enviar mensajes
 added: v6.1.0
 -->
 
-* `previousValue` {Object} Un valor de devolución previo a llamar `process.cpuUsage()`
+* `previousValue` {Object} Un valor de devolución previo a llamar a `process.cpuUsage()`
 * Devuelve: {Object} * `user` {integer} * `system` {integer}
 
 The `process.cpuUsage()` method returns the user and system CPU time usage of the current process, in an object with properties `user` and `system`, whose values are microsecond values (millionth of a second). These values measure time spent in user and system code respectively, and may end up being greater than actual elapsed time if multiple CPU cores are performing work for this process.
@@ -520,7 +520,7 @@ added: v0.7.2
 
 Si el proceso Node.js es generado con un canal IPC (vea la documentación del [Proceso Secundario](child_process.html) y de [Cluster](cluster.html)), el método `process.disconnect()` cerrará el canal IPC para el proceso primario, permitiendo que el proceso secundario se cierre con gracia una vez no haya ninguna otra conexión que lo mantenga con vida.
 
-El efecto de llamar a `process.disconnect()` es el mismo que llamar a [`ChildProcess.disconnect()`][] del proceso primario.
+El efecto de llamar a `process.disconnect()` es el mismo que el de llamar a [`ChildProcess.disconnect()`][] del proceso primario.
 
 Si el proceso Node.js no fue generado con un canal IPC, `process.disconnect()` será `undefined`.
 
@@ -564,12 +564,12 @@ added: v8.0.0
 
 * `warning` {string|Error} La advertencia a emitir.
 * `options` {Object} 
-  * `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *type* de advertencia que se emite. **Predeterminado:** `'Warning'`.
+  * `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *tipo* de advertencia que se emite. **Predeterminado:** `'Warning'`.
   * `code` {string} Un identificador único para la instancia de la advertencia que se emite.
   * `ctor` {Function} Cuando `warning` es una `String`, `ctor` es una función opcional usada para limitar el stack trace generado. **Predeterminado:** `process.emitWarning`.
   * `detail` {string} Texto adicional a incluir con el error.
 
-El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden escuchar añadiendo un manejador al evento [`'warning'`](#process_event_warning).
+El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden ser escuchadas añadiendo un manejador al evento [`'warning'`](#process_event_warning).
 
 ```js
 // Emitir una advertencia con un código y un detalle adicional.
@@ -603,11 +603,11 @@ added: v6.0.0
 -->
 
 * `warning` {string|Error} La advertencia a emitir.
-* `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *type* de advertencia que se emite. **Predeterminado:** `'Warning'`.
+* `type` {string} Cuando `warning` es una `String`, `type` es el nombre a usar para el *tipo* de advertencia que se emite. **Predeterminado:** `'Warning'`.
 * `code` {string} Un identificador único para la instancia de la advertencia que se emite.
 * `ctor` {Function} Cuando `warning` es una `String`, `ctor` es una función opcional usada para limitar el stack trace generado. **Predeterminado:** `process.emitWarning`.
 
-El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden escuchar añadiendo un manejador al evento [`'warning'`](#process_event_warning).
+El método `process.emitWarning()` puede usarse para emitir advertencias personalizadas o de aplicación específica del proceso. Estas pueden ser escuchadas añadiendo un manejador al evento [`'warning'`](#process_event_warning).
 
 ```js
 // Emitir una advertencia utilizando una string.
@@ -652,7 +652,7 @@ process.emitWarning(myWarning);
 
 Se arroja un `TypeError` si `warning` es algo distinto a una string o a un objeto `Error`.
 
-Note que mientras que las advertencias del proceso utilizan objetos `Error`, el mecanismo de advertencia del proceso **no** es un remplazo para los mecanismos normales manejadores de error.
+Note que aunque las advertencias del proceso utilizan objetos `Error`, el mecanismo de advertencia del proceso **no** es un remplazo para los mecanismos normales para el manejo de errores.
 
 Se implementa el siguiente manejo adicional si el `type` de advertencia es `'DeprecationWarning'`:
 
@@ -824,32 +824,32 @@ La shell que ejecutó Node.js debería ver el código de salida como `1`.
 
 Llamar a `process.exit()` forzará al proceso a cerrarse tan rápido como sea posible incluso si todavía hay operaciones asincrónicas pendientes que no se han completado en su totalidad, incluyendo operaciones I/O para `process.stdout` y `process.stderr`.
 
-In most situations, it is not actually necessary to call `process.exit()` explicitly. The Node.js process will exit on its own *if there is no additional work pending* in the event loop. The `process.exitCode` property can be set to tell the process which exit code to use when the process exits gracefully.
+En la mayoría de las situaciones, no es realmente necesario llamar a `process.exit()` explícitamente. El proceso Node.js se saldrá por su propia cuenta *si no hay trabajo adicional pendiente* en el bucle del evento. La propiedad `process.exitCode` puede establecerse para decirle al proceso cuál código de salida utilizar cuando el proceso se cierre con gracia.
 
-For instance, the following example illustrates a *misuse* of the `process.exit()` method that could lead to data printed to stdout being truncated and lost:
+El siguiente ejemplo ilustra un *mal uso* del método `process.exit()` que podría conducir a que los datos impresos en stdout se trunquen y pierdan:
 
 ```js
-// This is an example of what *not* to do:
+// Esto es un ejemplo de que *no* hacer:
 if (someConditionNotMet()) {
   printUsageToStdout();
   process.exit(1);
 }
 ```
 
-The reason this is problematic is because writes to `process.stdout` in Node.js are sometimes *asynchronous* and may occur over multiple ticks of the Node.js event loop. Calling `process.exit()`, however, forces the process to exit *before* those additional writes to `stdout` can be performed.
+La razón de que esto sea problemático es porque las escrituras a `process.stdout` en Node.js a veces son *asincrónicas* y pueden ocurrir sobre múltiples ticks del bucle del evento Node.js. El llamar a `process.exit()`, sin embargo, forza al proceso a cerrarse *antes* de que se realicen esas escrituras adicionales en `stdout`.
 
-Rather than calling `process.exit()` directly, the code *should* set the `process.exitCode` and allow the process to exit naturally by avoiding scheduling any additional work for the event loop:
+En lugar de llamar a `process.exit()` directamente, el código *debe* establecer el `process.exitCode` y permitirle al proceso que se cierre naturalmente al evitar programar cualquier trabajo adicional para el bucle del evento:
 
 ```js
-// How to properly set the exit code while letting
-// the process exit gracefully.
+// Cómo establecer correctamente el código de salida al dejar
+// que el proceso se cierre con gracia.
 if (someConditionNotMet()) {
   printUsageToStdout();
   process.exitCode = 1;
 }
 ```
 
-If it is necessary to terminate the Node.js process due to an error condition, throwing an *uncaught* error and allowing the process to terminate accordingly is safer than calling `process.exit()`.
+Si es necesario terminar el proceso Node.js debido a una condición de error, arrojar un error *sin capturar* y permitir que el proceso se termine como corresponde es más seguro que llamar a `process.exit()`.
 
 ## process.exitCode
 
@@ -859,9 +859,9 @@ added: v0.11.8
 
 * {integer}
 
-A number which will be the process exit code, when the process either exits gracefully, or is exited via [`process.exit()`][] without specifying a code.
+Un número que será el código de salida del proceso, cuando el proceso se cierre con gracia o se cierre a través de [`process.exit()`][] sin especificar un código.
 
-Specifying a code to [`process.exit(code)`][`process.exit()`] will override any previous setting of `process.exitCode`.
+Especificar un código a [`process.exit(code)`][`process.exit()`] anulará cualquier configuración previa de `process.exitCode`.
 
 ## process.getegid()
 
@@ -869,7 +869,7 @@ Specifying a code to [`process.exit(code)`][`process.exit()`] will override any 
 added: v2.0.0
 -->
 
-The `process.getegid()` method returns the numerical effective group identity of the Node.js process. (See getegid(2).)
+El método `process.getegid()` devuelve la identidad del grupo efectivo numérico del proceso Node.js. (vea getegid(2).)
 
 ```js
 if (process.getegid) {
@@ -877,7 +877,7 @@ if (process.getegid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.geteuid()
 
@@ -885,9 +885,9 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v2.0.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
+El método `process.geteuid()` devuelve la identidad del usuario efectivo numérico del proceso. (Vea geteuid(2).)
 
 ```js
 if (process.geteuid) {
@@ -895,7 +895,7 @@ if (process.geteuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.getgid()
 
@@ -903,9 +903,9 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.31
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
+El método `process.getgid()` devuelve la identidad del grupo numérico del proceso. (Vea getgid(2).)
 
 ```js
 if (process.getgid) {
@@ -913,7 +913,7 @@ if (process.getgid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.getgroups()
 
@@ -921,11 +921,11 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.9.4
 -->
 
-* Returns: {integer[]}
+* Devuelve: {integer[]}
 
-The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
+El método `process.getgroups()` devuelve un array con los IDs del grupo suplementario. POSIX lo deja sin especificar si el ID del grupo efectivo está incluida, pero Node.js asegura que siempre lo está.
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.getuid()
 
@@ -933,9 +933,9 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.28
 -->
 
-* Returns: {integer}
+* Devuelve: {integer}
 
-The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
+El método `process.getuid()` devuelve la identidad del usuario numérico del proceso. (Vea getuid(2).)
 
 ```js
 if (process.getuid) {
@@ -943,7 +943,7 @@ if (process.getuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.hasUncaughtExceptionCaptureCallback()
 
@@ -951,9 +951,9 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v9.3.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
+Indica si un callback ha sido establecido utilizando [`process.setUncaughtExceptionCaptureCallback()`][].
 
 ## process.hrtime([time])
 
@@ -961,14 +961,15 @@ Indicates whether a callback has been set using [`process.setUncaughtExceptionCa
 added: v0.7.6
 -->
 
-* `time` {integer[]} The result of a previous call to `process.hrtime()`
-* Returns: {integer[]}
+* `time` {integer[]} El resultado de una llamada previa a `process.hrtime()`
+* Devuelve: {integer[]}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple `Array`, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
-`time` is an optional parameter that must be the result of a previous `process.hrtime()` call to diff with the current time. If the parameter passed in is not a tuple `Array`, a `TypeError` will be thrown. Passing in a user-defined array instead of the result of a previous call to `process.hrtime()` will lead to undefined behavior.
+`time` es un parámetro opcional que debe ser el resultado de una llamada `process.hrtime()</0 previa para diff con el tiempo actual. Si el parámetro
+pasado no es una <code>Array` dupla, se arrojará un `TypeError`. El pasar una array de usuario definido en lugar del resultado de una llamada previa a `process.hrtime()` conducirá a un comportamiento indefinido.
 
-These times are relative to an arbitrary time in the past, and not related to the time of day and therefore not subject to clock drift. The primary use is for measuring performance between intervals:
+These times are relative to an arbitrary time in the past, and not related to the time of day and therefore not subject to clock drift. El uso principal es para medir el rendimiento entre los intervalos:
 
 ```js
 const NS_PER_SEC = 1e9;
@@ -980,7 +981,7 @@ setTimeout(() => {
   // [ 1, 552 ]
 
   console.log(`Benchmark took ${diff[0] * NS_PER_SEC + diff[1]} nanoseconds`);
-  // benchmark took 1000000552 nanoseconds
+  // el punto de referencia tomó 1000000552 nanosegundos
 }, 1000);
 ```
 
@@ -990,22 +991,22 @@ setTimeout(() => {
 added: v0.9.4
 -->
 
-* `user` {string|number} The user name or numeric identifier.
-* `extraGroup` {string|number} A group name or numeric identifier.
+* `user` {string|number} El nombre de usuario o el identificador numérico.
+* `extraGroup` {string|number} Un nombre de grupo o identificador numérico.
 
-The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
+El método `process.initgroups()` lee el archivo `/etc/group` e inicializa la lista de acceso de grupo, utilizando todos los grupos en los cuales el usuario es miembro. Esto es una operación privilegiada que requiere que el proceso Nothe.js tenga acceso a `root` o la capacidad de `CAP_SETGID`.
 
-Note that care must be taken when dropping privileges. Example:
+Note que se debe tener cuidado al eliminar privilegios. Ejemplo:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
-process.initgroups('bnoordhuis', 1000);   // switch user
+process.initgroups('bnoordhuis', 1000);   // cambia el usuario
 console.log(process.getgroups());         // [ 27, 30, 46, 1000, 0 ]
-process.setgid(1000);                     // drop root gid
+process.setgid(1000);                     // elimina el gid del root
 console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.kill(pid[, signal])
 
@@ -1013,16 +1014,16 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.0.6
 -->
 
-* `pid` {number} A process ID
-* `signal` {string|number} The signal to send, either as a string or number. **Predeterminado:** `'SIGTERM'`.
+* `pid` {number} Un ID del proceso
+* `signal` {string|number} La señal a enviar, ya sea una string o un número. **Predeterminado:** `'SIGTERM'`.
 
-The `process.kill()` method sends the `signal` to the process identified by `pid`.
+El método `process.kill()` envía la `signal` al proceso identificado por `pid`.
 
-Signal names are strings such as `'SIGINT'` or `'SIGHUP'`. See [Signal Events](#process_signal_events) and kill(2) for more information.
+Los nombres de las señales son strings como `'SIGINT'` o `'SIGHUP'`. Vea los [Eventos de Señal](#process_signal_events) y kill(2) para más información.
 
-This method will throw an error if the target `pid` does not exist. As a special case, a signal of `0` can be used to test for the existence of a process. Windows platforms will throw an error if the `pid` is used to kill a process group.
+Este método arrojará un error si el `pid` del objetivo no existe. En un caso especial, una señal de `0` puede ser usada para probar la existencia de un proceso. Las plataformas Windows arrojarán un error si el `pid` es usado para aniquilar un grupo de proceso.
 
-Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
+A pesar de que el nombre de esta función sea `process.kill()`, realmente sólo es un transmisor de señal, como la llamada de sistema `kill`. La señal enviada puede hacer algo distinto a aniquilar el proceso objetivo.
 
 ```js
 process.on('SIGHUP', () => {
@@ -1037,7 +1038,7 @@ setTimeout(() => {
 process.kill(process.pid, 'SIGHUP');
 ```
 
-When `SIGUSR1` is received by a Node.js process, Node.js will start the debugger, see [Signal Events](#process_signal_events).
+Cuando `SIGUSR1` es recibido por el proceso Node.js, Node.js iniciará el depurador. Vea los [Eventos de la Señal](#process_signal_events).
 
 ## process.mainModule
 
@@ -1047,9 +1048,9 @@ added: v0.1.17
 
 * {Object}
 
-The `process.mainModule` property provides an alternative way of retrieving [`require.main`][]. The difference is that if the main module changes at runtime, [`require.main`][] may still refer to the original main module in modules that were required before the change occurred. Generally, it's safe to assume that the two refer to the same module.
+La propiedad `process.mainModule` proporciona una manera alternativa de recuperar [`require.main`][]. La diferencia es que si el módulo principal cambia en tiempo de ejecución, [`require.main`][] puede todavía referirse al módulo principal original en módulos que se requerían antes de que ocurriera el cambio. Generalmente, es seguro asumir que ambos se refieran al mismo módulo.
 
-As with [`require.main`][], `process.mainModule` will be `undefined` if there is no entry script.
+Al igual que con [`require.main`][], `process.mainModule` será `undefined` si no hay un script de entrada.
 
 ## process.memoryUsage()
 
@@ -1062,17 +1063,17 @@ changes:
     description: Added `external` to the returned object.
 -->
 
-* Returns: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
+* Devuelve: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
 
-The `process.memoryUsage()` method returns an object describing the memory usage of the Node.js process measured in bytes.
+El método `process.memoryUsage()` devuelve un objeto que describe el uso de memoria del proceso Node.js medido en bytes.
 
-For example, the code:
+Por ejemplo, el código:
 
 ```js
 console.log(process.memoryUsage());
 ```
 
-Will generate:
+Generará:
 
 <!-- eslint-skip -->
 
@@ -1085,9 +1086,9 @@ Will generate:
 }
 ```
 
-`heapTotal` and `heapUsed` refer to V8's memory usage. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
+`heapTotal` y `heapUsed` se refieren al uso de memoria de V8. `external` se refiere al uso de memoria de objetos C++ vinculados a objetos JavaScript administrados por V8. `rss`, que por sus siglas en inglés se refiere a Resident Set Size, es la cantidad de espacio ocupado en el dispositivo de memoria principal (que es un subconjunto de memoria total asignada) para el proceso, la cual incluye el *montón*, el *segmento de código* y el *stack*.
 
-The *heap* is where objects, strings, and closures are stored. Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
+El *montón* es donde los objetos, strings y cierres son almacenados. Las variables son almacenadas en el *stack* y el código JavaScript actual reside en el *segmento de código*.
 
 ## process.nextTick(callback[, ...args])
 
@@ -1101,11 +1102,11 @@ changes:
 -->
 
 * `callback` {Function}
-* `...args` {any} Additional arguments to pass when invoking the `callback`
+* `...args` {any} Argumentos adicionales a pasar al invocar el `callback`
 
 The `process.nextTick()` method adds the `callback` to the "next tick queue". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
 
-This is *not* a simple alias to [`setTimeout(fn, 0)`][]. It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
+Esto *no* es un alias simple de [`setTimeout(fn, 0)`][]. Es mucho más eficiente. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
 
 ```js
 console.log('start');
@@ -1113,13 +1114,13 @@ process.nextTick(() => {
   console.log('nextTick callback');
 });
 console.log('scheduled');
-// Output:
-// start
-// scheduled
-// nextTick callback
+// Salida:
+// inicio
+// programado
+// callback nextTick
 ```
 
-This is important when developing APIs in order to give users the opportunity to assign event handlers *after* an object has been constructed but before any I/O has occurred:
+Esto es importando al desarrollar APIs para ofrecerle a los usuarios la oportunidad de asignar manejadores de evento *después* de que un objeto se haya construido pero antes de que I/O haya ocurrido:
 
 ```js
 function MyThing(options) {
@@ -1133,13 +1134,13 @@ function MyThing(options) {
 const thing = new MyThing();
 thing.getReadyForStuff();
 
-// thing.startDoingStuff() gets called now, not before.
+// thing.startDoingStuff() se llama ahora, no antes.
 ```
 
-It is very important for APIs to be either 100% synchronous or 100% asynchronous. Consider this example:
+Es muy importante para las APIs ser 100% sincrónicas o 100% asincrónicas. Considere este ejemplo:
 
 ```js
-// WARNING!  DO NOT USE!  BAD UNSAFE HAZARD!
+// ¡ADVERTENCIA!  ¡NO LO UTILICE!  BAD UNSAFE HAZARD!
 function maybeSync(arg, cb) {
   if (arg) {
     cb();
@@ -1150,7 +1151,7 @@ function maybeSync(arg, cb) {
 }
 ```
 
-This API is hazardous because in the following case:
+Esta API es peligrosa porque en el siguiente caso:
 
 ```js
 const maybeTrue = Math.random() > 0.5;
@@ -1162,7 +1163,7 @@ maybeSync(maybeTrue, () => {
 bar();
 ```
 
-It is not clear whether `foo()` or `bar()` will be called first.
+No se está claro si primero se llamará a `foo()` o a `bar()`.
 
 The following approach is much better:
 
@@ -1323,7 +1324,7 @@ if (process.getegid && process.setegid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.seteuid(id)
 
@@ -1347,7 +1348,7 @@ if (process.geteuid && process.seteuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setgid(id)
 
@@ -1371,7 +1372,7 @@ if (process.getgid && process.setgid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setgroups(groups)
 
@@ -1385,7 +1386,7 @@ The `process.setgroups()` method sets the supplementary group IDs for the Node.j
 
 The `groups` array can contain numeric group IDs, group names or both.
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setuid(id)
 
@@ -1407,7 +1408,7 @@ if (process.getuid && process.setuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setUncaughtExceptionCaptureCallback(fn)
 

@@ -136,7 +136,7 @@ deprecated: v0.9.7
 
 El número de conexiones simultáneas en el servidor.
 
-Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. Para hacer poll en las bifurcaciones y obtener el número de conexiones activas usa en su lugar el [`server.getConnections()`][] asincrónico.
+Esto se convierte en `null` cuando se envía un socket a un proceso secundario con [`child_process.fork()`][]. Para hacer poll en las bifurcaciones y obtener el número de conexiones activas, usa en su lugar el [`server.getConnections()`][] asincrónico.
 
 ### server.getConnections(callback)
 
@@ -163,11 +163,11 @@ Firmas posibles:
 
 Esta función es asincrónica. Cuando el servidor empieza a escuchar, el evento [`'listening'`][] es emitido. El último parámetro `callback` será añadido como un listener para el evento [`'listening'`][].
 
-Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especificar la longitud máxima de la cola de conexiones pendientes. La longitud real será determinada por el sistema operativo a través de configuraciones sysctl tales como `tcp_max_syn_backlog` y `somaxconn` en Linux. El valor predeterminado de este valor es 511 (no 512).
+Todos los métodos `listen()` pueden tomar un parámetro `backlog` para especificar la longitud máxima de la cola de conexiones pendientes. La longitud real será determinada por el sistema operativo a través de configuraciones sysctl tales como `tcp_max_syn_backlog` y `somaxconn` en Linux. El valor predeterminado de este parámetro es 511 (no 512).
 
 Todos los [`net.Socket`][] son establecidos a `SO_REUSEADDR` (Vea [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) para los detalles).
 
-El método `server.listen()` puede ser llama otra vez, si y solo si, hubo un error durante la primera llamada de `server.listen()`, o `server.close()` fue llamado. De lo contrario, un error `ERR_SERVER_ALREADY_LISTEN` será arrojado.
+El método `server.listen()` puede ser llamado otra vez si, y solo si, hubo un error durante la primera llamada de `server.listen()`, o `server.close()` fue llamado. De lo contrario, un error `ERR_SERVER_ALREADY_LISTEN` será arrojado.
 
 Uno de los errores más comunes cuando se escucha es `EADDRINUSE`. Esto ocurre cuando otro servidor está escuchando en el `port` / `path` / `handle` requerido. Una manera de manejar esto sería intentar de nuevo luego de una cierta cantidad de tiempo:
 
@@ -216,7 +216,7 @@ added: v0.11.14
 * Devuelve: {net.Server}
 
 Si el `port` es especificado, se comporta de la misma manera que <a href="#net_server_listen_port_host_backlog_callback">
-<code>server.listen([port[, host[, backlog]]][, callback])</code></a>. De otra manera, si se especifica `path`, se comporta de la misma manera que [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. Si ninguno es especificado, se arrojará un error.
+<code>server.listen([port[, host[, backlog]]][, callback])</code></a>. De otra manera, si se especifica `path`, se comporta de la misma manera que [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. Si ninguno es especificado, se producirá un error.
 
 Si `exclusive` es `false` (forma predeterminada), entonces los workers del clúster usarán el mismo handle subyacente, permitiendo que las tareas del manejo de conexiones sean compartidas. Cuando `exclusive` es `true`, el handle no es compartido, e intentar compartir el puerto resultará en un error. Un ejemplo que escucha en un puerto exclusivo es mostrado a continuación.
 
@@ -326,7 +326,7 @@ Crea un nuevo objeto socket.
   * `writable` {boolean} Permite la escritura en el socket cuando se pasa `fd`, de otra manera es ignorado. **Predeterminado:** `false`.
 * Devuelve: {net.Socket}
 
-The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
+El socket recién creado puede ser un socket TCP o un terminal [IPC](#net_ipc_support) en transmisión, dependiendo de donde conectó con [`connect()`][`socket.connect()`].
 
 ### Evento: 'close'
 
@@ -473,7 +473,7 @@ Firmas posibles:
 * [`socket.connect(options[, connectListener])`][`socket.connect(options)`]
 * [`socket.connect(path[, connectListener])`][`socket.connect(path)`] para conexiones [IPC](#net_ipc_support).
 * [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] para conexiones TCP.
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Esta función es asincrónica. Cuando la conexión es establecida, el evento [`'connect'`][] será emitido. Si existe un problema al conectar, en vez de un evento [`'connect'`][], se emitirá un evento [`'error'`][], con el error pasado por el listener [`'error'`][]. El último parámetro `connectListener`, si es suministrado, será añadido, **una sola vez**, con un listener para el evento [`'connect'`][].
 
@@ -495,7 +495,7 @@ changes:
 
 * `options` {Object}
 * `connectListener` {Function} Parámetro común de los métodos [`socket.connect()`][]. Será añadido una vez como un listener para el evento [`'connect'`][].
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Inicia una conexión en un socket dado. Normalmente este método no es necesario, el socket debería ser creado y abierto con [`net.createConnection()`][]. Usa esto solo cuando se implemente un socket personalizado.
 
@@ -517,7 +517,7 @@ Para las conexiones [IPC](#net_ipc_support), los `options` disponibles son:
 
 * `path` {string} Ruta al que el cliente debe conectarse. Vea [Identificando rutas para conexiones IPC](#net_identifying_paths_for_ipc_connections).
 * `connectListener` {Function} Parámetro común de los métodos [`socket.connect()`][]. Será añadido una vez como un listener para el evento [`'connect'`][].
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Inicia una conexión [IPC](#net_ipc_support) en el socket dado.
 
@@ -532,7 +532,7 @@ added: v0.1.90
 * `port` {number} Puerto al que el cliente debe conectarse.
 * `host` {string} Host al que el cliente debe conectarse.
 * `connectListener` {Function} Parámetro común de los métodos [`socket.connect()`][]. Será añadido una vez como un listener para el evento [`'connect'`][].
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Inicia una conexión TCP en el socket dado.
 
@@ -568,7 +568,7 @@ Si se especifica la `exception`, un evento[`'error'`][] será emitido y cualquie
 added: v0.1.90
 -->
 
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Entrecierra el socket. p. ej., envía un paquete FIN. Es posible que el servidor envíe algo de datos.
 
@@ -592,7 +592,7 @@ La representación numérica del puerto local. Por ejemplo, `80` o `21`.
 
 ### socket.pause()
 
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Pausa los datos que se están leyendo. Es decir, los eventos [`'data'`][] no serán emitidos. Útil para acelerar una subida.
 
@@ -602,7 +602,7 @@ Pausa los datos que se están leyendo. Es decir, los eventos [`'data'`][] no ser
 added: v0.9.1
 -->
 
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 De forma contraria a `unref()`, llamar a `ref()` en un socket donde ha sido llamado `unref` *no* dejará al programa salir si es el único socket que queda (el comportamiento predeterminado). El el socket fue llamado `ref`, llamar a `ref` denuevo no tendrá efecto.
 
@@ -632,7 +632,7 @@ La representación numérica del puerto remoto. For example, `80` o `21`.
 
 ### socket.resume()
 
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Reanuda la lectura después de llamar a [`socket.pause()`][].
 
@@ -642,7 +642,7 @@ Reanuda la lectura después de llamar a [`socket.pause()`][].
 added: v0.1.90
 -->
 
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Establece la codificación para el socket como una [Stream Legible](stream.html#stream_class_stream_readable). Vea [`readable.setEncoding()`][] para más información.
 
@@ -654,9 +654,9 @@ added: v0.1.92
 
 * `enable` {boolean} **Predeterminado:** `false`
 * `initialDelay` {number} **Predeterminado:** `0`
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
-Habilita/deshabilita la funcionalidad de mantener vivo y establecer opcionalmente el retraso antes de que la primera sonda keepalive sea enviada a un socket inactivo.
+Habilitar/deshabilitar la funcionalidad keep-alive y establecer opcionalmente el retraso antes de que la primera sonda keepalive sea enviada a un socket inactivo.
 
 Establece `initialDelay` (en milisegundos) para establecer el retraso entre los últimos paquetes de datos recibidos y la primera sonda keepalive. Configurar a `0` para el `initialDelay` dejará sin cambiar el valor de la configuración predeterminada (o la previa).
 
@@ -667,7 +667,7 @@ added: v0.1.90
 -->
 
 * `noDelay` {boolean} **Predeterminado:** `true`
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Desactiva el algoritmo Nagle. De manera predeterminada, las conexiones TCP usan el algoritmo Nagle, almacenan los datos antes de ser enviados. Establecer a `true` para `noDelay` va a disparar datos inmediatamente cada vez que `socket.write()` sea llamado.
 
@@ -677,7 +677,7 @@ Desactiva el algoritmo Nagle. De manera predeterminada, las conexiones TCP usan 
 added: v0.1.90
 -->
 
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
 Establece el socket para que haga un timeout después de `timeout` milisegundos de inactividad en el socket. De manera predeterminada, el `net.Socket` no tiene un timeout.
 
@@ -701,9 +701,9 @@ El parámetro `callback` opcional será añadido como un listener de un solo uso
 added: v0.9.1
 -->
 
-* Devuelve: {net.Socket} El socket en sí mismo.
+* Devuelve: {net.Socket} El socket en sí.
 
-Llamar a `unref()` en un socket permitirá al programa salir si es el único socket activo en el sistema de eventos. If the socket is already `unref`ed calling `unref()` again will have no effect.
+Llamar a `unref()` en un socket permitirá al programa salir si es el único socket activo en el sistema de eventos. Si el socket ya fue llamado `unref`, llamar a `unref()` de nuevo no tendrá ningún efecto.
 
 ### socket.write(data\[, encoding\]\[, callback\])
 
@@ -712,7 +712,7 @@ added: v0.1.90
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `encoding` {string} Only used when data is `string`. **Predeterminado:** `utf8`.
+* `encoding` {string} Solo se usa cuando los datos son `string`. **Predeterminado:** `utf8`.
 * `callback` {Function}
 * Devuelve: {boolean}
 
@@ -726,7 +726,7 @@ Vea el método [`write()`](stream. html#stream_writable_write_chunk_encoding_cal
 
 ## net.connect()
 
-Aliases to [`net.createConnection()`][`net.createConnection()`].
+Alias a [`net.createConnection()`][`net.createConnection()`].
 
 Firmas posibles:
 
@@ -738,7 +738,7 @@ Firmas posibles:
 
 <!-- YAML
 added: v0.7.0
---> Alias to [
+--> Alias a [
 
 `net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
@@ -748,7 +748,7 @@ added: v0.7.0
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
+Alias a [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
 
 ### net.connect(port\[, host\]\[, connectListener\])
 
@@ -756,7 +756,7 @@ Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection
 added: v0.1.90
 -->
 
-Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
+Alias a [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
 
 ## net.createConnection()
 
@@ -788,7 +788,7 @@ Opciones adicionales:
 
 * `timeout` {number} Si es establecido, será usado para llamar a [`socket.setTimeout(timeout)`][] después que el socket sea creado, pero antes de que se inicie la conexión.
 
-A continuación hay un ejemplo de un cliente en un servidor echo, describido en la sección [`net.createServer()`][]:
+A continuación, hay un ejemplo de un cliente en un servidor echo, descrito en la sección [`net.createServer()`][]:
 
 ```js
 const net = require('net');
@@ -839,7 +839,7 @@ added: v0.1.90
 
 Inicia una conexión TCP.
 
-This function creates a new [`net.Socket`][] with all options set to default, immediately initiates connection with [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], then returns the `net.Socket` that starts the connection.
+Esta función crea un nuevo [`net.Socket`][] con todas las opciones en su manera predeterminada, inicia inmediatamente conexión con[`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`], entonces devuelve el `net.Socket` que inicia la conexión.
 
 ## net.createServer(\[options\]\[, connectionListener\])
 
@@ -852,14 +852,14 @@ Crea un nuevo servidor TCP o un servidor [IPC](#net_ipc_support).
 * `opciones` {Object} 
   * `allowHalfOpen` {boolean} Indica si las conexiones TCP entreabiertas están permitidas. **Predeterminado:** `false`.
   * `pauseOnConnect` {boolean} Indica si el socket debería ser pausado en conexiones entrantes. **Predeterminado:** `false`.
-* `connectionListener` {Function} Establece automáticamente un listener para el evento [`'connection'`][].
+* `connectionListener` {Function} Se establece automáticamente como un listener para el evento [`'connection'`][].
 * Devuelve: {net.Server}
 
-Si `allowHalfOpen` es establecido como `true`, cuando el otro terminal del socket envíe un paquete FIN, el servidor solo enviará un paquete FIN devuelta cuando [`socket.end()`][] es llamado explícitamente, hasta entonces la conexión es entrecerrada (no es legible pero aún así es escribible). Vea el evento [`'end'`][] event y [RFC 1122](https://tools.ietf.org/html/rfc1122) (sección 4.2.2.13) para más información.
+Si `allowHalfOpen` es establecido como `true`, cuando el otro terminal del socket envíe un paquete FIN, el servidor solo enviará un paquete FIN de vuelta cuando [`socket.end()`][] sea llamado explícitamente, hasta entonces la conexión es entrecerrada (no es legible pero aún así es escribible). Vea el evento [`'end'`][] event y [RFC 1122](https://tools.ietf.org/html/rfc1122) (sección 4.2.2.13) para más información.
 
 Si `pauseOnConnect` es establecido como `true`, entonces el socket asociado con cada conexión entrante será pausado, y no se leerán ningunos datos de su handle. Esto le permite a las conexiones que sean pasadas entre procesos sin que ningunos datos sean leídos por el proceso original. Para empezar a leer los datos de un socket pausado, llama a [`socket.resume()`][].
 
-El servidor puede ser un servidor TCP o un servidor [IPC](#net_ipc_support), dependiendo de que ha sido pasado por [`listen()`][`server.listen()`].
+El servidor puede ser un servidor TCP o un servidor [IPC](#net_ipc_support), dependiendo de lo que ha sido pasado por [`listen()`][`server.listen()`].
 
 Este es un ejemplo de un servidor echo TCP que escucha por conexiones en el puerto 8124:
 

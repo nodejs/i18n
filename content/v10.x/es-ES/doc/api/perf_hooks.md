@@ -1,10 +1,10 @@
-# Tiempo de desempeño API
+# API de Timing del Rendimiento
 
 <!--introduced_in=v8.5.0-->
 
 > Estabilidad: 1 - Experimental
 
-El Tiempo de Rendimiento API proporciona una implementación de la especificación [Tiempo de rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
+La API de Timing del Rendimiento proporciona una implementación de la especificación [Línea de Tiempo de Rendimiento de W3C](https://w3c.github.io/performance-timeline/). El propósito de la API es el de apoyar la colección de métricas de rendimiento de alta resolución. Este es el mismo Performance API que es implementado en navegadores Web modernos.
 
 ```js
 const { PerformanceObserver, performance } = require('perf_hooks');
@@ -36,7 +36,7 @@ added: v8.5.0
 
 * `name` {string}
 
-Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` del Tiempo de Rendimiento. Si se proporciona `name`, esto elimina solo la marca nombrada.
+Si `name` no es proporcionado, esto elimina todos los objetos `PerformanceMark` de la Línea de Tiempo de Rendimiento. Si se proporciona `name`, esto elimina solo la marca nombrada.
 
 ### performance.mark([name])
 
@@ -46,7 +46,7 @@ added: v8.5.0
 
 * `name` {string}
 
-Crea una nueva entrada `PerformanceMark` en el Tiempo de Rendimiento. `PerformanceMark` es una subclase de `PerformanceEntry` cuya `performanceEntry.entryType` siempre es `'mark'`, y cuya `performanceEntry.duration` es siempre `0`. Las marcas de rendimiento son usadas para marcar momentos específicos significativos en el Tiempo de Rendimiento.
+Crea una nueva entrada `PerformanceMark` en la Línea de Tiempo de Rendimiento. `PerformanceMark` es una subclase de `PerformanceEntry` cuya `performanceEntry.entryType` siempre es `'mark'`, y cuya `performanceEntry.duration` es siempre `0`. Las marcas de rendimiento son usadas para marcar momentos específicos significativos en la Línea de Tiempo de Rendimiento.
 
 ### performance.measure(name, startMark, endMark)
 
@@ -58,11 +58,11 @@ added: v8.5.0
 * `startMark` {string}
 * `endMark` {string}
 
-Crea una nueva entrada `PerformanceMeasure` en el Tiempo de Rendimiento. `PerformanceMeasure` es una subclase de `PerformanceEntry`, cuya `performanceEntry.entryType` siempre es `'measure'`, y cuya `performanceEntry.duration` mide el número de milisegundos transcurridos desde `startMark` y `endMark`.
+Crea una nueva entrada `PerformanceMeasure` en la Línea de Tiempo de Rendimiento. `PerformanceMeasure` es una subclase de `PerformanceEntry`, cuya `performanceEntry.entryType` siempre es `'measure'`, y cuya `performanceEntry.duration` mide el número de milisegundos transcurridos desde `startMark` y `endMark`.
 
-El argumento `startMark` puede identificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento, o *puede* identificar cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
+El argumento `startMark` puede identificar cualquier `PerformanceMark` *existente* en la Línea de Tiempo de Rendimiento, o *puede* identificar cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `startMark` no existe, entonces `startMark` es establecido como [`timeOrigin`][] por defecto.
 
-El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en el Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
+El argumento `endMark` debe especificar cualquier `PerformanceMark` *existente* en la Línea de Tiempo de Rendimiento o cualquiera de las propiedades timestamp proporcionadas por la clase `PerformanceNodeTiming`. Si el nombre `endMark` no existe, se producirá un error.
 
 ### performance.nodeTiming
 
@@ -102,7 +102,7 @@ added: v8.5.0
 
 * `fn` {Function}
 
-Envuelve una función dentro de una nueva función que mide el tiempo de ejecución de la función envuelta. Un `PerformanceObserver` debe ser suscrito al tipo de evento `'function'` en orden para los detalles de sincronización para ser accedido.
+Envuelve una función dentro de una nueva función que mide el tiempo de ejecución de la función envuelta. Un `PerformanceObserver` debe ser suscrito al tipo de evento `'function'` para que los detalles de timing puedan ser accedidos.
 
 ```js
 const {
@@ -192,7 +192,7 @@ Cuando `performanceEntry.entryType` es igual a `'gc'`, la propiedad `performance
 added: v8.5.0
 -->
 
-Proporciona detalles de tiempo para el propio Node.js.
+Proporciona detalles de timing para el propio Node.js.
 
 ### performanceNodeTiming.bootstrapComplete
 
@@ -353,17 +353,17 @@ obs.observe({ entryTypes: ['mark'], buffered: true });
 performance.mark('test');
 ```
 
-Because `PerformanceObserver` instances introduce their own additional performance overhead, instances should not be left subscribed to notifications indefinitely. Users should disconnect observers as soon as they are no longer needed.
+Debido a que las instancias `PerformanceObserver` introducen su propia sobrecarga de rendimiento adicional, las instancias no deben quedar suscritas a las notificaciones indefinidamente. Los usuarios deben desconectar los observadores tan pronto como no sean necesitados.
 
-The `callback` is invoked when a `PerformanceObserver` is notified about new `PerformanceEntry` instances. The callback receives a `PerformanceObserverEntryList` instance and a reference to the `PerformanceObserver`.
+El `callback` es invocado cuando un `PerformanceObserver` es notificado sobre nuevas instancias de `PerformanceEntry`. El callback recibe una instancia `PerformanceObserverEntryList` y una referencia al `PerformanceObserver`.
 
 ### performanceObserver.disconnect()
 
 <!-- YAML
 added: v8.5.0
---> Disconnects the 
+--> Desconecta la instancia 
 
-`PerformanceObserver` instance from all notifications.
+`PerformanceObserver` de todas las notificaciones.
 
 ### performanceObserver.observe(options)
 
@@ -372,12 +372,12 @@ added: v8.5.0
 -->
 
 * `options` {Object} 
-  * `entryTypes` {string[]} An array of strings identifying the types of `PerformanceEntry` instances the observer is interested in. If not provided an error will be thrown.
-  * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. **Default:** `false`.
+  * `entryTypes` {string[]} Un array de strings identificando los tipos de instancias `PerformanceEntry` en las que está interesado el observador. Si no es proporcionado, se produce un error.
+  * `buffered` {boolean} Si es true, la notificación del callback será llamada usando `setImmediate()` y múltiples notificaciones de instancia `PerformanceEntry` serán almacenadas internamente. Si es `false`, las notificaciones serán inmediatas y sincrónicas. **Predeterminado:** `false`.
 
-Subscribes the `PerformanceObserver` instance to notifications of new `PerformanceEntry` instances identified by `options.entryTypes`.
+Suscribe la instancia `PerformanceObserver` a las notificaciones de nuevas instancias `PerformanceEntry`, identificadas por `options.entryTypes`.
 
-When `options.buffered` is `false`, the `callback` will be invoked once for every `PerformanceEntry` instance:
+Cuando `options.buffered` es `false`, el `callback` será invocado una vez por cada instancia `PerformanceEntry`:
 
 ```js
 const {
@@ -386,7 +386,7 @@ const {
 } = require('perf_hooks');
 
 const obs = new PerformanceObserver((list, observer) => {
-  // called three times synchronously. list contains one item
+  // llamado tres veces de forma sincrónica. la lista contiene un ítem
 });
 obs.observe({ entryTypes: ['mark'] });
 
@@ -401,7 +401,7 @@ const {
 } = require('perf_hooks');
 
 const obs = new PerformanceObserver((list, observer) => {
-  // called once. list contains three items
+  // llamado una vez. la lista contiene tres artículos
 });
 obs.observe({ entryTypes: ['mark'], buffered: true });
 
@@ -409,13 +409,13 @@ for (let n = 0; n < 3; n++)
   performance.mark(`test${n}`);
 ```
 
-## Class: PerformanceObserverEntryList
+## Clase: PerformanceObserverEntryList
 
 <!-- YAML
 added: v8.5.0
 -->
 
-The `PerformanceObserverEntryList` class is used to provide access to the `PerformanceEntry` instances passed to a `PerformanceObserver`.
+La clase `PerformanceObserverEntryList` es usada para proporcionar acceso a las instancias `PerformanceEntry` pasadas a un `PerformanceObserver`.
 
 ### performanceObserverEntryList.getEntries()
 
@@ -423,9 +423,9 @@ The `PerformanceObserverEntryList` class is used to provide access to the `Perfo
 added: v8.5.0
 -->
 
-* Returns: {PerformanceEntry[]}
+* Devuelve: {PerformanceEntry[]}
 
-Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
+Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`.
 
 ### performanceObserverEntryList.getEntriesByName(name[, type])
 
@@ -435,9 +435,9 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Returns: {PerformanceEntry[]}
+* Devuelve: {PerformanceEntry[]}
 
-Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
+Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`, cuyo `performanceEntry.name` es igual a `name`, y opcionalmente, cuyo `performanceEntry.entryType` es igual a `type`.
 
 ### performanceObserverEntryList.getEntriesByType(type)
 
@@ -446,15 +446,15 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Returns: {PerformanceEntry[]}
+* Devuelve: {PerformanceEntry[]}
 
-Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
+Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respeto a `performanceEntry.startTime`, cuyo `performanceEntry.entryType` es igual a `type`.
 
-## Examples
+## Ejemplos
 
-### Measuring the duration of async operations
+### Medir la duración de las operaciones asincrónicas
 
-The following example uses the [Async Hooks](async_hooks.html) and Performance APIs to measure the actual duration of a Timeout operation (including the amount of time it to execute the callback).
+El siguiente ejemplo usa el [Async Hooks](async_hooks.html) y las APIs de Rendimiento para medir la verdadera duración de una operación Timeout (incluyendo la cantidad de tiempo para ejecutar el callback).
 
 ```js
 'use strict';
@@ -494,9 +494,9 @@ obs.observe({ entryTypes: ['measure'], buffered: true });
 setTimeout(() => {}, 1000);
 ```
 
-### Measuring how long it takes to load dependencies
+### Medir cuánto tiempo tarda la carga de dependencias
 
-The following example measures the duration of `require()` operations to load dependencies:
+El siguiente ejemplo mide la duración de las operaciones `require()` para cargar las dependencias:
 
 <!-- eslint-disable no-global-assign -->
 
@@ -508,12 +508,12 @@ const {
 } = require('perf_hooks');
 const mod = require('module');
 
-// Monkey patch the require function
+// Monkey patch que requiere función
 mod.Module.prototype.require =
   performance.timerify(mod.Module.prototype.require);
 require = performance.timerify(require);
 
-// Activate the observer
+// Activar el observer
 const obs = new PerformanceObserver((list) => {
   const entries = list.getEntries();
   entries.forEach((entry) => {
