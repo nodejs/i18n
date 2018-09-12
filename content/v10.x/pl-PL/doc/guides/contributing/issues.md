@@ -56,7 +56,7 @@ Dwa najważniejsze fragmenty informacji potrzebne do poprawnego ocenienia raport
 
 By wyeliminować możliwość błędów, które pojawiły się na rzecz kodu od stron trzecich, testy powinny używać *wyłącznie*, tak bardzo jak to możliwe, API Node.js. Jeśli problem występuje jedynie wtedy, gdy używasz konkretnego modułu od stron trzecich, istnieje bardzo wysoka szansa, że (a) moduł posiada błąd lub (b) zmiany w Node.js zepsuły moduł.
 
-Zobacz [Jak zobaczyć Krótki, Pełny i Sprawdzalny przykład](https://stackoverflow.com/help/mcve).
+Zobacz [Jak stworzyć Krótki, Pełny i Sprawdzalny przykład](https://stackoverflow.com/help/mcve).
 
 ## Ocenianie Raportu o Błędzie
 
