@@ -43,7 +43,7 @@ hello world
 
 El callback es ejecutado asincrónicamente, y va a tener limitado seguimiento de amontonaje. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
 
-Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función envuelta rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
+Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función wrapped rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
 
 ```js
 function fn() {
@@ -115,7 +115,7 @@ changes:
 * `fn` {Function} La función que está siendo desaprobada.
 * `msg` {string} Un mensaje de advertencia para mostrar cuando la función desaprobada es invocada.
 * `code` {string} Un código de desaprobación. Vea la [lista de APIs desaprobadas](deprecations.html#deprecations_list_of_deprecated_apis) para una lista de códigos.
-* Retorna: {Function} La función desaprobada envuelta para emitir una advertencia.
+* Retorna: {Function} La función desaprobada se envolvió para emitir una advertencia.
 
 El método `util.deprecate()` envuelve a `fn` (que puede ser una función o una clase) de tal manera, que es marcado como obsoleto.
 
