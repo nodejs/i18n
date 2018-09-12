@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-El módulo `url` proporciona utilidades para la resolución URL y análisis. Puede ser accedido utilizando:
+El módulo `url` proporciona utilidades para la resolución y análisis URL. Puede ser accedido utilizando:
 
 ```js
 const url = require('url');
@@ -12,11 +12,11 @@ const url = require('url');
 
 ## Strings de URL y Objetos URL
 
-Una string URL es una string estructurada que contiene múltiples componentes significativos. Cuando es analizada, un objeto URL es devuelto conteniendo propiedades para cada uno de estos componentes.
+Una string URL es una string estructurada que contiene múltiples componentes significativos. Cuando es analizado, un objeto URL es devuelto conteniendo propiedades para cada uno de estos componentes.
 
 El módulo `url` proporciona dos APIs para trabajar con URLs: una API heredada que es específica de Node.js, y una API más nueva que implementa el mismo [Estándar URL WHATWG](https://url.spec.whatwg.org/) utilizado por navegadores web.
 
-Mientras que la API Heredada no ha sido desaprobada, es mantenida únicamente para compatibilidad retrasada con aplicaciones existentes. Código de una nueva aplicación no debe usar la API WHATWG.
+Mientras que la API Heredada no ha sido desaprobada, es mantenida únicamente para compatibilidad retrasada con aplicaciones existentes. El código de una nueva aplicación debe usar la API WHATWG.
 
 A continuación, se proporciona una comparación entre el WHATWG y las APIs heredadas. Arriba de la URL` 'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, se muestran propiedades de un objeto devuelto por el legado `url.parse()`. Debajo de la misma, se muestran propiedades de un objeto WHATWG `URL`.
 
@@ -74,8 +74,8 @@ changes:
 
 La clase `URL` compatible con el navegador, implementada siguiendo el estándar URL WHATWG. [Ejemplos de URLs analizadas](https://url.spec.whatwg.org/#example-url-parsing) pueden ser encontradas en el mismo Estándar. La clase `URL` también está disponible en el objeto global.
 
-De acuerdo con las convenciones del navegador, todas las propiedades de los objetos `URL` son implementadas como getters y setters en el prototipo de la clase, en lugar de como propiedades de datos en el objeto mismo. Por lo tanto, a diferencia de [legacy `urlObject`][]s, utilizando la palabra clave `delete` en cualquiera de las propiedades de los objetos `URL` (p. e.j. `delete
-myURL.protocol`, `delete myURL.pathname`, etc) no tiene ningún efecto pero aún así devolverán `true`.
+De acuerdo con las convenciones del navegador, todas las propiedades de los objetos `URL` son implementadas como getters y setters en el prototipo de la clase, en lugar de como propiedades de datos en el objeto mismo. Por lo tanto, a diferencia de [legacy `urlObject`][]s, utilizar la palabra clave `delete` en cualquiera de las propiedades de los objetos `URL` (p. e.j. `delete
+myURL.protocol`, `delete myURL.pathname`, etc) no tiene ningún efecto, pero aún así devolverán `true`.
 
 #### Constructor: new URL(input[, base])
 
@@ -89,7 +89,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-Se producirá un `TypeError` si la `input` o `base` no son URLs válidas. Tenga en cuenta que se hará un esfuerzo para obligar que los valores dados se conviertan en cadenas. Por ejemplo:
+Se producirá un `TypeError` si la `input` o `base` no son URLs válidas. Tenga en cuenta que se hará un esfuerzo para obligar a los valores dados a convertirse en cadenas. Por ejemplo:
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
