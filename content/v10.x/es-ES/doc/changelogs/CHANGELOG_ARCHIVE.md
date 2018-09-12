@@ -188,11 +188,11 @@
 * uv: Actualización a v1.0.0-rc1
 * http_parser: Actualización a v2.3.0
 * npm: Actualización a v2.0.0
-* openssl: Upgrade to v1.0.1i
-* v8: Upgrade to 3.26.33
-* Add fast path for simple URL parsing (Gabriel Wicke)
-* Added support for options parameter in console.dir() (Xavi Magrinyà)
-* Cluster: fix shared handles on Windows (Alexis Campailla)
+* openssl: Actualización a v1.0.1i
+* v8: Actualización a 3.26.33
+* Añadir una ruta rápida para el análisis simple de URL (Gabriel Wicke)
+* Soporte para el parámetro de opciones en console.dir() añadido (Xavi Magrinyà)
+* Clúster: reparar handles compartidos en Windows (Alexis Campailla)
 * buffer: Fix incorrect Buffer.compare behavior (Feross Aboukhadijeh)
 * buffer: construct new buffer from buffer toJSON() output (cjihrig)
 * buffer: improve Buffer constructor (Kang-Hao Kenny)
