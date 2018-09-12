@@ -371,7 +371,7 @@ added: v8.4.0
 
 * {boolean}
 
-Indicates whether or not the `Http2Session` is currently waiting for an acknowledgment for a sent `SETTINGS` frame. Will be `true` after calling the `http2session.settings()` method. Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
+Indica si `Http2Session` está esperando una confirmación por un frame `SETTINGS` enviado o no. Será `true` después de llamar el método `http2session.settings()`. Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
 
 #### http2session.ping([payload, ]callback)
 
@@ -383,9 +383,9 @@ added: v8.9.3
 * `callback` {Function}
 * Returns: {boolean}
 
-Envía un frame de `PING` a un peer de HTTP/2 conectado. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
+Envía un frame de `PING` a un peer de HTTP/2 conectado. La función `callback` debe ser proporcionada. El método regresará a ser `true` si el `PING` fue enviado, sino, será `false`.
 
-The maximum number of outstanding (unacknowledged) pings is determined by the `maxOutstandingPings` configuration option. El máximo valor por defecto es 10.
+El número máximo de pings sobresalientes (no reconocidos) es determinado por la opción de configuración `maxOutstandingPings`. El máximo valor por defecto es 10.
 
 If provided, the `payload` must be a `Buffer`, `TypedArray`, or `DataView` containing 8 bytes of data that will be transmitted with the `PING` and returned with the ping acknowledgment.
 
