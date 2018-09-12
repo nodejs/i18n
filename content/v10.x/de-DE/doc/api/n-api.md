@@ -262,12 +262,12 @@ NODE_EXTERN napi_status napi_throw_error(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] code`: Optional error code to be set on the error.
-- `[in] msg`: C string representing the text to be associated with the error.
+- `[in] code`: Möglicher Fehlercode, der bei einem Fehler eingestellt werden kann.
+- `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API throws a JavaScript `Error` with the text provided.
+Diese API wirft ein JavaScript-`Fehler` mit dem angegebenen Text aus.
 
 #### napi_throw_type_error
 
@@ -281,7 +281,7 @@ NODE_EXTERN napi_status napi_throw_type_error(napi_env env,
                                               const char* msg);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optional error code to be set on the error.
 - `[in] msg`: C string representing the text to be associated with the error.
 
@@ -301,7 +301,7 @@ NODE_EXTERN napi_status napi_throw_range_error(napi_env env,
                                                const char* msg);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optional error code to be set on the error.
 - `[in] msg`: C string representing the text to be associated with the error.
 
