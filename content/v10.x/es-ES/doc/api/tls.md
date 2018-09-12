@@ -973,7 +973,7 @@ added: v0.11.13
 
 El nombre de la curva por defecto para usar para el acuerdo de clave ECDH en un servidor tls. El valor predeterminado es `'auto'`. Consulte [`tls.createSecureContext()`] para obtener más información.
 
-## Deprecated APIs
+## APIs Desaprobadas
 
 ### Clase: CryptoStream
 
@@ -982,9 +982,9 @@ added: v0.3.4
 deprecated: v0.11.3
 -->
 
-> Estabilidad: 0 - Obsoleto: Usar [`tls.TLSSocket`][] en su lugar.
+> Estabilidad: 0 - Desaprobado: Usar [`tls.TLSSocket`][] en su lugar.
 
-La clase `tls.CryptoStream` representa un stream de datos encriptados. Esta clase ha quedado obsoleta y ya no debe usarse.
+La clase `tls.CryptoStream` representa un stream de datos encriptados. Esta clase ha sido desaprobada y ya no debe usarse.
 
 #### cryptoStream.bytesWritten
 
@@ -993,7 +993,7 @@ added: v0.3.4
 deprecated: v0.11.3
 -->
 
-La propiedad `cryptoStream.bytesWritten` devuelve el número total de bytes escritos en el socket subyacente *incluidos* los bytes necesarios para la implementación del protocolo TLS.
+La propiedad `cryptoStream.bytesWritten` devuelve el número total de bytes escritos en el socket subyacente, *incluidos* los bytes necesarios para la implementación del protocolo TLS.
 
 ### Clase: SecurePair
 
@@ -1002,7 +1002,7 @@ added: v0.3.2
 deprecated: v0.11.3
 -->
 
-> Estabilidad: 0 - Obsoleto: Use [`tls.TLSSocket`][] en su lugar.
+> Estabilidad: 0 - Desaprobado: Use [`tls.TLSSocket`][] en su lugar.
 
 Devuelto por [`tls.createSecurePair()`][].
 
@@ -1029,11 +1029,11 @@ changes:
     description: ALPN options are supported now.
 -->
 
-> Estabilidad: 0 - Obsoleto: Use [`tls.TLSSocket`][] en su lugar.
+> Estabilidad: 0 - Desaprobado: Use [`tls.TLSSocket`][] en su lugar.
 
 * `context` {Object} Un objeto de contexto seguro como lo devuelve `tls.createSecureContext()`
 * `isServer` {boolean} `true` para especificar que esta conexión TLS debe abrirse como servidor.
-* `requestCert` {boolean} `true` para especificar si un servidor debe solicitar un certificado de un cliente de conexión. Solo aplica cuando `isServer` es `true`.
+* `requestCert` {boolean} `true` para especificar si un servidor debe solicitar un certificado de un cliente en conexión. Solo aplica cuando `isServer` es `true`.
 * `rejectUnauthorized` {boolean} Si no es `false` un servidor rechaza automáticamente clientes con certificados inválidos. Solo aplica cuando `isServer` es `true`.
 * `opciones` 
   * `secureContext`: Un objeto de contexto TLS opcional de [`tls.createSecureContext()`][]
@@ -1048,11 +1048,11 @@ changes:
 
 Crea un nuevo objeto de par seguro con dos streams, uno de los cuales lee y escribe los datos encriptados, y el que otro lee y escribe los datos cleartext. En general, el stream encriptado se canaliza hacia/desde un stream de datos encriptados entrantes y el de cleartext se utiliza como reemplazo del stream encriptado inicial.
 
-`tls.createSecurePair()` devuelve un objeto `tls.SecurePair` con `cleartext` y `encrypted` propiedades stream.
+`tls.createSecurePair()` devuelve un objeto `tls.SecurePair` con las propiedades stream `cleartext` y `encrypted`.
 
 El uso de `cleartext` tiene la misma API que [`tls.TLSSocket`][].
 
-El método `tls.createSecurePair()` es ahora obsoleto a favor de `tls.TLSSocket()`. Por ejemplo, el código:
+El método `tls.createSecurePair()` ahora está desaprobado, a favor de `tls.TLSSocket()`. Por ejemplo, el código:
 
 ```js
 pair = tls.createSecurePair(/* ... */);
