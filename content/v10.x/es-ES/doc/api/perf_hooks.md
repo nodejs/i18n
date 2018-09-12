@@ -386,7 +386,8 @@ const {
 } = require('perf_hooks');
 
 const obs = new PerformanceObserver((list, observer) => {
-  // llamado tres veces de forma sincrónica. });
+  // llamado tres veces de forma sincrónica. la lista contiene un ítem
+});
 obs.observe({ entryTypes: ['mark'] });
 
 for (let n = 0; n < 3; n++)
@@ -451,9 +452,9 @@ Devuelve una lista de objetos `PerformanceEntry` en orden cronológico con respe
 
 ## Ejemplos
 
-### Midiendo la duración de las operaciones asincrónicas
+### Medir la duración de las operaciones asincrónicas
 
-El siguiente ejemplo usa el [Async Hooks](async_hooks.html) y Rendimiento API para medir la verdadera duración de una operación Timeout (incluyendo la cantidad de tiempo para ejecutar la callback).
+El siguiente ejemplo usa el [Async Hooks](async_hooks.html) y las APIs de Rendimiento para medir la verdadera duración de una operación Timeout (incluyendo la cantidad de tiempo para ejecutar el callback).
 
 ```js
 'use strict';
@@ -493,7 +494,7 @@ obs.observe({ entryTypes: ['measure'], buffered: true });
 setTimeout(() => {}, 1000);
 ```
 
-### Midiendo cuánto tiempo tarda en cargar las dependencias
+### Medir cuánto tiempo tarda la carga de dependencias
 
 El siguiente ejemplo mide la duración de las operaciones `require()` para cargar las dependencias:
 
@@ -507,12 +508,12 @@ const {
 } = require('perf_hooks');
 const mod = require('module');
 
-// Monkey patch the require function
+// Monkey patch que requiere función
 mod.Module.prototype.require =
   performance.timerify(mod.Module.prototype.require);
 require = performance.timerify(require);
 
-// Activate the observer
+// Activar el observer
 const obs = new PerformanceObserver((list) => {
   const entries = list.getEntries();
   entries.forEach((entry) => {
