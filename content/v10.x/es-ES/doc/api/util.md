@@ -227,7 +227,7 @@ added: v9.7.0
 * `err` {number}
 * Retorna: {string}
 
-Retorna un nombre de string por un código de error numérico que viene de una API de Node.js. El mapeo entre códigos de error y nombres de error es dependiente de la plataforma. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
+Retorna un nombre de string por un código de error numérico que viene de una API de Node.js. El mapeo entre códigos de error y nombres de error es dependiente de la plataforma. Vea [Errores Comunes del Sistema](errors.html#errors_common_system_errors) para los nombres de los errores comunes.
 
 ```js
 fs.access('file/that/does/not/exist', (err) => {
