@@ -127,7 +127,7 @@ exports.obsoleteFunction = util.deprecate(() => {
 }, 'obsoleteFunction() está obsoleto. En cambio, use newShinyFunction().');
 ```
 
-Cuando sea llamada, `util.deprecate()` va a retornar una función que va a emitir una `DeprecationWarning` usando el evento [`'warning'`][]. La advertencia va a ser emitida y estampada a `stderr` la primera vez que la función retornada sea llamada. After the warning is emitted, the wrapped function is called without emitting a warning.
+Cuando sea llamada, `util.deprecate()` va a retornar una función que va a emitir una `DeprecationWarning` usando el evento [`'warning'`][]. La advertencia va a ser emitida y estampada a `stderr` la primera vez que la función retornada sea llamada. Después de que la advertencia sea emitida, la función envuelta es llamada sin emitir una advertencia.
 
 If the same optional `code` is supplied in multiple calls to `util.deprecate()`, the warning will be emitted only once for that `code`.
 
