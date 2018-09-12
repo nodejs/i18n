@@ -367,11 +367,11 @@ NODE_EXTERN napi_status napi_create_type_error(napi_env env,
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
 - `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
-- `[out] result`: `napi_value` representing the error created.
+- `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns a JavaScript `TypeError` with the text provided.
+Diese API gibt einen JavaScript-`Schreibfehler` mit dem angegebenen Text aus.
 
 #### napi_create_range_error
 
@@ -389,11 +389,11 @@ NODE_EXTERN napi_status napi_create_range_error(napi_env env,
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
 - `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
-- `[out] result`: `napi_value` representing the error created.
+- `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns a JavaScript `RangeError` with the text provided.
+Diese API gibt einen JavaScript-`Bereichsfehler` mit dem angegebenen Text aus.
 
 #### napi_get_and_clear_last_exception
 
@@ -407,13 +407,13 @@ napi_status napi_get_and_clear_last_exception(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[out] result`: The exception if one is pending, NULL otherwise.
+- `[out] result`: Die Ausnahme, wenn eine ausständig ist, ansonsten NULL.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-This API returns true if an exception is pending.
+Diese API gibt true aus, wenn die Ausnahme ausständig ist.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ausständig ist.
 
 #### napi_is_exception_pending
 
@@ -426,7 +426,7 @@ napi_status napi_is_exception_pending(napi_env env, bool* result);
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[out] result`: Boolean value that is set to true if an exception is pending.
+- `[out] result`: Boolean-Wert, der auf true gesetzt wird, wenn eine Ausnahme ansteht.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
