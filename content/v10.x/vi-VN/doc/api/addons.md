@@ -961,20 +961,20 @@ console.log(result);
 
 ### Cơ chế hook AtExit
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+Một hàm hook `AtExit` được gọi về sau khi vòng lặp sự kiện của Node.js kết thúc nhưng trước khi máy ảo JavaScripts chấm dứt và Node.js tắt đi. Hàm `AtExit` được đăng ký sử dụng API `node::AtExit`.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> một con trỏ tới hàm để gọi khi thoát ra.
+* `args` <span class="type">&lt;void\*&gt;</span> Con trỏ để truyền vào cho callback khi thoát ra.
 
-Registers exit hooks that run after the event loop has ended but before the VM is killed.
+Các bộ ghi thoát cơ chế hook sau khi vòng lặp sự kiện kết thúc nhưng trước khi máy ảo bị chấm dứt.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` gồm hai tham số: một con trỏ tới hàm callback để chạy khi thoát và con trỏ khác để truyền dữ liệu chưa nhập tới hàm callback đó.
 
-Callbacks are run in last-in first-out order.
+Hàm callback được chạy theo trình tự vào sau ra trước.
 
-The following `addon.cc` implements `AtExit`:
+Hàm `addon.cc` sau đây thực hiện `AtExit`:
 
 ```cpp
 // addon.cc
