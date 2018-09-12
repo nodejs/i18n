@@ -327,9 +327,9 @@ addon((msg) => {
 
 Nhớ rằng, trong ví dụ này, hàm callback được gọi đồng bộ.
 
-### Object factory
+### Sản xuất đối tượng
 
-Các thành phần mở rộng được tạo và trả về các đối tượng mới trong phạm vi hàm C++ như trong ví dụ minh họa dưới đây. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Các thành phần mở rộng được tạo và trả về các đối tượng mới trong phạm vi hàm C++ như trong ví dụ minh họa dưới đây. Một đối tượng với thuộc tính `msg` thông qua việc tạo và trả về sẽ lặp lại chuỗi và chuyển qua `createObject()`:
 
 ```cpp
 // addon.cc
@@ -362,7 +362,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Để kiểm tra trong JavaScript:
 
 ```js
 // test.js
@@ -374,9 +374,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### Sản xuất hàm
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Một kịch bản phổ biến khác là việc tạo ra các hàm JavaScript có khả năng bao bọc các hàm C++ và trả chúng về lại JavaScript:
 
 ```cpp
 // addon.cc
@@ -419,7 +419,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Để kiểm tra lại:
 
 ```js
 // test.js
@@ -430,7 +430,7 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Bao bọc các đối tượng C++
 
 It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
 
