@@ -74,12 +74,12 @@ changes:
 
 La clase `URL` compatible con el navegador, implementada siguiendo el estándar URL WHATWG. [Ejemplos de URLs analizadas](https://url.spec.whatwg.org/#example-url-parsing) pueden ser encontradas en el mismo Estándar. La clase `URL` también está disponible en el objeto global.
 
-De acuerdo con las convenciones del navegador, todas las propiedades de los objetos `URL` son implementadas como getters y setters en el prototipo de la clase, en lugar de como propiedades de datos en el objeto mismo. Thus, unlike [legacy `urlObject`][]s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
-myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still return `true`.
+De acuerdo con las convenciones del navegador, todas las propiedades de los objetos `URL` son implementadas como getters y setters en el prototipo de la clase, en lugar de como propiedades de datos en el objeto mismo. Por lo tanto, a diferencia de [legacy `urlObject`][]s, utilizando la palabra clave `delete` en cualquiera de las propiedades de los objetos `URL` (p. e.j. `delete
+myURL.protocol`, `delete myURL.pathname`, etc) no tiene ningún efecto pero aún así devolverán `true`.
 
 #### Constructor: new URL(input[, base])
 
-* `input` {string} The absolute or relative input URL to parse. If `input` is relative, then `base` is required. If `input` is absolute, the `base` is ignored.
+* `input` {string} La entrada URL absoluta o relativa a analizar. Si `input` es relativa, entonces `base` es necesaria. Si `input` es absoluta, la `base` es ignorada.
 * `base` {string|URL} The base URL to resolve against if the `input` is not absolute.
 
 Creates a new `URL` object by parsing the `input` relative to the `base`. If `base` is passed as a string, it will be parsed equivalent to `new URL(base)`.
