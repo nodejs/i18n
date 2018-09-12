@@ -836,20 +836,20 @@ if (someConditionNotMet()) {
 }
 ```
 
-The reason this is problematic is because writes to `process.stdout` in Node.js are sometimes *asynchronous* and may occur over multiple ticks of the Node.js event loop. Calling `process.exit()`, however, forces the process to exit *before* those additional writes to `stdout` can be performed.
+La razón de que esto sea problemático es porque las escrituras a `process.stdout` en Node.js a veces son *asincrónicas* y pueden ocurrir sobre múltiples ticks del bucle del evento Node.js. El llamar a `process.exit()`, sin embargo, forza al proceso a cerrarse *antes* de que se realicen esas escrituras adicionales en `stdout`.
 
-Rather than calling `process.exit()` directly, the code *should* set the `process.exitCode` and allow the process to exit naturally by avoiding scheduling any additional work for the event loop:
+En lugar de llamar a `process.exit()` directamente, el código *debe* establecer el `process.exitCode` y permitirle al proceso que se cierre naturalmente al evitar programar cualquier trabajo adicional para el bucle del evento:
 
 ```js
-// How to properly set the exit code while letting
-// the process exit gracefully.
+// Cómo establecer correctamente el código de salida al dejar
+// que el proceso se cierre con gracia.
 if (someConditionNotMet()) {
   printUsageToStdout();
   process.exitCode = 1;
 }
 ```
 
-If it is necessary to terminate the Node.js process due to an error condition, throwing an *uncaught* error and allowing the process to terminate accordingly is safer than calling `process.exit()`.
+Si es necesario terminar el proceso Node.js debido a una condición de error, arrojar un error *sin capturar* y permitir que el proceso se termine como corresponde es más seguro que llamar a `process.exit()`.
 
 ## process.exitCode
 
@@ -859,9 +859,9 @@ added: v0.11.8
 
 * {integer}
 
-A number which will be the process exit code, when the process either exits gracefully, or is exited via [`process.exit()`][] without specifying a code.
+Un número que será el código de salida del proceso, cuando el proceso se cierre con gracia o se cierre a través de [`process.exit()`][] sin especificar un código.
 
-Specifying a code to [`process.exit(code)`][`process.exit()`] will override any previous setting of `process.exitCode`.
+Especificar un código a [`process.exit(code)`][`process.exit()`] anulará cualquier configuración previa de `process.exitCode`.
 
 ## process.getegid()
 
@@ -869,7 +869,7 @@ Specifying a code to [`process.exit(code)`][`process.exit()`] will override any 
 added: v2.0.0
 -->
 
-The `process.getegid()` method returns the numerical effective group identity of the Node.js process. (See getegid(2).)
+El método `process.getegid()` devuelve la identidad del grupo efectivo numérico del proceso Node.js. (vea getegid(2).)
 
 ```js
 if (process.getegid) {
@@ -877,7 +877,7 @@ if (process.getegid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.geteuid()
 
@@ -885,9 +885,9 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v2.0.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
+El método `process.geteuid()` devuelve la identidad del usuario efectivo numérico del proceso. (Vea geteuid(2).)
 
 ```js
 if (process.geteuid) {
@@ -895,7 +895,7 @@ if (process.geteuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.getgid()
 
@@ -903,9 +903,9 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.31
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
+El método `process.getgid()` devuelve la identidad del grupo numérico del proceso. (Vea getgid(2).)
 
 ```js
 if (process.getgid) {
@@ -913,7 +913,7 @@ if (process.getgid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.getgroups()
 
@@ -921,11 +921,11 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.9.4
 -->
 
-* Returns: {integer[]}
+* Devuelve: {integer[]}
 
-The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
+El método `process.getgroups()` devuelve un array con los IDs del grupo suplementario. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.getuid()
 
@@ -943,7 +943,7 @@ if (process.getuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.hasUncaughtExceptionCaptureCallback()
 
@@ -962,7 +962,7 @@ added: v0.7.6
 -->
 
 * `time` {integer[]} The result of a previous call to `process.hrtime()`
-* Returns: {integer[]}
+* Devuelve: {integer[]}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple `Array`, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -1005,7 +1005,7 @@ process.setgid(1000);                     // drop root gid
 console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.kill(pid[, signal])
 
@@ -1323,7 +1323,7 @@ if (process.getegid && process.setegid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.seteuid(id)
 
@@ -1347,7 +1347,7 @@ if (process.geteuid && process.seteuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setgid(id)
 
@@ -1371,7 +1371,7 @@ if (process.getgid && process.setgid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setgroups(groups)
 
@@ -1385,7 +1385,7 @@ The `process.setgroups()` method sets the supplementary group IDs for the Node.j
 
 The `groups` array can contain numeric group IDs, group names or both.
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setuid(id)
 
@@ -1407,7 +1407,7 @@ if (process.getuid && process.setuid) {
 }
 ```
 
-This function is only available on POSIX platforms (i.e. not Windows or Android).
+Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
 ## process.setUncaughtExceptionCaptureCallback(fn)
 
