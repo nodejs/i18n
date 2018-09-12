@@ -243,8 +243,8 @@ Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 * `family` {string} Para `IPv4` o `IPv6`
 * `mac` {string} La dirección MAC de la interfaz de red
 * `internal` {boolean} `true` si la interfaz de la red es un loopback o es una interfaz similar que no es remotamente accesible; de otra forma `false`
-* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
-* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
+* `scopeid` {number} El identificador numérico IPv6 (solamente especificado cuando `family` es `IPv6`)
+* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. Si la `netmask` es invalida, esta propiedad está colocada a `null`.
 
 <!-- eslint-skip -->
 
@@ -295,7 +295,7 @@ Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 added: v0.5.0
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
