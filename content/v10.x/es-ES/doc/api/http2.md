@@ -150,7 +150,7 @@ Si el evento `'frameError'` esta asociado con un stream, el stream se cerrará y
 added: v8.4.0
 -->
 
-* `errorCode` {number} The HTTP/2 error code specified in the `GOAWAY` frame.
+* `errorCode` {number} El código de error HTTP/2 especificado en el frame `GOAWAY` .
 * `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
 * `opaqueData` {Buffer} If additional opaque data was included in the `GOAWAY` frame, a `Buffer` instance will be passed containing that data.
 
@@ -164,7 +164,7 @@ La instancia `Http2Session` se apagará automáticamente cuando se emita el even
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} A copy of the `SETTINGS` frame received.
+* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` recibido.
 
 El evento `'localSettings'` se emite cuando un reconocimiento del frame `SETTINGS` ha sido recibida.
 
@@ -184,9 +184,9 @@ session.on('localSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} A copy of the `SETTINGS` frame received.
+* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` recibido.
 
-The `'remoteSettings'` event is emitted when a new `SETTINGS` frame is received from the connected peer.
+El evento `'remoteSettings'` se emite cuando un frame `SETTINGS` nuevo es recibido desde el peer conectado.
 
 ```js
 session.on('remoteSettings', (settings) => {
@@ -194,7 +194,7 @@ session.on('remoteSettings', (settings) => {
 });
 ```
 
-#### Event: 'stream'
+#### Evento: 'stream'
 
 <!-- YAML
 added: v8.4.0
