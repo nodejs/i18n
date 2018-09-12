@@ -170,8 +170,8 @@ El primer argumento es un string conteniendo cero o más tokens *placeholder*. C
 * `%i` - Integer.
 * `%f` - Floating point value.
 * `%j` - JSON. Replaced with the string `'[Circular]'` if the argument contains circular references.
-* `%o` - `Object`. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` with options `{ showHidden: true, showProxy: true }`. This will show the full object including non-enumerable properties and proxies.
-* `%O` - `Object`. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` without options. This will show the full object not including non-enumerable properties and proxies.
+* `%o` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` con opciones `{ showHidden: true, showProxy: true }`. Esto va a mostrar el objeto completo incluyendo propiedades y proxies no enumerables.
+* `%O` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` sin opciones. This will show the full object not including non-enumerable properties and proxies.
 * `%%` - single percent sign (`'%'`). This does not consume an argument.
 * Returns: {string} The formatted string
 
