@@ -16,7 +16,7 @@ Una string URL es una string estructurada que contiene múltiples componentes si
 
 El módulo `url` proporciona dos APIs para trabajar con URLs: una API heredada que es específica de Node.js, y una API más nueva que implementa el mismo [Estándar URL WHATWG](https://url.spec.whatwg.org/) utilizado por navegadores web.
 
-While the Legacy API has not been deprecated, it is maintained solely for backwards compatibility with existing applications. New application code should use the WHATWG API.
+Mientras que la API Heredada no ha sido desaprobada, es mantenida únicamente para compatibilidad retrasada con aplicaciones existentes. Código de una nueva aplicación no debe usar la API WHATWG.
 
 A comparison between the WHATWG and Legacy APIs is provided below. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
 
