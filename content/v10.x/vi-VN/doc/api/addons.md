@@ -577,7 +577,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }
 ```
 
-Test it with:
+Kiểm tra nó với:
 
 ```js
 // test.js
@@ -592,9 +592,9 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### Sản xuất của các đối tượng được bọc
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+Ngoài ra, có thể sử dụng nhà máy tạo thực thể để tránh việc trực tiếp tạo ra các thực thể đối tượng sử dụng hàm toán tử `new` trong JavaScript:
 
 ```js
 const obj = addon.createObject();
