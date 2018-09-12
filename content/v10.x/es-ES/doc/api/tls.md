@@ -957,9 +957,9 @@ added: v0.10.2
 
 * Devuelve: {string[]}
 
-Returns an array with the names of the supported SSL ciphers.
+Devuelve un array con los nombres de los cifrados SSL admitidos.
 
-For example:
+Por ejemplo:
 
 ```js
 console.log(tls.getCiphers()); // ['AES128-SHA', 'AES256-SHA', ...]
@@ -971,20 +971,20 @@ console.log(tls.getCiphers()); // ['AES128-SHA', 'AES256-SHA', ...]
 added: v0.11.13
 -->
 
-The default curve name to use for ECDH key agreement in a tls server. The default value is `'auto'`. See [`tls.createSecureContext()`] for further information.
+El nombre de la curva por defecto para usar para el acuerdo de clave ECDH en un servidor tls. El valor predeterminado es `'auto'`. Consulte [`tls.createSecureContext()`] para obtener más información.
 
 ## Deprecated APIs
 
-### Class: CryptoStream
+### Clase: CryptoStream
 
 <!-- YAML
 added: v0.3.4
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.TLSSocket`][] instead.
+> Estabilidad: 0 - Obsoleto: Usar [`tls.TLSSocket`][] en su lugar.
 
-The `tls.CryptoStream` class represents a stream of encrypted data. This class has been deprecated and should no longer be used.
+La clase `tls.CryptoStream` representa un stream de datos encriptados. Esta clase ha quedado obsoleta y ya no debe usarse.
 
 #### cryptoStream.bytesWritten
 
