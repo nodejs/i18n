@@ -296,12 +296,12 @@ https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 * main: Manejar SIGINT adecuadamente. (Geir Hauge)
 * net: enlazar a la dirección TCP `::` de manera predeterminada (Fedor Indutny)
 * readline: considerar newlines para el posicionamiento del cursor (Yazhong Liu)
-* stream: split `objectMode` for Duplex (Vladimir Kurchatkin)
+* stream: dividir `objectMode` para Duplex (Vladimir Kurchatkin)
 * tls: `getPeerCertificate(detailed)` (Fedor Indutny)
-* tls: do not call SNICallback unless present (Fedor Indutny)
-* tls: force readable/writable to `true` (Fedor Indutny)
-* tls: support OCSP on client and server (Fedor Indutny)
-* util: made util.isArray a direct alias for Array.isArray (Evan Carroll)
+* tls: no llamar a SNICallback, a menos que se encuentre presente (Fedor Indutny)
+* tls: forzar a leíble/escribible para que sean `true` (Fedor Indutny)
+* tls: soportar OCSP en cliente y servidor (Fedor Indutny)
+* util: se hizo de util.isArray un alias directo para Array.isArray (Evan Carroll)
 
 <a id="0.11.12"></a>
 
