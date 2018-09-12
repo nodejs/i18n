@@ -142,7 +142,7 @@ fn2(); // no emite una advertencia de desaprobación porque tiene el mismo códi
 
 Si tanto las banderas de línea de comando `--no-deprecation` o `--no-warnings` son usadas, o si la propiedad `process.noDeprecation` está establecida como `true` *prior* para la primera advertencia de desaprobación, el método `util.deprecate()` no hace nada.
 
-Si las banderas de línea de comando `--trace-deprecation` o `--trace-warnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un rastro de pila son estampados a `stderr` la primera vez que la función obsoleta es llamada.
+Si las banderas de línea de comando `--trace-deprecation` o `--trace-warnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un rastro de pila son estampados a `stderr` la primera vez que la función obsoleta sea llamada.
 
 Si la bandera de línea de comando `--throw-deprecation` está establecida, o la propiedad `process.throwDeprecation` está establecida en `true`, entonces una excepción va a ser arrojada cuando la función obsoleta sea llamada.
 
@@ -169,11 +169,11 @@ El primer argumento es un string conteniendo cero o más tokens *placeholder*. C
 * `%d` - `Number` (integer or floating point value).
 * `%i` - Integer.
 * `%f` - Floating point value.
-* `%j` - JSON. Replaced with the string `'[Circular]'` if the argument contains circular references.
+* `%j` - JSON. Reemplazado con el string `'[Circular]'` si el argumento contiene referencias circulares.
 * `%o` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` con opciones `{ showHidden: true, showProxy: true }`. Esto va a mostrar el objeto completo incluyendo propiedades y proxies no enumerables.
-* `%O` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` sin opciones. This will show the full object not including non-enumerable properties and proxies.
-* `%%` - single percent sign (`'%'`). This does not consume an argument.
-* Returns: {string} The formatted string
+* `%O` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` sin opciones. Esto va a mostrar el objeto completo no incluyendo propiedades y proxies no enumerables.
+* `%%` - signo de porcentaje individual (`'%'`). Esto no consume un argumento.
+* Retorna: {string} El string con formato
 
 If the placeholder does not have a corresponding argument, the placeholder is not replaced.
 
@@ -211,12 +211,11 @@ added: v10.0.0
 * `inspectOptions` {Object}
 * `format` {string}
 
-This function is identical to [`util.format()`][], except in that it takes an `inspectOptions` argument which specifies options that are passed along to [`util.inspect()`][].
+Esta función es idéntica a [`util.format()`][], excepto en que esta toma un argumento `inspectOptions` que especifica las opciones que son pasadas a [`util.inspect()`][].
 
 ```js
 util.formatWithOptions({ colors: true }, 'See object %O', { foo: 42 });
-// Returns 'See object { foo: 42 }', where `42` is colored as a number
-// when printed to a terminal.
+// Retorna 'See object { foo: 42 }', donde `42` es coloreado como un número cuando es estampado a un terminal.
 ```
 
 ## util.getSystemErrorName(err)
@@ -226,7 +225,7 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* Returns: {string}
+* Retorna: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
