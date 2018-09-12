@@ -443,9 +443,9 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but li
 
 `destroy`, `emit`, `end`, `pause`, `read`, `resume`, y `write` arrojarán un error con código `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` and Sockets][] para más información.
 
-`setTimeout` method will be called on this `Http2Session`.
+El método `setTimeout` será llamado en esta `Http2Session`.
 
-All other interactions will be routed directly to the socket.
+Todas las interacciones se enrutarán directamente al socket.
 
 #### http2session.state
 
@@ -476,7 +476,7 @@ added: v8.4.0
 
 * `settings` {HTTP/2 Settings Object}
 
-Updates the current local settings for this `Http2Session` and sends a new `SETTINGS` frame to the connected HTTP/2 peer.
+Actualiza las configuraciones locales actuales para `Http2Session` y envía un nuevo frame `SETTINGS` al peer HTTP/2 conectado.
 
 Once called, the `http2session.pendingSettingsAck` property will be `true` while the session is waiting for the remote peer to acknowledge the new settings.
 
