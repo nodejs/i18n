@@ -80,16 +80,16 @@ myURL.protocol`, `delete myURL.pathname`, etc) no tiene ningún efecto pero aún
 #### Constructor: new URL(input[, base])
 
 * `input` {string} La entrada URL absoluta o relativa a analizar. Si `input` es relativa, entonces `base` es necesaria. Si `input` es absoluta, la `base` es ignorada.
-* `base` {string|URL} The base URL to resolve against if the `input` is not absolute.
+* `base` {string|URL} La URL base a resolver si la `input` no es absoluta.
 
-Creates a new `URL` object by parsing the `input` relative to the `base`. If `base` is passed as a string, it will be parsed equivalent to `new URL(base)`.
+Crea un nuevo objeto `URL` al analizar la `input` relativa a la `base`. Si `base` pasa como una string, será analizada de forma equivalente a `new URL(base)`.
 
 ```js
 const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. For instance:
+Se producirá un `TypeError` si la `input` o `base` no son URLs válidas. Tenga en cuenta que se hará un esfuerzo para obligar a los valores dados en cadenas. For instance:
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
