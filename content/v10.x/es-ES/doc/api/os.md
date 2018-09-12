@@ -242,7 +242,7 @@ Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 * `netmask` {string} La máscara de red IPv4 o IPv6
 * `family` {string} Para `IPv4` o `IPv6`
 * `mac` {string} La dirección MAC de la interfaz de red
-* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
+* `internal` {boolean} `true` si la interfaz de la red es un loopback o es una interfaz similar que no es remotamente accesible; de otra forma `false`
 * `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
 
