@@ -472,12 +472,12 @@ Todos los streams [`Readable`][] comienzan en el modo pausado, pero pueden ser c
 * Llamar al método [`stream.resume()`](#stream_readable_resume).
 * Llamar al método [`stream.pipe()`][] para enviar los datos a un [`Writable`][].
 
-The `Readable` can switch back to paused mode using one of the following:
+El `Readable` puede ser cambiado de vuelta al modo pausado usando alguno de los siguientes:
 
-* If there are no pipe destinations, by calling the [`stream.pause()`](#stream_readable_pause) method.
-* If there are pipe destinations, by removing all pipe destinations. Multiple pipe destinations may be removed by calling the [`stream.unpipe()`][] method.
+* Si no existen destinos pipe, al llamar al método [`stream.pause()`](#stream_readable_pause).
+* Si existen destinos pipe, al remover todos los destinos pipe. Múltiples destinos pipe pueden ser eliminados al llamar el método [`stream.unpipe()`][].
 
-The important concept to remember is that a `Readable` will not generate data until a mechanism for either consuming or ignoring that data is provided. If the consuming mechanism is disabled or taken away, the `Readable` will *attempt* to stop generating the data.
+El concepto importante a recordar es que un `Readable` no va a generar datos hasta que sea proporcionado un mecanismo para ya sea consumir o ignorar los datos. If the consuming mechanism is disabled or taken away, the `Readable` will *attempt* to stop generating the data.
 
 For backwards compatibility reasons, removing [`'data'`][] event handlers will **not** automatically pause the stream. Also, if there are piped destinations, then calling [`stream.pause()`](#stream_readable_pause) will not guarantee that the stream will *remain* paused once those destinations drain and ask for more data.
 
