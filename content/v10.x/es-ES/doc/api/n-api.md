@@ -1441,7 +1441,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API es utilizada para recuperar el buffer de datos subyacente y la longitud de un `node::Buffer`.
 
-*Warning*: Use caution while using this API since the underlying data buffer's lifetime is not guaranteed if it's managed by the VM.
+*Advertencia*: Tenga cuidado al utilizar esta API, ya que la vida útil del buffer de datos subyacente no está garantizada si es administrada por la VM.
 
 #### napi_get_prototype
 
