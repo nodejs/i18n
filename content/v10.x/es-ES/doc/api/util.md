@@ -52,8 +52,8 @@ function fn() {
 const callbackFunction = util.callbackify(fn);
 
 callbackFunction((err, ret) => {
-  // When the Promise was rejected with `null` it is wrapped with an Error and
-  // the original value is stored in `reason`.
+  // Cuando la Promise fue rechazada con `null` se envuelve con un Error y
+  // el valor original es almacenado en `reason`.
   err && err.hasOwnProperty('reason') && err.reason === null;  // true
 });
 ```
