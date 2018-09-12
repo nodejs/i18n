@@ -1,4 +1,4 @@
-# Node.js ChangeLog Archive
+# Archivo de Registro de Cambios de Node.Js
 
 <!--lint disable prohibited-strings-->
 
@@ -10,7 +10,7 @@
 <th>v0.11</th>
 <th>v0.9</th>
 <th>v0.8</th>
-<th>v0.7</th>
+<th>v0.8</th>
 <th>v0.6</th>
 <th>v0.5</th>
 <th>&lt;= v0.4</th>
@@ -169,7 +169,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -183,11 +183,11 @@
 
 <a id="0.11.14"></a>
 
-## 2014.09.24, Version 0.11.14 (Unstable)
+## 2014.09.24, Versión 0.11.14 (Inestable)
 
-* uv: Upgrade to v1.0.0-rc1
-* http_parser: Upgrade to v2.3.0
-* npm: Upgrade to v2.0.0
+* uv: Actualización a v1.0.0-rc1
+* http_parser: Actualización a v2.3.0
+* npm: Actualización a v2.0.0
 * openssl: Upgrade to v1.0.1i
 * v8: Upgrade to 3.26.33
 * Add fast path for simple URL parsing (Gabriel Wicke)
