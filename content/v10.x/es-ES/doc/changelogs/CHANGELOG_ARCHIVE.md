@@ -275,7 +275,7 @@
 
 https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
-* v8: actualizar a 3.24.35.22
+* v8: actualización a 3.24.35.22
 * buffer: añadir métodos de comparación e igualación (Sean McArthur)
 * buffer: mejorar métodos {read,write}{U}Int* (Nick Apperson)
 * buffer: devolver uint si MSB es 1 en readUInt32 (goussardg)
@@ -305,16 +305,16 @@ https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
 <a id="0.11.12"></a>
 
-## 2014.03.11, Version 0.11.12 (Unstable)
+## 2014.03.11, Versión 0.11.12 (Inestable)
 
 https://github.com/nodejs/node/commit/7d6b8db40f32e817ff145b7cfe6b3aec3179fba7
 
-* uv: Upgrade to v0.11.22 (Timothy J Fontaine)
-* buffer: allow toString to accept Infinity for end (Brian White)
-* child_process: add spawnSync/execSync (Bert Belder, Timothy J Fontaine)
-* cluster: handle bind errors on Windows (Alexis Campailla)
-* contextify: handle infinite recursion errors (Fedor Indutny)
-* crypto: allow custom generator for DiffieHellman (Brian White)
+* uv: Actualización a v0.11.22 (Timothy J Fontaine)
+* buffer: permitir a toString aceptar a Infinito como final (Brian White)
+* child_process: añadir spawnSync/execSync (Bert Belder, Timothy J Fontaine)
+* clúster: manejar errores de enlace en Windows (Alexis Campailla)
+* contextify: manejar errores de recursión infinita (Fedor Indutny)
+* crypto: permitir generador predeterminado para DiffieHellman (Brian White)
 * crypto: allow setting add'l authenticated data (Brian White)
 * crypto: fix CipherFinal return value check (Brian White)
 * crypto: make NewSessionDoneCb public (Fedor Indutny)
