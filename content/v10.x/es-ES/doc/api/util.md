@@ -247,14 +247,14 @@ changes:
     description: The `constructor` parameter can refer to an ES6 class now.
 -->
 
-El uso de `util.inherits()` está desalentado. Por favor use la `clase` ES6 y `extienda` palabras clave para obtener soporte de herencia de nivel de lenguaje. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
+El uso de `util.inherits()` está desalentado. Por favor use la `clase` ES6 y `extienda` palabras clave para obtener soporte de herencia de nivel de lenguaje. También note que los dos estilos son [semánticamente incompatibles](https://github.com/nodejs/node/issues/4179).
 
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) into another. The prototype of `constructor` will be set to a new object created from `superConstructor`.
+Herede los métodos prototipo de un [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) a otro. El prototipo del `constructor` se establecerá a un nuevo objeto creado a partir de `superConstructor`.
 
-As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
+Como una conveniencia adicional, `superConstructor` va a ser accesible por medio de la propiedad `constructor.super_`.
 
 ```js
 const util = require('util');
@@ -327,7 +327,7 @@ changes:
     description: The `showProxy` option is supported now.
 -->
 
-* `object` {any} Any JavaScript primitive or `Object`.
+* `object` {any} Cualquier JavaScript primitivo o `Object`.
 * `options` {Object}
   
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result as well as [`WeakMap`][] and [`WeakSet`][] entries. **Default:** `false`.
@@ -364,7 +364,7 @@ util.inspect(new Bar()); // 'Bar {}'
 util.inspect(baz);       // '[foo] {}'
 ```
 
-The following example inspects all properties of the `util` object:
+El siguiente ejemplo inspecciona todas las propiedades del objeto `util`:
 
 ```js
 const util = require('util');
