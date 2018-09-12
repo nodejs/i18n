@@ -1132,7 +1132,7 @@ The optional `options.statCheck` function may be specified to give user code an 
 
 The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
 
-El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Tener en cuenta que usar el mismo descriptor de archivos simultáneamente para multiples streams no es compatible y puede resultar en pérdida de datos. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
+El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Tenga en cuenta que utilizar el mismo descriptor de archivo de manera concurrente para múltiples streams no es soportado y puede resultar en pérdida de datos. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be used to sent trailing header fields to the peer.
 
@@ -1276,7 +1276,7 @@ added: v8.5.0
 
 Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Manejar este evento implica llamar [`response.writeContinue()`][] si el cliente debe continuar enviando el cuerpo de la solicitud, o generar una apropiada respuesta HTTP (por ejemplo, 400 Bad Request) si el cliente no debe continuar enviando el cuerpo de la solicitud.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debería continuar a enviar el cuerpo de la solicitud, o generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
 
 Tener en cuenta que cuando este evento es emitido y manejado, el evento [`'request'`] no será emitido.
 
@@ -1297,7 +1297,7 @@ Emitido cada vez que hay una solicitud. Tenga en cuenta que pueden haber múltip
 added: v8.4.0
 -->
 
-El evento `'session'` es emitido cuando una nueva `Http2Session` es creada por el `Http2Server`.
+El evento `'session'` se emite cuando una `Http2Session` nueva es creada por el `Http2Server` .
 
 #### Event: 'sessionError'
 
@@ -1321,7 +1321,7 @@ Si un `ServerHttp2Stream` emite un evento de `'error'`, será reenviado aquí. E
 added: v8.4.0
 -->
 
-El evento `'stream'` es emitido cuando un `'stream'` ha sido emitido por una `Http2Session` asociada con el servidor.
+El evento `'stream'` se emite cuando un evento `'stream'` ha sido emitido por una `Http2Session` asociada al servidor.
 
 ```js
 const http2 = require('http2');
@@ -1385,7 +1385,7 @@ added: v8.5.0
 
 Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createSecureServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. Si este evento no se escucha, el servidor automáticamente responderá con un estado `100 Continue` según corresponda.
 
-Manejar este evento implica llamar [`response.writeContinue()`][] si el cliente debe continuar enviando el cuerpo de la solicitud, o generar una apropiada respuesta HTTP (por ejemplo, 400 Bad Request) si el cliente no debe continuar enviando el cuerpo de la solicitud.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debería continuar a enviar el cuerpo de la solicitud, o generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
 
 Tener en cuenta que cuando este evento es emitido y manejado, el evento [`'request'`][] no será emitido.
 
