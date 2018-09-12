@@ -478,9 +478,9 @@ added: v8.4.0
 
 Actualiza las configuraciones locales actuales para `Http2Session` y envía un nuevo frame `SETTINGS` al peer HTTP/2 conectado.
 
-Once called, the `http2session.pendingSettingsAck` property will be `true` while the session is waiting for the remote peer to acknowledge the new settings.
+Una vez llamado, la propiedad de `http2session.pendingSettingsAck` será `true` mientras que la sesión está esperando que el peer remoto reconozca las nuevas configuraciones.
 
-The new settings will not become effective until the `SETTINGS` acknowledgment is received and the `'localSettings'` event is emitted. It is possible to send multiple `SETTINGS` frames while acknowledgment is still pending.
+Las nuevas configuraciones no se harán efectivas hasta que el reconocimiento de `SETTINGS` sea recibido y el evento `'localSettings'` sea emitido. Es posible enviar múltiples `SETTINGS` frames mientras aún está pendiente el reconocimiento.
 
 #### http2session.type
 
