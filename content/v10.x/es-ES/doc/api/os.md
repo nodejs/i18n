@@ -297,9 +297,9 @@ added: v0.5.0
 
 * Retorna: {string}
 
-The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
+El método `os.platform()` retorna un string identificando la plataforma del sistema operativo como fue colocada durante el tiempo de compilación de Node.js.
 
-Currently possible values are:
+Los posibles valores actuales son:
 
 * `'aix'`
 * `'darwin'`
@@ -309,7 +309,7 @@ Currently possible values are:
 * `'sunos'`
 * `'win32'`
 
-Equivalent to [`process.platform`][].
+Equivalente para [`process.platform`][].
 
 The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
