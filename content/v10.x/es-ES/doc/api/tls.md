@@ -887,9 +887,9 @@ changes:
 
 Crea un nuevo [`tls.Server`][]. El `secureConnectionListener`, si se proporciona, se configura automáticamente como un listener para el evento [`'secureConnection'`][] event.
 
-The `ticketKeys` options is automatically shared between `cluster` module workers.
+Las opciones `ticketKeys` se comparten automáticamente entre los workers del módulo `cluster`.
 
-The following illustrates a simple echo server:
+Lo siguiente ilustra un servidor de eco simple:
 
 ```js
 const tls = require('tls');
@@ -899,10 +899,10 @@ const options = {
   key: fs.readFileSync('server-key.pem'),
   cert: fs.readFileSync('server-cert.pem'),
 
-  // This is necessary only if using the client certificate authentication.
+// Esto es necesario solo si se usa la autenticación del certificado del cliente.
   requestCert: true,
 
-  // This is necessary only if the client uses the self-signed certificate.
+// Esto es necesario solo si el cliente usa el certificado autofirmado.
   ca: [ fs.readFileSync('client-cert.pem') ]
 };
 
@@ -918,7 +918,7 @@ server.listen(8000, () => {
 });
 ```
 
-Or
+O
 
 ```js
 const tls = require('tls');
@@ -927,7 +927,7 @@ const fs = require('fs');
 const options = {
   pfx: fs.readFileSync('server.pfx'),
 
-  // This is necessary only if using the client certificate authentication.
+// Esto es necesario solo si se usa la autenticación del certificado del cliente.
   requestCert: true,
 };
 
@@ -943,7 +943,7 @@ server.listen(8000, () => {
 });
 ```
 
-This server can be tested by connecting to it using `openssl s_client`:
+Este servidor se puede probar conectándose a él usando `openssl s_client`:
 
 ```sh
 openssl s_client -connect 127.0.0.1:8000
