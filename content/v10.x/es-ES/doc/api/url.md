@@ -18,7 +18,7 @@ El módulo `url` proporciona dos APIs para trabajar con URLs: una API heredada q
 
 Mientras que la API Heredada no ha sido desaprobada, es mantenida únicamente para compatibilidad retrasada con aplicaciones existentes. Código de una nueva aplicación no debe usar la API WHATWG.
 
-A comparison between the WHATWG and Legacy APIs is provided below. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
+A continuación, se proporciona una comparación entre el WHATWG y las APIs heredadas. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
 
 WHATWG URL's `origin` property includes `protocol` and `host`, but not `username` or `password`.
 
