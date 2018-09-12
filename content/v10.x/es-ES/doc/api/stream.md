@@ -515,11 +515,11 @@ Mientras `readable.readableFlowing` es `false`, los datos pueden ser que se este
 
 #### Escoge uno
 
-The `Readable` stream API evolved across multiple Node.js versions and provides multiple methods of consuming stream data. In general, developers should choose *one* of the methods of consuming data and *should never* use multiple methods to consume data from a single stream.
+El API del stream `Readable` ha evolucionado a través de de múltiples versiones de Node.js y ha proporcionado múltiples métodos de consumir los datos del stream. En general, los desarrolladores deberían elegir *uno* de estos métodos de consumir datos y *nunca deberían* usar varios métodos de consumo de datos de un solo stream.
 
-Use of the `readable.pipe()` method is recommended for most users as it has been implemented to provide the easiest way of consuming stream data. Developers that require more fine-grained control over the transfer and generation of data can use the [`EventEmitter`][] and `readable.pause()`/`readable.resume()` APIs.
+Es recomendado el uso del método `readable.pipe()` para la mayoría de los usuarios, como ha sido implementado para proporcionar la manera más sencilla de consumo de datos del stream. Los desarrolladores que requieren un control más detallado sobre la transferencia y generación de datos pueden usar los APIS [`EventEmitter`][] y `readable.pause()`/`readable.resume()`.
 
-#### Class: stream.Readable
+#### Clase: stream.Readable
 
 <!-- YAML
 added: v0.9.4
@@ -527,13 +527,13 @@ added: v0.9.4
 
 <!--type=class-->
 
-##### Event: 'close'
+##### Evento: 'close'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-The `'close'` event is emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+El evento `'close'` es emitido cuando el stream y cualquiera de sus recursos subyacentes (por ejemplo, un descriptor de archivos) han sido cerrados. The event indicates that no more events will be emitted, and no further computation will occur.
 
 Not all [`Readable`][] streams will emit the `'close'` event.
 
