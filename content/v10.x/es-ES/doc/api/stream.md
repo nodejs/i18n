@@ -460,17 +460,17 @@ Todos los streams [`Readable`][] implementan la interfaz definida por la clase `
 
 #### Dos modos
 
-`Readable` streams effectively operate in one of two modes: flowing and paused.
+Los streams `Readable` operan de forma efectiva en uno de dos modos: fluido y pausado.
 
-When in flowing mode, data is read from the underlying system automatically and provided to an application as quickly as possible using events via the [`EventEmitter`][] interface.
+Cuando sea el modo fluido, los datos son leídos del sistema subyacente automáticamente, y son proporcionados a una aplicación tan pronto como sea posible usando eventos a través de la interfaz [`EventEmitter`][].
 
-In paused mode, the [`stream.read()`](#stream_readable_read_size) method must be called explicitly to read chunks of data from the stream.
+En el modo pausado, el método [`stream.read()`](#stream_readable_read_size) debe ser llamado para leer explícitamente fragmentos de datos del stream.
 
-All [`Readable`][] streams begin in paused mode but can be switched to flowing mode in one of the following ways:
+Todos los streams [`Readable`][] comienzan en el modo pausado, pero pueden ser cambiados al modo fluido en una de las siguientes maneras:
 
-* Adding a [`'data'`][] event handler.
-* Calling the [`stream.resume()`](#stream_readable_resume) method.
-* Calling the [`stream.pipe()`][] method to send the data to a [`Writable`][].
+* Añadiendo un manejador de eventos [`'data'`][].
+* Llamar al método [`stream.resume()`](#stream_readable_resume).
+* Llamar al método [`stream.pipe()`][] para enviar los datos a un [`Writable`][].
 
 The `Readable` can switch back to paused mode using one of the following:
 
