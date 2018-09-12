@@ -16,7 +16,7 @@ La API de Núcleo proporciona una interfaz de bajo nivel diseñada específicame
 
 La API de Núcleo `http2` es mucho más simétrica entre cliente y servidor que la API `http` . Por ejemplo, la mayoría de los eventos, como `'error'`, `'connect'` y `'stream'`, pueden ser emitidos por el código del lado del cliente o por el código del lado del servidor.
 
-### Server-side example
+### Ejemplo del lado del servidor
 
 La siguiente ilustra un servidor simple de HTTP/2 utilizando la API de núcleo. Dado que no hay navegadores conocidos que soporten [unencrypted HTTP/2](https://http2.github.io/faq/#does-http2-require-encryption), el uso de [`http2.createSecureServer()`][] es necesario al comunicarse con clientes del navegador.
 
@@ -49,9 +49,9 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
   -keyout localhost-privkey.pem -out localhost-cert.pem
 ```
 
-### Client-side example
+### Ejemplo del lado del cliente
 
-The following illustrates an HTTP/2 client:
+Lo siguiente ilustra un cliente HTTP/2:
 
 ```js
 const http2 = require('http2');
@@ -79,13 +79,13 @@ req.on('end', () => {
 req.end();
 ```
 
-### Class: Http2Session
+### Clase: Http2Session
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* Extends: {EventEmitter}
+* Extiende a: {EventEmitter}
 
 Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instancias de esta clase *no* están destinadas a ser construidas directamente por el código de usuario.
 
@@ -95,9 +95,9 @@ Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos
 
 Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][] o una [`tls.TLSSocket`][] cuando es creada. Cuando se destruye ya sea el `Socket` o el `Http2Session`, ambos serán destruidos.
 
-Debido a los requisitos de serialización y procesamiento específicos impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos en una instancia de `Socket` vinculada a `Http2Session`. Hacerlo, puede poner la sesión HTTP/2 en un estado indeterminado, causando que la sesión y el socket se vuelvan inutilizables.
+Debido a los requisitos específicos de serialización y procesamiento impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos a una instancia de `Socket` vinculada a una `Http2Session` . Hacerlo, puede poner la sesión HTTP/2 en un estado indeterminado, causando que la sesión y el socket se vuelvan inutilizables.
 
-Una vez que un `Socket` ha sido vinculado a una `Http2Session`, el código de usuario debería confiar únicamente en el API del `Http2Session`.
+Una vez que un `Socket` haya sido vinculado a una `Http2Session`, el código de usuario debería confiar únicamente en la API de la `Http2Session` .
 
 #### Event: 'close'
 
@@ -116,7 +116,7 @@ added: v8.4.0
 * `session` {Http2Session}
 * `socket` {net.Socket}
 
-El evento `'connect'` es emitido una vez que la `Http2Session` ha sido conectada exitosamente al par remoto y la comunicación puede empezar.
+El evento `'connect'` se emite una vez que la `Http2Session` haya sido conectada exitosamente al peer remoto y la comunicación pueda comenzar.
 
 El código de usuario generalmente no escuchará directamente a este evento.
 
@@ -137,12 +137,12 @@ added: v8.4.0
 -->
 
 * `type` {integer} El tipo de frame.
-* `code` {integer} The error code.
+* `code` {integer} El código de error.
 * `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
 
-El evento `'frameError'` es emitido cuando ocurre un error mientras se intenta enviar un frame a la sesión. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
+El evento `'frameError'` se emite cuando ocurre un error mientras se intenta enviar un frame en la sesión. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
-Si el evento `'frameError'` esta asociado con un stream, el stream será cerradp y destruido inmediatamente después del evento `'frameError'`. Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
+Si el evento `'frameError'` esta asociado con un stream, el stream se cerrará y se destruirá inmediatamente después del evento `'frameError'` . Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
 
 #### Event: 'goaway'
 
@@ -156,7 +156,7 @@ added: v8.4.0
 
 El evento `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
 
-La instancia `Http2Session` será apagada automáticamente cuando el evento `'goaway'` es emitido.
+La instancia `Http2Session` se apagará automáticamente cuando se emita el evento `'goaway'` .
 
 #### Event: 'localSettings'
 
