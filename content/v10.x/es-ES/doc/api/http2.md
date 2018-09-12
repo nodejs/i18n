@@ -544,14 +544,14 @@ A `URL` object, or any object with an `origin` property, may be passed as `origi
 
 The format of the `alt` parameter is strictly defined by [RFC 7838](https://tools.ietf.org/html/rfc7838) as an ASCII string containing a comma-delimited list of "alternative" protocols associated with a specific host and port.
 
-For example, the value `'h2="example.org:81"'` indicates that the HTTP/2 protocol is available on the host `'example.org'` on TCP/IP port 81. The host and port *must* be contained within the quote (`"`) characters.
+Por ejemplo, el valor `'h2="example.org:81"'` indica que el protocolo HTTP/2 está disponible en el host `'example.org'` en TCP/IP puerto 81. The host and port *must* be contained within the quote (`"`) characters.
 
 Se pueden especificar múltiples alternativas, por ejemplo: `'h2="example.org:81",
 h2=":82"'`.
 
 El identificador de protocolo (`'h2'` en los ejemplos) puede ser cualquier [ALPN Protocol ID](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids) válido.
 
-The syntax of these values is not validated by the Node.js implementation and are passed through as provided by the user or received from the peer.
+La sintaxis de estos valores no es validada por la implementación del Node.js, y se transmiten como proporcionadas por el usuario o recibidas del peer.
 
 ### Class: ClientHttp2Session
 
