@@ -1417,7 +1417,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API se utiliza para recuperar el buffer de datos subyacente y la longitud de un `ArrayBuffer`.
 
-*WARNING*: Use caution while using this API. The lifetime of the underlying data buffer is managed by the `ArrayBuffer` even after it's returned. A possible safe way to use this API is in conjunction with [`napi_create_reference`][], which can be used to guarantee control over the lifetime of the `ArrayBuffer`. It's also safe to use the returned data buffer within the same callback as long as there are no calls to other APIs that might trigger a GC.
+*ADVERTENCIA*: Tenga cuidado al utilizar esta API. El `ArrayBuffer` administra el tiempo de vida del buffer de datos subyacente incluso después de que se devuelve. Una manera segura posible para utilizar esta API es en conjunto con [`napi_create_reference`][], la cual puede ser utilizada para garantizar el control sobre el tiempo de vida del `ArrayBuffer`. También es seguro utilizar el buffer de datos devuelto dentro del mismo callback de terminación siempre que no existan llamadas a otras APIs que puedan desencadenar un GC.
 
 #### napi_get_buffer_info
 
@@ -1432,14 +1432,14 @@ napi_status napi_get_buffer_info(napi_env env,
                                  size_t* length)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the `node::Buffer` being queried.
-- `[out] data`: The underlying data buffer of the `node::Buffer`.
-- `[out] length`: Length in bytes of the underlying data buffer.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa al `node::Buffer` que está siendo consultado.
+- `[out] data`: El buffer de datos subyacente del `node::Buffer`.
+- `[out] length`: Longitud en bytes del buffer de datos subyacente.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to retrieve the underlying data buffer of a `node::Buffer` and it's length.
+Esta API es utilizada para recuperar el buffer de datos subyacente y la longitud de un `node::Buffer`.
 
 *Warning*: Use caution while using this API since the underlying data buffer's lifetime is not guaranteed if it's managed by the VM.
 
