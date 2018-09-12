@@ -316,7 +316,7 @@ changes:
 
 Llamar al método `writable.end()` señala que no se escribirá más datos en el [`Writable`][]. Los argumentos `chunk` y `encoding` opcionales permiten un último fragmento de datos sean escritos inmediatamente antes de cerrar el stream. Si es proporcionado, la función `callback` opcional es adjuntada como un listener para el evento [`'finish'`][].
 
-Calling the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) method after calling [`stream.end()`](#stream_writable_end_chunk_encoding_callback) will raise an error.
+Llamar el método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) va a provocar un error.
 
 ```js
 // write 'hello, ' and then end with 'world!'
@@ -338,10 +338,10 @@ changes:
     description: This method now returns a reference to `writable`.
 -->
 
-* `encoding` {string} The new default encoding
-* Returns: {this}
+* `encoding` {string} La nueva codificación predeterminada
+* Devuelve: {this}
 
-The `writable.setDefaultEncoding()` method sets the default `encoding` for a [`Writable`][] stream.
+El método `writable.setDefaultEncoding()`establece el `encoding` predeterminado para un stream [`Writable`][].
 
 ##### writable.uncork()
 
@@ -349,7 +349,7 @@ The `writable.setDefaultEncoding()` method sets the default `encoding` for a [`W
 added: v0.11.2
 -->
 
-The `writable.uncork()` method flushes all data buffered since [`stream.cork()`][] was called.
+El método `writable.uncork()` arroja todos los datos almacenados desde que [`stream.cork()`][] fue llamado.
 
 Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Doing so allows batching of all `writable.write()` calls that occur within a given Node.js event loop phase.
 
@@ -360,7 +360,7 @@ stream.write('data ');
 process.nextTick(() => stream.uncork());
 ```
 
-If the [`writable.cork()`][] method is called multiple times on a stream, the same number of calls to `writable.uncork()` must be called to flush the buffered data.
+Si el método[`writable.cork()`][] es llamado en varias ocasiones en un stream, deben hacerse el mismo número de llamadas a `writable.uncork()` para arrojar los datos almacenados.
 
 ```js
 stream.cork();
