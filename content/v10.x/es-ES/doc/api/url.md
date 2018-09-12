@@ -44,14 +44,14 @@ La propiedad `origin` de WHATWG URL incluye `protocol` y `host`, pero no `userna
 (todos los espacios en la línea "" deben ser ignorados — son simplemente para formatear)
 ```
 
-Parsing the URL string using the WHATWG API:
+Analizar la string de URL utilizando la API WHATWG:
 
 ```js
 const myURL =
   new URL('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
 ```
 
-Parsing the URL string using the Legacy API:
+Analizar la string de URL usando la API Heredada:
 
 ```js
 const url = require('url');
@@ -59,9 +59,9 @@ const myURL =
   url.parse('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
 ```
 
-## The WHATWG URL API
+## La WHATWG URL API
 
-### Class: URL
+### Clase: URL
 
 <!-- YAML
 added: v7.0.0
@@ -72,9 +72,9 @@ changes:
     description: The class is now available on the global object.
 -->
 
-Browser-compatible `URL` class, implemented by following the WHATWG URL Standard. [Examples of parsed URLs](https://url.spec.whatwg.org/#example-url-parsing) may be found in the Standard itself. The `URL` class is also available on the global object.
+La clase `URL` compatible con el navegador, implementada siguiendo el estándar URL WHATWG. [Ejemplos de URLs analizadas](https://url.spec.whatwg.org/#example-url-parsing) pueden ser encontradas en el mismo Estándar. La clase `URL` también está disponible en el objeto global.
 
-In accordance with browser conventions, all properties of `URL` objects are implemented as getters and setters on the class prototype, rather than as data properties on the object itself. Thus, unlike [legacy `urlObject`][]s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
+De acuerdo con las convenciones del navegador, todas las propiedades de los objetos `URL` son implementadas como getters y setters en el prototipo de la clase, en lugar de como propiedades de datos en el objeto mismo. Thus, unlike [legacy `urlObject`][]s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
 myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still return `true`.
 
 #### Constructor: new URL(input[, base])
