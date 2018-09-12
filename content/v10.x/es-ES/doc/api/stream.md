@@ -260,7 +260,7 @@ added: v0.9.4
 
 El evento `'unpipe'` es emitido cuando es llamado el método [`stream.unpipe()`][] en un stream [`Readable`][], removiendo este [`Writable`][] de su conjunto de destinos.
 
-This is also emitted in case this [`Writable`][] stream emits an error when a [`Readable`][] stream pipes into it.
+Esto también es emitido en caso de que este stream [`Writable`][] emita un error cuando un stream [`Readable`][] haga pipe en él.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -279,9 +279,9 @@ reader.unpipe(writer);
 added: v0.11.2
 -->
 
-The `writable.cork()` method forces all written data to be buffered in memory. The buffered data will be flushed when either the [`stream.uncork()`][] or [`stream.end()`](#stream_writable_end_chunk_encoding_callback) methods are called.
+El método `writable.cork()` forza que todos los datos escritos sean almacenados en la memoria. Los datos almacenados van a ser arrojados cuando se llame alguno de los métodos [`stream.uncork()`][] o [`stream.end()`](#stream_writable_end_chunk_encoding_callback).
 
-The primary intent of `writable.cork()` is to avoid a situation where writing many small chunks of data to a stream do not cause a backup in the internal buffer that would have an adverse impact on performance. In such situations, implementations that implement the `writable._writev()` method can perform buffered writes in a more optimized manner.
+La intención primordial de `writable.cork()` es evitar una situación donde escribir muchos fragmentos pequeños de datos en un stream no cause un respaldo en el búfer interno, eso sería un impacto adverso en el desempeño. In such situations, implementations that implement the `writable._writev()` method can perform buffered writes in a more optimized manner.
 
 See also: [`writable.uncork()`][].
 
