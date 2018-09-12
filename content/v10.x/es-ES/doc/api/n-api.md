@@ -1455,11 +1455,11 @@ napi_status napi_get_prototype(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] object`: `napi_value` representing JavaScript `Object` whose prototype to return. This returns the equivalent of `Object.getPrototypeOf` (which is not the same as the function's `prototype` property).
-- `[out] result`: `napi_value` representing prototype of the given object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] object`: `napi_value` que representa al `Object` de JavaScript cuyo prototipo será devuelto. Este devuelve el equivalente de `Object.getPrototypeOf` (el cual no es lo mismo que la propiedad `prototype` de la función).
+- `[out] result`: `napi_value` que representa al prototipo del objeto dado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 #### napi_get_typedarray_info
 
@@ -1477,18 +1477,18 @@ napi_status napi_get_typedarray_info(napi_env env,
                                      size_t* byte_offset)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] typedarray`: `napi_value` representing the `TypedArray` whose properties to query.
-- `[out] type`: Scalar datatype of the elements within the `TypedArray`.
-- `[out] length`: `Number` of elements in the `TypedArray`.
-- `[out] data`: The data buffer underlying the typed array.
-- `[out] byte_offset`: The byte offset within the data buffer from which to start projecting the `TypedArray`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] typedarray`: `napi_value` que representa al `TypedArray` cuyas propiedades se consultarán.
+- `[out] type`: Tipo de dato escalar de los elementos dentro del `TypedArray`.
+- `[out] length`: `Number` de elementos en el `TypedArray`.
+- `[out] data`: El buffer de datos subyacente del tipo de arreglo.
+- `[out] byte_offset`: El byte offset dentro del buffer de datos desde el cual se comenzará a proyectar el `TypedArray`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns various properties of a typed array.
+Esta API devuelve varias propiedades de un tipo de arreglo.
 
-*Warning*: Use caution while using this API since the underlying data buffer is managed by the VM.
+*Advertencia*: Tenga cuidado al utilizar esta API, ya que el buffer de datos subyacente es administrado por la VM.
 
 #### napi_get_dataview_info
 
@@ -1505,16 +1505,16 @@ napi_status napi_get_dataview_info(napi_env env,
                                    size_t* byte_offset)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] dataview`: `napi_value` representing the `DataView` whose properties to query.
-- `[out] byte_length`: `Number` of bytes in the `DataView`.
-- `[out] data`: The data buffer underlying the `DataView`.
-- `[out] arraybuffer`: `ArrayBuffer` underlying the `DataView`.
-- `[out] byte_offset`: The byte offset within the data buffer from which to start projecting the `DataView`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] dataview`: `napi_value` que representa el `DataView` cuyas propiedades se consultarán.
+- `[out] byte_length`: `Number` de bytes en el `DataView`.
+- `[out] data`: El buffer de datos subyacente del `DataView`.
+- `[out] arraybuffer`: `ArrayBuffer` subyacente del `DataView`.
+- `[out] byte_offset`: El byte offset dentro del buffer de datos desde el cual se comenzará a proyectar el `DataView`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns various properties of a `DataView`.
+Esta API devuelve varias propiedades de un `DataView`.
 
 #### napi_get_value_bool
 
@@ -1526,13 +1526,13 @@ added: v8.0.0
 napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Boolean`.
-- `[out] result`: C boolean primitive equivalent of the given JavaScript `Boolean`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa al `Boolean` de JavaScript.
+- `[out] result`: Booleano primitivo de C equivalente al `Boolean` de JavaScript dado.
 
-Returns `napi_ok` if the API succeeded. If a non-boolean `napi_value` is passed in it returns `napi_boolean_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si se pasa un `napi_value` no booleano devuelve `napi_boolean_expected`.
 
-This API returns the C boolean primitive equivalent of the given JavaScript `Boolean`.
+Esta API devuelve el booleano primitivo de C equivalente al `Boolean` de JavaScript dado.
 
 #### napi_get_value_double
 
@@ -1546,13 +1546,13 @@ napi_status napi_get_value_double(napi_env env,
                                   double* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
-- `[out] result`: C double primitive equivalent of the given JavaScript `Number`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa un `Number` de JavaScript.
+- `[out] result`: Doble primitivo de C del `Number` de JavaScript dado.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
-This API returns the C double primitive equivalent of the given JavaScript `Number`.
+Esta API devuelve un doble primitivo de C equivalente al `Number` de JavaScript dado.
 
 #### napi_get_value_external
 
@@ -1566,11 +1566,11 @@ napi_status napi_get_value_external(napi_env env,
                                     void** result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript external value.
-- `[out] result`: Pointer to the data wrapped by the JavaScript external value.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa un valor externo de JavaScript.
+- `[out] result`: Apuntador a los datos envueltos por el valor externo de JavaScript.
 
-Returns `napi_ok` if the API succeeded. If a non-external `napi_value` is passed in it returns `napi_invalid_arg`.
+Devuelve `napi_ok` si la API fue exitosa. If a non-external `napi_value` is passed in it returns `napi_invalid_arg`.
 
 This API retrieves the external data pointer that was previously passed to `napi_create_external()`.
 
@@ -1587,7 +1587,7 @@ napi_status napi_get_value_int32(napi_env env,
 ```
 
 - `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
+- `[in] value`: `napi_value` que representa un `Number` de JavaScript.
 - `[out] result`: C `int32` primitive equivalent of the given JavaScript `Number`.
 
 Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in `napi_number_expected`.
@@ -1611,7 +1611,7 @@ napi_status napi_get_value_int64(napi_env env,
 ```
 
 - `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
+- `[in] value`: `napi_value` que representa un `Number` de JavaScript.
 - `[out] result`: C `int64` primitive equivalent of the given JavaScript `Number`.
 
 Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
@@ -1707,7 +1707,7 @@ napi_status napi_get_value_uint32(napi_env env,
 ```
 
 - `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript `Number`.
+- `[in] value`: `napi_value` que representa un `Number` de JavaScript.
 - `[out] result`: C primitive equivalent of the given `napi_value` as a `uint32_t`.
 
 Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
