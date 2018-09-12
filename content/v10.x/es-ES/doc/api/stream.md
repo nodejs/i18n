@@ -258,7 +258,7 @@ added: v0.9.4
 
 * `src` {stream.Readable} El stream fuente que hizo [unpiped][`stream.unpipe()`] en este escribible
 
-The `'unpipe'` event is emitted when the [`stream.unpipe()`][] method is called on a [`Readable`][] stream, removing this [`Writable`][] from its set of destinations.
+El evento `'unpipe'` es emitido cuando es llamado el método [`stream.unpipe()`][] en un stream [`Readable`][], removiendo este [`Writable`][] de su conjunto de destinos.
 
 This is also emitted in case this [`Writable`][] stream emits an error when a [`Readable`][] stream pipes into it.
 
