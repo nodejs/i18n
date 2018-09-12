@@ -262,24 +262,24 @@
 * string_bytes: ucs2 soporta big endian (Andrew Low)
 * tls, crypto: añadir soporte DHE (Shigeki Ohtsu)
 * tls: opción `checkServerIdentity` (Trevor Livingston)
-* tls: add DHE-RSA-AES128-SHA256 to the def ciphers (Shigeki Ohtsu)
-* tls: better error reporting at cert validation (Fedor Indutny)
-* tls: support multiple keys/certs (Fedor Indutny)
-* tls: throw an error, not string (Jackson Tian)
-* udp: make it possible to receive empty udp packets (Andrius Bentkus)
-* url: treat \ the same as / (isaacs)
+* tls: añadir DHE-RSA-AES128-SHA256 a los cifrados de definición (Shigeki Ohtsu)
+* tls: mejor reporte de errores en la validación de certificados (Fedor Indutny)
+* tls: soportar claves/certificados múltiples (Fedor Indutny)
+* tls: arrojar un error, no una string (Jackson Tian)
+* udp: hacer posible recibir paquetes udp vacíos (Andrius Bentkus)
+* url: tratar a \ de igual manera que a / (isaacs)
 
 <a id="0.11.13"></a>
 
-## 2014.05.01, Version 0.11.13 (Unstable)
+## 2014.05.01, Versión 0.11.13 (Inestable)
 
 https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
-* v8: upgrade to 3.24.35.22
-* buffer: add compare and equals methods (Sean McArthur)
-* buffer: improve {read,write}{U}Int* methods (Nick Apperson)
-* buffer: return uint if MSB is 1 in readUInt32 (goussardg)
-* buffer: truncate buffer after string decode (Fedor Indutny)
+* v8: actualizar a 3.24.35.22
+* buffer: añadir métodos de comparación e igualación (Sean McArthur)
+* buffer: mejorar métodos {read,write}{U}Int* (Nick Apperson)
+* buffer: devolver uint si MSB es 1 en readUInt32 (goussardg)
+* buffer: truncar buffer tras la decodificación de strings (Fedor Indutny)
 * child_process: fix assertion error in spawnSync (Shigeki Ohtsu)
 * crypto: fix memory leak in CipherBase::Final (Fedor Indutny)
 * crypto: improve error messages (Ingmar Runge)
