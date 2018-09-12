@@ -359,9 +359,9 @@ added: v0.3.3
 
 * Retorna: {string}
 
-The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
+El método `os.type()` retorna una string identificando el nombre del sistema operativo como es retornado por [uname(3)](https://linux.die.net/man/3/uname). Por ejemplo`'Linux'` en Linux, `'Darwin'` en macOS y `'Windows_NT'` en Windows.
 
-Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
+Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para información adicional sobre los resultados de correr [uname(3)](https://linux.die.net/man/3/uname) en distintos sistemas operativos.
 
 ## os.uptime()
 
@@ -375,9 +375,9 @@ changes:
                  component on Windows.
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
-The `os.uptime()` method returns the system uptime in number of seconds.
+El método de `os.uptime()` retorna el tiempo de operación del sistema en segundos.
 
 ## os.userInfo([options])
 
@@ -385,9 +385,9 @@ The `os.uptime()` method returns the system uptime in number of seconds.
 added: v6.0.0
 -->
 
-* `options` {Object} 
-  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Predeterminado:** `'utf8'`.
-* Returns: {Object}
+* `opciones` {Object} 
+  * `encoding` {string} Cifrado de caracteres usado para interpretar strings resultantes. Si `encoding` esta colocado en `'buffer'`, el `username`, `shell`, y `homedir` valores serán instancias `Buffer`. **Predeterminado:** `'utf8'`.
+* Retorna: {Object}
 
 The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
