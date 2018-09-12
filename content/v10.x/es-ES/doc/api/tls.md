@@ -1031,9 +1031,9 @@ changes:
 
 > Estabilidad: 0 - Obsoleto: Use [`tls.TLSSocket`][] en su lugar.
 
-* `context` {Object} A secure context object as returned by `tls.createSecureContext()`
-* `isServer` {boolean} `true` to specify that this TLS connection should be opened as a server.
-* `requestCert` {boolean} `true` to specify whether a server should request a certificate from a connecting client. Only applies when `isServer` is `true`.
+* `context` {Object} Un objeto de contexto seguro como lo devuelve `tls.createSecureContext()`
+* `isServer` {boolean} `true` para especificar que esta conexión TLS debe abrirse como servidor.
+* `requestCert` {boolean} `true` para especificar si un servidor debe solicitar un certificado de un cliente de conexión. Solo aplica cuando `isServer` es `true`.
 * `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
 * `options` 
   * `secureContext`: An optional TLS context object from [`tls.createSecureContext()`][]
