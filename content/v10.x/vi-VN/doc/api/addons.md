@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-Trong `myobject.cc`, các phương pháp khác nhau được thực hiện để tiếp xúc với nhau. Dưới đây là phương pháp `plusOne()` được hiển thị bằng việc thêm nó vào nguyên mẫu của hàm tạo:
+Trong `myobject.cc`, các phương thức khác nhau được thực hiện để tiếp xúc với nhau. Dưới đây là phương thức `plusOne()` được hiển thị bằng việc thêm nó vào nguyên mẫu của hàm tạo:
 
 ```cpp
 // myobject.cc
@@ -602,7 +602,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+Đầu tiên, phương thức `createObject()` được thiết đặc trong `addon.cc`:
 
 ```cpp
 // addon.cc
@@ -633,7 +633,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+Trong `myobject.h`, phương thức tĩnh `NewInstance()` được thêm vào nhằm kiểm soát việc khởi tạo đối tượng mới. Phương thức này sử dụng `new` trong JavaScript:
 
 ```cpp
 // myobject.h
@@ -665,7 +665,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+Việc thực hiện `myobject.cc` tương tự như trong ví dụ trước:
 
 ```cpp
 // myobject.cc
@@ -752,7 +752,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+Một lần nữa, để xây dựng ví dụ này, tập tin `myobject.cc` phải được thêm vào `binding.gyp`:
 
 ```json
 {
@@ -768,7 +768,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+Kiếm tra nó với:
 
 ```js
 // test.js
