@@ -1088,7 +1088,7 @@ Generará:
 
 `heapTotal` y `heapUsed` se refieren al uso de memoria de V8. `external` se refiere al uso de memoria de objetos C++ vinculados a objetos JavaScript administrados por V8. `rss`, que por sus siglas en inglés se refiere a Resident Set Size, es la cantidad de espacio ocupado en el dispositivo de memoria principal (que es un subconjunto de memoria total asignada) para el proceso, la cual incluye el *montón*, el *segmento de código* y el *stack*.
 
-El *heap* es donde los objetos, strings y cierres son almacenados. Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
+El *montón* es donde los objetos, strings y cierres son almacenados. Las variables son almacenadas en el *stack* y el código JavaScript actual reside en el *segmento de código*.
 
 ## process.nextTick(callback[, ...args])
 
@@ -1106,7 +1106,7 @@ changes:
 
 The `process.nextTick()` method adds the `callback` to the "next tick queue". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
 
-This is *not* a simple alias to [`setTimeout(fn, 0)`][]. It is much more efficient. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
+Esto *no* es un alias simple de [`setTimeout(fn, 0)`][]. Es mucho más eficiente. It runs before any additional I/O events (including timers) fire in subsequent ticks of the event loop.
 
 ```js
 console.log('start');
@@ -1114,13 +1114,13 @@ process.nextTick(() => {
   console.log('nextTick callback');
 });
 console.log('scheduled');
-// Output:
-// start
-// scheduled
-// nextTick callback
+// Salida:
+// inicio
+// programado
+// callback nextTick
 ```
 
-This is important when developing APIs in order to give users the opportunity to assign event handlers *after* an object has been constructed but before any I/O has occurred:
+Esto es importando al desarrollar APIs para ofrecerle a los usuarios la oportunidad de asignar manejadores de evento *después* de que un objeto se haya construido pero antes de que I/O haya ocurrido:
 
 ```js
 function MyThing(options) {
@@ -1134,13 +1134,13 @@ function MyThing(options) {
 const thing = new MyThing();
 thing.getReadyForStuff();
 
-// thing.startDoingStuff() gets called now, not before.
+// thing.startDoingStuff() se llama ahora, no antes.
 ```
 
-It is very important for APIs to be either 100% synchronous or 100% asynchronous. Consider this example:
+Es muy importante para las APIs ser 100% sincrónicas o 100% asincrónicas. Considere este ejemplo:
 
 ```js
-// WARNING!  DO NOT USE!  BAD UNSAFE HAZARD!
+// ¡ADVERTENCIA!  ¡NO LO UTILICE!  BAD UNSAFE HAZARD!
 function maybeSync(arg, cb) {
   if (arg) {
     cb();
@@ -1151,7 +1151,7 @@ function maybeSync(arg, cb) {
 }
 ```
 
-This API is hazardous because in the following case:
+Esta API es peligrosa porque en el siguiente caso:
 
 ```js
 const maybeTrue = Math.random() > 0.5;
@@ -1163,7 +1163,7 @@ maybeSync(maybeTrue, () => {
 bar();
 ```
 
-It is not clear whether `foo()` or `bar()` will be called first.
+No se está claro si primero se llamará a `foo()` o a `bar()`.
 
 The following approach is much better:
 
