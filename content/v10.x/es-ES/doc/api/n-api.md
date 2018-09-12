@@ -1024,12 +1024,12 @@ napi_status napi_create_external(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] data`: Apuntador sin formato a los datos externos.
 - `[in] finalize_cb`: Callback opcional para llamar cuando el valor externo esté siendo tomado.
-- `[in] finalize_hint`: Sugerencia opcional para pasar a la callback de terminación durante la recopilación.
+- `[in] finalize_hint`: Sugerencia opcional para pasar al callback de terminación durante la recopilación.
 - `[out] result`: Un `napi_value` que representa un valor externo.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API asigna un valor de JavaScript con datos externos adjuntos. Esto se utiliza para pasar datos externos a través del código de JavaScript, para que pueda ser recuperado luego por el código nativo. Esta API permite al llamador pasar en una callback de terminación, en caso de que el recurso nativo subyacente necesite ser limpiado cuando el valor externo de JavaScript sea tomado.
+Esta API asigna un valor de JavaScript con datos externos adjuntos. Esto se utiliza para pasar datos externos a través del código de JavaScript, para que pueda ser recuperado luego por el código nativo. Esta API permite al llamador pasar un callback de terminación, en caso de que el recurso nativo subyacente necesite ser limpiado cuando el valor externo de JavaScript sea tomado.
 
 El valor creado no es un objeto y, por lo tanto, no admite propiedades adicionales. Es considerado un tipo de valor distinto: llamar a `napi_typeof()` con un valor externo produce una `napi_external`.
 
@@ -1053,7 +1053,7 @@ napi_create_external_arraybuffer(napi_env env,
 - `[in] external_data`: Apuntador al byte buffer subyacente del `ArrayBuffer`.
 - `[in] byte_length`: Longitud en bytes del buffer subyacente.
 - `[in] finalize_cb`: Callback opcional para llamar cuando el `ArrayBuffer` esté siendo tomado.
-- `[in] finalize_hint`: Sugerencia opcional para pasar el callback de terminación durante la recopilación.
+- `[in] finalize_hint`: Sugerencia opcional para pasar al callback de terminación durante la recopilación.
 - `[out] result`: El `napi_value` que representa un `ArrayBuffer` de JavaScript.
 
 Devuelve `napi_ok` si la API fue exitosa.
@@ -1081,7 +1081,7 @@ napi_status napi_create_external_buffer(napi_env env,
 - `[in] length`: Tamaño en bytes del buffer de entrada (debe ser el mismo que el tamaño del nuevo buffer).
 - `[in] data`: Apuntador sin formato al buffer subyacente desde el que se va a copiar.
 - `[in] finalize_cb`: Callback opcional para llamar cuando el `ArrayBuffer` esté siendo tomado.
-- `[in] finalize_hint`: Sugerencia opcional para pasar a la callback de terminación durante la recopilación.
+- `[in] finalize_hint`: Sugerencia opcional para pasar al callback de terminación durante la recopilación.
 - `[out] result`: Un `napi_value` que representa un `node::Buffer`.
 
 Devuelve `napi_ok` si la API fue exitosa.
@@ -1217,7 +1217,7 @@ Es necesario que `byte_length + byte_offset` sea menor o igual que el tamaño en
 
 Los objetos `DataView` de JavaScript se describen en la [Sección 24.3](https://tc39.github.io/ecma262/#sec-dataview-objects) de las Especificaciones del Lenguaje ECMAScript.
 
-### Funciones para convertir de C types a N-API
+### Funciones para convertir de tipos de C a N-API
 
 #### napi_create_int32
 
@@ -1250,7 +1250,7 @@ napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] value`: Valor entero unsigned a representar en JavaScript.
+- `[in] value`: Valor entero sin signo a representar en JavaScript.
 - `[out] result`: Un `napi_value` que representa un `Number` de JavaScript.
 
 Devuelve `napi_ok` si la API fue exitosa.
