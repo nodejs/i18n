@@ -881,11 +881,11 @@ changes:
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} Una array de strings, `Buffer`s o `Uint8Array`, o un único `Buffer` o `Uint8Array` que contiene los protocolos ALPN admitidos. Los `Buffer`s deben tener el formato `[len][name][len][name]...` por ejemplo `0x05hello0x05world`, donde el primer byte es la longitud del siguiente nombre de protocolo. Pasar un array suele ser mucho más simple, por ejemplo `['hello', 'world']`. (Los protocolos deben ordenarse por su prioridad.)
   * `SNICallback(servername, cb)` {Function} Una función que se llamará si el cliente admite la extensión SNI TLS. Se pasarán dos argumentos cuando se le llame: `servername` y `cb`. `SNICallback` debería invocar `cb(null, ctx)`, donde `ctx` es una instancia de `SecureContext`. (`tls.createSecureContext(...)` se puede usar para obtener un `SecureContext` apropiado.) Si no se proporcionó `SNICallback`, se utilizará el callback predeterminado con API de alto nivel (vea a continuación).
   * `sessionTimeout` {number} Un entero que especifica el número de segundos después del cual se agotarán los identificadores de sesión TLS y los tickets de sesión TLS creados por el servidor. Vea [`SSL_CTX_set_timeout`] para más detalles.
-  * `ticketKeys`: Instancia `Buffer` de 48 bytes que consiste en un prefijo de 16 bytes, una clave HMAC de 16 bytes y una clave AES de 16 bytes. This can be used to accept TLS session tickets on multiple instances of the TLS server.
-  * ...: Any [`tls.createSecureContext()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
+  * `ticketKeys`: Instancia `Buffer` de 48 bytes que consiste en un prefijo de 16 bytes, una clave HMAC de 16 bytes y una clave AES de 16 bytes. Esto se puede usar para aceptar tickets de sesión TLS en varias instancias del servidor TLS.
+  * ...: Se pueden proporcionar las opciones [`tls.createSecureContext()`][]. Para los servidores, generalmente se requieren las opciones de identidad (`pfx` o `key`/`cert`).
 * `secureConnectionListener` {Function}
 
-Creates a new [`tls.Server`][]. The `secureConnectionListener`, if provided, is automatically set as a listener for the [`'secureConnection'`][] event.
+Crea un nuevo [`tls.Server`][]. El `secureConnectionListener`, si se proporciona, se configura automáticamente como un listener para el evento [`'secureConnection'`][] event.
 
 The `ticketKeys` options is automatically shared between `cluster` module workers.
 
