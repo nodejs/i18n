@@ -422,7 +422,7 @@ Mientras que un stream no esté drenando, llamas a `write()` van a almacenar `ch
 
 Escribir datos mientras que el stream no está drenando es particularmente problemático para un [`Transform`][], porque los streams `Transform` son pausados de manera predeterminada hasta que se les hace pipe, o se añade una `'data'`, o se añade un manejador de eventos `'readable'`.
 
-If the data to be written can be generated or fetched on demand, it is recommended to encapsulate the logic into a [`Readable`][] and use [`stream.pipe()`][]. However, if calling `write()` is preferred, it is possible to respect backpressure and avoid memory issues using the [`'drain'`][] event:
+Si los datos a ser escritos pueden ser generados o traídos cuando se requieren, es recomendado encapsular la lógica en un [`Readable`][] y usar [`stream.pipe()`][]. Sin embargo, si se prefiere llamar a `write()`, es posible respetar la contrapresión y evitar problemas de memoria usando el evento [`'drain'`][]:
 
 ```js
 function write(data, cb) {
@@ -439,13 +439,13 @@ write('hello', () => {
 });
 ```
 
-A `Writable` stream in object mode will always ignore the `encoding` argument.
+Un stream `Writable` en modo objeto siempre ignorará el argumento `encoding`.
 
-### Readable Streams
+### Streams Legibles
 
-Readable streams are an abstraction for a *source* from which data is consumed.
+Los streams legibles son una abstracción para una *source* donde los datos son consumidos.
 
-Examples of `Readable` streams include:
+Ejemplos de streams `Readable` inlcuyen:
 
 * [HTTP responses, on the client](http.html#http_class_http_incomingmessage)
 * [HTTP requests, on the server](http.html#http_class_http_incomingmessage)
@@ -456,9 +456,9 @@ Examples of `Readable` streams include:
 * [child process stdout and stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
-All [`Readable`][] streams implement the interface defined by the `stream.Readable` class.
+Todos los streams [`Readable`][] implementan la interfaz definida por la clase `stream.Readable`.
 
-#### Two Modes
+#### Dos modos
 
 `Readable` streams effectively operate in one of two modes: flowing and paused.
 
