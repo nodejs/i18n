@@ -89,23 +89,23 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-Se producirá un `TypeError` si la `input` o `base` no son URLs válidas. Tenga en cuenta que se hará un esfuerzo para obligar a los valores dados en cadenas. For instance:
+Se producirá un `TypeError` si la `input` o `base` no son URLs válidas. Tenga en cuenta que se hará un esfuerzo para obligar que los valores dados se conviertan en cadenas. Por ejemplo:
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
 // https://example.org/
 ```
 
-Unicode characters appearing within the hostname of `input` will be automatically converted to ASCII using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm.
+Caracteres unicode que aparecen dentro del hostname de `input` serán automáticamente convertidos a ASCII usando el algoritmo [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4).
 
 ```js
 const myURL = new URL('https://你好你好');
 // https://xn--6qqa088eba/
 ```
 
-This feature is only available if the `node` executable was compiled with [ICU](intl.html#intl_options_for_building_node_js) enabled. If not, the domain names are passed through unchanged.
+Esta función solo está disponible si el `node` ejecutable fue compilado con el [ICU](intl.html#intl_options_for_building_node_js) habilitado. Si no, los nombres de dominio son pasados sin cambios.
 
-In cases where it is not known in advance if `input` is an absolute URL and a `base` is provided, it is advised to validate that the `origin` of the `URL` object is what is expected.
+En casos donde no es conocido de antemano si `input` es un URL absoluto y una `base` es proporcionada, es recomendable validar que el `origin` del objeto `URL` es lo esperado.
 
 ```js
 let myURL = new URL('http://anotherExample.org/', 'https://example.org/');
@@ -131,16 +131,16 @@ myURL = new URL('foo:anotherExample.org/', 'https://example.org/');
 
 * {string}
 
-Gets and sets the fragment portion of the URL.
+Obtiene y establece la porción del fragmento de la URL.
 
 ```js
 const myURL = new URL('https://example.org/foo#bar');
 console.log(myURL.hash);
-// Prints #bar
+// Imprime #bar
 
 myURL.hash = 'baz';
 console.log(myURL.href);
-// Prints https://example.org/foo#baz
+// Imprime https://example.org/foo#baz
 ```
 
 Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
