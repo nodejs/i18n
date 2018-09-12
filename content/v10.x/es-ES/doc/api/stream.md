@@ -374,7 +374,7 @@ process.nextTick(() => {
 });
 ```
 
-See also: [`writable.cork()`][].
+Vea también: [`writable.cork()`][].
 
 ##### writable.writableHighWaterMark
 
@@ -384,7 +384,7 @@ added: v9.3.0
 
 * {number}
 
-Return the value of `highWaterMark` passed when constructing this `Writable`.
+Devuelve el valor del `highWaterMark` pasado cuando se construia este `Writable`.
 
 ##### writable.writableLength
 
@@ -409,16 +409,16 @@ changes:
                  considered invalid now, even in object mode.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} Optional data to write. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
+* `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
 * `encoding` {string} The encoding, if `chunk` is a string
 * `callback` {Function} Callback for when this chunk of data is flushed
 * Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-El método `writable.write()` escribe algunos datos al stream, y llama al `callback` suministrado una vez que ha sido manejado completamente. Si ocurre un error, el `callback` *puede o no* ser llamado con el error como su primer argumento. To reliably detect write errors, add a listener for the `'error'` event.
+El método `writable.write()` escribe algunos datos al stream, y llama al `callback` suministrado una vez que ha sido manejado completamente. Si ocurre un error, el `callback` *puede o no* ser llamado con el error como su primer argumento. Para detectar errores de escritura de manera fiable, añade un listener para el evento `'error'`.
 
 El valor devuelto es `true` si el búfer interno es menor que el `highWaterMark` configurado cuando el stream fue creado después de admitir a `chunk`. Si es devuelto `false`, los siguientes intentos de escribir datos en el stream deberían detenerse hasta que el evento [`'drain'`][] es emitido.
 
-Mientras que un stream no esté drenando, llamas a `write()` van a almacenar `chunk`, y devolverán false. Once all currently buffered chunks are drained (accepted for delivery by the operating system), the `'drain'` event will be emitted. It is recommended that once `write()` returns false, no more chunks be written until the `'drain'` event is emitted. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Even before it aborts, high memory usage will cause poor garbage collector performance and high RSS (which is not typically released back to the system, even after the memory is no longer required). Since TCP sockets may never drain if the remote peer does not read the data, writing a socket that is not draining may lead to a remotely exploitable vulnerability.
+Mientras que un stream no esté drenando, llamas a `write()` van a almacenar `chunk`, y devolverán false. Una vez que todos los fragmentos almacenados son vaciados (), el evento `'drain'` será emitido. It is recommended that once `write()` returns false, no more chunks be written until the `'drain'` event is emitted. While calling `write()` on a stream that is not draining is allowed, Node.js will buffer all written chunks until maximum memory usage occurs, at which point it will abort unconditionally. Even before it aborts, high memory usage will cause poor garbage collector performance and high RSS (which is not typically released back to the system, even after the memory is no longer required). Since TCP sockets may never drain if the remote peer does not read the data, writing a socket that is not draining may lead to a remotely exploitable vulnerability.
 
 Writing data while the stream is not draining is particularly problematic for a [`Transform`][], because the `Transform` streams are paused by default until they are piped or an `'data'` or `'readable'` event handler is added.
 
