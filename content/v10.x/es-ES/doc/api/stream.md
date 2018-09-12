@@ -236,7 +236,7 @@ writer.on('finish', () => {
 added: v0.9.4
 -->
 
-* `src` {stream.Readable} la fuente del stream que está haciendo piping a este escribible
+* `src` {stream.Readable} el stream fuente que está haciendo piping a este escribible
 
 El evento `'pipe'` es emitido cuando el método [`stream.pipe()`][] es llamado a un stream legible, añadiendo este escribible al conjunto de destinos.
 
@@ -250,13 +250,13 @@ writer.on('pipe', (src) => {
 reader.pipe(writer);
 ```
 
-##### Event: 'unpipe'
+##### Evento: 'unpipe'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-* `src` {stream.Readable} The source stream that [unpiped][`stream.unpipe()`] this writable
+* `src` {stream.Readable} El stream fuente que hizo [unpiped][`stream.unpipe()`] en este escribible
 
 The `'unpipe'` event is emitted when the [`stream.unpipe()`][] method is called on a [`Readable`][] stream, removing this [`Writable`][] from its set of destinations.
 
