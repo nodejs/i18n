@@ -206,7 +206,7 @@ Khi tập tin `binding.gyp` đã sẵn sàng, các ví dụ thành phần mở r
 $ node-gyp configure build
 ```
 
-### Đối số hàm
+### Đối số của hàm
 
 Thành phần mở rộng sẽ khiến các đối tượng và hàm bị trưng ra và được truy cập từ JavaScript khi đang chạy trong Node.js. Khi các hàm được gọi ra từ JavaScript, các đối số đầu vào và giá trị trả về phải được liên kết tới và từ mã C/C++.
 
