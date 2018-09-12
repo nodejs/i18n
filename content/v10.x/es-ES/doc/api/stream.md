@@ -493,7 +493,7 @@ Específicamente, en cualquier momento dado, cada `Readable` está en uno de tre
 * `readable.readableFlowing = false`
 * `readable.readableFlowing = true`
 
-When `readable.readableFlowing` is `null`, no mechanism for consuming the streams data is provided so the stream will not generate its data. While in this state, attaching a listener for the `'data'` event, calling the `readable.pipe()` method, or calling the `readable.resume()` method will switch `readable.readableFlowing` to `true`, causing the `Readable` to begin actively emitting events as data is generated.
+Cuando `readable.readableFlowing` es `null`, ningún mecanismo para consumir los datos de los streams es proporcionado, para que el stream no genere sus datos. Mientras se esté en este estado, adjuntar un listener para el evento `'data'`, llamar el método `readable.pipe()`, o llamar el método `readable.resume()`, cambiará `readable.readableFlowing` a `true`, causando que el `Readable` comience a emitir eventos activamente mientras los datos sean generados.
 
 Calling `readable.pause()`, `readable.unpipe()`, or receiving "back pressure" will cause the `readable.readableFlowing` to be set as `false`, temporarily halting the flowing of events but *not* halting the generation of data. While in this state, attaching a listener for the `'data'` event would not cause `readable.readableFlowing` to switch to `true`.
 
