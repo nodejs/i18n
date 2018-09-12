@@ -1352,7 +1352,7 @@ server.on('stream', (stream, headers, flags) => {
 added: v8.4.0
 -->
 
-El evento `'timeout'` es emitido cuando no hay actividad en el Servidor por un número determinado de milisegundos establecidos, usando `http2server.setTimeout()`.
+El evento `'timeout'` se emite cuando no hay actividad en el Servidor por un número dado de milisegundos establecidos, utilizando `http2server.setTimeout()` .
 
 #### server.close([callback])
 
@@ -1414,7 +1414,7 @@ El evento de `'session'` se emite cuando `Http2SecureServer` crea un nuevo `Http
 added: v8.4.0
 -->
 
-El evento `'sessionError'` es emitido cuando un evento `'error'` es emitido por un objeto `Http2Session` asociado con el `Http2SecureServer`.
+El evento `'sessionError'` se emite cuando un evento `'error'` es emitido por un objeto `Http2Session` asociado al `Http2SecureServer` .
 
 #### Event: 'stream'
 
@@ -1422,7 +1422,7 @@ El evento `'sessionError'` es emitido cuando un evento `'error'` es emitido por 
 added: v8.4.0
 -->
 
-El evento `'stream'` es emitido cuando un `'stream'` es has sido emitido por una `Http2Session` asociada con el servidor.
+El evento `'stream'` se emite cuando un evento `'stream'` ha sido emitido por una `Http2Session` asociada al servidor.
 
 ```js
 const http2 = require('http2');
@@ -1455,7 +1455,7 @@ server.on('stream', (stream, headers, flags) => {
 added: v8.4.0
 -->
 
-El evento `'timeout'` es emitido cuando no hay actividad en el Servidor por un número dado de milisegundos establecidos, usando `http2secureServer.setTimeout()`.
+El evento `'timeout'` se emite cuando no hay actividad en el Servidor por un número dado de milisegundos establecidos, utilizando `http2secureServer.setTimeout()` .
 
 #### Event: 'unknownProtocol'
 
