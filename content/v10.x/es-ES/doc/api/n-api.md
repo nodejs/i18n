@@ -1570,9 +1570,9 @@ napi_status napi_get_value_external(napi_env env,
 - `[in] value`: `napi_value` que representa un valor externo de JavaScript.
 - `[out] result`: Apuntador a los datos envueltos por el valor externo de JavaScript.
 
-Devuelve `napi_ok` si la API fue exitosa. If a non-external `napi_value` is passed in it returns `napi_invalid_arg`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no externo es pasado, devuelve `napi_invalid_arg`.
 
-This API retrieves the external data pointer that was previously passed to `napi_create_external()`.
+Esta API recupera el apuntador a los datos externos que fue previamente pasado a `napi_create_external()`.
 
 #### napi_get_value_int32
 
@@ -1586,17 +1586,17 @@ napi_status napi_get_value_int32(napi_env env,
                                  int32_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: C `int32` primitive equivalent of the given JavaScript `Number`.
+- `[out] result`: `int32` primitivo de C equivalente al `Number` de JavaScript dado.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado en, devuelve `napi_number_expected`.
 
-This API returns the C `int32` primitive equivalent of the given JavaScript `Number`.
+Esta API devuelve un `int32` primitivo de C equivalente al `Number` de JavaScript dado.
 
-If the number exceeds the range of the 32 bit integer, then the result is truncated to the equivalent of the bottom 32 bits. This can result in a large positive number becoming a negative number if the value is > 2^31 -1.
+Si el número excede el rango del entero de 32 bits, entonces el resultado es redondeado hacia abajo al número de 32 bits próximo. Esto puede hacer que un número positivo grande se convierta en uno negativo si el valor es > 2^31 -1.
 
-Non-finite number values (`NaN`, `+Infinity`, or `-Infinity`) set the result to zero.
+Los valores numéricos no finitos (`NaN`, `+Infinity`, o `-Infinity`) establecen el resultado como cero.
 
 #### napi_get_value_int64
 
@@ -1620,7 +1620,7 @@ This API returns the C `int64` primitive equivalent of the given JavaScript `Num
 
 `Number` values outside the range of [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) will lose precision.
 
-Non-finite number values (`NaN`, `+Infinity`, or `-Infinity`) set the result to zero.
+Los valores numéricos no finitos (`NaN`, `+Infinity`, o `-Infinity`) establecen el resultado como cero.
 
 #### napi_get_value_string_latin1
 
