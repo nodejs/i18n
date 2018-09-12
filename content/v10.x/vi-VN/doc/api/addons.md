@@ -1025,7 +1025,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+Kiểm tra trong JavaScript bằng cách chạy:
 
 ```js
 // test.js
