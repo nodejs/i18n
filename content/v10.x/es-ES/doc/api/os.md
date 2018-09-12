@@ -311,7 +311,7 @@ Los posibles valores actuales son:
 
 Equivalente para [`process.platform`][].
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
+El valor `'android'` puede también ser devuelto si Node.js está construido en un sistema operativo Android. Sin embargo, el soporte de Android es considerado[ experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) actualmente.
 
 ## os.release()
 
@@ -319,11 +319,11 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.release()` method returns a string identifying the operating system release.
+El método `os.release()` retorna un string identificando la versión del sistema operativo.
 
-On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
+En sistemas POSIX, la versión del sistema operativo es determinada llamando [uname(3)](https://linux.die.net/man/3/uname). En Windows, `GetVersionExW()` es usado. Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para mayor información.
 
 ## os.tmpdir()
 
@@ -337,9 +337,9 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
-The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
+El método `os.tmpdir()` retorna una string que especifica el directorio predeterminado del sistema operativo para los archivos temporales.
 
 ## os.totalmem()
 
@@ -347,9 +347,9 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Returns: {integer}
+* Retorna: {integer}
 
-The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
+El método `os.totalmem()` retorna la cantidad total de memoria del sistema en bytes como un entero.
 
 ## os.type()
 
@@ -357,7 +357,7 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Returns: {string}
+* Retorna: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
 
