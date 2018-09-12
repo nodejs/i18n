@@ -96,10 +96,10 @@ debuglog('hi there, it\'s foo-bar [%d]', 2333);
 si es ejecutado con `NODE_DEBUG=foo*` en el entorno, entonces el resultado va a ser algo como:
 
 ```txt
-FOO-BAR 3257: hi there, it's foo-bar [2333]
+FOO-BAR 3257: hola, es foo-bar [2333]
 ```
 
-Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` environment variable: `NODE_DEBUG=fs,net,tls`.
+Múltiples nombres de `section` separados por coma pueden ser específicados en la variable de entorno `NODE_DEBUG`: `NODE_DEBUG=fs,net,tls`.
 
 ## util.deprecate(fn, msg[, code])
 
@@ -114,20 +114,20 @@ changes:
 
 * `fn` {Function} La función que está siendo desaprobada.
 * `msg` {string} Un mensaje de advertencia para mostrar cuando la función desaprobada es invocada.
-* `code` {string} A deprecation code. See the [list of deprecated APIs](deprecations.html#deprecations_list_of_deprecated_apis) for a list of codes.
-* Returns: {Function} The deprecated function wrapped to emit a warning.
+* `code` {string} Un código de desaprobación. Vea la [lista de APIs desaprobadas](deprecations.html#deprecations_list_of_deprecated_apis) para una lista de códigos.
+* Retorna: {Function} La función desaprobada envuelta para emitir una advertencia.
 
-The `util.deprecate()` method wraps `fn` (which may be a function or class) in such a way that it is marked as deprecated.
+El método `util.deprecate()` envuelve a `fn` (que puede ser una función o una clase) de tal manera, que es marcado como obsoleto.
 
 ```js
 const util = require('util');
 
 exports.obsoleteFunction = util.deprecate(() => {
-  // Do something here.
-}, 'obsoleteFunction() is deprecated. Use newShinyFunction() instead.');
+  // Hacer algo aquí.
+}, 'obsoleteFunction() está obsoleto. En cambio, use newShinyFunction().');
 ```
 
-When called, `util.deprecate()` will return a function that will emit a `DeprecationWarning` using the [`'warning'`][] event. The warning will be emitted and printed to `stderr` the first time the returned function is called. After the warning is emitted, the wrapped function is called without emitting a warning.
+Cuando sea llamada, `util.deprecate()` va a retornar una función que va a emitir una `DeprecationWarning` usando el evento [`'warning'`][]. La advertencia va a ser emitida y estampada a `stderr` la primera vez que la función retornada sea llamada. After the warning is emitted, the wrapped function is called without emitting a warning.
 
 If the same optional `code` is supplied in multiple calls to `util.deprecate()`, the warning will be emitted only once for that `code`.
 
