@@ -1048,9 +1048,9 @@ added: v0.1.17
 
 * {Object}
 
-La propiedad `process.mainModule` proporciona una manera alternativa de recuperar [`require.main`][]. The difference is that if the main module changes at runtime, [`require.main`][] may still refer to the original main module in modules that were required before the change occurred. Generally, it's safe to assume that the two refer to the same module.
+La propiedad `process.mainModule` proporciona una manera alternativa de recuperar [`require.main`][]. La diferencia es que si el módulo principal cambia en tiempo de ejecución, [`require.main`][] puede todavía referirse al módulo principal original en módulos que se requerían antes de que ocurriera el cambio. Generalmente, es seguro asumir que ambos se refieran al mismo módulo.
 
-As with [`require.main`][], `process.mainModule` will be `undefined` if there is no entry script.
+Al igual que con [`require.main`][], `process.mainModule` será `undefined` si no hay un script de entrada.
 
 ## process.memoryUsage()
 
@@ -1063,17 +1063,17 @@ changes:
     description: Added `external` to the returned object.
 -->
 
-* Returns: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
+* Devuelve: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
 
-The `process.memoryUsage()` method returns an object describing the memory usage of the Node.js process measured in bytes.
+El método `process.memoryUsage()` devuelve un objeto que describe el uso de memoria del proceso Node.js medido en bytes.
 
-For example, the code:
+Por ejemplo, el código:
 
 ```js
 console.log(process.memoryUsage());
 ```
 
-Will generate:
+Generará:
 
 <!-- eslint-skip -->
 
@@ -1086,9 +1086,9 @@ Will generate:
 }
 ```
 
-`heapTotal` and `heapUsed` refer to V8's memory usage. `external` refers to the memory usage of C++ objects bound to JavaScript objects managed by V8. `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the *heap*, *code segment* and *stack*.
+`heapTotal` y `heapUsed` se refieren al uso de memoria de V8. `external` se refiere al uso de memoria de objetos C++ vinculados a objetos JavaScript administrados por V8. `rss`, que por sus siglas en inglés se refiere a Resident Set Size, es la cantidad de espacio ocupado en el dispositivo de memoria principal (que es un subconjunto de memoria total asignada) para el proceso, la cual incluye el *montón*, el *segmento de código* y el *stack*.
 
-The *heap* is where objects, strings, and closures are stored. Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
+El *heap* es donde los objetos, strings y cierres son almacenados. Variables are stored in the *stack* and the actual JavaScript code resides in the *code segment*.
 
 ## process.nextTick(callback[, ...args])
 
@@ -1102,7 +1102,7 @@ changes:
 -->
 
 * `callback` {Function}
-* `...args` {any} Additional arguments to pass when invoking the `callback`
+* `...args` {any} Argumentos adicionales a pasar al invocar el `callback`
 
 The `process.nextTick()` method adds the `callback` to the "next tick queue". Once the current turn of the event loop turn runs to completion, all callbacks currently in the next tick queue will be called.
 
