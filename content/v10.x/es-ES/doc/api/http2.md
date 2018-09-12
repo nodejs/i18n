@@ -305,9 +305,9 @@ added: v8.4.0
 * `error` {Error} An `Error` object if the `Http2Session` is being destroyed due to an error.
 * `code` {number} The HTTP/2 error code to send in the final `GOAWAY` frame. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
 
-Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
+Termina inmediatamente el `Http2Session` y los asociados `net.Socket` o `tls.TLSSocket`.
 
-Una vez destruido, el `Http2Session` emitirá el evento de `'close'` . If `error` is not undefined, an `'error'` event will be emitted immediately before the `'close'` event.
+Una vez destruido, el `Http2Session` emitirá el evento de `'close'` . Si `error` no es ta indefinido, un evento `'error'` será emitido inmediatamente antes del evento `'close'`.
 
 Si queda algún `Http2Streams` abierto, asociado con la `Http2Session`, esos también serán destruidos.
 
@@ -329,7 +329,7 @@ added: v9.4.0
 
 * {boolean|undefined}
 
-Value is `undefined` if the `Http2Session` session socket has not yet been connected, `true` if the `Http2Session` is connected with a `TLSSocket`, and `false` if the `Http2Session` is connected to any other kind of socket or stream.
+El valor es `undefined` si el socket de la sesión `Http2Session` no ha sido conectado aún, `true` si `Http2Session` está conectado con `TLSSocket` y `false` si `Http2Session` está conectado a otro tipo de socket o stream.
 
 #### http2session.goaway([code, [lastStreamID, [opaqueData]]])
 
