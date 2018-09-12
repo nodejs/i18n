@@ -1361,17 +1361,17 @@ napi_status napi_create_string_utf8(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] str`: Character buffer representing a UTF8-encoded string.
-- `[in] length`: The length of the string in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
+- `[in] str`: Buffer de caracteres que representa una cadena codificada en UTF8.
+- `[in] length`: La longitud de la cadena en bytes, o `NAPI_AUTO_LENGTH` si está terminada en NULL.
 - `[out] result`: Un `napi_value` que representa una `String` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a JavaScript `String` object from a UTF8-encoded C string. Se copia la cadena nativa.
+Esta API crea un objeto `String` de JavaScript desde una cadena de C codificada en UTF8. Se copia la cadena nativa.
 
 El tipo `String` de JavaScript se describe en la [Sección 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) de las Especificaciones del Lenguaje ECMAScript.
 
-### Functions to convert from N-API to C types
+### Funciones para convertir desde N-API a tipos de C
 
 #### napi_get_array_length
 
@@ -1385,15 +1385,15 @@ napi_status napi_get_array_length(napi_env env,
                                   uint32_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing the JavaScript `Array` whose length is being queried.
-- `[out] result`: `uint32` representing length of the array.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa al `Array` de JavaScript cuya longitud es consultada.
+- `[out] result`: `uint32` que representa la longitud del arreglo.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the length of an array.
+Esta API devuelve la longitud de un arreglo.
 
-`Array` length is described in [Section 22.1.4.1](https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length) of the ECMAScript Language Specification.
+Longitud del `Array` se describe en la [Sección 22.1.4.1](https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length) de las Especificaciones del Lenguaje ECMAScript.
 
 #### napi_get_arraybuffer_info
 
@@ -1408,14 +1408,14 @@ napi_status napi_get_arraybuffer_info(napi_env env,
                                       size_t* byte_length)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] arraybuffer`: `napi_value` representing the `ArrayBuffer` being queried.
-- `[out] data`: The underlying data buffer of the `ArrayBuffer`.
-- `[out] byte_length`: Length in bytes of the underlying data buffer.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] arraybuffer`: `napi_value` que representa al `ArrayBuffer` que está siendo consultado.
+- `[out] data`: El buffer de datos subyacente del `ArrayBuffer`.
+- `[out] byte_length`: Longitud en bytes del buffer de datos subyacente.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to retrieve the underlying data buffer of an `ArrayBuffer` and its length.
+Esta API se utiliza para recuperar el buffer de datos subyacente y la longitud de un `ArrayBuffer`.
 
 *WARNING*: Use caution while using this API. The lifetime of the underlying data buffer is managed by the `ArrayBuffer` even after it's returned. A possible safe way to use this API is in conjunction with [`napi_create_reference`][], which can be used to guarantee control over the lifetime of the `ArrayBuffer`. It's also safe to use the returned data buffer within the same callback as long as there are no calls to other APIs that might trigger a GC.
 
