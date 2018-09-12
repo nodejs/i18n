@@ -1034,19 +1034,19 @@ changes:
 * `context` {Object} Un objeto de contexto seguro como lo devuelve `tls.createSecureContext()`
 * `isServer` {boolean} `true` para especificar que esta conexión TLS debe abrirse como servidor.
 * `requestCert` {boolean} `true` para especificar si un servidor debe solicitar un certificado de un cliente de conexión. Solo aplica cuando `isServer` es `true`.
-* `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
-* `options` 
-  * `secureContext`: An optional TLS context object from [`tls.createSecureContext()`][]
-  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Default:** `false`.
-  * `server` {net.Server} An optional [`net.Server`][] instance
-  * `requestCert`: Optional, see [`tls.createServer()`][]
-  * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
-  * `ALPNProtocols`: Optional, see [`tls.createServer()`][]
-  * `SNICallback`: Optional, see [`tls.createServer()`][]
-  * `session` {Buffer} An optional `Buffer` instance containing a TLS session.
-  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication.
+* `rejectUnauthorized` {boolean} Si no es `false` un servidor rechaza automáticamente clientes con certificados inválidos. Solo aplica cuando `isServer` es `true`.
+* `opciones` 
+  * `secureContext`: Un objeto de contexto TLS opcional de [`tls.createSecureContext()`][]
+  * `isServer`: Si es `true` el socket TLS será instanciado en modo servidor. **Predeterminado:** `false`.
+  * `server` {net.Server} Una instancia opcional [`net.Server`][]
+  * `requestCert`: Opcional, vea [`tls.createServer()`][]
+  * `rejectUnauthorized`: Opcional, vea [`tls.createServer()`][]
+  * `ALPNProtocols`: Opcional, vea [`tls.createServer()`][]
+  * `SNICallback`: Opcional, vea [`tls.createServer()`][]
+  * `session` {Buffer} Una instancia `Buffer` opcional que contiene una sesión TLS.
+  * `requestOCSP` {boolean} Si es `true`, especifica que la extensión de solicitud de estado OCSP se agregará al hello del cliente y se emitirá un evento `'OCSPResponse'` en el socket antes de establecer una comunicación segura.
 
-Creates a new secure pair object with two streams, one of which reads and writes the encrypted data and the other of which reads and writes the cleartext data. Generally, the encrypted stream is piped to/from an incoming encrypted data stream and the cleartext one is used as a replacement for the initial encrypted stream.
+Crea un nuevo objeto de par seguro con dos streams, uno de los cuales lee y escribe los datos encriptados y el otro lee y escribe los datos sin formato. En general, el stream encriptado se canaliza a/desde un stream de datos encriptados entrantes y el cleartext se utiliza como reemplazo del stream encriptado inicial.
 
 `tls.createSecurePair()` returns a `tls.SecurePair` object with `cleartext` and `encrypted` stream properties.
 
