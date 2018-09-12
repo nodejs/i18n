@@ -73,7 +73,7 @@ changes:
                  character instead of one for each individual byte.
 -->
 
-* `buffer` {Buffer} A `Buffer` containing the bytes to decode.
-* Returns: {string}
+* `buffer` {Buffer} Un `Buffer` que contiene los bytes para decodificar.
+* Devuelve: {string}
 
-Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the `Buffer` are omitted from the returned string and stored in an internal buffer for the next call to `stringDecoder.write()` or `stringDecoder.end()`.
+Devuelve un string decodificado, asegurando que cualquier carácter multibyte incompleto al final del `Buffer` se omita del string devuelto y se almacene en un buffer interno para la siguiente llamada a `stringDecoder.write()` o `stringDecoder.end()`.
