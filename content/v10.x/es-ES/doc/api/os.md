@@ -391,15 +391,15 @@ added: v6.0.0
 
 El método `os.userInfo()` retorna información acerca del actual usuario efectivo -- en plataformas POSIX, esto es tipicamente un subconjunto en el archivo de contraseñas. El objeto devuelto incluye el `username`, `uid`, `gid`, `shell`, y `homedir`. En Windows, el `uid` y `gid` campos son `-1`, y `shell` es `null`.
 
-El valor del `homedir` deveulto por `os.userInfo()` es provisto por el sistema operativo. This differs from the result of `os.homedir()`, which queries several environment variables for the home directory before falling back to the operating system response.
+El valor del `homedir` deveulto por `os.userInfo()` es provisto por el sistema operativo. Esto difiere del resultado de `os.homedir()` el cual consulta distintas variables del entorno para el directorio hogar antes de recurrir a la respuesta del sistema operativo.
 
-## OS Constants
+## Constantes del SO
 
-The following constants are exported by `os.constants`.
+Las siguientes constantes son exportadas por `os.constants`.
 
-Not all constants will be available on every operating system.
+No todas las constantes estarán disponibles en todos los sistemas operativos.
 
-### Signal Constants
+### Constantes Señal
 
 <!-- YAML
 changes:
@@ -409,12 +409,12 @@ changes:
     description: Added support for `SIGINFO`.
 -->
 
-The following signal constants are exported by `os.constants.signals`:
+Las siguientes constantes son exportadas por `os.constants.signals`:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
