@@ -495,7 +495,7 @@ setTimeout(() => {}, 1000);
 
 ### Midiendo cuánto tiempo tarda en cargar las dependencias
 
-The following example measures the duration of `require()` operations to load dependencies:
+El siguiente ejemplo mide la duración de las operaciones `require()` para cargar las dependencias:
 
 <!-- eslint-disable no-global-assign -->
 
