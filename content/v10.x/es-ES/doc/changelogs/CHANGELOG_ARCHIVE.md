@@ -201,7 +201,7 @@
 * child_process: añadir ruta para generar el Error ENOENT (Ryan Cole)
 * child_process: copia la opción cwd spawnSync() al buffer correcto (cjihrig)
 * child_process: no acceder a stderr cuando stdio esté establecido para "ignorar" (cjihrig)
-* child_process: don't throw on EAGAIN (Charles)
+* child_process: no arrojar EAGAIN (Charles)
 * child_process: don't throw on EMFILE/ENFILE (Ben Noordhuis)
 * child_process: use full path for cmd.exe on Win32 (Ed Morley)
 * cluster: allow multiple calls to setupMaster() (Ryan Graham)
