@@ -23,9 +23,9 @@ const euro = Buffer.from([0xE2, 0x82, 0xAC]);
 console.log(decoder.write(euro));
 ```
 
-Cuando se escribe una instancia `Buffer` en la instancia `StringDecoder`, se utiliza un buffer interno para garantizar que el string decodificado no contenga ningún carácter multibyte incompleto. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
+Cuando se escribe una instancia `Buffer` en la instancia `StringDecoder`, se utiliza un buffer interno para garantizar que el string decodificado no contenga ningún carácter multibyte incompleto. Se mantienen en el buffer hasta la próxima llamada a `stringDecoder.write()` o hasta que se llame a `stringDecoder.end()`.
 
-In the following example, the three UTF-8 encoded bytes of the European Euro symbol (`€`) are written over three separate operations:
+En el siguiente ejemplo, los tres bytes codificados en UTF-8 del símbolo del euro europeo (`€`) se escriben en tres operaciones separadas:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -36,7 +36,7 @@ decoder.write(Buffer.from([0x82]));
 console.log(decoder.end(Buffer.from([0xAC])));
 ```
 
-## Class: StringDecoder
+## Clase: StringDecoder
 
 ### new StringDecoder([encoding])
 
