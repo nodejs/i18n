@@ -89,11 +89,11 @@ added: v8.4.0
 
 Instancias de la clase `http2.Http2Session` representan una sesión activa de comunicaciones entre un cliente HTTP/2 y un servidor. Instancias de esta clase *no* están destinadas a ser construidas directamente por el código de usuario.
 
-Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si esta operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. En el lado del servidor, el código de usuario raramente debe tener ocasión de trabajar directamente con el objeto `Http2Session`, con la mayoría de las acciones tomadas típicamente a través de interacciones, ya sea con los objetos `Http2Server` o `Http2Stream`.
+Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si está operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. En el lado del servidor, el código de usuario raramente debe tener ocasión de trabajar directamente con el objeto `Http2Session`, con la mayoría de las acciones tomadas típicamente a través de interacciones, ya sea con los objetos `Http2Server` o `Http2Stream`.
 
 #### `Http2Session` and Sockets
 
-Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][] o una [`tls.TLSSocket`][] cuando es creada. Cuando se destruye ya sea el `Socket` o el `Http2Session`, ambos serán destruidos.
+Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][] o una [`tls.TLSSocket`][] cuando es creada. Cuando se destruye ya sea el `Socket` o la `Http2Session`, ambos serán destruidos.
 
 Debido a los requisitos específicos de serialización y procesamiento impuestos por el protocolo HTTP/2, no se recomienda que el código de usuario lea o escriba datos a una instancia de `Socket` vinculada a una `Http2Session` . Hacerlo, puede poner la sesión HTTP/2 en un estado indeterminado, causando que la sesión y el socket se vuelvan inutilizables.
 
@@ -142,7 +142,7 @@ added: v8.4.0
 
 El evento `'frameError'` se emite cuando ocurre un error mientras se intenta enviar un frame en la sesión. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
-Si el evento `'frameError'` esta asociado con un stream, el stream se cerrará y se destruirá inmediatamente después del evento `'frameError'` . Si el evento no está asociado a un stream, el `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
+Si el evento `'frameError'` esta asociado con un stream, el stream se cerrará y se destruirá inmediatamente después del evento `'frameError'` . Si el evento no está asociado a un stream, la `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
 
 #### Event: 'goaway'
 
@@ -164,11 +164,11 @@ La instancia `Http2Session` se apagará automáticamente cuando se emita el even
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` recibido.
+* `settings` {HTTP/2 Settings Object} Una copia recibida del frame `SETTINGS` .
 
 El evento `'localSettings'` se emite cuando un reconocimiento del frame `SETTINGS` ha sido recibida.
 
-Al utilizar `http2session.settings()` para enviar nuevas configuraciónes, las configuraciones modificadas no toman efecto hasta que se emite el evento `'localSettings'` .
+Al utilizar `http2session.settings()` para enviar nuevas configuraciones, las configuraciones modificadas no toman efecto hasta que se emite el evento `'localSettings'` .
 
 ```js
 session.settings({ enablePush: false });
@@ -184,7 +184,7 @@ session.on('localSettings', (settings) => {
 added: v8.4.0
 -->
 
-* `settings` {HTTP/2 Settings Object} Una copia del frame `SETTINGS` recibido.
+* `settings` {HTTP/2 Settings Object} Una copia recibida del frame `SETTINGS` .
 
 El evento `'remoteSettings'` se emite cuando un frame `SETTINGS` nuevo es recibido desde el peer conectado.
 
@@ -445,7 +445,7 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but li
 
 El método `setTimeout` será llamado en esta `Http2Session`.
 
-Todas las otras interacciones se enrutarán directamente al socket.
+Todas las otras interacciones serán enrutadas directamente al socket.
 
 #### http2session.state
 
@@ -551,7 +551,7 @@ h2=":82"'`.
 
 El identificador de protocolo (`'h2'` en los ejemplos) puede ser cualquier [ALPN Protocol ID](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids) válido.
 
-La sintaxis de estos valores no está validada por la implementación de Node.js, y se transmiten como las proporciona el usuario o se reciben desde el peer.
+La sintaxis de estos valores no está validada por la implementación de Node.js, y se transmiten como proporcionadas por el usuario o recibidas desde el peer.
 
 ### Class: ClientHttp2Session
 
