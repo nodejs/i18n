@@ -824,12 +824,12 @@ La shell que ejecutó Node.js debería ver el código de salida como `1`.
 
 Llamar a `process.exit()` forzará al proceso a cerrarse tan rápido como sea posible incluso si todavía hay operaciones asincrónicas pendientes que no se han completado en su totalidad, incluyendo operaciones I/O para `process.stdout` y `process.stderr`.
 
-In most situations, it is not actually necessary to call `process.exit()` explicitly. The Node.js process will exit on its own *if there is no additional work pending* in the event loop. The `process.exitCode` property can be set to tell the process which exit code to use when the process exits gracefully.
+En la mayoría de las situaciones, no es realmente necesario llamar a `process.exit()` explícitamente. El proceso Node.js se saldrá por su propia cuenta *si no hay trabajo adicional pendiente* en el bucle del evento. La propiedad `process.exitCode` puede establecerse para decirle al proceso cuál código de salida utilizar cuando el proceso se cierre con gracia.
 
-For instance, the following example illustrates a *misuse* of the `process.exit()` method that could lead to data printed to stdout being truncated and lost:
+El siguiente ejemplo ilustra un *mal uso* del método `process.exit()` que podría conducir a que los datos impresos en stdout se trunquen y pierdan:
 
 ```js
-// This is an example of what *not* to do:
+// Esto es un ejemplo de que *no* hacer:
 if (someConditionNotMet()) {
   printUsageToStdout();
   process.exit(1);
