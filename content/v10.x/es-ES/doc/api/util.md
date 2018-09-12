@@ -129,15 +129,15 @@ exports.obsoleteFunction = util.deprecate(() => {
 
 Cuando sea llamada, `util.deprecate()` va a retornar una función que va a emitir una `DeprecationWarning` usando el evento [`'warning'`][]. La advertencia va a ser emitida y estampada a `stderr` la primera vez que la función retornada sea llamada. Después de que la advertencia sea emitida, la función envuelta es llamada sin emitir una advertencia.
 
-If the same optional `code` is supplied in multiple calls to `util.deprecate()`, the warning will be emitted only once for that `code`.
+Si el mismo `código` opcional es suministrado en múltiples llamadas a `util.deprecate()`, la advertencia va a ser emitida solo una vez por ese `código`.
 
 ```js
 const util = require('util');
 
 const fn1 = util.deprecate(someFunction, someMessage, 'DEP0001');
 const fn2 = util.deprecate(someOtherFunction, someOtherMessage, 'DEP0001');
-fn1(); // emits a deprecation warning with code DEP0001
-fn2(); // does not emit a deprecation warning because it has the same code
+fn1(); // emite una advertencia de desaprobación con el código DEP0001
+fn2(); // no emite una advertencia de desaprobación porque tiene el mismo código
 ```
 
 If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
