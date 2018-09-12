@@ -166,9 +166,9 @@ added: v8.4.0
 
 * `settings` {HTTP/2 Settings Object} A copy of the `SETTINGS` frame received.
 
-El evento `'localSettings'` es emitido cuando una confirmación del `SETTINGS` frame ha sido recibida.
+El evento `'localSettings'` se emite cuando un reconocimiento del frame `SETTINGS` ha sido recibida.
 
-Al usar `http2session.settings()` para enviar nuevas configuración, las configuraciones modificadas no toman efecto hasta que el evento `'localSettings'` es emitido.
+Al utilizar `http2session.settings()` para enviar nuevas configuraciónes, las configuraciones modificadas no toman efecto hasta que se emite el evento `'localSettings'` .
 
 ```js
 session.settings({ enablePush: false });
@@ -205,7 +205,7 @@ added: v8.4.0
 * `flags` {number} The associated numeric flags
 * `rawHeaders` {Array} An array containing the raw header names followed by their respective values.
 
-El evento `'stream'` es emitido cuando un nuevo `Http2Stream` es creado.
+El evento `'stream'` se emite cuando un `Http2Stream` nuevo es creado.
 
 ```js
 const http2 = require('http2');
@@ -222,7 +222,7 @@ session.on('stream', (stream, headers, flags) => {
 });
 ```
 
-En el lado del servidor, el código de usuario típicamente no escuchará este evento directamente y, en su lugar, registrará un handler para el evento `'stream'` emitido por las instancias `net.Server` or `tls.Server`, regresadas por `http2.createServer()` y `http2.createSecureServer()` respectivamente, como en el ejemplo a continuación:
+En el lado del servidor, el código de usuario típicamente no escuchará este evento directamente y, en su lugar, registrará un handler para el evento `'stream'` emitido por las instancias `net.Server` o `tls.Server`, devueltas por `http2.createServer()` y `http2.createSecureServer()` respectivamente, como en el ejemplo a continuación:
 
 ```js
 const http2 = require('http2');
@@ -247,7 +247,7 @@ server.listen(80);
 added: v8.4.0
 -->
 
-Después de que el método `http2session.setTimeout()` es usado para establecer el tiempo de espera para esto `Http2Session`, el evento `'timeout'` es emitido si no hay actividad `Http2Session` después del número de milisegundos configurados.
+Después de que el método `http2session.setTimeout()` es utilizado para establecer el tiempo de espera para este `Http2Session`, el evento `'timeout'` se emite si no hay actividad en el `Http2Session` luego del número de milisegundos configurados.
 
 ```js
 session.setTimeout(2000);
@@ -274,7 +274,7 @@ added: v9.4.0
 
 Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Una vez cerrado, `http2session.destroy()` *might* ser llamado si no hay instancias de `Http2Stream` abiertas.
 
-Sí está especificado, la función `callback` es registrada como un handler para el evento `'close'`.
+Sí está especificado, la función `callback` se registra como un handler para el evento `'close'`.
 
 #### http2session.closed
 
@@ -305,9 +305,9 @@ added: v8.4.0
 * `error` {Error} An `Error` object if the `Http2Session` is being destroyed due to an error.
 * `code` {number} The HTTP/2 error code to send in the final `GOAWAY` frame. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
 
-Termina inmediatamente el `Http2Session` y los asociados `net.Socket` o `tls.TLSSocket`.
+Termina inmediatamente la `Http2Session` y el `net.Socket` o el `tls.TLSSocket` asociados.
 
-Una vez destruido, el `Http2Session` emitirá el evento de `'close'` . Si `error` no es ta indefinido, un evento `'error'` será emitido inmediatamente antes del evento `'close'`.
+Una vez destruido, el `Http2Session` emitirá el evento de `'close'` . Si `error` no está indefinido, un evento `'error'` será emitido inmediatamente antes del evento `'close'`.
 
 Si queda algún `Http2Streams` abierto, asociado con la `Http2Session`, esos también serán destruidos.
 
@@ -329,7 +329,7 @@ added: v9.4.0
 
 * {boolean|undefined}
 
-El valor es `undefined` si el socket de la sesión `Http2Session` no ha sido conectado aún, `true` si `Http2Session` está conectado con `TLSSocket` y `false` si `Http2Session` está conectado a otro tipo de socket o stream.
+El valor es `undefined` si el socket de la sesión `Http2Session` no ha sido conectado aún, `true` si el `Http2Session` está conectado con un `TLSSocket`, y `false` si el `Http2Session` está conectado a otro tipo de socket o stream.
 
 #### http2session.goaway([code, [lastStreamID, [opaqueData]]])
 
@@ -371,7 +371,7 @@ added: v8.4.0
 
 * {boolean}
 
-Indica si `Http2Session` está esperando una confirmación por un frame `SETTINGS` enviado o no. Será `true` después de llamar el método `http2session.settings()`. Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
+Indica si `Http2Session` está esperando actualmente una confirmación para un frame `SETTINGS` enviado o no. Será `true` después de llamar al método `http2session.settings()` . Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
 
 #### http2session.ping([payload, ]callback)
 
@@ -383,7 +383,7 @@ added: v8.9.3
 * `callback` {Function}
 * Returns: {boolean}
 
-Envía un frame de `PING` a un peer de HTTP/2 conectado. La función `callback` debe ser proporcionada. El método regresará a ser `true` si el `PING` fue enviado, sino, será `false`.
+Envía un frame de `PING` a un peer de HTTP/2 conectado. La función `callback` debe ser proporcionada. El método devolverá a `true` si el `PING` fue enviado, sino, será `false`.
 
 El número máximo de pings sobresalientes (no reconocidos) es determinado por la opción de configuración `maxOutstandingPings`. El máximo valor por defecto es 10.
 
@@ -429,7 +429,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Usado para establecer una función de callback, que es llamada cuando no hay actividad en `Http2Session` después de unos milisegundos `msecs`. El `callback` dado, está registrado como un oyente en el evento de `'timeout'` .
+Utilizado para establecer una función de callback, que es llamada cuando no hay actividad en la `Http2Session` después de unos milisegundos `msecs`. El `callback` dado, está registrado como un oyente en el evento de `'timeout'` .
 
 #### http2session.socket
 
@@ -445,7 +445,7 @@ Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but li
 
 El método `setTimeout` será llamado en esta `Http2Session`.
 
-Todas las interacciones se enrutarán directamente al socket.
+Todas las otras interacciones se enrutarán directamente al socket.
 
 #### http2session.state
 
@@ -476,11 +476,11 @@ added: v8.4.0
 
 * `settings` {HTTP/2 Settings Object}
 
-Actualiza las configuraciones locales actuales para `Http2Session` y envía un nuevo frame `SETTINGS` al peer HTTP/2 conectado.
+Actualiza las configuraciones locales actuales para esta `Http2Session` y envía un nuevo frame `SETTINGS` al peer HTTP/2 conectado.
 
-Una vez llamado, la propiedad de `http2session.pendingSettingsAck` será `true` mientras que la sesión está esperando que el peer remoto reconozca las nuevas configuraciones.
+Una vez llamado, la propiedad de `http2session.pendingSettingsAck` será `true` mientras que la sesión esté esperando que el peer remoto reconozca las nuevas configuraciones.
 
-Las nuevas configuraciones no se harán efectivas hasta que el reconocimiento de `SETTINGS` sea recibido y el evento `'localSettings'` sea emitido. Es posible enviar múltiples `SETTINGS` frames mientras aún está pendiente el reconocimiento.
+Las nuevas configuraciones no se harán efectivas hasta que el reconocimiento de `SETTINGS` sea recibido y el evento `'localSettings'` sea emitido. Es posible enviar múltiples frames `SETTINGS` mientras aún está pendiente el reconocimiento.
 
 #### http2session.type
 
@@ -551,7 +551,7 @@ h2=":82"'`.
 
 El identificador de protocolo (`'h2'` en los ejemplos) puede ser cualquier [ALPN Protocol ID](https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids) válido.
 
-La sintaxis de estos valores no es validada por la implementación del Node.js, y se transmiten como proporcionadas por el usuario o recibidas del peer.
+La sintaxis de estos valores no está validada por la implementación de Node.js, y se transmiten como las proporciona el usuario o se reciben desde el peer.
 
 ### Class: ClientHttp2Session
 
