@@ -2323,21 +2323,21 @@ socket.on('readable', () => {
 });
 ```
 
-Use of `SlowBuffer` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+El uso de `SlowBuffer` debe emplearse solo como el último recurso *después* de que un desarrollador haya observado retención indebida de memoria en sus aplicaciones.
 
-### new SlowBuffer(size)
+### nuevo SlowBuffer(size)
 
 <!-- YAML
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] en su lugar.
 
-* `size` {integer} The desired length of the new `SlowBuffer`.
+* `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` with zeroes.
+La memoria subyacente para instancias de `SlowBuffer` están *sin inicializar*. Los contenidos de un `SlowBuffer` creado recientemente son desconocidos y pueden contener datos confidenciales. Utilice [`buf.fill(0)`][`buf.fill()`] para inicializar un `SlowBuffer` con ceros.
 
 ```js
 const { SlowBuffer } = require('buffer');
@@ -2345,21 +2345,21 @@ const { SlowBuffer } = require('buffer');
 const buf = new SlowBuffer(5);
 
 console.log(buf);
-// Prints: (contents may vary): <Buffer 78 e0 82 02 01>
+// Imprime: (los contenidos pueden variar): <Buffer 78 e0 82 02 01>
 
 buf.fill(0);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 ```
 
-## Buffer Constants
+## Constantes de Buffer
 
 <!-- YAML
 added: v8.2.0
 -->
 
-Note that `buffer.constants` is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Tenga en cuenta que `buffer.constants` es una propiedad sobre el módulo de `buffer` devuelto por `require('buffer')`, no sobre el `Buffer` global o una instancia de `Buffer`.
 
 ### buffer.constants.MAX_LENGTH
 
