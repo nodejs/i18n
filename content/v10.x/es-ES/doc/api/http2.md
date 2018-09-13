@@ -456,12 +456,12 @@ added: v8.4.0
 Proporciona información diversa sobre el estado actual del `Http2Session`.
 
 * {Object} 
-  * `effectiveLocalWindowSize` {number} The current local (receive) flow control window size for the `Http2Session`.
+  * `effectiveLocalWindowSize` {number} El tamaño de ventana actual y local (recibir) del control de flujo para la `Http2Session`.
   * `effectiveRecvDataLength` {number} El número actual de bytes que han sido recibidos desde el último control de flujo `WINDOW_UPDATE`.
   * `nextStreamID` {number} El identificador numérico que se utilizará la próxima vez que un `Http2Stream` nuevo sea creado por esta `Http2Session`.
   * `localWindowSize` {number} El número de bytes que el peer remoto puede enviar sin recibir un `WINDOW_UPDATE`.
-  * `lastProcStreamID` {number} The numeric id of the `Http2Stream` for which a `HEADERS` or `DATA` frame was most recently received.
-  * `remoteWindowSize` {number} The number of bytes that this `Http2Session` may send without receiving a `WINDOW_UPDATE`.
+  * `lastProcStreamID` {number} La id numérica del `Http2Stream` para el cual se recibió más recientemente a un frame de `HEADERS` o `DATA` .
+  * `remoteWindowSize` {number} El número de bytes que esta `Http2Session` puede enviar sin recibir un `WINDOW_UPDATE`.
   * `outboundQueueSize` {number} The number of frames currently within the outbound queue for this `Http2Session`.
   * `deflateDynamicTableSize` {number} The current size in bytes of the outbound header compression state table.
   * `inflateDynamicTableSize` {number} The current size in bytes of the inbound header compression state table.
@@ -498,9 +498,9 @@ El `http2session.type` será igual a `http2.constants.NGHTTP2_SESSION_SERVER` si
 added: v9.4.0
 -->
 
-Calls [`unref()`][`net.Socket.prototype.unref()`] on this `Http2Session` instance's underlying [`net.Socket`].
+Llama a [`unref()`][`net.Socket.prototype.unref()`] en esta [`net.Socket`] subyacente de la instancia de `Http2Session` .
 
-### Class: ServerHttp2Session
+### Clase: ServerHttp2Session
 
 <!-- YAML
 added: v8.4.0
