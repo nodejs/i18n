@@ -4,8 +4,8 @@ Hay dos componentes fundamentales del proceso de Pull Rquest: uno concreto y té
 
 * [Dependencias](#dependencies)
 * [Configurando tu entorno local](#setting-up-your-local-environment) 
-  * [Step 1: Fork](#step-1-fork)
-  * [Step 2: Branch](#step-2-branch)
+  * [Paso 1: Bifurcación](#step-1-fork)
+  * [Paso 2: Branch](#step-2-branch)
 * [The Process of Making Changes](#the-process-of-making-changes) 
   * [Step 3: Code](#step-3-code)
   * [Step 4: Commit](#step-4-commit) 
