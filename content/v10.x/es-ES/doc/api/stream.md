@@ -549,7 +549,7 @@ El evento `'data'` es emitido cada vez que el stream renuncié a la propiedad de
 
 Adjuntar un listener del evento `'data'` a un stream que no ha sido pausado explícitamente cambiará el stream a modo fluido. Los datos serán pasados tan pronto como estén disponibles.
 
-The listener callback will be passed the chunk of data as a string if a default encoding has been specified for the stream using the `readable.setEncoding()` method; otherwise the data will be passed as a `Buffer`.
+El callback del listener será pasado al fragmento de datos como un string si una codificación predeterminada ha sido especificada para el stream usando el método `readable.setEncoding()`; de otra manera los datos serán pasados como un `Buffer`.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -558,15 +558,15 @@ readable.on('data', (chunk) => {
 });
 ```
 
-##### Event: 'end'
+##### Evento: 'end'
 
 <!-- YAML
 added: v0.9.4
 -->
 
-The `'end'` event is emitted when there is no more data to be consumed from the stream.
+El evento `'end'` es emitido cuando no hay más datos a ser consumidos del stream.
 
-The `'end'` event **will not be emitted** unless the data is completely consumed. This can be accomplished by switching the stream into flowing mode, or by calling [`stream.read()`](#stream_readable_read_size) repeatedly until all data has been consumed.
+El evento `'end'` **no será emitido** a menos que nos datos sean completamente consumidos. Esto se puede lograr cambiando el stream a modo fluido, o al llamar repetidamente a [`stream.read()`](#stream_readable_read_size) hasta que los datos han sido consumidos.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -578,7 +578,7 @@ readable.on('end', () => {
 });
 ```
 
-##### Event: 'error'
+##### Evento: 'error'
 
 <!-- YAML
 added: v0.9.4
@@ -586,7 +586,7 @@ added: v0.9.4
 
 * {Error}
 
-The `'error'` event may be emitted by a `Readable` implementation at any time. Typically, this may occur if the underlying stream is unable to generate data due to an underlying internal failure, or when a stream implementation attempts to push an invalid chunk of data.
+El evento `'error'` puede ser emitido por una implementación de `Readable` en cualquier momento. Typically, this may occur if the underlying stream is unable to generate data due to an underlying internal failure, or when a stream implementation attempts to push an invalid chunk of data.
 
 The listener callback will be passed a single `Error` object.
 
