@@ -1502,8 +1502,8 @@ changes:
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. El valor se expresa en términos de número de megabytes, por ejemplo, `1` es igual a 1 megabyte. El valor mínimo permitido es `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. El número actual de sesiones de `Http2Stream`, el uso de memoria actual de los tableros de compresión de encabezados, datos actuales puestos en cola para ser enviados, y los frames no reconocidos de `PING` y `SETTINGS` se cuentan hacia el límite actual. **Predeterminado:** `10`.
   * `maxHeaderListPairs` {number} Establece el número máximo de entradas de encabezado. El valor mínimo es `4`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Predeterminado:** `10`.
-  * `maxSendHeaderBlockLength` {number} Establece el tamaño máximo permitido para un bloque comprimido y serializado de encabezados. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifica la estrategia utilizada para determinar la cantidad de relleno a usar para frames de `HEADERS` y `DATA` . **Default:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
+  * `maxSendHeaderBlockLength` {number} Establece el tamaño máximo permitido para un bloque comprimido y serializado de encabezados. Intenta enviar encabezados que excedan este límite, tendrá como resultado la emisión de un evento `'frameError'` y el cierre y la destrucción de un stream.
+  * `paddingStrategy` {number} Identifica la estrategia utilizada para determinar la cantidad de relleno a usar para frames de `HEADERS` y `DATA` . **Predeterminado:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
@@ -1620,8 +1620,8 @@ changes:
 * `authority` {string|URL}
 * `opciones` {Object} 
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Predeterminado:** `4Kib`.
-  * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. El valor se expresa en términos de número de megabytes, por ejemplo, `1` es igual a 1 megabyte. El valor mínimo permitido es `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. El número actual de sesiones de `Http2Stream`, el uso de memoria actual de los tableros de compresión de encabezados, datos actuales puestos en cola para ser enviados, y los frames no reconocidos de `PING` y `SETTINGS` se cuentan hacia el límite actual. **Predeterminado:** `10`.
-  * `maxHeaderListPairs` {number} Sets the maximum number of header entries. El valor mínimo es `1`. **Default:** `128`.
+  * `maxSessionMemory`{number} Establece el máximo de memoria que se le permite utilizar a `Http2Session` . El valor se expresa en términos de número de megabytes, por ejemplo, `1` es igual a 1 megabyte. El valor mínimo permitido es `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. El número actual de sesiones de `Http2Stream`, el uso de memoria actual de los tableros de compresión de encabezados, datos actuales puestos en cola para ser enviados, y los frames no reconocidos de `PING` y `SETTINGS` se cuentan hacia el límite actual. **Predeterminado:** `10`.
+  * `maxHeaderListPairs` {number} Establece el número máximo de entradas de encabezado. El valor mínimo es `1`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Predeterminado:** `10`.
   * `maxReservedRemoteStreams` {number} Sets the maximum number of reserved push streams the client will accept at any given time. Once the current number of currently reserved push streams exceeds reaches this limit, new push streams sent by the server will be automatically rejected.
   * `maxSendHeaderBlockLength` {number} Establece el tamaño máximo permitido para un bloque comprimido y serializado de encabezados. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
@@ -1634,11 +1634,11 @@ changes:
   * `selectPadding` {Function} Cuando `options.paddingStrategy` es igual a `http2.constants.PADDING_STRATEGY_CALLBACK`, proporciona la función de callback utilizada para determinar el relleno. Vea [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} Las configuraciones iniciales para enviar al peer remoto al conectarse.
   * `createConnection` {Function} Un callback opcional que recibe la instancia de `URL` pasada a `connect` y el objeto de `options`, y devuelve cualquier stream de [`Duplex`][] que deberá ser utilizado como la conexión para esta sesión.
-  * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
+  * ...: Cualquiera de las opciones de [`net.connect()`][] o [`tls.connect()`][] pueden ser proporcionadas.
 * `listener` {Function}
-* Returns: {ClientHttp2Session}
+* Devuelve: {ClientHttp2Session}
 
-Returns a `ClientHttp2Session` instance.
+Devuelve una instancia `ClientHttp2Session` .
 
 ```js
 const http2 = require('http2');
@@ -1674,9 +1674,9 @@ added: v8.4.0
 | `0x0a` | Error de conexión         | `http2.constants.NGHTTP2_CONNECT_ERROR`       |
 | `0x0b` | Enhance Your Calm         | `http2.constants.NGHTTP2_ENHANCE_YOUR_CALM`   |
 | `0x0c` | Seguridad inadecuada      | `http2.constants.NGHTTP2_INADEQUATE_SECURITY` |
-| `0x0d` | HTTP/1.1 Required         | `http2.constants.NGHTTP2_HTTP_1_1_REQUIRED`   |
+| `0x0d` | HTTP/1.1 Requerido        | `http2.constants.NGHTTP2_HTTP_1_1_REQUIRED`   |
 
-The `'timeout'` event is emitted when there is no activity on the Server for a given number of milliseconds set using `http2server.setTimeout()`.
+El evento `'timeout'` se emite cuando no hay actividad en el Servidor durante un número dado de milisegundos establecidos, utilizando `http2server.setTimeout()`.
 
 ### http2.getDefaultSettings()
 
@@ -1684,7 +1684,7 @@ The `'timeout'` event is emitted when there is no activity on the Server for a g
 added: v8.4.0
 -->
 
-* Returns: {HTTP/2 Settings Object}
+* Devuelve: {HTTP/2 Settings Object}
 
 Devuelve a un objeto que contiene las configuraciones predeterminadas para una instancia de `Http2Session` . This method returns a new object instance every time it is called so instances returned may be safely modified for use.
 
@@ -1715,7 +1715,7 @@ added: v8.4.0
 -->
 
 * `buf` {Buffer|Uint8Array} Las configuraciones empaquetadas.
-* Returns: {HTTP/2 Settings Object}
+* Devuelve: {HTTP/2 Settings Object}
 
 Returns a [HTTP/2 Settings Object](#http2_settings_object) containing the deserialized settings from the given `Buffer` as generated by `http2.getPackedSettings()`.
 
