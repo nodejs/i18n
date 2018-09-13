@@ -94,7 +94,7 @@ Para contribuir con el código de C++, es posible que desee consultar la [Guía 
 
 ### Paso 4: Confirmación
 
-It is a recommended best practice to keep your changes as logically grouped as possible within individual commits. There is no limit to the number of commits any single Pull Request may have, and many contributors find it easier to review changes that are split across multiple commits.
+Es una mejor práctica recomendada mantener sus cambios lo más lógicamente agrupados dentro de las confirmaciones individuales. No hay límite para el número de confirmaciones que puede tener una sola Pull Request, y a muchos colaboradores les resulta más fácil revisar los cambios que se dividen en varias confirmaciones.
 
 ```text
 $ git add my/changed/files
