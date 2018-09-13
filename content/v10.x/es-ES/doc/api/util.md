@@ -140,7 +140,7 @@ fn1(); // emite una advertencia de desaprobación con el código DEP0001
 fn2(); // no emite una advertencia de desaprobación porque tiene el mismo código
 ```
 
-Si tanto las banderas de línea de comando `--no-deprecation` o `--no-warnings` son usadas, o si la propiedad `process.noDeprecation` está establecida como `true` *prior* para la primera advertencia de desaprobación, el método `util.deprecate()` no hace nada.
+Si las banderas de línea de comando `--no-deprecation` o `--nowarnings` son usadas, o si la propiedad `process.noDeprecation` está establecida como `true` *antes* de la primera advertencia de desaprobación, el método `util.deprecate()` no hace nada.
 
 Si las banderas de línea de comando `--trace-deprecation` o `--tracewarnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un stack trace son estampados a `stderr` la primera vez que la función obsoleta sea llamada.
 
@@ -328,7 +328,7 @@ changes:
     description: The `showProxy` option is supported now.
 -->
 
-* `object` {any} Cualquier JavaScript primitivo o `Object`.
+* `object` {any} Cualquier JavaScript primitivo u `Object`.
 * `options` {Object}
   
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result as well as [`WeakMap`][] and [`WeakSet`][] entries. **Default:** `false`.
