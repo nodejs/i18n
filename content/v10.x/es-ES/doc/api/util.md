@@ -19,7 +19,7 @@ added: v8.2.0
 * `original` {Function} Una función `async`
 * Retorna: {Function} una función de estilo callback
 
-Toma una función `async` (o una función que retorna una `Promise`) y retorna una función siguiendo al estilo de callback error-first p. ej. tomando un callback `(err, value) => ...` como el último argumento. En el callback, el primer argumento va a ser la razón de rechazo (o `null` si la `Promise` se resolvió), y el segundo argumento va a ser el valor resuelto.
+Toma una función `async` (o una función que retorna una `Promise`) y retorna una función siguiendo el estilo de callback error-first, p. ej. tomando un callback `(err, value) => ...` como el último argumento. En el callback, el primer argumento va a ser la razón de rechazo (o `null` si la `Promise` se resolvió), y el segundo argumento va a ser el valor resuelto.
 
 ```js
 const util = require('util');
@@ -41,7 +41,7 @@ Va a estampar:
 hello world
 ```
 
-El callback es ejecutado asincrónicamente, y va a tener limitado rastro de pila. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
+El callback es ejecutado asincrónicamente, y va a tener un stack trace limitado. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
 
 Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función wrapped rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
 
