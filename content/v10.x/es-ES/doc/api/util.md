@@ -43,7 +43,7 @@ hello world
 
 El callback es ejecutado asincrónicamente, y va a tener un stack trace limitado. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
 
-Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función wrapped rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
+Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función envuelta rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
 
 ```js
 function fn() {
@@ -142,7 +142,7 @@ fn2(); // no emite una advertencia de desaprobación porque tiene el mismo códi
 
 Si tanto las banderas de línea de comando `--no-deprecation` o `--no-warnings` son usadas, o si la propiedad `process.noDeprecation` está establecida como `true` *prior* para la primera advertencia de desaprobación, el método `util.deprecate()` no hace nada.
 
-Si las banderas de línea de comando `--trace-deprecation` o `--trace-warnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un rastro de pila son estampados a `stderr` la primera vez que la función obsoleta sea llamada.
+Si las banderas de línea de comando `--trace-deprecation` o `--tracewarnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un stack trace son estampados a `stderr` la primera vez que la función obsoleta sea llamada.
 
 Si la bandera de línea de comando `--throw-deprecation` está establecida, o la propiedad `process.throwDeprecation` está establecida en `true`, entonces una excepción va a ser arrojada cuando la función obsoleta sea llamada.
 
@@ -215,7 +215,8 @@ Esta función es idéntica a [`util.format()`][], excepto en que esta toma un ar
 
 ```js
 util.formatWithOptions({ colors: true }, 'See object %O', { foo: 42 });
-// Retorna 'See object { foo: 42 }', donde `42` es coloreado como un número cuando es estampado a un terminal.
+// Retorna 'See object { foo: 42 }', donde `42` es coloreado como un número
+// cuando es estampado a un terminal.
 ```
 
 ## util.getSystemErrorName(err)
