@@ -666,7 +666,7 @@ added: v0.11.14
 
 * Devuelve: {boolean}
 
-El método `readable.isPaused()` devuelve el estado de operaciones actual del `Readable`. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
+El método `readable.isPaused()` devuelve el estado de operaciones actual del `Readable`. Esto es usado principalmente por el mecanismo que vuelve subyacente el método `readable.pipe()`. En la mayoría de los casos típicos, no existirá razón para usar este método directamente.
 
 ```js
 const readable = new stream.Readable();
@@ -684,9 +684,9 @@ readable.isPaused(); // === false
 added: v0.9.4
 -->
 
-* Returns: {this}
+* Devuelve: {this}
 
-The `readable.pause()` method will cause a stream in flowing mode to stop emitting [`'data'`][] events, switching out of flowing mode. Any data that becomes available will remain in the internal buffer.
+El método `readable.pause()` causará que un stream en modo fluido detenga la emisión de los eventos [`'data'`][], saliendo del modo fluido. Todos los datos que se vuelvan disponibles permanecerán en el búfer interno.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -707,10 +707,10 @@ readable.on('data', (chunk) => {
 added: v0.9.4
 -->
 
-* `destination` {stream.Writable} The destination for writing data
-* `options` {Object} Pipe options 
-  * `end` {boolean} End the writer when the reader ends. **Default:** `true`.
-* Returns: {stream.Writable} making it possible to set up chains of piped streams
+* `destination` {stream.Writable} El destino para escribir datos
+* `opciones` {Object} Opciones pipe 
+  * `end` {boolean} Finaliza el escritor cuando el lector termina. **Predeterminado:** `true`.
+* Devuelve: {stream.Writable} haciendo posible preparar cadenas de piped streams
 
 The `readable.pipe()` method attaches a [`Writable`][] stream to the `readable`, causing it to switch automatically into flowing mode and push all of its data to the attached [`Writable`][]. The flow of data will be automatically managed so that the destination `Writable` stream is not overwhelmed by a faster `Readable` stream.
 
