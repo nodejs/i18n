@@ -776,11 +776,11 @@ readable.on('readable', () => {
 });
 ```
 
-A `Readable` stream in object mode will always return a single item from a call to [`readable.read(size)`](#stream_readable_read_size), regardless of the value of the `size` argument.
+Un stream `Readable` en modo objeto siempre devolverá un solo ítem de una llamada a [`readable.read(size)`](#stream_readable_read_size), sin importar el valor del argumento `size`.
 
-If the `readable.read()` method returns a chunk of data, a `'data'` event will also be emitted.
+Si el método `readable.read()` devuelve un fragmento de datos, un evento `'data'`también será emitido.
 
-Calling [`stream.read([size])`](#stream_readable_read_size) after the [`'end'`][] event has been emitted will return `null`. No runtime error will be raised.
+Llamar a [`stream.read([size])`](#stream_readable_read_size) después del evento [`'end'`][] ha sido emitido devolverá `null`. No runtime error will be raised.
 
 ##### readable.readableHighWaterMark
 
