@@ -645,7 +645,7 @@ end
 
 En general, los mecanismos de eventos `readable.pipe()` y `'data'` son más sencillos de entender que el evento `'readable'`. Sin embargo, manejar `'readable'` podría resultar en un aumento del rendimiento.
 
-If both `'readable'` and [`'data'`][] are used at the same time, `'readable'` takes precedence in controlling the flow, i.e. `'data'` will be emitted only when [`stream.read()`](#stream_readable_read_size) is called.
+Si tanto `'readable'` y [`'data'`][] son usados al mismo tiempo, `'readable'` toma la prioridad de controlar el flujo, es decir, `'data'` será emitido solo cuando [`stream.read()`](#stream_readable_read_size) es llamado.
 
 ##### readable.destroy([error])
 
@@ -653,10 +653,10 @@ If both `'readable'` and [`'data'`][] are used at the same time, `'readable'` ta
 added: v8.0.0
 -->
 
-* `error` {Error} Error which will be passed as payload in `'error'` event
-* Returns: {this}
+* `error` {Error} Error que será pasado como una carga en el evento `'error'`
+* Devuelve: {this}
 
-Destroy the stream, and emit `'error'` and `'close'`. After this call, the readable stream will release any internal resources and subsequent calls to `push()` will be ignored. Implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback).
+Destruye el stream, luego emite `'error'` y `'close'`. After this call, the readable stream will release any internal resources and subsequent calls to `push()` will be ignored. Implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback).
 
 ##### readable.isPaused()
 
