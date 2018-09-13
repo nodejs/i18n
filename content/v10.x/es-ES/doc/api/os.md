@@ -430,41 +430,39 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Sent to a process to notify that it has attempted to perform an illegal,
-    malformed, unknown, or privileged instruction.</td>
+    <td>Enviada a un proceso para notificar que ha intentado realizar una instrucción ilegal, malformada, desconocida, o priviligeada.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
-    <td>Sent to a process when an exception has occurred.</td>
+    <td>Enviada a un proceso cuando ha ocurrido una excepción.</td>
   </tr>
   <tr>
     <td><code>SIGABRT</code></td>
-    <td>Sent to a process to request that it abort.</td>
+    <td>Enviada a un proceso para solicitar que aborte.</td>
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Synonym for <code>SIGABRT</code></td>
+    <td>Sinónimo para <code>SIGABRT</code></td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
-    <td>Sent to a process to notify that it has caused a bus error.</td>
+    <td>Enviada a un proceso para notificar que ha causada un error de bus.</td>
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Sent to a process to notify that it has performed an illegal arithmetic
-    operation.</td>
+    <td>Enviada a un proceso para notificar que ha realizado una operación aritmética ilegal.</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
-    <td>Sent to a process to terminate it immediately.</td>
+    <td>Enviada a un proceso para terminarlo inmediatamente.</td>
   </tr>
   <tr>
     <td><code>SIGUSR1</code> <code>SIGUSR2</code></td>
-    <td>Sent to a process to identify user-defined conditions.</td>
+    <td>Enviada a un proceso para identificar las condiciones definidas por los usuarios.</td>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
-    <td>Sent to a process to notify of a segmentation fault.</td>
+    <td>Enviada a un proceso para notificar de un fallo de segmentación.</td>
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
