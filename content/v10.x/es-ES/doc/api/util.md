@@ -182,25 +182,25 @@ util.format('%s:%s', 'foo');
 // Retorna: 'foo:%s'
 ```
 
-Si hay más argumentos pasados al método `util.format()` que el número de placeholders, los argumentos extra son coaccionados en strings, luego cocatenados a la string retornada, cada uno delimitado por un espacio. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
+Si hay más argumentos pasados al método `util.format()` que el número de placeholders, los argumentos extra son coaccionados en strings, luego cocatenados a la string retornada, cada uno delimitado por un espacio. Argumentos excesivos cuyos `typeof` sea `'object'` o `'symbol'` (excepto `null`), serán transformados por `util.inspect()`.
 
 ```js
 util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
 ```
 
-If the first argument is not a string then `util.format()` returns a string that is the concatenation of all arguments separated by spaces. Each argument is converted to a string using `util.inspect()`.
+Si el primer argumento no es un string, entonces `util.format()` retorna un string que es la concatenación de todos los argumentos separados por espacios. Cada argumento es convertido a un string usando `util.inspect()`.
 
 ```js
 util.format(1, 2, 3); // '1 2 3'
 ```
 
-If only one argument is passed to `util.format()`, it is returned as it is without any formatting.
+Si solo un argumento es pasado a `util.format()`, este es retornado tal como está, sin ningún formato.
 
 ```js
 util.format('%% %s'); // '%% %s'
 ```
 
-Please note that `util.format()` is a synchronous method that is mainly intended as a debugging tool. Some input values can have a significant performance overhead that can block the event loop. Use this function with care and never in a hot code path.
+Por favor, note que `util.format()` es un método sincrónico que es principalmente concebido como una herramienta de depuración. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
 
 ## util.formatWithOptions(inspectOptions, format[, ...args])
 
@@ -426,8 +426,8 @@ console.log(util.inspect(o, { compact: false, depth: 5, breakLength: 80 }));
 //   }
 // }
 
-// Setting `breakLength` to e.g. 150 will print the "Lorem ipsum" text in a
-// single line.
+// Establecer `breakLength` a p. ej 150 va a estampar el texto "Lorem ipsum" en una
+// sola línea.
 // Reducing the `breakLength` will split the "Lorem ipsum" text in smaller
 // chunks.
 ```
@@ -445,7 +445,7 @@ console.log(inspect(weakSet, { showHidden: true }));
 // WeakSet { { a: 1 }, { b: 2 } }
 ```
 
-Please note that `util.inspect()` is a synchronous method that is mainly intended as a debugging tool. Some input values can have a significant performance overhead that can block the event loop. Use this function with care and never in a hot code path.
+Please note that `util.inspect()` is a synchronous method that is mainly intended as a debugging tool. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
 
 ### Customizing `util.inspect` colors
 
