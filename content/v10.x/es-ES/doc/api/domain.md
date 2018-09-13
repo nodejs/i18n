@@ -20,7 +20,7 @@ changes:
 
 **Este módulo esta por convertirse en obsoleto**. Será completamente inútil una vez que el reemplazo de API haya finalizado. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Lo que si deben saber es la funcionalidad que los dominios ofrecen pueden recaer en ella para el momento de uso, pero deben esperar a tener o migrar a una solución diferente en el futuro.
 
-Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja un error.
+Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja uno.
 
 ## Advertencia: ¡No ignore los errores!
 
@@ -85,8 +85,7 @@ Si (cluster.isMaster) {
   });
 
 } otro {
-  // el trabajador
-  //
+  // el worker  //
   // ¡Aquí es donde se colocan nuestros errores!
 
   const domain = require('domain');
@@ -182,7 +181,7 @@ Asimismo, los callbacks pasados al subnivel de evento de las solicitudes del buc
 
 De manera que para prevenir el uso excesivo de la memoria, los objetos del `Dominio` no se añaden implícitamente por sí mismos como secundarios del dominio activo. Y si lo hicieran, seria muy sencillo prevenir solicitudes y dar respuesta a los objetos a partir de la basura recolectada.
 
-Para alojar a los objetos del `Dominio` como secundarios de un proceso `Dominio` principal, deben estar explícitamente añadidos.
+Para alojar a los objetos del `Dominio` como secundarios de un proceso de `Dominio` principal, deben estar explícitamente añadidos.
 
 Las rutas de enlace implícitas arrojan errores y eventos de `'error'` en los eventos de `'error'` del `Dominio`, pero no registra los del `EmisordeEvento` en el `Dominio`. Los enlaces implícitos solo se encargan de los errores arrojados y los eventos de `'error'`.
 
@@ -190,7 +189,7 @@ Las rutas de enlace implícitas arrojan errores y eventos de `'error'` en los ev
 
 <!--type=misc-->
 
-A veces, el dominio en uso no es el que debería utilizarse para un emisor de evento específico. O, el emisor de evento podría haber sido creado en el contexto de un dominio, pero debe regirse en cambio a algunos otros dominios.
+A veces, el dominio en uso no es el que debería utilizarse para un emisor de evento específico. O, el emisor de evento podría haber sido creado en el contexto de un dominio, pero debe regirse en cambio en algún otro.
 
 Por ejemplo, podría ser un dominio en el uso de un servidor HTTP, pero, quizás, nos gustaría tener un dominio separado para cada solicitud.
 
