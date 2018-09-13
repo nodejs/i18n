@@ -1,6 +1,6 @@
 # Pull Requests
 
-Hay dos componentes fundamentales del proceso de Pull Rquest: uno concreto y técnico, y uno más orientado al proceso. El componente concreto y técnico implica los detalles específicos de la configuración de tu entorno local para que puedas realizar los cambios reales. Aquí es donde comenzaremos.
+Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y técnico, y uno más orientado al proceso. El componente concreto y técnico implica los detalles específicos de la configuración de tu entorno local para que puedas realizar los cambios reales. Aquí es donde comenzaremos.
 
 * [Dependencias](#dependencies)
 * [Configurando tu entorno local](#setting-up-your-local-environment) 
@@ -17,11 +17,11 @@ Hay dos componentes fundamentales del proceso de Pull Rquest: uno concreto y té
   * [Paso 8: Apertura de la Pull Request](#step-8-opening-the-pull-request)
   * [Paso 9: Discutir y actualizar](#step-9-discuss-and-update) 
     * [Flujo de trabajo de aprobación y cambios de solicitud](#approval-and-request-changes-workflow)
-  * [Step 10: Landing](#step-10-landing)
-* [Reviewing Pull Requests](#reviewing-pull-requests) 
-  * [Review a bit at a time](#review-a-bit-at-a-time)
-  * [Be aware of the person behind the code](#be-aware-of-the-person-behind-the-code)
-  * [Respect the minimum wait time for comments](#respect-the-minimum-wait-time-for-comments)
+  * [Paso 10: Ejecutar](#step-10-landing)
+* [Revisión de Pull Requests](#reviewing-pull-requests) 
+  * [Revise un poco a la vez](#review-a-bit-at-a-time)
+  * [Tenga en cuenta a la persona detrás del código](#be-aware-of-the-person-behind-the-code)
+  * [Respete el tiempo de espera mínimo para los comentarios](#respect-the-minimum-wait-time-for-comments)
   * [Abandoned or Stalled Pull Requests](#abandoned-or-stalled-pull-requests)
   * [Approving a change](#approving-a-change)
   * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
