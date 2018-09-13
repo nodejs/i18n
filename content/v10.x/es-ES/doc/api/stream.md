@@ -238,7 +238,7 @@ added: v0.9.4
 
 * `src` {stream.Readable} el stream fuente que está haciendo piping a este escribible
 
-El evento `'pipe'` es emitido cuando el método [`stream.pipe()`][] es llamado a un stream legible, añadiendo este escribible al conjunto de destinos.
+El evento `'pipe'` es emitido cuando el método [`stream.pipe()`][] es llamado en un stream legible, añadiendo este escribible a su conjunto de destinos.
 
 ```js
 const writer = getWritableStreamSomehow();
@@ -311,10 +311,10 @@ changes:
 
 * `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer`o un `Uint8Array`. Para los streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
 * `encoding` {string} La codificación si `chunk` es un string
-* `callback` {Function} Callback opcional cuando el stream es terminado
+* `callback` {Function} Callback opcional cuando el stream está/esté terminado Nota: escoger alguno de los dos
 * Devuelve: {this}
 
-Llamar al método `writable.end()` señala que no se escribirá más datos en el [`Writable`][]. Los argumentos `chunk` y `encoding` opcionales permiten un último fragmento de datos sean escritos inmediatamente antes de cerrar el stream. Si es proporcionado, la función `callback` opcional es adjuntada como un listener para el evento [`'finish'`][].
+Llamar al método `writable.end()` señala que no se escribirán más datos en el [`Writable`][]. Los argumentos `chunk` y `encoding` opcionales permiten un último fragmento de datos para ser escritos inmediatamente antes de cerrar el stream. Si es proporcionado, la función `callback` opcional es adjuntada como un listener para el evento [`'finish'`][].
 
 Llamar el método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) va a provocar un error.
 
@@ -384,7 +384,7 @@ added: v9.3.0
 
 * {number}
 
-Devuelve el valor del `highWaterMark` pasado cuando se construia este `Writable`.
+Devuelve el valor del `highWaterMark` pasado al construir este `Writable`.
 
 ##### writable.writableLength
 
@@ -414,13 +414,13 @@ changes:
 * `callback` {Function} Callback for when this chunk of data is flushed
 * Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-El método `writable.write()` escribe algunos datos al stream, y llama al `callback` suministrado una vez que ha sido manejado completamente. Si ocurre un error, el `callback` *puede o no* ser llamado con el error como su primer argumento. Para detectar errores de escritura de manera fiable, añade un listener para el evento `'error'`.
+El método `writable.write()` escribe algunos datos al stream, y llama al `callback` suministrado una vez que los datos han sido manejados completamente. Si ocurre un error, el `callback` *puede o no* ser llamado con el error como su primer argumento. Para detectar errores de escritura de manera fiable, añade un listener para el evento `'error'`.
 
 El valor devuelto es `true` si el búfer interno es menor que el `highWaterMark` configurado cuando el stream fue creado después de admitir a `chunk`. Si es devuelto `false`, los siguientes intentos de escribir datos en el stream deberían detenerse hasta que el evento [`'drain'`][] es emitido.
 
-Mientras que un stream no esté drenando, llamas a `write()` van a almacenar `chunk`, y devolverán false. Una vez que todos los fragmentos almacenados son vaciados (), el evento `'drain'` será emitido. Es recomendado que una vez que `write()` devuelva false, no se escribirán más fragmentos hasta que sea emitido el evento `'drain'`. Mientras se llame `write()` en un stream donde el vaciado no está permitido, Node.js va a almacenar todos los fragmentos escritos hasta que el uso máximo de la memoria ocurra, en ese punto se anulará incondicionalmente. Incluso antes de que se anule, alto uso de la memoria causará un pobre desempeño del colector de basura, y un RSS alto (que no es típicamente liberado de vuelta al sistema, incluso después que la memoria ya no es requerida). Dado que los sockets TCP no pueden ser drenados si el peer remoto no lee los datos, escribir un socket que no se está vaciando puede llevar a vulnerabilidad explotable remota.
+Mientras que un stream no esté draining, llamadas a `write()` almacenaran `chunk`, y devolverán false. Una vez que todos los fragmentos almacenados son vaciados (aceptado para entrega por el sistema operativo), el evento `'drain'` será emitido. Es recomendado que una vez que `write()` devuelva false, no se escribirán más fragmentos hasta que sea emitido el evento `'drain'`. Mientras se llame `write()` en un stream donde el vaciado no está permitido, Node.js va a almacenar todos los fragmentos escritos hasta que el uso máximo de la memoria ocurra, en ese punto se anulará incondicionalmente. Incluso antes de que se anule, alto uso de la memoria causará un pobre desempeño del colector de basura, y un RSS alto (que no es típicamente liberado de vuelta al sistema, incluso después que la memoria ya no es requerida). Dado que los sockets TCP no pueden ser drenados si el peer remoto no lee los datos, escribir un socket que no se está vaciando puede llevar a vulnerabilidad explotable remota.
 
-Escribir datos mientras que el stream no está drenando es particularmente problemático para un [`Transform`][], porque los streams `Transform` son pausados de manera predeterminada hasta que se les hace pipe, o se añade una `'data'`, o se añade un manejador de eventos `'readable'`.
+Escribir datos mientras que el stream no está drenando es particularmente problemático para un [`Transform`][], porque los streams `Transform` son pausados de manera predeterminada hasta que se les realice pipe, o se añada `'data'`, o un manejador de eventos `'readable'`.
 
 Si los datos a ser escritos pueden ser generados o traídos cuando se requieren, es recomendado encapsular la lógica en un [`Readable`][] y usar [`stream.pipe()`][]. Sin embargo, si se prefiere llamar a `write()`, es posible respetar la contrapresión y evitar problemas de memoria usando el evento [`'drain'`][]:
 
