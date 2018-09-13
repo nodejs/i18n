@@ -1165,7 +1165,7 @@ bar();
 
 No se está claro si primero se llamará a `foo()` o a `bar()`.
 
-The following approach is much better:
+El siguiente enfoque es mucho mejor:
 
 ```js
 function definitelyAsync(arg, cb) {
@@ -1188,7 +1188,7 @@ added: v0.8.0
 
 * {boolean}
 
-The `process.noDeprecation` property indicates whether the `--no-deprecation` flag is set on the current Node.js process. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.noDeprecation` indica que la bandera `--no-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.pid
 
@@ -1198,7 +1198,7 @@ added: v0.1.15
 
 * {integer}
 
-The `process.pid` property returns the PID of the process.
+La propiedad `process.pid` devuelve el PID del proceso.
 
 ```js
 console.log(`This process is pid ${process.pid}`);
@@ -1212,9 +1212,9 @@ added: v0.1.16
 
 * {string}
 
-The `process.platform` property returns a string identifying the operating system platform on which the Node.js process is running.
+La propiedad `process.platform` devuelve una string que identifica la plataforma del sistema operativo en el cual se está ejecutando el proceso Node.js.
 
-Currently possible values are:
+Los posibles valores actuales son:
 
 * `'aix'`
 * `'darwin'`
@@ -1228,7 +1228,7 @@ Currently possible values are:
 console.log(`This platform is ${process.platform}`);
 ```
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+El valor `'android'` también puede ser devuelto si el Node.js está construido en el sistema operativo Android. Sin embargo, el soporte de Android en Node.js [es experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## process.ppid
 
@@ -1238,7 +1238,7 @@ added: v9.2.0
 
 * {integer}
 
-The `process.ppid` property returns the PID of the current parent process.
+La propiedad `process.ppid` devuelve el PID del proceso primario actual.
 
 ```js
 console.log(`The parent process is pid ${process.ppid}`);
@@ -1259,7 +1259,7 @@ changes:
 
 The `process.release` property returns an `Object` containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
 
-`process.release` contains the following properties:
+`process.release` contiene las siguientes propiedades:
 
 * `name` {string} A value that will always be `'node'` for Node.js. For legacy io.js releases, this will be `'io.js'`.
 * `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
