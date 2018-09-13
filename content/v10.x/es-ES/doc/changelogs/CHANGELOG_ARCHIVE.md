@@ -275,7 +275,7 @@
 
 https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
-* v8: actualización a 3.24.35.22
+* v8: actualizar a 3.24.35.22
 * buffer: añadir métodos de comparación e igualación (Sean McArthur)
 * buffer: mejorar métodos {read,write}{U}Int* (Nick Apperson)
 * buffer: devolver uint si MSB es 1 en readUInt32 (goussardg)
