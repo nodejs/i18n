@@ -1417,7 +1417,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API se utiliza para recuperar el buffer de datos subyacente y la longitud de un `ArrayBuffer`.
 
-*ADVERTENCIA*: Tenga cuidado al utilizar esta API. El `ArrayBuffer` administra el tiempo de vida del buffer de datos subyacente incluso después de que se devuelve. Una manera segura posible para utilizar esta API es en conjunto con [`napi_create_reference`][], la cual puede ser utilizada para garantizar el control sobre el tiempo de vida del `ArrayBuffer`. También es seguro utilizar el buffer de datos devuelto dentro del mismo callback de terminación siempre que no existan llamadas a otras APIs que puedan desencadenar un GC.
+*ADVERTENCIA*: Tenga cuidado al utilizar esta API. El `ArrayBuffer` administra el tiempo de vida del buffer de datos subyacente incluso después de que se devuelve. Una manera segura y posible de esta API es hacerlo en conjunto con [`napi_create_reference`][], la cual puede ser utilizada para garantizar el control sobre el tiempo de vida del `ArrayBuffer`. También es seguro utilizar el buffer de datos devuelto dentro del mismo callback de terminación, siempre que no existan llamadas a otras APIs que puedan desencadenar un GC.
 
 #### napi_get_buffer_info
 
@@ -1481,12 +1481,12 @@ napi_status napi_get_typedarray_info(napi_env env,
 - `[in] typedarray`: `napi_value` que representa al `TypedArray` cuyas propiedades se consultarán.
 - `[out] type`: Tipo de dato escalar de los elementos dentro del `TypedArray`.
 - `[out] length`: `Number` de elementos en el `TypedArray`.
-- `[out] data`: El buffer de datos subyacente del tipo de arreglo.
+- `[out] data`: El buffer de datos subyacente al typed array.
 - `[out] byte_offset`: El byte offset dentro del buffer de datos desde el cual se comenzará a proyectar el `TypedArray`.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API devuelve varias propiedades de un tipo de arreglo.
+Esta API devuelve varias propiedades de un typed array.
 
 *Advertencia*: Tenga cuidado al utilizar esta API, ya que el buffer de datos subyacente es administrado por la VM.
 
@@ -1508,8 +1508,8 @@ napi_status napi_get_dataview_info(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] dataview`: `napi_value` que representa el `DataView` cuyas propiedades se consultarán.
 - `[out] byte_length`: `Number` de bytes en el `DataView`.
-- `[out] data`: El buffer de datos subyacente del `DataView`.
-- `[out] arraybuffer`: `ArrayBuffer` subyacente del `DataView`.
+- `[out] data`: El buffer de datos subyacente al `DataView`.
+- `[out] arraybuffer`: `ArrayBuffer` subyacente al `DataView`.
 - `[out] byte_offset`: El byte offset dentro del buffer de datos desde el cual se comenzará a proyectar el `DataView`.
 
 Devuelve `napi_ok` si la API fue exitosa.
@@ -1590,11 +1590,11 @@ napi_status napi_get_value_int32(napi_env env,
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
 - `[out] result`: `int32` primitivo de C equivalente al `Number` de JavaScript dado.
 
-Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado en, devuelve `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado en `napi_number_expected`.
 
 Esta API devuelve un `int32` primitivo de C equivalente al `Number` de JavaScript dado.
 
-Si el número excede el rango del entero de 32 bits, entonces el resultado es redondeado hacia abajo al número de 32 bits próximo. Esto puede hacer que un número positivo grande se convierta en uno negativo si el valor es > 2^31 -1.
+Si el número excede el rango del entero de 32 bits, entonces el resultado es truncado hacia abajo al número de 32 bits próximo. Esto puede hacer que un número positivo grande se convierta en uno negativo si el valor es > 2^31 -1.
 
 Los valores numéricos no finitos (`NaN`, `+Infinity`, o `-Infinity`) establecen el resultado como cero.
 
