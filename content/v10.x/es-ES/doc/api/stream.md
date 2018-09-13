@@ -656,7 +656,7 @@ added: v8.0.0
 * `error` {Error} Error que será pasado como una carga en el evento `'error'`
 * Devuelve: {this}
 
-Destruye el stream, luego emite `'error'` y `'close'`. After this call, the readable stream will release any internal resources and subsequent calls to `push()` will be ignored. Implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback).
+Destruye el stream, luego emite `'error'` y `'close'`. Después de esta llamada, el stream legible liberará cualquier recurso y las llamadas posteriores a `push()` serán ignoradas. Los implementadores no deberían sobreescribir este método, deberían implementar [`readable._destroy()`](#stream_readable_destroy_err_callback) en su lugar.
 
 ##### readable.isPaused()
 
@@ -664,9 +664,9 @@ Destruye el stream, luego emite `'error'` y `'close'`. After this call, the read
 added: v0.11.14
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-The `readable.isPaused()` method returns the current operating state of the `Readable`. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
+El método `readable.isPaused()` devuelve el estado de operaciones actual del `Readable`. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
 
 ```js
 const readable = new stream.Readable();
