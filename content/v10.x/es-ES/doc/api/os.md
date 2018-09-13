@@ -466,28 +466,27 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
-    <td>Sent to a process when it has attempted to write to a disconnected
-    pipe.</td>
+    <td>Enviada a un proceso cuando ha intentado escribir a un pipe desconectado.</td>
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
-    <td>Sent to a process when a system timer elapses.</td>
+    <td>Enviada a un proceso cuando ha transcurrido un temporizador del sistema.</td>
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Sent to a process to request termination.</td>
+    <td>Enviada a un proceso para solicitar su terminación.</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
-    <td>Sent to a process when a child process terminates.</td>
+    <td>Enviada a un proceso cuando un proceso secundario termina.</td>
   </tr>
   <tr>
     <td><code>SIGSTKFLT</code></td>
-    <td>Sent to a process to indicate a stack fault on a coprocessor.</td>
+    <td>Enviada a un proceso para indicar un error de pila en un coprocesador.</td>
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Sent to instruct the operating system to continue a paused process.</td>
+    <td>Enviada para indicar al sistema operativo continuar un proceso pausado.</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
