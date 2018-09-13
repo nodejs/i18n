@@ -237,13 +237,13 @@ El `Dominios` es una clase menor de [`EvetoEmisor`][]. Para gestionar los errore
 
 * {Array}
 
-An array of timers and event emitters that have been explicitly added to the domain.
+Unos temporizadores y emisores de evento que han sido añadidos explícitamente al dominio.
 
-### domain.add(emitter)
+### domain.add(emisor)
 
-* `emitter` {EventEmitter|Timer} emitter or timer to be added to the domain
+* `emisor`{EventEmitter|Timer} emisor o temporizador a ser agregado al dominio
 
-Explicitly adds an emitter to the domain. If any event handlers called by the emitter throw an error, or if the emitter emits an `'error'` event, it will be routed to the domain's `'error'` event, just like with implicit binding.
+Agrega explícitamente un emisor al dominio. Si cualquier gestor de evento activado por el emisor arroja un error o el transmisor emite un evento de `'error'`, será enrutado para el evento de `'error'` perteneciente al dominio de la misma forma que con el enlazado implícito.
 
 This also works with timers that are returned from [`setInterval()`][] and [`setTimeout()`][]. If their callback function throws, it will be caught by the domain `'error'` handler.
 
