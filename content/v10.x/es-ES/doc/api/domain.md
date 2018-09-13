@@ -295,11 +295,11 @@ La llamada `exit()` modifica solo al dominio activo y no lo altera en si. `enter
 * `callback`{Function} La función de callback
 * Devoluciones: {Function} La función interceptada
 
-Este método es muy similar a [`domain.bind(callback)`][]. However, in addition to catching thrown errors, it will also intercept [`Error`][] objects sent as the first argument to the function.
+Este método es muy similar a [`domain.bind(callback)`][]. Sin embargo, además de identificar los errores arrojados, también interceptará objetos de [`Error`][] enviados como el primer problema de la función.
 
-In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
+Así, el patrón común `if (err) return callback(err);` puede ser reemplazada con un solo gestor de error único en un mismo lugar.
 
-#### Example
+#### Ejemplo
 
 ```js
 const d = domain.create();
