@@ -365,7 +365,7 @@ En este ejemplo, el controlador `d.on('error')` será activado en vez de congest
 
 ## Dominios y Promises
 
-As of Node.js 8.0.0, the handlers of Promises are run inside the domain in which the call to `.then()` or `.catch()` itself was made:
+El controlador de valores futuros son ejecutados dentro del dominio en el cual la llamada para `.then()` o `.catch()` fue hecha para sí misma como de Node.js 8.0.0:
 
 ```js
 const d1 = domain.create();
@@ -383,7 +383,7 @@ d2.run(() => {
 });
 ```
 
-A callback may be bound to a specific domain using [`domain.bind(callback)`][]:
+Una callback puede estar vinculada a un dominio en específico usando [`domain.bind(callback)`][]:
 
 ```js
 const d1 = domain.create();
@@ -397,8 +397,8 @@ d1.run(() => {
 d2.run(() => {
   p.then(p.domain.bind((v) => {
     // running in d1
-  }));
+    }));
 });
 ```
 
-Note that domains will not interfere with the error handling mechanisms for Promises, i.e. no `'error'` event will be emitted for unhandled `Promise` rejections.
+Vea que los dominios no interferirán con los mecanismos de control de error para los Valores Futuros o Promesas, es decir ningún evento de `'error` se emitirá para rechazos de `Promise` no manejados.
