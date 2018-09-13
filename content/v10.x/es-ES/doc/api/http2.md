@@ -729,7 +729,7 @@ stream.on('trailers', (headers, flags) => {
 });
 ```
 
-#### Event: 'wantTrailers'
+#### Evento: 'wantTrailers'
 
 <!-- YAML
 added: v10.0.0
@@ -897,7 +897,7 @@ added: v10.0.0
 
 * `headers` {HTTP/2 Headers Object}
 
-Sends a trailing `HEADERS` frame to the connected HTTP/2 peer. This method will cause the `Http2Stream` to be immediately closed and must only be called after the `'wantTrailers'` event has been emitted. When sending a request or sending a response, the `options.waitForTrailers` option must be set in order to keep the `Http2Stream` open after the final `DATA` frame so that trailers can be sent.
+Sends a trailing `HEADERS` frame to the connected HTTP/2 peer. Este método causará que el `Http2Stream` se cierre inmediatamente, y solo debe ser llamado luego de que el evento de `'wantTrailers'` haya sido emitido. When sending a request or sending a response, the `options.waitForTrailers` option must be set in order to keep the `Http2Stream` open after the final `DATA` frame so that trailers can be sent.
 
 ```js
 const http2 = require('http2');
