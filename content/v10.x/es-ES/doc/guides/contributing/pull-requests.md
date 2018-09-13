@@ -4,7 +4,7 @@ Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y t�
 
 * [Dependencias](#dependencies)
 * [Configurando su entorno local](#setting-up-your-local-environment) 
-  * [Paso 1: Fork](#step-1-fork)
+  * [Paso 1: Bifurcación](#step-1-fork)
   * [Paso 2: Branch](#step-2-branch)
 * [El proceso de hacer cambios](#the-process-of-making-changes) 
   * [Paso 3: Código](#step-3-code)
@@ -46,9 +46,9 @@ Para empezar, necesitará tener `git` instalado de forma local. Dependiendo de s
 
 Una vez que tenga `git` y esté seguro de tener todas las dependencias necesarias, es hora de crear un fork.
 
-### Paso 1: Fork
+### Paso 1: Bifurcación
 
-Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
+Bifurque el proyecto [en GitHub](https://github.com/nodejs/node) y clone su bifurcación de forma local.
 
 ```text
 $ git clone git@github.com:username/node.git
@@ -57,7 +57,7 @@ $ git remote add upstream https://github.com/nodejs/node.git
 $ git fetch upstream
 ```
 
-It is recommended to configure `git` so that it knows who you are:
+Se recomienda configurar `git` para que sepa quién es usted:
 
 ```text
 $ git config user.name "J. Random User"
