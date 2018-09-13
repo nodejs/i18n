@@ -304,43 +304,43 @@ Así, el patrón común `if (err) return callback(err);` puede ser reemplazada c
 ```js
 const d = domain.create();
 
-function readSomeFile(filename, cb) {
+función readSomeFile(filename, cb) { 
   fs.readFile(filename, 'utf8', d.intercept((data) => {
-    // note, the first argument is never passed to the
-    // callback since it is assumed to be the 'Error' argument
-    // and thus intercepted by the domain.
+    // note que el primer problema nunca se envía por el
+    // callback desde que asume ser el problema 'Error'
+    // y, por lo tanto, es interceptado por el dominio.
 
-    // if this throws, it will also be passed to the domain
-    // so the error-handling logic can be moved to the 'error'
-    // event on the domain instead of being repeated throughout
-    // the program.
+    // se transmitirá hacia el dominio si se arroja
+    // así, el gestor de errores lógico puede moverse hacia 'error'
+    //evento en el dominio en ves de ser repetido en todo 
+    // el programa.
     return cb(null, JSON.parse(data));
   }));
 }
 
 d.on('error', (er) => {
-  // an error occurred somewhere.
-  // if we throw it now, it will crash the program
-  // with the normal line number and stack message.
+  // ha ocurrido un error en algún lugar.
+  // el programa fallará si lo arrojamos ahora
+  // con la línea de número normal y el mensaje apilado.
 });
 ```
 
-### domain.remove(emitter)
+### domain.remove(emisor)
 
-* `emitter` {EventEmitter|Timer} emitter or timer to be removed from the domain
+* `emitter`{EventEmitter|Timer} Emisor o temporizador a ser eliminado del dominio
 
-The opposite of [`domain.add(emitter)`][]. Removes domain handling from the specified emitter.
+Lo opuesto de [`domain.add(emitter)`][]. Elimina el gestor de dominio desde el emisor especificado.
 
 ### domain.run(fn[, ...args])
 
 * `fn` {Function}
 * `...args` {any}
 
-Run the supplied function in the context of the domain, implicitly binding all event emitters, timers, and lowlevel requests that are created in that context. Optionally, arguments can be passed to the function.
+Ejecuta la función suministrada en el contexto del dominio, vinculando implícitamente a todos los eventos emisores, temporizadores y solicitudes de bajo nivel creadas en ese contexto. Los argumentos pueden pasarse hacia la función opcionalmente.
 
-This is the most basic way to use a domain.
+Esta es la forma más básica de utilizar un dominio.
 
-Example:
+Ejemplo:
 
 ```js
 const domain = require('domain');
