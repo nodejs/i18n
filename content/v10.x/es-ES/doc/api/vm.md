@@ -1,4 +1,4 @@
-# VM (Executing JavaScript)
+# VM (Ejecutando JavaScript)
 
 <!--introduced_in=v0.10.0-->
 
