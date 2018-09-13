@@ -1489,11 +1489,11 @@ Estos comportamientos son parcialmente por razones históricas, y cambiarlos cre
 
 Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Vea [`process.exit()`][] para mayor información.
 
-***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
+***Advertencia***: Las escrituras sincrónicas bloquean el bucle del evento hasta que se complete la escritura. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. Esto puede no ser un problema al escribirle a una sesión terminal interactiva, pero considere esto particularmente cuidadoso al hacer el registro de producción para los streams de salida del proceso.
 
-To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
+Para verificar si un stream está conectado a un contexto [TTY](tty.html#tty_tty), verifique la propiedad `isTTY`.
 
-For instance:
+Por ejemplo:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1506,7 +1506,7 @@ $ node -p "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-See the [TTY](tty.html#tty_tty) documentation for more information.
+Vea la documentación de [TTY](tty.html#tty_tty) para mayor información.
 
 ## process.throwDeprecation
 
@@ -1516,7 +1516,7 @@ added: v0.9.12
 
 * {boolean}
 
-The `process.throwDeprecation` property indicates whether the `--throw-deprecation` flag is set on the current Node.js process. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.throwDeprecation` indica si la bandera`--throw-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.title
 
@@ -1526,9 +1526,9 @@ added: v0.1.104
 
 * {string}
 
-The `process.title` property returns the current process title (i.e. returns the current value of `ps`). Assigning a new value to `process.title` modifies the current value of `ps`.
+La propiedad `process.title` devuelve el título del proceso actual (es decir, devuelve el valor actual de `ps`). Asignar un nuevo valor para `process.title` modifica el valor actual de `ps`.
 
-When a new value is assigned, different platforms will impose different maximum length restrictions on the title. Usually such restrictions are quite limited. For instance, on Linux and macOS, `process.title` is limited to the size of the binary name plus the length of the command line arguments because setting the `process.title` overwrites the `argv` memory of the process. Node.js v0.8 allowed for longer process title strings by also overwriting the `environ` memory but that was potentially insecure and confusing in some (rather obscure) cases.
+Cuando se asigna un nuevo valor, las diferentes plataformas impondrán restricciones de longitud máxima diferentes en el título. Usualmente, dichas restricciones son muy limitadas. Por ejemplo, en Linux y macOS, `process.title` es limitado al tamaño del nombre binario más la longitud de los argumentos de línea de comando porque el configurar el `process.title` sobrescribe la memoria `argv` del proceso. Node.js v0.8 allowed for longer process title strings by also overwriting the `environ` memory but that was potentially insecure and confusing in some (rather obscure) cases.
 
 ## process.traceDeprecation
 
@@ -1538,7 +1538,7 @@ added: v0.8.0
 
 * {boolean}
 
-The `process.traceDeprecation` property indicates whether the `--trace-deprecation` flag is set on the current Node.js process. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.traceDeprecation` indica si la bandera `--trace-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.umask([mask])
 
