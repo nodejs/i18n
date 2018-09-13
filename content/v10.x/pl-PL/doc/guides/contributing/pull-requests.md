@@ -183,16 +183,16 @@ Upewnij się, że linter kodu nie zgłasza żadnych problemów i że wszystkie t
 
 Jeśli chcesz użyc lintera bez zaliczania testów, użyj `make lint`/`vcbuild lint`. Uruchomi to zarówno linting JavaScript'u oraz C++.
 
-If you are updating tests and just want to run a single test to check it:
+Jeśli aktualizujesz testy i chcesz uruchomić tylko jeden test, użyj:
 
 ```text
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
 ```
 
-You can execute the entire suite of tests for a given subsystem by providing the name of a subsystem:
+Możesz też uruchomić całą kategorię testów dla danego podsystemu przez podanie jego nazwy:
 
 ```text
-$ python tools/test.py -J --mode=release child-process
+$ python tools/test.py -J --mode=release wybrany-proces
 ```
 
 If you want to check the other options, please refer to the help by using the `--help` option
