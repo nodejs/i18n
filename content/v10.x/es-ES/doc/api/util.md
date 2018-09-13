@@ -347,7 +347,7 @@ changes:
 
 * Retorna: {string} La representación de un objeto pasado
 
-The `util.inspect()` method returns a string representation of `object` that is intended for debugging. The output of `util.inspect` may change at any time and should not be depended upon programmatically. Additional `options` may be passed that alter certain aspects of the formatted string. `util.inspect()` will use the constructor's name and/or `@@toStringTag` to make an identifiable tag for an inspected value.
+El método `util.inspect()` retorna una representación string del `object` que está destinado a la depuración. El output de `util.inspect` puede cambiar en cualquier momento y no debería de dependerse de él programáticamente. `options` adicionales pueden ser pasadas que alteran ciertos aspectos del string con formato. `util.inspect()` va a usar el nombre del constructor y/o `@@toStringTag` para hacer una etiqueta identificable para un valor inspeccionado.
 
 ```js
 class Foo {
@@ -373,7 +373,7 @@ const util = require('util');
 console.log(util.inspect(util, { showHidden: true, depth: null }));
 ```
 
-Values may supply their own custom `inspect(depth, opts)` functions, when called these receive the current `depth` in the recursive inspection, as well as the options object passed to `util.inspect()`.
+Los valores pueden proporcionar sus propias funciones personalizadas `inspect(depth, opts)`, cuando son llamadas estas reciben el `depth` actual en una inspección recursiva, así como también los objetos de opción pasados a `util.inspect()`.
 
 The following example highlights the difference with the `compact` option:
 
