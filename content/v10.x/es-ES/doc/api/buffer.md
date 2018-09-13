@@ -2300,7 +2300,7 @@ deprecated: v6.0.0
 
 > Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] es su lugar.
 
-Returns an un-pooled `Buffer`.
+Devuelve un `Buffer` sin agrupar.
 
 In order to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances, by default allocations under 4KB are sliced from a single larger allocated object.
 
