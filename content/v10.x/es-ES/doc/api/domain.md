@@ -280,15 +280,15 @@ d.on('error', (er) => {
 
 El método `enter()` es sondeada por el `ejecutar`, `enlace` y los métodos de `intercept()` para establecer el dominio activo. Se coloca el `domain.active` y el `process.domain` en el dominio, y empuja al dominio implícitamente hacia el dominio de apilación manejado por el módulo de dominio (ver `domain.exit()`[] para más detalles sobre el dominio de apilado). La llamada a `enter()` delimita el principio de una cadena de llamadas asincrónicas y operaciones I/o relacionadas a un dominio.
 
-Calling `enter()` changes only the active domain, and does not alter the domain itself. `enter()` and `exit()` can be called an arbitrary number of times on a single domain.
+Llamar a `enter()` solo cambia al dominio activo y no lo altera en si. `enter()` y `exit()` pueden ser llamados un número arbitrario de veces en un mismo dominio.
 
 ### domain.exit()
 
-The `exit()` method exits the current domain, popping it off the domain stack. Any time execution is going to switch to the context of a different chain of asynchronous calls, it's important to ensure that the current domain is exited. The call to `exit()` delimits either the end of or an interruption to the chain of asynchronous calls and I/O operations bound to a domain.
+El método de `exit()` sale del dominio actual, llevándolo hacia el dominio de apilado. Es importante asegurarse que se abandona el dominio actual al cambiar cualquier tiempo de ejecución hacia el contexto de una cadena diferente de llamadas asincrónicas. The call to `exit()` delimits either the end of or an interruption to the chain of asynchronous calls and I/O operations bound to a domain.
 
 If there are multiple, nested domains bound to the current execution context, `exit()` will exit any domains nested within this domain.
 
-Calling `exit()` changes only the active domain, and does not alter the domain itself. `enter()` and `exit()` can be called an arbitrary number of times on a single domain.
+Calling `exit()` changes only the active domain, and does not alter the domain itself. `enter()` y `exit()` pueden ser llamados un número arbitrario de veces en un mismo dominio.
 
 ### domain.intercept(callback)
 
