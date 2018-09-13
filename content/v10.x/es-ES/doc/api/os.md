@@ -611,27 +611,27 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EBUSY</code></td>
-    <td>Indicates that a device or resource is busy.</td>
+    <td>Indica que un dispositivo o recurso está ocupado.</td>
   </tr>
   <tr>
     <td><code>ECANCELED</code></td>
-    <td>Indicates that an operation was canceled.</td>
+    <td>Indica que una operación fue cancelada.</td>
   </tr>
   <tr>
     <td><code>ECHILD</code></td>
-    <td>Indicates that there are no child processes.</td>
+    <td>Indica que no no hay procesos secundarios.</td>
   </tr>
   <tr>
     <td><code>ECONNABORTED</code></td>
-    <td>Indicates that the network connection has been aborted.</td>
+    <td>Indica que la conexión de red ha sido abortada.</td>
   </tr>
   <tr>
     <td><code>ECONNREFUSED</code></td>
-    <td>Indicates that the network connection has been refused.</td>
+    <td>Indica que la conexión de red fue rechazada.</td>
   </tr>
   <tr>
     <td><code>ECONNRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>Indica que la conexión de red fue reiniciada.</td>
   </tr>
   <tr>
     <td><code>EDEADLK</code></td>
