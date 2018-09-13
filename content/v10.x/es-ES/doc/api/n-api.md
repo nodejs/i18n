@@ -1319,7 +1319,7 @@ napi_status napi_create_string_latin1(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API crea un objeto `String` de JavaScript de desde una cadena de C codificada en ISO-8859-1. Se copia la cadena nativa.
+Esta API crea un objeto `String` de JavaScript desde una cadena de C codificada en ISO-8859-1. Se copia la cadena nativa.
 
 El tipo `String` de JavaScript se describe en la [Sección 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) de las Especificaciones del Lenguaje ECMAScript.
 
@@ -1548,7 +1548,7 @@ napi_status napi_get_value_double(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: Doble primitivo de C del `Number` de JavaScript dado.
+- `[out] result`: Doble primitivo de C equivalente al `Number` de JavaScript dado.
 
 Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
