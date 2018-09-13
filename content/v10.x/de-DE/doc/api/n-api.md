@@ -145,13 +145,13 @@ typedef void (*napi_async_complete_callback)(napi_env env,
 
 ## Fehlerbehandlung
 
-Die N-API verwendet sowohl Rückgabewerte als auch JavaScript-Ausnahmen zur Fehlerbehandlung. Die folgenden Abschnitte erklären die Vorgehensweise für den jeweiligen Fall.
+Die N-API verwendet sowohl Rückgabewerte als auch JavaScript-Exceptions zur Fehlerbehandlung. Die folgenden Abschnitte erklären die Vorgehensweise für den jeweiligen Fall.
 
 ### Rückgabewerte
 
 Alle N-API-Funktionen haben das gleiche Fehlerbehandlungsmuster. Der Rückgabetyp aller API-Funktionen ist `napi_status`.
 
-Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Ausnahme aufgetreten ist. Wenn ein Fehler UND eine Ausnahme aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgegeben. Wenn eine Ausnahme, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgegeben.
+Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Exception aufgetreten ist. Wenn ein Fehler UND eine Exception aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgesendet. Wenn eine Ausnahme, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgesendet.
 
 In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_exception` zurückgegeben wird, muss [`napi_is_exception_pending`][] aufgerufen werden, um zu prüfen, ob eine Ausnahme ansteht. Weitere Details finden Sie im Abschnitt über Ausnahmen.
 
@@ -466,14 +466,14 @@ NAPI_NO_RETURN void napi_fatal_error(const char* location,
                                                  size_t message_len);
 ```
 
-- `[in] location`: Optional location at which the error occurred.
-- `[in] location_len`: The length of the location in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[in] message`: The message associated with the error.
-- `[in] message_len`: The length of the message in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
+- `[in] location`: Optionale Stelle, an der der Fehler aufgetreten ist.
+- `[in] location_len`: Die Länge der Position in Bytes, oder `NAPI_AUTO_LENGTH` wenn sie null-terminiert ist.
+- `[in] message`: Die mit dem Fehler im Zusammenhang stehende Nachricht.
+- `[in] location_len`: Die Länge der Nachricht in Bytes, oder `NAPI_AUTO_LENGTH` wenn sie null-terminiert ist.
 
-The function call does not return, the process will be terminated.
+Der Funktionsaufruf wird nicht zurückgesendet, der Prozess wird abgebrochen.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 ## Object Lifetime management
 
