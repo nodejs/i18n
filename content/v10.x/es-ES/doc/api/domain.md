@@ -245,14 +245,14 @@ Unos temporizadores y emisores de evento que han sido añadidos explícitamente 
 
 Agrega explícitamente un emisor al dominio. Si cualquier gestor de evento activado por el emisor arroja un error o el transmisor emite un evento de `'error'`, será enrutado para el evento de `'error'` perteneciente al dominio de la misma forma que con el enlazado implícito.
 
-This also works with timers that are returned from [`setInterval()`][] and [`setTimeout()`][]. If their callback function throws, it will be caught by the domain `'error'` handler.
+Esto también funciona con los temporizadores que se regresan desde [`setInterval()`][] y el [`setTimeout()`][]. Si su función de callback lo arroja, sera gestionado por el gestor de `'error'` del dominio.
 
-If the Timer or `EventEmitter` was already bound to a domain, it is removed from that one, and bound to this one instead.
+Si el Temporizador o `EmisordeEvento` estuviese limitado a un dominio, será removido del mismo y enlazado a este.
 
 ### domain.bind(callback)
 
-* `callback` {Function} The callback function
-* Returns: {Function} The bound function
+* `callback`{Function} La función de callback
+* Regresa: {Function} La función limitante
 
 The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
 
