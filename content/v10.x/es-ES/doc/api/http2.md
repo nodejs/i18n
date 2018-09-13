@@ -262,7 +262,7 @@ added: v9.4.0
 
 * {string|undefined}
 
-Value will be `undefined` if the `Http2Session` is not yet connected to a socket, `h2c` if the `Http2Session` is not connected to a `TLSSocket`, or will return the value of the connected `TLSSocket`'s own `alpnProtocol` property.
+El valor será `undefined` si la `Http2Session` aún no se ha conectado a un socket, `h2c` en caso de que la `Http2Session` no esté conectada a un `TLSSocket`, o devolverá el valor de la propiedad `alpnProtocol` del `TLSSocket` conectado.
 
 #### http2session.close([callback])
 
@@ -302,7 +302,7 @@ Será `true` si esta instancia de `Http2Session` todavía está conectándose, s
 added: v8.4.0
 -->
 
-* `error` {Error} An `Error` object if the `Http2Session` is being destroyed due to an error.
+* `error` {Error} Un objeto `Error` si la `Http2Session` está siendo destruida a causa de un error.
 * `code` {number} The HTTP/2 error code to send in the final `GOAWAY` frame. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
 
 Termina inmediatamente la `Http2Session` y el `net.Socket` o el `tls.TLSSocket` asociados.
@@ -319,7 +319,7 @@ added: v8.4.0
 
 * {boolean}
 
-Will be `true` if this `Http2Session` instance has been destroyed and must no longer be used, otherwise `false`.
+Será `true` si esta instancia `Http2Session` ha sido destruida y ya no debe ser utilizada, de lo contrario `false`.
 
 #### http2session.encrypted
 
