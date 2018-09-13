@@ -1,13 +1,13 @@
-# Mantener npm en Node.js
+# Mantenimiento de la npm en Node.js
 
-## Paso 1: Clona npm
+## Paso 1: Clon npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-o si ya has clonado el npm, asegurese de que el repositorio este actualizado
+o si ya has clonado el npm asegúrese de que el repositorio es actualizado
 
 ```console
 $ git remote update -p
@@ -21,9 +21,9 @@ $ git checkout vX.Y.Z
 $ make release
 ```
 
-Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
+Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `últimos` en git generalmente se lanza como `siguiente` cuando es hora de bajada
 
-## Step 3: Remove old npm
+## Paso 3: Remover viejos npm
 
 ```console
 $ cd /path/to/node
