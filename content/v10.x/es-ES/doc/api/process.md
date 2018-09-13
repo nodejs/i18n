@@ -1332,9 +1332,9 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v2.0.0
 -->
 
-* `id` {string|number} A user name or ID
+* `id` {string|number} Un nombre de usuario o ID
 
-The `process.seteuid()` method sets the effective user identity of the process. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+El método `process.seteuid()` establece la identidad efectiva del usuario del proceso. (Vea seteuid(2).) El `id` puede ser pasado como un ID numérico o como una string de nombre de usuario. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.geteuid && process.seteuid) {
@@ -1356,9 +1356,9 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.1.31
 -->
 
-* `id` {string|number} The group name or ID
+* `id` {string|number} El nombre de grupo o ID
 
-The `process.setgid()` method sets the group identity of the process. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
+El método `process.setgid()` establece la identidad del grupo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.getgid && process.setgid) {
@@ -1382,9 +1382,9 @@ added: v0.9.4
 
 * `groups` {integer[]}
 
-The `process.setgroups()` method sets the supplementary group IDs for the Node.js process. This is a privileged operation that requires the Node.js process to have `root` or the `CAP_SETGID` capability.
+El método `process.setgroups()` establece los IDs de grupo suplementario para el proceso Node.js. Esta es una operación privilegiada que requiere que el proceso Node.js tenga `root` o la capacidad `CAP_SETGID`.
 
-The `groups` array can contain numeric group IDs, group names or both.
+El array `groups` puede contener IDs de grupo numéricos, nombres de grupo o ambos.
 
 Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
@@ -1394,7 +1394,7 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.1.28
 -->
 
-The `process.setuid(id)` method sets the user identity of the process. (See setuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+El método `process.setuid(id)` establece la identidad del usuario del proceso. (Vea setuid(2).) El `id` puede ser pasado como un ID numérico o como una string de nombre de usuario. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.getuid && process.setuid) {
@@ -1418,19 +1418,19 @@ added: v9.3.0
 
 * `fn` {Function|null}
 
-The `process.setUncaughtExceptionCapture` function sets a function that will be invoked when an uncaught exception occurs, which will receive the exception value itself as its first argument.
+La función `process.setUncaughtExceptionCapture` establece una función que será invocada cuando ocurra una excepción no atrapada, la cual recibirá el valor de la excepción misma como su primer argumento.
 
-If such a function is set, the [`'uncaughtException'`][] event will not be emitted. If `--abort-on-uncaught-exception` was passed from the command line or set through [`v8.setFlagsFromString()`][], the process will not abort.
+Si se establece dicha función, el evento [`'uncaughtException'`][] no será emitido. Si `--abort-on-uncaught-exception` fue pasado desde la línea de comando o establecido a través de [`v8.setFlagsFromString()`][], el proceso no abortará.
 
-To unset the capture function, `process.setUncaughtExceptionCapture(null)` may be used. Calling this method with a non-`null` argument while another capture function is set will throw an error.
+To unset the capture function, `process.setUncaughtExceptionCapture(null)` may be used. El llamar a este método con un argumento no `null` mientras que se establece otra función de captura, arrojará un error.
 
-Using this function is mutually exclusive with using the deprecated [`domain`][] built-in module.
+Utilizar esta función es mutuamente exclusivo con el uso del módulo [`domain`][] incorporado obsoleto.
 
 ## process.stderr
 
 * {Stream}
 
-The `process.stderr` property returns a stream connected to `stderr` (fd `2`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `2` refers to a file, in which case it is a [Writable](stream.html#stream_writable_streams) stream.
+La propiedad `process.stderr` devuelve un stream conectado a `stderr` (fd `2`). Es un [`net.Socket`][] (el cual es un stream [Dúplex](stream.html#stream_duplex_and_transform_streams)) a menos que fd `2` se refiera a un archivo, en cuyo caso es un stream [Escribible](stream.html#stream_writable_streams).
 
 `process.stderr` differs from other Node.js streams in important ways, see [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
