@@ -724,9 +724,9 @@ const writable = fs.createWriteStream('file.txt');
 readable.pipe(writable);
 ```
 
-It is possible to attach multiple `Writable` streams to a single `Readable` stream.
+Es posible adjuntar múltiples streams `Writable` en un solo stream `Readable`.
 
-The `readable.pipe()` method returns a reference to the *destination* stream making it possible to set up chains of piped streams:
+El método `readable.pipe()` puede devolver una referencia al stream *destination*, haciendo posible establecer cadenas de streams piped:
 
 ```js
 const fs = require('fs');
