@@ -74,11 +74,11 @@ Como práctica recomendada para mantener su entorno de desarrollo lo más organi
 $ git checkout -b my-branch -t upstream/master
 ```
 
-## The Process of Making Changes
+## El proceso de hacer cambios
 
-### Step 3: Code
+### Paso 3: Código
 
-The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
+La gran mayoría de las Pull Requests abiertas en el repositorio `nodejs/node` incluye cambios en uno o más de los siguientes:
 
      - the C/C++ code contained in the `src` directory
      - the JavaScript code contained in the `lib` directory
