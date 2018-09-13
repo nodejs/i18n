@@ -375,7 +375,7 @@ console.log(util.inspect(util, { showHidden: true, depth: null }));
 
 Los valores pueden proporcionar sus propias funciones personalizadas `inspect(depth, opts)`, cuando son llamadas estas reciben el `depth` actual en una inspección recursiva, así como también los objetos de opción pasados a `util.inspect()`.
 
-The following example highlights the difference with the `compact` option:
+El siguiente ejemplo resalta ladiferencia con la opción `compact`:
 
 ```js
 const util = require('util');
@@ -428,11 +428,11 @@ console.log(util.inspect(o, { compact: false, depth: 5, breakLength: 80 }));
 
 // Establecer `breakLength` a p. ej 150 va a estampar el texto "Lorem ipsum" en una
 // sola línea.
-// Reducing the `breakLength` will split the "Lorem ipsum" text in smaller
-// chunks.
+// Reducir el `breakLength` va a dividir el texto "Lorem ipsum" en pedazos 
+// más pequeños.
 ```
 
-Using the `showHidden` option allows to inspect [`WeakMap`][] and [`WeakSet`][] entries. If there are more entries than `maxArrayLength`, there is no guarantee which entries are displayed. That means retrieving the same [`WeakSet`][] entries twice might actually result in a different output. Besides this any item might be collected at any point of time by the garbage collector if there is no strong reference left to that object. Therefore there is no guarantee to get a reliable output.
+Usar la opción `showHidden` permite inspeccionar las entradas [`WeakMap`][] and [`WeakSet`][]. Si hay más entradas que `maxArrayLength`, no hay ninguna garantía de cuales entradas son desplegadas. Esto significa, que recuperar la misma entrada [`WeakSet`][] dos veces puede resultar en un output diferente. Además de esto, cualquier ítem puede ser coleccionado en cualquier momento por el colector de basura, si no hay una referencia fuerte dejada para ese objeto. Por lo tanto, no hay garantía de obtener un output confiable.
 
 ```js
 const { inspect } = require('util');
@@ -578,9 +578,9 @@ const fs = require('fs');
 
 const stat = util.promisify(fs.stat);
 stat('.').then((stats) => {
-  // Do something with `stats`
+  // Hacer algo con `stats`
 }).catch((error) => {
-  // Handle the error.
+  // Gestionar el error.
 });
 ```
 
@@ -619,7 +619,7 @@ doSomething[util.promisify.custom] = (foo) => {
 
 const promisified = util.promisify(doSomething);
 console.log(promisified === doSomething[util.promisify.custom]);
-// prints 'true'
+// estampar 'true'
 ```
 
 This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
@@ -1646,11 +1646,11 @@ Returns `true` if the given `object` is strictly `null`. Otherwise, returns `fal
 const util = require('util');
 
 util.isNull(0);
-// Returns: false
+// Retorna: false
 util.isNull(undefined);
-// Returns: false
+// Retorna: false
 util.isNull(null);
-// Returns: true
+// Retorna: true
 ```
 
 ### util.isNullOrUndefined(object)
@@ -1723,13 +1723,13 @@ Returns `true` if the given `object` is strictly an `Object` **and** not a `Func
 const util = require('util');
 
 util.isObject(5);
-// Returns: false
+// Retorna: false
 util.isObject(null);
-// Returns: false
+// Retorna: false
 util.isObject({});
-// Returns: true
+// Retorna: true
 util.isObject(() => {});
-// Returns: false
+// Retorna: false
 ```
 
 ### util.isPrimitive(object)
@@ -1750,23 +1750,23 @@ Returns `true` if the given `object` is a primitive type. Otherwise, returns `fa
 const util = require('util');
 
 util.isPrimitive(5);
-// Returns: true
+// Retorna: true
 util.isPrimitive('foo');
-// Returns: true
+// Retorna: true
 util.isPrimitive(false);
-// Returns: true
+// Retorna: true
 util.isPrimitive(null);
-// Returns: true
+// Retorna: true
 util.isPrimitive(undefined);
-// Returns: true
+// Retorna: true
 util.isPrimitive({});
-// Returns: false
+// Retorna: false
 util.isPrimitive(() => {});
-// Returns: false
+// Retorna: false
 util.isPrimitive(/^$/);
-// Returns: false
+// Retorna: false
 util.isPrimitive(new Date());
-// Returns: false
+// Retorna: false
 ```
 
 ### util.isRegExp(object)
