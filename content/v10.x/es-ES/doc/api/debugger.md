@@ -41,7 +41,7 @@ Un punto de interrupción sucederá en la línea 3 una vez que el depurador sea 
 ```txt
 $ node inspect myscript.js
 <Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
-< Ver para ayuda: https://nodejs.org/en/docs/inspector
+< Para ayuda, visitar: https://nodejs.org/en/docs/inspector
 < Depurador adjunto.
 Interrupción en el inicio en myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
@@ -114,15 +114,15 @@ $ node inspect main.js
 < Debugger listening on ws://127.0.0.1:9229/4e3db158-9791-4274-8909-914f7facf3bd
 < Para ayuda, visitar: https://nodejs.org/en/docs/inspector
 < Depurador adjunto.
-Break on start in main.js:1
-> 1 (function (exports, require, module, __filename, __dirname) { const mod = require('./mod.js');
+Interrumpir al inicio en  main.js:1
+>  (function (exports, require, module, __filename, __dirname) { const mod = require('./mod.js');
   2 mod.hello();
   3 mod.hello();
 debug> setBreakpoint('mod.js', 22)
-Warning: script 'mod.js' was not loaded yet.
+Advertencia: script 'mod.js' aún no ha sido cargado.
 debug> c
-break in mod.js:22
- 20 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+interrupción en mod.js:22
+ 20 // USO U OTROS TRÁFICOS EN EL SOFTWARE.
  21
 >22 exports.hello = function() {
  23   return 'hello from module';
@@ -130,10 +130,10 @@ break in mod.js:22
 debug>
 ```
 
-### Information
+### Información
 
-* `backtrace`, `bt` - Print backtrace of current execution frame
-* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
+* `backtrace`, `bt` - Imprimir backtrace del campo de ejecución actual
+* `list(5)` - Enumera el código fuente de los scripts con 5 líneas de contexto (5 líneas anteriores y posteriores)
 * `watch(expr)` - Add expression to watch list
 * `unwatch(expr)` - Remove expression from watch list
 * `watchers` - List all watchers and their values (automatically listed on each breakpoint)
