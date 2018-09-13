@@ -343,7 +343,7 @@ Esta es la forma más básica de utilizar un dominio.
 Ejemplo:
 
 ```js
-const domain = require('domain');
+onst domain = require('domain');
 const fs = require('fs');
 const d = domain.create();
 d.on('error', (er) => {
@@ -351,19 +351,19 @@ d.on('error', (er) => {
 });
 d.run(() => {
   process.nextTick(() => {
-    setTimeout(() => { // simulating some various async stuff
+    setTimeout(() => { // simulando algunas cosas async
       fs.open('non-existent file', 'r', (er, fd) => {
         if (er) throw er;
-        // proceed...
+        // continua...
       });
     }, 100);
   });
 });
 ```
 
-In this example, the `d.on('error')` handler will be triggered, rather than crashing the program.
+En este ejemplo, el controlador `d.on('error')` será activado en vez de congestionar al programa.
 
-## Domains and Promises
+## Dominios y Promises
 
 As of Node.js 8.0.0, the handlers of Promises are run inside the domain in which the call to `.then()` or `.catch()` itself was made:
 
