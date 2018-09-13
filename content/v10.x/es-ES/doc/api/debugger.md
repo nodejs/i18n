@@ -134,28 +134,28 @@ debug>
 
 * `backtrace`, `bt` - Imprimir backtrace del campo de ejecución actual
 * `list(5)` - Enumera el código fuente de los scripts con 5 líneas de contexto (5 líneas anteriores y posteriores)
-* `watch(expr)` - Add expression to watch list
-* `unwatch(expr)` - Remove expression from watch list
-* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
-* `repl` - Open debugger's repl for evaluation in debugging script's context
-* `exec expr` - Execute an expression in debugging script's context
+* `watch(expr)` - Agregar la expresión a la lista de control
+* `unwatch(expr)` - Elimina la expresión de la lista de control
+* `watchers` - Enumera los monitores y sus calores (enumerados automáticamente en cada punto de interrupción)
+* `repl` - Abrir el repl del depurador para la evaluación en el contexto del script de depuración
+* `exec expr` - Ejecuta una expresión en el contexto del script de depuración
 
-### Execution control
+### Control de ejecución
 
-* `run` - Run script (automatically runs on debugger's start)
-* `restart` - Restart script
-* `kill` - Kill script
+* `run` - Ejecuta el script (inicia el depurador automáticamente)
+* `restart` - Reinicia el script
+* `kill` - Termina el script
 
-### Various
+### Varios
 
-* `scripts` - List all loaded scripts
-* `version` - Display V8's version
+* `scripts` - Enumera todos los scripts cargados
+* `>version` - Muestra las versiones de V8
 
-## Advanced Usage
+## Uso avanzado
 
-### V8 Inspector Integration for Node.js
+### Integración del Inspector V8 para Node.js
 
-V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del Inspector V8 permite adjuntar Chrome DevTools a Node.js para depurar y generar perfiles por ejemplo. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
 V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
 
