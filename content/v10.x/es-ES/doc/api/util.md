@@ -282,7 +282,7 @@ stream.on('data', (data) => {
 stream.write('It works!'); // Received data: "It works!"
 ```
 
-ES6 example using `class` and `extends`:
+Ejemplo de ES6 usando `class` y `extends`:
 
 ```js
 const EventEmitter = require('events');
@@ -390,7 +390,7 @@ const o = {
 };
 console.log(util.inspect(o, { compact: true, depth: 5, breakLength: 80 }));
 
-// This will print
+// Esto va a estampar
 
 // { a:
 //   [ 1,
@@ -401,7 +401,7 @@ console.log(util.inspect(o, { compact: true, depth: 5, breakLength: 80 }));
 //     4 ],
 //   b: Map { 'za' => 1, 'zb' => 'test' } }
 
-// Setting `compact` to false changes the output to be more reader friendly.
+// Establecer `compact` como falso, cambia el output para que sea más amigable con el lector.
 console.log(util.inspect(o, { compact: false, depth: 5, breakLength: 80 }));
 
 // {
