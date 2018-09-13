@@ -2028,7 +2028,7 @@ console.log(request.headers);
 
 Vea [Objeto de Encabezados de HTTP/2](#http2_headers_object).
 
-En HTTP/2, la ruta de solicitud, el nombre de host, el protocolo, y el método están representados como encabezados especiales con el caracter `:` como prefijo (por ejemplo, `':path'`). Estos encabezados especiales serán incluidos en el objeto de `request.headers` . Care must be taken not to inadvertently modify these special headers or errors may occur. Por ejemplo, remover todos los encabezados de la solicitud ocasionará que ocurran errores:
+En HTTP/2, la ruta de solicitud, el nombre de host, el protocolo, y el método están representados como encabezados especiales con el caracter `:` como prefijo (por ejemplo, `':path'`). Estos encabezados especiales serán incluidos en el objeto de `request.headers` . Se debe tener cuidado para no modificar inadvertidamente estos encabezados especiales o podrían ocurrir errores. Por ejemplo, remover todos los encabezados de la solicitud ocasionará que ocurran errores:
 
 ```js
 removeAllHeaders(request.headers);
@@ -2067,7 +2067,7 @@ added: v8.4.0
 
 The raw request/response headers list exactly as they were received.
 
-Tenga en cuenta que las claves y los valores están en la misma lista. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Tenga en cuenta que las claves y los valores están en la misma lista. Esto *no* es una lista de tuplas. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
 Los nombres de los encabezados no están en minúsculas, y los duplicados no están fusionados.
 
@@ -2105,7 +2105,7 @@ added: v8.4.0
 * `callback` {Function}
 * Returns: {http2.Http2ServerRequest}
 
-Sets the [`Http2Stream`]()'s timeout value to `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento de `'timeout'` en el objeto de respuesta.
+Establece el valor del tiempo de espera de [`Http2Stream`]() a `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento de `'timeout'` en el objeto de respuesta.
 
 Si no se añade ningún listener de `'timeout'` a la solicitud, la respuesta, o al servidor, entonces los [`Http2Stream`]()s se destruirán cuando se agote su tiempo de espera. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2127,7 +2127,7 @@ El método de `setTimeout` será llamado en `request.stream.session`.
 
 `pause`, `read`, `resume`, y `write` arrojarán un error con el código `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` y Sockets][] para más información.
 
-All other interactions will be routed directly to the socket. With TLS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
+Todas las otras interacciones serán enrutadas directamente al socket. Con el soporte TLS, utilice [`request.socket.getPeerCertificate()`][] para obtener los detalles de autenticación del cliente.
 
 #### request.stream
 
@@ -2213,7 +2213,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-### Class: http2.Http2ServerResponse
+### Clase: http2.Http2ServerResponse
 
 <!-- YAML
 added: v8.4.0
@@ -2293,7 +2293,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+Boolean value that indicates whether the response has completed. Starts as `false`. Después de que [`response.end()`][] se ejecute, el valor será `true`.
 
 #### response.getHeader(name)
 
@@ -2302,7 +2302,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Returns: {string}
+* Devuelve: {string}
 
 Lee un encabezado que ya ha sido puesto en cola, pero que no ha sido enviado al cliente. Note that the name is case insensitive.
 
