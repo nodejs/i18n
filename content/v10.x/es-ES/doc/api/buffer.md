@@ -2276,7 +2276,7 @@ changes:
 
 Re-codifica la instancia de `Buffer` o `Uint8Array` dada desde una codificación de caracteres a otra. Devuelve una nueva instancia de `Buffer`.
 
-Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if conversion from `fromEnc` to `toEnc` is not permitted.
+Lanza `fromEnc` o `toEnc` si se especifican codificaciones de caracteres inválidas o si la conversión desde `fromEnc` a `toEnc` no está permitida.
 
 The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. For instance:
 
