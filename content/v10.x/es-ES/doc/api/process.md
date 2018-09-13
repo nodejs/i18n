@@ -1257,18 +1257,18 @@ changes:
 
 * {Object}
 
-The `process.release` property returns an `Object` containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
+La propiedad `process.release` devuelve un `Object` que contiene los metadatos relacionados con la versión actual, incluyendo los URLs para el tarball fuente y los tarballs de sólo encabezado.
 
 `process.release` contiene las siguientes propiedades:
 
-* `name` {string} A value that will always be `'node'` for Node.js. For legacy io.js releases, this will be `'io.js'`.
-* `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
-* `headersUrl`{string} an absolute URL pointing to a *`.tar.gz`* file containing only the source header files for the current release. This file is significantly smaller than the full source file and can be used for compiling Node.js native add-ons.
-* `libUrl` {string} an absolute URL pointing to a *`node.lib`* file matching the architecture and version of the current release. This file is used for compiling Node.js native add-ons. *This property is only present on Windows builds of Node.js and will be missing on all other platforms.*
-* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/LTS/) label for this release. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. Currently the valid values are: 
-  * `'Argon'` for the 4.x LTS line beginning with 4.2.0.
-  * `'Boron'` for the 6.x LTS line beginning with 6.9.0.
-  * `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
+* `name` {string} un valor que siempre será `'node'` para Node.js. Para versiones legacy io.js, este será `'io.js'`.
+* `sourceUrl` {string} una URL absoluta que apunta al archivo *`.tar.gz`* que contiene el código fuente de la versión actual.
+* `headersUrl`{string} una URL absoluta que apunta al archivo *`.tar.gz`* que contiene sólo los archivos fuente de encabezado para la versión actual. Este archivo es significativamente más pequeño que el archivo fuente completo y puede ser utilizado para compilar add-ons nativos de Node.js.
+* `libUrl` {string} an absolute URL pointing to a *`node.lib`* file matching the architecture and version of the current release. El archivo es utilizado para compilar add-ons nativos de Node.js. *Esta propiedad sólo está presente en construcciones Windows de Node.js y no aparecerá en ninguna otra plataforma.*
+* `lts` {string} una etiqueta de string que identifica la etiqueta [LTS](https://github.com/nodejs/LTS/) para esta versión. Esta propiedad sólo existe en versiones LTS y es `undefined` para todos los otros tipos de versiones, incluyendo las versions *Actuales*. Actualmente, lo valores válidos son: 
+  * `'Argon'` para la línea LTS 4.x que comienza con 4.2.0.
+  * `'Boron'` para la línea LTS 6.x que comienza con 6.9.0.
+  * `'Carbon'` para la línea LTS 8.x que comienza con 8.9.1.
 
 <!-- eslint-skip -->
 
@@ -1294,11 +1294,11 @@ added: v0.5.9
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object}
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
+Si se genera Node.js con un canal IPC, el método `process.send()` puede ser utilizado para enviar mensajes al proceso primario. Los mensajes serán recibidos como un evento [`'message'`][] en el objeto [`ChildProcess`][] del proceso primario.
 
-If Node.js was not spawned with an IPC channel, `process.send()` will be `undefined`.
+Si Node.js no fue generado con un canal IPC, `process.send()` será `undefined`.
 
 El mensaje pasa a través de la serialización y análisis. El mensaje resultante podría no ser el mismo enviado originalmente.
 
@@ -1308,9 +1308,9 @@ El mensaje pasa a través de la serialización y análisis. El mensaje resultant
 added: v2.0.0
 -->
 
-* `id` {string|number} A group name or ID
+* `id` {string|number} Un nombre de grupo o un ID
 
-The `process.setegid()` method sets the effective group identity of the process. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
+El método `process.setegid()` establece la identidad del grupo efectivo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
 ```js
 if (process.getegid && process.setegid) {
