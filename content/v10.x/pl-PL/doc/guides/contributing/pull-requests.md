@@ -165,23 +165,23 @@ Funkcje i poprawki błędów powinny zawsze być dodawane z testami. [Poradnik d
 
 Folder `test` w repozytorium `nodejs/node` jest skomplikowany i nie zawsze jest oczywistym gdzie umieścić nowy plik z testami. Jeżeli nie jesteś pewny, dodaj nowe testy do folderu `test/parallel/`, a właściwa lokalizacja będzie wybrana przez innych później.
 
-Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
+Zanim prześlesz swoje zmiany w Żądaniu zmiany, zawsze uruchamiaj wszystkie testy Node.js w poszukiwaniu niezgodności. By uruchomić test na systemie Unix / macOS, użyj:
 
 ```text
 $ ./configure && make -j4 test
 ```
 
-And on Windows:
+A na systemie Windows:
 
 ```text
 > vcbuild test
 ```
 
-(See the [Building guide](../../../BUILDING.md) for more details.)
+(Zobacz [Przewodnik konfiguracji](../../../BUILDING.md) by dowiedzieć się więcej.)
 
-Make sure the linter does not report any issues and that all tests pass. Please do not submit patches that fail either check.
+Upewnij się, że linter kodu nie zgłasza żadnych problemów i że wszystkie testy zostały zaliczone. Proszę, nie wysyłaj patchy, które nie sprawdzają się w jednym lub drugim z powyższych.
 
-If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
+Jeśli chcesz użyc lintera bez zaliczania testów, użyj `make lint`/`vcbuild lint`. Uruchomi to zarówno linting JavaScript'u oraz C++.
 
 If you are updating tests and just want to run a single test to check it:
 
