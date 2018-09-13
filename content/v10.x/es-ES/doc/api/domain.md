@@ -231,7 +231,7 @@ serverDomain.run(() => {
 
 El tipo de `Dominio` encapsula la funcionalidad de enrutar los errores y las excepciones desapercibidas para la activación del objeto del `Dominio`.
 
-`Domain` is a child class of [`EventEmitter`][]. To handle the errors that it catches, listen to its `'error'` event.
+El `Dominios` es una clase menor de [`EvetoEmisor`][]. Para gestionar los errores que identifica, atiende a su evento de `'error?`.
 
 ### domain.members
 
