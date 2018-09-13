@@ -2381,6 +2381,6 @@ added: v8.2.0
 
 * {integer} La longitud más larga asignada para una sola instancia de `string`.
 
-Represents the largest `length` that a `string` primitive can have, counted in UTF-16 code units.
+Representa la `length` más larga que un `string` primitivo pueda tener, contada en unidades de código UTF-16.
 
-This value may depend on the JS engine that is being used.
+Este valor debe depender del motor JS que se esté utilizando.
