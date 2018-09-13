@@ -1438,7 +1438,7 @@ La propiedad `process.stderr` devuelve un stream conectado a `stderr` (fd `2`). 
 
 * {Stream}
 
-The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
+La propiedad `process.stdin` devuelve un stream conectado a `stdin` (fd `0`). Es un [`net.Socket`][] (el cual es un stream [Dúplex](stream.html#stream_duplex_and_transform_streams)) a menos que fd `0` se refiera a un archivo, en cuyo caso es un stream [Legible](stream.html#stream_readable_streams).
 
 ```js
 process.stdin.setEncoding('utf8');
@@ -1455,17 +1455,17 @@ process.stdin.on('end', () => {
 });
 ```
 
-As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. For more information see [Stream compatibility](stream.html#stream_compatibility_with_older_node_js_versions).
+Como un stream [Dúplex](stream.html#stream_duplex_and_transform_streams), `process.stdin` también puede ser usado en el modo "viejo" que es compatible con scripts escritos para Node.js anterior a v0.10. Para mayor información, vea la [compatibilidad de Stream](stream.html#stream_compatibility_with_older_node_js_versions).
 
-In "old" streams mode the `stdin` stream is paused by default, so one must call `process.stdin.resume()` to read from it. Note also that calling `process.stdin.resume()` itself would switch stream to "old" mode.
+In "old" streams mode the `stdin` stream is paused by default, so one must call `process.stdin.resume()` to read from it. Note que también el llamar a `process.stdin.resume()` cambiaría el stream a modo "viejo".
 
 ## process.stdout
 
 * {Stream}
 
-The `process.stdout` property returns a stream connected to `stdout` (fd `1`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `1` refers to a file, in which case it is a [Writable](stream.html#stream_writable_streams) stream.
+La propiedad `process.stdout` devuelve un stream conectado a `stdout` (fd `1`). Es un [`net.Socket`][] (el cual es un stream [Dúplex](stream.html#stream_duplex_and_transform_streams)) a menos que fd `1` se refiera a un archivo, en cuyo caso es un stream [Escribible](stream.html#stream_writable_streams).
 
-For example, to copy `process.stdin` to `process.stdout`:
+Por ejemplo, para copiar `process.stdin` en `process.stdout`:
 
 ```js
 process.stdin.pipe(process.stdout);
@@ -1477,17 +1477,17 @@ process.stdin.pipe(process.stdout);
 
 `process.stdout` and `process.stderr` differ from other Node.js streams in important ways:
 
-1. They are used internally by [`console.log()`][] and [`console.error()`][], respectively.
-2. They cannot be closed ([`end()`][] will throw).
-3. They will never emit the [`'finish'`][] event.
-4. Writes may be synchronous depending on what the stream is connected to and whether the system is Windows or POSIX: 
-  * Files: *synchronous* on Windows and POSIX
-  * TTYs (Terminals): *asynchronous* on Windows, *synchronous* on POSIX
-  * Pipes (and sockets): *synchronous* on Windows, *asynchronous* on POSIX
+1. Son usados internamente por [`console.log()`][] y [`console.error()`][], respectivamente.
+2. No pueden cerrarse (se arrojará [`end()`][]).
+3. Nunca emitirán el evento [`'finish'`][].
+4. Las escrituras pueden ser sincrónicas, dependiendo en cuál stream se esté conectado y si el sistema es Windows o POSIX: 
+  * Archivos: *sincrónicos* en Windows y POSIX
+  * TTYs (Terminales): *asincrónicos* en Windows, *sincrónicos* en POSIX
+  * Pipes (y sockets): *sincrónicos* en Windows, *asincrónicos* en POSIX
 
-These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
+Estos comportamientos son parcialmente por razones históricas, y cambiarlos crearía una incompatibilidad hacia atrás, pero también son esperados por algunos usuarios.
 
-Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. See [`process.exit()`][] for more information.
+Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Vea [`process.exit()`][] para mayor información.
 
 ***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
 
