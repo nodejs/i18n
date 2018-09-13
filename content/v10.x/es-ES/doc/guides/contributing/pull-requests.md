@@ -3,7 +3,7 @@
 Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y técnico, y uno más orientado al proceso. El componente concreto y técnico implica los detalles específicos de la configuración de tu entorno local para que puedas realizar los cambios reales. Aquí es donde comenzaremos.
 
 * [Dependencias](#dependencies)
-* [Configurando tu entorno local](#setting-up-your-local-environment) 
+* [Configurando su entorno local](#setting-up-your-local-environment) 
   * [Paso 1: Fork](#step-1-fork)
   * [Paso 2: Branch](#step-2-branch)
 * [El proceso de hacer cambios](#the-process-of-making-changes) 
@@ -40,9 +40,9 @@ Node.js tiene varias dependencias empaquetadas en las *deps/* y en los directori
 
 En caso de duda, abra un problema en el [issue tracker](https://github.com/nodejs/node/issues/) o contacte a uno de los [colaboradores del proyecto](https://github.com/nodejs/node/#current-project-team-members). Node.js tiene dos canales de IRC: [#Node.js](https://webchat.freenode.net/?channels=node.js) para ayuda general y preguntas, y [#Node-dev](https://webchat.freenode.net/?channels=node-dev) para el desarrollo del núcleo de Node.js específicamente.
 
-## Setting up your local environment
+## Configurando su entorno local
 
-To get started, you will need to have `git` installed locally. Depending on your operating system, there are also a number of other dependencies required. These are detailed in the [Building guide](../../../BUILDING.md).
+Para empezar, necesitará tener `git` instalado de forma local. Dependiendo de su sistema operativo, también hay una serie de otras dependencias requeridas. Estos se detallan en la [Building guide](../../../BUILDING.md).
 
 Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
 
