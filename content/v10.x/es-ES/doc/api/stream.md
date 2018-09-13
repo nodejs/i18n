@@ -443,7 +443,7 @@ Un stream `Writable` en modo objeto siempre ignorará el argumento `encoding`.
 
 ### Streams Legibles
 
-Los streams legibles son una abstracción para una *source* donde los datos son consumidos.
+Los streams legibles son una abstracción para un *source* donde los datos son consumidos.
 
 Ejemplos de streams `Readable` inlcuyen:
 
@@ -493,9 +493,9 @@ Específicamente, en cualquier momento dado, cada `Readable` está en uno de tre
 * `readable.readableFlowing = false`
 * `readable.readableFlowing = true`
 
-Cuando `readable.readableFlowing` es `null`, ningún mecanismo para consumir los datos de los streams es proporcionado, para que el stream no genere sus datos. Mientras se esté en este estado, adjuntar un listener para el evento `'data'`, llamar el método `readable.pipe()`, o llamar el método `readable.resume()`, cambiará `readable.readableFlowing` a `true`, causando que el `Readable` comience a emitir eventos activamente mientras los datos sean generados.
+Cuando `readable.readableFlowing` es `null`, ningún mecanismo para consumir los datos de los streams es proporcionado, entonces el stream no generará sus datos. Mientras se esté en este estado, adjuntar un listener para el evento `'data'`, llamar el método `readable.pipe()`, o llamar el método `readable.resume()`, cambiará `readable.readableFlowing` a `true`, causando que el `Readable` comience a emitir eventos activamente mientras los datos sean generados.
 
-Llamar a `readable.pause()`, `readable.unpipe()`, o recibir una "contrapresión" causará que el `readable.readableFlowing` sea establecido como `false`, interrumpiendo temporalmente el flujo de los eventos pero *no* interrumpe la generación de datos. Mientras en este estado, adjuntar un listener para el evento `'data'` no causará que `readable.readableFlowing` cambie a `true`.
+Llamar a `readable.pause()`, `readable.unpipe()`, o recibir una "contrapresión" causará que el `readable.readableFlowing` sea establecido como `false`, interrumpiendo temporalmente el flujo de los eventos pero *no* interrumpiendo la generación de datos. Mientras en este estado, adjuntar un listener para el evento `'data'` no causará que `readable.readableFlowing` cambie a `true`.
 
 ```js
 const { PassThrough, Writable } = require('stream');
