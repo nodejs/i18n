@@ -337,11 +337,11 @@ El valor es `undefined` si el socket de la sesión `Http2Session` no ha sido con
 added: v9.4.0
 -->
 
-* `code` {number} An HTTP/2 error code
+* `code` {number} Un código de error de HTTP/2
 * `lastStreamID` {number} La identificación numérica del último `Http2Stream` procesado
 * `opaqueData` {Buffer|TypedArray|DataView} A `TypedArray` or `DataView` instance containing additional data to be carried within the `GOAWAY` frame.
 
-Transmits a `GOAWAY` frame to the connected peer *without* shutting down the `Http2Session`.
+Transmite un frame `GOAWAY` al peer conectado *sin* apagar la `Http2Session`.
 
 #### http2session.localSettings
 
@@ -381,7 +381,7 @@ added: v8.9.3
 
 * `payload` {Buffer|TypedArray|DataView} Optional ping payload.
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Envía un frame de `PING` a un peer de HTTP/2 conectado. La función `callback` debe ser proporcionada. El método devolverá a `true` si el `PING` fue enviado, sino, será `false`.
 
@@ -439,7 +439,7 @@ added: v8.4.0
 
 * {net.Socket|tls.TLSSocket}
 
-Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but limits available methods to ones safe to use with HTTP/2.
+Devuelve un objeto `Proxy` que actúa como un `net.Socket` (o `tls.TLSSocket`) pero limita los métodos disponibles para aquellos de uso seguro con HTTP/2.
 
 `destroy`, `emit`, `end`, `pause`, `read`, `resume`, y `write` arrojarán un error con código `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` and Sockets][] para más información.
 
@@ -538,7 +538,7 @@ The `alt` and origin string *must* contain only ASCII bytes and are strictly int
 
 Cuando se pasa una string para el argumento de `originOrStream`, será analizado como una URL y el origen será derivado. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. Ocurrirá un error si la string dada no se puede analizar como una URL o si no se puede derivar un origen válido.
 
-A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. The value of the `origin` property *must* be a properly serialized ASCII origin.
+A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. El valor de la propiedad `origin` *debe* ser un origen ASCII serializado de manera apropiada.
 
 #### Especificación de servicios alternativos
 
@@ -644,7 +644,7 @@ La clase `Http2Stream` es una base para las clases de [`ServerHttp2Stream`][] y 
 
 Todas las instancias de `Http2Stream` son streams de [`Duplex`][]. El lado `Writable` del `Duplex` es utilizado para enviar datos al peer conectado, mientras que el lado `Readable` es utilizado para recibir datos enviados por el peer conectado.
 
-#### Http2Stream Lifecycle
+#### Ciclo de vida de Http2Stream
 
 ##### Creación
 
