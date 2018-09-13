@@ -712,9 +712,9 @@ added: v0.9.4
   * `end` {boolean} Finaliza el escritor cuando el lector termina. **Predeterminado:** `true`.
 * Devuelve: {stream.Writable} haciendo posible preparar cadenas de piped streams
 
-The `readable.pipe()` method attaches a [`Writable`][] stream to the `readable`, causing it to switch automatically into flowing mode and push all of its data to the attached [`Writable`][]. The flow of data will be automatically managed so that the destination `Writable` stream is not overwhelmed by a faster `Readable` stream.
+El método `readable.pipe()` adjunta un stream [`Writable`][] al `readable`, causando el cambio automático a modo fluido y empujando todos sus datos al [`Writable`][] adjunto. El flujo de datos será automáticamente manejado para que el stream `Writable` de destino no sea abrumado por un stream `Readable` más rápido.
 
-The following example pipes all of the data from the `readable` into a file named `file.txt`:
+El siguiente ejemplo hace pipe en todos los datos del `readable` a un archivo llamado `file.txt`:
 
 ```js
 const fs = require('fs');
