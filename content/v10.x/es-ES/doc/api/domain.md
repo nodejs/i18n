@@ -252,9 +252,9 @@ Si el Temporizador o `EmisordeEvento` estuviese limitado a un dominio, será rem
 ### domain.bind(callback)
 
 * `callback`{Function} La función de callback
-* Regresa: {Function} La función limitante
+* Devoluciones: {Function} La función limitante
 
-La función de regreso será cubrirá a la función de callback suministrada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
+La función de devolución una cubierta para la función de callback suministrada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
 
 #### Ejemplo
 
@@ -284,18 +284,18 @@ Llamar a `enter()` solo cambia al dominio activo y no lo altera en si. `enter()`
 
 ### domain.exit()
 
-El método de `exit()` sale del dominio actual, llevándolo hacia el dominio de apilado. Es importante asegurarse que se abandona el dominio actual al cambiar cualquier tiempo de ejecución hacia el contexto de una cadena diferente de llamadas asincrónicas. The call to `exit()` delimits either the end of or an interruption to the chain of asynchronous calls and I/O operations bound to a domain.
+El método de `exit()` sale del dominio actual, llevándolo hacia el dominio de apilado. Es importante asegurarse que se abandona el dominio actual al cambiar cualquier tiempo de ejecución hacia el contexto de una cadena diferente de llamadas asincrónicas. La llamada `exit()` delimita cualquiera de los finales o una interrupción de la cadena de llamadas asincrónicas y operaciones I/O vinculadas a un dominio.
 
-If there are multiple, nested domains bound to the current execution context, `exit()` will exit any domains nested within this domain.
+Si hay múltiples dominios anidados al contexto de ejecución actual, `exit()` saldrá de cualquier dominio alojado dentro de este dominio.
 
-Calling `exit()` changes only the active domain, and does not alter the domain itself. `enter()` y `exit()` pueden ser llamados un número arbitrario de veces en un mismo dominio.
+La llamada `exit()` modifica solo al dominio activo y no lo altera en si. `enter()` y `exit()` pueden ser llamados un número arbitrario de veces en un mismo dominio.
 
 ### domain.intercept(callback)
 
-* `callback` {Function} The callback function
-* Returns: {Function} The intercepted function
+* `callback`{Function} La función de callback
+* Devoluciones: {Function} La función interceptada
 
-This method is almost identical to [`domain.bind(callback)`][]. However, in addition to catching thrown errors, it will also intercept [`Error`][] objects sent as the first argument to the function.
+Este método es muy similar a [`domain.bind(callback)`][]. However, in addition to catching thrown errors, it will also intercept [`Error`][] objects sent as the first argument to the function.
 
 In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
 
