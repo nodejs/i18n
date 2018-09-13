@@ -144,7 +144,7 @@ Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
 ```
 
-Jeśli jesteś nowy w kontrybucjach do Node.js, proszę daj z siebie wszystko by zastosować się do tych zastrzeżeń, ale nie martw się jeśli popełnisz błąd. One of the existing contributors will help get things situated and the contributor landing the Pull Request will ensure that everything follows the project guidelines.
+Jeśli jesteś nowy w kontrybucjach do Node.js, proszę daj z siebie wszystko by zastosować się do tych zastrzeżeń, ale nie martw się jeśli popełnisz błąd. Jeden z obecnych kontrybutorów pomoże ci się dostosować, a kontrybutor lądujący Żądanie zmiany upewni się, że wszystko jest zgodne z wytycznymi projektu.
 
 See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
 
