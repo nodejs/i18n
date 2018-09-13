@@ -829,14 +829,14 @@ En la mayoría de las situaciones, no es realmente necesario llamar a `process.e
 El siguiente ejemplo ilustra un *mal uso* del método `process.exit()` que podría conducir a que los datos impresos en stdout se trunquen y pierdan:
 
 ```js
-// Esto es un ejemplo de que *no* hacer:
+// Esto es un ejemplo de qué *no* hacer:
 if (someConditionNotMet()) {
   printUsageToStdout();
   process.exit(1);
 }
 ```
 
-La razón de que esto sea problemático es porque las escrituras a `process.stdout` en Node.js a veces son *asincrónicas* y pueden ocurrir sobre múltiples ticks del bucle del evento Node.js. El llamar a `process.exit()`, sin embargo, forza al proceso a cerrarse *antes* de que se realicen esas escrituras adicionales en `stdout`.
+La razón por la que esto es problemático es que las escrituras a `process.stdout` en Node.js a veces son *asincrónicas* y pueden ocurrir sobre múltiples ticks del bucle del evento Node.js. El llamar a `process.exit()`, sin embargo, forza al proceso a cerrarse *antes* de que se realicen esas escrituras adicionales en `stdout`.
 
 En lugar de llamar a `process.exit()` directamente, el código *debe* establecer el `process.exitCode` y permitirle al proceso que se cierre naturalmente al evitar programar cualquier trabajo adicional para el bucle del evento:
 
@@ -869,7 +869,7 @@ Especificar un código a [`process.exit(code)`][`process.exit()`] anulará cualq
 added: v2.0.0
 -->
 
-El método `process.getegid()` devuelve la identidad del grupo efectivo numérico del proceso Node.js. (vea getegid(2).)
+El método `process.getegid()` devuelve la identidad del grupo efectivo numérico del proceso Node.js. (Vea getegid(2).)
 
 ```js
 if (process.getegid) {
@@ -887,7 +887,7 @@ added: v2.0.0
 
 * Devuelve: {Object}
 
-El método `process.geteuid()` devuelve la identidad del usuario efectivo numérico del proceso. (Vea geteuid(2).)
+El método `process.geteuid()` devuelve la identidad numérica del usuario efectivo del proceso. (Vea geteuid(2).)
 
 ```js
 if (process.geteuid) {
@@ -905,7 +905,7 @@ added: v0.1.31
 
 * Devuelve: {Object}
 
-El método `process.getgid()` devuelve la identidad del grupo numérico del proceso. (Vea getgid(2).)
+El método `process.getgid()` devuelve la identidad numérica del grupo del proceso. (Vea getgid(2).)
 
 ```js
 if (process.getgid) {
@@ -935,7 +935,7 @@ added: v0.1.28
 
 * Devuelve: {integer}
 
-El método `process.getuid()` devuelve la identidad del usuario numérico del proceso. (Vea getuid(2).)
+El método `process.getuid()` devuelve la identidad numérica del usuario del proceso. (Vea getuid(2).)
 
 ```js
 if (process.getuid) {
@@ -991,7 +991,7 @@ setTimeout(() => {
 added: v0.9.4
 -->
 
-* `user` {string|number} El nombre de usuario o el identificador numérico.
+* `user` {string|number} El nombre de usuario o su identificador numérico.
 * `extraGroup` {string|number} Un nombre de grupo o identificador numérico.
 
 El método `process.initgroups()` lee el archivo `/etc/group` e inicializa la lista de acceso de grupo, utilizando todos los grupos en los cuales el usuario es miembro. Esto es una operación privilegiada que requiere que el proceso Nothe.js tenga acceso a `root` o la capacidad de `CAP_SETGID`.
@@ -1021,7 +1021,7 @@ El método `process.kill()` envía la `signal` al proceso identificado por `pid`
 
 Los nombres de las señales son strings como `'SIGINT'` o `'SIGHUP'`. Vea los [Eventos de Señal](#process_signal_events) y kill(2) para más información.
 
-Este método arrojará un error si el `pid` del objetivo no existe. En un caso especial, una señal de `0` puede ser usada para probar la existencia de un proceso. Las plataformas Windows arrojarán un error si el `pid` es usado para aniquilar un grupo de proceso.
+Este método arrojará un error si el `pid` objetivo no existe. En un caso especial, una señal de `0` puede ser usada para probar la existencia de un proceso. Las plataformas Windows arrojarán un error si el `pid` es usado para aniquilar un grupo de proceso.
 
 A pesar de que el nombre de esta función sea `process.kill()`, realmente sólo es un transmisor de señal, como la llamada de sistema `kill`. La señal enviada puede hacer algo distinto a aniquilar el proceso objetivo.
 
@@ -1086,9 +1086,9 @@ Generará:
 }
 ```
 
-`heapTotal` y `heapUsed` se refieren al uso de memoria de V8. `external` se refiere al uso de memoria de objetos C++ vinculados a objetos JavaScript administrados por V8. `rss`, que por sus siglas en inglés se refiere a Resident Set Size, es la cantidad de espacio ocupado en el dispositivo de memoria principal (que es un subconjunto de memoria total asignada) para el proceso, la cual incluye el *montón*, el *segmento de código* y el *stack*.
+`heapTotal` y `heapUsed` se refieren al uso de memoria de V8. `external` se refiere al uso de memoria de objetos C++ vinculados a objetos JavaScript administrados por V8. `rss`, que por sus siglas en inglés se refiere a Resident Set Size, es la cantidad de espacio ocupado en el dispositivo de memoria principal (que es un subconjunto de memoria total asignada) para el proceso, la cual incluye el *montículo*, el *segmento de código* y el *stack*.
 
-El *montón* es donde los objetos, strings y cierres son almacenados. Las variables son almacenadas en el *stack* y el código JavaScript actual reside en el *segmento de código*.
+El *montículo* es donde los objetos, strings y cierres son almacenados. Las variables son almacenadas en el *stack* y el código JavaScript actual reside en el *segmento de código*.
 
 ## process.nextTick(callback[, ...args])
 
@@ -1120,7 +1120,7 @@ console.log('scheduled');
 // callback nextTick
 ```
 
-Esto es importando al desarrollar APIs para ofrecerle a los usuarios la oportunidad de asignar manejadores de evento *después* de que un objeto se haya construido pero antes de que I/O haya ocurrido:
+Esto es importando al desarrollar APIs para ofrecerle a los usuarios la oportunidad de asignar manejadores de evento *después* de que un objeto se haya construido, pero antes de que I/O haya ocurrido:
 
 ```js
 function MyThing(options) {
