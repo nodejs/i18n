@@ -544,7 +544,7 @@ A `URL` object, or any object with an `origin` property, may be passed as `origi
 
 The format of the `alt` parameter is strictly defined by [RFC 7838](https://tools.ietf.org/html/rfc7838) as an ASCII string containing a comma-delimited list of "alternative" protocols associated with a specific host and port.
 
-Por ejemplo, el valor `'h2="example.org:81"'` indica que el protocolo HTTP/2 está disponible en el host `'example.org'` en TCP/IP puerto 81. The host and port *must* be contained within the quote (`"`) characters.
+Por ejemplo, el valor `'h2="example.org:81"'` indica que el protocolo HTTP/2 está disponible en el host `'example.org'` en TCP/IP puerto 81. El host y el puerto *deben* estar contenidos dentro de los caracteres de (`"`) comillas.
 
 Se pueden especificar múltiples alternativas, por ejemplo: `'h2="example.org:81",
 h2=":82"'`.
@@ -553,13 +553,13 @@ El identificador de protocolo (`'h2'` en los ejemplos) puede ser cualquier [ALPN
 
 La sintaxis de estos valores no está validada por la implementación de Node.js, y se transmiten como proporcionadas por el usuario o recibidas desde el peer.
 
-### Class: ClientHttp2Session
+### Clase: ClientHttp2Session
 
 <!-- YAML
 added: v8.4.0
 -->
 
-#### Event: 'altsvc'
+#### Evento: 'altsvc'
 
 <!-- YAML
 added: v9.4.0
@@ -1274,13 +1274,13 @@ added: v8.5.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
+Si se registra un listener [`'request'`][] o se suministra una función de callback a [`http2.createServer()`][], el evento de `'checkContinue'` se emitirá cada vez que una solicitud con un HTTP `Expect: 100-continue` sea recibida. Si este evento no se escucha, el servidor automáticamente responderá con un estado `100 Continue` según corresponda.
 
 Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debería continuar a enviar el cuerpo de la solicitud, o generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
 
 Tener en cuenta que cuando este evento es emitido y manejado, el evento [`'request'`] no será emitido.
 
-#### Event: 'request'
+#### Evento: 'request'
 
 <!-- YAML
 added: v8.4.0
