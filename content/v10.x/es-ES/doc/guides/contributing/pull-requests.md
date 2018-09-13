@@ -64,7 +64,7 @@ $ git config user.name "J. Random User"
 $ git config user.email "j.random.user@example.com"
 ```
 
-Please make sure this local email is also added to your [GitHub email list](https://github.com/settings/emails) so that your commits will be properly associated with your account and you will be promoted to Contributor once your first commit is landed.
+Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails) para que tus contribuciones se asocien correctamente con tu cuenta y serás promovido a Contributor una vez que se haya descargado tu primer compromiso.
 
 ### Step 2: Branch
 
