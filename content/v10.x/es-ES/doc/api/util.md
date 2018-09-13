@@ -332,9 +332,9 @@ changes:
 * `options` {Object}
   
   * `showHidden` {boolean} Si `true`, los símbolos y propiedades no enumerables del `object` van a ser incluidos en el resultado formateado, así como también las entradas [`WeakMap`][] y [`WeakSet`][]. **Default:** `false`.
-  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. To make it recurse indefinitely pass `null`. **Default:** `2`.
-  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
-  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions will not be called. **Default:** `true`.
+  * `depth` {number} Especifica el número de veces a repetir mientras se formatea el `object`. Esto es útil para inspeccionar objetos grandes y complicados. Para hacer que se repita indefinidamente pase `null`. **Default:** `2`.
+  * `colors` {boolean} Si `true`, el output va a ser diseñado con códigos de colores ANSI. Colores son personalizables, vea [Customizing `util.inspect` colors][]. **Default:** `false`.
+  * `customInspect` {boolean} Si `false`, entonces las funciones personalizadas `inspect(depth, opts)` no van a ser llamadas. **Default:** `true`.
   * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`. <!--
   TODO(BridgeAR): Deprecate `maxArrayLength` and replace it with
                   `maxEntries`.
