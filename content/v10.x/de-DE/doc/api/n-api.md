@@ -171,8 +171,8 @@ typedef struct napi_extended_error_info {
 ```
 
 - `error_message`: Textliche Darstellung des aufgetretenen Fehlers.
-- `engine_reserved`: Undurchsichtiger Handle, der nur für den Engine-Betrieb reserviert ist.
-- `engine_error_code`: VM-spezifischer Error-Code.
+- `engine_reserved`: Opaque-Handle, der nur für die Verwendung der Engine reserviert ist.
+- `engine_error_code`: VM-spezifischer Fehler-Code.
 - `error_code`: N-API-Statuscode für den letzten Fehler.
 
 [`napi_get_last_error_info`][] liefert die Informationen für die letzte N-API-Anfrage.
@@ -202,9 +202,9 @@ Der Inhalt der zurückgegebenen `napi_extended_error_info` ist nur solange gült
 
 Verlassen Sie sich nicht auf den Inhalt oder das Format der erweiterten Informationen, da diese nicht dem SemVer unterliegen und sich jederzeit ändern können. Sie sind nur für die Protokollierung bestimmt.
 
-Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ansteht.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception ansteht.
 
-### Ausnahmen
+### Exceptions
 
 Jeder N-API-Funktionsaufruf kann zu einer ausstehenden JavaScript-Ausnahme führen. Dies ist natürlich der Fall für jede Funktion, die die Ausführung von JavaScript verursachen kann, aber die N-API gibt an, dass eine Ausnahme bei der Rückkehr von einer der vielen API-Funktionen anhängig sein kann.
 
