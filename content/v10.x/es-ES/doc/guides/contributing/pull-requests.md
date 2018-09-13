@@ -1,9 +1,9 @@
 # Pull Requests
 
-There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
+Hay dos componentes fundamentales del proceso de Pull Rquest: uno concreto y técnico, y uno más orientado al proceso. El componente concreto y técnico implica los detalles específicos de la configuración de tu entorno local para que puedas realizar los cambios reales. Aquí es donde comenzaremos.
 
-* [Dependencies](#dependencies)
-* [Setting up your local environment](#setting-up-your-local-environment) 
+* [Dependencias](#dependencies)
+* [Configurando tu entorno local](#setting-up-your-local-environment) 
   * [Step 1: Fork](#step-1-fork)
   * [Step 2: Branch](#step-2-branch)
 * [The Process of Making Changes](#the-process-of-making-changes) 
