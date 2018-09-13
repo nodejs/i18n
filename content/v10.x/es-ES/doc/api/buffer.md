@@ -2302,7 +2302,7 @@ deprecated: v6.0.0
 
 Devuelve un `Buffer` sin agrupar.
 
-In order to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances, by default allocations under 4KB are sliced from a single larger allocated object.
+Para evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente, las asignaciones predeterminadas debajo de 4KB se recortan desde un único objeto asignado más grande.
 
 In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
 
