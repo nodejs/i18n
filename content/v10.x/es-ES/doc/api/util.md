@@ -166,23 +166,23 @@ El método `util.format()` retorna un string con formato usando el primer argume
 El primer argumento es un string conteniendo cero o más tokens *placeholder*. Cada token placeholder es reemplazado con el valor convertido del argumento correspondiente. Los placeholders soportados son:
 
 * `%s` - `String`.
-* `%d` - `Number` (integer or floating point value).
-* `%i` - Integer.
-* `%f` - Floating point value.
+* `%d` - `Number` (entero o valor de punto flotante).
+* `%i` - Entero.
+* `%f` - Valor de punto flotante.
 * `%j` - JSON. Reemplazado con el string `'[Circular]'` si el argumento contiene referencias circulares.
 * `%o` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` con opciones `{ showHidden: true, showProxy: true }`. Esto va a mostrar el objeto completo incluyendo propiedades y proxies no enumerables.
 * `%O` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` sin opciones. Esto va a mostrar el objeto completo no incluyendo propiedades y proxies no enumerables.
 * `%%` - signo de porcentaje individual (`'%'`). Esto no consume un argumento.
 * Retorna: {string} El string con formato
 
-If the placeholder does not have a corresponding argument, the placeholder is not replaced.
+Si el placeholder no tiene un argumento correspondiente, el placeholder es reemplazado.
 
 ```js
 util.format('%s:%s', 'foo');
-// Returns: 'foo:%s'
+// Retorna: 'foo:%s'
 ```
 
-If there are more arguments passed to the `util.format()` method than the number of placeholders, the extra arguments are coerced into strings then concatenated to the returned string, each delimited by a space. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
+Si hay más argumentos pasados al método `util.format()` que el número de placeholders, los argumentos extra son coaccionados en strings, luego cocatenados a la string retornada, cada uno delimitado por un espacio. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
 
 ```js
 util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
