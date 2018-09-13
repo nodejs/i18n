@@ -66,9 +66,9 @@ $ git config user.email "j.random.user@example.com"
 
 Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails) para que tus contribuciones se asocien correctamente con tu cuenta y serás promovido a Contributor una vez que se haya descargado tu primer compromiso.
 
-### Step 2: Branch
+### Paso 2: Branch
 
-As a best practice to keep your development environment as organized as possible, create local branches to work within. These should also be created directly off of the `master` branch.
+Como práctica recomendada para mantener su entorno de desarrollo lo más organizado posible, cree branches locales para trabajar dentro de ellas. Estos también se deben crear directamente fuera del branch `principal`.
 
 ```text
 $ git checkout -b my-branch -t upstream/master
