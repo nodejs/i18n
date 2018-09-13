@@ -271,8 +271,8 @@ const d = domain.create();
 
 d.on('error', (er) => {
   // ha ocurrido un error en algún lugar.
-  // if we throw it now, it will crash the program
-  // with the normal line number and stack message.
+  // el programa fallará si lo arrojamos ahora
+  // con la línea de número normal y el mensaje apilado.
 });
 ```
 
