@@ -64,7 +64,7 @@ $ git config user.name "J. Random User"
 $ git config user.email "j.random.user@example.com"
 ```
 
-Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails) para que tus contribuciones se asocien correctamente con tu cuenta y serás promovido a Contributor una vez que se haya descargado tu primer compromiso.
+Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails) para que tus commits se asocien correctamente con tu cuenta y serás promovido a Contributor una vez que se haya descargado tu primer commit.
 
 ### Paso 2: Branch
 
@@ -92,9 +92,9 @@ Cualquier documentación que escriba (incluidos los comentarios de código y la 
 
 Para contribuir con el código de C++, es posible que desee consultar la [Guía de Estilo de C++](../../../CPP_STYLE_GUIDE.md).
 
-### Paso 4: Confirmación
+### Paso 4: Commit
 
-Es una mejor práctica recomendada mantener sus cambios lo más lógicamente agrupados dentro de las confirmaciones individuales. No hay límite para el número de confirmaciones que puede tener una sola Pull Request, y a muchos colaboradores les resulta más fácil revisar los cambios que se dividen en varias confirmaciones.
+Es una mejor práctica recomendada mantener sus cambios lo más lógicamente agrupados dentro de los commits individuales. No hay límite para el número de commits que puede tener una sola Pull Request, y a muchos colaboradores les resulta más fácil revisar los cambios que se dividen en varios commits.
 
 ```text
 $ git add my/changed/files
