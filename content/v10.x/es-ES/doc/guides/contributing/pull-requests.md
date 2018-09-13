@@ -8,11 +8,11 @@ Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y t�
   * [Paso 2: Branch](#step-2-branch)
 * [El proceso de hacer cambios](#the-process-of-making-changes) 
   * [Paso 3: Código](#step-3-code)
-  * [Paso 4: Commit](#step-4-commit) 
-    * [Pautas de commit message](#commit-message-guidelines)
+  * [Paso 4: Confirmación](#step-4-commit) 
+    * [Pautas del mensaje de confirmación](#commit-message-guidelines)
   * [Paso 5: Rebase](#step-5-rebase)
-  * [Paso 6: Test](#step-6-test) 
-    * [Test Coverage](#test-coverage)
+  * [Paso 6: Prueba](#step-6-test) 
+    * [Cobertura de prueba](#test-coverage)
   * [Paso 7: Push](#step-7-push)
   * [Paso 8: Apertura de la Pull Request](#step-8-opening-the-pull-request)
   * [Paso 9: Discutir y actualizar](#step-9-discuss-and-update) 
@@ -27,14 +27,14 @@ Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y t�
   * [Acepte que hay opiniones diferentes sobre lo que pertenece a Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [El rendimiento no es todo](#performance-is-not-everything)
   * [Pruebas de integración continua](#continuous-integration-testing)
-* [Additional Notes](#additional-notes) 
+* [Notas adicionales](#additional-notes) 
   * [Commit Squashing](#commit-squashing)
-  * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
-  * [CI Testing](#ci-testing)
-  * [Waiting Until the Pull Request Gets Landed](#waiting-until-the-pull-request-gets-landed)
-  * [Check Out the Collaborator Guide](#check-out-the-collaborator-guide)
+  * [Obtener aprobaciones para su Pull Request](#getting-approvals-for-your-pull-request)
+  * [Prueba de CI](#ci-testing)
+  * [Esperar hasta que se cierre la Pull Request](#waiting-until-the-pull-request-gets-landed)
+  * [Consulte la Guía del Colaborador](#check-out-the-collaborator-guide)
 
-## Dependencies
+## Dependencias
 
 Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
 
@@ -437,6 +437,6 @@ Only a Collaborator can start a CI run. Usually one of them will do it for you a
 
 A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### Check Out the Collaborator Guide
+### Consulte la Guía del Colaborador
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
