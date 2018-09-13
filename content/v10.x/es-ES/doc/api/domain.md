@@ -254,22 +254,23 @@ Si el Temporizador o `EmisordeEvento` estuviese limitado a un dominio, será rem
 * `callback`{Function} La función de callback
 * Regresa: {Function} La función limitante
 
-The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
+La función de regreso será cubrirá a la función de callback suministrada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
 
-#### Example
+#### Ejemplo
 
 ```js
 const d = domain.create();
 
-function readSomeFile(filename, cb) {
+
   fs.readFile(filename, 'utf8', d.bind((er, data) => {
-    // if this throws, it will also be passed to the domain
-    return cb(er, data ? JSON.parse(data) : null);
+    // si este error aparece, también pasará por el dominio
+    return cb(er, data ?
+ JSON.parse(data) : null);
   }));
 }
 
 d.on('error', (er) => {
-  // an error occurred somewhere.
+  // ha ocurrido un error en algún lugar.
   // if we throw it now, it will crash the program
   // with the normal line number and stack message.
 });
