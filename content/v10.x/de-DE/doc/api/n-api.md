@@ -153,7 +153,7 @@ Alle N-API-Funktionen haben das gleiche Fehlerbehandlungsmuster. Der Rückgabety
 
 Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Exception aufgetreten ist. Wenn ein Fehler UND eine Exception aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgesendet. Wenn eine Ausnahme, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgesendet.
 
-In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_exception` zurückgegeben wird, muss [`napi_is_exception_pending`][] aufgerufen werden, um zu prüfen, ob eine Ausnahme ansteht. Weitere Details finden Sie im Abschnitt über Ausnahmen.
+In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_exception` zurückgegeben wird, muss [`napi_is_exception_pending`][] aufgerufen werden, um zu prüfen, ob eine Exception aussteht. Weitere Details finden Sie im Abschnitt über Exceptions.
 
 Das vollständige Set der möglichen `napi_status`-Werte ist in `napi_api_types.h` definiert.
 
