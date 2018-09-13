@@ -586,11 +586,11 @@ added: v0.9.4
 
 * {Error}
 
-El evento `'error'` puede ser emitido por una implementación de `Readable` en cualquier momento. Typically, this may occur if the underlying stream is unable to generate data due to an underlying internal failure, or when a stream implementation attempts to push an invalid chunk of data.
+El evento `'error'` puede ser emitido por una implementación de `Readable` en cualquier momento. De forma general, esto puede ocurrir si el stream subyacente no es capaz de generar datos debido a una falla interna subyacente, o cuando una implementación del stream intenta empujar un fragmento de datos inválido.
 
-The listener callback will be passed a single `Error` object.
+El callback del listener va a pasar un solo objeto `Error`.
 
-##### Event: 'readable'
+##### Evento: 'readable'
 
 <!-- YAML
 added: v0.9.4
@@ -606,7 +606,7 @@ changes:
     description: Using `'readable'` requires calling `.read()`.
 -->
 
-The `'readable'` event is emitted when there is data available to be read from the stream. In some cases, attaching a listener for the `'readable'` event will cause some amount of data to be read into an internal buffer.
+El evento `'readable'` es emitido cuando hay datos disponibles para ser leídos del stream. En algunos casos, adjuntar un listener para el evento `'readable'` va a causar que cierta cantidad de datos sean leídos a un búfer interno.
 
 ```javascript
 const readable = getReadableStreamSomehow();
