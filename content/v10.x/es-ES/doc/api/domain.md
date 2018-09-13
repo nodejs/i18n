@@ -278,7 +278,7 @@ d.on('error', (er) => {
 
 ### domain.enter()
 
-The `enter()` method is plumbing used by the `run()`, `bind()`, and `intercept()` methods to set the active domain. It sets `domain.active` and `process.domain` to the domain, and implicitly pushes the domain onto the domain stack managed by the domain module (see [`domain.exit()`][] for details on the domain stack). The call to `enter()` delimits the beginning of a chain of asynchronous calls and I/O operations bound to a domain.
+El método `enter()` es sondeada por el `ejecutar`, `enlace` y los métodos de `intercept()` para establecer el dominio activo. Se coloca el `domain.active` y el `process.domain` en el dominio, y empuja al dominio implícitamente hacia el dominio de apilación manejado por el módulo de dominio (ver `domain.exit()`[] para más detalles sobre el dominio de apilado). La llamada a `enter()` delimita el principio de una cadena de llamadas asincrónicas y operaciones I/o relacionadas a un dominio.
 
 Calling `enter()` changes only the active domain, and does not alter the domain itself. `enter()` and `exit()` can be called an arbitrary number of times on a single domain.
 
