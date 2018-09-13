@@ -2298,7 +2298,7 @@ Tenga en cuenta que esto es una propiedad sobre el módulo de `buffer` devuelto 
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] es su lugar.
 
 Returns an un-pooled `Buffer`.
 
