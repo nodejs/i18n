@@ -1,20 +1,20 @@
-# Maintaining npm in Node.js
+# Mantener npm en Node.js
 
-## Step 1: Clone npm
+## Paso 1: Clona npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-or if you already have npm cloned make sure the repo is up to date
+o si ya has clonado el npm, asegurese de que el repositorio este actualizado
 
 ```console
 $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Step 2: Build release
+## Paso 2: Construir lanzamiento
 
 ```console
 $ git checkout vX.Y.Z
