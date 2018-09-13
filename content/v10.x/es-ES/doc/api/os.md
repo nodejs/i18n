@@ -607,7 +607,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EBADMSG</code></td>
-    <td>Indicates an invalid data message.</td>
+    <td>Indica un mensaje de datos inválido.</td>
   </tr>
   <tr>
     <td><code>EBUSY</code></td>
