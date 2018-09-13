@@ -445,13 +445,13 @@ napi_status napi_fatal_exception(napi_env env, napi_value err);
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] err`: The error you want to pass to `'uncaughtException'`.
+- `[in] err`: Der Fehler, den Sie an `'uncaughtException'` übergeben möchten.
 
-Trigger an `'uncaughtException'` in JavaScript. Useful if an async callback throws an exception with no way to recover.
+Eine `'uncaughtException'` in JavaScript auslösen. Nützlich, wenn ein asynchroner Rückruf eine Exception auslöst, die keine Möglichkeit zur Wiederherstellung bietet.
 
-### Fatal Errors
+### Schwere Fehler
 
-In the event of an unrecoverable error in a native module, a fatal error can be thrown to immediately terminate the process.
+Im Falle eines nicht behebbaren Fehlers in einem nativen Modul kann ein schwerer Fehler ausgelöst werden, um den Prozess sofort zu beenden.
 
 #### napi_fatal_error
 
