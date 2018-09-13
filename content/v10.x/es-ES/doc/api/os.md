@@ -490,33 +490,31 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Sent to instruct the operating system to halt a process.</td>
+    <td>Enviada para indicar al sistema operativo detener un proceso.</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
-    <td>Sent to a process to request it to stop.</td>
+    <td>Enviada a un proceso para solicitar que se detenga.</td>
   </tr>
   <tr>
     <td><code>SIGBREAK</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process.</td>
+    <td>Enviada para indicar cuando un usuario desea interrumpir un proceso.</td>
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Sent to a process when it reads from the TTY while in the
-    background.</td>
+    <td>Enviada a un proceso cuando lee desde el TTY en segundo plano.</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Sent to a process when it writes to the TTY while in the
-    background.</td>
+    <td>Enviada a un proceso cuando escribe desde el TTY estando en segundo plano.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
-    <td>Sent to a process when a socket has urgent data to read.</td>
+    <td>Enviada a un proceso cuando un socket tiene datos urgentes a leer.</td>
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
-    <td>Sent to a process when it has exceeded its limit on CPU usage.</td>
+    <td>Enviada a un proceso cuando ha excedido su límite de uso de la CPU.</td>
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
