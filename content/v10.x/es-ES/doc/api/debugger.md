@@ -155,17 +155,17 @@ debug>
 
 ### Integración del Inspector V8 para Node.js
 
-La integración del Inspector V8 permite adjuntar Chrome DevTools a Node.js para depurar y generar perfiles por ejemplo. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del Inspector V8 permite adjuntar Chrome DevTools a Node.js para depurar y generar perfiles por ejemplo. Usa el [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
+El Inspector V8 puede ser habilitado al pasar la marca `--inspect` al iniciar una apicación Node.js. Asimismo, es posible suplir un puerto personalizado con ese marcador, por ejemplo el `--inspect=9222` permitirá las conexiones DevTools en el puerto 9222.
 
-To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
+Pase el marcador `--inspect-brk` en vez del `--inspect` para interrumpir la primera línea de la aplicación del código.
 
 ```txt
 $ node --inspect index.js
 Debugger listening on 127.0.0.1:9229.
-To start debugging, open the following URL in Chrome:
+Abra la siguiente URL en Chrome para iniciar la depuración: 
     chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+(En el ejemplo anterior, la UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 al final de la URL es generada en la salida y varía en las diferentes sesiones de depuración)
