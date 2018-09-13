@@ -8,8 +8,8 @@ Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y t�
   * [Paso 2: Branch](#step-2-branch)
 * [El proceso de hacer cambios](#the-process-of-making-changes) 
   * [Paso 3: Código](#step-3-code)
-  * [Paso 4: Confirmación](#step-4-commit) 
-    * [Pautas del mensaje de confirmación](#commit-message-guidelines)
+  * [Paso 4: Commit](#step-4-commit) 
+    * [Pautas del mensaje Commit](#commit-message-guidelines)
   * [Paso 5: Rebase](#step-5-rebase)
   * [Paso 6: Prueba](#step-6-test) 
     * [Cobertura de prueba](#test-coverage)
@@ -103,14 +103,14 @@ $ git commit
 
 Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
 
-#### Commit message guidelines
+#### Pautas del mensaje Commit
 
-A good commit message should describe what changed and why.
+Un buen mensaje de commit debe describir qué cambió y por qué.
 
-1. The first line should:
+1. La primera línea debe:
   
-  * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
-  * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
+  * contener una breve descripción del cambio (preferiblemente 50 caracteres o menos, y no más de 72 caracteres)
+  * estar completamente en minúsculas, con la excepción de los nombres propios, acrónimos y las palabras que hacen referencia al código, como nombres de funciones/variables
   * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
     
     Examples:
