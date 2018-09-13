@@ -335,7 +335,7 @@ changes:
   * `depth` {number} Especifica el número de veces a repetir mientras se formatea el `object`. Esto es útil para inspeccionar objetos grandes y complicados. Para hacer que se repita indefinidamente pase `null`. **Default:** `2`.
   * `colors` {boolean} Si `true`, el output va a ser diseñado con códigos de colores ANSI. Colores son personalizables, vea [Customizing `util.inspect` colors][]. **Default:** `false`.
   * `customInspect` {boolean} Si `false`, entonces las funciones personalizadas `inspect(depth, opts)` no van a ser llamadas. **Default:** `true`.
-  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`. <!--
+  * `showProxy` {boolean} Si `true`, entonces los objetos y funciones que son objetos `Proxy` van a ser analizados para mostrar sus objetos `target` y `handler`. **Default:** `false`. <!--
   TODO(BridgeAR): Deprecate `maxArrayLength` and replace it with
                   `maxEntries`.
   -->
@@ -505,7 +505,7 @@ class Box {
 const box = new Box(true);
 
 util.inspect(box);
-// Returns: "Box< true >"
+// Retorna: "Box< true >"
 ```
 
 Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
@@ -519,7 +519,7 @@ obj[util.inspect.custom] = (depth) => {
 };
 
 util.inspect(obj);
-// Returns: "{ bar: 'baz' }"
+// Retorna: "{ bar: 'baz' }"
 ```
 
 ### util.inspect.custom
