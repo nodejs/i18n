@@ -55,13 +55,13 @@ Los datos son almacenados en streams `Writable` cuando el método [`writable.wri
 
 Un objetivo clave del API de `stream`, particularmente el método [`stream.pipe()`], es limitar el almacenamiento de datos a niveles aceptables, para que la fuentes y los destinos de diferentes velocidades no abrumen la memoria disponible.
 
-Porque ambos streams [`Duplex`][] y [`Transform`][] son `Readable` y `Writable`, cada uno mantiene *dos* búferes internos separados. usados para leer y escribir, permitiendo cada lado operar independientemente del otro, mientras mantiene un flujo de datos apropiado y eficiente. Por ejemplo, las instancias [`net.Socket`][] son streams [`Duplex`][] cuyo lado `Readable` permite el consumo de datos recibidos *del* socket y cuyo lado `Writable` permite escribir datos *al* socket. Porque los datos pueden ser escritos al socket a una tasa más rápida o más lenta que los datos que son recibidos, es importante para cada lado que opere (y almacene) independientemente del otro.
+Porque ambos streams [`Duplex`][] y [`Transform`][] son `Readable` y `Writable`, cada uno mantiene *dos* búferes internos separados. usados para leer y escribir, permitiendo cada lado operar independientemente del otro, mientras mantiene se un flujo de datos apropiado y eficiente. Por ejemplo, las instancias [`net.Socket`][] son streams [`Duplex`][] cuyo lado `Readable` permite el consumo de datos recibidos *del* socket y cuyo lado `Writable` permite escribir datos *al* socket. Porque los datos pueden ser escritos al socket a una tasa más rápida o más lenta que los datos que son recibidos, es importante para cada lado operar (y almacenar) independientemente del otro.
 
 ## API para los Consumidores de Stream
 
 <!--type=misc-->
 
-Casi todas las aplicaciones Node.js, no importa que tan simple sea, usa streams de alguna forma. Lo siguiente es un ejemplo de uso de streams en una aplicación de Node.js que implemente un servidor HTTP:
+Casi todas las aplicaciones Node.js, no importa que tan simple sea, usa streams de alguna manera/modo. Nota: se puede escoger, alguna de las dos. Lo siguiente es un ejemplo de uso de streams en una aplicación de Node.js que implemente un servidor HTTP:
 
 ```js
 const http = require('http');
@@ -105,9 +105,9 @@ server.listen(1337);
 // error: Unexpected token o in JSON at position 1
 ```
 
-[`Writable`][] streams (tales como `res` en el ejemplo) expone métodos como `write()` y `end()` que son usados para escribir datos en el stream.
+Streams [`Writable`][] (tales como `res` en el ejemplo) expone métodos como`write()` y `end()` que son usados para escribir datos en el stream.
 
-Los streams [`Readable`][] usan la API [`EventEmitter`][] para notificar código de la aplicación cuando los datos estén listos para ser leídos del stream. Esos datos disponibles pueden ser leídos del stream de múltiples maneras.
+Los streams [`Readable`][] usan la API [`EventEmitter`][] para notificar al código de la aplicación cuando los datos estén listos para ser leídos del stream. Esos datos disponibles pueden ser leídos del stream de múltiples maneras.
 
 Los streams [`Writable`][] y [`Readable`][] usan la API [`EventEmitter`][] de varias manera para comunicar el estado actual del stream.
 
@@ -115,13 +115,13 @@ Los streams [`Duplex`][] y [`Transform`][] son tanto [`Writable`][] como [`Reada
 
 Las aplicaciones que, o están escribiendo o consumiendo datos de un stream, no requieren implementar la interfaz stream directamente y generalmente no tendrán ninguna razón para llamar `require('stream')`.
 
-Los desarrolladores que desean implementar nuevos tipos de stream deberían referirse a la sección [PAI para implementadores de stream](#stream_api_for_stream_implementers).
+Los desarrolladores que desean implementar nuevos tipos de stream deberían referirse a la sección [API para implementadores de stream](#stream_api_for_stream_implementers).
 
 ### Streams Escribibles
 
 Los streams escribibles son una abstracción para un *destino* al que se le han escrito datos.
 
-Ejemplos de [`Writable`][] streams incluyen:
+Ejemplos de streams [`Writable`][] streams incluyen:
 
 * [Solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
 * [Respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
@@ -281,7 +281,7 @@ added: v0.11.2
 
 El método `writable.cork()` forza que todos los datos escritos sean almacenados en la memoria. Los datos almacenados van a ser arrojados cuando se llame alguno de los métodos [`stream.uncork()`][] o [`stream.end()`](#stream_writable_end_chunk_encoding_callback).
 
-La intención primordial de `writable.cork()` es evitar una situación donde escribir muchos fragmentos pequeños de datos en un stream no cause un respaldo en el búfer interno, eso sería un impacto adverso en el desempeño. En tales situaciones, las implementaciones que implementen el método `writable._writev()` pueden ejecutar escrituras almacenadas de una manera más optimizada.
+La intención primordial de `writable.cork()` es evitar una situación donde escribir muchos fragmentos pequeños de datos en un stream no cause un respaldo en el búfer interno, eso tendría un impacto adverso en el desempeño. En tales situaciones, las implementaciones que implementen el método `writable._writev()` pueden ejecutar escrituras almacenadas de una manera más optimizada.
 
 Vea también: [`writable.uncork()`][].
 
