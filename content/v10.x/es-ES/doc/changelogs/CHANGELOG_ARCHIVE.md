@@ -185,11 +185,11 @@
 
 ## 2014.09.24, Versión 0.11.14 (Inestable)
 
-* uv: Actualización a v1.0.0-rc1
-* http_parser: Actualización a v2.3.0
-* npm: Actualización a v2.0.0
-* openssl: Actualización a v1.0.1i
-* v8: Actualización a 3.26.33
+* uv: Actualizar a v1.0.0-rc1
+* http_parser: Actualizar a v2.3.0
+* npm: Actualizar a v2.0.0
+* openssl: Actualizar a v1.0.1i
+* v8: Actualizar a 3.26.33
 * Añadir una ruta rápida para el análisis simple de URL (Gabriel Wicke)
 * Soporte para el parámetro de opciones en console.dir() añadido (Xavi Magrinyà)
 * Clúster: reparar handles compartidos en Windows (Alexis Campailla)
@@ -222,7 +222,7 @@
 * dns: si está disponible, incluir el nombre del host en el mensaje de error (Maciej Małecki)
 * dns: introducir la función lookupService (Saúl Ibarra Corretgé)
 * dns: enviar errores de búsqueda c-ares al callback (Chris Dickinson)
-* dns: arrojar si el nombre del host no es una string o retorna ser falso (cjihrig)
+* dns: arrojar si el nombre del host no es una string o es falso (cjihrig)
 * eventos: colocar en el Output al evento que tiene fugas (Arnout Kazemier)
 * fs: cerrar archivo si fstat() falla al ejecutar readFile() (cjihrig)
 * fs: fs.readFile no debería arrojar uncaughtException (Jackson Tian)
