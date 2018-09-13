@@ -44,9 +44,9 @@ En caso de duda, abra un problema en el [issue tracker](https://github.com/nodej
 
 Para empezar, necesitará tener `git` instalado de forma local. Dependiendo de su sistema operativo, también hay una serie de otras dependencias requeridas. Estos se detallan en la [Building guide](../../../BUILDING.md).
 
-Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
+Una vez que tenga `git` y esté seguro de tener todas las dependencias necesarias, es hora de crear un fork.
 
-### Step 1: Fork
+### Paso 1: Fork
 
 Fork the project [on GitHub](https://github.com/nodejs/node) and clone your fork locally.
 
