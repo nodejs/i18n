@@ -111,7 +111,7 @@ Un buen mensaje de commit debe describir qué cambió y por qué.
   
   * contener una breve descripción del cambio (preferiblemente 50 caracteres o menos, y no más de 72 caracteres)
   * estar completamente en minúsculas, con la excepción de los nombres propios, acrónimos y las palabras que hacen referencia al código, como nombres de funciones/variables
-  * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
+  * ir precedido del nombre del subsistema modificado y comenzar con un verbo imperativo. Comprueba la salida de `git log --oneline files/you/changed` para averiguar qué subsistemas tocan tus cambios.
     
     Examples:
   
