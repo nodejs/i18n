@@ -113,19 +113,19 @@ Un buen mensaje de commit debe describir qué cambió y por qué.
   * estar completamente en minúsculas, con la excepción de los nombres propios, acrónimos y las palabras que hacen referencia al código, como nombres de funciones/variables
   * ir precedido del nombre del subsistema modificado y comenzar con un verbo imperativo. Comprueba la salida de `git log --oneline files/you/changed` para averiguar qué subsistemas tocan tus cambios.
     
-    Examples:
+    Ejemplos:
   
-  * `net: add localAddress and localPort to Socket`
+  * `net: agrega la localAddress y el localPort al Socket`
   
   * `src: fix typos in async_wrap.h`
 
-2. Keep the second line blank.
+2. Mantenga la segunda línea en blanco.
 
-3. Wrap all other lines at 72 columns (except for long URLs).
+3. Envuelva todas las otras líneas en 72 columnas (a excepción de las URL largas).
 
-4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
+4. Si su parche soluciona un problema abierto, puede agregar una referencia al final del registro. Utilice el prefijo `Fixes:` y la URL completa del problema. Para otras referencias, use `Refs:`.
   
-  Examples:
+  Ejemplos:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
