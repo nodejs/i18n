@@ -146,24 +146,24 @@ Refs: http://eslint.org/docs/rules/space-in-parens.html
 
 Jeśli jesteś nowy w kontrybucjach do Node.js, proszę daj z siebie wszystko by zastosować się do tych zastrzeżeń, ale nie martw się jeśli popełnisz błąd. Jeden z obecnych kontrybutorów pomoże ci się dostosować, a kontrybutor lądujący Żądanie zmiany upewni się, że wszystko jest zgodne z wytycznymi projektu.
 
-See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
+Zobacz [core-validate-commit](https://github.com/evanlucas/core-validate-commit) Użyteczne narzędzie w upewnianiu się, że commit jest zgodny z wytycznymi formatowania.
 
-### Step 5: Rebase
+### Krok 5: Rebase
 
-As a best practice, once you have committed your changes, it is a good idea to use `git rebase` (not `git merge`) to synchronize your work with the main repository.
+Dobrym pomysłem jest, gdy już zcommitowałeś swoje zmiany, użycie `git rebase` (nie `git merge`) by zsynchronizować swoją pracę z głównym repozytorium.
 
 ```text
-$ git fetch upstream
+$ git fetch upstream 
 $ git rebase upstream/master
 ```
 
-This ensures that your working branch has the latest changes from `nodejs/node` master.
+Dzięki temu możesz być pewny, że gałąź na której pracujesz zgodna jest z najnowszymi zmianami `nodejs/node master`.
 
-### Step 6: Test
+### Krok 6: Test
 
-Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
+Funkcje i poprawki błędów powinny zawsze być dodawane z testami. [Poradnik do pisania testów w Node.js](../writing-tests.md) został napisany, by ułatwić ten proces. Patrzenie na inne testy by zobaczyć jak są zbudowane też może być pomocne.
 
-The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
+Folder `test` w repozytorium `nodejs/node` jest skomplikowany i nie zawsze jest oczywistym gdzie umieścić nowy plik z testami. Jeżeli nie jesteś pewny, dodaj nowe testy do folderu `test/parallel/`, a właściwa lokalizacja będzie wybrana przez innych później.
 
 Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
 
