@@ -10,19 +10,19 @@ Node.js incluye un servicio de depurador fuera de proceso de fácil acceso a tra
 
 ```txt
 $ node inspect myscript.js
-< Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
-< For help, see: https://nodejs.org/en/docs/inspector
-< Debugger attached.
-Break on start in myscript.js:1
+<Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
+< para ayuda, visitar: https://nodejs.org/en/docs/inspector
+< Depurador adjunto.
+Interrumpir el inicio en myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   console.log('world');
 debug>
 ```
 
-Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
+El cliente depurador de Node.js no es un depurador que incluye todas las funciones, pero un paso simple y la inspección son permitidas.
 
-Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+Insertando la instrucción `debugger;` en el código fuente de un script habilitará un punto de interrupción en esa posición en el código:
 
 <!-- eslint-disable no-debugger -->
 
@@ -36,13 +36,13 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Once the debugger is run, a breakpoint will occur at line 3:
+Un punto de interrupción sucederá en la línea 3 una vez que el depurador sea ejecutado:
 
 ```txt
 $ node inspect myscript.js
-< Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
-< For help, see: https://nodejs.org/en/docs/inspector
-< Debugger attached.
+<Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
+< Ver para ayuda: https://nodejs.org/en/docs/inspector
+< Depurador adjunto.
 Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
