@@ -43,21 +43,21 @@ $ node inspect myscript.js
 <Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
 < Ver para ayuda: https://nodejs.org/en/docs/inspector
 < Depurador adjunto.
-Break on start in myscript.js:1
+Interrupción en el inicio en myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   debugger;
 debug> cont
 < hello
-break in myscript.js:3
+Interrupción en myscript.js:3 
   1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
 > 3   debugger;
   4   console.log('world');
   5 }, 1000);
 debug> next
-break in myscript.js:4
-  2 setTimeout(() => {
+Interrupción en myscript.js:4
+   setTimeout(() => {
   3   debugger;
 > 4   console.log('world');
   5 }, 1000);
@@ -70,7 +70,7 @@ Press Ctrl + C to leave debug repl
 4
 debug> next
 < world
-break in myscript.js:5
+interrupción en myscript.js:5
   3   debugger;
   4   console.log('world');
 > 5 }, 1000);
@@ -79,17 +79,17 @@ break in myscript.js:5
 debug> .exit
 ```
 
-The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
+El comando `repl` permite que el código sea evaluado de forma remota. El comando `next` continúa en la siguiente línea. Escribe `help` para ver los comandos adiconales disponibles.
 
-Pressing `enter` without typing a command will repeat the previous debugger command.
+Presionando `enter` sin escribir un comando repetirá el comando del depurador previo.
 
-## Watchers
+## Monitores
 
-It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
+Es posible observar los valores variables y de expresión mientras se hace una depuración. Cada expresión de la lista de monitores sera evaluada en el contexto actual y mostrada inmediatamente antes de clasificar las interrupciones del código fuente en cada punto de interrupción.
 
-To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
+Escribe `watch('my_expression')` para comenzar con una expresión. El comando `watchers` imprimirá los monitores activos. Por el contrario, escribe `unwatch('my_expression')` para eliminar un monitor.
 
-## Command reference
+## Comando de referencia
 
 ### Stepping
 
