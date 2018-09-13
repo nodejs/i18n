@@ -2456,7 +2456,7 @@ added: v8.4.0
 * `callback` {Function}
 * Returns: {http2.Http2ServerResponse}
 
-Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Establece el valor del tiempo de espera de [`Http2Stream`]() a `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2470,15 +2470,15 @@ added: v8.4.0
 
 Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but applies getters, setters, and methods based on HTTP/2 logic.
 
-`destroyed`, `readable`, and `writable` properties will be retrieved from and set on `response.stream`.
+Las propiedades `destroyed`, `readable`, y `writable` serán recuperadas desde y establecidas en `response.stream`.
 
-`destroy`, `emit`, `end`, `on` and `once` methods will be called on `response.stream`.
+Los métodos de `destroy`, `emit`, `end`, `on` y `once` serán llamados en `response.stream`.
 
 El método de `setTimeout` será llamado en `response.stream.session`.
 
-`pause`, `read`, `resume`, and `write` will throw an error with code `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` y Sockets][] para más información.
+`pause`, `read`, `resume`, y `write` arrojarán un error con el código `ERR_HTTP2_NO_SOCKET_MANIPULATION`. Vea [`Http2Session` y Sockets][] para más información.
 
-All other interactions will be routed directly to the socket.
+Todas las otras interacciones serán enrutadas directamente al socket.
 
 Ejemplo:
 
@@ -2640,21 +2640,21 @@ La propiedad de `name` del `PerformanceEntry` será igual a `'Http2Stream'` o a 
 
 Si `name` es igual a `Http2Stream`, el `PerformanceEntry` contendrá las siguientes propiedades adicionales:
 
-* `bytesRead` {number} The number of `DATA` frame bytes received for this `Http2Stream`.
-* `bytesWritten` {number} The number of `DATA` frame bytes sent for this `Http2Stream`.
+* `bytesRead` {number} El número de bytes recibidos del frame `DATA` para este `Http2Stream`.
+* `bytesWritten` {number} El número de bytes enviados del frame `DATA` para este `Http2Stream`.
 * `id` {number} El identificador del `Http2Stream` asociado
-* `timeToFirstByte` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and the reception of the first `DATA` frame.
-* `timeToFirstByteSent` {number} The number of milliseconds elapsed between the `PerformanceEntry` `startTime` and sending of the first `DATA` frame.
+* `timeToFirstByte` {number} El número de milisegundos transcurridos entre el `PerformanceEntry` `startTime` y la recepción del primer frame `DATA` .
+* `timeToFirstByteSent` {number} El número de milisegundos transcurridos entre el `PerformanceEntry` `startTime` y el envío del primer frame `DATA` .
 * `timeToFirstHeader` {number} El número de milisegundos transcurridos entre el `PerformanceEntry` `startTime` y la recepción del primer encabezado.
 
 Si `name` es igual a `Http2Session`, el `PerformanceEntry` contendrá las siguientes propiedades adicionales:
 
 * `bytesRead` {number} El número de bytes recibidos para este `Http2Session`.
 * `bytesWritten` {number} El número de bytes enviados para este `Http2Session`.
-* `framesReceived` {number} The number of HTTP/2 frames received by the `Http2Session`.
-* `framesSent` {number} The number of HTTP/2 frames sent by the `Http2Session`.
+* `framesReceived` {number} El número de frames HTTP/2 recibidos por la `Http2Session`.
+* `framesSent` {number} El número de frames HTTP/2 enviados por la `Http2Session`.
 * `maxConcurrentStreams` {number} The maximum number of streams concurrently open during the lifetime of the `Http2Session`.
-* `pingRTT` {number} The number of milliseconds elapsed since the transmission of a `PING` frame and the reception of its acknowledgment. Solo está presente si un frame de `PING` ha sido enviado en la `Http2Session`.
+* `pingRTT` {number} El número de milisegundos transcurridos desde la transmisión de un frame `PING` y la recepción de su reconocimiento. Solo está presente si un frame de `PING` ha sido enviado en la `Http2Session`.
 * `streamAverageDuration` {number} La duración promedio (en milisegundos) para todas las instancias de `Http2Stream` .
 * `streamCount` {number} El número de instancias de `Http2Stream` procesadas por la `Http2Session`.
 * `type` {string} Either `'server'` or `'client'` to identify the type of `Http2Session`.
