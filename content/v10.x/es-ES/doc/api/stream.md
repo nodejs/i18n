@@ -758,13 +758,13 @@ added: v0.9.4
 * `size` {number} Argumento opcional para especificar cuántos datos se van a leer.
 * Devuelve: {string|Buffer|null}
 
-El método `readable.read()` sustrae algunos datos del búfer interno y los devuelve. Si no hay datos disponibles para leer, se devuelve `null`. By default, the data will be returned as a `Buffer` object unless an encoding has been specified using the `readable.setEncoding()` method or the stream is operating in object mode.
+El método `readable.read()` sustrae algunos datos del búfer interno y los devuelve. Si no hay datos disponibles para leer, se devuelve `null`. De manera predeterminada, los datos se devolverán como un objeto `Buffer`, a menos de que una codificación haya sido especificada usando el método `readable.setEncoding()`, o que el stream esté operando en modo objeto.
 
-The optional `size` argument specifies a specific number of bytes to read. If `size` bytes are not available to be read, `null` will be returned *unless* the stream has ended, in which case all of the data remaining in the internal buffer will be returned.
+El argumento `size` opcional especifica un número de bytes para leer. Si el `size` de los bytes no están disponibles para ser leídos, `null` será devuelto *a menos que* el stream haya terminado, en tal caso todos los datos restantes en el búfer interno serán devueltos.
 
-If the `size` argument is not specified, all of the data contained in the internal buffer will be returned.
+Si el `size` del argumento no es especificado, todos los datos que están en el búfer interno serán devueltos.
 
-The `readable.read()` method should only be called on `Readable` streams operating in paused mode. In flowing mode, `readable.read()` is called automatically until the internal buffer is fully drained.
+El método `readable.read()` solo debería ser llamado en los streams `Readable` operando en modo pausado. En modo fluido, se llama `readable.read()` automáticamente hasta que el búfer interno es vaciado completamente.
 
 ```js
 const readable = getReadableStreamSomehow();
