@@ -2367,11 +2367,11 @@ Tenga en cuenta que `buffer.constants` es una propiedad sobre el módulo de `buf
 added: v8.2.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} El tamaño más grande asignado para una sola instancia de `Buffer`.
 
-On 32-bit architectures, this value is `(2^30)-1` (~1GB). On 64-bit architectures, this value is `(2^31)-1` (~2GB).
+En arquitecturas de 32-bit, este valor es `(2^30)-1` (~1GB). En arquitecturas de 64-bit, este valor es `(2^31)-1` (~2GB).
 
-This value is also available as [`buffer.kMaxLength`][].
+Este valor también está disponible como [`buffer.kMaxLength`][].
 
 ### buffer.constants.MAX_STRING_LENGTH
 
@@ -2379,7 +2379,7 @@ This value is also available as [`buffer.kMaxLength`][].
 added: v8.2.0
 -->
 
-* {integer} The largest length allowed for a single `string` instance.
+* {integer} La longitud más larga asignada para una sola instancia de `string`.
 
 Represents the largest `length` that a `string` primitive can have, counted in UTF-16 code units.
 
