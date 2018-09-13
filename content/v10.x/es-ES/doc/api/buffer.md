@@ -2304,19 +2304,19 @@ Devuelve un `Buffer` sin agrupar.
 
 Para evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente, las asignaciones predeterminadas debajo de 4KB se recortan desde un único objeto asignado más grande.
 
-In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
+En el caso donde un desarrollado pueda necesitar retener una pequeña porción de la memoria desde un grupo por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `SlowBuffer` y luego copiar los bits relevantes.
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita mantener alrededor algunos pequeños pedazos de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asigna para datos retenidos
   const sb = SlowBuffer(10);
 
-  // Copy the data into the new allocation
+  // Copia los datos dentro de la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
