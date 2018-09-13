@@ -526,88 +526,84 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
-    <td>Sent to a process when a system timer has elapsed.</td>
+    <td>Enviada a un proceso cuando un temporizador del sistema ha transcurrido.</td>
   </tr>
   <tr>
     <td><code>SIGWINCH</code></td>
-    <td>Sent to a process when the controlling terminal has changed its
-    size.</td>
+    <td>Enviada a un proceso cuando la terminal de control ha cambiado su tamaño.</td>
   </tr>
   <tr>
     <td><code>SIGIO</code></td>
-    <td>Sent to a process when I/O is available.</td>
+    <td>Enviada a un proceso cuando la opción E/A está disponible.</td>
   </tr>
   <tr>
     <td><code>SIGPOLL</code></td>
-    <td>Synonym for <code>SIGIO</code></td>
+    <td>Sinónimo para <code>SIGIO</code></td>
   </tr>
   <tr>
     <td><code>SIGLOST</code></td>
-    <td>Sent to a process when a file lock has been lost.</td>
+    <td>Enviada a un proceso cuando un bloqueo de archivo se ha perdido.</td>
   </tr>
   <tr>
     <td><code>SIGPWR</code></td>
-    <td>Sent to a process to notify of a power failure.</td>
+    <td>Enviada a un proceso para notificar de un fallo de alimentación.</td>
   </tr>
   <tr>
     <td><code>SIGINFO</code></td>
-    <td>Synonym for <code>SIGPWR</code></td>
+    <td>Sinónimo para <code>SIGPWR</code></td>
   </tr>
   <tr>
     <td><code>SIGSYS</code></td>
-    <td>Sent to a process to notify of a bad argument.</td>
+    <td>Enviada a un proceso para notificar un argumento erróneo.</td>
   </tr>
   <tr>
     <td><code>SIGUNUSED</code></td>
-    <td>Synonym for <code>SIGSYS</code></td>
+    <td>Sinónimo para <code>SIGSYS</code></td>
   </tr>
 </table>
 
-### Error Constants
+### Constantes de Error
 
-The following error constants are exported by `os.constants.errno`:
+Las siguientes constantes de error son exportadas por `os.constants.errno`:
 
-#### POSIX Error Constants
+#### Constantes de Error POSIX
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
-    <td>Indicates that the list of arguments is longer than expected.</td>
+    <td>Indica que la lista de argumentos es mas larga de lo esperado.</td>
   </tr>
   <tr>
     <td><code>EACCES</code></td>
-    <td>Indicates that the operation did not have sufficient permissions.</td>
+    <td>Indica que la operación no tiene los permisos suficientes.</td>
   </tr>
   <tr>
     <td><code>EADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica que la dirección de red se encuentra en uso.</td>
   </tr>
   <tr>
     <td><code>EADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is currently unavailable for
-    use.</td>
+    <td>Indica que la dirección de red se encuentra no disponible para su uso.</td>
   </tr>
   <tr>
     <td><code>EAFNOSUPPORT</code></td>
-    <td>Indicates that the network address family is not supported.</td>
+    <td>Indica que la familia de la dirección de red no es compatible.</td>
   </tr>
   <tr>
     <td><code>EAGAIN</code></td>
-    <td>Indicates that there is currently no data available and to try the
-    operation again later.</td>
+    <td>Indica que no hay datos disponibles y que se debe intentar la operación más tarde.</td>
   </tr>
   <tr>
     <td><code>EALREADY</code></td>
-    <td>Indicates that the socket already has a pending connection in
-    progress.</td>
+    <td>Indica que el socket ya tiene una conexión pendiente en proceso.</td>
   </tr>
   <tr>
     <td><code>EBADF</code></td>
-    <td>Indicates that a file descriptor is not valid.</td>
+    <td>Indica que un descriptor del archivo no es válido.</td>
   </tr>
   <tr>
     <td><code>EBADMSG</code></td>
