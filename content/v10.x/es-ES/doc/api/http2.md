@@ -1255,17 +1255,17 @@ server.on('stream', (stream) => {
 });
 ```
 
-### Class: Http2Server
+### Clase: Http2Server
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* Extends: {net.Server}
+* Extiende a: {net.Server}
 
-In `Http2Server`, there are no `'clientError'` events as there are in HTTP1. However, there are `'sessionError'`, and `'streamError'` events for errors emitted on the socket, or from `Http2Session` or `Http2Stream` instances.
+En `Http2Server`, no hay eventos `'clientError'` como los hay en HTTP1. Sin embargo, hay eventos `'sessionError'`, y `'streamError'` para errores emitidos en el socket, o desde las instancias `Http2Session` o `Http2Stream` .
 
-#### Event: 'checkContinue'
+#### Evento: 'checkContinue'
 
 <!-- YAML
 added: v8.5.0
@@ -1291,7 +1291,7 @@ added: v8.4.0
 
 Emitido cada vez que hay una solicitud. Tenga en cuenta que pueden haber múltiples solicitudes por sesión. Vea la [Compatibility API](#http2_compatibility_api).
 
-#### Event: 'session'
+#### Evento: 'session'
 
 <!-- YAML
 added: v8.4.0
@@ -1299,7 +1299,7 @@ added: v8.4.0
 
 El evento `'session'` se emite cuando una `Http2Session` nueva es creada por el `Http2Server` .
 
-#### Event: 'sessionError'
+#### Evento: 'sessionError'
 
 <!-- YAML
 added: v8.4.0
@@ -1307,7 +1307,7 @@ added: v8.4.0
 
 El evento de `'sessionError'` se emite cuando un evento de `'error'` es emitido por un objeto de `Http2Session` asociado con el `Http2Server`.
 
-#### Event: 'streamError'
+#### Evento: 'streamError'
 
 <!-- YAML
 added: v8.5.0
@@ -1315,7 +1315,7 @@ added: v8.5.0
 
 Si un `ServerHttp2Stream` emite un evento de `'error'`, será reenviado aquí. El stream ya estará destruido cuando se active este evento.
 
-#### Event: 'stream'
+#### Evento: 'stream'
 
 <!-- YAML
 added: v8.4.0
@@ -1346,7 +1346,7 @@ server.on('stream', (stream, headers, flags) => {
 });
 ```
 
-#### Event: 'timeout'
+#### Evento: 'timeout'
 
 <!-- YAML
 added: v8.4.0
@@ -1362,19 +1362,19 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Detiene al servidor de aceptar nuevas conexiones. See [`net.Server.close()`][].
+Detiene al servidor de aceptar nuevas conexiones. Vea [`net.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
-### Class: Http2SecureServer
+### Clase: Http2SecureServer
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* Extends: {tls.Server}
+* Extiende a: {tls.Server}
 
-#### Event: 'checkContinue'
+#### Evento: 'checkContinue'
 
 <!-- YAML
 added: v8.5.0
@@ -1400,7 +1400,7 @@ added: v8.4.0
 
 Emitido cada vez que hay una solicitud. Tenga en cuenta que pueden haber múltiples solicitudes por sesión. Vea la [Compatibility API](#http2_compatibility_api).
 
-#### Event: 'session'
+#### Evento: 'session'
 
 <!-- YAML
 added: v8.4.0
@@ -1408,7 +1408,7 @@ added: v8.4.0
 
 El evento de `'session'` se emite cuando `Http2SecureServer` crea un nuevo `Http2Session` .
 
-#### Event: 'sessionError'
+#### Evento: 'sessionError'
 
 <!-- YAML
 added: v8.4.0
@@ -1416,7 +1416,7 @@ added: v8.4.0
 
 El evento `'sessionError'` se emite cuando un evento `'error'` es emitido por un objeto `Http2Session` asociado al `Http2SecureServer` .
 
-#### Event: 'stream'
+#### Evento: 'stream'
 
 <!-- YAML
 added: v8.4.0
@@ -2653,7 +2653,7 @@ Si `name` es igual a `Http2Session`, el `PerformanceEntry` contendrá las siguie
 * `bytesWritten` {number} El número de bytes enviados para este `Http2Session`.
 * `framesReceived` {number} El número de frames HTTP/2 recibidos por la `Http2Session`.
 * `framesSent` {number} El número de frames HTTP/2 enviados por la `Http2Session`.
-* `maxConcurrentStreams` {number} The maximum number of streams concurrently open during the lifetime of the `Http2Session`.
+* `maxConcurrentStreams` {number} El número máximo de streams abiertos de manera concurrente durante el tiempo de vida de la `Http2Session`.
 * `pingRTT` {number} El número de milisegundos transcurridos desde la transmisión de un frame `PING` y la recepción de su reconocimiento. Solo está presente si un frame de `PING` ha sido enviado en la `Http2Session`.
 * `streamAverageDuration` {number} La duración promedio (en milisegundos) para todas las instancias de `Http2Stream` .
 * `streamCount` {number} El número de instancias de `Http2Stream` procesadas por la `Http2Session`.
