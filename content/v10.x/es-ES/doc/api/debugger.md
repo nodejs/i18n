@@ -91,29 +91,29 @@ Escribe `watch('my_expression')` para comenzar con una expresión. El comando `w
 
 ## Comando de referencia
 
-### Stepping
+### Ejecuanto paso a paso
 
-* `cont`, `c` - Continue execution
-* `next`, `n` - Step next
-* `step`, `s` - Step in
-* `out`, `o` - Step out
-* `pause` - Pause running code (like pause button in Developer Tools)
+* `cont`, `c` - Continúe ejecución
+* `next`, `n` - Siguiente paso
+* `step`, `s` - Entrar
+* `out`, `o` - Salir
+* `pause` - Detener ejecución del código (parecido al botón de pausa en las Herramientas para desarrolladores)
 
-### Breakpoints
+### Puntos de interrupción
 
-* `setBreakpoint()`, `sb()` - Set breakpoint on current line
-* `setBreakpoint(line)`, `sb(line)` - Set breakpoint on specific line
-* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
-* `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
-* `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
+* `setBreakpoint()`. `sb()` - Seleccionar punto de interrupción en la línea actual
+* `setBreakpoint(line)`, `sb(line)` - Colocar un punto de interrupción en una línea específica
+* `setBreakpoint('fn()')`, `sb(...)` - Establecer un punto de interrupción en una primera instrucción en las funciones del programa
+* `setBreakpoint('script.js', 1)`, `sb(...)` - Establecer un punto de interrupción en la primera línea del `script.js`
+* `clearBreakpoint('script.js', 1)`m `cb(...)` - Limpiar el punto de interrupción en `script.js` en la línea 1
 
-It is also possible to set a breakpoint in a file (module) that is not loaded yet:
+Asimismo, es posible colocar un punto de interrupción en un archivo (módulo) que no haya sido cargado aún:
 
 ```txt
 $ node inspect main.js
 < Debugger listening on ws://127.0.0.1:9229/4e3db158-9791-4274-8909-914f7facf3bd
-< For help, see: https://nodejs.org/en/docs/inspector
-< Debugger attached.
+< Para ayuda, visitar: https://nodejs.org/en/docs/inspector
+< Depurador adjunto.
 Break on start in main.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { const mod = require('./mod.js');
   2 mod.hello();
