@@ -24,7 +24,7 @@ Ten przykład "Witaj świecie" jest prostym dodatkiem napisanym w C++, który je
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Najpierw, utwórz plik `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -60,11 +60,11 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Po `NODE_MODULE` nie ma średnika, ponieważ nie jest on funkcją (zobacz `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the .node suffix).
+`module_name` musi odpowiadać nazwie pliku końcowego pliku binarnego (z wyjątkiem sufiksu .node).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+W przykładzie `hello.cc` funkcją inicjującą jest `init`, a nazwa modułu dodatku to `addon`.
 
 ### Building
 
@@ -103,7 +103,7 @@ Zobacz przykłady poniżej, aby uzyskać więcej informacji, lub odwiedź <https
 
 Ponieważ dokładna ścieżka do skompilowanego dodatku binarnego może się różnić w zależności od sposobu kompilacji (tj. czasami może znajdować się w `./build/Debug/`), dodatki mogą korzystać z pakietu [bindings](https://github.com/TooTallNate/node-bindings) do załadowania skompilowanego modułu.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Zauważ, że mimo iż implementacja pakietu `bindings` jest bardziej wyrafinowana w sposobie lokalizowania modułów dodatków, w zasadzie używa wzoru try-catch podobnego do:
 
 ```js
 try {
@@ -113,9 +113,9 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### Łączenie z własnymi zależnościami Node.js
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js korzysta z wielu statycznie połączonych bibliotek, takich jak V8, libuv, czy OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
 
 * When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
