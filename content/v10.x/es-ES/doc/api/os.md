@@ -518,12 +518,11 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
-    <td>Sent to a process when it grows a file larger than the maximum
-    allowed.</td>
+    <td>Enviada a un proceso cuando el archivo crece más grande que el máximo permitido.</td>
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
-    <td>Sent to a process when a virtual timer has elapsed.</td>
+    <td>Enviada a un proceso cuando el temporizador virtual ha transcurrido.</td>
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
