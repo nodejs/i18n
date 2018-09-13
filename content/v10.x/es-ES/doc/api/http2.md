@@ -512,7 +512,7 @@ added: v8.4.0
 added: v9.4.0
 -->
 
-* `alt` {string} A description of the alternative service configuration as defined by [RFC 7838](https://tools.ietf.org/html/rfc7838).
+* `alt` {string} Una descripción de la configuración del servicio alternativo como lo define [RFC 7838](https://tools.ietf.org/html/rfc7838).
 * `originOrStream` {number|string|URL|Object} O una string de URL que especifica el origen (o un `Object` con una propiedad de `origin`) o el identificador numérico de un `Http2Stream` activo, como lo da la propiedad de `http2stream.id` .
 
 Submits an `ALTSVC` frame (as defined by [RFC 7838](https://tools.ietf.org/html/rfc7838)) to the connected client.
