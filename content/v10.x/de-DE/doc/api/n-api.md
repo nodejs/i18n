@@ -151,7 +151,7 @@ Die N-API verwendet sowohl Rückgabewerte als auch JavaScript-Exceptions zur Feh
 
 Alle N-API-Funktionen haben das gleiche Fehlerbehandlungsmuster. Der Rückgabetyp aller API-Funktionen ist `napi_status`.
 
-Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Exception aufgetreten ist. Wenn ein Fehler UND eine Exception aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgesendet. Wenn eine Ausnahme, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgesendet.
+Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Exception aufgetreten ist. Wenn ein Fehler UND eine Exception aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgesendet. Wenn eine Exception, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgesendet.
 
 In Fällen, in denen ein anderer Rückgabewert als `napi_ok` oder `napi_pending_exception` zurückgegeben wird, muss [`napi_is_exception_pending`][] aufgerufen werden, um zu prüfen, ob eine Exception aussteht. Weitere Details finden Sie im Abschnitt über Exceptions.
 
@@ -206,7 +206,7 @@ Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception anste
 
 ### Exceptions
 
-Jeder N-API-Funktionsaufruf kann zu einer ausstehenden JavaScript-Ausnahme führen. Dies ist natürlich der Fall für jede Funktion, die die Ausführung von JavaScript verursachen kann, aber die N-API gibt an, dass eine Exception bei der Rückkehr von einer der vielen API-Funktionen anhängig sein kann.
+Jeder N-API-Funktionsaufruf kann zu einer ausstehenden JavaScript-Exception führen. Dies ist natürlich der Fall für jede Funktion, die die Ausführung von JavaScript verursachen kann, aber die N-API gibt an, dass eine Exception bei der Rückkehr von einer der vielen API-Funktionen anhängig sein kann.
 
 Wenn der von einer Funktion zurückgegebene `napi_status` `napi_ok` ist, dann ist keine Exception ausstehend und es ist keine zusätzliche Aktion erforderlich. Wenn der zurückgegebene `napi_status` etwas anderes als `napi_ok` oder `napi_pending_exception` ist, muss, um zu versuchen, sich wiederherzustellen und fortzusetzen, anstatt einfach sofort zurückzusenden, [`napi_is_exception_pending`][] aufgerufen werden, um festzustellen, ob eine Exception aussteht oder nicht.
 
@@ -262,7 +262,7 @@ NODE_EXTERN napi_status napi_throw_error(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] code`: Optionaler Fehlercode, der bei einem Fehler eingestellt werden kann.
+- `[in] code`: Optionaler Fehlercode, der bei einem Fehler festgelegt werden kann.
 - `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
@@ -282,7 +282,7 @@ NODE_EXTERN napi_status napi_throw_type_error(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] code`: Möglicher Fehlercode, der bei einem Fehler eingestellt werden kann.
+- `[in] code`: Optionaler Fehlercode, der bei einem Fehler eingestellt werden kann.
 - `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
@@ -302,7 +302,7 @@ NODE_EXTERN napi_status napi_throw_range_error(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] code`: Möglicher Fehlercode, der bei einem Fehler eingestellt werden kann.
+- `[in] code`: Optionaler Fehlercode, der bei einem Fehler eingestellt werden kann.
 - `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
@@ -344,7 +344,7 @@ NODE_EXTERN napi_status napi_create_error(napi_env env,
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
-- `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
+- `[in] msg`: `napi_value`, die auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
 - `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
@@ -366,7 +366,7 @@ NODE_EXTERN napi_status napi_create_type_error(napi_env env,
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
-- `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
+- `[in] msg`: `napi_value`, die auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
 - `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
@@ -388,7 +388,7 @@ NODE_EXTERN napi_status napi_create_range_error(napi_env env,
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionale `napi_value` mit der Zeichenkette für den Fehlercode, der dem Fehler zugeordnet werden soll.
-- `[in] msg`: `napi_value`, das auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
+- `[in] msg`: `napi_value`, die auf einen JavaScript-`String` verweist, der als Nachricht für den `Fehler` verwendet werden soll.
 - `[out] result`: `napi_value` repräsentiert den erzeugten Fehler.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
@@ -407,13 +407,13 @@ napi_status napi_get_and_clear_last_exception(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[out] result`: Die Ausnahme, wenn eine ausständig ist, ansonsten NULL.
+- `[out] result`: Die Exception, wenn eine aussteht, ansonsten NULL.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-Diese API gibt true aus, wenn die Ausnahme ausständig ist.
+Diese API gibt true aus, wenn die Exception aussteht.
 
-Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ausständig ist.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_is_exception_pending
 
@@ -426,13 +426,13 @@ napi_status napi_is_exception_pending(napi_env env, bool* result);
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[out] result`: Boolean-Wert, der auf true gesetzt wird, wenn eine Ausnahme ansteht.
+- `[out] result`: Boolean-Wert, der auf true gesetzt wird, wenn eine Exception aussteht.
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-Diese API gibt true aus, wenn die Ausnahme ausständig ist.
+Diese API gibt true aus, wenn die Exception aussteht.
 
-Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Ausnahme ausständig ist.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_fatal_exception
 
@@ -473,7 +473,7 @@ NAPI_NO_RETURN void napi_fatal_error(const char* location,
 
 Der Funktionsaufruf wird nicht zurückgesendet, der Prozess wird abgebrochen.
 
-Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 ## Object Lifetime management
 
