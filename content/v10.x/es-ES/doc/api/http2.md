@@ -1921,7 +1921,7 @@ const server = http2.createServer((req, res) => {
 
 In order to create a mixed [HTTPS](https.html) and HTTP/2 server, refer to the [ALPN negotiation](#http2_alpn_negotiation) section. Upgrading from non-tls HTTP/1 servers is not supported.
 
-The HTTP/2 compatibility API is composed of [`Http2ServerRequest`]() and [`Http2ServerResponse`](). They aim at API compatibility with HTTP/1, but they do not hide the differences between the protocols. Por ejemplo, se ignora el mensaje de estado para los códigos de HTTP.
+La API de compatibilidad de HTTP/2 está compuesta por [`Http2ServerRequest`]() y [`Http2ServerResponse`](). Su objetivo es la compatibilidad de la API con HTTP/1, pero no ocultan las diferencias entre los protocolos. Por ejemplo, se ignora el mensaje de estado para los códigos de HTTP.
 
 ### ALPN negotiation
 
@@ -1955,7 +1955,7 @@ function onRequest(req, res) {
 
 El evento de `'request'` funciona de manera idéntica en [HTTPS](https.html) y HTTP/2.
 
-### Class: http2.Http2ServerRequest
+### Clase: http2.Http2ServerRequest
 
 <!-- YAML
 added: v8.4.0
@@ -2013,7 +2013,7 @@ added: v8.4.0
 
 * {Object}
 
-The request/response headers object.
+El objeto de encabezados de solicitud/respuesta.
 
 Pares de valores-clave de nombres de encabezado y valores. Los nombres de los encabezados están en minúsculas. Ejemplo:
 
@@ -2028,7 +2028,7 @@ console.log(request.headers);
 
 Vea [Objeto de Encabezados de HTTP/2](#http2_headers_object).
 
-In HTTP/2, the request path, hostname, protocol, and method are represented as special headers prefixed with the `:` character (e.g. `':path'`). Estos encabezados especiales serán incluidos en el objeto de `request.headers` . Care must be taken not to inadvertently modify these special headers or errors may occur. Por ejemplo, remover todos los encabezados de la solicitud ocasionará que ocurran errores:
+En HTTP/2, la ruta de solicitud, el nombre de host, el protocolo, y el método están representados como encabezados especiales con el caracter `:` como prefijo (por ejemplo, `':path'`). Estos encabezados especiales serán incluidos en el objeto de `request.headers` . Care must be taken not to inadvertently modify these special headers or errors may occur. Por ejemplo, remover todos los encabezados de la solicitud ocasionará que ocurran errores:
 
 ```js
 removeAllHeaders(request.headers);
