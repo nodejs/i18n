@@ -635,67 +635,67 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EDEADLK</code></td>
-    <td>Indicates that a resource deadlock has been avoided.</td>
+    <td>Indica que un bloqueo de recursos ha sido evadido.</td>
   </tr>
   <tr>
     <td><code>EDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica que una dirección destino es requerida.</td>
   </tr>
   <tr>
     <td><code>EDOM</code></td>
-    <td>Indicates that an argument is out of the domain of the function.</td>
+    <td>Indica que un argumento está fuera del dominio de la función.</td>
   </tr>
   <tr>
     <td><code>EDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica que se ha excedido la cuota del disco.</td>
   </tr>
   <tr>
     <td><code>EEXIST</code></td>
-    <td>Indicates that the file already exists.</td>
+    <td>Indica que el archivo existe.</td>
   </tr>
   <tr>
     <td><code>EFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica una dirección de puntero no válido.</td>
   </tr>
   <tr>
     <td><code>EFBIG</code></td>
-    <td>Indicates that the file is too large.</td>
+    <td>Indica que el archivo es muy grande.</td>
   </tr>
   <tr>
     <td><code>EHOSTUNREACH</code></td>
-    <td>Indicates that the host is unreachable.</td>
+    <td>Indica que el host es inalcanzable.</td>
   </tr>
   <tr>
     <td><code>EIDRM</code></td>
-    <td>Indicates that the identifier has been removed.</td>
+    <td>Indica que el identificador ha sido removido.</td>
   </tr>
   <tr>
     <td><code>EILSEQ</code></td>
-    <td>Indicates an illegal byte sequence.</td>
+    <td>Indica una secuencia ilegal de bytes.</td>
   </tr>
   <tr>
     <td><code>EINPROGRESS</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica que una operación está en progreso.</td>
   </tr>
   <tr>
     <td><code>EINTR</code></td>
-    <td>Indicates that a function call was interrupted.</td>
+    <td>Indica que un llamado a la función fue interrumpido.</td>
   </tr>
   <tr>
     <td><code>EINVAL</code></td>
-    <td>Indicates that an invalid argument was provided.</td>
+    <td>Indica que un argumento inválido fue proporcionado.</td>
   </tr>
   <tr>
     <td><code>EIO</code></td>
-    <td>Indicates an otherwise unspecified I/O error.</td>
+    <td>Indica un error E/A no especificado.</td>
   </tr>
   <tr>
     <td><code>EISCONN</code></td>
-    <td>Indicates that the socket is connected.</td>
+    <td>Indica que el socket está conectado.</td>
   </tr>
   <tr>
     <td><code>EISDIR</code></td>
-    <td>Indicates that the path is a directory.</td>
+    <td>Indica que la ruta es un directorio.</td>
   </tr>
   <tr>
     <td><code>ELOOP</code></td>
