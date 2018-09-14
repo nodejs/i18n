@@ -1003,68 +1003,67 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAECONNRESET</code></td>
-    <td>Indicates that the connection has been reset by the peer.</td>
+    <td>Indica que la conexión fue reiniciada por el par.</td>
   </tr>
   <tr>
     <td><code>WSAENOBUFS</code></td>
-    <td>Indicates that there is no buffer space available.</td>
+    <td>Indica que no hay espacio de búfer disponible.</td>
   </tr>
   <tr>
     <td><code>WSAEISCONN</code></td>
-    <td>Indicates that the socket is already connected.</td>
+    <td>Indica que el socket se encuentra conectado.</td>
   </tr>
   <tr>
     <td><code>WSAENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica que el socket no se encuentra conectado.</td>
   </tr>
   <tr>
     <td><code>WSAESHUTDOWN</code></td>
-    <td>Indicates that data cannot be sent after the socket has been
-    shutdown.</td>
+    <td>Indica que los datos no pueden ser enviados luego de que el socket se haya apagado.</td>
   </tr>
   <tr>
     <td><code>WSAETOOMANYREFS</code></td>
-    <td>Indicates that there are too many references.</td>
+    <td>Indica que hay demasiadas referencias.</td>
   </tr>
   <tr>
     <td><code>WSAETIMEDOUT</code></td>
-    <td>Indicates that the connection has timed out.</td>
+    <td>Indica que la conexión ha sido interrumpida.</td>
   </tr>
   <tr>
     <td><code>WSAECONNREFUSED</code></td>
-    <td>Indicates that the connection has been refused.</td>
+    <td>Indica que la conexión ha sido rechazada.</td>
   </tr>
   <tr>
     <td><code>WSAELOOP</code></td>
-    <td>Indicates that a name cannot be translated.</td>
+    <td>Indica que el nombre no puede ser traducido.</td>
   </tr>
   <tr>
     <td><code>WSAENAMETOOLONG</code></td>
-    <td>Indicates that a name was too long.</td>
+    <td>Indica que el nombre es demasiado largo.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTDOWN</code></td>
-    <td>Indicates that a network host is down.</td>
+    <td>Indica que un host de la red está caído.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTUNREACH</code></td>
-    <td>Indicates that there is no route to a network host.</td>
+    <td>Indica que no hay ninguna ruta al host de la red.</td>
   </tr>
   <tr>
     <td><code>WSAENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica que el directorio no está vacío.</td>
   </tr>
   <tr>
     <td><code>WSAEPROCLIM</code></td>
-    <td>Indicates that there are too many processes.</td>
+    <td>Indica que hay demasiados procesos.</td>
   </tr>
   <tr>
     <td><code>WSAEUSERS</code></td>
-    <td>Indicates that the user quota has been exceeded.</td>
+    <td>Indica que se ha excedido la cuota de usuarios.</td>
   </tr>
   <tr>
     <td><code>WSAEDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica que la cuota de disco ha sido excedida.</td>
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
