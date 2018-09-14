@@ -12,7 +12,7 @@ El código JavaScript puede ser compilado y ejecutado inmediatamente o compilado
 
 Un caso de uso común es ejecutar el código en un entorno de espacio aislado. El código de espacio aislado utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
 
-One can provide the context by ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) a sandbox object. The sandboxed code treats any property on the sandbox like a global variable. Any changes on global variables caused by the sandboxed code are reflected in the sandbox object.
+Uno puedo proporcionar el contexto con ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) un objeto de espacio aislado. El código sandboxed trata cualquier propiedad en el sandbox como una variable global. Cualquier cambio en las variables globales causado por el código sandboxed se refleja en el objeto sandbox.
 
 ```js
 const vm = require('vm');
@@ -23,27 +23,27 @@ const sandbox = { x: 2 };
 vm.createContext(sandbox); // Contextify the sandbox.
 
 const code = 'x += 40; var y = 17;';
-// x and y are global variables in the sandboxed environment.
-// Initially, x has the value 2 because that is the value of sandbox.x.
+// x y y son variables globales en el entorno sandboxed.
+// Inicialmente, x tiene el valor 2 porque ese es el valor de sandbox.x.
 vm.runInContext(code, sandbox);
 
 console.log(sandbox.x); // 42
 console.log(sandbox.y); // 17
 
-console.log(x); // 1; y is not defined.
+console.log(x); // 1; y no está definido.
 ```
 
-**The vm module is not a security mechanism. Do not use it to run untrusted code**.
+**El módulo vm no es un mecanismo de seguridad. No lo utilice para ejecutar código no confiable**.
 
-## Class: vm.Module
+## Clase: vm.Module
 
 <!-- YAML
 added: v9.6.0
 -->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-*This feature is only available with the `--experimental-vm-modules` command flag enabled.*
+*Esta función solo está disponible con el indicador de comando `--experimental-vm-modules` habilitado.*
 
 The `vm.Module` class provides a low-level interface for using ECMAScript modules in VM contexts. It is the counterpart of the `vm.Script` class that closely mirrors [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s as defined in the ECMAScript specification.
 
