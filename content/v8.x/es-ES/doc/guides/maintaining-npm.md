@@ -7,21 +7,21 @@ $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-o si ya has clonado el npm asegúrese de que el repositorio es actualizado
+si ya has clonado el npm, asegúrese de que el repositorio es actualizado
 
 ```console
 $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Paso 2: Construir lanzamiento
+## Paso 2: Construir el lanzamiento
 
 ```console
 $ git checkout vX.Y.Z
 $ make release
 ```
 
-Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `últimos` en git generalmente se lanza como `siguiente` cuando es hora de bajada
+Nota: Por favor, corra `npm dist-tag is npm` y, asegúrese de que es la `latest` **dist-tag**. `últimos` en git generalmente se lanza como `siguiente` cuando es hora de bajada
 
 ## Paso 3: Remover viejos npm
 
