@@ -1612,13 +1612,13 @@ napi_status napi_get_value_int64(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: C `int64` primitive equivalent of the given JavaScript `Number`.
+- `[out] result`: `int64` primitivo de C equivalente al `Number` de JavaScript dado.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
-This API returns the C `int64` primitive equivalent of the given JavaScript `Number`.
+Esta API devuelve un `int64` primitivo de C equivalente al `Number` de JavaScript dado.
 
-`Number` values outside the range of [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) will lose precision.
+Los valores de `Number` fuera del rango de [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) perderán precisión.
 
 Los valores numéricos no finitos (`NaN`, `+Infinity`, o `-Infinity`) establecen el resultado como cero.
 
@@ -1636,10 +1636,10 @@ napi_status napi_get_value_string_latin1(napi_env env,
                                          size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the ISO-8859-1-encoded string into. If NULL is passed in, the length of the string (in bytes) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa una cadena de JavaScript.
+- `[in] buf`: Buffer para escribir la cadena codificada en ISO-8859-1. Si se pasa NULL, se devuelve la longitud de la cadena (en bytes).
+- `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, se truncará la cadena devuelta.
 - `[out] result`: Number of bytes copied into the buffer, excluding the null terminator.
 
 Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
