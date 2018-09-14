@@ -791,19 +791,19 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
-    <td>Indicates that a function has not been implemented.</td>
+    <td>Indica que una función ha sido implementada.</td>
   </tr>
   <tr>
     <td><code>ENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica que un socket no está conectado.</td>
   </tr>
   <tr>
     <td><code>ENOTDIR</code></td>
-    <td>Indicates that the path is not a directory.</td>
+    <td>Indica que la ruta no es un directorio.</td>
   </tr>
   <tr>
     <td><code>ENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica que el directorio no está vacío.</td>
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
