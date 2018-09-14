@@ -1687,12 +1687,12 @@ napi_status napi_get_value_string_utf16(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa una cadena de JavaScript.
 - `[in] buf`: Buffer para escribir la cadena codificada en UTF16-LE. Si se pasa NULL, se devuelve la longitud de la cadena (en unidades de código de 2 bytes).
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
-- `[out] result`: Number of 2-byte code units copied into the buffer, excluding the null terminator.
+- `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, la cadena devuelta será truncada.
+- `[out] result`: Número de unidades de código de 2 bytes copiadas en el buffer, excluyendo el terminador Null.
 
-Returns `napi_ok` if the API succeeded. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
+Devuelve `napi_ok` si la API es exitosa. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
-This API returns the UTF16-encoded string corresponding the value passed in.
+Esta API devuelve una cadena codificada en UTF16 que corresponde al valor pasado.
 
 #### napi_get_value_uint32
 
@@ -1706,15 +1706,15 @@ napi_status napi_get_value_uint32(napi_env env,
                                   uint32_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: C primitive equivalent of the given `napi_value` as a `uint32_t`.
+- `[out] result`: Primitiva de C equivalente al `napi_value` dado como un `uint32_t`.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
-This API returns the C primitive equivalent of the given `napi_value` as a `uint32_t`.
+Esta API devuelve una primitiva de C equivalente al `napi_value` dado como `uint32_t`.
 
-### Functions to get global instances
+### Funciones para obtener instancias globales
 
 #### napi_get_boolean
 
@@ -1726,13 +1726,13 @@ added: v8.0.0
 napi_status napi_get_boolean(napi_env env, bool value, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The value of the boolean to retrieve.
-- `[out] result`: `napi_value` representing JavaScript `Boolean` singleton to retrieve.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor del booleano a recuperar.
+- `[out] result`: `napi_value` que representa al `Boolean` singleton de JavaScript a recuperar.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to return the JavaScript singleton object that is used to represent the given boolean value.
+Esta API es utilizada para devolver el objeto singleton de JavaScript que es utilizado para representar al valor booleano dado.
 
 #### napi_get_global
 
@@ -1744,12 +1744,12 @@ added: v8.0.0
 napi_status napi_get_global(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript `global` object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa el objeto `global` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the `global` object.
+Esta API devuelve el objeto `global`.
 
 #### napi_get_null
 
@@ -1761,12 +1761,12 @@ added: v8.0.0
 napi_status napi_get_null(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript `null` object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa al objeto `null` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the `null` object.
+Esta API devuelve el objeto `null`.
 
 #### napi_get_undefined
 
@@ -1778,12 +1778,12 @@ added: v8.0.0
 napi_status napi_get_undefined(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript Undefined value.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa al valor indefinido de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the Undefined object.
+Esta API devuelve el objeto indefinido de JavaScript.
 
 ## Working with JavaScript Values - Abstract Operations
 
