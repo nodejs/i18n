@@ -952,9 +952,9 @@ added: v0.9.4
 
 Versiones anteriores de v0.10 de Node.js tenían streams que no implementan la API del módulo `stream` como está definido actualmente. (Vea [Compatibility](#stream_compatibility_with_older_node_js_versions) para más información.)
 
-When using an older Node.js library that emits [`'data'`][] events and has a [`stream.pause()`](#stream_readable_pause) method that is advisory only, the `readable.wrap()` method can be used to create a [`Readable`][] stream that uses the old stream as its data source.
+Cuando se use una librería de Node.js más vieja que emite eventos [`'data'`][] y tiene un método [`stream.pause()`](#stream_readable_pause) que solo es consultivo, el método `readable.wrap()` puede ser usado para crear un stream [`Readable`][] que usa el viejo stream y su fuente de datos.
 
-It will rarely be necessary to use `readable.wrap()` but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
+Rara vez será necesario usar `readable.wrap()` pero el método ha sido proporcionado como una conveniencia para interactuar con aplicaciones y bibliotecas más viejas.
 
 ```js
 const { OldReader } = require('./old-api-module.js');
@@ -973,9 +973,9 @@ myReader.on('readable', () => {
 added: v10.0.0
 -->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
-* Returns: {AsyncIterator} to fully consume the stream.
+* Devuelve: {AsyncIterator} para consumir completamente el stream.
 
 ```js
 const fs = require('fs');
@@ -992,7 +992,7 @@ async function print(readable) {
 print(fs.createReadStream('file')).catch(console.log);
 ```
 
-If the loop terminates with a `break` or a `throw`, the stream will be destroyed. In other terms, iterating over a stream will consume the stream fully. The stream will be read in chunks of size equal to the `highWaterMark` option. In the code example above, data will be in a single chunk if the file has less then 64kb of data because no `highWaterMark` option is provided to [`fs.createReadStream()`][].
+Si el bucle termina con un `break` o un `throw`, el stream será destruido. In other terms, iterating over a stream will consume the stream fully. The stream will be read in chunks of size equal to the `highWaterMark` option. In the code example above, data will be in a single chunk if the file has less then 64kb of data because no `highWaterMark` option is provided to [`fs.createReadStream()`][].
 
 ### Duplex and Transform Streams
 
