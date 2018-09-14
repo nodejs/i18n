@@ -413,7 +413,7 @@ https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 * uv: actualizar a v0.11.15 (Timothy J Fontaine)
 * v8 actualizar a 3.22.24.5 (Timothy J Fontaine)
 * buffer: remover advertencia cuando no se pasa ningún código (Trevor Norris)
-* build: make v8 use random seed for hash tables (Ben Noordhuis)
+* build: hacer que v8 use seeds aleatorios para tablas hash (Ben Noordhuis)
 * crypto: build with shared openssl without NPN (Ben Noordhuis)
 * crypto: update root certificates (Ben Noordhuis)
 * debugger: pass on v8 debug switches (Ben Noordhuis)
