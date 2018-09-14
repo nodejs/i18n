@@ -1791,7 +1791,7 @@ N-API expone un conjunto de APIs para realizar algunas operaciones abstractas en
 
 Estas APIs admiten hacer uno de los siguientes:
 
-1. Generar valores de JavaScript para tipos específicos de JavaScript (tal como `Number` o `String`).
+1. Forzar los valores de JavaScript para que sean tipos específicos de JavaScript (tal como `Number` o `String`).
 2. Verificar el tipo de valor de JavaScript.
 3. Verificar la equidad entre dos valores de JavaScript.
 
@@ -1808,8 +1808,8 @@ napi_status napi_coerce_to_bool(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] value`: El valor de JavaScript a generar.
-- `[out] result`: `napi_value` que representa al `Boolean` de JavaScript generado.
+- `[in] value`: El valor de JavaScript a forzar.
+- `[out] result`: `napi_value` que representa al `Boolean` de JavaScript que fue forzado.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
@@ -1849,7 +1849,7 @@ napi_status napi_coerce_to_object(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: El valor de JavaScript a generar.
-- `[out] result`: `napi_value` que representa al `Object` de JavaScript a generar.
+- `[out] result`: `napi_value` que representa al `Object` de JavaScript a forzar.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
@@ -1868,8 +1868,8 @@ napi_status napi_coerce_to_string(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] value`: El valor de JavaScript a generar.
-- `[out] result`: `napi_value` que representa a la `String` de JavaScript a ser generada.
+- `[in] value`: El valor de JavaScript a forzar.
+- `[out] result`: `napi_value` que representa a la `String` de JavaScript que fue forzada.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
