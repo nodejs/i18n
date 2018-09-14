@@ -1146,7 +1146,7 @@ Si se encuentran en el sistema operativo, las siguientes constantes son exportad
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
-    <td>Perform lazy binding. Node.js sets this flag by default.</td>
+    <td>Realizar carga diferida. Node.js coloca este parámetro por defecto.</td>
   </tr>
   <tr>
     <td><code>RTLD_NOW</code></td>
