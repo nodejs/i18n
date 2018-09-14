@@ -311,48 +311,48 @@ El valor del puerto puede ser establecido ya sea como un número o como una stri
 
 Al asignar un valor al puerto, el valor se convertirá primero en una string usando `.toString()`.
 
-Si esa string es inválida pero comienza con un número, el número inicial es asignado a `port`. Otherwise, or if the number lies outside the range denoted above, it is ignored.
+Si esa string es inválida pero comienza con un número, el número inicial es asignado a `port`. De otra forma, o si el número se encuentra fuera del rango indicado anteriormente, es ignorado.
 
-Note that numbers which contain a decimal point, such as floating-point numbers or numbers in scientific notation, are not an exception to this rule. Leading numbers up to the decimal point will be set as the URL's port, assuming they are valid:
+Tenga en cuenta que los números que contengan un punto decimal, como los números flotantes o números en notación científica, no son una excepción a esta regla. Los números iniciales hasta el punto decimal serán establecidos como el puerto de la URL, asumiendo que son válidos:
 
 ```js
 myURL.port = 4.567e21;
 console.log(myURL.port);
-// Prints 4 (because it is the leading number in the string '4.567e21')
+// Imprime 4 (porque es el número inicial en la string '4.567e21')
 ```
 
 #### url.protocol
 
 * {string}
 
-Gets and sets the protocol portion of the URL.
+Obtiene y establece la porción del protocolo de la URL.
 
 ```js
 const myURL = new URL('https://example.org');
 console.log(myURL.protocol);
-// Prints https:
+// Imprime https:
 
 myURL.protocol = 'ftp';
 console.log(myURL.href);
-// Prints ftp://example.org/
+// Imprime ftp://example.org/
 ```
 
-Invalid URL protocol values assigned to the `protocol` property are ignored.
+Los valores de protocolo URL inválidos asignados a la propiedad `protocol` son ignorados.
 
 #### url.search
 
 * {string}
 
-Gets and sets the serialized query portion of the URL.
+Obtiene y establece la porción de consulta serializada de la URL.
 
 ```js
 const myURL = new URL('https://example.org/abc?123');
 console.log(myURL.search);
-// Prints ?123
+// Imprime ?123
 
 myURL.search = 'abc=xyz';
 console.log(myURL.href);
-// Prints https://example.org/abc?abc=xyz
+// Imprime https://example.org/abc?abc=xyz
 ```
 
 Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
