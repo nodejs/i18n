@@ -780,7 +780,7 @@ Un stream `Readable` en modo objeto siempre devolverá un solo ítem de una llam
 
 Si el método `readable.read()` devuelve un fragmento de datos, un evento `'data'`también será emitido.
 
-Llamar a [`stream.read([size])`](#stream_readable_read_size) después del evento [`'end'`][] ha sido emitido devolverá `null`. No runtime error will be raised.
+Llamar a [`stream.read([size])`](#stream_readable_read_size) después del evento [`'end'`][] ha sido emitido devolverá `null`. No se levantará ningún error runtime.
 
 ##### readable.readableHighWaterMark
 
@@ -788,9 +788,9 @@ Llamar a [`stream.read([size])`](#stream_readable_read_size) después del evento
 added: v9.3.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
-Returns the value of `highWaterMark` passed when constructing this `Readable`.
+Devuelve el valor del `highWaterMark` pasado al construir este `Readable`.
 
 ##### readable.readableLength
 
@@ -798,9 +798,9 @@ Returns the value of `highWaterMark` passed when constructing this `Readable`.
 added: v9.4.0
 -->
 
-* Returns: {number}
+* Devielve: {number}
 
-This property contains the number of bytes (or objects) in the queue ready to be read. El valor proporciona datos de introspección con respecto al estatus de `highWaterMark`.
+Esta propiedad contiene el número de bytes (u objetos) en esta cola, listos para ser leídos. El valor proporciona datos de introspección con respecto al estatus de `highWaterMark`.
 
 ##### readable.resume()
 
