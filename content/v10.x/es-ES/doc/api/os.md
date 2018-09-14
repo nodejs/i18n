@@ -1087,62 +1087,62 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEDISCON</code></td>
-    <td>Indicates that a graceful shutdown is in progress.</td>
+    <td>Indica que un proceso de apagado exitoso está en progreso.</td>
   </tr>
   <tr>
     <td><code>WSAENOMORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica que no hay más resultados.</td>
   </tr>
   <tr>
     <td><code>WSAECANCELLED</code></td>
-    <td>Indicates that an operation has been canceled.</td>
+    <td>Indica que hay una operación ha sido cancelada.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROCTABLE</code></td>
-    <td>Indicates that the procedure call table is invalid.</td>
+    <td>Indica que la tabla de llamada de procedimiento es inválida-.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROVIDER</code></td>
-    <td>Indicates an invalid service provider.</td>
+    <td>Indica un proveedor de servicio inválido.</td>
   </tr>
   <tr>
     <td><code>WSAEPROVIDERFAILEDINIT</code></td>
-    <td>Indicates that the service provider failed to initialized.</td>
+    <td>Indica que el proveedor del servicio falló al inicializar.</td>
   </tr>
   <tr>
     <td><code>WSASYSCALLFAILURE</code></td>
-    <td>Indicates a system call failure.</td>
+    <td>Indica un fallo de llamada del sistema.</td>
   </tr>
   <tr>
     <td><code>WSASERVICE_NOT_FOUND</code></td>
-    <td>Indicates that a service was not found.</td>
+    <td>Indica que el servicio no fue encontrado.</td>
   </tr>
   <tr>
     <td><code>WSATYPE_NOT_FOUND</code></td>
-    <td>Indicates that a class type was not found.</td>
+    <td>Indica que el tipo de clase no fue encontrado.</td>
   </tr>
   <tr>
     <td><code>WSA_E_NO_MORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica que no hay mas resultados.</td>
   </tr>
   <tr>
     <td><code>WSA_E_CANCELLED</code></td>
-    <td>Indicates that the call was canceled.</td>
+    <td>Indica que el llamado fue cancelado.</td>
   </tr>
   <tr>
     <td><code>WSAEREFUSED</code></td>
-    <td>Indicates that a database query was refused.</td>
+    <td>Indica que una consulta a la base de datos fue rechazada.</td>
   </tr>
 </table>
 
-### dlopen Constants
+### constantes dlopen
 
-If available on the operating system, the following constants are exported in `os.constants.dlopen`. See dlopen(3) for detailed information.
+Si se encuentran en el sistema operativo, las siguientes constantes son exportadas en `os.constants.dlopen`. Vea dlopen(3) para información detallada.
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
