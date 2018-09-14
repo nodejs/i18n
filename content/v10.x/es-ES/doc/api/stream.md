@@ -939,7 +939,7 @@ function parseHeader(stream, callback) {
 }
 ```
 
-A diferencia de [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` no va a terminar el proceso de lectura al resetear el estado de lectura interno del stream. Esto puede causar resultados inesperados si `readable.unshift()` es llamado durante una lectura (es decir desde una implementación [`stream._read()`](#stream_readable_read_size_1) en un stream personalizado). Following the call to `readable.unshift()` with an immediate [`stream.push('')`](#stream_readable_push_chunk_encoding) will reset the reading state appropriately, however it is best to simply avoid calling `readable.unshift()` while in the process of performing a read.
+A diferencia de [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` no va a terminar el proceso de lectura al resetear el estado de lectura interno del stream. Esto puede causar resultados inesperados si `readable.unshift()` es llamado durante una lectura (es decir desde una implementación [`stream._read()`](#stream_readable_read_size_1) en un stream personalizado). Siguiendo la llamada a `readable.unshift()` con un inmediato [`stream.push('')`](#stream_readable_push_chunk_encoding) va a restablecer el estado de la lectura de forma adecuada, sin embargo es mejor simplemente evitar llamar a `readable.unshift()` mientras en el proceso de realizar una lectura.
 
 ##### readable.wrap(stream)
 
@@ -947,8 +947,8 @@ A diferencia de [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `s
 added: v0.9.4
 -->
 
-* `stream` {Stream} An "old style" readable stream
-* Returns: {this}
+* `stream` {Stream} Un stream legible de "viejo estilo"
+* Devuelve: {this}
 
 Versions of Node.js prior to v0.10 had streams that did not implement the entire `stream` module API as it is currently defined. (See [Compatibility](#stream_compatibility_with_older_node_js_versions) for more information.)
 
