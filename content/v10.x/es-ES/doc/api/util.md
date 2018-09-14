@@ -331,19 +331,19 @@ changes:
 * `object` {any} Cualquier JavaScript primitivo u `Object`.
 * `options` {Object}
   
-  * `showHidden` {boolean} Si `true`, los símbolos y propiedades no enumerables del `object` van a ser incluidos en el resultado formateado, así como también las entradas [`WeakMap`][] y [`WeakSet`][]. **Default:** `false`.
+  * `showHidden` {boolean} Si `true`, los símbolos y propiedades no enumerables del `object` van a ser incluidos en el resultado formateado, así como también las entradas [`WeakMap`][] y [`WeakSet`][]. **Predeterminado:** `false`.
   * `depth` {number} Especifica el número de veces a repetir mientras se formatea el `object`. Esto es útil para inspeccionar objetos grandes y complicados. Para hacer que se repita indefinidamente pase `null`. **Predeterminado:** `2`.
   * `colors` {boolean} Si es `true`, el output va a ser diseñado con códigos de colores ANSI. Los colores son personalizables, vea [Customizing `util.inspect` colors][]. **Predeterminado:** `false`.
-  * `customInspect` {boolean} Si `false`, entonces las funciones personalizadas `inspect(depth, opts)` no van a ser llamadas. **Default:** `true`.
+  * `customInspect` {boolean} Si `false`, entonces las funciones personalizadas `inspect(depth, opts)` no van a ser llamadas. **Predeterminado:** `true`.
   * `showProxy` {boolean} Si `true`, entonces los objetos y funciones que son objetos `Proxy` van a ser analizados para mostrar sus objetos `target` y `handler`. **Predeterminado:** `false`. <!--
   TODO(BridgeAR): Deprecate `maxArrayLength` and replace it with
                   `maxEntries`.
   -->
   
-  * `maxArrayLength` {number} Especifica el número máximo de elementos de `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] a incluir al formatear. Establecer a `null` o `Infinity` para mostrar todos los elementos. Establecer a `0` o negativo, para no mostrar ningún elemento. **Default:** `100`.
+  * `maxArrayLength` {number} Especifica el número máximo de elementos de `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] a incluir al formatear. Establecer a `null` o `Infinity` para mostrar todos los elementos. Establecer a `0` o negativo, para no mostrar ningún elemento. **Predeterminado:** `100`.
   
   * `breakLength` {number} La longitud en la cual las claves de un objeto son divididas a través de múltiples líneas. Establecer a `Infinity` para formatear un objeto como una sola línea. **Default:** `60` for legacy compatibility.
-  * `compact` {boolean} Establecer esto a `false` cambia la sangría predeterminada para usar un salto de línea por cada clave de objeto, en vez de alinear múltiples propiedades en una sola línea. Esto también romperá el texto que está por encima del tamaño `breakLength` en pedazos más pequeños y más fáciles de leer, y posicionará objetos igual que las arrays. Note que ningún texto va a ser reducido a por debajo de 16 caracteres, sin importar el tamaño del `breakLength`. Para más información, vea el ejemplo de abajo. **Default:** `true`.
+  * `compact` {boolean} Establecer esto a `false` cambia la sangría predeterminada para usar un salto de línea por cada clave de objeto, en vez de alinear múltiples propiedades en una sola línea. Esto también romperá el texto que está por encima del tamaño `breakLength` en pedazos más pequeños y más fáciles de leer, y posicionará objetos igual que las arrays. Note que ningún texto va a ser reducido a por debajo de 16 caracteres, sin importar el tamaño del `breakLength`. Para más información, vea el ejemplo de abajo. **Predeterminado:** `true`.
 
 * Devuelve: {string} La representación de un objeto pasado
 
@@ -1646,11 +1646,11 @@ Returns `true` if the given `object` is strictly `null`. Otherwise, returns `fal
 const util = require('util');
 
 util.isNull(0);
-// Retorna: false
+// Devuelve: false
 util.isNull(undefined);
-// Retorna: false
+// Devuelve: false
 util.isNull(null);
-// Retorna: true
+// Devuelve: true
 ```
 
 ### util.isNullOrUndefined(object)
@@ -1723,13 +1723,13 @@ Returns `true` if the given `object` is strictly an `Object` **and** not a `Func
 const util = require('util');
 
 util.isObject(5);
-// Retorna: false
+// Devuelve: false
 util.isObject(null);
-// Retorna: false
+// Devuelve: false
 util.isObject({});
-// Retorna: true
+// Devuelve: true
 util.isObject(() => {});
-// Retorna: false
+// Devuelve: false
 ```
 
 ### util.isPrimitive(object)
@@ -1750,23 +1750,23 @@ Returns `true` if the given `object` is a primitive type. Otherwise, returns `fa
 const util = require('util');
 
 util.isPrimitive(5);
-// Retorna: true
+// Devuelve: true
 util.isPrimitive('foo');
-// Retorna: true
+// Devuelve: true
 util.isPrimitive(false);
-// Retorna: true
+// Devuelve: true
 util.isPrimitive(null);
-// Retorna: true
+// Devuelve: true
 util.isPrimitive(undefined);
-// Retorna: true
+// Devuelve: true
 util.isPrimitive({});
-// Retorna: false
+// Devuelve: false
 util.isPrimitive(() => {});
-// Retorna: false
+// Devuelve: false
 util.isPrimitive(/^$/);
-// Retorna: false
+// Devuelve: false
 util.isPrimitive(new Date());
-// Retorna: false
+// Devuelve: false
 ```
 
 ### util.isRegExp(object)
