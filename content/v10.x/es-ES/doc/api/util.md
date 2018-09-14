@@ -622,9 +622,9 @@ console.log(promisified === doSomething[util.promisify.custom]);
 // imprimir 'true'
 ```
 
-This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
+Esto puede ser útil para casos donde la función original no siga un formato estándar de tomar un callback de primer error como el último argumento.
 
-For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
+Por ejemplo, con una función que toma en `(foo, onSuccessCallback, onErrorCallback)`:
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
@@ -634,7 +634,7 @@ doSomething[util.promisify.custom] = (foo) => {
 };
 ```
 
-If `promisify.custom` is defined but is not a function, `promisify()` will throw an error.
+Si `promisify.custom` es definido pero no es una función, `promisify()` va aarrojar un error.
 
 ### util.promisify.custom
 
