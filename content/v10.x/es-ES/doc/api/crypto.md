@@ -984,7 +984,7 @@ console.log(sign.sign(privateKey, 'hex'));
 // Prints: the calculated signature
 ```
 
-En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
+En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, como 'ecdsa-with-SHA256'. Use nombres resumidos en su lugar.
 
 Example: signing using legacy signature algorithm name
 
