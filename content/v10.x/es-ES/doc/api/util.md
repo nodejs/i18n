@@ -600,11 +600,11 @@ async function callStat() {
 
 Si hay una propiedad `original[util.promisify.custom]` presente, `promisify` va a devolver su valor, vea [Funciones personalizadas promisificadas](#util_custom_promisified_functions).
 
-`promisify()` asume que `original` es una función tomando un callback como su argumento final en todos los casos. Si `original` no es una función, `promisify()` va a arrojar un error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
+`promisify()` asume que `original` es una función tomando un callback como su argumento final en todos los casos. Si `original` no es una función, `promisify()` va a arrojar un error. Si `original` es una función pero su último argumento no es un callback de primer error, aún así va a pasar un callback de primer error como su último argumento.
 
-### Custom promisified functions
+### Funciones personalizadas promisificadas
 
-Using the `util.promisify.custom` symbol one can override the return value of [`util.promisify()`][]:
+Al usar el símbolo `util.promisify.custom`, uno puede anular el valor de retorno de [`util.promisify()`][]:
 
 ```js
 const util = require('util');
