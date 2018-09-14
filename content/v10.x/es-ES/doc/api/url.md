@@ -212,59 +212,59 @@ Obtiene y establece la serialización del origen de la URL.
 ```js
 const myURL = new URL('https://example.org/foo/bar?baz');
 console.log(myURL.origin);
-// Prints https://example.org
+// Imprime https://example.org
 ```
 
 ```js
 const idnURL = new URL('https://你好你好');
 console.log(idnURL.origin);
-// Prints https://xn--6qqa088eba
+// Imprime https://xn--6qqa088eba
 
 console.log(idnURL.hostname);
-// Prints xn--6qqa088eba
+// Imprime xn--6qqa088eba
 ```
 
 #### url.password
 
 * {string}
 
-Gets and sets the password portion of the URL.
+Obtiene y establece la porción de la contraseña de la URL.
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
 console.log(myURL.password);
-// Prints xyz
+// Imprime xyz
 
 myURL.password = '123';
 console.log(myURL.href);
-// Prints https://abc:123@example.com
+// Imprime https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Caracteres de URL inválidos incluidos en el valor asignado a la propiedad `password` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.pathname
 
 * {string}
 
-Gets and sets the path portion of the URL.
+Obtiene y establece la porción de la ruta de la URL.
 
 ```js
 const myURL = new URL('https://example.org/abc/xyz?123');
 console.log(myURL.pathname);
-// Prints /abc/xyz
+// Imprime /abc/xyz
 
 myURL.pathname = '/abcdef';
 console.log(myURL.href);
-// Prints https://example.org/abcdef?123
+// Imprime https://example.org/abcdef?123
 ```
 
-Invalid URL characters included in the value assigned to the `pathname` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Caracteres URL inválidos incluidos en el valor asignado a la propiedad `pathname` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.port
 
 * {string}
 
-Gets and sets the port portion of the URL.
+Obtiene y establece la porción del puerto de la URL.
 
 ```js
 const myURL = new URL('https://example.org:8888');
