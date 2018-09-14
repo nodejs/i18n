@@ -366,24 +366,24 @@ https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 * node: reparar el análisis de argumentos con -p arg (Alexis Campailla)
 * path: mejorar el desempeño de path.join() de POSIX (Jo Liss)
 * tls: emitir `clientError` tras clausura temprana de socket (Fedor Indutny)
-* tls: introduce `.setMaxSendFragment(size)` (Fedor Indutny)
-* tls: make cert/pfx optional in tls.createServer() (Ben Noordhuis)
-* tls: process accumulated input (Fedor Indutny)
-* tls: show human-readable error messages (Ben Noordhuis)
-* util: handle escaped forward slashes correctly (Tom Gallacher)
+* tls: introducir `.setMaxSendFragment(size)` (Fedor Indutny)
+* tls: hacer opcionales a cert/pfx en tls.createServer() (Ben Noordhuis)
+* tls: procesar input acumulado (Fedor Indutny)
+* tls: mostrar mensajes de error legibles por humanos (Ben Noordhuis)
+* util: manejar correctamente los slashes hacia adelante que se escapen (Tom Gallacher)
 
 <a id="0.11.10"></a>
 
-## 2013.12.31, Version 0.11.10 (Unstable)
+## 2013.12.31, Versión 0.11.10 (Inestable)
 
 https://github.com/nodejs/node/commit/66931791f06207d1cdfea5ec1529edf3c94026d3
 
-* http_parser: update to 2.2
-* uv: Upgrade to v0.11.17
-* v8: Upgrade to 3.22.24.10
-* buffer: optimize writeInt* methods (Paul Loyd)
-* child_process: better error handling (Alexis Campailla)
-* cluster: do not synchronously emit 'setup' event (Sam Roberts)
+* http_parser: actualizar a 2.2
+* uv: Actualizar a v0.11.17
+* v8: Actualizar a 3.22.24.10
+* buffer: optimizar métodos writeInt* (Paul Loyd)
+* child_process: mejorar el manejo de errores (Alexis Campailla)
+* cluster: no emitir sincrónicamente el evento "setup" (Sam Roberts)
 * cluster: restore backwards compatibility and various fixes (Sam Roberts)
 * crypto: remove unnecessary OpenSSL_add_all_digests (Yorkie)
 * crypto: support GCM authenticated encryption mode. (Ingmar Runge)
