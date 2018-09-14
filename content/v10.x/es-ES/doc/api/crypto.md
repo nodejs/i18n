@@ -1164,11 +1164,11 @@ deprecated: v10.0.0
 
 La codificación predeterminada para usar para funciones que pueden tomar strings o [buffers][`Buffer`]. El valor por defecto es `'buffer'`, que hace que los métodos por defecto sean objetos [`Buffer`][].
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+El mecanismo `crypto.DEFAULT_ENCODING` es dado para la compatibilidad con versiones anteriores de programas antiguos que esperan que `'latin1'` sea un código por defecto.
 
-New applications should expect the default to be `'buffer'`.
+Las nuevas aplicaciones deben esperar que el valor por defecto sea `'buffer'`.
 
-This property is deprecated.
+Esta propiedad está en desuso.
 
 ### crypto.fips
 
@@ -1177,9 +1177,9 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Propiedad para comprobar y controlar si un proveedor de criptografía compatible con FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
 
-This property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Esta propiedad está en desuso. Por favor use `crypto.setFips()` y `crypto.getFips()` en su lugar.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1188,14 +1188,14 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
+> Estabilidad: 0 - Obsoleto: Use en su lugar [`crypto.createCipheriv()`][].
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Devuelve: {Cipher}
 
-Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
+Crea y devuelve un objeto `Cipher` que usa los `algorithm` y `password` dados.
 
 The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
 
@@ -1223,7 +1223,7 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Devuelve: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
