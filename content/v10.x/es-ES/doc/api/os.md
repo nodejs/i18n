@@ -892,114 +892,114 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
 </table>
 
-#### Windows Specific Error Constants
+#### Constantes de Error Específicas de Windows
 
-The following error codes are specific to the Windows operating system:
+Los siguientes códigos de error son específicos del sistema operativo windows:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
-    <td>Indicates an interrupted function call.</td>
+    <td>Indica una interrupción en la función de llamada.</td>
   </tr>
   <tr>
     <td><code>WSAEBADF</code></td>
-    <td>Indicates an invalid file handle.</td>
+    <td>Indica un descriptor de archivo inválido.</td>
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indicates insufficient permissions to complete the operation.</td>
+    <td>Indica insuficiencia de permisos para completar la operación.</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica una dirección de puntero inválida.</td>
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indicates that an invalid argument was passed.</td>
+    <td>Indica que un argumento inválido fue proporcionado.</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica que hay muchos archivos abiertos.</td>
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indicates that a resource is temporarily unavailable.</td>
+    <td>Indica que un recurso está temporalmente no disponible.</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indicates that an operation is currently in progress.</td>
+    <td>Indica que la operación está actualmente en progreso.</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica que la operación ya está en progreso.</td>
   </tr>
   <tr>
     <td><code>WSAENOTSOCK</code></td>
-    <td>Indicates that the resource is not a socket.</td>
+    <td>Indica que el recurso no es un socket.</td>
   </tr>
   <tr>
     <td><code>WSAEDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica que la dirección de destino es requerida.</td>
   </tr>
   <tr>
     <td><code>WSAEMSGSIZE</code></td>
-    <td>Indicates that the message size is too long.</td>
+    <td>Indica que el tamaño del mensaje es demasiado largo.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indicates the wrong protocol type for the socket.</td>
+    <td>Indica el tipo de protocolo incorrecto para el socket.</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
-    <td>Indicates a bad protocol option.</td>
+    <td>Indica una opción de protocolo errónea.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indicates that the protocol is not supported.</td>
+    <td>Indica que el protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
-    <td>Indicates that the socket type is not supported.</td>
+    <td>Indica que el tipo de socket no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
-    <td>Indicates that the operation is not supported.</td>
+    <td>Indica que la operación no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEPFNOSUPPORT</code></td>
-    <td>Indicates that the protocol family is not supported.</td>
+    <td>Indica que la familia de protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEAFNOSUPPORT</code></td>
-    <td>Indicates that the address family is not supported.</td>
+    <td>Indica que la familia de direcciones no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica que la dirección de red se encuentra en uso.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is not available.</td>
+    <td>Indica que la dirección de red no se encuentra disponible.</td>
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>Indica que la red está caída.</td>
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>Indica que la red es inalcanzable.</td>
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>Indica que la conexión de red fue reiniciada.</td>
   </tr>
   <tr>
     <td><code>WSAECONNABORTED</code></td>
-    <td>Indicates that the connection has been aborted.</td>
+    <td>Indica que la conexión ha sido abortada.</td>
   </tr>
   <tr>
     <td><code>WSAECONNRESET</code></td>
