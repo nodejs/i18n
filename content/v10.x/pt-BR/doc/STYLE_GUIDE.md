@@ -1,13 +1,13 @@
-# Guia de estilos
+# Guia de Estilos
 
-* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens`. 
+* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
 * Documentos devem ter quebra de palavras (word-wrap) em 80 caracteres.
 * A formatação descrita no `.editorconfig` é preferencial. 
   * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
 * Changes to documentation should be checked with `make lint-md`.
-* Ortografia do inglês americano de preferência. "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
+* Ortografia do Inglês Americano de preferência (Na documentação original). "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
