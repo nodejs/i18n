@@ -342,12 +342,12 @@ changes:
   
   * `maxArrayLength` {number} Especifica el número máximo de elementos de `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] a incluir al formatear. Establecer a `null` o `Infinity` para mostrar todos los elementos. Establecer a `0` o negativo, para no mostrar ningún elemento. **Default:** `100`.
   
-  * `breakLength` {number} La extensión a la cual las claves de un objeto son divididas a través de múltiples líneas. Establecer a `Infinity` para formatear un objeto como una sola línea. **Default:** `60` for legacy compatibility.
-  * `compact` {boolean} Establecer esto a `false` cambia la sangría predeterminada para usar un salto de línea por cada clave de objeto, en vez de alinear múltiples propiedades en una sola línea. Esto también romperá el texto que está por encima del tamaño `breakLength` en pedazos más pequeños y más fáciles de leer, y endenta objetos igual que las arrays. Note que ningún texto va a ser reducido a por debajo de 16 carácteres, sin importar el tamaño del `breakLength`. Para más información, vea el ejemplo de abajo. **Default:** `true`.
+  * `breakLength` {number} La longitud en la cual las claves de un objeto son divididas a través de múltiples líneas. Establecer a `Infinity` para formatear un objeto como una sola línea. **Default:** `60` for legacy compatibility.
+  * `compact` {boolean} Establecer esto a `false` cambia la sangría predeterminada para usar un salto de línea por cada clave de objeto, en vez de alinear múltiples propiedades en una sola línea. Esto también romperá el texto que está por encima del tamaño `breakLength` en pedazos más pequeños y más fáciles de leer, y posicionará objetos igual que las arrays. Note que ningún texto va a ser reducido a por debajo de 16 caracteres, sin importar el tamaño del `breakLength`. Para más información, vea el ejemplo de abajo. **Default:** `true`.
 
-* Retorna: {string} La representación de un objeto pasado
+* Devuelve: {string} La representación de un objeto pasado
 
-El método `util.inspect()` retorna una representación string del `object` que está destinado a la depuración. El output de `util.inspect` puede cambiar en cualquier momento y no debería de dependerse de él programáticamente. `options` adicionales pueden ser pasadas que alteran ciertos aspectos del string con formato. `util.inspect()` va a usar el nombre del constructor y/o `@@toStringTag` para hacer una etiqueta identificable para un valor inspeccionado.
+El método `util.inspect()` devuelve una representación string del `object` que está destinado a la depuración. El output de `util.inspect` puede cambiar en cualquier momento y no se debe depender de él programáticamente. `options` adicionales pueden ser pasadas, ya que alteran ciertos aspectos del string con formato. `util.inspect()` va a usar el nombre del constructor y/o `@@toStringTag` para hacer una etiqueta identificable para un valor inspeccionado.
 
 ```js
 class Foo {
@@ -375,7 +375,7 @@ console.log(util.inspect(util, { showHidden: true, depth: null }));
 
 Los valores pueden proporcionar sus propias funciones personalizadas `inspect(depth, opts)`, cuando son llamadas estas reciben el `depth` actual en una inspección recursiva, así como también los objetos de opción pasados a `util.inspect()`.
 
-El siguiente ejemplo resalta ladiferencia con la opción `compact`:
+El siguiente ejemplo resalta la diferencia con la opción `compact`:
 
 ```js
 const util = require('util');
@@ -519,7 +519,7 @@ obj[util.inspect.custom] = (depth) => {
 };
 
 util.inspect(obj);
-// Retorna: "{ bar: 'baz' }"
+// Devuelve: "{ bar: 'baz' }"
 ```
 
 ### util.inspect.custom
@@ -619,7 +619,7 @@ doSomething[util.promisify.custom] = (foo) => {
 
 const promisified = util.promisify(doSomething);
 console.log(promisified === doSomething[util.promisify.custom]);
-// estampar 'true'
+// imprimir 'true'
 ```
 
 This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
