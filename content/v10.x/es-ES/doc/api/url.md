@@ -179,35 +179,35 @@ console.log(myURL.href);
 // Imprime https://example.com:81/foo
 ```
 
-Invalid hostname values assigned to the `hostname` property are ignored.
+Valores de hostname inválidos asignados a la propiedad `hostname` son ignorados.
 
 #### url.href
 
 * {string}
 
-Gets and sets the serialized URL.
+Obtiene y establece la URL serializada.
 
 ```js
 const myURL = new URL('https://example.org/foo');
 console.log(myURL.href);
-// Prints https://example.org/foo
+// Imprime https://example.org/foo
 
 myURL.href = 'https://example.com/bar';
 console.log(myURL.href);
-// Prints https://example.com/bar
+// Imprime https://example.com/bar
 ```
 
-Getting the value of the `href` property is equivalent to calling [`url.toString()`][].
+Obtener el valor de la propiedad `href` es equivalente a llamar a [`url.toString()`][].
 
-Setting the value of this property to a new value is equivalent to creating a new `URL` object using [`new URL(value)`][`new URL()`]. Each of the `URL` object's properties will be modified.
+Establecer el valor de esta propiedad a un nuevo valor es equivalente a crear un nuevo objeto `URL` usando [`new URL(value)`][`new URL()`]. Cada una de las propiedades del objeto `URL` serán modificadas.
 
-If the value assigned to the `href` property is not a valid URL, a `TypeError` will be thrown.
+Si el valor asignado a la propiedad `href` no es una URL válida, se producirá un `TypeError`.
 
 #### url.origin
 
 * {string}
 
-Gets the read-only serialization of the URL's origin.
+Obtiene y establece la serialización del origen de la URL.
 
 ```js
 const myURL = new URL('https://example.org/foo/bar?baz');
