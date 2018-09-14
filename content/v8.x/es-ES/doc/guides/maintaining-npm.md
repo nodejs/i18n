@@ -1,29 +1,29 @@
-# Maintaining npm in Node.js
+# Mantenimiento de la npm en Node.js
 
-## Step 1: Clone npm
+## Paso 1: Clon npm
 
 ```console
 $ git clone https://github.com/npm/npm.git
 $ cd npm
 ```
 
-or if you already have npm cloned make sure the repo is up to date
+si ya has clonado el npm, asegúrese de que el repositorio es actualizado
 
 ```console
 $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Step 2: Build release
+## Paso 2: Construir el lanzamiento
 
 ```console
 $ git checkout vX.Y.Z
 $ make release
 ```
 
-Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
+Nota: Por favor, corra `npm dist-tag is npm` y, asegúrese de que es la `latest` **dist-tag**. Generalmente, `latest` en el git se lanza en el git como `next` cuando es momento de downstream
 
-## Step 3: Remove old npm
+## Paso 3: Remover npm anteriores
 
 ```console
 $ cd /path/to/node
@@ -33,7 +33,7 @@ $ cd deps
 $ rm -rf npm
 ```
 
-## Step 4: Extract and commit new npm
+## Paso 4: Extraer y asentar una nueva npm
 
 ```console
 $ tar zxf /path/to/npm/release/npm-x.y.z.tgz
@@ -42,26 +42,26 @@ $ git commit -m "deps: upgrade npm to x.y.z"
 $ cd ..
 ```
 
-## Step 5: Update licenses
+## Paso 5: Actualizar licencias
 
 ```console
 $ ./configure
 $ make -j4
 $ ./tools/license-builder.sh
-# The following commands are only necessary if there are changes
+# Los siguentes comandos solo son necesarios si hay cambios
 $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
 
-Note: please ensure you are only making the updates that are changed by npm.
+Nota: Por favor, asegúrese de ser el único haciendo actualizaciones que el npm cambia.
 
-## Step 6: Apply Whitespace fix
+## Paso 6: Aplicar revisión de espacios en blanco
 
 ```console
 $ git rebase --whitespace=fix master
 ```
 
-## Step 7: Test the build
+## Paso 7: Análisis de la construcción
 
 ```console
 $ make test-npm

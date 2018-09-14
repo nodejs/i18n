@@ -143,7 +143,7 @@ console.log(myURL.href);
 // Imprime https://example.org/foo#baz
 ```
 
-Caracteres URL inválidos incluidos en el valor asignado a la propiedad `hash` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
+Caracteres URL inválidos incluidos en el valor asignado a la propiedad `hash` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.host
 
@@ -172,230 +172,230 @@ Obtiene y establece la porción del hostname de la URL. La diferencia clave entr
 ```js
 const myURL = new URL('https://example.org:81/foo');
 console.log(myURL.hostname);
-// Prints example.org
+// Imprime example.org
 
 myURL.hostname = 'example.com:82';
 console.log(myURL.href);
-// Prints https://example.com:81/foo
+// Imprime https://example.com:81/foo
 ```
 
-Invalid hostname values assigned to the `hostname` property are ignored.
+Valores de hostname inválidos asignados a la propiedad `hostname` son ignorados.
 
 #### url.href
 
 * {string}
 
-Gets and sets the serialized URL.
+Obtiene y establece la URL serializada.
 
 ```js
 const myURL = new URL('https://example.org/foo');
 console.log(myURL.href);
-// Prints https://example.org/foo
+// Imprime https://example.org/foo
 
 myURL.href = 'https://example.com/bar';
 console.log(myURL.href);
-// Prints https://example.com/bar
+// Imprime https://example.com/bar
 ```
 
-Getting the value of the `href` property is equivalent to calling [`url.toString()`][].
+Obtener el valor de la propiedad `href` es equivalente a llamar a [`url.toString()`][].
 
-Setting the value of this property to a new value is equivalent to creating a new `URL` object using [`new URL(value)`][`new URL()`]. Each of the `URL` object's properties will be modified.
+Establecer el valor de esta propiedad a un nuevo valor es equivalente a crear un nuevo objeto `URL` usando [`new URL(value)`][`new URL()`]. Cada una de las propiedades del objeto `URL` serán modificadas.
 
-If the value assigned to the `href` property is not a valid URL, a `TypeError` will be thrown.
+Si el valor asignado a la propiedad `href` no es una URL válida, se producirá un `TypeError`.
 
 #### url.origin
 
 * {string}
 
-Gets the read-only serialization of the URL's origin.
+Obtiene y establece la serialización del origen de la URL.
 
 ```js
 const myURL = new URL('https://example.org/foo/bar?baz');
 console.log(myURL.origin);
-// Prints https://example.org
+// Imprime https://example.org
 ```
 
 ```js
 const idnURL = new URL('https://你好你好');
 console.log(idnURL.origin);
-// Prints https://xn--6qqa088eba
+// Imprime https://xn--6qqa088eba
 
 console.log(idnURL.hostname);
-// Prints xn--6qqa088eba
+// Imprime xn--6qqa088eba
 ```
 
 #### url.password
 
 * {string}
 
-Gets and sets the password portion of the URL.
+Obtiene y establece la porción de la contraseña de la URL.
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
 console.log(myURL.password);
-// Prints xyz
+// Imprime xyz
 
 myURL.password = '123';
 console.log(myURL.href);
-// Prints https://abc:123@example.com
+// Imprime https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Caracteres de URL inválidos incluidos en el valor asignado a la propiedad `password` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.pathname
 
 * {string}
 
-Gets and sets the path portion of the URL.
+Obtiene y establece la porción de la ruta de la URL.
 
 ```js
 const myURL = new URL('https://example.org/abc/xyz?123');
 console.log(myURL.pathname);
-// Prints /abc/xyz
+// Imprime /abc/xyz
 
 myURL.pathname = '/abcdef';
 console.log(myURL.href);
-// Prints https://example.org/abcdef?123
+// Imprime https://example.org/abcdef?123
 ```
 
-Invalid URL characters included in the value assigned to the `pathname` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Caracteres URL inválidos incluidos en el valor asignado a la propiedad `pathname` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.port
 
 * {string}
 
-Gets and sets the port portion of the URL.
+Obtiene y establece la porción del puerto de la URL.
 
 ```js
 const myURL = new URL('https://example.org:8888');
 console.log(myURL.port);
-// Prints 8888
+// Imprime 8888
 
-// Default ports are automatically transformed to the empty string
+// Puertos predeterminados son automáticamente transformados a la string vacía
 // (HTTPS protocol's default port is 443)
 myURL.port = '443';
 console.log(myURL.port);
-// Prints the empty string
+// Imprime la string vacía
 console.log(myURL.href);
-// Prints https://example.org/
+// Imprime https://example.org/
 
 myURL.port = 1234;
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 console.log(myURL.href);
-// Prints https://example.org:1234/
+// Imprime https://example.org:1234/
 
-// Completely invalid port strings are ignored
+// Puertos de string completamente inválidos son ignorados
 myURL.port = 'abcd';
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 
-// Leading numbers are treated as a port number
+// Los números iniciales son tratados como un número de puerto
 myURL.port = '5678abcd';
 console.log(myURL.port);
-// Prints 5678
+// Imprime 5678
 
-// Non-integers are truncated
+// Los no-enteros son truncados
 myURL.port = 1234.5678;
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 
-// Out-of-range numbers which are not represented in scientific notation
-// will be ignored.
-myURL.port = 1e10; // 10000000000, will be range-checked as described below
+// Números fuera de rango que no estén representados en notación científica
+// serán ignorados.
+myURL.port = 1e10; // 10000000000, se verificará el rango como se describe a continuación
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 ```
 
-The port value may be set as either a number or as a string containing a number in the range `0` to `65535` (inclusive). Setting the value to the default port of the `URL` objects given `protocol` will result in the `port` value becoming the empty string (`''`).
+El valor del puerto puede ser establecido ya sea como un número o como una string conteniendo un número en el rango de `0` a `65535` (inclusivo). Establecer el valor al puerto predeterminado de los objetos `URL` dado el `protocol`, resultará en el valor del `port` convirtiéndose en una string vacía (`''`).
 
-Upon assigning a value to the port, the value will first be converted to a string using `.toString()`.
+Al asignar un valor al puerto, el valor se convertirá primero en una string usando `.toString()`.
 
-If that string is invalid but it begins with a number, the leading number is assigned to `port`. Otherwise, or if the number lies outside the range denoted above, it is ignored.
+Si esa string es inválida pero comienza con un número, el número inicial es asignado a `port`. De otra forma, o si el número se encuentra fuera del rango indicado anteriormente, es ignorado.
 
-Note that numbers which contain a decimal point, such as floating-point numbers or numbers in scientific notation, are not an exception to this rule. Leading numbers up to the decimal point will be set as the URL's port, assuming they are valid:
+Tenga en cuenta que los números que contengan un punto decimal, como los números flotantes o números en notación científica, no son una excepción a esta regla. Los números iniciales hasta el punto decimal serán establecidos como el puerto de la URL, asumiendo que son válidos:
 
 ```js
 myURL.port = 4.567e21;
 console.log(myURL.port);
-// Prints 4 (because it is the leading number in the string '4.567e21')
+// Imprime 4 (porque es el número inicial en la string '4.567e21')
 ```
 
 #### url.protocol
 
 * {string}
 
-Gets and sets the protocol portion of the URL.
+Obtiene y establece la porción del protocolo de la URL.
 
 ```js
 const myURL = new URL('https://example.org');
 console.log(myURL.protocol);
-// Prints https:
+// Imprime https:
 
 myURL.protocol = 'ftp';
 console.log(myURL.href);
-// Prints ftp://example.org/
+// Imprime ftp://example.org/
 ```
 
-Invalid URL protocol values assigned to the `protocol` property are ignored.
+Los valores de protocolo URL inválidos asignados a la propiedad `protocol` son ignorados.
 
 #### url.search
 
 * {string}
 
-Gets and sets the serialized query portion of the URL.
+Obtiene y establece la porción de consulta serializada de la URL.
 
 ```js
 const myURL = new URL('https://example.org/abc?123');
 console.log(myURL.search);
-// Prints ?123
+// Imprime ?123
 
 myURL.search = 'abc=xyz';
 console.log(myURL.href);
-// Prints https://example.org/abc?abc=xyz
+// Imprime https://example.org/abc?abc=xyz
 ```
 
-Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `search` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.searchParams
 
 * {URLSearchParams}
 
-Gets the [`URLSearchParams`][] object representing the query parameters of the URL. This property is read-only; to replace the entirety of query parameters of the URL, use the [`url.search`][] setter. See [`URLSearchParams`][] documentation for details.
+Obtiene el objeto [`URLSearchParams`][] representando los parámetros de la consulta de la URL. Esta propiedad es solo para lectura; para reemplazar la totalidad de los parámetros de consulta de la URL, use el setter [`url.search`][]. Vea la documentación [`URLSearchParams`][] para más detalles.
 
 #### url.username
 
 * {string}
 
-Gets and sets the username portion of the URL.
+Obtiene y establece la porción del nombre de usuario de la URL.
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
 console.log(myURL.username);
-// Prints abc
+// Imprime abc
 
 myURL.username = '123';
 console.log(myURL.href);
-// Prints https://123:xyz@example.com/
+// Imprime https://123:xyz@example.com/
 ```
 
-Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `username` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de los métodos [`url.parse()`][] and [`url.format()`][] producirían.
 
 #### url.toString()
 
-* Returns: {string}
+* Devuelve: {string}
 
-The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
+El método `toString()` en el objeto `URL` devuelve la URL serializada. El valor devuelto es equivalente al de [`url.href`][] y [`url.toJSON()`][].
 
-Because of the need for standard compliance, this method does not allow users to customize the serialization process of the URL. For more flexibility, [`require('url').format()`][] method might be of interest.
+Debido a la necesidad de cumplimiento estándar, este método no permite a los usuarios personalizar el proceso de serialización de la URL. Para mayor flexibilidad, podría estar interesado en el método [`require('url').format()`][].
 
 #### url.toJSON()
 
-* Returns: {string}
+* Devuelve: {string}
 
-The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
+El método `toJSON()` en el objeto `URL` devuelve la URL serializada. El valor devuelto es equivalente al de [`url.href`][] y [`url.toString()`][].
 
-This method is automatically called when an `URL` object is serialized with [`JSON.stringify()`][].
+Este método es automáticamente llamado cuando un objeto `URL` es serializado con [`JSON.stringify()`][].
 
 ```js
 const myURLs = [
@@ -403,10 +403,10 @@ const myURLs = [
   new URL('https://test.example.org')
 ];
 console.log(JSON.stringify(myURLs));
-// Prints ["https://www.example.com/","https://test.example.org/"]
+// Imprime ["https://www.example.com/","https://test.example.org/"]
 ```
 
-### Class: URLSearchParams
+### Clase: URLSearchParams
 
 <!-- YAML
 added: v7.5.0
@@ -417,9 +417,9 @@ changes:
     description: The class is now available on the global object.
 -->
 
-The `URLSearchParams` API provides read and write access to the query of a `URL`. The `URLSearchParams` class can also be used standalone with one of the four following constructors. The `URLSearchParams` class is also available on the global object.
+La API `URLSearchParams` proporciona acceso para leer y escribir a la consulta de una `URL`. La clase `URLSearchParams` también puede ser usada de forma independiente con uno de los cuatro siguientes constructores. La clase `URLSearchParams` también está disponible en el objeto global.
 
-The WHATWG `URLSearchParams` interface and the [`querystring`][] module have similar purpose, but the purpose of the [`querystring`][] module is more general, as it allows the customization of delimiter characters (`&` and `=`). On the other hand, this API is designed purely for URL query strings.
+La interfaz WHATWG `URLSearchParams` y el módulo [`querystring`][], tienen propósitos similares, pero el propósito del módulo [`querystring`][] es más general, ya que permite la personalización de caracteres delimitadores (`&` and `=`). Por otra parte, esta API está diseñada únicamente para strings de consulta URL.
 
 ```js
 const myURL = new URL('https://example.org/?abc=123');

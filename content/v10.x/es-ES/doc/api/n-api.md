@@ -1319,7 +1319,7 @@ napi_status napi_create_string_latin1(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API crea un objeto `String` de JavaScript de desde una cadena de C codificada en ISO-8859-1. Se copia la cadena nativa.
+Esta API crea un objeto `String` de JavaScript desde una cadena de C codificada en ISO-8859-1. Se copia la cadena nativa.
 
 El tipo `String` de JavaScript se describe en la [Sección 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) de las Especificaciones del Lenguaje ECMAScript.
 
@@ -1417,7 +1417,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API se utiliza para recuperar el buffer de datos subyacente y la longitud de un `ArrayBuffer`.
 
-*ADVERTENCIA*: Tenga cuidado al utilizar esta API. El `ArrayBuffer` administra el tiempo de vida del buffer de datos subyacente incluso después de que se devuelve. Una manera segura posible para utilizar esta API es en conjunto con [`napi_create_reference`][], la cual puede ser utilizada para garantizar el control sobre el tiempo de vida del `ArrayBuffer`. También es seguro utilizar el buffer de datos devuelto dentro del mismo callback de terminación siempre que no existan llamadas a otras APIs que puedan desencadenar un GC.
+*ADVERTENCIA*: Tenga cuidado al utilizar esta API. El `ArrayBuffer` administra el tiempo de vida del buffer de datos subyacente incluso después de que se devuelve. Una manera segura y posible de esta API es hacerlo en conjunto con [`napi_create_reference`][], la cual puede ser utilizada para garantizar el control sobre el tiempo de vida del `ArrayBuffer`. También es seguro utilizar el buffer de datos devuelto dentro del mismo callback de terminación, siempre que no existan llamadas a otras APIs que puedan desencadenar un GC.
 
 #### napi_get_buffer_info
 
@@ -1481,12 +1481,12 @@ napi_status napi_get_typedarray_info(napi_env env,
 - `[in] typedarray`: `napi_value` que representa al `TypedArray` cuyas propiedades se consultarán.
 - `[out] type`: Tipo de dato escalar de los elementos dentro del `TypedArray`.
 - `[out] length`: `Number` de elementos en el `TypedArray`.
-- `[out] data`: El buffer de datos subyacente del tipo de arreglo.
+- `[out] data`: El buffer de datos subyacente al typed array.
 - `[out] byte_offset`: El byte offset dentro del buffer de datos desde el cual se comenzará a proyectar el `TypedArray`.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API devuelve varias propiedades de un tipo de arreglo.
+Esta API devuelve varias propiedades de un typed array.
 
 *Advertencia*: Tenga cuidado al utilizar esta API, ya que el buffer de datos subyacente es administrado por la VM.
 
@@ -1508,8 +1508,8 @@ napi_status napi_get_dataview_info(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] dataview`: `napi_value` que representa el `DataView` cuyas propiedades se consultarán.
 - `[out] byte_length`: `Number` de bytes en el `DataView`.
-- `[out] data`: El buffer de datos subyacente del `DataView`.
-- `[out] arraybuffer`: `ArrayBuffer` subyacente del `DataView`.
+- `[out] data`: El buffer de datos subyacente al `DataView`.
+- `[out] arraybuffer`: `ArrayBuffer` subyacente al `DataView`.
 - `[out] byte_offset`: El byte offset dentro del buffer de datos desde el cual se comenzará a proyectar el `DataView`.
 
 Devuelve `napi_ok` si la API fue exitosa.
@@ -1548,7 +1548,7 @@ napi_status napi_get_value_double(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: Doble primitivo de C del `Number` de JavaScript dado.
+- `[out] result`: Doble primitivo de C equivalente al `Number` de JavaScript dado.
 
 Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
@@ -1590,11 +1590,11 @@ napi_status napi_get_value_int32(napi_env env,
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
 - `[out] result`: `int32` primitivo de C equivalente al `Number` de JavaScript dado.
 
-Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado en, devuelve `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado en `napi_number_expected`.
 
 Esta API devuelve un `int32` primitivo de C equivalente al `Number` de JavaScript dado.
 
-Si el número excede el rango del entero de 32 bits, entonces el resultado es redondeado hacia abajo al número de 32 bits próximo. Esto puede hacer que un número positivo grande se convierta en uno negativo si el valor es > 2^31 -1.
+Si el número excede el rango del entero de 32 bits, entonces el resultado es truncado hacia abajo al número de 32 bits próximo. Esto puede hacer que un número positivo grande se convierta en uno negativo si el valor es > 2^31 -1.
 
 Los valores numéricos no finitos (`NaN`, `+Infinity`, o `-Infinity`) establecen el resultado como cero.
 
@@ -1610,15 +1610,15 @@ napi_status napi_get_value_int64(napi_env env,
                                  int64_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: C `int64` primitive equivalent of the given JavaScript `Number`.
+- `[out] result`: `int64` primitivo de C equivalente al `Number` de JavaScript dado.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
-This API returns the C `int64` primitive equivalent of the given JavaScript `Number`.
+Esta API devuelve un `int64` primitivo de C equivalente al `Number` de JavaScript dado.
 
-`Number` values outside the range of [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) will lose precision.
+Los valores de `Number` fuera del rango de [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer) -(2^53 - 1) - [`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer) (2^53 - 1) perderán precisión.
 
 Los valores numéricos no finitos (`NaN`, `+Infinity`, o `-Infinity`) establecen el resultado como cero.
 
@@ -1636,15 +1636,15 @@ napi_status napi_get_value_string_latin1(napi_env env,
                                          size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the ISO-8859-1-encoded string into. If NULL is passed in, the length of the string (in bytes) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
-- `[out] result`: Number of bytes copied into the buffer, excluding the null terminator.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa una cadena de JavaScript.
+- `[in] buf`: Buffer para escribir la cadena codificada en ISO-8859-1. Si se pasa NULL, se devuelve la longitud de la cadena (en bytes).
+- `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, se truncará la cadena devuelta.
+- `[out] result`: Número de byes copiados en el buffer, excluyendo el terminador Null.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
-This API returns the ISO-8859-1-encoded string corresponding the value passed in.
+Esta API devuelve una cadena codificada en ISO-8859-1 que corresponde al valor pasado.
 
 #### napi_get_value_string_utf8
 
@@ -1660,15 +1660,15 @@ napi_status napi_get_value_string_utf8(napi_env env,
                                        size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the UTF8-encoded string into. If NULL is passed in, the length of the string (in bytes) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
-- `[out] result`: Number of bytes copied into the buffer, excluding the null terminator.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa la cadena de JavaScript.
+- `[in] buf`: Buffer para escribir la cadena codificada en UTF8. Si se pasa NULL, se devuelve la longitud de la cadena (en bytes).
+- `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, la cadena devuelta será truncada.
+- `[out] result`: Número de bytes copiados en el buffer, excluyendo a el terminador Null.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
-This API returns the UTF8-encoded string corresponding the value passed in.
+Esta API devuelve una cadena codificada en UTF8 que corresponde al valor pasado.
 
 #### napi_get_value_string_utf16
 
@@ -1684,15 +1684,15 @@ napi_status napi_get_value_string_utf16(napi_env env,
                                         size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the UTF16-LE-encoded string into. If NULL is passed in, the length of the string (in 2-byte code units) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
-- `[out] result`: Number of 2-byte code units copied into the buffer, excluding the null terminator.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa una cadena de JavaScript.
+- `[in] buf`: Buffer para escribir la cadena codificada en UTF16-LE. Si se pasa NULL, se devuelve la longitud de la cadena (en unidades de código de 2 bytes).
+- `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, la cadena devuelta será truncada.
+- `[out] result`: Número de unidades de código de 2 bytes copiadas en el buffer, excluyendo el terminador Null.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Devuelve `napi_ok` si la API es exitosa. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
-This API returns the UTF16-encoded string corresponding the value passed in.
+Esta API devuelve una cadena codificada en UTF16 que corresponde al valor pasado.
 
 #### napi_get_value_uint32
 
@@ -1706,15 +1706,15 @@ napi_status napi_get_value_uint32(napi_env env,
                                   uint32_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: C primitive equivalent of the given `napi_value` as a `uint32_t`.
+- `[out] result`: Primitiva de C equivalente al `napi_value` dado como un `uint32_t`.
 
-Returns `napi_ok` if the API succeeded. If a non-number `napi_value` is passed in it returns `napi_number_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
-This API returns the C primitive equivalent of the given `napi_value` as a `uint32_t`.
+Esta API devuelve una primitiva de C equivalente al `napi_value` dado como `uint32_t`.
 
-### Functions to get global instances
+### Funciones para obtener instancias globales
 
 #### napi_get_boolean
 
@@ -1726,13 +1726,13 @@ added: v8.0.0
 napi_status napi_get_boolean(napi_env env, bool value, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The value of the boolean to retrieve.
-- `[out] result`: `napi_value` representing JavaScript `Boolean` singleton to retrieve.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor del booleano a recuperar.
+- `[out] result`: `napi_value` que representa al `Boolean` singleton de JavaScript a recuperar.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API is used to return the JavaScript singleton object that is used to represent the given boolean value.
+Esta API es utilizada para devolver el objeto singleton de JavaScript que es utilizado para representar al valor booleano dado.
 
 #### napi_get_global
 
@@ -1744,12 +1744,12 @@ added: v8.0.0
 napi_status napi_get_global(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript `global` object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa el objeto `global` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the `global` object.
+Esta API devuelve el objeto `global`.
 
 #### napi_get_null
 
@@ -1761,12 +1761,12 @@ added: v8.0.0
 napi_status napi_get_null(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript `null` object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa al objeto `null` de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the `null` object.
+Esta API devuelve el objeto `null`.
 
 #### napi_get_undefined
 
@@ -1778,22 +1778,22 @@ added: v8.0.0
 napi_status napi_get_undefined(napi_env env, napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing JavaScript Undefined value.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: `napi_value` que representa al valor indefinido de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the Undefined object.
+Esta API devuelve el objeto indefinido de JavaScript.
 
-## Working with JavaScript Values - Abstract Operations
+## Trabajando con Valores de JavaScript - Operaciones Abstractas
 
-N-API exposes a set of APIs to perform some abstract operations on JavaScript values. Some of these operations are documented under [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API expone un conjunto de APIs para realizar algunas operaciones abstractas en valores de JavaScript. Algunas de estas operaciones están documentadas bajo la [Sección 7](https://tc39.github.io/ecma262/#sec-abstract-operations) de las [Especificaciones del Lenguaje ECMAScript](https://tc39.github.io/ecma262/).
 
-These APIs support doing one of the following:
+Estas APIs admiten hacer uno de los siguientes:
 
-1. Coerce JavaScript values to specific JavaScript types (such as `Number` or `String`).
-2. Check the type of a JavaScript value.
-3. Check for equality between two JavaScript values.
+1. Generar valores de JavaScript para tipos específicos de JavaScript (tal como `Number` o `String`).
+2. Verificar el tipo de valor de JavaScript.
+3. Verificar la equidad entre dos valores de JavaScript.
 
 ### napi_coerce_to_bool
 
@@ -1807,13 +1807,13 @@ napi_status napi_coerce_to_bool(napi_env env,
                                 napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Boolean`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a generar.
+- `[out] result`: `napi_value` que representa al `Boolean` de JavaScript generado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API implements the abstract operation `ToBoolean()` as defined in [Section 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Esta API implementa la operación abstracta `ToBoolean()` como se define en la [Sección 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) de las Especificaciones del Lenguaje ECMAScript. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_coerce_to_number
 
@@ -1827,13 +1827,13 @@ napi_status napi_coerce_to_number(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Number`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a generar.
+- `[out] result`: `napi_value` que representa al `Number` de JavaScript a generar.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API implements the abstract operation `ToNumber()` as defined in [Section 7.1.3](https://tc39.github.io/ecma262/#sec-tonumber) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Esta API implementa la operación abstracta `ToNumber()` como se define en la [Sección 7.1.3](https://tc39.github.io/ecma262/#sec-tonumber) de las Especificaciones del Lenguaje ECMAScript. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_coerce_to_object
 
@@ -1847,13 +1847,13 @@ napi_status napi_coerce_to_object(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Object`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a generar.
+- `[out] result`: `napi_value` que representa al `Object` de JavaScript a generar.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API implements the abstract operation `ToObject()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-toobject) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Esta API implementa la operación abstracta `ToObject()` como se define en la [Sección 7.1.13](https://tc39.github.io/ecma262/#sec-toobject) de las Especificaciones del Lenguaje ECMAScript. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_coerce_to_string
 
@@ -1867,13 +1867,13 @@ napi_status napi_coerce_to_string(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `String`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a generar.
+- `[out] result`: `napi_value` que representa a la `String` de JavaScript a ser generada.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API implements the abstract operation `ToString()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-tostring) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Esta API implementa la operación abstracta `ToString()` como se define en la [Sección 7.1.13](https://tc39.github.io/ecma262/#sec-tostring) de las Especificaciones del Lenguaje ECMAScript. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_typeof
 
@@ -1885,15 +1885,15 @@ added: v8.0.0
 napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value whose type to query.
-- `[out] result`: The type of the JavaScript value.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaSript cuyo tipo será consultado.
+- `[out] result`: El tipo del valor de JavaScript.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-- `napi_invalid_arg` if the type of `value` is not a known ECMAScript type and `value` is not an External value.
+- `napi_invalid_arg` si el tipo del `value` no es un tipo de ECMAScript conocido y el `value` no es un valor externo.
 
-This API represents behavior similar to invoking the `typeof` Operator on the object as defined in [Section 12.5.5](https://tc39.github.io/ecma262/#sec-typeof-operator) of the ECMAScript Language Specification. However, it has support for detecting an External value. If `value` has a type that is invalid, an error is returned.
+Esta API representa un comportamiento similar a invocar al operador `typeof` en el objeto como se define en la [Sección 12.5.5](https://tc39.github.io/ecma262/#sec-typeof-operator) de las Especificaciones del Lenguaje ECMAScript. Sin embargo, tiene soporte para detectar un valor externo. Si el `value` tiene un tipo inválido, se devuelve un error.
 
 ### napi_instanceof
 

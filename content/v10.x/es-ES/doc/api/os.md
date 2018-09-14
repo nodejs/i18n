@@ -418,382 +418,368 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
-    <td>Sent to indicate when a controlling terminal is closed or a parent
-    process exits.</td>
+    <td>Enviada para indicar cuando una terminal de control es cerrada o un proceso primario cierra.</td>
   </tr>
   <tr>
     <td><code>SIGINT</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process
-    (`(Ctrl+C)`).</td>
+    <td>Enviada para indicar cuando un usuario desea interrumpir un proceso (`(Ctrl+C)`).</td>
   </tr>
   <tr>
     <td><code>SIGQUIT</code></td>
-    <td>Sent to indicate when a user wishes to terminate a process and perform a
-    core dump.</td>
+    <td>Enviada para indicar cuando un usuario desea terminar un proceso y realizar un volcado de memoria.</td>
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Sent to a process to notify that it has attempted to perform an illegal,
-    malformed, unknown, or privileged instruction.</td>
+    <td>Enviada a un proceso para notificar que ha intentado realizar una instrucción ilegal, malformada, desconocida, o priviligeada.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
-    <td>Sent to a process when an exception has occurred.</td>
+    <td>Enviada a un proceso cuando ha ocurrido una excepción.</td>
   </tr>
   <tr>
     <td><code>SIGABRT</code></td>
-    <td>Sent to a process to request that it abort.</td>
+    <td>Enviada a un proceso para solicitar que aborte.</td>
   </tr>
   <tr>
     <td><code>SIGIOT</code></td>
-    <td>Synonym for <code>SIGABRT</code></td>
+    <td>Sinónimo para <code>SIGABRT</code></td>
   </tr>
   <tr>
     <td><code>SIGBUS</code></td>
-    <td>Sent to a process to notify that it has caused a bus error.</td>
+    <td>Enviada a un proceso para notificar que ha causada un error de bus.</td>
   </tr>
   <tr>
     <td><code>SIGFPE</code></td>
-    <td>Sent to a process to notify that it has performed an illegal arithmetic
-    operation.</td>
+    <td>Enviada a un proceso para notificar que ha realizado una operación aritmética ilegal.</td>
   </tr>
   <tr>
     <td><code>SIGKILL</code></td>
-    <td>Sent to a process to terminate it immediately.</td>
+    <td>Enviada a un proceso para terminarlo inmediatamente.</td>
   </tr>
   <tr>
     <td><code>SIGUSR1</code> <code>SIGUSR2</code></td>
-    <td>Sent to a process to identify user-defined conditions.</td>
+    <td>Enviada a un proceso para identificar las condiciones definidas por los usuarios.</td>
   </tr>
   <tr>
     <td><code>SIGSEGV</code></td>
-    <td>Sent to a process to notify of a segmentation fault.</td>
+    <td>Enviada a un proceso para notificar de un fallo de segmentación.</td>
   </tr>
   <tr>
     <td><code>SIGPIPE</code></td>
-    <td>Sent to a process when it has attempted to write to a disconnected
-    pipe.</td>
+    <td>Enviada a un proceso cuando ha intentado escribir a un pipe desconectado.</td>
   </tr>
   <tr>
     <td><code>SIGALRM</code></td>
-    <td>Sent to a process when a system timer elapses.</td>
+    <td>Enviada a un proceso cuando ha transcurrido un temporizador del sistema.</td>
   </tr>
   <tr>
     <td><code>SIGTERM</code></td>
-    <td>Sent to a process to request termination.</td>
+    <td>Enviada a un proceso para solicitar su terminación.</td>
   </tr>
   <tr>
     <td><code>SIGCHLD</code></td>
-    <td>Sent to a process when a child process terminates.</td>
+    <td>Enviada a un proceso cuando un proceso secundario termina.</td>
   </tr>
   <tr>
     <td><code>SIGSTKFLT</code></td>
-    <td>Sent to a process to indicate a stack fault on a coprocessor.</td>
+    <td>Enviada a un proceso para indicar un error de pila en un coprocesador.</td>
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Sent to instruct the operating system to continue a paused process.</td>
+    <td>Enviada para indicar al sistema operativo continuar un proceso pausado.</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Sent to instruct the operating system to halt a process.</td>
+    <td>Enviada para indicar al sistema operativo detener un proceso.</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
-    <td>Sent to a process to request it to stop.</td>
+    <td>Enviada a un proceso para solicitar que se detenga.</td>
   </tr>
   <tr>
     <td><code>SIGBREAK</code></td>
-    <td>Sent to indicate when a user wishes to interrupt a process.</td>
+    <td>Enviada para indicar cuando un usuario desea interrumpir un proceso.</td>
   </tr>
   <tr>
     <td><code>SIGTTIN</code></td>
-    <td>Sent to a process when it reads from the TTY while in the
-    background.</td>
+    <td>Enviada a un proceso cuando lee desde el TTY en segundo plano.</td>
   </tr>
   <tr>
     <td><code>SIGTTOU</code></td>
-    <td>Sent to a process when it writes to the TTY while in the
-    background.</td>
+    <td>Enviada a un proceso cuando escribe desde el TTY estando en segundo plano.</td>
   </tr>
   <tr>
     <td><code>SIGURG</code></td>
-    <td>Sent to a process when a socket has urgent data to read.</td>
+    <td>Enviada a un proceso cuando un socket tiene datos urgentes a leer.</td>
   </tr>
   <tr>
     <td><code>SIGXCPU</code></td>
-    <td>Sent to a process when it has exceeded its limit on CPU usage.</td>
+    <td>Enviada a un proceso cuando ha excedido su límite de uso de la CPU.</td>
   </tr>
   <tr>
     <td><code>SIGXFSZ</code></td>
-    <td>Sent to a process when it grows a file larger than the maximum
-    allowed.</td>
+    <td>Enviada a un proceso cuando el archivo crece más grande que el máximo permitido.</td>
   </tr>
   <tr>
     <td><code>SIGVTALRM</code></td>
-    <td>Sent to a process when a virtual timer has elapsed.</td>
+    <td>Enviada a un proceso cuando el temporizador virtual ha transcurrido.</td>
   </tr>
   <tr>
     <td><code>SIGPROF</code></td>
-    <td>Sent to a process when a system timer has elapsed.</td>
+    <td>Enviada a un proceso cuando un temporizador del sistema ha transcurrido.</td>
   </tr>
   <tr>
     <td><code>SIGWINCH</code></td>
-    <td>Sent to a process when the controlling terminal has changed its
-    size.</td>
+    <td>Enviada a un proceso cuando la terminal de control ha cambiado su tamaño.</td>
   </tr>
   <tr>
     <td><code>SIGIO</code></td>
-    <td>Sent to a process when I/O is available.</td>
+    <td>Enviada a un proceso cuando la opción E/A está disponible.</td>
   </tr>
   <tr>
     <td><code>SIGPOLL</code></td>
-    <td>Synonym for <code>SIGIO</code></td>
+    <td>Sinónimo para <code>SIGIO</code></td>
   </tr>
   <tr>
     <td><code>SIGLOST</code></td>
-    <td>Sent to a process when a file lock has been lost.</td>
+    <td>Enviada a un proceso cuando un bloqueo de archivo se ha perdido.</td>
   </tr>
   <tr>
     <td><code>SIGPWR</code></td>
-    <td>Sent to a process to notify of a power failure.</td>
+    <td>Enviada a un proceso para notificar de un fallo de alimentación.</td>
   </tr>
   <tr>
     <td><code>SIGINFO</code></td>
-    <td>Synonym for <code>SIGPWR</code></td>
+    <td>Sinónimo para <code>SIGPWR</code></td>
   </tr>
   <tr>
     <td><code>SIGSYS</code></td>
-    <td>Sent to a process to notify of a bad argument.</td>
+    <td>Enviada a un proceso para notificar un argumento erróneo.</td>
   </tr>
   <tr>
     <td><code>SIGUNUSED</code></td>
-    <td>Synonym for <code>SIGSYS</code></td>
+    <td>Sinónimo para <code>SIGSYS</code></td>
   </tr>
 </table>
 
-### Error Constants
+### Constantes de Error
 
-The following error constants are exported by `os.constants.errno`:
+Las siguientes constantes de error son exportadas por `os.constants.errno`:
 
-#### POSIX Error Constants
+#### Constantes de Error POSIX
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
-    <td>Indicates that the list of arguments is longer than expected.</td>
+    <td>Indica que la lista de argumentos es mas larga de lo esperado.</td>
   </tr>
   <tr>
     <td><code>EACCES</code></td>
-    <td>Indicates that the operation did not have sufficient permissions.</td>
+    <td>Indica que la operación no tiene los permisos suficientes.</td>
   </tr>
   <tr>
     <td><code>EADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica que la dirección de red se encuentra en uso.</td>
   </tr>
   <tr>
     <td><code>EADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is currently unavailable for
-    use.</td>
+    <td>Indica que la dirección de red se encuentra no disponible para su uso.</td>
   </tr>
   <tr>
     <td><code>EAFNOSUPPORT</code></td>
-    <td>Indicates that the network address family is not supported.</td>
+    <td>Indica que la familia de la dirección de red no es compatible.</td>
   </tr>
   <tr>
     <td><code>EAGAIN</code></td>
-    <td>Indicates that there is currently no data available and to try the
-    operation again later.</td>
+    <td>Indica que no hay datos disponibles y que se debe intentar la operación más tarde.</td>
   </tr>
   <tr>
     <td><code>EALREADY</code></td>
-    <td>Indicates that the socket already has a pending connection in
-    progress.</td>
+    <td>Indica que el socket ya tiene una conexión pendiente en proceso.</td>
   </tr>
   <tr>
     <td><code>EBADF</code></td>
-    <td>Indicates that a file descriptor is not valid.</td>
+    <td>Indica que un descriptor del archivo no es válido.</td>
   </tr>
   <tr>
     <td><code>EBADMSG</code></td>
-    <td>Indicates an invalid data message.</td>
+    <td>Indica un mensaje de datos inválido.</td>
   </tr>
   <tr>
     <td><code>EBUSY</code></td>
-    <td>Indicates that a device or resource is busy.</td>
+    <td>Indica que un dispositivo o recurso está ocupado.</td>
   </tr>
   <tr>
     <td><code>ECANCELED</code></td>
-    <td>Indicates that an operation was canceled.</td>
+    <td>Indica que una operación fue cancelada.</td>
   </tr>
   <tr>
     <td><code>ECHILD</code></td>
-    <td>Indicates that there are no child processes.</td>
+    <td>Indica que no no hay procesos secundarios.</td>
   </tr>
   <tr>
     <td><code>ECONNABORTED</code></td>
-    <td>Indicates that the network connection has been aborted.</td>
+    <td>Indica que la conexión de red ha sido abortada.</td>
   </tr>
   <tr>
     <td><code>ECONNREFUSED</code></td>
-    <td>Indicates that the network connection has been refused.</td>
+    <td>Indica que la conexión de red fue rechazada.</td>
   </tr>
   <tr>
     <td><code>ECONNRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>Indica que la conexión de red fue reiniciada.</td>
   </tr>
   <tr>
     <td><code>EDEADLK</code></td>
-    <td>Indicates that a resource deadlock has been avoided.</td>
+    <td>Indica que un bloqueo de recursos ha sido evadido.</td>
   </tr>
   <tr>
     <td><code>EDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica que una dirección destino es requerida.</td>
   </tr>
   <tr>
     <td><code>EDOM</code></td>
-    <td>Indicates that an argument is out of the domain of the function.</td>
+    <td>Indica que un argumento está fuera del dominio de la función.</td>
   </tr>
   <tr>
     <td><code>EDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica que se ha excedido la cuota del disco.</td>
   </tr>
   <tr>
     <td><code>EEXIST</code></td>
-    <td>Indicates that the file already exists.</td>
+    <td>Indica que el archivo existe.</td>
   </tr>
   <tr>
     <td><code>EFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica una dirección de puntero no válido.</td>
   </tr>
   <tr>
     <td><code>EFBIG</code></td>
-    <td>Indicates that the file is too large.</td>
+    <td>Indica que el archivo es muy grande.</td>
   </tr>
   <tr>
     <td><code>EHOSTUNREACH</code></td>
-    <td>Indicates that the host is unreachable.</td>
+    <td>Indica que el host es inalcanzable.</td>
   </tr>
   <tr>
     <td><code>EIDRM</code></td>
-    <td>Indicates that the identifier has been removed.</td>
+    <td>Indica que el identificador ha sido removido.</td>
   </tr>
   <tr>
     <td><code>EILSEQ</code></td>
-    <td>Indicates an illegal byte sequence.</td>
+    <td>Indica una secuencia ilegal de bytes.</td>
   </tr>
   <tr>
     <td><code>EINPROGRESS</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica que una operación está en progreso.</td>
   </tr>
   <tr>
     <td><code>EINTR</code></td>
-    <td>Indicates that a function call was interrupted.</td>
+    <td>Indica que un llamado a la función fue interrumpido.</td>
   </tr>
   <tr>
     <td><code>EINVAL</code></td>
-    <td>Indicates that an invalid argument was provided.</td>
+    <td>Indica que un argumento inválido fue proporcionado.</td>
   </tr>
   <tr>
     <td><code>EIO</code></td>
-    <td>Indicates an otherwise unspecified I/O error.</td>
+    <td>Indica un error E/A no especificado.</td>
   </tr>
   <tr>
     <td><code>EISCONN</code></td>
-    <td>Indicates that the socket is connected.</td>
+    <td>Indica que el socket está conectado.</td>
   </tr>
   <tr>
     <td><code>EISDIR</code></td>
-    <td>Indicates that the path is a directory.</td>
+    <td>Indica que la ruta es un directorio.</td>
   </tr>
   <tr>
     <td><code>ELOOP</code></td>
-    <td>Indicates too many levels of symbolic links in a path.</td>
+    <td>Indica muchos niveles de enlaces simbólicos en la ruta.</td>
   </tr>
   <tr>
     <td><code>EMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica que hay demasiados archivos abiertos.</td>
   </tr>
   <tr>
     <td><code>EMLINK</code></td>
-    <td>Indicates that there are too many hard links to a file.</td>
+    <td>Indica que hay muchos enlaces duros a un archivo.</td>
   </tr>
   <tr>
     <td><code>EMSGSIZE</code></td>
-    <td>Indicates that the provided message is too long.</td>
+    <td>Indica que el mensaje provisto es muy largo.</td>
   </tr>
   <tr>
     <td><code>EMULTIHOP</code></td>
-    <td>Indicates that a multihop was attempted.</td>
+    <td>Indica que un multisalto fue intentado.</td>
   </tr>
   <tr>
     <td><code>ENAMETOOLONG</code></td>
-    <td>Indicates that the filename is too long.</td>
+    <td>Indica que el nombre del archivo es muy largo.</td>
   </tr>
   <tr>
     <td><code>ENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>Indica que la red esta caída.</td>
   </tr>
   <tr>
     <td><code>ENETRESET</code></td>
-    <td>Indicates that the connection has been aborted by the network.</td>
+    <td>Indica que la conexión fue abortada por la red.</td>
   </tr>
   <tr>
     <td><code>ENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>Indica que la red es inalcanzable.</td>
   </tr>
   <tr>
     <td><code>ENFILE</code></td>
-    <td>Indicates too many open files in the system.</td>
+    <td>Indica que hay demasiados archivos abiertos en el sistema.</td>
   </tr>
   <tr>
     <td><code>ENOBUFS</code></td>
-    <td>Indicates that no buffer space is available.</td>
+    <td>Indica que no hay espacio de búfer disponible.</td>
   </tr>
   <tr>
     <td><code>ENODATA</code></td>
-    <td>Indicates that no message is available on the stream head read
-    queue.</td>
+    <td>Indica que no hay mensajes disponibles en la cola de lectura.</td>
   </tr>
   <tr>
     <td><code>ENODEV</code></td>
-    <td>Indicates that there is no such device.</td>
+    <td>Indica que no existe tal dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOENT</code></td>
-    <td>Indicates that there is no such file or directory.</td>
+    <td>Indica que no existe tal directorio o archivo.</td>
   </tr>
   <tr>
     <td><code>ENOEXEC</code></td>
-    <td>Indicates an exec format error.</td>
+    <td>Indica que hay un error de formato exec.</td>
   </tr>
   <tr>
     <td><code>ENOLCK</code></td>
-    <td>Indicates that there are no locks available.</td>
+    <td>Indica que no hay bloqueos disponibles.</td>
   </tr>
   <tr>
     <td><code>ENOLINK</code></td>
-    <td>Indications that a link has been severed.</td>
+    <td>Indica que un enlace se ha roto.</td>
   </tr>
   <tr>
     <td><code>ENOMEM</code></td>
-    <td>Indicates that there is not enough space.</td>
+    <td>Indica que no hay suficiente espacio.</td>
   </tr>
   <tr>
     <td><code>ENOMSG</code></td>
-    <td>Indicates that there is no message of the desired type.</td>
+    <td>Indica que no hay mensajes del tipo deseado.</td>
   </tr>
   <tr>
     <td><code>ENOPROTOOPT</code></td>
-    <td>Indicates that a given protocol is not available.</td>
+    <td>Indica que el protocolo dado no está disponible.</td>
   </tr>
   <tr>
     <td><code>ENOSPC</code></td>
-    <td>Indicates that there is no space available on the device.</td>
+    <td>Indica que no hay espacio disponible en el dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
@@ -805,394 +791,387 @@ The following error constants are exported by `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
-    <td>Indicates that a function has not been implemented.</td>
+    <td>Indica que una función ha sido implementada.</td>
   </tr>
   <tr>
     <td><code>ENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica que un socket no está conectado.</td>
   </tr>
   <tr>
     <td><code>ENOTDIR</code></td>
-    <td>Indicates that the path is not a directory.</td>
+    <td>Indica que la ruta no es un directorio.</td>
   </tr>
   <tr>
     <td><code>ENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica que el directorio no está vacío.</td>
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
-    <td>Indicates that the given item is not a socket.</td>
+    <td>Indica que un elemento dado no es un socket.</td>
   </tr>
   <tr>
     <td><code>ENOTSUP</code></td>
-    <td>Indicates that a given operation is not supported.</td>
+    <td>Indica que no se admite la operación dada.</td>
   </tr>
   <tr>
     <td><code>ENOTTY</code></td>
-    <td>Indicates an inappropriate I/O control operation.</td>
+    <td>Indica una operación de control A/E inapropiada.</td>
   </tr>
   <tr>
     <td><code>ENXIO</code></td>
-    <td>Indicates no such device or address.</td>
+    <td>Indica que no existe el dispositivo o dirección.</td>
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indicates that an operation is not supported on the socket.
-    Note that while `ENOTSUP` and `EOPNOTSUPP` have the same value on Linux,
-    according to POSIX.1 these error values should be distinct.)</td>
+    <td>Indica que la operación no es compatible con el socket.
+    Note que mientras `ENOTSUP` y `EOPNOTSUPP` tienen el mismo valor en Linux, de acuerdo a POSIX. 1 los valores de error deben ser distintos.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indicates that a value is too large to be stored in a given data
-    type.</td>
+    <td>Indica que el valor es muy grande para almacenarse en un tipo de datos.</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indicates that the operation is not permitted.</td>
+    <td>Indica que la operación no es permitida.</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
-    <td>Indicates a broken pipe.</td>
+    <td>Indica un pipe roto.</td>
   </tr>
   <tr>
     <td><code>EPROTO</code></td>
-    <td>Indicates a protocol error.</td>
+    <td>Indica un error de protocolo.</td>
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indicates that a protocol is not supported.</td>
+    <td>Indica que un protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
-    <td>Indicates the wrong type of protocol for a socket.</td>
+    <td>Indica que el tipo incorrecto de protocolo para un socket.</td>
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indicates that the results are too large.</td>
+    <td>Indica que los resultados son muy grandes.</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
-    <td>Indicates that the file system is read only.</td>
+    <td>Indica que el sistema de archivos es de solo lectura.</td>
   </tr>
   <tr>
     <td><code>ESPIPE</code></td>
-    <td>Indicates an invalid seek operation.</td>
+    <td>Indica una operación inválida de búsqueda.</td>
   </tr>
   <tr>
     <td><code>ESRCH</code></td>
-    <td>Indicates that there is no such process.</td>
+    <td>Indica que no existe tal proceso.</td>
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indicates that the file handle is stale.</td>
+    <td>Indica que el descriptor de archivos es obsoleto.</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
-    <td>Indicates an expired timer.</td>
+    <td>Indica un temporizador expirado.</td>
   </tr>
   <tr>
     <td><code>ETIMEDOUT</code></td>
-    <td>Indicates that the connection timed out.</td>
+    <td>Indica que la conexión ha sido interrumpida.</td>
   </tr>
   <tr>
     <td><code>ETXTBSY</code></td>
-    <td>Indicates that a text file is busy.</td>
+    <td>Indica que el archivo de texto está ocupado.</td>
   </tr>
   <tr>
     <td><code>EWOULDBLOCK</code></td>
-    <td>Indicates that the operation would block.</td>
+    <td>Indica que la operación podría bloquear.</td>
   </tr>
   <tr>
     <td><code>EXDEV</code></td>
-    <td>Indicates an improper link.
+    <td>Indica un enlace incorrecto.
   </tr>
 </table>
 
-#### Windows Specific Error Constants
+#### Constantes de Error Específicas de Windows
 
-The following error codes are specific to the Windows operating system:
+Los siguientes códigos de error son específicos del sistema operativo windows:
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
-    <td>Indicates an interrupted function call.</td>
+    <td>Indica una interrupción en la función de llamada.</td>
   </tr>
   <tr>
     <td><code>WSAEBADF</code></td>
-    <td>Indicates an invalid file handle.</td>
+    <td>Indica un descriptor de archivo inválido.</td>
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indicates insufficient permissions to complete the operation.</td>
+    <td>Indica insuficiencia de permisos para completar la operación.</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
-    <td>Indicates an invalid pointer address.</td>
+    <td>Indica una dirección de puntero inválida.</td>
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indicates that an invalid argument was passed.</td>
+    <td>Indica que un argumento inválido fue proporcionado.</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica que hay muchos archivos abiertos.</td>
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indicates that a resource is temporarily unavailable.</td>
+    <td>Indica que un recurso está temporalmente no disponible.</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indicates that an operation is currently in progress.</td>
+    <td>Indica que la operación está actualmente en progreso.</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
-    <td>Indicates that an operation is already in progress.</td>
+    <td>Indica que la operación ya está en progreso.</td>
   </tr>
   <tr>
     <td><code>WSAENOTSOCK</code></td>
-    <td>Indicates that the resource is not a socket.</td>
+    <td>Indica que el recurso no es un socket.</td>
   </tr>
   <tr>
     <td><code>WSAEDESTADDRREQ</code></td>
-    <td>Indicates that a destination address is required.</td>
+    <td>Indica que la dirección de destino es requerida.</td>
   </tr>
   <tr>
     <td><code>WSAEMSGSIZE</code></td>
-    <td>Indicates that the message size is too long.</td>
+    <td>Indica que el tamaño del mensaje es demasiado largo.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indicates the wrong protocol type for the socket.</td>
+    <td>Indica el tipo de protocolo incorrecto para el socket.</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
-    <td>Indicates a bad protocol option.</td>
+    <td>Indica una opción de protocolo errónea.</td>
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indicates that the protocol is not supported.</td>
+    <td>Indica que el protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
-    <td>Indicates that the socket type is not supported.</td>
+    <td>Indica que el tipo de socket no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
-    <td>Indicates that the operation is not supported.</td>
+    <td>Indica que la operación no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEPFNOSUPPORT</code></td>
-    <td>Indicates that the protocol family is not supported.</td>
+    <td>Indica que la familia de protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEAFNOSUPPORT</code></td>
-    <td>Indicates that the address family is not supported.</td>
+    <td>Indica que la familia de direcciones no es compatible.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRINUSE</code></td>
-    <td>Indicates that the network address is already in use.</td>
+    <td>Indica que la dirección de red se encuentra en uso.</td>
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
-    <td>Indicates that the network address is not available.</td>
+    <td>Indica que la dirección de red no se encuentra disponible.</td>
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
-    <td>Indicates that the network is down.</td>
+    <td>Indica que la red está caída.</td>
   </tr>
   <tr>
     <td><code>WSAENETUNREACH</code></td>
-    <td>Indicates that the network is unreachable.</td>
+    <td>Indica que la red es inalcanzable.</td>
   </tr>
   <tr>
     <td><code>WSAENETRESET</code></td>
-    <td>Indicates that the network connection has been reset.</td>
+    <td>Indica que la conexión de red fue reiniciada.</td>
   </tr>
   <tr>
     <td><code>WSAECONNABORTED</code></td>
-    <td>Indicates that the connection has been aborted.</td>
+    <td>Indica que la conexión ha sido abortada.</td>
   </tr>
   <tr>
     <td><code>WSAECONNRESET</code></td>
-    <td>Indicates that the connection has been reset by the peer.</td>
+    <td>Indica que la conexión fue reiniciada por el par.</td>
   </tr>
   <tr>
     <td><code>WSAENOBUFS</code></td>
-    <td>Indicates that there is no buffer space available.</td>
+    <td>Indica que no hay espacio de búfer disponible.</td>
   </tr>
   <tr>
     <td><code>WSAEISCONN</code></td>
-    <td>Indicates that the socket is already connected.</td>
+    <td>Indica que el socket se encuentra conectado.</td>
   </tr>
   <tr>
     <td><code>WSAENOTCONN</code></td>
-    <td>Indicates that the socket is not connected.</td>
+    <td>Indica que el socket no se encuentra conectado.</td>
   </tr>
   <tr>
     <td><code>WSAESHUTDOWN</code></td>
-    <td>Indicates that data cannot be sent after the socket has been
-    shutdown.</td>
+    <td>Indica que los datos no pueden ser enviados luego de que el socket se haya apagado.</td>
   </tr>
   <tr>
     <td><code>WSAETOOMANYREFS</code></td>
-    <td>Indicates that there are too many references.</td>
+    <td>Indica que hay demasiadas referencias.</td>
   </tr>
   <tr>
     <td><code>WSAETIMEDOUT</code></td>
-    <td>Indicates that the connection has timed out.</td>
+    <td>Indica que la conexión ha sido interrumpida.</td>
   </tr>
   <tr>
     <td><code>WSAECONNREFUSED</code></td>
-    <td>Indicates that the connection has been refused.</td>
+    <td>Indica que la conexión ha sido rechazada.</td>
   </tr>
   <tr>
     <td><code>WSAELOOP</code></td>
-    <td>Indicates that a name cannot be translated.</td>
+    <td>Indica que el nombre no puede ser traducido.</td>
   </tr>
   <tr>
     <td><code>WSAENAMETOOLONG</code></td>
-    <td>Indicates that a name was too long.</td>
+    <td>Indica que el nombre es demasiado largo.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTDOWN</code></td>
-    <td>Indicates that a network host is down.</td>
+    <td>Indica que un host de la red está caído.</td>
   </tr>
   <tr>
     <td><code>WSAEHOSTUNREACH</code></td>
-    <td>Indicates that there is no route to a network host.</td>
+    <td>Indica que no hay ninguna ruta al host de la red.</td>
   </tr>
   <tr>
     <td><code>WSAENOTEMPTY</code></td>
-    <td>Indicates that the directory is not empty.</td>
+    <td>Indica que el directorio no está vacío.</td>
   </tr>
   <tr>
     <td><code>WSAEPROCLIM</code></td>
-    <td>Indicates that there are too many processes.</td>
+    <td>Indica que hay demasiados procesos.</td>
   </tr>
   <tr>
     <td><code>WSAEUSERS</code></td>
-    <td>Indicates that the user quota has been exceeded.</td>
+    <td>Indica que se ha excedido la cuota de usuarios.</td>
   </tr>
   <tr>
     <td><code>WSAEDQUOT</code></td>
-    <td>Indicates that the disk quota has been exceeded.</td>
+    <td>Indica que la cuota de disco ha sido excedida.</td>
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
-    <td>Indicates a stale file handle reference.</td>
+    <td>Indica un descriptor de archivo viejo.</td>
   </tr>
   <tr>
     <td><code>WSAEREMOTE</code></td>
-    <td>Indicates that the item is remote.</td>
+    <td>Indica que el elemento es remoto.</td>
   </tr>
   <tr>
     <td><code>WSASYSNOTREADY</code></td>
-    <td>Indicates that the network subsystem is not ready.</td>
+    <td>Indica que el subsistema de la red no está listo.</td>
   </tr>
   <tr>
     <td><code>WSAVERNOTSUPPORTED</code></td>
-    <td>Indicates that the `winsock.dll` version is out of range.</td>
+    <td>Indica que la versión de `winsock.dll` está fuera de rango.</td>
   </tr>
   <tr>
     <td><code>WSANOTINITIALISED</code></td>
-    <td>Indicates that successful WSAStartup has not yet been performed.</td>
+    <td>Indica que el WSAStartup no ha sido realizado con éxito.</td>
   </tr>
   <tr>
     <td><code>WSAEDISCON</code></td>
-    <td>Indicates that a graceful shutdown is in progress.</td>
+    <td>Indica que un proceso de apagado exitoso está en progreso.</td>
   </tr>
   <tr>
     <td><code>WSAENOMORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica que no hay más resultados.</td>
   </tr>
   <tr>
     <td><code>WSAECANCELLED</code></td>
-    <td>Indicates that an operation has been canceled.</td>
+    <td>Indica que hay una operación ha sido cancelada.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROCTABLE</code></td>
-    <td>Indicates that the procedure call table is invalid.</td>
+    <td>Indica que la tabla de llamada de procedimiento es inválida-.</td>
   </tr>
   <tr>
     <td><code>WSAEINVALIDPROVIDER</code></td>
-    <td>Indicates an invalid service provider.</td>
+    <td>Indica un proveedor de servicio inválido.</td>
   </tr>
   <tr>
     <td><code>WSAEPROVIDERFAILEDINIT</code></td>
-    <td>Indicates that the service provider failed to initialized.</td>
+    <td>Indica que el proveedor del servicio falló al inicializar.</td>
   </tr>
   <tr>
     <td><code>WSASYSCALLFAILURE</code></td>
-    <td>Indicates a system call failure.</td>
+    <td>Indica un fallo de llamada del sistema.</td>
   </tr>
   <tr>
     <td><code>WSASERVICE_NOT_FOUND</code></td>
-    <td>Indicates that a service was not found.</td>
+    <td>Indica que el servicio no fue encontrado.</td>
   </tr>
   <tr>
     <td><code>WSATYPE_NOT_FOUND</code></td>
-    <td>Indicates that a class type was not found.</td>
+    <td>Indica que el tipo de clase no fue encontrado.</td>
   </tr>
   <tr>
     <td><code>WSA_E_NO_MORE</code></td>
-    <td>Indicates that there are no more results.</td>
+    <td>Indica que no hay mas resultados.</td>
   </tr>
   <tr>
     <td><code>WSA_E_CANCELLED</code></td>
-    <td>Indicates that the call was canceled.</td>
+    <td>Indica que el llamado fue cancelado.</td>
   </tr>
   <tr>
     <td><code>WSAEREFUSED</code></td>
-    <td>Indicates that a database query was refused.</td>
+    <td>Indica que una consulta a la base de datos fue rechazada.</td>
   </tr>
 </table>
 
-### dlopen Constants
+### constantes dlopen
 
-If available on the operating system, the following constants are exported in `os.constants.dlopen`. See dlopen(3) for detailed information.
+Si se encuentran en el sistema operativo, las siguientes constantes son exportadas en `os.constants.dlopen`. Vea dlopen(3) para información detallada.
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constante</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
-    <td>Perform lazy binding. Node.js sets this flag by default.</td>
+    <td>Realizar carga diferida. Node.js coloca este parámetro por defecto.</td>
   </tr>
   <tr>
     <td><code>RTLD_NOW</code></td>
-    <td>Resolve all undefined symbols in the library before dlopen(3)
-    returns.</td>
+    <td>Resuelve todos los símbolos indefinidos en la librería antes que dlopen(3) retorne.</td>
   </tr>
   <tr>
     <td><code>RTLD_GLOBAL</code></td>
-    <td>Symbols defined by the library will be made available for symbol
-    resolution of subsequently loaded libraries.</td>
+    <td>Los símbolos definidos por la librería estarán disponibles para la resolución de símbolos de librerías subsecuentemente cargadas.</td>
   </tr>
   <tr>
     <td><code>RTLD_LOCAL</code></td>
-    <td>The converse of `RTLD_GLOBAL`. This is the default behavior if neither
-    flag is specified.</td>
+    <td>La conversa de `RTLD_GLOBAL`. Este es el compartamiento predeterminado si ningún parámetro es especificado.</td>
   </tr>
   <tr>
     <td><code>RTLD_DEEPBIND</code></td>
-    <td>Make a self-contained library use its own symbols in preference to
-    symbols from previously loaded libraries.</td>
+    <td>Hace que una librería auto contenida use sus propio símbolos de preferencia a símbolos de librerías cargadas previamente.</td>
   </tr>
 </table>
 
-### libuv Constants
+### constantes libuv
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constantes</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>

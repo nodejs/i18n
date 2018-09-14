@@ -185,11 +185,11 @@
 
 ## 2014.09.24, Versión 0.11.14 (Inestable)
 
-* uv: Actualización a v1.0.0-rc1
-* http_parser: Actualización a v2.3.0
-* npm: Actualización a v2.0.0
-* openssl: Actualización a v1.0.1i
-* v8: Actualización a 3.26.33
+* uv: Actualizar a v1.0.0-rc1
+* http_parser: Actualizar a v2.3.0
+* npm: Actualizar a v2.0.0
+* openssl: Actualizar a v1.0.1i
+* v8: Actualizar a 3.26.33
 * Añadir una ruta rápida para el análisis simple de URL (Gabriel Wicke)
 * Soporte para el parámetro de opciones en console.dir() añadido (Xavi Magrinyà)
 * Clúster: reparar handles compartidos en Windows (Alexis Campailla)
@@ -207,7 +207,7 @@
 * clúster: permitir múltiples llamadas a setupMaster() (Ryan Graham)
 * clúster: centralizar el retiro de la lista de workers. (Julien Gilli)
 * clúster: habilitar eventos error/message utilizando .worker (cjihrig)
-* clúster: incluir objeto de configuración en el evento "setup" (Ryan Graham)
+* clúster: incluir objeto de configuraciones en el evento "setup" (Ryan Graham)
 * clúster: restaurar el comportamiento de la v0.10.x de setupMaster() (Ryan Graham)
 * clúster: opciones de soporte en el constructor de Worker (cjihrig)
 * clúster: probar emisión de eventos en cluster.worker (Sam Roberts)
@@ -222,7 +222,7 @@
 * dns: si está disponible, incluir el nombre del host en el mensaje de error (Maciej Małecki)
 * dns: introducir la función lookupService (Saúl Ibarra Corretgé)
 * dns: enviar errores de búsqueda c-ares al callback (Chris Dickinson)
-* dns: arrojar si el nombre de host no es una string o retorna ser falso (cjihrig)
+* dns: arrojar si el nombre del host no es una string o es falso (cjihrig)
 * eventos: colocar en el Output al evento que tiene fugas (Arnout Kazemier)
 * fs: cerrar archivo si fstat() falla al ejecutar readFile() (cjihrig)
 * fs: fs.readFile no debería arrojar uncaughtException (Jackson Tian)
@@ -275,7 +275,7 @@
 
 https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
-* v8: actualización a 3.24.35.22
+* v8: actualizar a 3.24.35.22
 * buffer: añadir métodos de comparación e igualación (Sean McArthur)
 * buffer: mejorar métodos {read,write}{U}Int* (Nick Apperson)
 * buffer: devolver uint si MSB es 1 en readUInt32 (goussardg)
@@ -323,7 +323,7 @@ https://github.com/nodejs/node/commit/7d6b8db40f32e817ff145b7cfe6b3aec3179fba7
 * dns: verificar que el argumento sea una función válida en la resolución (Kenan Sulayman)
 * http: evitar claves duplicadas en writeHead (David Björklund)
 * net: añadir localPort para opciones de conexión (Timothy K Fontaine)
-* node: no imprimir sugerencias de SyntaxError en sterr (Fedor Indutny)
+* node: no imprimir sugerencias de SyntaxError en stderr (Fedor Indutny)
 * node: invocar `beforeExit` si el bucle se encontraba activo (Fedor Indutny)
 * node: hacer más explícito al campo AsyncListenerInst (Trevor Norris)
 * os: networkInterfaces include scopeid for ipv6 (Xidorn Quan)

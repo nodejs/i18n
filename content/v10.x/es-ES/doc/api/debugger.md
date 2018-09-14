@@ -1,28 +1,28 @@
-# Debugger
+# Depurador
 
 <!--introduced_in=v0.9.12-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - estable
 
 <!-- type=misc -->
 
-Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
+Node.js incluye un servicio de depurador fuera de proceso de fácil acceso a través de [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) e integrado al cliente de depuración. Para usarlo, inicie el Node.js con el argumento `inspect`, seguido de a ruta de acceso del script a depurar. Se mostrará un aviso indicando el inicio exitoso del depurador:
 
 ```txt
 $ node inspect myscript.js
-< Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
-< For help, see: https://nodejs.org/en/docs/inspector
-< Debugger attached.
-Break on start in myscript.js:1
+<Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
+< para ayuda, visitar: https://nodejs.org/en/docs/inspector
+< Depurador adjunto.
+Interrumpir el inicio en myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   console.log('world');
 debug>
 ```
 
-Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
+El cliente depurador de Node.js no es un depurador que incluye todas las funciones, pero un paso simple y la inspección son permitidas.
 
-Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+Insertando la instrucción `debugger;` en el código fuente de un script habilitará un punto de interrupción en esa posición en el código:
 
 <!-- eslint-disable no-debugger -->
 
@@ -36,28 +36,28 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Once the debugger is run, a breakpoint will occur at line 3:
+Un punto de interrupción sucederá en la línea 3 una vez que el depurador sea ejecutado:
 
 ```txt
 $ node inspect myscript.js
-< Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
-< For help, see: https://nodejs.org/en/docs/inspector
-< Debugger attached.
-Break on start in myscript.js:1
+<Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
+< Para ayuda, visitar: https://nodejs.org/en/docs/inspector
+< Depurador adjunto.
+Interrupción en el inicio en myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   debugger;
 debug> cont
 < hello
-break in myscript.js:3
+Interrupción en myscript.js:3 
   1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
 > 3   debugger;
   4   console.log('world');
   5 }, 1000);
 debug> next
-break in myscript.js:4
-  2 setTimeout(() => {
+Interrupción en myscript.js:4
+   setTimeout(() => {
   3   debugger;
 > 4   console.log('world');
   5 }, 1000);
@@ -70,7 +70,7 @@ Press Ctrl + C to leave debug repl
 4
 debug> next
 < world
-break in myscript.js:5
+interrupción en myscript.js:5
   3   debugger;
   4   console.log('world');
 > 5 }, 1000);
@@ -79,50 +79,50 @@ break in myscript.js:5
 debug> .exit
 ```
 
-The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
+El comando `repl` permite que el código sea evaluado de forma remota. El comando `next` continúa en la siguiente línea. Escribe `help` para ver los comandos adiconales disponibles.
 
-Pressing `enter` without typing a command will repeat the previous debugger command.
+Presionando `enter` sin escribir un comando repetirá el comando del depurador previo.
 
-## Watchers
+## Monitores
 
-It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
+Es posible observar los valores variables y de expresión mientras se hace una depuración. Cada expresión de la lista de monitores sera evaluada en el contexto actual y mostrada inmediatamente antes de clasificar las interrupciones del código fuente en cada punto de interrupción.
 
-To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
+Escribe `watch('my_expression')` para comenzar con una expresión. El comando `watchers` imprimirá los monitores activos. Por el contrario, escribe `unwatch('my_expression')` para eliminar un monitor.
 
-## Command reference
+## Comando de referencia
 
-### Stepping
+### Ejecuanto paso a paso
 
-* `cont`, `c` - Continue execution
-* `next`, `n` - Step next
-* `step`, `s` - Step in
-* `out`, `o` - Step out
-* `pause` - Pause running code (like pause button in Developer Tools)
+* `cont`, `c` - Continúe ejecución
+* `next`, `n` - Siguiente paso
+* `step`, `s` - Entrar
+* `out`, `o` - Salir
+* `pause` - Detener ejecución del código (parecido al botón de pausa en las Herramientas para desarrolladores)
 
-### Breakpoints
+### Puntos de interrupción
 
-* `setBreakpoint()`, `sb()` - Set breakpoint on current line
-* `setBreakpoint(line)`, `sb(line)` - Set breakpoint on specific line
-* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
-* `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
-* `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
+* `setBreakpoint()`. `sb()` - Seleccionar punto de interrupción en la línea actual
+* `setBreakpoint(line)`, `sb(line)` - Colocar un punto de interrupción en una línea específica
+* `setBreakpoint('fn()')`, `sb(...)` - Establecer un punto de interrupción en una primera instrucción en las funciones del programa
+* `setBreakpoint('script.js', 1)`, `sb(...)` - Establecer un punto de interrupción en la primera línea del `script.js`
+* `clearBreakpoint('script.js', 1)`m `cb(...)` - Limpiar el punto de interrupción en `script.js` en la línea 1
 
-It is also possible to set a breakpoint in a file (module) that is not loaded yet:
+Asimismo, es posible colocar un punto de interrupción en un archivo (módulo) que no haya sido cargado aún:
 
 ```txt
 $ node inspect main.js
 < Debugger listening on ws://127.0.0.1:9229/4e3db158-9791-4274-8909-914f7facf3bd
-< For help, see: https://nodejs.org/en/docs/inspector
-< Debugger attached.
-Break on start in main.js:1
-> 1 (function (exports, require, module, __filename, __dirname) { const mod = require('./mod.js');
+< Para ayuda, visitar: https://nodejs.org/en/docs/inspector
+< Depurador adjunto.
+Interrumpir al inicio en  main.js:1
+>  (function (exports, require, module, __filename, __dirname) { const mod = require('./mod.js');
   2 mod.hello();
   3 mod.hello();
 debug> setBreakpoint('mod.js', 22)
-Warning: script 'mod.js' was not loaded yet.
+Advertencia: script 'mod.js' aún no ha sido cargado.
 debug> c
-break in mod.js:22
- 20 // USE OR OTHER DEALINGS IN THE SOFTWARE.
+interrupción en mod.js:22
+ 20 // USO U OTROS TRÁFICOS EN EL SOFTWARE.
  21
 >22 exports.hello = function() {
  23   return 'hello from module';
@@ -130,42 +130,42 @@ break in mod.js:22
 debug>
 ```
 
-### Information
+### Información
 
-* `backtrace`, `bt` - Print backtrace of current execution frame
-* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
-* `watch(expr)` - Add expression to watch list
-* `unwatch(expr)` - Remove expression from watch list
-* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
-* `repl` - Open debugger's repl for evaluation in debugging script's context
-* `exec expr` - Execute an expression in debugging script's context
+* `backtrace`, `bt` - Imprimir backtrace del campo de ejecución actual
+* `list(5)` - Enumera el código fuente de los scripts con 5 líneas de contexto (5 líneas anteriores y posteriores)
+* `watch(expr)` - Agregar la expresión a la lista de control
+* `unwatch(expr)` - Elimina la expresión de la lista de control
+* `watchers` - Enumera los monitores y sus calores (enumerados automáticamente en cada punto de interrupción)
+* `repl` - Abrir el repl del depurador para la evaluación en el contexto del script de depuración
+* `exec expr` - Ejecuta una expresión en el contexto del script de depuración
 
-### Execution control
+### Control de ejecución
 
-* `run` - Run script (automatically runs on debugger's start)
-* `restart` - Restart script
-* `kill` - Kill script
+* `run` - Ejecuta el script (inicia el depurador automáticamente)
+* `restart` - Reinicia el script
+* `kill` - Termina el script
 
-### Various
+### Varios
 
-* `scripts` - List all loaded scripts
-* `version` - Display V8's version
+* `scripts` - Enumera todos los scripts cargados
+* `>version` - Muestra las versiones de V8
 
-## Advanced Usage
+## Uso avanzado
 
-### V8 Inspector Integration for Node.js
+### Integración del Inspector V8 para Node.js
 
-V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del Inspector V8 permite adjuntar Chrome DevTools a Node.js para depurar y generar perfiles por ejemplo. Usa el [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
+El Inspector V8 puede ser habilitado al pasar la marca `--inspect` al iniciar una apicación Node.js. Asimismo, es posible suplir un puerto personalizado con ese marcador, por ejemplo el `--inspect=9222` permitirá las conexiones DevTools en el puerto 9222.
 
-To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
+Pase el marcador `--inspect-brk` en vez del `--inspect` para interrumpir la primera línea de la aplicación del código.
 
 ```txt
 $ node --inspect index.js
 Debugger listening on 127.0.0.1:9229.
-To start debugging, open the following URL in Chrome:
+Abra la siguiente URL en Chrome para iniciar la depuración: 
     chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
+(En el ejemplo anterior, la UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 al final de la URL es generada en la salida y varía en las diferentes sesiones de depuración)

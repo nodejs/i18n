@@ -984,9 +984,9 @@ console.log(sign.sign(privateKey, 'hex'));
 // Prints: the calculated signature
 ```
 
-En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
+En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, como 'ecdsa-with-SHA256'. Use nombres resumidos en su lugar.
 
-Example: signing using legacy signature algorithm name
+Ejemplo: firmando usando el nombre del algoritmo de firma heredado
 
 ```js
 const crypto = require('crypto');
@@ -1016,24 +1016,24 @@ changes:
 - `outputFormat` {string}
 - Devuelve: {Buffer | string}
 
-Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
+Calcula la firma de todos los datos pasados usando [`sign.update()`][] o [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
-The `privateKey` argument can be an object or a string. If `privateKey` is a string, it is treated as a raw key with no passphrase. If `privateKey` is an object, it must contain one or more of the following properties:
+El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es una string, se trata como una clave cruda sin frase de contraseña. Si `privateKey` es un objeto, debe contener una o más de las siguientes propiedades:
 
-- `key`: {string} - PEM encoded private key (required)
-- `passphrase`: {string} - passphrase for the private key
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - Clave privada con codificación PEM (requerida)
+- `passphrase`: {string} - frase de contraseña para la clave privada
+- `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
   
-  - `crypto.constants.RSA_PKCS1_PADDING` (default)
+  - `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to sign the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Note que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (default) sets it to the maximum permissible value.
+- `saltLength`: {integer} - longitud de sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de sal del tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
 
-The `outputFormat` can specify one of `'latin1'`, `'hex'` or `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. Si `outputFormat` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-The `Sign` object can not be again used after `sign.sign()` method has been called. Multiple calls to `sign.sign()` will result in an error being thrown.
+El objeto `Sign` no puede ser usado nuevamente después de que el método `sign.sign()` ha sido llamado. Llamadas múltiples a `sign.sign()` van a resultar en un error.
 
 ### sign.update(data[, inputEncoding])
 
@@ -1049,24 +1049,24 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Sign` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Sign` con el `data` dado, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces el `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
-## Class: Verify
+## Clase: Verify
 
 <!-- YAML
 added: v0.1.92
 -->
 
-The `Verify` class is a utility for verifying signatures. It can be used in one of two ways:
+La clase `Verify` es una utilidad para verificar firmas. La clase puede ser usada de una de las dos maneras:
 
-- As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
-- Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
+- Como una [stream](stream.html) escribible donde los datos escritos son usados para validar contra la firma dada, o
+- Usando los métodos [`verify.update()`][] y [`verify.verify()`][] para verificar la firma.
 
-The [`crypto.createVerify()`][] method is used to create `Verify` instances. `Verify` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createVerify()`][] es usado para crear instancias `Verify`. Los objetos`Verify` no tienen que ser creados usando directamente la palabra clave `new`.
 
-Example: Using `Verify` objects as streams:
+Ejemplo: Usando objetos `Verify` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -1081,7 +1081,7 @@ console.log(verify.verify(publicKey, signature));
 // Prints: true or false
 ```
 
-Example: Using the [`verify.update()`][] and [`verify.verify()`][] methods:
+Ejemplo: Usando los métodos [`verify.update()`][] y [`verify.verify()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -1109,9 +1109,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Verify` con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces `inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
 ### verify.verify(object, signature[, signatureFormat])
 
@@ -1127,25 +1127,25 @@ changes:
 - `object` {string | Object}
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
-- Returns: {boolean} `true` or `false` depending on the validity of the signature for the data and public key.
+- Devuelve: {boolean} `true` o `false` dependiendo de la validez de la firma para los datos y la clave pública.
 
-Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Verifica los datos dados usando los `object` y `signature` dados. El argumento `object` puede ser una string que contiene un objeto PEM codificado, que puede ser una clave pública RSA, una clave pública DSA, o un certificado X.509, o un objeto con una o más de las siguientes propiedades:
 
-- `key`: {string} - PEM encoded public key (required)
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - Clave pública con codificación PEM (requerida)
+- `padding`: {integer} - Valor de llenado opcional para RSA, uno de los siguientes:
   
-  - `crypto.constants.RSA_PKCS1_PADDING` (default)
+  - `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Note que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para verificar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+- `saltLength`: {integer} - longitud de sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de sal de tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
 
-The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+El argumento `signature` es la firma previamente calculada para los datos, en el `signatureFormat` que puede ser `'latin1'`, `'hex'` o `'base64'`. Si un `signatureFormat` es especificado, la `signature` se espera que sea una string; de no ser así `signature` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-The `verify` object can not be used again after `verify.verify()` has been called. Multiple calls to `verify.verify()` will result in an error being thrown.
+El objeto `verify` no puede ser usado nuevamente después de que `verify.verify()` ha sido llamado. Llamadas múltiples a `verify.verify()` van a resultar en un error.
 
-## `crypto` module methods and properties
+## `crypto` métodos y propiedades del módulo
 
 ### crypto.constants
 
@@ -1153,7 +1153,7 @@ The `verify` object can not be used again after `verify.verify()` has been calle
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Devuelve: {Object} Un objeto contiene constantes usadas comúnmente para cifrado y operaciones relacionadas con la seguridad. Las constantes especificadas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1162,13 +1162,13 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+La codificación predeterminada para usar para funciones que pueden tomar strings o [buffers][`Buffer`]. El valor por defecto es `'buffer'`, que hace que los métodos por defecto sean objetos [`Buffer`][].
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+El mecanismo `crypto.DEFAULT_ENCODING` es dado para la compatibilidad con versiones anteriores de programas antiguos que esperan que `'latin1'` sea un código por defecto.
 
-New applications should expect the default to be `'buffer'`.
+Las nuevas aplicaciones deben esperar que el valor por defecto sea `'buffer'`.
 
-This property is deprecated.
+Esta propiedad está en desuso.
 
 ### crypto.fips
 
@@ -1177,9 +1177,9 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
+Propiedad para comprobar y controlar si un proveedor de criptografía compatible con FIPS está actualmente en uso. Establecer true requiere una compilación FIPS de Node.js.
 
-This property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Esta propiedad está en desuso. Por favor use `crypto.setFips()` y `crypto.getFips()` en su lugar.
 
 ### crypto.createCipher(algorithm, password[, options])
 
@@ -1188,24 +1188,24 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
+> Estabilidad: 0 - Obsoleto: Use en su lugar [`crypto.createCipheriv()`][].
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Devuelve: {Cipher}
 
-Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
+Crea y devuelve un objeto `Cipher` que usa los `algorithm` y `password` dados.
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+El `algorithm` es dependiente en OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `password` is used to derive the cipher key and initialization vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
+El `password` es usado para derivar la clave cifrada y el vector de inicialización (IV). El valor debe ser un string codificado `'latin1'`, un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+La implementación de `crypto.createCipher()` deriva claves usando la función de OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario como la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptograficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+En consonancia las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Una advertencia es emitida cuando se usan en función de evitar el riesgo de reusar IV que causa vulnerabilidades. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1223,13 +1223,13 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Cipher}
+- Devuelve: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
 The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
 
@@ -1267,7 +1267,7 @@ deprecated: v10.0.0
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
 The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
 
@@ -1293,9 +1293,9 @@ changes:
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
 
-The `options` argument controls stream behavior and is optional except when a cipher in CCM mode is used (e.g. `'aes-128-ccm'`). In that case, the `authTagLength` option is required and specifies the length of the authentication tag in bytes, see [CCM mode](#crypto_ccm_mode).
+El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
 The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
 

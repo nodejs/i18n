@@ -10,23 +10,23 @@ At the moment, the method for implementing Addons is rather complicated, involvi
 
 * V8: biblioteka C ++, którą Node.js obecnie używa do zapewnienia wykonania JavaScript. V8 zapewnia mechanizmy tworzenia obiektów, funkcji dzwoniących itp. API V8 jest udokumentowane głównie w `v8.h` pliku nagłówkowym (`deps/v8/include/v8.h` w drzewie źródłowym Node.js), które jest również dostępne [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Autorzy Addon zachęcani są do przemyślenia, jak uniknąć blokowania pętli zdarzeń za pomocą I/O lub innych czasochłonnych zadań przez odciążanie pracy poprzez libuv do nieblokujących operacji systemowych, wątków roboczych lub korzystania z niestandardowych libuv's wątków.
+* [libuv](https://github.com/libuv/libuv): Biblioteka C która implementuje pętlę wydarzeń Node.js, jej wątki robocze i wszystkie asynchroniczne zachowania platformy. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv również zapewnia podobną do pthreads abstrakcję wątków, która może być używana do zasilania bardziej wyrafinowanych asynchronicznych dodatków, które muszą wyjść poza standardową pętlę wydarzeń. Autorzy Addon zachęcani są do przemyślenia, jak uniknąć blokowania pętli zdarzeń za pomocą I/O lub innych czasochłonnych zadań przez odciążanie pracy poprzez libuv do nieblokujących operacji systemowych, wątków roboczych lub korzystania z niestandardowych libuv's wątków.
 
-* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Wewnętrzne biblioteki Node.js. Sam w sobie Node.js eksportuje wiele API C++ których dodatki mogą używać &mdash;, najważniejsze z nich to klasa `node::ObjectWrap`.
 
 * Node.js zawiera szereg innych bibliotek statycznych, w tym OpenSSL. Te inne biblioteki znajdują się w katalogu `deps/` w drzewie źródłowym Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Aby uzyskać dodatkowe informacje, zobacz [Łączenie z własnymi zależnościami Node.js](#addons_linking_to_node_js_own_dependencies).
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## Hello world
+## Witaj świecie
 
-This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
+Ten przykład "Witaj świecie" jest prostym dodatkiem napisanym w C++, który jest odpowiednikiem następującego kodu JavaScript:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-First, create the file `hello.cc`:
+Najpierw, utwórz plik `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -62,15 +62,15 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
+Po `NODE_MODULE` nie ma średnika, ponieważ nie jest on funkcją (zobacz `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
-In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
+W przykładzie `hello.cc` funkcją inicjującą jest `init`, a nazwa modułu dodatku to `addon`.
 
 ### Building
 
-Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
+Po zapisaniu kodu źródłowego, należy go skompilować do pliku binarnego `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Ten plik jest używany przez [node-gyp](https://github.com/nodejs/node-gyp) — narzędzie napisane specjalnie do kompilacji dodatków Node.js.
 
 ```json
 {
@@ -83,11 +83,11 @@ Once the source code has been written, it must be compiled into the binary `addo
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Ta wersja nie jest stworzona bezpośrednio dla programistów i jest przeznaczona tylko do obsługi możliwości użycia komendy `npm install` do kompilowania i instalowania dodatków. Deweloperzy, którzy chcą użyć `node-gyp` bezpośrednio, mogą zainstalować go za pomocą komendy `npm install -g node-gyp`. Po więcej informacji, w tym specyficzne dla platformy, zobacz [instrukcje instalacji](https://github.com/nodejs/node-gyp#installation) `node-gyp`.
 
-Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
+Po utworzeniu pliku `binding.gyp`, użyj `node-gyp configure`, aby wygenerować odpowiednie pliki budowy projektu dla bieżącej platformy. Spowoduje to wygenerowanie pliku ` Makefile` (na platformach Unix) lub pliku `vcxproj` (w systemie Windows) w katalogu `build/`.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
+Następnie użyj komendy `node-gyp build`, aby wygenerować skompilowany plik `addon.node`. Zostanie on wprowadzony do katalogu `build/Release/`.
 
 Przy użyciu `npm zainstaluj ` by zainstalować dodatek Node.js, npm używa własną wersję wiązany `węzeł gyp` by wykonać ten sam zestaw działań, generowanie skompilowanej wersji dodatku dla użytkownika platformy na żądanie.
 
@@ -101,11 +101,11 @@ konsola.log(dodatek.hello());
 / / druki: 'świat''
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Zobacz przykłady poniżej, aby uzyskać więcej informacji, lub odwiedź <https://github.com/arturadib/node-qt>, aby zobaczyć przykłady podczas tworzenia.
 
-Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
+Ponieważ dokładna ścieżka do skompilowanego dodatku binarnego może się różnić w zależności od sposobu kompilacji (tj. czasami może znajdować się w `./build/Debug/`), dodatki mogą korzystać z pakietu [bindings](https://github.com/TooTallNate/node-bindings) do załadowania skompilowanego modułu.
 
-Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
+Zauważ, że mimo iż implementacja pakietu `bindings` jest bardziej wyrafinowana w sposobie lokalizowania modułów dodatków, w zasadzie używa wzoru try-catch podobnego do:
 
 ```js
 try {
@@ -115,13 +115,13 @@ try {
 }
 ```
 
-### Linking to Node.js' own dependencies
+### Łączenie z własnymi zależnościami Node.js
 
-Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
+Node.js korzysta z wielu statycznie połączonych bibliotek, takich jak V8, libuv, czy OpenSSL. Wszystkie dodatki są zobowiązane do połączenia z biblioteką V8, ale mogą także łączyć się z każdą inną zależnością. Zazwyczaj jest to tak proste, jak uwzględnienie `#include <...>` odpowiednich komunikatów (np. `#include <v8.h>`), a `node-gyp` automatycznie zlokalizuje odpowiednie nagłówki. Istnieje jednak kilka zastrzeżeń, o których należy pamiętać:
 
-* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
+* Kiedy `node-gyp` funkcjonuje, wykryje on specyficzną wersję wydania Node.js i pobierze albo pełne archiwum źródłowe, lub tylko nagłówki. Jeśli zostanie pobrane pełne źródło, dodatki będą miały pełny dostęp do pełnego zestawu zależności Node.js. Jednakże, jeśli zostaną pobrane tylko nagłówki Node.js, będą dostępne wtedy tylko symbole wyeksportowane przez Node.js.
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
+* `node-gyp` można uruchomić za pomocą flagi `--nodedir` wskazującej na lokalny obraz źródłowy Node.js. Używając tej opcji, ten dodatek będzie miał dostęp do pełnego zestawu zależności.
 
 ### Loading Addons using require()
 

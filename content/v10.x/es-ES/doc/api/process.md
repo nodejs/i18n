@@ -829,14 +829,14 @@ En la mayoría de las situaciones, no es realmente necesario llamar a `process.e
 El siguiente ejemplo ilustra un *mal uso* del método `process.exit()` que podría conducir a que los datos impresos en stdout se trunquen y pierdan:
 
 ```js
-// Esto es un ejemplo de que *no* hacer:
+// Esto es un ejemplo de qué *no* hacer:
 if (someConditionNotMet()) {
   printUsageToStdout();
   process.exit(1);
 }
 ```
 
-La razón de que esto sea problemático es porque las escrituras a `process.stdout` en Node.js a veces son *asincrónicas* y pueden ocurrir sobre múltiples ticks del bucle del evento Node.js. El llamar a `process.exit()`, sin embargo, forza al proceso a cerrarse *antes* de que se realicen esas escrituras adicionales en `stdout`.
+La razón por la que esto es problemático es que las escrituras a `process.stdout` en Node.js a veces son *asincrónicas* y pueden ocurrir sobre múltiples ticks del bucle del evento Node.js. El llamar a `process.exit()`, sin embargo, forza al proceso a cerrarse *antes* de que se realicen esas escrituras adicionales en `stdout`.
 
 En lugar de llamar a `process.exit()` directamente, el código *debe* establecer el `process.exitCode` y permitirle al proceso que se cierre naturalmente al evitar programar cualquier trabajo adicional para el bucle del evento:
 
@@ -869,7 +869,7 @@ Especificar un código a [`process.exit(code)`][`process.exit()`] anulará cualq
 added: v2.0.0
 -->
 
-El método `process.getegid()` devuelve la identidad del grupo efectivo numérico del proceso Node.js. (vea getegid(2).)
+El método `process.getegid()` devuelve la identidad del grupo efectivo numérico del proceso Node.js. (Vea getegid(2).)
 
 ```js
 if (process.getegid) {
@@ -887,7 +887,7 @@ added: v2.0.0
 
 * Devuelve: {Object}
 
-El método `process.geteuid()` devuelve la identidad del usuario efectivo numérico del proceso. (Vea geteuid(2).)
+El método `process.geteuid()` devuelve la identidad numérica del usuario efectivo del proceso. (Vea geteuid(2).)
 
 ```js
 if (process.geteuid) {
@@ -905,7 +905,7 @@ added: v0.1.31
 
 * Devuelve: {Object}
 
-El método `process.getgid()` devuelve la identidad del grupo numérico del proceso. (Vea getgid(2).)
+El método `process.getgid()` devuelve la identidad numérica del grupo del proceso. (Vea getgid(2).)
 
 ```js
 if (process.getgid) {
@@ -935,7 +935,7 @@ added: v0.1.28
 
 * Devuelve: {integer}
 
-El método `process.getuid()` devuelve la identidad del usuario numérico del proceso. (Vea getuid(2).)
+El método `process.getuid()` devuelve la identidad numérica del usuario del proceso. (Vea getuid(2).)
 
 ```js
 if (process.getuid) {
@@ -991,7 +991,7 @@ setTimeout(() => {
 added: v0.9.4
 -->
 
-* `user` {string|number} El nombre de usuario o el identificador numérico.
+* `user` {string|number} El nombre de usuario o su identificador numérico.
 * `extraGroup` {string|number} Un nombre de grupo o identificador numérico.
 
 El método `process.initgroups()` lee el archivo `/etc/group` e inicializa la lista de acceso de grupo, utilizando todos los grupos en los cuales el usuario es miembro. Esto es una operación privilegiada que requiere que el proceso Nothe.js tenga acceso a `root` o la capacidad de `CAP_SETGID`.
@@ -1021,7 +1021,7 @@ El método `process.kill()` envía la `signal` al proceso identificado por `pid`
 
 Los nombres de las señales son strings como `'SIGINT'` o `'SIGHUP'`. Vea los [Eventos de Señal](#process_signal_events) y kill(2) para más información.
 
-Este método arrojará un error si el `pid` del objetivo no existe. En un caso especial, una señal de `0` puede ser usada para probar la existencia de un proceso. Las plataformas Windows arrojarán un error si el `pid` es usado para aniquilar un grupo de proceso.
+Este método arrojará un error si el `pid` objetivo no existe. En un caso especial, una señal de `0` puede ser usada para probar la existencia de un proceso. Las plataformas Windows arrojarán un error si el `pid` es usado para aniquilar un grupo de proceso.
 
 A pesar de que el nombre de esta función sea `process.kill()`, realmente sólo es un transmisor de señal, como la llamada de sistema `kill`. La señal enviada puede hacer algo distinto a aniquilar el proceso objetivo.
 
@@ -1086,9 +1086,9 @@ Generará:
 }
 ```
 
-`heapTotal` y `heapUsed` se refieren al uso de memoria de V8. `external` se refiere al uso de memoria de objetos C++ vinculados a objetos JavaScript administrados por V8. `rss`, que por sus siglas en inglés se refiere a Resident Set Size, es la cantidad de espacio ocupado en el dispositivo de memoria principal (que es un subconjunto de memoria total asignada) para el proceso, la cual incluye el *montón*, el *segmento de código* y el *stack*.
+`heapTotal` y `heapUsed` se refieren al uso de memoria de V8. `external` se refiere al uso de memoria de objetos C++ vinculados a objetos JavaScript administrados por V8. `rss`, que por sus siglas en inglés se refiere a Resident Set Size, es la cantidad de espacio ocupado en el dispositivo de memoria principal (que es un subconjunto de memoria total asignada) para el proceso, la cual incluye el *montículo*, el *segmento de código* y el *stack*.
 
-El *montón* es donde los objetos, strings y cierres son almacenados. Las variables son almacenadas en el *stack* y el código JavaScript actual reside en el *segmento de código*.
+El *montículo* es donde los objetos, strings y cierres son almacenados. Las variables son almacenadas en el *stack* y el código JavaScript actual reside en el *segmento de código*.
 
 ## process.nextTick(callback[, ...args])
 
@@ -1120,7 +1120,7 @@ console.log('scheduled');
 // callback nextTick
 ```
 
-Esto es importando al desarrollar APIs para ofrecerle a los usuarios la oportunidad de asignar manejadores de evento *después* de que un objeto se haya construido pero antes de que I/O haya ocurrido:
+Esto es importando al desarrollar APIs para ofrecerle a los usuarios la oportunidad de asignar manejadores de evento *después* de que un objeto se haya construido, pero antes de que I/O haya ocurrido:
 
 ```js
 function MyThing(options) {
@@ -1165,7 +1165,7 @@ bar();
 
 No se está claro si primero se llamará a `foo()` o a `bar()`.
 
-The following approach is much better:
+El siguiente enfoque es mucho mejor:
 
 ```js
 function definitelyAsync(arg, cb) {
@@ -1188,7 +1188,7 @@ added: v0.8.0
 
 * {boolean}
 
-The `process.noDeprecation` property indicates whether the `--no-deprecation` flag is set on the current Node.js process. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.noDeprecation` indica que la bandera `--no-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.pid
 
@@ -1198,7 +1198,7 @@ added: v0.1.15
 
 * {integer}
 
-The `process.pid` property returns the PID of the process.
+La propiedad `process.pid` devuelve el PID del proceso.
 
 ```js
 console.log(`This process is pid ${process.pid}`);
@@ -1212,9 +1212,9 @@ added: v0.1.16
 
 * {string}
 
-The `process.platform` property returns a string identifying the operating system platform on which the Node.js process is running.
+La propiedad `process.platform` devuelve una string que identifica la plataforma del sistema operativo en el cual se está ejecutando el proceso Node.js.
 
-Currently possible values are:
+Los posibles valores actuales son:
 
 * `'aix'`
 * `'darwin'`
@@ -1228,7 +1228,7 @@ Currently possible values are:
 console.log(`This platform is ${process.platform}`);
 ```
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
+El valor `'android'` también puede ser devuelto si el Node.js está construido en el sistema operativo Android. Sin embargo, el soporte de Android en Node.js [es experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## process.ppid
 
@@ -1238,7 +1238,7 @@ added: v9.2.0
 
 * {integer}
 
-The `process.ppid` property returns the PID of the current parent process.
+La propiedad `process.ppid` devuelve el PID del proceso primario actual.
 
 ```js
 console.log(`The parent process is pid ${process.ppid}`);
@@ -1257,18 +1257,18 @@ changes:
 
 * {Object}
 
-The `process.release` property returns an `Object` containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
+La propiedad `process.release` devuelve un `Object` que contiene los metadatos relacionados con la versión actual, incluyendo los URLs para el tarball fuente y los tarballs de sólo encabezado.
 
-`process.release` contains the following properties:
+`process.release` contiene las siguientes propiedades:
 
-* `name` {string} A value that will always be `'node'` for Node.js. For legacy io.js releases, this will be `'io.js'`.
-* `sourceUrl` {string} an absolute URL pointing to a *`.tar.gz`* file containing the source code of the current release.
-* `headersUrl`{string} an absolute URL pointing to a *`.tar.gz`* file containing only the source header files for the current release. This file is significantly smaller than the full source file and can be used for compiling Node.js native add-ons.
-* `libUrl` {string} an absolute URL pointing to a *`node.lib`* file matching the architecture and version of the current release. This file is used for compiling Node.js native add-ons. *This property is only present on Windows builds of Node.js and will be missing on all other platforms.*
-* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/LTS/) label for this release. This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. Currently the valid values are: 
-  * `'Argon'` for the 4.x LTS line beginning with 4.2.0.
-  * `'Boron'` for the 6.x LTS line beginning with 6.9.0.
-  * `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
+* `name` {string} un valor que siempre será `'node'` para Node.js. Para versiones legacy io.js, este será `'io.js'`.
+* `sourceUrl` {string} una URL absoluta que apunta al archivo *`.tar.gz`* que contiene el código fuente de la versión actual.
+* `headersUrl`{string} una URL absoluta que apunta al archivo *`.tar.gz`* que contiene sólo los archivos fuente de encabezado para la versión actual. Este archivo es significativamente más pequeño que el archivo fuente completo y puede ser utilizado para compilar add-ons nativos de Node.js.
+* `libUrl` {string} an absolute URL pointing to a *`node.lib`* file matching the architecture and version of the current release. El archivo es utilizado para compilar add-ons nativos de Node.js. *Esta propiedad sólo está presente en construcciones Windows de Node.js y no aparecerá en ninguna otra plataforma.*
+* `lts` {string} una etiqueta de string que identifica la etiqueta [LTS](https://github.com/nodejs/LTS/) para esta versión. Esta propiedad sólo existe en versiones LTS y es `undefined` para todos los otros tipos de versiones, incluyendo las versions *Actuales*. Actualmente, lo valores válidos son: 
+  * `'Argon'` para la línea LTS 4.x que comienza con 4.2.0.
+  * `'Boron'` para la línea LTS 6.x que comienza con 6.9.0.
+  * `'Carbon'` para la línea LTS 8.x que comienza con 8.9.1.
 
 <!-- eslint-skip -->
 
@@ -1294,11 +1294,11 @@ added: v0.5.9
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object}
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
+Si se genera Node.js con un canal IPC, el método `process.send()` puede ser utilizado para enviar mensajes al proceso primario. Los mensajes serán recibidos como un evento [`'message'`][] en el objeto [`ChildProcess`][] del proceso primario.
 
-If Node.js was not spawned with an IPC channel, `process.send()` will be `undefined`.
+Si Node.js no fue generado con un canal IPC, `process.send()` será `undefined`.
 
 El mensaje pasa a través de la serialización y análisis. El mensaje resultante podría no ser el mismo enviado originalmente.
 
@@ -1308,9 +1308,9 @@ El mensaje pasa a través de la serialización y análisis. El mensaje resultant
 added: v2.0.0
 -->
 
-* `id` {string|number} A group name or ID
+* `id` {string|number} Un nombre de grupo o un ID
 
-The `process.setegid()` method sets the effective group identity of the process. (See setegid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated a numeric ID.
+El método `process.setegid()` establece la identidad del grupo efectivo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
 ```js
 if (process.getegid && process.setegid) {
@@ -1332,9 +1332,9 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v2.0.0
 -->
 
-* `id` {string|number} A user name or ID
+* `id` {string|number} Un nombre de usuario o ID
 
-The `process.seteuid()` method sets the effective user identity of the process. (See seteuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+El método `process.seteuid()` establece la identidad efectiva del usuario del proceso. (Vea seteuid(2).) El `id` puede ser pasado como un ID numérico o como una string de nombre de usuario. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.geteuid && process.seteuid) {
@@ -1356,9 +1356,9 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.1.31
 -->
 
-* `id` {string|number} The group name or ID
+* `id` {string|number} El nombre de grupo o ID
 
-The `process.setgid()` method sets the group identity of the process. (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. If a group name is specified, this method blocks while resolving the associated numeric ID.
+El método `process.setgid()` establece la identidad del grupo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.getgid && process.setgid) {
@@ -1382,9 +1382,9 @@ added: v0.9.4
 
 * `groups` {integer[]}
 
-The `process.setgroups()` method sets the supplementary group IDs for the Node.js process. This is a privileged operation that requires the Node.js process to have `root` or the `CAP_SETGID` capability.
+El método `process.setgroups()` establece los IDs de grupo suplementario para el proceso Node.js. Esta es una operación privilegiada que requiere que el proceso Node.js tenga `root` o la capacidad `CAP_SETGID`.
 
-The `groups` array can contain numeric group IDs, group names or both.
+El array `groups` puede contener IDs de grupo numéricos, nombres de grupo o ambos.
 
 Esta función sólo está disponible en plataformas POSIX (es decir, no en Windows o en Android).
 
@@ -1394,7 +1394,7 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.1.28
 -->
 
-The `process.setuid(id)` method sets the user identity of the process. (See setuid(2).) The `id` can be passed as either a numeric ID or a username string. If a username is specified, the method blocks while resolving the associated numeric ID.
+El método `process.setuid(id)` establece la identidad del usuario del proceso. (Vea setuid(2).) El `id` puede ser pasado como un ID numérico o como una string de nombre de usuario. If a username is specified, the method blocks while resolving the associated numeric ID.
 
 ```js
 if (process.getuid && process.setuid) {
@@ -1418,19 +1418,19 @@ added: v9.3.0
 
 * `fn` {Function|null}
 
-The `process.setUncaughtExceptionCapture` function sets a function that will be invoked when an uncaught exception occurs, which will receive the exception value itself as its first argument.
+La función `process.setUncaughtExceptionCapture` establece una función que será invocada cuando ocurra una excepción no atrapada, la cual recibirá el valor de la excepción misma como su primer argumento.
 
-If such a function is set, the [`'uncaughtException'`][] event will not be emitted. If `--abort-on-uncaught-exception` was passed from the command line or set through [`v8.setFlagsFromString()`][], the process will not abort.
+Si se establece dicha función, el evento [`'uncaughtException'`][] no será emitido. Si `--abort-on-uncaught-exception` fue pasado desde la línea de comando o establecido a través de [`v8.setFlagsFromString()`][], el proceso no abortará.
 
-To unset the capture function, `process.setUncaughtExceptionCapture(null)` may be used. Calling this method with a non-`null` argument while another capture function is set will throw an error.
+To unset the capture function, `process.setUncaughtExceptionCapture(null)` may be used. El llamar a este método con un argumento no `null` mientras que se establece otra función de captura, arrojará un error.
 
-Using this function is mutually exclusive with using the deprecated [`domain`][] built-in module.
+Utilizar esta función es mutuamente exclusivo con el uso del módulo [`domain`][] incorporado obsoleto.
 
 ## process.stderr
 
 * {Stream}
 
-The `process.stderr` property returns a stream connected to `stderr` (fd `2`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `2` refers to a file, in which case it is a [Writable](stream.html#stream_writable_streams) stream.
+La propiedad `process.stderr` devuelve un stream conectado a `stderr` (fd `2`). Es un [`net.Socket`][] (el cual es un stream [Dúplex](stream.html#stream_duplex_and_transform_streams)) a menos que fd `2` se refiera a un archivo, en cuyo caso es un stream [Escribible](stream.html#stream_writable_streams).
 
 `process.stderr` differs from other Node.js streams in important ways, see [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
@@ -1438,7 +1438,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 * {Stream}
 
-The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
+La propiedad `process.stdin` devuelve un stream conectado a `stdin` (fd `0`). Es un [`net.Socket`][] (el cual es un stream [Dúplex](stream.html#stream_duplex_and_transform_streams)) a menos que fd `0` se refiera a un archivo, en cuyo caso es un stream [Legible](stream.html#stream_readable_streams).
 
 ```js
 process.stdin.setEncoding('utf8');
@@ -1455,17 +1455,17 @@ process.stdin.on('end', () => {
 });
 ```
 
-As a [Duplex](stream.html#stream_duplex_and_transform_streams) stream, `process.stdin` can also be used in "old" mode that is compatible with scripts written for Node.js prior to v0.10. For more information see [Stream compatibility](stream.html#stream_compatibility_with_older_node_js_versions).
+Como un stream [Dúplex](stream.html#stream_duplex_and_transform_streams), `process.stdin` también puede ser usado en el modo "viejo" que es compatible con scripts escritos para Node.js anterior a v0.10. Para mayor información, vea la [compatibilidad de Stream](stream.html#stream_compatibility_with_older_node_js_versions).
 
-In "old" streams mode the `stdin` stream is paused by default, so one must call `process.stdin.resume()` to read from it. Note also that calling `process.stdin.resume()` itself would switch stream to "old" mode.
+In "old" streams mode the `stdin` stream is paused by default, so one must call `process.stdin.resume()` to read from it. Note que también el llamar a `process.stdin.resume()` cambiaría el stream a modo "viejo".
 
 ## process.stdout
 
 * {Stream}
 
-The `process.stdout` property returns a stream connected to `stdout` (fd `1`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `1` refers to a file, in which case it is a [Writable](stream.html#stream_writable_streams) stream.
+La propiedad `process.stdout` devuelve un stream conectado a `stdout` (fd `1`). Es un [`net.Socket`][] (el cual es un stream [Dúplex](stream.html#stream_duplex_and_transform_streams)) a menos que fd `1` se refiera a un archivo, en cuyo caso es un stream [Escribible](stream.html#stream_writable_streams).
 
-For example, to copy `process.stdin` to `process.stdout`:
+Por ejemplo, para copiar `process.stdin` en `process.stdout`:
 
 ```js
 process.stdin.pipe(process.stdout);
@@ -1477,23 +1477,23 @@ process.stdin.pipe(process.stdout);
 
 `process.stdout` and `process.stderr` differ from other Node.js streams in important ways:
 
-1. They are used internally by [`console.log()`][] and [`console.error()`][], respectively.
-2. They cannot be closed ([`end()`][] will throw).
-3. They will never emit the [`'finish'`][] event.
-4. Writes may be synchronous depending on what the stream is connected to and whether the system is Windows or POSIX: 
-  * Files: *synchronous* on Windows and POSIX
-  * TTYs (Terminals): *asynchronous* on Windows, *synchronous* on POSIX
-  * Pipes (and sockets): *synchronous* on Windows, *asynchronous* on POSIX
+1. Son usados internamente por [`console.log()`][] y [`console.error()`][], respectivamente.
+2. No pueden cerrarse (se arrojará [`end()`][]).
+3. Nunca emitirán el evento [`'finish'`][].
+4. Las escrituras pueden ser sincrónicas, dependiendo en cuál stream se esté conectado y si el sistema es Windows o POSIX: 
+  * Archivos: *sincrónicos* en Windows y POSIX
+  * TTYs (Terminales): *asincrónicos* en Windows, *sincrónicos* en POSIX
+  * Pipes (y sockets): *sincrónicos* en Windows, *asincrónicos* en POSIX
 
-These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
+Estos comportamientos son parcialmente por razones históricas, y cambiarlos crearía una incompatibilidad hacia atrás, pero también son esperados por algunos usuarios.
 
-Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. See [`process.exit()`][] for more information.
+Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Vea [`process.exit()`][] para mayor información.
 
-***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
+***Advertencia***: Las escrituras sincrónicas bloquean el bucle del evento hasta que se complete la escritura. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. Esto puede no ser un problema al escribirle a una sesión terminal interactiva, pero considere esto particularmente cuidadoso al hacer el registro de producción para los streams de salida del proceso.
 
-To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
+Para verificar si un stream está conectado a un contexto [TTY](tty.html#tty_tty), verifique la propiedad `isTTY`.
 
-For instance:
+Por ejemplo:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1506,7 +1506,7 @@ $ node -p "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-See the [TTY](tty.html#tty_tty) documentation for more information.
+Vea la documentación de [TTY](tty.html#tty_tty) para mayor información.
 
 ## process.throwDeprecation
 
@@ -1516,7 +1516,7 @@ added: v0.9.12
 
 * {boolean}
 
-The `process.throwDeprecation` property indicates whether the `--throw-deprecation` flag is set on the current Node.js process. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.throwDeprecation` indica si la bandera`--throw-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.title
 
@@ -1526,9 +1526,9 @@ added: v0.1.104
 
 * {string}
 
-The `process.title` property returns the current process title (i.e. returns the current value of `ps`). Assigning a new value to `process.title` modifies the current value of `ps`.
+La propiedad `process.title` devuelve el título del proceso actual (es decir, devuelve el valor actual de `ps`). Asignar un nuevo valor para `process.title` modifica el valor actual de `ps`.
 
-When a new value is assigned, different platforms will impose different maximum length restrictions on the title. Usually such restrictions are quite limited. For instance, on Linux and macOS, `process.title` is limited to the size of the binary name plus the length of the command line arguments because setting the `process.title` overwrites the `argv` memory of the process. Node.js v0.8 allowed for longer process title strings by also overwriting the `environ` memory but that was potentially insecure and confusing in some (rather obscure) cases.
+Cuando se asigna un nuevo valor, las diferentes plataformas impondrán restricciones de longitud máxima diferentes en el título. Usualmente, dichas restricciones son muy limitadas. Por ejemplo, en Linux y macOS, `process.title` es limitado al tamaño del nombre binario más la longitud de los argumentos de línea de comando porque el configurar el `process.title` sobrescribe la memoria `argv` del proceso. Node.js v0.8 allowed for longer process title strings by also overwriting the `environ` memory but that was potentially insecure and confusing in some (rather obscure) cases.
 
 ## process.traceDeprecation
 
@@ -1538,7 +1538,7 @@ added: v0.8.0
 
 * {boolean}
 
-The `process.traceDeprecation` property indicates whether the `--trace-deprecation` flag is set on the current Node.js process. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.traceDeprecation` indica si la bandera `--trace-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
 ## process.umask([mask])
 

@@ -10,11 +10,11 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - En desuso
 
-**The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://mths.be/punycode) module instead.
+**La versión del módulo Punycode incluida en Node.js se encuentra en desuso**. Será eliminada de este módulo en una próxima versión de Node.js. Los usuarios que actualmente dependan del módulo `punycode` deberán cambiar al usuario provisto en el módulo [Punycode.js](https://mths.be/punycode).
 
-The `punycode` module is a bundled version of the [Punycode.js](https://mths.be/punycode) module. It can be accessed using:
+El módulo `punycode` es una versión añadida al módulo [Punycode.js](https://mths.be/punycode). Se puede acceder a través de:
 
 ```js
 const punycode = require('punycode');

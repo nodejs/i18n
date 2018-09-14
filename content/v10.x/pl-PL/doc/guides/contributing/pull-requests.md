@@ -144,55 +144,55 @@ Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
 ```
 
-Jeśli jesteś nowy w kontrybucjach do Node.js, proszę daj z siebie wszystko by zastosować się do tych zastrzeżeń, ale nie martw się jeśli popełnisz błąd. One of the existing contributors will help get things situated and the contributor landing the Pull Request will ensure that everything follows the project guidelines.
+Jeśli jesteś nowy w kontrybucjach do Node.js, proszę daj z siebie wszystko by zastosować się do tych zastrzeżeń, ale nie martw się jeśli popełnisz błąd. Jeden z obecnych kontrybutorów pomoże ci się dostosować, a kontrybutor lądujący Żądanie zmiany upewni się, że wszystko jest zgodne z wytycznymi projektu.
 
-See [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - A utility that ensures commits follow the commit formatting guidelines.
+Zobacz [core-validate-commit](https://github.com/evanlucas/core-validate-commit) Użyteczne narzędzie w upewnianiu się, że commit jest zgodny z wytycznymi formatowania.
 
-### Step 5: Rebase
+### Krok 5: Rebase
 
-As a best practice, once you have committed your changes, it is a good idea to use `git rebase` (not `git merge`) to synchronize your work with the main repository.
+Dobrym pomysłem jest, gdy już zcommitowałeś swoje zmiany, użycie `git rebase` (nie `git merge`) by zsynchronizować swoją pracę z głównym repozytorium.
 
 ```text
-$ git fetch upstream
+$ git fetch upstream 
 $ git rebase upstream/master
 ```
 
-This ensures that your working branch has the latest changes from `nodejs/node` master.
+Dzięki temu możesz być pewny, że gałąź na której pracujesz zgodna jest z najnowszymi zmianami `nodejs/node master`.
 
-### Step 6: Test
+### Krok 6: Test
 
-Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
+Funkcje i poprawki błędów powinny zawsze być dodawane z testami. [Poradnik do pisania testów w Node.js](../writing-tests.md) został napisany, by ułatwić ten proces. Patrzenie na inne testy by zobaczyć jak są zbudowane też może być pomocne.
 
-The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
+Folder `test` w repozytorium `nodejs/node` jest skomplikowany i nie zawsze jest oczywistym gdzie umieścić nowy plik z testami. Jeżeli nie jesteś pewny, dodaj nowe testy do folderu `test/parallel/`, a właściwa lokalizacja będzie wybrana przez innych później.
 
-Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
+Zanim prześlesz swoje zmiany w Żądaniu zmiany, zawsze uruchamiaj wszystkie testy Node.js w poszukiwaniu niezgodności. By uruchomić test na systemie Unix / macOS, użyj:
 
 ```text
 $ ./configure && make -j4 test
 ```
 
-And on Windows:
+A na systemie Windows:
 
 ```text
 > vcbuild test
 ```
 
-(See the [Building guide](../../../BUILDING.md) for more details.)
+(Zobacz [Przewodnik konfiguracji](../../../BUILDING.md) by dowiedzieć się więcej.)
 
-Make sure the linter does not report any issues and that all tests pass. Please do not submit patches that fail either check.
+Upewnij się, że linter kodu nie zgłasza żadnych problemów i że wszystkie testy zostały zaliczone. Proszę, nie wysyłaj patchy, które nie sprawdzają się w jednym lub drugim z powyższych.
 
-If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
+Jeśli chcesz użyc lintera bez zaliczania testów, użyj `make lint`/`vcbuild lint`. Uruchomi to zarówno linting języka JavaScript oraz C++.
 
-If you are updating tests and just want to run a single test to check it:
+Jeśli aktualizujesz testy i chcesz uruchomić tylko jeden test, użyj:
 
 ```text
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
 ```
 
-You can execute the entire suite of tests for a given subsystem by providing the name of a subsystem:
+Możesz też uruchomić całą kategorię testów dla danego podsystemu przez podanie jego nazwy:
 
 ```text
-$ python tools/test.py -J --mode=release child-process
+$ python tools/test.py -J --mode=release wybrany-proces
 ```
 
 If you want to check the other options, please refer to the help by using the `--help` option

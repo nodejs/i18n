@@ -1,13 +1,13 @@
-# Guia de estilos
+# Guia de Estilos
 
-* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens`. 
+* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens.md`. 
   * Underline em nomes de arquivo são permitidos apenas quando eles estão presentes no tópico que irá descrever o documento (por exemplo, `child_process`).
   * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
 * Documentos devem ter quebra de palavras (word-wrap) em 80 caracteres.
 * A formatação descrita no `.editorconfig` é preferencial. 
   * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
 * Problemas mecânicos, como a ortografia e a gramática, devem ser identificados por ferramentas, na medida em que for possível. Se não for pego por uma ferramenta, então deverá ser apontado aos revisores humanos.
-* Ortografia do inglês americano de preferência. "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
+* Ortografia do Inglês Americano de preferência (Na documentação original). "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
 * Embora controverso, a [vírgula de Oxford](https://en.wikipedia.org/wiki/Serial_comma) é preferida em favor da clareza.
 * Em geral, evitar pronomes pessoais na documentação de referência ("Eu", "você", "nós"). 
   * Pronomes são aceitáveis na documentação mais coloquial, como os guias.
@@ -19,7 +19,7 @@
   * Fora do elemento envolto se o elemento de quebra contém apenas um fragmento de uma cláusula.
 * Coloque a pontuação de fim-de-frase dentro dos elementos envoltos — pontos finais vão dentro de parênteses e aspas, não depois.
 * Documentos devem começar com um título de nível 1. Eventualmente um documento de exemplo será linkado aqui.
-* Dê preferência em afixar links para endereços inline — prefira `[a link] []` ao invés de `[a link] (http://example.com)`.
+* Dê preferência em afixar links para endereços inline — preferir `[um link][]` ao invés de `[um link](http://exemplo.com)`.
 * Quando documentar APIs, observe que a versão da API foi introduzida no fim da seção. Se uma API foi descontinuada, anotar também a primeira versão que a API foi descontinuada.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 

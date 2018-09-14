@@ -2276,68 +2276,68 @@ changes:
 
 Re-codifica la instancia de `Buffer` o `Uint8Array` dada desde una codificación de caracteres a otra. Devuelve una nueva instancia de `Buffer`.
 
-Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if conversion from `fromEnc` to `toEnc` is not permitted.
+Lanza `fromEnc` o `toEnc` si se especifican codificaciones de caracteres inválidas o si la conversión desde `fromEnc` a `toEnc` no está permitida.
 
-The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. For instance:
+El proceso de transcodificación utilizará caracteres de sustitución si una secuencia de bytes dada no puede representarse adecuadamente en la codificación del objetivo. Por ejemplo:
 
 ```js
 const buffer = require('buffer');
 
 const newBuf = buffer.transcode(Buffer.from('€'), 'utf8', 'ascii');
 console.log(newBuf.toString('ascii'));
-// Prints: '?'
+// Imprime: '?'
 ```
 
-Because the Euro (`€`) sign is not representable in US-ASCII, it is replaced with `?` in the transcoded `Buffer`.
+Debido a que el signo del Euro (`€`) no es representable en US-ASCII, se remplaza con `?` en el `Buffer` transcodificado.
 
-Note that this is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Tenga en cuenta que esto es una propiedad sobre el módulo de `buffer` devuelto por `require('buffer')`, no sobre el `Buffer` global o una instancia de `Buffer`.
 
-## Class: SlowBuffer
+## Clase: SlowBuffer
 
 <!-- YAML
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] es su lugar.
 
-Returns an un-pooled `Buffer`.
+Devuelve un `Buffer` sin agrupar.
 
-In order to avoid the garbage collection overhead of creating many individually allocated `Buffer` instances, by default allocations under 4KB are sliced from a single larger allocated object.
+Para evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente, las asignaciones predeterminadas debajo de 4KB se recortan desde un único objeto asignado más grande.
 
-In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
+En el caso donde un desarrollado pueda necesitar retener una pequeña porción de la memoria desde un grupo por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `SlowBuffer` y luego copiar los bits relevantes.
 
 ```js
-// Need to keep around a few small chunks of memory
+// Necesita mantener alrededor algunos pequeños pedazos de memoria
 const store = [];
 
 socket.on('readable', () => {
   const data = socket.read();
 
-  // Allocate for retained data
+  // Asigna para datos retenidos
   const sb = SlowBuffer(10);
 
-  // Copy the data into the new allocation
+  // Copia los datos dentro de la nueva asignación
   data.copy(sb, 0, 0, 10);
 
   store.push(sb);
 });
 ```
 
-Use of `SlowBuffer` should be used only as a last resort *after* a developer has observed undue memory retention in their applications.
+El uso de `SlowBuffer` debe emplearse solo como el último recurso *después* de que un desarrollador haya observado retención indebida de memoria en sus aplicaciones.
 
-### new SlowBuffer(size)
+### nuevo SlowBuffer(size)
 
 <!-- YAML
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`] instead.
+> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] en su lugar.
 
-* `size` {integer} The desired length of the new `SlowBuffer`.
+* `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
+Asigna un nuevo `Buffer` de `size` bytes. Si `size` es más largo que [`buffer.constants.MAX_LENGTH`] o más pequeño que 0, se lanza [`ERR_INVALID_OPT_VALUE`]. Un `Buffer` de longitud cero se crea si `size` es 0.
 
-The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` with zeroes.
+La memoria subyacente para instancias de `SlowBuffer` están *sin inicializar*. Los contenidos de un `SlowBuffer` creado recientemente son desconocidos y pueden contener datos confidenciales. Utilice [`buf.fill(0)`][`buf.fill()`] para inicializar un `SlowBuffer` con ceros.
 
 ```js
 const { SlowBuffer } = require('buffer');
@@ -2345,21 +2345,21 @@ const { SlowBuffer } = require('buffer');
 const buf = new SlowBuffer(5);
 
 console.log(buf);
-// Prints: (contents may vary): <Buffer 78 e0 82 02 01>
+// Imprime: (los contenidos pueden variar): <Buffer 78 e0 82 02 01>
 
 buf.fill(0);
 
 console.log(buf);
-// Prints: <Buffer 00 00 00 00 00>
+// Imprime: <Buffer 00 00 00 00 00>
 ```
 
-## Buffer Constants
+## Constantes de Buffer
 
 <!-- YAML
 added: v8.2.0
 -->
 
-Note that `buffer.constants` is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
+Tenga en cuenta que `buffer.constants` es una propiedad sobre el módulo de `buffer` devuelto por `require('buffer')`, no sobre el `Buffer` global o una instancia de `Buffer`.
 
 ### buffer.constants.MAX_LENGTH
 
@@ -2367,11 +2367,11 @@ Note that `buffer.constants` is a property on the `buffer` module returned by `r
 added: v8.2.0
 -->
 
-* {integer} The largest size allowed for a single `Buffer` instance.
+* {integer} El tamaño más grande asignado para una sola instancia de `Buffer`.
 
-On 32-bit architectures, this value is `(2^30)-1` (~1GB). On 64-bit architectures, this value is `(2^31)-1` (~2GB).
+En arquitecturas de 32-bit, este valor es `(2^30)-1` (~1GB). En arquitecturas de 64-bit, este valor es `(2^31)-1` (~2GB).
 
-This value is also available as [`buffer.kMaxLength`][].
+Este valor también está disponible como [`buffer.kMaxLength`][].
 
 ### buffer.constants.MAX_STRING_LENGTH
 
@@ -2379,8 +2379,8 @@ This value is also available as [`buffer.kMaxLength`][].
 added: v8.2.0
 -->
 
-* {integer} The largest length allowed for a single `string` instance.
+* {integer} La longitud más larga asignada para una sola instancia de `string`.
 
-Represents the largest `length` that a `string` primitive can have, counted in UTF-16 code units.
+Representa la `length` más larga que un `string` primitivo pueda tener, contada en unidades de código UTF-16.
 
-This value may depend on the JS engine that is being used.
+Este valor debe depender del motor JS que se esté utilizando.
