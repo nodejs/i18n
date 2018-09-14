@@ -1,13 +1,13 @@
-# Guia de estilos
+# Guia de Estilos
 
-* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens`. 
+* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens.md`. 
   * Underline em nomes de arquivo são permitidos apenas quando eles estão presentes no tópico que irá descrever o documento (por exemplo, `child_process`).
   * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
 * Documentos devem ter quebra de palavras (word-wrap) em 80 caracteres.
 * A formatação descrita no `.editorconfig` é preferencial. 
   * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
 * Problemas mecânicos, como a ortografia e a gramática, devem ser identificados por ferramentas, na medida em que for possível. Se não for pego por uma ferramenta, então deverá ser apontado aos revisores humanos.
-* Ortografia do inglês americano de preferência. "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
+* Ortografia do Inglês Americano de preferência (Na documentação original). "Capitalize" ao invés de "Capitalise", "color" ao invés de "colour", etc.
 * Embora controverso, a [vírgula de Oxford](https://en.wikipedia.org/wiki/Serial_comma) é preferida em favor da clareza.
 * Em geral, evitar pronomes pessoais na documentação de referência ("Eu", "você", "nós"). 
   * Pronomes são aceitáveis na documentação mais coloquial, como os guias.
