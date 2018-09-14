@@ -342,7 +342,7 @@ changes:
   
   * `maxArrayLength` {number} Especifica el número máximo de elementos de `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] a incluir al formatear. Establecer a `null` o `Infinity` para mostrar todos los elementos. Establecer a `0` o negativo, para no mostrar ningún elemento. **Predeterminado:** `100`.
   
-  * `breakLength` {number} La longitud en la cual las claves de un objeto son divididas a través de múltiples líneas. Establecer a `Infinity` para formatear un objeto como una sola línea. **Default:** `60` for legacy compatibility.
+  * `breakLength` {number} La longitud en la cual las claves de un objeto son divididas a través de múltiples líneas. Establecer a `Infinity` para formatear un objeto como una sola línea. **Predeterminado:** `60` para compatibilidad con versiones anteriores.
   * `compact` {boolean} Establecer esto a `false` cambia la sangría predeterminada para usar un salto de línea por cada clave de objeto, en vez de alinear múltiples propiedades en una sola línea. Esto también romperá el texto que está por encima del tamaño `breakLength` en pedazos más pequeños y más fáciles de leer, y posicionará objetos igual que las arrays. Note que ningún texto va a ser reducido a por debajo de 16 caracteres, sin importar el tamaño del `breakLength`. Para más información, vea el ejemplo de abajo. **Predeterminado:** `true`.
 
 * Devuelve: {string} La representación de un objeto pasado
@@ -445,17 +445,17 @@ console.log(inspect(weakSet, { showHidden: true }));
 // WeakSet { { a: 1 }, { b: 2 } }
 ```
 
-Please note that `util.inspect()` is a synchronous method that is mainly intended as a debugging tool. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
+Por favor, tenga en cuenta que `util.inspect()` es un método sincrónico que es principalmente concebido como una herramienta de depuración. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
 
-### Customizing `util.inspect` colors
+### Personalizar colores `util.inspect`
 
 <!-- type=misc -->
 
-Color output (if enabled) of `util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
+El output de color (si está habilitado) de `util.inspect` es globalmente personalizable por medio de las propiedades `util.inspect.styles` y `util.inspect.colors`.
 
-`util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
+`util.inspect.styles` es un mapa que asocia un nombre de estilo con un color de `util.inspect.colors`.
 
-The default styles and associated colors are:
+Los estilos predeterminados y colores asociados son:
 
 * `number` - `yellow`
 * `boolean` - `yellow`
