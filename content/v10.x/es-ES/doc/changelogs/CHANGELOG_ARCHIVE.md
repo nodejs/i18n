@@ -448,17 +448,17 @@ https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 * dgram: send() puede aceptar strings (Trevor Norris)
 * dns: renombrar dominio al nombre del host (Ben Noordhuis)
 * dns: establecer correctamente nombre del host en objeto de error (Ben Noordhuis)
-* dtrace, mdb_v8: support more string, frame types (Dave Pacheco)
-* http: add statusMessage (Patrik Stutz)
-* http: expose supported methods (Ben Noordhuis)
-* http: provide backpressure for pipeline flood (isaacs)
-* process: Add exitCode property (isaacs)
+* dtrace, mdb_v8: soportar más string, dar marco a tipos (Dave Pacheco)
+* htttp: añadir statusMessage (Patrik Stutz)
+* http: exponer métodos soportados (Ben Noordhuis)
+* http: proveer contrapresión para inundación de pipe (isaacs)
+* process: Añadir exitCode correctamente (isaacs)
 * tls: socket.renegotiate(options, callback) (Fedor Indutny)
-* util: format as Error if instanceof Error (Rod Vagg)
+* util: dar formato como Error si instanceof tiene Error (Rod Vagg)
 
 <a id="0.11.7"></a>
 
-## 2013.08.21, Version 0.11.7 (Unstable)
+## 2013.08.21, Versión 0.11.7 (Inestable)
 
 https://github.com/nodejs/node/commit/be52549bfa5311208b5fcdb3ba09210460fa9ceb
 
