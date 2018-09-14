@@ -1059,14 +1059,14 @@ Esto puede ser llamado muchas veces con nuevos datos a medida en que son streame
 added: v0.1.92
 -->
 
-The `Verify` class is a utility for verifying signatures. It can be used in one of two ways:
+La clase `Verify` es una utilidad para verificar firmas. La clase puede ser usada de una de las dos maneras:
 
-- As a writable [stream](stream.html) where written data is used to validate against the supplied signature, or
-- Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
+- Como una [stream](stream.html) escribible donde los datos escritos son usados para validar contra la firma dada, o
+- Usando los métodos [`verify.update()`][] y [`verify.verify()`][] para verificar la firma.
 
-The [`crypto.createVerify()`][] method is used to create `Verify` instances. `Verify` objects are not to be created directly using the `new` keyword.
+El método [`crypto.createVerify()`][] es usado para crear instancias `Verify`. Los objetos`Verify` no tienen que ser creados usando directamente la palabra clave `new`.
 
-Example: Using `Verify` objects as streams:
+Ejemplo: Usando objetos `Verify` como streams:
 
 ```js
 const crypto = require('crypto');
@@ -1081,7 +1081,7 @@ console.log(verify.verify(publicKey, signature));
 // Prints: true or false
 ```
 
-Example: Using the [`verify.update()`][] and [`verify.verify()`][] methods:
+Ejemplo: Usando los métodos [`verify.update()`][] y [`verify.verify()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -1109,9 +1109,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Verify` con los `data` dados, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces `inputEncoding` es ignorado.
 
-This can be called many times with new data as it is streamed.
+Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
 ### verify.verify(object, signature[, signatureFormat])
 
@@ -1127,11 +1127,11 @@ changes:
 - `object` {string | Object}
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
-- Returns: {boolean} `true` or `false` depending on the validity of the signature for the data and public key.
+- Devuelve: {boolean} `true` o `false` dependiendo de la validez de la firma para los datos y la clave pública.
 
-Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Verifica los datos dados usando los `object` y `signature` dados. El argumento `object` puede ser una string que contiene un objeto PEM codificado, que puede ser una clave pública RSA, una clave pública DSA, o un certificado X.509, o un objeto con una o más de las siguientes propiedades:
 
-- `key`: {string} - PEM encoded public key (required)
+- `key`: {string} - Clave pública con codificación PEM (requerida)
 - `padding`: {integer} - Optional padding value for RSA, one of the following:
   
   - `crypto.constants.RSA_PKCS1_PADDING` (default)
