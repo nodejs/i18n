@@ -818,7 +818,7 @@ changes:
 
 El método `readable.resume()` causa que un stream `Readable` explícitamente pausado se reanude la emisión de eventos [`'data'`][], cambiando el stream a modo fluido.
 
-The `readable.resume()` method can be used to fully consume the data from a stream without actually processing any of that data as illustrated in the following example:
+El método `readable.resume()` puede ser usado para consumir completamente los datos de un stream sin procesar ningunos de esos datos como es ilustrado en el siguiente ejemplo:
 
 ```js
 getReadableStreamSomehow()
@@ -828,7 +828,7 @@ getReadableStreamSomehow()
   });
 ```
 
-The `readable.resume()` method has no effect if there is a `'readable'` event listener.
+El método `readable.resume()` no tiene efecto si existe un listener de evento `'readable'`.
 
 ##### readable.setEncoding(encoding)
 
@@ -836,10 +836,10 @@ The `readable.resume()` method has no effect if there is a `'readable'` event li
 added: v0.9.4
 -->
 
-* `encoding` {string} The encoding to use.
-* Returns: {this}
+* `encoding` {string} La codificación a usar.
+* Devuelve: {this}
 
-The `readable.setEncoding()` method sets the character encoding for data read from the `Readable` stream.
+El método `readable.setEncoding()` establece la codificación de caracteres para los datos leídos del stream `Readable`.
 
 By default, no encoding is assigned and stream data will be returned as `Buffer` objects. Setting an encoding causes the stream data to be returned as strings of the specified encoding rather than as `Buffer` objects. For instance, calling `readable.setEncoding('utf8')` will cause the output data to be interpreted as UTF-8 data, and passed as strings. Calling `readable.setEncoding('hex')` will cause the data to be encoded in hexadecimal string format.
 
