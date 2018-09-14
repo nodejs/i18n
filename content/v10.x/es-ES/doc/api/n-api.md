@@ -1785,15 +1785,15 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API devuelve el objeto indefinido de JavaScript.
 
-## Working with JavaScript Values - Abstract Operations
+## Trabajando con Valores de JavaScript - Operaciones Abstractas
 
-N-API exposes a set of APIs to perform some abstract operations on JavaScript values. Some of these operations are documented under [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API expone un conjunto de APIs para realizar algunas operaciones abstractas en valores de JavaScript. Algunas de estas operaciones están documentadas bajo la [Sección 7](https://tc39.github.io/ecma262/#sec-abstract-operations) de las [Especificaciones del Lenguaje ECMAScript](https://tc39.github.io/ecma262/).
 
-These APIs support doing one of the following:
+Estas APIs admiten hacer uno de los siguientes:
 
-1. Coerce JavaScript values to specific JavaScript types (such as `Number` or `String`).
-2. Check the type of a JavaScript value.
-3. Check for equality between two JavaScript values.
+1. Generar valores de JavaScript para tipos específicos de JavaScript (tal como `Number` o `String`).
+2. Verificar el tipo de valor de JavaScript.
+3. Verificar la equidad entre dos valores de JavaScript.
 
 ### napi_coerce_to_bool
 
@@ -1807,13 +1807,13 @@ napi_status napi_coerce_to_bool(napi_env env,
                                 napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Boolean`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a generar.
+- `[out] result`: `napi_value` que representa al `Boolean` de JavaScript generado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API implements the abstract operation `ToBoolean()` as defined in [Section 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Esta API implementa la operación abstracta `ToBoolean()` como se define en la [Sección 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) de las Especificaciones del Lenguaje ECMAScript. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_coerce_to_number
 
@@ -1827,13 +1827,13 @@ napi_status napi_coerce_to_number(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Number`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a generar.
+- `[out] result`: `napi_value` que representa al `Number` de JavaScript a generar.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API implements the abstract operation `ToNumber()` as defined in [Section 7.1.3](https://tc39.github.io/ecma262/#sec-tonumber) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+Esta API implementa la operación abstracta `ToNumber()` como se define en la [Sección 7.1.3](https://tc39.github.io/ecma262/#sec-tonumber) de las Especificaciones del Lenguaje ECMAScript. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_coerce_to_object
 
@@ -1847,13 +1847,13 @@ napi_status napi_coerce_to_object(napi_env env,
                                   napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to coerce.
-- `[out] result`: `napi_value` representing the coerced JavaScript `Object`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a generar.
+- `[out] result`: `napi_value` que representa al `Object` de JavaScript a generar.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API implements the abstract operation `ToObject()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-toobject) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+This API implements the abstract operation `ToObject()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-toobject) of the ECMAScript Language Specification. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_coerce_to_string
 
@@ -1873,7 +1873,7 @@ napi_status napi_coerce_to_string(napi_env env,
 
 Returns `napi_ok` if the API succeeded.
 
-This API implements the abstract operation `ToString()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-tostring) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in `Object`.
+This API implements the abstract operation `ToString()` as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-tostring) of the ECMAScript Language Specification. Esta API puede ser reentrante si los getters están definidos en el `Object` pasado.
 
 ### napi_typeof
 
