@@ -868,27 +868,27 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
-    <td>Indicates that the file handle is stale.</td>
+    <td>Indica que el descriptor de archivos es obsoleto.</td>
   </tr>
   <tr>
     <td><code>ETIME</code></td>
-    <td>Indicates an expired timer.</td>
+    <td>Indica un temporizador expirado.</td>
   </tr>
   <tr>
     <td><code>ETIMEDOUT</code></td>
-    <td>Indicates that the connection timed out.</td>
+    <td>Indica que la conexión ha sido interrumpida.</td>
   </tr>
   <tr>
     <td><code>ETXTBSY</code></td>
-    <td>Indicates that a text file is busy.</td>
+    <td>Indica que el archivo de texto está ocupado.</td>
   </tr>
   <tr>
     <td><code>EWOULDBLOCK</code></td>
-    <td>Indicates that the operation would block.</td>
+    <td>Indica que la operación podría bloquear.</td>
   </tr>
   <tr>
     <td><code>EXDEV</code></td>
-    <td>Indicates an improper link.
+    <td>Indica un enlace incorrecto.
   </tr>
 </table>
 
