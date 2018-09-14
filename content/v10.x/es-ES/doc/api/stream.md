@@ -843,7 +843,7 @@ El método `readable.setEncoding()` establece la codificación de caracteres par
 
 De manera predeterminada, no se asigna ninguna codificación y los datos del stream se van a devolver como objetos `Buffer`. Establecer una codificación causa que los datos del stream sean devueltos como strings de la codificación especificada en vez de un objeto `Buffer`. Por ejemplo, llamar a `readable.setEncoding('utf8')` causará que la salida de datos sea interpretada como datos UTF.8, y sean pasados como strings. Llamar a `readable.setEncoding('hex')` causará que los datos sean codificados en un formato string hexadecimal.
 
-The `Readable` stream will properly handle multi-byte characters delivered through the stream that would otherwise become improperly decoded if simply pulled from the stream as `Buffer` objects.
+El stream `Readable` va a manejar correctamente caracteres multi-byte entregados a través del stream que de lo contrario no es decodificado de manera correcta si se extrae del stream como objetos `Buffer`.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -863,9 +863,9 @@ added: v0.9.4
 * `destination` {stream.Writable} Optional specific stream to unpipe
 * Returns: {this}
 
-The `readable.unpipe()` method detaches a `Writable` stream previously attached using the [`stream.pipe()`][] method.
+El método `readable.unpipe()` separa un stream `Writable` que fue adjuntado anteriormente usando el método [`stream.pipe()`][].
 
-If the `destination` is not specified, then *all* pipes are detached.
+Si el `destination` no es especificado, entonces *todos* los pipes son separados.
 
 If the `destination` is specified, but no pipe is set up for it, then the method does nothing.
 
