@@ -1031,9 +1031,9 @@ El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es u
 
 - `saltLength`: {integer} - longitud de sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de sal del tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
 
-El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+El `outputFormat` puede especificar un `'latin1'`, `'hex'` o `'base64'`. Si `outputFormat` es dado, una string es devuelta; de no ser así un [`Buffer`][] es devuelto.
 
-The `Sign` object can not be again used after `sign.sign()` method has been called. Multiple calls to `sign.sign()` will result in an error being thrown.
+El objeto `Sign` no puede ser usado nuevamente después de que el método `sign.sign()` ha sido llamado. Llamadas múltiples a `sign.sign()` van a resultar en un error.
 
 ### sign.update(data[, inputEncoding])
 
@@ -1049,11 +1049,11 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Sign` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Actualiza el contenido `Sign` con el `data` dado, cuyo código es dado en `inputEncoding` y puede ser `'utf8'`, `'ascii'` o `'latin1'`. Si `encoding` no es dado, y los `data` son una string, se aplica un código de `'utf8'`. Si `data` es un [`Buffer`][], `TypedArray`, o `DataView`, entonces el `inputEncoding` es ignorado.
 
 Esto puede ser llamado muchas veces con nuevos datos a medida en que son streamed.
 
-## Class: Verify
+## Clase: Verify
 
 <!-- YAML
 added: v0.1.92
