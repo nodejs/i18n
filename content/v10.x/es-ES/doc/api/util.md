@@ -570,7 +570,7 @@ added: v8.0.0
 * `original` {Function}
 * Devuelve: {Function}
 
-Takes a function following the common error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
+Toma una función siguiendo el estilo común de callback de primer error, p. ej. tomar un callback `(err, value) => ...` como el último argumento, y devuelve una versión que devuelve promesas.
 
 ```js
 const util = require('util');
@@ -598,9 +598,9 @@ async function callStat() {
 }
 ```
 
-If there is an `original[util.promisify.custom]` property present, `promisify` will return its value, see [Custom promisified functions](#util_custom_promisified_functions).
+Si hay una propiedad `original[util.promisify.custom]` presente, `promisify` va a devolver su valor, vea [Funciones personalizadas promisificadas](#util_custom_promisified_functions).
 
-`promisify()` assumes that `original` is a function taking a callback as its final argument in all cases. If `original` is not a function, `promisify()` will throw an error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
+`promisify()` asume que `original` es una función tomando un callback como su argumento final en todos los casos. Si `original` no es una función, `promisify()` va a arrojar un error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
 
 ### Custom promisified functions
 
