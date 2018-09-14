@@ -181,7 +181,7 @@ A na systemie Windows:
 
 Upewnij się, że linter kodu nie zgłasza żadnych problemów i że wszystkie testy zostały zaliczone. Proszę, nie wysyłaj patchy, które nie sprawdzają się w jednym lub drugim z powyższych.
 
-Jeśli chcesz użyc lintera bez zaliczania testów, użyj `make lint`/`vcbuild lint`. Uruchomi to zarówno linting JavaScript'u oraz C++.
+Jeśli chcesz użyc lintera bez zaliczania testów, użyj `make lint`/`vcbuild lint`. Uruchomi to zarówno linting języka JavaScript oraz C++.
 
 Jeśli aktualizujesz testy i chcesz uruchomić tylko jeden test, użyj:
 
