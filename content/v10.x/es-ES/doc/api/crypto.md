@@ -986,7 +986,7 @@ console.log(sign.sign(privateKey, 'hex'));
 
 En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, como 'ecdsa-with-SHA256'. Use nombres resumidos en su lugar.
 
-Example: signing using legacy signature algorithm name
+Ejemplo: firmando usando el nombre del algoritmo de firma heredado
 
 ```js
 const crypto = require('crypto');
@@ -1016,12 +1016,12 @@ changes:
 - `outputFormat` {string}
 - Devuelve: {Buffer | string}
 
-Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
+Calcula la firma de todos los datos pasados usando [`sign.update()`][] o [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
-The `privateKey` argument can be an object or a string. If `privateKey` is a string, it is treated as a raw key with no passphrase. If `privateKey` is an object, it must contain one or more of the following properties:
+El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es una string, se trata como una clave cruda sin frase de contraseña. Si `privateKey` es un objeto, debe contener una o más de las siguientes propiedades:
 
-- `key`: {string} - PEM encoded private key (required)
-- `passphrase`: {string} - passphrase for the private key
+- `key`: {string} - Clave privada con codificación PEM (requerida)
+- `passphrase`: {string} - frase de contraseña para la clave privada
 - `padding`: {integer} - Optional padding value for RSA, one of the following:
   
   - `crypto.constants.RSA_PKCS1_PADDING` (default)
