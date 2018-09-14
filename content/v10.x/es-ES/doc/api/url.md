@@ -385,17 +385,17 @@ Cualquier carácter URL inválido que aparezca en el valor asignado de la propie
 
 * Devuelve: {string}
 
-El método `toString()` en el objeto `URL` devuelve la URL serializada. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
+El método `toString()` en el objeto `URL` devuelve la URL serializada. El valor devuelto es equivalente al de [`url.href`][] y [`url.toJSON()`][].
 
-Because of the need for standard compliance, this method does not allow users to customize the serialization process of the URL. For more flexibility, [`require('url').format()`][] method might be of interest.
+Debido a la necesidad de cumplimiento estándar, este método no permite a los usuarios personalizar el proceso de serialización de la URL. Para mayor flexibilidad, podría estar interesado en el método [`require('url').format()`][].
 
 #### url.toJSON()
 
-* Returns: {string}
+* Devuelve: {string}
 
-The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
+El método `toJSON()` en el objeto `URL` devuelve la URL serializada. El valor devuelto es equivalente al de [`url.href`][] y [`url.toString()`][].
 
-This method is automatically called when an `URL` object is serialized with [`JSON.stringify()`][].
+Este método es automáticamente llamado cuando un objeto `URL` es serializado con [`JSON.stringify()`][].
 
 ```js
 const myURLs = [
@@ -403,10 +403,10 @@ const myURLs = [
   new URL('https://test.example.org')
 ];
 console.log(JSON.stringify(myURLs));
-// Prints ["https://www.example.com/","https://test.example.org/"]
+// Imprime ["https://www.example.com/","https://test.example.org/"]
 ```
 
-### Class: URLSearchParams
+### Clase: URLSearchParams
 
 <!-- YAML
 added: v7.5.0
@@ -417,7 +417,7 @@ changes:
     description: The class is now available on the global object.
 -->
 
-The `URLSearchParams` API provides read and write access to the query of a `URL`. The `URLSearchParams` class can also be used standalone with one of the four following constructors. The `URLSearchParams` class is also available on the global object.
+La API `URLSearchParams` proporciona acceso para leer y escribir a la consulta de una `URL`. La clase `URLSearchParams` también puede ser usada de forma independiente con uno de los cuatro siguientes constructores. La clase `URLSearchParams` también está disponible en el objeto global.
 
 The WHATWG `URLSearchParams` interface and the [`querystring`][] module have similar purpose, but the purpose of the [`querystring`][] module is more general, as it allows the customization of delimiter characters (`&` and `=`). On the other hand, this API is designed purely for URL query strings.
 
