@@ -399,14 +399,14 @@ https://github.com/nodejs/node/commit/66931791f06207d1cdfea5ec1529edf3c94026d3
 * timers: mejorar la optimización de setImmediate v8 (pflannery)
 * tls: añadir serialNumber para getPeerCertificate() (Ben Noordhuis)
 * tls: reintroducir socket.encrypted (Fedor Indutny)
-* tls: fix handling of asterisk in SNI context (Fedor Indutny)
-* util: Format negative zero as '-0' (David Chan)
-* vm: fix race condition in timeout (Alexis Campailla)
-* windows: fix dns lookup of localhost with ipv6 (Alexis Campailla)
+* tls: mejorar manejo del asterisco en el contexto de SNI (Fedor Indutny)
+* util: Dar formato al cero negativo como "-0" (David Chan)
+* vm: reparar la condición de carrera en el timeout (Alexis Campailla)
+* windows: reparar búsqueda por dns de localhost con ipv6 (Alexis Campailla)
 
 <a id="0.11.9"></a>
 
-## 2013.11.20, Version 0.11.9 (Unstable)
+## 2013.11.20, Versión 0.11.9 (Inestable)
 
 https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 
