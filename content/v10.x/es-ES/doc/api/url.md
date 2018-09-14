@@ -143,7 +143,7 @@ console.log(myURL.href);
 // Imprime https://example.org/foo#baz
 ```
 
-Caracteres URL inválidos incluidos en el valor asignado a la propiedad `hash` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
+Caracteres URL inválidos incluidos en el valor asignado a la propiedad `hash` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.host
 
@@ -240,7 +240,7 @@ console.log(myURL.href);
 // Imprime https://abc:123@example.com
 ```
 
-Caracteres de URL inválidos incluidos en el valor asignado a la propiedad `password` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
+Caracteres de URL inválidos incluidos en el valor asignado a la propiedad `password` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.pathname
 
@@ -258,7 +258,7 @@ console.log(myURL.href);
 // Imprime https://example.org/abcdef?123
 ```
 
-Caracteres URL inválidos incluidos en el valor asignado a la propiedad `pathname` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
+Caracteres URL inválidos incluidos en el valor asignado a la propiedad `pathname` son [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.port
 
@@ -355,7 +355,7 @@ console.log(myURL.href);
 // Imprime https://example.org/abc?abc=xyz
 ```
 
-Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `search` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
+Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `search` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.searchParams
 
