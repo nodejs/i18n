@@ -528,7 +528,7 @@ util.inspect(obj);
 added: v6.6.0
 -->
 
-A {symbol} that can be used to declare custom inspect functions, see [Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects).
+Un {symbol} que puede ser usado para declarar funciones de inspección personalizadas, vea [Funciones de inspección personalizadas en Objetos](#util_custom_inspection_functions_on_objects).
 
 ### util.inspect.defaultOptions
 
@@ -536,15 +536,15 @@ A {symbol} that can be used to declare custom inspect functions, see [Custom ins
 added: v6.4.0
 -->
 
-The `defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
+El valor `defaultOptions` permite la personalización de la opción predeterminada usada por `util.inspect`. Esto es útil para funciones como `console.log` o `util.format` que implícitamente llaman a `util.inspect`. Debería ser establecido en un objeto conteniendo una o más opciones [`util.inspect()`][] válidas. Establecer directamente propiedades de opciones también está soportado.
 
 ```js
 const util = require('util');
 const arr = Array(101).fill(0);
 
-console.log(arr); // logs the truncated array
+console.log(arr); // registra el array truncado
 util.inspect.defaultOptions.maxArrayLength = null;
-console.log(arr); // logs the full array
+console.log(arr); // registra el array completo
 ```
 
 ## util.isDeepStrictEqual(val1, val2)
@@ -555,11 +555,11 @@ added: v9.0.0
 
 * `val1` {any}
 * `val2` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if there is deep strict equality between `val1` and `val2`. Otherwise, returns `false`.
+Devuelve `true` si hay una estricta igualdad profunda entre `val1` and `val2`. De otra manera, devuelve `false`.
 
-See [`assert.deepStrictEqual()`][] for more information about deep strict equality.
+Vea [`assert.deepStrictEqual()`][] para más información sobre estricta igualdad profunda.
 
 ## util.promisify(original)
 
@@ -568,7 +568,7 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* Returns: {Function}
+* Devuelve: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
