@@ -844,27 +844,27 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indicates that a protocol is not supported.</td>
+    <td>Indica que un protocolo no es compatible.</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
-    <td>Indicates the wrong type of protocol for a socket.</td>
+    <td>Indica que el tipo incorrecto de protocolo para un socket.</td>
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indicates that the results are too large.</td>
+    <td>Indica que los resultados son muy grandes.</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
-    <td>Indicates that the file system is read only.</td>
+    <td>Indica que el sistema de archivos es de solo lectura.</td>
   </tr>
   <tr>
     <td><code>ESPIPE</code></td>
-    <td>Indicates an invalid seek operation.</td>
+    <td>Indica una operación inválida de búsqueda.</td>
   </tr>
   <tr>
     <td><code>ESRCH</code></td>
-    <td>Indicates that there is no such process.</td>
+    <td>Indica que no existe tal proceso.</td>
   </tr>
   <tr>
     <td><code>ESTALE</code></td>
