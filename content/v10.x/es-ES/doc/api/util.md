@@ -464,10 +464,10 @@ Los estilos predeterminados y colores asociados son:
 * `regexp` - `red`
 * `null` - `bold`
 * `undefined` - `grey`
-* `special` - `cyan` (only applied to functions at this time)
-* `name` - (no styling)
+* `special` - `cyan` (solo aplicado a funciones en este momento)
+* `name` - (sin estilo)
 
-The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
+Los códigos de colores predefinidos son: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. También hay códigos `bold`, `italic`, `underline` e `inverse`.
 
 El estilo de color usa códigos de control ANSI que pueden no ser suportados en todos los terminales.
 
@@ -475,7 +475,7 @@ El estilo de color usa códigos de control ANSI que pueden no ser suportados en 
 
 <!-- type=misc -->
 
-Objects may also define their own `[util.inspect.custom](depth, opts)` (or the equivalent but deprecated `inspect(depth, opts)`) function that `util.inspect()` will invoke and use the result of when inspecting the object:
+Los objetos también pueden definir su propia función `[util.inspect.custom](depth, opts)` (o el equivalente pero obsoleto `inspect(depth, opts)`) que `util.inspect()` va a invocar y usar el resultado de cuando se inspecciona el objeto:
 
 ```js
 const util = require('util');
@@ -494,7 +494,7 @@ class Box {
       depth: options.depth === null ? null : options.depth - 1
     });
 
-    // Five space padding because that's the size of "Box< ".
+    // Cinco espacios rellenados porque ese es el tamaño de "Box< ".
     const padding = ' '.repeat(5);
     const inner = util.inspect(this.value, newOptions)
                       .replace(/\n/g, `\n${padding}`);
@@ -508,7 +508,7 @@ util.inspect(box);
 // Retorna: "Box< true >"
 ```
 
-Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
+Las funciones personalizadas `[util.inspect.custom](depth, opts)` devuelven típicamente un string, pero pueden devolver un valor de cualquier tipo que va a ser formateado en consecuencia por `util.inspect()`.
 
 ```js
 const util = require('util');
