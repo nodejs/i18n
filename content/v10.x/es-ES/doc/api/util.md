@@ -668,11 +668,11 @@ string += decoder.decode(); // end-of-stream
 
 Según el [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/), las codificaciones soportadas por la API `TextDecoder` están delineadas en las tablas a continuación. Para cada codificación, uno o más alias pueden ser usados.
 
-Diferentes configuraciones de Node.js soportan diferentes conjuntos de codificaciones. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
+Diferentes configuraciones de Node.js soportan diferentes conjuntos de codificaciones. Mientras que un conjunto de condificaciones bastante básico es soportado incluso en construcciones de Node.js sin tener ICU habilitado, el soporte para algunas codificaciones es previsto solo cuando Node.js es construido con ICU y usando los datos completos de ICU (vea [Internacionalización](intl.html)).
 
-#### Encodings Supported Without ICU
+#### Codificaciones Soportadas Sin ICU
 
-| Encoding     | Aliases                         |
+| Codificación | Alias                           |
 | ------------ | ------------------------------- |
 | `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
 | `'utf-16le'` | `'utf-16'`                      |
