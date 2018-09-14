@@ -814,9 +814,9 @@ changes:
                  listening.
 -->
 
-* Returns: {this}
+* Devuelve: {this}
 
-The `readable.resume()` method causes an explicitly paused `Readable` stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
+El método `readable.resume()` causa que un stream `Readable` explícitamente pausado se reanude la emisión de eventos [`'data'`][], cambiando el stream a modo fluido.
 
 The `readable.resume()` method can be used to fully consume the data from a stream without actually processing any of that data as illustrated in the following example:
 
