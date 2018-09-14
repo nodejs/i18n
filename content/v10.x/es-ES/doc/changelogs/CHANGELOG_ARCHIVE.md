@@ -351,7 +351,7 @@ https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 * openssl: Actualizar a 1.0.1f
 * uv: Actualizar a 0.11.18
 * async-listener: revamp of subsystem (Trevor Norris)
-* node: do not ever close stdio (Fedor Indutny)
+* node: no cerrar nunca stdio nunca (Fedor Indutny)
 * http: use writev on chunked encoding (Trevor Norris)
 * async_wrap/timers: remove Add/RemoveAsyncListener (Trevor Norris)
 * child_process: better error reporting for exec (Fedor Indutny)
