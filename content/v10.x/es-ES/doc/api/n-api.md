@@ -1417,7 +1417,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API se utiliza para recuperar el buffer de datos subyacente y la longitud de un `ArrayBuffer`.
 
-*ADVERTENCIA*: Tenga cuidado al utilizar esta API. El `ArrayBuffer` administra el tiempo de vida del buffer de datos subyacente incluso después de que se devuelve. Una manera segura y posible de esta API es hacerlo en conjunto con [`napi_create_reference`][], la cual puede ser utilizada para garantizar el control sobre el tiempo de vida del `ArrayBuffer`. También es seguro utilizar el buffer de datos devuelto dentro del mismo callback de terminación, siempre que no existan llamadas a otras APIs que puedan desencadenar un GC.
+*ADVERTENCIA*: Tenga cuidado al utilizar esta API. El `ArrayBuffer` administra el tiempo de vida del buffer de datos subyacente incluso después de que se devuelve. Una manera segura y posible de usar esta API es hacerlo en conjunto con [`napi_create_reference`][], la cual puede ser utilizada para garantizar el control sobre el tiempo de vida del `ArrayBuffer`. También es seguro utilizar el buffer de datos devuelto dentro del mismo callback de terminación, siempre que no existan llamadas a otras APIs que puedan desencadenar un GC.
 
 #### napi_get_buffer_info
 
@@ -1686,13 +1686,13 @@ napi_status napi_get_value_string_utf16(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa una cadena de JavaScript.
-- `[in] buf`: Buffer para escribir la cadena codificada en UTF16-LE. Si se pasa NULL, se devuelve la longitud de la cadena (en unidades de código de 2 bytes).
+- `[in] buf`: Buffer en el cual escribir la cadena codificada en UTF16-LE. Si se pasa NULL, se devuelve la longitud de la cadena (en unidades de código de 2 bytes).
 - `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, la cadena devuelta será truncada.
 - `[out] result`: Número de unidades de código de 2 bytes copiadas en el buffer, excluyendo el terminador Null.
 
 Devuelve `napi_ok` si la API es exitosa. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
-Esta API devuelve una cadena codificada en UTF16 que corresponde al valor pasado.
+Esta API devuelve la cadena codificada en UTF16 que corresponde al valor pasado.
 
 #### napi_get_value_uint32
 
@@ -1708,11 +1708,11 @@ napi_status napi_get_value_uint32(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
-- `[out] result`: Primitiva de C equivalente al `napi_value` dado como un `uint32_t`.
+- `[out] result`: Primitivo de C equivalente al `napi_value` dado como un `uint32_t`.
 
 Devuelve `napi_ok` si la API fue exitosa. Si un `napi_value` no numérico es pasado, devuelve `napi_number_expected`.
 
-Esta API devuelve una primitiva de C equivalente al `napi_value` dado como `uint32_t`.
+Esta API devuelve un primitivo de C equivalente al `napi_value` dado como `uint32_t`.
 
 ### Funciones para obtener instancias globales
 
