@@ -479,25 +479,25 @@ https://github.com/nodejs/node/commit/be52549bfa5311208b5fcdb3ba09210460fa9ceb
 * stream: cambiar highWaterMark predeterminada para objectMode a 16 (Mathias Buus)
 * stream: hacer encadenable a setEncoding/pause/resume (Julian Gruber, isaacs)
 * util: pasar opts a funciones de inspección personalizadas (Timothy J Fontaine)
-* vm: rewritten to behave like Contextify (Domenic Denicola)
+* vm: reescrita para comportarse como Contextify (Domenic Denicola)
 
 <a id="0.11.6"></a>
 
-## 2013.08.21, Version 0.11.6 (Unstable)
+## 2013.08.21, Versión 0.11.6 (Inestable)
 
 https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 
-* uv: Upgrade to v0.11.8
-* v8: upgrade v8 to 3.20.14.1
-* build: disable SSLv2 by default (Ben Noordhuis)
-* build: don't auto-destroy existing configuration (Ben Noordhuis)
-* crypto: add TLS 1.1 and 1.2 to secureProtocol list (Matthias Bartelmeß)
-* crypto: fix memory leak in randomBytes() error path (Ben Noordhuis)
-* dgram: don't call into js when send cb is omitted (Ben Noordhuis)
-* dgram: fix regression in string argument handling (Ben Noordhuis)
-* domains: performance improvements (Trevor Norris)
+* uv: Actualizar a v0.11.8
+* v8: actualizar v8 a 3.20.14.1
+* build: deshabilitar SSLv2 por defecto (Ben Noordhuis)
+* build: no auto-destruir configuración existente (Ben Noordhuis)
+* crypto: añadir TLS 1.1 y 1.2 a la lista secureProtocol (Matthias Bartelmeß)
+* crypto: reparar fuga de memoria en ruta de error de randomBytes() (Ben Noordhuis)
+* dgram: no llamar a js cuando el envío de cb es omitido (Ben Noordhuis)
+* dgram: reparar regresión en manejo de argumentos de string (Ben Noordhuis)
+* domains: mejoras de rendimiento (Trevor Norris)
 * events: EventEmitter = require('events') (Jake Verbaten)
-* http: Add write()/end() callbacks (isaacs)
+* http: Añadir callbacks de write()/end() (isaacs)
 * http: Consistent 'finish' event semantics (isaacs)
 * http: Prefer 'binary' over 'ascii' (isaacs)
 * http: Support legacy agent.addRequest API (isaacs)
