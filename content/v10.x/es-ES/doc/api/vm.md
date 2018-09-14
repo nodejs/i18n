@@ -6,7 +6,7 @@
 
 <!--name=vm-->
 
-The `vm` module provides APIs for compiling and running code within V8 Virtual Machine contexts.
+El módulo `vm` proporciona APIs para compilar y ejecutar códigos dentro de los contextos de la Máquina Virtual V8.
 
 JavaScript code can be compiled and run immediately or compiled, saved, and run later.
 
