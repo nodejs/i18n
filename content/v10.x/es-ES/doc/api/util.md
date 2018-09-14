@@ -35,7 +35,7 @@ callbackFunction((err, ret) => {
 });
 ```
 
-Va a estampar:
+Va a imprimir:
 
 ```txt
 hello world
@@ -43,7 +43,7 @@ hello world
 
 El callback es ejecutado asincrónicamente, y va a tener un stack trace limitado. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
 
-Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función envuelta rechaza una `Promise` con un valor falso como la razón, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
+Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función envuelta rechaza una `Promise` con un valor falso como motivo, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
 
 ```js
 function fn() {
@@ -166,9 +166,9 @@ El método `util.format()` retorna un string con formato usando el primer argume
 El primer argumento es un string conteniendo cero o más tokens *placeholder*. Cada token placeholder es reemplazado con el valor convertido del argumento correspondiente. Los placeholders soportados son:
 
 * `%s` - `String`.
-* `%d` - `Number` (entero o valor de punto flotante).
+* `%d` - `Number` (entero o valor de coma flotante).
 * `%i` - Entero.
-* `%f` - Valor de punto flotante.
+* `%f` - Valor de coma flotante.
 * `%j` - JSON. Reemplazado con el string `'[Circular]'` si el argumento contiene referencias circulares.
 * `%o` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` con opciones `{ showHidden: true, showProxy: true }`. Esto va a mostrar el objeto completo incluyendo propiedades y proxies no enumerables.
 * `%O` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` sin opciones. Esto va a mostrar el objeto completo no incluyendo propiedades y proxies no enumerables.
@@ -200,7 +200,7 @@ Si solo un argumento es pasado a `util.format()`, este es retornado tal como est
 util.format('%% %s'); // '%% %s'
 ```
 
-Por favor, note que `util.format()` es un método sincrónico que es principalmente concebido como una herramienta de depuración. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
+Por favor, tenga en cuenta que `util.format()` es un método sincrónico que es principalmente concebido como una herramienta de depuración. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
 
 ## util.formatWithOptions(inspectOptions, format[, ...args])
 
@@ -332,10 +332,10 @@ changes:
 * `options` {Object}
   
   * `showHidden` {boolean} Si `true`, los símbolos y propiedades no enumerables del `object` van a ser incluidos en el resultado formateado, así como también las entradas [`WeakMap`][] y [`WeakSet`][]. **Default:** `false`.
-  * `depth` {number} Especifica el número de veces a repetir mientras se formatea el `object`. Esto es útil para inspeccionar objetos grandes y complicados. Para hacer que se repita indefinidamente pase `null`. **Default:** `2`.
-  * `colors` {boolean} Si `true`, el output va a ser diseñado con códigos de colores ANSI. Colores son personalizables, vea [Customizing `util.inspect` colors][]. **Default:** `false`.
+  * `depth` {number} Especifica el número de veces a repetir mientras se formatea el `object`. Esto es útil para inspeccionar objetos grandes y complicados. Para hacer que se repita indefinidamente pase `null`. **Predeterminado:** `2`.
+  * `colors` {boolean} Si es `true`, el output va a ser diseñado con códigos de colores ANSI. Los colores son personalizables, vea [Customizing `util.inspect` colors][]. **Predeterminado:** `false`.
   * `customInspect` {boolean} Si `false`, entonces las funciones personalizadas `inspect(depth, opts)` no van a ser llamadas. **Default:** `true`.
-  * `showProxy` {boolean} Si `true`, entonces los objetos y funciones que son objetos `Proxy` van a ser analizados para mostrar sus objetos `target` y `handler`. **Default:** `false`. <!--
+  * `showProxy` {boolean} Si `true`, entonces los objetos y funciones que son objetos `Proxy` van a ser analizados para mostrar sus objetos `target` y `handler`. **Predeterminado:** `false`. <!--
   TODO(BridgeAR): Deprecate `maxArrayLength` and replace it with
                   `maxEntries`.
   -->
