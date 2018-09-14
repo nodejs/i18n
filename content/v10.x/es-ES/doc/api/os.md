@@ -743,44 +743,43 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENODATA</code></td>
-    <td>Indicates that no message is available on the stream head read
-    queue.</td>
+    <td>Indica que no hay mensajes disponibles en la cola de lectura.</td>
   </tr>
   <tr>
     <td><code>ENODEV</code></td>
-    <td>Indicates that there is no such device.</td>
+    <td>Indica que no existe tal dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOENT</code></td>
-    <td>Indicates that there is no such file or directory.</td>
+    <td>Indica que no existe tal directorio o archivo.</td>
   </tr>
   <tr>
     <td><code>ENOEXEC</code></td>
-    <td>Indicates an exec format error.</td>
+    <td>Indica que hay un error de formato exec.</td>
   </tr>
   <tr>
     <td><code>ENOLCK</code></td>
-    <td>Indicates that there are no locks available.</td>
+    <td>Indica que no hay bloqueos disponibles.</td>
   </tr>
   <tr>
     <td><code>ENOLINK</code></td>
-    <td>Indications that a link has been severed.</td>
+    <td>Indica que un enlace se ha roto.</td>
   </tr>
   <tr>
     <td><code>ENOMEM</code></td>
-    <td>Indicates that there is not enough space.</td>
+    <td>Indica que no hay suficiente espacio.</td>
   </tr>
   <tr>
     <td><code>ENOMSG</code></td>
-    <td>Indicates that there is no message of the desired type.</td>
+    <td>Indica que no hay mensajes del tipo deseado.</td>
   </tr>
   <tr>
     <td><code>ENOPROTOOPT</code></td>
-    <td>Indicates that a given protocol is not available.</td>
+    <td>Indica que el protocolo dado no está disponible.</td>
   </tr>
   <tr>
     <td><code>ENOSPC</code></td>
-    <td>Indicates that there is no space available on the device.</td>
+    <td>Indica que no hay espacio disponible en el dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
