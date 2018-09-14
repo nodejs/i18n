@@ -1610,7 +1610,7 @@ napi_status napi_get_value_int64(napi_env env,
                                  int64_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: `napi_value` que representa un `Number` de JavaScript.
 - `[out] result`: C `int64` primitive equivalent of the given JavaScript `Number`.
 
