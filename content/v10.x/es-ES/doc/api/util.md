@@ -584,7 +584,7 @@ stat('.').then((stats) => {
 });
 ```
 
-Or, equivalently using `async function`s:
+O, equivalentemente usando `async function`s:
 
 ```js
 const util = require('util');
