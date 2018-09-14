@@ -355,37 +355,37 @@ console.log(myURL.href);
 // Imprime https://example.org/abc?abc=xyz
 ```
 
-Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `search` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode pueden variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.searchParams
 
 * {URLSearchParams}
 
-Gets the [`URLSearchParams`][] object representing the query parameters of the URL. This property is read-only; to replace the entirety of query parameters of the URL, use the [`url.search`][] setter. See [`URLSearchParams`][] documentation for details.
+Obtiene el objeto [`URLSearchParams`][] representando los parámetros de la consulta de la URL. Esta propiedad es solo para lectura; para reemplazar la totalidad de los parámetros de consulta de la URL, use el setter [`url.search`][]. Vea la documentación [`URLSearchParams`][] para más detalles.
 
 #### url.username
 
 * {string}
 
-Gets and sets the username portion of the URL.
+Obtiene y establece la porción del nombre de usuario de la URL.
 
 ```js
 const myURL = new URL('https://abc:xyz@example.com');
 console.log(myURL.username);
-// Prints abc
+// Imprime abc
 
 myURL.username = '123';
 console.log(myURL.href);
-// Prints https://123:xyz@example.com/
+// Imprime https://123:xyz@example.com/
 ```
 
-Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
+Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `username` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de los métodos [`url.parse()`][] and [`url.format()`][] producirían.
 
 #### url.toString()
 
-* Returns: {string}
+* Devuelve: {string}
 
-The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
+El método `toString()` en el objeto `URL` devuelve la URL serializada. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
 Because of the need for standard compliance, this method does not allow users to customize the serialization process of the URL. For more flexibility, [`require('url').format()`][] method might be of interest.
 
