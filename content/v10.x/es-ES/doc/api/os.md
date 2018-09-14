@@ -1067,23 +1067,23 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAESTALE</code></td>
-    <td>Indicates a stale file handle reference.</td>
+    <td>Indica un descriptor de archivo viejo.</td>
   </tr>
   <tr>
     <td><code>WSAEREMOTE</code></td>
-    <td>Indicates that the item is remote.</td>
+    <td>Indica que el elemento es remoto.</td>
   </tr>
   <tr>
     <td><code>WSASYSNOTREADY</code></td>
-    <td>Indicates that the network subsystem is not ready.</td>
+    <td>Indica que el subsistema de la red no está listo.</td>
   </tr>
   <tr>
     <td><code>WSAVERNOTSUPPORTED</code></td>
-    <td>Indicates that the `winsock.dll` version is out of range.</td>
+    <td>Indica que la versión de `winsock.dll` está fuera de rango.</td>
   </tr>
   <tr>
     <td><code>WSANOTINITIALISED</code></td>
-    <td>Indicates that successful WSAStartup has not yet been performed.</td>
+    <td>Indica que el WSAStartup no ha sido realizado con éxito.</td>
   </tr>
   <tr>
     <td><code>WSAEDISCON</code></td>
