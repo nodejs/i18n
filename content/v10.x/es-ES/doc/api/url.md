@@ -272,7 +272,7 @@ console.log(myURL.port);
 // Imprime 8888
 
 // Puertos predeterminados son automáticamente transformados a la string vacía
-// (HTTPS protocol's default port is 443)
+// (el puerto de protocolo HTTPS por defecto es 443)
 myURL.port = '443';
 console.log(myURL.port);
 // Imprime la string vacía
@@ -300,7 +300,7 @@ myURL.port = 1234.5678;
 console.log(myURL.port);
 // Imprime 1234
 
-// Números fuera de rango que no estén representados en notación científica
+// Los Números fuera de rango que no estén representados en notación científica
 // serán ignorados.
 myURL.port = 1e10; // 10000000000, se verificará el rango como se describe a continuación
 console.log(myURL.port);
@@ -379,7 +379,7 @@ console.log(myURL.href);
 // Imprime https://123:xyz@example.com/
 ```
 
-Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `username` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de los métodos [`url.parse()`][] and [`url.format()`][] producirían.
+Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `username` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.toString()
 
