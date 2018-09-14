@@ -462,15 +462,15 @@ https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 
 https://github.com/nodejs/node/commit/be52549bfa5311208b5fcdb3ba09210460fa9ceb
 
-* uv: upgrade to v0.11.13
-* v8: upgrade to 3.20.17
-* buffer: adhere to INSPECT_MAX_BYTES (Timothy J Fontaine)
-* buffer: fix regression for large buffer creation (Trevor Norris)
-* buffer: don't throw if slice length too long (Trevor Norris)
-* buffer: Buffer(buf) constructor copies into the proper buffer (Ben Noordhuis)
-* cli: remove --max-stack-size (Ben Noordhuis)
-* cli: unknown command line options are errors (Ben Noordhuis)
-* child_process: exec accept buffer as an encoding (Seth Fitzsimmons)
+* uv: actualizar a v0.11.13
+* v8: actualizar a 3.20.17
+* buffer: adherir a INSPECT_MAX_BYTES (Timothy J Fontaine)
+* buffer: reparar regresión para creación de buffer largo (Trevor Norris)
+* buffer: no arrojar si longitud de porción es muy larga (Trevor Norris)
+* buffer: Hacer Buffer(buf) a copias del constructor dentro del mismo buffer (Ben Noordhuis)
+* cli: remover --max-stack-size (Ben Noordhuis)
+* cli: las líneas de comando desconocidas son errores (Ben Noordhuis)
+* child_process: exec acepta a buffer como una codificación (Seth Fitzsimmons)
 * crypto: make randomBytes/pbkdf2 callbacks domain aware (Ben Noordhuis)
 * domain: deprecate domain.dispose(). (Forrest L Norvell)
 * fs: Expose birthtime on stat objects (isaacs)
