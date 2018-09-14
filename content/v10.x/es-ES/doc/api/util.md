@@ -731,13 +731,13 @@ La codificación `'iso-8859-16'` listada en el [Estándar de Codificación WHATW
 * `encoding` {string} Identifica el `encoding` que esta instancia `TextDecoder` soporta. **Predeterminado:** `'utf-8'`.
 * `options` {Object} 
   * `fatal` {boolean} `true` si las fallas de decodificación son fatales. Eta opción es soportada solo cuando ICU está habilitado (vea [Internacionalización](intl.html)). **Predeterminado:** `false`.
-  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
+  * `ignoreBOM` {boolean} Cuando sea `true`, el `TextDecoder` va a incluir la marca de orden del byte en el resultado decodificado. Cuando sea `false`, la marca de orden del byte va a ser removida del output. Esta opción es usada solo cuando `encoding` sea `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Predeterminado:** `false`.
 
-Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
+Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de las decodificaciones soportadas o un alias.
 
 ### textDecoder.decode([input[, options]])
 
-* `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `Typed Array` instance containing the encoded data.
+* `input` {ArrayBuffer|DataView|TypedArray} Una instancia `ArrayBuffer`, `DataView` o `Typed Array` conteniendo los datos codificados.
 * `options` {Object} 
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
 * Returns: {string}
@@ -869,8 +869,8 @@ Returns `true` if the value is an [async function](https://developer.mozilla.org
 For example:
 
 ```js
-util.types.isAsyncFunction(function foo() {});  // Returns false
-util.types.isAsyncFunction(async function foo() {});  // Returns true
+util.types.isAsyncFunction(function foo() {});  // Devuelve false
+util.types.isAsyncFunction(async function foo() {});  // Devuelve true
 ```
 
 ### util.types.isBooleanObject(value)
@@ -879,19 +879,19 @@ util.types.isAsyncFunction(async function foo() {});  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the value is a boolean object, e.g. created by `new Boolean()`.
 
 For example:
 
 ```js
-util.types.isBooleanObject(false);  // Returns false
-util.types.isBooleanObject(true);   // Returns false
-util.types.isBooleanObject(new Boolean(false));   // Returns true
-util.types.isBooleanObject(new Boolean(true));    // Returns true
-util.types.isBooleanObject(Boolean(false)); // Returns false
-util.types.isBooleanObject(Boolean(true)); // Returns false
+util.types.isBooleanObject(false);  // Devuelve false
+util.types.isBooleanObject(true);   // Devuelve false
+util.types.isBooleanObject(new Boolean(false));   // Devuelve true
+util.types.isBooleanObject(new Boolean(true));    // Devuelve true
+util.types.isBooleanObject(Boolean(false)); // Devuelve false
+util.types.isBooleanObject(Boolean(true)); // Devuelve false
 ```
 
 ### util.types.isDataView(value)
@@ -1480,11 +1480,11 @@ Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
 const util = require('util');
 
 util.isArray([]);
-// Returns: true
+// Devuelve: true
 util.isArray(new Array());
-// Returns: true
+// Devuelve: true
 util.isArray({});
-// Returns: false
+// Devuelve: false
 ```
 
 ### util.isBoolean(object)
@@ -1505,11 +1505,11 @@ Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
 const util = require('util');
 
 util.isBoolean(1);
-// Returns: false
+// Devuelve: false
 util.isBoolean(0);
-// Returns: false
+// Devuelve: false
 util.isBoolean(false);
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isBuffer(object)
@@ -1671,11 +1671,11 @@ Returns `true` if the given `object` is `null` or `undefined`. Otherwise, return
 const util = require('util');
 
 util.isNullOrUndefined(0);
-// Returns: false
+// Devuelve: false
 util.isNullOrUndefined(undefined);
-// Returns: true
+// Devuelve: true
 util.isNullOrUndefined(null);
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isNumber(object)
@@ -1696,13 +1696,13 @@ Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
 const util = require('util');
 
 util.isNumber(false);
-// Returns: false
+// Devuelve: false
 util.isNumber(Infinity);
-// Returns: true
+// Devuelve: true
 util.isNumber(0);
-// Returns: true
+// Devuelve: true
 util.isNumber(NaN);
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isObject(object)
@@ -1787,11 +1787,11 @@ Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
 const util = require('util');
 
 util.isRegExp(/some regexp/);
-// Returns: true
+// Devuelve: true
 util.isRegExp(new RegExp('another regexp'));
-// Returns: true
+// Devuelve: true
 util.isRegExp({});
-// Returns: false
+// Devuelve: false
 ```
 
 ### util.isString(object)
@@ -1812,13 +1812,13 @@ Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
 const util = require('util');
 
 util.isString('');
-// Returns: true
+// Devuelve: true
 util.isString('foo');
-// Returns: true
+// Devuelve: true
 util.isString(String('foo'));
-// Returns: true
+// Devuelve: true
 util.isString(5);
-// Returns: false
+// Devuelve: false
 ```
 
 ### util.isSymbol(object)
@@ -1839,11 +1839,11 @@ Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
 const util = require('util');
 
 util.isSymbol(5);
-// Returns: false
+// Devuelve: false
 util.isSymbol('foo');
-// Returns: false
+// Devuelve: false
 util.isSymbol(Symbol('foo'));
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isUndefined(object)
@@ -1865,11 +1865,11 @@ const util = require('util');
 
 const foo = undefined;
 util.isUndefined(5);
-// Returns: false
+// Devuelve: false
 util.isUndefined(foo);
-// Returns: true
+// Devuelve: true
 util.isUndefined(null);
-// Returns: false
+// Devuelve: false
 ```
 
 ### util.log(string)
