@@ -807,42 +807,40 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
-    <td>Indicates that the given item is not a socket.</td>
+    <td>Indica que un elemento dado no es un socket.</td>
   </tr>
   <tr>
     <td><code>ENOTSUP</code></td>
-    <td>Indicates that a given operation is not supported.</td>
+    <td>Indica que no se admite la operación dada.</td>
   </tr>
   <tr>
     <td><code>ENOTTY</code></td>
-    <td>Indicates an inappropriate I/O control operation.</td>
+    <td>Indica una operación de control A/E inapropiada.</td>
   </tr>
   <tr>
     <td><code>ENXIO</code></td>
-    <td>Indicates no such device or address.</td>
+    <td>Indica que no existe el dispositivo o dirección.</td>
   </tr>
   <tr>
     <td><code>EOPNOTSUPP</code></td>
-    <td>Indicates that an operation is not supported on the socket.
-    Note that while `ENOTSUP` and `EOPNOTSUPP` have the same value on Linux,
-    according to POSIX.1 these error values should be distinct.)</td>
+    <td>Indica que la operación no es compatible con el socket.
+    Note que mientras `ENOTSUP` y `EOPNOTSUPP` tienen el mismo valor en Linux, de acuerdo a POSIX. 1 los valores de error deben ser distintos.)</td>
   </tr>
   <tr>
     <td><code>EOVERFLOW</code></td>
-    <td>Indicates that a value is too large to be stored in a given data
-    type.</td>
+    <td>Indica que el valor es muy grande para almacenarse en un tipo de datos.</td>
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indicates that the operation is not permitted.</td>
+    <td>Indica que la operación no es permitida.</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
-    <td>Indicates a broken pipe.</td>
+    <td>Indica un pipe roto.</td>
   </tr>
   <tr>
     <td><code>EPROTO</code></td>
-    <td>Indicates a protocol error.</td>
+    <td>Indica un error de protocolo.</td>
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
