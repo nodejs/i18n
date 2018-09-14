@@ -699,15 +699,15 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ELOOP</code></td>
-    <td>Indicates too many levels of symbolic links in a path.</td>
+    <td>Indica muchos niveles de enlaces simbólicos en la ruta.</td>
   </tr>
   <tr>
     <td><code>EMFILE</code></td>
-    <td>Indicates that there are too many open files.</td>
+    <td>Indica que hay demasiados archivos abiertos.</td>
   </tr>
   <tr>
     <td><code>EMLINK</code></td>
-    <td>Indicates that there are too many hard links to a file.</td>
+    <td>Indica que hay muchos enlaces duros a un archivo.</td>
   </tr>
   <tr>
     <td><code>EMSGSIZE</code></td>
