@@ -644,15 +644,15 @@ added: v8.0.0
 
 * {symbol}
 
-A {symbol} that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
+Un {symbol} que puede ser usado para declarar variantes personalizadas promisificadas de funciones, vea [Funciones personalizadas promisificadas](#util_custom_promisified_functions).
 
-## Class: util.TextDecoder
+## Clase: util.TextDecoder
 
 <!-- YAML
 added: v8.3.0
 -->
 
-An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
+Una implementación de la API [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/) `TextDecoder`.
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -664,11 +664,11 @@ while (buffer = getNextChunkSomehow()) {
 string += decoder.decode(); // end-of-stream
 ```
 
-### WHATWG Supported Encodings
+### Codificaciones Soportadas por WHATWG
 
-Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
+Según el [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/), las codificaciones soportadas por la API `TextDecoder` están delineadas en las tablas a continuación. Para cada codificación, uno o más alias pueden ser usados.
 
-Different Node.js build configurations support different sets of encodings. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
+Diferentes configuraciones de Node.js soportan diferentes conjuntos de codificaciones. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
 
 #### Encodings Supported Without ICU
 
