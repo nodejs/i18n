@@ -469,9 +469,9 @@ Los estilos predeterminados y colores asociados son:
 
 The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
 
-Color styling uses ANSI control codes that may not be supported on all terminals.
+El estilo de color usa códigos de control ANSI que pueden no ser suportados en todos los terminales.
 
-### Custom inspection functions on Objects
+### Funciones de inspección personalizada en Objetos
 
 <!-- type=misc -->
 
