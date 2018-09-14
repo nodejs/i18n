@@ -1150,8 +1150,7 @@ Si se encuentran en el sistema operativo, las siguientes constantes son exportad
   </tr>
   <tr>
     <td><code>RTLD_NOW</code></td>
-    <td>Resolve all undefined symbols in the library before dlopen(3)
-    returns.</td>
+    <td>Resuelve todos los símbolos indefinidos en la librería antes que dlopen(3) retorne.</td>
   </tr>
   <tr>
     <td><code>RTLD_GLOBAL</code></td>
