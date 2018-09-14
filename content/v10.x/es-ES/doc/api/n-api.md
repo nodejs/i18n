@@ -1640,11 +1640,11 @@ napi_status napi_get_value_string_latin1(napi_env env,
 - `[in] value`: `napi_value` que representa una cadena de JavaScript.
 - `[in] buf`: Buffer para escribir la cadena codificada en ISO-8859-1. Si se pasa NULL, se devuelve la longitud de la cadena (en bytes).
 - `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, se truncará la cadena devuelta.
-- `[out] result`: Number of bytes copied into the buffer, excluding the null terminator.
+- `[out] result`: Número de byes copiados en el buffer, excluyendo el terminador Null.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
-This API returns the ISO-8859-1-encoded string corresponding the value passed in.
+Esta API devuelve una cadena codificada en ISO-8859-1 que corresponde al valor pasado.
 
 #### napi_get_value_string_utf8
 
@@ -1660,15 +1660,15 @@ napi_status napi_get_value_string_utf8(napi_env env,
                                        size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the UTF8-encoded string into. If NULL is passed in, the length of the string (in bytes) is returned.
-- `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
-- `[out] result`: Number of bytes copied into the buffer, excluding the null terminator.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa la cadena de JavaScript.
+- `[in] buf`: Buffer para escribir la cadena codificada en UTF8. Si se pasa NULL, se devuelve la longitud de la cadena (en bytes).
+- `[in] bufsize`: Tamaño del buffer de destino. Cuando el valor es insuficiente, la cadena devuelta será truncada.
+- `[out] result`: Número de bytes copiados en el buffer, excluyendo a el terminador Null.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Devuelve `napi_ok` si la API fue exitosa. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
-This API returns the UTF8-encoded string corresponding the value passed in.
+Esta API devuelve una cadena codificada en UTF8 que corresponde al valor pasado.
 
 #### napi_get_value_string_utf16
 
@@ -1684,13 +1684,13 @@ napi_status napi_get_value_string_utf16(napi_env env,
                                         size_t* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: `napi_value` representing JavaScript string.
-- `[in] buf`: Buffer to write the UTF16-LE-encoded string into. If NULL is passed in, the length of the string (in 2-byte code units) is returned.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: `napi_value` que representa una cadena de JavaScript.
+- `[in] buf`: Buffer para escribir la cadena codificada en UTF16-LE. Si se pasa NULL, se devuelve la longitud de la cadena (en unidades de código de 2 bytes).
 - `[in] bufsize`: Size of the destination buffer. When this value is insufficient, the returned string will be truncated.
 - `[out] result`: Number of 2-byte code units copied into the buffer, excluding the null terminator.
 
-Returns `napi_ok` if the API succeeded. If a non-`String` `napi_value` is passed in it returns `napi_string_expected`.
+Returns `napi_ok` if the API succeeded. Si se pasa un `napi_value` no `String`, devuelve `napi_string_expected`.
 
 This API returns the UTF16-encoded string corresponding the value passed in.
 
