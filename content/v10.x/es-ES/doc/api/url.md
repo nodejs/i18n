@@ -172,11 +172,11 @@ Obtiene y establece la porción del hostname de la URL. La diferencia clave entr
 ```js
 const myURL = new URL('https://example.org:81/foo');
 console.log(myURL.hostname);
-// Prints example.org
+// Imprime example.org
 
 myURL.hostname = 'example.com:82';
 console.log(myURL.href);
-// Prints https://example.com:81/foo
+// Imprime https://example.com:81/foo
 ```
 
 Invalid hostname values assigned to the `hostname` property are ignored.
