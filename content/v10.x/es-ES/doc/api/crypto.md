@@ -1143,9 +1143,9 @@ Verifica los datos dados usando los `object` y `signature` dados. El argumento `
 
 El argumento `signature` es la firma previamente calculada para los datos, en el `signatureFormat` que puede ser `'latin1'`, `'hex'` o `'base64'`. Si un `signatureFormat` es especificado, la `signature` se espera que sea una string; de no ser así `signature` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-El objeto `verify` no puede ser usado nuevamente después de que `verify.verify()` ha sido llamado. Multiple calls to `verify.verify()` will result in an error being thrown.
+El objeto `verify` no puede ser usado nuevamente después de que `verify.verify()` ha sido llamado. Llamadas múltiples a `verify.verify()` van a resultar en un error.
 
-## `crypto` module methods and properties
+## `crypto` métodos y propiedades del módulo
 
 ### crypto.constants
 
@@ -1153,7 +1153,7 @@ El objeto `verify` no puede ser usado nuevamente después de que `verify.verify(
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Devuelve: {Object} Un objeto contiene constantes usadas comúnmente para cifrado y operaciones relacionadas con la seguridad. Las constantes especificadas actualmente definidas son descritas en [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1162,7 +1162,7 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+La codificación predeterminada para usar para funciones que pueden tomar strings o [buffers][`Buffer`]. El valor por defecto es `'buffer'`, que hace que los métodos por defecto sean objetos [`Buffer`][].
 
 The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
 
