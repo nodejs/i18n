@@ -992,11 +992,11 @@ async function print(readable) {
 print(fs.createReadStream('file')).catch(console.log);
 ```
 
-Si el bucle termina con un `break` o un `throw`, el stream será destruido. In other terms, iterating over a stream will consume the stream fully. The stream will be read in chunks of size equal to the `highWaterMark` option. In the code example above, data will be in a single chunk if the file has less then 64kb of data because no `highWaterMark` option is provided to [`fs.createReadStream()`][].
+Si el bucle termina con un `break` o un `throw`, el stream será destruido. En otros términos, iterar sobre una secuencia consumirá completamente el stream. El stream será leído en fragmentos de igual tamaño a la opción `highWaterMark`. En el ejemplo de código anterior, los datos van a estar en un solo fragmento si el archivo tiene menos que 64kb de datos porque no se proporciona ninguna opción `highWaterMark` a [`fs.createReadStream()`][].
 
-### Duplex and Transform Streams
+### Streams Duplex y de Transformación
 
-#### Class: stream.Duplex
+#### Clase: stream.Duplex
 
 <!-- YAML
 added: v0.9.4
