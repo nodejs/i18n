@@ -867,7 +867,7 @@ El método `readable.unpipe()` separa un stream `Writable` que fue adjuntado ant
 
 Si el `destination` no es especificado, entonces *todos* los pipes son separados.
 
-If the `destination` is specified, but no pipe is set up for it, then the method does nothing.
+Si el `destination` es especificado, pero no se configura ningún pipe para él. entonces el método no hace nada.
 
 ```js
 const fs = require('fs');
