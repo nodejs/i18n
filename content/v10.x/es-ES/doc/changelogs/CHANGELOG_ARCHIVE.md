@@ -427,21 +427,21 @@ https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 * src: remover al HandleScope global que ocultó fugas de memoria (Ben Noordhuis)
 * tls: añadir soporte de cifrados ECDH (Erik Dubbelboer)
 * tls: no conducir por defecto hacia el nombre de servidor "localhost" (Fedor Indutny)
-* tls: more accurate wrapping of connecting socket (Fedor Indutny)
+* tls: envolver de forma más precisa a los sockets en conexión (Fedor Indutny)
 
 <a id="0.11.8"></a>
 
-## 2013.10.30, Version 0.11.8 (Unstable)
+## 2013.10.30, Versión 0.11.8 (Inestable)
 
 https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 
-* uv: Upgrade to v0.11.14
-* v8: upgrade 3.21.18.3
-* assert: indicate if exception message is generated (Glen Mailer)
-* buffer: add buf.toArrayBuffer() API (Trevor Norris)
-* cluster: fix premature 'disconnect' event (Ben Noordhuis)
-* crypto: add SPKAC support (Jason Gerfen)
-* debugger: count space for line numbers correctly (Alex Kocharin)
+* uv: Actualizar a v0.11.14
+* v8: actualizar 3.21.18.3
+* assert: indicar si se genera mensaje de excepción (Glen Mailer)
+* buffer: añadir API de buf.toArrayBuffer() (Trevor Norris)
+* cluster: reparar evento "disconnect" prematuro (Ben Noordhuis)
+* crypto: añadir soporte SPKAC (Jason Gerfen)
+* debugger: contar correctamente el espacio para los números de línea (Alex Kocharin)
 * debugger: make busy loops SIGUSR1-interruptible (Ben Noordhuis)
 * debugger: repeat last command (Alex Kocharin)
 * debugger: show current line, fix for [#6150](https://github.com/joyent/node/issues/6150) (Alex Kocharin)
