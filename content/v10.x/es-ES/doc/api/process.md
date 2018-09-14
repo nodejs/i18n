@@ -1308,7 +1308,7 @@ El mensaje pasa a través de la serialización y análisis. El mensaje resultant
 added: v2.0.0
 -->
 
-* `id` {string|number} Un nombre de grupo o un ID
+* `id` {string|number} Un nombre o ID de grupo
 
 El método `process.setegid()` establece la identidad del grupo efectivo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
@@ -1332,7 +1332,7 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v2.0.0
 -->
 
-* `id` {string|number} Un nombre de usuario o ID
+* `id` {string|number} Un nombre o ID de usuario
 
 El método `process.seteuid()` establece la identidad efectiva del usuario del proceso. (Vea seteuid(2).) El `id` puede ser pasado como un ID numérico o como una string de nombre de usuario. If a username is specified, the method blocks while resolving the associated numeric ID.
 
@@ -1356,7 +1356,7 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.1.31
 -->
 
-* `id` {string|number} El nombre de grupo o ID
+* `id` {string|number} El nombre o ID del grupo
 
 El método `process.setgid()` establece la identidad del grupo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
@@ -1424,7 +1424,7 @@ Si se establece dicha función, el evento [`'uncaughtException'`][] no será emi
 
 To unset the capture function, `process.setUncaughtExceptionCapture(null)` may be used. El llamar a este método con un argumento no `null` mientras que se establece otra función de captura, arrojará un error.
 
-Utilizar esta función es mutuamente exclusivo con el uso del módulo [`domain`][] incorporado obsoleto.
+Utilizar esta función es mutuamente exclusivo con el uso del módulo incorporado [`domain`][] desaprobado.
 
 ## process.stderr
 
@@ -1480,16 +1480,16 @@ process.stdin.pipe(process.stdout);
 1. Son usados internamente por [`console.log()`][] y [`console.error()`][], respectivamente.
 2. No pueden cerrarse (se arrojará [`end()`][]).
 3. Nunca emitirán el evento [`'finish'`][].
-4. Las escrituras pueden ser sincrónicas, dependiendo en cuál stream se esté conectado y si el sistema es Windows o POSIX: 
+4. Las escrituras pueden ser sincrónicas, dependiendo a qué esté conectado el stream y si el sistema es Windows o POSIX: 
   * Archivos: *sincrónicos* en Windows y POSIX
   * TTYs (Terminales): *asincrónicos* en Windows, *sincrónicos* en POSIX
   * Pipes (y sockets): *sincrónicos* en Windows, *asincrónicos* en POSIX
 
-Estos comportamientos son parcialmente por razones históricas, y cambiarlos crearía una incompatibilidad hacia atrás, pero también son esperados por algunos usuarios.
+Estos comportamientos se deben parcialmente a razones históricas, y cambiarlos crearía una incompatibilidad hacia atrás, pero también son esperados por algunos usuarios.
 
 Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Vea [`process.exit()`][] para mayor información.
 
-***Advertencia***: Las escrituras sincrónicas bloquean el bucle del evento hasta que se complete la escritura. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. Esto puede no ser un problema al escribirle a una sesión terminal interactiva, pero considere esto particularmente cuidadoso al hacer el registro de producción para los streams de salida del proceso.
+***Advertencia***: Las escrituras sincrónicas bloquean el bucle del evento hasta que se complete la escritura. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. Esto puede no ser un problema al escribirle a una sesión terminal interactiva, pero considérelo de una forma particularmente cuidadosa al hacer el registro de producción para los streams de salida del proceso.
 
 Para verificar si un stream está conectado a un contexto [TTY](tty.html#tty_tty), verifique la propiedad `isTTY`.
 
