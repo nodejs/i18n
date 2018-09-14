@@ -410,9 +410,9 @@ https://github.com/nodejs/node/commit/66931791f06207d1cdfea5ec1529edf3c94026d3
 
 https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 
-* uv: upgrade to v0.11.15 (Timothy J Fontaine)
-* v8: upgrade to 3.22.24.5 (Timothy J Fontaine)
-* buffer: remove warning when no encoding is passed (Trevor Norris)
+* uv: actualizar a v0.11.15 (Timothy J Fontaine)
+* v8 actualizar a 3.22.24.5 (Timothy J Fontaine)
+* buffer: remover advertencia cuando no se pasa ningún código (Trevor Norris)
 * build: make v8 use random seed for hash tables (Ben Noordhuis)
 * crypto: build with shared openssl without NPN (Ben Noordhuis)
 * crypto: update root certificates (Ben Noordhuis)
