@@ -336,20 +336,20 @@ https://github.com/nodejs/node/commit/7d6b8db40f32e817ff145b7cfe6b3aec3179fba7
 * tls: reparar colapso en SNICallback (Fedor Indutny)
 * tls: introducir `newSession` asincrónica (Fedor Indutny)
 * util: mostrar valores significativos para los primitivos envueltos (Nathan Rajlich)
-* vm: don't copy Proxy object from parent context (Ben Noordhuis)
-* windows: make stdout/sterr pipes blocking (Alexis Campailla)
-* zlib: add sync versions for convenience methods (Nikolai Vavilov)
+* vm: no copiar objeto Proxi desde el contexto padre (Ben Noordhuis)
+* windows: hacer que las pipes stdout/sterr bloqueen (Alexis Campailla)
+* zlib: añadir versiones sincrónicas para métodos de conveniencia (Nikolai Vavilov)
 
 <a id="0.11.11"></a>
 
-## 2014.01.29, Version 0.11.11 (Unstable)
+## 2014.01.29, Versión 0.11.11 (Inestable)
 
 https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 
-* v8: Upgrade to 3.22.24.19
-* http_parser: Upgrade to 2.2.1
-* openssl: Upgrade to 1.0.1f
-* uv: Upgrade to 0.11.18
+* v8: Actualizar a 3.22.24.19
+* http_parser: Actualizar a 2.2.1
+* openssl: Actualizar a 1.0.1f
+* uv: Actualizar a 0.11.18
 * async-listener: revamp of subsystem (Trevor Norris)
 * node: do not ever close stdio (Fedor Indutny)
 * http: use writev on chunked encoding (Trevor Norris)
