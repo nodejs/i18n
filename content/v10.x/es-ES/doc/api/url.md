@@ -269,49 +269,49 @@ Obtiene y establece la porción del puerto de la URL.
 ```js
 const myURL = new URL('https://example.org:8888');
 console.log(myURL.port);
-// Prints 8888
+// Imprime 8888
 
-// Default ports are automatically transformed to the empty string
+// Puertos predeterminados son automáticamente transformados a la string vacía
 // (HTTPS protocol's default port is 443)
 myURL.port = '443';
 console.log(myURL.port);
-// Prints the empty string
+// Imprime la string vacía
 console.log(myURL.href);
-// Prints https://example.org/
+// Imprime https://example.org/
 
 myURL.port = 1234;
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 console.log(myURL.href);
-// Prints https://example.org:1234/
+// Imprime https://example.org:1234/
 
-// Completely invalid port strings are ignored
+// Puertos de string completamente inválidos son ignorados
 myURL.port = 'abcd';
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 
-// Leading numbers are treated as a port number
+// Los números iniciales son tratados como un número de puerto
 myURL.port = '5678abcd';
 console.log(myURL.port);
-// Prints 5678
+// Imprime 5678
 
-// Non-integers are truncated
+// Los no-enteros son truncados
 myURL.port = 1234.5678;
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 
-// Out-of-range numbers which are not represented in scientific notation
-// will be ignored.
-myURL.port = 1e10; // 10000000000, will be range-checked as described below
+// Números fuera de rango que no estén representados en notación científica
+// serán ignorados.
+myURL.port = 1e10; // 10000000000, se verificará el rango como se describe a continuación
 console.log(myURL.port);
-// Prints 1234
+// Imprime 1234
 ```
 
-The port value may be set as either a number or as a string containing a number in the range `0` to `65535` (inclusive). Setting the value to the default port of the `URL` objects given `protocol` will result in the `port` value becoming the empty string (`''`).
+El valor del puerto puede ser establecido ya sea como un número o como una string conteniendo un número en el rango de `0` a `65535` (inclusivo). Establecer el valor al puerto predeterminado de los objetos `URL` dado el `protocol`, resultará en el valor del `port` convirtiéndose en una string vacía (`''`).
 
-Upon assigning a value to the port, the value will first be converted to a string using `.toString()`.
+Al asignar un valor al puerto, el valor se convertirá primero en una string usando `.toString()`.
 
-If that string is invalid but it begins with a number, the leading number is assigned to `port`. Otherwise, or if the number lies outside the range denoted above, it is ignored.
+Si esa string es inválida pero comienza con un número, el número inicial es asignado a `port`. Otherwise, or if the number lies outside the range denoted above, it is ignored.
 
 Note that numbers which contain a decimal point, such as floating-point numbers or numbers in scientific notation, are not an exception to this rule. Leading numbers up to the decimal point will be set as the URL's port, assuming they are valid:
 
