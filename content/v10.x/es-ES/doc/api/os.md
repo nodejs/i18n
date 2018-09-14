@@ -1154,27 +1154,24 @@ Si se encuentran en el sistema operativo, las siguientes constantes son exportad
   </tr>
   <tr>
     <td><code>RTLD_GLOBAL</code></td>
-    <td>Symbols defined by the library will be made available for symbol
-    resolution of subsequently loaded libraries.</td>
+    <td>Los símbolos definidos por la librería estarán disponibles para la resolución de símbolos de librerías subsecuentemente cargadas.</td>
   </tr>
   <tr>
     <td><code>RTLD_LOCAL</code></td>
-    <td>The converse of `RTLD_GLOBAL`. This is the default behavior if neither
-    flag is specified.</td>
+    <td>La conversa de `RTLD_GLOBAL`. Este es el compartamiento predeterminado si ningún parámetro es especificado.</td>
   </tr>
   <tr>
     <td><code>RTLD_DEEPBIND</code></td>
-    <td>Make a self-contained library use its own symbols in preference to
-    symbols from previously loaded libraries.</td>
+    <td>Hace que una librería auto contenida use sus propio símbolos de preferencia a símbolos de librerías cargadas previamente.</td>
   </tr>
 </table>
 
-### libuv Constants
+### constantes libuv
 
 <table>
   <tr>
-    <th>Constant</th>
-    <th>Description</th>
+    <th>Constantes</th>
+    <th>Descripción</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
