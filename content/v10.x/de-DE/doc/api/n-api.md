@@ -371,7 +371,7 @@ NODE_EXTERN napi_status napi_create_type_error(napi_env env,
 
 Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
-Diese API gibt einen JavaScript-`Schreibfehler` mit dem angegebenen Text aus.
+Diese API gibt einen JavaScript-`TypeError` mit dem angegebenen Text aus.
 
 #### napi_create_range_error
 
