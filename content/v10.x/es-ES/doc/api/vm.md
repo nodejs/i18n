@@ -8,9 +8,9 @@
 
 El módulo `vm` proporciona APIs para compilar y ejecutar códigos dentro de los contextos de la Máquina Virtual V8.
 
-JavaScript code can be compiled and run immediately or compiled, saved, and run later.
+El código JavaScript puede ser compilado y ejecutado inmediatamente o compilado, guardado y ejecutado después.
 
-A common use case is to run the code in a sandboxed environment. The sandboxed code uses a different V8 Context, meaning that it has a different global object than the rest of the code.
+Un caso de uso común es ejecutar el código en un entorno de espacio aislado. El código de espacio aislado utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
 
 One can provide the context by ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) a sandbox object. The sandboxed code treats any property on the sandbox like a global variable. Any changes on global variables caused by the sandboxed code are reflected in the sandbox object.
 
