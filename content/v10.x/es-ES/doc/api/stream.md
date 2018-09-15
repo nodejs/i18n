@@ -1028,10 +1028,10 @@ added: v0.9.4
 
 Los streams de transformación son streams [`Duplex`][] donde la salida es de alguna manera relacionada con la entrada. Como todos los streams [`Duplex`][], los streams `Transform` implementan tanto la interfaz [`Readable`][] como la interfaz [`Writable`][].
 
-Examples of `Transform` streams include:
+Ejemplos de streams `Transform` incluyen:
 
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
 
 ##### transform.destroy([error])
 
@@ -1039,7 +1039,7 @@ Examples of `Transform` streams include:
 added: v8.0.0
 -->
 
-Destroy the stream, and emit `'error'`. After this call, the transform stream would release any internal resources. implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback). The default implementation of `_destroy()` for `Transform` also emit `'close'`.
+Destruye el stream, luego emite `'error'`. Después de esta llamada, el stream de transformación liberaría cualquier recurso interno. los implementadores no deberían sobreescribir este método, en su lugar implementa [`readable._destroy()`](#stream_readable_destroy_err_callback). La implementación predeterminada de `_destroy()` para `Transform` también emite `'close'`.
 
 ### stream.finished(stream, callback)
 
@@ -1047,10 +1047,10 @@ Destroy the stream, and emit `'error'`. After this call, the transform stream wo
 added: v10.0.0
 -->
 
-* `stream` {Stream} A readable and/or writable stream.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `stream` {Stream} Un stream legible y/o escribible.
+* `callback` {Function} Una función callback que toma un argumento error opcional.
 
-A function to get notified when a stream is no longer readable, writable or has experienced an error or a premature close event.
+Una función para ser notificado cuando un stream ya no es legible, escribible, ha experimentado un evento error o un evento de cierre prematuro.
 
 ```js
 const { finished } = require('stream');
