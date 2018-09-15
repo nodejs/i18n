@@ -740,10 +740,10 @@ Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de l
 
 * `input` {ArrayBuffer|DataView|TypedArray} Una instancia `ArrayBuffer`, `DataView` o `Typed Array` conteniendo los datos codificados.
 * `options` {Object} 
-  * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
-* Returns: {string}
+  * `stream` {boolean} `true` si pedazos adicionales de datos son esperados. **Predeterminado:** `false`.
+* Devuelve: {string}
 
-Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
+Decodifica el `input` y devuelve un string. Si `options.stream` es `true`, cualquier secuencia de bytes incompleta que ocurra al final del `input` son almacenadas internamente y emitidas después de la siguiente llamada a `textDecoder.decode()`.
 
 If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
 
