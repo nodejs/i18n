@@ -882,9 +882,9 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Returns `true` if the value is a boolean object, e.g. created by `new Boolean()`.
+Devuelve `true` si el valor es un objeto booleano, p. ej. creado por `new Boolean()`.
 
-For example:
+Por ejemplo:
 
 ```js
 util.types.isBooleanObject(false);  // Devuelve false
@@ -901,19 +901,19 @@ util.types.isBooleanObject(Boolean(true)); // Devuelve false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`DataView`][] instance.
+Devuelve `true` si el valor es una instancia [`DataView`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
 const ab = new ArrayBuffer(20);
-util.types.isDataView(new DataView(ab));  // Returns true
-util.types.isDataView(new Float64Array());  // Returns false
+util.types.isDataView(new DataView(ab));  // Devuelve true
+util.types.isDataView(new Float64Array());  // Devuelve false
 ```
 
-See also [`ArrayBuffer.isView()`][].
+Ver también [`ArrayBuffer.isView()`][].
 
 ### util.types.isDate(value)
 
@@ -921,14 +921,14 @@ See also [`ArrayBuffer.isView()`][].
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Date`][] instance.
+Devuelve `true` si el valor es una instancia [`Date`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isDate(new Date());  // Returns true
+util.types.isDate(new Date());  // Devuelve true
 ```
 
 ### util.types.isExternal(value)
@@ -937,9 +937,9 @@ util.types.isDate(new Date());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a native `External` value.
+Devuelve `true` si el valor es un valor `External` nativo.
 
 ### util.types.isFloat32Array(value)
 
@@ -947,16 +947,16 @@ Returns `true` if the value is a native `External` value.
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Float32Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Float32Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isFloat32Array(new ArrayBuffer());  // Returns false
-util.types.isFloat32Array(new Float32Array());  // Returns true
-util.types.isFloat32Array(new Float64Array());  // Returns false
+util.types.isFloat32Array(new ArrayBuffer());  // Devuelve false
+util.types.isFloat32Array(new Float32Array());  // Devuelve  true
+util.types.isFloat32Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isFloat64Array(value)
@@ -965,16 +965,16 @@ util.types.isFloat32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Float64Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Float64Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isFloat64Array(new ArrayBuffer());  // Returns false
-util.types.isFloat64Array(new Uint8Array());  // Returns false
-util.types.isFloat64Array(new Float64Array());  // Returns true
+util.types.isFloat64Array(new ArrayBuffer());  // Devuelve false
+util.types.isFloat64Array(new Uint8Array());  // Devuelve  false
+util.types.isFloat64Array(new Float64Array());  // Devuelve true
 ```
 
 ### util.types.isGeneratorFunction(value)
@@ -983,15 +983,15 @@ util.types.isFloat64Array(new Float64Array());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a generator function. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Devuelve `true` si el valor es una función del generador. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isGeneratorFunction(function foo() {});  // Returns false
-util.types.isGeneratorFunction(function* foo() {});  // Returns true
+util.types.isGeneratorFunction(function foo() {});  // Devuelve false
+util.types.isGeneratorFunction(function* foo() {});  // Devuelve true
 ```
 
 ### util.types.isGeneratorObject(value)
@@ -1000,7 +1000,7 @@ util.types.isGeneratorFunction(function* foo() {});  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the value is a generator object as returned from a built-in generator function. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
@@ -1295,7 +1295,7 @@ util.types.isTypedArray(new Uint8Array());  // Returns true
 util.types.isTypedArray(new Float64Array());  // Returns true
 ```
 
-See also [`ArrayBuffer.isView()`][].
+Ver también [`ArrayBuffer.isView()`][].
 
 ### util.types.isUint8Array(value)
 
