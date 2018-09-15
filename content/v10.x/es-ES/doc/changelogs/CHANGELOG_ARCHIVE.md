@@ -548,10 +548,10 @@ https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 * v8: Actualizar a v3.20.2
 * c-ares: Actualizar a piscisaureus/cares@805d153
 * timers: setImmediate procesa la cola completa en cada turno (Ben Noorhuis)
-* http: Add agent.get/request methods (isaacs)
-* http: Proper KeepAlive behavior (isaacs)
-* configure: fix the --without-ssl option (Nathan Rajlich)
-* buffer: propagate originating parent (Trevor Norris)
+* http: Añadir métodos agent.get/request (isaacs)
+* http: Comportamiento adecuado de KeepAlive (isaacs)
+* configure: reparar la opción --without-ssl (Nathan Rajlich)
+* buffer: propagar al padre que lo origina (Trevor Norris)
 * tls_wrap: return Error not throw for missing cert (Timothy J Fontaine)
 * src: enable native v8 typed arrays (Ben Noordhuis)
 * stream: objectMode transform should allow falsey values (Jeff Barczewski)
