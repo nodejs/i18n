@@ -64,7 +64,7 @@ $ git config user.name "J. Random User"
 $ git config user.email "j.random.user@example.com"
 ```
 
-Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails) para que tus commits se asocien correctamente con tu cuenta y serás promovido a Contributor una vez que se haya descargado tu primer commit.
+Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails), de modo que tus commits se asocien correctamente con tu cuenta y seas promovido a Contribuyente una vez que se haya descargado tu primer commit.
 
 ### Paso 2: Branch
 
@@ -80,15 +80,15 @@ $ git checkout -b my-branch -t upstream/master
 
 La gran mayoría de las Pull Requests abiertas en el repositorio `nodejs/node` incluye cambios en uno o más de los siguientes:
 
-     - the C/C++ code contained in the `src` directory
-     - the JavaScript code contained in the `lib` directory
-     - the documentation in `doc/api`
-     - tests within the `test` directory.
+     - el código C/C ++ contenido en el directorio `src`
+     - el código JavaScript contenido en el directorio `lib`
+     - la documentación en `doc / api`
+     - pruebas dentro del directorio `test`.
     
 
 Si está modificando el código, por favor asegúrese de ejecutar `make lint` de vez en cuando para asegurarse de que los cambios sigan la guía de estilo del código de Node.js.
 
-Cualquier documentación que escriba (incluidos los comentarios de código y la documentación de API) debe seguir la [Guía de Estilo](../../STYLE_GUIDE.md). Las muestras de código incluidos en los documentos API también se verificarán cuando se ejecute `make lint` (o `vcbuild.bat lint` en Windows).
+Cualquier documentación que escriba (incluidos los comentarios de código y la documentación de API) debe seguir la [Guía de Estilo](../../STYLE_GUIDE.md). Las muestras de código incluidos en los documentos API también se verificarán cuando se ejecute `make lint` (o `vcbuild.bat lint`, en Windows).
 
 Para contribuir con el código de C++, es posible que desee consultar la [Guía de Estilo de C++](../../../CPP_STYLE_GUIDE.md).
 
