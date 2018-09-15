@@ -32,9 +32,9 @@ Por la naturaleza misma de cómo [`throw`] [] funciona en JavaScript, casi nunca
 
 Cerrar el proceso es la forma más segura de responder a un error arrojado. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado por alguien más.
 
-La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y dejando de escuchar por nuevas solicitudes en ese worker.
+La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y deteniendo la escucha de nuevas solicitudes en ese worker.
 
-Así, el uso del `dominio` se hace en conjunto al modulo cluster debido a que el proceso principal puede bifurcar un nuevo trabajador cuando un trabajador encuentra un error. Para los programas de Node.js que escalan en múltiples máquinas, el proxy final o servicio de registro pude registrar la falla y reaccionar de acuerdo a su naturaleza.
+De esta forma, el uso del `domain` se hace en conjunto al módulo clúster, ya que el proceso principal puede bifurcar un nuevo worker cuando un worker encuentra un error. Para los programas de Node.js que escalan en múltiples máquinas, el proxy final o servicio de registro pueden registrar la falla y reaccionar de acuerdo a su naturaleza.
 
 Por ejemplo, no es una buena idea:
 
@@ -44,12 +44,13 @@ Por ejemplo, no es una buena idea:
 const d = require('domain').create();
 d.on('error', (er) => {
   // ¡El error no colisionará el proceso, hará algo peor!
-  // Aunque hemos prevenido el proceso de reinicio abrupto, aún estamos filtrando // recursos como locos por si esto llegase a suceder.
+  // Aunque hemos prevenido el proceso de reinicio abrupto, aún estamos filtrando
+  // recursos como locos por si esto llegase a suceder.
   // ¡Esto no es mejor que process.on('uncaughtException')!
-  console.log(`error, pero oh bueno ${er.message}`);
+  console.log(`error, but oh well ${er.message}`);
 });
 d.run(() => {
-  requiere('http').createServer((req, res) => {
+  require('http').createServer((req, res) => {
     handleRequest(req, res);
   }).listen(PORT);
 });
