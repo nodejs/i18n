@@ -797,9 +797,9 @@ La codificación soportada por la instancia `TextEncoder`. Siempre configurado p
 added: v10.0.0
 -->
 
-`util.types` proporciona un número de chequeos de tipeo para diferentes tipos de objetos incorporados. A diferencia de `instanceof` o `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
+`util.types` proporciona un número de chequeos de tipo para diferentes clases de objetos incorporados. A diferencia de `instanceof` o `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
 
-The result generally does not make any guarantees about what kinds of properties or behavior a value exposes in JavaScript. They are primarily useful for addon developers who prefer to do type checking in JavaScript.
+El resultado generalmente no da ninguna garantía sobre qué tipos de propiedades o comportamientos expone un valor en JavaScript. Ellos son principalmente útiles para desarrolladores de complementos quienes prefieren hacer el chequeo de tipo en JavaScript.
 
 ### util.types.isAnyArrayBuffer(value)
 
@@ -807,7 +807,7 @@ The result generally does not make any guarantees about what kinds of properties
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] or [`SharedArrayBuffer`][] instance.
 
@@ -1573,7 +1573,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
 
@@ -1581,11 +1581,11 @@ Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `fals
 const util = require('util');
 
 util.isError(new Error());
-// Returns: true
+// Devuelve: true
 util.isError(new TypeError());
-// Returns: true
+// Devuelve: true
 util.isError({ name: 'Error', message: 'an error occurred' });
-// Returns: false
+// Devuelve: false
 ```
 
 Note that this method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
@@ -1595,10 +1595,10 @@ const util = require('util');
 const obj = { name: 'Error', message: 'an error occurred' };
 
 util.isError(obj);
-// Returns: false
+// Devuelve: false
 obj[Symbol.toStringTag] = 'Error';
 util.isError(obj);
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isFunction(object)
@@ -1611,7 +1611,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
 
@@ -1622,11 +1622,11 @@ function Foo() {}
 const Bar = () => {};
 
 util.isFunction({});
-// Returns: false
+// Devuelve: false
 util.isFunction(Foo);
-// Returns: true
+// Devuelve: true
 util.isFunction(Bar);
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isNull(object)
@@ -1664,7 +1664,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === undefined || value === null` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
 
@@ -1689,7 +1689,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'number'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
 
@@ -1716,7 +1716,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value !== null && typeof value === 'object'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). Otherwise, returns `false`.
 
@@ -1832,7 +1832,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
 
