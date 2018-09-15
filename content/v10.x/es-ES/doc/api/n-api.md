@@ -2057,18 +2057,18 @@ Las propiedades en JavaScript están representadas como una dupla de una clave y
 - Entero indexado: un valor de índica representado por `uint32_t`
 - Valor de JavaScript: estos están representados por `napi_value` en N-API. Esto puede ser un `napi_value` que represente una `String`, un `Number` o un `Symbol`.
 
-N-API values are represented by the type `napi_value`. Any N-API call that requires a JavaScript value takes in a `napi_value`. However, it's the caller's responsibility to make sure that the `napi_value` in question is of the JavaScript type expected by the API.
+Los valores de N-API son representados por el tipo `napi_value`. Cualquier llamada N-API requiere que un valor de JavaScript se tome en un `napi_value`. Sin embargo, es responsabilidad del llamador asegurarse de que el `napi_value` en cuestión sea del tipo de JavaScript esperado por la API.
 
-The APIs documented in this section provide a simple interface to get and set properties on arbitrary JavaScript objects represented by `napi_value`.
+Las APIs documentadas en esta sección proporcionan una interfaz simple para obtener y establecer propiedades sobre objetos arbitrarios de JavaScript, representados por `napi_value`.
 
-For instance, consider the following JavaScript code snippet:
+Por ejemplo, considere el siguiente fragmento de código JavaScript:
 
 ```js
 const obj = {};
 obj.myProp = 123;
 ```
 
-The equivalent can be done using N-API values with the following snippet:
+El equivalente puede hacerse utilizando valores N-API con el siguiente fragmento:
 
 ```C
 napi_status status = napi_generic_failure;
@@ -2078,7 +2078,7 @@ napi_value obj, value;
 status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// Create a napi_value for 123
+// Crea un napi_value para 123
 status = napi_create_int32(env, 123, &value);
 if (status != napi_ok) return status;
 
@@ -2087,14 +2087,14 @@ status = napi_set_named_property(env, obj, "myProp", value);
 if (status != napi_ok) return status;
 ```
 
-Indexed properties can be set in a similar manner. Consider the following JavaScript snippet:
+Las propiedades indexadas pueden establecerse de manera similar. Considere el siguiente fragmento de JavaScript:
 
 ```js
 const arr = [];
 arr[123] = 'hello';
 ```
 
-The equivalent can be done using N-API values with the following snippet:
+El equivalente puede hacerse utilizando valores N-API con el siguiente fragmento:
 
 ```C
 napi_status status = napi_generic_failure;
@@ -2104,7 +2104,7 @@ napi_value arr, value;
 status = napi_create_array(env, &arr);
 if (status != napi_ok) return status;
 
-// Create a napi_value for 'hello'
+// Crea un napi_value para 'hello'
 status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &value);
 if (status != napi_ok) return status;
 
@@ -2113,7 +2113,7 @@ status = napi_set_element(env, arr, 123, value);
 if (status != napi_ok) return status;
 ```
 
-Properties can be retrieved using the APIs described in this section. Consider the following JavaScript snippet:
+Las propiedades pueden recuperarse utilizando las APIs descritas en esta sección. Considere el siguiente fragmento de JavaScript:
 
 ```js
 const arr = [];
