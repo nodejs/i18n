@@ -1010,11 +1010,11 @@ changes:
 
 <!--type=class-->
 
-Duplex streams are streams that implement both the [`Readable`][] and [`Writable`][] interfaces.
+Los streams duplex son streams que implementan tanto la interfaz [`Readable`][] como la interfaz [`Writable`][].
 
-Examples of `Duplex` streams include:
+Ejemplos de un stream `Duplex` incluyen:
 
-* [TCP sockets](net.html#net_class_net_socket)
+* [sockets TCP](net.html#net_class_net_socket)
 * [zlib streams](zlib.html)
 * [crypto streams](crypto.html)
 
