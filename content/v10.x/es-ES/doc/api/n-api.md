@@ -1908,14 +1908,14 @@ napi_status napi_instanceof(napi_env env,
                             bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] object`: The JavaScript value to check.
-- `[in] constructor`: The JavaScript function object of the constructor function to check against.
-- `[out] result`: Boolean that is set to true if `object instanceof constructor` is true.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] object`: El valor de JavaScript a verificar.
+- `[in] constructor`: El objeto de la función de JavaScript de la función constructor contra la que se va a comprobar.
+- `[out] result`: Booleano que se establece true si `object instanceof constructor` es true.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API represents invoking the `instanceof` Operator on the object as defined in [Section 12.10.4](https://tc39.github.io/ecma262/#sec-instanceofoperator) of the ECMAScript Language Specification.
+Esta API representa la invocación del operador `instanceof` sobre el objeto tal como se define en la [Sección 12.10.4](https://tc39.github.io/ecma262/#sec-instanceofoperator) de las Especificaciones del Lenguaje ECMAScript.
 
 ### napi_is_array
 
@@ -1927,13 +1927,13 @@ added: v8.0.0
 napi_status napi_is_array(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given object is an array.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a verificar.
+- `[out] result`: Si el objeto dado es un arreglo.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API represents invoking the `IsArray` operation on the object as defined in [Section 7.2.2](https://tc39.github.io/ecma262/#sec-isarray) of the ECMAScript Language Specification.
+Esta API representa la invocación de la operación `IsArray` sobre el objeto tal como se define en la [Sección 7.2.2](https://tc39.github.io/ecma262/#sec-isarray) de las Especificaciones del Lenguaje ECMAScript.
 
 ### napi_is_arraybuffer
 
@@ -1945,7 +1945,7 @@ added: v8.0.0
 napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] value`: The JavaScript value to check.
 - `[out] result`: Whether the given object is an `ArrayBuffer`.
 
