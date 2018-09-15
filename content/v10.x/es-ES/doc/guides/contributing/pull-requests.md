@@ -113,9 +113,9 @@ Un buen mensaje de commit debe describir qué cambió y por qué.
   * estar completamente en minúsculas, con la excepción de los nombres propios, acrónimos y las palabras que hacen referencia al código, como nombres de funciones/variables
   * ir precedido del nombre del subsistema modificado y comenzar con un verbo imperativo. Comprueba la salida de `git log --oneline files/you/changed` para averiguar qué subsistemas tocan tus cambios.
     
-    Ejemplos:
+    Ejemplos (en inglés):
   
-  * `net: agrega la localAddress y el localPort al Socket`
+  * `net: add localAddress and localPort to Socket`
   
   * `src: fix typos in async_wrap.h`
 
@@ -133,7 +133,7 @@ Un buen mensaje de commit debe describir qué cambió y por qué.
 
 5. Si su commit introduce un cambio de ruptura(`semver-major`), debe contener una explicación sobre el motivo del cambio de ruptura, qué situación desencadenaría el cambio de ruptura y cuál es el cambio exacto.
 
-Muestra de mensaje de confirmación completo:
+Muestra de mensaje de confirmación completo (en inglés):
 
 ```txt
 subsystem: explain the commit in one line
