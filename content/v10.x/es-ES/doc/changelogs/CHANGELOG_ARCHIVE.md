@@ -558,19 +558,19 @@ https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 * slab_allocator: remover SlabAllocator (Trevor Norris)
 * crypto: reparar fuga de memoria en LoadPKCS12 (Fedor Indutny)
 * tls: exportar TLSSocket (Fedor Indutny)
-* zlib: allow changing of level and strategy (Brian White)
-* zlib: allow custom flush type for flush() (Brian White)
+* zlib: permitir el cambio de nivel y estrategia (Brian White)
+* zlib: permitir tipo de flujo personalizado para flush () (Brian White)
 
 <a id="0.11.3"></a>
 
-## 2013.06.26, Version 0.11.3 (Unstable)
+## 2013.06.26, Versión 0.11.3 (Inestable)
 
 https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 
-* uv: Upgrade to v0.11.5
-* c-ares: upgrade to 1.10.0
-* v8: upgrade to v3.19.13
-* punycode: update to v1.2.3 (Mathias Bynens)
+* uv: Actualizar a v0.11.5
+* c-ares: actualizar a 1.10.0
+* v8: actualizar a v3.19.13
+* punycode: actualizar a v1.2.3 (Mathias Bynens)
 * debugger: break on uncaught exception (Miroslav Bajtos)
 * child_process: emit 'disconnect' asynchronously (Ben Noordhuis)
 * dtrace: enable uv's probes if enabled (Timothy J Fontaine)
