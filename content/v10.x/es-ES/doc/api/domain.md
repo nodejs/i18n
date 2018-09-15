@@ -18,7 +18,7 @@ changes:
 
 > Estabilidad: 0 - Desactualización
 
-**Este módulo esta por convertirse en obsoleto**. Será completamente inútil una vez que el reemplazo de API haya finalizado. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Lo que si deben saber es la funcionalidad que los dominios ofrecen pueden recaer en ella para el momento de uso, pero deben esperar a tener o migrar a una solución diferente en el futuro.
+**Este módulo esta por convertirse en obsoleto**. Once a replacement API has been finalized, this module will be fully deprecated. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Lo que si deben saber es la funcionalidad que los dominios ofrecen pueden recaer en ella para el momento de uso, pero deben esperar a tener o migrar a una solución diferente en el futuro.
 
 Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja uno.
 
