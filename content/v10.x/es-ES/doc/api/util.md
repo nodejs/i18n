@@ -745,33 +745,33 @@ Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de l
 
 Decodifica el `input` y devuelve un string. Si `options.stream` es `true`, cualquier secuencia de bytes incompleta que ocurra al final del `input` son almacenadas internamente y emitidas después de la siguiente llamada a `textDecoder.decode()`.
 
-If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
+Si `textDecoder.fatal` es `true`, decodificar errores que ocurran puede resultar en un `TypeError` siendo arrojado.
 
 ### textDecoder.encoding
 
 * {string}
 
-The encoding supported by the `TextDecoder` instance.
+La codificación soportada por la instancia `TextDecoder`.
 
 ### textDecoder.fatal
 
 * {boolean}
 
-The value will be `true` if decoding errors result in a `TypeError` being thrown.
+El valor será `true` si la decodificación de errores resulta en un `TypeError` siendo arrojado.
 
 ### textDecoder.ignoreBOM
 
 * {boolean}
 
-The value will be `true` if the decoding result will include the byte order mark.
+El valor será `true` si el resultado de la decodificación va a incluir la marca de orden de bytes.
 
-## Class: util.TextEncoder
+## Clase: util.TextEncoder
 
 <!-- YAML
 added: v8.3.0
 -->
 
-An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextEncoder` API. All instances of `TextEncoder` only support UTF-8 encoding.
+Una implementación de la API `TextDecoder` del [Estándar de Decodificación WHATWG](https://encoding.spec.whatwg.org/). Todas las instancias de `TextEncoder` solo soportan codificación UTF-8.
 
 ```js
 const encoder = new TextEncoder();
@@ -780,10 +780,10 @@ const uint8array = encoder.encode('this is some data');
 
 ### textEncoder.encode([input])
 
-* `input` {string} The text to encode. **Default:** an empty string.
-* Returns: {Uint8Array}
+* `input` {string} El texto para codificar. **Predeterminado:** un string vacío.
+* Devuelve: {Uint8Array}
 
-UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
+UTF-8 codifica el string `input` y devuelve un `Uint8Array` conteniendo los bytes codificados.
 
 ### textEncoder.encoding
 
