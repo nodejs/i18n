@@ -513,18 +513,18 @@ https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 * stream: Buffer de circuito corto empuja al fluir (isaacs)
 * tls: manejar errores en el socket antes de liberarlo (Fedor Indutny)
 * util: reparar la revisión de isPrimitive (Trevor Norris)
-* util: isObject should always return boolean (Trevor Norris)
+* util: isObject siempre debe devolver un booleano (Trevor Norris)
 
 <a id="0.11.5"></a>
 
-## 2013.08.06, Version 0.11.5 (Unstable)
+## 2013.08.06, Versión 0.11.5 (Inestable)
 
 https://github.com/nodejs/node/commit/6f92da2dd106b0c63fde563284f83e08e2a521b5
 
-* v8: upgrade to 3.20.11
-* uv: upgrade to v0.11.7
-* buffer: return offset for end of last write (Trevor Norris)
-* build: embed the mdb_v8.so into the binary (Timothy J Fontaine)
+* v8: actualizar a 3.20.11
+* uv: actualizar a v0.11.7
+* buffer: devuelve offset para el final de la última lectura (Trevor Norris)
+* build: envolver el mdb_v8.so dentro del binario (Timothy J Fontaine)
 * build: fix --without-ssl build (Ben Noordhuis)
 * child_process: add 'shell' option to .exec() (Ben Noordhuis)
 * dgram: report send errors to cb, don't pass bytes (Ben Noordhuis)
