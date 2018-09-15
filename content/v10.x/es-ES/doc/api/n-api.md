@@ -2041,21 +2041,21 @@ napi_status napi_strict_equals(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] lhs`: El valor de JavaScript a verificar.
 - `[in] rhs`: El valor de JavaScript contra el que se va a comparar.
-- `[out] result`: Whether the two `napi_value` objects are equal.
+- `[out] result`: Si los dos objetos `napi_value` son iguales.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API represents the invocation of the Strict Equality algorithm as defined in [Section 7.2.14](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) of the ECMAScript Language Specification.
+Esta API representa la invocación del algoritmo de igualdad estricta tal como se define en la [Sección 7.2.14](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) de las Especificaciones del Lenguaje ECMAScript.
 
-## Working with JavaScript Properties
+## Trabajando con las Propiedades de JavaScript
 
-N-API exposes a set of APIs to get and set properties on JavaScript objects. Some of these types are documented under [Section 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+N-API expone un conjunto de APIs para obtener y estableces propiedades sobre objetos de JavaScript. Algunos de estos tipos están documentados bajo la [Sección 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) de las [Especificaciones del Lenguaje ECMAScript](https://tc39.github.io/ecma262/).
 
-Properties in JavaScript are represented as a tuple of a key and a value. Fundamentally, all property keys in N-API can be represented in one of the following forms:
+Las propiedades en JavaScript están representadas como una dupla de una clave y un valor. Fundamentalmente, todas las claves de las propiedades en N-API pueden ser representadas de alguna de las siguientes formas:
 
-- Named: a simple UTF8-encoded string
-- Integer-Indexed: an index value represented by `uint32_t`
-- JavaScript value: these are represented in N-API by `napi_value`. This can be a `napi_value` representing a `String`, `Number`, or `Symbol`.
+- Nombre: unas cadena simple codificada en UTF8
+- Entero indexado: un valor de índica representado por `uint32_t`
+- Valor de JavaScript: estos están representados por `napi_value` en N-API. Esto puede ser un `napi_value` que represente una `String`, un `Number` o un `Symbol`.
 
 N-API values are represented by the type `napi_value`. Any N-API call that requires a JavaScript value takes in a `napi_value`. However, it's the caller's responsibility to make sure that the `napi_value` in question is of the JavaScript type expected by the API.
 
