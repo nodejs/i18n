@@ -1010,15 +1010,15 @@ changes:
 
 <!--type=class-->
 
-Los streams duplex son streams que implementan tanto la interfaz [`Readable`][] como la interfaz [`Writable`][].
+Los streams dúplex son streams que implementan tanto la interfaz [`Readable`][] como la interfaz [`Writable`][].
 
 Ejemplos de un stream `Duplex` incluyen:
 
 * [sockets TCP](net.html#net_class_net_socket)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
 
-#### Class: stream.Transform
+#### Clase: stream.Transform
 
 <!-- YAML
 added: v0.9.4
@@ -1026,7 +1026,7 @@ added: v0.9.4
 
 <!--type=class-->
 
-Transform streams are [`Duplex`][] streams where the output is in some way related to the input. Like all [`Duplex`][] streams, `Transform` streams implement both the [`Readable`][] and [`Writable`][] interfaces.
+Los streams de transformación son streams [`Duplex`][] donde la salida es de alguna manera relacionada con la entrada. Como todos los streams [`Duplex`][], los streams `Transform` implementan tanto la interfaz [`Readable`][] como la interfaz [`Writable`][].
 
 Examples of `Transform` streams include:
 
