@@ -168,7 +168,7 @@ Esto garantiza que su branch de trabajo tenga los últimos cambios del maestro `
 
 ### Paso 6: Prueba
 
-Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
+Las correcciones de errores y las características siempre deben venir con las pruebas. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
 
 The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
 
