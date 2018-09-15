@@ -507,12 +507,12 @@ https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 * http: los encabezados removidos se quedan removidos (James Halliday)
 * http,timers: mejorar rendimiento de callback (Ben Noordhuis)
 * net: opción de familia en net.connect (Vsevolod Strukchinsky)
-* readline: pause stdin before turning off terminal raw mode (Daniel Chatfield)
-* smalloc: allow different external array types (Trevor Norris)
-* smalloc: expose ExternalArraySize (Trevor Norris)
-* stream: Short-circuit buffer pushes when flowing (isaacs)
-* tls: handle errors on socket before releasing it (Fedor Indutny)
-* util: fix isPrimitive check (Trevor Norris)
+* readline: pausar stdin antes de apagar el modo raw del terminal (Daniel Chatfield)
+* smalloc: permitir diferentes tipos de arrays externos (Trevor Norris)
+* smalloc: exponer ExternalArraySize (Trevor Norris)
+* stream: Buffer de circuito corto empuja al fluir (isaacs)
+* tls: manejar errores en el socket antes de liberarlo (Fedor Indutny)
+* util: reparar la revisión de isPrimitive (Trevor Norris)
 * util: isObject should always return boolean (Trevor Norris)
 
 <a id="0.11.5"></a>
