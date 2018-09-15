@@ -166,7 +166,7 @@ $ git rebase upstream/master
 
 Esto garantiza que su branch de trabajo tenga los últimos cambios del maestro `nodejs/node`.
 
-### Step 6: Test
+### Paso 6: Prueba
 
 Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
 
