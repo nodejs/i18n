@@ -1126,15 +1126,15 @@ util.types.isNativeError(new RangeError());  // Devuelve true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a number object, e.g. created by `new Number()`.
+Devuelve `true` si el valor es un objeto número, p. ej. creado por `new Number()`.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isNumberObject(0);  // Returns false
-util.types.isNumberObject(new Number(0));   // Returns true
+util.types.isNumberObject(0);  // Devuelve false
+util.types.isNumberObject(new Number(0));   // Devuelve true
 ```
 
 ### util.types.isPromise(value)
@@ -1143,14 +1143,14 @@ util.types.isNumberObject(new Number(0));   // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Promise`][].
+Devuelve `true` si el valor es una [`Promise`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isPromise(Promise.resolve(42));  // Returns true
+util.types.isPromise(Promise.resolve(42));  // Devuelve true
 ```
 
 ### util.types.isProxy(value)
@@ -1159,17 +1159,17 @@ util.types.isPromise(Promise.resolve(42));  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a [`Proxy`][] instance.
+Devuelve `true` si el valor es una instancia [`Proxy`][].
 
-For example:
+Por ejemplo:
 
 ```js
 const target = {};
 const proxy = new Proxy(target, {});
-util.types.isProxy(target);  // Returns false
-util.types.isProxy(proxy);  // Returns true
+util.types.isProxy(target);  // Devuelve false
+util.types.isProxy(proxy);  // Devuelve true
 ```
 
 ### util.types.isRegExp(value)
@@ -1178,15 +1178,15 @@ util.types.isProxy(proxy);  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a regular expression object.
+Devuelve `true` si el valor es un objeto de expresión regular.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isRegExp(/abc/);  // Returns true
-util.types.isRegExp(new RegExp('abc'));  // Returns true
+util.types.isRegExp(/abc/);  // Devuelve true
+util.types.isRegExp(new RegExp('abc'));  // Devuelve true
 ```
 
 ### util.types.isSet(value)
@@ -1195,14 +1195,14 @@ util.types.isRegExp(new RegExp('abc'));  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Set`][] instance.
+Devuelve `true` si el valor es una instancia [`Set`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isSet(new Set());  // Returns true
+util.types.isSet(new Set());  // Devuelve true
 ```
 
 ### util.types.isSetIterator(value)
@@ -1211,7 +1211,7 @@ util.types.isSet(new Set());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Set`][] instance.
 
