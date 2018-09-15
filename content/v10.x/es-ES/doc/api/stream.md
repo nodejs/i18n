@@ -1144,7 +1144,7 @@ run().catch(console.error);
 
 El API del módulo `stream` ha sido diseñado para hacer posible implementar fácilmente streams usando el modelo prototipo heredado de JavaScript.
 
-First, a stream developer would declare a new JavaScript class that extends one of the four basic stream classes (`stream.Writable`, `stream.Readable`, `stream.Duplex`, or `stream.Transform`), making sure they call the appropriate parent class constructor:
+Primero, un desarrollador de stream declararía una nueva clase JavaScript que extiende una de las 4 clases de stream básicas (`stream.Writable`, `stream.Readable`, `stream.Duplex`, o `stream.Transform`), asegurándose que llamen el constructor de clase primaria apropiado:
 
 ```js
 const { Writable } = require('stream');
@@ -1157,25 +1157,25 @@ class MyWritable extends Writable {
 }
 ```
 
-The new stream class must then implement one or more specific methods, depending on the type of stream being created, as detailed in the chart below:
+La nueva clase stream entonces debe implementar una o métodos más específicos, dependiendo del tipo de stream siendo creado, como es detallado en el siguiente gráfico:
 
 <table>
   <thead>
     <tr>
       <th>
-        <p>Use-case</p>
+        <p>Casos de uso</p>
       </th>
       <th>
-        <p>Class</p>
+        <p>Clase</p>
       </th>
       <th>
-        <p>Method(s) to implement</p>
+        <p>Método(s) a implementar</p>
       </th>
     </tr>
   </thead>
   <tr>
     <td>
-      <p>Reading only</p>
+      <p>Solo lectura</p>
     </td>
     <td>
       <p>[`Readable`](#stream_class_stream_readable)</p>
@@ -1186,7 +1186,7 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
   <tr>
     <td>
-      <p>Writing only</p>
+      <p>Solo escritura</p>
     </td>
     <td>
       <p>[`Writable`](#stream_class_stream_writable)</p>
@@ -1201,7 +1201,7 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
   <tr>
     <td>
-      <p>Reading and writing</p>
+      <p>Lectura y escritura</p>
     </td>
     <td>
       <p>[`Duplex`](#stream_class_stream_duplex)</p>
@@ -1216,7 +1216,7 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
   <tr>
     <td>
-      <p>Operate on written data, then read the result</p>
+      <p>Opera en datos escritos, luego lee el resultado</p>
     </td>
     <td>
       <p>[`Transform`](#stream_class_stream_transform)</p>
@@ -1231,9 +1231,9 @@ The new stream class must then implement one or more specific methods, depending
   </tr>
 </table>
 
-The implementation code for a stream should *never* call the "public" methods of a stream that are intended for use by consumers (as described in the [API for Stream Consumers](#stream_api_for_stream_consumers) section). Doing so may lead to adverse side effects in application code consuming the stream.
+El código de implementación para un stream *nunca* debería llamar los métodos "públicos" de un stream que son destinados a ser utilizados por consumidores (tal como se describe en la sección [Api para Consumidores de Stream](#stream_api_for_stream_consumers)). Hacerlo puede provocar efectos secundarios en el código de la aplicación consumiendo el stream.
 
-### Simplified Construction
+### Construcción Simplificada
 
 <!-- YAML
 added: v1.2.0
