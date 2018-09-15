@@ -351,7 +351,7 @@ https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 * openssl: Actualizar a 1.0.1f
 * uv: Actualizar a 0.11.18
 * async-listener: revamp of subsystem (Trevor Norris)
-* node: no cerrar nunca stdio nunca (Fedor Indutny)
+* node: no cerrar nunca stdio (Fedor Indutny)
 * http: usar writev en codificación troceada (Trevor Norris)
 * async_wrap/timers: remover Add/RemoveAsyncListener (Trevor Norris)
 * child_process: mejorar el reporte de errores para exec (Fedor Indutny)
@@ -447,7 +447,7 @@ https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 * debugger: mostrar línea actual, reparación para [#6150](https://github.com/joyent/node/issues/6150) (Alex Kocharin)
 * dgram: send() puede aceptar strings (Trevor Norris)
 * dns: renombrar dominio al nombre del host (Ben Noordhuis)
-* dns: establecer correctamente nombre del host en objeto de error (Ben Noordhuis)
+* dns: establecer correctamente el nombre del host en objeto de error (Ben Noordhuis)
 * dtrace, mdb_v8: soportar más string, dar marco a tipos (Dave Pacheco)
 * htttp: añadir statusMessage (Patrik Stutz)
 * http: exponer métodos soportados (Ben Noordhuis)
