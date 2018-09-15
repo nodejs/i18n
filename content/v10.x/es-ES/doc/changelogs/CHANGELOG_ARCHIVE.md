@@ -546,8 +546,8 @@ https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 
 * npm: Actualizar a 1.3.4
 * v8: Actualizar a v3.20.2
-* c-ares: Upgrade to piscisaureus/cares@805d153
-* timers: setImmediate process full queue each turn (Ben Noordhuis)
+* c-ares: Actualizar a piscisaureus/cares@805d153
+* timers: setImmediate procesa la cola completa en cada turno (Ben Noorhuis)
 * http: Add agent.get/request methods (isaacs)
 * http: Proper KeepAlive behavior (isaacs)
 * configure: fix the --without-ssl option (Nathan Rajlich)
