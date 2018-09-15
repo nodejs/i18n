@@ -481,7 +481,7 @@ Während N-API-Aufrufe erfolgen, können Handles auf Objekte im Heap für die zu
 
 Wenn Objekt-Handles zurückgesendet werden, sind sie mit einem 'Scope' verknüpft. Die Lebensdauer für den Standard-Scope ist an die Lebensdauer des nativen Methodenaufrufs gebunden. Das Ergebnis ist, dass die Handles standardmäßig gültig bleiben und die mit diesen Handles verbundenen Objekte während der Lebensdauer des nativen Methodenaufrufs live gehalten werden.
 
-In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine kürzere oder längere Lebensdauer als die der nativen Methode gültig bleiben. The sections which follow describe the N-API functions than can be used to change the handle lifespan from the default.
+In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine kürzere oder längere Lebensdauer als die der nativen Methode gültig bleiben. Die folgenden Abschnitte beschreiben die N-API-Funktionen, mit denen Sie die Lebensdauer des Handles gegenüber dem Standard ändern können.
 
 ### Making handle lifespan shorter than that of the native method
 
