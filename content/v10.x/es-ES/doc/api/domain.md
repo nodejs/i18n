@@ -18,19 +18,19 @@ changes:
 
 > Estabilidad: 0 - Desactualización
 
-**Este módulo esta por convertirse en obsoleto**. Once a replacement API has been finalized, this module will be fully deprecated. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Lo que si deben saber es la funcionalidad que los dominios ofrecen pueden recaer en ella para el momento de uso, pero deben esperar a tener o migrar a una solución diferente en el futuro.
+**Este módulo esta por convertirse en obsoleto**. Este módulo será completamente inútil una vez que el reemplazo de API haya finalizado. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Los usuarios que sí requieran de la funcionalidad que los dominios ofrecen pueden hacer uso del módulo en este momento, pero deben esperar verse obligados a cambiar a una solución distinta en el futuro.
 
-Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja uno.
+Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja uno, entonces el objeto del dominio será notificado, en vez de perder el contexto del error en el manejador `process.on('uncaughtException')` u ocasionar que el programa se cierre inmediatamente con un código de error.
 
 ## Advertencia: ¡No ignore los errores!
 
 <!-- type=misc -->
 
-Los controladores del dominio de error no son un substituto para el cierre de un proceso cuando se produce un error.
+Los manejadores de errores de dominio no son un substituto para el cierre de un proceso cuando se produce un error.
 
-Por la naturaleza misma de cómo [`arroja`] [] funciona en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin perdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
+Por la naturaleza misma de cómo [`throw`] [] funciona en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin perdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
 
-Sin embargo, cerrar el proceso es la forma más segura de responde a un error arrojado. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado pro alguien más.
+Cerrar el proceso es la forma más segura de responder a un error arrojado. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado pro alguien más.
 
 La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y deteniendo las emisiones de nuevas solicitudes en ese trabajador.
 
