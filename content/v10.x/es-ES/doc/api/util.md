@@ -1213,16 +1213,16 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Returns `true` if the value is an iterator returned for a built-in [`Set`][] instance.
+Devuelve `true` si el valor es un iterador devuelto por una instancia [`Set`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
 const set = new Set();
-util.types.isSetIterator(set.keys());  // Returns true
-util.types.isSetIterator(set.values());  // Returns true
-util.types.isSetIterator(set.entries());  // Returns true
-util.types.isSetIterator(set[Symbol.iterator]());  // Returns true
+util.types.isSetIterator(set.keys());  // Devuelve true
+util.types.isSetIterator(set.values());  // Devuelve true
+util.types.isSetIterator(set.entries());  // Devuelve true
+util.types.isSetIterator(set[Symbol.iterator]());  // Devuelve true
 ```
 
 ### util.types.isSharedArrayBuffer(value)
@@ -1231,15 +1231,15 @@ util.types.isSetIterator(set[Symbol.iterator]());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usualmente, es deseable probar a ambos; Para eso, vea [`util.types.isAnyArrayBuffer()`][].
+Devuelve `true` si el valor es una instancia [`SharedArrayBuffer`][] incorporada. Esto *no* incluye a instancias [`ArrayBuffer`][]. Usualmente, es deseable probar a ambos; Para eso, vea [`util.types.isAnyArrayBuffer()`][].
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isSharedArrayBuffer(new ArrayBuffer());  // Returns false
-util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Returns true
+util.types.isSharedArrayBuffer(new ArrayBuffer());  // Devuelve false
+util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Devuelve true
 ```
 
 ### util.types.isStringObject(value)
@@ -1248,11 +1248,11 @@ util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a string object, e.g. created by `new String()`.
+Devuelve `true` si el valor es un objeto de string, p. ej. creado por `new String()`.
 
-For example:
+Por ejemplo:
 
 ```js
 util.types.isStringObject('foo');  // Returns false
