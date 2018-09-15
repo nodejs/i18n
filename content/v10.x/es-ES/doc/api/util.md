@@ -848,13 +848,13 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es una instancia [`ArrayBuffer`][] incorporada. Esto *no* incluye instancias [`SharedArrayBuffer`][]. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
+Devuelve `true` si el valor es una instancia [`ArrayBuffer`][] incorporada. Esto *no* incluye instancias [`SharedArrayBuffer`][]. Usualmente, es deseable probar a ambos; Para eso, vea [`util.types.isAnyArrayBuffer()`][].
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isArrayBuffer(new ArrayBuffer());  // Returns true
-util.types.isArrayBuffer(new SharedArrayBuffer());  // Returns false
+util.types.isArrayBuffer(new ArrayBuffer());  // Devuelve true
+util.types.isArrayBuffer(new SharedArrayBuffer());  // Devuelve false
 ```
 
 ### util.types.isAsyncFunction(value)
@@ -863,11 +863,11 @@ util.types.isArrayBuffer(new SharedArrayBuffer());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
+Devuelve `true` si el valor es una [función asíncrona](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
-For example:
+Por ejemplo:
 
 ```js
 util.types.isAsyncFunction(function foo() {});  // Devuelve false
@@ -985,7 +985,7 @@ added: v10.0.0
 
 * Returns: {boolean}
 
-Returns `true` if the value is a generator function. Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
+Returns `true` if the value is a generator function. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
 For example:
 
@@ -1002,7 +1002,7 @@ added: v10.0.0
 
 * Returns: {boolean}
 
-Returns `true` if the value is a generator object as returned from a built-in generator function. Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
+Returns `true` if the value is a generator object as returned from a built-in generator function. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
 For example:
 
@@ -1233,7 +1233,7 @@ added: v10.0.0
 
 * Returns: {boolean}
 
-Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
+Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usualmente, es deseable probar a ambos; Para eso, vea [`util.types.isAnyArrayBuffer()`][].
 
 For example:
 
