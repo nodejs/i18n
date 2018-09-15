@@ -789,7 +789,7 @@ UTF-8 codifica el string `input` y devuelve un `Uint8Array` conteniendo los byte
 
 * {string}
 
-The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
+La codificación soportada por la instancia `TextEncoder`. Siempre configurado para `'utf-8'`.
 
 ## util.types
 
@@ -797,7 +797,7 @@ The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 added: v10.0.0
 -->
 
-`util.types` provides a number of type checks for different kinds of built-in objects. Unlike `instanceof` or `Object.prototype.toString.call(value)`, these checks do not inspect properties of the object that are accessible from JavaScript (like their prototype), and usually have the overhead of calling into C++.
+`util.types` proporciona un número de chequeos de tipeo para diferentes tipos de objetos incorporados. A diferencia de `instanceof` o `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
 
 The result generally does not make any guarantees about what kinds of properties or behavior a value exposes in JavaScript. They are primarily useful for addon developers who prefer to do type checking in JavaScript.
 
