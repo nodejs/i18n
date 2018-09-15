@@ -1946,12 +1946,12 @@ napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given object is an `ArrayBuffer`.
+- `[in] value`: El valor de JavaScript a verificar.
+- `[out] result`: Si el objeto dado es un `ArrayBuffer`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API checks if the `Object` passed in is an array buffer.
+Esta API verifica si el `Object` pasado es un array buffer.
 
 ### napi_is_buffer
 
@@ -1963,13 +1963,13 @@ added: v8.0.0
 napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents a `node::Buffer` object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a verificar.
+- `[out] result`: Si el `napi_value` dado representa un objeto `node::Buffer`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API checks if the `Object` passed in is a buffer.
+Esta API verifica si el `Object` pasado está en un buffer.
 
 ### napi_is_error
 
@@ -1981,13 +1981,13 @@ added: v8.0.0
 napi_status napi_is_error(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents an `Error` object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a verificar.
+- `[out] result`: Si el `napi_value` dado representa un objeto `Error`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API checks if the `Object` passed in is an `Error`.
+Esta API verifica si el `Object` pasado está en un `Error`.
 
 ### napi_is_typedarray
 
@@ -1999,13 +1999,13 @@ added: v8.0.0
 napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents a `TypedArray`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a verificar.
+- `[out] result`: Si el `napi_value` dado representa un `TypedArray`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API checks if the `Object` passed in is a typed array.
+Esta API verifica si el `Object` pasado es un typed array.
 
 ### napi_is_dataview
 
@@ -2017,13 +2017,13 @@ added: v8.3.0
 napi_status napi_is_dataview(napi_env env, napi_value value, bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] value`: The JavaScript value to check.
-- `[out] result`: Whether the given `napi_value` represents a `DataView`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] value`: El valor de JavaScript a verificar.
+- `[out] result`: Si el `napi_value` dado representa un `DataView`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API checks if the `Object` passed in is a `DataView`.
+Esta API verifica si el `Object` pasado está en un `DataView`.
 
 ### napi_strict_equals
 
@@ -2038,9 +2038,9 @@ napi_status napi_strict_equals(napi_env env,
                                bool* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] lhs`: The JavaScript value to check.
-- `[in] rhs`: The JavaScript value to check against.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] lhs`: El valor de JavaScript a verificar.
+- `[in] rhs`: El valor de JavaScript contra el que se va a comparar.
 - `[out] result`: Whether the two `napi_value` objects are equal.
 
 Returns `napi_ok` if the API succeeded.
