@@ -809,15 +809,15 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`ArrayBuffer`][] or [`SharedArrayBuffer`][] instance.
+Devuelve `true` si el valor es una instancia incorporada [`ArrayBuffer`][] o [`SharedArrayBuffer`][].
 
-See also [`util.types.isArrayBuffer()`][] and [`util.types.isSharedArrayBuffer()`][].
+Ver también [`util.types.isArrayBuffer()`][] y [`util.types.isSharedArrayBuffer()`][].
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isAnyArrayBuffer(new ArrayBuffer());  // Returns true
-util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
+util.types.isAnyArrayBuffer(new ArrayBuffer());  // Devuelve true
+util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Devuelve true
 ```
 
 ### util.types.isArgumentsObject(value)
@@ -826,17 +826,17 @@ util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is an `arguments` object.
+Devuelve `true` si el valor es un `arguments` del objeto.
 
-For example:
+Por ejemplo:
 
 <!-- eslint-disable prefer-rest-params -->
 
 ```js
 function foo() {
-  util.types.isArgumentsObject(arguments);  // Returns true
+  util.types.isArgumentsObject(arguments);  // Devuelve true
 }
 ```
 
@@ -846,9 +846,9 @@ function foo() {
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
+Devuelve `true` si el valor es una instancia [`ArrayBuffer`][] incorporada. Esto *no* incluye instancias [`SharedArrayBuffer`][]. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
 For example:
 
