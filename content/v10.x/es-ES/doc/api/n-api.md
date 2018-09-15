@@ -2120,7 +2120,7 @@ const arr = [];
 const value = arr[123];
 ```
 
-The following is the approximate equivalent of the N-API counterpart:
+El siguiente es el equivalente aproximado de la contraparte de N-API:
 
 ```C
 napi_status status = napi_generic_failure;
@@ -2135,7 +2135,7 @@ status = napi_get_element(env, arr, 123, &value);
 if (status != napi_ok) return status;
 ```
 
-Finally, multiple properties can also be defined on an object for performance reasons. Consider the following JavaScript:
+Finamente, múltiples propiedades también pueden ser definidas sobre un objeto por razones de rendimiento. Considere el siguiente código de JavaScript:
 
 ```js
 const obj = {};
@@ -2145,7 +2145,7 @@ Object.defineProperties(obj, {
 });
 ```
 
-The following is the approximate equivalent of the N-API counterpart:
+El siguiente es el equivalente aproximado de la contraparte de N-API:
 
 ```C
 napi_status status = napi_status_generic_failure;
@@ -2155,14 +2155,14 @@ napi_value obj;
 status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// Create napi_values for 123 and 456
+// Crea napi_values para 123 y 456
 napi_value fooValue, barValue;
 status = napi_create_int32(env, 123, &fooValue);
 if (status != napi_ok) return status;
 status = napi_create_int32(env, 456, &barValue);
 if (status != napi_ok) return status;
 
-// Set the properties
+// Establece las propiedades
 napi_property_descriptor descriptors[] = {
   { "foo", NULL, NULL, NULL, NULL, fooValue, napi_default, NULL },
   { "bar", NULL, NULL, NULL, NULL, barValue, napi_default, NULL }
@@ -2174,7 +2174,7 @@ status = napi_define_properties(env,
 if (status != napi_ok) return status;
 ```
 
-### Structures
+### Estructuras
 
 #### napi_property_attributes
 
@@ -2185,15 +2185,15 @@ typedef enum {
   napi_enumerable = 1 << 1,
   napi_configurable = 1 << 2,
 
-  // Used with napi_define_class to distinguish static properties
-  // from instance properties. Ignored by napi_define_properties.
+  // Utilizada con la napi_define_class para distinguir propiedades estáticas
+  // de propiedades de instancia. Ignorada por napi_define_properties.
   napi_static = 1 << 10,
 } napi_property_attributes;
 ```
 
-`napi_property_attributes` are flags used to control the behavior of properties set on a JavaScript object. Other than `napi_static` they correspond to the attributes listed in [Section 6.1.7.1](https://tc39.github.io/ecma262/#table-2) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/). They can be one or more of the following bitflags:
+`napi_property_attributes` son flags utilizadas para controlar el comportamiento de propiedades establecidas sobre objetos de JavaScript. Aparte de `napi_static`, corresponden a los atributos listados en la [Sección 6.1.7.1](https://tc39.github.io/ecma262/#table-2) de las [Especificaciones del Lenguaje ECMAScript](https://tc39.github.io/ecma262/). Pueden ser uno o más de los siguientes bitflags:
 
-- `napi_default` - Used to indicate that no explicit attributes are set on the given property. By default, a property is read only, not enumerable and not configurable.
+- `napi_default` - Utilizada para indicar que no hay atributos explícitos establecidos en la propiedad dada. Por defecto, un propiedad es para sólo lectura, no enumerable ni configurable.
 - `napi_writable` - Used to indicate that a given property is writable.
 - `napi_enumerable` - Used to indicate that a given property is enumerable.
 - `napi_configurable` - Used to indicate that a given property is configurable, as defined in [Section 6.1.7.1](https://tc39.github.io/ecma262/#table-2) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
