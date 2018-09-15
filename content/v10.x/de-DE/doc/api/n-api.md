@@ -483,7 +483,7 @@ Wenn Objekt-Handles zurückgesendet werden, sind sie mit einem 'Scope' verknüpf
 
 In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine kürzere oder längere Lebensdauer als die der nativen Methode gültig bleiben. Die folgenden Abschnitte beschreiben die N-API-Funktionen, mit denen Sie die Lebensdauer des Handles gegenüber dem Standard ändern können.
 
-### Making handle lifespan shorter than that of the native method
+### Die Lebensdauer des Handles kürzer als bei der nativen Methode machen
 
 It is often necessary to make the lifespan of handles shorter than the lifespan of a native method. For example, consider a native method that has a loop which iterates through the elements in a large array:
 
