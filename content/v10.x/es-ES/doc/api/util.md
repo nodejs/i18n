@@ -645,7 +645,7 @@ added: v8.0.0
 
 * {symbol}
 
-Un {symbol} que puede ser usado para declarar variantes personalizadas promisificadas de funciones, vea [Funciones personalizadas promisificadas](#util_custom_promisified_functions).
+Un {symbol} que puede ser usado para declarar variantes promisificadas personalizadas de funciones, vea [Funciones personalizadas promisificadas](#util_custom_promisified_functions).
 
 ## Clase: util.TextDecoder
 
@@ -653,7 +653,7 @@ Un {symbol} que puede ser usado para declarar variantes personalizadas promisifi
 added: v8.3.0
 -->
 
-Una implementación de la API [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/) `TextDecoder`.
+Una implementación de la API `TextDecoder` del [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/).
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -669,7 +669,7 @@ string += decoder.decode(); // end-of-stream
 
 Según el [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/), las codificaciones soportadas por la API `TextDecoder` están delineadas en las tablas a continuación. Para cada codificación, uno o más alias pueden ser usados.
 
-Diferentes configuraciones de Node.js soportan diferentes conjuntos de codificaciones. Mientras que un conjunto de condificaciones bastante básico es soportado incluso en construcciones de Node.js sin tener ICU habilitado, el soporte para algunas codificaciones es previsto solo cuando Node.js es construido con ICU y usando los datos completos de ICU (vea [Internacionalización](intl.html)).
+Diferentes configuraciones de Node.js soportan diferentes conjuntos de codificaciones. Mientras que un conjunto de codificaciones bastante básico es soportado incluso en construcciones de Node.js sin tener ICU habilitado, el soporte para algunas codificaciones es provisto solo cuando Node.js es construido con ICU y usando los datos completos de ICU (vea [Internacionalización](intl.html)).
 
 #### Codificaciones Soportadas Sin ICU
 
@@ -732,7 +732,7 @@ La codificación `'iso-8859-16'` listada en el [Estándar de Codificación WHATW
 * `encoding` {string} Identifica el `encoding` que esta instancia `TextDecoder` soporta. **Predeterminado:** `'utf-8'`.
 * `options` {Object} 
   * `fatal` {boolean} `true` si las fallas de decodificación son fatales. Eta opción es soportada solo cuando ICU está habilitado (vea [Internacionalización](intl.html)). **Predeterminado:** `false`.
-  * `ignoreBOM` {boolean} Cuando sea `true`, el `TextDecoder` va a incluir la marca de orden de bytes en el resultado decodificado. Cuando sea `false`, la marca de orden de bytes va a ser removida del output. Esta opción es usada solo cuando `encoding` sea `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Predeterminado:** `false`.
+  * `ignoreBOM` {boolean} Cuando sea `true`, el `TextDecoder` va a incluir la marca de orden de bytes en el resultado decodificado. Cuando sea `false`, la marca de orden de bytes va a ser removida del output. Esta opción es usada solo cuando `encoding` es `'utf-8'`, `'utf16be'` o `'utf-16le'`. **Predeterminado:** `false`.
 
 Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de las decodificaciones soportadas o un alias.
 
