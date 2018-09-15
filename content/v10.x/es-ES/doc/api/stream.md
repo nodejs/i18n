@@ -1068,7 +1068,7 @@ finished(rs, (err) => {
 rs.resume(); // drain the stream
 ```
 
-Especially useful in error handling scenarios where a stream is destroyed prematurely (like an aborted HTTP request), and will not emit `'end'` or `'finish'`.
+Especialmente útil en escenarios de manejo de error donde un stream es destruido y prematuramente cerrado (como una solicitud HTTP abortada), y no emitirá `'end'` o `'finish'`.
 
 The `finished` API is promisify'able as well;
 
@@ -1093,9 +1093,9 @@ added: v10.0.0
 -->
 
 * `...streams` {Stream} Two or more streams to pipe between.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `callback` {Function} Una función callback que toma un argumento error opcional.
 
-A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
+Un método módulo para hacer pipe entre streams reenviando errores y limpiando correctamente y proporcionando un callback cuando el pipeline es completado.
 
 ```js
 const { pipeline } = require('stream');
@@ -1138,11 +1138,11 @@ async function run() {
 run().catch(console.error);
 ```
 
-## API for Stream Implementers
+## Api para Implementadores de Streams
 
 <!--type=misc-->
 
-The `stream` module API has been designed to make it possible to easily implement streams using JavaScript's prototypal inheritance model.
+El API del módulo `stream` ha sido diseñado para hacer posible implementar fácilmente streams usando el modelo prototipo heredado de JavaScript.
 
 First, a stream developer would declare a new JavaScript class that extends one of the four basic stream classes (`stream.Writable`, `stream.Readable`, `stream.Duplex`, or `stream.Transform`), making sure they call the appropriate parent class constructor:
 
