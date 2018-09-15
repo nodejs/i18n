@@ -1002,14 +1002,14 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Returns `true` if the value is a generator object as returned from a built-in generator function. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Devuelve `true` si el valor es un objeto del generador como se devuelve de la función del generador incorporada. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
-For example:
+Por ejemplo:
 
 ```js
 function* foo() {}
 const generator = foo();
-util.types.isGeneratorObject(generator);  // Returns true
+util.types.isGeneratorObject(generator);  // Devuelve true
 ```
 
 ### util.types.isInt8Array(value)
@@ -1018,16 +1018,16 @@ util.types.isGeneratorObject(generator);  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Int8Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Int8Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isInt8Array(new ArrayBuffer());  // Returns false
-util.types.isInt8Array(new Int8Array());  // Returns true
-util.types.isInt8Array(new Float64Array());  // Returns false
+util.types.isInt8Array(new ArrayBuffer());  // Devuelve false
+util.types.isInt8Array(new Int8Array());  // Devuelve  true
+util.types.isInt8Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isInt16Array(value)
@@ -1036,16 +1036,16 @@ util.types.isInt8Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Int16Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Int16Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isInt16Array(new ArrayBuffer());  // Returns false
-util.types.isInt16Array(new Int16Array());  // Returns true
-util.types.isInt16Array(new Float64Array());  // Returns false
+util.types.isInt16Array(new ArrayBuffer());  // Devuelve false
+util.types.isInt16Array(new Int16Array());  // Devuelve true
+util.types.isInt16Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isInt32Array(value)
@@ -1054,16 +1054,16 @@ util.types.isInt16Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Int32Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Int32Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isInt32Array(new ArrayBuffer());  // Returns false
-util.types.isInt32Array(new Int32Array());  // Returns true
-util.types.isInt32Array(new Float64Array());  // Returns false
+util.types.isInt32Array(new ArrayBuffer());  // Devuelve false
+util.types.isInt32Array(new Int32Array());  // Devuelve true
+util.types.isInt32Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isMap(value)
@@ -1072,14 +1072,14 @@ util.types.isInt32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Map`][] instance.
+Devuelve `true` si el valor es una instancia [`Map`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isMap(new Map());  // Returns true
+util.types.isMap(new Map());  // Devuelve true
 ```
 
 ### util.types.isMapIterator(value)
@@ -1088,18 +1088,18 @@ util.types.isMap(new Map());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is an iterator returned for a built-in [`Map`][] instance.
+Devuelve `true` si el valor es un iterador devuelto por una instancia [`Map`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
 const map = new Map();
-util.types.isMapIterator(map.keys());  // Returns true
-util.types.isMapIterator(map.values());  // Returns true
-util.types.isMapIterator(map.entries());  // Returns true
-util.types.isMapIterator(map[Symbol.iterator]());  // Returns true
+util.types.isMapIterator(map.keys());  // Devuelve true
+util.types.isMapIterator(map.values());  // Devuelve true
+util.types.isMapIterator(map.entries());  // Devuelve true
+util.types.isMapIterator(map[Symbol.iterator]());  // Devuelve true
 ```
 
 ### util.types.isNativeError(value)
@@ -1108,16 +1108,16 @@ util.types.isMapIterator(map[Symbol.iterator]());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is an instance of a built-in [`Error`][] type.
+Devuelve `true` si el valor es una instancia del tipo [`Error`][] incorporado.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isNativeError(new Error());  // Returns true
-util.types.isNativeError(new TypeError());  // Returns true
-util.types.isNativeError(new RangeError());  // Returns true
+util.types.isNativeError(new Error());  // Devuelve true
+util.types.isNativeError(new TypeError());  // Devuelve true
+util.types.isNativeError(new RangeError());  // Devuelve true
 ```
 
 ### util.types.isNumberObject(value)
