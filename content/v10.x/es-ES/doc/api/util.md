@@ -467,7 +467,7 @@ Los estilos predeterminados y colores asociados son:
 * `special` - `cyan` (solo aplicado a funciones en este momento)
 * `name` - (sin estilo)
 
-Los códigos de colores predefinidos son: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. También hay códigos `bold`, `italic`, `underline` e `inverse`.
+Los códigos de colores predefinidos son: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` y `yellow`. También hay códigos `bold`, `italic`, `underline` e `inverse`.
 
 El estilo de color usa códigos de control ANSI que pueden no ser suportados en todos los terminales.
 
@@ -508,7 +508,7 @@ util.inspect(box);
 // Retorna: "Box< true >"
 ```
 
-Las funciones personalizadas `[util.inspect.custom](depth, opts)` devuelven típicamente un string, pero pueden devolver un valor de cualquier tipo que va a ser formateado en consecuencia por `util.inspect()`.
+Las funciones personalizadas `[util.inspect.custom](depth, opts)` devuelven típicamente un string, pero pueden devolver un valor de cualquier tipo, al que `util.inspect()` le dará formato consecuentemente.
 
 ```js
 const util = require('util');
@@ -570,7 +570,7 @@ added: v8.0.0
 * `original` {Function}
 * Devuelve: {Function}
 
-Toma una función siguiendo el estilo común de callback de primer error, p. ej. tomar un callback `(err, value) => ...` como el último argumento, y devuelve una versión que devuelve promesas.
+Toma una función siguiendo el estilo común de callback de primero-error, i.e. tomar un callback `(err, value) => ...` como el último argumento, y devuelve una versión que devuelve promesas.
 
 ```js
 const util = require('util');
@@ -602,7 +602,7 @@ Si hay una propiedad `original[util.promisify.custom]` presente, `promisify` va 
 
 `promisify()` asume que `original` es una función tomando un callback como su argumento final en todos los casos. Si `original` no es una función, `promisify()` va a arrojar un error. Si `original` es una función pero su último argumento no es un callback de primer error, aún así va a pasar un callback de primer error como su último argumento.
 
-### Funciones personalizadas promisificadas
+### Funciones promisificadas personalizadas
 
 Al usar el símbolo `util.promisify.custom`, uno puede anular el valor de retorno de [`util.promisify()`][]:
 
@@ -622,9 +622,10 @@ console.log(promisified === doSomething[util.promisify.custom]);
 // imprimir 'true'
 ```
 
-Esto puede ser útil para casos donde la función original no siga un formato estándar de tomar un callback de primer error como el último argumento.
+Esto puede ser útil para casos donde la función original no siga un formato estándar para tomar un callback de primero-error como el último argumento.
 
-Por ejemplo, con una función que toma en `(foo, onSuccessCallback, onErrorCallback)`:
+Por ejemplo, con una función que toma `(foo, onSuccessCallback,
+onErrorCallback)`:
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
@@ -634,7 +635,7 @@ doSomething[util.promisify.custom] = (foo) => {
 };
 ```
 
-Si `promisify.custom` es definido pero no es una función, `promisify()` va aarrojar un error.
+Si `promisify.custom` está definido pero no es una función, `promisify()` va a arrojar un error.
 
 ### util.promisify.custom
 
@@ -731,7 +732,7 @@ La codificación `'iso-8859-16'` listada en el [Estándar de Codificación WHATW
 * `encoding` {string} Identifica el `encoding` que esta instancia `TextDecoder` soporta. **Predeterminado:** `'utf-8'`.
 * `options` {Object} 
   * `fatal` {boolean} `true` si las fallas de decodificación son fatales. Eta opción es soportada solo cuando ICU está habilitado (vea [Internacionalización](intl.html)). **Predeterminado:** `false`.
-  * `ignoreBOM` {boolean} Cuando sea `true`, el `TextDecoder` va a incluir la marca de orden del byte en el resultado decodificado. Cuando sea `false`, la marca de orden del byte va a ser removida del output. Esta opción es usada solo cuando `encoding` sea `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Predeterminado:** `false`.
+  * `ignoreBOM` {boolean} Cuando sea `true`, el `TextDecoder` va a incluir la marca de orden de bytes en el resultado decodificado. Cuando sea `false`, la marca de orden de bytes va a ser removida del output. Esta opción es usada solo cuando `encoding` sea `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Predeterminado:** `false`.
 
 Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de las decodificaciones soportadas o un alias.
 
