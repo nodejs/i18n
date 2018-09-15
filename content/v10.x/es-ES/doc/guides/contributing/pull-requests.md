@@ -170,7 +170,7 @@ Esto garantiza que su branch de trabajo tenga los últimos cambios del maestro `
 
 Las correcciones de errores y las características siempre deben venir con las pruebas. Se ha proporcionado una [guía para escribir pruebas en Node.js](../writing-tests.md) para facilitar el proceso. Ver otras pruebas para ver cómo deberían estructurarse también puede ayudar.
 
-The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
+El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro a dónde debe ir un nuevo archivo de prueba. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
 
 Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
 
