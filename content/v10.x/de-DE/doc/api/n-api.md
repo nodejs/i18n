@@ -475,9 +475,9 @@ Der Funktionsaufruf wird nicht zurückgesendet, der Prozess wird abgebrochen.
 
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
-## Object Lifetime management
+## Object Lifetime Management
 
-As N-API calls are made, handles to objects in the heap for the underlying VM may be returned as `napi_values`. These handles must hold the objects 'live' until they are no longer required by the native code, otherwise the objects could be collected before the native code was finished using them.
+Während N-API-Aufrufe erfolgen, können Handles auf Objekte im Heap für die zugrunde liegende VM als `napi_values` zurückgesendet werden. These handles must hold the objects 'live' until they are no longer required by the native code, otherwise the objects could be collected before the native code was finished using them.
 
 As object handles are returned they are associated with a 'scope'. The lifespan for the default scope is tied to the lifespan of the native method call. The result is that, by default, handles remain valid and the objects associated with these handles will be held live for the lifespan of the native method call.
 
