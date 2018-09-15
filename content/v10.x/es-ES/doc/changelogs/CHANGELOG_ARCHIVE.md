@@ -534,18 +534,18 @@ https://github.com/nodejs/node/commit/6f92da2dd106b0c63fde563284f83e08e2a521b5
 * os: añadir dirección mac al output de networkInterfaces() (Brian White)
 * smalloc: introducir módulo smalloc (Trevor Norris)
 * stream: Simplificar el flujo, escucha de data pasiva (streams3) (isaacs)
-* tls: asynchronous SNICallback (Fedor Indutny)
-* tls: share tls tickets key between cluster workers (Fedor Indutny)
-* util: don't throw on circular %j input to format() (Ben Noordhuis)
+* tls: SNICallback asincrónico (Fedor Indutny)
+* tls: compartir tickets tls entre workers del clúster (Fedor Indutny)
+* util: no arrojar input %j circular para format() (Ben Noordhuis)
 
 <a id="0.11.4"></a>
 
-## 2013.07.12, Version 0.11.4 (Unstable)
+## 2013.07.12, Versión 0.11.4 (Inestable)
 
 https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 
-* npm: Upgrade to 1.3.4
-* v8: Upgrade to v3.20.2
+* npm: Actualizar a 1.3.4
+* v8: Actualizar a v3.20.2
 * c-ares: Upgrade to piscisaureus/cares@805d153
 * timers: setImmediate process full queue each turn (Ben Noordhuis)
 * http: Add agent.get/request methods (isaacs)
