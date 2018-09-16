@@ -625,21 +625,21 @@ https://github.com/nodejs/node/commit/4babd2b46ebf9fbea2c9946af5cfae25a33b2b22
 * http: separar en varios módulos separados (Timothy J Fontaine)
 * http: escapar caracteres inseguros en ruta de solicitud (Ben Noordhuis)
 * url: Escapar todos los caracteres imprudentes (isaacs)
-* build: depend on v8 postmortem-metadata if enabled (Paddy Byers)
-* etw: update prototypes to match dtrace provider (Timothy J Fontaine)
-* buffer: change output of Buffer.prototype.toJSON() (David Braun)
-* dtrace: actually use the _handle.fd value (Timothy J Fontaine)
-* dtrace: pass more arguments to probes (Dave Pacheco)
-* build: allow building with dtrace on osx (Dave Pacheco)
-* zlib: allow passing options to convenience methods (Kyle Robinson Young)
+* build: depender de postmortem-metadata v8 si está habilitada (Paddy Byers)
+* etw: actualizar prototipos para que coincidan con el proveedor dtrace (Timothy J Fontaine)
+* buffer: cambiar output de Buffer.prototype.toJSON() (David Braun)
+* dtrace: utilizar, realmente, el _handle.fd value (Timothy J Fontaine)
+* dtrace: pasar más argumentos a sondas (Dave Pacheco)
+* build: permitir construcción con dtrace en osx (Dave Pacheco)
+* zlib: permitir pasar opciones a métodos de conveniencia (Kyle Robinson Young)
 
 <a id="0.11.0"></a>
 
-## 2013.03.28, Version 0.11.0 (Unstable)
+## 2013.03.28, Versión 0.11.0 (Inestable)
 
 https://github.com/nodejs/node/commit/bce38b3d74e64fcb7d04a2dd551151da6168cdc5
 
-* V8: update to 3.17.13
+* V8: actualizar a 3.17.13
 * os: use %SystemRoot% or %windir% in os.tmpdir() (Suwon Chae)
 * util: fix util.inspect() line width calculation (Marcin Kostrzewa)
 * buffer: remove _charsWritten (Trevor Norris)
