@@ -1566,9 +1566,9 @@ added: v0.5.0
 
 * Devuelve: {number}
 
-El método `process.uptime()` devuelve el número de segundos que el proceso Node.js actual se ha estado ejecutando.
+El método `process.uptime()` devuelve el número de segundos que el proceso Node.js actual ha estado ejecutando.
 
-El valor de retorno incluye fracciones de segundo. Utilice `Math.floor()` para obtener segundos completos.
+El valor de retorno incluye fracciones de un segundo. Utilice `Math.floor()` para obtener segundos completos.
 
 ## process.version
 
@@ -1600,7 +1600,7 @@ changes:
 
 * {Object}
 
-La propiedad `process.versions` devuelve un objeto que enumera la strings de versión de Node.js y sus dependencias. `process.versions.modules` indica la versión ABI actual, la cual es incrementa cada vez que un API de C++ cambia. Node.js rechazará cargar módulos que fueron compilados en contra de una versión ABI de módulo diferente.
+La propiedad `process.versions` devuelve un objeto que enumera la strings de versión de Node.js y sus dependencias. `process.versions.modules` indica la versión ABI actual, la cual es incrementada cada vez que un API de C++ cambia. Node.js rechazará cargar módulos que fueron compilados en contra de una versión ABI de módulo diferente.
 
 ```js
 console.log(process.versions);
@@ -1637,7 +1637,7 @@ Node.js normalmente se cerrará con un código de estado `0` cuando no hayan má
 * `4` **Fallo Interno de Evaluación de JavaScript** - El código fuente interno de JavaScript en el proceso bootstrapping de Node.js falló al devolver un valor de una función el evaluarse. Esto es extremadamente raro y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
 * `5` **Error Fatal** - Hubo un error fatal irrecuperable en V8. Usualmente, se imprimirá un mensaje en stderr con el prefijo `FATAL
 ERROR`.
-* `6` **Manejador de Excepción Interno Sin Función** - Hubo una excepción sin capturar, pero la función manejadora de excepción interna fatal de alguna maneja fue establecida a una no-función, y no pudo ser llamada.
+* `6` **Manejador de Excepción Interno Sin Función** - Hubo una excepción sin capturar, pero la función manejadora de excepción interna fatal de alguna manera fue establecida a una no-función, y no pudo ser llamada.
 * `7` **Fallo de Tiempo de Ejecución del Manejador Interno de Excepción ** - Hubo una excepción sin capturar, y la misma función manejadora interna de excepción fatal arrojó un error al intentar manejarlo. Esto puede ocurrir, por ejemplo, si un manejador [`'uncaughtException'`][] o `domain.on('error')` arroja un error.
 * `8` - No utilizado. En versiones anteriores de Node.js, el código de salida 8 en ocasiones indicaba una excepción no capturada.
 * `9` - **Argumento Inválido** - Una opción desconocida fue especificada o una opción que requiere un valor fue proporcionada sin un valor.
