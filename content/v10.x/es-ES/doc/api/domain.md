@@ -146,7 +146,7 @@ if (cluster.isMaster) {
 }
 
 // Esta parte no es importante. Sólo un ejemplo de enrutamiento.
-// Coloca una aplicación lógica elaborada aquí.
+// Coloca aquí una elaborada lógica de aplicación.
 function handleRequest(req, res) {
   switch (req.url) {
     case '/error':
@@ -169,8 +169,8 @@ function handleRequest(req, res) {
 En cualquier momento que un objeto de `Error` es enrutado a través de un dominio, algunos campos adicionales se agregan.
 
 * `error.domain` El dominio que se encargó primero del error.
-* `error.domainEmitter` El evento emisor que originó un evento de `'error'` con el objeto de error.
-* `error.domainBound` La función de callback que fue agregada al dominio y pasó un error como su primer argumento.
+* `error.domainEmitter` El emisor de eventos que originó un evento de `'error'` con el objeto de error.
+* `error.domainBound` La función de callback que fue enlazada al dominio y pasó un error como su primer argumento.
 * `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado por un límite de la función de callback.
 
 ## Enlace implícito
