@@ -106,36 +106,36 @@ rl.on('resume', () => {
 });
 ```
 
-### Event: 'SIGCONT'
+### Evento: 'SIGCONT'
 
 <!-- YAML
 added: v0.7.5
 -->
 
-The `'SIGCONT'` event is emitted when a Node.js process previously moved into the background using `<ctrl>-Z` (i.e. `SIGTSTP`) is then brought back to the foreground using fg(1p).
+El evento `'SIGCONT'` es emitido cuando un proceso Node.js previamente movido al fondo utilizando `<ctrl>-Z` (es decir, `SIGTSTP`), luego es traído de vuelta al primer plano utilizando fg(1p).
 
-If the `input` stream was paused *before* the `SIGTSTP` request, this event will not be emitted.
+Si el stream `input` fue pausado *antes* de la solicitud de `SIGTSTP`, este evento no será emitido.
 
-The listener function is invoked without passing any arguments.
+La función oyente es invocada sin pasar ningún argumento.
 
 ```js
 rl.on('SIGCONT', () => {
-  // `prompt` will automatically resume the stream
+  // `prompt` resumirá automáticamente el stream
   rl.prompt();
 });
 ```
 
-The `'SIGCONT'` event is *not* supported on Windows.
+El evento `'SIGCONT'` *no* está soportado en Windows.
 
-### Event: 'SIGINT'
+### Evento: 'SIGINT'
 
 <!-- YAML
 added: v0.3.0
 -->
 
-The `'SIGINT'` event is emitted whenever the `input` stream receives a `<ctrl>-C` input, known typically as `SIGINT`. If there are no `'SIGINT'` event listeners registered when the `input` stream receives a `SIGINT`, the `'pause'` event will be emitted.
+El evento `'SIGINT'` es emitido cada vez que el stream `input` recibe una entrada `<ctrl>-C`, conocida típicamente como `SIGINT`. Si no hay oyentes del evento `'SIGINT'` registrados al momento en el que el stream `input` reciba un `SIGINT`, el evento `'pause'` será emitido.
 
-The listener function is invoked without passing any arguments.
+La función oyente es invocada sin pasar ningún argumento.
 
 ```js
 rl.on('SIGINT', () => {
@@ -145,17 +145,17 @@ rl.on('SIGINT', () => {
 });
 ```
 
-### Event: 'SIGTSTP'
+### Evento: 'SIGSTP'
 
 <!-- YAML
 added: v0.7.5
 -->
 
-The `'SIGTSTP'` event is emitted when the `input` stream receives a `<ctrl>-Z` input, typically known as `SIGTSTP`. If there are no `'SIGTSTP'` event listeners registered when the `input` stream receives a `SIGTSTP`, the Node.js process will be sent to the background.
+El evento `'SIGTSTP'` es emitido cuando el stream `input` recibe una entrada `<ctrl>-Z`, conocida típicamente como `SIGTSTP`. Si no hay oyentes del evento `'SIGTSTP'` registrados al momento en el que el stream `input` reciba un `SIGTSTP`, el proceso Node.js será enviado al segundo plano.
 
-When the program is resumed using fg(1p), the `'pause'` and `'SIGCONT'` events will be emitted. These can be used to resume the `input` stream.
+Cuando se resume el programa utilizando fg(1p), se emitirán los eventos `'pause'` y `'SIGCONT'`. Éstos pueden ser usados para resumir el stream `input`.
 
-The `'pause'` and `'SIGCONT'` events will not be emitted if the `input` was paused before the process was sent to the background.
+Los eventos `'pause'` y `'SIGCONT'` no serán emitidos si el `input` fue pausado antes de que el proceso fuese enviado al segundo plano.
 
 The listener function is invoked without passing any arguments.
 
