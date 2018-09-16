@@ -1633,14 +1633,14 @@ Node.js normalmente se cerrará con un código de estado `0` cuando no hayan má
 
 * `1` **Excepción Fatal No Capturada** - Hubo una excepción no capturada y no fue manejada por un dominio o por un manejador de evento [`'uncaughtException'`][].
 * `2` - Sin utilizar (reservado por Bash para mal uso incorporado)
-* `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `5` **Fatal Error** - There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix `FATAL
+* `3` **Error Interno de Análisis de JavaScript** - El código fuente interno de JavaScript en el proceso bootstrapping de Node.js causó un error de análisis. Esto es extremadamente raro y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `4` **Fallo Interno de Evaluación de JavaScript** - El código fuente interno de JavaScript en el proceso bootstrapping de Node.js falló al devolver un valor de una función el evaluarse. Esto es extremadamente raro y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `5` **Error Fatal** - Hubo un error fatal irrecuperable en V8. Usualmente, se imprimirá un mensaje en stderr con el prefijo `FATAL
 ERROR`.
-* `6` **Non-function Internal Exception Handler** - There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
-* `7` **Internal Exception Handler Run-Time Failure** - There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
-* `8` - Unused. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
-* `9` - **Invalid Argument** - Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure** - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `6` **Manejador de Excepción Interno Sin Función** - Hubo una excepción sin capturar, pero la función manejadora de excepción interna fatal de alguna maneja fue establecida a una no-función, y no pudo ser llamada.
+* `7` **Fallo de Tiempo de Ejecución del Manejador Interno de Excepción ** - Hubo una excepción sin capturar, y la misma función manejadora interna de excepción fatal arrojó un error al intentar manejarlo. Esto puede ocurrir, por ejemplo, si un manejador [`'uncaughtException'`][] o `domain.on('error')` arroja un error.
+* `8` - No utilizado. En versiones anteriores de Node.js, el código de salida 8 en ocasiones indicaba una excepción no capturada.
+* `9` - **Argumento Inválido** - Una opción desconocida fue especificada o una opción que requiere un valor fue proporcionada sin un valor.
+* `10` **Fallo Interno de Tiempo de Ejecución de JavaScript** - El código fuente interno de JavaScript en el proceso bootstrapping de Node.js arrojó un error cuando se llamó a la función bootstrapping. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
 * `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
 * `>128` **Signal Exits** - If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
