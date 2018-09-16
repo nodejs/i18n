@@ -587,7 +587,7 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 * timers: use uv_now en lugar de Date.now (Timothy J Fontaine)
 * util: Añadir debuglog, desaprobar similares a la consola (isaacs)
 * module: usar path.sep en lugar de una solución personalizada (Robert Kowalski)
-* http: no escapar a ruta de solicitud, rechazar caracteres malos (Ben Noorduis)
+* http: no escapar ruta de solicitud, rechazar caracteres malos (Ben Noorduis)
 * net: emitir el evento "lookup" del dns antes de conectar (Ben Noorduis)
 * dns: añadir getServers y setServers (Timothy J Fontaine)
 
@@ -622,9 +622,9 @@ https://github.com/nodejs/node/commit/4babd2b46ebf9fbea2c9946af5cfae25a33b2b22
 
 * V8: actualizar a 3.18.0
 * uv: Actualizar a v0.11.1
-* http: split into multiple separate modules (Timothy J Fontaine)
-* http: escape unsafe characters in request path (Ben Noordhuis)
-* url: Escape all unwise characters (isaacs)
+* http: separar en varios módulos separados (Timothy J Fontaine)
+* http: escapar caracteres inseguros en ruta de solicitud (Ben Noordhuis)
+* url: Escapar todos los caracteres imprudentes (isaacs)
 * build: depend on v8 postmortem-metadata if enabled (Paddy Byers)
 * etw: update prototypes to match dtrace provider (Timothy J Fontaine)
 * buffer: change output of Buffer.prototype.toJSON() (David Braun)
