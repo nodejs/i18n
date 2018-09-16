@@ -203,7 +203,7 @@ added: v8.4.0
 * `stream` {Http2Stream} Una referencia para el stream
 * `headers` {HTTP/2 Headers Object} Un objeto describiendo los encabezados
 * `flags` {number} The associated numeric flags
-* `rawHeaders` {Array} An array containing the raw header names followed by their respective values.
+* `rawHeaders` {Array} Una matriz que contiene los nombres crudos de cabecera, seguido por sus valores correspondientes.
 
 El evento `'stream'` se emite cuando un `Http2Stream` nuevo es creado.
 
@@ -2065,7 +2065,7 @@ added: v8.4.0
 
 * {string[]}
 
-The raw request/response headers list exactly as they were received.
+La lista cruda de cabeceras de solicitud/respuesta, exactamente como fueron recibidos.
 
 Tenga en cuenta que las claves y los valores están en la misma lista. Esto *no* es una lista de tuplas. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
@@ -2093,7 +2093,7 @@ added: v8.4.0
 
 * {string[]}
 
-Las llaves del trailer y los valores crudos de solicitud/respuesta exactamente como fueron recibidos. Only populated at the `'end'` event.
+Las llaves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Only populated at the `'end'` event.
 
 #### request.setTimeout(msecs, callback)
 
@@ -2548,7 +2548,7 @@ Note that in the `http` module, the response body is omitted when the request is
 
 `chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. Por defecto, el `encoding` es `'utf8'`. `callback` will be called when this chunk of data is flushed.
 
-This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
+Este es el cuerpo crudo de HTTP y no tiene nada qué ver con las codificaciones de cuerpo de partes múltiples y de alto nivel que pueden ser utilizadas.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
