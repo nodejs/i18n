@@ -538,11 +538,11 @@ El `alt` y la string de origen *deben* contener solamente bytes ASCII, y se inte
 
 Cuando se pasa una string para el argumento de `originOrStream`, será analizado como una URL y el origen será derivado. Por ejemplo, el origen para la HTTP URL `'https://example.org/foo/bar'` es la string ASCII `'https://example.org'`. Ocurrirá un error si la string dada no se puede analizar como una URL o si no se puede derivar un origen válido.
 
-A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. El valor de la propiedad `origin` *debe* ser un origen ASCII serializado de manera apropiada.
+Un objeto `URL`, o cualquier objeto con una propiedad `origin`, puede ser pasado como `originOrStream`, y en tal caso el valor de la propiedad `origin` será utilizada. El valor de la propiedad `origin` *debe* ser un origen ASCII serializado de manera apropiada.
 
 #### Especificación de servicios alternativos
 
-The format of the `alt` parameter is strictly defined by [RFC 7838](https://tools.ietf.org/html/rfc7838) as an ASCII string containing a comma-delimited list of "alternative" protocols associated with a specific host and port.
+El formato del parámetro `alt` está estrictamente definido por [RFC 7838](https://tools.ietf.org/html/rfc7838) como una string ASCII que contiene una lista de protocolos "alternativos" delimitados por comas, asociados a un host y un puerto específico.
 
 Por ejemplo, el valor `'h2="example.org:81"'` indica que el protocolo HTTP/2 está disponible en el host `'example.org'` en TCP/IP puerto 81. El host y el puerto *deben* estar contenidos dentro de los caracteres de (`"`) comillas.
 
@@ -820,7 +820,7 @@ added: v9.5.0
 
 * {HTTP/2 Headers Object}
 
-An object containing the outbound headers sent for this `Http2Stream`.
+Un objeto que contiene las cabeceras salientes enviadas para este `Http2Stream`.
 
 #### http2stream.sentInfoHeaders
 
@@ -830,7 +830,7 @@ added: v9.5.0
 
 * {HTTP/2 Headers Object[]}
 
-An array of objects containing the outbound informational (additional) headers sent for this `Http2Stream`.
+Una matriz de objetos que contienen las cabeceras salientes informativas (adicionales) enviadas para este `Http2Stream`.
 
 #### http2stream.sentTrailers
 
@@ -840,7 +840,7 @@ added: v9.5.0
 
 * {HTTP/2 Headers Object}
 
-An object containing the outbound trailers sent for this this `HttpStream`.
+Un objeto que contiene los trailers salientes enviados para este `HttpStream`.
 
 #### http2stream.session
 
