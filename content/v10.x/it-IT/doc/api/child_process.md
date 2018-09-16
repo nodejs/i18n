@@ -25,11 +25,11 @@ ls.on('close', (code) => {
 });
 ```
 
-Di default, i pipe per `stdin`, `stdout`, ed `stderr` vengono stabiliti tra il processo parent di Node.js e il child generato. Questi pipe hanno capacità limitata (e specifica per ogni piattaforma). Se il processo *child* scrive su `stdout` eccedendo quel limite senza che l'output venga catturato, il processo *child* si interromperà in attesa che il buffer della *pipe* accetti nuovi dati. Ciò è identico al comportamento delle *pipe* in una shell. Usate l'opzione `{ stdio: 'ignore' }` se l'output non verrà utilizzato.
+Di default, i pipe per `stdin`, `stdout`, ed `stderr` vengono stabiliti tra il processo parent di Node.js e il child generato. Questi pipe hanno capacità limitata (e specifica per ogni piattaforma). Se il processo child scrive su stdout eccedendo quel limite senza che l'output venga catturato, il processo child si interromperà in attesa che il buffer del pipe accetti più dati. Questo è identico al comportamento dei pipe nella shell. Utilizza l'opzione `{ stdio: 'ignore' }` se l'output non verrà utilizzato.
 
-The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. The [`child_process.spawnSync()`][] function provides equivalent functionality in a synchronous manner that blocks the event loop until the spawned process either exits or is terminated.
+Il metodo [`child_process.spawn()`][] genera il processo child in modo asincrono, senza bloccare il ciclo degli eventi Node.js. La funzione [`child_process.spawnSync()`][] fornisce funzionalità equivalenti in un modo sincrono che interrompe il ciclo di eventi finché il processo generato non si conclude o viene chiuso.
 
-For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
+Per comodità, il modulo `child_process` fornisce una manciata di alternative sincrone e asincrone a [`child_process.spawn()`][] e [`child_process.spawnSync()`][]. *Da notare che ognuna di queste alternative è implementata in cima a [`child_process.spawn()`][] o [`child_process.spawnSync()`][].*
 
     * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
       passing the `stdout` and `stderr` to a callback function when complete.
