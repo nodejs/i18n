@@ -1130,7 +1130,7 @@ server.on('stream', (stream) => {
 
 The optional `options.statCheck` function may be specified to give user code an opportunity to set additional content headers based on the `fs.Stat` details of the given fd. Si se proporciona la función de `statCheck`, el método de `http2stream.respondWithFD()` realizará una llamada `fs.fstat()` para recopilar detalles sobre el descriptor de archivos proporcionado.
 
-The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
+The `offset` and `length` options may be used to limit the response to a specific range subset. Por ejemplo, esto puede ser utilizado para brindar soporte a las solicitudes de HTTP Range.
 
 El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Tenga en cuenta que utilizar el mismo descriptor de archivo de manera concurrente para múltiples streams no es soportado y puede resultar en pérdida de datos. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
 
@@ -1232,9 +1232,9 @@ server.on('stream', (stream) => {
 });
 ```
 
-The `content-length` header field will be automatically set.
+El campo de encabezado `content-length` se establecerá automáticamente.
 
-The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
+The `offset` and `length` options may be used to limit the response to a specific range subset. Por ejemplo, esto puede ser utilizado para brindar soporte a las solicitudes de HTTP Range.
 
 The `options.onError` function may also be used to handle all the errors that could happen before the delivery of the file is initiated. El comportamiento predeterminado es destruir el stream.
 
@@ -2293,7 +2293,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. Después de que [`response.end()`][] se ejecute, el valor será `true`.
+Valor booleano que indica si se ha completado la respuesta. Starts as `false`. Después de que [`response.end()`][] se ejecute, el valor será `true`.
 
 #### response.getHeader(name)
 
@@ -2552,7 +2552,7 @@ This is the raw HTTP body and has nothing to do with higher-level multi-part bod
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
 #### response.writeContinue()
 
