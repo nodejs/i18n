@@ -1846,7 +1846,7 @@ const server = net.createServer((socket) => {
 server.listen(8000);
 ```
 
-An HTTP/2 CONNECT proxy:
+Un proxy HTTP/2 CONNECT:
 
 ```js
 const http2 = require('http2');
