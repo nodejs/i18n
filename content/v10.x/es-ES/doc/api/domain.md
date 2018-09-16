@@ -256,7 +256,7 @@ Si el Temporizador o `EmisordeEvento` estuviese limitado a un dominio, será rem
 * `callback`{Function} La función de callback
 * Devoluciones: {Function} La función enlazada
 
-La función de devolución una cubierta para la función de callback suministrada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
+La función devuelta fungirá como envoltura alrededor del callback suministrado. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
 
 #### Ejemplo
 
