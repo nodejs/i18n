@@ -1346,7 +1346,7 @@ The `writable._write()` method is prefixed with an underscore because it is inte
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementada por clases secundarias, y llamada solamente por métodos de la clase `Writable` interna.
 
-The `writable._writev()` method may be implemented in addition to `writable._write()` in stream implementations that are capable of processing multiple chunks of data at once. If implemented, the method will be called with all chunks of data currently buffered in the write queue.
+El método `writable._writev()` puede ser implementado en conjunto con `writable._write()` en las implementaciones del steam que son capaces de procesar al mismo tiempo múltiples fragmentos de datos. If implemented, the method will be called with all chunks of data currently buffered in the write queue.
 
 The `writable._writev()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
 
