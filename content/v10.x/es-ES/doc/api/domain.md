@@ -171,7 +171,7 @@ En cualquier momento que un objeto de `Error` es enrutado a través de un domini
 * `error.domain` El dominio que se encargó primero del error.
 * `error.domainEmitter` El emisor de eventos que originó un evento de `'error'` con el objeto de error.
 * `error.domainBound` La función de callback que fue enlazada al dominio y pasó un error como su primer argumento.
-* `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado por un límite de la función de callback.
+* `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado a una función callback enlazada.
 
 ## Enlace implícito
 
@@ -179,7 +179,7 @@ En cualquier momento que un objeto de `Error` es enrutado a través de un domini
 
 Si los dominios están en uso, entonces todos los **nuevos** objetos `Eventosemisores`, tales como los objetos de flujo, solicitudes, respuestas, entre otros, estarán implícitamente añadidos al dominio activo en el momento de su creación.
 
-Asimismo, los callbacks pasados al subnivel de evento de las solicitudes del bucle (como `fs.open()`, u otros métodos de atender callbacks) serán automáticamente añadidas al dominio activo. Entonces, el dominio los percibirá como el error si son arrojados.
+Asimismo, los callbacks pasados a solicitudes de bucles de evento de bajo nivel (como `fs.open()`, u otros métodos de atender callbacks) serán automáticamente enlazados al dominio activo. Entonces, el dominio los percibirá como el error si son arrojados.
 
 De manera que para prevenir el uso excesivo de la memoria, los objetos del `Dominio` no se añaden implícitamente por sí mismos como secundarios del dominio activo. Y si lo hicieran, seria muy sencillo prevenir solicitudes y dar respuesta a los objetos a partir de la basura recolectada.
 
@@ -247,14 +247,14 @@ Unos temporizadores y emisores de evento que han sido añadidos explícitamente 
 
 Agrega explícitamente un emisor al dominio. Si cualquier gestor de evento activado por el emisor arroja un error o el transmisor emite un evento de `'error'`, será enrutado para el evento de `'error'` perteneciente al dominio de la misma forma que con el enlazado implícito.
 
-Esto también funciona con los temporizadores que se regresan desde [`setInterval()`][] y el [`setTimeout()`][]. Si su función de callback lo arroja, sera gestionado por el gestor de `'error'` del dominio.
+Esto también funciona con los temporizadores que se regresan desde [`setInterval()`][] y el [`setTimeout()`][]. Si su función de callback lo arroja, será gestionado por el manejador de `'error'` del dominio.
 
 Si el Temporizador o `EmisordeEvento` estuviese limitado a un dominio, será removido del mismo y enlazado a este.
 
 ### domain.bind(callback)
 
 * `callback`{Function} La función de callback
-* Devoluciones: {Function} La función limitante
+* Devoluciones: {Function} La función enlazada
 
 La función de devolución una cubierta para la función de callback suministrada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
 
