@@ -2246,7 +2246,7 @@ napi_status napi_get_property_names(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the names of the enumerable properties of `object` as an array of strings. The properties of `object` whose key is a symbol will not be included.
+Esta API devuelve los nombres de las propiedades enumerables de `object` como un arreglo de cadenas. Las propiedades de `object` cuya clave es un símbolo, no serán incluidas.
 
 #### napi_set_property
 
@@ -2261,14 +2261,14 @@ napi_status napi_set_property(napi_env env,
                               napi_value value);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object on which to set the property.
-- `[in] key`: The name of the property to set.
-- `[in] value`: The property value.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto sobre el cual establecer la propiedad.
+- `[in] key`: El nombre de la propiedad a establecer.
+- `[in] value`: El valor de la propiedad.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API set a property on the `Object` passed in.
+Esta API establece una propiedad sobre el `Object` pasado.
 
 #### napi_get_property
 
@@ -2283,14 +2283,14 @@ napi_status napi_get_property(napi_env env,
                               napi_value* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the property.
-- `[in] key`: The name of the property to retrieve.
-- `[out] result`: The value of the property.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto desde el cual se recupera la propiedad.
+- `[in] key`: El nombre de la propiedad a recuperar.
+- `[out] result`: El valor de la propiedad.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API gets the requested property from the `Object` passed in.
+Esta API obtiene la propiedad solicitada desde el `Object` pasado.
 
 #### napi_has_property
 
@@ -2305,14 +2305,14 @@ napi_status napi_has_property(napi_env env,
                               bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object to query.
-- `[in] key`: The name of the property whose existence to check.
-- `[out] result`: Whether the property exists on the object or not.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto a consultar.
+- `[in] key`: El nombre de la propiedad cuya existencia se va a verificar.
+- `[out] result`: Si la propiedad existen en el objeto o no.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API checks if the `Object` passed in has the named property.
+Esta API verifica si el `Object` pasado tiene la propiedad nombrada.
 
 #### napi_delete_property
 
@@ -2327,14 +2327,14 @@ napi_status napi_delete_property(napi_env env,
                                  bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object to query.
-- `[in] key`: The name of the property to delete.
-- `[out] result`: Whether the property deletion succeeded or not. `result` can optionally be ignored by passing `NULL`.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto a consultar.
+- `[in] key`: El nombre de la propiedad a eliminar.
+- `[out] result`: Si la eliminación de la propiedad fue exitosa o no. `result` puede ser opcionalmente ignorado pasando `NULL`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API attempts to delete the `key` own property from `object`.
+Esta API intenta eliminar la `key` propia de la propiedad desde `object`.
 
 #### napi_has_own_property
 
@@ -2349,14 +2349,14 @@ napi_status napi_has_own_property(napi_env env,
                                   bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object to query.
-- `[in] key`: The name of the own property whose existence to check.
-- `[out] result`: Whether the own property exists on the object or not.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto a consultar.
+- `[in] key`: El nombre de la propiedad propia cuya existencia se va a verificar.
+- `[out] result`: Si la propiedad propia existe en el objeto o no.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API checks if the `Object` passed in has the named own property. `key` must be a string or a `Symbol`, or an error will be thrown. N-API will not perform any conversion between data types.
+Esta API verifica si el `Object` pasado tiene la propiedad propia nombrada. `key` debe ser una cadena o un `Symbol`, o se arrojará un error. N-API will not perform any conversion between data types.
 
 #### napi_set_named_property
 
