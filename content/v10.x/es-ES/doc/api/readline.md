@@ -28,7 +28,7 @@ rl.question('What do you think of Node.js? ', (answer) => {
 });
 ```
 
-Una vez que se invoque este código, la aplicación Node.js no terminará hasta que la `readline.Interface` esté cerrada, ya que la interfaz esperar a que los datos sean recibidos en el stream `input`.
+Una vez que se invoque este código, la aplicación Node.js no terminará hasta que la `readline.Interface` esté cerrada, ya que la interfaz espera a que los datos sean recibidos en el stream `input`.
 
 ## Clase: Interfaz
 
@@ -125,7 +125,7 @@ rl.on('SIGCONT', () => {
 });
 ```
 
-El evento `'SIGCONT'` *no* está soportado en Windows.
+El evento `'SIGCONT'` *no* es soportado en Windows.
 
 ### Evento: 'SIGINT'
 
@@ -153,7 +153,7 @@ added: v0.7.5
 
 El evento `'SIGTSTP'` es emitido cuando el stream `input` recibe una entrada `<ctrl>-Z`, conocida típicamente como `SIGTSTP`. Si no hay oyentes del evento `'SIGTSTP'` registrados al momento en el que el stream `input` reciba un `SIGTSTP`, el proceso Node.js será enviado al segundo plano.
 
-Cuando se resume el programa utilizando fg(1p), se emitirán los eventos `'pause'` y `'SIGCONT'`. Éstos pueden ser usados para resumir el stream `input`.
+Cuando se resume el programa utilizando fg(1p), se emitirán los eventos `'pause'` y `'SIGCONT'`. Estos pueden ser usados para resumir el stream `input`.
 
 Los eventos `'pause'` y `'SIGCONT'` no serán emitidos si el `input` fue pausado antes de que el proceso fuese enviado al segundo plano.
 
