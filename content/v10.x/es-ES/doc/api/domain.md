@@ -137,7 +137,7 @@ if (cluster.isMaster) {
     d.add(req);
     d.add(res);
 
-    // Ahora, ejecuta el controlador de función en el dominio.
+    // Ahora, ejecuta la función de manejador en el dominio.
     d.run(() => {
       handleRequest(req, res);
     });
