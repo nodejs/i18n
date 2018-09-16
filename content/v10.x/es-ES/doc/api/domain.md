@@ -85,21 +85,22 @@ if (cluster.isMaster) {
     cluster.fork();
   });
 
-} otro {
-  // el worker  //
+} else {
+  // el worker
+  //
   // ¡Aquí es donde se colocan nuestros errores!
 
   const domain = require('domain');
 
- // Ver el cluster de documentación para más detalles sobre el uso de
-// procesos de trabajo para atender solicitudes. Cómo funciona, advertencias, entre otras.
+ // Ver el clúster de documentación para más detalles sobre el uso de
+// procesos de worker para atender solicitudes. Cómo funciona, advertencias, entre otras.
 
   const server = require('http').createServer((req, res) => {
     const d = domain.create();
     d.on('error', (er) => {
       console.error(`error ${er.stack}`);
 
-      // Nota: ¡ Estamos en un territorio peligroso!
+      // Nota: ¡Estamos en un territorio peligroso!
       Por definición, algo inesperado ocurrió,
       / / que probablemente no queríamos.
       // ¡Cualquier cosa puede suceder ahora! ¡Ten mucho cuidado!
