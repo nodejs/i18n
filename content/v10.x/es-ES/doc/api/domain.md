@@ -264,10 +264,10 @@ La función devuelta fungirá como envoltura alrededor del callback suministrado
 const d = domain.create();
 
 
+function readSomeFile(filename, cb) {
   fs.readFile(filename, 'utf8', d.bind((er, data) => {
-    // si este error aparece, también pasará por el dominio
-    return cb(er, data ?
- JSON.parse(data) : null);
+    // si este error aparece, también será pasado al dominio
+    return cb(er, data ? JSON.parse(data) : null);
   }));
 }
 
