@@ -1987,7 +1987,7 @@ napi_status napi_is_error(napi_env env, napi_value value, bool* result)
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API verifica si el `Object` pasado está en un `Error`.
+Esta API verifica si el `Object` pasado es un `Error`.
 
 ### napi_is_typedarray
 
@@ -2023,7 +2023,7 @@ napi_status napi_is_dataview(napi_env env, napi_value value, bool* result)
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API verifica si el `Object` pasado está en un `DataView`.
+Esta API verifica si el `Object` pasado es un `DataView`.
 
 ### napi_strict_equals
 
@@ -2045,19 +2045,19 @@ napi_status napi_strict_equals(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API representa la invocación del algoritmo de igualdad estricta tal como se define en la [Sección 7.2.14](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) de las Especificaciones del Lenguaje ECMAScript.
+Esta API representa la invocación del algoritmo de Igualdad Estricta tal como se define en la [Sección 7.2.14](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) de las Especificaciones del Lenguaje ECMAScript.
 
-## Trabajando con las Propiedades de JavaScript
+## Trabajar con las Propiedades de JavaScript
 
-N-API expone un conjunto de APIs para obtener y estableces propiedades sobre objetos de JavaScript. Algunos de estos tipos están documentados bajo la [Sección 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) de las [Especificaciones del Lenguaje ECMAScript](https://tc39.github.io/ecma262/).
+N-API expone un conjunto de APIs para obtener y establecer propiedades sobre objetos de JavaScript. Algunos de estos tipos están documentados bajo la [Sección 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) de las [Especificaciones del Lenguaje ECMAScript](https://tc39.github.io/ecma262/).
 
 Las propiedades en JavaScript están representadas como una dupla de una clave y un valor. Fundamentalmente, todas las claves de las propiedades en N-API pueden ser representadas de alguna de las siguientes formas:
 
-- Nombre: unas cadena simple codificada en UTF8
-- Entero indexado: un valor de índica representado por `uint32_t`
+- Nombre: una cadena simple codificada en UTF8
+- Entero indexado: un valor de índice representado por `uint32_t`
 - Valor de JavaScript: estos están representados por `napi_value` en N-API. Esto puede ser un `napi_value` que represente una `String`, un `Number` o un `Symbol`.
 
-Los valores de N-API son representados por el tipo `napi_value`. Cualquier llamada N-API requiere que un valor de JavaScript se tome en un `napi_value`. Sin embargo, es responsabilidad del llamador asegurarse de que el `napi_value` en cuestión sea del tipo de JavaScript esperado por la API.
+Los valores de N-API son representados por el tipo `napi_value`. Cualquier llamada N-API requiere que un valor de JavaScript tome un `napi_value`. Sin embargo, es responsabilidad del llamador asegurarse de que el `napi_value` en cuestión sea del tipo de JavaScript esperado por la API.
 
 Las APIs documentadas en esta sección proporcionan una interfaz simple para obtener y establecer propiedades sobre objetos arbitrarios de JavaScript, representados por `napi_value`.
 
