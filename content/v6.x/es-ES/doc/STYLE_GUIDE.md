@@ -1,7 +1,7 @@
-# Style Guide
+# Guía de estilo
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g., `child_process`).
+* La documentación debe ser escrita en archivos markdown respetando el formato de nomenclatura `minuscula-con-guiones.md`. 
+  * Los guiones bajos en los nombres de archivo están permitidos solo cuando se encuentren en el tópico que el documento va a describir (p.ej `child_process`).
   * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
 * The formatting described in `.editorconfig` is preferred. 
