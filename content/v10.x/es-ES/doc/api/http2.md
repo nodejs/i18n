@@ -91,7 +91,7 @@ Instancias de la clase `http2.Http2Session` representan una sesión activa de co
 
 Cada instancia de `Http2Session` exhibirá comportamientos ligeramente distintos, dependiendo de si está operando como un servidor o un cliente. La propiedad `http2session.type` puede ser usada para determinar el modo en el que una `http2session.type` está operando. En el lado del servidor, el código de usuario raramente debe tener ocasión de trabajar directamente con el objeto `Http2Session`, con la mayoría de las acciones tomadas típicamente a través de interacciones, ya sea con los objetos `Http2Server` o `Http2Stream`.
 
-#### `Http2Session` and Sockets
+#### `Http2Session` y Sockets
 
 Cada instancia `Http2Session` está asociada con exactamente una [`net.Socket`][] o una [`tls.TLSSocket`][] cuando es creada. Cuando se destruye ya sea el `Socket` o la `Http2Session`, ambos serán destruidos.
 
@@ -107,7 +107,7 @@ added: v8.4.0
 
 El evento de `'close'` se emite una vez que la `Http2Session` ha sido destruida. Su oyente no espera ningún argumento.
 
-#### Event: 'connect'
+#### Evento: 'connect'
 
 <!-- YAML
 added: v8.4.0
@@ -120,7 +120,7 @@ El evento `'connect'` se emite una vez que la `Http2Session` haya sido conectada
 
 El código de usuario generalmente no escuchará directamente a este evento.
 
-#### Event: 'error'
+#### Evento: 'error'
 
 <!-- YAML
 added: v8.4.0
@@ -130,7 +130,7 @@ added: v8.4.0
 
 El evento de `'error'` se emite cuando ocurre un error durante el procesamiento de un `Http2Session`.
 
-#### Event: 'frameError'
+#### Evento: 'frameError'
 
 <!-- YAML
 added: v8.4.0
@@ -138,27 +138,27 @@ added: v8.4.0
 
 * `type` {integer} El tipo de frame.
 * `code` {integer} El código de error.
-* `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
+* `id` {integer} La id del stream (o `0` si el frame no está asociado a un stream).
 
 El evento `'frameError'` se emite cuando ocurre un error mientras se intenta enviar un frame en la sesión. Si el frame que no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento de `'frameError'` en el `Http2Stream` .
 
 Si el evento `'frameError'` esta asociado con un stream, el stream se cerrará y se destruirá inmediatamente después del evento `'frameError'` . Si el evento no está asociado a un stream, la `Http2Session` se apagará inmediatamente después del evento `'frameError'` .
 
-#### Event: 'goaway'
+#### Evento: 'goaway'
 
 <!-- YAML
 added: v8.4.0
 -->
 
 * `errorCode` {number} El código de error HTTP/2 especificado en el frame `GOAWAY` .
-* `lastStreamID` {number} The ID of the last stream the remote peer successfully processed (or `0` if no ID is specified).
-* `opaqueData` {Buffer} If additional opaque data was included in the `GOAWAY` frame, a `Buffer` instance will be passed containing that data.
+* `lastStreamID` {number} La ID del último stream procesado exitosamente por el peer remoto (o `0` si no se especifica ninguna ID).
+* `opaqueData` {Buffer} Si se incluyeron datos opacos adicionales en el frame `GOAWAY`, una instancia `Buffer` será pasada conteniendo esos datos.
 
 El evento `'goaway'` se emite cuando se recibe un frame de `GOAWAY` .
 
 La instancia `Http2Session` se apagará automáticamente cuando se emita el evento `'goaway'` .
 
-#### Event: 'localSettings'
+#### Evento: 'localSettings'
 
 <!-- YAML
 added: v8.4.0
@@ -178,7 +178,7 @@ session.on('localSettings', (settings) => {
 });
 ```
 
-#### Event: 'remoteSettings'
+#### Evento: 'remoteSettings'
 
 <!-- YAML
 added: v8.4.0
@@ -202,7 +202,7 @@ added: v8.4.0
 
 * `stream` {Http2Stream} Una referencia para el stream
 * `headers` {HTTP/2 Headers Object} Un objeto describiendo los encabezados
-* `flags` {number} The associated numeric flags
+* `flags` {number} Las banderas numéricas asociadas
 * `rawHeaders` {Array} Una matriz que contiene los nombres crudos de cabecera, seguido por sus valores correspondientes.
 
 El evento `'stream'` se emite cuando un `Http2Stream` nuevo es creado.
@@ -241,7 +241,7 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-#### Event: 'timeout'
+#### Evento: 'timeout'
 
 <!-- YAML
 added: v8.4.0
