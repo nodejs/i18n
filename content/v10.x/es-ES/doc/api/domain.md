@@ -74,8 +74,8 @@ if (cluster.isMaster) {
   //
   // Ver las opciones en el clúster de documentación.
   //
- // Lo importante es que el proceso principal hace poco, 
- // aumentando nuestra resistencia ante errores inesperados.
+  // Lo importante es que el proceso principal hace poco, 
+  // aumentando nuestra resiliencia ante errores inesperados.
 
   cluster.fork();
   cluster.fork();
