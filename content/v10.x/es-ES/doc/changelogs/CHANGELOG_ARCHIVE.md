@@ -607,21 +607,21 @@ https://github.com/nodejs/node/commit/5d3dc0e4c3369dfb00b7b13e08936c2e652fa696
 * debugger: puntos de interrupción en scripts aún no están cargados (Miroslav Bajtoš)
 * event: EventEmitter#setMaxListeners() devuelve esto (Sam Roberts)
 * events: añadir EventEmitter.defaultMaxListeners (Ben Noordhuis)
-* install: Support $(PREFIX) install target directory prefix (Olof Johansson)
-* os: Include netmask in os.networkInterfaces() (Ben Kelly)
-* path: add path.isAbsolute(path) (Ryan Doenges)
-* stream: Guarantee ordering of 'finish' event (isaacs)
-* streams: introduce .cork/.uncork/._writev (Fedor Indutny)
-* vm: add support for timeout argument (Andrew Paprocki)
+* install: Soportar que $(PREFIX) instale prefijo del directorio objetivo (Olof Johansson)
+* os: Include netmask en os.networkInterfaces() (Ben Kelly)
+* path: añadir path.isAbsolute(path) (Ryan Doenges)
+* stream: Garantizar ordenamiento del evento "finish" (isaacs)
+* stream: introducir .cork/.uncork/._writev (Fedor Indutny)
+* vm: añadir soporte para el argumento de timeout (Andrew Paprocki)
 
 <a id="0.11.1"></a>
 
-## 2013.04.19, Version 0.11.1 (Unstable)
+## 2013.04.19, Versión 0.11.1 (Inestable)
 
 https://github.com/nodejs/node/commit/4babd2b46ebf9fbea2c9946af5cfae25a33b2b22
 
-* V8: upgrade to 3.18.0
-* uv: Upgrade to v0.11.1
+* V8: actualizar a 3.18.0
+* uv: Actualizar a v0.11.1
 * http: split into multiple separate modules (Timothy J Fontaine)
 * http: escape unsafe characters in request path (Ben Noordhuis)
 * url: Escape all unwise characters (isaacs)
