@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
-The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
+El módulo `readline` proporciona una interfaz para leer datos de un stream [Legible](stream.html#stream_readable_streams) (como [`process.stdin`]), una línea a la vez. Puede ser accedido utilizando:
 
 ```js
 const readline = require('readline');
 ```
 
-The following simple example illustrates the basic use of the `readline` module.
+El siguiente ejemplo simple ilustra el uso básico del módulo `readline`.
 
 ```js
 const readline = require('readline');
@@ -21,22 +21,22 @@ const rl = readline.createInterface({
 });
 
 rl.question('What do you think of Node.js? ', (answer) => {
-  // TODO: Log the answer in a database
+  // TODO: Registrar la respuesta en una base de datos
   console.log(`Thank you for your valuable feedback: ${answer}`);
 
   rl.close();
 });
 ```
 
-Once this code is invoked, the Node.js application will not terminate until the `readline.Interface` is closed because the interface waits for data to be received on the `input` stream.
+Una vez que se invoque este código, la aplicación Node.js no terminará hasta que la `readline.Interface` esté cerrada, ya que la interfaz esperar a que los datos sean recibidos en el stream `input`.
 
-## Class: Interface
+## Clase: Interfaz
 
 <!-- YAML
 added: v0.1.104
 -->
 
-Instances of the `readline.Interface` class are constructed using the `readline.createInterface()` method. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
+Las instancias de la clase `readline.Interface` se construyen utilizando el método `readline.createInterface()`. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
 
 ### Event: 'close'
 
