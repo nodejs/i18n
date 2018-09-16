@@ -571,8 +571,8 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 * c-ares: actualizar a 1.10.0
 * v8: actualizar a v3.19.13
 * punycode: actualizar a v1.2.3 (Mathias Bynens)
-* debugger: break on uncaught exception (Miroslav Bajtos)
-* child_process: emit 'disconnect' asynchronously (Ben Noordhuis)
+* debugger: interrumpir en excepción no capturada (Miroslav Bajtos)
+* child_process: emitir "disconnect" asincrónicamente (Ben Noordhuis)
 * dtrace: enable uv's probes if enabled (Timothy J Fontaine)
 * dtrace: unify dtrace and systemtap interfaces (Timothy J Fontaine)
 * buffer: New API for backing data store (Trevor Norris)
