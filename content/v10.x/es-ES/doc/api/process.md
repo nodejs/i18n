@@ -1538,7 +1538,7 @@ added: v0.8.0
 
 * {boolean}
 
-La propiedad `process.traceDeprecation` indica si la bandera `--trace-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.traceDeprecation` indica si la bandera `--trace-deprecation` está establecida en el proceso Node.js actual. Vea la documentación para el [evento `'warning'`](#process_event_warning) y el [método `emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) para más información acerca de este comportamiento de la bandera.
 
 ## process.umask([mask])
 
@@ -1548,7 +1548,7 @@ added: v0.1.19
 
 * `mask` {number}
 
-The `process.umask()` method sets or returns the Node.js process's file mode creation mask. Child processes inherit the mask from the parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
+El método `process.umask()` establece o devuelve una máscara de creación de modo de archivo del proceso Node.js. Los procesos secundarios heredan la máscara del proceso primario. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
 
 ```js
 const newmask = 0o022;
@@ -1564,11 +1564,11 @@ console.log(
 added: v0.5.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
-The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
+El método `process.uptime()` devuelve el número de segundos que el proceso Node.js actual se ha estado ejecutando.
 
-The return value includes fractions of a second. Use `Math.floor()` to get whole seconds.
+El valor de retorno incluye fracciones de segundo. Utilice `Math.floor()` para obtener segundos completos.
 
 ## process.version
 
@@ -1578,7 +1578,7 @@ added: v0.1.3
 
 * {string}
 
-The `process.version` property returns the Node.js version string.
+La propiedad `process.version` devuelve la string de la versión Node.js.
 
 ```js
 console.log(`Version: ${process.version}`);
@@ -1600,13 +1600,13 @@ changes:
 
 * {Object}
 
-The `process.versions` property returns an object listing the version strings of Node.js and its dependencies. `process.versions.modules` indicates the current ABI version, which is increased whenever a C++ API changes. Node.js will refuse to load modules that were compiled against a different module ABI version.
+La propiedad `process.versions` devuelve un objeto que enumera la strings de versión de Node.js y sus dependencias. `process.versions.modules` indica la versión ABI actual, la cual es incrementa cada vez que un API de C++ cambia. Node.js rechazará cargar módulos que fueron compilados en contra de una versión ABI de módulo diferente.
 
 ```js
 console.log(process.versions);
 ```
 
-Will generate an object similar to:
+Generará un objeto similar a:
 
 <!-- eslint-skip -->
 
@@ -1627,12 +1627,12 @@ Will generate an object similar to:
   tz: '2016b' }
 ```
 
-## Exit Codes
+## Código de Salida
 
-Node.js will normally exit with a `0` status code when no more async operations are pending. The following status codes are used in other cases:
+Node.js normalmente se cerrará con un código de estado `0` cuando no hayan más operaciones asincrónicas pendientes. Los siguientes códigos de estado son usados en otros casos:
 
-* `1` **Uncaught Fatal Exception** - There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
-* `2` - Unused (reserved by Bash for builtin misuse)
+* `1` **Excepción Fatal No Capturada** - Hubo una excepción no capturada y no fue manejada por un dominio o por un manejador de evento [`'uncaughtException'`][].
+* `2` - Sin utilizar (reservado por Bash para mal uso incorporado)
 * `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
 * `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
 * `5` **Fatal Error** - There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix `FATAL
