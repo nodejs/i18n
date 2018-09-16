@@ -64,15 +64,15 @@ Al usar el contexto de un dominio y la elasticidad al separar nuestros programas
 const cluster = require('cluster');
 const PORT = +process.env.PORT || 1337;
 
-Si (cluster.isMaster) {    
-// Un escenario más realista tendría más de dos trabajadores y,
-// quizás, no colocaría al principal y al trabajador en la misma carpeta.
+if (cluster.isMaster) {    
+  // Un escenario más realista tendría más de dos workers y,
+  // quizás, no colocaría al principal y al worker en la misma carpeta.
   //
   // también es posible adornar un poco el registro e 
  // implementar cualquier lógica personalizada necesaria para evitar que DoS
   // ataque y otro mal comportamiento.
   //
- // Ver las opciones en el cluster de documentación.
+  // Ver las opciones en el clúster de documentación.
   //
  // Lo importante es que el proceso principal hace poco, 
  // aumentando nuestra resistencia ante errores inesperados.
