@@ -272,7 +272,7 @@ added: v9.4.0
 
 * `callback` {Function}
 
-Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Una vez cerrado, `http2session.destroy()` *might* ser llamado si no hay instancias de `Http2Stream` abiertas.
+Cierra de manera elegante la `Http2Session`, permitiendo que cualquier stream se complete por sí solo, y evitando que se construyan nuevas instancias `Http2Stream` . Una vez cerrado, `http2session.destroy()` *might* ser llamado si no hay instancias de `Http2Stream` abiertas.
 
 Sí está especificado, la función `callback` se registra como un handler para el evento `'close'`.
 
@@ -303,7 +303,7 @@ added: v8.4.0
 -->
 
 * `error` {Error} Un objeto `Error` si la `Http2Session` está siendo destruida a causa de un error.
-* `code` {number} El código de error HTTP/2 a enviar en el frame `GOAWAY` final. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
+* `code` {number} El código de error HTTP/2 a enviar en el frame `GOAWAY` final. Si no está especificado, y si `error` no está definido, `INTERNAL_ERROR` será predeterminado, de lo contrario `NO_ERROR` será predeterminado.
 
 Termina inmediatamente la `Http2Session` y el `net.Socket` o el `tls.TLSSocket` asociados.
 
@@ -339,7 +339,7 @@ added: v9.4.0
 
 * `code` {number} Un código de error de HTTP/2
 * `lastStreamID` {number} La identificación numérica del último `Http2Stream` procesado
-* `opaqueData` {Buffer|TypedArray|DataView} A `TypedArray` or `DataView` instance containing additional data to be carried within the `GOAWAY` frame.
+* `opaqueData` {Buffer|TypedArray|DataView} Una instancia `TypedArray` o `DataView` que contenga datos adicionales que serán llevados dentro del frame `GOAWAY` .
 
 Transmite un frame `GOAWAY` al peer conectado *sin* apagar la `Http2Session`.
 
@@ -351,7 +351,7 @@ added: v8.4.0
 
 * {HTTP/2 Settings Object}
 
-A prototype-less object describing the current local settings of this `Http2Session`. Las configuraciones locales son locales para *this* `Http2Session` instancia.
+Un objeto sin prototipo que describa las configuraciones locales actuales de esta `Http2Session`. Las configuraciones locales son locales para *this* `Http2Session` instancia.
 
 #### http2session.originSet
 
