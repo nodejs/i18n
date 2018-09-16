@@ -587,13 +587,13 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 * timers: use uv_now en lugar de Date.now (Timothy J Fontaine)
 * util: Añadir debuglog, desaprobar similares a la consola (isaacs)
 * module: usar path.sep en lugar de una solución personalizada (Robert Kowalski)
-* http: don't escape request path, reject bad chars (Ben Noordhuis)
-* net: emit dns 'lookup' event before connect (Ben Noordhuis)
-* dns: add getServers and setServers (Timothy J Fontaine)
+* http: no escapar a ruta de solicitud, rechazar caracteres malos (Ben Noorduis)
+* net: emitir el evento "lookup" del dns antes de conectar (Ben Noorduis)
+* dns: añadir getServers y setServers (Timothy J Fontaine)
 
 <a id="0.11.2"></a>
 
-## 2013.05.13, Version 0.11.2 (Unstable)
+## 2013.05.13, Versión 0.11.2 (Inestable)
 
 https://github.com/nodejs/node/commit/5d3dc0e4c3369dfb00b7b13e08936c2e652fa696
 
