@@ -597,11 +597,11 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 
 https://github.com/nodejs/node/commit/5d3dc0e4c3369dfb00b7b13e08936c2e652fa696
 
-* uv: Upgrade to 0.11.2
-* V8: Upgrade to 3.19.0
-* npm: Upgrade to 1.2.21
-* build: Makefile should respect configure --prefix (Timothy J Fontaine)
-* cluster: use round-robin load balancing (Ben Noordhuis)
+* uv: Actualizar a 0.11.2
+* V8: Actualizar a 3.19.0
+* npm: Actualizar a 1.2.21
+* build: Makefile debe respetar el --prefix de configuración (Timothy J Fontaine)
+* cluster: utilizar balanceo de carga round-robin (Ben Noorduis)
 * debugger, cluster: each worker has new debug port (Miroslav Bajtoš)
 * debugger: `restart` with custom debug port (Miroslav Bajtoš)
 * debugger: breakpoints in scripts not loaded yet (Miroslav Bajtoš)
