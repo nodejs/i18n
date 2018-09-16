@@ -1346,9 +1346,9 @@ The `writable._write()` method is prefixed with an underscore because it is inte
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementada por clases secundarias, y llamada solamente por métodos de la clase `Writable` interna.
 
-El método `writable._writev()` puede ser implementado en conjunto con `writable._write()` en las implementaciones del steam que son capaces de procesar al mismo tiempo múltiples fragmentos de datos. If implemented, the method will be called with all chunks of data currently buffered in the write queue.
+El método `writable._writev()` puede ser implementado en conjunto con `writable._write()` en las implementaciones del steam que son capaces de procesar al mismo tiempo múltiples fragmentos de datos. Si es implementado, el método será llamado con todos los fragmentos de datos que están siendo almacenados en la cola de escritura.
 
-The `writable._writev()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+El método `writable._writev()` es ajustado con subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
 #### writable.\_destroy(err, callback)
 
@@ -1356,10 +1356,10 @@ The `writable._writev()` method is prefixed with an underscore because it is int
 added: v8.0.0
 -->
 
-* `err` {Error} A possible error.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `err` {Error} Un posible error.
+* `callback` {Function} Una función callback que toma un argumento error opcional.
 
-The `_destroy()` method is called by [`writable.destroy()`](#stream_writable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
+El método `_destroy()` es llamado por [`writable.destroy()`](#stream_writable_destroy_error). Puede ser sobreescrito por clases secundarias pero **no debe** ser llamado directamente.
 
 #### writable.\_final(callback)
 
@@ -1367,11 +1367,11 @@ The `_destroy()` method is called by [`writable.destroy()`](#stream_writable_des
 added: v8.0.0
 -->
 
-* `callback` {Function} Call this function (optionally with an error argument) when finished writing any remaining data.
+* `callback` {Function} Llama esta función (opcionalmente con un argumento error) cuando terminó de escribir los datos restantes.
 
-The `_final()` method **must not** be called directly. It may be implemented by child classes, and if so, will be called by the internal `Writable` class methods only.
+El método `_final()` **no debe** ser llamado directamente. Puede ser implementado por clases secundarias, y si se hace, será llamado solamente por métodos de clase `Writable` internos.
 
-This optional function will be called before the stream closes, delaying the `'finish'` event until `callback` is called. This is useful to close resources or write buffered data before a stream ends.
+Esta función opcional será llamada antes de que el stream cierre, demorando el evento `'finish'` hasta que `callback` es llamado. This is useful to close resources or write buffered data before a stream ends.
 
 #### Errors While Writing
 
@@ -1540,7 +1540,7 @@ added: v8.0.0
 * `err` {Error} A possible error.
 * `callback` {Function} A callback function that takes an optional error argument.
 
-The `_destroy()` method is called by [`readable.destroy()`](#stream_readable_destroy_error). It can be overridden by child classes but it **must not** be called directly.
+The `_destroy()` method is called by [`readable.destroy()`](#stream_readable_destroy_error). Puede ser sobreescrito por clases secundarias pero **no debe** ser llamado directamente.
 
 #### readable.push(chunk[, encoding])
 
