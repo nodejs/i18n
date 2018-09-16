@@ -884,7 +884,7 @@ added: v8.4.0
   * `state` {number} Una bandera que indica el estado actual de bajo nivel del `Http2Stream`, como lo determina `nghttp2`.
   * `localClose` {number} es `true` en caso de que este `Http2Stream` haya sido cerrado de manera local.
   * `remoteClose` {number} `true` si este `Http2Stream` ha sido cerrado de manera remota.
-  * `sumDependencyWeight` {number} The sum weight of all `Http2Stream` instances that depend on this `Http2Stream` as specified using `PRIORITY` frames.
+  * `sumDependencyWeight` {number} El peso total de todas las instancias `Http2Stream` que dependen de este `Http2Stream`, como se especifica utilizando frames `PRIORITY` .
   * `weight` {number} El peso de prioridad de esta `Http2Stream`.
 
 Un estado actual de este `Http2Stream`.
@@ -913,13 +913,13 @@ server.on('stream', (stream) => {
 
 The HTTP/1 specification forbids trailers from containing HTTP/2 pseudo-header fields (e.g. `':method'`, `':path'`, etc).
 
-### Class: ClientHttp2Stream
+### Clase: ClientHttp2Stream
 
 <!-- YAML
 added: v8.4.0
 -->
 
-* Extends {Http2Stream}
+* Extiende a {Http2Stream}
 
 La clase `ClientHttp2Stream` es una extensión de `Http2Stream` que se usa exclusivamente en clientes HTTP/2. Las instancias `Http2Stream` en el cliente proporcionan eventos tales como `'response'` y `'push'`, los cuales son relevantes solamente en el cliente.
 
@@ -1014,7 +1014,7 @@ added: v8.4.0
 
 * {boolean}
 
-Read-only property mapped to the `SETTINGS_ENABLE_PUSH` flag of the remote client's most recent `SETTINGS` frame. Will be `true` if the remote peer accepts push streams, `false` otherwise. Las configuraciones son las mismas para cada `Http2Stream` en el mismo `Http2Session`.
+La propiedad de sólo-lectura mapeada a la bandera `SETTINGS_ENABLE_PUSH` del frame `SETTINGS` más reciente del cliente remoto. Will be `true` if the remote peer accepts push streams, `false` otherwise. Las configuraciones son las mismas para cada `Http2Stream` en el mismo `Http2Session`.
 
 #### http2stream.pushStream(headers[, options], callback)
 
@@ -1057,7 +1057,7 @@ added: v8.4.0
 
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object} 
-  * `endStream` {boolean} Set to `true` to indicate that the response will not include payload data.
+  * `endStream` {boolean} Establecido a `true` para indicar que la respuesta no incluirá datos de carga útil.
   * `waitForTrailers` {boolean} Cuando es `true`, el `Http2Stream` emitirá el evento `'wantTrailers'` luego de que el frame final de `DATA` haya sido enviado.
 
 ```js
