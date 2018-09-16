@@ -12,7 +12,7 @@ const http2 = require('http2');
 
 ## Core API
 
-La API de Núcleo proporciona una interfaz de bajo nivel diseñada específicamente alrededor del soporte para las funciones del protocolo de HTTP/2. It is specifically *not* designed for compatibility with the existing [HTTP/1](http.html) module API. However, the [Compatibility API](#http2_compatibility_api) is.
+La API de Núcleo proporciona una interfaz de bajo nivel diseñada específicamente alrededor del soporte para las funciones del protocolo de HTTP/2. *No* está diseñado específicamente para la compatibilidad con la API existente del módulo [HTTP/1](http.html) . However, the [Compatibility API](#http2_compatibility_api) is.
 
 La API de Núcleo `http2` es mucho más simétrica entre cliente y servidor que la API `http` . Por ejemplo, la mayoría de los eventos, como `'error'`, `'connect'` y `'stream'`, pueden ser emitidos por el código del lado del cliente o por el código del lado del servidor.
 
@@ -463,7 +463,7 @@ Proporciona información diversa sobre el estado actual del `Http2Session`.
   * `lastProcStreamID` {number} La id numérica del `Http2Stream` para el cual se recibió más recientemente a un frame de `HEADERS` o `DATA` .
   * `remoteWindowSize` {number} El número de bytes que esta `Http2Session` puede enviar sin recibir un `WINDOW_UPDATE`.
   * `outboundQueueSize` {number} The number of frames currently within the outbound queue for this `Http2Session`.
-  * `deflateDynamicTableSize` {number} The current size in bytes of the outbound header compression state table.
+  * `deflateDynamicTableSize` {number} El tamaño actual en bytes del tablero del estado de compresión de la cabecera saliente.
   * `inflateDynamicTableSize` {number} The current size in bytes of the inbound header compression state table.
 
 Un objeto que describe el estado actual de este `Http2Session`.
@@ -534,7 +534,7 @@ server.on('stream', (stream) => {
 
 Enviar un frame de `ALTSVC` con una ID de stream específica indica que el servicio alternativo está asociado al origen del `Http2Stream` dado.
 
-The `alt` and origin string *must* contain only ASCII bytes and are strictly interpreted as a sequence of ASCII bytes. The special value `'clear'` may be passed to clear any previously set alternative service for a given domain.
+The `alt` and origin string *must* contain only ASCII bytes and are strictly interpreted as a sequence of ASCII bytes. El valor especial `'clear'` puede ser pasado para borrar cualquier servicio alternativo establecido previamente para un dominio dado.
 
 Cuando se pasa una string para el argumento de `originOrStream`, será analizado como una URL y el origen será derivado. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. Ocurrirá un error si la string dada no se puede analizar como una URL o si no se puede derivar un origen válido.
 
@@ -1215,7 +1215,7 @@ server.on('stream', (stream) => {
 });
 ```
 
-The `options.statCheck` function may also be used to cancel the send operation by returning `false`. For instance, a conditional request may check the stat results to determine if the file has been modified to return an appropriate `304` response:
+La función `options.statCheck` también puede ser utilizada para cancelar la operación de envío devolviendo `false`. For instance, a conditional request may check the stat results to determine if the file has been modified to return an appropriate `304` response:
 
 ```js
 const http2 = require('http2');
@@ -1626,7 +1626,7 @@ changes:
   * `maxReservedRemoteStreams` {number} Sets the maximum number of reserved push streams the client will accept at any given time. Once the current number of currently reserved push streams exceeds reaches this limit, new push streams sent by the server will be automatically rejected.
   * `maxSendHeaderBlockLength` {number} Establece el tamaño máximo permitido para un bloque comprimido y serializado de encabezados. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
   * `paddingStrategy` {number} Identifica la estrategia utilizada para determinar la cantidad de relleno a usar para frames de `HEADERS` y `DATA` . **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
-    * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
+    * `http2.constants.PADDING_STRATEGY_NONE` - Especifica que no se deberá aplicar relleno.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
     * `http2.constants.PADDING_STRATEGY_ALIGNED` - *intentará* aplicar suficiente relleno para asegurar que la longitud total del frame, incluyendo el encabezado 9-byte, sea un múltiplo de 8. Sin embargo, para cada frame, hay un número máximo permitido de bytes de relleno que está determinado por el estado actual del control de flujo y las configuraciones. Si este valor máximo es inferior a la cantidad calculada necesaria para asegurar la alineación, el valor máximo será utilizado y la longitud total del frame *no* necesariamente estará alineada en 8 bytes.
@@ -2585,7 +2585,7 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-Tenga en cuenta que la longitud del contenido se da en bytes, no en caracteres. La API de `Buffer.byteLength()` puede ser utilizada para determinar el número de bytes en una codificación dada. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
+Tenga en cuenta que la longitud del contenido se da en bytes, no en caracteres. La API de `Buffer.byteLength()` puede ser utilizada para determinar el número de bytes en una codificación dada. En mensajes salientes, Node.js no verifica si la Longitud del Contenido y la longitud del cuerpo que se transmite son iguales o no. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
 
 Este método puede ser llamado una vez en un mensaje, como máximo, antes de que [`response.end()`][] sea llamado.
 
