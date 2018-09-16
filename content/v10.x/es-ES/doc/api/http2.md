@@ -10,9 +10,9 @@ El módulo `http2` provee una implementación del protocolo [HTTP/2](https://too
 const http2 = require('http2');
 ```
 
-## Core API
+## API de Núcleo
 
-La API de Núcleo proporciona una interfaz de bajo nivel diseñada específicamente alrededor del soporte para las funciones del protocolo de HTTP/2. *No* está diseñado específicamente para la compatibilidad con la API existente del módulo [HTTP/1](http.html) . However, the [Compatibility API](#http2_compatibility_api) is.
+La API de Núcleo proporciona una interfaz de bajo nivel diseñada específicamente alrededor del soporte para las funciones del protocolo de HTTP/2. *No* está específicamente diseñada para la compatibilidad con la API existente del módulo [HTTP/1](http.html) . Sin embargo, la [API de Compatibilidad](#http2_compatibility_api) sí.
 
 La API de Núcleo `http2` es mucho más simétrica entre cliente y servidor que la API `http` . Por ejemplo, la mayoría de los eventos, como `'error'`, `'connect'` y `'stream'`, pueden ser emitidos por el código del lado del cliente o por el código del lado del servidor.
 
@@ -99,7 +99,7 @@ Debido a los requisitos específicos de serialización y procesamiento impuestos
 
 Una vez que un `Socket` haya sido vinculado a una `Http2Session`, el código de usuario debería confiar únicamente en la API de la `Http2Session` .
 
-#### Event: 'close'
+#### Evento: 'close'
 
 <!-- YAML
 added: v8.4.0
