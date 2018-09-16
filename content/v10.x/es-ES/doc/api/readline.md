@@ -30,7 +30,7 @@ rl.question('What do you think of Node.js? ', (answer) => {
 
 Una vez que se invoque este código, la aplicación Node.js no terminará hasta que la `readline.Interface` esté cerrada, ya que la interfaz espera a que los datos sean recibidos en el stream `input`.
 
-## Clase: Interfaz
+## Clase: Interface
 
 <!-- YAML
 added: v0.1.104
