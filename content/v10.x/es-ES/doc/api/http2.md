@@ -408,7 +408,7 @@ If the `payload` argument is not specified, the default payload will be the 64-b
 added: v9.4.0
 -->
 
-Calls [`ref()`][`net.Socket.prototype.ref()`] on this `Http2Session` instance's underlying [`net.Socket`].
+Llama a [`ref()`][`net.Socket.prototype.ref()`] en este [`net.Socket`] subyacente de la instancia de `Http2Session` .
 
 #### http2session.remoteSettings
 
@@ -462,9 +462,9 @@ Proporciona información diversa sobre el estado actual del `Http2Session`.
   * `localWindowSize` {number} El número de bytes que el peer remoto puede enviar sin recibir un `WINDOW_UPDATE`.
   * `lastProcStreamID` {number} La id numérica del `Http2Stream` para el cual se recibió más recientemente a un frame de `HEADERS` o `DATA` .
   * `remoteWindowSize` {number} El número de bytes que esta `Http2Session` puede enviar sin recibir un `WINDOW_UPDATE`.
-  * `outboundQueueSize` {number} The number of frames currently within the outbound queue for this `Http2Session`.
+  * `outboundQueueSize` {number} El número de frames que actualmente se encuentran dentro de la cola saliente para esta `Http2Session`.
   * `deflateDynamicTableSize` {number} El tamaño actual en bytes del tablero del estado de compresión de la cabecera saliente.
-  * `inflateDynamicTableSize` {number} The current size in bytes of the inbound header compression state table.
+  * `inflateDynamicTableSize` {number} El tamaño actual en bytes del tablero del estado de compresión de la cabecera entrante.
 
 Un objeto que describe el estado actual de este `Http2Session`.
 
@@ -515,7 +515,7 @@ added: v9.4.0
 * `alt` {string} Una descripción de la configuración del servicio alternativo como lo define [RFC 7838](https://tools.ietf.org/html/rfc7838).
 * `originOrStream` {number|string|URL|Object} O una string de URL que especifica el origen (o un `Object` con una propiedad de `origin`) o el identificador numérico de un `Http2Stream` activo, como lo da la propiedad de `http2stream.id` .
 
-Submits an `ALTSVC` frame (as defined by [RFC 7838](https://tools.ietf.org/html/rfc7838)) to the connected client.
+Manda un frame `ALTSVC` (como lo define [RFC 7838](https://tools.ietf.org/html/rfc7838)) al cliente conectado.
 
 ```js
 const http2 = require('http2');
@@ -534,9 +534,9 @@ server.on('stream', (stream) => {
 
 Enviar un frame de `ALTSVC` con una ID de stream específica indica que el servicio alternativo está asociado al origen del `Http2Stream` dado.
 
-The `alt` and origin string *must* contain only ASCII bytes and are strictly interpreted as a sequence of ASCII bytes. El valor especial `'clear'` puede ser pasado para borrar cualquier servicio alternativo establecido previamente para un dominio dado.
+El `alt` y la string de origen *deben* contener solamente bytes ASCII, y se interpretan estrictamente como una secuencia de bytes ASCII. El valor especial `'clear'` puede ser pasado para borrar cualquier servicio alternativo establecido previamente para un dominio dado.
 
-Cuando se pasa una string para el argumento de `originOrStream`, será analizado como una URL y el origen será derivado. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. Ocurrirá un error si la string dada no se puede analizar como una URL o si no se puede derivar un origen válido.
+Cuando se pasa una string para el argumento de `originOrStream`, será analizado como una URL y el origen será derivado. Por ejemplo, el origen para la HTTP URL `'https://example.org/foo/bar'` es la string ASCII `'https://example.org'`. Ocurrirá un error si la string dada no se puede analizar como una URL o si no se puede derivar un origen válido.
 
 A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. El valor de la propiedad `origin` *debe* ser un origen ASCII serializado de manera apropiada.
 
