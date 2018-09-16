@@ -2137,7 +2137,7 @@ added: v8.4.0
 
 * {Http2Stream}
 
-The [`Http2Stream`][] object backing the request.
+El objeto [`Http2Stream`][] que apoya la solicitud.
 
 #### request.trailers
 
@@ -2527,7 +2527,7 @@ added: v8.4.0
 
 * {Http2Stream}
 
-The [`Http2Stream`][] object backing the response.
+El objeto [`Http2Stream`][] que apoya la respuesta.
 
 #### response.write(chunk\[, encoding\]\[, callback\])
 
