@@ -897,7 +897,7 @@ added: v10.0.0
 
 * `headers` {HTTP/2 Headers Object}
 
-Sends a trailing `HEADERS` frame to the connected HTTP/2 peer. Este método causará que el `Http2Stream` se cierre inmediatamente, y solo debe ser llamado luego de que el evento de `'wantTrailers'` haya sido emitido. When sending a request or sending a response, the `options.waitForTrailers` option must be set in order to keep the `Http2Stream` open after the final `DATA` frame so that trailers can be sent.
+Sends a trailing `HEADERS` frame to the connected HTTP/2 peer. Este método causará que el `Http2Stream` se cierre inmediatamente, y solo debe ser llamado luego de que el evento de `'wantTrailers'` haya sido emitido. Al enviar una solicitud o al enviar una respuesta, la opción `options.waitForTrailers` debe estar establecida para mantener abierto al `Http2Stream` después del frame `DATA` final, para que los trailers puedan ser enviados.
 
 ```js
 const http2 = require('http2');
@@ -1829,7 +1829,7 @@ const req = client.request({ ':path': '/' });
 
 ### Supporting the CONNECT method
 
-The `CONNECT` method is used to allow an HTTP/2 server to be used as a proxy for TCP/IP connections.
+El método `CONNECT` se utiliza para permitir que un servidor HTTP/2 sea utilizado como un proxy para conexiones TCP/IP.
 
 Un servidor simple de TCP:
 
@@ -2117,7 +2117,7 @@ added: v8.4.0
 
 * {net.Socket|tls.TLSSocket}
 
-Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but applies getters, setters, and methods based on HTTP/2 logic.
+Devuelve a un objeto proxy que actúa como un `net.Socket` (o `tls.TLSSocket`) pero aplica getters, setters, y métodos basados en lógica de HTTP/2.
 
 Las propiedades de `destroyed`, `readable`, y `writable` serán recuperadas desde y establecidas en `request.stream`.
 
@@ -2468,7 +2468,7 @@ added: v8.4.0
 
 * {net.Socket|tls.TLSSocket}
 
-Returns a `Proxy` object that acts as a `net.Socket` (or `tls.TLSSocket`) but applies getters, setters, and methods based on HTTP/2 logic.
+Devuelve a un objeto proxy que actúa como un `net.Socket` (o `tls.TLSSocket`) pero aplica getters, setters, y métodos basados en lógica de HTTP/2.
 
 Las propiedades `destroyed`, `readable`, y `writable` serán recuperadas desde y establecidas en `response.stream`.
 
