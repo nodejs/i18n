@@ -106,7 +106,7 @@ if (cluster.isMaster) {
       // ¡Cualquier cosa puede suceder ahora! ¡Ten mucho cuidado!
 
       intenta {
-        // asegurarte de cerrar en 30 segundos
+        // asegurémonos de cerrar en un lapso de 30 segundos
         const killtimer = setTimeout(() => {
           process.exit(1);
         }, 30000);
@@ -117,8 +117,8 @@ if (cluster.isMaster) {
         server.close();
 
         // Deja que el proceso principal sepa que estamos muertos. Esto desencadenará un 
-        // 'desconectar' en el cluster principal y, luego, se bifurcará
-        // un nuevo trabajador.
+        // 'desconectar' en el clúster principal y, luego, se bifurcará
+        // un nuevo worker.
         cluster.worker.disconnect();
 
         // intenta enviar un error a la solicitud que arrojó el problema
@@ -131,8 +131,8 @@ if (cluster.isMaster) {
       }
     });
 
-    // Porque req y res  fueron creados antes de que existieran los dominios y
-    //  necesitamos agregarlos explicitamente.
+    // Porque req y res fueron creados antes de que existieran los dominios y
+    //  necesitamos agregarlos explícitamente.
     // Mira más abajo la explicación de la vinculación implícita y explicita.
     d.add(req);
     d.add(res);
