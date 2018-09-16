@@ -2220,13 +2220,13 @@ typedef struct {
 - `utf8name`: `String` opcional que describe la clave de la propiedad, codificada como UTF8. Alguno de los dos, `utf8name` o `name`, debe ser proporcionado por la propiedad.
 - `name`: `napi_value` opcional que apunta a una cadena o símbolo de JavaScript a ser utilizado como clave de la propiedad. Alguno de los dos, `utf8name` o `name`, debe ser proporcionado por la propiedad.
 - `value`: El valor que es recuperado por un get access de la propiedad si esta es una propiedad de datos. Si es pasado, establecer `getter`, `setter`, `method` y `data` en `NULL` (ya que estos miembros no serán utilizados).
-- `getter`: Una función para llamar cuando se realiza un get access de la propiedad. Si es pasado, establecer `value` y `method` en `NULL` (ya que estos miembros so se utilizarán). The given function is called implicitly by the runtime when the property is accessed from JavaScript code (or if a get on the property is performed using a N-API call).
-- `setter`: A function to call when a set access of the property is performed. If this is passed in, set `value` and `method` to `NULL` (since these members won't be used). The given function is called implicitly by the runtime when the property is set from JavaScript code (or if a set on the property is performed using a N-API call).
-- `method`: Set this to make the property descriptor object's `value` property to be a JavaScript function represented by `method`. If this is passed in, set `value`, `getter` and `setter` to `NULL` (since these members won't be used).
-- `attributes`: The attributes associated with the particular property. See [`napi_property_attributes`](#n_api_napi_property_attributes).
-- `data`: The callback data passed into `method`, `getter` and `setter` if this function is invoked.
+- `getter`: Una función a llamar cuando se realiza un get access de la propiedad. Si es pasado, establecer `value` y `method` en `NULL` (ya que estos miembros so se utilizarán). La función dada es llamada implícitamente por el tiempo de ejecución cuando la propiedad es accedida desde el código de JavaScript (o si se realiza un get en la propiedad, utilizando una llamada N-API).
+- `setter`: Una función a llamar cuando se realiza un set access de la propiedad. Si es pasado, establecer `value` y `method` en `NULL` (ya que estos miembros no se utilizarán). La función dada es llamada implícitamente por el tiempo de ejecución cuando la propiedad se establece desde el código de JavaScript (o si se realiza un set en la propiedad, utilizando una llamada N-API).
+- `method`: Establecer esto para hacer que la propiedad descriptor de la propiedad `value` del objeto sea una función de JavaScript representada por `method`. Si es pasado, establecer `value`, `getter` y `setter` en `NULL` (ya que estos miembros no se utilizarán).
+- `attributes`: Los atributos asociados con la propiedad particular. Ver [`napi_property_attributes`](#n_api_napi_property_attributes).
+- `data`: El callback de datos pasado en `method`, `getter` y `setter` si esta función es invocada.
 
-### Functions
+### Funciones
 
 #### napi_get_property_names
 
@@ -2240,11 +2240,11 @@ napi_status napi_get_property_names(napi_env env,
                                     napi_value* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the properties.
-- `[out] result`: A `napi_value` representing an array of JavaScript values that represent the property names of the object. The API can be used to iterate over `result` using [`napi_get_array_length`][] and [`napi_get_element`][].
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto del cual se recuperen las propiedades.
+- `[out] result`: Un `napi_value` que representa un arreglo de valores de JavaScript que representan la propiedad nombres del objeto. Esta API puede ser utilizada para iterar sobre `result` utilizando [`napi_get_array_length`][] y [`napi_get_element`][].
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 This API returns the names of the enumerable properties of `object` as an array of strings. The properties of `object` whose key is a symbol will not be included.
 
