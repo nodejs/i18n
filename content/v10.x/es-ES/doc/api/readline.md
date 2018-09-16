@@ -36,34 +36,34 @@ Una vez que se invoque este código, la aplicación Node.js no terminará hasta 
 added: v0.1.104
 -->
 
-Las instancias de la clase `readline.Interface` se construyen utilizando el método `readline.createInterface()`. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
+Las instancias de la clase `readline.Interface` se construyen utilizando el método `readline.createInterface()`. Cada instancia está asociada con un stream [Legible](stream.html#stream_readable_streams) `input` sencillo y con un stream [Escribible](stream.html#stream_writable_streams) `output` sencillo. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
 
-### Event: 'close'
-
-<!-- YAML
-added: v0.1.98
--->
-
-The `'close'` event is emitted when one of the following occur:
-
-* The `rl.close()` method is called and the `readline.Interface` instance has relinquished control over the `input` and `output` streams;
-* The `input` stream receives its `'end'` event;
-* The `input` stream receives `<ctrl>-D` to signal end-of-transmission (EOT);
-* The `input` stream receives `<ctrl>-C` to signal `SIGINT` and there is no `'SIGINT'` event listener registered on the `readline.Interface` instance.
-
-The listener function is called without passing any arguments.
-
-The `readline.Interface` instance is finished once the `'close'` event is emitted.
-
-### Event: 'line'
+### Evento: 'close' (cerrar)
 
 <!-- YAML
 added: v0.1.98
 -->
 
-The `'line'` event is emitted whenever the `input` stream receives an end-of-line input (`\n`, `\r`, or `\r\n`). This usually occurs when the user presses the `<Enter>`, or `<Return>` keys.
+El evento `'close'` es emitido cuando ocurre uno de los siguientes casos:
 
-The listener function is called with a string containing the single line of received input.
+* Se llama al método `rl.close()` y la instancia `readline.Interface` ha renunciado al control sobre los streams `input` y `output`;
+* El stream `input` recibe su evento `'end'`;
+* El stream `input` recibe `<ctrl>-D` para señalar el final de la transmisión (por sus siglas en inglés, EOT);
+* El stream `input` recibe `<ctrl>-C` para señalar a `SIGINT` y no existen un oyente del evento `'SIGINT'` registrado en la instancia `readline.Interface`.
+
+La función oyente es llamada sin pasar ningún argumento.
+
+La instancia `readline.Interface` es finalizada una vez que el evento `'close'` es emitido.
+
+### Evento: 'line'
+
+<!-- YAML
+added: v0.1.98
+-->
+
+El evento `'line'` es emitido cada vez que el stream `input` recibe una entrada de final de línea (`\n`, `\r` o `\r\n`). Esto usualmente ocurre cuando el usuario presiona las teclas `<Enter>` o `<Return>`.
+
+La función oyente es llamada con una string que contiene la línea simple de la entrada recibida.
 
 ```js
 rl.on('line', (input) => {
@@ -71,18 +71,18 @@ rl.on('line', (input) => {
 });
 ```
 
-### Event: 'pause'
+### Evento: 'pause' (pausa)
 
 <!-- YAML
 added: v0.7.5
 -->
 
-The `'pause'` event is emitted when one of the following occur:
+El evento `'pause'` es emitido cuando ocurre uno de los siguientes casos:
 
-* The `input` stream is paused.
-* The `input` stream is not paused and receives the `'SIGCONT'` event. (See events [`'SIGTSTP'`][] and [`'SIGCONT'`][].)
+* Se pasa el stream `input`.
+* El stream `input` está pausado y recibe el evento `'SIGCONT'`. (Vea los eventos [`'SIGTSTP'`][] y [`'SIGCONT'`][].)
 
-The listener function is called without passing any arguments.
+La función oyente es llamada sin pasar ningún argumento.
 
 ```js
 rl.on('pause', () => {
@@ -90,15 +90,15 @@ rl.on('pause', () => {
 });
 ```
 
-### Event: 'resume'
+### Evento: 'resume' (resumir)
 
 <!-- YAML
 added: v0.7.5
 -->
 
-The `'resume'` event is emitted whenever the `input` stream is resumed.
+El evento `'resume'` es emitido cada vez que el stream `input` es resumido.
 
-The listener function is called without passing any arguments.
+La función oyente es llamada sin pasar ningún argumento.
 
 ```js
 rl.on('resume', () => {
