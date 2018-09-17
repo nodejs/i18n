@@ -224,7 +224,7 @@ rl.question('What is your favorite food? ', (answer) => {
 });
 ```
 
-The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. The `callback` is called with the provided answer as the only argument.
+La función `callback` pasada a `rl.question()` no sigue el patrón típico de aceptación de un objeto `Error` o `null` como el primer argumento. El `callback` es llamado con la respuesta proporcionada como el primer argumento.
 
 ### rl.resume()
 
@@ -232,7 +232,7 @@ The `callback` function passed to `rl.question()` does not follow the typical pa
 added: v0.3.4
 -->
 
-The `rl.resume()` method resumes the `input` stream if it has been paused.
+El método `rl.resume()` resume el stream `input` si ha sido pausado.
 
 ### rl.setPrompt(prompt)
 
@@ -242,7 +242,7 @@ added: v0.1.98
 
 * `prompt` {string}
 
-The `rl.setPrompt()` method sets the prompt that will be written to `output` whenever `rl.prompt()` is called.
+El método `rl.setPrompt()` establece el aviso que será escrito en `output` cada vez que `rl.prompt()` es llamado.
 
 ### rl.write(data[, key])
 
@@ -252,26 +252,26 @@ added: v0.1.98
 
 * `data` {string}
 * `key` {Object} 
-  * `ctrl` {boolean} `true` to indicate the `<ctrl>` key.
-  * `meta` {boolean} `true` to indicate the `<Meta>` key.
-  * `shift` {boolean} `true` to indicate the `<Shift>` key.
-  * `name` {string} The name of the a key.
+  * `ctrl` {boolean} `true` para indicar la tecla `<ctrl>`.
+  * `meta` {boolean} `true` para indicar la tecla `<Meta>`.
+  * `shift` {boolean} `true` para indicar la tecla `<Shift>`.
+  * `name` {string} El nombre de la tecla.
 
-The `rl.write()` method will write either `data` or a key sequence identified by `key` to the `output`. The `key` argument is supported only if `output` is a [TTY](tty.html) text terminal.
+El método `rl.write()` escribirá los `data` o la secuencia de teclas identificada por `key` al `output`. El argumento `key` es soportado sólo si `output` es una termina de texto [TTY](tty.html).
 
-If `key` is specified, `data` is ignored.
+Si se especifica la `key`, `data` es ignorado.
 
-When called, `rl.write()` will resume the `input` stream if it has been paused.
+Al llamarlo, `rl.write()` resumirá el stream `input` si ha sido pausado.
 
-If the `readline.Interface` was created with `output` set to `null` or `undefined` the `data` and `key` are not written.
+Si la `readline.Interface` fue creada con `output` establecido a `null` o `undefined`, no se escriben los `data` y la `key`.
 
 ```js
 rl.write('Delete this!');
-// Simulate Ctrl+u to delete the line written previously
+// Simula Ctrl+u para eliminar la línea escrita previamente
 rl.write(null, { ctrl: true, name: 'u' });
 ```
 
-The `rl.write()` method will write the data to the `readline` `Interface`'s `input` *as if it were provided by the user*.
+El método `rl.write()` escribirá los datos en la `input` de la `Interface` del `readline` *como si fuera proporcionado por el usuario*.
 
 ## readline.clearLine(stream, dir)
 
@@ -281,11 +281,11 @@ added: v0.7.7
 
 * `stream` {stream.Writable}
 * `dir` {number} 
-  * `-1` - to the left from cursor
-  * `1` - to the right from cursor
-  * `0` - the entire line
+  * `-1` - a la izquierda del cursor
+  * `1` - a la derecha del cursor
+  * `0` - toda la línea
 
-The `readline.clearLine()` method clears current line of given [TTY](tty.html) stream in a specified direction identified by `dir`.
+El método `readline.clearLine()` borra la línea actual del stream [TTY](tty.html) dado en una dirección específica identificada por `dir`.
 
 ## readline.clearScreenDown(stream)
 
@@ -295,7 +295,7 @@ added: v0.7.7
 
 * `stream` {stream.Writable}
 
-The `readline.clearScreenDown()` method clears the given [TTY](tty.html) stream from the current position of the cursor down.
+El método `readline.clearScreenDown()` borra el stream [TTY](tty.html) dado de la posición actual del cursor hacia abajo.
 
 ## readline.createInterface(options)
 
@@ -318,8 +318,8 @@ changes:
 -->
 
 * `options` {Object} 
-  * `input` {stream.Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
-  * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
+  * `input` {stream.Readable} El stream [Legible](stream.html#stream_readable_streams) a escuchar. Esta opción es *requerida*.
+  * `output` {stream.Writable} El stream [Escribible](stream.html#stream_writable_streams) al cual escribir lo datos del readline.
   * `completer` {Function} An optional function used for Tab autocompletion.
   * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
   * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
