@@ -1090,7 +1090,7 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es un iterador devuelto por una instancia [`Map`][] incorporada.
+Devuelve `true` si el valor es un iterador devuelto para una instancia [`Map`][] incorporada.
 
 Por ejemplo:
 
@@ -1213,7 +1213,7 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es un iterador devuelto por una instancia [`Set`][] incorporada.
+Devuelve `true` si el valor es un iterador devuelto para una instancia [`Set`][] incorporada.
 
 Por ejemplo:
 
