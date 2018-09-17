@@ -1343,12 +1343,12 @@ added: v10.0.0
 
 Devuelve `true` si el valor es una instancia [`Uint16Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint16Array(new ArrayBuffer());  // Returns false
-util.types.isUint16Array(new Uint16Array());  // Returns true
-util.types.isUint16Array(new Float64Array());  // Returns false
+util.types.isUint16Array(new ArrayBuffer());  // Devuelve false
+util.types.isUint16Array(new Uint16Array());  // Devuelve true
+util.types.isUint16Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isUint32Array(value)
@@ -1357,16 +1357,16 @@ util.types.isUint16Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint32Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint32Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint32Array(new ArrayBuffer());  // Returns false
-util.types.isUint32Array(new Uint32Array());  // Returns true
-util.types.isUint32Array(new Float64Array());  // Returns false
+util.types.isUint32Array(new ArrayBuffer());  // Devuelve false
+util.types.isUint32Array(new Uint32Array());  // Devuelve true
+util.types.isUint32Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isWeakMap(value)
@@ -1375,7 +1375,7 @@ util.types.isUint32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the value is a built-in [`WeakMap`][] instance.
 
