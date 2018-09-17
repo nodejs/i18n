@@ -592,36 +592,36 @@ myURL.searchParams.forEach((value, name, searchParams) => {
 #### urlSearchParams.get(name)
 
 * `name` {string}
-* Returns: {string} or `null` if there is no name-value pair with the given `name`.
+* Devuelve: {string} o `null` si no hay ningún par nombre-valor con el `name` dado.
 
-Returns the value of the first name-value pair whose name is `name`. If there are no such pairs, `null` is returned.
+Devuelve el valor del primer par nombre-valor cuyo nombre es `name`. Si no hay tales pares, `null` es devuelto.
 
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
 * Devuelve: {string[]}
 
-Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
+Devuelve los valores de todos los pares nombre-valor cuyos nombres son `name`. Si no hay tales pares, un array vacío es devuelto.
 
 #### urlSearchParams.has(name)
 
 * `name` {string}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if there is at least one name-value pair whose name is `name`.
+Devuelve `true` Si hay al menos un par nombre-valor cuyo nombre es `name`.
 
 #### urlSearchParams.keys()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Returns an ES6 `Iterator` over the names of each name-value pair.
+Devuelve un `Iterator` ES6 sobre los nombres de cada par nombre-valor.
 
 ```js
 const params = new URLSearchParams('foo=bar&foo=baz');
 for (const name of params.keys()) {
   console.log(name);
 }
-// Prints:
+// Imprime:
 //   foo
 //   foo
 ```
