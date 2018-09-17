@@ -1215,7 +1215,7 @@ server.on('stream', (stream) => {
 });
 ```
 
-La función `options.statCheck` también puede ser utilizada para cancelar la operación de envío devolviendo `false`. For instance, a conditional request may check the stat results to determine if the file has been modified to return an appropriate `304` response:
+La función `options.statCheck` también puede ser utilizada para cancelar la operación de envío devolviendo `false`. Por ejemplo, una solicitud condicional puede verificar los resultados de estadística para determinar si el archivo ha sido modificado para devolver una respuesta `304` apropiada:
 
 ```js
 const http2 = require('http2');
@@ -1234,7 +1234,7 @@ server.on('stream', (stream) => {
 
 El campo de encabezado `content-length` se establecerá automáticamente.
 
-The `offset` and `length` options may be used to limit the response to a specific range subset. Por ejemplo, esto puede ser utilizado para brindar soporte a las solicitudes de HTTP Range.
+Las opciones `offset` y `length` pueden ser utilizadas para limitar la respuesta a un subconjunto de rangos específicos. Por ejemplo, esto puede ser utilizado para brindar soporte a las solicitudes de HTTP Range.
 
 The `options.onError` function may also be used to handle all the errors that could happen before the delivery of the file is initiated. El comportamiento predeterminado es destruir el stream.
 
