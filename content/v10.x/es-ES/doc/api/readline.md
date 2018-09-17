@@ -344,27 +344,27 @@ Una vez que la instancia `readline.Interface` es creada, el caso más común es 
 });
 ``</pre> 
 
-If `terminal` is `true` for this instance then the `output` stream will get the best compatibility if it defines an `output.columns` property and emits a `'resize'` event on the `output` if or when the columns ever change ([`process.stdout`][] does this automatically when it is a TTY).
+Si el `terminal` es `true` para esta instancia, entonces el stream `output` tendrá la mejor compatibilidad si define una propiedad `output.columns` y emite un evento `'resize'` en el `output` si la columna llega a cambiar ([`process.stdout`][] hace esto automáticamente cuando es un TTY).
 
-### Use of the `completer` Function
+### Uso de la Función `completer`
 
-The `completer` function takes the current line entered by the user as an argument, and returns an `Array` with 2 entries:
+La función `completer` toma la línea actual ingresada por el usuario como un argumento, y devuelve un `Array` con 2 entradas:
 
-* An `Array` with matching entries for the completion.
-* The substring that was used for the matching.
+* Un `Array` con entradas que coincidan para la finalización.
+* La substring que fue usada para la coincidencia.
 
-For instance: `[[substr1, substr2, ...], originalsubstring]`.
+Por ejemplo: `[[substr1, substr2, ...], originalsubstring]`.
 
 ```js
 function completer(line) {
   const completions = '.help .error .exit .quit .q'.split(' ');
   const hits = completions.filter((c) => c.startsWith(line));
-  // show all completions if none found
+  // mostrar todas las finalizaciones si no se encuentra ninguna
   return [hits.length ? hits : completions, line];
 }
 ```
 
-The `completer` function can be called asynchronously if it accepts two arguments:
+La función `completer` puede ser llamada asincrónicamente si acepta dos argumentos:
 
 ```js
 function completer(linePartial, callback) {
@@ -382,7 +382,7 @@ added: v0.7.7
 * `x` {number}
 * `y` {number}
 
-The `readline.cursorTo()` method moves cursor to the specified position in a given [TTY](tty.html) `stream`.
+El método `readline.cursorTo()` mueve el cursor a una posición especificada en un `stream` [TTY](tty.html) dado.
 
 ## readline.emitKeypressEvents(stream[, interface])
 
@@ -393,13 +393,13 @@ added: v0.7.7
 * `stream` {stream.Readable}
 * `interface` {readline.Interface}
 
-The `readline.emitKeypressEvents()` method causes the given [Readable](stream.html#stream_readable_streams) stream to begin emitting `'keypress'` events corresponding to received input.
+El método `readline.emitKeypressEvents()` causa que el stream [Legible](stream.html#stream_readable_streams) dado inicie emitiendo los eventos `'keypress'` correspondientes a la entrada recibida.
 
 Optionally, `interface` specifies a `readline.Interface` instance for which autocompletion is disabled when copy-pasted input is detected.
 
-If the `stream` is a [TTY](tty.html), then it must be in raw mode.
+Si el `stream` es un [TTY](tty.html), entonces debe estar en modo raw.
 
-This is automatically called by any readline instance on its `input` if the `input` is a terminal. Closing the `readline` instance does not stop the `input` from emitting `'keypress'` events.
+Esto es llamado automáticamente por cualquier instancia de readline en su `input` si el `input` es un terminal. El cerrar la instancia `readline` no detiene a la `input` de emitir eventos `'keypress'`.
 
 ```js
 readline.emitKeypressEvents(process.stdin);
@@ -419,9 +419,9 @@ added: v0.7.7
 
 The `readline.moveCursor()` method moves the cursor *relative* to its current position in a given [TTY](tty.html) `stream`.
 
-## Example: Tiny CLI
+## Ejemplo: Tiny CLI
 
-The following example illustrates the use of `readline.Interface` class to implement a small command-line interface:
+El siguiente ejemplo ilustra el uso de la clase `readline.Interface` para implementar una pequeña interfaz de línea de comando:
 
 ```js
 const readline = require('readline');
@@ -449,9 +449,9 @@ rl.on('line', (line) => {
 });
 ```
 
-## Example: Read File Stream Line-by-Line
+## Ejemplo: Leer El Stream del Archivo Línea por Línea
 
-A common use case for `readline` is to consume input from a filesystem [Readable](stream.html#stream_readable_streams) stream one line at a time, as illustrated in the following example:
+Un caso de uso común para `readline` es para consumir entradas de un stream [Legible](stream.html#stream_readable_streams) del filesystem una línea a la vez, como se ilustra en el siguiente ejemplo:
 
 ```js
 const readline = require('readline');
