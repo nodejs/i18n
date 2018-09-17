@@ -1267,14 +1267,14 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
+Devuelve `true` si el valor es un objeto de símbolo, creado al llamar a `Object()` en un `Symbol` primitivo.
 
-For example:
+Por ejemplo:
 
 ```js
 const symbol = Symbol('foo');
-util.types.isSymbolObject(symbol);  // Returns false
-util.types.isSymbolObject(Object(symbol));   // Returns true
+util.types.isSymbolObject(symbol);  // Devuelve false
+util.types.isSymbolObject(Object(symbol));   // Devuelve true
 ```
 
 ### util.types.isTypedArray(value)
@@ -1283,16 +1283,16 @@ util.types.isSymbolObject(Object(symbol));   // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`TypedArray`][] instance.
+Devuelve `true` si el valor es una instancia [`TypedArray`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isTypedArray(new ArrayBuffer());  // Returns false
-util.types.isTypedArray(new Uint8Array());  // Returns true
-util.types.isTypedArray(new Float64Array());  // Returns true
+util.types.isTypedArray(new ArrayBuffer());  // Devuelve false
+util.types.isTypedArray(new Uint8Array());  // Devuelve true
+util.types.isTypedArray(new Float64Array());  // Devuelve true
 ```
 
 Ver también [`ArrayBuffer.isView()`][].
@@ -1303,16 +1303,16 @@ Ver también [`ArrayBuffer.isView()`][].
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint8Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint8Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint8Array(new ArrayBuffer());  // Returns false
-util.types.isUint8Array(new Uint8Array());  // Returns true
-util.types.isUint8Array(new Float64Array());  // Returns false
+util.types.isUint8Array(new ArrayBuffer());  // Devuelve false
+util.types.isUint8Array(new Uint8Array());  // Devuelve true
+util.types.isUint8Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isUint8ClampedArray(value)
@@ -1321,16 +1321,16 @@ util.types.isUint8Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint8ClampedArray`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint8ClampedArray(new ArrayBuffer());  // Returns false
-util.types.isUint8ClampedArray(new Uint8ClampedArray());  // Returns true
-util.types.isUint8ClampedArray(new Float64Array());  // Returns false
+util.types.isUint8ClampedArray(new ArrayBuffer());  // Devuelve false
+util.types.isUint8ClampedArray(new Uint8ClampedArray());  // Devuelve true
+util.types.isUint8ClampedArray(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isUint16Array(value)
@@ -1339,9 +1339,9 @@ util.types.isUint8ClampedArray(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint16Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint16Array`][] incorporada.
 
 For example:
 
