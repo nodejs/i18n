@@ -668,28 +668,28 @@ console.log(params.toString());
 
 * Devuelve: {string}
 
-Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
+Devuelve los parámetros de búsqueda serializados como una string, con caracteres código porciento cuando sea necesario.
 
 #### urlSearchParams.values()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Returns an ES6 `Iterator` over the values of each name-value pair.
+Devuelve un `Iterator` ES6 sobre los valores de cada par nombre-valor.
 
 #### urlSearchParams\[Symbol.iterator\]()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Returns an ES6 `Iterator` over each of the name-value pairs in the query string. Cada ítem del iterador es un `Array` de JavaScript. El primer ítem del `Array` es el `name`, el segundo ítem del `Array` es el `value`.
+Devuelve un `Iterator` ES6 sobre cada par nombre-valor en la string de consulta. Cada ítem del iterador es un `Array` de JavaScript. El primer ítem del `Array` es el `name`, el segundo ítem del `Array` es el `value`.
 
-Alias for [`urlSearchParams.entries()`][].
+Alias para [`urlSearchParams.entries()`][].
 
 ```js
 const params = new URLSearchParams('foo=bar&xyz=baz');
 for (const [name, value] of params) {
   console.log(name, value);
 }
-// Prints:
+// Imprime:
 //   foo bar
 //   xyz baz
 ```
@@ -701,9 +701,9 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Devuelve: {string}
 
-Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
+Devuelve la serialización de ASCII [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) del `domain`. If `domain` is an invalid domain, the empty string is returned.
 
 It performs the inverse operation to [`url.domainToUnicode()`][].
 
