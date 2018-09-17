@@ -1902,8 +1902,8 @@ La clase `stream.PassThrough` es una implementación trivial de un stream [`Tran
 
 En las versiones anteriores de v0.10 de Node.js, la interfaz del stream `Readable` era más simple, pero también menos potente y menos útil.
 
-* En vez de esperar por llamadas, el método [`stream.read()`](#stream_readable_read_size), eventos [`'data'`][] empezarían a emitirse inmediatamente. Applications that would need to perform some amount of work to decide how to handle data were required to store read data into buffers so the data would not be lost.
-* The [`stream.pause()`](#stream_readable_pause) method was advisory, rather than guaranteed. This meant that it was still necessary to be prepared to receive [`'data'`][] events *even when the stream was in a paused state*.
+* En vez de esperar por llamadas, el método [`stream.read()`](#stream_readable_read_size), eventos [`'data'`][] empezarían a emitirse inmediatamente. Las aplicaciones que que necesiten realizar cierta cantidad de trabajo para decidir cómo manejar los datos, fueron requeridas que almacenen los datos en los búferes para que los datos no se perdieran.
+* El método [`stream.pause()`](#stream_readable_pause) era consultivo, en vez de garantizado. Esto significaba que era necesario estar preparado para recibir eventos [`'data'`][] *incluso cuando el stream estaba en estado pausado*.
 
 In Node.js v0.10, the [`Readable`][] class was added. For backwards compatibility with older Node.js programs, `Readable` streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
 
