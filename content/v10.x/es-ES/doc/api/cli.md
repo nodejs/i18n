@@ -94,7 +94,7 @@ Fuerza cripto FIPS-compliant en inicio. (No puede se deshabilitado desde el cód
 added: v0.11.15
 -->
 
-Especifica ruta de datos ICU. (Sobreescribe `NODE_ICU_DATA`.)
+Especifica la ruta de carga datos ICU. (Sobreescribe `NODE_ICU_DATA`.)
 
 ### `--inspect-brk[=[host:]port]`
 
@@ -102,7 +102,7 @@ Especifica ruta de datos ICU. (Sobreescribe `NODE_ICU_DATA`.)
 added: v7.6.0
 -->
 
-Activar inspector en `host:port` e interrumpe al inicio del script de usuario. Predeterminado `host:port` es `127.0.0.1:9229`.
+Activar inspector en `host:port` e interrumpe al inicio del script de usuario. El `host:port` predeterminado es `127.0.0.1:9229`.
 
 ### `--inspect-port=[host:]port`
 
@@ -110,9 +110,9 @@ Activar inspector en `host:port` e interrumpe al inicio del script de usuario. P
 added: v7.6.0
 -->
 
-Set the `host:port` to be used when the inspector is activated. Useful when activating the inspector by sending the `SIGUSR1` signal.
+Establece el `host:port` para ser usado cuando el inspector está activado. Es útil al activar el inspector enviando la señal `SIGUSR1`.
 
-Default host is `127.0.0.1`.
+El host predeterminado es `127.0.0.1`.
 
 ### `--inspect[=[host:]port]`
 
@@ -120,9 +120,9 @@ Default host is `127.0.0.1`.
 added: v6.3.0
 -->
 
-Activate inspector on `host:port`. Default is `127.0.0.1:9229`.
+Activar el inspector en `host:port`. El predeterminado es `127.0.0.1:9229`.
 
-V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del inspector V8 permite que las herramientas como Chrome DevTools e IDEs depuren y perfilen instancias de Node.js. Las herramientas se adjuntan a las instancias de Node.js a través de un puerto tcp y se comunican utilizando el [Protocolo Chrome DevTools](https://chromedevtools.github.io/devtools-protocol/).
 
 ### `--napi-modules`
 
@@ -130,7 +130,7 @@ V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug 
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+Esta opción es un no-op. Es mantenido para compatibilidad.
 
 ### `--no-deprecation`
 
@@ -138,7 +138,7 @@ This option is a no-op. It is kept for compatibility.
 added: v0.8.0
 -->
 
-Silence deprecation warnings.
+Silencia las advertencias de desaprobación.
 
 ### `--no-force-async-hooks-checks`
 
