@@ -157,17 +157,17 @@ Cuando se resume el programa utilizando fg(1p), se emitirán los eventos `'pause
 
 Los eventos `'pause'` y `'SIGCONT'` no serán emitidos si el `input` fue pausado antes de que el proceso fuese enviado al segundo plano.
 
-The listener function is invoked without passing any arguments.
+La función oyente es invocada sin pasar ningún argumento.
 
 ```js
 rl.on('SIGTSTP', () => {
-  // This will override SIGTSTP and prevent the program from going to the
-  // background.
+  // Esto reemplazará a SIGTSTP y prevendrá que el programa se vaya al
+  // segundo plando.
   console.log('Caught SIGTSTP.');
 });
 ```
 
-The `'SIGTSTP'` event is *not* supported on Windows.
+El evento `'SIGTSTP'` *no* es soportado en Windows.
 
 ### rl.close()
 
@@ -175,7 +175,7 @@ The `'SIGTSTP'` event is *not* supported on Windows.
 added: v0.1.98
 -->
 
-The `rl.close()` method closes the `readline.Interface` instance and relinquishes control over the `input` and `output` streams. When called, the `'close'` event will be emitted.
+El método `rl.close()` cierra la instancia `readline.Interface` y renuncia al control sobre los streams `input` y `output`. Al llamarlo, el evento `'close'` será emitido.
 
 ### rl.pause()
 
@@ -183,9 +183,9 @@ The `rl.close()` method closes the `readline.Interface` instance and relinquishe
 added: v0.3.4
 -->
 
-The `rl.pause()` method pauses the `input` stream, allowing it to be resumed later if necessary.
+El método `rl.pause()` pausa el stream `input`, permitiéndole ser resumido después si es necesario.
 
-Calling `rl.pause()` does not immediately pause other events (including `'line'`) from being emitted by the `readline.Interface` instance.
+El llamar a `rl.pause()` no pausa inmediatamente otros eventos (incluyendo `'line'`) de ser emitidos por la instancia `readline.Interface`.
 
 ### rl.prompt([preserveCursor])
 
@@ -193,13 +193,13 @@ Calling `rl.pause()` does not immediately pause other events (including `'line'`
 added: v0.1.98
 -->
 
-* `preserveCursor` {boolean} If `true`, prevents the cursor placement from being reset to `0`.
+* `preserveCursor` {boolean} Si es `true`, previene que la colocación del cursor se restablezca a `0`.
 
 The `rl.prompt()` method writes the `readline.Interface` instances configured `prompt` to a new line in `output` in order to provide a user with a new location at which to provide input.
 
-When called, `rl.prompt()` will resume the `input` stream if it has been paused.
+Al llamarlo, `rl.prompt()` resumirá el stream `input` si ha sido pausado.
 
-If the `readline.Interface` was created with `output` set to `null` or `undefined` the prompt is not written.
+Si la `readline.Interface` fue creada con `output` establecido a `null` o `undefined`, el aviso no se escribe.
 
 ### rl.question(query, callback)
 
@@ -207,16 +207,16 @@ If the `readline.Interface` was created with `output` set to `null` or `undefine
 added: v0.3.3
 -->
 
-* `query` {string} A statement or query to write to `output`, prepended to the prompt.
-* `callback` {Function} A callback function that is invoked with the user's input in response to the `query`.
+* `query` {string} Una declaración o consulta a escribir en `output`, antepuesto al aviso.
+* `callback` {Function} Una función callback que es invocada con la entrada del usuario en respuesta a la `query`.
 
-The `rl.question()` method displays the `query` by writing it to the `output`, waits for user input to be provided on `input`, then invokes the `callback` function passing the provided input as the first argument.
+El método `rl.question()` muestra la `query` escribiéndola en el `output`. Espera que se proporcione la entrada del usuario en `input` y luego invoca la función `callback`, pasando la entrada proporcionada como el primer argumento.
 
-When called, `rl.question()` will resume the `input` stream if it has been paused.
+Al llamarlo, `rl.question()` resumirá el stream `input` si ha sido pausado.
 
-If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
+Si la `readline.Interface` fue creada con `output` establecido a `null` o `undefined`, no se escribe la `query`.
 
-Example usage:
+Ejemplo de uso:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
