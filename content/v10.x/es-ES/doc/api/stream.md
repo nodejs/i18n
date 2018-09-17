@@ -1860,8 +1860,8 @@ The `transform._flush()` method is prefixed with an underscore because it is int
 #### transform.\_transform(chunk, encoding, callback)
 
 * `chunk` {Buffer|string|any} El fragmento a ser transformado. **Siempre** será un búfer a menos que la opción `decodeStrings` sea establecida como `false`, o el stream esté operando en modo objeto.
-* `encoding` {string} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value - 'buffer', ignore it in this case.
-* `callback` {Function} A callback function (optionally with an error argument and data) to be called after the supplied `chunk` has been processed.
+* `encoding` {string} Si el fragmento es un string, entonces esto es el tipo de codificación. Si el fragmento es un búfer, entonces este es el valor especial - 'buffer', ignorarlo en este caso.
+* `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada después que el `chunk` proporcionado ha sido procesado.
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
