@@ -47,9 +47,9 @@ added: v9.6.0
 
 La clase `vm.Module` proporciona una interfaz de bajo nivel para utilizar módulos ECMAScript en contextos VM. Es la contraparte de la clase `vm.Script` que refleja estrechamente los [Registros del Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) que se definen en la especificación ECMAScript.
 
-Sin embargo, a diferencia de `vm.Script`, cada objeto `vm.Module` está vinculado a un contexto desde su creación. Las operaciones en objetos `vm.Module` son intrínsecamente asincrónicos, en contraste con la naturaleza sincrónica de los objetos `vm.Script`. With the help of async functions, however, manipulating `vm.Module` objects is fairly straightforward.
+Sin embargo, a diferencia de `vm.Script`, cada objeto `vm.Module` está vinculado a un contexto desde su creación. Las operaciones en objetos `vm.Module` son intrínsecamente asincrónicos, en contraste con la naturaleza sincrónica de los objetos `vm.Script`. Con la ayuda de las funciones asincrónicas, sin embargo, manipular objetos `vm.Module` es bastante sencillo.
 
-Using a `vm.Module` object requires four distinct steps: creation/parsing, linking, instantiation, and evaluation. These four steps are illustrated in the following example.
+Utilizar un objeto `vm.Module` requiera cuatro pasos distintos: creación/análisis, vinculación, creación de instancias, y evaluación. Estos cuatro pasos se ilustran en el siguiente ejemplo.
 
 This implementation lies at a lower level than the [ECMAScript Module loader](esm.html#esm_ecmascript_modules). There is also currently no way to interact with the Loader, though support is planned.
 
