@@ -40,17 +40,17 @@ Per comodità, il modulo `child_process` fornisce una manciata di alternative si
       di inviare messaggi tra parent e child.
     * [`child_process.execSync()`][]: una versione sincrona di
       [`child_process.exec()`][] che *interromperà* il ciclo di eventi di Node.js.
-    * [`child_process.execFileSync()`][]: a synchronous version of
-      [`child_process.execFile()`][] that *will* block the Node.js event loop.
+    * [`child_process.execFileSync()`][]: una versione sincrona di
+      [`child_process.execFile()`][] che *interromperà* il ciclo di eventi di Node.js.
     
 
-For certain use cases, such as automating shell scripts, the [synchronous counterparts](#child_process_synchronous_process_creation) may be more convenient. In many cases, however, the synchronous methods can have significant impact on performance due to stalling the event loop while spawned processes complete.
+Per alcuni casi d'utilizzo, come l'automazione degli script della shell, le [controparti sincrone](#child_process_synchronous_process_creation) possono essere più convenienti. Tuttavia, in molti casi, i metodi sincroni possono avere un impatto significativo sulle prestazioni a causa dell'interruzione del ciclo degli eventi durante il completamento dei processi generati.
 
-## Asynchronous Process Creation
+## Creazione di Processi Asincroni
 
-The [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], and [`child_process.execFile()`][] methods all follow the idiomatic asynchronous programming pattern typical of other Node.js APIs.
+I metodi [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], e [`child_process.execFile()`][] seguono tutti il modello di programmazione asincrona idiomatica tipico di altre API di Node.js.
 
-Each of the methods returns a [`ChildProcess`][] instance. These objects implement the Node.js [`EventEmitter`][] API, allowing the parent process to register listener functions that are called when certain events occur during the life cycle of the child process.
+Ciascun metodo restituisce un'istanza [`ChildProcess`][]. These objects implement the Node.js [`EventEmitter`][] API, allowing the parent process to register listener functions that are called when certain events occur during the life cycle of the child process.
 
 The [`child_process.exec()`][] and [`child_process.execFile()`][] methods additionally allow for an optional `callback` function to be specified that is invoked when the child process terminates.
 
