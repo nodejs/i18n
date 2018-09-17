@@ -392,7 +392,7 @@ subprocess.on('error', (err) => {
 
 Alcune piattaforme (macOS, Linux) utilizzeranno il valore di `argv[0]` per il titolo del processo, mentre altri (Windows, SunOS) useranno `command`.
 
-Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `process.argv[0]` in a Node.js child process will not match the `argv0` parameter passed to `spawn` from the parent, retrieve it with the `process.argv0` property instead.
+Attualmente Node.js sovrascrive `argv[0]` con `process.execPath` all'avvio, quindi il `process.argv[0]` all'interno di un processo child di Node.js non corrisponderà al parametro `argv0` passato a `spawn` dal parent, perciò va recuperato con la proprietà `process.argv0`.
 
 #### options.detached
 
