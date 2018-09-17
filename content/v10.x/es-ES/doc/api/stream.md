@@ -1865,7 +1865,7 @@ The `transform._flush()` method is prefixed with an underscore because it is int
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
-Todas las implementaciones de stream `Transform` deben proporcionar un método `_transform()` para aceptar la entrada y producir una salida. The `transform._transform()` implementation handles the bytes being written, computes an output, then passes that output off to the readable portion using the `readable.push()` method.
+Todas las implementaciones de stream `Transform` deben proporcionar un método `_transform()` para aceptar la entrada y producir una salida. La implementación `transform._transform()` maneja los bytes que están siendo escritos, computa una salida, luego pasa esa salida a la porción legible usando el método `readable.push()`.
 
 The `transform.push()` method may be called zero or more times to generate output from a single input chunk, depending on how much is to be output as a result of the chunk.
 
