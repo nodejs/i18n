@@ -1433,7 +1433,7 @@ deprecated: v6.0.0
 
 El método `util._extend()` nunca fue pensado para ser usado fuera de los módulos internos de Node.js. De todas maneras, la comunidad lo encontró y lo usó.
 
-It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
+Está desaprobado y no debería ser usado en código nuevo. JavaScript viene con funcionabilidades incorporadas muy similares por medio de [`Object.assign()`].
 
 ### util.debug(string)
 
@@ -1442,11 +1442,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.error()`][].
 
-* `string` {string} The message to print to `stderr`
+* `string` {string} El mensaje para imprimir en `stderr`
 
-Deprecated predecessor of `console.error`.
+Predecesor desaprobado de `console.error`.
 
 ### util.error([...strings])
 
@@ -1455,11 +1455,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.error()`][].
 
-* `...strings` {string} The message to print to `stderr`
+* `...strings` {string} El mensaje para imprimir en `stderr`
 
-Deprecated predecessor of `console.error`.
+Predecesor desaprobado de `console.error`.
 
 ### util.isArray(object)
 
@@ -1468,14 +1468,14 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`Array.isArray()`][].
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Alias for [`Array.isArray()`][].
+Alias para [`Array.isArray()`][].
 
-Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Array`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1495,12 +1495,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'boolean'`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Boolean`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1520,12 +1520,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`Buffer.isBuffer()`][].
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Buffer`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
