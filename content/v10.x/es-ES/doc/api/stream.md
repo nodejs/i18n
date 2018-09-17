@@ -1377,7 +1377,7 @@ Esta función opcional será llamada antes de que el stream cierre, demorando el
 
 Es recomendado que ocurran errores durante el procesamiento de los métodos `writable._write()` y `writable._writev()` sean reportados al invocar el callback y pasar el error como el primer argumento. Esto causará que un evento `'error'` sea emitido por el `Writable`. Arrojar un `Error` desde dentro del `writable._write()` puede resultar en un comportamiento inesperado e inconsistente dependiendo de cómo se está usando el stream. Usar el callback asegura el manejo consistente y predecible de manejo de errores.
 
-If a `Readable` stream pipes into a `Writable` stream when `Writable` emits an error, the `Readable` stream will be unpiped.
+Si un stream `Readable` hace pipe en un stream `Writable` cuando `Writable` emite un error, no se le hará pipe al stream `Readable`.
 
 ```js
 const { Writable } = require('stream');
@@ -1393,7 +1393,7 @@ const myWritable = new Writable({
 });
 ```
 
-#### An Example Writable Stream
+#### Un Stream Escribible de Ejemplo
 
 The following illustrates a rather simplistic (and somewhat pointless) custom `Writable` stream implementation. While this specific `Writable` stream instance is not of any real particular usefulness, the example illustrates each of the required elements of a custom [`Writable`][] stream instance:
 
