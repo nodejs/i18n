@@ -1521,7 +1521,7 @@ changes:
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
-All `Readable` stream implementations must provide an implementation of the `readable._read()` method to fetch data from the underlying resource.
+Todas las implementaciones de stream `Readable` deben proporcionar una implementación del método `readable._read()` para recoger datos del recurso subyacente.
 
 When `readable._read()` is called, if data is available from the resource, the implementation should begin pushing that data into the read queue using the [`this.push(dataChunk)`](#stream_readable_push_chunk_encoding) method. `_read()` should continue reading from the resource and pushing data until `readable.push()` returns `false`. Only when `_read()` is called again after it has stopped should it resume pushing additional data onto the queue.
 
