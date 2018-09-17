@@ -51,7 +51,7 @@ Sin embargo, a diferencia de `vm.Script`, cada objeto `vm.Module` está vinculad
 
 Utilizar un objeto `vm.Module` requiera cuatro pasos distintos: creación/análisis, vinculación, creación de instancias, y evaluación. Estos cuatro pasos se ilustran en el siguiente ejemplo.
 
-This implementation lies at a lower level than the [ECMAScript Module loader](esm.html#esm_ecmascript_modules). There is also currently no way to interact with the Loader, though support is planned.
+Esta implementación se encuentra a un nivel más bajo que el [cargador de Módulo ECMAScript](esm.html#esm_ecmascript_modules). Actualmente, tampoco hay manera de interactuar con el Cargador, aunque el soporte está planeado.
 
 ```js
 const vm = require('vm');
