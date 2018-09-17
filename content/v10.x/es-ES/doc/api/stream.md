@@ -1395,7 +1395,7 @@ const myWritable = new Writable({
 
 #### Un Stream Escribible de Ejemplo
 
-The following illustrates a rather simplistic (and somewhat pointless) custom `Writable` stream implementation. While this specific `Writable` stream instance is not of any real particular usefulness, the example illustrates each of the required elements of a custom [`Writable`][] stream instance:
+Lo siguiente muestra una implementación de stream `Writable` personalizada algo simplista (y un poco inútil). Mientras esta instancia de stream `Writable` específica no es de ninguna utilidad real, el ejemplo ilustra cada uno de los elementos requeridos de una instancia de stream [`Writable`][] personalizada:
 
 ```js
 const { Writable } = require('stream');
@@ -1416,9 +1416,9 @@ class MyWritable extends Writable {
 }
 ```
 
-#### Decoding buffers in a Writable Stream
+#### Decodificación de Búferes en un Stream Escribible
 
-Decoding buffers is a common task, for instance, when using transformers whose input is a string. This is not a trivial process when using multi-byte characters encoding, such as UTF-8. The following example shows how to decode multi-byte strings using `StringDecoder` and [`Writable`][].
+La decodificación de búferes es una tarea común, por ejemplo, cuando se use tranformadores cuya entrada es un string. No es un proceso trivial cuando se use codificación de caracteres multi-byte, tal como UTF-8. The following example shows how to decode multi-byte strings using `StringDecoder` and [`Writable`][].
 
 ```js
 const { Writable } = require('stream');
