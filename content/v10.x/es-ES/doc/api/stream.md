@@ -1905,7 +1905,7 @@ En las versiones anteriores de v0.10 de Node.js, la interfaz del stream `Readabl
 * En vez de esperar por llamadas, el método [`stream.read()`](#stream_readable_read_size), eventos [`'data'`][] empezarían a emitirse inmediatamente. Las aplicaciones que que necesiten realizar cierta cantidad de trabajo para decidir cómo manejar los datos, fueron requeridas que almacenen los datos en los búferes para que los datos no se perdieran.
 * El método [`stream.pause()`](#stream_readable_pause) era consultivo, en vez de garantizado. Esto significaba que era necesario estar preparado para recibir eventos [`'data'`][] *incluso cuando el stream estaba en estado pausado*.
 
-In Node.js v0.10, the [`Readable`][] class was added. For backwards compatibility with older Node.js programs, `Readable` streams switch into "flowing mode" when a [`'data'`][] event handler is added, or when the [`stream.resume()`](#stream_readable_resume) method is called. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
+En Node.js v0.10, la clase [`Readable`][] fue añadida. Para compatibilidad con versiones anteriores con programas Node.js más viejos, los streams `Readable` cambian a "modo fluido" cuando un manejador de evento [`'data'`][] es añadido, o cuando el método [`stream.resume()`](#stream_readable_resume) es llamado. The effect is that, even when not using the new [`stream.read()`](#stream_readable_read_size) method and [`'readable'`][] event, it is no longer necessary to worry about losing [`'data'`][] chunks.
 
 While most applications will continue to function normally, this introduces an edge case in the following conditions:
 
