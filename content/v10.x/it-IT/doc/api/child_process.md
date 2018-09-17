@@ -56,10 +56,10 @@ I metodi [`child_process.exec()`][] e [`child_process.execFile()`][] consentono 
 
 ### Generare i file `.bat` e `.cmd` su Windows
 
-L'importanza della distinzione tra [`child_process.exec()`][] e [`child_process.execFile()`][] può variare in base alla piattaforma. Sui sistemi operativi di tipo Unix (Unix, Linux, macOS) [`child_process.execFile()`][] può essere più efficiente perché non genera una shell di default. Su Windows, tuttavia, i file `.bat` e `.cmd` non sono eseguibili da soli senza un terminale e, pertanto, non possono essere avviati utilizzando [`child_process.execFile()`][]. When running on Windows, `.bat` and `.cmd` files can be invoked using [`child_process.spawn()`][] with the `shell` option set, with [`child_process.exec()`][], or by spawning `cmd.exe` and passing the `.bat` or `.cmd` file as an argument (which is what the `shell` option and [`child_process.exec()`][] do). In any case, if the script filename contains spaces it needs to be quoted.
+L'importanza della distinzione tra [`child_process.exec()`][] e [`child_process.execFile()`][] può variare in base alla piattaforma. Sui sistemi operativi di tipo Unix (Unix, Linux, macOS) [`child_process.execFile()`][] può essere più efficiente perché non genera una shell di default. Su Windows, tuttavia, i file `.bat` e `.cmd` non sono eseguibili da soli senza un terminale e, pertanto, non possono essere avviati utilizzando [`child_process.execFile()`][]. Quando si eseguono su Windows, i file `.bat` e `.cmd` possono essere invocati usando [`child_process.spawn()`][] con il set di opzioni `shell`, con [`child_process.exec()`][], oppure generando `cmd.exe` e passando i file `.bat` o `.cmd` come argomento (che è ciò che fanno le opzioni `shell` e [`child_process.exec()`][]). In ogni caso, se il filename dello script contiene spazi, deve essere racchiuso tra le virgolette.
 
 ```js
-// On Windows Only ...
+// Solo su Windows ...
 const { spawn } = require('child_process');
 const bat = spawn('cmd.exe', ['/c', 'my.bat']);
 
@@ -77,7 +77,7 @@ bat.on('exit', (code) => {
 ```
 
 ```js
-// OR...
+// OPPURE...
 const { exec } = require('child_process');
 exec('my.bat', (err, stdout, stderr) => {
   if (err) {
@@ -87,9 +87,9 @@ exec('my.bat', (err, stdout, stderr) => {
   console.log(stdout);
 });
 
-// Script with spaces in the filename:
+// Script con spazi nel filename:
 const bat = spawn('"my script.cmd"', ['a', 'b'], { shell: true });
-// or:
+// oppure:
 exec('"my script.cmd" a b', (err, stdout, stderr) => {
   // ...
 });
@@ -106,7 +106,7 @@ changes:
     description: The `windowsHide` option is supported now.
 -->
 
-* `command` {string} The command to run, with space-separated arguments.
+* `command` {string} Il comando da eseguire, con argomenti separati dallo spazio.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process. **Default:** `null`.
   * `env` {Object} Environment key-value pairs. **Default:** `null`.
