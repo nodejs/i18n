@@ -1654,7 +1654,7 @@ Un stream [`Duplex`][] es uno que implementa tanto [`Readable`][] como [`Writabl
 
 Porque JavaScript no tiene soporte para múltiples herencias, la clase `stream.Duplex` es extendida para implementar un stream [`Duplex`][] (a diferencia de extender las clases `stream.Readable` *y* `stream.Writable`).
 
-The `stream.Duplex` class prototypically inherits from `stream.Readable` and parasitically from `stream.Writable`, but `instanceof` will work properly for both base classes due to overriding [`Symbol.hasInstance`][] on `stream.Writable`.
+La clase `stream.Duplex` hereda prototípicamente de `stream.Readable` y parasitariamente de `stream.Writable`, pero `instanceof` va a funcionar de forma correcta para las ambas clases de base, debido a cancelar [`Symbol.hasInstance`][] en `stream.Writable`.
 
 Custom `Duplex` streams *must* call the `new stream.Duplex([options])` constructor and implement *both* the `readable._read()` and `writable._write()` methods.
 
@@ -1716,9 +1716,9 @@ const myDuplex = new Duplex({
 });
 ```
 
-#### An Example Duplex Stream
+#### Un Ejemplo de Stream Dúplex
 
-The following illustrates a simple example of a `Duplex` stream that wraps a hypothetical lower-level source object to which data can be written, and from which data can be read, albeit using an API that is not compatible with Node.js streams. The following illustrates a simple example of a `Duplex` stream that buffers incoming written data via the [`Writable`][] interface that is read back out via the [`Readable`][] interface.
+Lo siguiente muestra un ejemplo simple de un stream `Duplex` que envuelve un objeto fuente de bajo-nivel hipotético donde se pueden escribir datos, y de donde esos datos pueden ser leídos, aunque usando un API que no es compatible con streams Node.js. Lo siguiente muestra un ejemplo simple de un stream `Duplex` que almacena datos ya escritos entrantes vía la interfaz [`Writable`][], que se vuelve a leer vía la interfaz [`Readable`][].
 
 ```js
 const { Duplex } = require('stream');
