@@ -45,7 +45,7 @@ added: v9.6.0
 
 *Esta función solo está disponible con el indicador de comando `--experimental-vm-modules` habilitado.*
 
-La clase `vm.Module` proporciona una interfaz de bajo nivel para utilizar módulos ECMAScript en contextos VM. It is the counterpart of the `vm.Script` class that closely mirrors [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s as defined in the ECMAScript specification.
+La clase `vm.Module` proporciona una interfaz de bajo nivel para utilizar módulos ECMAScript en contextos VM. Es la contraparte de la clase `vm.Script` que refleja estrechamente los [Registros del Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) que se definen en la especificación ECMAScript.
 
 Unlike `vm.Script` however, every `vm.Module` object is bound to a context from its creation. Operations on `vm.Module` objects are intrinsically asynchronous, in contrast with the synchronous nature of `vm.Script` objects. With the help of async functions, however, manipulating `vm.Module` objects is fairly straightforward.
 
