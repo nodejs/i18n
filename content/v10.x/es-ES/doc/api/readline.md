@@ -321,13 +321,13 @@ changes:
   * `input` {stream.Readable} El stream [Legible](stream.html#stream_readable_streams) a escuchar. Esta opción es *requerida*.
   * `output` {stream.Writable} El stream [Escribible](stream.html#stream_writable_streams) al cual escribir lo datos del readline.
   * `completer` {Function} An optional function used for Tab autocompletion.
-  * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
-  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
-  * `prompt` {string} The prompt string to use. **Default:** `'> '`.
-  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
-  * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`.
+  * `terminal` {boolean} `true` si los streams `input` y `output` deberían ser tratados como un TTY, y deberían tener códigos de escape ANSI/VT100 escritos. **Default:** checking `isTTY` on the `output` stream upon instantiation.
+  * `historySize` {number} Número máximo de líneas de historia retenidas. Para inhabilitar la historia, establezca este valor a `0`. Esta opción tiene sentido sólo si el `terminal` es establecido a `true`por el usuario o por una verificación interna de `output`. De lo contrario, el mecanismo de caché del historial no se inicializa en absoluto. **Predeterminado:** `30`.
+  * `prompt` {string} La string aviso a utilizar. **Predeterminado:** `'> '`.
+  * `crlfDelay` {number) Si el retraso entre `\r` y `\n` excede de `crlfDelay` milisegundos, `\r` y `\n` serán tratados como entradas de fin de línea separadas. `crlfDelay` será coaccionado a un número no menor a `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Predeterminado:** `100`.
+  * `removeHistoryDuplicates` {boolean} Si es `true`, cuando una nueva línea de entrada añadida a la lista de historia duplica una más vieja, esto remueve la línea más vieja de la lista. **Predeterminado:** `false`.
 
-The `readline.createInterface()` method creates a new `readline.Interface` instance.
+El método `readline.createInterface()` crea una nueva instancia de `readline.Interface`.
 
 ```js
 const readline = require('readline');
@@ -337,13 +337,12 @@ const rl = readline.createInterface({
 });
 ```
 
-Once the `readline.Interface` instance is created, the most common case is to listen for the `'line'` event:
+Una vez que la instancia `readline.Interface` es creada, el caso más común es escuchar el evento ``'line'</0:</p>
 
-```js
-rl.on('line', (line) => {
+<pre><code class="js">rl.on('line', (line) => {
   console.log(`Received: ${line}`);
 });
-```
+``</pre> 
 
 If `terminal` is `true` for this instance then the `output` stream will get the best compatibility if it defines an `output.columns` property and emits a `'resize'` event on the `output` if or when the columns ever change ([`process.stdout`][] does this automatically when it is a TTY).
 
