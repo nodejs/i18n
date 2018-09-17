@@ -1746,9 +1746,9 @@ class MyDuplex extends Duplex {
 }
 ```
 
-The most important aspect of a `Duplex` stream is that the `Readable` and `Writable` sides operate independently of one another despite co-existing within a single object instance.
+El aspecto más importante de un stream `Duplex` es que los lados `Readable` y `Writable` operan independientemente uno del otro, a pesar de coexistir dentro de una sola instancia objeto.
 
-#### Object Mode Duplex Streams
+#### Modo Objeto de Stream Dúplex
 
 For `Duplex` streams, `objectMode` can be set exclusively for either the `Readable` or `Writable` side using the `readableObjectMode` and `writableObjectMode` options respectively.
 
