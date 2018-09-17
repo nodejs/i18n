@@ -828,7 +828,7 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es un `arguments` del objeto.
+Devuelve `true` si el valor es un objeto de `arguments`.
 
 Por ejemplo:
 
