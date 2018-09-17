@@ -272,7 +272,7 @@ console.log(myURL.port);
 // Imprime 8888
 
 // Puertos predeterminados son automáticamente transformados a la string vacía
-// (HTTPS protocol's default port is 443)
+// (el puerto de protocolo HTTPS por defecto es 443)
 myURL.port = '443';
 console.log(myURL.port);
 // Imprime la string vacía
@@ -300,7 +300,7 @@ myURL.port = 1234.5678;
 console.log(myURL.port);
 // Imprime 1234
 
-// Números fuera de rango que no estén representados en notación científica
+// Los Números fuera de rango que no estén representados en notación científica
 // serán ignorados.
 myURL.port = 1e10; // 10000000000, se verificará el rango como se describe a continuación
 console.log(myURL.port);
@@ -379,7 +379,7 @@ console.log(myURL.href);
 // Imprime https://123:xyz@example.com/
 ```
 
-Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `username` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de los métodos [`url.parse()`][] and [`url.format()`][] producirían.
+Cualquier carácter URL inválido que aparezca en el valor asignado de la propiedad `username` será [percent-encoded](#whatwg-percent-encoding). Tenga en cuenta que la selección de los caracteres para percent-encode puede variar un poco de lo que los métodos [`url.parse()`][] y [`url.format()`][] producirían.
 
 #### url.toString()
 
@@ -417,65 +417,65 @@ changes:
     description: The class is now available on the global object.
 -->
 
-La API `URLSearchParams` proporciona acceso para leer y escribir a la consulta de una `URL`. La clase `URLSearchParams` también puede ser usada de forma independiente con uno de los cuatro siguientes constructores. La clase `URLSearchParams` también está disponible en el objeto global.
+La API `URLSearchParams` proporciona acceso para leer y escribir a la consulta de una `URL`. La clase `URLSearchParams` también puede ser usada de forma independiente con uno de los cuatro constructores siguientes. La clase `URLSearchParams` también está disponible en el objeto global.
 
 La interfaz WHATWG `URLSearchParams` y el módulo [`querystring`][], tienen propósitos similares, pero el propósito del módulo [`querystring`][] es más general, ya que permite la personalización de caracteres delimitadores (`&` and `=`). Por otra parte, esta API está diseñada únicamente para strings de consulta URL.
 
 ```js
 const myURL = new URL('https://example.org/?abc=123');
 console.log(myURL.searchParams.get('abc'));
-// Prints 123
+// Imprime 123
 
 myURL.searchParams.append('abc', 'xyz');
 console.log(myURL.href);
-// Prints https://example.org/?abc=123&abc=xyz
+// Imprime https://example.org/?abc=123&abc=xyz
 
 myURL.searchParams.delete('abc');
 myURL.searchParams.set('a', 'b');
 console.log(myURL.href);
-// Prints https://example.org/?a=b
+// Imprime https://example.org/?a=b
 
 const newSearchParams = new URLSearchParams(myURL.searchParams);
-// The above is equivalent to
+// Lo anterior es equivalente a
 // const newSearchParams = new URLSearchParams(myURL.search);
 
 newSearchParams.append('a', 'c');
 console.log(myURL.href);
-// Prints https://example.org/?a=b
+// Imprime https://example.org/?a=b
 console.log(newSearchParams.toString());
-// Prints a=b&a=c
+// Imprime a=b&a=c
 
-// newSearchParams.toString() is implicitly called
+// newSearchParams.toString() es llamado implícitamente
 myURL.search = newSearchParams;
 console.log(myURL.href);
-// Prints https://example.org/?a=b&a=c
+// Imprime https://example.org/?a=b&a=c
 newSearchParams.delete('a');
 console.log(myURL.href);
-// Prints https://example.org/?a=b&a=c
+// Imprime https://example.org/?a=b&a=c
 ```
 
 #### Constructor: new URLSearchParams()
 
-Instantiate a new empty `URLSearchParams` object.
+Crear una instancia de un nuevo objeto `URLSearchParams` vacío.
 
 #### Constructor: new URLSearchParams(string)
 
-* `string` {string} A query string
+* `string` {string} Una string de consulta
 
-Parse the `string` as a query string, and use it to instantiate a new `URLSearchParams` object. A leading `'?'`, if present, is ignored.
+Analice la `string` como una string de consulta, y úsela para crear una instancia de un nuevo objeto `URLSearchParams`. Si está presente un `'?'` inicial, es ignorado.
 
 ```js
-let params;
+permite params;
 
 params = new URLSearchParams('user=abc&query=xyz');
 console.log(params.get('user'));
-// Prints 'abc'
+// Imprime 'abc'
 console.log(params.toString());
-// Prints 'user=abc&query=xyz'
+// Imprime 'user=abc&query=xyz'
 
 params = new URLSearchParams('?user=abc&query=xyz');
 console.log(params.toString());
-// Prints 'user=abc&query=xyz'
+// Imprime 'user=abc&query=xyz'
 ```
 
 #### Constructor: new URLSearchParams(obj)
@@ -484,11 +484,11 @@ console.log(params.toString());
 added: v7.10.0
 -->
 
-* `obj` {Object} An object representing a collection of key-value pairs
+* `obj` {Object} Un objeto que representa una colección de pares clave-valor
 
-Instantiate a new `URLSearchParams` object with a query hash map. The key and value of each property of `obj` are always coerced to strings.
+Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa hash de consulta. La clave y valor de cada propiedad de `obj` siempre son forzados a strings.
 
-Unlike [`querystring`][] module, duplicate keys in the form of array values are not allowed. Arrays are stringified using [`array.toString()`][], which simply joins all array elements with commas.
+A diferencia del módulo [`querystring`][], las claves duplicadas en forma de valores de array no son permitidas. Los arrays son codificados usando [`array.toString()`][], el cual simplemente une todos los elementos array con comas.
 
 ```js
 const params = new URLSearchParams({
@@ -496,9 +496,9 @@ const params = new URLSearchParams({
   query: ['first', 'second']
 });
 console.log(params.getAll('query'));
-// Prints [ 'first,second' ]
+// Imprime [ 'first,second' ]
 console.log(params.toString());
-// Prints 'user=abc&query=first%2Csecond'
+// Imprime 'user=abc&query=first%2Csecond'
 ```
 
 #### Constructor: new URLSearchParams(iterable)
@@ -507,33 +507,33 @@ console.log(params.toString());
 added: v7.10.0
 -->
 
-* `iterable` {Iterable} An iterable object whose elements are key-value pairs
+* `iterable` {Iterable} Un objeto iterable cuyos elementos son pares clave-valor
 
-Instantiate a new `URLSearchParams` object with an iterable map in a way that is similar to [`Map`][]'s constructor. `iterable` can be an `Array` or any iterable object. That means `iterable` can be another `URLSearchParams`, in which case the constructor will simply create a clone of the provided `URLSearchParams`. Elements of `iterable` are key-value pairs, and can themselves be any iterable object.
+Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa iterable de forma que sea similar al constructor [`Map`][]. `iterable` puede ser un `Array` o cualquier objeto iterable. Eso significa que `iterable` puede ser otro `URLSearchParams`, en tal caso el constructor simplemente creará un clon del `URLSearchParams` proporcionado. Los elementos de `iterable` son pares clave-valor, y ellos mismos pueden ser cualquier objeto iterable.
 
-Duplicate keys are allowed.
+Las llaves duplicadas son permitidas.
 
 ```js
-let params;
+permite params;
 
-// Using an array
+// Usando un array
 params = new URLSearchParams([
   ['user', 'abc'],
   ['query', 'first'],
   ['query', 'second']
 ]);
 console.log(params.toString());
-// Prints 'user=abc&query=first&query=second'
+// Imprime 'user=abc&query=first&query=second'
 
-// Using a Map object
+// Usando un objeto Map
 const map = new Map();
 map.set('user', 'abc');
 map.set('query', 'xyz');
 params = new URLSearchParams(map);
 console.log(params.toString());
-// Prints 'user=abc&query=xyz'
+// Imprime 'user=abc&query=xyz'
 
-// Using a generator function
+// Usando una función de generador
 function* getQueryPairs() {
   yield ['user', 'abc'];
   yield ['query', 'first'];
@@ -541,14 +541,14 @@ function* getQueryPairs() {
 }
 params = new URLSearchParams(getQueryPairs());
 console.log(params.toString());
-// Prints 'user=abc&query=first&query=second'
+// Imprime 'user=abc&query=first&query=second'
 
-// Each key-value pair must have exactly two elements
+// Cada par clave-valor debe tener exactamente dos elementos
 new URLSearchParams([
   ['user', 'abc', 'error']
 ]);
 // Throws TypeError [ERR_INVALID_TUPLE]:
-//        Each query pair must be an iterable [name, value] tuple
+//        Cada consulta par debe ser una tupa [nombre, valor] iterable
 ```
 
 #### urlSearchParams.append(name, value)
@@ -556,35 +556,35 @@ new URLSearchParams([
 * `name` {string}
 * `value` {string}
 
-Append a new name-value pair to the query string.
+Agregue un nuevo par nombre-valor a la string de consulta.
 
 #### urlSearchParams.delete(name)
 
 * `name` {string}
 
-Remove all name-value pairs whose name is `name`.
+Eliminar todos los pares nombre-valor cuyo nombre sea `name`.
 
 #### urlSearchParams.entries()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Returns an ES6 `Iterator` over each of the name-value pairs in the query. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
+Devuelve un `Iterator` ES6 sobre cada uno de los pares nombre-valor en la consulta. Cada ítem del iterador es un `Array` de JavaScript. El primer ítem del `Array` es el `name`, el segundo ítem del `Array` es el `value`.
 
-Alias for [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
+Alias para [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
 
 #### urlSearchParams.forEach(fn[, thisArg])
 
-* `fn` {Function} Invoked for each name-value pair in the query
-* `thisArg` {Object} To be used as `this` value for when `fn` is called
+* `fn` {Function} Invocado por cada par nombre-valor en la consulta
+* `thisArg` {Object} Para ser usado como `this` valor para cuando `fn` es llamado
 
-Iterates over each name-value pair in the query and invokes the given function.
+Itera sobre cada par nombre-valor en la consulta e invoca la función dada.
 
 ```js
 const myURL = new URL('https://example.org/?a=b&c=d');
 myURL.searchParams.forEach((value, name, searchParams) => {
   console.log(name, value, myURL.searchParams === searchParams);
 });
-// Prints:
+// Imprime:
 //   a b true
 //   c d true
 ```
@@ -592,36 +592,36 @@ myURL.searchParams.forEach((value, name, searchParams) => {
 #### urlSearchParams.get(name)
 
 * `name` {string}
-* Returns: {string} or `null` if there is no name-value pair with the given `name`.
+* Devuelve: {string} o `null` si no hay ningún par nombre-valor con el `name` dado.
 
-Returns the value of the first name-value pair whose name is `name`. If there are no such pairs, `null` is returned.
+Devuelve el valor del primer par nombre-valor cuyo nombre es `name`. Si no hay tales pares, `null` es devuelto.
 
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
 * Devuelve: {string[]}
 
-Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
+Devuelve los valores de todos los pares nombre-valor cuyos nombres son `name`. Si no hay tales pares, un array vacío es devuelto.
 
 #### urlSearchParams.has(name)
 
 * `name` {string}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if there is at least one name-value pair whose name is `name`.
+Devuelve `true` Si hay al menos un par nombre-valor cuyo nombre es `name`.
 
 #### urlSearchParams.keys()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Returns an ES6 `Iterator` over the names of each name-value pair.
+Devuelve un `Iterator` ES6 sobre los nombres de cada par nombre-valor.
 
 ```js
 const params = new URLSearchParams('foo=bar&foo=baz');
 for (const name of params.keys()) {
   console.log(name);
 }
-// Prints:
+// Imprime:
 //   foo
 //   foo
 ```
@@ -631,7 +631,7 @@ for (const name of params.keys()) {
 * `name` {string}
 * `value` {string}
 
-Sets the value in the `URLSearchParams` object associated with `name` to `value`. If there are any pre-existing name-value pairs whose names are `name`, set the first such pair's value to `value` and remove all others. If not, append the name-value pair to the query string.
+Establece el valor en el objeto `URLSearchParams` asociado con `name` para `value`. Si hay pares nombre-valor preexistentes cuyos nombres son `name`, establezca el primer valor de dicho par a `value` y elimine los otros. Si no es así, agregue el par nombre-valor a la string de consulta.
 
 ```js
 const params = new URLSearchParams();
@@ -639,12 +639,12 @@ params.append('foo', 'bar');
 params.append('foo', 'baz');
 params.append('abc', 'def');
 console.log(params.toString());
-// Prints foo=bar&foo=baz&abc=def
+// Imprime foo=bar&foo=baz&abc=def
 
 params.set('foo', 'def');
 params.set('xyz', 'opq');
 console.log(params.toString());
-// Prints foo=def&abc=def&xyz=opq
+// Imprime foo=def&abc=def&xyz=opq
 ```
 
 #### urlSearchParams.sort()
@@ -653,43 +653,43 @@ console.log(params.toString());
 added: v7.7.0
 -->
 
-Sort all existing name-value pairs in-place by their names. Sorting is done with a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), so relative order between name-value pairs with the same name is preserved.
+Clasifique todos los pares nombre-valor existentes en su lugar por sus nombres. La clasificación está lista con un [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), así que el orden relativo entre pares nombre-valor con el mismo nombre es conservado.
 
-This method can be used, in particular, to increase cache hits.
+Este método puede ser usado, en particular, para aumentar los cache hits.
 
 ```js
 const params = new URLSearchParams('query[]=abc&type=search&query[]=123');
 params.sort();
 console.log(params.toString());
-// Prints query%5B%5D=abc&query%5B%5D=123&type=search
+// Imprime query%5B%5D=abc&query%5B%5D=123&type=search
 ```
 
 #### urlSearchParams.toString()
 
-* Returns: {string}
+* Devuelve: {string}
 
-Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
+Devuelve los parámetros de búsqueda serializados como una string, con caracteres código porciento cuando sea necesario.
 
 #### urlSearchParams.values()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Returns an ES6 `Iterator` over the values of each name-value pair.
+Devuelve un `Iterator` ES6 sobre los valores de cada par nombre-valor.
 
 #### urlSearchParams\[Symbol.iterator\]()
 
-* Returns: {Iterator}
+* Devuelve: {Iterator}
 
-Returns an ES6 `Iterator` over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
+Devuelve un `Iterator` ES6 sobre cada par nombre-valor en la string de consulta. Cada ítem del iterador es un `Array` de JavaScript. El primer ítem del `Array` es el `name`, el segundo ítem del `Array` es el `value`.
 
-Alias for [`urlSearchParams.entries()`][].
+Alias para [`urlSearchParams.entries()`][].
 
 ```js
 const params = new URLSearchParams('foo=bar&xyz=baz');
 for (const [name, value] of params) {
   console.log(name, value);
 }
-// Prints:
+// Imprime:
 //   foo bar
 //   xyz baz
 ```
@@ -701,20 +701,20 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Devuelve: {string}
 
-Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
+Devuelve la serialización de ASCII [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) del `domain`. Si `domain` es un dominio inválido, la string vacía es devuelta.
 
 It performs the inverse operation to [`url.domainToUnicode()`][].
 
 ```js
 const url = require('url');
 console.log(url.domainToASCII('español.com'));
-// Prints xn--espaol-zwa.com
+// Imprime xn--espaol-zwa.com
 console.log(url.domainToASCII('中文.com'));
-// Prints xn--fiq228c.com
+// Imprime xn--fiq228c.com
 console.log(url.domainToASCII('xn--iñvalid.com'));
-// Prints an empty string
+// Imprime una string vacía
 ```
 
 ### url.domainToUnicode(domain)
@@ -724,20 +724,20 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Devuelve: {string}
 
-Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
+Devuelve la serialización Unicode del `domain`. Si `domain` es un dominio inválido, la string vacía es devuelta.
 
-It performs the inverse operation to [`url.domainToASCII()`][].
+Realiza la operación inversa a [`url.domainToASCII()`][].
 
 ```js
 const url = require('url');
 console.log(url.domainToUnicode('xn--espaol-zwa.com'));
-// Prints español.com
+// Imprime español.com
 console.log(url.domainToUnicode('xn--fiq228c.com'));
-// Prints 中文.com
+// Imprime 中文.com
 console.log(url.domainToUnicode('xn--iñvalid.com'));
-// Prints an empty string
+// Imprime una string vacía
 ```
 
 ### url.format(URL[, options])

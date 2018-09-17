@@ -1308,7 +1308,7 @@ El mensaje pasa a través de la serialización y análisis. El mensaje resultant
 added: v2.0.0
 -->
 
-* `id` {string|number} Un nombre de grupo o un ID
+* `id` {string|number} Un nombre o ID de grupo
 
 El método `process.setegid()` establece la identidad del grupo efectivo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated a numeric ID.
 
@@ -1332,7 +1332,7 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v2.0.0
 -->
 
-* `id` {string|number} Un nombre de usuario o ID
+* `id` {string|number} Un nombre o ID de usuario
 
 El método `process.seteuid()` establece la identidad efectiva del usuario del proceso. (Vea seteuid(2).) El `id` puede ser pasado como un ID numérico o como una string de nombre de usuario. If a username is specified, the method blocks while resolving the associated numeric ID.
 
@@ -1356,7 +1356,7 @@ Esta función sólo está disponible en plataformas POSIX (es decir, no en Windo
 added: v0.1.31
 -->
 
-* `id` {string|number} El nombre de grupo o ID
+* `id` {string|number} El nombre o ID del grupo
 
 El método `process.setgid()` establece la identidad del grupo del proceso. (Vea setgid(2).) El `id` puede ser pasado como un ID numérico o como un string de nombre de grupo. If a group name is specified, this method blocks while resolving the associated numeric ID.
 
@@ -1424,7 +1424,7 @@ Si se establece dicha función, el evento [`'uncaughtException'`][] no será emi
 
 To unset the capture function, `process.setUncaughtExceptionCapture(null)` may be used. El llamar a este método con un argumento no `null` mientras que se establece otra función de captura, arrojará un error.
 
-Utilizar esta función es mutuamente exclusivo con el uso del módulo [`domain`][] incorporado obsoleto.
+Utilizar esta función es mutuamente exclusivo con el uso del módulo incorporado [`domain`][] desaprobado.
 
 ## process.stderr
 
@@ -1480,16 +1480,16 @@ process.stdin.pipe(process.stdout);
 1. Son usados internamente por [`console.log()`][] y [`console.error()`][], respectivamente.
 2. No pueden cerrarse (se arrojará [`end()`][]).
 3. Nunca emitirán el evento [`'finish'`][].
-4. Las escrituras pueden ser sincrónicas, dependiendo en cuál stream se esté conectado y si el sistema es Windows o POSIX: 
+4. Las escrituras pueden ser sincrónicas, dependiendo a qué esté conectado el stream y si el sistema es Windows o POSIX: 
   * Archivos: *sincrónicos* en Windows y POSIX
   * TTYs (Terminales): *asincrónicos* en Windows, *sincrónicos* en POSIX
   * Pipes (y sockets): *sincrónicos* en Windows, *asincrónicos* en POSIX
 
-Estos comportamientos son parcialmente por razones históricas, y cambiarlos crearía una incompatibilidad hacia atrás, pero también son esperados por algunos usuarios.
+Estos comportamientos se deben parcialmente a razones históricas, y cambiarlos crearía una incompatibilidad hacia atrás, pero también son esperados por algunos usuarios.
 
 Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Vea [`process.exit()`][] para mayor información.
 
-***Advertencia***: Las escrituras sincrónicas bloquean el bucle del evento hasta que se complete la escritura. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. Esto puede no ser un problema al escribirle a una sesión terminal interactiva, pero considere esto particularmente cuidadoso al hacer el registro de producción para los streams de salida del proceso.
+***Advertencia***: Las escrituras sincrónicas bloquean el bucle del evento hasta que se complete la escritura. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. Esto puede no ser un problema al escribirle a una sesión terminal interactiva, pero considérelo de una forma particularmente cuidadosa al hacer el registro de producción para los streams de salida del proceso.
 
 Para verificar si un stream está conectado a un contexto [TTY](tty.html#tty_tty), verifique la propiedad `isTTY`.
 
@@ -1538,7 +1538,7 @@ added: v0.8.0
 
 * {boolean}
 
-La propiedad `process.traceDeprecation` indica si la bandera `--trace-deprecation` está establecida en el proceso Node.js actual. See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
+La propiedad `process.traceDeprecation` indica si la bandera `--trace-deprecation` está establecida en el proceso Node.js actual. Vea la documentación para el [evento `'warning'`](#process_event_warning) y el [método `emitWarning()`](#process_process_emitwarning_warning_type_code_ctor) para más información acerca de este comportamiento de la bandera.
 
 ## process.umask([mask])
 
@@ -1548,7 +1548,7 @@ added: v0.1.19
 
 * `mask` {number}
 
-The `process.umask()` method sets or returns the Node.js process's file mode creation mask. Child processes inherit the mask from the parent process. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
+El método `process.umask()` establece o devuelve una máscara de creación de modo de archivo del proceso Node.js. Los procesos secundarios heredan la máscara del proceso primario. Invoked without an argument, the current mask is returned, otherwise the umask is set to the argument value and the previous mask is returned.
 
 ```js
 const newmask = 0o022;
@@ -1564,11 +1564,11 @@ console.log(
 added: v0.5.0
 -->
 
-* Returns: {number}
+* Devuelve: {number}
 
-The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
+El método `process.uptime()` devuelve el número de segundos que el proceso Node.js actual ha estado ejecutando.
 
-The return value includes fractions of a second. Use `Math.floor()` to get whole seconds.
+El valor de retorno incluye fracciones de un segundo. Utilice `Math.floor()` para obtener segundos completos.
 
 ## process.version
 
@@ -1578,7 +1578,7 @@ added: v0.1.3
 
 * {string}
 
-The `process.version` property returns the Node.js version string.
+La propiedad `process.version` devuelve la string de la versión Node.js.
 
 ```js
 console.log(`Version: ${process.version}`);
@@ -1600,13 +1600,13 @@ changes:
 
 * {Object}
 
-The `process.versions` property returns an object listing the version strings of Node.js and its dependencies. `process.versions.modules` indicates the current ABI version, which is increased whenever a C++ API changes. Node.js will refuse to load modules that were compiled against a different module ABI version.
+La propiedad `process.versions` devuelve un objeto que enumera la strings de versión de Node.js y sus dependencias. `process.versions.modules` indica la versión ABI actual, la cual es incrementada cada vez que un API de C++ cambia. Node.js rechazará cargar módulos que fueron compilados en contra de una versión ABI de módulo diferente.
 
 ```js
 console.log(process.versions);
 ```
 
-Will generate an object similar to:
+Generará un objeto similar a:
 
 <!-- eslint-skip -->
 
@@ -1627,20 +1627,20 @@ Will generate an object similar to:
   tz: '2016b' }
 ```
 
-## Exit Codes
+## Código de Salida
 
-Node.js will normally exit with a `0` status code when no more async operations are pending. The following status codes are used in other cases:
+Node.js normalmente se cerrará con un código de estado `0` cuando no hayan más operaciones asincrónicas pendientes. Los siguientes códigos de estado son usados en otros casos:
 
-* `1` **Uncaught Fatal Exception** - There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
-* `2` - Unused (reserved by Bash for builtin misuse)
-* `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `5` **Fatal Error** - There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix `FATAL
+* `1` **Excepción Fatal No Capturada** - Hubo una excepción no capturada y no fue manejada por un dominio o por un manejador de evento [`'uncaughtException'`][].
+* `2` - Sin utilizar (reservado por Bash para mal uso incorporado)
+* `3` **Error Interno de Análisis de JavaScript** - El código fuente interno de JavaScript en el proceso bootstrapping de Node.js causó un error de análisis. Esto es extremadamente raro y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `4` **Fallo Interno de Evaluación de JavaScript** - El código fuente interno de JavaScript en el proceso bootstrapping de Node.js falló al devolver un valor de una función el evaluarse. Esto es extremadamente raro y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `5` **Error Fatal** - Hubo un error fatal irrecuperable en V8. Usualmente, se imprimirá un mensaje en stderr con el prefijo `FATAL
 ERROR`.
-* `6` **Non-function Internal Exception Handler** - There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
-* `7` **Internal Exception Handler Run-Time Failure** - There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
-* `8` - Unused. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
-* `9` - **Invalid Argument** - Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure** - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
-* `>128` **Signal Exits** - If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
+* `6` **Manejador de Excepción Interno Sin Función** - Hubo una excepción sin capturar, pero la función manejadora de excepción interna fatal de alguna manera fue establecida a una no-función, y no pudo ser llamada.
+* `7` **Fallo de Tiempo de Ejecución del Manejador Interno de Excepción ** - Hubo una excepción sin capturar, y la misma función manejadora interna de excepción fatal arrojó un error al intentar manejarlo. Esto puede ocurrir, por ejemplo, si un manejador [`'uncaughtException'`][] o `domain.on('error')` arroja un error.
+* `8` - No utilizado. En versiones anteriores de Node.js, el código de salida 8 en ocasiones indicaba una excepción no capturada.
+* `9` - **Argumento Inválido** - Una opción desconocida fue especificada o una opción que requiere un valor fue proporcionada sin un valor.
+* `10` **Fallo Interno de Tiempo de Ejecución de JavaScript** - El código fuente interno de JavaScript en el proceso bootstrapping de Node.js arrojó un error cuando se llamó a la función bootstrapping. Esto es extremadamente raro, y generalmente sólo puede ocurrir durante el desarrollo del mismo Node.js.
+* `12` **Argumento de Depuración Inválido** - Las opciones `--inspect` y/o `--inspect-brk` fueron establecidas, pero el número de puerto escogido era inválido o no estaba disponible.
+* `>128` **Salidas de Señales** - Si Node.js recibe una señal fatal como `SIGKILL` or `SIGHUP`, entonces su código de salida será `128` más el valor del código de señal. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code. Por ejemplo, la señal `SIGABRT` tiene el valor `6`, entonces el código de salida esperado sería `128` + `6`, o `134`.

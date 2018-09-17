@@ -475,15 +475,15 @@ Der Funktionsaufruf wird nicht zurückgesendet, der Prozess wird abgebrochen.
 
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
-## Object Lifetime management
+## Object Lifetime Management
 
-As N-API calls are made, handles to objects in the heap for the underlying VM may be returned as `napi_values`. These handles must hold the objects 'live' until they are no longer required by the native code, otherwise the objects could be collected before the native code was finished using them.
+Während N-API-Aufrufe erfolgen, können Handles auf Objekte im Heap für die zugrunde liegende VM als `napi_values` zurückgesendet werden. Diese Handles müssen die Objekte so lange "live" halten, bis sie vom nativen Code nicht mehr benötigt werden, sonst könnten die Objekte eingesammelt werden, bevor der native Code mit ihnen beendet wurde.
 
-As object handles are returned they are associated with a 'scope'. The lifespan for the default scope is tied to the lifespan of the native method call. The result is that, by default, handles remain valid and the objects associated with these handles will be held live for the lifespan of the native method call.
+Wenn Objekt-Handles zurückgesendet werden, sind sie mit einem 'Scope' verknüpft. Die Lebensdauer für den Standard-Scope ist an die Lebensdauer des nativen Methodenaufrufs gebunden. Das Ergebnis ist, dass die Handles standardmäßig gültig bleiben und die mit diesen Handles verbundenen Objekte während der Lebensdauer des nativen Methodenaufrufs live gehalten werden.
 
-In many cases, however, it is necessary that the handles remain valid for either a shorter or longer lifespan than that of the native method. The sections which follow describe the N-API functions than can be used to change the handle lifespan from the default.
+In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine kürzere oder längere Lebensdauer als die der nativen Methode gültig bleiben. Die folgenden Abschnitte beschreiben die N-API-Funktionen, mit denen Sie die Lebensdauer des Handles gegenüber dem Standard ändern können.
 
-### Making handle lifespan shorter than that of the native method
+### Die Lebensdauer des Handles kürzer als bei der nativen Methode machen
 
 It is often necessary to make the lifespan of handles shorter than the lifespan of a native method. For example, consider a native method that has a loop which iterates through the elements in a large array:
 

@@ -18,23 +18,23 @@ changes:
 
 > Estabilidad: 0 - Desactualización
 
-**Este módulo esta por convertirse en obsoleto**. Será completamente inútil una vez que el reemplazo de API haya finalizado. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Lo que si deben saber es la funcionalidad que los dominios ofrecen pueden recaer en ella para el momento de uso, pero deben esperar a tener o migrar a una solución diferente en el futuro.
+**Este módulo esta por convertirse en obsoleto**. Este módulo será completamente inútil una vez que el reemplazo de API haya finalizado. La mayoría de los usuarios finales ** no** tienen porqué usarlo. Los usuarios que sí requieran de la funcionalidad que los dominios ofrecen pueden hacer uso del módulo en este momento, pero deben esperar verse obligados a cambiar a una solución distinta en el futuro.
 
-Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja uno.
+Los dominios ofrecen una forma de manejar múltiples y diversas operaciones IO como una unidad. Si cualquiera de los eventos emisores o callbacks registrados en un dominio produce un evento de `'error'`, o arroja uno, entonces el objeto del dominio será notificado, en vez de perder el contexto del error en el manejador `process.on('uncaughtException')` u ocasionar que el programa se cierre inmediatamente con un código de error.
 
 ## Advertencia: ¡No ignore los errores!
 
 <!-- type=misc -->
 
-Los controladores del dominio de error no son un substituto para el cierre de un proceso cuando se produce un error.
+Los manejadores de errores de dominio no son un substituto para el cierre de un proceso cuando se produce un error.
 
-Por la naturaleza misma de cómo [`arroja`] [] funciona en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin perdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
+Por la naturaleza misma de cómo [`throw`] [] funciona en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin perdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
 
-Sin embargo, cerrar el proceso es la forma más segura de responde a un error arrojado. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado pro alguien más.
+Cerrar el proceso es la forma más segura de responder a un error arrojado. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado por alguien más.
 
-La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y deteniendo las emisiones de nuevas solicitudes en ese trabajador.
+La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen a su tiempo habitual y deteniendo la escucha de nuevas solicitudes en ese worker.
 
-Así, el uso del `dominio` se hace en conjunto al modulo cluster debido a que el proceso principal puede bifurcar un nuevo trabajador cuando un trabajador encuentra un error. Para los programas de Node.js que escalan en múltiples máquinas, el proxy final o servicio de registro pude registrar la falla y reaccionar de acuerdo a su naturaleza.
+De esta forma, el uso del `domain` se hace en conjunto al módulo clúster, ya que el proceso principal puede bifurcar un nuevo worker cuando un worker encuentra un error. Para los programas de Node.js que escalan en múltiples máquinas, el proxy final o servicio de registro pueden registrar la falla y reaccionar de acuerdo a su naturaleza.
 
 Por ejemplo, no es una buena idea:
 
@@ -44,12 +44,13 @@ Por ejemplo, no es una buena idea:
 const d = require('domain').create();
 d.on('error', (er) => {
   // ¡El error no colisionará el proceso, hará algo peor!
-  // Aunque hemos prevenido el proceso de reinicio abrupto, aún estamos filtrando // recursos como locos por si esto llegase a suceder.
+  // Aunque hemos prevenido el proceso de reinicio abrupto, aún estamos filtrando
+  // recursos como locos por si esto llegase a suceder.
   // ¡Esto no es mejor que process.on('uncaughtException')!
-  console.log(`error, pero oh bueno ${er.message}`);
+  console.log(`error, but oh well ${er.message}`);
 });
 d.run(() => {
-  requiere('http').createServer((req, res) => {
+  require('http').createServer((req, res) => {
     handleRequest(req, res);
   }).listen(PORT);
 });
@@ -63,18 +64,18 @@ Al usar el contexto de un dominio y la elasticidad al separar nuestros programas
 const cluster = require('cluster');
 const PORT = +process.env.PORT || 1337;
 
-Si (cluster.isMaster) {    
-// Un escenario más realista tendría más de dos trabajadores y,
-// quizás, no colocaría al principal y al trabajador en la misma carpeta.
+if (cluster.isMaster) {    
+  // Un escenario más realista tendría más de dos workers y,
+  // quizás, no colocaría al principal y al worker en la misma carpeta.
   //
   // también es posible adornar un poco el registro e 
  // implementar cualquier lógica personalizada necesaria para evitar que DoS
   // ataque y otro mal comportamiento.
   //
- // Ver las opciones en el cluster de documentación.
+  // Ver las opciones en el clúster de documentación.
   //
- // Lo importante es que el proceso principal hace poco, 
- // aumentando nuestra resistencia ante errores inesperados.
+  // Lo importante es que el proceso principal hace poco, 
+  // aumentando nuestra resiliencia ante errores inesperados.
 
   cluster.fork();
   cluster.fork();
@@ -84,27 +85,28 @@ Si (cluster.isMaster) {
     cluster.fork();
   });
 
-} otro {
-  // el worker  //
+} else {
+  // el worker
+  //
   // ¡Aquí es donde se colocan nuestros errores!
 
   const domain = require('domain');
 
- // Ver el cluster de documentación para más detalles sobre el uso de
-// procesos de trabajo para atender solicitudes. Cómo funciona, advertencias, entre otras.
+ // Ver el clúster de documentación para más detalles sobre el uso de
+// procesos de worker para atender solicitudes. Cómo funciona, advertencias, entre otras.
 
   const server = require('http').createServer((req, res) => {
     const d = domain.create();
     d.on('error', (er) => {
       console.error(`error ${er.stack}`);
 
-      // Nota: ¡ Estamos en un territorio peligroso!
+      // Nota: ¡Estamos en un territorio peligroso!
       Por definición, algo inesperado ocurrió,
       / / que probablemente no queríamos.
       // ¡Cualquier cosa puede suceder ahora! ¡Ten mucho cuidado!
 
       intenta {
-        // asegurarte de cerrar en 30 segundos
+        // asegurémonos de cerrar en un lapso de 30 segundos
         const killtimer = setTimeout(() => {
           process.exit(1);
         }, 30000);
@@ -115,8 +117,8 @@ Si (cluster.isMaster) {
         server.close();
 
         // Deja que el proceso principal sepa que estamos muertos. Esto desencadenará un 
-        // 'desconectar' en el cluster principal y, luego, se bifurcará
-        // un nuevo trabajador.
+        // 'desconectar' en el clúster principal y, luego, se bifurcará
+        // un nuevo worker.
         cluster.worker.disconnect();
 
         // intenta enviar un error a la solicitud que arrojó el problema
@@ -129,13 +131,13 @@ Si (cluster.isMaster) {
       }
     });
 
-    // Porque req y res  fueron creados antes de que existieran los dominios y
-    //  necesitamos agregarlos explicitamente.
+    // Porque req y res fueron creados antes de que existieran los dominios y
+    //  necesitamos agregarlos explícitamente.
     // Mira más abajo la explicación de la vinculación implícita y explicita.
     d.add(req);
     d.add(res);
 
-    // Ahora, ejecuta el controlador de función en el dominio.
+    // Ahora, ejecuta la función de manejador en el dominio.
     d.run(() => {
       handleRequest(req, res);
     });
@@ -144,7 +146,7 @@ Si (cluster.isMaster) {
 }
 
 // Esta parte no es importante. Sólo un ejemplo de enrutamiento.
-// Coloca una aplicación lógica elaborada aquí.
+// Coloca aquí una elaborada lógica de aplicación.
 function handleRequest(req, res) {
   switch (req.url) {
     case '/error':
@@ -167,9 +169,9 @@ function handleRequest(req, res) {
 En cualquier momento que un objeto de `Error` es enrutado a través de un dominio, algunos campos adicionales se agregan.
 
 * `error.domain` El dominio que se encargó primero del error.
-* `error.domainEmitter` El evento emisor que originó un evento de `'error'` con el objeto de error.
-* `error.domainBound` La función de callback que fue agregada al dominio y pasó un error como su primer argumento.
-* `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado por un límite de la función de callback.
+* `error.domainEmitter` El emisor de eventos que originó un evento de `'error'` con el objeto de error.
+* `error.domainBound` La función de callback que fue enlazada al dominio y pasó un error como su primer argumento.
+* `error.domainThrown` Un valor booleano que indica si el error fue arrojado, emitido o pasado a una función callback enlazada.
 
 ## Enlace implícito
 
@@ -177,7 +179,7 @@ En cualquier momento que un objeto de `Error` es enrutado a través de un domini
 
 Si los dominios están en uso, entonces todos los **nuevos** objetos `Eventosemisores`, tales como los objetos de flujo, solicitudes, respuestas, entre otros, estarán implícitamente añadidos al dominio activo en el momento de su creación.
 
-Asimismo, los callbacks pasados al subnivel de evento de las solicitudes del bucle (como `fs.open()`, u otros métodos de atender callbacks) serán automáticamente añadidas al dominio activo. Entonces, el dominio los percibirá como el error si son arrojados.
+Asimismo, los callbacks pasados a solicitudes de bucles de evento de bajo nivel (como `fs.open()`, u otros métodos de atender callbacks) serán automáticamente enlazados al dominio activo. Entonces, el dominio los percibirá como el error si son arrojados.
 
 De manera que para prevenir el uso excesivo de la memoria, los objetos del `Dominio` no se añaden implícitamente por sí mismos como secundarios del dominio activo. Y si lo hicieran, seria muy sencillo prevenir solicitudes y dar respuesta a los objetos a partir de la basura recolectada.
 
@@ -245,16 +247,16 @@ Unos temporizadores y emisores de evento que han sido añadidos explícitamente 
 
 Agrega explícitamente un emisor al dominio. Si cualquier gestor de evento activado por el emisor arroja un error o el transmisor emite un evento de `'error'`, será enrutado para el evento de `'error'` perteneciente al dominio de la misma forma que con el enlazado implícito.
 
-Esto también funciona con los temporizadores que se regresan desde [`setInterval()`][] y el [`setTimeout()`][]. Si su función de callback lo arroja, sera gestionado por el gestor de `'error'` del dominio.
+Esto también funciona con los temporizadores que se regresan desde [`setInterval()`][] y el [`setTimeout()`][]. Si su función de callback lo arroja, será gestionado por el manejador de `'error'` del dominio.
 
 Si el Temporizador o `EmisordeEvento` estuviese limitado a un dominio, será removido del mismo y enlazado a este.
 
 ### domain.bind(callback)
 
 * `callback`{Function} La función de callback
-* Devoluciones: {Function} La función limitante
+* Devoluciones: {Function} La función enlazada
 
-La función de devolución una cubierta para la función de callback suministrada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
+La función devuelta fungirá como envoltura alrededor del callback suministrado. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
 
 #### Ejemplo
 
@@ -262,10 +264,10 @@ La función de devolución una cubierta para la función de callback suministrad
 const d = domain.create();
 
 
+function readSomeFile(filename, cb) {
   fs.readFile(filename, 'utf8', d.bind((er, data) => {
-    // si este error aparece, también pasará por el dominio
-    return cb(er, data ?
- JSON.parse(data) : null);
+    // si este error aparece, también será pasado al dominio
+    return cb(er, data ? JSON.parse(data) : null);
   }));
 }
 

@@ -38,11 +38,11 @@ Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y t�
 
 Node.js tiene varias dependencias empaquetadas en las *deps/* y en los directorios de *tools/* que no son parte del proyecto propiamente dicho. Los cambios a los archivos en esos directorios deben enviarse a sus respectivos proyectos. No envíe un parche a Node.js. No podemos aceptar dichos parches.
 
-En caso de duda, abra un problema en el [issue tracker](https://github.com/nodejs/node/issues/) o contacte a uno de los [colaboradores del proyecto](https://github.com/nodejs/node/#current-project-team-members). Node.js tiene dos canales de IRC: [#Node.js](https://webchat.freenode.net/?channels=node.js) para ayuda general y preguntas, y [#Node-dev](https://webchat.freenode.net/?channels=node-dev) para el desarrollo del núcleo de Node.js específicamente.
+En caso de duda, abra un problema en el [issue tracker](https://github.com/nodejs/node/issues/) o contacte a uno de los [colaboradores del proyecto](https://github.com/nodejs/node/#current-project-team-members). Node.js tiene dos canales de IRC: [#Node.js](https://webchat.freenode.net/?channels=node.js), para ayuda general y preguntas, y [#Node-dev](https://webchat.freenode.net/?channels=node-dev), específicamente para el desarrollo del núcleo de Node.js.
 
 ## Configurando su entorno local
 
-Para empezar, necesitará tener `git` instalado de forma local. Dependiendo de su sistema operativo, también hay una serie de otras dependencias requeridas. Estos se detallan en la [Building guide](../../../BUILDING.md).
+Para empezar, necesitará tener `git` instalado de forma local. Dependiendo de su sistema operativo, también hay una serie de otras dependencias requeridas. Estas se detallan en la [Building guide](../../../BUILDING.md).
 
 Una vez que tenga `git` y esté seguro de tener todas las dependencias necesarias, es hora de crear un fork.
 
@@ -64,7 +64,7 @@ $ git config user.name "J. Random User"
 $ git config user.email "j.random.user@example.com"
 ```
 
-Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails) para que tus commits se asocien correctamente con tu cuenta y serás promovido a Contributor una vez que se haya descargado tu primer commit.
+Asegúrate de que este correo electrónico local también se haya agregado a tu [lista de correo electrónico de GitHub](https://github.com/settings/emails), de modo que tus commits se asocien correctamente con tu cuenta y seas promovido a Contribuyente una vez que se haya descargado tu primer commit.
 
 ### Paso 2: Branch
 
@@ -80,15 +80,15 @@ $ git checkout -b my-branch -t upstream/master
 
 La gran mayoría de las Pull Requests abiertas en el repositorio `nodejs/node` incluye cambios en uno o más de los siguientes:
 
-     - the C/C++ code contained in the `src` directory
-     - the JavaScript code contained in the `lib` directory
-     - the documentation in `doc/api`
-     - tests within the `test` directory.
+     - el código C/C ++ contenido en el directorio `src`
+     - el código JavaScript contenido en el directorio `lib`
+     - la documentación en `doc / api`
+     - pruebas dentro del directorio `test`.
     
 
 Si está modificando el código, por favor asegúrese de ejecutar `make lint` de vez en cuando para asegurarse de que los cambios sigan la guía de estilo del código de Node.js.
 
-Cualquier documentación que escriba (incluidos los comentarios de código y la documentación de API) debe seguir la [Guía de Estilo](../../STYLE_GUIDE.md). Las muestras de código incluidos en los documentos API también se verificarán cuando se ejecute `make lint` (o `vcbuild.bat lint` en Windows).
+Cualquier documentación que escriba (incluidos los comentarios de código y la documentación de API) debe seguir la [Guía de Estilo](../../STYLE_GUIDE.md). Las muestras de código incluidos en los documentos API también se verificarán cuando se ejecute `make lint` (o `vcbuild.bat lint`, en Windows).
 
 Para contribuir con el código de C++, es posible que desee consultar la [Guía de Estilo de C++](../../../CPP_STYLE_GUIDE.md).
 
@@ -113,9 +113,9 @@ Un buen mensaje de commit debe describir qué cambió y por qué.
   * estar completamente en minúsculas, con la excepción de los nombres propios, acrónimos y las palabras que hacen referencia al código, como nombres de funciones/variables
   * ir precedido del nombre del subsistema modificado y comenzar con un verbo imperativo. Comprueba la salida de `git log --oneline files/you/changed` para averiguar qué subsistemas tocan tus cambios.
     
-    Ejemplos:
+    Ejemplos (en inglés):
   
-  * `net: agrega la localAddress y el localPort al Socket`
+  * `net: add localAddress and localPort to Socket`
   
   * `src: fix typos in async_wrap.h`
 
@@ -133,7 +133,7 @@ Un buen mensaje de commit debe describir qué cambió y por qué.
 
 5. Si su commit introduce un cambio de ruptura(`semver-major`), debe contener una explicación sobre el motivo del cambio de ruptura, qué situación desencadenaría el cambio de ruptura y cuál es el cambio exacto.
 
-Muestra de mensaje de confirmación completo:
+Muestra de mensaje de confirmación completo (en inglés):
 
 ```txt
 subsystem: explain the commit in one line
@@ -153,7 +153,7 @@ Refs: http://eslint.org/docs/rules/space-in-parens.html
 
 Si eres nuevo en contribuir con Node.js, por favor intenta hacer tu mejor esfuerzo para cumplir con estas pautas, pero no te preocupes si haces algo mal. Uno de los colaboradores actuales ayudará a ubicar las cosas y el contribuyente que aterrice la Solicitud de extracción garantizará que todo siga las pautas del proyecto.
 
-Vea [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - Una utilidad que asegura que los commits siguen las pautas de formateo de commit.
+Vea [core-validate-commit](https://github.com/evanlucas/core-validate-commit) - Una utilidad que asegura que los commits sigan las pautas de formato de commit.
 
 ### Paso 5: Rebase
 
@@ -166,13 +166,13 @@ $ git rebase upstream/master
 
 Esto garantiza que su branch de trabajo tenga los últimos cambios del maestro `nodejs/node`.
 
-### Step 6: Test
+### Paso 6: Prueba
 
-Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
+Las correcciones de errores y las características siempre deben venir con las pruebas. Se ha proporcionado una [guía para escribir pruebas en Node.js](../writing-tests.md) para facilitar el proceso. Ver otras pruebas para ver cómo deberían estructurarse también puede ayudar.
 
-The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
+El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro a dónde debe ir un nuevo archivo de prueba. En caso de dudas, agregue una nueva prueba al directorio `test/parallel/` y la ubicación correcta se resolverá luego.
 
-Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
+Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. To run the tests (including code linting) on Unix / macOS:
 
 ```text
 $ ./configure && make -j4 test

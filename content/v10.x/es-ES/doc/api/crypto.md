@@ -984,7 +984,7 @@ console.log(sign.sign(privateKey, 'hex'));
 // Prints: the calculated signature
 ```
 
-En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, como 'ecdsa-with-SHA256'. Use nombres resumidos en su lugar.
+En algunos casos, una instancia `Sign` puede también ser creada pasando un nombre de algoritmo de firma, como lo es 'RSA-SHA256'. Esto va a usar el algoritmo de resumen correspondiente. Esto no funciona para todos los algoritmos de firmas, tales como 'ecdsa-with-SHA256'. En su lugar, use nombres resumidos.
 
 Ejemplo: firmando usando el nombre del algoritmo de firma heredado
 
@@ -1027,7 +1027,7 @@ El argumento `privateKey` puede ser un objeto o una string. Si `privateKey` es u
   - `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para firmar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
 - `saltLength`: {integer} - longitud de sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de sal del tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (por defecto) lo establece en el valor máximo permitido.
 
@@ -1137,11 +1137,11 @@ Verifica los datos dados usando los `object` y `signature` dados. El argumento `
   - `crypto.constants.RSA_PKCS1_PADDING` (por defecto)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para verificar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Tenga en cuenta que `RSA_PKCS1_PSS_PADDING` va a usar MGF1 con la misma función hash usada para verificar el mensaje como se especifica en la sección 3.1 de [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
 - `saltLength`: {integer} - longitud de sal para cuando el relleno es `RSA_PKCS1_PSS_PADDING`. El valor especial `crypto.constants.RSA_PSS_SALTLEN_DIGEST` establece la longitud de sal de tamaño resumido, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (por defecto) hace que se determine automáticamente.
 
-El argumento `signature` es la firma previamente calculada para los datos, en el `signatureFormat` que puede ser `'latin1'`, `'hex'` o `'base64'`. Si un `signatureFormat` es especificado, la `signature` se espera que sea una string; de no ser así `signature` se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
+El argumento `signature` es la firma previamente calculada para los datos, en el `signatureFormat` que puede ser `'latin1'`, `'hex'` o `'base64'`. Si un `signatureFormat` es especificado, la `signature` se espera que sea una string; de no ser así se espera que `signature` sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
 El objeto `verify` no puede ser usado nuevamente después de que `verify.verify()` ha sido llamado. Llamadas múltiples a `verify.verify()` van a resultar en un error.
 
@@ -1162,7 +1162,7 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-La codificación predeterminada para usar para funciones que pueden tomar strings o [buffers][`Buffer`]. El valor por defecto es `'buffer'`, que hace que los métodos por defecto sean objetos [`Buffer`][].
+La codificación predeterminada a usar para funciones que pueden tomar strings o [buffers][`Buffer`]. El valor por defecto es `'buffer'`, que hace que los métodos por defecto sean objetos [`Buffer`][].
 
 El mecanismo `crypto.DEFAULT_ENCODING` es dado para la compatibilidad con versiones anteriores de programas antiguos que esperan que `'latin1'` sea un código por defecto.
 
@@ -1199,13 +1199,13 @@ Crea y devuelve un objeto `Cipher` que usa los `algorithm` y `password` dados.
 
 El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-El `algorithm` es dependiente en OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
+El `algorithm` es dependiente de OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
 El `password` es usado para derivar la clave cifrada y el vector de inicialización (IV). El valor debe ser un string codificado `'latin1'`, un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-La implementación de `crypto.createCipher()` deriva claves usando la función de OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario como la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptograficamente seguro permite que las contraseñas sean probadas rápidamente.
+La implementación de `crypto.createCipher()` deriva claves usando la función de OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario ya que la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptograficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-En consonancia las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usar [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Una advertencia es emitida cuando se usan en función de evitar el riesgo de reusar IV que causa vulnerabilidades. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Se emite una advertencia cuando se usan a fin de evitar el riesgo de reutilización IV que causa vulnerabilidades. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
