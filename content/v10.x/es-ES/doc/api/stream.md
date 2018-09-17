@@ -1669,9 +1669,9 @@ changes:
                  are supported now.
 -->
 
-* `options` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
-  * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Default:** `true`.
-  * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
+* `opciones` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
+  * `allowHalfOpen` {boolean} Si se establece como `false`, entonces el stream va a terminar el lado escribible automáticamente cuando el lado legible termine. **Predeterminado:** `true`.
+  * `readableObjectMode` {boolean} Establece `objectMode` para el lado legible del stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
   * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
   * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
@@ -1798,7 +1798,7 @@ Care must be taken when using `Transform` streams in that data written to the st
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passed to both `Writable` and `Readable` constructors. Also has the following fields: 
+* `options` {Object} Pasado por los constructores `Writable` y `Readable`. Also has the following fields: 
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
