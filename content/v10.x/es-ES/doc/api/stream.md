@@ -1375,7 +1375,7 @@ Esta función opcional será llamada antes de que el stream cierre, demorando el
 
 #### Errores al Escribir
 
-Es recomendado que ocurran errores durante el procesamiento de los métodos `writable._write()` y `writable._writev()` sean reportados al invocar el callback y pasar el error como el primer argumento. Esto causará que un evento `'error'` sea emitido por el `Writable`. Throwing an `Error` from within `writable._write()` can result in unexpected and inconsistent behavior depending on how the stream is being used. Using the callback ensures consistent and predictable handling of errors.
+Es recomendado que ocurran errores durante el procesamiento de los métodos `writable._write()` y `writable._writev()` sean reportados al invocar el callback y pasar el error como el primer argumento. Esto causará que un evento `'error'` sea emitido por el `Writable`. Arrojar un `Error` desde dentro del `writable._write()` puede resultar en un comportamiento inesperado e inconsistente dependiendo de cómo se está usando el stream. Usar el callback asegura el manejo consistente y predecible de manejo de errores.
 
 If a `Readable` stream pipes into a `Writable` stream when `Writable` emits an error, the `Readable` stream will be unpiped.
 
