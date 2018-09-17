@@ -149,11 +149,11 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 });
 ```
 
-Se viene fornita una funzione `callback`, viene chiamata con gli argomenti `(error, stdout, stderr)`. In caso di successo, `error` sarà `null`. In caso di errore, `error` sarà un'istanza di [`Error`][]. The `error.code` property will be the exit code of the child process while `error.signal` will be set to the signal that terminated the process. Any exit code other than `0` is considered to be an error.
+Se viene fornita una funzione `callback`, viene chiamata con gli argomenti `(error, stdout, stderr)`. In caso di successo, `error` sarà `null`. In caso di errore, `error` sarà un'istanza di [`Error`][]. La proprietà `error.code` sarà il valore di uscita del processo child mentre `error.signal` sarà impostato sul segnale che ha interrotto il processo. Qualsiasi valore di uscita diverso da `0` è considerato un errore.
 
-The `stdout` and `stderr` arguments passed to the callback will contain the stdout and stderr output of the child process. By default, Node.js will decode the output as UTF-8 and pass strings to the callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
+Gli argomenti `stdout` e `stderr` passati al callback conterranno gli output stdout e stderr del processo child. Di default, Node.js decodificherà l'output come UTF-8 e passerà le stringhe al callback. L'opzione `encoding` può essere usata per specificare l'encoding (codifica) dei caratteri utilizzato per decodificare gli output stdout e stderr. Se `encoding` è `'buffer'`, oppure un econding dei caratteri non riconosciuto, allora i `Buffer` object saranno passati al callback.
 
-If `timeout` is greater than `0`, the parent will send the signal identified by the `killSignal` property (the default is `'SIGTERM'`) if the child runs longer than `timeout` milliseconds.
+Se `timeout` è maggiore di `0`, il parent invierà il segnale identificato dalla proprietà `killSignal` (il valore predefinito è `'SIGTERM'`) se il child esegue più di `timeout` millisecondi.
 
 Unlike the exec(3) POSIX system call, `child_process.exec()` does not replace the existing process and uses a shell to execute the command.
 
