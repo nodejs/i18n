@@ -157,7 +157,7 @@ Se `timeout` è maggiore di `0`, il parent invierà il segnale identificato dall
 
 A differenza della chiamata di sistema POSIX exec(3), `child_process.exec()` non sostituisce il processo esistente e utilizza una shell per eseguire il comando.
 
-Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In caso di errore (incluso qualsiasi errore che da come risultato un valore di uscita diverso da 0), viene restituito un promise respinto, con lo stesso `error` object specificato nel callback, ma con altre due proprietà `stdout` e `stderr`.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In caso di errore (incluso qualsiasi errore che dia come risultato un valore di uscita diverso da 0), viene restituito un promise respinto, con lo stesso `error` object specificato nel callback, ma con altre due proprietà `stdout` e `stderr`.
 
 ```js
 const util = require('util');
