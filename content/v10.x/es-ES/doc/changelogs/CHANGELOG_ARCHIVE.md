@@ -649,11 +649,11 @@ https://github.com/nodejs/node/commit/bce38b3d74e64fcb7d04a2dd551151da6168cdc5
 * tls: remover nocivas e innecesarias revisiones de enlaces (Marcel Laverdet)
 * buffer: escribir strings ascii utilizando WriteOneByte (Trevor Norris)
 * dtrace: reparar generación de constantes v8 en freebsd (Fedor Indutny)
-* dtrace: x64 ustack helper (Fedor Indutny)
-* readline: handle wide characters properly (Nao Iizuka)
-* repl: Use a domain to catch async errors safely (isaacs)
-* repl: emit 'reset' event when context is reset (Sami Samhuri)
-* util: custom `inspect()` method may return an Object (Nathan Rajlich)
+* dtrace: ayudante de desapilado x64 (Fedor Indutny)
+* readline: manejar caracteres anchos correctamente (Nao Iizuka)
+* repl: Usar un dominio para atrapar errores asincrónicos de forma segura (isaacs)
+* repl: emitir evento "reset" cuando se restablezca el contexto (Sami Samhuri)
+* util: método `inspect()` personalizado puede devolver un Objeto (Nathan Rajlich)
 * console: `console.dir()` bypasses inspect() methods (Nathan Rajlich)
 
 <a id="0.9.12"></a>
