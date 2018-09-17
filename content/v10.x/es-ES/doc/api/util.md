@@ -1691,7 +1691,7 @@ deprecated: v4.0.0
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Number`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1713,12 +1713,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value !== null && typeof value === 'object'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value !== null && typeof value === 'object'`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es estrictamente un `Object` **y** no una `Function` (a pesar de que las funciones son objetos en JavaScript). De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1740,12 +1740,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `(typeof value !== 'object' && typeof value !== 'function') || value === null` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `(typeof value !== 'object' && typeof value !== 'function') || value === null`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un tipo primitivo. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1777,12 +1777,12 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `RegExp`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1802,12 +1802,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'string'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'string'`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `string`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
