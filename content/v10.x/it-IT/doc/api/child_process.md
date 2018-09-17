@@ -31,15 +31,15 @@ Il metodo [`child_process.spawn()`][] genera il processo child in modo asincrono
 
 Per comodità, il modulo `child_process` fornisce una manciata di alternative sincrone e asincrone a [`child_process.spawn()`][] e [`child_process.spawnSync()`][]. *Da notare che ognuna di queste alternative è implementata in cima a [`child_process.spawn()`][] o [`child_process.spawnSync()`][].*
 
-    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
-      passing the `stdout` and `stderr` to a callback function when complete.
-    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
-      it spawns the command directly without first spawning a shell by default.
-    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a
-      specified module with an IPC communication channel established that allows
-      sending messages between parent and child.
-    * [`child_process.execSync()`][]: a synchronous version of
-      [`child_process.exec()`][] that *will* block the Node.js event loop.
+    * [`child_process.exec()`][]: genera una shell ed esegue un comando al suo interno, 
+      passando lo `stdout` e lo `stderr` a una funzione di callback quando è completa.
+    * [`child_process.execFile()`][]: simile a [`child_process.exec()`][] eccetto che 
+      genera il comando direttamente senza prima generare una shell di default.
+    * [`child_process.fork()`][]: genera un nuovo processo Node.js e invoca un 
+      modulo specificato con un canale di comunicazione IPC che consente
+      di inviare messaggi tra parent e child.
+    * [`child_process.execSync()`][]: una versione sincrona di
+      [`child_process.exec()`][] che *interromperà* il ciclo di eventi di Node.js.
     * [`child_process.execFileSync()`][]: a synchronous version of
       [`child_process.execFile()`][] that *will* block the Node.js event loop.
     
