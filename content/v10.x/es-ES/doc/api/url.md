@@ -703,18 +703,18 @@ added: v7.4.0
 * `domain` {string}
 * Devuelve: {string}
 
-Devuelve la serialización de ASCII [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) del `domain`. If `domain` is an invalid domain, the empty string is returned.
+Devuelve la serialización de ASCII [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) del `domain`. Si `domain` es un dominio inválido, la string vacía es devuelta.
 
 It performs the inverse operation to [`url.domainToUnicode()`][].
 
 ```js
 const url = require('url');
 console.log(url.domainToASCII('español.com'));
-// Prints xn--espaol-zwa.com
+// Imprime xn--espaol-zwa.com
 console.log(url.domainToASCII('中文.com'));
-// Prints xn--fiq228c.com
+// Imprime xn--fiq228c.com
 console.log(url.domainToASCII('xn--iñvalid.com'));
-// Prints an empty string
+// Imprime una string vacía
 ```
 
 ### url.domainToUnicode(domain)
@@ -724,20 +724,20 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Returns: {string}
+* Devuelve: {string}
 
-Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
+Devuelve la serialización Unicode del `domain`. Si `domain` es un dominio inválido, la string vacía es devuelta.
 
-It performs the inverse operation to [`url.domainToASCII()`][].
+Realiza la operación inversa a [`url.domainToASCII()`][].
 
 ```js
 const url = require('url');
 console.log(url.domainToUnicode('xn--espaol-zwa.com'));
-// Prints español.com
+// Imprime español.com
 console.log(url.domainToUnicode('xn--fiq228c.com'));
-// Prints 中文.com
+// Imprime 中文.com
 console.log(url.domainToUnicode('xn--iñvalid.com'));
-// Prints an empty string
+// Imprime una string vacía
 ```
 
 ### url.format(URL[, options])
