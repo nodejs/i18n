@@ -1377,12 +1377,12 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`WeakMap`][] instance.
+Devuelve `true` si el valor es una instancia [`WeakMap`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isWeakMap(new WeakMap());  // Returns true
+util.types.isWeakMap(new WeakMap());  // Devuelve true
 ```
 
 ### util.types.isWeakSet(value)
@@ -1391,14 +1391,14 @@ util.types.isWeakMap(new WeakMap());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`WeakSet`][] instance.
+Devuelve `true` si el valor es una instancia [`WeakSet`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isWeakSet(new WeakSet());  // Returns true
+util.types.isWeakSet(new WeakSet());  // Devuelve true
 ```
 
 ### util.types.isWebAssemblyCompiledModule(value)
@@ -1407,20 +1407,20 @@ util.types.isWeakSet(new WeakSet());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
+Devuelve `true` si el valor es una instancia [`WebAssembly.Module`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
 const module = new WebAssembly.Module(wasmBuffer);
-util.types.isWebAssemblyCompiledModule(module);  // Returns true
+util.types.isWebAssemblyCompiledModule(module);  // Devuelve true
 ```
 
-## Deprecated APIs
+## APIs Desaprobadas
 
-The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
+Las siguientes APIs han sido desaprobadas y ya no deberían ser usadas. Los módulos y aplicaciones existentes deberían ser actualizados para encontrar enfoques alternativos.
 
 ### util.\_extend(target, source)
 
@@ -1429,9 +1429,9 @@ added: v0.7.5
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`Object.assign()`].
 
-The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
+El método `util._extend()` nunca fue pensado para ser usado fuera de los módulos internos de Node.js. De todas maneras, la comunidad lo encontró y lo usó.
 
 It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
