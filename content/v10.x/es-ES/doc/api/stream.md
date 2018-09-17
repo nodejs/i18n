@@ -1867,9 +1867,9 @@ Esta función NO DEBE ser llamada por aplicación de código directamente. Deber
 
 Todas las implementaciones de stream `Transform` deben proporcionar un método `_transform()` para aceptar la entrada y producir una salida. La implementación `transform._transform()` maneja los bytes que están siendo escritos, computa una salida, luego pasa esa salida a la porción legible usando el método `readable.push()`.
 
-The `transform.push()` method may be called zero or more times to generate output from a single input chunk, depending on how much is to be output as a result of the chunk.
+El método `transform.push()` puede ser llamado cero o más veces para generar salida de un solo fragmento de entrada, dependiendo de cuanto hay para la salida como resultado del fragmento.
 
-It is possible that no output is generated from any given chunk of input data.
+Es posible que ninguna salida es generada de cualquier fragmento de datos de entrada.
 
 The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
 
