@@ -654,17 +654,17 @@ https://github.com/nodejs/node/commit/bce38b3d74e64fcb7d04a2dd551151da6168cdc5
 * repl: Usar un dominio para atrapar errores asincrónicos de forma segura (isaacs)
 * repl: emitir evento "reset" cuando se restablezca el contexto (Sami Samhuri)
 * util: método `inspect()` personalizado puede devolver un Objeto (Nathan Rajlich)
-* console: `console.dir()` bypasses inspect() methods (Nathan Rajlich)
+* console: `console.dir()` evita métodos inspect() (Nathan Rajlich)
 
 <a id="0.9.12"></a>
 
-## 2013.03.06, Version 0.9.12 (Unstable)
+## 2013.03.06, Versión 0.9.12 (Inestable)
 
 https://github.com/nodejs/node/commit/0debf5a82934da805592b6496756cdf27c993abc
 
-* stream: Allow strings in Readable.push/unshift (isaacs)
-* stream: Remove bufferSize option (isaacs)
-* stream: Increase highWaterMark on large reads (isaacs)
+* stream: Permitir strings en Readable.push/unshift (isaacs)
+* stream: Remover opción bufferSize (isaacs)
+* stream: Incrementar highWaterMark en lecturas largas (isaacs)
 * stream: _write: takes an encoding argument (isaacs)
 * stream: _transform: remove output() method, provide encoding (isaacs)
 * stream: Don't require read(0) to emit 'readable' event (isaacs)
