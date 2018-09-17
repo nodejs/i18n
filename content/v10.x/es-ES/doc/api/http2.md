@@ -1128,9 +1128,9 @@ server.on('stream', (stream) => {
 });
 ```
 
-The optional `options.statCheck` function may be specified to give user code an opportunity to set additional content headers based on the `fs.Stat` details of the given fd. Si se proporciona la función de `statCheck`, el método de `http2stream.respondWithFD()` realizará una llamada `fs.fstat()` para recopilar detalles sobre el descriptor de archivos proporcionado.
+La función opcional `options.statCheck` puede ser especificada para dar al código de usuario una oportunidad para establecer cabeceras de contenido adicionales basadas en los detalles `fs.Stat` del fd dado. Si se proporciona la función de `statCheck`, el método de `http2stream.respondWithFD()` realizará una llamada `fs.fstat()` para recopilar detalles sobre el descriptor de archivos proporcionado.
 
-The `offset` and `length` options may be used to limit the response to a specific range subset. Por ejemplo, esto puede ser utilizado para brindar soporte a las solicitudes de HTTP Range.
+Las opciones `offset` y `length` pueden ser utilizadas para limitar la respuesta a un subconjunto de rangos específicos. Por ejemplo, esto puede ser utilizado para brindar soporte a las solicitudes de HTTP Range.
 
 El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Tenga en cuenta que utilizar el mismo descriptor de archivo de manera concurrente para múltiples streams no es soportado y puede resultar en pérdida de datos. Reutilizar un descriptor de archivo luego de que un stream ha finalizado es soportado.
 
@@ -1182,11 +1182,11 @@ changes:
   * `offset` {number} The offset position at which to begin reading.
   * `length` {number} La cantidad de datos de la fd a enviar.
 
-Envía un archivo normal como respuesta. The `path` must specify a regular file or an `'error'` event will be emitted on the `Http2Stream` object.
+Envía un archivo normal como respuesta. El `path` debe especificar a un archivo normal o se emitirá un evento `'error'` en el objeto `Http2Stream` .
 
 Al ser utilizada, la interfaz de `Duplex` del objeto de `Http2Stream` se cerrará automáticamente.
 
-The optional `options.statCheck` function may be specified to give user code an opportunity to set additional content headers based on the `fs.Stat` details of the given file:
+La función opcional `options.statCheck` puede ser especificada para dar al código de usuario una oportunidad para establecer cabeceras de contenido adicionales basadas en los detalles `fs.Stat` del archivo dado:
 
 Si ocurre un error al intentar leer los datos del archivo, el `Http2Stream` se cerrará utilizando un frame de `RST_STREAM`, utilizando el código estándar `INTERNAL_ERROR` . Si se define el callback de `onError`, entonces será llamado. De lo contrario el stream sera destruido.
 
