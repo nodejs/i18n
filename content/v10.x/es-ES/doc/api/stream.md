@@ -1480,7 +1480,7 @@ class MyReadable extends Readable {
 }
 ```
 
-O cuando se use constructores de estilo pre-ES&:
+O cuando se use constructores de estilo pre-ES6:
 
 ```js
 const { Readable } = require('stream');
@@ -1800,7 +1800,7 @@ Debe tenerse cuidado cuando se usen los streams `Transform` en esos datos escrit
 
 * `options` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
   * `transform` {Function} Implementación para el método [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback).
-  * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
+  * `flush` {Function} Implementación para el método [`stream._flush()`](#stream_transform_flush_callback).
 
 ```js
 const { Transform } = require('stream');
@@ -1813,7 +1813,7 @@ class MyTransform extends Transform {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+O cuando se use constructores de estilo pre-ES6:
 
 ```js
 const { Transform } = require('stream');
@@ -1839,9 +1839,9 @@ const myTransform = new Transform({
 });
 ```
 
-#### Events: 'finish' and 'end'
+#### Eventos: 'finish' y 'end'
 
-The [`'finish'`][] and [`'end'`][] events are from the `stream.Writable` and `stream.Readable` classes, respectively. The `'finish'` event is emitted after [`stream.end()`](#stream_writable_end_chunk_encoding_callback) is called and all chunks have been processed by [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). The `'end'` event is emitted after all data has been output, which occurs after the callback in [`transform._flush()`](#stream_transform_flush_callback) has been called.
+Los eventos [`'finish'`][] y [`'end'`][] son de las clases `stream.Writable` y `stream.Readable`, respectivamente. El evento `'finish'` es emitido después que se llama [`stream.end()`](#stream_writable_end_chunk_encoding_callback)y todos los fragmentos han sido procesados by [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). El evento`'end'` es emitido después que todos los datos han sido sacados, que ocurre luego de que se llamó el callback en [`transform._flush()`](#stream_transform_flush_callback).
 
 #### transform.\_flush(callback)
 
