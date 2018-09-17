@@ -157,7 +157,7 @@ Se `timeout` è maggiore di `0`, il parent invierà il segnale identificato dall
 
 A differenza della chiamata di sistema POSIX exec(3), `child_process.exec()` non sostituisce il processo esistente e utilizza una shell per eseguire il comando.
 
-Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In case of an error (including any error resulting in an exit code other than 0), a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In caso di errore (incluso qualsiasi errore che da come risultato un valore di uscita diverso da 0), viene restituito un promise respinto, con lo stesso `error` object specificato nel callback, ma con altre due proprietà `stdout` e `stderr`.
 
 ```js
 const util = require('util');
@@ -182,18 +182,18 @@ changes:
     description: The `windowsHide` option is supported now.
 -->
 
-* `file` {string} The name or path of the executable file to run.
-* `args` {string[]} List of string arguments.
+* `file` {string} Il nome o il percorso del file eseguibile da avviare.
+* `args` {string[]} Elenco degli argomenti di string.
 * `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
-  * `env` {Object} Environment key-value pairs.
+  * `cwd` {string} Attuale directory di lavoro del processo child.
+  * `env` {Object} Coppie key-value dell'ambiente.
   * `encoding` {string} **Default:** `'utf8'`
   * `timeout` {number} **Default:** `0`
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} La quantità maggiore di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
+  * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
 * `callback` {Function} Called with the output when process terminates. 
