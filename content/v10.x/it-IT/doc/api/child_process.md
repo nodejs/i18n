@@ -289,8 +289,8 @@ changes:
     description: The `shell` option is supported now.
 -->
 
-* `command` {string} The command to run.
-* `args` {string[]} List of string arguments.
+* `command` {string} Il comando da eseguire.
+* `args` {string[]} Elenco degli argomenti di string.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `env` {Object} Environment key-value pairs.
