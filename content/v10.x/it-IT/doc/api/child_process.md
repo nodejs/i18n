@@ -400,7 +400,7 @@ Attualmente Node.js sovrascrive `argv[0]` con `process.execPath` all'avvio, quin
 added: v0.7.10
 -->
 
-On Windows, setting `options.detached` to `true` makes it possible for the child process to continue running after the parent exits. The child will have its own console window. *Once enabled for a child process, it cannot be disabled*.
+Su Windows, l'impostazione di `options.detached` su `true` consente al processo child di continuare ad essere eseguito dopo la chiusura del parent. Il child avrà la propria finestra della console. *Una volta abilitato per un processo child, non può essere disabilitato*.
 
 On non-Windows platforms, if `options.detached` is set to `true`, the child process will be made the leader of a new process group and session. Note that child processes may continue running after the parent exits regardless of whether they are detached or not. See setsid(2) for more information.
 
