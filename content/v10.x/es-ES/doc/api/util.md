@@ -1255,8 +1255,8 @@ Devuelve `true` si el valor es un objeto de string, p. ej. creado por `new Strin
 Por ejemplo:
 
 ```js
-util.types.isStringObject('foo');  // Returns false
-util.types.isStringObject(new String('foo'));   // Returns true
+util.types.isStringObject('foo');  // Devuelve false
+util.types.isStringObject(new String('foo'));   // Devuelve true
 ```
 
 ### util.types.isSymbolObject(value)
@@ -1265,7 +1265,7 @@ util.types.isStringObject(new String('foo'));   // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
 
