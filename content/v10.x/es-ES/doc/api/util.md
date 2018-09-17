@@ -1829,12 +1829,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'symbol'`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Symbol`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1854,12 +1854,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value === undefined` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value === undefined`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is `undefined`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es `undefined`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1880,11 +1880,11 @@ added: v0.3.0
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use a third party module instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use un módulo de terceros.
 
 * `string` {string}
 
-The `util.log()` method prints the given `string` to `stdout` with an included timestamp.
+El método `util.log()` imprime el `string` dado a `stdout` con una marca de tiempo incluida.
 
 ```js
 const util = require('util');
@@ -1899,9 +1899,9 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.log()`][].
 
-Deprecated predecessor of `console.log`.
+Predecesor desaprobado de `console.log`.
 
 ### util.puts([...strings])
 
@@ -1910,6 +1910,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.log()`][].
 
-Deprecated predecessor of `console.log`.
+Predecesor desaprobado de `console.log`.
