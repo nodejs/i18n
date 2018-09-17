@@ -1786,13 +1786,13 @@ myTransform.write(100);
 
 ### Implementando un Stream de Transformación
 
-Un stream [`Transform`][] es un stream [`Duplex`][] donde la salida es computada de alguna manera desde la entrada. Examples include [zlib](zlib.html) streams or [crypto](crypto.html) streams that compress, encrypt, or decrypt data.
+Un stream [`Transform`][] es un stream [`Duplex`][] donde la salida es computada de alguna manera desde la entrada. Los ejemplos incluyen streams [zlib](zlib.html) o streams [crypto](crypto.html) que comprimen, encripta o descifran los datos.
 
-There is no requirement that the output be the same size as the input, the same number of chunks, or arrive at the same time. For example, a `Hash` stream will only ever have a single chunk of output which is provided when the input is ended. A `zlib` stream will produce output that is either much smaller or much larger than its input.
+No es requerido que la salida sea del mismo tamaño que la entrada, el mismo número de fragmentos, o que lleguen al mismo tiempo. Por ejemplo, un stream `Hash` solo tendrá un solo fragmento de salida, que es proporcionado cuando la entrada ha terminado. Un stream `zlib` producirá una salida que, o es mucho más pequeña o mucho más grande que su entrada.
 
-The `stream.Transform` class is extended to implement a [`Transform`][] stream.
+La clase `stream.Transform` es extendida para implementar un stream [`Transform`][].
 
-The `stream.Transform` class prototypically inherits from `stream.Duplex` and implements its own versions of the `writable._write()` and `readable._read()` methods. Custom `Transform` implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
+La clase `stream.Transform` hereda prototípicamente de `stream.Duplex` e implementa su propia versión de los métodos `writable._write()` y `readable._read()`. Custom `Transform` implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
 
 Care must be taken when using `Transform` streams in that data written to the stream can cause the `Writable` side of the stream to become paused if the output on the `Readable` side is not consumed.
 
