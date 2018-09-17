@@ -189,7 +189,7 @@ changes:
   * `env` {Object} Coppie key-value dell'ambiente.
   * `encoding` {string} **Default:** `'utf8'`
   * `timeout` {number} **Default:** `0`
-  * `maxBuffer` {number} La quantità maggiore di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} La quantità massima di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
   * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
