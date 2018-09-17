@@ -486,9 +486,9 @@ added: v7.10.0
 
 * `obj` {Object} Un objeto que representa una colección de pares clave-valor
 
-Instantiate a new `URLSearchParams` object with a query hash map. The key and value of each property of `obj` are always coerced to strings.
+Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa hash de consulta. La clave y valor de cada propiedad de `obj` siempre son forzados a strings.
 
-Unlike [`querystring`][] module, duplicate keys in the form of array values are not allowed. Arrays are stringified using [`array.toString()`][], which simply joins all array elements with commas.
+A diferencia del módulo [`querystring`][], las claves duplicadas en forma de valores de array no son permitidas. Los arrays son codificados usando [`array.toString()`][], el cual simplemente une todos los elementos array con comas.
 
 ```js
 const params = new URLSearchParams({
@@ -496,9 +496,9 @@ const params = new URLSearchParams({
   query: ['first', 'second']
 });
 console.log(params.getAll('query'));
-// Prints [ 'first,second' ]
+// Imprime [ 'first,second' ]
 console.log(params.toString());
-// Prints 'user=abc&query=first%2Csecond'
+// Imprime 'user=abc&query=first%2Csecond'
 ```
 
 #### Constructor: new URLSearchParams(iterable)
