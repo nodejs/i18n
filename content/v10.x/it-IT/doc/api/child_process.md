@@ -132,7 +132,7 @@ exec('"/path/to/test file/test.sh" arg1 arg2');
 // più argomenti
 
 exec('echo "The \\$HOME variable is $HOME"');
-// La variabile $HOME è scappata nella prima istanza, ma non nella seconda
+// La variabile $HOME è sottoposta all'escape nella prima istanza, ma non nella seconda
 ```
 
 **Non passare mai l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
@@ -194,17 +194,17 @@ changes:
   * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
   * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
   * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-* `callback` {Function} Called with the output when process terminates. 
+  * `windowsVerbatimArguments` {boolean} Non viene eseguita nessuna citazione od escaping degli argomenti su Windows. Ignorato su Unix. **Default:** `false`.
+  * `shell` {boolean|string} Se `true`, esegue `command` all'interno di una shell. Utilizza `'/bin/sh'` su UNIX, e `process.env.ComSpec` su Windows. Una shell diversa può essere specificata come una stringa. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `false` (nessuna shell).
+* `callback` {Function} Chiamata con l'output al termine del processo. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* Returns: {ChildProcess}
+* Restituisce: {ChildProcess}
 
-The `child_process.execFile()` function is similar to [`child_process.exec()`][] except that it does not spawn a shell by default. Rather, the specified executable `file` is spawned directly as a new process making it slightly more efficient than [`child_process.exec()`][].
+La funzione `child_process.execFile()` è simile a [`child_process.exec()`][] eccetto per il fatto che non genera una shell di default. Piuttosto, il `file` eseguibile specificato viene generato direttamente come un nuovo processo rendendolo leggermente più efficiente di [`child_process.exec()`][].
 
-The same options as [`child_process.exec()`][] are supported. Since a shell is not spawned, behaviors such as I/O redirection and file globbing are not supported.
+Sono supportate le stesse opzioni di [`child_process.exec()`][]. Dal momento che una shell non viene generata, i comportamenti come il reindirizzamento I/O e il file globbing non sono supportati.
 
 ```js
 const { execFile } = require('child_process');
