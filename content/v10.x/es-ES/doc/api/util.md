@@ -1531,11 +1531,11 @@ Devuelve `true` si el `object` dado es un `Buffer`. De otra manera, devuelve `fa
 const util = require('util');
 
 util.isBuffer({ length: 0 });
-// Returns: false
+// Devuelve: false
 util.isBuffer([]);
-// Returns: false
+// Devuelve: false
 util.isBuffer(Buffer.from('hello world'));
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isDate(object)
@@ -1545,22 +1545,22 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`util.types.isDate()`][].
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
+Devuelve `true` si el `object` es una `Date`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
 
 util.isDate(new Date());
-// Returns: true
+// Devuelve: true
 util.isDate(Date());
-// false (without 'new' returns a String)
+// false (sin 'new' devuelve un String)
 util.isDate({});
-// Returns: false
+// Devuelve: false
 ```
 
 ### util.isError(object)
@@ -1570,12 +1570,12 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`util.types.isNativeError()`][].
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un [`Error`][]. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1588,7 +1588,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Devuelve: false
 ```
 
-Note that this method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
+Tenga en cuenta que este método depende del comportamiento de `Object.prototype.toString()`. Es posible obtener un resultado incorrecto cuando el argumento del `object` manipula a `@@toStringTag`.
 
 ```js
 const util = require('util');
@@ -1608,12 +1608,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'function'`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es una `Function`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1636,12 +1636,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value === null` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value === null`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is strictly `null`. Otherwise, returns `false`.
+Devuelve `true` si el `object` es estrictamente `null`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1661,12 +1661,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value === undefined || value === null` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value === undefined || value === null`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es `null` o `undefined`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1686,7 +1686,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'number'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'number'`.
 
 * `object` {any}
 * Devuelve: {boolean}
