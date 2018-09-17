@@ -1562,12 +1562,12 @@ Cuando el `Readable` opera en modo pausado, los datos añadidos con `readable.pu
 
 Cuando `Readable` está operando en modo fluido, los datos añadidos con `readable.push()`serán entregados al emitir un envento `'data'`.
 
-The `readable.push()` method is designed to be as flexible as possible. For example, when wrapping a lower-level source that provides some form of pause/resume mechanism, and a data callback, the low-level source can be wrapped by the custom `Readable` instance as illustrated in the following example:
+El método `readable.push()` está diseñado para ser tan flexible como sea posible. Por ejemplo, cuando se envuelve una fuente de bajo-nivel que proporciona alguna forma de mecanismo de pausar/resumir, y un callback de datos, la fuente de bajo-nivel puede ser envuelta por la instancia `Readable` personalizada como se muestra en el siguiente ejemplo:
 
 ```js
-// source is an object with readStop() and readStart() methods,
-// and an `ondata` member that gets called when it has data, and
-// an `onend` member that gets called when the data is over.
+// la fuente es un objeto con métodos readStop() y readStart(),
+// y un miembro `ondata` que es llamado cuando tiene datos, y
+// un miembro `onend` que es llamado cuando se acaba los datos.
 
 class SourceWrapper extends Readable {
   constructor(options) {
@@ -1595,9 +1595,9 @@ class SourceWrapper extends Readable {
 }
 ```
 
-The `readable.push()` method is intended be called only by `Readable` implementers, and only from within the `readable._read()` method.
+El método `readable.push()` está previsto ser llamado solo por implementadores `Readable`, y solo desde dentro del método `readable._read()`.
 
-For streams not operating in object mode, if the `chunk` parameter of `readable.push()` is `undefined`, it will be treated as empty string or buffer. See [`readable.push('')`][] for more information.
+Para streams que no estén operando en modo objeto, si el parámetro `chunk` de `readable.push()` es `undefined`, será tratado como un string vacío o un búfer. See [`readable.push('')`][] for more information.
 
 #### Errors While Reading
 
