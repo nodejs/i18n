@@ -10,7 +10,7 @@ El módulo `vm` proporciona APIs para compilar y ejecutar códigos dentro de los
 
 El código JavaScript puede ser compilado y ejecutado inmediatamente o compilado, guardado y ejecutado después.
 
-Un caso de uso común es ejecutar el código en un entorno de espacio aislado. El código de espacio aislado utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
+Un caso de uso común es ejecutar el código en un entorno sandboxed. El código sandboxed utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
 
 Uno puedo proporcionar el contexto con ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) un objeto de espacio aislado. El código sandboxed trata cualquier propiedad en el sandbox como una variable global. Cualquier cambio en las variables globales causado por el código sandboxed se refleja en el objeto sandbox.
 
