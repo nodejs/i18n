@@ -685,16 +685,16 @@ https://github.com/nodejs/node/commit/0debf5a82934da805592b6496756cdf27c993abc
 
 <a id="0.9.11"></a>
 
-## 2013.03.01, Version 0.9.11 (Unstable)
+## 2013.03.01, Versión 0.9.11 (Inestable)
 
 https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
-* V8: downgrade to 3.14.5
-* openssl: update to 1.0.1e
-* darwin: Make process.title work properly (Ben Noordhuis)
-* fs: Support mode/flag options to read/append/writeFile (isaacs)
-* stream: _read() no longer takes a callback (isaacs)
-* stream: Add stream.unshift(chunk) (isaacs)
+* V8: degradar a 3.14.5
+* openssl: actualizar a 1.0.1e
+* darwin: Hacer que process.title funcione correctamente (Ben Noordhuis)
+* fs: Soportar opciones mode/flag para read/append/writeFile (isaacs)
+* stream: _read() ya no toma un callback (isaacs)
+* stream: Añadir stream.unshift(chunk) (isaacs)
 * stream: remove lowWaterMark feature (isaacs)
 * net: omit superfluous 'connect' event (Ben Noordhuis)
 * build, windows: disable SEH (Ben Noordhuis)
