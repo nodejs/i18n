@@ -1671,8 +1671,8 @@ changes:
 
 * `opciones` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
   * `allowHalfOpen` {boolean} Si se establece como `false`, entonces el stream va a terminar el lado escribible automáticamente cuando el lado legible termine. **Predeterminado:** `true`.
-  * `readableObjectMode` {boolean} Establece `objectMode` para el lado legible del stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
-  * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
+  * `readableObjectMode` {boolean} Establece `objectMode` para el lado legible del stream. No tiene efecto si `objectMode` es `true`. **Predeterminado:** `false`.
+  * `writableObjectMode` {boolean} Establece `objectMode` para el lado escribible del stream. No tiene efecto si `objectMode` es `true`. **Default:** `false`.
   * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
 
