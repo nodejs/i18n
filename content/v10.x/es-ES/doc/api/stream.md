@@ -1418,7 +1418,7 @@ class MyWritable extends Writable {
 
 #### Decodificación de Búferes en un Stream Escribible
 
-La decodificación de búferes es una tarea común, por ejemplo, cuando se use tranformadores cuya entrada es un string. No es un proceso trivial cuando se use codificación de caracteres multi-byte, tal como UTF-8. The following example shows how to decode multi-byte strings using `StringDecoder` and [`Writable`][].
+La decodificación de búferes es una tarea común, por ejemplo, cuando se use tranformadores cuya entrada es un string. No es un proceso trivial cuando se use codificación de caracteres multi-byte, tal como UTF-8. El siguiente ejemplo muestra cómo decodificar strings multi-byte usando `StringDecoder` y [`Writable`][].
 
 ```js
 const { Writable } = require('stream');
@@ -1453,17 +1453,17 @@ w.end(euro[1]);
 console.log(w.data); // currency: €
 ```
 
-### Implementing a Readable Stream
+### Implementando un Stream Legible
 
-The `stream.Readable` class is extended to implement a [`Readable`][] stream.
+La clase `stream.Readable` es extendida para implementar un stream [`Readable`][].
 
-Custom `Readable` streams *must* call the `new stream.Readable([options])` constructor and implement the `readable._read()` method.
+Streams `Readable` personalizados *deben* llamar el constructor `new stream.Readable([options])` e implementar el método `readable._read()`.
 
 #### new stream.Readable([options])
 
 * `options` {Object} 
-  * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
-  * `encoding` {string} If specified, then buffers will be decoded to strings using the specified encoding. **Predeterminado:** `null`.
+  * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
+  * `encoding` {string} Si es especificado, los búferes van a ser decodificados a strings usando la codificación especificada. **Predeterminado:** `null`.
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Default:** `false`.
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
@@ -1480,7 +1480,7 @@ class MyReadable extends Readable {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+O cuando se use constructores de estilo pre-ES&:
 
 ```js
 const { Readable } = require('stream');
@@ -1519,7 +1519,7 @@ changes:
 
 * `size` {number} Number of bytes to read asynchronously
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
 All `Readable` stream implementations must provide an implementation of the `readable._read()` method to fetch data from the underlying resource.
 
@@ -1847,7 +1847,7 @@ The [`'finish'`][] and [`'end'`][] events are from the `stream.Writable` and `st
 
 * `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
 In some cases, a transform operation may need to emit an additional bit of data at the end of the stream. For example, a `zlib` compression stream will store an amount of internal state used to optimally compress the output. When the stream ends, however, that additional data needs to be flushed so that the compressed data will be complete.
 
@@ -1863,7 +1863,7 @@ The `transform._flush()` method is prefixed with an underscore because it is int
 * `encoding` {string} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value - 'buffer', ignore it in this case.
 * `callback` {Function} A callback function (optionally with an error argument and data) to be called after the supplied `chunk` has been processed.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. It should be implemented by child classes, and called by the internal `Readable` class methods only.
+Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
 All `Transform` stream implementations must provide a `_transform()` method to accept input and produce output. The `transform._transform()` implementation handles the bytes being written, computes an output, then passes that output off to the readable portion using the `readable.push()` method.
 
