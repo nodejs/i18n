@@ -568,23 +568,23 @@ Eliminar todos los pares nombre-valor cuyo nombre sea `name`.
 
 * Devuelve: {Iterator}
 
-Devuelve un `Iterator` ES6 sobre cada uno de los pares nombre-valor en la consulta. Cada ítem del iterador es un `Array` de JavaScript. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
+Devuelve un `Iterator` ES6 sobre cada uno de los pares nombre-valor en la consulta. Cada ítem del iterador es un `Array` de JavaScript. El primer ítem del `Array` es el `name`, el segundo ítem del `Array` es el `value`.
 
-Alias for [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
+Alias para [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
 
 #### urlSearchParams.forEach(fn[, thisArg])
 
-* `fn` {Function} Invoked for each name-value pair in the query
-* `thisArg` {Object} To be used as `this` value for when `fn` is called
+* `fn` {Function} Invocado por cada par nombre-valor en la consulta
+* `thisArg` {Object} Para ser usado como `this` valor para cuando `fn` es llamado
 
-Iterates over each name-value pair in the query and invokes the given function.
+Itera sobre cada par nombre-valor en la consulta e invoca la función dada.
 
 ```js
 const myURL = new URL('https://example.org/?a=b&c=d');
 myURL.searchParams.forEach((value, name, searchParams) => {
   console.log(name, value, myURL.searchParams === searchParams);
 });
-// Prints:
+// Imprime:
 //   a b true
 //   c d true
 ```
@@ -680,7 +680,7 @@ Returns an ES6 `Iterator` over the values of each name-value pair.
 
 * Returns: {Iterator}
 
-Returns an ES6 `Iterator` over each of the name-value pairs in the query string. Cada ítem del iterador es un `Array` de JavaScript. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
+Returns an ES6 `Iterator` over each of the name-value pairs in the query string. Cada ítem del iterador es un `Array` de JavaScript. El primer ítem del `Array` es el `name`, el segundo ítem del `Array` es el `value`.
 
 Alias for [`urlSearchParams.entries()`][].
 
