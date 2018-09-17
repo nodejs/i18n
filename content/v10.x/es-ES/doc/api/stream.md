@@ -1348,7 +1348,7 @@ Esta función NO DEBE ser llamada por aplicación de código directamente. Deber
 
 El método `writable._writev()` puede ser implementado en conjunto con `writable._write()` en las implementaciones del steam que son capaces de procesar al mismo tiempo múltiples fragmentos de datos. Si es implementado, el método será llamado con todos los fragmentos de datos que están siendo almacenados en la cola de escritura.
 
-El método `writable._writev()` es ajustado con subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
+El método `writable._writev()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
 #### writable.\_destroy(err, callback)
 
@@ -1871,7 +1871,7 @@ El método `transform.push()` puede ser llamado cero o más veces para generar s
 
 Es posible que ninguna salida es generada de cualquier fragmento de datos de entrada.
 
-La función `callback` debe ser llamada solo cuando el fragmento actual es completamente consumido. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
+La función `callback` debe ser llamada solo cuando el fragmento actual es completamente consumido. El primer argumento pasado al `callback` debe ser un objeto `Error` si ocurre un error mientras se procesa la entrada, o de caso contrario `null`. Si un segundo argumento es pasado al `callback`,será reenviado al método `readable.push()`. En otras palabras los siguientes son equivalentes:
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
@@ -1884,7 +1884,7 @@ transform.prototype._transform = function(data, encoding, callback) {
 };
 ```
 
-The `transform._transform()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+El método `transform._transform()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
 `transform._transform()` is never called in parallel; streams implement a queue mechanism, and to receive the next chunk, `callback` must be called, either synchronously or asynchronously.
 
