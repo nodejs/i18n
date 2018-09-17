@@ -1845,11 +1845,11 @@ Los eventos [`'finish'`][] y [`'end'`][] son de las clases `stream.Writable` y `
 
 #### transform.\_flush(callback)
 
-* `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
+* `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada cuando los datos han sido arrojados.
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
-In some cases, a transform operation may need to emit an additional bit of data at the end of the stream. For example, a `zlib` compression stream will store an amount of internal state used to optimally compress the output. When the stream ends, however, that additional data needs to be flushed so that the compressed data will be complete.
+En algunos casos, una operación de transformación pudiera emitir un bit adicional de datos en el final del stream. For example, a `zlib` compression stream will store an amount of internal state used to optimally compress the output. When the stream ends, however, that additional data needs to be flushed so that the compressed data will be complete.
 
 Custom [`Transform`][] implementations *may* implement the `transform._flush()` method. This will be called when there is no more written data to be consumed, but before the [`'end'`][] event is emitted signaling the end of the [`Readable`][] stream.
 
