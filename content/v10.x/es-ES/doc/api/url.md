@@ -462,7 +462,7 @@ Crear una instancia de un nuevo objeto `URLSearchParams` vacío.
 
 * `string` {string} Una string de consulta
 
-Analice la `string` como una string de consulta, y úsela para crear una instancia de un nuevo objeto `URLSearchParams`. A leading `'?'`, if present, is ignored.
+Analice la `string` como una string de consulta, y úsela para crear una instancia de un nuevo objeto `URLSearchParams`. Si está presente un `'?'` inicial, es ignorado.
 
 ```js
 let params;
@@ -484,7 +484,7 @@ console.log(params.toString());
 added: v7.10.0
 -->
 
-* `obj` {Object} An object representing a collection of key-value pairs
+* `obj` {Object} Un objeto que representa una colección de pares clave-valor
 
 Instantiate a new `URLSearchParams` object with a query hash map. The key and value of each property of `obj` are always coerced to strings.
 
