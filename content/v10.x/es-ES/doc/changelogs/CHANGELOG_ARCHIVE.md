@@ -714,9 +714,9 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 * V8: Actualizar a 3.15.11.15
 * npm: Actualizar a 1.2.12
 * fs: Cambiar la config de WriteStream por defecto, incrementar rendimiento (isaacs)
-* process: streamlining tick callback logic (Trevor Norris)
-* stream_wrap, udp_wrap: add read-only fd property (Ben Noordhuis)
-* buffer: accept negative indices in Buffer#slice() (Ben Noordhuis)
+* process: desplazar en flujo continuo la lógica del tick callback (Trevor Norris)
+* stream_wrap, udp_wrap: añadir propiedad fd de solo lectura (Ben Noorduis)
+* buffer: aceptar índices negativos en Buffer#slice() (Ben Noordhuis)
 * tls: Cycle data when underlying socket drains (isaacs)
 * stream: read(0) should not always trigger _read(n,cb) (isaacs)
 * stream: Empty strings/buffers do not signal EOF any longer (isaacs)
