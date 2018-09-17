@@ -118,11 +118,11 @@ changes:
   * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
   * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
   * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
-* `callback` {Function} called with the output when process terminates. 
+* `callback` {Function} chiamata con l'output al termine del processo. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* Returns: {ChildProcess}
+* Restituisce: {ChildProcess}
 
 Spawns a shell then executes the `command` within that shell, buffering any generated output. The `command` string passed to the exec function is processed directly by the shell and special characters (vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) need to be dealt with accordingly:
 
