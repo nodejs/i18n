@@ -675,13 +675,13 @@ https://github.com/nodejs/node/commit/0debf5a82934da805592b6496756cdf27c993abc
 * net: Proveer un mejor error al escribir después de FIN (isaacs)
 * dns: Soportar consultas NAPTR (Pavel Lang)
 * dns: reparar ReferenceError en la ruta de error de resolve() (Xidorn Quan)
-* child_process: handle ENOENT correctly on Windows (Scott Blomquist)
-* cluster: Rename destroy() to kill(signal=SIGTERM) (isaacs)
-* build: define nightly tag external to build system (Timothy J Fontaine)
-* build: make msi build work when spaces are present in the path (Bert Belder)
-* build: fix msi build issue with WiX 3.7/3.8 (Raymond Feng)
-* repl: make compatible with domains (Dave Olszewski)
-* events: Code cleanup and performance improvements (Trevor Norris)
+* child_process: manejar ENOENT correctamente en Windows (Scott Blomquist)
+* cluster: Renombrar destroy() como kill(signal=SIGTERM) (isaacs)
+* build: definir etiqueta nightly externa al sistema de builds (Timothy J Fontaine)
+* build: hacer que el build msi funcione cuando hay espacios presentes en la ruta (Bert Belder)
+* build: reparar problema del build msi con WiX 3.7/3.8 (Raymond Feng)
+* repl: hacer compatible con los dominios (Dave Olszewski)
+* events: Limpieza de código y mejoras de rendimiento (Trevor Norris)
 
 <a id="0.9.11"></a>
 
