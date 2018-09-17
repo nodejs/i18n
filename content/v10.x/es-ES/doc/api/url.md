@@ -465,17 +465,17 @@ Crear una instancia de un nuevo objeto `URLSearchParams` vacío.
 Analice la `string` como una string de consulta, y úsela para crear una instancia de un nuevo objeto `URLSearchParams`. Si está presente un `'?'` inicial, es ignorado.
 
 ```js
-let params;
+permite params;
 
 params = new URLSearchParams('user=abc&query=xyz');
 console.log(params.get('user'));
-// Prints 'abc'
+// Imprime 'abc'
 console.log(params.toString());
-// Prints 'user=abc&query=xyz'
+// Imprime 'user=abc&query=xyz'
 
 params = new URLSearchParams('?user=abc&query=xyz');
 console.log(params.toString());
-// Prints 'user=abc&query=xyz'
+// Imprime 'user=abc&query=xyz'
 ```
 
 #### Constructor: new URLSearchParams(obj)
@@ -509,31 +509,31 @@ added: v7.10.0
 
 * `iterable` {Iterable} Un objeto iterable cuyos elementos son pares clave-valor
 
-Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa iterable de forma que sea similar al constructor [`Map`][]. `iterable` puede ser un `Array` o cualquier objeto iterable. That means `iterable` can be another `URLSearchParams`, in which case the constructor will simply create a clone of the provided `URLSearchParams`. Elements of `iterable` are key-value pairs, and can themselves be any iterable object.
+Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa iterable de forma que sea similar al constructor [`Map`][]. `iterable` puede ser un `Array` o cualquier objeto iterable. Eso significa que `iterable` puede ser otro `URLSearchParams`, en tal caso el constructor simplemente creará un clon del `URLSearchParams` proporcionado. Los elementos de `iterable` son pares clave-valor, y ellos mismos pueden ser cualquier objeto iterable.
 
-Duplicate keys are allowed.
+Las llaves duplicadas son permitidas.
 
 ```js
-let params;
+permite params;
 
-// Using an array
+// Usando un array
 params = new URLSearchParams([
   ['user', 'abc'],
   ['query', 'first'],
   ['query', 'second']
 ]);
 console.log(params.toString());
-// Prints 'user=abc&query=first&query=second'
+// Imprime 'user=abc&query=first&query=second'
 
-// Using a Map object
+// Usando un objeto Map
 const map = new Map();
 map.set('user', 'abc');
 map.set('query', 'xyz');
 params = new URLSearchParams(map);
 console.log(params.toString());
-// Prints 'user=abc&query=xyz'
+// Imprime 'user=abc&query=xyz'
 
-// Using a generator function
+// Usando una función de generador
 function* getQueryPairs() {
   yield ['user', 'abc'];
   yield ['query', 'first'];
@@ -541,14 +541,14 @@ function* getQueryPairs() {
 }
 params = new URLSearchParams(getQueryPairs());
 console.log(params.toString());
-// Prints 'user=abc&query=first&query=second'
+// Imprime 'user=abc&query=first&query=second'
 
-// Each key-value pair must have exactly two elements
+// Cada par clave-valor debe tener exactamente dos elementos
 new URLSearchParams([
   ['user', 'abc', 'error']
 ]);
 // Throws TypeError [ERR_INVALID_TUPLE]:
-//        Each query pair must be an iterable [name, value] tuple
+//        Cada consulta par debe ser una tupa [nombre, valor] iterable
 ```
 
 #### urlSearchParams.append(name, value)
@@ -556,7 +556,7 @@ new URLSearchParams([
 * `name` {string}
 * `value` {string}
 
-Append a new name-value pair to the query string.
+Agregue un nuevo par nombre-valor a la string de consulta.
 
 #### urlSearchParams.delete(name)
 
