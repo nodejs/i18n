@@ -456,13 +456,13 @@ console.log(myURL.href);
 
 #### Constructor: new URLSearchParams()
 
-Instantiate a new empty `URLSearchParams` object.
+Crear una instancia de un nuevo objeto `URLSearchParams` vacío.
 
 #### Constructor: new URLSearchParams(string)
 
-* `string` {string} A query string
+* `string` {string} Una string de consulta
 
-Parse the `string` as a query string, and use it to instantiate a new `URLSearchParams` object. A leading `'?'`, if present, is ignored.
+Analice la `string` como una string de consulta, y úsela para crear una instancia de un nuevo objeto `URLSearchParams`. A leading `'?'`, if present, is ignored.
 
 ```js
 let params;
