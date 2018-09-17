@@ -1871,7 +1871,7 @@ El método `transform.push()` puede ser llamado cero o más veces para generar s
 
 Es posible que ninguna salida es generada de cualquier fragmento de datos de entrada.
 
-The `callback` function must be called only when the current chunk is completely consumed. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
+La función `callback` debe ser llamada solo cuando el fragmento actual es completamente consumido. The first argument passed to the `callback` must be an `Error` object if an error occurred while processing the input or `null` otherwise. If a second argument is passed to the `callback`, it will be forwarded on to the `readable.push()` method. In other words the following are equivalent:
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
