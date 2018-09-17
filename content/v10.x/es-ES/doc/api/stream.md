@@ -1750,7 +1750,7 @@ El aspecto más importante de un stream `Duplex` es que los lados `Readable` y `
 
 #### Modo Objeto de Stream Dúplex
 
-For `Duplex` streams, `objectMode` can be set exclusively for either the `Readable` or `Writable` side using the `readableObjectMode` and `writableObjectMode` options respectively.
+Para los streams `Duplex`, el `objectMode` puede ser establecido exclusivamente para cualquiera de los dos lados `Readable` o `Writable` usando las opciones `readableObjectMode` y `writableObjectMode`, respectivamente.
 
 In the following example, for instance, a new `Transform` stream (which is a type of [`Duplex`][] stream) is created that has an object mode `Writable` side that accepts JavaScript numbers that are converted to hexadecimal strings on the `Readable` side.
 
