@@ -304,11 +304,11 @@ changes:
   * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
 * Restituisce: {ChildProcess}
 
-The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
+Il metodo `child_process.spawn()` genera un nuovo processo utilizzando il `command` dato, con gli argomenti della command line in `args`. Se omesso, `args` si imposta automaticamente su un array vuoto.
 
 **Se l'opzione `shell` è abilitata, non passare l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
 
-A third argument may be used to specify additional options, with these defaults:
+Un terzo argomento può essere usato per specificare ulteriori opzioni, con questi valori di default:
 
 ```js
 const defaults = {
@@ -317,13 +317,13 @@ const defaults = {
 };
 ```
 
-Use `cwd` to specify the working directory from which the process is spawned. If not given, the default is to inherit the current working directory.
+Utilizza `cwd` per specificare la directory di lavoro dalla quale viene generato il processo. Se non specificata, l'impostazione predefinita consiste nell'ereditare l'attuale directory di lavoro.
 
-Use `env` to specify environment variables that will be visible to the new process, the default is [`process.env`][].
+Utilizza `env` per specificare le variabili di ambiente che saranno visibili per il nuovo processo, il valore predefinito è [`process.env`][].
 
-`undefined` values in `env` will be ignored.
+I valori `undefined` in `env` saranno ignorati.
 
-Example of running `ls -lh /usr`, capturing `stdout`, `stderr`, and the exit code:
+Esempio di esecuzione di `ls -lh /usr`, acquisizione di `stdout`, `stderr`, e del valore di uscita:
 
 ```js
 const { spawn } = require('child_process');
@@ -342,7 +342,7 @@ ls.on('close', (code) => {
 });
 ```
 
-Example: A very elaborate way to run `ps ax | grep ssh`
+Esempio: Un modo molto elaborato per eseguire `ps ax | grep ssh`
 
 ```js
 const { spawn } = require('child_process');
@@ -379,7 +379,7 @@ grep.on('close', (code) => {
 });
 ```
 
-Example of checking for failed `spawn`:
+Esempio di controllo per `spawn` fallito:
 
 ```js
 const { spawn } = require('child_process');
@@ -390,7 +390,7 @@ subprocess.on('error', (err) => {
 });
 ```
 
-Certain platforms (macOS, Linux) will use the value of `argv[0]` for the process title while others (Windows, SunOS) will use `command`.
+Alcune piattaforme (macOS, Linux) utilizzeranno il valore di `argv[0]` per il titolo del processo, mentre altri (Windows, SunOS) useranno `command`.
 
 Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `process.argv[0]` in a Node.js child process will not match the `argv0` parameter passed to `spawn` from the parent, retrieve it with the `process.argv0` property instead.
 
