@@ -292,17 +292,17 @@ changes:
 * `command` {string} Il comando da eseguire.
 * `args` {string[]} Elenco degli argomenti di string.
 * `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
-  * `env` {Object} Environment key-value pairs.
-  * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. This will be set to `command` if not specified.
-  * `stdio` {Array|string} Child's stdio configuration (see [`options.stdio`][`stdio`]).
-  * `detached` {boolean} Prepare child to run independently of its parent process. Specific behavior depends on the platform, see [`options.detached`][]).
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* Returns: {ChildProcess}
+  * `cwd` {string} Attuale directory di lavoro del processo child.
+  * `env` {Object} Coppie key-value dell'ambiente.
+  * `argv0` {string} Imposta esplicitamente il valore di `argv[0]` inviato al processo child. Questo sarà impostato su `command` se non specificato.
+  * `stdio` {Array|string} Configurazione stdio del child (vedi [`options.stdio`][`stdio`]).
+  * `detached` {boolean} Prepara il child all'avvio indipendentemente dal suo processo parent. Il comportamento specifico dipende dalla piattaforma, vedi [`options.detached`][].
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
+  * `shell` {boolean|string} Se `true`, esegue `command` all'interno di una shell. Utilizza `'/bin/sh'` su UNIX, e `process.env.ComSpec` su Windows. Una shell diversa può essere specificata come una stringa. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `false` (nessuna shell).
+  * `windowsVerbatimArguments` {boolean} Non viene eseguita nessuna citazione od escaping degli argomenti su Windows. Ignorato su Unix. È impostato su `true` automaticamente quando la `shell` è specificata. **Default:** `false`.
+  * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
+* Restituisce: {ChildProcess}
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
 
