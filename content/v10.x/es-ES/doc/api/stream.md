@@ -311,7 +311,7 @@ changes:
 
 * `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer`o un `Uint8Array`. Para los streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
 * `encoding` {string} La codificación si `chunk` es un string
-* `callback` {Function} Callback opcional cuando el stream está/esté terminado Nota: escoger alguno de los dos
+* `callback` {Function} Callback opcional para cuando el stream haya terminado. Nota: escoger alguno de los dos
 * Devuelve: {this}
 
 Llamar al método `writable.end()` señala que no se escribirán más datos en el [`Writable`][]. Los argumentos `chunk` y `encoding` opcionales permiten un último fragmento de datos para ser escritos inmediatamente antes de cerrar el stream. Si es proporcionado, la función `callback` opcional es adjuntada como un listener para el evento [`'finish'`][].
@@ -566,7 +566,7 @@ added: v0.9.4
 
 El evento `'end'` es emitido cuando no hay más datos a ser consumidos del stream.
 
-El evento `'end'` **no será emitido** a menos que nos datos sean completamente consumidos. Esto se puede lograr cambiando el stream a modo fluido, o al llamar repetidamente a [`stream.read()`](#stream_readable_read_size) hasta que los datos han sido consumidos.
+El evento `'end'` **no será emitido** a menos que los datos sean completamente consumidos. Esto se puede lograr cambiando el stream a modo fluido, o al llamar repetidamente a [`stream.read()`](#stream_readable_read_size) hasta que los datos hayan sido consumidos.
 
 ```js
 const readable = getReadableStreamSomehow();
@@ -950,7 +950,7 @@ added: v0.9.4
 * `stream` {Stream} Un stream legible de "viejo estilo"
 * Devuelve: {this}
 
-Versiones anteriores de v0.10 de Node.js tenían streams que no implementan la API del módulo `stream` como está definido actualmente. (Vea [Compatibility](#stream_compatibility_with_older_node_js_versions) para más información.)
+Versiones anteriores de v0.10 de Node.js tenían streams que no implementaban la API del módulo `stream` como está definido actualmente. (Vea [Compatibility](#stream_compatibility_with_older_node_js_versions) para más información.)
 
 Cuando se use una librería de Node.js más vieja que emite eventos [`'data'`][] y tiene un método [`stream.pause()`](#stream_readable_pause) que solo es consultivo, el método `readable.wrap()` puede ser usado para crear un stream [`Readable`][] que usa el viejo stream y su fuente de datos.
 
@@ -1239,7 +1239,7 @@ El código de implementación para un stream *nunca* debería llamar los método
 added: v1.2.0
 -->
 
-Para muchos casos simples, es imposible construir un stream si depender de la herencia. Esto puede ser logrado al crear instancias directamente de los objetos `stream.Writable`, `stream.Readable`, `stream.Duplex` o `stream.Transform` y pasar métodos apropiados como opciones de constructor.
+Para muchos casos simples, es imposible construir un stream sin depender de la herencia. Esto puede ser logrado al crear instancias directamente de los objetos `stream.Writable`, `stream.Readable`, `stream.Duplex` o `stream.Transform` y pasar métodos apropiados como opciones de constructor.
 
 ```js
 const { Writable } = require('stream');
@@ -1910,13 +1910,13 @@ En Node.js v0.10, la clase [`Readable`][] fue añadida. Para compatibilidad con 
 Mientras que la mayoría de las aplicaciones continuarán funcionando con normalidad, esto introduce un caso extremo en las siguientes condiciones:
 
 * Ningún listener de evento [`'data'`][] es añadido.
-* The [`stream.resume()`](#stream_readable_resume) method is never called.
-* The stream is not piped to any writable destination.
+* El método [`stream.resume()`](#stream_readable_resume) nunca es llamado.
+* El stream no hace pipe a ningún destino escribible.
 
-For example, consider the following code:
+Por ejemplo, considera el siguiente código:
 
 ```js
-// WARNING!  BROKEN!
+// ¡ADVERTENCIA!  ¡ROTO!
 net.createServer((socket) => {
 
   // we add an 'end' listener, but never consume the data
@@ -1928,7 +1928,7 @@ net.createServer((socket) => {
 }).listen(1337);
 ```
 
-In versions of Node.js prior to v0.10, the incoming message data would be simply discarded. However, in Node.js v0.10 and beyond, the socket remains paused forever.
+En versiones anteriores de v0.10 de Node.js, los datos de mensajes entrantes serían simplemente descartados. Sin embargo, a partir de Node.js v0.10 y versiones posteriores, el socket permanece pausado para siempre.
 
 The workaround in this situation is to call the [`stream.resume()`](#stream_readable_resume) method to begin the flow of data:
 
