@@ -1597,9 +1597,9 @@ class SourceWrapper extends Readable {
 
 El método `readable.push()` está previsto ser llamado solo por implementadores `Readable`, y solo desde dentro del método `readable._read()`.
 
-Para streams que no estén operando en modo objeto, si el parámetro `chunk` de `readable.push()` es `undefined`, será tratado como un string vacío o un búfer. See [`readable.push('')`][] for more information.
+Para streams que no estén operando en modo objeto, si el parámetro `chunk` de `readable.push()` es `undefined`, será tratado como un string vacío o un búfer. Vea [`readable.push('')`][] para más información.
 
-#### Errors While Reading
+#### Errores al Escribir
 
 It is recommended that errors occurring during the processing of the `readable._read()` method are emitted using the `'error'` event rather than being thrown. Throwing an `Error` from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
 
