@@ -424,34 +424,34 @@ La interfaz WHATWG `URLSearchParams` y el módulo [`querystring`][], tienen prop
 ```js
 const myURL = new URL('https://example.org/?abc=123');
 console.log(myURL.searchParams.get('abc'));
-// Prints 123
+// Imprime 123
 
 myURL.searchParams.append('abc', 'xyz');
 console.log(myURL.href);
-// Prints https://example.org/?abc=123&abc=xyz
+// Imprime https://example.org/?abc=123&abc=xyz
 
 myURL.searchParams.delete('abc');
 myURL.searchParams.set('a', 'b');
 console.log(myURL.href);
-// Prints https://example.org/?a=b
+// Imprime https://example.org/?a=b
 
 const newSearchParams = new URLSearchParams(myURL.searchParams);
-// The above is equivalent to
+// Lo anterior es equivalente a
 // const newSearchParams = new URLSearchParams(myURL.search);
 
 newSearchParams.append('a', 'c');
 console.log(myURL.href);
-// Prints https://example.org/?a=b
+// Imprime https://example.org/?a=b
 console.log(newSearchParams.toString());
-// Prints a=b&a=c
+// Imprime a=b&a=c
 
-// newSearchParams.toString() is implicitly called
+// newSearchParams.toString() es llamado implícitamente
 myURL.search = newSearchParams;
 console.log(myURL.href);
-// Prints https://example.org/?a=b&a=c
+// Imprime https://example.org/?a=b&a=c
 newSearchParams.delete('a');
 console.log(myURL.href);
-// Prints https://example.org/?a=b&a=c
+// Imprime https://example.org/?a=b&a=c
 ```
 
 #### Constructor: new URLSearchParams()
