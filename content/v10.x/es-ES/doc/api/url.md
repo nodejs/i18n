@@ -507,9 +507,9 @@ console.log(params.toString());
 added: v7.10.0
 -->
 
-* `iterable` {Iterable} An iterable object whose elements are key-value pairs
+* `iterable` {Iterable} Un objeto iterable cuyos elementos son pares clave-valor
 
-Instantiate a new `URLSearchParams` object with an iterable map in a way that is similar to [`Map`][]'s constructor. `iterable` can be an `Array` or any iterable object. That means `iterable` can be another `URLSearchParams`, in which case the constructor will simply create a clone of the provided `URLSearchParams`. Elements of `iterable` are key-value pairs, and can themselves be any iterable object.
+Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa iterable de forma que sea similar al constructor [`Map`][]. `iterable` puede ser un `Array` o cualquier objeto iterable. That means `iterable` can be another `URLSearchParams`, in which case the constructor will simply create a clone of the provided `URLSearchParams`. Elements of `iterable` are key-value pairs, and can themselves be any iterable object.
 
 Duplicate keys are allowed.
 
