@@ -631,7 +631,7 @@ for (const name of params.keys()) {
 * `name` {string}
 * `value` {string}
 
-Sets the value in the `URLSearchParams` object associated with `name` to `value`. If there are any pre-existing name-value pairs whose names are `name`, set the first such pair's value to `value` and remove all others. If not, append the name-value pair to the query string.
+Establece el valor en el objeto `URLSearchParams` asociado con `name` para `value`. Si hay pares nombre-valor preexistentes cuyos nombres son `name`, establezca el primer valor de dicho par a `value` y elimine los otros. Si no es así, agregue el par nombre-valor a la string de consulta.
 
 ```js
 const params = new URLSearchParams();
@@ -639,12 +639,12 @@ params.append('foo', 'bar');
 params.append('foo', 'baz');
 params.append('abc', 'def');
 console.log(params.toString());
-// Prints foo=bar&foo=baz&abc=def
+// Imprime foo=bar&foo=baz&abc=def
 
 params.set('foo', 'def');
 params.set('xyz', 'opq');
 console.log(params.toString());
-// Prints foo=def&abc=def&xyz=opq
+// Imprime foo=def&abc=def&xyz=opq
 ```
 
 #### urlSearchParams.sort()
@@ -653,20 +653,20 @@ console.log(params.toString());
 added: v7.7.0
 -->
 
-Sort all existing name-value pairs in-place by their names. Sorting is done with a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), so relative order between name-value pairs with the same name is preserved.
+Clasifique todos los pares nombre-valor existentes en su lugar por sus nombres. La clasificación está lista con un [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), así que el orden relativo entre pares nombre-valor con el mismo nombre es conservado.
 
-This method can be used, in particular, to increase cache hits.
+Este método puede ser usado, en particular, para aumentar los cache hits.
 
 ```js
 const params = new URLSearchParams('query[]=abc&type=search&query[]=123');
 params.sort();
 console.log(params.toString());
-// Prints query%5B%5D=abc&query%5B%5D=123&type=search
+// Imprime query%5B%5D=abc&query%5B%5D=123&type=search
 ```
 
 #### urlSearchParams.toString()
 
-* Returns: {string}
+* Devuelve: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
