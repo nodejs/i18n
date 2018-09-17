@@ -1853,13 +1853,13 @@ En algunos casos, una operación de transformación pudiera emitir un bit adicio
 
 Implementaciones [`Transform`][] personalizadas *pudieran* implementar el método `transform._flush()`. Esto será llamado cuando no hay más datos escritos para ser consumidos, pero antes de que el evento [`'end'`][] es emitido señalando el final del stream [`Readable`][].
 
-Dentro de la implementación `transform._flush()`, el método `readable.push()` puede ser llamado cero o más veces, según corresponda. The `callback` function must be called when the flush operation is complete.
+Dentro de la implementación `transform._flush()`, el método `readable.push()` puede ser llamado cero o más veces, según corresponda. La función `callback` debe ser llamada cuando la operación de descarga es completada.
 
 The `transform._flush()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
 
 #### transform.\_transform(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} The chunk to be transformed. Will **always** be a buffer unless the `decodeStrings` option was set to `false` or the stream is operating in object mode.
+* `chunk` {Buffer|string|any} El fragmento a ser transformado. **Siempre** será un búfer a menos que la opción `decodeStrings` sea establecida como `false`, o el stream esté operando en modo objeto.
 * `encoding` {string} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value - 'buffer', ignore it in this case.
 * `callback` {Function} A callback function (optionally with an error argument and data) to be called after the supplied `chunk` has been processed.
 
