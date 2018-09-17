@@ -1601,7 +1601,7 @@ Para streams que no estén operando en modo objeto, si el parámetro `chunk` de 
 
 #### Errores al Escribir
 
-It is recommended that errors occurring during the processing of the `readable._read()` method are emitted using the `'error'` event rather than being thrown. Throwing an `Error` from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
+Es recomendado que los errores que ocurran durante el procesamiento del método `readable._read()` son emitidos usando el evento `'error'` en vez de ser arrojados. Throwing an `Error` from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
 
 <!-- eslint-disable no-useless-return -->
 
@@ -1619,11 +1619,11 @@ const myReadable = new Readable({
 });
 ```
 
-#### An Example Counting Stream
+#### Un Ejemplo de Conteo de Stream
 
 <!--type=example-->
 
-The following is a basic example of a `Readable` stream that emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
+El siguiente es un ejemplo básico de un stream `Readable` que emite los numerales de 1 a 1,000,000 en orden ascendente y luego termina.
 
 ```js
 const { Readable } = require('stream');
@@ -1648,11 +1648,11 @@ class Counter extends Readable {
 }
 ```
 
-### Implementing a Duplex Stream
+### Implementando un Stream Dúplex
 
-A [`Duplex`][] stream is one that implements both [`Readable`][] and [`Writable`][], such as a TCP socket connection.
+Un stream [`Duplex`][] es uno que implementa tanto [`Readable`][] como [`Writable`][], como una conexión de socket TCP.
 
-Because JavaScript does not have support for multiple inheritance, the `stream.Duplex` class is extended to implement a [`Duplex`][] stream (as opposed to extending the `stream.Readable` *and* `stream.Writable` classes).
+Porque JavaScript no tiene soporte para múltiples herencias, la clase `stream.Duplex` es extendida para implementar un stream [`Duplex`][] (a diferencia de extender las clases `stream.Readable` *y* `stream.Writable`).
 
 The `stream.Duplex` class prototypically inherits from `stream.Readable` and parasitically from `stream.Writable`, but `instanceof` will work properly for both base classes due to overriding [`Symbol.hasInstance`][] on `stream.Writable`.
 
