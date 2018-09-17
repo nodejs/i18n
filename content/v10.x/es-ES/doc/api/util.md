@@ -743,9 +743,9 @@ Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de l
   * `stream` {boolean} `true` si pedazos adicionales de datos son esperados. **Predeterminado:** `false`.
 * Devuelve: {string}
 
-Decodifica el `input` y devuelve un string. Si `options.stream` es `true`, cualquier secuencia de bytes incompleta que ocurra al final del `input` son almacenadas internamente y emitidas después de la siguiente llamada a `textDecoder.decode()`.
+Decodifica el `input` y devuelve un string. Si `options.stream` es `true`, las secuencias de bytes incompletas que ocurran al final del `input` son almacenadas internamente y emitidas después de la siguiente llamada a `textDecoder.decode()`.
 
-Si `textDecoder.fatal` es `true`, decodificar errores que ocurran puede resultar en un `TypeError` siendo arrojado.
+Si `textDecoder.fatal` es `true`, decodificar errores que ocurran resultará en un `TypeError` siendo arrojado.
 
 ### textDecoder.encoding
 
@@ -771,7 +771,7 @@ El valor será `true` si el resultado de la decodificación va a incluir la marc
 added: v8.3.0
 -->
 
-Una implementación de la API `TextDecoder` del [Estándar de Decodificación WHATWG](https://encoding.spec.whatwg.org/). Todas las instancias de `TextEncoder` solo soportan codificación UTF-8.
+Una implementación de la API `TextDecoder` del [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/). Todas las instancias de `TextEncoder` solo soportan codificación UTF-8.
 
 ```js
 const encoder = new TextEncoder();
@@ -797,9 +797,9 @@ La codificación soportada por la instancia `TextEncoder`. Siempre configurado p
 added: v10.0.0
 -->
 
-`util.types` proporciona un número de chequeos de tipo para diferentes clases de objetos incorporados. A diferencia de `instanceof` o `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
+`util.types` proporciona un número de chequeos de tipo para diferentes clases de objetos incorporados. A diferencia de `instanceof` u `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
 
-El resultado generalmente no da ninguna garantía sobre qué tipos de propiedades o comportamientos expone un valor en JavaScript. Ellos son principalmente útiles para desarrolladores de complementos quienes prefieren hacer el chequeo de tipo en JavaScript.
+El resultado generalmente no da ninguna garantía sobre qué tipos de propiedades o comportamientos expone un valor en JavaScript. Ellos son principalmente útiles para desarrolladores de complementos que prefieren hacer el chequeo de tipo en JavaScript.
 
 ### util.types.isAnyArrayBuffer(value)
 
@@ -985,7 +985,7 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es una función del generador. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Devuelve `true` si el valor es una función generadora. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
 Por ejemplo:
 
@@ -1002,7 +1002,7 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es un objeto del generador como se devuelve de la función del generador incorporada. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Devuelve `true` si el valor es un objeto generador como se devuelve de una función generadora incorporada. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
 Por ejemplo:
 
