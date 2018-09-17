@@ -709,11 +709,11 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
 <a id="0.9.10"></a>
 
-## 2013.02.19, Version 0.9.10 (Unstable)
+## 2013.02.19, Versión 0.9.10 (Inestable)
 
-* V8: Upgrade to 3.15.11.15
-* npm: Upgrade to 1.2.12
-* fs: Change default WriteStream config, increase perf (isaacs)
+* V8: Actualizar a 3.15.11.15
+* npm: Actualizar a 1.2.12
+* fs: Cambiar la config de WriteStream por defecto, incrementar rendimiento (isaacs)
 * process: streamlining tick callback logic (Trevor Norris)
 * stream_wrap, udp_wrap: add read-only fd property (Ben Noordhuis)
 * buffer: accept negative indices in Buffer#slice() (Ben Noordhuis)
