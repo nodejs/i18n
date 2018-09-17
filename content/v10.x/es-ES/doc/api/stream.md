@@ -1792,14 +1792,14 @@ No es requerido que la salida sea del mismo tamaño que la entrada, el mismo nú
 
 La clase `stream.Transform` es extendida para implementar un stream [`Transform`][].
 
-La clase `stream.Transform` hereda prototípicamente de `stream.Duplex` e implementa su propia versión de los métodos `writable._write()` y `readable._read()`. Custom `Transform` implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
+La clase `stream.Transform` hereda prototípicamente de `stream.Duplex` e implementa su propia versión de los métodos `writable._write()` y `readable._read()`. Implementaciones `Transform` personalizadas*deben* implementar el método [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) y también *pudieran* implementar el método [`transform._flush()`](#stream_transform_flush_callback).
 
-Care must be taken when using `Transform` streams in that data written to the stream can cause the `Writable` side of the stream to become paused if the output on the `Readable` side is not consumed.
+Debe tenerse cuidado cuando se usen los streams `Transform` en esos datos escritos al stream, pueden causar que el lado `Writable` del stream se convierta en pausado si la salida en el lado `Readable` no es consumida.
 
 #### new stream.Transform([options])
 
-* `options` {Object} Pasado por los constructores `Writable` y `Readable`. Also has the following fields: 
-  * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
+* `options` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
+  * `transform` {Function} Implementación para el método [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback).
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
 ```js
