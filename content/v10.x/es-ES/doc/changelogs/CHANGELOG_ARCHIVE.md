@@ -724,7 +724,7 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 * net: Respetar la bandera "readable" en los sockets (isaacs)
 * net: no suprimir ECONNRESET (Ben Noordhuis)
 * typed arrays: copiar Buffer en el constructor de typed arrays (Ben Noordhuis)
-* typed arrays: make DataView throw on non-ArrayBuffer (Ben Noordhuis)
+* typed arrays: hacer lanzamiento de DataView en non-ArrayBuffer (Ben Noordhuis)
 * windows: MSI installer enhancements (Scott Blomquist, Jim Schubert)
 
 <a id="0.9.9"></a>
