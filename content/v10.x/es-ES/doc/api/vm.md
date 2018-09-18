@@ -98,21 +98,21 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   async function linker(specifier, referencingModule) {
     if (specifier === 'foo') {
       return new vm.Module(`
-        // The "secret" variable refers to the global variable we added to
-        // "contextifiedSandbox" when creating the context.
+        // La variable "secreta" se refiere a la variable global que agregamos a
+        // "contextifiedSandbox" cuando se crea el contexto.
         export default secret;
       `, { context: referencingModule.context });
 
-      // Using `contextifiedSandbox` instead of `referencingModule.context`
-      // here would work as well.
+      // Utilizar `contextifiedSandbox` en lugar de `referencingModule.context`
+      // aquí también funcionaría.
     }
     throw new Error(`Unable to resolve dependency: ${specifier}`);
   }
   await bar.link(linker);
 
-  // Step 3
+  // Paso 3
   //
-  // Instantiate the top-level Module.
+  // Crear una instancia de Módulo de nivel superior.
   //
   // Only the top-level Module needs to be explicitly instantiated; its
   // dependencies will be recursively instantiated by instantiate().
