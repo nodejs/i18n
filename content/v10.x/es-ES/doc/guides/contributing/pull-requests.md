@@ -224,11 +224,11 @@ Es una buena práctica asegurarse de que cualquier código que agregue o modifiq
 $ ./configure --coverage && make coverage
 ```
 
-A detailed coverage report will be written to `coverage/index.html` for JavaScript coverage and to `coverage/cxxcoverage.html` for C++ coverage.
+Se escribirá un informe de cobertura detallado en `coverage/index.html` para la cobertura de JavaScript y en `coverage/cxxcoverage.html` para la cobertura de C ++.
 
-*Note that generating a test coverage report can take several minutes.*
+*Tenga en cuenta que generar un informe de cobertura de prueba puede demorar varios minutos.*
 
-To collect coverage for a subset of tests you can set the `CI_JS_SUITES` and `CI_NATIVE_SUITES` variables:
+Para recopilar la cobertura de un subconjunto de pruebas, puede establecer las variables `CI_JS_SUITES` y `CI_NATIVE_SUITES`:
 
 ```text
 $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
