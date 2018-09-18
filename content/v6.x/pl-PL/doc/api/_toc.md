@@ -1,7 +1,7 @@
 @/ / NB(chrisdickinson): Jeśli ten plik zostanie przeniesiony, należy zaktualizować tools/doc/html.js @/ / punkt w nowej lokalizacji.
 
 * [O tej dokumentacji](documentation.html)
-* [Przykład użycia i zastosowania](synopsis.html)
+* [Przykład użycia &](synopsis.html)
 
 <div class="line"></div>
 
