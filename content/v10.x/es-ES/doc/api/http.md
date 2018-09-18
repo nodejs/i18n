@@ -450,7 +450,7 @@ srv.listen(1337, '127.0.0.1', () => {
 added: v0.3.8
 -->
 
-Marca a la solicitud como "abortando". Calling this will cause remaining data in the response to be dropped and the socket to be destroyed.
+Marca a la solicitud como "abortando". Llamar a esto causará que los datos restantes en la respuesta se caigan y que el socket se destruya.
 
 ### request.aborted
 
@@ -458,7 +458,7 @@ Marca a la solicitud como "abortando". Calling this will cause remaining data in
 added: v0.11.14
 -->
 
-If a request has been aborted, this value is the time when the request was aborted, in milliseconds since 1 January 1970 00:00:00 UTC.
+Si una solicitud ha sido abortada, este valor será el tiempo en que la solicitud haya sido abortada, en milisegundos, desde el 01 de enero de 1970 00:00:00 UTC.
 
 ### request.connection
 
@@ -468,7 +468,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`request.socket`][].
+Vea [`request.socket`][].
 
 ### request.end(\[data[, encoding]\]\[, callback\])
 
@@ -484,9 +484,9 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Devuelve: {this}
 
-Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Termina de enviar la solicitud. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
 Si se especifica `data`, es equivalente a llamar a [`request.write(data, encoding)`][] seguido de `request.end(callback)`.
 
@@ -511,11 +511,11 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Devuelve: {any}
 
-Reads out a header on the request. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
+Lee un encabezado en la solicitud. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`request.setHeader()`][].
 
-Example:
+Ejemplo:
 
 ```js
 request.setHeader('content-type', 'text/html');
@@ -531,9 +531,9 @@ const setCookie = request.getHeader('set-cookie');
 
 ### request.maxHeadersCount
 
-* {number} **Default:** `2000`
+* {number} **Predeterminado:** `2000`
 
-Limits maximum response headers count. If set to 0, no limit will be applied.
+Limita al conteo máximo de cabeceras de respuesta. If set to 0, no limit will be applied.
 
 ### request.removeHeader(name)
 
@@ -828,7 +828,7 @@ added: v5.7.0
 added: v0.7.0
 -->
 
-* {number} **Default:** `2000`
+* {number} **Predeterminado:** `2000`
 
 Limits maximum incoming headers count. If set to 0, no limit will be applied.
 
@@ -977,7 +977,7 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Devuelve: {any}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
