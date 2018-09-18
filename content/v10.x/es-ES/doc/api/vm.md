@@ -88,12 +88,12 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // Incluso los Módulos de nivel superior sin dependencias deben estar explícitamente enlazados. Sin
   // embargo, la devolución proporcionada nunca se llamaría.
   //
-  // The link() method returns a Promise that will be resolved when all the
-  // Promises returned by the linker resolve.
+  // El método link() devuelve una Promesa que se resolverá cuando se resuelvan
+  // todas las Promesas devueltas por el vinculador.
   //
-  // Note: This is a contrived example in that the linker function creates a new
-  // "foo" module every time it is called. In a full-fledged module system, a
-  // cache would probably be used to avoid duplicated modules.
+  // Nota: Esto es un ejemplo ingenioso en el que la función del vinculador crea un nuevo
+  // módulo "foo" cada vez que se llama. En un sistema de módulo de pleno derecho, probablemente
+  // se utilizaría un caché para evitar los módulos duplicados.
 
   async function linker(specifier, referencingModule) {
     if (specifier === 'foo') {
