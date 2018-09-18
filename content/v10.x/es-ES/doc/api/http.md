@@ -399,9 +399,9 @@ added: v0.1.94
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitido cada vez que un servidor responde a una solicitud con un upgrade. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
+Emitido cada vez que un servidor responde a una solicitud con un upgrade. Si este evento no se está escuchando y el código de estado de respuesta es 101 Switching Protocols, a los clientes que reciban una cabecera de actualización se les cerrarán sus conexiones.
 
-A client server pair demonstrating how to listen for the `'upgrade'` event.
+Un par de un servidor y cliente que demuestra cómo escuchar el evento `'upgrade'` .
 
 ```js
 const http = require('http');
@@ -450,7 +450,7 @@ srv.listen(1337, '127.0.0.1', () => {
 added: v0.3.8
 -->
 
-Marks the request as aborting. Calling this will cause remaining data in the response to be dropped and the socket to be destroyed.
+Marca a la solicitud como "abortando". Calling this will cause remaining data in the response to be dropped and the socket to be destroyed.
 
 ### request.aborted
 
