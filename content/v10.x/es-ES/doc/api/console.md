@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-El módulo `console` proporciona una simple consola de depuración que es similar al mecanismo de la consola de JavaScript proporcionado por los navegadores web.
+El módulo `console` proporciona una simple consola de depuración que es similar al mecanismo de consola de JavaScript proporcionado por los navegadores web.
 
 El módulo exporta dos componentes específicos:
 
@@ -126,7 +126,7 @@ changes:
 * `value` {any} El valor probado para ser verdad.
 * `... mensaje` {any} Todos los argumentos además del `valor` se utilizan como mensaje de error.
 
-A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+Una prueba de afirmación simple que verifica si el `value` es verdadero. Si no es, `Assertion failed` el loggueado. Si se proporciona, el error de `message` está formateado usando [`util.format()`][] pasando a lo largo de todos los argumentos del mensaje. El resultado es usado como mensaje de error.
 
 ```js
 console.assert(true, 'does nothing');
