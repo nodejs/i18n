@@ -517,10 +517,10 @@ changes:
 * `options` {Object} 
   * `cwd` {string} Attuale directory di lavoro del processo child.
   * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
-  * `stdio` {string|Array} Configurazione stdio del child. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
-  * `env` {Object} Environment key-value pairs.
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
+  * `stdio` {string|Array} Configurazione stdio del child. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
+  * `env` {Object} Coppie key-value dell'ambiente.
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
   * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
   * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
@@ -555,7 +555,7 @@ changes:
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
-  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `stdio` {string|Array} Child's stdio configuration. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
   * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` su UNIX, `process.env.ComSpec` su Windows.
   * `uid` {number} Sets the user identity of the process. (See setuid(2)).
