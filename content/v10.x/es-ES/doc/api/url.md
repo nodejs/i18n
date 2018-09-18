@@ -511,7 +511,7 @@ added: v7.10.0
 
 Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa iterable de forma que sea similar al constructor [`Map`][]. `iterable` puede ser un `Array` o cualquier objeto iterable. Eso significa que `iterable` puede ser otro `URLSearchParams`, en tal caso el constructor simplemente creará un clon del `URLSearchParams` proporcionado. Los elementos de `iterable` son pares clave-valor, y ellos mismos pueden ser cualquier objeto iterable.
 
-Las llaves duplicadas son permitidas.
+Las claves duplicadas son permitidas.
 
 ```js
 permite params;
@@ -575,7 +575,7 @@ Alias para [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
 #### urlSearchParams.forEach(fn[, thisArg])
 
 * `fn` {Function} Invocado por cada par nombre-valor en la consulta
-* `thisArg` {Object} Para ser usado como `this` valor para cuando `fn` es llamado
+* `thisArg` {Object} Para ser usado como `this` valor para cuando `fn` sea llamado
 
 Itera sobre cada par nombre-valor en la consulta e invoca la función dada.
 
@@ -653,7 +653,7 @@ console.log(params.toString());
 added: v7.7.0
 -->
 
-Clasifique todos los pares nombre-valor existentes en su lugar por sus nombres. La clasificación está lista con un [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), así que el orden relativo entre pares nombre-valor con el mismo nombre es conservado.
+Clasifique todos los pares nombre-valor existentes en su lugar por sus nombres. La clasificación se realiza con un [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), así que el orden relativo entre pares nombre-valor con el mismo nombre es conservado.
 
 Este método puede ser usado, en particular, para aumentar los cache hits.
 
