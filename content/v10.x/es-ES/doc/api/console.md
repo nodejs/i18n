@@ -90,22 +90,22 @@ changes:
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
   * `ignoreErrors` {boolean} Ignorar errores al escribir en el subyacente                           corrientes. **Predeterminado:** `true`.
-  * `colorMode` {boolean|string} Establezca el soporte de color para esta instancia de `Console`. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `colorMode` {boolean|string} Establezca el soporte de color para esta instancia de `Console`. El ajuste a `true` permite colorear mientras se inspeccionan los valores, configurando `'auto'` hará que el soporte de color dependa del valor de la propiedad `isTTY` y el valor devuelto por `getColorDepth()` en la secuencia respectiva. **Predeterminado:** `'auto'`.
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Crea una nueva `Consola` con una o dos instancias de flujo modificables. `stdout` es un secuencia de escritura para imprimir salida de registro o información. `stderr` se usa para advertencias o salida de error. Si `stderr` no se proporciona, `stdout ` se usa para `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// custom simple logger
+// registrador simple personalizado
 const logger = new Console({ stdout: output, stderr: errorOutput });
-// use it like console
+// usar como consola
 const count = 5;
 logger.log('count: %d', count);
 // in stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+La `consola global` es una `consola` especial a la que se envía la salida [`process.stdout`] [] y [` process.stderr`] []. Es equivalente a llamar:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
@@ -123,7 +123,7 @@ changes:
                  anymore.
 -->
 
-* `value` {any} The value tested for being truthy.
+* `value` {any} El valor probado para ser verdad.
 * `...message` {any} All arguments besides `value` are used as error message.
 
 A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
