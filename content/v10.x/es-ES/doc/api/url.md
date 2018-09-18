@@ -750,7 +750,7 @@ added: v7.6.0
 * `options` {Object} 
   * `auth` {boolean} Es `true` si la string serializada de la URL incluye el nombre de usuario y contraseña, de otra forma es `false`. **Predeterminado:** `true`.
   * `fragment` {boolean} Es `true` si la string serializada de la URL incluye el fragmento, de otra forma es `false`. **Predeterminado:** `true`.
-  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
+  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Predeterminado:** `true`.
   * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
 * Returns: {string}
 
