@@ -300,9 +300,9 @@ Use bundled Mozilla CA store as supplied by current Node.js version or use OpenS
 
 The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Es idéntico en todas las plataformas soportadas.
 
-Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+El uso de la tienda OpenSSL permite modificaciones externas de la tienda. Para la mayoría de las distribuciones Linux y BSD, esta tienda es mantenida por los mantenedores de distribución y los administradores de sistema. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
-See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
+Vea `SSL_CERT_DIR` y `SSL_CERT_FILE`.
 
 ### `--v8-options`
 
@@ -310,11 +310,11 @@ See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 added: v0.1.3
 -->
 
-Print V8 command line options.
+Imprime opciones de línea de comando V8.
 
-V8 options allow words to be separated by both dashes (`-`) or underscores (`_`).
+Las opciones V8 permiten que se separen las palabras con guiones (`-`) o con guiones bajos (`_`).
 
-For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
+Por ejemplo, `--stack-trace-limit` es equivalente a `--stack_trace_limit`.
 
 ### `--v8-pool-size=num`
 
@@ -326,7 +326,7 @@ Set V8's thread pool size which will be used to allocate background jobs.
 
 If set to `0` then V8 will choose an appropriate size of the thread pool based on the number of online processors.
 
-If the value provided is larger than V8's maximum, then the largest value will be chosen.
+Si el valor proporcionado es mayor que el máximo del V8, entonces se escogerá el mayor valor.
 
 ### `--zero-fill-buffers`
 
@@ -334,7 +334,7 @@ If the value provided is larger than V8's maximum, then the largest value will b
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [`Buffer`][] and [`SlowBuffer`][] instances.
+Rellena con zeros automáticamente todos las instancias [`Buffer`][] y [`SlowBuffer`][] recién asignadas.
 
 ### `-c`, `--check`
 
@@ -349,7 +349,7 @@ changes:
     description: The `--require` option is now supported when checking a file.
 -->
 
-Syntax check the script without executing.
+Comprueba la sintaxis del script sin ejecutarlo.
 
 ### `-e`, `--eval "script"`
 
@@ -362,9 +362,9 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
+Evalúa el siguiente argumento como JavaScript. Los módulos que son predefinidos en el REPL también pueden ser usados en `script`.
 
-On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. En Powershell o Git bash, `'` y `"` se pueden utilizar.
 
 ### `-h`, `--help`
 
@@ -372,7 +372,7 @@ On Windows, using `cmd.exe` a single quote will not work correctly because it on
 added: v0.1.3
 -->
 
-Print node command line options. The output of this option is less detailed than this document.
+Imprime opciones de línea de comando de nodo. La salida de esta opción es menos detallada que este documento.
 
 ### `-i`, `--interactive`
 
