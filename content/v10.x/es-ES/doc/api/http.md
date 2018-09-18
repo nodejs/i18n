@@ -670,13 +670,13 @@ added: v0.3.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a `100 Continue` as appropriate.
+Se emite cada vez que se recibe una solicitud con un HTTP `Expect: 100-continue` . Si este evento no se escucha, el servidor automáticamente responderá con un `100 Continue` según corresponda.
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tenga en cuenta que cuando este evento se emite y se maneja, el evento [`'request'`][] no se emitirá.
 
-### Event: 'checkExpectation'
+### Evento: 'checkExpectation'
 
 <!-- YAML
 added: v5.5.0
@@ -685,11 +685,11 @@ added: v5.5.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time a request with an HTTP `Expect` header is received, where the value is not `100-continue`. If this event is not listened for, the server will automatically respond with a `417 Expectation Failed` as appropriate.
+Se emite cada vez que se recibe una solicitud con una cabecera HTTP `Expect`, en donde el valor no es `100-continue`. Si este evento no se escucha, el servidor automáticamente responderá con un `417 Expectation Failed` según corresponda.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tenga en cuenta que cuando este evento se emite y se maneja, el evento [`'request'`][] no será emitido.
 
-### Event: 'clientError'
+### Evento: 'clientError'
 
 <!-- YAML
 added: v0.1.94
@@ -710,7 +710,7 @@ changes:
 * `exception` {Error}
 * `socket` {net.Socket}
 
-If a client connection emits an `'error'` event, it will be forwarded here. Listener of this event is responsible for closing/destroying the underlying socket. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
+Si una conexión del cliente emite un evento `'error'`, será reenviado aquí. El listener de este evento es responsable de cerrar/destruir al socket subyacente. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
 
 Default behavior is to close the socket with an HTTP '400 Bad Request' response if possible, otherwise the socket is immediately destroyed.
 
