@@ -114,31 +114,31 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   //
   // Crear una instancia de Módulo de nivel superior.
   //
-  // Only the top-level Module needs to be explicitly instantiated; its
-  // dependencies will be recursively instantiated by instantiate().
+  // Solo el Módulo de nivel superior necesita ser instanciado explícitamente; sus
+  // dependencias se instanciarán recursivamente por instantiate().
 
   bar.instantiate();
 
-  // Step 4
+  // Paso 4
   //
-  // Evaluate the Module. The evaluate() method returns a Promise with a single
-  // property "result" that contains the result of the very last statement
-  // executed in the Module. In the case of `bar`, it is `s;`, which refers to
-  // the default export of the `foo` module, the `secret` we set in the
-  // beginning to 42.
+  // Evaluar el Módulo. El método evaluate() devuelve una Promesa con un sola
+  // propiedad "resultado" que contiene el resultado de cada última declaración
+  // ejecutada en el Módulo. En el caso de `bar`, es `s;`, que se refiere a
+  // la exportación predeterminada del módulo `foo`, el `secret` que establecemos al
+  // comienzo en 42.
 
   const { result } = await bar.evaluate();
 
   console.log(result);
-  // Prints 42.
+  // Imprime 42.
 })();
 ```
 
-### Constructor: new vm.Module(code[, options])
+### Constructor: nuevo vm.Module(code[, options])
 
-* `code` {string} JavaScript Module code to parse
+* `code` {string} Código del Módulo JavaScript para analizar
 * `options` 
-  * `url` {string} URL used in module resolution and stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
+  * `url` {string} URL utilizado en la resolución de módulo y seguimiento de pila. **Predeterminado:** `'vm:module(i)'` donde `i` es un índice ascendente de contexto específico.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
   * `lineOffset` {integer} Specifies the line number offset that is displayed in stack traces produced by this `Module`.
   * `columnOffset` {integer} Specifies the column number offset that is displayed in stack traces produced by this `Module`.
