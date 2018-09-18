@@ -26,10 +26,10 @@ Este documento está dividido en dos secciones principales, con una tercera secc
 
 Existen cuatro tipo fundamentales de stream en Node.js:
 
-* [`Readable`][] - streams from which data can be read (for example [`fs.createReadStream()`][]).
-* [`Writable`][] - streams to which data can be written (for example [`fs.createWriteStream()`][]).
-* [`Duplex`][] - streams that are both `Readable` and `Writable` (for example [`net.Socket`][]).
-* [`Transform`][] - `Duplex` streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
+* [`Readable`][] - stream de donde los datos pueden ser leídos (por ejemplo [`fs.createReadStream()`][]).
+* [`Writable`][] - streams donde los datos pueden ser escritos (por ejemplo [`fs.createWriteStream()`][]).
+* [`Duplex`][] - streams que son tanto `Readable` como `Writable` (por ejemplo [`net.Socket`][]).
+* [`Transform`][] - `Duplex` streams que pueden modificar o transformar los datos mientras son escritos y leídos (por ejemplo [`zlib.createDeflate()`][]).
 
 Adicionalmente, este módulo incluye la funciones de utilidad [pipeline](#stream_stream_pipeline_streams_callback) y [finished](#stream_stream_finished_stream_callback).
 
@@ -67,12 +67,12 @@ Casi todas las aplicaciones Node.js, no importa que tan simple sea, usa streams 
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  // req is an http.IncomingMessage, which is a Readable Stream
-  // res is an http.ServerResponse, which is a Writable Stream
+  // req es un http.IncomingMessage, que es un Stream Legible
+  // res es un http.ServerResponse, Que es un Stream Escribible
 
   let body = '';
-  // Get the data as utf8 strings.
-  // If an encoding is not set, Buffer objects will be received.
+  // Obtiene los datos como strings utf8.
+  // Si no se establece una codificación, los objetos búferes van a ser recibidos.
   req.setEncoding('utf8');
 
   // Readable streams emit 'data' events once a listener is added
