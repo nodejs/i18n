@@ -10,9 +10,9 @@ El módulo `vm` proporciona APIs para compilar y ejecutar códigos dentro de los
 
 El código JavaScript puede ser compilado y ejecutado inmediatamente o compilado, guardado y ejecutado después.
 
-Un caso de uso común es ejecutar el código en un entorno de pruebas (sandbox). El código sandboxed utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
+Un caso de uso común es ejecutar el código en un entorno de pruebas (sandbox). El código del entorno de prueba utiliza un Contexto V8 diferente, lo que significa que tiene un objeto global diferente al resto del código.
 
-Uno puedo proporcionar el contexto con ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) un objeto sandbox. El código sandboxed trata cualquier propiedad en el sandbox como una variable global. Cualquier cambio en las variables globales causado por el código sandboxed se refleja en el objeto sandbox.
+Uno puedo proporcionar el contexto ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) un objeto sandbox. El código del entorno de prueba trata cualquier propiedad en el sandbox como una variable global. Cualquier cambio en las variables globales causado por el código del entorno de prueba se refleja en el objeto sandbox.
 
 ```js
 const vm = require('vm');
@@ -23,7 +23,7 @@ const sandbox = { x: 2 };
 vm.createContext(sandbox); // Contextify the sandbox.
 
 const code = 'x += 40; var y = 17;';
-// x y y son variables globales en el entorno sandboxed.
+// x y y son variables globales en el entorno de prueba.
 // Inicialmente, x tiene el valor 2 porque ese es el valor de sandbox.x.
 vm.runInContext(code, sandbox);
 
@@ -47,7 +47,7 @@ added: v9.6.0
 
 La clase `vm.Module` proporciona una interfaz de bajo nivel para utilizar módulos ECMAScript en contextos VM. Es la contraparte de la clase `vm.Script` que refleja estrechamente los [Registros del Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) que se definen en la especificación ECMAScript.
 
-Sin embargo, a diferencia de `vm.Script`, cada objeto `vm.Module` está vinculado a un contexto desde su creación. Las operaciones en objetos `vm.Module` son intrínsecamente asincrónicos, en contraste con la naturaleza sincrónica de los objetos `vm.Script`. Con la ayuda de las funciones asincrónicas, sin embargo, manipular objetos `vm.Module` es bastante sencillo.
+Sin embargo, a diferencia de `vm.Script`, cada objeto `vm.Module` está vinculado a un contexto desde su creación. Las operaciones en objetos `vm.Module` son intrínsecamente asincrónicas, en contraste con la naturaleza sincrónica de los objetos `vm.Script`. Con la ayuda de las funciones asincrónicas, sin embargo, manipular objetos `vm.Module` es bastante sencillo.
 
 Utilizar un objeto `vm.Module` requiere cuatro pasos distintos: creación/análisis, vinculación, creación de instancias, y evaluación. Estos cuatro pasos se ilustran en el siguiente ejemplo.
 
