@@ -234,16 +234,16 @@ Para recopilar la cobertura de un subconjunto de pruebas, puede establecer las v
 $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
 ```
 
-The above command executes tests for the `child-process` subsystem and outputs the resulting coverage report.
+El comando anterior ejecuta pruebas para el subsistema `child-process` y genera el informe de cobertura resultante.
 
-Running tests with coverage will create and modify several directories and files. To clean up afterwards, run:
+Ejecutar pruebas con cobertura creará y modificará varios directorios y archivos. Para limpiar después, ejecute:
 
 ```text
 make coverage-clean
 ./configure && make -j4.
 ```
 
-### Step 7: Push
+### Paso 7: Push
 
 Once you are sure your commits are ready to go, with passing tests and linting, begin the process of opening a Pull Request by pushing your working branch to your fork on GitHub.
 
