@@ -146,7 +146,7 @@ Silencia las advertencias de desaprobación.
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Deshabilita las verificaciones de tiempo de ejecución para `async_hooks`. Estas seguirán estando habilitadas dinámicamente cuando `async_hooks` esté habilitado.
 
 ### `--no-warnings`
 
@@ -154,7 +154,7 @@ Disables runtime checks for `async_hooks`. These will still be enabled dynamical
 added: v6.0.0
 -->
 
-Silence all process warnings (including deprecations).
+Silencia todas las advertencias del proceso (incluyendo las desaprobaciones).
 
 ### `--openssl-config=file`
 
@@ -162,7 +162,7 @@ Silence all process warnings (including deprecations).
 added: v6.9.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser utilizado para habilitar la criptografía compatible con FIPS si Node.js se construye con `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 
@@ -170,9 +170,9 @@ Load an OpenSSL configuration file on startup. Among other uses, this can be use
 added: v8.0.0
 -->
 
-Emit pending deprecation warnings.
+Emite advertencias de desaprobación pendientes.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `--preserve-symlinks`
 
@@ -180,7 +180,7 @@ Pending deprecations are generally identical to a runtime deprecation with the n
 added: v6.3.0
 -->
 
-Instructs the module loader to preserve symbolic links when resolving and caching modules.
+Indica al cargador del módulo para preservar los enlaces simbólicos al resolver y almacenar caché en los módulos.
 
 By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk "real path" of the module as both an identifier and as a root path to locate other dependency modules. In most cases, this default behavior is acceptable. However, when using symbolically linked peer dependencies, as illustrated in the example below, the default behavior causes an exception to be thrown if `moduleA` attempts to require `moduleB` as a peer dependency:
 
@@ -518,7 +518,7 @@ added: v8.0.0
 
 When set to `1`, emit pending deprecation warnings.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 
