@@ -1966,4 +1966,4 @@ El uso de `readable.setEncoding()` cambiará el comportamiento de cómo opera `h
 
 Generalmente, el tamaño del búfer actual es medido contra `highWaterMark` en *bytes*. Sin embargo, después que se llama `setEncoding()`, la función de comparación empezará a medir el tamaño del búfer en *caracteres*.
 
-Esto no es un problema en casos comunes con `latin1` o `ascii`. But it is advised to be mindful about this behavior when working with strings that could contain multi-byte characters.
+Esto no es un problema en casos comunes con `latin1` o `ascii`. Pero es aconsejado ser consciente sobre este comportamiento cuando se trabaje con strings que pudieran contener caracteres multi-byte.
