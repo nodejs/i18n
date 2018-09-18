@@ -741,31 +741,31 @@ https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 * readline: tratar a \r como un final de línea (isaacs)
 * readline: hacer que \r\n emita un evento "line" (Ben Noordhuis)
 * cluster: soportar sockets de datagrama (Bert Belder)
-* stream: Correct Transform class backpressure (isaacs)
-* addon: Pass module object to NODE_MODULE init function (isaacs, Rod Vagg)
-* buffer: slow buffer copy compatibility fix (Trevor Norris)
-* Add bytesWritten to tls.CryptoStream (Andy Burke)
+* stream: Corregir contrapresión para Transformación de clase (isaacs)
+* addon: pasar objeto de módulo a función init del NODE_MODULE (isaacs, Rod Vagg)
+* buffer: reparación de compatibilidad de la copia de slow buffer (Trevor Norris)
+* Añadir bytesWritten a tls.CryptoStream (Andy Burke)
 
 <a id="0.9.8"></a>
 
-## 2013.01.24, Version 0.9.8 (Unstable)
+## 2013.01.24, Versión 0.9.8 (Inestable)
 
 https://github.com/nodejs/node/commit/5f2f8400f665dc32c3e10e7d31d53d756ded9156
 
-* npm: Upgrade to v1.2.3
-* V8: Upgrade to 3.15.11.10
-* streams: Support objects other than Buffers (Jake Verbaten)
-* buffer: remove float write range checks (Trevor Norris)
-* http: close connection on 304/204 responses with chunked encoding (Ben Noordhuis)
-* build: fix build with dtrace support on FreeBSD (Fedor Indutny)
-* console: Support formatting options in trace() (isaacs)
-* domain: empty stack on all exceptions (Dave Olszewski)
-* unix, windows: make uv_*_bind() error codes consistent (Andrius Bentkus)
-* linux: add futimes() fallback (Ben Noordhuis)
+* npm: Actualizar a v1.2.3
+* V8: Actualizar a 3.15.11.10
+* streams: Soportar objetos distintos a Buffers (Jake Verbaten)
+* buffer: remover revisiones de rango de la escritura de floats (Trevor Norris)
+* http: cerrar conexión en respuestas 304/204 con codificación fragmentada (Ben Noordhuis)
+* build: reparar build con soporte dtrace en FreeBSD (Fedor Indutny)
+* console: Soportar opciones de formato en trace() (isaacs)
+* domain: pila vacía en todas las excepciones (Dave Olszewski)
+* unix, windows: hacer que códigos de error de uv_*_bind() sean consistentes (Andrius Bentkus)
+* linux: añadir contingencia para futimes() (Ben Noordhuis)
 
 <a id="0.9.7"></a>
 
-## 2013.01.18, Version 0.9.7 (Unstable)
+## 2013.01.18, Versión 0.9.7 (Inestable)
 
 https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 
