@@ -746,7 +746,7 @@ console.log(url.domainToUnicode('xn--iñvalid.com'));
 added: v7.6.0
 -->
 
-* `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
+* `URL` {URL} Un objeto [WHATWG URL](#url_the_whatwg_url_api)
 * `options` {Object} 
   * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
   * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
