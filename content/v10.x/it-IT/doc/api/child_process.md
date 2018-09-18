@@ -529,11 +529,11 @@ changes:
   * `shell` {boolean|string} Se `true`, esegue `command` all'interno di una shell. Utilizza `'/bin/sh'` su UNIX, e `process.env.ComSpec` su Windows. Una shell diversa può essere specificata come una stringa. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `false` (nessuna shell).
 * Restituisce: {Buffer|string} Lo stdout dal comando.
 
-Il metodo `child_process.execFileSync()` è generalmente identico a [`child_process.execFile()`][] con l'eccezione che il metodo non restituirà nulla finché il processo child non sarà completamente chiuso. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited.
+Il metodo `child_process.execFileSync()` è generalmente identico a [`child_process.execFile()`][] con l'eccezione che il metodo non restituirà nulla finché il processo child non sarà completamente chiuso. Quando si verifica un timeout e viene inviato `killSignal`, il metodo non restituirà nulla finché il processo non sarà completamente concluso.
 
-If the child process intercepts and handles the `SIGTERM` signal and does not exit, the parent process will still wait until the child process has exited.
+Se il processo child intercetta e gestisce il segnale `SIGTERM` e non si conclude, il processo parent aspetterà ancora fino alla conclusione del processo child.
 
-If the process times out or has a non-zero exit code, this method ***will*** throw an [`Error`][] that will include the full result of the underlying [`child_process.spawnSync()`][].
+Se il processo è scaduto (timeout) o ha un valore di uscita diverso da zero, questo metodo ***genererà*** un [`Error`][] che includerà il risultato completo del [`child_process.spawnSync()`][] sottostante.
 
 **Se l'opzione `shell` è abilitata, non passare l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
 
