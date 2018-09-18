@@ -748,8 +748,8 @@ added: v7.6.0
 
 * `URL` {URL} Un objeto [WHATWG URL](#url_the_whatwg_url_api)
 * `options` {Object} 
-  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
-  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
+  * `auth` {boolean} Es `true` si la string serializada de la URL incluye el nombre de usuario y contraseña, de otra forma es `false`. **Predeterminado:** `true`.
+  * `fragment` {boolean} Es `true` si la string serializada de la URL incluye el fragmento, de otra forma es `false`. **Predeterminado:** `true`.
   * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
   * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
 * Returns: {string}
