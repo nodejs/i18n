@@ -868,23 +868,23 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v8.0.0
 -->
 
-* {number} Tiempo de espera en milisegundos. **Default:** `5000` (5 seconds).
+* {number} Tiempo de espera en milisegundos. **Predeterminado:** `5000` (5 segundos).
 
-The number of milliseconds of inactivity a server needs to wait for additional incoming data, after it has finished writing the last response, before a socket will be destroyed. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
+El número de milisegundos de inactividad que necesita un servidor para esperar a datos entrantes adicionales, después de que haya terminado de escribir la última respuesta, antes de que se destruya un socket. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
 
 A value of `0` will disable the keep-alive timeout behavior on incoming connections. A value of `0` makes the http server behave similarly to Node.js versions prior to 8.0.0, which did not have a keep-alive timeout.
 
 The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
-## Class: http.ServerResponse
+## Clase: http.ServerResponse
 
 <!-- YAML
 added: v0.1.17
 -->
 
-This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
+Este objeto es creado internamente por un servidor HTTP — no por el usuario. Es pasado como el segundo parámetro al evento [`'request'`][] .
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. Esto es un [`EventEmitter`][] con los siguientes eventos:
+La respuesta implementa, pero no hereda, la interfaz del [Stream Editable](stream.html#stream_class_stream_writable) . Esto es un [`EventEmitter`][] con los siguientes eventos:
 
 ### Evento: 'close'
 
@@ -894,13 +894,13 @@ added: v0.6.7
 
 Indicates that the underlying connection was terminated before [`response.end()`][] was called or able to flush.
 
-### Event: 'finish'
+### Evento: 'finish'
 
 <!-- YAML
 added: v0.3.6
 -->
 
-Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. It does not imply that the client has received anything yet.
+Se emite cuando la respuesta ha sido enviada. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. Eso no implica que el cliente haya recibido algo aún.
 
 Después de este evento, no se emitirán más eventos en el objeto de respuesta.
 
@@ -916,7 +916,7 @@ This method adds HTTP trailing headers (a header but at the end of the message) 
 
 Trailers will **only** be emitted if chunked encoding is used for the response; if it is not (e.g. if the request was HTTP/1.0), they will be silently discarded.
 
-Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. E.g.,
+Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. Por ejemplo,
 
 ```js
 response.writeHead(200, { 'Content-Type': 'text/plain',
@@ -936,7 +936,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`response.socket`][].
+Vea [`response.socket`][].
 
 ### response.end(\[data\]\[, encoding\][, callback])
 
@@ -979,7 +979,7 @@ added: v0.4.0
 * `name` {string}
 * Devuelve: {any}
 
-Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
+Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`response.setHeader()`][].
 
 Ejemplo:
 
