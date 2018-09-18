@@ -203,7 +203,7 @@ added: v8.4.0
 * `stream` {Http2Stream} Una referencia para el stream
 * `headers` {HTTP/2 Headers Object} Un objeto describiendo los encabezados
 * `flags` {number} Las banderas numéricas asociadas
-* `rawHeaders` {Array} Una matriz que contiene los nombres crudos de cabecera, seguido por sus valores correspondientes.
+* `rawHeaders` {Array} Un array que contiene los nombres crudos de cabecera, seguido por sus valores correspondientes.
 
 El evento `'stream'` se emite cuando un `Http2Stream` nuevo es creado.
 
@@ -830,7 +830,7 @@ added: v9.5.0
 
 * {HTTP/2 Headers Object[]}
 
-Una matriz de objetos que contienen las cabeceras salientes informativas (adicionales) enviadas para este `Http2Stream`.
+Un array de objetos que contienen las cabeceras salientes informativas (adicionales) enviadas para este `Http2Stream`.
 
 #### http2stream.sentTrailers
 
