@@ -279,9 +279,9 @@ added: v8.5.0
 
 * `...label` {any}
 
-Increases indentation of subsequent lines by two spaces.
+Aumenta la sangría de las líneas siguientes en dos espacios.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Si se proporcionan una o más `etiquetas`, éstas se imprimen primero sin el indentación adicional.
 
 ### console.groupCollapsed()
 
@@ -289,7 +289,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Un alias para [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -297,7 +297,7 @@ An alias for [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Reduce la sangría de las líneas siguientes por dos espacios.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -308,7 +308,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+La `console.info()` función es un alias para [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -319,7 +319,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Imprime a `stdout` con nueva línea. Se pueden pasar múltiples argumentos, con el primero utilizado como el mensaje principal y todos los adicionales utilizados como sustitución valores similares a printf (3) (todos los argumentos se pasan a [`util.format()`][]).
 
 ```js
 const count = 5;
@@ -329,7 +329,7 @@ console.log('count:', count);
 // Prints: count: 5, to stdout
 ```
 
-See [`util.format()`][] for more information.
+Vea [`util.format()`][] para más información.
 
 ### console.table(tabularData[, properties])
 
@@ -338,12 +338,12 @@ added: v10.0.0
 -->
 
 * `tabularData` {any}
-* `properties` {string[]} Alternate properties for constructing the table.
+* `properties` {string[]} Alternar propiedades para la construcción de la tabla.
 
-Try to construct a table with the columns of the properties of `tabularData` (or use `properties`) and rows of `tabularData` and log it. Falls back to just logging the argument if it can’t be parsed as tabular.
+Intenta construir una tabla con las columnas de las propiedades de `tabularData` (o use `propiedades`) y filas de `tabularData` y conéctelo. Retrocede a solo registrando el argumento si no se puede analizar como tabular.
 
 ```js
-// These can't be parsed as tabular data
+// No se pueden analizar como datos tabulares
 console.table(Symbol());
 // Symbol()
 
@@ -375,7 +375,7 @@ added: v0.1.104
 
 * `label` {string} **Default:** `'default'`
 
-Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Inicia un temporizador que se puede usar para calcular la duración de una operación. Temporizadores se identifican por una `etiqueta` única. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
 ### console.timeEnd(label)
 
