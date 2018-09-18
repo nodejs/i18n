@@ -602,10 +602,10 @@ added: v0.5.9
 -->
 
 * `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
+* `callback` {Function} Función opcional que será llamada cuando ocurra un tiempo de espera. Same as binding to the `'timeout'` event.
 * Devuelve: {http.ClientRequest}
 
-Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
+Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setTimeout()`][] será llamado.
 
 ### request.socket
 
@@ -615,9 +615,9 @@ added: v0.3.0
 
 * {net.Socket}
 
-Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. The `socket` may also be accessed via `request.connection`.
+Referencia al socket subyacente. Generalmente, los usuarios no querrán acceder a esta propiedad. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. El `socket` también puede ser accedido mediante `request.connection`.
 
-Example:
+Ejemplo:
 
 ```js
 const http = require('http');
@@ -643,25 +643,25 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Envía una parte del cuerpo. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
+El argumento `encoding` es opcional y solo aplica cuando `chunk` es una string. Por defecto es `'utf8'`.
 
 The `callback` argument is optional and will be called when this chunk of data is flushed.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
-## Class: http.Server
+## Clase: http.Server
 
 <!-- YAML
 added: v0.1.17
 -->
 
-This class inherits from [`net.Server`][] and has the following additional events:
+Esta clase hereda desde [`net.Server`][] y tiene los siguientes eventos adicionales:
 
-### Event: 'checkContinue'
+### Evento: 'checkContinue'
 
 <!-- YAML
 added: v0.3.0
