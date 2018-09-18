@@ -465,9 +465,9 @@ In caso contrario, il valore di `options.stdio` è un array in cui ogni indice c
 
 3. `'ignore'` - Da a Node.js l'istruzione di ignorare il file descriptor all'interno del child. Sebbene Node.js aprirà sempre i file descriptor 0 - 2 per i processi che genera, l'impostazione del file descriptor su `'ignore'` farà in modo che Node.js apra `/dev/null` e lo colleghi al file descriptor del child.
 
-4. {Stream} object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process. The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index in the `stdio` array. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
-5. Positive integer - The integer value is interpreted as a file descriptor that is currently open in the parent process. It is shared with the child process, similar to how {Stream} objects can be shared.
-6. `null`, `undefined` - Use default value. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. For fd 3 and up, the default is `'ignore'`.
+4. {Stream} object - Condivide uno stream readable o writable che fa riferimento ad un tty, un file, un socket o un pipe con il processo child. Il file descriptor sottostante allo stream è duplicato nel processo child nel file descriptor corrispondente all'indice nell'array `stdio`. Da notare che lo stream deve avere un descriptor sottostante (gli stream dei file non entrano in azione finché non si verifica l'evento `'open'`).
+5. Positive integer - Il valore integer (intero) viene interpretato come un file descriptor attualmente aperto nel processo parent. È condiviso con il processo child, in modo simile alla modalità di condivisione degli {Stream} object.
+6. `null`, `undefined` - Utilizzano il valore predefinito. Per i file descriptor stdio 0, 1 e 2 (in altre parole, stdin, stdout e stderr) viene creato un pipe. For fd 3 and up, the default is `'ignore'`.
 
 Example:
 
