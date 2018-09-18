@@ -300,7 +300,7 @@ $ git push --force-with-lease origin my-branch
 
 **Importante:** El comando `git push --force-with-lease` es una de las pocas formas de eliminar el historial en `git`. Antes de usarlo, asegúrese de comprender los riesgos. En caso de duda, siempre puede solicitar orientación en la Pull Request o en [IRC en el canal #node-dev](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-Si comete un error en alguno de sus commits, no se preocupe. You can amend the last commit (for example if you want to change the commit log).
+Si comete un error en alguno de sus commits, no se preocupe. Puede modificar el último commit (por ejemplo, si desea cambiar el registro de commit).
 
 ```text
 $ git add any/changed/files
@@ -308,9 +308,9 @@ $ git commit --amend
 $ git push --force-with-lease origin my-branch
 ```
 
-There are a number of more advanced mechanisms for managing commits using `git rebase` that can be used, but are beyond the scope of this guide.
+Hay varios mecanismos más avanzados para administrar commits usando `git rebase` que pueden ser usados, pero están fuera del alcance de esta guía.
 
-Feel free to post a comment in the Pull Request to ping reviewers if you are awaiting an answer on something. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
+Siéntase libre de publicar un comentario en la Pull Request para hacer ping a los colaboradores si está esperando una respuesta sobre algo. Si encuentra palabras o acrónimos que le parecen desconocidos, consulte este [glosario](https://sites.google.com/a/chromium.org/dev/glossary).
 
 #### Approval and Request Changes Workflow
 
