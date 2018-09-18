@@ -316,7 +316,7 @@ Siéntase libre de publicar un comentario en la Pull Request para hacer ping a l
 
 Todas las Pull Requests requieren "cerrar sesión" para poder "aterrizar". Cuando un colaborador revisa una Pull Request, puede encontrar detalles específicos que le gustaría ver modificados o reparados. Estos pueden ser tan simples como corregir un error tipográfico, o pueden implicar cambios sustanciales en el código que ha escrito. Si bien estas solicitudes tienen la intención de ser útiles, pueden parecer abruptas o inútiles, especialmente las solicitudes para cambiar las cosas que no incluyen sugerencias concretas sobre *cómo* cambiarlas.
 
-Trate de no desanimarse. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+Trate de no desanimarse. Si siente que una revisión en particular es injusta, dígalo, o póngase en contacto con uno de los otros colaboradores en el proyecto y solicite su opinión. A menudo, dichos comentarios son el resultado de que el revisador solo tomó un corto tiempo para revisar y no están mal intencionados. Tales problemas a menudo se pueden resolver con un poco de paciencia. Dicho esto, se debería esperar que los revisores sean útiles en su feedback, y los comentarios que son simplemente vagos, despectivos e inútiles, probablemente sea mejor ignorarlos.
 
 ### Step 10: Landing
 
