@@ -1958,7 +1958,7 @@ Mientras que la mayoría de las aplicaciones casi nunca necesitan hacer esto, ha
 
 No se recomienda el uso de `readable.push('')`.
 
-Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. Because it *is* a call to [`readable.push()`](#stream_readable_push_chunk_encoding), the call will end the reading process. However, because the argument is an empty string, no data is added to the readable buffer so there is nothing for a user to consume.
+Empujar un string de cero-bytes, un `Buffer` o un `Uint8Array` a un stream que no está en modo objeto tiene un efecto secundario interesante. Because it *is* a call to [`readable.push()`](#stream_readable_push_chunk_encoding), the call will end the reading process. However, because the argument is an empty string, no data is added to the readable buffer so there is nothing for a user to consume.
 
 ### `highWaterMark` discrepancy after calling `readable.setEncoding()`
 
