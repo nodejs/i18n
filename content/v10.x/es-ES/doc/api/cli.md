@@ -542,7 +542,7 @@ Cuando se establece, se emitirán advertencias de proceso al archivo dado en lug
 added: v3.0.0
 -->
 
-Ruta al archivo utilizado para almacenar el historial REPL persistente. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+Ruta al archivo utilizado para almacenar el historial REPL persistente. La ruta por defecto es `~/.node_repl_history`, la cual es anulada por esta variable. Configurar el valor a una string vacía (`''` o `' '`) inhabilita el historial REPL persistente.
 
 ### `OPENSSL_CONF=file`
 
@@ -550,10 +550,10 @@ Ruta al archivo utilizado para almacenar el historial REPL persistente. The defa
 added: v6.11.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Carga un archivo de configuración OpenSSL en el inicio. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
 --openssl-fips`.
 
-If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
+Si la opción de línea de comando [`--openssl-config`][] es usada, la variable de entorno se ignora.
 
 ### `SSL_CERT_DIR=dir`
 
@@ -561,9 +561,9 @@ If the [`--openssl-config`][] command line option is used, the environment varia
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory containing trusted certificates.
+Si `--use-openssl-ca` está habilitado, esto lo anula y establece el directorio de OpenSSL que contiene certificados de confianza.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenga en cuenta que a menos de que el entorno secundaria sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `SSL_CERT_FILE=file`
 
@@ -571,15 +571,15 @@ Be aware that unless the child environment is explicitly set, this environment v
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file containing trusted certificates.
+Si `--use-openssl-ca` está habilitado, esto lo anula y establece el archivo de OpenSSL que contiene certificados de confianza.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenga en cuenta que a menos de que el entorno secundaria sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `UV_THREADPOOL_SIZE=size`
 
 Set the number of threads used in libuv's threadpool to `size` threads.
 
-Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. Node.js APIs that use the threadpool are:
+Los APIs de sistema asincrónicos son utilizados por Node.js cada vez que sea posible, pero donde ellos no existan, el threadpool de libuv es utilizado para crear APIs de nodo asincrónicos basados en APIs de sistema sincrónicos. APIs de Node.js que utilizan el threadpool son:
 
 - all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
 - `crypto.pbkdf2()`
