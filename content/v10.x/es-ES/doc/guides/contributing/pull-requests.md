@@ -245,15 +245,15 @@ make coverage-clean
 
 ### Paso 7: Push
 
-Once you are sure your commits are ready to go, with passing tests and linting, begin the process of opening a Pull Request by pushing your working branch to your fork on GitHub.
+Una vez que esté seguro de que sus commits están listas para continuar, pasando las pruebas y el linting, comience el proceso de abrir una Pull Request "empujando" su branch de trabajo hacia su fork en GitHub.
 
 ```text
 $ git push origin my-branch
 ```
 
-### Step 8: Opening the Pull Request
+### Paso 8: Apertura de la Pull Request
 
-From within GitHub, opening a new Pull Request will present you with a template that should be filled out:
+Desde dentro de GitHub, la apertura de una nueva Pull Request le presentará una plantilla que debe completarse:
 
 ```markdown
 <!--
@@ -274,11 +274,11 @@ Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
 - [ ] commit message follows [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
 ```
 
-Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
+Por favor, intente hacer todo lo posible para completar los detalles, pero no dude en saltarse partes si no está seguro de qué colocar.
 
-Once opened, Pull Requests are usually reviewed within a few days.
+Una vez abierto, las Pull Requests generalmente se revisan en unos pocos días.
 
-### Step 9: Discuss and update
+### Paso 9: Discutir y actualizar
 
 You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
 
