@@ -35,7 +35,7 @@ w <code>aktywa /` kat.
 * Dla ilustracji, preferuj SVG od innych zasobów. Kiedy SVG nie jest możliwe, proszę uważnie śledzić rozmiar pliku zasobów, które wprowadzasz.</li> 
 
 * Dla bloków kodu: 
-  * Używaj zapór wrażliwych językowo. ("'' ' js")
+  * Używaj zapór wrażliwych językowo. ("```js")
   * Kod nie musi być pełen — traktuj bloki kodu jako ilustrację lub pomoc dla Twojego stanowiska, nie jako kompletne uruchomione programy. Jeśli konieczne jest pełen uruchomiony program, dołącz go jako zasób w `zasoby/ przykłady-kodów` i umieść link do tego. .
 * Podczas używania podkreśleń, gwiazdek i grawisów użyj odpowiedniego wyjścia (`\_`, `\*` i `` \` `` zamiast `_`,`*` i `` ` ``).
 * Odniesienia do funkcji konstruktora powinny korzystać z PascalCase.
