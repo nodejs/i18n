@@ -725,11 +725,11 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 * net: no suprimir ECONNRESET (Ben Noordhuis)
 * typed arrays: copiar Buffer en el constructor de typed arrays (Ben Noordhuis)
 * typed arrays: hacer lanzamiento de DataView en non-ArrayBuffer (Ben Noordhuis)
-* windows: MSI installer enhancements (Scott Blomquist, Jim Schubert)
+* windows: mejoras en el instalador de MSI (Scott Blomquist, Jim Schubert)
 
 <a id="0.9.9"></a>
 
-## 2013.02.07, Version 0.9.9 (Unstable)
+## 2013.02.07, Versión 0.9.9 (Inestable)
 
 https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 
