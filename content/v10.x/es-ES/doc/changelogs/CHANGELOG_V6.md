@@ -77,7 +77,7 @@
 
 ## 2018-03-29, Version 6.14.1 'Boron' (LTS), @MylesBorins
 
-### Notable Changes
+### Cambios notables
 
 No additional commits.
 
