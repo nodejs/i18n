@@ -830,7 +830,7 @@ added: v0.7.0
 
 * {number} **Predeterminado:** `2000`
 
-Limits maximum incoming headers count. Si se establece a 0, no se aplicará ningún límite.
+Limita al conteo máximo de cabeceras entrantes. Si se establece a 0, no se aplicará ningún límite.
 
 ### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -838,15 +838,15 @@ Limits maximum incoming headers count. Si se establece a 0, no se aplicará ning
 added: v0.9.12
 -->
 
-* `msecs` {number} **Default:** `120000` (2 minutes)
+* `msecs` {number} **Predeterminado:** `120000` (2 minutos)
 * `callback` {Function}
-* Returns: {http.Server}
+* Devuelve: {http.Server}
 
-Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
+Establece el valor del tiempo de espera para los sockets, y emite un evento `'timeout'` en el objeto del Servidor, pasando al socket como un argumento, en caso de que ocurra un tiempo de espera.
 
-If there is a `'timeout'` event listener on the Server object, then it will be called with the timed-out socket as an argument.
+Si hay un listener del evento `'timeout'` en el objeto del Servidor, entonces será llamado con el socket puesto en tiempo de espera como un argumento.
 
-By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out. However, if a callback is assigned to the Server's `'timeout'` event, timeouts must be handled explicitly.
+Por defecto, el valor del tiempo de espera del Servidor es 2 minutos, y los sockets se destruyen automáticamente si se ponen en tiempo de espera. Sin embargo, si un callback es asignado al evento `'timeout'` del Servidor, los tiempos de espera deberán ser manejados de manera explícita.
 
 ### server.timeout
 
@@ -854,11 +854,11 @@ By default, the Server's timeout value is 2 minutes, and sockets are destroyed a
 added: v0.9.12
 -->
 
-* {number} Timeout in milliseconds. **Default:** `120000` (2 minutes).
+* {number} Tiempo de espera en milisegundos. **Predeterminado:** `120000` (2 minutos).
 
 The number of milliseconds of inactivity before a socket is presumed to have timed out.
 
-A value of `0` will disable the timeout behavior on incoming connections.
+Un valor de `0` inhabilitará el comportamiento del tiempo de espera en conexiones entrantes.
 
 The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
@@ -868,7 +868,7 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v8.0.0
 -->
 
-* {number} Timeout in milliseconds. **Default:** `5000` (5 seconds).
+* {number} Tiempo de espera en milisegundos. **Default:** `5000` (5 seconds).
 
 The number of milliseconds of inactivity a server needs to wait for additional incoming data, after it has finished writing the last response, before a socket will be destroyed. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
 
