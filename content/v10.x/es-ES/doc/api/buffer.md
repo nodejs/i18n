@@ -2304,7 +2304,7 @@ Devuelve un `Buffer` sin agrupar.
 
 Para evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente, las asignaciones predeterminadas debajo de 4KB se recortan desde un único objeto asignado más grande.
 
-En el caso donde un desarrollado pueda necesitar retener una pequeña porción de la memoria desde un grupo por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `SlowBuffer` y luego copiar los bits relevantes.
+En el caso donde un desarrollador pueda necesitar retener una pequeña porción de la memoria desde un grupo por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `SlowBuffer` y luego copiar los bits relevantes.
 
 ```js
 // Necesita mantener alrededor algunos pequeños pedazos de memoria
@@ -2331,7 +2331,7 @@ El uso de `SlowBuffer` debe emplearse solo como el último recurso *después* de
 deprecated: v6.0.0
 -->
 
-> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] en su lugar.
+> Estabilidad: 0 - Desaprobado: Utilice [`Buffer.allocUnsafeSlow()`] en su lugar.
 
 * `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
 
