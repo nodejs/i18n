@@ -172,7 +172,7 @@ Las correcciones de errores y las características siempre deben venir con las p
 
 El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro a dónde debe ir un nuevo archivo de prueba. En caso de dudas, agregue una nueva prueba al directorio `test/parallel/` y la ubicación correcta se resolverá luego.
 
-Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. Para ejecutar las pruebas (incluyendo el análisis de código) en Unix/macOS:
+Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. Para ejecutar las pruebas (incluyendo el linting de código) en Unix/macOS:
 
 ```text
 $ ./configure && make -j4 test
@@ -188,27 +188,27 @@ Y en Windows:
 
 Asegúrese de que el linter no reporte ningún problema y de que todas las pruebas pasen. Por favor, no envíe parches que no cumplan con la verificación.
 
-If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
+Si desea ejecutar el linter sin ejecutar pruebas, utilice `make lint`/`vcbuild lint`. Ejecutará el linting de JavaScript y el linting de C ++.
 
-If you are updating tests and just want to run a single test to check it:
+Si está actualizando pruebas y solo desea ejecutar una sola prueba para verificarlo:
 
 ```text
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
 ```
 
-You can execute the entire suite of tests for a given subsystem by providing the name of a subsystem:
+Puede ejecutar todo el conjunto de pruebas para un subsistema dado proporcionando el nombre de un subsistema:
 
 ```text
 $ python tools/test.py -J --mode=release child-process
 ```
 
-If you want to check the other options, please refer to the help by using the `--help` option
+Si desea verificar las otras opciones, consulte la ayuda utilizando la opción `--help`
 
 ```text
 $ python tools/test.py --help
 ```
 
-You can usually run tests directly with node:
+Por lo general, puede ejecutar pruebas directamente con node:
 
 ```text
 $ ./node ./test/parallel/test-stream2-transform.js
