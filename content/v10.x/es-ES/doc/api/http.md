@@ -728,14 +728,14 @@ server.on('clientError', (err, socket) => {
 server.listen(8000);
 ```
 
-Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Care must be taken to ensure the response is a properly formatted HTTP response message.
+Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Se debe tener cuidado en asegurarse de que la respuesta sea un mensaje de respuesta HTTP formateado apropiadamente.
 
 `err` es una instancia de `Error` con dos columnas adicionales:
 
 * `bytesParsed`: the bytes count of request packet that Node.js may have parsed correctly;
-* `rawPacket`: the raw packet of current request.
+* `rawPacket`: el paquete crudo de la respuesta actual.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.4
@@ -743,17 +743,17 @@ added: v0.1.4
 
 Se emite cuando el servidor se cierra.
 
-### Event: 'connect'
+### Evento: 'connect'
 
 <!-- YAML
 added: v0.7.0
 -->
 
-* `request` {http.IncomingMessage} Arguments for the HTTP request, as it is in the [`'request'`][] event
-* `socket` {net.Socket} Network socket between the server and client
+* `request` {http.IncomingMessage} Argumentos para la solicitud HTTP, como se encuentra en el evento [`'request'`][]
+* `socket` {net.Socket} Socket de red entre el servidor y el cliente
 * `head` {Buffer} The first packet of the tunneling stream (may be empty)
 
-Se emite cada vez que un cliente solicita un método de HTTP `CONNECT` . If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
+Se emite cada vez que un cliente solicita un método de HTTP `CONNECT` . Si este evento no se escucha, entonces a los clientes que soliciten un método `CONNECT` se les cerrarán sus conexiones.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
@@ -765,7 +765,7 @@ added: v0.1.0
 
 * `socket` {net.Socket}
 
-This event is emitted when a new TCP stream is established. `socket` is typically an object of type [`net.Socket`][]. Usually users will not want to access this event. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. The `socket` can also be accessed at `request.connection`.
+Este evento se emite cuando se establece un stream TCP nuevo. `socket` es, por lo general, un objeto de tipo [`net.Socket`][]. Generalmente, los usuarios no querrán acceder a este evento. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. El `socket` también puede ser accedido en `request.connection`.
 
 This event can also be explicitly emitted by users to inject connections into the HTTP server. In that case, any [`Duplex`][] stream can be passed.
 
