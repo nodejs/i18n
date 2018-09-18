@@ -44,10 +44,10 @@ myConsole.error(new Error('Whoops, something bad happened'));
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+// Imprime: Peligro Will Robinson! Danger!, to err
 ```
 
-## Class: Console
+## Clase: Consola
 
 <!-- YAML
 changes:
@@ -86,11 +86,11 @@ changes:
                  and the `colorMode` option was introduced.
 -->
 
-* `options` {Object} 
+* `opciones` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
-  * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
-  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `ignoreErrors` {boolean} Ignorar errores al escribir en el subyacente                           corrientes. **Predeterminado:** `true`.
+  * `colorMode` {boolean|string} Establezca el soporte de color para esta instancia de `Console`. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
 
 Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
