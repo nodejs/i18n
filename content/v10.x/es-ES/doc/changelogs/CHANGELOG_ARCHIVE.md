@@ -769,9 +769,9 @@ https://github.com/nodejs/node/commit/5f2f8400f665dc32c3e10e7d31d53d756ded9156
 
 https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 
-* V8: Upgrade to 3.15.11.7
-* npm: Upgrade to 1.2.2
-* punycode: Upgrade to 1.2.0 (Mathias Bynens)
+* V8: Actualizar a 3.15.11.7
+* npm: Actualizar a 1.2.2
+* punycode: Actualizar a 1.2.0 (Mathias Bynens)
 * repl: make built-in modules available by default (Felix Böhm)
 * windows: add support for '_Total' perf counters (Scott Blomquist)
 * cluster: make --prof work for workers (Ben Noordhuis)
