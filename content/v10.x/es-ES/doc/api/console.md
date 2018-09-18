@@ -145,7 +145,7 @@ added: v8.3.0
 
 Cuando `stdout` es un TTY, llamando a `console.clear()` intentará borrar el TTY. Cuando `stdout` no es un TTY, este método no hace nada.
 
-La operación específica de `console.clear()` puede variar entre los sistemas operativos y tipos de terminales. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
+La operación específica de `console.clear()` puede variar entre los sistemas operativos y tipos de terminales. Para la mayoría de los sistemas operativos Linux, `console.clear()` funciona de manera similar al comando de shell `borrar`. En Windows, `console.clear()` borrará solo la salida en la ventana del terminal actual para Node.js binario.
 
 ### console.count([label='default'])
 
@@ -153,9 +153,9 @@ La operación específica de `console.clear()` puede variar entre los sistemas o
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} La etiqueta de visualización para el contador. **Default:** `'default'`.
 
-Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
+Mantiene un contador interno específico para la etiqueta `label` y las salidas a `stdout` número de veces que se ha llamado a `console.count()` con la etiqueta `label`.
 
 <!-- eslint-skip -->
 
@@ -187,9 +187,9 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} La etiqueta de visualización para el contador. **Default:** `'default'`.
 
-Resets the internal counter specific to `label`.
+Restablece el contador interno específico de la `etiqueta`.
 
 <!-- eslint-skip -->
 
@@ -219,7 +219,7 @@ changes:
 * `data` {any}
 * `...args` {any}
 
-The `console.debug()` function is an alias for [`console.log()`][].
+La función `console.debug()` es un alias para [`console.log()`][].
 
 ### console.dir(obj[, options])
 
@@ -229,8 +229,8 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
+  * `showHidden` {boolean} If `true` luego el objeto no enumerable y símbolo las propiedades se mostrarán también. **Default:** `false`.
+  * `depth` {number} Indica [`util.inspect()`][] cuántas veces se repite mientras formatear el objeto. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
 
 Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
