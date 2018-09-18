@@ -485,13 +485,13 @@ spawn('prg', [], { stdio: ['pipe', 'pipe', process.stderr] });
 spawn('prg', [], { stdio: ['pipe', null, null, null, 'pipe'] });
 ```
 
-*It is worth noting that when an IPC channel is established between the parent and child processes, and the child is a Node.js process, the child is launched with the IPC channel unreferenced (using `unref()`) until the child registers an event handler for the [`'disconnect'`][] event or the [`'message'`][] event. This allows the child to exit normally without the process being held open by the open IPC channel.*
+*Vale la pena notare che quando viene stabilito un canale IPC tra i processi parent e child, e il child è un processo Node.js, allora esso viene avviato con il canale IPC unreferenced (ovvero senza riferimento, utilizzando `unref()`) fino a quando registra un event handler per l'evento [`'disconnect'`][] o per l'evento [`'message'`][]. Ciò consente al child di concludersi normalmente senza che il processo venga tenuto aperto dal canale IPC aperto.*
 
-See also: [`child_process.exec()`][] and [`child_process.fork()`][].
+Vedi anche: [`child_process.exec()`][] e [`child_process.fork()`][].
 
-## Synchronous Process Creation
+## Creazione di Processi Sincroni
 
-The [`child_process.spawnSync()`][], [`child_process.execSync()`][], and [`child_process.execFileSync()`][] methods are **synchronous** and **WILL** block the Node.js event loop, pausing execution of any additional code until the spawned process exits.
+I metodi [`child_process.spawnSync()`][], [`child_process.execSync()`][], e [`child_process.execFileSync()`][] sono **sincroni** e **bloccheranno** il ciclo di eventi di Node.js, interrompendo l'esecuzione di qualsiasi codice aggiuntivo fino alla chiusura del processo generato.
 
 Blocking calls like these are mostly useful for simplifying general-purpose scripting tasks and for simplifying the loading/processing of application configuration at startup.
 
