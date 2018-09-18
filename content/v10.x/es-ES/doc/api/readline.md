@@ -162,7 +162,7 @@ La función oyente es invocada sin pasar ningún argumento.
 ```js
 rl.on('SIGTSTP', () => {
   // Esto reemplazará a SIGTSTP y prevendrá que el programa se vaya al
-  // segundo plando.
+  // segundo plano.
   console.log('Caught SIGTSTP.');
 });
 ```
@@ -257,9 +257,9 @@ added: v0.1.98
   * `shift` {boolean} `true` para indicar la tecla `<Shift>`.
   * `name` {string} El nombre de la tecla.
 
-El método `rl.write()` escribirá los `data` o la secuencia de teclas identificada por `key` al `output`. El argumento `key` es soportado sólo si `output` es una termina de texto [TTY](tty.html).
+El método `rl.write()` escribirá los `data` o la secuencia de teclas identificada por `key` al `output`. El argumento `key` es soportado sólo si `output` es un terminal de texto [TTY](tty.html).
 
-Si se especifica la `key`, `data` es ignorado.
+Si se especifica la `key`, `data` es ignorada.
 
 Al llamarlo, `rl.write()` resumirá el stream `input` si ha sido pausado.
 
@@ -350,7 +350,7 @@ Si el `terminal` es `true` para esta instancia, entonces el stream `output` tend
 
 La función `completer` toma la línea actual ingresada por el usuario como un argumento, y devuelve un `Array` con 2 entradas:
 
-* Un `Array` con entradas que coincidan para la finalización.
+* Un `Array` con entradas que coincidan para la terminación.
 * La substring que fue usada para la coincidencia.
 
 Por ejemplo: `[[substr1, substr2, ...], originalsubstring]`.
