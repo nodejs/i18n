@@ -280,9 +280,9 @@ Una vez abierto, las Pull Requests generalmente se revisan en unos pocos días.
 
 ### Paso 9: Discutir y actualizar
 
-You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+Probablemente recibirá un feedback o solicitudes de cambios en su Pull Request. Esta es una parte importante del proceso de envío, así que, ¡no te desanimes! Algunos colaboradores pueden firmar la Pull Request de inmediato, otros pueden tener comentarios más detallados o un feedback. Esta es una parte necesaria del proceso para evaluar si los cambios son correctos y necesarios.
 
-To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
+Para realizar cambios en una Pull Request existente, realice los cambios en su branch local, agregue un nuevo commit con esos cambios y envíelos a su fork. GitHub actualizará automáticamente la Pull Request.
 
 ```text
 $ git add my/changed/files
@@ -290,7 +290,7 @@ $ git commit
 $ git push origin my-branch
 ```
 
-It is also frequently necessary to synchronize your Pull Request with other changes that have landed in `master` by using `git rebase`:
+También suele ser necesario sincronizar su Pull Request con otros cambios que han "aterrizado" en `master` usando `git rebase`:
 
 ```text
 $ git fetch --all
@@ -298,9 +298,9 @@ $ git rebase origin/master
 $ git push --force-with-lease origin my-branch
 ```
 
-**Important:** The `git push --force-with-lease` command is one of the few ways to delete history in `git`. Before you use it, make sure you understand the risks. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
+**Importante:** El comando `git push --force-with-lease` es una de las pocas formas de eliminar el historial en `git`. Antes de usarlo, asegúrese de comprender los riesgos. En caso de duda, siempre puede solicitar orientación en la Pull Request o en [IRC en el canal #node-dev](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-If you happen to make a mistake in any of your commits, do not worry. You can amend the last commit (for example if you want to change the commit log).
+Si comete un error en alguno de sus commits, no se preocupe. You can amend the last commit (for example if you want to change the commit log).
 
 ```text
 $ git add any/changed/files
