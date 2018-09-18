@@ -61,26 +61,26 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   //
   // Crea un Módulo mediante la construcción de un nuevo objeto `vm.Module`. Esto analiza
   // el texto fuente proporcionado, lanzando un `SyntaxError` si algo sale mal. Por
-  // defecto, un Módulo se crea en el contexto superior. But here, we specify
-  // `contextifiedSandbox` as the context this Module belongs to.
+  // defecto, un Módulo se crea en el contexto superior. Pero ahí, especificamos a
+  // `contextifiedSandbox` como el contexto al que pertenece este Módulo.
   //
-  // Here, we attempt to obtain the default export from the module "foo", and
-  // put it into local binding "secret".
+  // Aquí, intentamos obtener la exportación predeterminado del módulo "foo", y
+  // colocarla en el enlace loca "secreto".
 
   const bar = new vm.Module(`
     import s from 'foo';
     s;
   `, { context: contextifiedSandbox });
 
-  // Step 2
+  // Paso 2
   //
-  // "Link" the imported dependencies of this Module to it.
+  // "Enlace" las dependencias importadas de este Módulo.
   //
-  // The provided linking callback (the "linker") accepts two arguments: the
-  // parent module (`bar` in this case) and the string that is the specifier of
-  // the imported module. The callback is expected to return a Module that
-  // corresponds to the provided specifier, with certain requirements documented
-  // in `module.link()`.
+  // La devolución de enlace proporcionada (el "enlazador") acepta dos argumentos:
+  // el módulo principal (`bar` en este caso) y la cadena que es el especificador del
+  // módulo importado. Se espera la devolución para retornar un Módulo que
+  // corresponde al especificador proporcionado, con ciertos requisitos documentados
+  // en `module.link()`.
   //
   // If linking has not started for the returned Module, the same linker
   // callback will be called on the returned Module.
