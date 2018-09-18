@@ -54,16 +54,14 @@ Utilizar un objeto `vm.Module` requiere cuatro pasos distintos: creación/análi
 Esta implementación se encuentra a un nivel más bajo que el [cargador de Módulo ECMAScript](esm.html#esm_ecmascript_modules). Actualmente, tampoco hay manera de interactuar con el Cargador, aunque el soporte está planeado.
 
 ```js
-const vm = require('vm');
-
 const contextifiedSandbox = vm.createContext({ secret: 42 });
 
 (async () => {
-  // Step 1
+  // Paso 1
   //
-  // Create a Module by constructing a new `vm.Module` object. This parses the
-  // provided source text, throwing a `SyntaxError` if anything goes wrong. By
-  // default, a Module is created in the top context. But here, we specify
+  // Crea un Módulo mediante la construcción de un nuevo objeto `vm.Module`. Esto analiza
+  // el texto fuente proporcionado, lanzando un `SyntaxError` si algo sale mal. Por
+  // defecto, un Módulo se crea en el contexto superior. But here, we specify
   // `contextifiedSandbox` as the context this Module belongs to.
   //
   // Here, we attempt to obtain the default export from the module "foo", and
