@@ -272,7 +272,7 @@ Enables the collection of trace event tracing information.
 added: v2.1.0
 -->
 
-Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
+Imprime un stack trave cada vez que un I/O sincrónico es detectado después de el primer turno del bucle de evento.
 
 ### `--trace-warnings`
 
@@ -280,7 +280,7 @@ Prints a stack trace whenever synchronous I/O is detected after the first turn o
 added: v6.0.0
 -->
 
-Print stack traces for process warnings (including deprecations).
+Imprime stack traces para advertencias de proceso (incluye desaprobaciones).
 
 ### `--track-heap-objects`
 
@@ -296,9 +296,9 @@ Track heap object allocations for heap snapshots.
 added: v6.11.0
 -->
 
-Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. The default store is selectable at build-time.
+Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. La tienda por defecto es seleccionable en el tiempo de construcción.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
+The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Es idéntico en todas las plataformas soportadas.
 
 Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
