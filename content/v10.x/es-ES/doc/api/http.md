@@ -710,11 +710,11 @@ changes:
 * `exception` {Error}
 * `socket` {net.Socket}
 
-Si una conexión del cliente emite un evento `'error'`, será reenviado aquí. El listener de este evento es responsable de cerrar/destruir al socket subyacente. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
+Si una conexión del cliente emite un evento `'error'`, será reenviado aquí. El listener de este evento es responsable de cerrar/destruir al socket subyacente. Por ejemplo, uno podría desear cerrar de manera más elegante al socket con una respuesta HTTP personalizada, en lugar de cortar la conexión de manera abrupta.
 
-Default behavior is to close the socket with an HTTP '400 Bad Request' response if possible, otherwise the socket is immediately destroyed.
+El comportamiento predeterminado es cerrar al socket con una respuesta HTTP '400 Bad Request' si es posible, de lo contrario el socket se destruirá inmediatamente.
 
-`socket` is the [`net.Socket`][] object that the error originated from.
+`socket` es el objeto [`net.Socket`][] desde el cual se originó el error.
 
 ```js
 const http = require('http');
@@ -728,7 +728,7 @@ server.on('clientError', (err, socket) => {
 server.listen(8000);
 ```
 
-When the `'clientError'` event occurs, there is no `request` or `response` object, so any HTTP response sent, including response headers and payload, *must* be written directly to the `socket` object. Care must be taken to ensure the response is a properly formatted HTTP response message.
+Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Care must be taken to ensure the response is a properly formatted HTTP response message.
 
 `err` es una instancia de `Error` con dos columnas adicionales:
 
