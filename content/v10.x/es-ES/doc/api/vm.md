@@ -10,7 +10,7 @@ El módulo `vm` proporciona APIs para compilar y ejecutar códigos dentro de los
 
 El código JavaScript puede ser compilado y ejecutado inmediatamente o compilado, guardado y ejecutado después.
 
-Un caso de uso común es ejecutar el código en un entorno sandboxed. El código sandboxed utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
+Un caso de uso común es ejecutar el código en un entorno de pruebas (sandbox). El código sandboxed utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
 
 Uno puedo proporcionar el contexto con ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) un objeto sandbox. El código sandboxed trata cualquier propiedad en el sandbox como una variable global. Cualquier cambio en las variables globales causado por el código sandboxed se refleja en el objeto sandbox.
 
@@ -49,7 +49,7 @@ La clase `vm.Module` proporciona una interfaz de bajo nivel para utilizar módul
 
 Sin embargo, a diferencia de `vm.Script`, cada objeto `vm.Module` está vinculado a un contexto desde su creación. Las operaciones en objetos `vm.Module` son intrínsecamente asincrónicos, en contraste con la naturaleza sincrónica de los objetos `vm.Script`. Con la ayuda de las funciones asincrónicas, sin embargo, manipular objetos `vm.Module` es bastante sencillo.
 
-Utilizar un objeto `vm.Module` requiera cuatro pasos distintos: creación/análisis, vinculación, creación de instancias, y evaluación. Estos cuatro pasos se ilustran en el siguiente ejemplo.
+Utilizar un objeto `vm.Module` requiere cuatro pasos distintos: creación/análisis, vinculación, creación de instancias, y evaluación. Estos cuatro pasos se ilustran en el siguiente ejemplo.
 
 Esta implementación se encuentra a un nivel más bajo que el [cargador de Módulo ECMAScript](esm.html#esm_ecmascript_modules). Actualmente, tampoco hay manera de interactuar con el Cargador, aunque el soporte está planeado.
 
