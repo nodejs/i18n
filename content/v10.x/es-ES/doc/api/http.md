@@ -767,9 +767,9 @@ added: v0.1.0
 
 Este evento se emite cuando se establece un stream TCP nuevo. `socket` es, por lo general, un objeto de tipo [`net.Socket`][]. Generalmente, los usuarios no querrán acceder a este evento. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. El `socket` también puede ser accedido en `request.connection`.
 
-This event can also be explicitly emitted by users to inject connections into the HTTP server. In that case, any [`Duplex`][] stream can be passed.
+Este evento también puede ser emitido de manera explicita por los usuarios para inyectar conexiones dentro del servidor HTTP. En ese caso, cualquier stream [`Duplex`][] puede ser pasado.
 
-### Event: 'request'
+### Evento: 'request'
 
 <!-- YAML
 added: v0.1.0
@@ -778,9 +778,9 @@ added: v0.1.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per connection (in the case of HTTP Keep-Alive connections).
+Se emite cada vez que hay una solicitud. Note that there may be multiple requests per connection (in the case of HTTP Keep-Alive connections).
 
-### Event: 'upgrade'
+### Evento: 'upgrade'
 
 <!-- YAML
 added: v0.1.94
@@ -792,11 +792,11 @@ changes:
                  to be destroyed if a client sends an Upgrade header.
 -->
 
-* `request` {http.IncomingMessage} Arguments for the HTTP request, as it is in the [`'request'`][] event
-* `socket` {net.Socket} Network socket between the server and client
-* `head` {Buffer} The first packet of the upgraded stream (may be empty)
+* `request` {http.IncomingMessage} Argumentos para la solicitud HTTP, como se encuentra en el evento [`'request'`][]
+* `socket` {net.Socket} Socket de red entre el servidor y el cliente
+* `head` {Buffer} El primer paquete del stream actualizado (puede estar vacío)
 
-Emitted each time a client requests an HTTP upgrade. Listening to this event is optional and clients cannot insist on a protocol change.
+Se emite cada vez que un cliente solicita una mejora HTTP. Escuchar a este evento es opcional, y los clientes no pueden insistir en un cambio de protocolo.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
@@ -812,7 +812,7 @@ Detiene al servidor de aceptar nuevas conexiones. Vea [`net.Server.close()`][].
 
 ### server.listen()
 
-Starts the HTTP server listening for connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
+Starts the HTTP server listening for connections. Este método es idéntico a [`server.listen()`][] desde [`net.Server`][].
 
 ### server.listening
 
@@ -820,7 +820,7 @@ Starts the HTTP server listening for connections. This method is identical to [`
 added: v5.7.0
 -->
 
-* {boolean} Indicates whether or not the server is listening for connections.
+* {boolean} Indica si el servidor está escuchando a las conexiones o no.
 
 ### server.maxHeadersCount
 
