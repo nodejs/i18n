@@ -380,7 +380,7 @@ Imprime opciones de línea de comando de nodo. La salida de esta opción es meno
 added: v0.7.7
 -->
 
-Opens the REPL even if stdin does not appear to be a terminal.
+Abre el REPL incluso si no parece que stdin sea un terminal.
 
 ### `-p`, `--print "script"`
 
@@ -393,7 +393,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Identical to `-e` but prints the result.
+Idéntico a `-e` pero imprime el resultado.
 
 ### `-r`, `--require module`
 
@@ -401,9 +401,9 @@ Identical to `-e` but prints the result.
 added: v1.6.0
 -->
 
-Preload the specified module at startup.
+Precarga el módulo especificado en el inicio.
 
-Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
+Sigue las reglas de resolución del módulo `require()`'. `module` puede ser una ruta a un archivo o un nombre del módulo de nodo.
 
 ### `-v`, `--version`
 
@@ -411,9 +411,9 @@ Follows `require()`'s module resolution rules. `module` may be either a path to 
 added: v0.1.3
 -->
 
-Print node's version.
+Imprime la versión de node.
 
-## Environment Variables
+## Variables de Entorno
 
 ### `NODE_DEBUG=module[,…]`
 
@@ -421,7 +421,7 @@ Print node's version.
 added: v0.1.32
 -->
 
-`','`-separated list of core modules that should print debug information.
+Lista separada con `','` de módulos core que deben imprimir información de depuración.
 
 ### `NODE_DISABLE_COLORS=1`
 
@@ -429,7 +429,7 @@ added: v0.1.32
 added: v0.3.0
 -->
 
-When set to `1` colors will not be used in the REPL.
+Cuando se establece a `1`, no se utilizarán colores en el REPL.
 
 ### `NODE_EXTRA_CA_CERTS=file`
 
@@ -437,9 +437,9 @@ When set to `1` colors will not be used in the REPL.
 added: v7.3.0
 -->
 
-When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
+When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. El archivo debería consistir de uno o más certificados de confianza en el formato PEM. Se emitirá un mensaje (una vez) con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) si falta el archivo o está malformado, pero cualquier error es ignorado.
 
-Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
+Tenga en cuenta que ni los certificados bien conocidos ni los extra se utilizan cuando la propiedad de opciones `ca` está explícitamente especificada para un servidor o cliente TLS o HTTPS.
 
 ### `NODE_ICU_DATA=file`
 
@@ -447,7 +447,7 @@ Note that neither the well known nor extra certificates are used when the `ca` o
 added: v0.11.15
 -->
 
-Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled with small-icu support.
+La ruta de datos para los datos ICU (objeto `Intl`). Extenderá los datos enlazados cuando se compilen con soporte de icu pequeño.
 
 ### `NODE_NO_WARNINGS=1`
 
