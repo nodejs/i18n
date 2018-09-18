@@ -495,7 +495,7 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-Este método no muestra nada a menos que se use en el inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Este método no muestra nada a menos que se use en el inspector. El método `console.timeline()` es la forma obsoleta de [`console.time()`][].
 
 ### console.timelineEnd([label])
 
@@ -505,4 +505,4 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-Este método no muestra nada a menos que se use en el inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
+Este método no muestra nada a menos que se use en el inspector. El método `console.timelineEnd()` es la forma obsoleta de [`console.timeEnd()`][].
