@@ -1,30 +1,30 @@
-@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
+@// NB(chrisdickinson): Wenn Sie diese Datei verschieben, stellen Sie sicher, dass @//tools/doc/html.js auf den neuen Ort verweist.
 
 <!--introduced_in=v0.10.0-->
 
-* [About these Docs](documentation.html)
-* [Usage & Example](synopsis.html)
+* [Über diese Dokumente](documentation.html)
+* [Verwendung & Beispiele](synopsis.html)
 
 <div class="line"></div>
 
 * [Assertion Testing](assert.html)
 * [Async Hooks](async_hooks.html)
-* [Buffer](buffer.html)
-* [C++ Addons](addons.html)
-* [C/C++ Addons - N-API](n-api.html)
-* [Child Processes](child_process.html)
+* [Puffer](buffer.html)
+* [C++ Erweiterungen](addons.html)
+* [C/C++ Erweiterungen - N-API](n-api.html)
+* [Tochter-Prozesse](child_process.html)
 * [Cluster](cluster.html)
-* [Command Line Options](cli.html)
-* [Console](console.html)
-* [Crypto](crypto.html)
+* [Optionen der Kommandozeile](cli.html)
+* [Konsole](console.html)
+* [Krypto](crypto.html)
 * [Debugger](debugger.html)
-* [Deprecated APIs](deprecations.html)
+* [Veraltete APIs](deprecations.html)
 * [DNS](dns.html)
-* [Domain](domain.html)
-* [ECMAScript Modules](esm.html)
-* [Errors](errors.html)
-* [Events](events.html)
-* [File System](fs.html)
+* [Domäne](domain.html)
+* [ECMAScript-Module](esm.html)
+* [Fehler](errors.html)
+* [Ereignisse](events.html)
+* [Dateisystem](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
