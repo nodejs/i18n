@@ -560,9 +560,9 @@ added: v1.6.0
 * `name` {string}
 * `value` {any}
 
-Establece a un único valor de cabecera para el objeto de cabeceras. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`request.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Establece a un único valor de cabecera para el objeto de cabeceras. Si esta cabecera ya existe en las cabeceras pendientes, su valor será reemplazado. Utilice aquí un array de strings para enviar varias cabeceras con el mismo nombre. Los valores que no sean strings se almacenarán sin modificación. Por lo tanto, [`request.getHeader()`][] puede devolver valores que no sean strings. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
 
-Example:
+Ejemplo:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
@@ -582,7 +582,7 @@ added: v0.5.9
 
 * `noDelay` {boolean}
 
-Once a socket is assigned to this request and is connected [`socket.setNoDelay()`][] will be called.
+Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setNoDelay()`][] será llamado.
 
 ### request.setSocketKeepAlive(\[enable\]\[, initialDelay\])
 
@@ -593,7 +593,7 @@ added: v0.5.9
 * `enable` {boolean}
 * `initialDelay` {number}
 
-Once a socket is assigned to this request and is connected [`socket.setKeepAlive()`][] will be called.
+Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setKeepAlive()`][] será llamado.
 
 ### request.setTimeout(timeout[, callback])
 
@@ -603,7 +603,7 @@ added: v0.5.9
 
 * `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Returns: {http.ClientRequest}
+* Devuelve: {http.ClientRequest}
 
 Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
 
@@ -1101,7 +1101,7 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`response.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Los valores que no sean strings se almacenarán sin modificación. Therefore, [`response.getHeader()`][] may return non-string values. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
 
 Example:
 
