@@ -772,7 +772,7 @@ https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 * V8: Actualizar a 3.15.11.7
 * npm: Actualizar a 1.2.2
 * punycode: Actualizar a 1.2.0 (Mathias Bynens)
-* repl: make built-in modules available by default (Felix Böhm)
+* repl: hacer que los módulos integrados estén disponibles por defecto (Felix Böhm)
 * windows: add support for '_Total' perf counters (Scott Blomquist)
 * cluster: make --prof work for workers (Ben Noordhuis)
 * child_process: do not keep list of sent sockets (Fedor Indutny)
