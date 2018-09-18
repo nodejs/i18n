@@ -1930,7 +1930,7 @@ net.createServer((socket) => {
 
 En versiones anteriores de v0.10 de Node.js, los datos de mensajes entrantes serían simplemente descartados. Sin embargo, a partir de Node.js v0.10 y versiones posteriores, el socket permanece pausado para siempre.
 
-The workaround in this situation is to call the [`stream.resume()`](#stream_readable_resume) method to begin the flow of data:
+La solución alternativa en esta situación es llamar al método [`stream.resume()`](#stream_readable_resume) para iniciar el flujo de datos:
 
 ```js
 // Workaround
@@ -1944,11 +1944,11 @@ net.createServer((socket) => {
 }).listen(1337);
 ```
 
-In addition to new `Readable` streams switching into flowing mode, pre-v0.10 style streams can be wrapped in a `Readable` class using the [`readable.wrap()`][`stream.wrap()`] method.
+Además de los nuevos streams `Readable` cambiando a modo fluido, los streams con un estilo pre-v0.10 pueden ser envueltos en una clase `Readable` usando el método [`readable.wrap()`][`stream.wrap()`].
 
 ### `readable.read(0)`
 
-There are some cases where it is necessary to trigger a refresh of the underlying readable stream mechanisms, without actually consuming any data. In such cases, it is possible to call `readable.read(0)`, which will always return `null`.
+Hay algunos casos donde es necesario activar una actualización de los mecanismos de stream legible subyacente, sin consumir datos. En tales casos, es posible llamar a `readable.read(0)`, que siempre devolverá `null`.
 
 If the internal read buffer is below the `highWaterMark`, and the stream is not currently reading, then calling `stream.read(0)` will trigger a low-level [`stream._read()`](#stream_readable_read_size_1) call.
 
