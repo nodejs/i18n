@@ -498,7 +498,7 @@ https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 * domains: mejoras de rendimiento (Trevor Norris)
 * events: EventEmitter = require('events') (Jake Verbaten)
 * http: Añadir callbacks de write()/end() (isaacs)
-* http: Consistent 'finish' event semantics (isaacs)
+* http: Semántica del evento "finish" consistente (isaacs)
 * http: Preferir "binary" por encima de "ascii" (isaacs)
 * http: Soportar a API de legado agent.addRequest (isaacs)
 * http: Escribir trozos hex/base64 correctamente (isaacs)
