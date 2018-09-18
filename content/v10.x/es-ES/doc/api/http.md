@@ -954,7 +954,7 @@ changes:
 * `callback` {Function}
 * Returns: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. El método, `response.end()`, DEBE ser llamado en cada respuesta.
 
 If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
@@ -968,7 +968,7 @@ added: v0.0.2
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+El valor booleano indica si se ha completado la respuesta. Starts as `false`. Luego de que [`response.end()`][] se ejecuta, el valor será `true`.
 
 ### response.getHeader(name)
 
