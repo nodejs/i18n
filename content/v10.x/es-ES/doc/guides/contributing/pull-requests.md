@@ -172,21 +172,21 @@ Las correcciones de errores y las características siempre deben venir con las p
 
 El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro a dónde debe ir un nuevo archivo de prueba. En caso de dudas, agregue una nueva prueba al directorio `test/parallel/` y la ubicación correcta se resolverá luego.
 
-Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. To run the tests (including code linting) on Unix / macOS:
+Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. Para ejecutar las pruebas (incluyendo el análisis de código) en Unix/macOS:
 
 ```text
 $ ./configure && make -j4 test
 ```
 
-And on Windows:
+Y en Windows:
 
 ```text
 > vcbuild test
 ```
 
-(See the [Building guide](../../../BUILDING.md) for more details.)
+(Vea la [Building guide](../../../BUILDING.md) para más detalles.)
 
-Make sure the linter does not report any issues and that all tests pass. Please do not submit patches that fail either check.
+Asegúrese de que el linter no reporte ningún problema y de que todas las pruebas pasen. Por favor, no envíe parches que no cumplan con la verificación.
 
 If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
 
