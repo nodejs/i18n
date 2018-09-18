@@ -129,13 +129,13 @@ changes:
 Una prueba de afirmación simple que verifica si el `value` es verdadero. Si no es, `Assertion failed` el loggueado. Si se proporciona, el error de `message` está formateado usando [`util.format()`][] pasando a lo largo de todos los argumentos del mensaje. El resultado es usado como mensaje de error.
 
 ```js
-console.assert(true, 'does nothing');
-// OK
-console.assert(false, 'Whoops %s work', 'didn\'t');
-// Assertion failed: Whoops didn't work
+console.assert (true, 'does nothing');
+// OKAY
+console.assert (false, 'Whoops %s work', 'didn\' t');
+// Falló la aserción: Whoops no funcionó
 ```
 
-Calling `console.assert()` with a falsy assertion will only cause the `message` to be printed to the console without interrupting execution of subsequent code.
+Llamar a `console.assert()` con una aserción de falsy solo causará el `mensaje` para imprimir en la consola sin interrumpir la ejecución del código subsiguiente.
 
 ### console.clear()
 
@@ -143,9 +143,9 @@ Calling `console.assert()` with a falsy assertion will only cause the `message` 
 added: v8.3.0
 -->
 
-When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
+Cuando `stdout` es un TTY, llamando a `console.clear()` intentará borrar el TTY. Cuando `stdout` no es un TTY, este método no hace nada.
 
-The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
+La operación específica de `console.clear()` puede variar entre los sistemas operativos y tipos de terminales. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
 
 ### console.count([label='default'])
 
