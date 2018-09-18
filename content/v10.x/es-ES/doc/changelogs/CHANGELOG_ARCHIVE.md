@@ -733,11 +733,11 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
 https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 
-* tls: port CryptoStream to streams2 (Fedor Indutny)
-* typed arrays: only share ArrayBuffer backing store (Ben Noordhuis)
-* stream: make Writable#end() accept a callback function (Nathan Rajlich)
-* buffer: optimize 'hex' handling (Ben Noordhuis)
-* dns, cares: don't filter NOTIMP, REFUSED, SERVFAIL (Ben Noordhuis)
+* tls: puerto de CryptoStream a streams2 (Fedor Indutny)
+* typed arrays: solo compartir el almacenamiento de respaldo de ArrayBuffer (Ben Noordhuis)
+* stream: hacer que Writable#end() acepte una función de callback (Nathan Rajlich)
+* buffer: optimizar el manejo de "hex" (Ben Noordhuis)
+* dns, cares: no filtrar NOTIMP, REFUSED, SERVFAIL (Ben Noordhuis)
 * readline: treat bare \r as a line ending (isaacs)
 * readline: make \r\n emit one 'line' event (Ben Noordhuis)
 * cluster: support datagram sockets (Bert Belder)
