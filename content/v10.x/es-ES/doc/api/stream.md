@@ -75,20 +75,20 @@ const server = http.createServer((req, res) => {
   // Si no se establece una codificación, los objetos búferes van a ser recibidos.
   req.setEncoding('utf8');
 
-  // Readable streams emit 'data' events once a listener is added
+  // Los streams legibles emiten eventos "data" una vez que se añade un listener
   req.on('data', (chunk) => {
     body += chunk;
   });
 
-  // the 'end' event indicates that the entire body has been received
+  // el evento "end" indica que el cuerpo entero fue recibido
   req.on('end', () => {
     try {
       const data = JSON.parse(body);
-      // write back something interesting to the user:
+      // escribe algo interesante al usuario:
       res.write(typeof data);
       res.end();
     } catch (er) {
-      // uh oh! bad json!
+      // ¡uh oh! ¡json malo!
       res.statusCode = 400;
       return res.end(`error: ${er.message}`);
     }
@@ -98,11 +98,11 @@ const server = http.createServer((req, res) => {
 server.listen(1337);
 
 // $ curl localhost:1337 -d "{}"
-// object
+// objeto
 // $ curl localhost:1337 -d "\"foo\""
 // string
 // $ curl localhost:1337 -d "not json"
-// error: Unexpected token o in JSON at position 1
+// error: Token o inesperado en JSON en la posición 1
 ```
 
 Streams [`Writable`][] (tales como `res` en el ejemplo) expone métodos como`write()` y `end()` que son usados para escribir datos en el stream.
@@ -125,7 +125,7 @@ Ejemplos de streams [`Writable`][] streams incluyen:
 
 * [Solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
 * [Respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
-* [fs write streams](fs.html#fs_class_fs_writestream)
+* [streams escribir fs](fs.html#fs_class_fs_writestream)
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 * [sockets TCP](net.html#net_class_net_socket)
