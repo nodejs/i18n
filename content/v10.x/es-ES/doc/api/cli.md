@@ -455,7 +455,7 @@ La ruta de datos para los datos ICU (objeto `Intl`). Extenderá los datos enlaza
 added: v6.11.0
 -->
 
-When set to `1`, process warnings are silenced.
+Cuando se establece a `1`, se silencian las advertencias de proceso.
 
 ### `NODE_OPTIONS=options...`
 
@@ -463,9 +463,9 @@ When set to `1`, process warnings are silenced.
 added: v8.0.0
 -->
 
-A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
+Una lista separada con espacios de opciones de línea de comando. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js se cerrará con un error si se utiliza una opción que no está permitida en el entorno, como `-p` o un archivo script.
 
-Node options that are allowed are:
+Las opciones de node que están permitidas son:
 
 - `--enable-fips`
 - `--force-fips`
@@ -492,7 +492,7 @@ Node options that are allowed are:
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-V8 options that are allowed are:
+Las opciones de V8 que están permitidas son:
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
@@ -506,9 +506,9 @@ V8 options that are allowed are:
 added: v0.1.32
 -->
 
-`':'`-separated list of directories prefixed to the module search path.
+Una lista separada con `':'` de directorios con prefijo a la ruta de búsqueda del módulo.
 
-On Windows, this is a `';'`-separated list instead.
+En Windows, es una lista separada con `';'` en su lugar.
 
 ### `NODE_PENDING_DEPRECATION=1`
 
@@ -516,9 +516,9 @@ On Windows, this is a `';'`-separated list instead.
 added: v8.0.0
 -->
 
-When set to `1`, emit pending deprecation warnings.
+Cuando se establece a `1`, emite advertencias de desaprobación pendientes.
 
-Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizaras para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 
@@ -526,7 +526,7 @@ Las desaprobaciones pendientes son generalmente idénticas a una desaprobación 
 added: v7.1.0
 -->
 
-When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
+Cuando se establece a `1`, indica al cargador del módulo para preservar enlaces simbólicos al resolver y almacenar caché en los módulos.
 
 ### `NODE_REDIRECT_WARNINGS=file`
 
@@ -534,7 +534,7 @@ When set to `1`, instructs the module loader to preserve symbolic links when res
 added: v8.0.0
 -->
 
-When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
+Cuando se establece, se emitirán advertencias de proceso al archivo dado en lugar de imprimirlas en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error al intentar escribir la advertencia al archivo, la advertencia será escrita en stderr en su lugar. Esto es equivalente a utilizar la bandera de línea de comando `--redirect-warnings=file`.
 
 ### `NODE_REPL_HISTORY=file`
 
@@ -542,7 +542,7 @@ When set, process warnings will be emitted to the given file instead of printing
 added: v3.0.0
 -->
 
-Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+Ruta al archivo utilizado para almacenar el historial REPL persistente. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
 
 ### `OPENSSL_CONF=file`
 
