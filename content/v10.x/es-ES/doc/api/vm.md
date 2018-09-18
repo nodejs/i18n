@@ -139,11 +139,11 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 * `code` {string} Código del Módulo JavaScript para analizar
 * `options` 
   * `url` {string} URL utilizado en la resolución de módulo y seguimiento de pila. **Predeterminado:** `'vm:module(i)'` donde `i` es un índice ascendente de contexto específico.
-  * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
-  * `lineOffset` {integer} Specifies the line number offset that is displayed in stack traces produced by this `Module`.
-  * `columnOffset` {integer} Specifies the column number offset that is displayed in stack traces produced by this `Module`.
-  * `initalizeImportMeta` {Function} Called during evaluation of this `Module` to initialize the `import.meta`. This function has the signature `(meta,
-module)`, where `meta` is the `import.meta` object in the `Module`, and `module` is this `vm.Module` object.
+  * `context` {Object} El objeto [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) como es devuelto por el método `vm.createContext()`, para compilar y evaluar este `Module`.
+  * `lineOffset` {integer} Especifica el desplazamiento del número de línea que se muestra en los seguimientos de pila producidos por este `Module`.
+  * `columnOffset` {integer} Especifica el desplazamiento del número de columna que se muestra en los seguimientos de pila producidos por este `Modulo`.
+  * `initalizeImportMeta` {Function} Llama durante la evaluación de este `Module` para inicializar el `import.meta`. Esta función tiene la firma `(meta,
+module)`, donde `meta` es el objeto `import.meta` en el `Module`, y `module` es este objeto `vm.Module`.
 
 Creates a new ES `Module` object.
 
