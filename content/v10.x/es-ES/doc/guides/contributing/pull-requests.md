@@ -214,11 +214,11 @@ Por lo general, puede ejecutar pruebas directamente con node:
 $ ./node ./test/parallel/test-stream2-transform.js
 ```
 
-Remember to recompile with `make -j4` in between test runs if you change code in the `lib` or `src` directories.
+Recuerde volver a compilar con `make -j4` entre ejecuciones de prueba si cambia el código en los directorios `lib`o`src`.
 
-#### Test Coverage
+#### Cobertura de Prueba
 
-It's good practice to ensure any code you add or change is covered by tests. You can do so by running the test suite with coverage enabled:
+Es una buena práctica asegurarse de que cualquier código que agregue o modifique esté cubierto por pruebas. Puede hacerlo ejecutando el conjunto de pruebas con cobertura habilitada:
 
 ```text
 $ ./configure --coverage && make coverage
