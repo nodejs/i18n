@@ -1950,13 +1950,13 @@ Además de los nuevos streams `Readable` cambiando a modo fluido, los streams co
 
 Hay algunos casos donde es necesario activar una actualización de los mecanismos de stream legible subyacente, sin consumir datos. En tales casos, es posible llamar a `readable.read(0)`, que siempre devolverá `null`.
 
-If the internal read buffer is below the `highWaterMark`, and the stream is not currently reading, then calling `stream.read(0)` will trigger a low-level [`stream._read()`](#stream_readable_read_size_1) call.
+Si el búfer de lectura interno está por debajo de `highWaterMark`, y el stream no está actualmente leyendo, entonces llamar a `stream.read(0)` va a activar una llamada de [`stream._read()`](#stream_readable_read_size_1) de bajo-nivel.
 
-While most applications will almost never need to do this, there are situations within Node.js where this is done, particularly in the `Readable` stream class internals.
+Mientras que la mayoría de las aplicaciones casi nunca necesitan hacer esto, hay situaciones dentro de Node.js donde esto se hace, particularmente en la clase interna del stream `Readable`.
 
 ### `readable.push('')`
 
-Use of `readable.push('')` is not recommended.
+No se recomienda el uso de `readable.push('')`.
 
 Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. Because it *is* a call to [`readable.push()`](#stream_readable_push_chunk_encoding), the call will end the reading process. However, because the argument is an empty string, no data is added to the readable buffer so there is nothing for a user to consume.
 
