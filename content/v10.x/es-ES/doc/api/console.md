@@ -124,7 +124,7 @@ changes:
 -->
 
 * `value` {any} El valor probado para ser verdad.
-* `...message` {any} All arguments besides `value` are used as error message.
+* `... mensaje` {any} Todos los argumentos además del `valor` se utilizan como mensaje de error.
 
 A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
 
