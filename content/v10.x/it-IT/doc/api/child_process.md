@@ -448,17 +448,17 @@ changes:
     description: The value `0` is now accepted as a file descriptor.
 -->
 
-L'opzione `options.stdio` viene utilizzata per configurare i pipe stabiliti tra i processi parent e child. Di default, lo stdin, lo stdout e lo stderr del child vengono reindirizzati ai corrispondenti stream [`subprocess.stdin`][], [`subprocess.stdout`][], e [`subprocess.stderr`][] sul [`ChildProcess`][] object. This is equivalent to setting the `options.stdio` equal to `['pipe', 'pipe', 'pipe']`.
+L'opzione `options.stdio` viene utilizzata per configurare i pipe stabiliti tra i processi parent e child. Di default, lo stdin, lo stdout e lo stderr del child vengono reindirizzati ai corrispondenti stream [`subprocess.stdin`][], [`subprocess.stdout`][], e [`subprocess.stderr`][] sul [`ChildProcess`][] object. Ciò è equivalente all'impostazione di `options.stdio` uguale a `['pipe', 'pipe', 'pipe']`.
 
-For convenience, `options.stdio` may be one of the following strings:
+Per comodità, `options.stdio` potrebbe essere una delle seguenti stringhe:
 
-* `'pipe'` - equivalent to `['pipe', 'pipe', 'pipe']` (the default)
-* `'ignore'` - equivalent to `['ignore', 'ignore', 'ignore']`
-* `'inherit'` - equivalent to `[process.stdin, process.stdout, process.stderr]` or `[0,1,2]`
+* `'pipe'` - equivalente a `['pipe', 'pipe', 'pipe']` (il valore predefinito)
+* `'ignore'` - equivalente a `['ignore', 'ignore', 'ignore']`
+* `'inherit'` - equivalente a `[process.stdin, process.stdout, process.stderr]` oppure a `[0,1,2]`
 
-Otherwise, the value of `options.stdio` is an array where each index corresponds to an fd in the child. The fds 0, 1, and 2 correspond to stdin, stdout, and stderr, respectively. Additional fds can be specified to create additional pipes between the parent and child. The value is one of the following:
+In caso contrario, il valore di `options.stdio` è un array in cui ogni indice corrisponde a un file descriptor (fd) all'interno del child. I file descriptor (fd) 0, 1 e 2 corrispondono rispettivamente a stdin, stdout e stderr. È possibile specificare ulteriori file descriptor (fd) per creare pipe aggiuntivi tra parent e child. Il valore è uno dei seguenti:
 
-1. `'pipe'` - Create a pipe between the child process and the parent process. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
+1. `'pipe'` - Crea un pipe tra i processi child e parent. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
 2. `'ipc'` - Create an IPC channel for passing messages/file descriptors between parent and child. A [`ChildProcess`][] may have at most *one* IPC stdio file descriptor. Setting this option enables the [`subprocess.send()`][] method. If the child is a Node.js process, the presence of an IPC channel will enable [`process.send()`][] and [`process.disconnect()`][] methods, as well as [`'disconnect'`][] and [`'message'`][] events within the child.
   
   Accessing the IPC channel fd in any way other than [`process.send()`][] or using the IPC channel with a child process that is not a Node.js instance is not supported.
