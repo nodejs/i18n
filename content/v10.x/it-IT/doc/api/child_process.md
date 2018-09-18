@@ -467,21 +467,21 @@ In caso contrario, il valore di `options.stdio` è un array in cui ogni indice c
 
 4. {Stream} object - Condivide uno stream readable o writable che fa riferimento ad un tty, un file, un socket o un pipe con il processo child. Il file descriptor sottostante allo stream è duplicato nel processo child nel file descriptor corrispondente all'indice nell'array `stdio`. Da notare che lo stream deve avere un descriptor sottostante (gli stream dei file non entrano in azione finché non si verifica l'evento `'open'`).
 5. Positive integer - Il valore integer (intero) viene interpretato come un file descriptor attualmente aperto nel processo parent. È condiviso con il processo child, in modo simile alla modalità di condivisione degli {Stream} object.
-6. `null`, `undefined` - Utilizzano il valore predefinito. Per i file descriptor stdio 0, 1 e 2 (in altre parole, stdin, stdout e stderr) viene creato un pipe. For fd 3 and up, the default is `'ignore'`.
+6. `null`, `undefined` - Utilizzano il valore predefinito. Per i file descriptor stdio 0, 1 e 2 (in altre parole, stdin, stdout e stderr) viene creato un pipe. Per i file descriptor 3 o superiori, l'impostazione predefinita è `'ignore'`.
 
-Example:
+Esempio:
 
 ```js
 const { spawn } = require('child_process');
 
-// Child will use parent's stdios
+// Il child utilizzerà gli stdio del parent
 spawn('prg', [], { stdio: 'inherit' });
 
-// Spawn child sharing only stderr
+// Genera un child che condivide solo stderr
 spawn('prg', [], { stdio: ['pipe', 'pipe', process.stderr] });
 
-// Open an extra fd=4, to interact with programs presenting a
-// startd-style interface.
+// Apre un extra fd = 4, per interagire con i programmi che presentano 
+// un'interfaccia in stile startd.
 spawn('prg', [], { stdio: ['pipe', null, null, null, 'pipe'] });
 ```
 
