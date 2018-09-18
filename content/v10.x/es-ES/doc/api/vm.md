@@ -82,11 +82,11 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // corresponde al especificador proporcionado, con ciertos requisitos documentados
   // en `module.link()`.
   //
-  // If linking has not started for the returned Module, the same linker
-  // callback will be called on the returned Module.
+  // Si no se ha iniciado el enlace para el Módulo devuelto, se llamará a la misma
+  // devolución del enlazador en el Módulo retornado.
   //
-  // Even top-level Modules without dependencies must be explicitly linked. The
-  // callback provided would never be called, however.
+  // Incluso los Módulos de nivel superior sin dependencias deben estar explícitamente enlazados. Sin
+  // embargo, la devolución proporcionada nunca se llamaría.
   //
   // The link() method returns a Promise that will be resolved when all the
   // Promises returned by the linker resolve.
