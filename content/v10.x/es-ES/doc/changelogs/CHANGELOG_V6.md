@@ -89,7 +89,7 @@ Debido a una incorrecta preparación de la actualización del compilador GCC 4.9
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
 
-Fixes for the following CVEs are included in this release:
+Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 * CVE-2018-7158
 * CVE-2018-7159
@@ -100,8 +100,8 @@ Fixes for the following CVEs are included in this release:
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. El inspector ahora permite conexiones que tienen un valor `Host` de navegador de `localhost` o `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
-* **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
-* **Update root certificates**: 5 additional root certificates have been added to the Node.js binary and 30 have been removed.
+* **Rechazar espacios en HTTP `Content-Length` valores de encabezados (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de encabezados `Content-Length`. Tales valores ahora conducen a conexiones rechazas en la misma manera que valores no numéricos.
+* **Actualización de certificados de raíz**: 5 certificados de raíz adicionales han sido agregados al binario de Node.js y 30 han sido removidos.
 
 ### Commits
 
