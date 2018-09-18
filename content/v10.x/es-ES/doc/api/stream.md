@@ -1270,9 +1270,9 @@ changes:
 
 * `options` {Object} 
   * `highWaterMark` {number} Buffer level when [`stream.write()`](#stream_writable_write_chunk_encoding_callback) starts returning `false`. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
-  * `decodeStrings` {boolean} Whether or not to decode strings into `Buffer`s before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Default:** `true`.
+  * `decodeStrings` {boolean} Whether or not to decode strings into `Buffer`s before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
   * `objectMode` {boolean} Whether or not the [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) is a valid operation. When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **Default:** `false`.
-  * `emitClose` {boolean} Whether or not the stream should emit `'close'` after it has been destroyed. **Default:** `true`.
+  * `emitClose` {boolean} Whether or not the stream should emit `'close'` after it has been destroyed. **Predeterminado:** `true`.
   * `write` {Function} Implementation for the [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) method.
   * `writev` {Function} Implementation for the [`stream._writev()`](#stream_writable_writev_chunks_callback) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
