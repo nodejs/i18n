@@ -493,7 +493,7 @@ Vedi anche: [`child_process.exec()`][] e [`child_process.fork()`][].
 
 I metodi [`child_process.spawnSync()`][], [`child_process.execSync()`][], e [`child_process.execFileSync()`][] sono **sincroni** e **bloccheranno** il ciclo di eventi di Node.js, interrompendo l'esecuzione di qualsiasi codice aggiuntivo fino alla chiusura del processo generato.
 
-Blocking calls like these are mostly useful for simplifying general-purpose scripting tasks and for simplifying the loading/processing of application configuration at startup.
+Le chiamate di blocco come queste sono per lo più utili per semplificare attività di scripting generiche e per semplificare il caricamento/l'elaborazione della configurazione dell'applicazione all'avvio.
 
 ### child_process.execFileSync(file\[, args\]\[, options\])
 
@@ -512,12 +512,12 @@ changes:
     description: The `encoding` option can now explicitly be set to `buffer`.
 -->
 
-* `file` {string} The name or path of the executable file to run.
-* `args` {string[]} List of string arguments.
+* `file` {string} Il nome o il percorso del file eseguibile da avviare.
+* `args` {string[]} Elenco degli argomenti di string.
 * `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `cwd` {string} Attuale directory di lavoro del processo child.
+  * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
+  * `stdio` {string|Array} Configurazione stdio del child. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
@@ -554,7 +554,7 @@ changes:
 * `command` {string} The command to run.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
+  * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
   * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
   * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` su UNIX, `process.env.ComSpec` su Windows.
@@ -597,7 +597,7 @@ changes:
 * `args` {string[]} List of string arguments.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
+  * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
   * `stdio` {string|Array} Child's stdio configuration.
   * `env` {Object} Environment key-value pairs.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
