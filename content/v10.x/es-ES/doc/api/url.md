@@ -668,7 +668,7 @@ console.log(params.toString());
 
 * Devuelve: {string}
 
-Devuelve los parámetros de búsqueda serializados como una string, con caracteres código porciento cuando sea necesario.
+Devuelve los parámetros de búsqueda serializados como una string, con caracteres de codificación de porcentajes cuando sea necesario.
 
 #### urlSearchParams.values()
 
