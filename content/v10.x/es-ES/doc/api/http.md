@@ -533,7 +533,7 @@ const setCookie = request.getHeader('set-cookie');
 
 * {number} **Predeterminado:** `2000`
 
-Limita al conteo máximo de cabeceras de respuesta. If set to 0, no limit will be applied.
+Limita al conteo máximo de cabeceras de respuesta. Si se establece a 0, no se aplicará ningún límite.
 
 ### request.removeHeader(name)
 
@@ -543,15 +543,15 @@ added: v1.6.0
 
 * `name` {string}
 
-Removes a header that's already defined into headers object.
+Elimina a una cabecera que ya está definida dentro del objeto de cabeceras.
 
-Example:
+Ejemplo:
 
 ```js
 request.removeHeader('Content-Type');
 ```
 
-### request.setHeader(name, value)
+### request.setHeader(nombre, valor)
 
 <!-- YAML
 added: v1.6.0
@@ -560,7 +560,7 @@ added: v1.6.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`request.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Establece a un único valor de cabecera para el objeto de cabeceras. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`request.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
 
 Example:
 
@@ -830,7 +830,7 @@ added: v0.7.0
 
 * {number} **Predeterminado:** `2000`
 
-Limits maximum incoming headers count. If set to 0, no limit will be applied.
+Limits maximum incoming headers count. Si se establece a 0, no se aplicará ningún límite.
 
 ### server.setTimeout(\[msecs\]\[, callback\])
 
