@@ -869,11 +869,11 @@ Si presenta un caso particolare quando si invia un messaggio `{cmd: 'NODE_foo'}`
 
 L'argomento facoltativo `sendHandle` che può essere passato a `subprocess.send()` serve a far passare un server TCP o un socket object al processo child. Il child riceverà l'object come secondo argomento passato alla funzione callback registrata sull'evento [`'message'`][]. Tutti i dati ricevuti e memorizzati tramite il buffering all'interno del socket non verranno inviati al child.
 
-Il `callback` facoltativo è una funzione invocata dopo aver inviato il messaggio ma prima che il child l'abbia ricevuto. The function is called with a single argument: `null` on success, or an [`Error`][] object on failure.
+Il `callback` facoltativo è una funzione invocata dopo aver inviato il messaggio ma prima che il child l'abbia ricevuto. La funzione viene chiamata con un singolo argomento: `null` in caso di successo, oppure un [`Error`][] object se fallisce.
 
-If no `callback` function is provided and the message cannot be sent, an `'error'` event will be emitted by the [`ChildProcess`][] object. This can happen, for instance, when the child process has already exited.
+Se non viene fornita alcuna funzione `callback` e il messaggio non può essere inviato, verrà emesso un evento `'error'` dal [`ChildProcess`][] object. Ciò può accadere, ad esempio, quando il processo child si è già concluso.
 
-`subprocess.send()` will return `false` if the channel has closed or when the backlog of unsent messages exceeds a threshold that makes it unwise to send more. Otherwise, the method returns `true`. The `callback` function can be used to implement flow control.
+`subprocess.send()` restituirà `false` se il canale è chiuso o quando il backlog dei messaggi non inviati supera una soglia oltre la quale è sconsigliato inviarne altri. Altrimenti, il metodo restituisce `true`. La funzione `callback` può essere utilizzata per implementare il flow control (controllo del flusso).
 
 #### Example: sending a server object
 
