@@ -141,23 +141,23 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 Este es una actualización de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
 
 * libuv: (CVE-2014-9748) Repara un bug en la implementación de bloqueo de leer/escribir para Windows XP y Windows 2003 que puede llevar a un comportamiento no definido y potencialmente peligroso. Se puede conseguir más información en https://github.com/libuv/libuv/issues/515 o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
-* V8: (CVE-2016-1669) Fixes a potential Buffer overflow vulnerability discovered in V8, more details can be found in the CVE at https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
+* V8: (CVE-2016-1669) Repara una potencial vulnerabilidad de desbordamiento en el Búfer descubierta en V8, se pueden encontrar más detalles en el CVE en https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 , o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 
 ### Commits:
 
-* [3374f57973] - deps: update libuv to 0.10.37 (Saúl Ibarra Corretgé) https://github.com/nodejs/node/pull/7293
+* [3374f57973] - deps: actualizar libuv a 0.10.37 (Saúl Ibarra Corretgé) https://github.com/nodejs/node/pull/7293
 * [fcb9145e29] - deps: backport 3a9bfec from v8 upstream (Myles Borins) https://github.com/nodejs/node-private/pull/43
 
 <a id="0.10.45"></a>
 
-## 2016-05-06, Version 0.10.45 (Maintenance), @rvagg
+## 2016-05-06, Versión 0.10.45 (Mantenimiento), @rvagg
 
-### Notable changes:
+### Cambios notables:
 
-* npm: Correct erroneous version number in v2.15.1 code (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
-* openssl: Upgrade to v1.0.1t, addressing security vulnerabilities (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
-  * Fixes CVE-2016-2107 "Padding oracle in AES-NI CBC MAC check"
-  * See https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ for full details
+* npm: Corregir números de versiones erróneos en código de v2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
+* openssl: Actualizar a v1.0.1t, abordando las vulnerabilidades de seguridad (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
+  * Repara CVE-2016-2107 "Oráculo de relleno en la verificación AES-NI CBC MAC"
+  * Vea https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ para los detalles completos
 
 ### Commits:
 
