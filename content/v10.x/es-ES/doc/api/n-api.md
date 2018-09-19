@@ -2222,7 +2222,7 @@ typedef struct {
 - `value`: El valor que es recuperado por un get access de la propiedad si esta es una propiedad de datos. Si es pasado, establecer `getter`, `setter`, `method` y `data` en `NULL` (ya que estos miembros no serán utilizados).
 - `getter`: Una función a llamar cuando se realiza un get access de la propiedad. Si es pasado, establecer `value` y `method` en `NULL` (ya que estos miembros so se utilizarán). La función dada es llamada implícitamente por el tiempo de ejecución cuando la propiedad es accedida desde el código de JavaScript (o si se realiza un get en la propiedad, utilizando una llamada N-API).
 - `setter`: Una función a llamar cuando se realiza un set access de la propiedad. Si es pasado, establecer `value` y `method` en `NULL` (ya que estos miembros no se utilizarán). La función dada es llamada implícitamente por el tiempo de ejecución cuando la propiedad se establece desde el código de JavaScript (o si se realiza un set en la propiedad, utilizando una llamada N-API).
-- `method`: Establecer esto para hacer que la propiedad descriptor de la propiedad `value` del objeto sea una función de JavaScript representada por `method`. Si es pasado, establecer `value`, `getter` y `setter` en `NULL` (ya que estos miembros no se utilizarán).
+- `method`: Establecer esto para hacer que la propiedad `value` del objeto descriptor de la propiedad sea una función de JavaScript representada por `method`. Si es pasado, establecer `value`, `getter` y `setter` en `NULL` (ya que estos miembros no se utilizarán).
 - `attributes`: Los atributos asociados con la propiedad particular. Ver [`napi_property_attributes`](#n_api_napi_property_attributes).
 - `data`: El callback de datos pasado en `method`, `getter` y `setter` si esta función es invocada.
 
@@ -2241,12 +2241,12 @@ napi_status napi_get_property_names(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
-- `[in] object`: El objeto del cual se recuperen las propiedades.
-- `[out] result`: Un `napi_value` que representa un arreglo de valores de JavaScript que representan la propiedad nombres del objeto. Esta API puede ser utilizada para iterar sobre `result` utilizando [`napi_get_array_length`][] y [`napi_get_element`][].
+- `[in] object`: El objeto del cual recuperar las propiedades.
+- `[out] result`: Un `napi_value` que representa un arreglo de valores de JavaScript que representan los nombres de propiedad del objeto. Esta API puede ser utilizada para iterar sobre `result`, usando [`napi_get_array_length`][] y [`napi_get_element`][].
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API devuelve los nombres de las propiedades enumerables de `object` como un arreglo de cadenas. Las propiedades de `object` cuya clave es un símbolo, no serán incluidas.
+Esta API devuelve los nombres de las propiedades enumerables de `object` como un arreglo de cadenas. Las propiedades de `object` cuya clave es un símbolo no serán incluidas.
 
 #### napi_set_property
 
@@ -2284,7 +2284,7 @@ napi_status napi_get_property(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
-- `[in] object`: El objeto desde el cual se recupera la propiedad.
+- `[in] object`: El objeto desde el cual recuperar la propiedad.
 - `[in] key`: El nombre de la propiedad a recuperar.
 - `[out] result`: El valor de la propiedad.
 
@@ -2308,7 +2308,7 @@ napi_status napi_has_property(napi_env env,
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
 - `[in] object`: El objeto a consultar.
 - `[in] key`: El nombre de la propiedad cuya existencia se va a verificar.
-- `[out] result`: Si la propiedad existen en el objeto o no.
+- `[out] result`: Si la propiedad existe en el objeto o no.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
@@ -2334,7 +2334,7 @@ napi_status napi_delete_property(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API intenta eliminar la `key` propia de la propiedad desde `object`.
+Esta API intenta eliminar la propiedad de `key` propia desde `object`.
 
 #### napi_has_own_property
 
@@ -2394,7 +2394,7 @@ napi_status napi_get_named_property(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
-- `[in] object`: El objeto desde el que se recupera la propiedad.
+- `[in] object`: El objeto desde el que recuperar la propiedad.
 - `[in] utf8Name`: El nombre de la propiedad a obtener.
 - `[out] result`: El valor de la propiedad.
 
@@ -2418,7 +2418,7 @@ napi_status napi_has_named_property(napi_env env,
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
 - `[in] object`: El objeto a consultar.
 - `[in] utf8Name`: El nombre de la propiedad cuya existencia se va a verificar.
-- `[out] result`: Si la propiedad existen en el objeto o no.
+- `[out] result`: Si la propiedad existe en el objeto o no.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
@@ -2460,13 +2460,13 @@ napi_status napi_get_element(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
-- `[in] object`: El objeto desde el que se recupera la propiedad.
+- `[in] object`: El objeto desde el que recuperar la propiedad.
 - `[in] index`: El índice de la propiedad a obtener.
 - `[out] result`: El valor de la propiedad.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API obtiene el elemento en el índica solicitado.
+Esta API obtiene el elemento en el índice solicitado.
 
 #### napi_has_element
 
