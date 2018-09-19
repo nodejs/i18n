@@ -98,13 +98,13 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 * [a14a6a3a11] - deps: c-ares, evitar la sobreescritura de búfer solo-byte (Rod Vagg) https://github.com/nodejs/node/pull/9108
 * [b798f598af] - tls: repara una falla menor jslint (Rod Vagg) https://github.com/nodejs/node/pull/9107
-* [92b232ba01] - win,build: try multiple timeservers when signing (Rod Vagg) https://github.com/nodejs/node/pull/9155
+* [92b232ba01] - win,build: prueba múltiples timeservers cuando se firme (Rod Vagg) https://github.com/nodejs/node/pull/9155
 
 <a id="0.10.47"></a>
 
-## 2016-09-27, Version 0.10.47 (Maintenance), @rvagg
+## 2016-09-27, Version 0.10.47 (Mantenimiento), @rvagg
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
 
 ### Notable changes:
 
