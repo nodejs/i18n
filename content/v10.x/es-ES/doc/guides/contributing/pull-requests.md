@@ -42,7 +42,7 @@ En caso de duda, abra un problema en el [issue tracker](https://github.com/nodej
 
 ## Configurando su entorno local
 
-Para empezar, necesitará tener `git` instalado de forma local. Dependiendo de su sistema operativo, también hay una serie de otras dependencias requeridas. Estas se detallan en la [Building guide](../../../BUILDING.md).
+Para empezar, necesitará tener `git` instalado de forma local. Dependiendo de su sistema operativo, también hay una serie de otras dependencias requeridas. Estas se detallan en la [guía de Building](../../../BUILDING.md).
 
 Una vez que tenga `git` y esté seguro de tener todas las dependencias necesarias, es hora de crear un fork.
 
@@ -88,7 +88,7 @@ La gran mayoría de las Pull Requests abiertas en el repositorio `nodejs/node` i
 
 Si está modificando el código, por favor asegúrese de ejecutar `make lint` de vez en cuando para asegurarse de que los cambios sigan la guía de estilo del código de Node.js.
 
-Cualquier documentación que escriba (incluidos los comentarios de código y la documentación de API) debe seguir la [Guía de Estilo](../../STYLE_GUIDE.md). Las muestras de código incluidos en los documentos API también se verificarán cuando se ejecute `make lint` (o `vcbuild.bat lint`, en Windows).
+Cualquier documentación que escriba (incluidos los comentarios de código y la documentación de API) debe seguir la [Guía de Estilo](../../STYLE_GUIDE.md). Las muestras de código incluidas en los documentos API también se verificarán cuando se ejecute `make lint` (o `vcbuild.bat lint`, en Windows).
 
 Para contribuir con el código de C++, es posible que desee consultar la [Guía de Estilo de C++](../../../CPP_STYLE_GUIDE.md).
 
@@ -170,7 +170,7 @@ Esto garantiza que su branch de trabajo tenga los últimos cambios del maestro `
 
 Las correcciones de errores y las características siempre deben venir con las pruebas. Se ha proporcionado una [guía para escribir pruebas en Node.js](../writing-tests.md) para facilitar el proceso. Ver otras pruebas para ver cómo deberían estructurarse también puede ayudar.
 
-El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro a dónde debe ir un nuevo archivo de prueba. En caso de dudas, agregue una nueva prueba al directorio `test/parallel/` y la ubicación correcta se resolverá luego.
+El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro adónde debe ir un nuevo archivo de prueba. En caso de dudas, agregue una nueva prueba al directorio `test/parallel/` y la ubicación correcta se resolverá luego.
 
 Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. Para ejecutar las pruebas (incluyendo el linting de código) en Unix/macOS:
 
@@ -190,7 +190,7 @@ Asegúrese de que el linter no reporte ningún problema y de que todas las prueb
 
 Si desea ejecutar el linter sin ejecutar pruebas, utilice `make lint`/`vcbuild lint`. Ejecutará el linting de JavaScript y el linting de C ++.
 
-Si está actualizando pruebas y solo desea ejecutar una sola prueba para verificarlo:
+Si está actualizando pruebas y solo desea ejecutar una prueba única para verificarlo:
 
 ```text
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
@@ -224,7 +224,7 @@ Es una buena práctica asegurarse de que cualquier código que agregue o modifiq
 $ ./configure --coverage && make coverage
 ```
 
-Se escribirá un informe de cobertura detallado en `coverage/index.html` para la cobertura de JavaScript y en `coverage/cxxcoverage.html` para la cobertura de C ++.
+Se escribirá un informe de cobertura detallado en `coverage/index.html`, para la cobertura de JavaScript, y `coverage/cxxcoverage.html`, para la cobertura de C ++.
 
 *Tenga en cuenta que generar un informe de cobertura de prueba puede demorar varios minutos.*
 
@@ -276,11 +276,11 @@ Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
 
 Por favor, intente hacer todo lo posible para completar los detalles, pero no dude en saltarse partes si no está seguro de qué colocar.
 
-Una vez abierto, las Pull Requests generalmente se revisan en unos pocos días.
+Una vez abiertas, las Pull Requests generalmente se revisan en unos pocos días.
 
 ### Paso 9: Discutir y actualizar
 
-Probablemente recibirá un feedback o solicitudes de cambios en su Pull Request. Esta es una parte importante del proceso de envío, así que, ¡no te desanimes! Algunos colaboradores pueden firmar la Pull Request de inmediato, otros pueden tener comentarios más detallados o un feedback. Esta es una parte necesaria del proceso para evaluar si los cambios son correctos y necesarios.
+Probablemente recibirá un feedback o solicitudes de cambios en su Pull Request. Esta es una parte importante del proceso de envío, así que, ¡no te desanimes! Algunos colaboradores pueden firmar la Pull Request de inmediato, otros pueden tener comentarios más detallados o un feedback. Esta es una parte necesaria del proceso, para evaluar si los cambios son correctos y necesarios.
 
 Para realizar cambios en una Pull Request existente, realice los cambios en su branch local, agregue un nuevo commit con esos cambios y envíelos a su fork. GitHub actualizará automáticamente la Pull Request.
 
@@ -316,7 +316,7 @@ Siéntase libre de publicar un comentario en la Pull Request para hacer ping a l
 
 Todas las Pull Requests requieren "cerrar sesión" para poder "aterrizar". Cuando un colaborador revisa una Pull Request, puede encontrar detalles específicos que le gustaría ver modificados o reparados. Estos pueden ser tan simples como corregir un error tipográfico, o pueden implicar cambios sustanciales en el código que ha escrito. Si bien estas solicitudes tienen la intención de ser útiles, pueden parecer abruptas o inútiles, especialmente las solicitudes para cambiar las cosas que no incluyen sugerencias concretas sobre *cómo* cambiarlas.
 
-Trate de no desanimarse. Si siente que una revisión en particular es injusta, dígalo, o póngase en contacto con uno de los otros colaboradores en el proyecto y solicite su opinión. A menudo, dichos comentarios son el resultado de que el revisador solo tomó un corto tiempo para revisar y no están mal intencionados. Tales problemas a menudo se pueden resolver con un poco de paciencia. Dicho esto, se debería esperar que los revisores sean útiles en su feedback, y los comentarios que son simplemente vagos, despectivos e inútiles, probablemente sea mejor ignorarlos.
+Trate de no desanimarse. Si siente que una revisión en particular es injusta, dígalo, o póngase en contacto con uno de los otros colaboradores en el proyecto y solicite su opinión. A menudo, dichos comentarios son el resultado de que el revisor solo tomó un corto tiempo para la reseña y no son malintencionados. Muy seguidamente, tales problemas se pueden resolver con un poco de paciencia. Dicho esto, se debería esperar que los revisores sean útiles en su feedback, y los comentarios que son simplemente vagos, despectivos e inútiles, probablemente sea mejor ignorarlos.
 
 ### Step 10: Landing
 
