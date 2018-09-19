@@ -1337,12 +1337,12 @@ Todas las llamadas a `writable.write()` que ocurren en el tiempo que `writable._
 
 Si la propiedad `decodeStrings` es establecida explícitamente a `false` en las opciones del constructor, entonces `chunk` permanecerá como el mismo objeto que es pasado a `.write()`, y pudiera ser un string en vez de un `Buffer`. Esto es para soportar implementaciones que tienen un manejador optimizado para ciertas codificaciones de datos string. En ese caso, el argumento `encoding`, va a indicar la codificación de caracteres del string. De otra manera, el argumento `encoding` puede ser ignorado con seguridad.
 
-The `writable._write()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+El método `writable._write()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
 #### writable.\_writev(chunks, callback)
 
-* `chunks` {Object[]} The chunks to be written. Each chunk has following format: `{ chunk: ..., encoding: ... }`.
-* `callback` {Function} A callback function (optionally with an error argument) to be invoked when processing is complete for the supplied chunks.
+* `chunks` {Object[]} Los fragmentos a ser escritos. Cada fragmento tiene el siguente formato: `{ chunk: ..., encoding: ... }`.
+* `callback` {Function} Una función callback (opcionalmente con un argumento error) para ser invocada cuando el procesamiento de los fragmentos suministrados es completado.
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementada por clases secundarias, y llamada solamente por métodos de la clase `Writable` interna.
 
@@ -1464,8 +1464,8 @@ Streams `Readable` personalizados *deben* llamar el constructor `new stream.Read
 * `opciones` {Object} 
   * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
   * `encoding` {string} Si es especificado, los búferes van a ser decodificados a strings usando la codificación especificada. **Predeterminado:** `null`.
-  * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Predeterminado:** `false`.
-  * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
+  * `objectMode` {boolean} Si este stream debería comportarse como un stream de objetos, o no. Significa que [`stream.read(n)`](#stream_readable_read_size) devuelve un solo valor en vez de un `Buffer` de tamaño `n`. **Predeterminado:** `false`.
+  * `read` {Function} Implementación para el método [`stream._read()`](#stream_readable_read_size_1).
   * `destroy` {Function} Implementación para el método [`stream._destroy()`](#stream_readable_destroy_err_callback).
 
 ```js
