@@ -138,7 +138,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables:
 
-Este es una actualización de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 * libuv: (CVE-2014-9748) Repara un bug en la implementación de bloqueo de leer/escribir para Windows XP y Windows 2003 que puede llevar a un comportamiento no definido y potencialmente peligroso. Se puede conseguir más información en https://github.com/libuv/libuv/issues/515 o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 * V8: (CVE-2016-1669) Repara una potencial vulnerabilidad de desbordamiento en el Búfer descubierta en V8, se pueden encontrar más detalles en el CVE en https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 , o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
@@ -172,9 +172,9 @@ Este es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="0.10.44"></a>
 
-## 2016-03-31, Version 0.10.44 (Maintenance), @rvagg
+## 2016-03-31, Versión 0.10.44 (Mantenimiento), @rvagg
 
-### Notable changes
+### Cambios notables
 
 * npm: Upgrade to v2.15.1. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Authentication tokens have previously been sent with every request made by the CLI for logged-in users, regardless of the destination of the request. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. IMPORTANT: This is a major upgrade to npm v2 LTS from the previously deprecated npm v1. (Forrest L Norvell) https://github.com/nodejs/node/pull/5967
 * openssl: OpenSSL v1.0.1s disables the EXPORT and LOW ciphers as they are obsolete and not considered safe. This release of Node.js turns on `OPENSSL_NO_WEAK_SSL_CIPHERS` to fully disable the 27 ciphers included in these lists which can be used in SSLv3 and higher. Full details can be found in our LTS discussion on the matter (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
