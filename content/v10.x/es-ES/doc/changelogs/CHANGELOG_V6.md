@@ -81,7 +81,7 @@
 
 No additional commits.
 
-Debido a una incorrecta preparación de la actualización del compilador GCC 4.9.X, las últimas versiones para little endian PPC fueron construidas usando GCC 4.9.X y no GCC 4.8.X. Esto causó una rotura ABI en entornos basados en PPCLE. Esto ha sido arreglado en nuestra infraestructura, y estamos haciendo este lanzamiento para asegurar que los binarios alojados se están adheriendo a nuestro contrato de soporte de la plataforma.
+Debido a una incorrecta preparación de la actualización del compilador GCC 4.9.X, las últimas versiones para little endian PPC fueron construidas usando GCC 4.9.X y no GCC 4.8.X. Esto causó un quiebre de ABI en entornos basados en PPCLE. Esto ha sido arreglado en nuestra infraestructura, y estamos haciendo este lanzamiento para asegurar que los binarios alojados se están adhiriendo a nuestro contrato de soporte de la plataforma.
 
 <a id="6.14.0"></a>
 
@@ -100,8 +100,8 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. El inspector ahora permite conexiones que tienen un valor `Host` de navegador de `localhost` o `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
-* **Rechazar espacios en HTTP `Content-Length` valores de encabezados (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de encabezados `Content-Length`. Tales valores ahora conducen a conexiones rechazas en la misma manera que valores no numéricos.
-* **Actualización de certificados raíz**: 5 certificados raíz adicionales han sido agregados al binario de Node.js y 30 han sido removidos.
+* **Rechazar espacios en HTTP `Content-Length` valores de encabezados (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de encabezados `Content-Length`. Tales valores ahora conducen a conexiones rechazadas de la misma manera que valores no numéricos.
+* **Actualización de certificados root**: 5 certificados root adicionales han sido agregados al binario de Node.js y 30 han sido removidos.
 
 ### Commits
 
