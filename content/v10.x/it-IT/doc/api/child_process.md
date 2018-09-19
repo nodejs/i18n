@@ -834,11 +834,11 @@ changes:
 * `callback` {Function}
 * Restituisce: {boolean}
 
-When an IPC channel has been established between the parent and child ( i.e. when using [`child_process.fork()`][]), the `subprocess.send()` method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the [`'message'`][] event.
+Quando viene stabilito un canale IPC tra parent e child (cioè quando si utilizza [`child_process.fork()`][]), il metodo `subprocess.send()` può essere utilizzato per inviare messaggi al processo child. Quando il processo child è un'istanza di Node.js, questi messaggi possono essere ricevuti tramite l'evento [`'message'`][].
 
-Il messaggio passa attraverso la serializzazione e il parsing. The resulting message might not be the same as what is originally sent.
+Il messaggio passa attraverso la serializzazione e il parsing. Il messaggio risultante potrebbe non essere uguale a quello che è stato inviato originariamente.
 
-For example, in the parent script:
+Per esempio, nello script del parent:
 
 ```js
 const cp = require('child_process');
@@ -848,24 +848,24 @@ n.on('message', (m) => {
   console.log('PARENT got message:', m);
 });
 
-// Causes the child to print: CHILD got message: { hello: 'world' }
+// Fa sì che il child stampi: CHILD got message: { hello: 'world' }
 n.send({ hello: 'world' });
 ```
 
-And then the child script, `'sub.js'` might look like this:
+E poi lo script del child, che potrebbe assomigliare a `'sub.js'`:
 
 ```js
 process.on('message', (m) => {
   console.log('CHILD got message:', m);
 });
 
-// Causes the parent to print: PARENT got message: { foo: 'bar', baz: null }
+// Fa sì che il parent stampi: PARENT got message: { foo: 'bar', baz: null }
 process.send({ foo: 'bar', baz: NaN });
 ```
 
-Child Node.js processes will have a [`process.send()`][] method of their own that allows the child to send messages back to the parent.
+I processi child di Node.js avranno un proprio metodo [`process.send()`][] che gli permette di inviare messaggi al parent.
 
-There is a special case when sending a `{cmd: 'NODE_foo'}` message. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`'message'`][] event. Rather, such messages are emitted using the `'internalMessage'` event and are consumed internally by Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
+C'è un caso particolare quando si invia un messaggio `{cmd: 'NODE_foo'}`. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`'message'`][] event. Rather, such messages are emitted using the `'internalMessage'` event and are consumed internally by Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
 
 The optional `sendHandle` argument that may be passed to `subprocess.send()` is for passing a TCP server or socket object to the child process. The child will receive the object as the second argument passed to the callback function registered on the [`'message'`][] event. Any data that is received and buffered in the socket will not be sent to the child.
 
