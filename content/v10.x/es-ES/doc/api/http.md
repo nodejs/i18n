@@ -1457,7 +1457,7 @@ added: v0.1.1
 
 **Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The 3-digit HTTP response status code. Por ejemplo, `404`.
+El código de estado de respuesta de 3 dígitos de HTTP. Por ejemplo, `404`.
 
 ### message.statusMessage
 
@@ -1480,7 +1480,7 @@ added: v0.3.0
 
 * {Object}
 
-The request/response trailers object. Only populated at the `'end'` event.
+El objeto de trailers de solicitud/respuesta. Only populated at the `'end'` event.
 
 ### message.url
 
@@ -1490,9 +1490,9 @@ added: v0.1.90
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Solo válido para las solicitudes obtenidas desde [`http.Server`][].**
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+Solicitar string de URL. Esto solo contiene la URL que está presente en la solicitud HTTP actual. Si la solicitud es:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -1508,7 +1508,7 @@ Entonces `request.url` será:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Ejemplo:
 
 ```txt
 $ node
@@ -1528,7 +1528,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Ejemplo:
 
 ```txt
 $ node
@@ -1582,7 +1582,7 @@ changes:
 
 * `options` {Object} 
   * `IncomingMessage` {http.IncomingMessage} Especifica la clase de `IncomingMessage` que será utilizada. Útil para extender el `IncomingMessage` original. **Predeterminado:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Útil para extender el `ServerResponse` original. **Predeterminado:** `ServerResponse`.
+  * `ServerResponse` {http.ServerResponse} Especifica la clase `ServerResponse` que será utilizada. Útil para extender el `ServerResponse` original. **Predeterminado:** `ServerResponse`.
 
 * `requestListener` {Function}
 
