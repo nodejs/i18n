@@ -688,12 +688,12 @@ Vedi waitpid(2).
 added: v0.5.9
 -->
 
-* `message` {Object} Un JSON object analizzato oppure un valore primitivo.
+* `message` {Object} Un JSON object analizzato tramite il parsing oppure un valore primitivo.
 * `sendHandle` {Handle} Un [`net.Socket`][] object o un [`net.Server`][] object, oppure un valore undefined (indefinito).
 
 L'evento `'message'` viene attivato quando un processo child utilizza [`process.send()`][] per inviare messaggi.
 
-The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
+Il messaggio passa attraverso la serializzazione e il parsing. Il messaggio risultante potrebbe non essere uguale a quello che è stato inviato originariamente.
 
 ### subprocess.channel
 
@@ -701,9 +701,9 @@ The message goes through serialization and parsing. The resulting message might 
 added: v7.1.0
 -->
 
-* {Object} A pipe representing the IPC channel to the child process.
+* {Object} Un pipe che rappresenta il canale IPC per il processo child.
 
-The `subprocess.channel` property is a reference to the child's IPC channel. If no IPC channel currently exists, this property is `undefined`.
+La proprietà `subprocess.channel` è un riferimento al canale IPC del child. Se al momento non esiste alcun canale IPC, questa proprietà è `undefined`.
 
 ### subprocess.connected
 
@@ -711,9 +711,9 @@ The `subprocess.channel` property is a reference to the child's IPC channel. If 
 added: v0.7.2
 -->
 
-* {boolean} Set to `false` after `subprocess.disconnect()` is called.
+* {boolean} Impostata su `false` dopo che viene chiamato `subprocess.disconnect()`.
 
-The `subprocess.connected` property indicates whether it is still possible to send and receive messages from a child process. When `subprocess.connected` is `false`, it is no longer possible to send or receive messages.
+La proprietà `subprocess.connected` indica se è ancora possibile inviare e ricevere messaggi da un processo child. Quando `subprocess.connected` è `false`, non è più possibile inviare o ricevere messaggi.
 
 ### subprocess.disconnect()
 
@@ -721,7 +721,7 @@ The `subprocess.connected` property indicates whether it is still possible to se
 added: v0.7.2
 -->
 
-Closes the IPC channel between parent and child, allowing the child to exit gracefully once there are no other connections keeping it alive. After calling this method the `subprocess.connected` and `process.connected` properties in both the parent and child (respectively) will be set to `false`, and it will be no longer possible to pass messages between the processes.
+Chiude il canale IPC tra parent e child, consentendo al child di concludersi facilmente una volta che non ci sono altre connessioni che lo mantengono in funzione. After calling this method the `subprocess.connected` and `process.connected` properties in both the parent and child (respectively) will be set to `false`, and it will be no longer possible to pass messages between the processes.
 
 The `'disconnect'` event will be emitted when there are no messages in the process of being received. This will most often be triggered immediately after calling `subprocess.disconnect()`.
 
@@ -836,7 +836,7 @@ changes:
 
 When an IPC channel has been established between the parent and child ( i.e. when using [`child_process.fork()`][]), the `subprocess.send()` method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the [`'message'`][] event.
 
-The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
+Il messaggio passa attraverso la serializzazione e il parsing. The resulting message might not be the same as what is originally sent.
 
 For example, in the parent script:
 
