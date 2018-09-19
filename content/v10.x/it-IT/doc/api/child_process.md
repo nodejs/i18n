@@ -752,11 +752,11 @@ grep.kill('SIGHUP');
 
 Il [`ChildProcess`][] object potrebbe emettere un evento [`'error'`][] se il segnale non può essere consegnato. L'invio di un segnale ad un processo child che si è già concluso non è un errore ma potrebbe comportare conseguenze impreviste. In particolare, se l'identificatore del processo (PID) è stato riassegnato a un altro processo, allora il segnale verrà consegnato a quel processo che può avere risultati imprevisti.
 
-Da notare che nonostante la funzione venga chiamata `kill`, il segnale inviato al processo child effettivamente potrebbe non arrestare il processo.
+Da notare che nonostante la funzione venga chiamata `kill`, il segnale inviato al processo child effettivamente potrebbe non terminare il processo.
 
 Vedi kill(2) come riferimento.
 
-Also note: on Linux, child processes of child processes will not be terminated when attempting to kill their parent. This is likely to happen when running a new process in a shell or with use of the `shell` option of `ChildProcess`, such as in this example:
+Da notare anche che: su Linux, i processi child dei processi child non verranno terminati quando si tenta di arrestare i loro parent. This is likely to happen when running a new process in a shell or with use of the `shell` option of `ChildProcess`, such as in this example:
 
 ```js
 'use strict';
