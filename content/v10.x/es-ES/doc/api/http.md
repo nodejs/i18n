@@ -1264,7 +1264,7 @@ Este método debe ser llamado solo una vez en un mensaje, y debe ser llamado ant
 
 Si [`response.write()`][] o [`response.end()`][] son llamados antes de llamar a esto, las cabeceras implícitas/mutables serán calculadas y llamarán a esta función.
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Cuando las cabeceras hayan sido establecidas con [`response.setHeader()`][], serán combinadas con cualquiera de las cabeceras pasadas a [`response.writeHead()`][], con las cabeceras pasadas a [`response.writeHead()`][] dada su procedencia.
 
 ```js
 // returns content-type = text/plain
@@ -1276,7 +1276,7 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-Note that Content-Length is given in bytes not characters. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. And Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Tenga en cuenta que la Longitud del Contenido es dado en bytes y no en caracteres. El ejemplo anterior funciona porque la string `'hello world'` solo contiene caracteres de un solo byte. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Y Node.js no verifica si la Longitud del Contenido y la longitud del cuerpo que ha sido transmitido son iguales o no.
 
 Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
@@ -1286,7 +1286,7 @@ Attempting to set a header field name or value that contains invalid characters 
 added: v10.0.0
 -->
 
-Sends a HTTP/1.1 102 Processing message to the client, indicating that the request body should be sent.
+Envía un mensaje de HTTP/1.1 102 Processing al cliente, indicando que el cuerpo de la solicitud debería ser enviado.
 
 ## Class: http.IncomingMessage
 
@@ -1294,17 +1294,17 @@ Sends a HTTP/1.1 102 Processing message to the client, indicating that the reque
 added: v0.1.17
 -->
 
-An `IncomingMessage` object is created by [`http.Server`][] or [`http.ClientRequest`][] and passed as the first argument to the [`'request'`][] and [`'response'`][] event respectively. It may be used to access response status, headers and data.
+Un objeto `IncomingMessage` es creado por [`http.Server`][] o [`http.ClientRequest`][] y pasado como el primer argumento al evento [`'request'`][] y [`'response'`][] respectivamente. Puede ser utilizado para acceder a un estado de respuesta, cabeceras y datos.
 
-It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
+Implementa la interfaz del [Stream Legible](stream.html#stream_class_stream_readable), así como los siguiente eventos adicionales, métodos, y propiedades.
 
-### Event: 'aborted'
+### Evento: 'aborted'
 
 <!-- YAML
 added: v0.3.8
 -->
 
-Emitted when the request has been aborted.
+Se emite cuando la solicitud ha sido abortada.
 
 ### Event: 'close'
 
