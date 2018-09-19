@@ -618,7 +618,7 @@ changes:
   * `signal` {string} Il segnale utilizzato per arrestare il processo child.
   * `error` {Error} L'error object se il processo child ha avuto esito negativo oppure è scaduto (timeout).
 
-Il metodo `child_process.spawnSync()` è generalmente identico a [`child_process.spawn()`][] con l'eccezione che la funzione non restituirà nulla finché il processo child non sarà completamente chiuso. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. Note that if the process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.
+Il metodo `child_process.spawnSync()` è generalmente identico a [`child_process.spawn()`][] con l'eccezione che la funzione non restituirà nulla finché il processo child non sarà completamente chiuso. Quando si verifica un timeout e viene inviato `killSignal`, il metodo non restituirà nulla finché il processo non sarà completamente concluso. Da notare che se il processo child intercetta e gestisce il segnale `SIGTERM` e non si conclude, il processo parent aspetterà fino alla conclusione del processo child.
 
 **Se l'opzione `shell` è abilitata, non passare l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
 
@@ -628,9 +628,9 @@ Il metodo `child_process.spawnSync()` è generalmente identico a [`child_process
 added: v2.2.0
 -->
 
-Instances of the `ChildProcess` class are [`EventEmitters`][`EventEmitter`] that represent spawned child processes.
+Le istanze della classe `ChildProcess`, che rappresentano i processi child generati, sono [`EventEmitters`][`EventEmitter`].
 
-Instances of `ChildProcess` are not intended to be created directly. Rather, use the [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][], or [`child_process.fork()`][] methods to create instances of `ChildProcess`.
+Le istanze di `ChildProcess` non devono essere create direttamente. Piuttosto, per creare istanze di `ChildProcess`, utilizza i metodi [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][], oppure [`child_process.fork()`][].
 
 ### Event: 'close'
 
@@ -638,10 +638,10 @@ Instances of `ChildProcess` are not intended to be created directly. Rather, use
 added: v0.7.7
 -->
 
-* `code` {number} The exit code if the child exited on its own.
-* `signal` {string} The signal by which the child process was terminated.
+* `code` {number} Il valore di uscita se il child si è concluso autonomamente.
+* `signal` {string} Il segnale con cui è stato terminato il processo child.
 
-The `'close'` event is emitted when the stdio streams of a child process have been closed. This is distinct from the [`'exit'`][] event, since multiple processes might share the same stdio streams.
+L'evento `'close'` viene emesso quando gli stream stdio di un processo child sono stati chiusi. E' diverso dall'evento [`'exit'`][], in quanto più processi potrebbero condividere gli stessi stream stdio.
 
 ### Event: 'disconnect'
 
