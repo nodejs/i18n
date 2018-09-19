@@ -1088,9 +1088,9 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Por defecto es verdadero.
+Al ser verdadero, la cabecera de Fecha será generada automáticamente y enviada en la respuesta si no está presente en las cabeceras. Por defecto es verdadero.
 
-This should only be disabled for testing; HTTP requires the Date header in responses.
+Esto solo debería inhabilitarse para las pruebas; HTTP requiere el encabezado de Fecha en las respuestas.
 
 ### response.setHeader(name, value)
 
