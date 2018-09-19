@@ -721,11 +721,11 @@ La proprietà `subprocess.connected` indica se è ancora possibile inviare e ric
 added: v0.7.2
 -->
 
-Chiude il canale IPC tra parent e child, consentendo al child di concludersi facilmente una volta che non ci sono altre connessioni che lo mantengono in funzione. After calling this method the `subprocess.connected` and `process.connected` properties in both the parent and child (respectively) will be set to `false`, and it will be no longer possible to pass messages between the processes.
+Chiude il canale IPC tra parent e child, consentendo al child di concludersi facilmente una volta che non ci sono altre connessioni che lo mantengano in funzione. Dopo aver chiamato questo metodo, le proprietà `subprocess.connected` e `process.connected`, rispettivamente all'interno del parent e del child, saranno impostate su `false` e non sarà più possibile far passare messaggi tra i due processi.
 
-The `'disconnect'` event will be emitted when there are no messages in the process of being received. This will most often be triggered immediately after calling `subprocess.disconnect()`.
+L'evento `'disconnect'` verrà emesso quando non ci saranno messaggi in fase di ricezione. Questo verrà spesso attivato immediatamente dopo aver chiamato `subprocess.disconnect()`.
 
-Note that when the child process is a Node.js instance (e.g. spawned using [`child_process.fork()`]), the `process.disconnect()` method can be invoked within the child process to close the IPC channel as well.
+Da notare che quando il processo child è un'istanza di Node.js (ad esempio generata con [`child_process.fork()`]), il metodo `process.disconnect()` può essere invocato all'interno del processo child per chiudere anche il canale IPC.
 
 ### subprocess.kill([signal])
 
@@ -735,7 +735,7 @@ added: v0.1.90
 
 * `signal` {string}
 
-The `subprocess.kill()` method sends a signal to the child process. If no argument is given, the process will be sent the `'SIGTERM'` signal. See signal(7) for a list of available signals.
+Il metodo `subprocess.kill()` invia un segnale al processo child. Se non viene fornito alcun argomento, al processo verrà inviato il segnale `'SIGTERM'`. Vedi signal(7) per la lista dei segnali disponibili.
 
 ```js
 const { spawn } = require('child_process');
@@ -746,7 +746,7 @@ grep.on('close', (code, signal) => {
     `child process terminated due to receipt of signal ${signal}`);
 });
 
-// Send SIGHUP to process
+// Invia SIGHUP al processo
 grep.kill('SIGHUP');
 ```
 
