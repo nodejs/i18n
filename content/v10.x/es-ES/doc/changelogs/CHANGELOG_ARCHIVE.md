@@ -812,10 +812,10 @@ https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
 https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 
-* assert: improve support for new execution contexts (lukebayes)
-* domain: use camelCase instead of snake_case (isaacs)
-* domain: Do not use uncaughtException handler (isaacs)
-* fs: make 'end' work with ReadStream without 'start' (Ben Noordhuis)
+* assert: mejorar soporte para nuevos contextos de ejecución (lukebayes)
+* domain: usar camelCase en lugar de snake_case (isaacs)
+* domain; No usar manejador de uncaughtException (isaacs)
+* fs: hacer que "end" funcione con ReadStream sin "start" (Ben Noordhuis)
 * https: optimize createConnection() (Ryunosuke SATO)
 * buffer: speed up base64 encoding by 20% (Ben Noordhuis)
 * doc: Colorize API stability index headers in docs (Luke Arduini)
