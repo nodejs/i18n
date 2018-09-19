@@ -184,15 +184,15 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 
 * {string[]}
 
-Los especificadores de todas las dependencias de este módulo. The returned array is frozen to disallow any changes to it.
+Los especificadores de todas las dependencias de este módulo. El arreglo devuelto se congela para no permitir ningún cambio en él.
 
-Corresponds to the `[[RequestedModules]]` field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo `[[RequestedModules]]` de los [Registros del Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación de ECMAScript.
 
 ### module.error
 
 * {any}
 
-If the `module.status` is `'errored'`, this property contains the exception thrown by the module during evaluation. If the status is anything else, accessing this property will result in a thrown exception.
+Si el`module.status` es `'errored'`, esta propiedad contiene la excepción lanzada por el módulo durante la evaluación. If the status is anything else, accessing this property will result in a thrown exception.
 
 The value `undefined` cannot be used for cases where there is not a thrown exception due to possible ambiguity with `throw undefined;`.
 
