@@ -791,24 +791,24 @@ https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
 * V8: actualizar a 3.15.11.5
 * node: remover ev-emul.h (Ben Noordhuis)
-* path: make basename and extname ignore trailing slashes (Bert Belder)
-* typed arrays: fix sunos signed/unsigned char issue (Ben Noordhuis)
-* child_process: Fix {stdio:'inherit'} regression (Ben Noordhuis)
-* child_process: Fix pipe() from child stdio streams (Maciej Małecki)
-* child_process: make fork() execPath configurable (Bradley Meck)
-* stream: Add readable.push(chunk) method (isaacs)
-* dtrace: x64 ustack helper (Fedor Indutny)
-* repl: fix floating point number parsing (Nirk Niggler)
-* repl: allow overriding builtins (Ben Noordhuis)
-* net: add localAddress and localPort to Socket (James Hight)
-* fs: make pool size coincide with ReadStream bufferSize (Shigeki Ohtsu)
-* typed arrays: implement load and store swizzling (Dean McNamee)
-* windows: fix perfctr crash on XP and 2003 (Scott Blomquist)
-* dgram: fix double implicit bind error (Ben Noordhuis)
+* path: hacer que basename y extname ignoren los slashes posteriores (Bert Belder)
+* typed arrays: reparar problema de caracteres con-signo/sin-signo de sunos (Ben Noordhuis)
+* child_process: Reparar regresión de {stdio:'inherit'} (Ben Noordhuis)
+* child_process: Reparar pipe() desde streams stdio hijos (Maciej Małecki)
+* child_process: hacer que el execPath de fork() sea configurable (Bradley Meck)
+* stream: Añadir método readable.push(chunk) (isaacs)
+* dtrace: ayudante de desapilado x64 (Fedor Indutny)
+* repl: reparar el análisis del número del punto flotante (Nirk Niggler)
+* repl: permitir la anulación de built-ins (Ben Noordhuis)
+* net: añadir localAddress y localPort al Socket (James Hight)
+* fs: hacer que el tamaño del pool coincida con el bufferSize de ReadStream (Shigeki Ohtsu)
+* typed arrays: implementar swizzling de carga y almacenamiento (Dean McNamee)
+* windows: reparar colapso de perfctr en XP y 2003 (Scott Blomquist)
+* dgram: reparar error de enlace doble implícito (Ben Noordhuis)
 
 <a id="0.9.5"></a>
 
-## 2012.12.30, Version 0.9.5 (Unstable)
+## 2012.12.30, Version 0.9.5 (Inestable)
 
 https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 
