@@ -1288,7 +1288,7 @@ added: v10.0.0
 
 Envía un mensaje de HTTP/1.1 102 Processing al cliente, indicando que el cuerpo de la solicitud debería ser enviado.
 
-## Class: http.IncomingMessage
+## Clase: http.IncomingMessage
 
 <!-- YAML
 added: v0.1.17
@@ -1306,7 +1306,7 @@ added: v0.3.8
 
 Se emite cuando la solicitud ha sido abortada.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.4.2
@@ -1342,9 +1342,9 @@ added: v0.1.5
 
 * {Object}
 
-The request/response headers object.
+El objeto de cabeceras de solicitud/respuesta.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Pares de valores clave de nombres de cabecera y valores. Los nombres de cabecera están en minúsculas. Ejemplo:
 
 ```js
 // Prints something like:
@@ -1355,9 +1355,9 @@ Key-value pairs of header names and values. Header names are lower-cased. Exampl
 console.log(request.headers);
 ```
 
-Duplicates in raw headers are handled in the following ways, depending on the header name:
+Los duplicados en las cabeceras crudas son manejados en las siguientes maneras, dependiendo del nombre de cabecera:
 
-* Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
+* Los duplicados de `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` se descartan.
 * `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
 * Para todos los otros encabezados, los valores se unen con ', '.
 
@@ -1369,7 +1369,7 @@ added: v0.1.1
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Probably either `'1.1'` or `'1.0'`.
+En caso de la solicitud del servidor, la versión HTTP enviada por el cliente. En caso de la respuesta del cliente, la versión HTTP del servidor conectado. Probablemente o `'1.1'` o `'1.0'`.
 
 Además, `message.httpVersionMajor` es el primer entero y `message.httpVersionMinor` es el segundo.
 
@@ -1381,7 +1381,7 @@ added: v0.1.1
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Solo válido para las solicitudes obtenidas desde [`http.Server`][].**
 
 El método de solicitud es una string. Sólo lectura. Ejemplo: `'GET'`, `'DELETE'`.
 
@@ -1393,7 +1393,7 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response headers list exactly as they were received.
+La lista cruda de cabeceras de solicitud/respuesta exactamente como fueron recibidas.
 
 Tenga en cuenta que las llaves y los valores están en la misma lista. *no* es una lista de tuplas. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
@@ -1421,7 +1421,7 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
+Las claves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Only populated at the `'end'` event.
 
 ### message.setTimeout(msecs, callback)
 
@@ -1431,9 +1431,9 @@ added: v0.5.9
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.IncomingMessage}
+* Devuelve: {http.IncomingMessage}
 
-Calls `message.connection.setTimeout(msecs, callback)`.
+Llama a `message.connection.setTimeout(msecs, callback)`.
 
 ### message.socket
 
@@ -1445,7 +1445,7 @@ added: v0.3.0
 
 El objeto de [`net.Socket`][] asociado a la conexión.
 
-With HTTPS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
+Con el soporte HTTPS, utilice [`request.socket.getPeerCertificate()`][] para obtener los detalles de autenticación del cliente.
 
 ### message.statusCode
 
