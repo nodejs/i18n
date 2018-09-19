@@ -1151,9 +1151,9 @@ added: v0.3.0
 
 * {net.Socket}
 
-Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
+Referencia al socket subyacente. Generalmente, los usuarios no querrán acceder a esta propiedad. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. El `socket` también puede ser accedido mediante `response.connection`.
 
-Example:
+Ejemplo:
 
 ```js
 const http = require('http');
@@ -1174,13 +1174,13 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusCode = 404;
 ```
 
-After response header was sent to the client, this property indicates the status code which was sent out.
+Después de que la cabecera de respuesta fue enviada al cliente, este propiedad indica el código de estado que fue enviado.
 
 ### response.statusMessage
 
@@ -1190,7 +1190,7 @@ added: v0.11.8
 
 * {string}
 
-When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
+When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. Si esto se deja como `undefined`, entonces el mensaje estándar para el código de estado será utilizado.
 
 Ejemplo:
 
@@ -1198,7 +1198,7 @@ Ejemplo:
 response.statusMessage = 'Not found';
 ```
 
-After response header was sent to the client, this property indicates the status message which was sent out.
+Después de que la cabecera de respuesta fue enviada al cliente, esta propiedad indica el mensaje de estado que fue enviado.
 
 ### response.write(chunk\[, encoding\]\[, callback\])
 
@@ -1207,23 +1207,23 @@ added: v0.1.29
 -->
 
 * `chunk` {string|Buffer}
-* `encoding` {string} **Default:** `'utf8'`
+* `encoding` {string} **Predeterminado:** `'utf8'`
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
 Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
-Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
+Note that in the `http` module, the response body is omitted when the request is a HEAD request. Asimismo, las respuestas `204` y `304` *no deben* incluir un cuerpo de mensaje.
 
 `chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. `callback` will be called when this chunk of data is flushed.
 
-This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
+Este es el cuerpo crudo de HTTP y no tiene nada qué ver con las codificaciones de cuerpo de partes múltiples y de alto nivel que pueden ser utilizadas.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
 ### response.writeContinue()
 
