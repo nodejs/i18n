@@ -161,10 +161,10 @@ Este es una actualización de seguridad. All Node.js users should consult the se
 
 ### Commits:
 
-* [3cff81c7d6] - deps: completely upgrade npm in LTS to 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
-* [7c22f19009] - deps: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
-* [5d78366937] - deps: update openssl asm files (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [2bc2427cb7] - deps: fix openssl assembly error on ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
+* [3cff81c7d6] - deps: actualizar completamente npm en LTS a 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
+* [7c22f19009] - deps: añade -no_rand_screen a openssl s_client (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
+* [5d78366937] - deps: actualiza los archivos asm openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [2bc2427cb7] - deps: Reparar error de ensamblaje opensslen ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
 * [8df4b0914c] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
 * [11eefefb17] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
 * [61ccc27b54] - deps: upgrade openssl sources to 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
