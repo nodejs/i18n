@@ -504,7 +504,7 @@ const writable = new Writable();
 
 pass.pipe(writable);
 pass.unpipe(writable);
-// readableFlowing is now false
+// readableFlowing ahora es false
 
 pass.on('data', (chunk) => { console.log(chunk.toString()); });
 pass.write('ok'); // will not emit 'data'
@@ -611,7 +611,7 @@ El evento `'readable'` es emitido cuando hay datos disponibles para ser leídos 
 ```javascript
 const readable = getReadableStreamSomehow();
 readable.on('readable', function() {
-  // there is some data to read now
+  // ahora hay algo de datos para ser leídos 
   let data;
 
   while (data = this.read()) {
@@ -720,7 +720,7 @@ El siguiente ejemplo hace pipe en todos los datos del `readable` a un archivo ll
 const fs = require('fs');
 const readable = getReadableStreamSomehow();
 const writable = fs.createWriteStream('file.txt');
-// All the data from readable goes into 'file.txt'
+// Todos los datos del legible van a ''file.txt''
 readable.pipe(writable);
 ```
 
@@ -860,8 +860,8 @@ readable.on('data', (chunk) => {
 added: v0.9.4
 -->
 
-* `destination` {stream.Writable} Optional specific stream to unpipe
-* Returns: {this}
+* `destination` {stream.Writable} Stream específico opcional para no hacer pipe
+* Devuelve: {this}
 
 El método `readable.unpipe()` separa un stream `Writable` que fue adjuntado anteriormente usando el método [`stream.pipe()`][].
 
@@ -873,8 +873,8 @@ Si el `destination` es especificado, pero no se configura ningún pipe para él.
 const fs = require('fs');
 const readable = getReadableStreamSomehow();
 const writable = fs.createWriteStream('file.txt');
-// All the data from readable goes into 'file.txt',
-// but only for the first second
+// Todos los datos del legible van a ''file.txt'',
+// pero solo por el primer segundo
 readable.pipe(writable);
 setTimeout(() => {
   console.log('Stop writing to file.txt');
