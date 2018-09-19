@@ -778,19 +778,19 @@ https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 * child_process: no guardar lista de sockets enviados (Fedor Indutny)
 * tls: Seguir a RFC6125 más estrictamente (Fedor Indutny)
 * buffer: mejoras de lectura/escritura de punto flotante (Trevor Norris)
-* TypedArrays: Improve dataview perf without endian param (Dean McNamee)
-* module: assert require() called with a non-empty string (Felix Böhm, James Campos)
-* stdio: Set readable/writable flags properly (isaacs)
-* stream: Properly handle large reads from push-streams (isaacs)
+* TypedArrays: Mejorar rendimiento de dataview sin parámetro endian (Dean McNamee)
+* module: aserción require() es llamada con una string no vacía (Felix Böhm, James Campos)
+* stdio: Establecer banderas legible/escribible correctamente (isaacs)
+* stream: Manejar correctamente lecturas largas desde push-streams (isaacs)
 
 <a id="0.9.6"></a>
 
-## 2013.01.11, Version 0.9.6 (Unstable)
+## 2013.01.11, Versión 0.9.6 (Inestable)
 
 https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
-* V8: update to 3.15.11.5
-* node: remove ev-emul.h (Ben Noordhuis)
+* V8: actualizar a 3.15.11.5
+* node: remover ev-emul.h (Ben Noordhuis)
 * path: make basename and extname ignore trailing slashes (Bert Belder)
 * typed arrays: fix sunos signed/unsigned char issue (Ben Noordhuis)
 * child_process: Fix {stdio:'inherit'} regression (Ben Noordhuis)
