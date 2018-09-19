@@ -556,9 +556,9 @@ changes:
   * `cwd` {string} Attuale directory di lavoro del processo child.
   * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
   * `stdio` {string|Array} Configurazione stdio del child. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
-  * `env` {Object} Environment key-value pairs.
-  * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` su UNIX, `process.env.ComSpec` su Windows.
-  * `uid` {number} Sets the user identity of the process. (See setuid(2)).
+  * `env` {Object} Coppie key-value dell'ambiente.
+  * `shell` {string} La Shell con la quale eseguire il comando. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `'/bin/sh'` su UNIX, `process.env.ComSpec` su Windows.
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo. (See setuid(2)).
   * `gid` {number} Sets the group identity of the process. (See setgid(2)).
   * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
   * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
