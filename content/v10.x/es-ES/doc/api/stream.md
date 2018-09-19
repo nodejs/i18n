@@ -68,11 +68,11 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
   // req es un http.IncomingMessage, que es un Stream Legible
-  // res es un http.ServerResponse, Que es un Stream Escribible
+  // res es un http.ServerResponse, que es un Stream Escribible
 
   let body = '';
   // Obtiene los datos como strings utf8.
-  // Si no se establece una codificación, los objetos búferes van a ser recibidos.
+  // Si no se establece una codificación, los objetos Buffer van a ser recibidos.
   req.setEncoding('utf8');
 
   // Los streams legibles emiten eventos "data" una vez que se añade un listener
@@ -186,7 +186,7 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
         writer.write(data, encoding, callback);
       } else {
         // ver si deberíamos continuar, o espera
-        // no pases el callback, porque no hemos terminado aún.
+        // no pases la callback, porque no hemos terminado aún.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
@@ -351,7 +351,7 @@ added: v0.11.2
 
 El método `writable.uncork()` arroja todos los datos almacenados desde que [`stream.cork()`][] fue llamado.
 
-Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Hacerlo permite la dosificación de todas las llamadas `writable.write()` que ocurren dentro un fase bucle de un evento Node.js dado.
+Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Hacerlo permite la dosificación de todas las llamadas `writable.write()` que ocurren dentro una fase bucle de un evento Node.js dado.
 
 ```js
 stream.cork();
@@ -369,7 +369,7 @@ stream.cork();
 stream.write('data ');
 process.nextTick(() => {
   stream.uncork();
-  // Los datos no serán arrojados hasta que uncork() es llamado una segunda vez.
+  // Los datos no serán arrojados hasta que uncork() sea llamado una segunda vez.
   stream.uncork();
 });
 ```
@@ -507,8 +507,8 @@ pass.unpipe(writable);
 // readableFlowing ahora es false
 
 pass.on('data', (chunk) => { console.log(chunk.toString()); });
-pass.write('ok'); // will not emit 'data'
-pass.resume(); // must be called to make 'data' being emitted
+pass.write('ok'); // no va a emitir 'data'
+pass.resume(); // debe ser llamado para hacer que 'data' sea emitido
 ```
 
 Mientras `readable.readableFlowing` es `false`, los datos pueden ser que se esten acumulando dentro del búfer interno de los streams.
@@ -588,7 +588,7 @@ added: v0.9.4
 
 El evento `'error'` puede ser emitido por una implementación de `Readable` en cualquier momento. De forma general, esto puede ocurrir si el stream subyacente no es capaz de generar datos debido a una falla interna subyacente, o cuando una implementación del stream intenta empujar un fragmento de datos inválido.
 
-El callback del listener aprobara un solo objeto `Error`.
+El callback del listener aprobará un solo objeto `Error`.
 
 ##### Evento: 'readable'
 
@@ -622,7 +622,7 @@ readable.on('readable', function() {
 
 El evento `'readable'` también será emitido una vez que ha sido alcanzado el final de los datos del stream, pero antes de que se emita el evento `'end'`.
 
-Efectivamente, el evento `'readable'` indica que el stream tiene nueva información: ya sea que nuevos datos están disponibles, o que el final del stream ha sido alcanzado. En el primer caso, [`stream.read()`](#stream_readable_read_size) devolverá los datos disponibles. En el segundo caso, [`stream.read()`](#stream_readable_read_size) devolverá `null`. Por ejemplo En el siguiente ejemplar, `foo.txt` es un archivo vacío:
+Efectivamente, el evento `'readable'` indica que el stream tiene nueva información: ya sea que nuevos datos están disponibles, o que el final del stream ha sido alcanzado. En el primer caso, [`stream.read()`](#stream_readable_read_size) devolverá los datos disponibles. En el segundo caso, [`stream.read()`](#stream_readable_read_size) devolverá `null`. Por ejemplo En el siguiente caso, `foo.txt` es un archivo vacío:
 
 ```js
 const fs = require('fs');
@@ -895,7 +895,7 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|any} Fragmento de datos para hacer unshift en la cola de lectura. Para stream que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
+* `chunk` {Buffer|Uint8Array|string|any} Fragmento de datos para hacer unshift en la cola de lectura. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
 
 El método `readable.unshift()` empuja un fragmento de datos de vuelta al búfer interno. Esto es útil en ciertas situaciones, cuando un stream está siendo consumido por código que necesita "no-consumir" alguna cantidad de datos que ha sido sacada de forma optimista de la fuente, para que los datos puedan ser pasados a otra parte.
 
@@ -905,7 +905,7 @@ Los desarrolladores que usan `stream.unshift()` a menudo deberían considerar a 
 
 ```js
 // Sustrae un encabezado delimitado por \n\n
-// usa unshift() si nosotros tenemos mucho
+// usa unshift() si obtenemos mucho
 // Llama al callback (error, encabezado, stream)
 const { StringDecoder } = require('string_decoder');
 function parseHeader(stream, callback) {
@@ -1270,7 +1270,7 @@ changes:
 
 * `opciones` {Object} 
   * `highWaterMark` {number} Nivel del búfer cuando [`stream.write()`](#stream_writable_write_chunk_encoding_callback) empieza a devolver `false`. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
-  * `decodeStrings` {boolean} Si se debe o no decodificar strings en `Buffer`es antes de pasarlos a [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
+  * `decodeStrings` {boolean} Si codificar o no los strings en `Buffer`es antes de pasarlos a [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
   * `objectMode` {boolean} Ya sea [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) una operación válida o no. Cuando es establecido, se hace posible escribir otros valores de JavaScript aparte de string, `Buffer` o `Uint8Array` si lo soporta la implementación del stream. **Predeterminado:** `false`.
   * `emitClose` {boolean} Si el stream debería emitir `'close'` después que ha sido destruido, o no. **Predeterminado:** `true`.
   * `write` {Function} Implementación para el método [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1).
@@ -1290,7 +1290,7 @@ class MyWritable extends Writable {
 }
 ```
 
-O cuando se use constructores de estilo pre-ES6:
+O cuando se usen constructores de estilo pre-ES6:
 
 ```js
 const { Writable } = require('stream');
