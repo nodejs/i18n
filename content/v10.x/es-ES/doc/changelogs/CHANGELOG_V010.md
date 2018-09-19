@@ -112,7 +112,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * http: 
   * CVE-2016-5325 - Válida correctamente por caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Repara un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde puede ocurrir `throw` cuando se esté configurando las respuestas HTTP, los usuarios ya deberían adoptar intentar/tomar aquí. Originalmente reportado independientemente por Evan Lucas y Romain Gaucher. (Evan Lucas)
   * Los códigos de estatus inválidos no pueden ser enviados. Limitado a números de 3 dígitos, entre 100 - 999. Falta de validación adecuada también puede servir como respuesta potencial a vector de ataque de división. Se le hizo backport de v4.x. (Brian White)
-* openssl: Upgrade to 1.0.1u, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 and CVE-2016-6306.
+* openssl: Actualizar a 1.0.1u, repara un número de defectos impactando a Node.js: CVE-2016-6304 ("OCSP Estado de la solicitud de extensión sin límite crecimiento de la memoria", severidad alta), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306.
 * tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian) (Ben Noordhuis)
 
 ### Commits:
