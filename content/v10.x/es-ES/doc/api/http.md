@@ -1101,15 +1101,15 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Establece un único valor de cabecera para cabeceras implícitas. If this header already exists in the to-be-sent headers, its value will be replaced. Utilice aquí un array de strings para enviar varias cabeceras con el mismo nombre. Los valores que no sean strings se almacenarán sin modificación. Por lo tanto, [`response.getHeader()`][] puede devolver valores que no sean strings. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
+Establece un único valor de cabecera para cabeceras implícitas. Si esta cabecera ya existe en los envíos de cabeceras pendientes, su valor será reemplazado. Utilice aquí un array de strings para enviar varias cabeceras con el mismo nombre. Los valores que no sean strings se almacenarán sin modificación. Por lo tanto, [`response.getHeader()`][] puede devolver valores que no sean strings. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+o
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1117,7 +1117,7 @@ response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 
 Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Cuando las cabeceras hayan sido establecidas con [`response.setHeader()`][], serán combinadas con cualquiera de las cabeceras pasadas a [`response.writeHead()`][], con las cabeceras pasadas a [`response.writeHead()`][] dada su precedencia.
 
 ```js
 // returns content-type = text/plain
@@ -1137,11 +1137,11 @@ added: v0.9.12
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.ServerResponse}
+* Devuelve: {http.ServerResponse}
 
-Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Sets the Socket's timeout value to `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
 
-If no `'timeout'` listener is added to the request, the response, or the server, then sockets are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
+Si no se añade ningún listener `'timeout'` a la solicitud, la respuesta, o al servidor, entonces los sockets se destruirán cuando se agote su tiempo de espera. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
 ### response.socket
 
