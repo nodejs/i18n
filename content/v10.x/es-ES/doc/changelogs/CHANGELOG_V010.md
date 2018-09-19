@@ -1,4 +1,4 @@
-# Node.js 0.10 ChangeLog
+# Registro de Cambios de Node.js 0.10
 
 <!--lint disable prohibited-strings-->
 
@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th colspan="2">Stable</th>
+<th colspan="2">Estable</th>
 </tr>
   
   <tr>
@@ -70,7 +70,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -80,7 +80,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v0.10 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until October 2016.
 
