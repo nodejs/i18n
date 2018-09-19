@@ -97,7 +97,7 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 ### Cambios Notables
 
-* **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
+* **Actualización a OpenSSL 1.0.2o**: No contiene ninguna corrección de seguridad que se sabe tienen un impacto en Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. El inspector ahora permite conexiones que tienen un valor `Host` de navegador de `localhost` o `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
 * **Rechazar espacios en HTTP `Content-Length` valores de encabezados (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de encabezados `Content-Length`. Tales valores ahora conducen a conexiones rechazadas de la misma manera que valores no numéricos.
