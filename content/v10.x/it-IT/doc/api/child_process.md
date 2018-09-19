@@ -829,10 +829,10 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `options` {Object} L'argomento `options`, se presente, è un object utilizzato per parametrizzare l'invio di determinati tipi di handle. `options` supports the following properties: 
-  * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
+* `options` {Object} L'argomento `options`, se presente, è un object utilizzato per parametrizzare l'invio di determinati tipi di handle. `options` supporta le seguenti proprietà: 
+  * `keepOpen` {boolean} Un valore che può essere utilizzato durante il passaggio delle istanze di `net.Socket`. Quando è `true`, il socket viene mantenuto aperto nel processo di invio. **Default:** `false`.
 * `callback` {Function}
-* Returns: {boolean}
+* Restituisce: {boolean}
 
 When an IPC channel has been established between the parent and child ( i.e. when using [`child_process.fork()`][]), the `subprocess.send()` method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the [`'message'`][] event.
 
