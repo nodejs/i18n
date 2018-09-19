@@ -1577,18 +1577,18 @@ class SourceWrapper extends Readable {
 
     // Cada vez que hay datos, los empuja al búfer interno.
     this._source.ondata = (chunk) => {
-      // if push() returns false, then stop reading from source
+      // si push() devuelve false, entonces detiene la lectura de la fuente
       if (!this.push(chunk))
         this._source.readStop();
     };
 
-    // When the source ends, push the EOF-signaling `null` chunk
+    // Cuando la fuente se termina, empuja el  fragmento `null` señalador-EOF
     this._source.onend = () => {
       this.push(null);
     };
   }
-  // _read will be called when the stream wants to pull more data in
-  // the advisory size argument is ignored in this case.
+  // _read será llamado cuando el stream quiera sustraer más datos
+  // el argumento del tamaño consultivo es ignorado en este caso.
   _read(size) {
     this._source.readStart();
   }
@@ -1614,7 +1614,7 @@ const myReadable = new Readable({
       process.nextTick(() => this.emit('error', err));
       return;
     }
-    // do some work
+    // hace algo de trabajo
   }
 });
 ```
