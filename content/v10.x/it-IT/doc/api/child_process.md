@@ -750,13 +750,13 @@ grep.on('close', (code, signal) => {
 grep.kill('SIGHUP');
 ```
 
-Il [`ChildProcess`][] object potrebbe emettere un evento [`'error'`][] se il segnale non può essere consegnato. L'invio di un segnale ad un processo child che si è già concluso non è un errore ma potrebbe comportare conseguenze impreviste. In particolare, se l'identificatore del processo (PID) è stato riassegnato a un altro processo, allora il segnale verrà consegnato a quel processo che può avere risultati imprevisti.
+Il [`ChildProcess`][] object potrebbe emettere un evento [`'error'`][] se il segnale non può essere consegnato. L'invio di un segnale ad un processo child che si è già concluso non è un errore ma potrebbe comportare conseguenze impreviste. In particolare, se il process identifier (PID) è stato riassegnato a un altro processo, allora il segnale verrà consegnato a quel processo che può avere risultati imprevisti.
 
 Da notare che nonostante la funzione venga chiamata `kill`, il segnale inviato al processo child effettivamente potrebbe non terminare il processo.
 
 Vedi kill(2) come riferimento.
 
-Da notare anche che: su Linux, i processi child dei processi child non verranno terminati quando si tenta di arrestare i loro parent. This is likely to happen when running a new process in a shell or with use of the `shell` option of `ChildProcess`, such as in this example:
+Da notare anche che: su Linux, i processi child dei processi child non verranno terminati quando si tenta di arrestare i loro parent. È probabile che ciò accada quando si esegue un nuovo processo in una shell oppure con l'utilizzo dell'opzione `shell` di `ChildProcess`, come in questo esempio:
 
 ```js
 'use strict';
@@ -775,7 +775,7 @@ const subprocess = spawn(
 );
 
 setTimeout(() => {
-  subprocess.kill(); // does not terminate the node process in the shell
+  subprocess.kill(); // non termina il processo del nodo nella shell
 }, 2000);
 ```
 
@@ -785,9 +785,9 @@ setTimeout(() => {
 added: v0.5.10
 -->
 
-* {boolean} Set to `true` after `subprocess.kill()` is used to successfully send a signal to the child process.
+* {boolean} Impostata su `true` dopo aver utilizzato `subprocess.kill()` per inviare correttamente un segnale al processo child.
 
-The `subprocess.killed` property indicates whether the child process successfully received a signal from `subprocess.kill()`. The `killed` property does not indicate that the child process has been terminated.
+La proprietà `subprocess.killed` indica se il processo child ha ricevuto correttamente un segnale da `subprocess.kill()`. La proprietà `killed` non sta ad indicare che il processo child è stato arrestato.
 
 ### subprocess.pid
 
@@ -797,9 +797,9 @@ added: v0.1.90
 
 * {integer}
 
-Returns the process identifier (PID) of the child process.
+Restituisce il process identifier (PID) del processo child.
 
-Example:
+Esempio:
 
 ```js
 const { spawn } = require('child_process');
@@ -829,7 +829,7 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
+* `options` {Object} L'argomento `options`, se presente, è un object utilizzato per parametrizzare l'invio di determinati tipi di handle. `options` supports the following properties: 
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
 * Returns: {boolean}
