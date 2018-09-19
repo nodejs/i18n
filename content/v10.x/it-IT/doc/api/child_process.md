@@ -661,9 +661,9 @@ L'evento `'error'` viene emesso ogni volta che:
 2. Non è stato possibile arrestare il processo, oppure
 3. Non è andato a buon fine l'invio di un messaggio al processo child.
 
-L'evento `'exit'` può o non può funzionare dopo che si è verificato un errore. When listening to both the `'exit'` and `'error'` events, it is important to guard against accidentally invoking handler functions multiple times.
+L'evento `'exit'` può o non può funzionare dopo che si è verificato un errore. Quando si ascoltano entrambi gli eventi `'exit'` ed `'error'`, è importante stare in guardia contro molteplici invocazioni accidentali delle funzioni dell'handler.
 
-See also [`subprocess.kill()`][] and [`subprocess.send()`][].
+Vedi anche [`subprocess.kill()`][] e [`subprocess.send()`][].
 
 ### Event: 'exit'
 
@@ -671,12 +671,12 @@ See also [`subprocess.kill()`][] and [`subprocess.send()`][].
 added: v0.1.90
 -->
 
-* `code` {number} The exit code if the child exited on its own.
-* `signal` {string} The signal by which the child process was terminated.
+* `code` {number} Il valore di uscita se il child si è concluso autonomamente.
+* `signal` {string} Il segnale con cui è stato terminato il processo child.
 
-The `'exit'` event is emitted after the child process ends. If the process exited, `code` is the final exit code of the process, otherwise `null`. If the process terminated due to receipt of a signal, `signal` is the string name of the signal, otherwise `null`. One of the two will always be non-null.
+L'evento `'exit'` viene emesso al termine del processo child. Se il processo è concluso, `code` è il valore di uscita finale del processo, in caso contrario `null`. Se il processo termina a causa della ricezione di un segnale, `signal` è il nome della stringa del segnale, in caso contrario `null`. Uno dei due sarà sempre non nullo.
 
-Note that when the `'exit'` event is triggered, child process stdio streams might still be open.
+Da notare che quando viene attivato l'evento `'exit'`, gli stream stdio del processo child potrebbero essere ancora aperti.
 
 Also, note that Node.js establishes signal handlers for `SIGINT` and `SIGTERM` and Node.js processes will not terminate immediately due to receipt of those signals. Rather, Node.js will perform a sequence of cleanup actions and then will re-raise the handled signal.
 
