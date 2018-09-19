@@ -1023,7 +1023,7 @@ added: v7.7.0
 
 * Devuelve: {Object}
 
-Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
+Devuelve una copia superficial de las cabeceras salientes actuales. Ya que se utiliza una copia superficial, los valores del array pueden ser mutados sin llamadas adicionales a varios métodos del módulo http relacionados con la cabecera. Las claves del objeto devuelto son los nombres de cabecera, y los valores son los respectivos valores de cabecera. Todos los nombres de las cabeceras están en minúscula.
 
 The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
