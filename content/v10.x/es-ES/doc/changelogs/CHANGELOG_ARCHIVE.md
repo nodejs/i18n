@@ -825,16 +825,16 @@ https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 * stream: reparar fuga del manejador de eventos en pipe y unpipe de readstream (Andreas Madsen)
 * build: Soportar interruptor de --tag ./configure (Maciej Małecki)
 * repl: no tocar `require.cache` (Nathan Rajlich)
-* node: Emit 'exit' event when exiting for an uncaught exception (isaacs)
+* node: Emitir evento "exit" al salir por una excepción no capturada (isaacs)
 
 <a id="0.9.4"></a>
 
-## 2012.12.21, Version 0.9.4 (Unstable)
+## 2012.12.21, Versión 0.9.4 (Inestable)
 
 https://github.com/nodejs/node/commit/d86d83c75f6343b5368bb7bd328b4466a035e1d4
 
-* streams: Update all streaming interfaces to use new classes (isaacs)
-* node: remove idle gc (Ben Noordhuis)
+* streams: Actualizar todas las interfaces de streaming para que usen nuevas clases (isaacs)
+* node: remover gc inactivo (Ben Noordhuis)
 * http: protect against response splitting attacks (Bert Belder)
 * fs: Raise error when null bytes detected in paths (isaacs)
 * fs: fix 'object is not a function' callback errors (Ben Noordhuis)
