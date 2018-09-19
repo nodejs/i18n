@@ -173,9 +173,9 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 
   // Ahora, Object.prototype.secret será igual a 42.
   //
-  // To fix this problem, replace
+  // Para solucionar este problema, reemplace el
   //     meta.prop = {};
-  // above with
+  // anterior con
   //     meta.prop = vm.runInContext('{}', contextifiedSandbox);
 })();
 ```
@@ -184,7 +184,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 
 * {string[]}
 
-The specifiers of all dependencies of this module. The returned array is frozen to disallow any changes to it.
+Los especificadores de todas las dependencias de este módulo. The returned array is frozen to disallow any changes to it.
 
 Corresponds to the `[[RequestedModules]]` field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
 
