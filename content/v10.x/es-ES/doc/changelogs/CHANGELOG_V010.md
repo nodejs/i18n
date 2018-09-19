@@ -128,8 +128,8 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [3614a173d0] - http: verificar los caracteres de razón en writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/48
 * [f2433430ca] - http: no permitir el envío de códigos de estatus obviamente inválidos (Evan Lucas) https://github.com/nodejs/node-private/pull/48
 * [0d7e21ee7b] - lib: hacer a tls.checkServerIdentity() más escritcto (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
-* [1f4a6f5bd1] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [88dcc7f5bb] - v8: fix -Wsign-compare warning in Zone::New() (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
+* [1f4a6f5bd1] - openssl: reparar el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [88dcc7f5bb] - v8: reparar la advertencia -Wsign-compare en Zone::New() (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 * [fd8ac56c75] - v8: fix build errors with g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 
 <a id="0.10.46"></a>
