@@ -511,7 +511,7 @@ added: v7.10.0
 
 Crear una instancia de un nuevo objeto `URLSearchParams` con un mapa iterable de forma que sea similar al constructor [`Map`][]. `iterable` puede ser un `Array` o cualquier objeto iterable. Eso significa que `iterable` puede ser otro `URLSearchParams`, en tal caso el constructor simplemente creará un clon del `URLSearchParams` proporcionado. Los elementos de `iterable` son pares clave-valor, y ellos mismos pueden ser cualquier objeto iterable.
 
-Las llaves duplicadas son permitidas.
+Las claves duplicadas son permitidas.
 
 ```js
 permite params;
@@ -575,7 +575,7 @@ Alias para [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
 #### urlSearchParams.forEach(fn[, thisArg])
 
 * `fn` {Function} Invocado por cada par nombre-valor en la consulta
-* `thisArg` {Object} Para ser usado como `this` valor para cuando `fn` es llamado
+* `thisArg` {Object} Para ser usado como `this` valor para cuando `fn` sea llamado
 
 Itera sobre cada par nombre-valor en la consulta e invoca la función dada.
 
@@ -653,7 +653,7 @@ console.log(params.toString());
 added: v7.7.0
 -->
 
-Clasifique todos los pares nombre-valor existentes en su lugar por sus nombres. La clasificación está lista con un [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), así que el orden relativo entre pares nombre-valor con el mismo nombre es conservado.
+Clasifique todos los pares nombre-valor existentes en su lugar por sus nombres. La clasificación se realiza con un [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), así que el orden relativo entre pares nombre-valor con el mismo nombre es conservado.
 
 Este método puede ser usado, en particular, para aumentar los cache hits.
 
@@ -668,7 +668,7 @@ console.log(params.toString());
 
 * Devuelve: {string}
 
-Devuelve los parámetros de búsqueda serializados como una string, con caracteres código porciento cuando sea necesario.
+Devuelve los parámetros de búsqueda serializados como una string, con caracteres de codificación de porcentajes cuando sea necesario.
 
 #### urlSearchParams.values()
 
@@ -746,11 +746,11 @@ console.log(url.domainToUnicode('xn--iñvalid.com'));
 added: v7.6.0
 -->
 
-* `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
+* `URL` {URL} Un objeto [WHATWG URL](#url_the_whatwg_url_api)
 * `options` {Object} 
-  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
-  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
-  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
+  * `auth` {boolean} Es `true` si la string serializada de la URL incluye el nombre de usuario y contraseña, de otra forma es `false`. **Predeterminado:** `true`.
+  * `fragment` {boolean} Es `true` si la string serializada de la URL incluye el fragmento, de otra forma es `false`. **Predeterminado:** `true`.
+  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Predeterminado:** `true`.
   * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
 * Returns: {string}
 

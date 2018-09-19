@@ -485,7 +485,7 @@ In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine k
 
 ### Die Lebensdauer des Handles kürzer als bei der nativen Methode machen
 
-It is often necessary to make the lifespan of handles shorter than the lifespan of a native method. For example, consider a native method that has a loop which iterates through the elements in a large array:
+Oftmals ist es notwendig, die Lebensdauer von Handles kürzer zu halten als die Lebensdauer einer nativen Methode. For example, consider a native method that has a loop which iterates through the elements in a large array:
 
 ```C
 for (int i = 0; i < 1000000; i++) {

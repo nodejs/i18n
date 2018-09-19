@@ -498,7 +498,7 @@ https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 * domains: mejoras de rendimiento (Trevor Norris)
 * events: EventEmitter = require('events') (Jake Verbaten)
 * http: Añadir callbacks de write()/end() (isaacs)
-* http: Consistent 'finish' event semantics (isaacs)
+* http: Semántica del evento "finish" consistente (isaacs)
 * http: Preferir "binary" por encima de "ascii" (isaacs)
 * http: Soportar a API de legado agent.addRequest (isaacs)
 * http: Escribir trozos hex/base64 correctamente (isaacs)
@@ -717,110 +717,110 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 * process: desplazar en flujo continuo la lógica del tick callback (Trevor Norris)
 * stream_wrap, udp_wrap: añadir propiedad fd de solo lectura (Ben Noorduis)
 * buffer: aceptar índices negativos en Buffer#slice() (Ben Noordhuis)
-* tls: Cycle data when underlying socket drains (isaacs)
-* stream: read(0) should not always trigger _read(n,cb) (isaacs)
-* stream: Empty strings/buffers do not signal EOF any longer (isaacs)
-* crypto: improve cipher/decipher error messages (Ben Noordhuis)
-* net: Respect the 'readable' flag on sockets (isaacs)
-* net: don't suppress ECONNRESET (Ben Noordhuis)
-* typed arrays: copy Buffer in typed array constructor (Ben Noordhuis)
-* typed arrays: make DataView throw on non-ArrayBuffer (Ben Noordhuis)
-* windows: MSI installer enhancements (Scott Blomquist, Jim Schubert)
+* tls: Rotar los datos cuando el socket subyacente se vacíe (isaacs)
+* stream: read(0) no debería activar siempre a _read(n,cb) (isaacs)
+* stream: Strings/Buffers vacíos ya no emiten señal EOF (isaacs)
+* crypto: mejorar mensajes de error de cifrado/descifrado (Ben Noordhuis)
+* net: Respetar la bandera "readable" en los sockets (isaacs)
+* net: no suprimir ECONNRESET (Ben Noordhuis)
+* typed arrays: copiar Buffer en el constructor de typed arrays (Ben Noordhuis)
+* typed arrays: hacer lanzamiento de DataView en non-ArrayBuffer (Ben Noordhuis)
+* windows: mejoras en el instalador de MSI (Scott Blomquist, Jim Schubert)
 
 <a id="0.9.9"></a>
 
-## 2013.02.07, Version 0.9.9 (Unstable)
+## 2013.02.07, Versión 0.9.9 (Inestable)
 
 https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 
-* tls: port CryptoStream to streams2 (Fedor Indutny)
-* typed arrays: only share ArrayBuffer backing store (Ben Noordhuis)
-* stream: make Writable#end() accept a callback function (Nathan Rajlich)
-* buffer: optimize 'hex' handling (Ben Noordhuis)
-* dns, cares: don't filter NOTIMP, REFUSED, SERVFAIL (Ben Noordhuis)
-* readline: treat bare \r as a line ending (isaacs)
-* readline: make \r\n emit one 'line' event (Ben Noordhuis)
-* cluster: support datagram sockets (Bert Belder)
-* stream: Correct Transform class backpressure (isaacs)
-* addon: Pass module object to NODE_MODULE init function (isaacs, Rod Vagg)
-* buffer: slow buffer copy compatibility fix (Trevor Norris)
-* Add bytesWritten to tls.CryptoStream (Andy Burke)
+* tls: puerto de CryptoStream a streams2 (Fedor Indutny)
+* typed arrays: solo compartir el almacenamiento de respaldo de ArrayBuffer (Ben Noordhuis)
+* stream: hacer que Writable#end() acepte una función de callback (Nathan Rajlich)
+* buffer: optimizar el manejo de "hex" (Ben Noordhuis)
+* dns, cares: no filtrar NOTIMP, REFUSED, SERVFAIL (Ben Noordhuis)
+* readline: tratar a \r como un final de línea (isaacs)
+* readline: hacer que \r\n emita un evento "line" (Ben Noordhuis)
+* cluster: soportar sockets de datagrama (Bert Belder)
+* stream: Corregir contrapresión para Transformación de clase (isaacs)
+* addon: pasar objeto de módulo a función init del NODE_MODULE (isaacs, Rod Vagg)
+* buffer: reparación de compatibilidad de la copia de slow buffer (Trevor Norris)
+* Añadir bytesWritten a tls.CryptoStream (Andy Burke)
 
 <a id="0.9.8"></a>
 
-## 2013.01.24, Version 0.9.8 (Unstable)
+## 2013.01.24, Versión 0.9.8 (Inestable)
 
 https://github.com/nodejs/node/commit/5f2f8400f665dc32c3e10e7d31d53d756ded9156
 
-* npm: Upgrade to v1.2.3
-* V8: Upgrade to 3.15.11.10
-* streams: Support objects other than Buffers (Jake Verbaten)
-* buffer: remove float write range checks (Trevor Norris)
-* http: close connection on 304/204 responses with chunked encoding (Ben Noordhuis)
-* build: fix build with dtrace support on FreeBSD (Fedor Indutny)
-* console: Support formatting options in trace() (isaacs)
-* domain: empty stack on all exceptions (Dave Olszewski)
-* unix, windows: make uv_*_bind() error codes consistent (Andrius Bentkus)
-* linux: add futimes() fallback (Ben Noordhuis)
+* npm: Actualizar a v1.2.3
+* V8: Actualizar a 3.15.11.10
+* streams: Soportar objetos distintos a Buffers (Jake Verbaten)
+* buffer: remover revisiones de rango de la escritura de floats (Trevor Norris)
+* http: cerrar conexión en respuestas 304/204 con codificación fragmentada (Ben Noordhuis)
+* build: reparar build con soporte dtrace en FreeBSD (Fedor Indutny)
+* console: Soportar opciones de formato en trace() (isaacs)
+* domain: pila vacía en todas las excepciones (Dave Olszewski)
+* unix, windows: hacer que códigos de error de uv_*_bind() sean consistentes (Andrius Bentkus)
+* linux: añadir contingencia para futimes() (Ben Noordhuis)
 
 <a id="0.9.7"></a>
 
-## 2013.01.18, Version 0.9.7 (Unstable)
+## 2013.01.18, Versión 0.9.7 (Inestable)
 
 https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 
-* V8: Upgrade to 3.15.11.7
-* npm: Upgrade to 1.2.2
-* punycode: Upgrade to 1.2.0 (Mathias Bynens)
-* repl: make built-in modules available by default (Felix Böhm)
-* windows: add support for '_Total' perf counters (Scott Blomquist)
-* cluster: make --prof work for workers (Ben Noordhuis)
-* child_process: do not keep list of sent sockets (Fedor Indutny)
-* tls: Follow RFC6125 more strictly (Fedor Indutny)
-* buffer: floating point read/write improvements (Trevor Norris)
-* TypedArrays: Improve dataview perf without endian param (Dean McNamee)
-* module: assert require() called with a non-empty string (Felix Böhm, James Campos)
-* stdio: Set readable/writable flags properly (isaacs)
-* stream: Properly handle large reads from push-streams (isaacs)
+* V8: Actualizar a 3.15.11.7
+* npm: Actualizar a 1.2.2
+* punycode: Actualizar a 1.2.0 (Mathias Bynens)
+* repl: hacer que los módulos integrados estén disponibles por defecto (Felix Böhm)
+* windows: añadir soporte para contadores de rendimiento "_Total" (Scott Blomquist)
+* cluster: hacer trabajo --prof para workers (Ben Noordhuis)
+* child_process: no guardar lista de sockets enviados (Fedor Indutny)
+* tls: Seguir a RFC6125 más estrictamente (Fedor Indutny)
+* buffer: mejoras de lectura/escritura de punto flotante (Trevor Norris)
+* TypedArrays: Mejorar rendimiento de dataview sin parámetro endian (Dean McNamee)
+* module: aserción require() es llamada con una string no vacía (Felix Böhm, James Campos)
+* stdio: Establecer banderas legible/escribible correctamente (isaacs)
+* stream: Manejar correctamente lecturas largas desde push-streams (isaacs)
 
 <a id="0.9.6"></a>
 
-## 2013.01.11, Version 0.9.6 (Unstable)
+## 2013.01.11, Versión 0.9.6 (Inestable)
 
 https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
-* V8: update to 3.15.11.5
-* node: remove ev-emul.h (Ben Noordhuis)
-* path: make basename and extname ignore trailing slashes (Bert Belder)
-* typed arrays: fix sunos signed/unsigned char issue (Ben Noordhuis)
-* child_process: Fix {stdio:'inherit'} regression (Ben Noordhuis)
-* child_process: Fix pipe() from child stdio streams (Maciej Małecki)
-* child_process: make fork() execPath configurable (Bradley Meck)
-* stream: Add readable.push(chunk) method (isaacs)
-* dtrace: x64 ustack helper (Fedor Indutny)
-* repl: fix floating point number parsing (Nirk Niggler)
-* repl: allow overriding builtins (Ben Noordhuis)
-* net: add localAddress and localPort to Socket (James Hight)
-* fs: make pool size coincide with ReadStream bufferSize (Shigeki Ohtsu)
-* typed arrays: implement load and store swizzling (Dean McNamee)
-* windows: fix perfctr crash on XP and 2003 (Scott Blomquist)
-* dgram: fix double implicit bind error (Ben Noordhuis)
+* V8: actualizar a 3.15.11.5
+* node: remover ev-emul.h (Ben Noordhuis)
+* path: hacer que basename y extname ignoren los slashes posteriores (Bert Belder)
+* typed arrays: reparar problema de caracteres con-signo/sin-signo de sunos (Ben Noordhuis)
+* child_process: Reparar regresión de {stdio:'inherit'} (Ben Noordhuis)
+* child_process: Reparar pipe() desde streams stdio hijos (Maciej Małecki)
+* child_process: hacer que el execPath de fork() sea configurable (Bradley Meck)
+* stream: Añadir método readable.push(chunk) (isaacs)
+* dtrace: ayudante de desapilado x64 (Fedor Indutny)
+* repl: reparar el análisis del número del punto flotante (Nirk Niggler)
+* repl: permitir la anulación de built-ins (Ben Noordhuis)
+* net: añadir localAddress y localPort al Socket (James Hight)
+* fs: hacer que el tamaño del pool coincida con el bufferSize de ReadStream (Shigeki Ohtsu)
+* typed arrays: implementar swizzling de carga y almacenamiento (Dean McNamee)
+* windows: reparar colapso de perfctr en XP y 2003 (Scott Blomquist)
+* dgram: reparar error de enlace doble implícito (Ben Noordhuis)
 
 <a id="0.9.5"></a>
 
-## 2012.12.30, Version 0.9.5 (Unstable)
+## 2012.12.30, Version 0.9.5 (Inestable)
 
 https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 
-* assert: improve support for new execution contexts (lukebayes)
-* domain: use camelCase instead of snake_case (isaacs)
-* domain: Do not use uncaughtException handler (isaacs)
-* fs: make 'end' work with ReadStream without 'start' (Ben Noordhuis)
-* https: optimize createConnection() (Ryunosuke SATO)
-* buffer: speed up base64 encoding by 20% (Ben Noordhuis)
-* doc: Colorize API stability index headers in docs (Luke Arduini)
-* net: socket.readyState corrections (bentaber)
-* http: Performance enhancements for http under streams2 (isaacs)
+* assert: mejorar soporte para nuevos contextos de ejecución (lukebayes)
+* domain: usar camelCase en lugar de snake_case (isaacs)
+* domain: No usar manejador de uncaughtException (isaacs)
+* fs: hacer que "end" funcione con ReadStream sin "start" (Ben Noordhuis)
+* https: optimizar createConnection() (Ryunosuke SATO)
+* buffer: acelerar codificación base64 en un 20% (Ben Noordhuis)
+* doc: Colorear encabezados de índice de estabilidad de API en docs (Luke Arduini)
+* net: correcciones de socket.readyState (bentaber)
+* http: Mejoras de rendimiento para http bajo streams2 (isaacs)
 * stream: fix to emit end event on http.ClientResponse (Shigeki Ohtsu)
 * stream: fix event handler leak in readstream pipe and unpipe (Andreas Madsen)
 * build: Support ./configure --tag switch (Maciej Małecki)

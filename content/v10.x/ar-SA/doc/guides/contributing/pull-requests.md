@@ -178,7 +178,7 @@ Before submitting your changes in a Pull Request, always run the full Node.js te
 $ ./configure && make -j4 test
 ```
 
-And on Windows:
+وفي نظام الويندوز:
 
 ```text
 > vcbuild test

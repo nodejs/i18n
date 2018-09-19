@@ -10,9 +10,9 @@ El módulo `vm` proporciona APIs para compilar y ejecutar códigos dentro de los
 
 El código JavaScript puede ser compilado y ejecutado inmediatamente o compilado, guardado y ejecutado después.
 
-Un caso de uso común es ejecutar el código en un entorno sandboxed. El código sandboxed utiliza un Contexto V8 diferente, lo cual significa que tiene un objeto global diferente al resto del código.
+Un caso de uso común es ejecutar el código en un entorno de pruebas (sandbox). El código del entorno de prueba utiliza un Contexto V8 diferente, lo que significa que tiene un objeto global diferente al resto del código.
 
-Uno puedo proporcionar el contexto con ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) un objeto sandbox. El código sandboxed trata cualquier propiedad en el sandbox como una variable global. Cualquier cambio en las variables globales causado por el código sandboxed se refleja en el objeto sandbox.
+Uno puedo proporcionar el contexto ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) un objeto sandbox. El código del entorno de prueba trata cualquier propiedad en el sandbox como una variable global. Cualquier cambio en las variables globales causado por el código del entorno de prueba se refleja en el objeto sandbox.
 
 ```js
 const vm = require('vm');
@@ -23,7 +23,7 @@ const sandbox = { x: 2 };
 vm.createContext(sandbox); // Contextify the sandbox.
 
 const code = 'x += 40; var y = 17;';
-// x y y son variables globales en el entorno sandboxed.
+// x y y son variables globales en el entorno de prueba.
 // Inicialmente, x tiene el valor 2 porque ese es el valor de sandbox.x.
 vm.runInContext(code, sandbox);
 
@@ -45,109 +45,107 @@ added: v9.6.0
 
 *Esta función solo está disponible con el indicador de comando `--experimental-vm-modules` habilitado.*
 
-La clase `vm.Module` proporciona una interfaz de bajo nivel para utilizar módulos ECMAScript en contextos VM. It is the counterpart of the `vm.Script` class that closely mirrors [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s as defined in the ECMAScript specification.
+La clase `vm.Module` proporciona una interfaz de bajo nivel para utilizar módulos ECMAScript en contextos VM. Es la contraparte de la clase `vm.Script` que refleja estrechamente los [Registros del Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) que se definen en la especificación ECMAScript.
 
-Unlike `vm.Script` however, every `vm.Module` object is bound to a context from its creation. Operations on `vm.Module` objects are intrinsically asynchronous, in contrast with the synchronous nature of `vm.Script` objects. With the help of async functions, however, manipulating `vm.Module` objects is fairly straightforward.
+Sin embargo, a diferencia de `vm.Script`, cada objeto `vm.Module` está vinculado a un contexto desde su creación. Las operaciones en objetos `vm.Module` son intrínsecamente asincrónicas, en contraste con la naturaleza sincrónica de los objetos `vm.Script`. Con la ayuda de las funciones asincrónicas, sin embargo, manipular objetos `vm.Module` es bastante sencillo.
 
-Using a `vm.Module` object requires four distinct steps: creation/parsing, linking, instantiation, and evaluation. These four steps are illustrated in the following example.
+Utilizar un objeto `vm.Module` requiere cuatro pasos distintos: creación/análisis, vinculación, creación de instancias, y evaluación. Estos cuatro pasos se ilustran en el siguiente ejemplo.
 
-This implementation lies at a lower level than the [ECMAScript Module loader](esm.html#esm_ecmascript_modules). There is also currently no way to interact with the Loader, though support is planned.
+Esta implementación se encuentra a un nivel más bajo que el [cargador de Módulo ECMAScript](esm.html#esm_ecmascript_modules). Actualmente, tampoco hay manera de interactuar con el Cargador, aunque el soporte está planeado.
 
 ```js
-const vm = require('vm');
-
 const contextifiedSandbox = vm.createContext({ secret: 42 });
 
 (async () => {
-  // Step 1
+  // Paso 1
   //
-  // Create a Module by constructing a new `vm.Module` object. This parses the
-  // provided source text, throwing a `SyntaxError` if anything goes wrong. By
-  // default, a Module is created in the top context. But here, we specify
-  // `contextifiedSandbox` as the context this Module belongs to.
+  // Crea un Módulo mediante la construcción de un nuevo objeto `vm.Module`. Esto analiza
+  // el texto fuente proporcionado, lanzando un `SyntaxError` si algo sale mal. Por
+  // defecto, un Módulo se crea en el contexto superior. Pero ahí, especificamos a
+  // `contextifiedSandbox` como el contexto al que pertenece este Módulo.
   //
-  // Here, we attempt to obtain the default export from the module "foo", and
-  // put it into local binding "secret".
+  // Aquí, intentamos obtener la exportación predeterminado del módulo "foo", y
+  // colocarla en el enlace loca "secreto".
 
   const bar = new vm.Module(`
     import s from 'foo';
     s;
   `, { context: contextifiedSandbox });
 
-  // Step 2
+  // Paso 2
   //
-  // "Link" the imported dependencies of this Module to it.
+  // "Enlace" las dependencias importadas de este Módulo.
   //
-  // The provided linking callback (the "linker") accepts two arguments: the
-  // parent module (`bar` in this case) and the string that is the specifier of
-  // the imported module. The callback is expected to return a Module that
-  // corresponds to the provided specifier, with certain requirements documented
-  // in `module.link()`.
+  // La devolución de enlace proporcionada (el "enlazador") acepta dos argumentos:
+  // el módulo principal (`bar` en este caso) y la cadena que es el especificador del
+  // módulo importado. Se espera la devolución para retornar un Módulo que
+  // corresponde al especificador proporcionado, con ciertos requisitos documentados
+  // en `module.link()`.
   //
-  // If linking has not started for the returned Module, the same linker
-  // callback will be called on the returned Module.
+  // Si no se ha iniciado el enlace para el Módulo devuelto, se llamará a la misma
+  // devolución del enlazador en el Módulo retornado.
   //
-  // Even top-level Modules without dependencies must be explicitly linked. The
-  // callback provided would never be called, however.
+  // Incluso los Módulos de nivel superior sin dependencias deben estar explícitamente enlazados. Sin
+  // embargo, la devolución proporcionada nunca se llamaría.
   //
-  // The link() method returns a Promise that will be resolved when all the
-  // Promises returned by the linker resolve.
+  // El método link() devuelve una Promesa que se resolverá cuando se resuelvan
+  // todas las Promesas devueltas por el vinculador.
   //
-  // Note: This is a contrived example in that the linker function creates a new
-  // "foo" module every time it is called. In a full-fledged module system, a
-  // cache would probably be used to avoid duplicated modules.
+  // Nota: Esto es un ejemplo ingenioso en el que la función del vinculador crea un nuevo
+  // módulo "foo" cada vez que se llama. En un sistema de módulo de pleno derecho, probablemente
+  // se utilizaría un caché para evitar los módulos duplicados.
 
   async function linker(specifier, referencingModule) {
     if (specifier === 'foo') {
       return new vm.Module(`
-        // The "secret" variable refers to the global variable we added to
-        // "contextifiedSandbox" when creating the context.
+        // La variable "secreta" se refiere a la variable global que agregamos a
+        // "contextifiedSandbox" cuando se crea el contexto.
         export default secret;
       `, { context: referencingModule.context });
 
-      // Using `contextifiedSandbox` instead of `referencingModule.context`
-      // here would work as well.
+      // Utilizar `contextifiedSandbox` en lugar de `referencingModule.context`
+      // aquí también funcionaría.
     }
     throw new Error(`Unable to resolve dependency: ${specifier}`);
   }
   await bar.link(linker);
 
-  // Step 3
+  // Paso 3
   //
-  // Instantiate the top-level Module.
+  // Crear una instancia de Módulo de nivel superior.
   //
-  // Only the top-level Module needs to be explicitly instantiated; its
-  // dependencies will be recursively instantiated by instantiate().
+  // Solo el Módulo de nivel superior necesita ser instanciado explícitamente; sus
+  // dependencias se instanciarán recursivamente por instantiate().
 
   bar.instantiate();
 
-  // Step 4
+  // Paso 4
   //
-  // Evaluate the Module. The evaluate() method returns a Promise with a single
-  // property "result" that contains the result of the very last statement
-  // executed in the Module. In the case of `bar`, it is `s;`, which refers to
-  // the default export of the `foo` module, the `secret` we set in the
-  // beginning to 42.
+  // Evaluar el Módulo. El método evaluate() devuelve una Promesa con un sola
+  // propiedad "resultado" que contiene el resultado de cada última declaración
+  // ejecutada en el Módulo. En el caso de `bar`, es `s;`, que se refiere a
+  // la exportación predeterminada del módulo `foo`, el `secret` que establecemos al
+  // comienzo en 42.
 
   const { result } = await bar.evaluate();
 
   console.log(result);
-  // Prints 42.
+  // Imprime 42.
 })();
 ```
 
-### Constructor: new vm.Module(code[, options])
+### Constructor: nuevo vm.Module(code[, options])
 
-* `code` {string} JavaScript Module code to parse
+* `code` {string} Código del Módulo JavaScript para analizar
 * `options` 
-  * `url` {string} URL used in module resolution and stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
-  * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
-  * `lineOffset` {integer} Specifies the line number offset that is displayed in stack traces produced by this `Module`.
-  * `columnOffset` {integer} Specifies the column number offset that is displayed in stack traces produced by this `Module`.
-  * `initalizeImportMeta` {Function} Called during evaluation of this `Module` to initialize the `import.meta`. This function has the signature `(meta,
-module)`, where `meta` is the `import.meta` object in the `Module`, and `module` is this `vm.Module` object.
+  * `url` {string} URL utilizado en la resolución de módulo y seguimiento de pila. **Predeterminado:** `'vm:module(i)'` donde `i` es un índice ascendente de contexto específico.
+  * `context` {Object} El objeto [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) como es devuelto por el método `vm.createContext()`, para compilar y evaluar este `Module`.
+  * `lineOffset` {integer} Especifica el desplazamiento del número de línea que se muestra en los seguimientos de pila producidos por este `Module`.
+  * `columnOffset` {integer} Especifica el desplazamiento del número de columna que se muestra en los seguimientos de pila producidos por este `Modulo`.
+  * `initalizeImportMeta` {Function} Llama durante la evaluación de este `Module` para inicializar el `import.meta`. Esta función tiene la firma `(meta,
+module)`, donde `meta` es el objeto `import.meta` en el `Module`, y `module` es este objeto `vm.Module`.
 
-Creates a new ES `Module` object.
+Crea un nuevo objeto ES `Module`.
 
 *Note*: Properties assigned to the `import.meta` object that are objects may allow the `Module` to access information outside the specified `context`, if the object is created in the top level context. Use `vm.runInContext()` to create objects in a specific context.
 
@@ -411,8 +409,8 @@ changes:
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
   * `contextCodeGeneration` {Object} 
-    * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
-    * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
+    * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Predeterminado:** `true`.
+    * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Predeterminado:** `true`.
 
 First contextifies the given `sandbox`, runs the compiled code contained by the `vm.Script` object within the created sandbox, and returns the result. Running code does not have access to local scope.
 
@@ -486,8 +484,8 @@ changes:
   * `name` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
   * `codeGeneration` {Object} 
-    * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
-    * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
+    * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Predeterminado:** `true`.
+    * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Predeterminado:** `true`.
 
 If given a `sandbox` object, the `vm.createContext()` method will [prepare that sandbox](#vm_what_does_it_mean_to_contextify_an_object) so that it can be used in calls to [`vm.runInContext()`][] or [`script.runInContext()`][]. Inside such scripts, the `sandbox` object will be the global object, retaining all of its existing properties but also having the built-in objects and functions any standard [global object](https://es5.github.io/#x15.1) has. Outside of scripts run by the vm module, global variables will remain unchanged.
 

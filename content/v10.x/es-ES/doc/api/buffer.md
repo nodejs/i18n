@@ -2219,7 +2219,7 @@ changes:
 * `byteLength` {integer} Número de bytes a escribir. Debe satisfacer `0 < byteLength <= 6`.
 * Devuelve: {integer} `offset` más el número de bytes escritos.
 
-Escribe los bytes de `byteLength` del `value` al `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero sin signo.
+Escribe `byteLength` bytes del `value` al `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero sin signo.
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -2278,7 +2278,7 @@ Re-codifica la instancia de `Buffer` o `Uint8Array` dada desde una codificación
 
 Lanza `fromEnc` o `toEnc` si se especifican codificaciones de caracteres inválidas o si la conversión desde `fromEnc` a `toEnc` no está permitida.
 
-El proceso de transcodificación utilizará caracteres de sustitución si una secuencia de bytes dada no puede representarse adecuadamente en la codificación del objetivo. Por ejemplo:
+El proceso de transcodificación utilizará caracteres de sustitución si una secuencia de bytes dada no puede representarse adecuadamente en la codificación objetivo. Por ejemplo:
 
 ```js
 const buffer = require('buffer');
@@ -2298,13 +2298,13 @@ Tenga en cuenta que esto es una propiedad sobre el módulo de `buffer` devuelto 
 deprecated: v6.0.0
 -->
 
-> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] es su lugar.
+> Estabilidad: 0 - Desaprobado: Utilice [`Buffer.allocUnsafeSlow()`] es su lugar.
 
 Devuelve un `Buffer` sin agrupar.
 
 Para evitar la sobrecarga de la recolección de basura al crear muchas instancias de `Buffer` asignadas individualmente, las asignaciones predeterminadas debajo de 4KB se recortan desde un único objeto asignado más grande.
 
-En el caso donde un desarrollado pueda necesitar retener una pequeña porción de la memoria desde un grupo por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `SlowBuffer` y luego copiar los bits relevantes.
+En el caso donde un desarrollador pueda necesitar retener una pequeña porción de la memoria desde un grupo por una cantidad indeterminada de tiempo, puede ser apropiado crear una instancia de `Buffer` sin agrupar utilizando `SlowBuffer` y luego copiar los bits relevantes.
 
 ```js
 // Necesita mantener alrededor algunos pequeños pedazos de memoria
@@ -2331,7 +2331,7 @@ El uso de `SlowBuffer` debe emplearse solo como el último recurso *después* de
 deprecated: v6.0.0
 -->
 
-> Estabilidad: 0 - Obsoleto: Utilice [`Buffer.allocUnsafeSlow()`] en su lugar.
+> Estabilidad: 0 - Desaprobado: Utilice [`Buffer.allocUnsafeSlow()`] en su lugar.
 
 * `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
 

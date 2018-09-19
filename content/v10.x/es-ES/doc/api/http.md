@@ -399,9 +399,9 @@ added: v0.1.94
 * `socket` {net.Socket}
 * `head` {Buffer}
 
-Emitido cada vez que un servidor responde a una solicitud con un upgrade. If this event is not being listened for and the response status code is 101 Switching Protocols, clients receiving an upgrade header will have their connections closed.
+Emitido cada vez que un servidor responde a una solicitud con un upgrade. Si este evento no se está escuchando y el código de estado de respuesta es 101 Switching Protocols, a los clientes que reciban una cabecera de actualización se les cerrarán sus conexiones.
 
-A client server pair demonstrating how to listen for the `'upgrade'` event.
+Un par de un servidor y cliente que demuestra cómo escuchar el evento `'upgrade'` .
 
 ```js
 const http = require('http');
@@ -450,7 +450,7 @@ srv.listen(1337, '127.0.0.1', () => {
 added: v0.3.8
 -->
 
-Marks the request as aborting. Calling this will cause remaining data in the response to be dropped and the socket to be destroyed.
+Marca a la solicitud como "abortando". Llamar a esto causará que los datos restantes en la respuesta se caigan y que el socket se destruya.
 
 ### request.aborted
 
@@ -458,7 +458,7 @@ Marks the request as aborting. Calling this will cause remaining data in the res
 added: v0.11.14
 -->
 
-If a request has been aborted, this value is the time when the request was aborted, in milliseconds since 1 January 1970 00:00:00 UTC.
+Si una solicitud ha sido abortada, este valor será el tiempo en que la solicitud haya sido abortada, en milisegundos, desde el 01 de enero de 1970 00:00:00 UTC.
 
 ### request.connection
 
@@ -468,7 +468,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`request.socket`][].
+Vea [`request.socket`][].
 
 ### request.end(\[data[, encoding]\]\[, callback\])
 
@@ -484,9 +484,9 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Devuelve: {this}
 
-Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Termina de enviar la solicitud. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
 Si se especifica `data`, es equivalente a llamar a [`request.write(data, encoding)`][] seguido de `request.end(callback)`.
 
@@ -511,11 +511,11 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Devuelve: {any}
 
-Reads out a header on the request. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
+Lee un encabezado en la solicitud. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`request.setHeader()`][].
 
-Example:
+Ejemplo:
 
 ```js
 request.setHeader('content-type', 'text/html');
@@ -531,9 +531,9 @@ const setCookie = request.getHeader('set-cookie');
 
 ### request.maxHeadersCount
 
-* {number} **Default:** `2000`
+* {number} **Predeterminado:** `2000`
 
-Limits maximum response headers count. If set to 0, no limit will be applied.
+Limita al conteo máximo de cabeceras de respuesta. Si se establece a 0, no se aplicará ningún límite.
 
 ### request.removeHeader(name)
 
@@ -543,15 +543,15 @@ added: v1.6.0
 
 * `name` {string}
 
-Removes a header that's already defined into headers object.
+Elimina a una cabecera que ya está definida dentro del objeto de cabeceras.
 
-Example:
+Ejemplo:
 
 ```js
 request.removeHeader('Content-Type');
 ```
 
-### request.setHeader(name, value)
+### request.setHeader(nombre, valor)
 
 <!-- YAML
 added: v1.6.0
@@ -560,9 +560,9 @@ added: v1.6.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`request.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Establece a un único valor de cabecera para el objeto de cabeceras. Si esta cabecera ya existe en las cabeceras pendientes, su valor será reemplazado. Utilice aquí un array de strings para enviar varias cabeceras con el mismo nombre. Los valores que no sean strings se almacenarán sin modificación. Por lo tanto, [`request.getHeader()`][] puede devolver valores que no sean strings. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
 
-Example:
+Ejemplo:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
@@ -582,7 +582,7 @@ added: v0.5.9
 
 * `noDelay` {boolean}
 
-Once a socket is assigned to this request and is connected [`socket.setNoDelay()`][] will be called.
+Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setNoDelay()`][] será llamado.
 
 ### request.setSocketKeepAlive(\[enable\]\[, initialDelay\])
 
@@ -593,7 +593,7 @@ added: v0.5.9
 * `enable` {boolean}
 * `initialDelay` {number}
 
-Once a socket is assigned to this request and is connected [`socket.setKeepAlive()`][] will be called.
+Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setKeepAlive()`][] será llamado.
 
 ### request.setTimeout(timeout[, callback])
 
@@ -602,10 +602,10 @@ added: v0.5.9
 -->
 
 * `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Returns: {http.ClientRequest}
+* `callback` {Function} Función opcional que será llamada cuando ocurra un tiempo de espera. Same as binding to the `'timeout'` event.
+* Devuelve: {http.ClientRequest}
 
-Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
+Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setTimeout()`][] será llamado.
 
 ### request.socket
 
@@ -615,9 +615,9 @@ added: v0.3.0
 
 * {net.Socket}
 
-Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. The `socket` may also be accessed via `request.connection`.
+Referencia al socket subyacente. Generalmente, los usuarios no querrán acceder a esta propiedad. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. El `socket` también puede ser accedido mediante `request.connection`.
 
-Example:
+Ejemplo:
 
 ```js
 const http = require('http');
@@ -643,25 +643,25 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 Envía una parte del cuerpo. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
+El argumento `encoding` es opcional y solo aplica cuando `chunk` es una string. Por defecto es `'utf8'`.
 
 The `callback` argument is optional and will be called when this chunk of data is flushed.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
-## Class: http.Server
+## Clase: http.Server
 
 <!-- YAML
 added: v0.1.17
 -->
 
-This class inherits from [`net.Server`][] and has the following additional events:
+Esta clase hereda desde [`net.Server`][] y tiene los siguientes eventos adicionales:
 
-### Event: 'checkContinue'
+### Evento: 'checkContinue'
 
 <!-- YAML
 added: v0.3.0
@@ -670,13 +670,13 @@ added: v0.3.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a `100 Continue` as appropriate.
+Se emite cada vez que se recibe una solicitud con un HTTP `Expect: 100-continue` . Si este evento no se escucha, el servidor automáticamente responderá con un `100 Continue` según corresponda.
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tenga en cuenta que cuando este evento se emite y se maneja, el evento [`'request'`][] no se emitirá.
 
-### Event: 'checkExpectation'
+### Evento: 'checkExpectation'
 
 <!-- YAML
 added: v5.5.0
@@ -685,11 +685,11 @@ added: v5.5.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time a request with an HTTP `Expect` header is received, where the value is not `100-continue`. If this event is not listened for, the server will automatically respond with a `417 Expectation Failed` as appropriate.
+Se emite cada vez que se recibe una solicitud con una cabecera HTTP `Expect`, en donde el valor no es `100-continue`. Si este evento no se escucha, el servidor automáticamente responderá con un `417 Expectation Failed` según corresponda.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tenga en cuenta que cuando este evento se emite y se maneja, el evento [`'request'`][] no será emitido.
 
-### Event: 'clientError'
+### Evento: 'clientError'
 
 <!-- YAML
 added: v0.1.94
@@ -710,11 +710,11 @@ changes:
 * `exception` {Error}
 * `socket` {net.Socket}
 
-If a client connection emits an `'error'` event, it will be forwarded here. Listener of this event is responsible for closing/destroying the underlying socket. For example, one may wish to more gracefully close the socket with a custom HTTP response instead of abruptly severing the connection.
+Si una conexión del cliente emite un evento `'error'`, será reenviado aquí. El listener de este evento es responsable de cerrar/destruir al socket subyacente. Por ejemplo, uno podría desear cerrar de manera más elegante al socket con una respuesta HTTP personalizada, en lugar de cortar la conexión de manera abrupta.
 
-Default behavior is to close the socket with an HTTP '400 Bad Request' response if possible, otherwise the socket is immediately destroyed.
+El comportamiento predeterminado es cerrar al socket con una respuesta HTTP '400 Bad Request' si es posible, de lo contrario el socket se destruirá inmediatamente.
 
-`socket` is the [`net.Socket`][] object that the error originated from.
+`socket` es el objeto [`net.Socket`][] desde el cual se originó el error.
 
 ```js
 const http = require('http');
@@ -728,14 +728,14 @@ server.on('clientError', (err, socket) => {
 server.listen(8000);
 ```
 
-When the `'clientError'` event occurs, there is no `request` or `response` object, so any HTTP response sent, including response headers and payload, *must* be written directly to the `socket` object. Care must be taken to ensure the response is a properly formatted HTTP response message.
+Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Se debe tener cuidado en asegurarse de que la respuesta sea un mensaje de respuesta HTTP formateado apropiadamente.
 
 `err` es una instancia de `Error` con dos columnas adicionales:
 
 * `bytesParsed`: the bytes count of request packet that Node.js may have parsed correctly;
-* `rawPacket`: the raw packet of current request.
+* `rawPacket`: el paquete crudo de la respuesta actual.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.4
@@ -743,17 +743,17 @@ added: v0.1.4
 
 Se emite cuando el servidor se cierra.
 
-### Event: 'connect'
+### Evento: 'connect'
 
 <!-- YAML
 added: v0.7.0
 -->
 
-* `request` {http.IncomingMessage} Arguments for the HTTP request, as it is in the [`'request'`][] event
-* `socket` {net.Socket} Network socket between the server and client
+* `request` {http.IncomingMessage} Argumentos para la solicitud HTTP, como se encuentra en el evento [`'request'`][]
+* `socket` {net.Socket} Socket de red entre el servidor y el cliente
 * `head` {Buffer} The first packet of the tunneling stream (may be empty)
 
-Se emite cada vez que un cliente solicita un método de HTTP `CONNECT` . If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
+Se emite cada vez que un cliente solicita un método de HTTP `CONNECT` . Si este evento no se escucha, entonces a los clientes que soliciten un método `CONNECT` se les cerrarán sus conexiones.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
@@ -765,11 +765,11 @@ added: v0.1.0
 
 * `socket` {net.Socket}
 
-This event is emitted when a new TCP stream is established. `socket` is typically an object of type [`net.Socket`][]. Usually users will not want to access this event. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. The `socket` can also be accessed at `request.connection`.
+Este evento se emite cuando se establece un stream TCP nuevo. `socket` es, por lo general, un objeto de tipo [`net.Socket`][]. Generalmente, los usuarios no querrán acceder a este evento. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. El `socket` también puede ser accedido en `request.connection`.
 
-This event can also be explicitly emitted by users to inject connections into the HTTP server. In that case, any [`Duplex`][] stream can be passed.
+Este evento también puede ser emitido de manera explicita por los usuarios para inyectar conexiones dentro del servidor HTTP. En ese caso, cualquier stream [`Duplex`][] puede ser pasado.
 
-### Event: 'request'
+### Evento: 'request'
 
 <!-- YAML
 added: v0.1.0
@@ -778,9 +778,9 @@ added: v0.1.0
 * `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
-Emitted each time there is a request. Note that there may be multiple requests per connection (in the case of HTTP Keep-Alive connections).
+Se emite cada vez que hay una solicitud. Note that there may be multiple requests per connection (in the case of HTTP Keep-Alive connections).
 
-### Event: 'upgrade'
+### Evento: 'upgrade'
 
 <!-- YAML
 added: v0.1.94
@@ -792,11 +792,11 @@ changes:
                  to be destroyed if a client sends an Upgrade header.
 -->
 
-* `request` {http.IncomingMessage} Arguments for the HTTP request, as it is in the [`'request'`][] event
-* `socket` {net.Socket} Network socket between the server and client
-* `head` {Buffer} The first packet of the upgraded stream (may be empty)
+* `request` {http.IncomingMessage} Argumentos para la solicitud HTTP, como se encuentra en el evento [`'request'`][]
+* `socket` {net.Socket} Socket de red entre el servidor y el cliente
+* `head` {Buffer} El primer paquete del stream actualizado (puede estar vacío)
 
-Emitted each time a client requests an HTTP upgrade. Listening to this event is optional and clients cannot insist on a protocol change.
+Se emite cada vez que un cliente solicita una mejora HTTP. Escuchar a este evento es opcional, y los clientes no pueden insistir en un cambio de protocolo.
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
@@ -812,7 +812,7 @@ Detiene al servidor de aceptar nuevas conexiones. Vea [`net.Server.close()`][].
 
 ### server.listen()
 
-Starts the HTTP server listening for connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
+Starts the HTTP server listening for connections. Este método es idéntico a [`server.listen()`][] desde [`net.Server`][].
 
 ### server.listening
 
@@ -820,7 +820,7 @@ Starts the HTTP server listening for connections. This method is identical to [`
 added: v5.7.0
 -->
 
-* {boolean} Indicates whether or not the server is listening for connections.
+* {boolean} Indica si el servidor está escuchando a las conexiones o no.
 
 ### server.maxHeadersCount
 
@@ -828,9 +828,9 @@ added: v5.7.0
 added: v0.7.0
 -->
 
-* {number} **Default:** `2000`
+* {number} **Predeterminado:** `2000`
 
-Limits maximum incoming headers count. If set to 0, no limit will be applied.
+Limita al conteo máximo de cabeceras entrantes. Si se establece a 0, no se aplicará ningún límite.
 
 ### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -838,15 +838,15 @@ Limits maximum incoming headers count. If set to 0, no limit will be applied.
 added: v0.9.12
 -->
 
-* `msecs` {number} **Default:** `120000` (2 minutes)
+* `msecs` {number} **Predeterminado:** `120000` (2 minutos)
 * `callback` {Function}
-* Returns: {http.Server}
+* Devuelve: {http.Server}
 
-Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
+Establece el valor del tiempo de espera para los sockets, y emite un evento `'timeout'` en el objeto del Servidor, pasando al socket como un argumento, en caso de que ocurra un tiempo de espera.
 
-If there is a `'timeout'` event listener on the Server object, then it will be called with the timed-out socket as an argument.
+Si hay un listener del evento `'timeout'` en el objeto del Servidor, entonces será llamado con el socket puesto en tiempo de espera como un argumento.
 
-By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out. However, if a callback is assigned to the Server's `'timeout'` event, timeouts must be handled explicitly.
+Por defecto, el valor del tiempo de espera del Servidor es 2 minutos, y los sockets se destruyen automáticamente si se ponen en tiempo de espera. Sin embargo, si un callback es asignado al evento `'timeout'` del Servidor, los tiempos de espera deberán ser manejados de manera explícita.
 
 ### server.timeout
 
@@ -854,11 +854,11 @@ By default, the Server's timeout value is 2 minutes, and sockets are destroyed a
 added: v0.9.12
 -->
 
-* {number} Timeout in milliseconds. **Default:** `120000` (2 minutes).
+* {number} Tiempo de espera en milisegundos. **Predeterminado:** `120000` (2 minutos).
 
 The number of milliseconds of inactivity before a socket is presumed to have timed out.
 
-A value of `0` will disable the timeout behavior on incoming connections.
+Un valor de `0` inhabilitará el comportamiento del tiempo de espera en conexiones entrantes.
 
 The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
@@ -868,23 +868,23 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v8.0.0
 -->
 
-* {number} Timeout in milliseconds. **Default:** `5000` (5 seconds).
+* {number} Tiempo de espera en milisegundos. **Predeterminado:** `5000` (5 segundos).
 
-The number of milliseconds of inactivity a server needs to wait for additional incoming data, after it has finished writing the last response, before a socket will be destroyed. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
+El número de milisegundos de inactividad que necesita un servidor para esperar a datos entrantes adicionales, después de que haya terminado de escribir la última respuesta, antes de que se destruya un socket. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
 
 A value of `0` will disable the keep-alive timeout behavior on incoming connections. A value of `0` makes the http server behave similarly to Node.js versions prior to 8.0.0, which did not have a keep-alive timeout.
 
 The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
-## Class: http.ServerResponse
+## Clase: http.ServerResponse
 
 <!-- YAML
 added: v0.1.17
 -->
 
-This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
+Este objeto es creado internamente por un servidor HTTP — no por el usuario. Es pasado como el segundo parámetro al evento [`'request'`][] .
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. Esto es un [`EventEmitter`][] con los siguientes eventos:
+La respuesta implementa, pero no hereda, la interfaz del [Stream Editable](stream.html#stream_class_stream_writable) . Esto es un [`EventEmitter`][] con los siguientes eventos:
 
 ### Evento: 'close'
 
@@ -894,13 +894,13 @@ added: v0.6.7
 
 Indicates that the underlying connection was terminated before [`response.end()`][] was called or able to flush.
 
-### Event: 'finish'
+### Evento: 'finish'
 
 <!-- YAML
 added: v0.3.6
 -->
 
-Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. It does not imply that the client has received anything yet.
+Se emite cuando la respuesta ha sido enviada. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. Eso no implica que el cliente haya recibido algo aún.
 
 Después de este evento, no se emitirán más eventos en el objeto de respuesta.
 
@@ -916,7 +916,7 @@ This method adds HTTP trailing headers (a header but at the end of the message) 
 
 Trailers will **only** be emitted if chunked encoding is used for the response; if it is not (e.g. if the request was HTTP/1.0), they will be silently discarded.
 
-Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. E.g.,
+Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. Por ejemplo,
 
 ```js
 response.writeHead(200, { 'Content-Type': 'text/plain',
@@ -936,7 +936,7 @@ added: v0.3.0
 
 * {net.Socket}
 
-See [`response.socket`][].
+Vea [`response.socket`][].
 
 ### response.end(\[data\]\[, encoding\][, callback])
 
@@ -954,7 +954,7 @@ changes:
 * `callback` {Function}
 * Returns: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. El método, `response.end()`, DEBE ser llamado en cada respuesta.
 
 If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
@@ -968,7 +968,7 @@ added: v0.0.2
 
 * {boolean}
 
-Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
+El valor booleano indica si se ha completado la respuesta. Starts as `false`. Luego de que [`response.end()`][] se ejecuta, el valor será `true`.
 
 ### response.getHeader(name)
 
@@ -977,9 +977,9 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Returns: {any}
+* Devuelve: {any}
 
-Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
+Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`response.setHeader()`][].
 
 Ejemplo:
 
@@ -1101,7 +1101,7 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Non-string values will be stored without modification. Therefore, [`response.getHeader()`][] may return non-string values. However, the non-string values will be converted to strings for network transmission.
+Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Los valores que no sean strings se almacenarán sin modificación. Therefore, [`response.getHeader()`][] may return non-string values. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
 
 Example:
 

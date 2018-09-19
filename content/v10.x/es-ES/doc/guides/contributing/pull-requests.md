@@ -172,88 +172,88 @@ Las correcciones de errores y las características siempre deben venir con las p
 
 El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro a dónde debe ir un nuevo archivo de prueba. En caso de dudas, agregue una nueva prueba al directorio `test/parallel/` y la ubicación correcta se resolverá luego.
 
-Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. To run the tests (including code linting) on Unix / macOS:
+Antes de enviar los cambios en una Pull Request, siempre ejecute el conjunto de pruebas completo de Node.js. Para ejecutar las pruebas (incluyendo el linting de código) en Unix/macOS:
 
 ```text
 $ ./configure && make -j4 test
 ```
 
-And on Windows:
+Y en Windows:
 
 ```text
 > vcbuild test
 ```
 
-(See the [Building guide](../../../BUILDING.md) for more details.)
+(Vea la [Building guide](../../../BUILDING.md) para más detalles.)
 
-Make sure the linter does not report any issues and that all tests pass. Please do not submit patches that fail either check.
+Asegúrese de que el linter no reporte ningún problema y de que todas las pruebas pasen. Por favor, no envíe parches que no cumplan con la verificación.
 
-If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
+Si desea ejecutar el linter sin ejecutar pruebas, utilice `make lint`/`vcbuild lint`. Ejecutará el linting de JavaScript y el linting de C ++.
 
-If you are updating tests and just want to run a single test to check it:
+Si está actualizando pruebas y solo desea ejecutar una sola prueba para verificarlo:
 
 ```text
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
 ```
 
-You can execute the entire suite of tests for a given subsystem by providing the name of a subsystem:
+Puede ejecutar todo el conjunto de pruebas para un subsistema dado proporcionando el nombre de un subsistema:
 
 ```text
 $ python tools/test.py -J --mode=release child-process
 ```
 
-If you want to check the other options, please refer to the help by using the `--help` option
+Si desea verificar las otras opciones, consulte la ayuda utilizando la opción `--help`
 
 ```text
 $ python tools/test.py --help
 ```
 
-You can usually run tests directly with node:
+Por lo general, puede ejecutar pruebas directamente con node:
 
 ```text
 $ ./node ./test/parallel/test-stream2-transform.js
 ```
 
-Remember to recompile with `make -j4` in between test runs if you change code in the `lib` or `src` directories.
+Recuerde volver a compilar con `make -j4` entre ejecuciones de prueba si cambia el código en los directorios `lib`o`src`.
 
-#### Test Coverage
+#### Cobertura de Prueba
 
-It's good practice to ensure any code you add or change is covered by tests. You can do so by running the test suite with coverage enabled:
+Es una buena práctica asegurarse de que cualquier código que agregue o modifique esté cubierto por pruebas. Puede hacerlo ejecutando el conjunto de pruebas con cobertura habilitada:
 
 ```text
 $ ./configure --coverage && make coverage
 ```
 
-A detailed coverage report will be written to `coverage/index.html` for JavaScript coverage and to `coverage/cxxcoverage.html` for C++ coverage.
+Se escribirá un informe de cobertura detallado en `coverage/index.html` para la cobertura de JavaScript y en `coverage/cxxcoverage.html` para la cobertura de C ++.
 
-*Note that generating a test coverage report can take several minutes.*
+*Tenga en cuenta que generar un informe de cobertura de prueba puede demorar varios minutos.*
 
-To collect coverage for a subset of tests you can set the `CI_JS_SUITES` and `CI_NATIVE_SUITES` variables:
+Para recopilar la cobertura de un subconjunto de pruebas, puede establecer las variables `CI_JS_SUITES` y `CI_NATIVE_SUITES`:
 
 ```text
 $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
 ```
 
-The above command executes tests for the `child-process` subsystem and outputs the resulting coverage report.
+El comando anterior ejecuta pruebas para el subsistema `child-process` y genera el informe de cobertura resultante.
 
-Running tests with coverage will create and modify several directories and files. To clean up afterwards, run:
+Ejecutar pruebas con cobertura creará y modificará varios directorios y archivos. Para limpiar después, ejecute:
 
 ```text
 make coverage-clean
 ./configure && make -j4.
 ```
 
-### Step 7: Push
+### Paso 7: Push
 
-Once you are sure your commits are ready to go, with passing tests and linting, begin the process of opening a Pull Request by pushing your working branch to your fork on GitHub.
+Una vez que esté seguro de que sus commits están listas para continuar, pasando las pruebas y el linting, comience el proceso de abrir una Pull Request "empujando" su branch de trabajo hacia su fork en GitHub.
 
 ```text
 $ git push origin my-branch
 ```
 
-### Step 8: Opening the Pull Request
+### Paso 8: Apertura de la Pull Request
 
-From within GitHub, opening a new Pull Request will present you with a template that should be filled out:
+Desde dentro de GitHub, la apertura de una nueva Pull Request le presentará una plantilla (en inglés) que debe completarse:
 
 ```markdown
 <!--
@@ -274,15 +274,15 @@ Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
 - [ ] commit message follows [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
 ```
 
-Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
+Por favor, intente hacer todo lo posible para completar los detalles, pero no dude en saltarse partes si no está seguro de qué colocar.
 
-Once opened, Pull Requests are usually reviewed within a few days.
+Una vez abierto, las Pull Requests generalmente se revisan en unos pocos días.
 
-### Step 9: Discuss and update
+### Paso 9: Discutir y actualizar
 
-You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+Probablemente recibirá un feedback o solicitudes de cambios en su Pull Request. Esta es una parte importante del proceso de envío, así que, ¡no te desanimes! Algunos colaboradores pueden firmar la Pull Request de inmediato, otros pueden tener comentarios más detallados o un feedback. Esta es una parte necesaria del proceso para evaluar si los cambios son correctos y necesarios.
 
-To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
+Para realizar cambios en una Pull Request existente, realice los cambios en su branch local, agregue un nuevo commit con esos cambios y envíelos a su fork. GitHub actualizará automáticamente la Pull Request.
 
 ```text
 $ git add my/changed/files
@@ -290,7 +290,7 @@ $ git commit
 $ git push origin my-branch
 ```
 
-It is also frequently necessary to synchronize your Pull Request with other changes that have landed in `master` by using `git rebase`:
+También suele ser necesario sincronizar su Pull Request con otros cambios que han "aterrizado" en `master` usando `git rebase`:
 
 ```text
 $ git fetch --all
@@ -298,9 +298,9 @@ $ git rebase origin/master
 $ git push --force-with-lease origin my-branch
 ```
 
-**Important:** The `git push --force-with-lease` command is one of the few ways to delete history in `git`. Before you use it, make sure you understand the risks. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
+**Importante:** El comando `git push --force-with-lease` es una de las pocas formas de eliminar el historial en `git`. Antes de usarlo, asegúrese de comprender los riesgos. En caso de duda, siempre puede solicitar orientación en la Pull Request o en [IRC en el canal #node-dev](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-If you happen to make a mistake in any of your commits, do not worry. You can amend the last commit (for example if you want to change the commit log).
+Si comete un error en alguno de sus commits, no se preocupe. Puede modificar el último commit (por ejemplo, si desea cambiar el registro de commit).
 
 ```text
 $ git add any/changed/files
@@ -308,15 +308,15 @@ $ git commit --amend
 $ git push --force-with-lease origin my-branch
 ```
 
-There are a number of more advanced mechanisms for managing commits using `git rebase` that can be used, but are beyond the scope of this guide.
+Hay varios mecanismos más avanzados para administrar commits usando `git rebase` que pueden ser usados, pero están fuera del alcance de esta guía.
 
-Feel free to post a comment in the Pull Request to ping reviewers if you are awaiting an answer on something. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
+Siéntase libre de publicar un comentario en la Pull Request para hacer ping a los colaboradores si está esperando una respuesta sobre algo. Si encuentra palabras o acrónimos que le parecen desconocidos, consulte este [glosario](https://sites.google.com/a/chromium.org/dev/glossary).
 
-#### Approval and Request Changes Workflow
+#### Flujo de trabajo de aprobación y cambios de solicitud
 
-All Pull Requests require "sign off" in order to land. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+Todas las Pull Requests requieren "cerrar sesión" para poder "aterrizar". Cuando un colaborador revisa una Pull Request, puede encontrar detalles específicos que le gustaría ver modificados o reparados. Estos pueden ser tan simples como corregir un error tipográfico, o pueden implicar cambios sustanciales en el código que ha escrito. Si bien estas solicitudes tienen la intención de ser útiles, pueden parecer abruptas o inútiles, especialmente las solicitudes para cambiar las cosas que no incluyen sugerencias concretas sobre *cómo* cambiarlas.
 
-Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+Trate de no desanimarse. Si siente que una revisión en particular es injusta, dígalo, o póngase en contacto con uno de los otros colaboradores en el proyecto y solicite su opinión. A menudo, dichos comentarios son el resultado de que el revisador solo tomó un corto tiempo para revisar y no están mal intencionados. Tales problemas a menudo se pueden resolver con un poco de paciencia. Dicho esto, se debería esperar que los revisores sean útiles en su feedback, y los comentarios que son simplemente vagos, despectivos e inútiles, probablemente sea mejor ignorarlos.
 
 ### Step 10: Landing
 

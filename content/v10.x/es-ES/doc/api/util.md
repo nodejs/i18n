@@ -743,9 +743,9 @@ Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de l
   * `stream` {boolean} `true` si pedazos adicionales de datos son esperados. **Predeterminado:** `false`.
 * Devuelve: {string}
 
-Decodifica el `input` y devuelve un string. Si `options.stream` es `true`, cualquier secuencia de bytes incompleta que ocurra al final del `input` son almacenadas internamente y emitidas después de la siguiente llamada a `textDecoder.decode()`.
+Decodifica el `input` y devuelve un string. Si `options.stream` es `true`, las secuencias de bytes incompletas que ocurran al final del `input` son almacenadas internamente y emitidas después de la siguiente llamada a `textDecoder.decode()`.
 
-Si `textDecoder.fatal` es `true`, decodificar errores que ocurran puede resultar en un `TypeError` siendo arrojado.
+Si `textDecoder.fatal` es `true`, decodificar errores que ocurran resultará en un `TypeError` siendo arrojado.
 
 ### textDecoder.encoding
 
@@ -771,7 +771,7 @@ El valor será `true` si el resultado de la decodificación va a incluir la marc
 added: v8.3.0
 -->
 
-Una implementación de la API `TextDecoder` del [Estándar de Decodificación WHATWG](https://encoding.spec.whatwg.org/). Todas las instancias de `TextEncoder` solo soportan codificación UTF-8.
+Una implementación de la API `TextDecoder` del [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/). Todas las instancias de `TextEncoder` solo soportan codificación UTF-8.
 
 ```js
 const encoder = new TextEncoder();
@@ -797,9 +797,9 @@ La codificación soportada por la instancia `TextEncoder`. Siempre configurado p
 added: v10.0.0
 -->
 
-`util.types` proporciona un número de chequeos de tipo para diferentes clases de objetos incorporados. A diferencia de `instanceof` o `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
+`util.types` proporciona un número de chequeos de tipo para diferentes clases de objetos incorporados. A diferencia de `instanceof` u `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
 
-El resultado generalmente no da ninguna garantía sobre qué tipos de propiedades o comportamientos expone un valor en JavaScript. Ellos son principalmente útiles para desarrolladores de complementos quienes prefieren hacer el chequeo de tipo en JavaScript.
+El resultado generalmente no da ninguna garantía sobre qué tipos de propiedades o comportamientos expone un valor en JavaScript. Ellos son principalmente útiles para desarrolladores de complementos que prefieren hacer el chequeo de tipo en JavaScript.
 
 ### util.types.isAnyArrayBuffer(value)
 
@@ -985,7 +985,7 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es una función del generador. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Devuelve `true` si el valor es una función generadora. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
 Por ejemplo:
 
@@ -1002,7 +1002,7 @@ added: v10.0.0
 
 * Devuelve: {boolean}
 
-Devuelve `true` si el valor es un objeto del generador como se devuelve de la función del generador incorporada. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Devuelve `true` si el valor es un objeto generador como se devuelve de una función generadora incorporada. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
 
 Por ejemplo:
 
@@ -1255,8 +1255,8 @@ Devuelve `true` si el valor es un objeto de string, p. ej. creado por `new Strin
 Por ejemplo:
 
 ```js
-util.types.isStringObject('foo');  // Returns false
-util.types.isStringObject(new String('foo'));   // Returns true
+util.types.isStringObject('foo');  // Devuelve false
+util.types.isStringObject(new String('foo'));   // Devuelve true
 ```
 
 ### util.types.isSymbolObject(value)
@@ -1265,16 +1265,16 @@ util.types.isStringObject(new String('foo'));   // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
+Devuelve `true` si el valor es un objeto de símbolo, creado al llamar a `Object()` en un `Symbol` primitivo.
 
-For example:
+Por ejemplo:
 
 ```js
 const symbol = Symbol('foo');
-util.types.isSymbolObject(symbol);  // Returns false
-util.types.isSymbolObject(Object(symbol));   // Returns true
+util.types.isSymbolObject(symbol);  // Devuelve false
+util.types.isSymbolObject(Object(symbol));   // Devuelve true
 ```
 
 ### util.types.isTypedArray(value)
@@ -1283,16 +1283,16 @@ util.types.isSymbolObject(Object(symbol));   // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`TypedArray`][] instance.
+Devuelve `true` si el valor es una instancia [`TypedArray`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isTypedArray(new ArrayBuffer());  // Returns false
-util.types.isTypedArray(new Uint8Array());  // Returns true
-util.types.isTypedArray(new Float64Array());  // Returns true
+util.types.isTypedArray(new ArrayBuffer());  // Devuelve false
+util.types.isTypedArray(new Uint8Array());  // Devuelve true
+util.types.isTypedArray(new Float64Array());  // Devuelve true
 ```
 
 Ver también [`ArrayBuffer.isView()`][].
@@ -1303,16 +1303,16 @@ Ver también [`ArrayBuffer.isView()`][].
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint8Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint8Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint8Array(new ArrayBuffer());  // Returns false
-util.types.isUint8Array(new Uint8Array());  // Returns true
-util.types.isUint8Array(new Float64Array());  // Returns false
+util.types.isUint8Array(new ArrayBuffer());  // Devuelve false
+util.types.isUint8Array(new Uint8Array());  // Devuelve true
+util.types.isUint8Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isUint8ClampedArray(value)
@@ -1321,16 +1321,16 @@ util.types.isUint8Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint8ClampedArray`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint8ClampedArray(new ArrayBuffer());  // Returns false
-util.types.isUint8ClampedArray(new Uint8ClampedArray());  // Returns true
-util.types.isUint8ClampedArray(new Float64Array());  // Returns false
+util.types.isUint8ClampedArray(new ArrayBuffer());  // Devuelve false
+util.types.isUint8ClampedArray(new Uint8ClampedArray());  // Devuelve true
+util.types.isUint8ClampedArray(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isUint16Array(value)
@@ -1339,16 +1339,16 @@ util.types.isUint8ClampedArray(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint16Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint16Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint16Array(new ArrayBuffer());  // Returns false
-util.types.isUint16Array(new Uint16Array());  // Returns true
-util.types.isUint16Array(new Float64Array());  // Returns false
+util.types.isUint16Array(new ArrayBuffer());  // Devuelve false
+util.types.isUint16Array(new Uint16Array());  // Devuelve true
+util.types.isUint16Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isUint32Array(value)
@@ -1357,16 +1357,16 @@ util.types.isUint16Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`Uint32Array`][] instance.
+Devuelve `true` si el valor es una instancia [`Uint32Array`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isUint32Array(new ArrayBuffer());  // Returns false
-util.types.isUint32Array(new Uint32Array());  // Returns true
-util.types.isUint32Array(new Float64Array());  // Returns false
+util.types.isUint32Array(new ArrayBuffer());  // Devuelve false
+util.types.isUint32Array(new Uint32Array());  // Devuelve true
+util.types.isUint32Array(new Float64Array());  // Devuelve false
 ```
 
 ### util.types.isWeakMap(value)
@@ -1375,14 +1375,14 @@ util.types.isUint32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`WeakMap`][] instance.
+Devuelve `true` si el valor es una instancia [`WeakMap`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isWeakMap(new WeakMap());  // Returns true
+util.types.isWeakMap(new WeakMap());  // Devuelve true
 ```
 
 ### util.types.isWeakSet(value)
@@ -1391,14 +1391,14 @@ util.types.isWeakMap(new WeakMap());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`WeakSet`][] instance.
+Devuelve `true` si el valor es una instancia [`WeakSet`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
-util.types.isWeakSet(new WeakSet());  // Returns true
+util.types.isWeakSet(new WeakSet());  // Devuelve true
 ```
 
 ### util.types.isWebAssemblyCompiledModule(value)
@@ -1407,20 +1407,20 @@ util.types.isWeakSet(new WeakSet());  // Returns true
 added: v10.0.0
 -->
 
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
+Devuelve `true` si el valor es una instancia [`WebAssembly.Module`][] incorporada.
 
-For example:
+Por ejemplo:
 
 ```js
 const module = new WebAssembly.Module(wasmBuffer);
-util.types.isWebAssemblyCompiledModule(module);  // Returns true
+util.types.isWebAssemblyCompiledModule(module);  // Devuelve true
 ```
 
-## Deprecated APIs
+## APIs Desaprobadas
 
-The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
+Las siguientes APIs han sido desaprobadas y ya no deberían ser usadas. Los módulos y aplicaciones existentes deberían ser actualizados para encontrar enfoques alternativos.
 
 ### util.\_extend(target, source)
 
@@ -1429,11 +1429,11 @@ added: v0.7.5
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`Object.assign()`].
 
-The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
+El método `util._extend()` nunca fue pensado para ser usado fuera de los módulos internos de Node.js. De todas maneras, la comunidad lo encontró y lo usó.
 
-It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
+Está desaprobado y no debería ser usado en código nuevo. JavaScript viene con funcionabilidades incorporadas muy similares por medio de [`Object.assign()`].
 
 ### util.debug(string)
 
@@ -1442,11 +1442,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.error()`][].
 
-* `string` {string} The message to print to `stderr`
+* `string` {string} El mensaje para imprimir en `stderr`
 
-Deprecated predecessor of `console.error`.
+Predecesor desaprobado de `console.error`.
 
 ### util.error([...strings])
 
@@ -1455,11 +1455,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.error()`][].
 
-* `...strings` {string} The message to print to `stderr`
+* `...strings` {string} El mensaje para imprimir en `stderr`
 
-Deprecated predecessor of `console.error`.
+Predecesor desaprobado de `console.error`.
 
 ### util.isArray(object)
 
@@ -1468,14 +1468,14 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`Array.isArray()`][].
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Alias for [`Array.isArray()`][].
+Alias para [`Array.isArray()`][].
 
-Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Array`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1495,12 +1495,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'boolean'`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Boolean`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1520,22 +1520,22 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`Buffer.isBuffer()`][].
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Buffer`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
 
 util.isBuffer({ length: 0 });
-// Returns: false
+// Devuelve: false
 util.isBuffer([]);
-// Returns: false
+// Devuelve: false
 util.isBuffer(Buffer.from('hello world'));
-// Returns: true
+// Devuelve: true
 ```
 
 ### util.isDate(object)
@@ -1545,22 +1545,22 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`util.types.isDate()`][].
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
+Devuelve `true` si el `object` es una `Date`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
 
 util.isDate(new Date());
-// Returns: true
+// Devuelve: true
 util.isDate(Date());
-// false (without 'new' returns a String)
+// false (sin 'new' devuelve un String)
 util.isDate({});
-// Returns: false
+// Devuelve: false
 ```
 
 ### util.isError(object)
@@ -1570,12 +1570,12 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`util.types.isNativeError()`][].
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un [`Error`][]. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1588,7 +1588,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Devuelve: false
 ```
 
-Note that this method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
+Tenga en cuenta que este método depende del comportamiento de `Object.prototype.toString()`. Es posible obtener un resultado incorrecto cuando el argumento del `object` manipula a `@@toStringTag`.
 
 ```js
 const util = require('util');
@@ -1608,12 +1608,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'function'`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es una `Function`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1636,12 +1636,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value === null` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value === null`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is strictly `null`. Otherwise, returns `false`.
+Devuelve `true` si el `object` es estrictamente `null`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1661,12 +1661,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value === undefined || value === null` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value === undefined || value === null`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es `null` o `undefined`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1686,12 +1686,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'number'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'number'`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Number`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1713,12 +1713,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value !== null && typeof value === 'object'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value !== null && typeof value === 'object'`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es estrictamente un `Object` **y** no una `Function` (a pesar de que las funciones son objetos en JavaScript). De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1740,12 +1740,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `(typeof value !== 'object' && typeof value !== 'function') || value === null` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `(typeof value !== 'object' && typeof value !== 'function') || value === null`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un tipo primitivo. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1777,12 +1777,12 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `RegExp`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1802,12 +1802,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'string'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'string'`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `string`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1829,12 +1829,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'symbol'`.
 
 * `object` {any}
 * Devuelve: {boolean}
 
-Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es un `Symbol`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1854,12 +1854,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use `value === undefined` instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use `value === undefined`.
 
 * `object` {any}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
-Returns `true` if the given `object` is `undefined`. Otherwise, returns `false`.
+Devuelve `true` si el `object` dado es `undefined`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1880,11 +1880,11 @@ added: v0.3.0
 deprecated: v6.0.0
 -->
 
-> Stability: 0 - Deprecated: Use a third party module instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use un módulo de terceros.
 
 * `string` {string}
 
-The `util.log()` method prints the given `string` to `stdout` with an included timestamp.
+El método `util.log()` imprime el `string` dado a `stdout` con una marca de tiempo incluida.
 
 ```js
 const util = require('util');
@@ -1899,9 +1899,9 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.log()`][].
 
-Deprecated predecessor of `console.log`.
+Predecesor desaprobado de `console.log`.
 
 ### util.puts([...strings])
 
@@ -1910,6 +1910,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
+> Estabilidad: 0 - Desaprobado: En cambio, use [`console.log()`][].
 
-Deprecated predecessor of `console.log`.
+Predecesor desaprobado de `console.log`.

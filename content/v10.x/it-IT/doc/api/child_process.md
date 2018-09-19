@@ -157,7 +157,7 @@ Se `timeout` è maggiore di `0`, il parent invierà il segnale identificato dall
 
 A differenza della chiamata di sistema POSIX exec(3), `child_process.exec()` non sostituisce il processo esistente e utilizza una shell per eseguire il comando.
 
-Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In caso di errore (incluso qualsiasi errore che da come risultato un valore di uscita diverso da 0), viene restituito un promise respinto, con lo stesso `error` object specificato nel callback, ma con altre due proprietà `stdout` e `stderr`.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In caso di errore (incluso qualsiasi errore che dia come risultato un valore di uscita diverso da 0), viene restituito un promise respinto, con lo stesso `error` object specificato nel callback, ma con altre due proprietà `stdout` e `stderr`.
 
 ```js
 const util = require('util');
@@ -189,7 +189,7 @@ changes:
   * `env` {Object} Coppie key-value dell'ambiente.
   * `encoding` {string} **Default:** `'utf8'`
   * `timeout` {number} **Default:** `0`
-  * `maxBuffer` {number} La quantità maggiore di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} La quantità massima di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `killSignal` {string|integer} **Default:** `'SIGTERM'`
   * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
   * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
@@ -218,7 +218,7 @@ const child = execFile('node', ['--version'], (error, stdout, stderr) => {
 
 Gli argomenti `stdout` e `stderr` passati al callback conterranno gli output stdout e stderr del processo child. Di default, Node.js decodificherà l'output come UTF-8 e passerà le stringhe al callback. L'opzione `encoding` può essere usata per specificare l'encoding (codifica) dei caratteri utilizzato per decodificare gli output stdout e stderr. Se `encoding` è `'buffer'`, oppure un econding dei caratteri non riconosciuto, allora i `Buffer` object saranno passati al callback.
 
-Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In caso di errore (incluso qualsiasi errore che da come risultato un valore di uscita diverso da 0), viene restituito un promise respinto, con lo stesso `error` object specificato nel callback, ma con altre due proprietà `stdout` e `stderr`.
+Se questo metodo viene invocato come sua versione [`util.promisify()`][], restituisce un `Promise` per un `Object` con le proprietà `stdout` e `stderr`. In caso di errore (incluso qualsiasi errore che dia come risultato un valore di uscita diverso da 0), viene restituito un promise respinto, con lo stesso `error` object specificato nel callback, ma con altre due proprietà `stdout` e `stderr`.
 
 ```js
 const util = require('util');
@@ -289,26 +289,26 @@ changes:
     description: The `shell` option is supported now.
 -->
 
-* `command` {string} The command to run.
-* `args` {string[]} List of string arguments.
+* `command` {string} Il comando da eseguire.
+* `args` {string[]} Elenco degli argomenti di string.
 * `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
-  * `env` {Object} Environment key-value pairs.
-  * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. This will be set to `command` if not specified.
-  * `stdio` {Array|string} Child's stdio configuration (see [`options.stdio`][`stdio`]).
-  * `detached` {boolean} Prepare child to run independently of its parent process. Specific behavior depends on the platform, see [`options.detached`][]).
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* Returns: {ChildProcess}
+  * `cwd` {string} Attuale directory di lavoro del processo child.
+  * `env` {Object} Coppie key-value dell'ambiente.
+  * `argv0` {string} Imposta esplicitamente il valore di `argv[0]` inviato al processo child. Questo sarà impostato su `command` se non specificato.
+  * `stdio` {Array|string} Configurazione stdio del child (vedi [`options.stdio`][`stdio`]).
+  * `detached` {boolean} Prepara il child all'avvio indipendentemente dal suo processo parent. Il comportamento specifico dipende dalla piattaforma, vedi [`options.detached`][].
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
+  * `shell` {boolean|string} Se `true`, esegue `command` all'interno di una shell. Utilizza `'/bin/sh'` su UNIX, e `process.env.ComSpec` su Windows. Una shell diversa può essere specificata come una stringa. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `false` (nessuna shell).
+  * `windowsVerbatimArguments` {boolean} Non viene eseguita nessuna citazione od escaping degli argomenti su Windows. Ignorato su Unix. È impostato su `true` automaticamente quando la `shell` è specificata. **Default:** `false`.
+  * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
+* Restituisce: {ChildProcess}
 
-The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
+Il metodo `child_process.spawn()` genera un nuovo processo utilizzando il `command` dato, con gli argomenti della command line in `args`. Se omesso, `args` si imposta automaticamente su un array vuoto.
 
 **Se l'opzione `shell` è abilitata, non passare l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
 
-A third argument may be used to specify additional options, with these defaults:
+Un terzo argomento può essere usato per specificare ulteriori opzioni, con questi valori di default:
 
 ```js
 const defaults = {
@@ -317,13 +317,13 @@ const defaults = {
 };
 ```
 
-Use `cwd` to specify the working directory from which the process is spawned. If not given, the default is to inherit the current working directory.
+Utilizza `cwd` per specificare la directory di lavoro dalla quale viene generato il processo. Se non specificata, l'impostazione predefinita consiste nell'ereditare l'attuale directory di lavoro.
 
-Use `env` to specify environment variables that will be visible to the new process, the default is [`process.env`][].
+Utilizza `env` per specificare le variabili di ambiente che saranno visibili per il nuovo processo, il valore predefinito è [`process.env`][].
 
-`undefined` values in `env` will be ignored.
+I valori `undefined` in `env` saranno ignorati.
 
-Example of running `ls -lh /usr`, capturing `stdout`, `stderr`, and the exit code:
+Esempio di esecuzione di `ls -lh /usr`, acquisizione di `stdout`, `stderr`, e del valore di uscita:
 
 ```js
 const { spawn } = require('child_process');
@@ -342,7 +342,7 @@ ls.on('close', (code) => {
 });
 ```
 
-Example: A very elaborate way to run `ps ax | grep ssh`
+Esempio: Un modo molto elaborato per eseguire `ps ax | grep ssh`
 
 ```js
 const { spawn } = require('child_process');
@@ -379,7 +379,7 @@ grep.on('close', (code) => {
 });
 ```
 
-Example of checking for failed `spawn`:
+Esempio di controllo per `spawn` fallito:
 
 ```js
 const { spawn } = require('child_process');
@@ -390,9 +390,9 @@ subprocess.on('error', (err) => {
 });
 ```
 
-Certain platforms (macOS, Linux) will use the value of `argv[0]` for the process title while others (Windows, SunOS) will use `command`.
+Alcune piattaforme (macOS, Linux) utilizzeranno il valore di `argv[0]` per il titolo del processo, mentre altri (Windows, SunOS) useranno `command`.
 
-Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `process.argv[0]` in a Node.js child process will not match the `argv0` parameter passed to `spawn` from the parent, retrieve it with the `process.argv0` property instead.
+Attualmente Node.js sovrascrive `argv[0]` con `process.execPath` all'avvio, quindi il `process.argv[0]` all'interno di un processo child di Node.js non corrisponderà al parametro `argv0` passato a `spawn` dal parent, perciò va recuperato con la proprietà `process.argv0`.
 
 #### options.detached
 
@@ -400,15 +400,15 @@ Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `p
 added: v0.7.10
 -->
 
-On Windows, setting `options.detached` to `true` makes it possible for the child process to continue running after the parent exits. The child will have its own console window. *Once enabled for a child process, it cannot be disabled*.
+Su Windows, l'impostazione di `options.detached` su `true` consente al processo child di continuare ad essere eseguito dopo la chiusura del parent. Il child avrà la propria finestra della console. *Una volta abilitato per un processo child, non può essere disabilitato*.
 
-On non-Windows platforms, if `options.detached` is set to `true`, the child process will be made the leader of a new process group and session. Note that child processes may continue running after the parent exits regardless of whether they are detached or not. See setsid(2) for more information.
+Su piattaforme diverse da Windows, se `options.detached` è impostato su `true`, allora il processo child sarà reso il leader di un nuovo gruppo di processi e di sessione. Da notare che i processi child possono continuare ad essere eseguiti dopo che il parent si è concluso indipendentemente dal fatto che siano stati distaccati o meno. Vedi setsid(2) per maggiori informazioni.
 
-By default, the parent will wait for the detached child to exit. To prevent the parent from waiting for a given `subprocess`, use the `subprocess.unref()` method. Doing so will cause the parent's event loop to not include the child in its reference count, allowing the parent to exit independently of the child, unless there is an established IPC channel between the child and parent.
+Di default, il parent aspetterà che il child distaccato si concluda. Per prevenire che il parent attenda un dato `subprocess`, utilizza il metodo `subprocess.unref()`. Così facendo, il ciclo di eventi del parent non includerà il child nel suo reference count, consentendo al parent di concludere indipendentemente dal child, a meno che non vi sia un canale IPC stabilito tra child e parent.
 
-When using the `detached` option to start a long-running process, the process will not stay running in the background after the parent exits unless it is provided with a `stdio` configuration that is not connected to the parent. If the parent's `stdio` is inherited, the child will remain attached to the controlling terminal.
+Quando si utilizza l'opzione `detached` per avviare un processo di lunga durata, il processo non verrà eseguito in background dopo la conclusione del parent a meno che non sia fornito di una configurazione `stdio` che non sia collegata al parent. Se lo `stdio` del parent è ereditato, il child rimarrà collegato al terminale di controllo.
 
-Example of a long-running process, by detaching and also ignoring its parent `stdio` file descriptors, in order to ignore the parent's termination:
+Esempio di un processo ad esecuzione prolungata, scollegando ed ignorando anche i file descriptor `stdio` del suo parent, in modo da ignorare la terminazione del parent stesso:
 
 ```js
 const { spawn } = require('child_process');
@@ -421,7 +421,7 @@ const subprocess = spawn(process.argv[0], ['child_program.js'], {
 subprocess.unref();
 ```
 
-Alternatively one can redirect the child process' output into files:
+In alternativa, è possibile reindirizzare l'output del processo child all'interno dei file:
 
 ```js
 const fs = require('fs');
@@ -448,52 +448,52 @@ changes:
     description: The value `0` is now accepted as a file descriptor.
 -->
 
-The `options.stdio` option is used to configure the pipes that are established between the parent and child process. By default, the child's stdin, stdout, and stderr are redirected to corresponding [`subprocess.stdin`][], [`subprocess.stdout`][], and [`subprocess.stderr`][] streams on the [`ChildProcess`][] object. This is equivalent to setting the `options.stdio` equal to `['pipe', 'pipe', 'pipe']`.
+L'opzione `options.stdio` viene utilizzata per configurare i pipe stabiliti tra i processi parent e child. Di default, lo stdin, lo stdout e lo stderr del child vengono reindirizzati ai corrispondenti stream [`subprocess.stdin`][], [`subprocess.stdout`][], e [`subprocess.stderr`][] sul [`ChildProcess`][] object. Ciò è equivalente all'impostazione di `options.stdio` uguale a `['pipe', 'pipe', 'pipe']`.
 
-For convenience, `options.stdio` may be one of the following strings:
+Per comodità, `options.stdio` potrebbe essere una delle seguenti stringhe:
 
-* `'pipe'` - equivalent to `['pipe', 'pipe', 'pipe']` (the default)
-* `'ignore'` - equivalent to `['ignore', 'ignore', 'ignore']`
-* `'inherit'` - equivalent to `[process.stdin, process.stdout, process.stderr]` or `[0,1,2]`
+* `'pipe'` - equivalente a `['pipe', 'pipe', 'pipe']` (il valore predefinito)
+* `'ignore'` - equivalente a `['ignore', 'ignore', 'ignore']`
+* `'inherit'` - equivalente a `[process.stdin, process.stdout, process.stderr]` oppure a `[0,1,2]`
 
-Otherwise, the value of `options.stdio` is an array where each index corresponds to an fd in the child. The fds 0, 1, and 2 correspond to stdin, stdout, and stderr, respectively. Additional fds can be specified to create additional pipes between the parent and child. The value is one of the following:
+In caso contrario, il valore di `options.stdio` è un array in cui ogni indice corrisponde a un file descriptor (fd) all'interno del child. I file descriptor (fd) 0, 1 e 2 corrispondono rispettivamente a stdin, stdout e stderr. È possibile specificare ulteriori file descriptor (fd) per creare pipe aggiuntivi tra parent e child. Il valore è uno dei seguenti:
 
-1. `'pipe'` - Create a pipe between the child process and the parent process. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
-2. `'ipc'` - Create an IPC channel for passing messages/file descriptors between parent and child. A [`ChildProcess`][] may have at most *one* IPC stdio file descriptor. Setting this option enables the [`subprocess.send()`][] method. If the child is a Node.js process, the presence of an IPC channel will enable [`process.send()`][] and [`process.disconnect()`][] methods, as well as [`'disconnect'`][] and [`'message'`][] events within the child.
+1. `'pipe'` - Crea un pipe tra i processi child e parent. L'estremità parent del pipe è esposta al parent come una proprietà sul `child_process` object come un [`subprocess.stdio[fd]`][`stdio`]. I pipe creati per i file descriptor (fd) 0 - 2 sono anche disponibili, rispettivamente, come [`subprocess.stdin`][], [`subprocess.stdout`][] e [`subprocess.stderr`][].
+2. `'ipc'` - Crea un canale IPC per far passare i messaggi/file descriptor tra parent e child. Un [`ChildProcess`][] può avere al massimo *un* file descriptor IPC stdio. L'impostazione di quest'opzione abilita il metodo [`subprocess.send()`][]. Se il child è un processo Node.js, la presenza di un canale IPC abiliterà i metodi [`process.send()`][] e [`process.disconnect()`][], nonché gli eventi [`'disconnect'`][] e [`'message'`][] all'interno del child stesso.
   
-  Accessing the IPC channel fd in any way other than [`process.send()`][] or using the IPC channel with a child process that is not a Node.js instance is not supported.
+  L'accesso al file descriptor del canale IPC in un modo diverso dall'utilizzo di [`process.send()`][] oppure l'utilizzo del canale IPC con un processo child che non è un'istanza Node.js, non sono supportati.
 
-3. `'ignore'` - Instructs Node.js to ignore the fd in the child. While Node.js will always open fds 0 - 2 for the processes it spawns, setting the fd to `'ignore'` will cause Node.js to open `/dev/null` and attach it to the child's fd.
+3. `'ignore'` - Dà a Node.js l'istruzione di ignorare il file descriptor all'interno del child. Sebbene Node.js aprirà sempre i file descriptor 0 - 2 per i processi che genera, l'impostazione del file descriptor su `'ignore'` farà in modo che Node.js apra `/dev/null` e lo colleghi al file descriptor del child.
 
-4. {Stream} object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process. The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index in the `stdio` array. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
-5. Positive integer - The integer value is interpreted as a file descriptor that is currently open in the parent process. It is shared with the child process, similar to how {Stream} objects can be shared.
-6. `null`, `undefined` - Use default value. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. For fd 3 and up, the default is `'ignore'`.
+4. {Stream} object - Condivide uno stream readable o writable che fa riferimento ad un tty, un file, un socket o un pipe con il processo child. Il file descriptor sottostante allo stream è duplicato nel processo child nel file descriptor corrispondente all'indice nell'array `stdio`. Da notare che lo stream deve avere un descriptor sottostante (gli stream dei file non entrano in azione finché non si verifica l'evento `'open'`).
+5. Positive integer - Il valore integer (intero) viene interpretato come un file descriptor attualmente aperto nel processo parent. È condiviso con il processo child, in modo simile alla modalità di condivisione degli {Stream} object.
+6. `null`, `undefined` - Utilizzano il valore predefinito. Per i file descriptor stdio 0, 1 e 2 (in altre parole, stdin, stdout e stderr) viene creato un pipe. Per i file descriptor 3 o superiori, l'impostazione predefinita è `'ignore'`.
 
-Example:
+Esempio:
 
 ```js
 const { spawn } = require('child_process');
 
-// Child will use parent's stdios
+// Il child utilizzerà gli stdio del parent
 spawn('prg', [], { stdio: 'inherit' });
 
-// Spawn child sharing only stderr
+// Genera un child che condivide solo stderr
 spawn('prg', [], { stdio: ['pipe', 'pipe', process.stderr] });
 
-// Open an extra fd=4, to interact with programs presenting a
-// startd-style interface.
+// Apre un extra fd = 4, per interagire con i programmi che presentano 
+// un'interfaccia in stile startd.
 spawn('prg', [], { stdio: ['pipe', null, null, null, 'pipe'] });
 ```
 
-*It is worth noting that when an IPC channel is established between the parent and child processes, and the child is a Node.js process, the child is launched with the IPC channel unreferenced (using `unref()`) until the child registers an event handler for the [`'disconnect'`][] event or the [`'message'`][] event. This allows the child to exit normally without the process being held open by the open IPC channel.*
+*Vale la pena notare che quando viene stabilito un canale IPC tra i processi parent e child, e il child è un processo Node.js, allora esso viene avviato con il canale IPC unreferenced (ovvero senza riferimento, utilizzando `unref()`) fino a quando registra un event handler per l'evento [`'disconnect'`][] o per l'evento [`'message'`][]. Ciò consente al child di concludersi normalmente senza che il processo venga tenuto aperto dal canale IPC aperto.*
 
-See also: [`child_process.exec()`][] and [`child_process.fork()`][].
+Vedi anche: [`child_process.exec()`][] e [`child_process.fork()`][].
 
-## Synchronous Process Creation
+## Creazione di Processi Sincroni
 
-The [`child_process.spawnSync()`][], [`child_process.execSync()`][], and [`child_process.execFileSync()`][] methods are **synchronous** and **WILL** block the Node.js event loop, pausing execution of any additional code until the spawned process exits.
+I metodi [`child_process.spawnSync()`][], [`child_process.execSync()`][], e [`child_process.execFileSync()`][] sono **sincroni** e **bloccheranno** il ciclo di eventi di Node.js, interrompendo l'esecuzione di qualsiasi codice aggiuntivo fino alla chiusura del processo generato.
 
-Blocking calls like these are mostly useful for simplifying general-purpose scripting tasks and for simplifying the loading/processing of application configuration at startup.
+Le chiamate di blocco come queste sono per lo più utili per semplificare attività di scripting generiche e per semplificare il caricamento/l'elaborazione della configurazione dell'applicazione all'avvio.
 
 ### child_process.execFileSync(file\[, args\]\[, options\])
 
@@ -512,28 +512,28 @@ changes:
     description: The `encoding` option can now explicitly be set to `buffer`.
 -->
 
-* `file` {string} The name or path of the executable file to run.
-* `args` {string[]} List of string arguments.
+* `file` {string} Il nome o il percorso del file eseguibile da avviare.
+* `args` {string[]} Elenco degli argomenti di string.
 * `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
-  * `env` {Object} Environment key-value pairs.
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
-  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-* Returns: {Buffer|string} The stdout from the command.
+  * `cwd` {string} Attuale directory di lavoro del processo child.
+  * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
+  * `stdio` {string|Array} Configurazione stdio del child. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
+  * `env` {Object} Coppie key-value dell'ambiente.
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
+  * `timeout` {number} La quantità massima di tempo in millisecondi in cui il processo può essere eseguito. **Default:** `undefined`.
+  * `killSignal` {string|integer} Il valore del segnale da utilizzare quando il processo generato verrà arrestato. **Default:** `'SIGTERM'`.
+  * `maxBuffer` {number} La quantità massima di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `encoding` {string} L'encoding (codifica) utilizzata per tutti gli input e gli output stdio. **Default:** `'buffer'`.
+  * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
+  * `shell` {boolean|string} Se `true`, esegue `command` all'interno di una shell. Utilizza `'/bin/sh'` su UNIX, e `process.env.ComSpec` su Windows. Una shell diversa può essere specificata come una stringa. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `false` (nessuna shell).
+* Restituisce: {Buffer|string} Lo stdout dal comando.
 
-The `child_process.execFileSync()` method is generally identical to [`child_process.execFile()`][] with the exception that the method will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited.
+Il metodo `child_process.execFileSync()` è generalmente identico a [`child_process.execFile()`][] con l'eccezione che il metodo non restituirà nulla finché il processo child non sarà completamente chiuso. Quando si verifica un timeout e viene inviato `killSignal`, il metodo non restituirà nulla finché il processo non sarà completamente concluso.
 
-If the child process intercepts and handles the `SIGTERM` signal and does not exit, the parent process will still wait until the child process has exited.
+Se il processo child intercetta e gestisce il segnale `SIGTERM` e non si conclude, il processo parent aspetterà ancora fino alla conclusione del processo child.
 
-If the process times out or has a non-zero exit code, this method ***will*** throw an [`Error`][] that will include the full result of the underlying [`child_process.spawnSync()`][].
+Se il processo è scaduto (timeout) o ha un valore di uscita diverso da zero, questo metodo ***genererà*** un [`Error`][] che includerà il risultato completo del [`child_process.spawnSync()`][] sottostante.
 
 **Se l'opzione `shell` è abilitata, non passare l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
 
@@ -554,8 +554,8 @@ changes:
 * `command` {string} The command to run.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
+  * `stdio` {string|Array} Child's stdio configuration. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
   * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` su UNIX, `process.env.ComSpec` su Windows.
   * `uid` {number} Sets the user identity of the process. (See setuid(2)).
@@ -597,7 +597,7 @@ changes:
 * `args` {string[]} List of string arguments.
 * `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
-  * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
+  * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
   * `stdio` {string|Array} Child's stdio configuration.
   * `env` {Object} Environment key-value pairs.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).

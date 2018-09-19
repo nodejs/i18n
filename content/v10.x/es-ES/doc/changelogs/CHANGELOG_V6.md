@@ -59,7 +59,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -71,41 +71,41 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Note*: Node.js v6 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2018 and maintained until April 2019.
+*Nota*: Node.js v6 está cubierto por el [Plan de Soporte de Largo Plazo de Node.js](https://github.com/nodejs/LTS) y va a ser activamente soportado hasta Abril de 2018 y mantenido hasta Abril de 2019.
 
 <a id="6.14.1"></a>
 
-## 2018-03-29, Version 6.14.1 'Boron' (LTS), @MylesBorins
+## 2018-03-29, Versión 6.14.1 'Boron' (LTS), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 No additional commits.
 
-Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
+Debido a una incorrecta preparación de la actualización del compilador GCC 4.9.X, las últimas versiones para little endian PPC fueron construidas usando GCC 4.9.X y no GCC 4.8.X. Esto causó una rotura ABI en entornos basados en PPCLE. Esto ha sido arreglado en nuestra infraestructura, y estamos haciendo este lanzamiento para asegurar que los binarios alojados se están adheriendo a nuestro contrato de soporte de la plataforma.
 
 <a id="6.14.0"></a>
 
 ## 2018-03-28, Version 6.14.0 'Boron' (LTS), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
+This is a security release. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 * CVE-2018-7158
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Notable Changes
+### Cambios Notables
 
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
-* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
+* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. El inspector ahora permite conexiones que tienen un valor `Host` de navegador de `localhost` o `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
-* **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
-* **Update root certificates**: 5 additional root certificates have been added to the Node.js binary and 30 have been removed.
+* **Rechazar espacios en HTTP `Content-Length` valores de encabezados (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de encabezados `Content-Length`. Tales valores ahora conducen a conexiones rechazas en la misma manera que valores no numéricos.
+* **Actualización de certificados raíz**: 5 certificados raíz adicionales han sido agregados al binario de Node.js y 30 han sido removidos.
 
 ### Commits
 
-* [[`ac21bdc149`](https://github.com/nodejs/node/commit/ac21bdc149)] - **crypto**: update root certificates (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
+* [[`ac21bdc149`](https://github.com/nodejs/node/commit/ac21bdc149)] - **crypto**: actualizar certificados raíz (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 * [[`3c99e41427`](https://github.com/nodejs/node/commit/3c99e41427)] - **deps**: add -no\_rand\_screen to openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`d775057090`](https://github.com/nodejs/node/commit/d775057090)] - **deps**: fix asm build error of openssl in x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`982012b96d`](https://github.com/nodejs/node/commit/982012b96d)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
@@ -123,10 +123,10 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-06, Version 6.13.1 'Boron' (LTS), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
 * **http, tls**: 
-  * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
+  * mejor soporte para direcciones IPv6 (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
 
 ### Commits
 
@@ -4379,7 +4379,7 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 ### Notable changes
 
-The following significant changes have been made since the previous Node.js v5.0.0 release.
+Los siguientes cambios significativos han sido hechos desde la actualización previa de Node.js v5.0.0.
 
 * Buffer 
   * New Buffer constructors have been added [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
