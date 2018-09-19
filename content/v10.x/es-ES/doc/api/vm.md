@@ -207,38 +207,38 @@ El estatus de vinculación actual del `module`. Será uno de los siguientes valo
 * `'unlinked'`: `module.link()` todavía no ha sido llamado.
 * `'linking'`: `module.link()` ha sido llamado, pero no todas las Promesas devueltas por la función del enlazados ha sido resueltas todavía.
 * `'linked'`: `module.link()` ha sido llamado, y todas sus dependencias han sido exitosamente enlazadas.
-* `'errored'`: `module.link()` has been called, but at least one of its dependencies failed to link, either because the callback returned a `Promise` that is rejected, or because the `Module` the callback returned is invalid.
+* `'errored'`: `module.link()` ha sido llamado, pero al menos una de sus dependencia falló al enlazarse, ya sea porque la devolución retornó una `Promise` que se rechazó, o porque el `Module` de la devolución retornada es inválido.
 
 ### module.namespace
 
 * {Object}
 
-The namespace object of the module. This is only available after instantiation (`module.instantiate()`) has completed.
+El objeto de espacio de nombre del módulo. Esto solo está disponible después de que la instantación (`module.instantiate()`) se haya completado.
 
-Corresponds to the [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getmodulenamespace) abstract operation in the ECMAScript specification.
+Corresponde a la operación abstracta [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getmodulenamespace) en la especificación de ECMAScript.
 
 ### module.status
 
 * {string}
 
-The current status of the module. Will be one of:
+El estatus actual del módulo. Será uno de:
 
-* `'uninstantiated'`: The module is not instantiated. It may because of any of the following reasons:
+* `'uninstantiated'`: El módulo no está instanciado. Puede ser por alguna de las siguientes razones:
   
-  * The module was just created.
-  * `module.instantiate()` has been called on this module, but it failed for some reason.
+  * El módulo se acaba de crear.
+  * `module.instantiate()` ha sido llamado en este módulo, pero falló por alguna razón.
   
-  This status does not convey any information regarding if `module.link()` has been called. See `module.linkingStatus` for that.
+  Este estatus no transmite ninguna información con respecto a si `module.link()` ha sido llamado. Vea `module.linkingStatus` para eso.
 
-* `'instantiating'`: The module is currently being instantiated through a `module.instantiate()` call on itself or a parent module.
+* `'instantiating'`: El módulo se está instanciando actualmente mediante un `module.instantiate()` llamado sobre sí mismoo un módulo principal.
 
-* `'instantiated'`: The module has been instantiated successfully, but `module.evaluate()` has not yet been called.
+* `'instantiated'`: El módulo ha sido instanciado exitosamente, pero `module.evaluate()` todavía no ha sido llamado.
 
-* `'evaluating'`: The module is being evaluated through a `module.evaluate()` on itself or a parent module.
+* `'evaluating'`: El módulo se está evaluando mediante un `module.evaluate()` en sí mismo o en un módulo principal.
 
-* `'evaluated'`: The module has been successfully evaluated.
+* `'evaluated'`: El módulo ha sido evaluado exitosamente.
 
-* `'errored'`: The module has been evaluated, but an exception was thrown.
+* `'errored'`: El módulo ha sido evaluado, pero se lazó una excepción.
 
 Other than `'errored'`, this status string corresponds to the specification's [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)'s `[[Status]]` field. `'errored'` corresponds to `'evaluated'` in the specification, but with `[[EvaluationError]]` set to a value that is not `undefined`.
 
