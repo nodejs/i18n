@@ -551,11 +551,11 @@ changes:
     description: The `input` option can now be a `Uint8Array`.
 -->
 
-* `command` {string} The command to run.
+* `command` {string} Il comando da eseguire.
 * `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
+  * `cwd` {string} Attuale directory di lavoro del processo child.
   * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
-  * `stdio` {string|Array} Child's stdio configuration. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
+  * `stdio` {string|Array} Configurazione stdio del child. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
   * `env` {Object} Environment key-value pairs.
   * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` su UNIX, `process.env.ComSpec` su Windows.
   * `uid` {number} Sets the user identity of the process. (See setuid(2)).
