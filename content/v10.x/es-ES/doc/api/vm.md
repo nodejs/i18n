@@ -159,10 +159,10 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
     'Object.getPrototypeOf(import.meta.prop).secret = secret;',
     {
       initializeImportMeta(meta) {
-        // Note: this object is created in the top context. As such,
-        // Object.getPrototypeOf(import.meta.prop) points to the
-        // Object.prototype in the top context rather than that in
-        // the sandbox.
+        // Nota: este objeto se crea en el contexto superior. Como tal,
+        // Object.getPrototypeOf(import.meta.prop) apunta al
+        // Object.prototype en el contexto superior en lugar de en
+        // el sandbox.
         meta.prop = {};
       }
     });
