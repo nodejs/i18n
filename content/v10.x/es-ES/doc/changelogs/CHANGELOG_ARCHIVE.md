@@ -853,20 +853,20 @@ https://github.com/nodejs/node/commit/d86d83c75f6343b5368bb7bd328b4466a035e1d4
 * build: permitir vinculación contra sistema libuv, cares, http_parser (Stephen Gallagher)
 * typed arrays: añadir soporte de slice() para ArrayBuffer (Anthony Pesch)
 * debugger: salir y matar a proceso secundario en SIGTERM o SIGHUP (Fedor Indutny)
-* url: url.format escapes delimiters in path and query (J. Lee Coltrane)
+* url: url.format escapa a delimitadores en ruta y consulta (J. Lee Coltrane)
 
 <a id="0.9.3"></a>
 
-## 2012.10.24, Version 0.9.3 (Unstable)
+## 2012.10.24, Versión 0.9.3 (Inestable)
 
 https://github.com/nodejs/node/commit/1ed4c6776e4f52956918b70565502e0f8869829d
 
-* V8: Upgrade to 3.13.7.4
-* crypto: Default to buffers instead of binary strings (isaacs, Fedor Indutny)
-* crypto: add getHashes() and getCiphers() (Ben Noordhuis)
-* unix: add custom thread pool, remove libeio (Ben Noordhuis)
-* util: make `inspect()` accept an "options" argument (Nathan Rajlich)
-* https: fix renegotation attack protection (Ben Noordhuis)
+* V8: Actualizar a 3.13.7.4
+* crypto: Dirigir por defecto a los buffers en vez de a strings binarias (isaacs, Fedor Indutny)
+* crypto: añadir getHashes() y getCiphers() (Ben Noordhuis)
+* unix: añadir thread pool personalizado, removre libeio (Ben Noordhuis)
+* util: hacer que `inspect()` acepte un argumento de "options" (Nathan Rajlich)
+* https: reparar protección de ataques de renegociación (Ben Noordhuis)
 * cluster: make 'listening' handler see actual port (Aaditya Bhatia)
 * windows: use USERPROFILE to get the user's home dir (Bert Belder)
 * path: add platform specific path delimiter (Paul Serby)
