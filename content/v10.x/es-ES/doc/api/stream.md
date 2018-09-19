@@ -182,17 +182,17 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
     do {
       i--;
       if (i === 0) {
-        // last time!
+        // ¡última vez!
         writer.write(data, encoding, callback);
       } else {
-        // see if we should continue, or wait
-        // don't pass the callback, because we're not done yet.
+        // ver si deberíamos continuar, o espera
+        // no pases el callback, porque no hemos terminado aún.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      // had to stop early!
-      // write some more once it drains
+      // ¡tuve que parar temprano!
+      // escribe un poco más una vez que se vacíe
       writer.once('drain', write);
     }
   }
@@ -319,12 +319,12 @@ Llamar al método `writable.end()` señala que no se escribirán más datos en e
 Llamar el método [`stream.write()`](#stream_writable_write_chunk_encoding_callback) después de llamar a [`stream.end()`](#stream_writable_end_chunk_encoding_callback) va a provocar un error.
 
 ```js
-// write 'hello, ' and then end with 'world!'
+// escribe "hello, " y luego termina con ''world!''
 const fs = require('fs');
 const file = fs.createWriteStream('example.txt');
 file.write('hello, ');
 file.end('world!');
-// writing more now is not allowed!
+// escribir más ahora ¡no está permitido!
 ```
 
 ##### writable.setDefaultEncoding(encoding)
