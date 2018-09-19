@@ -118,7 +118,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Commits:
 
 * [fc259c7dc4] - buffer: rellena con cero bytes sin utilizar en .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/67
-* [35b49ed4bb] - build: turn on -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6738
+* [35b49ed4bb] - build: encender -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6738
 * [03f4920d6a] - crypto: no construir motores de hardware (Rod Vagg) https://github.com/nodejs/node-private/pull/68
 * [1cbdb1957d] - deps: añade -no_rand_screen a openssl s_client (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
 * [c66408cd0c] - deps: Reparar error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
@@ -130,17 +130,17 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [0d7e21ee7b] - lib: hacer a tls.checkServerIdentity() más escritcto (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 * [1f4a6f5bd1] - openssl: reparar el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
 * [88dcc7f5bb] - v8: reparar la advertencia -Wsign-compare en Zone::New() (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
-* [fd8ac56c75] - v8: fix build errors with g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
+* [fd8ac56c75] - v8: reparar errores de compilación con g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 
 <a id="0.10.46"></a>
 
-## 2016-06-23, Version 0.10.46 (Maintenance), @rvagg
+## 2016-06-23, Versión 0.10.46 (Mantenimiento), @rvagg
 
-### Notable changes:
+### Cambios notables:
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
 
-* libuv: (CVE-2014-9748) Fixes a bug in the read/write locks implementation for Windows XP and Windows 2003 that can lead to undefined and potentially unsafe behaviour. More information can be found at https://github.com/libuv/libuv/issues/515 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
+* libuv: (CVE-2014-9748) Repara un bug en la implementación de bloqueo de leer/escribir para Windows XP y Windows 2003 que puede llevar a un comportamiento no definido y potencialmente peligroso. Se puede conseguir más información en https://github.com/libuv/libuv/issues/515 o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 * V8: (CVE-2016-1669) Fixes a potential Buffer overflow vulnerability discovered in V8, more details can be found in the CVE at https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 
 ### Commits:
