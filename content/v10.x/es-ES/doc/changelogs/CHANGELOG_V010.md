@@ -108,7 +108,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables:
 
-* buffer: Zero-fill excess bytes in new `Buffer` objects created with `Buffer.concat()` while providing a `totalLength` parameter that exceeds the total length of the original `Buffer` objects being concatenated. (Сковорода Никита Андреевич)
+* buffer: Bytes de exceso zero-fill en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporciona un parámetro `totalLength` que excede la longitud total de los objetos originales `Buffer` siendo concatenado. (Сковорода Никита Андреевич)
 * http: 
   * CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas)
   * Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999. Lack of proper validation may also serve as a potential response splitting attack vector. Backported from v4.x. (Brian White)
