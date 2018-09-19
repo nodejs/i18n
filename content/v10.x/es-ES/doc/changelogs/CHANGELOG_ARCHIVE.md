@@ -820,7 +820,7 @@ https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 * buffer: acelerar codificación base64 en un 20% (Ben Noordhuis)
 * doc: Colorear encabezados de índice de estabilidad de API en docs (Luke Arduini)
 * net: correcciones de socket.readyState (bentaber)
-* http: Performance enhancements for http under streams2 (isaacs)
+* http: Mejoras de rendimiento para http bajo streams2 (isaacs)
 * stream: fix to emit end event on http.ClientResponse (Shigeki Ohtsu)
 * stream: fix event handler leak in readstream pipe and unpipe (Andreas Madsen)
 * build: Support ./configure --tag switch (Maciej Małecki)
