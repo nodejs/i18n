@@ -513,7 +513,7 @@ added: v1.6.0
 * `name` {string}
 * Devuelve: {any}
 
-Lee un encabezado en la solicitud. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`request.setHeader()`][].
+Lee una cabecera en la solicitud. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`request.setHeader()`][].
 
 Ejemplo:
 
@@ -551,7 +551,7 @@ Ejemplo:
 request.removeHeader('Content-Type');
 ```
 
-### request.setHeader(nombre, valor)
+### request.setHeader(name, value)
 
 <!-- YAML
 added: v1.6.0
@@ -602,7 +602,7 @@ added: v0.5.9
 -->
 
 * `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Función opcional que será llamada cuando ocurra un tiempo de espera. Same as binding to the `'timeout'` event.
+* `callback` {Function} Función opcional que será llamada cuando ocurra un timeout. Same as binding to the `'timeout'` event.
 * Devuelve: {http.ClientRequest}
 
 Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setTimeout()`][] será llamado.
@@ -728,7 +728,7 @@ server.on('clientError', (err, socket) => {
 server.listen(8000);
 ```
 
-Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Se debe tener cuidado en asegurarse de que la respuesta sea un mensaje de respuesta HTTP formateado apropiadamente.
+Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Se debe tener cuidado en asegurarse de que la respuesta sea un mensaje de respuesta HTTP con el formato correcto.
 
 `err` es una instancia de `Error` con dos columnas adicionales:
 
@@ -767,7 +767,7 @@ added: v0.1.0
 
 Este evento se emite cuando se establece un stream TCP nuevo. `socket` es, por lo general, un objeto de tipo [`net.Socket`][]. Generalmente, los usuarios no querrán acceder a este evento. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. El `socket` también puede ser accedido en `request.connection`.
 
-Este evento también puede ser emitido de manera explicita por los usuarios para inyectar conexiones dentro del servidor HTTP. En ese caso, cualquier stream [`Duplex`][] puede ser pasado.
+Este evento también puede ser emitido de manera explícita por los usuarios para inyectar conexiones dentro del servidor HTTP. En ese caso, cualquier stream [`Duplex`][] puede ser pasado.
 
 ### Evento: 'request'
 
