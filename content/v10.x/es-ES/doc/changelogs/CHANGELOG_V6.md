@@ -1,4 +1,4 @@
-# Node.js 6 ChangeLog
+# Registro de Cambios de Node.js 6
 
 <!--lint disable prohibited-strings-->
 
@@ -8,7 +8,7 @@
   <tr>
     
 <th>LTS 'Boron'</th>
-<th title="Previously called 'Stable'">Current</th>
+<th title="Previously called 'Stable'">Actual</th>
   </tr>
   
   <tr>
@@ -69,7 +69,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 *Nota*: Node.js v6 está cubierto por el [Plan de Soporte de Largo Plazo de Node.js](https://github.com/nodejs/LTS) y va a ser activamente soportado hasta Abril de 2018 y mantenido hasta Abril de 2019.
 
@@ -85,9 +85,9 @@ Debido a una incorrecta preparación de la actualización del compilador GCC 4.9
 
 <a id="6.14.0"></a>
 
-## 2018-03-28, Version 6.14.0 'Boron' (LTS), @MylesBorins
+## 2018-03-28, Versión 6.14.0 'Boron' (LTS), @MylesBorins
 
-This is a security release. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
