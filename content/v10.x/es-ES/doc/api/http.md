@@ -1671,11 +1671,11 @@ changes:
 -->
 
 * `options` {Object | string | URL} 
-  * `protocol` {string} Protocol to use. **Default:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `'localhost'`.
+  * `protocol` {string} Protocolo a utilizar. **Predeterminado:** `'http:'`.
+  * `host` {string} A domain name or IP address of the server to issue the request to. **Predeterminado:** `'http:'`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
-  * `family` {number} IP address family to use when resolving `host` and `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and v6 will be used.
-  * `port` {number} Port of remote server. **Default:** `80`.
+  * `family` {number} IP address family to use when resolving `host` and `hostname`. Los valores válidos son `4` o `6`. When unspecified, both IP v4 and v6 will be used.
+  * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
   * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
@@ -1688,19 +1688,19 @@ changes:
     * `false`: causes a new `Agent` with default values to be used.
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
+  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Por defecto es `true`.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Devuelve: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
 
-`http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
+`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream editable. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Example:
+Ejemplo:
 
 ```js
 const postData = querystring.stringify({
