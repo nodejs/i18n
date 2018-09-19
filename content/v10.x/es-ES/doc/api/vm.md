@@ -246,12 +246,12 @@ Aparte de `'errored'`, esta cadena de estatus corresponde al campo de `[[Status]
 
 * {string}
 
-The URL of the current module, as set in the constructor.
+El URL del módulo actual, como se configura e el constructor.
 
 ### module.evaluate([options])
 
 * `options` {Object} 
-  * `timeout` {number} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown.
+  * `timeout` {number} Especifica la cantidad de milisegundos para evaluar antes de terminar la ejecución. If execution is interrupted, an [`Error`][] will be thrown.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
 * Devuelve: {Promise}
 
