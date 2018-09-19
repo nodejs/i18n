@@ -108,26 +108,26 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables:
 
-* buffer: Bytes de exceso zero-fill en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporciona un parámetro `totalLength` que excede la longitud total de los objetos originales `Buffer` siendo concatenado. (Сковорода Никита Андреевич)
+* buffer: Rellena con ceros los bytes de exceso en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporciona un parámetro `totalLength` que excede la longitud total de los objetos originales `Buffer` siendo concatenado. (Сковорода Никита Андреевич)
 * http: 
   * CVE-2016-5325 - Válida correctamente por caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Repara un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde puede ocurrir `throw` cuando se esté configurando las respuestas HTTP, los usuarios ya deberían adoptar intentar/tomar aquí. Originalmente reportado independientemente por Evan Lucas y Romain Gaucher. (Evan Lucas)
   * Los códigos de estatus inválidos no pueden ser enviados. Limitado a números de 3 dígitos, entre 100 - 999. Falta de validación adecuada también puede servir como respuesta potencial a vector de ataque de división. Se le hizo backport de v4.x. (Brian White)
 * openssl: Actualizar a 1.0.1u, repara un número de defectos impactando a Node.js: CVE-2016-6304 ("OCSP Estado de la solicitud de extensión sin límite crecimiento de la memoria", severidad alta), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306.
-* tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian) (Ben Noordhuis)
+* tls: CVE-2016-7099 - Repara una verificación de la validación del certificado del comodín, por lo tanto un servidor TLS pudiera ser capaz de servir un certificado de comodín inválido para su hostname debido a una validación impropia de `*.` en el string del comodín. Reportado originalmente por Alexander Minozhenko y James Bunton (Atlassian) (Ben Noordhuis)
 
 ### Commits:
 
-* [fc259c7dc4] - buffer: zero-fill uninitialized bytes in .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/67
+* [fc259c7dc4] - buffer: rellena con cero bytes sin utilizar en .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/67
 * [35b49ed4bb] - build: turn on -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6738
-* [03f4920d6a] - crypto: don't build hardware engines (Rod Vagg) https://github.com/nodejs/node-private/pull/68
-* [1cbdb1957d] - deps: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
-* [c66408cd0c] - deps: fix openssl assembly error on ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [68f88ea792] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [884d50b348] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
-* [bfd6cb5699] - deps: upgrade openssl sources to 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
-* [3614a173d0] - http: check reason chars in writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/48
-* [f2433430ca] - http: disallow sending obviously invalid status codes (Evan Lucas) https://github.com/nodejs/node-private/pull/48
-* [0d7e21ee7b] - lib: make tls.checkServerIdentity() more strict (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
+* [03f4920d6a] - crypto: no construir motores de hardware (Rod Vagg) https://github.com/nodejs/node-private/pull/68
+* [1cbdb1957d] - deps: añade -no_rand_screen a openssl s_client (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
+* [c66408cd0c] - deps: Reparar error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [68f88ea792] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [884d50b348] - deps: copiar todos los archivos de encabezados de openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
+* [bfd6cb5699] - deps: actualiza las fuentes de openssl sources a 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
+* [3614a173d0] - http: verificar los caracteres de razón en writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/48
+* [f2433430ca] - http: no permitir el envío de códigos de estatus obviamente inválidos (Evan Lucas) https://github.com/nodejs/node-private/pull/48
+* [0d7e21ee7b] - lib: hacer a tls.checkServerIdentity() más escritcto (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 * [1f4a6f5bd1] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
 * [88dcc7f5bb] - v8: fix -Wsign-compare warning in Zone::New() (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 * [fd8ac56c75] - v8: fix build errors with g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
