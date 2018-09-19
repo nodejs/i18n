@@ -900,7 +900,7 @@ Indicates that the underlying connection was terminated before [`response.end()`
 added: v0.3.6
 -->
 
-Se emite cuando la respuesta ha sido enviada. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. Eso no implica que el cliente haya recibido algo aún.
+Se emite cuando la respuesta ha sido enviada. Más específicamente, este evento se emite cuando el último segmento de las cabeceras de respuesta y el cuerpo han sido entregados al sistema operativo para la transmisión sobre la red. Eso no implica que el cliente haya recibido algo aún.
 
 Después de este evento, no se emitirán más eventos en el objeto de respuesta.
 
@@ -914,9 +914,9 @@ added: v0.3.0
 
 This method adds HTTP trailing headers (a header but at the end of the message) to the response.
 
-Trailers will **only** be emitted if chunked encoding is used for the response; if it is not (e.g. if the request was HTTP/1.0), they will be silently discarded.
+Los trailers se emitirán **solo** si la codificación fragmentada se utiliza para la respuesta; en caso de que no (por ejemplo, si la solicitud fue HTTP/1.0), serán descartados de manera silenciosa.
 
-Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. Por ejemplo,
+Tenga en cuenta que HTTP requiere que la cabecera `Trailer` sea enviada para emitir trailers, con una lista de los campos de cabecera en su valor. Por ejemplo,
 
 ```js
 response.writeHead(200, { 'Content-Type': 'text/plain',
@@ -952,7 +952,7 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Devuelve: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. El método, `response.end()`, DEBE ser llamado en cada respuesta.
 
