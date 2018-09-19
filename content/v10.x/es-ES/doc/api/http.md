@@ -954,11 +954,11 @@ changes:
 * `callback` {Function}
 * Devuelve: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. El método, `response.end()`, DEBE ser llamado en cada respuesta.
+Este método señala al servidor que todas las cabeceras de respuesta y el cuerpo han sido enviados; el servidor debería considerar este mensaje como completo. El método, `response.end()`, DEBE ser llamado en cada respuesta.
 
-If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
+Si se especifica `data`, será equivalente a llamar a [`response.write(data, encoding)`][] seguido por `response.end(callback)`.
 
-If `callback` is specified, it will be called when the response stream is finished.
+Si se especifica `callback`, será llamado cuando el stream de respuesta haya finalizado.
 
 ### response.finished
 
@@ -968,7 +968,7 @@ added: v0.0.2
 
 * {boolean}
 
-El valor booleano indica si se ha completado la respuesta. Starts as `false`. Luego de que [`response.end()`][] se ejecuta, el valor será `true`.
+El valor booleano indica si se ha completado la respuesta. Comienza como `false`. Luego de que [`response.end()`][] se ejecuta, el valor será `true`.
 
 ### response.getHeader(name)
 
@@ -979,7 +979,7 @@ added: v0.4.0
 * `name` {string}
 * Devuelve: {any}
 
-Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`response.setHeader()`][].
+Lee una cabecera que ya ha sido puesta en cola, pero que no ha sido enviada al cliente. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`response.setHeader()`][].
 
 Ejemplo:
 
@@ -1003,9 +1003,9 @@ added: v7.7.0
 
 * Devuelve: {string[]}
 
-Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
+Devuelve un array que contiene los nombres únicos de las cabeceras salientes actuales. Todos los nombres de las cabeceras están en minúsculas.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -1021,7 +1021,7 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
