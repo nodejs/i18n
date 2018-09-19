@@ -678,9 +678,9 @@ L'evento `'exit'` viene emesso al termine del processo child. Se il processo è 
 
 Da notare che quando viene attivato l'evento `'exit'`, gli stream stdio del processo child potrebbero essere ancora aperti.
 
-Da notare inoltre che Node.js stabilisce gli handler dei segnali per `SIGINT` e `SIGTERM` e i processi Node.js non terminano immediatamente a causa della mancata ricezione di quei segnali. Rather, Node.js will perform a sequence of cleanup actions and then will re-raise the handled signal.
+Da notare inoltre che Node.js stabilisce gli handler dei segnali per `SIGINT` e `SIGTERM` e i processi Node.js non terminano immediatamente a causa della mancata ricezione di quei segnali. Anzi, Node.js eseguirà una sequenza di azioni di pulizia e di conseguenza rileverà nuovamente il segnale gestito dagli handler.
 
-See waitpid(2).
+Vedi waitpid(2).
 
 ### Event: 'message'
 
@@ -688,10 +688,10 @@ See waitpid(2).
 added: v0.5.9
 -->
 
-* `message` {Object} A parsed JSON object or primitive value.
-* `sendHandle` {Handle} A [`net.Socket`][] or [`net.Server`][] object, or undefined.
+* `message` {Object} Un JSON object analizzato oppure un valore primitivo.
+* `sendHandle` {Handle} Un [`net.Socket`][] object o un [`net.Server`][] object, oppure un valore undefined (indefinito).
 
-The `'message'` event is triggered when a child process uses [`process.send()`][] to send messages.
+L'evento `'message'` viene attivato quando un processo child utilizza [`process.send()`][] per inviare messaggi.
 
 The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
 
