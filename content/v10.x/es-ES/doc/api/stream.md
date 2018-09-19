@@ -1656,7 +1656,7 @@ Porque JavaScript no tiene soporte para múltiples herencias, la clase `stream.D
 
 La clase `stream.Duplex` hereda prototípicamente de `stream.Readable` y parasitariamente de `stream.Writable`, pero `instanceof` va a funcionar de forma correcta para las ambas clases de base, debido a cancelar [`Symbol.hasInstance`][] en `stream.Writable`.
 
-Custom `Duplex` streams *must* call the `new stream.Duplex([options])` constructor and implement *both* the `readable._read()` and `writable._write()` methods.
+Streams `Duplex` personalizados *deben* llamar el constructor `new stream.Duplex([options])` e implementar *ambos* métodos `readable._read()` y `writable._write()`.
 
 #### new stream.Duplex(options)
 
@@ -1687,7 +1687,7 @@ class MyDuplex extends Duplex {
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+O cuando se use constructores de estilo pre-ES6:
 
 ```js
 const { Duplex } = require('stream');
@@ -1701,7 +1701,7 @@ function MyDuplex(options) {
 util.inherits(MyDuplex, Duplex);
 ```
 
-Or, using the Simplified Constructor approach:
+O cuando se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Duplex } = require('stream');
@@ -1757,18 +1757,18 @@ Por ejemplo, en el siguiente ejemplar, un nuevo stream `Transform` (que es un ti
 ```js
 const { Transform } = require('stream');
 
-// All Transform streams are also Duplex Streams
+// Todos los streams de Transformacion también son Streams Dúplex
 const myTransform = new Transform({
   writableObjectMode: true,
 
   transform(chunk, encoding, callback) {
-    // Coerce the chunk to a number if necessary
+    // Obliga al fragmento a un número si es necesario
     chunk |= 0;
 
-    // Transform the chunk into something else.
+    // Transforma el fragmento a otra cosa.
     const data = chunk.toString(16);
 
-    // Push the data onto the readable queue.
+    // Empuja a los datos a la cola legible.
     callback(null, '0'.repeat(data.length % 2) + data);
   }
 });
@@ -1777,11 +1777,11 @@ myTransform.setEncoding('ascii');
 myTransform.on('data', (chunk) => console.log(chunk));
 
 myTransform.write(1);
-// Prints: 01
+// Imprime: 01
 myTransform.write(10);
-// Prints: 0a
+// Imprime: 0a
 myTransform.write(100);
-// Prints: 64
+// Imprime: 64
 ```
 
 ### Implementando un Stream de Transformación
@@ -1798,7 +1798,7 @@ Debe tenerse cuidado cuando se usen los streams `Transform` en esos datos escrit
 
 #### new stream.Transform([options])
 
-* `options` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
+* `opciones` {Object} Pasado por los constructores `Writable` y `Readable`. También tiene los siguientes campos: 
   * `transform` {Function} Implementación para el método [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback).
   * `flush` {Function} Implementación para el método [`stream._flush()`](#stream_transform_flush_callback).
 
@@ -1827,7 +1827,7 @@ function MyTransform(options) {
 util.inherits(MyTransform, Transform);
 ```
 
-Or, using the Simplified Constructor approach:
+O cuando se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Transform } = require('stream');
@@ -1857,7 +1857,7 @@ Dentro de la implementación `transform._flush()`, el método `readable.push()` 
 
 The `transform._flush()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
 
-#### transform.\_transform(chunk, encoding, callback)
+#### transform.\_transform(fragmento, codificación, callback)
 
 * `chunk` {Buffer|string|any} El fragmento a ser transformado. **Siempre** será un búfer a menos que la opción `decodeStrings` sea establecida como `false`, o el stream esté operando en modo objeto.
 * `encoding` {string} Si el fragmento es un string, entonces esto es el tipo de codificación. Si el fragmento es un búfer, entonces este es el valor especial - 'buffer', ignorarlo en este caso.
@@ -1919,9 +1919,9 @@ Por ejemplo, considera el siguiente código:
 // ¡ADVERTENCIA!  ¡ROTO!
 net.createServer((socket) => {
 
-  // we add an 'end' listener, but never consume the data
+  // añadimos un listener 'end', pero nunca consume los datos
   socket.on('end', () => {
-    // It will never get here.
+    // Nunca llegará aquí.
     socket.end('The message was received but was not processed.\n');
   });
 
