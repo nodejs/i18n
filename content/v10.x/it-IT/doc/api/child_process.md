@@ -649,19 +649,19 @@ L'evento `'close'` viene emesso quando gli stream stdio di un processo child son
 added: v0.7.2
 -->
 
-The `'disconnect'` event is emitted after calling the [`subprocess.disconnect()`][] method in parent process or [`process.disconnect()`][] in child process. After disconnecting it is no longer possible to send or receive messages, and the [`subprocess.connected`][] property is `false`.
+L'evento `'disconnect'` viene emesso dopo aver chiamato il metodo [`subprocess.disconnect()`][] nel processo parent oppure [`process.disconnect()`][] nel processo child. Dopo averlo disconnesso, non è più possibile inviare o ricevere messaggi e la proprietà [`subprocess.connected`][] diventa `false`.
 
 ### Event: 'error'
 
-* `err` {Error} The error.
+* `err` {Error} L'errore.
 
-The `'error'` event is emitted whenever:
+L'evento `'error'` viene emesso ogni volta che:
 
-1. The process could not be spawned, or
-2. The process could not be killed, or
-3. Sending a message to the child process failed.
+1. Non è stato possibile generare il processo, oppure
+2. Non è stato possibile arrestare il processo, oppure
+3. Non è andato a buon fine l'invio di un messaggio al processo child.
 
-The `'exit'` event may or may not fire after an error has occurred. When listening to both the `'exit'` and `'error'` events, it is important to guard against accidentally invoking handler functions multiple times.
+L'evento `'exit'` può o non può funzionare dopo che si è verificato un errore. When listening to both the `'exit'` and `'error'` events, it is important to guard against accidentally invoking handler functions multiple times.
 
 See also [`subprocess.kill()`][] and [`subprocess.send()`][].
 
