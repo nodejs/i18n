@@ -147,7 +147,7 @@ module)`, donde `meta` es el objeto `import.meta` en el `Module`, y `module` es 
 
 Crea un nuevo objeto ES `Module`.
 
-*Note*: Properties assigned to the `import.meta` object that are objects may allow the `Module` to access information outside the specified `context`, if the object is created in the top level context. Use `vm.runInContext()` to create objects in a specific context.
+*Nota*: Las propiedades asignadas al objeto `import.meta` que son objetos pueden permitir que el `Module` acceda a información fuera del `context` especificado, si el objeto se crea en el contexto de nivel superior. Utilice `vm.runInContext()` para crear objetos en un contexto específico.
 
 ```js
 const vm = require('vm');
