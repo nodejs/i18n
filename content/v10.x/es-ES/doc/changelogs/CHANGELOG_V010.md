@@ -104,9 +104,9 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-09-27, Version 0.10.47 (Mantenimiento), @rvagg
 
-Este es una actualización de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes:
+### Cambios notables:
 
 * buffer: Zero-fill excess bytes in new `Buffer` objects created with `Buffer.concat()` while providing a `totalLength` parameter that exceeds the total length of the original `Buffer` objects being concatenated. (Сковорода Никита Андреевич)
 * http: 
