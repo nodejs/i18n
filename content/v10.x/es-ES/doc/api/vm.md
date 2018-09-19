@@ -192,11 +192,11 @@ Corresponde al campo `[[RequestedModules]]` de los [Registros del Módulo de Tex
 
 * {any}
 
-Si el`module.status` es `'errored'`, esta propiedad contiene la excepción lanzada por el módulo durante la evaluación. If the status is anything else, accessing this property will result in a thrown exception.
+Si el`module.status` es `'errored'`, esta propiedad contiene la excepción lanzada por el módulo durante la evaluación. Si el estatus es cualquier cosa distinta, acceder a esta propiedad dará como resultado el lanzamiento de una excepción.
 
-The value `undefined` cannot be used for cases where there is not a thrown exception due to possible ambiguity with `throw undefined;`.
+El valor `undefined` no puede ser utilizado para casos donde no se lanza una excepción debido a la posible ambigüedad con `throw undefined;`.
 
-Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo `[[EvaluationError]]` de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación de ECMAScript.
 
 ### module.linkingStatus
 
