@@ -581,11 +581,11 @@ Set the number of threads used in libuv's threadpool to `size` threads.
 
 Las APIs de sistema asincrónicas son utilizadas por Node.js cada vez que es posible, pero donde ellas no existan el threadpool de libuv es utilizado para crear APIs de nodo asincrónicas basadas en APIs de sistema sincrónicas. APIs de Node.js que utilizan el threadpool son:
 
-- all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
+- todas las APIs `fs`, distintas a las APIs observadoras de archivo y aquellas que son explícitamente sincrónicas
 - `crypto.pbkdf2()`
-- `crypto.randomBytes()`, unless it is used without a callback
+- `crypto.randomBytes()`, a menos que sea usada sin un callback
 - `crypto.randomFill()`
 - `dns.lookup()`
-- all `zlib` APIs, other than those that are explicitly synchronous
+- todas las APIs `zlib`, distintas de aquellas que son explícitamente sincrónicas
 
 Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
