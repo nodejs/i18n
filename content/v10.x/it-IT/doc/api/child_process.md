@@ -610,15 +610,15 @@ changes:
   * `windowsVerbatimArguments` {boolean} Non viene eseguita nessuna citazione od escaping degli argomenti su Windows. Ignorato su Unix. È impostato su `true` automaticamente quando la `shell` è specificata. **Default:** `false`.
   * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
 * Restituisce: {Object} 
-  * `pid` {number} Pid of the child process.
-  * `output` {Array} Array of results from stdio output.
-  * `stdout` {Buffer|string} The contents of `output[1]`.
-  * `stderr` {Buffer|string} The contents of `output[2]`.
-  * `status` {number} The exit code of the child process.
-  * `signal` {string} The signal used to kill the child process.
-  * `error` {Error} The error object if the child process failed or timed out.
+  * `pid` {number} Pid (Process Identifier) del processo child.
+  * `output` {Array} Array dei risultati provenienti dall'output di stdio.
+  * `stdout` {Buffer|string} Il contenuto di `output[1]`.
+  * `stderr` {Buffer|string} Il contenuto di `output[2]`.
+  * `status` {number} Il valore di uscita del processo child.
+  * `signal` {string} Il segnale utilizzato per arrestare il processo child.
+  * `error` {Error} L'error object se il processo child ha avuto esito negativo oppure è scaduto (timeout).
 
-The `child_process.spawnSync()` method is generally identical to [`child_process.spawn()`][] with the exception that the function will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. Note that if the process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.
+Il metodo `child_process.spawnSync()` è generalmente identico a [`child_process.spawn()`][] con l'eccezione che la funzione non restituirà nulla finché il processo child non sarà completamente chiuso. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. Note that if the process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.
 
 **Se l'opzione `shell` è abilitata, non passare l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
 
