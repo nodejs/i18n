@@ -865,11 +865,11 @@ process.send({ foo: 'bar', baz: NaN });
 
 I processi child di Node.js avranno un proprio metodo [`process.send()`][] che gli permette di inviare messaggi al parent.
 
-C'è un caso particolare quando si invia un messaggio `{cmd: 'NODE_foo'}`. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`'message'`][] event. Rather, such messages are emitted using the `'internalMessage'` event and are consumed internally by Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
+Si presenta un caso particolare quando si invia un messaggio `{cmd: 'NODE_foo'}`. I messaggi contenenti un prefisso `NODE_` nella proprietà `cmd` sono riservati per l'uso nel Node.js core e non verranno emessi nell'evento [`'message'`][] del child. Anzi, tali messaggi vengono emessi utilizzando l'evento `'internalMessage'` e sono utilizzati internamente da Node.js. Le applicazioni dovrebbero evitare l'utilizzo di messaggi del genere o di ascoltare gli eventi `'internalMessage'` in quanto sono soggetti a modifiche senza alcun preavviso.
 
-The optional `sendHandle` argument that may be passed to `subprocess.send()` is for passing a TCP server or socket object to the child process. The child will receive the object as the second argument passed to the callback function registered on the [`'message'`][] event. Any data that is received and buffered in the socket will not be sent to the child.
+L'argomento facoltativo `sendHandle` che può essere passato a `subprocess.send()` serve a far passare un server TCP o un socket object al processo child. Il child riceverà l'object come secondo argomento passato alla funzione callback registrata sull'evento [`'message'`][]. Tutti i dati ricevuti e memorizzati tramite il buffering all'interno del socket non verranno inviati al child.
 
-The optional `callback` is a function that is invoked after the message is sent but before the child may have received it. The function is called with a single argument: `null` on success, or an [`Error`][] object on failure.
+Il `callback` facoltativo è una funzione invocata dopo aver inviato il messaggio ma prima che il child l'abbia ricevuto. The function is called with a single argument: `null` on success, or an [`Error`][] object on failure.
 
 If no `callback` function is provided and the message cannot be sent, an `'error'` event will be emitted by the [`ChildProcess`][] object. This can happen, for instance, when the child process has already exited.
 
