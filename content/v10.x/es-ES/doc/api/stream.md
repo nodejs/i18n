@@ -409,8 +409,8 @@ changes:
                  considered invalid now, even in object mode.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
-* `encoding` {string} The encoding, if `chunk` is a string
+* `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. Para los streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para los streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
+* `encoding` {string} La codificación si `chunk` es un string
 * `callback` {Function} Callback for when this chunk of data is flushed
 * Returns: {boolean} `false` if the stream wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
@@ -904,9 +904,9 @@ El método `stream.unshift(chunk)` no puede ser llamado después que el evento [
 Los desarrolladores que usan `stream.unshift()` a menudo deberían considerar a cambiar a usar el stream [`Transform`][] en su lugar. Vea la sección [API para los Implementadores de Stream](#stream_api_for_stream_implementers) para más información.
 
 ```js
-// Pull off a header delimited by \n\n
-// use unshift() if we get too much
-// Call the callback with (error, header, stream)
+// Sustrae un encabezado delimitado por \n\n
+// usa unshift() si nosotros tenemos mucho
+// Llama al callback (error, encabezado, stream)
 const { StringDecoder } = require('string_decoder');
 function parseHeader(stream, callback) {
   stream.on('error', callback);
@@ -918,20 +918,20 @@ function parseHeader(stream, callback) {
     while (null !== (chunk = stream.read())) {
       const str = decoder.write(chunk);
       if (str.match(/\n\n/)) {
-        // found the header boundary
+        // límite del encabezado encontrado
         const split = str.split(/\n\n/);
         header += split.shift();
         const remaining = split.join('\n\n');
         const buf = Buffer.from(remaining, 'utf8');
         stream.removeListener('error', callback);
-        // remove the 'readable' listener before unshifting
+        // remueve el listener ''readable'' antes de hacer unshifting
         stream.removeListener('readable', onReadable);
         if (buf.length)
           stream.unshift(buf);
-        // now the body of the message can be read from the stream.
-        callback(null, header, stream);
+        // ahora el cuerpo del mensaje puede ser leído del stream.
+        callback(null, encabezado, stream);
       } else {
-        // still reading the header.
+        // aún está leyendo el encabezado.
         header += str;
       }
     }
@@ -1464,7 +1464,7 @@ Streams `Readable` personalizados *deben* llamar el constructor `new stream.Read
 * `opciones` {Object} 
   * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
   * `encoding` {string} Si es especificado, los búferes van a ser decodificados a strings usando la codificación especificada. **Predeterminado:** `null`.
-  * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Default:** `false`.
+  * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Predeterminado:** `false`.
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
 
@@ -1673,8 +1673,8 @@ changes:
   * `allowHalfOpen` {boolean} Si se establece como `false`, entonces el stream va a terminar el lado escribible automáticamente cuando el lado legible termine. **Predeterminado:** `true`.
   * `readableObjectMode` {boolean} Establece `objectMode` para el lado legible del stream. No tiene efecto si `objectMode` es `true`. **Predeterminado:** `false`.
   * `writableObjectMode` {boolean} Establece `objectMode` para el lado escribible del stream. No tiene efecto si `objectMode` es `true`. **Predeterminado:** `false`.
-  * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
-  * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
+  * `readableHighWaterMark` {number} Establece `highWaterMark` para el lado legible del stream. No tiene efecto si se proporciona `highWaterMark`.
+  * `writableHighWaterMark` {number} Establece `highWaterMark` para el lado escribible del stream. No tiene efecto si se proporciona `highWaterMark`.
 
 ```js
 const { Duplex } = require('stream');
@@ -1855,7 +1855,7 @@ Implementaciones [`Transform`][] personalizadas *pudieran* implementar el métod
 
 Dentro de la implementación `transform._flush()`, el método `readable.push()` puede ser llamado cero o más veces, según corresponda. La función `callback` debe ser llamada cuando la operación de descarga es completada.
 
-The `transform._flush()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+El método `transform._flush()` es ajustado con un subrayado porque es interno a la clase que lo define, nunca debería ser llamado directamente por programas de usuario.
 
 #### transform.\_transform(fragmento, codificación, callback)
 
@@ -1933,13 +1933,13 @@ En versiones anteriores de v0.10 de Node.js, los datos de mensajes entrantes ser
 La solución alternativa en esta situación es llamar al método [`stream.resume()`](#stream_readable_resume) para iniciar el flujo de datos:
 
 ```js
-// Workaround
+// Solución alternativa
 net.createServer((socket) => {
   socket.on('end', () => {
     socket.end('The message was received but was not processed.\n');
   });
 
-  // start the flow of data, discarding it.
+  // inicia el flujo de datos, descartándolo.
   socket.resume();
 }).listen(1337);
 ```
@@ -1960,7 +1960,7 @@ No se recomienda el uso de `readable.push('')`.
 
 Empujar un string de cero-bytes, un `Buffer` o un `Uint8Array` a un stream que no está en modo objeto tiene un efecto secundario interesante. Porque *es* una llamada a [`readable.push()`](#stream_readable_push_chunk_encoding), la llamada va a terminar el proceso de lectura. Sin embargo, ya que el argumento es un string vacío, no se añaden datos al búfer legible, entonces no hay nada para que un usuario consuma.
 
-### `highWaterMark` discrepancy after calling `readable.setEncoding()`
+### `highWaterMark` discrepancia después de llamar a `readable.setEncoding()`
 
 El uso de `readable.setEncoding()` cambiará el comportamiento de cómo opera `highWaterMark` en modo no-objeto.
 
