@@ -240,7 +240,7 @@ El estatus actual del módulo. Será uno de:
 
 * `'errored'`: El módulo ha sido evaluado, pero se lazó una excepción.
 
-Other than `'errored'`, this status string corresponds to the specification's [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)'s `[[Status]]` field. `'errored'` corresponds to `'evaluated'` in the specification, but with `[[EvaluationError]]` set to a value that is not `undefined`.
+Other than `'errored'`, this status string corresponds to the specification's [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)'s `[[Status]]` field. `'errored'` corresponde a `'evaluated'` en la especificación, pero con `[[EvaluationError]]` configurado a un valor que no está `undefined`.
 
 ### module.url
 
