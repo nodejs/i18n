@@ -92,12 +92,12 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables
 
-* c-ares: fix for single-byte buffer overwrite, CVE-2016-5180, more information at https://c-ares.haxx.se/adv_20160929.html (Rod Vagg)
+* c-ares: repara la sobreescritura de un búfer solo-byte, CVE-2016-5180, más información en https://c-ares.haxx.se/adv_20160929.html (Rod Vagg)
 
 ### Commits
 
-* [a14a6a3a11] - deps: c-ares, avoid single-byte buffer overwrite (Rod Vagg) https://github.com/nodejs/node/pull/9108
-* [b798f598af] - tls: fix minor jslint failure (Rod Vagg) https://github.com/nodejs/node/pull/9107
+* [a14a6a3a11] - deps: c-ares, evitar la sobreescritura de búfer solo-byte (Rod Vagg) https://github.com/nodejs/node/pull/9108
+* [b798f598af] - tls: repara una falla menor jslint (Rod Vagg) https://github.com/nodejs/node/pull/9107
 * [92b232ba01] - win,build: try multiple timeservers when signing (Rod Vagg) https://github.com/nodejs/node/pull/9155
 
 <a id="0.10.47"></a>
