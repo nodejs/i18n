@@ -1025,9 +1025,9 @@ added: v7.7.0
 
 Devuelve una copia superficial de las cabeceras salientes actuales. Ya que se utiliza una copia superficial, los valores del array pueden ser mutados sin llamadas adicionales a varios métodos del módulo http relacionados con la cabecera. Las claves del objeto devuelto son los nombres de cabecera, y los valores son los respectivos valores de cabecera. Todos los nombres de las cabeceras están en minúscula.
 
-The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. Esto significa que los típicos métodos `Object` tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -1046,7 +1046,7 @@ added: v7.7.0
 * `name` {string}
 * Devuelve: {boolean}
 
-Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
+Devuelve `true` si la cabecera identificada por `name` está actualmente establecida en las cabeceras salientes. Note that the header name matching is case-insensitive.
 
 Ejemplo:
 
@@ -1062,7 +1062,7 @@ added: v0.9.3
 
 * {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Booleano (solo-lectura). Verdadero si las cabeceras fueron enviadas, de lo contrario falso.
 
 ### response.removeHeader(name)
 
@@ -1072,9 +1072,9 @@ added: v0.4.0
 
 * `name` {string}
 
-Removes a header that's queued for implicit sending.
+Elimina a una cabecera que está puesta en cola para un envío implícito.
 
-Example:
+Ejemplo:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1088,7 +1088,7 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Por defecto es verdadero.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
