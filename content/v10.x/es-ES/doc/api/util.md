@@ -1745,7 +1745,7 @@ deprecated: v4.0.0
 * `object` {any}
 * Devuelve: {boolean}
 
-Devuelve `true` si el `object` dado es un tipo primitivo. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es de un tipo primitivo. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
