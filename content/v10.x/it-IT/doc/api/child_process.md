@@ -558,18 +558,18 @@ changes:
   * `stdio` {string|Array} Configurazione stdio del child. Di default `stderr` sarà l'output dello stderr del processo parent a meno che non sia specificato `stdio`. **Default:** `'pipe'`.
   * `env` {Object} Coppie key-value dell'ambiente.
   * `shell` {string} La Shell con la quale eseguire il comando. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `'/bin/sh'` su UNIX, `process.env.ComSpec` su Windows.
-  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo. (See setuid(2)).
-  * `gid` {number} Sets the group identity of the process. (See setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
-  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* Returns: {Buffer|string} The stdout from the command.
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo. (Vedi setuid(2)).
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo. (Vedi setgid(2)).
+  * `timeout` {number} La quantità massima di tempo in millisecondi in cui il processo può essere eseguito. **Default:** `undefined`.
+  * `killSignal` {string|integer} Il valore del segnale da utilizzare quando il processo generato verrà arrestato. **Default:** `'SIGTERM'`.
+  * `maxBuffer` {number} La quantità maggiore di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `encoding` {string} L'encoding (codifica) utilizzata per tutti gli input e gli output stdio. **Default:** `'buffer'`.
+  * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
+* Restituisce: {Buffer|string} Lo stdout dal comando.
 
-The `child_process.execSync()` method is generally identical to [`child_process.exec()`][] with the exception that the method will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. *Note that if the child process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.*
+Il metodo `child_process.execSync()` è generalmente identico a [`child_process.exec()`][] con l'eccezione che il metodo restituirà nulla finché il processo child non sarà completamente chiuso. Quando si verifica un timeout e viene inviato `killSignal`, il metodo non restituirà nulla finché il processo non sarà completamente concluso. *Da notare che se il processo child intercetta e gestisce il segnale `SIGTERM` e non si conclude, il processo parent aspetterà fino alla conclusione del processo child.*
 
-If the process times out or has a non-zero exit code, this method ***will*** throw. The [`Error`][] object will contain the entire result from [`child_process.spawnSync()`][].
+Se il processo è scaduto (timeout) oppure ha un valore di uscita diverso da zero, questo metodo ***verrà*** generato. L'[`Error`][] object conterrà l'intero risultato proveniente da [`child_process.spawnSync()`][].
 
 **Non passare mai l'input unsanitized user a questa funzione. Qualsiasi input contenente metacaratteri della shell può essere utilizzato per attivare l'esecuzione arbitraria dei comandi.**
 
@@ -593,23 +593,23 @@ changes:
     description: The `shell` option is supported now.
 -->
 
-* `command` {string} The command to run.
-* `args` {string[]} List of string arguments.
+* `command` {string} Il comando da eseguire.
+* `args` {string[]} Elenco degli argomenti di string.
 * `options` {Object} 
-  * `cwd` {string} Current working directory of the child process.
+  * `cwd` {string} Attuale directory di lavoro del processo child.
   * `input` {string|Buffer|Uint8Array} Il valore che verrà passato come stdin al processo generato. Fornendo questo valore `stdio[0]` verrà sottoposto all'override.
-  * `stdio` {string|Array} Child's stdio configuration.
-  * `env` {Object} Environment key-value pairs.
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
-  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
-  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* Returns: {Object} 
+  * `stdio` {string|Array} Configurazione stdio del child.
+  * `env` {Object} Coppie key-value dell'ambiente.
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo (vedi setuid(2)).
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
+  * `timeout` {number} La quantità massima di tempo in millisecondi in cui il processo può essere eseguito. **Default:** `undefined`.
+  * `killSignal` {string|integer} Il valore del segnale da utilizzare quando il processo generato verrà arrestato. **Default:** `'SIGTERM'`.
+  * `maxBuffer` {number} La quantità maggiore di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `encoding` {string} L'encoding (codifica) utilizzata per tutti gli input e gli output stdio. **Default:** `'buffer'`.
+  * `shell` {boolean|string} Se `true`, esegue `command` all'interno di una shell. Utilizza `'/bin/sh'` su UNIX, e `process.env.ComSpec` su Windows. Una shell diversa può essere specificata come una stringa. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `false` (nessuna shell).
+  * `windowsVerbatimArguments` {boolean} Non viene eseguita nessuna citazione od escaping degli argomenti su Windows. Ignorato su Unix. È impostato su `true` automaticamente quando la `shell` è specificata. **Default:** `false`.
+  * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
+* Restituisce: {Object} 
   * `pid` {number} Pid of the child process.
   * `output` {Array} Array of results from stdio output.
   * `stdout` {Buffer|string} The contents of `output[1]`.
