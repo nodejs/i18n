@@ -1070,7 +1070,7 @@ rs.resume(); // drain the stream
 
 Especialmente útil en escenarios de manejo de error donde un stream es destruido y prematuramente cerrado (como una solicitud HTTP abortada), y no emitirá `'end'` o `'finish'`.
 
-The `finished` API is promisify'able as well;
+El API `finished` también es promisify'able;
 
 ```js
 const finished = util.promisify(stream.finished);
@@ -1092,7 +1092,7 @@ rs.resume(); // drain the stream
 added: v10.0.0
 -->
 
-* `...streams` {Stream} Two or more streams to pipe between.
+* `...streams` {Stream} Dos o más streams para hacer pipe de por medio.
 * `callback` {Function} Una función callback que toma un argumento error opcional.
 
 Un método módulo para hacer pipe entre streams reenviando errores y limpiando correctamente y proporcionando un callback cuando el pipeline es completado.
@@ -1102,10 +1102,10 @@ const { pipeline } = require('stream');
 const fs = require('fs');
 const zlib = require('zlib');
 
-// Use the pipeline API to easily pipe a series of streams
-// together and get notified when the pipeline is fully done.
+// Usa el API pipeline para hacer fácilmente pipe a una serie de streams 
+// juntos y ser notificado cuando el pipeline sea completado.
 
-// A pipeline to gzip a potentially huge tar file efficiently:
+// Un pipeline para hacer gzip eficientemente a un archivo tar potencialmente gigantesco :
 
 pipeline(
   fs.createReadStream('archive.tar'),
@@ -1121,7 +1121,7 @@ pipeline(
 );
 ```
 
-The `pipeline` API is promisify'able as well:
+El API `pipeline` también es promisify'able:
 
 ```js
 const pipeline = util.promisify(stream.pipeline);
@@ -1268,7 +1268,7 @@ changes:
       Add `emitClose` option to specify if `'close'` is emitted on destroy
 -->
 
-* `options` {Object} 
+* `opciones` {Object} 
   * `highWaterMark` {number} Buffer level when [`stream.write()`](#stream_writable_write_chunk_encoding_callback) starts returning `false`. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `decodeStrings` {boolean} Whether or not to decode strings into `Buffer`s before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
   * `objectMode` {boolean} Whether or not the [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) is a valid operation. When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **Default:** `false`.
@@ -1283,14 +1283,14 @@ const { Writable } = require('stream');
 
 class MyWritable extends Writable {
   constructor(options) {
-    // Calls the stream.Writable() constructor
+    // Llama al constructor stream.Writable()
     super(options);
     // ...
   }
 }
 ```
 
-Or, when using pre-ES6 style constructors:
+O cuando se use constructores de estilo pre-ES6:
 
 ```js
 const { Writable } = require('stream');
@@ -1304,7 +1304,7 @@ function MyWritable(options) {
 util.inherits(MyWritable, Writable);
 ```
 
-Or, using the Simplified Constructor approach:
+O se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Writable } = require('stream');
@@ -1461,8 +1461,8 @@ Streams `Readable` personalizados *deben* llamar el constructor `new stream.Read
 
 #### new stream.Readable([options])
 
-* `options` {Object} 
-  * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
+* `opciones` {Object} 
+  * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
   * `encoding` {string} Si es especificado, los búferes van a ser decodificados a strings usando la codificación especificada. **Predeterminado:** `null`.
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Default:** `false`.
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
@@ -1494,7 +1494,7 @@ function MyReadable(options) {
 util.inherits(MyReadable, Readable);
 ```
 
-Or, using the Simplified Constructor approach:
+O se use el enfoque del Constructor Simplificado:
 
 ```js
 const { Readable } = require('stream');
@@ -1517,7 +1517,7 @@ changes:
     description: call `_read()` only once per microtick
 -->
 
-* `size` {number} Number of bytes to read asynchronously
+* `size` {number} Números de bytes para ser leídos asincrónicamente
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
 
@@ -1537,10 +1537,10 @@ The `readable._read()` method is prefixed with an underscore because it is inter
 added: v8.0.0
 -->
 
-* `err` {Error} A possible error.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `err` {Error} Un posible error.
+* `callback` {Function} Una función callback que toma un argumento error adicional.
 
-The `_destroy()` method is called by [`readable.destroy()`](#stream_readable_destroy_error). Puede ser sobreescrito por clases secundarias pero **no debe** ser llamado directamente.
+El método `_destroy()` es llamado por [`readable.destroy()`](#stream_readable_destroy_error). Puede ser sobreescrito por clases secundarias pero **no debe** ser llamado directamente.
 
 #### readable.push(chunk[, encoding])
 
@@ -1575,7 +1575,7 @@ class SourceWrapper extends Readable {
 
     this._source = getLowlevelSourceObject();
 
-    // Every time there's data, push it into the internal buffer.
+    // Cada vez que hay datos, los empuja al búfer interno.
     this._source.ondata = (chunk) => {
       // if push() returns false, then stop reading from source
       if (!this.push(chunk))
