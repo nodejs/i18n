@@ -1101,7 +1101,7 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Los valores que no sean strings se almacenarán sin modificación. Therefore, [`response.getHeader()`][] may return non-string values. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
+Establece un único valor de cabecera para cabeceras implícitas. If this header already exists in the to-be-sent headers, its value will be replaced. Utilice aquí un array de strings para enviar varias cabeceras con el mismo nombre. Los valores que no sean strings se almacenarán sin modificación. Por lo tanto, [`response.getHeader()`][] puede devolver valores que no sean strings. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
 
 Example:
 
