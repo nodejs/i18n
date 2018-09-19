@@ -125,7 +125,7 @@ Ejemplos de streams [`Writable`][] streams incluyen:
 
 * [Solicitudes HTTP, en el cliente](http.html#http_class_http_clientrequest)
 * [Respuestas HTTP, en el servidor](http.html#http_class_http_serverresponse)
-* [streams escribir fs](fs.html#fs_class_fs_writestream)
+* [streams write fs](fs.html#fs_class_fs_writestream)
 * [streams zlib](zlib.html)
 * [streams crypto](crypto.html)
 * [sockets TCP](net.html#net_class_net_socket)
@@ -351,7 +351,7 @@ added: v0.11.2
 
 El método `writable.uncork()` arroja todos los datos almacenados desde que [`stream.cork()`][] fue llamado.
 
-Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Doing so allows batching of all `writable.write()` calls that occur within a given Node.js event loop phase.
+Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Hacerlo permite la dosificación de todas las llamadas `writable.write()` que ocurren dentro un fase bucle de un evento Node.js dado.
 
 ```js
 stream.cork();
@@ -369,7 +369,7 @@ stream.cork();
 stream.write('data ');
 process.nextTick(() => {
   stream.uncork();
-  // The data will not be flushed until uncork() is called a second time.
+  // Los datos no serán arrojados hasta que uncork() es llamado una segunda vez.
   stream.uncork();
 });
 ```
@@ -433,7 +433,7 @@ function write(data, cb) {
   }
 }
 
-// Wait for cb to be called before doing any other write.
+// Espera que se llame cb antes de escribir algo más.
 write('hello', () => {
   console.log('write completed, do more writes now');
 });
@@ -447,13 +447,13 @@ Los streams legibles son una abstracción para un *source* donde los datos son c
 
 Ejemplos de streams `Readable` inlcuyen:
 
-* [HTTP responses, on the client](http.html#http_class_http_incomingmessage)
-* [HTTP requests, on the server](http.html#http_class_http_incomingmessage)
-* [fs read streams](fs.html#fs_class_fs_readstream)
-* [zlib streams](zlib.html)
-* [crypto streams](crypto.html)
-* [TCP sockets](net.html#net_class_net_socket)
-* [child process stdout and stderr](child_process.html#child_process_subprocess_stdout)
+* [Respuestas HTTP, en el cliente](http.html#http_class_http_incomingmessage)
+* [Solicitud HTTP, en el servidor](http.html#http_class_http_incomingmessage)
+* [streams read fs](fs.html#fs_class_fs_readstream)
+* [streams zlib](zlib.html)
+* [streams crypto](crypto.html)
+* [sockets TCP](net.html#net_class_net_socket)
+* [procesos secundarios stdout y stderr](child_process.html#child_process_subprocess_stdout)
 * [`process.stdin`][]
 
 Todos los streams [`Readable`][] implementan la interfaz definida por la clase `stream.Readable`.
