@@ -165,10 +165,10 @@ Este es una actualización de seguridad. All Node.js users should consult the se
 * [7c22f19009] - deps: añade -no_rand_screen a openssl s_client (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
 * [5d78366937] - deps: actualiza los archivos asm openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
 * [2bc2427cb7] - deps: Reparar error de ensamblaje opensslen ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
-* [8df4b0914c] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
-* [11eefefb17] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [61ccc27b54] - deps: upgrade openssl sources to 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [aa02438274] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
+* [8df4b0914c] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
+* [11eefefb17] - deps: copiar todos los archivos de encabezados openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [61ccc27b54] - deps: actualiza las fuentes openssl a 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [aa02438274] - openssl: reparar el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
 
 <a id="0.10.44"></a>
 
