@@ -180,7 +180,7 @@ Las desaprobaciones pendientes son generalmente idénticas a una desaprobación 
 added: v6.3.0
 -->
 
-Indica al cargador del módulo para preservar los enlaces simbólicos al resolver y almacenar caché en los módulos.
+Instruye al cargador del módulo para preservar los enlaces simbólicos al resolver y almacenar caché en los módulos.
 
 Por defecto, cuando Node.js carga un módulo desde una ruta que está simbólicamente enlazada a una locación diferente en el disco, Node.js desreferenciará el enlace y utilizará la "ruta real" actual del módulo en el disco como un identificador y como una ruta raíz para localizar otros módulos de dependencia. En la mayoría de los casos, este comportamiento por defecto es aceptado. Sin embargo, al utilizar dependencias de pares enlazadas simbólicamente, como se ilustra en el siguiente ejemplo, el comportamiento por defecto causa una excepción a ser arrojada si el `moduleA` intenta requerir al `moduleB` como una dependencia de pares:
 
@@ -198,7 +198,7 @@ Por defecto, cuando Node.js carga un módulo desde una ruta que está simbólica
      └── package.json
 ```
 
-La bandera de línea de comando `--preserve-symlinks` indica a Node.js a utilizar la ruta symlink para módulos en lugar de la ruta real, permitiendo que se encuentren las dependencias de pares enlazadas simbólicamente.
+La bandera de línea de comando `--preserve-symlinks` indica a Node.js utilizar la ruta symlink para módulos en lugar de la ruta real, permitiendo que se encuentren las dependencias de pares enlazadas simbólicamente.
 
 Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Específicamente, los módulos *nativos* enlazados simbólicamente pueden fallar al cargar si están enlazadas desde más de una locación en el árbol de dependencia (Node.js podría verlos como dos módulos separados e intentaría cargar el módulo múltiples veces, causando que se arroje una excepción).
 
@@ -272,7 +272,7 @@ Enables the collection of trace event tracing information.
 added: v2.1.0
 -->
 
-Imprime un stack trave cada vez que un I/O sincrónico es detectado después de el primer turno del bucle de evento.
+Imprime un stack trace cada vez que un I/O sincrónico es detectado después del primer turno del bucle de evento.
 
 ### `--trace-warnings`
 
@@ -296,11 +296,11 @@ Track heap object allocations for heap snapshots.
 added: v6.11.0
 -->
 
-Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. La tienda por defecto es seleccionable en el tiempo de construcción.
+Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. El almacén por defecto es seleccionable en el tiempo de construcción.
 
 The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Es idéntico en todas las plataformas soportadas.
 
-El uso de la tienda OpenSSL permite modificaciones externas de la tienda. Para la mayoría de las distribuciones Linux y BSD, esta tienda es mantenida por los mantenedores de distribución y los administradores de sistema. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+El uso del almacén OpenSSL permite modificaciones externas del almacén. Para la mayoría de las distribuciones Linux y BSD, este almacén es mantenido por los mantenedores de distribución y los administradores de sistema. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
 Vea `SSL_CERT_DIR` y `SSL_CERT_FILE`.
 
@@ -465,7 +465,7 @@ added: v8.0.0
 
 Una lista separada con espacios de opciones de línea de comando. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js se cerrará con un error si se utiliza una opción que no está permitida en el entorno, como `-p` o un archivo script.
 
-Las opciones de node que están permitidas son:
+Las opciones de Node que están permitidas son:
 
 - `--enable-fips`
 - `--force-fips`
@@ -518,7 +518,7 @@ added: v8.0.0
 
 Cuando se establece a `1`, emite advertencias de desaprobación pendientes.
 
-Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizaras para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 
@@ -563,7 +563,7 @@ added: v7.7.0
 
 Si `--use-openssl-ca` está habilitado, esto lo anula y establece el directorio de OpenSSL que contiene certificados de confianza.
 
-Tenga en cuenta que a menos de que el entorno secundaria sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
+Tenga en cuenta que a menos de que el entorno secundario sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `SSL_CERT_FILE=file`
 
@@ -573,13 +573,13 @@ added: v7.7.0
 
 Si `--use-openssl-ca` está habilitado, esto lo anula y establece el archivo de OpenSSL que contiene certificados de confianza.
 
-Tenga en cuenta que a menos de que el entorno secundaria sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
+Tenga en cuenta que a menos de que el entorno secundario sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `UV_THREADPOOL_SIZE=size`
 
 Set the number of threads used in libuv's threadpool to `size` threads.
 
-Los APIs de sistema asincrónicos son utilizados por Node.js cada vez que sea posible, pero donde ellos no existan, el threadpool de libuv es utilizado para crear APIs de nodo asincrónicos basados en APIs de sistema sincrónicos. APIs de Node.js que utilizan el threadpool son:
+Las APIs de sistema asincrónicas son utilizadas por Node.js cada vez que es posible, pero donde ellas no existan el threadpool de libuv es utilizado para crear APIs de nodo asincrónicas basadas en APIs de sistema sincrónicas. APIs de Node.js que utilizan el threadpool son:
 
 - all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
 - `crypto.pbkdf2()`
