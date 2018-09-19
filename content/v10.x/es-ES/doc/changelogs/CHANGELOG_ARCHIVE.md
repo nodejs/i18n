@@ -821,10 +821,10 @@ https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 * doc: Colorear encabezados de índice de estabilidad de API en docs (Luke Arduini)
 * net: correcciones de socket.readyState (bentaber)
 * http: Mejoras de rendimiento para http bajo streams2 (isaacs)
-* stream: fix to emit end event on http.ClientResponse (Shigeki Ohtsu)
-* stream: fix event handler leak in readstream pipe and unpipe (Andreas Madsen)
-* build: Support ./configure --tag switch (Maciej Małecki)
-* repl: don't touch `require.cache` (Nathan Rajlich)
+* stream: reparar para emitir evento de finalización en http.ClientResponse (Shigeki Ohtsu)
+* stream: reparar fuga del manejador de eventos en pipe y unpipe de readstream (Andreas Madsen)
+* build: Soportar interruptor de --tag ./configure (Maciej Małecki)
+* repl: no tocar `require.cache` (Nathan Rajlich)
 * node: Emit 'exit' event when exiting for an uncaught exception (isaacs)
 
 <a id="0.9.4"></a>
