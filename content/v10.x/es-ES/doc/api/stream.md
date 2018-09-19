@@ -1271,12 +1271,12 @@ changes:
 * `opciones` {Object} 
   * `highWaterMark` {number} Nivel del búfer cuando [`stream.write()`](#stream_writable_write_chunk_encoding_callback) empieza a devolver `false`. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
   * `decodeStrings` {boolean} Si se debe o no decodificar strings en `Buffer`es antes de pasarlos a [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
-  * `objectMode` {boolean} Ya sea [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) una operación válida o no. When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **Predeterminado:** `false`.
-  * `emitClose` {boolean} Whether or not the stream should emit `'close'` after it has been destroyed. **Predeterminado:** `true`.
-  * `write` {Function} Implementation for the [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) method.
-  * `writev` {Function} Implementation for the [`stream._writev()`](#stream_writable_writev_chunks_callback) method.
-  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
-  * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
+  * `objectMode` {boolean} Ya sea [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) una operación válida o no. Cuando es establecido, se hace posible escribir otros valores de JavaScript aparte de string, `Buffer` o `Uint8Array` si lo soporta la implementación del stream. **Predeterminado:** `false`.
+  * `emitClose` {boolean} Si el stream debería emitir `'close'` después que ha sido destruido, o no. **Predeterminado:** `true`.
+  * `write` {Function} Implementación para el método [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1).
+  * `writev` {Function} Implementación para el método [`stream._writev()`](#stream_writable_writev_chunks_callback).
+  * `destroy` {Function} Implementación para el método [`stream._destroy()`](#stream_writable_destroy_err_callback).
+  * `final` {Function} Implementación para el método [`stream._final()`](#stream_writable_final_callback).
 
 ```js
 const { Writable } = require('stream');
@@ -1321,9 +1321,9 @@ const myWritable = new Writable({
 
 #### writable.\_write(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} The chunk to be written. Will **always** be a buffer unless the `decodeStrings` option was set to `false` or the stream is operating in object mode.
-* `encoding` {string} If the chunk is a string, then `encoding` is the character encoding of that string. If chunk is a `Buffer`, or if the stream is operating in object mode, `encoding` may be ignored.
-* `callback` {Function} Call this function (optionally with an error argument) when processing is complete for the supplied chunk.
+* `chunk` {Buffer|string|any} El fragmento a ser escrito. **Simpre** será un búfer a menos que la opción `decodeStrings` fue establecida como `false` o el stream está operando en modo objeto.
+* `encoding` {string} Si el fragmento es un string, entonces `encoding` es el codificador de carácter de ese string. Si el fragmento es un `Buffer`, o si el stream está operando en modo objeto, `encoding` pudiera ser ignorado.
+* `callback` {Function} Llama esta función (opcionalmente con un argumento error) cuando el procesamiento es completado para el fragmento suministrado.
 
 Todas las implementaciones de stream `Writable` deben proporcionar un método [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1) para enviar datos al recurso subyacente.
 
@@ -1466,7 +1466,7 @@ Streams `Readable` personalizados *deben* llamar el constructor `new stream.Read
   * `encoding` {string} Si es especificado, los búferes van a ser decodificados a strings usando la codificación especificada. **Predeterminado:** `null`.
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Predeterminado:** `false`.
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
-  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
+  * `destroy` {Function} Implementación para el método [`stream._destroy()`](#stream_readable_destroy_err_callback).
 
 ```js
 const { Readable } = require('stream');
@@ -1529,7 +1529,7 @@ Una vez que el método `readable._read()` ha sido llamado, no será llamado de n
 
 El argumento `size` es consultivo. Para implementaciones donde un "read" es una sola operación que devuelve datos, puede usar el argumento `size` para determinar cuántos datos recoger. Otras implementaciones pudieran ignorar este argumento y simplemente proporcionar los datos cuando estén disponibles. No hay que "esperar" hasta que bytes de `size` estén disponibles antes de llamar a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding).
 
-The `readable._read()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+El método `readable._read()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
 #### readable.\_destroy(err, callback)
 
@@ -1552,8 +1552,8 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|null|any} Chunk of data to push into the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value.
-* `encoding` {string} Encoding of string chunks. Must be a valid `Buffer` encoding, such as `'utf8'` or `'ascii'`.
+* `chunk` {Buffer|Uint8Array|string|null|any} Fragmento de datos a ser empujados en la cola de lectura. Para los streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para streams en modo objeto, `chunk` puede ser cualquier valor JavaScript.
+* `encoding` {string} Codificación de los fragmentos string. Debe ser una codificación `Buffer`, tales como `'utf8'` o `'ascii'`.
 * Devuelve: {boolean} `true` si fragmentos de datos adicionales pueden seguir siendo empujados; de otra manera `false`.
 
 Cuando `chunk` es un `Buffer`, `Uint8Array` o un `string`, el `chunk` de datos será añadido a la cola interna para los usuarios del stream a consumir. Pasar `chunk` como `null` señala el final del stream (EOF), después que no se pueden escribir más datos.
