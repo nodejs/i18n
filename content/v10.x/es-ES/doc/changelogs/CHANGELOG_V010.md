@@ -82,11 +82,11 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archivo](CHANGELOG_ARCHIVE.md)
 
-*Note*: Node.js v0.10 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until October 2016.
+*Nota*: Node.js v0.10 está cubierto por el [Plan de Soporte de Largo Plazo de Node.js](https://github.com/nodejs/LTS) y va a ser mantenido hasta Octubre del 2016.
 
 <a id="0.10.48"></a>
 
-## 2016-10-18, Version 0.10.48 (Maintenance), @rvagg
+## 2016-10-18, Versión 0.10.48 (Mantenimiento), @rvagg
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
 
