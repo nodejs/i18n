@@ -89,9 +89,9 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // embargo, la devolución proporcionada nunca se llamaría.
   //
   // El método link() devuelve una Promesa que se resolverá cuando se resuelvan
-  // todas las Promesas devueltas por el vinculador.
+  // todas las Promesas devueltas por el enlazador.
   //
-  // Nota: Esto es un ejemplo ingenioso en el que la función del vinculador crea un nuevo
+  // Nota: Esto es un ejemplo ingenioso en el que la función del enlazador crea un nuevo
   // módulo "foo" cada vez que se llama. En un sistema de módulo de pleno derecho, probablemente
   // se utilizaría un caché para evitar los módulos duplicados.
 
@@ -104,7 +104,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
       `, { context: referencingModule.context });
 
       // Utilizar `contextifiedSandbox` en lugar de `referencingModule.context`
-      // aquí también funcionaría.
+      // también funcionaría aquí.
     }
     throw new Error(`Unable to resolve dependency: ${specifier}`);
   }
@@ -166,12 +166,12 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
         meta.prop = {};
       }
     });
-  // Since module has no dependencies, the linker function will never be called.
+  // Ya que el módulo no tiene dependencia, la función del enlazador nunca se llamará.
   await module.link(() => {});
   module.initialize();
   await module.evaluate();
 
-  // Now, Object.prototype.secret will be equal to 42.
+  // Ahora, Object.prototype.secret será igual a 42.
   //
   // To fix this problem, replace
   //     meta.prop = {};
