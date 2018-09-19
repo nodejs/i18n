@@ -99,18 +99,18 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 * **Actualización a OpenSSL 1.0.2o**: No contiene ninguna corrección de seguridad que se sabe tienen un impacto en Node.js.
 * **Reparación para la vulnerabilidad de la revinculación de DNS del inspector (CVE-2018-7160)**: Una página web maliciosa podría usar un ataque de revinculación de DNS para engañar un explorador web, para luego eludir los chequeos de política del mismo origen y permitir conexiones HTTP a localhost o a hosts en la red local, potencialmente a un puerto inspector abierto como un depurador, por lo tanto, ganando acceso de ejecución de código completo. El inspector ahora permite conexiones que tienen un valor `Host` de navegador de `localhost` o `localhost6`.
-* **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
+* **Reparación para módulo `'path'` de expresión regular de denegación de servicio (CVE-2018-7158)**: Una expresión regular usada para el análisis de rutas de POSIX, podría ser usada para causar una denegación de servicio si un atacador fuese capaz de tener un string de ruta especialmente diseñado pasado mediante las funciones del módulo `'path'` impactadas.
 * **Rechazar espacios en HTTP `Content-Length` valores de encabezados (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de encabezados `Content-Length`. Tales valores ahora conducen a conexiones rechazadas de la misma manera que valores no numéricos.
 * **Actualización de certificados root**: 5 certificados root adicionales han sido agregados al binario de Node.js y 30 han sido removidos.
 
 ### Commits
 
 * [[`ac21bdc149`](https://github.com/nodejs/node/commit/ac21bdc149)] - **crypto**: actualizar certificados root (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
-* [[`3c99e41427`](https://github.com/nodejs/node/commit/3c99e41427)] - **deps**: add -no\_rand\_screen to openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`d775057090`](https://github.com/nodejs/node/commit/d775057090)] - **deps**: fix asm build error of openssl in x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`982012b96d`](https://github.com/nodejs/node/commit/982012b96d)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`1aa83f7707`](https://github.com/nodejs/node/commit/1aa83f7707)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
-* [[`05de6f4af7`](https://github.com/nodejs/node/commit/05de6f4af7)] - **deps**: upgrade openssl sources to 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
+* [[`3c99e41427`](https://github.com/nodejs/node/commit/3c99e41427)] - **deps**: agregar -no\_rand\_screen a openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
+* [[`d775057090`](https://github.com/nodejs/node/commit/d775057090)] - **deps**: reparar error de compilación asm de openssl en x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`982012b96d`](https://github.com/nodejs/node/commit/982012b96d)] - **deps**: reparar error de ensamblaje openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`1aa83f7707`](https://github.com/nodejs/node/commit/1aa83f7707)] - **deps**: copiar todos los archivos de encabezado openssl para incluir a dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
+* [[`05de6f4af7`](https://github.com/nodejs/node/commit/05de6f4af7)] - **deps**: actualizar fuentes openssl a 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`ed64cc2be7`](https://github.com/nodejs/node/commit/ed64cc2be7)] - **deps**: reject interior blanks in Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`d786d21f92`](https://github.com/nodejs/node/commit/d786d21f92)] - **deps**: upgrade http-parser to v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`4947b0e26e`](https://github.com/nodejs/node/commit/4947b0e26e)] - **inspector**: minor adjustments (Eugene Ostroukhov)
