@@ -172,23 +172,23 @@ Para que un módulo ejecute un código múltiples veces, exporte una función y 
 
 Los módulos se almacenan en caché basados en su nombre de archivo resuelto. Since modules may resolve to a different filename based on the location of the calling module (loading from `node_modules` folders), it is not a *guarantee* that `require('foo')` will always return the exact same object, if it would resolve to different files.
 
-Adicionalmente, en sistemas de archivo sensibles a mayúsculas y minúsculas o sistemas operativos, nombres de archivos resueltos diferentes pueden apuntar al mismo archivo, pero el caché todavía los tratará como diferentes módulos y cargará el archivo múltiples veces. For example, `require('./foo')` and `require('./FOO')` return two different objects, irrespective of whether or not `./foo` and `./FOO` are the same file.
+Adicionalmente, en sistemas de archivo sensibles a mayúsculas y minúsculas o sistemas operativos, nombres de archivos resueltos diferentes pueden apuntar al mismo archivo, pero el caché todavía los tratará como diferentes módulos y cargará el archivo múltiples veces. Por ejemplo, `require('./foo')` y `require('./FOO')` devuelven dos objetos diferentes, desconsiderando si `./foo` y `./FOO` son o no el mismo archivo.
 
 ## Core Modules
 
 <!--type=misc-->
 
-Node.js has several modules compiled into the binary. These modules are described in greater detail elsewhere in this documentation.
+Node.js tiene varios módulos compilados en el binario. Estos módulos son descritos con mayor detalle en otras partes de esta documentación.
 
 The core modules are defined within Node.js's source and are located in the `lib/` folder.
 
 Core modules are always preferentially loaded if their identifier is passed to `require()`. For instance, `require('http')` will always return the built in HTTP module, even if there is a file by that name.
 
-## Cycles
+## Ciclos
 
 <!--type=misc-->
 
-When there are circular `require()` calls, a module might not have finished executing when it is returned.
+Cuando hay llamadas circulares a `require()`, un módulo podría no haber finalizado la ejecución cuando es devuelto.
 
 Consider this situation:
 
