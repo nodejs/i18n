@@ -2623,17 +2623,17 @@ napi_status napi_create_function(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] utf8Name`: El nombre de la función codificado como UTF8. Este es visible dentro de JavaScript como la propiedad del nuevo `name` de la función objeto.
-- `[in] cb`: The native function which should be called when this function object is invoked.
-- `[in] data`: User-provided data context. This will be passed back into the function when invoked later.
-- `[out] result`: `napi_value` representing the JavaScript function object for the newly created function.
+- `[in] cb`: La función nativa que debe ser llamada cuando esta función objeto es invocada.
+- `[in] data`: Contexto de datos proporcionado por el usuario. Este será pasado de nuevo a la función cuando se invoque luego.
+- `[out] result`: `napi_value` que representa la función objeto de JavaScript para la nueva función creada.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API allows an add-on author to create a function object in native code. This is the primary mechanism to allow calling *into* the add-on's native code *from* JavaScript.
+Esta API permite al autor de un complemento crear una función objeto en código nativo. Este es el mecanismo primario para permitir llamar *al* código nativo del complemento *desde* JavaScript.
 
-The newly created function is not automatically visible from script after this call. Instead, a property must be explicitly set on any object that is visible to JavaScript, in order for the function to be accessible from script.
+La nueva función creada no es visible automáticamente desde el script luego de esta llamada. En cambio, una propiedad debe ser explícitamente establecida sobre un objeto que es visible para JavaScript, para que la función sea accesible desde el script.
 
-In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
+Para exponer una función como parte de las exportaciones del módulo del complemento, configure la nueva función creada en el objeto exportaciones. Un módulo de muestra puede verse de la siguiente manera:
 
 ```C
 napi_value SayHello(napi_env env, napi_callback_info info) {
@@ -2657,7 +2657,7 @@ napi_value Init(napi_env env, napi_value exports) {
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
-Given the above code, the add-on can be used from JavaScript as follows:
+Dado el código anterior, el complemento puede ser utilizado desde JavaScript como sigue:
 
 ```js
 const myaddon = require('./addon');
