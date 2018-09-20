@@ -148,15 +148,15 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 * [[`37071b8dda`](https://github.com/nodejs/node/commit/37071b8dda)] - **path**: reparar path.normalize para rutas relativas (Weijia Wang) [#17974](https://github.com/nodejs/node/pull/17974)
 * [[`fdf73b110f`](https://github.com/nodejs/node/commit/fdf73b110f)] - **test**: preservar env en casos de prueba (Beth Griggs) [#14822](https://github.com/nodejs/node/pull/14822)
 * [[`bb2d292562`](https://github.com/nodejs/node/commit/bb2d292562)] - **test**: cambiar mensaje de aserción a predeterminado (ryanmahan) [#18259](https://github.com/nodejs/node/pull/18259)
-* [[`27107b957c`](https://github.com/nodejs/node/commit/27107b957c)] - **test**: use countdown timer (Mandeep Singh) [#17326](https://github.com/nodejs/node/pull/17326)
-* [[`eaa30e4947`](https://github.com/nodejs/node/commit/eaa30e4947)] - **test**: simplify loadDHParam in TLS test (Tobias Nießen) [#18103](https://github.com/nodejs/node/pull/18103)
-* [[`2004efded8`](https://github.com/nodejs/node/commit/2004efded8)] - **test**: improve to use template string (sreepurnajasti) [#18097](https://github.com/nodejs/node/pull/18097)
-* [[`16ef24bccf`](https://github.com/nodejs/node/commit/16ef24bccf)] - **test**: use smaller input file for test-zlib.js (Rich Trott) [#17988](https://github.com/nodejs/node/pull/17988)
-* [[`48790382f1`](https://github.com/nodejs/node/commit/48790382f1)] - **tools**: add number-isnan rule (Jon Moss) [#17556](https://github.com/nodejs/node/pull/17556)
+* [[`27107b957c`](https://github.com/nodejs/node/commit/27107b957c)] - **test**: usar contador regresivo (Mandeep Singh) [#17326](https://github.com/nodejs/node/pull/17326)
+* [[`eaa30e4947`](https://github.com/nodejs/node/commit/eaa30e4947)] - **test**: simplificar loadDHParam en un test TLS (Tobias Nießen) [#18103](https://github.com/nodejs/node/pull/18103)
+* [[`2004efded8`](https://github.com/nodejs/node/commit/2004efded8)] - **test**: mejorar para usar string modelo (sreepurnajasti) [#18097](https://github.com/nodejs/node/pull/18097)
+* [[`16ef24bccf`](https://github.com/nodejs/node/commit/16ef24bccf)] - **test**: usar archivo de entrada más pequeño test-zlib.js (Rich Trott) [#17988](https://github.com/nodejs/node/pull/17988)
+* [[`48790382f1`](https://github.com/nodejs/node/commit/48790382f1)] - **tools**: añadir regla number-isnan (Jon Moss) [#17556](https://github.com/nodejs/node/pull/17556)
 
 <a id="6.13.0"></a>
 
-## 2018-02-13, Version 6.13.0 'Boron' (LTS), @MylesBorins
+## 2018-02-13, Versión 6.13.0 'Boron' (LTS), @MylesBorins
 
 This LTS release comes with 112 commits, 17 of which are considered Semver-Minor. This includes 32 which are doc related, 31 which are test related, 8 which are build / tool related and 1 commit which updates a dependency.
 
