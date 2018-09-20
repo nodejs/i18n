@@ -1456,9 +1456,9 @@ Crea y devuelve un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHa
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array with the names of the supported cipher algorithms.
+- Devuelve: {string[]} Una matriz con los nombres de los algoritmos de cifrado respaldados.
 
-Example:
+Ejemplo:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1471,9 +1471,9 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-- Returns: {string[]} An array with the names of the supported elliptic curves.
+- Devuelve: {string[]} Una matriz con los nombres de las curvas elípticas respaldadas.
 
-Example:
+Ejemplo:
 
 ```js
 const curves = crypto.getCurves();
@@ -1487,9 +1487,9 @@ added: v0.7.5
 -->
 
 - `groupName` {string}
-- Returns: {Object}
+- Devuelve: {Object}
 
-Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de claves `DiffieHellman` predefinido. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (definidos en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero ver [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definidos en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto devuelto imita la interfaz de objetos creados por [`crypto.createDiffieHellman()`][], pero no va a permitir cambios de las claves (con [`diffieHellman.setPublicKey()`][] por ejemplo). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
 Example (obtaining a shared secret):
 
