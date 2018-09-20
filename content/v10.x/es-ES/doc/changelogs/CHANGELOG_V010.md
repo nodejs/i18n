@@ -192,9 +192,9 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Notable changes:
 
-* http_parser: Update to http-parser 1.2 to fix an unintentionally strict limitation of allowable header characters. (James M Snell) https://github.com/nodejs/node/pull/5242
-* domains: 
-  * Prevent an exit due to an exception being thrown rather than emitting an `'uncaughtException'` event on the `process` object when no error handler is set on the domain within which an error is thrown and an `'uncaughtException'` event listener is set on `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
+* http_parser: Actualizar a http-parser 1.2 para reparar una limitación estricta no intencional de caracteres de encabezado permitidos. (James M Snell) https://github.com/nodejs/node/pull/5242
+* dominio: 
+  * Previene una salida debido a que se arroja una excepción en vez de emitir un evento `'uncaughtException'` en el objeto `process` cuando ningún manejador de errores es establecido en el dominio donde se arroja un error, y un listener del evento `'uncaughtException'` es establecido en `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
   * Fix an issue where the process would not abort in the proper function call if an error is thrown within a domain with no error handler and `--abort-on-uncaught-exception` is used. (Julien Gilli) https://github.com/nodejs/node/pull/3887
 * openssl: Upgrade from 1.0.1r to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508 
   * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0705
