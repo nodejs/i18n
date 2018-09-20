@@ -91,15 +91,15 @@ When the code in the `foo` package does `require('bar')`, it will get the versio
 
 Además, para hacer que el módulo busque un proceso inclusive más óptimo, antes que colocar los paquetes directamente en `/usr/lib/node`, podríamos colocarlos en `/usr/lib/node_modules/<name>/<version>`. Entonces Node.js no se preocupará en buscar dependencias faltantes en `/usr/node_modules` o `/node_modules`.
 
-Para hacer que los módulos se encuentren disponibles para el REPL de Node.js, podría ser útil también añadir la carpeta `/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
+Para hacer que los módulos se encuentren disponibles para el REPL de Node.js, podría ser útil también añadir la carpeta `/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Debido a que las búsquedas del módulo que utilizan las carpetas `node_modules` son todas relativas, y se basan en la ruta real de los archivos que hace llamadas a `require()`, los mismos paquetes pueden encontrarse en cualquier lugar.
 
-## All Together...
+## Todo Junto...
 
 <!-- type=misc -->
 
-To get the exact filename that will be loaded when `require()` is called, use the `require.resolve()` function.
+Para obtener el nombre de archivo exacto que será cargado cuando se llame a `require()`, utilice la función `require.resolve()`.
 
-Putting together all of the above, here is the high-level algorithm in pseudocode of what `require.resolve()` does:
+Colocando todo lo de arriba junto, aquí está el algoritmo de alto nivel en pseudocódigo de lo que hace `require.resolve()`:
 
 ```txt
 require(X) from module at path Y
@@ -156,11 +156,11 @@ NODE_MODULES_PATHS(START)
 5. return DIRS
 ```
 
-## Caching
+## Almacenamiento en Caché
 
 <!--type=misc-->
 
-Modules are cached after the first time they are loaded. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+Los módulos se almacenan en caché después de que se carguen por primera vez. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
 
 Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
