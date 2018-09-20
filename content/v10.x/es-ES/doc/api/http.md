@@ -1739,9 +1739,9 @@ req.write(postData);
 req.end();
 ```
 
-Tenga en cuenta que en el ejemplo, `req.end()` fue llamado. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
+Tenga en cuenta que en el ejemplo, `req.end()` fue llamado. Con `http.request()` uno siempre debe llamar a `req.end()` para indicar el final de la solicitud - incluso si no hay datos que estén siendo escritos para el cuerpo de solicitud.
 
-If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object. Como con todos los eventos `'error'`, si no hay listeners registrados se arrojará el error.
+Si se encuentra algún error durante la solicitud (sea con una resolución DNS, errores a nivel de TCP, o errores de análisis en HTTP) se emitirá un evento `'error'` en el objeto de solicitud devuelto. Como con todos los eventos `'error'`, si no hay listeners registrados se arrojará el error.
 
 Hay algunas cabeceras especiales que deberían tenerse en cuenta.
 
