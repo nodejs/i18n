@@ -502,7 +502,7 @@ Flush the request headers.
 
 For efficiency reasons, Node.js normally buffers the request headers until `request.end()` is called or the first chunk of request data is written. It then tries to pack the request headers and data into a single TCP packet.
 
-That's usually desired (it saves a TCP round-trip), but not when the first data is not sent until possibly much later. `request.flushHeaders()` bypasses the optimization and kickstarts the request.
+That's usually desired (it saves a TCP round-trip), but not when the first data is not sent until possibly much later. `request.flushHeaders()` evade la optimización e inicia la solicitud.
 
 ### request.getHeader(name)
 
@@ -1685,16 +1685,16 @@ changes:
   * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][] . Possible values: 
     * `undefined` (default): use [`http.globalAgent`][] for this host and port.
     * `Agent` object: explicitly use the passed in `Agent`.
-    * `false`: causes a new `Agent` with default values to be used.
+    * `false`: hace que un nuevo `Agent` con valores predeterminados sea utilizado.
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
-  * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Por defecto es `true`.
+  * `timeout` {number}: Un número que especifica el tiempo de espera del socket en milisegundos. This will set the timeout before the socket is connected.
+  * `setHost` {boolean}: Especifica si se agrega automáticamente a la cabecera `Host` o no. Por defecto es `true`.
 * `callback` {Function}
 * Devuelve: {http.ClientRequest}
 
 Node.js mantiene varias conexiones por servidor para realizar solicitudes HTTP. This function allows one to transparently issue requests.
 
-`options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
 
 The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
 
@@ -1763,7 +1763,7 @@ const req = http.request(options, (res) => {
 });
 ```
 
-In a successful request, the following events will be emitted in the following order:
+En una solicitud exitosa, los siguientes eventos se emitirán en el siguiente orden:
 
 * `'socket'`
 * `'response'` 
