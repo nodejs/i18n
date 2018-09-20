@@ -1271,7 +1271,7 @@ El argumento `options` controla el comportamiento stream y es opcional, exceptua
 
 La implementación de `crypto.createDecipher()` deriva claves usando la función OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario ya que la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptográficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
 ### crypto.createDecipheriv(algorithm, key, iv[, options])
 
@@ -1291,13 +1291,13 @@ changes:
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
+Crea y devuelve un objeto `Decipher` que usa los `algorithm`, `key` y vector de inicialización (`iv`) dados.
 
 El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
+El `algorithm` es dependiente de OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
+La `key` es la clave cruda usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
 Los vectores de inicialización deben ser impredecibles y únicos; idealmente, serán criptográficamente aleatorios. Estos no tienen que ser secretos: los IV son típicamente añadidos a los mensajes de texto cifrado sin cifrar. Puede sonar contradictorio que algo tenga que ser impredecible y único, pero no tenga que ser secreto; es importante recordar que un atacante no debe ser capaz de predecir a futuro cual va a ser el IV dado.
 
