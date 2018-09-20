@@ -1743,11 +1743,11 @@ Tenga en cuenta que en el ejemplo, `req.end()` fue llamado. With `http.request()
 
 If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object. Como con todos los eventos `'error'`, si no hay listeners registrados se arrojará el error.
 
-There are a few special headers that should be noted.
+Hay algunas cabeceras especiales que deberían tenerse en cuenta.
 
-* Sending a 'Connection: keep-alive' will notify Node.js that the connection to the server should be persisted until the next request.
+* Enviar un 'Connection: keep-alive' notificará a Node.js que la conexión al servidor debería persistir hasta la siguiente solicitud.
 
-* Sending a 'Content-Length' header will disable the default chunked encoding.
+* Enviar una cabecera 'Content-Length' inhabilitará la codificación fragmentada predeterminada.
 
 * Enviar una cabecera 'Expect' enviará inmediatamente las cabeceras de solicitud. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. Vea RFC2616 Section 8.2.3 para más información.
 
