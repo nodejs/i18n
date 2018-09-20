@@ -232,7 +232,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 ### Commits
 
-* [fdc332183e] - build: enable xz compressed tarballs where possible (Rod Vagg) https://github.com/nodejs/node/pull/4894
+* [fdc332183e] - build: habilita tarballs comprimidos en xz donde sea posible (Rod Vagg) https://github.com/nodejs/node/pull/4894
 * [2d35b421b5] - deps: upgrade openssl sources to 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
 * [b31c0f3ea4] - deps: update http-parser to version 1.1 (James M Snell)
 * [616ec1d6b0] - doc: clarify v0.10.41 openssl tls security impact (Rod Vagg) https://github.com/nodejs/node/pull/4153
@@ -249,7 +249,7 @@ Security Update
 
 ### Notable changes
 
-* build: Add support for Microsoft Visual Studio 2015
+* build: Añadido soporte para Microsoft Visual Studio 2015
 * npm: Upgrade to v1.4.29 from v1.4.28. A special one-off release as part of the strategy to get a version of npm into Node.js v0.10.x that works with the current registry (https://github.com/nodejs/LTS/issues/37). This version of npm prints out a banner each time it is run. The banner warns that the next standard release of Node.js v0.10.x will ship with a version of npm v2.
 * openssl: Upgrade to 1.0.1q, containing fixes CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
