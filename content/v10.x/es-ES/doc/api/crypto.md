@@ -1265,7 +1265,7 @@ deprecated: v10.0.0
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
+Crea y devuelve un objeto `Decipher` que usa los `algorithm` y `password` (clave) dados.
 
 El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
