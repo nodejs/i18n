@@ -347,27 +347,27 @@ Enfóquese primero en los aspectos más significativos del cambio:
 
 Cuando los cambios son necesarios, *solicítelos*, no los *exija*, y no asuma que el remitente ya sabe cómo agregar una prueba o ejecutar una prueba de rendimiento.
 
-Specific performance optimization techniques, coding styles and conventions change over time. The first impression you give to a new contributor never does.
+Las técnicas específicas de optimización del rendimiento, los estilos de codificación y las convenciones cambian con el tiempo. La primera impresión que le das a un nuevo colaborador nunca lo hace.
 
-Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the Pull Request. Most nits can typically be fixed by the Node.js Collaborator landing the Pull Request but they can also be an opportunity for the contributor to learn a bit more about the project.
+Las Nits (solicitudes de pequeños cambios que no son esenciales) están bien, pero trate de evitar el bloqueo de la Pull Request. Normalmente, la mayoría de las nits pueden ser arregladas por el Colaborador de Node.js que aterriza la Pull Request, pero también pueden ser una oportunidad para que el contribuyente aprenda un poco más sobre el proyecto.
 
-It is always good to clearly indicate nits when you comment: e.g. `Nit: change foo() to bar(). But this is not blocking.`
+Siempre es bueno indicar claramente las nits cuando comenta: por ejemplo `Nit: change foo() to bar(). But this is not blocking.`
 
-If your comments were addressed but were not folded automatically after new commits or if they proved to be mistaken, please, [hide them](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) with the appropriate reason to keep the conversation flow concise and relevant.
+Si sus comentarios fueron abordados pero no fueron "doblados" automáticamente después de nuevos commits o si demostraron estar equivocados, por favor, [ocúltelos](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) con el motivo apropiado para mantener el flujo de la conversación conciso y relevante.
 
-### Be aware of the person behind the code
+### Tenga en cuenta a la persona detrás del código
 
-Be aware that *how* you communicate requests and reviews in your feedback can have a significant impact on the success of the Pull Request. Yes, we may land a particular change that makes Node.js better, but the individual might just not want to have anything to do with Node.js ever again. The goal is not just having good code.
+Tenga en cuenta que *como* comunica las solicitudes y las revisiones en su feedback, puede tener un impacto significativo en el éxito de la Pull Request. Sí, podemos obtener un cambio particular que haga que Node.js sea mejor, pero es posible que el individuo simplemente no quiera volver a tener nada que ver con Node.js. El objetivo no es solo tener un buen código.
 
-### Respect the minimum wait time for comments
+### Respete el tiempo de espera mínimo para los comentarios
 
-There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
+Hay un tiempo mínimo de espera que tratamos de respetar para cambios no triviales, de modo que las personas que puedan tener un aporte importante en dicho proyecto distribuido puedan responder.
 
-For non-trivial changes, Pull Requests must be left open for *at least* 48 hours during the week, and 72 hours on a weekend. In most cases, when the PR is relatively small and focused on a narrow set of changes, these periods provide more than enough time to adequately review. Sometimes changes take far longer to review, or need more specialized review from subject matter experts. When in doubt, do not rush.
+Para cambios no triviales, las Pull Requests se deben dejar abiertas durante *al menos* 48 horas durante la semana y 72 horas en un fin de semana. En la mayoría de los casos, cuando la PR es relativamente pequeña y se enfoca en un conjunto estrecho de cambios, estos períodos brindan tiempo más que suficiente para una revisión adecuada. A veces, los cambios tardan más tiempo en revisarse, o necesitan una revisión más especializada por parte de los expertos en la materia. En caso de dudas, no se apresure.
 
-Trivial changes, typically limited to small formatting changes or fixes to documentation, may be landed within the minimum 48 hour window.
+Los cambios triviales, normalmente limitados a pequeños cambios en el formato o correcciones a la documentación, puede ser aterrizado dentro del plazo mínimo de 48 horas.
 
-### Abandoned or Stalled Pull Requests
+### Pull Requests abandonadas o paralizadas
 
 If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
 
