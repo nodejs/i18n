@@ -318,9 +318,9 @@ Todas las Pull Requests requieren "cerrar sesión" para poder "aterrizar". Cuand
 
 Trate de no desanimarse. Si siente que una revisión en particular es injusta, dígalo, o póngase en contacto con uno de los otros colaboradores en el proyecto y solicite su opinión. A menudo, dichos comentarios son el resultado de que el revisor solo tomó un corto tiempo para la reseña y no son malintencionados. Muy seguidamente, tales problemas se pueden resolver con un poco de paciencia. Dicho esto, se debería esperar que los revisores sean útiles en su feedback, y los comentarios que son simplemente vagos, despectivos e inútiles, probablemente sea mejor ignorarlos.
 
-### Step 10: Landing
+### Paso 10: Ejecutar
 
-In order to land, a Pull Request needs to be reviewed and [approved](#getting-approvals-for-your-pull-request) by at least one Node.js Collaborator and pass a [CI (Continuous Integration) test run](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
+Para "aterrizar", una Pull Request debe ser revisada y [aprobada](#getting-approvals-for-your-pull-request) por al menos un Colaborador de Node.js y pasar una [prueba de funcionamiento CI (Continuous Integration)](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
 
 When a collaborator lands your Pull Request, they will post a comment to the Pull Request page mentioning the commit(s) it landed as. GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulations and thanks for your contribution!
 
