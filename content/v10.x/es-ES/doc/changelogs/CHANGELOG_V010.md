@@ -222,9 +222,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 * http: reparar los defectos en el análisis del encabezado HTTP para solicitudes y respuestas que pueden permitir el pedido a contrabandear (CVE-2016-2086) divisor de respuestas (CVE-2016-2216). El análisis de encabezado HTTP ahora se alinea más de cerca con la especificación HTTP incluyendo la restricción de caracteres aceptables.
 * http-parser: actualizar de 1.0 a 1.1
-* openssl: actualizar de 1.0.1q a 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
+* openssl: actualizar de 1.0.1q a 1.0.1r. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
 * src: 
-  * introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
+  * introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
   * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
 * build: 
   * xz compressed tar files will be made available from nodejs.org for v0.10 builds from v0.10.42 onward
