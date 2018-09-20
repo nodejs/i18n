@@ -369,9 +369,9 @@ Los cambios triviales, normalmente limitados a pequeños cambios en el formato o
 
 ### Pull Requests abandonadas o paralizadas
 
-If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
+Si una Pull Request parece abandonada o estancada, es de buena educación consultar primero con el colaborador para ver si tienen la intención de continuar el trabajo, antes de comprobar si les importaría si lo asumiera (especialmente si solo le quedan nits). Al hacerlo, es cortés otorgarle al contribuyente original crédito por el trabajo que iniciaron (preservando su nombre y dirección de correo electrónico en el registro de commit, o usando una etiqueta de metadatos de `Author:` en el commit.
 
-### Approving a change
+### Aprobar un cambio
 
 Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. Collaborators are not permitted to approve their own Pull Requests.
 
