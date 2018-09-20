@@ -939,16 +939,15 @@ Il `subprocess.js` riceverà l'handle del socket come secondo argomento passato 
 process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
-      // Check that the client socket exists.
-      // It is possible for the socket to be closed between the time it is
-      // sent and the time it is received in the child process.
+      // Verifica che il client socket esista.
+      // È possibile che il socket venga chiuso dal momento in cui viene inviato fino a quando non viene ricevuto nel processo child.
       socket.end(`Request handled with ${process.argv[2]} priority`);
     }
   }
 });
 ```
 
-Once a socket has been passed to a child, the parent is no longer capable of tracking when the socket is destroyed. To indicate this, the `.connections` property becomes `null`. It is recommended not to use `.maxConnections` when this occurs.
+Una volta che un socket viene passato a un child, il parent non è più in grado di rilevare quando tale socket viene distrutto. Per indicare ciò, la proprietà `.connections` diventa `null`. Si consiglia di non utilizzare `.maxConnections` quando questo si verifica.
 
 It is also recommended that any `'message'` handlers in the child process verify that `socket` exists, as the connection may have been closed during the time it takes to send the connection to the child.
 
