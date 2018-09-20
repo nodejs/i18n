@@ -1473,7 +1473,7 @@ const { Readable } = require('stream');
 
 class MyReadable extends Readable {
   constructor(options) {
-    // Calls the stream.Readable(options) constructor
+    // Llama al constructor stream.Readable(options)
     super(options);
     // ...
   }
@@ -1519,13 +1519,13 @@ changes:
 
 * `size` {number} Números de bytes para ser leídos asincrónicamente
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
+Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamado solamente por métodos de la clase `Readable` interna.
 
 Todas las implementaciones de stream `Readable` deben proporcionar una implementación del método `readable._read()` para recoger datos del recurso subyacente.
 
 Cuando `readable._read()` es llamado, si hay datos disponibles de la fuente, la implementación debería comenzar a enviar esos datos a dentro de la cola de lectura usando el método [`this.push(dataChunk)`](#stream_readable_push_chunk_encoding). `_read()` debería continuar leyendo del recurso y enviar datos hasta que `readable.push()` devuelva `false`. Solo cuando `_read()` es llamado otra vez después que se ha detenido debería continuar el envío de datos adicionales a la cola.
 
-Una vez que el método `readable._read()` ha sido llamado, no será llamado de nuevo hasta que el método [`readable.push()`](#stream_readable_push_chunk_encoding) es llamado. `readable._read()` está garantizado a ser llamado una sola vez dentro de una ejecución sincrónica, es decir un microtick.
+Una vez que el método `readable._read()` ha sido llamado, no será llamado de nuevo hasta que el método [`readable.push()`](#stream_readable_push_chunk_encoding) sea llamado. `readable._read()` está garantizado a ser llamado una sola vez dentro de una ejecución sincrónica, es decir un microtick.
 
 El argumento `size` es consultivo. Para implementaciones donde un "read" es una sola operación que devuelve datos, puede usar el argumento `size` para determinar cuántos datos recoger. Otras implementaciones pudieran ignorar este argumento y simplemente proporcionar los datos cuando estén disponibles. No hay que "esperar" hasta que bytes de `size` estén disponibles antes de llamar a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding).
 
@@ -1847,7 +1847,7 @@ Los eventos [`'finish'`][] y [`'end'`][] son de las clases `stream.Writable` y `
 
 * `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada cuando los datos han sido arrojados.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
+Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamado solamente por métodos de la clase `Readable` interna.
 
 En algunos casos, una operación de transformación pudiera emitir un bit adicional de datos en el final del stream. Por ejemplo, un stream de compresión `zlib` va a almacenar una cantidad de estado interno usado para la compresión óptima de la salida. Cuando el stream termina, sin embargo, esos datos adicionales necesitan ser arrojados para que los datos comprimidos estén completos.
 
@@ -1863,7 +1863,7 @@ El método `transform._flush()` es ajustado con un subrayado porque es interno a
 * `encoding` {string} Si el fragmento es un string, entonces esto es el tipo de codificación. Si el fragmento es un búfer, entonces este es el valor especial - 'buffer', ignorarlo en este caso.
 * `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada después que el `chunk` proporcionado ha sido procesado.
 
-Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamada solamente por métodos de la clase `Readable` interna.
+Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamado solamente por métodos de la clase `Readable` interna.
 
 Todas las implementaciones de stream `Transform` deben proporcionar un método `_transform()` para aceptar la entrada y producir una salida. La implementación `transform._transform()` maneja los bytes que están siendo escritos, computa una salida, luego pasa esa salida a la porción legible usando el método `readable.push()`.
 
