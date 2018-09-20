@@ -147,7 +147,7 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 * [[`969c39eb3a`](https://github.com/nodejs/node/commit/969c39eb3a)] - **lib**: habilita la regla eslint de notación de puntos (Anatoli Papirovski) [#18007](https://github.com/nodejs/node/pull/18007)
 * [[`37071b8dda`](https://github.com/nodejs/node/commit/37071b8dda)] - **path**: reparar path.normalize para rutas relativas (Weijia Wang) [#17974](https://github.com/nodejs/node/pull/17974)
 * [[`fdf73b110f`](https://github.com/nodejs/node/commit/fdf73b110f)] - **test**: preservar env en casos de prueba (Beth Griggs) [#14822](https://github.com/nodejs/node/pull/14822)
-* [[`bb2d292562`](https://github.com/nodejs/node/commit/bb2d292562)] - **test**: change assert message to default (ryanmahan) [#18259](https://github.com/nodejs/node/pull/18259)
+* [[`bb2d292562`](https://github.com/nodejs/node/commit/bb2d292562)] - **test**: cambiar mensaje de aserción a predeterminado (ryanmahan) [#18259](https://github.com/nodejs/node/pull/18259)
 * [[`27107b957c`](https://github.com/nodejs/node/commit/27107b957c)] - **test**: use countdown timer (Mandeep Singh) [#17326](https://github.com/nodejs/node/pull/17326)
 * [[`eaa30e4947`](https://github.com/nodejs/node/commit/eaa30e4947)] - **test**: simplify loadDHParam in TLS test (Tobias Nießen) [#18103](https://github.com/nodejs/node/pull/18103)
 * [[`2004efded8`](https://github.com/nodejs/node/commit/2004efded8)] - **test**: improve to use template string (sreepurnajasti) [#18097](https://github.com/nodejs/node/pull/18097)
