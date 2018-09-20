@@ -29,7 +29,7 @@ Una constante de string definiendo el marcador del carácter especial específic
 added: v0.5.0
 -->
 
-* Retorna: {string}
+* Devuelve: {string}
 
 El método `os.arch()` devuelve una línea identificando la arquitectura del CPU del sistema operativo para el cual el binario de Node.js fue compilado.
 
@@ -186,7 +186,7 @@ Los posibles valores son:
 added: v0.3.3
 -->
 
-* Retorna: {integer}
+* Devuelve: {integer}
 
 El método `os.freemem()` devuelve la cantidad de memoria libre del sistema en bytes como un entero.
 
@@ -196,7 +196,7 @@ El método `os.freemem()` devuelve la cantidad de memoria libre del sistema en b
 added: v2.3.0
 -->
 
-* Retorna: {string}
+* Devuelve: {string}
 
 El método `os.homedir()` devuelve el directorio hogar del usuario actual como una línea.
 
@@ -234,7 +234,7 @@ added: v0.6.0
 
 El método `os.networkInterfaces()` devuelve un objeto conteniendo solamente interfaces en la red que han sido asignados a la dirección de la red.
 
-Cada tecla en el objeto retornado identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
+Cada tecla en el objeto devuelto identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
 
 Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 
@@ -399,7 +399,7 @@ Las siguientes constantes son exportadas por `os.constants`.
 
 No todas las constantes estarán disponibles en todos los sistemas operativos.
 
-### Constantes Señal
+### Constantes de Señal
 
 <!-- YAML
 changes:
@@ -430,7 +430,7 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Enviada a un proceso para notificar que ha intentado realizar una instrucción ilegal, malformada, desconocida, o priviligeada.</td>
+    <td>Enviada a un proceso para notificar que ha intentado realizar una instrucción ilegal, malformada, desconocida, o privilegiada.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
@@ -486,11 +486,11 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Enviada para indicar al sistema operativo continuar un proceso pausado.</td>
+    <td>Enviada para indicar al sistema operativo que continue un proceso pausado.</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Enviada para indicar al sistema operativo detener un proceso.</td>
+    <td>Enviada para indicar al sistema operativo que detenga un proceso.</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>
