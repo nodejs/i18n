@@ -1680,9 +1680,9 @@ changes:
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
   * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
   * `path` {string} Request path. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Default:** `'/'`.
-  * `headers` {Object} An object containing request headers.
+  * `headers` {Object} Un objeto que contiene las cabeceras de solicitud.
   * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
-  * `agent` {http.Agent | boolean} Controls [`Agent`][] behavior. Possible values: 
+  * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][] . Possible values: 
     * `undefined` (default): use [`http.globalAgent`][] for this host and port.
     * `Agent` object: explicitly use the passed in `Agent`.
     * `false`: causes a new `Agent` with default values to be used.
