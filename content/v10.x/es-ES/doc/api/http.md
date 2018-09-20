@@ -1678,8 +1678,8 @@ changes:
   * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
-  * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
-  * `path` {string} Request path. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Default:** `'/'`.
+  * `method` {string} A string specifying the HTTP request method. **Predeterminado:** `'GET'`.
+  * `path` {string} Request path. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Predeterminado:** `'/'`.
   * `headers` {Object} Un objeto que contiene las cabeceras de solicitud.
   * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
   * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][] . Possible values: 
