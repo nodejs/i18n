@@ -160,18 +160,18 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 This LTS release comes with 112 commits, 17 of which are considered Semver-Minor. This includes 32 which are doc related, 31 which are test related, 8 which are build / tool related and 1 commit which updates a dependency.
 
-### Notable Changes
+### Cambios Notables
 
-* **console**: 
-  * added console.count() and console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
+* **consola**: 
+  * console.count() y console.clear() añadidos (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
 * **crypto**: 
-  * expose ECDH class (Bryan English) [#8188](https://github.com/nodejs/node/pull/8188)
-  * added cypto.randomFill() and crypto.randomFillSync() (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
-  * warn on invalid authentication tag length (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
+  * exponer clase ECDH (Bryan English) [#8188](https://github.com/nodejs/node/pull/8188)
+  * cypto.randomFill() y crypto.randomFillSync() añadidos (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
+  * advertir sobre extensión de etiqueta de autenticación inválida (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * **deps**: 
-  * upgrade libuv to 1.16.1 (cjihrig) [#16835](https://github.com/nodejs/node/pull/16835)
+  * actualizar libuv a 1.16.1 (cjihrig) [#16835](https://github.com/nodejs/node/pull/16835)
 * **dgram**: 
-  * added socket.setMulticastInterface() (Will Young) [#7855](https://github.com/nodejs/node/pull/7855)
+  * socket.setMulticastInterface() añadido (Will Young) [#7855](https://github.com/nodejs/node/pull/7855)
 * **http**: 
   * add agent.keepSocketAlive and agent.reuseSocket as to allow overridable keep-alive behavior of `Agent` (Fedor Indutny) [#13005](https://github.com/nodejs/node/pull/13005)
 * **lib**: 
