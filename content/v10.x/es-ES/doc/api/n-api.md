@@ -2536,13 +2536,13 @@ Este método permite la definición eficiente de múltiples propiedades sobre un
 
 ## Trabajar con Funciones de JavaScript
 
-N-API ofrece un conjunto de APIs que permite al código de JavaScript hacer llamadas devuelta en el código nativo. N-API APIs that support calling back into native code take in a callback functions represented by the `napi_callback` type. When the JavaScript VM calls back to native code, the `napi_callback` function provided is invoked. The APIs documented in this section allow the callback function to do the following:
+N-API ofrece un conjunto de APIs que permite al código de JavaScript hacer llamadas de vuelta al código nativo. Las APIs de N-API que son compatibles con las llamadas devuelta al código nativo toman una función callback representada por el tipo `napi_callback`. Cuando la VM de JavaScript llama devuelta al código nativo, la función `napi_callback` proporcionada es invocada. Las APIs documentadas en esta sección permiten hacer lo siguiente a la función callback:
 
-- Get information about the context in which the callback was invoked.
-- Get the arguments passed into the callback.
-- Return a `napi_value` back from the callback.
+- Obtener información sobre el contexto en el cual el callback fue invocado.
+- Obtener los argumentos pasados al callback.
+- Devolver un `napi_value` desde el callback.
 
-Additionally, N-API provides a set of functions which allow calling JavaScript functions from native code. One can either call a function like a regular JavaScript function call, or as a constructor function.
+Adicionalmente, N-API proporciona un conjunto de funciones que permiten llamar funciones de JavaScript desde el código nativo. Uno puede llamar a una función como una llamada regular de JavaScript, o como una función constructor.
 
 ### napi_call_function
 
@@ -2559,10 +2559,10 @@ napi_status napi_call_function(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] recv`: The `this` object passed to the called function.
-- `[in] func`: `napi_value` representing the JavaScript function to be invoked.
-- `[in] argc`: The count of elements in the `argv` array.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] recv`: El objeto `this` pasado a la función llamada.
+- `[in] func`: `napi_value` que representa la función de JavaScript a ser invocada.
+- `[in] argc`: El conteo de elementos en el arreglo `argv`.
 - `[in] argv`: Array of `napi_values` representing JavaScript values passed in as arguments to the function.
 - `[out] result`: `napi_value` representing the JavaScript object returned.
 
