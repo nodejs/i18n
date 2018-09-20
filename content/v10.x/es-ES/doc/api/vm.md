@@ -293,7 +293,7 @@ Dos parámetros se pasarán a la función `linker`:
 
 * `referencingModule` Se llama al `link()` del objeto `Module`.
 
-La función se espera para devolver un objeto `Module` o un `Promise` que eventualmente se convierta en un objeto `Module`. The returned `Module` must satisfy the following two invariants:
+La función se espera para devolver un objeto `Module` o un `Promise` que eventualmente se convierta en un objeto `Module`. El `Module` devuelto debe satisfacer las siguientes dos invariantes:
 
 * It must belong to the same context as the parent `Module`.
 * Its `linkingStatus` must not be `'errored'`.
