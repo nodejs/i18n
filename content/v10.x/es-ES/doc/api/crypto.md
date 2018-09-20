@@ -1233,7 +1233,7 @@ El `algorithm` es dependiente de OpenSSL, los ejemplos son `'aes192'`, etc. En v
 
 La `key` es la clave cruda usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser strings `'utf8'` codificadas, [Buffers][`Buffer`], `TypedArray`, o `DataView`. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+Los vectores de inicialización deben ser impredecibles y únicos; idealmente, serán criptográficamente aleatorios. Estos no tienen que ser secretos: los IV son típicamente añadidos a los mensajes de texto cifrado sin cifrar. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
 
 ### crypto.createCredentials(details)
 
@@ -1299,7 +1299,7 @@ The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versio
 
 The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+Los vectores de inicialización deben ser impredecibles y únicos; idealmente, serán criptográficamente aleatorios. Estos no tienen que ser secretos: los IV son típicamente añadidos a los mensajes de texto cifrado sin cifrar. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
