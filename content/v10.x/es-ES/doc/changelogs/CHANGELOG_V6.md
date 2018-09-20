@@ -173,21 +173,21 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 * **dgram**: 
   * socket.setMulticastInterface() añadido (Will Young) [#7855](https://github.com/nodejs/node/pull/7855)
 * **http**: 
-  * add agent.keepSocketAlive and agent.reuseSocket as to allow overridable keep-alive behavior of `Agent` (Fedor Indutny) [#13005](https://github.com/nodejs/node/pull/13005)
+  * agregar agent.keepSocketAlive y agent.reuseSocket para permitir comportamiento keep-alive invalidable de `Agent` (Fedor Indutny) [#13005](https://github.com/nodejs/node/pull/13005)
 * **lib**: 
-  * return this from net.Socket.end() (Sam Roberts) [#13481](https://github.com/nodejs/node/pull/13481)
-* **module**: 
-  * add builtinModules api that provides list of all builtin modules in Node (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
-* **net**: 
-  * return this from getConnections() (Sam Roberts) [#13553](https://github.com/nodejs/node/pull/13553)
-* **promises**: 
-  * more robust stringification for unhandled rejections (Timothy Gu) [#13784](https://github.com/nodejs/node/pull/13784)
+  * devuelve esto de net.Socket.end() (Sam Roberts) [#13481](https://github.com/nodejs/node/pull/13481)
+* **módulo**: 
+  * agregar api builtinModules que provee lista de todos los módulos incorporados en Node (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
+* **red**: 
+  * devuelve esto de getConnections() (Sam Roberts) [#13553](https://github.com/nodejs/node/pull/13553)
+* **promesas**: 
+  * stringificación más robuta para rechazos no gestionados (Timothy Gu) [#13784](https://github.com/nodejs/node/pull/13784)
 * **repl**: 
-  * improve require() autocompletion (Alexey Orlenko) [#14409](https://github.com/nodejs/node/pull/14409)
+  * mejorar autocompletado require() (Alexey Orlenko) [#14409](https://github.com/nodejs/node/pull/14409)
 * **src**: 
-  * add openssl-system-ca-path configure option (Daniel Bevenius) [#16790](https://github.com/nodejs/node/pull/16790)
-  * add --use-bundled-ca --use-openssl-ca check (Daniel Bevenius) [#12087](https://github.com/nodejs/node/pull/12087)
-  * add process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
+  * añadir opción de configuración openssl-system-ca-path (Daniel Bevenius) [#16790](https://github.com/nodejs/node/pull/16790)
+  * añadir chequeo de --use-bundled-ca --use-openssl-ca (Daniel Bevenius) [#12087](https://github.com/nodejs/node/pull/12087)
+  * añadir process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 * **tls**: 
   * accept `lookup` option for `tls.connect()` (Fedor Indutny) [#12839](https://github.com/nodejs/node/pull/12839)
 * **tools, build**: 
