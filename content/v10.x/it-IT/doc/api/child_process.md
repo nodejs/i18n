@@ -908,7 +908,7 @@ Una volta che il server viene condiviso tra parent e child, alcune connessioni p
 
 Mentre l'esempio precedente utilizza un server creato tramite il modulo `net`, i server del modulo `dgram` usano esattamente lo stesso workflow fatta eccezione per l'ascolto dell'evento `'message'` al posto di `'connection'` e per l'utilizzo di `server.bind()` al posto di `server.listen()`. Tuttavia attualmente è supportato solo su piattaforme UNIX.
 
-#### Example: sending a socket object
+#### Esempio: invio di un socket object
 
 Similarly, the `sendHandler` argument can be used to pass the handle of a socket to the child process. The example below spawns two children that each handle connections with "normal" or "special" priority:
 
