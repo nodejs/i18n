@@ -1751,7 +1751,7 @@ There are a few special headers that should be noted.
 
 * Enviar una cabecera 'Expect' enviará inmediatamente las cabeceras de solicitud. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. Vea RFC2616 Section 8.2.3 para más información.
 
-* Sending an Authorization header will override using the `auth` option to compute basic authentication.
+* Enviar una cabecera de Autorización anulará utilizando la opción `auth` para computar la autenticación básica.
 
 Ejemplo utilizando un [`URL`][] como `options`:
 
@@ -1767,8 +1767,8 @@ En una solicitud exitosa, los siguientes eventos se emitirán en el siguiente or
 
 * `'socket'`
 * `'response'` 
-  * `'data'` any number of times, on the `res` object (`'data'` will not be emitted at all if the response body is empty, for instance, in most redirects)
-  * `'end'` on the `res` object
+  * `'data'` cualquier número de veces, en el objeto `res` (`'data'` no será emitido si el cuerpo de respuesta está vacío, por ejemplo, en la mayoría de las redirecciones)
+  * `'end'` en el objeto `res`
 * `'close'`
 
 En el caso de un error de conexión, se emitirán los siguientes eventos:
@@ -1797,4 +1797,4 @@ Si `req.abort()` es llamado después de que se reciba la respuesta, los siguient
   * `'end'` en el objeto `res`
   * `'close'` en el objeto `res`
 
-Note that setting the `timeout` option or using the `setTimeout()` function will not abort the request or do anything besides add a `'timeout'` event.
+Tenga en cuenta que establecer la opción `timeout` o utilizar la función `setTimeout()` no abortará la solicitud ni hará nada más que añadir un evento `'timeout'` .
