@@ -295,8 +295,8 @@ Dos parámetros se pasarán a la función `linker`:
 
 La función se espera para devolver un objeto `Module` o un `Promise` que eventualmente se convierta en un objeto `Module`. El `Module` devuelto debe satisfacer las siguientes dos invariantes:
 
-* It must belong to the same context as the parent `Module`.
-* Its `linkingStatus` must not be `'errored'`.
+* Debe pertenecer al mismo contexto que el `Module` principal.
+* Su `linkingStatus` no debe ser `'errored'`.
 
 If the returned `Module`'s `linkingStatus` is `'unlinked'`, this method will be recursively called on the returned `Module` with the same provided `linker` function.
 
