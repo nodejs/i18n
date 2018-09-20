@@ -264,26 +264,26 @@ Esto debe ser llamado después de que el módulo haya sido instanciado; de lo co
 
 Este método no puede llamarse mientras el módulo está siendo evaluado (`module.status` es `'evaluating'`) para evitar la recursión infinita.
 
-Corresponde al campo [método concreto Evaluate()](https://tc39.github.io/ecma262/#sec-moduleevaluation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
+Corresponde al campo del [método concreto Evaluate()](https://tc39.github.io/ecma262/#sec-moduleevaluation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
 
 ### module.instantiate()
 
 Instanciar el módulo. Esto debe llamarse después de que el enlace se haya completado (`linkingStatus` es `'linked'`); de lo contrario lanzará un error. También puede lanzar una excepción si uno de las dependencias no proporciona una exportación que el módulo principal requiere.
 
-However, if this function succeeded, further calls to this function after the initial instantiation will be no-ops, to be consistent with the ECMAScript specification.
+Sin embargo, si esta función fue exitosa, las llamadas adicionales para esta función después de la instanciación inicial no estarán operativas, para ser consistentes con la especificación ECMAScript.
 
-Unlike other methods operating on `Module`, this function completes synchronously and returns nothing.
+A diferencias de otros métodos operativos en `Module`, este función se completa sincrónicamente y no devuelve nada.
 
-Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo del [método concreto Instantiate()](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
 
 ### module.link(linker)
 
 * `linker` {Function}
 * Devuelve: {Promise}
 
-Link module dependencies. This method must be called before instantiation, and can only be called once per module.
+Dependencias del módulo de enlace. Este método debe llamarse antes de la instanciación, y solo puede llamarse una vez por módulo.
 
-Two parameters will be passed to the `linker` function:
+Dos parámetros se pasarán a la función `linker`:
 
 * `specifier` The specifier of the requested module: <!-- eslint-skip -->
   
