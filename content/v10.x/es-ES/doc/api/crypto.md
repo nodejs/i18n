@@ -1489,9 +1489,9 @@ added: v0.7.5
 - `groupName` {string}
 - Devuelve: {Object}
 
-Crea un objeto de intercambio de claves `DiffieHellman` predefinido. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (definidos en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero ver [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definidos en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto devuelto imita la interfaz de objetos creados por [`crypto.createDiffieHellman()`][], pero no va a permitir cambios de las claves (con [`diffieHellman.setPublicKey()`][] por ejemplo). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de claves `DiffieHellman` predefinido. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (definidos en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero ver [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definidos en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto devuelto imita la interfaz de objetos creados por [`crypto.createDiffieHellman()`][], pero no va a permitir cambios de las claves (con [`diffieHellman.setPublicKey()`][] por ejemplo). La ventaja de usar este método es que las partes no tienen que generar ni intercambiar un grupo de módulos de antemano, ahorrando tiempo de procesador y de comunicación.
 
-Example (obtaining a shared secret):
+Ejemplo (obteniendo un secreto compartido):
 
 ```js
 const crypto = require('crypto');
@@ -1524,7 +1524,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
 
-Example:
+Ejemplo:
 
 ```js
 const hashes = crypto.getHashes();
