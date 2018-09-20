@@ -373,15 +373,15 @@ Si una Pull Request parece abandonada o estancada, es de buena educación consul
 
 ### Aprobar un cambio
 
-Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. Collaborators are not permitted to approve their own Pull Requests.
+Cualquier Colaborador central de Node.js (cualquier usuario de GitHub con derechos de commit en el repositorio `nodejs/node`) está autorizado para aprobar el trabajo de cualquier otro colaborador. Los colaboradores no pueden aprobar sus propias Pull Requests.
 
-Collaborators indicate that they have reviewed and approve of the changes in a Pull Request either by using GitHub's Approval Workflow, which is preferred, or by leaving an `LGTM` ("Looks Good To Me") comment.
+Los colaboradores indican que han revisado y aprobado los cambios en una Pull Request, ya sea utilizando el Flujo de Trabajo de Aprobación de GitHub, que es el preferido, o dejando un comentario `LGTM` (Siglas de "me parece bien a mí" en inglés).
 
-When explicitly using the "Changes requested" component of the GitHub Approval Workflow, show empathy. That is, do not be rude or abrupt with your feedback and offer concrete suggestions for improvement, if possible. If you're not sure *how* a particular change can be improved, say so.
+Cuando utilice explícitamente el componente "Cambios solicitados" del Flujo de Trabajo de Aprobación de GitHub, muestre empatía. Es decir, no sea grosero o abrupto con su feedback y ofrezca sugerencias concretas para mejorar, si es posible. Si no está seguro de *cómo* puede mejorar un cambio en particular, dígalo.
 
-Most importantly, after leaving such requests, it is courteous to make yourself available later to check whether your comments have been addressed.
+Lo más importante es que, después de dejar tales solicitudes, es cortés estar disponible más tarde para verificar si se han abordado sus comentarios.
 
-If you see that requested changes have been made, you can clear another collaborator's `Changes requested` review.
+Si ve que se han realizado los cambios solicitados, puede borrar la revisión `Changes requested` de otro colaborador.
 
 Change requests that are vague, dismissive, or unconstructive may also be dismissed if requests for greater clarification go unanswered within a reasonable period of time.
 
