@@ -1205,7 +1205,7 @@ El `password` es usado para derivar la clave cifrada y el vector de inicializaci
 
 La implementación de `crypto.createCipher()` deriva claves usando la función de OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario ya que la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptograficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Se emite una advertencia cuando se usan a fin de evitar el riesgo de reutilización IV que causa vulnerabilidades. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Se emite una advertencia cuando se usan a fin de evitar el riesgo de reutilización IV que causa vulnerabilidades. Para el caso en que IV es reutilizado en GCM, para más detalles ver [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect).
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1225,13 +1225,13 @@ changes:
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Cipher}
 
-Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
+Crea y devuelve un objeto `Cipher`, con los `algorithm`, `key` y vector de inicialización (`iv`) dados.
 
 El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
+El `algorithm` es dependiente de OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` es la clave cruda usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser strings `'utf8'` codificadas, [Buffers][`Buffer`], `TypedArray`, o `DataView`. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
 Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
 
@@ -1297,7 +1297,7 @@ El argumento `options` controla el comportamiento stream y es opcional, exceptua
 
 The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
 Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
 
