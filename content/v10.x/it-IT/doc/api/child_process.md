@@ -882,7 +882,7 @@ L'argomento `sendHandle` può essere utilizzato, ad esempio, per passare l'handl
 ```js
 const subprocess = require('child_process').fork('subprocess.js');
 
-// Open up the server object and send the handle.
+// Apri il server object ed invia l'handle.
 const server = require('net').createServer();
 server.on('connection', (socket) => {
   socket.end('handled by parent');
@@ -892,7 +892,7 @@ server.listen(1337, () => {
 });
 ```
 
-The child would then receive the server object as:
+Quindi il child riceverà il server object come:
 
 ```js
 process.on('message', (m, server) => {
