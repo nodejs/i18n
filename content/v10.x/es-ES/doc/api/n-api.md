@@ -2664,7 +2664,7 @@ const myaddon = require('./addon');
 myaddon.sayHello();
 ```
 
-The string passed to require is not necessarily the name passed into `NAPI_MODULE` in the earlier snippet but the name of the target in `binding.gyp` responsible for creating the `.node` file.
+La cadena pasada para requerir no es necesariamente el nombre pasado a `NAPI_MODULE` en el fragmento anterior, sino el nombre del objetivo en `binding.gyp` responsable de crear el archivo `.node`.
 
 ### napi_get_cb_info
 
@@ -2681,16 +2681,16 @@ napi_status napi_get_cb_info(napi_env env,
                              void** data)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cbinfo`: The callback info passed into the callback function.
-- `[in-out] argc`: Specifies the size of the provided `argv` array and receives the actual count of arguments.
-- `[out] argv`: Buffer to which the `napi_value` representing the arguments are copied. If there are more arguments than the provided count, only the requested number of arguments are copied. If there are fewer arguments provided than claimed, the rest of `argv` is filled with `napi_value` values that represent `undefined`.
-- `[out] this`: Receives the JavaScript `this` argument for the call.
-- `[out] data`: Receives the data pointer for the callback.
+- `[in] env`: El entorno bajo el que se invoca a la API.
+- `[in] cbinfo`: La información del callback pasada a la función callback.
+- `[in-out] argc`: Especifica el tamaño del arreglo `argv` proporcionado y recibe el conteo actual de argumentos.
+- `[out] argv`: El buffer en el que se copian los `napi_value` que representan los argumentos. Si hay más argumentos que el conteo proporcionado, sólo se copia el número solicitado de argumentos. Si se proporcionan menos argumentos de los que se afirman, el resto de `argv` se llena con valores `napi_value` que representan `undefined`.
+- `[out] this`: Recibe el argumento `this` de JavaScript para la llamada.
+- `[out] data`: Recibe el apuntador de datos para el callback.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method is used within a callback function to retrieve details about the call like the arguments and the `this` pointer from a given callback info.
+Este método es utilizado a través de una función callback para recuperar detalles sobre la llamada, como los argumentos y el apuntador `this` desde la información de callback dada.
 
 ### napi_get_new_target
 
