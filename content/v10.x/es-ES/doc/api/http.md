@@ -1679,7 +1679,7 @@ changes:
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
   * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
-  * `path` {string} Request path. Should include query string if any. E.G. `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Default:** `'/'`.
+  * `path` {string} Request path. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Default:** `'/'`.
   * `headers` {Object} An object containing request headers.
   * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
   * `agent` {http.Agent | boolean} Controls [`Agent`][] behavior. Possible values: 
@@ -1692,7 +1692,7 @@ changes:
 * `callback` {Function}
 * Devuelve: {http.ClientRequest}
 
-Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
+Node.js mantiene varias conexiones por servidor para realizar solicitudes HTTP. This function allows one to transparently issue requests.
 
 `options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
@@ -1749,7 +1749,7 @@ There are a few special headers that should be noted.
 
 * Sending a 'Content-Length' header will disable the default chunked encoding.
 
-* Sending an 'Expect' header will immediately send the request headers. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. See RFC2616 Section 8.2.3 for more information.
+* Enviar una cabecera 'Expect' enviará inmediatamente las cabeceras de solicitud. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. See RFC2616 Section 8.2.3 for more information.
 
 * Sending an Authorization header will override using the `auth` option to compute basic authentication.
 
@@ -1780,7 +1780,7 @@ In the case of a connection error, the following events will be emitted:
 If `req.abort()` is called before the connection succeeds, the following events will be emitted in the following order:
 
 * `'socket'`
-* (`req.abort()` called here)
+* (`req.abort()` llamado aquí)
 * `'abort'`
 * `'close'`
 * `'error'` with an error with message `'Error: socket hang up'` and code `'ECONNRESET'`
