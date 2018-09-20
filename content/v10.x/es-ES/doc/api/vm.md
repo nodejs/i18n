@@ -309,7 +309,7 @@ La función enlazador corresponde aproximadamente a la operación abstracta de [
 
 La implementación [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) real utilizada durante la instanciación del módulo es aquella que devuelve los módulos enlazados durante la vinculación. Dado que en ese punto todos los módulos ya estarían completamente enlazados, la implementación [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) es completament sincrónica por especificación.
 
-## Class: vm.Script
+## Clase: vm.Script
 
 <!-- YAML
 added: v0.3.1
