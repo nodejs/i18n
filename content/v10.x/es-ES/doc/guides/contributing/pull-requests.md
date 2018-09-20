@@ -168,7 +168,7 @@ Esto garantiza que su branch de trabajo tenga los últimos cambios del maestro `
 
 ### Paso 6: Prueba
 
-Las correcciones de errores y las características siempre deben venir con las pruebas. Se ha proporcionado una [guía para escribir pruebas en Node.js](../writing-tests.md) para facilitar el proceso. Ver otras pruebas para ver cómo deberían estructurarse también puede ayudar.
+Las correcciones de errores y las características siempre deben venir con las pruebas. Se ha proporcionado una [guía para escribir pruebas en Node.js](../writing-tests.md) para facilitar el proceso. Revisar otras pruebas para ver cómo deberían estructurarse también puede ayudar.
 
 El directorio `test` dentro del repositorio `nodejs/node` es complejo y, a menudo, no está claro adónde debe ir un nuevo archivo de prueba. En caso de dudas, agregue una nueva prueba al directorio `test/parallel/` y la ubicación correcta se resolverá luego.
 
