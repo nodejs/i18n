@@ -812,7 +812,7 @@ Detiene al servidor de aceptar nuevas conexiones. Vea [`net.Server.close()`][].
 
 ### server.listen()
 
-Starts the HTTP server listening for connections. Este método es idéntico a [`server.listen()`][] desde [`net.Server`][].
+Inicia el servidor HTTP escuchando conexiones. Este método es idéntico a [`server.listen()`][] desde [`net.Server`][].
 
 ### server.listening
 
@@ -1508,7 +1508,7 @@ Entonces `request.url` será:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Ejemplo:
+Para analizar la url dentro de sus partes, se puede utilizar `require('url').parse(request.url)` . Ejemplo:
 
 ```txt
 $ node
@@ -1556,7 +1556,7 @@ added: v0.11.8
 
 * {string[]}
 
-A list of the HTTP methods that are supported by the parser.
+Una lista de métodos HTTP que son compatibles con el analizador.
 
 ## http.STATUS_CODES
 
@@ -1607,7 +1607,7 @@ changes:
 * `callback` {Function}
 * Devuelve: {http.ClientRequest}
 
-Ya que la mayoría de las solicitudes son solicitudes de GET sin cuerpos, Node.js proporciona este método de conveniencia. La única diferencia entre este método y [`http.request()`][] es que establece el método a GET y llama a `req.end()` automáticamente. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
+Ya que la mayoría de las solicitudes son solicitudes de GET sin cuerpos, Node.js proporciona este método de conveniencia. La única diferencia entre este método y [`http.request()`][] es que establece el método a GET y llama a `req.end()` automáticamente. Tenga en cuenta que el callback debe tener cuidado al consumir los datos de respuesta, por los motivos indicados en la sección [`http.ClientRequest`][] .
 
 El `callback` se invoca con un único argumento que es una instancia de [`http.IncomingMessage`][].
 
@@ -1672,29 +1672,29 @@ changes:
 
 * `options` {Object | string | URL} 
   * `protocol` {string} Protocolo a utilizar. **Predeterminado:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Predeterminado:** `'http:'`.
-  * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
-  * `family` {number} IP address family to use when resolving `host` and `hostname`. Los valores válidos son `4` o `6`. When unspecified, both IP v4 and v6 will be used.
+  * `host` {string} Un nombre de dominio o dirección IP del servidor al cual se le emitirá la solicitud. **Predeterminado:** `'http:'`.
+  * `hostname` {string} Alias para `host`. Para dar soporte a [`url.parse()`][], se prefiere `hostname` sobre `host`.
+  * `family` {number} familia de la dirección IP a usar cuando se resuelve `host` y `hostname`. Los valores válidos son `4` o `6`. Cuando no esté especificado, se utilizará IP v4 y v6.
   * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
   * `method` {string} Una string que especifique el método de solicitud HTTP. **Predeterminado:** `'GET'`.
-  * `path` {string} Request path. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Predeterminado:** `'/'`.
+  * `path` {string} Ruta de solicitud. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. Se arroja una excepción cuando la ruta de solicitud contiene caracteres no válidos. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Predeterminado:** `'/'`.
   * `headers` {Object} Un objeto que contiene las cabeceras de solicitud.
-  * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
-  * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][] . Possible values: 
-    * `undefined` (default): use [`http.globalAgent`][] for this host and port.
-    * `Agent` object: explicitly use the passed in `Agent`.
+  * `auth` {string} autenticación Básica, por ejemplo, `'user:password'` para computar una cabecera de Autorización.
+  * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][] . Valores posibles: 
+    * `undefined` (Predeterminado): utiliza [`http.globalAgent`][] para este host y este puerto.
+    * objeto `Agent`: utiliza explícitamente lo que fue pasado en `Agent`.
     * `false`: hace que un nuevo `Agent` con valores predeterminados sea utilizado.
-  * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
+  * `createConnection` {Function} Una función que produce un socket/stream para ser utilizado para la solicitud cuando no se utilice la opción `agent` . Esto puede ser utilizado para evitar crear una clase `Agent` personalizada solo para anular la función `createConnection` predeterminada. Vea [`agent.createConnection()`][] para más detalles. Cualquier stream [`Duplex`][] es un valor válido.
   * `timeout` {number}: Un número que especifica el tiempo de espera del socket en milisegundos. This will set the timeout before the socket is connected.
   * `setHost` {boolean}: Especifica si se agrega automáticamente a la cabecera `Host` o no. Por defecto es `true`.
 * `callback` {Function}
 * Devuelve: {http.ClientRequest}
 
-Node.js mantiene varias conexiones por servidor para realizar solicitudes HTTP. This function allows one to transparently issue requests.
+Node.js mantiene varias conexiones por servidor para realizar solicitudes HTTP. Esta función permite emitir solicitudes de manera transparente.
 
-`options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
+`options` puede ser un objeto, una string, o un objeto [`URL`][] . Si `options` es una string, se analizará automáticamente con [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
 
 El parámetro opcional `callback` será agregado como un listener de un solo uso para el evento [`'response'`][] .
 
