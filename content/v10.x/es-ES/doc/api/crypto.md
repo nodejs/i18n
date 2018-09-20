@@ -1367,7 +1367,7 @@ added: v0.1.92
 
 Crea y devuelve un objeto `Hash` que puede ser usado para generar resúmenes hash usando el `algorithm` dado. El argumento opcional `options` controla el comportamiento stream.
 
-El `algorithm` es dependiente de los algoritmos disponibles soportados por la versión de OpenSSL en la plataforma. Los ejemplos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Los ejemplos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
 Ejemplo: generando la suma sha256 de un archivo
 
@@ -1402,11 +1402,11 @@ added: v0.1.94
 
 Crea y devuelve un objeto `Hmac` que usa el `algorithm` y la `key` dados. El argumento opcional `options` controla el comportamiento stream.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Los ejemplos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `key` is the HMAC key used to generate the cryptographic HMAC hash.
+La `key` es la clave HMAC usada para generar el hash criptográfico HMAC.
 
-Example: generating the sha256 HMAC of a file
+Ejemplo: generando la HMAC sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1434,9 +1434,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Sign}
+- Devuelve: {Sign}
 
-Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y devuelve un objeto `Sign` que usa el `algorithm` dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firma disponibles. El argumento opcional `options` controla el comportamiento `stream.Writable`.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1446,9 +1446,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Verify}
+- Devuelve: {Verify}
 
-Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y devuelve un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres disponibles de los algoritmos de firma disponibles. El argumento opcional `options` controla el comportamiento `stream.Writable`.
 
 ### crypto.getCiphers()
 
