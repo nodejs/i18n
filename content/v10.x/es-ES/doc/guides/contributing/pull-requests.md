@@ -330,22 +330,22 @@ Todos los colaboradores de Node.js que optan por revisar y proporcionar un feedb
 
 Los comentarios que son despectivos o irrespetuosos con el colaborador o cualquier otro revisor son estrictamente contrarios al [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-Al revisar una Pull Request, los objetivos principales son que la base de código mejore y que la persona que envía la solicitud tenga éxito. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
+Al revisar una Pull Request, los objetivos principales son que la base de código mejore y que la persona que envía la solicitud tenga éxito. Incluso si una Pull Request no aterriza, los remitentes deben abandonar la experiencia sintiendo que su esfuerzo no fue desaprovechado o inestimado. Cada Pull Request de un nuevo colaborador es una oportunidad para hacer crecer a la comunidad.
 
-### Review a bit at a time.
+### Revise un poco a la vez.
 
-Do not overwhelm new contributors.
+No abrume a los nuevos contribuyentes.
 
-It is tempting to micro-optimize and make everything about relative performance, perfect grammar, or exact style matches. Do not succumb to that temptation.
+Es tentador realizar una micro-optimización y hacer todo lo relacionado con el rendimiento relativo, la gramática perfecta o las coincidencias de estilo exactas. No sucumba a esa tentación.
 
-Focus first on the most significant aspects of the change:
+Enfóquese primero en los aspectos más significativos del cambio:
 
-1. Does this change make sense for Node.js?
-2. Does this change make Node.js better, even if only incrementally?
-3. Are there clear bugs or larger scale issues that need attending to?
-4. Is the commit message readable and correct? If it contains a breaking change is it clear enough?
+1. ¿Este cambio tiene sentido para Node.js?
+2. ¿Este cambio hace que Node.js sea mejor, aunque solo sea incrementalmente?
+3. ¿Hay errores claros o problemas de mayor escala que deben atenderse?
+4. ¿El mensaje de el commit es legible y correcto? Si contiene un cambio de ruptura, ¿es lo suficientemente claro?
 
-When changes are necessary, *request* them, do not *demand* them, and do not assume that the submitter already knows how to add a test or run a benchmark.
+Cuando los cambios son necesarios, *solicítelos*, no los *exija*, y no asuma que el remitente ya sabe cómo agregar una prueba o ejecutar una prueba de rendimiento.
 
 Specific performance optimization techniques, coding styles and conventions change over time. The first impression you give to a new contributor never does.
 
