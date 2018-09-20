@@ -257,14 +257,14 @@ El URL del módulo actual, como se configura e el constructor.
 
 Evaluar el módulo.
 
-Esto debe ser llamado después de que el módulo haya sido instanciado; de lo contrario lanzará un error. It could be called also when the module has already been evaluated, in which case it will do one of the following two things:
+Esto debe ser llamado después de que el módulo haya sido instanciado; de lo contrario lanzará un error. Podría llamarse también cuando el módulo ya haya sido evaluado, en ese caso hará una de las siguientes dos cosas:
 
-* return `undefined` if the initial evaluation ended in success (`module.status` is `'evaluated'`)
-* rethrow the same exception the initial evaluation threw if the initial evaluation ended in an error (`module.status` is `'errored'`)
+* devuelve `undefined` si la evaluación inicial terminó correctamente (`module.status` es `'evaluated'`)
+* vuelve a producir la misma excepción que la evaluación inicial lanzó si la evaluación inicial terminó en un error (`module.status` es `'errored'`)
 
-This method cannot be called while the module is being evaluated (`module.status` is `'evaluating'`) to prevent infinite recursion.
+Este método no puede llamarse mientras el módulo está siendo evaluado (`module.status` es `'evaluating'`) para evitar la recursión infinita.
 
-Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo [método concreto Evaluate()](https://tc39.github.io/ecma262/#sec-moduleevaluation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
 
 ### module.instantiate()
 
