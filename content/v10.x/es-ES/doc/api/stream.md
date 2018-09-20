@@ -1527,7 +1527,7 @@ Cuando `readable._read()` es llamado, si hay datos disponibles de la fuente, la 
 
 Una vez que el método `readable._read()` ha sido llamado, no será llamado de nuevo hasta que el método [`readable.push()`](#stream_readable_push_chunk_encoding) sea llamado. `readable._read()` está garantizado a ser llamado una sola vez dentro de una ejecución sincrónica, es decir un microtick.
 
-El argumento `size` es consultivo. Para implementaciones donde un "read" es una sola operación que devuelve datos, puede usar el argumento `size` para determinar cuántos datos recoger. Otras implementaciones pudieran ignorar este argumento y simplemente proporcionar los datos cuando estén disponibles. No hay que "esperar" hasta que bytes de `size` estén disponibles antes de llamar a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding).
+El argumento `size` es consultivo. Para implementaciones donde un "read" es una sola operación que devuelve datos, puede usar el argumento `size` para determinar cuántos datos recoger. Otras implementaciones pudieran ignorar este argumento y simplemente proporcionar los datos cuando estén disponibles. No hay que "esperar" hasta que los bytes de `size` estén disponibles antes de llamar a [`stream.push(chunk)`](#stream_readable_push_chunk_encoding).
 
 El método `readable._read()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
@@ -1558,16 +1558,16 @@ changes:
 
 Cuando `chunk` es un `Buffer`, `Uint8Array` o un `string`, el `chunk` de datos será añadido a la cola interna para los usuarios del stream a consumir. Pasar `chunk` como `null` señala el final del stream (EOF), después que no se pueden escribir más datos.
 
-Cuando el `Readable` opera en modo pausado, los datos añadidos con `readable.push()` pueden ser leídos llamando el método [`readable.read()`](#stream_readable_read_size) cuando el eventos [`'readable'`][] es emitido.
+Cuando el `Readable` opera en modo pausado, los datos añadidos con `readable.push()` pueden ser leídos llamando el método [`readable.read()`](#stream_readable_read_size) cuando el evento [`'readable'`][] es emitido.
 
-Cuando `Readable` está operando en modo fluido, los datos añadidos con `readable.push()`serán entregados al emitir un envento `'data'`.
+Cuando `Readable` está operando en modo fluido, los datos añadidos con `readable.push()`serán entregados al emitir un evento `'data'`.
 
-El método `readable.push()` está diseñado para ser tan flexible como sea posible. Por ejemplo, cuando se envuelve una fuente de bajo-nivel que proporciona alguna forma de mecanismo de pausar/resumir, y un callback de datos, la fuente de bajo-nivel puede ser envuelta por la instancia `Readable` personalizada como se muestra en el siguiente ejemplo:
+El método `readable.push()` está diseñado para ser tan flexible como sea posible. Por ejemplo, cuando se envuelve una fuente de bajo-nivel que proporciona alguna forma de mecanismo de pausar/resumir, y una callback de datos, la fuente de bajo-nivel puede ser envuelta por la instancia `Readable` personalizada como se muestra en el siguiente ejemplo:
 
 ```js
 // la fuente es un objeto con métodos readStop() y readStart(),
 // y un miembro `ondata` que es llamado cuando tiene datos, y
-// un miembro `onend` que es llamado cuando se acaba los datos.
+// un miembro `onend` que es llamado cuando se acaban los datos.
 
 class SourceWrapper extends Readable {
   constructor(options) {
@@ -1601,7 +1601,7 @@ Para streams que no estén operando en modo objeto, si el parámetro `chunk` de 
 
 #### Errores al Escribir
 
-Es recomendado que los errores que ocurran durante el procesamiento del método `readable._read()` son emitidos usando el evento `'error'` en vez de ser arrojados. Arrojar un `Error` desde dentro del `readable._read()` puede resultar en un comportamiento inesperado e inconsistente dependiendo si el stream está operando en modo fluido o modo pausado. Usar el evento `'error'` asegura el manejo consistente y predecible de manejo de errores.
+Es recomendado que los errores que ocurran durante el procesamiento del método `readable._read()` sean emitidos usando el evento `'error'` en vez de ser arrojados. Arrojar un `Error` desde dentro del `readable._read()` puede resultar en un comportamiento inesperado e inconsistente dependiendo si el stream está operando en modo fluido o modo pausado. Usar el evento `'error'` asegura el manejo de errores consistente y predecible.
 
 <!-- eslint-disable no-useless-return -->
 
@@ -1614,7 +1614,7 @@ const myReadable = new Readable({
       process.nextTick(() => this.emit('error', err));
       return;
     }
-    // hace algo de trabajo
+    // haz algo de trabajo
   }
 });
 ```
@@ -1654,7 +1654,7 @@ Un stream [`Duplex`][] es uno que implementa tanto [`Readable`][] como [`Writabl
 
 Porque JavaScript no tiene soporte para múltiples herencias, la clase `stream.Duplex` es extendida para implementar un stream [`Duplex`][] (a diferencia de extender las clases `stream.Readable` *y* `stream.Writable`).
 
-La clase `stream.Duplex` hereda prototípicamente de `stream.Readable` y parasitariamente de `stream.Writable`, pero `instanceof` va a funcionar de forma correcta para las ambas clases de base, debido a cancelar [`Symbol.hasInstance`][] en `stream.Writable`.
+La clase `stream.Duplex` hereda prototípicamente de `stream.Readable` y parasitariamente de `stream.Writable`, pero `instanceof` va a funcionar de forma correcta para las ambas clases de base, debido a la anulación de [`Symbol.hasInstance`][] en `stream.Writable`.
 
 Streams `Duplex` personalizados *deben* llamar el constructor `new stream.Duplex([options])` e implementar *ambos* métodos `readable._read()` y `writable._write()`.
 
@@ -1687,7 +1687,7 @@ class MyDuplex extends Duplex {
 }
 ```
 
-O cuando se use constructores de estilo pre-ES6:
+O cuando se usen constructores de estilo pre-ES6:
 
 ```js
 const { Duplex } = require('stream');
@@ -1748,7 +1748,7 @@ class MyDuplex extends Duplex {
 
 El aspecto más importante de un stream `Duplex` es que los lados `Readable` y `Writable` operan independientemente uno del otro, a pesar de coexistir dentro de una sola instancia objeto.
 
-#### Modo Objeto de Stream Dúplex
+#### Modo Objeto de Streams Dúplex
 
 Para los streams `Duplex`, el `objectMode` puede ser establecido exclusivamente para cualquiera de los dos lados `Readable` o `Writable` usando las opciones `readableObjectMode` y `writableObjectMode`, respectivamente.
 
@@ -1786,9 +1786,9 @@ myTransform.write(100);
 
 ### Implementando un Stream de Transformación
 
-Un stream [`Transform`][] es un stream [`Duplex`][] donde la salida es computada de alguna manera desde la entrada. Los ejemplos incluyen streams [zlib](zlib.html) o streams [crypto](crypto.html) que comprimen, encripta o descifran los datos.
+Un stream [`Transform`][] es un stream [`Duplex`][] donde la salida es computada de alguna manera desde la entrada. Los ejemplos incluyen streams [zlib](zlib.html) o streams [crypto](crypto.html) que comprimen, encriptan o descifran los datos.
 
-No es requerido que la salida sea del mismo tamaño que la entrada, el mismo número de fragmentos, o que lleguen al mismo tiempo. Por ejemplo, un stream `Hash` solo tendrá un solo fragmento de salida, que es proporcionado cuando la entrada ha terminado. Un stream `zlib` producirá una salida que, o es mucho más pequeña o mucho más grande que su entrada.
+No es requerido que la salida sea del mismo tamaño que la entrada, del mismo número de fragmentos, o que lleguen al mismo tiempo. Por ejemplo, un stream `Hash` solo tendrá un solo fragmento de salida, que es proporcionado cuando la entrada ha terminado. Un stream `zlib` producirá una salida que, o es mucho más pequeña o mucho más grande que su entrada.
 
 La clase `stream.Transform` es extendida para implementar un stream [`Transform`][].
 
@@ -1813,7 +1813,7 @@ class MyTransform extends Transform {
 }
 ```
 
-O cuando se use constructores de estilo pre-ES6:
+O cuando se usen constructores de estilo pre-ES6:
 
 ```js
 const { Transform } = require('stream');
@@ -1841,7 +1841,7 @@ const myTransform = new Transform({
 
 #### Eventos: 'finish' y 'end'
 
-Los eventos [`'finish'`][] y [`'end'`][] son de las clases `stream.Writable` y `stream.Readable`, respectivamente. El evento `'finish'` es emitido después que se llama [`stream.end()`](#stream_writable_end_chunk_encoding_callback)y todos los fragmentos han sido procesados by [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). El evento`'end'` es emitido después que todos los datos han sido sacados, que ocurre luego de que se llamó el callback en [`transform._flush()`](#stream_transform_flush_callback).
+Los eventos [`'finish'`][] y [`'end'`][] son de las clases `stream.Writable` y `stream.Readable`, respectivamente. El evento `'finish'` es emitido después que se llama [`stream.end()`](#stream_writable_end_chunk_encoding_callback)y todos los fragmentos han sido procesados by [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback). El evento`'end'` es emitido después que todos los datos han sido sacados, lo que ocurre luego de que se llamó la callback en [`transform._flush()`](#stream_transform_flush_callback).
 
 #### transform.\_flush(callback)
 
@@ -1859,7 +1859,7 @@ El método `transform._flush()` es ajustado con un subrayado porque es interno a
 
 #### transform.\_transform(fragmento, codificación, callback)
 
-* `chunk` {Buffer|string|any} El fragmento a ser transformado. **Siempre** será un búfer a menos que la opción `decodeStrings` sea establecida como `false`, o el stream esté operando en modo objeto.
+* `chunk` {Buffer|string|any} El fragmento a ser transformado. **Siempre** será un búfer a menos que la opción `decodeStrings` sea establecida como `false`, o que el stream esté operando en modo objeto.
 * `encoding` {string} Si el fragmento es un string, entonces esto es el tipo de codificación. Si el fragmento es un búfer, entonces este es el valor especial - 'buffer', ignorarlo en este caso.
 * `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada después que el `chunk` proporcionado ha sido procesado.
 
