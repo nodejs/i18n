@@ -1789,8 +1789,8 @@ If `req.abort()` is called after the response is received, the following events 
 
 * `'socket'`
 * `'response'` 
-  * `'data'` any number of times, on the `res` object
-* (`req.abort()` called here)
+  * `'data'` cualquier número de veces, en el objeto `res`
+* (`req.abort()` llamado aquí)
 * `'abort'`
 * `'close'` 
   * `'aborted'` on the `res` object
