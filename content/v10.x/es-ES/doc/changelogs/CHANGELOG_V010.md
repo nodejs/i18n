@@ -205,7 +205,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Commits:
 
 * [164157abbb] - build: actualizar el logo de Node.js logo en el instalador de OSX (Rod Vagg) https://github.com/nodejs/node/pull/5401
-* [f8cb0dcf67] - crypto,tls: remove SSLv2 support (Ben Noordhuis) https://github.com/nodejs/node/pull/5529
+* [f8cb0dcf67] - crypto,tls: quitar el soporte a SSLv2 (Ben Noordhuis) https://github.com/nodejs/node/pull/5529
 * [42ded2a590] - deps: upgrade openssl to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
 * [1e45a6111c] - deps: update http-parser to version 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
 * [6db377b2f4] - doc: remove SSLv2 descriptions (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
@@ -220,9 +220,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 ### Cambios notables
 
-* http: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
-* http-parser: upgrade from 1.0 to 1.1
-* openssl: upgrade from 1.0.1q to 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
+* http: reparar los defectos en el análisis del encabezado HTTP para solicitudes y respuestas que pueden permitir el pedido a contrabandear (CVE-2016-2086) divisor de respuestas (CVE-2016-2216). El análisis de encabezado HTTP ahora se alinea más de cerca con la especificación HTTP incluyendo la restricción de caracteres aceptables.
+* http-parser: actualizar de 1.0 a 1.1
+* openssl: actualizar de 1.0.1q a 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
 * src: 
   * introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
   * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
