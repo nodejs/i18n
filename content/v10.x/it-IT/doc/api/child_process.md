@@ -904,9 +904,9 @@ process.on('message', (m, server) => {
 });
 ```
 
-Once the server is now shared between the parent and child, some connections can be handled by the parent and some by the child.
+Una volta che il server viene condiviso tra parent e child, alcune connessioni possono essere gestite dal parent ed altre dal child.
 
-While the example above uses a server created using the `net` module, `dgram` module servers use exactly the same workflow with the exceptions of listening on a `'message'` event instead of `'connection'` and using `server.bind()` instead of `server.listen()`. This is, however, currently only supported on UNIX platforms.
+Mentre l'esempio precedente utilizza un server creato tramite il modulo `net`, i server del modulo `dgram` usano esattamente lo stesso workflow fatta eccezione per l'ascolto dell'evento `'message'` al posto di `'connection'` e per l'utilizzo di `server.bind()` al posto di `server.listen()`. Tuttavia attualmente è supportato solo su piattaforme UNIX.
 
 #### Example: sending a socket object
 
