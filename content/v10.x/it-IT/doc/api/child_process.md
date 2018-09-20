@@ -678,7 +678,7 @@ L'evento `'exit'` viene emesso al termine del processo child. Se il processo è 
 
 Da notare che quando viene attivato l'evento `'exit'`, gli stream stdio del processo child potrebbero essere ancora aperti.
 
-Da notare inoltre che Node.js stabilisce gli handler dei segnali per `SIGINT` e `SIGTERM` e i processi Node.js non terminano immediatamente a causa della mancata ricezione di quei segnali. Anzi, Node.js eseguirà una sequenza di azioni di pulizia e di conseguenza rileverà nuovamente il segnale gestito dagli handler.
+Da notare inoltre che Node.js stabilisce gli handler dei segnali per `SIGINT` e `SIGTERM` e i processi Node.js non terminano immediatamente a causa della ricezione di quei segnali. Anzi, Node.js eseguirà una sequenza di azioni di pulizia e di conseguenza rileverà nuovamente il segnale gestito dagli handler.
 
 Vedi waitpid(2).
 
