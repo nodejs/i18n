@@ -228,7 +228,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
   * permite la reparación para CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
 * build: 
   * archivos tar comprimidos xz serán hechos disponibles desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante
-  * A headers.tar.gz file will be made available from nodejs.org for v0.10 builds from v0.10.42 onward, a future change to node-gyp will be required to make use of these
+  * Un archivo headers.tar.gz será hecho disponible desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante, un cambio futuro a node-gyp será requerido para hacer uso de este
 
 ### Commits
 
