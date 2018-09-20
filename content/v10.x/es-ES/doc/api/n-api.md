@@ -2536,13 +2536,13 @@ Este método permite la definición eficiente de múltiples propiedades sobre un
 
 ## Trabajar con Funciones de JavaScript
 
-N-API ofrece un conjunto de APIs que permite al código de JavaScript hacer llamadas de vuelta al código nativo. Las APIs de N-API que son compatibles con las llamadas devuelta al código nativo toman una función callback representada por el tipo `napi_callback`. Cuando la VM de JavaScript llama devuelta al código nativo, la función `napi_callback` proporcionada es invocada. Las APIs documentadas en esta sección permiten hacer lo siguiente a la función callback:
+N-API ofrece un conjunto de APIs que permiten al código de JavaScript hacer llamadas de vuelta al código nativo. Las APIs de N-API que son compatibles con las llamadas devuelta al código nativo toman una función callback representada por el tipo `napi_callback`. Cuando la VM de JavaScript llama de vuelta al código nativo, la función `napi_callback` proporcionada es invocada. Las APIs documentadas en esta sección permiten hacer lo siguiente a la función callback:
 
 - Obtener información sobre el contexto en el cual el callback fue invocado.
 - Obtener los argumentos pasados al callback.
 - Devolver un `napi_value` desde el callback.
 
-Adicionalmente, N-API proporciona un conjunto de funciones que permiten llamar funciones de JavaScript desde el código nativo. Uno puede llamar a una función como una llamada regular de JavaScript, o como una función constructor.
+Adicionalmente, N-API proporciona un conjunto de funciones que permiten llamar funciones de JavaScript desde el código nativo. Uno puede llamar a una función como una llamad de función de JavaScript regular, o como una función constructora.
 
 ### napi_call_function
 
@@ -2568,7 +2568,7 @@ napi_status napi_call_function(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Este método permite a una función objeto de JavaScript ser llamada desde un complemento nativo. Este es el mecanismo principal para devolver *de* el código nativo del complemento *a* JavaScript. Para el caso especial de llamar a JavaScript después de una operación asíncrona, véase [`napi_make_callback`][].
+Este método permite a una función objeto de JavaScript ser llamada desde un complemento nativo. Este es el mecanismo principal para devolver *desde* el código nativo del complemento *a* JavaScript. Para el caso especial de llamar a JavaScript después de una operación asíncrona, véase [`napi_make_callback`][].
 
 Un caso de muestra para su uso puede verse de la siguiente manera. Considere el siguiente fragmento de código de JavaScript:
 
@@ -2623,7 +2623,7 @@ napi_status napi_create_function(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] utf8Name`: El nombre de la función codificado como UTF8. Este es visible dentro de JavaScript como la propiedad del nuevo `name` de la función objeto.
-- `[in] cb`: La función nativa que debe ser llamada cuando esta función objeto es invocada.
+- `[in] cb`: La función nativa que debe ser llamada cuando el objeto de esta función es invocada.
 - `[in] data`: Contexto de datos proporcionado por el usuario. Este será pasado de nuevo a la función cuando se invoque luego.
 - `[out] result`: `napi_value` que representa la función objeto de JavaScript para la nueva función creada.
 
@@ -2633,7 +2633,7 @@ Esta API permite al autor de un complemento crear una función objeto en código
 
 La nueva función creada no es visible automáticamente desde el script luego de esta llamada. En cambio, una propiedad debe ser explícitamente establecida sobre un objeto que es visible para JavaScript, para que la función sea accesible desde el script.
 
-Para exponer una función como parte de las exportaciones del módulo del complemento, configure la nueva función creada en el objeto exportaciones. Un módulo de muestra puede verse de la siguiente manera:
+Para exponer una función como parte de las exportaciones del módulo del complemento, configure la nueva función creada en el objeto de exportaciones. Un módulo de muestra puede verse de la siguiente manera:
 
 ```C
 napi_value SayHello(napi_env env, napi_callback_info info) {
@@ -2683,7 +2683,7 @@ napi_status napi_get_cb_info(napi_env env,
 
 - `[in] env`: El entorno bajo el que se invoca a la API.
 - `[in] cbinfo`: La información del callback pasada a la función callback.
-- `[in-out] argc`: Especifica el tamaño del arreglo `argv` proporcionado y recibe el conteo actual de argumentos.
+- `[in-out] argc`: Especifica el tamaño del arreglo `argv` proporcionado y recibe el conteo de argumentos verdadero.
 - `[out] argv`: El buffer en el que se copian los `napi_value` que representan los argumentos. Si hay más argumentos que el conteo proporcionado, sólo se copia el número solicitado de argumentos. Si se proporcionan menos argumentos de los que se afirman, el resto de `argv` se llena con valores `napi_value` que representan `undefined`.
 - `[out] this`: Recibe el argumento `this` de JavaScript para la llamada.
 - `[out] data`: Recibe el apuntador de datos para el callback.
