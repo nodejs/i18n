@@ -1696,9 +1696,9 @@ Node.js mantiene varias conexiones por servidor para realizar solicitudes HTTP. 
 
 `options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
 
-The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
+El parámetro opcional `callback` será agregado como un listener de un solo uso para el evento [`'response'`][] .
 
-`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream escribible. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
+`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream escribible. Si uno necesita subir un archivo con una solicitud POST, entonces escriba al objeto `ClientRequest` .
 
 Ejemplo:
 
@@ -1739,9 +1739,9 @@ req.write(postData);
 req.end();
 ```
 
-Note that in the example `req.end()` was called. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
+Tenga en cuenta que en el ejemplo, `req.end()` fue llamado. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
 
-If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object. As with all `'error'` events, if no listeners are registered the error will be thrown.
+If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object. Como con todos los eventos `'error'`, si no hay listeners registrados se arrojará el error.
 
 There are a few special headers that should be noted.
 
@@ -1753,7 +1753,7 @@ There are a few special headers that should be noted.
 
 * Sending an Authorization header will override using the `auth` option to compute basic authentication.
 
-Example using a [`URL`][] as `options`:
+Ejemplo utilizando un [`URL`][] como `options`:
 
 ```js
 const options = new URL('http://abc:xyz@example.com');
@@ -1777,15 +1777,15 @@ En el caso de un error de conexión, se emitirán los siguientes eventos:
 * `'error'`
 * `'close'`
 
-If `req.abort()` is called before the connection succeeds, the following events will be emitted in the following order:
+Si `req.abort()` es llamado antes de que la conexión tenga éxito, los siguientes eventos serán emitidos en el siguiente orden:
 
 * `'socket'`
 * (`req.abort()` llamado aquí)
 * `'abort'`
 * `'close'`
-* `'error'` with an error with message `'Error: socket hang up'` and code `'ECONNRESET'`
+* `'error'` con un error con el mensaje `'Error: socket hang up'` y el código `'ECONNRESET'`
 
-If `req.abort()` is called after the response is received, the following events will be emitted in the following order:
+Si `req.abort()` es llamado después de que se reciba la respuesta, los siguientes eventos serán emitidos en el siguiente orden:
 
 * `'socket'`
 * `'response'` 
@@ -1793,8 +1793,8 @@ If `req.abort()` is called after the response is received, the following events 
 * (`req.abort()` llamado aquí)
 * `'abort'`
 * `'close'` 
-  * `'aborted'` on the `res` object
-  * `'end'` on the `res` object
-  * `'close'` on the `res` object
+  * `'aborted'` en el objeto `res`
+  * `'end'` en el objeto `res`
+  * `'close'` en el objeto `res`
 
 Note that setting the `timeout` option or using the `setTimeout()` function will not abort the request or do anything besides add a `'timeout'` event.
