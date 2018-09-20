@@ -225,9 +225,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * openssl: actualizar de 1.0.1q a 1.0.1r. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
 * src: 
   * introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
-  * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
+  * permite la reparación para CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
 * build: 
-  * xz compressed tar files will be made available from nodejs.org for v0.10 builds from v0.10.42 onward
+  * archivos tar comprimidos xz serán hechos disponibles desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante
   * A headers.tar.gz file will be made available from nodejs.org for v0.10 builds from v0.10.42 onward, a future change to node-gyp will be required to make use of these
 
 ### Commits
