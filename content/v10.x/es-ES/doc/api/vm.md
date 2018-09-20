@@ -305,7 +305,7 @@ Si el `linkingStatus` del `Module` devuelto está `'unlinked'`, este método se 
 La función enlazador corresponde aproximadamente a la operación abstracta de [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) definida por la implementación en la especificación ECMAScript, con algunas diferencias clave:
 
 * La función enlazador puede ser asincrónica mientras que [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) es sincrónica.
-* The linker function is executed during linking, a Node.js-specific stage before instantiation, while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is called during instantiation.
+* La función enlazador se ejecuta durante la vinculación, una etapa específica de Node.js antes de la instanciación, mientras que [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) se llama durante la instanciación.
 
 The actual [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation used during module instantiation is one that returns the modules linked during linking. Since at that point all modules would have been fully linked already, the [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation is fully synchronous per specification.
 
