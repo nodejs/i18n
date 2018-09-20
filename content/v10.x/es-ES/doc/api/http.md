@@ -1139,7 +1139,7 @@ added: v0.9.12
 * `callback` {Function}
 * Devuelve: {http.ServerResponse}
 
-Sets the Socket's timeout value to `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
+Sets the Socket's timeout value to `msecs`. Si se proporciona una callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
 
 Si no se añade ningún listener `'timeout'` a la solicitud, la respuesta, o al servidor, entonces los sockets se destruirán cuando se agote su tiempo de espera. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -1698,7 +1698,7 @@ Node.js maintains several connections per server to make HTTP requests. This fun
 
 The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
 
-`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream editable. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
+`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream escribible. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
 Ejemplo:
 
