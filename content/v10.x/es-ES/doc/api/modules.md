@@ -190,7 +190,7 @@ Core modules are always preferentially loaded if their identifier is passed to `
 
 Cuando hay llamadas circulares a `require()`, un módulo podría no haber finalizado la ejecución cuando es devuelto.
 
-Consider this situation:
+Considere esta situación:
 
 `a.js`:
 
@@ -223,9 +223,9 @@ const b = require('./b.js');
 console.log('in main, a.done = %j, b.done = %j', a.done, b.done);
 ```
 
-When `main.js` loads `a.js`, then `a.js` in turn loads `b.js`. At that point, `b.js` tries to load `a.js`. In order to prevent an infinite loop, an **unfinished copy** of the `a.js` exports object is returned to the `b.js` module. `b.js` then finishes loading, and its `exports` object is provided to the `a.js` module.
+Cuando `main.js` carga a `a.js`, luego el `a.js` en turno carga a `b.js`. En ese punto, `b.js` intenta cargar a `a.js`. Para prevenir un bucle infinito, una **copia sin terminar** del objeto de exportaciones `a.js` es devuelto al módulo `b.js`. `b.js` luego termina de cargar, y su objeto `exports` es proporcionado al módulo `a.js`.
 
-By the time `main.js` has loaded both modules, they're both finished. The output of this program would thus be:
+Al momento en el que `main.js` ha cargado ambos módulos, ambos terminaron. La salida de este programa sería:
 
 ```txt
 $ node main.js
@@ -239,23 +239,23 @@ a done
 in main, a.done = true, b.done = true
 ```
 
-Careful planning is required to allow cyclic module dependencies to work correctly within an application.
+Hace falta una planificación cuidadosa para permitir que las dependencias de módulo cíclicas trabajen correctamente dentro de una aplicación.
 
-## File Modules
+## Módulos de Archivo
 
 <!--type=misc-->
 
-If the exact filename is not found, then Node.js will attempt to load the required filename with the added extensions: `.js`, `.json`, and finally `.node`.
+Si no se encuentra el nombre de archivo exacto, entonces Node.js intentará cargar el nombre de archivo requerido con las extensiones añadidas: `.js`, `.json` y finalmente `.node`.
 
-`.js` files are interpreted as JavaScript text files, and `.json` files are parsed as JSON text files. `.node` files are interpreted as compiled addon modules loaded with `dlopen`.
+Los archivos `.js` son interpretados como archivos de texto de JavaScript, y los archivos `.json` son analizados como archivos de texto JSON. Los archivos `.node` son interpretados como módulos addon compilados cargados con `dlopen`.
 
-A required module prefixed with `'/'` is an absolute path to the file. For example, `require('/home/marco/foo.js')` will load the file at `/home/marco/foo.js`.
+Un módulo requerido con `'/'` como prefijo es una ruta absoluta al archivo. Por ejemplo, `require('/home/marco/foo.js')` cargará el archivo en `/home/marco/foo.js`.
 
-A required module prefixed with `'./'` is relative to the file calling `require()`. That is, `circle.js` must be in the same directory as `foo.js` for `require('./circle')` to find it.
+Un módulo requerido con `'./'` como prefijo es relativo al archivo que llama a `require()`. Es decir, `circle.js` debe estar en el mismo directorio que `foo.js` para que `require('./circle')` lo encuentre.
 
 Without a leading `'/'`, `'./'`, or `'../'` to indicate a file, the module must either be a core module or is loaded from a `node_modules` folder.
 
-If the given path does not exist, `require()` will throw an [`Error`][] with its `code` property set to `'MODULE_NOT_FOUND'`.
+Si la ruta dada no existe, `require()` arrojará un [`Error`][] con su propiedad de `code` establecida a `'MODULE_NOT_FOUND'`.
 
 ## Folders as Modules
 
