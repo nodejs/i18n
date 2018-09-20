@@ -2506,11 +2506,11 @@ napi_status napi_delete_element(napi_env env,
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
 - `[in] object`: El objeto a consultar.
 - `[in] index`: El índice de la propiedad a eliminar.
-- `[out] result`: Whether the element deletion succeeded or not. `result` can optionally be ignored by passing `NULL`.
+- `[out] result`: Si la eliminación del elemento fue exitosa o no. `result` puede ser opcionalmente ignorado pasando `NULL`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API attempts to delete the specified `index` from `object`.
+Esta API intenta eliminar el `index` especificado desde `object`.
 
 #### napi_define_properties
 
@@ -2525,18 +2525,18 @@ napi_status napi_define_properties(napi_env env,
                                    const napi_property_descriptor* properties);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the properties.
-- `[in] property_count`: The number of elements in the `properties` array.
-- `[in] properties`: The array of property descriptors.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto desde el cual recuperar las propiedades.
+- `[in] property_count`: El número de elementos en el arreglo de `properties`.
+- `[in] properties`: El arreglo de descriptores de propiedad.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method allows the efficient definition of multiple properties on a given object. The properties are defined using property descriptors (see [`napi_property_descriptor`][]). Given an array of such property descriptors, this API will set the properties on the object one at a time, as defined by `DefineOwnProperty()` (described in [Section 9.1.6](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc) of the ECMA262 specification).
+Este método permite la definición eficiente de múltiples propiedades sobre un objeto dado. Las propiedades se definen utilizando los descriptores de propiedad (véase [`napi_property_descriptor`][]). Dado un arreglo de tales descriptores de propiedad, esta API establecerá las propiedades sobre el objeto una por vez. tal como se define en `DefineOwnProperty()` (descrito en la [Sección 9.1.6](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc) de las especificaciones ECMA262).
 
-## Working with JavaScript Functions
+## Trabajar con Funciones de JavaScript
 
-N-API provides a set of APIs that allow JavaScript code to call back into native code. N-API APIs that support calling back into native code take in a callback functions represented by the `napi_callback` type. When the JavaScript VM calls back to native code, the `napi_callback` function provided is invoked. The APIs documented in this section allow the callback function to do the following:
+N-API ofrece un conjunto de APIs que permite al código de JavaScript hacer llamadas devuelta en el código nativo. N-API APIs that support calling back into native code take in a callback functions represented by the `napi_callback` type. When the JavaScript VM calls back to native code, the `napi_callback` function provided is invoked. The APIs documented in this section allow the callback function to do the following:
 
 - Get information about the context in which the callback was invoked.
 - Get the arguments passed into the callback.
