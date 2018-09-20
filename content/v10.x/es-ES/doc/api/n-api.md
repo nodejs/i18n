@@ -2563,14 +2563,14 @@ napi_status napi_call_function(napi_env env,
 - `[in] recv`: El objeto `this` pasado a la función llamada.
 - `[in] func`: `napi_value` que representa la función de JavaScript a ser invocada.
 - `[in] argc`: El conteo de elementos en el arreglo `argv`.
-- `[in] argv`: Array of `napi_values` representing JavaScript values passed in as arguments to the function.
-- `[out] result`: `napi_value` representing the JavaScript object returned.
+- `[in] argv`: Arreglo de `napi_values` que representan los valores de JavaScript pasados como argumentos a la función.
+- `[out] result`: `napi_value` que representa el objeto de JavaScript devuelto.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method allows a JavaScript function object to be called from a native add-on. This is the primary mechanism of calling back *from* the add-on's native code *into* JavaScript. For the special case of calling into JavaScript after an async operation, see [`napi_make_callback`][].
+Este método permite a una función objeto de JavaScript ser llamada desde un complemento nativo. Este es el mecanismo principal para devolver *de* el código nativo del complemento *a* JavaScript. Para el caso especial de llamar a JavaScript después de una operación asíncrona, véase [`napi_make_callback`][].
 
-A sample use case might look as follows. Consider the following JavaScript snippet:
+Un caso de muestra para su uso puede verse de la siguiente manera. Considere el siguiente fragmento de código de JavaScript:
 
 ```js
 function AddTwo(num) {
@@ -2578,10 +2578,10 @@ function AddTwo(num) {
 }
 ```
 
-Then, the above function can be invoked from a native add-on using the following code:
+Entonces, la función anterior puede ser invocada desde un complemento nativo utilizando el siguiente código:
 
 ```C
-// Get the function named "AddTwo" on the global object
+// Obtener la función llamada "AddTwo" en el objeto global
 napi_value global, add_two, arg;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -2601,7 +2601,7 @@ napi_value return_val;
 status = napi_call_function(env, global, add_two, argc, argv, &return_val);
 if (status != napi_ok) return;
 
-// Convert the result back to a native type
+// Convertir al resultado en un tipo nativo
 int32_t result;
 status = napi_get_value_int32(env, return_val, &result);
 if (status != napi_ok) return;
@@ -2621,8 +2621,8 @@ napi_status napi_create_function(napi_env env,
                                  napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] utf8Name`: The name of the function encoded as UTF8. This is visible within JavaScript as the new function object's `name` property.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] utf8Name`: El nombre de la función codificado como UTF8. Este es visible dentro de JavaScript como la propiedad del nuevo `name` de la función objeto.
 - `[in] cb`: The native function which should be called when this function object is invoked.
 - `[in] data`: User-provided data context. This will be passed back into the function when invoked later.
 - `[out] result`: `napi_value` representing the JavaScript function object for the newly created function.
