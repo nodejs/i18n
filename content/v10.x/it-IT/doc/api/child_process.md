@@ -877,7 +877,7 @@ Se non viene fornita alcuna funzione `callback` e il messaggio non può essere i
 
 #### Esempio: invio di un server object
 
-The `sendHandle` argument can be used, for instance, to pass the handle of a TCP server object to the child process as illustrated in the example below:
+L'argomento `sendHandle` può essere utilizzato, ad esempio, per passare l'handle di un server object TCP al processo child come mostrato di seguito:
 
 ```js
 const subprocess = require('child_process').fork('subprocess.js');
