@@ -298,7 +298,7 @@ La función se espera para devolver un objeto `Module` o un `Promise` que eventu
 * Debe pertenecer al mismo contexto que el `Module` principal.
 * Su `linkingStatus` no debe ser `'errored'`.
 
-If the returned `Module`'s `linkingStatus` is `'unlinked'`, this method will be recursively called on the returned `Module` with the same provided `linker` function.
+Si el `linkingStatus` del `Module` devuelto está `'unlinked'`, este método se llamará recursivamente en el `Module` devuelto con la misma función del `linker` proporcionado.
 
 `link()` returns a `Promise` that will either get resolved when all linking instances resolve to a valid `Module`, or rejected if the linker function either throws an exception or returns an invalid `Module`.
 
