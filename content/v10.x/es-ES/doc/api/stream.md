@@ -1860,7 +1860,7 @@ El método `transform._flush()` es ajustado con un subrayado porque es interno a
 #### transform.\_transform(fragmento, codificación, callback)
 
 * `chunk` {Buffer|string|any} El fragmento a ser transformado. **Siempre** será un búfer a menos que la opción `decodeStrings` sea establecida como `false`, o que el stream esté operando en modo objeto.
-* `encoding` {string} Si el fragmento es un string, entonces esto es el tipo de codificación. Si el fragmento es un búfer, entonces este es el valor especial - 'buffer', ignorarlo en este caso.
+* `encoding` {string} Si el fragmento es un string, entonces esto es el tipo de codificación. Si el fragmento es un búfer, entonces este es el valor especial - 'buffer', ignóralo en este caso.
 * `callback` {Function} Una función callback (opcionalmente con un argumento error y datos) a ser llamada después que el `chunk` proporcionado ha sido procesado.
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementado por clases secundarias, y llamado solamente por métodos de la clase `Readable` interna.
@@ -1869,9 +1869,9 @@ Todas las implementaciones de stream `Transform` deben proporcionar un método `
 
 El método `transform.push()` puede ser llamado cero o más veces para generar salida de un solo fragmento de entrada, dependiendo de cuanto hay para la salida como resultado del fragmento.
 
-Es posible que ninguna salida es generada de cualquier fragmento de datos de entrada.
+Es posible que ninguna salida sea generada de cualquier fragmento de datos de entrada.
 
-La función `callback` debe ser llamada solo cuando el fragmento actual es completamente consumido. El primer argumento pasado al `callback` debe ser un objeto `Error` si ocurre un error mientras se procesa la entrada, o de caso contrario `null`. Si un segundo argumento es pasado al `callback`,será reenviado al método `readable.push()`. En otras palabras los siguientes son equivalentes:
+La función `callback` debe ser llamada solo cuando el fragmento actual sea completamente consumido. El primer argumento pasado al `callback` debe ser un objeto `Error` si ocurre un error mientras se procesa la entrada, o de caso contrario `null`. Si un segundo argumento es pasado al `callback`, será reenviado al método `readable.push()`. En otras palabras los siguientes son equivalentes:
 
 ```js
 transform.prototype._transform = function(data, encoding, callback) {
@@ -1902,7 +1902,7 @@ La clase `stream.PassThrough` es una implementación trivial de un stream [`Tran
 
 En las versiones anteriores de v0.10 de Node.js, la interfaz del stream `Readable` era más simple, pero también menos potente y menos útil.
 
-* En vez de esperar por llamadas, el método [`stream.read()`](#stream_readable_read_size), eventos [`'data'`][] empezarían a emitirse inmediatamente. Las aplicaciones que que necesiten realizar cierta cantidad de trabajo para decidir cómo manejar los datos, fueron requeridas que almacenen los datos en los búferes para que los datos no se perdieran.
+* En vez de esperar por llamadas, el método [`stream.read()`](#stream_readable_read_size), eventos [`'data'`][] empezarían a emitirse inmediatamente. Las aplicaciones que necesiten realizar cierta cantidad de trabajo para decidir cómo manejar los datos, fueron requeridas que almacenen los datos en los búferes para que los datos no se perdieran.
 * El método [`stream.pause()`](#stream_readable_pause) era consultivo, en vez de garantizado. Esto significaba que era necesario estar preparado para recibir eventos [`'data'`][] *incluso cuando el stream estaba en estado pausado*.
 
 En Node.js v0.10, la clase [`Readable`][] fue añadida. Para compatibilidad con versiones anteriores con programas Node.js más viejos, los streams `Readable` cambian a "modo fluido" cuando un manejador de evento [`'data'`][] es añadido, o cuando el método [`stream.resume()`](#stream_readable_resume) es llamado. El efecto es que, incluso cuando no se use el nuevo método [`stream.read()`](#stream_readable_read_size) y el evento [`'readable'`][], ya no será necesario preocuparse por la pérdida de fragmentos [`'data'`][].
@@ -1948,7 +1948,7 @@ Además de los nuevos streams `Readable` cambiando a modo fluido, los streams co
 
 ### `readable.read(0)`
 
-Hay algunos casos donde es necesario activar una actualización de los mecanismos de stream legible subyacente, sin consumir datos. En tales casos, es posible llamar a `readable.read(0)`, que siempre devolverá `null`.
+Hay algunos casos donde es necesario activar una actualización de los mecanismos de stream legible subyacente, sin realmente consumir datos. En tales casos, es posible llamar a `readable.read(0)`, que siempre devolverá `null`.
 
 Si el búfer de lectura interno está por debajo de `highWaterMark`, y el stream no está actualmente leyendo, entonces llamar a `stream.read(0)` va a activar una llamada de [`stream._read()`](#stream_readable_read_size_1) de bajo-nivel.
 
