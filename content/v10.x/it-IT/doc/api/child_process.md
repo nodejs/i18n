@@ -910,30 +910,30 @@ Mentre l'esempio precedente utilizza un server creato tramite il modulo `net`, i
 
 #### Esempio: invio di un socket object
 
-Similarly, the `sendHandler` argument can be used to pass the handle of a socket to the child process. The example below spawns two children that each handle connections with "normal" or "special" priority:
+Allo stesso modo, l'argomento `sendHandler` può essere utilizzato per passare l'handle di un socket al processo child. L'esempio seguente genera due children che gestiscono rispettivamente le connessioni con priorità "normal" o "special":
 
 ```js
 const { fork } = require('child_process');
 const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
-// Open up the server and send sockets to child. Use pauseOnConnect to prevent
-// the sockets from being read before they are sent to the child process.
+// Apri il server e invia i socket al child. Utilizza pauseOnConnect per impedire la lettura 
+// dei socket prima che vengano inviati al processo child.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
 
-  // If this is special priority
+  // Se questa è una priorità special
   if (socket.remoteAddress === '74.125.127.100') {
     special.send('socket', socket);
     return;
   }
-  // This is normal priority
+  // Questa è una priorità normal
   normal.send('socket', socket);
 });
 server.listen(1337);
 ```
 
-The `subprocess.js` would receive the socket handle as the second argument passed to the event callback function:
+Il `subprocess.js` riceverà l'handle del socket come secondo argomento passato alla funzione callback dell'evento:
 
 ```js
 process.on('message', (m, socket) => {
