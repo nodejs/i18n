@@ -200,11 +200,11 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
   * Repara un defecto doble-libre en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para los ataques DoS o de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque práctico y es por lo tanto considerado como una severidad baja para usuarios de Node.js. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0705
   * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` y `BN_dec2bn()`. Se cree que Node.js no está invocando las rutas de código que usan estas funciones para que los ataques prácticos a través de Node.js usando este defecto son *poco probables* que sean posibles. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0797
   * Repara un defecto que hace que el ataque CacheBleed (https://ssrg.nicta.com.au/projects/TS/cachebleed/) posible. Este defecto permite a los atacantes ejecutar ataques de canales laterales conduciendo a la recuperación potencial de todas las claves privadas RSA. Solo afecta a la microarquitectura de los Sandy Bridge de Intel (y los más viejos posiblemente) cuando se use hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0702
-  * Elimina el soporte SSLv2, el argumento de la línea de comando `--enable-ssl2` ahora producirá un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad donde SSLv2 es habilitado por un servidor, incluso si una conexión al cliente no está usando SSLv2. The SSLv2 protocol is widely considered unacceptably broken and should not be supported. More information is available at https://www.openssl.org/news/vulnerabilities.html#2016-0800
+  * Elimina el soporte SSLv2, el argumento de la línea de comando `--enable-ssl2` ahora producirá un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad donde SSLv2 es habilitado por un servidor, incluso si una conexión al cliente no está usando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente roto y no debería ser soportado. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
 
 ### Commits:
 
-* [164157abbb] - build: update Node.js logo on OSX installer (Rod Vagg) https://github.com/nodejs/node/pull/5401
+* [164157abbb] - build: actualizar el logo de Node.js logo en el instalador de OSX (Rod Vagg) https://github.com/nodejs/node/pull/5401
 * [f8cb0dcf67] - crypto,tls: remove SSLv2 support (Ben Noordhuis) https://github.com/nodejs/node/pull/5529
 * [42ded2a590] - deps: upgrade openssl to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
 * [1e45a6111c] - deps: update http-parser to version 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
@@ -216,9 +216,9 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-02-09, Version 0.10.42 (Maintenance), @jasnell
 
-This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para detalles de vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios notables
 
 * http: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
 * http-parser: upgrade from 1.0 to 1.1
