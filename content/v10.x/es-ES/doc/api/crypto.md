@@ -1297,7 +1297,7 @@ El argumento `options` controla el comportamiento stream y es opcional, exceptua
 
 El `algorithm` es dependiente de OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-La `key` es la clave cruda usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
+La `key` es la clave cruda usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser strings `'utf8'` codificadas, [Buffers][`Buffer`], `TypedArray`, o `DataView`s. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
 Los vectores de inicialización deben ser impredecibles y únicos; idealmente, serán criptográficamente aleatorios. Estos no tienen que ser secretos: los IV son típicamente añadidos a los mensajes de texto cifrado sin cifrar. Puede sonar contradictorio que algo tenga que ser impredecible y único, pero no tenga que ser secreto; es importante recordar que un atacante no debe ser capaz de predecir a futuro cual va a ser el IV dado.
 
@@ -1324,15 +1324,15 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
 
-Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
+Crea un objeto de intercambio de claves `DiffieHellman` usando el `prime` proporcionado y un `generator` opcional específico.
 
-The `generator` argument can be a number, string, or [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+El argumento `generator` puede ser un número, string, o un [`Buffer`][]. Si `generator` no es especificado, el valor `2` es usado.
 
-The `primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
+Los argumentos `primeEncoding` y `generatorEncoding` pueden ser `'latin1'`, `'hex'`, o `'base64'`.
 
-If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Si `primeEncoding` es especificado, se espera que `prime` sea una string; de no ser así, se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `generatorEncoding` is specified, `generator` is expected to be a string; otherwise a number, [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Si `generatorEncoding` es especificado, se espera que `generator` sea una string; de no ser así, se espera un número, [`Buffer`][], `TypedArray`, o `DataView`.
 
 ### crypto.createDiffieHellman(primeLength[, generator])
 
@@ -1343,7 +1343,7 @@ added: v0.5.0
 - `primeLength` {number}
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 
-Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
+Crea un objeto de intercambio de claves `DiffieHellman` y genera un prime de `primeLength` bits usando un `generator` numérico opcional específico. Si `generator` no es especificado, el valor `2` es usado.
 
 ### crypto.createECDH(curveName)
 
