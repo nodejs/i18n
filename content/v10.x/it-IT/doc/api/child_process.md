@@ -875,7 +875,7 @@ Se non viene fornita alcuna funzione `callback` e il messaggio non può essere i
 
 `subprocess.send()` restituirà `false` se il canale è chiuso o quando il backlog dei messaggi non inviati supera una soglia oltre la quale è sconsigliato inviarne altri. Altrimenti, il metodo restituisce `true`. La funzione `callback` può essere utilizzata per implementare il flow control (controllo del flusso).
 
-#### Example: sending a server object
+#### Esempio: invio di un server object
 
 The `sendHandle` argument can be used, for instance, to pass the handle of a TCP server object to the child process as illustrated in the example below:
 
