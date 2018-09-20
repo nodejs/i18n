@@ -320,9 +320,9 @@ Trate de no desanimarse. Si siente que una revisión en particular es injusta, d
 
 ### Paso 10: Ejecutar
 
-Para "aterrizar", una Pull Request debe ser revisada y [aprobada](#getting-approvals-for-your-pull-request) por al menos un Colaborador de Node.js y pasar una [prueba de funcionamiento CI (Continuous Integration)](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
+Para "aterrizar", una Pull Request debe ser revisada y [aprobada](#getting-approvals-for-your-pull-request) por al menos un Colaborador de Node.js y pasar una [prueba de funcionamiento CI (Continuous Integration)](#ci-testing). Después de eso, siempre que no haya objeciones de otros colaboradores, la Pull Request puede "fusionarse". Si nota que su Pull Request espera más de lo previsto, consulte las [notas sobre el tiempo de espera](#waiting-until-the-pull-request-gets-landed).
 
-When a collaborator lands your Pull Request, they will post a comment to the Pull Request page mentioning the commit(s) it landed as. GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulations and thanks for your contribution!
+Cuando un colaborador aterriza su Pull Request, publicará un comentario en la página de Pull Request mencionando el(los) commit(s) al que aterrizó. GitHub a menudo muestra la Pull Request como `Closed` en este punto, pero no se preocupe. Si observas el branch en el que planteaste tu Pull Request (probablemente `master`), deberías ver un commit con tu nombre. Congratulations and thanks for your contribution!
 
 ## Reviewing Pull Requests
 
