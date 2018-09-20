@@ -322,15 +322,15 @@ Trate de no desanimarse. Si siente que una revisión en particular es injusta, d
 
 Para "aterrizar", una Pull Request debe ser revisada y [aprobada](#getting-approvals-for-your-pull-request) por al menos un Colaborador de Node.js y pasar una [prueba de funcionamiento CI (Continuous Integration)](#ci-testing). Después de eso, siempre que no haya objeciones de otros colaboradores, la Pull Request puede "fusionarse". Si nota que su Pull Request espera más de lo previsto, consulte las [notas sobre el tiempo de espera](#waiting-until-the-pull-request-gets-landed).
 
-Cuando un colaborador aterriza su Pull Request, publicará un comentario en la página de Pull Request mencionando el(los) commit(s) al que aterrizó. GitHub a menudo muestra la Pull Request como `Closed` en este punto, pero no se preocupe. Si observas el branch en el que planteaste tu Pull Request (probablemente `master`), deberías ver un commit con tu nombre. Congratulations and thanks for your contribution!
+Cuando un colaborador aterriza su Pull Request, publicará un comentario en la página de Pull Request mencionando el(los) commit(s) al que aterrizó. GitHub a menudo muestra la Pull Request como `Closed` en este punto, pero no se preocupe. Si observas el branch en el que planteaste tu Pull Request (probablemente `master`), deberías ver un commit con tu nombre. ¡Felicidades y gracias por su contribución!
 
-## Reviewing Pull Requests
+## Revisión de Pull Requests
 
-All Node.js contributors who choose to review and provide feedback on Pull Requests have a responsibility to both the project and the individual making the contribution. Reviews and feedback must be helpful, insightful, and geared towards improving the contribution as opposed to simply blocking it. If there are reasons why you feel the PR should not land, explain what those are. Do not expect to be able to block a Pull Request from advancing simply because you say "No" without giving an explanation. Be open to having your mind changed. Be open to working with the contributor to make the Pull Request better.
+Todos los colaboradores de Node.js que optan por revisar y proporcionar un feedback sobre las Pull Requests, tienen una responsabilidad tanto con el proyecto como con la persona que realiza la contribución. Las revisiones y los feedbacks deben ser útiles, perspicaces y estar orientados a mejorar la contribución en lugar de simplemente bloquearla. Si hay razones por las cuales siente que la PR no debe aterrizar, explique cuáles son. No espere poder bloquear el avance de una Pull Request simplemente porque diga "No" sin dar una explicación. Esté abierto a cambiar de opinión. Esté abierto a trabajar con el colaborador para mejorar la Pull Request.
 
-Reviews that are dismissive or disrespectful of the contributor or any other reviewers are strictly counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+Los comentarios que son despectivos o irrespetuosos con el colaborador o cualquier otro revisor son estrictamente contrarios al [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-When reviewing a Pull Request, the primary goals are for the codebase to improve and for the person submitting the request to succeed. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
+Al revisar una Pull Request, los objetivos principales son que la base de código mejore y que la persona que envía la solicitud tenga éxito. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
 
 ### Review a bit at a time.
 
