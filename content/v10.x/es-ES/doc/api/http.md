@@ -486,7 +486,7 @@ changes:
 * `callback` {Function}
 * Devuelve: {this}
 
-Termina de enviar la solicitud. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Termina de enviar la solicitud. If any parts of the body are unsent, it will flush them to the stream. Si la solicitud es fragmentada, esto enviará la `'0\r\n\r\n'` de terminación.
 
 Si se especifica `data`, es equivalente a llamar a [`request.write(data, encoding)`][] seguido de `request.end(callback)`.
 
@@ -1421,7 +1421,7 @@ added: v0.11.6
 
 * {string[]}
 
-Las claves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Only populated at the `'end'` event.
+Las claves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Poblado solamente en el evento `'end'` .
 
 ### message.setTimeout(msecs, callback)
 
@@ -1469,7 +1469,7 @@ added: v0.11.10
 
 **Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The HTTP response status message (reason phrase). Por ejemplo, `OK` o `Internal Server
+El mensaje de estado de la respuesta HTTP (frase del motivo). Por ejemplo, `OK` o `Internal Server
 Error`.
 
 ### message.trailers
@@ -1480,7 +1480,7 @@ added: v0.3.0
 
 * {Object}
 
-El objeto de trailers de solicitud/respuesta. Only populated at the `'end'` event.
+El objeto de trailers de solicitud/respuesta. Poblado solamente en el evento `'end'` .
 
 ### message.url
 
@@ -1678,7 +1678,7 @@ changes:
   * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
-  * `method` {string} A string specifying the HTTP request method. **Predeterminado:** `'GET'`.
+  * `method` {string} Una string que especifique el método de solicitud HTTP. **Predeterminado:** `'GET'`.
   * `path` {string} Request path. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Predeterminado:** `'/'`.
   * `headers` {Object} Un objeto que contiene las cabeceras de solicitud.
   * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
@@ -1749,7 +1749,7 @@ There are a few special headers that should be noted.
 
 * Sending a 'Content-Length' header will disable the default chunked encoding.
 
-* Enviar una cabecera 'Expect' enviará inmediatamente las cabeceras de solicitud. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. See RFC2616 Section 8.2.3 for more information.
+* Enviar una cabecera 'Expect' enviará inmediatamente las cabeceras de solicitud. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. Vea RFC2616 Section 8.2.3 para más información.
 
 * Sending an Authorization header will override using the `auth` option to compute basic authentication.
 
@@ -1771,7 +1771,7 @@ In a successful request, the following events will be emitted in the following o
   * `'end'` on the `res` object
 * `'close'`
 
-In the case of a connection error, the following events will be emitted:
+En el caso de un error de conexión, se emitirán los siguientes eventos:
 
 * `'socket'`
 * `'error'`
