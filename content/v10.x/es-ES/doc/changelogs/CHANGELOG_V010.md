@@ -1,4 +1,4 @@
-# Node.js 0.10 ChangeLog
+# Registro de Cambios de Node.js 0.10
 
 <!--lint disable prohibited-strings-->
 
@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th colspan="2">Stable</th>
+<th colspan="2">Estable</th>
 </tr>
   
   <tr>
@@ -70,7 +70,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -80,103 +80,103 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
-*Note*: Node.js v0.10 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until October 2016.
+*Nota*: Node.js v0.10 está cubierto por el [Plan de Soporte de Largo Plazo de Node.js](https://github.com/nodejs/LTS) y va a ser mantenido hasta Octubre del 2016.
 
 <a id="0.10.48"></a>
 
-## 2016-10-18, Version 0.10.48 (Maintenance), @rvagg
+## 2016-10-18, Versión 0.10.48 (Mantenimiento), @rvagg
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios notables
 
-* c-ares: fix for single-byte buffer overwrite, CVE-2016-5180, more information at https://c-ares.haxx.se/adv_20160929.html (Rod Vagg)
+* c-ares: repara la sobreescritura de un búfer solo-byte, CVE-2016-5180, más información en https://c-ares.haxx.se/adv_20160929.html (Rod Vagg)
 
 ### Commits
 
-* [a14a6a3a11] - deps: c-ares, avoid single-byte buffer overwrite (Rod Vagg) https://github.com/nodejs/node/pull/9108
-* [b798f598af] - tls: fix minor jslint failure (Rod Vagg) https://github.com/nodejs/node/pull/9107
-* [92b232ba01] - win,build: try multiple timeservers when signing (Rod Vagg) https://github.com/nodejs/node/pull/9155
+* [a14a6a3a11] - deps: c-ares, evitar la sobreescritura de búfer solo-byte (Rod Vagg) https://github.com/nodejs/node/pull/9108
+* [b798f598af] - tls: repara una falla menor jslint (Rod Vagg) https://github.com/nodejs/node/pull/9107
+* [92b232ba01] - win,build: prueba múltiples timeservers cuando se firme (Rod Vagg) https://github.com/nodejs/node/pull/9155
 
 <a id="0.10.47"></a>
 
-## 2016-09-27, Version 0.10.47 (Maintenance), @rvagg
+## 2016-09-27, Version 0.10.47 (Mantenimiento), @rvagg
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes:
+### Cambios notables:
 
-* buffer: Zero-fill excess bytes in new `Buffer` objects created with `Buffer.concat()` while providing a `totalLength` parameter that exceeds the total length of the original `Buffer` objects being concatenated. (Сковорода Никита Андреевич)
+* buffer: Rellena con ceros los bytes de exceso en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporciona un parámetro `totalLength` que excede la longitud total de los objetos originales `Buffer` siendo concatenado. (Сковорода Никита Андреевич)
 * http: 
-  * CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas)
-  * Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999. Lack of proper validation may also serve as a potential response splitting attack vector. Backported from v4.x. (Brian White)
-* openssl: Upgrade to 1.0.1u, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 and CVE-2016-6306.
-* tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian) (Ben Noordhuis)
+  * CVE-2016-5325 - Válida correctamente por caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Repara un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde puede ocurrir `throw` cuando se esté configurando las respuestas HTTP, los usuarios ya deberían adoptar intentar/tomar aquí. Originalmente reportado independientemente por Evan Lucas y Romain Gaucher. (Evan Lucas)
+  * Los códigos de estatus inválidos no pueden ser enviados. Limitado a números de 3 dígitos, entre 100 - 999. Falta de validación adecuada también puede servir como respuesta potencial a vector de ataque de división. Se le hizo backport de v4.x. (Brian White)
+* openssl: Actualizar a 1.0.1u, repara un número de defectos impactando a Node.js: CVE-2016-6304 ("OCSP Estado de la solicitud de extensión sin límite crecimiento de la memoria", severidad alta), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306.
+* tls: CVE-2016-7099 - Repara una verificación de la validación del certificado del comodín, por lo tanto un servidor TLS pudiera ser capaz de servir un certificado de comodín inválido para su hostname debido a una validación impropia de `*.` en el string del comodín. Reportado originalmente por Alexander Minozhenko y James Bunton (Atlassian) (Ben Noordhuis)
 
 ### Commits:
 
-* [fc259c7dc4] - buffer: zero-fill uninitialized bytes in .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/67
-* [35b49ed4bb] - build: turn on -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6738
-* [03f4920d6a] - crypto: don't build hardware engines (Rod Vagg) https://github.com/nodejs/node-private/pull/68
-* [1cbdb1957d] - deps: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
-* [c66408cd0c] - deps: fix openssl assembly error on ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [68f88ea792] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [884d50b348] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
-* [bfd6cb5699] - deps: upgrade openssl sources to 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
-* [3614a173d0] - http: check reason chars in writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/48
-* [f2433430ca] - http: disallow sending obviously invalid status codes (Evan Lucas) https://github.com/nodejs/node-private/pull/48
-* [0d7e21ee7b] - lib: make tls.checkServerIdentity() more strict (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
-* [1f4a6f5bd1] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [88dcc7f5bb] - v8: fix -Wsign-compare warning in Zone::New() (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
-* [fd8ac56c75] - v8: fix build errors with g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
+* [fc259c7dc4] - buffer: rellena con cero bytes sin utilizar en .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/67
+* [35b49ed4bb] - build: encender -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6738
+* [03f4920d6a] - crypto: no construir motores de hardware (Rod Vagg) https://github.com/nodejs/node-private/pull/68
+* [1cbdb1957d] - deps: añade -no_rand_screen a openssl s_client (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
+* [c66408cd0c] - deps: Reparar error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [68f88ea792] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [884d50b348] - deps: copiar todos los archivos de encabezados de openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
+* [bfd6cb5699] - deps: actualiza las fuentes de openssl sources a 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
+* [3614a173d0] - http: verificar los caracteres de razón en writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/48
+* [f2433430ca] - http: no permitir el envío de códigos de estatus obviamente inválidos (Evan Lucas) https://github.com/nodejs/node-private/pull/48
+* [0d7e21ee7b] - lib: hacer a tls.checkServerIdentity() más escritcto (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
+* [1f4a6f5bd1] - openssl: reparar el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [88dcc7f5bb] - v8: reparar la advertencia -Wsign-compare en Zone::New() (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
+* [fd8ac56c75] - v8: reparar errores de compilación con g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 
 <a id="0.10.46"></a>
 
-## 2016-06-23, Version 0.10.46 (Maintenance), @rvagg
+## 2016-06-23, Versión 0.10.46 (Mantenimiento), @rvagg
 
-### Notable changes:
+### Cambios notables:
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-* libuv: (CVE-2014-9748) Fixes a bug in the read/write locks implementation for Windows XP and Windows 2003 that can lead to undefined and potentially unsafe behaviour. More information can be found at https://github.com/libuv/libuv/issues/515 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
-* V8: (CVE-2016-1669) Fixes a potential Buffer overflow vulnerability discovered in V8, more details can be found in the CVE at https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
+* libuv: (CVE-2014-9748) Repara un bug en la implementación de bloqueo de leer/escribir para Windows XP y Windows 2003 que puede llevar a un comportamiento no definido y potencialmente peligroso. Se puede conseguir más información en https://github.com/libuv/libuv/issues/515 o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
+* V8: (CVE-2016-1669) Repara una potencial vulnerabilidad de desbordamiento en el Búfer descubierta en V8, se pueden encontrar más detalles en el CVE en https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 , o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 
 ### Commits:
 
-* [3374f57973] - deps: update libuv to 0.10.37 (Saúl Ibarra Corretgé) https://github.com/nodejs/node/pull/7293
+* [3374f57973] - deps: actualizar libuv a 0.10.37 (Saúl Ibarra Corretgé) https://github.com/nodejs/node/pull/7293
 * [fcb9145e29] - deps: backport 3a9bfec from v8 upstream (Myles Borins) https://github.com/nodejs/node-private/pull/43
 
 <a id="0.10.45"></a>
 
-## 2016-05-06, Version 0.10.45 (Maintenance), @rvagg
+## 2016-05-06, Versión 0.10.45 (Mantenimiento), @rvagg
 
-### Notable changes:
+### Cambios notables:
 
-* npm: Correct erroneous version number in v2.15.1 code (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
-* openssl: Upgrade to v1.0.1t, addressing security vulnerabilities (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
-  * Fixes CVE-2016-2107 "Padding oracle in AES-NI CBC MAC check"
-  * See https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ for full details
+* npm: Corregir números de versiones erróneos en código de v2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
+* openssl: Actualizar a v1.0.1t, abordando las vulnerabilidades de seguridad (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
+  * Repara CVE-2016-2107 "Oráculo de relleno en la verificación AES-NI CBC MAC"
+  * Vea https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ para los detalles completos
 
 ### Commits:
 
-* [3cff81c7d6] - deps: completely upgrade npm in LTS to 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
-* [7c22f19009] - deps: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
-* [5d78366937] - deps: update openssl asm files (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [2bc2427cb7] - deps: fix openssl assembly error on ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
-* [8df4b0914c] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
-* [11eefefb17] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [61ccc27b54] - deps: upgrade openssl sources to 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [aa02438274] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
+* [3cff81c7d6] - deps: actualizar completamente npm en LTS a 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
+* [7c22f19009] - deps: añade -no_rand_screen a openssl s_client (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
+* [5d78366937] - deps: actualiza los archivos asm openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [2bc2427cb7] - deps: Reparar error de ensamblaje opensslen ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
+* [8df4b0914c] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
+* [11eefefb17] - deps: copiar todos los archivos de encabezados openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [61ccc27b54] - deps: actualiza las fuentes openssl a 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [aa02438274] - openssl: reparar el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
 
 <a id="0.10.44"></a>
 
-## 2016-03-31, Version 0.10.44 (Maintenance), @rvagg
+## 2016-03-31, Versión 0.10.44 (Mantenimiento), @rvagg
 
-### Notable changes
+### Cambios notables
 
-* npm: Upgrade to v2.15.1. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Authentication tokens have previously been sent with every request made by the CLI for logged-in users, regardless of the destination of the request. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. IMPORTANT: This is a major upgrade to npm v2 LTS from the previously deprecated npm v1. (Forrest L Norvell) https://github.com/nodejs/node/pull/5967
+* npm: Actualizar a v2.15.1. Corrige una falla de seguridad en el uso de tokens de autenticación en solicitudes HTTP que permitirían a un atacante configurar un servidor que pudiera recoger todos los tokens de los usuarios de la interfaz de línea-comando. Los tokens de autenticación han sido enviados con cada solicitud hecha por el CLI para los usuarios logueados, sin importar el destino de la solicitud. Esta actualización repara esto al incluir solamente esos tokens para las solicitudes hechas contra el registro o los registros usados para la instalación actual. IMPORTANTE: Esta es una actualización importante para npm v2 LTS del npm v1 anterior ya obsoleto. (Forrest L Norvell) https://github.com/nodejs/node/pull/5967
 * openssl: OpenSSL v1.0.1s disables the EXPORT and LOW ciphers as they are obsolete and not considered safe. This release of Node.js turns on `OPENSSL_NO_WEAK_SSL_CIPHERS` to fully disable the 27 ciphers included in these lists which can be used in SSLv3 and higher. Full details can be found in our LTS discussion on the matter (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 
 ### Commits

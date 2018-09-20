@@ -76,7 +76,7 @@ added: v0.5.10
 
 If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'message'` event is emitted whenever a message sent by a parent process using [`childprocess.send()`][] is received by the child process.
 
-The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
+Il messaggio passa attraverso la serializzazione e il parsing. The resulting message might not be the same as what is originally sent.
 
 ### Event: 'rejectionHandled'
 
@@ -1299,7 +1299,7 @@ If Node.js is spawned with an IPC channel, the `process.send()` method can be us
 
 If Node.js was not spawned with an IPC channel, `process.send()` will be `undefined`.
 
-The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
+Il messaggio passa attraverso la serializzazione e il parsing. The resulting message might not be the same as what is originally sent.
 
 ## process.setegid(id)
 

@@ -68,11 +68,11 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
   // req es un http.IncomingMessage, que es un Stream Legible
-  // res es un http.ServerResponse, Que es un Stream Escribible
+  // res es un http.ServerResponse, que es un Stream Escribible
 
   let body = '';
   // Obtiene los datos como strings utf8.
-  // Si no se establece una codificación, los objetos búferes van a ser recibidos.
+  // Si no se establece una codificación, los objetos Buffer van a ser recibidos.
   req.setEncoding('utf8');
 
   // Los streams legibles emiten eventos "data" una vez que se añade un listener
@@ -186,7 +186,7 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
         writer.write(data, encoding, callback);
       } else {
         // ver si deberíamos continuar, o espera
-        // no pases el callback, porque no hemos terminado aún.
+        // no pases la callback, porque no hemos terminado aún.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
@@ -311,7 +311,7 @@ changes:
 
 * `chunk` {string|Buffer|Uint8Array|any} Datos opcionales para escribir. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer`o un `Uint8Array`. Para los streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
 * `encoding` {string} La codificación si `chunk` es un string
-* `callback` {Function} Callback opcional cuando el stream esté terminado. Nota: eliminar la nota y dejar “esté”
+* `callback` {Function} Callback opcional cuando el stream esté terminado
 * Devuelve: {this}
 
 Llamar al método `writable.end()` señala que no se escribirán más datos en el [`Writable`][]. Los argumentos `chunk` y `encoding` opcionales permiten un último fragmento de datos adicional para ser escrito inmediatamente antes de cerrar el stream. Si es proporcionado, la función `callback` opcional es adjuntada como un listener para el evento [`'finish'`][].
@@ -351,7 +351,7 @@ added: v0.11.2
 
 El método `writable.uncork()` arroja todos los datos almacenados desde que [`stream.cork()`][] fue llamado.
 
-Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Hacerlo permite la dosificación de todas las llamadas `writable.write()` que ocurren dentro un fase bucle de un evento Node.js dado.
+Cuando se use [`writable.cork()`][] y `writable.uncork()` para manejar el almacenado de escritos a un stream, es recomendado que las llamadas a `writable.uncork()` sean diferidas usando `process.nextTick()`. Hacerlo permite la dosificación de todas las llamadas `writable.write()` que ocurren dentro una fase bucle de un evento Node.js dado.
 
 ```js
 stream.cork();
@@ -369,7 +369,7 @@ stream.cork();
 stream.write('data ');
 process.nextTick(() => {
   stream.uncork();
-  // Los datos no serán arrojados hasta que uncork() es llamado una segunda vez.
+  // Los datos no serán arrojados hasta que uncork() sea llamado una segunda vez.
   stream.uncork();
 });
 ```
@@ -507,8 +507,8 @@ pass.unpipe(writable);
 // readableFlowing ahora es false
 
 pass.on('data', (chunk) => { console.log(chunk.toString()); });
-pass.write('ok'); // will not emit 'data'
-pass.resume(); // must be called to make 'data' being emitted
+pass.write('ok'); // no va a emitir 'data'
+pass.resume(); // debe ser llamado para hacer que 'data' sea emitido
 ```
 
 Mientras `readable.readableFlowing` es `false`, los datos pueden ser que se esten acumulando dentro del búfer interno de los streams.
@@ -588,7 +588,7 @@ added: v0.9.4
 
 El evento `'error'` puede ser emitido por una implementación de `Readable` en cualquier momento. De forma general, esto puede ocurrir si el stream subyacente no es capaz de generar datos debido a una falla interna subyacente, o cuando una implementación del stream intenta empujar un fragmento de datos inválido.
 
-El callback del listener aprobara un solo objeto `Error`.
+El callback del listener aprobará un solo objeto `Error`.
 
 ##### Evento: 'readable'
 
@@ -622,7 +622,7 @@ readable.on('readable', function() {
 
 El evento `'readable'` también será emitido una vez que ha sido alcanzado el final de los datos del stream, pero antes de que se emita el evento `'end'`.
 
-Efectivamente, el evento `'readable'` indica que el stream tiene nueva información: ya sea que nuevos datos están disponibles, o que el final del stream ha sido alcanzado. En el primer caso, [`stream.read()`](#stream_readable_read_size) devolverá los datos disponibles. En el segundo caso, [`stream.read()`](#stream_readable_read_size) devolverá `null`. Por ejemplo En el siguiente ejemplar, `foo.txt` es un archivo vacío:
+Efectivamente, el evento `'readable'` indica que el stream tiene nueva información: ya sea que nuevos datos están disponibles, o que el final del stream ha sido alcanzado. En el primer caso, [`stream.read()`](#stream_readable_read_size) devolverá los datos disponibles. En el segundo caso, [`stream.read()`](#stream_readable_read_size) devolverá `null`. Por ejemplo En el siguiente caso, `foo.txt` es un archivo vacío:
 
 ```js
 const fs = require('fs');
@@ -895,7 +895,7 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|any} Fragmento de datos para hacer unshift en la cola de lectura. Para stream que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
+* `chunk` {Buffer|Uint8Array|string|any} Fragmento de datos para hacer unshift en la cola de lectura. Para streams que no operen en modo objeto, `chunk` debe ser un string, un `Buffer` o un `Uint8Array`. Para streams en modo objeto, `chunk` puede ser cualquier valor de JavaScript, menos `null`.
 
 El método `readable.unshift()` empuja un fragmento de datos de vuelta al búfer interno. Esto es útil en ciertas situaciones, cuando un stream está siendo consumido por código que necesita "no-consumir" alguna cantidad de datos que ha sido sacada de forma optimista de la fuente, para que los datos puedan ser pasados a otra parte.
 
@@ -905,7 +905,7 @@ Los desarrolladores que usan `stream.unshift()` a menudo deberían considerar a 
 
 ```js
 // Sustrae un encabezado delimitado por \n\n
-// usa unshift() si nosotros tenemos mucho
+// usa unshift() si obtenemos mucho
 // Llama al callback (error, encabezado, stream)
 const { StringDecoder } = require('string_decoder');
 function parseHeader(stream, callback) {
@@ -1270,7 +1270,7 @@ changes:
 
 * `opciones` {Object} 
   * `highWaterMark` {number} Nivel del búfer cuando [`stream.write()`](#stream_writable_write_chunk_encoding_callback) empieza a devolver `false`. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
-  * `decodeStrings` {boolean} Si se debe o no decodificar strings en `Buffer`es antes de pasarlos a [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
+  * `decodeStrings` {boolean} Si codificar o no los strings en `Buffer`es antes de pasarlos a [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Predeterminado:** `true`.
   * `objectMode` {boolean} Ya sea [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) una operación válida o no. Cuando es establecido, se hace posible escribir otros valores de JavaScript aparte de string, `Buffer` o `Uint8Array` si lo soporta la implementación del stream. **Predeterminado:** `false`.
   * `emitClose` {boolean} Si el stream debería emitir `'close'` después que ha sido destruido, o no. **Predeterminado:** `true`.
   * `write` {Function} Implementación para el método [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1).
@@ -1290,7 +1290,7 @@ class MyWritable extends Writable {
 }
 ```
 
-O cuando se use constructores de estilo pre-ES6:
+O cuando se usen constructores de estilo pre-ES6:
 
 ```js
 const { Writable } = require('stream');
@@ -1321,7 +1321,7 @@ const myWritable = new Writable({
 
 #### writable.\_write(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} El fragmento a ser escrito. **Simpre** será un búfer a menos que la opción `decodeStrings` fue establecida como `false` o el stream está operando en modo objeto.
+* `chunk` {Buffer|string|any} El fragmento a ser escrito. **Siempre** será un búfer a menos que la opción `decodeStrings` fue establecida como `false` o que el stream está operando en modo objeto.
 * `encoding` {string} Si el fragmento es un string, entonces `encoding` es el codificador de carácter de ese string. Si el fragmento es un `Buffer`, o si el stream está operando en modo objeto, `encoding` pudiera ser ignorado.
 * `callback` {Function} Llama esta función (opcionalmente con un argumento error) cuando el procesamiento es completado para el fragmento suministrado.
 
@@ -1337,12 +1337,12 @@ Todas las llamadas a `writable.write()` que ocurren en el tiempo que `writable._
 
 Si la propiedad `decodeStrings` es establecida explícitamente a `false` en las opciones del constructor, entonces `chunk` permanecerá como el mismo objeto que es pasado a `.write()`, y pudiera ser un string en vez de un `Buffer`. Esto es para soportar implementaciones que tienen un manejador optimizado para ciertas codificaciones de datos string. En ese caso, el argumento `encoding`, va a indicar la codificación de caracteres del string. De otra manera, el argumento `encoding` puede ser ignorado con seguridad.
 
-The `writable._write()` method is prefixed with an underscore because it is internal to the class that defines it, and should never be called directly by user programs.
+El método `writable._write()` es ajustado con un subrayado porque es interno a la clase que lo define, y no debería ser llamado directamente por programas de usuario.
 
 #### writable.\_writev(chunks, callback)
 
-* `chunks` {Object[]} The chunks to be written. Each chunk has following format: `{ chunk: ..., encoding: ... }`.
-* `callback` {Function} A callback function (optionally with an error argument) to be invoked when processing is complete for the supplied chunks.
+* `chunks` {Object[]} Los fragmentos a ser escritos. Cada fragmento tiene el siguiente formato: `{ chunk: ..., encoding: ... }`.
+* `callback` {Function} Una función callback (opcionalmente con un argumento error) para ser invocada cuando el procesamiento de los fragmentos suministrados es completado.
 
 Esta función NO DEBE ser llamada por aplicación de código directamente. Debería ser implementada por clases secundarias, y llamada solamente por métodos de la clase `Writable` interna.
 
@@ -1359,7 +1359,7 @@ added: v8.0.0
 * `err` {Error} Un posible error.
 * `callback` {Function} Una función callback que toma un argumento error opcional.
 
-El método `_destroy()` es llamado por [`writable.destroy()`](#stream_writable_destroy_error). Puede ser sobreescrito por clases secundarias pero **no debe** ser llamado directamente.
+El método `_destroy()` es llamado por [`writable.destroy()`](#stream_writable_destroy_error). Puede ser sobrescrito por clases secundarias pero **no debe** ser llamado directamente.
 
 #### writable.\_final(callback)
 
@@ -1375,7 +1375,7 @@ Esta función opcional será llamada antes de que el stream cierre, demorando el
 
 #### Errores al Escribir
 
-Es recomendado que ocurran errores durante el procesamiento de los métodos `writable._write()` y `writable._writev()` sean reportados al invocar el callback y pasar el error como el primer argumento. Esto causará que un evento `'error'` sea emitido por el `Writable`. Arrojar un `Error` desde dentro del `writable._write()` puede resultar en un comportamiento inesperado e inconsistente dependiendo de cómo se está usando el stream. Usar el callback asegura el manejo consistente y predecible de manejo de errores.
+Es recomendado que ocurran errores durante el procesamiento de los métodos `writable._write()` y `writable._writev()` sean reportados al invocar el callback y pasar el error como el primer argumento. Esto causará que un evento `'error'` sea emitido por el `Writable`. Arrojar un `Error` desde dentro del `writable._write()` puede resultar en un comportamiento inesperado e inconsistente dependiendo de cómo se está usando el stream. Usar la callback asegura el manejo de errores consistente y predecible.
 
 Si un stream `Readable` hace pipe en un stream `Writable` cuando `Writable` emite un error, no se le hará pipe al stream `Readable`.
 
@@ -1464,8 +1464,8 @@ Streams `Readable` personalizados *deben* llamar el constructor `new stream.Read
 * `opciones` {Object} 
   * `highWaterMark` {number} El máximo [número de bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) para almacenar en el búfer interno antes de cesar la lectura desde el recurso subyacente. **Predeterminado:** `16384` (16kb), o `16` para streams `objectMode`.
   * `encoding` {string} Si es especificado, los búferes van a ser decodificados a strings usando la codificación especificada. **Predeterminado:** `null`.
-  * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **Predeterminado:** `false`.
-  * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
+  * `objectMode` {boolean} Si este stream debería comportarse como un stream de objetos, o no. Significa que [`stream.read(n)`](#stream_readable_read_size) devuelve un solo valor en vez de un `Buffer` de tamaño `n`. **Predeterminado:** `false`.
+  * `read` {Function} Implementación para el método [`stream._read()`](#stream_readable_read_size_1).
   * `destroy` {Function} Implementación para el método [`stream._destroy()`](#stream_readable_destroy_err_callback).
 
 ```js
@@ -1540,7 +1540,7 @@ added: v8.0.0
 * `err` {Error} Un posible error.
 * `callback` {Function} Una función callback que toma un argumento error adicional.
 
-El método `_destroy()` es llamado por [`readable.destroy()`](#stream_readable_destroy_error). Puede ser sobreescrito por clases secundarias pero **no debe** ser llamado directamente.
+El método `_destroy()` es llamado por [`readable.destroy()`](#stream_readable_destroy_error). Puede ser sobrescrito por clases secundarias pero **no debe** ser llamado directamente.
 
 #### readable.push(chunk[, encoding])
 

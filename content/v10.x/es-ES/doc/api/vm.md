@@ -89,9 +89,9 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // embargo, la devolución proporcionada nunca se llamaría.
   //
   // El método link() devuelve una Promesa que se resolverá cuando se resuelvan
-  // todas las Promesas devueltas por el vinculador.
+  // todas las Promesas devueltas por el enlazador.
   //
-  // Nota: Esto es un ejemplo ingenioso en el que la función del vinculador crea un nuevo
+  // Nota: Esto es un ejemplo ingenioso en el que la función del enlazador crea un nuevo
   // módulo "foo" cada vez que se llama. En un sistema de módulo de pleno derecho, probablemente
   // se utilizaría un caché para evitar los módulos duplicados.
 
@@ -104,7 +104,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
       `, { context: referencingModule.context });
 
       // Utilizar `contextifiedSandbox` en lugar de `referencingModule.context`
-      // aquí también funcionaría.
+      // también funcionaría aquí.
     }
     throw new Error(`Unable to resolve dependency: ${specifier}`);
   }
@@ -147,7 +147,7 @@ module)`, donde `meta` es el objeto `import.meta` en el `Module`, y `module` es 
 
 Crea un nuevo objeto ES `Module`.
 
-*Note*: Properties assigned to the `import.meta` object that are objects may allow the `Module` to access information outside the specified `context`, if the object is created in the top level context. Use `vm.runInContext()` to create objects in a specific context.
+*Nota*: Las propiedades asignadas al objeto `import.meta` que son objetos pueden permitir que el `Module` acceda a información fuera del `context` especificado, si el objeto se crea en el contexto de nivel superior. Utilice `vm.runInContext()` para crear objetos en un contexto específico.
 
 ```js
 const vm = require('vm');
@@ -159,23 +159,23 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
     'Object.getPrototypeOf(import.meta.prop).secret = secret;',
     {
       initializeImportMeta(meta) {
-        // Note: this object is created in the top context. As such,
-        // Object.getPrototypeOf(import.meta.prop) points to the
-        // Object.prototype in the top context rather than that in
-        // the sandbox.
+        // Nota: este objeto se crea en el contexto superior. Como tal,
+        // Object.getPrototypeOf(import.meta.prop) apunta al
+        // Object.prototype en el contexto superior en lugar de en
+        // el sandbox.
         meta.prop = {};
       }
     });
-  // Since module has no dependencies, the linker function will never be called.
+  // Ya que el módulo no tiene dependencia, la función del enlazador nunca se llamará.
   await module.link(() => {});
   module.initialize();
   await module.evaluate();
 
-  // Now, Object.prototype.secret will be equal to 42.
+  // Ahora, Object.prototype.secret será igual a 42.
   //
-  // To fix this problem, replace
+  // Para solucionar este problema, reemplace el
   //     meta.prop = {};
-  // above with
+  // anterior con
   //     meta.prop = vm.runInContext('{}', contextifiedSandbox);
 })();
 ```
@@ -184,80 +184,80 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 
 * {string[]}
 
-The specifiers of all dependencies of this module. The returned array is frozen to disallow any changes to it.
+Los especificadores de todas las dependencias de este módulo. El arreglo devuelto se congela para no permitir ningún cambio en él.
 
-Corresponds to the `[[RequestedModules]]` field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo `[[RequestedModules]]` de los [Registros del Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación de ECMAScript.
 
 ### module.error
 
 * {any}
 
-If the `module.status` is `'errored'`, this property contains the exception thrown by the module during evaluation. If the status is anything else, accessing this property will result in a thrown exception.
+Si el`module.status` es `'errored'`, esta propiedad contiene la excepción lanzada por el módulo durante la evaluación. Si el estatus es cualquier cosa distinta, acceder a esta propiedad dará como resultado el lanzamiento de una excepción.
 
-The value `undefined` cannot be used for cases where there is not a thrown exception due to possible ambiguity with `throw undefined;`.
+El valor `undefined` no puede ser utilizado para casos donde no se lanza una excepción debido a la posible ambigüedad con `throw undefined;`.
 
-Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo `[[EvaluationError]]` de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación de ECMAScript.
 
 ### module.linkingStatus
 
 * {string}
 
-The current linking status of `module`. It will be one of the following values:
+El estatus de vinculación actual del `module`. Será uno de los siguientes valores:
 
-* `'unlinked'`: `module.link()` has not yet been called.
-* `'linking'`: `module.link()` has been called, but not all Promises returned by the linker function have been resolved yet.
-* `'linked'`: `module.link()` has been called, and all its dependencies have been successfully linked.
-* `'errored'`: `module.link()` has been called, but at least one of its dependencies failed to link, either because the callback returned a `Promise` that is rejected, or because the `Module` the callback returned is invalid.
+* `'unlinked'`: `module.link()` todavía no ha sido llamado.
+* `'linking'`: `module.link()` ha sido llamado, pero no todas las Promesas devueltas por la función del enlazados ha sido resueltas todavía.
+* `'linked'`: `module.link()` ha sido llamado, y todas sus dependencias han sido exitosamente enlazadas.
+* `'errored'`: `module.link()` ha sido llamado, pero al menos una de sus dependencia falló al enlazarse, ya sea porque la devolución retornó una `Promise` que se rechazó, o porque el `Module` de la devolución retornada es inválido.
 
 ### module.namespace
 
 * {Object}
 
-The namespace object of the module. This is only available after instantiation (`module.instantiate()`) has completed.
+El objeto de espacio de nombre del módulo. Esto solo está disponible después de que la instantación (`module.instantiate()`) se haya completado.
 
-Corresponds to the [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getmodulenamespace) abstract operation in the ECMAScript specification.
+Corresponde a la operación abstracta [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getmodulenamespace) en la especificación de ECMAScript.
 
 ### module.status
 
 * {string}
 
-The current status of the module. Will be one of:
+El estatus actual del módulo. Será uno de:
 
-* `'uninstantiated'`: The module is not instantiated. It may because of any of the following reasons:
+* `'uninstantiated'`: El módulo no está instanciado. Puede ser por alguna de las siguientes razones:
   
-  * The module was just created.
-  * `module.instantiate()` has been called on this module, but it failed for some reason.
+  * El módulo se acaba de crear.
+  * `module.instantiate()` ha sido llamado en este módulo, pero falló por alguna razón.
   
-  This status does not convey any information regarding if `module.link()` has been called. See `module.linkingStatus` for that.
+  Este estatus no transmite ninguna información con respecto a si `module.link()` ha sido llamado. Vea `module.linkingStatus` para eso.
 
-* `'instantiating'`: The module is currently being instantiated through a `module.instantiate()` call on itself or a parent module.
+* `'instantiating'`: El módulo se está instanciando actualmente mediante un `module.instantiate()` llamado sobre sí mismoo un módulo principal.
 
-* `'instantiated'`: The module has been instantiated successfully, but `module.evaluate()` has not yet been called.
+* `'instantiated'`: El módulo ha sido instanciado exitosamente, pero `module.evaluate()` todavía no ha sido llamado.
 
-* `'evaluating'`: The module is being evaluated through a `module.evaluate()` on itself or a parent module.
+* `'evaluating'`: El módulo se está evaluando mediante un `module.evaluate()` en sí mismo o en un módulo principal.
 
-* `'evaluated'`: The module has been successfully evaluated.
+* `'evaluated'`: El módulo ha sido evaluado exitosamente.
 
-* `'errored'`: The module has been evaluated, but an exception was thrown.
+* `'errored'`: El módulo ha sido evaluado, pero se lazó una excepción.
 
-Other than `'errored'`, this status string corresponds to the specification's [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)'s `[[Status]]` field. `'errored'` corresponds to `'evaluated'` in the specification, but with `[[EvaluationError]]` set to a value that is not `undefined`.
+Aparte de `'errored'`, esta cadena de estatus corresponde al campo de `[[Status]]` del [Registro de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) de la especificación. `'errored'` corresponde a `'evaluated'` en la especificación, pero con `[[EvaluationError]]` configurado a un valor que no está `undefined`.
 
 ### module.url
 
 * {string}
 
-The URL of the current module, as set in the constructor.
+El URL del módulo actual, como se configura e el constructor.
 
 ### module.evaluate([options])
 
 * `options` {Object} 
-  * `timeout` {number} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
+  * `timeout` {number} Especifica la cantidad de milisegundos para evaluar antes de terminar la ejecución. Si la ejecución se interrumpe, un [`Error`][] se lanzará.
+  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuará trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
 * Devuelve: {Promise}
 
-Evaluate the module.
+Evaluar el módulo.
 
-This must be called after the module has been instantiated; otherwise it will throw an error. It could be called also when the module has already been evaluated, in which case it will do one of the following two things:
+Esto debe ser llamado después de que el módulo haya sido instanciado; de lo contrario lanzará un error. It could be called also when the module has already been evaluated, in which case it will do one of the following two things:
 
 * return `undefined` if the initial evaluation ended in success (`module.status` is `'evaluated'`)
 * rethrow the same exception the initial evaluation threw if the initial evaluation ended in an error (`module.status` is `'errored'`)

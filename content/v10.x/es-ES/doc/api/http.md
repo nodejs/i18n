@@ -513,7 +513,7 @@ added: v1.6.0
 * `name` {string}
 * Devuelve: {any}
 
-Lee un encabezado en la solicitud. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`request.setHeader()`][].
+Lee una cabecera en la solicitud. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`request.setHeader()`][].
 
 Ejemplo:
 
@@ -551,7 +551,7 @@ Ejemplo:
 request.removeHeader('Content-Type');
 ```
 
-### request.setHeader(nombre, valor)
+### request.setHeader(name, value)
 
 <!-- YAML
 added: v1.6.0
@@ -602,7 +602,7 @@ added: v0.5.9
 -->
 
 * `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Función opcional que será llamada cuando ocurra un tiempo de espera. Same as binding to the `'timeout'` event.
+* `callback` {Function} Función opcional que será llamada cuando ocurra un timeout. Same as binding to the `'timeout'` event.
 * Devuelve: {http.ClientRequest}
 
 Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setTimeout()`][] será llamado.
@@ -728,7 +728,7 @@ server.on('clientError', (err, socket) => {
 server.listen(8000);
 ```
 
-Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Se debe tener cuidado en asegurarse de que la respuesta sea un mensaje de respuesta HTTP formateado apropiadamente.
+Cuando el evento `'clientError'` ocurre, no hay ningún objeto de `request` o `response`, así que cualquier respuesta HTTP enviada, incluyendo las cabeceras de respuesta y la carga útil, *deben* escribirse directamente al objeto `socket` . Se debe tener cuidado en asegurarse de que la respuesta sea un mensaje de respuesta HTTP con el formato correcto.
 
 `err` es una instancia de `Error` con dos columnas adicionales:
 
@@ -767,7 +767,7 @@ added: v0.1.0
 
 Este evento se emite cuando se establece un stream TCP nuevo. `socket` es, por lo general, un objeto de tipo [`net.Socket`][]. Generalmente, los usuarios no querrán acceder a este evento. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. El `socket` también puede ser accedido en `request.connection`.
 
-Este evento también puede ser emitido de manera explicita por los usuarios para inyectar conexiones dentro del servidor HTTP. En ese caso, cualquier stream [`Duplex`][] puede ser pasado.
+Este evento también puede ser emitido de manera explícita por los usuarios para inyectar conexiones dentro del servidor HTTP. En ese caso, cualquier stream [`Duplex`][] puede ser pasado.
 
 ### Evento: 'request'
 
@@ -842,11 +842,11 @@ added: v0.9.12
 * `callback` {Function}
 * Devuelve: {http.Server}
 
-Establece el valor del tiempo de espera para los sockets, y emite un evento `'timeout'` en el objeto del Servidor, pasando al socket como un argumento, en caso de que ocurra un tiempo de espera.
+Establece el valor del tiempo de espera para los sockets, y emite un evento `'timeout'` en el objeto del Servidor, pasando al socket como un argumento, en caso de que ocurra un timeout.
 
 Si hay un listener del evento `'timeout'` en el objeto del Servidor, entonces será llamado con el socket puesto en tiempo de espera como un argumento.
 
-Por defecto, el valor del tiempo de espera del Servidor es 2 minutos, y los sockets se destruyen automáticamente si se ponen en tiempo de espera. Sin embargo, si un callback es asignado al evento `'timeout'` del Servidor, los tiempos de espera deberán ser manejados de manera explícita.
+Por defecto, el valor del tiempo de espera del Servidor es 2 minutos, y los sockets se destruyen automáticamente si se agota su tiempo de espera. Sin embargo, si un callback es asignado al evento `'timeout'` del Servidor, los tiempos de espera deberán ser manejados de manera explícita.
 
 ### server.timeout
 
@@ -900,7 +900,7 @@ Indicates that the underlying connection was terminated before [`response.end()`
 added: v0.3.6
 -->
 
-Se emite cuando la respuesta ha sido enviada. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. Eso no implica que el cliente haya recibido algo aún.
+Se emite cuando la respuesta ha sido enviada. Más específicamente, este evento se emite cuando el último segmento de las cabeceras de respuesta y el cuerpo han sido entregados al sistema operativo para la transmisión sobre la red. Eso no implica que el cliente haya recibido algo aún.
 
 Después de este evento, no se emitirán más eventos en el objeto de respuesta.
 
@@ -914,9 +914,9 @@ added: v0.3.0
 
 This method adds HTTP trailing headers (a header but at the end of the message) to the response.
 
-Trailers will **only** be emitted if chunked encoding is used for the response; if it is not (e.g. if the request was HTTP/1.0), they will be silently discarded.
+Los trailers se emitirán **solo** si la codificación fragmentada se utiliza para la respuesta; en caso de que no (por ejemplo, si la solicitud fue HTTP/1.0), serán descartados de manera silenciosa.
 
-Note that HTTP requires the `Trailer` header to be sent in order to emit trailers, with a list of the header fields in its value. Por ejemplo,
+Tenga en cuenta que HTTP requiere que la cabecera `Trailer` sea enviada para emitir trailers, con una lista de los campos de cabecera en su valor. Por ejemplo,
 
 ```js
 response.writeHead(200, { 'Content-Type': 'text/plain',
@@ -952,13 +952,13 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Returns: {this}
+* Devuelve: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. El método, `response.end()`, DEBE ser llamado en cada respuesta.
+Este método señala al servidor que todas las cabeceras de respuesta y el cuerpo han sido enviados; el servidor debería considerar este mensaje como completo. El método, `response.end()`, DEBE ser llamado en cada respuesta.
 
-If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
+Si se especifica `data`, será equivalente a llamar a [`response.write(data, encoding)`][] seguido por `response.end(callback)`.
 
-If `callback` is specified, it will be called when the response stream is finished.
+Si se especifica `callback`, será llamado cuando el stream de respuesta haya finalizado.
 
 ### response.finished
 
@@ -968,7 +968,7 @@ added: v0.0.2
 
 * {boolean}
 
-El valor booleano indica si se ha completado la respuesta. Starts as `false`. Luego de que [`response.end()`][] se ejecuta, el valor será `true`.
+El valor booleano indica si se ha completado la respuesta. Comienza como `false`. Luego de que [`response.end()`][] se ejecuta, el valor será `true`.
 
 ### response.getHeader(name)
 
@@ -979,7 +979,7 @@ added: v0.4.0
 * `name` {string}
 * Devuelve: {any}
 
-Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`response.setHeader()`][].
+Lee una cabecera que ya ha sido puesta en cola, pero que no ha sido enviada al cliente. Note that the name is case insensitive. El tipo del valor devuelto depende de los argumentos proporcionados a [`response.setHeader()`][].
 
 Ejemplo:
 
@@ -1003,9 +1003,9 @@ added: v7.7.0
 
 * Devuelve: {string[]}
 
-Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
+Devuelve un array que contiene los nombres únicos de las cabeceras salientes actuales. Todos los nombres de las cabeceras están en minúsculas.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -1021,13 +1021,13 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* Returns: {Object}
+* Devuelve: {Object}
 
-Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
+Devuelve una copia superficial de las cabeceras salientes actuales. Ya que se utiliza una copia superficial, los valores del array pueden ser mutados sin llamadas adicionales a varios métodos del módulo http relacionados con la cabecera. Las claves del objeto devuelto son los nombres de cabecera, y los valores son los respectivos valores de cabecera. Todos los nombres de las cabeceras están en minúscula.
 
-The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. Esto significa que los típicos métodos `Object` tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -1046,7 +1046,7 @@ added: v7.7.0
 * `name` {string}
 * Devuelve: {boolean}
 
-Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
+Devuelve `true` si la cabecera identificada por `name` está actualmente establecida en las cabeceras salientes. Note that the header name matching is case-insensitive.
 
 Ejemplo:
 
@@ -1062,7 +1062,7 @@ added: v0.9.3
 
 * {boolean}
 
-Boolean (read-only). True if headers were sent, false otherwise.
+Booleano (solo-lectura). Verdadero si las cabeceras fueron enviadas, de lo contrario falso.
 
 ### response.removeHeader(name)
 
@@ -1072,9 +1072,9 @@ added: v0.4.0
 
 * `name` {string}
 
-Removes a header that's queued for implicit sending.
+Elimina a una cabecera que está puesta en cola para un envío implícito.
 
-Example:
+Ejemplo:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1088,9 +1088,9 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
+Al ser verdadero, la cabecera de Fecha será generada automáticamente y enviada en la respuesta si no está presente en las cabeceras. Por defecto es verdadero.
 
-This should only be disabled for testing; HTTP requires the Date header in responses.
+Esto solo debería inhabilitarse para las pruebas; HTTP requiere el encabezado de Fecha en las respuestas.
 
 ### response.setHeader(name, value)
 
@@ -1101,15 +1101,15 @@ added: v0.4.0
 * `name` {string}
 * `value` {any}
 
-Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name. Los valores que no sean strings se almacenarán sin modificación. Therefore, [`response.getHeader()`][] may return non-string values. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
+Establece un único valor de cabecera para cabeceras implícitas. Si esta cabecera ya existe en los envíos de cabeceras pendientes, su valor será reemplazado. Utilice aquí un array de strings para enviar varias cabeceras con el mismo nombre. Los valores que no sean strings se almacenarán sin modificación. Por lo tanto, [`response.getHeader()`][] puede devolver valores que no sean strings. Sin embargo, los valores que no sean strings se convertirán a strings para la transmisión de red.
 
-Example:
+Ejemplo:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-or
+o
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1117,7 +1117,7 @@ response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 
 Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Cuando las cabeceras hayan sido establecidas con [`response.setHeader()`][], serán combinadas con cualquiera de las cabeceras pasadas a [`response.writeHead()`][], con las cabeceras pasadas a [`response.writeHead()`][] dada su precedencia.
 
 ```js
 // returns content-type = text/plain
@@ -1137,11 +1137,11 @@ added: v0.9.12
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.ServerResponse}
+* Devuelve: {http.ServerResponse}
 
-Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Sets the Socket's timeout value to `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
 
-If no `'timeout'` listener is added to the request, the response, or the server, then sockets are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
+Si no se añade ningún listener `'timeout'` a la solicitud, la respuesta, o al servidor, entonces los sockets se destruirán cuando se agote su tiempo de espera. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
 ### response.socket
 
@@ -1151,9 +1151,9 @@ added: v0.3.0
 
 * {net.Socket}
 
-Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
+Referencia al socket subyacente. Generalmente, los usuarios no querrán acceder a esta propiedad. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. El `socket` también puede ser accedido mediante `response.connection`.
 
-Example:
+Ejemplo:
 
 ```js
 const http = require('http');
@@ -1174,13 +1174,13 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Example:
+Ejemplo:
 
 ```js
 response.statusCode = 404;
 ```
 
-After response header was sent to the client, this property indicates the status code which was sent out.
+Después de que la cabecera de respuesta fue enviada al cliente, este propiedad indica el código de estado que fue enviado.
 
 ### response.statusMessage
 
@@ -1190,7 +1190,7 @@ added: v0.11.8
 
 * {string}
 
-When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
+When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. Si esto se deja como `undefined`, entonces el mensaje estándar para el código de estado será utilizado.
 
 Ejemplo:
 
@@ -1198,7 +1198,7 @@ Ejemplo:
 response.statusMessage = 'Not found';
 ```
 
-After response header was sent to the client, this property indicates the status message which was sent out.
+Después de que la cabecera de respuesta fue enviada al cliente, esta propiedad indica el mensaje de estado que fue enviado.
 
 ### response.write(chunk\[, encoding\]\[, callback\])
 
@@ -1207,23 +1207,23 @@ added: v0.1.29
 -->
 
 * `chunk` {string|Buffer}
-* `encoding` {string} **Default:** `'utf8'`
+* `encoding` {string} **Predeterminado:** `'utf8'`
 * `callback` {Function}
-* Returns: {boolean}
+* Devuelve: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
 Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
-Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
+Note that in the `http` module, the response body is omitted when the request is a HEAD request. Asimismo, las respuestas `204` y `304` *no deben* incluir un cuerpo de mensaje.
 
 `chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. `callback` will be called when this chunk of data is flushed.
 
-This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
+Este es el cuerpo crudo de HTTP y no tiene nada qué ver con las codificaciones de cuerpo de partes múltiples y de alto nivel que pueden ser utilizadas.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
 ### response.writeContinue()
 
@@ -1231,7 +1231,7 @@ Returns `true` if the entire data was flushed successfully to the kernel buffer.
 added: v0.3.0
 -->
 
-Sends a HTTP/1.1 100 Continue message to the client, indicating that the request body should be sent. See the [`'checkContinue'`][] event on `Server`.
+Envía un mensaje de HTTP/1.1 100 Continue al cliente, indicando que el cuerpo de solicitud debería ser enviado. Vea el evento [`'checkContinue'`][] en `Server`.
 
 ### response.writeHead(statusCode\[, statusMessage\]\[, headers\])
 
@@ -1249,9 +1249,9 @@ changes:
 * `statusMessage` {string}
 * `headers` {Object}
 
-Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
+Envía una cabecera de respuesta a la solicitud. El código de estado es un código de estado HTTP de 3 dígitos, como `404`. El último argumento, `headers`, son las cabeceras de respuesta. Opcionalmente, uno puede dar un `statusMessage` legible para humanos como el segundo argumento.
 
-Example:
+Ejemplo:
 
 ```js
 const body = 'hello world';
@@ -1260,11 +1260,11 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-This method must only be called once on a message and it must be called before [`response.end()`][] is called.
+Este método debe ser llamado solo una vez en un mensaje, y debe ser llamado antes de que [`response.end()`][] sea llamado.
 
-If [`response.write()`][] or [`response.end()`][] are called before calling this, the implicit/mutable headers will be calculated and call this function.
+Si [`response.write()`][] o [`response.end()`][] son llamados antes de llamar a esto, las cabeceras implícitas/mutables serán calculadas y llamarán a esta función.
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Cuando las cabeceras hayan sido establecidas con [`response.setHeader()`][], serán combinadas con cualquiera de las cabeceras pasadas a [`response.writeHead()`][], con las cabeceras pasadas a [`response.writeHead()`][] dada su procedencia.
 
 ```js
 // returns content-type = text/plain
@@ -1276,7 +1276,7 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-Note that Content-Length is given in bytes not characters. The above example works because the string `'hello world'` contains only single byte characters. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. And Node.js does not check whether Content-Length and the length of the body which has been transmitted are equal or not.
+Tenga en cuenta que la Longitud del Contenido es dado en bytes y no en caracteres. El ejemplo anterior funciona porque la string `'hello world'` solo contiene caracteres de un solo byte. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Y Node.js no verifica si la Longitud del Contenido y la longitud del cuerpo que ha sido transmitido son iguales o no.
 
 Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
@@ -1286,27 +1286,27 @@ Attempting to set a header field name or value that contains invalid characters 
 added: v10.0.0
 -->
 
-Sends a HTTP/1.1 102 Processing message to the client, indicating that the request body should be sent.
+Envía un mensaje de HTTP/1.1 102 Processing al cliente, indicando que el cuerpo de la solicitud debería ser enviado.
 
-## Class: http.IncomingMessage
+## Clase: http.IncomingMessage
 
 <!-- YAML
 added: v0.1.17
 -->
 
-An `IncomingMessage` object is created by [`http.Server`][] or [`http.ClientRequest`][] and passed as the first argument to the [`'request'`][] and [`'response'`][] event respectively. It may be used to access response status, headers and data.
+Un objeto `IncomingMessage` es creado por [`http.Server`][] o [`http.ClientRequest`][] y pasado como el primer argumento al evento [`'request'`][] y [`'response'`][] respectivamente. Puede ser utilizado para acceder a un estado de respuesta, cabeceras y datos.
 
-It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
+Implementa la interfaz del [Stream Legible](stream.html#stream_class_stream_readable), así como los siguiente eventos adicionales, métodos, y propiedades.
 
-### Event: 'aborted'
+### Evento: 'aborted'
 
 <!-- YAML
 added: v0.3.8
 -->
 
-Emitted when the request has been aborted.
+Se emite cuando la solicitud ha sido abortada.
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.4.2
@@ -1342,9 +1342,9 @@ added: v0.1.5
 
 * {Object}
 
-The request/response headers object.
+El objeto de cabeceras de solicitud/respuesta.
 
-Key-value pairs of header names and values. Header names are lower-cased. Example:
+Pares de valores clave de nombres de cabecera y valores. Los nombres de cabecera están en minúsculas. Ejemplo:
 
 ```js
 // Prints something like:
@@ -1355,9 +1355,9 @@ Key-value pairs of header names and values. Header names are lower-cased. Exampl
 console.log(request.headers);
 ```
 
-Duplicates in raw headers are handled in the following ways, depending on the header name:
+Los duplicados en las cabeceras crudas son manejados en las siguientes maneras, dependiendo del nombre de cabecera:
 
-* Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
+* Los duplicados de `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` se descartan.
 * `set-cookie` siempre es una matriz. Los duplicados se añaden a la matriz.
 * Para todos los otros encabezados, los valores se unen con ', '.
 
@@ -1369,7 +1369,7 @@ added: v0.1.1
 
 * {string}
 
-In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Probably either `'1.1'` or `'1.0'`.
+En caso de la solicitud del servidor, la versión HTTP enviada por el cliente. En caso de la respuesta del cliente, la versión HTTP del servidor conectado. Probablemente o `'1.1'` o `'1.0'`.
 
 Además, `message.httpVersionMajor` es el primer entero y `message.httpVersionMinor` es el segundo.
 
@@ -1381,7 +1381,7 @@ added: v0.1.1
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Solo válido para las solicitudes obtenidas desde [`http.Server`][].**
 
 El método de solicitud es una string. Sólo lectura. Ejemplo: `'GET'`, `'DELETE'`.
 
@@ -1393,7 +1393,7 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response headers list exactly as they were received.
+La lista cruda de cabeceras de solicitud/respuesta exactamente como fueron recibidas.
 
 Tenga en cuenta que las llaves y los valores están en la misma lista. *no* es una lista de tuplas. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
@@ -1421,7 +1421,7 @@ added: v0.11.6
 
 * {string[]}
 
-The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
+Las claves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Only populated at the `'end'` event.
 
 ### message.setTimeout(msecs, callback)
 
@@ -1431,9 +1431,9 @@ added: v0.5.9
 
 * `msecs` {number}
 * `callback` {Function}
-* Returns: {http.IncomingMessage}
+* Devuelve: {http.IncomingMessage}
 
-Calls `message.connection.setTimeout(msecs, callback)`.
+Llama a `message.connection.setTimeout(msecs, callback)`.
 
 ### message.socket
 
@@ -1445,7 +1445,7 @@ added: v0.3.0
 
 El objeto de [`net.Socket`][] asociado a la conexión.
 
-With HTTPS support, use [`request.socket.getPeerCertificate()`][] to obtain the client's authentication details.
+Con el soporte HTTPS, utilice [`request.socket.getPeerCertificate()`][] para obtener los detalles de autenticación del cliente.
 
 ### message.statusCode
 
@@ -1457,7 +1457,7 @@ added: v0.1.1
 
 **Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The 3-digit HTTP response status code. Por ejemplo, `404`.
+El código de estado de respuesta de 3 dígitos de HTTP. Por ejemplo, `404`.
 
 ### message.statusMessage
 
@@ -1480,7 +1480,7 @@ added: v0.3.0
 
 * {Object}
 
-The request/response trailers object. Only populated at the `'end'` event.
+El objeto de trailers de solicitud/respuesta. Only populated at the `'end'` event.
 
 ### message.url
 
@@ -1490,9 +1490,9 @@ added: v0.1.90
 
 * {string}
 
-**Only valid for request obtained from [`http.Server`][].**
+**Solo válido para las solicitudes obtenidas desde [`http.Server`][].**
 
-Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
+Solicitar string de URL. Esto solo contiene la URL que está presente en la solicitud HTTP actual. Si la solicitud es:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -1508,7 +1508,7 @@ Entonces `request.url` será:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Ejemplo:
 
 ```txt
 $ node
@@ -1528,7 +1528,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Ejemplo:
 
 ```txt
 $ node
@@ -1582,7 +1582,7 @@ changes:
 
 * `options` {Object} 
   * `IncomingMessage` {http.IncomingMessage} Especifica la clase de `IncomingMessage` que será utilizada. Útil para extender el `IncomingMessage` original. **Predeterminado:** `IncomingMessage`.
-  * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Útil para extender el `ServerResponse` original. **Predeterminado:** `ServerResponse`.
+  * `ServerResponse` {http.ServerResponse} Especifica la clase `ServerResponse` que será utilizada. Útil para extender el `ServerResponse` original. **Predeterminado:** `ServerResponse`.
 
 * `requestListener` {Function}
 
@@ -1671,11 +1671,11 @@ changes:
 -->
 
 * `options` {Object | string | URL} 
-  * `protocol` {string} Protocol to use. **Default:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `'localhost'`.
+  * `protocol` {string} Protocolo a utilizar. **Predeterminado:** `'http:'`.
+  * `host` {string} A domain name or IP address of the server to issue the request to. **Predeterminado:** `'http:'`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
-  * `family` {number} IP address family to use when resolving `host` and `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and v6 will be used.
-  * `port` {number} Port of remote server. **Default:** `80`.
+  * `family` {number} IP address family to use when resolving `host` and `hostname`. Los valores válidos son `4` o `6`. When unspecified, both IP v4 and v6 will be used.
+  * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
   * `localAddress` {string} Local interface to bind for network connections.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
   * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
@@ -1688,19 +1688,19 @@ changes:
     * `false`: causes a new `Agent` with default values to be used.
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
+  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Por defecto es `true`.
 * `callback` {Function}
-* Returns: {http.ClientRequest}
+* Devuelve: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
-`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
 
-`http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
+`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream editable. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Example:
+Ejemplo:
 
 ```js
 const postData = querystring.stringify({

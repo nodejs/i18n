@@ -2481,14 +2481,14 @@ napi_status napi_has_element(napi_env env,
                              bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object to query.
-- `[in] index`: The index of the property whose existence to check.
-- `[out] result`: Whether the property exists on the object or not.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto a consultar.
+- `[in] index`: El índice de la propiedad cuya existencia se va a verificar.
+- `[out] result`: Si la propiedad existe en el objeto o no.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns if the `Object` passed in has an element at the requested index.
+Esta API retorna si el `Object` pasado tiene un elemento en el índice solicitado.
 
 #### napi_delete_element
 
@@ -2503,9 +2503,9 @@ napi_status napi_delete_element(napi_env env,
                                 bool* result);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object to query.
-- `[in] index`: The index of the property to delete.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto a consultar.
+- `[in] index`: El índice de la propiedad a eliminar.
 - `[out] result`: Whether the element deletion succeeded or not. `result` can optionally be ignored by passing `NULL`.
 
 Returns `napi_ok` if the API succeeded.
