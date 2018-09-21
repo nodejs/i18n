@@ -911,10 +911,10 @@ https://github.com/nodejs/node/commit/6e2055889091a424fbb5c500bc3ab9c05d1c28b4
 
 https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 
-* buffer: Add Buffer.isEncoding(enc) to test for valid encoding values (isaacs)
-* Raise UV_ECANCELED on premature close. (Ben Noordhuis)
-* Remove c-ares from libuv, move to a top-level node dependency (Bert Belder)
-* ref/unref for all HandleWraps, timers, servers, and sockets (Timothy J Fontaine)
+* buffer: Añadir Buffer.isEncoding(enc) a prueba para valores de codificación válidos (isaacs)
+* Levantar UV_ECANCELED al darse un cierre prematuro. (Ben Noordhuis)
+* Remover c-ares de libuv, mover a una dependencia de nodo de nivel superior (Bert Belder)
+* ref/unref para todos los HandleWraps, temporizadores, servidores, y sockets (Timothy J Fontaine)
 * addon: remove node-waf, superseded by node-gyp (Ben Noordhuis)
 * child_process: emit error on exec failure (Ben Noordhuis)
 * cluster: do not use internal server API (Andreas Madsen)
