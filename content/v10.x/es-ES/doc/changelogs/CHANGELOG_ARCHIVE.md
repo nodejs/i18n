@@ -1067,11 +1067,11 @@ https://github.com/nodejs/node/commit/c50c33e9397d7a0a8717e8ce7530572907c054ad
   
   * peerDependencies (Domenic Denicola)
   * node-gyp v0.8.2 (Nathan Rajlich)
-  * Faster installs from github user/project shorthands (Nathan Zadoks)
+  * Instalaciones más rápidas desde abreviaturas de usuario/proyecto de github (Nathan Zadoks)
 
-* typed arrays: fix 32 bit size/index overflow (Ben Noordhuis)
+* typed arrays: reparar rebosamiento de tamaño/índice de 32 bits (Ben Noordhuis)
 
-* http: Improve performance of single-packet responses (Ben Noordhuis)
+* http: Mejorar rendimiento de respuestas de paquete único (Ben Noordhuis)
 * install: fix openbsd man page location (Ben Noordhuis)
 * http: bubble up parser errors to ClientRequest (Brian White)
 
