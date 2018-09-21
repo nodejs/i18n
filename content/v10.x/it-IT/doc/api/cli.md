@@ -36,7 +36,7 @@ Alias per stdin, analogo all'uso di - in altre utility della command line, il ch
 added: v6.11.0
 -->
 
-Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indica la fine delle opzioni node. Passa gli argomenti restanti allo script. Se prima di questa opzione non viene fornito nessuno script filename od un eval/print script, l'argomento successivo verrà utilizzato come script filename.
 
 ### `--abort-on-uncaught-exception`
 
