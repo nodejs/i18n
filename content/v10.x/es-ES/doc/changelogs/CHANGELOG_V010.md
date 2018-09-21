@@ -245,9 +245,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 ## 2015-12-04, Versión 0.10.41 (Mantenimiento), @rvagg
 
-Security Update
+Actualización de Seguridad
 
-### Notable changes
+### Cambios notables
 
 * build: Añadido soporte para Microsoft Visual Studio 2015
 * npm: Actualizado a v1.4.29 de v1.4.28. Un lanzamiento de una sola ocasión como parte de la estrategia para obtener una versión de npm en Node.js v0.10.x que funcione con el registro actual (https://github.com/nodejs/LTS/issues/37). Esta versión de npm imprime un banner cada vez que se ejecute. El banner advierte que la siguiente lanzamiento estándar de Node.js v0.10.x va tener una versión npm v2.
@@ -261,13 +261,13 @@ Security Update
 * [c88a0b26da] - build: manifiesto de actualización incluirá Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2838
 * [8564a9f5f7] - build: detección de versión gcc en openSUSE Tumbleweed (Henrique Aparecido Lavezzo) https://github.com/nodejs/node-v0.x-archive/pull/25671
 * [9c7bd6de56] - build: run-ci makefile rule (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [ffa1e1f31d] - build: support flaky tests in test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [ffa1e1f31d] - build: soporta pruebas flaky test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [100dd19e61] - build: suporta Jenkins a través de test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [ec861f6f90] - build: hace el proceso de liberación más fácil para multi usuarios for multi users (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25638
 * [d7ae79a452] - build,win: repara la versión de recurso node.exe (João Reis) https://github.com/nodejs/node/pull/3053
-* [6ac47aa9f5] - build,win: try next MSVS version on failure (João Reis) https://github.com/nodejs/node/pull/2910
+* [6ac47aa9f5] - build,win: al fallar prueba la versión MSVS (João Reis) https://github.com/nodejs/node/pull/2910
 * [e669b27740] - crypto: reemplaza rwlocks con mutexes simples (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
-* [ce0a48826e] - deps: upgrade to openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4132
+* [ce0a48826e] - deps: actualiza openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4132
 * [b68781e500] - deps: upgrade npm to 1.4.29 (Forrest L Norvell) https://github.com/nodejs/node/pull/3639
 * [7cf0d9c1d9] - deps: fix openssl for MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node-v0.x-archive/pull/25857
 * [9ee8a14f9e] - deps: fix gyp to work on MacOSX without XCode (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25857
