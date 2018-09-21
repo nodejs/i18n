@@ -781,15 +781,15 @@ El sistema heredado `urlObject` (`require('url').Url`) es creado y devuelto por 
 
 #### urlObject.auth
 
-La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede el componente del `host`, delimitado por un "arroba" ASCII (`@`). The format of the string is `{username}[:{password}]`, with the `[:{password}]` portion being optional.
+La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede el componente del `host`, delimitado por un "arroba" ASCII (`@`). El formato de la string es `{username}[:{password}]`, con la porción `[:{password}]` siendo opcional.
 
-For example: `'user:pass'`.
+Por ejemplo: `'user:pass'`.
 
 #### urlObject.hash
 
-The `hash` property consists of the "fragment" portion of the URL including the leading ASCII hash (`#`) character.
+La propiedad `hash` consiste en la porción "fragmento" de la URL que incluye el carácter hash ASCII principal (`#`).
 
-For example: `'#hash'`.
+Por ejemplo: `'#hash'`.
 
 #### urlObject.host
 
