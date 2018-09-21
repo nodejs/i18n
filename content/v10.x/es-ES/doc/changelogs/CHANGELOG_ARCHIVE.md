@@ -896,18 +896,18 @@ https://github.com/nodejs/node/commit/6e2055889091a424fbb5c500bc3ab9c05d1c28b4
 * tls, https: validar por defecto el certificado del servidor (Ben Noordhuis)
 * tls, https: arrojar excepción ante clave/certificado faltante (Ben Noordhuis)
 * tls: almacenamiento de sesión asincrónico (Fedor Indutny)
-* installer: don't install header files (Ben Noordhuis)
-* buffer: implement Buffer.prototype.toJSON() (Nathan Rajlich)
-* buffer: added support for writing NaN and Infinity (koichik)
-* http: make http.ServerResponse emit 'end' (Ben Noordhuis)
-* build: ./configure --ninja (Ben Noordhuis, Timothy J Fontaine)
-* installer: fix --without-npm (Ben Noordhuis)
-* cli: make -p equivalent to -pe (Ben Noordhuis)
-* url: Go much faster by using Url class (isaacs)
+* installer: no instalar archivos de cabeceras (Ben Noordhuis)
+* buffer: implementar Buffer.prototype.toJSON() (Nathan Rajlich)
+* buffer: añadir soporte para escritura de NaN e Infinity (koichik)
+* http: hacer que http.ServerResponse emita "end" (Ben Noordhuis)
+* build: /configure --ninja (Ben Noordhuis, Timothy J Fontaine)
+* installer: reparar --without-npm (Ben Noordhuis)
+* cli: hacer un equivalente -p para -pe (Ben Noordhuis)
+* url: Ir mucho más rápido usando clase Url (isaacs)
 
 <a id="0.9.1"></a>
 
-## 2012.08.28, Version 0.9.1 (Unstable)
+## 2012.08.28, Versión 0.9.1 (Inestable)
 
 https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 
