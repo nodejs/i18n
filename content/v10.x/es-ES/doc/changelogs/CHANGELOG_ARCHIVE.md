@@ -954,30 +954,30 @@ https://github.com/nodejs/node/commit/f9b237f478c372fd55e4590d7399dcd8f25f3603
 * dns: ignorar servidores rogue de DNS reportados por windows (Saúl Ibarra Corretgé)
 * unix: acelerar a uv_async_send() (Ben Noordhuis)
 * darwin: obtener correctamente modelo de cpu en mac (Xidorn Quan)
-* nextTick: Handle tick callbacks before any other I/O (isaacs)
-* Enable color customization of `util.inspect` (Pavel Lang)
-* tls: Speed and memory improvements (Fedor Indutny)
-* readline: Use one history item for reentered line (Vladimir Beloborodov)
-* Fix [#3521](https://github.com/joyent/node/issues/3521) Make process.env more like a regular Object (isaacs)
+* nextTixk: Manejar tick callbacks antes que a otras I/O (isaacs)
+* Habilitar personalización de color de `util.inspect` (Pavel Lang)
+* tls: Mejoras de velocidad y memoria (Fedor Indutny)
+* readline: Utilizar un solo ítem de historia para línea reintegrada (Vladimir Beloborodov)
+* Reparar [#3521](https://github.com/joyent/node/issues/3521) Hacer que process.env sea más como un Objeto regular (isaacs)
 
 <a id="0.8.25"></a>
 
-## 2013.06.13, Version 0.8.25 (maintenance)
+## 2013.06.13, Versión 0.8.25 (mantenimiento)
 
 https://github.com/nodejs/node/commit/0b9bdb2bc7e1c872f0ea4713517fda22a4b0b202
 
-* npm: Upgrade to 1.2.30
-* child_process: fix handle delivery (Ben Noordhuis)
+* npm: Actualizar a 1.2.30
+* child_process: reparar entrega de handles (Ben Noordhuis)
 
 <a id="0.8.24"></a>
 
-## 2013.06.04, Version 0.8.24 (maintenance)
+## 2013.06.04, Versión 0.8.24 (mantenimiento)
 
 https://github.com/nodejs/node/commit/c1a1ab067721ea17ef7b05ec5c68b01321017f05
 
-* npm: Upgrade to v1.2.24
-* url: Properly parse certain oddly formed urls (isaacs)
-* http: Don't try to destroy nonexistent sockets (isaacs)
+* npm: Actualizar a v1.2.24
+* utl: Analizar correctamente a ciertas urls formadas de manera extraña (isaacs)
+* http: No intentar destruir sockets inexistentes (isaacs)
 * handle_wrap: fix NULL pointer dereference (Ben Noordhuis)
 
 <a id="0.8.23"></a>
