@@ -198,9 +198,9 @@ Di default, quando Node.js carica un modulo da un percorso che è collegato simb
      └── package.json
 ```
 
-The `--preserve-symlinks` command line flag instructs Node.js to use the symlink path for modules as opposed to the real path, allowing symbolically linked peer dependencies to be found.
+Il flag `--preserve-symlinks` della command line indica a Node.js di utilizzare per i moduli, al posto del percorso reale (real path), il percorso del collegamento simbolico (symlink path), permettendo di trovare le dipendenze peer collegate simbolicamente.
 
-Note, however, that using `--preserve-symlinks` can have other side effects. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
+Da notare, tuttavia, che l'utilizzo di `--preserve-symlinks` può avere altri effetti collaterali. In particolare, i moduli *nativi* collegati simbolicamente non si caricano se collegati da più di una posizione nel dependency tree (Node.js li vedrebbe come due moduli separati e tenterebbe di caricare il modulo più volte, causando l'avvio di un'exception).
 
 ### `--prof-process`
 
