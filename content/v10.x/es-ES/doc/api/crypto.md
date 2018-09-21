@@ -1563,7 +1563,7 @@ Proporciona una implementación asincrónica de la función 2 (PBKDF2) de deriva
 
 La función `callback` es llamada con dos argumentos: `err` y `derivedKey`. Si un error ocurre mientras se deriva la clave, `err` se configurará; de lo contrario `err` será `null`. Por defecto, la `derivedKey` generada exitosamente se pasará a la devolución de llamada como un [`Buffer`][]. Va a ocurrir un error si ninguno de los argumentos de entrada especifica valores o tipos inválidos.
 
-El argumento `iterations` debe ser un número establecido lo más alto posible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento `iterations` debe ser un número establecido lo más alto posible. Mientras más alto sea el número de iteraciones, más segura será la clave derivada, pero tomará mucho más tiempo para completarse.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
