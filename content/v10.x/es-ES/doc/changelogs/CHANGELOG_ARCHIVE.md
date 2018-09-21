@@ -990,28 +990,28 @@ https://github.com/nodejs/node/commit/c67f8d0500fe15637a623eb759d2ad7eb9fb3b0b
 * http: Evitar advertencia EE en manejo de ECONNREFUSED (isaacs)
 * tls: Volver a habilitar revisión de CN-ID en verificación de certificados (Tobías Müllerleile)
 * child_process: reparar envío de utf-8 a proceso secundario (Ben Noordhuis)
-* crypto: check key type in GetPeerCertificate() (Ben Noordhuis)
-* win/openssl: mark assembled object files as seh safe (Bert Belder)
-* windows/msi: fix msi build issue with WiX 3.7/3.8 (Raymond Feng)
+* cypto: revisar tipo de clave en GetPeerCertificate() (Ben Noordhuis)
+* win/openssl: marcar archivos de objetos ensamblados como seguros por seh (Bert Belder)
+* windows/msi: reparar problema del build msi con WiX 3.7/3.8 (Raymond Feng)
 
 <a id="0.8.22"></a>
 
-## 2013.03.07, Version 0.8.22 (Stable)
+## 2013.03.07, Versión 0.8.22 (Estable)
 
 https://github.com/nodejs/node/commit/67a4cb4fe8c2346e30ffb83f7178e205cc2dab33
 
-* npm: Update to 1.2.14
-* cluster: propagate bind errors (Ben Noordhuis)
-* crypto: don't assert when calling Cipher#final() twice (Ben Noordhuis)
-* build, windows: disable SEH (Ben Noordhuis)
+* npm: Actualizar a 1.2.14
+* cluster: propagar errores de enlace (Ben Noordhuis)
+* crypto: no hacer aserción al llamar a Cipher#final() dos veces (Ben Noordhuis)
+* build, windows: deshabilitar SEH (Ben Noordhuis)
 
 <a id="0.8.21"></a>
 
-## 2013.02.25, Version 0.8.21 (Stable)
+## 2013.02.25, Versión 0.8.21 (Estable)
 
 https://github.com/nodejs/node/commit/530d8c05d4c546146f18e5ba811d7eb3b7b7c0c5
 
-* http: Do not free the wrong parser on socket close (isaacs)
+* http: No liberar al analizador equivocado ante el cierre de un socket (isaacs)
 * http: Handle hangup writes more gently (isaacs)
 * zlib: fix assert on bad input (Ben Noordhuis)
 * test: add TAP output to the test runner (Timothy J Fontaine)
