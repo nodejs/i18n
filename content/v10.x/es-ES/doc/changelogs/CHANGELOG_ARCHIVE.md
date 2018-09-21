@@ -1098,17 +1098,17 @@ https://github.com/nodejs/node/commit/fdf91afb494a7a2fff2913d817f589c191a2c88f
 * windows: mapear WSAESHUTDOWN a UV_EPIPE (Ben Noordhuis)
 * windows: mapear ERROR_GEN_FAILURE a UV_EIO (Bert Belder)
 * unix: no establecer ambiente a menos que uno sea provisto (Charlie McConell)
-* domains: don't crash if domain is set to null (Bert Belder)
-* windows: fix the x64 debug build (Bert Belder)
-* net, tls: fix connect() resource leak (Ben Noordhuis)
+* domains: no colapsar si el dominio está establecido como nulo (Bert Belder)
+* windows: reparar el build del depurador x64 (Bert Belder)
+* net, tls: reparar fuga de recursos de connect() (Ben Noordhuis)
 
 <a id="0.8.14"></a>
 
-## 2012.10.25, Version 0.8.14 (Stable)
+## 2012.10.25, Versión 0.8.14 (Estable)
 
 https://github.com/nodejs/node/commit/b00527fcf05c3d9f
 
-* events: Don't clobber pre-existing _events obj in EE ctor (isaacs)
+* events: No sobrescribir objeto de _events preexistente en ctor de EE (isaacs)
 
 <a id="0.8.13"></a>
 
