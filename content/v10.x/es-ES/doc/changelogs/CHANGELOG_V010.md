@@ -146,7 +146,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Commits:
 
 * [3374f57973] - deps: actualizar libuv a 0.10.37 (Saúl Ibarra Corretgé) https://github.com/nodejs/node/pull/7293
-* [fcb9145e29] - deps: backport 3a9bfec from v8 upstream (Myles Borins) https://github.com/nodejs/node-private/pull/43
+* [fcb9145e29] - deps: hace backport a 3a9bfec desde un upstream v8 (Myles Borins) https://github.com/nodejs/node-private/pull/43
 
 <a id="0.10.45"></a>
 
@@ -181,8 +181,8 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Commits
 
-* [feceb77d7e] - deps: upgrade npm in LTS to 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5968
-* [0847954331] - deps: Disable EXPORT and LOW ciphers in openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* [feceb77d7e] - deps: actualiza npm en el LTS a 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5968
+* [0847954331] - deps: Deshabilita los cifradores EXPORT y LOW en openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 * [6bb86e727a] - test: change tls tests not to use LOW cipher (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 * [905bec29ad] - win,build: support Visual C++ Build Tools 2015 (João Reis) https://github.com/nodejs/node/pull/5627
 
