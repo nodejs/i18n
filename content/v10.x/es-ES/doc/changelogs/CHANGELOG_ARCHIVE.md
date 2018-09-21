@@ -871,24 +871,24 @@ https://github.com/nodejs/node/commit/1ed4c6776e4f52956918b70565502e0f8869829d
 * windows: usar USERPROFILE para obtener el directorio home del usuario (Bert Belder)
 * path: añadir delimitador de ruta de plataforma específica (Paul Serby)
 * http: añadir propiedad response.headersSent (Pavel Lang)
-* child_process: make .fork()'d child auto-exit (Ben Noordhuis)
-* events: add 'removeListener' event (Ben Noordhuis)
-* string_decoder: Add 'end' method, do base64 properly (isaacs)
-* buffer: include encoding value in exception when invalid (Ricky Ng-Adam)
-* http: make http.ServerResponse no longer emit 'end' (isaacs)
-* streams: fix pipe is destructed by 'end' from destination (koichik)
+* child_process: hacer que .fork()'d realice una salida automática (Ben Noordhuis)
+* events: añadir evento "removeListener" (Ben Noordhuis)
+* string_decoder: Añadir método "end", hacer correctamente base64 (isaacs)
+* buffer: incluir valor de codificación en excepción cuando sea inválido (Rick Ng-Adam)
+* http: hacer que http.ServerResponse ya no emita "end" (isaacs)
+* streams: reparar destrucción de pipe por "end" desde el destino (koichik)
 
 <a id="0.9.2"></a>
 
-## 2012.09.17, Version 0.9.2 (Unstable)
+## 2012.09.17, Versión 0.9.2 (Inestable)
 
 https://github.com/nodejs/node/commit/6e2055889091a424fbb5c500bc3ab9c05d1c28b4
 
-* http_parser: upgrade to ad3b631
-* openssl: upgrade 1.0.1c
-* darwin: use FSEvents to watch directory changes (Fedor Indutny)
-* unix: support missing API on NetBSD (Shigeki Ohtsu)
-* unix: fix EMFILE busy loop (Ben Noordhuis)
+* http_parser: actualizar a ad3b631
+* openssl: actualizar 1.0.1c
+* darwin: usar FSEvents para monitorear cambios de directorio (Fedor Indutny)
+* unix: soportar API faltante en NetBSD (Shigeki Ohtsu)
+* unix: reparar la espera activa de EMFILE (Ben Noordhuis)
 * windows: un-break writable tty handles (Bert Belder)
 * windows: map WSAESHUTDOWN to UV_EPIPE (Bert Belder)
 * windows: make spawn with custom environment work again (Bert Belder)
