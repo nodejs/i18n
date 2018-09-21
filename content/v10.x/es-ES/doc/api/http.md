@@ -645,7 +645,7 @@ added: v0.1.29
 * `callback` {Function}
 * Devuelve: {boolean}
 
-Envía una parte del cuerpo. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Envía una parte del cuerpo. Al llamar a este método varias veces, un cuerpo de solicitud puede ser enviado a un servidor — en ese caso se sugiere utilizar la línea de cabecera `['Transfer-Encoding', 'chunked']` al crear la respuesta.
 
 El argumento `encoding` es opcional y solo aplica cuando `chunk` es una string. Por defecto es `'utf8'`.
 
@@ -672,7 +672,7 @@ added: v0.3.0
 
 Se emite cada vez que se recibe una solicitud con un HTTP `Expect: 100-continue` . Si este evento no se escucha, el servidor automáticamente responderá con un `100 Continue` según corresponda.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debería continuar a enviar el cuerpo de la solicitud, o a generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
 
 Tenga en cuenta que cuando este evento se emite y se maneja, el evento [`'request'`][] no se emitirá.
 
@@ -755,7 +755,7 @@ added: v0.7.0
 
 Se emite cada vez que un cliente solicita un método de HTTP `CONNECT` . Si este evento no se escucha, entonces a los clientes que soliciten un método `CONNECT` se les cerrarán sus conexiones.
 
-After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
+Luego de que este evento es emitido, el socket de la solicitud no tendrá un listener de evento `'data'`, lo que significa que necesitará estar enlazado para manejar los datos enviados al servidor en ese socket.
 
 ### Evento: 'connection'
 
@@ -798,7 +798,7 @@ changes:
 
 Se emite cada vez que un cliente solicita una mejora HTTP. Escuchar a este evento es opcional, y los clientes no pueden insistir en un cambio de protocolo.
 
-After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
+Luego de que este evento es emitido, el socket de la solicitud no tendrá un listener de evento `'data'`, lo que significa que necesitará estar enlazado para manejar los datos enviados al servidor en ese socket.
 
 ### server.close([callback])
 
@@ -1215,7 +1215,7 @@ If this method is called and [`response.writeHead()`][] has not been called, it 
 
 Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
-Note that in the `http` module, the response body is omitted when the request is a HEAD request. Asimismo, las respuestas `204` y `304` *no deben* incluir un cuerpo de mensaje.
+Tenga en cuenta que en el módulo `http`, el cuerpo de respuesta se omite cuando la solicitud es una solicitud HEAD. Asimismo, las respuestas `204` y `304` *no deben* incluir un cuerpo de mensaje.
 
 `chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. `callback` will be called when this chunk of data is flushed.
 
@@ -1276,7 +1276,7 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-Tenga en cuenta que la Longitud del Contenido es dado en bytes y no en caracteres. El ejemplo anterior funciona porque la string `'hello world'` solo contiene caracteres de un solo byte. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Y Node.js no verifica si la Longitud del Contenido y la longitud del cuerpo que ha sido transmitido son iguales o no.
+Tenga en cuenta que la Longitud del Contenido es dado en bytes y no en caracteres. El ejemplo anterior funciona porque la string `'hello world'` solo contiene caracteres de un solo byte. Si el cuerpo contiene caracteres altamente codificados, entonces `Buffer.byteLength()` debería ser utilizado para determinar el número de bytes en una codificación dada. Y Node.js no verifica si la Longitud del Contenido y la longitud del cuerpo que ha sido transmitido son iguales o no.
 
 Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
