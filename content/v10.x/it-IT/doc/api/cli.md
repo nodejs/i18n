@@ -44,9 +44,9 @@ Indica la fine delle opzioni node. Passa gli argomenti restanti allo script. Se 
 added: v0.10
 -->
 
-Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
+L'arresto, rispetto alla chiusura, genera un core file per l'analisi post-mortem mediante un debugger (come ad esempio `lldb`, `gdb`, e `mdb`).
 
-If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
+Se viene passato questo flag, si può ancora impostare il comportamento in modo da non eseguire l'arresto tramite [`process.setUncaughtExceptionCaptureCallback()`][] (e attraverso l'uso del modulo `domain` che lo utilizza).
 
 ### `--enable-fips`
 
