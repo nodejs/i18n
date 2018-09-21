@@ -978,18 +978,18 @@ https://github.com/nodejs/node/commit/c1a1ab067721ea17ef7b05ec5c68b01321017f05
 * npm: Actualizar a v1.2.24
 * utl: Analizar correctamente a ciertas urls formadas de manera extraña (isaacs)
 * http: No intentar destruir sockets inexistentes (isaacs)
-* handle_wrap: fix NULL pointer dereference (Ben Noordhuis)
+* handle_wrap: reparar puntero de desreferencia NULO (Ben Noordhuis)
 
 <a id="0.8.23"></a>
 
-## 2013.04.09, Version 0.8.23 (maintenance)
+## 2013.04.09, Versión 0.8.23 (mantenimiento)
 
 https://github.com/nodejs/node/commit/c67f8d0500fe15637a623eb759d2ad7eb9fb3b0b
 
-* npm: Upgrade to v1.2.18
-* http: Avoid EE warning on ECONNREFUSED handling (isaacs)
-* tls: Re-enable check of CN-ID in cert verification (Tobias Müllerleile)
-* child_process: fix sending utf-8 to child process (Ben Noordhuis)
+* npm: Actualizar a v1.2.18
+* http: Evitar advertencia EE en manejo de ECONNREFUSED (isaacs)
+* tls: Volver a habilitar revisión de CN-ID en verificación de certificados (Tobías Müllerleile)
+* child_process: reparar envío de utf-8 a proceso secundario (Ben Noordhuis)
 * crypto: check key type in GetPeerCertificate() (Ben Noordhuis)
 * win/openssl: mark assembled object files as seh safe (Bert Belder)
 * windows/msi: fix msi build issue with WiX 3.7/3.8 (Raymond Feng)
