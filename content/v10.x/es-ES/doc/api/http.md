@@ -651,7 +651,7 @@ El argumento `encoding` es opcional y solo aplica cuando `chunk` es una string. 
 
 The `callback` argument is optional and will be called when this chunk of data is flushed.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
+Devuelve `true` si todos los datos fueron vaciados con éxito hacia el búfer del núcleo. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
 ## Clase: http.Server
 
@@ -1221,7 +1221,7 @@ Tenga en cuenta que en el módulo `http`, el cuerpo de respuesta se omite cuando
 
 Este es el cuerpo crudo de HTTP y no tiene nada qué ver con las codificaciones de cuerpo de partes múltiples y de alto nivel que pueden ser utilizadas.
 
-The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
+The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. Es decir, la respuesta se almacena hasta el primer fragmento del cuerpo.
 
 Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
