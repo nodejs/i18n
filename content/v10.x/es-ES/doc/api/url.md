@@ -898,18 +898,18 @@ El proceso de formateo funciona de la siguiente forma:
 * De lo contrario, si `urlObject.protocol` no es `undefined` y no es una string, se produce un [`Error`][].
 * Para todos los valores de string de `urlObject.protocol` que *no terminan* con un carácter ASCII de dos puntos (`:`), la string literal `:` será adjuntada a `result`.
 * Si cualquiera de las siguientes condiciones son ciertas, entonces el string literal `//` será adjuntado a `result`: * La propiedad `urlObject.slashes` es cierta; * `urlObject.protocol` comienza con `http`, `https`, `ftp`, `gopher`, o `file`;
-* Si el valor de la propiedad `urlObject.auth` es cierto, y ya sea `urlObject.host` o `urlObject.hostname` no son `undefined`, el valor de `urlObject.auth` será forzado a una string y adjuntado a `result`, seguido de la string literal `@`.
+* Si el valor de la propiedad `urlObject.auth` es verdadero, y ya sea `urlObject.host` o `urlObject.hostname` no son `undefined`, el valor de `urlObject.auth` será forzado a una string y adjuntado a `result`, seguido de la string literal `@`.
 * Si la propiedad `urlObject.host` es `undefined`, entonces: 
   * Si `urlObject.hostname` es una string, es adjuntada a `result`.
   * De lo contrario, si `urlObject.hostname` no es `undefined` y no es una string, se produce un [`Error`][].
-  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`: 
-    * The literal string `:` is appended to `result`, and
-    * The value of `urlObject.port` is coerced to a string and appended to `result`.
-* Otherwise, if the `urlObject.host` property value is truthy, the value of `urlObject.host` is coerced to a string and appended to `result`.
-* If the `urlObject.pathname` property is a string that is not an empty string: 
-  * If the `urlObject.pathname` *does not start* with an ASCII forward slash (`/`), then the literal string `'/'` is appended to `result`.
-  * The value of `urlObject.pathname` is appended to `result`.
-* Otherwise, if `urlObject.pathname` is not `undefined` and is not a string, an [`Error`][] is thrown.
+  * Si el valor de la propiedad `urlObject.port` es verdadero, y `urlObject.hostname` no es `undefined`: 
+    * La string literal `:` es adjuntada a `:`, y
+    * El valor de `urlObject.port` es forzado a una string y adjuntado a `result`.
+* De lo contrario, si el valor de la propiedad `urlObject.host` es verdadero, el valor de `urlObject.host` es forzado a una string y adjuntado a `result`.
+* Si la propiedad `urlObject.pathname` es una string que no es una string vacía: 
+  * Si `urlObject.pathname` *no comienza* con una barra oblicua ASCII (`/`), entonces la string literal `'/'` es adjuntada a `result`.
+  * El valor de `urlObject.pathname` es adjuntado a `result`.
+* De lo contrario, si `urlObject.pathname` no es `undefined` y no es una string, se produce un [`Error`][].
 * If the `urlObject.search` property is `undefined` and if the `urlObject.query` property is an `Object`, the literal string `?` is appended to `result` followed by the output of calling the [`querystring`][] module's `stringify()` method passing the value of `urlObject.query`.
 * Otherwise, if `urlObject.search` is a string: 
   * If the value of `urlObject.search` *does not start* with the ASCII question mark (`?`) character, the literal string `?` is appended to `result`.
