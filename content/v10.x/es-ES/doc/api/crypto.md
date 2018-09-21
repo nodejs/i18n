@@ -1514,7 +1514,7 @@ console.log(aliceSecret === bobSecret);
 added: v10.0.0
 -->
 
-- Returns: {boolean} `true` if and only if a FIPS compliant crypto provider is currently in use.
+- Devuelve: {boolean} `true` si y sólo si un proveedor de criptografía compatible con FIPS se encuentra actualmente en uso.
 
 ### crypto.getHashes()
 
@@ -1522,7 +1522,7 @@ added: v10.0.0
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
+- Devuelve: {string[]} Una matriz de los nombres de los algoritmos hash compatibles, como `'RSA-SHA256'`.
 
 Ejemplo:
 
@@ -1559,7 +1559,7 @@ changes:
   - `err` {Error}
   - `derivedKey` {Buffer}
 
-Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Proporciona una implementación asincrónica de la función 2 (PBKDF2) de derivación de clave basada en contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
 The supplied `callback` function is called with two arguments: `err` and `derivedKey`. If an error occurs while deriving the key, `err` will be set; otherwise `err` will be `null`. By default, the successfully generated `derivedKey` will be passed to the callback as a [`Buffer`][]. An error will be thrown if any of the input arguments specify invalid values or types.
 
