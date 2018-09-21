@@ -754,11 +754,11 @@ added: v7.6.0
   * `unicode` {boolean} Es `true` si los caracteres Unicode que aparecen en el componente del host de la URL deben ser codificados directamente, en lugar de ser codificados como Punycode. **Predeterminado:** `false`.
 * Devuelve: {string}
 
-Returns a customizable serialization of a URL `String` representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
+Devuelve una serialización personalizable de una representación `String` URL de un objeto [WHATWG URL](#url_the_whatwg_url_api).
 
-The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
+El objeto URL tiene tanto un método `toString()` como una propiedad `href` que devuelven serializaciones de string de la URL. Sin embargo, estas no son personalizables de ninguna forma. El método `url.format(URL[, options])` permite la personalización básica del output.
 
-For example:
+Por ejemplo:
 
 ```js
 const myURL = new URL('https://a:b@你好你好?abc#foo');
