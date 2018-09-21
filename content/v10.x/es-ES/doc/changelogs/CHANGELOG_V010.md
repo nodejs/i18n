@@ -177,7 +177,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Cambios notables
 
 * npm: Actualizar a v2.15.1. Corrige una falla de seguridad en el uso de tokens de autenticación en solicitudes HTTP que permitirían a un atacante configurar un servidor que pudiera recoger todos los tokens de los usuarios de la interfaz de línea-comando. Los tokens de autenticación han sido enviados con cada solicitud hecha por el CLI para los usuarios logueados, sin importar el destino de la solicitud. Esta actualización repara esto al incluir solamente esos tokens para las solicitudes hechas contra el registro o los registros usados para la instalación actual. IMPORTANTE: Esta es una actualización importante para npm v2 LTS del npm v1 anterior ya obsoleto. (Forrest L Norvell) https://github.com/nodejs/node/pull/5967
-* openssl: OpenSSL v1.0.1s disables the EXPORT and LOW ciphers as they are obsolete and not considered safe. This release of Node.js turns on `OPENSSL_NO_WEAK_SSL_CIPHERS` to fully disable the 27 ciphers included in these lists which can be used in SSLv3 and higher. Full details can be found in our LTS discussion on the matter (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* openssl: OpenSSL v1.0.1s deshabilita los cifrados EXPORT y LOW ya que son obsoletos y no se conseideran seguros. Esta versión de Node.js activa `OPENSSL_NO_WEAK_SSL_CIPHERS` para desactivar completamente los 27 cifradores incluidos en estas listas que pueden ser usados en SSLv3 y superiores. Los detalles completos sobre el asunto pueden ser encontrados en nuestra discusión LTS (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 
 ### Commits
 
@@ -192,20 +192,20 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Notable changes:
 
-* http_parser: Update to http-parser 1.2 to fix an unintentionally strict limitation of allowable header characters. (James M Snell) https://github.com/nodejs/node/pull/5242
-* domains: 
-  * Prevent an exit due to an exception being thrown rather than emitting an `'uncaughtException'` event on the `process` object when no error handler is set on the domain within which an error is thrown and an `'uncaughtException'` event listener is set on `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
-  * Fix an issue where the process would not abort in the proper function call if an error is thrown within a domain with no error handler and `--abort-on-uncaught-exception` is used. (Julien Gilli) https://github.com/nodejs/node/pull/3887
-* openssl: Upgrade from 1.0.1r to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508 
-  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0705
-  * Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are *unlikely* to be possible. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0797
-  * Fix a defect that makes the CacheBleed Attack (https://ssrg.nicta.com.au/projects/TS/cachebleed/) possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0702
-  * Remove SSLv2 support, the `--enable-ssl2` command line argument will now produce an error. The DROWN Attack (https://drownattack.com/) creates a vulnerability where SSLv2 is enabled by a server, even if a client connection is not using SSLv2. The SSLv2 protocol is widely considered unacceptably broken and should not be supported. More information is available at https://www.openssl.org/news/vulnerabilities.html#2016-0800
+* http_parser: Actualizar a http-parser 1.2 para reparar una limitación estricta no intencional de caracteres de encabezado permitidos. (James M Snell) https://github.com/nodejs/node/pull/5242
+* dominio: 
+  * Previene una salida debido a que se arroja una excepción en vez de emitir un evento `'uncaughtException'` en el objeto `process` cuando ningún manejador de errores es establecido en el dominio donde se arroja un error, y un listener del evento `'uncaughtException'` es establecido en `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
+  * Repara un problema donde el proceso no abortaría en la llamada de función adecuada si un error es arrojado dentro del dominio sin un manejador de errores y es usado`--abort-on-uncaught-exception`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
+* openssl: Actualizar de 1.0.1r a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508 
+  * Repara un defecto doble-libre en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para los ataques DoS o de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque práctico y es por lo tanto considerado como una severidad baja para usuarios de Node.js. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0705
+  * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` y `BN_dec2bn()`. Se cree que Node.js no está invocando las rutas de código que usan estas funciones para que los ataques prácticos a través de Node.js usando este defecto son *poco probables* que sean posibles. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0797
+  * Repara un defecto que hace que el ataque CacheBleed (https://ssrg.nicta.com.au/projects/TS/cachebleed/) posible. Este defecto permite a los atacantes ejecutar ataques de canales laterales conduciendo a la recuperación potencial de todas las claves privadas RSA. Solo afecta a la microarquitectura de los Sandy Bridge de Intel (y los más viejos posiblemente) cuando se use hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0702
+  * Elimina el soporte SSLv2, el argumento de la línea de comando `--enable-ssl2` ahora producirá un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad donde SSLv2 es habilitado por un servidor, incluso si una conexión al cliente no está usando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente roto y no debería ser soportado. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
 
 ### Commits:
 
-* [164157abbb] - build: update Node.js logo on OSX installer (Rod Vagg) https://github.com/nodejs/node/pull/5401
-* [f8cb0dcf67] - crypto,tls: remove SSLv2 support (Ben Noordhuis) https://github.com/nodejs/node/pull/5529
+* [164157abbb] - build: actualizar el logo de Node.js logo en el instalador de OSX (Rod Vagg) https://github.com/nodejs/node/pull/5401
+* [f8cb0dcf67] - crypto,tls: quitar el soporte a SSLv2 (Ben Noordhuis) https://github.com/nodejs/node/pull/5529
 * [42ded2a590] - deps: upgrade openssl to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
 * [1e45a6111c] - deps: update http-parser to version 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
 * [6db377b2f4] - doc: remove SSLv2 descriptions (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
@@ -216,23 +216,23 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-02-09, Version 0.10.42 (Maintenance), @jasnell
 
-This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para detalles de vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios notables
 
-* http: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
-* http-parser: upgrade from 1.0 to 1.1
-* openssl: upgrade from 1.0.1q to 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
+* http: reparar los defectos en el análisis del encabezado HTTP para solicitudes y respuestas que pueden permitir el pedido a contrabandear (CVE-2016-2086) divisor de respuestas (CVE-2016-2216). El análisis de encabezado HTTP ahora se alinea más de cerca con la especificación HTTP incluyendo la restricción de caracteres aceptables.
+* http-parser: actualizar de 1.0 a 1.1
+* openssl: actualizar de 1.0.1q a 1.0.1r. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
 * src: 
-  * introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
-  * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
+  * introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
+  * permite la reparación para CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
 * build: 
-  * xz compressed tar files will be made available from nodejs.org for v0.10 builds from v0.10.42 onward
-  * A headers.tar.gz file will be made available from nodejs.org for v0.10 builds from v0.10.42 onward, a future change to node-gyp will be required to make use of these
+  * archivos tar comprimidos xz serán hechos disponibles desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante
+  * Un archivo headers.tar.gz será hecho disponible desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante, un cambio futuro a node-gyp será requerido para hacer uso de este
 
 ### Commits
 
-* [fdc332183e] - build: enable xz compressed tarballs where possible (Rod Vagg) https://github.com/nodejs/node/pull/4894
+* [fdc332183e] - build: habilita tarballs comprimidos en xz donde sea posible (Rod Vagg) https://github.com/nodejs/node/pull/4894
 * [2d35b421b5] - deps: upgrade openssl sources to 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
 * [b31c0f3ea4] - deps: update http-parser to version 1.1 (James M Snell)
 * [616ec1d6b0] - doc: clarify v0.10.41 openssl tls security impact (Rod Vagg) https://github.com/nodejs/node/pull/4153
@@ -249,13 +249,13 @@ Security Update
 
 ### Notable changes
 
-* build: Add support for Microsoft Visual Studio 2015
-* npm: Upgrade to v1.4.29 from v1.4.28. A special one-off release as part of the strategy to get a version of npm into Node.js v0.10.x that works with the current registry (https://github.com/nodejs/LTS/issues/37). This version of npm prints out a banner each time it is run. The banner warns that the next standard release of Node.js v0.10.x will ship with a version of npm v2.
-* openssl: Upgrade to 1.0.1q, containing fixes CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
+* build: Añadido soporte para Microsoft Visual Studio 2015
+* npm: Actualizado a v1.4.29 de v1.4.28. Un lanzamiento de una sola ocasión como parte de la estrategia para obtener una versión de npm en Node.js v0.10.x que funcione con el registro actual (https://github.com/nodejs/LTS/issues/37). Esta versión de npm imprime un banner cada vez que se ejecute. El banner advierte que la siguiente lanzamiento estándar de Node.js v0.10.x va tener una versión npm v2.
+* openssl: Actualizado a 1.0.1q, conteniendo reparaciones CVE-2015-3194 "Falló la verificación de certificado, falta parámetro PSS", un vector potencial de negación-de-servicio para servidores TLS de Node.js usando autenticación del certificado del cliente; los clientes TLS también son impactados. Hay más detalles disponibles en <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
 ### Commits
 
-* [16ca0779f5] - src/node.cc: fix build error without OpenSSL support (Jörg Krause) https://github.com/nodejs/node-v0.x-archive/pull/25862
+* [16ca0779f5] - src/node.cc: reparar error de compilación sin soporte de OpenSSL (Jörg Krause) https://github.com/nodejs/node-v0.x-archive/pull/25862
 * [c559c7911d] - build: backport tools/release.sh (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [268d2b4637] - build: backport config for new CI infrastructure (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [c88a0b26da] - build: update manifest to include Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2838
@@ -382,11 +382,11 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 * openssl: Update to 1.0.1j (Addressing multiple CVEs)
 * uv: Update to v0.10.29
 * child_process: properly support optional args (cjihrig)
-* crypto: Disable autonegotiation for SSLv2/3 by default (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
+* crypto: Deshabilita autonegociación para SSLv2/3 de manera predeterminada (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
   
-  This is a behavior change, by default we will not allow the negotiation to SSLv2 or SSLv3. If you want this behavior, run Node.js with either `--enable-ssl2` or `--enable-ssl3` respectively.
+  Este es un cambio de comportamiento, de manera predeterminada no permitiremos la negociación a SSLv2 o SSLv3. Si deseas este comportamiento, ejecuta Node.js con `--enable-ssl2` o `--enable-ssl3`, respectivamente.
   
-  This does not change the behavior for users specifically requesting `SSLv2_method` or `SSLv3_method`. While this behavior is not advised, it is assumed you know what you're doing since you're specifically asking to use these methods.
+  Esto no cambia el comportamiento para los usuarios que estén solicitando específicamente `SSLv2_method` or `SSLv3_method`. Mientras este comportamiento no es recomendado, es asumido que tu sabes lo que estás haciendo dado que tu eres el que lo está pidiendo específicamente para usar estos métodos.
 
 <a id="0.10.32"></a>
 
@@ -395,12 +395,12 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 
 * npm: Update to 1.4.28
-* v8: fix a crash introduced by previous release (Fedor Indutny)
+* v8: repara una falla introducida por una versión previa (Fedor Indutny)
 * configure: add --openssl-no-asm flag (Fedor Indutny)
-* crypto: use domains for any callback-taking method (Chris Dickinson)
-* http: do not send `0\r\n\r\n` in TE HEAD responses (Fedor Indutny)
-* querystring: fix unescape override (Tristan Berger)
-* url: Add support for RFC 3490 separators (Mathias Bynens)
+* crypto: usa dominios para cualquier método de atender callback (Chris Dickinson)
+* http: no enviar `0\r\n\r\n` en respuestas TE HEAD (Fedor Indutny)
+* querystring: repara la anulación unescape (Tristan Berger)
+* url: Añade soporte para los separadores RFC 3490 (Mathias Bynens)
 
 <a id="0.10.31"></a>
 
@@ -411,7 +411,7 @@ https://github.com/nodejs/node/commit/7fabdc23d843cb705d2d0739e7bbdaaf50aa3292
 * v8: backport CVE-2013-6668
 * openssl: Update to v1.0.1i
 * npm: Update to v1.4.23
-* cluster: disconnect should not be synchronous (Sam Roberts)
+* cluster: la desconexión no debe ser sincrónica (Sam Roberts)
 * fs: fix fs.readFileSync fd leak when get RangeError (Jackson Tian)
 * stream: fix Readable.wrap objectMode falsy values (James Halliday)
 * timers: fix timers with non-integer delay hanging. (Julien Gilli)
@@ -424,9 +424,9 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 
 * uv: Upgrade to v0.10.28
 * npm: Upgrade to v1.4.21
-* v8: Interrupts must not mask stack overflow.
-* Revert "stream: start old-mode read in a next tick" (Fedor Indutny)
-* buffer: fix sign overflow in `readUIn32BE` (Fedor Indutny)
+* v8: Interrupciones no deben enmascarar el stack overflow.
+* Revertido "stream: inicia el viejo-modo de lectura en el próximo tick" (Fedor Indutny)
+* buffer: repara señal de desbordamiento en `readUIn32BE` (Fedor Indutny)
 * buffer: improve {read,write}{U}Int* methods (Nick Apperson)
 * child_process: handle writeUtf8String error (Fedor Indutny)
 * deps: backport 4ed5fde4f from v8 upstream (Fedor Indutny)
@@ -447,7 +447,7 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 
 * openssl: to 1.0.1h (CVE-2014-0224)
 * npm: upgrade to 1.4.14
-* utf8: Prevent Node from sending invalid UTF-8 (Felix Geisendörfer)
+* utf8: Previene al Nodo de enviar un UTF-8 inválido (Felix Geisendörfer)
   
   * *NOTE* this introduces a breaking change, previously you could construct invalid UTF-8 and invoke an error in a client that was expecting valid UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8 character. To restore the old functionality simply have NODE_INVALID_UTF8 environment variable set.
 

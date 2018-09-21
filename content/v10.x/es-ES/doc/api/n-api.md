@@ -2506,11 +2506,11 @@ napi_status napi_delete_element(napi_env env,
 - `[in] env`: El entorno bajo el que la llamada N-API es invocada.
 - `[in] object`: El objeto a consultar.
 - `[in] index`: El índice de la propiedad a eliminar.
-- `[out] result`: Whether the element deletion succeeded or not. `result` can optionally be ignored by passing `NULL`.
+- `[out] result`: Si la eliminación del elemento fue exitosa o no. `result` puede ser opcionalmente ignorado pasando `NULL`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API attempts to delete the specified `index` from `object`.
+Esta API intenta eliminar el `index` especificado desde `object`.
 
 #### napi_define_properties
 
@@ -2525,24 +2525,24 @@ napi_status napi_define_properties(napi_env env,
                                    const napi_property_descriptor* properties);
 ```
 
-- `[in] env`: The environment that the N-API call is invoked under.
-- `[in] object`: The object from which to retrieve the properties.
-- `[in] property_count`: The number of elements in the `properties` array.
-- `[in] properties`: The array of property descriptors.
+- `[in] env`: El entorno bajo el que la llamada N-API es invocada.
+- `[in] object`: El objeto desde el cual recuperar las propiedades.
+- `[in] property_count`: El número de elementos en el arreglo de `properties`.
+- `[in] properties`: El arreglo de descriptores de propiedad.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method allows the efficient definition of multiple properties on a given object. The properties are defined using property descriptors (see [`napi_property_descriptor`][]). Given an array of such property descriptors, this API will set the properties on the object one at a time, as defined by `DefineOwnProperty()` (described in [Section 9.1.6](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc) of the ECMA262 specification).
+Este método permite la definición eficiente de múltiples propiedades sobre un objeto dado. Las propiedades se definen utilizando los descriptores de propiedad (véase [`napi_property_descriptor`][]). Dado un arreglo de tales descriptores de propiedad, esta API establecerá las propiedades sobre el objeto una por vez. tal como se define en `DefineOwnProperty()` (descrito en la [Sección 9.1.6](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc) de las especificaciones ECMA262).
 
-## Working with JavaScript Functions
+## Trabajar con Funciones de JavaScript
 
-N-API provides a set of APIs that allow JavaScript code to call back into native code. N-API APIs that support calling back into native code take in a callback functions represented by the `napi_callback` type. When the JavaScript VM calls back to native code, the `napi_callback` function provided is invoked. The APIs documented in this section allow the callback function to do the following:
+N-API ofrece un conjunto de APIs que permiten al código de JavaScript hacer llamadas de vuelta al código nativo. Las APIs de N-API que son compatibles con las llamadas devuelta al código nativo toman una función callback representada por el tipo `napi_callback`. Cuando la VM de JavaScript llama de vuelta al código nativo, la función `napi_callback` proporcionada es invocada. Las APIs documentadas en esta sección permiten hacer lo siguiente a la función callback:
 
-- Get information about the context in which the callback was invoked.
-- Get the arguments passed into the callback.
-- Return a `napi_value` back from the callback.
+- Obtener información sobre el contexto en el cual el callback fue invocado.
+- Obtener los argumentos pasados al callback.
+- Devolver un `napi_value` desde el callback.
 
-Additionally, N-API provides a set of functions which allow calling JavaScript functions from native code. One can either call a function like a regular JavaScript function call, or as a constructor function.
+Adicionalmente, N-API proporciona un conjunto de funciones que permiten llamar funciones de JavaScript desde el código nativo. Uno puede llamar a una función como una llamad de función de JavaScript regular, o como una función constructora.
 
 ### napi_call_function
 
@@ -2559,18 +2559,18 @@ napi_status napi_call_function(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] recv`: The `this` object passed to the called function.
-- `[in] func`: `napi_value` representing the JavaScript function to be invoked.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of `napi_values` representing JavaScript values passed in as arguments to the function.
-- `[out] result`: `napi_value` representing the JavaScript object returned.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] recv`: El objeto `this` pasado a la función llamada.
+- `[in] func`: `napi_value` que representa la función de JavaScript a ser invocada.
+- `[in] argc`: El conteo de elementos en el arreglo `argv`.
+- `[in] argv`: Arreglo de `napi_values` que representan los valores de JavaScript pasados como argumentos a la función.
+- `[out] result`: `napi_value` que representa el objeto de JavaScript devuelto.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method allows a JavaScript function object to be called from a native add-on. This is the primary mechanism of calling back *from* the add-on's native code *into* JavaScript. For the special case of calling into JavaScript after an async operation, see [`napi_make_callback`][].
+Este método permite a una función objeto de JavaScript ser llamada desde un complemento nativo. Este es el mecanismo principal para devolver *desde* el código nativo del complemento *a* JavaScript. Para el caso especial de llamar a JavaScript después de una operación asíncrona, véase [`napi_make_callback`][].
 
-A sample use case might look as follows. Consider the following JavaScript snippet:
+Un caso de muestra para su uso puede verse de la siguiente manera. Considere el siguiente fragmento de código de JavaScript:
 
 ```js
 function AddTwo(num) {
@@ -2578,10 +2578,10 @@ function AddTwo(num) {
 }
 ```
 
-Then, the above function can be invoked from a native add-on using the following code:
+Entonces, la función anterior puede ser invocada desde un complemento nativo utilizando el siguiente código:
 
 ```C
-// Get the function named "AddTwo" on the global object
+// Obtener la función llamada "AddTwo" en el objeto global
 napi_value global, add_two, arg;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -2601,7 +2601,7 @@ napi_value return_val;
 status = napi_call_function(env, global, add_two, argc, argv, &return_val);
 if (status != napi_ok) return;
 
-// Convert the result back to a native type
+// Convertir al resultado en un tipo nativo
 int32_t result;
 status = napi_get_value_int32(env, return_val, &result);
 if (status != napi_ok) return;
@@ -2621,19 +2621,19 @@ napi_status napi_create_function(napi_env env,
                                  napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] utf8Name`: The name of the function encoded as UTF8. This is visible within JavaScript as the new function object's `name` property.
-- `[in] cb`: The native function which should be called when this function object is invoked.
-- `[in] data`: User-provided data context. This will be passed back into the function when invoked later.
-- `[out] result`: `napi_value` representing the JavaScript function object for the newly created function.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] utf8Name`: El nombre de la función codificado como UTF8. Este es visible dentro de JavaScript como la propiedad del nuevo `name` de la función objeto.
+- `[in] cb`: La función nativa que debe ser llamada cuando el objeto de esta función es invocada.
+- `[in] data`: Contexto de datos proporcionado por el usuario. Este será pasado de nuevo a la función cuando se invoque luego.
+- `[out] result`: `napi_value` que representa la función objeto de JavaScript para la nueva función creada.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API allows an add-on author to create a function object in native code. This is the primary mechanism to allow calling *into* the add-on's native code *from* JavaScript.
+Esta API permite al autor de un complemento crear una función objeto en código nativo. Este es el mecanismo primario para permitir llamar *al* código nativo del complemento *desde* JavaScript.
 
-The newly created function is not automatically visible from script after this call. Instead, a property must be explicitly set on any object that is visible to JavaScript, in order for the function to be accessible from script.
+La nueva función creada no es visible automáticamente desde el script luego de esta llamada. En cambio, una propiedad debe ser explícitamente establecida sobre un objeto que es visible para JavaScript, para que la función sea accesible desde el script.
 
-In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
+Para exponer una función como parte de las exportaciones del módulo del complemento, configure la nueva función creada en el objeto de exportaciones. Un módulo de muestra puede verse de la siguiente manera:
 
 ```C
 napi_value SayHello(napi_env env, napi_callback_info info) {
@@ -2657,14 +2657,14 @@ napi_value Init(napi_env env, napi_value exports) {
 NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
-Given the above code, the add-on can be used from JavaScript as follows:
+Dado el código anterior, el complemento puede ser utilizado desde JavaScript como sigue:
 
 ```js
 const myaddon = require('./addon');
 myaddon.sayHello();
 ```
 
-The string passed to require is not necessarily the name passed into `NAPI_MODULE` in the earlier snippet but the name of the target in `binding.gyp` responsible for creating the `.node` file.
+La cadena pasada para requerir no es necesariamente el nombre pasado a `NAPI_MODULE` en el fragmento anterior, sino el nombre del objetivo en `binding.gyp` responsable de crear el archivo `.node`.
 
 ### napi_get_cb_info
 
@@ -2681,16 +2681,16 @@ napi_status napi_get_cb_info(napi_env env,
                              void** data)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cbinfo`: The callback info passed into the callback function.
-- `[in-out] argc`: Specifies the size of the provided `argv` array and receives the actual count of arguments.
-- `[out] argv`: Buffer to which the `napi_value` representing the arguments are copied. If there are more arguments than the provided count, only the requested number of arguments are copied. If there are fewer arguments provided than claimed, the rest of `argv` is filled with `napi_value` values that represent `undefined`.
-- `[out] this`: Receives the JavaScript `this` argument for the call.
-- `[out] data`: Receives the data pointer for the callback.
+- `[in] env`: El entorno bajo el que se invoca a la API.
+- `[in] cbinfo`: La información del callback pasada a la función callback.
+- `[in-out] argc`: Especifica el tamaño del arreglo `argv` proporcionado y recibe el conteo de argumentos verdadero.
+- `[out] argv`: El buffer en el que se copian los `napi_value` que representan los argumentos. Si hay más argumentos que el conteo proporcionado, sólo se copia el número solicitado de argumentos. Si se proporcionan menos argumentos de los que se afirman, el resto de `argv` se llena con valores `napi_value` que representan `undefined`.
+- `[out] this`: Recibe el argumento `this` de JavaScript para la llamada.
+- `[out] data`: Recibe el apuntador de datos para el callback.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method is used within a callback function to retrieve details about the call like the arguments and the `this` pointer from a given callback info.
+Este método es utilizado a través de una función callback para recuperar detalles sobre la llamada, como los argumentos y el apuntador `this` desde la información de callback dada.
 
 ### napi_get_new_target
 

@@ -257,59 +257,59 @@ El URL del módulo actual, como se configura e el constructor.
 
 Evaluar el módulo.
 
-Esto debe ser llamado después de que el módulo haya sido instanciado; de lo contrario lanzará un error. It could be called also when the module has already been evaluated, in which case it will do one of the following two things:
+Esto debe ser llamado después de que el módulo haya sido instanciado; de lo contrario lanzará un error. Podría llamarse también cuando el módulo ya haya sido evaluado, en ese caso hará una de las siguientes dos cosas:
 
-* return `undefined` if the initial evaluation ended in success (`module.status` is `'evaluated'`)
-* rethrow the same exception the initial evaluation threw if the initial evaluation ended in an error (`module.status` is `'errored'`)
+* devuelve `undefined` si la evaluación inicial terminó correctamente (`module.status` es `'evaluated'`)
+* vuelve a producir la misma excepción que la evaluación inicial lanzó si la evaluación inicial terminó en un error (`module.status` es `'errored'`)
 
-This method cannot be called while the module is being evaluated (`module.status` is `'evaluating'`) to prevent infinite recursion.
+Este método no puede llamarse mientras el módulo está siendo evaluado (`module.status` es `'evaluating'`) para evitar la recursión infinita.
 
-Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo del [método concreto Evaluate()](https://tc39.github.io/ecma262/#sec-moduleevaluation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
 
 ### module.instantiate()
 
-Instantiate the module. This must be called after linking has completed (`linkingStatus` is `'linked'`); otherwise it will throw an error. It may also throw an exception if one of the dependencies does not provide an export the parent module requires.
+Instanciar el módulo. Esto debe llamarse después de que el enlace se haya completado (`linkingStatus` es `'linked'`); de lo contrario lanzará un error. También puede lanzar una excepción si uno de las dependencias no proporciona una exportación que el módulo principal requiere.
 
-However, if this function succeeded, further calls to this function after the initial instantiation will be no-ops, to be consistent with the ECMAScript specification.
+Sin embargo, si esta función fue exitosa, las llamadas adicionales para esta función después de la instanciación inicial no estarán operativas, para ser consistentes con la especificación ECMAScript.
 
-Unlike other methods operating on `Module`, this function completes synchronously and returns nothing.
+A diferencias de otros métodos operativos en `Module`, este función se completa sincrónicamente y no devuelve nada.
 
-Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
+Corresponde al campo del [método concreto Instantiate()](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
 
 ### module.link(linker)
 
 * `linker` {Function}
 * Devuelve: {Promise}
 
-Link module dependencies. This method must be called before instantiation, and can only be called once per module.
+Dependencias del módulo de enlace. Este método debe llamarse antes de la instanciación, y solo puede llamarse una vez por módulo.
 
-Two parameters will be passed to the `linker` function:
+Dos parámetros se pasarán a la función `linker`:
 
-* `specifier` The specifier of the requested module: <!-- eslint-skip -->
+* `specifier` El especificador del módulo requerido: <!-- eslint-skip -->
   
       js
       import foo from 'foo';
-      //              ^^^^^ the module specifier
+      //              ^^^^^ el especificador del módulo
 
-* `referencingModule` The `Module` object `link()` is called on.
+* `referencingModule` Se llama al `link()` del objeto `Module`.
 
-The function is expected to return a `Module` object or a `Promise` that eventually resolves to a `Module` object. The returned `Module` must satisfy the following two invariants:
+La función se espera para devolver un objeto `Module` o un `Promise` que eventualmente se convierta en un objeto `Module`. El `Module` devuelto debe satisfacer las siguientes dos invariantes:
 
-* It must belong to the same context as the parent `Module`.
-* Its `linkingStatus` must not be `'errored'`.
+* Debe pertenecer al mismo contexto que el `Module` principal.
+* Su `linkingStatus` no debe ser `'errored'`.
 
-If the returned `Module`'s `linkingStatus` is `'unlinked'`, this method will be recursively called on the returned `Module` with the same provided `linker` function.
+Si el `linkingStatus` del `Module` devuelto está `'unlinked'`, este método se llamará recursivamente en el `Module` devuelto con la misma función del `linker` proporcionado.
 
-`link()` returns a `Promise` that will either get resolved when all linking instances resolve to a valid `Module`, or rejected if the linker function either throws an exception or returns an invalid `Module`.
+`link()` devuelve un `Promise` que se resolverá cuando todas las instancias de enlace se resuelvan en un `Module` válido, o se rechazará si la función enlazador lanza una excepción o devuelve un `Module` inválido.
 
-The linker function roughly corresponds to the implementation-defined [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) abstract operation in the ECMAScript specification, with a few key differences:
+La función enlazador corresponde aproximadamente a la operación abstracta de [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) definida por la implementación en la especificación ECMAScript, con algunas diferencias clave:
 
-* The linker function is allowed to be asynchronous while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is synchronous.
-* The linker function is executed during linking, a Node.js-specific stage before instantiation, while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is called during instantiation.
+* La función enlazador puede ser asincrónica mientras que [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) es sincrónica.
+* La función enlazador se ejecuta durante la vinculación, una etapa específica de Node.js antes de la instanciación, mientras que [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) se llama durante la instanciación.
 
-The actual [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation used during module instantiation is one that returns the modules linked during linking. Since at that point all modules would have been fully linked already, the [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation is fully synchronous per specification.
+La implementación [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) real utilizada durante la instanciación del módulo es aquella que devuelve los módulos enlazados durante la vinculación. Dado que en ese punto todos los módulos ya estarían completamente enlazados, la implementación [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) es completament sincrónica por especificación.
 
-## Class: vm.Script
+## Clase: vm.Script
 
 <!-- YAML
 added: v0.3.1

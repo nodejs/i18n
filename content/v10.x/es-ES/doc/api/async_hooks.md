@@ -307,7 +307,7 @@ Utilizar `execution` solamente para hacer un gráfico de la asignación de recur
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-El `TCPSERVERWRAP` no es parte de este gráfico, a pesar de que fue el motivo por el cual `console.log()` fue llamado. El motivo de esto es porque atar a un puerto sin un nombre de host es una operación *sincrónica*, pero para mantener una API completamente asincrónica, el callback del usuario se ubica en un `process.nextTick()`.
+El `TCPSERVERWRAP` no es parte de este gráfico, a pesar de que fue el motivo por el cual `console.log()` fue llamado. El motivo de esto es porque enlazar a un puerto sin un nombre de host es una operación *sincrónica*, pero para mantener una API completamente asincrónica, el callback del usuario se ubica en un `process.nextTick()`.
 
 El gráfico sólo muestra *when* un recurso fue creado, no muestra *why*, así que para rastrear *why* utilice `triggerAsyncId`.
 

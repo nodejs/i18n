@@ -486,7 +486,7 @@ changes:
 * `callback` {Function}
 * Devuelve: {this}
 
-Termina de enviar la solicitud. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
+Termina de enviar la solicitud. If any parts of the body are unsent, it will flush them to the stream. Si la solicitud es fragmentada, esto enviará la `'0\r\n\r\n'` de terminación.
 
 Si se especifica `data`, es equivalente a llamar a [`request.write(data, encoding)`][] seguido de `request.end(callback)`.
 
@@ -502,7 +502,7 @@ Flush the request headers.
 
 For efficiency reasons, Node.js normally buffers the request headers until `request.end()` is called or the first chunk of request data is written. It then tries to pack the request headers and data into a single TCP packet.
 
-That's usually desired (it saves a TCP round-trip), but not when the first data is not sent until possibly much later. `request.flushHeaders()` bypasses the optimization and kickstarts the request.
+That's usually desired (it saves a TCP round-trip), but not when the first data is not sent until possibly much later. `request.flushHeaders()` evade la optimización e inicia la solicitud.
 
 ### request.getHeader(name)
 
@@ -602,7 +602,7 @@ added: v0.5.9
 -->
 
 * `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Función opcional que será llamada cuando ocurra un timeout. Same as binding to the `'timeout'` event.
+* `callback` {Function} Función opcional que será llamada cuando ocurra un timeout. Igual a enlazar al evento `'timeout'` .
 * Devuelve: {http.ClientRequest}
 
 Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setTimeout()`][] será llamado.
@@ -812,7 +812,7 @@ Detiene al servidor de aceptar nuevas conexiones. Vea [`net.Server.close()`][].
 
 ### server.listen()
 
-Starts the HTTP server listening for connections. Este método es idéntico a [`server.listen()`][] desde [`net.Server`][].
+Inicia el servidor HTTP escuchando conexiones. Este método es idéntico a [`server.listen()`][] desde [`net.Server`][].
 
 ### server.listening
 
@@ -926,7 +926,7 @@ response.addTrailers({ 'Content-MD5': '7895bf4b8828b55ceaf47747b4bca667' });
 response.end();
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 ### response.connection
 
@@ -1115,7 +1115,7 @@ o
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 Cuando las cabeceras hayan sido establecidas con [`response.setHeader()`][], serán combinadas con cualquiera de las cabeceras pasadas a [`response.writeHead()`][], con las cabeceras pasadas a [`response.writeHead()`][] dada su precedencia.
 
@@ -1139,7 +1139,7 @@ added: v0.9.12
 * `callback` {Function}
 * Devuelve: {http.ServerResponse}
 
-Sets the Socket's timeout value to `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
+Sets the Socket's timeout value to `msecs`. Si se proporciona una callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
 
 Si no se añade ningún listener `'timeout'` a la solicitud, la respuesta, o al servidor, entonces los sockets se destruirán cuando se agote su tiempo de espera. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -1278,7 +1278,7 @@ const server = http.createServer((req, res) => {
 
 Tenga en cuenta que la Longitud del Contenido es dado en bytes y no en caracteres. El ejemplo anterior funciona porque la string `'hello world'` solo contiene caracteres de un solo byte. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Y Node.js no verifica si la Longitud del Contenido y la longitud del cuerpo que ha sido transmitido son iguales o no.
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 ### response.writeProcessing()
 
@@ -1421,7 +1421,7 @@ added: v0.11.6
 
 * {string[]}
 
-Las claves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Only populated at the `'end'` event.
+Las claves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Poblado solamente en el evento `'end'` .
 
 ### message.setTimeout(msecs, callback)
 
@@ -1469,7 +1469,7 @@ added: v0.11.10
 
 **Sólo válido para la respuesta obtenida de [`http.ClientRequest`][].**
 
-The HTTP response status message (reason phrase). Por ejemplo, `OK` o `Internal Server
+El mensaje de estado de la respuesta HTTP (frase del motivo). Por ejemplo, `OK` o `Internal Server
 Error`.
 
 ### message.trailers
@@ -1480,7 +1480,7 @@ added: v0.3.0
 
 * {Object}
 
-El objeto de trailers de solicitud/respuesta. Only populated at the `'end'` event.
+El objeto de trailers de solicitud/respuesta. Poblado solamente en el evento `'end'` .
 
 ### message.url
 
@@ -1508,7 +1508,7 @@ Entonces `request.url` será:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Ejemplo:
+Para analizar la url dentro de sus partes, se puede utilizar `require('url').parse(request.url)` . Ejemplo:
 
 ```txt
 $ node
@@ -1556,7 +1556,7 @@ added: v0.11.8
 
 * {string[]}
 
-A list of the HTTP methods that are supported by the parser.
+Una lista de métodos HTTP que son compatibles con el analizador.
 
 ## http.STATUS_CODES
 
@@ -1607,7 +1607,7 @@ changes:
 * `callback` {Function}
 * Devuelve: {http.ClientRequest}
 
-Ya que la mayoría de las solicitudes son solicitudes de GET sin cuerpos, Node.js proporciona este método de conveniencia. La única diferencia entre este método y [`http.request()`][] es que establece el método a GET y llama a `req.end()` automáticamente. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
+Ya que la mayoría de las solicitudes son solicitudes de GET sin cuerpos, Node.js proporciona este método de conveniencia. La única diferencia entre este método y [`http.request()`][] es que establece el método a GET y llama a `req.end()` automáticamente. Tenga en cuenta que el callback debe tener cuidado al consumir los datos de respuesta, por los motivos indicados en la sección [`http.ClientRequest`][] .
 
 El `callback` se invoca con un único argumento que es una instancia de [`http.IncomingMessage`][].
 
@@ -1672,33 +1672,33 @@ changes:
 
 * `options` {Object | string | URL} 
   * `protocol` {string} Protocolo a utilizar. **Predeterminado:** `'http:'`.
-  * `host` {string} A domain name or IP address of the server to issue the request to. **Predeterminado:** `'http:'`.
-  * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
-  * `family` {number} IP address family to use when resolving `host` and `hostname`. Los valores válidos son `4` o `6`. When unspecified, both IP v4 and v6 will be used.
+  * `host` {string} Un nombre de dominio o dirección IP del servidor al cual se le emitirá la solicitud. **Predeterminado:** `'http:'`.
+  * `hostname` {string} Alias para `host`. Para dar soporte a [`url.parse()`][], se prefiere `hostname` sobre `host`.
+  * `family` {number} familia de la dirección IP a usar cuando se resuelve `host` y `hostname`. Los valores válidos son `4` o `6`. Cuando no esté especificado, se utilizará IP v4 y v6.
   * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
-  * `localAddress` {string} Local interface to bind for network connections.
+  * `localAddress` {string} Interfaz local para enlazar conexiones de red.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
-  * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
-  * `path` {string} Request path. Should include query string if any. E.G. `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Default:** `'/'`.
-  * `headers` {Object} An object containing request headers.
-  * `auth` {string} Basic authentication i.e. `'user:password'` to compute an Authorization header.
-  * `agent` {http.Agent | boolean} Controls [`Agent`][] behavior. Possible values: 
-    * `undefined` (default): use [`http.globalAgent`][] for this host and port.
-    * `Agent` object: explicitly use the passed in `Agent`.
-    * `false`: causes a new `Agent` with default values to be used.
-  * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
-  * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Por defecto es `true`.
+  * `method` {string} Una string que especifique el método de solicitud HTTP. **Predeterminado:** `'GET'`.
+  * `path` {string} Ruta de solicitud. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. Se arroja una excepción cuando la ruta de solicitud contiene caracteres no válidos. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Predeterminado:** `'/'`.
+  * `headers` {Object} Un objeto que contiene las cabeceras de solicitud.
+  * `auth` {string} autenticación Básica, por ejemplo, `'user:password'` para computar una cabecera de Autorización.
+  * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][] . Valores posibles: 
+    * `undefined` (Predeterminado): utiliza [`http.globalAgent`][] para este host y este puerto.
+    * objeto `Agent`: utiliza explícitamente lo que fue pasado en `Agent`.
+    * `false`: hace que un nuevo `Agent` con valores predeterminados sea utilizado.
+  * `createConnection` {Function} Una función que produce un socket/stream para ser utilizado para la solicitud cuando no se utilice la opción `agent` . Esto puede ser utilizado para evitar crear una clase `Agent` personalizada solo para anular la función `createConnection` predeterminada. Vea [`agent.createConnection()`][] para más detalles. Cualquier stream [`Duplex`][] es un valor válido.
+  * `timeout` {number}: Un número que especifica el tiempo de espera del socket en milisegundos. This will set the timeout before the socket is connected.
+  * `setHost` {boolean}: Especifica si se agrega automáticamente a la cabecera `Host` o no. Por defecto es `true`.
 * `callback` {Function}
 * Devuelve: {http.ClientRequest}
 
-Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
+Node.js mantiene varias conexiones por servidor para realizar solicitudes HTTP. Esta función permite emitir solicitudes de manera transparente.
 
-`options` puede ser un objeto, una string, o un objeto [`URL`][] . If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` puede ser un objeto, una string, o un objeto [`URL`][] . Si `options` es una string, se analizará automáticamente con [`url.parse()`][]. Si es un objeto [`URL`][], será convertido automáticamente a un objeto `options` ordinario.
 
-The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
+El parámetro opcional `callback` será agregado como un listener de un solo uso para el evento [`'response'`][] .
 
-`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream editable. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
+`http.request()` devuelve una instancia de la clase [`http.ClientRequest`][] . La instancia `ClientRequest` es un stream escribible. Si uno necesita subir un archivo con una solicitud POST, entonces escriba al objeto `ClientRequest` .
 
 Ejemplo:
 
@@ -1739,21 +1739,21 @@ req.write(postData);
 req.end();
 ```
 
-Note that in the example `req.end()` was called. With `http.request()` one must always call `req.end()` to signify the end of the request - even if there is no data being written to the request body.
+Tenga en cuenta que en el ejemplo, `req.end()` fue llamado. Con `http.request()` uno siempre debe llamar a `req.end()` para indicar el final de la solicitud - incluso si no hay datos que estén siendo escritos para el cuerpo de solicitud.
 
-If any error is encountered during the request (be that with DNS resolution, TCP level errors, or actual HTTP parse errors) an `'error'` event is emitted on the returned request object. As with all `'error'` events, if no listeners are registered the error will be thrown.
+Si se encuentra algún error durante la solicitud (sea con una resolución DNS, errores a nivel de TCP, o errores de análisis en HTTP) se emitirá un evento `'error'` en el objeto de solicitud devuelto. Como con todos los eventos `'error'`, si no hay listeners registrados se arrojará el error.
 
-There are a few special headers that should be noted.
+Hay algunas cabeceras especiales que deberían tenerse en cuenta.
 
-* Sending a 'Connection: keep-alive' will notify Node.js that the connection to the server should be persisted until the next request.
+* Enviar un 'Connection: keep-alive' notificará a Node.js que la conexión al servidor debería persistir hasta la siguiente solicitud.
 
-* Sending a 'Content-Length' header will disable the default chunked encoding.
+* Enviar una cabecera 'Content-Length' inhabilitará la codificación fragmentada predeterminada.
 
-* Sending an 'Expect' header will immediately send the request headers. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. See RFC2616 Section 8.2.3 for more information.
+* Enviar una cabecera 'Expect' enviará inmediatamente las cabeceras de solicitud. Usually, when sending 'Expect: 100-continue', both a timeout and a listener for the `'continue'` event should be set. Vea RFC2616 Section 8.2.3 para más información.
 
-* Sending an Authorization header will override using the `auth` option to compute basic authentication.
+* Enviar una cabecera de Autorización anulará utilizando la opción `auth` para computar la autenticación básica.
 
-Example using a [`URL`][] as `options`:
+Ejemplo utilizando un [`URL`][] como `options`:
 
 ```js
 const options = new URL('http://abc:xyz@example.com');
@@ -1763,38 +1763,38 @@ const req = http.request(options, (res) => {
 });
 ```
 
-In a successful request, the following events will be emitted in the following order:
+En una solicitud exitosa, los siguientes eventos se emitirán en el siguiente orden:
 
 * `'socket'`
 * `'response'` 
-  * `'data'` any number of times, on the `res` object (`'data'` will not be emitted at all if the response body is empty, for instance, in most redirects)
-  * `'end'` on the `res` object
+  * `'data'` cualquier número de veces, en el objeto `res` (`'data'` no será emitido si el cuerpo de respuesta está vacío, por ejemplo, en la mayoría de las redirecciones)
+  * `'end'` en el objeto `res`
 * `'close'`
 
-In the case of a connection error, the following events will be emitted:
+En el caso de un error de conexión, se emitirán los siguientes eventos:
 
 * `'socket'`
 * `'error'`
 * `'close'`
 
-If `req.abort()` is called before the connection succeeds, the following events will be emitted in the following order:
+Si `req.abort()` es llamado antes de que la conexión tenga éxito, los siguientes eventos serán emitidos en el siguiente orden:
 
 * `'socket'`
-* (`req.abort()` called here)
+* (`req.abort()` llamado aquí)
 * `'abort'`
 * `'close'`
-* `'error'` with an error with message `'Error: socket hang up'` and code `'ECONNRESET'`
+* `'error'` con un error con el mensaje `'Error: socket hang up'` y el código `'ECONNRESET'`
 
-If `req.abort()` is called after the response is received, the following events will be emitted in the following order:
+Si `req.abort()` es llamado después de que se reciba la respuesta, los siguientes eventos serán emitidos en el siguiente orden:
 
 * `'socket'`
 * `'response'` 
-  * `'data'` any number of times, on the `res` object
-* (`req.abort()` called here)
+  * `'data'` cualquier número de veces, en el objeto `res`
+* (`req.abort()` llamado aquí)
 * `'abort'`
 * `'close'` 
-  * `'aborted'` on the `res` object
-  * `'end'` on the `res` object
-  * `'close'` on the `res` object
+  * `'aborted'` en el objeto `res`
+  * `'end'` en el objeto `res`
+  * `'close'` en el objeto `res`
 
-Note that setting the `timeout` option or using the `setTimeout()` function will not abort the request or do anything besides add a `'timeout'` event.
+Tenga en cuenta que establecer la opción `timeout` o utilizar la función `setTimeout()` no abortará la solicitud ni hará nada más que añadir un evento `'timeout'` .

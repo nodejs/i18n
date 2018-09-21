@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-El módulo `so` provee un número de métodos de utilidad relacionados al sistema operativo. Puede ser accesado usando:
+El módulo `so` provee un número de métodos de utilidad relacionados al sistema operativo. Puede ser accesado a el usando:
 
 ```js
 const os = require('os');
@@ -18,7 +18,7 @@ added: v0.7.8
 
 * {string}
 
-Una constante de linea definiendo el marcador de fin de linea específico del sistema operativo:
+Una constante de string definiendo el marcador del carácter especial específico del sistema operativo:
 
 * `\n` en POSIX
 * `\r\n\r\n` en Windows
@@ -29,11 +29,11 @@ Una constante de linea definiendo el marcador de fin de linea específico del si
 added: v0.5.0
 -->
 
-* Retorna: {string}
+* Devuelve: {string}
 
-El método `os.arch()` retorna una línea identificando la arquitectura del CPU del sistema operativo para el cual el binario de Node.js fue compilado.
+El método `os.arch()` devuelve una línea identificando la arquitectura del CPU del sistema operativo para el cual el binario de Node.js fue compilado.
 
-Los actuales valores posibles son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+Los actuales valores posibles son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, y `'x64'`.
 
 Equivalente para [`process.arch`][].
 
@@ -45,7 +45,7 @@ added: v6.3.0
 
 * {Object}
 
-Retorna un objeto que contiene constantes específicas del sistema operativo comúnmente usadas para códigos de error, señales de proceso, y así sucesivamente. Las constantes específicas actualmente definidas son descritas como [Constantes SO](#os_os_constants_1).
+Devuelve un objeto que contiene constantes específicas del sistema operativo comúnmente usadas para códigos de error, señales de proceso, y así sucesivamente. Las constantes específicas actualmente definidas son descritas como [Constantes del SO](#os_os_constants_1).
 
 ## os.cpus()
 
@@ -55,12 +55,12 @@ added: v0.3.3
 
 * Returns: {Object[]}
 
-El método `os.cpus()` retorna un conjunto de objetos conteniendo información acerca de cada core lógico del CPU.
+El método `os.cpus()` devuelve un conjunto de objetos conteniendo información acerca de cada core lógico del CPU.
 
 Las propiedades incluidas en cada objeto incluyen:
 
 * `model`{string}
-* `velocidad`{number} (en MHz)
+* `speed`{number} (en MHz)
 * `times` {Object} 
   * `user`{number} El número de milisegundos que el CPU ha estado en modo usuario.
   * `nice` {number} El número de milisegundos que el CPU ha estado en modo nice.
@@ -173,9 +173,9 @@ added: v0.9.4
 
 * Retorna: {string}
 
-El método `os.endianness()` retorna una línea identificando la endianidad del CPU* para la cual el binario Node.js fue compilado*.
+El método `os.endianness()` devuelve una línea identificando la endianidad del CPU* para la cual el binario Node.js fue compilado*.
 
-Posibles valores son:
+Los posibles valores son:
 
 * `'BE'` para gran Endian
 * `'LE'` para pequeño Endian.
@@ -186,9 +186,9 @@ Posibles valores son:
 added: v0.3.3
 -->
 
-* Retorna: {integer}
+* Devuelve: {integer}
 
-El método `os.freemem()` retorna la cantidad de memoria libre del sistema en bytes como un entero.
+El método `os.freemem()` devuelve la cantidad de memoria libre del sistema en bytes como un entero.
 
 ## os.homedir()
 
@@ -196,7 +196,7 @@ El método `os.freemem()` retorna la cantidad de memoria libre del sistema en by
 added: v2.3.0
 -->
 
-* Retorna: {string}
+* Devuelve: {string}
 
 El método `os.homedir()` devuelve el directorio hogar del usuario actual como una línea.
 
@@ -206,7 +206,7 @@ El método `os.homedir()` devuelve el directorio hogar del usuario actual como u
 added: v0.3.3
 -->
 
-* Retorna: {string}
+* Devuelve: {string}
 
 El método `os.hostname()` devuelve el nombre del dueño del sistema operativo como una string.
 
@@ -216,7 +216,7 @@ El método `os.hostname()` devuelve el nombre del dueño del sistema operativo c
 added: v0.3.3
 -->
 
-* Retorna: {number[]}
+* Devuelve: {number[]}
 
 El método `os.loadavg()` devuelve un conjunto conteniendo los promedios de carga de 1,5 y 15 minutos.
 
@@ -230,11 +230,11 @@ La carga promedio es un concepto específico de UNIX con ningún equivalente rea
 added: v0.6.0
 -->
 
-* Retorna: {Object}
+* Devuelve: {Object}
 
-El método `os.networkInterfaces()` retorna un objeto conteniendo solamente interfaces en la red que han sido asignados a la dirección de la red.
+El método `os.networkInterfaces()` devuelve un objeto conteniendo solamente interfaces en la red que han sido asignados a la dirección de la red.
 
-Cada tecla en el objeto retornado identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
+Cada tecla en el objeto devuelto identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
 
 Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 
@@ -295,9 +295,9 @@ Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 added: v0.5.0
 -->
 
-* Retorna: {string}
+* Devuelve: {string}
 
-El método `os.platform()` retorna un string identificando la plataforma del sistema operativo como fue colocada durante el tiempo de compilación de Node.js.
+El método `os.platform()` devuelve un string identificando la plataforma del sistema operativo como fue colocada durante el tiempo de compilación de Node.js.
 
 Los posibles valores actuales son:
 
@@ -399,7 +399,7 @@ Las siguientes constantes son exportadas por `os.constants`.
 
 No todas las constantes estarán disponibles en todos los sistemas operativos.
 
-### Constantes Señal
+### Constantes de Señal
 
 <!-- YAML
 changes:
@@ -430,7 +430,7 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGILL</code></td>
-    <td>Enviada a un proceso para notificar que ha intentado realizar una instrucción ilegal, malformada, desconocida, o priviligeada.</td>
+    <td>Enviada a un proceso para notificar que ha intentado realizar una instrucción ilegal, malformada, desconocida, o privilegiada.</td>
   </tr>
   <tr>
     <td><code>SIGTRAP</code></td>
@@ -486,11 +486,11 @@ Las siguientes constantes son exportadas por `os.constants.signals`:
   </tr>
   <tr>
     <td><code>SIGCONT</code></td>
-    <td>Enviada para indicar al sistema operativo continuar un proceso pausado.</td>
+    <td>Enviada para indicar al sistema operativo que continue un proceso pausado.</td>
   </tr>
   <tr>
     <td><code>SIGSTOP</code></td>
-    <td>Enviada para indicar al sistema operativo detener un proceso.</td>
+    <td>Enviada para indicar al sistema operativo que detenga un proceso.</td>
   </tr>
   <tr>
     <td><code>SIGTSTP</code></td>

@@ -318,70 +318,70 @@ Todas las Pull Requests requieren "cerrar sesión" para poder "aterrizar". Cuand
 
 Trate de no desanimarse. Si siente que una revisión en particular es injusta, dígalo, o póngase en contacto con uno de los otros colaboradores en el proyecto y solicite su opinión. A menudo, dichos comentarios son el resultado de que el revisor solo tomó un corto tiempo para la reseña y no son malintencionados. Muy seguidamente, tales problemas se pueden resolver con un poco de paciencia. Dicho esto, se debería esperar que los revisores sean útiles en su feedback, y los comentarios que son simplemente vagos, despectivos e inútiles, probablemente sea mejor ignorarlos.
 
-### Step 10: Landing
+### Paso 10: Ejecutar
 
-In order to land, a Pull Request needs to be reviewed and [approved](#getting-approvals-for-your-pull-request) by at least one Node.js Collaborator and pass a [CI (Continuous Integration) test run](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
+Para "aterrizar", una Pull Request debe ser revisada y [aprobada](#getting-approvals-for-your-pull-request) por al menos un Colaborador de Node.js y pasar una [prueba de funcionamiento CI (Continuous Integration)](#ci-testing). Después de eso, siempre que no haya objeciones de otros colaboradores, la Pull Request puede "fusionarse". Si nota que su Pull Request espera más de lo previsto, consulte las [notas sobre el tiempo de espera](#waiting-until-the-pull-request-gets-landed).
 
-When a collaborator lands your Pull Request, they will post a comment to the Pull Request page mentioning the commit(s) it landed as. GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulations and thanks for your contribution!
+Cuando un colaborador aterriza su Pull Request, publicará un comentario en la página de Pull Request mencionando el(los) commit(s) al que aterrizó. GitHub a menudo muestra la Pull Request como `Closed` en este punto, pero no se preocupe. Si observas el branch en el que planteaste tu Pull Request (probablemente `master`), deberías ver un commit con tu nombre. ¡Felicidades y gracias por su contribución!
 
-## Reviewing Pull Requests
+## Revisión de Pull Requests
 
-All Node.js contributors who choose to review and provide feedback on Pull Requests have a responsibility to both the project and the individual making the contribution. Reviews and feedback must be helpful, insightful, and geared towards improving the contribution as opposed to simply blocking it. If there are reasons why you feel the PR should not land, explain what those are. Do not expect to be able to block a Pull Request from advancing simply because you say "No" without giving an explanation. Be open to having your mind changed. Be open to working with the contributor to make the Pull Request better.
+Todos los colaboradores de Node.js que optan por revisar y proporcionar un feedback sobre las Pull Requests, tienen una responsabilidad tanto con el proyecto como con la persona que realiza la contribución. Las revisiones y los feedbacks deben ser útiles, perspicaces y estar orientados a mejorar la contribución en lugar de simplemente bloquearla. Si hay razones por las cuales siente que la PR no debe aterrizar, explique cuáles son. No espere poder bloquear el avance de una Pull Request simplemente porque diga "No" sin dar una explicación. Esté abierto a cambiar de opinión. Esté abierto a trabajar con el colaborador para mejorar la Pull Request.
 
-Reviews that are dismissive or disrespectful of the contributor or any other reviewers are strictly counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+Los comentarios que son despectivos o irrespetuosos con el colaborador o cualquier otro revisor son estrictamente contrarios al [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-When reviewing a Pull Request, the primary goals are for the codebase to improve and for the person submitting the request to succeed. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
+Al revisar una Pull Request, los objetivos principales son que la base de código mejore y que la persona que envía la solicitud tenga éxito. Incluso si una Pull Request no aterriza, los remitentes deben abandonar la experiencia sintiendo que su esfuerzo no fue desaprovechado o inestimado. Cada Pull Request de un nuevo colaborador es una oportunidad para hacer crecer a la comunidad.
 
-### Review a bit at a time.
+### Revise un poco a la vez.
 
-Do not overwhelm new contributors.
+No abrume a los nuevos contribuyentes.
 
-It is tempting to micro-optimize and make everything about relative performance, perfect grammar, or exact style matches. Do not succumb to that temptation.
+Es tentador realizar una micro-optimización y hacer todo lo relacionado con el rendimiento relativo, la gramática perfecta o las coincidencias de estilo exactas. No sucumba a esa tentación.
 
-Focus first on the most significant aspects of the change:
+Enfóquese primero en los aspectos más significativos del cambio:
 
-1. Does this change make sense for Node.js?
-2. Does this change make Node.js better, even if only incrementally?
-3. Are there clear bugs or larger scale issues that need attending to?
-4. Is the commit message readable and correct? If it contains a breaking change is it clear enough?
+1. ¿Este cambio tiene sentido para Node.js?
+2. ¿Este cambio hace que Node.js sea mejor, aunque solo sea incrementalmente?
+3. ¿Hay errores claros o problemas de mayor escala que deben atenderse?
+4. ¿El mensaje de el commit es legible y correcto? Si contiene un cambio de ruptura, ¿es lo suficientemente claro?
 
-When changes are necessary, *request* them, do not *demand* them, and do not assume that the submitter already knows how to add a test or run a benchmark.
+Cuando los cambios son necesarios, *solicítelos*, no los *exija*, y no asuma que el remitente ya sabe cómo agregar una prueba o ejecutar una prueba de rendimiento.
 
-Specific performance optimization techniques, coding styles and conventions change over time. The first impression you give to a new contributor never does.
+Las técnicas específicas de optimización del rendimiento, los estilos de codificación y las convenciones cambian con el tiempo. La primera impresión que le das a un nuevo colaborador nunca lo hace.
 
-Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the Pull Request. Most nits can typically be fixed by the Node.js Collaborator landing the Pull Request but they can also be an opportunity for the contributor to learn a bit more about the project.
+Las Nits (solicitudes de pequeños cambios que no son esenciales) están bien, pero trate de evitar el bloqueo de la Pull Request. Normalmente, la mayoría de las nits pueden ser arregladas por el Colaborador de Node.js que aterriza la Pull Request, pero también pueden ser una oportunidad para que el contribuyente aprenda un poco más sobre el proyecto.
 
-It is always good to clearly indicate nits when you comment: e.g. `Nit: change foo() to bar(). But this is not blocking.`
+Siempre es bueno indicar claramente las nits cuando comenta: por ejemplo `Nit: change foo() to bar(). But this is not blocking.`
 
-If your comments were addressed but were not folded automatically after new commits or if they proved to be mistaken, please, [hide them](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) with the appropriate reason to keep the conversation flow concise and relevant.
+Si sus comentarios fueron abordados pero no fueron "doblados" automáticamente después de nuevos commits o si demostraron estar equivocados, por favor, [ocúltelos](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) con el motivo apropiado para mantener el flujo de la conversación conciso y relevante.
 
-### Be aware of the person behind the code
+### Tenga en cuenta a la persona detrás del código
 
-Be aware that *how* you communicate requests and reviews in your feedback can have a significant impact on the success of the Pull Request. Yes, we may land a particular change that makes Node.js better, but the individual might just not want to have anything to do with Node.js ever again. The goal is not just having good code.
+Tenga en cuenta que *como* comunica las solicitudes y las revisiones en su feedback, puede tener un impacto significativo en el éxito de la Pull Request. Sí, podemos obtener un cambio particular que haga que Node.js sea mejor, pero es posible que el individuo simplemente no quiera volver a tener nada que ver con Node.js. El objetivo no es solo tener un buen código.
 
-### Respect the minimum wait time for comments
+### Respete el tiempo de espera mínimo para los comentarios
 
-There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
+Hay un tiempo mínimo de espera que tratamos de respetar para cambios no triviales, de modo que las personas que puedan tener un aporte importante en dicho proyecto distribuido puedan responder.
 
-For non-trivial changes, Pull Requests must be left open for *at least* 48 hours during the week, and 72 hours on a weekend. In most cases, when the PR is relatively small and focused on a narrow set of changes, these periods provide more than enough time to adequately review. Sometimes changes take far longer to review, or need more specialized review from subject matter experts. When in doubt, do not rush.
+Para cambios no triviales, las Pull Requests se deben dejar abiertas durante *al menos* 48 horas durante la semana y 72 horas en un fin de semana. En la mayoría de los casos, cuando la PR es relativamente pequeña y se enfoca en un conjunto estrecho de cambios, estos períodos brindan tiempo más que suficiente para una revisión adecuada. A veces, los cambios tardan más tiempo en revisarse, o necesitan una revisión más especializada por parte de los expertos en la materia. En caso de dudas, no se apresure.
 
-Trivial changes, typically limited to small formatting changes or fixes to documentation, may be landed within the minimum 48 hour window.
+Los cambios triviales, normalmente limitados a pequeños cambios en el formato o correcciones a la documentación, puede ser aterrizado dentro del plazo mínimo de 48 horas.
 
-### Abandoned or Stalled Pull Requests
+### Pull Requests abandonadas o paralizadas
 
-If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
+Si una Pull Request parece abandonada o estancada, es de buena educación consultar primero con el colaborador para ver si tienen la intención de continuar el trabajo, antes de comprobar si les importaría si lo asumiera (especialmente si solo le quedan nits). Al hacerlo, es cortés otorgarle al contribuyente original crédito por el trabajo que iniciaron (preservando su nombre y dirección de correo electrónico en el registro de commit, o usando una etiqueta de metadatos de `Author:` en el commit.
 
-### Approving a change
+### Aprobar un cambio
 
-Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. Collaborators are not permitted to approve their own Pull Requests.
+Cualquier Colaborador central de Node.js (cualquier usuario de GitHub con derechos de commit en el repositorio `nodejs/node`) está autorizado para aprobar el trabajo de cualquier otro colaborador. Los colaboradores no pueden aprobar sus propias Pull Requests.
 
-Collaborators indicate that they have reviewed and approve of the changes in a Pull Request either by using GitHub's Approval Workflow, which is preferred, or by leaving an `LGTM` ("Looks Good To Me") comment.
+Los colaboradores indican que han revisado y aprobado los cambios en una Pull Request, ya sea utilizando el Flujo de Trabajo de Aprobación de GitHub, que es el preferido, o dejando un comentario `LGTM` (Siglas de "me parece bien a mí" en inglés).
 
-When explicitly using the "Changes requested" component of the GitHub Approval Workflow, show empathy. That is, do not be rude or abrupt with your feedback and offer concrete suggestions for improvement, if possible. If you're not sure *how* a particular change can be improved, say so.
+Cuando utilice explícitamente el componente "Cambios solicitados" del Flujo de Trabajo de Aprobación de GitHub, muestre empatía. Es decir, no sea grosero o abrupto con su feedback y ofrezca sugerencias concretas para mejorar, si es posible. Si no está seguro de *cómo* puede mejorar un cambio en particular, dígalo.
 
-Most importantly, after leaving such requests, it is courteous to make yourself available later to check whether your comments have been addressed.
+Lo más importante es que, después de dejar tales solicitudes, es cortés estar disponible más tarde para verificar si se han abordado sus comentarios.
 
-If you see that requested changes have been made, you can clear another collaborator's `Changes requested` review.
+Si ve que se han realizado los cambios solicitados, puede borrar la revisión `Changes requested` de otro colaborador.
 
 Change requests that are vague, dismissive, or unconstructive may also be dismissed if requests for greater clarification go unanswered within a reasonable period of time.
 

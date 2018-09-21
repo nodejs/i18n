@@ -562,7 +562,7 @@ changes:
   * `gid` {number} Imposta l'identità di gruppo (group identity) del processo. (Vedi setgid(2)).
   * `timeout` {number} La quantità massima di tempo in millisecondi in cui il processo può essere eseguito. **Default:** `undefined`.
   * `killSignal` {string|integer} Il valore del segnale da utilizzare quando il processo generato verrà arrestato. **Default:** `'SIGTERM'`.
-  * `maxBuffer` {number} La quantità maggiore di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} La quantità massima di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `encoding` {string} L'encoding (codifica) utilizzata per tutti gli input e gli output stdio. **Default:** `'buffer'`.
   * `windowsHide` {boolean} Nasconde la finestra della console di sottoprocesso che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
 * Restituisce: {Buffer|string} Lo stdout dal comando.
@@ -604,7 +604,7 @@ changes:
   * `gid` {number} Imposta l'identità di gruppo (group identity) del processo (vedi setgid(2)).
   * `timeout` {number} La quantità massima di tempo in millisecondi in cui il processo può essere eseguito. **Default:** `undefined`.
   * `killSignal` {string|integer} Il valore del segnale da utilizzare quando il processo generato verrà arrestato. **Default:** `'SIGTERM'`.
-  * `maxBuffer` {number} La quantità maggiore di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `maxBuffer` {number} La quantità massima di dati in byte consentiti su stdout o stderr. Se superata, il processo child viene concluso. Vedi avvertenze su [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
   * `encoding` {string} L'encoding (codifica) utilizzata per tutti gli input e gli output stdio. **Default:** `'buffer'`.
   * `shell` {boolean|string} Se `true`, esegue `command` all'interno di una shell. Utilizza `'/bin/sh'` su UNIX, e `process.env.ComSpec` su Windows. Una shell diversa può essere specificata come una stringa. Vedi [Requisiti della Shell](#child_process_shell_requirements) e [Shell Default di Windows](#child_process_default_windows_shell). **Default:** `false` (nessuna shell).
   * `windowsVerbatimArguments` {boolean} Non viene eseguita nessuna citazione od escaping degli argomenti su Windows. Ignorato su Unix. È impostato su `true` automaticamente quando la `shell` è specificata. **Default:** `false`.
@@ -678,7 +678,7 @@ L'evento `'exit'` viene emesso al termine del processo child. Se il processo è 
 
 Da notare che quando viene attivato l'evento `'exit'`, gli stream stdio del processo child potrebbero essere ancora aperti.
 
-Da notare inoltre che Node.js stabilisce gli handler dei segnali per `SIGINT` e `SIGTERM` e i processi Node.js non terminano immediatamente a causa della mancata ricezione di quei segnali. Anzi, Node.js eseguirà una sequenza di azioni di pulizia e di conseguenza rileverà nuovamente il segnale gestito dagli handler.
+Da notare inoltre che Node.js stabilisce gli handler dei segnali per `SIGINT` e `SIGTERM` e i processi Node.js non terminano immediatamente a causa della ricezione di quei segnali. Anzi, Node.js eseguirà una sequenza di azioni di pulizia e di conseguenza rileverà nuovamente il segnale gestito dagli handler.
 
 Vedi waitpid(2).
 
@@ -875,14 +875,14 @@ Se non viene fornita alcuna funzione `callback` e il messaggio non può essere i
 
 `subprocess.send()` restituirà `false` se il canale è chiuso o quando il backlog dei messaggi non inviati supera una soglia oltre la quale è sconsigliato inviarne altri. Altrimenti, il metodo restituisce `true`. La funzione `callback` può essere utilizzata per implementare il flow control (controllo del flusso).
 
-#### Example: sending a server object
+#### Esempio: invio di un server object
 
-The `sendHandle` argument can be used, for instance, to pass the handle of a TCP server object to the child process as illustrated in the example below:
+L'argomento `sendHandle` può essere utilizzato, ad esempio, per passare l'handle di un server object TCP al processo child come mostrato di seguito:
 
 ```js
 const subprocess = require('child_process').fork('subprocess.js');
 
-// Open up the server object and send the handle.
+// Apri il server object ed invia l'handle.
 const server = require('net').createServer();
 server.on('connection', (socket) => {
   socket.end('handled by parent');
@@ -892,7 +892,7 @@ server.listen(1337, () => {
 });
 ```
 
-The child would then receive the server object as:
+Quindi il child riceverà il server object come:
 
 ```js
 process.on('message', (m, server) => {
@@ -904,51 +904,50 @@ process.on('message', (m, server) => {
 });
 ```
 
-Once the server is now shared between the parent and child, some connections can be handled by the parent and some by the child.
+Una volta che il server viene condiviso tra parent e child, alcune connessioni possono essere gestite dal parent ed altre dal child.
 
-While the example above uses a server created using the `net` module, `dgram` module servers use exactly the same workflow with the exceptions of listening on a `'message'` event instead of `'connection'` and using `server.bind()` instead of `server.listen()`. This is, however, currently only supported on UNIX platforms.
+Mentre l'esempio precedente utilizza un server creato tramite il modulo `net`, i server del modulo `dgram` usano esattamente lo stesso workflow fatta eccezione per l'ascolto dell'evento `'message'` al posto di `'connection'` e per l'utilizzo di `server.bind()` al posto di `server.listen()`. Tuttavia attualmente è supportato solo su piattaforme UNIX.
 
-#### Example: sending a socket object
+#### Esempio: invio di un socket object
 
-Similarly, the `sendHandler` argument can be used to pass the handle of a socket to the child process. The example below spawns two children that each handle connections with "normal" or "special" priority:
+Allo stesso modo, l'argomento `sendHandler` può essere utilizzato per passare l'handle di un socket al processo child. L'esempio seguente genera due children che gestiscono rispettivamente le connessioni con priorità "normal" o "special":
 
 ```js
 const { fork } = require('child_process');
 const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
-// Open up the server and send sockets to child. Use pauseOnConnect to prevent
-// the sockets from being read before they are sent to the child process.
+// Apri il server e invia i socket al child. Utilizza pauseOnConnect per impedire la lettura 
+// dei socket prima che vengano inviati al processo child.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
 
-  // If this is special priority
+  // Se questa è una priorità special
   if (socket.remoteAddress === '74.125.127.100') {
     special.send('socket', socket);
     return;
   }
-  // This is normal priority
+  // Questa è una priorità normal
   normal.send('socket', socket);
 });
 server.listen(1337);
 ```
 
-The `subprocess.js` would receive the socket handle as the second argument passed to the event callback function:
+Il `subprocess.js` riceverà l'handle del socket come secondo argomento passato alla funzione callback dell'evento:
 
 ```js
 process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
-      // Check that the client socket exists.
-      // It is possible for the socket to be closed between the time it is
-      // sent and the time it is received in the child process.
+      // Verifica che il client socket esista.
+      // È possibile che il socket venga chiuso dal momento in cui viene inviato fino a quando non viene ricevuto nel processo child.
       socket.end(`Request handled with ${process.argv[2]} priority`);
     }
   }
 });
 ```
 
-Once a socket has been passed to a child, the parent is no longer capable of tracking when the socket is destroyed. To indicate this, the `.connections` property becomes `null`. It is recommended not to use `.maxConnections` when this occurs.
+Una volta che un socket viene passato a un child, il parent non è più in grado di rilevare quando tale socket viene distrutto. Per indicare ciò, la proprietà `.connections` diventa `null`. Si consiglia di non utilizzare `.maxConnections` quando questo si verifica.
 
 It is also recommended that any `'message'` handlers in the child process verify that `socket` exists, as the connection may have been closed during the time it takes to send the connection to the child.
 

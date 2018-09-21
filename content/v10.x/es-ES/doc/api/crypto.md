@@ -1205,7 +1205,7 @@ El `password` es usado para derivar la clave cifrada y el vector de inicializaci
 
 La implementación de `crypto.createCipher()` deriva claves usando la función de OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario ya que la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptograficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Se emite una advertencia cuando se usan a fin de evitar el riesgo de reutilización IV que causa vulnerabilidades. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][], se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createCipheriv()`][] para crear el objeto `Cipher`. Los usuarios no deben usar cifrados con modo contador (por ejemplo CTR, GCM, o CCM) en `crypto.createCipher()`. Se emite una advertencia cuando se usan a fin de evitar el riesgo de reutilización IV que causa vulnerabilidades. Para el caso en que IV es reutilizado en GCM, para más detalles ver [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect).
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1225,15 +1225,15 @@ changes:
 - `options` {Object} [`stream.transform` options][]
 - Devuelve: {Cipher}
 
-Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
+Crea y devuelve un objeto `Cipher`, con los `algorithm`, `key` y vector de inicialización (`iv`) dados.
 
 El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
+El `algorithm` es dependiente de OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` es la clave cruda usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser strings `'utf8'` codificadas, [Buffers][`Buffer`], `TypedArray`, o `DataView`. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+Los vectores de inicialización deben ser impredecibles y únicos; idealmente, serán criptográficamente aleatorios. Estos no tienen que ser secretos: los IV son típicamente añadidos a los mensajes de texto cifrado sin cifrar. Puede sonar contradictorio que algo tenga que ser impredecible y único, pero no tenga que ser secreto; es importante recordar que un atacante no debe ser capaz de predecir a futuro cual va a ser el IV dado.
 
 ### crypto.createCredentials(details)
 
@@ -1242,14 +1242,14 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Stability: 0 - Deprecated: Use [`tls.createSecureContext()`][] instead.
+> Estabilidad: 0 - Desaprobado: Usar [`tls.createSecureContext()`][] en su lugar.
 
-- `details` {Object} Identical to [`tls.createSecureContext()`][].
-- Returns: {tls.SecureContext}
+- `details` {Object} Idéntico a [`tls.createSecureContext()`][].
+- Devuelve: {tls.SecureContext}
 
-The `crypto.createCredentials()` method is a deprecated function for creating and returning a `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
+El método `crypto.createCredentials()` es una función desaprobada para crear y devolver un `tls.SecureContext`. No debe ser usada. Reemplácelo con [`tls.createSecureContext()`][] el cual tiene exactamente los mismos argumentos y valor de retorno.
 
-Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been called.
+Devuelve un `tls.SecureContext`, como si [`tls.createSecureContext()`][] hubiera sido llamado.
 
 ### crypto.createDecipher(algorithm, password[, options])
 
@@ -1258,20 +1258,20 @@ added: v0.1.94
 deprecated: v10.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createDecipheriv()`][] instead.
+> Estabilidad: 0 - Desaprobado: Usar [`crypto.createDecipheriv()`][] en su lugar.
 
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Decipher}
+- Devuelve: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
+Crea y devuelve un objeto `Decipher` que usa los `algorithm` y `password` (clave) dados.
 
 El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The implementation of `crypto.createDecipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+La implementación de `crypto.createDecipher()` deriva claves usando la función OpenSSL [`EVP_BytesToKey`][] con el algoritmo de resumen establecido en MD5, una iteración, y sin sal. La falta de sal permite ataques de diccionario ya que la misma contraseña siempre crea la misma clave. El bajo conteo de iteraciones y el algoritmo hash no-criptográficamente seguro permite que las contraseñas sean probadas rápidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
+De acuerdo con las recomendaciones de OpenSSL para usar PBKDF2 en vez de [`EVP_BytesToKey`][] se recomienda que los desarrolladores deriven una clave y un IV por su cuenta usando [`crypto.pbkdf2()`][] y usen [`crypto.createDecipheriv()`][] para crear el objeto `Decipher`.
 
 ### crypto.createDecipheriv(algorithm, key, iv[, options])
 
@@ -1289,17 +1289,17 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Decipher}
+- Devuelve: {Decipher}
 
-Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
+Crea y devuelve un objeto `Decipher` que usa los `algorithm`, `key` y vector de inicialización (`iv`) dados.
 
 El argumento `options` controla el comportamiento stream y es opcional, exceptuando cuando un un cifrado en modo CCM es usado (por ejemplo `'aes-128-ccm'`). En ese caso, la opción `authTagLength` es requerida y especifica la longitud de la etiqueta de autenticación en bytes, ver [CCM mode](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
+El `algorithm` es dependiente de OpenSSL, los ejemplos son `'aes192'`, etc. En versiones recientes OpenSSL, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
+La `key` es la clave cruda usada por el `algorithm` y `iv` es un [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Ambos argumentos deben ser strings `'utf8'` codificadas, [Buffers][`Buffer`], `TypedArray`, o `DataView`s. Si el cifrado no necesita un vector de inicialización, entonces `iv` puede ser `null`.
 
-Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
+Los vectores de inicialización deben ser impredecibles y únicos; idealmente, serán criptográficamente aleatorios. Estos no tienen que ser secretos: los IV son típicamente añadidos a los mensajes de texto cifrado sin cifrar. Puede sonar contradictorio que algo tenga que ser impredecible y único, pero no tenga que ser secreto; es importante recordar que un atacante no debe ser capaz de predecir a futuro cual va a ser el IV dado.
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
 
@@ -1324,15 +1324,15 @@ changes:
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 - `generatorEncoding` {string}
 
-Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
+Crea un objeto de intercambio de claves `DiffieHellman` usando el `prime` proporcionado y un `generator` opcional específico.
 
-The `generator` argument can be a number, string, or [`Buffer`][]. If `generator` is not specified, the value `2` is used.
+El argumento `generator` puede ser un número, string, o un [`Buffer`][]. Si `generator` no es especificado, el valor `2` es usado.
 
-The `primeEncoding` and `generatorEncoding` arguments can be `'latin1'`, `'hex'`, or `'base64'`.
+Los argumentos `primeEncoding` y `generatorEncoding` pueden ser `'latin1'`, `'hex'`, o `'base64'`.
 
-If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Si `primeEncoding` es especificado, se espera que `prime` sea una string; de no ser así, se espera que sea un [`Buffer`][], `TypedArray`, o `DataView`.
 
-If `generatorEncoding` is specified, `generator` is expected to be a string; otherwise a number, [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Si `generatorEncoding` es especificado, se espera que `generator` sea una string; de no ser así, se espera un número, [`Buffer`][], `TypedArray`, o `DataView`.
 
 ### crypto.createDiffieHellman(primeLength[, generator])
 
@@ -1343,7 +1343,7 @@ added: v0.5.0
 - `primeLength` {number}
 - `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 
-Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
+Crea un objeto de intercambio de claves `DiffieHellman` y genera un prime de `primeLength` bits usando un `generator` numérico opcional específico. Si `generator` no es especificado, el valor `2` es usado.
 
 ### crypto.createECDH(curveName)
 
@@ -1353,7 +1353,7 @@ added: v0.11.14
 
 - `curveName` {string}
 
-Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Crea un objeto de intercambio de claves de Curva Elíptica Diffie-Hellman (`ECDH`) usando una curva predefinida específicada por la string `curveName`. Use [`crypto.getCurves()`][] para obtener una lista de nombres de curvas disponibles. En las últimas versiones OpenSSL, `openssl ecparam -list_curves` también mostrará el nombre y la descripción de cada curva elíptica disponible.
 
 ### crypto.createHash(algorithm[, options])
 
@@ -1363,13 +1363,13 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Hash}
+- Devuelve: {Hash}
 
-Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
+Crea y devuelve un objeto `Hash` que puede ser usado para generar resúmenes hash usando el `algorithm` dado. El argumento opcional `options` controla el comportamiento stream.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` for older versions of OpenSSL) will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Los ejemplos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-Example: generating the sha256 sum of a file
+Ejemplo: generando la suma sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1398,15 +1398,15 @@ added: v0.1.94
 - `algorithm` {string}
 - `key` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Returns: {Hmac}
+- Devuelve: {Hmac}
 
-Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
+Crea y devuelve un objeto `Hmac` que usa el `algorithm` y la `key` dados. El argumento opcional `options` controla el comportamiento stream.
 
-The `algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha256'`, `'sha512'`, etc. On recent releases of OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` for older versions of OpenSSL) will display the available digest algorithms.
+El `algorithm` es dependiente de los algoritmos disponibles respaldados por la versión de OpenSSL en la plataforma. Los ejemplos son `'sha256'`, `'sha512'`, etc. En versiones recientes de OpenSSL, `openssl list -digest-algorithms` (`openssl list-message-digest-algorithms` para versiones antiguas de OpenSSL) va a mostrar los algoritmos de cifrado disponibles.
 
-The `key` is the HMAC key used to generate the cryptographic HMAC hash.
+La `key` es la clave HMAC usada para generar el hash criptográfico HMAC.
 
-Example: generating the sha256 HMAC of a file
+Ejemplo: generando la HMAC sha256 de un archivo
 
 ```js
 const filename = process.argv[2];
@@ -1434,9 +1434,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Sign}
+- Devuelve: {Sign}
 
-Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y devuelve un objeto `Sign` que usa el `algorithm` dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres de los algoritmos de firma disponibles. El argumento opcional `options` controla el comportamiento `stream.Writable`.
 
 ### crypto.createVerify(algorithm[, options])
 
@@ -1446,9 +1446,9 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Returns: {Verify}
+- Devuelve: {Verify}
 
-Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea y devuelve un objeto `Verify` que usa el algoritmo dado. Use [`crypto.getHashes()`][] para obtener una matriz de nombres disponibles de los algoritmos de firma disponibles. El argumento opcional `options` controla el comportamiento `stream.Writable`.
 
 ### crypto.getCiphers()
 
@@ -1456,9 +1456,9 @@ Creates and returns a `Verify` object that uses the given algorithm. Use [`crypt
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array with the names of the supported cipher algorithms.
+- Devuelve: {string[]} Una matriz con los nombres de los algoritmos de cifrado respaldados.
 
-Example:
+Ejemplo:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1471,9 +1471,9 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-- Returns: {string[]} An array with the names of the supported elliptic curves.
+- Devuelve: {string[]} Una matriz con los nombres de las curvas elípticas respaldadas.
 
-Example:
+Ejemplo:
 
 ```js
 const curves = crypto.getCurves();
@@ -1487,11 +1487,11 @@ added: v0.7.5
 -->
 
 - `groupName` {string}
-- Returns: {Object}
+- Devuelve: {Object}
 
-Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un objeto de intercambio de claves `DiffieHellman` predefinido. Los grupos respaldados son: `'modp1'`, `'modp2'`, `'modp5'` (definidos en [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), pero ver [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) y `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (definidos en [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). El objeto devuelto imita la interfaz de objetos creados por [`crypto.createDiffieHellman()`][], pero no va a permitir cambios de las claves (con [`diffieHellman.setPublicKey()`][] por ejemplo). La ventaja de usar este método es que las partes no tienen que generar ni intercambiar un grupo de módulos de antemano, ahorrando tiempo de procesador y de comunicación.
 
-Example (obtaining a shared secret):
+Ejemplo (obteniendo un secreto compartido):
 
 ```js
 const crypto = require('crypto');
@@ -1524,7 +1524,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
 
-Example:
+Ejemplo:
 
 ```js
 const hashes = crypto.getHashes();
