@@ -939,19 +939,19 @@ https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 * unix: remover dependencia en ev_child (Ben Noordhuis)
 * unix: solucionar bug de darwin, no hacer poll() en pipe (Fedor Indutny)
 * util: Desaprobar formalmente a util.pump() (Ben Noordhuis)
-* windows: make active and closing handle state independent (Bert Belder)
-* windows: report spawn errors to the exit callback (Bert Belder)
-* windows: signal handling support with uv_signal_t (Bert Belder)
+* windows: hacer independientes a estados "activo" y de "clausura" de los handles (Bert Belder)
+* windows: reportar errores de spawn al callback de salida (Bert Belder)
+* windows: soporte para el manejo de señales con uv_signal_t (Bert Belder)
 
 <a id="0.9.0"></a>
 
-## 2012.07.20, Version 0.9.0 (Unstable)
+## 2012.07.20, Versión 0.9.0 (Inestable)
 
 https://github.com/nodejs/node/commit/f9b237f478c372fd55e4590d7399dcd8f25f3603
 
-* punycode: update to v1.1.1 (Mathias Bynens)
-* c-ares: upgrade to 1.9.0 (Saúl Ibarra Corretgé)
-* dns: ignore rogue DNS servers reported by windows (Saúl Ibarra Corretgé)
+* punycode: actualizar a v1.1.1 (Mathias Bynens)
+* c-ares: actualizar a 1.9.0 (Saúl Ibarra Corretgé)
+* dns: ignorar servidores rogue de DNS reportados por windows (Saúl Ibarra Corretgé)
 * unix: speed up uv_async_send() (Ben Noordhuis)
 * darwin: get cpu model correctly on mac (Xidorn Quan)
 * nextTick: Handle tick callbacks before any other I/O (isaacs)
