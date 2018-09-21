@@ -122,7 +122,7 @@ added: v6.3.0
 
 Attiva l'inspector su `host:port`. L'impostazione predefinita è `127.0.0.1:9229`.
 
-V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+L'integrazione del V8 Inspector consente agli strumenti come Chrome DevTools e gli IDE di eseguire il debug e creare il profilo delle istanze Node.js. Gli strumenti si collegano alle istanze Node.js tramite una porta tcp e comunicano tramite il [Protocollo Chrome DevTools](https://chromedevtools.github.io/devtools-protocol/).
 
 ### `--napi-modules`
 
@@ -130,7 +130,7 @@ V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug 
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+Quest'opzione è un no-op (no operation). E' tenuta per la compatibilità.
 
 ### `--no-deprecation`
 
@@ -138,7 +138,7 @@ This option is a no-op. It is kept for compatibility.
 added: v0.8.0
 -->
 
-Silence deprecation warnings.
+Silenzia gli avvisi di deprecazione.
 
 ### `--no-force-async-hooks-checks`
 
@@ -146,7 +146,7 @@ Silence deprecation warnings.
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Disabilita i controlli runtime per gli `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
 
 ### `--no-warnings`
 
