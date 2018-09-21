@@ -486,7 +486,7 @@ changes:
 * `callback` {Function}
 * Devuelve: {this}
 
-Termina de enviar la solicitud. If any parts of the body are unsent, it will flush them to the stream. Si la solicitud es fragmentada, esto enviará la `'0\r\n\r\n'` de terminación.
+Termina de enviar la solicitud. Si no se envía alguna de las partes del cuerpo, se vaciarán hacia el stream. Si la solicitud es fragmentada, esto enviará la `'0\r\n\r\n'` de terminación.
 
 Si se especifica `data`, es equivalente a llamar a [`request.write(data, encoding)`][] seguido de `request.end(callback)`.
 
@@ -498,7 +498,7 @@ Si se especifica `callback`, será llamado cuando el stream de solicitud haya fi
 added: v1.6.0
 -->
 
-Flush the request headers.
+Vaciar las cabeceras de solicitud.
 
 For efficiency reasons, Node.js normally buffers the request headers until `request.end()` is called or the first chunk of request data is written. It then tries to pack the request headers and data into a single TCP packet.
 
@@ -892,7 +892,7 @@ La respuesta implementa, pero no hereda, la interfaz del [Stream Editable](strea
 added: v0.6.7
 -->
 
-Indicates that the underlying connection was terminated before [`response.end()`][] was called or able to flush.
+Indica que la conexión subyacente fue terminada antes de que [`response.end()`][] fuese llamado, o antes de que se hubiera podido vaciar.
 
 ### Evento: 'finish'
 
@@ -1217,7 +1217,7 @@ Esto envía una parte del cuerpo de la respuesta. Este método puede ser llamado
 
 Tenga en cuenta que en el módulo `http`, el cuerpo de respuesta se omite cuando la solicitud es una solicitud HEAD. Asimismo, las respuestas `204` y `304` *no deben* incluir un cuerpo de mensaje.
 
-`chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. `callback` will be called when this chunk of data is flushed.
+`chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. `callback` será llamado cuando este fragmento de datos sea vaciado.
 
 Este es el cuerpo crudo de HTTP y no tiene nada qué ver con las codificaciones de cuerpo de partes múltiples y de alto nivel que pueden ser utilizadas.
 
@@ -1687,7 +1687,7 @@ changes:
     * objeto `Agent`: utiliza explícitamente lo que fue pasado en `Agent`.
     * `false`: hace que un nuevo `Agent` con valores predeterminados sea utilizado.
   * `createConnection` {Function} Una función que produce un socket/stream para ser utilizado para la solicitud cuando no se utilice la opción `agent` . Esto puede ser utilizado para evitar crear una clase `Agent` personalizada solo para anular la función `createConnection` predeterminada. Vea [`agent.createConnection()`][] para más detalles. Cualquier stream [`Duplex`][] es un valor válido.
-  * `timeout` {number}: Un número que especifica el tiempo de espera del socket en milisegundos. This will set the timeout before the socket is connected.
+  * `timeout` {number}: Un número que especifica el tiempo de espera del socket en milisegundos. Esto establecerá el tiempo de espera antes de que el socket se conecte.
   * `setHost` {boolean}: Especifica si se agrega automáticamente a la cabecera `Host` o no. Por defecto es `true`.
 * `callback` {Function}
 * Devuelve: {http.ClientRequest}
