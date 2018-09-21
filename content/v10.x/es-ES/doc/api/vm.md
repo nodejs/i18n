@@ -138,10 +138,10 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 
 * `code` {string} Código del Módulo JavaScript para analizar
 * `options` 
-  * `url` {string} URL utilizado en la resolución de módulo y seguimiento de pila. **Predeterminado:** `'vm:module(i)'` donde `i` es un índice ascendente de contexto específico.
+  * `url` {string} URL utilizado en la resolución de módulo y stack traces. **Predeterminado:** `'vm:module(i)'` donde `i` es un índice ascendente de contexto específico.
   * `context` {Object} El objeto [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) como es devuelto por el método `vm.createContext()`, para compilar y evaluar este `Module`.
-  * `lineOffset` {integer} Especifica el desplazamiento del número de línea que se muestra en los seguimientos de pila producidos por este `Module`.
-  * `columnOffset` {integer} Especifica el desplazamiento del número de columna que se muestra en los seguimientos de pila producidos por este `Modulo`.
+  * `lineOffset` {integer} Especifica el desplazamiento del número de línea que se muestra en los stack traces producidos por este `Module`.
+  * `columnOffset` {integer} Especifica el desplazamiento del número de columna que se muestra en los stack traces producidos por este `Modulo`.
   * `initalizeImportMeta` {Function} Llamada durante la evaluación de este `Module` para inicializar el `import.meta`. Esta función tiene la firma `(meta,
 module)`, donde `meta` es el objeto `import.meta` en el `Module`, y `module` es este objeto `vm.Module`.
 
@@ -207,7 +207,7 @@ El estatus de vinculación actual del `module`. Será uno de los siguientes valo
 * `'unlinked'`: `module.link()` todavía no ha sido llamado.
 * `'linking'`: `module.link()` ha sido llamado, pero no todas las Promesas devueltas por la función del enlazador han sido resueltas todavía.
 * `'linked'`: `module.link()` ha sido llamado, y todas sus dependencias han sido exitosamente enlazadas.
-* `'errored'`: `module.link()` ha sido llamado, pero al menos una de sus dependencia falló al enlazarse, ya sea porque la devolución retornó una `Promise` que se rechazó, o porque el `Module` de la devolución retornada es inválido.
+* `'errored'`: `module.link()` ha sido llamado, pero al menos una de sus dependencias falló al enlazarse, ya sea porque el callback retornó una `Promise` que se rechaza, o porque el `Module` que el callback retornó es inválido.
 
 ### module.namespace
 
