@@ -399,8 +399,8 @@ https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 * configure: add --openssl-no-asm flag (Fedor Indutny)
 * crypto: usa dominios para cualquier método de atender callback (Chris Dickinson)
 * http: no enviar `0\r\n\r\n` en respuestas TE HEAD (Fedor Indutny)
-* querystring: fix unescape override (Tristan Berger)
-* url: Add support for RFC 3490 separators (Mathias Bynens)
+* querystring: repara la anulación unescape (Tristan Berger)
+* url: Añade soporte para los separadores RFC 3490 (Mathias Bynens)
 
 <a id="0.10.31"></a>
 
@@ -411,7 +411,7 @@ https://github.com/nodejs/node/commit/7fabdc23d843cb705d2d0739e7bbdaaf50aa3292
 * v8: backport CVE-2013-6668
 * openssl: Update to v1.0.1i
 * npm: Update to v1.4.23
-* cluster: disconnect should not be synchronous (Sam Roberts)
+* cluster: la desconexión no debe ser sincrónica (Sam Roberts)
 * fs: fix fs.readFileSync fd leak when get RangeError (Jackson Tian)
 * stream: fix Readable.wrap objectMode falsy values (James Halliday)
 * timers: fix timers with non-integer delay hanging. (Julien Gilli)
@@ -424,9 +424,9 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 
 * uv: Upgrade to v0.10.28
 * npm: Upgrade to v1.4.21
-* v8: Interrupts must not mask stack overflow.
-* Revert "stream: start old-mode read in a next tick" (Fedor Indutny)
-* buffer: fix sign overflow in `readUIn32BE` (Fedor Indutny)
+* v8: Interrupciones no deben enmascarar el stack overflow.
+* Revertido "stream: inicia el viejo-modo de lectura en el próximo tick" (Fedor Indutny)
+* buffer: repara señal de desbordamiento en `readUIn32BE` (Fedor Indutny)
 * buffer: improve {read,write}{U}Int* methods (Nick Apperson)
 * child_process: handle writeUtf8String error (Fedor Indutny)
 * deps: backport 4ed5fde4f from v8 upstream (Fedor Indutny)
@@ -447,7 +447,7 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 
 * openssl: to 1.0.1h (CVE-2014-0224)
 * npm: upgrade to 1.4.14
-* utf8: Prevent Node from sending invalid UTF-8 (Felix Geisendörfer)
+* utf8: Previene al Nodo de enviar un UTF-8 inválido (Felix Geisendörfer)
   
   * *NOTE* this introduces a breaking change, previously you could construct invalid UTF-8 and invoke an error in a client that was expecting valid UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8 character. To restore the old functionality simply have NODE_INVALID_UTF8 environment variable set.
 
