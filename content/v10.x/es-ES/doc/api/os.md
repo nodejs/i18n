@@ -783,11 +783,11 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
-    <td>Indicates that there are no stream resources available.</td>
+    <td>Indica que no hay recursos del stream disponibles.</td>
   </tr>
   <tr>
     <td><code>ENOSTR</code></td>
-    <td>Indicates that a given resource is not a stream.</td>
+    <td>Indica que un recurso dado no es un stream.</td>
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
