@@ -793,29 +793,29 @@ Por ejemplo: `'#hash'`.
 
 #### urlObject.host
 
-The `host` property is the full lower-cased host portion of the URL, including the `port` if specified.
+La propiedad `host` es la porción del host completa en minúsculas de la URL, incluyendo el `port` si es especificado.
 
-For example: `'sub.host.com:8080'`.
+Por ejemplo: `'sub.host.com:8080'`.
 
 #### urlObject.hostname
 
-The `hostname` property is the lower-cased host name portion of the `host` component *without* the `port` included.
+La propiedad `hostname` es la porción del host completa en minúsculas del componente `host` *sin* el `puerto` incluido.
 
-For example: `'sub.host.com'`.
+Por ejemplo: `'sub.host.com'`.
 
 #### urlObject.href
 
-The `href` property is the full URL string that was parsed with both the `protocol` and `host` components converted to lower-case.
+La propiedad `href` es la string URL completa que fue analizada con ambos componentes `protocol` y `protocol` convertidos a minúscula.
 
-For example: `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`.
+Por ejemplo: `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`.
 
 #### urlObject.path
 
-The `path` property is a concatenation of the `pathname` and `search` components.
+La propiedad `path` es una concatenación de los componentes `pathname` y `search`.
 
-For example: `'/p/a/t/h?query=string'`.
+Por ejemplo: `'/p/a/t/h?query=string'`.
 
-No decoding of the `path` is performed.
+No se realiza la decodificación del `path`.
 
 #### urlObject.pathname
 
