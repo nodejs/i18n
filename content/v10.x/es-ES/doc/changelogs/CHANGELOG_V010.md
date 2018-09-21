@@ -214,7 +214,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 <a id="0.10.42"></a>
 
-## 2016-02-09, Version 0.10.42 (Maintenance), @jasnell
+## 2016-02-09, Versión 0.10.42 (Mantenimiento), @jasnell
 
 Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para detalles de vulnerabilidades parcheadas.
 
