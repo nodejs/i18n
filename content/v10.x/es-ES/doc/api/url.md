@@ -897,11 +897,11 @@ El proceso de formateo funciona de la siguiente forma:
 * Si `urlObject.protocol` es una string, es adjuntada de esta manera a `result`.
 * De lo contrario, si `urlObject.protocol` no es `undefined` y no es una string, se produce un [`Error`][].
 * Para todos los valores de string de `urlObject.protocol` que *no terminan* con un carácter ASCII de dos puntos (`:`), la string literal `:` será adjuntada a `result`.
-* If either of the following conditions is true, then the literal string `//` will be appended to `result`: * `urlObject.slashes` property is true; * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
-* If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
-* If the `urlObject.host` property is `undefined` then: 
-  * If the `urlObject.hostname` is a string, it is appended to `result`.
-  * Otherwise, if `urlObject.hostname` is not `undefined` and is not a string, an [`Error`][] is thrown.
+* Si cualquiera de las siguientes condiciones son ciertas, entonces el string literal `//` será adjuntado a `result`: * La propiedad `urlObject.slashes` es cierta; * `urlObject.protocol` comienza con `http`, `https`, `ftp`, `gopher`, o `file`;
+* Si el valor de la propiedad `urlObject.auth` es cierto, y ya sea `urlObject.host` o `urlObject.hostname` no son `undefined`, el valor de `urlObject.auth` será forzado a una string y adjuntado a `result`, seguido de la string literal `@`.
+* Si la propiedad `urlObject.host` es `undefined`, entonces: 
+  * Si `urlObject.hostname` es una string, es adjuntada a `result`.
+  * De lo contrario, si `urlObject.hostname` no es `undefined` y no es una string, se produce un [`Error`][].
   * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`: 
     * The literal string `:` is appended to `result`, and
     * The value of `urlObject.port` is coerced to a string and appended to `result`.
