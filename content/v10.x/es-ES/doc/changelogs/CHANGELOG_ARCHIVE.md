@@ -1037,33 +1037,33 @@ https://github.com/nodejs/node/commit/53978bdf420622ff0121c63c0338c9e7c2e60869
 * npm: Actualizar a v1.2.10
 * zlib: pasar pista sobre tamaño del objeto a V8 (Ben Noordhuis)
 * zlib: reducir consumo de memoria, soltar tempranamente (Ben Noordhuis)
-* buffer: slow buffer copy compatibility fix (Trevor Norris)
-* zlib: don't assert on malformed dictionary (Ben Noordhuis)
-* zlib: don't assert on missing dictionary (Ben Noordhuis)
-* windows: better ipv6 support (Bert Belder)
-* windows: add error mappings related to unsupported protocols (Bert Belder)
-* windows: map ERROR_DIRECTORY to UV_ENOENT (Bert Belder)
+* buffer: reparación de compatibilidad de la copia de slow buffer (Trevor Norris)
+* zlib: no hacer aserción ante diccionario malformado (Ben Noordhuis)
+* zlib: no hacer aserción ante diccionario faltante (Ben Noordhuis)
+* windows: mejorar soporte para ipv6 (Bert Belder)
+* windows: añadir mapeos de errores relacionados con protocolos no soportados (Bert Belder)
+* windows: mapear ERROR_DIRECTORY a UV_ENOENT (Bert Belder)
 
 <a id="0.8.18"></a>
 
-## 2013.01.18, Version 0.8.18 (Stable)
+## 2013.01.18, Versión 0.8.18 (Estable)
 
 https://github.com/nodejs/node/commit/2c4eef0d972838c51999d32c0d251857a713dc18
 
-* npm: Upgrade to v1.2.2
-* dns: make error message match errno (Dan Milon)
-* tls: follow RFC6125 more strictly (Fedor Indutny)
-* buffer: reject negative SlowBuffer offsets (Ben Noordhuis)
-* install: add simplejson fallback (Chris Dent)
-* http: fix "Cannot call method 'emit' of null" (Ben Noordhuis)
+* npm: Actualizar a v1.2.2
+* dns: hacer que mensaje de error coincida con errno (Dan Milon)
+* tls: seguir a RFC6125 más estrictamente (Fedor Indutny)
+* buffer: rechazar offsets de SlowBuffer negativos (Ben Noordhuis)
+* install: añadir contingencia para simplejson (Chris Dent)
+* http: reparar "Cannot call method 'emit' of null" (Ben Noordhuis)
 
 <a id="0.8.17"></a>
 
-## 2013.01.09, Version 0.8.17 (Stable)
+## 2013.01.09, Versión 0.8.17 (Estable)
 
 https://github.com/nodejs/node/commit/c50c33e9397d7a0a8717e8ce7530572907c054ad
 
-* npm: Upgrade to v1.2.0
+* npm: Actualizar a v1.2.0
   
   * peerDependencies (Domenic Denicola)
   * node-gyp v0.8.2 (Nathan Rajlich)
