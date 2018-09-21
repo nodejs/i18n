@@ -246,7 +246,7 @@ Aparte de `'errored'`, esta cadena de estatus corresponde al campo de `[[Status]
 
 * {string}
 
-El URL del módulo actual, como se configura e el constructor.
+El URL del módulo actual, como se configura en el constructor.
 
 ### module.evaluate([options])
 
