@@ -54,7 +54,7 @@ Se viene passato questo flag, si può ancora impostare il comportamento in modo 
 added: v6.0.0
 -->
 
-Abilita all'avvio la crittografia conforme al FIPS. (Richiede che Node.js sia compilato con `./configure --openssl-fips`.)
+Abilita la crittografia conforme al FIPS all'avvio. (Richiede che Node.js sia compilato con `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -86,7 +86,7 @@ Abilita il supporto del modulo ES sperimentale nel modulo `vm`.
 added: v6.0.0
 -->
 
-Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
+Forza la crittografia conforme al FIPS all'avvio. (Non può essere disabilitato dallo script code.) (Stessi requisiti di `--enable-fips`.)
 
 ### `--icu-data-dir=file`
 
@@ -94,7 +94,7 @@ Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (
 added: v0.11.15
 -->
 
-Specify ICU data load path. (Overrides `NODE_ICU_DATA`.)
+Specifica il percorso di caricamento dei dati ICU. (`NODE_ICU_DATA` viene sottoposto all'override.)
 
 ### `--inspect-brk[=[host:]port]`
 
