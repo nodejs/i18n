@@ -1089,15 +1089,15 @@ https://github.com/nodejs/node/commit/1c9c6277d5cfcaaac8569c0c8f7daa64292048a9
 
 <a id="0.8.15"></a>
 
-## 2012.11.26, Version 0.8.15 (Stable)
+## 2012.11.26, Versión 0.8.15 (Estable)
 
 https://github.com/nodejs/node/commit/fdf91afb494a7a2fff2913d817f589c191a2c88f
 
-* npm: Upgrade to 1.1.66 (isaacs)
-* linux: use /proc/cpuinfo for CPU frequency (Ben Noordhuis)
-* windows: map WSAESHUTDOWN to UV_EPIPE (Ben Noordhuis)
-* windows: map ERROR_GEN_FAILURE to UV_EIO (Bert Belder)
-* unix: do not set environ unless one is provided (Charlie McConnell)
+* npm: Actualizar a 1.1.66 (isaacs)
+* linux: usar /proc/cpuinfo para frecuencia del CPU (Ben Noordhuis)
+* windows: mapear WSAESHUTDOWN a UV_EPIPE (Ben Noordhuis)
+* windows: mapear ERROR_GEN_FAILURE a UV_EIO (Bert Belder)
+* unix: no establecer ambiente a menos que uno sea provisto (Charlie McConell)
 * domains: don't crash if domain is set to null (Bert Belder)
 * windows: fix the x64 debug build (Bert Belder)
 * net, tls: fix connect() resource leak (Ben Noordhuis)
