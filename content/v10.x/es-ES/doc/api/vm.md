@@ -213,7 +213,7 @@ El estatus de vinculación actual del `module`. Será uno de los siguientes valo
 
 * {Object}
 
-El objeto de espacio de nombre del módulo. Esto solo está disponible después de que la instantación (`module.instantiate()`) se haya completado.
+El objeto namespace del módulo. Esto solo está disponible después de que la instantación (`module.instantiate()`) se haya completado.
 
 Corresponde a la operación abstracta [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getmodulenamespace) en la especificación de ECMAScript.
 
