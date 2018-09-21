@@ -255,7 +255,7 @@ Security Update
 
 ### Commits
 
-* [16ca0779f5] - src/node.cc: fix build error without OpenSSL support (Jörg Krause) https://github.com/nodejs/node-v0.x-archive/pull/25862
+* [16ca0779f5] - src/node.cc: reparar error de compilación sin soporte de OpenSSL (Jörg Krause) https://github.com/nodejs/node-v0.x-archive/pull/25862
 * [c559c7911d] - build: backport tools/release.sh (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [268d2b4637] - build: backport config for new CI infrastructure (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [c88a0b26da] - build: update manifest to include Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2838
@@ -382,11 +382,11 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 * openssl: Update to 1.0.1j (Addressing multiple CVEs)
 * uv: Update to v0.10.29
 * child_process: properly support optional args (cjihrig)
-* crypto: Disable autonegotiation for SSLv2/3 by default (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
+* crypto: Deshabilita autonegociación para SSLv2/3 de manera predeterminada (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
   
-  This is a behavior change, by default we will not allow the negotiation to SSLv2 or SSLv3. If you want this behavior, run Node.js with either `--enable-ssl2` or `--enable-ssl3` respectively.
+  Este es un cambio de comportamiento, de manera predeterminada no permitiremos la negociación a SSLv2 o SSLv3. Si deseas este comportamiento, ejecuta Node.js con `--enable-ssl2` o `--enable-ssl3`, respectivamente.
   
-  This does not change the behavior for users specifically requesting `SSLv2_method` or `SSLv3_method`. While this behavior is not advised, it is assumed you know what you're doing since you're specifically asking to use these methods.
+  Esto no cambia el comportamiento para los usuarios que estén solicitando específicamente `SSLv2_method` or `SSLv3_method`. Mientras este comportamiento no es recomendado, es asumido que tu sabes lo que estás haciendo dado que tu eres el que lo está pidiendo específicamente para usar estos métodos.
 
 <a id="0.10.32"></a>
 
@@ -395,10 +395,10 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 
 * npm: Update to 1.4.28
-* v8: fix a crash introduced by previous release (Fedor Indutny)
+* v8: repara una falla introducida por una versión previa (Fedor Indutny)
 * configure: add --openssl-no-asm flag (Fedor Indutny)
-* crypto: use domains for any callback-taking method (Chris Dickinson)
-* http: do not send `0\r\n\r\n` in TE HEAD responses (Fedor Indutny)
+* crypto: usa dominios para cualquier método de atender callback (Chris Dickinson)
+* http: no enviar `0\r\n\r\n` en respuestas TE HEAD (Fedor Indutny)
 * querystring: fix unescape override (Tristan Berger)
 * url: Add support for RFC 3490 separators (Mathias Bynens)
 
