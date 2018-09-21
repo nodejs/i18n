@@ -949,7 +949,7 @@ process.on('message', (m, socket) => {
 
 Una volta che un socket viene passato a un child, il parent non è più in grado di rilevare quando tale socket viene distrutto. Per indicare ciò, la proprietà `.connections` diventa `null`. Si consiglia di non utilizzare `.maxConnections` quando questo si verifica.
 
-It is also recommended that any `'message'` handlers in the child process verify that `socket` exists, as the connection may have been closed during the time it takes to send the connection to the child.
+Si consiglia inoltre che qualsiasi `'message'` handler nel processo child verifichi che il `socket` esista, in quanto la connessione potrebbe essere stata chiusa mentre veniva inviata al child.
 
 ### subprocess.stderr
 
@@ -959,11 +959,11 @@ added: v0.1.90
 
 * {stream.Readable}
 
-A `Readable Stream` that represents the child process's `stderr`.
+Un `Readable Stream` che rappresenta lo `stderr` del processo child.
 
-If the child was spawned with `stdio[2]` set to anything other than `'pipe'`, then this will be `null`.
+Se il child è stato generato con `stdio[2]` impostato su un valore diverso da `'pipe'`, allora questo sarà `null`.
 
-`subprocess.stderr` is an alias for `subprocess.stdio[2]`. Both properties will refer to the same value.
+`subprocess.stderr` è un alias per `subprocess.stdio[2]`. Entrambe le proprietà faranno riferimento allo stesso valore.
 
 ### subprocess.stdin
 
@@ -973,13 +973,13 @@ added: v0.1.90
 
 * {stream.Writable}
 
-A `Writable Stream` that represents the child process's `stdin`.
+Un `Writable Stream` che rappresenta lo `stdin` del processo child.
 
-*Note that if a child process waits to read all of its input, the child will not continue until this stream has been closed via `end()`.*
+*Da notare che se un processo child attende la lettura completa del proprio input, il processo non continuerà fino a quando questo stream non sarà stato chiuso tramite `end()`.*
 
-If the child was spawned with `stdio[0]` set to anything other than `'pipe'`, then this will be `null`.
+Se il child è stato generato con `stdio[0]` impostato su un valore diverso da `'pipe'`, allora questo sarà `null`.
 
-`subprocess.stdin` is an alias for `subprocess.stdio[0]`. Both properties will refer to the same value.
+`subprocess.stdin` è un alias per `subprocess.stdio[0]`. Entrambe le proprietà faranno riferimento allo stesso valore.
 
 ### subprocess.stdio
 
