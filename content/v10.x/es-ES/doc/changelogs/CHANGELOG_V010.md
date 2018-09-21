@@ -183,14 +183,14 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 * [feceb77d7e] - deps: actualiza npm en el LTS a 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5968
 * [0847954331] - deps: Deshabilita los cifradores EXPORT y LOW en openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
-* [6bb86e727a] - test: change tls tests not to use LOW cipher (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
-* [905bec29ad] - win,build: support Visual C++ Build Tools 2015 (João Reis) https://github.com/nodejs/node/pull/5627
+* [6bb86e727a] - test: cambia la prueba tls para que no use el cifrador LOW (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* [905bec29ad] - win,build: soporta Visual C++ Build Tools 2015 (João Reis) https://github.com/nodejs/node/pull/5627
 
 <a id="0.10.43"></a>
 
-## 2016-03-04, Version 0.10.43 (Maintenance), @rvagg
+## 2016-03-04, Versión 0.10.43 (Mantenimiento), @rvagg
 
-### Notable changes:
+### Cambios notables:
 
 * http_parser: Actualizar a http-parser 1.2 para reparar una limitación estricta no intencional de caracteres de encabezado permitidos. (James M Snell) https://github.com/nodejs/node/pull/5242
 * dominio: 
@@ -206,8 +206,8 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 * [164157abbb] - build: actualizar el logo de Node.js logo en el instalador de OSX (Rod Vagg) https://github.com/nodejs/node/pull/5401
 * [f8cb0dcf67] - crypto,tls: quitar el soporte a SSLv2 (Ben Noordhuis) https://github.com/nodejs/node/pull/5529
-* [42ded2a590] - deps: upgrade openssl to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
-* [1e45a6111c] - deps: update http-parser to version 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
+* [42ded2a590] - deps: actualiza openssl a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
+* [1e45a6111c] - deps: actualiza http-parser a la versión 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
 * [6db377b2f4] - doc: remove SSLv2 descriptions (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
 * [563c359f5c] - domains: fix handling of uncaught exceptions (Julien Gilli) https://github.com/nodejs/node/pull/3887
 * [e483f3fd26] - test: fix hanging http obstext test (Ben Noordhuis) https://github.com/nodejs/node/pull/5511
