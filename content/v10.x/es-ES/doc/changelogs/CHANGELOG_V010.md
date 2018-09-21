@@ -250,8 +250,8 @@ Security Update
 ### Notable changes
 
 * build: Añadido soporte para Microsoft Visual Studio 2015
-* npm: Actualizado a v1.4.29 de v1.4.28. A special one-off release as part of the strategy to get a version of npm into Node.js v0.10.x that works with the current registry (https://github.com/nodejs/LTS/issues/37). This version of npm prints out a banner each time it is run. The banner warns that the next standard release of Node.js v0.10.x will ship with a version of npm v2.
-* openssl: Actualizado a 1.0.1q, conteniendo reparaciones CVE-2015-3194 "Falló la verificación de certificado, falta parámetro PSS", un vector potencial de negación-de-servicio para servidores TLS de Node.js usando autenticación del certificado del cliente; los clientes TLS también son impactados. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
+* npm: Actualizado a v1.4.29 de v1.4.28. Un lanzamiento de una sola ocasión como parte de la estrategia para obtener una versión de npm en Node.js v0.10.x que funcione con el registro actual (https://github.com/nodejs/LTS/issues/37). Esta versión de npm imprime un banner cada vez que se ejecute. El banner advierte que la siguiente lanzamiento estándar de Node.js v0.10.x va tener una versión npm v2.
+* openssl: Actualizado a 1.0.1q, conteniendo reparaciones CVE-2015-3194 "Falló la verificación de certificado, falta parámetro PSS", un vector potencial de negación-de-servicio para servidores TLS de Node.js usando autenticación del certificado del cliente; los clientes TLS también son impactados. Hay más detalles disponibles en <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
 ### Commits
 
