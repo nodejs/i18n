@@ -205,7 +205,7 @@ Corresponde al campo `[[EvaluationError]]` de los [Registros de Módulo de Texto
 El estatus de vinculación actual del `module`. Será uno de los siguientes valores:
 
 * `'unlinked'`: `module.link()` todavía no ha sido llamado.
-* `'linking'`: `module.link()` ha sido llamado, pero no todas las Promesas devueltas por la función del enlazados ha sido resueltas todavía.
+* `'linking'`: `module.link()` ha sido llamado, pero no todas las Promesas devueltas por la función del enlazador han sido resueltas todavía.
 * `'linked'`: `module.link()` ha sido llamado, y todas sus dependencias han sido exitosamente enlazadas.
 * `'errored'`: `module.link()` ha sido llamado, pero al menos una de sus dependencia falló al enlazarse, ya sea porque la devolución retornó una `Promise` que se rechazó, o porque el `Module` de la devolución retornada es inválido.
 
