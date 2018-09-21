@@ -162,7 +162,7 @@ Silenzia tutti gli avvisi di processo (incluse le deprecazioni).
 added: v6.9.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Carica un file con configurazione OpenSSL all'avvio. Tra gli altri usi, può essere utilizzato per abilitare la crittografia conforme al FIPS se Node.js è compilato con `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 
@@ -170,9 +170,9 @@ Load an OpenSSL configuration file on startup. Among other uses, this can be use
 added: v8.0.0
 -->
 
-Emit pending deprecation warnings.
+Emette gli avvisi di deprecazione in attesa.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Le deprecazioni in attesa sono generalmente identiche alle deprecazioni in fase di esecuzione con l'eccezione notevole che sono *disattivate* di default e non verranno emesse a meno che non venga impostato il flag `--pending-deprecation` della command line o la variabile di ambiente `NODE_PENDING_DEPRECATION=1`. Le deprecazioni in attesa vengono utilizzate per fornire un tipo di meccanismo selettivo di "avviso rapido" che gli sviluppatori potrebbero sfruttare per rilevare l'utilizzo dell'API deprecata/obsoleta.
 
 ### `--preserve-symlinks`
 
@@ -518,7 +518,7 @@ added: v8.0.0
 
 When set to `1`, emit pending deprecation warnings.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Le deprecazioni in attesa sono generalmente identiche alle deprecazioni in fase di esecuzione con l'eccezione notevole che sono *disattivate* di default e non verranno emesse a meno che non venga impostato il flag `--pending-deprecation` della command line o la variabile di ambiente `NODE_PENDING_DEPRECATION=1`. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 
