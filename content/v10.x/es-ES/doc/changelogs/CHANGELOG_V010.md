@@ -208,8 +208,8 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [f8cb0dcf67] - crypto,tls: quitar el soporte a SSLv2 (Ben Noordhuis) https://github.com/nodejs/node/pull/5529
 * [42ded2a590] - deps: actualiza openssl a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5508
 * [1e45a6111c] - deps: actualiza http-parser a la versión 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
-* [6db377b2f4] - doc: remove SSLv2 descriptions (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
-* [563c359f5c] - domains: fix handling of uncaught exceptions (Julien Gilli) https://github.com/nodejs/node/pull/3887
+* [6db377b2f4] - doc: elimina las descripciones SSLv2 (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
+* [563c359f5c] - domains: repara el manejo de excepciones no capturadas (Julien Gilli) https://github.com/nodejs/node/pull/3887
 * [e483f3fd26] - test: fix hanging http obstext test (Ben Noordhuis) https://github.com/nodejs/node/pull/5511
 
 <a id="0.10.42"></a>
