@@ -1040,4 +1040,4 @@ La shell dovrebbe capire lo switch `-c` su UNIX oppure `/d /s /c` su Windows. Su
 
 ## Shell Default di Windows
 
-Sebbene Microsoft specifichi che `%COMSPEC%` debba contenere il percorso per `'cmd.exe'` nell'ambiente del root, i processi child non sono sempre soggetti alla stessa condizione. Thus, in `child_process` functions where a shell can be spawned, `'cmd.exe'` is used as a fallback if `process.env.ComSpec` is unavailable.
+Sebbene Microsoft specifichi che `%COMSPEC%` debba contenere il percorso per `'cmd.exe'` nell'ambiente del root, i processi child non sono sempre soggetti alla stessa condizione. Pertanto, nelle funzioni `child_process` in cui è possibile generare una shell, `'cmd.exe'` viene utilizzato come fallback se `process.env.ComSpec` non è disponibile.
