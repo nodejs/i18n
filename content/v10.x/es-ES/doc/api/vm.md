@@ -65,7 +65,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // `contextifiedSandbox` como el contexto al que pertenece este Módulo.
   //
   // Aquí, intentamos obtener la exportación predeterminado del módulo "foo", y
-  // colocarla en el enlace loca "secreto".
+  // colocarla en el enlace local "secreto".
 
   const bar = new vm.Module(`
     import s from 'foo';
@@ -92,14 +92,14 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // todas las Promesas devueltas por el enlazador.
   //
   // Nota: Esto es un ejemplo ingenioso en el que la función del enlazador crea un nuevo
-  // módulo "foo" cada vez que se llama. En un sistema de módulo de pleno derecho, probablemente
+  // módulo "foo" cada vez que se llama. En un sistema de módulo completamente desarrollado, probablemente
   // se utilizaría un caché para evitar los módulos duplicados.
 
   async function linker(specifier, referencingModule) {
     if (specifier === 'foo') {
       return new vm.Module(`
         // La variable "secreta" se refiere a la variable global que agregamos a
-        // "contextifiedSandbox" cuando se crea el contexto.
+        // "contextifiedSandbox" al crear el contexto.
         export default secret;
       `, { context: referencingModule.context });
 
@@ -142,7 +142,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   * `context` {Object} El objeto [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) como es devuelto por el método `vm.createContext()`, para compilar y evaluar este `Module`.
   * `lineOffset` {integer} Especifica el desplazamiento del número de línea que se muestra en los seguimientos de pila producidos por este `Module`.
   * `columnOffset` {integer} Especifica el desplazamiento del número de columna que se muestra en los seguimientos de pila producidos por este `Modulo`.
-  * `initalizeImportMeta` {Function} Llama durante la evaluación de este `Module` para inicializar el `import.meta`. Esta función tiene la firma `(meta,
+  * `initalizeImportMeta` {Function} Llamada durante la evaluación de este `Module` para inicializar el `import.meta`. Esta función tiene la firma `(meta,
 module)`, donde `meta` es el objeto `import.meta` en el `Module`, y `module` es este objeto `vm.Module`.
 
 Crea un nuevo objeto ES `Module`.
@@ -161,12 +161,12 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
       initializeImportMeta(meta) {
         // Nota: este objeto se crea en el contexto superior. Como tal,
         // Object.getPrototypeOf(import.meta.prop) apunta al
-        // Object.prototype en el contexto superior en lugar de en
+        // Object.prototype en el contexto superior, en lugar de en
         // el sandbox.
         meta.prop = {};
       }
     });
-  // Ya que el módulo no tiene dependencia, la función del enlazador nunca se llamará.
+  // Ya que el módulo no tiene dependencias, la función del enlazador nunca se llamará.
   await module.link(() => {});
   module.initialize();
   await module.evaluate();
