@@ -129,7 +129,7 @@ Rozszerzenie pliku skompilowanego dodatku binarnego to `.node` (w przeciwieństw
 
 When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Jedynym zastrzeżeniem jest jednak to, że Node.js najpierw spróbuje zlokalizować i załadować moduły lub pliki JavaScript, które dzielą tę samą nazwę podstawową. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
-## Native Abstractions for Node.js
+## Natywne abstrakcje dla Node.js
 
 Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
