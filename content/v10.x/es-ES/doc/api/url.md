@@ -915,11 +915,11 @@ El proceso de formateo funciona de la siguiente forma:
   * Si el valor de `urlObject.search` *no comienza* con un carácter ASCII de signo de interrogación (`?`), la string literal `?` es adjuntada a `result`.
   * El valor de `urlObject.search` es adjuntado a `result`.
 * De lo contrario, si `urlObject.search` no es `undefined` y no es una string, se produce un [`Error`][].
-* If the `urlObject.hash` property is a string: 
-  * If the value of `urlObject.hash` *does not start* with the ASCII hash (`#`) character, the literal string `#` is appended to `result`.
-  * The value of `urlObject.hash` is appended to `result`.
-* Otherwise, if the `urlObject.hash` property is not `undefined` and is not a string, an [`Error`][] is thrown.
-* `result` is returned.
+* Si la propiedad `urlObject.hash` es una string: 
+  * Si el valor de `urlObject.hash` *no comienza* con el carácter hash ASCII (`#`), la string literal `#` es adjuntada a `result`.
+  * El valor de `urlObject.hash` es adjuntado a `result`.
+* De lo contrario, si la propiedad `urlObject.hash` no es `undefined` y no es una string, se produce un [`Error`][].
+* Se devuelve `result`.
 
 ### url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
 
