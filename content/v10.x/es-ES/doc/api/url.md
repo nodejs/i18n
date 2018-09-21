@@ -847,11 +847,11 @@ Si es devuelto como una string, no se realiza la decodificación de la string de
 
 #### urlObject.search
 
-The `search` property consists of the entire "query string" portion of the URL, including the leading ASCII question mark (`?`) character.
+La propiedad `search` consiste en toda la porción "string de consulta" de la URL, incluyendo el signo de interrogación ASCII principal (`?`).
 
-For example: `'?query=string'`.
+Por ejemplo: `'?query=string'`.
 
-No decoding of the query string is performed.
+No se realiza la decodificación del string de consulta.
 
 #### urlObject.slashes
 
