@@ -1012,31 +1012,31 @@ https://github.com/nodejs/node/commit/67a4cb4fe8c2346e30ffb83f7178e205cc2dab33
 https://github.com/nodejs/node/commit/530d8c05d4c546146f18e5ba811d7eb3b7b7c0c5
 
 * http: No liberar al analizador equivocado ante el cierre de un socket (isaacs)
-* http: Handle hangup writes more gently (isaacs)
-* zlib: fix assert on bad input (Ben Noordhuis)
-* test: add TAP output to the test runner (Timothy J Fontaine)
-* unix: Handle EINPROGRESS from domain sockets (Ben Noordhuis)
+* http: Manejar la escritura de los hangups más delicadamente (isaacs)
+* zlib: reparar aserción ante mal input (Ben Noorduis)
+* test: añadir output de TAP al ejecutor de pruebas (Timothy J Fontaines)
+* unix: Manejar EINPROGRESS desde sockets del dominio (Ben Noordhuis)
 
 <a id="0.8.20"></a>
 
-## 2013.02.15, Version 0.8.20 (Stable)
+## 2013.02.15, Versión 0.8.20 (Estable)
 
 https://github.com/nodejs/node/commit/e10c75579b536581ddd7ae4e2c3bf8a9d550d343
 
-* npm: Upgrade to v1.2.11
-* http: Do not let Agent hand out destroyed sockets (isaacs)
-* http: Raise hangup error on destroyed socket write (isaacs)
-* http: protect against response splitting attacks (Bert Belder)
+* npm: Actualizar a v1.2.11
+* http: No dejar que el Agente entregue sockets destruídos (isaacs)
+* http: Levantar error de hangup ante escritura de socket destruido (isaacs)
+* http: proteger contra ataques divisores de respuesta (Bert Belder)
 
 <a id="0.8.19"></a>
 
-## 2013.02.06, Version 0.8.19 (Stable)
+## 2013.02.06, Versión 0.8.19 (Estable)
 
 https://github.com/nodejs/node/commit/53978bdf420622ff0121c63c0338c9e7c2e60869
 
-* npm: Upgrade to v1.2.10
-* zlib: pass object size hint to V8 (Ben Noordhuis)
-* zlib: reduce memory consumption, release early (Ben Noordhuis)
+* npm: Actualizar a v1.2.10
+* zlib: pasar pista sobre tamaño del objeto a V8 (Ben Noordhuis)
+* zlib: reducir consumo de memoria, soltar tempranamente (Ben Noordhuis)
 * buffer: slow buffer copy compatibility fix (Trevor Norris)
 * zlib: don't assert on malformed dictionary (Ben Noordhuis)
 * zlib: don't assert on missing dictionary (Ben Noordhuis)
