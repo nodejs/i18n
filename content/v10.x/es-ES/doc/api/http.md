@@ -602,7 +602,7 @@ added: v0.5.9
 -->
 
 * `timeout` {number} Milliseconds before a request times out.
-* `callback` {Function} Función opcional que será llamada cuando ocurra un timeout. Same as binding to the `'timeout'` event.
+* `callback` {Function} Función opcional que será llamada cuando ocurra un timeout. Igual a enlazar al evento `'timeout'` .
 * Devuelve: {http.ClientRequest}
 
 Una vez que se asigne un socket a esta solicitud y se conecte, [`socket.setTimeout()`][] será llamado.
@@ -926,7 +926,7 @@ response.addTrailers({ 'Content-MD5': '7895bf4b8828b55ceaf47747b4bca667' });
 response.end();
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 ### response.connection
 
@@ -1115,7 +1115,7 @@ o
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 Cuando las cabeceras hayan sido establecidas con [`response.setHeader()`][], serán combinadas con cualquiera de las cabeceras pasadas a [`response.writeHead()`][], con las cabeceras pasadas a [`response.writeHead()`][] dada su precedencia.
 
@@ -1278,7 +1278,7 @@ const server = http.createServer((req, res) => {
 
 Tenga en cuenta que la Longitud del Contenido es dado en bytes y no en caracteres. El ejemplo anterior funciona porque la string `'hello world'` solo contiene caracteres de un solo byte. If the body contains higher coded characters then `Buffer.byteLength()` should be used to determine the number of bytes in a given encoding. Y Node.js no verifica si la Longitud del Contenido y la longitud del cuerpo que ha sido transmitido son iguales o no.
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 ### response.writeProcessing()
 
@@ -1676,7 +1676,7 @@ changes:
   * `hostname` {string} Alias para `host`. Para dar soporte a [`url.parse()`][], se prefiere `hostname` sobre `host`.
   * `family` {number} familia de la dirección IP a usar cuando se resuelve `host` y `hostname`. Los valores válidos son `4` o `6`. Cuando no esté especificado, se utilizará IP v4 y v6.
   * `port` {number} Puerto del servidor remoto. **Predeterminado:** `80`.
-  * `localAddress` {string} Local interface to bind for network connections.
+  * `localAddress` {string} Interfaz local para enlazar conexiones de red.
   * `socketPath` {string} Unix Domain Socket (use one of `host:port` or `socketPath`).
   * `method` {string} Una string que especifique el método de solicitud HTTP. **Predeterminado:** `'GET'`.
   * `path` {string} Ruta de solicitud. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. Se arroja una excepción cuando la ruta de solicitud contiene caracteres no válidos. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Predeterminado:** `'/'`.
