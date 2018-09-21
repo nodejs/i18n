@@ -910,11 +910,11 @@ El proceso de formateo funciona de la siguiente forma:
   * Si `urlObject.pathname` *no comienza* con una barra oblicua ASCII (`/`), entonces la string literal `'/'` es adjuntada a `result`.
   * El valor de `urlObject.pathname` es adjuntado a `result`.
 * De lo contrario, si `urlObject.pathname` no es `undefined` y no es una string, se produce un [`Error`][].
-* If the `urlObject.search` property is `undefined` and if the `urlObject.query` property is an `Object`, the literal string `?` is appended to `result` followed by the output of calling the [`querystring`][] module's `stringify()` method passing the value of `urlObject.query`.
-* Otherwise, if `urlObject.search` is a string: 
-  * If the value of `urlObject.search` *does not start* with the ASCII question mark (`?`) character, the literal string `?` is appended to `result`.
-  * The value of `urlObject.search` is appended to `result`.
-* Otherwise, if `urlObject.search` is not `undefined` and is not a string, an [`Error`][] is thrown.
+* Si la propiedad `urlObject.search` es `undefined` y si la propiedad `urlObject.query` es un `Object`, la string literal `?` es adjuntada a `result` seguida por la salida de llamar el módulo de [`querystring`][] del método `stringify()`, pasando el valor de `urlObject.query`.
+* De lo contrario, si `urlObject.search` es una string: 
+  * Si el valor de `urlObject.search` *no comienza* con un carácter ASCII de signo de interrogación (`?`), la string literal `?` es adjuntada a `result`.
+  * El valor de `urlObject.search` es adjuntado a `result`.
+* De lo contrario, si `urlObject.search` no es `undefined` y no es una string, se produce un [`Error`][].
 * If the `urlObject.hash` property is a string: 
   * If the value of `urlObject.hash` *does not start* with the ASCII hash (`#`) character, the literal string `#` is appended to `result`.
   * The value of `urlObject.hash` is appended to `result`.
