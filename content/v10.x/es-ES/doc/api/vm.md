@@ -82,11 +82,11 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // corresponde al especificador proporcionado, con ciertos requisitos documentados
   // en `module.link()`.
   //
-  // Si no se ha iniciado el enlace para el Módulo devuelto, se llamará a la misma
-  // devolución del enlazador en el Módulo retornado.
+  // Si no se ha iniciado el enlace para el Módulo devuelto, se llamará al mismo
+  // callback del enlazador en el Módulo retornado.
   //
   // Incluso los Módulos de nivel superior sin dependencias deben estar explícitamente enlazados. Sin
-  // embargo, la devolución proporcionada nunca se llamaría.
+  // embargo, el callback proporcionado nunca se llamaría.
   //
   // El método link() devuelve una Promesa que se resolverá cuando se resuelvan
   // todas las Promesas devueltas por el enlazador.
@@ -252,7 +252,7 @@ El URL del módulo actual, como se configura en el constructor.
 
 * `options` {Object} 
   * `timeout` {number} Especifica la cantidad de milisegundos para evaluar antes de terminar la ejecución. Si la ejecución se interrumpe, un [`Error`][] se lanzará.
-  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuará trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
+  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
 * Devuelve: {Promise}
 
 Evaluar el módulo.
