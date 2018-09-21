@@ -28,7 +28,7 @@ Esegui senza argomenti per avviare il [REPL](repl.html).
 added: v8.0.0
 -->
 
-Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
+Alias per stdin, analogo all'uso di - in altre utility della command line, il che significa che lo script verrà letto da stdin e il resto delle opzioni verranno passate a tale script.
 
 ### `--`
 
