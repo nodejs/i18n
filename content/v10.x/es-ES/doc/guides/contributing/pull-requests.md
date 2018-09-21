@@ -369,13 +369,13 @@ Los cambios triviales, normalmente limitados a pequeños cambios en el formato o
 
 ### Pull Requests abandonadas o paralizadas
 
-Si una Pull Request parece abandonada o estancada, es de buena educación consultar primero con el colaborador para ver si tienen la intención de continuar el trabajo, antes de comprobar si les importaría si lo asumiera (especialmente si solo le quedan nits). Al hacerlo, es cortés otorgarle al contribuyente original crédito por el trabajo que iniciaron (preservando su nombre y dirección de correo electrónico en el registro de commit, o usando una etiqueta de metadatos de `Author:` en el commit.
+Si una Pull Request parece abandonada o estancada, es de buena educación consultar primero con el colaborador para ver si tiene la intención de continuar el trabajo, antes de consultarle si le importaría que usted lo asumiera (especialmente si solo le quedan nits por trabajar). Al hacerlo, es cortés otorgarle al contribuyente original crédito por el trabajo que inició (preservando su nombre y dirección de correo electrónico en el registro de commit, o usando una etiqueta de metadatos de `Author:` en el commit).
 
 ### Aprobar un cambio
 
 Cualquier Colaborador central de Node.js (cualquier usuario de GitHub con derechos de commit en el repositorio `nodejs/node`) está autorizado para aprobar el trabajo de cualquier otro colaborador. Los colaboradores no pueden aprobar sus propias Pull Requests.
 
-Los colaboradores indican que han revisado y aprobado los cambios en una Pull Request, ya sea utilizando el Flujo de Trabajo de Aprobación de GitHub, que es el preferido, o dejando un comentario `LGTM` (Siglas de "me parece bien a mí" en inglés).
+Los colaboradores indican que han revisado y aprobado los cambios en una Pull Request, ya sea utilizando el Flujo de Trabajo de Aprobación de GitHub, que es el preferido, o dejando un comentario `LGTM` (siglas de "me parece bien a mí" en inglés).
 
 Cuando utilice explícitamente el componente "Cambios solicitados" del Flujo de Trabajo de Aprobación de GitHub, muestre empatía. Es decir, no sea grosero o abrupto con su feedback y ofrezca sugerencias concretas para mejorar, si es posible. Si no está seguro de *cómo* puede mejorar un cambio en particular, dígalo.
 
