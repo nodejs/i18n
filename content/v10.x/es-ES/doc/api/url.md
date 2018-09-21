@@ -873,7 +873,7 @@ changes:
 
 * `urlObject` {Object|string} Un objeto URL (devuelto por `url.parse()`, de otra forma, es construido). Si es una string, es convertida a un objeto pasándola a `url.parse()`.
 
-The `url.format()` method returns a formatted URL string derived from `urlObject`.
+El método `url.format()` devuelve una string URL formateada derivada de `urlObject`.
 
 ```js
 url.format({
@@ -889,14 +889,14 @@ url.format({
 // => 'https://example.com/some/path?page=1&format=json'
 ```
 
-If `urlObject` is not an object or a string, `url.format()` will throw a [`TypeError`][].
+Si `urlObject` no es un objeto o una string, `url.format()` arrojará un [`TypeError`][].
 
-The formatting process operates as follows:
+El proceso de formateo funciona de la siguiente forma:
 
-* A new empty string `result` is created.
-* If `urlObject.protocol` is a string, it is appended as-is to `result`.
-* Otherwise, if `urlObject.protocol` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* For all string values of `urlObject.protocol` that *do not end* with an ASCII colon (`:`) character, the literal string `:` will be appended to `result`.
+* Se crea una nueva cadena vacía `result`.
+* Si `urlObject.protocol` es una string, es adjuntada de esta manera a `result`.
+* De lo contrario, si `urlObject.protocol` no es `undefined` y no es una string, se produce un [`Error`][].
+* Para todos los valores de string de `urlObject.protocol` que *no terminan* con un carácter ASCII de dos puntos (`:`), la string literal `:` será adjuntada a `result`.
 * If either of the following conditions is true, then the literal string `//` will be appended to `result`: * `urlObject.slashes` property is true; * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
 * If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
 * If the `urlObject.host` property is `undefined` then: 
