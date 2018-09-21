@@ -748,114 +748,114 @@ added: v7.6.0
 
 * `URL` {URL} Un objeto [WHATWG URL](#url_the_whatwg_url_api)
 * `options` {Object} 
-  * `auth` {boolean} Es `true` si la string serializada de la URL incluye el nombre de usuario y contraseña, de otra forma es `false`. **Predeterminado:** `true`.
-  * `fragment` {boolean} Es `true` si la string serializada de la URL incluye el fragmento, de otra forma es `false`. **Predeterminado:** `true`.
-  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Predeterminado:** `true`.
-  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
-* Returns: {string}
+  * `auth` {boolean} Es `true` si la string URL serializada debe incluir el nombre de usuario y contraseña, de otra forma es `false`. **Predeterminado:** `true`.
+  * `fragment` {boolean} Es `true` si la string URL serializada debe incluir el fragmento, de otra forma es `false`. **Predeterminado:** `true`.
+  * `search` {boolean} Es `true` si la string URL serializada debe incluir la consulta de búsqueda, de otra forma es `false`. **Predeterminado:** `true`.
+  * `unicode` {boolean} Es `true` si los caracteres Unicode que aparecen en el componente del host de la URL deben ser codificados directamente, en lugar de ser codificados como Punycode. **Predeterminado:** `false`.
+* Devuelve: {string}
 
-Returns a customizable serialization of a URL `String` representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
+Devuelve una serialización personalizable de una representación `String` URL de un objeto [WHATWG URL](#url_the_whatwg_url_api).
 
-The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
+El objeto URL tiene tanto un método `toString()` como una propiedad `href` que devuelven serializaciones de string de la URL. Sin embargo, estas no son personalizables de ninguna forma. El método `url.format(URL[, options])` permite la personalización básica del output.
 
-For example:
+Por ejemplo:
 
 ```js
 const myURL = new URL('https://a:b@你好你好?abc#foo');
 
 console.log(myURL.href);
-// Prints https://a:b@xn--6qqa088eba/?abc#foo
+// Imprime https://a:b@xn--6qqa088eba/?abc#foo
 
 console.log(myURL.toString());
-// Prints https://a:b@xn--6qqa088eba/?abc#foo
+// Imprime https://a:b@xn--6qqa088eba/?abc#foo
 
 console.log(url.format(myURL, { fragment: false, unicode: true, auth: false }));
-// Prints 'https://你好你好/?abc'
+// Imprime 'https://你好你好/?abc'
 ```
 
-## Legacy URL API
+## Sistema heredado API URL
 
-### Legacy `urlObject`
+### Sistema heredado `urlObject`
 
-The legacy `urlObject` (`require('url').Url`) is created and returned by the `url.parse()` function.
+El sistema heredado `urlObject` (`require('url').Url`) es creado y devuelto por la función `url.parse()`.
 
 #### urlObject.auth
 
-The `auth` property is the username and password portion of the URL, also referred to as "userinfo". This string subset follows the `protocol` and double slashes (if present) and precedes the `host` component, delimited by an ASCII "at sign" (`@`). The format of the string is `{username}[:{password}]`, with the `[:{password}]` portion being optional.
+La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede el componente del `host`, delimitado por un "arroba" ASCII (`@`). El formato de la string es `{username}[:{password}]`, con la porción `[:{password}]` siendo opcional.
 
-For example: `'user:pass'`.
+Por ejemplo: `'user:pass'`.
 
 #### urlObject.hash
 
-The `hash` property consists of the "fragment" portion of the URL including the leading ASCII hash (`#`) character.
+La propiedad `hash` consiste en la porción "fragmento" de la URL que incluye el carácter hash ASCII principal (`#`).
 
-For example: `'#hash'`.
+Por ejemplo: `'#hash'`.
 
 #### urlObject.host
 
-The `host` property is the full lower-cased host portion of the URL, including the `port` if specified.
+La propiedad `host` es la porción del host completa en minúsculas de la URL, incluyendo el `port` si es especificado.
 
-For example: `'sub.host.com:8080'`.
+Por ejemplo: `'sub.host.com:8080'`.
 
 #### urlObject.hostname
 
-The `hostname` property is the lower-cased host name portion of the `host` component *without* the `port` included.
+La propiedad `hostname` es la porción del host completa en minúsculas del componente `host` *sin* el `puerto` incluido.
 
-For example: `'sub.host.com'`.
+Por ejemplo: `'sub.host.com'`.
 
 #### urlObject.href
 
-The `href` property is the full URL string that was parsed with both the `protocol` and `host` components converted to lower-case.
+La propiedad `href` es la string URL completa que fue analizada con ambos componentes `protocol` y `protocol` convertidos a minúscula.
 
-For example: `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`.
+Por ejemplo: `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`.
 
 #### urlObject.path
 
-The `path` property is a concatenation of the `pathname` and `search` components.
+La propiedad `path` es una concatenación de los componentes `pathname` y `search`.
 
-For example: `'/p/a/t/h?query=string'`.
+Por ejemplo: `'/p/a/t/h?query=string'`.
 
-No decoding of the `path` is performed.
+No se realiza la decodificación del `path`.
 
 #### urlObject.pathname
 
-The `pathname` property consists of the entire path section of the URL. This is everything following the `host` (including the `port`) and before the start of the `query` or `hash` components, delimited by either the ASCII question mark (`?`) or hash (`#`) characters.
+La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo siguiendo el `host` (incluyendo el `port`) y antes del inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
 
-For example `'/p/a/t/h'`.
+Por ejemplo `'/p/a/t/h'`.
 
-No decoding of the path string is performed.
+No se realiza la decodificación del string path.
 
 #### urlObject.port
 
-The `port` property is the numeric port portion of the `host` component.
+La propiedad `port` es la porción del port numérico del componente `host`.
 
-For example: `'8080'`.
+Por ejemplo: `'8080'`.
 
 #### urlObject.protocol
 
-The `protocol` property identifies the URL's lower-cased protocol scheme.
+La propiedad `protocol` identifica el esquema de protocolo en minúscula de la URL.
 
-For example: `'http:'`.
+Por ejemplo: `'http:'`.
 
 #### urlObject.query
 
-The `query` property is either the query string without the leading ASCII question mark (`?`), or an object returned by the [`querystring`][] module's `parse()` method. Whether the `query` property is a string or object is determined by the `parseQueryString` argument passed to `url.parse()`.
+La propiedad `query` es la string query sin el signo de interrogación ASCII principal (`?`), o un objeto devuelto por el método `parse()` del módulo [`querystring`][]. Si la propiedad `query` es una string o un objeto, esto es determinado por el argumento `parseQueryString` pasado a `url.parse()`.
 
-For example: `'query=string'` or `{'query': 'string'}`.
+Por ejemplo: `'query=string'` or `{'query': 'string'}`.
 
-If returned as a string, no decoding of the query string is performed. If returned as an object, both keys and values are decoded.
+Si es devuelto como una string, no se realiza la decodificación de la string de consulta. Si es devuelto como un objeto, tanto las claves como los valores son decodificados.
 
 #### urlObject.search
 
-The `search` property consists of the entire "query string" portion of the URL, including the leading ASCII question mark (`?`) character.
+La propiedad `search` consiste en toda la porción "string de consulta" de la URL, incluyendo el signo de interrogación ASCII principal (`?`).
 
-For example: `'?query=string'`.
+Por ejemplo: `'?query=string'`.
 
-No decoding of the query string is performed.
+No se realiza la decodificación del string de consulta.
 
 #### urlObject.slashes
 
-The `slashes` property is a `boolean` with a value of `true` if two ASCII forward-slash characters (`/`) are required following the colon in the `protocol`.
+La propiedad `slashes` es un `boolean` con un valor de `true` si dos caracteres barra oblicua de ASCII (`/`) son requeridos seguidos de los dos puntos en el `protocol`.
 
 ### url.format(urlObject)
 
@@ -871,9 +871,9 @@ changes:
                  times.
 -->
 
-* `urlObject` {Object|string} A URL object (as returned by `url.parse()` or constructed otherwise). If a string, it is converted to an object by passing it to `url.parse()`.
+* `urlObject` {Object|string} Un objeto URL (devuelto por `url.parse()`, de otra forma, es construido). Si es una string, es convertida a un objeto pasándola a `url.parse()`.
 
-The `url.format()` method returns a formatted URL string derived from `urlObject`.
+El método `url.format()` devuelve una string URL formateada derivada de `urlObject`.
 
 ```js
 url.format({
@@ -889,37 +889,37 @@ url.format({
 // => 'https://example.com/some/path?page=1&format=json'
 ```
 
-If `urlObject` is not an object or a string, `url.format()` will throw a [`TypeError`][].
+Si `urlObject` no es un objeto o una string, `url.format()` arrojará un [`TypeError`][].
 
-The formatting process operates as follows:
+El proceso de formateo funciona de la siguiente forma:
 
-* A new empty string `result` is created.
-* If `urlObject.protocol` is a string, it is appended as-is to `result`.
-* Otherwise, if `urlObject.protocol` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* For all string values of `urlObject.protocol` that *do not end* with an ASCII colon (`:`) character, the literal string `:` will be appended to `result`.
-* If either of the following conditions is true, then the literal string `//` will be appended to `result`: * `urlObject.slashes` property is true; * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
-* If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
-* If the `urlObject.host` property is `undefined` then: 
-  * If the `urlObject.hostname` is a string, it is appended to `result`.
-  * Otherwise, if `urlObject.hostname` is not `undefined` and is not a string, an [`Error`][] is thrown.
-  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`: 
-    * The literal string `:` is appended to `result`, and
-    * The value of `urlObject.port` is coerced to a string and appended to `result`.
-* Otherwise, if the `urlObject.host` property value is truthy, the value of `urlObject.host` is coerced to a string and appended to `result`.
-* If the `urlObject.pathname` property is a string that is not an empty string: 
-  * If the `urlObject.pathname` *does not start* with an ASCII forward slash (`/`), then the literal string `'/'` is appended to `result`.
-  * The value of `urlObject.pathname` is appended to `result`.
-* Otherwise, if `urlObject.pathname` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* If the `urlObject.search` property is `undefined` and if the `urlObject.query` property is an `Object`, the literal string `?` is appended to `result` followed by the output of calling the [`querystring`][] module's `stringify()` method passing the value of `urlObject.query`.
-* Otherwise, if `urlObject.search` is a string: 
-  * If the value of `urlObject.search` *does not start* with the ASCII question mark (`?`) character, the literal string `?` is appended to `result`.
-  * The value of `urlObject.search` is appended to `result`.
-* Otherwise, if `urlObject.search` is not `undefined` and is not a string, an [`Error`][] is thrown.
-* If the `urlObject.hash` property is a string: 
-  * If the value of `urlObject.hash` *does not start* with the ASCII hash (`#`) character, the literal string `#` is appended to `result`.
-  * The value of `urlObject.hash` is appended to `result`.
-* Otherwise, if the `urlObject.hash` property is not `undefined` and is not a string, an [`Error`][] is thrown.
-* `result` is returned.
+* Se crea una nueva cadena vacía `result`.
+* Si `urlObject.protocol` es una string, es adjuntada de esta manera a `result`.
+* De lo contrario, si `urlObject.protocol` no es `undefined` y no es una string, se produce un [`Error`][].
+* Para todos los valores de string de `urlObject.protocol` que *no terminan* con un carácter ASCII de dos puntos (`:`), la string literal `:` será adjuntada a `result`.
+* Si cualquiera de las siguientes condiciones son ciertas, entonces el string literal `//` será adjuntado a `result`: * La propiedad `urlObject.slashes` es cierta; * `urlObject.protocol` comienza con `http`, `https`, `ftp`, `gopher`, o `file`;
+* Si el valor de la propiedad `urlObject.auth` es verdadero, y ya sea `urlObject.host` o `urlObject.hostname` no son `undefined`, el valor de `urlObject.auth` será forzado a una string y adjuntado a `result`, seguido de la string literal `@`.
+* Si la propiedad `urlObject.host` es `undefined`, entonces: 
+  * Si `urlObject.hostname` es una string, es adjuntada a `result`.
+  * De lo contrario, si `urlObject.hostname` no es `undefined` y no es una string, se produce un [`Error`][].
+  * Si el valor de la propiedad `urlObject.port` es verdadero, y `urlObject.hostname` no es `undefined`: 
+    * La string literal `:` es adjuntada a `:`, y
+    * El valor de `urlObject.port` es forzado a una string y adjuntado a `result`.
+* De lo contrario, si el valor de la propiedad `urlObject.host` es verdadero, el valor de `urlObject.host` es forzado a una string y adjuntado a `result`.
+* Si la propiedad `urlObject.pathname` es una string que no es una string vacía: 
+  * Si `urlObject.pathname` *no comienza* con una barra oblicua ASCII (`/`), entonces la string literal `'/'` es adjuntada a `result`.
+  * El valor de `urlObject.pathname` es adjuntado a `result`.
+* De lo contrario, si `urlObject.pathname` no es `undefined` y no es una string, se produce un [`Error`][].
+* Si la propiedad `urlObject.search` es `undefined` y si la propiedad `urlObject.query` es un `Object`, la string literal `?` es adjuntada a `result` seguida por la salida de llamar el módulo de [`querystring`][] del método `stringify()`, pasando el valor de `urlObject.query`.
+* De lo contrario, si `urlObject.search` es una string: 
+  * Si el valor de `urlObject.search` *no comienza* con un carácter ASCII de signo de interrogación (`?`), la string literal `?` es adjuntada a `result`.
+  * El valor de `urlObject.search` es adjuntado a `result`.
+* De lo contrario, si `urlObject.search` no es `undefined` y no es una string, se produce un [`Error`][].
+* Si la propiedad `urlObject.hash` es una string: 
+  * Si el valor de `urlObject.hash` *no comienza* con el carácter hash ASCII (`#`), la string literal `#` es adjuntada a `result`.
+  * El valor de `urlObject.hash` es adjuntado a `result`.
+* De lo contrario, si la propiedad `urlObject.hash` no es `undefined` y no es una string, se produce un [`Error`][].
+* Se devuelve `result`.
 
 ### url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
 

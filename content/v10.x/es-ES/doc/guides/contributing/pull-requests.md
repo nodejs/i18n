@@ -322,11 +322,11 @@ Trate de no desanimarse. Si siente que una revisión en particular es injusta, d
 
 Para "aterrizar", una Pull Request debe ser revisada y [aprobada](#getting-approvals-for-your-pull-request) por al menos un Colaborador de Node.js y pasar una [prueba de funcionamiento CI (Continuous Integration)](#ci-testing). Después de eso, siempre que no haya objeciones de otros colaboradores, la Pull Request puede "fusionarse". Si nota que su Pull Request espera más de lo previsto, consulte las [notas sobre el tiempo de espera](#waiting-until-the-pull-request-gets-landed).
 
-Cuando un colaborador aterriza su Pull Request, publicará un comentario en la página de Pull Request mencionando el(los) commit(s) al que aterrizó. GitHub a menudo muestra la Pull Request como `Closed` en este punto, pero no se preocupe. Si observas el branch en el que planteaste tu Pull Request (probablemente `master`), deberías ver un commit con tu nombre. ¡Felicidades y gracias por su contribución!
+Cuando un colaborador aterrice su Pull Request, publicará un comentario en la página de Pull Request mencionando el(los) commit(s) como el(los) que se aterrizó. GitHub a menudo muestra la Pull Request como `Closed` en este punto, pero no se preocupe. Si observas el branch en el que planteaste tu Pull Request (probablemente `master`), deberías ver un commit con tu nombre. ¡Felicidades y gracias por su contribución!
 
 ## Revisión de Pull Requests
 
-Todos los colaboradores de Node.js que optan por revisar y proporcionar un feedback sobre las Pull Requests, tienen una responsabilidad tanto con el proyecto como con la persona que realiza la contribución. Las revisiones y los feedbacks deben ser útiles, perspicaces y estar orientados a mejorar la contribución en lugar de simplemente bloquearla. Si hay razones por las cuales siente que la PR no debe aterrizar, explique cuáles son. No espere poder bloquear el avance de una Pull Request simplemente porque diga "No" sin dar una explicación. Esté abierto a cambiar de opinión. Esté abierto a trabajar con el colaborador para mejorar la Pull Request.
+Todos los colaboradores de Node.js que optan por revisar y proporcionar un feedback sobre las Pull Requests, tienen una responsabilidad tanto con el proyecto como con la persona que realiza la contribución. Las revisiones y los feedbacks deben ser útiles, perspicaces y estar orientados a mejorar la contribución, en lugar de simplemente bloquearla. Si hay razones por las cuales siente que la PR no debe aterrizar, explique cuáles son. No espere poder bloquear el avance de una Pull Request simplemente porque diga "No" sin dar una explicación. Esté abierto a cambiar de opinión. Esté abierto a trabajar con el colaborador para mejorar la Pull Request.
 
 Los comentarios que son despectivos o irrespetuosos con el colaborador o cualquier otro revisor son estrictamente contrarios al [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
@@ -345,7 +345,7 @@ Enfóquese primero en los aspectos más significativos del cambio:
 3. ¿Hay errores claros o problemas de mayor escala que deben atenderse?
 4. ¿El mensaje de el commit es legible y correcto? Si contiene un cambio de ruptura, ¿es lo suficientemente claro?
 
-Cuando los cambios son necesarios, *solicítelos*, no los *exija*, y no asuma que el remitente ya sabe cómo agregar una prueba o ejecutar una prueba de rendimiento.
+Cuando los cambios sean necesarios, *solicítelos*, no los *exija*, y no asuma que el remitente ya sabe cómo agregar una prueba o ejecutar una prueba de rendimiento.
 
 Las técnicas específicas de optimización del rendimiento, los estilos de codificación y las convenciones cambian con el tiempo. La primera impresión que le das a un nuevo colaborador nunca lo hace.
 
@@ -365,17 +365,17 @@ Hay un tiempo mínimo de espera que tratamos de respetar para cambios no trivial
 
 Para cambios no triviales, las Pull Requests se deben dejar abiertas durante *al menos* 48 horas durante la semana y 72 horas en un fin de semana. En la mayoría de los casos, cuando la PR es relativamente pequeña y se enfoca en un conjunto estrecho de cambios, estos períodos brindan tiempo más que suficiente para una revisión adecuada. A veces, los cambios tardan más tiempo en revisarse, o necesitan una revisión más especializada por parte de los expertos en la materia. En caso de dudas, no se apresure.
 
-Los cambios triviales, normalmente limitados a pequeños cambios en el formato o correcciones a la documentación, puede ser aterrizado dentro del plazo mínimo de 48 horas.
+Los cambios triviales, normalmente limitados a pequeños cambios en el formato o correcciones a la documentación, pueden ser aterrizados dentro del plazo mínimo de 48 horas.
 
 ### Pull Requests abandonadas o paralizadas
 
-Si una Pull Request parece abandonada o estancada, es de buena educación consultar primero con el colaborador para ver si tienen la intención de continuar el trabajo, antes de comprobar si les importaría si lo asumiera (especialmente si solo le quedan nits). Al hacerlo, es cortés otorgarle al contribuyente original crédito por el trabajo que iniciaron (preservando su nombre y dirección de correo electrónico en el registro de commit, o usando una etiqueta de metadatos de `Author:` en el commit.
+Si una Pull Request parece abandonada o estancada, es de buena educación consultar primero con el colaborador para ver si tiene la intención de continuar el trabajo, antes de consultarle si le importaría que usted lo asumiera (especialmente si solo le quedan nits por trabajar). Al hacerlo, es cortés otorgarle al contribuyente original crédito por el trabajo que inició (preservando su nombre y dirección de correo electrónico en el registro de commit, o usando una etiqueta de metadatos de `Author:` en el commit).
 
 ### Aprobar un cambio
 
 Cualquier Colaborador central de Node.js (cualquier usuario de GitHub con derechos de commit en el repositorio `nodejs/node`) está autorizado para aprobar el trabajo de cualquier otro colaborador. Los colaboradores no pueden aprobar sus propias Pull Requests.
 
-Los colaboradores indican que han revisado y aprobado los cambios en una Pull Request, ya sea utilizando el Flujo de Trabajo de Aprobación de GitHub, que es el preferido, o dejando un comentario `LGTM` (Siglas de "me parece bien a mí" en inglés).
+Los colaboradores indican que han revisado y aprobado los cambios en una Pull Request, ya sea utilizando el Flujo de Trabajo de Aprobación de GitHub, que es el preferido, o dejando un comentario `LGTM` (siglas de "me parece bien a mí" en inglés).
 
 Cuando utilice explícitamente el componente "Cambios solicitados" del Flujo de Trabajo de Aprobación de GitHub, muestre empatía. Es decir, no sea grosero o abrupto con su feedback y ofrezca sugerencias concretas para mejorar, si es posible. Si no está seguro de *cómo* puede mejorar un cambio en particular, dígalo.
 
