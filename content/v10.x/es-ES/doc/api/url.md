@@ -781,7 +781,7 @@ El sistema heredado `urlObject` (`require('url').Url`) es creado y devuelto por 
 
 #### urlObject.auth
 
-The `auth` property is the username and password portion of the URL, also referred to as "userinfo". This string subset follows the `protocol` and double slashes (if present) and precedes the `host` component, delimited by an ASCII "at sign" (`@`). The format of the string is `{username}[:{password}]`, with the `[:{password}]` portion being optional.
+La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede el componente del `host`, delimitado por un "arroba" ASCII (`@`). The format of the string is `{username}[:{password}]`, with the `[:{password}]` portion being optional.
 
 For example: `'user:pass'`.
 
