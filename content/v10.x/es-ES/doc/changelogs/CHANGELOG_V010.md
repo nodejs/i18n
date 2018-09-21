@@ -274,10 +274,10 @@ Security Update
 * [a525c7244e] - deps: update gyp to 25ed9ac (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25857
 * [6502160294] - dns: allow v8 to optimize lookup() (Brian White) https://github.com/nodejs/node-v0.x-archive/pull/8942
 * [5d829a63ab] - doc: backport README.md (Rod Vagg) https://github.com/nodejs/node/pull/3965
-* [62c8948109] - doc: fix Folders as Modules omission of index.json (Elan Shanker) https://github.com/nodejs/node-v0.x-archive/pull/8868
-* [572663f303] - https: don't overwrite servername option (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
-* [75c84b2439] - test: add test for https agent servername option (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
-* [841a6dd264] - test: mark more tests as flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
+* [62c8948109] - doc: repara Carpetas tales como Módulos de omisión de index.json (Elan Shanker) https://github.com/nodejs/node-v0.x-archive/pull/8868
+* [572663f303] - https: no sobreescribir la opción del nombre del servidor (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
+* [75c84b2439] - test: añade pruebas para la opción del nombre del servidor del agente https (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
+* [841a6dd264] - test: marca más pruebas como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
 * [a7fee30da1] - test: mark test-tls-securepair-server as flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
 * [7df57703dd] - test: mark test-net-error-twice flaky on SmartOS (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25760
 * [e10892cccc] - test: make test-abort-fatal-error non flaky (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25755
