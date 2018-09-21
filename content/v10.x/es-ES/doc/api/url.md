@@ -871,7 +871,7 @@ changes:
                  times.
 -->
 
-* `urlObject` {Object|string} A URL object (as returned by `url.parse()` or constructed otherwise). If a string, it is converted to an object by passing it to `url.parse()`.
+* `urlObject` {Object|string} Un objeto URL (devuelto por `url.parse()`, de otra forma, es construido). Si es una string, es convertida a un objeto pasándola a `url.parse()`.
 
 The `url.format()` method returns a formatted URL string derived from `urlObject`.
 
