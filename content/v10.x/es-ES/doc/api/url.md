@@ -833,9 +833,9 @@ Por ejemplo: `'8080'`.
 
 #### urlObject.protocol
 
-The `protocol` property identifies the URL's lower-cased protocol scheme.
+La propiedad `protocol` identifica el esquema de protocolo en minúscula de la URL.
 
-For example: `'http:'`.
+Por ejemplo: `'http:'`.
 
 #### urlObject.query
 
