@@ -146,7 +146,7 @@ Silenzia gli avvisi di deprecazione.
 added: v9.0.0
 -->
 
-Disabilita i controlli runtime per gli `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Disabilita i controlli runtime per `async_hooks`. Questi saranno comunque abilitati dinamicamente quando verrà abilitato `async_hooks`.
 
 ### `--no-warnings`
 
@@ -154,7 +154,7 @@ Disabilita i controlli runtime per gli `async_hooks`. These will still be enable
 added: v6.0.0
 -->
 
-Silence all process warnings (including deprecations).
+Silenzia tutti gli avvisi di processo (incluse le deprecazioni).
 
 ### `--openssl-config=file`
 
