@@ -855,7 +855,7 @@ No se realiza la decodificación del string de consulta.
 
 #### urlObject.slashes
 
-The `slashes` property is a `boolean` with a value of `true` if two ASCII forward-slash characters (`/`) are required following the colon in the `protocol`.
+La propiedad `slashes` es un `boolean` con un valor de `true` si dos caracteres barra oblicua de ASCII (`/`) son requeridos seguidos de los dos puntos en el `protocol`.
 
 ### url.format(urlObject)
 
