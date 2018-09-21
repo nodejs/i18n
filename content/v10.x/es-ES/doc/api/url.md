@@ -819,17 +819,17 @@ No se realiza la decodificación del `path`.
 
 #### urlObject.pathname
 
-The `pathname` property consists of the entire path section of the URL. This is everything following the `host` (including the `port`) and before the start of the `query` or `hash` components, delimited by either the ASCII question mark (`?`) or hash (`#`) characters.
+La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo siguiendo el `host` (incluyendo el `port`) y antes del inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
 
-For example `'/p/a/t/h'`.
+Por ejemplo `'/p/a/t/h'`.
 
-No decoding of the path string is performed.
+No se realiza la decodificación del string path.
 
 #### urlObject.port
 
-The `port` property is the numeric port portion of the `host` component.
+La propiedad `port` es la porción del port numérico del componente `host`.
 
-For example: `'8080'`.
+Por ejemplo: `'8080'`.
 
 #### urlObject.protocol
 
