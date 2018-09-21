@@ -230,7 +230,7 @@ El estatus actual del módulo. Será uno de:
   
   Este estatus no transmite ninguna información con respecto a si `module.link()` ha sido llamado. Vea `module.linkingStatus` para eso.
 
-* `'instantiating'`: El módulo se está instanciando actualmente mediante un `module.instantiate()` llamado sobre sí mismoo un módulo principal.
+* `'instantiating'`: El módulo se está instanciando actualmente mediante un `module.instantiate()` llamado sobre sí mismo o un módulo principal.
 
 * `'instantiated'`: El módulo ha sido instanciado exitosamente, pero `module.evaluate()` todavía no ha sido llamado.
 
@@ -238,7 +238,7 @@ El estatus actual del módulo. Será uno de:
 
 * `'evaluated'`: El módulo ha sido evaluado exitosamente.
 
-* `'errored'`: El módulo ha sido evaluado, pero se lazó una excepción.
+* `'errored'`: El módulo ha sido evaluado, pero se lanzó una excepción.
 
 Aparte de `'errored'`, esta cadena de estatus corresponde al campo de `[[Status]]` del [Registro de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) de la especificación. `'errored'` corresponde a `'evaluated'` en la especificación, pero con `[[EvaluationError]]` configurado a un valor que no está `undefined`.
 
