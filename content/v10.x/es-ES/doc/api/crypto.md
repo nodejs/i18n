@@ -1561,9 +1561,9 @@ changes:
 
 Proporciona una implementación asincrónica de la función 2 (PBKDF2) de derivación de clave basada en contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
-The supplied `callback` function is called with two arguments: `err` and `derivedKey`. If an error occurs while deriving the key, `err` will be set; otherwise `err` will be `null`. By default, the successfully generated `derivedKey` will be passed to the callback as a [`Buffer`][]. An error will be thrown if any of the input arguments specify invalid values or types.
+La función `callback` es llamada con dos argumentos: `err` y `derivedKey`. Si un error ocurre mientras se deriva la clave, `err` se configurará; de lo contrario `err` será `null`. Por defecto, la `derivedKey` generada exitosamente se pasará a la devolución de llamada como un [`Buffer`][]. Va a ocurrir un error si ninguno de los argumentos de entrada especifica valores o tipos inválidos.
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento `iterations` debe ser un número establecido lo más alto posible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
