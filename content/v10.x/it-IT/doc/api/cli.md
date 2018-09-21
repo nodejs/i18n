@@ -4,11 +4,11 @@
 
 <!--type=misc-->
 
-Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js viene fornito con una varietà di opzioni CLI. Queste opzioni espongono il debugging (o debug) integrato, diversi modi per eseguire gli script e altre opzioni runtime utili.
 
-To view this documentation as a manual page in a terminal, run `man node`.
+Per visualizzare questa documentazione come la pagina di un manuale all'interno di un terminale, esegui `man node`.
 
-## Synopsis
+## Sinossi
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
@@ -16,11 +16,11 @@ To view this documentation as a manual page in a terminal, run `man node`.
 
 `node --v8-options`
 
-Execute without arguments to start the [REPL](repl.html).
+Esegui senza argomenti per avviare il [REPL](repl.html).
 
-*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
+*Per maggiori informazioni su `node debug`, vedi la documentazione sul [debugger](debugger.html).*
 
-## Options
+## Opzioni
 
 ### `-`
 
