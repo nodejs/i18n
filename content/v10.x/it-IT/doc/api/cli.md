@@ -102,7 +102,7 @@ Specifica il percorso di caricamento dei dati ICU. (`NODE_ICU_DATA` viene sottop
 added: v7.6.0
 -->
 
-Activate inspector on `host:port` and break at start of user script. Default `host:port` is `127.0.0.1:9229`.
+Attiva l'inspector su `host:port` e si interrompe all'inizio dello user script. `host:port` predefinito è `127.0.0.1:9229`.
 
 ### `--inspect-port=[host:]port`
 
@@ -110,9 +110,9 @@ Activate inspector on `host:port` and break at start of user script. Default `ho
 added: v7.6.0
 -->
 
-Set the `host:port` to be used when the inspector is activated. Useful when activating the inspector by sending the `SIGUSR1` signal.
+Imposta l'`host:port` da utilizzare quando viene attivato l'inspector. Utile all'attivazione dell'inspector inviando il segnale `SIGUSR1`.
 
-Default host is `127.0.0.1`.
+L'host predefinito è `127.0.0.1`.
 
 ### `--inspect[=[host:]port]`
 
@@ -120,7 +120,7 @@ Default host is `127.0.0.1`.
 added: v6.3.0
 -->
 
-Activate inspector on `host:port`. Default is `127.0.0.1:9229`.
+Attiva l'inspector su `host:port`. L'impostazione predefinita è `127.0.0.1:9229`.
 
 V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
