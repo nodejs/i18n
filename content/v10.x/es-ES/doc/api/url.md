@@ -764,20 +764,20 @@ Por ejemplo:
 const myURL = new URL('https://a:b@你好你好?abc#foo');
 
 console.log(myURL.href);
-// Prints https://a:b@xn--6qqa088eba/?abc#foo
+// Imprime https://a:b@xn--6qqa088eba/?abc#foo
 
 console.log(myURL.toString());
-// Prints https://a:b@xn--6qqa088eba/?abc#foo
+// Imprime https://a:b@xn--6qqa088eba/?abc#foo
 
 console.log(url.format(myURL, { fragment: false, unicode: true, auth: false }));
-// Prints 'https://你好你好/?abc'
+// Imprime 'https://你好你好/?abc'
 ```
 
-## Legacy URL API
+## Sistema heredado API URL
 
-### Legacy `urlObject`
+### Sistema heredado `urlObject`
 
-The legacy `urlObject` (`require('url').Url`) is created and returned by the `url.parse()` function.
+El sistema heredado `urlObject` (`require('url').Url`) es creado y devuelto por la función `url.parse()`.
 
 #### urlObject.auth
 
