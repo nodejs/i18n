@@ -839,11 +839,11 @@ Por ejemplo: `'http:'`.
 
 #### urlObject.query
 
-La propiedad `query` es la string query sin el signo de interrogación ASCII principal (`?`), o un objeto devuelto por el método `parse()` del módulo [`querystring`][]. Whether the `query` property is a string or object is determined by the `parseQueryString` argument passed to `url.parse()`.
+La propiedad `query` es la string query sin el signo de interrogación ASCII principal (`?`), o un objeto devuelto por el método `parse()` del módulo [`querystring`][]. Si la propiedad `query` es una string o un objeto, esto es determinado por el argumento `parseQueryString` pasado a `url.parse()`.
 
-For example: `'query=string'` or `{'query': 'string'}`.
+Por ejemplo: `'query=string'` or `{'query': 'string'}`.
 
-If returned as a string, no decoding of the query string is performed. If returned as an object, both keys and values are decoded.
+Si es devuelto como una string, no se realiza la decodificación de la string de consulta. Si es devuelto como un objeto, tanto las claves como los valores son decodificados.
 
 #### urlObject.search
 
