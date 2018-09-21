@@ -54,7 +54,7 @@ Se viene passato questo flag, si può ancora impostare il comportamento in modo 
 added: v6.0.0
 -->
 
-Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
+Abilita all'avvio la crittografia conforme al FIPS. (Richiede che Node.js sia compilato con `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -62,7 +62,7 @@ Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./c
 added: v8.5.0
 -->
 
-Enable experimental ES module support and caching modules.
+Abilita i moduli di supporto e di caching del modulo ES sperimentale.
 
 ### `--experimental-repl-await`
 
@@ -70,7 +70,7 @@ Enable experimental ES module support and caching modules.
 added: v10.0.0
 -->
 
-Enable experimental top-level `await` keyword support in REPL.
+Abilita il supporto della parola chiave sperimentale top-level `await` all'interno del REPL.
 
 ### `--experimental-vm-modules`
 
@@ -78,7 +78,7 @@ Enable experimental top-level `await` keyword support in REPL.
 added: v9.6.0
 -->
 
-Enable experimental ES Module support in the `vm` module.
+Abilita il supporto del modulo ES sperimentale nel modulo `vm`.
 
 ### `--force-fips`
 
