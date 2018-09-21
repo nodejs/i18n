@@ -385,9 +385,9 @@ Si ve que se han realizado los cambios solicitados, puede borrar la revisión `C
 
 Las solicitudes de cambio que sean vagas, despectivas, o poco constructivas, también pueden descartarse si las solicitudes de mayor aclaración no reciben respuesta dentro de un período de tiempo razonable.
 
-Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para indicar que está considerando algunos de sus comentarios para bloquear el aterrizaje de la PR. When doing so, explain *why* you believe the Pull Request should not land along with an explanation of what may be an acceptable alternative course, if any.
+Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para indicar que está considerando algunos de sus comentarios para bloquear el aterrizaje de la PR. Al hacerlo, explique *por qué* cree que la Pull Request no debe aterrizar junto con una explicación de lo que puede ser un proceso alternativo aceptable, si corresponde.
 
-### Accept that there are different opinions about what belongs in Node.js
+### Acepte que hay opiniones diferentes sobre lo que pertenece a Node.js
 
 Opinions on this vary, even among the members of the Technical Steering Committee.
 
