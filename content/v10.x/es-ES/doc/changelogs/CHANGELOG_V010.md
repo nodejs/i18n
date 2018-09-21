@@ -257,16 +257,16 @@ Security Update
 
 * [16ca0779f5] - src/node.cc: reparar error de compilación sin soporte de OpenSSL (Jörg Krause) https://github.com/nodejs/node-v0.x-archive/pull/25862
 * [c559c7911d] - build: backport tools/release.sh (Rod Vagg) https://github.com/nodejs/node/pull/3965
-* [268d2b4637] - build: backport config for new CI infrastructure (Rod Vagg) https://github.com/nodejs/node/pull/3965
-* [c88a0b26da] - build: update manifest to include Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2838
-* [8564a9f5f7] - build: gcc version detection on openSUSE Tumbleweed (Henrique Aparecido Lavezzo) https://github.com/nodejs/node-v0.x-archive/pull/25671
+* [268d2b4637] - build: configuración backport para la nueva infraestructura CI (Rod Vagg) https://github.com/nodejs/node/pull/3965
+* [c88a0b26da] - build: manifiesto de actualización incluirá Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2838
+* [8564a9f5f7] - build: detección de versión gcc en openSUSE Tumbleweed (Henrique Aparecido Lavezzo) https://github.com/nodejs/node-v0.x-archive/pull/25671
 * [9c7bd6de56] - build: run-ci makefile rule (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [ffa1e1f31d] - build: support flaky tests in test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [100dd19e61] - build: support Jenkins via test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [ec861f6f90] - build: make release process easier for multi users (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25638
-* [d7ae79a452] - build,win: fix node.exe resource version (João Reis) https://github.com/nodejs/node/pull/3053
+* [100dd19e61] - build: suporta Jenkins a través de test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [ec861f6f90] - build: hace el proceso de liberación más fácil para multi usuarios for multi users (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25638
+* [d7ae79a452] - build,win: repara la versión de recurso node.exe (João Reis) https://github.com/nodejs/node/pull/3053
 * [6ac47aa9f5] - build,win: try next MSVS version on failure (João Reis) https://github.com/nodejs/node/pull/2910
-* [e669b27740] - crypto: replace rwlocks with simple mutexes (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
+* [e669b27740] - crypto: reemplaza rwlocks con mutexes simples (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
 * [ce0a48826e] - deps: upgrade to openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4132
 * [b68781e500] - deps: upgrade npm to 1.4.29 (Forrest L Norvell) https://github.com/nodejs/node/pull/3639
 * [7cf0d9c1d9] - deps: fix openssl for MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node-v0.x-archive/pull/25857
@@ -449,9 +449,9 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 * npm: upgrade to 1.4.14
 * utf8: Previene al Nodo de enviar un UTF-8 inválido (Felix Geisendörfer)
   
-  * *NOTE* this introduces a breaking change, previously you could construct invalid UTF-8 and invoke an error in a client that was expecting valid UTF-8, now unmatched surrogate pairs are replaced with the unknown UTF-8 character. To restore the old functionality simply have NODE_INVALID_UTF8 environment variable set.
+  * *NOTA* Esto introduce un cambio radical, anteriormente tu podías construir UTF-8 inválidos e invocar un error en un cliente que estaba esperando UTF-8 válidos, ahora los pares de sustitución que no tienen pareja son reemplazados con un carácter UTF-8 desconocido. Para restaurar la vieja funcionalidad, simplemente ten ambiente variable NODE_INVALID_UTF8 establecido.
 
-* child_process: do not set args before throwing (Greg Sabia Tucker)
+* child_process: no establecer args antes de arrojar (Greg Sabia Tucker)
 
 * child_process: spawn() does not throw TypeError (Greg Sabia Tucker)
 * constants: export O_NONBLOCK (Fedor Indutny)
