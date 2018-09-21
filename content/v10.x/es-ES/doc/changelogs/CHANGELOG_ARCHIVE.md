@@ -1072,20 +1072,20 @@ https://github.com/nodejs/node/commit/c50c33e9397d7a0a8717e8ce7530572907c054ad
 * typed arrays: reparar rebosamiento de tamaño/índice de 32 bits (Ben Noordhuis)
 
 * http: Mejorar rendimiento de respuestas de paquete único (Ben Noordhuis)
-* install: fix openbsd man page location (Ben Noordhuis)
-* http: bubble up parser errors to ClientRequest (Brian White)
+* install: reparar localización de páginas del manual de openbsd (Ben Noordhuis)
+* http: burbujear errores del analizador a ClientRequest (Brian White)
 
 <a id="0.8.16"></a>
 
-## 2012.12.13, Version 0.8.16 (Stable)
+## 2012.12.13, Versión 0.8.16 (Estable)
 
 https://github.com/nodejs/node/commit/1c9c6277d5cfcaaac8569c0c8f7daa64292048a9
 
-* npm: Upgrade to 1.1.69
-* fs: fix WriteStream/ReadStream fd leaks (Ben Noordhuis)
-* crypto: fix leak in GetPeerCertificate (Fedor Indutny)
-* buffer: Don't double-negate numeric buffer arg (Trevor Norris)
-* net: More accurate IP address validation and IPv6 dotted notation. (Joshua Erickson)
+* npm: Actualizar a 1.1.69
+* fs: reparar fugas del fd de WriteStream/ReadStream (Ben Noordhuis)
+* crypto: reparar fuga en GetPeerCertificate (Fedor Indutny)
+* buffer: No negar doblemente argumentos de buffer numéricos (Trevor Norris)
+* net: Validación de dirección IP más precisa y notación de punto de IPv6. (Joshua Erickson)
 
 <a id="0.8.15"></a>
 
