@@ -226,24 +226,24 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * src: 
   * introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
   * permite la reparación para CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
-* build: 
+* compilación: 
   * archivos tar comprimidos xz serán hechos disponibles desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante
   * Un archivo headers.tar.gz será hecho disponible desde nodejs.org para compilaciones v0.10 desde v0.10.42 en adelante, un cambio futuro a node-gyp será requerido para hacer uso de este
 
 ### Commits
 
 * [fdc332183e] - build: habilita tarballs comprimidos en xz donde sea posible (Rod Vagg) https://github.com/nodejs/node/pull/4894
-* [2d35b421b5] - deps: upgrade openssl sources to 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
-* [b31c0f3ea4] - deps: update http-parser to version 1.1 (James M Snell)
+* [2d35b421b5] - deps: actualiza openssl sources a 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
+* [b31c0f3ea4] - deps: actualiza http-parser a la versión 1.1 (James M Snell)
 * [616ec1d6b0] - doc: clarify v0.10.41 openssl tls security impact (Rod Vagg) https://github.com/nodejs/node/pull/4153
-* [ccb3c2377c] - http: strictly forbid invalid characters from headers (James M Snell)
-* [f0af0d1f96] - src: avoid compiler warning in node_revert.cc (James M Snell)
-* [df80e856c6] - src: add --security-revert command line flag (James M Snell)
-* [ff58dcdd74] - tools: backport tools/install.py for headers (Richard Lau) https://github.com/nodejs/node/pull/4149
+* [ccb3c2377c] - http: prohibe estrictamente caracteres inválidos de los encabezados (James M Snell)
+* [f0af0d1f96] - src: evita la advertencia del compilador en node_revert.cc (James M Snell)
+* [df80e856c6] - src: añade la bandera de línea del comando --security-revert command line flag (James M Snell)
+* [ff58dcdd74] - tools: backport tools/install.py para los encabezados (Richard Lau) https://github.com/nodejs/node/pull/4149
 
 <a id="0.10.41"></a>
 
-## 2015-12-04, Version 0.10.41 (Maintenance), @rvagg
+## 2015-12-04, Versión 0.10.41 (Mantenimiento), @rvagg
 
 Security Update
 
@@ -278,12 +278,12 @@ Security Update
 * [572663f303] - https: no sobreescribir la opción del nombre del servidor (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
 * [75c84b2439] - test: añade pruebas para la opción del nombre del servidor del agente https (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
 * [841a6dd264] - test: marca más pruebas como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
-* [a7fee30da1] - test: mark test-tls-securepair-server as flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
-* [7df57703dd] - test: mark test-net-error-twice flaky on SmartOS (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25760
+* [a7fee30da1] - test: marca test-tls-securepair-server como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
+* [7df57703dd] - test: marca test-net-error-twice flaky en SmartOS (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25760
 * [e10892cccc] - test: make test-abort-fatal-error non flaky (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25755
 * [a2f879f197] - test: mark recently failing tests as flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [e7010bdf92] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [c283c9bbb3] - test: support writing test output to file (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [c283c9bbb3] - test: soporta salida de pruebas de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [eeaed586bb] - test: runner support for flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [3bb8174b94] - test: refactor to use common testcfg (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [df59d43586] - tools: pass constant to logger instead of string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25686
@@ -301,9 +301,9 @@ Security Update
 
 ### Commits
 
-* [[`0cf9f27703`](https://github.com/nodejs/node/commit/0cf9f27703)] - **openssl**: upgrade to 1.0.1p [#25654](https://github.com/joyent/node/pull/25654)
+* [[`0cf9f27703`](https://github.com/nodejs/node/commit/0cf9f27703)] - **openssl**: actualiza a 1.0.1p [#25654](https://github.com/joyent/node/pull/25654)
 * [[`5a60e0d904`](https://github.com/nodejs/node/commit/5a60e0d904)] - **V8**: back-port JitCodeEvent patch from upstream (Ben Noordhuis) [#25588](https://github.com/joyent/node/pull/25588)
-* [[`18d413d299`](https://github.com/nodejs/node/commit/18d413d299)] - **win,msi**: create npm folder in AppData directory (Steven Rockarts) [#8838](https://github.com/joyent/node/pull/8838)
+* [[`18d413d299`](https://github.com/nodejs/node/commit/18d413d299)] - **win,msi**: crea una carpeta npm en el directorio AppData (Steven Rockarts) [#8838](https://github.com/joyent/node/pull/8838)
 
 <a id="0.10.39"></a>
 
@@ -345,8 +345,8 @@ Security Update
 ### Commits
 
 * [[`deef605085`](https://github.com/nodejs/node/commit/deef605085)] - **openssl**: update to 1.0.1l
-* [[`45f1330425`](https://github.com/nodejs/node/commit/45f1330425)] - **v8**: Fix debugger and strict mode regression (Julien Gilli)
-* [[`6ebd85e105`](https://github.com/nodejs/node/commit/6ebd85e105)] - **v8**: don't busy loop in cpu profiler thread (Ben Noordhuis) [#8789](https://github.com/joyent/node/pull/8789)
+* [[`45f1330425`](https://github.com/nodejs/node/commit/45f1330425)] - **v8**: repara depurador y la regresión al modo escricto (Julien Gilli)
+* [[`6ebd85e105`](https://github.com/nodejs/node/commit/6ebd85e105)] - **v8**: no ocupa el bucle en el hilo del perfilador del cpu (Ben Noordhuis) [#8789](https://github.com/joyent/node/pull/8789)
 
 <a id="0.10.35"></a>
 
