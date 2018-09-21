@@ -436,8 +436,8 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 * stream2: flush extant data on read of ended stream (Chris Dickinson)
 * streams: remove unused require('assert') (Rod Vagg)
 * timers: backport f8193ab (Julien Gilli)
-* util.h: interface compatibility (Oguz Bastemur)
-* zlib: do not crash on write after close (Fedor Indutny)
+* util.h: compatibilidad de interfaz (Oguz Bastemur)
+* zlib: no falla en la esxritura después de cerrar (Fedor Indutny)
 
 <a id="0.10.29"></a>
 
