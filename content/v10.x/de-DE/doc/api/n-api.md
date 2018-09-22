@@ -562,7 +562,7 @@ NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] scope`: `napi_value` repräsentiert das zu schließende Scope.
+- `[in] scope`: `napi_value` repräsentiert den zu schließenden Scope.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
@@ -587,7 +587,7 @@ NODE_EXTERN napi_status
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API open a new scope from which one object can be promoted to the outer scope.
+Diese API öffnet einen neuen Scope, von dem aus ein Objekt in den äußeren Scope verschoben werden kann.
 
 #### napi_close_escapable_handle_scope
 
@@ -602,13 +602,13 @@ NODE_EXTERN napi_status
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] scope`: `napi_value` representing the scope to be closed.
+- `[in] scope`: `napi_value` repräsentiert den zu schließenden Scope.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
+Diese API schließt den eingegebenen Scope. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, aus der sie erstellt wurden.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception ansteht.
 
 #### napi_escape_handle
 
@@ -624,9 +624,9 @@ napi_status napi_escape_handle(napi_env env,
 ```
 
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
-- `[in] scope`: `napi_value` representing the current scope.
-- `[in] escapee`: `napi_value` representing the JavaScript `Object` to be escaped.
-- `[out] result`: `napi_value` representing the handle to the escaped `Object` in the outer scope.
+- `[in] scope`: `napi_value` repräsentiert den aktuellen Scope.
+- `[in] escapee`: `napi_value` repräsentiert das zu überspringende JavaScript-`Object`.
+- `[out] result`: `napi_value` repräsentiert den Handle zum übersprungenen `Object` in dem äußeren Scope.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
