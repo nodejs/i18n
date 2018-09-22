@@ -672,7 +672,7 @@ added: v0.3.0
 
 Se emite cada vez que se recibe una solicitud con un HTTP `Expect: 100-continue` . Si este evento no se escucha, el servidor automáticamente responderá con un `100 Continue` según corresponda.
 
-Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debería continuar a enviar el cuerpo de la solicitud, o a generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente debe continuar a enviar el cuerpo de la solicitud, o a generar una respuesta apropiada de HTTP (por ejemplo, 400 Bad Request) si el cliente no debería continuar a enviar el cuerpo de la solicitud.
 
 Tenga en cuenta que cuando este evento se emite y se maneja, el evento [`'request'`][] no se emitirá.
 
@@ -1682,7 +1682,7 @@ changes:
   * `path` {string} Ruta de solicitud. Should include query string if any. Por ejemplo, `'/index.html?page=12'`. Se arroja una excepción cuando la ruta de solicitud contiene caracteres no válidos. Actualmente, solo se rechazan los espacios, pero eso puede cambiar en el futuro. **Predeterminado:** `'/'`.
   * `headers` {Object} Un objeto que contiene las cabeceras de solicitud.
   * `auth` {string} autenticación Básica, por ejemplo, `'user:password'` para computar una cabecera de Autorización.
-  * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][] . Valores posibles: 
+  * `agent` {http.Agent | boolean} Controla el comportamiento de [`Agent`][]. Valores posibles: 
     * `undefined` (Predeterminado): utiliza [`http.globalAgent`][] para este host y este puerto.
     * objeto `Agent`: utiliza explícitamente lo que fue pasado en `Agent`.
     * `false`: hace que un nuevo `Agent` con valores predeterminados sea utilizado.
@@ -1745,7 +1745,7 @@ Si se encuentra algún error durante la solicitud (sea con una resolución DNS, 
 
 Hay algunas cabeceras especiales que deberían tenerse en cuenta.
 
-* Enviar un 'Connection: keep-alive' notificará a Node.js que la conexión al servidor debería persistir hasta la siguiente solicitud.
+* Enviar un 'Connection: keep-alive' notificará a Node.js que la conexión al servidor debe persistir hasta la siguiente solicitud.
 
 * Enviar una cabecera 'Content-Length' inhabilitará la codificación fragmentada predeterminada.
 
