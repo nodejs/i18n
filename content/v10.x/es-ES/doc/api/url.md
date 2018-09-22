@@ -996,13 +996,13 @@ Por ejemplo, el carácter espacio ASCII (`' '`) es codificado como `%20`. El car
 
 El [Estándar URL de WHATWG](https://url.spec.whatwg.org/) utiliza un enfoque más selectivo y detallado para seleccionar caracteres codificados, que el que utiliza el Sistema heredado API.
 
-The WHATWG algorithm defines four "percent-encode sets" that describe ranges of characters that must be percent-encoded:
+El algoritmo WHATWG define cuatro "conjuntos de porcentaje de codificación" que describen los rangos de los caracteres que deben ser código porciento:
 
-* The *C0 control percent-encode set* includes code points in range U+0000 to U+001F (inclusive) and all code points greater than U+007E.
+* El *conjunto codificación porcentual de control C0* incluye puntos de código en rango U+0000 para U+001F (inclusivo) y todos los puntos de código mayores que U+007E.
 
-* The *fragment percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+003C, U+003E, and U+0060.
+* El *conjunto fragmento de codificación porcentual* incluye el *conjunto codificación porcentual de control C0* y los puntos de código U+0020, U+0022, U+003C, U+003E, y U+0060.
 
-* The *path percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, and U+007D.
+* El *conjunto ruta de codificación porcentual* incluye el *conjunto codificación porcentual de control C0* y los puntos de código U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, y U+007D.
 
 * The *userinfo encode set* includes the *path percent-encode set* and code points U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, and U+007C.
 
