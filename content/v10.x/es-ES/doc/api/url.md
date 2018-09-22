@@ -933,8 +933,8 @@ changes:
                  when no query string is present.
 -->
 
-* `urlString` {string} The URL string to parse.
-* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Default:** `false`.
+* `urlString` {string} La string URL a analizar.
+* `parseQueryString` {boolean} Si es `true`, la propiedad `query` siempre será establecida a un objeto devuelto por el módulo [`querystring`][] del método `parse()`. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Default:** `false`.
 * `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **Default:** `false`.
 
 The `url.parse()` method takes a URL string, parses it, and returns a URL object.
