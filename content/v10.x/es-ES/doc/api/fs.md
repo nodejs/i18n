@@ -169,7 +169,7 @@ fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
 // TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
 ```
 
-`file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
+`file:` URLs with drive letters must use `:` as a separator just after the drive letter. Utilizar otro separador dará como resultado un lanzamiento.
 
 En todas las demás plataformas, las URLs de `file:` con un nombre de host no son soportadas y resultarán en un lanzamiento:
 
@@ -334,7 +334,7 @@ added: v9.11.0
 
 Se emite cuando el `fs.ReadStream` está listo para ser utilizado.
 
-Fires immediately after `'open'`.
+Se activa inmediatamente después de `'open'`.
 
 ### readStream.bytesRead
 
@@ -652,7 +652,7 @@ added: v9.11.0
 
 Se emite cuando el `fs.WriteStream` está listo para ser utilizado.
 
-Fires immediately after `'open'`.
+Se activa inmediatamente después de `'open'`.
 
 ### writeStream.bytesWritten
 
@@ -864,7 +864,7 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `path` {string|Buffer|URL|number} filename or file descriptor
+* `path` {string|Buffer|URL|number} nombre de archivo o descriptor de archivo
 * `data` {string|Buffer}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
@@ -918,7 +918,7 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `path` {string|Buffer|URL|number} filename or file descriptor
+* `path` {string|Buffer|URL|number} nombre de archivo o descriptor de archivo
 * `data` {string|Buffer}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
@@ -1137,7 +1137,7 @@ Devuelve un objeto que contiene constantes utilizadas comúnmente para operacion
 added: v8.5.0
 -->
 
-* `src` {string|Buffer|URL} source filename to copy
+* `src` {string|Buffer|URL} nombre de archivo de la fuente a copiar
 * `dest` {string|Buffer|URL} nombre de archivo de destino de la operación de copia
 * `flags` {number} modificadores para la operación de copia. **Predeterminado:** `0`.
 * `callback` {Function}
@@ -1178,7 +1178,7 @@ fs.copyFile('source.txt', 'destination.txt', COPYFILE_EXCL, callback);
 added: v8.5.0
 -->
 
-* `src` {string|Buffer|URL} source filename to copy
+* `src` {string|Buffer|URL} nombre de archivo de la fuente a copiar
 * `dest` {string|Buffer|URL} nombre de archivo de destino de la operación de copia
 * `flags` {number} modificadores para la operación de copia. **Predeterminado:** `0`.
 
@@ -2077,7 +2077,7 @@ Lee datos del archivo especificado por `fd`.
 
 `buffer` es el búfer al cual se escribirán los datos.
 
-`offset` is the offset in the buffer to start writing at.
+`offset` es el offset dentro del búfer en donde se empieza a escribir.
 
 `length` es un entero que especifica el número de bytes a leer.
 
@@ -2188,7 +2188,7 @@ fs.readFile('/etc/passwd', (err, data) => {
 
 Al callback se le pasan dos argumentos `(err, data)`, en donde `data` son los contenidos del archivo.
 
-If no encoding is specified, then the raw buffer is returned.
+Si no se especifica ninguna codificación, entonces el búfer crudo será devuelto.
 
 Si `options` es una string, entonces especifica la codificación. Ejemplo:
 
@@ -2214,7 +2214,7 @@ Cualquier descriptor de archivos especificado tiene que soportar la lectura.
 
 Si un descriptor de archivo se especifica como el `path`, no será cerrado automáticamente.
 
-The `fs.readFile()` function buffers the entire file. To minimize memory costs, when possible prefer streaming via `fs.createReadStream()`.
+La función `fs.readFile()` almacena todo el archivo. To minimize memory costs, when possible prefer streaming via `fs.createReadStream()`.
 
 ## fs.readFileSync(path[, options])
 
@@ -3077,7 +3077,7 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `file` {string|Buffer|URL|integer} filename or file descriptor
+* `file` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
@@ -3125,7 +3125,7 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `file` {string|Buffer|URL|integer} filename or file descriptor
+* `file` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
@@ -3290,7 +3290,7 @@ Leer datos desde el archivo.
 
 `buffer` es el búfer al cual se escribirán los datos.
 
-`offset` is the offset in the buffer to start writing at.
+`offset` es el offset dentro del búfer en donde se empieza a escribir.
 
 `length` es un entero que especifica el número de bytes a leer.
 
@@ -3478,7 +3478,7 @@ Utilizar `fsPromises.access()` para verificar la accesibilidad de un archivo ant
 added: v10.0.0
 -->
 
-* `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
+* `path` {string|Buffer|URL|FileHandle} nombre de archivo o `FileHandle`
 * `data` {string|Buffer}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
@@ -3523,8 +3523,8 @@ Cambia la pertenencia de un archivo, luego resuelve la `Promise` sin argumentos 
 added: v10.0.0
 -->
 
-* `src` {string|Buffer|URL} source filename to copy
-* `dest` {string|Buffer|URL} destination filename of the copy operation
+* `src` {string|Buffer|URL} nombre de archivo de la fuente a copiar
+* `dest` {string|Buffer|URL} nombre de archivo de destino de la operación de copia
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 * Devuelve: {Promise}
 
@@ -3796,7 +3796,7 @@ Lee datos del archivo especificado por `filehandle`.
 
 `buffer` es el búfer al cual se escribirán los datos.
 
-`offset` is the offset in the buffer to start writing at.
+`offset` es el offset dentro del búfer en donde se empieza a escribir.
 
 `length` es un entero que especifica el número de bytes a leer.
 
@@ -3825,7 +3825,7 @@ El argumento opcional `options` puede ser una string que especifique una codific
 added: v10.0.0
 -->
 
-* `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
+* `path` {string|Buffer|URL|FileHandle} nombre de archivo o `FileHandle`
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
@@ -3998,7 +3998,7 @@ En Linux, las escrituras posicionales no funcionan cuando el archivo se abre en 
 added: v10.0.0
 -->
 
-* `file` {string|Buffer|URL|FileHandle} filename or `FileHandle`
+* `file` {string|Buffer|URL|FileHandle} nombre de archivo o `FileHandle`
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
@@ -4321,7 +4321,7 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
     </td>
     
     <td>
-      Bit mask used to extract the file type code.
+      Máscara de bits utilizada para extraer el código de tipo de archivo.
     </td>
   </tr>
   
