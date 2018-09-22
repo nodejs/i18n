@@ -695,7 +695,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Prueba los permisos del usuario para el archivo o directorio especificado por `path`. El argumento `mode` es un entero opcional que especifica las verificaciones de accesibilidad que serán realizadas. Las siguientes constantes definen los valores posibles de `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Prueba los permisos del usuario para el archivo o directorio especificado por `path`. El argumento `mode` es un entero opcional que especifica las verificaciones de accesibilidad que serán realizadas. Las siguientes constantes definen los valores posibles de `mode`. Es posible crear una máscara que consista del bitwise O de dos o más valores (por ejemplo, `fs.constants.W_OK | fs.constants.R_OK`).
 
 * `fs.constants.F_OK` - `path` es visible para el proceso de llamada. Esto es útil para determinar si un archivo existe, pero no dice nada sobre los permisos de `rwx` . Predeterminado si no se especifica ningún `mode` .
 * `fs.constants.R_OK` - `path` puede ser leído por el proceso de llamada.
@@ -2362,7 +2362,7 @@ changes:
   * `err` {Error}
   * `resolvedPath` {string|Buffer}
 
-Asynchronously computes the canonical pathname by resolving `.`, `..` and symbolic links.
+Computa de manera asincrónica el nombre de ruta canónico resolviendo a `.`, `..` y a los enlaces simbólicos.
 
 Note that "canonical" does not mean "unique": hard links and bind mounts can expose a file system entity through many pathnames.
 
@@ -2430,7 +2430,7 @@ changes:
   * `encoding` {string} **Default:** `'utf8'`
 * Devuelve: {string|Buffer}
 
-Synchronously computes the canonical pathname by resolving `.`, `..` and symbolic links.
+Computa de manera sincrónica el nombre de ruta canónico resolviendo a `.`, `..` y a los enlaces simbólicos.
 
 Note that "canonical" does not mean "unique": hard links and bind mounts can expose a file system entity through many pathnames.
 
@@ -2962,7 +2962,7 @@ Cuando una operación de `fs.watchFile` tiene como resultado un error de `ENOENT
 
 Utilizar [`fs.watch()`][] es más eficiente que `fs.watchFile` y `fs.unwatchFile`. `fs.watch` debería ser utilizado en lugar de `fs.watchFile` y `fs.unwatchFile` cuando sea posible.
 
-When a file being watched by `fs.watchFile()` disappears and reappears, then the `previousStat` reported in the second callback event (the file's reappearance) will be the same as the `previousStat` of the first callback event (its disappearance).
+Cuando un archivo que esté siendo observado por `fs.watchFile()` desaparezca y reaparezca, entonces el `previousStat` reportado en el segundo evento del callback (la reaparición del archivo) será igual al `previousStat` del primer evento del callback (su desaparición).
 
 Esto ocurre cuando:
 
@@ -3288,7 +3288,7 @@ added: v10.0.0
 
 Leer datos desde el archivo.
 
-`buffer` is the buffer that the data will be written to.
+`buffer` es el búfer al cual se escribirán los datos.
 
 `offset` is the offset in the buffer to start writing at.
 
@@ -3794,7 +3794,7 @@ added: v10.0.0
 
 Lee datos del archivo especificado por `filehandle`.
 
-`buffer` is the buffer that the data will be written to.
+`buffer` es el búfer al cual se escribirán los datos.
 
 `offset` is the offset in the buffer to start writing at.
 
