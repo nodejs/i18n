@@ -1236,18 +1236,18 @@ https://github.com/nodejs/node/commit/f640c5d35cba96634cd8176a525a1d876e361a61
 * tls: manejar múltiples campos CN al verificar certificado (Ben Noordhuis)
 * doc: remover util no utilizado de child_process (Kyle Robinson Young)
 * build: volver a trabajar detección -fvisibility=hidden (Ben Noordhuis)
-* windows: don't duplicate invalid stdio handles (Bert Belder)
-* windows: fix typos in process-stdio.c (Bert Belder)
+* windows: no duplicar manejadores stdio inválidos (Bert Belder)
+* windows: corregir typos en process-stdio.c (Bert Belder)
 
 <a id="0.8.6"></a>
 
-## 2012.08.07, Version 0.8.6 (Stable)
+## 2012.08.07, Versión 0.8.6 (Estable)
 
 https://github.com/nodejs/node/commit/0544a586ca6b6b900a42e164033dbf350765700a
 
-* npm: Upgrade to v1.1.48
-* Add 'make binary' to build binary tarballs for all Unixes (Nathan Rajlich)
-* zlib: Emit 'close' on destroy(). (Dominic Tarr)
+* npm: Actualizar a v1.1.48
+* Añadir "make binary" para compilar tarballs binarias para todos los Unix (Nathan Rajlich)
+* zlib: Emitir "close" al aplicar destroy(). (Dominic Tarr)
 * child_process: Fix stdout=null when stdio=\['pipe'\] (Tyler Neylon)
 * installer: prevent ETXTBSY errors (Ben Noordhuis)
 * installer: honor --without-npm, default install path (Ben Noordhuis)
