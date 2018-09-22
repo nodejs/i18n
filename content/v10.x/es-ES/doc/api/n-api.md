@@ -2704,13 +2704,13 @@ napi_status napi_get_new_target(napi_env env,
                                 napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cbinfo`: The callback info passed into the callback function.
-- `[out] result`: The `new.target` of the constructor call.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] cbinfo`: La información del callback pasada a la función callback.
+- `[out] result`: El `new.target` de la llamada constructora.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the `new.target` of the constructor call. If the current callback is not a constructor call, the result is `NULL`.
+Esta API devuelve el `new.target` de la llamada constructora. Si el callback actual no es una llamada constructora, el resultado es `NULL`.
 
 ### napi_new_instance
 
@@ -2726,11 +2726,11 @@ napi_status napi_new_instance(napi_env env,
                               napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cons`: `napi_value` representing the JavaScript function to be invoked as a constructor.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of JavaScript values as `napi_value` representing the arguments to the constructor.
-- `[out] result`: `napi_value` representing the JavaScript object returned, which in this case is the constructed object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] cons`: `napi_value` que representa la función de JavaScript a ser invocada como una constructora.
+- `[in] argc`: El conteo de elementos en el arreglo `argv`.
+- `[in] argv`: Arreglo de valores de JavaScript como `napi_value` que representa los argumentos a la constructora.
+- `[out] result`: `napi_value` que representa el objeto de JavaScript devuelto, el cual, en este caso, es el objeto constructor.
 
 This method is used to instantiate a new JavaScript value using a given `napi_value` that represents the constructor for the object. For example, consider the following snippet:
 
