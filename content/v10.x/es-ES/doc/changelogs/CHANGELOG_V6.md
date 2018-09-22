@@ -158,7 +158,7 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 ## 2018-02-13, Versión 6.13.0 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 112 commits, de los cuales 17 están considerados como Semver-Minor. This includes 32 which are doc related, 31 which are test related, 8 which are build / tool related and 1 commit which updates a dependency.
+Esta actualización de LTS viene con 112 commits, de los cuales 17 están considerados como Semver-Minor. Esto incluye a 32 que están relacionados a documentos, 31 que están relacionados a pruebas, 8 que están relacionados a build / tool y 1 commit que actualiza una dependencia.
 
 ### Cambios Notables
 
@@ -236,8 +236,8 @@ Esta actualización de LTS viene con 112 commits, de los cuales 17 están consid
 * [[`14ffddd989`](https://github.com/nodejs/node/commit/14ffddd989)] - **doc**: añadir documentación de la propiedad isTTY (SonaySevik) [#16828](https://github.com/nodejs/node/pull/16828)
 * [[`9c8d0366b3`](https://github.com/nodejs/node/commit/9c8d0366b3)] - **doc**: reparar descripción de fs.existsSync (Jeremiah Senkpiel) [#17702](https://github.com/nodejs/node/pull/17702)
 * [[`6abd4599af`](https://github.com/nodejs/node/commit/6abd4599af)] - **doc**: mejorar documentation.md (Jeremiah Senkpiel) [#17702](https://github.com/nodejs/node/pull/17702)
-* [[`d0b89a12ec`](https://github.com/nodejs/node/commit/d0b89a12ec)] - **doc**: add countdown module to writing tests guide (Bamieh) [#17201](https://github.com/nodejs/node/pull/17201)
-* [[`1eac4055f0`](https://github.com/nodejs/node/commit/1eac4055f0)] - **doc**: include Daniel Bevenius as a TSC member (Rich Trott) [#17652](https://github.com/nodejs/node/pull/17652)
+* [[`d0b89a12ec`](https://github.com/nodejs/node/commit/d0b89a12ec)] - **doc**: añadir el módulo de cuenta regresiva a la guía de pruebas de escritura (Bamieh) [#17201](https://github.com/nodejs/node/pull/17201)
+* [[`1eac4055f0`](https://github.com/nodejs/node/commit/1eac4055f0)] - **doc**: incluir a Daniel Bevenius como un miembro de TSC (Rich Trott) [#17652](https://github.com/nodejs/node/pull/17652)
 * [[`83fe79c558`](https://github.com/nodejs/node/commit/83fe79c558)] - **doc**: correct pbkdf2 salt length recommendation (Will Clark) [#17524](https://github.com/nodejs/node/pull/17524)
 * [[`43a2bc040f`](https://github.com/nodejs/node/commit/43a2bc040f)] - **doc**: improve randomfill and fix broken link (Sakthipriyan Vairamani (thefourtheye)) [#12541](https://github.com/nodejs/node/pull/12541)
 * [[`ef0213c0b8`](https://github.com/nodejs/node/commit/ef0213c0b8)] - **doc**: move Code of Conduct to admin repo (Myles Borins) [#17301](https://github.com/nodejs/node/pull/17301)
