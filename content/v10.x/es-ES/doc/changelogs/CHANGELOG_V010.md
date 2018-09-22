@@ -319,28 +319,28 @@ Actualización de Seguridad
 
 <a id="0.10.38"></a>
 
-## 2015-03-23, Version 0.10.38 (Maintenance)
+## 2015-03-23, Versión 0.10.38 (Mantenimiento)
 
 ### Commits
 
-* [[`3b511a8ccd`](https://github.com/nodejs/node/commit/3b511a8ccd)] - **openssl**: upgrade to 1.0.1m (Addressing multiple CVES)
+* [[`3b511a8ccd`](https://github.com/nodejs/node/commit/3b511a8ccd)] - **openssl**: actualizar a 1.0.1m (Addressing multiple CVES)
 
 <a id="0.10.37"></a>
 
-## 2015-03-11, Version 0.10.37 (Maintenance)
+## 2015-03-11, Versión 0.10.37 (Mantenimiento)
 
 ### Commits
 
-* [[`dcff5d565c`](https://github.com/nodejs/node/commit/dcff5d565c)] - uv: update to 0.10.36 (CVE-2015-0278) [#9274](https://github.com/joyent/node/pull/9274)
-* [[`f2a45caf2e`](https://github.com/nodejs/node/commit/f2a45caf2e)] - domains: fix stack clearing after error handled (Jonas Dohse) [#9364](https://github.com/joyent/node/pull/9364)
-* [[`d01a900078`](https://github.com/nodejs/node/commit/d01a900078)] - buffer: reword Buffer.concat error message (Chris Dickinson) [#8723](https://github.com/joyent/node/pull/8723)
-* [[`c8239c08d7`](https://github.com/nodejs/node/commit/c8239c08d7)] - console: allow Object.prototype fields as labels (Julien Gilli) [#9215](https://github.com/joyent/node/pull/9215)
-* [[`431eb172f9`](https://github.com/nodejs/node/commit/431eb172f9)] - V8: log version in profiler log file (Ben Noordhuis) [#9043](https://github.com/joyent/node/pull/9043)
-* [[`8bcd0a4c4a`](https://github.com/nodejs/node/commit/8bcd0a4c4a)] - http: fix performance regression for GET requests (Florin-Cristian Gavrila) [#9026](https://github.com/joyent/node/pull/9026)
+* [[`dcff5d565c`](https://github.com/nodejs/node/commit/dcff5d565c)] - uv: actualizar a 0.10.36 (CVE-2015-0278) [#9274](https://github.com/joyent/node/pull/9274)
+* [[`f2a45caf2e`](https://github.com/nodejs/node/commit/f2a45caf2e)] - domains: reparar la limpieza del stack después del manejador de errores (Jonas Dohse) [#9364](https://github.com/joyent/node/pull/9364)
+* [[`d01a900078`](https://github.com/nodejs/node/commit/d01a900078)] - buffer: reformular el mensaje de error de Buffer.concat (Chris Dickinson) [#8723](https://github.com/joyent/node/pull/8723)
+* [[`c8239c08d7`](https://github.com/nodejs/node/commit/c8239c08d7)] - console: permitir a los campos de Object.prototype como etiquetas (Julien Gilli) [#9215](https://github.com/joyent/node/pull/9215)
+* [[`431eb172f9`](https://github.com/nodejs/node/commit/431eb172f9)] - V8: versión log en el archivo log del perfilador (Ben Noordhuis) [#9043](https://github.com/joyent/node/pull/9043)
+* [[`8bcd0a4c4a`](https://github.com/nodejs/node/commit/8bcd0a4c4a)] - http: reparar regresión del rendimiento para solicitudes GET (Florin-Cristian Gavrila) [#9026](https://github.com/joyent/node/pull/9026)
 
 <a id="0.10.36"></a>
 
-## 2015-01-26, Version 0.10.36 (Stable)
+## 2015-01-26, Versión 0.10.36 (Estable)
 
 ### Commits
 
