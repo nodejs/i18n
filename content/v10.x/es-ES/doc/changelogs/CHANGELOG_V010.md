@@ -293,29 +293,29 @@ Actualización de Seguridad
 * [e192f61514] - win: reparar acciones personalizadas para WiX más viejos que 3.9 (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25569
 * [16bcd68dc5] - win: reparar acciones personalizadas en Visual Studio != 2013 (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25569
 * [517986c2f4] - win: hacer backport trayendo de vuelta soporte para xp/2k3 (Bert Belder) https://github.com/nodejs/node-v0.x-archive/pull/25569
-* [10f251e8dd] - win: backport set env before generating projects (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25569
+* [10f251e8dd] - win: hacer backport establece env antes de la generación de proyectos (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25569
 
 <a id="0.10.40"></a>
 
-## 2015-07-09, Version 0.10.40 (Maintenance)
+## 2015-07-09, Versión 0.10.40 (Mantenimiento)
 
 ### Commits
 
 * [[`0cf9f27703`](https://github.com/nodejs/node/commit/0cf9f27703)] - **openssl**: actualiza a 1.0.1p [#25654](https://github.com/joyent/node/pull/25654)
-* [[`5a60e0d904`](https://github.com/nodejs/node/commit/5a60e0d904)] - **V8**: back-port JitCodeEvent patch from upstream (Ben Noordhuis) [#25588](https://github.com/joyent/node/pull/25588)
+* [[`5a60e0d904`](https://github.com/nodejs/node/commit/5a60e0d904)] - **V8**: parche back-port JitCodeEvent desde el upstream (Ben Noordhuis) [#25588](https://github.com/joyent/node/pull/25588)
 * [[`18d413d299`](https://github.com/nodejs/node/commit/18d413d299)] - **win,msi**: crea una carpeta npm en el directorio AppData (Steven Rockarts) [#8838](https://github.com/joyent/node/pull/8838)
 
 <a id="0.10.39"></a>
 
-## 2015-06-18, Version 0.10.39 (Maintenance)
+## 2015-06-18, Versión 0.10.39 (Mantenimiento)
 
 ### Commits
 
-* [[`456c22f63f`](https://github.com/nodejs/node/commit/456c22f63f)] - **openssl**: upgrade to 1.0.1o (Addressing multiple CVEs) [#25523](https://github.com/joyent/node/pull/25523)
-* [[`9d19dfbfdb`](https://github.com/nodejs/node/commit/9d19dfbfdb)] - **install**: fix source path for openssl headers (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
-* [[`4028669531`](https://github.com/nodejs/node/commit/4028669531)] - **install**: make sure opensslconf.h is overwritten (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
-* [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: fix timeout when added in timer's callback (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
-* [[`e7c84f82c7`](https://github.com/nodejs/node/commit/e7c84f82c7)] - **windows**: broadcast WM_SETTINGCHANGE after install (Mathias Küsel) [#25100](https://github.com/joyent/node/pull/25100)
+* [[`456c22f63f`](https://github.com/nodejs/node/commit/456c22f63f)] - **openssl**: actualizar a 1.0.1o (Addressing multiple CVEs) [#25523](https://github.com/joyent/node/pull/25523)
+* [[`9d19dfbfdb`](https://github.com/nodejs/node/commit/9d19dfbfdb)] - **install**: reparar ruta fuente para los encabezados openssl (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
+* [[`4028669531`](https://github.com/nodejs/node/commit/4028669531)] - **install**: asegurarse que opensslconf.h esté sobreescrito (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
+* [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: reparar el tiempo de espera cuando se añade un temporizador del callback (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
+* [[`e7c84f82c7`](https://github.com/nodejs/node/commit/e7c84f82c7)] - **windows**: transmitir WM_SETTINGCHANGE después de instalar (Mathias Küsel) [#25100](https://github.com/joyent/node/pull/25100)
 
 <a id="0.10.38"></a>
 
