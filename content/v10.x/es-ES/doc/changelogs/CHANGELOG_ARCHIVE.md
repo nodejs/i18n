@@ -1198,7 +1198,7 @@ https://github.com/nodejs/node/commit/b88c3902b241cf934e75443b934f2033ad3915b1
 * build: establecer `process.platform` a "sunos" en SunOS (Nathan Rajlich)
 * build: reparar fallo de `make -j` luego de `make clean` (Bearice Ren)
 * build: corregir configuración de openssl para builds "arm" (Nathan Rajlich)
-* tls: support unix domain socket/named pipe in tls.connect (Shigeki Ohtsu)
+* tls: soportar socket/pipe nombrado de dominio de unix en tls.connect (Shigeki Ohtsu)
 * https: make https.get() accept a URL (koichik)
 * http: respect HTTP/1.0 TE header (Ben Noordhuis)
 * crypto, tls: Domainify setSNICallback, pbkdf2, randomBytes (Ben Noordhuis)
