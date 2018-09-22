@@ -216,7 +216,7 @@ Elaborazione dell'output del profiler di V8 generato utilizzando l'opzione `--pr
 added: v8.0.0
 -->
 
-Scrive gli avvisi di processo sul file specificato invece di stamparli sullo stderr. Se il file non esiste verrà creato, invece se esiste verrà aggiunto. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
+Scrive gli avvisi di processo sul file specificato invece di stamparli sullo stderr. Se il file non esiste verrà creato, invece se esiste verrà aggiunto. Se si verifica un errore durante il tentativo di scrittura dell'avviso sul file, questo verrà scritto sullo stderr.
 
 ### `--throw-deprecation`
 
@@ -224,7 +224,7 @@ Scrive gli avvisi di processo sul file specificato invece di stamparli sullo std
 added: v0.11.14
 -->
 
-Throw errors for deprecations.
+Genera gli errori per le deprecazioni.
 
 ### `--tls-cipher-list=list`
 
@@ -232,7 +232,7 @@ Throw errors for deprecations.
 added: v4.0.0
 -->
 
-Specify an alternative default TLS cipher list. Requires Node.js to be built with crypto support (default).
+Specifica un elenco crittografico TLS predefinito alternativo. Necessità di Node.js per essere costruito con supporto crittografico (predefinito).
 
 ### `--trace-deprecation`
 
@@ -240,7 +240,7 @@ Specify an alternative default TLS cipher list. Requires Node.js to be built wit
 added: v0.8.0
 -->
 
-Print stack traces for deprecations.
+Stampa le stack trace per le deprecazioni.
 
 ### `--trace-event-categories`
 
