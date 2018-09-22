@@ -235,11 +235,11 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 
 La mayoría de los sistemas operativos limitan el número de descriptores de archivo que pueden ser abiertos en un momento dado, por lo que es crucial cerrar el descriptor cuando se completan las operaciones. Si no se logra, resultará en una pérdida de memoria que eventualmente hará que una aplicación falle.
 
-## Threadpool Usage
+## Uso del Threadpool
 
 Tenga en cuenta que todas las APIs del sistema de archivos excepto `fs.FSWatcher()` y aquellas que son explícitamente asincrónicas utilizan el threadpool de libuv, lo cual puede tener sorpresivas y negativas implicaciones de rendimiento en algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para más información.
 
-## Class: fs.FSWatcher
+## Clase: fs.FSWatcher
 
 <!-- YAML
 added: v0.5.8
@@ -249,7 +249,7 @@ Una llamada exitosa al método de [`fs.watch()`][] devolverá un nuevo objeto de
 
 Todos los objetos de `fs.FSWatcher` son [`EventEmitter`][]'s que emitirán un evento de `'change'` cuando se modifique un archivo específico visto.
 
-### Event: 'change'
+### Evento: 'change'
 
 <!-- YAML
 added: v0.5.8
@@ -272,7 +272,7 @@ fs.watch('./tmp', { encoding: 'buffer' }, (eventType, filename) => {
 });
 ```
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v10.0.0
@@ -280,7 +280,7 @@ added: v10.0.0
 
 Emitted when the watcher stops watching for changes.
 
-### Event: 'error'
+### Evento: 'error'
 
 <!-- YAML
 added: v0.5.8
@@ -308,7 +308,7 @@ Una llamada exitosa a `fs.createReadStream()` devolverá un nuevo objeto de `fs.
 
 Todos los objetos de `fs.ReadStream` son [Streams Legibles](stream.html#stream_class_stream_readable).
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.93
@@ -316,7 +316,7 @@ added: v0.1.93
 
 Emitido cuando el descriptor de archivo subyacente de `fs.ReadStream` ha sido cerrado.
 
-### Event: 'open'
+### Evento: 'open'
 
 <!-- YAML
 added: v0.1.93
@@ -326,7 +326,7 @@ added: v0.1.93
 
 Se emite cuando el descriptor de archivos de `fs.ReadStream` ha sido abierto.
 
-### Event: 'ready'
+### Evento: 'ready'
 
 <!-- YAML
 added: v9.11.0
@@ -356,7 +356,7 @@ added: v0.1.93
 
 La ruta al archivo desde el cual lee el stream, como se especifica en el primer argumento a `fs.createReadStream()`. Si `path` se pasa como una string, entonces `readStream.path` será una string. Si `path` se pasa como un `Buffer`, entonces `readStream.path` será un `Buffer`.
 
-## Class: fs.Stats
+## Clase: fs.Stats
 
 <!-- YAML
 added: v0.1.21
@@ -481,7 +481,7 @@ The file system specific "Inode" number for the file.
 
 * {number}
 
-A bit-field describing the file type and mode.
+Un campo de bits que describe el tipo de archivo y el modo.
 
 ### stats.nlink
 
@@ -523,7 +523,7 @@ El tamaño del bloque del sistema de archivos para operaciones de e/s.
 
 * {number}
 
-The number of blocks allocated for this file.
+El número de bloques destinados para este archivo.
 
 ### stats.atimeMs
 
@@ -605,7 +605,7 @@ added: v0.11.13
 
 La marca de tiempo que indica la hora de creación de este archivo.
 
-### Stat Time Values
+### Valores del Tiempo de Estadísticas
 
 Las propiedades de `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` son [números](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) que contienen los tiempos correspondientes en milisegundos. Su precisión es específica en la plataforma. `atime`, `mtime`, `ctime`, y `birthtime` son objetos de [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date), representaciones alternas de los tiempos varios. La `Date` y los valores numéricos no están conectados. Asignar un nuevo valor numérico, o mutar el valor de `Date`, no se reflejará en la correspondiente representación alterna.
 
@@ -618,7 +618,7 @@ The times in the stat object have the following semantics:
 
 Antes de Node.js v0.12, el `ctime` mantuvo al `birthtime` en sistemas de Windows. Tenga en cuenta que a partir de v0.12, `ctime` ya no es la "hora de la creación", y en sistemas de Unix, nunca la fue.
 
-## Class: fs.WriteStream
+## Clase: fs.WriteStream
 
 <!-- YAML
 added: v0.1.93
@@ -626,7 +626,7 @@ added: v0.1.93
 
 `WriteStream` es un [Stream Editable](stream.html#stream_class_stream_writable).
 
-### Event: 'close'
+### Evento: 'close'
 
 <!-- YAML
 added: v0.1.93
@@ -634,7 +634,7 @@ added: v0.1.93
 
 Emitido cuando el descriptor de archivo subyacente de `WriteStream` ha sido cerrado.
 
-### Event: 'open'
+### Evento: 'open'
 
 <!-- YAML
 added: v0.1.93
@@ -644,7 +644,7 @@ added: v0.1.93
 
 Se emite cuando se abre el archivo de `WriteStream` .
 
-### Event: 'ready'
+### Evento: 'ready'
 
 <!-- YAML
 added: v9.11.0
@@ -996,27 +996,27 @@ El argumento `mode` utilizado en los métodos `fs.chmod()` y `fs.chmodSync()` es
 | Constante              | Octal   | Descripción                     |
 | ---------------------- | ------- | ------------------------------- |
 | `fs.constants.S_IRUSR` | `0o400` | leído por el propietario        |
-| `fs.constants.S_IWUSR` | `0o200` | write by owner                  |
+| `fs.constants.S_IWUSR` | `0o200` | escribir por propietario        |
 | `fs.constants.S_IXUSR` | `0o100` | ejecutar/buscar por propietario |
 | `fs.constants.S_IRGRP` | `0o40`  | leído por el grupo              |
-| `fs.constants.S_IWGRP` | `0o20`  | write by group                  |
+| `fs.constants.S_IWGRP` | `0o20`  | escribir por grupo              |
 | `fs.constants.S_IXGRP` | `0o10`  | ejecutar/buscar por grupo       |
 | `fs.constants.S_IROTH` | `0o4`   | leído por otros                 |
-| `fs.constants.S_IWOTH` | `0o2`   | write by others                 |
-| `fs.constants.S_IXOTH` | `0o1`   | execute/search by others        |
+| `fs.constants.S_IWOTH` | `0o2`   | escribir por otros              |
+| `fs.constants.S_IXOTH` | `0o1`   | ejecutar/buscar por otros       |
 
 Un método más sencillo de construir el `mode` es utilizar una secuencia de tres dígitos octales (por ejemplo, `765`). El primer dígito a la izquierda (`7` en el ejemplo), especifica los permisos para el propietario del archivo. El dígito medio (`6` en el ejemplo), especifica los permisos para el grupo. El primer dígito a la derecha (`5` en el ejemplo), especifica los permisos para otros.
 
-| Número | Descripción              |
-| ------ | ------------------------ |
-| `7`    | read, write, and execute |
-| `6`    | read and write           |
-| `5`    | read and execute         |
-| `4`    | sólo lectura             |
-| `3`    | write and execute        |
-| `2`    | sólo escritura           |
-| `1`    | execute only             |
-| `0`    | sin permisos             |
+| Número | Descripción                |
+| ------ | -------------------------- |
+| `7`    | leer, escribir, y ejecutar |
+| `6`    | leer y escribir            |
+| `5`    | leer y ejecutar            |
+| `4`    | sólo lectura               |
+| `3`    | escribir y ejecutar        |
+| `2`    | sólo escritura             |
+| `1`    | solo ejecutar              |
+| `0`    | sin permisos               |
 
 Por ejemplo, el valor octal `0o765` significa:
 
@@ -3180,7 +3180,7 @@ Versiones sincrónicas de [`fs.write()`][]. Devuelve el número de bytes escrito
 
 La API de `fs.promises` proporciona un conjunto alternativo de métodos de sistema de archivos asincrónicos que devuelven objetos de `Promise`, en lugar de utilizar callbacks. La API es accesible por medio de `require('fs').promises`.
 
-### class: FileHandle
+### clase: FileHandle
 
 <!-- YAML
 added: v10.0.0
@@ -3773,7 +3773,7 @@ added: v10.0.0
 * `mode` {integer} **Default:** `0o666` (readable and writable)
 * Devuelve: {Promise}
 
-Apertura asincrónica de archivo que devuelve una `Promise` que, cuando se resuelve, produce un objeto de `FileHandle` . See open(2).
+Apertura asincrónica de archivo que devuelve una `Promise` que, cuando se resuelve, produce un objeto de `FileHandle` . Vea open(2).
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
