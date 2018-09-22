@@ -278,7 +278,7 @@ fs.watch('./tmp', { encoding: 'buffer' }, (eventType, filename) => {
 added: v10.0.0
 -->
 
-Emitted when the watcher stops watching for changes.
+Se emite cuando el observador deja de buscar cambios.
 
 ### Evento: 'error'
 
@@ -288,7 +288,7 @@ added: v0.5.8
 
 * `error` {Error}
 
-Emitted when an error occurs while watching the file.
+Se emite cuando ocurre un error mientras se observa al archivo.
 
 ### watcher.close()
 
@@ -296,7 +296,7 @@ Emitted when an error occurs while watching the file.
 added: v0.5.8
 -->
 
-Stop watching for changes on the given `fs.FSWatcher`. Una vez detenido, el objeto de `fs.FSWatcher` ya no es utilizable.
+Deja de buscar cambios en el `fs.FSWatcher` dado. Una vez detenido, el objeto de `fs.FSWatcher` ya no es utilizable.
 
 ## Clase: fs.ReadStream
 
@@ -609,7 +609,7 @@ La marca de tiempo que indica la hora de creación de este archivo.
 
 Las propiedades de `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` son [números](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) que contienen los tiempos correspondientes en milisegundos. Su precisión es específica en la plataforma. `atime`, `mtime`, `ctime`, y `birthtime` son objetos de [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date), representaciones alternas de los tiempos varios. La `Date` y los valores numéricos no están conectados. Asignar un nuevo valor numérico, o mutar el valor de `Date`, no se reflejará en la correspondiente representación alterna.
 
-The times in the stat object have the following semantics:
+Los tiempo en el objeto de estadísticas tienen la siguiente semántica:
 
 * `atime` "Hora de Acceso" - La hora en la que se accedió por última vez a los datos de archivo. Cambiados por las llamadas de sistema mknod(2), utimes(2), y read(2).
 * `mtime` "Hora de Modificación" - La hora en que se modificaron por última vez los datos de archivo. Cambiados por las llamadas de sistema mknod(2), utimes(2), y read(2).
@@ -869,7 +869,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'a'`.
 * `callback` {Function} 
   * `err` {Error}
 
@@ -923,7 +923,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'a'`.
 
 Anexa los datos de manera sincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][].
 
@@ -1230,7 +1230,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `flags` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
+  * `flags` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'r'`.
   * `encoding` {string} **Default:** `null`
   * `fd` {integer} **Default:** `null`
   * `mode` {integer} **Default:** `0o666`
@@ -1281,7 +1281,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `flags` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
+  * `flags` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
   * `fd` {integer} **Default:** `null`
   * `mode` {integer} **Default:** `0o666`
@@ -1600,7 +1600,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `len` {integer} **Default:** `0`
+* `len` {integer} **Predeterminado:** `0`
 * `callback` {Function} 
   * `err` {Error}
 
@@ -2014,7 +2014,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `flags` {string|number} See [support of file system `flags`][].
+* `flags` {string|number} Vea [soporte de las `flags` del sistema de archivos][].
 * `mode` {integer} **Default:** `0o666` (readable and writable)
 * `callback` {Function} 
   * `err` {Error}
@@ -2043,7 +2043,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `flags` {string|number} See [support of file system `flags`][].
+* `flags` {string|number} Vea [soporte de las `flags` del sistema de archivos][].
 * `mode` {integer} **Default:** `0o666`
 * Devuelve: {number}
 
@@ -2172,7 +2172,7 @@ changes:
 * `path` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'r'`.
 * `callback` {Function} 
   * `err` {Error}
   * `data` {string|Buffer}
@@ -2234,7 +2234,7 @@ changes:
 * `path` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'r'`.
 * Devuelve: {string|Buffer}
 
 Versión sincrónica de [`fs.readFile()`][]. Devuelve los contenidos del `path`.
@@ -2763,7 +2763,7 @@ added: v0.1.31
 * `filename` {string|Buffer|URL}
 * `listener` {Function} Opcional, un listener previamente acoplado utilizando `fs.watchFile()`
 
-Stop watching for changes on `filename`. Si se especifica `listener`, sólo se eliminará ese listener en específico. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
+Deja de buscar cambios en `filename`. Si se especifica `listener`, sólo se eliminará ese listener en específico. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
 
 Calling `fs.unwatchFile()` with a filename that is not being watched is a no-op, not an error.
 
@@ -3082,7 +3082,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'w'`.
 * `callback` {Function} 
   * `err` {Error}
 
@@ -3130,7 +3130,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'w'`.
 
 La versión sincrónica de [`fs.writeFile()`][]. Devuelve `undefined`.
 
@@ -3202,7 +3202,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'a'`.
 * Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a este archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -3306,7 +3306,7 @@ added: v10.0.0
 
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'r'`.
 * Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
@@ -3432,7 +3432,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'w'`.
 * Devuelve: {Promise}
 
 Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -3483,7 +3483,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'a'`.
 * Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -3769,7 +3769,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `flags` {string|number} See [support of file system `flags`][].
+* `flags` {string|number} Vea [soporte de las `flags` del sistema de archivos][].
 * `mode` {integer} **Default:** `0o666` (readable and writable)
 * Devuelve: {Promise}
 
@@ -3828,7 +3828,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL|FileHandle} nombre de archivo o `FileHandle`
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'r'`.
 * Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
@@ -4003,7 +4003,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Predeterminado:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
+  * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'w'`.
 * Devuelve: {Promise}
 
 Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -4361,7 +4361,7 @@ Las siguientes constantes están destinadas para ser utilizadas con la propiedad
     </td>
     
     <td>
-      File type constant for a block-oriented device file.
+      Constante de tipo de archivo para un archivo de dispositivo orientado por bloques.
     </td>
   </tr>
   
