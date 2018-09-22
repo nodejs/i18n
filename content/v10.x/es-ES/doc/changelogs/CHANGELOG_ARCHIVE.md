@@ -1152,14 +1152,14 @@ https://github.com/nodejs/node/commit/e1f39468fa580c1e4cb15fac621f87944ee625dc
 
 <a id="0.8.10"></a>
 
-## 2012.09.25, Version 0.8.10 (Stable)
+## 2012.09.25, Versión 0.8.10 (Estable)
 
 https://github.com/nodejs/node/commit/0bc273da4fcaa79b209ed755ad249a3e7be626a6
 
-* npm: Upgrade to 1.1.62
-* repl: make invalid RegExps throw in the REPL (Nathan Rajlich)
-* v8: loosen artificial mmap constraint (Bryan Cantrill)
-* process: fix setuid() and setgid() error reporting (Ben Noordhuis)
+* npm: Actualizar a 1.1.62
+* repl: hacer que los RegExp inválidos se arrojen en el REPL (Nathan Rajlich)
+* v8: aflojar restricción de mmap artificial (Bryan Cantrill)
+* process: reparar reporte de errores de setuid() y setgid() (Ben Noordhuis)
 * domain: Properly exit() on domain disposal (isaacs)
 * fs: fix watchFile() missing deletion events (Ben Noordhuis)
 * fs: fix assert in fs.watch() (Ben Noordhuis)
