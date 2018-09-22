@@ -583,29 +583,29 @@ https://github.com/nodejs/node/commit/cbff8f091c22fb1df6b238c7a1b9145db950fa65
 https://github.com/nodejs/node/commit/e2da042844a830fafb8031f6c477eb4f96195210
 
 * uv: Actualizar a v0.10.18
-* crypto: clear errors from verify failure (Timothy J Fontaine)
-* dtrace: interpret two byte strings (Dave Pacheco)
-* fs: fix fs.truncate() file content zeroing bug (Ben Noordhuis)
-* http: provide backpressure for pipeline flood (isaacs)
-* tls: fix premature connection termination (Ben Noordhuis)
+* crypto: limpia errores de falla verificada (Timothy J Fontaine)
+* dtrace: interpretar strings de dos bytes (Dave Pacheco)
+* fs: reparar el bug del contenido del archivo fs.truncate() se hace cero (Ben Noordhuis)
+* http: proveer contrapresión para inundación pipe (isaacs)
+* tls: reparar la terminación prematura de la conexión (Ben Noordhuis)
 
 <a id="0.10.20"></a>
 
-## 2013.09.30, Version 0.10.20 (Stable)
+## 2013.09.30, Versión 0.10.20 (Estable)
 
 https://github.com/nodejs/node/commit/d7234c8d50a1af73f60d2d3c0cc7eed17429a481
 
-* tls: fix sporadic hang and partial reads (Fedor Indutny) 
-  * fixes "npm ERR! cb() never called!"
+* tls: reparar colgado esporádico y lecturas parciales (Fedor Indutny) 
+  * reparar "¡npm ERR! cb() nunca llamado!"
 
 <a id="0.10.19"></a>
 
-## 2013.09.24, Version 0.10.19 (Stable)
+## 2013.09.24, Versión 0.10.19 (Estable)
 
 https://github.com/nodejs/node/commit/6b5e6a5a3ec8d994c9aab3b800b9edbf1b287904
 
-* uv: Upgrade to v0.10.17
-* npm: upgrade to 1.3.11
+* uv: Actualizar a v0.10.17
+* npm: actualizar a 1.3.11
 * readline: handle input starting with control chars (Eric Schrock)
 * configure: add mips-float-abi (soft, hard) option (Andrei Sedoi)
 * stream: objectMode transforms allow falsey values (isaacs)
