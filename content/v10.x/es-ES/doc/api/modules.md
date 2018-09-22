@@ -359,15 +359,15 @@ added: v0.1.27
 
 * {string}
 
-The directory name of the current module. This is the same as the [`path.dirname()`][] of the [`__filename`][].
+El nombre del directorio del módulo actual. Este es el mismo que el [`path.dirname()`][] del [`__filename`][].
 
-Example: running `node example.js` from `/Users/mjr`
+Ejemplo: ejecutando `node example.js` desde `/Users/mjr`
 
 ```js
 console.log(__dirname);
-// Prints: /Users/mjr
+// Imprime: /Users/mjr
 console.log(path.dirname(__filename));
-// Prints: /Users/mjr
+// Imprime: /Users/mjr
 ```
 
 ### \_\_filename
@@ -380,21 +380,21 @@ added: v0.0.1
 
 * {string}
 
-The file name of the current module. This is the resolved absolute path of the current module file.
+El nombre de archivo del módulo actual. Esta es la ruta absoluta resuelta del archivo de módulo actual.
 
-For a main program this is not necessarily the same as the file name used in the command line.
+Para un programa principal, esto no es necesariamente lo mismo que el nombre de archivo utilizado en la línea de comando.
 
-See [`__dirname`][] for the directory name of the current module.
+Vea [`__dirname`][] para el nombre del directorio del módulo actual.
 
-Examples:
+Ejemplos:
 
-Running `node example.js` from `/Users/mjr`
+Ejecutando `node example.js` desde `/Users/mjr`
 
 ```js
 console.log(__filename);
-// Prints: /Users/mjr/example.js
+// Imprime: /Users/mjr/example.js
 console.log(__dirname);
-// Prints: /Users/mjr
+// Imprime: /Users/mjr
 ```
 
 Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a directory structure of:
@@ -402,9 +402,9 @@ Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a 
 * `/Users/mjr/app/a.js`
 * `/Users/mjr/app/node_modules/b/b.js`
 
-References to `__filename` within `b.js` will return `/Users/mjr/app/node_modules/b/b.js` while references to `__filename` within `a.js` will return `/Users/mjr/app/a.js`.
+Las referencias a `__filename` dentro de `b.js` devolverán `/Users/mjr/app/node_modules/b/b.js`, mientras que las referencias a `__filename` dentro de `a.js` devolverán `/Users/mjr/app/a.js`.
 
-### exports
+### exportaciones
 
 <!-- YAML
 added: v0.1.12
@@ -412,9 +412,9 @@ added: v0.1.12
 
 <!-- type=var -->
 
-A reference to the `module.exports` that is shorter to type. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
+Una referencia al `module.exports` que es más corta de escribir. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
 
-### module
+### módulo
 
 <!-- YAML
 added: v0.1.16
@@ -424,7 +424,7 @@ added: v0.1.16
 
 * {Object}
 
-A reference to the current module, see the section about the [`module` object][]. In particular, `module.exports` is used for defining what a module exports and makes available through `require()`.
+Una referencia al módulo actual. Vea la sección acerca de [`module` object][]. En particular, `module.exports` es utilizado para definir lo que exporta un módulo y lo hace disponibles a través de `require()`.
 
 ### require()
 
@@ -436,7 +436,7 @@ added: v0.1.13
 
 * {Function}
 
-To require modules.
+Para requerir módulos.
 
 #### require.cache
 
@@ -446,7 +446,7 @@ added: v0.3.0
 
 * {Object}
 
-Modules are cached in this object when they are required. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
+Los módulos son almacenados en caché en este objeto cuando son requeridos. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
 
 #### require.extensions
 
