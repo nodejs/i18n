@@ -1314,8 +1314,8 @@ https://github.com/nodejs/node/commit/60bf2d6cb33e4ce55604f73889ab840a9de8bdab
 * domain: Remover primer argumento de fn interceptado (Toshihiro Nakamura)
 * domain: Reparar fuga de memoria ante error (isaacs)
 * events: Reparar fuga de memoria de removeAllListeners (Nathan Rajlich)
-* zlib: Fix memory leak in Unzip class. (isaacs)
-* crypto: Fix memory leak in DecipherUpdate() (Ben Noordhuis)
+* zlib: Reparar fuga de memoria en clase Unzip. (isaacs)
+* crypto: Reparar fuga de memoria en DecipherUpdate() (Ben Noordhuis)
 
 <a id="0.8.2"></a>
 
