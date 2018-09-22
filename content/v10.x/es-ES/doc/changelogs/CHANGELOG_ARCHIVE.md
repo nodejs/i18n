@@ -1220,22 +1220,22 @@ https://github.com/nodejs/node/commit/a299c97bbc701f4d460e91214d7bfe7a9589d361
 * unix: Corregir símbolos de advertencia duplicados de llvm y gcc más viejo (Bert Belder)
 * fs: reparar usar-después-de-liberar en monitor de stat (Ben Noordhuis)
 * build: Reparar el uso de gcc compilado manualmente en OSX (Nathan Rajlich)
-* windows: make junctions work again (Bert Belder)
+* windows: hacer que las uniones (junctions) funcionen de nuevo (Bert Belder)
 
 <a id="0.8.7"></a>
 
-## 2012.08.15, Version 0.8.7 (Stable)
+## 2012.08.15, Versión 0.8.7 (Estable)
 
 https://github.com/nodejs/node/commit/f640c5d35cba96634cd8176a525a1d876e361a61
 
-* npm: Upgrade to 1.1.49
-* website: download page (Golo Roden)
-* crypto: fix uninitialized memory access in openssl (Ben Noordhuis)
-* buffer, crypto: fix buffer decoding (Ben Noordhuis)
-* build: compile with -fno-tree-vrp when gcc >= 4.0 (Ben Noordhuis)
-* tls: handle multiple CN fields when verifying cert (Ben Noordhuis)
-* doc: remove unused util from child_process (Kyle Robinson Young)
-* build: rework -fvisibility=hidden detection (Ben Noordhuis)
+* npm: Actualizar a 1.1.49
+* website: descargar página (Golo Roden)
+* crypto: reparar acceso a memoria sin inicializar en openssl (Ben Noordhuis)
+* buffer, crypto: reparar codificación de buffer (Ben Noordhuis)
+* build: compilar con -fno-tree-vrp cuando gcc >= 4.0 (Ben Noordhuis)
+* tls: manejar múltiples campos CN al verificar certificado (Ben Noordhuis)
+* doc: remover util no utilizado de child_process (Kyle Robinson Young)
+* build: volver a trabajar detección -fvisibility=hidden (Ben Noordhuis)
 * windows: don't duplicate invalid stdio handles (Bert Belder)
 * windows: fix typos in process-stdio.c (Bert Belder)
 
