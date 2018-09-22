@@ -347,11 +347,11 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 * [[`8ca12e2b6e`](https://github.com/nodejs/node/commit/8ca12e2b6e)] - **doc**: standardize preposition usage in fs.md (Rich Trott) [#17463](https://github.com/nodejs/node/pull/17463)
 * [[`e8368a12d2`](https://github.com/nodejs/node/commit/e8368a12d2)] - **doc**: improve punctuation in fs.open() text (Rich Trott) [#17463](https://github.com/nodejs/node/pull/17463)
 * [[`4d4337d3d3`](https://github.com/nodejs/node/commit/4d4337d3d3)] - **doc**: use colon consistently in assert.md (Rich Trott) [#17463](https://github.com/nodejs/node/pull/17463)
-* [[`0fa2f39457`](https://github.com/nodejs/node/commit/0fa2f39457)] - **doc**: improve checkServerIdentity docs (Hannes Magnusson) [#17203](https://github.com/nodejs/node/pull/17203)
+* [[`0fa2f39457`](https://github.com/nodejs/node/commit/0fa2f39457)] - **doc**: mejorar docs de checkServerIdentity (Hannes Magnusson) [#17203](https://github.com/nodejs/node/pull/17203)
 * [[`35316dcd10`](https://github.com/nodejs/node/commit/35316dcd10)] - **doc**: add guide to maintaining npm (Myles Borins) [#16541](https://github.com/nodejs/node/pull/16541)
 * [[`90ee2ee943`](https://github.com/nodejs/node/commit/90ee2ee943)] - **doc**: clarify fast-track of reversions (Refael Ackermann) [#17332](https://github.com/nodejs/node/pull/17332)
-* [[`3eab248a1f`](https://github.com/nodejs/node/commit/3eab248a1f)] - **doc**: Add link for ECMAScript 2015 (smatsu-hl) [#17317](https://github.com/nodejs/node/pull/17317)
-* [[`c519287d3d`](https://github.com/nodejs/node/commit/c519287d3d)] - **doc**: replace string with template string (Leko) [#17316](https://github.com/nodejs/node/pull/17316)
+* [[`3eab248a1f`](https://github.com/nodejs/node/commit/3eab248a1f)] - **doc**: Añadir enlace para ECMAScript 2015 (smatsu-hl) [#17317](https://github.com/nodejs/node/pull/17317)
+* [[`c519287d3d`](https://github.com/nodejs/node/commit/c519287d3d)] - **doc**: reemplazar string con string modelo (Leko) [#17316](https://github.com/nodejs/node/pull/17316)
 * [[`b2236a3804`](https://github.com/nodejs/node/commit/b2236a3804)] - **doc**: replace function with arrow function in vm.md (narirou) [#17307](https://github.com/nodejs/node/pull/17307)
 * [[`46dc2416b9`](https://github.com/nodejs/node/commit/46dc2416b9)] - **doc**: fix typo in api doc of url.format(urlObject) (pkovacs) [#17295](https://github.com/nodejs/node/pull/17295)
 * [[`b13dab8b4d`](https://github.com/nodejs/node/commit/b13dab8b4d)] - **doc**: añadir maclover7 a colaboradores (Jon Moss) [#17289](https://github.com/nodejs/node/pull/17289)
@@ -445,14 +445,14 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 
 ## 2017-12-08, Versión 6.12.2 'Boron' (LTS), @MylesBorins
 
-Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles de vulnerabilidades parcheadas.
+Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 Fixes for the following CVEs are included in this release:
 
 * CVE-2017-15896
 * CVE-2017-3738 (from the openssl project)
 
-### Cambios notables
+### Cambios Notables
 
 * **deps**: 
   * openssl actualizado a 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
