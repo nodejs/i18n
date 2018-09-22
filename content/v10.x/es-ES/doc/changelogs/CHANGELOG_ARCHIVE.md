@@ -1097,7 +1097,7 @@ https://github.com/nodejs/node/commit/fdf91afb494a7a2fff2913d817f589c191a2c88f
 * linux: usar /proc/cpuinfo para frecuencia del CPU (Ben Noordhuis)
 * windows: mapear WSAESHUTDOWN a UV_EPIPE (Ben Noordhuis)
 * windows: mapear ERROR_GEN_FAILURE a UV_EIO (Bert Belder)
-* unix: no establecer ambiente a menos que uno sea provisto (Charlie McConell)
+* unix: no establecer environ a menos que uno sea provisto (Charlie McConell)
 * domains: no colapsar si el dominio está establecido como nulo (Bert Belder)
 * windows: reparar el build del depurador x64 (Bert Belder)
 * net, tls: reparar fuga de recursos de connect() (Ben Noordhuis)
