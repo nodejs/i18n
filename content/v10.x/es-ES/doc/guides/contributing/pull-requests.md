@@ -391,11 +391,11 @@ Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para 
 
 Las opiniones sobre esto varían, incluso entre los miembros del Comité Directivo Técnico.
 
-Una regla general es que si Node.js lo necesita (debido a razones históricas o funcionales), entonces pertenece a Node.js. For instance, `url` parsing is in Node.js because of HTTP protocol support.
+Una regla general es que si Node.js lo necesita (debido a razones históricas o funcionales), entonces pertenece a Node.js. Por ejemplo, el análisis `url` está en Node.js debido a la compatibilidad con el protocolo HTTP.
 
-Also, functionality that either cannot be implemented outside of core in any reasonable way, or only with significant pain.
+Además, la funcionalidad que no puede implementarse fuera del núcleo de ninguna manera razonable, o solo con un gran daño.
 
-It is not uncommon for contributors to suggest new features they feel would make Node.js better. These may or may not make sense to add, but as with all changes, be courteous in how you communicate your stance on these. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
 ### Performance is not everything
 
