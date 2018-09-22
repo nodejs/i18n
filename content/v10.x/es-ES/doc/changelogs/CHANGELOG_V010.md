@@ -518,46 +518,46 @@ https://github.com/nodejs/node/commit/b0e5f195dfce3e2b99f5091373d49f6616682596
 
 * uv: Actualizar a v0.10.23
 * npm: Actualizar a v1.3.24
-* v8: Fix enumeration for objects with lots of properties
-* child_process: fix spawn() optional arguments (Sam Roberts)
-* cluster: report more errors to workers (Fedor Indutny)
-* domains: exit() only affects active domains (Ryan Graham)
-* src: OnFatalError handler must abort() (Timothy J Fontaine)
-* stream: writes may return false but forget to emit drain (Yang Tianyang)
+* v8: Reparar la enumeración de objetos con muchas propiedades
+* child_process: reparar argumentos spawn() opcionales (Sam Roberts)
+* cluster: reportar más errores a los workers (Fedor Indutny)
+* domains: exit() solo afecta dominios activos (Ryan Graham)
+* src: manejador OnFatalError debe abort() (Timothy J Fontaine)
+* stream: escrituras pueden devolver false pero no olvidar emitir drain (Yang Tianyang)
 
 <a id="0.10.24"></a>
 
-## 2013.12.18, Version 0.10.24 (Stable)
+## 2013.12.18, Versión 0.10.24 (Estable)
 
 https://github.com/nodejs/node/commit/b7fd6bc899ccb629d790c47aee06aba87e535c41
 
-* uv: Upgrade to v0.10.21
-* npm: upgrade to 1.3.21
-* v8: backport fix for CVE-2013-{6639|6640}
-* build: unix install node and dep library headers (Timothy J Fontaine)
-* cluster, v8: fix --logfile=%p.log (Ben Noordhuis)
-* module: only cache package main (Wyatt Preul)
+* uv: Actualizar a v0.10.21
+* npm: actualizar a 1.3.21
+* v8: reparación backport para CVE-2013-{6639|6640}
+* build: nodos de instalación unix y encabezados de biblioteca dep (Timothy J Fontaine)
+* cluster, v8: reparar --logfile=%p.log (Ben Noordhuis)
+* module: solo principal paquete caché (Wyatt Preul)
 
 <a id="0.10.23"></a>
 
-## 2013.12.12, Version 0.10.23 (Stable)
+## 2013.12.12, Versión 0.10.23 (Estable)
 
 https://github.com/nodejs/node/commit/0462bc23564e7e950a70ae4577a840b04db6c7c6
 
-* uv: Upgrade to v0.10.20 (Timothy J Fontaine)
-* npm: Upgrade to 1.3.17 (isaacs)
-* gyp: update to 78b26f7 (Timothy J Fontaine)
-* build: include postmortem symbols on linux (Timothy J Fontaine)
-* crypto: Make Decipher._flush() emit errors. (Kai Groner)
-* dgram: fix abort when getting `fd` of closed dgram (Fedor Indutny)
-* events: do not accept NaN in setMaxListeners (Fedor Indutny)
-* events: avoid calling `once` functions twice (Tim Wood)
-* events: fix TypeError in removeAllListeners (Jeremy Martin)
-* fs: report correct path when EEXIST (Fedor Indutny)
-* process: enforce allowed signals for kill (Sam Roberts)
-* tls: emit 'end' on .receivedShutdown (Fedor Indutny)
-* tls: fix potential data corruption (Fedor Indutny)
-* tls: handle `ssl.start()` errors appropriately (Fedor Indutny)
+* uv: Actualizar a v0.10.20 (Timothy J Fontaine)
+* npm: Actualizar a 1.3.17 (isaacs)
+* gyp: actualizar a 78b26f7 (Timothy J Fontaine)
+* build: incluir símbolos postmodernos en linux (Timothy J Fontaine)
+* crypto: Hacer Decipher._flush() emita errores. (Kai Groner)
+* dgram: reparar anulación cuando se tenga `fd` del dgram cerrado (Fedor Indutny)
+* events: no aceptar NaN en setMaxListeners (Fedor Indutny)
+* events: evitar llamar la función `once` dos veces (Tim Wood)
+* events: reparar TypeError en removeAllListeners (Jeremy Martin)
+* fs: reportar la ruta correcta cuando EEXIST (Fedor Indutny)
+* process: hacer cumplir señales permitidas por kill (Sam Roberts)
+* tls: emitir 'end' en .receivedShutdown (Fedor Indutny)
+* tls: reparar una corrupción de datos potenciaal (Fedor Indutny)
+* tls: manejar errores `ssl.start()` apropiadamente (Fedor Indutny)
 * tls: reset NPN callbacks after SNI (Fedor Indutny)
 
 <a id="0.10.22"></a>
