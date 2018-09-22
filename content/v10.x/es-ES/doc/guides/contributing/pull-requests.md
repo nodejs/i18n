@@ -395,11 +395,11 @@ Una regla general es que si Node.js lo necesita (debido a razones históricas o 
 
 Además, la funcionalidad que no puede implementarse fuera del núcleo de ninguna manera razonable, o solo con un gran daño.
 
-No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Los comentarios que hagan que el contribuyente se sienta como que debería haber "sabido mejor" o ridiculizado incluso por intentar, va en contra del [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-### Performance is not everything
+### El rendimiento no es todo
 
-Node.js has always optimized for speed of execution. If a particular change can be shown to make some part of Node.js faster, it's quite likely to be accepted. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
+Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
 
 That said, performance is not the only factor to consider. Node.js also optimizes in favor of not breaking existing code in the ecosystem, and not changing working functional code just for the sake of changing.
 
