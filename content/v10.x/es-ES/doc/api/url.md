@@ -934,14 +934,14 @@ changes:
 -->
 
 * `urlString` {string} La string URL a analizar.
-* `parseQueryString` {boolean} Si es `true`, la propiedad `query` siempre será establecida a un objeto devuelto por el módulo [`querystring`][] del método `parse()`. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Default:** `false`.
-* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **Default:** `false`.
+* `parseQueryString` {boolean} Si es `true`, la propiedad `query` siempre será establecida a un objeto devuelto por el módulo [`querystring`][] del método `parse()`. Si es `false`, la propiedad `query` en el objeto URL devuelto será una string sin analizar ni codificar. **Predeterminado:** `false`.
+* `slashesDenoteHost` {boolean} Si es `true`, el primer token después de la string literal `//` y anterior a la siguiente `/`, será interpretado como el `host`. Por ejemplo, dada `//foo/bar`, el resultado será `{host: 'foo', pathname: '/bar'}` en lugar de `{pathname: '//foo/bar'}`. **Predeterminado:** `false`.
 
-The `url.parse()` method takes a URL string, parses it, and returns a URL object.
+El método `url.parse()` toma una string URL, la analiza, y la devuelve al objeto URL.
 
-A `TypeError` is thrown if `urlString` is not a string.
+Se produce un `TypeError` si `urlString` no es una string.
 
-A `URIError` is thrown if the `auth` property is present but cannot be decoded.
+Se produce un `URIError` si la propiedad `auth` está presente pero no puede ser decodificada.
 
 ### url.resolve(from, to)
 
@@ -962,7 +962,7 @@ changes:
                  contains a hostname.
 -->
 
-* `from` {string} The Base URL being resolved against.
+* `from` {string} El URL Base siendo resuelto en contra.
 * `to` {string} The HREF URL being resolved.
 
 The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
