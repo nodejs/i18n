@@ -1135,7 +1135,7 @@ https://github.com/nodejs/node/commit/38c72d4e29574dec5205bcf23c2a85efe65331a4
 * npm: Actualizar a 1.1.63
 * crypto: Reducir índice de estabilidad a 2-Inestable (isaacs)
 * windows: reparar fuga del manejador en uv_fs_utime (Bert Belder)
-* windows: fix application crashed popup in debug version (Bert Belder)
+* windows: reparar colapso de ventana emergente de la aplicación en la versión de depuración (Bert Belder)
 * buffer: report proper retained size in profiler (Ben Noordhuis)
 * buffer: fix byteLength with UTF-16LE (koichik)
 * repl: make "end of input" JSON.parse() errors throw in the REPL (Nathan Rajlich)
