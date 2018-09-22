@@ -922,7 +922,7 @@ changes:
 * `data` {string|Buffer}
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
-  * `mode` {integer} **Default:** `0o666`
+  * `mode` {integer} **Predeterminado:** `0o666`
   * `flag` {string} Vea [soporte de las `flags` del sistema de archivos][]. **Predeterminado:** `'a'`.
 
 Anexa los datos de manera sincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][].
@@ -3345,7 +3345,7 @@ fsync(2) asincrónico. La `Promise` se resuelve sin argumentos al realizarse con
 added: v10.0.0
 -->
 
-* `len` {integer} **Default:** `0`
+* `len` {integer} **Predeterminado:** `0`
 * Devuelve: {Promise}
 
 Trunca el archivo y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
@@ -3933,7 +3933,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `len` {integer} **Default:** `0`
+* `len` {integer} **Predeterminado:** `0`
 * Devuelve: {Promise}
 
 Trunca el `path` y luego resuelve la `Promise` sin argumentos al realizarse con éxito. El `path` *debe* ser una string o `Buffer`.
