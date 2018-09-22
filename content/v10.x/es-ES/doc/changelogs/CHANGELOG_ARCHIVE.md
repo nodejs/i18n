@@ -1206,20 +1206,20 @@ https://github.com/nodejs/node/commit/b88c3902b241cf934e75443b934f2033ad3915b1
 
 <a id="0.8.8"></a>
 
-## 2012.08.22, Version 0.8.8 (Stable)
+## 2012.08.22, Versión 0.8.8 (Estable)
 
 https://github.com/nodejs/node/commit/a299c97bbc701f4d460e91214d7bfe7a9589d361
 
-* V8: upgrade to 3.11.10.19
-* npm: upgrade to 1.1.59
-* windows: fix uninitialized memory access in uv_update_time() (Bert Belder)
-* unix, windows: fix memory corruption in fs-poll.c (Ben Noordhuis)
-* unix: fix integer overflow in uv_hrtime (Tim Holy)
-* sunos: fix uv_cpu_info() on x86_64 (Ben Noordhuis)
-* tls: update default cipher list (Ben Noordhuis)
-* unix: Fix llvm and older gcc duplicate symbol warnings (Bert Belder)
-* fs: fix use after free in stat watcher (Ben Noordhuis)
-* build: Fix using manually compiled gcc on OS X (Nathan Rajlich)
+* V8: actualizar a 3.11.10.19
+* npm: actualizar a 1.1.59
+* windows: reparar acceso a la memoria sin inicializar en uv_update_time() (Bert Belder)
+* unix, windows: reparar corrupción de memoria en fs-poll.c (Ben Noordhuis)
+* unix: corregir desbordamiento de entero en uv_hrtime (Tim Holy)
+* sunos: reparar uv_cpu_info() en x86_64 (Ben Noordhuis)
+* tls: actualizar lista de cifrados predeterminada (Ben Noordhuis)
+* unix: Corregir símbolos de advertencia duplicados de llvm y gcc más viejo (Bert Belder)
+* fs: reparar usar-después-de-liberar en monitor de stat (Ben Noordhuis)
+* build: Reparar el uso de gcc compilado manualmente en OSX (Nathan Rajlich)
 * windows: make junctions work again (Bert Belder)
 
 <a id="0.8.7"></a>
