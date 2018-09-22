@@ -1128,13 +1128,13 @@ https://github.com/nodejs/node/commit/ff4c974873f9a7cc6a5b042eb9b6389bb8dde6d6
 
 <a id="0.8.12"></a>
 
-## 2012.10.12, Version 0.8.12 (Stable)
+## 2012.10.12, Versión 0.8.12 (Estable)
 
 https://github.com/nodejs/node/commit/38c72d4e29574dec5205bcf23c2a85efe65331a4
 
-* npm: Upgrade to 1.1.63
-* crypto: Reduce stability index to 2-Unstable (isaacs)
-* windows: fix handle leak in uv_fs_utime (Bert Belder)
+* npm: Actualizar a 1.1.63
+* crypto: Reducir índice de estabilidad a 2-Inestable (isaacs)
+* windows: reparar fuga del manejador en uv_fs_utime (Bert Belder)
 * windows: fix application crashed popup in debug version (Bert Belder)
 * buffer: report proper retained size in profiler (Ben Noordhuis)
 * buffer: fix byteLength with UTF-16LE (koichik)
