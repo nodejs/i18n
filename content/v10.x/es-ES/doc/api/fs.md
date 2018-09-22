@@ -533,7 +533,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time this file was accessed expressed in milliseconds since the POSIX Epoch.
+La marca de tiempo que indica la última vez que este archivo fue accedido, expresado en milisegundos desde la Época POSIX.
 
 ### stats.mtimeMs
 
@@ -543,7 +543,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time this file was modified expressed in milliseconds since the POSIX Epoch.
+La marca de tiempo que indica la última vez que este archivo fue modificado, expresado en milisegundos desde la Época POSIX.
 
 ### stats.ctimeMs
 
@@ -553,7 +553,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the last time the file status was changed expressed in milliseconds since the POSIX Epoch.
+La marca de tiempo que indica la última vez que este archivo fue cambiado, expresado en milisegundos desde la Época POSIX.
 
 ### stats.birthtimeMs
 
@@ -563,7 +563,7 @@ added: v8.1.0
 
 * {number}
 
-The timestamp indicating the creation time of this file expressed in milliseconds since the POSIX Epoch.
+La marca de tiempo que indica la hora de creación de este archivo, expresado en milisegundos desde la Época POSIX.
 
 ### stats.atime
 
@@ -573,7 +573,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time this file was accessed.
+La marca de tiempo que indica la última vez que este archivo fue accedido.
 
 ### stats.mtime
 
@@ -583,7 +583,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time this file was modified.
+La marca de tiempo que indica la última vez que este archivo fue modificado.
 
 ### stats.ctime
 
@@ -593,7 +593,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the last time the file status was changed.
+La marca de tiempo que indica la última vez que este archivo fue cambiado.
 
 ### stats.birthtime
 
@@ -603,7 +603,7 @@ added: v0.11.13
 
 * {Date}
 
-The timestamp indicating the creation time of this file.
+La marca de tiempo que indica la hora de creación de este archivo.
 
 ### Stat Time Values
 
@@ -614,7 +614,7 @@ The times in the stat object have the following semantics:
 * `atime` "Hora de Acceso" - La hora en la que se accedió por última vez a los datos de archivo. Cambiados por las llamadas de sistema mknod(2), utimes(2), y read(2).
 * `mtime` "Hora de Modificación" - La hora en que se modificaron por última vez los datos de archivo. Cambiados por las llamadas de sistema mknod(2), utimes(2), y read(2).
 * `ctime` "Hora de Cambio" - La hora en la que se cambiaron por última vez los estados de archivo (modificación de datos inode). Cambiados por las llamadas de sistema chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2).
-* `birthtime` "Hora de Creación" - La hora de creación de un archivo. Se establece una vez que se crea el archivo. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Tenga en cuenta que este valor puede que sea mayor que `atime` o `mtime` en este caso. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
+* `birthtime` "Hora de Creación" - La hora de creación de un archivo. Se establece una vez que se crea el archivo. En sistema de archivos en donde no está disponible la hora de creación, este campo puede poseer en su lugar el `ctime` o `1970-01-01T00:00Z` (por ejemplo, la marca de tiempo de la época de unix `0`). Tenga en cuenta que este valor puede que sea mayor que `atime` o `mtime` en este caso. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
 
 Antes de Node.js v0.12, el `ctime` mantuvo al `birthtime` en sistemas de Windows. Tenga en cuenta que a partir de v0.12, `ctime` ya no es la "hora de la creación", y en sistemas de Unix, nunca la fue.
 
@@ -993,17 +993,17 @@ Vea también: chmod(2).
 
 El argumento `mode` utilizado en los métodos `fs.chmod()` y `fs.chmodSync()` es una máscara de bits numérica creada utilizando un lógico O de las siguientes constantes:
 
-| Constante              | Octal   | Descripción              |
-| ---------------------- | ------- | ------------------------ |
-| `fs.constants.S_IRUSR` | `0o400` | leído por el propietario |
-| `fs.constants.S_IWUSR` | `0o200` | write by owner           |
-| `fs.constants.S_IXUSR` | `0o100` | execute/search by owner  |
-| `fs.constants.S_IRGRP` | `0o40`  | leído por el grupo       |
-| `fs.constants.S_IWGRP` | `0o20`  | write by group           |
-| `fs.constants.S_IXGRP` | `0o10`  | execute/search by group  |
-| `fs.constants.S_IROTH` | `0o4`   | leído por otros          |
-| `fs.constants.S_IWOTH` | `0o2`   | write by others          |
-| `fs.constants.S_IXOTH` | `0o1`   | execute/search by others |
+| Constante              | Octal   | Descripción                     |
+| ---------------------- | ------- | ------------------------------- |
+| `fs.constants.S_IRUSR` | `0o400` | leído por el propietario        |
+| `fs.constants.S_IWUSR` | `0o200` | write by owner                  |
+| `fs.constants.S_IXUSR` | `0o100` | ejecutar/buscar por propietario |
+| `fs.constants.S_IRGRP` | `0o40`  | leído por el grupo              |
+| `fs.constants.S_IWGRP` | `0o20`  | write by group                  |
+| `fs.constants.S_IXGRP` | `0o10`  | ejecutar/buscar por grupo       |
+| `fs.constants.S_IROTH` | `0o4`   | leído por otros                 |
+| `fs.constants.S_IWOTH` | `0o2`   | write by others                 |
+| `fs.constants.S_IXOTH` | `0o1`   | execute/search by others        |
 
 Un método más sencillo de construir el `mode` es utilizar una secuencia de tres dígitos octales (por ejemplo, `765`). El primer dígito a la izquierda (`7` en el ejemplo), especifica los permisos para el propietario del archivo. El dígito medio (`6` en el ejemplo), especifica los permisos para el grupo. El primer dígito a la derecha (`5` en el ejemplo), especifica los permisos para otros.
 
@@ -4552,7 +4552,7 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'r+'` - Archivo abierto para leer y escribir. Una excepción ocurre si el archivo no existe.
 
-* `'rs+'` - Archivo abierto para leer y escribir en modo sincrónico. Instructs the operating system to bypass the local file system cache.
+* `'rs+'` - Archivo abierto para leer y escribir en modo sincrónico. Instruye al sistema operativo a evadir la caché del sistema de archivos local.
   
   This is primarily useful for opening files on NFS mounts as it allows skipping the potentially stale local cache. Tiene un impacto bastante real en el rendimiento de E/S, así que no se recomienda utilizar esta bandera a menos de que sea necesario.
   
