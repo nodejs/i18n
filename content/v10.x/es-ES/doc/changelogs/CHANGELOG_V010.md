@@ -251,7 +251,7 @@ Actualización de Seguridad
 
 * build: Añadido soporte para Microsoft Visual Studio 2015
 * npm: Actualizado a v1.4.29 de v1.4.28. Un lanzamiento de una sola ocasión como parte de la estrategia para obtener una versión de npm en Node.js v0.10.x que funcione con el registro actual (https://github.com/nodejs/LTS/issues/37). Esta versión de npm imprime un banner cada vez que se ejecute. El banner advierte que la siguiente lanzamiento estándar de Node.js v0.10.x va tener una versión npm v2.
-* openssl: Actualizado a 1.0.1q, conteniendo reparaciones CVE-2015-3194 "Falló la verificación de certificado, falta parámetro PSS", un vector potencial de negación-de-servicio para servidores TLS de Node.js usando autenticación del certificado del cliente; los clientes TLS también son impactados. Hay más detalles disponibles en <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
+* openssl: Actualizado a 1.0.1q, contiene reparaciones CVE-2015-3194 "Falló la verificación de certificado, falta parámetro PSS", un vector potencial de negación-de-servicio para servidores TLS de Node.js usando autenticación del certificado del cliente; los clientes TLS también son impactados. Hay más detalles disponibles en <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
 ### Commits
 
@@ -281,13 +281,13 @@ Actualización de Seguridad
 * [a7fee30da1] - test: marca test-tls-securepair-server como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
 * [7df57703dd] - test: marca test-net-error-twice flaky en SmartOS (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25760
 * [e10892cccc] - test: hace que test-abort-fatal-error no sea flaky (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25755
-* [a2f879f197] - test: mark recently failing tests as flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [a2f879f197] - test: marca las pruebas que fallaron recientemente como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [e7010bdf92] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [c283c9bbb3] - test: soporta salida de pruebas de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [eeaed586bb] - test: runner support for flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [3bb8174b94] - test: refactor to use common testcfg (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [df59d43586] - tools: pass constant to logger instead of string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [d103d4ed9a] - tools: fix test.py after v8 upgrade (Ben Noordhuis) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [df59d43586] - tools: pasar un logger constante en vez de un string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [d103d4ed9a] - tools: repara test.py después de la actualización v8 (Ben Noordhuis) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [8002192b4e] - win: manifest node.exe for Windows 8.1 (Alexis Campailla) https://github.com/nodejs/node/pull/2838
 * [66ec1dae8f] - win: add MSVS 2015 support (Rod Vagg) https://github.com/nodejs/node-v0.x-archive/pull/25857
 * [e192f61514] - win: fix custom actions for WiX older than 3.9 (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25569
