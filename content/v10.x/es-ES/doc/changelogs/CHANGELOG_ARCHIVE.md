@@ -1112,19 +1112,19 @@ https://github.com/nodejs/node/commit/b00527fcf05c3d9f
 
 <a id="0.8.13"></a>
 
-## 2012.10.25, Version 0.8.13 (Stable)
+## 2012.10.25, Versión 0.8.13 (Estable)
 
 https://github.com/nodejs/node/commit/ff4c974873f9a7cc6a5b042eb9b6389bb8dde6d6
 
-* V8: Upgrade to 3.11.10.25
-* npm: Upgrade to 1.1.65
-* url: parse hostnames that start with - or _ (Ben Noordhuis)
-* repl: Fix Windows 8 terminal issue (Bert Belder)
-* typed arrays: use signed char for signed int8s (Aaron Jacobs)
-* crypto: fix bugs in DiffieHellman (Ben Noordhuis)
-* configure: turn on VFPv3 on ARMv7 (Ben Noordhuis)
-* Re-enable OpenSSL UI for entering passphrases via tty (Ben Noordhuis)
-* repl: ensure each REPL instance gets its own "context" (Nathan Rajlich)
+* V8: Actualizar a 3.11.10.25
+* npm: Actualizar a 1.1.65
+* url: analizar nombres de hosts que comiencen con - o _ (Ben Noordhuis)
+* repl: Reparar problema con el terminal de Windows 8 (Bert Belder)
+* typed arrays: usar caracteres con signo para int8s con signo (Aaron Jacobs)
+* crypto: corregir bugs en DiffieHellman (Ben Noordhuis)
+* configure: activar VFPv3 en ARMv7 (Ben Noordhuis)
+* Volver a habilitar UI de OpenSSL para introducción de contraseñas vía tty (Ben Noordhuis)
+* repl: asegurarse de que cada instancia de REPL obtenga su propio "context" (Nathan Rajlich)
 
 <a id="0.8.12"></a>
 
