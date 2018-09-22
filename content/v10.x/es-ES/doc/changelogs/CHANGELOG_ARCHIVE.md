@@ -1182,10 +1182,10 @@ https://github.com/nodejs/node/commit/0bc273da4fcaa79b209ed755ad249a3e7be626a6
 
 https://github.com/nodejs/node/commit/b88c3902b241cf934e75443b934f2033ad3915b1
 
-* v8: upgrade to 3.11.10.22
-* GYP: upgrade to r1477
-* npm: Upgrade to 1.1.61
-* npm: Don't create world-writable files (isaacs)
+* v8: actualizar a 3.11.10.22
+* GYP: actualizar a r1477
+* npm: Actualizar a 1.1.61
+* npm: No crear archivos de escritura pública (isaacs)
 * windows: fix single-accept mode for shared server sockets (Bert Belder)
 * windows: fix uninitialized memory access in uv_update_time() (Bert Belder)
 * windows: don't throw when a signal handler is attached (Bert Belder)
