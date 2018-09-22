@@ -2823,15 +2823,15 @@ napi_status napi_define_class(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Defines a JavaScript class that corresponds to a C++ class, including:
+Define una clase de Javascript que corresponde a una clase de C++, incluyendo:
 
-- A JavaScript constructor function that has the class name and invokes the provided C++ constructor callback.
-- Properties on the constructor function corresponding to *static* data properties, accessors, and methods of the C++ class (defined by property descriptors with the `napi_static` attribute).
-- Properties on the constructor function's `prototype` object corresponding to *non-static* data properties, accessors, and methods of the C++ class (defined by property descriptors without the `napi_static` attribute).
+- Una función constructora de JavaScript que tiene el nombre de la clase e invoca al callback del constructor de C++ proporcionado.
+- Propiedades sobre la función constructora que corresponden a propiedades de datos *estáticos*, acceso, y métodos de la clase de C++ (definidos por descriptores de propiedad con el atributo `napi_static`).
+- Propiedades sobre el objeto `prototype` de la función constructora que corresponden a propiedades de datos *no estáticos*, acceso, y métodos de la clase de C++ (definidos or los descriptores de propiedad sin el atributo `napi_static`).
 
-The C++ constructor callback should be a static method on the class that calls the actual class constructor, then wraps the new C++ instance in a JavaScript object, and returns the wrapper object. See `napi_wrap()` for details.
+El callback del constructor de C++ debe se un método estático sobre la clase que llama a la verdadera clase constructora, entonces envuelve la nueva instancia de C++ en un objeto de JavaScript, y devuelve un objeto envuelto. Véase `napi_wrap()` para más detalles.
 
-The JavaScript constructor function returned from [`napi_define_class`][] is often saved and used later, to construct new instances of the class from native code, and/or check whether provided values are instances of the class. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
+La función constructora de JavaScript devuelta desde [`napi_define_class`][] es usualmente guardada y utilizada luego, para construir nuevas instancias de la clase desde código nativo, y/o verificar si los valores proporcionados son instancias de la clase. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
 
 ### napi_wrap
 
