@@ -423,19 +423,19 @@ Para el tamaño de "un cambio lógico", [0b5191f](https://github.com/nodejs/node
 
 ### Obtener aprobaciones para su solicitud de extracción
 
-Una Pull Request se aprueba diciendo LGTM, que significa "Me parece bien" en inglés, o usando el botón Aprobar de GitHub. GitHub's Pull Request review feature can be used during the process. For more information, check out [the video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) or [the official documentation](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
+Una Pull Request se aprueba diciendo LGTM, que significa "Me parece bien" en inglés, o usando el botón Aprobar de GitHub. La función de revisión de Pull Request de GitHub puede ser utilizada durante el proceso. Para obtener más información, consulte [el video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) o [la documentación oficial](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
 
-After you push new changes to your branch, you need to get approval for these new changes again, even if GitHub shows "Approved" because the reviewers have hit the buttons before.
+Después de insertar nuevos cambios en su branch, debe obtener aprobación de estos nuevos cambios nuevamente, incluso si GitHub muestra "Aprobado" porque los revisores han pulsado los botones anteriormente.
 
-### CI Testing
+### Prueba de CI
 
-Every Pull Request needs to be tested to make sure that it works on the platforms that Node.js supports. This is done by running the code through the CI system.
+Cada Pull Request debe probarse para asegurarse de que funciona en las plataformas admitidas por Node.js. Esto se hace ejecutando el código a través del sistema CI.
 
-Only a Collaborator can start a CI run. Usually one of them will do it for you as approvals for the Pull Request come in. If not, you can ask a Collaborator to start a CI run.
+Solo un Colaborador puede iniciar una ejecución de CI. Por lo general, uno de ellos lo hará por usted a medida que las aprobaciones para la Pull Request entren. De lo contrario, puede pedirle a un Colaborador que inicie una ejecución de CI.
 
-### Waiting Until the Pull Request Gets Landed
+### Esperar hasta que se cierre la Pull Request
 
-A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
+Una Pull Request debe permanecer abierta durante al menos 48 horas (72 horas en un fin de semana) desde el momento en que se envía, incluso después de que se aprueba y pasa la CI. Esto es para asegurarse de que todos tengan la oportunidad de intervenir. Si los cambios son triviales, los colaboradores pueden decidir que no necesitan esperar. Una Pull Request puede tomar más tiempo para fusionarse. Todas estas precauciones son importantes porque Node.js es ampliamente utilizado, ¡así que no te desanimes!
 
 ### Consulte la Guía del Colaborador
 
