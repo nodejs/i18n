@@ -477,22 +477,22 @@ https://github.com/nodejs/node/commit/cb7911f78ae96ef7a540df992cc1359ba9636e86
 * npm: actualizar a v1.4.8
 * openssl: actualizar a 1.0.1g
 * uv: actualizar a v0.10.27
-* dns: fix certain txt entries (Fedor Indutny)
-* assert: Ensure reflexivity of deepEqual (Mike Pennisi)
-* child_process: fix deadlock when sending handles (Fedor Indutny)
-* child_process: fix sending handle twice (Fedor Indutny)
-* crypto: do not lowercase cipher/hash names (Fedor Indutny)
-* dtrace: workaround linker bug on FreeBSD (Fedor Indutny)
-* http: do not emit EOF non-readable socket (Fedor Indutny)
-* http: invoke createConnection when no agent (Nathan Rajlich)
-* stream: remove useless check (Brian White)
+* dns: reparar ciertas entradas txt (Fedor Indutny)
+* assert: Asegurar reflexibilidad de deepEqual (Mike Pennisi)
+* child_process: reparar bloqueo cuando se envían handles (Fedor Indutny)
+* child_process: reparar envío doble de handle (Fedor Indutny)
+* crypto: no colocar en minúscula los nombres del cifrador/hash (Fedor Indutny)
+* dtrace: buscar solución alternativa de bug vinculado en FreeBSD (Fedor Indutny)
+* http: no emitir sockets EOF no-legibles (Fedor Indutny)
+* http: invocar createConnection cuando no hay agente (Nathan Rajlich)
+* stream: remover verificación sin utilidad (Brian White)
 * timer: don't reschedule timer bucket in a domain (Greg Brail)
-* url: treat \ the same as / (isaacs)
-* util: format as Error if instanceof Error (Rod Vagg)
+* url: tratar \ igual que / (isaacs)
+* util: dar formato como Error si instanceof tiene Error (Rod Vagg)
 
 <a id="0.10.26"></a>
 
-## 2014.02.18, Version 0.10.26 (Stable)
+## 2014.02.18, Versión 0.10.26 (Estable)
 
 https://github.com/nodejs/node/commit/cc56c62ed879ad4f93b1fdab3235c43e60f48b7e
 
