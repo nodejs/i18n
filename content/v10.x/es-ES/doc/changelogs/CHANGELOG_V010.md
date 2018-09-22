@@ -606,46 +606,46 @@ https://github.com/nodejs/node/commit/6b5e6a5a3ec8d994c9aab3b800b9edbf1b287904
 
 * uv: Actualizar a v0.10.17
 * npm: actualizar a 1.3.11
-* readline: handle input starting with control chars (Eric Schrock)
-* configure: add mips-float-abi (soft, hard) option (Andrei Sedoi)
-* stream: objectMode transforms allow falsey values (isaacs)
-* tls: prevent duplicate values returned from read (Nathan Rajlich)
-* tls: NPN protocols are now local to connections (Fedor Indutny)
+* readline: manejar inicio de la entrada con caracteres de control (Eric Schrock)
+* configure: añadir opción mips-float-abi (suave, duro) (Andrei Sedoi)
+* stream: transformaciones deobjectMode permiten valores falsos (isaacs)
+* tls: previene valores duplicados devueltos de la lectura (Nathan Rajlich)
+* tls: protocolos NPN son ahora locales a las conexiones (Fedor Indutny)
 
 <a id="0.10.18"></a>
 
-## 2013.09.04, Version 0.10.18 (Stable)
+## 2013.09.04, Versión 0.10.18 (Estable)
 
 https://github.com/nodejs/node/commit/67a1f0c52e0708e2596f3f2134b8386d6112561e
 
-* uv: Upgrade to v0.10.15
-* stream: Don't crash on unset _events property (isaacs)
-* stream: Pass 'buffer' encoding with decoded writable chunks (isaacs)
+* uv: Actualizar a v0.10.15
+* stream: No fallar en la propiedad unset _events (isaacs)
+* stream: Pasar codificación 'buffer' con fragmentos escribibles decodificados (isaacs)
 
 <a id="0.10.17"></a>
 
-## 2013.08.21, Version 0.10.17 (Stable)
+## 2013.08.21, Versión 0.10.17 (Estable)
 
 https://github.com/nodejs/node/commit/469a4a5091a677df62be319675056b869c31b35c
 
-* uv: Upgrade v0.10.14
-* http_parser: Do not accept PUN/GEM methods as PUT/GET (Chris Dickinson)
-* tls: fix assertion when ssl is destroyed at read (Fedor Indutny)
-* stream: Throw on 'error' if listeners removed (isaacs)
-* dgram: fix assertion on bad send() arguments (Ben Noordhuis)
-* readline: pause stdin before turning off terminal raw mode (Daniel Chatfield)
+* uv: Actualizar v0.10.14
+* http_parser: No aceptar métodos PUN/GEM como PUT/GET (Chris Dickinson)
+* tls: reparar afirmación cuando es destruido el ssl en la lectura (Fedor Indutny)
+* stream: Arrojar 'error' si se remueven los listeners (isaacs)
+* dgram: reparar afirmación en los argumentos send() malos (Ben Noordhuis)
+* readline: pausar stdin antes de apagar el modo raw del terminal (Daniel Chatfield)
 
 <a id="0.10.16"></a>
 
-## 2013.08.16, Version 0.10.16 (Stable)
+## 2013.08.16, Versión 0.10.16 (Estable)
 
 https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 
-* v8: back-port fix for CVE-2013-2882
-* npm: Upgrade to 1.3.8
+* v8: reparación back-port para CVE-2013-2882
+* npm: Actualizar a 1.3.8
 * crypto: fix assert() on malformed hex input (Ben Noordhuis)
-* crypto: fix memory leak in randomBytes() error path (Ben Noordhuis)
-* events: fix memory leak, don't leak event names (Ben Noordhuis)
+* crypto: reparar pérdida de memoria en la ruta de error randomBytes() (Ben Noordhuis)
+* events: reparar pérdida de memoria, que no se filtre los nombres de los eventos (Ben Noordhuis)
 * http: Handle hex/base64 encodings properly (isaacs)
 * http: improve chunked res.write(buf) performance (Ben Noordhuis)
 * stream: Fix double pipe error emit (Eran Hammer)
