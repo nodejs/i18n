@@ -2771,13 +2771,13 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 N-API ofrece una forma de "envolver" las instancias y clases de C++ para que los métodos y la clase constructora puedan ser llamados desde JavaScript.
 
-1. The [`napi_define_class`][] API defines a JavaScript class with constructor, static properties and methods, and instance properties and methods that correspond to the C++ class.
-2. When JavaScript code invokes the constructor, the constructor callback uses [`napi_wrap`][] to wrap a new C++ instance in a JavaScript object, then returns the wrapper object.
-3. When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` C++ function is invoked. For an instance callback, [`napi_unwrap`][] obtains the C++ instance that is the target of the call.
+1. La API [`napi_define_class`][] define una clase de JavaScript con constructor, propiedades y métodos estáticos, y propiedades y métodos de instancias que corresponden a clases de C++.
+2. Cuando el código de JavaScript invoca al constructor, el callback del constructor utiliza [`napi_wrap`][] para envolver una nueva instancia de C++ en un objeto de JavaScript, entonces devuelve al objeto envuelto.
+3. Cuando el código de JavaScript invoca un método o acceso a la propiedad de la clase, se invoca la correspondiente función `napi_callback` de C++. Para un callback de instancia, [`napi_unwrap`][] obtiene la instancia de C++ que es el objetivo de la llamada.
 
-For wrapped objects it may be difficult to distinguish between a function called on a class prototype and a function called on an instance of a class. A common pattern used to address this problem is to save a persistent reference to the class constructor for later `instanceof` checks.
+Para los objetos envueltos puede ser difícil distinguir entre una función llamada sobre una clase prototipo, y una función llamada sobre una instancia de una clase. Un patrón común utilizado para abordar este problema es guardar una referencia persistente a la clase constructora para posteriores verificaciones `instanceof`.
 
-As an example:
+Como ejemplo:
 
 ```C
 napi_value MyClass_constructor = NULL;
