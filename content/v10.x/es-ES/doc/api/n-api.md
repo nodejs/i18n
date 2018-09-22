@@ -2729,10 +2729,10 @@ napi_status napi_new_instance(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] cons`: `napi_value` que representa la función de JavaScript a ser invocada como una constructora.
 - `[in] argc`: El conteo de elementos en el arreglo `argv`.
-- `[in] argv`: Arreglo de valores de JavaScript como `napi_value` que representa los argumentos a la constructora.
+- `[in] argv`: Arreglo de valores de JavaScript como `napi_value` que representa los argumentos para la constructora.
 - `[out] result`: `napi_value` que representa el objeto de JavaScript devuelto, el cual, en este caso, es el objeto constructor.
 
-This method is used to instantiate a new JavaScript value using a given `napi_value` that represents the constructor for the object. For example, consider the following snippet:
+Este método es utilizado para instanciar un nuevo valor de JavaScript usando un `napi_value` dado que representa al constructor para el objeto. Por ejemplo, considere el siguiente fragmento de código:
 
 ```js
 function MyObject(param) {
@@ -2743,10 +2743,10 @@ const arg = 'hello';
 const value = new MyObject(arg);
 ```
 
-The following can be approximated in N-API using the following snippet:
+El siguiente se puede aproximar en N-API utilizando el fragmento de código que sigue:
 
 ```C
-// Get the constructor function MyObject
+// Obtener la función constructora MyObject
 napi_value global, constructor, arg, value;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -2765,11 +2765,11 @@ size_t argc = 1;
 status = napi_new_instance(env, constructor, argc, argv, &value);
 ```
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-## Object Wrap
+## Envoltura de Objeto
 
-N-API offers a way to "wrap" C++ classes and instances so that the class constructor and methods can be called from JavaScript.
+N-API ofrece una forma de "envolver" las instancias y clases de C++ para que los métodos y la clase constructora puedan ser llamados desde JavaScript.
 
 1. The [`napi_define_class`][] API defines a JavaScript class with constructor, static properties and methods, and instance properties and methods that correspond to the C++ class.
 2. When JavaScript code invokes the constructor, the constructor callback uses [`napi_wrap`][] to wrap a new C++ instance in a JavaScript object, then returns the wrapper object.
