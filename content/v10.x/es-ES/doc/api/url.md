@@ -1004,16 +1004,16 @@ El algoritmo WHATWG define cuatro "conjuntos de porcentaje de codificación" que
 
 * El *conjunto ruta de codificación porcentual* incluye el *conjunto codificación porcentual de control C0* y los puntos de código U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, y U+007D.
 
-* The *userinfo encode set* includes the *path percent-encode set* and code points U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, and U+007C.
+* El *conjunto codificado userinfo* incluye el *conjunto ruta de codificación porcentual* y los puntos de código U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, y U+007C.
 
-The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *fragment percent-encode set* is used for URL fragments. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
+El *conjunto codificado userinfo* es usado exclusivamente por el nombre de usuario y por las contraseñas codificadas dentro de la URL. El *conjunto codificado userinfo* es usado por la ruta de la mayoría de URLs. The *fragment percent-encode set* is used for URL fragments. El *conjunto fragmento de codificación porcentual* es usado para host y path bajo ciertas condiciones específicas, en adición al resto de casos.
 
-When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. For example:
+Cuando aparecen caracteres no ASCII dentro del hostname, el hostname es codificado usando el algoritmo [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4). Tenga en cuenta, sin embargo, que el hostname *puede* contener *ambos* caracteres cifrados y codificados por porcentaje Punnycode. Por ejemplo:
 
 ```js
 const myURL = new URL('https://%CF%80.com/foo');
 console.log(myURL.href);
-// Prints https://xn--1xa.com/foo
+// Imprime https://xn--1xa.com/foo
 console.log(myURL.origin);
-// Prints https://π.com
+// Imprime https://π.com
 ```
