@@ -399,17 +399,17 @@ No es raro que los colaboradores sugieran nuevas características que, en su opi
 
 ### El rendimiento no es todo
 
-Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Las solicitudes de rendimiento [benchmark results](../writing-and-running-benchmarks.md) casi siempre satisfacen las afirmaciones de que una Pull Request particular acelerará las cosas, lo que demuestra la mejora.
+Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Las afirmaciones de que una Pull Request particular hará que las cosas sean más rápidas, casi siempre irán de la mano con solicitudes de rendimiento [benchmark results](../writing-and-running-benchmarks.md) que demuestren la mejora.
 
 Dicho esto, el rendimiento no es el único factor a considerar. Node.js también optimiza a favor de no romper el código existente en el ecosistema, y no cambiar el código funcional de trabajo solo por el hecho de cambiar.
 
-If a particular Pull Request introduces a performance or functional regression, rather than simply rejecting the Pull Request, take the time to work *with* the contributor on improving the change. Offer feedback and advice on what would make the Pull Request acceptable, and do not assume that the contributor should already know how to do that. Be explicit in your feedback.
+Si una Pull Request particular presenta un rendimiento o una regresión funcional, en lugar de simplemente rechazar la Pull Request, tómese el tiempo para trabajar *con* el contribuyente para mejorar el cambio. Ofrezca un feedbeack y consejos sobre lo que haría aceptable la Pull Request, y no suponga que el contribuyente ya debería saber cómo hacerlo. Sea explicito en su feedback.
 
-### Continuous Integration Testing
+### Pruebas de integración continua
 
-All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at <https://ci.nodejs.org/>.
+Todas las Pull Requests que contengan cambios en el código se deben ejecutar a través de pruebas de integración continua (CI) en <https://ci.nodejs.org/>.
 
-Only Node.js core Collaborators with commit rights to the `nodejs/node` repository may start a CI testing run. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
+Solo los Colaboradores centrales de Node.js con derechos de commit en el repositorio `nodejs/node` pueden iniciar una ejecución de prueba de CI. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
 
 Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
 
