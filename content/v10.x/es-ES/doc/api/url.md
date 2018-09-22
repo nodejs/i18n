@@ -805,7 +805,7 @@ Por ejemplo: `'sub.host.com'`.
 
 #### urlObject.href
 
-La propiedad `href` es la string URL completa que fue analizada con ambos componentes `protocol` y `protocol` convertidos a minúscula.
+La propiedad `href` es la string URL completa que fue analizada con ambos componentes `protocol` y `host` convertidos a minúscula.
 
 Por ejemplo: `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`.
 
@@ -847,7 +847,7 @@ Si es devuelto como una string, no se realiza la decodificación de la string de
 
 #### urlObject.search
 
-La propiedad `search` consiste en toda la porción "string de consulta" de la URL, incluyendo el signo de interrogación ASCII principal (`?`).
+La propiedad `search` consiste en toda la porción "string de consulta" de la URL, incluyendo el carácter signo de interrogación ASCII principal (`?`).
 
 Por ejemplo: `'?query=string'`.
 
