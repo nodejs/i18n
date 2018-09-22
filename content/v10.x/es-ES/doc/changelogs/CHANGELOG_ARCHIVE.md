@@ -1199,10 +1199,10 @@ https://github.com/nodejs/node/commit/b88c3902b241cf934e75443b934f2033ad3915b1
 * build: reparar fallo de `make -j` luego de `make clean` (Bearice Ren)
 * build: corregir configuración de openssl para builds "arm" (Nathan Rajlich)
 * tls: soportar socket/pipe nombrado de dominio de unix en tls.connect (Shigeki Ohtsu)
-* https: make https.get() accept a URL (koichik)
-* http: respect HTTP/1.0 TE header (Ben Noordhuis)
-* crypto, tls: Domainify setSNICallback, pbkdf2, randomBytes (Ben Noordhuis)
-* stream.pipe: Don't call destroy() unless it's a function (isaacs)
+* https: hacer que https.get() acepte a una URL (koichik)
+* http: respetar cabecera HTTP/1.0 TE (Ben Noordhuis)
+* crypto, tls: "Dominificar" a setSNICallback, pbkdf2, randomBytes (Ben Noordhuis)
+* stream.pipe: No llamar a destroy(), a menos que sea una función (isaacs)
 
 <a id="0.8.8"></a>
 
