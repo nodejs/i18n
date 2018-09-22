@@ -518,7 +518,7 @@ added: v8.0.0
 
 When set to `1`, emit pending deprecation warnings.
 
-Le deprecazioni in attesa sono generalmente identiche alle deprecazioni in fase di esecuzione con l'eccezione notevole che sono *disattivate* di default e non verranno emesse a meno che non venga impostato il flag `--pending-deprecation` della command line o la variabile di ambiente `NODE_PENDING_DEPRECATION=1`. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+Le deprecazioni in attesa sono generalmente identiche alle deprecazioni in fase di esecuzione con l'eccezione notevole che sono *disattivate* di default e non verranno emesse a meno che non venga impostato il flag `--pending-deprecation` della command line o la variabile di ambiente `NODE_PENDING_DEPRECATION=1`. Le deprecazioni in attesa vengono utilizzate per fornire un tipo di meccanismo selettivo di "avviso rapido" che gli sviluppatori potrebbero sfruttare per rilevare l'utilizzo dell'API deprecata/obsoleta.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 
