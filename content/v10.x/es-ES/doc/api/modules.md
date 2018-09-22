@@ -29,7 +29,7 @@ El módulo `circle.js` ha exportado las funciones `area()` y `circumference()`. 
 
 Las variables locales para el módulo serán privadas, debido a que el módulo está envuelto en una función por Node.js (vea la [envoltura del módulo](#modules_the_module_wrapper)). En este ejemplo, la variable `PI` es privada para `circle.js`.
 
-La propiedad `module.exports` puede ser asignada a un nuevo valor (como una función o un objeto).
+Un nuevo valor puede ser asignado a la propiedad `module.exports` (como una función o un objeto).
 
 Abajo, `bar.js` hace uso del módulo `square`, el cual exporta una clase Square:
 
@@ -60,7 +60,7 @@ El sistema de módulo es implementado en el módulo `require('module')`.
 
 <!-- type=misc -->
 
-Cuando un archivo corre directamente dede Node.js, `require.main` es establecido a su `module`. Eso significa que es posible determinar si un archivo ha sido ejecutado directamente probando el `require.main === module`.
+Cuando un archivo corre directamente desde Node.js, `require.main` es establecido a su `module`. Eso significa que es posible determinar si un archivo ha sido ejecutado directamente probando el `require.main === module`.
 
 Para un archivo `foo.js`, esto será `true` si se ejecuta a través de `node foo.js`, pero será `false` si se ejecuta por `require('./foo')`.
 
@@ -76,7 +76,7 @@ A continuación damos una estructura de directorio sugerida que podría funciona
 
 Digamos que queremos que la carpeta en `/usr/lib/node/<some-package>/<some-version>` sostenga los contenidos de una versión específica de un paquete.
 
-Los paquetes pueden depender el uno del otro. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. El paquete `bar` puede tener dependencias por sí mismo, y en algunos casos, estas incluso pueden chocar o formar dependencias cíclicas.
+Los paquetes pueden depender el uno del otro. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. El paquete `bar` puede tener dependencias por sí mismo, y, en algunos casos, estas incluso pueden chocar o formar dependencias cíclicas.
 
 Puesto que Node.js busca el `realpath` de cualquier módulo que carga (es decir, resuelve symlinks), y luego busca a sus dependencias en las carpetas `node_modules`, como se describe [aquí](#modules_loading_from_node_modules_folders), esta situación es muy sencilla de resolver con la siguiente arquitectura:
 
@@ -91,7 +91,7 @@ When the code in the `foo` package does `require('bar')`, it will get the versio
 
 Además, para hacer que el módulo busque un proceso inclusive más óptimo, antes que colocar los paquetes directamente en `/usr/lib/node`, podríamos colocarlos en `/usr/lib/node_modules/<name>/<version>`. Entonces Node.js no se preocupará en buscar dependencias faltantes en `/usr/node_modules` o `/node_modules`.
 
-Para hacer que los módulos se encuentren disponibles para el REPL de Node.js, podría ser útil también añadir la carpeta `/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Debido a que las búsquedas del módulo que utilizan las carpetas `node_modules` son todas relativas, y se basan en la ruta real de los archivos que hace llamadas a `require()`, los mismos paquetes pueden encontrarse en cualquier lugar.
+Para hacer que los módulos se encuentren disponibles para el REPL de Node.js, podría ser útil también añadir la carpeta `/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Debido a que las búsquedas del módulo que utilizan las carpetas `node_modules` son todas relativas, y se basan en la ruta real de los archivos que hacen las llamadas a `require()`, los mismos paquetes pueden encontrarse en cualquier lugar.
 
 ## Todo Junto...
 
@@ -160,9 +160,9 @@ NODE_MODULES_PATHS(START)
 
 <!--type=misc-->
 
-Los módulos se almacenan en caché después de que se carguen por primera vez. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+Los módulos se almacenan en caché después de que se cargan por primera vez. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
 
-Múltiples llamadas a `require('foo')` no pueden provocar que el código del módulo se ejecute múltiples veces. Esto es una característica importante. Con ella, los objetos "parcialmente hechos" pueden devolverse, permitiendo que las dependencias transitivas se carguen incluso cuando puedan causar ciclos.
+Puede que múltiples llamadas a `require('foo')` no provoquen que el código del módulo se ejecute múltiples veces. Esto es una función importante. Con ella, los objetos "parcialmente hechos" pueden devolverse, permitiendo que las dependencias transitivas se carguen incluso cuando puedan causar ciclos.
 
 Para que un módulo ejecute un código múltiples veces, exporte una función y llame a esa función.
 
