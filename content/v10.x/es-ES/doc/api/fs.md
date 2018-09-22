@@ -3867,7 +3867,7 @@ added: v10.0.0
   * `encoding` {string} **Default:** `'utf8'`
 * Devuelve: {Promise}
 
-Determines the actual location of `path` using the same semantics as the `fs.realpath.native()` function then resolves the `Promise` with the resolved path.
+Determina la ubicación actual de `path` utilizando la misma semántica que la función `fs.realpath.native()`, luego resuelve la `Promise` con la ruta resuelta.
 
 Only paths that can be converted to UTF8 strings are supported.
 
