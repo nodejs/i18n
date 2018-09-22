@@ -646,9 +646,9 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 * crypto: fix assert() on malformed hex input (Ben Noordhuis)
 * crypto: reparar pérdida de memoria en la ruta de error randomBytes() (Ben Noordhuis)
 * events: reparar pérdida de memoria, que no se filtre los nombres de los eventos (Ben Noordhuis)
-* http: Handle hex/base64 encodings properly (isaacs)
-* http: improve chunked res.write(buf) performance (Ben Noordhuis)
-* stream: Fix double pipe error emit (Eran Hammer)
+* http: Manejar codificaciones hex/base64 correctamente (isaacs)
+* http: mejorar el rendimiento res.write(buf) fragmentado (Ben Noordhuis)
+* stream: Reparar emisión error doble pipe (Eran Hammer)
 
 <a id="0.10.15"></a>
 
