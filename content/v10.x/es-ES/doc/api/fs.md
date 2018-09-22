@@ -3186,7 +3186,7 @@ La API de `fs.promises` proporciona un conjunto alternativo de métodos de siste
 added: v10.0.0
 -->
 
-A `FileHandle` object is a wrapper for a numeric file descriptor. Las instancias de `FileHandle` son distintas a los descriptores de archivos numéricos en cuanto a que, si el `FileHandle` no se cierra explícitamente utilizando el método de `filehandle.close()`, cerrarán automáticamente el descriptor de archivos y emitirán un aviso de proceso, ayudando así a prevenir pérdidas de memoria.
+Un objeto `FileHandle` es un envolvedor para un descriptor de archivo numérico. Las instancias de `FileHandle` son distintas a los descriptores de archivos numéricos en cuanto a que, si el `FileHandle` no se cierra explícitamente utilizando el método de `filehandle.close()`, cerrarán automáticamente el descriptor de archivos y emitirán un aviso de proceso, ayudando así a prevenir pérdidas de memoria.
 
 Las instancias del objeto de `FileHandle` son creadas internamente por el método de `fsPromises.open()` .
 
@@ -4109,7 +4109,7 @@ Las siguientes constantes están destinadas para ser utilizadas con [`fs.copyFil
     </td>
     
     <td>
-      If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform does not support copy-on-write, then a fallback copy mechanism is used.
+      Si está presente, la operación de copia intentará crear un enlace de referencia de copy-on-write. If the underlying platform does not support copy-on-write, then a fallback copy mechanism is used.
     </td>
   </tr>
   
@@ -4119,7 +4119,7 @@ Las siguientes constantes están destinadas para ser utilizadas con [`fs.copyFil
     </td>
     
     <td>
-      If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform does not support copy-on-write, then the operation will fail with an error.
+      Si está presente, la operación de copia intentará crear un enlace de referencia de copy-on-write. If the underlying platform does not support copy-on-write, then the operation will fail with an error.
     </td>
   </tr>
 </table>
@@ -4255,7 +4255,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating that the file is opened for synchronized I/O with write operations waiting for file integrity.
+      Bandera que indica que el archivo se abre para E/S sincronizada con operaciones de escritura a la espera de la integridad del archivo.
     </td>
   </tr>
   
@@ -4265,7 +4265,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      Flag indicating that the file is opened for synchronized I/O with write operations waiting for data integrity.
+      Bandera que indica que el archivo se abre para E/S sincronizada con operaciones de escritura a la espera de la integridad de los datos.
     </td>
   </tr>
   
@@ -4285,7 +4285,7 @@ Las siguientes constantes están destinadas para ser utilizadas con `fs.open()`.
     </td>
     
     <td>
-      When set, an attempt will be made to minimize caching effects of file I/O.
+      Al establecerse, se realizará un intento para minimizar los efectos de captura del archivo E/S.
     </td>
   </tr>
   
@@ -4554,7 +4554,7 @@ Las siguientes banderas están disponibles en donde sea que la opción de `flag`
 
 * `'rs+'` - Archivo abierto para leer y escribir en modo sincrónico. Instructs the operating system to bypass the local file system cache.
   
-  This is primarily useful for opening files on NFS mounts as it allows skipping the potentially stale local cache. It has a very real impact on I/O performance so using this flag is not recommended unless it is needed.
+  This is primarily useful for opening files on NFS mounts as it allows skipping the potentially stale local cache. Tiene un impacto bastante real en el rendimiento de E/S, así que no se recomienda utilizar esta bandera a menos de que sea necesario.
   
   Tenga en cuenta que esto no convierte a `fs.open()` o a `fsPromises.open()` en una llamada sincrónica de bloqueo. Si se desea una operación sincrónica, debería utilizarse algo como `fs.openSync()` .
 
