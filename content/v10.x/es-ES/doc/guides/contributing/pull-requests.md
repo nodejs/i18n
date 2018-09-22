@@ -399,9 +399,9 @@ No es raro que los colaboradores sugieran nuevas características que, en su opi
 
 ### El rendimiento no es todo
 
-Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
+Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Las solicitudes de rendimiento [benchmark results](../writing-and-running-benchmarks.md) casi siempre satisfacen las afirmaciones de que una Pull Request particular acelerará las cosas, lo que demuestra la mejora.
 
-That said, performance is not the only factor to consider. Node.js also optimizes in favor of not breaking existing code in the ecosystem, and not changing working functional code just for the sake of changing.
+Dicho esto, el rendimiento no es el único factor a considerar. Node.js también optimiza a favor de no romper el código existente en el ecosistema, y no cambiar el código funcional de trabajo solo por el hecho de cambiar.
 
 If a particular Pull Request introduces a performance or functional regression, rather than simply rejecting the Pull Request, take the time to work *with* the contributor on improving the change. Offer feedback and advice on what would make the Pull Request acceptable, and do not assume that the contributor should already know how to do that. Be explicit in your feedback.
 
