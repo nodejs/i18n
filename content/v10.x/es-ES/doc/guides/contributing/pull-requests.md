@@ -391,7 +391,7 @@ Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para 
 
 Las opiniones sobre esto varían, incluso entre los miembros del Comité Directivo Técnico.
 
-One general rule of thumb is that if Node.js itself needs it (due to historic or functional reasons), then it belongs in Node.js. For instance, `url` parsing is in Node.js because of HTTP protocol support.
+Una regla general es que si Node.js lo necesita (debido a razones históricas o funcionales), entonces pertenece a Node.js. For instance, `url` parsing is in Node.js because of HTTP protocol support.
 
 Also, functionality that either cannot be implemented outside of core in any reasonable way, or only with significant pain.
 
