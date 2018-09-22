@@ -2859,7 +2859,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Envuelve una instancia nativa en un objeto de JavaScript. La instancia nativa puede ser recuperada luego utilizando `napi_unwrap()`.
 
-Cuando un código de JavaScript invoca a un constructor para la clase que fue definida utilizando `napi_define_class()`, el `napi_callback` para el constructor es invocado. Luego de construir una instancia de la clase nativa, el callback debe llamar entonces a `napi_wrap()` para envolver a la instancia recientemente construida en el ya creado objeto de JavaScript que es el argumento `this` del callback del constructor. (That `this` object was created from the constructor function's `prototype`, so it already has definitions of all the instance properties and methods.)
+Cuando un código de JavaScript invoca a un constructor para la clase que fue definida utilizando `napi_define_class()`, el `napi_callback` para el constructor es invocado. Luego de construir una instancia de la clase nativa, el callback debe llamar entonces a `napi_wrap()` para envolver a la instancia recientemente construida en el ya creado objeto de JavaScript que es el argumento `this` del callback del constructor. (Ese objeto `this` fue creado desde el `prototype` de la función constructora, entonces ya tiene definiciones de todas las propiedades y métodos de instancia)
 
 Typically when wrapping a class instance, a finalize callback should be provided that simply deletes the native instance that is received as the `data` argument to the finalize callback.
 
