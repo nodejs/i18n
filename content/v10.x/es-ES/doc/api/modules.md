@@ -446,7 +446,7 @@ added: v0.3.0
 
 * {Object}
 
-Los módulos son almacenados en caché en este objeto cuando son requeridos. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
+Los módulos son almacenados en caché en este objeto cuando son requeridos. Al eliminar un valor clave de este objeto, el siguiente `require` volverá a cargar el módulo. Note que esto no aplica para [native addons](addons.html), por lo cual el volver a cargar resultará en un error.
 
 #### require.extensions
 
@@ -455,25 +455,25 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stability: 0 - Deprecated
+> Estabilidad: 0 - Desaprobado
 
 * {Object}
 
-Instruct `require` on how to handle certain file extensions.
+Instruye a `require` en cómo manejar ciertas extensiones de archivo.
 
-Process files with the extension `.sjs` as `.js`:
+Archivos de proceso con extensión `.sjs` como `.js`:
 
 ```js
 require.extensions['.sjs'] = require.extensions['.js'];
 ```
 
-**Deprecated** In the past, this list has been used to load non-JavaScript modules into Node.js by compiling them on-demand. However, in practice, there are much better ways to do this, such as loading modules via some other Node.js program, or compiling them to JavaScript ahead of time.
+**Desaprobado** En el pasado, esta lista ha sido utilizada para cargar módulos no-JavaScript en Node.js compilándolos bajo demanda. Sin embargo, en la práctica, hay muchas mejores maneras para hacer esto, como cargando módulos a través de algún otro programa de Node.js, o compilándolos en JavaScript antes de tiempo.
 
-Since the module system is locked, this feature will probably never go away. However, it may have subtle bugs and complexities that are best left untouched.
+Debido a que el sistema de módulo está bloqueado, esta función probablemente nunca se irá. Sin embargo, puede tener errores sutiles y complejidades que es mejor dejarlas intactas.
 
-Note that the number of file system operations that the module system has to perform in order to resolve a `require(...)` statement to a filename scales linearly with the number of registered extensions.
+Note que el número de operaciones de sistemas de archivo que el sistema de módulo tiene que realizar para resolver una declaración `require(...)` para un nombre de archivo, escala linealmente con el número de extensiones registradas.
 
-In other words, adding extensions slows down the module loader and should be discouraged.
+En otras palabras, añadir extensiones ralentiza el cargador de módulos y debe ser desalentado.
 
 #### require.main
 
@@ -483,9 +483,9 @@ added: v0.1.17
 
 * {Object}
 
-The `Module` object representing the entry script loaded when the Node.js process launched. See ["Accessing the main module"](#modules_accessing_the_main_module).
+El objeto `Module` que representa el script de entrada cargado cuando se inició el proceso Node.js. Vea ["Accediendo al módulo principal"](#modules_accessing_the_main_module).
 
-In `entry.js` script:
+En el script `entry.js`:
 
 ```js
 console.log(require.main);
@@ -523,9 +523,9 @@ changes:
     description: The `paths` option is now supported.
 -->
 
-* `request` {string} The module path to resolve.
+* `request` {string} La ruta de módulo a resolver.
 * `options` {Object} 
-  * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
+  * `paths` {string[]} Rutas de las cuales resolver la ubicación del módulo. Si están presentes, estas rutas son utilizadas en lugar de las rutas de resolución por defecto. Note que cada una de estas rutas es utilizada como un punto de partida para el algoritmo de resolución del módulo, lo que significa que la jerarquía de `node_modules` es verificada desde esta ubicación.
 * Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
