@@ -158,7 +158,7 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 ## 2018-02-13, Versión 6.13.0 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 112 commits, de los cuales 17 están considerados como Semver-Minor. Esto incluye a 32 que están relacionados a documentos, 31 que están relacionados a pruebas, 8 que están relacionados a build / tool y 1 commit que actualiza una dependencia.
+Esta actualización de LTS viene con 112 commits, de los cuales 17 están considerados como Semver-Minor. Esto incluye a 32 que están relacionados a documentación, 31 que están relacionados a pruebas, 8 que están relacionados a build / tool y 1 commit que actualiza una dependencia.
 
 ### Cambios Notables
 
@@ -309,16 +309,16 @@ Esta actualización de LTS viene con 112 commits, de los cuales 17 están consid
 * [[`b8a5d6dbbc`](https://github.com/nodejs/node/commit/b8a5d6dbbc)] - **tools**: remover declaración de función inútil (Tobias Nießen) [#17125](https://github.com/nodejs/node/pull/17125)
 * [[`18803bc409`](https://github.com/nodejs/node/commit/18803bc409)] - **(SEMVER-MINOR)** **tools, build**: refactorizar instalador de macOS (JP Wesselink) [#15179](https://github.com/nodejs/node/pull/15179)
 * [[`24def19417`](https://github.com/nodejs/node/commit/24def19417)] - **(SEMVER-MINOR)** **url**: añadir soporte para WHATWG URL (James M Snell) [#7448](https://github.com/nodejs/node/pull/7448)
-* [[`60b10f0896`](https://github.com/nodejs/node/commit/60b10f0896)] - **url**: update IDNA handling (Timothy Gu) [#13362](https://github.com/nodejs/node/pull/13362)
-* [[`7af1ad0ec1`](https://github.com/nodejs/node/commit/7af1ad0ec1)] - **(SEMVER-MINOR)** **util**: add %i and %f formatting specifiers (Roman Reiss) [#10308](https://github.com/nodejs/node/pull/10308)
+* [[`60b10f0896`](https://github.com/nodejs/node/commit/60b10f0896)] - **url**: actualizar el manejo de IDNA (Timothy Gu) [#13362](https://github.com/nodejs/node/pull/13362)
+* [[`7af1ad0ec1`](https://github.com/nodejs/node/commit/7af1ad0ec1)] - **(SEMVER-MINOR)** **util**: añadir especificadores de formato %i y %f (Roman Reiss) [#10308](https://github.com/nodejs/node/pull/10308)
 
 <a id="6.12.3"></a>
 
-## 2018-01-02, Version 6.12.3 'Boron' (LTS), @MylesBorins
+## 2018-01-02, Versión 6.12.3 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 115 commits. This includes 52 which are test related, 40 which are doc related, 12 which are build / tool related and 2 commits which updating a dependency.
+Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están relacionados a pruebas, 40 que están relacionados a documentación, 12 que están relacionados a build / tool y 2 commits que actualizan una dependencia.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: 
   * configure can now be run from any directory (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
