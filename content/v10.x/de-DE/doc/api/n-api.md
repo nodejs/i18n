@@ -630,9 +630,9 @@ napi_status napi_escape_handle(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API promotes the handle to the JavaScript object so that it is valid for the lifetime of the outer scope. It can only be called once per scope. If it is called more than once an error will be returned.
+Diese API fördert das Handle des JavaScript-Objekts, so dass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgegeben.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 ### References to objects with a lifespan longer than that of the native method
 
