@@ -558,31 +558,31 @@ https://github.com/nodejs/node/commit/0462bc23564e7e950a70ae4577a840b04db6c7c6
 * tls: emitir 'end' en .receivedShutdown (Fedor Indutny)
 * tls: reparar una corrupción de datos potenciaal (Fedor Indutny)
 * tls: manejar errores `ssl.start()` apropiadamente (Fedor Indutny)
-* tls: reset NPN callbacks after SNI (Fedor Indutny)
+* tls: restablecer los callbacks NPN después de SNI (Fedor Indutny)
 
 <a id="0.10.22"></a>
 
-## 2013.11.12, Version 0.10.22 (Stable)
+## 2013.11.12, Versión 0.10.22 (Estable)
 
 https://github.com/nodejs/node/commit/cbff8f091c22fb1df6b238c7a1b9145db950fa65
 
-* npm: Upgrade to 1.3.14
-* uv: Upgrade to v0.10.19
-* child_process: don't assert on stale file descriptor events (Fedor Indutny)
-* darwin: Fix "Not Responding" in Mavericks activity monitor (Fedor Indutny)
-* debugger: Fix bug in sb() with unnamed script (Maxim Bogushevich)
-* repl: do not insert duplicates into completions (Maciej Małecki)
-* src: Fix memory leak on closed handles (Timothy J Fontaine)
-* tls: prevent stalls by using read(0) (Fedor Indutny)
-* v8: use correct timezone information on Solaris (Maciej Małecki)
+* npm: Actualizar a 1.3.14
+* uv: Actualizar a v0.10.19
+* child_process: no afirmar en eventos de descriptores de archivos obsoleto (Fedor Indutny)
+* darwin: Reparar "No Responde" en monitor de actividad Mavericks (Fedor Indutny)
+* debugger: Reparar bug en sb() con script sin nombre (Maxim Bogushevich)
+* repl: no insertar duplicados en la completación (Maciej Małecki)
+* src: Reparar pérdida de memoria en handles cerrados (Timothy J Fontaine)
+* tls: previene detenciones usando read(0) (Fedor Indutny)
+* v8: usar la información de la zona horaria correcta en Solaris (Maciej Małecki)
 
 <a id="0.10.21"></a>
 
-## 2013.10.18, Version 0.10.21 (Stable)
+## 2013.10.18, Versión 0.10.21 (Estable)
 
 https://github.com/nodejs/node/commit/e2da042844a830fafb8031f6c477eb4f96195210
 
-* uv: Upgrade to v0.10.18
+* uv: Actualizar a v0.10.18
 * crypto: clear errors from verify failure (Timothy J Fontaine)
 * dtrace: interpret two byte strings (Dave Pacheco)
 * fs: fix fs.truncate() file content zeroing bug (Ben Noordhuis)
