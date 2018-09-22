@@ -257,39 +257,39 @@ Without a leading `'/'`, `'./'`, or `'../'` to indicate a file, the module must 
 
 Si la ruta dada no existe, `require()` arrojará un [`Error`][] con su propiedad de `code` establecida a `'MODULE_NOT_FOUND'`.
 
-## Folders as Modules
+## Carpetas como Módulos
 
 <!--type=misc-->
 
-It is convenient to organize programs and libraries into self-contained directories, and then provide a single entry point to that library. There are three ways in which a folder may be passed to `require()` as an argument.
+Es conveniente organizar los programas y librerías en directorios independientes, y luego proporcionar un punto de entrada simple a esa librería. Hay tres maneras en las cuales una carpeta puede ser pasada a `require()` como un argumento.
 
-The first is to create a `package.json` file in the root of the folder, which specifies a `main` module. An example `package.json` file might look like this:
+Lo primero es crear un archivo `package.json` en la raíz de la carpeta, el cual especifica un módulo `main`. Un ejemplo de un archivo `package.json` puede lucir así:
 
 ```json
 { "name" : "some-library",
   "main" : "./lib/some-library.js" }
 ```
 
-If this was in a folder at `./some-library`, then `require('./some-library')` would attempt to load `./some-library/lib/some-library.js`.
+Si esto estuviese en una carpeta en `./some-library`, entonces `require('./some-library')` intentará cargar `./some-library/lib/some-library.js`.
 
-This is the extent of Node.js's awareness of `package.json` files.
+Este es el grado de conciencia de Node.js de los archivos `package.json`.
 
-If the file specified by the `'main'` entry of `package.json` is missing and can not be resolved, Node.js will report the entire module as missing with the default error:
+Si el archivo especificado por la entrada `'main'` de `package.json` está perdido y no puede ser resuelto, Node.js reportará el módulo completo como perdido con el error por defecto:
 
 ```txt
 Error: Cannot find module 'some-library'
 ```
 
-If there is no `package.json` file present in the directory, then Node.js will attempt to load an `index.js` or `index.node` file out of that directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
+Si no hay ningún archivo `package.json` presente en el directorio, Node.js intentará cargar un archivo `index.js` o `index.node` de ese directorio. Por ejemplo, si no hay ningún archivo `package.json` en el ejemplo anterior, entonces `require('./some-library')` intentará cargar:
 
 * `./some-library/index.js`
 * `./some-library/index.node`
 
-## Loading from `node_modules` Folders
+## Carga desde Carpetas `node_modules`
 
 <!--type=misc-->
 
-If the module identifier passed to `require()` is not a [core](#modules_core_modules) module, and does not begin with `'/'`, `'../'`, or `'./'`, then Node.js starts at the parent directory of the current module, and adds `/node_modules`, and attempts to load the module from that location. Node will not append `node_modules` to a path already ending in `node_modules`.
+Si el identificador de módulo pasado a `require()` no es un módulo [core](#modules_core_modules), y no comienza con `'/'`, `'../'` o `'./'`, Node.js empieza en el directorio primario del módulo actual, y añade `/node_modules`, e intenta cargar el módulo desde esa ubicación. Node will not append `node_modules` to a path already ending in `node_modules`.
 
 If it is not found there, then it moves to the parent directory, and so on, until the root of the file system is reached.
 
