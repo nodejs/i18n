@@ -409,30 +409,30 @@ https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 https://github.com/nodejs/node/commit/7fabdc23d843cb705d2d0739e7bbdaaf50aa3292
 
 * v8: backport CVE-2013-6668
-* openssl: Update to v1.0.1i
-* npm: Update to v1.4.23
+* openssl: Actualizar a v1.0.1i
+* npm: Actualizar a v1.4.23
 * cluster: la desconexión no debe ser sincrónica (Sam Roberts)
-* fs: fix fs.readFileSync fd leak when get RangeError (Jackson Tian)
-* stream: fix Readable.wrap objectMode falsy values (James Halliday)
-* timers: fix timers with non-integer delay hanging. (Julien Gilli)
+* fs: reparar la pérdida fs.readFileSync fd cuando obtiene RangeError (Jackson Tian)
+* stream: reparar valores falsos de Readable.wrap objectMode (James Halliday)
+* timers: reparar temporizadores con un retraso de ejecución no-enteros. (Julien Gilli)
 
 <a id="0.10.30"></a>
 
-## 2014.07.31, Version 0.10.30 (Stable)
+## 2014.07.31, Versión 0.10.30 (Estable)
 
 https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 
-* uv: Upgrade to v0.10.28
-* npm: Upgrade to v1.4.21
+* uv: Actualizar a v0.10.28
+* npm: Actualizar a v1.4.21
 * v8: Interrupciones no deben enmascarar el stack overflow.
 * Revertido "stream: inicia el viejo-modo de lectura en el próximo tick" (Fedor Indutny)
 * buffer: repara señal de desbordamiento en `readUIn32BE` (Fedor Indutny)
-* buffer: improve {read,write}{U}Int* methods (Nick Apperson)
-* child_process: handle writeUtf8String error (Fedor Indutny)
-* deps: backport 4ed5fde4f from v8 upstream (Fedor Indutny)
+* buffer: mejorar métodos {read,write}{U}Int* (Nick Apperson)
+* child_process: manejar error writeUtf8String (Fedor Indutny)
+* deps: backport 4ed5fde4f desde upstream v8 (Fedor Indutny)
 * deps: cherry-pick eca441b2 from OpenSSL (Fedor Indutny)
-* lib: remove and restructure calls to isNaN() (cjihrig)
-* module: eliminate double `getenv()` (Maciej Małecki)
+* lib: eliminar y reestructurar llamadas a isNaN() (cjihrig)
+* module: eliminar doble `getenv()` (Maciej Małecki)
 * stream2: flush extant data on read of ended stream (Chris Dickinson)
 * streams: remove unused require('assert') (Rod Vagg)
 * timers: backport f8193ab (Julien Gilli)
