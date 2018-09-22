@@ -367,9 +367,9 @@ https://github.com/nodejs/node/commit/52795f8fcc2de77cf997e671ea58614e5e425dfe
 * child_process: verificar si execFile args es un array (Sam Roberts)
 * child_process: verifica si bifurcaciones args es un array (Sam Roberts)
 * crypto: actualizar certificados root (Ben Noordhuis)
-* domains: fix issues with abort on uncaught (Julien Gilli)
-* timers: Avoid linear scan in _unrefActive. (Julien Gilli)
-* timers: fix unref() memory leak (Trevor Norris)
+* domains: reparar problemas con anulaciones no capturadas (Julien Gilli)
+* timers: Evitar rastreo lineal en _unrefActive. (Julien Gilli)
+* timers: reparar la fuga de memoria de unref() (Trevor Norris)
 * v8: add api for aborting on uncaught exception (Julien Gilli)
 * debugger: fix when using "use strict" (Julien Gilli)
 
