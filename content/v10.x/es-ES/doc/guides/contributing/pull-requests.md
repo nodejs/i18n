@@ -409,15 +409,15 @@ Si una Pull Request particular presenta un rendimiento o una regresión funciona
 
 Todas las Pull Requests que contengan cambios en el código se deben ejecutar a través de pruebas de integración continua (CI) en <https://ci.nodejs.org/>.
 
-Solo los Colaboradores centrales de Node.js con derechos de commit en el repositorio `nodejs/node` pueden iniciar una ejecución de prueba de CI. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
+Solo los Colaboradores centrales de Node.js con derechos de commit en el repositorio `nodejs/node` pueden iniciar una ejecución de prueba de CI. Los detalles específicos de cómo hacer esto se incluyen en la nueva [Guía de incorporación](../../onboarding.md) del Colaborador.
 
-Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
+Idealmente, el cambio de código pasará ("a ser verde") en todas las configuraciones de plataforma compatibles con Node.js (actualmente hay más de 30 configuraciones de plataforma). Esto significa que todas las pruebas pasan y no hay errores de linting. En realidad, sin embargo, no es raro que la propia infraestructura de CI falle en plataformas específicas o que las llamadas pruebas "flaky" fallen ("sean rojas"). Es vital inspeccionar visualmente los resultados de todas las pruebas fallidas ("rojas") para determinar si la falla fue causada por los cambios en la Pull Request.
 
-## Additional Notes
+## Notas adicionales
 
 ### Commit Squashing
 
-In most cases, do not squash commits that you add to your Pull Request during the review process. When the commits in your Pull Request land, they may be squashed into one commit per logical change. Metadata will be added to the commit message (including links to the Pull Request, links to relevant issues, and the names of the reviewers). The commit history of your Pull Request, however, will stay intact on the Pull Request page.
+En la mayoría de los casos, no reduzca las confirmaciones que agregue a su Pull Request durante el proceso de revisión. When the commits in your Pull Request land, they may be squashed into one commit per logical change. Metadata will be added to the commit message (including links to the Pull Request, links to relevant issues, and the names of the reviewers). The commit history of your Pull Request, however, will stay intact on the Pull Request page.
 
 For the size of "one logical change", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) can be a good example. It touches the implementation, the documentation, and the tests, but is still one logical change. All tests should always pass when each individual commit lands on the master branch.
 
