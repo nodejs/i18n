@@ -1136,19 +1136,19 @@ https://github.com/nodejs/node/commit/38c72d4e29574dec5205bcf23c2a85efe65331a4
 * crypto: Reducir índice de estabilidad a 2-Inestable (isaacs)
 * windows: reparar fuga del manejador en uv_fs_utime (Bert Belder)
 * windows: reparar colapso de ventana emergente de la aplicación en la versión de depuración (Bert Belder)
-* buffer: report proper retained size in profiler (Ben Noordhuis)
-* buffer: fix byteLength with UTF-16LE (koichik)
-* repl: make "end of input" JSON.parse() errors throw in the REPL (Nathan Rajlich)
-* repl: make invalid RegExp modifiers throw in the REPL (Nathan Rajlich)
-* http: handle multiple Proxy-Authenticate values (Willi Eggeling)
+* buffer: reportar el verdadero tamaño retenido en el perfilador (Ben Noordhuis)
+* buffer: reparar byteLength con UTF-16LE (koichik)
+* repl: hacer que errores "end of input" de JSON.parse() se arrojen en el REPL (Nathan Rajlich)
+* repl: hacer que modificadores de RegExp no válidos se arrojen en el REPL (Nathan Rajlich)
+* http: manejar múltiples valores de Autenticación Proxy (Willi Eggeling)
 
 <a id="0.8.11"></a>
 
-## 2012.09.27, Version 0.8.11 (Stable)
+## 2012.09.27, Versión 0.8.11 (Estable)
 
 https://github.com/nodejs/node/commit/e1f39468fa580c1e4cb15fac621f87944ee625dc
 
-* fs: Fix stat() size reporting for large files (Ben Noordhuis)
+* fs: Corregir reporte de tamaño de Fix stat() para archivos grandes (Ben Noordhuis)
 
 <a id="0.8.10"></a>
 
