@@ -79,7 +79,7 @@
 
 ### Cambios Notables
 
-No additional commits.
+No hay commits adicionales.
 
 Debido a una incorrecta preparación de la actualización del compilador GCC 4.9.X, las últimas versiones para little endian PPC fueron construidas usando GCC 4.9.X y no GCC 4.8.X. Esto causó un quiebre de ABI en entornos basados en PPCLE. Esto ha sido arreglado en nuestra infraestructura, y estamos haciendo este lanzamiento para asegurar que los binarios alojados se están adhiriendo a nuestro contrato de soporte de la plataforma.
 
@@ -158,7 +158,7 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 ## 2018-02-13, Versión 6.13.0 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 112 commits, 17 of which are considered Semver-Minor. This includes 32 which are doc related, 31 which are test related, 8 which are build / tool related and 1 commit which updates a dependency.
+Esta actualización de LTS viene con 112 commits, de los cuales 17 están considerados como Semver-Minor. This includes 32 which are doc related, 31 which are test related, 8 which are build / tool related and 1 commit which updates a dependency.
 
 ### Cambios Notables
 
