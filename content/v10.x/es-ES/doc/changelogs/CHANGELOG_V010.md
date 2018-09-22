@@ -370,18 +370,18 @@ https://github.com/nodejs/node/commit/52795f8fcc2de77cf997e671ea58614e5e425dfe
 * domains: reparar problemas con anulaciones no capturadas (Julien Gilli)
 * timers: Evitar rastreo lineal en _unrefActive. (Julien Gilli)
 * timers: reparar la fuga de memoria de unref() (Trevor Norris)
-* v8: add api for aborting on uncaught exception (Julien Gilli)
-* debugger: fix when using "use strict" (Julien Gilli)
+* v8: añadir api para anulación en excepción de no capturado (Julien Gilli)
+* debugger: reparar cuando se use "uso estricto" (Julien Gilli)
 
 <a id="0.10.33"></a>
 
-## 2014.10.20, Version 0.10.33 (Stable)
+## 2014.10.20, Versión 0.10.33 (Estable)
 
 https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 
-* openssl: Update to 1.0.1j (Addressing multiple CVEs)
-* uv: Update to v0.10.29
-* child_process: properly support optional args (cjihrig)
+* openssl: actualizar a 1.0.1j (Addressing multiple CVEs)
+* uv: Actualizar a v0.10.29
+* child_process: soporta de manera correcta args opcionales (cjihrig)
 * crypto: Deshabilita autonegociación para SSLv2/3 de manera predeterminada (Fedor Indutny, Timothy J Fontaine, Alexis Campailla)
   
   Este es un cambio de comportamiento, de manera predeterminada no permitiremos la negociación a SSLv2 o SSLv3. Si deseas este comportamiento, ejecuta Node.js con `--enable-ssl2` o `--enable-ssl3`, respectivamente.
@@ -390,13 +390,13 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 
 <a id="0.10.32"></a>
 
-## 2014.09.16, Version 0.10.32 (Stable)
+## 2014.09.16, Versión 0.10.32 (Stable)
 
 https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 
-* npm: Update to 1.4.28
+* npm: Actualizar a 1.4.28
 * v8: repara una falla introducida por una versión previa (Fedor Indutny)
-* configure: add --openssl-no-asm flag (Fedor Indutny)
+* configure: añadir bandera --openssl-no-asm (Fedor Indutny)
 * crypto: usa dominios para cualquier método de atender callback (Chris Dickinson)
 * http: no enviar `0\r\n\r\n` en respuestas TE HEAD (Fedor Indutny)
 * querystring: repara la anulación unescape (Tristan Berger)
@@ -404,7 +404,7 @@ https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 
 <a id="0.10.31"></a>
 
-## 2014.08.19, Version 0.10.31 (Stable)
+## 2014.08.19, Versión 0.10.31 (Estable)
 
 https://github.com/nodejs/node/commit/7fabdc23d843cb705d2d0739e7bbdaaf50aa3292
 
