@@ -496,28 +496,28 @@ https://github.com/nodejs/node/commit/cb7911f78ae96ef7a540df992cc1359ba9636e86
 
 https://github.com/nodejs/node/commit/cc56c62ed879ad4f93b1fdab3235c43e60f48b7e
 
-* uv: Upgrade to v0.10.25 (Timothy J Fontaine)
-* npm: upgrade to 1.4.3 (isaacs)
-* v8: support compiling with VS2013 (Fedor Indutny)
-* cares: backport TXT parsing fix (Fedor Indutny)
-* crypto: throw on SignFinal failure (Fedor Indutny)
-* crypto: update root certificates (Ben Noordhuis)
-* debugger: Fix breakpoint not showing after restart (Farid Neshat)
-* fs: make unwatchFile() insensitive to path (iamdoron)
-* net: do not re-emit stream errors (Fedor Indutny)
-* net: make Socket destroy() re-entrance safe (Jun Ma)
-* net: reset `endEmitted` on reconnect (Fedor Indutny)
-* node: do not close stdio implicitly (Fedor Indutny)
-* zlib: avoid assertion in close (Fedor Indutny)
+* uv: Actualizar a v0.10.25 (Timothy J Fontaine)
+* npm: actualizar a 1.4.3 (isaacs)
+* v8: soporta compilación con VS2013 (Fedor Indutny)
+* cares: hacer backport a la reparación del análisis TXT (Fedor Indutny)
+* crypto: arrojar en la falla SignFinal (Fedor Indutny)
+* crypto: actualizar certificados root (Ben Noordhuis)
+* debugger: Reparar que no aparece el punto de quiebre luego de reiniciar (Farid Neshat)
+* fs: hacer unwatchFile() insensible a la ruta (iamdoron)
+* net: no volver a emitir los errores del stream (Fedor Indutny)
+* net: hacer la reentrada de Socket destroy() segura (Jun Ma)
+* net: reestablecer `endEmitted` tras la reconexión (Fedor Indutny)
+* node: no cerrar la implicidad de stdio (Fedor Indutny)
+* zlib: evitar la afirmación en el cierre (Fedor Indutny)
 
 <a id="0.10.25"></a>
 
-## 2014.01.23, Version 0.10.25 (Stable)
+## 2014.01.23, Versión 0.10.25 (Estable)
 
 https://github.com/nodejs/node/commit/b0e5f195dfce3e2b99f5091373d49f6616682596
 
-* uv: Upgrade to v0.10.23
-* npm: Upgrade to v1.3.24
+* uv: Actualizar a v0.10.23
+* npm: Actualizar a v1.3.24
 * v8: Fix enumeration for objects with lots of properties
 * child_process: fix spawn() optional arguments (Sam Roberts)
 * cluster: report more errors to workers (Fedor Indutny)
