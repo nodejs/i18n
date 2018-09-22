@@ -543,12 +543,12 @@ NODE_EXTERN napi_status napi_open_handle_scope(napi_env env,
                                                napi_handle_scope* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing the new scope.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: `napi_value` repräsentiert den neuen Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API open a new scope.
+Diese API öffnet ein neues Scope.
 
 #### napi_close_handle_scope
 
@@ -561,14 +561,14 @@ NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
                                                 napi_handle_scope scope);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: `napi_value` representing the scope to be closed.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] scope`: `napi_value` repräsentiert das zu schließende Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
+Diese API schließt den eingegebenen Scope. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, aus der sie erstellt wurden.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 #### napi_open_escapable_handle_scope
 
@@ -582,10 +582,10 @@ NODE_EXTERN napi_status
                                      napi_handle_scope* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing the new scope.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: `napi_value` repräsentiert den neuen Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API open a new scope from which one object can be promoted to the outer scope.
 
@@ -601,10 +601,10 @@ NODE_EXTERN napi_status
                                       napi_handle_scope scope);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] scope`: `napi_value` representing the scope to be closed.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
 
@@ -623,12 +623,12 @@ napi_status napi_escape_handle(napi_env env,
                                napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] scope`: `napi_value` representing the current scope.
 - `[in] escapee`: `napi_value` representing the JavaScript `Object` to be escaped.
 - `[out] result`: `napi_value` representing the handle to the escaped `Object` in the outer scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API promotes the handle to the JavaScript object so that it is valid for the lifetime of the outer scope. It can only be called once per scope. If it is called more than once an error will be returned.
 
