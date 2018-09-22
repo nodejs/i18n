@@ -1291,29 +1291,29 @@ https://github.com/nodejs/node/commit/f98562fcd7d1cab573ca4dc1612157d6999befd4
 * net: reparar api del Socket({ fd: 42 }) (Ben Noordhuis)
 * readline: Remover listeners del evento al cierre (isaacs)
 * windows: preparar correctamente ruta larga para fs.exists(Sync) (Bert Belder)
-* debugger: wake up the event loop when a debugger command is dispatched (Peter Rybin)
-* tls: verify server's identity (Fedor Indutny)
-* net: ignore socket.setTimeout(Infinity or NaN) (Fedor Indutny)
+* debugger: activar el bucle del evento cuando un comando de depuración sea enviado (Peter Rybin)
+* tls: verificar identidad del servidor (Fedor Indutny)
+* net: ignorar socket.setTimeout(Infinity o NaN) (Fedor Indutny)
 
 <a id="0.8.3"></a>
 
-## 2012.07.19, Version 0.8.3 (Stable)
+## 2012.07.19, Versión 0.8.3 (Estable)
 
 https://github.com/nodejs/node/commit/60bf2d6cb33e4ce55604f73889ab840a9de8bdab
 
-* V8: upgrade to 3.11.10.15
-* npm: Upgrade to 1.1.43
-* net: fix net.Server.listen({fd:x}) error reporting (Ben Noordhuis)
-* net: fix bogus errno reporting (Ben Noordhuis)
-* build: Move npm shebang logic into an npm script (isaacs)
-* build: fix add-on loading on freebsd (Ben Noordhuis)
-* build: disable unsafe optimizations (Ben Noordhuis)
-* build: fix spurious mksnapshot crashes for good (Ben Noordhuis)
-* build: speed up genv8constants (Dave Pacheco)
-* fs: make unwatchFile() remove a specific listener (Ben Noordhuis)
-* domain: Remove first arg from intercepted fn (Toshihiro Nakamura)
-* domain: Fix memory leak on error (isaacs)
-* events: Fix memory leak from removeAllListeners (Nathan Rajlich)
+* V8: actualizar a 3.11.10.15
+* npm: Actualizar a 1.1.43
+* net: reparar reporte de errores de net.Server.listen({fd:x}) (Ben Noordhuis)
+* net: reparar reportes de errno de bogus (Ben Noordhuis)
+* build: Mover lógica shebang de npm adentro de un script de npm (isaacs)
+* build: reparar carga de complemento en freebsd (Ben Noordhuis)
+* build: deshabilitar optimizaciones inseguras (Ben Noordhuis)
+* build: reparar colapsos alterados de mksnapshot de una vez por todas (Ben Noordhuis)
+* build: acelerar genv8constants (Dave Pacheco)
+* fs: hacer que unwatchFile() remueva a un listener específico (Ben Noordhuis)
+* domain: Remover primer argumento de fn interceptado (Toshihiro Nakamura)
+* domain: Reparar fuga de memoria ante error (isaacs)
+* events: Reparar fuga de memoria de removeAllListeners (Nathan Rajlich)
 * zlib: Fix memory leak in Unzip class. (isaacs)
 * crypto: Fix memory leak in DecipherUpdate() (Ben Noordhuis)
 
