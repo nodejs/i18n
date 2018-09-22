@@ -258,7 +258,7 @@ added: v0.5.8
 * `eventType` {string} El tipo de evento de cambio que ha ocurrido
 * `filename` {string|Buffer} El nombre de archivo que cambió (si es relevante/disponible)
 
-Emitted when something changes in a watched directory or file. Vea más detalles en [`fs.watch()`][].
+Se emite cuando algo cambia en un directorio o archivo observado. Vea más detalles en [`fs.watch()`][].
 
 El argumento de `filename` puede no estar proporcionado dependiendo del soporte del sistema operativo. Si se proporciona `filename`, será proporcionado como un `Buffer` si `fs.watch()` es llamado con su opción de `encoding` establecido a `'buffer'`, de lo contrario `filename` será una string de UTF-8.
 
@@ -517,7 +517,7 @@ El tamaño del archivo en bytes.
 
 * {number}
 
-The file system block size for i/o operations.
+El tamaño del bloque del sistema de archivos para operaciones de e/s.
 
 ### stats.blocks
 
@@ -869,7 +869,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
 * `callback` {Function} 
   * `err` {Error}
 
@@ -923,7 +923,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
 
 Anexa los datos de manera sincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][].
 
@@ -1148,7 +1148,7 @@ Copia de manera asincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` 
 
 * `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
-* `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
+* `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. Si la plataforma no es compatible con copy-on-write, entonces la operación fallará.
 
 Ejemplo:
 
@@ -1188,7 +1188,7 @@ Copia de manera sincrónica `src` a `dest`. Por defecto, se sobrescribe `dest` s
 
 * `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
-* `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
+* `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. Si la plataforma no es compatible con copy-on-write, entonces la operación fallará.
 
 Ejemplo:
 
@@ -1230,7 +1230,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `flags` {string} See [support of file system `flags`][]. **Default:** `'r'`.
+  * `flags` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
   * `encoding` {string} **Default:** `null`
   * `fd` {integer} **Default:** `null`
   * `mode` {integer} **Default:** `0o666`
@@ -1281,7 +1281,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `flags` {string} See [support of file system `flags`][]. **Default:** `'w'`.
+  * `flags` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
   * `fd` {integer} **Default:** `null`
   * `mode` {integer} **Default:** `0o666`
@@ -2172,7 +2172,7 @@ changes:
 * `path` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
 * `callback` {Function} 
   * `err` {Error}
   * `data` {string|Buffer}
@@ -2234,7 +2234,7 @@ changes:
 * `path` {string|Buffer|URL|integer} nombre de archivo o descriptor de archivo
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
 * Devuelve: {string|Buffer}
 
 Versión sincrónica de [`fs.readFile()`][]. Devuelve los contenidos del `path`.
@@ -3082,7 +3082,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
 * `callback` {Function} 
   * `err` {Error}
 
@@ -3130,7 +3130,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
 
 La versión sincrónica de [`fs.writeFile()`][]. Devuelve `undefined`.
 
@@ -3202,7 +3202,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
 * Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a este archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -3306,7 +3306,7 @@ added: v10.0.0
 
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
 * Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
@@ -3432,7 +3432,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'w'`.
 * Devuelve: {Promise}
 
 Escribe los datos de manera asincrónica a un archivo, reemplazando el archivo si ya existe. `data` puede ser una string o un búfer. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -3483,7 +3483,7 @@ added: v10.0.0
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'a'`.
 * Devuelve: {Promise}
 
 Anexa los datos de manera asincrónica a un archivo, creando el archivo en caso de que aún no exista. `data` puede ser una string o un [`Buffer`][]. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -3525,7 +3525,7 @@ added: v10.0.0
 
 * `src` {string|Buffer|URL} nombre de archivo de la fuente a copiar
 * `dest` {string|Buffer|URL} nombre de archivo de destino de la operación de copia
-* `flags` {number} modifiers for copy operation. **Default:** `0`.
+* `flags` {number} modifiers for copy operation. **Predeterminado:** `0`.
 * Devuelve: {Promise}
 
 Copia de manera asincrónica `src` a `dest`. Por defecto, `dest` se sobrescribe si ya existe. La `Promise` será resuelta sin argumentos al realizarse con éxito.
@@ -3536,7 +3536,7 @@ Node.js no ofrece ninguna garantía sobre la atomicidad de la operación de copi
 
 * `fs.constants.COPYFILE_EXCL` - La operación de copia fallará si `dest` ya existe.
 * `fs.constants.COPYFILE_FICLONE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then a fallback copy mechanism is used.
-* `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. If the platform does not support copy-on-write, then the operation will fail.
+* `fs.constants.COPYFILE_FICLONE_FORCE` - The copy operation will attempt to create a copy-on-write reflink. Si la plataforma no es compatible con copy-on-write, entonces la operación fallará.
 
 Ejemplo:
 
@@ -3828,7 +3828,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL|FileHandle} nombre de archivo o `FileHandle`
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
-  * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
+  * `flag` {string} See [support of file system `flags`][]. **Predeterminado:** `'r'`.
 * Devuelve: {Promise}
 
 Lee de manera asincrónica todos los contenidos de un archivo.
@@ -3869,7 +3869,7 @@ added: v10.0.0
 
 Determina la ubicación actual de `path` utilizando la misma semántica que la función `fs.realpath.native()`, luego resuelve la `Promise` con la ruta resuelta.
 
-Only paths that can be converted to UTF8 strings are supported.
+Solo son compatibles las rutas que pueden ser convertidas a strings UTF8.
 
 El argumento opcional `options` puede ser una string que especifique una codificación, o un objeto con una propiedad de `encoding` que especifique la codificación de caracteres a usar para la ruta. Si el `encoding` se establece a `'buffer'`, la ruta devuelta será pasada como un objeto de `Buffer` .
 
