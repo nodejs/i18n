@@ -99,8 +99,8 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 * **Actualización a OpenSSL 1.0.2o**: No contiene ninguna corrección de seguridad que se sepa que tenga un impacto en Node.js.
 * **Reparación para la vulnerabilidad de la revinculación de DNS del inspector (CVE-2018-7160)**: Una página web maliciosa podría usar un ataque de revinculación de DNS para engañar un explorador web, para luego eludir los chequeos de política del mismo origen y permitir conexiones HTTP a localhost o a hosts en la red local, potencialmente a un puerto inspector abierto como un depurador, por lo tanto, ganando acceso de ejecución de código completo. El inspector ahora permite conexiones que tienen un valor `Host` de navegador de `localhost` o `localhost6`.
-* **Reparación para módulo `'path'` de expresión regular de denegación de servicio (CVE-2018-7158)**: Una expresión regular usada para el análisis de rutas de POSIX, podría ser usada para causar una denegación de servicio si un atacador fuese capaz de tener un string de ruta especialmente diseñado pasado mediante las funciones del módulo `'path'` impactadas.
-* **Rechazar espacios en HTTP `Content-Length` valores de encabezados (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de encabezados `Content-Length`. Tales valores ahora conducen a conexiones rechazadas de la misma manera que valores no numéricos.
+* **Reparación para expresión regular de denegación de servicio del módulo `'path'`(CVE-2018-7158)**: Una expresión regular usada para el análisis de rutas de POSIX podría ser utilizada para causar una denegación de servicio si un atacante fuese capaz de pasar una string de ruta especialmente diseñada a través de una de las funciones del módulo `'path'` impactadas.
+* **Rechazar espacios en valores de cabeceras `Content-Length` de HTTP (CVE-2018-7159)**: El analizador HTTP de Node.js permitió que hubiera espacios dentro de valores de cabeceras `Content-Length`. Tales valores ahora conducen a conexiones rechazadas de la misma manera que valores no numéricos.
 * **Actualización de certificados root**: 5 certificados root adicionales han sido agregados al binario de Node.js y 30 han sido removidos.
 
 ### Commits
@@ -109,12 +109,12 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 * [[`3c99e41427`](https://github.com/nodejs/node/commit/3c99e41427)] - **deps**: agregar -no\_rand\_screen a openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`d775057090`](https://github.com/nodejs/node/commit/d775057090)] - **deps**: reparar error de compilación asm de openssl en x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`982012b96d`](https://github.com/nodejs/node/commit/982012b96d)] - **deps**: reparar error de ensamblaje openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`1aa83f7707`](https://github.com/nodejs/node/commit/1aa83f7707)] - **deps**: copiar todos los archivos de encabezado openssl para incluir a dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
+* [[`1aa83f7707`](https://github.com/nodejs/node/commit/1aa83f7707)] - **deps**: copiar todos los archivos de cabecera openssl para incluir a dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`05de6f4af7`](https://github.com/nodejs/node/commit/05de6f4af7)] - **deps**: actualizar fuentes openssl a 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`ed64cc2be7`](https://github.com/nodejs/node/commit/ed64cc2be7)] - **deps**: rechazar espacios en blanco interiores en Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`d786d21f92`](https://github.com/nodejs/node/commit/d786d21f92)] - **deps**: actualizar http-parser a v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`4947b0e26e`](https://github.com/nodejs/node/commit/4947b0e26e)] - **inspector**: ajustes menores (Eugene Ostroukhov)
-* [[`e3950d1a40`](https://github.com/nodejs/node/commit/e3950d1a40)] - **inspector**: revisar el encabezado del Host (Ali Ijaz Sheikh)
+* [[`e3950d1a40`](https://github.com/nodejs/node/commit/e3950d1a40)] - **inspector**: revisar cabecera de Host (Ali Ijaz Sheikh)
 * [[`ef32e06a6e`](https://github.com/nodejs/node/commit/ef32e06a6e)] - **openssl**: arreglar requerimiento de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`1dba2f4950`](https://github.com/nodejs/node/commit/1dba2f4950)] - **src**: soltar la lista blanca de certificados CNNIC+StartCom (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 * [[`bdfeb1c739`](https://github.com/nodejs/node/commit/bdfeb1c739)] - **tools**: actualizar certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
@@ -130,7 +130,7 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 ### Commits
 
-* [[`d333ba5e2a`](https://github.com/nodejs/node/commit/d333ba5e2a)] - **doc**: añadir vdeturckheim como colaborador (vdeturckheim) [#18432](https://github.com/nodejs/node/pull/18432)
+* [[`d333ba5e2a`](https://github.com/nodejs/node/commit/d333ba5e2a)] - **doc**: añadir a vdeturckheim como colaborador (vdeturckheim) [#18432](https://github.com/nodejs/node/pull/18432)
 * [[`7fc5c69a4a`](https://github.com/nodejs/node/commit/7fc5c69a4a)] - **doc**: usar PBKDF2 en texto (Tobias Nießen) [#18279](https://github.com/nodejs/node/pull/18279)
 * [[`1e8d1200ce`](https://github.com/nodejs/node/commit/1e8d1200ce)] - **doc**: Añadir ejemplo de null a assert.ifError (Leko) [#18236](https://github.com/nodejs/node/pull/18236)
 * [[`46e43111af`](https://github.com/nodejs/node/commit/46e43111af)] - **doc**: ramificación V8 usada en 8.x ya no está activa (Franziska Hinkelmann) [#18155](https://github.com/nodejs/node/pull/18155)
