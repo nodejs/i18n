@@ -389,7 +389,7 @@ Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para 
 
 ### Acepte que hay opiniones diferentes sobre lo que pertenece a Node.js
 
-Opinions on this vary, even among the members of the Technical Steering Committee.
+Las opiniones sobre esto varían, incluso entre los miembros del Comité Directivo Técnico.
 
 One general rule of thumb is that if Node.js itself needs it (due to historic or functional reasons), then it belongs in Node.js. For instance, `url` parsing is in Node.js because of HTTP protocol support.
 
