@@ -395,7 +395,7 @@ Una regla general es que si Node.js lo necesita (debido a razones históricas o 
 
 Además, la funcionalidad que no puede implementarse fuera del núcleo de ninguna manera razonable, o solo con un gran daño.
 
-No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Los comentarios que hagan que el contribuyente se sienta como que debería haber "sabido mejor" o ridiculizado incluso por intentar, va en contra del [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Los comentarios que hagan que el contribuyente se sienta como que debería haber "sabido mejor" o ridiculizado incluso por intentar, van en contra del [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
 ### El rendimiento no es todo
 
