@@ -1,8 +1,8 @@
-# How to write a test for the Node.js project
+# Cómo escribir una prueba para el proyecto Node.js
 
-## What is a test?
+## ¿Qué es una prueba?
 
-Most tests in Node.js core are JavaScript programs that exercise a functionality provided by Node.js and check that it behaves as expected. Tests should exit with code `0` on success. A test will fail if:
+La mayoría de las pruebas en la base de Node.js son programas de JavaScript que ejercen una funcionalidad proporcionada por Node.js y verifican que se comporte como se espera. Las pruebas deben salir con el código `0` cuando tengan éxito. Una prueba falla si:
 
 - It exits by setting `process.exitCode` to a non-zero number. 
   - This is usually done by having an assertion throw an uncaught Error.
