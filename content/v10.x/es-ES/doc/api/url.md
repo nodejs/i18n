@@ -980,21 +980,21 @@ url.resolve('http://example.com/one', '/two'); // 'http://example.com/two'
 
 ## Porcentaje de Codificación en URLs
 
-URLs are permitted to only contain a certain range of characters. Any character falling outside of that range must be encoded. How such characters are encoded, and which characters to encode depends entirely on where the character is located within the structure of the URL.
+Los URLs tienen permitido contener solo un cierto rango de caracteres. Cualquier carácter que caiga fuera de ese rango debe ser codificado. Cómo son codificados estos caracteres, y cuáles caracteres son decodificados depende completamente de donde se encuentra ubicado el carácter dentro de la estructura de la URL.
 
-### Legacy API
+### Sistema heredado API
 
-Within the Legacy API, spaces (`' '`) and the following characters will be automatically escaped in the properties of URL objects:
+Dentro del Sistema heredado API, los espacios (`' '`) y los siguientes caracteres serán evadidos en las propiedades de los objetos URL:
 
 ```txt
 < > " ` \r \n \t { } | \ ^ '
 ```
 
-For example, the ASCII space character (`' '`) is encoded as `%20`. The ASCII forward slash (`/`) character is encoded as `%3C`.
+Por ejemplo, el carácter espacio ASCII (`' '`) es codificado como `%20`. El carácter barra oblicua ASCII (`/`) es codificado como `%3C`.
 
-### WHATWG API
+### API de WHATWG
 
-The [WHATWG URL Standard](https://url.spec.whatwg.org/) uses a more selective and fine grained approach to selecting encoded characters than that used by the Legacy API.
+El [Estándar URL de WHATWG](https://url.spec.whatwg.org/) utiliza un enfoque más selectivo y detallado para seleccionar caracteres codificados, que el que utiliza el Sistema heredado API.
 
 The WHATWG algorithm defines four "percent-encode sets" that describe ranges of characters that must be percent-encoded:
 
