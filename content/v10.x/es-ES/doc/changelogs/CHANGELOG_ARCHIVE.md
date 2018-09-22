@@ -1168,17 +1168,17 @@ https://github.com/nodejs/node/commit/0bc273da4fcaa79b209ed755ad249a3e7be626a6
 * http: hacer que el objeto "res" del cliente obtenga el mismo dominio que "req" (Nathan Rajlich)
 * windows: no explotar cuando un FD inválido es utilizado (Bert Belder)
 * unix: mapear EDQUOT a UV_ENOSPC (Charlie McConnell)
-* linux: improve /proc/cpuinfo parser (Ben Noordhuis)
-* win/tty: reset background brightness when color is set to default (Bert Belder)
-* unix: put child process stdio fds in blocking mode (Ben Noordhuis)
-* unix: fix EMFILE busy loop (Ben Noordhuis)
-* sunos: don't set TCP_KEEPALIVE (Ben Noordhuis)
-* tls: Use slab allocator for memory management (Fedor Indutny)
-* openssl: Use optimized assembly code for x86 and x64 (Bert Belder)
+* linux: mejorar analizador /proc/cpuinfo (Ben Noordhuis)
+* win/tty: restablecer brillo de fondo cuando el color se establece por defecto (Bert Belder)
+* unix: colocar al stdio fds del proceso secundario en modo de bloqueo (Ben Noorduis)
+* unix: reparar la espera activa de EMFILE (Ben Noordhuis)
+* sunos: no establecer TCP_KEEPALIVE (Ben Noordhuis)
+* tls: Utilizar asignador de slabs para gestión de memoria (Fedor Indutny)
+* openssl: Utilizar código de ensamblaje optimizado para x86 y x64 (Bert Belder)
 
 <a id="0.8.9"></a>
 
-## 2012.09.11, Version 0.8.9 (Stable)
+## 2012.09.11, Versión 0.8.9 (Estable)
 
 https://github.com/nodejs/node/commit/b88c3902b241cf934e75443b934f2033ad3915b1
 
