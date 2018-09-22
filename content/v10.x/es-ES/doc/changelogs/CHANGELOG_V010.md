@@ -433,50 +433,50 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 * deps: cherry-pick eca441b2 from OpenSSL (Fedor Indutny)
 * lib: eliminar y reestructurar llamadas a isNaN() (cjihrig)
 * module: eliminar doble `getenv()` (Maciej Małecki)
-* stream2: flush extant data on read of ended stream (Chris Dickinson)
-* streams: remove unused require('assert') (Rod Vagg)
+* stream2: arrojar datos existentes en la lectura del stream terminado (Chris Dickinson)
+* streams: eliminar require('assert') no usado (Rod Vagg)
 * timers: backport f8193ab (Julien Gilli)
 * util.h: compatibilidad de interfaz (Oguz Bastemur)
 * zlib: no falla en la esxritura después de cerrar (Fedor Indutny)
 
 <a id="0.10.29"></a>
 
-## 2014.06.05, Version 0.10.29 (Stable)
+## 2014.06.05, Versión 0.10.29 (Estable)
 
 https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 
-* openssl: to 1.0.1h (CVE-2014-0224)
-* npm: upgrade to 1.4.14
+* openssl: a 1.0.1h (CVE-2014-0224)
+* npm: actualizar a 1.4.14
 * utf8: Previene al Nodo de enviar un UTF-8 inválido (Felix Geisendörfer)
   
   * *NOTA* Esto introduce un cambio radical, anteriormente tu podías construir UTF-8 inválidos e invocar un error en un cliente que estaba esperando UTF-8 válidos, ahora los pares de sustitución que no tienen pareja son reemplazados con un carácter UTF-8 desconocido. Para restaurar la vieja funcionalidad, simplemente ten ambiente variable NODE_INVALID_UTF8 establecido.
 
 * child_process: no establecer args antes de arrojar (Greg Sabia Tucker)
 
-* child_process: spawn() does not throw TypeError (Greg Sabia Tucker)
-* constants: export O_NONBLOCK (Fedor Indutny)
-* crypto: improve memory usage (Alexis Campailla)
-* fs: close file if fstat() fails in readFile() (cjihrig)
-* lib: name EventEmitter prototype methods (Ben Noordhuis)
-* tls: fix performance issue (Alexis Campailla)
+* child_process: spawn() no arroja TypeError (Greg Sabia Tucker)
+* constants: exportar O_NONBLOCK (Fedor Indutny)
+* crypto: mejorar el uso de memoria (Alexis Campailla)
+* fs: cerrar archivo si fallar fstat() en readFile() (cjihrig)
+* lib: nombrar métodos prototipo de EventEmitter (Ben Noordhuis)
+* tls: reparar problemas de rendimiento (Alexis Campailla)
 
 <a id="0.10.28"></a>
 
-## 2014.05.01, Version 0.10.28 (Stable)
+## 2014.05.01, Versión 0.10.28 (Estable)
 
 https://github.com/nodejs/node/commit/b148cbe09d4657766fdb61575ba985734c2ff0a8
 
-* npm: upgrade to v1.4.9
+* npm: actualizar a v1.4.9
 
 <a id="0.10.27"></a>
 
-## 2014.05.01, Version 0.10.27 (Stable)
+## 2014.05.01, Versión 0.10.27 (Estable)
 
 https://github.com/nodejs/node/commit/cb7911f78ae96ef7a540df992cc1359ba9636e86
 
-* npm: upgrade to v1.4.8
-* openssl: upgrade to 1.0.1g
-* uv: update to v0.10.27
+* npm: actualizar a v1.4.8
+* openssl: actualizar a 1.0.1g
+* uv: actualizar a v0.10.27
 * dns: fix certain txt entries (Fedor Indutny)
 * assert: Ensure reflexivity of deepEqual (Mike Pennisi)
 * child_process: fix deadlock when sending handles (Fedor Indutny)
