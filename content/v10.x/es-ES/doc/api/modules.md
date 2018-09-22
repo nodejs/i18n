@@ -314,25 +314,25 @@ En Windows, `NODE_PATH` es delimitada por puntos y comas (`;`) en lugar de comas
 
 `NODE_PATH` fue originalmente creado para soportar módulos de carga de varias rutas antes de que el algoritmo de [resolución de módulo](#modules_all_together) actual fuese congelado.
 
-`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestra un comportamiento sorprendente cuando las personas no están conscientes que `NODE_PATH` debe establecerse. Sometimes a module's dependencies change, causing a different version (or even a different module) to be loaded as the `NODE_PATH` is searched.
+`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestra un comportamiento sorprendente cuando las personas no están conscientes que `NODE_PATH` debe establecerse. Algunas veces las dependencias de un módulo cambian, causando que se cargue una versión diferente (o incluso un módulo diferente) cuando se busque a `NODE_PATH`.
 
-Additionally, Node.js will search in the following locations:
+Adicionalmente, Node.js buscará en las siguientes ubicaciones:
 
 * 1: `$HOME/.node_modules`
 * 2: `$HOME/.node_libraries`
 * 3: `$PREFIX/lib/node`
 
-Where `$HOME` is the user's home directory, and `$PREFIX` is Node.js's configured `node_prefix`.
+Donde `$HOME` es el directorio de inicio del usuario, y `$PREFIX` es el `node_prefix` configurado de Node.js.
 
 These are mostly for historic reasons.
 
-It is strongly encouraged to place dependencies in the local `node_modules` folder. These will be loaded faster, and more reliably.
+Es altamente recomendado colocar las dependencias en la carpeta `node_modules` local. Estas serán cargadas más rápido y con mayor confianza.
 
-## The module wrapper
+## El envoltorio del módulo
 
 <!-- type=misc -->
 
-Before a module's code is executed, Node.js will wrap it with a function wrapper that looks like the following:
+Antes de que se ejecuta un código del módulo, Node.js lo envolverá con un envoltorio de función que luce como el siguiente:
 
 ```js
 (function(exports, require, module, __filename, __dirname) {
@@ -340,14 +340,14 @@ Before a module's code is executed, Node.js will wrap it with a function wrapper
 });
 ```
 
-By doing this, Node.js achieves a few things:
+Al hacer esto, Node.js logra unas cuantas cosas:
 
 * It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
 * It helps to provide some global-looking variables that are actually specific to the module, such as: 
-  * The `module` and `exports` objects that the implementor can use to export values from the module.
-  * The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
+  * Los objetos `module` y `exports` que el implementador puede utilizar para exportar valores desde el módulo.
+  * Las variables de conveniencia `__filename` y `__dirname`, que contienen el nombre de archivo absoluto del módulo y la ruta del directorio.
 
-## The module scope
+## El alcance del módulo
 
 ### \_\_dirname
 
