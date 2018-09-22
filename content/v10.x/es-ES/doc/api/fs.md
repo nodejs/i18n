@@ -1652,7 +1652,7 @@ added: v0.8.6
 -->
 
 * `fd` {integer}
-* `len` {integer} **Default:** `0`
+* `len` {integer} **Predeterminado:** `0`
 
 ftruncate(2) sincrónico. Devuelve `undefined`.
 
@@ -2679,7 +2679,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `len` {integer} **Default:** `0`
+* `len` {integer} **Predeterminado:** `0`
 * `callback` {Function} 
   * `err` {Error}
 
@@ -2694,7 +2694,7 @@ added: v0.8.6
 -->
 
 * `path` {string|Buffer|URL}
-* `len` {integer} **Default:** `0`
+* `len` {integer} **Predeterminado:** `0`
 
 truncate(2) sincrónico. Devuelve `undefined`. Un descriptor de archivo también puede ser pasado como el primer argumento. En este caso, `fs.ftruncateSync()` es llamado.
 
@@ -2763,7 +2763,7 @@ added: v0.1.31
 * `filename` {string|Buffer|URL}
 * `listener` {Function} Opcional, un listener previamente acoplado utilizando `fs.watchFile()`
 
-Deja de buscar cambios en `filename`. Si se especifica `listener`, sólo se eliminará ese listener en específico. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
+Deja de buscar cambios en `filename`. Si se especifica `listener`, sólo se eliminará ese listener en específico. De lo contrario, se eliminarán *todos* los listeners, deteniendo de manera eficaz la observación de `filename`.
 
 Calling `fs.unwatchFile()` with a filename that is not being watched is a no-op, not an error.
 
@@ -2807,7 +2807,7 @@ Cambia las marcas de tiempo del sistema de archivos del objeto referenciado por 
 
 Los argumentos `atime` y `mtime` siguen las siguientes reglas:
 
-* Values can be either numbers representing Unix epoch time, `Date`s, or a numeric string like `'123456789.0'`.
+* Los valores pueden ser números que representen el tiempo de época de Unix, `Date`s, o una string numérica como `'123456789.0'`.
 * Si el valor no se puede convertir a un número, o es `NaN`, `Infinity` o `-Infinity`, se arrojará un `Error` .
 
 ## fs.utimesSync(path, atime, mtime)
@@ -2856,7 +2856,7 @@ changes:
   * `persistent` {boolean} Indica si el proceso debería continuar ejecutándose, siempre y cuando los archivos estén siendo observados. **Predeterminado:** `true`.
   * `recursive` {boolean} Indica si todos los sub-directorios deberían ser observados, o solamente el directorio actual. Esto aplica cuando un directorio es especificado, y solamente en plataformas soportadas (Vea [Advertencias](#fs_caveats)). **Predeterminado:** `false`.
   * `encoding` {string} Especifica la codificación de caracteres que será utilizada para el nombre de archivo pasado al listener. **Predeterminado:** `'utf8'`.
-* `listener` {Function|undefined} **Default:** `undefined` 
+* `listener` {Function|undefined} **Predeterminado:** `undefined` 
   * `eventType` {string}
   * `filename` {string|Buffer}
 * Devuelve: {fs.FSWatcher}
@@ -3005,7 +3005,7 @@ Escribe `buffer` al archivo especificado por `fd`.
 
 `offset` determina la parte del búfer que será escrita, y `length` es un entero que especifica el número de bytes a escribir.
 
-`position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
+`position` se refiere al offset del principio del archivo en donde deberían ser escritos estos datos. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
 Al callback se le darán tres argumentos `(err, bytesWritten, buffer)` en donde `bytesWritten` especificará cuántos *bytes* fueron escritos desde `buffer`.
 
@@ -3045,7 +3045,7 @@ changes:
 
 Escribe `string` al archivo especificado por `fd`. Si `string` no es una string, entonces el valor será forzado a uno.
 
-`position` refers to the offset from the beginning of the file where this data should be written. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
+`position` se refiere al offset del principio del archivo en donde deberían ser escritos estos datos. En caso de que `typeof position !== 'number'`, los datos serán escritos en la posición actual. Vea pwrite(2).
 
 `encoding` es la codificación de string esperada.
 
@@ -3626,7 +3626,7 @@ added: v10.0.0
 -->
 
 * `filehandle` {FileHandle}
-* `len` {integer} **Default:** `0`
+* `len` {integer} **Predeterminado** `0`
 * Devuelve: {Promise}
 
 Trunca el archivo representado por `filehandle`, luego resuelve la `Promise` sin argumentos al realizarse con éxito.
@@ -3735,7 +3735,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `mode` {integer} **Default:** `0o777`
+* `mode` {integer} **Predeterminado:** `0o777`
 * Devuelve: {Promise}
 
 De manera asincrónica, crea un directorio y luego resuelve la `Promise` sin argumentos al realizarse con éxito.
