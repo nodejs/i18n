@@ -2831,7 +2831,7 @@ Define una clase de Javascript que corresponde a una clase de C++, incluyendo:
 
 El callback del constructor de C++ debe se un método estático sobre la clase que llama a la verdadera clase constructora, entonces envuelve la nueva instancia de C++ en un objeto de JavaScript, y devuelve un objeto envuelto. Véase `napi_wrap()` para más detalles.
 
-La función constructora de JavaScript devuelta desde [`napi_define_class`][] es usualmente guardada y utilizada luego, para construir nuevas instancias de la clase desde código nativo, y/o verificar si los valores proporcionados son instancias de la clase. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
+La función constructora de JavaScript devuelta desde [`napi_define_class`][] es usualmente guardada y utilizada luego, para construir nuevas instancias de la clase desde código nativo, y/o verificar si los valores proporcionados son instancias de la clase. En ese caso, para prevenir que el valor de la función sea basura recolectada, crear una referencia persistente a él, utilizando [`napi_create_reference`][] y asegurar que la cuenta de la referencia se mantenga >= 1.
 
 ### napi_wrap
 
@@ -2848,18 +2848,18 @@ napi_status napi_wrap(napi_env env,
                       napi_ref* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The JavaScript object that will be the wrapper for the native object. This object *must* have been created from the `prototype` of a constructor that was created using `napi_define_class()`.
-- `[in] native_object`: The native instance that will be wrapped in the JavaScript object.
-- `[in] finalize_cb`: Optional native callback that can be used to free the native instance when the JavaScript object is ready for garbage-collection.
-- `[in] finalize_hint`: Optional contextual hint that is passed to the finalize callback.
-- `[out] result`: Optional reference to the wrapped object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] js_object`: El objeto de JavaScript que será envuelto por el objeto nativo. Este objeto *debe* haber sido creado desde el `prototype` de un constructor que fue creada utilizando `napi_define_class()`.
+- `[in] native_object`: La instancia nativa que será envuelta en el objeto de JavaScript.
+- `[in] finalize_cb`: Callback nativo opcional que puede ser utilizado para liberar a la instancia nativa cuando el objeto de JavaScript sea liberado como basura recolectada.
+- `[in] finalize_hint`: Sugerencia contextual opcional que es pasada a la callback finalizada.
+- `[out] result`: Referencia opcional al objeto envuelto.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Wraps a native instance in a JavaScript object. The native instance can be retrieved later using `napi_unwrap()`.
+Envuelve una instancia nativa en un objeto de JavaScript. La instancia nativa puede ser recuperada luego utilizando `napi_unwrap()`.
 
-When JavaScript code invokes a constructor for a class that was defined using `napi_define_class()`, the `napi_callback` for the constructor is invoked. After constructing an instance of the native class, the callback must then call `napi_wrap()` to wrap the newly constructed instance in the already-created JavaScript object that is the `this` argument to the constructor callback. (That `this` object was created from the constructor function's `prototype`, so it already has definitions of all the instance properties and methods.)
+Cuando un código de JavaScript invoca a un constructor para la clase que fue definida utilizando `napi_define_class()`, el `napi_callback` para el constructor es invocado. Luego de construir una instancia de la clase nativa, el callback debe llamar entonces a `napi_wrap()` para envolver a la instancia recientemente construida en el ya creado objeto de JavaScript que es el argumento `this` del callback del constructor. (That `this` object was created from the constructor function's `prototype`, so it already has definitions of all the instance properties and methods.)
 
 Typically when wrapping a class instance, a finalize callback should be provided that simply deletes the native instance that is received as the `data` argument to the finalize callback.
 
