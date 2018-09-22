@@ -149,9 +149,9 @@ Correcciones para los siguientes CVEs están incluidas en esta actualización:
 * [[`fdf73b110f`](https://github.com/nodejs/node/commit/fdf73b110f)] - **test**: preservar env en casos de prueba (Beth Griggs) [#14822](https://github.com/nodejs/node/pull/14822)
 * [[`bb2d292562`](https://github.com/nodejs/node/commit/bb2d292562)] - **test**: cambiar mensaje de aserción a predeterminado (ryanmahan) [#18259](https://github.com/nodejs/node/pull/18259)
 * [[`27107b957c`](https://github.com/nodejs/node/commit/27107b957c)] - **test**: usar contador regresivo (Mandeep Singh) [#17326](https://github.com/nodejs/node/pull/17326)
-* [[`eaa30e4947`](https://github.com/nodejs/node/commit/eaa30e4947)] - **test**: simplificar loadDHParam en un test TLS (Tobias Nießen) [#18103](https://github.com/nodejs/node/pull/18103)
+* [[`eaa30e4947`](https://github.com/nodejs/node/commit/eaa30e4947)] - **test**: simplificar loadDHParam en test TLS (Tobias Nießen) [#18103](https://github.com/nodejs/node/pull/18103)
 * [[`2004efded8`](https://github.com/nodejs/node/commit/2004efded8)] - **test**: mejorar para usar string modelo (sreepurnajasti) [#18097](https://github.com/nodejs/node/pull/18097)
-* [[`16ef24bccf`](https://github.com/nodejs/node/commit/16ef24bccf)] - **test**: usar archivo de entrada más pequeño test-zlib.js (Rich Trott) [#17988](https://github.com/nodejs/node/pull/17988)
+* [[`16ef24bccf`](https://github.com/nodejs/node/commit/16ef24bccf)] - **test**: usar archivo de entrada más pequeño para test-zlib.js (Rich Trott) [#17988](https://github.com/nodejs/node/pull/17988)
 * [[`48790382f1`](https://github.com/nodejs/node/commit/48790382f1)] - **tools**: añadir regla number-isnan (Jon Moss) [#17556](https://github.com/nodejs/node/pull/17556)
 
 <a id="6.13.0"></a>
@@ -190,8 +190,8 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
   * añadir process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 * **tls**: 
   * acceptar opción `lookup` para `tls.connect()` (Fedor Indutny) [#12839](https://github.com/nodejs/node/pull/12839)
-* **herramientas, compilación**: 
-  * un nuevo instalador macOS! (JP Wesselink) [#15179](https://github.com/nodejs/node/pull/15179)
+* **tools, build**: 
+  * ¡un nuevo instalador macOS! (JP Wesselink) [#15179](https://github.com/nodejs/node/pull/15179)
 * **url**: 
   * Soporte para la api WHATWG URL (James M Snell) [#7448](https://github.com/nodejs/node/pull/7448)
 * **util**: 
@@ -203,7 +203,7 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 * [[`ce136392fb`](https://github.com/nodejs/node/commit/ce136392fb)] - **(SEMVER-MINOR)** **console**: añadir console.count() y console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
 * [[`691cd5a3d1`](https://github.com/nodejs/node/commit/691cd5a3d1)] - **crypto**: advertir sobre extensión de etiqueta de autenticación inválida (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * [[`4b4e4db1c1`](https://github.com/nodejs/node/commit/4b4e4db1c1)] - **crypto**: añadir ocsp_request ClientHelloParser::Reset (Daniel Bevenius) [#17753](https://github.com/nodejs/node/pull/17753)
-* [[`c377d2299a`](https://github.com/nodejs/node/commit/c377d2299a)] - **crypto**: remover encabezado no usado clienthello.h (Daniel Bevenius) [#17752](https://github.com/nodejs/node/pull/17752)
+* [[`c377d2299a`](https://github.com/nodejs/node/commit/c377d2299a)] - **crypto**: remover cabecera no usada en clienthello.h (Daniel Bevenius) [#17752](https://github.com/nodejs/node/pull/17752)
 * [[`ddd9d85681`](https://github.com/nodejs/node/commit/ddd9d85681)] - **crypto**: remover BIO_set_shutdown (Daniel Bevenius) [#17542](https://github.com/nodejs/node/pull/17542)
 * [[`f3b3437e48`](https://github.com/nodejs/node/commit/f3b3437e48)] - **(SEMVER-MINOR)** **crypto**: exponer clase ECDH (Bryan English) [#8188](https://github.com/nodejs/node/pull/8188)
 * [[`6f62f83468`](https://github.com/nodejs/node/commit/6f62f83468)] - **(SEMVER-MINOR)** **crypto**: añadir randomFill y randomFillSync (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
@@ -211,7 +211,7 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 * [[`8f2e52abd7`](https://github.com/nodejs/node/commit/8f2e52abd7)] - **(SEMVER-MINOR)** **dgram**: setMulticastInterface() añadido (Will Young) [#7855](https://github.com/nodejs/node/pull/7855)
 * [[`1b689863ee`](https://github.com/nodejs/node/commit/1b689863ee)] - **doc**: remover x86 de las opciones os.arch() (Gibson Fahnestock) [#17899](https://github.com/nodejs/node/pull/17899)
 * [[`8f80548b7f`](https://github.com/nodejs/node/commit/8f80548b7f)] - **doc**: mover matthewloring a emeriti (Rich Trott) [#17998](https://github.com/nodejs/node/pull/17998)
-* [[`15d0ed5f33`](https://github.com/nodejs/node/commit/15d0ed5f33)] - **doc**: mover joshgav a la lista TSC emeriti (Rich Trott) [#17953](https://github.com/nodejs/node/pull/17953)
+* [[`15d0ed5f33`](https://github.com/nodejs/node/commit/15d0ed5f33)] - **doc**: mover joshgav a la lista emeriti de TSC (Rich Trott) [#17953](https://github.com/nodejs/node/pull/17953)
 * [[`12db4d97b2`](https://github.com/nodejs/node/commit/12db4d97b2)] - **doc**: mejorar sección de seguridad de README.md (Rich Trott) [#17929](https://github.com/nodejs/node/pull/17929)
 * [[`b79189b9b6`](https://github.com/nodejs/node/commit/b79189b9b6)] - **doc**: copiar-editar COLLABORATOR_GUIDE.md (Rich Trott) [#17922](https://github.com/nodejs/node/pull/17922)
 * [[`7628640db6`](https://github.com/nodejs/node/commit/7628640db6)] - **doc**: mejorar texto alt (Rich Trott) [#17922](https://github.com/nodejs/node/pull/17922)
