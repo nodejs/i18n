@@ -280,7 +280,7 @@ Actualización de Seguridad
 * [841a6dd264] - test: marca más pruebas como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
 * [a7fee30da1] - test: marca test-tls-securepair-server como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25807
 * [7df57703dd] - test: marca test-net-error-twice flaky en SmartOS (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25760
-* [e10892cccc] - test: make test-abort-fatal-error non flaky (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25755
+* [e10892cccc] - test: hace que test-abort-fatal-error no sea flaky (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25755
 * [a2f879f197] - test: mark recently failing tests as flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [e7010bdf92] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [c283c9bbb3] - test: soporta salida de pruebas de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
