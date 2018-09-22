@@ -288,11 +288,11 @@ Actualización de Seguridad
 * [3bb8174b94] - test: refactor to use common testcfg (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [df59d43586] - tools: pasar un logger constante en vez de un string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [d103d4ed9a] - tools: repara test.py después de la actualización v8 (Ben Noordhuis) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [8002192b4e] - win: manifest node.exe for Windows 8.1 (Alexis Campailla) https://github.com/nodejs/node/pull/2838
-* [66ec1dae8f] - win: add MSVS 2015 support (Rod Vagg) https://github.com/nodejs/node-v0.x-archive/pull/25857
-* [e192f61514] - win: fix custom actions for WiX older than 3.9 (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25569
-* [16bcd68dc5] - win: fix custom actions on Visual Studio != 2013 (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25569
-* [517986c2f4] - win: backport bringing back xp/2k3 support (Bert Belder) https://github.com/nodejs/node-v0.x-archive/pull/25569
+* [8002192b4e] - win: manifestar node.exe para Windows 8.1 (Alexis Campailla) https://github.com/nodejs/node/pull/2838
+* [66ec1dae8f] - win: añadir soporte para MSVS 2015 (Rod Vagg) https://github.com/nodejs/node-v0.x-archive/pull/25857
+* [e192f61514] - win: reparar acciones personalizadas para WiX más viejos que 3.9 (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25569
+* [16bcd68dc5] - win: reparar acciones personalizadas en Visual Studio != 2013 (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25569
+* [517986c2f4] - win: hacer backport trayendo de vuelta soporte para xp/2k3 (Bert Belder) https://github.com/nodejs/node-v0.x-archive/pull/25569
 * [10f251e8dd] - win: backport set env before generating projects (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25569
 
 <a id="0.10.40"></a>
