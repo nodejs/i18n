@@ -526,9 +526,9 @@ changes:
 * `request` {string} La ruta de módulo a resolver.
 * `options` {Object} 
   * `paths` {string[]} Rutas de las cuales resolver la ubicación del módulo. Si están presentes, estas rutas son utilizadas en lugar de las rutas de resolución por defecto. Note que cada una de estas rutas es utilizada como un punto de partida para el algoritmo de resolución del módulo, lo que significa que la jerarquía de `node_modules` es verificada desde esta ubicación.
-* Returns: {string}
+* Devuelve: {string}
 
-Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
+Utiliza la maquinaria `require()` interna para ver la ubicación de un módulo, pero en lugar de cargar el módulo, sólo devuelve el nombre de archivo resuelto.
 
 #### require.resolve.paths(request)
 
@@ -536,12 +536,12 @@ Use the internal `require()` machinery to look up the location of a module, but 
 added: v8.9.0
 -->
 
-* `request` {string} The module path whose lookup paths are being retrieved.
-* Returns: {string[]|null}
+* `request` {string} La ruta de módulo cuyas rutas de búsqueda están siendo obtenidas.
+* Devuelve: {string[]|null}
 
 Returns an array containing the paths searched during resolution of `request` or `null` if the `request` string references a core module, for example `http` or `fs`.
 
-## The `module` Object
+## El Objeto `module`
 
 <!-- YAML
 added: v0.1.16
