@@ -2789,11 +2789,11 @@ assert(napi_ok == status);
 if (is_instance) {
   // napi_unwrap() ...
 } else {
-  // otherwise...
+  // de lo contrario...
 }
 ```
 
-The reference must be freed once it is no longer needed.
+La referencia debe ser liberada una vez deje de ser necesaria.
 
 ### napi_define_class
 
@@ -2812,16 +2812,16 @@ napi_status napi_define_class(napi_env env,
                               napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] utf8name`: Name of the JavaScript constructor function; this is not required to be the same as the C++ class name, though it is recommended for clarity.
-- `[in] length`: The length of the `utf8name` in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[in] constructor`: Callback function that handles constructing instances of the class. (This should be a static method on the class, not an actual C++ constructor function.)
-- `[in] data`: Optional data to be passed to the constructor callback as the `data` property of the callback info.
-- `[in] property_count`: Number of items in the `properties` array argument.
-- `[in] properties`: Array of property descriptors describing static and instance data properties, accessors, and methods on the class See `napi_property_descriptor`.
-- `[out] result`: A `napi_value` representing the constructor function for the class.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] utf8name`: Nombre de la función constructora de JavaScript; no se requiere que este sea el mismo que el nombre de la clase de C++, aunque es recomendado para mayor claridad.
+- `[in] length`: La longitud en bytes de `utf8name`, o `NAPI_AUTO_LENGTH` si es terminado en null.
+- `[in] constructor`: Función callback que maneja la construcción de instancias de la clase. (Este debe ser un método estático en la clase, no una verdadera función constructora de C++)
+- `[in] data`: Datos opcionales a ser pasados al callback de la constructora como la propiedad `data` de la información del callback.
+- `[in] property_count`: Número de elementos en el argumento del arreglo `properties`.
+- `[in] properties`: Arreglo de descriptores de propiedad que describen propiedades de datos estáticos y de instancia, de acceso, y métodos en la clase. Véase `napi_property_descriptor`.
+- `[out] result`: Un `napi_value` que representa a la función constructora para la clase.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 Defines a JavaScript class that corresponds to a C++ class, including:
 
