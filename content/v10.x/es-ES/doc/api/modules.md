@@ -289,32 +289,32 @@ Si no hay ningún archivo `package.json` presente en el directorio, Node.js inte
 
 <!--type=misc-->
 
-Si el identificador de módulo pasado a `require()` no es un módulo [core](#modules_core_modules), y no comienza con `'/'`, `'../'` o `'./'`, Node.js empieza en el directorio primario del módulo actual, y añade `/node_modules`, e intenta cargar el módulo desde esa ubicación. Node will not append `node_modules` to a path already ending in `node_modules`.
+Si el identificador de módulo pasado a `require()` no es un módulo [core](#modules_core_modules), y no comienza con `'/'`, `'../'` o `'./'`, Node.js empieza en el directorio primario del módulo actual, y añade `/node_modules`, e intenta cargar el módulo desde esa ubicación. Node no anexará `node_modules` a una ruta que ya termina en `node_modules`.
 
-If it is not found there, then it moves to the parent directory, and so on, until the root of the file system is reached.
+Si no se encuentra aquí, entonces lo mueve al directorio primario, y así, hasta que se alcance la raíz del sistema de archivo.
 
-For example, if the file at `'/home/ry/projects/foo.js'` called `require('bar.js')`, then Node.js would look in the following locations, in this order:
+Por ejemplo, si el archivo en `'/home/ry/projects/foo.js'` llamó a `require('bar.js')`, entonces Node.js vería en las siguientes ubicaciones, en este orden:
 
 * `/home/ry/projects/node_modules/bar.js`
 * `/home/ry/node_modules/bar.js`
 * `/home/node_modules/bar.js`
 * `/node_modules/bar.js`
 
-This allows programs to localize their dependencies, so that they do not clash.
+Esto le permite a los programas localizar sus dependencias, y así no entren en conflicto.
 
-It is possible to require specific files or sub modules distributed with a module by including a path suffix after the module name. For instance `require('example-module/path/to/file')` would resolve `path/to/file` relative to where `example-module` is located. The suffixed path follows the same module resolution semantics.
+Es posible requerir archivos específicos o sub módulos distribuidos con un módulo incluyendo un sufijo de la ruta después del nombre del módulo. For instance `require('example-module/path/to/file')` would resolve `path/to/file` relative to where `example-module` is located. La ruta con sufijo sigue las mismas semánticas de resolución de módulo.
 
-## Loading from the global folders
+## Carga desde carpetas globales
 
 <!-- type=misc -->
 
-If the `NODE_PATH` environment variable is set to a colon-delimited list of absolute paths, then Node.js will search those paths for modules if they are not found elsewhere.
+Si la variable de entorno `NODE_PATH` se establece a una lista delimitada por dos puntos de rutas absolutas, entonces Node.js buscará esas rutas para los módulos si no se encuentran en otros lugares.
 
-On Windows, `NODE_PATH` is delimited by semicolons (`;`) instead of colons.
+En Windows, `NODE_PATH` es delimitada por puntos y comas (`;`) en lugar de comas.
 
-`NODE_PATH` was originally created to support loading modules from varying paths before the current [module resolution](#modules_all_together) algorithm was frozen.
+`NODE_PATH` fue originalmente creado para soportar módulos de carga de varias rutas antes de que el algoritmo de [resolución de módulo](#modules_all_together) actual fuese congelado.
 
-`NODE_PATH` is still supported, but is less necessary now that the Node.js ecosystem has settled on a convention for locating dependent modules. Sometimes deployments that rely on `NODE_PATH` show surprising behavior when people are unaware that `NODE_PATH` must be set. Sometimes a module's dependencies change, causing a different version (or even a different module) to be loaded as the `NODE_PATH` is searched.
+`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestra un comportamiento sorprendente cuando las personas no están conscientes que `NODE_PATH` debe establecerse. Sometimes a module's dependencies change, causing a different version (or even a different module) to be loaded as the `NODE_PATH` is searched.
 
 Additionally, Node.js will search in the following locations:
 
