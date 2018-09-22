@@ -321,11 +321,11 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 ### Cambios Notables
 
 * **build**: 
-  * configure can now be run from any directory (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
+  * configure puede ahora ser ejecutado desde cualquier directorio (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
 
 ### Commits
 
-* [[`b1b975370f`](https://github.com/nodejs/node/commit/b1b975370f)] - **benchmark,path**: remove unused variables (薛定谔的猫) [#15789](https://github.com/nodejs/node/pull/15789)
+* [[`b1b975370f`](https://github.com/nodejs/node/commit/b1b975370f)] - **benchmark,path**: remover variables no usadas (薛定谔的猫) [#15789](https://github.com/nodejs/node/pull/15789)
 * [[`ac6f345f70`](https://github.com/nodejs/node/commit/ac6f345f70)] - **build**: allow running configure from any directory (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
 * [[`017492eca2`](https://github.com/nodejs/node/commit/017492eca2)] - **build**: add serial commas to messages in configure script (Rich Trott) [#17464](https://github.com/nodejs/node/pull/17464)
 * [[`ad9a8578ee`](https://github.com/nodejs/node/commit/ad9a8578ee)] - **build**: fix test-v8 target (Michaël Zasso) [#17269](https://github.com/nodejs/node/pull/17269)
@@ -443,19 +443,19 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 
 <a id="6.12.2"></a>
 
-## 2017-12-08, Version 6.12.2 'Boron' (LTS), @MylesBorins
+## 2017-12-08, Versión 6.12.2 'Boron' (LTS), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
+Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles de vulnerabilidades parcheadas.
 
 Fixes for the following CVEs are included in this release:
 
 * CVE-2017-15896
 * CVE-2017-3738 (from the openssl project)
 
-### Notable Changes
+### Cambios notables
 
 * **deps**: 
-  * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
+  * openssl actualizado a 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 
 ### Commits
 
