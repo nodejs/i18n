@@ -31,7 +31,7 @@ Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y t�
   * [Commit Squashing](#commit-squashing)
   * [Obtener aprobaciones para su Pull Request](#getting-approvals-for-your-pull-request)
   * [Prueba de CI](#ci-testing)
-  * [Esperar hasta que se cierre la Pull Request](#waiting-until-the-pull-request-gets-landed)
+  * [Esperar hasta que se aterrice la Pull Request](#waiting-until-the-pull-request-gets-landed)
   * [Consulte la Guía del Colaborador](#check-out-the-collaborator-guide)
 
 ## Dependencias
@@ -433,10 +433,10 @@ Cada Pull Request debe probarse para asegurarse de que funciona en las plataform
 
 Solo un Colaborador puede iniciar una ejecución de CI. Por lo general, uno de ellos lo hará por usted a medida que las aprobaciones para la Pull Request entren. De lo contrario, puede pedirle a un Colaborador que inicie una ejecución de CI.
 
-### Esperar hasta que se cierre la Pull Request
+### Esperar hasta que se aterrice la Pull Request
 
 Una Pull Request debe permanecer abierta durante al menos 48 horas (72 horas en un fin de semana) desde el momento en que se envía, incluso después de que se aprueba y pasa la CI. Esto es para asegurarse de que todos tengan la oportunidad de intervenir. Si los cambios son triviales, los colaboradores pueden decidir que no necesitan esperar. Una Pull Request puede tomar más tiempo para fusionarse. Todas estas precauciones son importantes porque Node.js es ampliamente utilizado, ¡así que no te desanimes!
 
 ### Consulte la Guía del Colaborador
 
-If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
+Si desea obtener más información sobre la revisión del código y el proceso de aterrizaje, consulte la [Guía del colaborador](../../../COLLABORATOR_GUIDE.md).
