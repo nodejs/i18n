@@ -1276,21 +1276,21 @@ https://github.com/nodejs/node/commit/9b86a4453f0c76f2707a75c0b2343aba33ec63bc
 * linux: reparar segfault de "dos monitores, una ruta" (Ben Noordhuis)
 * windows: reparar fugas de memoria en muchas funciones fs (Bert Belder)
 * windows: no permitir que directorios sean abiertos para escritura/anexión (Bert Belder)
-* windows: make fork() work even when not all stdio handles are valid (Bert Belder)
-* windows: make unlink() not remove mount points, and improve performance (Bert Belder)
-* build: Sign pkg installer for OS X (isaacs)
+* windows: hacer que fork() funcione, incluso cuando no todos los manejadores stdio sean válidos (Bert Belder)
+* windows: hacer que unlink() no remueva puntos de montaje, y mejorar rendimiento (Bert Belder)
+* build: Firmar instalador pkg para OS X (isaacs)
 
 <a id="0.8.4"></a>
 
-## 2012.07.25, Version 0.8.4 (Stable)
+## 2012.07.25, Versión 0.8.4 (Estable)
 
 https://github.com/nodejs/node/commit/f98562fcd7d1cab573ca4dc1612157d6999befd4
 
-* V8: Upgrade to 3.11.10.17
-* npm: Upgrade to 1.1.45
-* net: fix Socket({ fd: 42 }) api (Ben Noordhuis)
-* readline: Remove event listeners on close (isaacs)
-* windows: correctly prep long path for fs.exists(Sync) (Bert Belder)
+* V8: Actualizar a 3.11.10.17
+* npm: Actualizar a 1.1.45
+* net: reparar api del Socket({ fd: 42 }) (Ben Noordhuis)
+* readline: Remover listeners del evento al cierre (isaacs)
+* windows: preparar correctamente ruta larga para fs.exists(Sync) (Bert Belder)
 * debugger: wake up the event loop when a debugger command is dispatched (Peter Rybin)
 * tls: verify server's identity (Fedor Indutny)
 * net: ignore socket.setTimeout(Infinity or NaN) (Fedor Indutny)
