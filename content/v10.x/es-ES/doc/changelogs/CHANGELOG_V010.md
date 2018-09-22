@@ -344,29 +344,29 @@ Actualización de Seguridad
 
 ### Commits
 
-* [[`deef605085`](https://github.com/nodejs/node/commit/deef605085)] - **openssl**: update to 1.0.1l
+* [[`deef605085`](https://github.com/nodejs/node/commit/deef605085)] - **openssl**: actualizar a 1.0.1l
 * [[`45f1330425`](https://github.com/nodejs/node/commit/45f1330425)] - **v8**: repara depurador y la regresión al modo escricto (Julien Gilli)
 * [[`6ebd85e105`](https://github.com/nodejs/node/commit/6ebd85e105)] - **v8**: no ocupa el bucle en el hilo del perfilador del cpu (Ben Noordhuis) [#8789](https://github.com/joyent/node/pull/8789)
 
 <a id="0.10.35"></a>
 
-## 2014.12.22, Version 0.10.35 (Stable)
+## 2014.12.22, Versión 0.10.35 (Estable)
 
-* tls: re-add 1024-bit SSL certs removed by f9456a2 (Chris Dickinson)
-* timers: don't close interval timers when unrefd (Julien Gilli)
-* timers: don't mutate unref list while iterating it (Julien Gilli)
+* tls: volver añadir certs SSL 1024-bit SSL removidos por f9456a2 (Chris Dickinson)
+* timers: no cerrar los temporizadores de intervalos cuando se hace unrefd (Julien Gilli)
+* timers: no mutar la lista de unref mientras se esté iterando (Julien Gilli)
 
 <a id="0.10.34"></a>
 
-## 2014.12.17, Version 0.10.34 (Stable)
+## 2014.12.17, Versión 0.10.34 (Estable)
 
 https://github.com/nodejs/node/commit/52795f8fcc2de77cf997e671ea58614e5e425dfe
 
-* uv: update to v0.10.30
-* zlib: upgrade to v1.2.8
-* child_process: check execFile args is an array (Sam Roberts)
-* child_process: check fork args is an array (Sam Roberts)
-* crypto: update root certificates (Ben Noordhuis)
+* uv: actualizar a v0.10.30
+* zlib: actualizar a v1.2.8
+* child_process: verificar si execFile args es un array (Sam Roberts)
+* child_process: verifica si bifurcaciones args es un array (Sam Roberts)
+* crypto: actualizar certificados root (Ben Noordhuis)
 * domains: fix issues with abort on uncaught (Julien Gilli)
 * timers: Avoid linear scan in _unrefActive. (Julien Gilli)
 * timers: fix unref() memory leak (Trevor Norris)
