@@ -502,9 +502,9 @@ Dies würde dazu führen, dass eine große Anzahl von Handles erstellt wird, die
 
 Um diesen Fall zu bearbeiten, bietet N-API die Möglichkeit, einen neuen "Scope" zu erstellen, dem neu erstellte Handles zugeordnet werden. Sobald diese Handles nicht mehr benötigt werden, kann der Scope geschlossen werden und alle mit dem Scope verbundenen Handles werden invalidiert. Die verfügbaren Methoden um Scopes zu öffnen/zu schließen sind [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][].
 
-N-API unterstützt nur eine einzige verschachtelte Hierarchie von Scopes. There is only one active scope at any time, and all new handles will be associated with that scope while it is active. Scopes must be closed in the reverse order from which they are opened. In addition, all scopes created within a native method must be closed before returning from that method.
+N-API unterstützt nur eine einzige verschachtelte Hierarchie von Scopes. Es gibt zu jeder Zeit nur einen aktiven Scope, und alle neuen Handles werden diesem Scope zugeordnet, während er aktiv ist. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, in der sie geöffnet werden. Darüber hinaus müssen alle innerhalb einer nativen Methode erstellten Scopes geschlossen werden, bevor von dieser Methode zurückgekehrt wird.
 
-Taking the earlier example, adding calls to [`napi_open_handle_scope`][] and [`napi_close_handle_scope`][] would ensure that at most a single handle is valid throughout the execution of the loop:
+Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] stellt sicher, dass höchstens ein einziges Handle während der Ausführung der Loop gültig ist:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -526,11 +526,11 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-When nesting scopes, there are cases where a handle from an inner scope needs to live beyond the lifespan of that scope. N-API supports an 'escapable scope' in order to support this case. An escapable scope allows one handle to be 'promoted' so that it 'escapes' the current scope and the lifespan of the handle changes from the current scope to that of the outer scope.
+Beim Verschachteln von Scopes gibt es Fälle, in denen ein Handle aus einem inneren Scope über die Lebensdauer dieses Scopes hinaus leben muss. N-API unterstützt einen 'Escapable-Scope', um diesen Fall zu unterstützen. Ein Escapable-Scope ermöglicht es, ein Handle zu "fördern", so dass es dem aktuellen Scope "entkommt" und die Lebensdauer des Handles vom aktuellen Scope zu der des äußeren Scopes wechselt.
 
-The methods available to open/close escapable scopes are [`napi_open_escapable_handle_scope`][] and [`napi_close_escapable_handle_scope`][].
+Die Methoden, die für das Öffnen/Schließen von Escapable-Scopes zur Verfügung stehen, sind folgende: [`napi_open_escapable_handle_scope`][] und [`napi_close_escapable_handle_scope`][].
 
-The request to promote a handle is made through [`napi_escape_handle`][] which can only be called once.
+Die Aufforderung zur Förderung eines Handles erfolgt über [`napi_escape_handle`][], das nur einmal aufgerufen werden kann.
 
 #### napi_open_handle_scope
 
