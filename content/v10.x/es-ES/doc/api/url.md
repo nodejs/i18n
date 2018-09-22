@@ -963,11 +963,11 @@ changes:
 -->
 
 * `from` {string} El URL Base siendo resuelto en contra.
-* `to` {string} The HREF URL being resolved.
+* `to` {string} El URL HREF siendo resuelto.
 
-The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
+El método `url.resolve()` resuelve un URL objetivo relativo a un URL base de una forma similar a la de un navegador Web que resuelve una etiqueta de anclaje HREF.
 
-For example:
+Por ejemplo:
 
 ```js
 const url = require('url');
@@ -978,7 +978,7 @@ url.resolve('http://example.com/one', '/two'); // 'http://example.com/two'
 
 <a id="whatwg-percent-encoding"></a>
 
-## Percent-Encoding in URLs
+## Porcentaje de Codificación en URLs
 
 URLs are permitted to only contain a certain range of characters. Any character falling outside of that range must be encoded. How such characters are encoded, and which characters to encode depends entirely on where the character is located within the structure of the URL.
 
