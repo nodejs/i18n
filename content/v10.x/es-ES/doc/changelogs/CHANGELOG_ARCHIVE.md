@@ -1216,7 +1216,7 @@ https://github.com/nodejs/node/commit/a299c97bbc701f4d460e91214d7bfe7a9589d361
 * unix, windows: reparar corrupción de memoria en fs-poll.c (Ben Noordhuis)
 * unix: corregir desbordamiento de entero en uv_hrtime (Tim Holy)
 * sunos: reparar uv_cpu_info() en x86_64 (Ben Noordhuis)
-* tls: actualizar lista de cifrados predeterminada (Ben Noordhuis)
+* tls: actualizar lista predeterminada de cifrados (Ben Noordhuis)
 * unix: Corregir símbolos de advertencia duplicados de llvm y gcc más viejo (Bert Belder)
 * fs: reparar usar-después-de-liberar en monitor de stat (Ben Noordhuis)
 * build: Reparar el uso de gcc compilado manualmente en OSX (Nathan Rajlich)
@@ -1236,7 +1236,7 @@ https://github.com/nodejs/node/commit/f640c5d35cba96634cd8176a525a1d876e361a61
 * tls: manejar múltiples campos CN al verificar certificado (Ben Noordhuis)
 * doc: remover util no utilizado de child_process (Kyle Robinson Young)
 * build: volver a trabajar detección -fvisibility=hidden (Ben Noordhuis)
-* windows: no duplicar manejadores stdio inválidos (Bert Belder)
+* windows: no duplicar handles stdio inválidos (Bert Belder)
 * windows: corregir typos en process-stdio.c (Bert Belder)
 
 <a id="0.8.6"></a>
