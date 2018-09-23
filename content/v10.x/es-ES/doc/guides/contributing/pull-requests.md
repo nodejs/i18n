@@ -385,7 +385,7 @@ Si ve que se han realizado los cambios solicitados, puede borrar la revisión `C
 
 Las solicitudes de cambio que sean vagas, despectivas, o poco constructivas, también pueden descartarse si las solicitudes de mayor aclaración no reciben respuesta dentro de un período de tiempo razonable.
 
-Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para indicar que está considerando algunos de sus comentarios para bloquear el aterrizaje de la PR. Al hacerlo, explique *por qué* cree que la Pull Request no debe aterrizar junto con una explicación de lo que puede ser un proceso alternativo aceptable, si corresponde.
+Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para indicar que está considerando algunos de sus comentarios para bloquear el aterrizaje de la PR. Al hacerlo, explique *porqué* cree que la Pull Request no debe aterrizar y describa lo que puede ser un proceso alternativo aceptable, si corresponde.
 
 ### Acepte que hay opiniones diferentes sobre lo que pertenece a Node.js
 
@@ -395,11 +395,11 @@ Una regla general es que si Node.js lo necesita (debido a razones históricas o 
 
 Además, la funcionalidad que no puede implementarse fuera del núcleo de ninguna manera razonable, o solo con un gran daño.
 
-No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Los comentarios que hagan que el contribuyente se sienta como que debería haber "sabido mejor" o ridiculizado incluso por intentar, van en contra del [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Los comentarios que hagan que el contribuyente se sienta como que debería haber "sabido mejor" o ridiculizado por siquiera intentar van en contra del [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
 ### El rendimiento no es todo
 
-Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Las afirmaciones de que una Pull Request particular hará que las cosas sean más rápidas, casi siempre irán de la mano con solicitudes de rendimiento [benchmark results](../writing-and-running-benchmarks.md) que demuestren la mejora.
+Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Las afirmaciones de que una Pull Request particular hará que las cosas sean más rápidas casi siempre irán de la mano con solicitudes de rendimiento [benchmark results](../writing-and-running-benchmarks.md) que demuestren la mejora.
 
 Dicho esto, el rendimiento no es el único factor a considerar. Node.js también optimiza a favor de no romper el código existente en el ecosistema, y no cambiar el código funcional de trabajo solo por el hecho de cambiar.
 
