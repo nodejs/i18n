@@ -1416,18 +1416,18 @@ https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
 * node: cambiar el nombre del constructor para el proceso de EventEmitter a process (Andreas Madsen)
 * net: Prevenir que el acceso a propiedades arroje durante el cierre (Reid Burke)
 * querystring: velocidad y limpieza de código mejoradas (Felix Böhm)
-* sunos: fix assertion errors breaking fs.watch() (Fedor Indutny)
-* unix: stat: detect sub-second changes (Ben Noordhuis)
-* add stat() based file watcher (Ben Noordhuis)
+* sunos: reparar errores de aserción interrumpiendo a fs.watch() (Fedor Indutny)
+* unix: stat: detectar cambios inferiores a un segundo (Ben Noordhuis)
+* añadir monitor de archivos basado en stat() (Ben Noordhuis)
 
 <a id="0.7.11"></a>
 
-## 2012.06.15, Version 0.7.11 (unstable)
+## 2012.06.15, Versión 0.7.11 (inestable)
 
 https://github.com/nodejs/node/commit/1f93aa5d5d207e8bd739d365dbf9ad6dbcc69571
 
-* V8: Upgrade to v3.11.10
-* npm: Upgrade to 1.1.26
+* V8: Actualizar a v3.11.10
+* npm: Actualizar a 1.1.26
 * doc: Improve cross-linking in API docs markdown (Ben Kelly)
 * Fix [#3425](https://github.com/joyent/node/issues/3425): removeAllListeners should delete array (Reid Burke)
 * cluster: don't silently drop messages when the write queue gets big (Bert Belder)
