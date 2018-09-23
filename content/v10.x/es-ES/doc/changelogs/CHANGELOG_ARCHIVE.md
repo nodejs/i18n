@@ -1397,9 +1397,9 @@ https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
 
 * npm: Actualizar a 1.1.30
   
-  * Improved 'npm init'
-  * Fix the 'cb never called' error from 'oudated' and 'update'
-  * Add --save-bundle|-B config
+  * "npm init" mejorado
+  * Reparar el error "cb nunca llamó" de "oudated" and "update"
+  * Añadir configuración de --save-bundle|-B
   * Fix isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Make npm script and windows shims cygwin-aware
   * Fix isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Use --save(-dev|-optional) in npm rm
   * `logstream` option to replace removed `logfd` (Rod Vagg)
