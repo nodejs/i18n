@@ -781,7 +781,7 @@ El sistema heredado `urlObject` (`require('url').Url`) es creado y devuelto por 
 
 #### urlObject.auth
 
-La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede el componente del `host`, delimitado por un "arroba" ASCII (`@`). El formato de la string es `{username}[:{password}]`, con la porción `[:{password}]` siendo opcional.
+La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede al componente del `host`, delimitado por un "arroba" ASCII (`@`). El formato de la string es `{username}[:{password}]`, con la porción `[:{password}]` siendo opcional.
 
 Por ejemplo: `'user:pass'`.
 
@@ -819,7 +819,7 @@ No se realiza la decodificación del `path`.
 
 #### urlObject.pathname
 
-La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo siguiendo el `host` (incluyendo el `port`) y antes del inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
+La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo lo que sigue al `host` (incluyendo el `port`) y es previo a el inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
 
 Por ejemplo `'/p/a/t/h'`.
 
@@ -910,7 +910,7 @@ El proceso de formateo funciona de la siguiente forma:
   * Si `urlObject.pathname` *no comienza* con una barra oblicua ASCII (`/`), entonces la string literal `'/'` es adjuntada a `result`.
   * El valor de `urlObject.pathname` es adjuntado a `result`.
 * De lo contrario, si `urlObject.pathname` no es `undefined` y no es una string, se produce un [`Error`][].
-* Si la propiedad `urlObject.search` es `undefined` y si la propiedad `urlObject.query` es un `Object`, la string literal `?` es adjuntada a `result` seguida por la salida de llamar el módulo de [`querystring`][] del método `stringify()`, pasando el valor de `urlObject.query`.
+* Si la propiedad `urlObject.search` es `undefined` y la propiedad `urlObject.query` es un `Object`, la string literal `?` es adjuntada a `result`, seguida por el output que resulta de llamar al módulo de [`querystring`][] del método `stringify()` pasando el valor de `urlObject.query`.
 * De lo contrario, si `urlObject.search` es una string: 
   * Si el valor de `urlObject.search` *no comienza* con un carácter ASCII de signo de interrogación (`?`), la string literal `?` es adjuntada a `result`.
   * El valor de `urlObject.search` es adjuntado a `result`.
