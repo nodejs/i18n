@@ -553,7 +553,7 @@ added: v0.1.16
 
 * {Object}
 
-In each module, the `module` free variable is a reference to the object representing the current module. For convenience, `module.exports` is also accessible via the `exports` module-global. `module` is not actually a global but rather local to each module.
+En cada módulo, la variable libre de `module` es una referencia para el objeto que representa el módulo actual. Por conveniencia, `module.exports` también es accesible a través del módulo global `exports`. `module` is not actually a global but rather local to each module.
 
 ### module.children
 
@@ -563,7 +563,7 @@ added: v0.1.16
 
 * {module[]}
 
-The module objects required by this one.
+Los objetos de módulo requeridos por este.
 
 ### module.exports
 
@@ -573,9 +573,9 @@ added: v0.1.16
 
 * {Object}
 
-The `module.exports` object is created by the `Module` system. Sometimes this is not acceptable; many want their module to be an instance of some class. To do this, assign the desired export object to `module.exports`. Note that assigning the desired object to `exports` will simply rebind the local `exports` variable, which is probably not what is desired.
+El objeto `module.exports` es creado por el sistema `Module`. En alguna ocasiones esto no es aceptable; muchos desean que su módulo sea una instancia de alguna clase. Para hacer esto, asigne el objeto de exportación deseado a `module.exports`. Note que el asignar el objeto desea a `exports` simplemente volverá a atar a la variable local `exports`, lo cual probablemente no es deseado.
 
-For example suppose we were making a module called `a.js`:
+Por ejemplo, suponga que estamos haciendo un módulo llamado `a.js`:
 
 ```js
 const EventEmitter = require('events');
