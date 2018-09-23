@@ -1428,8 +1428,8 @@ https://github.com/nodejs/node/commit/1f93aa5d5d207e8bd739d365dbf9ad6dbcc69571
 
 * V8: Actualizar a v3.11.10
 * npm: Actualizar a 1.1.26
-* doc: Improve cross-linking in API docs markdown (Ben Kelly)
-* Fix [#3425](https://github.com/joyent/node/issues/3425): removeAllListeners should delete array (Reid Burke)
+* doc: Mejorar el enlace cruzado en el markdown de los documentos API (Ben Kelly)
+* Reparar [#3425](https://github.com/joyent/node/issues/3425): removeAllListeners debe borrar el array (Reid Burke)
 * cluster: don't silently drop messages when the write queue gets big (Bert Belder)
 * Add Buffer.concat method (isaacs)
 * windows: make symlinks tolerant to forward slashes (Bert Belder)
