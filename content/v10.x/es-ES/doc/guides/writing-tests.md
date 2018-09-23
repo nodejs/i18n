@@ -4,7 +4,7 @@
 
 La mayoría de las pruebas en la base de Node.js son programas de JavaScript que ejercen una funcionalidad proporcionada por Node.js y verifican que se comporte como se espera. Las pruebas deben salir con el código `0` cuando tengan éxito. Una prueba falla si:
 
-- It exits by setting `process.exitCode` to a non-zero number. 
+- Sale estableciendo `process.exitCode` a un número distinto a cero. 
   - This is usually done by having an assertion throw an uncaught Error.
   - Occasionally, using `process.exit(code)` may be appropriate.
 - It never exits. In this case, the test runner will terminate the test because it sets a maximum time limit.
