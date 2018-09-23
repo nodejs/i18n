@@ -1384,14 +1384,14 @@ https://github.com/nodejs/node/commit/8b8a7a7f9b41e74e1e810d0330738ad06fc302ec
 * Mover contenido de blog.nodejs.org al repositorio (isaacs)
 * Reparación [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() en pipe(dest) (isaacs)
 * crypto: reparar reporte de errores en SetKey() (Fedor Indutny)
-* Add --no-deprecation and --trace-deprecation command-line flags (isaacs)
-* fs: fix fs.watchFile() (Ben Noordhuis)
-* fs: Fix fs.readfile() on pipes (isaacs)
-* Rename GYP variable node_use_system_openssl to be consistent (Ryan Dahl)
+* Añadir banderas de línea de comando --no-deprecation y --trace-deprecation (isaacs)
+* fs: reparar fs.watchFile() (Ben Noordhuis)
+* fs: Reparar fs.readfile() en pipes (isaacs)
+* Renombrar variable GYP node_use_system_openssl para que sea consistente (Ryan Dahl)
 
 <a id="0.7.12"></a>
 
-## 2012.06.19, Version 0.7.12 (unstable)
+## 2012.06.19, Versión 0.7.12 (inestable)
 
 https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
 
