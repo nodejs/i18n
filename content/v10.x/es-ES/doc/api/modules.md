@@ -347,7 +347,7 @@ Al hacer esto, Node.js logra unas cuantas cosas:
   * Los objetos `module` y `exports` que el implementador puede utilizar para exportar valores desde el módulo.
   * Las variables de conveniencia `__filename` y `__dirname`, que contienen el nombre de archivo absoluto del módulo y la ruta del directorio.
 
-## El alcance del módulo
+## El ámbito del módulo
 
 ### \_\_dirname
 
@@ -469,9 +469,9 @@ require.extensions['.sjs'] = require.extensions['.js'];
 
 **Desaprobado** En el pasado, esta lista ha sido utilizada para cargar módulos no-JavaScript en Node.js compilándolos bajo demanda. Sin embargo, en la práctica, hay muchas mejores maneras para hacer esto, como cargando módulos a través de algún otro programa de Node.js, o compilándolos en JavaScript antes de tiempo.
 
-Debido a que el sistema de módulo está bloqueado, esta función probablemente nunca se irá. Sin embargo, puede tener errores sutiles y complejidades que es mejor dejarlas intactas.
+Debido a que el sistema de módulo está bloqueado, esta función probablemente nunca se irá. Sin embargo, puede tener errores sutiles y complejidades que es mejor dejar intactas.
 
-Note que el número de operaciones de sistemas de archivo que el sistema de módulo tiene que realizar para resolver una declaración `require(...)` para un nombre de archivo, escala linealmente con el número de extensiones registradas.
+Note que el número de operaciones de sistema de archivos que el sistema de módulo tiene que realizar para resolver una declaración `require(...)` para un nombre de archivo, escala linealmente con el número de extensiones registradas.
 
 En otras palabras, añadir extensiones ralentiza el cargador de módulos y debe ser desalentado.
 
