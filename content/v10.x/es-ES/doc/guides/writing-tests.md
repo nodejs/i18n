@@ -17,19 +17,20 @@ Añadir pruebas cuando:
 
 ## Estructura del directorio de la prueba
 
-Vea [descripción general de la estructura del directorio](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) para obtener un resumen de la prueba & ubicaciones. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
+Vea [descripción general de la estructura del directorio](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) para obtener un resumen de la prueba & ubicaciones. Al decidir si expandir un archivo de prueba existente o crear uno nuevo, considere revisar los archivos relacionados con el subsistema. Por ejemplo, busque los `test-streams` al escribir una prueba para `lib/streams.js`.
 
-## Test structure
+## Estructura de la prueba
 
-Let's analyze this basic test from the Node.js test suite:
+Analicemos esta prueba básica de la suite de prueba de Node.js:
 
 ```javascript
 'use strict';                                                          // 1
 const common = require('../common');                                   // 2
 const fixtures = require('../common/fixtures');                        // 3
 
-// This test ensures that the http-parser can handle UTF-8 characters  // 5
-// in the http header.                                                 // 6
+// Esta prueba asegura que el http-parser pueda soportar caracteres UTF-8
+// 5
+// en el encabezado http.                                                 // 6
 
 const assert = require('assert');                                      // 8
 const http = require('http');                                          // 9
@@ -49,7 +50,7 @@ server.listen(0, () => {                                               // 14
 // ...                                                                 // 23
 ```
 
-### **Lines 1-3**
+### **Líneas 1-3**
 
 ```javascript
 'use strict';
@@ -57,9 +58,9 @@ const common = require('../common');
 const fixtures = require('../common/fixtures');
 ```
 
-The first line enables strict mode. All tests should be in strict mode unless the nature of the test requires that the test run without it.
+La primera línea habilita el modo estricto. Todas las pruebas deben ser realizadas en modo estricto a menos que la naturaleza de la prueba requiera que la prueba sea ejecutada sin el.
 
-The second line loads the `common` module. The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
+La segunda línea carga el módulo `common`. El [`common` module][] es un módulo ayudante que proporciona herramientas útiles para las pruebas. Algunas funcionalidades comunes han sido extraídas en submódulos, los cuales son requeridos por separado como los accesorios del módulo de aquí.
 
 Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
 
