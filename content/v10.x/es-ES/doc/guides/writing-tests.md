@@ -62,13 +62,13 @@ La primera línea habilita el modo estricto. Todas las pruebas deben ser realiza
 
 La segunda línea carga el módulo `common`. El [`common` module][] es un módulo ayudante que proporciona herramientas útiles para las pruebas. Algunas funcionalidades comunes han sido extraídas en submódulos, los cuales son requeridos por separado como los accesorios del módulo de aquí.
 
-Even if a test uses no functions or other properties exported by `common`, the test should still include the `common` module before any other modules. This is because the `common` module includes code that will cause a test to fail if the test leaks variables into the global space. In situations where a test uses no functions or other properties exported by `common`, include it without assigning it to an identifier:
+Incluso si una prueba no usa funciones u otras propiedades exportadas por `common`, la prueba aún así debe incluir el módulo `common` antes que cualquier otro módulo. Esto es debido a que el módulo `common` incluye código que causará que la prueba falle si la prueba filtra variables en el espacio global. En situaciones donde una prueba no usa funciones u otras propiedades exportadas por `common`, inclúyalo sin asignarlo a un identificador:
 
 ```javascript
 require('../common');
 ```
 
-### **Lines 5-6**
+### **Líneas 5-6**
 
 ```javascript
 // This test ensures that the http-parser can handle UTF-8 characters
