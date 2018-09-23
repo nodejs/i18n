@@ -328,7 +328,7 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 * [[`b1b975370f`](https://github.com/nodejs/node/commit/b1b975370f)] - **benchmark,path**: remover variables no usadas (薛定谔的猫) [#15789](https://github.com/nodejs/node/pull/15789)
 * [[`ac6f345f70`](https://github.com/nodejs/node/commit/ac6f345f70)] - **build**: allow running configure from any directory (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
 * [[`017492eca2`](https://github.com/nodejs/node/commit/017492eca2)] - **build**: add serial commas to messages in configure script (Rich Trott) [#17464](https://github.com/nodejs/node/pull/17464)
-* [[`ad9a8578ee`](https://github.com/nodejs/node/commit/ad9a8578ee)] - **build**: fix test-v8 target (Michaël Zasso) [#17269](https://github.com/nodejs/node/pull/17269)
+* [[`ad9a8578ee`](https://github.com/nodejs/node/commit/ad9a8578ee)] - **build**: reparar el objetivo test-v8 (Michaël Zasso) [#17269](https://github.com/nodejs/node/pull/17269)
 * [[`9ba35e859f`](https://github.com/nodejs/node/commit/9ba35e859f)] - **build**: remove empty VCLibrarianTool entry (Daniel Bevenius) [#17191](https://github.com/nodejs/node/pull/17191)
 * [[`3d22e81d70`](https://github.com/nodejs/node/commit/3d22e81d70)] - **build**: minor corrections to configure descriptions (Daniel Bevenius) [#17094](https://github.com/nodejs/node/pull/17094)
 * [[`92f41e553a`](https://github.com/nodejs/node/commit/92f41e553a)] - **build**: allow enabling the --trace-maps flag in V8 (Evan Lucas) [#14018](https://github.com/nodejs/node/pull/14018)
