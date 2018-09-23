@@ -403,7 +403,7 @@ Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mo
 
 Dicho esto, el rendimiento no es el único factor a considerar. Node.js también optimiza a favor de no romper el código existente en el ecosistema, y no cambiar el código funcional de trabajo solo por el hecho de cambiar.
 
-Si una Pull Request particular presenta un rendimiento o una regresión funcional, en lugar de simplemente rechazar la Pull Request, tómese el tiempo para trabajar *con* el contribuyente para mejorar el cambio. Ofrezca un feedbeack y consejos sobre lo que haría aceptable la Pull Request, y no suponga que el contribuyente ya debería saber cómo hacerlo. Sea explicito en su feedback.
+Si una Pull Request particular presenta una regresión funcional o de rendimiento, en lugar de simplemente rechazar la Pull Request, tómese el tiempo para trabajar *con* el contribuyente para mejorar el cambio. Ofrezca un feedback y consejos sobre lo que haría aceptable a la Pull Request, y no suponga que el contribuyente ya debería saber cómo hacerlo. Sea explícito en su feedback.
 
 ### Pruebas de integración continua
 
@@ -421,7 +421,7 @@ En la mayoría de los casos, no reduzca las confirmaciones que agregue a su Pull
 
 Para el tamaño de "un cambio lógico", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) puede ser un buen ejemplo. Toca la implementación, la documentación y las pruebas, pero sigue siendo un cambio lógico. Todas las pruebas siempre deben pasar cuando cada commit individual aterriza en el branch principal.
 
-### Obtener aprobaciones para su solicitud de extracción
+### Obtener aprobaciones para su Pull Request
 
 Una Pull Request se aprueba diciendo LGTM, que significa "Me parece bien" en inglés, o usando el botón Aprobar de GitHub. La función de revisión de Pull Request de GitHub puede ser utilizada durante el proceso. Para obtener más información, consulte [el video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) o [la documentación oficial](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
 
