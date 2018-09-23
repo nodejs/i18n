@@ -130,7 +130,7 @@ L'integrazione del V8 Inspector consente agli strumenti come Chrome DevTools e g
 added: v7.10.0
 -->
 
-Quest'opzione è un no-op (no operation). E' tenuta per la compatibilità.
+Quest'opzione è un no-op (no operation). È mantenuta per la compatibilità.
 
 ### `--no-deprecation`
 
