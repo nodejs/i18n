@@ -232,7 +232,7 @@ Genera gli errori per le deprecazioni.
 added: v4.0.0
 -->
 
-Specifica un elenco crittografico TLS predefinito alternativo. Necessità di Node.js per essere costruito con supporto crittografico (predefinito).
+Specifica un elenco crittografico TLS predefinito alternativo. Necessita che Node.js sia costruito con supporto crittografico (predefinito).
 
 ### `--trace-deprecation`
 
