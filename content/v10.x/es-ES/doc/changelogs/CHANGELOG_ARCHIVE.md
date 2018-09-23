@@ -1366,9 +1366,9 @@ https://github.com/nodejs/node/commit/2134aa3d5c622fc3c3b02ccb713fcde0e0df479a
 * build: reparar build V8 al compilar con gcc 4.5 (Ben Noordhuis)
 * build: reparar opción --shared-v8 (Ben Noordhuis)
 * windows msi: Reparar problema de ícono que causó un enorme tamaño de archivo (Bert Belder)
-* unix: assume that dlopen() may clobber dlerror() (Ben Noordhuis)
-* sunos: fix memory corruption bugs (Ben Noordhuis)
-* windows: better (f)utimes and (f)stat (Bert Belder)
+* unix: asumir que dlopen() puede sobrescribir a dlerror() (Ben Noordhuis)
+* sunos: reparar bugs de corrupción de memoria (Ben Noordhuis)
+* windows: mejorar (f)utimes y (f)stat (Bert Belder)
 
 <a id="0.8.0"></a>
 
