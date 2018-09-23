@@ -1435,7 +1435,7 @@ https://github.com/nodejs/node/commit/1f93aa5d5d207e8bd739d365dbf9ad6dbcc69571
 * windows: hacer que symlinks tolere las barras inclinadas hacia adelante (Bert Belder)
 * build: Añadir node.d y node.1 a instalador (isaacs)
 * cluster: renombrar worker.unqiueID a worker.id (Andreas Madsen)
-* Windows: Enable ETW events on Windows for existing DTrace probes. (Igor Zinkovsky)
+* Windows: Habilitar eventos ETW en Windows para sondeos DTrace existentes. (Igor Zinkovsky)
 * test: bundle node-weak in test/gc so that it doesn't need to be downloaded (Nathan Rajlich)
 * Make many tests pass on Windows (Bert Belder)
 * Fix [#3388](https://github.com/joyent/node/issues/3388) Support listening on file descriptors (isaacs)
