@@ -438,8 +438,8 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 * [[`3e70ee84fb`](https://github.com/nodejs/node/commit/3e70ee84fb)] - **tools**: simplificar regla prefer-common-mustnotcall (cjihrig) [#17572](https://github.com/nodejs/node/pull/17572)
 * [[`afd4d9e348`](https://github.com/nodejs/node/commit/afd4d9e348)] - **tools**: añadir script Boxstarter (Bartosz Sosnowski) [#17046](https://github.com/nodejs/node/pull/17046)
 * [[`466e94a6c1`](https://github.com/nodejs/node/commit/466e94a6c1)] - **tools**: evitar usar process.cwd en tools/lint-js (Tobias Nießen) [#17121](https://github.com/nodejs/node/pull/17121)
-* [[`dcf7646725`](https://github.com/nodejs/node/commit/dcf7646725)] - **tools**: fail tests if malformed status file (Rich Trott) [#16703](https://github.com/nodejs/node/pull/16703)
-* [[`d176073511`](https://github.com/nodejs/node/commit/d176073511)] - **tty**: refactor exports (cjihrig) [#16959](https://github.com/nodejs/node/pull/16959)
+* [[`dcf7646725`](https://github.com/nodejs/node/commit/dcf7646725)] - **tools**: fallar las pruebas si el estado del archivo está malformado (Rich Trott) [#16703](https://github.com/nodejs/node/pull/16703)
+* [[`d176073511`](https://github.com/nodejs/node/commit/d176073511)] - **tty**: refactorizar exportaciones (cjihrig) [#16959](https://github.com/nodejs/node/pull/16959)
 
 <a id="6.12.2"></a>
 
@@ -447,10 +447,10 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 
 Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Correcciones para los siguientes CVEs están incluidos en esta actualización:
 
 * CVE-2017-15896
-* CVE-2017-3738 (from the openssl project)
+* CVE-2017-3738 (del proyecto openssl)
 
 ### Cambios Notables
 
@@ -459,19 +459,19 @@ Fixes for the following CVEs are included in this release:
 
 ### Commits
 
-* [[`6314a46c48`](https://github.com/nodejs/node/commit/6314a46c48)] - **deps**: update openssl asm and asm_obsolete files (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
-* [[`f2121a8583`](https://github.com/nodejs/node/commit/f2121a8583)] - **deps**: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`741651cc4b`](https://github.com/nodejs/node/commit/741651cc4b)] - **deps**: fix asm build error of openssl in x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`5956aead33`](https://github.com/nodejs/node/commit/5956aead33)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`ac53d01646`](https://github.com/nodejs/node/commit/ac53d01646)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
-* [[`03651ad9d6`](https://github.com/nodejs/node/commit/03651ad9d6)] - **deps**: upgrade openssl sources to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
-* [[`eb30387c6d`](https://github.com/nodejs/node/commit/eb30387c6d)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`6314a46c48`](https://github.com/nodejs/node/commit/6314a46c48)] - **deps**: actualizar openssl asm y archivos asm_obsolete (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
+* [[`f2121a8583`](https://github.com/nodejs/node/commit/f2121a8583)] - **deps**: añadir -no_rand_screen a openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
+* [[`741651cc4b`](https://github.com/nodejs/node/commit/741651cc4b)] - **deps**: reparar error de compilación asm de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`5956aead33`](https://github.com/nodejs/node/commit/5956aead33)] - **deps**: reparar error de ensamblaje en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`ac53d01646`](https://github.com/nodejs/node/commit/ac53d01646)] - **deps**: copiar todas las cabezeras de archivos openssl para incluir a dir (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
+* [[`03651ad9d6`](https://github.com/nodejs/node/commit/03651ad9d6)] - **deps**: actualizar fuentes openssl a 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
+* [[`eb30387c6d`](https://github.com/nodejs/node/commit/eb30387c6d)] - **openssl**: reparar requerimientos de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 
 <a id="6.12.1"></a>
 
-## 2017-12-05, Version 6.12.1 'Boron' (LTS), @MylesBorins
+## 2017-12-05, Versión 6.12.1 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 263 commits. This includes 173 which are test related, 41 which are doc related, 18 which are build / tool related and 1 commit which is an update to a dependency.
+Esta actualización LTS viene con 263 commits. This includes 173 which are test related, 41 which are doc related, 18 which are build / tool related and 1 commit which is an update to a dependency.
 
 ### Notable Changes
 
