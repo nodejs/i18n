@@ -108,9 +108,9 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables:
 
-* buffer: Rellena con ceros los bytes de exceso en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporciona un parámetro `totalLength` que excede la longitud total de los objetos originales `Buffer` siendo concatenado. (Сковорода Никита Андреевич)
+* buffer: Rellena con ceros los bytes en exceso en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporciona un parámetro `totalLength` que excede la longitud total de los objetos originales `Buffer` siendo concatenados. (Сковорода Никита Андреевич)
 * http: 
-  * CVE-2016-5325 - Válida correctamente por caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Repara un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde puede ocurrir `throw` cuando se esté configurando las respuestas HTTP, los usuarios ya deberían adoptar intentar/tomar aquí. Originalmente reportado independientemente por Evan Lucas y Romain Gaucher. (Evan Lucas)
+  * CVE-2016-5325 - Apropiadamente válido para los caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Repara un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde puede ocurrir `throw` cuando se esté configurando las respuestas HTTP, los usuarios ya deberían adoptar intentar/tomar aquí. Originalmente reportado independientemente por Evan Lucas y Romain Gaucher. (Evan Lucas)
   * Los códigos de estatus inválidos no pueden ser enviados. Limitado a números de 3 dígitos, entre 100 - 999. Falta de validación adecuada también puede servir como respuesta potencial a vector de ataque de división. Se le hizo backport de v4.x. (Brian White)
 * openssl: Actualizar a 1.0.1u, repara un número de defectos impactando a Node.js: CVE-2016-6304 ("OCSP Estado de la solicitud de extensión sin límite crecimiento de la memoria", severidad alta), CVE-2016-2183, CVE-2016-2183, CVE-2016-2178 y CVE-2016-6306.
 * tls: CVE-2016-7099 - Repara una verificación de la validación del certificado del comodín, por lo tanto un servidor TLS pudiera ser capaz de servir un certificado de comodín inválido para su hostname debido a una validación impropia de `*.` en el string del comodín. Reportado originalmente por Alexander Minozhenko y James Bunton (Atlassian) (Ben Noordhuis)
@@ -124,10 +124,10 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [c66408cd0c] - deps: Reparar error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
 * [68f88ea792] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
 * [884d50b348] - deps: copiar todos los archivos de encabezados de openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
-* [bfd6cb5699] - deps: actualiza las fuentes de openssl sources a 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
+* [bfd6cb5699] - deps: actualizar las fuentes de openssl sources a 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
 * [3614a173d0] - http: verificar los caracteres de razón en writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/48
-* [f2433430ca] - http: no permitir el envío de códigos de estatus obviamente inválidos (Evan Lucas) https://github.com/nodejs/node-private/pull/48
-* [0d7e21ee7b] - lib: hacer a tls.checkServerIdentity() más escritcto (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
+* [f2433430ca] - http: denegar el envío de códigos de estatus obviamente inválidos (Evan Lucas) https://github.com/nodejs/node-private/pull/48
+* [0d7e21ee7b] - lib: hacer a tls.checkServerIdentity() más estricto (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 * [1f4a6f5bd1] - openssl: reparar el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
 * [88dcc7f5bb] - v8: reparar la advertencia -Wsign-compare en Zone::New() (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
 * [fd8ac56c75] - v8: reparar errores de compilación con g++ 6.1.1 (Ben Noordhuis) https://github.com/nodejs/node-private/pull/62
@@ -164,11 +164,11 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [3cff81c7d6] - deps: actualizar completamente npm en LTS a 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5987
 * [7c22f19009] - deps: añade -no_rand_screen a openssl s_client (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
 * [5d78366937] - deps: actualiza los archivos asm openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [2bc2427cb7] - deps: Reparar error de ensamblaje opensslen ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
+* [2bc2427cb7] - deps: Reparar error de ensamblaje opensslen en ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
 * [8df4b0914c] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
 * [11eefefb17] - deps: copiar todos los archivos de encabezados openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
 * [61ccc27b54] - deps: actualiza las fuentes openssl a 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [aa02438274] - openssl: reparar el requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
+* [aa02438274] - openssl: reparar el requisito de keypress en aplicaciones dentor de win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
 
 <a id="0.10.44"></a>
 
@@ -176,7 +176,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables
 
-* npm: Actualizar a v2.15.1. Corrige una falla de seguridad en el uso de tokens de autenticación en solicitudes HTTP que permitirían a un atacante configurar un servidor que pudiera recoger todos los tokens de los usuarios de la interfaz de línea-comando. Los tokens de autenticación han sido enviados con cada solicitud hecha por el CLI para los usuarios logueados, sin importar el destino de la solicitud. Esta actualización repara esto al incluir solamente esos tokens para las solicitudes hechas contra el registro o los registros usados para la instalación actual. IMPORTANTE: Esta es una actualización importante para npm v2 LTS del npm v1 anterior ya obsoleto. (Forrest L Norvell) https://github.com/nodejs/node/pull/5967
+* npm: Actualizar a v2.15.1. Corrige una falla de seguridad en el uso de tokens de autenticación en solicitudes HTTP que permitirían a un atacante configurar un servidor que pudiera recoger todos los tokens de los usuarios de la interfaz de línea-comando. Los tokens de autenticación han sido previamente enviados con cada solicitud hecha por el CLI para los usuarios logueados, sin importar el destino de la solicitud. Esta actualización repara esto al incluir solamente esos tokens para las solicitudes hechas contra el registro o los registros usados para la instalación actual. IMPORTANTE: Esta es una actualización importante para npm v2 LTS del npm v1 anterior ya obsoleto. (Forrest L Norvell) https://github.com/nodejs/node/pull/5967
 * openssl: OpenSSL v1.0.1s deshabilita los cifrados EXPORT y LOW ya que son obsoletos y no se conseideran seguros. Esta versión de Node.js activa `OPENSSL_NO_WEAK_SSL_CIPHERS` para desactivar completamente los 27 cifradores incluidos en estas listas que pueden ser usados en SSLv3 y superiores. Los detalles completos sobre el asunto pueden ser encontrados en nuestra discusión LTS (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 
 ### Commits
