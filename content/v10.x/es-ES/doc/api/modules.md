@@ -310,11 +310,11 @@ Es posible requerir archivos específicos o sub módulos distribuidos con un mó
 
 Si la variable de entorno `NODE_PATH` se establece a una lista delimitada por dos puntos de rutas absolutas, entonces Node.js buscará esas rutas para los módulos si no se encuentran en otros lugares.
 
-En Windows, `NODE_PATH` es delimitada por puntos y comas (`;`) en lugar de comas.
+En Windows, `NODE_PATH` es delimitada por puntos y comas (`;`) en lugar de dos puntos.
 
 `NODE_PATH` fue originalmente creado para soportar módulos de carga de varias rutas antes de que el algoritmo de [resolución de módulo](#modules_all_together) actual fuese congelado.
 
-`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestra un comportamiento sorprendente cuando las personas no están conscientes que `NODE_PATH` debe establecerse. Algunas veces las dependencias de un módulo cambian, causando que se cargue una versión diferente (o incluso un módulo diferente) cuando se busque a `NODE_PATH`.
+`NODE_PATH` todavía es soportado, pero es menos necesario ahora que el ecosistema de Node.js ha establecido una convención para ubicar los módulos dependientes. Algunas veces las implementaciones que dependen de `NODE_PATH` muestran un comportamiento sorprendente cuando las personas no están conscientes de que `NODE_PATH` debe establecerse. Algunas veces las dependencias de un módulo cambian, causando que se cargue una versión diferente (o incluso un módulo diferente) cuando se busque a `NODE_PATH`.
 
 Adicionalmente, Node.js buscará en las siguientes ubicaciones:
 
@@ -332,7 +332,7 @@ Es altamente recomendado colocar las dependencias en la carpeta `node_modules` l
 
 <!-- type=misc -->
 
-Antes de que se ejecuta un código del módulo, Node.js lo envolverá con un envoltorio de función que luce como el siguiente:
+Antes de que se ejecute un código del módulo, Node.js lo envolverá con un envoltorio de función que luce como el siguiente:
 
 ```js
 (function(exports, require, module, __filename, __dirname) {
