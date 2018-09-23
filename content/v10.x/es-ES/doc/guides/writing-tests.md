@@ -71,28 +71,28 @@ require('../common');
 ### **Líneas 5-6**
 
 ```javascript
-// This test ensures that the http-parser can handle UTF-8 characters
-// in the http header.
+// Esta prueba asegura que el http-parser pueda soportar caracteres UTF-8
+// en el encabezado http.
 ```
 
-A test should start with a comment containing a brief description of what it is designed to test.
+Una prueba debe iniciar con un comentario que contenga una breve descripción de lo que está diseñada a probar.
 
-### **Lines 8-9**
+### **Líneas 8-9**
 
 ```javascript
 const assert = require('assert');
 const http = require('http');
 ```
 
-The test checks functionality in the `http` module.
+La prueba comprueba la funcionalidad en el módulo `http`.
 
-Most tests use the `assert` module to confirm expectations of the test.
+La mayoría de las pruebas usan el módulo `assert` para confirmar las expectativas de la prueba.
 
-The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) order (digits, upper case, `_`, lower case).
+Las instrucciones require se ordenan en orden [ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) (dígitos, mayúsculas, `_`, minúsculas).
 
-### **Lines 11-22**
+### **Líneas 11-22**
 
-This is the body of the test. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
+Este es el cuerpo de la prueba. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
 
 - If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
 - The use of `common.mustCall` to check that some callbacks/listeners are called.
