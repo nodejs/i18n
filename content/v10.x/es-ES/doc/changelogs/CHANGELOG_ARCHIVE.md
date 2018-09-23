@@ -1493,10 +1493,10 @@ https://github.com/nodejs/node/commit/782277f11a753ded831439ed826448c06fc0f356
 * añadir soporte para codificaciones CESU-8 y UTF-16LE (koichik)
 * path: añadir path.sep para obtener el separador de rutas. (Yi, EungJun)
 * net, http: añadir parámetro backlog a .listen() (Erik Dubbelboer)
-* debugger: support mirroring Date objects (Fedor Indutny)
-* addon: add AtExit() function (Ben Noordhuis)
-* net: signal localAddress bind failure in connect (Brian Schroeder)
-* util: handle non-string return value in .inspect() (Alex Kocharin)
+* debugger: soportar mirroring de objetos Date (Fedor Indutny)
+* addon: añadir función AtExit() (Ben Noordhuis)
+* net: fallo de enlace de la señal localAddress en la conexión (Brian Schroeder)
+* util: manejar valor de retorno no-string en .inspect() (Alex Kocharin)
 
 <a id="0.7.8"></a>
 
