@@ -94,9 +94,9 @@ Las instrucciones require se ordenan en orden [ASCII](http://man7.org/linux/man-
 
 Este es el cuerpo de la prueba. Esta prueba es simple, solo prueba que un servidor HTTP acepte caracteres `non-ASCII` en los encabezados de una solicitud entrante. Cosas interesantes que tomar en cuenta:
 
-- Si la prueba no depende de un número de puerto específico, entonces siempre usa 0, en lugar de un valor arbitrario, ya que permite que las pruebas se ejecuten en paralelo de forma segura, ya que el sistema operativo asignará un puerto aleatorio. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
-- The use of `common.mustCall` to check that some callbacks/listeners are called.
-- The HTTP server closes once all the checks have run. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
+- Si la prueba no depende de un número de puerto específico, entonces siempre usa 0, en lugar de un valor arbitrario, ya que permite que las pruebas se ejecuten en paralelo de forma segura, ya que el sistema operativo asignará un puerto aleatorio. Si la prueba requiere un puerto específico, por ejemplo si la prueba verifica que asignar un puerto específico funciona como se espera, entonces está bien asignar un número de puerto específico.
+- El uso de `common.mustCall` para verificar que algunos callbacks/listeners son llamados.
+- El servidor HTTP cierra una vez que se han ejecutado todas las comprobaciones. De esta forma, la prueba puede salir con gracia. Recuerde que para que una prueba tenga éxito, debe salir con una código de estado de 0.
 
 ## General recommendations
 
