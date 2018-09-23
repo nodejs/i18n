@@ -1336,9 +1336,9 @@ https://github.com/nodejs/node/commit/cc6084b9ac5cf1d4fe5e7165b71e8fc05d11be1f
 * build: detectar versión de cc con -dumpversion (Ben Noordhuis)
 * build: manejar output de gcc o clang localizado (Ben Noordhuis)
 * unix: reparar corrupción de memoria en freebsd.c (Ben Noordhuis)
-* unix: fix 'zero handles, one request' busy loop (Ben Noordhuis)
-* unix: fix busy loop on unexpected tcp message (Ben Noordhuis)
-* unix: fix EINPROGRESS busy loop (Ben Noordhuis)
+* unix: reparar espera activa "cero handles, una petición" (Ben Noordhuis)
+* unix: reparar espera activa ante mensaje tcp inesperado (Ben Noordhuis)
+* unix: reparar espera activa de EINPROGRESS (Ben Noordhuis)
 
 <a id="0.8.1"></a>
 
