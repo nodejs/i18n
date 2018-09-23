@@ -582,8 +582,8 @@ const EventEmitter = require('events');
 
 module.exports = new EventEmitter();
 
-// Do some work, and after some time emit
-// the 'ready' event from the module itself.
+// Trabaje un poco, y después de un tiempo, emita
+// el evento 'ready' desde el módulo mismo.
 setTimeout(() => {
   module.exports.emit('ready');
 }, 1000);
