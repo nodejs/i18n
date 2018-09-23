@@ -1460,27 +1460,27 @@ https://github.com/nodejs/node/commit/8d9766a9dfb1eea901219d2a865ce9300fe4d68e
 * windows/msi: reparar la adición de nodo a PATH (Jeroen Janssen)
 * windows/msi: añadir enlaces al menú de inicio al instalar (Jeroen Janssen)
 * windows: no instalar versión x64 en la carpeta "program files (x86)" (Matt Gollob)
-* domain: Fix [#3379](https://github.com/joyent/node/issues/3379) domain.intercept no longer passes error arg to cb (Marc Harter)
-* fs: make callbacks run in global context (Ben Noordhuis)
-* fs: enable fs.realpath on windows (isaacs)
-* child_process: expose UV_PROCESS_DETACHED as options.detached (Charlie McConnell)
-* child_process: new stdio API for .spawn() method (Fedor Indutny)
-* child_process: spawn().ref() and spawn().unref() (Fedor Indutny)
-* Upgrade npm to 1.1.25 
-  * Enable npm link on windows
-  * Properly remove sh-shim on Windows
-  * Abstract out registry client and logger
+* domain: Reparar [#3379](https://github.com/joyent/node/issues/3379) domain.intercept ya no pasa argumento de error a cb (Marc Harter)
+* fs: hacer que los callbacks funcionen en el contexto global (Ben Noordhuis)
+* fs: habilitar fs.realpath en windows (isaacs)
+* child_process: exponer a UV_PROCESS_DETACHED como options.detached (Charlie McConnell)
+* child_process: nueva API de stdio para método .spawn() (Fedor Indutny)
+* child_process: spawn().ref() y spawn().unref() (Fedor Indutny)
+* Actualizar npm a 1.1.25 
+  * Habilitar enlace de npm en windows
+  * Remover sh-shim en Windows correctamente
+  * Retirar abstract de cliente de registro y registrador
 
 <a id="0.7.9"></a>
 
-## 2012.05.28, Version 0.7.9 (unstable)
+## 2012.05.28, Versión 0.7.9 (inestable)
 
 https://github.com/nodejs/node/commit/782277f11a753ded831439ed826448c06fc0f356
 
-* Upgrade V8 to 3.11.1
-* Upgrade npm to 1.1.23
-* uv: rework reference counting scheme (Ben Noordhuis)
-* uv: add interface for joining external event loops (Bert Belder)
+* Actualizar V8 a 3.11.1
+* Actualizar npm a 1.1.23
+* uv: volver a trabajar el esquema del conteo de referencias (Ben Noordhuis)
+* uv: añadir interface para unirse a bucles de eventos externos (Bert Belder)
 * repl, readline: Handle Ctrl+Z and SIGCONT better (Nathan Rajlich)
 * fs: 64bit offsets for fs calls (Igor Zinkovsky)
 * fs: add sync open flags 'rs' and 'rs+' (Kevin Bowman)
