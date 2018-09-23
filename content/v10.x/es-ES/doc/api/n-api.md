@@ -2771,7 +2771,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 N-API ofrece una forma de "envolver" las instancias y clases de C++ para que los métodos y la clase constructora puedan ser llamados desde JavaScript.
 
-1. La API [`napi_define_class`][] define una clase de JavaScript con constructor, propiedades y métodos estáticos, y propiedades y métodos de instancias que corresponden a clases de C++.
+1. La API [`napi_define_class`][] define una clase de JavaScript con constructor, propiedades y métodos estáticos, y propiedades y métodos de instancias que corresponden a la clase C++.
 2. Cuando el código de JavaScript invoca al constructor, el callback del constructor utiliza [`napi_wrap`][] para envolver una nueva instancia de C++ en un objeto de JavaScript, entonces devuelve al objeto envuelto.
 3. Cuando el código de JavaScript invoca un método o acceso a la propiedad de la clase, se invoca la correspondiente función `napi_callback` de C++. Para un callback de instancia, [`napi_unwrap`][] obtiene la instancia de C++ que es el objetivo de la llamada.
 
@@ -2793,7 +2793,7 @@ if (is_instance) {
 }
 ```
 
-La referencia debe ser liberada una vez deje de ser necesaria.
+La referencia debe ser liberada una vez que deje de ser necesaria.
 
 ### napi_define_class
 
@@ -2818,7 +2818,7 @@ napi_status napi_define_class(napi_env env,
 - `[in] constructor`: Función callback que maneja la construcción de instancias de la clase. (Este debe ser un método estático en la clase, no una verdadera función constructora de C++)
 - `[in] data`: Datos opcionales a ser pasados al callback de la constructora como la propiedad `data` de la información del callback.
 - `[in] property_count`: Número de elementos en el argumento del arreglo `properties`.
-- `[in] properties`: Arreglo de descriptores de propiedad que describen propiedades de datos estáticos y de instancia, de acceso, y métodos en la clase. Véase `napi_property_descriptor`.
+- `[in] properties`: Arreglo de descriptores de propiedad que describen propiedades de datos estáticos y de instancia, accesores, y métodos en la clase. Véase `napi_property_descriptor`.
 - `[out] result`: Un `napi_value` que representa a la función constructora para la clase.
 
 Devuelve `napi_ok` si la API fue exitosa.
@@ -2827,11 +2827,11 @@ Define una clase de Javascript que corresponde a una clase de C++, incluyendo:
 
 - Una función constructora de JavaScript que tiene el nombre de la clase e invoca al callback del constructor de C++ proporcionado.
 - Propiedades sobre la función constructora que corresponden a propiedades de datos *estáticos*, acceso, y métodos de la clase de C++ (definidos por descriptores de propiedad con el atributo `napi_static`).
-- Propiedades sobre el objeto `prototype` de la función constructora que corresponden a propiedades de datos *no estáticos*, acceso, y métodos de la clase de C++ (definidos or los descriptores de propiedad sin el atributo `napi_static`).
+- Propiedades sobre el objeto `prototype` de la función constructora que corresponden a propiedades de datos *no estáticos*, accesores, y métodos de la clase de C++ (definidos por los descriptores de propiedad sin el atributo `napi_static`).
 
 El callback del constructor de C++ debe se un método estático sobre la clase que llama a la verdadera clase constructora, entonces envuelve la nueva instancia de C++ en un objeto de JavaScript, y devuelve un objeto envuelto. Véase `napi_wrap()` para más detalles.
 
-La función constructora de JavaScript devuelta desde [`napi_define_class`][] es usualmente guardada y utilizada luego, para construir nuevas instancias de la clase desde código nativo, y/o verificar si los valores proporcionados son instancias de la clase. En ese caso, para prevenir que el valor de la función sea basura recolectada, crear una referencia persistente a él, utilizando [`napi_create_reference`][] y asegurar que la cuenta de la referencia se mantenga >= 1.
+La función constructora de JavaScript devuelta desde [`napi_define_class`][] es usualmente guardada y utilizada luego, para construir nuevas instancias de la clase desde código nativo, y/o verificar si los valores proporcionados son instancias de la clase. En ese caso, para prevenir que el valor de la función sea recolectado con la basura, crear una referencia persistente a él, utilizando [`napi_create_reference`][] y asegurar que la cuenta de la referencia se mantenga >= 1.
 
 ### napi_wrap
 
@@ -2849,17 +2849,17 @@ napi_status napi_wrap(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] js_object`: El objeto de JavaScript que será envuelto por el objeto nativo. Este objeto *debe* haber sido creado desde el `prototype` de un constructor que fue creada utilizando `napi_define_class()`.
+- `[in] js_object`: El objeto de JavaScript que será envuelto por el objeto nativo. Este objeto *debe* haber sido creado desde el `prototype` de un constructor que fue creado utilizando `napi_define_class()`.
 - `[in] native_object`: La instancia nativa que será envuelta en el objeto de JavaScript.
-- `[in] finalize_cb`: Callback nativo opcional que puede ser utilizado para liberar a la instancia nativa cuando el objeto de JavaScript sea liberado como basura recolectada.
-- `[in] finalize_hint`: Sugerencia contextual opcional que es pasada a la callback finalizada.
+- `[in] finalize_cb`: Callback nativo opcional que puede ser utilizado para liberar a la instancia nativa cuando el objeto de JavaScript esté listo para la recolección de basura.
+- `[in] finalize_hint`: Sugerencia contextual opcional que es pasada a la callback de finalización.
 - `[out] result`: Referencia opcional al objeto envuelto.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
 Envuelve una instancia nativa en un objeto de JavaScript. La instancia nativa puede ser recuperada luego utilizando `napi_unwrap()`.
 
-Cuando un código de JavaScript invoca a un constructor para la clase que fue definida utilizando `napi_define_class()`, el `napi_callback` para el constructor es invocado. Luego de construir una instancia de la clase nativa, el callback debe llamar entonces a `napi_wrap()` para envolver a la instancia recientemente construida en el ya creado objeto de JavaScript que es el argumento `this` del callback del constructor. (Ese objeto `this` fue creado desde el `prototype` de la función constructora, entonces ya tiene definiciones de todas las propiedades y métodos de instancia)
+Cuando un código de JavaScript invoca a un constructor para la clase que fue definida utilizando `napi_define_class()`, el `napi_callback` para el constructor es invocado. Luego de construir una instancia de la clase nativa, el callback debe llamar entonces a `napi_wrap()` para envolver a la instancia recientemente construida en el ya creado objeto de JavaScript que es el argumento `this` del callback del constructor. (Ese objeto `this` fue creado desde el `prototype` de la función constructora, entonces ya tiene definiciones de todas las propiedades y métodos de instancia.)
 
 Typically when wrapping a class instance, a finalize callback should be provided that simply deletes the native instance that is received as the `data` argument to the finalize callback.
 
