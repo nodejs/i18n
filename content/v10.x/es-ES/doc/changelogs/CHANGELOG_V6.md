@@ -471,16 +471,16 @@ Correcciones para los siguientes CVEs están incluidos en esta actualización:
 
 ## 2017-12-05, Versión 6.12.1 'Boron' (LTS), @MylesBorins
 
-Esta actualización LTS viene con 263 commits. This includes 173 which are test related, 41 which are doc related, 18 which are build / tool related and 1 commit which is an update to a dependency.
+Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están relacionados a pruebas, 41 que están relacionados a documentación, 18 que están relacionados a build / tool, y 1 commit que es una actualización para una dependencia.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: 
-  * fix npm install with --shared (Ben Noordhuis) [#16438](https://github.com/nodejs/node/pull/16438)
+  * reparar instalación de npm con --shared (Ben Noordhuis) [#16438](https://github.com/nodejs/node/pull/16438)
 * **build**: 
-  * building with python 3 is now supported (Emily Marigold Klassen) [#16058](https://github.com/nodejs/node/pull/16058)
+  * construir con python 3 ahora está soportado (Emily Marigold Klassen) [#16058](https://github.com/nodejs/node/pull/16058)
 * **src**: 
-  * v8 options can be specified with either '\_' or '-' in NODE_OPTIONS (Sam Roberts) [#14093](https://github.com/nodejs/node/pull/14093)
+  * opciones v8 pueden ser especificadas ya sea con '\_' o '-' en NODE_OPTIONS (Sam Roberts) [#14093](https://github.com/nodejs/node/pull/14093)
 
 ### Commits
 
