@@ -1382,7 +1382,7 @@ https://github.com/nodejs/node/commit/8b8a7a7f9b41e74e1e810d0330738ad06fc302ec
 * windows: actualizar ícono (Bert Belder)
 * http: Silenciar advertencias de 'NO DEBE tener un cuerpo' para debug() (isaacs)
 * Mover contenido de blog.nodejs.org al repositorio (isaacs)
-* Reparación [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() en pipe(dest) (isaacs)
+* Reparar [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() en pipe(dest) (isaacs)
 * crypto: reparar reporte de errores en SetKey() (Fedor Indutny)
 * Añadir banderas de línea de comando --no-deprecation y --trace-deprecation (isaacs)
 * fs: reparar fs.watchFile() (Ben Noordhuis)
@@ -1400,10 +1400,10 @@ https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
   * "npm init" mejorado
   * Reparar el error "cb nunca llamó" de "oudated" and "update"
   * Añadir configuración de --save-bundle|-B
-  * Fix isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Make npm script and windows shims cygwin-aware
-  * Fix isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Use --save(-dev|-optional) in npm rm
-  * `logstream` option to replace removed `logfd` (Rod Vagg)
-  * Read default descriptions from README.md files
+  * Reparar isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Hacer que shims para script y ventanas de npm estén concientes de cygwin
+  * Reparar isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Usar --save(-dev|-optional) en rm de npm
+  * Opción `logstream` para reemplazar `logfd` removido (Rod Vagg)
+  * Leer descripciones predeterminadas desde archivos README.md
 
 * Shims to support deprecated ev_* and eio_* methods (Ben Noordhuis)
 
