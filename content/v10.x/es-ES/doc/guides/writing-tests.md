@@ -4,20 +4,20 @@
 
 La mayoría de las pruebas en la base de Node.js son programas de JavaScript que ejercen una funcionalidad proporcionada por Node.js y verifican que se comporte como se espera. Las pruebas deben salir con el código `0` cuando tengan éxito. Una prueba falla si:
 
-- Sale estableciendo `process.exitCode` a un número distinto a cero. 
-  - This is usually done by having an assertion throw an uncaught Error.
-  - Occasionally, using `process.exit(code)` may be appropriate.
-- It never exits. In this case, the test runner will terminate the test because it sets a maximum time limit.
+- Sale al establecer `process.exitCode` a un número distinto a cero. 
+  - Esto es realizado usualmente haciendo que una aserción arroje un Error no capturado.
+  - Ocasionalmente, usar `process.exit(code)` puede ser apropiado.
+- Nunca sale. En este caso, el corredor de prueba terminará la prueba porque establece un límite de tiempo máximo.
 
-Add tests when:
+Añadir pruebas cuando:
 
-- Adding new functionality.
-- Fixing regressions and bugs.
-- Expanding test coverage.
+- Se añada una nueva funcionalidad.
+- Se reparen regresiones y errores.
+- Se amplíe la cobertura de la prueba.
 
-## Test directory structure
+## Estructura del directorio de la prueba
 
-See [directory structure overview](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) for outline of existing test & locations. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
+Vea [descripción general de la estructura del directorio](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) para obtener un resumen de la prueba & ubicaciones. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
 
 ## Test structure
 
