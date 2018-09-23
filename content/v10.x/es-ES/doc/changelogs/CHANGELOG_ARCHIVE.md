@@ -1395,7 +1395,7 @@ https://github.com/nodejs/node/commit/8b8a7a7f9b41e74e1e810d0330738ad06fc302ec
 
 https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
 
-* npm: Upgrade to 1.1.30
+* npm: Actualizar a 1.1.30
   
   * Improved 'npm init'
   * Fix the 'cb never called' error from 'oudated' and 'update'
