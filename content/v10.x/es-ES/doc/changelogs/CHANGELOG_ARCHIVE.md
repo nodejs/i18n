@@ -1436,7 +1436,7 @@ https://github.com/nodejs/node/commit/1f93aa5d5d207e8bd739d365dbf9ad6dbcc69571
 * build: Añadir node.d y node.1 a instalador (isaacs)
 * cluster: renombrar worker.unqiueID a worker.id (Andreas Madsen)
 * Windows: Habilitar eventos ETW en Windows para sondeos DTrace existentes. (Igor Zinkovsky)
-* test: bundle node-weak in test/gc so that it doesn't need to be downloaded (Nathan Rajlich)
+* test: juntar debilidades de node en un test/recolector de basura, de modo que no necesiten descargarse (Nathan Rajlich)
 * Make many tests pass on Windows (Bert Belder)
 * Fix [#3388](https://github.com/joyent/node/issues/3388) Support listening on file descriptors (isaacs)
 * Fix [#3407](https://github.com/joyent/node/issues/3407) Add os.tmpDir() (isaacs)
