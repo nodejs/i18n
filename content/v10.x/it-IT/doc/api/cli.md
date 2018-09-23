@@ -248,7 +248,7 @@ Stampa le stack trace per le deprecazioni.
 added: v7.7.0
 -->
 
-Un elenco, separato da virgole, di categorie che devono essere tracciate quando il tracciamento del trace event viene abilitato utilizzando `--trace-events-enabled`.
+Un elenco, separato da virgole, di categorie che devono essere tracciate quando viene abilitato il tracciamento del trace event utilizzando `--trace-events-enabled`.
 
 ### `--trace-event-file-pattern`
 
