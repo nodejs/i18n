@@ -1354,7 +1354,7 @@ https://github.com/nodejs/node/commit/2134aa3d5c622fc3c3b02ccb713fcde0e0df479a
   * Reducir fallos de "motores" a una advertencia
   * Usar nueva terminación zsh si está disponible (Jeremy Cantrell)
 
-* Reparar [#3577](https://github.com/joyent/node/issues/3577) "Des-romper" require('sys')
+* Reparación [#3577](https://github.com/joyent/node/issues/3577) "Des-romper" require('sys')
 
 * util: acelerar formateo de arrays/objetos grandes (Ben Noordhuis)
 * windows: hacer que fs.realpath(Sync) funcione con rutas UNC (Bert Belder)
@@ -1372,18 +1372,18 @@ https://github.com/nodejs/node/commit/2134aa3d5c622fc3c3b02ccb713fcde0e0df479a
 
 <a id="0.8.0"></a>
 
-## 2012.06.25, Version 0.8.0 (stable)
+## 2012.06.25, Versión 0.8.0 (estable)
 
 https://github.com/nodejs/node/commit/8b8a7a7f9b41e74e1e810d0330738ad06fc302ec
 
-* V8: upgrade to v3.11.10.10
-* npm: Upgrade to 1.1.32
-* Deprecate iowatcher (Ben Noordhuis)
-* windows: update icon (Bert Belder)
-* http: Hush 'MUST NOT have a body' warnings to debug() (isaacs)
-* Move blog.nodejs.org content into repository (isaacs)
-* Fix [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() on pipe(dest) (isaacs)
-* crypto: fix error reporting in SetKey() (Fedor Indutny)
+* V8: actualizar a v3.11.10.10
+* npm: Actualizar a 1.1.32
+* Desaprobar iowatcher (Ben Noordhuis)
+* windows: actualizar ícono (Bert Belder)
+* http: Silenciar advertencias de 'NO DEBE tener un cuerpo' para debug() (isaacs)
+* Mover contenido de blog.nodejs.org al repositorio (isaacs)
+* Reparación [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() en pipe(dest) (isaacs)
+* crypto: reparar reporte de errores en SetKey() (Fedor Indutny)
 * Add --no-deprecation and --trace-deprecation command-line flags (isaacs)
 * fs: fix fs.watchFile() (Ben Noordhuis)
 * fs: Fix fs.readfile() on pipes (isaacs)
