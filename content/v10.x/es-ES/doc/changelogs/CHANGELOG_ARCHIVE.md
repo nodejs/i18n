@@ -1342,24 +1342,24 @@ https://github.com/nodejs/node/commit/cc6084b9ac5cf1d4fe5e7165b71e8fc05d11be1f
 
 <a id="0.8.1"></a>
 
-## 2012.06.29, Version 0.8.1 (stable)
+## 2012.06.29, Version 0.8.1 (estable)
 
 https://github.com/nodejs/node/commit/2134aa3d5c622fc3c3b02ccb713fcde0e0df479a
 
-* V8: upgrade to v3.11.10.12
-* npm: upgrade to v1.1.33
+* V8: actualizar a v3.11.10.12
+* npm: actualizar a v1.1.33
   
-  * Support for parallel use of the cache folder
-  * Retry on registry timeouts or network failures (Trent Mick)
-  * Reduce 'engines' failures to a warning
-  * Use new zsh completion if available (Jeremy Cantrell)
+  * Soporte para el uso paralelo de la carpeta de caché
+  * Reintentar ante timeouts en el registro o fallos de red (Trent Mick)
+  * Reducir fallos de "motores" a una advertencia
+  * Usar nueva terminación zsh si está disponible (Jeremy Cantrell)
 
-* Fix [#3577](https://github.com/joyent/node/issues/3577) Un-break require('sys')
+* Reparar [#3577](https://github.com/joyent/node/issues/3577) "Des-romper" require('sys')
 
-* util: speed up formatting of large arrays/objects (Ben Noordhuis)
-* windows: make fs.realpath(Sync) work with UNC paths (Bert Belder)
-* build: fix --shared-v8 option (Ben Noordhuis)
-* doc: `detached` is a boolean (Andreas Madsen)
+* util: acelerar formateo de arrays/objetos grandes (Ben Noordhuis)
+* windows: hacer que fs.realpath(Sync) funcione con rutas UNC (Bert Belder)
+* build: reparar opción --shared-v8 (Ben Noordhuis)
+* doc: `detached` es un booleano (Andreas Madsen)
 * build: use proper python interpreter (Ben Noordhuis)
 * build: expand ~ in `./configure --prefix=~/a/b/c` (Ben Noordhuis)
 * build: handle CC env var with spaces (Gabriel de Perthuis)
