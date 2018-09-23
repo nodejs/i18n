@@ -1437,21 +1437,21 @@ https://github.com/nodejs/node/commit/1f93aa5d5d207e8bd739d365dbf9ad6dbcc69571
 * cluster: renombrar worker.unqiueID a worker.id (Andreas Madsen)
 * Windows: Habilitar eventos ETW en Windows para sondeos DTrace existentes. (Igor Zinkovsky)
 * test: juntar debilidades de node en un test/recolector de basura, de modo que no necesiten descargarse (Nathan Rajlich)
-* Make many tests pass on Windows (Bert Belder)
-* Fix [#3388](https://github.com/joyent/node/issues/3388) Support listening on file descriptors (isaacs)
-* Fix [#3407](https://github.com/joyent/node/issues/3407) Add os.tmpDir() (isaacs)
-* Unbreak the snapshotted build on Windows (Bert Belder)
-* Clean up child_process.kill throws (Bert Belder)
-* crypto: make cipher/decipher accept buffer args (Ben Noordhuis)
+* Hacer que muchas pruebas pasen en Windows (Bert Belder)
+* Reparar [#3388](https://github.com/joyent/node/issues/3388) Soportar la escucha de descriptores de archivos (isaacs)
+* Reparar [#3407](https://github.com/joyent/node/issues/3407) Añadir os.tmpDir() (isaacs)
+* "Des-romper" el build de captura rápida en Windows (Bert Belder)
+* Limpiar los lanzamientos de child_process.kill (Bert Belder)
+* crypto: hacer que cipher/decipher acepte argumentos buffer (Ben Noordhuis)
 
 <a id="0.7.10"></a>
 
-## 2012.06.11, Version 0.7.10 (unstable)
+## 2012.06.11, Versión 0.7.10 (inestable)
 
 https://github.com/nodejs/node/commit/8d9766a9dfb1eea901219d2a865ce9300fe4d68e
 
-* Roll V8 back to 3.9.24.31
-* build: x64 target should always pass -m64 (Robert Mustacchi)
+* Hacer que V8 retroceda hasta 3.9.24.31
+* build: el objetivo de x64 siempre debe pasar -m64 (Robert Mustacchi)
 * add NODE_EXTERN to node::Start (Joel Brandt)
 * repl: Warn about running npm commands (isaacs)
 * slab_allocator: fix crash in dtor if V8 is dead (Ben Noordhuis)
