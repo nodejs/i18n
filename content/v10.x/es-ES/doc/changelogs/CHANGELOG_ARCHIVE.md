@@ -1319,17 +1319,17 @@ https://github.com/nodejs/node/commit/60bf2d6cb33e4ce55604f73889ab840a9de8bdab
 
 <a id="0.8.2"></a>
 
-## 2012.07.09, Version 0.8.2 (Stable)
+## 2012.07.09, Versión 0.8.2 (Estable)
 
 https://github.com/nodejs/node/commit/cc6084b9ac5cf1d4fe5e7165b71e8fc05d11be1f
 
-* npm: Upgrade to 1.1.36
-* readline: don't use Function#call() (Nathan Rajlich)
-* Code cleanup to pass 'use strict' (Jonas Westerlund)
-* module: add filename to require() json errors (TJ Holowaychuk)
-* readline: fix for unicode prompts (Tim Macfarlane)
-* timers: fix handling of large timeouts (Ben Noordhuis)
-* repl: fix passing an empty line inserting "undefined" into the buffer (Nathan Rajlich)
+* npm: Actualizar a 1.1.36
+* readline: no usar Function#call() (Nathan Rajlich)
+* Limpieza de código para pasar "use strict" (Jonas Westerlund)
+* module: añadir nombre de archivo a errores json de require() (TJ Holowaychuk)
+* readline: reparar para prompts unicode (Tim Macfarlane)
+* timers: corregir el manejo de timeouts largos (Ben Noordhuis)
+* repl: corregir el paso de una línea vacía insertando "undefined" en el buffer (Nathan Rajlich)
 * repl: fix crashes when buffering command (Maciej Małecki)
 * build: rename strict_aliasing to node_no_strict_aliasing (Ben Noordhuis)
 * build: disable -fstrict-aliasing for any gcc < 4.6.0 (Ben Noordhuis)
