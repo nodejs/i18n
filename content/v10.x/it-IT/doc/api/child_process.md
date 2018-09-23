@@ -917,8 +917,8 @@ const { fork } = require('child_process');
 const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
-// Apri il server e invia i socket al child. Utilizza pauseOnConnect per impedire la lettura 
-// dei socket prima che vengano inviati al processo child.
+// Apri il server e invia i socket al child. Utilizza pauseOnConnect per impedire 
+// la lettura dei socket prima che vengano inviati al processo child.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
 
@@ -940,7 +940,8 @@ process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
       // Verifica che il client socket esista.
-      // È possibile che il socket venga chiuso dal momento in cui viene inviato fino a quando non viene ricevuto nel processo child.
+      // È possibile che il socket venga chiuso dal momento in cui viene
+// inviato fino a quando non viene ricevuto nel processo child.
       socket.end(`Request handled with ${process.argv[2]} priority`);
     }
   }
@@ -1032,7 +1033,7 @@ Se il child è stato generato con `stdio[1]` impostato su un valore diverso da `
 
 ## `maxBuffer` e Unicode
 
-L'opzione `maxBuffer` specifica il maggior numero di byte consentiti su `stdout` o su `stderr`. Se questo valore viene superato, allora il processo child viene concluso. Questo influisce sull'output che include gli encoding di caratteri multibyte come UTF-8 o UTF-16. Ad esempio, `console.log('中文测试')` invierà 13 byte con codifica UTF-8 a `stdout` sebbene ci siano solo 4 caratteri.
+L'opzione `maxBuffer` specifica il massimo numero di byte consentiti su `stdout` o su `stderr`. Se questo valore viene superato, allora il processo child viene concluso. Questo influisce sull'output che include gli encoding di caratteri multibyte come UTF-8 o UTF-16. Ad esempio, `console.log('中文测试')` invierà 13 byte con codifica UTF-8 a `stdout` sebbene ci siano solo 4 caratteri.
 
 ## Requisiti della Shell
 
