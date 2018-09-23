@@ -180,7 +180,7 @@ Le deprecazioni in attesa sono generalmente identiche alle deprecazioni in fase 
 added: v6.3.0
 -->
 
-Da istruzioni al module loader di conservare i collegamenti simbolici (symlink) durante la risoluzione ed il caching dei moduli.
+Dà istruzioni al module loader di conservare i collegamenti simbolici (symlink) durante la risoluzione ed il caching dei moduli.
 
 Di default, quando Node.js carica un modulo da un percorso che è collegato simbolicamente ad una diversa posizione sul disco, cancellerà il collegamento e utilizzerà l'effettivo "percorso reale" del modulo sul disco sia come identifier che come percorso root per individuare altri moduli delle dipendenze. Nella maggior parte dei casi, questo comportamento predefinito è accettabile. Tuttavia, quando si utilizzano dipendenze peer collegate simbolicamente, come illustrato nell'esempio seguente, il comportamento predefinito causa l'avvio di un'exception se `moduleA` tenta di richiedere `moduleB` come una dipendenza peer:
 
