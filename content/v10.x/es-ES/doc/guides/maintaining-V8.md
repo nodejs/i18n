@@ -23,7 +23,7 @@ Todas las ramas más antiguas son abandonadas y no son mantenidas por el equipo 
 El proceso para respaldar las correcciones de errores en las ramas activas está oficialmente documentado [en la wiki de V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). El sumario del proceso es:
 
 * V8 solo admite ramas activas. No se realizan pruebas en ramas anteriores a la estable/beta/master actual.
-* Una solución que necesita backport está etiquetada con la etiqueta *merge-request-x.x*. This can be done by anyone interested in getting the fix backported. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
+* Una solución que necesita backport está etiquetada con la etiqueta *merge-request-x.x*. Esto puede hacerlo cualquier persona interesada en obtener la solución refactorizada. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
 * Fixes need some 'baking time' before they can be approved for backporting. This means waiting a few days to ensure that no issues are detected on the canary/beta builds.
 * Once ready, the issue is tagged w/ *merge-approved-x.x* and one can do the actual merge by using the scripts on the [wiki page](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
 * Merge requests to an abandoned branch will be rejected.
