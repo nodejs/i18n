@@ -256,7 +256,7 @@ Un elenco, separato da virgole, di categorie che devono essere tracciate quando 
 added: v9.8.0
 -->
 
-Template string specifying the filepath for the trace event data, it supports `${rotation}` and `${pid}`.
+Stringa di template che specifica il percorso del file per i dati del trace event, supporta `${rotation}` e `${pid}`.
 
 ### `--trace-events-enabled`
 
@@ -264,7 +264,7 @@ Template string specifying the filepath for the trace event data, it supports `$
 added: v7.7.0
 -->
 
-Enables the collection of trace event tracing information.
+Abilita la raccolta delle informazioni di tracciamento del trace event.
 
 ### `--trace-sync-io`
 
@@ -272,7 +272,7 @@ Enables the collection of trace event tracing information.
 added: v2.1.0
 -->
 
-Prints a stack trace whenever synchronous I/O is detected after the first turn of the event loop.
+Stampa una stack trace ogni volta che viene rilevato un I/O sincrono dopo il primo turno dell'event loop.
 
 ### `--trace-warnings`
 
@@ -280,7 +280,7 @@ Prints a stack trace whenever synchronous I/O is detected after the first turn o
 added: v6.0.0
 -->
 
-Print stack traces for process warnings (including deprecations).
+Stampa le stack trace per gli avvisi di processo (incluse le deprecazioni).
 
 ### `--track-heap-objects`
 
