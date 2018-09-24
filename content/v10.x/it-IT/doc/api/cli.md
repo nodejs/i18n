@@ -421,7 +421,7 @@ Stampa la versione del node.
 added: v0.1.32
 -->
 
-`','`-separated list of core modules that should print debug information.
+Elenco, separato da `','`, dei core module che dovrebbero stampare le informazioni di debug.
 
 ### `NODE_DISABLE_COLORS=1`
 
@@ -429,7 +429,7 @@ added: v0.1.32
 added: v0.3.0
 -->
 
-When set to `1` colors will not be used in the REPL.
+Se impostato su `1`, non verranno utilizzati i colori nel REPL.
 
 ### `NODE_EXTRA_CA_CERTS=file`
 
@@ -437,7 +437,7 @@ When set to `1` colors will not be used in the REPL.
 added: v7.3.0
 -->
 
-When set, the well known "root" CAs (like VeriSign) will be extended with the extra certificates in `file`. The file should consist of one or more trusted certificates in PEM format. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
+Quando è impostato, i ben noti "root" CA (come VeriSign) verranno estesi con i certificati aggiuntivi all'interno di `file`. Il file deve essere composto da uno o più certificati attendibili in formato PEM. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
 
 Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
 
