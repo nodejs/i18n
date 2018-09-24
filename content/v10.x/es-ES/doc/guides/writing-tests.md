@@ -149,7 +149,7 @@ const server = http.createServer(function(req, res) {
 });
 ```
 
-This test could be greatly simplified by using `common.mustCall` like this:
+Esta prueba se puede simplificar enormemente al usar `common.mustCall` de esta forma:
 
 ```javascript
 'use strict';
@@ -171,9 +171,9 @@ const server = http.createServer(common.mustCall(function(req, res) {
 
 ```
 
-#### Countdown Module
+#### Módulo Countdown
 
-The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
+El [módulo Countdown](https://github.com/nodejs/node/tree/master/test/common#countdown-module) common proporciona un mecanismo de cuenta regresiva simple para pruebas que requieren que se realice una acción particular después de un número determinado de tareas completadas (por ejemplo, apagar un servidor HTTP después de un número específico de solicitudes).
 
 ```javascript
 const Countdown = require('../common/countdown');
@@ -183,12 +183,12 @@ const countdown = new Countdown(2, function() {
 });
 
 countdown.dec();
-countdown.dec(); // The countdown callback will be invoked now.
+countdown.dec(); // La cuenta regresiva será invocada ahora.
 ```
 
-### Flags
+### Banderas
 
-Some tests will require running Node.js with specific command line flags set. To accomplish this, add a `// Flags:` comment in the preamble of the test followed by the flags. For example, to allow a test to require some of the `internal/*` modules, add the `--expose-internals` flag. A test that would require `internal/freelist` could start like this:
+Algunas pruebas requerirán ejecutar Node.js con banderas de línea de comando específicas establecidas. Para lograr esto, añada un comentario `// Flags:` en el preámbulo de la prueba, seguido por las banderas. Por ejemplo, para permitir que una prueba requiera algunos de los módulos `internal/*`, añada la bandera `--expose-internals`. A test that would require `internal/freelist` could start like this:
 
 ```javascript
 'use strict';
