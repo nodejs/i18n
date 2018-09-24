@@ -563,7 +563,7 @@ added: v7.7.0
 
 Se viene abilitato `--use-openssl-ca`, questo sovrascrive e imposta la directory di OpenSSL contenente i certificati attendibili.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenere presente che, a meno che l'ambiente del child non sia impostato in modo esplicito, questa variabile d'ambiente verrà ereditata da tutti i processi child e, se questi utilizzano OpenSSL, la variabile potrebbe far sì che i processi si fidino degli stessi CA del node.
 
 ### `SSL_CERT_FILE=file`
 
@@ -571,19 +571,19 @@ Be aware that unless the child environment is explicitly set, this environment v
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's file containing trusted certificates.
+Se viene abilitato `--use-openssl-ca`, questo sovrascrive e imposta il file di OpenSSL contenente certificati attendibili.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenere presente che, a meno che l'ambiente del child non sia impostato in modo esplicito, questa variabile d'ambiente verrà ereditata da tutti i processi child e, se questi utilizzano OpenSSL, la variabile potrebbe far sì che i processi si fidino degli stessi CA del node.
 
 ### `UV_THREADPOOL_SIZE=size`
 
-Set the number of threads used in libuv's threadpool to `size` threads.
+Imposta il numero di thread utilizzati nel threadpool di libuv per impostare il `size` dei thread.
 
-Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. Node.js APIs that use the threadpool are:
+Le API di sistema asincrone vengono utilizzate da Node.js ogni qual volta è possibile, ma lì dove non esistono, il threadpool di libuv viene utilizzato per creare delle API di node asincrone basate sulle API di sistema sincrone. Le API di Node.js che utilizzano il threadpool sono:
 
-- all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
+- tutte le API `fs`, diverse dalle API file watcher e dalle API che sono esplicitamente sincrone
 - `crypto.pbkdf2()`
-- `crypto.randomBytes()`, unless it is used without a callback
+- `crypto.randomBytes()`, a meno che non venga utilizzato senza un callback
 - `crypto.randomFill()`
 - `dns.lookup()`
 - all `zlib` APIs, other than those that are explicitly synchronous
