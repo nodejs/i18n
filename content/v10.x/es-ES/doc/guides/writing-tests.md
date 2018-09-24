@@ -228,18 +228,18 @@ Por razones de rendimiento, solo usamos un subconjunto seleccionado de caracter�
 
 ## Nombrar Archivos de Prueba
 
-Archivos de prueba son nombrados usando kebab casing. El primer componente del nombre es `test`. The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
+Archivos de prueba son nombrados usando kebab casing. El primer componente del nombre es `test`. El segundo módulo o subsistema siendo probado. El tercero es usualmente el método o nombre del evento siendo probado. Los componentes posteriores del nombre agregan más información acerca de lo que está siendo probado.
 
-For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
+Por ejemplo, una prueba para el evento `beforeExit` en el objeto `process` puede ser nombrada `test-process-before-exit.js`. Si la prueba específicamente verificó que la función flecha funcionó correctamente con el evento `beforeExit`, entonces puede ser nombrada `test-process-before-exit-arrow-functions.js`.
 
-## Imported Tests
+## Pruebas Importadas
 
-### Web Platform Tests
+### Pruebas de Plataforma Web
 
-Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js`) are imported from the [Web Platform Tests Project](https://github.com/w3c/web-platform-tests/tree/master/url). These imported tests will be wrapped like this:
+Algunas de las pruebas para la implementación (nombrada `test-whatwg-url-*.js`) son importadas del [Proyecto de Pruebas de Plataforma Web](https://github.com/w3c/web-platform-tests/tree/master/url). Estas pruebas importadas serán envueltas de esta forma:
 
 ```js
-/* The following tests are copied from WPT. Modifications to them should be
+/* Las siguientes pruebas son copiadas del WPT. Modifications to them should be
    upstreamed first. Refs:
    https://github.com/w3c/web-platform-tests/blob/8791bed/url/urlsearchparams-stringifier.html
    License: http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html
