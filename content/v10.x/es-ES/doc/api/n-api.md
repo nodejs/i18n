@@ -2917,11 +2917,11 @@ Recupera una instancia nativa que estaba envuelta previamente en el objeto de Ja
 
 Los módulos complementarios a menudo necesitan aprovechar ayudantes asíncronos de libuv como parte de su implementación. Esto les permite programar el trabajo a ser ejecutado de manera asíncrona, de modo que sus métodos puedan regresar antes de que se complete el trabajo. Esto es importante para que puedan evitar el bloqueo total de la ejecución de la aplicación de Node.js.
 
-N-API provides an ABI-stable interface for these supporting functions which covers the most common asynchronous use cases.
+N-API proporciona una interfaz ABI estable para estas funciones de soporte que cubren los casos de uso asíncrono más comunes.
 
-N-API defines the `napi_work` structure which is used to manage asynchronous workers. Instances are created/deleted with [`napi_create_async_work`][] and [`napi_delete_async_work`][].
+N-API define la estructura `napi_work` que es utilizada para administrar los trabajadores asíncronos. Las instancias son creadas/eliminadas con [`napi_create_async_work`][] y [`napi_delete_async_work`][].
 
-The `execute` and `complete` callbacks are functions that will be invoked when the executor is ready to execute and when it completes its task respectively. These functions implement the following interfaces:
+Los callbacks `execute` y `complete` son funciones que serán invocadas cuando el ejecutor esté preparado para ejecutar y cuando complete su tarea respectivamente. Estas funciones implementan las siguientes interfaces:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env,
@@ -2931,9 +2931,9 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-When these methods are invoked, the `data` parameter passed will be the addon-provided `void*` data that was passed into the `napi_create_async_work` call.
+Cuando estos métodos son invocados, el parámetro `data` pasado será el complemento de datos proporcionado `void*` que fue pasado a la llamada `napi_create_async_work`.
 
-Once created the async worker can be queued for execution using the [`napi_queue_async_work`][] function:
+Una vez creado, el trabajador asíncrono puede ponerse en la cola para la ejecución utilizando la función [`napi_queue_async_work`][]:
 
 ```C
 napi_status napi_queue_async_work(napi_env env,
