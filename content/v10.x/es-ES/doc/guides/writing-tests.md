@@ -214,15 +214,15 @@ assert.throws(
   () => {
     throw new Error('Wrong value');
   },
-  /^Error: Wrong value$/ // Instead of something like /Wrong value/
+  /^Error: Wrong value$/ // En lugar de algo como /Valor incorrecto/
 );
 ```
 
 ### Características ES.Next
 
-Por razones de rendimiento, solo usamos un subconjunto seleccionado de características ES.Next en código JavaScript en el directorio `lib`. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
+Por razones de rendimiento, solo usamos un subconjunto seleccionado de características ES.Next en código JavaScript en el directorio `lib`. Sin embargo, al escribir pruebas, para la facilidad del backporting, se recomienda usar aquellas características ES.Next que pueden ser usadas directamente sin una bandera en [todas las ramas mantenidas](https://github.com/nodejs/lts). [node.green](http://node.green/) enumera las características disponibles en cada versión, tales como:
 
-- `let` and `const` over `var`
+- `let` y `const` sobre `var`
 - Template literals over string concatenation
 - Arrow functions when appropriate
 
