@@ -533,7 +533,7 @@ added: v8.1.0
 
 * {number}
 
-La marca de tiempo que indica la última vez que este archivo fue accedido, expresado en milisegundos desde la Época POSIX.
+La marca de tiempo que indica la última vez que este archivo fue accedido, expresado en milisegundos desde el Tiempo POSIX.
 
 ### stats.mtimeMs
 
@@ -563,7 +563,7 @@ added: v8.1.0
 
 * {number}
 
-La marca de tiempo que indica la hora de creación de este archivo, expresado en milisegundos desde la Época POSIX.
+La marca de tiempo que indica la hora de creación de este archivo, expresado en milisegundos desde el Tiempo POSIX.
 
 ### stats.atime
 
