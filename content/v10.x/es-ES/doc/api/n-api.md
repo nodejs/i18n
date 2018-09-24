@@ -2891,7 +2891,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Recupera una instancia nativa que estaba envuelta previamente en un objeto de JavaScript usando `napi_wrap()`.
 
-Cuando el código de JavaScript invoca un método o un accesor de propiedad en la clase, el `napi_callback` correspondiente es invocado. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
+Cuando el código de JavaScript invoca un método o un accesor de propiedad en la clase, el `napi_callback` correspondiente es invocado. Si el callback es para un método o accesor de instancia, entonces el argumento `this` al callback es el objeto envuelto; la instancia de C++ envuelta que es el objetivo de la llamada se puede obtener llamando a `napi_unwrap()` en el objeto envuelto.
 
 ### napi_remove_wrap
 
@@ -2905,17 +2905,17 @@ napi_status napi_remove_wrap(napi_env env,
                              void** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The object associated with the native instance.
-- `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] js_object`: El objeto asociado con la instancia nativa.
+- `[out] result`: Apuntador a la instancia nativa envuelta.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Retrieves a native instance that was previously wrapped in the JavaScript object `js_object` using `napi_wrap()` and removes the wrapping, thereby restoring the JavaScript object's prototype chain. If a finalize callback was associated with the wrapping, it will no longer be called when the JavaScript object becomes garbage-collected.
+Recupera una instancia nativa que estaba envuelta previamente en el objeto de JavaScript `js_object` usando `napi_wrap()` y remueve la envoltura, restaurando así la cadena de prototipos del objeto de JavaScript. Si un callback de terminación estaba asociado con la envoltura, ya no será llamado cuando el objeto de JavaScript se convierta en basura de recolección.
 
-## Simple Asynchronous Operations
+## Operaciones Asíncronas Simples
 
-Addon modules often need to leverage async helpers from libuv as part of their implementation. This allows them to schedule work to be executed asynchronously so that their methods can return in advance of the work being completed. This is important in order to allow them to avoid blocking overall execution of the Node.js application.
+Los módulos complementarios a menudo necesitan aprovechar ayudantes asíncronos de libuv como parte de su implementación. Esto les permite programar el trabajo a ser ejecutado de manera asíncrona, de modo que sus métodos puedan regresar antes de que se complete el trabajo. Esto es importante para que puedan evitar el bloqueo total de la ejecución de la aplicación de Node.js.
 
 N-API provides an ABI-stable interface for these supporting functions which covers the most common asynchronous use cases.
 
