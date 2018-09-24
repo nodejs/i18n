@@ -26,26 +26,26 @@ El proceso para respaldar las correcciones de errores en las ramas activas está
 * Una solución que necesita backport está etiquetada con la etiqueta *merge-request-x.x*. Esto puede hacerlo cualquier persona interesada en obtener la solución refactorizada. Los problemas con esta etiqueta son revisados por el equipo de V8, regularmente como candidatos para backporting.
 * Las reparaciones necesitan cierto "tiempo de cocción" antes de que puedan ser aprobadas para backporting. Esto significa esperar unos días para asegurarse de que no se detectan problemas en las compilaciones canary/beta.
 * Una vez que esté listo, el problema se etiquetará con *merge-approved-x.x* y se puede hacer la fusión real mediante el uso de los scripts en la [página wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
-* Merge requests to an abandoned branch will be rejected.
-* Only bug fixes are accepted for backporting.
+* Las solicitudes de fusión a una rama abandonada serán rechazadas.
+* Solo se aceptan correcciones de errores para backporting.
 
-## Node.js Support Requirements
+## Requisitos de soporte de Node.js
 
-At any given time Node.js needs to be maintaining a few different V8 branches for the various Current, LTS, and nightly releases. At present this list includes the following branches<sup>1</sup>:
+En un momento dado, Node.js necesita mantener algunas ramas V8 diferentes para las distintas versiones actuales, LTS y lanzamientos nocturnos. En la actualidad, esta lista incluye las siguientes ramas <sup>1</sup>:
 
 <table>
   <tr>
-   <td><strong>Release</strong>
+   <td><strong>Lanzamiento</strong>
    </td>
-   <td><strong>Support Start</strong>
+   <td><strong>Inicio de soporte</strong>
    </td>
-   <td><strong>Support End</strong>
+   <td><strong>Soporte final</strong>
    </td>
-   <td><strong>V8 version</strong>
+   <td><strong>Versión V8</strong>
    </td>
-   <td><strong>V8 branch released</strong>
+   <td><strong>Lanzamiento de la rama V8</strong>
    </td>
-   <td><strong>V8 branch abandoned</strong>
+   <td><strong>Rama V8 abandonada</strong>
    </td>
   </tr>
   <tr>
@@ -53,7 +53,7 @@ At any given time Node.js needs to be maintaining a few different V8 branches fo
    </td>
    <td>2015-10-01
    </td>
-   <td>April 2018
+   <td>Abril 2018
    </td>
    <td>4.5
    </td>
@@ -67,7 +67,7 @@ At any given time Node.js needs to be maintaining a few different V8 branches fo
    </td>
    <td>2016-04-01
    </td>
-   <td>April 2019
+   <td>Abril 2019
    </td>
    <td>5.1
    </td>
