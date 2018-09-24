@@ -124,10 +124,10 @@ Las versiones de V8 utilizadas en Node.js v4.x, v6.x y 8.x ya han sido abandonad
 
 ## Proceso de mantenimiento
 
-Once a bug in Node.js has been identified to be caused by V8, the first step is to identify the versions of Node.js and V8 affected. The bug may be present in multiple different locations, each of which follows a slightly different process.
+Una vez que se ha identificado que una falla en Node.js es causada por V8, el primer paso es identificar las versiones de Node.js y V8 afectadas. El error puede estar presente en múltiples ubicaciones diferentes, cada una de las cuales sigue un proceso ligeramente diferente.
 
-* Unfixed bugs. The bug exists in the V8 master branch.
-* Fixed, but needs backport. The bug may need porting to one or more branches. 
+* Errores no arreglados. El error existe en la rama principal V8.
+* Solucionado, pero necesita backport. El error puede necesitar la transferencia a una o más ramas. 
   * Backporting to active branches.
   * Backporting to abandoned branches.
 * Backports identified by the V8 team. Bugs identified by upstream V8 that we haven't encountered in Node.js yet.
