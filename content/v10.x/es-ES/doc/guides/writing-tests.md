@@ -311,6 +311,6 @@ Hay un [test fixture](https://github.com/google/googletest/blob/master/googletes
 
 También contiene un helper para crear argumentos para ser pasados a Node.js. Dependerá de lo que se está probando si esto es necesario o no.
 
-### Cobertura de Prueba
+### Cobertura de la Prueba
 
-To generate a test coverage report, see the [Test Coverage section of the Pull Requests guide](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#test-coverage).
+Para generar un reporte de cobertura de la prueba, vea la [Sección Cobertura de prueba de la guía Pull Requests](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#test-coverage).
