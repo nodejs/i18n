@@ -314,7 +314,7 @@ Stampa le opzioni della command line di V8.
 
 Le opzioni di V8 consentono alle parole di essere separate sia dai trattini (`-`) che dai trattini bassi (`_`).
 
-For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
+Ad esempio, `--stack-trace-limit` equivale a `--stack_trace_limit`.
 
 ### `--v8-pool-size=num`
 
@@ -322,11 +322,11 @@ For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 added: v5.10.0
 -->
 
-Set V8's thread pool size which will be used to allocate background jobs.
+Imposta la dimensione del thread pool di V8 che verrà utilizzata per allocare i processi in background.
 
-If set to `0` then V8 will choose an appropriate size of the thread pool based on the number of online processors.
+Se impostata su `0` allora V8 sceglierà una dimensione appropriata del thread pool in base al numero di processori online.
 
-If the value provided is larger than V8's maximum, then the largest value will be chosen.
+Se il valore fornito è maggiore del valore massimo di V8, allora verrà scelto il valore più grande.
 
 ### `--zero-fill-buffers`
 
@@ -334,7 +334,7 @@ If the value provided is larger than V8's maximum, then the largest value will b
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [`Buffer`][] and [`SlowBuffer`][] instances.
+Azzera automaticamente tutte le istanze [`Buffer`][] e [`SlowBuffer`][] appena allocate.
 
 ### `-c`, `--check`
 
@@ -349,7 +349,7 @@ changes:
     description: The `--require` option is now supported when checking a file.
 -->
 
-Syntax check the script without executing.
+La sintassi controlla lo script senza eseguirlo.
 
 ### `-e`, `--eval "script"`
 
