@@ -110,15 +110,15 @@ En el evento la prueba necesita un temporizador, considere usar el método `comm
 const timer = setTimeout(fail, common.platformTimeout(4000));
 ```
 
-will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
+creará un tiempo de espera de 4 segundos en la mayoría de las plataformas, pero un tiempo de espera más largo en plataformas más lentas.
 
-### The *common* API
+### El API *common*
 
-Make use of the helpers from the `common` module as much as possible. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
+Utilice los helpers del módulo `common` tanto como sea posible. Por favor consulte la [documentación del archivo common](https://github.com/nodejs/node/tree/master/test/common) para los detalles completos acerca de los helpers.
 
 #### common.mustCall
 
-One interesting case is `common.mustCall`. The use of `common.mustCall` may avoid the use of extra variables and the corresponding assertions. Let's explain this with a real test from the test suite.
+Un caso interesante es `common.mustCall`. El uso de `common.mustCall` puede evitar el uso de variables extras y las aserciones correspondientes. Expliquemos esto con una prueba real de la suite de pruebas.
 
 ```javascript
 'use strict';
