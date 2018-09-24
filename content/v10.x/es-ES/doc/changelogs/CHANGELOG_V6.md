@@ -535,8 +535,8 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`23e9bba9c8`](https://github.com/nodejs/node/commit/23e9bba9c8)] - **doc**: ctc -\> tsc en extras de incorporación (Bryan English) [#15621](https://github.com/nodejs/node/pull/15621)
 * [[`ff66d63642`](https://github.com/nodejs/node/commit/ff66d63642)] - **doc**: reparar tipo de stream emitKeypressEvents (Oblosys) [#15399](https://github.com/nodejs/node/pull/15399)
 * [[`1bd6962842`](https://github.com/nodejs/node/commit/1bd6962842)] - **doc**: hacer consistente a stream.Readable (Sakthipriyan Vairamani (thefourtheye)) [#16786](https://github.com/nodejs/node/pull/16786)
-* [[`6b9bd51021`](https://github.com/nodejs/node/commit/6b9bd51021)] - **doc**: correct effects to affects (gowpen) [#16794](https://github.com/nodejs/node/pull/16794)
-* [[`6af9311939`](https://github.com/nodejs/node/commit/6af9311939)] - **doc**: correct EventEmitter reference (gowpen) [#16791](https://github.com/nodejs/node/pull/16791)
+* [[`6b9bd51021`](https://github.com/nodejs/node/commit/6b9bd51021)] - **doc**: corregir los efectos a afecciones (gowpen) [#16794](https://github.com/nodejs/node/pull/16794)
+* [[`6af9311939`](https://github.com/nodejs/node/commit/6af9311939)] - **doc**: corregir la referencia EventEmitter (gowpen) [#16791](https://github.com/nodejs/node/pull/16791)
 * [[`1a633e3cd8`](https://github.com/nodejs/node/commit/1a633e3cd8)] - **doc**: add docs for Zlib#close() (Luigi Pinca) [#16592](https://github.com/nodejs/node/pull/16592)
 * [[`290df5ac41`](https://github.com/nodejs/node/commit/290df5ac41)] - **doc**: add details about rss on process.memoryUsage (Anthony Nandaa) [#16566](https://github.com/nodejs/node/pull/16566)
 * [[`3e6da45ce0`](https://github.com/nodejs/node/commit/3e6da45ce0)] - **doc**: howto decode buffers extending from Writable (dicearr) [#16403](https://github.com/nodejs/node/pull/16403)
@@ -750,7 +750,7 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 
 <a id="6.12.0"></a>
 
-## 2017-11-07, Version 6.12.0 'Boron' (LTS), @MylesBorins
+## 2017-11-07, Versión 6.12.0 'Boron' (LTS), @MylesBorins
 
 This LTS release comes with 127 commits. This includes 45 which are test related, 33 which are doc related, 13 which are updates to dependencies and 7 commits which are related to build / tools.
 
