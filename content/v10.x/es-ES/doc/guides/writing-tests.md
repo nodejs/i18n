@@ -254,11 +254,11 @@ Para mejorar las pruebas que han sido importadas de esta forma, por favor enviar
 
 ## Prueba de la Unidad C++
 
-El código C++ puede ser probado usando [Google Test](https://github.com/google/googletest). La mayoría de las características en Node.js pueden ser probadas usando los métodos descritos previamente en este documento. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
+El código C++ puede ser probado usando [Google Test](https://github.com/google/googletest). La mayoría de las características en Node.js pueden ser probadas usando los métodos descritos previamente en este documento. Pero hay casos donde estas podrían no ser suficientes, por ejemplo escribir código para Node.js que solo será llamado cuando Node.js esté incrustado.
 
-### Adding a new test
+### Añadir una nueva prueba
 
-The unit test should be placed in `test/cctest` and be named with the prefix `test` followed by the name of unit being tested. For example, the code below would be placed in `test/cctest/test_env.cc`:
+La prueba de unidad debe ser colocada en `test/cctest` y nombrada con el prefijo `test` seguida por el nombre de la unidad siendo probada. Por ejemplo, el siguiente código sería colocado en `test/cctest/test_env.cc`:
 
 ```c++
 #include "gtest/gtest.h"
@@ -288,7 +288,7 @@ static void at_exit_callback(void* arg) {
 }
 ```
 
-Next add the test to the `sources` in the `cctest` target in node.gyp:
+Luego añada la prueba al `sources` en el objetivo `cctest` en node.gyp:
 
 ```console
 'sources': [
@@ -297,17 +297,17 @@ Next add the test to the `sources` in the `cctest` target in node.gyp:
 ],
 ```
 
-Note that the only sources that should be included in the cctest target are actual test or helper source files. There might be a need to include specific object files that are compiled by the `node` target and this can be done by adding them to the `libraries` section in the cctest target.
+Tenga en cuenta que los únicos recursos que deben ser incluidos en el objetivo cctest son pruebas reales o archivos fuente auxiliares. Puede que sea necesario incluir archivos de objeto específicos que son compilados por el objetivo `node` y esto puede ser hecho al añadirlos a la sección `libraries` en el objetivo cctest.
 
-The test can be executed by running the `cctest` target:
+La prueba puede ser realizada al ejecutar el objetivo `cctest`:
 
 ```console
 $ make cctest
 ```
 
-### Node.js test fixture
+### Accesorio de prueba Node.js
 
-There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
+Hay un [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) nombrado `node_test_fixture.h` el cual puede ser incluido por pruebas de unidad. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
 
