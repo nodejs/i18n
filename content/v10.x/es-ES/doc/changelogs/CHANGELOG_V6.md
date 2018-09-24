@@ -366,7 +366,7 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 * [[`e232e210f6`](https://github.com/nodejs/node/commit/e232e210f6)] - **doc**: actualizar lista de AUTORES (Michaël Zasso) [#16571](https://github.com/nodejs/node/pull/16571)
 * [[`ca76c336d1`](https://github.com/nodejs/node/commit/ca76c336d1)] - **doc**: normalizar indentación ToC con niveles de encabezado en README (Rich Trott) [#17106](https://github.com/nodejs/node/pull/17106)
 * [[`1815ca5066`](https://github.com/nodejs/node/commit/1815ca5066)] - **doc**: añadir Contribuir a Node.js al ToC de README (Rich Trott) [#17106](https://github.com/nodejs/node/pull/17106)
-* [[`d8f66676e5`](https://github.com/nodejs/node/commit/d8f66676e5)] - **doc**: merge Working Groups with Contributing to Node.js in README (Rich Trott) [#17106](https://github.com/nodejs/node/pull/17106)
+* [[`d8f66676e5`](https://github.com/nodejs/node/commit/d8f66676e5)] - **doc**: unir Grupos de Trabajo con Contribuir a Node.js en README (Rich Trott) [#17106](https://github.com/nodejs/node/pull/17106)
 * [[`b064c731ff`](https://github.com/nodejs/node/commit/b064c731ff)] - **doc**: remover de README enlace del node-dev de IRC (Rich Trott) [#17106](https://github.com/nodejs/node/pull/17106)
 * [[`8cae573af1`](https://github.com/nodejs/node/commit/8cae573af1)] - **doc**: añadir nota sobre usar clúster sin red (pimlie) [#17031](https://github.com/nodejs/node/pull/17031)
 * [[`b16e6d29f1`](https://github.com/nodejs/node/commit/b16e6d29f1)] - **doc**: documentar explícitamente la opción highWaterMark (Sebastian Silbermann) [#17049](https://github.com/nodejs/node/pull/17049)
@@ -484,10 +484,10 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 
 ### Commits
 
-* [[`575a920a16`](https://github.com/nodejs/node/commit/575a920a16)] - **assert**: fix actual and expected order (Steve Jenkins) [#15866](https://github.com/nodejs/node/pull/15866)
-* [[`a0c1d10e91`](https://github.com/nodejs/node/commit/a0c1d10e91)] - **build**: remove cctest extension (Yihong Wang) [#16680](https://github.com/nodejs/node/pull/16680)
-* [[`c287f1235c`](https://github.com/nodejs/node/commit/c287f1235c)] - **build**: include src\tracing when linting on win (Daniel Bevenius) [#16720](https://github.com/nodejs/node/pull/16720)
-* [[`706812bc2f`](https://github.com/nodejs/node/commit/706812bc2f)] - **build**: skip bin override on windows (Hitesh Kanwathirtha) [#16460](https://github.com/nodejs/node/pull/16460)
+* [[`575a920a16`](https://github.com/nodejs/node/commit/575a920a16)] - **assert**: reparar orden actual y esperada (Steve Jenkins) [#15866](https://github.com/nodejs/node/pull/15866)
+* [[`a0c1d10e91`](https://github.com/nodejs/node/commit/a0c1d10e91)] - **build**: remover la extensión cctest (Yihong Wang) [#16680](https://github.com/nodejs/node/pull/16680)
+* [[`c287f1235c`](https://github.com/nodejs/node/commit/c287f1235c)] - **build**: incluir src\tracing cuando se haga linting en win (Daniel Bevenius) [#16720](https://github.com/nodejs/node/pull/16720)
+* [[`706812bc2f`](https://github.com/nodejs/node/commit/706812bc2f)] - **build**: omitir anulación de bin en windows (Hitesh Kanwathirtha) [#16460](https://github.com/nodejs/node/pull/16460)
 * [[`f4627603aa`](https://github.com/nodejs/node/commit/f4627603aa)] - **build**: fix npm install with --shared (Ben Noordhuis) [#16438](https://github.com/nodejs/node/pull/16438)
 * [[`6d63612e93`](https://github.com/nodejs/node/commit/6d63612e93)] - **build**: correct minor typo in lttng help message (Daniel Bevenius) [#16101](https://github.com/nodejs/node/pull/16101)
 * [[`de82db7f85`](https://github.com/nodejs/node/commit/de82db7f85)] - **build**: ignore empty folders in test-addons (Gregor) [#16031](https://github.com/nodejs/node/pull/16031)
