@@ -102,7 +102,7 @@ Este es el cuerpo de la prueba. Esta prueba es simple, solo prueba que un servid
 
 ### Temporizadores
 
-Avoid timers unless the test is specifically testing timers. There are multiple reasons for this. Mainly, they are a source of flakiness. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
+Evite usar temporizadores a menos que la prueba esté probando específicamente los temporizadores. Existen varias razones para esto. Mayormente, son una fuente de problemas. Para una explicación completa vaya [aquí](https://github.com/nodejs/testing/issues/27).
 
 In the event a test needs a timer, consider using the `common.platformTimeout()` method. It allows setting specific timeouts depending on the platform:
 
