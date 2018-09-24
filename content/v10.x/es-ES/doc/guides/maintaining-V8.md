@@ -81,9 +81,9 @@ En un momento dado, Node.js necesita mantener algunas ramas V8 diferentes para l
    </td>
    <td>2017-05-30
    </td>
-   <td>December 2019
+   <td>Diciembre 2019
    </td>
-   <td>6.1 (soon to be 6.2)
+   <td>6.1 (pronto será 6.2)
    </td>
    <td>2017-10-17 (6.2)
    </td>
@@ -95,7 +95,7 @@ En un momento dado, Node.js necesita mantener algunas ramas V8 diferentes para l
    </td>
    <td>2017-10-31
    </td>
-   <td>April 2018
+   <td>Abril 2018
    </td>
    <td>6.2
    </td>
@@ -120,9 +120,9 @@ En un momento dado, Node.js necesita mantener algunas ramas V8 diferentes para l
   </tr>
 </table>
 
-The versions of V8 used in Node.js v4.x, v6.x, and 8.x have already been abandoned by upstream V8. However, Node.js needs to continue supporting these branches for many months (Current branches) or several years (LTS branches).
+Las versiones de V8 utilizadas en Node.js v4.x, v6.x y 8.x ya han sido abandonadas por V8 upstream. Sin embargo, Node.js necesita continuar apoyando estas ramas durante muchos meses (ramas actuales), o por varios años (ramas LTS).
 
-## Maintenance Process
+## Proceso de mantenimiento
 
 Once a bug in Node.js has been identified to be caused by V8, the first step is to identify the versions of Node.js and V8 affected. The bug may be present in multiple different locations, each of which follows a slightly different process.
 
