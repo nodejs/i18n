@@ -2999,7 +2999,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Esta API libera un objeto de trabajo previamente asignado.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si hay una excepción de JavaScript pendiente.
 
 ### napi_queue_async_work
 
@@ -3012,12 +3012,12 @@ napi_status napi_queue_async_work(napi_env env,
                                   napi_async_work work);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] work`: The handle returned by the call to `napi_create_async_work`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] work`: El manejador devuelto por la llamada a `napi_create_async_work`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API requests that the previously allocated work be scheduled for execution.
+Esta API solicita que el trabajo asignado previamente sea programado para ejecución.
 
 ### napi_cancel_async_work
 
@@ -3030,16 +3030,16 @@ napi_status napi_cancel_async_work(napi_env env,
                                    napi_async_work work);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] work`: The handle returned by the call to `napi_create_async_work`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] work`: El manejador devuelto por la llamada a `napi_create_async_work`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API cancels queued work if it has not yet been started. If it has already started executing, it cannot be cancelled and `napi_generic_failure` will be returned. If successful, the `complete` callback will be invoked with a status value of `napi_cancelled`. The work should not be deleted before the `complete` callback invocation, even if it has been successfully cancelled.
+Esta API cancela los trabajos encolados si no han sido iniciado aún. Si ya comenzaron a ejecutarse, no pueden ser cancelados y se devolverá `napi_generic_failure`. Si es exitoso, el callback `complete` será invocado con un valor de estado de `napi_cancelled`. El trabajo no debe ser eliminado antes de la invocación del callback `complete`, incluso si fue cancelado de manera exitosa.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
-## Custom Asynchronous Operations
+## Operaciones Asíncronas Personalizadas
 
 The simple asynchronous work APIs above may not be appropriate for every scenario. When using any other asynchronous mechanism, the following APIs are necessary to ensure an asynchronous operation is properly tracked by the runtime.
 
