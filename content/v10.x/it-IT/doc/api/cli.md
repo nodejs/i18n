@@ -463,9 +463,9 @@ Se impostato su `1`, gli avvisi di processo vengono silenziati.
 added: v8.0.0
 -->
 
-Un elenco, separato da spazi, delle opzioni della command line. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
+Un elenco, separato da spazi, delle opzioni della command line. Le `options...` sono interpretate come se fossero state specificate sulla command line prima dell'attuale command line (così da essere sovrascritte). Node.js si concluderà con un errore se viene utilizzata un'opzione non consentita nell'ambiente, come ad esempio `-p` oppure uno script file.
 
-Node options that are allowed are:
+Le opzioni di Node consentite sono:
 
 - `--enable-fips`
 - `--force-fips`
@@ -492,7 +492,7 @@ Node options that are allowed are:
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-V8 options that are allowed are:
+Le opzioni di V8 consentite sono:
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
@@ -506,9 +506,9 @@ V8 options that are allowed are:
 added: v0.1.32
 -->
 
-`':'`-separated list of directories prefixed to the module search path.
+Elenco, separato da `':'`, di directory precedute dal percorso di ricerca del modulo.
 
-On Windows, this is a `';'`-separated list instead.
+Su Windows, si tratta di un'elenco seperato da `';'`.
 
 ### `NODE_PENDING_DEPRECATION=1`
 
@@ -516,7 +516,7 @@ On Windows, this is a `';'`-separated list instead.
 added: v8.0.0
 -->
 
-When set to `1`, emit pending deprecation warnings.
+Se impostato su `1`, emette gli avvisi di deprecazione in attesa.
 
 Le deprecazioni in attesa sono generalmente identiche alle deprecazioni in fase di esecuzione con l'eccezione notevole che sono *disattivate* di default e non verranno emesse a meno che non venga impostato il flag `--pending-deprecation` della command line o la variabile di ambiente `NODE_PENDING_DEPRECATION=1`. Le deprecazioni in attesa vengono utilizzate per fornire un tipo di meccanismo selettivo di "avviso rapido" che gli sviluppatori potrebbero sfruttare per rilevare l'utilizzo dell'API deprecata/obsoleta.
 
@@ -526,7 +526,7 @@ Le deprecazioni in attesa sono generalmente identiche alle deprecazioni in fase 
 added: v7.1.0
 -->
 
-When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
+Se impostato su `1`, dà istruzioni al module loader di conservare i collegamenti simbolici (symlink) durante la risoluzione ed il caching dei moduli.
 
 ### `NODE_REDIRECT_WARNINGS=file`
 
