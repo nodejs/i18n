@@ -362,9 +362,9 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
+Valuta il seguente argomento come JavaScript. I moduli che sono predefiniti nel REPL possono essere utilizzati anche in `script`.
 
-On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+Su Windows, l'utilizzo di `cmd.exe` farà sì che le virgolette singole non funzionino correttamente in quanto riconosce solo le doppie `"` per la citazione. Su Powershell o Git bash, sono utilizzabili sia `'` che `"`.
 
 ### `-h`, `--help`
 
@@ -372,7 +372,7 @@ On Windows, using `cmd.exe` a single quote will not work correctly because it on
 added: v0.1.3
 -->
 
-Print node command line options. The output of this option is less detailed than this document.
+Stampa le opzioni della command line del node. L'output di questa opzione è meno dettagliato di questo documento.
 
 ### `-i`, `--interactive`
 
@@ -380,7 +380,7 @@ Print node command line options. The output of this option is less detailed than
 added: v0.7.7
 -->
 
-Opens the REPL even if stdin does not appear to be a terminal.
+Apre il REPL anche se stdin non sembra essere un terminale.
 
 ### `-p`, `--print "script"`
 
@@ -393,7 +393,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Identical to `-e` but prints the result.
+Identico a `-e` ma stampa il risultato.
 
 ### `-r`, `--require module`
 
@@ -401,9 +401,9 @@ Identical to `-e` but prints the result.
 added: v1.6.0
 -->
 
-Preload the specified module at startup.
+Pre-carica il modulo specificato all'avvio.
 
-Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
+Seguono le regole di risoluzione del modulo di `require()`. `module` potrebbe essere il percorso per un file oppure il nome un node module.
 
 ### `-v`, `--version`
 
@@ -411,9 +411,9 @@ Follows `require()`'s module resolution rules. `module` may be either a path to 
 added: v0.1.3
 -->
 
-Print node's version.
+Stampa la versione del node.
 
-## Environment Variables
+## Variabili di Ambiente
 
 ### `NODE_DEBUG=module[,…]`
 
