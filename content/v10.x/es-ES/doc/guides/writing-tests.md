@@ -104,7 +104,7 @@ Este es el cuerpo de la prueba. Esta prueba es simple, solo prueba que un servid
 
 Evite usar temporizadores a menos que la prueba esté probando específicamente los temporizadores. Existen varias razones para esto. Mayormente, son una fuente de problemas. Para una explicación completa vaya [aquí](https://github.com/nodejs/testing/issues/27).
 
-In the event a test needs a timer, consider using the `common.platformTimeout()` method. It allows setting specific timeouts depending on the platform:
+En el evento la prueba necesita un temporizador, considere usar el método `common.platformTimeout()`. Permite configurar tiempos de espera específicos dependiendo de la plataforma:
 
 ```javascript
 const timer = setTimeout(fail, common.platformTimeout(4000));
