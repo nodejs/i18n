@@ -1,4 +1,4 @@
-# How to Write and Run Benchmarks in Node.js Core
+# Cómo Escribir y Ejecutar Pruebas de Rendimiento en el núcleo de Node.js
 
 ## Table of Contents
 
