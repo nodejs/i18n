@@ -307,9 +307,9 @@ $ make cctest
 
 ### Accesorio de prueba Node.js
 
-Hay un [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) nombrado `node_test_fixture.h` el cual puede ser incluido por pruebas de unidad. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
+Hay un [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) nombrado `node_test_fixture.h` el cual puede ser incluido por pruebas de unidad. El accesorio se encarga de configurar el ambiente Node.js y de desmontarlo luego de que las pruebas han terminado.
 
-It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
+También contiene un helper para crear argumentos para ser pasados a Node.js. Dependerá de lo que se está probando si esto es necesario o no.
 
 ### Test Coverage
 
