@@ -819,7 +819,7 @@ No se realiza la decodificación del `path`.
 
 #### urlObject.pathname
 
-La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo lo que sigue al `host` (incluyendo el `port`) y es previo a el inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
+La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo lo que sigue al `host` (incluyendo el `port`) y es previo al inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
 
 Por ejemplo `'/p/a/t/h'`.
 
@@ -994,7 +994,7 @@ Por ejemplo, el carácter espacio ASCII (`' '`) es codificado como `%20`. El car
 
 ### API de WHATWG
 
-El [Estándar URL de WHATWG](https://url.spec.whatwg.org/) utiliza un enfoque más selectivo y detallado para seleccionar caracteres codificados, que el que utiliza el Sistema heredado API.
+El [Estándar URL de WHATWG](https://url.spec.whatwg.org/) utiliza un enfoque más selectivo y detallado para seleccionar caracteres codificados que el que utiliza el Sistema heredado API.
 
 El algoritmo WHATWG define cuatro "conjuntos de porcentaje de codificación" que describen los rangos de los caracteres que deben ser código porciento:
 
@@ -1006,7 +1006,7 @@ El algoritmo WHATWG define cuatro "conjuntos de porcentaje de codificación" que
 
 * El *conjunto codificado userinfo* incluye el *conjunto ruta de codificación porcentual* y los puntos de código U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, y U+007C.
 
-El *conjunto codificado userinfo* es usado exclusivamente por el nombre de usuario y por las contraseñas codificadas dentro de la URL. El *conjunto codificado userinfo* es usado por la ruta de la mayoría de URLs. El *conjunto fragmento de codificación porcentual* es usado para fragmentos URL. El *conjunto fragmento de codificación porcentual* es usado para host y path bajo ciertas condiciones específicas, en adición al resto de casos.
+El *conjunto codificado userinfo* es usado exclusivamente para el nombre de usuario y las contraseñas codificadas dentro de la URL. El *conjunto codificado userinfo* es usado para la ruta de la mayoría de las URLs. El *conjunto fragmento de codificación porcentual* es usado para fragmentos URL. El *conjunto fragmento de codificación porcentual* es usado para host y path bajo ciertas condiciones específicas, en adición al resto de casos.
 
 Cuando aparecen caracteres no ASCII dentro del hostname, el hostname es codificado usando el algoritmo [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4). Tenga en cuenta, sin embargo, que el hostname *puede* contener *ambos* caracteres cifrados y codificados por porcentaje Punnycode. Por ejemplo:
 
