@@ -1461,7 +1461,7 @@ https://github.com/nodejs/node/commit/8d9766a9dfb1eea901219d2a865ce9300fe4d68e
 * windows/msi: añadir enlaces al menú de inicio al instalar (Jeroen Janssen)
 * windows: no instalar versión x64 en la carpeta "program files (x86)" (Matt Gollob)
 * domain: Reparar [#3379](https://github.com/joyent/node/issues/3379) domain.intercept ya no pasa argumento de error a cb (Marc Harter)
-* fs: hacer que los callbacks funcionen en el contexto global (Ben Noordhuis)
+* fs: hacer que las callbacks funcionen en el contexto global (Ben Noordhuis)
 * fs: habilitar fs.realpath en windows (isaacs)
 * child_process: exponer a UV_PROCESS_DETACHED como options.detached (Charlie McConnell)
 * child_process: nueva API de stdio para método .spawn() (Fedor Indutny)
@@ -1480,7 +1480,7 @@ https://github.com/nodejs/node/commit/782277f11a753ded831439ed826448c06fc0f356
 * Actualizar V8 a 3.11.1
 * Actualizar npm a 1.1.23
 * uv: volver a trabajar el esquema del conteo de referencias (Ben Noordhuis)
-* uv: añadir interface para unirse a bucles de eventos externos (Bert Belder)
+* uv: añadir interfaz para unirse a bucles de eventos externos (Bert Belder)
 * repl, readline: Manejar mejor a Ctrl+Z y SIGCONT (Nathan Rajlich)
 * fs: offsets de 64bits para llamadas fs (Igor Zinkovsky)
 * fs: añadir banderas "rs" y "rs+" abiertas a procesos sincrónicos (Kevin Bowman)
