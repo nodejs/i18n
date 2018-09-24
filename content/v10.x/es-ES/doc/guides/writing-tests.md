@@ -223,12 +223,12 @@ assert.throws(
 Por razones de rendimiento, solo usamos un subconjunto seleccionado de características ES.Next en código JavaScript en el directorio `lib`. Sin embargo, al escribir pruebas, para la facilidad del backporting, se recomienda usar aquellas características ES.Next que pueden ser usadas directamente sin una bandera en [todas las ramas mantenidas](https://github.com/nodejs/lts). [node.green](http://node.green/) enumera las características disponibles en cada versión, tales como:
 
 - `let` y `const` sobre `var`
-- Template literals over string concatenation
-- Arrow functions when appropriate
+- Literales de la plantilla sobre la concatenación de la string
+- Funciones de flecha cuando sea apropiado
 
-## Naming Test Files
+## Nombrar Archivos de Prueba
 
-Test files are named using kebab casing. The first component of the name is `test`. The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
+Archivos de prueba son nombrados usando kebab casing. El primer componente del nombre es `test`. The second is the module or subsystem being tested. The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
 
 For example, a test for the `beforeExit` event on the `process` object might be named `test-process-before-exit.js`. If the test specifically checked that arrow functions worked correctly with the `beforeExit` event, then it might be named `test-process-before-exit-arrow-functions.js`.
 
