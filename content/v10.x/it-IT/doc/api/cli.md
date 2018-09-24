@@ -579,7 +579,7 @@ Tenere presente che, a meno che l'ambiente del child non sia impostato in modo e
 
 Imposta il numero di thread utilizzati nel threadpool di libuv per impostare il `size` dei thread.
 
-Le API di sistema asincrone vengono utilizzate da Node.js ogni qual volta è possibile, ma lì dove non esistono, il threadpool di libuv viene utilizzato per creare delle API di node asincrone basate sulle API di sistema sincrone. Le API di Node.js che utilizzano il threadpool sono:
+Le API di sistema asincrone vengono utilizzate da Node.js ogni qual volta è possibile, ma lì dove non esistono viene utilizzato il threadpool di libuv per creare delle API di node asincrone basate sulle API di sistema sincrone. Le API di Node.js che utilizzano il threadpool sono:
 
 - tutte le API `fs`, diverse dalle API file watcher e dalle API che sono esplicitamente sincrone
 - `crypto.pbkdf2()`
