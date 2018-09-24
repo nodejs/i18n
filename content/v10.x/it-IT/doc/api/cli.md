@@ -288,7 +288,7 @@ Stampa le stack trace per gli avvisi di processo (incluse le deprecazioni).
 added: v2.4.0
 -->
 
-Track heap object allocations for heap snapshots.
+Traccia le allocazioni degli heap object per gli heap snapshot.
 
 ### `--use-bundled-ca`, `--use-openssl-ca`
 
