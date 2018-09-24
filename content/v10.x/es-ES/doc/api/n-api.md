@@ -2869,7 +2869,7 @@ La referencia opcional devuelta es, inicialmente, una referencia débil, lo que 
 
 Esta API puede modificar la cadena de prototipos del objeto envuelto. Después, la manipulación adicional de la cadena de prototipos de la envoltura puede ocasionar la falla de `napi_unwrap()`.
 
-Calling `napi_wrap()` a second time on an object will return an error. To associate another native instance with the object, use `napi_remove_wrap()` first.
+Llamar a `napi_unwrap()` por segunda vez en un objeto se devolverá un error. Para asociar otra instancia nativa con el objeto, utilizar primero `napi_remove_wrap()`.
 
 ### napi_unwrap
 
@@ -2883,15 +2883,15 @@ napi_status napi_unwrap(napi_env env,
                         void** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The object associated with the native instance.
-- `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] js_object`: El objeto asociado con la instancia nativa.
+- `[out] result`: Apuntador a la instancia nativa envuelta.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Retrieves a native instance that was previously wrapped in a JavaScript object using `napi_wrap()`.
+Recupera una instancia nativa que estaba envuelta previamente en un objeto de JavaScript usando `napi_wrap()`.
 
-When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` is invoked. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
+Cuando el código de JavaScript invoca un método o un accesor de propiedad en la clase, el `napi_callback` correspondiente es invocado. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
 
 ### napi_remove_wrap
 
