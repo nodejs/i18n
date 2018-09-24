@@ -543,7 +543,7 @@ added: v8.1.0
 
 * {number}
 
-La marca de tiempo que indica la última vez que este archivo fue modificado, expresado en milisegundos desde la Época POSIX.
+La marca de tiempo que indica la última vez que este archivo fue modificado, expresado en milisegundos desde el Tiempo POSIX.
 
 ### stats.ctimeMs
 
@@ -553,7 +553,7 @@ added: v8.1.0
 
 * {number}
 
-La marca de tiempo que indica la última vez que este archivo fue cambiado, expresado en milisegundos desde la Época POSIX.
+La marca de tiempo que indica la última vez que este archivo fue cambiado, expresado en milisegundos desde el Tiempo POSIX.
 
 ### stats.birthtimeMs
 
@@ -3794,7 +3794,7 @@ added: v10.0.0
 
 Lee datos del archivo especificado por `filehandle`.
 
-`buffer` es el búfer al cual se escribirán los datos.
+`buffer` es el búfer en el cual se escribirán los datos.
 
 `offset` es el offset dentro del búfer en donde se empieza a escribir.
 
