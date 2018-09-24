@@ -128,11 +128,11 @@ Una vez que se ha identificado que una falla en Node.js es causada por V8, el pr
 
 * Errores no arreglados. El error existe en la rama principal V8.
 * Solucionado, pero necesita backport. El error puede necesitar la transferencia a una o más ramas. 
-  * Backporting to active branches.
-  * Backporting to abandoned branches.
-* Backports identified by the V8 team. Bugs identified by upstream V8 that we haven't encountered in Node.js yet.
+  * Backporting a ramas activas.
+  * Backporting a ramas abandonadas.
+* Backports identificados por el equipo V8. Errores identificados por el upstream V8 que no hemos encontrado en Node.js todavía.
 
-### Unfixed Upstream Bugs
+### Errores Upstream no corregidos
 
 If the bug can be reproduced on the [Node.js `canary` branch], Chromium canary, or V8 tip-of-tree, and the test case is valid, then the bug needs to be fixed upstream first.
 
