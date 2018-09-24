@@ -705,7 +705,7 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 * crypto: limpiar pila de errores (Ben Noordhuis)
 * test: establecer opcionalmente common.PORT mediante variable env (Timothy J Fontaine)
 * path: Arrojar TypeError al pasar argumentos no-strings a path.resolve/join (isaacs, Arianit Uka)
-* crypto: reparar acceso a memoria no inicializada en openssl (Ben Noordhuis)
+* crypto: reparar acceso a memoria sin inicializar en openssl (Ben Noordhuis)
 
 <a id="0.9.10"></a>
 
@@ -1354,7 +1354,7 @@ https://github.com/nodejs/node/commit/2134aa3d5c622fc3c3b02ccb713fcde0e0df479a
   * Reducir fallos de "motores" a una advertencia
   * Usar nueva terminación zsh si está disponible (Jeremy Cantrell)
 
-* Reparación [#3577](https://github.com/joyent/node/issues/3577) "Des-romper" require('sys')
+* Reparar [#3577](https://github.com/joyent/node/issues/3577) "Des-romper" require('sys')
 
 * util: acelerar formateo de arrays/objetos grandes (Ben Noordhuis)
 * windows: hacer que fs.realpath(Sync) funcione con rutas UNC (Bert Belder)
@@ -1380,7 +1380,7 @@ https://github.com/nodejs/node/commit/8b8a7a7f9b41e74e1e810d0330738ad06fc302ec
 * npm: Actualizar a 1.1.32
 * Desaprobar iowatcher (Ben Noordhuis)
 * windows: actualizar ícono (Bert Belder)
-* http: Silenciar advertencias de 'NO DEBE tener un cuerpo' para debug() (isaacs)
+* http: Silenciar advertencias de "NO DEBE tener un cuerpo" para debug() (isaacs)
 * Mover contenido de blog.nodejs.org al repositorio (isaacs)
 * Reparar [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() en pipe(dest) (isaacs)
 * crypto: reparar reporte de errores en SetKey() (Fedor Indutny)
@@ -1398,9 +1398,9 @@ https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
 * npm: Actualizar a 1.1.30
   
   * "npm init" mejorado
-  * Reparar el error "cb nunca llamó" de "oudated" and "update"
+  * Reparar el error "cb nunca llamó" de "oudated" y "update"
   * Añadir configuración de --save-bundle|-B
-  * Reparar isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Hacer que shims para script y ventanas de npm estén concientes de cygwin
+  * Reparar isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Hacer que shims para script y ventanas de npm estén conscientes de cygwin
   * Reparar isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Usar --save(-dev|-optional) en rm de npm
   * Opción `logstream` para reemplazar `logfd` removido (Rod Vagg)
   * Leer descripciones predeterminadas desde archivos README.md
