@@ -239,23 +239,22 @@ Por ejemplo, una prueba para el evento `beforeExit` en el objeto `process` puede
 Algunas de las pruebas para la implementación (nombrada `test-whatwg-url-*.js`) son importadas del [Proyecto de Pruebas de Plataforma Web](https://github.com/w3c/web-platform-tests/tree/master/url). Estas pruebas importadas serán envueltas de esta forma:
 
 ```js
-/* Las siguientes pruebas son copiadas del WPT. Modifications to them should be
-   upstreamed first. Refs:
+/* Las siguientes pruebas son copiadas del WPT. Las modificaciones a ellas deben ser primero upstreamed. Refs:
    https://github.com/w3c/web-platform-tests/blob/8791bed/url/urlsearchparams-stringifier.html
    License: http://www.w3.org/Consortium/Legal/2008/04-testsuite-copyright.html
 */
 /* eslint-disable */
 
-// Test code
+// Código de la prueba
 
 /* eslint-enable */
 ```
 
-To improve tests that have been imported this way, please send a PR to the upstream project first. When the proposed change is merged in the upstream project, send another PR here to update Node.js accordingly. Be sure to update the hash in the URL following `WPT Refs:`.
+Para mejorar las pruebas que han sido importadas de esta forma, por favor enviar un PR al proyecto upstream primero. Cuando el cambio propuesto se combina con el proyecto upstream, envíe otro PR aquí para actualizar Node.js en consecuencia. Asegúrese de actualizar el hash en el siguiente URL `WPT Refs:`.
 
-## C++ Unit test
+## Prueba de la Unidad C++
 
-C++ code can be tested using [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
+El código C++ puede ser probado usando [Google Test](https://github.com/google/googletest). La mayoría de las características en Node.js pueden ser probadas usando los métodos descritos previamente en este documento. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
 
 ### Adding a new test
 
