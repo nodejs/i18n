@@ -2940,9 +2940,9 @@ napi_status napi_queue_async_work(napi_env env,
                                   napi_async_work work);
 ```
 
-[`napi_cancel_async_work`][] can be used if the work needs to be cancelled before the work has started execution.
+[`napi_cancel_async_work`][] puede ser utilizado si el trabajo necesita ser cancelado antes de que haya iniciado la ejecución.
 
-After calling [`napi_cancel_async_work`][], the `complete` callback will be invoked with a status value of `napi_cancelled`. The work should not be deleted before the `complete` callback invocation, even when it was cancelled.
+Después de llamar a [`napi_cancel_async_work`][], el callback `complete` será invocado con un valor de estado de `napi_cancelled`. El trabajo no debe ser eliminado antes de la invocación del callback `complete`, incluso cuando fue cancelado.
 
 ### napi_create_async_work
 
@@ -2965,11 +2965,11 @@ napi_status napi_create_async_work(napi_env env,
                                    napi_async_work* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_resource`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] async_resource_name`: Identifier for the kind of resource that is being provided for diagnostic information exposed by the `async_hooks` API.
-- `[in] execute`: The native function which should be called to execute the logic asynchronously. The given function is called from a worker pool thread and can execute in parallel with the main event loop thread.
-- `[in] complete`: The native function which will be called when the asynchronous logic is completed or is cancelled. The given function is called from the main event loop thread.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] async_resource`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
+- `[in] async_resource_name`: Identificador para el tipo de recurso que está siendo proporcionado para la información de diagnóstico expuesta por la API `async_hooks`.
+- `[in] execute`: La función nativa que debe ser llamada para ejecutar la lógica de forma asíncrona. La función dada es llamada desde un hilo de grupo de trabajo y se puede en paralelo con el hilo de bucle de evento principal.
+- `[in] complete`: La función nativa que será llamada cuando la lógica asíncrona esté completa o cancelada. The given function is called from the main event loop thread.
 - `[in] data`: User-provided data context. This will be passed back into the execute and complete functions.
 - `[out] result`: `napi_async_work*` which is the handle to the newly created async work.
 
