@@ -12,7 +12,7 @@ V8 y Chromium siguen una [cadencia de liberación de aproximadamente 6 semanas](
 
 Por ejemplo, en el momento de escribir esto:
 
-* **Stable**: V8 5.4 se envía actualmente como parte de Chromium estable. Esta rama fue creada aprox. 6 semanas antes desde que V8 5.3 se envió como estable.
+* **Estable**: V8 5.4 se envía actualmente como parte de Chromium estable. Esta rama fue creada aprox. 6 semanas antes desde que V8 5.3 se envió como estable.
 * **Beta**: V8 5.5 está actualmente en fase beta. Será promovido a estable luego; aproximadamente 6 semanas después del envío de V8 5.4 como estable.
 * **Master**: V8 tip-of-tree corresponde a V8 5.6. Esta rama se lanza regularmente como parte de las compilaciones Chromium **canary**. Se promocionará a beta luego, cuando el V8 5.5 se envíe como estable.
 
@@ -22,8 +22,8 @@ Todas las ramas más antiguas son abandonadas y no son mantenidas por el equipo 
 
 El proceso para respaldar las correcciones de errores en las ramas activas está oficialmente documentado [en la wiki de V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). El sumario del proceso es:
 
-* V8 only supports active branches. There is no testing done on any branches older than the current stable/beta/master.
-* A fix needing backport is tagged w/ *merge-request-x.x* tag. This can be done by anyone interested in getting the fix backported. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
+* V8 solo admite ramas activas. No se realizan pruebas en ramas anteriores a la estable/beta/master actual.
+* Una solución que necesita backport está etiquetada con la etiqueta *merge-request-x.x*. This can be done by anyone interested in getting the fix backported. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
 * Fixes need some 'baking time' before they can be approved for backporting. This means waiting a few days to ensure that no issues are detected on the canary/beta builds.
 * Once ready, the issue is tagged w/ *merge-approved-x.x* and one can do the actual merge by using the scripts on the [wiki page](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
 * Merge requests to an abandoned branch will be rejected.
