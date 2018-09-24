@@ -534,7 +534,7 @@ Se impostato su `1`, dà istruzioni al module loader di conservare i collegament
 added: v8.0.0
 -->
 
-When set, process warnings will be emitted to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead. This is equivalent to using the `--redirect-warnings=file` command-line flag.
+Se impostato, gli avvisi di processo verranno emessi sul file specificato invece di essere stampati sullo stderr. Se il file non esiste verrà creato, invece se esiste verrà aggiunto. Se si verifica un errore durante il tentativo di scrittura dell'avviso sul file, questo verrà scritto sullo stderr. È equivalente all'utilizzo del flag `--redirect-warnings=file` della command line.
 
 ### `NODE_REPL_HISTORY=file`
 
@@ -542,7 +542,7 @@ When set, process warnings will be emitted to the given file instead of printing
 added: v3.0.0
 -->
 
-Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+Percorso del file utilizzato per memorizzare la cronologia REPL persistente. Il percorso predefinito è `~/.node_repl_history`, che viene sovrascritto da questa variabile. L'impostazione del valore su una stringa vuota (`''` oppure `' '`) disabilita la cronologia REPL persistente.
 
 ### `OPENSSL_CONF=file`
 
@@ -550,10 +550,10 @@ Path to the file used to store the persistent REPL history. The default path is 
 added: v6.11.0
 -->
 
-Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Carica un file con configurazione OpenSSL all'avvio. Tra gli altri usi, può essere utilizzato per abilitare la crittografia conforme al FIPS se Node.js è compilato con `./configure
 --openssl-fips`.
 
-If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
+Se viene utilizzata l'opzione [`--openssl-config`][] della command line, la variabile di ambiente viene ignorata.
 
 ### `SSL_CERT_DIR=dir`
 
@@ -561,7 +561,7 @@ If the [`--openssl-config`][] command line option is used, the environment varia
 added: v7.7.0
 -->
 
-If `--use-openssl-ca` is enabled, this overrides and sets OpenSSL's directory containing trusted certificates.
+Se viene abilitato `--use-openssl-ca`, questo sovrascrive e imposta la directory di OpenSSL contenente i certificati attendibili.
 
 Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
