@@ -2657,4 +2657,4 @@ Si `name` es igual a `Http2Session`, el `PerformanceEntry` contendrá las siguie
 * `pingRTT` {number} El número de milisegundos transcurridos desde la transmisión de un frame `PING` y la recepción de su reconocimiento. Solo está presente si un frame de `PING` ha sido enviado en la `Http2Session`.
 * `streamAverageDuration` {number} La duración promedio (en milisegundos) para todas las instancias de `Http2Stream` .
 * `streamCount` {number} El número de instancias de `Http2Stream` procesadas por la `Http2Session`.
-* `type` {string} Either `'server'` or `'client'` to identify the type of `Http2Session`.
+* `type` {string} Utilice `'server'` o `'client'` para identificar el tipo de `Http2Session`.
