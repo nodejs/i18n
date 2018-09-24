@@ -437,9 +437,9 @@ Se impostato su `1`, non verranno utilizzati i colori nel REPL.
 added: v7.3.0
 -->
 
-Quando è impostato, i ben noti "root" CA (come VeriSign) verranno estesi con i certificati aggiuntivi all'interno di `file`. Il file deve essere composto da uno o più certificati attendibili in formato PEM. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
+Quando è impostato, i ben noti "root" CA (come VeriSign) verranno estesi con i certificati aggiuntivi all'interno di `file`. Il file deve essere composto da uno o più certificati attendibili in formato PEM. Verrà emesso un messaggio con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) (solo una volta) se il file è assente o è errato, ma gli eventuali errori verranno ugualmente ignorati.
 
-Note that neither the well known nor extra certificates are used when the `ca` options property is explicitly specified for a TLS or HTTPS client or server.
+Da notare che né i certificati conosciuti né i certificati aggiuntivi vengono utilizzati quando la proprietà `ca` delle opzioni viene specificata esplicitamente per un client o un server TLS o HTTPS.
 
 ### `NODE_ICU_DATA=file`
 
@@ -447,7 +447,7 @@ Note that neither the well known nor extra certificates are used when the `ca` o
 added: v0.11.15
 -->
 
-Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled with small-icu support.
+Percorso dati per i dati ICU (`Intl` object). Estenderà i dati collegati quando saranno compilati con il supporto small-icu.
 
 ### `NODE_NO_WARNINGS=1`
 
@@ -455,7 +455,7 @@ Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled
 added: v6.11.0
 -->
 
-When set to `1`, process warnings are silenced.
+Se impostato su `1`, gli avvisi di processo vengono silenziati.
 
 ### `NODE_OPTIONS=options...`
 
@@ -463,7 +463,7 @@ When set to `1`, process warnings are silenced.
 added: v8.0.0
 -->
 
-A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
+Un elenco, separato da spazi, delle opzioni della command line. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
 Node options that are allowed are:
 
