@@ -296,13 +296,13 @@ Traccia le allocazioni degli heap object per gli heap snapshot.
 added: v6.11.0
 -->
 
-Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. The default store is selectable at build-time.
+Utilizza il Mozilla CA store in bundle fornito dalla versione attuale di Node.js oppure il CA store predefinito di OpenSSL. Lo store predefinito è selezionabile in fase di build.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
+Il CA store in bundle, fornito da Node.js, è uno snapshot del Mozilla CA store che viene corretto al momento del rilascio. È identico su tutte le piattaforme supportate.
 
-Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+L'utilizzo dell'OpenSSL store consente modifiche esterne dello store stesso. Per la maggior parte delle distribuzioni Linux e BSD, questo store è gestito dai responsabili della distribuzione e dagli amministratori del sistema. La posizione dell'OpenSSL CA store dipende dalla configurazione della libreria OpenSSL, ma può essere modificata in fase di esecuzione utilizzando le variabili di ambiente.
 
-See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
+Vedi `SSL_CERT_DIR` e `SSL_CERT_FILE`.
 
 ### `--v8-options`
 
@@ -310,9 +310,9 @@ See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 added: v0.1.3
 -->
 
-Print V8 command line options.
+Stampa le opzioni della command line di V8.
 
-V8 options allow words to be separated by both dashes (`-`) or underscores (`_`).
+Le opzioni di V8 consentono alle parole di essere separate sia dai trattini (`-`) che dai trattini bassi (`_`).
 
 For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 
