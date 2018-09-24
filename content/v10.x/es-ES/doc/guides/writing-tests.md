@@ -200,14 +200,14 @@ const assert = require('assert');
 const freelist = require('internal/freelist');
 ```
 
-### Assertions
+### Aserciones
 
-When writing assertions, prefer the strict versions:
+Al escribir aserciones, prefiera las versiones estrictas:
 
-- `assert.strictEqual()` over `assert.equal()`
-- `assert.deepStrictEqual()` over `assert.deepEqual()`
+- `assert.strictEqual()` sobre `assert.equal()`
+- `assert.deepStrictEqual()` sobre `assert.deepEqual()`
 
-When using `assert.throws()`, if possible, provide the full error message:
+Al usar `assert.throws()`, si es posible, proporcione el mensaje de error completo:
 
 ```js
 assert.throws(
@@ -218,9 +218,9 @@ assert.throws(
 );
 ```
 
-### ES.Next features
+### Características ES.Next
 
-For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
+Por razones de rendimiento, solo usamos un subconjunto seleccionado de características ES.Next en código JavaScript en el directorio `lib`. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release, such as:
 
 - `let` and `const` over `var`
 - Template literals over string concatenation
