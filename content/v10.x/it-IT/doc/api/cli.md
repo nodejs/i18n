@@ -586,6 +586,6 @@ Le API di sistema asincrone vengono utilizzate da Node.js ogni qual volta è pos
 - `crypto.randomBytes()`, a meno che non venga utilizzato senza un callback
 - `crypto.randomFill()`
 - `dns.lookup()`
-- all `zlib` APIs, other than those that are explicitly synchronous
+- tutte le API `zlib`, diverse dalle API che sono esplicitamente sincrone
 
-Because libuv's threadpool has a fixed size, it means that if for whatever reason any of these APIs takes a long time, other (seemingly unrelated) APIs that run in libuv's threadpool will experience degraded performance. In order to mitigate this issue, one potential solution is to increase the size of libuv's threadpool by setting the `'UV_THREADPOOL_SIZE'` environment variable to a value greater than `4` (its current default value). For more information, see the [libuv threadpool documentation](http://docs.libuv.org/en/latest/threadpool.html).
+Poiché il threadpool di libuv ha una dimensione fissa, ciò che se per qualsiasi ragione una di queste API occupa più tempo del previsto, le altre API (apparentemente non correlate) che vengono eseguite nel threadpool di libuv avranno prestazioni ridotte. Al fine di attenuare questo problema, una possibile soluzione sarebbe aumentare la dimensione del threadpool di libuv impostando la variabile di ambiente `'UV_THREADPOOL_SIZE'` su un valore maggiore di `4` (che è l'attuale valore predefinito). Per maggiori informazioni, vedi la [documentazione del threadpool di libuv](http://docs.libuv.org/en/latest/threadpool.html).
