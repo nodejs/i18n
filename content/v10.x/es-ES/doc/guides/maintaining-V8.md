@@ -16,11 +16,11 @@ Por ejemplo, en el momento de escribir esto:
 * **Beta**: V8 5.5 está actualmente en fase beta. Será promovido a estable luego; aproximadamente 6 semanas después del envío de V8 5.4 como estable.
 * **Master**: V8 tip-of-tree corresponde a V8 5.6. Esta rama se lanza regularmente como parte de las compilaciones Chromium **canary**. Se promocionará a beta luego, cuando el V8 5.5 se envíe como estable.
 
-All older branches are abandoned and are not maintained by the V8 team.
+Todas las ramas más antiguas son abandonadas y no son mantenidas por el equipo V8.
 
-### V8 merge process overview
+### Descripción general del proceso de fusión V8
 
-The process for backporting bug fixes to active branches is officially documented [on the V8 wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). The summary of the process is:
+El proceso para respaldar las correcciones de errores en las ramas activas está oficialmente documentado [en la wiki de V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). El sumario del proceso es:
 
 * V8 only supports active branches. There is no testing done on any branches older than the current stable/beta/master.
 * A fix needing backport is tagged w/ *merge-request-x.x* tag. This can be done by anyone interested in getting the fix backported. Issues with this tag are reviewed by the V8 team regularly as candidates for backporting.
