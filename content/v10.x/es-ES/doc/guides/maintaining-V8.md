@@ -144,18 +144,18 @@ Si el error se puede reproducir en la [rama Node.js `canary`], Chromium canary o
 
 ### Backporting a ramas activas
 
-Si el error existe en cualquiera de las ramas activas de V8, es posible que necesitemos obtener la solución refactorizada. At any given time there are [two active branches](https://build.chromium.org/p/client.v8.branches/console) (beta and stable) in addition to master. The following steps are needed to backport the fix:
+Si el error existe en cualquiera de las ramas activas de V8, es posible que necesitemos obtener la solución refactorizada. En cualquier momento dado hay [dos ramas activas](https://build.chromium.org/p/client.v8.branches/console) (beta y estable) además de la master. Los siguientes pasos son necesarios para respaldar la corrección:
 
-* Identify which version of V8 the bug was fixed in.
-* Identify if any active V8 branches still contain the bug:
-* A tracking bug is needed to request a backport. 
-  * If there isn't already a V8 bug tracking the fix, open a new merge request bug using this [Node.js specific template](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20merge%20request).
-  * If a bug already exists 
-    * Add a reference to the GitHub issue.
-    * Attach *merge-request-x.x* labels to the bug for any active branches that still contain the bug. (e.g. merge-request-5.3, merge-request-5.4)
-    * Add ofrobots-at-google.com to the cc list.
-* Once the merge has been approved, it should be merged using the [merge script documented in the V8 wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching). Merging requires commit access to the V8 repository. If you don't have commit access you can indicate someone on the V8 team can do the merge for you.
-* It is possible that the merge request may not get approved, for example if it is considered to be a feature or otherwise too risky for V8 stable. In such cases we float the patch on the Node.js side. See the process on 'Backporting to Abandoned branches'.
+* Identifica en qué versión de V8 se solucionó el error.
+* Identifica si alguna rama V8 activa todavía contiene el error:
+* Se necesita un error de seguimiento para solicitar un backport. 
+  * Si todavía no hay un error V8 que rastree la corrección, abra un nuevo error de solicitud de fusión usando esta [plantilla específica de Node.js](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20merge%20request).
+  * Si ya existe un error 
+    * Agregue una referencia al problema GitHub.
+    * Adjunte etiquetas *merge-request-x.x* al error para cualquier rama activa que aún contenga el error. (por ejemplo, merge-request-5.3, merge-request-5.4)
+    * Agregue ofrobots-at-google.com a la lista cc.
+* Una vez que la fusión ha sido aprobada, debe fusionarse usando el [script de fusión documentado en la wiki de V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). La fusión requiere el acceso de confirmación al repositorio de V8. Si no tiene acceso de confirmación puede indicar que alguien en el equipo de V8 puede hacer la fusión por usted.
+* Es posible que la solicitud de fusión no sea aprobada, por ejemplo, si se considera que es una característica o si es demasiado arriesgada para V8 estable. En tales casos, flotamos el parche en el lado de Node.js. Vea el proceso sobre 'Backporting a ramas abandonadas'.
 * Once the fix has been merged upstream, it can be picked up during an update of the V8 branch (see below).
 
 ### Backporting to Abandoned Branches
