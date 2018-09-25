@@ -2968,8 +2968,8 @@ napi_status napi_create_async_work(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] async_resource`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
 - `[in] async_resource_name`: Identificador para el tipo de recurso que está siendo proporcionado para la información de diagnóstico expuesta por la API `async_hooks`.
-- `[in] execute`: La función nativa que debe ser llamada para ejecutar la lógica de forma asíncrona. La función dada es llamada desde un hilo de grupo de trabajo y se puede en paralelo con el hilo de bucle de evento principal.
-- `[in] complete`: La función nativa que será llamada cuando la lógica asíncrona esté completa o cancelada. La función dada es llamada desde el hilo de bucle de evento principal.
+- `[in] execute`: La función nativa que debe ser llamada para ejecutar la lógica de forma asíncrona. La función dada es llamada desde un hilo de un pool y se puede en paralelo con el hilo del bucle de evento principal.
+- `[in] complete`: La función nativa que será llamada cuando la lógica asíncrona esté completa o cancelada. La función dada es llamada desde el hilo del bucle de evento principal.
 - `[in] data`: Contexto de datos proporcionado por el usuario. Este será pasado de vuelta a las funciones de ejecución y completación.
 - `[out] result`: `napi_async_work*` que es el manejador del trabajo asíncrono recientemente creado.
 
@@ -2993,7 +2993,7 @@ napi_status napi_delete_async_work(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] work`: El manejador devuelto por la llamada a `napi_create_async_work`.
+- `[in] work`: El handle devuelto por la llamada a `napi_create_async_work`.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
@@ -3031,11 +3031,11 @@ napi_status napi_cancel_async_work(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[in] work`: El manejador devuelto por la llamada a `napi_create_async_work`.
+- `[in] work`: El handle devuelto por la llamada a `napi_create_async_work`.
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-Esta API cancela los trabajos encolados si no han sido iniciado aún. Si ya comenzaron a ejecutarse, no pueden ser cancelados y se devolverá `napi_generic_failure`. Si es exitoso, el callback `complete` será invocado con un valor de estado de `napi_cancelled`. El trabajo no debe ser eliminado antes de la invocación del callback `complete`, incluso si fue cancelado de manera exitosa.
+Esta API cancela el trabajo en cola, si no ha sido iniciado aún. Si ya comenzaron a ejecutarse, no puede ser cancelado y se devolverá `napi_generic_failure`. Si es exitoso, el callback `complete` será invocado con un valor de estado de `napi_cancelled`. El trabajo no debe ser eliminado antes de la invocación del callback `complete`, incluso si fue cancelado de manera exitosa.
 
 Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
