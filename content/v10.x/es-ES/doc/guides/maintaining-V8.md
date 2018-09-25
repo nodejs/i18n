@@ -228,29 +228,29 @@ El bosquejo del proceso es:
 ```shell
 # Suponiendo que tu fork de Node.js está desprotegido en $NODE_DIR
 # y desea actualizar la rama master Node.js.
-# Find the current (OLD) version in
+# Encuentre la versión actual (VIEJA) en
 # $NODE_DIR/deps/v8/include/v8-version.h
 cd $NODE_DIR
 git checkout master
 git merge --ff-only origin/master
 git checkout -b V8_NEW_VERSION
 curl -L https://github.com/v8/v8/compare/${V8_OLD_VERSION}...${V8_NEW_VERSION}.patch | git apply --directory=deps/v8
-# You may want to amend the commit message to describe the nature of the update
+# Es posible que desee modificar el mensaje de commit para describir la naturaleza de la actualización
 ```
 
-V8 also keeps tags of the form *5.4-lkgr* which point to the *Last Known Good Revision* from the 5.4 branch that can be useful in the update process above.
+V8 también mantiene etiquetas de la forma *5.4-lkgr* que apuntan a la *última revisión conocida* de la rama 5.4 que puede ser útil en el proceso de actualización anterior.
 
-The [`update-v8`](https://github.com/targos/update-v8) tool can be used to simplify this task. Run `update-v8 minor` to apply a minor update.
+La herramienta [`update-v8`](https://github.com/targos/update-v8) se puede usar para simplificar esta tarea. Ejecute `update-v8 minor` para aplicar una actualización menor.
 
-### Major Updates
+### Actualizaciones principales
 
-We upgrade the version of V8 in Node.js master whenever a V8 release goes stable upstream, that is, whenever a new release of Chrome comes out.
+Actualizamos la versión de V8 en el master Node.js cada vez que una versión V8 se vuelve estable en upstream, es decir, cada vez que sale una nueva versión de Chrome.
 
-Upgrading major versions would be much harder to do with the patch mechanism above. A better strategy is to
+La actualización de las versiones principales sería mucho más difícil de hacer con el mecanismo del parche anterior. Una mejor estrategia es
 
-1. Audit the current master branch and look at the patches that have been floated since the last major V8 update.
-2. Replace the copy of V8 in Node.js with a fresh checkout of the latest stable V8 branch. Special care must be taken to recursively update the DEPS that V8 has a compile time dependency on (at the moment of this writing, these are only trace_event and gtest_prod.h)
-3. Reset the `v8_embedder_string` variable to "-node.0" in `common.gypi`.
+1. Audite la rama master actual y observe los parches que han estado flotando desde la última actualización principal de V8.
+2. Reemplace la copia de V8 en Node.js con una nueva comprobación de la última rama estable de V8. Se debe tener especial cuidado para actualizar recursivamente los DEPS en los que V8 tiene una dependencia de tiempo de compilación (al momento de escribir esto, estos son solo trace_event y gtest_prod.h)
+3. Restablezca la variable `v8_embedder_string` a "-node.0" en `common.gypi`.
 4. Refloat (cherry-pick) all the patches from list computed in 1) as necessary. Some of the patches may no longer be necessary.
 
 To audit for floating patches:
