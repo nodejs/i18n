@@ -25,25 +25,25 @@ La mayoría de las pruebas de rendimiento HTTP requieren que se instale un bench
 
 `Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el Node.js ejecutable que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese que la versión de Node.js en la ruta no está alterada.
 
-`wrk` may be available through one of the available package managers. If not, it can be easily built [from source](https://github.com/wg/wrk) via `make`.
+`wrk` puede estar disponible a través de uno de los gestores de paquetes disponibles. Si no es así, puede ser construido fácilmente [desde este link](https://github.com/wg/wrk) vía `make`.
 
-By default, `wrk` will be used as the benchmarker. If it is not available, `autocannon` will be used in its place. When creating an HTTP benchmark, the benchmarker to be used should be specified by providing it as an argument:
+Por defecto, `wrk` será usado como el benchmarker. Si no está disponible, se utilizará `autocannon` en su lugar. Al crear una prueba de rendimiento HTTP, el benchmarker a ser usado debe ser especificado al proporcionarlo como un argumento:
 
 `node benchmark/run.js --set benchmarker=autocannon http`
 
 `node benchmark/http/simple.js benchmarker=autocannon`
 
-#### HTTP/2 Benchmark Requirements
+#### Requisitos de la Prueba de Rendimiento HTTP/2
 
-To run the `http2` benchmarks, the `h2load` benchmarker must be used. The `h2load` tool is a component of the `nghttp2` project and may be installed from [nghttp2.org](http://nghttp2.org) or built from source.
+Para ejecutar las pruebas de rendimiento `http2`, el benchmarker `h2load` debe ser usado. La herramienta `h2load` es un componente del proyecto `nghttp2` y puede ser instalada desde [nghttp2.org](http://nghttp2.org) o construida desde la fuente.
 
 `node benchmark/http2/simple.js benchmarker=autocannon`
 
-### Benchmark Analysis Requirements
+### Requisitos del Análisis de la Prueba de Rendimiento
 
-To analyze the results, `R` should be installed. Use one of the available package managers or download it from https://www.r-project.org/.
+Para analizar los resultados, se debe instalar `R`. Use uno de los gestores de paquetes disponibles o descárguelo desde https://www.r-project.org/.
 
-The R packages `ggplot2` and `plyr` are also used and can be installed using the R REPL.
+Los paquetes R `ggplot2` y `plyr` también son usados y pueden ser instalados usando el REPL R.
 
 ```R
 $ R
