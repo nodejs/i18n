@@ -51,23 +51,23 @@ install.packages("ggplot2")
 install.packages("plyr")
 ```
 
-In the event that a message is reported stating that a CRAN mirror must be selected first, specify a mirror by adding in the repo parameter.
+En el evento en el que es reportado un mensaje declarando que un espejo CRAN debe ser seleccionado primero, especifique un espejo agregando el parámetro repo.
 
-If we used the "http://cran.us.r-project.org" mirror, it could look something like this:
+Si usamos el espejo "http://cran.us.r-project.org", podría verse algo así:
 
 ```R
 install.packages("ggplot2", repo="http://cran.us.r-project.org")
 ```
 
-Of course, use an appropriate mirror based on location. A list of mirrors is [located here](https://cran.r-project.org/mirrors.html).
+Por supuesto, utilice un espejo apropiado basado en la ubicación. [Acá](https://cran.r-project.org/mirrors.html) está ubicada una lista de espejos.
 
-## Running benchmarks
+## Ejecutar pruebas de rendimiento
 
-### Running individual benchmarks
+### Ejecutar pruebas de rendimiento individuales
 
-This can be useful for debugging a benchmark or doing a quick performance measure. But it does not provide the statistical information to make any conclusions about the performance.
+Esto puede ser útil para depurar una prueba de rendimiento o para hacer una medida de rendimiento rápida. Pero no proporciona la información estadística para hacer alguna conclusión sobre el rendimiento.
 
-Individual benchmarks can be executed by simply executing the benchmark script with node.
+Las pruebas de rendimiento individuales pueden ser ejecutadas al simplemente ejecutar el script de la prueba de rendimiento con node.
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js
@@ -82,7 +82,7 @@ buffers/buffer-tostring.js n=10000000 len=64 arg=false: 8718280.70650129
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 4103857.0726124765
 ```
 
-Each line represents a single benchmark with parameters specified as `${variable}=${value}`. Each configuration combination is executed in a separate process. This ensures that benchmark results aren't affected by the execution order due to V8 optimizations. **The last number is the rate of operations measured in ops/sec (higher is better).**
+Cada línea representa una sola prueba de rendimiento con parámetros especificados como `${variable}=${value}`. Cada combinación de configuración es ejecutada en un proceso separado. This ensures that benchmark results aren't affected by the execution order due to V8 optimizations. **The last number is the rate of operations measured in ops/sec (higher is better).**
 
 Furthermore a subset of the configurations can be specified, by setting them in the process arguments:
 
