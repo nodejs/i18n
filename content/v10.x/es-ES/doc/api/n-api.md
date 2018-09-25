@@ -3252,19 +3252,19 @@ do_something_asynchronous(deferred);
 return promise;
 ```
 
-The above function `do_something_asynchronous()` would perform its asynchronous action and then it would resolve or reject the deferred, thereby concluding the promise and freeing the deferred:
+La función anterior `do_something_asynchronous()` llevaría a cabo su acción asíncrona y entonces resolvería o rechazaría al diferido, concluyendo así la promesa y liberando al diferido:
 
 ```c
 napi_deferred deferred;
 napi_value undefined;
 napi_status status;
 
-// Create a value with which to conclude the deferred.
+// Crea un valor con el cual concluir al diferido.
 status = napi_get_undefined(env, &undefined);
 if (status != napi_ok) return NULL;
 
-// Resolve or reject the promise associated with the deferred depending on
-// whether the asynchronous action succeeded.
+// Resuelve o rechaza la promesa asociada con el diferido, según 
+// si la acción asíncrona fue exitosa.
 if (asynchronous_action_succeeded) {
   status = napi_resolve_deferred(env, deferred, undefined);
 } else {
@@ -3272,7 +3272,7 @@ if (asynchronous_action_succeeded) {
 }
 if (status != napi_ok) return NULL;
 
-// At this point the deferred has been freed, so we should assign NULL to it.
+// En este punto el diferido ha sido liberado, por lo tanto debemos asignarle NULL.
 deferred = NULL;
 ```
 
