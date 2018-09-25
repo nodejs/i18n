@@ -4,20 +4,20 @@
 
 * [Prerrequisitos](#prerequisites) 
   * [Requisitos de Prueba de Rendimiento HTTP](#http-benchmark-requirements)
-  * [Benchmark Analysis Requirements](#benchmark-analysis-requirements)
-* [Running benchmarks](#running-benchmarks) 
-  * [Running individual benchmarks](#running-individual-benchmarks)
-  * [Running all benchmarks](#running-all-benchmarks)
-  * [Comparing Node.js versions](#comparing-nodejs-versions)
-  * [Comparing parameters](#comparing-parameters)
-  * [Running Benchmarks on the CI](#running-benchmarks-on-the-ci)
-* [Creating a benchmark](#creating-a-benchmark) 
-  * [Basics of a benchmark](#basics-of-a-benchmark)
-  * [Creating an HTTP benchmark](#creating-an-http-benchmark)
+  * [Requisitos del Análisis de la Prueba de Rendimiento](#benchmark-analysis-requirements)
+* [Ejecutar pruebas de rendimiento](#running-benchmarks) 
+  * [Ejecutar pruebas de rendimiento individuales](#running-individual-benchmarks)
+  * [Ejecutar todas las pruebas de rendimiento](#running-all-benchmarks)
+  * [Comparar versiones de Node.js](#comparing-nodejs-versions)
+  * [Comparar parámetros](#comparing-parameters)
+  * [Ejecutar Pruebas de Rendimiento en el CI](#running-benchmarks-on-the-ci)
+* [Crear una prueba de rendimiento](#creating-a-benchmark) 
+  * [Conceptos básicos de una prueba de rendimiento](#basics-of-a-benchmark)
+  * [Crear una prueba de rendimiento HTTP](#creating-an-http-benchmark)
 
-## Prerequisites
+## Prerrequisitos
 
-Basic Unix tools are required for some benchmarks. [Git for Windows](http://git-scm.com/download/win) includes Git Bash and the necessary tools, which need to be included in the global Windows `PATH`.
+Las herramientas básicas de Unix son necesarias para algunas pruebas de rendimiento. [Git for Windows](http://git-scm.com/download/win) includes Git Bash and the necessary tools, which need to be included in the global Windows `PATH`.
 
 ### HTTP Benchmark Requirements
 
