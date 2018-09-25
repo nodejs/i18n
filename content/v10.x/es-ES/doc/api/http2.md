@@ -1508,7 +1508,7 @@ changes:
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
     * `http2.constants.PADDING_STRATEGY_ALIGNED` - *intentará* aplicar suficiente relleno para asegurar que la longitud total del frame, incluyendo el encabezado 9-byte, sea un múltiplo de 8. Sin embargo, para cada frame, hay un número máximo permitido de bytes de relleno que está determinado por el estado actual del control de flujo y las configuraciones. Si este valor máximo es inferior a la cantidad calculada necesaria para asegurar la alineación, el valor máximo será utilizado y la longitud total del frame *no* necesariamente estará alineada en 8 bytes.
-  * `peerMaxConcurrentStreams` {number} Establece el número máximo de streams concurrentes para el peer remoto como si un frame `SETTINGS` hubiese sido recibido. Se anulará si el peer remoto establece su propio valor para `maxConcurrentStreams`. **Default:** `100`.
+  * `peerMaxConcurrentStreams` {number} Establece el número máximo de streams concurrentes para el peer remoto como si un frame `SETTINGS` hubiese sido recibido. Se anulará si el peer remoto establece su propio valor para `maxConcurrentStreams`. **Predeterminado:** `100`.
   * `selectPadding` {Function} Cuando `options.paddingStrategy` es igual a `http2.constants.PADDING_STRATEGY_CALLBACK`, proporciona la función de callback utilizada para determinar el relleno. Vea [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} Las configuraciones iniciales para enviar al peer remoto al conectarse.
   * `Http1IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to used for HTTP/1 fallback. Útil para extender el `http.IncomingMessage` original. **Default:** `http.IncomingMessage`.
@@ -1621,7 +1621,7 @@ changes:
 * `opciones` {Object} 
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Predeterminado:** `4Kib`.
   * `maxSessionMemory`{number} Establece el máximo de memoria que se le permite utilizar a `Http2Session` . El valor se expresa en términos de número de megabytes, por ejemplo, `1` es igual a 1 megabyte. El valor mínimo permitido es `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. El número actual de sesiones de `Http2Stream`, el uso de memoria actual de los tableros de compresión de encabezados, datos actuales puestos en cola para ser enviados, y los frames no reconocidos de `PING` y `SETTINGS` se cuentan hacia el límite actual. **Predeterminado:** `10`.
-  * `maxHeaderListPairs` {number} Establece el número máximo de entradas de encabezado. El valor mínimo es `1`. **Default:** `128`.
+  * `maxHeaderListPairs` {number} Establece el número máximo de entradas de encabezado. El valor mínimo es `1`. **Predeterminado:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Predeterminado:** `10`.
   * `maxReservedRemoteStreams` {number} Sets the maximum number of reserved push streams the client will accept at any given time. Once the current number of currently reserved push streams exceeds reaches this limit, new push streams sent by the server will be automatically rejected.
   * `maxSendHeaderBlockLength` {number} Establece el tamaño máximo permitido para un bloque comprimido y serializado de encabezados. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
@@ -1630,7 +1630,7 @@ changes:
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
     * `http2.constants.PADDING_STRATEGY_ALIGNED` - *intentará* aplicar suficiente relleno para asegurar que la longitud total del frame, incluyendo el encabezado 9-byte, sea un múltiplo de 8. Sin embargo, para cada frame, hay un número máximo permitido de bytes de relleno que está determinado por el estado actual del control de flujo y las configuraciones. Si este valor máximo es inferior a la cantidad calculada necesaria para asegurar la alineación, el valor máximo será utilizado y la longitud total del frame *no* necesariamente estará alineada en 8 bytes.
-  * `peerMaxConcurrentStreams` {number} Establece el número máximo de streams concurrentes para el peer remoto como si un frame `SETTINGS` hubiese sido recibido. Se anulará si el peer remoto establece su propio valor para `maxConcurrentStreams`. **Default:** `100`.
+  * `peerMaxConcurrentStreams` {number} Establece el número máximo de streams concurrentes para el peer remoto como si un frame `SETTINGS` hubiese sido recibido. Se anulará si el peer remoto establece su propio valor para `maxConcurrentStreams`. **Predeterminado:** `100`.
   * `selectPadding` {Function} Cuando `options.paddingStrategy` es igual a `http2.constants.PADDING_STRATEGY_CALLBACK`, proporciona la función de callback utilizada para determinar el relleno. Vea [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} Las configuraciones iniciales para enviar al peer remoto al conectarse.
   * `createConnection` {Function} Un callback opcional que recibe la instancia de `URL` pasada a `connect` y el objeto de `options`, y devuelve cualquier stream de [`Duplex`][] que deberá ser utilizado como la conexión para esta sesión.
@@ -1796,7 +1796,7 @@ Los errores internos ocurren cuando una sesión HTTP/2 falla inesperadamente. Es
 
 Se producen errores de protocolo cuando se violan varias restricciones del protocolo de HTTP/2. Estos serán reportados utilizando un `throw` sincrónico o por medio de un evento de `'error'` en el `Http2Stream`, `Http2Session` o en los objetos del Servidor de HTTP/2, dependiendo de dónde y cuándo ocurran los errores.
 
-### Invalid character handling in header names and values
+### Manejo inválido de caracteres en nombres de cabecera y valores
 
 The HTTP/2 implementation applies stricter handling of invalid characters in HTTP header names and values than the HTTP/1 implementation.
 
@@ -1919,7 +1919,7 @@ const server = http2.createServer((req, res) => {
 });
 ```
 
-In order to create a mixed [HTTPS](https.html) and HTTP/2 server, refer to the [ALPN negotiation](#http2_alpn_negotiation) section. Upgrading from non-tls HTTP/1 servers is not supported.
+In order to create a mixed [HTTPS](https.html) and HTTP/2 server, refer to the [ALPN negotiation](#http2_alpn_negotiation) section. No se admite la actualización desde servidores que no sean tls HTTP/1.
 
 La API de compatibilidad de HTTP/2 está compuesta por [`Http2ServerRequest`]() y [`Http2ServerResponse`](). Su objetivo es la compatibilidad de la API con HTTP/1, pero no ocultan las diferencias entre los protocolos. Por ejemplo, se ignora el mensaje de estado para los códigos de HTTP.
 
