@@ -437,7 +437,7 @@ Se impostato su `1`, non verranno utilizzati i colori nel REPL.
 added: v7.3.0
 -->
 
-Quando è impostato, i ben noti "root" CA (come VeriSign) verranno estesi con i certificati aggiuntivi all'interno di `file`. Il file deve essere composto da uno o più certificati attendibili in formato PEM. Verrà emesso un messaggio con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) (solo una volta) se il file è assente o è errato, ma gli eventuali errori verranno ugualmente ignorati.
+Quando è impostato, i ben noti "root" CA (come VeriSign) verranno estesi con i certificati aggiuntivi all'interno di `file`. Il file deve essere composto da uno o più certificati attendibili in formato PEM. Verrà emesso (una volta) un messaggio con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) se il file è assente o deformato, ma a parte ciò eventuali errori verranno ignorati.
 
 Da notare che né i certificati conosciuti né i certificati aggiuntivi vengono utilizzati quando la proprietà `ca` delle opzioni viene specificata esplicitamente per un client o un server TLS o HTTPS.
 
