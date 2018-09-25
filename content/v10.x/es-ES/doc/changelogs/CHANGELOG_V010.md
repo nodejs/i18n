@@ -192,7 +192,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios notables:
 
-* http_parser: Actualizar a http-parser 1.2 para reparar una limitación estricta no intencional de caracteres de encabezado permitidos. (James M Snell) https://github.com/nodejs/node/pull/5242
+* http_parser: Actualizar a http-parser 1.2 para reparar una limitación estricta no intencional de caracteres de cabecera permitidos. (James M Snell) https://github.com/nodejs/node/pull/5242
 * dominio: 
   * Previene una salida debido a que se arroja una excepción en vez de emitir un evento `'uncaughtException'` en el objeto `process` cuando ningún manejador de errores es establecido en el dominio donde se arroja un error, y un listener del evento `'uncaughtException'` es establecido en `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
   * Repara un problema donde el proceso no abortaría en la llamada de función adecuada si un error es arrojado dentro del dominio sin un manejador de errores y es usado`--abort-on-uncaught-exception`. (Julien Gilli) https://github.com/nodejs/node/pull/3887
