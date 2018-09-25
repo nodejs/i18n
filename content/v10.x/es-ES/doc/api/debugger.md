@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.9.12-->
 
-> Estabilidad: 2 - estable
+> Estabilidad: 2 - Estable
 
 <!-- type=misc -->
 
-Node.js incluye un servicio de depurador fuera de proceso de fácil acceso a través de [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) e integrado al cliente de depuración. Para usarlo, inicie el Node.js con el argumento `inspect`, seguido de a ruta de acceso del script a depurar. Se mostrará un aviso indicando el inicio exitoso del depurador:
+Node.js incluye una utilidad de depuración fuera de proceso, de fácil acceso a través de un [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) y un cliente de depuración integrado. Para usarlo, inicie el Node.js con el argumento `inspect`, seguido de la ruta de acceso del script a depurar. Se mostrará un aviso indicando el inicio exitoso del depurador:
 
 ```txt
 $ node inspect myscript.js
