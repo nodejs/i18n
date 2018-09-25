@@ -335,8 +335,8 @@ changes:
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
   * `columnOffset` {number} Especifica el número de la columna del desplazamiento que se muestra en los stack traces producidos por este script.
   * `displayErrors` {boolean} Cuando es `true`, si produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error está adjunta al stack trace.
-  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
-  * `cachedData` {Buffer} Provides an optional `Buffer` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si la ejecución se termina, se producirá un [`Error`][].
+  * `cachedData` {Buffer} Proporciona un `Buffer` opcional con los datos de caché del código de V8 para la fuente suministrada. Cuando se suministre, el valor de `cachedDataRejected` se establecerá en `true` o `false` dependiendo de la aceptación de los datos por V8.
   * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully.
 
 Creating a new `vm.Script` object compiles `code` but does not run it. The compiled `vm.Script` can be run later multiple times. The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
