@@ -126,11 +126,11 @@ $ node benchmark/run.js arrays buffers
 
 Para comparar el efecto de una nueva versión de Node.js utilice la herramienta `compare.js`. Esto ejecutará cada prueba de rendimiento varias veces, lo que hace posible calcular estadísticas sobre las medidas de rendimiento. Para ver como usar este script, ejecute `node benchmark/compare.js`.
 
-As an example on how to check for a possible performance improvement, the [#5134](https://github.com/nodejs/node/pull/5134) pull request will be used as an example. This pull request *claims* to improve the performance of the `string_decoder` module.
+Como un ejemplo sobre cómo verificar una posible mejora de rendimiento, la pull request [#5134](https://github.com/nodejs/node/pull/5134) será usada como un ejemplo. Esta pull request *declara* mejorar el rendimiento del módulo `string_decoder`.
 
-First build two versions of Node.js, one from the master branch (here called `./node-master`) and another with the pull request applied (here called `./node-pr-5134`).
+Primero construya dos versiones de Node.js, una desde la rama master (aquí llamada `./node-master`) y otra con la pull request aplicada (aquí llamada `./node-pr-5134`).
 
-To run multiple compiled versions in parallel you need to copy the output of the build: `cp ./out/Release/node ./node-master`. Check out the following example:
+Para ejecutar múltiples versiones compiladas en paralelo necesita copiar la salida del build: `cp ./out/Release/node ./node-master`. Vea el siguiente ejemplo:
 
 ```console
 $ git checkout master
@@ -142,13 +142,13 @@ $ ./configure && make -j4
 $ cp ./out/Release/node ./node-pr-5134
 ```
 
-The `compare.js` tool will then produce a csv file with the benchmark results.
+La herramienta `compare.js` producirá entonces un archivo csv con los resultados de la prueba de rendimiento.
 
 ```console
 $ node benchmark/compare.js --old ./node-master --new ./node-pr-5134 string_decoder > compare-pr-5134.csv
 ```
 
-*Tips: there are some useful options of `benchmark/compare.js`. For example, if you want to compare the benchmark of a single script instead of a whole module, you can use the `--filter` option:*
+*Consejos: hay algunas opciones útiles de `benchmark/compare.js`. Por ejemplo, si desea comparar la prueba de rendimiento de un solo script en lugar de un módulo completo, puede usar la opción `--filter`:*
 
 ```console
   --new      ./new-node-binary  new node binary (required)
