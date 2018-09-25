@@ -82,9 +82,9 @@ buffers/buffer-tostring.js n=10000000 len=64 arg=false: 8718280.70650129
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 4103857.0726124765
 ```
 
-Cada línea representa una sola prueba de rendimiento con parámetros especificados como `${variable}=${value}`. Cada combinación de configuración es ejecutada en un proceso separado. This ensures that benchmark results aren't affected by the execution order due to V8 optimizations. **The last number is the rate of operations measured in ops/sec (higher is better).**
+Cada línea representa una sola prueba de rendimiento con parámetros especificados como `${variable}=${value}`. Cada combinación de configuración es ejecutada en un proceso separado. Esto asegura que los resultados de la prueba de rendimiento no son afectados por la orden de ejecución debido a optimizaciones V8. **El último número es la tasa de operaciones medidas en ops/seg (mientras más alto mejor).**
 
-Furthermore a subset of the configurations can be specified, by setting them in the process arguments:
+Además, se puede especificar un subconjunto de las configuraciones, al establecerlas en los argumentos del proceso:
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js len=1024
@@ -93,9 +93,9 @@ buffers/buffer-tostring.js n=10000000 len=1024 arg=true: 3498295.68561504
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 3783071.1678948295
 ```
 
-### Running all benchmarks
+### Ejecutar todas las pruebas de rendimiento
 
-Similar to running individual benchmarks, a group of benchmarks can be executed by using the `run.js` tool. To see how to use this script, run `node benchmark/run.js`. Again this does not provide the statistical information to make any conclusions.
+Es similar a ejecutar pruebas de rendimiento individuales, un grupo de pruebas de rendimiento pueden ser ejecutadas usando la herramienta `run.js`. Para ver cómo usar este script, ejecute `node benchmark/run.js`. De nuevo, esto no proporciona la información estadística para hacer alguna conclusión.
 
 ```console
 $ node benchmark/run.js arrays
@@ -116,15 +116,15 @@ arrays/zero-int.js n=25 type=Buffer: 90.49906662339653
 ...
 ```
 
-It is possible to execute more groups by adding extra process arguments.
+Es posible añadir más grupos al añadir argumentos de proceso adicionales.
 
 ```console
 $ node benchmark/run.js arrays buffers
 ```
 
-### Comparing Node.js versions
+### Comparar versiones de Node.js
 
-To compare the effect of a new Node.js version use the `compare.js` tool. This will run each benchmark multiple times, making it possible to calculate statistics on the performance measures. To see how to use this script, run `node benchmark/compare.js`.
+Para comparar el efecto de una nueva versión de Node.js utilice la herramienta `compare.js`. Esto ejecutará cada prueba de rendimiento varias veces, lo que hace posible calcular estadísticas sobre las medidas de rendimiento. Para ver como usar este script, ejecute `node benchmark/compare.js`.
 
 As an example on how to check for a possible performance improvement, the [#5134](https://github.com/nodejs/node/pull/5134) pull request will be used as an example. This pull request *claims* to improve the performance of the `string_decoder` module.
 
