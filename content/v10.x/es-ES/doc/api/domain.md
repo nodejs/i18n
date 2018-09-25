@@ -288,18 +288,18 @@ Llamar a `enter()` solo cambia al dominio activo y no lo altera en sí. `enter()
 
 El método de `exit()` sale del dominio actual, llevándolo fuera de la pila de dominios. Es importante asegurarse que se abandona el dominio actual al cambiar cualquier tiempo de ejecución hacia el contexto de una cadena diferente de llamadas asincrónicas. La llamada `exit()` delimita el final o una interrupción de la cadena de llamadas asincrónicas y operaciones I/O vinculadas a un dominio.
 
-Si hay múltiples dominios anidados al contexto de ejecución actual, `exit()` saldrá de cualquier dominio alojado dentro de este dominio.
+Si hay múltiples dominios anidados enlazados al contexto de ejecución actual, `exit()` saldrá de cualquier dominio alojado dentro de este dominio.
 
-La llamada `exit()` modifica solo al dominio activo y no lo altera en si. `enter()` y `exit()` pueden ser llamados un número arbitrario de veces en un mismo dominio.
+La llamada `exit()` modifica solo al dominio activo y no lo altera en sí. `enter()` y `exit()` pueden ser llamados un número arbitrario de veces en un mismo dominio.
 
 ### domain.intercept(callback)
 
 * `callback`{Function} La función de callback
-* Devoluciones: {Function} La función interceptada
+* Devuelve: {Function} La función interceptada
 
-Este método es muy similar a [`domain.bind(callback)`][]. Sin embargo, además de identificar los errores arrojados, también interceptará objetos de [`Error`][] enviados como el primer problema de la función.
+Este método es muy similar a [`domain.bind(callback)`][]. Sin embargo, además de identificar los errores arrojados, también interceptará objetos de [`Error`][] enviados como el primer argumento de la función.
 
-Así, el patrón común `if (err) return callback(err);` puede ser reemplazada con un solo gestor de error único en un mismo lugar.
+Así, el patrón común `if (err) return callback(err);` puede ser reemplazado con un solo manejador de error único en un mismo lugar.
 
 #### Ejemplo
 
@@ -308,13 +308,13 @@ const d = domain.create();
 
 función readSomeFile(filename, cb) { 
   fs.readFile(filename, 'utf8', d.intercept((data) => {
-    // note que el primer problema nunca se envía por el
-    // callback desde que asume ser el problema 'Error'
+    // note que el primer argumento nunca se envía por el
+    // callback desde que asume ser el argumento 'Error'
     // y, por lo tanto, es interceptado por el dominio.
 
-    // se transmitirá hacia el dominio si se arroja
-    // así, el gestor de errores lógico puede moverse hacia 'error'
-    //evento en el dominio en ves de ser repetido en todo 
+    // si esto arroja, también se transmitirá hacia el dominio,
+    // para que la lógica de manejo de errores puede moverse hacia el
+    // evento 'error' en el dominio, en vez de ser repetido en todo 
     // el programa.
     return cb(null, JSON.parse(data));
   }));
@@ -331,14 +331,14 @@ d.on('error', (er) => {
 
 * `emitter`{EventEmitter|Timer} Emisor o temporizador a ser eliminado del dominio
 
-Lo opuesto de [`domain.add(emitter)`][]. Elimina el gestor de dominio desde el emisor especificado.
+Lo opuesto de [`domain.add(emitter)`][]. Revoca el manejo de dominio al emisor especificado.
 
 ### domain.run(fn[, ...args])
 
 * `fn` {Function}
 * `...args` {any}
 
-Ejecuta la función suministrada en el contexto del dominio, vinculando implícitamente a todos los eventos emisores, temporizadores y solicitudes de bajo nivel creadas en ese contexto. Los argumentos pueden pasarse hacia la función opcionalmente.
+Ejecuta la función suministrada en el contexto del dominio, vinculando implícitamente a todos los emisores de evento, temporizadores y solicitudes de bajo nivel creadas en ese contexto. Los argumentos pueden pasarse hacia la función opcionalmente.
 
 Esta es la forma más básica de utilizar un dominio.
 
@@ -363,11 +363,11 @@ d.run(() => {
 });
 ```
 
-En este ejemplo, el controlador `d.on('error')` será activado en vez de congestionar al programa.
+En este ejemplo, el manejador `d.on('error')` será activado en vez de colapsar al programa.
 
-## Dominios y Promises
+## Dominios y Promesas
 
-El controlador de valores futuros son ejecutados dentro del dominio en el cual la llamada para `.then()` o `.catch()` fue hecha para sí misma como de Node.js 8.0.0:
+A partir de Node.js 8.0.0, los manejadores de Promesas son ejecutados dentro del dominio en el cual la llamada misma a `.then()` o `.catch()` fue hecha:
 
 ```js
 const d1 = domain.create();
@@ -380,7 +380,7 @@ d1.run(() => {
 
 d2.run(() => {
   p.then((v) => {
-    // running in d2
+    // ejecutándose en d2
   });
 });
 ```
@@ -398,7 +398,7 @@ d1.run(() => {
 
 d2.run(() => {
   p.then(p.domain.bind((v) => {
-    // running in d1
+    // ejecutándose en d1
     }));
 });
 ```
