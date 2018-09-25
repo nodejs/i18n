@@ -3059,9 +3059,9 @@ napi_status napi_async_init(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] async_resource`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
 - `[in] async_resource_name`: Identificador para el tipo de recurso que está siendo proporcionado para la información de diagnóstico expuesta por la API `async_hooks`.
-- `[out] result`: The initialized async context.
+- `[out] result`: El contexto asíncrono inicializado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 ### napi_async_destroy
 
@@ -3074,12 +3074,12 @@ napi_status napi_async_destroy(napi_env env,
                                napi_async_context async_context);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_context`: The async context to be destroyed.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] async_context`: El contexto asíncrono a ser destruido.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si hay una excepción de JavaScript pendiente.
 
 ### napi_make_callback
 
@@ -3101,8 +3101,8 @@ napi_status napi_make_callback(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_context`: Context for the async operation that is invoking the callback. This should normally be a value previously obtained from [`napi_async_init`][]. However `NULL` is also allowed, which indicates the current async context (if any) is to be used for the callback.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] async_context`: Contexto para la operación asíncrona que está invocando al callback. Normalmente este debería ser un valor obtenido previamente de [`napi_async_init`][]. Sin embargo, `NULL` también está permitido, lo cual indica que el contexto asíncrono actual (si existe) está por ser utilizado para el callback.
 - `[in] recv`: The `this` object passed to the called function.
 - `[in] func`: `napi_value` representing the JavaScript function to be invoked.
 - `[in] argc`: The count of elements in the `argv` array.
