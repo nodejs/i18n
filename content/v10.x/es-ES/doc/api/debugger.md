@@ -20,7 +20,7 @@ Interrumpir el inicio en myscript.js:1
 debug>
 ```
 
-El cliente depurador de Node.js no es un depurador que incluye todas las funciones, pero un paso simple y la inspección son permitidas.
+El cliente depurador de Node.js no es un depurador que incluye todas las funciones, pero pasos simples y la inspección son permitidas.
 
 Insertando la instrucción `debugger;` en el código fuente de un script habilitará un punto de interrupción en esa posición en el código:
 
@@ -91,7 +91,7 @@ Escribe `watch('my_expression')` para comenzar con una expresión. El comando `w
 
 ## Comando de referencia
 
-### Ejecuanto paso a paso
+### Ejecutando paso a paso
 
 * `cont`, `c` - Continúe ejecución
 * `next`, `n` - Siguiente paso
