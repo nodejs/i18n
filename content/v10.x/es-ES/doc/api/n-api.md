@@ -3192,18 +3192,18 @@ napi_status napi_get_version(napi_env env,
 ```
 
 - `[in] env`: El entorno bajo el que la API se invoca.
-- `[out] result`: The highest version of N-API supported.
+- `[out] result`: La versión más alta soportada de N-API.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the highest N-API version supported by the Node.js runtime. N-API is planned to be additive such that newer releases of Node.js may support additional API functions. In order to allow an addon to use a newer function when running with versions of Node.js that support it, while providing fallback behavior when running with Node.js versions that don't support it:
+Esta API devuelve la versión más alta soportada de N-API por el tiempo de ejecución de Node.js. Está previsto que N-API sea aditiva, de modo que las versiones más recientes de Node.js puedan soportar funciones API adicionales. Para permitir que un complemento utilice una función más nueva cuando se ejecuta con versiones de Node.js que lo soportan, al mismo tiempo proporciona un comportamiento alternativo cuando se ejecuta con versiones de Node.js que no lo soportan:
 
-- Call `napi_get_version()` to determine if the API is available.
-- If available, dynamically load a pointer to the function using `uv_dlsym()`.
-- Use the dynamically loaded pointer to invoke the function.
-- If the function is not available, provide an alternate implementation that does not use the function.
+- Llamar a `napi_get_version()` para determinar si la API está disponible.
+- Si está disponible, cargar de forma dinámica un apuntador a la función utilizando `uv_dlsym()`.
+- Utilizar el puntero cargado de forma dinámica para invocar a la función.
+- Si la función no está disponible, proporcionar una implementación alternativa que no utilice la función.
 
-## Memory Management
+## Gestión de la Memoria
 
 ### napi_adjust_external_memory
 
@@ -3217,11 +3217,11 @@ NAPI_EXTERN napi_status napi_adjust_external_memory(napi_env env,
                                                     int64_t* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] change_in_bytes`: The change in externally allocated memory that is kept alive by JavaScript objects.
-- `[out] result`: The adjusted value
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] change_in_bytes`: El cambio en la memoria asignada externamente que se mantiene activo por los objetos de JavaScript.
+- `[out] result`: El valor ajustado
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 This function gives V8 an indication of the amount of externally allocated memory that is kept alive by JavaScript objects (i.e. a JavaScript object that points to its own memory allocated by a native module). Registering externally allocated memory will trigger global garbage collections more often than it would otherwise.
 
