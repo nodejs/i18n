@@ -1,6 +1,6 @@
 # Mantenimiento de V8 en Node.js
 
-## Fondo
+## Background
 
 V8 sigue el horario de lanzamiento de Chromium. El horizonte de soporte para Chromium es diferente en comparación con el horizonte de soporte para Node.js. Como resultado, Node.js necesita soportar versiones múltiples de V8 por más tiempo de lo que necesita soportar el upstream. V8 se ramifica en la falta de Node.js de un proceso de mantenimiento oficial debido a que falta una rama compatible con LTS.
 
@@ -23,7 +23,7 @@ Todas las ramas más antiguas son abandonadas y no son mantenidas por el equipo 
 El proceso para respaldar las correcciones de errores en las ramas activas está oficialmente documentado [en la wiki de V8](https://github.com/v8/v8/wiki/Merging%20&%20Patching). El sumario del proceso es:
 
 * V8 solo admite ramas activas. No se realizan pruebas en ramas anteriores a la estable/beta/master actual.
-* Una solución que necesita backport está etiquetada con la etiqueta *merge-request-x.x*. Esto puede hacerlo cualquier persona interesada en obtener la solución refactorizada. Los problemas con esta etiqueta son revisados por el equipo de V8, regularmente como candidatos para backporting.
+* Una solución que necesita backport está etiquetada con la etiqueta *merge-request-x.x*. This can be done by anyone interested in getting the fix backported. Los problemas con esta etiqueta son revisados por el equipo de V8, regularmente como candidatos para backporting.
 * Las reparaciones necesitan cierto "tiempo de cocción" antes de que puedan ser aprobadas para backporting. Esto significa esperar unos días para asegurarse de que no se detectan problemas en las compilaciones canary/beta.
 * Una vez que esté listo, el problema se etiquetará con *merge-approved-x.x* y se puede hacer la fusión real mediante el uso de los scripts en la [página wiki](https://github.com/v8/v8/wiki/Merging%20&%20Patching).
 * Las solicitudes de fusión a una rama abandonada serán rechazadas.
@@ -144,7 +144,7 @@ Si el error se puede reproducir en la [rama Node.js `canary`], Chromium canary o
 
 ### Backporting a ramas activas
 
-Si el error existe en cualquiera de las ramas activas de V8, es posible que necesitemos obtener la solución refactorizada. En cualquier momento dado hay [dos ramas activas](https://build.chromium.org/p/client.v8.branches/console) (beta y estable) además de la master. Los siguientes pasos son necesarios para respaldar la corrección:
+Si el error existe en cualquiera de las ramas activas de V8, es posible que necesitemos obtener la solución backported. En cualquier momento dado hay [dos ramas activas](https://build.chromium.org/p/client.v8.branches/console) (beta y estable) además de la master. Los siguientes pasos son necesarios para respaldar la corrección:
 
 * Identifica en qué versión de V8 se solucionó el error.
 * Identifica si alguna rama V8 activa todavía contiene el error:
