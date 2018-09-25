@@ -2861,15 +2861,15 @@ Envuelve una instancia nativa en un objeto de JavaScript. La instancia nativa pu
 
 Cuando un código de JavaScript invoca a un constructor para la clase que fue definida utilizando `napi_define_class()`, el `napi_callback` para el constructor es invocado. Luego de construir una instancia de la clase nativa, el callback debe llamar entonces a `napi_wrap()` para envolver a la instancia recientemente construida en el ya creado objeto de JavaScript que es el argumento `this` del callback del constructor. (Ese objeto `this` fue creado desde el `prototype` de la función constructora, entonces ya tiene definiciones de todas las propiedades y métodos de instancia.)
 
-Normalmente, al envolver una instancia de clase, un callback de terminación debe proporcionarse que simplemente elimina la instancia nativa que se recibe como el argumento `data` para el callback de terminación.
+Normalmente, al envolver una instancia de clase, se debe proporcionar un callback de terminación que simplemente elimine la instancia nativa que se recibe como el argumento `data` para el callback de terminación.
 
 La referencia opcional devuelta es, inicialmente, una referencia débil, lo que significa que tiene una cuenta de referencia de 0. Normalmente, esta cuenta de referencia se incrementará temporalmente durante operaciones asíncronas que requieren que la instancia permanezca válida.
 
-*Precaución*: La referencia opcional devuelta (si se obtiene) debe ser eliminada por medio de [`napi_delete_reference`][] SOLO en respuesta a la invocación del callback de terminación. (Si es eliminado antes de eso, entonces el callback de terminación puede no ser invocada nunca.) Por lo tanto, cuando se obtiene una referencia, también se requiere un callback de terminación para permitir la apropiada corrección de la referencia.
+*Precaución*: La referencia opcional devuelta (si se obtiene) debe ser eliminada por medio de [`napi_delete_reference`][] SOLO en respuesta a la invocación del callback de terminación. (Si es eliminada antes de eso, entonces puede que el callback de terminación nunca sea invocado.) Por lo tanto, cuando se obtiene una referencia, también se requiere un callback de terminación para permitir la apropiada corrección de la referencia.
 
 Esta API puede modificar la cadena de prototipos del objeto envuelto. Después, la manipulación adicional de la cadena de prototipos de la envoltura puede ocasionar la falla de `napi_unwrap()`.
 
-Llamar a `napi_unwrap()` por segunda vez en un objeto se devolverá un error. Para asociar otra instancia nativa con el objeto, utilizar primero `napi_remove_wrap()`.
+Llamar a `napi_unwrap()` por segunda vez en un objeto devolverá un error. Para asociar otra instancia nativa con el objeto, utilizar primero `napi_remove_wrap()`.
 
 ### napi_unwrap
 
@@ -2891,7 +2891,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Recupera una instancia nativa que estaba envuelta previamente en un objeto de JavaScript usando `napi_wrap()`.
 
-Cuando el código de JavaScript invoca un método o un accesor de propiedad en la clase, el `napi_callback` correspondiente es invocado. Si el callback es para un método o accesor de instancia, entonces el argumento `this` al callback es el objeto envuelto; la instancia de C++ envuelta que es el objetivo de la llamada se puede obtener llamando a `napi_unwrap()` en el objeto envuelto.
+Cuando el código de JavaScript invoca un método o un accesor de propiedad en la clase, el `napi_callback` correspondiente es invocado. Si el callback es para un método o accesor de instancia, entonces el argumento `this` al callback es el objeto envoltorio; la instancia de C++ envuelta que es el objetivo de la llamada se puede obtener llamando a `napi_unwrap()` en el objeto envoltorio.
 
 ### napi_remove_wrap
 
@@ -2919,9 +2919,9 @@ Los módulos complementarios a menudo necesitan aprovechar ayudantes asíncronos
 
 N-API proporciona una interfaz ABI estable para estas funciones de soporte que cubren los casos de uso asíncrono más comunes.
 
-N-API define la estructura `napi_work` que es utilizada para administrar los trabajadores asíncronos. Las instancias son creadas/eliminadas con [`napi_create_async_work`][] y [`napi_delete_async_work`][].
+N-API define la estructura `napi_work` que es utilizada para administrar los workers asíncronos. Las instancias son creadas/eliminadas con [`napi_create_async_work`][] y [`napi_delete_async_work`][].
 
-Los callbacks `execute` y `complete` son funciones que serán invocadas cuando el ejecutor esté preparado para ejecutar y cuando complete su tarea respectivamente. Estas funciones implementan las siguientes interfaces:
+Los callbacks `execute` y `complete` son funciones que serán invocadas cuando el ejecutor esté preparado para ejecutar y cuando complete su tarea, respectivamente. Estas funciones implementan las siguientes interfaces:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env,
@@ -2931,9 +2931,9 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-Cuando estos métodos son invocados, el parámetro `data` pasado será el complemento de datos proporcionado `void*` que fue pasado a la llamada `napi_create_async_work`.
+Cuando estos métodos son invocados, el parámetro `data` pasado estará constituido por los datos `void*` proporcionados por el complemento que fueron pasados a la llamada `napi_create_async_work`.
 
-Una vez creado, el trabajador asíncrono puede ponerse en la cola para la ejecución utilizando la función [`napi_queue_async_work`][]:
+Una vez creado, el worker asíncrono puede ponerse en la cola para la ejecución utilizando la función [`napi_queue_async_work`][]:
 
 ```C
 napi_status napi_queue_async_work(napi_env env,
