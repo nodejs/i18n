@@ -217,9 +217,9 @@ El grupo de node revisa periódicamente la acumulación de problemas en Google p
 
 ## Actualizando V8
 
-Node.js keeps a vendored copy of V8 inside of the deps/ directory. In addition, Node.js may need to float patches that do not exist upstream. This means that some care may need to be taken to update the vendored copy of V8.
+Node.js se queda con una copia guarda de V8 dentro del directorio deps/. Además, Node.js puede necesitar flotar parches que no existen upstream. Esto significa que es posible que se tenga que tomar alguna precaución para actualizar la copia guardada de V8.
 
-### Minor updates (patch level)
+### Actualizaciones menores (a nivel de parche)
 
 Because there may be floating patches on the version of V8 in Node.js, it is safest to apply the patch level updates as a patch. For example, imagine that upstream V8 is at 5.0.71.47 and Node.js is at 5.0.71.32. It would be best to compute the diff between these tags on the V8 repository, and then apply that patch on the copy of V8 in Node.js. This should preserve the patches/backports that Node.js may be floating (or else cause a merge conflict).
 
