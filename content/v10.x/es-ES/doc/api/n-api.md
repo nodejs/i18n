@@ -3223,31 +3223,32 @@ NAPI_EXTERN napi_status napi_adjust_external_memory(napi_env env,
 
 Devuelve `napi_ok` si la API fue exitosa.
 
-This function gives V8 an indication of the amount of externally allocated memory that is kept alive by JavaScript objects (i.e. a JavaScript object that points to its own memory allocated by a native module). Registering externally allocated memory will trigger global garbage collections more often than it would otherwise.
+Esta función le da a V8 una indicación de la cantidad de memoria asignada externamente que se mantiene activa por los objetos de JavaScript (por ejemplo, objeto de JavaScript que apunta a su propia memoria asignada por el módulo nativo.). El registro de la memoria asignada externamente activará colecciones de basura global con más frecuencia de lo que lo haría de otra manera.
 
 <!-- it's very convenient to have all the anchors indexed -->
 
 <!--lint disable no-unused-definitions remark-lint-->
 
-## Promises
+## Promesas
 
-N-API provides facilities for creating `Promise` objects as described in [Section 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) of the ECMA specification. It implements promises as a pair of objects. When a promise is created by `napi_create_promise()`, a "deferred" object is created and returned alongside the `Promise`. The deferred object is bound to the created `Promise` and is the only means to resolve or reject the `Promise` using `napi_resolve_deferred()` or `napi_reject_deferred()`. The deferred object that is created by `napi_create_promise()` is freed by `napi_resolve_deferred()` or `napi_reject_deferred()`. The `Promise` object may be returned to JavaScript where it can be used in the usual fashion.
+N-API proporciona facilidades para crear objetos `Promise` como se describen en la [Sección 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) de la especificación ECMA. Implementa promesas como un par de objetos. Cuando una promesa es creada por `napi_create_promise()`, se crea un objeto "diferido" y se devuelve junto con la `Promise`. El objeto diferido está vinculado a la `Promise` creada y es el único medio para resolver o rechazar la `Promise` utilizando `napi_resolve_deferred()` o `napi_reject_deferred()`. El objeto diferido que es creado por `napi_create_promise()` es liberado por `napi_resolve_deferred()` o `napi_reject_deferred()`. El objeto `Promise` puede ser devuelto a JavaScript donde puede ser utilizado de la manera habitual.
 
-For example, to create a promise and pass it to an asynchronous worker:
+Por ejemplo, para crear una promesa y pasarla a un worker asíncrono:
 
 ```c
 napi_deferred deferred;
 napi_value promise;
 napi_status status;
 
-// Create the promise.
+
+// Crear la promesa.
 status = napi_create_promise(env, &deferred, &promise);
 if (status != napi_ok) return NULL;
 
-// Pass the deferred to a function that performs an asynchronous action.
+// Pasa al diferido a una función que realiza una acción asíncrona.
 do_something_asynchronous(deferred);
 
-// Return the promise to JS
+// Devuelve la promesa a JS
 return promise;
 ```
 
