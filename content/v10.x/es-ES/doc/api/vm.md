@@ -315,9 +315,9 @@ La implementación [HostResolveImportedModule](https://tc39.github.io/ecma262/#s
 added: v0.3.1
 -->
 
-Instances of the `vm.Script` class contain precompiled scripts that can be executed in specific sandboxes (or "contexts").
+Las instancias de la clase `vm.Script` contienen scripts precompilados que pueden ejecutarse en sandboxes específicos (o "contextos").
 
-### new vm.Script(code, options)
+### nuevo vm.Script(code, options)
 
 <!-- YAML
 added: v0.3.1
