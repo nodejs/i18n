@@ -275,17 +275,17 @@ El hecho de que Node.js tenga una copia guardada y potencialmente editada de V8 
 * El proceso para actualizar la versión de V8 en Node.js podría automatizarse para rastrear las puntas de varias ramas de V8 en `nodejs/v8 `.
 * Simplificaría la recolección y la migración de arreglos entre ramas, ya que los saltos de versión en `v8-versión.h` ocurrirían como parte de esta actualización en lugar de en cada cambio.
 * Simplificaría el V8-CI y lo haría más automatizable.
-* The history of the V8 branch in `nodejs/v8` becomes purer and it would make it easier to pull in the V8 team for help with reviewing.
-* It would make it simpler to setup an automated build that tracks Node.js master + V8 lkgr integration build.
+* El historial de la rama V8 en `nodejs/v8` se vuelve más puro y sería más fácil atraer al equipo V8 para que lo ayude con la revisión.
+* Facilitaría la configuración de una compilación automatizada que rastrea el master Node.js + compilación de integración lkgr V8.
 
-This would require some tooling to:
+Esto requeriría algunas herramientas para:
 
-* A script that would update the V8 in a specific Node.js branch with V8 from upstream (dependent on branch abandoned vs. active).
-* We need a script to bump V8 version numbers when a new version of V8 is promoted from `nodejs/v8` to `nodejs/node`.
-* Enabled the V8-CI build in Jenkins to build from the `nodejs/v8` fork.
+* Un script que actualizaría el V8 en una rama específica Node.js con V8 desde upstream (dependiente de la rama abandonada vs. activa).
+* Necesitamos un script para aumentar los números de versión de V8 cuando se promueve una nueva versión de V8 de `nodejs/v8` a `nodejs/node`.
+* Habilitar la compilación de V8-CI en Jenkins para compilar desde el fork `nodejs/v8`.
 
 <!-- Footnotes themselves at the bottom. -->
 
-### Notes
+### Notas
 
-<sup>1</sup>Node.js 0.12 and older are intentionally omitted from this document as their support has ended.
+<sup>1</sup> Node.js 0.12 y anteriores se omiten intencionalmente en este documento porque su soporte ha finalizado.
