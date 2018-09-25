@@ -329,7 +329,7 @@ changes:
                  supported now.
 -->
 
-* `code` {string} The JavaScript code to compile.
+* `code` {string} El código JavaScript para compilar.
 * `options` 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
