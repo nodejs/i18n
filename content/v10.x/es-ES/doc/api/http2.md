@@ -2603,7 +2603,7 @@ const server = http2.createServer((req, res) => {
 });
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][].
 
 #### response.createPushResponse(headers, callback)
 
@@ -2611,7 +2611,7 @@ Attempting to set a header field name or value that contains invalid characters 
 added: v8.4.0
 -->
 
-Call [`http2stream.pushStream()`][] with the given headers, and wraps the given newly created [`Http2Stream`] on `Http2ServerRespose`.
+Llama a [`http2stream.pushStream()`][] con las cabeceras dadas, y envuelve el [`Http2Stream`] dado, creado recientemente en `Http2ServerRespose`.
 
 El callback será llamado con un error con código `ERR_HTTP2_STREAM_CLOSED` si se cierra el stream.
 
