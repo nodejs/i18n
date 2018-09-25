@@ -251,30 +251,30 @@ La actualización de las versiones principales sería mucho más difícil de hac
 1. Audite la rama master actual y observe los parches que han estado flotando desde la última actualización principal de V8.
 2. Reemplace la copia de V8 en Node.js con una nueva comprobación de la última rama estable de V8. Se debe tener especial cuidado para actualizar recursivamente los DEPS en los que V8 tiene una dependencia de tiempo de compilación (al momento de escribir esto, estos son solo trace_event y gtest_prod.h)
 3. Restablezca la variable `v8_embedder_string` a "-node.0" en `common.gypi`.
-4. Refloat (cherry-pick) all the patches from list computed in 1) as necessary. Some of the patches may no longer be necessary.
+4. Vuelva a cargar (seleccione con precisión) todos los parches de la lista calculada en 1) según sea necesario. Es posible que algunos de los parches ya no sean necesarios.
 
-To audit for floating patches:
+Para auditar parches flotantes:
 
 ```shell
 git log --oneline deps/v8
 ```
 
-To replace the copy of V8 in Node.js, use the [`update-v8`] tool. For example, if you want to replace the copy of V8 in Node.js with the branch-head for V8 5.1 branch:
+Para reemplazar la copia de V8 en Node.js, use la herramienta [`update-v8`]. Por ejemplo, si desea reemplazar la copia de V8 en Node.js con la ramificación para la rama V8 5.1:
 
 ```shell
 cd $NODE_DIR
 update-v8 major --branch=5.1-lkgr
 ```
 
-This should be followed up with manual refloating of all relevant patches.
+Esto debe ser seguido con el reflotamiento manual de todos los parches relevantes.
 
-## Proposal: Using a fork repo to track upstream V8
+## Propuesta: Usar un repositorio fork para rastrear V8 upstream
 
-The fact that Node.js keeps a vendored, potentially edited copy of V8 in deps/ makes the above processes a bit complicated. An alternative proposal would be to create a fork of V8 at `nodejs/v8` that would be used to maintain the V8 branches. This has several benefits:
+El hecho de que Node.js tenga una copia guardada y potencialmente editada de V8 en deps/ hace que los procesos anteriores sean un poco complicados. Una propuesta alternativa sería crear un fork de V8 en `nodejs/v8` que se usaría para mantener las bifurcaciones de V8. Esto tiene varios beneficios:
 
-* The process to update the version of V8 in Node.js could be automated to track the tips of various V8 branches in `nodejs/v8`.
-* It would simplify cherry-picking and porting of fixes between branches as the version bumps in `v8-version.h` would happen as part of this update instead of on every change.
-* It would simplify the V8-CI and make it more automatable.
+* El proceso para actualizar la versión de V8 en Node.js podría automatizarse para rastrear las puntas de varias ramas de V8 en `nodejs/v8 `.
+* Simplificaría la recolección y la migración de arreglos entre ramas, ya que los saltos de versión en `v8-versión.h` ocurrirían como parte de esta actualización en lugar de en cada cambio.
+* Simplificaría el V8-CI y lo haría más automatizable.
 * The history of the V8 branch in `nodejs/v8` becomes purer and it would make it easier to pull in the V8 team for help with reviewing.
 * It would make it simpler to setup an automated build that tracks Node.js master + V8 lkgr integration build.
 
