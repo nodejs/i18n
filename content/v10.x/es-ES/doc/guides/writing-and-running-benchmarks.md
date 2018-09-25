@@ -153,13 +153,13 @@ $ node benchmark/compare.js --old ./node-master --new ./node-pr-5134 string_deco
 ```console
   --new      ./new-node-binary  new node binary (required)
   --old      ./old-node-binary  old node binary (required)
-  --runs     30                 number of samples
-  --filter   pattern            string to filter benchmark scripts
-  --set      variable=value     set benchmark variable (can be repeated)
-  --no-progress                 don't show benchmark progress indicator
+  --runs     30                 número de muestras
+  --filter   pattern            string para filtrar scripts de la prueba de rendimiento
+  --set      variable=value     establece la variable de la prueba de rendimiento (se puede repetir)
+  --no-progress                 no mostrar el indicador de progreso de la prueba de rendimiento
 ```
 
-For analysing the benchmark results use the `compare.R` tool.
+Para analizar los resultados de la prueba de rendimiento use la herramienta `compare.R`.
 
 ```console
 $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
@@ -172,7 +172,7 @@ $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
 ...
 ```
 
-In the output, *improvement* is the relative improvement of the new version, hopefully this is positive. *confidence* tells if there is enough statistical evidence to validate the *improvement*. If there is enough evidence then there will be at least one star (`*`), more stars is just better. **However if there are no stars, then don't make any conclusions based on the *improvement*.** Sometimes this is fine, for example if no improvements are expected, then there shouldn't be any stars.
+En la salida, *improvement* es la mejora relativa de la nueva versión, con suerte esto es positivo. *confidence* dice si hay suficiente evidencia estadística para validar la *mejora*. Si hay suficiente evidencia entonces habrá al menos una estrella (`*`), más estrellas es simplemente mejor. **Sin embargo, si no hay estrellas, entonces no haga ninguna conclusión basada en la *mejora*. **Algunas veces esto está bien, por ejemplo si ninguna mejora es esperada, entonces no debería haber ninguna estrella.
 
 **A word of caution:** Statistics is not a foolproof tool. If a benchmark shows a statistical significant difference, there is a 5% risk that this difference doesn't actually exist. For a single benchmark this is not an issue. But when considering 20 benchmarks it's normal that one of them will show significance, when it shouldn't. A possible solution is to instead consider at least two stars (`**`) as the threshold, in that case the risk is 1%. If three stars (`***`) is considered the risk is 0.1%. However this may require more runs to obtain (can be set with `--runs`).
 
