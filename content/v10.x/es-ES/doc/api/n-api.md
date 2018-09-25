@@ -3128,12 +3128,12 @@ NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env,
                                                  napi_callback_scope* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] resource_object`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] context`: Context for the async operation that is invoking the callback. This should be a value previously obtained from [`napi_async_init`][].
-- `[out] result`: The newly created scope.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] resource_object`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
+- `[in] context`: Contexto para la operación asíncrona que está invocando al callback. Este debe ser un valor obtenido previamente de [`napi_async_init`][].
+- `[out] result`: El ámbito recientemente creado.
 
-There are cases (for example resolving promises) where it is necessary to have the equivalent of the scope associated with a callback in place when making certain N-API calls. If there is no other script on the stack the [`napi_open_callback_scope`][] and [`napi_close_callback_scope`][] functions can be used to open/close the required scope.
+Existen casos (por ejemplo resolver promesas) en los que es necesario tener el equivalente del ámbito asociado con el callback en el lugar cuando se realizan ciertas llamadas N-API. Si no hay otro script en la pila, las funciones [`napi_open_callback_scope`][] y [`napi_close_callback_scope`][] pueden ser utilizadas para abrir/cerrar el ámbito requerido.
 
 ### napi_close_callback_scope
 
@@ -3146,12 +3146,12 @@ NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env,
                                                   napi_callback_scope scope)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: The scope to be closed.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] scope`: El ámbito a ser cerrado.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si hay una excepción de JavaScript pendiente.
 
-## Version Management
+## Administración de Versiones
 
 ### napi_get_node_version
 
@@ -3171,14 +3171,14 @@ napi_status napi_get_node_version(napi_env env,
                                   const napi_node_version** version);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] version`: A pointer to version information for Node.js itself.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] version`: Un apuntador a la información de versión para Node.js.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This function fills the `version` struct with the major, minor, and patch version of Node.js that is currently running, and the `release` field with the value of [`process.release.name`][`process.release`].
+Esta función rellena la estructura `version` con la versión principal, secundaria y de parche de Node.js que se está ejecutando, y el campo `release` con el valor de [`process.release.name`][`process.release`].
 
-The returned buffer is statically allocated and does not need to be freed.
+El buffer devuelto está asignado de forma estática y no necesita ser liberado.
 
 ### napi_get_version
 
@@ -3191,7 +3191,7 @@ napi_status napi_get_version(napi_env env,
                              uint32_t* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
+- `[in] env`: El entorno bajo el que la API se invoca.
 - `[out] result`: The highest version of N-API supported.
 
 Returns `napi_ok` if the API succeeded.
