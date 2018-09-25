@@ -3103,17 +3103,17 @@ napi_status napi_make_callback(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] async_context`: Contexto para la operación asíncrona que está invocando al callback. Normalmente este debería ser un valor obtenido previamente de [`napi_async_init`][]. Sin embargo, `NULL` también está permitido, lo cual indica que el contexto asíncrono actual (si existe) está por ser utilizado para el callback.
-- `[in] recv`: The `this` object passed to the called function.
-- `[in] func`: `napi_value` representing the JavaScript function to be invoked.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of JavaScript values as `napi_value` representing the arguments to the function.
-- `[out] result`: `napi_value` representing the JavaScript object returned.
+- `[in] recv`: El objeto `this` pasado a la función llamada.
+- `[in] func`: `napi_value` que representa la función de JavaScript a ser invocada.
+- `[in] argc`: El conteo de elementos en el arreglo `argv`.
+- `[in] argv`: Arreglo de valores de JavaScript como `napi_value` que representan los argumentos para la función.
+- `[out] result`: `napi_value` que representa el objeto de JavaScript devuelto.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method allows a JavaScript function object to be called from a native add-on. This API is similar to `napi_call_function`. However, it is used to call *from* native code back *into* JavaScript *after* returning from an async operation (when there is no other script on the stack). It is a fairly simple wrapper around `node::MakeCallback`.
+Este método permite a una función objeto de JavaScript ser llamada desde un complemento nativo. Esta API es similar a `napi_call_function`. Sin embargo, es utilizado para llamar *desde* el código nativo de nuevo *a* JavaScript *luego* de regresar de una operación asíncrona (cuando no hay otro script en la pila). Es una envoltura bastante simple alrededor de `node::MakeCallback`.
 
-Note it is *not* necessary to use `napi_make_callback` from within a `napi_async_complete_callback`; in that situation the callback's async context has already been set up, so a direct call to `napi_call_function` is sufficient and appropriate. Use of the `napi_make_callback` function may be required when implementing custom async behavior that does not use `napi_create_async_work`.
+Tenga en cuenta de que *no* es necesario utilizar `napi_make_callback` desde dentro de un `napi_async_complete_callback`; en esa situación, el contexto asíncrono del callback ya se ha configurado, por lo que una llamada directa a `napi_call_function` es apropiada y suficiente. La utilización de la función `napi_make_callback` puede ser requerida cuando se implementa un comportamiento asíncrono personalizado que no usa `napi_create_async_work`.
 
 ### napi_open_callback_scope
 
