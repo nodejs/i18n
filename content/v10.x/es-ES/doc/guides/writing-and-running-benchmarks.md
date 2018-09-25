@@ -1,9 +1,9 @@
-# How to Write and Run Benchmarks in Node.js Core
+# Cómo Escribir y Ejecutar Pruebas de Rendimiento en el núcleo de Node.js
 
-## Table of Contents
+## Tabla de Contenidos
 
-* [Prerequisites](#prerequisites) 
-  * [HTTP Benchmark Requirements](#http-benchmark-requirements)
+* [Prerrequisitos](#prerequisites) 
+  * [Requisitos de Prueba de Rendimiento HTTP](#http-benchmark-requirements)
   * [Benchmark Analysis Requirements](#benchmark-analysis-requirements)
 * [Running benchmarks](#running-benchmarks) 
   * [Running individual benchmarks](#running-individual-benchmarks)

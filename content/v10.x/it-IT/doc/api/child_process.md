@@ -917,8 +917,8 @@ const { fork } = require('child_process');
 const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
-// Apri il server e invia i socket al child. Utilizza pauseOnConnect per impedire la lettura 
-// dei socket prima che vengano inviati al processo child.
+// Apri il server e invia i socket al child. Utilizza pauseOnConnect per impedire 
+// la lettura dei socket prima che vengano inviati al processo child.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
 
@@ -940,7 +940,8 @@ process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
       // Verifica che il client socket esista.
-      // È possibile che il socket venga chiuso dal momento in cui viene inviato fino a quando non viene ricevuto nel processo child.
+      // È possibile che il socket venga chiuso dal momento in cui viene
+// inviato fino a quando non viene ricevuto nel processo child.
       socket.end(`Request handled with ${process.argv[2]} priority`);
     }
   }
@@ -949,7 +950,7 @@ process.on('message', (m, socket) => {
 
 Una volta che un socket viene passato a un child, il parent non è più in grado di rilevare quando tale socket viene distrutto. Per indicare ciò, la proprietà `.connections` diventa `null`. Si consiglia di non utilizzare `.maxConnections` quando questo si verifica.
 
-It is also recommended that any `'message'` handlers in the child process verify that `socket` exists, as the connection may have been closed during the time it takes to send the connection to the child.
+Si consiglia inoltre che qualsiasi `'message'` handler nel processo child verifichi che il `socket` esista, in quanto la connessione potrebbe essere stata chiusa mentre veniva inviata al child.
 
 ### subprocess.stderr
 
@@ -959,11 +960,11 @@ added: v0.1.90
 
 * {stream.Readable}
 
-A `Readable Stream` that represents the child process's `stderr`.
+Un `Readable Stream` che rappresenta lo `stderr` del processo child.
 
-If the child was spawned with `stdio[2]` set to anything other than `'pipe'`, then this will be `null`.
+Se il child è stato generato con `stdio[2]` impostato su un valore diverso da `'pipe'`, allora questo sarà `null`.
 
-`subprocess.stderr` is an alias for `subprocess.stdio[2]`. Both properties will refer to the same value.
+`subprocess.stderr` è un alias per `subprocess.stdio[2]`. Entrambe le proprietà faranno riferimento allo stesso valore.
 
 ### subprocess.stdin
 
@@ -973,13 +974,13 @@ added: v0.1.90
 
 * {stream.Writable}
 
-A `Writable Stream` that represents the child process's `stdin`.
+Un `Writable Stream` che rappresenta lo `stdin` del processo child.
 
-*Note that if a child process waits to read all of its input, the child will not continue until this stream has been closed via `end()`.*
+*Da notare che se un processo child attende la lettura completa del proprio input, il processo non continuerà fino a quando questo stream non sarà stato chiuso tramite `end()`.*
 
-If the child was spawned with `stdio[0]` set to anything other than `'pipe'`, then this will be `null`.
+Se il child è stato generato con `stdio[0]` impostato su un valore diverso da `'pipe'`, allora questo sarà `null`.
 
-`subprocess.stdin` is an alias for `subprocess.stdio[0]`. Both properties will refer to the same value.
+`subprocess.stdin` è un alias per `subprocess.stdio[0]`. Entrambe le proprietà faranno riferimento allo stesso valore.
 
 ### subprocess.stdio
 
@@ -989,9 +990,9 @@ added: v0.7.10
 
 * {Array}
 
-A sparse array of pipes to the child process, corresponding with positions in the [`stdio`][] option passed to [`child_process.spawn()`][] that have been set to the value `'pipe'`. Note that `subprocess.stdio[0]`, `subprocess.stdio[1]`, and `subprocess.stdio[2]` are also available as `subprocess.stdin`, `subprocess.stdout`, and `subprocess.stderr`, respectively.
+Uno sparse array dei pipe per il processo child, corrispondenti alle posizioni nell'opzione [`stdio`][], passate a [`child_process.spawn()`][], che sono state impostate al valore `'pipe'`. Da notare che `subprocess.stdio[0]`, `subprocess.stdio[1]`, e `subprocess.stdio[2]` sono disponibili rispettivamente anche come `subprocess.stdin`, `subprocess.stdout`, e `subprocess.stderr`.
 
-In the following example, only the child's fd `1` (stdout) is configured as a pipe, so only the parent's `subprocess.stdio[1]` is a stream, all other values in the array are `null`.
+Nell'esempio seguente, solo il file descriptor `1` (stdout) del child è configurato come un pipe, quindi solo il `subprocess.stdio[1]` del parent è uno stream, tutti gli altri valori nell'array sono `null`.
 
 ```js
 const assert = require('assert');
@@ -1000,9 +1001,9 @@ const child_process = require('child_process');
 
 const subprocess = child_process.spawn('ls', {
   stdio: [
-    0, // Use parent's stdin for child
-    'pipe', // Pipe child's stdout to parent
-    fs.openSync('err.out', 'w') // Direct child's stderr to a file
+    0, // Usa lo stdin del parent per il child
+    'pipe', // Esegue il piping dello stdout del child al parent
+    fs.openSync('err.out', 'w') // Dirige lo stderr del child su un file
   ]
 });
 
@@ -1024,20 +1025,20 @@ added: v0.1.90
 
 * {stream.Readable}
 
-A `Readable Stream` that represents the child process's `stdout`.
+Un `Readable Stream` che rappresenta lo `stdout` del processo child.
 
-If the child was spawned with `stdio[1]` set to anything other than `'pipe'`, then this will be `null`.
+Se il child è stato generato con `stdio[1]` impostato su un valore diverso da `'pipe'`, allora questo sarà `null`.
 
-`subprocess.stdout` is an alias for `subprocess.stdio[1]`. Both properties will refer to the same value.
+`subprocess.stdout` è un alias per `subprocess.stdio[1]`. Entrambe le proprietà faranno riferimento allo stesso valore.
 
-## `maxBuffer` and Unicode
+## `maxBuffer` e Unicode
 
-The `maxBuffer` option specifies the largest number of bytes allowed on `stdout` or `stderr`. If this value is exceeded, then the child process is terminated. This impacts output that includes multibyte character encodings such as UTF-8 or UTF-16. For instance, `console.log('中文测试')` will send 13 UTF-8 encoded bytes to `stdout` although there are only 4 characters.
+L'opzione `maxBuffer` specifica il massimo numero di byte consentiti su `stdout` o su `stderr`. Se questo valore viene superato, allora il processo child viene concluso. Questo influisce sull'output che include gli encoding di caratteri multibyte come UTF-8 o UTF-16. Ad esempio, `console.log('中文测试')` invierà 13 byte con codifica UTF-8 a `stdout` sebbene ci siano solo 4 caratteri.
 
-## Shell Requirements
+## Requisiti della Shell
 
-The shell should understand the `-c` switch on UNIX or `/d /s /c` on Windows. On Windows, command line parsing should be compatible with `'cmd.exe'`.
+La shell dovrebbe capire lo switch `-c` su UNIX oppure `/d /s /c` su Windows. Su Windows, il parsing (analisi) della command line dovrebbe essere compatibile con `'cmd.exe'`.
 
-## Default Windows Shell
+## Shell Default di Windows
 
-Although Microsoft specifies `%COMSPEC%` must contain the path to `'cmd.exe'` in the root environment, child processes are not always subject to the same requirement. Thus, in `child_process` functions where a shell can be spawned, `'cmd.exe'` is used as a fallback if `process.env.ComSpec` is unavailable.
+Sebbene Microsoft specifichi che `%COMSPEC%` debba contenere il percorso per `'cmd.exe'` nell'ambiente del root, i processi child non sono sempre soggetti alla stessa condizione. Pertanto, nelle funzioni `child_process` in cui è possibile generare una shell, `'cmd.exe'` viene utilizzato come fallback se `process.env.ComSpec` non è disponibile.

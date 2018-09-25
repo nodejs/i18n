@@ -83,7 +83,7 @@ Po zapisaniu kodu źródłowego, należy go skompilować do pliku binarnego `add
 
 *Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Ta wersja nie jest stworzona bezpośrednio dla programistów i jest przeznaczona tylko do obsługi możliwości użycia komendy `npm install` do kompilowania i instalowania dodatków. Deweloperzy, którzy chcą użyć `node-gyp` bezpośrednio, mogą zainstalować go za pomocą komendy `npm install -g node-gyp`. Po więcej informacji, w tym specyficzne dla platformy, zobacz [instrukcje instalacji](https://github.com/nodejs/node-gyp#installation) `node-gyp`.
 
-Po utworzeniu pliku `binding.gyp`, użyj `node-gyp configure`, aby wygenerować odpowiednie pliki budowy projektu dla bieżącej platformy. Spowoduje to wygenerowanie pliku ` Makefile` (na platformach Unix) lub pliku `vcxproj` (w systemie Windows) w katalogu `build/`.
+Po utworzeniu pliku `binding.gyp`, użyj `node-gyp configure`, aby wygenerować odpowiednie pliki budowy projektu dla bieżącej platformy. Spowoduje to wygenerowanie pliku `Makefile` (na platformach Unix) lub pliku `vcxproj` (w systemie Windows) w katalogu `build/`.
 
 Następnie użyj komendy `node-gyp build`, aby wygenerować skompilowany plik `addon.node`. Zostanie on wprowadzony do katalogu `build/Release/`.
 
@@ -121,15 +121,15 @@ Node.js korzysta z wielu statycznie połączonych bibliotek, takich jak V8, libu
 
 * `node-gyp` można uruchomić za pomocą flagi `--nodedir` wskazującej na lokalny obraz źródłowy Node.js. Używając tej opcji, ten dodatek będzie miał dostęp do pełnego zestawu zależności.
 
-### Loading Addons using require()
+### Ładowanie dodatków za pomocą komendy require()
 
-The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Rozszerzenie pliku skompilowanego dodatku binarnego to `.node` (w przeciwieństwie do `.dll` lub `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Jedynym zastrzeżeniem jest jednak to, że Node.js najpierw spróbuje zlokalizować i załadować moduły lub pliki JavaScript, które dzielą tę samą nazwę podstawową. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
-## Native Abstractions for Node.js
+## Natywne abstrakcje dla Node.js
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Każdy z przykładów przedstawionych w tym dokumencie bezpośrednio wykorzystuje API Node.js i V8 do implementacji dodatków. Ważne jest, aby zrozumieć, że API V8 może się zmienić drastycznie, jak to już zresztą było, od jednej wersji V8 do drugiej (i jednej ważnej wersji Node.js do następnej). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 

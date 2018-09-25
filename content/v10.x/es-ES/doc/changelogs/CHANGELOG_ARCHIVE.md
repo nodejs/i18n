@@ -705,7 +705,7 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 * crypto: limpiar pila de errores (Ben Noordhuis)
 * test: establecer opcionalmente common.PORT mediante variable env (Timothy J Fontaine)
 * path: Arrojar TypeError al pasar argumentos no-strings a path.resolve/join (isaacs, Arianit Uka)
-* crypto: reparar acceso a memoria no inicializada en openssl (Ben Noordhuis)
+* crypto: reparar acceso a memoria sin inicializar en openssl (Ben Noordhuis)
 
 <a id="0.9.10"></a>
 
@@ -931,572 +931,572 @@ https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 * net: soportar Server.listen(Pipe) (Andreas Madsen)
 * node: no escanear complemento para símbolo "init" (Ben Noordhuis)
 * remover process.uvCounters() (Ben Noordhuis)
-* repl: console writes to repl rather than process stdio (Nathan Rajlich)
-* timers: implement setImmediate (Timothy J Fontaine)
-* tls: fix segfault in pummel/test-tls-ci-reneg-attack (Ben Noordhuis)
-* tools: Move gyp addon tools to node-gyp (Nathan Rajlich)
-* unix: preliminary signal handler support (Ben Noordhuis)
-* unix: remove dependency on ev_child (Ben Noordhuis)
-* unix: work around darwin bug, don't poll() on pipe (Fedor Indutny)
-* util: Formally deprecate util.pump() (Ben Noordhuis)
-* windows: make active and closing handle state independent (Bert Belder)
-* windows: report spawn errors to the exit callback (Bert Belder)
-* windows: signal handling support with uv_signal_t (Bert Belder)
+* repl: la consola escribe a repl en vez de al stdio del proceso (Nathan Rajlich)
+* timers: implementar setImmediate (Timothy J Fontaine)
+* tls: reparar segfault en pummel/test-tls-ci-reneg-attack (Ben Noordhuis)
+* tools: Mover herramientas del complemento gyp a node-gyp (Nathan Rajlich)
+* unix: soporte para el manejador de señales preliminares (Ben Noordhuis)
+* unix: remover dependencia en ev_child (Ben Noordhuis)
+* unix: solucionar bug de darwin, no hacer poll() en pipe (Fedor Indutny)
+* util: Desaprobar formalmente a util.pump() (Ben Noordhuis)
+* windows: hacer independientes a estados "activo" y de "clausura" de los handles (Bert Belder)
+* windows: reportar errores de spawn al callback de salida (Bert Belder)
+* windows: soporte para el manejo de señales con uv_signal_t (Bert Belder)
 
 <a id="0.9.0"></a>
 
-## 2012.07.20, Version 0.9.0 (Unstable)
+## 2012.07.20, Versión 0.9.0 (Inestable)
 
 https://github.com/nodejs/node/commit/f9b237f478c372fd55e4590d7399dcd8f25f3603
 
-* punycode: update to v1.1.1 (Mathias Bynens)
-* c-ares: upgrade to 1.9.0 (Saúl Ibarra Corretgé)
-* dns: ignore rogue DNS servers reported by windows (Saúl Ibarra Corretgé)
-* unix: speed up uv_async_send() (Ben Noordhuis)
-* darwin: get cpu model correctly on mac (Xidorn Quan)
-* nextTick: Handle tick callbacks before any other I/O (isaacs)
-* Enable color customization of `util.inspect` (Pavel Lang)
-* tls: Speed and memory improvements (Fedor Indutny)
-* readline: Use one history item for reentered line (Vladimir Beloborodov)
-* Fix [#3521](https://github.com/joyent/node/issues/3521) Make process.env more like a regular Object (isaacs)
+* punycode: actualizar a v1.1.1 (Mathias Bynens)
+* c-ares: actualizar a 1.9.0 (Saúl Ibarra Corretgé)
+* dns: ignorar servidores rogue de DNS reportados por windows (Saúl Ibarra Corretgé)
+* unix: acelerar a uv_async_send() (Ben Noordhuis)
+* darwin: obtener correctamente modelo de cpu en mac (Xidorn Quan)
+* nextTixk: Manejar tick callbacks antes que a otras I/O (isaacs)
+* Habilitar personalización de color de `util.inspect` (Pavel Lang)
+* tls: Mejoras de velocidad y memoria (Fedor Indutny)
+* readline: Utilizar un solo ítem de historia para línea reintegrada (Vladimir Beloborodov)
+* Reparar [#3521](https://github.com/joyent/node/issues/3521) Hacer que process.env sea más como un Objeto regular (isaacs)
 
 <a id="0.8.25"></a>
 
-## 2013.06.13, Version 0.8.25 (maintenance)
+## 2013.06.13, Versión 0.8.25 (mantenimiento)
 
 https://github.com/nodejs/node/commit/0b9bdb2bc7e1c872f0ea4713517fda22a4b0b202
 
-* npm: Upgrade to 1.2.30
-* child_process: fix handle delivery (Ben Noordhuis)
+* npm: Actualizar a 1.2.30
+* child_process: reparar entrega de handles (Ben Noordhuis)
 
 <a id="0.8.24"></a>
 
-## 2013.06.04, Version 0.8.24 (maintenance)
+## 2013.06.04, Versión 0.8.24 (mantenimiento)
 
 https://github.com/nodejs/node/commit/c1a1ab067721ea17ef7b05ec5c68b01321017f05
 
-* npm: Upgrade to v1.2.24
-* url: Properly parse certain oddly formed urls (isaacs)
-* http: Don't try to destroy nonexistent sockets (isaacs)
-* handle_wrap: fix NULL pointer dereference (Ben Noordhuis)
+* npm: Actualizar a v1.2.24
+* utl: Analizar correctamente a ciertas urls formadas de manera extraña (isaacs)
+* http: No intentar destruir sockets inexistentes (isaacs)
+* handle_wrap: reparar puntero de desreferencia NULO (Ben Noordhuis)
 
 <a id="0.8.23"></a>
 
-## 2013.04.09, Version 0.8.23 (maintenance)
+## 2013.04.09, Versión 0.8.23 (mantenimiento)
 
 https://github.com/nodejs/node/commit/c67f8d0500fe15637a623eb759d2ad7eb9fb3b0b
 
-* npm: Upgrade to v1.2.18
-* http: Avoid EE warning on ECONNREFUSED handling (isaacs)
-* tls: Re-enable check of CN-ID in cert verification (Tobias Müllerleile)
-* child_process: fix sending utf-8 to child process (Ben Noordhuis)
-* crypto: check key type in GetPeerCertificate() (Ben Noordhuis)
-* win/openssl: mark assembled object files as seh safe (Bert Belder)
-* windows/msi: fix msi build issue with WiX 3.7/3.8 (Raymond Feng)
+* npm: Actualizar a v1.2.18
+* http: Evitar advertencia EE en manejo de ECONNREFUSED (isaacs)
+* tls: Volver a habilitar revisión de CN-ID en verificación de certificados (Tobías Müllerleile)
+* child_process: reparar envío de utf-8 a proceso secundario (Ben Noordhuis)
+* cypto: revisar tipo de clave en GetPeerCertificate() (Ben Noordhuis)
+* win/openssl: marcar archivos de objetos ensamblados como seguros por seh (Bert Belder)
+* windows/msi: reparar problema del build msi con WiX 3.7/3.8 (Raymond Feng)
 
 <a id="0.8.22"></a>
 
-## 2013.03.07, Version 0.8.22 (Stable)
+## 2013.03.07, Versión 0.8.22 (Estable)
 
 https://github.com/nodejs/node/commit/67a4cb4fe8c2346e30ffb83f7178e205cc2dab33
 
-* npm: Update to 1.2.14
-* cluster: propagate bind errors (Ben Noordhuis)
-* crypto: don't assert when calling Cipher#final() twice (Ben Noordhuis)
-* build, windows: disable SEH (Ben Noordhuis)
+* npm: Actualizar a 1.2.14
+* cluster: propagar errores de enlace (Ben Noordhuis)
+* crypto: no hacer aserción al llamar a Cipher#final() dos veces (Ben Noordhuis)
+* build, windows: deshabilitar SEH (Ben Noordhuis)
 
 <a id="0.8.21"></a>
 
-## 2013.02.25, Version 0.8.21 (Stable)
+## 2013.02.25, Versión 0.8.21 (Estable)
 
 https://github.com/nodejs/node/commit/530d8c05d4c546146f18e5ba811d7eb3b7b7c0c5
 
-* http: Do not free the wrong parser on socket close (isaacs)
-* http: Handle hangup writes more gently (isaacs)
-* zlib: fix assert on bad input (Ben Noordhuis)
-* test: add TAP output to the test runner (Timothy J Fontaine)
-* unix: Handle EINPROGRESS from domain sockets (Ben Noordhuis)
+* http: No liberar al analizador equivocado ante el cierre de un socket (isaacs)
+* http: Manejar la escritura de los hangups más delicadamente (isaacs)
+* zlib: reparar aserción ante mal input (Ben Noorduis)
+* test: añadir output de TAP al ejecutor de pruebas (Timothy J Fontaines)
+* unix: Manejar EINPROGRESS desde sockets del dominio (Ben Noordhuis)
 
 <a id="0.8.20"></a>
 
-## 2013.02.15, Version 0.8.20 (Stable)
+## 2013.02.15, Versión 0.8.20 (Estable)
 
 https://github.com/nodejs/node/commit/e10c75579b536581ddd7ae4e2c3bf8a9d550d343
 
-* npm: Upgrade to v1.2.11
-* http: Do not let Agent hand out destroyed sockets (isaacs)
-* http: Raise hangup error on destroyed socket write (isaacs)
-* http: protect against response splitting attacks (Bert Belder)
+* npm: Actualizar a v1.2.11
+* http: No dejar que el Agente entregue sockets destruídos (isaacs)
+* http: Levantar error de hangup ante escritura de socket destruido (isaacs)
+* http: proteger contra ataques divisores de respuesta (Bert Belder)
 
 <a id="0.8.19"></a>
 
-## 2013.02.06, Version 0.8.19 (Stable)
+## 2013.02.06, Versión 0.8.19 (Estable)
 
 https://github.com/nodejs/node/commit/53978bdf420622ff0121c63c0338c9e7c2e60869
 
-* npm: Upgrade to v1.2.10
-* zlib: pass object size hint to V8 (Ben Noordhuis)
-* zlib: reduce memory consumption, release early (Ben Noordhuis)
-* buffer: slow buffer copy compatibility fix (Trevor Norris)
-* zlib: don't assert on malformed dictionary (Ben Noordhuis)
-* zlib: don't assert on missing dictionary (Ben Noordhuis)
-* windows: better ipv6 support (Bert Belder)
-* windows: add error mappings related to unsupported protocols (Bert Belder)
-* windows: map ERROR_DIRECTORY to UV_ENOENT (Bert Belder)
+* npm: Actualizar a v1.2.10
+* zlib: pasar pista sobre tamaño del objeto a V8 (Ben Noordhuis)
+* zlib: reducir consumo de memoria, soltar tempranamente (Ben Noordhuis)
+* buffer: reparación de compatibilidad de la copia de slow buffer (Trevor Norris)
+* zlib: no hacer aserción ante diccionario malformado (Ben Noordhuis)
+* zlib: no hacer aserción ante diccionario faltante (Ben Noordhuis)
+* windows: mejorar soporte para ipv6 (Bert Belder)
+* windows: añadir mapeos de errores relacionados con protocolos no soportados (Bert Belder)
+* windows: mapear ERROR_DIRECTORY a UV_ENOENT (Bert Belder)
 
 <a id="0.8.18"></a>
 
-## 2013.01.18, Version 0.8.18 (Stable)
+## 2013.01.18, Versión 0.8.18 (Estable)
 
 https://github.com/nodejs/node/commit/2c4eef0d972838c51999d32c0d251857a713dc18
 
-* npm: Upgrade to v1.2.2
-* dns: make error message match errno (Dan Milon)
-* tls: follow RFC6125 more strictly (Fedor Indutny)
-* buffer: reject negative SlowBuffer offsets (Ben Noordhuis)
-* install: add simplejson fallback (Chris Dent)
-* http: fix "Cannot call method 'emit' of null" (Ben Noordhuis)
+* npm: Actualizar a v1.2.2
+* dns: hacer que mensaje de error coincida con errno (Dan Milon)
+* tls: seguir a RFC6125 más estrictamente (Fedor Indutny)
+* buffer: rechazar offsets de SlowBuffer negativos (Ben Noordhuis)
+* install: añadir contingencia para simplejson (Chris Dent)
+* http: reparar "Cannot call method 'emit' of null" (Ben Noordhuis)
 
 <a id="0.8.17"></a>
 
-## 2013.01.09, Version 0.8.17 (Stable)
+## 2013.01.09, Versión 0.8.17 (Estable)
 
 https://github.com/nodejs/node/commit/c50c33e9397d7a0a8717e8ce7530572907c054ad
 
-* npm: Upgrade to v1.2.0
+* npm: Actualizar a v1.2.0
   
   * peerDependencies (Domenic Denicola)
   * node-gyp v0.8.2 (Nathan Rajlich)
-  * Faster installs from github user/project shorthands (Nathan Zadoks)
+  * Instalaciones más rápidas desde abreviaturas de usuario/proyecto de github (Nathan Zadoks)
 
-* typed arrays: fix 32 bit size/index overflow (Ben Noordhuis)
+* typed arrays: reparar rebosamiento de tamaño/índice de 32 bits (Ben Noordhuis)
 
-* http: Improve performance of single-packet responses (Ben Noordhuis)
-* install: fix openbsd man page location (Ben Noordhuis)
-* http: bubble up parser errors to ClientRequest (Brian White)
+* http: Mejorar rendimiento de respuestas de paquete único (Ben Noordhuis)
+* install: reparar localización de páginas del manual de openbsd (Ben Noordhuis)
+* http: burbujear errores del analizador a ClientRequest (Brian White)
 
 <a id="0.8.16"></a>
 
-## 2012.12.13, Version 0.8.16 (Stable)
+## 2012.12.13, Versión 0.8.16 (Estable)
 
 https://github.com/nodejs/node/commit/1c9c6277d5cfcaaac8569c0c8f7daa64292048a9
 
-* npm: Upgrade to 1.1.69
-* fs: fix WriteStream/ReadStream fd leaks (Ben Noordhuis)
-* crypto: fix leak in GetPeerCertificate (Fedor Indutny)
-* buffer: Don't double-negate numeric buffer arg (Trevor Norris)
-* net: More accurate IP address validation and IPv6 dotted notation. (Joshua Erickson)
+* npm: Actualizar a 1.1.69
+* fs: reparar fugas del fd de WriteStream/ReadStream (Ben Noordhuis)
+* crypto: reparar fuga en GetPeerCertificate (Fedor Indutny)
+* buffer: No negar doblemente argumentos de buffer numéricos (Trevor Norris)
+* net: Validación de dirección IP más precisa y notación de punto de IPv6. (Joshua Erickson)
 
 <a id="0.8.15"></a>
 
-## 2012.11.26, Version 0.8.15 (Stable)
+## 2012.11.26, Versión 0.8.15 (Estable)
 
 https://github.com/nodejs/node/commit/fdf91afb494a7a2fff2913d817f589c191a2c88f
 
-* npm: Upgrade to 1.1.66 (isaacs)
-* linux: use /proc/cpuinfo for CPU frequency (Ben Noordhuis)
-* windows: map WSAESHUTDOWN to UV_EPIPE (Ben Noordhuis)
-* windows: map ERROR_GEN_FAILURE to UV_EIO (Bert Belder)
-* unix: do not set environ unless one is provided (Charlie McConnell)
-* domains: don't crash if domain is set to null (Bert Belder)
-* windows: fix the x64 debug build (Bert Belder)
-* net, tls: fix connect() resource leak (Ben Noordhuis)
+* npm: Actualizar a 1.1.66 (isaacs)
+* linux: usar /proc/cpuinfo para frecuencia del CPU (Ben Noordhuis)
+* windows: mapear WSAESHUTDOWN a UV_EPIPE (Ben Noordhuis)
+* windows: mapear ERROR_GEN_FAILURE a UV_EIO (Bert Belder)
+* unix: no establecer environ a menos que uno sea provisto (Charlie McConell)
+* domains: no colapsar si el dominio está establecido como nulo (Bert Belder)
+* windows: reparar el build del depurador x64 (Bert Belder)
+* net, tls: reparar fuga de recursos de connect() (Ben Noordhuis)
 
 <a id="0.8.14"></a>
 
-## 2012.10.25, Version 0.8.14 (Stable)
+## 2012.10.25, Versión 0.8.14 (Estable)
 
 https://github.com/nodejs/node/commit/b00527fcf05c3d9f
 
-* events: Don't clobber pre-existing _events obj in EE ctor (isaacs)
+* events: No sobrescribir objeto de _events preexistente en ctor de EE (isaacs)
 
 <a id="0.8.13"></a>
 
-## 2012.10.25, Version 0.8.13 (Stable)
+## 2012.10.25, Versión 0.8.13 (Estable)
 
 https://github.com/nodejs/node/commit/ff4c974873f9a7cc6a5b042eb9b6389bb8dde6d6
 
-* V8: Upgrade to 3.11.10.25
-* npm: Upgrade to 1.1.65
-* url: parse hostnames that start with - or _ (Ben Noordhuis)
-* repl: Fix Windows 8 terminal issue (Bert Belder)
-* typed arrays: use signed char for signed int8s (Aaron Jacobs)
-* crypto: fix bugs in DiffieHellman (Ben Noordhuis)
-* configure: turn on VFPv3 on ARMv7 (Ben Noordhuis)
-* Re-enable OpenSSL UI for entering passphrases via tty (Ben Noordhuis)
-* repl: ensure each REPL instance gets its own "context" (Nathan Rajlich)
+* V8: Actualizar a 3.11.10.25
+* npm: Actualizar a 1.1.65
+* url: analizar nombres de hosts que comiencen con - o _ (Ben Noordhuis)
+* repl: Reparar problema con el terminal de Windows 8 (Bert Belder)
+* typed arrays: usar caracteres con signo para int8s con signo (Aaron Jacobs)
+* crypto: corregir bugs en DiffieHellman (Ben Noordhuis)
+* configure: activar VFPv3 en ARMv7 (Ben Noordhuis)
+* Volver a habilitar UI de OpenSSL para introducción de contraseñas vía tty (Ben Noordhuis)
+* repl: asegurarse de que cada instancia de REPL obtenga su propio "context" (Nathan Rajlich)
 
 <a id="0.8.12"></a>
 
-## 2012.10.12, Version 0.8.12 (Stable)
+## 2012.10.12, Versión 0.8.12 (Estable)
 
 https://github.com/nodejs/node/commit/38c72d4e29574dec5205bcf23c2a85efe65331a4
 
-* npm: Upgrade to 1.1.63
-* crypto: Reduce stability index to 2-Unstable (isaacs)
-* windows: fix handle leak in uv_fs_utime (Bert Belder)
-* windows: fix application crashed popup in debug version (Bert Belder)
-* buffer: report proper retained size in profiler (Ben Noordhuis)
-* buffer: fix byteLength with UTF-16LE (koichik)
-* repl: make "end of input" JSON.parse() errors throw in the REPL (Nathan Rajlich)
-* repl: make invalid RegExp modifiers throw in the REPL (Nathan Rajlich)
-* http: handle multiple Proxy-Authenticate values (Willi Eggeling)
+* npm: Actualizar a 1.1.63
+* crypto: Reducir índice de estabilidad a 2-Inestable (isaacs)
+* windows: reparar fuga del manejador en uv_fs_utime (Bert Belder)
+* windows: reparar colapso de ventana emergente de la aplicación en la versión de depuración (Bert Belder)
+* buffer: reportar el verdadero tamaño retenido en el perfilador (Ben Noordhuis)
+* buffer: reparar byteLength con UTF-16LE (koichik)
+* repl: hacer que errores "end of input" de JSON.parse() se arrojen en el REPL (Nathan Rajlich)
+* repl: hacer que modificadores de RegExp no válidos se arrojen en el REPL (Nathan Rajlich)
+* http: manejar múltiples valores de Autenticación Proxy (Willi Eggeling)
 
 <a id="0.8.11"></a>
 
-## 2012.09.27, Version 0.8.11 (Stable)
+## 2012.09.27, Versión 0.8.11 (Estable)
 
 https://github.com/nodejs/node/commit/e1f39468fa580c1e4cb15fac621f87944ee625dc
 
-* fs: Fix stat() size reporting for large files (Ben Noordhuis)
+* fs: Corregir reporte de tamaño de Fix stat() para archivos grandes (Ben Noordhuis)
 
 <a id="0.8.10"></a>
 
-## 2012.09.25, Version 0.8.10 (Stable)
+## 2012.09.25, Versión 0.8.10 (Estable)
 
 https://github.com/nodejs/node/commit/0bc273da4fcaa79b209ed755ad249a3e7be626a6
 
-* npm: Upgrade to 1.1.62
-* repl: make invalid RegExps throw in the REPL (Nathan Rajlich)
-* v8: loosen artificial mmap constraint (Bryan Cantrill)
-* process: fix setuid() and setgid() error reporting (Ben Noordhuis)
-* domain: Properly exit() on domain disposal (isaacs)
-* fs: fix watchFile() missing deletion events (Ben Noordhuis)
-* fs: fix assert in fs.watch() (Ben Noordhuis)
-* fs: don't segfault on deeply recursive stat() (Ben Noordhuis)
-* http: Remove timeout handler when data arrives (Frédéric Germain)
-* http: make the client "res" object gets the same domain as "req" (Nathan Rajlich)
-* windows: don't blow up when an invalid FD is used (Bert Belder)
-* unix: map EDQUOT to UV_ENOSPC (Charlie McConnell)
-* linux: improve /proc/cpuinfo parser (Ben Noordhuis)
-* win/tty: reset background brightness when color is set to default (Bert Belder)
-* unix: put child process stdio fds in blocking mode (Ben Noordhuis)
-* unix: fix EMFILE busy loop (Ben Noordhuis)
-* sunos: don't set TCP_KEEPALIVE (Ben Noordhuis)
-* tls: Use slab allocator for memory management (Fedor Indutny)
-* openssl: Use optimized assembly code for x86 and x64 (Bert Belder)
+* npm: Actualizar a 1.1.62
+* repl: hacer que los RegExp inválidos se arrojen en el REPL (Nathan Rajlich)
+* v8: aflojar restricción de mmap artificial (Bryan Cantrill)
+* process: reparar reporte de errores de setuid() y setgid() (Ben Noordhuis)
+* domain: Aplicar exit() correctamente ante eliminación de dominio (isaacs)
+* fs: corregir eventos de eliminación faltantes en watchFile() (Ben Noordhuis)
+* fs: reparar aserción en fs.watch() (Ben Noordhuis)
+* fs: no hacer segfault en stat() profundamente recursiva (Ben Noorduis)
+* http: Remover manejador de timeout cuando llegan los datos (Frédéric Germain)
+* http: hacer que el objeto "res" del cliente obtenga el mismo dominio que "req" (Nathan Rajlich)
+* windows: no explotar cuando un FD inválido es utilizado (Bert Belder)
+* unix: mapear EDQUOT a UV_ENOSPC (Charlie McConnell)
+* linux: mejorar analizador /proc/cpuinfo (Ben Noordhuis)
+* win/tty: restablecer brillo de fondo cuando el color se establece por defecto (Bert Belder)
+* unix: colocar al stdio fds del proceso secundario en modo de bloqueo (Ben Noorduis)
+* unix: reparar la espera activa de EMFILE (Ben Noordhuis)
+* sunos: no establecer TCP_KEEPALIVE (Ben Noordhuis)
+* tls: Utilizar asignador de slabs para gestión de memoria (Fedor Indutny)
+* openssl: Utilizar código de ensamblaje optimizado para x86 y x64 (Bert Belder)
 
 <a id="0.8.9"></a>
 
-## 2012.09.11, Version 0.8.9 (Stable)
+## 2012.09.11, Versión 0.8.9 (Estable)
 
 https://github.com/nodejs/node/commit/b88c3902b241cf934e75443b934f2033ad3915b1
 
-* v8: upgrade to 3.11.10.22
-* GYP: upgrade to r1477
-* npm: Upgrade to 1.1.61
-* npm: Don't create world-writable files (isaacs)
-* windows: fix single-accept mode for shared server sockets (Bert Belder)
-* windows: fix uninitialized memory access in uv_update_time() (Bert Belder)
-* windows: don't throw when a signal handler is attached (Bert Belder)
-* unix: fix memory leak in udp (Ben Noordhuis)
-* unix: map errno ESPIPE (Ben Noordhuis)
-* unix, windows: fix memory corruption in fs-poll.c (Ben Noordhuis)
-* sunos: fix os.cpus() on x86_64 (Ben Noordhuis)
-* child process: fix processes with IPC channel don't emit 'close' (Bert Belder)
-* build: add a "--dest-os" option to force a gyp "flavor" (Nathan Rajlich)
-* build: set `process.platform` to "sunos" on SunOS (Nathan Rajlich)
-* build: fix `make -j` fails after `make clean` (Bearice Ren)
-* build: fix openssl configuration for "arm" builds (Nathan Rajlich)
-* tls: support unix domain socket/named pipe in tls.connect (Shigeki Ohtsu)
-* https: make https.get() accept a URL (koichik)
-* http: respect HTTP/1.0 TE header (Ben Noordhuis)
-* crypto, tls: Domainify setSNICallback, pbkdf2, randomBytes (Ben Noordhuis)
-* stream.pipe: Don't call destroy() unless it's a function (isaacs)
+* v8: actualizar a 3.11.10.22
+* GYP: actualizar a r1477
+* npm: Actualizar a 1.1.61
+* npm: No crear archivos de escritura pública (isaacs)
+* windows: reparar modo de aceptación simple para sockets de servidor compartido (Bert Belder)
+* windows: reparar acceso a la memoria sin inicializar en uv_update_time() (Bert Belder)
+* windows: no arrojar cuando un manejador de señal es adjuntado (Bert Belder)
+* unix: reparar fuga de memoria en udp (Ben Noordhuis)
+* unix: mapear ESPIPE de errno (Ben Noordhuis)
+* unix, windows: reparar corrupción de memoria en fs-poll.c (Ben Noordhuis)
+* sunos: reparar os.cpus() en x86_64 (Ben Noordhuis)
+* child process: reparar que procesos con el canal IPC no emiten "close" (Bert Belder)
+* build: añadir una opción "--dest-os" para forzar a un "flavor" de gyp (Nathan Rajlich)
+* build: establecer `process.platform` a "sunos" en SunOS (Nathan Rajlich)
+* build: reparar fallo de `make -j` luego de `make clean` (Bearice Ren)
+* build: corregir configuración de openssl para builds "arm" (Nathan Rajlich)
+* tls: soportar socket/pipe nombrado de dominio de unix en tls.connect (Shigeki Ohtsu)
+* https: hacer que https.get() acepte a una URL (koichik)
+* http: respetar cabecera HTTP/1.0 TE (Ben Noordhuis)
+* crypto, tls: "Dominificar" a setSNICallback, pbkdf2, randomBytes (Ben Noordhuis)
+* stream.pipe: No llamar a destroy(), a menos que sea una función (isaacs)
 
 <a id="0.8.8"></a>
 
-## 2012.08.22, Version 0.8.8 (Stable)
+## 2012.08.22, Versión 0.8.8 (Estable)
 
 https://github.com/nodejs/node/commit/a299c97bbc701f4d460e91214d7bfe7a9589d361
 
-* V8: upgrade to 3.11.10.19
-* npm: upgrade to 1.1.59
-* windows: fix uninitialized memory access in uv_update_time() (Bert Belder)
-* unix, windows: fix memory corruption in fs-poll.c (Ben Noordhuis)
-* unix: fix integer overflow in uv_hrtime (Tim Holy)
-* sunos: fix uv_cpu_info() on x86_64 (Ben Noordhuis)
-* tls: update default cipher list (Ben Noordhuis)
-* unix: Fix llvm and older gcc duplicate symbol warnings (Bert Belder)
-* fs: fix use after free in stat watcher (Ben Noordhuis)
-* build: Fix using manually compiled gcc on OS X (Nathan Rajlich)
-* windows: make junctions work again (Bert Belder)
+* V8: actualizar a 3.11.10.19
+* npm: actualizar a 1.1.59
+* windows: reparar acceso a la memoria sin inicializar en uv_update_time() (Bert Belder)
+* unix, windows: reparar corrupción de memoria en fs-poll.c (Ben Noordhuis)
+* unix: corregir desbordamiento de entero en uv_hrtime (Tim Holy)
+* sunos: reparar uv_cpu_info() en x86_64 (Ben Noordhuis)
+* tls: actualizar lista predeterminada de cifrados (Ben Noordhuis)
+* unix: Corregir símbolos de advertencia duplicados de llvm y gcc más viejo (Bert Belder)
+* fs: reparar usar-después-de-liberar en monitor de stat (Ben Noordhuis)
+* build: Reparar el uso de gcc compilado manualmente en OSX (Nathan Rajlich)
+* windows: hacer que las uniones (junctions) funcionen de nuevo (Bert Belder)
 
 <a id="0.8.7"></a>
 
-## 2012.08.15, Version 0.8.7 (Stable)
+## 2012.08.15, Versión 0.8.7 (Estable)
 
 https://github.com/nodejs/node/commit/f640c5d35cba96634cd8176a525a1d876e361a61
 
-* npm: Upgrade to 1.1.49
-* website: download page (Golo Roden)
-* crypto: fix uninitialized memory access in openssl (Ben Noordhuis)
-* buffer, crypto: fix buffer decoding (Ben Noordhuis)
-* build: compile with -fno-tree-vrp when gcc >= 4.0 (Ben Noordhuis)
-* tls: handle multiple CN fields when verifying cert (Ben Noordhuis)
-* doc: remove unused util from child_process (Kyle Robinson Young)
-* build: rework -fvisibility=hidden detection (Ben Noordhuis)
-* windows: don't duplicate invalid stdio handles (Bert Belder)
-* windows: fix typos in process-stdio.c (Bert Belder)
+* npm: Actualizar a 1.1.49
+* website: descargar página (Golo Roden)
+* crypto: reparar acceso a memoria sin inicializar en openssl (Ben Noordhuis)
+* buffer, crypto: reparar codificación de buffer (Ben Noordhuis)
+* build: compilar con -fno-tree-vrp cuando gcc >= 4.0 (Ben Noordhuis)
+* tls: manejar múltiples campos CN al verificar certificado (Ben Noordhuis)
+* doc: remover util no utilizado de child_process (Kyle Robinson Young)
+* build: volver a trabajar detección -fvisibility=hidden (Ben Noordhuis)
+* windows: no duplicar handles stdio inválidos (Bert Belder)
+* windows: corregir typos en process-stdio.c (Bert Belder)
 
 <a id="0.8.6"></a>
 
-## 2012.08.07, Version 0.8.6 (Stable)
+## 2012.08.07, Versión 0.8.6 (Estable)
 
 https://github.com/nodejs/node/commit/0544a586ca6b6b900a42e164033dbf350765700a
 
-* npm: Upgrade to v1.1.48
-* Add 'make binary' to build binary tarballs for all Unixes (Nathan Rajlich)
-* zlib: Emit 'close' on destroy(). (Dominic Tarr)
-* child_process: Fix stdout=null when stdio=\['pipe'\] (Tyler Neylon)
-* installer: prevent ETXTBSY errors (Ben Noordhuis)
-* installer: honor --without-npm, default install path (Ben Noordhuis)
-* net: make pause work with connecting sockets (Bert Belder)
-* installer: fix cross-compile installs (Ben Noordhuis)
-* net: fix .listen({fd:0}) (Ben Noordhuis)
-* windows: map WSANO_DATA to UV_ENOENT (Bert Belder)
+* npm: Actualizar a v1.1.48
+* Añadir "make binary" para compilar tarballs binarias para todos los Unix (Nathan Rajlich)
+* zlib: Emitir "close" al aplicar destroy(). (Dominic Tarr)
+* child_process: Corregir stdout=null cuando stdio=\['pipe'\] (Tyler Neylon)
+* installer: prevenir errores ETXTBSY (Ben Noordhuis)
+* installer: hacer honor a --without-npm, instalar ruta predeterminadamente (Ben Noordhuis)
+* net: hacer que el pausado funcione con sockets en estado de conexión (Bert Belder)
+* installer: reparar instalaciones cross-compile (Ben Noordhuis)
+* net: reparar .listen({fd:0}) (Ben Noordhuis)
+* windows: mapear WSANO_DATA a UV_ENOENT (Bert Belder)
 
 <a id="0.8.5"></a>
 
-## 2012.08.02, Version 0.8.5 (Stable)
+## 2012.08.02, Versión 0.8.5 (Estable)
 
 https://github.com/nodejs/node/commit/9b86a4453f0c76f2707a75c0b2343aba33ec63bc
 
-* node: tag Encode and friends NODE_EXTERN (Ben Noordhuis)
-* fs: fix ReadStream / WriteStream missing callback (Gil Pedersen)
-* fs: fix readFileSync("/proc/cpuinfo") regression (Ben Noordhuis)
-* installer: don't assume bash is installed (Ben Noordhuis)
-* Report errors properly from --eval and stdin (isaacs)
-* assert: fix throws() throws an error without message property (koichik)
-* cluster: fix libuv assert in net.listen() (Ben Noordhuis)
-* build: always link sunos builds with libumem (Trent Mick)
-* build: improve armv7 / hard-float detection (Adam Malcontenti-Wilson)
-* https: Use host header as effective servername (isaacs)
-* sunos: work around OS bug to prevent fs.watch() from spinning (Bryan Cantrill)
-* linux: fix 'two watchers, one path' segfault (Ben Noordhuis)
-* windows: fix memory leaks in many fs functions (Bert Belder)
-* windows: don't allow directories to be opened for writing/appending (Bert Belder)
-* windows: make fork() work even when not all stdio handles are valid (Bert Belder)
-* windows: make unlink() not remove mount points, and improve performance (Bert Belder)
-* build: Sign pkg installer for OS X (isaacs)
+* node: etiquetar Codificación y amigos NODE_EXTERN (Ben Noordhuis)
+* fs: corregir callback faltante de ReadStream / WriteStream (Gil Pedersen)
+* fs: reparar regresión de readFileSync("/proc/cpuinfo") (Ben Noordhuis)
+* installer: no asumir que bash está instalado (Ben Noordhuis)
+* Reportar errores correctamente desde --eval y stdin (isaacs)
+* assert: corregir que throws() arroja un error sin propiedad de mensaje (koichik)
+* cluster: reparar aserción de libuv en net.listen() (Ben Noordhuis)
+* build: siempre enlazar builds de sunos con libumem (Trent Mick)
+* build: mejorar detección de armv7 / hard-float (Adam Malcontenti-Wilson)
+* https: Utilizar cabecera de host como nombre del servidor efectivo (isaacs)
+* sunos: reparar bug de OS para evitar rotación de fs.watch() (Bryan Cantrill)
+* linux: reparar segfault de "dos monitores, una ruta" (Ben Noordhuis)
+* windows: reparar fugas de memoria en muchas funciones fs (Bert Belder)
+* windows: no permitir que directorios sean abiertos para escritura/anexión (Bert Belder)
+* windows: hacer que fork() funcione, incluso cuando no todos los manejadores stdio sean válidos (Bert Belder)
+* windows: hacer que unlink() no remueva puntos de montaje, y mejorar rendimiento (Bert Belder)
+* build: Firmar instalador pkg para OS X (isaacs)
 
 <a id="0.8.4"></a>
 
-## 2012.07.25, Version 0.8.4 (Stable)
+## 2012.07.25, Versión 0.8.4 (Estable)
 
 https://github.com/nodejs/node/commit/f98562fcd7d1cab573ca4dc1612157d6999befd4
 
-* V8: Upgrade to 3.11.10.17
-* npm: Upgrade to 1.1.45
-* net: fix Socket({ fd: 42 }) api (Ben Noordhuis)
-* readline: Remove event listeners on close (isaacs)
-* windows: correctly prep long path for fs.exists(Sync) (Bert Belder)
-* debugger: wake up the event loop when a debugger command is dispatched (Peter Rybin)
-* tls: verify server's identity (Fedor Indutny)
-* net: ignore socket.setTimeout(Infinity or NaN) (Fedor Indutny)
+* V8: Actualizar a 3.11.10.17
+* npm: Actualizar a 1.1.45
+* net: reparar api del Socket({ fd: 42 }) (Ben Noordhuis)
+* readline: Remover listeners del evento al cierre (isaacs)
+* windows: preparar correctamente ruta larga para fs.exists(Sync) (Bert Belder)
+* debugger: activar el bucle del evento cuando un comando de depuración sea enviado (Peter Rybin)
+* tls: verificar identidad del servidor (Fedor Indutny)
+* net: ignorar socket.setTimeout(Infinity o NaN) (Fedor Indutny)
 
 <a id="0.8.3"></a>
 
-## 2012.07.19, Version 0.8.3 (Stable)
+## 2012.07.19, Versión 0.8.3 (Estable)
 
 https://github.com/nodejs/node/commit/60bf2d6cb33e4ce55604f73889ab840a9de8bdab
 
-* V8: upgrade to 3.11.10.15
-* npm: Upgrade to 1.1.43
-* net: fix net.Server.listen({fd:x}) error reporting (Ben Noordhuis)
-* net: fix bogus errno reporting (Ben Noordhuis)
-* build: Move npm shebang logic into an npm script (isaacs)
-* build: fix add-on loading on freebsd (Ben Noordhuis)
-* build: disable unsafe optimizations (Ben Noordhuis)
-* build: fix spurious mksnapshot crashes for good (Ben Noordhuis)
-* build: speed up genv8constants (Dave Pacheco)
-* fs: make unwatchFile() remove a specific listener (Ben Noordhuis)
-* domain: Remove first arg from intercepted fn (Toshihiro Nakamura)
-* domain: Fix memory leak on error (isaacs)
-* events: Fix memory leak from removeAllListeners (Nathan Rajlich)
-* zlib: Fix memory leak in Unzip class. (isaacs)
-* crypto: Fix memory leak in DecipherUpdate() (Ben Noordhuis)
+* V8: actualizar a 3.11.10.15
+* npm: Actualizar a 1.1.43
+* net: reparar reporte de errores de net.Server.listen({fd:x}) (Ben Noordhuis)
+* net: reparar reportes de errno de bogus (Ben Noordhuis)
+* build: Mover lógica shebang de npm adentro de un script de npm (isaacs)
+* build: reparar carga de complemento en freebsd (Ben Noordhuis)
+* build: deshabilitar optimizaciones inseguras (Ben Noordhuis)
+* build: reparar colapsos alterados de mksnapshot de una vez por todas (Ben Noordhuis)
+* build: acelerar genv8constants (Dave Pacheco)
+* fs: hacer que unwatchFile() remueva a un listener específico (Ben Noordhuis)
+* domain: Remover primer argumento de fn interceptado (Toshihiro Nakamura)
+* domain: Reparar fuga de memoria ante error (isaacs)
+* events: Reparar fuga de memoria de removeAllListeners (Nathan Rajlich)
+* zlib: Reparar fuga de memoria en clase Unzip. (isaacs)
+* crypto: Reparar fuga de memoria en DecipherUpdate() (Ben Noordhuis)
 
 <a id="0.8.2"></a>
 
-## 2012.07.09, Version 0.8.2 (Stable)
+## 2012.07.09, Versión 0.8.2 (Estable)
 
 https://github.com/nodejs/node/commit/cc6084b9ac5cf1d4fe5e7165b71e8fc05d11be1f
 
-* npm: Upgrade to 1.1.36
-* readline: don't use Function#call() (Nathan Rajlich)
-* Code cleanup to pass 'use strict' (Jonas Westerlund)
-* module: add filename to require() json errors (TJ Holowaychuk)
-* readline: fix for unicode prompts (Tim Macfarlane)
-* timers: fix handling of large timeouts (Ben Noordhuis)
-* repl: fix passing an empty line inserting "undefined" into the buffer (Nathan Rajlich)
-* repl: fix crashes when buffering command (Maciej Małecki)
-* build: rename strict_aliasing to node_no_strict_aliasing (Ben Noordhuis)
-* build: disable -fstrict-aliasing for any gcc < 4.6.0 (Ben Noordhuis)
-* build: detect cc version with -dumpversion (Ben Noordhuis)
-* build: handle output of localized gcc or clang (Ben Noordhuis)
-* unix: fix memory corruption in freebsd.c (Ben Noordhuis)
-* unix: fix 'zero handles, one request' busy loop (Ben Noordhuis)
-* unix: fix busy loop on unexpected tcp message (Ben Noordhuis)
-* unix: fix EINPROGRESS busy loop (Ben Noordhuis)
+* npm: Actualizar a 1.1.36
+* readline: no usar Function#call() (Nathan Rajlich)
+* Limpieza de código para pasar "use strict" (Jonas Westerlund)
+* module: añadir nombre de archivo a errores json de require() (TJ Holowaychuk)
+* readline: reparar para prompts unicode (Tim Macfarlane)
+* timers: corregir el manejo de timeouts largos (Ben Noordhuis)
+* repl: corregir el paso de una línea vacía insertando "undefined" en el buffer (Nathan Rajlich)
+* repl: reparar colapsos al almacenar comando en buffer (Maciej Małecki)
+* build: renombrar strict_aliasing a node_no_strict_aliasing (Ben Noordhuis)
+* build: deshabilitar -fstrict-aliasing para cualquier gcc < 4.6.0 (Ben Noordhuis)
+* build: detectar versión de cc con -dumpversion (Ben Noordhuis)
+* build: manejar output de gcc o clang localizado (Ben Noordhuis)
+* unix: reparar corrupción de memoria en freebsd.c (Ben Noordhuis)
+* unix: reparar espera activa "cero handles, una petición" (Ben Noordhuis)
+* unix: reparar espera activa ante mensaje tcp inesperado (Ben Noordhuis)
+* unix: reparar espera activa de EINPROGRESS (Ben Noordhuis)
 
 <a id="0.8.1"></a>
 
-## 2012.06.29, Version 0.8.1 (stable)
+## 2012.06.29, Version 0.8.1 (estable)
 
 https://github.com/nodejs/node/commit/2134aa3d5c622fc3c3b02ccb713fcde0e0df479a
 
-* V8: upgrade to v3.11.10.12
-* npm: upgrade to v1.1.33
+* V8: actualizar a v3.11.10.12
+* npm: actualizar a v1.1.33
   
-  * Support for parallel use of the cache folder
-  * Retry on registry timeouts or network failures (Trent Mick)
-  * Reduce 'engines' failures to a warning
-  * Use new zsh completion if available (Jeremy Cantrell)
+  * Soporte para el uso paralelo de la carpeta de caché
+  * Reintentar ante timeouts en el registro o fallos de red (Trent Mick)
+  * Reducir fallos de "motores" a una advertencia
+  * Usar nueva terminación zsh si está disponible (Jeremy Cantrell)
 
-* Fix [#3577](https://github.com/joyent/node/issues/3577) Un-break require('sys')
+* Reparar [#3577](https://github.com/joyent/node/issues/3577) "Des-romper" require('sys')
 
-* util: speed up formatting of large arrays/objects (Ben Noordhuis)
-* windows: make fs.realpath(Sync) work with UNC paths (Bert Belder)
-* build: fix --shared-v8 option (Ben Noordhuis)
-* doc: `detached` is a boolean (Andreas Madsen)
-* build: use proper python interpreter (Ben Noordhuis)
-* build: expand ~ in `./configure --prefix=~/a/b/c` (Ben Noordhuis)
-* build: handle CC env var with spaces (Gabriel de Perthuis)
-* build: fix V8 build when compiling with gcc 4.5 (Ben Noordhuis)
-* build: fix --shared-v8 option (Ben Noordhuis)
-* windows msi: Fix icon issue which caused huge file size (Bert Belder)
-* unix: assume that dlopen() may clobber dlerror() (Ben Noordhuis)
-* sunos: fix memory corruption bugs (Ben Noordhuis)
-* windows: better (f)utimes and (f)stat (Bert Belder)
+* util: acelerar formateo de arrays/objetos grandes (Ben Noordhuis)
+* windows: hacer que fs.realpath(Sync) funcione con rutas UNC (Bert Belder)
+* build: reparar opción --shared-v8 (Ben Noordhuis)
+* doc: `detached` es un booleano (Andreas Madsen)
+* build: usar intérprete python correcto (Ben Noordhuis)
+* build: expandir ~ in `./configure --prefix=~/a/b/c` (Ben Noordhuis)
+* build: manejar variable de ambiente CC con espacios (Gabriel de Perthuis)
+* build: reparar build V8 al compilar con gcc 4.5 (Ben Noordhuis)
+* build: reparar opción --shared-v8 (Ben Noordhuis)
+* windows msi: Reparar problema de ícono que causó un enorme tamaño de archivo (Bert Belder)
+* unix: asumir que dlopen() puede sobrescribir a dlerror() (Ben Noordhuis)
+* sunos: reparar bugs de corrupción de memoria (Ben Noordhuis)
+* windows: mejorar (f)utimes y (f)stat (Bert Belder)
 
 <a id="0.8.0"></a>
 
-## 2012.06.25, Version 0.8.0 (stable)
+## 2012.06.25, Versión 0.8.0 (estable)
 
 https://github.com/nodejs/node/commit/8b8a7a7f9b41e74e1e810d0330738ad06fc302ec
 
-* V8: upgrade to v3.11.10.10
-* npm: Upgrade to 1.1.32
-* Deprecate iowatcher (Ben Noordhuis)
-* windows: update icon (Bert Belder)
-* http: Hush 'MUST NOT have a body' warnings to debug() (isaacs)
-* Move blog.nodejs.org content into repository (isaacs)
-* Fix [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() on pipe(dest) (isaacs)
-* crypto: fix error reporting in SetKey() (Fedor Indutny)
-* Add --no-deprecation and --trace-deprecation command-line flags (isaacs)
-* fs: fix fs.watchFile() (Ben Noordhuis)
-* fs: Fix fs.readfile() on pipes (isaacs)
-* Rename GYP variable node_use_system_openssl to be consistent (Ryan Dahl)
+* V8: actualizar a v3.11.10.10
+* npm: Actualizar a 1.1.32
+* Desaprobar iowatcher (Ben Noordhuis)
+* windows: actualizar ícono (Bert Belder)
+* http: Silenciar advertencias de "NO DEBE tener un cuerpo" para debug() (isaacs)
+* Mover contenido de blog.nodejs.org al repositorio (isaacs)
+* Reparar [#3503](https://github.com/joyent/node/issues/3503): stdin: resume() en pipe(dest) (isaacs)
+* crypto: reparar reporte de errores en SetKey() (Fedor Indutny)
+* Añadir banderas de línea de comando --no-deprecation y --trace-deprecation (isaacs)
+* fs: reparar fs.watchFile() (Ben Noordhuis)
+* fs: Reparar fs.readfile() en pipes (isaacs)
+* Renombrar variable GYP node_use_system_openssl para que sea consistente (Ryan Dahl)
 
 <a id="0.7.12"></a>
 
-## 2012.06.19, Version 0.7.12 (unstable)
+## 2012.06.19, Versión 0.7.12 (inestable)
 
 https://github.com/nodejs/node/commit/a72120190a8ffdbcd3d6ad2a2e6ceecd2087111e
 
-* npm: Upgrade to 1.1.30
+* npm: Actualizar a 1.1.30
   
-  * Improved 'npm init'
-  * Fix the 'cb never called' error from 'oudated' and 'update'
-  * Add --save-bundle|-B config
-  * Fix isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Make npm script and windows shims cygwin-aware
-  * Fix isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Use --save(-dev|-optional) in npm rm
-  * `logstream` option to replace removed `logfd` (Rod Vagg)
-  * Read default descriptions from README.md files
+  * "npm init" mejorado
+  * Reparar el error "cb nunca llamó" de "oudated" y "update"
+  * Añadir configuración de --save-bundle|-B
+  * Reparar isaacs/npm[#2465](https://github.com/joyent/node/issues/2465): Hacer que shims para script y ventanas de npm estén conscientes de cygwin
+  * Reparar isaacs/npm[#2452](https://github.com/joyent/node/issues/2452) Usar --save(-dev|-optional) en rm de npm
+  * Opción `logstream` para reemplazar `logfd` removido (Rod Vagg)
+  * Leer descripciones predeterminadas desde archivos README.md
 
-* Shims to support deprecated ev_* and eio_* methods (Ben Noordhuis)
+* Shims para soportar métodos ev_* y eio_* desaprobados (Ben Noordhuis)
 
-* [#3118](https://github.com/joyent/node/issues/3118) net.Socket: Delay pause/resume until after connect (isaacs)
-* [#3465](https://github.com/joyent/node/issues/3465) Add ./configure --no-ifaddrs flag (isaacs)
-* child_process: add .stdin stream to forks (Fedor Indutny)
-* build: fix `make install DESTDIR=/path` (Ben Noordhuis)
-* tls: fix off-by-one error in renegotiation check (Ben Noordhuis)
-* crypto: Fix diffie-hellman key generation UTF-8 errors (Fedor Indutny)
-* node: change the constructor name of process from EventEmitter to process (Andreas Madsen)
-* net: Prevent property access throws during close (Reid Burke)
-* querystring: improved speed and code cleanup (Felix Böhm)
-* sunos: fix assertion errors breaking fs.watch() (Fedor Indutny)
-* unix: stat: detect sub-second changes (Ben Noordhuis)
-* add stat() based file watcher (Ben Noordhuis)
+* [#3118](https://github.com/joyent/node/issues/3118) net.Socket: Retrasar pausa/reanudación hasta después de conectar (isaacs)
+* [#3465](https://github.com/joyent/node/issues/3465) Añadir bandera ./configure --no-ifaddrs (isaacs)
+* child_process: añadir stream .stdin a los forks (Fedor Indutny)
+* build: corregir `make install DESTDIR=/path` (Ben Noordhuis)
+* tls: reparar error "fuera por uno" en revisión de renegociación (Ben Noordhuis)
+* crypto: Reparar errores UTF-8 en generación de claves diffie-hellman (Fedor Indutny)
+* node: cambiar el nombre del constructor para el proceso de EventEmitter a process (Andreas Madsen)
+* net: Prevenir que el acceso a propiedades arroje durante el cierre (Reid Burke)
+* querystring: velocidad y limpieza de código mejoradas (Felix Böhm)
+* sunos: reparar errores de aserción interrumpiendo a fs.watch() (Fedor Indutny)
+* unix: stat: detectar cambios inferiores a un segundo (Ben Noordhuis)
+* añadir monitor de archivos basado en stat() (Ben Noordhuis)
 
 <a id="0.7.11"></a>
 
-## 2012.06.15, Version 0.7.11 (unstable)
+## 2012.06.15, Versión 0.7.11 (inestable)
 
 https://github.com/nodejs/node/commit/1f93aa5d5d207e8bd739d365dbf9ad6dbcc69571
 
-* V8: Upgrade to v3.11.10
-* npm: Upgrade to 1.1.26
-* doc: Improve cross-linking in API docs markdown (Ben Kelly)
-* Fix [#3425](https://github.com/joyent/node/issues/3425): removeAllListeners should delete array (Reid Burke)
-* cluster: don't silently drop messages when the write queue gets big (Bert Belder)
-* Add Buffer.concat method (isaacs)
-* windows: make symlinks tolerant to forward slashes (Bert Belder)
-* build: Add node.d and node.1 to installer (isaacs)
-* cluster: rename worker.unqiueID to worker.id (Andreas Madsen)
-* Windows: Enable ETW events on Windows for existing DTrace probes. (Igor Zinkovsky)
-* test: bundle node-weak in test/gc so that it doesn't need to be downloaded (Nathan Rajlich)
-* Make many tests pass on Windows (Bert Belder)
-* Fix [#3388](https://github.com/joyent/node/issues/3388) Support listening on file descriptors (isaacs)
-* Fix [#3407](https://github.com/joyent/node/issues/3407) Add os.tmpDir() (isaacs)
-* Unbreak the snapshotted build on Windows (Bert Belder)
-* Clean up child_process.kill throws (Bert Belder)
-* crypto: make cipher/decipher accept buffer args (Ben Noordhuis)
+* V8: Actualizar a v3.11.10
+* npm: Actualizar a 1.1.26
+* doc: Mejorar el enlace cruzado en el markdown de los documentos API (Ben Kelly)
+* Reparar [#3425](https://github.com/joyent/node/issues/3425): removeAllListeners debe borrar el array (Reid Burke)
+* cluster: no soltar mensajes silenciosamente cuando la cola de escritura se haga larga (Bert Belder)
+* Añadir método Buffer.concat (isaacs)
+* windows: hacer que symlinks tolere las barras inclinadas hacia adelante (Bert Belder)
+* build: Añadir node.d y node.1 a instalador (isaacs)
+* cluster: renombrar worker.unqiueID a worker.id (Andreas Madsen)
+* Windows: Habilitar eventos ETW en Windows para sondeos DTrace existentes. (Igor Zinkovsky)
+* test: juntar debilidades de nodo en una prueba/recolector de basura, de modo que no necesiten descargarse (Nathan Rajlich)
+* Hacer que muchas pruebas pasen en Windows (Bert Belder)
+* Reparar [#3388](https://github.com/joyent/node/issues/3388) Soportar la escucha de descriptores de archivos (isaacs)
+* Reparar [#3407](https://github.com/joyent/node/issues/3407) Añadir os.tmpDir() (isaacs)
+* "Des-romper" el build de captura rápida en Windows (Bert Belder)
+* Limpiar los lanzamientos de child_process.kill (Bert Belder)
+* crypto: hacer que cipher/decipher acepte argumentos buffer (Ben Noordhuis)
 
 <a id="0.7.10"></a>
 
-## 2012.06.11, Version 0.7.10 (unstable)
+## 2012.06.11, Versión 0.7.10 (inestable)
 
 https://github.com/nodejs/node/commit/8d9766a9dfb1eea901219d2a865ce9300fe4d68e
 
-* Roll V8 back to 3.9.24.31
-* build: x64 target should always pass -m64 (Robert Mustacchi)
-* add NODE_EXTERN to node::Start (Joel Brandt)
-* repl: Warn about running npm commands (isaacs)
-* slab_allocator: fix crash in dtor if V8 is dead (Ben Noordhuis)
-* slab_allocator: fix leak of Persistent handles (Shigeki Ohtsu)
-* windows/msi: add node.js prompt to startmenu (Jeroen Janssen)
-* windows/msi: fix adding node to PATH (Jeroen Janssen)
-* windows/msi: add start menu links when installing (Jeroen Janssen)
-* windows: don't install x64 version into the 'program files (x86)' folder (Matt Gollob)
-* domain: Fix [#3379](https://github.com/joyent/node/issues/3379) domain.intercept no longer passes error arg to cb (Marc Harter)
-* fs: make callbacks run in global context (Ben Noordhuis)
-* fs: enable fs.realpath on windows (isaacs)
-* child_process: expose UV_PROCESS_DETACHED as options.detached (Charlie McConnell)
-* child_process: new stdio API for .spawn() method (Fedor Indutny)
-* child_process: spawn().ref() and spawn().unref() (Fedor Indutny)
-* Upgrade npm to 1.1.25 
-  * Enable npm link on windows
-  * Properly remove sh-shim on Windows
-  * Abstract out registry client and logger
+* Hacer que V8 retroceda hasta 3.9.24.31
+* build: el objetivo de x64 siempre debe pasar -m64 (Robert Mustacchi)
+* añadir NODE_EXTERN a node::Start (Joel Brandt)
+* repl: Advertir sobre la ejecución de comandos npm (isaacs)
+* slab_allocator: reparar colapso en dtor si V8 está muerto (Ben Noordhuis)
+* slab_allocator: reparar fuga de handles Persistentes (Shigeki Ohtsu)
+* windows/msi: añadir prompt de node.js a startmenu (Jeroen Janssen)
+* windows/msi: reparar la adición de nodo a PATH (Jeroen Janssen)
+* windows/msi: añadir enlaces al menú de inicio al instalar (Jeroen Janssen)
+* windows: no instalar versión x64 en la carpeta "program files (x86)" (Matt Gollob)
+* domain: Reparar [#3379](https://github.com/joyent/node/issues/3379) domain.intercept ya no pasa argumento de error a cb (Marc Harter)
+* fs: hacer que las callbacks funcionen en el contexto global (Ben Noordhuis)
+* fs: habilitar fs.realpath en windows (isaacs)
+* child_process: exponer a UV_PROCESS_DETACHED como options.detached (Charlie McConnell)
+* child_process: nueva API de stdio para método .spawn() (Fedor Indutny)
+* child_process: spawn().ref() y spawn().unref() (Fedor Indutny)
+* Actualizar npm a 1.1.25 
+  * Habilitar enlace de npm en windows
+  * Remover sh-shim en Windows correctamente
+  * Retirar abstract de cliente de registro y registrador
 
 <a id="0.7.9"></a>
 
-## 2012.05.28, Version 0.7.9 (unstable)
+## 2012.05.28, Versión 0.7.9 (inestable)
 
 https://github.com/nodejs/node/commit/782277f11a753ded831439ed826448c06fc0f356
 
-* Upgrade V8 to 3.11.1
-* Upgrade npm to 1.1.23
-* uv: rework reference counting scheme (Ben Noordhuis)
-* uv: add interface for joining external event loops (Bert Belder)
-* repl, readline: Handle Ctrl+Z and SIGCONT better (Nathan Rajlich)
-* fs: 64bit offsets for fs calls (Igor Zinkovsky)
-* fs: add sync open flags 'rs' and 'rs+' (Kevin Bowman)
-* windows: enable creating directory junctions with fs.symlink (Igor Zinkovsky, Bert Belder)
-* windows: fix fs.lstat to properly detect symlinks. (Igor Zinkovsky)
-* Fix [#3270](https://github.com/joyent/node/issues/3270) Escape url.parse delims (isaacs)
-* http: make http.get() accept a URL (Adam Malcontenti-Wilson)
-* Cleanup vm module memory leakage (Marcel Laverdet)
-* Optimize writing strings with Socket.write (Bert Belder)
-* add support for CESU-8 and UTF-16LE encodings (koichik)
-* path: add path.sep to get the path separator. (Yi, EungJun)
-* net, http: add backlog parameter to .listen() (Erik Dubbelboer)
-* debugger: support mirroring Date objects (Fedor Indutny)
-* addon: add AtExit() function (Ben Noordhuis)
-* net: signal localAddress bind failure in connect (Brian Schroeder)
-* util: handle non-string return value in .inspect() (Alex Kocharin)
+* Actualizar V8 a 3.11.1
+* Actualizar npm a 1.1.23
+* uv: volver a trabajar el esquema del conteo de referencias (Ben Noordhuis)
+* uv: añadir interfaz para unirse a bucles de eventos externos (Bert Belder)
+* repl, readline: Manejar mejor a Ctrl+Z y SIGCONT (Nathan Rajlich)
+* fs: offsets de 64bits para llamadas fs (Igor Zinkovsky)
+* fs: añadir banderas "rs" y "rs+" abiertas a procesos sincrónicos (Kevin Bowman)
+* windows: habilitar la creación de uniones (junctions) de directorios con fs.symlink (Igor Zinkovsky, Bert Belder)
+* windows: reparar fs.lstat para detectar symlinks correctamente. (Igor Zinkovsky)
+* Reparar [#3270](https://github.com/joyent/node/issues/3270) Escapar delimitadores de url.parse (isaacs)
+* http: hacer que http.get() acepte una URL (Adam Malcontenti-Wilson)
+* Limpiar fuga de memoria del módulo vm (Marcel Laverdet)
+* Optimizar la escritura de strings con Socket.write (Bert Belder)
+* añadir soporte para codificaciones CESU-8 y UTF-16LE (koichik)
+* path: añadir path.sep para obtener el separador de rutas. (Yi, EungJun)
+* net, http: añadir parámetro backlog a .listen() (Erik Dubbelboer)
+* debugger: soportar mirroring de objetos Date (Fedor Indutny)
+* addon: añadir función AtExit() (Ben Noordhuis)
+* net: fallo de enlace de la señal localAddress en la conexión (Brian Schroeder)
+* util: manejar valor de retorno no-string en .inspect() (Alex Kocharin)
 
 <a id="0.7.8"></a>
 

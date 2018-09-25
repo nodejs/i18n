@@ -781,7 +781,7 @@ El sistema heredado `urlObject` (`require('url').Url`) es creado y devuelto por 
 
 #### urlObject.auth
 
-La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede el componente del `host`, delimitado por un "arroba" ASCII (`@`). El formato de la string es `{username}[:{password}]`, con la porción `[:{password}]` siendo opcional.
+La propiedad `auth` es la porción del nombre de usuario y contraseña de la URL, también conocido como "userinfo". Este subconjunto de string sigue el `protocol` y las barras dobles (si están presentes) y precede al componente del `host`, delimitado por un "arroba" ASCII (`@`). El formato de la string es `{username}[:{password}]`, con la porción `[:{password}]` siendo opcional.
 
 Por ejemplo: `'user:pass'`.
 
@@ -805,7 +805,7 @@ Por ejemplo: `'sub.host.com'`.
 
 #### urlObject.href
 
-La propiedad `href` es la string URL completa que fue analizada con ambos componentes `protocol` y `protocol` convertidos a minúscula.
+La propiedad `href` es la string URL completa que fue analizada con ambos componentes `protocol` y `host` convertidos a minúscula.
 
 Por ejemplo: `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`.
 
@@ -819,7 +819,7 @@ No se realiza la decodificación del `path`.
 
 #### urlObject.pathname
 
-La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo siguiendo el `host` (incluyendo el `port`) y antes del inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
+La propiedad `pathname` consiste en toda la sección path de la URL. Esto es todo lo que sigue al `host` (incluyendo el `port`) y es previo al inicio de los componentes `query` o `hash`, delimitados por el signo de interrogación ASCII (`?`) o caracteres hash (`#`).
 
 Por ejemplo `'/p/a/t/h'`.
 
@@ -847,7 +847,7 @@ Si es devuelto como una string, no se realiza la decodificación de la string de
 
 #### urlObject.search
 
-La propiedad `search` consiste en toda la porción "string de consulta" de la URL, incluyendo el signo de interrogación ASCII principal (`?`).
+La propiedad `search` consiste en toda la porción "string de consulta" de la URL, incluyendo el carácter signo de interrogación ASCII principal (`?`).
 
 Por ejemplo: `'?query=string'`.
 
@@ -910,7 +910,7 @@ El proceso de formateo funciona de la siguiente forma:
   * Si `urlObject.pathname` *no comienza* con una barra oblicua ASCII (`/`), entonces la string literal `'/'` es adjuntada a `result`.
   * El valor de `urlObject.pathname` es adjuntado a `result`.
 * De lo contrario, si `urlObject.pathname` no es `undefined` y no es una string, se produce un [`Error`][].
-* Si la propiedad `urlObject.search` es `undefined` y si la propiedad `urlObject.query` es un `Object`, la string literal `?` es adjuntada a `result` seguida por la salida de llamar el módulo de [`querystring`][] del método `stringify()`, pasando el valor de `urlObject.query`.
+* Si la propiedad `urlObject.search` es `undefined` y la propiedad `urlObject.query` es un `Object`, la string literal `?` es adjuntada a `result`, seguida por el output que resulta de llamar al módulo de [`querystring`][] del método `stringify()` pasando el valor de `urlObject.query`.
 * De lo contrario, si `urlObject.search` es una string: 
   * Si el valor de `urlObject.search` *no comienza* con un carácter ASCII de signo de interrogación (`?`), la string literal `?` es adjuntada a `result`.
   * El valor de `urlObject.search` es adjuntado a `result`.
@@ -933,15 +933,15 @@ changes:
                  when no query string is present.
 -->
 
-* `urlString` {string} The URL string to parse.
-* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Default:** `false`.
-* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **Default:** `false`.
+* `urlString` {string} La string URL a analizar.
+* `parseQueryString` {boolean} Si es `true`, la propiedad `query` siempre será establecida a un objeto devuelto por el módulo [`querystring`][] del método `parse()`. Si es `false`, la propiedad `query` en el objeto URL devuelto será una string sin analizar ni codificar. **Predeterminado:** `false`.
+* `slashesDenoteHost` {boolean} Si es `true`, el primer token después de la string literal `//` y anterior a la siguiente `/`, será interpretado como el `host`. Por ejemplo, dada `//foo/bar`, el resultado será `{host: 'foo', pathname: '/bar'}` en lugar de `{pathname: '//foo/bar'}`. **Predeterminado:** `false`.
 
-The `url.parse()` method takes a URL string, parses it, and returns a URL object.
+El método `url.parse()` toma una string URL, la analiza, y la devuelve al objeto URL.
 
-A `TypeError` is thrown if `urlString` is not a string.
+Se produce un `TypeError` si `urlString` no es una string.
 
-A `URIError` is thrown if the `auth` property is present but cannot be decoded.
+Se produce un `URIError` si la propiedad `auth` está presente pero no puede ser decodificada.
 
 ### url.resolve(from, to)
 
@@ -962,12 +962,12 @@ changes:
                  contains a hostname.
 -->
 
-* `from` {string} The Base URL being resolved against.
-* `to` {string} The HREF URL being resolved.
+* `from` {string} El URL Base siendo resuelto en contra.
+* `to` {string} El URL HREF siendo resuelto.
 
-The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
+El método `url.resolve()` resuelve un URL objetivo relativo a un URL base de una forma similar a la de un navegador Web que resuelve una etiqueta de anclaje HREF.
 
-For example:
+Por ejemplo:
 
 ```js
 const url = require('url');
@@ -978,42 +978,42 @@ url.resolve('http://example.com/one', '/two'); // 'http://example.com/two'
 
 <a id="whatwg-percent-encoding"></a>
 
-## Percent-Encoding in URLs
+## Porcentaje de Codificación en URLs
 
-URLs are permitted to only contain a certain range of characters. Any character falling outside of that range must be encoded. How such characters are encoded, and which characters to encode depends entirely on where the character is located within the structure of the URL.
+Los URLs tienen permitido contener solo un cierto rango de caracteres. Cualquier carácter que caiga fuera de ese rango debe ser codificado. Cómo son codificados estos caracteres, y cuáles caracteres son decodificados depende completamente de donde se encuentra ubicado el carácter dentro de la estructura de la URL.
 
-### Legacy API
+### Sistema heredado API
 
-Within the Legacy API, spaces (`' '`) and the following characters will be automatically escaped in the properties of URL objects:
+Dentro del Sistema heredado API, los espacios (`' '`) y los siguientes caracteres serán evadidos en las propiedades de los objetos URL:
 
 ```txt
 < > " ` \r \n \t { } | \ ^ '
 ```
 
-For example, the ASCII space character (`' '`) is encoded as `%20`. The ASCII forward slash (`/`) character is encoded as `%3C`.
+Por ejemplo, el carácter espacio ASCII (`' '`) es codificado como `%20`. El carácter barra oblicua ASCII (`/`) es codificado como `%3C`.
 
-### WHATWG API
+### API de WHATWG
 
-The [WHATWG URL Standard](https://url.spec.whatwg.org/) uses a more selective and fine grained approach to selecting encoded characters than that used by the Legacy API.
+El [Estándar URL de WHATWG](https://url.spec.whatwg.org/) utiliza un enfoque más selectivo y detallado para seleccionar caracteres codificados que el que utiliza el Sistema heredado API.
 
-The WHATWG algorithm defines four "percent-encode sets" that describe ranges of characters that must be percent-encoded:
+El algoritmo WHATWG define cuatro "conjuntos de porcentaje de codificación" que describen los rangos de los caracteres que deben ser código porciento:
 
-* The *C0 control percent-encode set* includes code points in range U+0000 to U+001F (inclusive) and all code points greater than U+007E.
+* El *conjunto codificación porcentual de control C0* incluye puntos de código en rango U+0000 para U+001F (inclusivo) y todos los puntos de código mayores que U+007E.
 
-* The *fragment percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+003C, U+003E, and U+0060.
+* El *conjunto fragmento de codificación porcentual* incluye el *conjunto codificación porcentual de control C0* y los puntos de código U+0020, U+0022, U+003C, U+003E, y U+0060.
 
-* The *path percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, and U+007D.
+* El *conjunto ruta de codificación porcentual* incluye el *conjunto codificación porcentual de control C0* y los puntos de código U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, y U+007D.
 
-* The *userinfo encode set* includes the *path percent-encode set* and code points U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, and U+007C.
+* El *conjunto codificado userinfo* incluye el *conjunto ruta de codificación porcentual* y los puntos de código U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, y U+007C.
 
-The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *fragment percent-encode set* is used for URL fragments. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
+El *conjunto codificado userinfo* es usado exclusivamente para el nombre de usuario y las contraseñas codificadas dentro de la URL. El *conjunto codificado userinfo* es usado para la ruta de la mayoría de las URLs. El *conjunto fragmento de codificación porcentual* es usado para fragmentos URL. El *conjunto fragmento de codificación porcentual* es usado para host y path bajo ciertas condiciones específicas, en adición al resto de casos.
 
-When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. For example:
+Cuando aparecen caracteres no ASCII dentro del hostname, el hostname es codificado usando el algoritmo [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4). Tenga en cuenta, sin embargo, que el hostname *puede* contener *ambos* caracteres cifrados y codificados por porcentaje Punnycode. Por ejemplo:
 
 ```js
 const myURL = new URL('https://%CF%80.com/foo');
 console.log(myURL.href);
-// Prints https://xn--1xa.com/foo
+// Imprime https://xn--1xa.com/foo
 console.log(myURL.origin);
-// Prints https://π.com
+// Imprime https://π.com
 ```

@@ -31,7 +31,7 @@ Hay dos componentes fundamentales del proceso de Pull Request: uno concreto y t�
   * [Commit Squashing](#commit-squashing)
   * [Obtener aprobaciones para su Pull Request](#getting-approvals-for-your-pull-request)
   * [Prueba de CI](#ci-testing)
-  * [Esperar hasta que se cierre la Pull Request](#waiting-until-the-pull-request-gets-landed)
+  * [Esperar hasta que se aterrice la Pull Request](#waiting-until-the-pull-request-gets-landed)
   * [Consulte la Guía del Colaborador](#check-out-the-collaborator-guide)
 
 ## Dependencias
@@ -383,60 +383,60 @@ Lo más importante es que, después de dejar tales solicitudes, es cortés estar
 
 Si ve que se han realizado los cambios solicitados, puede borrar la revisión `Changes requested` de otro colaborador.
 
-Change requests that are vague, dismissive, or unconstructive may also be dismissed if requests for greater clarification go unanswered within a reasonable period of time.
+Las solicitudes de cambio que sean vagas, despectivas, o poco constructivas, también pueden descartarse si las solicitudes de mayor aclaración no reciben respuesta dentro de un período de tiempo razonable.
 
-If you do not believe that the Pull Request should land at all, use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing. When doing so, explain *why* you believe the Pull Request should not land along with an explanation of what may be an acceptable alternative course, if any.
+Si no cree que la Pull Request debe aterrizar, utilice `Changes requested` para indicar que está considerando algunos de sus comentarios para bloquear el aterrizaje de la PR. Al hacerlo, explique *porqué* cree que la Pull Request no debe aterrizar y describa lo que puede ser un proceso alternativo aceptable, si corresponde.
 
-### Accept that there are different opinions about what belongs in Node.js
+### Acepte que hay opiniones diferentes sobre lo que pertenece a Node.js
 
-Opinions on this vary, even among the members of the Technical Steering Committee.
+Las opiniones sobre esto varían, incluso entre los miembros del Comité Directivo Técnico.
 
-One general rule of thumb is that if Node.js itself needs it (due to historic or functional reasons), then it belongs in Node.js. For instance, `url` parsing is in Node.js because of HTTP protocol support.
+Una regla general es que si Node.js lo necesita (debido a razones históricas o funcionales), entonces pertenece a Node.js. Por ejemplo, el análisis `url` está en Node.js debido a la compatibilidad con el protocolo HTTP.
 
-Also, functionality that either cannot be implemented outside of core in any reasonable way, or only with significant pain.
+Además, la funcionalidad que no puede implementarse fuera del núcleo de ninguna manera razonable, o solo con un gran daño.
 
-It is not uncommon for contributors to suggest new features they feel would make Node.js better. These may or may not make sense to add, but as with all changes, be courteous in how you communicate your stance on these. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+No es raro que los colaboradores sugieran nuevas características que, en su opinión, mejorarían el funcionamiento de Node.js. Puede o no tener sentido agregarlos, pero como con todos los cambios, sea cortés con la forma en que comunica su postura al respecto. Los comentarios que hagan que el contribuyente se sienta como que debería haber "sabido mejor" o ridiculizado por siquiera intentar van en contra del [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-### Performance is not everything
+### El rendimiento no es todo
 
-Node.js has always optimized for speed of execution. If a particular change can be shown to make some part of Node.js faster, it's quite likely to be accepted. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
+Node.js siempre se ha optimizado para la velocidad de ejecución. Si se puede mostrar un cambio en particular para hacer que una parte de Node.js sea más rápida, es bastante probable que se acepte. Las afirmaciones de que una Pull Request particular hará que las cosas sean más rápidas casi siempre irán de la mano con solicitudes de rendimiento [benchmark results](../writing-and-running-benchmarks.md) que demuestren la mejora.
 
-That said, performance is not the only factor to consider. Node.js also optimizes in favor of not breaking existing code in the ecosystem, and not changing working functional code just for the sake of changing.
+Dicho esto, el rendimiento no es el único factor a considerar. Node.js también optimiza a favor de no romper el código existente en el ecosistema, y no cambiar el código funcional de trabajo solo por el hecho de cambiar.
 
-If a particular Pull Request introduces a performance or functional regression, rather than simply rejecting the Pull Request, take the time to work *with* the contributor on improving the change. Offer feedback and advice on what would make the Pull Request acceptable, and do not assume that the contributor should already know how to do that. Be explicit in your feedback.
+Si una Pull Request particular presenta una regresión funcional o de rendimiento, en lugar de simplemente rechazar la Pull Request, tómese el tiempo para trabajar *con* el contribuyente para mejorar el cambio. Ofrezca un feedback y consejos sobre lo que haría aceptable a la Pull Request, y no suponga que el contribuyente ya debería saber cómo hacerlo. Sea explícito en su feedback.
 
-### Continuous Integration Testing
+### Pruebas de integración continua
 
-All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at <https://ci.nodejs.org/>.
+Todas las Pull Requests que contengan cambios en el código se deben ejecutar a través de pruebas de integración continua (CI) en <https://ci.nodejs.org/>.
 
-Only Node.js core Collaborators with commit rights to the `nodejs/node` repository may start a CI testing run. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
+Solo los Colaboradores centrales de Node.js con derechos de commit en el repositorio `nodejs/node` pueden iniciar una ejecución de prueba de CI. Los detalles específicos de cómo hacer esto se incluyen en la nueva [Guía de incorporación](../../onboarding.md) del Colaborador.
 
-Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
+Idealmente, el cambio de código pasará ("a ser verde") en todas las configuraciones de plataforma compatibles con Node.js (actualmente hay más de 30 configuraciones de plataforma). Esto significa que todas las pruebas pasan y no hay errores de linting. En realidad, sin embargo, no es raro que la propia infraestructura de CI falle en plataformas específicas o que las llamadas pruebas "flaky" fallen ("sean rojas"). Es vital inspeccionar visualmente los resultados de todas las pruebas fallidas ("rojas") para determinar si la falla fue causada por los cambios en la Pull Request.
 
-## Additional Notes
+## Notas adicionales
 
 ### Commit Squashing
 
-In most cases, do not squash commits that you add to your Pull Request during the review process. When the commits in your Pull Request land, they may be squashed into one commit per logical change. Metadata will be added to the commit message (including links to the Pull Request, links to relevant issues, and the names of the reviewers). The commit history of your Pull Request, however, will stay intact on the Pull Request page.
+En la mayoría de los casos, no reduzca las confirmaciones que agregue a su Pull Request durante el proceso de revisión. Cuando los commits en su Pull Request aterrizan, pueden ser reducidos en un commit por cambio lógico. Los metadatos se agregarán al mensaje de commit (incluidos los enlaces a la Pull Request, enlaces a problemas relevantes y los nombres de los revisores). Sin embargo, el historial de commits de su Pull Request se mantendrá intacto en la página Pull Request.
 
-For the size of "one logical change", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) can be a good example. It touches the implementation, the documentation, and the tests, but is still one logical change. All tests should always pass when each individual commit lands on the master branch.
+Para el tamaño de "un cambio lógico", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) puede ser un buen ejemplo. Toca la implementación, la documentación y las pruebas, pero sigue siendo un cambio lógico. Todas las pruebas siempre deben pasar cuando cada commit individual aterriza en el branch principal.
 
-### Getting Approvals for Your Pull Request
+### Obtener aprobaciones para su Pull Request
 
-A Pull Request is approved either by saying LGTM, which stands for "Looks Good To Me", or by using GitHub's Approve button. GitHub's Pull Request review feature can be used during the process. For more information, check out [the video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) or [the official documentation](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
+Una Pull Request se aprueba diciendo LGTM, que significa "Me parece bien" en inglés, o usando el botón Aprobar de GitHub. La función de revisión de Pull Request de GitHub puede ser utilizada durante el proceso. Para obtener más información, consulte [el video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) o [la documentación oficial](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
 
-After you push new changes to your branch, you need to get approval for these new changes again, even if GitHub shows "Approved" because the reviewers have hit the buttons before.
+Después de insertar nuevos cambios en su branch, debe obtener aprobación de estos nuevos cambios nuevamente, incluso si GitHub muestra "Aprobado" porque los revisores han pulsado los botones anteriormente.
 
-### CI Testing
+### Prueba de CI
 
-Every Pull Request needs to be tested to make sure that it works on the platforms that Node.js supports. This is done by running the code through the CI system.
+Cada Pull Request debe probarse para asegurarse de que funciona en las plataformas admitidas por Node.js. Esto se hace ejecutando el código a través del sistema CI.
 
-Only a Collaborator can start a CI run. Usually one of them will do it for you as approvals for the Pull Request come in. If not, you can ask a Collaborator to start a CI run.
+Solo un Colaborador puede iniciar una ejecución de CI. Por lo general, uno de ellos lo hará por usted a medida que las aprobaciones para la Pull Request entren. De lo contrario, puede pedirle a un Colaborador que inicie una ejecución de CI.
 
-### Waiting Until the Pull Request Gets Landed
+### Esperar hasta que se aterrice la Pull Request
 
-A Pull Request needs to stay open for at least 48 hours (72 hours on a weekend) from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
+Una Pull Request debe permanecer abierta durante al menos 48 horas (72 horas en un fin de semana) desde el momento en que se envía, incluso después de que se aprueba y pasa la CI. Esto es para asegurarse de que todos tengan la oportunidad de intervenir. Si los cambios son triviales, los colaboradores pueden decidir que no necesitan esperar. Una Pull Request puede tomar más tiempo para fusionarse. Todas estas precauciones son importantes porque Node.js es ampliamente utilizado, ¡así que no te desanimes!
 
 ### Consulte la Guía del Colaborador
 
-If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
+Si desea obtener más información sobre la revisión del código y el proceso de aterrizaje, consulte la [Guía del colaborador](../../../COLLABORATOR_GUIDE.md).

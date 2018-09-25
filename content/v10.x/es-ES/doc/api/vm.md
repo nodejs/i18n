@@ -65,7 +65,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // `contextifiedSandbox` como el contexto al que pertenece este Módulo.
   //
   // Aquí, intentamos obtener la exportación predeterminado del módulo "foo", y
-  // colocarla en el enlace loca "secreto".
+  // colocarla en el enlace local "secreto".
 
   const bar = new vm.Module(`
     import s from 'foo';
@@ -82,24 +82,24 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // corresponde al especificador proporcionado, con ciertos requisitos documentados
   // en `module.link()`.
   //
-  // Si no se ha iniciado el enlace para el Módulo devuelto, se llamará a la misma
-  // devolución del enlazador en el Módulo retornado.
+  // Si no se ha iniciado el enlace para el Módulo devuelto, se llamará al mismo
+  // callback del enlazador en el Módulo retornado.
   //
   // Incluso los Módulos de nivel superior sin dependencias deben estar explícitamente enlazados. Sin
-  // embargo, la devolución proporcionada nunca se llamaría.
+  // embargo, el callback proporcionado nunca se llamaría.
   //
   // El método link() devuelve una Promesa que se resolverá cuando se resuelvan
   // todas las Promesas devueltas por el enlazador.
   //
   // Nota: Esto es un ejemplo ingenioso en el que la función del enlazador crea un nuevo
-  // módulo "foo" cada vez que se llama. En un sistema de módulo de pleno derecho, probablemente
+  // módulo "foo" cada vez que se llama. En un sistema de módulo completamente desarrollado, probablemente
   // se utilizaría un caché para evitar los módulos duplicados.
 
   async function linker(specifier, referencingModule) {
     if (specifier === 'foo') {
       return new vm.Module(`
         // La variable "secreta" se refiere a la variable global que agregamos a
-        // "contextifiedSandbox" cuando se crea el contexto.
+        // "contextifiedSandbox" al crear el contexto.
         export default secret;
       `, { context: referencingModule.context });
 
@@ -138,11 +138,11 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 
 * `code` {string} Código del Módulo JavaScript para analizar
 * `options` 
-  * `url` {string} URL utilizado en la resolución de módulo y seguimiento de pila. **Predeterminado:** `'vm:module(i)'` donde `i` es un índice ascendente de contexto específico.
+  * `url` {string} URL utilizado en la resolución de módulo y stack traces. **Predeterminado:** `'vm:module(i)'` donde `i` es un índice ascendente de contexto específico.
   * `context` {Object} El objeto [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) como es devuelto por el método `vm.createContext()`, para compilar y evaluar este `Module`.
-  * `lineOffset` {integer} Especifica el desplazamiento del número de línea que se muestra en los seguimientos de pila producidos por este `Module`.
-  * `columnOffset` {integer} Especifica el desplazamiento del número de columna que se muestra en los seguimientos de pila producidos por este `Modulo`.
-  * `initalizeImportMeta` {Function} Llama durante la evaluación de este `Module` para inicializar el `import.meta`. Esta función tiene la firma `(meta,
+  * `lineOffset` {integer} Especifica el desplazamiento del número de línea que se muestra en los stack traces producidos por este `Module`.
+  * `columnOffset` {integer} Especifica el desplazamiento del número de columna que se muestra en los stack traces producidos por este `Modulo`.
+  * `initalizeImportMeta` {Function} Llamada durante la evaluación de este `Module` para inicializar el `import.meta`. Esta función tiene la firma `(meta,
 module)`, donde `meta` es el objeto `import.meta` en el `Module`, y `module` es este objeto `vm.Module`.
 
 Crea un nuevo objeto ES `Module`.
@@ -161,12 +161,12 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
       initializeImportMeta(meta) {
         // Nota: este objeto se crea en el contexto superior. Como tal,
         // Object.getPrototypeOf(import.meta.prop) apunta al
-        // Object.prototype en el contexto superior en lugar de en
+        // Object.prototype en el contexto superior, en lugar de en
         // el sandbox.
         meta.prop = {};
       }
     });
-  // Ya que el módulo no tiene dependencia, la función del enlazador nunca se llamará.
+  // Ya que el módulo no tiene dependencias, la función del enlazador nunca se llamará.
   await module.link(() => {});
   module.initialize();
   await module.evaluate();
@@ -205,15 +205,15 @@ Corresponde al campo `[[EvaluationError]]` de los [Registros de Módulo de Texto
 El estatus de vinculación actual del `module`. Será uno de los siguientes valores:
 
 * `'unlinked'`: `module.link()` todavía no ha sido llamado.
-* `'linking'`: `module.link()` ha sido llamado, pero no todas las Promesas devueltas por la función del enlazados ha sido resueltas todavía.
+* `'linking'`: `module.link()` ha sido llamado, pero no todas las Promesas devueltas por la función del enlazador han sido resueltas todavía.
 * `'linked'`: `module.link()` ha sido llamado, y todas sus dependencias han sido exitosamente enlazadas.
-* `'errored'`: `module.link()` ha sido llamado, pero al menos una de sus dependencia falló al enlazarse, ya sea porque la devolución retornó una `Promise` que se rechazó, o porque el `Module` de la devolución retornada es inválido.
+* `'errored'`: `module.link()` ha sido llamado, pero al menos una de sus dependencias falló al enlazarse, ya sea porque el callback retornó una `Promise` que se rechaza, o porque el `Module` que el callback retornó es inválido.
 
 ### module.namespace
 
 * {Object}
 
-El objeto de espacio de nombre del módulo. Esto solo está disponible después de que la instantación (`module.instantiate()`) se haya completado.
+El objeto namespace del módulo. Esto solo está disponible después de que la instantación (`module.instantiate()`) se haya completado.
 
 Corresponde a la operación abstracta [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getmodulenamespace) en la especificación de ECMAScript.
 
@@ -230,7 +230,7 @@ El estatus actual del módulo. Será uno de:
   
   Este estatus no transmite ninguna información con respecto a si `module.link()` ha sido llamado. Vea `module.linkingStatus` para eso.
 
-* `'instantiating'`: El módulo se está instanciando actualmente mediante un `module.instantiate()` llamado sobre sí mismoo un módulo principal.
+* `'instantiating'`: El módulo se está instanciando actualmente mediante un `module.instantiate()` llamado sobre sí mismo o un módulo principal.
 
 * `'instantiated'`: El módulo ha sido instanciado exitosamente, pero `module.evaluate()` todavía no ha sido llamado.
 
@@ -238,7 +238,7 @@ El estatus actual del módulo. Será uno de:
 
 * `'evaluated'`: El módulo ha sido evaluado exitosamente.
 
-* `'errored'`: El módulo ha sido evaluado, pero se lazó una excepción.
+* `'errored'`: El módulo ha sido evaluado, pero se lanzó una excepción.
 
 Aparte de `'errored'`, esta cadena de estatus corresponde al campo de `[[Status]]` del [Registro de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) de la especificación. `'errored'` corresponde a `'evaluated'` en la especificación, pero con `[[EvaluationError]]` configurado a un valor que no está `undefined`.
 
@@ -246,13 +246,13 @@ Aparte de `'errored'`, esta cadena de estatus corresponde al campo de `[[Status]
 
 * {string}
 
-El URL del módulo actual, como se configura e el constructor.
+El URL del módulo actual, como se configura en el constructor.
 
 ### module.evaluate([options])
 
 * `options` {Object} 
   * `timeout` {number} Especifica la cantidad de milisegundos para evaluar antes de terminar la ejecución. Si la ejecución se interrumpe, un [`Error`][] se lanzará.
-  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuará trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
+  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
 * Devuelve: {Promise}
 
 Evaluar el módulo.

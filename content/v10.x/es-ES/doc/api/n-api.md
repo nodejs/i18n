@@ -2704,13 +2704,13 @@ napi_status napi_get_new_target(napi_env env,
                                 napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cbinfo`: The callback info passed into the callback function.
-- `[out] result`: The `new.target` of the constructor call.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] cbinfo`: La información del callback pasada a la función callback.
+- `[out] result`: El `new.target` de la llamada constructora.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the `new.target` of the constructor call. If the current callback is not a constructor call, the result is `NULL`.
+Esta API devuelve el `new.target` de la llamada constructora. Si el callback actual no es una llamada constructora, el resultado es `NULL`.
 
 ### napi_new_instance
 
@@ -2726,13 +2726,13 @@ napi_status napi_new_instance(napi_env env,
                               napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] cons`: `napi_value` representing the JavaScript function to be invoked as a constructor.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of JavaScript values as `napi_value` representing the arguments to the constructor.
-- `[out] result`: `napi_value` representing the JavaScript object returned, which in this case is the constructed object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] cons`: `napi_value` que representa la función de JavaScript a ser invocada como una constructora.
+- `[in] argc`: El conteo de elementos en el arreglo `argv`.
+- `[in] argv`: Arreglo de valores de JavaScript como `napi_value` que representa los argumentos para la constructora.
+- `[out] result`: `napi_value` que representa el objeto de JavaScript devuelto, el cual, en este caso, es el objeto constructor.
 
-This method is used to instantiate a new JavaScript value using a given `napi_value` that represents the constructor for the object. For example, consider the following snippet:
+Este método es utilizado para instanciar un nuevo valor de JavaScript usando un `napi_value` dado que representa al constructor para el objeto. Por ejemplo, considere el siguiente fragmento de código:
 
 ```js
 function MyObject(param) {
@@ -2743,10 +2743,10 @@ const arg = 'hello';
 const value = new MyObject(arg);
 ```
 
-The following can be approximated in N-API using the following snippet:
+El siguiente se puede aproximar en N-API utilizando el fragmento de código que sigue:
 
 ```C
-// Get the constructor function MyObject
+// Obtener la función constructora MyObject
 napi_value global, constructor, arg, value;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -2765,19 +2765,19 @@ size_t argc = 1;
 status = napi_new_instance(env, constructor, argc, argv, &value);
 ```
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-## Object Wrap
+## Envoltura de Objeto
 
-N-API offers a way to "wrap" C++ classes and instances so that the class constructor and methods can be called from JavaScript.
+N-API ofrece una forma de "envolver" las instancias y clases de C++ para que los métodos y la clase constructora puedan ser llamados desde JavaScript.
 
-1. The [`napi_define_class`][] API defines a JavaScript class with constructor, static properties and methods, and instance properties and methods that correspond to the C++ class.
-2. When JavaScript code invokes the constructor, the constructor callback uses [`napi_wrap`][] to wrap a new C++ instance in a JavaScript object, then returns the wrapper object.
-3. When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` C++ function is invoked. For an instance callback, [`napi_unwrap`][] obtains the C++ instance that is the target of the call.
+1. La API [`napi_define_class`][] define una clase de JavaScript con constructor, propiedades y métodos estáticos, y propiedades y métodos de instancias que corresponden a la clase C++.
+2. Cuando el código de JavaScript invoca al constructor, el callback del constructor utiliza [`napi_wrap`][] para envolver una nueva instancia de C++ en un objeto de JavaScript, entonces devuelve al objeto envuelto.
+3. Cuando el código de JavaScript invoca un método o acceso a la propiedad de la clase, se invoca la correspondiente función `napi_callback` de C++. Para un callback de instancia, [`napi_unwrap`][] obtiene la instancia de C++ que es el objetivo de la llamada.
 
-For wrapped objects it may be difficult to distinguish between a function called on a class prototype and a function called on an instance of a class. A common pattern used to address this problem is to save a persistent reference to the class constructor for later `instanceof` checks.
+Para los objetos envueltos puede ser difícil distinguir entre una función llamada sobre una clase prototipo, y una función llamada sobre una instancia de una clase. Un patrón común utilizado para abordar este problema es guardar una referencia persistente a la clase constructora para posteriores verificaciones `instanceof`.
 
-As an example:
+Como ejemplo:
 
 ```C
 napi_value MyClass_constructor = NULL;
@@ -2789,11 +2789,11 @@ assert(napi_ok == status);
 if (is_instance) {
   // napi_unwrap() ...
 } else {
-  // otherwise...
+  // de lo contrario...
 }
 ```
 
-The reference must be freed once it is no longer needed.
+La referencia debe ser liberada una vez que deje de ser necesaria.
 
 ### napi_define_class
 
@@ -2812,26 +2812,26 @@ napi_status napi_define_class(napi_env env,
                               napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] utf8name`: Name of the JavaScript constructor function; this is not required to be the same as the C++ class name, though it is recommended for clarity.
-- `[in] length`: The length of the `utf8name` in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
-- `[in] constructor`: Callback function that handles constructing instances of the class. (This should be a static method on the class, not an actual C++ constructor function.)
-- `[in] data`: Optional data to be passed to the constructor callback as the `data` property of the callback info.
-- `[in] property_count`: Number of items in the `properties` array argument.
-- `[in] properties`: Array of property descriptors describing static and instance data properties, accessors, and methods on the class See `napi_property_descriptor`.
-- `[out] result`: A `napi_value` representing the constructor function for the class.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] utf8name`: Nombre de la función constructora de JavaScript; no se requiere que este sea el mismo que el nombre de la clase de C++, aunque es recomendado para mayor claridad.
+- `[in] length`: La longitud en bytes de `utf8name`, o `NAPI_AUTO_LENGTH` si es terminado en null.
+- `[in] constructor`: Función callback que maneja la construcción de instancias de la clase. (Este debe ser un método estático en la clase, no una verdadera función constructora de C++)
+- `[in] data`: Datos opcionales a ser pasados al callback de la constructora como la propiedad `data` de la información del callback.
+- `[in] property_count`: Número de elementos en el argumento del arreglo `properties`.
+- `[in] properties`: Arreglo de descriptores de propiedad que describen propiedades de datos estáticos y de instancia, accesores, y métodos en la clase. Véase `napi_property_descriptor`.
+- `[out] result`: Un `napi_value` que representa a la función constructora para la clase.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Defines a JavaScript class that corresponds to a C++ class, including:
+Define una clase de Javascript que corresponde a una clase de C++, incluyendo:
 
-- A JavaScript constructor function that has the class name and invokes the provided C++ constructor callback.
-- Properties on the constructor function corresponding to *static* data properties, accessors, and methods of the C++ class (defined by property descriptors with the `napi_static` attribute).
-- Properties on the constructor function's `prototype` object corresponding to *non-static* data properties, accessors, and methods of the C++ class (defined by property descriptors without the `napi_static` attribute).
+- Una función constructora de JavaScript que tiene el nombre de la clase e invoca al callback del constructor de C++ proporcionado.
+- Propiedades sobre la función constructora que corresponden a propiedades de datos *estáticos*, acceso, y métodos de la clase de C++ (definidos por descriptores de propiedad con el atributo `napi_static`).
+- Propiedades sobre el objeto `prototype` de la función constructora que corresponden a propiedades de datos *no estáticos*, accesores, y métodos de la clase de C++ (definidos por los descriptores de propiedad sin el atributo `napi_static`).
 
-The C++ constructor callback should be a static method on the class that calls the actual class constructor, then wraps the new C++ instance in a JavaScript object, and returns the wrapper object. See `napi_wrap()` for details.
+El callback del constructor de C++ debe se un método estático sobre la clase que llama a la verdadera clase constructora, entonces envuelve la nueva instancia de C++ en un objeto de JavaScript, y devuelve un objeto envuelto. Véase `napi_wrap()` para más detalles.
 
-The JavaScript constructor function returned from [`napi_define_class`][] is often saved and used later, to construct new instances of the class from native code, and/or check whether provided values are instances of the class. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
+La función constructora de JavaScript devuelta desde [`napi_define_class`][] es usualmente guardada y utilizada luego, para construir nuevas instancias de la clase desde código nativo, y/o verificar si los valores proporcionados son instancias de la clase. En ese caso, para prevenir que el valor de la función sea recolectado con la basura, crear una referencia persistente a él, utilizando [`napi_create_reference`][] y asegurar que la cuenta de la referencia se mantenga >= 1.
 
 ### napi_wrap
 
@@ -2848,28 +2848,28 @@ napi_status napi_wrap(napi_env env,
                       napi_ref* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The JavaScript object that will be the wrapper for the native object. This object *must* have been created from the `prototype` of a constructor that was created using `napi_define_class()`.
-- `[in] native_object`: The native instance that will be wrapped in the JavaScript object.
-- `[in] finalize_cb`: Optional native callback that can be used to free the native instance when the JavaScript object is ready for garbage-collection.
-- `[in] finalize_hint`: Optional contextual hint that is passed to the finalize callback.
-- `[out] result`: Optional reference to the wrapped object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] js_object`: El objeto de JavaScript que será envuelto por el objeto nativo. Este objeto *debe* haber sido creado desde el `prototype` de un constructor que fue creado utilizando `napi_define_class()`.
+- `[in] native_object`: La instancia nativa que será envuelta en el objeto de JavaScript.
+- `[in] finalize_cb`: Callback nativo opcional que puede ser utilizado para liberar a la instancia nativa cuando el objeto de JavaScript esté listo para la recolección de basura.
+- `[in] finalize_hint`: Sugerencia contextual opcional que es pasada a la callback de finalización.
+- `[out] result`: Referencia opcional al objeto envuelto.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Wraps a native instance in a JavaScript object. The native instance can be retrieved later using `napi_unwrap()`.
+Envuelve una instancia nativa en un objeto de JavaScript. La instancia nativa puede ser recuperada luego utilizando `napi_unwrap()`.
 
-When JavaScript code invokes a constructor for a class that was defined using `napi_define_class()`, the `napi_callback` for the constructor is invoked. After constructing an instance of the native class, the callback must then call `napi_wrap()` to wrap the newly constructed instance in the already-created JavaScript object that is the `this` argument to the constructor callback. (That `this` object was created from the constructor function's `prototype`, so it already has definitions of all the instance properties and methods.)
+Cuando un código de JavaScript invoca a un constructor para la clase que fue definida utilizando `napi_define_class()`, el `napi_callback` para el constructor es invocado. Luego de construir una instancia de la clase nativa, el callback debe llamar entonces a `napi_wrap()` para envolver a la instancia recientemente construida en el ya creado objeto de JavaScript que es el argumento `this` del callback del constructor. (Ese objeto `this` fue creado desde el `prototype` de la función constructora, entonces ya tiene definiciones de todas las propiedades y métodos de instancia.)
 
-Typically when wrapping a class instance, a finalize callback should be provided that simply deletes the native instance that is received as the `data` argument to the finalize callback.
+Normalmente, al envolver una instancia de clase, se debe proporcionar un callback de terminación que simplemente elimine la instancia nativa que se recibe como el argumento `data` para el callback de terminación.
 
-The optional returned reference is initially a weak reference, meaning it has a reference count of 0. Typically this reference count would be incremented temporarily during async operations that require the instance to remain valid.
+La referencia opcional devuelta es, inicialmente, una referencia débil, lo que significa que tiene una cuenta de referencia de 0. Normalmente, esta cuenta de referencia se incrementará temporalmente durante operaciones asíncronas que requieren que la instancia permanezca válida.
 
-*Caution*: The optional returned reference (if obtained) should be deleted via [`napi_delete_reference`][] ONLY in response to the finalize callback invocation. (If it is deleted before then, then the finalize callback may never be invoked.) Therefore, when obtaining a reference a finalize callback is also required in order to enable correct proper of the reference.
+*Precaución*: La referencia opcional devuelta (si se obtiene) debe ser eliminada por medio de [`napi_delete_reference`][] SOLO en respuesta a la invocación del callback de terminación. (Si es eliminada antes de eso, entonces puede que el callback de terminación nunca sea invocado.) Por lo tanto, cuando se obtiene una referencia, también se requiere un callback de terminación para permitir la apropiada corrección de la referencia.
 
-This API may modify the prototype chain of the wrapper object. Afterward, additional manipulation of the wrapper's prototype chain may cause `napi_unwrap()` to fail.
+Esta API puede modificar la cadena de prototipos del objeto envuelto. Después, la manipulación adicional de la cadena de prototipos de la envoltura puede ocasionar la falla de `napi_unwrap()`.
 
-Calling `napi_wrap()` a second time on an object will return an error. To associate another native instance with the object, use `napi_remove_wrap()` first.
+Llamar a `napi_unwrap()` por segunda vez en un objeto devolverá un error. Para asociar otra instancia nativa con el objeto, utilizar primero `napi_remove_wrap()`.
 
 ### napi_unwrap
 
@@ -2883,15 +2883,15 @@ napi_status napi_unwrap(napi_env env,
                         void** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The object associated with the native instance.
-- `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] js_object`: El objeto asociado con la instancia nativa.
+- `[out] result`: Apuntador a la instancia nativa envuelta.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Retrieves a native instance that was previously wrapped in a JavaScript object using `napi_wrap()`.
+Recupera una instancia nativa que estaba envuelta previamente en un objeto de JavaScript usando `napi_wrap()`.
 
-When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` is invoked. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
+Cuando el código de JavaScript invoca un método o un accesor de propiedad en la clase, el `napi_callback` correspondiente es invocado. Si el callback es para un método o accesor de instancia, entonces el argumento `this` al callback es el objeto envoltorio; la instancia de C++ envuelta que es el objetivo de la llamada se puede obtener llamando a `napi_unwrap()` en el objeto envoltorio.
 
 ### napi_remove_wrap
 
@@ -2905,23 +2905,23 @@ napi_status napi_remove_wrap(napi_env env,
                              void** result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] js_object`: The object associated with the native instance.
-- `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] js_object`: El objeto asociado con la instancia nativa.
+- `[out] result`: Apuntador a la instancia nativa envuelta.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-Retrieves a native instance that was previously wrapped in the JavaScript object `js_object` using `napi_wrap()` and removes the wrapping, thereby restoring the JavaScript object's prototype chain. If a finalize callback was associated with the wrapping, it will no longer be called when the JavaScript object becomes garbage-collected.
+Recupera una instancia nativa que estaba envuelta previamente en el objeto de JavaScript `js_object` usando `napi_wrap()` y remueve la envoltura, restaurando así la cadena de prototipos del objeto de JavaScript. Si un callback de terminación estaba asociado con la envoltura, ya no será llamado cuando el objeto de JavaScript se convierta en basura de recolección.
 
-## Simple Asynchronous Operations
+## Operaciones Asíncronas Simples
 
-Addon modules often need to leverage async helpers from libuv as part of their implementation. This allows them to schedule work to be executed asynchronously so that their methods can return in advance of the work being completed. This is important in order to allow them to avoid blocking overall execution of the Node.js application.
+Los módulos complementarios a menudo necesitan aprovechar ayudantes asíncronos de libuv como parte de su implementación. Esto les permite programar el trabajo a ser ejecutado de manera asíncrona, de modo que sus métodos puedan regresar antes de que se complete el trabajo. Esto es importante para que puedan evitar el bloqueo total de la ejecución de la aplicación de Node.js.
 
-N-API provides an ABI-stable interface for these supporting functions which covers the most common asynchronous use cases.
+N-API proporciona una interfaz ABI estable para estas funciones de soporte que cubren los casos de uso asíncrono más comunes.
 
-N-API defines the `napi_work` structure which is used to manage asynchronous workers. Instances are created/deleted with [`napi_create_async_work`][] and [`napi_delete_async_work`][].
+N-API define la estructura `napi_work` que es utilizada para administrar los workers asíncronos. Las instancias son creadas/eliminadas con [`napi_create_async_work`][] y [`napi_delete_async_work`][].
 
-The `execute` and `complete` callbacks are functions that will be invoked when the executor is ready to execute and when it completes its task respectively. These functions implement the following interfaces:
+Los callbacks `execute` y `complete` son funciones que serán invocadas cuando el ejecutor esté preparado para ejecutar y cuando complete su tarea, respectivamente. Estas funciones implementan las siguientes interfaces:
 
 ```C
 typedef void (*napi_async_execute_callback)(napi_env env,
@@ -2931,18 +2931,18 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-When these methods are invoked, the `data` parameter passed will be the addon-provided `void*` data that was passed into the `napi_create_async_work` call.
+Cuando estos métodos son invocados, el parámetro `data` pasado estará constituido por los datos `void*` proporcionados por el complemento que fueron pasados a la llamada `napi_create_async_work`.
 
-Once created the async worker can be queued for execution using the [`napi_queue_async_work`][] function:
+Una vez creado, el worker asíncrono puede ponerse en la cola para la ejecución utilizando la función [`napi_queue_async_work`][]:
 
 ```C
 napi_status napi_queue_async_work(napi_env env,
                                   napi_async_work work);
 ```
 
-[`napi_cancel_async_work`][] can be used if the work needs to be cancelled before the work has started execution.
+[`napi_cancel_async_work`][] puede ser utilizado si el trabajo necesita ser cancelado antes de que haya iniciado la ejecución.
 
-After calling [`napi_cancel_async_work`][], the `complete` callback will be invoked with a status value of `napi_cancelled`. The work should not be deleted before the `complete` callback invocation, even when it was cancelled.
+Después de llamar a [`napi_cancel_async_work`][], el callback `complete` será invocado con un valor de estado de `napi_cancelled`. El trabajo no debe ser eliminado antes de la invocación del callback `complete`, incluso cuando fue cancelado.
 
 ### napi_create_async_work
 
@@ -2965,21 +2965,21 @@ napi_status napi_create_async_work(napi_env env,
                                    napi_async_work* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_resource`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] async_resource_name`: Identifier for the kind of resource that is being provided for diagnostic information exposed by the `async_hooks` API.
-- `[in] execute`: The native function which should be called to execute the logic asynchronously. The given function is called from a worker pool thread and can execute in parallel with the main event loop thread.
-- `[in] complete`: The native function which will be called when the asynchronous logic is completed or is cancelled. The given function is called from the main event loop thread.
-- `[in] data`: User-provided data context. This will be passed back into the execute and complete functions.
-- `[out] result`: `napi_async_work*` which is the handle to the newly created async work.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] async_resource`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
+- `[in] async_resource_name`: Identificador para el tipo de recurso que está siendo proporcionado para la información de diagnóstico expuesta por la API `async_hooks`.
+- `[in] execute`: La función nativa que debe ser llamada para ejecutar la lógica de forma asíncrona. La función dada es llamada desde un hilo de un pool y se puede en paralelo con el hilo del bucle de evento principal.
+- `[in] complete`: La función nativa que será llamada cuando la lógica asíncrona esté completa o cancelada. La función dada es llamada desde el hilo del bucle de evento principal.
+- `[in] data`: Contexto de datos proporcionado por el usuario. Este será pasado de vuelta a las funciones de ejecución y completación.
+- `[out] result`: `napi_async_work*` que es el manejador del trabajo asíncrono recientemente creado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API allocates a work object that is used to execute logic asynchronously. It should be freed using [`napi_delete_async_work`][] once the work is no longer required.
+Esta API asigna un objeto de trabajo que es utilizado para ejecutar la lógica de manera asíncrona. Se debe liberar utilizando [`napi_delete_async_work`][] una vez que el trabajo ya no sea requerido.
 
-`async_resource_name` should be a null-terminated, UTF-8-encoded string.
+`async_resource_name` debe ser una cadena codificada en UTF-8 y terminada en null.
 
-The `async_resource_name` identifier is provided by the user and should be representative of the type of async work being performed. It is also recommended to apply namespacing to the identifier, e.g. by including the module name. See the [`async_hooks` documentation][async_hooks `type`] for more information.
+El identificador `async_resource_name` es proporcionado por el usuario y debe ser representativo del tipo de trabajo asíncrono que está siendo realizado. También es recomendado aplicar el espacio de nombres al identificador, por ejemplo, incluyendo el nombre del módulo. Véase la [`async_hooks` documentation][async_hooks `type`] para más información.
 
 ### napi_delete_async_work
 
@@ -2992,14 +2992,14 @@ napi_status napi_delete_async_work(napi_env env,
                                    napi_async_work work);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] work`: The handle returned by the call to `napi_create_async_work`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] work`: El handle devuelto por la llamada a `napi_create_async_work`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API frees a previously allocated work object.
+Esta API libera un objeto de trabajo previamente asignado.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si hay una excepción de JavaScript pendiente.
 
 ### napi_queue_async_work
 
@@ -3012,12 +3012,12 @@ napi_status napi_queue_async_work(napi_env env,
                                   napi_async_work work);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] work`: The handle returned by the call to `napi_create_async_work`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] work`: El manejador devuelto por la llamada a `napi_create_async_work`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API requests that the previously allocated work be scheduled for execution.
+Esta API solicita que el trabajo asignado previamente sea programado para ejecución.
 
 ### napi_cancel_async_work
 
@@ -3030,18 +3030,18 @@ napi_status napi_cancel_async_work(napi_env env,
                                    napi_async_work work);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] work`: The handle returned by the call to `napi_create_async_work`.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] work`: El handle devuelto por la llamada a `napi_create_async_work`.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API cancels queued work if it has not yet been started. If it has already started executing, it cannot be cancelled and `napi_generic_failure` will be returned. If successful, the `complete` callback will be invoked with a status value of `napi_cancelled`. The work should not be deleted before the `complete` callback invocation, even if it has been successfully cancelled.
+Esta API cancela el trabajo en cola, si no ha sido iniciado aún. Si ya comenzaron a ejecutarse, no puede ser cancelado y se devolverá `napi_generic_failure`. Si es exitoso, el callback `complete` será invocado con un valor de estado de `napi_cancelled`. El trabajo no debe ser eliminado antes de la invocación del callback `complete`, incluso si fue cancelado de manera exitosa.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si existe una excepción pendiente de JavaScript.
 
-## Custom Asynchronous Operations
+## Operaciones Asíncronas Personalizadas
 
-The simple asynchronous work APIs above may not be appropriate for every scenario. When using any other asynchronous mechanism, the following APIs are necessary to ensure an asynchronous operation is properly tracked by the runtime.
+Las APIs de trabajo asíncrono simple anteriores pueden no ser apropiadas para cada escenario. Al utilizar cualquier otro mecanismo asíncrono, las siguientes APIs son necesarias para asegurar que una operación asíncrona sea apropiadamente rastreada por el tiempo de ejecución.
 
 ### napi_async_init
 
@@ -3056,12 +3056,12 @@ napi_status napi_async_init(napi_env env,
                             napi_async_context* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_resource`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] async_resource_name`: Identifier for the kind of resource that is being provided for diagnostic information exposed by the `async_hooks` API.
-- `[out] result`: The initialized async context.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] async_resource`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
+- `[in] async_resource_name`: Identificador para el tipo de recurso que está siendo proporcionado para la información de diagnóstico expuesta por la API `async_hooks`.
+- `[out] result`: El contexto asíncrono inicializado.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
 ### napi_async_destroy
 
@@ -3074,12 +3074,12 @@ napi_status napi_async_destroy(napi_env env,
                                napi_async_context async_context);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_context`: The async context to be destroyed.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] async_context`: El contexto asíncrono a ser destruido.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si hay una excepción de JavaScript pendiente.
 
 ### napi_make_callback
 
@@ -3101,19 +3101,19 @@ napi_status napi_make_callback(napi_env env,
                                napi_value* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] async_context`: Context for the async operation that is invoking the callback. This should normally be a value previously obtained from [`napi_async_init`][]. However `NULL` is also allowed, which indicates the current async context (if any) is to be used for the callback.
-- `[in] recv`: The `this` object passed to the called function.
-- `[in] func`: `napi_value` representing the JavaScript function to be invoked.
-- `[in] argc`: The count of elements in the `argv` array.
-- `[in] argv`: Array of JavaScript values as `napi_value` representing the arguments to the function.
-- `[out] result`: `napi_value` representing the JavaScript object returned.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] async_context`: Contexto para la operación asíncrona que está invocando al callback. Normalmente este debería ser un valor obtenido previamente de [`napi_async_init`][]. Sin embargo, `NULL` también está permitido, lo cual indica que el contexto asíncrono actual (si existe) está por ser utilizado para el callback.
+- `[in] recv`: El objeto `this` pasado a la función llamada.
+- `[in] func`: `napi_value` que representa la función de JavaScript a ser invocada.
+- `[in] argc`: El conteo de elementos en el arreglo `argv`.
+- `[in] argv`: Arreglo de valores de JavaScript como `napi_value` que representan los argumentos para la función.
+- `[out] result`: `napi_value` que representa el objeto de JavaScript devuelto.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This method allows a JavaScript function object to be called from a native add-on. This API is similar to `napi_call_function`. However, it is used to call *from* native code back *into* JavaScript *after* returning from an async operation (when there is no other script on the stack). It is a fairly simple wrapper around `node::MakeCallback`.
+Este método permite a una función objeto de JavaScript ser llamada desde un complemento nativo. Esta API es similar a `napi_call_function`. Sin embargo, es utilizado para llamar *desde* el código nativo de nuevo *a* JavaScript *luego* de regresar de una operación asíncrona (cuando no hay otro script en la pila). Es una envoltura bastante simple alrededor de `node::MakeCallback`.
 
-Note it is *not* necessary to use `napi_make_callback` from within a `napi_async_complete_callback`; in that situation the callback's async context has already been set up, so a direct call to `napi_call_function` is sufficient and appropriate. Use of the `napi_make_callback` function may be required when implementing custom async behavior that does not use `napi_create_async_work`.
+Tenga en cuenta de que *no* es necesario utilizar `napi_make_callback` desde dentro de un `napi_async_complete_callback`; en esa situación, el contexto asíncrono del callback ya se ha configurado, por lo que una llamada directa a `napi_call_function` es apropiada y suficiente. La utilización de la función `napi_make_callback` puede ser requerida cuando se implementa un comportamiento asíncrono personalizado que no usa `napi_create_async_work`.
 
 ### napi_open_callback_scope
 

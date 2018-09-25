@@ -485,7 +485,7 @@ In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine k
 
 ### Die Lebensdauer des Handles kürzer als bei der nativen Methode machen
 
-Oftmals ist es notwendig, die Lebensdauer von Handles kürzer zu halten als die Lebensdauer einer nativen Methode. For example, consider a native method that has a loop which iterates through the elements in a large array:
+Oftmals ist es notwendig, die Lebensdauer von Handles kürzer zu halten als die Lebensdauer einer nativen Methode. Betrachten Sie zum Beispiel eine native Methode, die eine Loop hat, die die Elemente in einem großen Array durchläuft:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -498,13 +498,13 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-This would result in a large number of handles being created, consuming substantial resources. In addition, even though the native code could only use the most recent handle, all of the associated objects would also be kept alive since they all share the same scope.
+Dies würde dazu führen, dass eine große Anzahl von Handles erstellt wird, die erhebliche Ressourcen verbrauchen. Zusätzlich, obwohl der native Code nur das neueste Handle verwenden kann, werden auch alle zugehörigen Objekte am Leben erhalten, da sie alle den gleichen Scope haben.
 
-To handle this case, N-API provides the ability to establish a new 'scope' to which newly created handles will be associated. Once those handles are no longer required, the scope can be 'closed' and any handles associated with the scope are invalidated. The methods available to open/close scopes are [`napi_open_handle_scope`][] and [`napi_close_handle_scope`][].
+Um diesen Fall zu bearbeiten, bietet N-API die Möglichkeit, einen neuen "Scope" zu erstellen, dem neu erstellte Handles zugeordnet werden. Sobald diese Handles nicht mehr benötigt werden, kann der Scope geschlossen werden und alle mit dem Scope verbundenen Handles werden invalidiert. Die verfügbaren Methoden um Scopes zu öffnen/zu schließen sind [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][].
 
-N-API only supports a single nested hierarchy of scopes. There is only one active scope at any time, and all new handles will be associated with that scope while it is active. Scopes must be closed in the reverse order from which they are opened. In addition, all scopes created within a native method must be closed before returning from that method.
+N-API unterstützt nur eine einzige verschachtelte Hierarchie von Scopes. Es gibt zu jeder Zeit nur einen aktiven Scope, und alle neuen Handles werden diesem Scope zugeordnet, während er aktiv ist. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, in der sie geöffnet werden. Darüber hinaus müssen alle innerhalb einer nativen Methode erstellten Scopes geschlossen werden, bevor von dieser Methode zurückgekehrt wird.
 
-Taking the earlier example, adding calls to [`napi_open_handle_scope`][] and [`napi_close_handle_scope`][] would ensure that at most a single handle is valid throughout the execution of the loop:
+Im früheren Beispiel würde das Hinzufügen von Aufrufen zu [`napi_open_handle_scope`][] und [`napi_close_handle_scope`][] stellt sicher, dass höchstens ein einziges Handle während der Ausführung der Loop gültig ist:
 
 ```C
 for (int i = 0; i < 1000000; i++) {
@@ -526,11 +526,11 @@ for (int i = 0; i < 1000000; i++) {
 }
 ```
 
-When nesting scopes, there are cases where a handle from an inner scope needs to live beyond the lifespan of that scope. N-API supports an 'escapable scope' in order to support this case. An escapable scope allows one handle to be 'promoted' so that it 'escapes' the current scope and the lifespan of the handle changes from the current scope to that of the outer scope.
+Beim Verschachteln von Scopes gibt es Fälle, in denen ein Handle aus einem inneren Scope über die Lebensdauer dieses Scopes hinaus leben muss. N-API unterstützt einen 'Escapable-Scope', um diesen Fall zu unterstützen. Ein Escapable-Scope ermöglicht es, ein Handle zu "fördern", so dass es dem aktuellen Scope "entkommt" und die Lebensdauer des Handles vom aktuellen Scope zu der des äußeren Scopes wechselt.
 
-The methods available to open/close escapable scopes are [`napi_open_escapable_handle_scope`][] and [`napi_close_escapable_handle_scope`][].
+Die Methoden, die für das Öffnen/Schließen von Escapable-Scopes zur Verfügung stehen, sind folgende: [`napi_open_escapable_handle_scope`][] und [`napi_close_escapable_handle_scope`][].
 
-The request to promote a handle is made through [`napi_escape_handle`][] which can only be called once.
+Die Aufforderung zur Förderung eines Handles erfolgt über [`napi_escape_handle`][], das nur einmal aufgerufen werden kann.
 
 #### napi_open_handle_scope
 
@@ -543,12 +543,12 @@ NODE_EXTERN napi_status napi_open_handle_scope(napi_env env,
                                                napi_handle_scope* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing the new scope.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: `napi_value` repräsentiert den neuen Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API open a new scope.
+Diese API öffnet ein neues Scope.
 
 #### napi_close_handle_scope
 
@@ -561,14 +561,14 @@ NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
                                                 napi_handle_scope scope);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: `napi_value` representing the scope to be closed.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] scope`: `napi_value` repräsentiert den zu schließenden Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
+Diese API schließt den eingegebenen Scope. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, aus der sie erstellt wurden.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 #### napi_open_escapable_handle_scope
 
@@ -582,12 +582,12 @@ NODE_EXTERN napi_status
                                      napi_handle_scope* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: `napi_value` representing the new scope.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[out] result`: `napi_value` repräsentiert den neuen Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API open a new scope from which one object can be promoted to the outer scope.
+Diese API öffnet einen neuen Scope, von dem aus ein Objekt in den äußeren Scope verschoben werden kann.
 
 #### napi_close_escapable_handle_scope
 
@@ -601,14 +601,14 @@ NODE_EXTERN napi_status
                                       napi_handle_scope scope);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: `napi_value` representing the scope to be closed.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] scope`: `napi_value` repräsentiert den zu schließenden Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API closes the scope passed in. Scopes must be closed in the reverse order from which they were created.
+Diese API schließt den eingegebenen Scope. Die Scopes müssen in umgekehrter Reihenfolge geschlossen werden, aus der sie erstellt wurden.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception ansteht.
 
 #### napi_escape_handle
 
@@ -623,16 +623,16 @@ napi_status napi_escape_handle(napi_env env,
                                napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: `napi_value` representing the current scope.
-- `[in] escapee`: `napi_value` representing the JavaScript `Object` to be escaped.
-- `[out] result`: `napi_value` representing the handle to the escaped `Object` in the outer scope.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] scope`: `napi_value` repräsentiert den aktuellen Scope.
+- `[in] escapee`: `napi_value` repräsentiert das zu überspringende JavaScript-`Object`.
+- `[out] result`: `napi_value` repräsentiert den Handle zum übersprungenen `Object` in dem äußeren Scope.
 
-Returns `napi_ok` if the API succeeded.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API promotes the handle to the JavaScript object so that it is valid for the lifetime of the outer scope. It can only be called once per scope. If it is called more than once an error will be returned.
+Diese API fördert das Handle des JavaScript-Objekts, so dass es für die gesamte Lebensdauer des äußeren Scopes gültig ist. Sie kann nur einmal pro Scope aufgerufen werden. Wenn sie mehr als einmal aufgerufen wird, wird ein Fehler zurückgegeben.
 
-This API can be called even if there is a pending JavaScript exception.
+Diese API kann auch dann aufgerufen werden, wenn eine ausstehende JavaScript-Exception vorliegt.
 
 ### References to objects with a lifespan longer than that of the native method
 
