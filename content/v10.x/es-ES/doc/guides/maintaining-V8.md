@@ -177,7 +177,7 @@ Un ejemplo para el flujo de trabajo: cómo seleccionar cuidadosamente; considera
 
 * Descargue y aplique el commit vinculado en el problema (en este caso a51f429). `curl -L https://github.com/v8/v8/commit/a51f429.patch | git am -3
 --directory=deps/v8`. Si las ramas han divergido significativamente, esto puede no aplicarse limpiamente. Puede ser útil tratar de elegir la combinación a la rama más antigua que se realizó en el V8. En este ejemplo, este sería el parche de la fusión a 5.2. La esperanza es que esto esté más cerca del V8 5.1 y que tenga más posibilidades de aplicarse limpiamente. Si estás atascado, no dudes en hacer ping a @ofrobots para obtener ayuda.
-* Modifique el mensaje de commit para que coincida con el formato que usamos para los backports de V8 y reemplázate como el autor. `git commit --amend --reset-author`. You may want to add extra description if necessary to indicate the impact of the fix on Node.js. In this case the original issue was descriptive enough. Example:
+* Modifique el mensaje de commit para que coincida con el formato que usamos para los backports de V8 y reemplázate como el autor. `git commit --amend --reset-author`. Es posible que desee agregar una descripción adicional si es necesario para indicar el impacto de la corrección en Node.js. En este caso, el problema original fue lo suficientemente descriptivo. Ejemplo:
 
 ```console
 deps: cherry-pick a51f429 from V8 upstream
@@ -200,15 +200,15 @@ Refs: https://github.com/v8/v8/commit/a51f429772d1e796744244128c9feeab4c26a854
 PR-URL: https://github.com/nodejs/node/pull/7833
 ```
 
-* Open a PR against the `v6.x-staging` branch in the Node.js repo. Launch the normal and [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) using the Node.js CI system. We only needed to backport to `v6.x` as the other LTS branches weren't affected by this bug.
+* Abra una PR en la rama `v6.x-staging` en el repositorio Node.js. Inicie el normal y el [CI V8](https://ci.nodejs.org/job/node-test-commit-v8-linux/) utilizando el sistema Node.js CI. Solo necesitábamos hacer backport a `v6.x` ya que las otras ramas LTS no se vieron afectadas por este error.
 
-### Backports Identified by the V8 team
+### Backports identificados por el equipo V8
 
-For bugs found through the browser or other channels, the V8 team marks bugs that might be applicable to the abandoned branches in use by Node.js. This is done through manual tagging by the V8 team and through an automated process that tags any fix that gets backported to the stable branch (as it is likely candidate for backporting further).
+Para los errores encontrados a través del navegador u otros canales, el equipo V8 marca errores que podrían ser aplicables a las ramas abandonadas en uso por Node.js. Esto se hace a través del etiquetado manual por parte del equipo de V8 y mediante un proceso automatizado que marca cualquier corrección backported a la rama estable (ya que es probable que sea candidato para backporting).
 
-Such fixes are tagged with the following labels in the V8 issue tracker:
+Estas correcciones se etiquetan con las siguientes etiquetas en el rastreador de problemas de V8:
 
-* `NodeJS-Backport-Review` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Review), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Review)): to be reviewed if this is applicable to abandoned branches in use by Node.js. This list if regularly reviewed by the Node.js team at Google to determine applicability to Node.js.
+* `NodeJS-Backport-Review` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Review), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Review)): se revisará si esto es aplicable a las ramas abandonadas en uso por Node.js. This list if regularly reviewed by the Node.js team at Google to determine applicability to Node.js.
 * `NodeJS-Backport-Approved` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Approved), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Approved)): marks bugs that are deemed relevant to Node.js and should be backported.
 * `NodeJS-Backport-Done` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Done), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Done)): Backport for Node.js has been performed already.
 * `NodeJS-Backport-Rejected` ([V8](https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Rejected), [Chromium](https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Rejected)): Backport for Node.js is not desired.
