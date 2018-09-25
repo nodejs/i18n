@@ -510,7 +510,7 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`935b15285f`](https://github.com/nodejs/node/commit/935b15285f)] - **doc**: relajar ligeramente la regla de 50 caracteres (James M Snell) [#16523](https://github.com/nodejs/node/pull/16523)
 * [[`39c63da6d2`](https://github.com/nodejs/node/commit/39c63da6d2)] - **doc**: añadir nota a releases.md (Jon Moss) [#16507](https://github.com/nodejs/node/pull/16507)
 * [[`60ae428f30`](https://github.com/nodejs/node/commit/60ae428f30)] - **doc**: añadir punto en documentaciones (erwinwahyura) [#16542](https://github.com/nodejs/node/pull/16542)
-* [[`7ae23b744b`](https://github.com/nodejs/node/commit/7ae23b744b)] - **doc**: corregir el carácter de nueva línea (Daijiro Wachi) [#16447](https://github.com/nodejs/node/pull/16447)
+* [[`7ae23b744b`](https://github.com/nodejs/node/commit/7ae23b744b)] - **doc**: corregir el carácter de nueva línea faltante (Daijiro Wachi) [#16447](https://github.com/nodejs/node/pull/16447)
 * [[`af869f03c1`](https://github.com/nodejs/node/commit/af869f03c1)] - **doc**: añadir recomendaciones para primerizos (Refael Ackermann) [#16350](https://github.com/nodejs/node/pull/16350)
 * [[`b7d609c2f8`](https://github.com/nodejs/node/commit/b7d609c2f8)] - **doc**: reemplazar alias de codificación indocumentados (Vse Mozhet Byt) [#16368](https://github.com/nodejs/node/pull/16368)
 * [[`2cbf75da7e`](https://github.com/nodejs/node/commit/2cbf75da7e)] - **doc**: reemplazar métodos usados en el código de ejemplo (Damian) [#16416](https://github.com/nodejs/node/pull/16416)
