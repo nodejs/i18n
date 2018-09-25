@@ -221,13 +221,13 @@ Node.js se queda con una copia guarda de V8 dentro del directorio deps/. Además
 
 ### Actualizaciones menores (a nivel de parche)
 
-Debido a que puede haber parches flotantes en la versión de V8 en Node.js, es más seguro aplicar las actualizaciones de nivel de parche como un parche. Por ejemplo, imagina que el V8 upstream está en 5.0.71.47 y Node.js está en 5.0.71.32. It would be best to compute the diff between these tags on the V8 repository, and then apply that patch on the copy of V8 in Node.js. This should preserve the patches/backports that Node.js may be floating (or else cause a merge conflict).
+Debido a que puede haber parches flotantes en la versión de V8 en Node.js, es más seguro aplicar las actualizaciones de nivel de parche como un parche. Por ejemplo, imagina que el V8 upstream está en 5.0.71.47 y Node.js está en 5.0.71.32. Sería mejor calcular la diferencia entre estas etiquetas en el reposiorio de V8, y luego aplicar ese parche en la copia de V8 en Node.js. Esto debería preservar los parches/backports que Node.js pueda estar flotando (o pueda causar un conflicto de fusión).
 
-The rough outline of the process is:
+El bosquejo del proceso es:
 
 ```shell
-# Assuming your fork of Node.js is checked out in $NODE_DIR
-# and you want to update the Node.js master branch.
+# Suponiendo que tu fork de Node.js está desprotegido en $NODE_DIR
+# y desea actualizar la rama master Node.js.
 # Find the current (OLD) version in
 # $NODE_DIR/deps/v8/include/v8-version.h
 cd $NODE_DIR
