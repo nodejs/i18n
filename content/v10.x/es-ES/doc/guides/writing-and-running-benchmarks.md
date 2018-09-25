@@ -3,7 +3,7 @@
 ## Tabla de Contenidos
 
 * [Prerrequisitos](#prerequisites) 
-  * [Requisitos de Prueba de Rendimiento HTTP](#http-benchmark-requirements)
+  * [Requisitos de la Prueba de Rendimiento HTTP](#http-benchmark-requirements)
   * [Requisitos del Análisis de la Prueba de Rendimiento](#benchmark-analysis-requirements)
 * [Ejecutar pruebas de rendimiento](#running-benchmarks) 
   * [Ejecutar pruebas de rendimiento individuales](#running-individual-benchmarks)
@@ -17,13 +17,13 @@
 
 ## Prerrequisitos
 
-Las herramientas básicas de Unix son necesarias para algunas pruebas de rendimiento. [Git for Windows](http://git-scm.com/download/win) includes Git Bash and the necessary tools, which need to be included in the global Windows `PATH`.
+Las herramientas básicas de Unix son necesarias para algunas pruebas de rendimiento. [Git para Windows](http://git-scm.com/download/win) incluye Git Bash y las herramientas necesarias, las cuales necesitan ser incluidas en el Windows global `PATH`.
 
-### HTTP Benchmark Requirements
+### Requisitos de la Prueba de Rendimiento HTTP
 
-Most of the HTTP benchmarks require a benchmarker to be installed. This can be either [`wrk`](https://github.com/wg/wrk) or [`autocannon`](https://github.com/mcollina/autocannon).
+La mayoría de las pruebas de rendimiento HTTP requieren que se instale un benchmarker. Esto puede ser tanto [`wrk`](https://github.com/wg/wrk) como [`autocannon`](https://github.com/mcollina/autocannon).
 
-`Autocannon` is a Node.js script that can be installed using `npm install -g autocannon`. It will use the Node.js executable that is in the path. In order to compare two HTTP benchmark runs, make sure that the Node.js version in the path is not altered.
+`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el Node.js ejecutable que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese que la versión de Node.js en la ruta no está alterada.
 
 `wrk` may be available through one of the available package managers. If not, it can be easily built [from source](https://github.com/wg/wrk) via `make`.
 
