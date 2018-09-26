@@ -334,7 +334,7 @@ changes:
   * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
   * `columnOffset` {number} Especifica el número de la columna del desplazamiento que se muestra en los stack traces producidos por este script.
-  * `displayErrors` {boolean} Cuando es `true`, si produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error está adjunta al stack trace.
+  * `displayErrors` {boolean} Cuando es `true`, si produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si la ejecución se termina, se producirá un [`Error`][].
   * `cachedData` {Buffer} Proporciona un `Buffer` opcional con los datos de caché del código de V8 para la fuente suministrada. Cuando se suministre, el valor de `cachedDataRejected` se establecerá en `true` o `false` dependiendo de la aceptación de los datos por V8.
   * `produceCachedData` {boolean} Cuando es `true` y no está presente `cachedData`, V8 intentará producir datos de caché del código para `code`. En caso de éxito, un `Buffer` con datos de caché del código de V8 se producirá y almacenará en la propiedad `cachedData` de la instancia `vm.Script` devuelta. El valor `cachedDataProduced` se establecerá en `true` o `false` dependiendo de si los datos de caché del código se producen exitosamente.
@@ -358,10 +358,10 @@ changes:
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
   * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
   * `displayErrors` {boolean} Cuando es `true`, si produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
-  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
-  * `breakOnSigint`: if `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
+  * `breakOnSigint`: si es `true`, la ejecución terminará cuando se reciba `SIGINT` (Ctrl+C). Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se termina la ejecución, se producirá un [`Error`][].
 
-Runs the compiled code contained by the `vm.Script` object within the given `contextifiedSandbox` and returns the result. Running code does not have access to local scope.
+Se ejecuta el código compilado contenido por el objeto `vm.Script` dentro del `contextifiedSandbox` dado y devuelve el resultado. Running code does not have access to local scope.
 
 The following example compiles code that increments a global variable, sets the value of another global variable, then execute the code multiple times. The globals are contained in the `sandbox` object.
 
