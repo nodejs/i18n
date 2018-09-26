@@ -30,13 +30,13 @@ myEmitter.emit('event');
 
 ## Pasando argumentos y `this` a escuchadores
 
-El método `eventEmitter.emit()` permite un conjunto arbitrario de argumentos para que sean pasados a las funciones escuchadoras. It is important to keep in mind that when an ordinary listener function is called, the standard `this` keyword is intentionally set to reference the `EventEmitter` instance to which the listener is attached.
+El método `eventEmitter.emit()` permite un conjunto arbitrario de argumentos para que sean pasados a las funciones escuchadoras. Es importante mantener en mente que cuando una función oyente ordinaria es llamada, la palabra clave estándar `this` está intencionalmente establecida para referenciar a la instancia `EventEmitter` a la cual el oyente está adjunto.
 
 ```js
 const myEmitter = new MyEmitter();
 myEmitter.on('event', function(a, b) {
   console.log(a, b, this, this === myEmitter);
-  // Prints:
+  // Imprime:
   //   a b MyEmitter {
   //     domain: null,
   //     _events: { event: [Function] },
@@ -52,14 +52,14 @@ Es posible usar funciones flecha de ES6 como escuchadores, sin embargo, cuando h
 const myEmitter = new MyEmitter();
 myEmitter.on('event', (a, b) => {
   console.log(a, b, this);
-  // Prints: a b {}
+  // Imprime: a b {}
 });
 myEmitter.emit('event', 'a', 'b');
 ```
 
 ## Asíncrono vs. Síncrono
 
-The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
+El `EventEmitter` llama a todos los oyentes sincrónicamente en el orden en que se registraron. Esto es importante para asegurar la secuenciación de eventos propia y para evitar condiciones de raza o errores lógicos. Cuando sea apropiado, las funciones oyentes puede cambiar a un modo asincrónico de operación utilizando los métodos `setImmediate()` o `process.nextTick()`:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -71,9 +71,9 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-## Handling events only once
+## Manejando eventos sólo una vez
 
-When a listener is registered using the `eventEmitter.on()` method, that listener will be invoked *every time* the named event is emitted.
+Cuando se registra a un oyente utilizando el método `eventEmitter.on()`, ese oyente será invocado *cada vez* que se emita el nombre del evento.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -82,12 +82,12 @@ myEmitter.on('event', () => {
   console.log(++m);
 });
 myEmitter.emit('event');
-// Prints: 1
+// Imprime: 1
 myEmitter.emit('event');
-// Prints: 2
+// Imprime: 2
 ```
 
-Using the `eventEmitter.once()` method, it is possible to register a listener that is called at most once for a particular event. Once the event is emitted, the listener is unregistered and *then* called.
+Con el uso del método `eventEmitter.once()` es posible registrar a un oyente que sea llamado como máximo una vez para un evento particular. Once the event is emitted, the listener is unregistered and *then* called.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -96,14 +96,14 @@ myEmitter.once('event', () => {
   console.log(++m);
 });
 myEmitter.emit('event');
-// Prints: 1
+// Imprime: 1
 myEmitter.emit('event');
-// Ignored
+// Ignorado
 ```
 
-## Error events
+## Eventos de error
 
-When an error occurs within an `EventEmitter` instance, the typical action is for an `'error'` event to be emitted. These are treated as special cases within Node.js.
+Cuando un error ocurre dentro de una instancia de `EventEmitter`, la acción típica es que se emita un evento de `'error'`. Estos son tratados como casos especiales dentro de Node.js.
 
 If an `EventEmitter` does *not* have at least one listener registered for the `'error'` event, and an `'error'` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
 
