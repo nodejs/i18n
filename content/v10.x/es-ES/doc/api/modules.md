@@ -589,7 +589,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
-Then in another file we could do:
+Luego, en otro archivo podríamos hacer:
 
 ```js
 const a = require('./a');
@@ -598,7 +598,7 @@ a.on('ready', () => {
 });
 ```
 
-Note that assignment to `module.exports` must be done immediately. It cannot be done in any callbacks. This does not work:
+Note que la asignación a `module.exports` debe hacerse inmediatamente. No puede hacerse en ningún callback. Esto no funciona:
 
 `x.js`:
 
@@ -621,16 +621,16 @@ console.log(x.a);
 added: v0.1.16
 -->
 
-The `exports` variable is available within a module's file-level scope, and is assigned the value of `module.exports` before the module is evaluated.
+La variable `exports` está disponible dentro del alcance a nivel de archivo del módulo, y se le asigna el valor de `module.exports` antes de que se evalúe el módulo.
 
-It allows a shortcut, so that `module.exports.f = ...` can be written more succinctly as `exports.f = ...`. However, be aware that like any variable, if a new value is assigned to `exports`, it is no longer bound to `module.exports`:
+Permite un atajo, para que así `module.exports.f = ...` pueda ser escrito más sucintamente como `exports.f = ...`. Sin embargo, tenga en cuenta que, como cualquier otra variable, si se le asigna un nuevo valor a `exports`, ya no estará ligado a `module.exports`:
 
 ```js
 module.exports.hello = true; // Exported from require of module
 exports = { hello: false };  // Not exported, only available in the module
 ```
 
-When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`:
+Cuando la propiedad `module.exports` está siendo completamente reemplazada por un objeto nuevo, es usual reasignar también a `exports`:
 
 <!-- eslint-disable func-name-matching -->
 
@@ -640,17 +640,17 @@ module.exports = exports = function Constructor() {
 };
 ```
 
-To illustrate the behavior, imagine this hypothetical implementation of `require()`, which is quite similar to what is actually done by `require()`:
+Para ilustrar el comportamiento, imagine esta implementación hipotética de `require()`, la cual es bastante similar a lo que realmente es hecho por `require()`:
 
 ```js
 function require(/* ... */) {
   const module = { exports: {} };
   ((module, exports) => {
-    // Module code here. In this example, define a function.
+    // Código de módulo aquí. En este ejemplo, define una función.
     function someFunc() {}
     exports = someFunc;
-    // At this point, exports is no longer a shortcut to module.exports, and
-    // this module will still export an empty default object.
+    // En este punto, exports ya no es un acceso directo a module.exports, y
+    // este módulo todavía exportará un objeto vacío predeterminado.
     module.exports = someFunc;
     // At this point, the module will now export someFunc, instead of the
     // default object.
