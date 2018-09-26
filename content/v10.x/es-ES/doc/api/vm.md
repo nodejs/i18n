@@ -399,11 +399,11 @@ changes:
     description: The `contextCodeGeneration` option is supported now.
 -->
 
-* `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
+* `sandbox` {Object} Un objeto será [contextualizado](#vm_what_does_it_mean_to_contextify_an_object). Si está `undefined`, un nuevo objeto se creará.
 * `options` {Object} 
-  * `filename` {string} Specifies the filename used in stack traces produced by this script.
-  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
-  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `filename` {string} Especifica el nombre del archivo utilizado en los stack traces producidos por este script.
+  * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestran en los stack traces producidos por este script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
   * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
