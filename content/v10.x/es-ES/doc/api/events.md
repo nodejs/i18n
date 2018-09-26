@@ -157,10 +157,10 @@ El hecho de que el evento es desencadenado antes de que se añada el oyente tien
 
 ```js
 const myEmitter = new MyEmitter();
-// Only do this once so we don't loop forever
+// Solo haga esto una vez para que no entremos en un bucle infinito
 myEmitter.once('newListener', (event, listener) => {
   if (event === 'event') {
-    // Insert a new listener in front
+    // Inserte un nuevo oyente en frente
     myEmitter.on('event', () => {
       console.log('B');
     });
@@ -170,12 +170,12 @@ myEmitter.on('event', () => {
   console.log('A');
 });
 myEmitter.emit('event');
-// Prints:
+// Imprime:
 //   B
 //   A
 ```
 
-### Event: 'removeListener'
+### Evento: 'removeListener'
 
 <!-- YAML
 added: v0.9.3
@@ -187,10 +187,10 @@ changes:
                  now yields the original listener function.
 -->
 
-- `eventName` {string|symbol} The event name
-- `listener` {Function} The event handler function
+- `eventName` {string|symbol} El nombre del evento
+- `listener` {Function} La función manejadora del evento
 
-The `'removeListener'` event is emitted *after* the `listener` is removed.
+El evento `'removeListener'` es emitido *después* de que se elimine el `listener`.
 
 ### EventEmitter.listenerCount(emitter, eventName)
 
