@@ -361,9 +361,9 @@ changes:
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
   * `breakOnSigint`: si es `true`, la ejecución terminará cuando se reciba `SIGINT` (Ctrl+C). Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se termina la ejecución, se producirá un [`Error`][].
 
-Se ejecuta el código compilado contenido por el objeto `vm.Script` dentro del `contextifiedSandbox` dado y devuelve el resultado. Running code does not have access to local scope.
+Se ejecuta el código compilado contenido por el objeto `vm.Script` dentro del `contextifiedSandbox` dado y devuelve el resultado. El código en ejecución no tiene acceso al ámbito local.
 
-The following example compiles code that increments a global variable, sets the value of another global variable, then execute the code multiple times. The globals are contained in the `sandbox` object.
+El siguiente ejemplo compila el código que incrementa una variable global, establece el valor de otra variable global y luego ejecuta el código múltiples veces. Los globales están contenidos en el objeto `sandbox`.
 
 ```js
 const util = require('util');
