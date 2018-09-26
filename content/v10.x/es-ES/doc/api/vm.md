@@ -359,7 +359,7 @@ changes:
   * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
   * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
-  * `breakOnSigint`: si es `true`, la ejecución terminará cuando se reciba `SIGINT` (Ctrl+C). Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. Si se termina la ejecución, se producirá un [`Error`][].
+  * `breakOnSigint`: si es `true`, la ejecución terminará cuando se reciba `SIGINT` (Ctrl+C). Los manejadores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se termina la ejecución, se producirá un [`Error`][].
 
 Se ejecuta el código compilado contenido por el objeto `vm.Script` dentro del `contextifiedSandbox` dado y devuelve el resultado. El código en ejecución no tiene acceso al ámbito local.
 
@@ -403,8 +403,8 @@ changes:
 * `options` {Object} 
   * `filename` {string} Especifica el nombre del archivo utilizado en los stack traces producidos por este script.
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
-  * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestran en los stack traces producidos por este script.
-  * `displayErrors` {boolean} Cuando es `true`, si produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
+  * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
   * `contextName` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
   * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
