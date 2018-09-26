@@ -64,7 +64,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // defecto, un Módulo se crea en el contexto superior. Pero ahí, especificamos a
   // `contextifiedSandbox` como el contexto al que pertenece este Módulo.
   //
-  // Aquí, intentamos obtener la exportación predeterminado del módulo "foo", y
+  // Aquí, intentamos obtener la exportación predeterminada del módulo "foo", y
   // colocarla en el enlace local "secreto".
 
   const bar = new vm.Module(`
@@ -252,7 +252,7 @@ El URL del módulo actual, como se configura en el constructor.
 
 * `options` {Object} 
   * `timeout` {number} Especifica la cantidad de milisegundos para evaluar antes de terminar la ejecución. Si la ejecución se interrumpe, un [`Error`][] se lanzará.
-  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
+  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los manejadores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
 * Devuelve: {Promise}
 
 Evaluar el módulo.
@@ -268,11 +268,11 @@ Corresponde al campo del [método concreto Evaluate()](https://tc39.github.io/ec
 
 ### module.instantiate()
 
-Instanciar el módulo. Esto debe llamarse después de que el enlace se haya completado (`linkingStatus` es `'linked'`); de lo contrario lanzará un error. También puede lanzar una excepción si uno de las dependencias no proporciona una exportación que el módulo principal requiere.
+Instanciar el módulo. Esto debe llamarse después de que el enlace se haya completado (`linkingStatus` es `'linked'`); de lo contrario lanzará un error. También puede lanzar una excepción si una de las dependencias no proporciona una exportación que el módulo principal requiere.
 
 Sin embargo, si esta función fue exitosa, las llamadas adicionales para esta función después de la instanciación inicial no estarán operativas, para ser consistentes con la especificación ECMAScript.
 
-A diferencias de otros métodos operativos en `Module`, este función se completa sincrónicamente y no devuelve nada.
+A diferencia de otros métodos operativos en `Module`, esta función se completa sincrónicamente y no devuelve nada.
 
 Corresponde al campo del [método concreto Instantiate()](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
 
@@ -291,14 +291,14 @@ Dos parámetros se pasarán a la función `linker`:
       import foo from 'foo';
       //              ^^^^^ el especificador del módulo
 
-* `referencingModule` Se llama al `link()` del objeto `Module`.
+* `referencingModule` El `link()` del objeto `Module` que es llamado.
 
-La función se espera para devolver un objeto `Module` o un `Promise` que eventualmente se convierta en un objeto `Module`. El `Module` devuelto debe satisfacer las siguientes dos invariantes:
+Se espera que la función devuelva un objeto `Module` o una `Promise` que eventualmente se convierta en un objeto `Module`. El `Module` devuelto debe satisfacer las siguientes dos invariantes:
 
 * Debe pertenecer al mismo contexto que el `Module` principal.
 * Su `linkingStatus` no debe ser `'errored'`.
 
-Si el `linkingStatus` del `Module` devuelto está `'unlinked'`, este método se llamará recursivamente en el `Module` devuelto con la misma función del `linker` proporcionado.
+Si el `linkingStatus` del `Module` devuelto es `'unlinked'`, este método se llamará recursivamente en el `Module` devuelto con la misma función `linker` proporcionada.
 
 `link()` devuelve un `Promise` que se resolverá cuando todas las instancias de enlace se resuelvan en un `Module` válido, o se rechazará si la función enlazador lanza una excepción o devuelve un `Module` inválido.
 
@@ -334,7 +334,7 @@ changes:
   * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
   * `columnOffset` {number} Especifica el número de la columna del desplazamiento que se muestra en los stack traces producidos por este script.
-  * `displayErrors` {boolean} Cuando es `true`, si produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si la ejecución se termina, se producirá un [`Error`][].
   * `cachedData` {Buffer} Proporciona un `Buffer` opcional con los datos de caché del código de V8 para la fuente suministrada. Cuando se suministre, el valor de `cachedDataRejected` se establecerá en `true` o `false` dependiendo de la aceptación de los datos por V8.
   * `produceCachedData` {boolean} Cuando es `true` y no está presente `cachedData`, V8 intentará producir datos de caché del código para `code`. En caso de éxito, un `Buffer` con datos de caché del código de V8 se producirá y almacenará en la propiedad `cachedData` de la instancia `vm.Script` devuelta. El valor `cachedDataProduced` se establecerá en `true` o `false` dependiendo de si los datos de caché del código se producen exitosamente.
@@ -357,9 +357,9 @@ changes:
   * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
   * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
-  * `displayErrors` {boolean} Cuando es `true`, si produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
-  * `breakOnSigint`: si es `true`, la ejecución terminará cuando se reciba `SIGINT` (Ctrl+C). Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se termina la ejecución, se producirá un [`Error`][].
+  * `breakOnSigint`: si es `true`, la ejecución terminará cuando se reciba `SIGINT` (Ctrl+C). Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. Si se termina la ejecución, se producirá un [`Error`][].
 
 Se ejecuta el código compilado contenido por el objeto `vm.Script` dentro del `contextifiedSandbox` dado y devuelve el resultado. El código en ejecución no tiene acceso al ámbito local.
 
