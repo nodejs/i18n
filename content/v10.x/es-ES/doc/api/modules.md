@@ -652,8 +652,8 @@ function require(/* ... */) {
     // En este punto, exports ya no es un acceso directo a module.exports, y
     // este módulo todavía exportará un objeto vacío predeterminado.
     module.exports = someFunc;
-    // At this point, the module will now export someFunc, instead of the
-    // default object.
+    // En este punto, el módulo ahora exportará someFunc, en lugar del
+    // objeto predeterminado.
   })(module, module.exports);
   return module.exports;
 }
@@ -667,7 +667,7 @@ added: v0.1.16
 
 * {string}
 
-The fully resolved filename to the module.
+El nombre de archivo completamente resuelto al módulo.
 
 ### module.id
 
@@ -677,7 +677,7 @@ added: v0.1.16
 
 * {string}
 
-The identifier for the module. Typically this is the fully resolved filename.
+El identificador para el módulo. Típicamente, este es el nombre de archivo completamente resuelto.
 
 ### module.loaded
 
@@ -687,7 +687,7 @@ added: v0.1.16
 
 * {boolean}
 
-Whether or not the module is done loading, or is in the process of loading.
+Si el módulo terminó de cargarse o si está en proceso de carga.
 
 ### module.parent
 
@@ -707,7 +707,7 @@ added: v0.4.0
 
 * {string[]}
 
-The search paths for the module.
+La ruta de búsqueda para el módulo.
 
 ### module.require(id)
 
@@ -716,13 +716,13 @@ added: v0.5.1
 -->
 
 * `id` {string}
-* Returns: {Object} `module.exports` from the resolved module
+* Devuelve: {Object} `module.exports` desde el módulo resuelto
 
-The `module.require` method provides a way to load a module as if `require()` was called from the original module.
+El método `module.require` proporciona una manera de cargar un módulo como si `require()` fuese llamado desde el módulo original.
 
-In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
+Para hacer esto, es necesario obtener una referencia al objeto `module`. Como `require()` devuelve el `module.exports`, y el `module` está típicamente *sólo* disponible dentro de un código del módulo específico, debe ser exportado explícitamente para ser usado.
 
-## The `Module` Object
+## El Objeto `Module`
 
 <!-- YAML
 added: v0.3.7
@@ -730,7 +730,7 @@ added: v0.3.7
 
 * {Object}
 
-Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
+Proporciona métodos de utilidad generales al interactuar con instancias de `Module` — la variable `module` vista con frecuencia en los módulo de archivo. Accedido a través de `require('module')`.
 
 ### module.builtinModules
 
@@ -740,9 +740,9 @@ added: v9.3.0
 
 * {string[]}
 
-A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third party or not.
+Una lista de los nombres de todos los módulos proporcionados por Node.js. Puede ser usada para verificar si un módulo es mantenido por un tercero o no.
 
-Note that `module` in this context isn't the same object that's provided by the [module wrapper](#modules_the_module_wrapper). To access it, require the `Module` module:
+Note que `module` en este contexto no es el mismo objeto que es proporcionado por el [contenedor del módulo](#modules_the_module_wrapper). Para acceder a él, requiera el módulo `Module`:
 
 ```js
 const builtin = require('module').builtinModules;
