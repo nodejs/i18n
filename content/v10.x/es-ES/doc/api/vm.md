@@ -20,7 +20,7 @@ const vm = require('vm');
 const x = 1;
 
 const sandbox = { x: 2 };
-vm.createContext(sandbox); // Contextify the sandbox.
+vm.createContext(sandbox); // Contextualiza al sandbox.
 
 const code = 'x += 40; var y = 17;';
 // x y y son variables globales en el entorno de prueba.
@@ -386,7 +386,7 @@ console.log(util.inspect(sandbox));
 // { animal: 'cat', count: 12, name: 'kitty' }
 ```
 
-Using the `timeout` or `breakOnSigint` options will result in new event loops and corresponding threads being started, which have a non-zero performance overhead.
+Utilizar las opciones `timeout` o `breakOnSigint` resultará en un nuevo bucle de eventos y los hilos correspondientes se iniciarán, los cuales tienen una sobrecarga de rendimiento distinta a cero.
 
 ### script.runInNewContext([sandbox[, options]])
 
