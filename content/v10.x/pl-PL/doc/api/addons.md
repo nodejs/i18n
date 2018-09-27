@@ -131,9 +131,9 @@ When calling [`require()`](modules.html#modules_require), the `.node` extension 
 
 ## Natywne abstrakcje dla Node.js
 
-Każdy z przykładów przedstawionych w tym dokumencie bezpośrednio wykorzystuje API Node.js i V8 do implementacji dodatków. Ważne jest, aby zrozumieć, że API V8 może się zmienić drastycznie, jak to już zresztą było, od jednej wersji V8 do drugiej (i jednej ważnej wersji Node.js do następnej). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Każdy z przykładów przedstawionych w tym dokumencie bezpośrednio wykorzystuje API Node.js i V8 do implementacji dodatków. Ważne jest, aby zrozumieć, że API V8 może się zmienić drastycznie, jak to już zresztą było, od jednej wersji V8 do drugiej (i jednej ważnej wersji Node.js do następnej). Przy każdej zmianie dodatki mogą wymagać aktualizacji i ponownej kompilacji w celu kontynuowania działania. Harmonogram wydań Node.js został zaprojektowany w taki sposób, aby zminimalizować częstotliwość i wpływ wyżej wymienionych zmian, ale jest niewiele, co Node.js może obecnie zrobić, aby zapewnić stabilność API V8.
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+[Natywne abstrakcje dla Node.js](https://github.com/nodejs/nan) (lub `nan`) zapewniają zestaw narzędzi, które zaleca się do używania deweloperom dodatków w celu zachowania zgodności pomiędzy przeszłymi i przyszłymi wersjami V8 i Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
 ## N-API
 
