@@ -32,11 +32,10 @@ Când se deschide un tichet nou în trackerul de tichete `nodejs/node`, utilizat
 Mulțumim pentru raportarea unei probleme.
 
 Acest tracker de tichete este pentru erori și probleme găsite în nucleul Node.js.
-If you require more general support please file an issue on our help
-repo. https://github.com/nodejs/help
+Dacă soliciți mai multă asistență generală te rog să înaintezi un tichet către ajutorul depozitarului. https://github.com/nodejs/help
 
 
-Please fill in as much of the template below as you're able.
+Te rog completează cât mai mult din șablonul de mai jos după cum poți.
 
 Version: output of `node -v`
 Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
