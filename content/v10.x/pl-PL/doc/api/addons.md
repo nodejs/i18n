@@ -206,9 +206,9 @@ Gdy plik `binding.gyp` jest gotowy, przykładowe dodatki można skonfigurować i
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Argumenty funkcji
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. Gdy funkcje są wywoływane z JavaScriptu, argumenty wejściowe i zwracana wartość muszą być zmapowane na i z kodu C/C++.
 
 The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
 
