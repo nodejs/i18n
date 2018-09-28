@@ -6,13 +6,13 @@ Proiectul Node.js are un [Cod de conduită](https://github.com/nodejs/admin/blob
 
 În cazul în care orice acțiune individuală este considerată ca o încălcare a [Codului de conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), vor fi luate măsuri corective. Cu toate acestea, este posibil ca orice persoană să *acționeze* într-o manieră care nu încalcă litera strictă a instrucțiunilor Codului de conduită, în timp ce totul se opune complet spiritului a ceea ce intenționează acest cod să realizeze.
 
-Comunitățile deschise, diverse și inclusive trăiesc și mor pe baza încrederii. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
+Comunitățile deschise, diverse și inclusive trăiesc și mor pe baza încrederii. Contribuitorii pot să nu fie de acord între ei, atâta timp cât au încredere că aceste dezacorduri sunt cu bună-credință și că toată lumea lucrează la un scop comun.
 
-## Bad actors
+## Actori rău intenționați
 
-All contributors to Node.js tacitly agree to abide by both the letter and spirit of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
+Toți contribuitorii la Node.js acceptă tacit să respecte atât litera, cât și spiritul [Codului de Conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Nerespectarea sau respingerea unei astfel de acțiuni va determina scăderea respectului față de contribuții.
 
-A *bad actor* is someone who repeatedly violates the *spirit* of the Code of Conduct through consistent failure to self-regulate the way in which they interact with other contributors in the project. In doing so, bad actors alienate other contributors, discourage collaboration, and generally reflect poorly on the project as a whole.
+Un *actor rău intenționat* este cineva care încalcă în mod repetat *spiritul* Codului de conduită prin eșecul coerent al autoreglementării modului în care aceștia interacționează cu alți contribuitori în proiect. În acest fel, actorii rău intenționați înstrăinează alți contribuitori, descurajează colaborarea și, în general, reflectă slab asupra proiectului în ansamblu.
 
 Being a bad actor may be intentional or unintentional. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
 
