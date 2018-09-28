@@ -407,10 +407,10 @@ changes:
   * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
   * `contextName` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
-  * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. El origen debe ser formateado como un URL, pero solo con el esquema, el host y el puerto (si es necesario), como el valor de la propiedad [`url.origin`][] de un objeto [`URL`][]. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
+  * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. El origen debe ser formateado como un URL, pero solo con el esquema, el host y el puerto (si es necesario), como el valor de la propiedad [`url.origin`][] de un objeto [`URL`][]. En particular, esta cadena debe omitir la barra (/) al final, ya que denota una ruta. **Predeterminado:** `"`.
   * `contextCodeGeneration` {Object} 
-    * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Predeterminado:** `true`.
-    * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Predeterminado:** `true`.
+    * `strings` {boolean} Si se establece en falso, cualquier llamada para `eval` o función constructor (`Function`, `GeneratorFunction`, etc) producirá un `EvalError`. **Predeterminado:** `true`.
+    * `wasm` {boolean} Si se establece en falso, cualquier intento de compilar un módulo WebAssembly producirá un `WebAssembly.CompileError`. **Predeterminado:** `true`.
 
 First contextifies the given `sandbox`, runs the compiled code contained by the `vm.Script` object within the created sandbox, and returns the result. Running code does not have access to local scope.
 
@@ -482,10 +482,10 @@ changes:
 * `sandbox` {Object}
 * `options` {Object} 
   * `name` {string} Human-readable name of the newly created context. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
-  * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
+  * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Predeterminado:** `"`.
   * `codeGeneration` {Object} 
-    * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Predeterminado:** `true`.
-    * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Predeterminado:** `true`.
+    * `strings` {boolean} Si se establece en falso, cualquier llamada para `eval` o función constructor (`Function`, `GeneratorFunction`, etc) producirá un `EvalError`. **Predeterminado:** `true`.
+    * `wasm` {boolean} Si se establece en falso, cualquier intento de compilar un módulo WebAssembly producirá un `WebAssembly.CompileError`. **Predeterminado:** `true`.
 
 If given a `sandbox` object, the `vm.createContext()` method will [prepare that sandbox](#vm_what_does_it_mean_to_contextify_an_object) so that it can be used in calls to [`vm.runInContext()`][] or [`script.runInContext()`][]. Inside such scripts, the `sandbox` object will be the global object, retaining all of its existing properties but also having the built-in objects and functions any standard [global object](https://es5.github.io/#x15.1) has. Outside of scripts run by the vm module, global variables will remain unchanged.
 
@@ -569,7 +569,7 @@ added: v0.3.1
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
   * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
   * `contextName` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
-  * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. El origen debe ser formateado como un URL, pero solo con el esquema, el host y el puerto (si es necesario), como el valor de la propiedad [`url.origin`][] de un objeto [`URL`][]. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
+  * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. El origen debe ser formateado como un URL, pero solo con el esquema, el host y el puerto (si es necesario), como el valor de la propiedad [`url.origin`][] de un objeto [`URL`][]. En particular, esta cadena debe omitir la barra (/) al final, ya que denota una ruta. **Predeterminado:** `"`.
 
 The `vm.runInNewContext()` first contextifies the given `sandbox` object (or creates a new `sandbox` if passed as `undefined`), compiles the `code`, runs it within the context of the created context, then returns the result. Running code does not have access to the local scope.
 
