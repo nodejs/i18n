@@ -603,10 +603,10 @@ added: v0.3.1
   * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
   * `columnOffset` {number} Especifica el número de la columna del desplazamiento que se muestra en los stack traces producidos por este script.
-  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea de código que causa el error se adjunta al stack trace.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si la ejecución se termina, se producirá un [`Error`][].
 
-`vm.runInThisContext()` compiles `code`, runs it within the context of the current `global` and returns the result. Running code does not have access to local scope, but does have access to the current `global` object.
+`vm.runInThisContext()` compila el `code`, lo ejecuta dentro del contexto del `global` actual y devuelve el resultado. Running code does not have access to local scope, but does have access to the current `global` object.
 
 Si `options` es una cadena, entonces especifica el nombre del archivo.
 
