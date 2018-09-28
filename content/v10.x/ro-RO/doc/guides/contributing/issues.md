@@ -37,22 +37,21 @@ Dacă soliciți mai multă asistență generală te rog să înaintezi un tichet
 
 Te rog completează cât mai mult din șablonul de mai jos după cum poți.
 
-Version: output of `node -v`
-Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
-Subsystem: if known, please specify affected core module name
+Version: ieșirea comenzii „node -v”
+Platform: ieșirea comenzii „uname -a” (UNIX), sau versiune și 32 sau 64-bit (Windows)
+Subsystem: dacă se cunoaște, te rog specifică numele modulului din nucleu afectat
 
-If possible, please provide code that demonstrates the problem, keeping it as
-simple and free of external dependencies as you are able.
+Dacă este posibil, te rog furnizează codul care demonstrează problema, păstrându-l pe cât de simplu posibil și fără dependențe externe.
 -->
 
 * **Version**:
 * **Platform**:
 * **Subsystem**:
 
-<!-- Enter your issue details below this comment. -->
+<!-- Introdu detaliile problemei tale sub acest comentariu. -->
 ```
 
-If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
+Dacă crezi că ai descoperit o eroare în Node.js, te rugăm să completezi acest formular, urmând șablonul cât mai bine posibil. Nu-ți face griji dacă nu poți răspunde la fiecare detaliu, doar completează ceea ce poți.
 
 The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
 
