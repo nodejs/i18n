@@ -533,11 +533,11 @@ Devuelve `true` se el objeto `sandbox` dado ha sido [contextualizado](#vm_what_d
   * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras de compila el `code`, la línea del código causante del error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
 
-El método `vm.runInContext()` compila el `code`, lo ejecuta dentro del contexto del `contextifiedSandbox` y luego devuelve el resultado. El código en ejecución no tiene acceso al ámbito local. The `contextifiedSandbox` object *must* have been previously [contextified](#vm_what_does_it_mean_to_contextify_an_object) using the [`vm.createContext()`][] method.
+El método `vm.runInContext()` compila el `code`, lo ejecuta dentro del contexto del `contextifiedSandbox` y luego devuelve el resultado. El código en ejecución no tiene acceso al ámbito local. El objeto `contextifiedSandbox` *debe* ser [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) previamente utilizando el método [`vm.createContext()`][].
 
-If `options` is a string, then it specifies the filename.
+Si `options` es una cadena, entonces especifica el nombre del archivo.
 
-The following example compiles and executes different scripts using a single [contextified](#vm_what_does_it_mean_to_contextify_an_object) object:
+El siguiente ejemplo compila y ejecuta diferentes scripts utilizando un objeto [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) único:
 
 ```js
 const util = require('util');
@@ -560,20 +560,20 @@ console.log(util.inspect(sandbox));
 added: v0.3.1
 -->
 
-* `code` {string} The JavaScript code to compile and run.
-* `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
+* `code` {string} El código JavaScript para compilar y ejecutar.
+* `sandbox` {Object} Un objeto que se [contextualizará](#vm_what_does_it_mean_to_contextify_an_object). Si es `undefined`, un nuevo objeto se creará.
 * `options` {Object|string} 
-  * `filename` {string} Specifies the filename used in stack traces produced by this script.
-  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
-  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
-  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
+  * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
+  * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código causa el error se adjunta al stack trace.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. If execution is terminated, an [`Error`][] will be thrown.
   * `contextName` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
   * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. El origen debe ser formateado como un URL, pero solo con el esquema, el host y el puerto (si es necesario), como el valor de la propiedad [`url.origin`][] de un objeto [`URL`][]. En particular, esta cadena debe omitir la barra (/) al final, ya que denota una ruta. **Predeterminado:** `"`.
 
 The `vm.runInNewContext()` first contextifies the given `sandbox` object (or creates a new `sandbox` if passed as `undefined`), compiles the `code`, runs it within the context of the created context, then returns the result. Running code does not have access to the local scope.
 
-If `options` is a string, then it specifies the filename.
+Si `options` es una cadena, entonces especifica el nombre del archivo.
 
 The following example compiles and executes code that increments a global variable and sets a new one. These globals are contained in the `sandbox`.
 
@@ -608,7 +608,7 @@ added: v0.3.1
 
 `vm.runInThisContext()` compiles `code`, runs it within the context of the current `global` and returns the result. Running code does not have access to local scope, but does have access to the current `global` object.
 
-If `options` is a string, then it specifies the filename.
+Si `options` es una cadena, entonces especifica el nombre del archivo.
 
 The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
 
