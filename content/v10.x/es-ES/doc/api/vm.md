@@ -505,9 +505,9 @@ console.log(util.inspect(sandbox)); // { globalVar: 2 }
 console.log(util.inspect(globalVar)); // 3
 ```
 
-If `sandbox` is omitted (or passed explicitly as `undefined`), a new, empty [contextified](#vm_what_does_it_mean_to_contextify_an_object) sandbox object will be returned.
+Si `sandbox` se omite (o se pasa explícitamente como `undefined`), un objeto sandbox [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) nuevo y vacío se devolverá.
 
-The `vm.createContext()` method is primarily useful for creating a single sandbox that can be used to run multiple scripts. For instance, if emulating a web browser, the method can be used to create a single sandbox representing a window's global object, then run all `<script>` tags together within the context of that sandbox.
+El método `vm.createContext()` es principalmente útil para crear un sandbox único que puede ser utilizado para ejecutar múltiples scripts. Por ejemplo, si se emula un navegador web, el método puede utilizarse para crear un sandbox único que representa un objeto global de windows y luego ejecutar todas las etiquetas del `<script>` juntas dentro del contexto de ese sandbox.
 
 The provided `name` and `origin` of the context are made visible through the Inspector API.
 
