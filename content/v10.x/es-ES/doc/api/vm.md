@@ -445,9 +445,9 @@ added: v0.3.1
   * `displayErrors` {boolean} Cuando es `true`, si ocurre un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
   * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si la ejecución se termina, se producirá un [`Error`][].
 
-Runs the compiled code contained by the `vm.Script` within the context of the current `global` object. Running code does not have access to local scope, but *does* have access to the current `global` object.
+Ejecuta el código compilado contenido por el `vm.Script` dentro del contexto del objeto `global` actual. El código en ejecución no tiene acceso al ámbito global, pero *tiene* acceso al objeto `global` actual.
 
-The following example compiles code that increments a `global` variable then executes that code multiple times:
+El siguiente ejemplo compila el código que incrementa una variable `global` y luego ejecuta el código múltiples veces:
 
 ```js
 const vm = require('vm');
@@ -481,7 +481,7 @@ changes:
 
 * `sandbox` {Object}
 * `options` {Object} 
-  * `name` {string} Human-readable name of the newly created context. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
+  * `name` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
   * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Predeterminado:** `"`.
   * `codeGeneration` {Object} 
     * `strings` {boolean} Si se establece en falso, cualquier llamada para `eval` o función constructor (`Function`, `GeneratorFunction`, etc) producirá un `EvalError`. **Predeterminado:** `true`.
