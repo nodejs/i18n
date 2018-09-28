@@ -53,9 +53,9 @@ Dacă este posibil, te rog furnizează codul care demonstrează problema, păstr
 
 Dacă crezi că ai descoperit o eroare în Node.js, te rugăm să completezi acest formular, urmând șablonul cât mai bine posibil. Nu-ți face griji dacă nu poți răspunde la fiecare detaliu, doar completează ceea ce poți.
 
-The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
+Cele două informații importante de care avem nevoie pentru a evalua corect raportul este o descriere a comportamentului pe care îl vezi și un simplu caz de testare pe care îl putem folosi pentru a recrea și noi problema. Dacă nu putem recrea problema, devine imposibil pentru nou să o rezolvăm.
 
-In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+Pentru a exclude posibilitatea introducerii de erori de către codul mediului utilizatorului, cazurile de testare ar trebui să fie limitate, pe cât posibil, *doar* la utilizarea API-urilor Node.js. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
 See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 
