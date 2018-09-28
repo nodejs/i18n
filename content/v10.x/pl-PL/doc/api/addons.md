@@ -208,9 +208,9 @@ $ node-gyp configure build
 
 ### Argumenty funkcji
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. Gdy funkcje są wywoływane z JavaScriptu, argumenty wejściowe i zwracana wartość muszą być zmapowane na i z kodu C/C++.
+Dodatki zazwyczaj odsłaniają obiekty i funkcje, do których można uzyskać dostęp za pomocą JavaScriptu działającego w Node.js. Gdy funkcje są wywoływane z JavaScriptu, argumenty wejściowe i zwracana wartość muszą być zmapowane na i z kodu C/C++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Poniższy przykład ilustruje w jaki sposób należy odczytywać argumenty funkcji przekazywanych z JavaScriptu i jak zwracać wyniki:
 
 ```cpp
 // addon.cc
@@ -266,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Po skompilowaniu przykładowy dodatek może być wymagany i używany z poziomu Node.js:
 
 ```js
 // test.js
