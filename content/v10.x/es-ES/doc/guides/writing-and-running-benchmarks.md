@@ -3,47 +3,47 @@
 ## Tabla de Contenidos
 
 * [Prerrequisitos](#prerequisites) 
-  * [Requisitos de Prueba de Rendimiento HTTP](#http-benchmark-requirements)
-  * [Benchmark Analysis Requirements](#benchmark-analysis-requirements)
-* [Running benchmarks](#running-benchmarks) 
-  * [Running individual benchmarks](#running-individual-benchmarks)
-  * [Running all benchmarks](#running-all-benchmarks)
-  * [Comparing Node.js versions](#comparing-nodejs-versions)
-  * [Comparing parameters](#comparing-parameters)
-  * [Running Benchmarks on the CI](#running-benchmarks-on-the-ci)
-* [Creating a benchmark](#creating-a-benchmark) 
-  * [Basics of a benchmark](#basics-of-a-benchmark)
-  * [Creating an HTTP benchmark](#creating-an-http-benchmark)
+  * [Requisitos de la Prueba de Rendimiento HTTP](#http-benchmark-requirements)
+  * [Requisitos del Análisis de la Prueba de Rendimiento](#benchmark-analysis-requirements)
+* [Ejecutar pruebas de rendimiento](#running-benchmarks) 
+  * [Ejecutar pruebas de rendimiento individuales](#running-individual-benchmarks)
+  * [Ejecutar todas las pruebas de rendimiento](#running-all-benchmarks)
+  * [Comparar versiones de Node.js](#comparing-nodejs-versions)
+  * [Comparar parámetros](#comparing-parameters)
+  * [Ejecutar Pruebas de Rendimiento en el CI](#running-benchmarks-on-the-ci)
+* [Crear una prueba de rendimiento](#creating-a-benchmark) 
+  * [Conceptos básicos de una prueba de rendimiento](#basics-of-a-benchmark)
+  * [Crear una prueba de rendimiento HTTP](#creating-an-http-benchmark)
 
-## Prerequisites
+## Prerrequisitos
 
-Basic Unix tools are required for some benchmarks. [Git for Windows](http://git-scm.com/download/win) includes Git Bash and the necessary tools, which need to be included in the global Windows `PATH`.
+Las herramientas básicas de Unix son necesarias para algunas pruebas de rendimiento. [Git para Windows](http://git-scm.com/download/win) incluye Git Bash y las herramientas necesarias, las cuales necesitan ser incluidas en el Windows global `PATH`.
 
-### HTTP Benchmark Requirements
+### Requisitos de la Prueba de Rendimiento HTTP
 
-Most of the HTTP benchmarks require a benchmarker to be installed. This can be either [`wrk`](https://github.com/wg/wrk) or [`autocannon`](https://github.com/mcollina/autocannon).
+La mayoría de las pruebas de rendimiento HTTP requieren que se instale un benchmarker. Esto puede ser tanto [`wrk`](https://github.com/wg/wrk) como [`autocannon`](https://github.com/mcollina/autocannon).
 
-`Autocannon` is a Node.js script that can be installed using `npm install -g autocannon`. It will use the Node.js executable that is in the path. In order to compare two HTTP benchmark runs, make sure that the Node.js version in the path is not altered.
+`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el Node.js ejecutable que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese que la versión de Node.js en la ruta no está alterada.
 
-`wrk` may be available through one of the available package managers. If not, it can be easily built [from source](https://github.com/wg/wrk) via `make`.
+`wrk` puede estar disponible a través de uno de los gestores de paquetes disponibles. Si no es así, puede ser construido fácilmente [desde este link](https://github.com/wg/wrk) vía `make`.
 
-By default, `wrk` will be used as the benchmarker. If it is not available, `autocannon` will be used in its place. When creating an HTTP benchmark, the benchmarker to be used should be specified by providing it as an argument:
+Por defecto, `wrk` será usado como el benchmarker. Si no está disponible, se utilizará `autocannon` en su lugar. Al crear una prueba de rendimiento HTTP, el benchmarker a ser usado debe ser especificado al proporcionarlo como un argumento:
 
 `node benchmark/run.js --set benchmarker=autocannon http`
 
 `node benchmark/http/simple.js benchmarker=autocannon`
 
-#### HTTP/2 Benchmark Requirements
+#### Requisitos de la Prueba de Rendimiento HTTP/2
 
-To run the `http2` benchmarks, the `h2load` benchmarker must be used. The `h2load` tool is a component of the `nghttp2` project and may be installed from [nghttp2.org](http://nghttp2.org) or built from source.
+Para ejecutar las pruebas de rendimiento `http2`, el benchmarker `h2load` debe ser usado. La herramienta `h2load` es un componente del proyecto `nghttp2` y puede ser instalada desde [nghttp2.org](http://nghttp2.org) o construida desde la fuente.
 
 `node benchmark/http2/simple.js benchmarker=autocannon`
 
-### Benchmark Analysis Requirements
+### Requisitos del Análisis de la Prueba de Rendimiento
 
-To analyze the results, `R` should be installed. Use one of the available package managers or download it from https://www.r-project.org/.
+Para analizar los resultados, se debe instalar `R`. Use uno de los gestores de paquetes disponibles o descárguelo desde https://www.r-project.org/.
 
-The R packages `ggplot2` and `plyr` are also used and can be installed using the R REPL.
+Los paquetes R `ggplot2` y `plyr` también son usados y pueden ser instalados usando el REPL R.
 
 ```R
 $ R
@@ -51,23 +51,23 @@ install.packages("ggplot2")
 install.packages("plyr")
 ```
 
-In the event that a message is reported stating that a CRAN mirror must be selected first, specify a mirror by adding in the repo parameter.
+En el evento en el que es reportado un mensaje declarando que un espejo CRAN debe ser seleccionado primero, especifique un espejo agregando el parámetro repo.
 
-If we used the "http://cran.us.r-project.org" mirror, it could look something like this:
+Si usamos el espejo "http://cran.us.r-project.org", podría verse algo así:
 
 ```R
 install.packages("ggplot2", repo="http://cran.us.r-project.org")
 ```
 
-Of course, use an appropriate mirror based on location. A list of mirrors is [located here](https://cran.r-project.org/mirrors.html).
+Por supuesto, utilice un espejo apropiado basado en la ubicación. [Acá](https://cran.r-project.org/mirrors.html) está ubicada una lista de espejos.
 
-## Running benchmarks
+## Ejecutar pruebas de rendimiento
 
-### Running individual benchmarks
+### Ejecutar pruebas de rendimiento individuales
 
-This can be useful for debugging a benchmark or doing a quick performance measure. But it does not provide the statistical information to make any conclusions about the performance.
+Esto puede ser útil para depurar una prueba de rendimiento o para hacer una medida de rendimiento rápida. Pero no proporciona la información estadística para hacer alguna conclusión sobre el rendimiento.
 
-Individual benchmarks can be executed by simply executing the benchmark script with node.
+Las pruebas de rendimiento individuales pueden ser ejecutadas al simplemente ejecutar el script de la prueba de rendimiento con node.
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js
@@ -82,9 +82,9 @@ buffers/buffer-tostring.js n=10000000 len=64 arg=false: 8718280.70650129
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 4103857.0726124765
 ```
 
-Each line represents a single benchmark with parameters specified as `${variable}=${value}`. Each configuration combination is executed in a separate process. This ensures that benchmark results aren't affected by the execution order due to V8 optimizations. **The last number is the rate of operations measured in ops/sec (higher is better).**
+Cada línea representa una sola prueba de rendimiento con parámetros especificados como `${variable}=${value}`. Cada combinación de configuración es ejecutada en un proceso separado. Esto asegura que los resultados de la prueba de rendimiento no son afectados por la orden de ejecución debido a optimizaciones V8. **El último número es la tasa de operaciones medidas en ops/seg (mientras más alto mejor).**
 
-Furthermore a subset of the configurations can be specified, by setting them in the process arguments:
+Además, se puede especificar un subconjunto de las configuraciones, al establecerlas en los argumentos del proceso:
 
 ```console
 $ node benchmark/buffers/buffer-tostring.js len=1024
@@ -93,9 +93,9 @@ buffers/buffer-tostring.js n=10000000 len=1024 arg=true: 3498295.68561504
 buffers/buffer-tostring.js n=10000000 len=1024 arg=false: 3783071.1678948295
 ```
 
-### Running all benchmarks
+### Ejecutar todas las pruebas de rendimiento
 
-Similar to running individual benchmarks, a group of benchmarks can be executed by using the `run.js` tool. To see how to use this script, run `node benchmark/run.js`. Again this does not provide the statistical information to make any conclusions.
+Es similar a ejecutar pruebas de rendimiento individuales, un grupo de pruebas de rendimiento pueden ser ejecutadas usando la herramienta `run.js`. Para ver cómo usar este script, ejecute `node benchmark/run.js`. De nuevo, esto no proporciona la información estadística para hacer alguna conclusión.
 
 ```console
 $ node benchmark/run.js arrays
@@ -116,21 +116,21 @@ arrays/zero-int.js n=25 type=Buffer: 90.49906662339653
 ...
 ```
 
-It is possible to execute more groups by adding extra process arguments.
+Es posible añadir más grupos al añadir argumentos de proceso adicionales.
 
 ```console
 $ node benchmark/run.js arrays buffers
 ```
 
-### Comparing Node.js versions
+### Comparar versiones de Node.js
 
-To compare the effect of a new Node.js version use the `compare.js` tool. This will run each benchmark multiple times, making it possible to calculate statistics on the performance measures. To see how to use this script, run `node benchmark/compare.js`.
+Para comparar el efecto de una nueva versión de Node.js utilice la herramienta `compare.js`. Esto ejecutará cada prueba de rendimiento varias veces, lo que hace posible calcular estadísticas sobre las medidas de rendimiento. Para ver como usar este script, ejecute `node benchmark/compare.js`.
 
-As an example on how to check for a possible performance improvement, the [#5134](https://github.com/nodejs/node/pull/5134) pull request will be used as an example. This pull request *claims* to improve the performance of the `string_decoder` module.
+Como un ejemplo sobre cómo verificar una posible mejora de rendimiento, la pull request [#5134](https://github.com/nodejs/node/pull/5134) será usada como un ejemplo. Esta pull request *declara* mejorar el rendimiento del módulo `string_decoder`.
 
-First build two versions of Node.js, one from the master branch (here called `./node-master`) and another with the pull request applied (here called `./node-pr-5134`).
+Primero construya dos versiones de Node.js, una desde la rama master (aquí llamada `./node-master`) y otra con la pull request aplicada (aquí llamada `./node-pr-5134`).
 
-To run multiple compiled versions in parallel you need to copy the output of the build: `cp ./out/Release/node ./node-master`. Check out the following example:
+Para ejecutar múltiples versiones compiladas en paralelo necesita copiar la salida del build: `cp ./out/Release/node ./node-master`. Vea el siguiente ejemplo:
 
 ```console
 $ git checkout master
@@ -142,24 +142,24 @@ $ ./configure && make -j4
 $ cp ./out/Release/node ./node-pr-5134
 ```
 
-The `compare.js` tool will then produce a csv file with the benchmark results.
+La herramienta `compare.js` producirá entonces un archivo csv con los resultados de la prueba de rendimiento.
 
 ```console
 $ node benchmark/compare.js --old ./node-master --new ./node-pr-5134 string_decoder > compare-pr-5134.csv
 ```
 
-*Tips: there are some useful options of `benchmark/compare.js`. For example, if you want to compare the benchmark of a single script instead of a whole module, you can use the `--filter` option:*
+*Consejos: hay algunas opciones útiles de `benchmark/compare.js`. Por ejemplo, si desea comparar la prueba de rendimiento de un solo script en lugar de un módulo completo, puede usar la opción `--filter`:*
 
 ```console
   --new      ./new-node-binary  new node binary (required)
   --old      ./old-node-binary  old node binary (required)
-  --runs     30                 number of samples
-  --filter   pattern            string to filter benchmark scripts
-  --set      variable=value     set benchmark variable (can be repeated)
-  --no-progress                 don't show benchmark progress indicator
+  --runs     30                 número de muestras
+  --filter   pattern            string para filtrar scripts de la prueba de rendimiento
+  --set      variable=value     establece la variable de la prueba de rendimiento (se puede repetir)
+  --no-progress                 no mostrar el indicador de progreso de la prueba de rendimiento
 ```
 
-For analysing the benchmark results use the `compare.R` tool.
+Para analizar los resultados de la prueba de rendimiento use la herramienta `compare.R`.
 
 ```console
 $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
@@ -172,7 +172,7 @@ $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
 ...
 ```
 
-In the output, *improvement* is the relative improvement of the new version, hopefully this is positive. *confidence* tells if there is enough statistical evidence to validate the *improvement*. If there is enough evidence then there will be at least one star (`*`), more stars is just better. **However if there are no stars, then don't make any conclusions based on the *improvement*.** Sometimes this is fine, for example if no improvements are expected, then there shouldn't be any stars.
+En la salida, *improvement* es la mejora relativa de la nueva versión, con suerte esto es positivo. *confidence* dice si hay suficiente evidencia estadística para validar la *mejora*. Si hay suficiente evidencia entonces habrá al menos una estrella (`*`), más estrellas es simplemente mejor. **Sin embargo, si no hay estrellas, entonces no haga ninguna conclusión basada en la *mejora*. **Algunas veces esto está bien, por ejemplo si ninguna mejora es esperada, entonces no debería haber ninguna estrella.
 
 **A word of caution:** Statistics is not a foolproof tool. If a benchmark shows a statistical significant difference, there is a 5% risk that this difference doesn't actually exist. For a single benchmark this is not an issue. But when considering 20 benchmarks it's normal that one of them will show significance, when it shouldn't. A possible solution is to instead consider at least two stars (`**`) as the threshold, in that case the risk is 1%. If three stars (`***`) is considered the risk is 0.1%. However this may require more runs to obtain (can be set with `--runs`).
 

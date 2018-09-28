@@ -437,7 +437,7 @@ Se impostato su `1`, non verranno utilizzati i colori nel REPL.
 added: v7.3.0
 -->
 
-Quando è impostato, i ben noti "root" CA (come VeriSign) verranno estesi con i certificati aggiuntivi all'interno di `file`. Il file deve essere composto da uno o più certificati attendibili in formato PEM. Verrà emesso un messaggio con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) (solo una volta) se il file è assente o è errato, ma gli eventuali errori verranno ugualmente ignorati.
+Quando è impostato, i ben noti "root" CA (come VeriSign) verranno estesi con i certificati aggiuntivi all'interno di `file`. Il file deve essere composto da uno o più certificati attendibili in formato PEM. Verrà emesso (una volta) un messaggio con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) se il file è assente o deformato, ma a parte ciò eventuali errori verranno ignorati.
 
 Da notare che né i certificati conosciuti né i certificati aggiuntivi vengono utilizzati quando la proprietà `ca` delle opzioni viene specificata esplicitamente per un client o un server TLS o HTTPS.
 
@@ -588,4 +588,4 @@ Le API di sistema asincrone vengono utilizzate da Node.js ogni qual volta è pos
 - `dns.lookup()`
 - tutte le API `zlib`, diverse dalle API che sono esplicitamente sincrone
 
-Poiché il threadpool di libuv ha una dimensione fissa, ciò che se per qualsiasi ragione una di queste API occupa più tempo del previsto, le altre API (apparentemente non correlate) che vengono eseguite nel threadpool di libuv avranno prestazioni ridotte. Al fine di attenuare questo problema, una possibile soluzione sarebbe aumentare la dimensione del threadpool di libuv impostando la variabile di ambiente `'UV_THREADPOOL_SIZE'` su un valore maggiore di `4` (che è l'attuale valore predefinito). Per maggiori informazioni, vedi la [documentazione del threadpool di libuv](http://docs.libuv.org/en/latest/threadpool.html).
+Poiché il threadpool di libuv ha una dimensione fissa, ciò significa che se per qualsiasi ragione una di queste API occupa più tempo del previsto, le altre API (apparentemente non correlate) che vengono eseguite nel threadpool di libuv avranno prestazioni ridotte. Al fine di attenuare questo problema, una possibile soluzione sarebbe aumentare la dimensione del threadpool di libuv impostando la variabile di ambiente `'UV_THREADPOOL_SIZE'` su un valore maggiore di `4` (che è l'attuale valore predefinito). Per maggiori informazioni, vedi la [documentazione del threadpool di libuv](http://docs.libuv.org/en/latest/threadpool.html).

@@ -2968,8 +2968,8 @@ napi_status napi_create_async_work(napi_env env,
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] async_resource`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
 - `[in] async_resource_name`: Identificador para el tipo de recurso que está siendo proporcionado para la información de diagnóstico expuesta por la API `async_hooks`.
-- `[in] execute`: La función nativa que debe ser llamada para ejecutar la lógica de forma asíncrona. La función dada es llamada desde un hilo de un pool y se puede en paralelo con el hilo del bucle de evento principal.
-- `[in] complete`: La función nativa que será llamada cuando la lógica asíncrona esté completa o cancelada. La función dada es llamada desde el hilo del bucle de evento principal.
+- `[in] execute`: La función nativa que debe ser llamada para ejecutar la lógica de forma asíncrona. La función dada es llamada desde un hilo de un pool de workers y se puede ejecutar en paralelo con el hilo del bucle de evento principal.
+- `[in] complete`: La función nativa que será llamada cuando la lógica asíncrona esté completa o cancelada. La función dada es llamada desde el hilo del bucle del evento principal.
 - `[in] data`: Contexto de datos proporcionado por el usuario. Este será pasado de vuelta a las funciones de ejecución y completación.
 - `[out] result`: `napi_async_work*` que es el manejador del trabajo asíncrono recientemente creado.
 
@@ -3113,7 +3113,7 @@ Devuelve `napi_ok` si la API fue exitosa.
 
 Este método permite a una función objeto de JavaScript ser llamada desde un complemento nativo. Esta API es similar a `napi_call_function`. Sin embargo, es utilizado para llamar *desde* el código nativo de nuevo *a* JavaScript *luego* de regresar de una operación asíncrona (cuando no hay otro script en la pila). Es una envoltura bastante simple alrededor de `node::MakeCallback`.
 
-Tenga en cuenta de que *no* es necesario utilizar `napi_make_callback` desde dentro de un `napi_async_complete_callback`; en esa situación, el contexto asíncrono del callback ya se ha configurado, por lo que una llamada directa a `napi_call_function` es apropiada y suficiente. La utilización de la función `napi_make_callback` puede ser requerida cuando se implementa un comportamiento asíncrono personalizado que no usa `napi_create_async_work`.
+Tenga en cuenta que *no* es necesario utilizar `napi_make_callback` desde dentro de un `napi_async_complete_callback`; en esa situación, el contexto asíncrono del callback ya se ha configurado, por lo que una llamada directa a `napi_call_function` es apropiada y suficiente. La utilización de la función `napi_make_callback` puede ser requerida cuando se implementa un comportamiento asíncrono personalizado que no usa `napi_create_async_work`.
 
 ### napi_open_callback_scope
 
@@ -3128,12 +3128,12 @@ NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env,
                                                  napi_callback_scope* result)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] resource_object`: An optional object associated with the async work that will be passed to possible `async_hooks` [`init` hooks][].
-- `[in] context`: Context for the async operation that is invoking the callback. This should be a value previously obtained from [`napi_async_init`][].
-- `[out] result`: The newly created scope.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] resource_object`: Un objeto opcional asociado con el trabajo asíncrono que será pasado a posibles `async_hooks` [`init` hooks][].
+- `[in] context`: Contexto para la operación asíncrona que está invocando al callback. Este debe ser un valor obtenido previamente de [`napi_async_init`][].
+- `[out] result`: El ámbito recientemente creado.
 
-There are cases (for example resolving promises) where it is necessary to have the equivalent of the scope associated with a callback in place when making certain N-API calls. If there is no other script on the stack the [`napi_open_callback_scope`][] and [`napi_close_callback_scope`][] functions can be used to open/close the required scope.
+Existen casos (por ejemplo resolver promesas) en los que es necesario tener el equivalente del ámbito asociado con el callback en el lugar cuando se realizan ciertas llamadas N-API. Si no hay otro script en la pila, las funciones [`napi_open_callback_scope`][] y [`napi_close_callback_scope`][] pueden ser utilizadas para abrir/cerrar el ámbito requerido.
 
 ### napi_close_callback_scope
 
@@ -3146,12 +3146,12 @@ NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env,
                                                   napi_callback_scope scope)
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] scope`: The scope to be closed.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] scope`: El ámbito a ser cerrado.
 
-This API can be called even if there is a pending JavaScript exception.
+Esta API puede ser llamada incluso si hay una excepción de JavaScript pendiente.
 
-## Version Management
+## Administración de Versiones
 
 ### napi_get_node_version
 
@@ -3171,14 +3171,14 @@ napi_status napi_get_node_version(napi_env env,
                                   const napi_node_version** version);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] version`: A pointer to version information for Node.js itself.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] version`: Un apuntador a la información de versión para Node.js.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This function fills the `version` struct with the major, minor, and patch version of Node.js that is currently running, and the `release` field with the value of [`process.release.name`][`process.release`].
+Esta función rellena la estructura de `version` con la versión principal, secundaria y de parche de Node.js que se está ejecutando, y el campo `release` con el valor de [`process.release.name`][`process.release`].
 
-The returned buffer is statically allocated and does not need to be freed.
+El buffer devuelto está asignado de forma estática y no necesita ser liberado.
 
 ### napi_get_version
 
@@ -3191,19 +3191,19 @@ napi_status napi_get_version(napi_env env,
                              uint32_t* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] result`: The highest version of N-API supported.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] result`: La versión más alta soportada de N-API.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API returns the highest N-API version supported by the Node.js runtime. N-API is planned to be additive such that newer releases of Node.js may support additional API functions. In order to allow an addon to use a newer function when running with versions of Node.js that support it, while providing fallback behavior when running with Node.js versions that don't support it:
+Esta API devuelve la versión más altade N-API soportada por el tiempo de ejecución de Node.js. Está previsto que N-API sea aditiva, de modo que las versiones más recientes de Node.js puedan soportar funciones API adicionales. Para permitir que un complemento utilice una función más nueva cuando se ejecuta con versiones de Node.js que lo soportan, al mismo tiempo que se proporciona un comportamiento alternativo cuando se ejecuta con versiones de Node.js que no lo soportan:
 
-- Call `napi_get_version()` to determine if the API is available.
-- If available, dynamically load a pointer to the function using `uv_dlsym()`.
-- Use the dynamically loaded pointer to invoke the function.
-- If the function is not available, provide an alternate implementation that does not use the function.
+- Llamar a `napi_get_version()` para determinar si la API está disponible.
+- Si está disponible, cargar de forma dinámica un apuntador a la función utilizando `uv_dlsym()`.
+- Utilizar el puntero cargado de forma dinámica para invocar a la función.
+- Si la función no está disponible, proporcionar una implementación alternativa que no utilice la función.
 
-## Memory Management
+## Gestión de la Memoria
 
 ### napi_adjust_external_memory
 
@@ -3217,53 +3217,54 @@ NAPI_EXTERN napi_status napi_adjust_external_memory(napi_env env,
                                                     int64_t* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] change_in_bytes`: The change in externally allocated memory that is kept alive by JavaScript objects.
-- `[out] result`: The adjusted value
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] change_in_bytes`: El cambio en la memoria asignada externamente que se mantiene activa por los objetos de JavaScript.
+- `[out] result`: El valor ajustado
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This function gives V8 an indication of the amount of externally allocated memory that is kept alive by JavaScript objects (i.e. a JavaScript object that points to its own memory allocated by a native module). Registering externally allocated memory will trigger global garbage collections more often than it would otherwise.
+Esta función le da a V8 una indicación de la cantidad de memoria asignada externamente que se mantiene activa por los objetos de JavaScript (por ejemplo, objeto de JavaScript que apunta a su propia memoria asignada por el módulo nativo.). El registro de la memoria asignada externamente activará recolecciones de basura global con más frecuencia de lo que lo haría de otra manera.
 
 <!-- it's very convenient to have all the anchors indexed -->
 
 <!--lint disable no-unused-definitions remark-lint-->
 
-## Promises
+## Promesas
 
-N-API provides facilities for creating `Promise` objects as described in [Section 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) of the ECMA specification. It implements promises as a pair of objects. When a promise is created by `napi_create_promise()`, a "deferred" object is created and returned alongside the `Promise`. The deferred object is bound to the created `Promise` and is the only means to resolve or reject the `Promise` using `napi_resolve_deferred()` or `napi_reject_deferred()`. The deferred object that is created by `napi_create_promise()` is freed by `napi_resolve_deferred()` or `napi_reject_deferred()`. The `Promise` object may be returned to JavaScript where it can be used in the usual fashion.
+N-API proporciona facilidades para crear objetos `Promise` como se describen en la [Sección 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) de la especificación ECMA. Implementa promesas como un par de objetos. Cuando una promesa es creada por `napi_create_promise()`, se crea un objeto "diferido" y se devuelve junto con la `Promise`. El objeto diferido está vinculado a la `Promise` creada y es el único medio para resolver o rechazar la `Promise` utilizando `napi_resolve_deferred()` o `napi_reject_deferred()`. El objeto diferido que es creado por `napi_create_promise()` es liberado por `napi_resolve_deferred()` o `napi_reject_deferred()`. El objeto `Promise` puede ser devuelto a JavaScript, donde puede ser utilizado de la manera habitual.
 
-For example, to create a promise and pass it to an asynchronous worker:
+Por ejemplo, para crear una promesa y pasarla a un worker asíncrono:
 
 ```c
 napi_deferred deferred;
 napi_value promise;
 napi_status status;
 
-// Create the promise.
+
+// Crear la promesa.
 status = napi_create_promise(env, &deferred, &promise);
 if (status != napi_ok) return NULL;
 
-// Pass the deferred to a function that performs an asynchronous action.
+// Pasa al diferido a una función que realiza una acción asíncrona.
 do_something_asynchronous(deferred);
 
-// Return the promise to JS
+// Devuelve la promesa a JS
 return promise;
 ```
 
-The above function `do_something_asynchronous()` would perform its asynchronous action and then it would resolve or reject the deferred, thereby concluding the promise and freeing the deferred:
+La función anterior `do_something_asynchronous()` llevaría a cabo su acción asíncrona y entonces resolvería o rechazaría al diferido, concluyendo así la promesa y liberando al diferido:
 
 ```c
 napi_deferred deferred;
 napi_value undefined;
 napi_status status;
 
-// Create a value with which to conclude the deferred.
+// Crea un valor con el cual concluir al diferido.
 status = napi_get_undefined(env, &undefined);
 if (status != napi_ok) return NULL;
 
-// Resolve or reject the promise associated with the deferred depending on
-// whether the asynchronous action succeeded.
+// Resuelve o rechaza la promesa asociada con el diferido, según 
+// si la acción asíncrona fue exitosa.
 if (asynchronous_action_succeeded) {
   status = napi_resolve_deferred(env, deferred, undefined);
 } else {
@@ -3271,7 +3272,7 @@ if (asynchronous_action_succeeded) {
 }
 if (status != napi_ok) return NULL;
 
-// At this point the deferred has been freed, so we should assign NULL to it.
+// En este punto el diferido ha sido liberado, por lo tanto debemos asignarle NULL.
 deferred = NULL;
 ```
 

@@ -20,7 +20,7 @@ const vm = require('vm');
 const x = 1;
 
 const sandbox = { x: 2 };
-vm.createContext(sandbox); // Contextify the sandbox.
+vm.createContext(sandbox); // Contextualiza al sandbox.
 
 const code = 'x += 40; var y = 17;';
 // x y y son variables globales en el entorno de prueba.
@@ -64,7 +64,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
   // defecto, un Módulo se crea en el contexto superior. Pero ahí, especificamos a
   // `contextifiedSandbox` como el contexto al que pertenece este Módulo.
   //
-  // Aquí, intentamos obtener la exportación predeterminado del módulo "foo", y
+  // Aquí, intentamos obtener la exportación predeterminada del módulo "foo", y
   // colocarla en el enlace local "secreto".
 
   const bar = new vm.Module(`
@@ -252,7 +252,7 @@ El URL del módulo actual, como se configura en el constructor.
 
 * `options` {Object} 
   * `timeout` {number} Especifica la cantidad de milisegundos para evaluar antes de terminar la ejecución. Si la ejecución se interrumpe, un [`Error`][] se lanzará.
-  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los controladores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
+  * `breakOnSigint` {boolean} Si es `true`, la ejecución se terminará cuando `SIGINT` (Ctrl+C) se reciba. Los manejadores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se interrumpe la ejecución, un [`Error`][] se lanzará.
 * Devuelve: {Promise}
 
 Evaluar el módulo.
@@ -268,11 +268,11 @@ Corresponde al campo del [método concreto Evaluate()](https://tc39.github.io/ec
 
 ### module.instantiate()
 
-Instanciar el módulo. Esto debe llamarse después de que el enlace se haya completado (`linkingStatus` es `'linked'`); de lo contrario lanzará un error. También puede lanzar una excepción si uno de las dependencias no proporciona una exportación que el módulo principal requiere.
+Instanciar el módulo. Esto debe llamarse después de que el enlace se haya completado (`linkingStatus` es `'linked'`); de lo contrario lanzará un error. También puede lanzar una excepción si una de las dependencias no proporciona una exportación que el módulo principal requiere.
 
 Sin embargo, si esta función fue exitosa, las llamadas adicionales para esta función después de la instanciación inicial no estarán operativas, para ser consistentes con la especificación ECMAScript.
 
-A diferencias de otros métodos operativos en `Module`, este función se completa sincrónicamente y no devuelve nada.
+A diferencia de otros métodos operativos en `Module`, esta función se completa sincrónicamente y no devuelve nada.
 
 Corresponde al campo del [método concreto Instantiate()](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) de los [Registros de Módulo de Texto de Fuente](https://tc39.github.io/ecma262/#sec-source-text-module-records) en la especificación ECMAScript.
 
@@ -291,14 +291,14 @@ Dos parámetros se pasarán a la función `linker`:
       import foo from 'foo';
       //              ^^^^^ el especificador del módulo
 
-* `referencingModule` Se llama al `link()` del objeto `Module`.
+* `referencingModule` El `link()` del objeto `Module` que es llamado.
 
-La función se espera para devolver un objeto `Module` o un `Promise` que eventualmente se convierta en un objeto `Module`. El `Module` devuelto debe satisfacer las siguientes dos invariantes:
+Se espera que la función devuelva un objeto `Module` o una `Promise` que eventualmente se convierta en un objeto `Module`. El `Module` devuelto debe satisfacer las siguientes dos invariantes:
 
 * Debe pertenecer al mismo contexto que el `Module` principal.
 * Su `linkingStatus` no debe ser `'errored'`.
 
-Si el `linkingStatus` del `Module` devuelto está `'unlinked'`, este método se llamará recursivamente en el `Module` devuelto con la misma función del `linker` proporcionado.
+Si el `linkingStatus` del `Module` devuelto es `'unlinked'`, este método se llamará recursivamente en el `Module` devuelto con la misma función `linker` proporcionada.
 
 `link()` devuelve un `Promise` que se resolverá cuando todas las instancias de enlace se resuelvan en un `Module` válido, o se rechazará si la función enlazador lanza una excepción o devuelve un `Module` inválido.
 
@@ -315,9 +315,9 @@ La implementación [HostResolveImportedModule](https://tc39.github.io/ecma262/#s
 added: v0.3.1
 -->
 
-Instances of the `vm.Script` class contain precompiled scripts that can be executed in specific sandboxes (or "contexts").
+Las instancias de la clase `vm.Script` contienen scripts precompilados que pueden ejecutarse en sandboxes específicos (o "contextos").
 
-### new vm.Script(code, options)
+### nuevo vm.Script(code, options)
 
 <!-- YAML
 added: v0.3.1
@@ -329,17 +329,17 @@ changes:
                  supported now.
 -->
 
-* `code` {string} The JavaScript code to compile.
+* `code` {string} El código JavaScript para compilar.
 * `options` 
-  * `filename` {string} Specifies the filename used in stack traces produced by this script.
-  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
-  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
-  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
-  * `cachedData` {Buffer} Provides an optional `Buffer` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
-  * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully.
+  * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
+  * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `columnOffset` {number} Especifica el número de la columna del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si la ejecución se termina, se producirá un [`Error`][].
+  * `cachedData` {Buffer} Proporciona un `Buffer` opcional con los datos de caché del código de V8 para la fuente suministrada. Cuando se suministre, el valor de `cachedDataRejected` se establecerá en `true` o `false` dependiendo de la aceptación de los datos por V8.
+  * `produceCachedData` {boolean} Cuando es `true` y no está presente `cachedData`, V8 intentará producir datos de caché del código para `code`. En caso de éxito, un `Buffer` con datos de caché del código de V8 se producirá y almacenará en la propiedad `cachedData` de la instancia `vm.Script` devuelta. El valor `cachedDataProduced` se establecerá en `true` o `false` dependiendo de si los datos de caché del código se producen exitosamente.
 
-Creating a new `vm.Script` object compiles `code` but does not run it. The compiled `vm.Script` can be run later multiple times. The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
+La creación de un nuevo objeto `vm.Script` compila el `code` pero no lo ejecuta. El `vm.Script` compilado se puede ejecutar múltiples veces después. El `code` no está vinculado a ningún objeto global; más bien, se vincula antes de la ejecución, solo para esa ejecución.
 
 ### script.runInContext(contextifiedSandbox[, options])
 
@@ -352,18 +352,18 @@ changes:
     description: The `breakOnSigint` option is supported now.
 -->
 
-* `contextifiedSandbox` {Object} A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method.
+* `contextifiedSandbox` {Object} Un objeto [contextualizado](#vm_what_does_it_mean_to_contextify_an_object) como resultado del método `vm.createContext()`.
 * `options` {Object} 
-  * `filename` {string} Specifies the filename used in stack traces produced by this script.
-  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
-  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
-  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
-  * `breakOnSigint`: if `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown.
+  * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
+  * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
+  * `breakOnSigint`: si es `true`, la ejecución terminará cuando se reciba `SIGINT` (Ctrl+C). Los manejadores existentes para el evento que se han adjuntado a través de `process.on('SIGINT')` se desactivarán durante la ejecución del script, pero continuarán trabajando después de eso. Si se termina la ejecución, se producirá un [`Error`][].
 
-Runs the compiled code contained by the `vm.Script` object within the given `contextifiedSandbox` and returns the result. Running code does not have access to local scope.
+Se ejecuta el código compilado contenido por el objeto `vm.Script` dentro del `contextifiedSandbox` dado y devuelve el resultado. El código en ejecución no tiene acceso al ámbito local.
 
-The following example compiles code that increments a global variable, sets the value of another global variable, then execute the code multiple times. The globals are contained in the `sandbox` object.
+El siguiente ejemplo compila el código que incrementa una variable global, establece el valor de otra variable global y luego ejecuta el código múltiples veces. Los globales están contenidos en el objeto `sandbox`.
 
 ```js
 const util = require('util');
@@ -386,7 +386,7 @@ console.log(util.inspect(sandbox));
 // { animal: 'cat', count: 12, name: 'kitty' }
 ```
 
-Using the `timeout` or `breakOnSigint` options will result in new event loops and corresponding threads being started, which have a non-zero performance overhead.
+Utilizar las opciones `timeout` o `breakOnSigint` resultará en un nuevo bucle de eventos y los hilos correspondientes se iniciarán, los cuales tienen una sobrecarga de rendimiento distinta a cero.
 
 ### script.runInNewContext([sandbox[, options]])
 
@@ -399,15 +399,15 @@ changes:
     description: The `contextCodeGeneration` option is supported now.
 -->
 
-* `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
+* `sandbox` {Object} Un objeto será [contextualizado](#vm_what_does_it_mean_to_contextify_an_object). Si está `undefined`, un nuevo objeto se creará.
 * `options` {Object} 
-  * `filename` {string} Specifies the filename used in stack traces produced by this script.
-  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
-  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
-  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
-  * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
-  * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
-  * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
+  * `filename` {string} Especifica el nombre del archivo utilizado en los stack traces producidos por este script.
+  * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código que causa el error se adjunta al stack trace.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
+  * `contextName` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
+  * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
   * `contextCodeGeneration` {Object} 
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Predeterminado:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Predeterminado:** `true`.
@@ -481,7 +481,7 @@ changes:
 
 * `sandbox` {Object}
 * `options` {Object} 
-  * `name` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
+  * `name` {string} Human-readable name of the newly created context. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
   * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
   * `codeGeneration` {Object} 
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Predeterminado:** `true`.
@@ -568,8 +568,8 @@ added: v0.3.1
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
   * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
-  * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
-  * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
+  * `contextName` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
+  * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
 
 The `vm.runInNewContext()` first contextifies the given `sandbox` object (or creates a new `sandbox` if passed as `undefined`), compiles the `code`, runs it within the context of the created context, then returns the result. Running code does not have access to the local scope.
 

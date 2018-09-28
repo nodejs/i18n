@@ -1,4 +1,4 @@
-@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
+Se este arquivo for movido, tenha certeza de atualizar.
 
 <!--introduced_in=v0.10.0-->
 
