@@ -2,12 +2,12 @@
 
 * Dokümantasyon, `lowercase-with-dashes.md` olarak biçimlendirilmiş isimlerle markdown'da yazılmıştır. 
   * Dosya adlarında altçizgilerin bulunmasına yalnızca belgenin açıklayacağı konu içerisinde bulunduklarında izin verilir(e.g., `child_process`).
-  * Some files, such as top-level markdown files, are exceptions.
-* Documents should be word-wrapped at 80 characters.
-* The formatting described in `.editorconfig` is preferred. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Üst düzey markdown dosyaları gibi bazı dosyalar istisnadır.
+* Dokümanlar satır sonuna kadar 80 karakterle sınırlı olmalıdır.
+* `.editorconfig` 'da açıklanan formatlama tercih edilir. 
+  * Bazı editörlerin bu kuralları otomatik olarak uygulayabilmeleri için bir [eklenti](http://editorconfig.org/#download) bulunmaktadır.
 * Yazım ve dil bilgisi gibi mekanik konular mümkün olduğunca araçlarla tanımlanmalıdır. Eğer bir araçla tanımlanmadıysa gözlemciler tarafından belirtilmesi gerekir.
-* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Amerikan İngilizcesi yazımı tercih edilir. "Capitalize" vs. "Capitalise", "color" vs. "colour", vb.
 * Though controversial, the [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma) is preferred for clarity's sake.
 * Generally avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Pronouns are acceptable in more colloquial documentation, like guides.
