@@ -487,7 +487,7 @@ changes:
     * `strings` {boolean} Si se establece en falso, cualquier llamada para `eval` o función constructor (`Function`, `GeneratorFunction`, etc) producirá un `EvalError`. **Predeterminado:** `true`.
     * `wasm` {boolean} Si se establece en falso, cualquier intento de compilar un módulo WebAssembly producirá un `WebAssembly.CompileError`. **Predeterminado:** `true`.
 
-Si se le da un objeto `sandbox`, el método `vm.createContext()` [preparará ese sandbox](#vm_what_does_it_mean_to_contextify_an_object) para que se pueda utilizar en llamadas a [`vm.runInContext()`][] o [`script.runInContext()`][]. Dentro de esos script, el objeto `sandbox` será el objeto global, reteniendo todas sus propiedades existentes pero también teniendo los objetos y funciones incorporados que tiene cualquier [objeto global](https://es5.github.io/#x15.1) estándar. Outside of scripts run by the vm module, global variables will remain unchanged.
+Si se le da un objeto `sandbox`, el método `vm.createContext()` [preparará ese sandbox](#vm_what_does_it_mean_to_contextify_an_object) para que se pueda utilizar en llamadas a [`vm.runInContext()`][] o [`script.runInContext()`][]. Dentro de esos script, el objeto `sandbox` será el objeto global, reteniendo todas sus propiedades existentes pero también teniendo los objetos y funciones incorporados que tiene cualquier [objeto global](https://es5.github.io/#x15.1) estándar. Fuera de los scripts ejecutados por el módulo vm, las variables globales permanecerán sin cambios.
 
 ```js
 const util = require('util');
