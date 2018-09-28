@@ -277,7 +277,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Powszechną praktyką w dodatkach jest przekazywanie funkcji JavaScript do funkcji C++ i wykonywanie ich stamtąd. The following example illustrates how to invoke such callbacks:
 
 ```cpp
 // addon.cc
