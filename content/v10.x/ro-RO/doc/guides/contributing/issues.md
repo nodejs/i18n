@@ -17,21 +17,21 @@ Pentru orice tichet, există trei moduri fundamentale prin care o persoană poat
 
 ## Solicitarea ajutorului general
 
-Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
+Deoarece nivelul de activitate din depozitarul `nodejs/node` este foarte ridicat, întrebările sau cererile de ajutor general care utilizează Node.js ar trebui direcționate către depozitarul de ajutor [Node.js](https://github.com/nodejs/help/issues).
 
-## Discussing non-technical topics
+## Discutarea subiectelor non-tehnice
 
-Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
+Discutarea subiectelor non-tehnice (cum ar fi proprietatea intelectuală și marca comercială) ar trebui direcționată către [depozitarul Comitetului Tehnic de Coordonare (TSC)](https://github.com/nodejs/TSC/issues).
 
-## Submitting a Bug Report
+## Trimiterea unui raport de eroare
 
-When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
+Când se deschide un tichet nou în trackerul de tichete `nodejs/node`, utilizatorii vor primi un șablon de bază care trebuie completat.
 
 ```markdown
 <!--
-Thank you for reporting an issue.
+Mulțumim pentru raportarea unei probleme.
 
-This issue tracker is for bugs and issues found within Node.js core.
+Acest tracker de tichete este pentru erori și probleme găsite în nucleul Node.js.
 If you require more general support please file an issue on our help
 repo. https://github.com/nodejs/help
 
