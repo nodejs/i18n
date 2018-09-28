@@ -125,9 +125,9 @@ Node.js korzysta z wielu statycznie połączonych bibliotek, takich jak V8, libu
 
 ### Ładowanie dodatków za pomocą komendy require()
 
-Rozszerzenie pliku skompilowanego dodatku binarnego to `.node` (w przeciwieństwie do `.dll` lub `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Rozszerzenie pliku skompilowanego dodatku binarnego to `.node` (w przeciwieństwie do `.dll` lub `.so`). Funkcja [`require()`](modules.html#modules_require) została napisana w celu wyszukania plików z rozszerzeniem `.node` i zainicjowania ich jako dynamicznie powiązanych bibliotek.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Jedynym zastrzeżeniem jest jednak to, że Node.js najpierw spróbuje zlokalizować i załadować moduły lub pliki JavaScript, które dzielą tę samą nazwę podstawową. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+Podczas wywoływania [`require()`](modules.html#modules_require), rozszerzenie `.node` można zwykle pominąć, a Node.js nadal znajdzie i zainicjuje dodatek. Jedynym zastrzeżeniem jest jednak to, że Node.js najpierw spróbuje zlokalizować i załadować moduły lub pliki JavaScript, które dzielą tę samą nazwę podstawową. Na przykład, jeśli istnieje plik `addon.js` w tym samym katalogu co plik binarny `addon.node`, wówczas [`require('addon')`](modules.html#modules_require) da pierwszeństwo plikowi `addon.js` i załaduje go zamiast tego.
 
 ## Natywne abstrakcje dla Node.js
 
@@ -141,7 +141,7 @@ Każdy z przykładów przedstawionych w tym dokumencie bezpośrednio wykorzystuj
 
 N-API jest API do budowania natywnych dodatków. Jest niezależne od podstawowego środowiska wykonawczego JavaScript (na przykład V8) i jest utrzymywane jako część samego Node.js. Te API będzie Interfejsem Binarnym Aplikacji (ABI) stabilnym poprzez całą wersję Node.js. Ma on za zadanie izolować dodatki od zmian w zasadniczym silniku JavaScript i pozwolić modułom skompilowanym danej wersji działać w późniejszych wersjach Node.js bez wymogu ponownej kompilacji. Dodatki są budowane/pakowane przy użyciu tego samego podejścia/narzędzi opisanych w tym dokumencie (node-gyp, itp.). Jedyną różnicą jest zbiór API które są używane przez kod natywny. Zamiast korzystać z V8 lub API [Natywnych Abstrakcji dla Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+Aby użyć N-API w następującym przykładzie "Hello world", zastąp zawartość `hello.cc` poniższym. Wszystkie pozostałe instrukcje pozostają takie same.
 
 ```cpp
 // hello.cc using N-API
@@ -177,7 +177,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
 
-## Addon examples
+## Przykłady dodatków
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
