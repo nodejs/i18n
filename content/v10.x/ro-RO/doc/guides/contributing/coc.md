@@ -2,11 +2,11 @@
 
 Proiectul Node.js are un [Cod de conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) pe care *toți* contribuitorii trebuie să îl urmeze. Acest cod descrie așteptările *minime* ale comportamentului tuturor contribuitorilor.
 
-În calitate de colaborator la Node.js, modul în care alegi să acționezi și să interacționezi cu alți contribuitori, precum și cu cei din comunitate, se va reflecta nu numai asupra ta, ci și asupra întregului proiect. The Code of Conduct is designed and intended, above all else, to help establish a culture within the project that allows anyone and everyone who wants to contribute to feel safe doing so.
+În calitate de colaborator la Node.js, modul în care alegi să acționezi și să interacționezi cu alți contribuitori, precum și cu cei din comunitate, se va reflecta nu numai asupra ta, ci și asupra întregului proiect. Codul de conduită este conceput și destinat, mai presus de toate, să contribuie la stabilirea unei culturi în cadrul proiectului care permite oricui și tuturor celor care doresc să contribuie să se simtă în siguranță în acest sens.
 
-Should any individual act in any way that is considered in violation of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), corrective actions will be taken. It is possible, however, for any individual to *act* in such a manner that is not in violation of the strict letter of the Code of Conduct guidelines while still going completely against the spirit of what that Code is intended to accomplish.
+În cazul în care orice acțiune individuală este considerată ca o încălcare a [Codului de conduită](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md), vor fi luate măsuri corective. Cu toate acestea, este posibil ca orice persoană să *acționeze* într-o manieră care nu încalcă litera strictă a instrucțiunilor Codului de conduită, în timp ce totul se opune complet spiritului a ceea ce intenționează acest cod să realizeze.
 
-Open, diverse, and inclusive communities live and die on the basis of trust. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
+Comunitățile deschise, diverse și inclusive trăiesc și mor pe baza încrederii. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
 
 ## Bad actors
 
