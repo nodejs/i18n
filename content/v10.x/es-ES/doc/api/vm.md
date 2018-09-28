@@ -412,9 +412,9 @@ changes:
     * `strings` {boolean} Si se establece en falso, cualquier llamada para `eval` o función constructor (`Function`, `GeneratorFunction`, etc) producirá un `EvalError`. **Predeterminado:** `true`.
     * `wasm` {boolean} Si se establece en falso, cualquier intento de compilar un módulo WebAssembly producirá un `WebAssembly.CompileError`. **Predeterminado:** `true`.
 
-First contextifies the given `sandbox`, runs the compiled code contained by the `vm.Script` object within the created sandbox, and returns the result. Running code does not have access to local scope.
+Primero contextualiza el `sandbox` dado, ejecuta el código de compilación contenido en el objeto `vm.Script` dentro del sandbox creado, y devuelve el resultado. El código en ejecución no tiene acceso al ámbito local.
 
-The following example compiles code that sets a global variable, then executes the code multiple times in different contexts. The globals are set on and contained within each individual `sandbox`.
+El siguiente ejemplo compila el código que establece una variable global, luego ejecuta el código múltiples veces en diferentes contextos. Los globales están configurados y contenidos dentro de cada `sandbox` individual.
 
 ```js
 const util = require('util');
