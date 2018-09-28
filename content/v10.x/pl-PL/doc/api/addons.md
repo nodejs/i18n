@@ -68,7 +68,7 @@ The `module_name` must match the filename of the final binary (excluding the `.n
 
 W przykładzie `hello.cc` funkcją inicjującą jest `init`, a nazwa modułu dodatku to `addon`.
 
-### Budowanie
+### Konfigurowanie
 
 Po zapisaniu kodu źródłowego, należy go skompilować do pliku binarnego `addon.node`. Aby to zrobić, utwórz plik o nazwie `binding.gyp` w najwyższym poziomie projektu opisującym konfigurację budowy modułu przy użyciu formatu podobnego do JSON. Ten plik jest używany przez [node-gyp](https://github.com/nodejs/node-gyp) — narzędzie napisane specjalnie do kompilacji dodatków Node.js.
 
@@ -179,9 +179,9 @@ The functions available and how to use them are documented in the section titled
 
 ## Przykłady dodatków
 
-Oto kilka przykładów dodatków, które mają ułatwić deweloperom rozpoczęcie pracy. Przykłady wykorzystują API V8. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+Oto kilka przykładów dodatków, które mają ułatwić deweloperom rozpoczęcie pracy. Przykłady wykorzystują API V8. Odwołaj się do [odnośnika V8](https://v8docs.nodesource.com/) w internecie, aby uzyskać pomoc dotyczącą różnych wywołań V8, oraz [poradnika do osadzania w V8](https://github.com/v8/v8/wiki/Embedder's%20Guide), aby uzyskać wyjaśnienie kilku używanych pojęć, takich jak uchwyty, zakresy, szablony funkcji itp.
 
-Each of these examples using the following `binding.gyp` file:
+Każdy z poniższych przykładów używa następującego pliku `binding.gyp`:
 
 ```json
 {
