@@ -1,15 +1,15 @@
-# Issues
+# Tichete
 
-* [How to Contribute in Issues](#how-to-contribute-in-issues)
-* [Asking for General Help](#asking-for-general-help)
-* [Discussing non-technical topics](#discussing-non-technical-topics)
-* [Submitting a Bug Report](#submitting-a-bug-report)
-* [Triaging a Bug Report](#triaging-a-bug-report)
-* [Resolving a Bug Report](#resolving-a-bug-report)
+* [Cum poți contribui la Tichete](#how-to-contribute-in-issues)
+* [Solicitarea ajutorului general](#asking-for-general-help)
+* [Discutarea subiectelor non-tehnice](#discussing-non-technical-topics)
+* [Trimiterea unui raport de eroare](#submitting-a-bug-report)
+* [Trierea unui raport de eroare](#triaging-a-bug-report)
+* [Rezolvarea unui raport de eroare](#resolving-a-bug-report)
 
-## How to Contribute in Issues
+## Cum poți contribui la Tichete
 
-For any issue, there are fundamentally three ways an individual can contribute:
+Pentru orice tichet, există trei moduri fundamentale prin care o persoană poate contribui:
 
 1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
 2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
