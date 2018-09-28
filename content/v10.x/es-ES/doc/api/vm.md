@@ -567,15 +567,15 @@ added: v0.3.1
   * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
   * `columnOffset` {number} Especifica el número de columna del desplazamiento que se muestra en los stack traces producidos por este script.
   * `displayErrors` {boolean} Cuando es `true`, si se produce un error [`Error`][] mientras se compila el `code`, la línea del código causa el error se adjunta al stack trace.
-  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. If execution is terminated, an [`Error`][] will be thrown.
+  * `timeout` {number} Especifica la cantidad de milisegundos para ejecutar el `code` antes de terminar la ejecución. Si se termina la ejecución, se producirá un [`Error`][].
   * `contextName` {string} Nombre legible del contexto creado recientemente. **Predeterminado:** `'VM Context i'`, donde `i` es un índice numérico ascendente del contexto creado.
   * `contextOrigin` {string} El [origen](https://developer.mozilla.org/en-US/docs/Glossary/Origin) correspondiente al contexto creado recientemente con propósitos de visualización. El origen debe ser formateado como un URL, pero solo con el esquema, el host y el puerto (si es necesario), como el valor de la propiedad [`url.origin`][] de un objeto [`URL`][]. En particular, esta cadena debe omitir la barra (/) al final, ya que denota una ruta. **Predeterminado:** `"`.
 
-The `vm.runInNewContext()` first contextifies the given `sandbox` object (or creates a new `sandbox` if passed as `undefined`), compiles the `code`, runs it within the context of the created context, then returns the result. Running code does not have access to the local scope.
+El `vm.runInNewContext()` primero contextualiza el objeto `sandbox` dado (o crea un nuevo `sandbox` si se pasa como `undefined`), compila el `code`, lo ejecuta dentro del contexto del contexto creado y luego devuelve el resultado. El código en ejecución no tiene acceso al ámbito global.
 
 Si `options` es una cadena, entonces especifica el nombre del archivo.
 
-The following example compiles and executes code that increments a global variable and sets a new one. These globals are contained in the `sandbox`.
+El siguiente ejemplo compila y ejecuta código que incrementa una variable global y establece una nueva. Estos globales están contenidos en el `sandbox`.
 
 ```js
 const util = require('util');
@@ -598,11 +598,11 @@ console.log(util.inspect(sandbox));
 added: v0.3.1
 -->
 
-* `code` {string} The JavaScript code to compile and run.
+* `code` {string} El código JavaScript para compilar y ejecutar.
 * `options` {Object|string} 
-  * `filename` {string} Specifies the filename used in stack traces produced by this script.
-  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
-  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `filename` {string} Especifica el nombre de archivo utilizado en los stack traces producidos por este script.
+  * `lineOffset` {number} Especifica el número de línea del desplazamiento que se muestra en los stack traces producidos por este script.
+  * `columnOffset` {number} Especifica el número de la columna del desplazamiento que se muestra en los stack traces producidos por este script.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
   * `timeout` {number} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown.
 
