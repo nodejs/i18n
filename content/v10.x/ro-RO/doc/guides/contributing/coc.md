@@ -14,6 +14,6 @@ Toți contribuitorii la Node.js acceptă tacit să respecte atât litera, cât �
 
 Un *actor rău intenționat* este cineva care încalcă în mod repetat *spiritul* Codului de conduită prin eșecul coerent al autoreglementării modului în care aceștia interacționează cu alți contribuitori în proiect. În acest fel, actorii rău intenționați înstrăinează alți contribuitori, descurajează colaborarea și, în general, reflectă slab asupra proiectului în ansamblu.
 
-Being a bad actor may be intentional or unintentional. Typically, unintentional bad behavior can be easily corrected by being quick to apologize and correct course *even if you are not entirely convinced you need to*. Giving other contributors the benefit of the doubt and having a sincere willingness to admit that you *might* be wrong is critical for any successful open collaboration.
+A fi un actor de acest fel poate fi intenționat sau neintenționat. În mod obișnuit, comportamentul rău neintenționat poate fi corectat cu ușurință prin a-ți cere scuze și a corecta cursul, *chiar dacă nu ai pe deplin convingerea că trebuie să faci asta.*. Acordând altor contribuitori avantajului îndoielii și având dorința sinceră de a recunoaște că *este posibil* ca tu să fi greșit este esențial pentru orice colaborarea de succes.
 
-Don't be a bad actor.
+Nu fii un actor rău intenționat.
