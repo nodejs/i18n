@@ -11,11 +11,11 @@
 
 Pentru orice tichet, există trei moduri fundamentale prin care o persoană poate contribui:
 
-1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
-2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
-3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
+1. Deschiderea tichetului de discuție: de exemplu, dacă crezi că ai descoperit un bug în Node.js, modul de a-l raporta este să creezi un tichet nou în trackerul de tichete `nodejs/node`.
+2. Ajutând la trierea problemei: acest lucru se poate face fie prin furnizarea detaliilor ajutătoare (un caz de test care demonstrează o eroare), fie prin oferirea de sugestii privind modul de abordare a problemei.
+3. Ajutând la rezolvarea problemei: de obicei, acest lucru se face fie sub forma demonstrării faptului că problema raportată nu este o problemă la urma urmei, sau mai des, prin deschiderea unui pull-request în `nodejs/node` care modifică ceva în mod concret și care poate fi revizuit.
 
-## Asking for General Help
+## Solicitarea ajutorului general
 
 Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
 
