@@ -30,7 +30,7 @@ myEmitter.emit('event');
 
 ## Pasando argumentos y `this` a escuchadores
 
-El método `eventEmitter.emit()` permite un conjunto arbitrario de argumentos para que sean pasados a las funciones escuchadoras. Es importante mantener en mente que cuando una función oyente ordinaria es llamada, la palabra clave estándar `this` está intencionalmente establecida para referenciar a la instancia `EventEmitter` a la cual el oyente está adjunto.
+El método `eventEmitter.emit()` permite un conjunto arbitrario de argumentos para que sean pasados a las funciones escuchadoras. Es importante tener en mente que cuando una función listener ordinaria es llamada, la palabra clave estándar `this` está intencionalmente establecida para referenciar a la instancia `EventEmitter` a la cual el listener está adjunto.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -59,7 +59,7 @@ myEmitter.emit('event', 'a', 'b');
 
 ## Asíncrono vs. Síncrono
 
-El `EventEmitter` llama a todos los oyentes sincrónicamente en el orden en que se registraron. Esto es importante para asegurar la secuenciación de eventos propia y para evitar condiciones de raza o errores lógicos. Cuando sea apropiado, las funciones oyentes puede cambiar a un modo asincrónico de operación utilizando los métodos `setImmediate()` o `process.nextTick()`:
+El `EventEmitter` llama a todos los oyentes sincrónicamente en el orden en que se registraron. Esto es importante para asegurar la secuenciación de eventos propia y para evitar condiciones de raza o errores lógicos. Cuando sea apropiado, las funciones listener puede cambiar a un modo asincrónico de operación utilizando los métodos `setImmediate()` o `process.nextTick()`:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -71,9 +71,9 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-## Manejando eventos sólo una vez
+## Manejar eventos sólo una vez
 
-Cuando se registra a un oyente utilizando el método `eventEmitter.on()`, ese oyente será invocado *cada vez* que se emita el nombre del evento.
+Cuando se registra a un listener utilizando el método `eventEmitter.on()`, ese listener será invocado *cada vez* que se emita el nombre del evento.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -87,7 +87,7 @@ myEmitter.emit('event');
 // Imprime: 2
 ```
 
-Con el uso del método `eventEmitter.once()` es posible registrar a un oyente que sea llamado como máximo una vez para un evento particular. Once the event is emitted, the listener is unregistered and *then* called.
+Con el uso del método `eventEmitter.once()` es posible registrar a un listener que sea llamado como máximo una vez para un evento particular. Once the event is emitted, the listener is unregistered and *then* called.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -105,7 +105,7 @@ myEmitter.emit('event');
 
 Cuando un error ocurre dentro de una instancia de `EventEmitter`, la acción típica es que se emita un evento de `'error'`. Estos son tratados como casos especiales dentro de Node.js.
 
-Si un `EventEmitter` *no* tiene al menos un oyente registrado para el evento `'error'`, y se emite un evento `'error'`, se arroja el error, se imprime un stack trace y el proceso Node.js se cierra.
+Si un `EventEmitter` *no* tiene al menos un listener registrado para el evento `'error'`, y se emite un evento `'error'`, se arroja el error, se imprime un stack trace y el proceso Node.js se cierra.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -115,7 +115,7 @@ myEmitter.emit('error', new Error('whoops!'));
 
 To guard against crashing the Node.js process the [`domain`][] module can be used. (Note que, sin embargo, el módulo `domain` ha sido desaprobado.)
 
-Como la mejor práctica, los oyentes deben siempre ser añadidos para los eventos de `'error'`.
+Como la mejor práctica, los listeners deben siempre ser añadidos para los eventos de `'error'`.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -138,7 +138,7 @@ La clase `EventEmitter` es definida y expuesta por el módulo `events`:
 const EventEmitter = require('events');
 ```
 
-Todos los `EventEmitter`s emiten el evento `'newListener'` cuando se añaden nuevos oyentes y `'removeListener'` cuando se eliminan oyentes existentes.
+Todos los `EventEmitter`s emiten el evento `'newListener'` cuando se añaden nuevos listeners y `'removeListener'` cuando se eliminan listeners existentes.
 
 ### Evento: 'newListener'
 
@@ -146,14 +146,14 @@ Todos los `EventEmitter`s emiten el evento `'newListener'` cuando se añaden nue
 added: v0.1.26
 -->
 
-- `eventName` {string|symbol} El nombre del evento para el que está siendo escuchado
+- `eventName` {string|symbol} El nombre del evento hacia el que se dirige la escucha
 - `listener` {Function} La función manejadora de evento
 
-La instancia `EventEmitter` emitirá su propio evento `'newListener'` *antes* de que se añada a un oyente a su array interno de oyentes.
+La instancia `EventEmitter` emitirá su propio evento `'newListener'` *antes* de que se añada a un listener a su array interno de listeners.
 
-Los oyentes registrados para el evento `'newListener'` se les pasarán el nombre del evento y una referencia al oyente que se está añadiendo.
+A los listeners registrados para el evento `'newListener'` se les pasará el nombre del evento y una referencia al listener que se está añadiendo.
 
-El hecho de que el evento es desencadenado antes de que se añada el oyente tiene un sutil pero importante efecto secundario: cualquier oyente *adicional* registrado al mismo `name` *dentro* del callback `'newListener'` será insertado *antes* que el oyente que está en proceso de ser añadido.
+El hecho de que el evento es desencadenado antes de que se añada el listener tiene un sutil pero importante efecto secundario: cualquier listener *adicional* registrado al mismo `name` *dentro* del callback `'newListener'` será insertado *antes* que el listener que está en proceso de ser añadido.
 
 ```js
 const myEmitter = new MyEmitter();
