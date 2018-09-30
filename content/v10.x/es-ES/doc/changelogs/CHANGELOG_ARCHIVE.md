@@ -1500,7 +1500,7 @@ https://github.com/nodejs/node/commit/782277f11a753ded831439ed826448c06fc0f356
 
 <a id="0.7.8"></a>
 
-## 2012.04.18, Version 0.7.8 (unstable)
+## 2012.04.18, Versión 0.7.8 (inestable)
 
 https://github.com/nodejs/node/commit/c2b47097c0b483552efc1947c6766fa1128600b6
 
