@@ -201,14 +201,14 @@ deprecated: v4.0.0
 
 > Estabilidad: 0 - Desaprobado: Utilice [`emitter.listenerCount()`][] en su lugar.
 
-A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
+Un método de clase que devuelva el número de listeners para el `eventName` dado registrado en el `emitter` dado.
 
 ```js
 const myEmitter = new MyEmitter();
 myEmitter.on('event', () => {});
 myEmitter.on('event', () => {});
 console.log(EventEmitter.listenerCount(myEmitter, 'event'));
-// Prints: 2
+// Imprime: 2
 ```
 
 ### EventEmitter.defaultMaxListeners
@@ -217,23 +217,23 @@ console.log(EventEmitter.listenerCount(myEmitter, 'event'));
 added: v0.11.2
 -->
 
-By default, a maximum of `10` listeners can be registered for any single event. This limit can be changed for individual `EventEmitter` instances using the [`emitter.setMaxListeners(n)`][] method. To change the default for *all* `EventEmitter` instances, the `EventEmitter.defaultMaxListeners` property can be used. If this value is not a positive number, a `TypeError` will be thrown.
+Por defecto, pueden registrarse un máximo de `10` listeners por cada evento. Este límite puede cambiar para instancias de `EventEmitter` individuales utilizando el método [`emitter.setMaxListeners(n)`][]. Para cambiar el predeterminado por *todas* las instancias de `EventEmitter`, se puede utilizar la propiedad `EventEmitter.defaultMaxListeners`. Si este valor no es un número positivo, se arrojará un `TypeError`.
 
-Take caution when setting the `EventEmitter.defaultMaxListeners` because the change affects *all* `EventEmitter` instances, including those created before the change is made. However, calling [`emitter.setMaxListeners(n)`][] still has precedence over `EventEmitter.defaultMaxListeners`.
+Tome precaución al configurar el `EventEmitter.defaultMaxListeners` debido a que los cambios afectan a *todas* las instancias de `EventEmitter`, incluyendo a aquellos creadas antes de que se haya hecho el cambio. Sin embargo, el llamar a [`emitter.setMaxListeners(n)`][] todavía tiene precedencia sobre `EventEmitter.defaultMaxListeners`.
 
-Note that this is not a hard limit. The `EventEmitter` instance will allow more listeners to be added but will output a trace warning to stderr indicating that a "possible EventEmitter memory leak" has been detected. For any single `EventEmitter`, the `emitter.getMaxListeners()` and `emitter.setMaxListeners()` methods can be used to temporarily avoid this warning:
+Note que esto no es un límite fuerte. La instancia `EventEmitter` permitirá que se añadan más listeners, pero dará salida a una advertencia de trace a stderr, indicando que una "posible fuga de memoria del EventEmitter" ha sido detectada. Para cualquier `EventEmitter`, los métodos `emitter.getMaxListeners()` y `emitter.setMaxListeners()` pueden usarse para evitar temporalmente esta advertencia:
 
 ```js
 emitter.setMaxListeners(emitter.getMaxListeners() + 1);
 emitter.once('event', () => {
-  // do stuff
+  // haga cosas
   emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
 });
 ```
 
-The [`--trace-warnings`][] command line flag can be used to display the stack trace for such warnings.
+La bandera de línea de comando [`--trace-warnings`][] puede utilizarse para mostrar el stack trace para dichas advertencias.
 
-The emitted warning can be inspected with [`process.on('warning')`][] and will have the additional `emitter`, `type` and `count` properties, referring to the event emitter instance, the event’s name and the number of attached listeners, respectively. Its `name` property is set to `'MaxListenersExceededWarning'`.
+La advertencia emitida puede ser inspeccionada con [`process.on('warning')`][] y hará que las propiedades adicionales `emitter`, `type` y `count` se refieran a la instancia del emisor del evento, al nombre del evento y al número de listeners adjuntos, respectivamente. Su propiedad `name` se establece a `'MaxListenersExceededWarning'`.
 
 ### emitter.addListener(eventName, listener)
 
@@ -244,7 +244,7 @@ added: v0.1.26
 - `eventName` {string|symbol}
 - `listener` {Function}
 
-Alias for `emitter.on(eventName, listener)`.
+Alias para `emitter.on(eventName, listener)`.
 
 ### emitter.emit(eventName[, ...args])
 
@@ -254,11 +254,11 @@ added: v0.1.26
 
 - `eventName` {string|symbol}
 - `...args` {any}
-- Returns: {boolean}
+- Devuelve: {boolean}
 
-Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
+Sincrónicamente llama a cada uno de los listeners registrados para el evento llamado `eventName`, en el orden en que se registraron, pasando los argumentos suministrados a cada uno.
 
-Returns `true` if the event had listeners, `false` otherwise.
+Devuelve `true` si el evento tiene listeners, `false` si lo contrario.
 
 ### emitter.eventNames()
 
@@ -266,7 +266,7 @@ Returns `true` if the event had listeners, `false` otherwise.
 added: v6.0.0
 -->
 
-- Returns: {Array}
+- Devuelve: {Array}
 
 Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or `Symbol`s.
 
