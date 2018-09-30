@@ -359,7 +359,7 @@ server.on('connection', (stream) => {
 });
 ```
 
-Devuelve una referencia para el `EventEmitter`, para que las llamadas sean encadenadas.
+Devuelve una referencia para el `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
 Por defecto, los listeners del evento son invocados en el orden en que se añaden. El método `emitter.prependListener()` puede ser utilizado como una alternativa para añadir el listener del evento al comienzo del array de listeners.
 
@@ -383,7 +383,7 @@ added: v0.3.0
 - `listener` {Function} La función callback
 - Devuelve: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName`. La siguiente vez que se desencadene el `eventName`, se elimina el listener y luego de invoca.
+Adds a **one-time** `listener` function for the event named `eventName`. La siguiente vez que se desencadene el `eventName`, se elimina el listener y luego se invoca.
 
 ```js
 server.once('connection', (stream) => {
@@ -391,7 +391,7 @@ server.once('connection', (stream) => {
 });
 ```
 
-Devuelve una referencia para el `EventEmitter`, para que las llamadas sean encadenadas.
+Devuelve una referencia para el `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
 Por defecto, los listener del evento son invocados en el orden en que se añaden. El método `emitter.prependOnceListener()` puede ser utilizado como una alternativa para añadir el listener del evento al comienzo del array de listeners.
 
@@ -415,7 +415,7 @@ added: v6.0.0
 - `listener` {Function} La función callback
 - Devuelve: {EventEmitter}
 
-Añade la función `listener` al *comienzo* del array de listeners para el evento llamado `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
+Añade la función `listener` al *comienzo* del array de listeners para el evento llamado `eventName`. No se hacen verificaciones para ver si el `listener` ya ha sido añadido. Múltiples llamadas que pasen la misma combinación de `eventName` y `listener` resultarán en que se añada el `listener` y sea llamado múltiples veces.
 
 ```js
 server.prependListener('connection', (stream) => {
@@ -423,7 +423,7 @@ server.prependListener('connection', (stream) => {
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Devuelve una referencia para el `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
 ### emitter.prependOnceListener(eventName, listener)
 
@@ -431,11 +431,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 added: v6.0.0
 -->
 
-- `eventName` {string|symbol} The name of the event.
-- `listener` {Function} The callback function
+- `eventName` {string|symbol} El nombre del evento.
+- `listener` {Function} La función callback
 - Devuelve: {EventEmitter}
 
-Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
+Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. La siguiente vez que se desencadene el `eventName`, se eliminará el listener y luego se invoca.
 
 ```js
 server.prependOnceListener('connection', (stream) => {
@@ -443,7 +443,7 @@ server.prependOnceListener('connection', (stream) => {
 });
 ```
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Devuelve una referencia para el `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
 ### emitter.removeAllListeners([eventName])
 
@@ -454,11 +454,11 @@ added: v0.1.26
 - `eventName` {string|symbol}
 - Devuelve: {EventEmitter}
 
-Removes all listeners, or those of the specified `eventName`.
+Elimina a todos los listeners, o a aquellos del `eventName` especificado.
 
-Note that it is bad practice to remove listeners added elsewhere in the code, particularly when the `EventEmitter` instance was created by some other component or module (e.g. sockets or file streams).
+Note que es una mala práctica eliminar listeners añadidos en otro lugar en el código, particularmente cuando la instancia `EventEmitter` fue creada por otro componente o módulo (p. ej. sockets o streams de archivo).
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Devuelve una referencia para el `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
 ### emitter.removeListener(eventName, listener)
 
@@ -470,7 +470,7 @@ added: v0.1.26
 - `listener` {Function}
 - Devuelve: {EventEmitter}
 
-Removes the specified `listener` from the listener array for the event named `eventName`.
+Elimina el `listener` especificado del array de listener para el evento llamado `eventName`.
 
 ```js
 const callback = (stream) => {
@@ -481,9 +481,9 @@ server.on('connection', callback);
 server.removeListener('connection', callback);
 ```
 
-`removeListener()` will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
+`removeListener()` eliminará, como máximo, una instancia de un listener del array de listener. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener()` must be called multiple times to remove each instance.
 
-Note that once an event has been emitted, all listeners attached to it at the time of emitting will be called in order. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Subsequent events will behave as expected.
+Note que una vez que un evento haya sido emitido, todos los listeners adjuntos a él al momento de la emisión serán llamados en orden. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Los eventos subsecuentes se comportarán como se espera.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -501,17 +501,17 @@ myEmitter.on('event', callbackA);
 
 myEmitter.on('event', callbackB);
 
-// callbackA removes listener callbackB but it will still be called.
-// Internal listener array at time of emit [callbackA, callbackB]
+// callbackA elimina al listener callbackB pero todavía será llamado.
+// Array interno de listener al momento de la emisión [callbackA, callbackB]
 myEmitter.emit('event');
-// Prints:
+// Imprime:
 //   A
 //   B
 
-// callbackB is now removed.
-// Internal listener array [callbackA]
+// callbackB ahora está eliminado.
+// Array interno de listener [callbackA]
 myEmitter.emit('event');
-// Prints:
+// Imprime:
 //   A
 ```
 
