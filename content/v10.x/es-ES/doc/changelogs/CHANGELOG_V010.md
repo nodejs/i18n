@@ -739,77 +739,77 @@ https://github.com/nodejs/node/commit/878ffdbe6a8eac918ef3a7f13925681c3778060b
 * uv: Actualizar a v0.10.9
 * repl: reparar la verificación del error JSON.parse (Brian White)
 * tls: .destroySoon adecuado (Fedor Indutny)
-* tls: invoke write cb only after opposite read end (Fedor Indutny)
-* tls: ignore .shutdown() syscall error (Fedor Indutny)
+* tls: invocar write cb solo después que la lectura opuesta termine (Fedor Indutny)
+* tls: ignorar error syscall .shutdown() (Fedor Indutny)
 
 <a id="0.10.8"></a>
 
-## 2013.05.24, Version 0.10.8 (Stable)
+## 2013.05.24, Versión 0.10.8 (Estable)
 
 https://github.com/nodejs/node/commit/30d9e9fdd9d4c33d3d95a129d021cd8b5b91eddb
 
-* v8: update to 3.14.5.9
-* uv: upgrade to 0.10.8
-* npm: Upgrade to 1.2.23
-* http: remove bodyHead from 'upgrade' events (Nathan Zadoks)
-* http: Return true on empty writes, not false (isaacs)
-* http: save roundtrips, convert buffers to strings (Ben Noordhuis)
-* configure: respect the --dest-os flag consistently (Nathan Rajlich)
-* buffer: throw when writing beyond buffer (Trevor Norris)
-* crypto: Clear error after DiffieHellman key errors (isaacs)
+* v8: actualizar a 3.14.5.9
+* uv: actualizar a 0.10.8
+* npm: Actualizar a 1.2.23
+* http: remover bodyHead de los eventos 'upgrade' (Nathan Zadoks)
+* http: Devuelve true en escrituras vacías, no false (isaacs)
+* http: guardar recorridos, convierte búferes en strings (Ben Noordhuis)
+* configure: respetar a la bandera --dest-os constantemente (Nathan Rajlich)
+* buffer: arrojar cuando se escriba más allá del búfer (Trevor Norris)
+* crypto: Limpiar el error después de los errores clave DiffieHellman (isaacs)
 * string_bytes: strip padding from base64 strings (Trevor Norris)
 
 <a id="0.10.7"></a>
 
-## 2013.05.17, Version 0.10.7 (Stable)
+## 2013.05.17, Versión 0.10.7 (Estable)
 
 https://github.com/nodejs/node/commit/d2fdae197ac542f686ee06835d1153dd43b862e5
 
-* uv: upgrade to v0.10.7
-* npm: Upgrade to 1.2.21
-* crypto: Don't ignore verify encoding argument (isaacs)
-* buffer, crypto: fix default encoding regression (Ben Noordhuis)
-* timers: fix setInterval() assert (Ben Noordhuis)
+* uv: actualizar a v0.10.7
+* npm: Actualizar a 1.2.21
+* crypto: No ignorar la verificación del argumento de codificación (isaacs)
+* buffer, crypto: reparar la regresión de codificación predeterminada (Ben Noordhuis)
+* timers: reparar afirmación setInterval() (Ben Noordhuis)
 
 <a id="0.10.6"></a>
 
-## 2013.05.14, Version 0.10.6 (Stable)
+## 2013.05.14, Versión 0.10.6 (Estable)
 
 https://github.com/nodejs/node/commit/5deb1672f2b5794f8be19498a425ea4dc0b0711f
 
-* module: Deprecate require.extensions (isaacs)
-* stream: make Readable.wrap support objectMode, empty streams (Daniel Moore)
-* child_process: fix handle delivery (Ben Noordhuis)
-* crypto: Fix performance regression (isaacs)
-* src: DRY string encoding/decoding (isaacs)
+* module: Desaprobar require.extensions (isaacs)
+* stream: hacer que Readable.wrap soporte objectMode, vacía los streams (Daniel Moore)
+* child_process: reparar entrega de handles (Ben Noordhuis)
+* crypto: Reparar la regresión de rendimiento (isaacs)
+* src: codificación/decodificación string DRY (isaacs)
 
 <a id="0.10.5"></a>
 
-## 2013.04.23, Version 0.10.5 (Stable)
+## 2013.04.23, Versión 0.10.5 (Estable)
 
 https://github.com/nodejs/node/commit/deeaf8fab978e3cadb364e46fb32dafdebe5f095
 
-* uv: Upgrade to 0.10.5 (isaacs)
-* build: added support for Visual Studio 2012 (Miroslav Bajtoš)
-* http: Don't try to destroy nonexistent sockets (isaacs)
-* crypto: LazyTransform on properties, not methods (isaacs)
-* assert: put info in err.message, not err.name (Ryan Doenges)
-* dgram: fix no address bind() (Ben Noordhuis)
-* handle_wrap: fix NULL pointer dereference (Ben Noordhuis)
-* os: fix unlikely buffer overflow in os.type() (Ben Noordhuis)
-* stream: Fix unshift() race conditions (isaacs)
+* uv: Actualizar a 0.10.5 (isaacs)
+* build: añadido soporte para Visual Studio 2012 (Miroslav Bajtoš)
+* http: No intentar destruir sockets inexistentes (isaacs)
+* crypto: hacer LazyTransform en propiedades, no métodos (isaacs)
+* assert: colocar la información en err.message, no en err.name (Ryan Doenges)
+* dgram: reparar la falta de address bind() (Ben Noordhuis)
+* handle_wrap: reparar puntero de desreferencia NULL (Ben Noordhuis)
+* os: reparar rebosamiento poco probable del búfer en os.type() (Ben Noordhuis)
+* stream: Reparar condiciones de carrera unshift() (isaacs)
 
 <a id="0.10.4"></a>
 
-## 2013.04.11, Version 0.10.4 (Stable)
+## 2013.04.11, Versión 0.10.4 (Estable)
 
 https://github.com/nodejs/node/commit/9712aa9f76073c30850b20a188b1ed12ffb74d17
 
-* uv: Upgrade to 0.10.4
-* npm: Upgrade to 1.2.18
-* v8: Avoid excessive memory growth in JSON.parse (Fedor Indutny)
-* child_process, cluster: fix O(n*m) scan of cmd string (Ben Noordhuis)
-* net: fix socket.bytesWritten Buffers support (Fedor Indutny)
+* uv: Actualizar a 0.10.4
+* npm: Actualizar a 1.2.18
+* v8: Evitar el crecimiento excesivo de memoria en JSON.parse (Fedor Indutny)
+* child_process, cluster: reparar escaneo O(n*m) del string cmd (Ben Noordhuis)
+* net: reparar el soporte de Búferes socket.bytesWritten (Fedor Indutny)
 * buffer: fix offset checks (Łukasz Walukiewicz)
 * stream: call write cb before finish event (isaacs)
 * http: Support write(data, 'hex') (isaacs)
