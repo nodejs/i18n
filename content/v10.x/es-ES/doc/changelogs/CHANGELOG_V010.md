@@ -712,9 +712,9 @@ https://github.com/nodejs/node/commit/d9d5bc465450ae5d60da32e9ffcf71c2767f1fad
 
 * uv: actualizar a 0.10.11
 * npm: actualizar a 1.2.30
-* openssl: add missing configuration pieces for MIPS (Andrei Sedoi)
-* Revert "http: remove bodyHead from 'upgrade' events" (isaacs)
-* v8: fix pointer arithmetic undefined behavior (Trevor Norris)
+* openssl: añadir piezas de configuración faltantes para MIPS (Andrei Sedoi)
+* Revertir "http: remover bodyHead de eventos 'upgrade'" (isaacs)
+* v8: reparar el comportamiento indefinido del puntero aritmético (Trevor Norris)
 * crypto: fix utf8/utf-8 encoding check (Ben Noordhuis)
 * net: Fix busy loop on POLLERR|POLLHUP on older linux kernels (Ben Noordhuis, isaacs)
 
