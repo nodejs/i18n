@@ -1572,14 +1572,14 @@ https://github.com/nodejs/node/commit/f06abda6f58e517349d1b63a2cbf5a8d04a03505
 * tls: analizar múltiples valores de una llave en un certificado ssl (Sambasiva Suda)
 * cluster: soportar el análisis de pipes nombradas (Ben Noordhuis)
 * Windows: incluir syscall en errors de fs (Bert Belder)
-* http: [#2888](https://github.com/joyent/node/issues/2888) Emit end event only once (Igor Zinkovsky)
-* readline: add multiline support (Rlidwka)
-* process: add `process.hrtime()` (Nathan Rajlich)
-* net, http, https: add localAddress option (Dmitry Nizovtsev)
-* addon improvements (Nathan Rajlich)
-* build improvements (Ben Noordhuis, Sadique Ali, T.C. Hollingsworth, Nathan Rajlich)
-* add support for "SEARCH" request methods (Nathan Rajlich)
-* expose the zlib and http_parser version in process.versions (Nathan Rajlich)
+* http: [#2888](https://github.com/joyent/node/issues/2888) Emitir evento de fin solo una vez (Igor Zinkovsky)
+* readline: añadir soporte de multilínea (Rlidwka)
+* process: añadir `process.hrtime()` (Nathan Rajlich)
+* net, http, https: añadir opción localAddress (Dmitry Nizovtsev)
+* mejoras de complemento (Nathan Rajlich)
+* mejoras de build (Ben Noordhuis, Sadique Ali, T.C. Hollingsworth, Nathan Rajlich)
+* añadir soporte para métodos de solicitud de "SEARCH" (Nathan Rajlich)
+* exponer las versiones de zlib y http_parser en process.versions (Nathan Rajlich)
 
 <a id="0.7.5"></a>
 
