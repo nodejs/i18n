@@ -1536,7 +1536,7 @@ https://github.com/nodejs/node/commit/5cda2542fdb086f9fe5de889bea435a65e377dea
 * readline: migrar lógica ansi/vt100 de tty a readline (Nathan Rajlich)
 * readline: Reparar manejo de multilínea (Alex Kocharin)
 * añadir una bandera -i/--interactive para forzar al REPL (Nathan Rajlich)
-* debugger: add breakOnException command (Fedor Indutny)
+* debugger: añadir comando breakOnException (Fedor Indutny)
 * cluster: kill workers when master dies (Andreas Madsen)
 * cluster: add graceful disconnect support (Andreas Madsen)
 * child_process: Separate 'close' event from 'exit' (Charlie McConnell)
