@@ -251,7 +251,7 @@ Actualización de Seguridad
 
 * build: Añadido soporte para Microsoft Visual Studio 2015
 * npm: Actualizado a v1.4.29 de v1.4.28. Un lanzamiento de una sola ocasión como parte de la estrategia para obtener una versión de npm en Node.js v0.10.x que funcione con el registro actual (https://github.com/nodejs/LTS/issues/37). Esta versión de npm imprime un banner cada vez que se ejecute. El banner advierte que la siguiente lanzamiento estándar de Node.js v0.10.x va tener una versión npm v2.
-* openssl: Actualizado a 1.0.1q, contiene reparaciones CVE-2015-3194 "Falló la verificación de certificado, falta parámetro PSS", un vector potencial de negación-de-servicio para servidores TLS de Node.js usando autenticación del certificado del cliente; los clientes TLS también son impactados. Hay más detalles disponibles en <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
+* openssl: Actualizar a 1.0.1q, contiene reparaciones CVE-2015-3194 "Falló la verificación de certificado, falta parámetro PSS", un vector potencial de negación-de-servicio para servidores TLS de Node.js usando autenticación del certificado del cliente; los clientes TLS también son impactados. Hay más detalles disponibles en <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
 ### Commits
 
@@ -314,7 +314,7 @@ Actualización de Seguridad
 * [[`456c22f63f`](https://github.com/nodejs/node/commit/456c22f63f)] - **openssl**: actualizar a 1.0.1o (Addressing multiple CVEs) [#25523](https://github.com/joyent/node/pull/25523)
 * [[`9d19dfbfdb`](https://github.com/nodejs/node/commit/9d19dfbfdb)] - **install**: reparar ruta fuente para los encabezados openssl (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
 * [[`4028669531`](https://github.com/nodejs/node/commit/4028669531)] - **install**: asegurarse que opensslconf.h esté sobreescrito (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
-* [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: reparar el tiempo de espera cuando se añade un temporizador del callback (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
+* [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: reparar el tiempo de espera cuando se añade un temporizador de la callback (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
 * [[`e7c84f82c7`](https://github.com/nodejs/node/commit/e7c84f82c7)] - **windows**: transmitir WM_SETTINGCHANGE después de instalar (Mathias Küsel) [#25100](https://github.com/joyent/node/pull/25100)
 
 <a id="0.10.38"></a>
@@ -390,7 +390,7 @@ https://github.com/nodejs/node/commit/8d045a30e95602b443eb259a5021d33feb4df079
 
 <a id="0.10.32"></a>
 
-## 2014.09.16, Versión 0.10.32 (Stable)
+## 2014.09.16, Versión 0.10.32 (Estable)
 
 https://github.com/nodejs/node/commit/0fe0d121551593c23a565db8397f85f17bb0f00e
 
@@ -437,7 +437,7 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 * streams: eliminar require('assert') no usado (Rod Vagg)
 * timers: backport f8193ab (Julien Gilli)
 * util.h: compatibilidad de interfaz (Oguz Bastemur)
-* zlib: no falla en la esxritura después de cerrar (Fedor Indutny)
+* zlib: no falla en la escritura después de cerrar (Fedor Indutny)
 
 <a id="0.10.29"></a>
 
@@ -456,7 +456,7 @@ https://github.com/nodejs/node/commit/ce82d6b8474bde7ac7df6d425fb88fb1bcba35bc
 * child_process: spawn() no arroja TypeError (Greg Sabia Tucker)
 * constants: exportar O_NONBLOCK (Fedor Indutny)
 * crypto: mejorar el uso de memoria (Alexis Campailla)
-* fs: cerrar archivo si fallar fstat() en readFile() (cjihrig)
+* fs: cerrar archivo si falla fstat() en readFile() (cjihrig)
 * lib: nombrar métodos prototipo de EventEmitter (Ben Noordhuis)
 * tls: reparar problemas de rendimiento (Alexis Campailla)
 
@@ -547,7 +547,7 @@ https://github.com/nodejs/node/commit/0462bc23564e7e950a70ae4577a840b04db6c7c6
 * uv: Actualizar a v0.10.20 (Timothy J Fontaine)
 * npm: Actualizar a 1.3.17 (isaacs)
 * gyp: actualizar a 78b26f7 (Timothy J Fontaine)
-* build: incluir símbolos postmodernos en linux (Timothy J Fontaine)
+* build: incluir símbolos posmodernos en linux (Timothy J Fontaine)
 * crypto: Hacer Decipher._flush() emita errores. (Kai Groner)
 * dgram: reparar anulación cuando se tenga `fd` del dgram cerrado (Fedor Indutny)
 * events: no aceptar NaN en setMaxListeners (Fedor Indutny)
@@ -556,9 +556,9 @@ https://github.com/nodejs/node/commit/0462bc23564e7e950a70ae4577a840b04db6c7c6
 * fs: reportar la ruta correcta cuando EEXIST (Fedor Indutny)
 * process: hacer cumplir señales permitidas por kill (Sam Roberts)
 * tls: emitir 'end' en .receivedShutdown (Fedor Indutny)
-* tls: reparar una corrupción de datos potenciaal (Fedor Indutny)
+* tls: reparar una corrupción de datos potenciales (Fedor Indutny)
 * tls: manejar errores `ssl.start()` apropiadamente (Fedor Indutny)
-* tls: restablecer los callbacks NPN después de SNI (Fedor Indutny)
+* tls: restablecer las callbacks NPN después de SNI (Fedor Indutny)
 
 <a id="0.10.22"></a>
 
@@ -568,10 +568,10 @@ https://github.com/nodejs/node/commit/cbff8f091c22fb1df6b238c7a1b9145db950fa65
 
 * npm: Actualizar a 1.3.14
 * uv: Actualizar a v0.10.19
-* child_process: no afirmar en eventos de descriptores de archivos obsoleto (Fedor Indutny)
+* child_process: no afirmar en eventos de descriptores de archivos obsoletos (Fedor Indutny)
 * darwin: Reparar "No Responde" en monitor de actividad Mavericks (Fedor Indutny)
 * debugger: Reparar bug en sb() con script sin nombre (Maxim Bogushevich)
-* repl: no insertar duplicados en la completación (Maciej Małecki)
+* repl: no insertar duplicados en las terminaciones (Maciej Małecki)
 * src: Reparar pérdida de memoria en handles cerrados (Timothy J Fontaine)
 * tls: previene detenciones usando read(0) (Fedor Indutny)
 * v8: usar la información de la zona horaria correcta en Solaris (Maciej Małecki)
@@ -610,7 +610,7 @@ https://github.com/nodejs/node/commit/6b5e6a5a3ec8d994c9aab3b800b9edbf1b287904
 * configure: añadir opción mips-float-abi (suave, duro) (Andrei Sedoi)
 * stream: transformaciones deobjectMode permiten valores falsos (isaacs)
 * tls: previene valores duplicados devueltos de la lectura (Nathan Rajlich)
-* tls: protocolos NPN son ahora locales a las conexiones (Fedor Indutny)
+* tls: protocolos NPN ahora son locales a las conexiones (Fedor Indutny)
 
 <a id="0.10.18"></a>
 
@@ -645,7 +645,7 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 * npm: Actualizar a 1.3.8
 * crypto: fix assert() on malformed hex input (Ben Noordhuis)
 * crypto: reparar pérdida de memoria en la ruta de error randomBytes() (Ben Noordhuis)
-* events: reparar pérdida de memoria, que no se filtre los nombres de los eventos (Ben Noordhuis)
+* events: reparar pérdida de memoria, que no se filtren los nombres de los eventos (Ben Noordhuis)
 * http: Manejar codificaciones hex/base64 correctamente (isaacs)
 * http: mejorar el rendimiento res.write(buf) fragmentado (Ben Noordhuis)
 * stream: Reparar emisión error doble pipe (Eran Hammer)
