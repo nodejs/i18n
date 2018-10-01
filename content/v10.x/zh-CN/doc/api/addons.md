@@ -194,7 +194,7 @@ Following are some example Addons intended to help developers get started. The e
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
+在有多个 `.cc` 文件的情况下，只需将额外的文件名添加到 `sources` 数组中：
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
@@ -266,7 +266,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+编译完成后，可以从Node.js中获取并使用示例插件：
 
 ```js
 // test.js
@@ -275,9 +275,9 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### 回调
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+将JavaScript函数传递给C++函数并从中执行它们是插件中常见的做法。 以下示例说明了如何调用此类回调：
 
 ```cpp
 // addon.cc
