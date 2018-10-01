@@ -1606,28 +1606,28 @@ https://github.com/nodejs/node/commit/d384b8b0d2ab7f05465f0a3e15fe20b4e25b5f86
 
 <a id="0.7.4"></a>
 
-## 2012.02.14, Version 0.7.4 (unstable)
+## 2012.02.14, Versión 0.7.4 (inestable)
 
 https://github.com/nodejs/node/commit/de21de920cf93ec40736ada3792a7f85f3eadeda
 
-* Upgrade V8 to 3.9.5
-* Upgrade npm to 1.1.1
-* build: Detect host_arch better (Karl Skomski)
-* debugger: export `debug_port` to `process` (Fedor Indutny)
-* api docs: CSS bug fixes (isaacs)
-* build: use -fPIC for native addons on UNIX (Nathan Rajlich)
-* Re-add top-level v8::Locker (Marcel Laverdet)
-* Move images out of the dist tarballs (isaacs)
-* libuv: Remove uv_export and uv_import (Ben Noordhuis)
-* build: Support x64 build on Windows (Igor Zinkovsky)
+* Actualizar V8 a 3.9.5
+* Actualizar npm a 1.1.1
+* build: Detectar mejor el host_arch (Karl Skomski)
+* debugger: exportar `debug_port` a `process` (Fedor Indutny)
+* api docs: reparaciones de bug de CSS (isaacs)
+* build: usar -fPIC para complementos nativos en UNIX (Nathan Rajlich)
+* Volver a añadir v8::Locker de nivel superior (Marcel Laverdet)
+* Mover imágenes fuera de las tarballs de dist (isaacs)
+* libuv: Remover uv_export y uv_import (Ben Noordhuis)
+* build: Soportar build x64 en Windows (Igor Zinkovsky)
 
 <a id="0.7.3"></a>
 
-## 2012.02.07, Version 0.7.3 (unstable)
+## 2012.02.07, Versión 0.7.3 (inestable)
 
 https://github.com/nodejs/node/commit/99059aad8d654acda4abcfaa68df182b50f2ec90
 
-* Upgrade V8 to 3.9.2
+* Actualizar V8 a 3.9.2
 * Revert support for isolates. (Ben Noordhuis)
 * cluster: Cleanup docs, event handling, and process.disconnect (Andreas Madsen)
 * gyp_addon: link with node.lib on Windows (Nathan Rajlich)
