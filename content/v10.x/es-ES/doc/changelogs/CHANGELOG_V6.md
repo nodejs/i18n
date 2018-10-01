@@ -742,9 +742,9 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`f3749d7b2c`](https://github.com/nodejs/node/commit/f3749d7b2c)] - **tools**: remover paréntesis innecesarios en doc/html.js (Vse Mozhet Byt) [#16845](https://github.com/nodejs/node/pull/16845)
 * [[`1c192f50f6`](https://github.com/nodejs/node/commit/1c192f50f6)] - **tools**: reemplazar concatenación del string con literales modelo (Kevin Yu) [#16804](https://github.com/nodejs/node/pull/16804)
 * [[`ce007be05b`](https://github.com/nodejs/node/commit/ce007be05b)] - **tools**: reemplazar concatenación del string con literales modelo (Giovanni Lela) [#16806](https://github.com/nodejs/node/pull/16806)
-* [[`d165d3fd1c`](https://github.com/nodejs/node/commit/d165d3fd1c)] - **tools**: replace string concetation with templates (Patrick Heneise) [#16801](https://github.com/nodejs/node/pull/16801)
-* [[`a8d7f5f52e`](https://github.com/nodejs/node/commit/a8d7f5f52e)] - **tools**: fix cpplint.py when path contains non-ascii (sharkfisher) [#16047](https://github.com/nodejs/node/pull/16047)
-* [[`b48471ac10`](https://github.com/nodejs/node/commit/b48471ac10)] - **tools**: rename unused variale in more pythonic way (Nikhil Komawar) [#16171](https://github.com/nodejs/node/pull/16171)
+* [[`d165d3fd1c`](https://github.com/nodejs/node/commit/d165d3fd1c)] - **tools**: reemplazar concatenación del string con modelos (Patrick Heneise) [#16801](https://github.com/nodejs/node/pull/16801)
+* [[`a8d7f5f52e`](https://github.com/nodejs/node/commit/a8d7f5f52e)] - **tools**: reparar cpplint.py cuando la ruta contenga datos no ascii (sharkfisher) [#16047](https://github.com/nodejs/node/pull/16047)
+* [[`b48471ac10`](https://github.com/nodejs/node/commit/b48471ac10)] - **tools**: renombrar variable no usada de una manera más pitónica (Nikhil Komawar) [#16171](https://github.com/nodejs/node/pull/16171)
 * [[`5b5b5c0f15`](https://github.com/nodejs/node/commit/5b5b5c0f15)] - **tools**: use template literal in error message (Tim Chon) [#15846](https://github.com/nodejs/node/pull/15846)
 * [[`ae5930bbe4`](https://github.com/nodejs/node/commit/ae5930bbe4)] - **tty,doc**: add type-check to isatty (Bryan English) [#15567](https://github.com/nodejs/node/pull/15567)
 
