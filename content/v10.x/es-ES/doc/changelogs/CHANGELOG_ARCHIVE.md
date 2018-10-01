@@ -1721,12 +1721,12 @@ https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 * windows: hacer que path.normalize convierta todas las barras a barras inclinadas hacia atrás (Bert Belder)
 * fs: Cerrar automáticamente a FSWatcher ante error (Bert Belder)
 * [#3258](https://github.com/joyent/node/issues/3258): fs.ReadStream.pause() emite evento de datos duplicados (koichik)
-* pipe_wrap: don't assert() on pipe accept errors (Ben Noordhuis)
-* Better exception output for module load and process.nextTick (Felix Geisendörfer)
-* zlib: fix error reporting (Ben Noordhuis)
-* http: Don't destroy on timeout (isaacs)
-* [#3231](https://github.com/joyent/node/issues/3231): http: Don't try to emit error on a null'ed req object (isaacs)
-* [#3236](https://github.com/joyent/node/issues/3236): http: Refactor ClientRequest.onSocket (isaacs)
+* pipe_wrap: no hacer assert() sobre errores de aceptación de pipes (Ben Noordhuis)
+* Mejorar output de excepción para carga de módulos y process.nextTick (Felix Geisendörfer)
+* zlib: mejorar el reporte de errores (Ben Noordhuis)
+* http: No destruir al agotarse el tiempo de espera (isaacs)
+* [#3231](https://github.com/joyent/node/issues/3231): http: No intentar emitir error ante un objeto de petición null'ed (isaacs)
+* [#3236](https://github.com/joyent/node/issues/3236): http: Refactorizar ClientRequest.onSocket (isaacs)
 
 <a id="0.6.17"></a>
 
