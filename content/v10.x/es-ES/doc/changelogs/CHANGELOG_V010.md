@@ -656,11 +656,11 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 
 https://github.com/nodejs/node/commit/2426d65af860bda7be9f0832a99601cc43c6cf63
 
-* src: fix process.getuid() return value (Ben Noordhuis)
+* src: reparar el valor retornado de process.getuid() (Ben Noordhuis)
 
 <a id="0.10.14"></a>
 
-## 2013.07.25, Version 0.10.14 (Stable)
+## 2013.07.25, Versión 0.10.14 (Estable)
 
 https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
 
