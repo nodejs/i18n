@@ -724,21 +724,21 @@ https://github.com/nodejs/node/commit/d9d5bc465450ae5d60da32e9ffcf71c2767f1fad
 
 https://github.com/nodejs/node/commit/25e51c396aa23018603baae2b1d9390f5d9db496
 
-* uv: Upgrade to 0.10.10
-* npm: Upgrade to 1.2.25
-* url: Properly parse certain oddly formed urls (isaacs)
-* stream: unshift('') is a noop (isaacs)
+* uv: Actualizar a 0.10.10
+* npm: Actualizar a 1.2.25
+* url: Actualizar correctamente a ciertas urls formadas de manera extraña (isaacs)
+* stream: unshift('') es un noop (isaacs)
 
 <a id="0.10.9"></a>
 
-## 2013.05.30, Version 0.10.9 (Stable)
+## 2013.05.30, Versión 0.10.9 (Estable)
 
 https://github.com/nodejs/node/commit/878ffdbe6a8eac918ef3a7f13925681c3778060b
 
-* npm: Upgrade to 1.2.24
-* uv: Upgrade to v0.10.9
-* repl: fix JSON.parse error check (Brian White)
-* tls: proper .destroySoon (Fedor Indutny)
+* npm: Actualizar a 1.2.24
+* uv: Actualizar a v0.10.9
+* repl: reparar la verificación del error JSON.parse (Brian White)
+* tls: .destroySoon adecuado (Fedor Indutny)
 * tls: invoke write cb only after opposite read end (Fedor Indutny)
 * tls: ignore .shutdown() syscall error (Fedor Indutny)
 
