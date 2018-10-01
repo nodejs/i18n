@@ -813,13 +813,13 @@ https://github.com/nodejs/node/commit/9712aa9f76073c30850b20a188b1ed12ffb74d17
 * buffer: reparar verificaciones de offset (Łukasz Walukiewicz)
 * stream: llamar a escribir cb antes de terminar el evento (isaacs)
 * http: Suporta write(data, 'hex') (isaacs)
-* crypto: dh secret should be left-padded (Fedor Indutny)
-* process: expose NODE_MODULE_VERSION in process.versions (Rod Vagg)
-* crypto: fix constructor call in crypto streams (Andreas Madsen)
-* net: account for encoding in .byteLength (Fedor Indutny)
-* net: fix buffer iteration in bytesWritten (Fedor Indutny)
-* crypto: zero is not an error if writing 0 bytes (Fedor Indutny)
-* tls: Re-enable check of CN-ID in cert verification (Tobias Müllerleile)
+* crypto: secreto dh debería ser rellenado-izquierda (Fedor Indutny)
+* process: exponer NODE_MODULE_VERSION en process.versions (Rod Vagg)
+* crypto: reparar llamar al constructor en streams crypto (Andreas Madsen)
+* net: cuenta para codificar en .byteLength (Fedor Indutny)
+* net: reparar iteración del búfer en bytesWritten (Fedor Indutny)
+* crypto: zero no es un error si se escriben 0 bytes (Fedor Indutny)
+* tls: Volver a habilitar revisión de CN-ID en verificación de certificados (Tobias Müllerleile)
 
 <a id="0.10.3"></a>
 
