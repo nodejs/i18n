@@ -1504,11 +1504,11 @@ https://github.com/nodejs/node/commit/782277f11a753ded831439ed826448c06fc0f356
 
 https://github.com/nodejs/node/commit/c2b47097c0b483552efc1947c6766fa1128600b6
 
-* Upgrade V8 to 3.9.24.9
-* Upgrade OpenSSL to 1.0.0f
-* Upgrade npm to 1.1.18
-* Show licenses in Binary installers
-* Domains (isaacs)
+* Actualizar V8 a 3.9.24.9
+* Actualizar OpenSSL a 1.0.0f
+* Actualizar npm a 1.1.18
+* Mostrar licencias en instaladores Binarios
+* Dominios (isaacs)
 * readline: rename "end" to "close" (Nathan Rajlich)
 * tcp: make getsockname() return address family as string (Shigeki Ohtsu)
 * http, https: fix .setTimeout() (ssuda)
