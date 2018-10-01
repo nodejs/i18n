@@ -1647,7 +1647,7 @@ https://github.com/nodejs/node/commit/a3efcd2006614c3835c9395b91ab89c1f260806c
 * child_process: Añadir método disconnect() a los procesos secundarios (Andreas Madsen)
 * fs: añadir soporte para O_EXCL, apertura de archivo exclusiva (Ben Noordhuis)
 * fs: mensajes de error más específicos (Tj Holowaychuk)
-* tty: emit 'unknown' key event if key sequence not found (Dan VerWeire, Nathan Rajlich)
+* tty: emitir evento de clave "unknown" si la secuencia de la clave no es encontrada (Dan VerWeire, Nathan Rajlich)
 * build: compile release build too if BUILDTYPE=Debug (Ben Noordhuis)
 * module: fix --debug-brk on symlinked scripts (Fedor Indutny)
 * zlib: fix `Failed to set dictionary` issue (Fedor Indutny)
