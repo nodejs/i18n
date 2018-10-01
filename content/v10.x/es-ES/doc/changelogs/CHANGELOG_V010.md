@@ -823,16 +823,16 @@ https://github.com/nodejs/node/commit/9712aa9f76073c30850b20a188b1ed12ffb74d17
 
 <a id="0.10.3"></a>
 
-## 2013.04.03, Version 0.10.3 (Stable)
+## 2013.04.03, Versión 0.10.3 (Estable)
 
 https://github.com/nodejs/node/commit/d4982f6f5e4a9a703127489a553b8d782997ea43
 
-* npm: Upgrade to 1.2.17
-* child_process: acknowledge sent handles (Fedor Indutny)
-* etw: update prototypes to match dtrace provider (Timothy J Fontaine)
-* dtrace: pass more arguments to probes (Dave Pacheco)
-* build: allow building with dtrace on osx (Dave Pacheco)
-* http: Remove legacy ECONNRESET workaround code (isaacs)
+* npm: Actualizar a 1.2.17
+* child_process: reconocer los handles enviados (Fedor Indutny)
+* etw: actualizar prototipos para que coincidan con el proveedor dtrace (Timothy J Fontaine)
+* dtrace: pasar más argumentos a sondas (Dave Pacheco)
+* build: permitir la construcción con dtrace en osx (Dave Pacheco)
+* http: Remover código de la solución alternativa de legado ECONNRESET (isaacs)
 * http: Ensure socket cleanup on client response end (isaacs)
 * tls: Destroy socket when encrypted side closes (isaacs)
 * repl: isSyntaxError() catches "strict mode" errors (Nathan Rajlich)
