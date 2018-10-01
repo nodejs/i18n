@@ -690,7 +690,7 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`bbdbf8b9b0`](https://github.com/nodejs/node/commit/bbdbf8b9b0)] - **test**: reemplazar fixturesDir con módulo de fixtures (suraiyah) [#15894](https://github.com/nodejs/node/pull/15894)
 * [[`c35420d21d`](https://github.com/nodejs/node/commit/c35420d21d)] - **test**: normalize fixtures use (Ruxandra Fediuc) [#15855](https://github.com/nodejs/node/pull/15855)
 * [[`3c176fd6f6`](https://github.com/nodejs/node/commit/3c176fd6f6)] - **test**: replace common.fixturesDir w/common.fixtures (Jason Walton) [#15853](https://github.com/nodejs/node/pull/15853)
-* [[`77f9ef32bd`](https://github.com/nodejs/node/commit/77f9ef32bd)] - **test**: switch to use common.fixtures module for fixturesDir (r1cebank) [#15821](https://github.com/nodejs/node/pull/15821)
+* [[`77f9ef32bd`](https://github.com/nodejs/node/commit/77f9ef32bd)] - **test**: cambiar para usar módulo common.fixtures para fixturesDir (r1cebank) [#15821](https://github.com/nodejs/node/pull/15821)
 * [[`71e68799ef`](https://github.com/nodejs/node/commit/71e68799ef)] - **test**: fixturesDir replaced to fixtures module (Pawel Golda) [#15809](https://github.com/nodejs/node/pull/15809)
 * [[`d70f9f6a35`](https://github.com/nodejs/node/commit/d70f9f6a35)] - **test**: replace common.fixturesDir with fixtures (Stefania Sharp) [#16015](https://github.com/nodejs/node/pull/16015)
 * [[`4cf84ea76e`](https://github.com/nodejs/node/commit/4cf84ea76e)] - **test**: replaces common.fixturesDir usage (Ruy Adorno) [#15818](https://github.com/nodejs/node/pull/15818)
@@ -699,15 +699,15 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`9b39ca6cbb`](https://github.com/nodejs/node/commit/9b39ca6cbb)] - **test**: use fixtures module in test (Nigel Kibodeaux) [#16117](https://github.com/nodejs/node/pull/16117)
 * [[`5e65069289`](https://github.com/nodejs/node/commit/5e65069289)] - **test**: use template literals in test-string-decoder (Edward Andrew Robinson) [#15884](https://github.com/nodejs/node/pull/15884)
 * [[`d2b74fe1e3`](https://github.com/nodejs/node/commit/d2b74fe1e3)] - **test**: switch to fixtures module (Christopher Sidebottom) [#15880](https://github.com/nodejs/node/pull/15880)
-* [[`1144be09b7`](https://github.com/nodejs/node/commit/1144be09b7)] - **test**: rewrite assert message (Martin Michaelis) [#15879](https://github.com/nodejs/node/pull/15879)
-* [[`095df35a5e`](https://github.com/nodejs/node/commit/095df35a5e)] - **test**: change fixturesDir to fixtures.path (Guilherme Akio Sakae) [#15863](https://github.com/nodejs/node/pull/15863)
-* [[`4fd5bf5ff7`](https://github.com/nodejs/node/commit/4fd5bf5ff7)] - **test**: replace fixturesDir with common.fixtures (Oliver Luebeck) [#15907](https://github.com/nodejs/node/pull/15907)
+* [[`1144be09b7`](https://github.com/nodejs/node/commit/1144be09b7)] - **test**: reescribir mensaje de aserción (Martin Michaelis) [#15879](https://github.com/nodejs/node/pull/15879)
+* [[`095df35a5e`](https://github.com/nodejs/node/commit/095df35a5e)] - **test**: cambiar fixturesDir a fixtures.path (Guilherme Akio Sakae) [#15863](https://github.com/nodejs/node/pull/15863)
+* [[`4fd5bf5ff7`](https://github.com/nodejs/node/commit/4fd5bf5ff7)] - **test**: reemplazar fixturesDir con common.fixtures (Oliver Luebeck) [#15907](https://github.com/nodejs/node/pull/15907)
 * [[`e3e234ea1c`](https://github.com/nodejs/node/commit/e3e234ea1c)] - **test**: update http test client function signatures (Jakub Mrowiec - Alkagar) [#15807](https://github.com/nodejs/node/pull/15807)
 * [[`08ca73f52a`](https://github.com/nodejs/node/commit/08ca73f52a)] - **test**: replace common.fixturesDir w/ fixtures.path (Druotic) [#15819](https://github.com/nodejs/node/pull/15819)
-* [[`39ae3f1802`](https://github.com/nodejs/node/commit/39ae3f1802)] - **test**: replace fixtureDir with fixtures.path (matthewreed26) [#15943](https://github.com/nodejs/node/pull/15943)
-* [[`1365a6f597`](https://github.com/nodejs/node/commit/1365a6f597)] - **test**: use common.fixtures module for file path (Adil L) [#16017](https://github.com/nodejs/node/pull/16017)
-* [[`bd8d4401ee`](https://github.com/nodejs/node/commit/bd8d4401ee)] - **test**: use fixtures module (Maurice Hayward) [#16034](https://github.com/nodejs/node/pull/16034)
-* [[`bba5263d00`](https://github.com/nodejs/node/commit/bba5263d00)] - **test**: replace fixturesDir with fixtures module (tabulatedreams) [#16036](https://github.com/nodejs/node/pull/16036)
+* [[`39ae3f1802`](https://github.com/nodejs/node/commit/39ae3f1802)] - **test**: reemplazar fixtureDir con fixtures.path (matthewreed26) [#15943](https://github.com/nodejs/node/pull/15943)
+* [[`1365a6f597`](https://github.com/nodejs/node/commit/1365a6f597)] - **test**: usar módulo common.fixtures para la ruta de archivo (Adil L) [#16017](https://github.com/nodejs/node/pull/16017)
+* [[`bd8d4401ee`](https://github.com/nodejs/node/commit/bd8d4401ee)] - **test**: usar módulo de fixtures (Maurice Hayward) [#16034](https://github.com/nodejs/node/pull/16034)
+* [[`bba5263d00`](https://github.com/nodejs/node/commit/bba5263d00)] - **test**: reemplazar fixturesDir con módulo de fixtures (tabulatedreams) [#16036](https://github.com/nodejs/node/pull/16036)
 * [[`a8e7fa4e75`](https://github.com/nodejs/node/commit/a8e7fa4e75)] - **test**: replace fixturesDir with fixtures module (Ivan Etchart) [#15893](https://github.com/nodejs/node/pull/15893)
 * [[`1fc3851642`](https://github.com/nodejs/node/commit/1fc3851642)] - **test**: change fixturesDir to fixtures.path (Savio Lucena) [#15902](https://github.com/nodejs/node/pull/15902)
 * [[`683e48cb55`](https://github.com/nodejs/node/commit/683e48cb55)] - **test**: changed fixtures require (creisle) [#15899](https://github.com/nodejs/node/pull/15899)
@@ -752,19 +752,19 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 
 ## 2017-11-07, Versión 6.12.0 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 127 commits. This includes 45 which are test related, 33 which are doc related, 13 which are updates to dependencies and 7 commits which are related to build / tools.
+Esta actualización LTS viene con 127 commits. Esto incluye 45 que están relacionados a pruebas, 33 que están relacionados a documentación, 14 que son actualizaciones para dependencias y 7 commits que están relacionados a build / tools.
 
-This release includes a security update to openssl that has been deemed low severity for the Node.js project.
+Esta versión incluye una actualización de seguridad para openssl que ha sido considerada como de baja gravedad para el proyecto Node.js.
 
-### Notable Changes
+### Cambios notables
 
 * **assert**: 
-  * assert.fail() can now take one or two arguments (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
+  * assert.fail() ahora puede tomar uno o dos argumentos (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
 * **crypto**: 
   * add sign/verify support for RSASSA-PSS (Tobias Nießen) [#11705](https://github.com/nodejs/node/pull/11705)
 * **deps**: 
-  * upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
-  * upgrade libuv to 1.15.0 (cjihrig) [#15745](https://github.com/nodejs/node/pull/15745)
+  * actualizar fuentes openssl a 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
+  * actualizar libuv a 1.15.0 (cjihrig) [#15745](https://github.com/nodejs/node/pull/15745)
   * upgrade libuv to 1.14.1 (cjihrig) [#14866](https://github.com/nodejs/node/pull/14866)
   * upgrade libuv to 1.13.1 (cjihrig) [#14117](https://github.com/nodejs/node/pull/14117)
   * upgrade libuv to 1.12.0 (cjihrig) [#13306](https://github.com/nodejs/node/pull/13306)
