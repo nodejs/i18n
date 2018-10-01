@@ -1552,26 +1552,26 @@ https://github.com/nodejs/node/commit/5cda2542fdb086f9fe5de889bea435a65e377dea
 
 <a id="0.7.6"></a>
 
-## 2012.03.13, Version 0.7.6 (unstable)
+## 2012.03.13, Versión 0.7.6 (inestable)
 
 https://github.com/nodejs/node/commit/f06abda6f58e517349d1b63a2cbf5a8d04a03505
 
-* Upgrade v8 to 3.9.17
-* Upgrade npm to 1.1.8
+* Actualizar v8 a 3.9.17
+* Actualizar npm a 1.1.8
   
-  * Add support for os/cpu fields in package.json (Adam Blackburn)
-  * Automatically node-gyp packages containing a binding.gyp
-  * Fix failures unpacking in UNC shares
-  * Never create un-listable directories
-  * Handle cases where an optionalDependency fails to build
+  * Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
+  * Node-gyp automáticamente a los paquetes que contengan un binding.gyp
+  * Corregir fallas en el desempaque en recursos compartidos de UNC
+  * Nunca crear directorios no listables
+  * Manejar casos en los que una optionalDependency falla al compilar
 
-* events: newListener emit correct fn when using 'once' (Roly Fentanes)
+* events: newListener emite fn correcto al utilizar "once" (Roly Fentanes)
 
-* url: Ignore empty port component (Łukasz Walukiewicz)
-* module: replace 'children' array (isaacs)
-* tls: parse multiple values of a key in ssl certificate (Sambasiva Suda)
-* cluster: support passing of named pipes (Ben Noordhuis)
-* Windows: include syscall in fs errors (Bert Belder)
+* url: Ignorar componente de puerto vacío (Łukasz Walukiewicz)
+* module: reemplazar array "hijo" (isaacs)
+* tls: analizar múltiples valores de una llave en un certificado ssl (Sambasiva Suda)
+* cluster: soportar el análisis de pipes nombradas (Ben Noordhuis)
+* Windows: incluir syscall en errors de fs (Bert Belder)
 * http: [#2888](https://github.com/joyent/node/issues/2888) Emit end event only once (Igor Zinkovsky)
 * readline: add multiline support (Rlidwka)
 * process: add `process.hrtime()` (Nathan Rajlich)
