@@ -1628,22 +1628,22 @@ https://github.com/nodejs/node/commit/de21de920cf93ec40736ada3792a7f85f3eadeda
 https://github.com/nodejs/node/commit/99059aad8d654acda4abcfaa68df182b50f2ec90
 
 * Actualizar V8 a 3.9.2
-* Revert support for isolates. (Ben Noordhuis)
-* cluster: Cleanup docs, event handling, and process.disconnect (Andreas Madsen)
-* gyp_addon: link with node.lib on Windows (Nathan Rajlich)
-* http: fix case where http-parser is freed twice (koichik)
-* Windows: disable RTTI and exceptions (Bert Belder)
+* Revertir soporte para isolates. (Ben Noordhuis)
+* cluster: Limpiar docs, manejo de eventos, y process.disconnect (Andreas Madsen)
+* gyp_addon: enlazar con node.lib en Windows (Nathan Rajlich)
+* http: corregir caso en el que http-parser es liberado dos veces (koichik)
+* Windows: inhabilitar RTTI y excepciones (Bert Belder)
 
 <a id="0.7.2"></a>
 
-## 2012.02.01, Version 0.7.2 (unstable)
+## 2012.02.01, Versión 0.7.2 (inestable)
 
 https://github.com/nodejs/node/commit/a3efcd2006614c3835c9395b91ab89c1f260806c
 
-* Update V8 to 3.8.9
-* Support for sharing streams across Isolates (Igor Zinkovsky)
-* [#2636](https://github.com/joyent/node/issues/2636) - Fix case where http_parsers are freed too early (koichik)
-* url: Support for IPv6 addresses in URLs (Łukasz Walukiewicz)
+* Actualizar V8 a 3.8.9
+* Soporte para compartir streams a través de Isolates (Igor Zinkovsky)
+* [#2636](https://github.com/joyent/node/issues/2636) - Corregir caso en el que http_parsers son liberados muy pronto (koichik)
+* url: Soporte para direcciones IPv6 en URLs (Łukasz Walukiewicz)
 * child_process: Add disconnect() method to child processes (Andreas Madsen)
 * fs: add O_EXCL support, exclusive open file (Ben Noordhuis)
 * fs: more specific error messages (Tj Holowaychuk)
