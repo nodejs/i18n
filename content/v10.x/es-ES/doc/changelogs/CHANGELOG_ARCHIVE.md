@@ -1703,10 +1703,10 @@ https://github.com/nodejs/node/commit/debf552ed2d4a53957446e82ff3c52a8182d5ff4
 * npm: actualizar a 1.1.24
 * fs: no finalizar emisión luego de createReadStream.pause() (Andreas Madsen)
 * vm: limpieza de fuga del módulo de memoria (Marcel Laverdet)
-* unix: fix loop starvation under high network load (Ben Noordhuis)
-* unix: remove abort() in ev_unref() (Ben Noordhuis)
-* windows/tty: never report error after forcibly aborting line-buffered read (Bert Belder)
-* windows: skip GetFileAttributes call when opening a file (Bert Belder)
+* unix: corregir inanición del bucle bajo carga de red elevada (Ben Noordhuis)
+* unix: remover abort() en ev_unref() (Ben Noordhuis)
+* windows/tty: nunca reportar error luego de abortar forzosamente la lectura de línea de buffer (Bert Belder)
+* windows: omitir llamada de GetFileAttributes al abrir un archivo (Bert Belder)
 
 <a id="0.6.18"></a>
 
@@ -1719,8 +1719,8 @@ https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 * [#3240](https://github.com/joyent/node/issues/3240): child_process: borrar a NODE_CHANNEL_FD de env en el spawn (Ben Noordhuis)
 * windows: añadir prueba para path.normalize con rutas UNC (Bert Belder)
 * windows: hacer que path.normalize convierta todas las barras a barras inclinadas hacia atrás (Bert Belder)
-* fs: Automatically close FSWatcher on error (Bert Belder)
-* [#3258](https://github.com/joyent/node/issues/3258): fs.ReadStream.pause() emits duplicate data event (koichik)
+* fs: Cerrar automáticamente a FSWatcher ante error (Bert Belder)
+* [#3258](https://github.com/joyent/node/issues/3258): fs.ReadStream.pause() emite evento de datos duplicados (koichik)
 * pipe_wrap: don't assert() on pipe accept errors (Ben Noordhuis)
 * Better exception output for module load and process.nextTick (Felix Geisendörfer)
 * zlib: fix error reporting (Ben Noordhuis)
