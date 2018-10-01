@@ -700,18 +700,18 @@ https://github.com/nodejs/node/commit/a088cf4f930d3928c97d239adf950ab43e7794aa
 * npm: Actualizar a 1.2.32
 * readline: hacer que `ctrl + L` limpie la pantalla (Yuan Chuan)
 * v8: añadir el comando setVariableValue del depurador (Ben Noordhuis)
-* net: Do not destroy socket mid-write (isaacs)
-* v8: fix build for mips32r2 architecture (Andrei Sedoi)
-* configure: fix cross-compilation host_arch_cc() (Andrei Sedoi)
+* net: No destruir el socket en medio-escritura (isaacs)
+* v8: reparar compilación para la arquitectura mips32r2 (Andrei Sedoi)
+* configure: reparar compilación-cruzada host_arch_cc() (Andrei Sedoi)
 
 <a id="0.10.11"></a>
 
-## 2013.06.13, Version 0.10.11 (Stable)
+## 2013.06.13, Versión 0.10.11 (Estable)
 
 https://github.com/nodejs/node/commit/d9d5bc465450ae5d60da32e9ffcf71c2767f1fad
 
-* uv: upgrade to 0.10.11
-* npm: Upgrade to 1.2.30
+* uv: actualizar a 0.10.11
+* npm: actualizar a 1.2.30
 * openssl: add missing configuration pieces for MIPS (Andrei Sedoi)
 * Revert "http: remove bodyHead from 'upgrade' events" (isaacs)
 * v8: fix pointer arithmetic undefined behavior (Trevor Norris)
