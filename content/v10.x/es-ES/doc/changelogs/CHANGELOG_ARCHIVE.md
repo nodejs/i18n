@@ -1688,21 +1688,21 @@ https://github.com/nodejs/node/commit/9cc55dca6f67a6096c858b841c677b0593404321
 https://github.com/nodejs/node/commit/952e513379169ec1b40909d1db056e9bf4294899
 
 * npm: Actualizar a 1.1.37 (isaacs)
-* benchmark: Backport improvements made in master (isaacs)
-* build: always link with -lz (Trent Mick)
-* core: use proper #include directives (Ben Noordhuis)
-* cluster: don't silently drop messages when the write queue gets big (Bert Belder)
-* windows: don't print error when GetConsoleTitleW returns an empty string (Bert Belder)
+* benchmark: Hacer backport con las mejoras hechas en el master (isaacs)
+* build: siempre enlazar con -lz (Trent Mick)
+* core: usar directivas #include correctas (Ben Noordhuis)
+* cluster: no soltar mensajes silenciosamente cuando la cola de escritura se haga larga (Bert Belder)
+* windows: no imprimir error cuando GetConsoleTitleW devuelva una string vacía (Bert Belder)
 
 <a id="0.6.19"></a>
 
-## 2012.06.06 Version 0.6.19 (stable)
+## 2012.06.06 Versión 0.6.19 (estable)
 
 https://github.com/nodejs/node/commit/debf552ed2d4a53957446e82ff3c52a8182d5ff4
 
-* npm: upgrade to 1.1.24
-* fs: no end emit after createReadStream.pause() (Andreas Madsen)
-* vm: cleanup module memory leakage (Marcel Laverdet)
+* npm: actualizar a 1.1.24
+* fs: no finalizar emisión luego de createReadStream.pause() (Andreas Madsen)
+* vm: limpieza de fuga del módulo de memoria (Marcel Laverdet)
 * unix: fix loop starvation under high network load (Ben Noordhuis)
 * unix: remove abort() in ev_unref() (Ben Noordhuis)
 * windows/tty: never report error after forcibly aborting line-buffered read (Bert Belder)
