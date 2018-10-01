@@ -1670,13 +1670,13 @@ https://github.com/nodejs/node/commit/a74354735ab5d5b0fa35a1e4ff7e653757d2069b
 
 <a id="0.7.0"></a>
 
-## 2012.01.16, Version 0.7.0 (unstable)
+## 2012.01.16, Versión 0.7.0 (inestable)
 
 https://github.com/nodejs/node/commit/9cc55dca6f67a6096c858b841c677b0593404321
 
-* Upgrade V8 to 3.8.6
-* Use GYP build system on unix (Ben Noordhuis)
-* Experimental isolates support (Ben Noordhuis)
+* Actualizar V8 a 3.8.6
+* Usar sistema de build GYP en unix (Ben Noordhuis)
+* Soporte de isolates experimental (Ben Noordhuis)
 * Improvements to Cluster API (Andreas Madsen)
 * Use isolates for internal debugger (Fedor Indutny)
 * Bug fixes
