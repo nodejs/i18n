@@ -685,7 +685,7 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 * tls: solo esperar para terminar si no lo vimos (Timothy J Fontaine)
 * http: deshacerse de la respuesta cuando la solicitud es abortada (isaacs)
 * http: use an unref'd timer to fix delay in exit (Peter Rust)
-* zlib: level can be negative (Brian White)
+* zlib: nivel puede ser negativo (Brian White)
 * zlib: allow zero values for level and strategy (Brian White)
 * buffer: add comment explaining buffer alignment (Ben Noordhuis)
 * string_bytes: properly detect 64bit (Timothy J Fontaine)
