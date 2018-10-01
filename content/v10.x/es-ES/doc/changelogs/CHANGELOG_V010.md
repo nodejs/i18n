@@ -652,7 +652,7 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 
 <a id="0.10.15"></a>
 
-## 2013.07.25, Version 0.10.15 (Stable)
+## 2013.07.25, Versión 0.10.15 (Estable)
 
 https://github.com/nodejs/node/commit/2426d65af860bda7be9f0832a99601cc43c6cf63
 
