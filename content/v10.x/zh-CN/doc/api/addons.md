@@ -121,7 +121,7 @@ Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的
 
 * 当 `node-gyp` 运行时，它会检查特定的 Node.js 发行版本，并且下载完整的源代码的 tar 包或者只是头文件。 如果下载了完整的源代码，插件将有完全访问全套 Node.js 依赖的权限。 然而，如果只是下载了 Node.js 的头文件，则只能访问 Node.js 导出的符号。
 
-* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. 如果使用该选项，则插件将拥有全套依赖的访问权限。
+* 可以使用指向本地 Node.js 原图像的 `--nodedir` 标记运行 `node-gyp` 。 如果使用该选项，则插件将拥有全套依赖的访问权限。
 
 ### 使用 require() 加载插件
 
