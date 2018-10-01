@@ -664,8 +664,8 @@ https://github.com/nodejs/node/commit/2426d65af860bda7be9f0832a99601cc43c6cf63
 
 https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
 
-* uv: Upgrade to v0.10.13
-* npm: Upgrade to v1.3.5
+* uv: Actualizar a v0.10.13
+* npm: Actualizar a v1.3.5
 * os: Don't report negative times in cpu info (Ben Noordhuis)
 * fs: Handle large UID and GID (Ben Noordhuis)
 * url: Fix edge-case when protocol is non-lowercase (Shuan Wang)
