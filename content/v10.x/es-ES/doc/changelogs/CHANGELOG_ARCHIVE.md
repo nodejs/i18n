@@ -1513,20 +1513,20 @@ https://github.com/nodejs/node/commit/c2b47097c0b483552efc1947c6766fa1128600b6
 * tcp: hacer que getsockname() devuelva a la familia de direcciones como una string (Shigeki Ohtsu)
 * http, https: reparar .setTimeout() (ssuda)
 * os: añadir carácter EOL de plataforma cruzada (Mustansir Golawala)
-* typed arrays: unexport SizeOfArrayElementForType() (Aaron Jacobs)
-* net: honor 'enable' flag in .setNoDelay() (Ben Noordhuis)
-* child_process: emit error when .kill fails (Andreas Madsen)
-* gyp: fix 'argument list too long' build error (Ben Noordhuis)
-* fs.WriteStream: Handle modifications to fs.open (isaacs)
-* repl, readline: Handle newlines better (Nathan Rajlich, Nathan Friedly)
-* build: target OSX 10.5 when building on darwin (Nathan Rajlich)
-* Fix [#3052](https://github.com/joyent/node/issues/3052) Handle errors properly in zlib (isaacs)
-* build: add support for DTrace and postmortem (Dave Pacheco)
-* core: add reusable Slab allocator (Ben Noordhuis)
+* typed arrays: des-exportar SizeOfArrayElementForType() (Aaron Jacobs)
+* net: compaginar con "enable" de bandera en .setNoDelay() (Ben Noordhuis)
+* child_process: emitir error cuando .kill falle (Andreas Madsen)
+* gyp: reparar error de compilación "argument list too long" (Ben Noordhuis)
+* fs.WriteStream: Manejar modificaciones para fs.open (isaacs)
+* repl, readline: Manejar mejor las nuevas líneas (Nathan Rajlich, Nathan Friedly)
+* build: establecer OSX 10.5 como objetivo al compilar en darwin (Nathan Rajlich)
+* Reparar [#3052](https://github.com/joyent/node/issues/3052) Manejar correctamente errores en zlib (isaacs)
+* build: añadir soporte para DTrace y postmortem (Dave Pacheco)
+* core: añadir asignador de Slabs reusable (Ben Noordhuis)
 
 <a id="0.7.7"></a>
 
-## 2012.03.30, Version 0.7.7 (unstable)
+## 2012.03.30, Versión 0.7.7 (inestable)
 
 https://github.com/nodejs/node/commit/5cda2542fdb086f9fe5de889bea435a65e377dea
 
