@@ -1648,19 +1648,19 @@ https://github.com/nodejs/node/commit/a3efcd2006614c3835c9395b91ab89c1f260806c
 * fs: añadir soporte para O_EXCL, apertura de archivo exclusiva (Ben Noordhuis)
 * fs: mensajes de error más específicos (Tj Holowaychuk)
 * tty: emitir evento de clave "unknown" si la secuencia de la clave no es encontrada (Dan VerWeire, Nathan Rajlich)
-* build: compile release build too if BUILDTYPE=Debug (Ben Noordhuis)
-* module: fix --debug-brk on symlinked scripts (Fedor Indutny)
-* zlib: fix `Failed to set dictionary` issue (Fedor Indutny)
-* waf: predict target arch for OS X (Fedor Indutny)
+* build: compilar build de la versión si BUILDTYPE=Debug (Ben Noordhuis)
+* module: reparar --debug-brk en scripts symlinked (Fedor Indutny)
+* zlib: Reparar problema `Failed to set dictionary` (Fedor Indutny)
+* waf: predecir arch objetivo para OS X (Fedor Indutny)
 
 <a id="0.7.1"></a>
 
-## 2012.01.23, Version 0.7.1 (unstable)
+## 2012.01.23, Versión 0.7.1 (inestable)
 
 https://github.com/nodejs/node/commit/a74354735ab5d5b0fa35a1e4ff7e653757d2069b
 
-* Update V8 to 3.8.8
-* Install node-waf by default (Fedor Indutny)
+* Actualizar V8 a 3.8.8
+* Instalar node-waf por defecto (Fedor Indutny)
 * crypto: Add ability to turn off PKCS padding (Ingmar Runge)
 * v8: implement VirtualMemory class on SunOS (Ben Noordhuis)
 * Add cluster.setupMaster (Andreas Madsen)
