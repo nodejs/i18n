@@ -682,7 +682,7 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 * uv: Actualizar a v0.10.12
 * npm: Actualizar a 1.3.2
 * windows: obtener el errno apropiado (Ben Noordhuis)
-* tls: only wait for finish if we haven't seen it (Timothy J Fontaine)
+* tls: solo esperar para terminar si no lo vimos (Timothy J Fontaine)
 * http: Dump response when request is aborted (isaacs)
 * http: use an unref'd timer to fix delay in exit (Peter Rust)
 * zlib: level can be negative (Brian White)
