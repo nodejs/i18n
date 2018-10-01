@@ -1530,11 +1530,11 @@ https://github.com/nodejs/node/commit/c2b47097c0b483552efc1947c6766fa1128600b6
 
 https://github.com/nodejs/node/commit/5cda2542fdb086f9fe5de889bea435a65e377dea
 
-* Upgrade V8 to 3.9.24.7
-* Upgrade npm to 1.1.15
-* Handle Emoji characters properly (Erik Corry, Bert Belder)
-* readline: migrate ansi/vt100 logic from tty to readline (Nathan Rajlich)
-* readline: Fix multiline handling (Alex Kocharin)
+* Actualizar V8 a 3.9.24.7
+* Actualizar npm a 1.1.15
+* Manejar caracteres Emoji correctamente (Erik Corry, Bert Belder)
+* readline: migrar lógica ansi/vt100 de tty a readline (Nathan Rajlich)
+* readline: Reparar manejo de multilínea (Alex Kocharin)
 * add a -i/--interactive flag to force the REPL (Nathan Rajlich)
 * debugger: add breakOnException command (Fedor Indutny)
 * cluster: kill workers when master dies (Andreas Madsen)
