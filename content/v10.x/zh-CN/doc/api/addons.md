@@ -127,7 +127,7 @@ Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的
 
 已编译的插件二进制文件名的扩展名为 `.node`（与之相反的是 `.dll` 或 `.so`）。 编写 [`require()`](modules.html#modules_require) 函数是为了查找具有 `.node` 文件扩展名的文件，并将它们初始化为动态链接库。
 
-当调用 [`require()`](modules.html#modules_require) 函数时，`.node` 扩展名通常可以被省略，Node.js仍然会找到并初始化插件。 但有一点需要注意，Node.js将首先尝试定位和加载碰巧共享相同基本名称的模块或JavaScript文件。 For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+当调用 [`require()`](modules.html#modules_require) 函数时，`.node` 扩展名通常可以被省略，Node.js仍然会找到并初始化插件。 但有一点需要注意，Node.js将首先尝试定位和加载碰巧共享相同基本名称的模块或JavaScript文件。 例如，如果有一个文件 `addon.js` 与二进制文件 `addon.node` 在同一个目录中，那么 [`require('addon')`](modules.html#modules_require) 将优先考虑 `addon.js` 文件并加载它。
 
 ## Native Abstractions for Node.js
 
