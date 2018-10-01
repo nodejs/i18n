@@ -698,8 +698,8 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 https://github.com/nodejs/node/commit/a088cf4f930d3928c97d239adf950ab43e7794aa
 
 * npm: Actualizar a 1.2.32
-* readline: make `ctrl + L` clear the screen (Yuan Chuan)
-* v8: add setVariableValue debugger command (Ben Noordhuis)
+* readline: hacer que `ctrl + L` limpie la pantalla (Yuan Chuan)
+* v8: añadir el comando setVariableValue del depurador (Ben Noordhuis)
 * net: Do not destroy socket mid-write (isaacs)
 * v8: fix build for mips32r2 architecture (Andrei Sedoi)
 * configure: fix cross-compilation host_arch_cc() (Andrei Sedoi)
