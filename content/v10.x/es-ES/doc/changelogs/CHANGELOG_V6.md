@@ -326,7 +326,7 @@ Esta actualización de LTS viene con 115 commits. Esto incluye a 52 que están r
 ### Commits
 
 * [[`b1b975370f`](https://github.com/nodejs/node/commit/b1b975370f)] - **benchmark,path**: remover variables no usadas (薛定谔的猫) [#15789](https://github.com/nodejs/node/pull/15789)
-* [[`ac6f345f70`](https://github.com/nodejs/node/commit/ac6f345f70)] - **build**: allow running configure from any directory (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
+* [[`ac6f345f70`](https://github.com/nodejs/node/commit/ac6f345f70)] - **build**: permite ejecutar a configure desde cualquier directorio (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
 * [[`017492eca2`](https://github.com/nodejs/node/commit/017492eca2)] - **build**: add serial commas to messages in configure script (Rich Trott) [#17464](https://github.com/nodejs/node/pull/17464)
 * [[`ad9a8578ee`](https://github.com/nodejs/node/commit/ad9a8578ee)] - **build**: reparar el objetivo de test-v8 (Michaël Zasso) [#17269](https://github.com/nodejs/node/pull/17269)
 * [[`9ba35e859f`](https://github.com/nodejs/node/commit/9ba35e859f)] - **build**: remover entrada VCLibrarianTool vacía (Daniel Bevenius) [#17191](https://github.com/nodejs/node/pull/17191)
@@ -674,8 +674,8 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`6b8830c1df`](https://github.com/nodejs/node/commit/6b8830c1df)] - **test**: use fixtures in test-https-set-timeout-server (Bob Clewell) [#15886](https://github.com/nodejs/node/pull/15886)
 * [[`57590cd097`](https://github.com/nodejs/node/commit/57590cd097)] - **test**: hacer uso de common/fixtures.fixturesDir (Jem Bezooyen) [#15815](https://github.com/nodejs/node/pull/15815)
 * [[`c9d07faa04`](https://github.com/nodejs/node/commit/c9d07faa04)] - **test**: usar common/fixtures en test-https-close (Alberto Lopez de Lara) [#15870](https://github.com/nodejs/node/pull/15870)
-* [[`68a2d394dd`](https://github.com/nodejs/node/commit/68a2d394dd)] - **test**: use fixtures in test-process-warnings (Suresh Srinivas) [#15869](https://github.com/nodejs/node/pull/15869)
-* [[`28756b318a`](https://github.com/nodejs/node/commit/28756b318a)] - **test**: use fixtures in tls-friendly-error-message (tobyfarley) [#15905](https://github.com/nodejs/node/pull/15905)
+* [[`68a2d394dd`](https://github.com/nodejs/node/commit/68a2d394dd)] - **test**: usar fixtures en test-process-warnings (Suresh Srinivas) [#15869](https://github.com/nodejs/node/pull/15869)
+* [[`28756b318a`](https://github.com/nodejs/node/commit/28756b318a)] - **test**: usar fixtures en tls-friendly-error-message (tobyfarley) [#15905](https://github.com/nodejs/node/pull/15905)
 * [[`a05fe5f716`](https://github.com/nodejs/node/commit/a05fe5f716)] - **test**: usar common/fixtures en tls-connect-no-host (Donovan Buck) [#15986](https://github.com/nodejs/node/pull/15986)
 * [[`cf31eb7532`](https://github.com/nodejs/node/commit/cf31eb7532)] - **test**: usar common/fixtures en test-https-agent (jpaulptr) [#15941](https://github.com/nodejs/node/pull/15941)
 * [[`c9c37d076c`](https://github.com/nodejs/node/commit/c9c37d076c)] - **test**: usar módulo de fixtures común (Kat Rosario) [#15856](https://github.com/nodejs/node/pull/15856)
