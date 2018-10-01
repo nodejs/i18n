@@ -1583,12 +1583,12 @@ https://github.com/nodejs/node/commit/f06abda6f58e517349d1b63a2cbf5a8d04a03505
 
 <a id="0.7.5"></a>
 
-## 2012.02.23, Version 0.7.5 (unstable)
+## 2012.02.23, Versión 0.7.5 (inestable)
 
 https://github.com/nodejs/node/commit/d384b8b0d2ab7f05465f0a3e15fe20b4e25b5f86
 
-* startup speed improvements (Maciej Małecki)
-* crypto: add function getDiffieHellman() (Tomasz Buchert)
+* mejoras en la velocidad de arranque (Maciej Małecki)
+* crypto: añadir función getDiffieHellman() (Tomasz Buchert)
 * buffer: support decoding of URL-safe base64 (Ben Noordhuis)
 * Make QueryString.parse() even faster (Brian White)
 * url: decode url entities in auth section (Ben Noordhuis)
