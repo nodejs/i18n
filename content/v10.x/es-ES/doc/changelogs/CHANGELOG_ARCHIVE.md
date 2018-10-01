@@ -1509,10 +1509,10 @@ https://github.com/nodejs/node/commit/c2b47097c0b483552efc1947c6766fa1128600b6
 * Actualizar npm a 1.1.18
 * Mostrar licencias en instaladores Binarios
 * Dominios (isaacs)
-* readline: rename "end" to "close" (Nathan Rajlich)
-* tcp: make getsockname() return address family as string (Shigeki Ohtsu)
-* http, https: fix .setTimeout() (ssuda)
-* os: add cross platform EOL character (Mustansir Golawala)
+* readline: renombrar a "end" como "close" (Nathan Rajlich)
+* tcp: hacer que getsockname() devuelva a la familia de direcciones como una string (Shigeki Ohtsu)
+* http, https: reparar .setTimeout() (ssuda)
+* os: añadir carácter EOL de plataforma cruzada (Mustansir Golawala)
 * typed arrays: unexport SizeOfArrayElementForType() (Aaron Jacobs)
 * net: honor 'enable' flag in .setNoDelay() (Ben Noordhuis)
 * child_process: emit error when .kill fails (Andreas Madsen)
