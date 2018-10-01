@@ -666,22 +666,22 @@ https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
 
 * uv: Actualizar a v0.10.13
 * npm: Actualizar a v1.3.5
-* os: Don't report negative times in cpu info (Ben Noordhuis)
-* fs: Handle large UID and GID (Ben Noordhuis)
+* os: No reportar tiempos negativos en la información del cpu (Ben Noordhuis)
+* fs: Manejar UID y GID grandes (Ben Noordhuis)
 * url: Fix edge-case when protocol is non-lowercase (Shuan Wang)
-* doc: Streams API Doc Rewrite (isaacs)
-* node: call MakeDomainCallback in all domain cases (Trevor Norris)
-* crypto: fix memory leak in LoadPKCS12 (Fedor Indutny)
+* doc: Reescribir el API Doc de streams (isaacs)
+* node: llamar a MakeDomainCallback en todos los casos de dominio (Trevor Norris)
+* crypto: reparar fuga de memoria en LoadPKCS12 (Fedor Indutny)
 
 <a id="0.10.13"></a>
 
-## 2013.07.09, Version 0.10.13 (Stable)
+## 2013.07.09, Versión 0.10.13 (Estable)
 
 https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 
-* uv: Upgrade to v0.10.12
-* npm: Upgrade to 1.3.2
-* windows: get proper errno (Ben Noordhuis)
+* uv: Actualizar a v0.10.12
+* npm: Actualizar a 1.3.2
+* windows: obtener el errno apropiado (Ben Noordhuis)
 * tls: only wait for finish if we haven't seen it (Timothy J Fontaine)
 * http: Dump response when request is aborted (isaacs)
 * http: use an unref'd timer to fix delay in exit (Peter Rust)
