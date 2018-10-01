@@ -1677,9 +1677,9 @@ https://github.com/nodejs/node/commit/9cc55dca6f67a6096c858b841c677b0593404321
 * Actualizar V8 a 3.8.6
 * Usar sistema de build GYP en unix (Ben Noordhuis)
 * Soporte de isolates experimental (Ben Noordhuis)
-* Improvements to Cluster API (Andreas Madsen)
-* Use isolates for internal debugger (Fedor Indutny)
-* Bug fixes
+* Mejoras para API de Clúster (Andreas Madsen)
+* Usar isolates para el depurador interno (Fedor Indutny)
+* Corrección de bugs
 
 <a id="0.6.20"></a>
 
@@ -1710,12 +1710,12 @@ https://github.com/nodejs/node/commit/debf552ed2d4a53957446e82ff3c52a8182d5ff4
 
 <a id="0.6.18"></a>
 
-## 2012.05.15 Version 0.6.18 (stable)
+## 2012.05.15 Versión 0.6.18 (estable)
 
 https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 
-* windows: skip GetFileAttributes call when opening a file (Bert Belder)
-* crypto: add PKCS12/PFX support (Sambasiva Suda)
+* windows: omitir llamada de GetFileAttributes al abrir un archivo (Bert Belder)
+* crypto: añadir soporte PKCS12/PFX (Sambasiva Suda)
 * [#3240](https://github.com/joyent/node/issues/3240): child_process: delete NODE_CHANNEL_FD from env in spawn (Ben Noordhuis)
 * windows: add test for path.normalize with UNC paths (Bert Belder)
 * windows: make path.normalize convert all slashes to backslashes (Bert Belder)
