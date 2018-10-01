@@ -1500,233 +1500,233 @@ https://github.com/nodejs/node/commit/782277f11a753ded831439ed826448c06fc0f356
 
 <a id="0.7.8"></a>
 
-## 2012.04.18, Version 0.7.8 (unstable)
+## 2012.04.18, Versión 0.7.8 (inestable)
 
 https://github.com/nodejs/node/commit/c2b47097c0b483552efc1947c6766fa1128600b6
 
-* Upgrade V8 to 3.9.24.9
-* Upgrade OpenSSL to 1.0.0f
-* Upgrade npm to 1.1.18
-* Show licenses in Binary installers
-* Domains (isaacs)
-* readline: rename "end" to "close" (Nathan Rajlich)
-* tcp: make getsockname() return address family as string (Shigeki Ohtsu)
-* http, https: fix .setTimeout() (ssuda)
-* os: add cross platform EOL character (Mustansir Golawala)
-* typed arrays: unexport SizeOfArrayElementForType() (Aaron Jacobs)
-* net: honor 'enable' flag in .setNoDelay() (Ben Noordhuis)
-* child_process: emit error when .kill fails (Andreas Madsen)
-* gyp: fix 'argument list too long' build error (Ben Noordhuis)
-* fs.WriteStream: Handle modifications to fs.open (isaacs)
-* repl, readline: Handle newlines better (Nathan Rajlich, Nathan Friedly)
-* build: target OSX 10.5 when building on darwin (Nathan Rajlich)
-* Fix [#3052](https://github.com/joyent/node/issues/3052) Handle errors properly in zlib (isaacs)
-* build: add support for DTrace and postmortem (Dave Pacheco)
-* core: add reusable Slab allocator (Ben Noordhuis)
+* Actualizar V8 a 3.9.24.9
+* Actualizar OpenSSL a 1.0.0f
+* Actualizar npm a 1.1.18
+* Mostrar licencias en instaladores Binarios
+* Dominios (isaacs)
+* readline: renombrar a "end" como "close" (Nathan Rajlich)
+* tcp: hacer que getsockname() devuelva a la familia de direcciones como una string (Shigeki Ohtsu)
+* http, https: reparar .setTimeout() (ssuda)
+* os: añadir carácter EOL de plataforma cruzada (Mustansir Golawala)
+* typed arrays: des-exportar SizeOfArrayElementForType() (Aaron Jacobs)
+* net: compaginar con "enable" de bandera en .setNoDelay() (Ben Noordhuis)
+* child_process: emitir error cuando .kill falle (Andreas Madsen)
+* gyp: reparar error de compilación "argument list too long" (Ben Noordhuis)
+* fs.WriteStream: Manejar modificaciones para fs.open (isaacs)
+* repl, readline: Manejar mejor las nuevas líneas (Nathan Rajlich, Nathan Friedly)
+* build: establecer OSX 10.5 como objetivo al compilar en darwin (Nathan Rajlich)
+* Reparar [#3052](https://github.com/joyent/node/issues/3052) Manejar correctamente errores en zlib (isaacs)
+* build: añadir soporte para DTrace y postmortem (Dave Pacheco)
+* core: añadir asignador de Slabs reusable (Ben Noordhuis)
 
 <a id="0.7.7"></a>
 
-## 2012.03.30, Version 0.7.7 (unstable)
+## 2012.03.30, Versión 0.7.7 (inestable)
 
 https://github.com/nodejs/node/commit/5cda2542fdb086f9fe5de889bea435a65e377dea
 
-* Upgrade V8 to 3.9.24.7
-* Upgrade npm to 1.1.15
-* Handle Emoji characters properly (Erik Corry, Bert Belder)
-* readline: migrate ansi/vt100 logic from tty to readline (Nathan Rajlich)
-* readline: Fix multiline handling (Alex Kocharin)
-* add a -i/--interactive flag to force the REPL (Nathan Rajlich)
-* debugger: add breakOnException command (Fedor Indutny)
-* cluster: kill workers when master dies (Andreas Madsen)
-* cluster: add graceful disconnect support (Andreas Madsen)
-* child_process: Separate 'close' event from 'exit' (Charlie McConnell)
-* typed arrays: add Uint8ClampedArray (Mikael Bourges-Sevenier)
-* buffer: Fix byte alignment issues (Ben Noordhuis, Erik Lundin)
-* tls: fix CryptoStream.setKeepAlive() (Shigeki Ohtsu)
-* Expose http parse error codes (Felix Geisendörfer)
-* events: don't delete the listeners array (Ben Noordhuis, Nathan Rajlich)
-* process: add process.config to view node's ./configure settings (Nathan Rajlich)
-* process: process.execArgv to see node's arguments (Micheil Smith)
-* process: fix process.title setter (Ben Noordhuis)
-* timers: handle negative or non-numeric timeout values (Ben Noordhuis)
+* Actualizar V8 a 3.9.24.7
+* Actualizar npm a 1.1.15
+* Manejar caracteres Emoji correctamente (Erik Corry, Bert Belder)
+* readline: migrar lógica ansi/vt100 de tty a readline (Nathan Rajlich)
+* readline: Reparar manejo de multilínea (Alex Kocharin)
+* añadir una bandera -i/--interactive para forzar al REPL (Nathan Rajlich)
+* debugger: añadir comando breakOnException (Fedor Indutny)
+* cluster: matar a los workers cuando muere el master (Andreas Madsen)
+* cluster: añadir soporte para la desconexión con gracia (Andreas Madsen)
+* child_process: Separar al evento "close" de "exit" (Charlie McConnell)
+* typed arrays: añadir Uint8ClampedArray (Mikael Bourges-Sevenier)
+* buffer: Reparar problemas de alineación de bytes (Ben Noordhuis, Erik Lundin)
+* tls: reparar CryptoStream.setKeepAlive() (Shigeki Ohtsu)
+* Exponer códigos de error de análisis de http (Felix Geisendörfer)
+* events: no borrar el array de listeners (Ben Noordhuis, Nathan Rajlich)
+* process: añadir process.config para ver los ajustes de ./configure de node (Nathan Rajlich)
+* process: process.execArgv para ver argumentos de node (Micheil Smith)
+* process: reparar setter de process.title (Ben Noordhuis)
+* timers: manejar valores de timeout negativos o no numéricos (Ben Noordhuis)
 
 <a id="0.7.6"></a>
 
-## 2012.03.13, Version 0.7.6 (unstable)
+## 2012.03.13, Versión 0.7.6 (inestable)
 
 https://github.com/nodejs/node/commit/f06abda6f58e517349d1b63a2cbf5a8d04a03505
 
-* Upgrade v8 to 3.9.17
-* Upgrade npm to 1.1.8
+* Actualizar v8 a 3.9.17
+* Actualizar npm a 1.1.8
   
-  * Add support for os/cpu fields in package.json (Adam Blackburn)
-  * Automatically node-gyp packages containing a binding.gyp
-  * Fix failures unpacking in UNC shares
-  * Never create un-listable directories
-  * Handle cases where an optionalDependency fails to build
+  * Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
+  * Node-gyp automáticamente a los paquetes que contengan un binding.gyp
+  * Corregir fallas en el desempaque en recursos compartidos de UNC
+  * Nunca crear directorios no listables
+  * Manejar casos en los que una optionalDependency falla al compilar
 
-* events: newListener emit correct fn when using 'once' (Roly Fentanes)
+* events: newListener emite fn correcto al utilizar "once" (Roly Fentanes)
 
-* url: Ignore empty port component (Łukasz Walukiewicz)
-* module: replace 'children' array (isaacs)
-* tls: parse multiple values of a key in ssl certificate (Sambasiva Suda)
-* cluster: support passing of named pipes (Ben Noordhuis)
-* Windows: include syscall in fs errors (Bert Belder)
-* http: [#2888](https://github.com/joyent/node/issues/2888) Emit end event only once (Igor Zinkovsky)
-* readline: add multiline support (Rlidwka)
-* process: add `process.hrtime()` (Nathan Rajlich)
-* net, http, https: add localAddress option (Dmitry Nizovtsev)
-* addon improvements (Nathan Rajlich)
-* build improvements (Ben Noordhuis, Sadique Ali, T.C. Hollingsworth, Nathan Rajlich)
-* add support for "SEARCH" request methods (Nathan Rajlich)
-* expose the zlib and http_parser version in process.versions (Nathan Rajlich)
+* url: Ignorar componente de puerto vacío (Łukasz Walukiewicz)
+* module: reemplazar array "hijo" (isaacs)
+* tls: analizar múltiples valores de una llave en un certificado ssl (Sambasiva Suda)
+* cluster: soportar el análisis de pipes nombradas (Ben Noordhuis)
+* Windows: incluir syscall en errors de fs (Bert Belder)
+* http: [#2888](https://github.com/joyent/node/issues/2888) Emitir evento de fin solo una vez (Igor Zinkovsky)
+* readline: añadir soporte de multilínea (Rlidwka)
+* process: añadir `process.hrtime()` (Nathan Rajlich)
+* net, http, https: añadir opción localAddress (Dmitry Nizovtsev)
+* mejoras de complemento (Nathan Rajlich)
+* mejoras de build (Ben Noordhuis, Sadique Ali, T.C. Hollingsworth, Nathan Rajlich)
+* añadir soporte para métodos de solicitud de "SEARCH" (Nathan Rajlich)
+* exponer las versiones de zlib y http_parser en process.versions (Nathan Rajlich)
 
 <a id="0.7.5"></a>
 
-## 2012.02.23, Version 0.7.5 (unstable)
+## 2012.02.23, Versión 0.7.5 (inestable)
 
 https://github.com/nodejs/node/commit/d384b8b0d2ab7f05465f0a3e15fe20b4e25b5f86
 
-* startup speed improvements (Maciej Małecki)
-* crypto: add function getDiffieHellman() (Tomasz Buchert)
-* buffer: support decoding of URL-safe base64 (Ben Noordhuis)
-* Make QueryString.parse() even faster (Brian White)
-* url: decode url entities in auth section (Ben Noordhuis)
-* http: support PURGE request method (Ben Noordhuis)
-* http: Generate Date headers on responses (Mark Nottingham)
-* Fix [#2762](https://github.com/joyent/node/issues/2762): Add callback to close function. (Mikeal Rogers)
-* dgram: fix out-of-bound memory read (Ben Noordhuis)
-* repl: add automatic loading of built-in libs (Brandon Benvie)
-* repl: remove double calls where possible (Fedor Indutny)
-* Readline improvements. Related: [#2737](https://github.com/joyent/node/issues/2737) [#2756](https://github.com/joyent/node/issues/2756) (Colton Baker)
-* build: disable -fomit-frame-pointer on solaris (Dave Pacheco)
-* build: arch detection improvements (Nathan Rajlich)
-* build: Make a fat binary for the OS X `make pkg`. (Nathan Rajlich)
-* jslint src/ and lib/ on 'make test' (isaacs)
+* mejoras en la velocidad de arranque (Maciej Małecki)
+* crypto: añadir función getDiffieHellman() (Tomasz Buchert)
+* buffer: soportar decodificación de base64 con seguridad de URL (Ben Noordhuis)
+* Hacer que QueryString.parse() sea incluso más rápida (Brian White)
+* url: decodificar entidades url en la sección de autenticación (Ben Noordhuis)
+* http: soportar método de solicitud PURGE (Ben Noordhuis)
+* http: Generar cabeceras de Fecha en las respuestas (Mark Nottingham)
+* Reparar [#2762](https://github.com/joyent/node/issues/2762): Añadir callback a la función de cierre. (Mikeal Rogers)
+* dgram: reparar lectura de memoria fuera del límite (Ben Noordhuis)
+* repl: añadir carga automática de libs incorporadas (Brandon Benvie)
+* repl: remover llamadas dobles de donde sea posible (Fedor Indutny)
+* Mejoras de Readline. Relacionados: [#2737](https://github.com/joyent/node/issues/2737) [#2756](https://github.com/joyent/node/issues/2756) (Colton Baker)
+* build: inhabilitar -fomit-frame-pointer en solaris (Dave Pacheco)
+* build: mejoras de detección de arch (Nathan Rajlich)
+* build: Crear un binario multiarquitectura para el `make pkg` de OS X. (Nathan Rajlich)
+* jslint src/ y lib/ en "make test" (isaacs)
 
 <a id="0.7.4"></a>
 
-## 2012.02.14, Version 0.7.4 (unstable)
+## 2012.02.14, Versión 0.7.4 (inestable)
 
 https://github.com/nodejs/node/commit/de21de920cf93ec40736ada3792a7f85f3eadeda
 
-* Upgrade V8 to 3.9.5
-* Upgrade npm to 1.1.1
-* build: Detect host_arch better (Karl Skomski)
-* debugger: export `debug_port` to `process` (Fedor Indutny)
-* api docs: CSS bug fixes (isaacs)
-* build: use -fPIC for native addons on UNIX (Nathan Rajlich)
-* Re-add top-level v8::Locker (Marcel Laverdet)
-* Move images out of the dist tarballs (isaacs)
-* libuv: Remove uv_export and uv_import (Ben Noordhuis)
-* build: Support x64 build on Windows (Igor Zinkovsky)
+* Actualizar V8 a 3.9.5
+* Actualizar npm a 1.1.1
+* build: Detectar mejor el host_arch (Karl Skomski)
+* debugger: exportar `debug_port` a `process` (Fedor Indutny)
+* api docs: reparaciones de bug de CSS (isaacs)
+* build: usar -fPIC para complementos nativos en UNIX (Nathan Rajlich)
+* Volver a añadir v8::Locker de nivel superior (Marcel Laverdet)
+* Mover imágenes fuera de las tarballs de dist (isaacs)
+* libuv: Remover uv_export y uv_import (Ben Noordhuis)
+* build: Soportar build x64 en Windows (Igor Zinkovsky)
 
 <a id="0.7.3"></a>
 
-## 2012.02.07, Version 0.7.3 (unstable)
+## 2012.02.07, Versión 0.7.3 (inestable)
 
 https://github.com/nodejs/node/commit/99059aad8d654acda4abcfaa68df182b50f2ec90
 
-* Upgrade V8 to 3.9.2
-* Revert support for isolates. (Ben Noordhuis)
-* cluster: Cleanup docs, event handling, and process.disconnect (Andreas Madsen)
-* gyp_addon: link with node.lib on Windows (Nathan Rajlich)
-* http: fix case where http-parser is freed twice (koichik)
-* Windows: disable RTTI and exceptions (Bert Belder)
+* Actualizar V8 a 3.9.2
+* Revertir soporte para isolates. (Ben Noordhuis)
+* cluster: Limpiar docs, manejo de eventos, y process.disconnect (Andreas Madsen)
+* gyp_addon: enlazar con node.lib en Windows (Nathan Rajlich)
+* http: corregir caso en el que http-parser es liberado dos veces (koichik)
+* Windows: inhabilitar RTTI y excepciones (Bert Belder)
 
 <a id="0.7.2"></a>
 
-## 2012.02.01, Version 0.7.2 (unstable)
+## 2012.02.01, Versión 0.7.2 (inestable)
 
 https://github.com/nodejs/node/commit/a3efcd2006614c3835c9395b91ab89c1f260806c
 
-* Update V8 to 3.8.9
-* Support for sharing streams across Isolates (Igor Zinkovsky)
-* [#2636](https://github.com/joyent/node/issues/2636) - Fix case where http_parsers are freed too early (koichik)
-* url: Support for IPv6 addresses in URLs (Łukasz Walukiewicz)
-* child_process: Add disconnect() method to child processes (Andreas Madsen)
-* fs: add O_EXCL support, exclusive open file (Ben Noordhuis)
-* fs: more specific error messages (Tj Holowaychuk)
-* tty: emit 'unknown' key event if key sequence not found (Dan VerWeire, Nathan Rajlich)
-* build: compile release build too if BUILDTYPE=Debug (Ben Noordhuis)
-* module: fix --debug-brk on symlinked scripts (Fedor Indutny)
-* zlib: fix `Failed to set dictionary` issue (Fedor Indutny)
-* waf: predict target arch for OS X (Fedor Indutny)
+* Actualizar V8 a 3.8.9
+* Soporte para compartir streams a través de Isolates (Igor Zinkovsky)
+* [#2636](https://github.com/joyent/node/issues/2636) - Corregir caso en el que http_parsers son liberados muy pronto (koichik)
+* url: Soporte para direcciones IPv6 en URLs (Łukasz Walukiewicz)
+* child_process: Añadir método disconnect() a los procesos secundarios (Andreas Madsen)
+* fs: añadir soporte para O_EXCL, apertura de archivo exclusiva (Ben Noordhuis)
+* fs: mensajes de error más específicos (Tj Holowaychuk)
+* tty: emitir evento de clave "unknown" si la secuencia de la clave no es encontrada (Dan VerWeire, Nathan Rajlich)
+* build: compilar build de la versión si BUILDTYPE=Debug (Ben Noordhuis)
+* module: reparar --debug-brk en scripts symlinked (Fedor Indutny)
+* zlib: Reparar problema `Failed to set dictionary` (Fedor Indutny)
+* waf: predecir arch objetivo para OS X (Fedor Indutny)
 
 <a id="0.7.1"></a>
 
-## 2012.01.23, Version 0.7.1 (unstable)
+## 2012.01.23, Versión 0.7.1 (inestable)
 
 https://github.com/nodejs/node/commit/a74354735ab5d5b0fa35a1e4ff7e653757d2069b
 
-* Update V8 to 3.8.8
-* Install node-waf by default (Fedor Indutny)
-* crypto: Add ability to turn off PKCS padding (Ingmar Runge)
-* v8: implement VirtualMemory class on SunOS (Ben Noordhuis)
-* Add cluster.setupMaster (Andreas Madsen)
-* move `path.exists*` to `fs.exists*` (Maciej Małecki)
-* typed arrays: set class name (Ben Noordhuis)
-* libuv bug fixes (Igor Zinkovsky, Ben Noordhuis, Dan VerWeire)
+* Actualizar V8 a 3.8.8
+* Instalar node-waf por defecto (Fedor Indutny)
+* crypto: Añadir habilidad para desactivar el relleno PKCS (Ingmar Runge)
+* v8: implementar clase VirtualMemory en SunOS (Ben Noordhuis)
+* Añadir cluster.setupMaster (Andreas Madsen)
+* mover `path.exists*` a `fs.exists*` (Maciej Małecki)
+* typed arrays: establecer nombre de clase (Ben Noordhuis)
+* correcciones de bugs de libuv (Igor Zinkovsky, Ben Noordhuis, Dan VerWeire)
 
 <a id="0.7.0"></a>
 
-## 2012.01.16, Version 0.7.0 (unstable)
+## 2012.01.16, Versión 0.7.0 (inestable)
 
 https://github.com/nodejs/node/commit/9cc55dca6f67a6096c858b841c677b0593404321
 
-* Upgrade V8 to 3.8.6
-* Use GYP build system on unix (Ben Noordhuis)
-* Experimental isolates support (Ben Noordhuis)
-* Improvements to Cluster API (Andreas Madsen)
-* Use isolates for internal debugger (Fedor Indutny)
-* Bug fixes
+* Actualizar V8 a 3.8.6
+* Usar sistema de build GYP en unix (Ben Noordhuis)
+* Soporte de isolates experimental (Ben Noordhuis)
+* Mejoras para API de Clúster (Andreas Madsen)
+* Usar isolates para el depurador interno (Fedor Indutny)
+* Corrección de bugs
 
 <a id="0.6.20"></a>
 
-## 2012.07.10 Version 0.6.20 (maintenance)
+## 2012.07.10 Versión 0.6.20 (mantenimiento)
 
 https://github.com/nodejs/node/commit/952e513379169ec1b40909d1db056e9bf4294899
 
-* npm: Upgrade to 1.1.37 (isaacs)
-* benchmark: Backport improvements made in master (isaacs)
-* build: always link with -lz (Trent Mick)
-* core: use proper #include directives (Ben Noordhuis)
-* cluster: don't silently drop messages when the write queue gets big (Bert Belder)
-* windows: don't print error when GetConsoleTitleW returns an empty string (Bert Belder)
+* npm: Actualizar a 1.1.37 (isaacs)
+* benchmark: Hacer backport con las mejoras hechas en el master (isaacs)
+* build: siempre enlazar con -lz (Trent Mick)
+* core: usar directivas #include correctas (Ben Noordhuis)
+* cluster: no soltar mensajes silenciosamente cuando la cola de escritura se haga larga (Bert Belder)
+* windows: no imprimir error cuando GetConsoleTitleW devuelva una string vacía (Bert Belder)
 
 <a id="0.6.19"></a>
 
-## 2012.06.06 Version 0.6.19 (stable)
+## 2012.06.06 Versión 0.6.19 (estable)
 
 https://github.com/nodejs/node/commit/debf552ed2d4a53957446e82ff3c52a8182d5ff4
 
-* npm: upgrade to 1.1.24
-* fs: no end emit after createReadStream.pause() (Andreas Madsen)
-* vm: cleanup module memory leakage (Marcel Laverdet)
-* unix: fix loop starvation under high network load (Ben Noordhuis)
-* unix: remove abort() in ev_unref() (Ben Noordhuis)
-* windows/tty: never report error after forcibly aborting line-buffered read (Bert Belder)
-* windows: skip GetFileAttributes call when opening a file (Bert Belder)
+* npm: actualizar a 1.1.24
+* fs: no finalizar emisión luego de createReadStream.pause() (Andreas Madsen)
+* vm: limpieza de fuga del módulo de memoria (Marcel Laverdet)
+* unix: corregir inanición del bucle bajo carga de red elevada (Ben Noordhuis)
+* unix: remover abort() en ev_unref() (Ben Noordhuis)
+* windows/tty: nunca reportar error luego de abortar forzosamente la lectura de línea de buffer (Bert Belder)
+* windows: omitir llamada de GetFileAttributes al abrir un archivo (Bert Belder)
 
 <a id="0.6.18"></a>
 
-## 2012.05.15 Version 0.6.18 (stable)
+## 2012.05.15 Versión 0.6.18 (estable)
 
 https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 
-* windows: skip GetFileAttributes call when opening a file (Bert Belder)
-* crypto: add PKCS12/PFX support (Sambasiva Suda)
-* [#3240](https://github.com/joyent/node/issues/3240): child_process: delete NODE_CHANNEL_FD from env in spawn (Ben Noordhuis)
-* windows: add test for path.normalize with UNC paths (Bert Belder)
-* windows: make path.normalize convert all slashes to backslashes (Bert Belder)
-* fs: Automatically close FSWatcher on error (Bert Belder)
-* [#3258](https://github.com/joyent/node/issues/3258): fs.ReadStream.pause() emits duplicate data event (koichik)
-* pipe_wrap: don't assert() on pipe accept errors (Ben Noordhuis)
-* Better exception output for module load and process.nextTick (Felix Geisendörfer)
-* zlib: fix error reporting (Ben Noordhuis)
-* http: Don't destroy on timeout (isaacs)
-* [#3231](https://github.com/joyent/node/issues/3231): http: Don't try to emit error on a null'ed req object (isaacs)
-* [#3236](https://github.com/joyent/node/issues/3236): http: Refactor ClientRequest.onSocket (isaacs)
+* windows: omitir llamada de GetFileAttributes al abrir un archivo (Bert Belder)
+* crypto: añadir soporte PKCS12/PFX (Sambasiva Suda)
+* [#3240](https://github.com/joyent/node/issues/3240): child_process: borrar a NODE_CHANNEL_FD de env en el spawn (Ben Noordhuis)
+* windows: añadir prueba para path.normalize con rutas UNC (Bert Belder)
+* windows: hacer que path.normalize convierta todas las barras a barras inclinadas hacia atrás (Bert Belder)
+* fs: Cerrar automáticamente a FSWatcher ante error (Bert Belder)
+* [#3258](https://github.com/joyent/node/issues/3258): fs.ReadStream.pause() emite evento de datos duplicados (koichik)
+* pipe_wrap: no hacer assert() sobre errores de aceptación de pipes (Ben Noordhuis)
+* Mejorar output de excepción para carga de módulos y process.nextTick (Felix Geisendörfer)
+* zlib: mejorar el reporte de errores (Ben Noordhuis)
+* http: No destruir al agotarse el tiempo de espera (isaacs)
+* [#3231](https://github.com/joyent/node/issues/3231): http: No intentar emitir error ante un objeto de petición null'ed (isaacs)
+* [#3236](https://github.com/joyent/node/issues/3236): http: Refactorizar ClientRequest.onSocket (isaacs)
 
 <a id="0.6.17"></a>
 

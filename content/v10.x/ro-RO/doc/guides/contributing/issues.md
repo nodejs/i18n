@@ -32,32 +32,30 @@ Când se deschide un tichet nou în trackerul de tichete `nodejs/node`, utilizat
 Mulțumim pentru raportarea unei probleme.
 
 Acest tracker de tichete este pentru erori și probleme găsite în nucleul Node.js.
-If you require more general support please file an issue on our help
-repo. https://github.com/nodejs/help
+Dacă soliciți mai multă asistență generală te rog să înaintezi un tichet către ajutorul depozitarului. https://github.com/nodejs/help
 
 
-Please fill in as much of the template below as you're able.
+Te rog completează cât mai mult din șablonul de mai jos după cum poți.
 
-Version: output of `node -v`
-Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
-Subsystem: if known, please specify affected core module name
+Version: ieșirea comenzii „node -v”
+Platform: ieșirea comenzii „uname -a” (UNIX), sau versiune și 32 sau 64-bit (Windows)
+Subsystem: dacă se cunoaște, te rog specifică numele modulului din nucleu afectat
 
-If possible, please provide code that demonstrates the problem, keeping it as
-simple and free of external dependencies as you are able.
+Dacă este posibil, te rog furnizează codul care demonstrează problema, păstrându-l pe cât de simplu posibil și fără dependențe externe.
 -->
 
 * **Version**:
 * **Platform**:
 * **Subsystem**:
 
-<!-- Enter your issue details below this comment. -->
+<!-- Introdu detaliile problemei tale sub acest comentariu. -->
 ```
 
-If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
+Dacă crezi că ai descoperit o eroare în Node.js, te rugăm să completezi acest formular, urmând șablonul cât mai bine posibil. Nu-ți face griji dacă nu poți răspunde la fiecare detaliu, doar completează ceea ce poți.
 
-The two most important pieces of information we need in order to properly evaluate the report is a description of the behavior you are seeing and a simple test case we can use to recreate the problem on our own. If we cannot recreate the issue, it becomes impossible for us to fix.
+Cele două informații importante de care avem nevoie pentru a evalua corect raportul este o descriere a comportamentului pe care îl vezi și un simplu caz de testare pe care îl putem folosi pentru a recrea și noi problema. Dacă nu putem recrea problema, devine imposibil pentru nou să o rezolvăm.
 
-In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
+Pentru a exclude posibilitatea introducerii de erori de către codul mediului utilizatorului, cazurile de testare ar trebui să fie limitate, pe cât posibil, *doar* la utilizarea API-urilor Node.js. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
 See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 

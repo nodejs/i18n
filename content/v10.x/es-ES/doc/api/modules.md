@@ -621,7 +621,7 @@ console.log(x.a);
 added: v0.1.16
 -->
 
-La variable `exports` está disponible dentro del alcance a nivel de archivo del módulo, y se le asigna el valor de `module.exports` antes de que se evalúe el módulo.
+La variable `exports` está disponible dentro del ámbito a nivel de archivo del módulo, y se le asigna el valor de `module.exports` antes de que se evalúe el módulo.
 
 Permite un atajo, para que así `module.exports.f = ...` pueda ser escrito más sucintamente como `exports.f = ...`. Sin embargo, tenga en cuenta que, como cualquier otra variable, si se le asigna un nuevo valor a `exports`, ya no estará ligado a `module.exports`:
 
@@ -730,7 +730,7 @@ added: v0.3.7
 
 * {Object}
 
-Proporciona métodos de utilidad generales al interactuar con instancias de `Module` — la variable `module` vista con frecuencia en los módulo de archivo. Accedido a través de `require('module')`.
+Proporciona métodos de utilidad generales al interactuar con instancias de `Module` — la variable `module` vista con frecuencia en los módulos de archivos. Accedido a través de `require('module')`.
 
 ### module.builtinModules
 
