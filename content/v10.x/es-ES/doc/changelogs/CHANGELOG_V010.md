@@ -686,10 +686,10 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 * http: deshacerse de la respuesta cuando la solicitud es abortada (isaacs)
 * http: use an unref'd timer to fix delay in exit (Peter Rust)
 * zlib: nivel puede ser negativo (Brian White)
-* zlib: allow zero values for level and strategy (Brian White)
-* buffer: add comment explaining buffer alignment (Ben Noordhuis)
-* string_bytes: properly detect 64bit (Timothy J Fontaine)
-* src: fix memory leak in UsingDomains() (Ben Noordhuis)
+* zlib: permitir valores zero para nivel y estrategia (Brian White)
+* buffer: añadir comentario explicando la alineación del búfer (Ben Noordhuis)
+* string_bytes: detectar correctamente 64bit (Timothy J Fontaine)
+* src: reparar fuga de memoria en UsingDomains() (Ben Noordhuis)
 
 <a id="0.10.12"></a>
 
