@@ -1683,11 +1683,11 @@ https://github.com/nodejs/node/commit/9cc55dca6f67a6096c858b841c677b0593404321
 
 <a id="0.6.20"></a>
 
-## 2012.07.10 Version 0.6.20 (maintenance)
+## 2012.07.10 Versión 0.6.20 (mantenimiento)
 
 https://github.com/nodejs/node/commit/952e513379169ec1b40909d1db056e9bf4294899
 
-* npm: Upgrade to 1.1.37 (isaacs)
+* npm: Actualizar a 1.1.37 (isaacs)
 * benchmark: Backport improvements made in master (isaacs)
 * build: always link with -lz (Trent Mick)
 * core: use proper #include directives (Ben Noordhuis)
@@ -1716,9 +1716,9 @@ https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 
 * windows: omitir llamada de GetFileAttributes al abrir un archivo (Bert Belder)
 * crypto: añadir soporte PKCS12/PFX (Sambasiva Suda)
-* [#3240](https://github.com/joyent/node/issues/3240): child_process: delete NODE_CHANNEL_FD from env in spawn (Ben Noordhuis)
-* windows: add test for path.normalize with UNC paths (Bert Belder)
-* windows: make path.normalize convert all slashes to backslashes (Bert Belder)
+* [#3240](https://github.com/joyent/node/issues/3240): child_process: borrar a NODE_CHANNEL_FD de env en el spawn (Ben Noordhuis)
+* windows: añadir prueba para path.normalize con rutas UNC (Bert Belder)
+* windows: hacer que path.normalize convierta todas las barras a barras inclinadas hacia atrás (Bert Belder)
 * fs: Automatically close FSWatcher on error (Bert Belder)
 * [#3258](https://github.com/joyent/node/issues/3258): fs.ReadStream.pause() emits duplicate data event (koichik)
 * pipe_wrap: don't assert() on pipe accept errors (Ben Noordhuis)
