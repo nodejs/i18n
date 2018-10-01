@@ -833,19 +833,19 @@ https://github.com/nodejs/node/commit/d4982f6f5e4a9a703127489a553b8d782997ea43
 * dtrace: pasar más argumentos a sondas (Dave Pacheco)
 * build: permitir la construcción con dtrace en osx (Dave Pacheco)
 * http: Remover código de la solución alternativa de legado ECONNRESET (isaacs)
-* http: Ensure socket cleanup on client response end (isaacs)
-* tls: Destroy socket when encrypted side closes (isaacs)
-* repl: isSyntaxError() catches "strict mode" errors (Nathan Rajlich)
-* crypto: Pass options to ctor calls (isaacs)
-* src: tie process.versions.uv to uv_version_string() (Ben Noordhuis)
+* http: Garantizar limpieza del socket cuando la respuesta del cliente termine (isaacs)
+* tls: Destruir socket cuando el lado encriptado cierre (isaacs)
+* repl: isSyntaxError() toma los errores "strict mode" (Nathan Rajlich)
+* crypto: Pasar opciones a las llamadas ctor (isaacs)
+* src: ligar process.versions.uv a uv_version_string() (Ben Noordhuis)
 
 <a id="0.10.2"></a>
 
-## 2013.03.28, Version 0.10.2 (Stable)
+## 2013.03.28, Versión 0.10.2 (Estable)
 
 https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
 
-* npm: Upgrade to 1.2.15
+* npm: Actualizar a 1.2.15
 * uv: Upgrade to 0.10.3
 * tls: handle SSL_ERROR_ZERO_RETURN (Fedor Indutny)
 * tls: handle errors before calling C++ methods (Fedor Indutny)
