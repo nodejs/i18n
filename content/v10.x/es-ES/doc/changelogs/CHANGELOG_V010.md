@@ -846,13 +846,13 @@ https://github.com/nodejs/node/commit/d4982f6f5e4a9a703127489a553b8d782997ea43
 https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
 
 * npm: Actualizar a 1.2.15
-* uv: Upgrade to 0.10.3
-* tls: handle SSL_ERROR_ZERO_RETURN (Fedor Indutny)
-* tls: handle errors before calling C++ methods (Fedor Indutny)
-* tls: remove harmful unnecessary bounds checking (Marcel Laverdet)
-* crypto: make getCiphers() return non-SSL ciphers (Ben Noordhuis)
-* crypto: check randomBytes() size argument (Ben Noordhuis)
-* timers: do not calculate Timeout._when property (Alexey Kupershtokh)
+* uv: Actualizar a 0.10.3
+* tls: manejar SSL_ERROR_ZERO_RETURN (Fedor Indutny)
+* tls: manejar los errores antes de llamar a métodos C++ methods (Fedor Indutny)
+* tls: remover revisiones nocivas e innecesarios de enlaces (Marcel Laverdet)
+* crypto: hacer que getCiphers() los cifradores no-SSL (Ben Noordhuis)
+* crypto: verificar el tamaño del argumento randomBytes() (Ben Noordhuis)
+* timers: no calcular la propiedad Timeout._when (Alexey Kupershtokh)
 * timers: fix off-by-one ms error (Alexey Kupershtokh)
 * timers: handle signed int32 overflow in enroll() (Fedor Indutny)
 * stream: Fix stall in Transform under very specific conditions (Gil Pedersen)
