@@ -746,7 +746,7 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`a8d7f5f52e`](https://github.com/nodejs/node/commit/a8d7f5f52e)] - **tools**: reparar cpplint.py cuando la ruta contenga datos no ascii (sharkfisher) [#16047](https://github.com/nodejs/node/pull/16047)
 * [[`b48471ac10`](https://github.com/nodejs/node/commit/b48471ac10)] - **tools**: renombrar variable no usada de una manera más python (Nikhil Komawar) [#16171](https://github.com/nodejs/node/pull/16171)
 * [[`5b5b5c0f15`](https://github.com/nodejs/node/commit/5b5b5c0f15)] - **tools**: usar literal modelo en mensaje de error (Tim Chon) [#15846](https://github.com/nodejs/node/pull/15846)
-* [[`ae5930bbe4`](https://github.com/nodejs/node/commit/ae5930bbe4)] - **tty,doc**: add type-check to isatty (Bryan English) [#15567](https://github.com/nodejs/node/pull/15567)
+* [[`ae5930bbe4`](https://github.com/nodejs/node/commit/ae5930bbe4)] - **tty,doc**: añadir type-check a isatty (Bryan English) [#15567](https://github.com/nodejs/node/pull/15567)
 
 <a id="6.12.0"></a>
 
@@ -761,13 +761,13 @@ Esta versión incluye una actualización de seguridad para openssl que ha sido c
 * **assert**: 
   * assert.fail() ahora puede tomar uno o dos argumentos (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
 * **crypto**: 
-  * add sign/verify support for RSASSA-PSS (Tobias Nießen) [#11705](https://github.com/nodejs/node/pull/11705)
+  * añadir soporte sign/verify para RSASSA-PSS (Tobias Nießen) [#11705](https://github.com/nodejs/node/pull/11705)
 * **deps**: 
   * actualizar fuentes openssl a 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
   * actualizar libuv a 1.15.0 (cjihrig) [#15745](https://github.com/nodejs/node/pull/15745)
-  * upgrade libuv to 1.14.1 (cjihrig) [#14866](https://github.com/nodejs/node/pull/14866)
-  * upgrade libuv to 1.13.1 (cjihrig) [#14117](https://github.com/nodejs/node/pull/14117)
-  * upgrade libuv to 1.12.0 (cjihrig) [#13306](https://github.com/nodejs/node/pull/13306)
+  * actualizar libuv a 1.14.1 (cjihrig) [#14866](https://github.com/nodejs/node/pull/14866)
+  * actualizar libuv a 1.13.1 (cjihrig) [#14117](https://github.com/nodejs/node/pull/14117)
+  * actualizar libuv a 1.12.0 (cjihrig) [#13306](https://github.com/nodejs/node/pull/13306)
 * **fs**: 
   * Add support for fs.write/fs.writeSync(fd, buffer, cb) and fs.write/fs.writeSync(fd, buffer, offset, cb) as documented (Andreas Lind) [#7856](https://github.com/nodejs/node/pull/7856)
 * **inspector**: 
