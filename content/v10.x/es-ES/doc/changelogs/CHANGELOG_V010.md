@@ -715,12 +715,12 @@ https://github.com/nodejs/node/commit/d9d5bc465450ae5d60da32e9ffcf71c2767f1fad
 * openssl: añadir piezas de configuración faltantes para MIPS (Andrei Sedoi)
 * Revertir "http: remover bodyHead de eventos 'upgrade'" (isaacs)
 * v8: reparar el comportamiento indefinido del puntero aritmético (Trevor Norris)
-* crypto: fix utf8/utf-8 encoding check (Ben Noordhuis)
-* net: Fix busy loop on POLLERR|POLLHUP on older linux kernels (Ben Noordhuis, isaacs)
+* crypto: reparar la verificación de codificación utf8/utf-8 (Ben Noordhuis)
+* net: Reparar bucle ocupado en POLLERR|POLLHUP en los núcleos más viejos de linux (Ben Noordhuis, isaacs)
 
 <a id="0.10.10"></a>
 
-## 2013.06.04, Version 0.10.10 (Stable)
+## 2013.06.04, Versión 0.10.10 (Estable)
 
 https://github.com/nodejs/node/commit/25e51c396aa23018603baae2b1d9390f5d9db496
 
