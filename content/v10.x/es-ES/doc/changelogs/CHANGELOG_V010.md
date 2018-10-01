@@ -683,7 +683,7 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 * npm: Actualizar a 1.3.2
 * windows: obtener el errno apropiado (Ben Noordhuis)
 * tls: solo esperar para terminar si no lo vimos (Timothy J Fontaine)
-* http: Dump response when request is aborted (isaacs)
+* http: deshacerse de la respuesta cuando la solicitud es abortada (isaacs)
 * http: use an unref'd timer to fix delay in exit (Peter Rust)
 * zlib: level can be negative (Brian White)
 * zlib: allow zero values for level and strategy (Brian White)
