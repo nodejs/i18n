@@ -708,7 +708,7 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`1365a6f597`](https://github.com/nodejs/node/commit/1365a6f597)] - **test**: usar módulo common.fixtures para la ruta de archivo (Adil L) [#16017](https://github.com/nodejs/node/pull/16017)
 * [[`bd8d4401ee`](https://github.com/nodejs/node/commit/bd8d4401ee)] - **test**: usar módulo de fixtures (Maurice Hayward) [#16034](https://github.com/nodejs/node/pull/16034)
 * [[`bba5263d00`](https://github.com/nodejs/node/commit/bba5263d00)] - **test**: reemplazar fixturesDir con módulo de fixtures (tabulatedreams) [#16036](https://github.com/nodejs/node/pull/16036)
-* [[`a8e7fa4e75`](https://github.com/nodejs/node/commit/a8e7fa4e75)] - **test**: replace fixturesDir with fixtures module (Ivan Etchart) [#15893](https://github.com/nodejs/node/pull/15893)
+* [[`a8e7fa4e75`](https://github.com/nodejs/node/commit/a8e7fa4e75)] - **test**: reemplazar fixturesDir con módulo de fixtures (Ivan Etchart) [#15893](https://github.com/nodejs/node/pull/15893)
 * [[`1fc3851642`](https://github.com/nodejs/node/commit/1fc3851642)] - **test**: change fixturesDir to fixtures.path (Savio Lucena) [#15902](https://github.com/nodejs/node/pull/15902)
 * [[`683e48cb55`](https://github.com/nodejs/node/commit/683e48cb55)] - **test**: changed fixtures require (creisle) [#15899](https://github.com/nodejs/node/pull/15899)
 * [[`f82f691d5e`](https://github.com/nodejs/node/commit/f82f691d5e)] - **test**: replaced fixturesDir with fixtures module (Alex McKenzie) [#15908](https://github.com/nodejs/node/pull/15908)
@@ -754,7 +754,7 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 
 Esta actualización LTS viene con 127 commits. Esto incluye 45 que están relacionados a pruebas, 33 que están relacionados a documentación, 14 que son actualizaciones para dependencias y 7 commits que están relacionados a build / tools.
 
-Esta versión incluye una actualización de seguridad para openssl que ha sido considerada como de baja gravedad para el proyecto Node.js.
+Esta versión incluye una actualización de seguridad para openssl que ha sido considerada de baja gravedad para el proyecto Node.js.
 
 ### Cambios notables
 
