@@ -714,7 +714,7 @@ Esta actualización LTS viene con 263 commits. Esto incluye a 173 que están rel
 * [[`f82f691d5e`](https://github.com/nodejs/node/commit/f82f691d5e)] - **test**: se reemplazó fixturesDir con módulo de fixtures (Alex McKenzie) [#15908](https://github.com/nodejs/node/pull/15908)
 * [[`e68ef291e7`](https://github.com/nodejs/node/commit/e68ef291e7)] - **test**: usar common.fixtures en prueba tls (Ben Michel) [#15965](https://github.com/nodejs/node/pull/15965)
 * [[`71daa68c3d`](https://github.com/nodejs/node/commit/71daa68c3d)] - **test**: usar módulo de fixtures en vez del común (Joe Grace) [#15925](https://github.com/nodejs/node/pull/15925)
-* [[`e81fc8aca7`](https://github.com/nodejs/node/commit/e81fc8aca7)] - **test**: replaced fixturesDir with fixtures module (Alex McKenzie) [#15927](https://github.com/nodejs/node/pull/15927)
+* [[`e81fc8aca7`](https://github.com/nodejs/node/commit/e81fc8aca7)] - **test**: se reemplazó fixturesDir con módulo de fixtures (Alex McKenzie) [#15927](https://github.com/nodejs/node/pull/15927)
 * [[`33ea6deeab`](https://github.com/nodejs/node/commit/33ea6deeab)] - **test**: replace fixturesDir with fixtures module (Greg Matthews) [#15932](https://github.com/nodejs/node/pull/15932)
 * [[`be2b70bb56`](https://github.com/nodejs/node/commit/be2b70bb56)] - **test**: replace fixturesDir with fixtures (Mujtaba Al-Tameemi) [#15949](https://github.com/nodejs/node/pull/15949)
 * [[`25a5bf02c7`](https://github.com/nodejs/node/commit/25a5bf02c7)] - **test**: remove common.fixturesDir (Luis Del Águila) [#15950](https://github.com/nodejs/node/pull/15950)
