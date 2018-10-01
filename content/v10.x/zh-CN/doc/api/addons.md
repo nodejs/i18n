@@ -129,19 +129,19 @@ Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的
 
 当调用 [`require()`](modules.html#modules_require) 函数时，`.node` 扩展名通常可以被省略，Node.js仍然会找到并初始化插件。 但有一点需要注意，Node.js将首先尝试定位和加载碰巧共享相同基本名称的模块或JavaScript文件。 例如，如果有一个文件 `addon.js` 与二进制文件 `addon.node` 在同一个目录中，那么 [`require('addon')`](modules.html#modules_require) 将优先考虑 `addon.js` 文件并加载它。
 
-## Native Abstractions for Node.js
+## 原生模块抽象接口
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+本文档中说明的每个示例都直接使用Node.js和V8 API来实现插件。 重要的是要了解V8 API可以并且已经从一个V8版本发展到下一版本而且发生了巨大变化（并将一个主要的Node.js发布到下一版本）。 每次版本更改时，插件可能需要更新和重新编译才能继续运行。 Node.js发布计划旨在最大限度地减少此类更改的频率和影响，但Node.js目前几乎没有能力确保V8 API的稳定性。
 
-The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+The [原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发人员使用的工具，以保持V8和Node.js的过去和未来版本的兼容性。 有关如何使用的说明，请参见`nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
 
 ## N-API
 
 > 稳定性: 1-实验
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API是构建本地插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将是稳定的跨Node.js版本的应用程序二进制接口（ABI）。 It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
+在上述“Hello World”示例中使用N-API，替换`hello.cc`中的内容如下。 所有其它指令保持不变。
 
 ```cpp
 // hello.cc using N-API
@@ -175,7 +175,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
+可用的函数和如何使用它们被记录在标题为 [C/C++ 插件 - N-API](n-api.html) 的部分中。
 
 ## 插件示例
 
