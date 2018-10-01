@@ -1661,12 +1661,12 @@ https://github.com/nodejs/node/commit/a74354735ab5d5b0fa35a1e4ff7e653757d2069b
 
 * Actualizar V8 a 3.8.8
 * Instalar node-waf por defecto (Fedor Indutny)
-* crypto: Add ability to turn off PKCS padding (Ingmar Runge)
-* v8: implement VirtualMemory class on SunOS (Ben Noordhuis)
-* Add cluster.setupMaster (Andreas Madsen)
-* move `path.exists*` to `fs.exists*` (Maciej Małecki)
-* typed arrays: set class name (Ben Noordhuis)
-* libuv bug fixes (Igor Zinkovsky, Ben Noordhuis, Dan VerWeire)
+* crypto: Añadir habilidad para desactivar el relleno PKCS (Ingmar Runge)
+* v8: implementar clase VirtualMemory en SunOS (Ben Noordhuis)
+* Añadir cluster.setupMaster (Andreas Madsen)
+* mover `path.exists*` a `fs.exists*` (Maciej Małecki)
+* typed arrays: establecer nombre de clase (Ben Noordhuis)
+* correcciones de bugs de libuv (Igor Zinkovsky, Ben Noordhuis, Dan VerWeire)
 
 <a id="0.7.0"></a>
 
