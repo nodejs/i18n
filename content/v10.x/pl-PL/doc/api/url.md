@@ -757,7 +757,7 @@ Returns a customizable serialization of a URL `String` representation of a [WHAT
 
 The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
 
-For example:
+Na przykład:
 
 ```js
 const myURL = new URL('https://a:b@你好你好?abc#foo');
@@ -966,7 +966,7 @@ changes:
 
 The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
 
-For example:
+Na przykład:
 
 ```js
 const url = require('url');
@@ -1007,7 +1007,7 @@ The WHATWG algorithm defines four "percent-encode sets" that describe ranges of 
 
 The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *fragment percent-encode set* is used for URL fragments. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
 
-When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. For example:
+When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. Na przykład:
 
 ```js
 const myURL = new URL('https://%CF%80.com/foo');
