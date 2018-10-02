@@ -610,7 +610,7 @@ added: v0.3.1
 
 Si `options` es una cadena, entonces especifica el nombre del archivo.
 
-The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
+El siguiente ejemplo ilustra el uso de `vm.runInThisContext()` y de la función [`eval()`][] de JavaScript para ejecutar el mismo código:
 
 <!-- eslint-disable prefer-const -->
 
