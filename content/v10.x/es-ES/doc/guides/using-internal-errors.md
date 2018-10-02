@@ -10,21 +10,21 @@ La intención del módulo es permitir que los errores proporcionados por Node.js
 
 ## Usando internal/errors.js
 
-The `internal/errors` module exposes all custom errors as subclasses of the builtin errors. After being added, an error can be found in the `codes` object.
+El módulo `internal/errors` expone todos los errores personalizados como subclases de los errores incorporados. Después de agregarse, se puede encontrar un error en el objeto `codes`.
 
-For instance, an existing `Error` such as:
+Por ejemplo, un `Error` existente, como:
 
 ```js
 const err = new TypeError(`Expected string received ${type}`);
 ```
 
-Can be replaced by first adding a new error key into the `internal/errors.js` file:
+Se puede reemplazar agregando primero una nueva clave de error en el archivo `internal/errors.js`:
 
 ```js
 E('FOO', 'Expected string received %s', TypeError);
 ```
 
-Then replacing the existing `new TypeError` in the code:
+Luego reemplazando el `new TypeError` existente en el código:
 
 ```js
 const { FOO } = require('internal/errors').codes;
@@ -32,18 +32,18 @@ const { FOO } = require('internal/errors').codes;
 const err = new FOO(type);
 ```
 
-## Adding new errors
+## Añadiendo nuevos errores
 
-New static error codes are added by modifying the `internal/errors.js` file and appending the new error codes to the end using the utility `E()` method.
+Se agregan nuevos códigos de error estáticos modificando el archivo `internal/errors.js` y agregando los nuevos códigos de error al final usando el método de utilidad `E()`.
 
 ```js
 E('EXAMPLE_KEY1', 'This is the error value', TypeError);
 E('EXAMPLE_KEY2', (a, b) => `${a} ${b}`, RangeError);
 ```
 
-The first argument passed to `E()` is the static identifier. The second argument is either a String with optional `util.format()` style replacement tags (e.g. `%s`, `%d`), or a function returning a String. The optional additional arguments passed to the `errors.message()` function (which is used by the `errors.Error`, `errors.TypeError` and `errors.RangeError` classes), will be used to format the error message. The third argument is the base class that the new error will extend.
+El primer argumento pasado a `E()` es el identificador estático. El segundo argumento es una String con etiquetas de reemplazo de estilo opcional `util.format()` (por ejemplo, `%s`, `%d`), o una función devolviendo una String. Los argumentos adicionales opcionales pasados a la función `errors.message()` (que es usada por las clases `errors.Error`, `errors.TypeError` y `errors.RangeError`), se utilizará para formatear el mensaje de error. El tercer argumento es la clase base que el nuevo error extenderá.
 
-It is possible to create multiple derived classes by providing additional arguments. The other ones will be exposed as properties of the main class:
+Es posible crear múltiples clases derivadas proporcionando argumentos adicionales. Las otras serán expuestas como propiedades de la clase principal:
 
 <!-- eslint-disable no-unreachable -->
 
