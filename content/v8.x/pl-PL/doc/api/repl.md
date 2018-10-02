@@ -73,7 +73,7 @@ Unless otherwise scoped within blocks or functions, variables declared either im
 
 #### Global and Local Scope
 
-The default evaluator provides access to any variables that exist in the global scope. It is possible to expose a variable to the REPL explicitly by assigning it to the `context` object associated with each `REPLServer`. For example:
+The default evaluator provides access to any variables that exist in the global scope. It is possible to expose a variable to the REPL explicitly by assigning it to the `context` object associated with each `REPLServer`. Na przykład:
 
 ```js
 const repl = require('repl');
