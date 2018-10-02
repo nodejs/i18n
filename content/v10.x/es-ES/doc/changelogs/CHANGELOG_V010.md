@@ -268,7 +268,7 @@ Actualización de Seguridad
 * [6ac47aa9f5] - build,win: al fallar prueba la versión MSVS (João Reis) https://github.com/nodejs/node/pull/2910
 * [e669b27740] - crypto: reemplaza rwlocks con mutexes simples (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
 * [ce0a48826e] - deps: actualiza openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4132
-* [b68781e500] - deps: upgrade npm to 1.4.29 (Forrest L Norvell) https://github.com/nodejs/node/pull/3639
+* [b68781e500] - deps: actualizar npm a 1.4.29 (Forrest L Norvell) https://github.com/nodejs/node/pull/3639
 * [7cf0d9c1d9] - deps: fix openssl for MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node-v0.x-archive/pull/25857
 * [9ee8a14f9e] - deps: fix gyp to work on MacOSX without XCode (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25857
 * [a525c7244e] - deps: update gyp to 25ed9ac (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25857
@@ -880,26 +880,26 @@ https://github.com/nodejs/node/commit/c274d1643589bf104122674a8c3fd147527a667d
 * stream: Devolver el mismo del readable.wrap (isaacs)
 * stream: Nunca llamar decoder.end() múltiples veces (Gil Pedersen)
 * windows: habilitar ver señales con process.on('SIGXYZ') (Bert Belder)
-* node: revert removal of MakeCallback (Trevor Norris)
-* node: Unwrap without aborting in handle fd getter (isaacs)
+* node: revertir la eliminación de MakeCallback (Trevor Norris)
+* node: Desenvolver sin abortar en el getter del handle fd (isaacs)
 
 <a id="0.10.0"></a>
 
-## 2013.03.11, Version 0.10.0 (Stable)
+## 2013.03.11, Versión 0.10.0 (Estable)
 
 https://github.com/nodejs/node/commit/163ca274230fce536afe76c64676c332693ad7c1
 
-* npm: Upgrade to 1.2.14
-* core: Append filename properly in dlopen on windows (isaacs)
-* zlib: Manage flush flags appropriately (isaacs)
-* domains: Handle errors thrown in nested error handlers (isaacs)
+* npm: Actualizar a 1.2.14
+* core: Añadir el nombre de archivo correctamente en dlopen en windows (isaacs)
+* zlib: Manejar limpieza de banderas correctamente (isaacs)
+* domains: Manejar errores arrojados en manejadores de errores anidados (isaacs)
 * buffer: Strip high bits when converting to ascii (Ben Noordhuis)
-* win/msi: Enable modify and repair (Bert Belder)
-* win/msi: Add feature selection for various node parts (Bert Belder)
-* win/msi: use consistent registry key paths (Bert Belder)
-* child_process: support sending dgram socket (Andreas Madsen)
-* fs: Raise EISDIR on Windows when calling fs.read/write on a dir (isaacs)
-* unix: fix strict aliasing warnings, macro-ify functions (Ben Noordhuis)
-* unix: honor UV_THREADPOOL_SIZE environment var (Ben Noordhuis)
-* win/tty: fix typo in color attributes enumeration (Bert Belder)
-* win/tty: don't touch insert mode or quick edit mode (Bert Belder)
+* win/msi: Habilitar modificar y reparar (Bert Belder)
+* win/msi: Añadir selección de características para varias partes del nodo (Bert Belder)
+* win/msi: usar rutas de claves de registro consistentes (Bert Belder)
+* child_process: soporta envío de socket dgram (Andreas Madsen)
+* fs: Levantar EISDIR en Windows cuando se llame fs.read/write en un dir (isaacs)
+* unix: reparar advertencias de aliasing estricto, funciones macro-ify (Ben Noordhuis)
+* unix: honor UV_THREADPOOL_SIZE var hambiente (Ben Noordhuis)
+* win/tty: reparar error tipográfico en la enumeración de atributos de color (Bert Belder)
+* win/tty: no tocar el modo insertar o el modo de edición rápida (Bert Belder)
