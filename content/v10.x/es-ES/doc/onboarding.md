@@ -44,16 +44,16 @@ apply.whitespace fix`
   * Si hay alguna pregunta después de la sesión, ¡un buen lugar para preguntar es ahí!
   * Presence is not mandatory, but please drop a note there if force-pushing to `master`
 
-## Project goals & values
+## Objetivos & valores del proyecto
 
-* Collaborators are the collective owners of the project
+* Los Colaboradores son los propietarios colectivos del proyecto
   
-  * The project has the goals of its contributors
+  * El proyecto tiene los objetivos de sus contribuyentes
 
-* There are some higher-level goals and values
+* Hay algunos objetivos y valores de alto nivel
   
-  * Empathy towards users matters (this is in part why we onboard people)
-  * Generally: try to be nice to people!
+  * La empatía hacía los usuarios es importante (esto es en parte porque orientamos a las personas)
+  * En general: ¡intente ser amable con las personas!
   * The best outcome is for people who come to our issue tracker to feel like they can come back again.
 
 * You are expected to follow *and* hold others accountable to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
