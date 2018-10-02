@@ -208,9 +208,9 @@ $ node-gyp configure build
 
 ### 函数参数
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+插件通常会公开可以从Node.js中运行的JavaScript访问的对象和函数。 当从 JavaScript调用函数时，输入参数必须映射到 C/C++代码，返回值必须从 C/C++代码映射。
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+以下示例说明如何读取从JavaScript传递的函数参数以及如何返回结果：
 
 ```cpp
 // addon.cc
@@ -311,7 +311,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+请注意，此示例使用两参数形式的 `Init()`，使用收到的完整 `module` 对象作为第二个参数。 这允许插件使用单个函数完全覆盖 `exports`，而不是添加一个函数作为 `exports` 的一个属性。
 
 To test it, run the following JavaScript:
 
