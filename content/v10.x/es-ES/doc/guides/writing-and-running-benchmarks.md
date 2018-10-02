@@ -23,7 +23,7 @@ Las herramientas básicas de Unix son necesarias para algunas pruebas de rendimi
 
 La mayoría de las pruebas de rendimiento HTTP requieren que se instale un benchmarker. Este puede ser tanto [`wrk`](https://github.com/wg/wrk) como [`autocannon`](https://github.com/mcollina/autocannon).
 
-`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el ejecutable de Node.js que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese que la versión de Node.js en la ruta no está alterada.
+`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el ejecutable de Node.js que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese de que la versión de Node.js en la ruta no está alterada.
 
 `wrk` puede estar disponible a través de uno de los gestores de paquetes disponibles. Si no es así, puede ser construido fácilmente [desde este link](https://github.com/wg/wrk) vía `make`.
 
@@ -124,7 +124,7 @@ $ node benchmark/run.js arrays buffers
 
 ### Comparar versiones de Node.js
 
-Para comparar el efecto de una nueva versión de Node.js utilice la herramienta `compare.js`. Esto ejecutará cada prueba de rendimiento varias veces, lo que hace posible calcular estadísticas sobre las medidas de rendimiento. Para ver como usar este script, ejecute `node benchmark/compare.js`.
+Para comparar el efecto de una nueva versión de Node.js utilice la herramienta `compare.js`. Esto ejecutará cada prueba de rendimiento varias veces, lo que hace posible calcular estadísticas sobre las medidas de rendimiento. Para ver cómo usar este script, ejecute `node benchmark/compare.js`.
 
 Como un ejemplo sobre cómo verificar una posible mejora de rendimiento, la pull request [#5134](https://github.com/nodejs/node/pull/5134) será usada como un ejemplo. Esta pull request *declara* mejorar el rendimiento del módulo `string_decoder`.
 
@@ -172,9 +172,9 @@ $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
 ...
 ```
 
-En la salida, *improvement* es la mejora relativa de la nueva versión, con suerte esto es positivo. *confidence* dice si hay suficiente evidencia estadística para validar la *mejora*. Si hay suficiente evidencia entonces habrá al menos una estrella (`*`), más estrellas es simplemente mejor. **Sin embargo, si no hay estrellas, entonces no haga ninguna conclusión basada en la *mejora*. **Algunas veces esto está bien, por ejemplo si ninguna mejora es esperada, entonces no debería haber ninguna estrella.
+En la salida, *improvement* es la mejora relativa de la nueva versión, con suerte esto es positivo. *confidence* dice si hay suficiente evidencia estadística para validar la *mejora*. Si hay suficiente evidencia, entonces habrá al menos una estrella (`*`), más estrellas es simplemente mejor. **Sin embargo, si no hay estrellas, entonces no haga ninguna conclusión basada en la *mejora*. **Algunas veces esto está bien, por ejemplo si ninguna mejora es esperada, entonces no debería haber ninguna estrella.
 
-**A word of caution:** Statistics is not a foolproof tool. If a benchmark shows a statistical significant difference, there is a 5% risk that this difference doesn't actually exist. For a single benchmark this is not an issue. But when considering 20 benchmarks it's normal that one of them will show significance, when it shouldn't. A possible solution is to instead consider at least two stars (`**`) as the threshold, in that case the risk is 1%. If three stars (`***`) is considered the risk is 0.1%. However this may require more runs to obtain (can be set with `--runs`).
+**Una advertencia:** La estadística no es una herramienta infalible. Si una benchmark muestra una diferencia estadística significante, hay un 5% de riesgo de que esta diferencia no exista realmente. Esto no es un problema para una sola prueba de rendimiento. Pero cuando se estén considerando 20 pruebas de rendimiento es normal que una de ellas muestre importancia, cuando no debería. A possible solution is to instead consider at least two stars (`**`) as the threshold, in that case the risk is 1%. If three stars (`***`) is considered the risk is 0.1%. However this may require more runs to obtain (can be set with `--runs`).
 
 *For the statistically minded, the R script performs an [independent/unpaired 2-group t-test](https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_or_unequal_sample_sizes.2C_unequal_variances), with the null hypothesis that the performance is the same for both versions. The confidence field will show a star if the p-value is less than `0.05`.*
 
