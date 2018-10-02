@@ -327,7 +327,7 @@ Zauważ, że w tym przykładzie funkcja zwrotna jest wywoływana synchronicznie.
 
 ### Fabryka obiektów
 
-Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. Obiekt jest tworzony i zwracany za pomocą właściwości`msg`, która odtwarza ciąg znaków przekazany do `createObject ()`:
 
 ```cpp
 // addon.cc
@@ -360,7 +360,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Aby przetestować to w JavaScript:
 
 ```js
 // test.js
@@ -372,9 +372,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### Fabryka funkcji
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Innym częstym scenariuszem jest tworzenie funkcji JavaScript, które obejmują funkcje C++i zwracanie ich z powrotem do JavaScript:
 
 ```cpp
 // addon.cc
@@ -417,7 +417,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Aby przetestować:
 
 ```js
 // test.js
@@ -428,9 +428,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Obejmowanie obiektów C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+Możliwe jest również obejmowanie obiektów/klas C++ w sposób, który pozwala na utworzenie nowych instancji do za pomocą operatora JavaScript `nowy`:
 
 ```cpp
 // addon.cc
@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+W `myobject.cc` implementuj różne metody, które mają zostać ujawnione. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
 
 ```cpp
 // myobject.cc
