@@ -663,6 +663,6 @@ El `require()` en el caso anterior comparte el estado con el contexto desde el c
 
 Todo JavaScript ejecutado en Node.js se ejecuta dentro del ámbito de un "contexto". De acuerdo a la [Guía de Incrustadores V8](https://github.com/v8/v8/wiki/Embedder's%20Guide#contexts):
 
-> In V8, a context is an execution environment that allows separate, unrelated, JavaScript applications to run in a single instance of V8. You must explicitly specify the context in which you want any JavaScript code to be run.
+> En V8, un contexto es un ambiente de ejecución que permite separar y no relacionar aplicaciones JavaScript a ejecutar en una sola instancia de V8. You must explicitly specify the context in which you want any JavaScript code to be run.
 
 When the method `vm.createContext()` is called, the `sandbox` object that is passed in (or a newly created object if `sandbox` is `undefined`) is associated internally with a new instance of a V8 Context. This V8 Context provides the `code` run using the `vm` module's methods with an isolated global environment within which it can operate. The process of creating the V8 Context and associating it with the `sandbox` object is what this document refers to as "contextifying" the `sandbox`.
