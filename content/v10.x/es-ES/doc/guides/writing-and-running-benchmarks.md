@@ -257,21 +257,21 @@ chunk     encoding       mean confidence.interval
 
 ### Ejecutar Pruebas de Rendimiento en el CI
 
-To see the performance impact of a Pull Request by running benchmarks on the CI, check out [How to: Running core benchmarks on Node.js CI](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
+Para ver el impacto en el rendimiento de una Pull Request al ejecutar pruebas de rendimiento en el CI, vea [Cómo: Ejecutar pruebas de rendimiento de núcleo en el CI Node.js](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
 
-## Creating a benchmark
+## Crear una prueba de rendimiento
 
-### Basics of a benchmark
+### Conceptos básicos de una prueba de rendimiento
 
-All benchmarks use the `require('../common.js')` module. This contains the `createBenchmark(main, configs[, options])` method which will setup the benchmark.
+Todas las pruebas de rendimiento usan el módulo `require('../common.js')`. Este contiene el método `createBenchmark(main, configs[, options])`, el cual configurará la prueba de rendimiento.
 
-The arguments of `createBenchmark` are:
+Los argumentos de `createBenchmark` son:
 
-* `main` {Function} The benchmark function, where the code running operations and controlling timers should go
-* `configs` {Object} The benchmark parameters. `createBenchmark` will run all possible combinations of these parameters, unless specified otherwise. Each configuration is a property with an array of possible values. Note that the configuration values can only be strings or numbers.
-* `options` {Object} The benchmark options. At the moment only the `flags` option for specifying command line flags is supported.
+* `main` {Function} La función de la prueba de rendimiento, donde el código que ejecuta las operaciones y controla los temporizadores debe ir
+* `configs` {Object} Los parámetros de la prueba de rendimiento. `createBenchmark` ejecutará todas las combinaciones posibles de estos parámetros, a menos que se especifique lo contrario. Cada configuración es una propiedad con un array de valores posibles. Tenga en cuenta que los valores de la configuración solo pueden ser strings o números.
+* `options` {Object} Las opciones de la prueba de rendimiento. Por el momento solo se permite la opción `flags` para especificar marcas de línea de comando.
 
-`createBenchmark` returns a `bench` object, which is used for timing the runtime of the benchmark. Run `bench.start()` after the initialization and `bench.end(n)` when the benchmark is done. `n` is the number of operations performed in the benchmark.
+`createBenchmark` devuelve un objeto `bench`, el cual es usado para cronometrar el tiempo de la prueba de rendimiento. Ejecute `bench.start()` después de la inicialización y `bench.end(n)` cuando la prueba de rendimiento esté hecha. `n` is the number of operations performed in the benchmark.
 
 The benchmark script will be run twice:
 
