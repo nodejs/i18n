@@ -657,7 +657,7 @@ const code = `
 vm.runInThisContext(code)(require);
 ```
 
-El `require()` en el caso anterior comparte el estado con el contexto desde el cual se pasa. This may introduce risks when untrusted code is executed, e.g. altering objects in the context in unwanted ways.
+El `require()` en el caso anterior comparte el estado con el contexto desde el cual se pasa. Esto puede introducir riesgos cuando se ejecuta un código no confiable, por ejemplo alterar objetos en el contexto de maneras no deseadas.
 
 ## What does it mean to "contextify" an object?
 
