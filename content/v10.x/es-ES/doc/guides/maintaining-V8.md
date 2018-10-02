@@ -217,11 +217,11 @@ El grupo de node revisa periódicamente la acumulación de problemas en Google p
 
 ## Actualizando V8
 
-Node.js se queda con una copia guarda de V8 dentro del directorio deps/. Además, Node.js puede necesitar flotar parches que no existen upstream. Esto significa que es posible que se tenga que tomar alguna precaución para actualizar la copia guardada de V8.
+Node.js se queda con una copia de V8 dentro del directorio deps/. Además, Node.js puede necesitar flotar parches que no existen upstream. Esto significa que es posible que se tenga que tomar alguna precaución para actualizar la copia guardada de V8.
 
 ### Actualizaciones menores (a nivel de parche)
 
-Debido a que puede haber parches flotantes en la versión de V8 en Node.js, es más seguro aplicar las actualizaciones de nivel de parche como un parche. Por ejemplo, imagina que el V8 upstream está en 5.0.71.47 y Node.js está en 5.0.71.32. Sería mejor calcular la diferencia entre estas etiquetas en el reposiorio de V8, y luego aplicar ese parche en la copia de V8 en Node.js. Esto debería preservar los parches/backports que Node.js pueda estar flotando (o pueda causar un conflicto de fusión).
+Debido a que puede haber parches flotantes en la versión de V8 en Node.js, es más seguro aplicar las actualizaciones de nivel de parche como un parche. Por ejemplo, imagina que el V8 upstream está en 5.0.71.47 y Node.js está en 5.0.71.32. Sería mejor calcular la diferencia entre estas etiquetas en el repositorio de V8, y luego aplicar ese parche en la copia de V8 en Node.js. Esto debería preservar los parches/backports que Node.js pueda estar flotando (o pueda causar un conflicto de fusión).
 
 El bosquejo del proceso es:
 
@@ -249,7 +249,7 @@ Actualizamos la versión de V8 en el master Node.js cada vez que una versión V8
 La actualización de las versiones principales sería mucho más difícil de hacer con el mecanismo del parche anterior. Una mejor estrategia es
 
 1. Audite la rama master actual y observe los parches que han estado flotando desde la última actualización principal de V8.
-2. Reemplace la copia de V8 en Node.js con una nueva comprobación de la última rama estable de V8. Se debe tener especial cuidado para actualizar recursivamente los DEPS en los que V8 tiene una dependencia de tiempo de compilación (al momento de escribir esto, estos son solo trace_event y gtest_prod.h)
+2. Reemplace la copia de V8 en Node.js con una nueva comprobación de la última rama estable de V8. Se debe tener cuidado especial para actualizar recursivamente los DEPS en los que V8 tiene una dependencia de tiempo de compilación (al momento de escribir esto, estos son solo trace_event y gtest_prod.h)
 3. Restablezca la variable `v8_embedder_string` a "-node.0" en `common.gypi`.
 4. Vuelva a cargar (seleccione con precisión) todos los parches de la lista calculada en 1) según sea necesario. Es posible que algunos de los parches ya no sean necesarios.
 
