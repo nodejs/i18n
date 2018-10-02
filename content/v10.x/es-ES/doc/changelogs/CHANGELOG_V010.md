@@ -856,30 +856,30 @@ https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
 * timers: reparar error ms uno-por-uno (Alexey Kupershtokh)
 * timers: manejar rebosamiento firmado int32 en enroll() (Fedor Indutny)
 * stream: Reparar la detención en Transformación bajo condiciones muy específicas (Gil Pedersen)
-* stream: Handle late 'readable' event listeners (isaacs)
+* stream: Manejar tarde los listeners del evento 'readable' (isaacs)
 * stream: Fix early end in Writables on zero-length writes (isaacs)
-* domain: fix domain callback from MakeCallback (Trevor Norris)
-* child_process: don't emit same handle twice (Ben Noordhuis)
-* child_process: fix sending utf-8 to child process (Ben Noordhuis)
+* domain: reparar el dominio de la callback de MakeCallback (Trevor Norris)
+* child_process: no emitir el mismo handle dos veces (Ben Noordhuis)
+* child_process: reparar envío de utf-8 a proceso secundario (Ben Noordhuis)
 
 <a id="0.10.1"></a>
 
-## 2013.03.21, Version 0.10.1 (Stable)
+## 2013.03.21, Versión 0.10.1 (Estable)
 
 https://github.com/nodejs/node/commit/c274d1643589bf104122674a8c3fd147527a667d
 
-* npm: upgrade to 1.2.15
-* crypto: Improve performance of non-stream APIs (Fedor Indutny)
-* tls: always reset this.ssl.error after handling (Fedor Indutny)
-* tls: Prevent mid-stream hangs (Fedor Indutny, isaacs)
-* net: improve arbitrary tcp socket support (Ben Noordhuis)
-* net: handle 'finish' event only after 'connect' (Fedor Indutny)
+* npm: actualizar a 1.2.15
+* crypto: Mejorar el rendimiento de APIs que no sean stream (Fedor Indutny)
+* tls: siempre restablecer el error this.ssl.error después del handling (Fedor Indutny)
+* tls: Previene colgaduras de mid-streams (Fedor Indutny, isaacs)
+* net: mejorar el soporte del socket tcp arbitrario (Ben Noordhuis)
+* net: manejar el evento 'finish' solo después de 'connect' (Fedor Indutny)
 * http: Don't hot-path end() for large buffers (isaacs)
-* fs: Missing cb errors are deprecated, not a throw (isaacs)
-* fs: make write/appendFileSync correctly set file mode (Raymond Feng)
-* stream: Return self from readable.wrap (isaacs)
-* stream: Never call decoder.end() multiple times (Gil Pedersen)
-* windows: enable watching signals with process.on('SIGXYZ') (Bert Belder)
+* fs: Errores cb faltantes son desaprobados, no es un lanzamiento (isaacs)
+* fs: hacer que write/appendFileSync establezca correctamente modo archivo (Raymond Feng)
+* stream: Devolver el mismo del readable.wrap (isaacs)
+* stream: Nunca llamar decoder.end() múltiples veces (Gil Pedersen)
+* windows: habilitar ver señales con process.on('SIGXYZ') (Bert Belder)
 * node: revert removal of MakeCallback (Trevor Norris)
 * node: Unwrap without aborting in handle fd getter (isaacs)
 
