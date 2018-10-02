@@ -90,7 +90,7 @@ session.on('Debugger.paused', ({ params }) => {
 added: v8.0.0
 -->
 
-Connects a session to the inspector back-end. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
+Conecta una sesión al back-end del inspector. Se arrojará una excepción si ya hay una sesión conectada establecida a través del API o por un front-end conectado al puerto WebSocket del Inspector.
 
 ### session.post(method\[, params\]\[, callback\])
 
@@ -102,7 +102,7 @@ added: v8.0.0
 * `params` {Object}
 * `callback` {Function}
 
-Posts a message to the inspector back-end. `callback` will be notified when a response is received. `callback` is a function that accepts two optional arguments - error and message-specific result.
+Publica un mensaje al back-end del inspector. Se le notificará a `callback` cuando se reciba una respuesta. `callback` is a function that accepts two optional arguments - error and message-specific result.
 
 ```js
 session.post('Runtime.evaluate', { expression: '2 + 2' },
@@ -110,9 +110,9 @@ session.post('Runtime.evaluate', { expression: '2 + 2' },
 // Output: { type: 'number', value: 4, description: '4' }
 ```
 
-The latest version of the V8 inspector protocol is published on the [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
+La última versión del protocolo del inspector V8 está publicada en el [Chrome DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/v8/).
 
-Node inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
+El inspector de Node soporta todos los dominios del Protocolo DevTools de Chrome declarados por V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
 
 ### session.disconnect()
 
@@ -120,13 +120,13 @@ Node inspector supports all the Chrome DevTools Protocol domains declared by V8.
 added: v8.0.0
 -->
 
-Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
+Cierra la sesión inmediatamente. All pending message callbacks will be called with an error. Se necesitará llamar a [`session.connect()`] para poder enviar mensajes de nuevo. Las sesiones reconectadas perderán todos los estados del inspector, como los agentes habilitados o los puntos de ruptura configurados.
 
-## Example usage
+## Ejemplo de uso
 
 ### CPU Profiler
 
-Apart from the debugger, various V8 Profilers are available through the DevTools protocol. Here's a simple example showing how to use the [CPU profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
+Apart from the debugger, various V8 Profilers are available through the DevTools protocol. Aquí está un ejemplo sencillo que muestra cómo usar el [CPU profiler](https://chromedevtools.github.io/devtools-protocol/v8/Profiler):
 
 ```js
 const inspector = require('inspector');
@@ -136,11 +136,11 @@ session.connect();
 
 session.post('Profiler.enable', () => {
   session.post('Profiler.start', () => {
-    // invoke business logic under measurement here...
+    // invoque la lógica de negocio bajo medida aquí...
 
-    // some time later...
+    // un tiempo después...
     session.post('Profiler.stop', (err, { profile }) => {
-      // write profile to disk, upload, etc.
+      // escribe el perfil al disco, subida, etc.
       if (!err) {
         fs.writeFileSync('./profile.cpuprofile', JSON.stringify(profile));
       }
