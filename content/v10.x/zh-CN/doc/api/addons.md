@@ -200,13 +200,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+一旦 `binding.gyp` 文件准备就绪，就可以使用 `node-gyp` 配置和构建示例插件：
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### 函数参数
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
