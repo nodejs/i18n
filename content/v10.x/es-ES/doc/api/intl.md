@@ -19,7 +19,7 @@ Node.js tiene muchas funcionalidades que hacen más fácil el desarrollo de prog
 - [`require('util').TextDecoder`][]
 - [`RegExp` Unicode Property Escapes][]
 
-Node.js (y su subyacente motor V8 JavaScript) usan [ICU](http://icu-project.org/) para implementar estas funcionalidades en código C/C++ nativo. However, some of them require a very large ICU data file in order to support all locales of the world. Because it is expected that most Node.js users will make use of only a small portion of ICU functionality, only a subset of the full ICU data set is provided by Node.js by default. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
+Node.js (y su subyacente motor V8 JavaScript) usan [ICU](http://icu-project.org/) para implementar estas funcionalidades en código C/C++ nativo. Sin embargo, algunos de ellos requieren un archivo de datos ICU muy grande para soportar todos los locales del mundo. Dado que se espera que la mayoría de los usuarios de Node.js harán uso de sólo una pequeña porción de la funcionalidad de ICU, sólo un subconjunto de todo el conjunto de datos de ICU es proporcionado por Node.js por defecto. Several options are provided for customizing and expanding the ICU data set either when building or running Node.js.
 
 ## Options for building Node.js
 
