@@ -313,7 +313,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 
 请注意，此示例使用两参数形式的 `Init()`，使用收到的完整 `module` 对象作为第二个参数。 这允许插件使用单个函数完全覆盖 `exports`，而不是添加一个函数作为 `exports` 的一个属性。
 
-To test it, run the following JavaScript:
+要测试它，请运行以下JavaScript：
 
 ```js
 // test.js
@@ -325,9 +325,9 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+请注意，在此示例中，回调函数是同步被调用的。
 
-### Object factory
+### 对象工厂
 
 Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
