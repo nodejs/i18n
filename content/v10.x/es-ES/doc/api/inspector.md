@@ -53,9 +53,9 @@ Crea una nueva instancia de la clase `inspector.Session`. La sesión de inspecto
 added: v8.0.0
 -->
 
-* {Object} The notification message object
+* {Object} El objeto de mensaje de notificación
 
-Emitted when any notification from the V8 Inspector is received.
+Emitido cuando se recibe cualquier notificación del Inspector V8.
 
 ```js
 session.on('inspectorNotification', (message) => console.log(message.method));
@@ -63,7 +63,7 @@ session.on('inspectorNotification', (message) => console.log(message.method));
 // Debugger.resumed
 ```
 
-It is also possible to subscribe only to notifications with specific method:
+También es posible suscribirse únicamente a notificaciones con el método especifico:
 
 ### Event: &lt;inspector-protocol-method&gt;
 
@@ -71,11 +71,11 @@ It is also possible to subscribe only to notifications with specific method:
 added: v8.0.0
 -->
 
-* {Object} The notification message object
+* {Object} El objeto de mensaje de notificación
 
-Emitted when an inspector notification is received that has its method field set to the `<inspector-protocol-method>` value.
+Emitido cuando se recibe una notificación del inspector que tiene su campo de método establecido al valor `<inspector-protocol-method>`.
 
-The following snippet installs a listener on the [`'Debugger.paused'`][] event, and prints the reason for program suspension whenever program execution is suspended (through breakpoints, for example):
+El siguiente snippet instala un listener en el evento [`'Debugger.paused'`][] e imprime la razón para la suspensión del programa cada vez que se suspende la ejecución del programa (a través de puntos de ruptura, por ejemplo):
 
 ```js
 session.on('Debugger.paused', ({ params }) => {
