@@ -659,9 +659,9 @@ vm.runInThisContext(code)(require);
 
 El `require()` en el caso anterior comparte el estado con el contexto desde el cual se pasa. Esto puede introducir riesgos cuando se ejecuta un código no confiable, por ejemplo alterar objetos en el contexto de maneras no deseadas.
 
-## What does it mean to "contextify" an object?
+## ¿Qué significa "contextualizar" un objeto?
 
-All JavaScript executed within Node.js runs within the scope of a "context". According to the [V8 Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide#contexts):
+Todo JavaScript ejecutado en Node.js se ejecuta dentro del ámbito de un "contexto". De acuerdo a la [Guía de Incrustadores V8](https://github.com/v8/v8/wiki/Embedder's%20Guide#contexts):
 
 > In V8, a context is an execution environment that allows separate, unrelated, JavaScript applications to run in a single instance of V8. You must explicitly specify the context in which you want any JavaScript code to be run.
 
