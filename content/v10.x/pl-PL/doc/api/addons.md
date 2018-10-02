@@ -327,9 +327,9 @@ addon((msg) => {
 
 Zauważ, że w tym przykładzie funkcja zwrotna jest wywoływana synchronicznie.
 
-### Object factory
+### Fabryka obiektów
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
 ```cpp
 // addon.cc
