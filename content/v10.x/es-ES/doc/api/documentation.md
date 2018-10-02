@@ -12,9 +12,9 @@ Cuando es apropiado, los tipos de las propiedades, los argumentos de métodos y 
 
 Si encuentras errores en esta documentación, por favor [abre una nueva incidencia](https://github.com/nodejs/node/issues/new) o revisa [la guia de contribución](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) para obtener ayuda en como enviar un arreglo del error.
 
-Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
+Cada archivo es generado basándose en el archivo `.md` correspondiente en la carpeta `doc/api/` en el árbol fuente de Node.js. La documentación es generada utilizando el programa `tools/doc/generate.js`. Una plantilla de HTML está ubicada en `doc/template.html`.
 
-## Stability Index
+## Índice de Estabilidad
 
 <!--type=misc-->
 
@@ -39,7 +39,7 @@ npm ecosystem is a high priority, and will not be broken unless absolutely
 necessary.
 ```
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+Debe tener precaución al hacer uso de las funcionalidades `Experimental`, particularmente dentro de los módulos que pueden ser usados como dependencias (o dependencias de dependencias) dentro de una aplicación de Node.js. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. Para ayudar a evitar tales sorpresas, las funcionalidades `Experimental` pueden requerir una bandera de línea de comando para habilitarlos explícitamente, o podría causar que se emita una advertencia del proceso. Por defecto, dichas advertencias son impresas en [`stderr`][] y pueden ser manejadas adjuntando a un listener al evento [`'warning'`][].
 
 ## JSON Output
 
@@ -47,7 +47,7 @@ Caution must be used when making use of `Experimental` features, particularly wi
 added: v0.6.12
 -->
 
-> Stability: 1 - Experimental
+> Estabilidad: 1 - Experimental
 
 Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
