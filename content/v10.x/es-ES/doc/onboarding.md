@@ -4,11 +4,11 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
 
 ## Una semana antes de la sesión de orientación
 
-* Si el nuevo Colaborador todavía no es un miembro de la organización GitHub de nodjs, confirme que están utilizando [dos factores de autenticación](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/). It will not be possible to add them to the organization if they are not using two-factor authentication. If they cannot receive SMS messages from GitHub, try [using a TOTP mobile app](https://help.github.com/articles/configuring-two-factor-authentication-via-a-totp-mobile-app/).
-* Announce the accepted nomination in a TSC meeting and in the TSC mailing list.
-* Suggest the new Collaborator install [`node-core-utils`][] and [set up the credentials](https://github.com/nodejs/node-core-utils#setting-up-credentials) for it.
+* Si el nuevo Colaborador todavía no es un miembro de la organización GitHub de nodjs, confirme que están utilizando [dos factores de autenticación](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/). No será posible agregarlos a la organización si no están utilizando dos factores de autenticación. Si no pueden recibir mensajes SMS desde GitHub, intente [utilizando una aplicación móvil TOTP](https://help.github.com/articles/configuring-two-factor-authentication-via-a-totp-mobile-app/).
+* Anunciar la nominación aceptada en una reunión de TSC y en la lista de correo TSC.
+* Sugerir al nuevo Colaborador instalar [`node-core-utils`][] y [configurar las credenciales](https://github.com/nodejs/node-core-utils#setting-up-credentials) para ello.
 
-## Fifteen minutes before the onboarding session
+## Quince minutos antes de la sesión de orientación
 
 * Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators).
 * Ask them if they want to join any subsystem teams. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
