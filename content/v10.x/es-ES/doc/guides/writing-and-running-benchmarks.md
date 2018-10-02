@@ -293,38 +293,38 @@ const configs = {
   // Número de operaciones, especificadas aquí para que así aparezcan en el reporte.
   // La mayoría de las pruebas de rendimiento solo usan un valor para todas las ejecuciones.
   n: [1024],
-  type: ['fast', 'slow'],  // Custom configurations
-  size: [16, 128, 1024]  // Custom configurations
+  type: ['fast', 'slow'],  // Configuraciones personalizadas
+  size: [16, 128, 1024]  // Configuraciones personalizadas
 };
 
 const options = {
-  // Add --expose-internals in order to require internal modules in main
+  // Añada --expose-internals para requerir módulos internos en main
   flags: ['--zero-fill-buffers']
 };
 
-// main and configs are required, options is optional.
+// main y configs son requeridos, options es opcional.
 const bench = common.createBenchmark(main, configs, options);
 
-// Note that any code outside main will be run twice,
-// in different processes, with different command line arguments.
+// Tenga en cuenta que cualquier código fuera de main será ejecutado dos veces,
+// en procesos diferentes, con diferentes argumentos de línea de comando.
 
 function main(conf) {
-  // Only flags that have been passed to createBenchmark
-  // earlier when main is run will be in effect.
-  // In order to benchmark the internal modules, require them here. For example:
+  // Solo estarán vigentes las banderas que han sido pasadas a createBenchmark
+ // antes cuando se ejecuta main.
+  // Para evaluar los módulos internos, solicítelos aquí. Por ejemplo:
   // const URL = require('internal/url').URL
 
-  // Start the timer
+  // Inicia el temporizador
   bench.start();
 
-  // Do operations here
+  // Realice operaciones aquí
   const BufferConstructor = conf.type === 'fast' ? Buffer : SlowBuffer;
 
   for (let i = 0; i < conf.n; i++) {
     new BufferConstructor(conf.size);
   }
 
-  // End the timer, pass in the number of operations
+  // Finaliza el temporizador, pasa en el número de operaciones
   bench.end(conf.n);
 }
 ```
