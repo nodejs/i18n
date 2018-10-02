@@ -285,7 +285,7 @@ Actualización de Seguridad
 * [e7010bdf92] - test: el runner debería devolver 0 en pruebas flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [c283c9bbb3] - test: soporta salida de pruebas de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [eeaed586bb] - test: soporte runner para pruebas flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [3bb8174b94] - test: refactor to use common testcfg (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [3bb8174b94] - test: refactor a usar testcfg común (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [df59d43586] - tools: pasar un logger constante en vez de un string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [d103d4ed9a] - tools: repara test.py después de la actualización v8 (Ben Noordhuis) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [8002192b4e] - win: manifestar node.exe para Windows 8.1 (Alexis Campailla) https://github.com/nodejs/node/pull/2838
@@ -486,7 +486,7 @@ https://github.com/nodejs/node/commit/cb7911f78ae96ef7a540df992cc1359ba9636e86
 * http: no emitir sockets EOF no-legibles (Fedor Indutny)
 * http: invocar createConnection cuando no hay agente (Nathan Rajlich)
 * stream: remover verificación sin utilidad (Brian White)
-* timer: don't reschedule timer bucket in a domain (Greg Brail)
+* timer: no reprogramar temporizador del cubo en un dominio (Greg Brail)
 * url: tratar \ igual que / (isaacs)
 * util: dar formato como Error si instanceof tiene Error (Rod Vagg)
 
@@ -643,7 +643,7 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 
 * v8: reparación back-port para CVE-2013-2882
 * npm: Actualizar a 1.3.8
-* crypto: fix assert() on malformed hex input (Ben Noordhuis)
+* crypto: reparar assert() en entradas hex malformadas (Ben Noordhuis)
 * crypto: reparar pérdida de memoria en la ruta de error randomBytes() (Ben Noordhuis)
 * events: reparar pérdida de memoria, que no se filtren los nombres de los eventos (Ben Noordhuis)
 * http: Manejar codificaciones hex/base64 correctamente (isaacs)
@@ -684,7 +684,7 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 * windows: obtener el errno apropiado (Ben Noordhuis)
 * tls: solo esperar para terminar si no lo vimos (Timothy J Fontaine)
 * http: deshacerse de la respuesta cuando la solicitud es abortada (isaacs)
-* http: use an unref'd timer to fix delay in exit (Peter Rust)
+* http: usar un temporizador unref'd para reparar retraso en la salida (Peter Rust)
 * zlib: nivel puede ser negativo (Brian White)
 * zlib: permitir valores zero para nivel y estrategia (Brian White)
 * buffer: añadir comentario explicando la alineación del búfer (Ben Noordhuis)
@@ -757,7 +757,7 @@ https://github.com/nodejs/node/commit/30d9e9fdd9d4c33d3d95a129d021cd8b5b91eddb
 * configure: respetar a la bandera --dest-os constantemente (Nathan Rajlich)
 * buffer: arrojar cuando se escriba más allá del búfer (Trevor Norris)
 * crypto: Limpiar el error después de los errores clave DiffieHellman (isaacs)
-* string_bytes: strip padding from base64 strings (Trevor Norris)
+* string_bytes: eliminar relleno de strings base64 (Trevor Norris)
 
 <a id="0.10.7"></a>
 
@@ -874,7 +874,7 @@ https://github.com/nodejs/node/commit/c274d1643589bf104122674a8c3fd147527a667d
 * tls: Previene colgaduras de mid-streams (Fedor Indutny, isaacs)
 * net: mejorar el soporte del socket tcp arbitrario (Ben Noordhuis)
 * net: manejar el evento 'finish' solo después de 'connect' (Fedor Indutny)
-* http: Don't hot-path end() for large buffers (isaacs)
+* http: No hacer hot-path end() para búferes más grandes (isaacs)
 * fs: Errores cb faltantes son desaprobados, no es un lanzamiento (isaacs)
 * fs: hacer que write/appendFileSync establezca correctamente modo archivo (Raymond Feng)
 * stream: Devolver el mismo del readable.wrap (isaacs)
