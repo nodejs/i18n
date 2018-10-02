@@ -1589,7 +1589,7 @@ https://github.com/nodejs/node/commit/d384b8b0d2ab7f05465f0a3e15fe20b4e25b5f86
 
 * mejoras en la velocidad de arranque (Maciej Małecki)
 * crypto: añadir función getDiffieHellman() (Tomasz Buchert)
-* buffer: soportar decodificación de base64 con seguridad de URL (Ben Noordhuis)
+* buffer: soportar decodificación de base64 URL-safe (Ben Noordhuis)
 * Hacer que QueryString.parse() sea incluso más rápida (Brian White)
 * url: decodificar entidades url en la sección de autenticación (Ben Noordhuis)
 * http: soportar método de solicitud PURGE (Ben Noordhuis)
@@ -1718,7 +1718,7 @@ https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 * crypto: añadir soporte PKCS12/PFX (Sambasiva Suda)
 * [#3240](https://github.com/joyent/node/issues/3240): child_process: borrar a NODE_CHANNEL_FD de env en el spawn (Ben Noordhuis)
 * windows: añadir prueba para path.normalize con rutas UNC (Bert Belder)
-* windows: hacer que path.normalize convierta todas las barras a barras inclinadas hacia atrás (Bert Belder)
+* windows: hacer que path.normalize convierta todas las barras a barras invertidas (Bert Belder)
 * fs: Cerrar automáticamente a FSWatcher ante error (Bert Belder)
 * [#3258](https://github.com/joyent/node/issues/3258): fs.ReadStream.pause() emite evento de datos duplicados (koichik)
 * pipe_wrap: no hacer assert() sobre errores de aceptación de pipes (Ben Noordhuis)
