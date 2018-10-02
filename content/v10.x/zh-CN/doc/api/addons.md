@@ -329,7 +329,7 @@ addon((msg) => {
 
 ### 对象工厂
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+插件可以在C++函数中创建和返回新对象，如以下示例所示。 创建一个对象，并返回一个 `msg` 属性，它与传递给 `createObject()` 的字符串相呼应：
 
 ```cpp
 // addon.cc
@@ -362,7 +362,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+在JavaScript中测试它：
 
 ```js
 // test.js
@@ -374,9 +374,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### 函数工厂
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+另一个常见的场景是创建包含C++函数并将其返回给JavaScript的JavaScript函数：
 
 ```cpp
 // addon.cc
@@ -419,7 +419,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+测试：
 
 ```js
 // test.js
@@ -430,7 +430,7 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### C++对象包装
 
 It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
 
