@@ -37,11 +37,11 @@ apply.whitespace fix`
 * Notificaciones:
   
   * Utilice <https://github.com/notifications> o configure el correo electrónico
-  * Watching the main repo will flood your inbox (several hundred notifications on typical weekdays), so be prepared
+  * Vea que el repositorio principal inundará su bandeja de entrada (varios cientos de notificaciones en días hábiles típicos), así que prepárese
 
-* `#node-dev` on [webchat.freenode.net](https://webchat.freenode.net/) is the best place to interact with the TSC / other Collaborators
+* `#node-dev` en [webchat.freenode.net](https://webchat.freenode.net/) es el mejor lugar para interactuar con el TSC / otros Colaboradores
   
-  * If there are any questions after the session, a good place to ask is there!
+  * Si hay alguna pregunta después de la sesión, ¡un buen lugar para preguntar es ahí!
   * Presence is not mandatory, but please drop a note there if force-pushing to `master`
 
 ## Project goals & values
