@@ -186,7 +186,7 @@ Mensaje de commit original:
   [regexp] Fix case-insensitive matching for one-byte subjects.
 
   El error se produce porque no canonizamos los rangos de clase de caracteres antes de agregar equivalentes de casos. Al agregar equivalentes de casos, abortamos con anticipación para cadenas de asunto de un byte, asumiendo que los rangos están ordenados.
-  Which they are not.
+  Que no lo están.
 
   R=marja@chromium.org
   BUG=v8:5199
