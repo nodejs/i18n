@@ -452,7 +452,7 @@ Returns an object representing the peer's certificate. The returned object has s
 
 If the full certificate chain was requested, each certificate will include a `issuerCertificate` property containing an object representing its issuer's certificate.
 
-For example:
+Na przykład:
 
 ```text
 { subject:
@@ -818,7 +818,7 @@ added: v0.10.2
 
 Returns an array with the names of the supported SSL ciphers.
 
-For example:
+Na przykład:
 
 ```js
 console.log(tls.getCiphers()); // ['AES128-SHA', 'AES256-SHA', ...]
