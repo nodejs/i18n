@@ -10,16 +10,16 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
 
 ## Quince minutos antes de la sesión de orientación
 
-* Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators).
-* Ask them if they want to join any subsystem teams. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Antes de la sesión de orientación, agregar al nuevo Colaborador al [Equipo de Colaboradores](https://github.com/orgs/nodejs/teams/collaborators).
+* Pregúnteles si quieren unirse a algún equipo de subsistema. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
-## Onboarding session
+## Sesión de orientación
 
-* This session will cover: 
-  * [local setup](#local-setup)
-  * [project goals & values](#project-goals--values)
+* Esta sesión cubrirá: 
+  * [configuración local](#local-setup)
+  * [objetivos & valores del proyecto](#project-goals--values)
   * [managing the issue tracker](#managing-the-issue-tracker)
-  * [reviewing PRs](#reviewing-prs)
+  * [revisión de PRs](#reviewing-prs)
   * [landing PRs](#landing-prs)
 
 ## Local setup
