@@ -180,14 +180,12 @@ Un ejemplo para el flujo de trabajo: cómo seleccionar cuidadosamente; considera
 * Modifique el mensaje de commit para que coincida con el formato que usamos para los backports de V8 y colócate como el autor. `git commit --amend --reset-author`. Es posible que desee agregar una descripción adicional si es necesario para indicar el impacto de la corrección en Node.js. En este caso, el problema original fue lo suficientemente descriptivo. Ejemplo:
 
 ```console
-deps: cherry-pick a51f429 from V8 upstream
+deps: cherry-pick a51f429 de V8 upstream
 
-Original commit message:
+Mensaje de commit original:
   [regexp] Fix case-insensitive matching for one-byte subjects.
 
-  The bug occurs because we do not canonicalize character class ranges
-  before adding case equivalents. While adding case equivalents, we abort
-  early for one-byte subject strings, assuming that the ranges are sorted.
+  El error se produce porque no canonizamos los rangos de clase de caracteres antes de agregar equivalentes de casos. Al agregar equivalentes de casos, abortamos con anticipación para cadenas de asunto de un byte, asumiendo que los rangos están ordenados.
   Which they are not.
 
   R=marja@chromium.org
