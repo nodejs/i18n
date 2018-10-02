@@ -668,7 +668,7 @@ https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
 * npm: Actualizar a v1.3.5
 * os: No reportar tiempos negativos en la información del cpu (Ben Noordhuis)
 * fs: Manejar UID y GID grandes (Ben Noordhuis)
-* url: Fix edge-case when protocol is non-lowercase (Shuan Wang)
+* url: Reparar caso extremo cuando el protocolo no es minúsculo (Shuan Wang)
 * doc: Reescribir el API Doc de streams (isaacs)
 * node: llamar a MakeDomainCallback en todos los casos de dominio (Trevor Norris)
 * crypto: reparar fuga de memoria en LoadPKCS12 (Fedor Indutny)
@@ -893,7 +893,7 @@ https://github.com/nodejs/node/commit/163ca274230fce536afe76c64676c332693ad7c1
 * core: Añadir el nombre de archivo correctamente en dlopen en windows (isaacs)
 * zlib: Manejar limpieza de banderas correctamente (isaacs)
 * domains: Manejar errores arrojados en manejadores de errores anidados (isaacs)
-* buffer: Strip high bits when converting to ascii (Ben Noordhuis)
+* buffer: Borrar bits altos cuando se convierta a ascii (Ben Noordhuis)
 * win/msi: Habilitar modificar y reparar (Bert Belder)
 * win/msi: Añadir selección de características para varias partes del nodo (Bert Belder)
 * win/msi: usar rutas de claves de registro consistentes (Bert Belder)
