@@ -309,9 +309,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Zwróć uwagę, że w tym przykładzie używana jest forma dwuargumentowa `Init()`, która odbiera pełny obiekt `modułu` jako drugi argument. To pozwala Dodatkom całkowicie przepisać `eksporty` za pomocą pojedynczej funkcji zamiast dodawania funkcji jako właściwości `eksportu`.
 
-To test it, run the following JavaScript:
+Aby to przetestować, uruchom następujący kod JavaScript:
 
 ```js
 // test.js
@@ -323,7 +323,7 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Zauważ, że w tym przykładzie funkcja zwrotna jest wywoływana synchronicznie.
 
 ### Object factory
 
