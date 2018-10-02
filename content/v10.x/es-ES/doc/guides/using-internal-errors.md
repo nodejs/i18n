@@ -79,7 +79,7 @@ assert.strictEqual(
   'Hostname/IP does not match certificate\'s altnames: altname');
 ```
 
-Además, también debe haber pruebas que validen el uso del error en función de dónde se utiliza en el código base. For these tests, except in special cases, they should only validate that the expected code is received and NOT validate the message. This will reduce the amount of test change required when the message for an error changes.
+Además, también debe haber pruebas que validen el uso del error en función de dónde se utiliza en el código base. Para estas pruebas, excepto en casos especiales, solo deben validar que se recibe el código esperado y NO validar el mensaje. Esto reducirá la cantidad de cambio de prueba requerido cuando cambie el mensaje de un error.
 
 ```js
 assert.throws(() => {
@@ -90,18 +90,18 @@ assert.throws(() => {
 }));
 ```
 
-Avoid changing the format of the message after the error has been created. If it does make sense to do this for some reason, then additional tests validating the formatting of the error message for those cases will likely be required.
+Evite cambiar el formato del mensaje después de que se haya creado el error. Si tiene sentido hacer esto por alguna razón, es probable que se requieran pruebas adicionales que validen el formato del mensaje de error para esos casos.
 
 ## API
 
-### Object: errors.codes
+### Objeto: errors.codes
 
-Exposes all internal error classes to be used by Node.js APIs.
+Expone todas las clases de errores internos que deben utilizar las API de Node.js.
 
-### Method: errors.message(key, args)
+### Método: errors.message(key, args)
 
-* `key` {string} The static error identifier
-* `args` {Array} Zero or more optional arguments passed as an Array
-* Returns: {string}
+* `key` {string} El identificador de error estático
+* `args` {Array} Cero o más argumentos opcionales pasados como un Array
+* Devuelve: {string}
 
-Returns the formatted error message string for the given `key`.
+Devuelve la string de mensaje de error formateada para la `key` dada.
