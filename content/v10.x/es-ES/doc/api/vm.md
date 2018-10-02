@@ -634,9 +634,9 @@ A causa de que `vm.runInThisContext()` no tiene acceso al ámbito local, `localV
 
 ## Ejemplo: Ejecución de un Servidor HTTP dentro de una VM
 
-When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
+Cuando se utiliza [`script.runInThisContext()`][] o [`vm.runInThisContext()`][], el código se ejecuta dentro del contexto global V8 actual. El código pasado a este contexto VM tendrá su propio ámbito aislado.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
+A fin de ejecutar un servidor web simple utilizando el módulo `http` el código pasado para el contexto debe llamar a `require('http')` por sí solo, o tener una referencia al módulo `http` pasado a él. Por ejemplo:
 
 ```js
 'use strict';
