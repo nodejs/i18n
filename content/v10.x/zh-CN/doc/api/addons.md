@@ -179,7 +179,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 ## 插件示例
 
-以下是一些插件示例，旨在帮助开发人员入门学习。 这些示例使用了 V8 API。 Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+以下是一些插件示例，旨在帮助开发人员入门学习。 这些示例使用了 V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，以及 V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)， 该指南用于解释使用的几个概念，如句柄，作用域，函数模板等。
 
 这些示例中的每一个都使用以下 `binding.gyp` 文件：
 
