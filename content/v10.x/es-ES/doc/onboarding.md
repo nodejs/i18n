@@ -28,15 +28,15 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
   
   * Asegúrese de tener espacio en blanco=corregir: `git config --global --add
 apply.whitespace fix`
-  * Always continue to PR from your own GitHub fork 
-    * Branches in the `nodejs/node` repository are only for release lines
+  * Siempre continuar el PR desde su propia bifurcación de GitHub 
+    * Las ramas en el repositorio `nodejs/node` solo son para las líneas de lanzamiento
   * See [Updating Node.js from Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
-  * Make a new branch for each PR you submit.
-  * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
+  * Realizar una nueva rama para cada PR que envíe.
+  * Afiliación: Considere hacer su afiliación en la organización GitHub de Node.js pública. Esto hace que sea más fácil identificar a los Colaboradores. Las instrucciones sobre como hacerlo están disponibles en [Publicar u ocultar la afiliación a la organización](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
-* Notifications:
+* Notificaciones:
   
-  * Use <https://github.com/notifications> or set up email
+  * Utilice <https://github.com/notifications> o configure el correo electrónico
   * Watching the main repo will flood your inbox (several hundred notifications on typical weekdays), so be prepared
 
 * `#node-dev` on [webchat.freenode.net](https://webchat.freenode.net/) is the best place to interact with the TSC / other Collaborators
