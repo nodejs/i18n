@@ -49,12 +49,12 @@ added: v0.6.12
 
 > Estabilidad: 1 - Experimental
 
-Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
+Cada documento `.html` tiene un documento `.json` correspondiente que presenta la misma información en una manera estructurada. Esta funcionalidad es experimental, y es añadida para el beneficio de IDEs y otras utilidades que desean hacer cosas programáticas con la documentación.
 
-## Syscalls and man pages
+## Syscalls y páginas man
 
-System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
+Llamadas de sistema como open(2) y read(2) definen la interfaz entre los programar de usuario y el sistema operativo subyacente. Las funciones de Node.js que simplemente envuelven a un syscall, como [`fs.open()`][], lo documentarán. Los docs enlazan a las páginas man correspondientes (abreviación para páginas manuales) las cuales describen cómo las syscalls fucnionan.
 
-Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Some syscalls, like lchown(2), are BSD-specific. Eso significa, por ejemplo, que [`fs.lchown()`][] sólo funciona en macOS y otros sistemas derivados de BSD, y no está disponible en Linux.
 
-Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
+La mayoría de las syscalls de Unix tiene equivalentes de Windows, pero el comportamiento puede variar en Windows en relación a Linux y macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node issue 4760](https://github.com/nodejs/node/issues/4760).
