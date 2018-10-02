@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-W `myobject.cc` implementuj różne metody, które mają zostać ujawnione. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+W `myobject.cc` implementuj różne metody, które mają zostać naświetlone. Poniżej, metoda `plusOne ()` jest naświetlona poprzez dodanie jej do prototypu konstruktora:
 
 ```cpp
 // myobject.cc
@@ -536,7 +536,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Wywołana jako zwykła funkcja `MyObject (...)`, zamienia się w wywołanie konstruktu.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -714,7 +714,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Wywołana jako zwykła funkcja `MyObject (...)`, zamienia się w wywołanie konstruktu.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -916,7 +916,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Wywołana jako zwykła funkcja `MyObject (...)`, zamienia się w wywołanie konstruktu.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
