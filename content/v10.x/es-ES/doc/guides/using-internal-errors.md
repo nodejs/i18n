@@ -1,14 +1,14 @@
-# Usando el módulo interno/errores.js
+# Usando el módulo internal/errors.js
 
-## Qué es interno/errores.js
+## Qué es internal/errors.js
 
 El módulo `require('internal/errors')` es un módulo solo interno que se puede usar para producir instancias `Error`, `TypeError` y `RangeError` que utilizan un código de error estático, permanente y un mensaje parametrizado opcionalmente.
 
-La intención del módulo es permitir que los errores proporcionados por Node.js tengan asignado un identificador permanente. Sin un identificador permanente, el código de usuario puede necesitar inspeccionar los mensajes de error para distinguir un error de otro. An unfortunate result of that practice is that changes to error messages result in broken code in the ecosystem. For that reason, Node.js has considered error message changes to be breaking changes. By providing a permanent identifier for a specific error, we reduce the need for userland code to inspect error messages.
+La intención del módulo es permitir que los errores proporcionados por Node.js tengan asignado un identificador permanente. Sin un identificador permanente, el código de usuario puede necesitar inspeccionar los mensajes de error para distinguir un error de otro. Un resultado desafortunado de esa práctica es que los cambios en los mensajes de error resultan en un código roto en el ecosistema. Por esa razón, Node.js ha considerado que los cambios en los mensajes de error son cambios de ruptura. Al proporcionar un identificador permanente para un error específico, reducimos la necesidad de un código de usuario para inspeccionar los mensajes de error.
 
-*Note*: Switching an existing error to use the `internal/errors` module must be considered a `semver-major` change.
+*Nota*: Cambiar un error existente para usar el módulo `internal/errors` debe considerarse un cambio `semver-major`.
 
-## Using internal/errors.js
+## Usando internal/errors.js
 
 The `internal/errors` module exposes all custom errors as subclasses of the builtin errors. After being added, an error can be found in the `codes` object.
 
