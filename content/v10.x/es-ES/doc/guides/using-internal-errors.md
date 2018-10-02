@@ -50,27 +50,27 @@ Es posible crear múltiples clases derivadas proporcionando argumentos adicional
 ```js
 E('EXAMPLE_KEY', 'Error message', TypeError, RangeError);
 
-// In another module
+// En otro módulo 
 const { EXAMPLE_KEY } = require('internal/errors').codes;
-// TypeError
-throw new EXAMPLE_KEY();
-// RangeError
-throw new EXAMPLE_KEY.RangeError();
+// TypeError 
+arroja la nueva EXAMPLE_KEY();
+// RangeError 
+arroja la nueva EXAMPLE_KEY.RangeError();
 ```
 
-## Documenting new errors
+## Documentando nuevos errores
 
-Whenever a new static error code is added and used, corresponding documentation for the error code should be added to the `doc/api/errors.md` file. This will give users a place to go to easily look up the meaning of individual error codes.
+Siempre que se agregue y use un nuevo código de error estático, la documentación correspondiente para el código de error se debe agregar al archivo `doc/api/errors.md`. Esto les dará a los usuarios un lugar donde ir para buscar fácilmente el significado de los códigos de error individuales.
 
-## Testing new errors
+## Probando nuevos errores
 
-When adding a new error, corresponding test(s) for the error message formatting may also be required. If the message for the error is a constant string then no test is required for the error message formatting as we can trust the error helper implementation. An example of this kind of error would be:
+Al agregar un nuevo error, también se puede(n) requerir la(s) prueba(s) correspondiente(s) para el formato del mensaje de error. Si el mensaje para el error es una string constante, no se requiere ninguna prueba para el formato del mensaje de error, ya que podemos confiar en la implementación del asistente de errores. Un ejemplo de este tipo de error sería:
 
 ```js
 E('ERR_SOCKET_ALREADY_BOUND', 'Socket is already bound');
 ```
 
-If the error message is not a constant string then tests to validate the formatting of the message based on the parameters used when creating the error should be added to `test/parallel/test-internal-errors.js`. These tests should validate all of the different ways parameters can be used to generate the final message string. A simple example is:
+Si el mensaje de error no es una string constante, las pruebas para validar el formato del mensaje según los parámetros utilizados al crear el error deben agregarse a `test/parallel/test-internal-errors.js`. Estas pruebas deben validar todas las diferentes formas en que se pueden usar los parámetros para generar la string de mensaje final. Un ejemplo simple es:
 
 ```js
 // Test ERR_TLS_CERT_ALTNAME_INVALID
@@ -79,7 +79,7 @@ assert.strictEqual(
   'Hostname/IP does not match certificate\'s altnames: altname');
 ```
 
-In addition, there should also be tests which validate the use of the error based on where it is used in the codebase. For these tests, except in special cases, they should only validate that the expected code is received and NOT validate the message. This will reduce the amount of test change required when the message for an error changes.
+Además, también debe haber pruebas que validen el uso del error en función de dónde se utiliza en el código base. For these tests, except in special cases, they should only validate that the expected code is received and NOT validate the message. This will reduce the amount of test change required when the message for an error changes.
 
 ```js
 assert.throws(() => {
