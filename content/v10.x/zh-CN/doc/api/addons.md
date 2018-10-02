@@ -141,7 +141,7 @@ The [Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`
 
 N-API是构建本地插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将是稳定的跨Node.js版本的应用程序二进制接口（ABI）。 它旨在将插件与底层JavaScript引擎中的更改隔离开来，并允许为一个版本编译的模块在更新版本的Node.js上运行而无需重新编译。 插件是使用本文档中概述的相同方法/工具（node-gyp等）构建/打包的。 唯一的区别是本机代码使用的API集。 不使用V8或 [Node.js 原生模块抽象接口](https://github.com/nodejs/nan)，而是使用N-API中可用的函数。
 
-在上述“Hello World”示例中使用N-API，替换`hello.cc`中的内容如下。 所有其它指令保持不变。
+在上述“Hello World”示例中使用N-API，替换 `hello.cc` 中的内容如下。 所有其它指令保持不变。
 
 ```cpp
 // hello.cc using N-API
@@ -179,7 +179,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 ## 插件示例
 
-Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
+以下是一些插件示例，旨在帮助开发人员入门学习。 这些示例使用了 V8 API。 Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
 这些示例中的每一个都使用以下 `binding.gyp` 文件：
 
