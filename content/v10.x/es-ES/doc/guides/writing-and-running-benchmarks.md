@@ -208,7 +208,7 @@ Después de generar el csv, una tabla de comparación puede ser creada usando la
 ```console
 $ cat scatter.csv | Rscript benchmark/scatter.R --xaxis chunk --category encoding --plot scatter-plot.png --log
 
-aggregating variable: inlen
+variable agregada: inlen
 
 chunk     encoding      mean confidence.interval
    16        ascii 1111933.3           221502.48
@@ -229,7 +229,7 @@ chunk     encoding      mean confidence.interval
  1024         utf8 1554832.5           237532.07
 ```
 
-Because the scatter plot can only show two variables (in this case *chunk* and *encoding*) the rest is aggregated. Sometimes aggregating is a problem, this can be solved by filtering. This can be done while benchmarking using the `--set` parameter (e.g. `--set encoding=ascii`) or by filtering results afterwards using tools such as `sed` or `grep`. In the `sed` case be sure to keep the first line since that contains the header information.
+Debido a que el diagrama de dispersión solo puede mostrar dos variables (en este caso *chunk* y *encoding*) el resto es agregado. Algunas veces la agregación puede ser un problema, esto se puede resolver filtrando. Esto se puede hacer durante el benchmarking usando el parámetro `--set` (p. e.j `--set encoding=ascii`) o filtrando los resultados después de usar herramientas tales como `sed` o `grep`. En el caso `sed` asegúrese de mantener la primera línea ya que contiene la información de la cabecera.
 
 ```console
 $ cat scatter.csv | sed -E '1p;/([^,]+, ){3}128,/!d' | Rscript benchmark/scatter.R --xaxis chunk --category encoding --plot scatter-plot.png --log
@@ -255,7 +255,7 @@ chunk     encoding       mean confidence.interval
 
 ![compare tool boxplot](doc_img/scatter-plot.png)
 
-### Running Benchmarks on the CI
+### Ejecutar Pruebas de Rendimiento en el CI
 
 To see the performance impact of a Pull Request by running benchmarks on the CI, check out [How to: Running core benchmarks on Node.js CI](https://github.com/nodejs/benchmarking/blob/master/docs/core_benchmarks.md).
 
