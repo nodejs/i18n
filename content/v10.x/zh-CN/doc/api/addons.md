@@ -432,7 +432,7 @@ console.log(fn());
 
 ### C++对象包装
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+也可以以允许使用JavaScript `new` 运算符创建新实例的方式包装C++对象/类：
 
 ```cpp
 // addon.cc
