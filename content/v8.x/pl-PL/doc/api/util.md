@@ -21,7 +21,7 @@ added: v8.2.0
 
 Takes an `async` function (or a function that returns a Promise) and returns a function following the error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument. In the callback, the first argument will be the rejection reason (or `null` if the Promise resolved), and the second argument will be the resolved value.
 
-For example:
+Na przykład:
 
 ```js
 const util = require('util');
@@ -73,7 +73,7 @@ added: v0.11.3
 
 The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. If not, then the returned function is a no-op.
 
-For example:
+Na przykład:
 
 ```js
 const util = require('util');
@@ -392,7 +392,7 @@ added: v8.0.0
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
-For example:
+Na przykład:
 
 ```js
 const util = require('util');
