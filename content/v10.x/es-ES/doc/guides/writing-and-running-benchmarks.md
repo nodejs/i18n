@@ -21,9 +21,9 @@ Las herramientas básicas de Unix son necesarias para algunas pruebas de rendimi
 
 ### Requisitos de la Prueba de Rendimiento HTTP
 
-La mayoría de las pruebas de rendimiento HTTP requieren que se instale un benchmarker. Esto puede ser tanto [`wrk`](https://github.com/wg/wrk) como [`autocannon`](https://github.com/mcollina/autocannon).
+La mayoría de las pruebas de rendimiento HTTP requieren que se instale un benchmarker. Este puede ser tanto [`wrk`](https://github.com/wg/wrk) como [`autocannon`](https://github.com/mcollina/autocannon).
 
-`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el Node.js ejecutable que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese que la versión de Node.js en la ruta no está alterada.
+`Autocannon` es un script de Node.js que puede ser instalado usando `npm install -g autocannon`. Utilizará el ejecutable de Node.js que está en la ruta. Para comparar dos ejecuciones de la prueba de rendimiento HTTP, asegúrese que la versión de Node.js en la ruta no está alterada.
 
 `wrk` puede estar disponible a través de uno de los gestores de paquetes disponibles. Si no es así, puede ser construido fácilmente [desde este link](https://github.com/wg/wrk) vía `make`.
 
