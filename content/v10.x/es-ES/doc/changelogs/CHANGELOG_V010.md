@@ -210,7 +210,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [1e45a6111c] - deps: actualiza http-parser a la versión 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
 * [6db377b2f4] - doc: elimina las descripciones SSLv2 (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
 * [563c359f5c] - domains: repara el manejo de excepciones no capturadas (Julien Gilli) https://github.com/nodejs/node/pull/3887
-* [e483f3fd26] - test: fix hanging http obstext test (Ben Noordhuis) https://github.com/nodejs/node/pull/5511
+* [e483f3fd26] - test: reparar el colgamiento prueba http obstext (Ben Noordhuis) https://github.com/nodejs/node/pull/5511
 
 <a id="0.10.42"></a>
 
@@ -235,7 +235,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [fdc332183e] - build: habilita tarballs comprimidos en xz donde sea posible (Rod Vagg) https://github.com/nodejs/node/pull/4894
 * [2d35b421b5] - deps: actualiza openssl sources a 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
 * [b31c0f3ea4] - deps: actualiza http-parser a la versión 1.1 (James M Snell)
-* [616ec1d6b0] - doc: clarify v0.10.41 openssl tls security impact (Rod Vagg) https://github.com/nodejs/node/pull/4153
+* [616ec1d6b0] - doc: aclarar impacto seguridad de v0.10.41 openssl tls (Rod Vagg) https://github.com/nodejs/node/pull/4153
 * [ccb3c2377c] - http: prohibe estrictamente caracteres inválidos de los encabezados (James M Snell)
 * [f0af0d1f96] - src: evita la advertencia del compilador en node_revert.cc (James M Snell)
 * [df80e856c6] - src: añade la bandera de línea del comando --security-revert command line flag (James M Snell)
@@ -260,7 +260,7 @@ Actualización de Seguridad
 * [268d2b4637] - build: configuración backport para la nueva infraestructura CI (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [c88a0b26da] - build: manifiesto de actualización incluirá Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2838
 * [8564a9f5f7] - build: detección de versión gcc en openSUSE Tumbleweed (Henrique Aparecido Lavezzo) https://github.com/nodejs/node-v0.x-archive/pull/25671
-* [9c7bd6de56] - build: run-ci makefile rule (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [9c7bd6de56] - build: regla de hacer archivo run-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [ffa1e1f31d] - build: soporta pruebas flaky test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [100dd19e61] - build: suporta Jenkins a través de test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [ec861f6f90] - build: hace el proceso de liberación más fácil para multi usuarios for multi users (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25638
@@ -269,10 +269,10 @@ Actualización de Seguridad
 * [e669b27740] - crypto: reemplaza rwlocks con mutexes simples (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
 * [ce0a48826e] - deps: actualiza openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4132
 * [b68781e500] - deps: actualizar npm a 1.4.29 (Forrest L Norvell) https://github.com/nodejs/node/pull/3639
-* [7cf0d9c1d9] - deps: fix openssl for MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node-v0.x-archive/pull/25857
-* [9ee8a14f9e] - deps: fix gyp to work on MacOSX without XCode (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25857
-* [a525c7244e] - deps: update gyp to 25ed9ac (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25857
-* [6502160294] - dns: allow v8 to optimize lookup() (Brian White) https://github.com/nodejs/node-v0.x-archive/pull/8942
+* [7cf0d9c1d9] - deps: reparar openssl para MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node-v0.x-archive/pull/25857
+* [9ee8a14f9e] - deps: reparar gyp para trabajar en MacOSX sin XCode (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25857
+* [a525c7244e] - deps: actualizar gyp a 25ed9ac (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25857
+* [6502160294] - dns: permitir a v8 optimizar a lookup() (Brian White) https://github.com/nodejs/node-v0.x-archive/pull/8942
 * [5d829a63ab] - doc: backport README.md (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [62c8948109] - doc: repara Carpetas tales como Módulos de omisión de index.json (Elan Shanker) https://github.com/nodejs/node-v0.x-archive/pull/8868
 * [572663f303] - https: no sobreescribir la opción del nombre del servidor (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
@@ -282,9 +282,9 @@ Actualización de Seguridad
 * [7df57703dd] - test: marca test-net-error-twice flaky en SmartOS (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25760
 * [e10892cccc] - test: hace que test-abort-fatal-error no sea flaky (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25755
 * [a2f879f197] - test: marca las pruebas que fallaron recientemente como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [e7010bdf92] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [e7010bdf92] - test: el runner debería devolver 0 en pruebas flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [c283c9bbb3] - test: soporta salida de pruebas de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [eeaed586bb] - test: runner support for flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [eeaed586bb] - test: soporte runner para pruebas flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [3bb8174b94] - test: refactor to use common testcfg (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [df59d43586] - tools: pasar un logger constante en vez de un string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [d103d4ed9a] - tools: repara test.py después de la actualización v8 (Ben Noordhuis) https://github.com/nodejs/node-v0.x-archive/pull/25686
@@ -430,7 +430,7 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 * buffer: mejorar métodos {read,write}{U}Int* (Nick Apperson)
 * child_process: manejar error writeUtf8String (Fedor Indutny)
 * deps: backport 4ed5fde4f desde upstream v8 (Fedor Indutny)
-* deps: cherry-pick eca441b2 from OpenSSL (Fedor Indutny)
+* deps: escogido con cuidado eca441b2 de OpenSSL (Fedor Indutny)
 * lib: eliminar y reestructurar llamadas a isNaN() (cjihrig)
 * module: eliminar doble `getenv()` (Maciej Małecki)
 * stream2: arrojar datos existentes en la lectura del stream terminado (Chris Dickinson)
@@ -857,7 +857,7 @@ https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
 * timers: manejar rebosamiento firmado int32 en enroll() (Fedor Indutny)
 * stream: Reparar la detención en Transformación bajo condiciones muy específicas (Gil Pedersen)
 * stream: Manejar tarde los listeners del evento 'readable' (isaacs)
-* stream: Fix early end in Writables on zero-length writes (isaacs)
+* stream: Reparar primer terminal en Writables en escrituras de longitud-cero (isaacs)
 * domain: reparar el dominio de la callback de MakeCallback (Trevor Norris)
 * child_process: no emitir el mismo handle dos veces (Ben Noordhuis)
 * child_process: reparar envío de utf-8 a proceso secundario (Ben Noordhuis)
