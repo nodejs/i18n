@@ -271,18 +271,18 @@ Los argumentos de `createBenchmark` son:
 * `configs` {Object} Los parámetros de la prueba de rendimiento. `createBenchmark` ejecutará todas las combinaciones posibles de estos parámetros, a menos que se especifique lo contrario. Cada configuración es una propiedad con un array de valores posibles. Tenga en cuenta que los valores de la configuración solo pueden ser strings o números.
 * `options` {Object} Las opciones de la prueba de rendimiento. Por el momento solo se permite la opción `flags` para especificar marcas de línea de comando.
 
-`createBenchmark` devuelve un objeto `bench`, el cual es usado para cronometrar el tiempo de la prueba de rendimiento. Ejecute `bench.start()` después de la inicialización y `bench.end(n)` cuando la prueba de rendimiento esté hecha. `n` is the number of operations performed in the benchmark.
+`createBenchmark` devuelve un objeto `bench`, el cual es usado para cronometrar el tiempo de la prueba de rendimiento. Ejecute `bench.start()` después de la inicialización y `bench.end(n)` cuando la prueba de rendimiento esté hecha. `n` es el número de operaciones realizadas por la prueba de rendimiento.
 
-The benchmark script will be run twice:
+El script de la prueba de rendimiento se ejecutará dos veces:
 
-The first pass will configure the benchmark with the combination of parameters specified in `configs`, and WILL NOT run the `main` function. In this pass, no flags except the ones directly passed via commands when running the benchmarks will be used.
+El primer pase configurará la prueba de rendimiento con la combinación de parámetros especificados en `configs`, y NO ejecutará la función `main`. En este pase, ninguna bandera es permitida excepto aquellas que se enviaron directamente por medio de comandos al ejecutar la prueba de rendimiento.
 
-In the second pass, the `main` function will be run, and the process will be launched with:
+En el segundo pase, la función `main` será ejecutada, y el proceso será iniciado con:
 
-* The flags passed into `createBenchmark` (the third argument)
-* The flags in the command passed when the benchmark was run
+* Las banderas pasadas a `createBenchmark` (el tercer argumento)
+* Las banderas en el comando pasadas cuando la prueba de rendimiento fue ejecutada
 
-Beware that any code outside the `main` function will be run twice in different processes. This could be troublesome if the code outside the `main` function has side effects. In general, prefer putting the code inside the `main` function if it's more than just declaration.
+Tenga en cuenta que cualquier código fuera de la función `main` será ejecutado dos veces en procesos diferentes. Esto podría ser problemático si el código fuera de la función `main` tiene efectos secundarios. Por lo general, prefiera colocar el código dentro de la función `main` si es más que una declaración.
 
 ```js
 'use strict';
@@ -290,8 +290,8 @@ const common = require('../common.js');
 const { SlowBuffer } = require('buffer');
 
 const configs = {
-  // Number of operations, specified here so they show up in the report.
-  // Most benchmarks just use one value for all runs.
+  // Número de operaciones, especificadas aquí para que así aparezcan en el reporte.
+  // La mayoría de las pruebas de rendimiento solo usan un valor para todas las ejecuciones.
   n: [1024],
   type: ['fast', 'slow'],  // Custom configurations
   size: [16, 128, 1024]  // Custom configurations
