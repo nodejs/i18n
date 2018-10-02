@@ -158,23 +158,23 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array. For example:
+W przypadkach, gdy istnieje więcej niż jeden plik `.cc`, po prostu dodaj dodatkową nazwę pliku do tablicy źródeł ``. Na przykład:
 
 ```json
-"sources": ["addon.cc", "myexample.cc"]
+"źródła": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Gdy plik `binding.gyp` jest gotowy, przykładowe dodatki można skonfigurować i zbudować za pomocą `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Argumenty funkcji
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Dodatki zazwyczaj eksponują obiekty i funkcje, do których można uzyskać dostęp poprzez JavaScript działający w Node.js. Gdy funkcje są wywoływane z JavaScript, argumenty wejściowe i wartość zwracana muszą być mapowane do i z kodu C/C ++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Poniższy przykład ilustruje sposób odczytu argumentów funkcji przekazanych przez JavaScript i jak zwrócić wynik:
 
 ```cpp
 // addon.cc
@@ -230,7 +230,7 @@ NODE_MODULE(addon, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Po skompilowaniu przykładowy Dodatek może być wymagany i używany z poziomu Node.js:
 
 ```js
 // test.js
@@ -239,9 +239,9 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### Oddzwanianie
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Powszechną praktyką w Dodatkach jest przekazywanie funkcji JavaScript do funkcji C++ i wykonywanie ich stamtąd. Poniższy przykład ilustruje jak wywołać takie funkcje zwrotne:
 
 ```cpp
 // addon.cc
