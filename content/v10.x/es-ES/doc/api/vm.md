@@ -630,9 +630,9 @@ console.log('localVar:', localVar);
 // evalResult: 'eval', localVar: 'eval'
 ```
 
-Because `vm.runInThisContext()` does not have access to the local scope, `localVar` is unchanged. In contrast, [`eval()`][] *does* have access to the local scope, so the value `localVar` is changed. In this way `vm.runInThisContext()` is much like an [indirect `eval()` call][], e.g. `(0,eval)('code')`.
+A causa de que `vm.runInThisContext()` no tiene acceso al ámbito local, `localVar` no se modifica. En cambio, [`eval()`][] *tiene* acceso al ámbito local, por lo que el valor de `localVar` se modifica. De esta manera, `vm.runInThisContext()` es muy similar a una [llamada indirecta `eval()`][], por ejemplo `(0,eval)('code')`.
 
-## Example: Running an HTTP Server within a VM
+## Ejemplo: Ejecución de un Servidor HTTP dentro de una VM
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
