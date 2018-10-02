@@ -22,11 +22,11 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
   * [revisión de PRs](#reviewing-prs)
   * [landing PRs](#landing-prs)
 
-## Local setup
+## Configuración local
 
 * git:
   
-  * Make sure you have whitespace=fix: `git config --global --add
+  * Asegúrese de tener espacio en blanco=corregir: `git config --global --add
 apply.whitespace fix`
   * Always continue to PR from your own GitHub fork 
     * Branches in the `nodejs/node` repository are only for release lines
