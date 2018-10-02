@@ -96,7 +96,7 @@ This is the body of the test. This test is simple, it just tests that an HTTP se
 
 Avoid timers unless the test is specifically testing timers. There are multiple reasons for this. Mainly, they are a source of flakiness. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
 
-In the event a test needs a timer, consider using the `common.platformTimeout()` method. It allows setting specific timeouts depending on the platform. For example:
+In the event a test needs a timer, consider using the `common.platformTimeout()` method. It allows setting specific timeouts depending on the platform. Na przykład:
 
 ```javascript
 const timer = setTimeout(fail, common.platformTimeout(4000));
@@ -214,7 +214,7 @@ assert.throws(
 
 For performance considerations, we only use a selected subset of ES.Next features in JavaScript code in the `lib` directory. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in \[all maintained branches\]\[\]. \[node.green\]\[\] lists available features in each release.
 
-For example:
+Na przykład:
 
 - `let` and `const` over `var`
 - Template literals over string concatenation
