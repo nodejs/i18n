@@ -219,7 +219,7 @@ added: v0.11.2
 
 Por defecto, pueden registrarse un máximo de `10` listeners por cada evento. Este límite puede cambiar para instancias de `EventEmitter` individuales utilizando el método [`emitter.setMaxListeners(n)`][]. Para cambiar el predeterminado por *todas* las instancias de `EventEmitter`, se puede utilizar la propiedad `EventEmitter.defaultMaxListeners`. Si este valor no es un número positivo, se arrojará un `TypeError`.
 
-Tome precaución al configurar el `EventEmitter.defaultMaxListeners` debido a que los cambios afectan a *todas* las instancias de `EventEmitter`, incluyendo a aquellos creadas antes de que se haya hecho el cambio. Sin embargo, el llamar a [`emitter.setMaxListeners(n)`][] todavía tiene precedencia sobre `EventEmitter.defaultMaxListeners`.
+Tome precaución al configurar el `EventEmitter.defaultMaxListeners` debido a que los cambios afectan a *todas* las instancias de `EventEmitter`, incluyendo a aquellas creadas antes de que se haya hecho el cambio. Sin embargo, el llamar a [`emitter.setMaxListeners(n)`][] todavía tiene precedencia sobre `EventEmitter.defaultMaxListeners`.
 
 Note que esto no es un límite fuerte. La instancia `EventEmitter` permitirá que se añadan más listeners, pero dará salida a una advertencia de trace a stderr, indicando que una "posible fuga de memoria del EventEmitter" ha sido detectada. Para cualquier `EventEmitter`, los métodos `emitter.getMaxListeners()` y `emitter.setMaxListeners()` pueden usarse para evitar temporalmente esta advertencia:
 
@@ -368,7 +368,7 @@ const myEE = new EventEmitter();
 myEE.on('foo', () => console.log('a'));
 myEE.prependListener('foo', () => console.log('b'));
 myEE.emit('foo');
-// Imrpime:
+// Imprime:
 //   b
 //   a
 ```
@@ -393,7 +393,7 @@ server.once('connection', (stream) => {
 
 Devuelve una referencia para el `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
-Por defecto, los listener del evento son invocados en el orden en que se añaden. El método `emitter.prependOnceListener()` puede ser utilizado como una alternativa para añadir el listener del evento al comienzo del array de listeners.
+Por defecto, los listeners del evento son invocados en el orden en que se añaden. El método `emitter.prependOnceListener()` puede ser utilizado como una alternativa para añadir el listener del evento al comienzo del array de listeners.
 
 ```js
 const myEE = new EventEmitter();
@@ -470,7 +470,7 @@ added: v0.1.26
 - `listener` {Function}
 - Devuelve: {EventEmitter}
 
-Elimina el `listener` especificado del array de listener para el evento llamado `eventName`.
+Elimina el `listener` especificado del array del listener para el evento llamado `eventName`.
 
 ```js
 const callback = (stream) => {
@@ -501,7 +501,7 @@ myEmitter.on('event', callbackA);
 
 myEmitter.on('event', callbackB);
 
-// callbackA elimina al listener callbackB pero todavía será llamado.
+// callbackA elimina al listener callbackB pero aún así será llamado.
 // Array interno de listener al momento de la emisión [callbackA, callbackB]
 myEmitter.emit('event');
 // Imprime:
