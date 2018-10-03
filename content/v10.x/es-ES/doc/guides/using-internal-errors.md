@@ -62,7 +62,7 @@ arroja la nueva EXAMPLE_KEY.RangeError();
 
 Siempre que se agregue y use un nuevo código de error estático, la documentación correspondiente para el código de error se debe agregar al archivo `doc/api/errors.md`. Esto les dará a los usuarios un lugar donde ir para buscar fácilmente el significado de los códigos de error individuales.
 
-## Probando nuevos errores
+## Probar nuevos errores
 
 Al agregar un nuevo error, también se puede(n) requerir la(s) prueba(s) correspondiente(s) para el formato del mensaje de error. Si el mensaje para el error es una string constante, no se requiere ninguna prueba para el formato del mensaje de error, ya que podemos confiar en la implementación del asistente de errores. Un ejemplo de este tipo de error sería:
 
@@ -73,7 +73,7 @@ E('ERR_SOCKET_ALREADY_BOUND', 'Socket is already bound');
 Si el mensaje de error no es una string constante, las pruebas para validar el formato del mensaje según los parámetros utilizados al crear el error deben agregarse a `test/parallel/test-internal-errors.js`. Estas pruebas deben validar todas las diferentes formas en que se pueden usar los parámetros para generar la string de mensaje final. Un ejemplo simple es:
 
 ```js
-// Test ERR_TLS_CERT_ALTNAME_INVALID
+// // Prueba ERR_TLS_CERT_ALTNAME_INVALID
 assert.strictEqual(
   errors.message('ERR_TLS_CERT_ALTNAME_INVALID', ['altname']),
   'Hostname/IP does not match certificate\'s altnames: altname');
