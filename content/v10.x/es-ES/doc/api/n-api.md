@@ -3354,7 +3354,7 @@ napi_status napi_is_promise(napi_env env,
 
 ## Ejecución de Script
 
-N-API provides an API for executing a string containing JavaScript using the underlying JavaScript engine.
+N-API proporciona una API para ejecutar una cadena que contiene JavaScript utilizando el motor subyacente de JavaScript.
 
 ### napi_run_script
 
@@ -3368,13 +3368,13 @@ NAPI_EXTERN napi_status napi_run_script(napi_env env,
                                         napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] script`: A JavaScript string containing the script to execute.
-- `[out] result`: The value resulting from having executed the script.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] script`: Una cadena de JavaScript que contiene el script a ejecutar.
+- `[out] result`: El valor que resulta de haber ejecutado el script.
 
-## libuv event loop
+## Bucle de Evento libuv
 
-N-API provides a function for getting the current event loop associated with a specific `napi_env`.
+N-API proporciona una función para obtener el bucle de evento actual asociado con un `napi_env` específico.
 
 ### napi_get_uv_event_loop
 
@@ -3387,5 +3387,5 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
                                                uv_loop_t** loop);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] loop`: The current libuv loop instance.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] loop`: La instancia actual del bucle libuv.
