@@ -40,13 +40,13 @@ $ gpg --keyserver pool.sks-keyservers.net --recv-keys <FINGERPRINT>
 
 La clave que uses pudiera ser una clave secundaria/subclave de una clave existente.
 
-Additionally, full GPG key fingerprints for individuals authorized to release should be listed in the Node.js GitHub README.md file.
+Además, huellas de clave GPG completas para individuos autorizados para hacer el lanzamiento deberían estar listadas en el archivo Node.js GitHub README.md.
 
-## How to create a release
+## Como crear un lanzamiento
 
-Notes:
+Notas:
 
-- Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
+- Las fechas listadas a continuación como *"AAAA-MM-DD"* debería ser la fecha del lanzamiento **como UTC**. Usa `date -u +'%Y-%m-%d'` para descubrir que es esto.
 - Version strings are listed below as *"vx.y.z"*. Substitute for the release version.
 
 ### 1. Cherry-picking from `master` and other branches
