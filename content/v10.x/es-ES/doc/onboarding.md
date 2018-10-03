@@ -100,14 +100,14 @@ apply.whitespace fix`
 * En la medida de los posible, los problemas deben ser identificados por las herramientas en lugar de por los revisores humanos. Si está dejando comentarios sobre los problemas que podrían ser identificados por las herramientas pero no lo son, considere implementar las herramientas necesarias.
 * Tiempo mínimo de espera para comentarios 
   * Hay un tiempo mínimo de espera que intentamos respetar para cambios no triviales, de modo que las personas que puedan tener aportes importantes en un proyecto distribuido sean capaces de responder.
-  * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
-  * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
+  * Para cambios no triviales, deje abierto el pull request por al menos 48 horas (72 horas en fin de semana).
+  * Si se abandona un pull request, verifique si les importaría que lo tomara (especialmente si solo faltan nits).
 
-* Approving a change
+* Aprobar un cambio
   
-  * Collaborators indicate that they have reviewed and approve of the changes in a pull request using Github’s approval interface
-  * Some people like to comment `LGTM` (“Looks Good To Me”)
-  * You have the authority to approve any other collaborator’s work.
+  * Los colaboradores indican que han revisado y aprobado los combios en un pull request utilizando la interfaz de aprobación de GitHub
+  * A algunas personas les gusta comentar `LGTM` ("Me parece bien")
+  * Tiene la autoridad para aprobar cualquier trabajo de otro colaborador.
   * You cannot approve your own pull requests.
   * When explicitly using `Changes requested`, show empathy – comments will usually be addressed even if you don’t use it. 
     * If you do, it is nice if you are available later to check whether your comments have been addressed
