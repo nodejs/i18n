@@ -99,15 +99,15 @@ Recolectar una lista con formato de los commits desde el último lanzamiento. Us
 $ changelog-maker --group
 ```
 
-Note that changelog-maker counts commits since the last tag and if the last tag in the repository was not on the current branch you may have to supply a `--start-ref` argument:
+Ten en cuenta que, el creador de registro de cambios cuenta los commits desde la última etiqueta, y si la última etiqueta en el repositoria no estaba en el branch actual, puede ser que tengas que suministrar un argumento `--start-ref`:
 
 ```console
 $ changelog-maker --group --start-ref v2.3.1
 ```
 
-#### Step 2: Update the appropriate doc/changelogs/CHANGELOG_*.md file
+#### Paso 2:Actualizar el archivo doc/changelogs/CHANGELOG_*.md apropiado
 
-There is a separate `CHANGELOG_*.md` file for each major Node.js release line. These are located in the `doc/changelogs/` directory. Once the formatted list of changes is collected, it must be added to the top of the relevant changelog file in the release branch (e.g. a release for Node.js v4 would be added to the `/doc/changelogs/CHANGELOG_V4.md`).
+Hay un archivo `CHANGELOG_*.md` separado por cada línea de lanzamiento mayor de Node.js. Estos están localizados en el directorio `doc/changelogs/`. Once the formatted list of changes is collected, it must be added to the top of the relevant changelog file in the release branch (e.g. a release for Node.js v4 would be added to the `/doc/changelogs/CHANGELOG_V4.md`).
 
 **Please do *not* add the changelog entries to the root `CHANGELOG.md` file.**
 
