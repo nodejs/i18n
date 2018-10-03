@@ -42,7 +42,7 @@ changes:
 -->
 
 * `str` {string} La cadena de consulta de URL a analizar
-* `sep` {string} La subcadena utilizada para delimitar los pares de clave y valore en la cadena de consulta. **Predeterminado:** `'&'`.
+* `sep` {string} La subcadena utilizada para delimitar los pares de clave y valor en la cadena de consulta. **Predeterminado:** `'&'`.
 * `eq` {string}. La subcadena utilizada para delimitar claves y valores en la cadena de consultas. **Predeterminado:** `'='`.
 * `options` {Object} 
   * `decodeURIComponent` {Function} La función que se utiliza al decodificar caracteres codificados en porcentaje en la cadena de consulta. **Predeterminado:** `querystring.unescape()`.
@@ -63,10 +63,10 @@ Por ejemplo, la cadena de consulta `'foo=bar&abc=xyz&abc=123'` es analizada en:
 
 El objeto devuelto por el método `querystring.parse()` *no* se hereda de forma prototípica desde el `Object` de JavaScript. Esto significa que métodos típicos de `Object` tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
 
-By default, percent-encoded characters within the query string will be assumed to use UTF-8 encoding. If an alternative character encoding is used, then an alternative `decodeURIComponent` option will need to be specified as illustrated in the following example:
+De forma predeterminada, se supondrá que los caracteres codificados en porcentaje dentro de la cadena de consulta utilizan la codificación UTF-8. Si un caracter alternativo codificado es utilizado, entonces una opción `decodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
 
 ```js
-// Assuming gbkDecodeURIComponent function already exists...
+// Asumiendo que la función gbkDecodeURIComponent ya existe...
 
 querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
                   { decodeURIComponent: gbkDecodeURIComponent });
@@ -78,13 +78,13 @@ querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
 added: v0.1.25
 -->
 
-* `obj` {Object} The object to serialize into a URL query string
-* `sep` {string} The substring used to delimit key and value pairs in the query string. **Predeterminado:** `'&'`.
-* `eq` {string}. The substring used to delimit keys and values in the query string. **Predeterminado:** `'='`.
+* `obj` {Object} El objeto a serializar en una cadena de consulta de URL
+* `sep` {string} La subcadena utilizada para delimitar los pares de clave y valor en la cadena de consulta. **Predeterminado:** `'&'`.
+* `eq` {string}. La subcadena utilizada para delimitar claves y valores en la cadena de consulta. **Predeterminado:** `'='`.
 * `options` 
-  * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
+  * `encodeURIComponent` {Function} La función que se utiliza al convertir caracteres no seguros de URL a codificación de porcentaje en la cadena de consulta. **Predeterminado:** `querystring.escape()`.
 
-The `querystring.stringify()` method produces a URL query string from a given `obj` by iterating through the object's "own properties".
+El método `querystring.stringify()` produce una cadena de consulta de URL desde un `obj` dado mediante la iteración a través de las "propiedades propias" del objeto.
 
 It serializes the following types of values passed in `obj`: {string|number|boolean|string[]|number[]|boolean[]} Any other input values will be coerced to empty strings.
 
