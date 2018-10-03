@@ -1,4 +1,4 @@
-# Construyendo Node.js con Ninja
+# Compilar Node.js con Ninja
 
 El propósito de esta guía es mostrar cómo compilar Node.js usando [Ninja](https://ninja-build.org/), ya que hacerlo puede ser significativamente más rápido que usar `make`. Por favor, consulte [el sitio de Ninja](https://ninja-build.org/) para obtener instrucciones de instalación (solo unix).
 
