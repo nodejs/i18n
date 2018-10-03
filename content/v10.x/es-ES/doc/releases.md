@@ -93,7 +93,7 @@ La regla general es saltar esta versión cuando hay cambios de *rompimiento ABI*
 
 #### Paso 1: Recolectar la lista con formato de cambios:
 
-Recolectar una lista con formato de los commits desde el último lanzamiento. Use [`changelog-maker`](https://github.com/rvagg/changelog-maker) to do this:
+Recolectar una lista con formato de los commits desde el último lanzamiento. Usa [`changelog-maker`](https://github.com/rvagg/changelog-maker) para hacer esto:
 
 ```console
 $ changelog-maker --group
