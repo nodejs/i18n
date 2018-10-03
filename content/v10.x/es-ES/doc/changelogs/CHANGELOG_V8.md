@@ -131,17 +131,17 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
   * API desaprobada no documentada (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
   * agregar evento destruir para gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
   * agregar eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
-  * set HTTPParser trigger to socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
-  * add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
+  * establecer el disparador HTTPParser al socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
+  * agregar tipos de proveedores para el servidor de red (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
 * **n-api**: 
-  * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
+  * agregar ayudante para los complementos para obtener el evento bucle (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
 * **cli**: 
-  * add --stack-trace-limit to NODE_OPTIONS (Anna Henningsen) [#16495](https://github.com/nodejs/node/pull/16495)
-* **console**: 
-  * add support for console.debug (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
-* **module**: 
-  * add builtinModules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
-  * replace default paths in require.resolve() (cjihrig) [#17113](https://github.com/nodejs/node/pull/17113)
+  * agregar --stack-trace-limit a NODE_OPTIONS (Anna Henningsen) [#16495](https://github.com/nodejs/node/pull/16495)
+* **consola**: 
+  * añadir soporte para console.debug (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
+* **módulo**: 
+  * añadir builtinModules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
+  * reemplazar las rutas predeterminadas en require.resolve() (cjihrig) [#17113](https://github.com/nodejs/node/pull/17113)
 * **src**: 
   * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
   * add process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
