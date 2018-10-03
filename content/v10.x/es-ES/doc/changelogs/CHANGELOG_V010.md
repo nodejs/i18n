@@ -848,9 +848,9 @@ https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
 * npm: Actualizar a 1.2.15
 * uv: Actualizar a 0.10.3
 * tls: manejar SSL_ERROR_ZERO_RETURN (Fedor Indutny)
-* tls: manejar los errores antes de llamar a métodos C++ methods (Fedor Indutny)
-* tls: remover revisiones nocivas e innecesarios de enlaces (Marcel Laverdet)
-* crypto: hacer que getCiphers() los cifradores no-SSL (Ben Noordhuis)
+* tls: manejar los errores antes de llamar a métodos C++ (Fedor Indutny)
+* tls: remover los límites innecesarios y dañinos (Marcel Laverdet)
+* crypto: hacer que getCiphers() devuelva los cifradores no-SSL (Ben Noordhuis)
 * crypto: verificar el tamaño del argumento randomBytes() (Ben Noordhuis)
 * timers: no calcular la propiedad Timeout._when (Alexey Kupershtokh)
 * timers: reparar error ms uno-por-uno (Alexey Kupershtokh)
