@@ -60,9 +60,9 @@ Para una lista de commits que pudieran llegar en un lanzamiento de parche en v5.
 $ branch-diff v5.x master --exclude-label=semver-major,semver-minor,dont-land-on-v5.x --filter-release --format=simple
 ```
 
-Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrecto, semver incorrecto, etc.). Commits labeled as semver minor or semver major should only be cherry-picked when appropriate for the type of release being made. Previous release commits and version bumps do not need to be cherry-picked.
+Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrecto, semver incorrecto, etc.). Los commits etiquetados como semver menor o semver major deberían solo hacerle cherry-pick cuando sea apropiado por el tipo de lanzamiento que se esté haciendo. Commits de lanzamientos anteriores y actualizaciones de la versión no necesitan hacérsele cherry-pick.
 
-### 2. Update `src/node_version.h`
+### 2. Actualizar `src/node_version.h`
 
 Set the version for the proposed release using the following macros, which are already defined in `src/node_version.h`:
 
