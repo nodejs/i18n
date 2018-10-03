@@ -873,7 +873,7 @@ Esta versión incluye una actualización de seguridad para openssl que ha sido c
 * [[`f831744464`](https://github.com/nodejs/node/commit/f831744464)] - **test**: mejorar mensaje de activo en prueba (Gene Wu) [#15918](https://github.com/nodejs/node/pull/15918)
 * [[`d0bd56d509`](https://github.com/nodejs/node/commit/d0bd56d509)] - **test**: remover mensaje de aserciones (Justin Lee) [#15920](https://github.com/nodejs/node/pull/15920)
 * [[`23e66edcbe`](https://github.com/nodejs/node/commit/23e66edcbe)] - **test**: mejorar un mensaje de error (Pavel Pomerantsev) [#15921](https://github.com/nodejs/node/pull/15921)
-* [[`ad69a65b5f`](https://github.com/nodejs/node/commit/ad69a65b5f)] - **test**: replaced literals in errors with templates (Paul Milham) [#15911](https://github.com/nodejs/node/pull/15911)
+* [[`ad69a65b5f`](https://github.com/nodejs/node/commit/ad69a65b5f)] - **test**: se reemplazó literales en errores con modelos (Paul Milham) [#15911](https://github.com/nodejs/node/pull/15911)
 * [[`16907461fe`](https://github.com/nodejs/node/commit/16907461fe)] - **test**: display better error message for assertion (Russell Dempsey) [#15883](https://github.com/nodejs/node/pull/15883)
 * [[`4a664cea7d`](https://github.com/nodejs/node/commit/4a664cea7d)] - **test**: changed buffer-zero output (heeeunkimmm) [#15926](https://github.com/nodejs/node/pull/15926)
 * [[`f8bc5ab262`](https://github.com/nodejs/node/commit/f8bc5ab262)] - **test**: remove literal error messages (Faisal Yaqoob) [#15928](https://github.com/nodejs/node/pull/15928)
