@@ -60,7 +60,7 @@ Para una lista de commits que pudieran llegar en un lanzamiento de parche en v5.
 $ branch-diff v5.x master --exclude-label=semver-major,semver-minor,dont-land-on-v5.x --filter-release --format=simple
 ```
 
-Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrecto, semver incorrecto, etc.). Los commits etiquetados como semver menor o semver major deberían solo hacerle cherry-pick cuando sea apropiado por el tipo de lanzamiento que se esté haciendo. Commits de lanzamientos anteriores y actualizaciones de la versión no necesitan hacérsele cherry-pick.
+Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrecto, semver incorrecto, etc.). Los commits etiquetados como semver menor o semver major deberían solo hacerle cherry-pick cuando sea apropiado por el tipo de lanzamiento que se esté haciendo. Commits de lanzamientos anteriores y saltos de la versión no necesitan hacérsele cherry-pick.
 
 ### 2. Actualizar `src/node_version.h`
 
@@ -78,22 +78,22 @@ Establece el valor macro `NODE_VERSION_IS_RELEASE` a `1`. Esto causa que la comp
 #define NODE_VERSION_IS_RELEASE 1
 ```
 
-**También considera si se debe actualizar `NODE_MODULE_VERSION`**:
+**También considera si se debe saltar `NODE_MODULE_VERSION`**:
 
 Este macro es usado para señalar una versión ABI para complementos nativos. Actualmente tiene dos usos comunes en la comunidad:
 
 - Determinar qué API funciona en contra para compilar complementos nativos, p. ej. [NAN](https://github.com/nodejs/nan) lo usa para formar una capa de compatibilidad para mucho de lo que envuelve.
 - Determinar el ABI para descargar binarios pre-compilados de complementos nativos, p. ej. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) usa este valor como fue expuesto por `process.versions.modules` para ayudar a determinar el binario apropiado para descargar en tiempo de instalación.
 
-La regla general es actualizar esta versión cuando hay cambios de *rompimiento ABI*, y también si hay cambios API no-triviales. Las reglas aún no están estrictamente definidas, en caso de duda, por favor confiere con alguien que tendrá una perspectiva más informada, como un miembro del equipo NAN.
+La regla general es saltar esta versión cuando hay cambios de *rompimiento ABI*, y también si hay cambios API no-triviales. Las reglas aún no están estrictamente definidas, en caso de duda, por favor confiere con alguien que tendrá una perspectiva más informada, como un miembro del equipo NAN.
 
-*Note*: Es la política TSC actual actualizar a una versión mayor cuando ABI cambia. If you see a need to bump `NODE_MODULE_VERSION` then you should consult the TSC. Commits may need to be reverted or a major version bump may need to happen.
+*Note*: Es la política TSC actual saltar una versión mayor cuando ABI cambia. Si ves una necesidad de saltar `NODE_MODULE_VERSION`, entonces deberías consultar el TSC. Los commits pudieran necesitar ser revertidos, o un salto de una versión mayor pudiera ser que ocurra.
 
-### 3. Update the Changelog
+### 3. Actualizar el Registro de Cambios
 
-#### Step 1: Collecting the formatted list of changes:
+#### Paso 1: Recolectar la lista con formato de cambios:
 
-Collect a formatted list of commits since the last release. Use [`changelog-maker`](https://github.com/rvagg/changelog-maker) to do this:
+Recolectar una lista con formato de los commits desde el último lanzamiento. Use [`changelog-maker`](https://github.com/rvagg/changelog-maker) to do this:
 
 ```console
 $ changelog-maker --group
