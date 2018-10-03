@@ -28,9 +28,9 @@ Las compilaciones nocturnas son promovidas automáticamente en el servidor por u
 
 Las compilaciones liberadas requieren promoción manual por una persona individual con acceso SSH en el servidor como el usuario*dist*. El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el CDT.
 
-### 3. A Publicly Listed GPG Key
+### 3. Una clave GPG pública
 
-A SHASUMS256.txt file is produced for every promoted build, nightly, and releases. Additionally for releases, this file is signed by the individual responsible for that release. In order to be able to verify downloaded binaries, the public should be able to check that the SHASUMS256.txt file has been signed by someone who has been authorized to create a release.
+Un archivo SHASUMS256.txt es producido por cada compilación promovida, cada noche, y lanzamientos. Adicionalmente para los lanzamientos, este archivo es firmado por la persona individual responsable de ese lanzamiento. In order to be able to verify downloaded binaries, the public should be able to check that the SHASUMS256.txt file has been signed by someone who has been authorized to create a release.
 
 The GPG keys should be fetchable from a known third-party keyserver. The SKS Keyservers at <https://sks-keyservers.net> are recommended. Use the [submission](https://pgp.mit.edu/) form to submit a new GPG key. Keys should be fetchable via:
 
