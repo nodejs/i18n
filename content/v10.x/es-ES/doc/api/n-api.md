@@ -3350,7 +3350,7 @@ napi_status napi_is_promise(napi_env env,
 
 - `[in] env`: El entorno bajo el que la API se invoca.
 - `[in] promise`: La promesa a examinar
-- `[out] is_promise`: Flag que indica si `promise` es un objeto de promesa nativo, es decir, un objeto de promesa creado por el motor subyacente.
+- `[out] is_promise`: Bandera que indica si `promise` es un objeto de promesa nativo, es decir, un objeto de promesa creado por el motor subyacente.
 
 ## Ejecución de Script
 
