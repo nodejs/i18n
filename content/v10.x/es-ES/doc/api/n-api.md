@@ -3312,7 +3312,7 @@ napi_status napi_resolve_deferred(napi_env env,
 - `[in] deferred`: El objeto diferido cuya promesa asociada se resolverá.
 - `[in] resolution`: El valor con el cual resolver la promesa.
 
-This API resolves a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to resolve JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
+Esta API resuelve una promesa de JavaScript a través del objeto diferido con el cual está asociada. Por lo tanto, sólo puede ser utilizado para resolver promesas de JavaScript para las cuales esté disponible el objeto diferido correspondiente. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
 
 The deferred object is freed upon successful completion.
 
