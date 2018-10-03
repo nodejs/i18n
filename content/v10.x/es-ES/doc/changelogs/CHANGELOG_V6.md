@@ -893,7 +893,7 @@ Esta versión incluye una actualización de seguridad para openssl que ha sido c
 * [[`9cebe8296a`](https://github.com/nodejs/node/commit/9cebe8296a)] - **test**: chequear array inspect con clave de string vacía (Rahul Mishra) [#15258](https://github.com/nodejs/node/pull/15258)
 * [[`6fe61d6d9c`](https://github.com/nodejs/node/commit/6fe61d6d9c)] - **test**: remover prueba inválida (Rich Trott) [#15320](https://github.com/nodejs/node/pull/15320)
 * [[`48943e92d7`](https://github.com/nodejs/node/commit/48943e92d7)] - **test**: permitir añadir known-globals por medio de ENV (Refael Ackermann) [#15187](https://github.com/nodejs/node/pull/15187)
-* [[`5c99fc3fb3`](https://github.com/nodejs/node/commit/5c99fc3fb3)] - **test**: retrocompatible api para tty (Gergely Nemeth) [#15235](https://github.com/nodejs/node/pull/15235)
+* [[`5c99fc3fb3`](https://github.com/nodejs/node/commit/5c99fc3fb3)] - **test**: api retrocompatible para tty (Gergely Nemeth) [#15235](https://github.com/nodejs/node/pull/15235)
 * [[`06ee10e523`](https://github.com/nodejs/node/commit/06ee10e523)] - **test**: dividir pruebas de path en múltiples archivos (Michaël Zasso) [#15093](https://github.com/nodejs/node/pull/15093)
 * [[`4030c7e077`](https://github.com/nodejs/node/commit/4030c7e077)] - **test**: actualizar mensaje de error de carga en módulo windows (cjihrig) [#14950](https://github.com/nodejs/node/pull/14950)
 * [[`d25dc797f4`](https://github.com/nodejs/node/commit/d25dc797f4)] - **test**: skipIfInspectorDisabled cluster-inspect-brk (Daniel Bevenius) [#12757](https://github.com/nodejs/node/pull/12757)
@@ -921,7 +921,7 @@ Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Cambios Notables
 
 * **zlib**: 
-  * CVE-2017-14919 - En zlib v1.2.9, se hizo un cambio que causa la aparición de un error cuando un "raw deflate stream" es iniciado con windowBits fijado a 8. En algunas versiones esto colapsa a Node y usted no puede recuperarse de esto, mientras que en algunas versiones arroja una excepción. Node.js establecerá con gracia windowBits a 9 replicando el el comportamiento anterior para evitar un vector DOS. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
+  * CVE-2017-14919 - En zlib v1.2.9, se hizo un cambio que causa la aparición de un error cuando un "raw deflate stream" es iniciado con windowBits fijado a 8. En algunas versiones esto colapsa a Node y usted no puede recuperarse de esto, mientras que en algunas versiones arroja una excepción. Node.js establecerá con gracia windowBits a 9 replicando el comportamiento anterior para evitar un vector DOS. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 ### Commits
 
@@ -936,19 +936,19 @@ Esta actualización LTS viene con 91 commits. Esto incluye a 29 que están relac
 ### Cambios Notables
 
 * **net**: 
-  * support passing undefined to listen() to match behavior in v4.x and v8.x (Sam Roberts) [#14234](https://github.com/nodejs/node/pull/14234)
+  * soportar el paso de indefinido a listen() para hacer coincidir el comportamiento en v4.x y v8.x (Sam Roberts) [#14234](https://github.com/nodejs/node/pull/14234)
 
 ### Commits
 
-* [[`73416b46e4`](https://github.com/nodejs/node/commit/73416b46e4)] - **assert**: refactor the code (Ruben Bridgewater) [#13862](https://github.com/nodejs/node/pull/13862)
-* [[`a8b917ee2f`](https://github.com/nodejs/node/commit/a8b917ee2f)] - **benchmark**: fix dgram/bind-params.js benchmark (Rich Trott) [#14948](https://github.com/nodejs/node/pull/14948)
-* [[`855d7ae326`](https://github.com/nodejs/node/commit/855d7ae326)] - **benchmark**: convert var to es6 const (Sebastian Murphy) [#12886](https://github.com/nodejs/node/pull/12886)
-* [[`6a7e46ed9c`](https://github.com/nodejs/node/commit/6a7e46ed9c)] - **build**: add NetBSD support to opensslconf.h (Roy Marples) [#14313](https://github.com/nodejs/node/pull/14313)
-* [[`66dd898be8`](https://github.com/nodejs/node/commit/66dd898be8)] - **build**: better support for python3 systems (Ben Noordhuis) [#14737](https://github.com/nodejs/node/pull/14737)
-* [[`14cc1abb56`](https://github.com/nodejs/node/commit/14cc1abb56)] - **build**: split up cpplint to avoid long cmd lines (Kyle Farnung) [#14116](https://github.com/nodejs/node/pull/14116)
-* [[`c9ae894277`](https://github.com/nodejs/node/commit/c9ae894277)] - **build**: add lint option to vcbuild.bat help (Morgan Brenner) [#11992](https://github.com/nodejs/node/pull/11992)
-* [[`66cdcd9d5b`](https://github.com/nodejs/node/commit/66cdcd9d5b)] - **build**: add cpp linting to windows build (liusi) [#11856](https://github.com/nodejs/node/pull/11856)
-* [[`25be2a3be3`](https://github.com/nodejs/node/commit/25be2a3be3)] - **crypto**: naming anonymous functions. (solebox) [#8993](https://github.com/nodejs/node/pull/8993)
+* [[`73416b46e4`](https://github.com/nodejs/node/commit/73416b46e4)] - **assert**: refactorizar el código (Ruben Bridgewater) [#13862](https://github.com/nodejs/node/pull/13862)
+* [[`a8b917ee2f`](https://github.com/nodejs/node/commit/a8b917ee2f)] - **benchmark**: reparar benchmark dgram/bind-params.js (Rich Trott) [#14948](https://github.com/nodejs/node/pull/14948)
+* [[`855d7ae326`](https://github.com/nodejs/node/commit/855d7ae326)] - **benchmark**: convertir var a const es6 (Sebastian Murphy) [#12886](https://github.com/nodejs/node/pull/12886)
+* [[`6a7e46ed9c`](https://github.com/nodejs/node/commit/6a7e46ed9c)] - **build**: añadir soporte NetBSD a opensslconf.h (Roy Marples) [#14313](https://github.com/nodejs/node/pull/14313)
+* [[`66dd898be8`](https://github.com/nodejs/node/commit/66dd898be8)] - **build**: mejor soporte para sistemas python3 (Ben Noordhuis) [#14737](https://github.com/nodejs/node/pull/14737)
+* [[`14cc1abb56`](https://github.com/nodejs/node/commit/14cc1abb56)] - **build**: separar cpplint para evitar largas líneas cmd (Kyle Farnung) [#14116](https://github.com/nodejs/node/pull/14116)
+* [[`c9ae894277`](https://github.com/nodejs/node/commit/c9ae894277)] - **build**: añadir opción lint a ayuda vcbuild.bat (Morgan Brenner) [#11992](https://github.com/nodejs/node/pull/11992)
+* [[`66cdcd9d5b`](https://github.com/nodejs/node/commit/66cdcd9d5b)] - **build**: añadir linting cpp a compilación de windows (liusi) [#11856](https://github.com/nodejs/node/pull/11856)
+* [[`25be2a3be3`](https://github.com/nodejs/node/commit/25be2a3be3)] - **crypto**: nombrar funciones anónimas. (solebox) [#8993](https://github.com/nodejs/node/pull/8993)
 * [[`4e1a50a079`](https://github.com/nodejs/node/commit/4e1a50a079)] - **deps**: backport 0353a1e from V8 upstream (jBarz) [#15287](https://github.com/nodejs/node/pull/15287)
 * [[`921876dcd1`](https://github.com/nodejs/node/commit/921876dcd1)] - **deps**: backport 071b655 from V8 upstream (Michaël Zasso) [#15215](https://github.com/nodejs/node/pull/15215)
 * [[`a13ac69ff9`](https://github.com/nodejs/node/commit/a13ac69ff9)] - **doc**: prevent displaying empty version picker (Chris Young) [#15420](https://github.com/nodejs/node/pull/15420)
