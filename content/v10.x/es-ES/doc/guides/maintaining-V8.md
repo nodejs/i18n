@@ -177,7 +177,7 @@ Un ejemplo para el flujo de trabajo: cómo seleccionar cuidadosamente; considera
 
 * Descargue y aplique el commit vinculado en el problema (en este caso a51f429). `curl -L https://github.com/v8/v8/commit/a51f429.patch | git am -3
 --directory=deps/v8`. Si las ramas han divergido significativamente, esto puede no aplicarse limpiamente. Puede ser útil tratar de elegir cuidadosamente la combinación a la rama más antigua sobre la que se realizó upstream en el V8. En este ejemplo, este sería el parche de la fusión a 5.2. La esperanza es que esto esté más cerca del V8 5.1 y que tenga más posibilidades de aplicarse limpiamente. Si estás atascado, no dudes en hacer ping a @ofrobots para obtener ayuda.
-* Modifique el mensaje de commit para que coincida con el formato que usamos para los backports de V8 y colócate como el autor. `git commit --amend --reset-author`. Es posible que desee agregar una descripción adicional si es necesario para indicar el impacto de la corrección en Node.js. En este caso, el problema original fue lo suficientemente descriptivo. Ejemplo:
+* Modifique el mensaje de commit para que coincida con el formato que usamos para los backports de V8 y colóquese como el autor. `git commit --amend --reset-author`. Es posible que desee agregar una descripción adicional si es necesario para indicar el impacto de la corrección en Node.js. En este caso, el problema original fue lo suficientemente descriptivo. Ejemplo:
 
 ```console
 deps: cherry-pick a51f429 de V8 upstream
