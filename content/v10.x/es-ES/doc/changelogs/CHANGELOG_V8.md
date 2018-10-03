@@ -143,10 +143,10 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
   * añadir builtinModules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
   * reemplazar las rutas predeterminadas en require.resolve() (cjihrig) [#17113](https://github.com/nodejs/node/pull/17113)
 * **src**: 
-  * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
-  * add process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
+  * agregar ayudante para los complementos para obtener el evento bucle (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
+  * añadir process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 * **http**: 
-  * support generic `Duplex` streams (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
+  * soporte a streams `Duplex` genéricos (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
   * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
 * **net**: 
