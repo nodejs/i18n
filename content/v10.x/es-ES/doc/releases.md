@@ -109,9 +109,9 @@ $ changelog-maker --group --start-ref v2.3.1
 
 Hay un archivo `CHANGELOG_*.md` separado por cada línea de lanzamiento mayor de Node.js. Estos están localizados en el directorio `doc/changelogs/`. Una vez que la lista con formato de cambios es recolectada, debe añadirse a la cima de los archivos del registro de cambio en el branch lanzado (p. ej. un lanzamiento para Node.js v4 sería añadido al `/doc/changelogs/CHANGELOG_V4.md`).
 
-**Please do *not* add the changelog entries to the root `CHANGELOG.md` file.**
+**Por favor *no* añadas las entradas al registro de cambios al archivo `CHANGELOG.md` de raíz.**
 
-The new entry should take the following form:
+La nueva entrada debe tomar la siguiente forma:
 
 ```md
 <a id="x.y.x"></a>
@@ -129,11 +129,11 @@ The new entry should take the following form:
 * Include the full list of commits since the last release here. Do not include "Working on X.Y.Z+1" commits.
 ```
 
-The release type should be either Current, LTS, or Maintenance, depending on the type of release being produced.
+El tipo de lanzamiento debe ser actual, LTS, o de mantenimiento, dependiendo de el tipo de lanzamiento que se está produciendo.
 
-Be sure that the `<a>` tag, as well as the two headings, are not indented at all.
+Asegurate que la etiqueta `<a>`, así como los dos encabezados, no son para nada intencionales.
 
-At the top of each `CHANGELOG_*.md` file, and in the root `CHANGELOG.md` file, there is a table indexing all releases in each major release line. A link to the new release needs to be added to each. Follow the existing examples and be sure to add the release to the *top* of the list.
+En la cima de cada archivo `CHANGELOG_*.md`, y en el archivo `CHANGELOG.md` raíz, hay una tabla de indexación de todas los lanzamientos en cada línea de lanzamiento mayor. Un enlace para el nuevo lanzamiento necesita ser añadido a cada uno. Sigue los siguientes ejemplos y asegurate de añadir el lanzamiento a la *cima* de la lista.
 
 In the root `CHANGELOG.md` file, the most recent release for each release line is shown in **bold** in the index. When updating the index, please make sure to update the display accordingly by removing the bold styling from the previous release.
 
