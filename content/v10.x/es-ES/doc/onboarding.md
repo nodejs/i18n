@@ -90,10 +90,10 @@ apply.whitespace fix`
 ## Revisión de PRs
 
 * El objetivo principal es para que el código base mejore.
-* El secundario (pero no muy lejano) es para que la persona que envía el código tenga éxito. A pull request from a new contributor is an opportunity to grow the community.
-* Review a bit at a time. Do not overwhelm new contributors. 
-  * It is tempting to micro-optimize. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
-* Be aware: Your opinion carries a lot of weight!
+* El secundario (pero no muy lejano) es para que la persona que envía el código tenga éxito. Un pull request de un nuevo colaborador es un oportunidad para hacer crecer la comunidad.
+* Revisar un bit a la vez. No abrume a los nuevos colaboradores. 
+  * Es tentador micro-optimizar. No sucumba a esa tentación. Cambiamos V8 a menudo. Las técnicas que proporcionan mejor rendimiento hoy, pueden ser innecesarias en el futuro.
+* Tenga en cuenta: ¡Su opinión tiene mucho peso!
 * Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
   * Note that they are nits when you comment: `Nit: change foo() to bar().`
   * If they are stalling the pull request, fix them yourself on merge.
