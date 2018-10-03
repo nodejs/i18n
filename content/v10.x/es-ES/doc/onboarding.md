@@ -97,8 +97,8 @@ apply.whitespace fix`
 * Las nits (solicitudes para pequeños cambios que no son esenciales) están bien, pero intente evitar detener el pull request. 
   * Tenga en cuenta que son nits cuando comenta: `Nit: change foo() to bar().`
   * Si están deteniendo el pull request, corríjalos usted mismo en la fusión.
-* En la medida de los posible, los problemas deben ser identificados por las herramientas en lugar de por los revisores humanos. If you are leaving comments about issues that could be identified by tools but are not, consider implementing the necessary tooling.
-* Minimum wait for comments time 
+* En la medida de los posible, los problemas deben ser identificados por las herramientas en lugar de por los revisores humanos. Si está dejando comentarios sobre los problemas que podrían ser identificados por las herramientas pero no lo son, considere implementar las herramientas necesarias.
+* Tiempo mínimo de espera para comentarios 
   * There is a minimum waiting time which we try to respect for non-trivial changes so that people who may have important input in such a distributed project are able to respond.
   * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
   * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
