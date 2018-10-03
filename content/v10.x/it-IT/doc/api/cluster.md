@@ -4,9 +4,9 @@
 
 > Stabilità: 2 - Stabile
 
-A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+Una singola istanza di Node.js viene eseguita in un singolo thread. Per sfruttare i sistemi multi-core, a volte l'utente ha la necessità di avviare un cluster di processi Node.js per gestirne il carico.
 
-The cluster module allows easy creation of child processes that all share server ports.
+Il modulo cluster consente una facile creazione di processi child che condividono tutte le porte del server.
 
 ```js
 const cluster = require('cluster');
@@ -16,7 +16,7 @@ const numCPUs = require('os').cpus().length;
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
-  // Fork workers.
+  // I Fork Worker.
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
@@ -25,8 +25,8 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  // Workers can share any TCP connection
-  // In this case it is an HTTP server
+  // Gli Worker possono condividere qualsiasi connessione TCP
+  // In questo caso è un server HTTP
   http.createServer((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
@@ -36,7 +36,7 @@ if (cluster.isMaster) {
 }
 ```
 
-Running Node.js will now share port 8000 between the workers:
+Adesso l'esecuzione di Node.js condividerà la porta 8000 tra gli worker:
 
 ```txt
 $ node server.js
@@ -47,9 +47,9 @@ Worker 6056 started
 Worker 5644 started
 ```
 
-Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
+Da notare che su Windows non è ancora possibile impostare un pipe server con nome all'interno di un worker.
 
-## How It Works
+## Come Funziona
 
 <!--type=misc-->
 
