@@ -94,10 +94,10 @@ apply.whitespace fix`
 * Revisar un bit a la vez. No abrume a los nuevos colaboradores. 
   * Es tentador micro-optimizar. No sucumba a esa tentación. Cambiamos V8 a menudo. Las técnicas que proporcionan mejor rendimiento hoy, pueden ser innecesarias en el futuro.
 * Tenga en cuenta: ¡Su opinión tiene mucho peso!
-* Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
-  * Note that they are nits when you comment: `Nit: change foo() to bar().`
-  * If they are stalling the pull request, fix them yourself on merge.
-* Insofar as possible, issues should be identified by tools rather than human reviewers. If you are leaving comments about issues that could be identified by tools but are not, consider implementing the necessary tooling.
+* Las nits (solicitudes para pequeños cambios que no son esenciales) están bien, pero intente evitar detener el pull request. 
+  * Tenga en cuenta que son nits cuando comenta: `Nit: change foo() to bar().`
+  * Si están deteniendo el pull request, corríjalos usted mismo en la fusión.
+* En la medida de los posible, los problemas deben ser identificados por las herramientas en lugar de por los revisores humanos. If you are leaving comments about issues that could be identified by tools but are not, consider implementing the necessary tooling.
 * Minimum wait for comments time 
   * There is a minimum waiting time which we try to respect for non-trivial changes so that people who may have important input in such a distributed project are able to respond.
   * For non-trivial changes, leave the pull request open for at least 48 hours (72 hours on a weekend).
