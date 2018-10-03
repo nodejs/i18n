@@ -63,7 +63,7 @@ session.on('inspectorNotification', (message) => console.log(message.method));
 // Debugger.resumed
 ```
 
-También es posible suscribirse únicamente a notificaciones con el método especifico:
+También es posible suscribirse únicamente a notificaciones con el método específico:
 
 ### Event: &lt;inspector-protocol-method&gt;
 
