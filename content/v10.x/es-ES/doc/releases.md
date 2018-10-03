@@ -64,7 +64,7 @@ Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrect
 
 ### 2. Actualizar `src/node_version.h`
 
-Set the version for the proposed release using the following macros, which are already defined in `src/node_version.h`:
+Establece la versión para el lanzamiento propuesto usando los siguientes macros, que ya están definidos en `src/node_version.h`:
 
 ```c
 #define NODE_MAJOR_VERSION x
@@ -72,15 +72,15 @@ Set the version for the proposed release using the following macros, which are a
 #define NODE_PATCH_VERSION z
 ```
 
-Set the `NODE_VERSION_IS_RELEASE` macro value to `1`. This causes the build to be produced with a version string that does not have a trailing pre-release tag:
+Establece el valor macro `NODE_VERSION_IS_RELEASE` a `1`. Esto causa que la compilación sea producida con una versión string que no tiene una etiqueta pre-lanzamiento al final:
 
 ```c
 #define NODE_VERSION_IS_RELEASE 1
 ```
 
-**Also consider whether to bump `NODE_MODULE_VERSION`**:
+**También considera si se debe actualizar `NODE_MODULE_VERSION`**:
 
-This macro is used to signal an ABI version for native addons. It currently has two common uses in the community:
+Este macro es usado para señalar una versión ABI para complementos nativos. Actualmente tiene dos usos comunes en la comunidad:
 
 - Determining what API to work against for compiling native addons, e.g. [NAN](https://github.com/nodejs/nan) uses it to form a compatibility-layer for much of what it wraps.
 - Determining the ABI for downloading pre-built binaries of native addons, e.g. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) uses this value as exposed via `process.versions.modules` to help determine the appropriate binary to download at install-time.
