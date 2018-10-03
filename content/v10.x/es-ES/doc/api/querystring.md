@@ -18,11 +18,11 @@ const querystring = require('querystring');
 added: v0.1.25
 -->
 
-* `str` {cadena}
+* `str` {string}
 
-The `querystring.escape()` method performs URL percent-encoding on the given `str` in a manner that is optimized for the specific requirements of URL query strings.
+El método `querystring.escape()` realiza la codificación de porcentaje de URL en la `str` dada de una manera que está optimizada para los requisitos específicos de las cadenas de consulta de URL.
 
-The `querystring.escape()` method is used by `querystring.stringify()` and is generally not expected to be used directly. It is exported primarily to allow application code to provide a replacement percent-encoding implementation if necessary by assigning `querystring.escape` to an alternative function.
+El método `querystring.escape()` es utilizado por `querystring.stringify()` y generalmente no se espera que se use directamente. Es exportado principalmente para permitir que el código de aplicación para proporcionar una implementación de codificación de porcentaje de reemplazo si es necesario para asignar `querystring.escape` a una función alternativa.
 
 ## querystring.parse(str[, sep[, eq[, options]]])
 
@@ -41,9 +41,9 @@ changes:
     description: The `eq` parameter may now have a length of more than `1`.
 -->
 
-* `str` {string} The URL query string to parse
-* `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
-* `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
+* `str` {string} La cadena de consulta de URL a analizar
+* `sep` {string} La subcadena utilizada para delimitar los pares de clave y valore en la cadena de consulta. **Predeterminado:** `'&'`.
+* `eq` {string}. La subcadena utilizada para delimitar claves y valores en la cadena de consultas. **Predeterminado:** `'='`.
 * `options` {Object} 
   * `decodeURIComponent` {Function} The function to use when decoding percent-encoded characters in the query string. **Default:** `querystring.unescape()`.
   * `maxKeys` {number} Specifies the maximum number of keys to parse. Specify `0` to remove key counting limitations. **Default:** `1000`.
@@ -79,8 +79,8 @@ added: v0.1.25
 -->
 
 * `obj` {Object} The object to serialize into a URL query string
-* `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
-* `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
+* `sep` {string} The substring used to delimit key and value pairs in the query string. **Predeterminado:** `'&'`.
+* `eq` {string}. The substring used to delimit keys and values in the query string. **Predeterminado:** `'='`.
 * `options` 
   * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
 
