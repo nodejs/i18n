@@ -892,29 +892,29 @@ Esta versión incluye una actualización de seguridad para openssl que ha sido c
 * [[`c4b06b279d`](https://github.com/nodejs/node/commit/c4b06b279d)] - **test**: remover temporizador aleatorio en test-tls-fast-writing (Rich Trott) [#15138](https://github.com/nodejs/node/pull/15138)
 * [[`9cebe8296a`](https://github.com/nodejs/node/commit/9cebe8296a)] - **test**: chequear array inspect con clave de string vacía (Rahul Mishra) [#15258](https://github.com/nodejs/node/pull/15258)
 * [[`6fe61d6d9c`](https://github.com/nodejs/node/commit/6fe61d6d9c)] - **test**: remover prueba inválida (Rich Trott) [#15320](https://github.com/nodejs/node/pull/15320)
-* [[`48943e92d7`](https://github.com/nodejs/node/commit/48943e92d7)] - **test**: allow adding known-globals through ENV (Refael Ackermann) [#15187](https://github.com/nodejs/node/pull/15187)
-* [[`5c99fc3fb3`](https://github.com/nodejs/node/commit/5c99fc3fb3)] - **test**: backward compatible api for tty (Gergely Nemeth) [#15235](https://github.com/nodejs/node/pull/15235)
-* [[`06ee10e523`](https://github.com/nodejs/node/commit/06ee10e523)] - **test**: split path tests into multiple files (Michaël Zasso) [#15093](https://github.com/nodejs/node/pull/15093)
-* [[`4030c7e077`](https://github.com/nodejs/node/commit/4030c7e077)] - **test**: update windows module load error message (cjihrig) [#14950](https://github.com/nodejs/node/pull/14950)
+* [[`48943e92d7`](https://github.com/nodejs/node/commit/48943e92d7)] - **test**: permitir añadir known-globals por medio de ENV (Refael Ackermann) [#15187](https://github.com/nodejs/node/pull/15187)
+* [[`5c99fc3fb3`](https://github.com/nodejs/node/commit/5c99fc3fb3)] - **test**: retrocompatible api para tty (Gergely Nemeth) [#15235](https://github.com/nodejs/node/pull/15235)
+* [[`06ee10e523`](https://github.com/nodejs/node/commit/06ee10e523)] - **test**: dividir pruebas de path en múltiples archivos (Michaël Zasso) [#15093](https://github.com/nodejs/node/pull/15093)
+* [[`4030c7e077`](https://github.com/nodejs/node/commit/4030c7e077)] - **test**: actualizar mensaje de error de carga en módulo windows (cjihrig) [#14950](https://github.com/nodejs/node/pull/14950)
 * [[`d25dc797f4`](https://github.com/nodejs/node/commit/d25dc797f4)] - **test**: skipIfInspectorDisabled cluster-inspect-brk (Daniel Bevenius) [#12757](https://github.com/nodejs/node/pull/12757)
-* [[`7b9710d0df`](https://github.com/nodejs/node/commit/7b9710d0df)] - **test**: add inspect-brk option to cluster module (dave-k) [#12503](https://github.com/nodejs/node/pull/12503)
-* [[`c9d440e8bd`](https://github.com/nodejs/node/commit/c9d440e8bd)] - **test**: change == to === in crypto test (Fabio Campinho) [#12405](https://github.com/nodejs/node/pull/12405)
-* [[`dd946c3c2a`](https://github.com/nodejs/node/commit/dd946c3c2a)] - **test**: add hasCrypto check to test-cli-node-options (Daniel Bevenius) [#12692](https://github.com/nodejs/node/pull/12692)
-* [[`ba830f0352`](https://github.com/nodejs/node/commit/ba830f0352)] - **test**: chdir before running test-cli-node-options (Daniel Bevenius) [#12660](https://github.com/nodejs/node/pull/12660)
-* [[`d8f56371a9`](https://github.com/nodejs/node/commit/d8f56371a9)] - **test**: add cwd ENOENT known issue test (cjihrig) [#12343](https://github.com/nodejs/node/pull/12343)
-* [[`1091b86290`](https://github.com/nodejs/node/commit/1091b86290)] - **(SEMVER-MINOR)** **test**: remove common.fail() (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
-* [[`e0c4f0b85a`](https://github.com/nodejs/node/commit/e0c4f0b85a)] - **test,process**: run 'abort' suite on Windows (Refael Ackermann) [#15056](https://github.com/nodejs/node/pull/15056)
-* [[`f49feab35f`](https://github.com/nodejs/node/commit/f49feab35f)] - **timers**: clarify lib/timer.js comment (Daniel Bevenius) [#11018](https://github.com/nodejs/node/pull/11018)
-* [[`2409db6c99`](https://github.com/nodejs/node/commit/2409db6c99)] - **tools**: replace concatenation with string templates (Ethan Arrowood) [#15858](https://github.com/nodejs/node/pull/15858)
-* [[`15ae5a44cf`](https://github.com/nodejs/node/commit/15ae5a44cf)] - **tools**: replace concat with template literals (Minya Liang) [#16046](https://github.com/nodejs/node/pull/16046)
-* [[`705202d410`](https://github.com/nodejs/node/commit/705202d410)] - **tools**: use template literals (Sarah Meyer) [#15956](https://github.com/nodejs/node/pull/15956)
-* [[`44cc39d278`](https://github.com/nodejs/node/commit/44cc39d278)] - **(SEMVER-MINOR)** **tools**: remove assert.fail() lint rule (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
-* [[`88b9572d76`](https://github.com/nodejs/node/commit/88b9572d76)] - **tty**: require readline at top of file (Bryan English) [#15647](https://github.com/nodejs/node/pull/15647)
-* [[`27af0bb446`](https://github.com/nodejs/node/commit/27af0bb446)] - **url**: change variable name to be more descriptive (Yang-Kichang) [#15551](https://github.com/nodejs/node/pull/15551)
+* [[`7b9710d0df`](https://github.com/nodejs/node/commit/7b9710d0df)] - **test**: añadir opción inspect-brk a módulo clúster (dave-k) [#12503](https://github.com/nodejs/node/pull/12503)
+* [[`c9d440e8bd`](https://github.com/nodejs/node/commit/c9d440e8bd)] - **test**: cambiar == a === en prueba crypto (Fabio Campinho) [#12405](https://github.com/nodejs/node/pull/12405)
+* [[`dd946c3c2a`](https://github.com/nodejs/node/commit/dd946c3c2a)] - **test**: añadir chequeo hasCrypto a test-cli-node-options (Daniel Bevenius) [#12692](https://github.com/nodejs/node/pull/12692)
+* [[`ba830f0352`](https://github.com/nodejs/node/commit/ba830f0352)] - **test**: chdir antes de ejecutar test-cli-node-options (Daniel Bevenius) [#12660](https://github.com/nodejs/node/pull/12660)
+* [[`d8f56371a9`](https://github.com/nodejs/node/commit/d8f56371a9)] - **test**: añadir prueba de problema conocido cwd ENOENT (cjihrig) [#12343](https://github.com/nodejs/node/pull/12343)
+* [[`1091b86290`](https://github.com/nodejs/node/commit/1091b86290)] - **(SEMVER-MINOR)** **test**: remover common.fail() (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
+* [[`e0c4f0b85a`](https://github.com/nodejs/node/commit/e0c4f0b85a)] - **test,process**: ejecutar suite 'abort' en Windows (Refael Ackermann) [#15056](https://github.com/nodejs/node/pull/15056)
+* [[`f49feab35f`](https://github.com/nodejs/node/commit/f49feab35f)] - **timers**: clarificar comentario de lib/timer.js (Daniel Bevenius) [#11018](https://github.com/nodejs/node/pull/11018)
+* [[`2409db6c99`](https://github.com/nodejs/node/commit/2409db6c99)] - **tools**: reemplazar concatenación con string modelos (Ethan Arrowood) [#15858](https://github.com/nodejs/node/pull/15858)
+* [[`15ae5a44cf`](https://github.com/nodejs/node/commit/15ae5a44cf)] - **tools**: reemplazar concat con literales modelos (Minya Liang) [#16046](https://github.com/nodejs/node/pull/16046)
+* [[`705202d410`](https://github.com/nodejs/node/commit/705202d410)] - **tools**: usar literales modelos (Sarah Meyer) [#15956](https://github.com/nodejs/node/pull/15956)
+* [[`44cc39d278`](https://github.com/nodejs/node/commit/44cc39d278)] - **(SEMVER-MINOR)** **tools**: remover regla lint assert.fail() (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
+* [[`88b9572d76`](https://github.com/nodejs/node/commit/88b9572d76)] - **tty**: requerir readline en el tope de archivo (Bryan English) [#15647](https://github.com/nodejs/node/pull/15647)
+* [[`27af0bb446`](https://github.com/nodejs/node/commit/27af0bb446)] - **url**: cambiar nombre de variable para que sea más descriptiva (Yang-Kichang) [#15551](https://github.com/nodejs/node/pull/15551)
 
 <a id="6.11.5"></a>
 
-## 2017-10-24, Version 6.11.5 'Boron' (LTS), @MylesBorins
+## 2017-10-24, Versión 6.11.5 'Boron' (LTS), @MylesBorins
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ for details on patched vulnerabilities.
 
