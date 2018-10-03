@@ -32,13 +32,13 @@ Las compilaciones liberadas requieren promoción manual por una persona individu
 
 Un archivo SHASUMS256.txt es producido por cada compilación promovida, cada noche, y lanzamientos. Adicionalmente para los lanzamientos, este archivo es firmado por la persona individual responsable de ese lanzamiento. Para poder verificar binarios descargados, el publico debería ser capaz de verificar que el archivo SHASUMS256.txt ha sido firmado por alguien que ha sido autorizado para crear un lanzamiento.
 
-Las claves GPG deberían ser rescatables de un keyserver conocido de terceros. Son recomendados los Keyservers SKS en <https://sks-keyservers.net>. Use the [submission](https://pgp.mit.edu/) form to submit a new GPG key. Keys should be fetchable via:
+Las claves GPG deberían ser rescatables de un keyserver conocido de terceros. Son recomendados los Keyservers SKS en <https://sks-keyservers.net>. Usa el formulario de [envío](https://pgp.mit.edu/) para enviar una nueva clave GPG. Las claves deberían ser rescatables usando:
 
 ```console
 $ gpg --keyserver pool.sks-keyservers.net --recv-keys <FINGERPRINT>
 ```
 
-The key you use may be a child/subkey of an existing key.
+La clave que uses pudiera ser una clave secundaria/subclave de una clave existente.
 
 Additionally, full GPG key fingerprints for individuals authorized to release should be listed in the Node.js GitHub README.md file.
 
