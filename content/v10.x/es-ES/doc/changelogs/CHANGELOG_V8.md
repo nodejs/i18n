@@ -104,17 +104,17 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`de0c84889b`](https://github.com/nodejs/node/commit/de0c84889b)] - **inspector**: ajustes menores (Eugene Ostroukhov) 
 * [[`b7690655ef`](https://github.com/nodejs/node/commit/b7690655ef)] - **inspector**: comprobación del encabezado del Host (Ali Ijaz Sheikh) 
 * [[`0641f2dbf9`](https://github.com/nodejs/node/commit/0641f2dbf9)] - **openssl**: corrección del requisito de pulsación de tecla en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`6ee4228c1d`](https://github.com/nodejs/node/commit/6ee4228c1d)] - **src**: drop CNNIC+StartCom certificate whitelisting (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
-* [[`633e23a618`](https://github.com/nodejs/node/commit/633e23a618)] - **tools**: update certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
+* [[`6ee4228c1d`](https://github.com/nodejs/node/commit/6ee4228c1d)] - **src**: eliminar lista blanca de certificados CNNIC + StartCom. (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
+* [[`633e23a618`](https://github.com/nodejs/node/commit/633e23a618)] - **tools**: actualización de certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 
 <a id="8.10.0"></a>
 
-## 2018-03-06, Version 8.10.0 'Carbon' (LTS), @gibfahn
+## 2018-03-06, Versión 8.10.0 'Carbon' (LTS), @gibfahn
 
-### Notable Changes
+### Cambios Notables
 
 * **deps**: 
-  * update V8 to 6.2.414.46 (Michaël Zasso) [#16413](https://github.com/nodejs/node/pull/16413)
+  * actualización de V8 a 6.2.414.46 (Michaël Zasso) [#16413](https://github.com/nodejs/node/pull/16413)
   * revert ABI breaking changes in V8 6.2 (Anna Henningsen) [#16413](https://github.com/nodejs/node/pull/16413)
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
   * re land npm 5.6.0 (Myles Borins) [#18625](https://github.com/nodejs/node/pull/18625)
