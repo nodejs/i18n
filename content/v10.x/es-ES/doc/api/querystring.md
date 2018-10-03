@@ -6,7 +6,7 @@
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
+El módulo `querystring` proporciona utilidades para análisis y formateo de cadenas de consulta de URL. Puede ser accedido utilizando:
 
 ```js
 const querystring = require('querystring');
@@ -18,7 +18,7 @@ const querystring = require('querystring');
 added: v0.1.25
 -->
 
-* `str` {string}
+* `str` {cadena}
 
 The `querystring.escape()` method performs URL percent-encoding on the given `str` in a manner that is optimized for the specific requirements of URL query strings.
 
