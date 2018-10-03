@@ -129,8 +129,8 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
   * separar faltantes del contexto predeterminado (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * renombrar initTriggerId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * API desaprobada no documentada (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
-  * add destroy event for gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
-  * add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
+  * agregar evento destruir para gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
+  * agregar eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
   * set HTTPParser trigger to socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
   * add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
 * **n-api**: 
