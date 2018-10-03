@@ -93,12 +93,12 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 ### Commits
 
-* [[`dc290562e9`](https://github.com/nodejs/node/commit/dc290562e9)] - **crypto**: update root certificates (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
+* [[`dc290562e9`](https://github.com/nodejs/node/commit/dc290562e9)] - **crypto**: actualización de certificados root (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 * [[`df92da3f3c`](https://github.com/nodejs/node/commit/df92da3f3c)] - **deps**: add -no\_rand\_screen to openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
-* [[`259156ea40`](https://github.com/nodejs/node/commit/259156ea40)] - **deps**: fix asm build error of openssl in x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`d559d0eb25`](https://github.com/nodejs/node/commit/d559d0eb25)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`cf8e8bcad2`](https://github.com/nodejs/node/commit/cf8e8bcad2)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
-* [[`987138e488`](https://github.com/nodejs/node/commit/987138e488)] - **deps**: upgrade openssl sources to 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
+* [[`259156ea40`](https://github.com/nodejs/node/commit/259156ea40)] - **deps**: corrección del error de compilación asm de openssl en x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`d559d0eb25`](https://github.com/nodejs/node/commit/d559d0eb25)] - **deps**: corrección del error de montaje openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`cf8e8bcad2`](https://github.com/nodejs/node/commit/cf8e8bcad2)] - **deps**: copie todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
+* [[`987138e488`](https://github.com/nodejs/node/commit/987138e488)] - **deps**: actualización de las fuentes de openssl a 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`1b7f6d9072`](https://github.com/nodejs/node/commit/1b7f6d9072)] - **deps**: reject interior blanks in Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`86c9ec6c5c`](https://github.com/nodejs/node/commit/86c9ec6c5c)] - **deps**: upgrade http-parser to v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`de0c84889b`](https://github.com/nodejs/node/commit/de0c84889b)] - **inspector**: minor adjustments (Eugene Ostroukhov) 
