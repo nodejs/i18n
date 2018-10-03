@@ -49,10 +49,10 @@ Notas:
 - Las fechas listadas a continuación como *"AAAA-MM-DD"* debería ser la fecha del lanzamiento **como UTC**. Usa `date -u +'%Y-%m-%d'` para descubrir que es esto.
 - Las versiones de strings están listadas a continuación como *"vx.y.z"*. Substituto para la versión liberada.
 
-### 1. Escoger minuciosamente de `master` y otras branches
+### 1. Hacer cherry-picking desde `master` y otras branches
 
-Crea un nuevo branch llamado *"vx.y.z-proposal"*, o algo similar. Using `git
-cherry-pick`, bring the appropriate commits into your new branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
+Crea un nuevo branch llamado *"vx.y.z-proposal"*, o algo similar. Usar `git
+cherry-pick`, trae los commits apropiados en tu nuevo branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
 
 For a list of commits that could be landed in a patch release on v5.x:
 
