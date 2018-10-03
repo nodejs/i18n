@@ -22,7 +22,7 @@ added: v0.1.25
 
 El método `querystring.escape()` realiza la codificación de porcentaje de URL en la `str` dada de una manera que está optimizada para los requisitos específicos de las cadenas de consulta de URL.
 
-El método `querystring.escape()` es utilizado por `querystring.stringify()` y generalmente no se espera que se use directamente. Es exportado principalmente para permitir que el código de aplicación para proporcionar una implementación de codificación de porcentaje de reemplazo si es necesario para asignar `querystring.escape` a una función alternativa.
+El método `querystring.escape()` es utilizado por `querystring.stringify()` y generalmente no se espera que se use directamente. Principalmente, es exportado para permitir que el código de aplicación para proporcionar una implementación de codificación de porcentaje de reemplazo si es necesario, asignando `querystring.escape` a una función alternativa.
 
 ## querystring.parse(str[, sep[, eq[, options]]])
 
@@ -43,10 +43,10 @@ changes:
 
 * `str` {string} La cadena de consulta de URL a analizar
 * `sep` {string} La subcadena utilizada para delimitar los pares de clave y valor en la cadena de consulta. **Predeterminado:** `'&'`.
-* `eq` {string}. La subcadena utilizada para delimitar claves y valores en la cadena de consultas. **Predeterminado:** `'='`.
+* `eq` {string}. La subcadena utilizada para delimitar claves y valores en la cadena de consulta. **Predeterminado:** `'='`.
 * `options` {Object} 
   * `decodeURIComponent` {Function} La función que se utiliza al decodificar caracteres codificados en porcentaje en la cadena de consulta. **Predeterminado:** `querystring.unescape()`.
-  * `maxKeys` {number} Especifica el número máximo de claves a analizar. Especifica `0` para quitar las limitaciones clave del conteo. **Default:** `1000`.
+  * `maxKeys` {number} Especifica el número máximo de claves a analizar. Especifica `0` para quitar las limitaciones del conteo de claves. **Default:** `1000`.
 
 El método `querystring.parse()` analiza una cadena de consulta de URL (`str`) en una colección de pares de clave y valor.
 
@@ -61,9 +61,9 @@ Por ejemplo, la cadena de consulta `'foo=bar&abc=xyz&abc=123'` es analizada en:
 }
 ```
 
-El objeto devuelto por el método `querystring.parse()` *no* se hereda de forma prototípica desde el `Object` de JavaScript. Esto significa que métodos típicos de `Object` tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
+El objeto devuelto por el método `querystring.parse()` *no* se hereda de forma prototípica desde el `Object` de JavaScript. Esto significa que métodos típicos de `Object`, tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
 
-De forma predeterminada, se supondrá que los caracteres codificados en porcentaje dentro de la cadena de consulta utilizan la codificación UTF-8. Si un caracter alternativo codificado es utilizado, entonces una opción `decodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
+De forma predeterminada, se supondrá que los caracteres codificados en porcentaje dentro de la cadena de consulta utilizan la codificación UTF-8. Si un carácter alternativo codificado es utilizado, entonces una opción `decodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
 
 ```js
 // Asumiendo que la función gbkDecodeURIComponent ya existe...
@@ -84,7 +84,7 @@ added: v0.1.25
 * `options` 
   * `encodeURIComponent` {Function} La función que se utiliza al convertir caracteres no seguros de URL a codificación de porcentaje en la cadena de consulta. **Predeterminado:** `querystring.escape()`.
 
-El método `querystring.stringify()` produce una cadena de consulta de URL desde un `obj` dado mediante la iteración a través de las "propiedades propias" del objeto.
+El método `querystring.stringify()` produce una cadena de consulta de URL desde un `obj` dado, mediante la iteración a través de las "propiedades propias" del objeto.
 
 Serializa los siguientes tipos de valores pasados en `obj`: {string|number|boolean|string[]|number[]|boolean[]} Cualquier otro valor de entrada será forzado a cadenas vacías.
 
@@ -96,7 +96,7 @@ querystring.stringify({ foo: 'bar', baz: 'qux' }, ';', ':');
 // devuelve 'foo:bar;baz:qux'
 ```
 
-Por defecto, los caracteres que requieren codificación en porcentaje dentro de la cadena de consulta se codificarán como UTF-8. Si un caracter alternativo codificado es requerido, entonces una opción `encodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
+Por defecto, los caracteres que requieren codificación en porcentaje dentro de la cadena de consulta se codificarán como UTF-8. Si un carácter alternativo codificado es requerido, entonces una opción `encodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
 
 ```js
 // Asumiendo que la función gbkEncodeURIComponent ya existe,
@@ -113,8 +113,8 @@ added: v0.1.25
 
 * `str` {string}
 
-El método `querystring.unescape()`realiza la decodificación de URL codificada en porcentaje caracteres en la `str` dada.
+El método `querystring.unescape()`realiza la decodificación de caracteres codificados en porcentaje de URL en la `str` dada.
 
-El método `querystring.unescape()` es utilizado por `querystring.parse()` y generalmente no se espera que se use directamente. Es exportado principalmente para permitir que el código de aplicación para proporcionar una implementación de codificación de reemplazo si es necesario para asignar `querystring.unescape` a una función alternativa.
+El método `querystring.unescape()` es utilizado por `querystring.parse()` y generalmente no se espera que se use directamente. Principalmente, es exportado para permitir que el código de aplicación pueda proporcionar una implementación de codificación de reemplazo si es necesario, asignando `querystring.unescape` a una función alternativa.
 
 Por defecto, el método `querystring.unescape()` intentará utilizar el método incorporado de JavaScript `decodeURIComponent()` para decodificar. Si falla, se utilizará un equivalente más seguro que no arroje en URLs mal formadas.
