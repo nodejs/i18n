@@ -85,9 +85,9 @@ Este macro es usado para señalar una versión ABI para complementos nativos. Ac
 - Determinar qué API funciona en contra para compilar complementos nativos, p. ej. [NAN](https://github.com/nodejs/nan) lo usa para formar una capa de compatibilidad para mucho de lo que envuelve.
 - Determinar el ABI para descargar binarios pre-compilados de complementos nativos, p. ej. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) usa este valor como fue expuesto por `process.versions.modules` para ayudar a determinar el binario apropiado para descargar en tiempo de instalación.
 
-The general rule is to bump this version when there are *breaking ABI* changes and also if there are non-trivial API changes. The rules are not yet strictly defined, so if in doubt, please confer with someone that will have a more informed perspective, such as a member of the NAN team.
+La regla general es actualizar esta versión cuando hay cambios de *rompimiento ABI*, y también si hay cambios API no-triviales. Las reglas aún no están estrictamente definidas, en caso de duda, por favor confiere con alguien que tendrá una perspectiva más informada, como un miembro del equipo NAN.
 
-*Note*: It is current TSC policy to bump major version when ABI changes. If you see a need to bump `NODE_MODULE_VERSION` then you should consult the TSC. Commits may need to be reverted or a major version bump may need to happen.
+*Note*: Es la política TSC actual actualizar a una versión mayor cuando ABI cambia. If you see a need to bump `NODE_MODULE_VERSION` then you should consult the TSC. Commits may need to be reverted or a major version bump may need to happen.
 
 ### 3. Update the Changelog
 
