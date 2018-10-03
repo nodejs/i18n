@@ -116,15 +116,15 @@ apply.whitespace fix`
 
 * What belongs in Node.js:
   
-  * Opinions vary – it’s good to have a broad collaborator base for that reason!
-  * If Node.js itself needs it (due to historical reasons), then it belongs in Node.js. 
-    * That is to say, `url` is there because of `http`, `freelist` is there because of `http`, etc.
-  * Things that cannot be done outside of core, or only with significant pain such as `async_hooks`.
+  * Las opiniones varían - ¡es bueno tener una extensa base de colaboradores por esa razón!
+  * Si Node.js lo necesita (debido a razones históricas), entonces pertenece a Node.js. 
+    * Es decir, el `url` está ahí debido a `http`, `freelist` está ahí debido a `http`, etc.
+  * Cosas que no pueden ser hechas fuera del núcleo, o solo con un significativo dolor, como `async_hooks`.
 
-* Continuous Integration (CI) Testing:
+* Pruebas de Integración Continua (CI):
   
   * <https://ci.nodejs.org/> 
-    * It is not automatically run. You need to start it manually.
+    * No se ejecuta automáticamente. You need to start it manually.
   * Log in on CI is integrated with GitHub. Try to log in now!
   * You will be using `node-test-pull-request` most of the time. Go there now! 
     * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
