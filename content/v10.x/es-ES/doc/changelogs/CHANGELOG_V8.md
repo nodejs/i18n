@@ -124,8 +124,8 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
   * advertir sobre longitud de etiqueta de autenticación inválida (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * **async_hooks**: 
   * actualización de defaultTriggerAsyncIdScope para perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
-  * use typed array stack as fast path (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
-  * use scope for defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
+  * utilice la pila de array escrita como ruta rápida (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
+  * utilice el alcance para defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * separate missing from default context (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * rename initTriggerId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * deprecate undocumented API (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
