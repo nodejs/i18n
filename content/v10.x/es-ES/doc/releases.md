@@ -54,13 +54,13 @@ Notas:
 Crea un nuevo branch llamado *"vx.y.z-proposal"*, o algo similar. Usar `git
 cherry-pick`, trae los commits apropiados en tu nuevo branch. Para determinar los commits relevantes, usa [`branch-diff`](https://github.com/rvagg/branch-diff) y [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (ambos están disponibles en npm y deberían ser instalados globalmente). Estas herramientas dependen en nuestros metadatos del commit, así como las etiquetas `semver-minor` y `semver-major` de GitHub. Un inconveniente es que cuando los metadatos `PR-URL` son accidentalmente omitidos de un commit, el commit va a aparecer porque no está seguro si es un duplicado o no.
 
-For a list of commits that could be landed in a patch release on v5.x:
+Para una lista de commits que pudieran llegar en un lanzamiento de parche en v5.x:
 
 ```console
 $ branch-diff v5.x master --exclude-label=semver-major,semver-minor,dont-land-on-v5.x --filter-release --format=simple
 ```
 
-Carefully review the list of commits looking for errors (incorrect `PR-URL`, incorrect semver, etc.). Commits labeled as semver minor or semver major should only be cherry-picked when appropriate for the type of release being made. Previous release commits and version bumps do not need to be cherry-picked.
+Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrecto, semver incorrecto, etc.). Commits labeled as semver minor or semver major should only be cherry-picked when appropriate for the type of release being made. Previous release commits and version bumps do not need to be cherry-picked.
 
 ### 2. Update `src/node_version.h`
 
