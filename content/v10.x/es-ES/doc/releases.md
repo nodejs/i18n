@@ -14,13 +14,13 @@ Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liber
 
 **b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** puede ser usado para crear un lanzamiento nocturno para el *ENCABEZADO* actual si se requiere lanzamientos de pruebas públicas. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y se encuentran disponibles para su descarga pública.
 
-**c.** **Release builds:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** does all of the work to build all required release assets. Promotion of the release files is a manual step once they are ready (see below).
+**c.** **Compilaciones liberadas:** **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** hace todo el trabajo de compilar todos los activos de lanzamiento requeridos. La promoción de los archivos de lanzamiento es un paso manual una vez que están listos (véase a continuación).
 
-The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
+El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el CDT.
 
-### 2. <nodejs.org> Access
+### 2. <nodejs.org> Acceso
 
-The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
+El usuario *dist* en nodejs.org controla los activos disponibles en <https://nodejs.org/download/>. <https://nodejs.org/dist/> es un alias para <https://nodejs.org/download/release/>.
 
 The Jenkins release build workers upload their artifacts to the web server as the *staging* user. The *dist* user has access to move these assets to public access while, for security, the *staging* user does not.
 
