@@ -86,20 +86,20 @@ added: v0.1.25
 
 El método `querystring.stringify()` produce una cadena de consulta de URL desde un `obj` dado mediante la iteración a través de las "propiedades propias" del objeto.
 
-It serializes the following types of values passed in `obj`: {string|number|boolean|string[]|number[]|boolean[]} Any other input values will be coerced to empty strings.
+Serializa los siguientes tipos de valores pasados en `obj`: {string|number|boolean|string[]|number[]|boolean[]} Cualquier otro valor de entrada será forzado a cadenas vacías.
 
 ```js
 querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' });
-// returns 'foo=bar&baz=qux&baz=quux&corge='
+// devuelve 'foo=bar&baz=qux&baz=quux&corge='
 
 querystring.stringify({ foo: 'bar', baz: 'qux' }, ';', ':');
-// returns 'foo:bar;baz:qux'
+// devuelve 'foo:bar;baz:qux'
 ```
 
-By default, characters requiring percent-encoding within the query string will be encoded as UTF-8. If an alternative encoding is required, then an alternative `encodeURIComponent` option will need to be specified as illustrated in the following example:
+Por defecto, los caracteres que requieren codificación en porcentaje dentro de la cadena de consulta se codificarán como UTF-8. Si un caracter alternativo codificado es requerido, entonces una opción `encodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
 
 ```js
-// Assuming gbkEncodeURIComponent function already exists,
+// Asumiendo que la función gbkEncodeURIComponent ya existe,
 
 querystring.stringify({ w: '中文', foo: 'bar' }, null, null,
                       { encodeURIComponent: gbkEncodeURIComponent });
@@ -113,7 +113,7 @@ added: v0.1.25
 
 * `str` {string}
 
-The `querystring.unescape()` method performs decoding of URL percent-encoded characters on the given `str`.
+El método `querystring.unescape()`realiza la decodificación de URL codificada en porcentaje caracteres en la `str` dada.
 
 The `querystring.unescape()` method is used by `querystring.parse()` and is generally not expected to be used directly. It is exported primarily to allow application code to provide a replacement decoding implementation if necessary by assigning `querystring.unescape` to an alternative function.
 
