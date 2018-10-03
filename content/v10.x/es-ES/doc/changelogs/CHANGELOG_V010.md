@@ -668,7 +668,7 @@ https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
 * npm: Actualizar a v1.3.5
 * os: No reportar tiempos negativos en la información del cpu (Ben Noordhuis)
 * fs: Manejar UID y GID grandes (Ben Noordhuis)
-* url: Reparar caso extremo cuando el protocolo no es minúsculo (Shuan Wang)
+* url: Reparar caso extremo cuando el protocolo no es en minúsculas (Shuan Wang)
 * doc: Reescribir el API Doc de streams (isaacs)
 * node: llamar a MakeDomainCallback en todos los casos de dominio (Trevor Norris)
 * crypto: reparar fuga de memoria en LoadPKCS12 (Fedor Indutny)
@@ -682,11 +682,11 @@ https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 * uv: Actualizar a v0.10.12
 * npm: Actualizar a 1.3.2
 * windows: obtener el errno apropiado (Ben Noordhuis)
-* tls: solo esperar para terminar si no lo vimos (Timothy J Fontaine)
+* tls: solo espere para terminar si no lo vimos (Timothy J Fontaine)
 * http: deshacerse de la respuesta cuando la solicitud es abortada (isaacs)
 * http: usar un temporizador unref'd para reparar retraso en la salida (Peter Rust)
 * zlib: nivel puede ser negativo (Brian White)
-* zlib: permitir valores zero para nivel y estrategia (Brian White)
+* zlib: permitir valores cero para nivel y estrategia (Brian White)
 * buffer: añadir comentario explicando la alineación del búfer (Ben Noordhuis)
 * string_bytes: detectar correctamente 64bit (Timothy J Fontaine)
 * src: reparar fuga de memoria en UsingDomains() (Ben Noordhuis)
@@ -812,8 +812,8 @@ https://github.com/nodejs/node/commit/9712aa9f76073c30850b20a188b1ed12ffb74d17
 * net: reparar el soporte de Búferes socket.bytesWritten (Fedor Indutny)
 * buffer: reparar verificaciones de offset (Łukasz Walukiewicz)
 * stream: llamar a escribir cb antes de terminar el evento (isaacs)
-* http: Suporta write(data, 'hex') (isaacs)
-* crypto: secreto dh debería ser rellenado-izquierda (Fedor Indutny)
+* http: Soporta write(data, 'hex') (isaacs)
+* crypto: secreto dh debería ser rellenado a la izquierda (Fedor Indutny)
 * process: exponer NODE_MODULE_VERSION en process.versions (Rod Vagg)
 * crypto: reparar llamar al constructor en streams crypto (Andreas Madsen)
 * net: cuenta para codificar en .byteLength (Fedor Indutny)
