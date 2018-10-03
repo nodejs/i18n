@@ -1,4 +1,4 @@
-# Usando el módulo internal/errors.js
+# Usar el módulo internal/errors.js
 
 ## Qué es internal/errors.js
 
@@ -8,7 +8,7 @@ La intención del módulo es permitir que los errores proporcionados por Node.js
 
 *Nota*: Cambiar un error existente para usar el módulo `internal/errors` debe considerarse un cambio `semver-major`.
 
-## Usando internal/errors.js
+## Usar internal/errors.js
 
 El módulo `internal/errors` expone todos los errores personalizados como subclases de los errores incorporados. Después de agregarse, se puede encontrar un error en el objeto `codes`.
 
