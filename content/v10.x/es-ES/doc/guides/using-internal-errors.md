@@ -32,7 +32,7 @@ const { FOO } = require('internal/errors').codes;
 const err = new FOO(type);
 ```
 
-## Añadiendo nuevos errores
+## Añadir nuevos errores
 
 Se agregan nuevos códigos de error estáticos modificando el archivo `internal/errors.js` y agregando los nuevos códigos de error al final usando el método de utilidad `E()`.
 
@@ -58,7 +58,7 @@ arroja la nueva EXAMPLE_KEY();
 arroja la nueva EXAMPLE_KEY.RangeError();
 ```
 
-## Documentando nuevos errores
+## Documentar nuevos errores
 
 Siempre que se agregue y use un nuevo código de error estático, la documentación correspondiente para el código de error se debe agregar al archivo `doc/api/errors.md`. Esto les dará a los usuarios un lugar donde ir para buscar fácilmente el significado de los códigos de error individuales.
 
