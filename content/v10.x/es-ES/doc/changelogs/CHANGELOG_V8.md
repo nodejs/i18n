@@ -85,8 +85,8 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 ### Cambios Notables
 
-* **Actualización a OpenSSL 1.0.2o**: No contiene ninguna solución de seguridad que se sepa que afecta a Node.js.
-* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
+* **Actualización a OpenSSL 1.0.2o**: No contiene ninguna corrección de seguridad que se sepa que afecta a Node.js.
+* **Corrección para la vulnerabilidad de reabastecimiento de DNS del inspector (CVE-2018-7160)**: Un sitio web malicioso podría usar un ataque de reenlazado de DNS para engañar a un navegador web para que evite las comprobaciones de políticas del mismo origen y permita conexiones HTTP con el host local o a los hosts en la red local, potencialmente a un puerto de inspector abierto como depurador, por lo tanto, obteniendo acceso completo a la ejecución del código. El inspector ahora solo permite conexiones que tienen un valor de `Host` del navegador de `localhost` o `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
 * **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
 * **Update root certificates**: 5 additional root certificates have been added to the Node.js binary and 30 have been removed.
