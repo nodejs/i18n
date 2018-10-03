@@ -839,7 +839,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
+在 `myobject.h` 头文件中， 添加了一个新的公共类型方法，以允许在解包装对象后访问私有类型的值。
 
 ```cpp
 // myobject.h
