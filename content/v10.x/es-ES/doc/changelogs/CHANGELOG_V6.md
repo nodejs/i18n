@@ -921,19 +921,19 @@ Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Cambios Notables
 
 * **zlib**: 
-  * CVE-2017-14919 - In zlib v1.2.9, a change was made that causes an error to be raised when a raw deflate stream is initialized with windowBits set to 8. On some versions this crashes Node and you cannot recover from it, while on some versions it throws an exception. Node.js will now gracefully set windowBits to 9 replicating the legacy behavior to avoid a DOS vector. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
+  * CVE-2017-14919 - En zlib v1.2.9, se hizo un cambio que causa la aparición de un error cuando un "raw deflate stream" es iniciado con windowBits fijado a 8. En algunas versiones esto colapsa a Node y usted no puede recuperarse de esto, mientras que en algunas versiones arroja una excepción. Node.js establecerá con gracia windowBits a 9 replicando el el comportamiento anterior para evitar un vector DOS. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 ### Commits
 
-* [[`dd764d9cb6`](https://github.com/nodejs/node/commit/b66e44c4d3)] - **zlib**: gracefully set windowBits from 8 to 9 (Myles Borins) [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
+* [[`dd764d9cb6`](https://github.com/nodejs/node/commit/b66e44c4d3)] - **zlib**: establecer con gracia a windowBits de 8 a 9 (Myles Borins) [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
 
 <a id="6.11.4"></a>
 
-## 2017-10-03, Version 6.11.4 'Boron' (LTS), @MylesBorins
+## 2017-10-03, Versión 6.11.4 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 91 commits. This includes 29 which are test related, 28 which are doc related, 11 which are build / tool related and 3 commits which are updates to dependencies.
+Esta actualización LTS viene con 91 commits. Esto incluye a 29 que están relacionados a pruebas, 28 que están relacionados a documentación, 11 que están relacionados a build / tool, y 3 commits que son actualizaciones para dependencias.
 
-### Notable Changes
+### Cambios Notables
 
 * **net**: 
   * support passing undefined to listen() to match behavior in v4.x and v8.x (Sam Roberts) [#14234](https://github.com/nodejs/node/pull/14234)
