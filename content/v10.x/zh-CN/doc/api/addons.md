@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+在 `myobject.cc` 中，可以实施各种想要暴露给JavaScript的方法。 如下所示，`plusOne()` 通过将其添加到构造函数的原型中来暴露：
 
 ```cpp
 // myobject.cc
@@ -561,7 +561,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+要构建这个示例，`myobject.cc` 文件必须被添加到 `binding.gyp` 中：
 
 ```json
 {
@@ -577,7 +577,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -592,9 +592,9 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### Factory of wrapped objects
+### 工厂包装对象
 
-Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
+可以使用工厂模式来避免使用JavaScript的 `new` 运算符显式创建对象实例：
 
 ```js
 const obj = addon.createObject();
@@ -602,7 +602,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-First, the `createObject()` method is implemented in `addon.cc`:
+首先，在 `addon.cc` 中实现 `createObject()` 方法：
 
 ```cpp
 // addon.cc
@@ -633,7 +633,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
+在 `myobject.h` 中，静态方法 `NewInstance()` 被添加，它用来实例化对象。 这个方法与JavaScript中的new操作符功能一样：
 
 ```cpp
 // myobject.h
@@ -665,7 +665,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation in `myobject.cc` is similar to the previous example:
+对 `myobject.cc` 的实现和之前的示例类似：
 
 ```cpp
 // myobject.cc
@@ -752,7 +752,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
+再强调一次，要想构建这个示例，`myobject.cc` 文件必须要被添加到 `binding.gyp` 中：
 
 ```json
 {
@@ -768,7 +768,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -791,9 +791,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-### Passing wrapped objects around
+### 传递包装的对象
 
-In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
+除了包装和返回C++对象以外，可以通过使用Node.js帮助函数 （`node::ObjectWrap::Unwrap`）解包装它们来传递包装的对象。 下面的示例展示了 `add()` 函数，它可以获取两个 `MyObject` 对象作为输入参数：
 
 ```cpp
 // addon.cc
