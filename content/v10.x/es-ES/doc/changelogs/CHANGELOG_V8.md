@@ -8,7 +8,7 @@
   <tr>
     
 <th>LTS 'Carbon'</th>
-<th title="Previously called 'Stable'">Current</th>
+<th title="Previously called 'Stable'">Actual</th>
   </tr>
   
   <tr>
@@ -45,7 +45,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [7.x](CHANGELOG_V7.md)
@@ -55,7 +55,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v8 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2019 and maintained until December 2019.
 
