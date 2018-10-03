@@ -1,8 +1,8 @@
-# Query String
+# Cadena de Consulta
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Estabilidad: 2 - Estable
 
 <!--name=querystring-->
 
