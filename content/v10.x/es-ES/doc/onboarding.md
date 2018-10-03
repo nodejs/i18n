@@ -60,7 +60,7 @@ apply.whitespace fix`
 
 ## Managing the issue tracker
 
-* You have (mostly) free rein; don't hesitate to close an issue if you are confident that it should be closed
+* Tiene (en su mayoría) rienda suelta; no dude en cerrar un issue si está seguro de que debería cerrarse
   
   * Be nice about closing issues! Let people know why, and that issues and PRs can be reopened if necessary
 
@@ -108,10 +108,10 @@ apply.whitespace fix`
   * Los colaboradores indican que han revisado y aprobado los combios en un pull request utilizando la interfaz de aprobación de GitHub
   * A algunas personas les gusta comentar `LGTM` ("Me parece bien")
   * Tiene la autoridad para aprobar cualquier trabajo de otro colaborador.
-  * You cannot approve your own pull requests.
-  * When explicitly using `Changes requested`, show empathy – comments will usually be addressed even if you don’t use it. 
-    * If you do, it is nice if you are available later to check whether your comments have been addressed
-    * If you see that the requested changes have been made, you can clear another collaborator's `Changes requested` review.
+  * No puede aprobar sus propios pull requests.
+  * Cuando utiliza explícitamente `Changes requested`, muestre empatía - los comentarios usualmente se abordarán incluso si no la utiliza. 
+    * Si lo hace, es bueno que esté disponible luego para verificar si se han abordado sus comentarios
+    * Si observa que los cambios requeridos han sido realizados, puede borrar la revisión de los `Changes requested` de otro colaborador.
     * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
 
 * What belongs in Node.js:
