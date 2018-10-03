@@ -5,8 +5,8 @@ El propósito de esta guía es mostrar cómo compilar Node.js usando [Ninja](htt
 Para compilar Node.js con ninja, hay 3 pasos que se deben seguir:
 
 1. Configure las reglas de compilación basadas en el sistema operativo del proyecto mediante `./configure --ninja`.
-2. Ejecute `ninja -C out/Release` para producir un lanzamiento binario compilado.
-3. Por último, haga un enlace simbólico a `./node` using `ln -fs out/Release/node node`.
+2. Ejecute `ninja -C out/Release` para producir un binario de lanzamiento compilado.
+3. Por último, haga un enlace simbólico a `./node` usando `ln -fs out/Release/node node`.
 
 Al ejecutar `ninja -C out/Release` verá una impresión similar a la siguiente si la compilación tuvo éxito:
 
