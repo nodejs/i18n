@@ -121,9 +121,9 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
   * bache ICU 60 (Steven R. Loomis) [#16876](https://github.com/nodejs/node/pull/16876)
 * **crypto**: 
   * Soporte tanto para OpenSSL 1.1.0 como 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-  * warn on invalid authentication tag length (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
+  * advertir sobre longitud de etiqueta de autenticación inválida (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * **async_hooks**: 
-  * update defaultTriggerAsyncIdScope for perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
+  * actualización de defaultTriggerAsyncIdScope para perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
   * use typed array stack as fast path (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
   * use scope for defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * separate missing from default context (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
