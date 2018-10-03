@@ -453,7 +453,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
+然后，在 `myobject.h` 头文件中，包装类从 `node::ObjectWrap` 中继承：
 
 ```cpp
 // myobject.h
