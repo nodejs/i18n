@@ -124,8 +124,8 @@ apply.whitespace fix`
 * Pruebas de Integración Continua (CI):
   
   * <https://ci.nodejs.org/> 
-    * No se ejecuta automáticamente. You need to start it manually.
-  * Log in on CI is integrated with GitHub. Try to log in now!
+    * No se ejecuta automáticamente. Necesita iniciarlo manualmente.
+  * Iniciar sesión en la CI está integrado con GitHub. ¡Intente iniciar sesión ahora!
   * You will be using `node-test-pull-request` most of the time. Go there now! 
     * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
   * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
