@@ -8,9 +8,9 @@ La autorización del lanzamiento es dada por el TSC de Node.js. Una vez autoriza
 
 ### 1. Acceso del Lanzamiento Jenkins
 
-There are three relevant Jenkins jobs that should be used for a release flow:
+Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liberado:
 
-**a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
+**a.** **Pruebas:** **[nodo-prueba-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** es usado para una prueba final para asegurar que el *ENCABEZADO* actual es estable.
 
 **b.** **Nightly builds:** (optional) **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** can be used to create a nightly release for the current *HEAD* if public test releases are required. Builds triggered with this job are published straight to <https://nodejs.org/download/nightly/> and are available for public download.
 
