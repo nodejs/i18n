@@ -56,7 +56,7 @@ apply.whitespace fix`
   * En general: ¡intente ser amable con las personas!
   * The best outcome is for people who come to our issue tracker to feel like they can come back again.
 
-* You are expected to follow *and* hold others accountable to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+* Se espera que siga *y* responsabilice a los demás ante el [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
 ## Managing the issue tracker
 
