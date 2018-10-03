@@ -53,7 +53,7 @@ Cada documento `.html` tiene un documento `.json` correspondiente que presenta l
 
 ## Syscalls y páginas man
 
-Llamadas de sistema como open(2) y read(2) definen la interfaz entre los programas de usuario y el sistema operativo subyacente. Las funciones de Node.js que simplemente envuelven a un syscall, como [`fs.open()`][], lo documentarán. Los docs enlazan a las páginas man correspondientes (abreviación para páginas manuales) las cuales describen cómo las syscalls fucnionan.
+Llamadas de sistema como open(2) y read(2) definen la interfaz entre los programas de usuario y el sistema operativo subyacente. Las funciones de Node.js que simplemente envuelven a un syscall, como [`fs.open()`][], lo documentarán. Los docs enlazan a las páginas man correspondientes (abreviación para páginas manuales) las cuales describen cómo las syscalls funcionan.
 
 Some syscalls, like lchown(2), are BSD-specific. Eso significa, por ejemplo, que [`fs.lchown()`][] sólo funciona en macOS y otros sistemas derivados de BSD, y no está disponible en Linux.
 
