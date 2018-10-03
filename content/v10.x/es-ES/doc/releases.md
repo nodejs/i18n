@@ -22,11 +22,11 @@ El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz
 
 El usuario *dist* en nodejs.org controla los activos disponibles en <https://nodejs.org/download/>. <https://nodejs.org/dist/> es un alias para <https://nodejs.org/download/release/>.
 
-The Jenkins release build workers upload their artifacts to the web server as the *staging* user. The *dist* user has access to move these assets to public access while, for security, the *staging* user does not.
+Los workers de la compilación del lanzamiento Jenkins workers sube los artefactos al servidor web como el usuario *staging*. El usuario *dist* tiene acceso para mover estos activos a acceso público mientras que, por seguridad, no lo tiene el usuario *staging*.
 
-Nightly builds are promoted automatically on the server by a cron task for the *dist* user.
+Las compilaciones nocturnas son promovidas automáticamente en el servidor por una tarea cron para el usuario *dist*.
 
-Release builds require manual promotion by an individual with SSH access to the server as the *dist* user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
+Las compilaciones liberadas requieren promoción manual por una persona individual con acceso SSH en el servidor como el usuario*dist*. El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el CDT.
 
 ### 3. A Publicly Listed GPG Key
 
