@@ -12,7 +12,7 @@ Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liber
 
 **a.** **Pruebas:** **[nodo-prueba-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** es usado para una prueba final para asegurar que el *ENCABEZADO* actual es estable.
 
-**b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** puede ser usado para crear un lanzamiento nocturno para el *ENCABEZADO* actual si se requiere lanzamientos de pruebas públicas. Builds triggered with this job are published straight to <https://nodejs.org/download/nightly/> and are available for public download.
+**b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** puede ser usado para crear un lanzamiento nocturno para el *ENCABEZADO* actual si se requiere lanzamientos de pruebas públicas. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y se encuentran disponibles para su descarga pública.
 
 **c.** **Release builds:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** does all of the work to build all required release assets. Promotion of the release files is a manual step once they are ready (see below).
 
