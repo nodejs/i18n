@@ -52,7 +52,7 @@ Notas:
 ### 1. Hacer cherry-picking desde `master` y otras branches
 
 Crea un nuevo branch llamado *"vx.y.z-proposal"*, o algo similar. Usar `git
-cherry-pick`, trae los commits apropiados en tu nuevo branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
+cherry-pick`, trae los commits apropiados en tu nuevo branch. Para determinar los commits relevantes, usa [`branch-diff`](https://github.com/rvagg/branch-diff) y [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (ambos están disponibles en npm y deberían ser instalados globalmente). Estas herramientas dependen en nuestros metadatos del commit, así como las etiquetas `semver-minor` y `semver-major` de GitHub. Un inconveniente es que cuando los metadatos `PR-URL` son accidentalmente omitidos de un commit, el commit va a aparecer porque no está seguro si es un duplicado o no.
 
 For a list of commits that could be landed in a patch release on v5.x:
 
