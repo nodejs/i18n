@@ -3288,13 +3288,13 @@ napi_status napi_create_promise(napi_env env,
                                 napi_value* promise);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] deferred`: A newly created deferred object which can later be passed to `napi_resolve_deferred()` or `napi_reject_deferred()` to resolve resp. reject the associated promise.
-- `[out] promise`: The JavaScript promise associated with the deferred object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] deferred`: Un objeto diferido creado recientemente que luego puede ser pasado a `napi_resolve_deferred()` o `napi_reject_deferred()` para resolver la respuesta. rechazar la promesa asociada.
+- `[out] promise`: La promesa de JavaScript asociada con el objeto diferido.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a deferred object and a JavaScript promise.
+Esta API crea un objeto diferido y una promesa de JavaScript.
 
 ### napi_resolve_deferred
 
@@ -3308,9 +3308,9 @@ napi_status napi_resolve_deferred(napi_env env,
                                   napi_value resolution);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] deferred`: The deferred object whose associated promise to resolve.
-- `[in] resolution`: The value with which to resolve the promise.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] deferred`: El objeto diferido cuya promesa asociada se resolverá.
+- `[in] resolution`: El valor con el cual resolver la promesa.
 
 This API resolves a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to resolve JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
 
