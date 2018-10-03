@@ -3312,7 +3312,7 @@ napi_status napi_resolve_deferred(napi_env env,
 - `[in] deferred`: El objeto diferido cuya promesa asociada se resolverá.
 - `[in] resolution`: El valor con el cual resolver la promesa.
 
-Esta API resuelve una promesa de JavaScript a través del objeto diferido con el cual está asociada. Por lo tanto, sólo puede ser utilizado para resolver promesas de JavaScript para las cuales esté disponible el objeto diferido correspondiente. Esto significa, efectivamente, que la promesa debe haber sido creada utilizando `napi_create_promise()` y el objeto diferido devuelto de esa llamada debe haber sido retenido para ser pasado a esta API.
+Esta API resuelve una promesa de JavaScript a través del objeto diferido con el cual está asociada. Por lo tanto, sólo puede ser utilizada para resolver promesas de JavaScript para las cuales esté disponible el objeto diferido correspondiente. Esto significa, efectivamente, que la promesa debe haber sido creada utilizando `napi_create_promise()` y el objeto diferido devuelto de esa llamada debe haber sido retenido para ser pasado a esta API.
 
 El objeto diferido es liberado una vez completado con éxito.
 
@@ -3332,9 +3332,9 @@ napi_status napi_reject_deferred(napi_env env,
 - `[in] deferred`: El objeto diferido cuya promesa asociada se resolverá.
 - `[in] rejection`: El valor con el cual se rechazará la promesa.
 
-This API rejects a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to reject JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
+Esta API rechaza una promesa de JavaScript a través del objeto diferido al cual está asociada. Por lo tanto, sólo puede ser utilizada para rechazar promesas de JavaScript para las cuales esté disponible el objeto diferido correspondiente. Esto significa, efectivamente, que la promesa debe haber sido creada utilizando `napi_create_promise()` y el objeto diferido devuelto de esa llamada debe haber sido retenido para ser pasado a esta API.
 
-The deferred object is freed upon successful completion.
+El objeto diferido es liberado una vez completado con éxito.
 
 ### napi_is_promise
 
@@ -3348,11 +3348,11 @@ napi_status napi_is_promise(napi_env env,
                             bool* is_promise);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] promise`: The promise to examine
-- `[out] is_promise`: Flag indicating whether `promise` is a native promise object - that is, a promise object created by the underlying engine.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] promise`: La promesa a examinar
+- `[out] is_promise`: Flag que indica si `promise` es un objeto de promesa nativo, es decir, un objeto de promesa creado por el motor subyacente.
 
-## Script execution
+## Ejecución de Script
 
 N-API provides an API for executing a string containing JavaScript using the underlying JavaScript engine.
 
