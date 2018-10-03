@@ -57,15 +57,15 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archivo](CHANGELOG_ARCHIVE.md)
 
-*Note*: Node.js v8 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2019 and maintained until December 2019.
+*Nota*: Node.js v8 está cubierto por el [Plan de Soporte a Largo Plazo Node.js](https://github.com/nodejs/LTS) y tendrá soporte activo hasta abril de 2019 y se mantendrá hasta diciembre de 2019.
 
 <a id="8.11.1"></a>
 
-## 2018-03-29, Version 8.11.1 'Carbon' (LTS), @MylesBorins
+## 2018-03-29, Versión 8.11.1 'Carbon' (LTS), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
-No additional commits.
+Sin commits adicionales.
 
 Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
 
