@@ -6,7 +6,7 @@ Este documento describe los aspectos técnicos del proceso de lanzamiento de Nod
 
 La autorización del lanzamiento es dada por el TSC de Node.js. Una vez autorizado, un individuo debe tener lo siguiente:
 
-### 1. Jenkins Release Access
+### 1. Acceso del Lanzamiento Jenkins
 
 There are three relevant Jenkins jobs that should be used for a release flow:
 
