@@ -594,7 +594,7 @@ console.log(obj.plusOne());
 
 ### 工厂包装对象
 
-可以使用工厂模式来避免使用JavaScript的 `new` 运算符显式创建对象实例：
+或者，可以使用工厂模式来避免使用JavaScript的 `new` 运算符显式创建对象实例：
 
 ```js
 const obj = addon.createObject();
