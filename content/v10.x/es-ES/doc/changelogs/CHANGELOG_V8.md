@@ -115,12 +115,12 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 * **deps**: 
   * actualización de V8 a 6.2.414.46 (Michaël Zasso) [#16413](https://github.com/nodejs/node/pull/16413)
-  * revert ABI breaking changes in V8 6.2 (Anna Henningsen) [#16413](https://github.com/nodejs/node/pull/16413)
-  * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
-  * re land npm 5.6.0 (Myles Borins) [#18625](https://github.com/nodejs/node/pull/18625)
-  * ICU 60 bump (Steven R. Loomis) [#16876](https://github.com/nodejs/node/pull/16876)
+  * revertir ABI rompiendo cambios en V8 6.2 (Anna Henningsen) [#16413](https://github.com/nodejs/node/pull/16413)
+  * actualización de libuv a 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
+  * re aterrizar npm 5.6.0 (Myles Borins) [#18625](https://github.com/nodejs/node/pull/18625)
+  * bache ICU 60 (Steven R. Loomis) [#16876](https://github.com/nodejs/node/pull/16876)
 * **crypto**: 
-  * Support both OpenSSL 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+  * Soporte tanto para OpenSSL 1.1.0 como 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
   * warn on invalid authentication tag length (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * **async_hooks**: 
   * update defaultTriggerAsyncIdScope for perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
