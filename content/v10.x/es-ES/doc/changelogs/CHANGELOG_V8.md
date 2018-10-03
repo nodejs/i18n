@@ -69,23 +69,23 @@ Sin commits adicionales.
 
 Debido a la preparación incorrecta de la actualización al compilador GCC 4.9.X, las últimas versiones para PPC little endian se crearon utilizando GCC 4.9.X en lugar de GCC 4.8.X. Esto causó una rotura ABI en entornos basados en PPCLE. Esto se ha corregido en nuestra infraestructura y estamos realizando esta versión para garantizar que los binarios alojados se adhieran a nuestro contrato de soporte de plataforma.
 
-Note that Node.js versions 10.X and later will be built with version 4.9.X or later of the GCC compiler, and it is possible that Node.js version 8.X may be built on the 4.9.X compiler at a later time as the stated [minimum compiler requirement](https://github.com/nodejs/node/blob/v8.x/BUILDING.md) for Node.js version 8.X is 4.9.4.
+Tenga en cuenta que las versiones 10.X y posteriores de Node.js se compilarán con la versión 4.9.X o posterior del compilador GCC, y es posible que la versión 8.X de Node.js se compile en el compilador 4.9.X más adelante como el [requisito mínimo del compilador](https://github.com/nodejs/node/blob/v8.x/BUILDING.md) para Node.js versión 8.X es 4.9.4.
 
 <a id="8.11.0"></a>
 
-## 2018-03-28, Version 8.11.0 'Carbon' (LTS), @MylesBorins
+## 2018-03-28, Versión 8.11.0 'Carbon' (LTS), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
+Esta es una versión de seguridad. Todos los usuarios de Node.js deben consultar el resumen de la versión de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para obtener detalles sobre las vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 * CVE-2018-7158
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Notable Changes
+### Cambios Notables
 
-* **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
+* **Actualización a OpenSSL 1.0.2o**: No contiene ninguna solución de seguridad que se sepa que afecta a Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
 * **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
