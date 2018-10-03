@@ -115,6 +115,6 @@ added: v0.1.25
 
 El método `querystring.unescape()`realiza la decodificación de URL codificada en porcentaje caracteres en la `str` dada.
 
-The `querystring.unescape()` method is used by `querystring.parse()` and is generally not expected to be used directly. It is exported primarily to allow application code to provide a replacement decoding implementation if necessary by assigning `querystring.unescape` to an alternative function.
+El método `querystring.unescape()` es utilizado por `querystring.parse()` y generalmente no se espera que se use directamente. Es exportado principalmente para permitir que el código de aplicación para proporcionar una implementación de codificación de reemplazo si es necesario para asignar `querystring.unescape` a una función alternativa.
 
-By default, the `querystring.unescape()` method will attempt to use the JavaScript built-in `decodeURIComponent()` method to decode. If that fails, a safer equivalent that does not throw on malformed URLs will be used.
+Por defecto, el método `querystring.unescape()` intentará utilizar el método incorporado de JavaScript `decodeURIComponent()` para decodificar. If that fails, a safer equivalent that does not throw on malformed URLs will be used.
