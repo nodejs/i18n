@@ -147,20 +147,20 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
   * añadir process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 * **http**: 
   * soporte a streams `Duplex` genéricos (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
-  * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
-  * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
-* **net**: 
-  * remove ADDRCONFIG DNS hint on Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
-* **process**: 
-  * fix reading zero-length env vars on win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
+  * agregue rawPacket en error del evento `clientError` (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
+  * mejor soporte para direcciones IPv6 (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
+* **red**: 
+  * eliminar la sugerencia de DNS ADDRCONFIG en Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
+* **proceso**: 
+  * corrección de lectura env vars de longitud cero en win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
 * **tls**: 
-  * unconsume stream on destroy (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
-* **process**: 
-  * improve unhandled rejection message (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
+  * descromprimir stream en destruir (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
+* **proceso**: 
+  * mejorar el mensaje de rechazo no manejado (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
 * **stream**: 
-  * remove usage of *State.highWaterMark (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
+  * remover el uso de *State.highWaterMark (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
 * **trace_events**: 
-  * add executionAsyncId to init events (Andreas Madsen) [#17196](https://github.com/nodejs/node/pull/17196)
+  * añadir executionAsyncId a eventos init (Andreas Madsen) [#17196](https://github.com/nodejs/node/pull/17196)
 
 ### Commits
 
