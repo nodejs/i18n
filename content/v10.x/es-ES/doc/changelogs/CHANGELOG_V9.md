@@ -1796,7 +1796,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   ### Cambios Notables
   
   * **buffer**: 
-    * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
+    * un buffer asignado con contenido inválido no será rellenado con cero (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
   * **deps**: 
     * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
   ### Commits
@@ -2093,7 +2093,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   
   * **Async hooks**
     
-    * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] [#14414](https://github.com/nodejs/node/pull/14414)
+    * Las APIs experimentales antiguas fueron eliminadas. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] [#14414](https://github.com/nodejs/node/pull/14414)
   
   * **Errors**
     
