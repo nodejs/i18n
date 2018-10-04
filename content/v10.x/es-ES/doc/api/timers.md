@@ -66,9 +66,9 @@ Cuando se llama, el objeto `Timeout` activo no requerirá del Event Loop de Node
 
 Llamar a `timeout.unref()` crea un contador interno que activará el Event Loop de Node.js. Crear demasiados objetos, puede impactar negativamente en la performance de la aplicación de Node.js.
 
-## Scheduling Timers
+## Programación de Temporizadores
 
-Un temporizador en Node.js es un constructor interno que llama a una función dada después de cierto periodo de tiempo. When a timer's function is called varies depending on which method was used to create the timer and what other work the Node.js event loop is doing.
+Un temporizador en Node.js es un constructor interno que llama a una función dada después de cierto periodo de tiempo. Cuando se llama a una función del temporizador, varía dependiendo de cuál método fue utilizado para crear el temporizador y qué otros trabajo está haciendo el bucle de evento de Node.js.
 
 ### setImmediate(callback[, ...args])
 
@@ -76,17 +76,17 @@ Un temporizador en Node.js es un constructor interno que llama a una función da
 added: v0.9.1
 -->
 
-* `callback` {Function} The function to call at the end of this turn of [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick)
-* `...args` {any} Optional arguments to pass when the `callback` is called.
-* Returns: {Immediate} for use with [`clearImmediate()`][]
+* `callback` {Function} La función para llamar al final de este turno del [Bucle de Evento de Node.js](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick)
+* `...args` {any} Argumentos opcionales a pasar cuando se llama al `callback`.
+* Devuelve: {Immediate} para el uso con [`clearImmediate()`][]
 
-Schedules the "immediate" execution of the `callback` after I/O events' callbacks.
+Programa la ejecución "inmediata" del `callback` después de los callbacks de los eventos I/O.
 
-When multiple calls to `setImmediate()` are made, the `callback` functions are queued for execution in the order in which they are created. The entire callback queue is processed every event loop iteration. If an immediate timer is queued from inside an executing callback, that timer will not be triggered until the next event loop iteration.
+Cuando se hacen múltiples llamadas a `setImmediate()`, las funciones `callback` son puestas en cola de ejecución en el orden en el cual son creados. La cola completa del callback es procesada cada iteración del bucle del evento. Si se pone en cola un temporizador inmediato desde dentro de un callback en ejecución, ese temporizador no será activado hasta la siguiente iteración del bucle del evento.
 
-If `callback` is not a function, a [`TypeError`][] will be thrown.
+Si `callback` no es una función, se arrojará un [`TypeError`][].
 
-This method has a custom variant for promises that is available using [`util.promisify()`][]:
+Este método tiene una variante personalizada para promesas que está disponible utilizando [`util.promisify()`][]:
 
 ```js
 const util = require('util');
@@ -142,7 +142,7 @@ When `delay` is larger than `2147483647` or less than `1`, the `delay` will be s
 
 If `callback` is not a function, a [`TypeError`][] will be thrown.
 
-This method has a custom variant for promises that is available using [`util.promisify()`][]:
+Este método tiene una variante personalizada para promesas que está disponible utilizando [`util.promisify()`][]:
 
 ```js
 const util = require('util');
