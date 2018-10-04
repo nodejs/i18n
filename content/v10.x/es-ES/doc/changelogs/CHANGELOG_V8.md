@@ -202,7 +202,7 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`0ef35a137f`](https://github.com/nodejs/node/commit/0ef35a137f)] - **(SEMVER-MINOR)** **crypto**: hacer compatible a Hash 1.1.0- (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`e0cbc39668`](https://github.com/nodejs/node/commit/e0cbc39668)] - **(SEMVER-MINOR)** **crypto**: hacer compatible a CipherBase 1.1.0- (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`e21079851f`](https://github.com/nodejs/node/commit/e21079851f)] - **(SEMVER-MINOR)** **crypto**: eliminar los callbacks de bloqueo para OpenSSL 1.1.0 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-* [[`c2106e4037`](https://github.com/nodejs/node/commit/c2106e4037)] - **(SEMVER-MINOR)** **crypto**: use RSA and DH accessors (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`c2106e4037`](https://github.com/nodejs/node/commit/c2106e4037)] - **(SEMVER-MINOR)** **crypto**: utilizar los descriptores de acceso RSA y DH (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`f518238c2e`](https://github.com/nodejs/node/commit/f518238c2e)] - **(SEMVER-MINOR)** **crypto**: test DH keys work without a public half (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`f00d758067`](https://github.com/nodejs/node/commit/f00d758067)] - **(SEMVER-MINOR)** **crypto**: account for new 1.1.0 SSL APIs (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`335bbff96d`](https://github.com/nodejs/node/commit/335bbff96d)] - **(SEMVER-MINOR)** **crypto**: remove unnecessary SSLerr calls (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
