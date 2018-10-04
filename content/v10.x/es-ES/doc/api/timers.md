@@ -93,11 +93,11 @@ const util = require('util');
 const setImmediatePromise = util.promisify(setImmediate);
 
 setImmediatePromise('foobar').then((value) => {
-  // value === 'foobar' (passing values is optional)
-  // This is executed after all I/O callbacks.
+  // valor === 'foobar' (el pasar valores es opcional)
+  // Esto se ejecuta después de todos los callbacks I/O.
 });
 
-// or with async function
+// o con una función asincrónica
 async function timerExample() {
   console.log('Before I/O callbacks');
   await setImmediatePromise();
@@ -112,16 +112,16 @@ timerExample();
 added: v0.0.1
 -->
 
-* `callback` {Function} The function to call when the timer elapses.
-* `delay` {number} The number of milliseconds to wait before calling the `callback`.
-* `...args` {any} Optional arguments to pass when the `callback` is called.
-* Returns: {Timeout} for use with [`clearInterval()`][]
+* `callback` {Function} La función a llamar cuando el temporizador transcurre.
+* `delay` {number} El número de milisegundos a esperar antes de llamar al `callback`.
+* `...args` {any} Argumentos opcionales a pasar cuando se llama al `callback`.
+* Devuelve: {Timeout} para el uso con [`clearInterval()`][]
 
 Schedules repeated execution of `callback` every `delay` milliseconds.
 
-When `delay` is larger than `2147483647` or less than `1`, the `delay` will be set to `1`.
+Cuando `delay` es mayor que `2147483647` o menor que `1`, el `delay` será establecido a `1`.
 
-If `callback` is not a function, a [`TypeError`][] will be thrown.
+Si `callback` no es una función, se arrojará un [`TypeError`][].
 
 ### setTimeout(callback, delay[, ...args])
 
@@ -129,18 +129,18 @@ If `callback` is not a function, a [`TypeError`][] will be thrown.
 added: v0.0.1
 -->
 
-* `callback` {Function} The function to call when the timer elapses.
-* `delay` {number} The number of milliseconds to wait before calling the `callback`.
-* `...args` {any} Optional arguments to pass when the `callback` is called.
-* Returns: {Timeout} for use with [`clearTimeout()`][]
+* `callback` {Function} La función a llamar cuando el temporizador transcurre.
+* `delay` {number} El número de milisegundos a esperar antes de llamar al `callback`.
+* `...args` {any} Argumentos opcionales a pasar cuando se llama al `callback`.
+* Devuelve: {Timeout} para el uso con [`clearTimeout()`][]
 
 Schedules execution of a one-time `callback` after `delay` milliseconds.
 
-The `callback` will likely not be invoked in precisely `delay` milliseconds. Node.js makes no guarantees about the exact timing of when callbacks will fire, nor of their ordering. The callback will be called as close as possible to the time specified.
+The `callback` will likely not be invoked in precisely `delay` milliseconds. Node.js makes no guarantees about the exact timing of when callbacks will fire, nor of their ordering. El callback será llamado lo más cercano posible al tiempo especificado.
 
-When `delay` is larger than `2147483647` or less than `1`, the `delay` will be set to `1`.
+Cuando `delay` es mayor que `2147483647` o menor que `1`, el `delay` será establecido a `1`.
 
-If `callback` is not a function, a [`TypeError`][] will be thrown.
+Si `callback` no es una función, se arrojará un [`TypeError`][].
 
 Este método tiene una variante personalizada para promesas que está disponible utilizando [`util.promisify()`][]:
 
