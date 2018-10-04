@@ -192,30 +192,30 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
   
   * Agrega soporte para `NODE_OPTIONS="--inspect"` (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
 * **crypto**: 
-  * Expose the public key of a certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
+  * Expone la clave pública de un certificado (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **n-api**: 
-  * Add `napi_fatal_exception` to trigger an `uncaughtException` in JavaScript (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
+  * Agrega `napi_fatal_exception` para activar un `uncaughtException` en JavaScript (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
 * **path**: 
-  * Fix regression in `posix.normalize` (Michaël Zasso) [#19520](https://github.com/nodejs/node/pull/19520)
+  * Corrección de regresión en `posix.normalize` (Michaël Zasso) [#19520](https://github.com/nodejs/node/pull/19520)
 * **stream**: 
-  * Improve stream creation performance (Brian White) [#19401](https://github.com/nodejs/node/pull/19401)
-* **Added new collaborators** 
+  * Mejora el rendimiento de la creación de stream (Brian White) [#19401](https://github.com/nodejs/node/pull/19401)
+* **Nuevos colaboradores agregados** 
   * [BethGriggs](https://github.com/BethGriggs) Beth Griggs
 
 ### Commits
 
 * [[`926214aefe`](https://github.com/nodejs/node/commit/926214aefe)] - **cluster**: add support for NODE\_OPTIONS="--inspect" (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
-* [[`6ead99aa73`](https://github.com/nodejs/node/commit/6ead99aa73)] - **console**: don't swallow call stack exceeded errors (Dan Kaplun) [#19423](https://github.com/nodejs/node/pull/19423)
-* [[`02671dc12b`](https://github.com/nodejs/node/commit/02671dc12b)] - **crypto**: update root certificates (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
+* [[`6ead99aa73`](https://github.com/nodejs/node/commit/6ead99aa73)] - **console**: no traga los errores de la pila de llamadas (Dan Kaplun) [#19423](https://github.com/nodejs/node/pull/19423)
+* [[`02671dc12b`](https://github.com/nodejs/node/commit/02671dc12b)] - **crypto**: actualiza los certificados root (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 * [[`fd8c79ddfc`](https://github.com/nodejs/node/commit/fd8c79ddfc)] - **(SEMVER-MINOR)** **crypto**: add docs & tests for cert.pubkey & cert.fingerprint256 (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * [[`23312675cb`](https://github.com/nodejs/node/commit/23312675cb)] - **(SEMVER-MINOR)** **crypto**: provide full cert details to checkServerIdentity (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * [[`26e2938a50`](https://github.com/nodejs/node/commit/26e2938a50)] - **(SEMVER-MINOR)** **crypto**: add cert.pubkey containing the raw pubkey of certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * [[`f5d9324315`](https://github.com/nodejs/node/commit/f5d9324315)] - **deps**: add -no\_rand\_screen to openssl s\_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`f5eb182b50`](https://github.com/nodejs/node/commit/f5eb182b50)] - **deps**: fix asm build error of openssl in x86\_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`ddcb3fc886`](https://github.com/nodejs/node/commit/ddcb3fc886)] - **deps**: fix openssl assembly error on ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`d908169bad`](https://github.com/nodejs/node/commit/d908169bad)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
-* [[`0cd883fe09`](https://github.com/nodejs/node/commit/0cd883fe09)] - **deps**: upgrade openssl sources to 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
-* [[`c39167dc26`](https://github.com/nodejs/node/commit/c39167dc26)] - **deps**: reject interior blanks in Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
+* [[`ddcb3fc886`](https://github.com/nodejs/node/commit/ddcb3fc886)] - **deps**: corrige el error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`d908169bad`](https://github.com/nodejs/node/commit/d908169bad)] - **deps**: copia todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
+* [[`0cd883fe09`](https://github.com/nodejs/node/commit/0cd883fe09)] - **deps**: Actualiza las fuente de openssl a 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
+* [[`c39167dc26`](https://github.com/nodejs/node/commit/c39167dc26)] - **deps**: rechaza los espacios en blanco interiores en Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`3bc15a69ae`](https://github.com/nodejs/node/commit/3bc15a69ae)] - **deps**: upgrade http-parser to v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`6591d9f761`](https://github.com/nodejs/node/commit/6591d9f761)] - **deps**: cherry-pick 0c35b72 from upstream V8 (Gus Caplan) [#18038](https://github.com/nodejs/node/pull/18038)
 * [[`e533911696`](https://github.com/nodejs/node/commit/e533911696)] - **doc**: remove use of "random port" re dgram send (Thomas Hunter II) [#19620](https://github.com/nodejs/node/pull/19620)
@@ -229,10 +229,10 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 * [[`5e3d971f79`](https://github.com/nodejs/node/commit/5e3d971f79)] - **doc**: add BethGriggs to collaborators (Beth Griggs) [#19610](https://github.com/nodejs/node/pull/19610)
 * [[`5e9f9297b3`](https://github.com/nodejs/node/commit/5e9f9297b3)] - **doc**: document `make docopen` (Ayush Gupta) [#19321](https://github.com/nodejs/node/pull/19321)
 * [[`4db7848e09`](https://github.com/nodejs/node/commit/4db7848e09)] - **doc**: remove example labels from buffer.md (Rich Trott) [#19582](https://github.com/nodejs/node/pull/19582)
-* [[`f07e820e6d`](https://github.com/nodejs/node/commit/f07e820e6d)] - **doc**: add 'v' prefix to all versions in metadata (Tobias Nießen) [#19590](https://github.com/nodejs/node/pull/19590)
-* [[`7e9b7a5683`](https://github.com/nodejs/node/commit/7e9b7a5683)] - **doc**: add missing metadata for fs.open (Tobias Nießen) [#19585](https://github.com/nodejs/node/pull/19585)
+* [[`f07e820e6d`](https://github.com/nodejs/node/commit/f07e820e6d)] - **doc**: agrega el prefijo 'v' a todas las versiones en los metadatos (Tobias Nießen) [#19590](https://github.com/nodejs/node/pull/19590)
+* [[`7e9b7a5683`](https://github.com/nodejs/node/commit/7e9b7a5683)] - **doc**: agrega los metadatos perdidos para fs.open (Tobias Nießen) [#19585](https://github.com/nodejs/node/pull/19585)
 * [[`d47e5d022f`](https://github.com/nodejs/node/commit/d47e5d022f)] - **doc**: add link & simplify data event (net.Socket) (Christopher Hiller) [#19487](https://github.com/nodejs/node/pull/19487)
-* [[`43f24c0406`](https://github.com/nodejs/node/commit/43f24c0406)] - **doc**: add directory structure in writing-tests.md (juggernaut451) [#18802](https://github.com/nodejs/node/pull/18802)
+* [[`43f24c0406`](https://github.com/nodejs/node/commit/43f24c0406)] - **doc**: agrega la estructura de directorio en writing-tests.md (juggernaut451) [#18802](https://github.com/nodejs/node/pull/18802)
 * [[`157fc28710`](https://github.com/nodejs/node/commit/157fc28710)] - **doc**: add added in versions to fs.Stats properties (jvelezpo) [#19266](https://github.com/nodejs/node/pull/19266)
 * [[`fa17002215`](https://github.com/nodejs/node/commit/fa17002215)] - **doc**: add missing metadata for settings.windowsHide (Tobias Nießen) [#19578](https://github.com/nodejs/node/pull/19578)
 * [[`4532a8913d`](https://github.com/nodejs/node/commit/4532a8913d)] - **doc**: add `require.main` to `require` properties (Vse Mozhet Byt) [#19573](https://github.com/nodejs/node/pull/19573)
@@ -294,10 +294,10 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 
 ## 2018-03-21, Version 9.9.0 (Current), @MylesBorins prepared by @targos
 
-### Notable Changes
+### Cambios Notables
 
 * **assert**: 
-  * From now on all error messages produced by `assert` in strict mode will produce a error diff. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
+  * De ahora en adelante en todos los mensajes de error producidos por `assert` en modo estricto, producirán un error diff. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
   * From now on it is possible to use a validation object in throws instead of the other possibilities. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
 * **crypto**: 
   * allow passing null as IV unless required (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
