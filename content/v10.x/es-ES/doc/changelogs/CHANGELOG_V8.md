@@ -105,7 +105,7 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`b7690655ef`](https://github.com/nodejs/node/commit/b7690655ef)] - **inspector**: comprobar encabezado del Host (Ali Ijaz Sheikh) 
 * [[`0641f2dbf9`](https://github.com/nodejs/node/commit/0641f2dbf9)] - **openssl**: corregir requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`6ee4228c1d`](https://github.com/nodejs/node/commit/6ee4228c1d)] - **src**: eliminar lista blanca de certificados CNNIC + StartCom. (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
-* [[`633e23a618`](https://github.com/nodejs/node/commit/633e23a618)] - **herramientas**: actualización de certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
+* [[`633e23a618`](https://github.com/nodejs/node/commit/633e23a618)] - **herramientas**: actualizar certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 
 <a id="8.10.0"></a>
 
@@ -114,27 +114,27 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 ### Cambios Notables
 
 * **deps**: 
-  * actualización de V8 a 6.2.414.46 (Michaël Zasso) [#16413](https://github.com/nodejs/node/pull/16413)
-  * revertir ABI rompiendo cambios en V8 6.2 (Anna Henningsen) [#16413](https://github.com/nodejs/node/pull/16413)
-  * actualización de libuv a 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
+  * actualizar V8 a 6.2.414.46 (Michaël Zasso) [#16413](https://github.com/nodejs/node/pull/16413)
+  * revertir cambios de ruptura ABI en V8 6.2 (Anna Henningsen) [#16413](https://github.com/nodejs/node/pull/16413)
+  * actualizar libuv a 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
   * re aterrizar npm 5.6.0 (Myles Borins) [#18625](https://github.com/nodejs/node/pull/18625)
   * bache ICU 60 (Steven R. Loomis) [#16876](https://github.com/nodejs/node/pull/16876)
 * **crypto**: 
-  * Soporte tanto para OpenSSL 1.1.0 como 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+  * Soportar tanto a OpenSSL 1.1.0 como a 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
   * advertir sobre longitud de etiqueta de autenticación inválida (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * **async_hooks**: 
-  * actualización de defaultTriggerAsyncIdScope para perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
-  * utilice la pila de array escrita como ruta rápida (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
-  * utilice el alcance para defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
+  * actualizar defaultTriggerAsyncIdScope para perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
+  * utilizar pila de typed array como ruta rápida (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
+  * utilizar ámbito para defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * separar faltantes del contexto predeterminado (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
   * renombrar initTriggerId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
-  * API desaprobada sin documentar (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
+  * Desaprobar API sin documentación (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
   * agregar evento destruir para gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
   * agregar eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
-  * establecer el disparador HTTPParser al socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
+  * establecer el disparador de HTTPParser al socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
   * agregar tipos de proveedores para el servidor de red (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
 * **n-api**: 
-  * agregar ayudante para los complementos para obtener el evento bucle (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
+  * agregar ayudante para los complementos para obtener el bucle del evento (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
 * **cli**: 
   * agregar --stack-trace-limit a NODE_OPTIONS (Anna Henningsen) [#16495](https://github.com/nodejs/node/pull/16495)
 * **consola**: 
@@ -143,18 +143,18 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
   * añadir builtinModules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
   * reemplazar las rutas predeterminadas en require.resolve() (cjihrig) [#17113](https://github.com/nodejs/node/pull/17113)
 * **src**: 
-  * agregar ayudante para los complementos para obtener el evento bucle (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
+  * agregar ayudante para los complementos para obtener el bucle del evento (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
   * añadir process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 * **http**: 
-  * soporte a streams `Duplex` genéricos (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
-  * agregue rawPacket en error del evento `clientError` (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
+  * soportar streams `Duplex` genéricos (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
+  * agregar rawPacket en error del evento `clientError` (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
   * mejor soporte para direcciones IPv6 (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
 * **red**: 
   * eliminar la sugerencia de DNS ADDRCONFIG en Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
 * **proceso**: 
-  * corrección de lectura env vars de longitud cero en win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
+  * corregir lectura de env vars de longitud cero en win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
 * **tls**: 
-  * descromprimir stream en destruir (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
+  * descromprimir stream al destruir (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
 * **proceso**: 
   * mejorar el mensaje de rechazo no manejado (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
 * **stream**: 
@@ -165,13 +165,13 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 ### Commits
 
 * [[`5dab90b8bb`](https://github.com/nodejs/node/commit/5dab90b8bb)] - **async_hooks**: actualizar defaultTriggerAsyncIdScope para perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
-* [[`086af68c19`](https://github.com/nodejs/node/commit/086af68c19)] - **async_hooks**: utilizar la pila de array escrita como ruta rápida (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
+* [[`086af68c19`](https://github.com/nodejs/node/commit/086af68c19)] - **async_hooks**: utilizar la pila de typed array como ruta rápida (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
 * [[`0f7c8984af`](https://github.com/nodejs/node/commit/0f7c8984af)] - **async_hooks**: utilizar CHECK en lugar de arrojar error (Jon Moss) [#17832](https://github.com/nodejs/node/pull/17832)
-* [[`5a199a905b`](https://github.com/nodejs/node/commit/5a199a905b)] - **async_hooks**: utilizar el alcance para defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
+* [[`5a199a905b`](https://github.com/nodejs/node/commit/5a199a905b)] - **async_hooks**: utilizar ámbito para defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
 * [[`03873db4d0`](https://github.com/nodejs/node/commit/03873db4d0)] - **async_hooks**: separar faltantes del contexto predeterminado (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
 * [[`cce92ccfa8`](https://github.com/nodejs/node/commit/cce92ccfa8)] - **async_hooks**: renombrar initTriggerId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
-* [[`025b9f208f`](https://github.com/nodejs/node/commit/025b9f208f)] - **(SEMVER-MINOR)** **async_hooks**: API desaprobada sin documentar (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
-* [[`36dbd1181a`](https://github.com/nodejs/node/commit/36dbd1181a)] - **(SEMVER-MINOR)** **async_hooks**: añadir evento destruid para gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
+* [[`025b9f208f`](https://github.com/nodejs/node/commit/025b9f208f)] - **(SEMVER-MINOR)** **async_hooks**: desaprobar API sin documentación (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
+* [[`36dbd1181a`](https://github.com/nodejs/node/commit/36dbd1181a)] - **(SEMVER-MINOR)** **async_hooks**: añadir evento destruir para gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
 * [[`331b175af2`](https://github.com/nodejs/node/commit/331b175af2)] - **(SEMVER-MINOR)** **async_hooks**: añadir eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
 * [[`91d4eb5ff8`](https://github.com/nodejs/node/commit/91d4eb5ff8)] - **(SEMVER-MINOR)** **async_hooks,http**: establecer el disparador HTTPParser al socket (Andreas Madsen) [#18003](https://github.com/nodejs/node/pull/18003)
 * [[`0211175bc7`](https://github.com/nodejs/node/commit/0211175bc7)] - **async_hooks,test**: solo utilice IPv6 en la prueba de http (Andreas Madsen) [#18143](https://github.com/nodejs/node/pull/18143)
