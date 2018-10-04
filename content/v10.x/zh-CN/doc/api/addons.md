@@ -181,7 +181,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 以下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了 V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
 
-这些示例中的每一个都使用以下 `binding.gyp` 文件：
+这些示例都使用以下 `binding.gyp` 文件：
 
 ```json
 {
@@ -208,7 +208,7 @@ $ node-gyp configure build
 
 ### 函数参数
 
-插件通常会公开可以从Node.js中运行的JavaScript访问的对象和函数。 当从 JavaScript调用函数时，输入参数必须映射到 C/C++代码，返回值必须从 C/C++代码映射。
+插件通常会公开可以从Node.js中运行的JavaScript访问的对象和函数。 当从 JavaScript 调用函数时，输入参数必须映射到 C/C++代码，返回值必须从 C/C++代码映射到 JavaScript。
 
 以下示例说明如何读取从JavaScript传递的函数参数以及如何返回结果：
 
@@ -275,9 +275,9 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### 回调
+### 回调函数
 
-将JavaScript函数传递给C++函数并从中执行它们是插件中常见的做法。 以下示例说明了如何调用此类回调：
+将JavaScript函数传递给C++函数并从中执行它们是插件中常见的做法。 以下示例说明了如何调用此类回调函数：
 
 ```cpp
 // addon.cc
@@ -311,7 +311,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-请注意，此示例使用两参数形式的 `Init()`，使用收到的完整 `module` 对象作为第二个参数。 这允许插件使用单个函数完全覆盖 `exports`，而不是添加一个函数作为 `exports` 的一个属性。
+请注意，此示例使用两参数形式的 `Init()`，使用收到的完整 `module` 对象作为第二个参数。 这允许插件使用单个函数完全覆盖 `exports`，而不是将函数添加为 `exports` 的一个属性。
 
 要测试它，请运行以下JavaScript：
 
@@ -325,7 +325,7 @@ addon((msg) => {
 });
 ```
 
-请注意，在此示例中，回调函数是同步被调用的。
+请注意，在此示例中，回调函数是被同步调用的。
 
 ### 对象工厂
 
@@ -376,7 +376,7 @@ console.log(obj1.msg, obj2.msg);
 
 ### 函数工厂
 
-另一个常见的场景是创建包含C++函数并将其返回给JavaScript的JavaScript函数：
+另一个常见的场景是创建包装C++函数并将其返回给JavaScript的JavaScript函数：
 
 ```cpp
 // addon.cc
@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-在 `myobject.cc` 中，可以实施各种想要暴露给JavaScript的方法。 如下所示，`plusOne()` 通过将其添加到构造函数的原型中来暴露：
+在 `myobject.cc` 中，可以实现各种想要暴露给JavaScript的方法。 如下所示，`plusOne()` 通过将其添加到构造函数的原型中来暴露：
 
 ```cpp
 // myobject.cc
@@ -592,7 +592,7 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-### 工厂包装对象
+### 包装对象工厂
 
 或者，可以使用工厂模式来避免使用JavaScript的 `new` 运算符显式创建对象实例：
 
