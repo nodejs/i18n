@@ -65,24 +65,24 @@ Un problema de infraestructura causó que se promoviera un instalador msi no ope
 * **deps**: 
   * ICU actualizado a 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Incluye CLDR 33 (muchos nuevos lenguajes y mejoras de datos).
 * **fs**: 
-  * Emite el evento 'ready' para `ReadStream` y `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
+  * Emite el evento 'listo' para `ReadStream` y `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **n-api**: 
-  * Bump version of n-api supported (Michael Dawson) [#19497](https://github.com/nodejs/node/pull/19497)
+  * Versión Bump de n-api compatible (Michael Dawson) [#19497](https://github.com/nodejs/node/pull/19497)
 * **net**: 
-  * Emit 'ready' event for `Socket` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
-* **Added new collaborators** 
+  * Emite el evento 'listo' para `Socket` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
+* **Nuevos colaboradores agregados** 
   * [mafintosh](https://github.com/mafintosh) Mathias Buus
 
 ### Commits
 
-* [[`0bd78dc391`](https://github.com/nodejs/node/commit/0bd78dc391)] - **buffer**: use v8::TypedArray::kMaxLength as buffer::kMaxLength (Joyee Cheung) [#19738](https://github.com/nodejs/node/pull/19738)
-* [[`54b84f3c26`](https://github.com/nodejs/node/commit/54b84f3c26)] - **buffer**: remove "new" from deprecation message (Rich Trott) [#19687](https://github.com/nodejs/node/pull/19687)
+* [[`0bd78dc391`](https://github.com/nodejs/node/commit/0bd78dc391)] - **buffer**: utiliza v8::TypedArray::kMaxLength como buffer::kMaxLength (Joyee Cheung) [#19738](https://github.com/nodejs/node/pull/19738)
+* [[`54b84f3c26`](https://github.com/nodejs/node/commit/54b84f3c26)] - **buffer**: remueve "nuevo" del mensaje de desaprobación (Rich Trott) [#19687](https://github.com/nodejs/node/pull/19687)
 * [[`0127712cf5`](https://github.com/nodejs/node/commit/0127712cf5)] - **build**: introduce make jstest (Joyee Cheung) [#19324](https://github.com/nodejs/node/pull/19324)
-* [[`58f61dbf8e`](https://github.com/nodejs/node/commit/58f61dbf8e)] - **deps**: ICU 61.1 bump (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621)
-* [[`97a92c4973`](https://github.com/nodejs/node/commit/97a92c4973)] - **deps**: turn in std::string for ICU (Steven R. Loomis) [#19624](https://github.com/nodejs/node/pull/19624)
-* [[`ae86adc086`](https://github.com/nodejs/node/commit/ae86adc086)] - **doc**: fix various nits (Vse Mozhet Byt) [#19743](https://github.com/nodejs/node/pull/19743)
-* [[`041f6cd9c9`](https://github.com/nodejs/node/commit/041f6cd9c9)] - **doc**: improve Buffer.allocUnsafeSlow() and related (Rich Trott) [#19742](https://github.com/nodejs/node/pull/19742)
-* [[`42671f24ba`](https://github.com/nodejs/node/commit/42671f24ba)] - **doc**: add mafintosh to collaborators (Mathias Buus) [#19773](https://github.com/nodejs/node/pull/19773)
+* [[`58f61dbf8e`](https://github.com/nodejs/node/commit/58f61dbf8e)] - **deps**: bump de ICU 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621)
+* [[`97a92c4973`](https://github.com/nodejs/node/commit/97a92c4973)] - **deps**: se convierte en std::string para ICU (Steven R. Loomis) [#19624](https://github.com/nodejs/node/pull/19624)
+* [[`ae86adc086`](https://github.com/nodejs/node/commit/ae86adc086)] - **doc**: arregla varios nits (Vse Mozhet Byt) [#19743](https://github.com/nodejs/node/pull/19743)
+* [[`041f6cd9c9`](https://github.com/nodejs/node/commit/041f6cd9c9)] - **doc**: mejora Buffer.allocUnsafeSlow() y relacionados (Rich Trott) [#19742](https://github.com/nodejs/node/pull/19742)
+* [[`42671f24ba`](https://github.com/nodejs/node/commit/42671f24ba)] - **doc**: agrega mafintosh a los colaboradores (Mathias Buus) [#19773](https://github.com/nodejs/node/pull/19773)
 * [[`c1b83fcbc2`](https://github.com/nodejs/node/commit/c1b83fcbc2)] - **doc**: update to adding listens on SIGUSR1 (willhayslett) [#19709](https://github.com/nodejs/node/pull/19709)
 * [[`1aaad92101`](https://github.com/nodejs/node/commit/1aaad92101)] - **doc**: fix lint nits in COLLABORATOR\_GUIDE.md (Vse Mozhet Byt) [#19762](https://github.com/nodejs/node/pull/19762)
 * [[`5149e18719`](https://github.com/nodejs/node/commit/5149e18719)] - **doc**: deprecation clarifications (James M Snell) [#19522](https://github.com/nodejs/node/pull/19522)
@@ -160,11 +160,11 @@ Un problema de infraestructura causó que se promoviera un instalador msi no ope
 
 ## 2018-03-29, Version 9.10.1 (Current), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
-No additional commits.
+Sin commits adicionales.
 
-Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
+Debido a la preparación incorrecta de la actualización al compilador GCC 4.9.X, las últimas versiones para PPC little endian se crearon utilizando GCC 4.9.X en lugar de GCC 4.8.X. Esto causó una rotura ABI en entornos basados en PPCLE. Esto se ha corregido en nuestra infraestructura y estamos realizando esta versión para garantizar que los binarios alojados se adhieran a nuestro contrato de soporte de plataforma.
 
 Note that Node.js versions 10.X and later will be built with version 4.9.X or later of the GCC compiler, and it is possible that Node.js version 9.X may be built on the 4.9.X compiler at a later time as the stated [minimum compiler requirement](https://github.com/nodejs/node/blob/v8.x/BUILDING.md) for Node.js version 9.X is 4.9.4.
 
