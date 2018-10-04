@@ -298,29 +298,29 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 
 * **assert**: 
   * De ahora en adelante en todos los mensajes de error producidos por `assert` en modo estricto, producirán un error diff. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
-  * From now on it is possible to use a validation object in throws instead of the other possibilities. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
+  * De ahora en adelante es posible utilizar un objeto de validación en lanzamientos en lugar de otras posibilidades. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
 * **crypto**: 
-  * allow passing null as IV unless required (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
+  * permite pasar null como IV a menos que sea requerido (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
 * **fs**: 
-  * support as and as+ flags in stringToFlags() (Sarat Addepalli) [#18801](https://github.com/nodejs/node/pull/18801)
+  * soporta las banderas as y as+ en stringToFlags() (Sarat Addepalli)
 * **tls**: 
-  * expose Finished messages in TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
+  * expone los mensajes finalizados en TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
 * **tty**: 
-  * Add getColorDepth function to determine if terminal supports colors. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
+  * Agrega la función getColorDepth para determinar si el terminal admite colores. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
 * **util**: 
-  * add util.inspect compact option (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
-* **Added new collaborators** 
+  * agrega la opción compacta util.inspect (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
+* **Nuevos colaboradores agregados** 
   * [watson](https://github.com/watson) Thomas Watson
 
 ### Commits
 
 * [[`acc86ed246`](https://github.com/nodejs/node/commit/acc86ed246)] - 2018-03-XX, Version 9.9.0 (Current) (Michaël Zasso) 
-* [[`8d33e5c214`](https://github.com/nodejs/node/commit/8d33e5c214)] - **assert**: improve error check (Ruben Bridgewater) [#17574](https://github.com/nodejs/node/pull/17574)
-* [[`5e6b42ec9c`](https://github.com/nodejs/node/commit/5e6b42ec9c)] - **assert**: show proper differences (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
-* [[`9abbb6b857`](https://github.com/nodejs/node/commit/9abbb6b857)] - **assert**: fix infinite loop (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
+* [[`8d33e5c214`](https://github.com/nodejs/node/commit/8d33e5c214)] - **assert**: mejora la verificación de errores (Ruben Bridgewater) [#17574](https://github.com/nodejs/node/pull/17574)
+* [[`5e6b42ec9c`](https://github.com/nodejs/node/commit/5e6b42ec9c)] - **assert**: muestra diferencias propias (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
+* [[`9abbb6b857`](https://github.com/nodejs/node/commit/9abbb6b857)] - **assert**: corrige el bucle infinito (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
 * [[`e9ac468146`](https://github.com/nodejs/node/commit/e9ac468146)] - **assert**: fix throws trace (Ruben Bridgewater) [#18595](https://github.com/nodejs/node/pull/18595)
 * [[`d3c2534bbe`](https://github.com/nodejs/node/commit/d3c2534bbe)] - **assert**: use destructuring for errors (Ruben Bridgewater) [#18247](https://github.com/nodejs/node/pull/18247)
-* [[`5aa3a2d172`](https://github.com/nodejs/node/commit/5aa3a2d172)] - **(SEMVER-MINOR)** **assert**: improve error messages (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
+* [[`5aa3a2d172`](https://github.com/nodejs/node/commit/5aa3a2d172)] - **(SEMVER-MINOR)** **assert**: mejora los mensajes de error (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
 * [[`f96ea47cf5`](https://github.com/nodejs/node/commit/f96ea47cf5)] - **assert**: fix strict regression (Ruben Bridgewater) [#17903](https://github.com/nodejs/node/pull/17903)
 * [[`ebd60fa505`](https://github.com/nodejs/node/commit/ebd60fa505)] - **(SEMVER-MINOR)** **assert**: .throws accept objects (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
 * [[`612ba1a3f0`](https://github.com/nodejs/node/commit/612ba1a3f0)] - **(SEMVER-MINOR)** **assert**: improve assert.throws (Ruben Bridgewater) [#17585](https://github.com/nodejs/node/pull/17585)
@@ -339,21 +339,21 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 * [[`36f664ef9a`](https://github.com/nodejs/node/commit/36f664ef9a)] - **deps**: V8: backport 596d55a from upstream (Myles Borins) [#19477](https://github.com/nodejs/node/pull/19477)
 * [[`5966b8cc06`](https://github.com/nodejs/node/commit/5966b8cc06)] - **deps**: v8: cherry-pick fixes for v8:7535 (Flarna) [#19333](https://github.com/nodejs/node/pull/19333)
 * [[`cb732aeda4`](https://github.com/nodejs/node/commit/cb732aeda4)] - **doc**: enable eslint prefer-template rule (Ruben Bridgewater) [#18831](https://github.com/nodejs/node/pull/18831)
-* [[`ff82acb95a`](https://github.com/nodejs/node/commit/ff82acb95a)] - **doc**: update buffer examples (Ruben Bridgewater) [#18758](https://github.com/nodejs/node/pull/18758)
-* [[`a4c28d77f7`](https://github.com/nodejs/node/commit/a4c28d77f7)] - **doc**: fix deprecation removed by mistake (Michaël Zasso) [#19482](https://github.com/nodejs/node/pull/19482)
-* [[`b229912f6f`](https://github.com/nodejs/node/commit/b229912f6f)] - **doc**: do not announce obvious examples (Rich Trott) [#19270](https://github.com/nodejs/node/pull/19270)
+* [[`ff82acb95a`](https://github.com/nodejs/node/commit/ff82acb95a)] - **doc**: Actualiza ejemplos de buffer (Ruben Bridgewater) [#18758](https://github.com/nodejs/node/pull/18758)
+* [[`a4c28d77f7`](https://github.com/nodejs/node/commit/a4c28d77f7)] - **doc**: corrige la depreciación eliminada por error (Michaël Zasso) [#19482](https://github.com/nodejs/node/pull/19482)
+* [[`b229912f6f`](https://github.com/nodejs/node/commit/b229912f6f)] - **doc**: no anuncia ejemplos obvios (Rich Trott) [#19270](https://github.com/nodejs/node/pull/19270)
 * [[`c1fa0926e3`](https://github.com/nodejs/node/commit/c1fa0926e3)] - **doc**: fix typos on n-api (Kyle Robinson Young) [#19385](https://github.com/nodejs/node/pull/19385)
 * [[`99e6734f19`](https://github.com/nodejs/node/commit/99e6734f19)] - **doc**: improve best practices in onboarding-extras (Rich Trott) [#19315](https://github.com/nodejs/node/pull/19315)
 * [[`5a56327e79`](https://github.com/nodejs/node/commit/5a56327e79)] - **doc**: fix minor issues in async\_hooks.md (Rich Trott) [#19313](https://github.com/nodejs/node/pull/19313)
 * [[`5da3ee7719`](https://github.com/nodejs/node/commit/5da3ee7719)] - **doc**: clarify default TLS handshake timeout (Rich Trott) [#19290](https://github.com/nodejs/node/pull/19290)
-* [[`7f652c2bcc`](https://github.com/nodejs/node/commit/7f652c2bcc)] - **doc**: update username and email (Yuta Hiroto) [#19338](https://github.com/nodejs/node/pull/19338)
-* [[`e247f19ac3`](https://github.com/nodejs/node/commit/e247f19ac3)] - **doc**: improve style guide text (Rich Trott) [#19269](https://github.com/nodejs/node/pull/19269)
+* [[`7f652c2bcc`](https://github.com/nodejs/node/commit/7f652c2bcc)] - **doc**: Actualiza el nombre de usuario y el correo electrónico (Yuta Hiroto) [#19338](https://github.com/nodejs/node/pull/19338)
+* [[`e247f19ac3`](https://github.com/nodejs/node/commit/e247f19ac3)] - **doc**: mejora la guía de estilo de texto (Rich Trott) [#19269](https://github.com/nodejs/node/pull/19269)
 * [[`c9b12f302a`](https://github.com/nodejs/node/commit/c9b12f302a)] - **doc**: remove superfluous text in onboarding-extras (Rich Trott) [#19247](https://github.com/nodejs/node/pull/19247)
 * [[`6c5afebf55`](https://github.com/nodejs/node/commit/6c5afebf55)] - **doc**: make caveat in stream.md more concise (Rich Trott) [#19251](https://github.com/nodejs/node/pull/19251)
 * [[`8e88a180b9`](https://github.com/nodejs/node/commit/8e88a180b9)] - **doc**: add warning to assert.doesNotThrow() (Ruben Bridgewater) [#18699](https://github.com/nodejs/node/pull/18699)
 * [[`a04e4ae5e4`](https://github.com/nodejs/node/commit/a04e4ae5e4)] - **doc**: remove confusing "cats" from style guide (Rich Trott) [#19246](https://github.com/nodejs/node/pull/19246)
-* [[`7c3617558e`](https://github.com/nodejs/node/commit/7c3617558e)] - **doc**: remove superfluous adverb from style guide (Rich Trott) [#19246](https://github.com/nodejs/node/pull/19246)
-* [[`d117f5ff22`](https://github.com/nodejs/node/commit/d117f5ff22)] - **doc**: remove warning against readable/readable.read (Rich Trott) [#19193](https://github.com/nodejs/node/pull/19193)
+* [[`7c3617558e`](https://github.com/nodejs/node/commit/7c3617558e)] - **doc**: elimina los adverbios superfluos de la guía de estilos (Rich Trott) [#19246](https://github.com/nodejs/node/pull/19246)
+* [[`d117f5ff22`](https://github.com/nodejs/node/commit/d117f5ff22)] - **doc**: elimina la advertencia contra readable/readable.read (Rich Trott) [#19193](https://github.com/nodejs/node/pull/19193)
 * [[`5c21d16c31`](https://github.com/nodejs/node/commit/5c21d16c31)] - **doc**: add watson to collaborators (Thomas Watson) [#19234](https://github.com/nodejs/node/pull/19234)
 * [[`9557e66ae1`](https://github.com/nodejs/node/commit/9557e66ae1)] - **doc**: update labels info in onboarding-extras.md (Rich Trott) [#19160](https://github.com/nodejs/node/pull/19160)
 * [[`84acb9fae5`](https://github.com/nodejs/node/commit/84acb9fae5)] - **doc**: add inspector usage example (Ali Ijaz Sheikh) [#19172](https://github.com/nodejs/node/pull/19172)
@@ -649,7 +649,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **events**: 
+* **eventos**: 
   * `events.usingDomains` being set to `false` by default was removed in 9.6.0 which was a change in behavior compares to 9.5.0. This behavior change has been reverted and the `events` object now has `usingDomains` preset to `false`, which is the behavior in 9.x prior to 9.6.0 (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
 
 ### Commits
