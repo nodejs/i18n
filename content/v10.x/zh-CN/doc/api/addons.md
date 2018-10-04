@@ -121,7 +121,7 @@ Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的
 
 * 当 `node-gyp` 运行时，它会检查特定的 Node.js 发行版本，并且下载完整的源代码的 tar 包或者只是头文件。 如果下载了完整的源代码，插件将有完全访问全套 Node.js 依赖的权限。 然而，如果只是下载了 Node.js 的头文件，则只能访问 Node.js 导出的符号。
 
-* 可以使用指向本地 Node.js 原图像的 `--nodedir` 标记运行 `node-gyp` 。 如果使用该选项，则插件将拥有全套依赖的访问权限。
+* 可以使用指向本地 Node.js 源镜像的 `--nodedir` 标记运行 `node-gyp` 。 如果使用该选项，则插件将拥有全套依赖的访问权限。
 
 ### 使用 require() 加载插件
 
@@ -131,7 +131,7 @@ Node.js 使用了许多静态链接库，如 V8、libuv 和 OpenSSL。 所有的
 
 ## Node.js 原生模块抽象接口
 
-本文档中说明的每个示例都直接使用Node.js和V8 API来实现插件。 重要的是要了解V8 API可以并且已经从一个V8版本发展到下一版本而且发生了巨大变化（并将一个主要的Node.js发布到下一版本）。 每次版本更改时，插件可能需要更新和重新编译才能继续运行。 Node.js发布计划旨在最大限度地减少此类更改的频率和影响，但Node.js目前几乎没有能力确保V8 API的稳定性。
+本文档中的每个示例都直接使用Node.js和V8 API来实现插件。 重要的是要了解V8 API可以并且已经从一个V8版本发展到下一版本而且发生了巨大变化（并将一个主要的Node.js发布到下一版本）。 每次版本更改时，插件可能需要更新和重新编译才能继续运行。 Node.js发布计划旨在最大限度地减少此类更改的频率和影响，但Node.js目前几乎没有能力确保V8 API的稳定性。
 
 The [Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`) 提供了一组建议插件开发人员使用的工具，以保持V8和Node.js的过去和未来版本的兼容性。 有关如何使用的说明，请参见 `nan` [示例](https://github.com/nodejs/nan/tree/master/examples/)。
 
@@ -141,7 +141,7 @@ The [Node.js 原生模块抽象接口](https://github.com/nodejs/nan) (或 `nan`
 
 N-API是构建原生插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将是稳定的跨Node.js版本的应用程序二进制接口（ABI）。 它旨在将插件与底层JavaScript引擎中的更改隔离开来，并允许为一个版本编译的模块在更新版本的Node.js上运行而无需重新编译。 插件是使用本文档中概述的相同方法/工具（node-gyp等）构建/打包的。 唯一的区别是原生代码使用的API集。 不使用V8或 [Node.js 原生模块抽象接口](https://github.com/nodejs/nan)，而是使用N-API中可用的函数。
 
-在上述“Hello World”示例中使用N-API，替换 `hello.cc` 中的内容如下。 所有其它指令保持不变。
+在上述“Hello World”示例中使用N-API，替换 `hello.cc` 中的内容如下。 所有其它说明保持不变。
 
 ```cpp
 // hello.cc using N-API
@@ -179,7 +179,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 ## 插件示例
 
-以下是一些插件示例，旨在帮助开发人员入门学习。 这些示例使用了 V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，以及 V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)， 该指南用于解释使用的几个概念，如句柄，作用域，函数模板等。
+以下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了 V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
 
 这些示例中的每一个都使用以下 `binding.gyp` 文件：
 
