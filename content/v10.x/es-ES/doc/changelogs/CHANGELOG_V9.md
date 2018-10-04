@@ -1,4 +1,4 @@
-# Node.js 9 ChangeLog
+# ChangeLog de Node.js 9
 
 <!--lint disable prohibited-strings-->
 
@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Current</th>
+<th>Actuales</th>
 </tr>
   
   <tr>
@@ -34,38 +34,38 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
   * [5.x](CHANGELOG_V5.md)
   * [4.x](CHANGELOG_V4.md)
-  * [0.12.x](CHANGELOG_V012.md)
-  * [0.10.x](CHANGELOG_V010.md)
+  * [0.12x](CHANGELOG_V012.md)
+  * [0.10x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.1"></a>
 
-## 2018-04-05, Version 9.11.1 (Current), @MylesBorins
+## 2018-04-05, Versión 9.11.1 (Actual), @MylesBorin
 
-### Notable Changes
+### Cambios Notables
 
-No additional commits.
+Sin commits adicionales.
 
-An infrastructure issue caused a non-functioning msi installer for x64 to be promoted. The patch release is to ensure that all binaries and installers work as expected.
+Un problema de infraestructura causó que se promoviera un instalador msi no operativo para x64. La versión del parche es para garantizar que todos los binarios e instaladores funcionan como se espera.
 
 <a id="9.11.0"></a>
 
-## 2018-04-04, Version 9.11.0 (Current), @MylesBorins prepared by @targos
+## 2018-04-04, Versión 9.11.0 (Actual), @MylesBorins preparado por @targos
 
-### Notable Changes
+### Cambios Notables
 
 * **deps**: 
-  * Updated ICU to 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Includes CLDR 33 (many new languages and data improvements).
+  * ICU actualizado a 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Incluye CLDR 33 (muchos nuevos lenguajes y mejoras de datos).
 * **fs**: 
-  * Emit 'ready' event for `ReadStream` and `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
+  * Emite el evento 'ready' para `ReadStream` y `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **n-api**: 
   * Bump version of n-api supported (Michael Dawson) [#19497](https://github.com/nodejs/node/pull/19497)
 * **net**: 
