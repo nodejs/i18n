@@ -120,7 +120,7 @@ added: v0.7.0
 
 * `codePoints` {integer[]}
 
-The `punycode.ucs2.encode()` method returns a string based on an array of numeric code point values.
+El método `punycode.ucs2.encode()` devuelve una string basada en un array de valores de puntos de código numéricos.
 
 ```js
 punycode.ucs2.encode([0x61, 0x62, 0x63]); // 'abc'
@@ -135,4 +135,4 @@ added: v0.6.1
 
 * {string}
 
-Returns a string identifying the current [Punycode.js](https://mths.be/punycode) version number.
+Devuelve una string que identifica el número de la versión de [Punycode.js](https://mths.be/punycode) actual.
