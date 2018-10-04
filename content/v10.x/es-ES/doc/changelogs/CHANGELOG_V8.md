@@ -1,4 +1,4 @@
-# Node.js 8 ChangeLog
+# Registro de Cambios de Node.js 8
 
 <!--lint disable prohibited-strings-->
 
