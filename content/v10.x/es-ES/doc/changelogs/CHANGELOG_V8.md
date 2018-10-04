@@ -164,10 +164,10 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 
 ### Commits
 
-* [[`5dab90b8bb`](https://github.com/nodejs/node/commit/5dab90b8bb)] - **async_hooks**: update defaultTriggerAsyncIdScope for perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
-* [[`086af68c19`](https://github.com/nodejs/node/commit/086af68c19)] - **async_hooks**: use typed array stack as fast path (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
-* [[`0f7c8984af`](https://github.com/nodejs/node/commit/0f7c8984af)] - **async_hooks**: use CHECK instead of throwing error (Jon Moss) [#17832](https://github.com/nodejs/node/pull/17832)
-* [[`5a199a905b`](https://github.com/nodejs/node/commit/5a199a905b)] - **async_hooks**: use scope for defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
+* [[`5dab90b8bb`](https://github.com/nodejs/node/commit/5dab90b8bb)] - **async_hooks**: actualizar defaultTriggerAsyncIdScope para perf (Anatoli Papirovski) [#18004](https://github.com/nodejs/node/pull/18004)
+* [[`086af68c19`](https://github.com/nodejs/node/commit/086af68c19)] - **async_hooks**: utilizar la pila de array escrita como ruta rápida (Anna Henningsen) [#17780](https://github.com/nodejs/node/pull/17780)
+* [[`0f7c8984af`](https://github.com/nodejs/node/commit/0f7c8984af)] - **async_hooks**: utilizar CHECK en lugar de arrojar error (Jon Moss) [#17832](https://github.com/nodejs/node/pull/17832)
+* [[`5a199a905b`](https://github.com/nodejs/node/commit/5a199a905b)] - **async_hooks**: utilizar el alcance para defaultTriggerAsyncId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
 * [[`03873db4d0`](https://github.com/nodejs/node/commit/03873db4d0)] - **async_hooks**: separate missing from default context (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
 * [[`cce92ccfa8`](https://github.com/nodejs/node/commit/cce92ccfa8)] - **async_hooks**: rename initTriggerId (Andreas Madsen) [#17273](https://github.com/nodejs/node/pull/17273)
 * [[`025b9f208f`](https://github.com/nodejs/node/commit/025b9f208f)] - **(SEMVER-MINOR)** **async_hooks**: deprecate undocumented API (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
