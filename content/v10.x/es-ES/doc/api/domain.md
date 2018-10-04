@@ -398,7 +398,7 @@ d1.run(() => {
 
 d2.run(() => {
   p.then(p.domain.bind((v) => {
-    // ejecutándose en d1
+     // ejecutándose en d1
     }));
 });
 ```
