@@ -20,11 +20,11 @@ El módulo `punycode` es una versión añadida al módulo [Punycode.js](https://
 const punycode = require('punycode');
 ```
 
-[Punycode](https://tools.ietf.org/html/rfc3492) is a character encoding scheme defined by RFC 3492 that is primarily intended for use in Internationalized Domain Names. Because host names in URLs are limited to ASCII characters only, Domain Names that contain non-ASCII characters must be converted into ASCII using the Punycode scheme. For instance, the Japanese character that translates into the English word, `'example'` is `'例'`. The Internationalized Domain Name, `'例.com'` (equivalent to `'example.com'`) is represented by Punycode as the ASCII string `'xn--fsq.com'`.
+[Punycode](https://tools.ietf.org/html/rfc3492) es un esquema de codificación de caracter definido por RFC 3492 que está destinado principalmente para el uso en Nombres de Dominios Internacionalizados. Debido a que los nombres de host en URLs son limitados a caracteres ASCII únicamente, los Nombres de Dominio que contengan caracteres distintos a ASCII deben ser convertidos a ASCII utilizado el esquema de Punycode. Por ejemplo, el caracter japonés que se traduce a la palabra en inglés, `'example'` es `'例'`. El Nombre de Dominio Internacionalizado, `'例.com'` (equivalente a `'example.com'`) está representado por Punycode como el string ASCII `'xn--fsq.com'`.
 
-The `punycode` module provides a simple implementation of the Punycode standard.
+El módulo `punycode` proporciona una implementación simple del Punycode estándar.
 
-The `punycode` module is a third-party dependency used by Node.js and made available to developers as a convenience. Fixes or other modifications to the module must be directed to the [Punycode.js](https://mths.be/punycode) project.
+El módulo `punycode` es una dependencia de terceros utilizada por Node.js y que está disponible para desarrolladores como una conveniencia. Las reparaciones u otras modificaciones al módulo deben ser dirigidas al proyecto [Punycode.js](https://mths.be/punycode).
 
 ## punycode.decode(string)
 
