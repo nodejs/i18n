@@ -149,16 +149,16 @@ const util = require('util');
 const setTimeoutPromise = util.promisify(setTimeout);
 
 setTimeoutPromise(40, 'foobar').then((value) => {
-  // value === 'foobar' (passing values is optional)
-  // This is executed after about 40 milliseconds.
+  // valor === 'foobar' (el pasar valores es opcional)
+  // Esto se ejecuta después de más o menos 40 milisegundos.
 });
 ```
 
-## Cancelling Timers
+## Cancelación de Temporizadores
 
-The [`setImmediate()`][], [`setInterval()`][], and [`setTimeout()`][] methods each return objects that represent the scheduled timers. These can be used to cancel the timer and prevent it from triggering.
+Cada uno de los métodos [`setImmediate()`][], [`setInterval()`][] y [`setTimeout()`][] devuelve objetos que representan los temporizadores programados. Estos pueden usarse para cancelar el temporizador y prevenir que se desencadene.
 
-It is not possible to cancel timers that were created using the promisified variants of [`setImmediate()`][], [`setTimeout()`][].
+Si no es posible cancelar los temporizadores que fueron creados utilizando las variantes prometidas de [`setImmediate()`][], [`setTimeout()`][].
 
 ### clearImmediate(immediate)
 
@@ -166,9 +166,9 @@ It is not possible to cancel timers that were created using the promisified vari
 added: v0.9.1
 -->
 
-* `immediate` {Immediate} An `Immediate` object as returned by [`setImmediate()`][].
+* `immediate` {Immediate} Un objeto `Immediate` tal como lo devolvió [`setImmediate()`][].
 
-Cancels an `Immediate` object created by [`setImmediate()`][].
+Cancela un objeto `Immediate` creado por [`setImmediate()`][].
 
 ### clearInterval(timeout)
 
@@ -176,9 +176,9 @@ Cancels an `Immediate` object created by [`setImmediate()`][].
 added: v0.0.1
 -->
 
-* `timeout` {Timeout} A `Timeout` object as returned by [`setInterval()`][].
+* `timeout` {Timeout} Un objeto `Timeout` tal como lo devolvió [`setInterval()`][].
 
-Cancels a `Timeout` object created by [`setInterval()`][].
+Cancela un objeto `Timeout` creado por [`setInterval()`][].
 
 ### clearTimeout(timeout)
 
@@ -186,6 +186,6 @@ Cancels a `Timeout` object created by [`setInterval()`][].
 added: v0.0.1
 -->
 
-* `timeout` {Timeout} A `Timeout` object as returned by [`setTimeout()`][].
+* `timeout` {Timeout} Un objeto `Timeout` tal como lo devolvió [`setTimeout()`][].
 
-Cancels a `Timeout` object created by [`setTimeout()`][].
+Cancela un objeto `Timeout` creado por [`setTimeout()`][].
