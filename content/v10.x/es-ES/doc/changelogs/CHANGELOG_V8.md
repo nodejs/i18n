@@ -8,7 +8,7 @@
   <tr>
     
 <th>LTS 'Carbon'</th>
-<th title="Previously called 'Stable'">Actual</th>
+<th title="Anteriormente llamado 'estable'">Actual</th>
   </tr>
   
   <tr>
@@ -194,13 +194,13 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`b0526ba7f1`](https://github.com/nodejs/node/commit/b0526ba7f1)] - **(SEMVER-MINOR)** **crypto**: borrar algunas advertencias de desaprobación de SSL_METHOD (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`78738266d6`](https://github.com/nodejs/node/commit/78738266d6)] - **(SEMVER-MINOR)** **crypto**: hacer que ALPN sea igual para OpenSSL 1.0.2 & 1.1.0 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`f1d458be58`](https://github.com/nodejs/node/commit/f1d458be58)] - **(SEMVER-MINOR)** **crypto**: eliminar llamadas ECDH desaprobadas con OpenSSL 1.1 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-* [[`f9a597a1d3`](https://github.com/nodejs/node/commit/f9a597a1d3)] - **(SEMVER-MINOR)** **crypto**: emulate OpenSSL 1.0 ticket scheme in 1.1 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`f9a597a1d3`](https://github.com/nodejs/node/commit/f9a597a1d3)] - **(SEMVER-MINOR)** **crypto**: emular el esquema de tickets de OpenSSL 1.0 en 1.1 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`eb377f38f6`](https://github.com/nodejs/node/commit/eb377f38f6)] - **(SEMVER-MINOR)** **crypto**: hard-code tlsSocket.getCipher().version (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-* [[`2efb16b7d7`](https://github.com/nodejs/node/commit/2efb16b7d7)] - **(SEMVER-MINOR)** **crypto**: add compat logic for "DSS1" and "dss1" (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-* [[`5e9e4e5bf9`](https://github.com/nodejs/node/commit/5e9e4e5bf9)] - **(SEMVER-MINOR)** **crypto**: Make Hmac 1.1.0-compatible (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-* [[`2419b8613a`](https://github.com/nodejs/node/commit/2419b8613a)] - **(SEMVER-MINOR)** **crypto**: make SignBase compatible with OpenSSL 1.1.0 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-* [[`0ef35a137f`](https://github.com/nodejs/node/commit/0ef35a137f)] - **(SEMVER-MINOR)** **crypto**: make Hash 1.1.0-compatible (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
-* [[`e0cbc39668`](https://github.com/nodejs/node/commit/e0cbc39668)] - **(SEMVER-MINOR)** **crypto**: make CipherBase 1.1.0-compatible (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`2efb16b7d7`](https://github.com/nodejs/node/commit/2efb16b7d7)] - **(SEMVER-MINOR)** **crypto**: añadir lógica de compatibilidad para "DSS1" y "dss1" (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`5e9e4e5bf9`](https://github.com/nodejs/node/commit/5e9e4e5bf9)] - **(SEMVER-MINOR)** **crypto**: Hacer Hmac 1.1.0-compatible (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`2419b8613a`](https://github.com/nodejs/node/commit/2419b8613a)] - **(SEMVER-MINOR)** **crypto**: hacer que SignBase sea compatible con OpenSSL 1.1.0 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`0ef35a137f`](https://github.com/nodejs/node/commit/0ef35a137f)] - **(SEMVER-MINOR)** **crypto**: hacer Hash 1.1.0-compatible (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+* [[`e0cbc39668`](https://github.com/nodejs/node/commit/e0cbc39668)] - **(SEMVER-MINOR)** **crypto**: hacer CipherBase 1.1.0-compatible (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`e21079851f`](https://github.com/nodejs/node/commit/e21079851f)] - **(SEMVER-MINOR)** **crypto**: remove locking callbacks for OpenSSL 1.1.0 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`c2106e4037`](https://github.com/nodejs/node/commit/c2106e4037)] - **(SEMVER-MINOR)** **crypto**: use RSA and DH accessors (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * [[`f518238c2e`](https://github.com/nodejs/node/commit/f518238c2e)] - **(SEMVER-MINOR)** **crypto**: test DH keys work without a public half (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
