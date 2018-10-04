@@ -57,7 +57,7 @@ Esta es una actualización de seguridad. Todos los usuarios de Node.js deben con
 * **build**: 
   * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
 * **deps**: 
-  * CVE-2017-1000381 - La función c-ares ares_parse_naptr_reply(), que es utilizada para analizar las respuestas de NAPTR, podría activarse para leer la memoria fuera del búfer de entrada dado si el paquete de respuesta DNS pasado se diseñó de una manera particular. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)
+  * CVE-2017-1000381 - La función c-ares ares_parse_naptr_reply(), que es utilizada para analizar las respuestas de NAPTR, podría activarse para leer la memoria fuera del búfer de entrada dado si el paquete de respuesta DNS pasado se diseñó de una manera particular. Este parche verifica que hay suficientes datos para los elementos requeridos de un registro NAPTR (2 int16, 3 bytes por longitud de cadena) antes de procesar un registro. (David Drysdale)
 
 ### Commits
 
