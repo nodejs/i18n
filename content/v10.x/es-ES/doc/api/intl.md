@@ -99,21 +99,21 @@ If the `small-icu` option is used, one can still provide additional locale data 
 
 ICU es capaz de encontrar y cargar automáticamente una variedad de formatos de datos, pero los datos deben ser apropiados para la versión de ICU, y el archivo correctamente nombrado. The most common name for the data file is `icudt5X[bl].dat`, where `5X` denotes the intended ICU version, and `b` or `l` indicates the system's endianness. Verifique el artículo ["Datos ICU"](http://userguide.icu-project.org/icudata) en la Guía de Usuario de ICU para otros formatos soportados y para más detalles acerca de los datos ICU en general.
 
-The [full-icu](https://www.npmjs.com/package/full-icu) npm module can greatly simplify ICU data installation by detecting the ICU version of the running `node` executable and downloading the appropriate data file. Después de instalar el módulo a través de `npm i full-icu`, el archivo de datos estará disponible en `./node_modules/full-icu`. This path can be then passed either to `NODE_ICU_DATA` or `--icu-data-dir` as shown above to enable full `Intl` support.
+The [full-icu](https://www.npmjs.com/package/full-icu) npm module can greatly simplify ICU data installation by detecting the ICU version of the running `node` executable and downloading the appropriate data file. Después de instalar el módulo a través de `npm i full-icu`, el archivo de datos estará disponible en `./node_modules/full-icu`. Esta ruta puede entonces ser pasada a `NODE_ICU_DATA` o a `--icu-data-dir` como se muestra arriba, para habilitar soporte completo de `Intl`.
 
 ### Embed the entire ICU (`full-icu`)
 
-This option makes the resulting binary link against ICU statically and include a full set of ICU data. A binary created this way has no further external dependencies and supports all locales, but might be rather large. See [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) on how to compile a binary using this mode.
+This option makes the resulting binary link against ICU statically and include a full set of ICU data. A binary created this way has no further external dependencies and supports all locales, but might be rather large. Vea [BUILDING.md](https://github.com/nodejs/node/blob/master/BUILDING.md#build-with-full-icu-support-all-locales-supported-by-icu) para cómo compilar un binario utilizando este modo.
 
-## Detecting internationalization support
+## Detección de soporte de internacionalización
 
-To verify that ICU is enabled at all (`system-icu`, `small-icu`, or `full-icu`), simply checking the existence of `Intl` should suffice:
+Para verificar que ICU esté habilitada del todo (`system-icu`, `small-icu` o `full-icu`), simplemente el verificar la existencia de `Intl` debería ser suficiente:
 
 ```js
 const hasICU = typeof Intl === 'object';
 ```
 
-Alternatively, checking for `process.versions.icu`, a property defined only when ICU is enabled, works too:
+Alternativamente, el verificar el `process.versions.icu`, una propiedad definida sólo cuando ICU está habilitado, también funciona:
 
 ```js
 const hasICU = typeof process.versions.icu === 'string';
@@ -133,7 +133,7 @@ const hasFullICU = (() => {
 })();
 ```
 
-For more verbose tests for `Intl` support, the following resources may be found to be helpful:
+Para pruebas más detalladas para soporte de `Intl`, las siguientes fuentes pueden ser útiles:
 
-- [btest402](https://github.com/srl295/btest402): Generally used to check whether Node.js with `Intl` support is built correctly.
-- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): ECMAScript's official conformance test suite includes a section dedicated to ECMA-402.
+- [btest402](https://github.com/srl295/btest402): Utilizado generalmente para comprobar si Node.js con el soporte de `Intl` está construido correctamente.
+- [Test262](https://github.com/tc39/test262/tree/master/test/intl402): Prueba oficial de conformidad de ECMAScript incluye una sección dedicada a ECMA-402.
