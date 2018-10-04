@@ -166,31 +166,31 @@ Sin commits adicionales.
 
 Debido a la preparación incorrecta de la actualización al compilador GCC 4.9.X, las últimas versiones para PPC little endian se crearon utilizando GCC 4.9.X en lugar de GCC 4.8.X. Esto causó una rotura ABI en entornos basados en PPCLE. Esto se ha corregido en nuestra infraestructura y estamos realizando esta versión para garantizar que los binarios alojados se adhieran a nuestro contrato de soporte de plataforma.
 
-Note that Node.js versions 10.X and later will be built with version 4.9.X or later of the GCC compiler, and it is possible that Node.js version 9.X may be built on the 4.9.X compiler at a later time as the stated [minimum compiler requirement](https://github.com/nodejs/node/blob/v8.x/BUILDING.md) for Node.js version 9.X is 4.9.4.
+Tenga en cuenta que las versiones 10.X y posteriores de Node.js serán compiladas con las versiones 4.9.X o posteriores del compilador GCC, y es posible que la versión 9.X de Node.js se compile en el compilador 4.9.X más adelante como el [requerimiento mínimo de compilador](https://github.com/nodejs/node/blob/v8.x/BUILDING.md) establecido para la versión 9.X de Node.js es 4.9.4.
 
 <a id="9.10.0"></a>
 
 ## 2018-03-28, Version 9.10.0 (Current), @MylesBorins prepared by @targos
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
+Esto es una actualización de seguridad. Todos los usuarios de Node.js deben consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Correcciones para los siguiente CVEs están incluidos en esta actualización:
 
 * CVE-2018-7158
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Notable Changes
+### Cambios Notables
 
-* **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
-* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
-* **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
-* **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
-* **Update root certificates**: 5 additional root certificates have been added to the Node.js binary and 30 have been removed.
+* **Actualización a OpenSSL 1.0.2o**: No contiene correcciones de seguridad que se sepa que afecten a Node.js.
+* **Corrección para la vulnerabilidad de reabastecimiento de DNS del inspector (CVE-2018-7160)**: Un sitio web malicioso podría usar un ataque de reenlazado de DNS para engañar a un navegador web para que evite las comprobaciones de políticas del mismo origen y permita conexiones HTTP con el host local o a los hosts en la red local, potencialmente a un puerto de inspector abierto como depurador, por lo tanto, obteniendo acceso completo a la ejecución del código. El inspector ahora solo permite conexiones que tienen un valor de `Host` del navegador de `localhost` o `localhost6`.
+* **Arreglo para `'path'`. módulo de expresión regular de denegación de servicio (CVE-2018-7158)**: Una expresión regular utilizada para analizar rutas POSIX podría usarse para causar una denegación de servicio si un atacante pudiera hacer que una cadena de ruta especialmente diseñada pasara a través de una de las funciones del módulo `'path'` afectado.
+* **Rechazo de espacios en los valores de encabezado HTTP `Content-Length` (CVE-2018-7159)**: El analizador HTTP Node.js permitió espacios dentro de valores de encabezado `Content-Length`. Tales valores conducen ahora a conexiones rechazadas de la misma manera que los valores no numéricos.
+* **Actualización de certificados root**: Se han agregado 5 certificados root adicionales al binario Node.js y se han eliminado 30.
 
 * **cluster**:
   
-  * Add support for `NODE_OPTIONS="--inspect"` (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
+  * Agrega soporte para `NODE_OPTIONS="--inspect"` (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
 * **crypto**: 
   * Expose the public key of a certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **n-api**: 
@@ -1772,15 +1772,15 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2017-12-08, Version 9.2.1 (Current), @evanlucas
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
+Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Correcciones para los siguientes CVEs están incluidas en esta actualización:
 
 * CVE-2017-15896
 * CVE-2017-15897
 * CVE-2017-3738 (from the openssl project)
 
-### Notable Changes
+### Cambios Notables
 
 * **buffer**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
