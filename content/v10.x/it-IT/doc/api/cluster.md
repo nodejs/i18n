@@ -63,11 +63,11 @@ Il secondo approccio consiste nel processo master che crea il listen socket e lo
 
 Il secondo approccio dovrebbe, in teoria, fornire le migliori prestazioni. Tuttavia in pratica, la distribuzione tende ad essere molto sbilanciata a causa dei capricci dello scheduler del sistema operativo. Sono stati osservati carichi nei quali oltre il 70% di tutte le connessioni è finito in soli due processi, su un totale di otto.
 
-Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
+Poiché `server.listen()` distribuisce la maggior parte del lavoro al processo master, ci sono tre casi in cui il comportamento tra un normale processo Node.js e un cluster worker è diverso:
 
-1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
-2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
-3. `server.listen(0)` Normally, this will cause servers to listen on a random port. However, in a cluster, each worker will receive the same "random" port each time they do `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
+1. `server.listen({fd: 7})` Poiché il messaggio viene passato al master, il file descriptor 7 **all'interno del parent** verrà ascoltato (listening) e l'handle passerà al worker, anziché ascoltare l'idea del worker di ciò che fa riferimento al file descriptor numero 7.
+2. `server.listen(handle)` Ascoltare gli handle in modo esplicito farà sì che il worker utilizzi l'handle fornito, anziché parlare con il processo master.
+3. `server.listen(0)` Normalmente, questo causerà l'ascolto dei server su una porta casuale. Tuttavia, in un cluster, ogni worker riceverà la stessa porta "casuale" ogni volta che eseguirà `listen(0)`. In sostanza, la porta è casuale la prima volta, ma successivamente è prevedibile. To listen on a unique port, generate a port number based on the cluster worker ID.
 
 Node.js does not provide routing logic. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
 
