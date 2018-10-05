@@ -67,7 +67,7 @@ added: v0.6.1
 El método `punycode.toASCII()` convierte una string Unicode que representa un Nombre de Dominio Internacionalizado a [Punycode](https://tools.ietf.org/html/rfc3492). Sólo las partes distintas de ASCII del nombre del dominio serán convertidas. El llamar a `punycode.toASCII()` en una string que ya contiene sólo caracteres ASCII no tendrá efecto.
 
 ```js
-// codificar nombres de cominio
+// codificar nombres de dominio
 punycode.toASCII('mañana.com');  // 'xn--maana-pta.com'
 punycode.toASCII('☃-⌘.com');   // 'xn----dqo34k.com'
 punycode.toASCII('example.com'); // 'example.com'
