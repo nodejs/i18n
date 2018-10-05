@@ -176,7 +176,7 @@ changes:
 
 测试 `actual` 和 `expected` 参数之间是否深度相等。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
-仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 或可枚举的own的[`Symbol`]属性。 对于此类检查，考虑使用[`assert.deepStrictEqual()`]。 [`assert.deepEqual()`] 可能会产生意想不到的结果。 以下示例不会抛出 `AssertionError`， 因为 [`RegExp`] 对象上的属性是不可枚举的类型：
+仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 或可枚举的自身[`Symbol`]属性。 对于此类检查，考虑使用[`assert.deepStrictEqual()`]。 [`assert.deepEqual()`] 可能会产生意想不到的结果。 以下示例不会抛出 `AssertionError`， 因为 [`RegExp`] 对象上的属性是不可枚举的类型：
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -263,14 +263,14 @@ changes:
 
 ### 比较的详细说明
 
-* 原始值使用 [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue) 进行比较，被[`Object.is()`]使用。
+* 原始值使用 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 进行比较，被[`Object.is()`]使用。
 * 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
-* 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
-* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
-* [`Error`][] names and messages are always compared, even if these are not enumerable properties.
-* Enumerable own [`Symbol`][] properties are compared as well.
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
-* `Object` properties are compared unordered.
+* 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [全等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
+* 只比较 [可枚举的“own”属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
+* [`Error`] 的名称和信息也会比较，即使不是可枚举的属性。
+* 可枚举的自身 [`Symbol`] 属性也会比较。
+* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会比较对象与解封装后的值。
+* `对象` 属性的比较是无序的。
 * `Map` keys and `Set` items are compared unordered.
 * Recursion stops when both sides differ or both sides encounter a circular reference.
 * [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
