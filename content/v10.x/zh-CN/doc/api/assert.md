@@ -121,7 +121,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 const assert = require('assert');
 ```
 
-建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ， 因为后者通常会产生令人惊讶的结果。 这尤其适用于在比较规则宽松的地方，例如 [`assert.deepEqual()`]：
+建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ， 因为后者通常会产生意想不到的结果。 这尤其适用于在比较规则宽松的地方，例如 [`assert.deepEqual()`]：
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -176,14 +176,14 @@ changes:
 
 测试 `actual` 和 `expected` 参数之间的深度相等性。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
-仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 或可枚举的own的[`Symbol`]属性。 对于此类检查，考虑使用[`assert.deepStrictEqual()`]。 [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 或可枚举的own的[`Symbol`]属性。 对于此类检查，考虑使用[`assert.deepStrictEqual()`]。 [`assert.deepEqual()`] 可能会产生意想不到的结果。 以下示例不会抛出 `AssertionError`， 因为 [`RegExp`] 对象上的属性是不可枚举的类型：
 
 ```js
 // WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
+[`Map`] 和 [`Set`] 是一个列外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
 
 "Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
 
