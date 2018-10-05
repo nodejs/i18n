@@ -92,7 +92,7 @@ Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest re
 
 Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 * CVE-2018-7158
 * CVE-2018-7159
@@ -126,7 +126,7 @@ Fixes for the following CVEs are included in this release:
 
 Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Fixes for the following CVEs are included in this release:
+Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 * CVE-2017-15896
 * CVE-2017-3738 (from the openssl project)
@@ -152,7 +152,7 @@ Fixes for the following CVEs are included in this release:
 
 Este lanzamiento de Mantenimiento viene con 47 commits. This includes 26 commits which are updates to dependencies, 8 which are build / tool related, 4 which are doc related, and 2 which are test related.
 
-This release includes a security update to openssl that has been deemed low severity for the Node.js project.
+Este lanzamiento incluye una actualización de seguridad a openssl que ha sido considerada de baja gravedad para el proyecto Node.js.
 
 ### Cambios Notables
 
@@ -218,7 +218,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 ## 2017-10-24, Version 4.8.5 'Argon' (Maintenance), @MylesBorins
 
-Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Notable Changes
 
@@ -233,7 +233,7 @@ Esto es un lanzamiento de seguridad. All Node.js users should consult the securi
 
 ## 2017-07-11, Version 4.8.4 'Argon' (Maintenance), @MylesBorins
 
-Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Notable Changes
 
@@ -639,7 +639,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ## 2017-01-05, Version 4.7.2 'Argon' (LTS), @MylesBorins
 
-Este es un lanzamiento especial que contiene 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
+Este es un lanzamiento especial que contiene 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. Para eliminar cualquier ambigüedad en cuanto al lanzamiento, hemos optado por hacer un lanzamiento de un parche de servidor sin cambios.
 
 ### Notable Changes
 
@@ -1688,7 +1688,7 @@ Este lanzamiento LTS viene con 89 commits. This includes 46 commits that are doc
 
 ### Notable Changes
 
-Esto es un lanzamiento de seguridad importante. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en nodejs.org para más detalles sobre vulnerabilidades parcheadas.
 
 Este lanzamiento está específicamente relacionado con una vulnerabilidad de desbordamiento de Búfers descubierta en v8, se pueden encontrar más detalles [en el CVE](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669)
 
@@ -2445,7 +2445,7 @@ Esto es un lanzamiento de seguridad con un solo commit, una actualización a ope
 
 ## 2016-02-09, Version 4.3.0 'Argon' (LTS), @jasnell
 
-Esto es un lanzamiento de seguridad importante. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en nodejs.org para más detalles sobre vulnerabilidades parcheadas.
 
 Note that this release includes a non-backward compatible change to address a security issue. This change increases the version of the LTS v4.x line to v4.3.0. There will be *no further updates* to v4.2.x.
 
