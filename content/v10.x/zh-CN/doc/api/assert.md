@@ -113,7 +113,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 
 > 稳定性：0 - 不推荐使用：改为使用Strict模式
 
-当直接访问 `assert`， 问不是通过 `strict` 属性访问时，[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) （抽象等式比较）将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
+当直接访问 `assert`， 问不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
 可以使用以下方法访问它：
 
@@ -121,7 +121,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 const assert = require('assert');
 ```
 
-建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) （抽象等式比较）， 因为后者通常会产生令人惊讶的结果。 这尤其适用于在比较规则宽松的地方，例如 [`assert.deepEqual()`]：
+建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ， 因为后者通常会产生令人惊讶的结果。 这尤其适用于在比较规则宽松的地方，例如 [`assert.deepEqual()`]：
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -174,9 +174,9 @@ changes:
 
 > 稳定性：0 - 不推荐使用：改为使用 [`assert.deepStrictEqual()`]。
 
-Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+测试 `actual` 和 `expected` 参数之间的深度相等性。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 或可枚举的own的[`Symbol`]属性。 对于此类检查，考虑使用[`assert.deepStrictEqual()`]。 [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
 
 ```js
 // WARNING: This does not throw an AssertionError!
