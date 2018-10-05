@@ -375,11 +375,11 @@ Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调�
 
 如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.doesNotReject()` 会返回一个被拒绝的 `Promise`并携带这个被抛出的错误。 如果一个函数没有返回promise，`assert.doesNotReject()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`] 值的错误。 无论那种情况，都跳过错误处理程序。
 
-请注意：使用 `assert.doesNotReject()` 实际上没有用处，因为通过捕获拒绝并再次拒绝它，并没有任何好处。 Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+请注意：使用 `assert.doesNotReject()` 实际上没有用处，因为通过捕获拒绝并再次拒绝它，并没有任何好处。 相反，考虑在不应拒绝的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+如果指定的话，`error` 可以是一个 [`Class`]，[`RegExp`] 或 验证函数。 请参考 [`assert.throws()`] 以获取更多详细信息。
 
-Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
+除了 await 的异步特性，完成行为与 [`assert.doesNotThrow()`] 完全相同。
 
 ```js
 (async () => {
@@ -417,15 +417,15 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Asserts that the function `block` does not throw an error.
+断言 `block` 函数不会抛出错误。
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+请注意，使用 `assert.doesNotThrow()` 实际上没有用处，因为通过捕获一个错误并再抛出这个错误一次，并没有任何好处。 Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
 
 When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
 
 If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+如果指定的话，`error` 可以是一个 [`Class`]，[`RegExp`] 或 验证函数。 请参考 [`assert.throws()`] 以获取更多详细信息。
 
 The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
