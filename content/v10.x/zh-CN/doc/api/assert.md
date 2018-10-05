@@ -185,7 +185,7 @@ assert.deepEqual(/a/gi, new Date());
 
 [`Map`] 和 [`Set`] 是一个列外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+“深度”相等意味着也会评估子对象的可枚举的“own”属性：
 
 ```js
 const assert = require('assert');
