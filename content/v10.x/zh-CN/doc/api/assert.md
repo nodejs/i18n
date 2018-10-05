@@ -371,11 +371,11 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 It will then check that the promise is not rejected.
+Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否rejected（异常）。
 
-If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.doesNotReject()` 会返回一个被拒绝的 `Promise`并携带这个被抛出的错误。 如果一个函数没有返回promise，`assert.doesNotReject()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`] 值的错误。 无论那种情况，都跳过错误处理程序。
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+请注意：使用 `assert.doesNotReject()` 实际上没有用处，因为通过捕获拒绝并再次拒绝它，并没有任何好处。 Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
 
 If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
 
@@ -512,7 +512,7 @@ added: v0.1.21
 
 * `message` {any} **Default:** `'Failed'`
 
-Throws an `AssertionError` with the provided error message or a default error message. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+抛出 `AssertionError`，并带上提供的错误信息或默认的错误信息。 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
 
 ```js
 const assert = require('assert').strict;
@@ -527,7 +527,7 @@ assert.fail(new TypeError('need array'));
 // TypeError: need array
 ```
 
-Using `assert.fail()` with more than two arguments is possible but deprecated. See below for further details.
+使用 `assert.fail()` 并带上多个参数的方法可行，但已被废弃。 请参阅下文了解更多详情。
 
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
 
@@ -835,7 +835,7 @@ Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, mes
 
 If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
+Be aware that in the `repl` the error message will be different to the one thrown in a file! 请参阅下文了解更多详情。
 
 ```js
 const assert = require('assert').strict;
