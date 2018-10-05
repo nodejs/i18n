@@ -343,7 +343,7 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`c2028fab23`](https://github.com/nodejs/node/commit/c2028fab23)] - **src**: hacer de url host una clase C++ adecuada (Anna Henningsen) [#17470](https://github.com/nodejs/node/pull/17470)
 * [[`6c9bdc1652`](https://github.com/nodejs/node/commit/6c9bdc1652)] - **src**: mover los internos de url al espacio de nombres anónimo (Anna Henningsen) [#17470](https://github.com/nodejs/node/pull/17470)
 * [[`2c70965e82`](https://github.com/nodejs/node/commit/2c70965e82)] - **src**: limpiezas menores a node_url.cc (Anna Henningsen) [#17470](https://github.com/nodejs/node/pull/17470)
-* [[`089f18e3a1`](https://github.com/nodejs/node/commit/089f18e3a1)] - **src**: remove unused async hooks methods (Anna Henningsen) [#17757](https://github.com/nodejs/node/pull/17757)
+* [[`089f18e3a1`](https://github.com/nodejs/node/commit/089f18e3a1)] - **src**: eliminar métodos de async hooks no utilizados (Anna Henningsen) [#17757](https://github.com/nodejs/node/pull/17757)
 * [[`e67448813f`](https://github.com/nodejs/node/commit/e67448813f)] - **src**: remove async_hooks destroy timer handle (Anna Henningsen) [#17117](https://github.com/nodejs/node/pull/17117)
 * [[`bd47272bc9`](https://github.com/nodejs/node/commit/bd47272bc9)] - **src**: introduce internal C++ SetImmediate() mechanism (Anna Henningsen) [#17117](https://github.com/nodejs/node/pull/17117)
 * [[`f276cd954e`](https://github.com/nodejs/node/commit/f276cd954e)] - **src**: rename async-wrap -\> async_wrap (Daniel Bevenius) [#17022](https://github.com/nodejs/node/pull/17022)
