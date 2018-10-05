@@ -46,13 +46,13 @@ Además, huellas de clave GPG completas para individuos autorizados para hacer e
 
 Notas:
 
-- Las fechas listadas a continuación como *"AAAA-MM-DD"* deberían ser la fecha del lanzamiento **como UTC**. Usa `date -u +'%Y-%m-%d'` para descubrir que es esto.
+- Las fechas listadas a continuación como *"AAAA-MM-DD"* deberían ser la fecha del lanzamiento **como UTC**. Usa `date -u +'%Y-%m-%d'` para descubrir qué es esto.
 - Las versiones de strings están listadas a continuación como *"vx.y.z"*. Substituto para la versión liberada.
 
-### 1. Hacer cherry-picking desde `master` y otras branches
+### 1. Selecciona cuidadosamente desde `master` y otras branches
 
 Crea un nuevo branch llamado *"vx.y.z-proposal"*, o algo similar. Usar `git
-cherry-pick`, trae los commits apropiados en tu nuevo branch. Para determinar los commits relevantes, usa [`branch-diff`](https://github.com/rvagg/branch-diff) y [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (ambos están disponibles en npm y deberían ser instalados globalmente). Estas herramientas dependen en nuestros metadatos del commit, así como las etiquetas `semver-minor` y `semver-major` de GitHub. Un inconveniente es que cuando los metadatos `PR-URL` son accidentalmente omitidos de un commit, el commit va a aparecer porque no está seguro si es un duplicado o no.
+cherry-pick`, trae los commits apropiados en tu nuevo branch. Para determinar los commits relevantes, usa [`branch-diff`](https://github.com/rvagg/branch-diff) y [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (ambos están disponibles en npm y deberían ser instalados globalmente). Estas herramientas dependen de nuestros metadatos del commit, así como las etiquetas `semver-minor` y `semver-major` de GitHub. Un inconveniente es que cuando los metadatos `PR-URL` son accidentalmente omitidos de un commit, el commit va a aparecer porque no es seguro si es un duplicado o no.
 
 Para una lista de commits que pudieran llegar en un lanzamiento de parche en v5.x:
 
@@ -60,7 +60,7 @@ Para una lista de commits que pudieran llegar en un lanzamiento de parche en v5.
 $ branch-diff v5.x master --exclude-label=semver-major,semver-minor,dont-land-on-v5.x --filter-release --format=simple
 ```
 
-Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrecto, semver incorrecto, etc.). Los commits etiquetados como semver menor o semver major deberían solo hacerle cherry-pick cuando sea apropiado por el tipo de lanzamiento que se esté haciendo. Commits de lanzamientos anteriores y saltos de la versión no necesitan hacérsele cherry-pick.
+Revisa cuidadosamente la lista de commits que buscan errores (`PR-URL` incorrecto, semver incorrecto, etc.). Los commits etiquetados como semver menor o semver mayor deberían solo ser seleccionados cuando sea apropiado por el tipo de lanzamiento que se esté haciendo. Los commits de lanzamientos anteriores y saltos de la versión no necesitan ser seleccionados.
 
 ### 2. Actualizar `src/node_version.h`
 
@@ -72,7 +72,7 @@ Establece la versión para el lanzamiento propuesto usando los siguientes macros
 #define NODE_PATCH_VERSION z
 ```
 
-Establece el valor macro `NODE_VERSION_IS_RELEASE` a `1`. Esto causa que la compilación sea producida con una versión string que no tiene una etiqueta pre-lanzamiento al final:
+Establece el valor macro `NODE_VERSION_IS_RELEASE` a `1`. Esto causa que la compilación sea producida con una versión string que no tiene una etiqueta de pre-lanzamiento al final:
 
 ```c
 #define NODE_VERSION_IS_RELEASE 1
@@ -87,7 +87,7 @@ Este macro es usado para señalar una versión ABI para complementos nativos. Ac
 
 La regla general es saltar esta versión cuando hay cambios de *rompimiento ABI*, y también si hay cambios API no-triviales. Las reglas aún no están estrictamente definidas, en caso de duda, por favor confiere con alguien que tendrá una perspectiva más informada, como un miembro del equipo NAN.
 
-*Note*: Es la política TSC actual saltar una versión mayor cuando ABI cambia. Si ves una necesidad de saltar `NODE_MODULE_VERSION`, entonces deberías consultar el TSC. Los commits pudieran necesitar ser revertidos, o un salto de una versión mayor pudiera ser que ocurra.
+*Note*: Es la política TSC actual saltar una versión mayor cuando ABI cambia. Si ves una necesidad de saltar `NODE_MODULE_VERSION`, entonces deberías consultar el TSC. Los commits pudieran necesitar ser revertidos, opudiera ser necesario que ocurra un salto de una versión mayor.
 
 ### 3. Actualizar el Registro de Cambios
 
@@ -99,7 +99,7 @@ Recolectar una lista con formato de los commits desde el último lanzamiento. Us
 $ changelog-maker --group
 ```
 
-Ten en cuenta que, el creador de registro de cambios cuenta los commits desde la última etiqueta, y si la última etiqueta en el repositoria no estaba en el branch actual, puede ser que tengas que suministrar un argumento `--start-ref`:
+Ten en cuenta que, el creador de registro de cambios cuenta los commits desde la última etiqueta, y si la última etiqueta en el repositorio no estaba en el branch actual, puede ser que tengas que suministrar un argumento `--start-ref`:
 
 ```console
 $ changelog-maker --group --start-ref v2.3.1
@@ -129,11 +129,11 @@ La nueva entrada debe tomar la siguiente forma:
 * Include the full list of commits since the last release here. Do not include "Working on X.Y.Z+1" commits.
 ```
 
-El tipo de lanzamiento debe ser actual, LTS, o de mantenimiento, dependiendo de el tipo de lanzamiento que se está produciendo.
+El tipo de lanzamiento debe ser actual, LTS, o de mantenimiento, dependiendo del tipo de lanzamiento que se está produciendo.
 
-Asegurate que la etiqueta `<a>`, así como los dos encabezados, no son para nada intencionales.
+Asegúrate que la etiqueta `<a>`, así como los dos encabezados, no sean para nada intencionales.
 
-En la cima de cada archivo `CHANGELOG_*.md`, y en el archivo `CHANGELOG.md` raíz, hay una tabla de indexación de todas los lanzamientos en cada línea de lanzamiento mayor. Un enlace para el nuevo lanzamiento necesita ser añadido a cada uno. Sigue los siguientes ejemplos y asegurate de añadir el lanzamiento a la *cima* de la lista.
+En la cima de cada archivo `CHANGELOG_*.md`, y en el archivo `CHANGELOG.md` raíz, hay una tabla de indexación de todas los lanzamientos en cada línea de lanzamiento mayor. Un enlace para el nuevo lanzamiento necesita ser añadido a cada uno. Sigue los siguientes ejemplos y asegúrate de añadir el lanzamiento a la *cima* de la lista.
 
 In the root `CHANGELOG.md` file, the most recent release for each release line is shown in **bold** in the index. When updating the index, please make sure to update the display accordingly by removing the bold styling from the previous release.
 
