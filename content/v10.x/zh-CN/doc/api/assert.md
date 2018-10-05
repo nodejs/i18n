@@ -76,7 +76,7 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-当使用 `strict mode` 时，任何 `assert` 函数都会使用严格函数模式的等式。 例如，[`assert.deepEqual()`] 会等同于 [`assert.deepStrictEqual()`]。
+当使用 `strict 模式` 时，任何 `assert` 函数都会使用严格函数模式的等式。 例如，[`assert.deepEqual()`] 会等同于 [`assert.deepStrictEqual()`]。
 
 除此之外，涉及对象的错误信息会产生一个错误差异比较，而不是展示双方的对象。 Legacy 模式则不会这样。
 
@@ -113,15 +113,15 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 
 > 稳定性：0 - 不推荐使用：改为使用Strict模式
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+当直接访问 `assert`， 问不是通过 `strict` 属性访问时，[Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) （抽象等式比较）将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
-It can be accessed using:
+可以使用以下方法访问它：
 
 ```js
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) （抽象等式比较）， 因为后者通常会产生令人惊讶的结果。 这尤其适用于在比较规则宽松的地方，例如 [`assert.deepEqual()`]：
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -168,11 +168,11 @@ changes:
 
 **Strict 模式**
 
-An alias of [`assert.deepStrictEqual()`][].
+[`assert.deepStrictEqual()`] 的别名。
 
 **Legacy 模式**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> 稳定性：0 - 不推荐使用：改为使用 [`assert.deepStrictEqual()`]。
 
 Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
