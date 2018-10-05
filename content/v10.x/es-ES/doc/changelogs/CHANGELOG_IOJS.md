@@ -101,7 +101,7 @@
 
 Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y completa de problemas conocidos.
 
-* Algunos uses de las propiedades abreviadas de objetos computados no son manejadas correctamente por la versión actual de V8. p. ej. `[{ [prop]: val }]` se evalúa a `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
+* Algunos usos de las propiedades abreviadas de objetos computados no son manejados correctamente por la versión actual de V8. p. ej. `[{ [prop]: val }]` se evalúa a `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
@@ -155,16 +155,16 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * [[`993c22fe0e`](https://github.com/nodejs/node/commit/993c22fe0e)] - **test**: eliminar prueba inhabilitada (Rich Trott) [#2841](https://github.com/nodejs/node/pull/2841)
 * [[`1474f29d1f`](https://github.com/nodejs/node/commit/1474f29d1f)] - **test**: dividir pruebas dns de internet (Rich Trott) [#2802](https://github.com/nodejs/node/pull/2802)
 * [[`601a97622b`](https://github.com/nodejs/node/commit/601a97622b)] - **test**: aumentar el tiempo de espera de dgram para armv6 (Rich Trott) [#2808](https://github.com/nodejs/node/pull/2808)
-* [[`1dad19ba81`](https://github.com/nodejs/node/commit/1dad19ba81)] - **test**: remove valid hostname check in test-dns.js (Rich Trott) [#2785](https://github.com/nodejs/node/pull/2785)
+* [[`1dad19ba81`](https://github.com/nodejs/node/commit/1dad19ba81)] - **test**: eliminar la verificación del nombre de host válido en test-dns.js (Rich Trott) [#2785](https://github.com/nodejs/node/pull/2785)
 * [[`f3d5891a3f`](https://github.com/nodejs/node/commit/f3d5891a3f)] - **test**: expect error for test_lookup_ipv6_hint on FreeBSD (Rich Trott) [#2724](https://github.com/nodejs/node/pull/2724)
-* [[`2ffb21baf1`](https://github.com/nodejs/node/commit/2ffb21baf1)] - **test**: fix use of `common` before required (Rod Vagg) [#2685](https://github.com/nodejs/node/pull/2685)
+* [[`2ffb21baf1`](https://github.com/nodejs/node/commit/2ffb21baf1)] - **test**: corregir el uso de `common` antes de que sea requerido (Rod Vagg) [#2685](https://github.com/nodejs/node/pull/2685)
 * [[`b2c5479a14`](https://github.com/nodejs/node/commit/b2c5479a14)] - **test**: refactor to eliminate flaky test (Rich Trott) [#2609](https://github.com/nodejs/node/pull/2609)
 * [[`fcfd15f8f9`](https://github.com/nodejs/node/commit/fcfd15f8f9)] - **test**: mark eval_messages as flaky (Alexis Campailla) [#2648](https://github.com/nodejs/node/pull/2648)
 * [[`1865cad7ae`](https://github.com/nodejs/node/commit/1865cad7ae)] - **test**: mark test-vm-syntax-error-stderr as flaky (João Reis) [#2662](https://github.com/nodejs/node/pull/2662)
 * [[`b0014ecd27`](https://github.com/nodejs/node/commit/b0014ecd27)] - **test**: mark test-repl-persistent-history as flaky (João Reis) [#2659](https://github.com/nodejs/node/pull/2659)
-* [[`74ff9bc86c`](https://github.com/nodejs/node/commit/74ff9bc86c)] - **timers**: minor _unrefActive fixes and improvements (Jeremiah Senkpiel) [#2540](https://github.com/nodejs/node/pull/2540)
+* [[`74ff9bc86c`](https://github.com/nodejs/node/commit/74ff9bc86c)] - **timers**: arreglos menores y mejoras de _unrefActive (Jeremiah Senkpiel) [#2540](https://github.com/nodejs/node/pull/2540)
 * [[`5d14a6eca7`](https://github.com/nodejs/node/commit/5d14a6eca7)] - **timers**: don't mutate unref list while iterating it (Julien Gilli) [#2540](https://github.com/nodejs/node/pull/2540)
-* [[`6e744c58f2`](https://github.com/nodejs/node/commit/6e744c58f2)] - **timers**: Avoid linear scan in _unrefActive. (Julien Gilli) [#2540](https://github.com/nodejs/node/pull/2540)
+* [[`6e744c58f2`](https://github.com/nodejs/node/commit/6e744c58f2)] - **timers**: Evitar el escaneo lineal en _unrefActive. (Julien Gilli) [#2540](https://github.com/nodejs/node/pull/2540)
 * [[`07fbf835ad`](https://github.com/nodejs/node/commit/07fbf835ad)] - **tools**: open `test.tap` file in write-binary mode (Sakthipriyan Vairamani) [#2837](https://github.com/nodejs/node/pull/2837)
 * [[`6d9198f7f1`](https://github.com/nodejs/node/commit/6d9198f7f1)] - **tools**: add missing tick processor polyfill (Matt Loring) [#2694](https://github.com/nodejs/node/pull/2694)
 * [[`7b16597527`](https://github.com/nodejs/node/commit/7b16597527)] - **tools**: fix flakiness in test-tick-processor (Matt Loring) [#2694](https://github.com/nodejs/node/pull/2694)
@@ -175,19 +175,19 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 
 ## 2015-09-02, Version 3.3.0, @rvagg
 
-### Notable changes
+### Cambios notables
 
 * **build**: Add a `--link-module` option to `configure` that can be used to bundle additional JavaScript modules into a built binary (Bradley Meck) [#2497](https://github.com/nodejs/node/pull/2497)
 * **docs**: Merge outstanding doc updates from joyent/node (James M Snell) [#2378](https://github.com/nodejs/node/pull/2378)
-* **http_parser**: Significant performance improvement by having `http.Server` consume all initial data from its `net.Socket` and parsing directly without having to enter JavaScript. Any `'data'` listeners on the `net.Socket` will result in the data being "unconsumed" into JavaScript, thereby undoing any performance gains. (Fedor Indutny) [#2355](https://github.com/nodejs/node/pull/2355)
-* **libuv**: Upgrade to 1.7.3 (from 1.6.1), see [ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog) for details (Saúl Ibarra Corretgé) [#2310](https://github.com/nodejs/node/pull/2310)
-* **V8**: Upgrade to 4.4.63.30 (from 4.4.63.26) (Michaël Zasso) [#2482](https://github.com/nodejs/node/pull/2482)
+* **http_parser**: Una mejora significa en el rendimiento al hacer que `http.Server` consuma todos los datos iniciales desde su `net.Socket` and analizándolos directamente sin tener que ingresar a JavaScript. Any `'data'` listeners on the `net.Socket` will result in the data being "unconsumed" into JavaScript, thereby undoing any performance gains. (Fedor Indutny) [#2355](https://github.com/nodejs/node/pull/2355)
+* **libuv**: Actualización a 1.7.3 (from 1.6.1), vea [ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog) para más detalles (Saúl Ibarra Corretgé) [#2310](https://github.com/nodejs/node/pull/2310)
+* **V8**: Actualización a 4.4.63.30 (de 4.4.63.26) (Michaël Zasso) [#2482](https://github.com/nodejs/node/pull/2482)
 
-### Known issues
+### Problemas conocidos
 
-See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and current list of known issues.
+Vaa https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y completa de problemas conocidos.
 
-* Some uses of computed object shorthand properties are not handled correctly by the current version of V8. e.g. `[{ [prop]: val }]` evaluates to `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
+* Algunos usos de las propiedades abreviadas de objetos computados no son manejados correctamente por la versión actual de V8. e.g. `[{ [prop]: val }]` evaluates to `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
 * Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/io.js/issues/1264).
 * Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/io.js/issues/690)
 * `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/io.js/issues/760).
