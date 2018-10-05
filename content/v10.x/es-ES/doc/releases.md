@@ -196,15 +196,15 @@ Si tienes un error en Windows y necesitas comenzar de nuevo, ten en cuenta que t
 
 ARMv7 tarda más tiempo en compilar. Desafortunadamente ccache no es tán efectiva en compilaciones ya lanzadas, Creo que es porque las configuraciones macro adicionales que están en una compilación lanzada que nulifica las compilaciones previas. También la mayoría de las máquinas compilación lanzadas son separadas a las máquinas de compilación de pruebas, para que no obtengan ningún beneficio de compilaciones en curso entre lanzamientos. Puedes esperar 1.5 horas para el compilador ARMv7 se complete y normalmente deberías esperar que esto termine. Es posible apresurar un lanzamiento si quieres y añadir compilaciones adicionales después pero normalmente proveemos ARMv7 desde una promoción inicial.
 
-No tienes que esperar por el ARMv6 / compilaciones Raspberry PR si se toman más tiempo que los otros. Solo es necesario tener el Linux principal (x64 y x86), macOS .pkg y .tar.gs, Windows (x64 y x86) .msi y .exe, fuente, encabezados, y los documentos (ambos actualmente producidos por un worker de macOS). **Si promueves compilaciones *antes* que las compilaciones ARM hayan terminado, debes repetir el paso de promocionar para las compilaciones ARM cuando estén listas**. Si la compilación ARMv6 falló por alguna razón puedes usar la compilación [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) en el CI lanzado para volver a ejecutar la compilación solo para ARMv6. When launching the build make sure to use the same commit hash as for the original release.
+No tienes que esperar por el ARMv6 / compilaciones Raspberry PR si se toman más tiempo que los otros. Solo es necesario tener el Linux principal (x64 y x86), macOS .pkg y .tar.gs, Windows (x64 y x86) .msi y .exe, fuente, encabezados, y los documentos (ambos actualmente producidos por un worker de macOS). **Si promueves compilaciones *antes* que las compilaciones ARM hayan terminado, debes repetir el paso de promocionar para las compilaciones ARM cuando estén listas**. Si la compilación ARMv6 falló por alguna razón puedes usar la compilación [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) en el CI lanzado para volver a ejecutar la compilación solo para ARMv6. Cuando se esté lanzando la compilación asegúrate usar el mismo hash commit como para el lanzamiento original.
 
-### 9. Test the Build
+### 9. Probar la Compilación
 
-Jenkins collects the artifacts from the builds, allowing you to download and install the new build. Make sure that the build appears correct. Check the version numbers, and perform some basic checks to confirm that all is well with the build before moving forward.
+Jenkins recoge los artefactos de la compilación, permitiéndote descargar e instalar la nueva compilación. Asegúrate que la compilación parezca correcta. Verifica los números de la versión, y haz algunas pruebas básicas para confirmar que todo está bien con la compilación antes de seguir adelante.
 
-### 10. Tag and Sign the Release Commit
+### 10. Etiqueta y Firma el Commit Lanzado
 
-Once you have produced builds that you're happy with, create a new tag. By waiting until this stage to create tags, you can discard a proposed release if something goes wrong or additional commits are required. Once you have created a tag and pushed it to GitHub, you ***should not*** delete and re-tag. If you make a mistake after tagging then you'll have to version-bump and start again and count that tag/version as lost.
+Una vez que hayas producido compilaciones con las que estés feliz, crea una nueva etiqueta. By waiting until this stage to create tags, you can discard a proposed release if something goes wrong or additional commits are required. Once you have created a tag and pushed it to GitHub, you ***should not*** delete and re-tag. If you make a mistake after tagging then you'll have to version-bump and start again and count that tag/version as lost.
 
 Tag summaries have a predictable format, look at a recent tag to see, `git tag
 -v v6.0.0`. The message should look something like `2016-04-26 Node.js v6.0.0
