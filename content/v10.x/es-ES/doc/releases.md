@@ -178,11 +178,11 @@ Realiza una prueba-de-humo. Tenemos [citgm](https://github.com/nodejs/citgm) par
 
 ### 7. Producir una Compilación Nocturna *(opcional)*
 
-Si hay una razón para producir un lanzamiento de prueba para el propósito de tener a otros probar los instaladores o cosas específicas de las compilaciones, produce una compilación nocturna usando **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** y espera que aparezca en <https://nodejs.org/download/nightly/>. Follow the directions and enter a proper length commit SHA, enter a date string, and select "nightly" for "disttype".
+Si hay una razón para producir un lanzamiento de prueba para el propósito de tener a otros probar los instaladores o cosas específicas de las compilaciones, produce una compilación nocturna usando **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** y espera que aparezca en <https://nodejs.org/download/nightly/>. Sigue las instrucciones y coloca una longitud apropiada del commit SHA, coloca un string fecha, y selecciona "nightly" para "disttype".
 
-This is particularly recommended if there has been recent work relating to the macOS or Windows installers as they are not tested in any way by CI.
+Esto es particularmente recomendado si ha existido trabajo reciente relacionado a los instaladores de macOS o Windows ya que no son probados de ninguna manera por el CI.
 
-### 8. Produce Release Builds
+### 8. Producir Lanzamientos de Compilaciones
 
 Use **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** to produce release artifacts. Enter the commit that you want to build from and select "release" for "disttype".
 
