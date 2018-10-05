@@ -174,7 +174,7 @@ changes:
 
 > 稳定性：0 - 不推荐使用：改为使用 [`assert.deepStrictEqual()`]。
 
-测试 `actual` 和 `expected` 参数之间的深度相等性。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
+测试 `actual` 和 `expected` 参数之间是否深度相等。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
 仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 或可枚举的own的[`Symbol`]属性。 对于此类检查，考虑使用[`assert.deepStrictEqual()`]。 [`assert.deepEqual()`] 可能会产生意想不到的结果。 以下示例不会抛出 `AssertionError`， 因为 [`RegExp`] 对象上的属性是不可枚举的类型：
 
@@ -185,7 +185,7 @@ assert.deepEqual(/a/gi, new Date());
 
 [`Map`] 和 [`Set`] 是一个列外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
 
-“深度”相等意味着也会评估子对象的可枚举的“own”属性：
+“深度”相等意味着子对象的可枚举的“own”属性也会被比较：
 
 ```js
 const assert = require('assert');
@@ -259,13 +259,13 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep equality between the `actual` and `expected` parameters. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
+测试 `actual` 和 `expected` 参数之间是否深度相等。 “深度”相等意味着子对象中可枚举的“own”属性也会按以下规则进行递归比较。
 
-### Comparison details
+### 比较的详细说明
 
-* Primitive values are compared using the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), used by [`Object.is()`][].
-* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* 原始值使用 [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue) 进行比较，被[`Object.is()`]使用。
+* 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
+* 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
 * Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
 * [`Error`][] names and messages are always compared, even if these are not enumerable properties.
 * Enumerable own [`Symbol`][] properties are compared as well.
