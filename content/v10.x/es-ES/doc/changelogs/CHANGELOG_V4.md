@@ -124,7 +124,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-12-08, Version 4.8.7 'Argon' (Maintenance), @MylesBorins
 
-Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 Fixes for the following CVEs are included in this release:
 
@@ -150,7 +150,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-11-07, Version 4.8.6 'Argon' (Maintenance), @MylesBorins
 
-This Maintenance release comes with 47 commits. This includes 26 commits which are updates to dependencies, 8 which are build / tool related, 4 which are doc related, and 2 which are test related.
+Este lanzamiento de Mantenimiento viene con 47 commits. This includes 26 commits which are updates to dependencies, 8 which are build / tool related, 4 which are doc related, and 2 which are test related.
 
 This release includes a security update to openssl that has been deemed low severity for the Node.js project.
 
@@ -307,7 +307,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ## 2017-03-21, Version 4.8.1 'Argon' (LTS), @MylesBorins
 
-This LTS release comes with 147 commits. This includes 55 which are test related, 41 which are doc related, 11 which are build / tool related, and 1 commits which are updates to dependencies.
+Este lanzamiento LTS viene con 147 commits. This includes 55 which are test related, 41 which are doc related, 11 which are build / tool related, and 1 commits which are updates to dependencies.
 
 ### Notable Changes
 
@@ -472,7 +472,7 @@ This LTS release comes with 147 commits. This includes 55 which are test related
 
 ## 2017-02-21, Version 4.8.0 'Argon' (LTS), @MylesBorins
 
-This LTS release comes with 118 commits. This includes 73 which are doc related, 19 which are test related, 6 which are build / tool related, and 5 commits which are updates to dependencies.
+Este lanzamiento LTS viene con 118 commits. This includes 73 which are doc related, 19 which are test related, 6 which are build / tool related, and 5 commits which are updates to dependencies.
 
 ### Notable Changes
 
@@ -639,7 +639,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ## 2017-01-05, Version 4.7.2 'Argon' (LTS), @MylesBorins
 
-This is a special release that contains 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
+Este es un lanzamiento especial que contiene 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
 
 ### Notable Changes
 
@@ -653,7 +653,7 @@ N/A
 
 ## 2017-01-03, Version 4.7.1 'Argon' (LTS), @MylesBorins
 
-This LTS release comes with 180 commits. This includes 117 which are test related, 34 which are doc related, 15 which are build / tool related, and 1 commit which is an update to dependencies.
+Este lanzamiento LTS viene con 180 commits. This includes 117 which are test related, 34 which are doc related, 15 which are build / tool related, and 1 commit which is an update to dependencies.
 
 ### Notable Changes
 
@@ -848,7 +848,7 @@ This LTS release comes with 180 commits. This includes 117 which are test relate
 
 ## 2016-12-06, Version 4.7.0 'Argon' (LTS), @thealphanerd
 
-This LTS release comes with 108 commits. This includes 30 which are doc related, 28 which are test related, 16 which are build / tool related, and 4 commits which are updates to dependencies.
+Este lanzamiento LTS viene con 108 commits. This includes 30 which are doc related, 28 which are test related, 16 which are build / tool related, and 4 commits which are updates to dependencies.
 
 ### Notable Changes
 
@@ -983,7 +983,7 @@ Notable SEMVER-PATCH changes include:
 
 ## 2016-11-08, Version 4.6.2 'Argon' (LTS), @thealphanerd
 
-This LTS release comes with 219 commits. This includes 80 commits that are docs related, 58 commits that are test related, 20 commits that are build / tool related, and 9 commits that are updates to dependencies.
+Este lanzamiento LTS viene con 219 commits. This includes 80 commits that are docs related, 58 commits that are test related, 20 commits that are build / tool related, and 9 commits that are updates to dependencies.
 
 ### Notable Changes
 
@@ -1220,7 +1220,7 @@ This LTS release comes with 219 commits. This includes 80 commits that are docs 
 
 ## 2016-10-18, Version 4.6.1 'Argon' (LTS), @rvagg
 
-Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Notable Changes
 
@@ -1235,7 +1235,7 @@ Esto es un lanzamiento de seguridad. All Node.js users should consult the securi
 
 ## 2016-09-27, Version 4.6.0 'Argon' (LTS), @rvagg
 
-Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Notable Changes
 
@@ -1574,7 +1574,7 @@ Semver Patch:
 
 ## 2016-06-28, Version 4.4.7 'Argon' (LTS), @thealphanerd
 
-This LTS release comes with 89 commits. This includes 46 commits that are docs related, 11 commits that are test related, 8 commits that are build related, and 4 commits that are benchmark related.
+Este lanzamiento LTS viene con 89 commits. This includes 46 commits that are docs related, 11 commits that are test related, 8 commits that are build related, and 4 commits that are benchmark related.
 
 ### Notable Changes
 
@@ -3045,7 +3045,7 @@ This is an LTS maintenance release that addresses a number of issues:
 
 ### Notable changes
 
-The first Node.js LTS release! See https://github.com/nodejs/LTS/ for details of the LTS process.
+¡El primer lanzamiento LTS de Node.js! See https://github.com/nodejs/LTS/ for details of the LTS process.
 
 * **icu**: Updated to version 56 with significant performance improvements (Steven R. Loomis) [#3281](https://github.com/nodejs/node/pull/3281)
 * **node**: 
