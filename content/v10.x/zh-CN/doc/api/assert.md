@@ -419,15 +419,15 @@ changes:
 
 断言 `block` 函数不会抛出错误。
 
-请注意，使用 `assert.doesNotThrow()` 实际上没有用处，因为通过捕获一个错误并再抛出这个错误一次，并没有任何好处。 Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+请注意，使用 `assert.doesNotThrow()` 实际上没有用处，因为通过捕获一个错误并再抛出这个错误一次，并没有任何好处。 相反，考虑在不应抛出的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+当 `assert.doesNotThrow()` 被调用时，它会立即调用 `block` 函数。
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+如果一个错误被抛出，并且它与 `error` 参数所指定的类型相同，那么会抛出 `AssertionError`。 如果错误是不同的类型，或者 `error` 参数未定义，则将错误传播回调用方。
 
 如果指定的话，`error` 可以是一个 [`Class`]，[`RegExp`] 或 验证函数。 请参考 [`assert.throws()`] 以获取更多详细信息。
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+下面这个实例会抛出 [`TypeError`]， 因为在断言部分没有可匹配的错误类型：
 
 <!-- eslint-disable no-restricted-syntax -->
 
