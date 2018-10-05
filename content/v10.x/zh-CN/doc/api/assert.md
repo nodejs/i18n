@@ -427,7 +427,7 @@ changes:
 
 如果指定的话，`error` 可以是一个 [`Class`]，[`RegExp`] 或 验证函数。 请参考 [`assert.throws()`] 以获取更多详细信息。
 
-下面这个实例会抛出 [`TypeError`]， 因为在断言部分没有可匹配的错误类型：
+下面这个示例会抛出 [`TypeError`]， 因为在断言部分没有可匹配的错误类型：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -440,7 +440,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+然而，下面的示例会抛出带有错误信息 -“得到不需要的异常。。。”的 `AssertionError` ：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -453,7 +453,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+如果 `AssertionError` 被抛出，并且提供一个值给 `message` 参数，那么 `message` 的值会被添加在 `AssertionError` 信息中：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -480,11 +480,11 @@ added: v0.1.21
 
 **Strict 模式**
 
-An alias of [`assert.strictEqual()`][].
+[`assert.strictEqual()`] 的别名。
 
 **Legacy 模式**
 
-> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
+> 稳定性：0 - 不推荐使用：改为使用 [`assert.strictEqual()`]
 
 Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
