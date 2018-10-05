@@ -90,7 +90,7 @@ Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest re
 
 ## 2018-03-28, Version 4.9.0 'Argon' (Maintenance), @MylesBorins
 
-Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 Fixes for the following CVEs are included in this release:
 
@@ -1690,7 +1690,7 @@ Este lanzamiento LTS viene con 89 commits. This includes 46 commits that are doc
 
 Esto es un lanzamiento de seguridad importante. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
 
-This release is specifically related to a Buffer overflow vulnerability discovered in v8, more details can be found [in the CVE](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669)
+Este lanzamiento está específicamente relacionado con una vulnerabilidad de desbordamiento de Búfers descubierta en v8, se pueden encontrar más detalles [en el CVE](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669)
 
 ### Commits
 
@@ -2341,7 +2341,7 @@ Notable semver patch changes include:
 
 ## 2016-03-02, Version 4.3.2 'Argon' (LTS), @thealphanerd
 
-This is a security release with only a single commit, an update to openssl due to a recent security advisory. You can read more about the security advisory on [the Node.js website](https://nodejs.org/en/blog/vulnerability/openssl-march-2016/)
+Esto es un lanzamiento de seguridad con un solo commit, una actualización a openssl debido a una reciente advertencia de seguridad. You can read more about the security advisory on [the Node.js website](https://nodejs.org/en/blog/vulnerability/openssl-march-2016/)
 
 ### Notable changes
 
