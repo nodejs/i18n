@@ -970,7 +970,7 @@ console.log(result);
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.
 
-`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
+`AtExit` 有两个参数：一个退出时要运行的回调函数的指针，和一个要传入回调函数的无类型的上下文数据的指针。
 
 Callbacks are run in last-in first-out order.
 
