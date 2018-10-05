@@ -972,9 +972,9 @@ Registers exit hooks that run after the event loop has ended but before the VM i
 
 `AtExit` 有两个参数：一个退出时要运行的回调函数的指针，和一个要传入回调函数的无类型的上下文数据的指针。
 
-Callbacks are run in last-in first-out order.
+回调函数按照后进先出的顺序运行。
 
-The following `addon.cc` implements `AtExit`:
+以下 `addon.cc` 实现了 `AtExit`：
 
 ```cpp
 // addon.cc
@@ -1025,7 +1025,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Test in JavaScript by running:
+在JavaScript中测试：
 
 ```js
 // test.js
