@@ -67,13 +67,13 @@ Poiché `server.listen()` distribuisce la maggior parte del lavoro al processo m
 
 1. `server.listen({fd: 7})` Poiché il messaggio viene passato al master, il file descriptor 7 **all'interno del parent** verrà ascoltato (listening) e l'handle passerà al worker, anziché ascoltare l'idea del worker di ciò che fa riferimento al file descriptor numero 7.
 2. `server.listen(handle)` Ascoltare gli handle in modo esplicito farà sì che il worker utilizzi l'handle fornito, anziché parlare con il processo master.
-3. `server.listen(0)` Normalmente, questo causerà l'ascolto dei server su una porta casuale. Tuttavia, in un cluster, ogni worker riceverà la stessa porta "casuale" ogni volta che eseguirà `listen(0)`. In sostanza, la porta è casuale la prima volta, ma successivamente è prevedibile. To listen on a unique port, generate a port number based on the cluster worker ID.
+3. `server.listen(0)` Normalmente, questo causerà l'ascolto dei server su una porta casuale. Tuttavia, in un cluster, ogni worker riceverà la stessa porta "casuale" ogni volta che eseguirà `listen(0)`. In sostanza, la porta è casuale la prima volta, ma successivamente è prevedibile. Per l'ascolto su una porta univoca, genera un numero di porta in base al worker ID del cluster.
 
-Node.js does not provide routing logic. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
+Node.js non fornisce la logica di routing. È quindi importante progettare un'applicazione in modo che non si basi troppo sui data object in memoria per cose come sessioni e login.
 
-Because workers are all separate processes, they can be killed or re-spawned depending on a program's needs, without affecting other workers. As long as there are some workers still alive, the server will continue to accept connections. If no workers are alive, existing connections will be dropped and new connections will be refused. Node.js does not automatically manage the number of workers, however. It is the application's responsibility to manage the worker pool based on its own needs.
+Poiché gli worker sono tutti processi separati, possono essere arrestati o rigenerati a seconda delle esigenze di un programma, senza intaccare altri worker. Il server continuerà ad accettare connessioni finché ci saranno ancora degli worker in funzione. Se non c'è più nessun worker in funzione, le connessioni esistenti verranno eliminate e le nuove connessioni saranno rifiutate. Tuttavia Node.js non gestisce automaticamente il numero di worker. È una responsabilità dell'applicazione gestire il worker pool in base alle proprie esigenze.
 
-Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
+Sebbene il modulo `cluster` sia usato principalmente nel networking, può essere utilizzato anche in altri casi che richiedono processi worker.
 
 ## Class: Worker
 
@@ -81,7 +81,7 @@ Although a primary use case for the `cluster` module is networking, it can also 
 added: v0.7.0
 -->
 
-A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
+Un `Worker` object contiene tutte le informazioni pubbliche e il metodo riguardo un worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
 ### Event: 'disconnect'
 
