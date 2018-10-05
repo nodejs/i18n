@@ -871,7 +871,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-The implementation of `myobject.cc` is similar to before:
+对 `myobject.cc` 的实现和之前的示例类似：
 
 ```cpp
 // myobject.cc
@@ -945,7 +945,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Test it with:
+测试它：
 
 ```js
 // test.js
@@ -959,14 +959,14 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit hooks
+### AtExit 钩子
 
-An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
+`AtExit` 钩子是一个函数，它在 Node.js 事件循环结束后，但在 JavaScript 虚拟机被终止与 Node.js 关闭前被调用。 `AtExit` 钩子使用 `node::AtExit` API注册。
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> 一个退出时要调用的函数的指针
+* `args` <span class="type">&lt;void\*&gt;</span> 一个退出时传递给回调函数的指针。
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.
 
