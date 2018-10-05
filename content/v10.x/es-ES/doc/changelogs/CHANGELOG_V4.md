@@ -92,7 +92,7 @@ Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest re
 
 Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Arreglos para los siguientes CVEs están incluidos en este lanzamiento:
 
 * CVE-2018-7158
 * CVE-2018-7159
@@ -126,7 +126,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Arreglos para los siguientes CVEs están incluidos en este lanzamiento:
 
 * CVE-2017-15896
 * CVE-2017-3738 (from the openssl project)
