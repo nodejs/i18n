@@ -286,7 +286,7 @@ Esto es un lanzamiento de seguridad. All Node.js users should consult the securi
 
 ## 2017-04-04, Version 4.8.2 'Argon' (Maintenance), @MylesBorins
 
-This is a maintenance release to fix a memory leak that was introduced in 4.8.1.
+Esto es un lanzamiento de mantenimiento para arreglar una pérdida de memoria que se introdujo en 4.8.1.
 
 It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs](http://seclists.org/oss-sec/2016/q4/602) that were present in zlib 1.2.8.
 
@@ -2926,7 +2926,7 @@ Security Update
 
 ### Notable changes
 
-This is an LTS maintenance release that addresses a number of issues:
+Este es un lanzamiento de mantenimiento LTS que aborda un número de problemas:
 
 * [[`1d0f2cbf87`](https://github.com/nodejs/node/commit/1d0f2cbf87)] - **buffer**: fix value check for writeUInt{B,L}E (Trevor Norris) [#3500](https://github.com/nodejs/node/pull/3500)
 * [[`2a45b72b4a`](https://github.com/nodejs/node/commit/2a45b72b4a)] - **buffer**: don't CHECK on zero-sized realloc (Ben Noordhuis) [#3499](https://github.com/nodejs/node/pull/3499)
