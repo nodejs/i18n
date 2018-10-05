@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode（严格模式）
+## Strict 模式
 
 <!-- YAML
 added: v9.9.0
@@ -78,15 +78,15 @@ changes:
 
 当使用 `strict mode` 时，任何 `assert` 函数都会使用严格函数模式的等式。 例如，[`assert.deepEqual()`] 会等同于 [`assert.deepStrictEqual()`]。
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
+除此之外，涉及对象的错误信息会产生一个错误差异比较，而不是展示双方的对象。 Legacy 模式则不会这样。
 
-It can be accessed using:
+可以通过如下方式使用：
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+错误差异比较的示例：
 
 ```js
 const assert = require('assert').strict;
@@ -107,11 +107,11 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
+使用 `NODE_DISABLE_COLORS` 环境变量可以停用颜色。 请注意，这也会停用REPL中的颜色。
 
-## Legacy mode
+## Legacy 模式
 
-> Stability: 0 - Deprecated: Use strict mode instead.
+> 稳定性：0 - 不推荐使用：改为使用Strict模式
 
 When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
@@ -166,11 +166,11 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
 An alias of [`assert.deepStrictEqual()`][].
 
-**Legacy mode**
+**Legacy 模式**
 
 > Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
@@ -478,11 +478,11 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
 An alias of [`assert.strictEqual()`][].
 
-**Legacy mode**
+**Legacy 模式**
 
 > Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
@@ -658,11 +658,11 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
-**Legacy mode**
+**Legacy 模式**
 
 > Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
@@ -759,11 +759,11 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
 An alias of [`assert.notStrictEqual()`][].
 
-**Legacy mode**
+**Legacy 模式**
 
 > Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
