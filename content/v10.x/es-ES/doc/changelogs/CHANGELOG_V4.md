@@ -8,7 +8,7 @@
   <tr>
     
 <th>LTS 'Argon'</th>
-<th>Stable</th>
+<th>Estable</th>
   </tr>
   
   <tr>
