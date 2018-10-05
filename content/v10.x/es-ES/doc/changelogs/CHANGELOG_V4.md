@@ -62,7 +62,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -80,9 +80,9 @@
 
 ## 2018-03-29, Version 4.9.1 'Argon' (Maintenance), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
-No additional commits.
+No hay commits adicionales.
 
 Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
 
@@ -90,7 +90,7 @@ Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest re
 
 ## 2018-03-28, Version 4.9.0 'Argon' (Maintenance), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
 
 Fixes for the following CVEs are included in this release:
 
@@ -124,14 +124,14 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-12-08, Version 4.8.7 'Argon' (Maintenance), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
 
 Fixes for the following CVEs are included in this release:
 
 * CVE-2017-15896
 * CVE-2017-3738 (from the openssl project)
 
-### Notable Changes
+### Cambios Notables
 
 * **deps**: 
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
@@ -154,7 +154,7 @@ This Maintenance release comes with 47 commits. This includes 26 commits which a
 
 This release includes a security update to openssl that has been deemed low severity for the Node.js project.
 
-### Notable Changes
+### Cambios Notables
 
 * **crypto**: 
   * update root certificates (Ben Noordhuis) [#13279](https://github.com/nodejs/node/pull/13279)
@@ -218,7 +218,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 ## 2017-10-24, Version 4.8.5 'Argon' (Maintenance), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ for details on patched vulnerabilities.
 
 ### Notable Changes
 
@@ -233,7 +233,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2017-07-11, Version 4.8.4 'Argon' (Maintenance), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
 
 ### Notable Changes
 
@@ -1220,7 +1220,7 @@ This LTS release comes with 219 commits. This includes 80 commits that are docs 
 
 ## 2016-10-18, Version 4.6.1 'Argon' (LTS), @rvagg
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
 
 ### Notable Changes
 
@@ -1235,7 +1235,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2016-09-27, Version 4.6.0 'Argon' (LTS), @rvagg
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
 
 ### Notable Changes
 
@@ -1688,7 +1688,7 @@ This LTS release comes with 89 commits. This includes 46 commits that are docs r
 
 ### Notable Changes
 
-This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad importante. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
 
 This release is specifically related to a Buffer overflow vulnerability discovered in v8, more details can be found [in the CVE](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669)
 
@@ -2445,7 +2445,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ## 2016-02-09, Version 4.3.0 'Argon' (LTS), @jasnell
 
-This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esto es un lanzamiento de seguridad importante. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
 
 Note that this release includes a non-backward compatible change to address a security issue. This change increases the version of the LTS v4.x line to v4.3.0. There will be *no further updates* to v4.2.x.
 
