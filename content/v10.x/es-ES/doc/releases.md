@@ -146,23 +146,23 @@ doc/api/*.md`.
 
 *Nota*: `$VERSION` se le deberia ser prefijada con `v`.
 
-If this release includes any new deprecations it is necessary to ensure that those are assigned a proper static deprecation code. These are listed in the docs (see `doc/api/deprecations.md`) and in the source as `DEP00XX`. The code must be assigned a number (e.g. `DEP0012`). Note that this assignment should occur when the PR is landed, but a check will be made when the release built is run.
+Si este lanzamiento incluye cualquier nueva desaprobación es necesario asegurarse que esas fueron asignadas un código estático de desaprobación apropiado. Estos están listados en el documento (see `doc/api/deprecations.md`) and in the source as `DEP00XX`. El código se le debe asignar un número (p. ej. `DEP0012`). Tenga en cuenta que esta asignación debería ocurrir cuando el PR es aterrizado, pero una verificación será realizada cuando la compilación lanzada es ejecutada.
 
-### 4. Create Release Commit
+### 4. Crear Lanzamiento del Commit
 
-The `CHANGELOG.md`, `doc/changelogs/CHANGELOG_*.md`, `src/node_version.h`, and `REPLACEME` changes should be the final commit that will be tagged for the release. When committing these to git, use the following message format:
+Los cambios `CHANGELOG.md`, `doc/changelogs/CHANGELOG_*.md`, `src/node_version.h`, y `REPLACEME` deberían ser el commit final que será etiquetado para el lanzamiento. Cuando se le hagan commit a esto para gitm usa el siguiente formato de mensaje:
 
 ```txt
-YYYY-MM-DD, Version x.y.z (Release Type)
+AAAA-MM-DD, Versión x.y.z (Tipo de Lanzamiento)
 
-Notable changes:
+Cambios notables:
 
-* Copy the notable changes list here, reformatted for plain-text
+* Copia los cambios notables aquí, refortadeado para texto simple
 ```
 
-### 5. Propose Release on GitHub
+### 5. Proponer un Lanzamiento en GitHub
 
-Push the release branch to `nodejs/node`, not to your own fork. This allows release branches to more easily be passed between members of the release team if necessary.
+Empuja el branch lanzado a `nodejs/node`, no a tu bifurcación propia. Esto permite que los branches lanzados sean pasados más fácilmente entre miembros del equipo de lanzamiento si es necesario.
 
 Create a pull request targeting the correct release line. For example, a v5.3.0-proposal PR should target v5.x, not master. Paste the CHANGELOG modifications into the body of the PR so that collaborators can see what is changing. These PRs should be left open for at least 24 hours, and can be updated as new commits land.
 
