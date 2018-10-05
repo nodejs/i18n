@@ -164,21 +164,21 @@ Cambios notables:
 
 Empuja el branch lanzado a `nodejs/node`, no a tu bifurcación propia. Esto permite que los branches lanzados sean pasados más fácilmente entre miembros del equipo de lanzamiento si es necesario.
 
-Create a pull request targeting the correct release line. For example, a v5.3.0-proposal PR should target v5.x, not master. Paste the CHANGELOG modifications into the body of the PR so that collaborators can see what is changing. These PRs should be left open for at least 24 hours, and can be updated as new commits land.
+Crea un pull request seleccionando la línea de lanzamiento correcta. Por ejemplo, una propuesta PR -v5.3.0 debería seleccionar v5.x, no el maestro. Pega las modificaciones CHANGELOG en el cuerpo del PR para que los colaboradores puedan ver que está cambiando. Estos PRs deberían dejarse abiertos al menos por 24 horas, y pueden ser actualizados cuando lleguen nuevos commits.
 
-If you need any additional information about any of the commits, this PR is a good place to @-mention the relevant contributors.
+Si necesitas cualquier información adicional sobre cualquier commit, este PR es un buen lugar para @-mencionar los contribuyentes relevantes.
 
-This is also a good time to update the release commit to include `PR-URL` metadata.
+Este también es un buen momento para actualizar que estos commits incluyan los metadatos `PR-URL`.
 
-### 6. Ensure that the Release Branch is Stable
+### 6. Asegúrate que este Branch Lanzado es Estable
 
-Run a **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** test run to ensure that the build is stable and the HEAD commit is ready for release.
+Ejecuta una prueba de ejecución **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** para asegurarse que esta compilación es estable y el ENCABEZADO del commit está listo para el lanzamiento.
 
-Perform some smoke-testing. We have [citgm](https://github.com/nodejs/citgm) for this. You can also manually test important modules from the ecosystem. Remember that node-gyp and npm both take a `--nodedir` flag to point to your local repository so that you can test unreleased versions without needing node-gyp to download headers for you.
+Realiza una prueba-de-humo. Tenemos [citgm](https://github.com/nodejs/citgm) para esto. También puedes probar manualmente módulos importantes del ecosistema. Recuerda que tanto node-gyp y npm toman la bandera `--nodedir` para apuntar a tu repositorio local, para que puedas hacer pruebas a las versiones no lanzadas sin necesitar que node-gyp descargue encabezados por ti.
 
-### 7. Produce a Nightly Build *(optional)*
+### 7. Producir una Compilación Nocturna *(opcional)*
 
-If there is a reason to produce a test release for the purpose of having others try out installers or specifics of builds, produce a nightly build using **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** and wait for it to drop in <https://nodejs.org/download/nightly/>. Follow the directions and enter a proper length commit SHA, enter a date string, and select "nightly" for "disttype".
+Si hay una razón para producir un lanzamiento de prueba para el propósito de tener a otros probar los instaladores o cosas específicas de las compilaciones, produce una compilación nocturna usando **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** y espera que aparezca en <https://nodejs.org/download/nightly/>. Follow the directions and enter a proper length commit SHA, enter a date string, and select "nightly" for "disttype".
 
 This is particularly recommended if there has been recent work relating to the macOS or Windows installers as they are not tested in any way by CI.
 
