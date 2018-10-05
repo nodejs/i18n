@@ -50,14 +50,14 @@
 
 ## 2017-07-11, Version 7.10.1 (Current), @evanlucas
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
+Esta es una actualización de seguridad. Todos los usuarios de Node.js deben consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Notable changes
 
 * **build**: 
   * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
 * **deps**: 
-  * CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)
+  * CVE-2017-1000381 - La función c-ares ares_parse_naptr_reply(), que es utilizada para analizar las respuestas de NAPTR, podría activarse para leer la memoria fuera del búfer de entrada dado si el paquete de respuesta DNS pasado se diseñó de una manera particular. Este parche verifica que hay suficientes datos para los elementos requeridos de un registro NAPTR (2 int16, 3 bytes por longitud de cadena) antes de procesar un registro. (David Drysdale)
 
 ### Commits
 
@@ -582,7 +582,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notables changes
 
-Node.js 7.7.0 contains a bug that will prevent all native modules from building, this patch should fix the issue. Apologies to everyone who was affected by 7.7.0.
+Node.js 7.7.0 contiene un error que evitará que se construyan todos los módulos nativos, esta revisión debería solucionar el problema. Disculpas a todos los que se vieron afectados por 7.7.0.
 
 ### Commits
 

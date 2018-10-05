@@ -20,11 +20,11 @@ El módulo `punycode` es una versión añadida al módulo [Punycode.js](https://
 const punycode = require('punycode');
 ```
 
-[Punycode](https://tools.ietf.org/html/rfc3492) is a character encoding scheme defined by RFC 3492 that is primarily intended for use in Internationalized Domain Names. Because host names in URLs are limited to ASCII characters only, Domain Names that contain non-ASCII characters must be converted into ASCII using the Punycode scheme. For instance, the Japanese character that translates into the English word, `'example'` is `'例'`. The Internationalized Domain Name, `'例.com'` (equivalent to `'example.com'`) is represented by Punycode as the ASCII string `'xn--fsq.com'`.
+[Punycode](https://tools.ietf.org/html/rfc3492) es un esquema de codificación de caracter definido por RFC 3492 que está destinado principalmente para el uso en Nombres de Dominios Internacionalizados. Debido a que los nombres de host en URLs son limitados a caracteres ASCII únicamente, los Nombres de Dominio que contengan caracteres distintos a ASCII deben ser convertidos a ASCII utilizado el esquema de Punycode. Por ejemplo, el caracter japonés que se traduce a la palabra en inglés, `'example'` es `'例'`. El Nombre de Dominio Internacionalizado, `'例.com'` (equivalente a `'example.com'`) está representado por Punycode como el string ASCII `'xn--fsq.com'`.
 
-The `punycode` module provides a simple implementation of the Punycode standard.
+El módulo `punycode` proporciona una implementación simple del Punycode estándar.
 
-The `punycode` module is a third-party dependency used by Node.js and made available to developers as a convenience. Fixes or other modifications to the module must be directed to the [Punycode.js](https://mths.be/punycode) project.
+El módulo `punycode` es una dependencia de terceros utilizada por Node.js y que está disponible para desarrolladores como una conveniencia. Las reparaciones u otras modificaciones al módulo deben ser dirigidas al proyecto [Punycode.js](https://mths.be/punycode).
 
 ## punycode.decode(string)
 
@@ -34,7 +34,7 @@ added: v0.5.1
 
 * `string` {string}
 
-The `punycode.decode()` method converts a [Punycode](https://tools.ietf.org/html/rfc3492) string of ASCII-only characters to the equivalent string of Unicode codepoints.
+El método `punycode.decode()` convierte una string [Punycode](https://tools.ietf.org/html/rfc3492) de caracteres ASCII únicamente a la string equivalente de puntos de código de Unicode.
 
 ```js
 punycode.decode('maana-pta'); // 'mañana'
@@ -49,7 +49,7 @@ added: v0.5.1
 
 * `string` {string}
 
-The `punycode.encode()` method converts a string of Unicode codepoints to a [Punycode](https://tools.ietf.org/html/rfc3492) string of ASCII-only characters.
+El método `punycode.encode()` convierte una string de puntos de código de Unicode a una string [Punycode](https://tools.ietf.org/html/rfc3492) de sólo caracteres ASCII.
 
 ```js
 punycode.encode('mañana'); // 'maana-pta'
@@ -64,10 +64,10 @@ added: v0.6.1
 
 * `domain` {string}
 
-The `punycode.toASCII()` method converts a Unicode string representing an Internationalized Domain Name to [Punycode](https://tools.ietf.org/html/rfc3492). Only the non-ASCII parts of the domain name will be converted. Calling `punycode.toASCII()` on a string that already only contains ASCII characters will have no effect.
+El método `punycode.toASCII()` convierte una string Unicode que representa un Nombre de Dominio Internacionalizado a [Punycode](https://tools.ietf.org/html/rfc3492). Sólo las partes distintas de ASCII del nombre del dominio serán convertidas. El llamar a `punycode.toASCII()` en una string que ya contiene sólo caracteres ASCII no tendrá efecto.
 
 ```js
-// encode domain names
+// codificar nombres de dominio
 punycode.toASCII('mañana.com');  // 'xn--maana-pta.com'
 punycode.toASCII('☃-⌘.com');   // 'xn----dqo34k.com'
 punycode.toASCII('example.com'); // 'example.com'
@@ -81,10 +81,10 @@ added: v0.6.1
 
 * `domain` {string}
 
-The `punycode.toUnicode()` method converts a string representing a domain name containing [Punycode](https://tools.ietf.org/html/rfc3492) encoded characters into Unicode. Only the [Punycode](https://tools.ietf.org/html/rfc3492) encoded parts of the domain name are be converted.
+El método `punycode.toUnicode()` convierte una string que representa a un nombre de dominio que contiene caracteres codificados de [Punycode](https://tools.ietf.org/html/rfc3492) en Unicode. Sólo las partes codificadas de [Punycode](https://tools.ietf.org/html/rfc3492) del nombre del dominio son convertidas.
 
 ```js
-// decode domain names
+// decodificar los nombres de dominio
 punycode.toUnicode('xn--maana-pta.com'); // 'mañana.com'
 punycode.toUnicode('xn----dqo34k.com');  // '☃-⌘.com'
 punycode.toUnicode('example.com');       // 'example.com'
@@ -104,11 +104,11 @@ added: v0.7.0
 
 * `string` {string}
 
-The `punycode.ucs2.decode()` method returns an array containing the numeric codepoint values of each Unicode symbol in the string.
+El método `punycode.ucs2.decode()` devuelve un array que contiene los valores de puntos de código numéricos de cada símbolo de Unicode en la string.
 
 ```js
 punycode.ucs2.decode('abc'); // [0x61, 0x62, 0x63]
-// surrogate pair for U+1D306 tetragram for centre:
+// par suplente para el tetragrama U+1D30 para el centro:
 punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
 ```
 
@@ -120,7 +120,7 @@ added: v0.7.0
 
 * `codePoints` {integer[]}
 
-The `punycode.ucs2.encode()` method returns a string based on an array of numeric code point values.
+El método `punycode.ucs2.encode()` devuelve una string basada en un array de valores de puntos de código numéricos.
 
 ```js
 punycode.ucs2.encode([0x61, 0x62, 0x63]); // 'abc'
@@ -135,4 +135,4 @@ added: v0.6.1
 
 * {string}
 
-Returns a string identifying the current [Punycode.js](https://mths.be/punycode) version number.
+Devuelve una string que identifica el número de la versión de [Punycode.js](https://mths.be/punycode) actual.

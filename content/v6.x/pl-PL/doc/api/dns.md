@@ -210,7 +210,7 @@ Uses the DNS protocol to resolve regular expression based records (`NAPTR` recor
 - `order`
 - `preference`
 
-For example:
+Na przykład:
 
 <!-- eslint-skip -->
 

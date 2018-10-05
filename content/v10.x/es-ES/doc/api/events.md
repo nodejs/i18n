@@ -219,7 +219,7 @@ added: v0.11.2
 
 Por defecto, pueden registrarse un máximo de `10` listeners por cada evento. Este límite puede cambiar para instancias de `EventEmitter` individuales utilizando el método [`emitter.setMaxListeners(n)`][]. Para cambiar el predeterminado por *todas* las instancias de `EventEmitter`, se puede utilizar la propiedad `EventEmitter.defaultMaxListeners`. Si este valor no es un número positivo, se arrojará un `TypeError`.
 
-Tome precaución al configurar el `EventEmitter.defaultMaxListeners` debido a que los cambios afectan a *todas* las instancias de `EventEmitter`, incluyendo a aquellos creadas antes de que se haya hecho el cambio. Sin embargo, el llamar a [`emitter.setMaxListeners(n)`][] todavía tiene precedencia sobre `EventEmitter.defaultMaxListeners`.
+Tome precaución al configurar el `EventEmitter.defaultMaxListeners` debido a que los cambios afectan a *todas* las instancias de `EventEmitter`, incluyendo a aquellas creadas antes de que se haya hecho el cambio. Sin embargo, el llamar a [`emitter.setMaxListeners(n)`][] todavía tiene precedencia sobre `EventEmitter.defaultMaxListeners`.
 
 Note que esto no es un límite fuerte. La instancia `EventEmitter` permitirá que se añadan más listeners, pero dará salida a una advertencia de trace a stderr, indicando que una "posible fuga de memoria del EventEmitter" ha sido detectada. Para cualquier `EventEmitter`, los métodos `emitter.getMaxListeners()` y `emitter.setMaxListeners()` pueden usarse para evitar temporalmente esta advertencia:
 
@@ -368,7 +368,7 @@ const myEE = new EventEmitter();
 myEE.on('foo', () => console.log('a'));
 myEE.prependListener('foo', () => console.log('b'));
 myEE.emit('foo');
-// Imrpime:
+// Imprime:
 //   b
 //   a
 ```
@@ -393,7 +393,7 @@ server.once('connection', (stream) => {
 
 Devuelve una referencia para el `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
-Por defecto, los listener del evento son invocados en el orden en que se añaden. El método `emitter.prependOnceListener()` puede ser utilizado como una alternativa para añadir el listener del evento al comienzo del array de listeners.
+Por defecto, los listeners del evento son invocados en el orden en que se añaden. El método `emitter.prependOnceListener()` puede ser utilizado como una alternativa para añadir el listener del evento al comienzo del array de listeners.
 
 ```js
 const myEE = new EventEmitter();
@@ -470,7 +470,7 @@ added: v0.1.26
 - `listener` {Function}
 - Devuelve: {EventEmitter}
 
-Elimina el `listener` especificado del array de listener para el evento llamado `eventName`.
+Elimina el `listener` especificado del array del listener para el evento llamado `eventName`.
 
 ```js
 const callback = (stream) => {
@@ -501,7 +501,7 @@ myEmitter.on('event', callbackA);
 
 myEmitter.on('event', callbackB);
 
-// callbackA elimina al listener callbackB pero todavía será llamado.
+// callbackA elimina al listener callbackB pero aún así será llamado.
 // Array interno de listener al momento de la emisión [callbackA, callbackB]
 myEmitter.emit('event');
 // Imprime:
@@ -528,9 +528,9 @@ added: v0.3.5
 - `n` {integer}
 - Devuelve: {EventEmitter}
 
-Por efecto, los `EventEmitter`s imprimirán una advertencia si más de `10` listeners son añadidos para un evento particular. Esta es una predeterminación útil que ayuda a encontrar fugas de memoria. Obviamente, no todos los eventos deben estar limitados a sólo 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
+Por efecto, los `EventEmitter`s imprimirán una advertencia si más de `10` listeners son añadidos para un evento particular. Esta es una predeterminación útil que ayuda a encontrar fugas de memoria. Obviamente, no todos los eventos deben estar limitados a sólo 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. El valor puede establecerse a `Infinity` (o `0`) para indicar un número ilimitado de listeners.
 
-Returns a reference to the `EventEmitter`, so that calls can be chained.
+Devuelve una referencia al `EventEmitter`, para que las llamadas puedan ser encadenadas.
 
 ### emitter.rawListeners(eventName)
 
@@ -541,28 +541,28 @@ added: v9.4.0
 - `eventName` {string|symbol}
 - Devuelve: {Function[]}
 
-Returns a copy of the array of listeners for the event named `eventName`, including any wrappers (such as those created by `.once()`).
+Devuelve una copia del array de listeners para el evento llamado `eventName`, incluyendo cualquier envoltura (como las creadas por `.once()`).
 
 ```js
 const emitter = new EventEmitter();
 emitter.once('log', () => console.log('log once'));
 
-// Returns a new Array with a function `onceWrapper` which has a property
-// `listener` which contains the original listener bound above
+// Devuelve un Array nuevo con una función `onceWrapper`, la cual tiene una propiedad
+// `listener`, la cual contiene al oyente original vinculado arriba
 const listeners = emitter.rawListeners('log');
 const logFnWrapper = listeners[0];
 
-// logs "log once" to the console and does not unbind the `once` event
+// registra "log once" a la consola y no desvincula al evento `once`
 logFnWrapper.listener();
 
-// logs "log once" to the console and removes the listener
+// registra "log once" a la consola y elimina al listener
 logFnWrapper();
 
 emitter.on('log', () => console.log('log persistently'));
-// will return a new Array with a single function bound by `.on()` above
+// devolverá un Array nuevo con una función simple vinculada por `.on()` arriba
 const newListeners = emitter.rawListeners('log');
 
-// logs "log persistently" twice
+// registra a "log persistently" dos veces
 newListeners[0]();
 emitter.emit('log');
 ```

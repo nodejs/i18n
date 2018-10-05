@@ -170,7 +170,7 @@ If `timeout` is greater than `0`, the parent will send the signal identified by 
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `stdout` and `stderr` properties. In case of an error, a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
 
-For example:
+Na przykład:
 
 ```js
 const util = require('util');

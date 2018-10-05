@@ -66,9 +66,9 @@ Cuando se llama, el objeto `Timeout` activo no requerirá del Event Loop de Node
 
 Llamar a `timeout.unref()` crea un contador interno que activará el Event Loop de Node.js. Crear demasiados objetos, puede impactar negativamente en la performance de la aplicación de Node.js.
 
-## Scheduling Timers
+## Programación de Temporizadores
 
-Un temporizador en Node.js es un constructor interno que llama a una función dada después de cierto periodo de tiempo. When a timer's function is called varies depending on which method was used to create the timer and what other work the Node.js event loop is doing.
+Un temporizador en Node.js es un constructor interno que llama a una función dada después de cierto periodo de tiempo. Cuando se llama a una función del temporizador, varía dependiendo de cuál método fue utilizado para crear el temporizador y qué otros trabajo está haciendo el bucle de evento de Node.js.
 
 ### setImmediate(callback[, ...args])
 
@@ -76,28 +76,28 @@ Un temporizador en Node.js es un constructor interno que llama a una función da
 added: v0.9.1
 -->
 
-* `callback` {Function} The function to call at the end of this turn of [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick)
-* `...args` {any} Optional arguments to pass when the `callback` is called.
-* Returns: {Immediate} for use with [`clearImmediate()`][]
+* `callback` {Function} La función para llamar al final de este turno del [Bucle de Evento de Node.js](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick)
+* `...args` {any} Argumentos opcionales a pasar cuando se llama al `callback`.
+* Devuelve: {Immediate} para el uso con [`clearImmediate()`][]
 
-Schedules the "immediate" execution of the `callback` after I/O events' callbacks.
+Programa la ejecución "inmediata" de la `callback` después de las callbacks de los eventos I/O.
 
-When multiple calls to `setImmediate()` are made, the `callback` functions are queued for execution in the order in which they are created. The entire callback queue is processed every event loop iteration. If an immediate timer is queued from inside an executing callback, that timer will not be triggered until the next event loop iteration.
+Cuando se hacen múltiples llamadas a `setImmediate()`, las funciones `callback` son puestas en cola de ejecución en el orden en el cual son creados. La cola completa de la callback es procesada cada iteración del bucle del evento. Si se pone en cola un temporizador inmediato desde dentro de una callback en ejecución, ese temporizador no será activado hasta la siguiente iteración del bucle del evento.
 
-If `callback` is not a function, a [`TypeError`][] will be thrown.
+Si `callback` no es una función, se arrojará un [`TypeError`][].
 
-This method has a custom variant for promises that is available using [`util.promisify()`][]:
+Este método tiene una variante personalizada para promesas que está disponible utilizando [`util.promisify()`][]:
 
 ```js
 const util = require('util');
 const setImmediatePromise = util.promisify(setImmediate);
 
 setImmediatePromise('foobar').then((value) => {
-  // value === 'foobar' (passing values is optional)
-  // This is executed after all I/O callbacks.
+  // valor === 'foobar' (el pasar valores es opcional)
+  // Esto se ejecuta después de todos las callbacks I/O.
 });
 
-// or with async function
+// o con una función asincrónica
 async function timerExample() {
   console.log('Before I/O callbacks');
   await setImmediatePromise();
@@ -112,16 +112,16 @@ timerExample();
 added: v0.0.1
 -->
 
-* `callback` {Function} The function to call when the timer elapses.
-* `delay` {number} The number of milliseconds to wait before calling the `callback`.
-* `...args` {any} Optional arguments to pass when the `callback` is called.
-* Returns: {Timeout} for use with [`clearInterval()`][]
+* `callback` {Function} La función a llamar cuando el temporizador transcurre.
+* `delay` {number} El número de milisegundos a esperar antes de llamar al `callback`.
+* `...args` {any} Argumentos opcionales a pasar cuando se llama al `callback`.
+* Devuelve: {Timeout} para el uso con [`clearInterval()`][]
 
 Schedules repeated execution of `callback` every `delay` milliseconds.
 
-When `delay` is larger than `2147483647` or less than `1`, the `delay` will be set to `1`.
+Cuando `delay` es mayor que `2147483647` o menor que `1`, el `delay` será establecido a `1`.
 
-If `callback` is not a function, a [`TypeError`][] will be thrown.
+Si `callback` no es una función, se arrojará un [`TypeError`][].
 
 ### setTimeout(callback, delay[, ...args])
 
@@ -129,36 +129,36 @@ If `callback` is not a function, a [`TypeError`][] will be thrown.
 added: v0.0.1
 -->
 
-* `callback` {Function} The function to call when the timer elapses.
-* `delay` {number} The number of milliseconds to wait before calling the `callback`.
-* `...args` {any} Optional arguments to pass when the `callback` is called.
-* Returns: {Timeout} for use with [`clearTimeout()`][]
+* `callback` {Function} La función a llamar cuando el temporizador transcurre.
+* `delay` {number} El número de milisegundos a esperar antes de llamar al `callback`.
+* `...args` {any} Argumentos opcionales a pasar cuando se llama al `callback`.
+* Devuelve: {Timeout} para el uso con [`clearTimeout()`][]
 
 Schedules execution of a one-time `callback` after `delay` milliseconds.
 
-The `callback` will likely not be invoked in precisely `delay` milliseconds. Node.js makes no guarantees about the exact timing of when callbacks will fire, nor of their ordering. The callback will be called as close as possible to the time specified.
+The `callback` will likely not be invoked in precisely `delay` milliseconds. Node.js makes no guarantees about the exact timing of when callbacks will fire, nor of their ordering. La callback será llamada lo más cercano posible al tiempo especificado.
 
-When `delay` is larger than `2147483647` or less than `1`, the `delay` will be set to `1`.
+Cuando `delay` es mayor que `2147483647` o menor que `1`, el `delay` será establecido a `1`.
 
-If `callback` is not a function, a [`TypeError`][] will be thrown.
+Si `callback` no es una función, se arrojará un [`TypeError`][].
 
-This method has a custom variant for promises that is available using [`util.promisify()`][]:
+Este método tiene una variante personalizada para promesas que está disponible utilizando [`util.promisify()`][]:
 
 ```js
 const util = require('util');
 const setTimeoutPromise = util.promisify(setTimeout);
 
 setTimeoutPromise(40, 'foobar').then((value) => {
-  // value === 'foobar' (passing values is optional)
-  // This is executed after about 40 milliseconds.
+  // valor === 'foobar' (el pasar valores es opcional)
+  // Esto se ejecuta después de alrededor de 40 milisegundos.
 });
 ```
 
-## Cancelling Timers
+## Cancelación de Temporizadores
 
-The [`setImmediate()`][], [`setInterval()`][], and [`setTimeout()`][] methods each return objects that represent the scheduled timers. These can be used to cancel the timer and prevent it from triggering.
+Cada uno de los métodos [`setImmediate()`][], [`setInterval()`][] y [`setTimeout()`][] devuelve objetos que representan los temporizadores programados. Estos pueden usarse para cancelar el temporizador y prevenir que se desencadene.
 
-It is not possible to cancel timers that were created using the promisified variants of [`setImmediate()`][], [`setTimeout()`][].
+Si no es posible cancelar los temporizadores que fueron creados utilizando las variantes prometidas de [`setImmediate()`][], [`setTimeout()`][].
 
 ### clearImmediate(immediate)
 
@@ -166,9 +166,9 @@ It is not possible to cancel timers that were created using the promisified vari
 added: v0.9.1
 -->
 
-* `immediate` {Immediate} An `Immediate` object as returned by [`setImmediate()`][].
+* `immediate` {Immediate} Un objeto `Immediate` tal como lo devolvió [`setImmediate()`][].
 
-Cancels an `Immediate` object created by [`setImmediate()`][].
+Cancela un objeto `Immediate` creado por [`setImmediate()`][].
 
 ### clearInterval(timeout)
 
@@ -176,9 +176,9 @@ Cancels an `Immediate` object created by [`setImmediate()`][].
 added: v0.0.1
 -->
 
-* `timeout` {Timeout} A `Timeout` object as returned by [`setInterval()`][].
+* `timeout` {Timeout} Un objeto `Timeout` tal como lo devolvió [`setInterval()`][].
 
-Cancels a `Timeout` object created by [`setInterval()`][].
+Cancela un objeto `Timeout` creado por [`setInterval()`][].
 
 ### clearTimeout(timeout)
 
@@ -186,6 +186,6 @@ Cancels a `Timeout` object created by [`setInterval()`][].
 added: v0.0.1
 -->
 
-* `timeout` {Timeout} A `Timeout` object as returned by [`setTimeout()`][].
+* `timeout` {Timeout} Un objeto `Timeout` tal como lo devolvió [`setTimeout()`][].
 
-Cancels a `Timeout` object created by [`setTimeout()`][].
+Cancela un objeto `Timeout` creado por [`setTimeout()`][].

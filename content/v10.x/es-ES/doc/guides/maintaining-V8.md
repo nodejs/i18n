@@ -173,22 +173,20 @@ Las ramas V8 abandonadas son compatibles en el repositorio Node.js. La correcci�
 
 La herramienta [`update-v8`] se puede utilizar para simplificar esta tarea. Ejecute `update-v8 backport --sha = SHA` para seleccionar un commit.
 
-Un ejemplo para el flujo de trabajo: cómo seleccionar cuidadosamente; considera que el error [RegExp muestra resultados inconsistentes con otros navegadores](https://crbug.com/v8/5199). Desde el error, podemos ver que se fusionó con V8 en 5.2 y 5.3, y no en V8 5.1 (ya que ya fue abandonado). Como Node.js `v6.x` usa V8 5.1, la solución debe ser cuidadosamente seleccionada. Para hacerlo, este es un flujo de trabajo de ejemplo:
+Un ejemplo para el flujo de trabajo: cómo seleccionar cuidadosamente; considera que el error [RegExp muestra resultados inconsistentes con otros navegadores](https://crbug.com/v8/5199). Desde el error, podemos ver que se fusionó con V8 en 5.2 y 5.3, y no en V8 5.1 (debido a que ya fue abandonado). Como Node.js `v6.x` usa V8 5.1, la solución debe ser cuidadosamente seleccionada. Para hacerlo, este es un flujo de trabajo de ejemplo:
 
 * Descargue y aplique el commit vinculado en el problema (en este caso a51f429). `curl -L https://github.com/v8/v8/commit/a51f429.patch | git am -3
---directory=deps/v8`. Si las ramas han divergido significativamente, esto puede no aplicarse limpiamente. Puede ser útil tratar de elegir la combinación a la rama más antigua que se realizó en el V8. En este ejemplo, este sería el parche de la fusión a 5.2. La esperanza es que esto esté más cerca del V8 5.1 y que tenga más posibilidades de aplicarse limpiamente. Si estás atascado, no dudes en hacer ping a @ofrobots para obtener ayuda.
-* Modifique el mensaje de commit para que coincida con el formato que usamos para los backports de V8 y reemplázate como el autor. `git commit --amend --reset-author`. Es posible que desee agregar una descripción adicional si es necesario para indicar el impacto de la corrección en Node.js. En este caso, el problema original fue lo suficientemente descriptivo. Ejemplo:
+--directory=deps/v8`. Si las ramas han divergido significativamente, esto puede no aplicarse limpiamente. Puede ser útil tratar de elegir cuidadosamente la combinación a la rama más antigua sobre la que se realizó upstream en el V8. En este ejemplo, este sería el parche de la fusión a 5.2. La esperanza es que esto esté más cerca del V8 5.1 y que tenga más posibilidades de aplicarse limpiamente. Si estás atascado, no dudes en hacer ping a @ofrobots para obtener ayuda.
+* Modifique el mensaje de commit para que coincida con el formato que usamos para los backports de V8 y colóquese como el autor. `git commit --amend --reset-author`. Es posible que desee agregar una descripción adicional si es necesario para indicar el impacto de la corrección en Node.js. En este caso, el problema original fue lo suficientemente descriptivo. Ejemplo:
 
 ```console
-deps: cherry-pick a51f429 from V8 upstream
+deps: cherry-pick a51f429 de V8 upstream
 
-Original commit message:
+Mensaje de commit original:
   [regexp] Fix case-insensitive matching for one-byte subjects.
 
-  The bug occurs because we do not canonicalize character class ranges
-  before adding case equivalents. While adding case equivalents, we abort
-  early for one-byte subject strings, assuming that the ranges are sorted.
-  Which they are not.
+  El error se produce porque no canonizamos los rangos de clase de caracteres antes de agregar equivalentes de casos. Al agregar equivalentes de casos, abortamos con anticipación para cadenas de asunto de un byte, asumiendo que los rangos están ordenados.
+  Que no lo están.
 
   R=marja@chromium.org
   BUG=v8:5199
@@ -217,11 +215,11 @@ El grupo de node revisa periódicamente la acumulación de problemas en Google p
 
 ## Actualizando V8
 
-Node.js se queda con una copia guarda de V8 dentro del directorio deps/. Además, Node.js puede necesitar flotar parches que no existen upstream. Esto significa que es posible que se tenga que tomar alguna precaución para actualizar la copia guardada de V8.
+Node.js se queda con una copia de V8 dentro del directorio deps/. Además, Node.js puede necesitar flotar parches que no existen upstream. Esto significa que es posible que se tenga que tomar alguna precaución para actualizar la copia guardada de V8.
 
 ### Actualizaciones menores (a nivel de parche)
 
-Debido a que puede haber parches flotantes en la versión de V8 en Node.js, es más seguro aplicar las actualizaciones de nivel de parche como un parche. Por ejemplo, imagina que el V8 upstream está en 5.0.71.47 y Node.js está en 5.0.71.32. Sería mejor calcular la diferencia entre estas etiquetas en el reposiorio de V8, y luego aplicar ese parche en la copia de V8 en Node.js. Esto debería preservar los parches/backports que Node.js pueda estar flotando (o pueda causar un conflicto de fusión).
+Debido a que puede haber parches flotantes en la versión de V8 en Node.js, es más seguro aplicar las actualizaciones de nivel de parche como un parche. Por ejemplo, imagina que el V8 upstream está en 5.0.71.47 y Node.js está en 5.0.71.32. Sería mejor calcular la diferencia entre estas etiquetas en el repositorio de V8, y luego aplicar ese parche en la copia de V8 en Node.js. Esto debería preservar los parches/backports que Node.js pueda estar flotando (o pueda causar un conflicto de fusión).
 
 El bosquejo del proceso es:
 
@@ -249,7 +247,7 @@ Actualizamos la versión de V8 en el master Node.js cada vez que una versión V8
 La actualización de las versiones principales sería mucho más difícil de hacer con el mecanismo del parche anterior. Una mejor estrategia es
 
 1. Audite la rama master actual y observe los parches que han estado flotando desde la última actualización principal de V8.
-2. Reemplace la copia de V8 en Node.js con una nueva comprobación de la última rama estable de V8. Se debe tener especial cuidado para actualizar recursivamente los DEPS en los que V8 tiene una dependencia de tiempo de compilación (al momento de escribir esto, estos son solo trace_event y gtest_prod.h)
+2. Reemplace la copia de V8 en Node.js con una nueva comprobación de la última rama estable de V8. Se debe tener cuidado especial para actualizar recursivamente los DEPS en los que V8 tiene una dependencia de tiempo de compilación (al momento de escribir esto, estos son solo trace_event y gtest_prod.h)
 3. Restablezca la variable `v8_embedder_string` a "-node.0" en `common.gypi`.
 4. Vuelva a cargar (seleccione con precisión) todos los parches de la lista calculada en 1) según sea necesario. Es posible que algunos de los parches ya no sean necesarios.
 

@@ -88,7 +88,7 @@ The `querystring.stringify()` method produces a URL query string from a given `o
 
 It serializes the following types of values passed in `obj`: {string|number|boolean|string[]|number[]|boolean[]} Any other input values will be coerced to empty strings.
 
-For example:
+Na przykład:
 
 ```js
 querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' });

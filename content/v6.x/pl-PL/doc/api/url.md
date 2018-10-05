@@ -883,7 +883,7 @@ added: v0.1.25
 
 The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
 
-For example:
+Na przykład:
 
 ```js
 url.resolve('/one/two/three', 'four');         // '/one/two/four'
@@ -921,7 +921,7 @@ The WHATWG algorithm defines three "percent-encode sets" that describe ranges of
 
 The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *C0 control percent-encode set* is used for all other cases, including URL fragments in particular, but also host and path under certain specific conditions.
 
-When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. For example:
+When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. Na przykład:
 
 ```js
 const { URL } = require('url');

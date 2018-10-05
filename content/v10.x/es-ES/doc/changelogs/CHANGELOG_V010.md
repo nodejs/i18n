@@ -210,7 +210,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [1e45a6111c] - deps: actualiza http-parser a la versión 1.2 (James M Snell) https://github.com/nodejs/node/pull/5242
 * [6db377b2f4] - doc: elimina las descripciones SSLv2 (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
 * [563c359f5c] - domains: repara el manejo de excepciones no capturadas (Julien Gilli) https://github.com/nodejs/node/pull/3887
-* [e483f3fd26] - test: fix hanging http obstext test (Ben Noordhuis) https://github.com/nodejs/node/pull/5511
+* [e483f3fd26] - test: reparar el colgamiento prueba http obstext (Ben Noordhuis) https://github.com/nodejs/node/pull/5511
 
 <a id="0.10.42"></a>
 
@@ -235,7 +235,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * [fdc332183e] - build: habilita tarballs comprimidos en xz donde sea posible (Rod Vagg) https://github.com/nodejs/node/pull/4894
 * [2d35b421b5] - deps: actualiza openssl sources a 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
 * [b31c0f3ea4] - deps: actualiza http-parser a la versión 1.1 (James M Snell)
-* [616ec1d6b0] - doc: clarify v0.10.41 openssl tls security impact (Rod Vagg) https://github.com/nodejs/node/pull/4153
+* [616ec1d6b0] - doc: aclarar impacto seguridad de v0.10.41 openssl tls (Rod Vagg) https://github.com/nodejs/node/pull/4153
 * [ccb3c2377c] - http: prohibe estrictamente caracteres inválidos de los encabezados (James M Snell)
 * [f0af0d1f96] - src: evita la advertencia del compilador en node_revert.cc (James M Snell)
 * [df80e856c6] - src: añade la bandera de línea del comando --security-revert command line flag (James M Snell)
@@ -260,7 +260,7 @@ Actualización de Seguridad
 * [268d2b4637] - build: configuración backport para la nueva infraestructura CI (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [c88a0b26da] - build: manifiesto de actualización incluirá Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2838
 * [8564a9f5f7] - build: detección de versión gcc en openSUSE Tumbleweed (Henrique Aparecido Lavezzo) https://github.com/nodejs/node-v0.x-archive/pull/25671
-* [9c7bd6de56] - build: run-ci makefile rule (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [9c7bd6de56] - build: regla de hacer archivo run-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [ffa1e1f31d] - build: soporta pruebas flaky test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [100dd19e61] - build: suporta Jenkins a través de test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [ec861f6f90] - build: hace el proceso de liberación más fácil para multi usuarios for multi users (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25638
@@ -268,11 +268,11 @@ Actualización de Seguridad
 * [6ac47aa9f5] - build,win: al fallar prueba la versión MSVS (João Reis) https://github.com/nodejs/node/pull/2910
 * [e669b27740] - crypto: reemplaza rwlocks con mutexes simples (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
 * [ce0a48826e] - deps: actualiza openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4132
-* [b68781e500] - deps: upgrade npm to 1.4.29 (Forrest L Norvell) https://github.com/nodejs/node/pull/3639
-* [7cf0d9c1d9] - deps: fix openssl for MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node-v0.x-archive/pull/25857
-* [9ee8a14f9e] - deps: fix gyp to work on MacOSX without XCode (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25857
-* [a525c7244e] - deps: update gyp to 25ed9ac (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25857
-* [6502160294] - dns: allow v8 to optimize lookup() (Brian White) https://github.com/nodejs/node-v0.x-archive/pull/8942
+* [b68781e500] - deps: actualizar npm a 1.4.29 (Forrest L Norvell) https://github.com/nodejs/node/pull/3639
+* [7cf0d9c1d9] - deps: reparar openssl para MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node-v0.x-archive/pull/25857
+* [9ee8a14f9e] - deps: reparar gyp para trabajar en MacOSX sin XCode (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25857
+* [a525c7244e] - deps: actualizar gyp a 25ed9ac (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25857
+* [6502160294] - dns: permitir a v8 optimizar a lookup() (Brian White) https://github.com/nodejs/node-v0.x-archive/pull/8942
 * [5d829a63ab] - doc: backport README.md (Rod Vagg) https://github.com/nodejs/node/pull/3965
 * [62c8948109] - doc: repara Carpetas tales como Módulos de omisión de index.json (Elan Shanker) https://github.com/nodejs/node-v0.x-archive/pull/8868
 * [572663f303] - https: no sobreescribir la opción del nombre del servidor (skenqbx) https://github.com/nodejs/node-v0.x-archive/pull/9368
@@ -282,10 +282,10 @@ Actualización de Seguridad
 * [7df57703dd] - test: marca test-net-error-twice flaky en SmartOS (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25760
 * [e10892cccc] - test: hace que test-abort-fatal-error no sea flaky (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25755
 * [a2f879f197] - test: marca las pruebas que fallaron recientemente como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [e7010bdf92] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [e7010bdf92] - test: el runner debería devolver 0 en pruebas flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [c283c9bbb3] - test: soporta salida de pruebas de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [eeaed586bb] - test: runner support for flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
-* [3bb8174b94] - test: refactor to use common testcfg (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [eeaed586bb] - test: soporte runner para pruebas flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25686
+* [3bb8174b94] - test: refactor a usar testcfg común (Timothy J Fontaine) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [df59d43586] - tools: pasar un logger constante en vez de un string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [d103d4ed9a] - tools: repara test.py después de la actualización v8 (Ben Noordhuis) https://github.com/nodejs/node-v0.x-archive/pull/25686
 * [8002192b4e] - win: manifestar node.exe para Windows 8.1 (Alexis Campailla) https://github.com/nodejs/node/pull/2838
@@ -430,7 +430,7 @@ https://github.com/nodejs/node/commit/bc0ff830aff1e016163d855e86ded5c98b0899e8
 * buffer: mejorar métodos {read,write}{U}Int* (Nick Apperson)
 * child_process: manejar error writeUtf8String (Fedor Indutny)
 * deps: backport 4ed5fde4f desde upstream v8 (Fedor Indutny)
-* deps: cherry-pick eca441b2 from OpenSSL (Fedor Indutny)
+* deps: escogido con cuidado eca441b2 de OpenSSL (Fedor Indutny)
 * lib: eliminar y reestructurar llamadas a isNaN() (cjihrig)
 * module: eliminar doble `getenv()` (Maciej Małecki)
 * stream2: arrojar datos existentes en la lectura del stream terminado (Chris Dickinson)
@@ -486,7 +486,7 @@ https://github.com/nodejs/node/commit/cb7911f78ae96ef7a540df992cc1359ba9636e86
 * http: no emitir sockets EOF no-legibles (Fedor Indutny)
 * http: invocar createConnection cuando no hay agente (Nathan Rajlich)
 * stream: remover verificación sin utilidad (Brian White)
-* timer: don't reschedule timer bucket in a domain (Greg Brail)
+* timer: no reprogramar temporizador del cubo en un dominio (Greg Brail)
 * url: tratar \ igual que / (isaacs)
 * util: dar formato como Error si instanceof tiene Error (Rod Vagg)
 
@@ -643,7 +643,7 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 
 * v8: reparación back-port para CVE-2013-2882
 * npm: Actualizar a 1.3.8
-* crypto: fix assert() on malformed hex input (Ben Noordhuis)
+* crypto: reparar assert() en entradas hex malformadas (Ben Noordhuis)
 * crypto: reparar pérdida de memoria en la ruta de error randomBytes() (Ben Noordhuis)
 * events: reparar pérdida de memoria, que no se filtren los nombres de los eventos (Ben Noordhuis)
 * http: Manejar codificaciones hex/base64 correctamente (isaacs)
@@ -652,254 +652,254 @@ https://github.com/nodejs/node/commit/50b4c905a4425430ae54db4906f88982309e128d
 
 <a id="0.10.15"></a>
 
-## 2013.07.25, Version 0.10.15 (Stable)
+## 2013.07.25, Versión 0.10.15 (Estable)
 
 https://github.com/nodejs/node/commit/2426d65af860bda7be9f0832a99601cc43c6cf63
 
-* src: fix process.getuid() return value (Ben Noordhuis)
+* src: reparar el valor retornado de process.getuid() (Ben Noordhuis)
 
 <a id="0.10.14"></a>
 
-## 2013.07.25, Version 0.10.14 (Stable)
+## 2013.07.25, Versión 0.10.14 (Estable)
 
 https://github.com/nodejs/node/commit/fdf57f811f9683a4ec49a74dc7226517e32e6c9d
 
-* uv: Upgrade to v0.10.13
-* npm: Upgrade to v1.3.5
-* os: Don't report negative times in cpu info (Ben Noordhuis)
-* fs: Handle large UID and GID (Ben Noordhuis)
-* url: Fix edge-case when protocol is non-lowercase (Shuan Wang)
-* doc: Streams API Doc Rewrite (isaacs)
-* node: call MakeDomainCallback in all domain cases (Trevor Norris)
-* crypto: fix memory leak in LoadPKCS12 (Fedor Indutny)
+* uv: Actualizar a v0.10.13
+* npm: Actualizar a v1.3.5
+* os: No reportar tiempos negativos en la información del cpu (Ben Noordhuis)
+* fs: Manejar UID y GID grandes (Ben Noordhuis)
+* url: Reparar caso extremo cuando el protocolo no es en minúsculas (Shuan Wang)
+* doc: Reescribir el API Doc de streams (isaacs)
+* node: llamar a MakeDomainCallback en todos los casos de dominio (Trevor Norris)
+* crypto: reparar fuga de memoria en LoadPKCS12 (Fedor Indutny)
 
 <a id="0.10.13"></a>
 
-## 2013.07.09, Version 0.10.13 (Stable)
+## 2013.07.09, Versión 0.10.13 (Estable)
 
 https://github.com/nodejs/node/commit/e32660a984427d46af6a144983cf7b8045b7299c
 
-* uv: Upgrade to v0.10.12
-* npm: Upgrade to 1.3.2
-* windows: get proper errno (Ben Noordhuis)
-* tls: only wait for finish if we haven't seen it (Timothy J Fontaine)
-* http: Dump response when request is aborted (isaacs)
-* http: use an unref'd timer to fix delay in exit (Peter Rust)
-* zlib: level can be negative (Brian White)
-* zlib: allow zero values for level and strategy (Brian White)
-* buffer: add comment explaining buffer alignment (Ben Noordhuis)
-* string_bytes: properly detect 64bit (Timothy J Fontaine)
-* src: fix memory leak in UsingDomains() (Ben Noordhuis)
+* uv: Actualizar a v0.10.12
+* npm: Actualizar a 1.3.2
+* windows: obtener el errno apropiado (Ben Noordhuis)
+* tls: solo espere para terminar si no lo vimos (Timothy J Fontaine)
+* http: deshacerse de la respuesta cuando la solicitud es abortada (isaacs)
+* http: usar un temporizador unref'd para reparar retraso en la salida (Peter Rust)
+* zlib: nivel puede ser negativo (Brian White)
+* zlib: permitir valores cero para nivel y estrategia (Brian White)
+* buffer: añadir comentario explicando la alineación del búfer (Ben Noordhuis)
+* string_bytes: detectar correctamente 64bit (Timothy J Fontaine)
+* src: reparar fuga de memoria en UsingDomains() (Ben Noordhuis)
 
 <a id="0.10.12"></a>
 
-## 2013.06.18, Version 0.10.12 (Stable)
+## 2013.06.18, Versión 0.10.12 (Estable)
 
 https://github.com/nodejs/node/commit/a088cf4f930d3928c97d239adf950ab43e7794aa
 
-* npm: Upgrade to 1.2.32
-* readline: make `ctrl + L` clear the screen (Yuan Chuan)
-* v8: add setVariableValue debugger command (Ben Noordhuis)
-* net: Do not destroy socket mid-write (isaacs)
-* v8: fix build for mips32r2 architecture (Andrei Sedoi)
-* configure: fix cross-compilation host_arch_cc() (Andrei Sedoi)
+* npm: Actualizar a 1.2.32
+* readline: hacer que `ctrl + L` limpie la pantalla (Yuan Chuan)
+* v8: añadir el comando setVariableValue del depurador (Ben Noordhuis)
+* net: No destruir el socket en medio-escritura (isaacs)
+* v8: reparar compilación para la arquitectura mips32r2 (Andrei Sedoi)
+* configure: reparar compilación-cruzada host_arch_cc() (Andrei Sedoi)
 
 <a id="0.10.11"></a>
 
-## 2013.06.13, Version 0.10.11 (Stable)
+## 2013.06.13, Versión 0.10.11 (Estable)
 
 https://github.com/nodejs/node/commit/d9d5bc465450ae5d60da32e9ffcf71c2767f1fad
 
-* uv: upgrade to 0.10.11
-* npm: Upgrade to 1.2.30
-* openssl: add missing configuration pieces for MIPS (Andrei Sedoi)
-* Revert "http: remove bodyHead from 'upgrade' events" (isaacs)
-* v8: fix pointer arithmetic undefined behavior (Trevor Norris)
-* crypto: fix utf8/utf-8 encoding check (Ben Noordhuis)
-* net: Fix busy loop on POLLERR|POLLHUP on older linux kernels (Ben Noordhuis, isaacs)
+* uv: actualizar a 0.10.11
+* npm: actualizar a 1.2.30
+* openssl: añadir piezas de configuración faltantes para MIPS (Andrei Sedoi)
+* Revertir "http: remover bodyHead de eventos 'upgrade'" (isaacs)
+* v8: reparar el comportamiento indefinido del puntero aritmético (Trevor Norris)
+* crypto: reparar la verificación de codificación utf8/utf-8 (Ben Noordhuis)
+* net: Reparar bucle ocupado en POLLERR|POLLHUP en los núcleos más viejos de linux (Ben Noordhuis, isaacs)
 
 <a id="0.10.10"></a>
 
-## 2013.06.04, Version 0.10.10 (Stable)
+## 2013.06.04, Versión 0.10.10 (Estable)
 
 https://github.com/nodejs/node/commit/25e51c396aa23018603baae2b1d9390f5d9db496
 
-* uv: Upgrade to 0.10.10
-* npm: Upgrade to 1.2.25
-* url: Properly parse certain oddly formed urls (isaacs)
-* stream: unshift('') is a noop (isaacs)
+* uv: Actualizar a 0.10.10
+* npm: Actualizar a 1.2.25
+* url: Actualizar correctamente a ciertas urls formadas de manera extraña (isaacs)
+* stream: unshift('') es un noop (isaacs)
 
 <a id="0.10.9"></a>
 
-## 2013.05.30, Version 0.10.9 (Stable)
+## 2013.05.30, Versión 0.10.9 (Estable)
 
 https://github.com/nodejs/node/commit/878ffdbe6a8eac918ef3a7f13925681c3778060b
 
-* npm: Upgrade to 1.2.24
-* uv: Upgrade to v0.10.9
-* repl: fix JSON.parse error check (Brian White)
-* tls: proper .destroySoon (Fedor Indutny)
-* tls: invoke write cb only after opposite read end (Fedor Indutny)
-* tls: ignore .shutdown() syscall error (Fedor Indutny)
+* npm: Actualizar a 1.2.24
+* uv: Actualizar a v0.10.9
+* repl: reparar la verificación del error JSON.parse (Brian White)
+* tls: .destroySoon adecuado (Fedor Indutny)
+* tls: invocar write cb solo después que la lectura opuesta termine (Fedor Indutny)
+* tls: ignorar error syscall .shutdown() (Fedor Indutny)
 
 <a id="0.10.8"></a>
 
-## 2013.05.24, Version 0.10.8 (Stable)
+## 2013.05.24, Versión 0.10.8 (Estable)
 
 https://github.com/nodejs/node/commit/30d9e9fdd9d4c33d3d95a129d021cd8b5b91eddb
 
-* v8: update to 3.14.5.9
-* uv: upgrade to 0.10.8
-* npm: Upgrade to 1.2.23
-* http: remove bodyHead from 'upgrade' events (Nathan Zadoks)
-* http: Return true on empty writes, not false (isaacs)
-* http: save roundtrips, convert buffers to strings (Ben Noordhuis)
-* configure: respect the --dest-os flag consistently (Nathan Rajlich)
-* buffer: throw when writing beyond buffer (Trevor Norris)
-* crypto: Clear error after DiffieHellman key errors (isaacs)
-* string_bytes: strip padding from base64 strings (Trevor Norris)
+* v8: actualizar a 3.14.5.9
+* uv: actualizar a 0.10.8
+* npm: Actualizar a 1.2.23
+* http: remover bodyHead de los eventos 'upgrade' (Nathan Zadoks)
+* http: Devuelve true en escrituras vacías, no false (isaacs)
+* http: guardar recorridos, convierte búferes en strings (Ben Noordhuis)
+* configure: respetar a la bandera --dest-os constantemente (Nathan Rajlich)
+* buffer: arrojar cuando se escriba más allá del búfer (Trevor Norris)
+* crypto: Limpiar el error después de los errores clave DiffieHellman (isaacs)
+* string_bytes: eliminar relleno de strings base64 (Trevor Norris)
 
 <a id="0.10.7"></a>
 
-## 2013.05.17, Version 0.10.7 (Stable)
+## 2013.05.17, Versión 0.10.7 (Estable)
 
 https://github.com/nodejs/node/commit/d2fdae197ac542f686ee06835d1153dd43b862e5
 
-* uv: upgrade to v0.10.7
-* npm: Upgrade to 1.2.21
-* crypto: Don't ignore verify encoding argument (isaacs)
-* buffer, crypto: fix default encoding regression (Ben Noordhuis)
-* timers: fix setInterval() assert (Ben Noordhuis)
+* uv: actualizar a v0.10.7
+* npm: Actualizar a 1.2.21
+* crypto: No ignorar la verificación del argumento de codificación (isaacs)
+* buffer, crypto: reparar la regresión de codificación predeterminada (Ben Noordhuis)
+* timers: reparar afirmación setInterval() (Ben Noordhuis)
 
 <a id="0.10.6"></a>
 
-## 2013.05.14, Version 0.10.6 (Stable)
+## 2013.05.14, Versión 0.10.6 (Estable)
 
 https://github.com/nodejs/node/commit/5deb1672f2b5794f8be19498a425ea4dc0b0711f
 
-* module: Deprecate require.extensions (isaacs)
-* stream: make Readable.wrap support objectMode, empty streams (Daniel Moore)
-* child_process: fix handle delivery (Ben Noordhuis)
-* crypto: Fix performance regression (isaacs)
-* src: DRY string encoding/decoding (isaacs)
+* module: Desaprobar require.extensions (isaacs)
+* stream: hacer que Readable.wrap soporte objectMode, vacía los streams (Daniel Moore)
+* child_process: reparar entrega de handles (Ben Noordhuis)
+* crypto: Reparar la regresión de rendimiento (isaacs)
+* src: codificación/decodificación string DRY (isaacs)
 
 <a id="0.10.5"></a>
 
-## 2013.04.23, Version 0.10.5 (Stable)
+## 2013.04.23, Versión 0.10.5 (Estable)
 
 https://github.com/nodejs/node/commit/deeaf8fab978e3cadb364e46fb32dafdebe5f095
 
-* uv: Upgrade to 0.10.5 (isaacs)
-* build: added support for Visual Studio 2012 (Miroslav Bajtoš)
-* http: Don't try to destroy nonexistent sockets (isaacs)
-* crypto: LazyTransform on properties, not methods (isaacs)
-* assert: put info in err.message, not err.name (Ryan Doenges)
-* dgram: fix no address bind() (Ben Noordhuis)
-* handle_wrap: fix NULL pointer dereference (Ben Noordhuis)
-* os: fix unlikely buffer overflow in os.type() (Ben Noordhuis)
-* stream: Fix unshift() race conditions (isaacs)
+* uv: Actualizar a 0.10.5 (isaacs)
+* build: añadido soporte para Visual Studio 2012 (Miroslav Bajtoš)
+* http: No intentar destruir sockets inexistentes (isaacs)
+* crypto: hacer LazyTransform en propiedades, no métodos (isaacs)
+* assert: colocar la información en err.message, no en err.name (Ryan Doenges)
+* dgram: reparar la falta de address bind() (Ben Noordhuis)
+* handle_wrap: reparar puntero de desreferencia NULL (Ben Noordhuis)
+* os: reparar rebosamiento poco probable del búfer en os.type() (Ben Noordhuis)
+* stream: Reparar condiciones de carrera unshift() (isaacs)
 
 <a id="0.10.4"></a>
 
-## 2013.04.11, Version 0.10.4 (Stable)
+## 2013.04.11, Versión 0.10.4 (Estable)
 
 https://github.com/nodejs/node/commit/9712aa9f76073c30850b20a188b1ed12ffb74d17
 
-* uv: Upgrade to 0.10.4
-* npm: Upgrade to 1.2.18
-* v8: Avoid excessive memory growth in JSON.parse (Fedor Indutny)
-* child_process, cluster: fix O(n*m) scan of cmd string (Ben Noordhuis)
-* net: fix socket.bytesWritten Buffers support (Fedor Indutny)
-* buffer: fix offset checks (Łukasz Walukiewicz)
-* stream: call write cb before finish event (isaacs)
-* http: Support write(data, 'hex') (isaacs)
-* crypto: dh secret should be left-padded (Fedor Indutny)
-* process: expose NODE_MODULE_VERSION in process.versions (Rod Vagg)
-* crypto: fix constructor call in crypto streams (Andreas Madsen)
-* net: account for encoding in .byteLength (Fedor Indutny)
-* net: fix buffer iteration in bytesWritten (Fedor Indutny)
-* crypto: zero is not an error if writing 0 bytes (Fedor Indutny)
-* tls: Re-enable check of CN-ID in cert verification (Tobias Müllerleile)
+* uv: Actualizar a 0.10.4
+* npm: Actualizar a 1.2.18
+* v8: Evitar el crecimiento excesivo de memoria en JSON.parse (Fedor Indutny)
+* child_process, cluster: reparar escaneo O(n*m) del string cmd (Ben Noordhuis)
+* net: reparar el soporte de Búferes socket.bytesWritten (Fedor Indutny)
+* buffer: reparar verificaciones de offset (Łukasz Walukiewicz)
+* stream: llamar a escribir cb antes de terminar el evento (isaacs)
+* http: Soporta write(data, 'hex') (isaacs)
+* crypto: secreto dh debería ser rellenado a la izquierda (Fedor Indutny)
+* process: exponer NODE_MODULE_VERSION en process.versions (Rod Vagg)
+* crypto: reparar llamar al constructor en streams crypto (Andreas Madsen)
+* net: cuenta para codificar en .byteLength (Fedor Indutny)
+* net: reparar iteración del búfer en bytesWritten (Fedor Indutny)
+* crypto: zero no es un error si se escriben 0 bytes (Fedor Indutny)
+* tls: Volver a habilitar revisión de CN-ID en verificación de certificados (Tobias Müllerleile)
 
 <a id="0.10.3"></a>
 
-## 2013.04.03, Version 0.10.3 (Stable)
+## 2013.04.03, Versión 0.10.3 (Estable)
 
 https://github.com/nodejs/node/commit/d4982f6f5e4a9a703127489a553b8d782997ea43
 
-* npm: Upgrade to 1.2.17
-* child_process: acknowledge sent handles (Fedor Indutny)
-* etw: update prototypes to match dtrace provider (Timothy J Fontaine)
-* dtrace: pass more arguments to probes (Dave Pacheco)
-* build: allow building with dtrace on osx (Dave Pacheco)
-* http: Remove legacy ECONNRESET workaround code (isaacs)
-* http: Ensure socket cleanup on client response end (isaacs)
-* tls: Destroy socket when encrypted side closes (isaacs)
-* repl: isSyntaxError() catches "strict mode" errors (Nathan Rajlich)
-* crypto: Pass options to ctor calls (isaacs)
-* src: tie process.versions.uv to uv_version_string() (Ben Noordhuis)
+* npm: Actualizar a 1.2.17
+* child_process: reconocer los handles enviados (Fedor Indutny)
+* etw: actualizar prototipos para que coincidan con el proveedor dtrace (Timothy J Fontaine)
+* dtrace: pasar más argumentos a sondas (Dave Pacheco)
+* build: permitir la construcción con dtrace en osx (Dave Pacheco)
+* http: Remover código de la solución alternativa de legado ECONNRESET (isaacs)
+* http: Garantizar limpieza del socket cuando la respuesta del cliente termine (isaacs)
+* tls: Destruir socket cuando el lado encriptado cierre (isaacs)
+* repl: isSyntaxError() toma los errores "strict mode" (Nathan Rajlich)
+* crypto: Pasar opciones a las llamadas ctor (isaacs)
+* src: ligar process.versions.uv a uv_version_string() (Ben Noordhuis)
 
 <a id="0.10.2"></a>
 
-## 2013.03.28, Version 0.10.2 (Stable)
+## 2013.03.28, Versión 0.10.2 (Estable)
 
 https://github.com/nodejs/node/commit/1e0de9c426e07a260bbec2d2196c2d2db8eb8886
 
-* npm: Upgrade to 1.2.15
-* uv: Upgrade to 0.10.3
-* tls: handle SSL_ERROR_ZERO_RETURN (Fedor Indutny)
-* tls: handle errors before calling C++ methods (Fedor Indutny)
-* tls: remove harmful unnecessary bounds checking (Marcel Laverdet)
-* crypto: make getCiphers() return non-SSL ciphers (Ben Noordhuis)
-* crypto: check randomBytes() size argument (Ben Noordhuis)
-* timers: do not calculate Timeout._when property (Alexey Kupershtokh)
-* timers: fix off-by-one ms error (Alexey Kupershtokh)
-* timers: handle signed int32 overflow in enroll() (Fedor Indutny)
-* stream: Fix stall in Transform under very specific conditions (Gil Pedersen)
-* stream: Handle late 'readable' event listeners (isaacs)
-* stream: Fix early end in Writables on zero-length writes (isaacs)
-* domain: fix domain callback from MakeCallback (Trevor Norris)
-* child_process: don't emit same handle twice (Ben Noordhuis)
-* child_process: fix sending utf-8 to child process (Ben Noordhuis)
+* npm: Actualizar a 1.2.15
+* uv: Actualizar a 0.10.3
+* tls: manejar SSL_ERROR_ZERO_RETURN (Fedor Indutny)
+* tls: manejar los errores antes de llamar a métodos C++ (Fedor Indutny)
+* tls: remover los límites innecesarios y dañinos (Marcel Laverdet)
+* crypto: hacer que getCiphers() devuelva los cifradores no-SSL (Ben Noordhuis)
+* crypto: verificar el tamaño del argumento randomBytes() (Ben Noordhuis)
+* timers: no calcular la propiedad Timeout._when (Alexey Kupershtokh)
+* timers: reparar error ms uno-por-uno (Alexey Kupershtokh)
+* timers: manejar rebosamiento firmado int32 en enroll() (Fedor Indutny)
+* stream: Reparar la detención en Transformación bajo condiciones muy específicas (Gil Pedersen)
+* stream: Manejar tarde los listeners del evento 'readable' (isaacs)
+* stream: Reparar primer terminal en Writables en escrituras de longitud-cero (isaacs)
+* domain: reparar el dominio de la callback de MakeCallback (Trevor Norris)
+* child_process: no emitir el mismo handle dos veces (Ben Noordhuis)
+* child_process: reparar envío de utf-8 a proceso secundario (Ben Noordhuis)
 
 <a id="0.10.1"></a>
 
-## 2013.03.21, Version 0.10.1 (Stable)
+## 2013.03.21, Versión 0.10.1 (Estable)
 
 https://github.com/nodejs/node/commit/c274d1643589bf104122674a8c3fd147527a667d
 
-* npm: upgrade to 1.2.15
-* crypto: Improve performance of non-stream APIs (Fedor Indutny)
-* tls: always reset this.ssl.error after handling (Fedor Indutny)
-* tls: Prevent mid-stream hangs (Fedor Indutny, isaacs)
-* net: improve arbitrary tcp socket support (Ben Noordhuis)
-* net: handle 'finish' event only after 'connect' (Fedor Indutny)
-* http: Don't hot-path end() for large buffers (isaacs)
-* fs: Missing cb errors are deprecated, not a throw (isaacs)
-* fs: make write/appendFileSync correctly set file mode (Raymond Feng)
-* stream: Return self from readable.wrap (isaacs)
-* stream: Never call decoder.end() multiple times (Gil Pedersen)
-* windows: enable watching signals with process.on('SIGXYZ') (Bert Belder)
-* node: revert removal of MakeCallback (Trevor Norris)
-* node: Unwrap without aborting in handle fd getter (isaacs)
+* npm: actualizar a 1.2.15
+* crypto: Mejorar el rendimiento de APIs que no sean stream (Fedor Indutny)
+* tls: siempre restablecer el error this.ssl.error después del handling (Fedor Indutny)
+* tls: Previene colgaduras de mid-streams (Fedor Indutny, isaacs)
+* net: mejorar el soporte del socket tcp arbitrario (Ben Noordhuis)
+* net: manejar el evento 'finish' solo después de 'connect' (Fedor Indutny)
+* http: No hacer hot-path end() para búferes más grandes (isaacs)
+* fs: Errores cb faltantes son desaprobados, no es un lanzamiento (isaacs)
+* fs: hacer que write/appendFileSync establezca correctamente modo archivo (Raymond Feng)
+* stream: Devolver el mismo del readable.wrap (isaacs)
+* stream: Nunca llamar decoder.end() múltiples veces (Gil Pedersen)
+* windows: habilitar ver señales con process.on('SIGXYZ') (Bert Belder)
+* node: revertir la eliminación de MakeCallback (Trevor Norris)
+* node: Desenvolver sin abortar en el getter del handle fd (isaacs)
 
 <a id="0.10.0"></a>
 
-## 2013.03.11, Version 0.10.0 (Stable)
+## 2013.03.11, Versión 0.10.0 (Estable)
 
 https://github.com/nodejs/node/commit/163ca274230fce536afe76c64676c332693ad7c1
 
-* npm: Upgrade to 1.2.14
-* core: Append filename properly in dlopen on windows (isaacs)
-* zlib: Manage flush flags appropriately (isaacs)
-* domains: Handle errors thrown in nested error handlers (isaacs)
-* buffer: Strip high bits when converting to ascii (Ben Noordhuis)
-* win/msi: Enable modify and repair (Bert Belder)
-* win/msi: Add feature selection for various node parts (Bert Belder)
-* win/msi: use consistent registry key paths (Bert Belder)
-* child_process: support sending dgram socket (Andreas Madsen)
-* fs: Raise EISDIR on Windows when calling fs.read/write on a dir (isaacs)
-* unix: fix strict aliasing warnings, macro-ify functions (Ben Noordhuis)
-* unix: honor UV_THREADPOOL_SIZE environment var (Ben Noordhuis)
-* win/tty: fix typo in color attributes enumeration (Bert Belder)
-* win/tty: don't touch insert mode or quick edit mode (Bert Belder)
+* npm: Actualizar a 1.2.14
+* core: Añadir el nombre de archivo correctamente en dlopen en windows (isaacs)
+* zlib: Manejar limpieza de banderas correctamente (isaacs)
+* domains: Manejar errores arrojados en manejadores de errores anidados (isaacs)
+* buffer: Borrar bits altos cuando se convierta a ascii (Ben Noordhuis)
+* win/msi: Habilitar modificar y reparar (Bert Belder)
+* win/msi: Añadir selección de características para varias partes del nodo (Bert Belder)
+* win/msi: usar rutas de claves de registro consistentes (Bert Belder)
+* child_process: soporta envío de socket dgram (Andreas Madsen)
+* fs: Levantar EISDIR en Windows cuando se llame fs.read/write en un dir (isaacs)
+* unix: reparar advertencias de aliasing estricto, funciones macro-ify (Ben Noordhuis)
+* unix: honor UV_THREADPOOL_SIZE var hambiente (Ben Noordhuis)
+* win/tty: reparar error tipográfico en la enumeración de atributos de color (Bert Belder)
+* win/tty: no tocar el modo insertar o el modo de edición rápida (Bert Belder)

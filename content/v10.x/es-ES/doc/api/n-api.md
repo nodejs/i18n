@@ -3288,13 +3288,13 @@ napi_status napi_create_promise(napi_env env,
                                 napi_value* promise);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] deferred`: A newly created deferred object which can later be passed to `napi_resolve_deferred()` or `napi_reject_deferred()` to resolve resp. reject the associated promise.
-- `[out] promise`: The JavaScript promise associated with the deferred object.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] deferred`: Un objeto diferido creado recientemente que luego puede ser pasado a `napi_resolve_deferred()` o `napi_reject_deferred()` para resolver la respuesta. rechazar la promesa asociada.
+- `[out] promise`: La promesa de JavaScript asociada con el objeto diferido.
 
-Returns `napi_ok` if the API succeeded.
+Devuelve `napi_ok` si la API fue exitosa.
 
-This API creates a deferred object and a JavaScript promise.
+Esta API crea un objeto diferido y una promesa de JavaScript.
 
 ### napi_resolve_deferred
 
@@ -3308,13 +3308,13 @@ napi_status napi_resolve_deferred(napi_env env,
                                   napi_value resolution);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] deferred`: The deferred object whose associated promise to resolve.
-- `[in] resolution`: The value with which to resolve the promise.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] deferred`: El objeto diferido cuya promesa asociada se resolverá.
+- `[in] resolution`: El valor con el cual resolver la promesa.
 
-This API resolves a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to resolve JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
+Esta API resuelve una promesa de JavaScript a través del objeto diferido con el cual está asociada. Por lo tanto, sólo puede ser utilizada para resolver promesas de JavaScript para las cuales esté disponible el objeto diferido correspondiente. Esto significa, efectivamente, que la promesa debe haber sido creada utilizando `napi_create_promise()` y el objeto diferido devuelto de esa llamada debe haber sido retenido para ser pasado a esta API.
 
-The deferred object is freed upon successful completion.
+El objeto diferido es liberado una vez completado con éxito.
 
 ### napi_reject_deferred
 
@@ -3328,13 +3328,13 @@ napi_status napi_reject_deferred(napi_env env,
                                  napi_value rejection);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] deferred`: The deferred object whose associated promise to resolve.
-- `[in] rejection`: The value with which to reject the promise.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] deferred`: El objeto diferido cuya promesa asociada se resolverá.
+- `[in] rejection`: El valor con el cual se rechazará la promesa.
 
-This API rejects a JavaScript promise by way of the deferred object with which it is associated. Thus, it can only be used to reject JavaScript promises for which the corresponding deferred object is available. This effectively means that the promise must have been created using `napi_create_promise()` and the deferred object returned from that call must have been retained in order to be passed to this API.
+Esta API rechaza una promesa de JavaScript a través del objeto diferido al cual está asociada. Por lo tanto, sólo puede ser utilizada para rechazar promesas de JavaScript para las cuales esté disponible el objeto diferido correspondiente. Esto significa, efectivamente, que la promesa debe haber sido creada utilizando `napi_create_promise()` y el objeto diferido devuelto de esa llamada debe haber sido retenido para ser pasado a esta API.
 
-The deferred object is freed upon successful completion.
+El objeto diferido es liberado una vez completado con éxito.
 
 ### napi_is_promise
 
@@ -3348,13 +3348,13 @@ napi_status napi_is_promise(napi_env env,
                             bool* is_promise);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] promise`: The promise to examine
-- `[out] is_promise`: Flag indicating whether `promise` is a native promise object - that is, a promise object created by the underlying engine.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] promise`: La promesa a examinar
+- `[out] is_promise`: Bandera que indica si `promise` es un objeto de promesa nativo, es decir, un objeto de promesa creado por el motor subyacente.
 
-## Script execution
+## Ejecución de Script
 
-N-API provides an API for executing a string containing JavaScript using the underlying JavaScript engine.
+N-API proporciona una API para ejecutar una cadena que contiene JavaScript utilizando el motor subyacente de JavaScript.
 
 ### napi_run_script
 
@@ -3368,13 +3368,13 @@ NAPI_EXTERN napi_status napi_run_script(napi_env env,
                                         napi_value* result);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[in] script`: A JavaScript string containing the script to execute.
-- `[out] result`: The value resulting from having executed the script.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[in] script`: Una cadena de JavaScript que contiene el script a ejecutar.
+- `[out] result`: El valor que resulta de haber ejecutado el script.
 
-## libuv event loop
+## Bucle de Evento libuv
 
-N-API provides a function for getting the current event loop associated with a specific `napi_env`.
+N-API proporciona una función para obtener el bucle de evento actual asociado con un `napi_env` específico.
 
 ### napi_get_uv_event_loop
 
@@ -3387,5 +3387,5 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
                                                uv_loop_t** loop);
 ```
 
-- `[in] env`: The environment that the API is invoked under.
-- `[out] loop`: The current libuv loop instance.
+- `[in] env`: El entorno bajo el que la API se invoca.
+- `[out] loop`: La instancia actual del bucle libuv.

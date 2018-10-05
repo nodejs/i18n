@@ -192,23 +192,23 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array. For example:
+W przypadkach, gdy istnieje więcej niż jeden plik `.cc`, po prostu dodaj dodatkową nazwę pliku do tablicy źródeł ``. Na przykład:
 
 ```json
-"sources": ["addon.cc", "myexample.cc"]
+"źródła": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
+Gdy plik `binding.gyp` jest gotowy, przykładowe dodatki można skonfigurować i zbudować za pomocą `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-### Function arguments
+### Argumenty funkcji
 
-Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
+Dodatki zazwyczaj eksponują obiekty i funkcje, do których można uzyskać dostęp poprzez JavaScript działający w Node.js. Gdy funkcje są wywoływane z JavaScript, argumenty wejściowe i wartość zwracana muszą być mapowane do i z kodu C/C ++.
 
-The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
+Poniższy przykład ilustruje sposób odczytu argumentów funkcji przekazanych przez JavaScript i jak zwrócić wynik:
 
 ```cpp
 // addon.cc
@@ -264,7 +264,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Po skompilowaniu przykładowy Dodatek może być wymagany i używany z poziomu Node.js:
 
 ```js
 // test.js
@@ -273,9 +273,9 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Callbacks
+### Funkcje zwrotne
 
-It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
+Powszechną praktyką w Dodatkach jest przekazywanie funkcji JavaScript do funkcji C++ i wykonywanie ich stamtąd. Poniższy przykład ilustruje jak wywołać takie funkcje zwrotne:
 
 ```cpp
 // addon.cc
@@ -309,9 +309,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
+Zwróć uwagę, że w tym przykładzie używana jest forma dwuargumentowa `Init()`, która odbiera pełny obiekt `modułu` jako drugi argument. To pozwala Dodatkom całkowicie przepisać `eksporty` za pomocą pojedynczej funkcji zamiast dodawania funkcji jako właściwości `eksportu`.
 
-To test it, run the following JavaScript:
+Aby to przetestować, uruchom następujący kod JavaScript:
 
 ```js
 // test.js
@@ -323,11 +323,11 @@ addon((msg) => {
 });
 ```
 
-Note that, in this example, the callback function is invoked synchronously.
+Zauważ, że w tym przykładzie funkcja zwrotna jest wywoływana synchronicznie.
 
-### Object factory
+### Fabryka obiektów
 
-Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
+Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. Obiekt jest tworzony i zwracany za pomocą właściwości`msg`, która odtwarza ciąg znaków przekazany do `createObject ()`:
 
 ```cpp
 // addon.cc
@@ -360,7 +360,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test it in JavaScript:
+Aby przetestować to w JavaScript:
 
 ```js
 // test.js
@@ -372,9 +372,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### Function factory
+### Fabryka funkcji
 
-Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
+Innym częstym scenariuszem jest tworzenie funkcji JavaScript, które obejmują funkcje C++i zwracanie ich z powrotem do JavaScript:
 
 ```cpp
 // addon.cc
@@ -417,7 +417,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-To test:
+Aby przetestować:
 
 ```js
 // test.js
@@ -428,9 +428,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### Wrapping C++ objects
+### Obejmowanie obiektów C++
 
-It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
+Możliwe jest również obejmowanie obiektów/klas C++ w sposób, który pozwala na utworzenie nowych instancji do za pomocą operatora JavaScript `nowy`:
 
 ```cpp
 // addon.cc
@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-In `myobject.cc`, implement the various methods that are to be exposed. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
+W `myobject.cc` implementuj różne metody, które mają zostać naświetlone. Poniżej, metoda `plusOne ()` jest naświetlona poprzez dodanie jej do prototypu konstruktora:
 
 ```cpp
 // myobject.cc
@@ -536,7 +536,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Wywołana jako zwykła funkcja `MyObject (...)`, zamienia się w wywołanie konstruktu.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
@@ -714,7 +714,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Wywołana jako zwykła funkcja `MyObject (...)`, zamienia się w wywołanie konstruktu.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Function> cons = Local<Function>::New(isolate, constructor);
@@ -916,7 +916,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
   } else {
-    // Invoked as plain function `MyObject(...)`, turn into construct call.
+    // Wywołana jako zwykła funkcja `MyObject (...)`, zamienia się w wywołanie konstruktu.
     const int argc = 1;
     Local<Value> argv[argc] = { args[0] };
     Local<Context> context = isolate->GetCurrentContext();
