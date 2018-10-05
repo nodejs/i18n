@@ -80,9 +80,9 @@ added: v0.9.1
 * `...args` {any} Argumentos opcionales a pasar cuando se llama al `callback`.
 * Devuelve: {Immediate} para el uso con [`clearImmediate()`][]
 
-Programa la ejecución "inmediata" del `callback` después de los callbacks de los eventos I/O.
+Programa la ejecución "inmediata" de la `callback` después de las callbacks de los eventos I/O.
 
-Cuando se hacen múltiples llamadas a `setImmediate()`, las funciones `callback` son puestas en cola de ejecución en el orden en el cual son creados. La cola completa del callback es procesada cada iteración del bucle del evento. Si se pone en cola un temporizador inmediato desde dentro de un callback en ejecución, ese temporizador no será activado hasta la siguiente iteración del bucle del evento.
+Cuando se hacen múltiples llamadas a `setImmediate()`, las funciones `callback` son puestas en cola de ejecución en el orden en el cual son creados. La cola completa de la callback es procesada cada iteración del bucle del evento. Si se pone en cola un temporizador inmediato desde dentro de una callback en ejecución, ese temporizador no será activado hasta la siguiente iteración del bucle del evento.
 
 Si `callback` no es una función, se arrojará un [`TypeError`][].
 
@@ -94,7 +94,7 @@ const setImmediatePromise = util.promisify(setImmediate);
 
 setImmediatePromise('foobar').then((value) => {
   // valor === 'foobar' (el pasar valores es opcional)
-  // Esto se ejecuta después de todos los callbacks I/O.
+  // Esto se ejecuta después de todos las callbacks I/O.
 });
 
 // o con una función asincrónica
@@ -136,7 +136,7 @@ added: v0.0.1
 
 Schedules execution of a one-time `callback` after `delay` milliseconds.
 
-The `callback` will likely not be invoked in precisely `delay` milliseconds. Node.js makes no guarantees about the exact timing of when callbacks will fire, nor of their ordering. El callback será llamado lo más cercano posible al tiempo especificado.
+The `callback` will likely not be invoked in precisely `delay` milliseconds. Node.js makes no guarantees about the exact timing of when callbacks will fire, nor of their ordering. La callback será llamada lo más cercano posible al tiempo especificado.
 
 Cuando `delay` es mayor que `2147483647` o menor que `1`, el `delay` será establecido a `1`.
 
@@ -150,7 +150,7 @@ const setTimeoutPromise = util.promisify(setTimeout);
 
 setTimeoutPromise(40, 'foobar').then((value) => {
   // valor === 'foobar' (el pasar valores es opcional)
-  // Esto se ejecuta después de más o menos 40 milisegundos.
+  // Esto se ejecuta después de alrededor de 40 milisegundos.
 });
 ```
 
