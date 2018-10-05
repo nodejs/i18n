@@ -10,13 +10,13 @@ La autorización del lanzamiento es dada por el TSC de Node.js. Una vez autoriza
 
 Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liberado:
 
-**a.** **Pruebas:** **[nodo-prueba-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** es usado para una prueba final para asegurar que el *ENCABEZADO* actual es estable.
+**a.** **Pruebas:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** es usado para una prueba final para asegurar que el *ENCABEZADO* actual es estable.
 
-**b.** **Compilaciones nocturnas:** (opcional) **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** puede ser usado para crear un lanzamiento nocturno para el *ENCABEZADO* actual si se requiere lanzamientos de pruebas públicas. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y se encuentran disponibles para su descarga pública.
+**b.** **Compilaciones nocturnas:** (opcional) **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** puede ser usado para crear un lanzamiento nocturno para el *ENCABEZADO* actual si se requiere lanzamientos de pruebas públicas. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y se encuentran disponibles para su descarga pública.
 
-**c.** **Compilaciones liberadas:** **[iojs+lanzamiento](https://ci-release.nodejs.org/job/iojs+release/)** hace todo el trabajo de compilar todos los activos de lanzamiento requeridos. La promoción de los archivos de lanzamiento es un paso manual una vez que están listos (véase a continuación).
+**c.** **Compilaciones liberadas:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** hace todo el trabajo de compilar todos los activos de lanzamiento requeridos. La promoción de los archivos de lanzamiento es un paso manual una vez que están listos (véase a continuación).
 
-El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el CDT.
+El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el TSC.
 
 ### 2. <nodejs.org> Acceso
 
@@ -26,7 +26,7 @@ Los workers de la compilación del lanzamiento Jenkins workers sube los artefact
 
 Las compilaciones nocturnas son promovidas automáticamente en el servidor por una tarea cron para el usuario *dist*.
 
-Las compilaciones liberadas requieren promoción manual por una persona individual con acceso SSH en el servidor como el usuario*dist*. El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el CDT.
+Las compilaciones liberadas requieren promoción manual por una persona individual con acceso SSH en el servidor como el usuario*dist*. El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el TSC.
 
 ### 3. Una clave GPG pública
 
@@ -42,11 +42,11 @@ La clave que uses pudiera ser una clave secundaria/subclave de una clave existen
 
 Además, huellas de clave GPG completas para individuos autorizados para hacer el lanzamiento deberían estar listadas en el archivo Node.js GitHub README.md.
 
-## Como crear un lanzamiento
+## Cómo crear un lanzamiento
 
 Notas:
 
-- Las fechas listadas a continuación como *"AAAA-MM-DD"* debería ser la fecha del lanzamiento **como UTC**. Usa `date -u +'%Y-%m-%d'` para descubrir que es esto.
+- Las fechas listadas a continuación como *"AAAA-MM-DD"* deberían ser la fecha del lanzamiento **como UTC**. Usa `date -u +'%Y-%m-%d'` para descubrir que es esto.
 - Las versiones de strings están listadas a continuación como *"vx.y.z"*. Substituto para la versión liberada.
 
 ### 1. Hacer cherry-picking desde `master` y otras branches
