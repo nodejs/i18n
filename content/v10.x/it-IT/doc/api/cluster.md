@@ -81,7 +81,7 @@ Sebbene il modulo `cluster` sia usato principalmente nel networking, può essere
 added: v0.7.0
 -->
 
-Un `Worker` object contiene tutte le informazioni pubbliche e il metodo riguardo un worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
+Un `Worker` object contiene tutte le informazioni pubbliche e il metodo riguardanti un worker. Nel master può essere ottenuto utilizzando `cluster.workers`. In un worker può essere ottenuto utilizzando `cluster.worker`.
 
 ### Event: 'disconnect'
 
@@ -89,11 +89,11 @@ Un `Worker` object contiene tutte le informazioni pubbliche e il metodo riguardo
 added: v0.7.7
 -->
 
-Similar to the `cluster.on('disconnect')` event, but specific to this worker.
+Simile all'evento `cluster.on('disconnect')`, ma specifico per questo worker.
 
 ```js
 cluster.fork().on('disconnect', () => {
-  // Worker has disconnected
+  // Il worker si è disconnesso
 });
 ```
 
@@ -103,9 +103,9 @@ cluster.fork().on('disconnect', () => {
 added: v0.7.3
 -->
 
-This event is the same as the one provided by [`child_process.fork()`][].
+Questo evento è uguale a quello fornito da [`child_process.fork()`][].
 
-Within a worker, `process.on('error')` may also be used.
+All'interno di un worker, potrebbe essere utilizzato anche `process.on('error')`.
 
 ### Event: 'exit'
 
@@ -113,10 +113,10 @@ Within a worker, `process.on('error')` may also be used.
 added: v0.11.2
 -->
 
-* `code` {number} The exit code, if it exited normally.
-* `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
+* `code` {number} Il valore di uscita, se esce normalmente.
+* `signal` {string} Il nome del segnale (ad es. `'SIGHUP'`) che ha causato l'arresto del processo.
 
-Similar to the `cluster.on('exit')` event, but specific to this worker.
+Simile all'evento `cluster.on('exit')`, ma specifico per questo worker.
 
 ```js
 const worker = cluster.fork();
@@ -139,15 +139,15 @@ added: v0.7.0
 
 * `address` {Object}
 
-Similar to the `cluster.on('listening')` event, but specific to this worker.
+Simile all'evento `cluster.on('listening')`, ma specifico per questo worker.
 
 ```js
 cluster.fork().on('listening', (address) => {
-  // Worker is listening
+  // Il worker sta ascoltando (listening)
 });
 ```
 
-It is not emitted in the worker.
+Non viene emesso all'interno del worker.
 
 ### Event: 'message'
 
@@ -158,13 +158,13 @@ added: v0.7.0
 * `message` {Object}
 * `handle` {undefined|Object}
 
-Similar to the `'message'` event of `cluster`, but specific to this worker.
+Simile all'evento `'message'` di `cluster`, ma specifico per questo worker.
 
-Within a worker, `process.on('message')` may also be used.
+All'interno di un worker, potrebbe essere utilizzato anche `process.on('message')`.
 
-See [`process` event: `'message'`][].
+Vedi [`process` event: `'message'`][].
 
-As an example, here is a cluster that keeps count of the number of requests in the master process using the message system:
+Ad esempio, ecco un cluster che tiene conto del numero di richieste nel processo master utilizzando il message system:
 
 ```js
 const cluster = require('cluster');
