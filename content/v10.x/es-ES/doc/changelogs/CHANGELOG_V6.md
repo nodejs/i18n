@@ -1024,34 +1024,34 @@ Esta actualización LTS viene con 91 commits. Esto incluye a 29 que están relac
 * [[`86497f1acc`](https://github.com/nodejs/node/commit/86497f1acc)] - **test**: marcar inspector-port-zero-cluster como defectuoso (Refael Ackermann)
 * [[`8dfc2838c8`](https://github.com/nodejs/node/commit/8dfc2838c8)] - **test**: reparar test-readline-interface (Azard) [#14677](https://github.com/nodejs/node/pull/14677)
 * [[`3a6392b283`](https://github.com/nodejs/node/commit/3a6392b283)] - **tls**: reparar análisis issuer/subject/infoAccess vacío (Ben Noordhuis) [#14473](https://github.com/nodejs/node/pull/14473)
-* [[`37dd2adbac`](https://github.com/nodejs/node/commit/37dd2adbac)] - **tools**: fix linter error in html.js (Michaël Zasso) [#15063](https://github.com/nodejs/node/pull/15063)
-* [[`8b3ac4b2a2`](https://github.com/nodejs/node/commit/8b3ac4b2a2)] - **tools**: add custom private key option (Ruslan Bekenev) [#14401](https://github.com/nodejs/node/pull/14401)
-* [[`cac4beb764`](https://github.com/nodejs/node/commit/cac4beb764)] - **tools**: fix update-eslint.sh (Myles Borins) [#14850](https://github.com/nodejs/node/pull/14850)
-* [[`debea1c531`](https://github.com/nodejs/node/commit/debea1c531)] - **tools**: delete an unused argument (phisixersai) [#14251](https://github.com/nodejs/node/pull/14251)
-* [[`ca61f3bd80`](https://github.com/nodejs/node/commit/ca61f3bd80)] - **tools**: fix tools/addon-verify.js (Daniel Bevenius) [#14048](https://github.com/nodejs/node/pull/14048)
-* [[`f7b6d198b9`](https://github.com/nodejs/node/commit/f7b6d198b9)] - **tools**: eslint - use `error` and `off` (Refael Ackermann) [#14061](https://github.com/nodejs/node/pull/14061)
-* [[`f8b85e16cd`](https://github.com/nodejs/node/commit/f8b85e16cd)] - **tools**: replace assert-throw-arguments custom lint (Rich Trott) [#14547](https://github.com/nodejs/node/pull/14547)
+* [[`37dd2adbac`](https://github.com/nodejs/node/commit/37dd2adbac)] - **tools**: reparar error linter en html.js (Michaël Zasso) [#15063](https://github.com/nodejs/node/pull/15063)
+* [[`8b3ac4b2a2`](https://github.com/nodejs/node/commit/8b3ac4b2a2)] - **tools**: añadir opción de clave privada personalizada (Ruslan Bekenev) [#14401](https://github.com/nodejs/node/pull/14401)
+* [[`cac4beb764`](https://github.com/nodejs/node/commit/cac4beb764)] - **tools**: reparar update-eslint.sh (Myles Borins) [#14850](https://github.com/nodejs/node/pull/14850)
+* [[`debea1c531`](https://github.com/nodejs/node/commit/debea1c531)] - **tools**: borrar un argumento no usado (phisixersai) [#14251](https://github.com/nodejs/node/pull/14251)
+* [[`ca61f3bd80`](https://github.com/nodejs/node/commit/ca61f3bd80)] - **tools**: reparar tools/addon-verify.js (Daniel Bevenius) [#14048](https://github.com/nodejs/node/pull/14048)
+* [[`f7b6d198b9`](https://github.com/nodejs/node/commit/f7b6d198b9)] - **tools**: eslint - usar `error` y `off` (Refael Ackermann) [#14061](https://github.com/nodejs/node/pull/14061)
+* [[`f8b85e16cd`](https://github.com/nodejs/node/commit/f8b85e16cd)] - **tools**: reemplazar lint personalizado assert-throw-arguments (Rich Trott) [#14547](https://github.com/nodejs/node/pull/14547)
 
 <a id="6.11.3"></a>
 
-## 2017-09-05, Version 6.11.3 'Boron' (LTS), @MylesBorins
+## 2017-09-05, Versión 6.11.3 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 152 commits. This includes 75 which are test related, 25 which are doc related, 21 which are build / tool related and 3 commits which are updates to dependencies.
+Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están relacionados a pruebas, 25 que están relacionados a documentación, 21 que están relacionados a build / tool y 3 commits que son actualizaciones para dependencias.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: 
-  * Codesigning is fixed on macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
+  * Codesigning está fijado en macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * **deps**: 
-  * Snapshots are turned back on!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
+  * Snapshots están activas de nuevo!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
 * **path**: 
-  * win32 volume-relative paths are working again! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
+  * paths volume-relative de win32 están funcionando de nuevo! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
 * **tools**: 
-  * v6.x can now build with ICU 59 (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
+  * v6.x ahora puede construir con ICU 59 (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
 
 ### Commits
 
-* [[`95be08e3d2`](https://github.com/nodejs/node/commit/95be08e3d2)] - **benchmark**: fix typo in inspect-proxy (Vse Mozhet Byt) [#14237](https://github.com/nodejs/node/pull/14237)
+* [[`95be08e3d2`](https://github.com/nodejs/node/commit/95be08e3d2)] - **benchmark**: corregir error tipográfico en inspect-proxy (Vse Mozhet Byt) [#14237](https://github.com/nodejs/node/pull/14237)
 * [[`dbb65203f1`](https://github.com/nodejs/node/commit/dbb65203f1)] - **buffer**: remove a wrongly added attribute specifier (Jiajie Hu) [#14466](https://github.com/nodejs/node/pull/14466)
 * [[`977fdce406`](https://github.com/nodejs/node/commit/977fdce406)] - **build**: codesign tarball binary on macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * [[`a04d4ea8d7`](https://github.com/nodejs/node/commit/a04d4ea8d7)] - **build**: clean up config_fips.gypi (Daniel Bevenius) [#13837](https://github.com/nodejs/node/pull/13837)
