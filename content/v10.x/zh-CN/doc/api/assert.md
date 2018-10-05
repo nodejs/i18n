@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-如果值不相等，`AssertionError` 会被抛出，同时携带一个 `message` 属性，该属性具有与 `message` 参数一样的值。 如果 `message` 参数未定义，会分配一个默认错误消息。 如果 `message` 参数是 [`Error`] 的一个实例，那么会抛出 `AssertionError`。
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中 `message` 属性的值等于传入的 <0>message</0> 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -269,11 +269,11 @@ changes:
 * 只比较 [可枚举的“own”属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
 * [`Error`] 的名称和信息也会比较，即使不是可枚举的属性。
 * 可枚举的自身 [`Symbol`] 属性也会比较。
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会比较对象与解封装后的值。
+* [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会比较对象与解包装后的值。
 * `对象` 属性的比较是无序的。
-* `Map` keys and `Set` items are compared unordered.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
-* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
+* `Map` 键名和 `Set` 项目的比较是无序的。
+* 当两边的值不相同或遇到循环引用时，递归会停止。
+* [`WeakMap`] 和 [`WeakSet`] 的比较不依赖于它们的值。 请参阅下文了解更多详情。
 
 ```js
 const assert = require('assert').strict;
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的一个实例，那么会抛出 `AssertionError`。
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中 `message` 属性的值等于传入的 <0>message</0> 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的一个实例，那么会抛出 `AssertionError`。
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.fail([message])
 
@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的一个实例，那么会抛出 `AssertionError`。
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的一个实例，那么会抛出 `AssertionError`。
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.ok(value[, message])
 
@@ -833,7 +833,7 @@ changes:
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的一个实例，那么会抛出 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
 
