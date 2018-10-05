@@ -426,18 +426,18 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`dc480f84f9`](https://github.com/nodejs/node/commit/dc480f84f9)] - **tools**: añadir la regla de eslint lowercase-name-for-primitive eslint (Weijia Wang) [#17568](https://github.com/nodejs/node/pull/17568)
 * [[`47322e67c4`](https://github.com/nodejs/node/commit/47322e67c4)] - **tools**: agregar la regla cpplint para uso de "NULL" (Daniel Bevenius) [#17373](https://github.com/nodejs/node/pull/17373)
 * [[`1d3d1ddce7`](https://github.com/nodejs/node/commit/1d3d1ddce7)] - **trace_events**: detener el agente de rastreo en process.exit() (Andreas Madsen) [#18005](https://github.com/nodejs/node/pull/18005)
-* [[`ae4428e967`](https://github.com/nodejs/node/commit/ae4428e967)] - **(SEMVER-MINOR)** **trace_events**: ñadir executionAsyncId a eventos init (Andreas Madsen) [#17196](https://github.com/nodejs/node/pull/17196)
-* [[`2a2c881df3`](https://github.com/nodejs/node/commit/2a2c881df3)] - **(SEMVER-MINOR)** **v8**: make building addons with VS2013 work again (Ben Noordhuis) [#16413](https://github.com/nodejs/node/pull/16413)
-* [[`6df169c409`](https://github.com/nodejs/node/commit/6df169c409)] - **win, build**: fix without-intl option (Bartosz Sosnowski) [#17614](https://github.com/nodejs/node/pull/17614)
+* [[`ae4428e967`](https://github.com/nodejs/node/commit/ae4428e967)] - **(SEMVER-MINOR)** **trace_events**: añadir executionAsyncId a eventos init (Andreas Madsen) [#17196](https://github.com/nodejs/node/pull/17196)
+* [[`2a2c881df3`](https://github.com/nodejs/node/commit/2a2c881df3)] - **(SEMVER-MINOR)** **v8**: hacer que los complementos de compilación con VS2013 vuelvan a funcionar (Ben Noordhuis) [#16413](https://github.com/nodejs/node/pull/16413)
+* [[`6df169c409`](https://github.com/nodejs/node/commit/6df169c409)] - **win, build**: corregir la opción without-intl (Bartosz Sosnowski) [#17614](https://github.com/nodejs/node/pull/17614)
 
 <a id="8.9.4"></a>
 
-## 2018-01-02, Version 8.9.4 'Carbon' (LTS), @gibfahn
+## 2018-01-02, Versión 8.9.4 'Carbon' (LTS), @gibfahn
 
-### Notable Changes
+### Cambios Notables
 
 * **deps**: 
-  * upgrade npm to 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
+  * actualizar npm a 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
 * **build**: 
   * configure can now be run from any directory (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
 
