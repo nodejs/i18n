@@ -53,11 +53,11 @@ Da notare che su Windows non è ancora possibile impostare un pipe server con no
 
 <!--type=misc-->
 
-The worker processes are spawned using the [`child_process.fork()`][] method, so that they can communicate with the parent via IPC and pass server handles back and forth.
+I processi worker vengono generati utilizzando il metodo [`child_process.fork()`][], in modo che possano comunicare con il parent tramite IPC e passare i server handle avanti e indietro.
 
-The cluster module supports two methods of distributing incoming connections.
+Il modulo cluster supporta due metodi di distribuzione delle connessioni in entrata.
 
-The first one (and the default one on all platforms except Windows), is the round-robin approach, where the master process listens on a port, accepts new connections and distributes them across the workers in a round-robin fashion, with some built-in smarts to avoid overloading a worker process.
+Il primo (quello predefinito su tutte le piattaforme eccetto Windows), è l'approccio round-robin, in cui il processo master esegue il listening su una porta, accetta nuove connessioni e le distribuisce tra gli worker in modalità round-robin, con intelligenza integrata per evitare il sovraccarico del processo di un worker.
 
 The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
 
