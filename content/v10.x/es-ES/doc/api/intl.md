@@ -107,13 +107,13 @@ This option makes the resulting binary link against ICU statically and include a
 
 ## Detección de soporte de internacionalización
 
-Para verificar que ICU esté habilitada del todo (`system-icu`, `small-icu` o `full-icu`), simplemente el verificar la existencia de `Intl` debería ser suficiente:
+Para verificar que ICU esté habilitada del todo (`system-icu`, `small-icu` o `full-icu`), simplemente verificar la existencia de `Intl` debería ser suficiente:
 
 ```js
 const hasICU = typeof Intl === 'object';
 ```
 
-Alternativamente, el verificar el `process.versions.icu`, una propiedad definida sólo cuando ICU está habilitado, también funciona:
+Alternativamente, verificar el `process.versions.icu`, una propiedad definida sólo cuando ICU está habilitado, también funciona:
 
 ```js
 const hasICU = typeof process.versions.icu === 'string';
