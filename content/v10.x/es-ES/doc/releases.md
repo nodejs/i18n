@@ -184,13 +184,13 @@ Esto es particularmente recomendado si ha existido trabajo reciente relacionado 
 
 ### 8. Producir Lanzamientos de Compilaciones
 
-Use **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** to produce release artifacts. Enter the commit that you want to build from and select "release" for "disttype".
+Usa **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** para producir el lanzamiento de artefactos. Ingresa el commit de donde quieres compilar y seleccione "release" para "disttype".
 
-Artifacts from each worker are uploaded to Jenkins and are available if further testing is required. Use this opportunity particularly to test macOS and Windows installers if there are any concerns. Click through to the individual workers for a run to find the artifacts.
+Los artefactos de cada worker son subidos a Jenkins y están disponibles si se requiere pruebas adicionales. Usa esta oportunidad particularmente para probar los instaladores de macOS y Windows si hay alguna duda. Haz clic a través de los workers individuales para una ejecución para encontrar los artefactos.
 
-All release workers should achieve "SUCCESS" (and be green, not red). A release with failures should not be promoted as there are likely problems to be investigated.
+Todos los trabajadores lanzados deberían lograr "SUCCESS" (y ser verdes, no rojos). Un lanzamientos con errores no debería ser promovido ya que probablemente hay problemas a ser investigados.
 
-You can rebuild the release as many times as you need prior to promoting them if you encounter problems.
+Puedes recompilar el lanzamiento tantas veces como necesites antes de promoverlos si encuentras problemas.
 
 If you have an error on Windows and need to start again, be aware that you'll get immediate failure unless you wait up to 2 minutes for the linker to stop from previous jobs. i.e. if a build fails after having started compiling, that worker will still have a linker process that's running for another couple of minutes which will prevent Jenkins from clearing the workspace to start a new one. This isn't a big deal, it's just a hassle because it'll result in another failed build if you start again!
 
