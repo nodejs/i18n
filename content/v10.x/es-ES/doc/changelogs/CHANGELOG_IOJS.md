@@ -105,7 +105,7 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * Algunos problemas con temporizadores sin referencia que se ejecutan durante `beforeExit` todavía están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
 * El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
 * `process.send()` no es sincrónico como los docs sugieren, un retroceso introducido en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
-* El llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso crashee en un retroceso fallido. [#894](https://github.com/nodejs/io.js/issues/894)
+* Llamar a `dns.setServers()` mientras que una consulta DNS todavía está en progreso puede causar que el proceso colapse en una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
 * `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/io.js/issues/1435).
 
 ### Commits
@@ -130,7 +130,7 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * [[`b3fee8e6a6`](https://github.com/nodejs/node/commit/b3fee8e6a6)] - **deps**: actualizar a npm 2.14.2 (Kat Marchán) [#2696](https://github.com/nodejs/node/pull/2696)
 * [[`4593539b92`](https://github.com/nodejs/node/commit/4593539b92)] - **deps**: backport 75e43a6 from v8 upstream (saper) [#2636](https://github.com/nodejs/node/pull/2636)
 * [[`2d1438cfe0`](https://github.com/nodejs/node/commit/2d1438cfe0)] - **doc**: arreglar link roto en repl.markdown (Danny Nemer) [#2827](https://github.com/nodejs/node/pull/2827)
-* [[`9dd9c85a48`](https://github.com/nodejs/node/commit/9dd9c85a48)] - **doc**: corregir errores ortográficos en README (Ionică Bizău) [#2852](https://github.com/nodejs/node/pull/2852)
+* [[`9dd9c85a48`](https://github.com/nodejs/node/commit/9dd9c85a48)] - **doc**: corregir errores tipográficos en README (Ionică Bizău) [#2852](https://github.com/nodejs/node/pull/2852)
 * [[`476125d403`](https://github.com/nodejs/node/commit/476125d403)] - **doc**: añadir a tunniclm como un colaborador (Mike Tunnicliffe) [#2826](https://github.com/nodejs/node/pull/2826)
 * [[`0603a92d48`](https://github.com/nodejs/node/commit/0603a92d48)] - **doc**: corregir dos errores de doc en stream y process (Jeremiah Senkpiel) [#2549](https://github.com/nodejs/node/pull/2549)
 * [[`da2902ddfd`](https://github.com/nodejs/node/commit/da2902ddfd)] - **doc**: usar "Calls" en lugar de "Executes" para consistencia (Minwoo Jung) [#2800](https://github.com/nodejs/node/pull/2800)
@@ -150,7 +150,7 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * [[`ca6c3223e1`](https://github.com/nodejs/node/commit/ca6c3223e1)] - **src**: use standard conform snprintf on windows (Karl Skomski) [#2404](https://github.com/nodejs/node/pull/2404)
 * [[`b028978a53`](https://github.com/nodejs/node/commit/b028978a53)] - **src**: fix buffer overflow for long exception lines (Karl Skomski) [#2404](https://github.com/nodejs/node/pull/2404)
 * [[`e73eafd7e7`](https://github.com/nodejs/node/commit/e73eafd7e7)] - **src**: corregir la pérdida de memoria en ExternString (Karl Skomski) [#2402](https://github.com/nodejs/node/pull/2402)
-* [[`d370306de1`](https://github.com/nodejs/node/commit/d370306de1)] - **src**: sólo establecer banderas v8 se argc > 1 (Evan Lucas) [#2646](https://github.com/nodejs/node/pull/2646)
+* [[`d370306de1`](https://github.com/nodejs/node/commit/d370306de1)] - **src**: sólo establecer banderas v8 si argc > 1 (Evan Lucas) [#2646](https://github.com/nodejs/node/pull/2646)
 * [[`ed087836af`](https://github.com/nodejs/node/commit/ed087836af)] - **streams**: refactor LazyTransform to internal/ (Brendan Ashworth) [#2566](https://github.com/nodejs/node/pull/2566)
 * [[`993c22fe0e`](https://github.com/nodejs/node/commit/993c22fe0e)] - **test**: eliminar prueba inhabilitada (Rich Trott) [#2841](https://github.com/nodejs/node/pull/2841)
 * [[`1474f29d1f`](https://github.com/nodejs/node/commit/1474f29d1f)] - **test**: dividir pruebas dns de internet (Rich Trott) [#2802](https://github.com/nodejs/node/pull/2802)
@@ -179,9 +179,9 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 
 * **build**: Add a `--link-module` option to `configure` that can be used to bundle additional JavaScript modules into a built binary (Bradley Meck) [#2497](https://github.com/nodejs/node/pull/2497)
 * **docs**: Merge outstanding doc updates from joyent/node (James M Snell) [#2378](https://github.com/nodejs/node/pull/2378)
-* **http_parser**: Una mejora significa en el rendimiento al hacer que `http.Server` consuma todos los datos iniciales desde su `net.Socket` and analizándolos directamente sin tener que ingresar a JavaScript. Any `'data'` listeners on the `net.Socket` will result in the data being "unconsumed" into JavaScript, thereby undoing any performance gains. (Fedor Indutny) [#2355](https://github.com/nodejs/node/pull/2355)
-* **libuv**: Actualización a 1.7.3 (from 1.6.1), vea [ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog) para más detalles (Saúl Ibarra Corretgé) [#2310](https://github.com/nodejs/node/pull/2310)
-* **V8**: Actualización a 4.4.63.30 (de 4.4.63.26) (Michaël Zasso) [#2482](https://github.com/nodejs/node/pull/2482)
+* **http_parser**: Una mejora significa en el rendimiento al hacer que `http.Server` consuma todos los datos iniciales desde su `net.Socket` y los analice directamente sin tener que ingresar a JavaScript. Any `'data'` listeners on the `net.Socket` will result in the data being "unconsumed" into JavaScript, thereby undoing any performance gains. (Fedor Indutny) [#2355](https://github.com/nodejs/node/pull/2355)
+* **libuv**: Actualización a 1.7.3 (desde 1.6.1), vea [ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog) para más detalles (Saúl Ibarra Corretgé) [#2310](https://github.com/nodejs/node/pull/2310)
+* **V8**: Actualización a 4.4.63.30 (desde 4.4.63.26) (Michaël Zasso) [#2482](https://github.com/nodejs/node/pull/2482)
 
 ### Problemas conocidos
 
