@@ -1758,7 +1758,7 @@ El método `crypto.randomBytes()` no estará completo hasta que haya suficiente 
 
 Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
-La versión asincrónica de `crypto.randomBytes()` se lleva a cabo en una sola solicitud de agrupación de subprocesos. To minimize threadpool task length variation, partition large `randomBytes` requests when doing so as part of fulfilling a client request.
+La versión asincrónica de `crypto.randomBytes()` se lleva a cabo en una sola solicitud de agrupación de subprocesos. Para minimizar la variación de la longitud de la agrupación de subprocesos, particione las solicitudes grandes de `randomBytes` cuando lo haga como parte del cumplimiento de una solicitud de cliente.
 
 ### crypto.randomFillSync(buffer\[, offset\]\[, size\])
 
@@ -1771,12 +1771,12 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Debe ser suministrada.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
-- Returns: {Buffer}
+- Devuelve: {Buffer}
 
-Synchronous version of [`crypto.randomFill()`][].
+Versión sincrónica de [`crypto.randomFill()`][].
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1790,7 +1790,7 @@ crypto.randomFillSync(buf, 5, 5);
 console.log(buf.toString('hex'));
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Cualquier instancia `TypedArray` o `DataView` puede pasarse como `buffer`.
 
 ```js
 const a = new Uint32Array(10);
@@ -1814,14 +1814,14 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Debe ser suministrada.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - `callback` {Function} `function(err, buf) {}`.
 
-This function is similar to [`crypto.randomBytes()`][] but requires the first argument to be a [`Buffer`][] that will be filled. It also requires that a callback is passed in.
+Esta función es similar a [`crypto.randomBytes()`][] pero requiere que el primer argumento sea un [`Buffer`][] que será llenado. También requiere que pase una devolución de llamada.
 
-If the `callback` function is not provided, an error will be thrown.
+Si la función `callback` no es proporcionada, se producirá un error.
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1842,7 +1842,7 @@ crypto.randomFill(buf, 5, 5, (err, buf) => {
 });
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Cualquier instancia `TypedArray` o `DataView` puede pasarse como `buffer`.
 
 ```js
 const a = new Uint32Array(10);
