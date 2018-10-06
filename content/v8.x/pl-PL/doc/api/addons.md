@@ -192,7 +192,7 @@ Each of these examples using the following `binding.gyp` file:
 }
 ```
 
-W przypadkach, gdy istnieje więcej niż jeden plik `.cc`, po prostu dodaj dodatkową nazwę pliku do tablicy źródeł ``. Na przykład:
+W przypadkach, gdy istnieje więcej niż jeden plik `.cc`, po prostu dodaj dodatkową nazwę pliku do tablicy `źródeł`. Na przykład:
 
 ```json
 "źródła": ["addon.cc", "myexample.cc"]
@@ -327,7 +327,7 @@ Zauważ, że w tym przykładzie funkcja zwrotna jest wywoływana synchronicznie.
 
 ### Fabryka obiektów
 
-Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. Obiekt jest tworzony i zwracany za pomocą właściwości`msg`, która odtwarza ciąg znaków przekazany do `createObject ()`:
+Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. Obiekt jest tworzony i zwracany za pomocą właściwości`msg`, która odtwarza ciąg znaków przekazany do `createObject()`:
 
 ```cpp
 // addon.cc
@@ -482,7 +482,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-W `myobject.cc` implementuj różne metody, które mają zostać naświetlone. Poniżej, metoda `plusOne ()` jest naświetlona poprzez dodanie jej do prototypu konstruktora:
+W `myobject.cc` implementuj różne metody, które mają zostać naświetlone. Poniżej, metoda `plusOne()` jest naświetlona poprzez dodanie jej do prototypu konstruktora:
 
 ```cpp
 // myobject.cc
