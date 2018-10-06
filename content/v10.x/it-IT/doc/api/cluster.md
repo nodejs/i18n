@@ -348,9 +348,9 @@ Questa funzione arresta il worker. Nel master, lo fa disconnettendo `worker.proc
 
 Fa sì che venga impostato `.exitedAfterDisconnect`.
 
-This method is aliased as `worker.destroy()` for backwards compatibility.
+Questo metodo è conosciuto anche come `worker.destroy()` per l'utilizzo retrocompatibile.
 
-Note that in a worker, `process.kill()` exists, but it is not this function, it is [`kill`][].
+Da notare che all'interno di un worker, esiste `process.kill()`, ma non è questa funzione, in quanto la funzione è [`kill`][].
 
 ### worker.process
 
@@ -360,9 +360,9 @@ added: v0.7.0
 
 * {ChildProcess}
 
-All workers are created using [`child_process.fork()`][], the returned object from this function is stored as `.process`. In a worker, the global `process` is stored.
+Tutti gli worker vengono creati utilizzando [`child_process.fork()`][], l'object restituito da questa funzione è memorizzato come `.process`. In un worker, viene memorizzato il `process` globale.
 
-See: [Child Process module](child_process.html#child_process_child_process_fork_modulepath_args_options).
+Vedi: [Modulo Child Process](child_process.html#child_process_child_process_fork_modulepath_args_options).
 
 Note that workers will call `process.exit(0)` if the `'disconnect'` event occurs on `process` and `.exitedAfterDisconnect` is not `true`. This protects against accidental disconnection.
 
