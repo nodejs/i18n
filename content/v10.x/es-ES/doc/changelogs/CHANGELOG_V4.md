@@ -1888,7 +1888,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 * **https**: 
   * Bajo ciertas condiciones, los sockets ssl pueden haber estado causando una pérdida de memoria cuando se habilita keepalive. Esto ya no es el caso. (Alexander Penev) [#5713](https://github.com/nodejs/node/pull/5713)
 * **lib**: 
-  * The way that we were internally passing arguments was causing a potential leak. By copying the arguments into an array we can avoid this. (Nathan Woltman) [#4361](https://github.com/nodejs/node/pull/4361)
+  * La forma en la que pasábamos argumentos internamente estaba causando una fuga potencial. By copying the arguments into an array we can avoid this. (Nathan Woltman) [#4361](https://github.com/nodejs/node/pull/4361)
 * **npm**: 
   * Upgrade to v2.15.1. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Los tokens de autenticación han sido previamente enviados con cada solicitud realizada por el CLI para los usuarios logueados, sin importar el destino de la solicitud. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. (Forrest L Norvell)
 * **repl**: 
