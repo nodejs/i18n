@@ -1649,15 +1649,15 @@ added: v0.11.14
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `key` {string} Clave privada con codificación PEM.
+  - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Devuelve: {Buffer} Un nuevo `Buffer` con el contenido descifrado.
 
-Decrypts `buffer` with `privateKey`.
+Descifra `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`privateKey` puede ser un objeto o una string. Si `privateKey` es una string, es tratada como la clave sin frase de contraseña y va a usar `RSA_PKCS1_OAEP_PADDING`.
 
 ### crypto.privateEncrypt(privateKey, buffer)
 
@@ -1666,15 +1666,15 @@ added: v1.1.0
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Clave privada con codificación PEM.
+  - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the encrypted content.
+- Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
-Encrypts `buffer` with `privateKey`.
+Encripta `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`privateKey` puede ser un objeto o una string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
 
 ### crypto.publicDecrypt(key, buffer)
 
