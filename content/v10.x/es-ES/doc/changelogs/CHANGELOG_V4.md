@@ -2079,7 +2079,7 @@ This LTS release comes with 113 commits, 56 of which are doc related, 18 of whic
 
 In December we announced that we would be doing a minor release in order to get a number of voted on SEMVER-MINOR changes into LTS. Our ability to release this was delayed due to the unforeseen security release v4.3. We are quickly bumping to v4.4 in order to bring you the features that we had committed to releasing.
 
-This release also includes over 70 fixes to our docs and over 50 fixes to tests.
+Este lanzamiento también incluye más de 70 arreglos en nuestros documentos y más de 50 arreglos en nuestras pruebas.
 
 ### Notable changes
 
