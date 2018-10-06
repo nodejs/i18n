@@ -1579,7 +1579,7 @@ Este lanzamiento LTS viene con 89 commits. This includes 46 commits that are doc
 ### Notable Changes
 
 * **debugger**: 
-  * All properties of an array (aside from length) can now be printed in the repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
+  * Todas las propiedades de un array (aparte de la longitud) ahora se pueden imprimir en el repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
 * **npm**: 
   * Upgrade npm to 2.15.8 (Rebecca Turner) [#7412](https://github.com/nodejs/node/pull/7412)
 * **stream**: 
@@ -1709,7 +1709,7 @@ Este lanzamiento está específicamente relacionado con una vulnerabilidad de de
 * **deps**: 
   * update npm to 2.15.5 (Rebecca Turner) [#6663](https://github.com/nodejs/node/pull/6663)
 * **http**: 
-  * Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999 (Brian White) [#6291](https://github.com/nodejs/node/pull/6291)
+  * Invalid status codes can no longer be sent. Limitado a números de 3 dígitos entre 100 - 999 (Brian White) [#6291](https://github.com/nodejs/node/pull/6291)
 
 ### Commits
 
