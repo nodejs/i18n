@@ -316,9 +316,9 @@ added: v0.8.0
 
 * {number}
 
-Each new worker is given its own unique id, this id is stored in the `id`.
+Ad ogni nuovo worker viene assegnato un ID univoco personale, questo ID è memorizzato in `id`.
 
-While a worker is alive, this is the key that indexes it in `cluster.workers`.
+Mentre un worker è in funzione, questa è la key che lo indicizza in all'interno di `cluster.workers`.
 
 ### worker.isConnected()
 
@@ -326,7 +326,7 @@ While a worker is alive, this is the key that indexes it in `cluster.workers`.
 added: v0.11.14
 -->
 
-This function returns `true` if the worker is connected to its master via its IPC channel, `false` otherwise. A worker is connected to its master after it has been created. It is disconnected after the `'disconnect'` event is emitted.
+Questa funzione restituisce `true` se il worker è connesso al suo master tramite il suo canale IPC, in caso contrario `false`. Un worker viene connesso al suo master dopo esser stato creato. Viene disconnesso dopo aver emesso l'evento `'disconnect'`.
 
 ### worker.isDead()
 
@@ -334,7 +334,7 @@ This function returns `true` if the worker is connected to its master via its IP
 added: v0.11.14
 -->
 
-This function returns `true` if the worker's process has terminated (either because of exiting or being signaled). Otherwise, it returns `false`.
+Questa funzione restituisce `true` se il processo del worker si è concluso (a causa dell'uscita o della segnalazione). In caso contrario, restituisce `false`.
 
 ### worker.kill([signal='SIGTERM'])
 
@@ -342,7 +342,7 @@ This function returns `true` if the worker's process has terminated (either beca
 added: v0.9.12
 -->
 
-* `signal` {string} Name of the kill signal to send to the worker process.
+* `signal` {string} Nome del segnale kill da inviare al processo worker.
 
 This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
 
