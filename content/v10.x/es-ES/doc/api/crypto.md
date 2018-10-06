@@ -1708,9 +1708,9 @@ added: v0.11.14
 - `buffer` {Buffer | TypedArray | DataView}
 - Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
-Encrypts the content of `buffer` with `key` and returns a new [`Buffer`][] with encrypted content.
+Encripta en contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][] con el contenido encriptado.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`key` puede ser un objeto o una string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
 
 Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
