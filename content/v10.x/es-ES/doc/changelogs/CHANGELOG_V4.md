@@ -639,7 +639,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ## 2017-01-05, Version 4.7.2 'Argon' (LTS), @MylesBorins
 
-Este es un lanzamiento especial que contiene 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. Para eliminar cualquier ambigüedad en cuanto al lanzamiento, hemos optado por hacer un lanzamiento de un parche de servidor sin cambios.
+Este es un lanzamiento especial que contiene 0 commits. While promoting additional platforms for v4.7.1 after the release, the tarballs on the release server were overwritten and now have different shasums. Para eliminar cualquier ambigüedad en cuanto al lanzamiento, hemos optado por hacer un lanzamiento de un parche semver sin cambios.
 
 ### Notable Changes
 
@@ -734,7 +734,7 @@ Este lanzamiento LTS viene con 180 commits. This includes 117 which are test rel
 * [[`b5012f3de2`](https://github.com/nodejs/node/commit/b5012f3de2)] - **test**: add expectWarning to common (Michaël Zasso) [#8662](https://github.com/nodejs/node/pull/8662)
 * [[`b98813d97c`](https://github.com/nodejs/node/commit/b98813d97c)] - **test**: refactor test-fs-non-number-arguments-throw (Michaël Zasso) [#9844](https://github.com/nodejs/node/pull/9844)
 * [[`80a752708a`](https://github.com/nodejs/node/commit/80a752708a)] - **test**: refactor test-dgram-exclusive-implicit-bind (Cesar Hernandez) [#10066](https://github.com/nodejs/node/pull/10066)
-* [[`9b974b4d54`](https://github.com/nodejs/node/commit/9b974b4d54)] - **test**: use `assert.strictEqual` (anoff) [#9975](https://github.com/nodejs/node/pull/9975)
+* [[`9b974b4d54`](https://github.com/nodejs/node/commit/9b974b4d54)] - **prueba**: utilice `assert.strictEqual` (anoff) [#9975](https://github.com/nodejs/node/pull/9975)
 * [[`bc125bd729`](https://github.com/nodejs/node/commit/bc125bd729)] - **test**: change assert.equal to assert.strictEqual (Aileen) [#9946](https://github.com/nodejs/node/pull/9946)
 * [[`5049a10278`](https://github.com/nodejs/node/commit/5049a10278)] - **test**: changed assert.equal to assert.strictEqual (vazina robertson) [#10015](https://github.com/nodejs/node/pull/10015)
 * [[`b5c60edeed`](https://github.com/nodejs/node/commit/b5c60edeed)] - **test**: renamed assert.Equal to assert.strictEqual (Jared Young)
