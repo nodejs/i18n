@@ -250,7 +250,7 @@ Quanto detto sopra si applica *solo* alle connessioni ai server, le connessioni 
 
 Da notare che in un worker esiste `process.disconnect`, ma non è questa funzione, in quanto la funzione è [`disconnect`][].
 
-Because long living server connections may block workers from disconnecting, it may be useful to send a message, so application specific actions may be taken to close them. It also may be useful to implement a timeout, killing a worker if the `'disconnect'` event has not been emitted after some time.
+Poiché le connessioni ai server di lunga durata potrebbero impedire la disconnessione degli worker, potrebbe essere utile inviare un messaggio, così da intraprendere azioni specifiche per chiuderle. It also may be useful to implement a timeout, killing a worker if the `'disconnect'` event has not been emitted after some time.
 
 ```js
 if (cluster.isMaster) {
