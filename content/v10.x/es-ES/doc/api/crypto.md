@@ -1577,7 +1577,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-The `crypto.DEFAULT_ENCODING` property can be used to change the way the `derivedKey` is passed to the callback. This property, however, has been deprecated and use should be avoided.
+La propiedad `crypto.DEFAULT_ENCODING` puede ser usada para cambiar la forma en que la `derivedKey` es pasada a la devolución de llamada. Esta propiedad, sin embargo, ha quedado en desuso y debe evitarse su utilización.
 
 ```js
 const crypto = require('crypto');
@@ -1588,7 +1588,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, derivedKey) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
 Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
