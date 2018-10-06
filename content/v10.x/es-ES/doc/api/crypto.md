@@ -1881,7 +1881,7 @@ Cargue y configure el `engine` para algunas o todas las funciones OpenSSL (selec
 
 `engine` puede ser tanto un id o una ruta a la biblioteca compartida del motor.
 
-El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. The `flags` is a bit field taking one of or a mix of the following flags (defined in `crypto.constants`):
+El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. Las `flags` es un campo de bits que toma una o una mezcla de los siguientes flags (definidos en `crypto.constants`):
 
 - `crypto.constants.ENGINE_METHOD_RSA`
 - `crypto.constants.ENGINE_METHOD_DSA`
@@ -1895,7 +1895,7 @@ El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. The `flags` i
 - `crypto.constants.ENGINE_METHOD_ALL`
 - `crypto.constants.ENGINE_METHOD_NONE`
 
-The flags below are deprecated in OpenSSL-1.1.0.
+Las siguientes flags están en desuso en OpenSSL-1.1.0.
 
 - `crypto.constants.ENGINE_METHOD_ECDH`
 - `crypto.constants.ENGINE_METHOD_ECDSA`
@@ -1907,9 +1907,9 @@ The flags below are deprecated in OpenSSL-1.1.0.
 added: v10.0.0
 -->
 
-- `bool` {boolean} `true` to enable FIPS mode.
+- `bool` {boolean} `true` para habilitar el modo FIPS.
 
-Enables the FIPS compliant crypto provider in a FIPS-enabled Node.js build. Throws an error if FIPS mode is not available.
+Habilita al proveedor de cifrado compatible FIPS en una compilación de Node.js habilitada para FIPS. Throws an error if FIPS mode is not available.
 
 ### crypto.timingSafeEqual(a, b)
 
