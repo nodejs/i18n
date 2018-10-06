@@ -244,11 +244,11 @@ Nel master, viene inviato un messaggio interno al worker che lo porta a chiamare
 
 Fa sì che venga impostato `.exitedAfterDisconnect`.
 
-Da notare che dopo che un server è stato chiuso, questo non accetterà più nuove connessioni, però le connessioni potrebbero essere accettate da qualsiasi altro listening worker. Le connessioni esistenti avranno il permesso di chiudersi come al solito. When no more connections exist, see [`server.close()`][], the IPC channel to the worker will close allowing it to die gracefully.
+Da notare che dopo che un server è stato chiuso, questo non accetterà più nuove connessioni, però le connessioni potrebbero essere accettate da qualsiasi altro listening worker. Le connessioni esistenti avranno il permesso di chiudersi come al solito. Quando non ci sono più connessioni, vedi [`server.close()`][], il canale IPC collegato al worker si chiuderà permettendogli di arrestarsi lentamente.
 
-The above applies *only* to server connections, client connections are not automatically closed by workers, and disconnect does not wait for them to close before exiting.
+Quanto detto sopra si applica *solo* alle connessioni ai server, le connessioni ai client non vengono automaticamente chiuse dagli worker e disconnect non attende la loro chiusura prima di concludersi.
 
-Note that in a worker, `process.disconnect` exists, but it is not this function, it is [`disconnect`][].
+Da notare che in un worker esiste `process.disconnect`, ma non è questa funzione, in quanto la funzione è [`disconnect`][].
 
 Because long living server connections may block workers from disconnecting, it may be useful to send a message, so application specific actions may be taken to close them. It also may be useful to implement a timeout, killing a worker if the `'disconnect'` event has not been emitted after some time.
 
