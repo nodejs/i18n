@@ -1619,11 +1619,11 @@ Proporciona una implementación asincrónica de la función 2 (PBKDF2) de deriva
 
 Si ocurre un error, se arrojará un `Error`, de no ser así, la clave derivada será devuelta como un [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento `iterations` debe ser un número establecido lo más alto posible. Mientras más alto sea el número de iteraciones, más segura será la clave derivada, pero tomará mucho más tiempo para completarse.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+La `salt` también deber ser lo más única posible. Es recomendable que las sales sean aleatorias y que sus longitudes sean de al menos 16 bytes. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');
@@ -1631,7 +1631,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-The `crypto.DEFAULT_ENCODING` property may be used to change the way the `derivedKey` is returned. This property, however, has been deprecated and use should be avoided.
+La propiedad `crypto.DEFAULT_ENCODING` puede ser usada para cambiar la forma en la que la `derivedKey` es devuelta. Esta propiedad, sin embargo, ha quedado en desuso y debe evitarse su utilización.
 
 ```js
 const crypto = require('crypto');
@@ -1640,7 +1640,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key);  // '3745e48...aa39b34'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
