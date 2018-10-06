@@ -1745,7 +1745,7 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-If the `callback` function is not provided, the random bytes are generated synchronously and returned as a [`Buffer`][]. An error will be thrown if there is a problem generating the bytes.
+Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Un error se producirá si hay un problema generando los bytes.
 
 ```js
 // Synchronous
@@ -1754,7 +1754,7 @@ console.log(
   `${buf.length} bytes of random data: ${buf.toString('hex')}`);
 ```
 
-The `crypto.randomBytes()` method will not complete until there is sufficient entropy available. This should normally never take longer than a few milliseconds. The only time when generating the random bytes may conceivably block for a longer period of time is right after boot, when the whole system is still low on entropy.
+El método `crypto.randomBytes()` no estará completo hasta que haya suficiente entropía disponible. Esto normalmente no debe tardar más de unos pocos milisegundos. The only time when generating the random bytes may conceivably block for a longer period of time is right after boot, when the whole system is still low on entropy.
 
 Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
