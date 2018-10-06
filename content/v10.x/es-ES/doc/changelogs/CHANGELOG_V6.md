@@ -1101,7 +1101,7 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 * [[`39f62403c7`](https://github.com/nodejs/node/commit/39f62403c7)] - **linkedlist**: corregir gramática en comentarios (alexbostock) [#14546](https://github.com/nodejs/node/pull/14546)
 * [[`e82a9144ed`](https://github.com/nodejs/node/commit/e82a9144ed)] - **path**: remover copias de string innecesarias (Tobias Nießen) [#14438](https://github.com/nodejs/node/pull/14438)
 * [[`eefd32264e`](https://github.com/nodejs/node/commit/eefd32264e)] - **path**: reparar las rutas volume-relative en win32 (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
-* [[`fe6735cc19`](https://github.com/nodejs/node/commit/fe6735cc19)] - **src**: usar strings existentes por encima de crear nuevos (Anna Henningsen) [#14587](https://github.com/nodejs/node/pull/14587)
+* [[`fe6735cc19`](https://github.com/nodejs/node/commit/fe6735cc19)] - **src**: es preferible usar strings existentes a crear nuevos (Anna Henningsen) [#14587](https://github.com/nodejs/node/pull/14587)
 * [[`4d3b76d2be`](https://github.com/nodejs/node/commit/4d3b76d2be)] - **src**: remover GTEST_DONT_DEFINE_ASSERT_EQ en util.h (Daniel Bevenius) [#12638](https://github.com/nodejs/node/pull/12638)
 * [[`51364b746f`](https://github.com/nodejs/node/commit/51364b746f)] - **src**: mover crypto_bio/clienthello a crypto ns (Daniel Bevenius) [#13957](https://github.com/nodejs/node/pull/13957)
 * [[`35f911152a`](https://github.com/nodejs/node/commit/35f911152a)] - **src**: añadir nueva línea faltante a mensaje impreso (Timothy Gu) [#13940](https://github.com/nodejs/node/pull/13940)
