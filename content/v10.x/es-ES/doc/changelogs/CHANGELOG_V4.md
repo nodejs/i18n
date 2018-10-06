@@ -2341,14 +2341,14 @@ Notable semver patch changes include:
 
 ## 2016-03-02, Version 4.3.2 'Argon' (LTS), @thealphanerd
 
-Esto es un lanzamiento de seguridad con un solo commit, una actualización a openssl debido a una reciente advertencia de seguridad. You can read more about the security advisory on [the Node.js website](https://nodejs.org/en/blog/vulnerability/openssl-march-2016/)
+Esto es un lanzamiento de seguridad con un solo commit, una actualización a openssl debido a una reciente advertencia de seguridad. Puede leer más sobre la advertencia de seguridad en [el sitio web de Node.js](https://nodejs.org/en/blog/vulnerability/openssl-march-2016/)
 
-### Notable changes
+### Cambios notables
 
 * **openssl**: Upgrade from 1.0.2f to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507) 
   * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
-  * Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are *unlikely* to be possible. More info is available at [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797).
-  * Fix a defect that makes the *[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
+  * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` y `BN_dec2bn()` . Se cree que Node.js no está invocando las rutas de código que utilizan estas funciones para que los ataques prácticos a través de Node.js que utilizan este defecto son *poco probables* que sucedan. Hay más información disponible en [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797) .
+  * Repara un defecto que hace que suceda el *[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* . Este defecto permite a los atacantes ejecutar ataques de canales laterales, conduciendo a la recuperación potencial de todas las claves privadas RSA. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
 
 ## Commits
 
