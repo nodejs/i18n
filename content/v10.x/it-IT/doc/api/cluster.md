@@ -250,7 +250,7 @@ Quanto detto sopra si applica *solo* alle connessioni ai server, le connessioni 
 
 Da notare che in un worker esiste `process.disconnect`, ma non è questa funzione, in quanto la funzione è [`disconnect`][].
 
-Poiché le connessioni ai server di lunga durata potrebbero impedire la disconnessione degli worker, potrebbe essere utile inviare un messaggio, così da intraprendere azioni specifiche per chiuderle. It also may be useful to implement a timeout, killing a worker if the `'disconnect'` event has not been emitted after some time.
+Poiché le connessioni ai server di lunga durata potrebbero impedire la disconnessione degli worker, potrebbe essere utile inviare un messaggio, così da intraprendere azioni specifiche per chiuderle. Potrebbe anche essere utile implementare un timeout, il quale arresta un worker se l'evento `'disconnect'` non è stato emesso dopo un determinato lasso di tempo.
 
 ```js
 if (cluster.isMaster) {
@@ -272,14 +272,14 @@ if (cluster.isMaster) {
 } else if (cluster.isWorker) {
   const net = require('net');
   const server = net.createServer((socket) => {
-    // connections never end
+    // le connessioni non finiscono mai
   });
 
   server.listen(8000);
 
   process.on('message', (msg) => {
     if (msg === 'shutdown') {
-      // initiate graceful close of any connections to server
+      // avvia lentamente la chiusura di tutte le connessioni al server
     }
   });
 }
@@ -293,9 +293,9 @@ added: v6.0.0
 
 * {boolean}
 
-Set by calling `.kill()` or `.disconnect()`. Until then, it is `undefined`.
+Si imposta chiamando `.kill()` o `.disconnect()`. Finché non viene impostato, è `undefined`.
 
-The boolean [`worker.exitedAfterDisconnect`][] allows distinguishing between voluntary and accidental exit, the master may choose not to respawn a worker based on this value.
+Il valore booleano [`worker.exitedAfterDisconnect`][] consente di distinguere tra l'uscita volontaria e quella accidentale, il master potrebbe scegliere se rigenerare o meno un worker in base a questo valore.
 
 ```js
 cluster.on('exit', (worker, code, signal) => {
@@ -304,7 +304,7 @@ cluster.on('exit', (worker, code, signal) => {
   }
 });
 
-// kill worker
+// arresta il worker
 worker.kill();
 ```
 
