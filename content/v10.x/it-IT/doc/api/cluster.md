@@ -172,20 +172,21 @@ const http = require('http');
 
 if (cluster.isMaster) {
 
-  // Keep track of http requests
+  // Tieni traccia delle richieste http
   let numReqs = 0;
   setInterval(() => {
     console.log(`numReqs = ${numReqs}`);
   }, 1000);
 
-  // Count requests
+  // Conta le richieste
   function messageHandler(msg) {
     if (msg.cmd && msg.cmd === 'notifyRequest') {
       numReqs += 1;
     }
   }
 
-  // Start workers and listen for messages containing notifyRequest
+  // Avvia gli worker ed ascolta (listening) i messaggi che contengono
+notifyRequest
   const numCPUs = require('os').cpus().length;
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -197,12 +198,12 @@ if (cluster.isMaster) {
 
 } else {
 
-  // Worker processes have a http server.
+  // I processi worker hanno un server http.
   http.Server((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
 
-    // notify master about the request
+    // avvisa il master riguardo la richiesta
     process.send({ cmd: 'notifyRequest' });
   }).listen(8000);
 }
@@ -214,15 +215,15 @@ if (cluster.isMaster) {
 added: v0.7.0
 -->
 
-Similar to the `cluster.on('online')` event, but specific to this worker.
+Simile all'evento `cluster.on('online')`, ma specifico per questo worker.
 
 ```js
 cluster.fork().on('online', () => {
-  // Worker is online
+  // Il worker è online
 });
 ```
 
-It is not emitted in the worker.
+Non viene emesso all'interno del worker.
 
 ### worker.disconnect()
 
@@ -235,7 +236,7 @@ changes:
     description: This method now returns a reference to `worker`.
 -->
 
-* Returns: {cluster.Worker} A reference to `worker`.
+* Restituisce: {cluster.Worker} Un riferimento a `worker`.
 
 In a worker, this function will close all servers, wait for the `'close'` event on those servers, and then disconnect the IPC channel.
 
