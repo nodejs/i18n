@@ -298,13 +298,13 @@ Correcciones para los siguiente CVEs están incluidos en esta actualización:
 
 * **assert**: 
   * De ahora en adelante en todos los mensajes de error producidos por `assert` en modo estricto producirán un diff de error. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
-  * De ahora en adelante es posible utilizar un objeto de validación en lanzamientos en lugar de otras posibilidades. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
+  * De ahora en adelante, es posible utilizar un objeto de validación en lanzamientos, en lugar de otras posibilidades. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
 * **crypto**: 
-  * permite pasar null como IV a menos que sea requerido (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
+  * permitir pasar null como IV a menos que sea requerido (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
 * **fs**: 
-  * soporta las banderas as y as+ en stringToFlags() (Sarat Addepalli)
+  * soportar banderas as y as+ en stringToFlags() (Sarat Addepalli)
 * **tls**: 
-  * expone los mensajes finalizados en TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
+  * exponer los mensajes finalizados en TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
 * **tty**: 
   * Agrega la función getColorDepth para determinar si el terminal admite colores. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
 * **util**: 
