@@ -185,7 +185,7 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 
 ### Problemas conocidos
 
-Vaa https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y completa de problemas conocidos.
+Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y completa de problemas conocidos.
 
 * Algunos usos de las propiedades abreviadas de objetos computados no son manejados correctamente por la versión actual de V8. e.g. `[{ [prop]: val }]` evaluates to `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
 * Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/io.js/issues/1264).
