@@ -1565,9 +1565,9 @@ La función `callback` es llamada con dos argumentos: `err` y `derivedKey`. Si u
 
 El argumento `iterations` debe ser un número establecido lo más alto posible. Mientras más alto sea el número de iteraciones, más segura será la clave derivada, pero tomará mucho más tiempo para completarse.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+La `salt` también debe ser lo más única posible. Es recomendable que las sales sean aleatorias y que sus longitudes sean de al menos de 16 bytes. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');
