@@ -1674,7 +1674,7 @@ added: v1.1.0
 
 Encripta `buffer` con la `privateKey`.
 
-`privateKey` puede ser un objeto o una string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`privateKey` puede ser un objeto o una string. Si `privateKey` es una string, es tratada como la clave sin frase de contraseña y va a usar `RSA_PKCS1_PADDING`.
 
 ### crypto.publicDecrypt(key, buffer)
 
@@ -1683,15 +1683,15 @@ added: v1.1.0
 -->
 
 - `key` {Object | string} 
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Clave pública o privada con codificación PEM.
+  - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Devuelve: {Buffer} Un nuevo `Buffer` con el contenido descifrado.
 
-Decrypts `buffer` with `key`.
+Descifra `buffer` con la `key`.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`key` puede ser un objeto o una string. Si `key` es una string, es tratada como una clave sin frase de contraseña y va a usar `RSA_PKCS1_PADDING`.
 
 Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
