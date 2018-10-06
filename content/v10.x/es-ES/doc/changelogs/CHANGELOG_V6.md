@@ -1013,7 +1013,7 @@ Esta actualización LTS viene con 91 commits. Esto incluye a 29 que están relac
 * [[`1aac05b087`](https://github.com/nodejs/node/commit/1aac05b087)] - **test**: cubrir todos los métodos HTTP que soporte el analizador (Oky Antoro) [#14773](https://github.com/nodejs/node/pull/14773)
 * [[`9f330250b5`](https://github.com/nodejs/node/commit/9f330250b5)] - **test**: remover `using` redundante en cctest (XadillaX) [#14739](https://github.com/nodejs/node/pull/14739)
 * [[`91649b913c`](https://github.com/nodejs/node/commit/91649b913c)] - **test**: hacer más estrictos a los chequeos de test-tls-connect (Rich Trott) [#14695](https://github.com/nodejs/node/pull/14695)
-* [[`9ed2c4cb0e`](https://github.com/nodejs/node/commit/9ed2c4cb0e)] - **test**: añadir alcance de bloque a test-readline-interface (Rich Trott) [#14615](https://github.com/nodejs/node/pull/14615)
+* [[`9ed2c4cb0e`](https://github.com/nodejs/node/commit/9ed2c4cb0e)] - **test**: añadir aplicación de ámbito de bloque a test-readline-interface (Rich Trott) [#14615](https://github.com/nodejs/node/pull/14615)
 * [[`4fb755c432`](https://github.com/nodejs/node/commit/4fb755c432)] - **test**: establecer el error de carga del módulo para aix (Prakash Palaniappan) [#14511](https://github.com/nodejs/node/pull/14511)
 * [[`9d8464161e`](https://github.com/nodejs/node/commit/9d8464161e)] - **test**: reparar conversión de microsegundos en la prueba (Nick Stanish) [#14706](https://github.com/nodejs/node/pull/14706)
 * [[`28b77d1f8b`](https://github.com/nodejs/node/commit/28b77d1f8b)] - **test**: mejorar chequeo en test-os (Rich Trott) [#14655](https://github.com/nodejs/node/pull/14655)
@@ -1024,13 +1024,13 @@ Esta actualización LTS viene con 91 commits. Esto incluye a 29 que están relac
 * [[`86497f1acc`](https://github.com/nodejs/node/commit/86497f1acc)] - **test**: marcar inspector-port-zero-cluster como defectuoso (Refael Ackermann)
 * [[`8dfc2838c8`](https://github.com/nodejs/node/commit/8dfc2838c8)] - **test**: reparar test-readline-interface (Azard) [#14677](https://github.com/nodejs/node/pull/14677)
 * [[`3a6392b283`](https://github.com/nodejs/node/commit/3a6392b283)] - **tls**: reparar análisis issuer/subject/infoAccess vacío (Ben Noordhuis) [#14473](https://github.com/nodejs/node/pull/14473)
-* [[`37dd2adbac`](https://github.com/nodejs/node/commit/37dd2adbac)] - **tools**: reparar error linter en html.js (Michaël Zasso) [#15063](https://github.com/nodejs/node/pull/15063)
+* [[`37dd2adbac`](https://github.com/nodejs/node/commit/37dd2adbac)] - **tools**: reparar error de linter en html.js (Michaël Zasso) [#15063](https://github.com/nodejs/node/pull/15063)
 * [[`8b3ac4b2a2`](https://github.com/nodejs/node/commit/8b3ac4b2a2)] - **tools**: añadir opción de clave privada personalizada (Ruslan Bekenev) [#14401](https://github.com/nodejs/node/pull/14401)
 * [[`cac4beb764`](https://github.com/nodejs/node/commit/cac4beb764)] - **tools**: reparar update-eslint.sh (Myles Borins) [#14850](https://github.com/nodejs/node/pull/14850)
 * [[`debea1c531`](https://github.com/nodejs/node/commit/debea1c531)] - **tools**: borrar un argumento no usado (phisixersai) [#14251](https://github.com/nodejs/node/pull/14251)
 * [[`ca61f3bd80`](https://github.com/nodejs/node/commit/ca61f3bd80)] - **tools**: reparar tools/addon-verify.js (Daniel Bevenius) [#14048](https://github.com/nodejs/node/pull/14048)
 * [[`f7b6d198b9`](https://github.com/nodejs/node/commit/f7b6d198b9)] - **tools**: eslint - usar `error` y `off` (Refael Ackermann) [#14061](https://github.com/nodejs/node/pull/14061)
-* [[`f8b85e16cd`](https://github.com/nodejs/node/commit/f8b85e16cd)] - **tools**: reemplazar lint personalizado assert-throw-arguments (Rich Trott) [#14547](https://github.com/nodejs/node/pull/14547)
+* [[`f8b85e16cd`](https://github.com/nodejs/node/commit/f8b85e16cd)] - **tools**: reemplazar lint personalizado de assertthrow-arguments (Rich Trott) [#14547](https://github.com/nodejs/node/pull/14547)
 
 <a id="6.11.3"></a>
 
@@ -1041,11 +1041,11 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 ### Cambios Notables
 
 * **build**: 
-  * Codesigning está fijado en macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
+  * El co-diseño está reparado en macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * **deps**: 
-  * Snapshots están activas de nuevo!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
+  * ¡¡¡Las snapshots están activas de nuevo!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
 * **path**: 
-  * paths volume-relative de win32 están funcionando de nuevo! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
+  * ¡Las rutas volume-relative de win32 están funcionando de nuevo! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
 * **tools**: 
   * v6.x ahora puede construir con ICU 59 (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
 
