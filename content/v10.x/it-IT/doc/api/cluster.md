@@ -364,7 +364,7 @@ Tutti gli worker vengono creati utilizzando [`child_process.fork()`][], l'object
 
 Vedi: [Modulo Child Process](child_process.html#child_process_child_process_fork_modulepath_args_options).
 
-Note that workers will call `process.exit(0)` if the `'disconnect'` event occurs on `process` and `.exitedAfterDisconnect` is not `true`. This protects against accidental disconnection.
+Da notare che gli worker chiameranno `process.exit(0)` se l'evento `'disconnect'` si verifica su `process` ed `.exitedAfterDisconnect` non è `true`. Questo previene la disconnessione accidentale.
 
 ### worker.send(message\[, sendHandle\]\[, callback\])
 
@@ -380,15 +380,15 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Returns: {boolean}
+* Restituisce: {boolean}
 
-Send a message to a worker or master, optionally with a handle.
+Invia un messaggio ad un worker o un master, eventualmente con un handle.
 
-In the master this sends a message to a specific worker. It is identical to [`ChildProcess.send()`][].
+Nel master invia un messaggio ad un specifico worker. E' identico a [`ChildProcess.send()`][].
 
-In a worker this sends a message to the master. It is identical to `process.send()`.
+In un worker invia un messaggio al master. E' identico a `process.send()`.
 
-This example will echo back all messages from the master:
+Questo esempio restituirà tutti i messaggi del master:
 
 ```js
 if (cluster.isMaster) {
