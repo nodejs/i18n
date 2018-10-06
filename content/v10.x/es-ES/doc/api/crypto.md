@@ -1864,9 +1864,9 @@ crypto.randomFill(c, (err, buf) => {
 });
 ```
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para más información.
 
-The asynchronous version of `crypto.randomFill()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomFill` requests when doing so as part of fulfilling a client request.
+La versión asincrónica de`crypto.randomFill()` se lleva a cabo en una sola solicitud de agrupación de subprocesos. Para minimizar la variación de la longitud de la agrupación de subprocesos, particione las solicitudes grandes de `randomFill` cuando lo haga como parte del cumplimiento de una solicitud de cliente.
 
 ### crypto.setEngine(engine[, flags])
 
@@ -1875,13 +1875,13 @@ added: v0.11.11
 -->
 
 - `engine` {string}
-- `flags` {crypto.constants} **Default:** `crypto.constants.ENGINE_METHOD_ALL`
+- `flags` {crypto.constants} **Por defecto:** `crypto.constants.ENGINE_METHOD_ALL`
 
-Load and set the `engine` for some or all OpenSSL functions (selected by flags).
+Cargue y configure el `engine` para algunas o todas las funciones OpenSSL (seleccionadas por flags).
 
-`engine` could be either an id or a path to the engine's shared library.
+`engine` puede ser tanto un id o una ruta a la biblioteca compartida del motor.
 
-The optional `flags` argument uses `ENGINE_METHOD_ALL` by default. The `flags` is a bit field taking one of or a mix of the following flags (defined in `crypto.constants`):
+El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. The `flags` is a bit field taking one of or a mix of the following flags (defined in `crypto.constants`):
 
 - `crypto.constants.ENGINE_METHOD_RSA`
 - `crypto.constants.ENGINE_METHOD_DSA`
