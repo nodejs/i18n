@@ -1,4 +1,4 @@
-# ChangeLog de Node.js 9
+# Registro de Cambios de Node.js 9
 
 <!--lint disable prohibited-strings-->
 
@@ -65,22 +65,22 @@ Un problema de infraestructura causó que se promoviera un instalador msi no ope
 * **deps**: 
   * ICU actualizado a 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Incluye CLDR 33 (muchos nuevos lenguajes y mejoras de datos).
 * **fs**: 
-  * Emite el evento 'listo' para `ReadStream` y `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
+  * Emite el evento 'ready' para `ReadStream` y `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **n-api**: 
   * Versión Bump de n-api compatible (Michael Dawson) [#19497](https://github.com/nodejs/node/pull/19497)
 * **net**: 
-  * Emite el evento 'listo' para `Socket` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
+  * Emite el evento 'ready' para `Socket` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **Nuevos colaboradores agregados** 
   * [mafintosh](https://github.com/mafintosh) Mathias Buus
 
 ### Commits
 
-* [[`0bd78dc391`](https://github.com/nodejs/node/commit/0bd78dc391)] - **buffer**: utiliza v8::TypedArray::kMaxLength como buffer::kMaxLength (Joyee Cheung) [#19738](https://github.com/nodejs/node/pull/19738)
-* [[`54b84f3c26`](https://github.com/nodejs/node/commit/54b84f3c26)] - **buffer**: remueve "nuevo" del mensaje de desaprobación (Rich Trott) [#19687](https://github.com/nodejs/node/pull/19687)
-* [[`0127712cf5`](https://github.com/nodejs/node/commit/0127712cf5)] - **build**: introduce make jstest (Joyee Cheung) [#19324](https://github.com/nodejs/node/pull/19324)
+* [[`0bd78dc391`](https://github.com/nodejs/node/commit/0bd78dc391)] - **buffer**: utilizar v8::TypedArray::kMaxLength como buffer::kMaxLength (Joyee Cheung) [#19738](https://github.com/nodejs/node/pull/19738)
+* [[`54b84f3c26`](https://github.com/nodejs/node/commit/54b84f3c26)] - **buffer**: remuover "new" del mensaje de desaprobación (Rich Trott) [#19687](https://github.com/nodejs/node/pull/19687)
+* [[`0127712cf5`](https://github.com/nodejs/node/commit/0127712cf5)] - **build**: introducir crear jstest (Joyee Cheung) [#19324](https://github.com/nodejs/node/pull/19324)
 * [[`58f61dbf8e`](https://github.com/nodejs/node/commit/58f61dbf8e)] - **deps**: bump de ICU 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621)
-* [[`97a92c4973`](https://github.com/nodejs/node/commit/97a92c4973)] - **deps**: se convierte en std::string para ICU (Steven R. Loomis) [#19624](https://github.com/nodejs/node/pull/19624)
-* [[`ae86adc086`](https://github.com/nodejs/node/commit/ae86adc086)] - **doc**: arregla varios nits (Vse Mozhet Byt) [#19743](https://github.com/nodejs/node/pull/19743)
+* [[`97a92c4973`](https://github.com/nodejs/node/commit/97a92c4973)] - **deps**:covertir en std::string para ICU (Steven R. Loomis) [#19624](https://github.com/nodejs/node/pull/19624)
+* [[`ae86adc086`](https://github.com/nodejs/node/commit/ae86adc086)] - **doc**: corregir varios nits (Vse Mozhet Byt) [#19743](https://github.com/nodejs/node/pull/19743)
 * [[`041f6cd9c9`](https://github.com/nodejs/node/commit/041f6cd9c9)] - **doc**: mejora Buffer.allocUnsafeSlow() y relacionados (Rich Trott) [#19742](https://github.com/nodejs/node/pull/19742)
 * [[`42671f24ba`](https://github.com/nodejs/node/commit/42671f24ba)] - **doc**: agrega mafintosh a los colaboradores (Mathias Buus) [#19773](https://github.com/nodejs/node/pull/19773)
 * [[`c1b83fcbc2`](https://github.com/nodejs/node/commit/c1b83fcbc2)] - **doc**: update to adding listens on SIGUSR1 (willhayslett) [#19709](https://github.com/nodejs/node/pull/19709)
