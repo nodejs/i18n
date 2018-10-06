@@ -2319,7 +2319,7 @@ Notable semver patch changes include:
 * [[`9237b6e38a`](https://github.com/nodejs/node/commit/9237b6e38a)] - **tools**: fix warning in doc parsing (Shigeki Ohtsu) [#4537](https://github.com/nodejs/node/pull/4537)
 * [[`c653cc0c03`](https://github.com/nodejs/node/commit/c653cc0c03)] - **tools**: add recommended ES6 lint rules (Rich Trott) [#5210](https://github.com/nodejs/node/pull/5210)
 * [[`993d9b7df0`](https://github.com/nodejs/node/commit/993d9b7df0)] - **tools**: add recommended linting rules (Rich Trott) [#5188](https://github.com/nodejs/node/pull/5188)
-* [[`8423125223`](https://github.com/nodejs/node/commit/8423125223)] - **tools**: remove excessive comments from .eslintrc (Rich Trott) [#5151](https://github.com/nodejs/node/pull/5151)
+* [[`8423125223`](https://github.com/nodejs/node/commit/8423125223)] - **herramientas**: elimina comentarios excesivos de .eslintrc (Rich Trott) [#5151](https://github.com/nodejs/node/pull/5151)
 * [[`4c687c98e4`](https://github.com/nodejs/node/commit/4c687c98e4)] - **tools**: enable no-proto rule for linter (Jackson Tian) [#5140](https://github.com/nodejs/node/pull/5140)
 * [[`28e4e6f312`](https://github.com/nodejs/node/commit/28e4e6f312)] - **tools**: disallow mixed spaces and tabs for indents (Rich Trott) [#5135](https://github.com/nodejs/node/pull/5135)
 * [[`50c6fe8604`](https://github.com/nodejs/node/commit/50c6fe8604)] - **tools**: alphabetize eslint stylistic issues section (Rich Trott)
@@ -2346,9 +2346,9 @@ Esto es un lanzamiento de seguridad con un solo commit, una actualización a ope
 ### Cambios notables
 
 * **openssl**: Upgrade from 1.0.2f to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507) 
-  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
+  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. Hay más información disponible en [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
   * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` y `BN_dec2bn()` . Se cree que Node.js no está invocando las rutas de código que utilizan estas funciones para que los ataques prácticos a través de Node.js que utilizan este defecto son *poco probables* que sucedan. Hay más información disponible en [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797) .
-  * Repara un defecto que hace que suceda el *[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* . Este defecto permite a los atacantes ejecutar ataques de canales laterales, conduciendo a la recuperación potencial de todas las claves privadas RSA. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
+  * Repara un defecto que hace que suceda el *[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)* . Este defecto permite a los atacantes ejecutar ataques de canales laterales, conduciendo a la recuperación potencial de todas las claves privadas RSA. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. Hay más información disponible en [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
 
 ## Commits
 
@@ -2447,7 +2447,7 @@ Esto es un lanzamiento de seguridad con un solo commit, una actualización a ope
 
 Esto es un lanzamiento de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen del lanzamiento de seguridad en nodejs.org para más detalles sobre vulnerabilidades parcheadas.
 
-Note that this release includes a non-backward compatible change to address a security issue. This change increases the version of the LTS v4.x line to v4.3.0. There will be *no further updates* to v4.2.x.
+Note that this release includes a non-backward compatible change to address a security issue. Este cambio aumenta la versión de la línea LTS v4.x hacia v4.3.0. *No habrán más actualizaciones* de v4.2.x.
 
 ### Notable changes
 
@@ -2475,7 +2475,7 @@ Note that this release includes a non-backward compatible change to address a se
 
 * Fix regression in debugger and profiler functionality
 
-### Known issues
+### Problemas conocidos
 
 * Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
 * Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
@@ -2527,7 +2527,7 @@ Maintenance update.
 * [[`87181cd74c`](https://github.com/nodejs/node/commit/87181cd74c)] - **assert**: accommodate ES6 classes that extend Error (Rich Trott) [#4166](https://github.com/nodejs/node/pull/4166)
 * [[`901172a783`](https://github.com/nodejs/node/commit/901172a783)] - **assert**: typed array deepequal performance fix (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330)
 * [[`55336810ee`](https://github.com/nodejs/node/commit/55336810ee)] - **async_wrap**: call callback in destructor (Trevor Norris) [#3461](https://github.com/nodejs/node/pull/3461)
-* [[`a8b45e9e96`](https://github.com/nodejs/node/commit/a8b45e9e96)] - **async_wrap**: new instances get uid (Trevor Norris) [#3461](https://github.com/nodejs/node/pull/3461)
+* [[`a8b45e9e96`](https://github.com/nodejs/node/commit/a8b45e9e96)] - **async_wrap**: las nuevas instancias reciben id de usuario (Trevor Norris) [#3461](https://github.com/nodejs/node/pull/3461)
 * [[`49f16d77c4`](https://github.com/nodejs/node/commit/49f16d77c4)] - **async_wrap**: allow some hooks to be optional (Trevor Norris) [#3461](https://github.com/nodejs/node/pull/3461)
 * [[`44ee33f945`](https://github.com/nodejs/node/commit/44ee33f945)] - **buffer**: refactor create buffer (Jackson Tian) [#4340](https://github.com/nodejs/node/pull/4340)
 * [[`138d004ac0`](https://github.com/nodejs/node/commit/138d004ac0)] - **buffer**: faster case for create Buffer from new Buffer(0) (Jackson Tian) [#4326](https://github.com/nodejs/node/pull/4326)
