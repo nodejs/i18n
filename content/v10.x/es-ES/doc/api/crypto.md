@@ -1590,7 +1590,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, derivedKey) => {
 
 Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
 ### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
 
@@ -1615,9 +1615,9 @@ changes:
 - `digest` {string}
 - Returns: {Buffer}
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Proporciona una implementación asincrónica de la función 2 (PBKDF2) de derivación de clave basada en contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
-If an error occurs an `Error` will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Si ocurre un error, se arrojará un `Error`, de no ser así, la clave derivada será devuelta como un [`Buffer`][].
 
 The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
 
