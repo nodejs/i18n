@@ -344,9 +344,9 @@ added: v0.9.12
 
 * `signal` {string} Nome del segnale kill da inviare al processo worker.
 
-This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
+Questa funzione arresta il worker. Nel master, lo fa disconnettendo `worker.process`, e una volta disconnesso, lo arresta con `signal`. Nel worker, lo fa disconnettendo il canale ed uscendo con il codice `0`.
 
-Causes `.exitedAfterDisconnect` to be set.
+Fa sì che venga impostato `.exitedAfterDisconnect`.
 
 This method is aliased as `worker.destroy()` for backwards compatibility.
 
