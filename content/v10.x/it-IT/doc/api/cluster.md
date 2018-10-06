@@ -238,13 +238,13 @@ changes:
 
 * Restituisce: {cluster.Worker} Un riferimento a `worker`.
 
-In a worker, this function will close all servers, wait for the `'close'` event on those servers, and then disconnect the IPC channel.
+In un worker, questa funzione chiuderà tutti i server, attenderà l'evento `'close'` su di essi e successivamente disconnetterà il canale IPC.
 
-In the master, an internal message is sent to the worker causing it to call `.disconnect()` on itself.
+Nel master, viene inviato un messaggio interno al worker che lo porta a chiamare `.disconnect()` su se stesso.
 
-Causes `.exitedAfterDisconnect` to be set.
+Fa sì che venga impostato `.exitedAfterDisconnect`.
 
-Note that after a server is closed, it will no longer accept new connections, but connections may be accepted by any other listening worker. Existing connections will be allowed to close as usual. When no more connections exist, see [`server.close()`][], the IPC channel to the worker will close allowing it to die gracefully.
+Da notare che dopo che un server è stato chiuso, questo non accetterà più nuove connessioni, però le connessioni potrebbero essere accettate da qualsiasi altro listening worker. Le connessioni esistenti avranno il permesso di chiudersi come al solito. When no more connections exist, see [`server.close()`][], the IPC channel to the worker will close allowing it to die gracefully.
 
 The above applies *only* to server connections, client connections are not automatically closed by workers, and disconnect does not wait for them to close before exiting.
 
