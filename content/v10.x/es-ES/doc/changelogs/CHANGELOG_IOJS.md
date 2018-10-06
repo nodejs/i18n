@@ -329,29 +329,29 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * [[`4f8e34c202`](https://github.com/nodejs/node/commit/4f8e34c202)] - **tools**: add license boilerplate to check-imports.sh (James M Snell) [#2386](https://github.com/nodejs/node/pull/2386)
 * [[`b76b9197f9`](https://github.com/nodejs/node/commit/b76b9197f9)] - **tools**: enable space-after-keywords in eslint (Brendan Ashworth)
 * [[`64a8f30a70`](https://github.com/nodejs/node/commit/64a8f30a70)] - **tools**: fix anchors in generated documents (Sakthipriyan Vairamani) [#2491](https://github.com/nodejs/node/pull/2491)
-* [[`22e344ea10`](https://github.com/nodejs/node/commit/22e344ea10)] - **win**: fix custom actions for WiX older than 3.9 (João Reis) [#2365](https://github.com/nodejs/node/pull/2365)
-* [[`b5bd3ebfc8`](https://github.com/nodejs/node/commit/b5bd3ebfc8)] - **win**: fix custom actions on Visual Studio != 2013 (Julien Gilli) [#2365](https://github.com/nodejs/node/pull/2365)
+* [[`22e344ea10`](https://github.com/nodejs/node/commit/22e344ea10)] - **win**: corregir acciones personalizadas para WiX posteriores a 3.9 (João Reis) [#2365](https://github.com/nodejs/node/pull/2365)
+* [[`b5bd3ebfc8`](https://github.com/nodejs/node/commit/b5bd3ebfc8)] - **win**: corregir acciones personalizadas en Visual Studio != 2013 (Julien Gilli) [#2365](https://github.com/nodejs/node/pull/2365)
 
 <a id="3.1.0"></a>
 
-## 2015-08-18, Version 3.1.0, @Fishrock123
+## 2015-08-18, Versión 3.1.0, @Fishrock123
 
-### Notable changes
+### Cambios notables
 
-* **buffer**: Fixed a couple large memory leaks (Ben Noordhuis) [#2352](https://github.com/nodejs/node/pull/2352).
+* **buffer**: Se arreglaron un par de grandes pérdidas de memoria (Ben Noordhuis) [#2352](https://github.com/nodejs/node/pull/2352).
 * **crypto**: 
-  * Fixed a couple of minor memory leaks (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
-  * Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
+  * Se arreglaron un par de pérdidas de memoria menores (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
+  * Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note que esto puede exponer errores previos ocultos en el código de usuario.**
 * **intl**: Intl support using small-icu is now enabled by default in builds (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264). 
-  * [`String#normalize()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) can now be used for unicode normalization.
+  * [`String#normalize()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) ahora puede utilizarse para la normalización de unicode.
   * The [`Intl`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl) object and various `String` and `Number` methods are present, but only support the English locale.
   * For support of all locales, node must be built with [full-icu](https://github.com/nodejs/node#build-with-full-icu-support-all-locales-supported-by-icu).
 * **tls**: Fixed tls throughput being much lower after an incorrect merge (Fedor Indutny) [#2381](https://github.com/nodejs/node/pull/2381).
-* **tools**: The v8 tick processor now comes bundled with node (Matt Loring) [#2090](https://github.com/nodejs/node/pull/2090). 
+* **herramientas**: The v8 tick processor now comes bundled with node (Matt Loring) [#2090](https://github.com/nodejs/node/pull/2090). 
   * This can be used by producing performance profiling output by running node with `--perf`, then running your appropriate platform's script on the output as found in [tools/v8-prof](https://github.com/nodejs/node/tree/master/tools/v8-prof).
-* **util**: `util.inspect(obj)` now prints the constructor name of the object if there is one (Christopher Monsanto) [#1935](https://github.com/nodejs/io.js/pull/1935).
+* **util**: `util.inspect(obj)` ahora imprime el nombre del constructor del objeto si lo hay (Christopher Monsanto) [#1935](https://github.com/nodejs/io.js/pull/1935).
 
-### Known issues
+### Problemas conocidos
 
 See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and current list of known issues.
 
