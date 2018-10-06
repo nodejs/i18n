@@ -1139,7 +1139,7 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 * [[`46e4a026b6`](https://github.com/nodejs/node/commit/46e4a026b6)] - **test**: omitir a test-fs-readdir-ucs2 si no hay soporte (Rich Trott) [#14029](https://github.com/nodejs/node/pull/14029)
 * [[`49632287d1`](https://github.com/nodejs/node/commit/49632287d1)] - **test**: reparar a pruebas de http(s)-set-server-timeout defectuosas (Rich Trott) [#14380](https://github.com/nodejs/node/pull/14380)
 * [[`ae7eeff489`](https://github.com/nodejs/node/commit/ae7eeff489)] - **test**: reparar a test-https-set-timeout-server defectuoso (Rich Trott) [#14134](https://github.com/nodejs/node/pull/14134)
-* [[`c5c65c8ce9`](https://github.com/nodejs/node/commit/c5c65c8ce9)] - **test**: fix require nits in some test-tls-* tests (Vse Mozhet Byt) [#14008](https://github.com/nodejs/node/pull/14008)
+* [[`c5c65c8ce9`](https://github.com/nodejs/node/commit/c5c65c8ce9)] - **test**: la reparación requiere de objetos triviales en algunas pruebas de test-tls-* (Vse Mozhet Byt) [#14008](https://github.com/nodejs/node/pull/14008)
 * [[`346f199e28`](https://github.com/nodejs/node/commit/346f199e28)] - **test**: refactor test-http(s)-set-timeout-server (Alexey Orlenko) [#13935](https://github.com/nodejs/node/pull/13935)
 * [[`ac851c482c`](https://github.com/nodejs/node/commit/ac851c482c)] - **test**: refactor test-http-invalidheaderfield (Rich Trott) [#13996](https://github.com/nodejs/node/pull/13996)
 * [[`49e786628f`](https://github.com/nodejs/node/commit/49e786628f)] - **test**: replace indexOf with includes and startsWith (Nataly Shrits) [#13852](https://github.com/nodejs/node/pull/13852)
