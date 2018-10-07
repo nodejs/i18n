@@ -1,14 +1,14 @@
-# Maintaining the Build files
+# Mantenimiento de los archivos Build
 
-This document explains how to maintain the build files in the codebase.
+Este documento explica cómo mantener los archivos build en la base del código.
 
-## Overview
+## Resumen
 
-On how to build the Node.js core, see [Building Node.js](../../BUILDING.md).
+Sobre cómo compilar el núcleo de Node.js, vea [Compilando Node.js](../../BUILDING.md).
 
-There are three main build files that may be directly run when building Node.js:
+Hay tres archivos build principales que pueden ser ejecutados directamente al compilar Node.js:
 
-- `configure`: A Python 2 script that detects system capabilities and runs [GYP](https://gyp.gsrc.io/docs/UserDocumentation.md). It generates `config.gypi` which includes parameters used by GYP to create platform-dependent build files. Its output is usually in one of these formats: Makefile, MSbuild, ninja, or XCode project files. (Note: the main Makefile mentioned below is maintained separately by humans). For a detailed guide on this script, see [configure](#configure).
+- `configure`: un script de Python 2 que detecta las capacidades del sistema y ejecuta [GYP](https://gyp.gsrc.io/docs/UserDocumentation.md). Genera `config.gypi`, el cual incluye parámetros usados por GYP para crear plataformas dependientes de los archivos build. Su output es usualmente en uno de estos formatos: archivos de proyecto Makefile, MSbuild, ninja o XCode. (Nota: el Makefile principal mencionado a continuación es mantenido por separado por humanos). Para una guía detallada sobre este script, vea [configure](#configure).
 - `vcbuild.bat`: A Windows Batch Script that locates build tools, provides a subset of the targets available in the [Makefile](#makefile), and a few targets of its own. For a detailed guide on this script, see [vcbuild.bat](#vcbuild.bat).
 - `Makefile`: A Makefile that can be run with GNU Make. It provides a set of targets that build and test the Node.js binary, produce releases and documentation, and interact with the CI to run benchmarks or tests. For a detailed guide on this file, see [Makefile](#makefile).
 
