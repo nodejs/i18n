@@ -91,21 +91,21 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios Notables:
 
-* buffer: Rellena con ceros el exceso de bytes en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporcionan un parámetro `totalLength` que excede la longitud total del de los objetos `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич)
+* buffer: Rellenar con ceros el exceso de bytes en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporcionan un parámetro `totalLength` que excede la longitud total del de los objetos `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич)
 * http: 
   * CVE-2016-5325 - Validar apropiadamente los caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Corrige un posible vector de ataque de división de respuesta. Este introduce un nuevo caso en el que puede ocurrir `throw` cuando se estén configurando las respuestas de HTTP, los usuarios ya deberían adoptar try/catch aquí. Originalmente reportado de forma independiente por Evan Lucas y Romain Gaucher. (Evan Lucas)
   * Los códigos de estado inválidos ya no pueden ser enviados. Limitado a números de 3 dígitos entre 100 - 999. La falta de validación adecuada también puede servir como un potencial vector de ataque de división de respuesta. Backported from v4.x. (Brian White)
 * openssl: 
   * Actualizado a 1.0.1u, corrige un número de defectos que impactan a Node.js: CVE-2016-6304 ("Crecimiento ilimitado de memoria de la extensión de solicitud de estado de OCSP", gravedad alta), CVE-2016-2183, CVE-2016-6303, CVE-2016-2178 y CVE-2016-6306.
-  * Elimina soporte para cargar módulos dinámicos de motor externo. Un atacante puede ser capaz de ocultar código malicioso a ser insertado en Node.js en el tiempo de ejecución enmascarándose como uno de los módulos de motor dinámico. Originalmente reportado por Ahmed Zaki (Skype). (Ben Noordhuis, Rod Vagg)
+  * Eliminar soporte para cargar módulos dinámicos de motor externo. Un atacante puede ser capaz de ocultar código malicioso a ser insertado en Node.js en el tiempo de ejecución enmascarándose como uno de los módulos de motor dinámico. Originalmente reportado por Ahmed Zaki (Skype). (Ben Noordhuis, Rod Vagg)
 * tls: CVE-2016-7099 - Corregir la comprobación de validación de certificado de comodín inválido por la cual un servidor TLS puede servir un certificado de comodín inválido para su nombre de host debido a una validación incorrecta de `*.` en la cadena de comodín. Originalmente reportado por Alexander Minozhenko y James Bunton (Atlassian). (Ben Noordhuis)
 
 ### Commits:
 
 * [38d7258d89] - buffer: Rellenar con cero bytes sin inicializar en .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/66
-* [1ba6d16786] - build: turn on -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6737
+* [1ba6d16786] - build: activar -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6737
 * [71e4285e27] - crypto: no compilar motores de hardware (Rod Vagg) https://github.com/nodejs/node-private/pull/69
-* [b6e0105a66] - deps: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
+* [b6e0105a66] - deps: agregar -no_rand_screen a s_client de openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
 * [1caec97eab] - deps: corregir error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
 * [734bc6938b] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
 * [7cc6d4eb5c] - deps: copiar todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
@@ -154,24 +154,24 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * [2b63396e1f] - deps: agregar -no_rand_screen a s_client en openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
 * [f21705df58] - deps: actualizar archivos asm de openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
 * [02b6a6bc27] - deps: corregir error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
-* [1aecc668b0] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
-* [39380836a0] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [08c8ae44a8] - deps: upgrade openssl sources to 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [f5a961ab13] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
-* [810fb211a7] - tools: remove obsolete npm test-legacy command (Kat Marchán) https://github.com/nodejs/node/pull/5988
+* [1aecc668b0] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
+* [39380836a0] - deps: copiar todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/655
+* [08c8ae44a8] - deps: actualizar fuentes de openssl a 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [f5a961ab13] - openssl: corregir el requisito keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
+* [810fb211a7] - tools: eliminar comando obsoleto de npm test-legacy (Kat Marchán) https://github.com/nodejs/node/pull/5988
 
 <a id="0.12.13"></a>
 
 ## 2016-03-31, Version 0.12.13 (LTS), @rvagg
 
-### Notable changes
+### Cambios Notables
 
-* npm: Upgrade to v2.15.1. (Forrest L Norvell)
-* openssl: OpenSSL v1.0.1s disables the EXPORT and LOW ciphers as they are obsolete and not considered safe. This release of Node.js turns on `OPENSSL_NO_WEAK_SSL_CIPHERS` to fully disable the 27 ciphers included in these lists which can be used in SSLv3 and higher. Full details can be found in our LTS discussion on the matter (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* npm: Actualizar a v2.15.1. (Forrest L Norvell)
+* openssl: OpenSSL v1.0.1s deshabilita los cifrados EXPORT y LOW ya que son obsoletos y no son considerados seguros. Esta versión de Node.js activa `OPENSSL_NO_WEAK_SSL_CIPHERS` para desactivar completamente los 27 cifrados incluidos en estas listas, los cuales pueden ser utilizados en SSLv3 y superiores. Los detalles completos pueden encontrarse en nuestra discusión de LTS sobre la materia (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 
 ### Commits
 
-* [4041ea6bc5] - deps: upgrade npm in LTS to 2.15.1 (Forrest L Norvell)
+* [4041ea6bc5] - deps: actualizar npm en LTS a 2.15.1 (Forrest L Norvell)
 * [a115779026] - deps: Disable EXPORT and LOW ciphers in openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 * [ab907eb5a8] - test: skip cluster-disconnect-race on Windows (Gibson Fahnestock) https://github.com/nodejs/node/pull/5621
 * [9c06db7444] - test: change tls tests not to use LOW cipher (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
