@@ -251,15 +251,15 @@ Combina tu branch de propuesta de lanzamiento con el branch estable de donde est
 
 Selecciona cuidadosamente el commit lanzado al `master`. Después de seleccionar, edita `src/node_version.h` para asegurar que los macros de la versión contengan todos los valores que tenían previamente en el `master`. `NODE_VERSION_IS_RELEASE` debería ser `0`.
 
-Run `make lint-md-build; make lint` before pushing to `master`, to make sure the Changelog formatting passes the lint rules on `master`.
+Ejecuta `make lint-md-build; make lint` antes de empujar al master `master`, para asegurarse que el formato de los Registros de cambios pasen las reglas lint en el `master`.
 
-### 12. Promote and Sign the Release Builds
+### 12. Promover y Firmar las Compilaciones Lanzadas
 
-**It is important that the same individual who signed the release tag be the one to promote the builds as the SHASUMS256.txt file needs to be signed with the same GPG key!**
+**Es importante que los mismos individuos que firmaron las etiquetas lanzadas sean los que promuevan las compilaciones, como el archivo SHASUMS256.txt que necesita ser firmado con ¡la misma clave GPG!**
 
-Use `tools/release.sh` to promote and sign the build. When run, it will perform the following actions:
+Usa `tools/release.sh` para promover y firmar la compilación. Cuando ejecutes, realizará las siguientes acciones:
 
-**a.** Select a GPG key from your private keys. It will use a command similar to: `gpg --list-secret-keys` to list your keys. If you don't have any keys, it will bail. (Why are you releasing? Your tag should be signed!) If you have only one key, it will use that. If you have more than one key it will ask you to select one from the list. Be sure to use the same key that you signed your git tag with.
+**a.** Seleccionar una clave GPG de tus claves privadas. Usará un comando similar a: `gpg --list-secret-keys` para listar tus claves. Si no tienes ninguna clave, no funcionará. (¿Por qué estás lanzando? Your tag should be signed!) If you have only one key, it will use that. If you have more than one key it will ask you to select one from the list. Be sure to use the same key that you signed your git tag with.
 
 **b.** Log in to the server via SSH and check for releases that can be promoted, along with the list of artifacts. It will use the `dist-promotable` command on the server to find these. You will be asked, for each promotable release, whether you want to proceed. If there is more than one release to promote (there shouldn't be), be sure to only promote the release you are responsible for.
 
