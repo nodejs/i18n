@@ -1197,18 +1197,18 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 * [[`d34bc78fd4`](https://github.com/nodejs/node/commit/d34bc78fd4)] - **tools**: actualizar a ESLint 4.1.0 (Rich Trott) [#13895](https://github.com/nodejs/node/pull/13895)
 * [[`01d82d843b`](https://github.com/nodejs/node/commit/01d82d843b)] - **tools**: usar la regla ESLint no-use-before-define (Vse Mozhet Byt) [#14032](https://github.com/nodejs/node/pull/14032)
 * [[`70901b271c`](https://github.com/nodejs/node/commit/70901b271c)] - **tools**: remover comentario en regla eslint (Daniel Bevenius) [#13945](https://github.com/nodejs/node/pull/13945)
-* [[`74d5cba007`](https://github.com/nodejs/node/commit/74d5cba007)] - **tools**: add missing #include "unicode/putil.h" (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
-* [[`7bb200f624`](https://github.com/nodejs/node/commit/7bb200f624)] - **tools**: add rule prefering common.mustNotCall() (James M Snell) [#12027](https://github.com/nodejs/node/pull/12027)
-* [[`d5bf1379b5`](https://github.com/nodejs/node/commit/d5bf1379b5)] - **v8**: fix RegExp nits in v8_prof_polyfill.js (Vse Mozhet Byt) [#13709](https://github.com/nodejs/node/pull/13709)
-* [[`9e2d85e441`](https://github.com/nodejs/node/commit/9e2d85e441)] - **v8**: handle proxy objects in MakeMirror(), v2 (Ben Noordhuis) [#14343](https://github.com/nodejs/node/pull/14343)
-* [[`bccd2f59b0`](https://github.com/nodejs/node/commit/bccd2f59b0)] - **v8**: handle proxy objects in MakeMirror(), v1 (Ben Noordhuis) [#14343](https://github.com/nodejs/node/pull/14343)
-* [[`e79c054f76`](https://github.com/nodejs/node/commit/e79c054f76)] - **zlib**: fix crash when initializing failed (Anna Henningsen) [#14666](https://github.com/nodejs/node/pull/14666)
+* [[`74d5cba007`](https://github.com/nodejs/node/commit/74d5cba007)] - **tools**: añadir #include "unicode/putil.h" faltante (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
+* [[`7bb200f624`](https://github.com/nodejs/node/commit/7bb200f624)] - **tools**: añadir la preferencia de regla common.mustNotCall() (James M Snell) [#12027](https://github.com/nodejs/node/pull/12027)
+* [[`d5bf1379b5`](https://github.com/nodejs/node/commit/d5bf1379b5)] - **v8**: reparar nits RegExp en v8_prof_polyfill.js (Vse Mozhet Byt) [#13709](https://github.com/nodejs/node/pull/13709)
+* [[`9e2d85e441`](https://github.com/nodejs/node/commit/9e2d85e441)] - **v8**: gestionar objetos proxy en MakeMirror(), v2 (Ben Noordhuis) [#14343](https://github.com/nodejs/node/pull/14343)
+* [[`bccd2f59b0`](https://github.com/nodejs/node/commit/bccd2f59b0)] - **v8**: gestionar objetos proxy en MakeMirror(), v1 (Ben Noordhuis) [#14343](https://github.com/nodejs/node/pull/14343)
+* [[`e79c054f76`](https://github.com/nodejs/node/commit/e79c054f76)] - **zlib**: reparar el colapso cuando la inicialización falle (Anna Henningsen) [#14666](https://github.com/nodejs/node/pull/14666)
 
 <a id="6.11.2"></a>
 
-## 2017-08-01, Version 6.11.2 'Boron' (LTS), @MylesBorins
+## 2017-08-01, Versión 6.11.2 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 221 commits. This includes 80 which are test related, 52 which are doc related, 32 which are build / tool related and 10 commits which are updates to dependencies.
+Esta actualización de LTS viene con 221 commits. This includes 80 which are test related, 52 which are doc related, 32 which are build / tool related and 10 commits which are updates to dependencies.
 
 ### Notable Changes
 
