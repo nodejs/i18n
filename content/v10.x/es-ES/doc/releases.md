@@ -293,7 +293,7 @@ Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](h
 - Puedes añadir un blurb corto debajo del encabezado principal si quieres decir algo importante, de otra manera el texto debería estar listo para la publicación.
 - Los enlaces a los archivos descargados no serán completados hasta que esperes por las compilaciones ARMv6. Cualquier descarga que esté faltante tendrá `*Coming soon*` al lado. Es tu responsabilidad actualizar manualmente estos luego, cuando tienes compilaciones sobresalientes.
 - El contenido de SHASUMS256.txt.asc está en la parte inferior de la publicación. Cuando actualizas la lista de tarballs, necesitarás copiar/pegar los nuevos contenidos en este archivo para reflejar esos cambios.
-- Siempre usa pull-requests en el repositorio de nodejs.org. Se respetuoso de ese grupo de trabajo, pero no deberías tener que esperar a que el PR termine. Opening a PR and merging it immediately *should* be fine. However, please follow the following commit message format:
+- Siempre usa pull-requests en el repositorio de nodejs.org. Se respetuoso de ese grupo de trabajo, pero no deberías tener que esperar a que el PR termine. Abrir un PR y fusionarlo inmediatamente *debería* estar bien. Sin embargo, por favor sigue el siguiente formato del mensaje commit:
     
     ```console
     Blog: vX.Y.Z release post
@@ -301,7 +301,7 @@ Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](h
     Refs: <full URL to your release proposal PR>
     ```
 
-- Changes to `master` on the nodejs.org repo will trigger a new build of nodejs.org so your changes should appear in a few minutes after pushing.
+- Cambios al `master` en el repositorio de nodejs.org van a activar una nueva compilación de nodejs.org, entonces tus cambios deberían aparecer en unos minutos luego de empujar.
 
 ### 15. Announce
 
