@@ -92,20 +92,20 @@ changes:
   * `ignoreErrors` {boolean} Ignora gli errori durante la scrittura (writing) sugli stream sottostanti. **Default:** `true`.
   * `colorMode` {boolean|string} Imposta il supporto dei colori per quest'istanza `Console`. Se `true` attiva la possibilità di colorare durante l'ispezione dei valori, se `'auto'` farà sì che il supporto dei colori dipenda dal valore della proprietà `isTTY` e dal valore restituito da `getColorDepth()` sul rispettivo stream. **Default:** `'auto'`.
 
-Crea una nuova `Console` con una o due istanze di writable stream. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Crea una nuova `Console` con una o due istanze di writable stream. `stdout` è un writable stream per stampare log o info output. `stderr` è utilizzato per stampare warning o error output. Se `stderr` non viene fornito, viene utilizzato `stdout` al posto di `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
 const errorOutput = fs.createWriteStream('./stderr.log');
-// custom simple logger
+// semplice logger personalizzato
 const logger = new Console({ stdout: output, stderr: errorOutput });
-// use it like console
+// usalo come console
 const count = 5;
 logger.log('count: %d', count);
 // in stdout.log: count 5
 ```
 
-The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
+La global `console` è una speciale `Console` il cui output è inviato a [`process.stdout`][] e [`process.stderr`][]. E' come chiamare:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
