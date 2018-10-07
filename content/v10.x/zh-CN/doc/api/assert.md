@@ -111,7 +111,7 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 
 ## Legacy 模式
 
-> 稳定性：0 - 已弃用：改为使用Strict模式
+> 稳定性：0 - 已弃用：改为使用Strict模式。
 
 当直接访问 `assert`， 而不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
@@ -484,7 +484,7 @@ added: v0.1.21
 
 **Legacy 模式**
 
-> 稳定性：0 - 不推荐使用：改为使用 [`assert.strictEqual()`]
+> 稳定性：0 - 已弃用：改为使用 [`assert.strictEqual()`][]。
 
 Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
@@ -512,7 +512,7 @@ added: v0.1.21
 
 * `message` {any} **Default:** `'Failed'`
 
-抛出 `AssertionError`，并带上提供的错误信息或默认的错误信息。 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
+抛出 `AssertionError`，并带上提供的错误信息或默认的错误信息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ```js
 const assert = require('assert').strict;
