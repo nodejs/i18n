@@ -89,8 +89,8 @@ apply.whitespace fix`
 
 ## Revisión de PRs
 
-* El objetivo principal es para que el código base mejore.
-* El secundario (pero no muy lejano) es para que la persona que envía el código tenga éxito. Un pull request de un nuevo colaborador es un oportunidad para hacer crecer la comunidad.
+* El objetivo principal es que el código base mejore.
+* El secundario (pero no muy lejano) es que la persona que envía el código tenga éxito. Un pull request de un nuevo colaborador es un oportunidad para hacer crecer la comunidad.
 * Revisar un bit a la vez. No abrume a los nuevos colaboradores. 
   * Es tentador micro-optimizar. No sucumba a esa tentación. Cambiamos V8 a menudo. Las técnicas que proporcionan mejor rendimiento hoy, pueden ser innecesarias en el futuro.
 * Tenga en cuenta: ¡Su opinión tiene mucho peso!
