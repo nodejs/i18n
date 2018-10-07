@@ -432,7 +432,7 @@ added: v0.7.9
 
 Quando uno degli worker subisce l'arresto, il modulo cluster emetterà l'evento `'exit'`.
 
-This can be used to restart the worker by calling `.fork()` again.
+Questo può essere utilizzato per riavviare il worker chiamando nuovamente `.fork()`.
 
 ```js
 cluster.on('exit', (worker, code, signal) => {
@@ -442,7 +442,7 @@ cluster.on('exit', (worker, code, signal) => {
 });
 ```
 
-See [`child_process` event: `'exit'`][].
+Vedi [`child_process` event: `'exit'`][].
 
 ## Event: 'fork'
 
@@ -452,7 +452,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-When a new worker is forked the cluster module will emit a `'fork'` event. This can be used to log worker activity, and create a custom timeout.
+Quando un nuovo worker viene sottoposto al fork, il modulo cluster emetterà un evento `'fork'`. Questo può essere usato per registrare l'attività del worker e per creare un timeout personalizzato.
 
 ```js
 const timeouts = [];
@@ -481,9 +481,9 @@ added: v0.7.0
 * `worker` {cluster.Worker}
 * `address` {Object}
 
-After calling `listen()` from a worker, when the `'listening'` event is emitted on the server a `'listening'` event will also be emitted on `cluster` in the master.
+Dopo aver chiamato `listen()` da un worker, nel momento in cui l'evento `'listening'` viene emesso sul server verrà emesso anche un evento `'listening'` sul `cluster` all'interno del master.
 
-The event handler is executed with two arguments, the `worker` contains the worker object and the `address` object contains the following connection properties: `address`, `port` and `addressType`. This is very useful if the worker is listening on more than one address.
+L'event handler viene eseguito con due argomenti, il `worker` contiene il worker object e l'`address` object contiene le seguenti proprietà di connessione: `address`, `port` e `addressType`. Questo è molto utile se il worker sta eseguendo l'ascolto (listening) su più di un indirizzo.
 
 ```js
 cluster.on('listening', (worker, address) => {
@@ -492,12 +492,12 @@ cluster.on('listening', (worker, address) => {
 });
 ```
 
-The `addressType` is one of:
+L'`addressType` può essere:
 
 * `4` (TCPv4)
 * `6` (TCPv6)
 * `-1` (unix domain socket)
-* `'udp4'` or `'udp6'` (UDP v4 or v6)
+* `'udp4'` oppure `'udp6'` (UDP v4 oppure v6)
 
 ## Event: 'message'
 
@@ -514,11 +514,11 @@ changes:
 * `message` {Object}
 * `handle` {undefined|Object}
 
-Emitted when the cluster master receives a message from any worker.
+Emesso quando il cluster master riceve un messaggio da qualsiasi worker.
 
-See [`child_process` event: `'message'`][].
+Vedi [`child_process` event: `'message'`][].
 
-Before Node.js v6.0, this event emitted only the message and the handle, but not the worker object, contrary to what the documentation stated.
+Prima di Node.js v6.0, questo evento emetteva solo il messaggio e l'handle, ma non il worker object, contrariamente a quanto affermato nella documentazione.
 
 If support for older versions is required but a worker object is not required, it is possible to work around the discrepancy by checking the number of arguments:
 
