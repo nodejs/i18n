@@ -91,25 +91,25 @@ apply.whitespace fix`
 
 * El objetivo principal es que el código base mejore.
 * El secundario (pero no muy lejano) es que la persona que envía el código tenga éxito. Un pull request de un nuevo colaborador es un oportunidad para hacer crecer la comunidad.
-* Revisar un bit a la vez. No abrume a los nuevos colaboradores. 
+* Revise un poco a la vez. No abrume a los nuevos colaboradores. 
   * Es tentador micro-optimizar. No sucumba a esa tentación. Cambiamos V8 a menudo. Las técnicas que proporcionan mejor rendimiento hoy, pueden ser innecesarias en el futuro.
 * Tenga en cuenta: ¡Su opinión tiene mucho peso!
 * Las nits (solicitudes para pequeños cambios que no son esenciales) están bien, pero intente evitar detener el pull request. 
   * Tenga en cuenta que son nits cuando comenta: `Nit: change foo() to bar().`
   * Si están deteniendo el pull request, corríjalos usted mismo en la fusión.
-* En la medida de los posible, los problemas deben ser identificados por las herramientas en lugar de por los revisores humanos. Si está dejando comentarios sobre los problemas que podrían ser identificados por las herramientas pero no lo son, considere implementar las herramientas necesarias.
+* En la medida de lo posible, los problemas deben ser identificados por las herramientas, en lugar de por los revisores humanos. Si está dejando comentarios sobre los problemas que podrían ser identificados por las herramientas pero no lo son, considere implementar las herramientas necesarias.
 * Tiempo mínimo de espera para comentarios 
-  * Hay un tiempo mínimo de espera que intentamos respetar para cambios no triviales, de modo que las personas que puedan tener aportes importantes en un proyecto distribuido sean capaces de responder.
+  * Hay un tiempo mínimo de espera que intentamos respetar para cambios no triviales, de modo que las personas que puedan tener aportes importantes en un proyecto tan distribuido sean capaces de responder.
   * Para cambios no triviales, deje abierto el pull request por al menos 48 horas (72 horas en fin de semana).
   * Si se abandona un pull request, verifique si les importaría que lo tomara (especialmente si solo faltan nits).
 
 * Aprobar un cambio
   
-  * Los colaboradores indican que han revisado y aprobado los combios en un pull request utilizando la interfaz de aprobación de GitHub
+  * Los colaboradores indican que han revisado y aprobado los cambios en un pull request utilizando la interfaz de aprobación de GitHub
   * A algunas personas les gusta comentar `LGTM` ("Me parece bien")
   * Tiene la autoridad para aprobar cualquier trabajo de otro colaborador.
   * No puede aprobar sus propios pull requests.
-  * Cuando utiliza explícitamente `Changes requested`, muestre empatía - los comentarios usualmente se abordarán incluso si no la utiliza. 
+  * Cuando utilice explícitamente `Changes requested`, muestre empatía - los comentarios usualmente se abordarán incluso si no la utiliza. 
     * Si lo hace, es bueno que esté disponible luego para verificar si se han abordado sus comentarios
     * Si observa que los cambios requeridos han sido realizados, puede borrar la revisión de los `Changes requested` de otro colaborador.
     * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
@@ -121,7 +121,7 @@ apply.whitespace fix`
     * Es decir, el `url` está ahí debido a `http`, `freelist` está ahí debido a `http`, etc.
   * Cosas que no pueden ser hechas fuera del núcleo, o solo con un significativo dolor, como `async_hooks`.
 
-* Pruebas de Integración Continua (CI):
+* Prueba de Integración Continua (CI):
   
   * <https://ci.nodejs.org/> 
     * No se ejecuta automáticamente. Necesita iniciarlo manualmente.
