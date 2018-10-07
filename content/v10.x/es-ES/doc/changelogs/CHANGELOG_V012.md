@@ -56,40 +56,40 @@
 
 ### Cambios Notables:
 
-* npm: upgrade from v2.15.1 to v2.15.11, including accurate updated license (Jeremiah Senkpiel)
+* npm; Actualización de v2.15.1 a v2.15.11, incluida la licencia actualizada precisa (Jeremiah Senkpiel)
 * process: `process.versions.ares` now outputs the c-ares version (Johan Bergström)
 
 ### Commits:
 
 * [a47fd4549d] - build: add working lint-ci make target (Rod Vagg) https://github.com/nodejs/node/pull/9151
 * [830584ca59] - deps: define missing operator delete functions (John Barboza) https://github.com/nodejs/node/pull/10356
-* [c130b31cba] - deps: upgrade npm to 2.15.11 (Jeremiah Senkpiel) https://github.com/nodejs/node/pull/9619
-* [bc6766d847] - doc: update npm license in main LICENSE file (Rod Vagg) https://github.com/nodejs/node/pull/10352
+* [c130b31cba] - deps: actualizar npm a 2.15.11 (Jeremiah Senkpiel) https://github.com/nodejs/node/pull/9619
+* [bc6766d847] - doc: actualizar licencia npm en archivo principal LICENSE (Rod Vagg) https://github.com/nodejs/node/pull/10352
 * [0cdf344c80] - (SEMVER-MINOR) process: reintroduce ares to versions (Johan Bergström) https://github.com/nodejs/node/pull/9191
 * [d8e27ec30a] - test: mark dgram-multicast-multi-process as flaky (Rod Vagg) https://github.com/nodejs/node/pull/9150
-* [c722335ead] - tls: fix minor jslint failure (Rod Vagg) https://github.com/nodejs/node/pull/9107
+* [c722335ead] - tls: corregir falla menor de jslint (Rod Vagg) https://github.com/nodejs/node/pull/9107
 
 <a id="0.12.17"></a>
 
 ## 2016-10-18, Version 0.12.17 (Maintenance), @rvagg
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
+Esta es una actualización de seguridad. Todos los usuarios de Node.js deben consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes:
+### Cambios Notables:
 
-* c-ares: fix for single-byte buffer overwrite, CVE-2016-5180, more information at https://c-ares.haxx.se/adv_20160929.html (Daniel Stenberg)
+* c-ares: corregir para sobreescritura de buffer de un sólo byte, CVE-2016-5180, más información en https://c-ares.haxx.se/adv_20160929.html (Daniel Stenberg)
 
 ### Commits:
 
-* [c5b095ecf8] - deps: avoid single-byte buffer overwrite (Daniel Stenberg) https://github.com/nodejs/node/pull/8849
+* [c5b095ecf8] - deps: evitar sobreescritura de buffer de un sólo byte (Daniel Stenberg) https://github.com/nodejs/node/pull/8849
 
 <a id="0.12.16"></a>
 
 ## 2016-09-27, Version 0.12.16 (Maintenance), @rvagg
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable changes:
+### Cambios Notables:
 
 * buffer: Zero-fill excess bytes in new `Buffer` objects created with `Buffer.concat()` while providing a `totalLength` parameter that exceeds the total length of the original `Buffer` objects being concatenated. (Сковорода Никита Андреевич)
 * http: 
