@@ -24,8 +24,8 @@ Para ver el texto de ayuda, ejecute `python configure --help`. Actualice este ar
 
 ## Makefile
 
-Para ver el texto de ayuda, ejecute `make help`. Este archivo no es generado, es mantenido por humanos. Note that this is not usually run on Windows, where [vcbuild.bat](#vcbuild.bat) is used instead.
+Para ver el texto de ayuda, ejecute `make help`. Este archivo no es generado, es mantenido por humanos. Tenga en cuenta que no es usualmente ejecutado en Windows, donde [vcbuild.bat](#vcbuild.bat) se utiliza en su lugar.
 
-### Options
+### Opciones
 
-- `-j <n>`: number of threads used to build the binary. Note that on the non-ci targets, the parallel tests will take up all the available cores, regardless of this option.
+- `-j <n>`: número de subprocesos usados para compilar el binario. Tenga en cuenta que en los objetivos no-ci, las pruebas paralelas tomarán todos los núcleos disponibles, independientemente de esta opción.
