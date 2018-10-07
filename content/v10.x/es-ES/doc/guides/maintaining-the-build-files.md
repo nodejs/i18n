@@ -9,22 +9,22 @@ Sobre cómo compilar el núcleo de Node.js, vea [Compilando Node.js](../../BUILD
 Hay tres archivos build principales que pueden ser ejecutados directamente al compilar Node.js:
 
 - `configure`: un script de Python 2 que detecta las capacidades del sistema y ejecuta [GYP](https://gyp.gsrc.io/docs/UserDocumentation.md). Genera `config.gypi`, el cual incluye parámetros usados por GYP para crear plataformas dependientes de los archivos build. Su output es usualmente en uno de estos formatos: archivos de proyecto Makefile, MSbuild, ninja o XCode. (Nota: el Makefile principal mencionado a continuación es mantenido por separado por humanos). Para una guía detallada sobre este script, vea [configure](#configure).
-- `vcbuild.bat`: A Windows Batch Script that locates build tools, provides a subset of the targets available in the [Makefile](#makefile), and a few targets of its own. For a detailed guide on this script, see [vcbuild.bat](#vcbuild.bat).
-- `Makefile`: A Makefile that can be run with GNU Make. It provides a set of targets that build and test the Node.js binary, produce releases and documentation, and interact with the CI to run benchmarks or tests. For a detailed guide on this file, see [Makefile](#makefile).
+- `vcbuild.bat`: Un Script Windows Batch que localiza herramientas de compilación, proporciona un subconjunto de objetivos disponibles en el [Makefile](#makefile), y unos pocos objetivos propios. Para una guía detallada sobre este script, vea [vcbuild.bat](#vcbuild.bat).
+- `Makefile`: Un Makefile que puede ser ejecutado por un Make GNU. Proporciona un conjunto de objetivos que compilan y prueban el binario de Node.js, producen lanzamientos y documentaciones, e interactúan con el CI para ejecutar pruebas de rendimiento o tests. Para una guía detallada sobre este archivo, vea [Makefile](#makefile).
 
-On Windows `vcbuild.bat` runs [configure](#configure) before building the Node.js binary, on other systems `configure` must be run manually before running `make` on the `Makefile`.
+En Windows `vcbuild.bat` ejecuta [configure](#configure) antes de compilar el binario de Node.js, en otros sistemas `configure` debe ser ejecutado manualmente antes de ejecutar `make` en el `Makefile`.
 
 ## vcbuild.bat
 
-To see the help text, run `.\vcbuild help`. Update this file when you need to update the build and testing process on Windows.
+Para ver el texto de ayuda, ejecuta `.\vcbuild help`. Actualice este archivo cuando necesite actualizar el build y probar procesos en Windows.
 
 ## configure
 
-To see the help text, run `python configure --help`. Update this file when you need to update the configuration process.
+Para ver el texto de ayuda, ejecute `python configure --help`. Actualice este archivo cuando necesite actualizar el proceso de configuración.
 
 ## Makefile
 
-To see the help text, run `make help`. This file is not generated, it is maintained by humans. Note that this is not usually run on Windows, where [vcbuild.bat](#vcbuild.bat) is used instead.
+Para ver el texto de ayuda, ejecute `make help`. Este archivo no es generado, es mantenido por humanos. Note that this is not usually run on Windows, where [vcbuild.bat](#vcbuild.bat) is used instead.
 
 ### Options
 
