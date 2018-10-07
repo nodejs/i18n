@@ -1,12 +1,12 @@
-# Postmortem Support
+# Soporte Postmortem
 
-Postmortem metadata are constants present in the final build which can be used by debuggers and other tools to navigate through internal structures of software when analyzing its memory (either on a running process or a core dump). Node.js provides this metadata in its builds for V8 and Node.js internal structures.
+Los metadatos postmortem son constantes presentes en la compilación final, la cual puede ser usada por debuggers y otras herramientas para navegar a través de estructuras internas de software cuando se analice su memoria (ya sea en un proceso de ejecución o en un volcado de memoria). Node.js proporciona estos metadatos y su compilación para V8 y para estructuras internas de Node.js.
 
-### V8 Postmortem metadata
+### Metadatos Postmortem V8
 
-V8 prefixes all postmortem constants with `v8dbg_`, and they allow inspection of objects on the heap as well as object properties and references. V8 generates those symbols with a script (`deps/v8/tools/gen-postmortem-metadata.py`), and Node.js always includes these constants in the final build.
+V8 prefija todas las constantes postmortem con `v8dbg_`, y ellas permiten la inspección de objetos en la cabecera. V8 genera aquellos símbolos con un script (`deps/v8/tools/gen-postmortem-metadata.py`), y Node.js siempre incluye estas constantes en la compilación final.
 
-### Node.js Debug Symbols
+### Símbolos de Depuración de Node.js
 
 Node prefixes all postmortem constants with `nodedbg_`, and they complement V8 constants by providing ways to inspect Node-specific structures, like `node::Environment`, `node::BaseObject` and its descendants, classes from `src/utils.h` and others. Those constants are declared in `src/node_postmortem_metadata.cc`, and most of them are calculated at compile time.
 
