@@ -618,11 +618,11 @@ Vero se il processo non è un master (è la negazione di `cluster.isMaster`).
 added: v0.11.2
 -->
 
-La politica di scheduling, `cluster.SCHED_RR` per il round-robin oppure `cluster.SCHED_NONE` per lasciare la decisione al sistema operativo. This is a global setting and effectively frozen once either the first worker is spawned, or `cluster.setupMaster()` is called, whichever comes first.
+La politica di scheduling, `cluster.SCHED_RR` per il round-robin oppure `cluster.SCHED_NONE` per lasciare la decisione al sistema operativo. Questa è un'impostazione globale e viene sospesa in modo efficace quando viene generato il primo worker oppure quando viene chiamato `cluster.setupMaster()`, a seconda dell'evento che si verifica per primo.
 
-`SCHED_RR` is the default on all operating systems except Windows. Windows will change to `SCHED_RR` once libuv is able to effectively distribute IOCP handles without incurring a large performance hit.
+`SCHED_RR` è l'impostazione predefinita su tutti i sistemi operativi eccetto Windows. Windows passerà a `SCHED_RR` solo quando libuv sarà in grado di distribuire efficacemente gli IOCP handle senza incorrere in un grande calo di prestazioni.
 
-`cluster.schedulingPolicy` can also be set through the `NODE_CLUSTER_SCHED_POLICY` environment variable. Valid values are `'rr'` and `'none'`.
+`cluster.schedulingPolicy` può essere impostato anche tramite la variabile di ambiente `NODE_CLUSTER_SCHED_POLICY`. I valori validi sono `'rr'` e `'none'`.
 
 ## cluster.settings
 
@@ -645,12 +645,12 @@ changes:
 -->
 
 * {Object} 
-  * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **Default:** `process.execArgv`.
-  * `exec` {string} File path to worker file. **Default:** `process.argv[1]`.
-  * `args` {string[]} String arguments passed to worker. **Default:** `process.argv.slice(2)`.
-  * `cwd` {string} Current working directory of the worker process. **Default:** `undefined` (inherits from parent process).
-  * `silent` {boolean} Whether or not to send output to parent's stdio. **Default:** `false`.
-  * `stdio` {Array} Configures the stdio of forked processes. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. When this option is provided, it overrides `silent`.
+  * `execArgv` {string[]} Elenco degli argomenti di string passati all'eseguibile di Node.js. **Default:** `process.execArgv`.
+  * `exec` {string} Percorso file (file path) del file worker. **Default:** `process.argv[1]`.
+  * `args` {string[]} Argomenti di string passati al worker. **Default:** `process.argv.slice(2)`.
+  * `cwd` {string} Attuale directory di lavoro del processo worker. **Default:** `undefined` (eredita dal processo parent).
+  * `silent` {boolean} Se inviare o meno l'output allo stdio del parent. **Default:** `false`.
+  * `stdio` {Array} Configura lo stdio dei processi sottoposti al fork. Poiché il modulo cluster si basa su IPC per funzionare, questa configurazione deve contenere una voce `'ipc'`. When this option is provided, it overrides `silent`.
   * `uid` {number} Sets the user identity of the process. (See setuid(2).)
   * `gid` {number} Sets the group identity of the process. (See setgid(2).)
   * `inspectPort` {number|Function} Sets inspector port of worker. This can be a number, or a function that takes no arguments and returns a number. By default each worker gets its own port, incremented from the master's `process.debugPort`.
