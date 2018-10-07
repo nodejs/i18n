@@ -410,9 +410,9 @@ added: v0.7.9
 
 * `worker` {cluster.Worker}
 
-Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed, or is disconnected manually (such as with `worker.disconnect()`).
+Emesso dopo che il canale IPC del worker è stato disconnesso. Ciò può verificarsi quando un worker esce lentamente, subisce un arresto o viene disconnesso manualmente (come con `worker.disconnect()`).
 
-There may be a delay between the `'disconnect'` and `'exit'` events. These events can be used to detect if the process is stuck in a cleanup or if there are long-living connections.
+Potrebbe esserci un ritardo tra gli eventi `'disconnect'` ed `'exit'`. Questi eventi possono essere utilizzati per rilevare se il processo è bloccato all'interno di un processo di pulizia o se ci sono connessioni di lunga durata.
 
 ```js
 cluster.on('disconnect', (worker) => {
@@ -427,10 +427,10 @@ added: v0.7.9
 -->
 
 * `worker` {cluster.Worker}
-* `code` {number} The exit code, if it exited normally.
-* `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
+* `code` {number} Il valore di uscita, se esce normalmente.
+* `signal` {string} Il nome del segnale (ad es. `'SIGHUP'`) che ha causato l'arresto del processo.
 
-When any of the workers die the cluster module will emit the `'exit'` event.
+Quando uno degli worker subisce l'arresto, il modulo cluster emetterà l'evento `'exit'`.
 
 This can be used to restart the worker by calling `.fork()` again.
 
