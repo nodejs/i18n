@@ -8,11 +8,11 @@ V8 prefija todas las constantes postmortem con `v8dbg_`, y ellas permiten la ins
 
 ### Símbolos de Depuración de Node.js
 
-Node prefixes all postmortem constants with `nodedbg_`, and they complement V8 constants by providing ways to inspect Node-specific structures, like `node::Environment`, `node::BaseObject` and its descendants, classes from `src/utils.h` and others. Those constants are declared in `src/node_postmortem_metadata.cc`, and most of them are calculated at compile time.
+Node prefija todas las constantes postmortem con `nodedbg_`, y ellas complementan las constantes V8 al proporcionar formas de inspeccionar estructuras específicas de Node, tales como `node::Environment`, `node::BaseObject` y sus clases descendientes desde `src/utils.h` y otros. Esas constantes son declaradas en `src/node_postmortem_metadata.cc`, y la mayoría estaban estaban calculadas en el tiempo de la compilación.
 
-#### Calculating offset of class members
+#### Calcular el offset de miembros de clase
 
-Node.js constants referring to the offset of class members in memory are calculated at compile time. Because of that, those class members must be at a fixed offset from the start of the class. That's not a problem in most cases, but it also means that those members should always come after any templated member on the class definition.
+Las constantes Node.js que refieren al offset de miembros de clase de memoria son calculados en tiempo de compilación. Because of that, those class members must be at a fixed offset from the start of the class. That's not a problem in most cases, but it also means that those members should always come after any templated member on the class definition.
 
 For example, if we want to add a constant with the offset for `ReqWrap::req_wrap_queue_`, it should be defined after `ReqWrap::req_`, because `sizeof(req_)` depends on the type of T, which means the class definition should be like this:
 
