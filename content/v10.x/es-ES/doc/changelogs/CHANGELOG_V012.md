@@ -123,8 +123,8 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-* libuv: (CVE-2014-9748) Fixes a bug in the read/write locks implementation for Windows XP and Windows 2003 that can lead to undefined and potentially unsafe behaviour. More information can be found at https://github.com/libuv/libuv/issues/515 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
-* V8: (CVE-2016-1669) Fixes a potential Buffer overflow vulnerability discovered in V8, more details can be found in the CVE at https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
+* libuv: (CVE-2014-9748) Corrige un bug en la implementación de bloqueo de lectura/escritura para Windows XP y Windows 2003 que pueden llevar a un comportamiento indefinido y potencialmente inseguro. Se puede encontrar más información en https://github.com/libuv/libuv/issues/515 o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
+* V8: (CVE-2016-1669) Corrige una potencial vulnerabilidad de desbordamiento de Buffer descubierta en V8, se pueden encontrar más detalles en el CVE en https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 
 ### Commits:
 
@@ -140,20 +140,20 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-05-06, Version 0.12.14 (Maintenance), @rvagg
 
-### Notable changes:
+### Cambios Notables:
 
-* npm: Correct erroneous version number in v2.15.1 code (Forrest L Norvell) https://github.com/nodejs/node/pull/5988
-* openssl: Upgrade to v1.0.1t, addressing security vulnerabilities (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
+* npm: Corregir números de versión erróneos en el código v2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5988
+* openssl: Actualizar a v1.0.1t, abordando vulnerabilidades de seguridad (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553 
   * Fixes CVE-2016-2107 "Padding oracle in AES-NI CBC MAC check"
   * Fixes CVE-2016-2105 "EVP_EncodeUpdate overflow"
   * See https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ for full details
 
 ### Commits:
 
-* [3e99ee1b47] - deps: completely upgrade npm in LTS to 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5988
-* [2b63396e1f] - deps: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
-* [f21705df58] - deps: update openssl asm files (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-* [02b6a6bc27] - deps: fix openssl assembly error on ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
+* [3e99ee1b47] - deps: actualizar completamente npm en LTS a 2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5988
+* [2b63396e1f] - deps: agregar -no_rand_screen a s_client en openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
+* [f21705df58] - deps: actualizar archivos asm de openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+* [02b6a6bc27] - deps: corregir error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/joyent/node/pull/25654
 * [1aecc668b0] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/joyent/node/pull/25654
 * [39380836a0] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
 * [08c8ae44a8] - deps: upgrade openssl sources to 1.0.1t (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
