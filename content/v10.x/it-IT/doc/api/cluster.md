@@ -677,11 +677,11 @@ changes:
 
 Da notare che:
 
-* Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
-* The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
-* The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
+* Qualsiasi modifica alle impostazioni influisce solo sulle chiamate future a `.fork()` e non ha alcun effetto sugli worker che sono già in esecuzione.
+* L'*unico* attributo di un worker che non può essere impostato tramite `.setupMaster()` è l'`env` passato a `.fork()`.
+* I valori predefiniti sopra indicati si applicano solo alla prima chiamata, quelli per le chiamate successive corrispondono ai valori presenti nel momento in cui viene chiamato `cluster.setupMaster()`.
 
-Example:
+Esempio:
 
 ```js
 const cluster = require('cluster');
@@ -690,15 +690,15 @@ cluster.setupMaster({
   args: ['--use', 'https'],
   silent: true
 });
-cluster.fork(); // https worker
+cluster.fork(); // worker https
 cluster.setupMaster({
   exec: 'worker.js',
   args: ['--use', 'http']
 });
-cluster.fork(); // http worker
+cluster.fork(); // worker http
 ```
 
-This can only be called from the master process.
+Questo può essere chiamato solo dal processo master.
 
 ## cluster.worker
 
@@ -708,7 +708,7 @@ added: v0.7.0
 
 * {Object}
 
-A reference to the current worker object. Not available in the master process.
+Un riferimento all'attuale worker object. Non disponibile nel processo master.
 
 ```js
 const cluster = require('cluster');
@@ -730,12 +730,12 @@ added: v0.7.0
 
 * {Object}
 
-A hash that stores the active worker objects, keyed by `id` field. Makes it easy to loop through all the workers. It is only available in the master process.
+A hash that stores the active worker objects, keyed by `id` field. Makes it easy to loop through all the workers. E' disponibile solo nel processo master.
 
 A worker is removed from `cluster.workers` after the worker has disconnected *and* exited. The order between these two events cannot be determined in advance. However, it is guaranteed that the removal from the `cluster.workers` list happens before last `'disconnect'` or `'exit'` event is emitted.
 
 ```js
-// Go through all workers
+// Passa attraverso tutti gli worker
 function eachWorker(callback) {
   for (const id in cluster.workers) {
     callback(cluster.workers[id]);
