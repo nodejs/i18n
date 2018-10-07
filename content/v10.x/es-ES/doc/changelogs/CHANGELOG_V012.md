@@ -1,4 +1,4 @@
-# Node.js 0.12 ChangeLog
+# Registro de Cambios de Node.js 0.12
 
 <!--lint disable prohibited-strings-->
 
@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Stable</th>
+<th>Estable</th>
 </tr>
   
   <tr>
@@ -36,7 +36,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -48,13 +48,13 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Note*: Node.js v0.12 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until December 31st, 2016.
+*Nota*: Node.js v0.12 está cubierto por el [Plan de Soporte a Largo Plazo de Node.js](https://github.com/nodejs/LTS) y se mantendrá hasta el 31 de diciembre de 2016.
 
 <a id="0.12.18"></a>
 
-## 2016-12-21, Version 0.12.18 (Maintenance), @rvagg
+## 2016-12-21, Versión 0.12.18 (Mantenimiento), @rvagg
 
-### Notable changes:
+### Cambios Notables:
 
 * npm: upgrade from v2.15.1 to v2.15.11, including accurate updated license (Jeremiah Senkpiel)
 * process: `process.versions.ares` now outputs the c-ares version (Johan Bergström)
