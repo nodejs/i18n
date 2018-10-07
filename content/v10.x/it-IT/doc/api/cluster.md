@@ -573,11 +573,11 @@ added: v0.7.7
 
 Chiama `.disconnect()` su ciascun worker all'interno di `cluster.workers`.
 
-When they are disconnected all internal handles will be closed, allowing the master process to die gracefully if no other event is waiting.
+Quando gli worker vengono disconnessi, tutti gli handle interni verranno chiusi, permettendo il lento arresto del processo master se non c'è nessun altro evento in attesa.
 
 The method takes an optional callback argument which will be called when finished.
 
-This can only be called from the master process.
+Questo può essere chiamato solo dal processo master.
 
 ## cluster.fork([env])
 
