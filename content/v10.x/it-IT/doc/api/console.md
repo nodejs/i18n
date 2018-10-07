@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+La classe `Console` può essere utilizzata per creare un semplice logger con degli output stream configurabili ed è possibile accedervi utilizzando `require('console').Console` oppure `console.Console` (o le loro controparti destrutturate):
 
 ```js
 const { Console } = require('console');
@@ -89,10 +89,10 @@ changes:
 * `options` {Object} 
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
-  * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
-  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
+  * `ignoreErrors` {boolean} Ignora gli errori durante la scrittura (writing) sugli stream sottostanti. **Default:** `true`.
+  * `colorMode` {boolean|string} Imposta il supporto dei colori per quest'istanza `Console`. Se `true` attiva la possibilità di colorare durante l'ispezione dei valori, se `'auto'` farà sì che il supporto dei colori dipenda dal valore della proprietà `isTTY` e dal valore restituito da `getColorDepth()` sul rispettivo stream. **Default:** `'auto'`.
 
-Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
+Crea una nuova `Console` con una o due istanze di writable stream. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
