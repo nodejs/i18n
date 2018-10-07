@@ -1041,7 +1041,7 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 ### Cambios Notables
 
 * **build**: 
-  * El co-diseño está reparado en macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
+  * La firma de códigos está reparada en macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * **deps**: 
   * ¡¡¡Las snapshots están activas de nuevo!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
 * **path**: 
@@ -1061,10 +1061,10 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 * [[`325813ea97`](https://github.com/nodejs/node/commit/325813ea97)] - **build,win**: reparar script de detección de python (Jason Ginchereau) [#14546](https://github.com/nodejs/node/pull/14546)
 * [[`c2090a0634`](https://github.com/nodejs/node/commit/c2090a0634)] - **build,windows**: restaurar DISTTYPEDIR (Refael Ackermann) [#13969](https://github.com/nodejs/node/pull/13969)
 * [[`2a1a93dcbf`](https://github.com/nodejs/node/commit/2a1a93dcbf)] - **build,windows**: implementar detección python PEP514 (Refael Ackermann) [#13900](https://github.com/nodejs/node/pull/13900)
-* [[`2bc7c3a8dd`](https://github.com/nodejs/node/commit/2bc7c3a8dd)] - **child_process**: reparar el manejo del NODE_HANDLE sin manijas (Santiago Gimeno) [#13235](https://github.com/nodejs/node/pull/13235)
+* [[`2bc7c3a8dd`](https://github.com/nodejs/node/commit/2bc7c3a8dd)] - **child_process**: reparar el manejo sin handles de NODE_HANDLE (Santiago Gimeno) [#13235](https://github.com/nodejs/node/pull/13235)
 * [[`5900ebe9e4`](https://github.com/nodejs/node/commit/5900ebe9e4)] - **crypto**: remover root_cert_store de node_crypto.h (Daniel Bevenius) [#13194](https://github.com/nodejs/node/pull/13194)
-* [[`987332abdf`](https://github.com/nodejs/node/commit/987332abdf)] - **deps**: hacer cherry-pick 18ea996 desde upstream de c-ares (Anna Henningsen) [#13883](https://github.com/nodejs/node/pull/13883)
-* [[`7fed989deb`](https://github.com/nodejs/node/commit/7fed989deb)] - **deps**: hacer cherry-pick f5fad6d desde upstream de v8 (daniel.bevenius) [#12826](https://github.com/nodejs/node/pull/12826)
+* [[`987332abdf`](https://github.com/nodejs/node/commit/987332abdf)] - **deps**: hacer cherry-pick a 18ea996 desde upstream de c-ares (Anna Henningsen) [#13883](https://github.com/nodejs/node/pull/13883)
+* [[`7fed989deb`](https://github.com/nodejs/node/commit/7fed989deb)] - **deps**: hacer cherry-pick a f5fad6d desde upstream de v8 (daniel.bevenius) [#12826](https://github.com/nodejs/node/pull/12826)
 * [[`67ce52c740`](https://github.com/nodejs/node/commit/67ce52c740)] - **deps**: backport strings de rehash después de deserialización (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
 * [[`6518932466`](https://github.com/nodejs/node/commit/6518932466)] - **dns**: reparar arranques fallidos sin red de `resolve` (XadillaX) [#13076](https://github.com/nodejs/node/pull/13076)
 * [[`438a6427e5`](https://github.com/nodejs/node/commit/438a6427e5)] - **doc**: añadir a gabrielschulhof a colaboradores (Gabriel Schulhof) [#14692](https://github.com/nodejs/node/pull/14692)
@@ -1090,9 +1090,9 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 * [[`73c720dd9e`](https://github.com/nodejs/node/commit/73c720dd9e)] - **doc**: cambiar `child` a `subprocess` (Rich Trott) [#14578](https://github.com/nodejs/node/pull/14578)
 * [[`7f6f1c2ddc`](https://github.com/nodejs/node/commit/7f6f1c2ddc)] - **doc, util, console**: clarificar documentos ambiguos (Natanael Log) [#14027](https://github.com/nodejs/node/pull/14027)
 * [[`d6ab8e2f43`](https://github.com/nodejs/node/commit/d6ab8e2f43)] - **doc,stream**: _transform sucede uno a la vez (Matteo Collina) [#14321](https://github.com/nodejs/node/pull/14321)
-* [[`c307f03b2b`](https://github.com/nodejs/node/commit/c307f03b2b)] - **doc,test**: fs - caracteres reservados bajo win32 (XadillaX) [#13875](https://github.com/nodejs/node/pull/13875)
+* [[`c307f03b2b`](https://github.com/nodejs/node/commit/c307f03b2b)] - **doc,test**: caracteres reservados del fs bajo win32 (XadillaX) [#13875](https://github.com/nodejs/node/pull/13875)
 * [[`1d5ba9c8e9`](https://github.com/nodejs/node/commit/1d5ba9c8e9)] - **docs**: añadir nota sobre fs.rmdir() (Oleksandr Kushchak) [#14323](https://github.com/nodejs/node/pull/14323)
-* [[`f8b60e40a4`](https://github.com/nodejs/node/commit/f8b60e40a4)] - **gyp**: implementar a LD/LDXX para ninja y FIPS (Sam Roberts)
+* [[`f8b60e40a4`](https://github.com/nodejs/node/commit/f8b60e40a4)] - **gyp**: implement LD/LDXX for ninja and FIPS (Sam Roberts)
 * [[`963ea0e99b`](https://github.com/nodejs/node/commit/963ea0e99b)] - **lib**: actualizar sangría de ternarios (Rich Trott) [#14247](https://github.com/nodejs/node/pull/14247)
 * [[`0cacd6c89e`](https://github.com/nodejs/node/commit/0cacd6c89e)] - **lib**: normalizar sangría en paréntesis (Rich Trott) [#14125](https://github.com/nodejs/node/pull/14125)
 * [[`4dabeeecdd`](https://github.com/nodejs/node/commit/4dabeeecdd)] - **lib**: remover exceso de sangría (Rich Trott) [#14090](https://github.com/nodejs/node/pull/14090)
