@@ -1738,25 +1738,25 @@ https://github.com/nodejs/node/commit/4ced23deaf36493f4303a18f6fdce768c58becc0
 * uv: Añadir soporte para errores de EROFS (Ben Noordhuis, Maciej Małecki)
 * uv: Añadir soporte para errores de EIO y ENOSPC (Fedor Indutny)
 * windows: Añadir soporte para errores de EXDEV (Bert Belder)
-* http: Fix client memory leaks (isaacs, Vincent Voyer)
-* fs: fix file descriptor leak in sync functions (Ben Noordhuis)
-* fs: fix ReadStream / WriteStream double close bug (Ben Noordhuis)
+* http: Corregir fugas de memoria del cliente (isaacs, Vincent Voyer)
+* fs: reparar fuga del descriptor de archivos en funciones sincrónicas (Ben Noordhuis)
+* fs: reparar bug de cierre doble de ReadStream / WriteStream (Ben Noordhuis)
 
 <a id="0.6.16"></a>
 
-## 2012.04.30 Version 0.6.16 (stable)
+## 2012.04.30 Versión 0.6.16 (estable)
 
 https://github.com/nodejs/node/commit/a1d193963ddc80a27da5da01b59751e14e33d1d6
 
-* Upgrade V8 to 3.6.6.25
-* Upgrade npm to 1.1.19
-* Windows: add mappings for UV_ENOENT (Bert Belder)
-* linux: add IN_MOVE_SELF to inotify event mask (Ben Noordhuis)
-* unix: call pipe handle connection cb on accept() error (Ben Noordhuis)
-* unix: handle EWOULDBLOCK (Ben Noordhuis)
-* map EWOULDBLOCK to UV_EAGAIN (Ben Noordhuis)
-* Map ENOMEM to UV_ENOMEM (isaacs)
-* Child process: support the `gid` and `uid` options (Bert Belder)
+* Actualizar V8 a 3.6.6.25
+* Actualizar npm a 1.1.19
+* Windows: añadir mapeos para UV_ENOENT (Bert Belder)
+* linux: añadir IN_MOVE_SELF a máscara de eventos inotify (Ben Noordhuis)
+* unix: llamar para que se maneje el cb de la conexión mediante pipe ante error de accept() (Ben Noordhuis)
+* unix: manejar EWOULDBLOCK (Ben Noordhuis)
+* mapear EWOULDBLOCK a UV_EAGAIN (Ben Noordhuis)
+* Mapear ENOMEM a UV_ENOMEM (isaacs)
+* Child process: soportar las opciones `gid` y `uid` (Bert Belder)
 * test: cluster: add worker death event test (Ben Noordhuis)
 * typo in node_http_parser (isaacs)
 * http_parser: Eat CRLF between requests, even on connection:close. (Ben Noordhuis)
