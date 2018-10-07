@@ -122,7 +122,7 @@ debug> setBreakpoint('mod.js', 22)
 Warning: script 'mod.js' was not loaded yet.
 debug> c
 break in mod.js:22
- 20 // USO U OTROS TRÁFICOS EN EL SOFTWARE.
+ 20 // USO U OTRO TRÁFICO EN EL SOFTWARE.
  21
 >22 exports.hello = function() {
  23   return 'hello from module';
