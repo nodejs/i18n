@@ -650,15 +650,15 @@ changes:
   * `args` {string[]} Argomenti di string passati al worker. **Default:** `process.argv.slice(2)`.
   * `cwd` {string} Attuale directory di lavoro del processo worker. **Default:** `undefined` (eredita dal processo parent).
   * `silent` {boolean} Se inviare o meno l'output allo stdio del parent. **Default:** `false`.
-  * `stdio` {Array} Configura lo stdio dei processi sottoposti al fork. Poiché il modulo cluster si basa su IPC per funzionare, questa configurazione deve contenere una voce `'ipc'`. When this option is provided, it overrides `silent`.
-  * `uid` {number} Sets the user identity of the process. (See setuid(2).)
-  * `gid` {number} Sets the group identity of the process. (See setgid(2).)
-  * `inspectPort` {number|Function} Sets inspector port of worker. This can be a number, or a function that takes no arguments and returns a number. By default each worker gets its own port, incremented from the master's `process.debugPort`.
-  * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Default:** `false`.
+  * `stdio` {Array} Configura lo stdio dei processi sottoposti al fork. Poiché il modulo cluster si basa su IPC per funzionare, questa configurazione deve contenere una voce `'ipc'`. Quando viene fornita quest'opzione, esegue l'override di `silent`.
+  * `uid` {number} Imposta l'identità dell'utente (user identity) del processo. (Vedi setuid(2).)
+  * `gid` {number} Imposta l'identità di gruppo (group identity) del processo. (Vedi setgid(2).)
+  * `inspectPort` {number|Function} Imposta l'inspector port del worker. Questo può essere un numero, oppure può essere una funzione che non accetta argomenti e restituisce un numero. Di default, ogni worker riceve la propria porta, incrementata dal `process.debugPort` del master.
+  * `windowsHide` {boolean} Nasconde la finestra della console dei processi sottoposti al fork che verrebbe normalmente creata sui sistemi Windows. **Default:** `false`.
 
-After calling `.setupMaster()` (or `.fork()`) this settings object will contain the settings, including the default values.
+Dopo aver chiamato `.setupMaster()` (oppure `.fork()`) questo settings object conterrà le impostazioni, compresi i valori predefiniti (default values).
 
-This object is not intended to be changed or set manually.
+Quest'object non è predisposto ad essere modificato o impostato manualmente.
 
 ## cluster.setupMaster([settings])
 
@@ -673,9 +673,9 @@ changes:
 
 * `settings` {Object} Vedi [`cluster.settings`][].
 
-`setupMaster` is used to change the default 'fork' behavior. Once called, the settings will be present in `cluster.settings`.
+`setupMaster` viene utilizzato per modificare il comportamento predefinito di 'fork'. Una volta chiamato, le impostazioni saranno presenti all'interno di `cluster.settings`.
 
-Note that:
+Da notare che:
 
 * Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
