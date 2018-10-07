@@ -518,9 +518,9 @@ Emesso quando il cluster master riceve un messaggio da qualsiasi worker.
 
 Vedi [`child_process` event: `'message'`][].
 
-Prima di Node.js v6.0, questo evento emetteva solo il messaggio e l'handle, ma non il worker object, contrariamente a quanto affermato nella documentazione.
+Prima della versione Node.js v6.0, questo evento emetteva solo il messaggio e l'handle, ma non il worker object, contrariamente a quanto affermato nella documentazione.
 
-If support for older versions is required but a worker object is not required, it is possible to work around the discrepancy by checking the number of arguments:
+Se è richiesto il supporto per le versioni precedenti ma non è richiesto un worker object, è possibile aggirare questa discrepanza controllando il numero di argomenti:
 
 ```js
 cluster.on('message', (worker, message, handle) => {
@@ -541,7 +541,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-After forking a new worker, the worker should respond with an online message. When the master receives an online message it will emit this event. The difference between `'fork'` and `'online'` is that fork is emitted when the master forks a worker, and `'online'` is emitted when the worker is running.
+Dopo aver ricavato il nuovo worker tramite il fork, il worker dovrebbe rispondere con un messaggio online. Quando il master riceverà un messaggio online, emetterà questo evento. La differenza tra `'fork'` e `'online'` è che il fork viene emesso quando il master esegue il fork di un worker, mentre `'online'` viene emesso quando il worker è in esecuzione.
 
 ```js
 cluster.on('online', (worker) => {
@@ -557,7 +557,7 @@ added: v0.7.1
 
 * `settings` {Object}
 
-Emitted every time `.setupMaster()` is called.
+Emesso ogni volta che viene chiamato `.setupMaster()`.
 
 The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
 
