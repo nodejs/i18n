@@ -10,10 +10,10 @@ Node.js incluye una utilidad de depuración fuera de proceso, de fácil acceso a
 
 ```txt
 $ node inspect myscript.js
-<Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
-< para ayuda, visitar: https://nodejs.org/en/docs/inspector
-< Depurador adjunto.
-Interrumpir el inicio en myscript.js:1
+< Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
+< For help, see: https://nodejs.org/en/docs/inspector
+< Debugger attached.
+Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   console.log('world');
@@ -40,24 +40,24 @@ Un punto de interrupción sucederá en la línea 3 una vez que el depurador sea 
 
 ```txt
 $ node inspect myscript.js
-<Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
-< Para ayuda, visitar: https://nodejs.org/en/docs/inspector
-< Depurador adjunto.
-Interrupción en el inicio en myscript.js:1
+< Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
+< For help, see: https://nodejs.org/en/docs/inspector
+< Debugger attached.
+Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   debugger;
 debug> cont
 < hello
-Interrupción en myscript.js:3 
+break in myscript.js:3
   1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
 > 3   debugger;
   4   console.log('world');
   5 }, 1000);
 debug> next
-Interrupción en myscript.js:4
-   setTimeout(() => {
+break in myscript.js:4
+  2 setTimeout(() => {
   3   debugger;
 > 4   console.log('world');
   5 }, 1000);
@@ -70,7 +70,7 @@ Press Ctrl + C to leave debug repl
 4
 debug> next
 < world
-interrupción en myscript.js:5
+break in myscript.js:5
   3   debugger;
   4   console.log('world');
 > 5 }, 1000);
