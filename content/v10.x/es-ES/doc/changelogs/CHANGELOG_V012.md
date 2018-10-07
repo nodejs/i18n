@@ -172,34 +172,34 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Commits
 
 * [4041ea6bc5] - deps: actualizar npm en LTS a 2.15.1 (Forrest L Norvell)
-* [a115779026] - deps: Disable EXPORT and LOW ciphers in openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
-* [ab907eb5a8] - test: skip cluster-disconnect-race on Windows (Gibson Fahnestock) https://github.com/nodejs/node/pull/5621
-* [9c06db7444] - test: change tls tests not to use LOW cipher (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
-* [154098a3dc] - test: bp fix for test-http-get-pipeline-problem.js (Michael Dawson) https://github.com/nodejs/node/pull/3013
-* [ff2bed6e86] - win,build: support Visual C++ Build Tools 2015 (João Reis) https://github.com/nodejs/node/pull/5627
+* [a115779026] - deps: Desactiva cifrados EXPORT y LOW en openssl (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* [ab907eb5a8] - test: saltar cluster-disconnect-race en Windows (Gibson Fahnestock) https://github.com/nodejs/node/pull/5621
+* [9c06db7444] - test: cambiar prueba tls para que no utilice cifrado LOW (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* [154098a3dc] - test: corregir bp para est-http-get-pipeline-problem.js (Michael Dawson) https://github.com/nodejs/node/pull/3013
+* [ff2bed6e86] - win,build: soportar Visual C++ Build Tools 2015 (João Reis) https://github.com/nodejs/node/pull/5627
 
 <a id="0.12.12"></a>
 
 ## 2016-03-08, Version 0.12.12 (LTS), @rvagg
 
-### Notable changes:
+### Cambios Notables:
 
-* openssl: Fully remove SSLv2 support, the `--enable-ssl2` command line argument will now produce an error. The DROWN Attack (https://drownattack.com/) creates a vulnerability where SSLv2 is enabled by a server, even if a client connection is not using SSLv2. The SSLv2 protocol is widely considered unacceptably broken and should not be supported. More information is available at https://www.openssl.org/news/vulnerabilities.html#2016-0800
+* openssl: Remover completamente soporte para SSLv2, el argumento de línea de comando `--enable-ssl2` producirá ahora un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad en la que SSLv2 es habilitado por un servidor, incluso si una conexión de cliente no está utilizando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente dañado y no debe ser soportado. Más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
 
-Note that the upgrade to OpenSSL 1.0.1s in Node.js v0.12.11 removed internal SSLv2 support. The change in this release was originally intended for v0.12.11. The `--enable-ssl2` command line argument now produces an error rather than being a no-op.
+Tenga en cuenta que la actualización a OpenSSL 1.0.1s en Node.js v0.12.11 eliminó el soporte interno de SSLv2. El cambio en esta versión fue originalmente pensado para v0.12.11. El argumento de línea de comando `--enable-ssl2` ahora produce un error en lugar de ser un no-op.
 
 ### Commits:
 
-* [dbfc9d9241] - crypto,tls: remove SSLv2 support (Ben Noordhuis) https://github.com/nodejs/node/pull/5536
+* [dbfc9d9241] - crypto,tls: eliminar soporte a SSLv2 (Ben Noordhuis) https://github.com/nodejs/node/pull/5536
 
 <a id="0.12.11"></a>
 
 ## 2016-03-03, Version 0.12.11 (LTS), @rvagg
 
-### Notable changes:
+### Cambios Notables:
 
-* http_parser: Update to http-parser 2.3.2 to fix an unintentionally strict limitation of allowable header characters. (James M Snell) https://github.com/nodejs/node/pull/5241
-* domains: 
+* http_parser: Actualizar a http-parser 2.3.2 para reparar una limitación estricta no intencional de caracteres de cabecera permitidos. (James M Snell) https://github.com/nodejs/node/pull/5241
+* dominios: 
   * Prevent an exit due to an exception being thrown rather than emitting an 'uncaughtException' event on the `process` object when no error handler is set on the domain within which an error is thrown and an 'uncaughtException' event listener is set on `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3885
   * Fix an issue where the process would not abort in the proper function call if an error is thrown within a domain with no error handler and `--abort-on-uncaught-exception` is used. (Julien Gilli) https://github.com/nodejs/node/pull/3885
 * openssl: Upgrade from 1.0.1r to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5509 
