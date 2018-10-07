@@ -78,7 +78,7 @@ changes:
 
 当使用 `strict 模式` 时，任何 `assert` 函数都会使用严格函数模式的等式。 例如，[`assert.deepEqual()`] 会等同于 [`assert.deepStrictEqual()`]。
 
-除此之外，涉及对象的错误信息会产生一个错误差异比较，而不是展示双方的对象。 Legacy 模式则不会这样。
+除此之外，涉及对象的错误信息会产生一个错误差异比较，而不是展示两个对象。 Legacy 模式则不会这样。
 
 可以通过如下方式使用：
 
@@ -111,9 +111,9 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 
 ## Legacy 模式
 
-> 稳定性：0 - 不推荐使用：改为使用Strict模式
+> 稳定性：0 - 已弃用：改为使用Strict模式
 
-当直接访问 `assert`， 问不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
+当直接访问 `assert`， 而不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
 可以使用以下方法访问它：
 
@@ -172,7 +172,7 @@ changes:
 
 **Legacy 模式**
 
-> 稳定性：0 - 不推荐使用：改为使用 [`assert.deepStrictEqual()`]。
+> 稳定性：0 - 已弃用：改为使用 [`assert.deepStrictEqual()`][]。
 
 测试 `actual` 和 `expected` 参数之间是否深度相等。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
@@ -183,7 +183,7 @@ changes:
 assert.deepEqual(/a/gi, new Date());
 ```
 
-[`Map`] 和 [`Set`] 是一个列外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
+[`Map`] 和 [`Set`] 是一个例外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
 
 “深度”相等意味着子对象的可枚举的“own”属性也会被比较：
 
@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中 `message` 属性的值等于传入的 <0>message</0> 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -263,12 +263,12 @@ changes:
 
 ### 比较的详细说明
 
-* 原始值使用 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 进行比较，被[`Object.is()`]使用。
+* 原始值使用 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 进行比较，该方法被[`Object.is()`][] 使用。
 * 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
-* 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [全等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
+* 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
 * 只比较 [可枚举的“own”属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
-* [`Error`] 的名称和信息也会比较，即使不是可枚举的属性。
-* 可枚举的自身 [`Symbol`] 属性也会比较。
+* [`Error`][] 的名称和信息也会比较，即使不是可枚举的属性。
+* 可枚举的自身 [`Symbol`][] 属性总会比较。
 * [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会比较对象与解包装后的值。
 * `对象` 属性的比较是无序的。
 * `Map` 键名和 `Set` 项目的比较是无序的。
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中 `message` 属性的值等于传入的 <0>message</0> 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中 `message` 属性的值等于传入的 <0>message</0> 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.fail([message])
 
@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.ok(value[, message])
 
@@ -833,7 +833,7 @@ changes:
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. 如果 `message` 参数是 [`Error`] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! 请参阅下文了解更多详情。
 
