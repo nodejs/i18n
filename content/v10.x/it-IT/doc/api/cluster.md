@@ -559,9 +559,9 @@ added: v0.7.1
 
 Emesso ogni volta che viene chiamato `.setupMaster()`.
 
-The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
+Il `settings` object è il `cluster.settings` object nel momento in cui `.setupMaster()` è stato chiamato e svolge solo un ruolo consultivo, in quanto possono essere fatte più chiamate a `.setupMaster()` in un solo momento.
 
-If accuracy is important, use `cluster.settings`.
+Se l'accuratezza ha un ruolo importante, utilizza `cluster.settings`.
 
 ## cluster.disconnect([callback])
 
@@ -569,9 +569,9 @@ If accuracy is important, use `cluster.settings`.
 added: v0.7.7
 -->
 
-* `callback` {Function} Called when all workers are disconnected and handles are closed.
+* `callback` {Function} Chiamato quando tutti gli worker sono disconnessi e quando gli handle sono chiusi.
 
-Calls `.disconnect()` on each worker in `cluster.workers`.
+Chiama `.disconnect()` su ciascun worker all'interno di `cluster.workers`.
 
 When they are disconnected all internal handles will be closed, allowing the master process to die gracefully if no other event is waiting.
 
@@ -671,7 +671,7 @@ changes:
     description: The `stdio` option is supported now.
 -->
 
-* `settings` {Object} See [`cluster.settings`][].
+* `settings` {Object} Vedi [`cluster.settings`][].
 
 `setupMaster` is used to change the default 'fork' behavior. Once called, the settings will be present in `cluster.settings`.
 
