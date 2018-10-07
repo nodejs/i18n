@@ -98,30 +98,30 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 * openssl: 
   * Actualizado a 1.0.1u, corrige un número de defectos que impactan a Node.js: CVE-2016-6304 ("Crecimiento ilimitado de memoria de la extensión de solicitud de estado de OCSP", gravedad alta), CVE-2016-2183, CVE-2016-6303, CVE-2016-2178 y CVE-2016-6306.
   * Elimina soporte para cargar módulos dinámicos de motor externo. Un atacante puede ser capaz de ocultar código malicioso a ser insertado en Node.js en el tiempo de ejecución enmascarándose como uno de los módulos de motor dinámico. Originalmente reportado por Ahmed Zaki (Skype). (Ben Noordhuis, Rod Vagg)
-* tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian). (Ben Noordhuis)
+* tls: CVE-2016-7099 - Corregir la comprobación de validación de certificado de comodín inválido por la cual un servidor TLS puede servir un certificado de comodín inválido para su nombre de host debido a una validación incorrecta de `*.` en la cadena de comodín. Originalmente reportado por Alexander Minozhenko y James Bunton (Atlassian). (Ben Noordhuis)
 
 ### Commits:
 
-* [38d7258d89] - buffer: zero-fill uninitialized bytes in .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/66
+* [38d7258d89] - buffer: Rellenar con cero bytes sin inicializar en .concat() (Сковорода Никита Андреевич) https://github.com/nodejs/node-private/pull/66
 * [1ba6d16786] - build: turn on -fno-delete-null-pointer-checks (Ben Noordhuis) https://github.com/nodejs/node/pull/6737
-* [71e4285e27] - crypto: don't build hardware engines (Rod Vagg) https://github.com/nodejs/node-private/pull/69
+* [71e4285e27] - crypto: no compilar motores de hardware (Rod Vagg) https://github.com/nodejs/node-private/pull/69
 * [b6e0105a66] - deps: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25368
-* [1caec97eab] - deps: fix openssl assembly error on ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [734bc6938b] - deps: separate sha256/sha512-x86_64.pl for openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
-* [7cc6d4eb5c] - deps: copy all openssl header files to include dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
-* [4a9da21217] - deps: upgrade openssl sources to 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
-* [6d977902bd] - http: check reason chars in writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/47
-* [ad470e496b] - http: disallow sending obviously invalid status codes (Evan Lucas) https://github.com/nodejs/node-private/pull/47
-* [9dbde2fc88] - lib: make tls.checkServerIdentity() more strict (Ben Noordhuis) https://github.com/nodejs/node-private/pull/61
-* [db80592071] - openssl: fix keypress requirement in apps on win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [1caec97eab] - deps: corregir error de ensamblaje de openssl en ia32 win32 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [734bc6938b] - deps: separar sha256/sha512-x86_64.pl para openssl (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
+* [7cc6d4eb5c] - deps: copiar todos los archivos de cabecera de openssl para incluir dir (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
+* [4a9da21217] - deps: actualizar fuentes de openssl a 1.0.1u (Shigeki Ohtsu) https://github.com/nodejs/node/pull/8718
+* [6d977902bd] - http: verificar caracteres de razón en writeHead (Evan Lucas) https://github.com/nodejs/node-private/pull/47
+* [ad470e496b] - http: denegar envío de códigos de estado obviamente inválidos (Evan Lucas) https://github.com/nodejs/node-private/pull/47
+* [9dbde2fc88] - lib: hacer tls.checkServerIdentity() más estricto (Ben Noordhuis) https://github.com/nodejs/node-private/pull/61
+* [db80592071] - openssl: corregir requisito de keypress en aplicaciones en win32 (Shigeki Ohtsu) https://github.com/nodejs/node-v0.x-archive/pull/25654
 
 <a id="0.12.15"></a>
 
 ## 2016-06-23, Version 0.12.15 (Maintenance), @rvagg
 
-### Notable changes:
+### Cambios Notables:
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
+Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 * libuv: (CVE-2014-9748) Fixes a bug in the read/write locks implementation for Windows XP and Windows 2003 that can lead to undefined and potentially unsafe behaviour. More information can be found at https://github.com/libuv/libuv/issues/515 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 * V8: (CVE-2016-1669) Fixes a potential Buffer overflow vulnerability discovered in V8, more details can be found in the CVE at https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
