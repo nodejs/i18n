@@ -730,7 +730,7 @@ added: v0.7.0
 
 * {Object}
 
-A hash that stores the active worker objects, keyed by `id` field. Facilita l'accesso a tutti gli worker. E' disponibile solo nel processo master.
+Un hash che memorizza gli worker object attivi, identificati tramite il campo `id`. Facilita l'accesso a tutti gli worker. E' disponibile solo nel processo master.
 
 Un worker viene rimosso da `cluster.workers` dopo essersi disconnesso *ed* esser uscito. L'ordine tra questi due eventi non può essere determinato in anticipo. Tuttavia, è garantito che la rimozione dall'elenco `cluster.workers` si verifichi prima che venga emesso l'ultimo evento `'disconnect'` o l'ultimo evento `'exit'`.
 
