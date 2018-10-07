@@ -53,15 +53,15 @@ $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
 
-Note: please ensure you are only making the updates that are changed by npm.
+Nota: por favor asegúrese que solo está haciendo actualizaciones que son cambiadas por el npm.
 
-## Step 6: Apply Whitespace fix
+## Paso 6: Aplicar revisión de Whitespace
 
 ```console
 $ git rebase --whitespace=fix master
 ```
 
-## Step 7: Test the build
+## Paso 7: Probar la compilación
 
 ```console
 $ make test-npm
