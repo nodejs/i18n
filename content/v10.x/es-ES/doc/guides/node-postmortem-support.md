@@ -12,7 +12,7 @@ Node prefija todas las constantes postmortem con `nodedbg_`, y ellas complementa
 
 #### Calcular el offset de miembros de clase
 
-Las constantes Node.js que refieren al offset de miembros de clase de memoria son calculados en tiempo de compilación. Because of that, those class members must be at a fixed offset from the start of the class. That's not a problem in most cases, but it also means that those members should always come after any templated member on the class definition.
+Las constantes Node.js que refieren al offset de miembros de clase de memoria son calculados en tiempo de compilación. Debido a eso, esos miembros de clase deben estar en un offset fijo desde el inicio de la clase. Eso no es un problema en la mayoría de los casos, pero también significa que esos miembros siempre deben venir después de cualquier miembro con plantilla en la definición de la clase.
 
 For example, if we want to add a constant with the offset for `ReqWrap::req_wrap_queue_`, it should be defined after `ReqWrap::req_`, because `sizeof(req_)` depends on the type of T, which means the class definition should be like this:
 
