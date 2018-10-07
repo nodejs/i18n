@@ -14,38 +14,38 @@ Node prefija todas las constantes postmortem con `nodedbg_`, y ellas complementa
 
 Las constantes Node.js que refieren al offset de miembros de clase de memoria son calculados en tiempo de compilación. Debido a eso, esos miembros de clase deben estar en un offset fijo desde el inicio de la clase. Eso no es un problema en la mayoría de los casos, pero también significa que esos miembros siempre deben venir después de cualquier miembro con plantilla en la definición de la clase.
 
-For example, if we want to add a constant with the offset for `ReqWrap::req_wrap_queue_`, it should be defined after `ReqWrap::req_`, because `sizeof(req_)` depends on the type of T, which means the class definition should be like this:
+Por ejemplo, si queremos añadir una constante con el offset para `ReqWrap::req_wrap_queue_`, debería ser definido después de `ReqWrap::req_`, ya que `sizeof(req_)` depende del tipo de T, lo que significa que la definición de la clase debería ser así:
 
 ```c++
-template <typename T>
+plantilla <typename T>
 class ReqWrap : public AsyncWrap {
  private:
-  // req_wrap_queue_ comes before any templated member, which places it in a
-  // fixed offset from the start of the class
+  // req_wrap_queue_ viene antes de cualquier miembro con plantilla, lo cual lo coloca en un
+  // offset fijo desde el inicio de la clase
   ListNode<ReqWrap> req_wrap_queue_;
 
   T req_;
 };
 ```
 
-instead of:
+en lugar de:
 
 ```c++
-template <typename T>
+plantilla <typename T>
 class ReqWrap : public AsyncWrap {
  private:
   T req_;
 
-  // req_wrap_queue_ comes after a templated member, which means it won't be in
-  // a fixed offset from the start of the class
+  // req_wrap_queue_ viene después de un miembro con plantilla, lo cual significa que no estará en
+  // un offset fijo desde el inicio de la clase
   ListNode<ReqWrap> req_wrap_queue_;
 };
 ```
 
-There are also tests on `test/cctest/test_node_postmortem_metadata.cc` to make sure all Node postmortem metadata are calculated correctly.
+También hay pruebas en `test/cctest/test_node_postmortem_metadata.cc` para asegurarse de que todos los metadatos postmortem de Node son calculados correctamente.
 
-## Tools and References
+## Herramientas y referencias
 
-* [llnode](https://github.com/nodejs/llnode): LLDB plugin
-* [`mdb_v8`](https://github.com/joyent/mdb_v8): mdb plugin
-* [nodejs/post-mortem](https://github.com/nodejs/post-mortem): Node.js post-mortem working group
+* [llnode](https://github.com/nodejs/llnode): complemento LLDB
+* [`mdb_v8`](https://github.com/joyent/mdb_v8): complemento mdb
+* [nodejs/post-mortem](https://github.com/nodejs/post-mortem): Grupo de trabajo post-mortem de Node.js
