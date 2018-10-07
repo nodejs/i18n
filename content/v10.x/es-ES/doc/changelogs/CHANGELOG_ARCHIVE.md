@@ -1730,14 +1730,14 @@ https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 
 <a id="0.6.17"></a>
 
-## 2012.05.04 Version 0.6.17 (stable)
+## 2012.05.04 Versión 0.6.17 (estable)
 
 https://github.com/nodejs/node/commit/4ced23deaf36493f4303a18f6fdce768c58becc0
 
-* Upgrade npm to 1.1.21
-* uv: Add support for EROFS errors (Ben Noordhuis, Maciej Małecki)
-* uv: Add support for EIO and ENOSPC errors (Fedor Indutny)
-* windows: Add support for EXDEV errors (Bert Belder)
+* Actualizar npm a 1.1.21
+* uv: Añadir soporte para errores de EROFS (Ben Noordhuis, Maciej Małecki)
+* uv: Añadir soporte para errores de EIO y ENOSPC (Fedor Indutny)
+* windows: Añadir soporte para errores de EXDEV (Bert Belder)
 * http: Fix client memory leaks (isaacs, Vincent Voyer)
 * fs: fix file descriptor leak in sync functions (Ben Noordhuis)
 * fs: fix ReadStream / WriteStream double close bug (Ben Noordhuis)
