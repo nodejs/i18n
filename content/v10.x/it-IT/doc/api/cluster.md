@@ -732,7 +732,7 @@ added: v0.7.0
 
 A hash that stores the active worker objects, keyed by `id` field. Makes it easy to loop through all the workers. E' disponibile solo nel processo master.
 
-A worker is removed from `cluster.workers` after the worker has disconnected *and* exited. The order between these two events cannot be determined in advance. However, it is guaranteed that the removal from the `cluster.workers` list happens before last `'disconnect'` or `'exit'` event is emitted.
+Un worker viene rimosso da `cluster.workers` dopo essersi disconnesso *ed* esser uscito. L'ordine tra questi due eventi non può essere determinato in anticipo. However, it is guaranteed that the removal from the `cluster.workers` list happens before last `'disconnect'` or `'exit'` event is emitted.
 
 ```js
 // Passa attraverso tutti gli worker
@@ -746,7 +746,7 @@ eachWorker((worker) => {
 });
 ```
 
-Using the worker's unique id is the easiest way to locate the worker.
+Il modo più semplice per individuare la posizione degli worker è tramite l'utilizzo dell'ID univoco diverso per ognuno di essi.
 
 ```js
 socket.on('data', (id) => {
