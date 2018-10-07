@@ -269,11 +269,11 @@ changes:
 * 只比较 [可枚举的“own”属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
 * [`Error`][] 的名称和信息也会比较，即使不是可枚举的属性。
 * 可枚举的自身 [`Symbol`][] 属性总会比较。
-* [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会比较对象与解包装后的值。
+* [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会分别以对象以及解包装后值的方式进行比较。
 * `对象` 属性的比较是无序的。
-* `Map` 键名和 `Set` 项目的比较是无序的。
+* `Map` 键和 `Set` 项目的比较是无序的。
 * 当两边的值不相同或遇到循环引用时，递归会停止。
-* [`WeakMap`] 和 [`WeakSet`] 的比较不依赖于它们的值。 请参阅下文了解更多详情。
+* [`WeakMap`][] 和 [`WeakSet`][] 的比较不依赖于它们的值。 请参阅下文了解更多详情。
 
 ```js
 const assert = require('assert').strict;
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中 `message` 属性的值等于传入的 <0>message</0> 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -371,15 +371,15 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否rejected（异常）。
+Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否被拒绝（异常）。
 
-如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.doesNotReject()` 会返回一个被拒绝的 `Promise`并携带这个被抛出的错误。 如果一个函数没有返回promise，`assert.doesNotReject()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`] 值的错误。 无论那种情况，都跳过错误处理程序。
+如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.doesNotReject()` 会返回一个被拒绝的 `Promise`并携带这个被抛出的错误。 如果一个函数没有返回promise，`assert.doesNotReject()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 无论那种情况，都跳过错误处理程序。
 
 请注意：使用 `assert.doesNotReject()` 实际上没有用处，因为通过捕获拒绝并再次拒绝它，并没有任何好处。 相反，考虑在不应拒绝的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
 
-如果指定的话，`error` 可以是一个 [`Class`]，[`RegExp`] 或 验证函数。 请参考 [`assert.throws()`] 以获取更多详细信息。
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
-除了 await 的异步特性，完成行为与 [`assert.doesNotThrow()`] 完全相同。
+除了 await 的异步特性，完成行为与 [`assert.doesNotThrow()`][]完全相同。
 
 ```js
 (async () => {
@@ -423,11 +423,11 @@ changes:
 
 当 `assert.doesNotThrow()` 被调用时，它会立即调用 `block` 函数。
 
-如果一个错误被抛出，并且它与 `error` 参数所指定的类型相同，那么会抛出 `AssertionError`。 如果错误是不同的类型，或者 `error` 参数未定义，则将错误传播回调用方。
+如果一个错误被抛出，并且它与 `error` 参数所指定的类型相同，那么会抛出 `AssertionError`。 如果错误是不同的类型，或者 `error` 参数未定义，则将错误返回调用方。
 
-如果指定的话，`error` 可以是一个 [`Class`]，[`RegExp`] 或 验证函数。 请参考 [`assert.throws()`] 以获取更多详细信息。
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
-下面这个示例会抛出 [`TypeError`]， 因为在断言部分没有可匹配的错误类型：
+下面这个示例会抛出 [`TypeError`][]， 因为在断言部分没有可匹配的错误类型：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -440,7 +440,7 @@ assert.doesNotThrow(
 );
 ```
 
-然而，下面的示例会抛出带有错误信息 -“得到不需要的异常。。。”的 `AssertionError` ：
+然而，下面的示例会抛出带有错误信息 -“得到不想要的异常。。。”的 `AssertionError` ：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -480,7 +480,7 @@ added: v0.1.21
 
 **Strict 模式**
 
-[`assert.strictEqual()`] 的别名。
+[`assert.strictEqual()`][] 的别名。
 
 **Legacy 模式**
 
