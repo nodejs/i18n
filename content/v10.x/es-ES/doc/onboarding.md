@@ -31,8 +31,8 @@ apply.whitespace fix`
   * Siempre continuar el PR desde su propia bifurcación de GitHub 
     * Las ramas en el repositorio `nodejs/node` solo son para las líneas de lanzamiento
   * See [Updating Node.js from Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
-  * Realizar una nueva rama para cada PR que envíe.
-  * Afiliación: Considere hacer su afiliación en la organización GitHub de Node.js pública. Esto hace que sea más fácil identificar a los Colaboradores. Las instrucciones sobre como hacerlo están disponibles en [Publicar u ocultar la afiliación a la organización](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
+  * Crear una nueva rama para cada PR que envíe.
+  * Afiliación: Considere hacer su afiliación en la organización GitHub de Node.js pública. Esto hace que sea más fácil identificar a los Colaboradores. Las instrucciones sobre cómo hacerlo están disponibles en [Publicar u ocultar la afiliación a la organización](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
 * Notificaciones:
   
@@ -52,7 +52,7 @@ apply.whitespace fix`
 
 * Hay algunos objetivos y valores de alto nivel
   
-  * La empatía hacía los usuarios es importante (esto es en parte porque orientamos a las personas)
+  * La empatía hacía los usuarios es importante (esto es en parte la razón por la que orientamos a las personas)
   * En general: ¡intente ser amable con las personas!
   * The best outcome is for people who come to our issue tracker to feel like they can come back again.
 
