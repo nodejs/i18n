@@ -277,10 +277,10 @@ Usa `tools/release.sh` para promover y firmar la compilación. Cuando ejecutes, 
 
 Si no esperaste por las compilaciones ARM en los pasos previos antes de promover el lanzamiento, deberías volver a ejecutar `tools/release.sh` después que las compilaciones ARM terminaron. Eso moverá los artefactos ARM a la locación correcta. Te será pedido que vuelvas a firmar SHASUMS256.txt.
 
-*Note*: It is possible to only sign a release by running `./tools/release.sh -s
+*Nota*: Es posible solo firmar un lanzamiento al ejecutarlo `./tools/release.sh -s
 vX.Y.Z`.
 
-### 13. Check the Release
+### 13. Verifica el Lanzamiento
 
 Your release should be available at `https://nodejs.org/dist/vx.y.z/` and <https://nodejs.org/dist/latest/>. Check that the appropriate files are in place. You may want to check that the binaries are working as appropriate and have the right internal version strings. Check that the API docs are available at <https://nodejs.org/api/>. Check that the release catalog files are correct at <https://nodejs.org/dist/index.tab> and <https://nodejs.org/dist/index.json>.
 
