@@ -1208,23 +1208,23 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 
 ## 2017-08-01, Versión 6.11.2 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 221 commits. This includes 80 which are test related, 52 which are doc related, 32 which are build / tool related and 10 commits which are updates to dependencies.
+Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están relacionados a pruebas, 52 que están relacionados a documentación, 32 que están relacionados a build / tool y 10 commits que son actualizaciones para dependencias.
 
-### Notable Changes
+### Cambios Notables
 
 * **configure**: 
-  * add mips64el to valid_arch (Aditya Anand) [#13620](https://github.com/nodejs/node/pull/13620)
+  * añadir mips64el a valid_arch (Aditya Anand) [#13620](https://github.com/nodejs/node/pull/13620)
 * **crypto**: 
-  * Updated root certificates based on [NSS 3.30](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.30_release_notes) (Ben Noordhuis) 
+  * Se actualizaron los certificados root basados en [NSS 3.30](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.30_release_notes) (Ben Noordhuis) 
     * [#13279](https://github.com/nodejs/node/pull/13279)
     * [#12402](https://github.com/nodejs/node/pull/12402)
 * **deps**: 
-  * upgrade OpenSSL to version 1.0.2.l (Shigeki Ohtsu) [#12913](https://github.com/nodejs/node/pull/12913)
+  * actualizar OpenSSL a la versión 1.0.2.l (Shigeki Ohtsu) [#12913](https://github.com/nodejs/node/pull/12913)
 * **http**: 
-  * parse errors are now reported when NODE_DEBUG=http (Sam Roberts) [#13206](https://github.com/nodejs/node/pull/13206)
-  * Agent construction can now be envoked without `new` (cjihrig) [#12927](https://github.com/nodejs/node/pull/12927)
+  * errores de análisis son ahora reportados cuando NODE_DEBUG=http (Sam Roberts) [#13206](https://github.com/nodejs/node/pull/13206)
+  * Construcción de agente puede ahora ser invocada sin `new` (cjihrig) [#12927](https://github.com/nodejs/node/pull/12927)
 * **zlib**: 
-  * node will now throw an Error when zlib rejects the value of windowBits, instead of crashing (Alexey Orlenko) [#13098](https://github.com/nodejs/node/pull/13098)
+  * el node va a arrojar un Error cuando zlib rechace el valor de windowsBits, en vez de colapsar (Alexey Orlenko) [#13098](https://github.com/nodejs/node/pull/13098)
 
 ### Commits
 
