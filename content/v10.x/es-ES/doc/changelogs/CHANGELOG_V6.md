@@ -1228,12 +1228,12 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 
 ### Commits
 
-* [[`8d043876c1`](https://github.com/nodejs/node/commit/8d043876c1)] - doc/tools: fix more type inconsistencies (Roman Reiss) [#11697](https://github.com/nodejs/node/pull/11697)
-* [[`8860117600`](https://github.com/nodejs/node/commit/8860117600)] - **addons**: remove semicolons from after module definition (Gabriel Schulhof) [#12919](https://github.com/nodejs/node/pull/12919)
-* [[`bb3f54771b`](https://github.com/nodejs/node/commit/bb3f54771b)] - **benchmark**: update an obsolete path (Vse Mozhet Byt) [#12904](https://github.com/nodejs/node/pull/12904)
-* [[`7cc68e2c62`](https://github.com/nodejs/node/commit/7cc68e2c62)] - **benchmark**: add final clean-up to module-loader.js (Vse Mozhet Byt) [#12102](https://github.com/nodejs/node/pull/12102)
-* [[`0cc7addcb2`](https://github.com/nodejs/node/commit/0cc7addcb2)] - **benchmark,windows**: TCP.readStart() meaningful only after completion (Refael Ackermann) [#12258](https://github.com/nodejs/node/pull/12258)
-* [[`8dec80211e`](https://github.com/nodejs/node/commit/8dec80211e)] - **build**: run test-hash-seed at the end of test-v8 (Michaël Zasso) [#14219](https://github.com/nodejs/node/pull/14219)
+* [[`8d043876c1`](https://github.com/nodejs/node/commit/8d043876c1)] - doc/tools: corregir más tipos de inconsistencias (Roman Reiss) [#11697](https://github.com/nodejs/node/pull/11697)
+* [[`8860117600`](https://github.com/nodejs/node/commit/8860117600)] - **addons**: remover puntos y comas de después de la definición del módulo (Gabriel Schulhof) [#12919](https://github.com/nodejs/node/pull/12919)
+* [[`bb3f54771b`](https://github.com/nodejs/node/commit/bb3f54771b)] - **benchmark**: actualizar una ruta obsoleta (Vse Mozhet Byt) [#12904](https://github.com/nodejs/node/pull/12904)
+* [[`7cc68e2c62`](https://github.com/nodejs/node/commit/7cc68e2c62)] - **benchmark**: añadir limpieza final a module-loader.js (Vse Mozhet Byt) [#12102](https://github.com/nodejs/node/pull/12102)
+* [[`0cc7addcb2`](https://github.com/nodejs/node/commit/0cc7addcb2)] - **benchmark,windows**: TCP.readStart() significativo solo después de completación (Refael Ackermann) [#12258](https://github.com/nodejs/node/pull/12258)
+* [[`8dec80211e`](https://github.com/nodejs/node/commit/8dec80211e)] - **build**: ejecutar test-hash-seed al final de test-v8 (Michaël Zasso) [#14219](https://github.com/nodejs/node/pull/14219)
 * [[`bb1b06a4e5`](https://github.com/nodejs/node/commit/bb1b06a4e5)] - **build**: check for linter in bin rather than lib (Rich Trott) [#13645](https://github.com/nodejs/node/pull/13645)
 * [[`f571868b1b`](https://github.com/nodejs/node/commit/f571868b1b)] - **build**: fail linter if linting not available (Gibson Fahnestock) [#13658](https://github.com/nodejs/node/pull/13658)
 * [[`b0c6bf829b`](https://github.com/nodejs/node/commit/b0c6bf829b)] - **build**: use existing variable to reduce complexity (Bryce Baril) [#2883](https://github.com/nodejs/node/pull/2883)
