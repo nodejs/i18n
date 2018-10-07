@@ -112,16 +112,16 @@ Asimismo, es posible colocar un punto de interrupción en un archivo (módulo) q
 ```txt
 $ node inspect main.js
 < Debugger listening on ws://127.0.0.1:9229/4e3db158-9791-4274-8909-914f7facf3bd
-< Para ayuda, visitar: https://nodejs.org/en/docs/inspector
-< Depurador adjunto.
-Interrumpir al inicio en  main.js:1
->  (function (exports, require, module, __filename, __dirname) { const mod = require('./mod.js');
+< For help, see: https://nodejs.org/en/docs/inspector
+< Debugger attached.
+Break on start in main.js:1
+> 1 (function (exports, require, module, __filename, __dirname) { const mod = require('./mod.js');
   2 mod.hello();
   3 mod.hello();
 debug> setBreakpoint('mod.js', 22)
-Advertencia: script 'mod.js' aún no ha sido cargado.
+Warning: script 'mod.js' was not loaded yet.
 debug> c
-interrupción en mod.js:22
+break in mod.js:22
  20 // USO U OTROS TRÁFICOS EN EL SOFTWARE.
  21
 >22 exports.hello = function() {
