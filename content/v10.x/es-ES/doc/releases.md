@@ -291,9 +291,9 @@ Hay una compilación automática que se inició cuando promueves nuevas compilac
 Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](https://github.com/nodejs/nodejs.org/blob/master/scripts/release-post.js). Este script usará las compilaciones promovidas y el registro de cambios para generar el post. Ejecuta `npm run serve` para ver previamente el post localmente antes de subirlo al repositorio [nodejs.org](https://github.com/nodejs/nodejs.org).
 
 - Puedes añadir un blurb corto debajo del encabezado principal si quieres decir algo importante, de otra manera el texto debería estar listo para la publicación.
-- Los enlaces a los archivos descargados no serán completados hasta que esperes por las compilaciones ARMv6. Any downloads that are missing will have `*Coming soon*` next to them. It's your responsibility to manually update these later when you have the outstanding builds.
-- The SHASUMS256.txt.asc content is at the bottom of the post. When you update the list of tarballs you'll need to copy/paste the new contents of this file to reflect those changes.
-- Always use pull-requests on the nodejs.org repo. Be respectful of that working group, but you shouldn't have to wait for PR sign-off. Opening a PR and merging it immediately *should* be fine. However, please follow the following commit message format:
+- Los enlaces a los archivos descargados no serán completados hasta que esperes por las compilaciones ARMv6. Cualquier descarga que esté faltante tendrá `*Coming soon*` al lado. Es tu responsabilidad actualizar manualmente estos luego, cuando tienes compilaciones sobresalientes.
+- El contenido de SHASUMS256.txt.asc está en la parte inferior de la publicación. Cuando actualizas la lista de tarballs, necesitarás copiar/pegar los nuevos contenidos en este archivo para reflejar esos cambios.
+- Siempre usa pull-requests en el repositorio de nodejs.org. Se respetuoso de ese grupo de trabajo, pero no deberías tener que esperar a que el PR termine. Opening a PR and merging it immediately *should* be fine. However, please follow the following commit message format:
     
     ```console
     Blog: vX.Y.Z release post
