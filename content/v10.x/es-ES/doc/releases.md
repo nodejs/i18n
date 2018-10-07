@@ -144,9 +144,9 @@ doc/api/*.md`, y substituye esta versión del nodo con `sed -i
 "s/REPLACEME/$VERSION/g" doc/api/*.md` or `perl -pi -e "s/REPLACEME/$VERSION/g"
 doc/api/*.md`.
 
-*Nota*: `$VERSION` se le deberia ser prefijada con `v`.
+*Nota*: `$VERSION` se le debería ser prefijada con `v`.
 
-Si este lanzamiento incluye cualquier nueva desaprobación es necesario asegurarse que esas fueron asignadas un código estático de desaprobación apropiado. Estos están listados en el documento (see `doc/api/deprecations.md`) and in the source as `DEP00XX`. El código se le debe asignar un número (p. ej. `DEP0012`). Tenga en cuenta que esta asignación debería ocurrir cuando el PR es aterrizado, pero una verificación será realizada cuando la compilación lanzada es ejecutada.
+Si este lanzamiento incluye cualquier nueva desaprobación es necesario asegurarse que esas fueron asignadas un código estático de desaprobación apropiado. Estos están listados en el documento (vea`doc/api/deprecations.md`) y en la fuente como `DEP00XX`. Al código se le debe asignar un número (p. ej. `DEP0012`). Tenga en cuenta que esta asignación debería ocurrir cuando el PR es aterrizado, pero una verificación será realizada cuando la compilación lanzada es ejecutada.
 
 ### 4. Crear Lanzamiento del Commit
 
@@ -157,20 +157,20 @@ AAAA-MM-DD, Versión x.y.z (Tipo de Lanzamiento)
 
 Cambios notables:
 
-* Copia los cambios notables aquí, refortadeado para texto simple
+* Copia los cambios notables aquí, reformatadeado para texto simple
 ```
 
 ### 5. Proponer un Lanzamiento en GitHub
 
 Empuja el branch lanzado a `nodejs/node`, no a tu bifurcación propia. Esto permite que los branches lanzados sean pasados más fácilmente entre miembros del equipo de lanzamiento si es necesario.
 
-Crea un pull request seleccionando la línea de lanzamiento correcta. Por ejemplo, una propuesta PR -v5.3.0 debería seleccionar v5.x, no el maestro. Pega las modificaciones CHANGELOG en el cuerpo del PR para que los colaboradores puedan ver que está cambiando. Estos PRs deberían dejarse abiertos al menos por 24 horas, y pueden ser actualizados cuando lleguen nuevos commits.
+Crea un pull request seleccionando la línea de lanzamiento correcta. Por ejemplo, una propuesta PR -v5.3.0 debería seleccionar v5.x, no el maestro. Pega las modificaciones CHANGELOG en el cuerpo del PR para que los colaboradores puedan ver qué está cambiando. Estos PRs deberían dejarse abiertos al menos por 24 horas, y pueden ser actualizados cuando lleguen nuevos commits.
 
 Si necesitas cualquier información adicional sobre cualquier commit, este PR es un buen lugar para @-mencionar los contribuyentes relevantes.
 
 Este también es un buen momento para actualizar que estos commits incluyan los metadatos `PR-URL`.
 
-### 6. Asegúrate que este Branch Lanzado es Estable
+### 6. Asegúrate que este Branch Lanzado sea Estable
 
 Ejecuta una prueba de ejecución **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** para asegurarse que esta compilación es estable y el ENCABEZADO del commit está listo para el lanzamiento.
 
