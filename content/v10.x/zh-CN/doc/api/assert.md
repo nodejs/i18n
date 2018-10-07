@@ -183,7 +183,7 @@ changes:
 assert.deepEqual(/a/gi, new Date());
 ```
 
-[`Map`] 和 [`Set`] 是一个例外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
+[`Map`][] 和 [`Set`][] 是一个例外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
 
 “深度”相等意味着子对象的可枚举的“own”属性也会被比较：
 
@@ -268,7 +268,7 @@ changes:
 * 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
 * 只比较 [可枚举的“own”属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
 * [`Error`][] 的名称和信息也会比较，即使不是可枚举的属性。
-* 可枚举的自身 [`Symbol`][] 属性总会比较。
+* 可枚举的自身 [`Symbol`][] 属性也会比较。
 * [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会分别以对象以及解包装后值的方式进行比较。
 * `对象` 属性的比较是无序的。
 * `Map` 键和 `Set` 项目的比较是无序的。
