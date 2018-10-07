@@ -1179,7 +1179,7 @@ Esta actualización LTS viene con 152 commits. Esto incluye a 75 que están rela
 * [[`e15e2e7a30`](https://github.com/nodejs/node/commit/e15e2e7a30)] - **test**: chequear invocaciones de la función noop (Rich Trott) [#13146](https://github.com/nodejs/node/pull/13146)
 * [[`4a3e089984`](https://github.com/nodejs/node/commit/4a3e089984)] - **test**: confirmar que callback es invocado en la prueba de fs (Rich Trott) [#13132](https://github.com/nodejs/node/pull/13132)
 * [[`8b161e0a78`](https://github.com/nodejs/node/commit/8b161e0a78)] - **test**: chequear el número de eventos de mensaje (Rich Trott) [#13125](https://github.com/nodejs/node/pull/13125)
-* [[`c2a0a936e1`](https://github.com/nodejs/node/commit/c2a0a936e1)] - **test**: increase coverage for path.parse (Tobias Nießen) [#14438](https://github.com/nodejs/node/pull/14438)
+* [[`c2a0a936e1`](https://github.com/nodejs/node/commit/c2a0a936e1)] - **test**: incrementar la cobertura para path.parse (Tobias Nießen) [#14438](https://github.com/nodejs/node/pull/14438)
 * [[`202bfcc1c0`](https://github.com/nodejs/node/commit/202bfcc1c0)] - **test**: mark test-fs-read-buffer-to-string-fail as flaky (jeyanthinath) [#14495](https://github.com/nodejs/node/pull/14495)
 * [[`a1cef1fc8f`](https://github.com/nodejs/node/commit/a1cef1fc8f)] - **test**: harden test-dgram-bind-shared-ports (Refael Ackermann) [#13100](https://github.com/nodejs/node/pull/13100)
 * [[`f578c9bbb6`](https://github.com/nodejs/node/commit/f578c9bbb6)] - **test**: add mustCallAtLeast (Refael Ackermann) [#12935](https://github.com/nodejs/node/pull/12935)
