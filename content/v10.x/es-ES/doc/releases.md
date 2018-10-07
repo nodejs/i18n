@@ -259,9 +259,9 @@ Ejecuta `make lint-md-build; make lint` antes de empujar al master `master`, par
 
 Usa `tools/release.sh` para promover y firmar la compilación. Cuando ejecutes, realizará las siguientes acciones:
 
-**a.** Seleccionar una clave GPG de tus claves privadas. Usará un comando similar a: `gpg --list-secret-keys` para listar tus claves. Si no tienes ninguna clave, no funcionará. (¿Por qué estás lanzando? Your tag should be signed!) If you have only one key, it will use that. If you have more than one key it will ask you to select one from the list. Be sure to use the same key that you signed your git tag with.
+**a.** Seleccionar una clave GPG de tus claves privadas. Usará un comando similar a: `gpg --list-secret-keys` para listar tus claves. Si no tienes ninguna clave, no funcionará. (¿Por qué estás lanzando? ¡Tu etiqueta debería estar firmada!) Si solo tienes una clave, usará esa. Si tienes más de una clave, te preguntará para que selecciones una de la lista. Asegúrate de usar la misma clave con la que firmaste tu etiqueta git.
 
-**b.** Log in to the server via SSH and check for releases that can be promoted, along with the list of artifacts. It will use the `dist-promotable` command on the server to find these. You will be asked, for each promotable release, whether you want to proceed. If there is more than one release to promote (there shouldn't be), be sure to only promote the release you are responsible for.
+**b.** Inicia sesión en el servidor mediante SSH y verifica por lanzamientos que pueden ser promovidos, junto con la lista de artefactos. It will use the `dist-promotable` command on the server to find these. You will be asked, for each promotable release, whether you want to proceed. If there is more than one release to promote (there shouldn't be), be sure to only promote the release you are responsible for.
 
 **c.** Log in to the server via SSH and run the promote script for the given release. The command on the server will be similar to: `dist-promote vx.y.z`. After this step, the release artifacts will be available for download and a SHASUMS256.txt file will be present. The release will still be unsigned, however.
 
