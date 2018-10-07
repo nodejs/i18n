@@ -282,9 +282,9 @@ vX.Y.Z`.
 
 ### 13. Verifica el Lanzamiento
 
-Your release should be available at `https://nodejs.org/dist/vx.y.z/` and <https://nodejs.org/dist/latest/>. Check that the appropriate files are in place. You may want to check that the binaries are working as appropriate and have the right internal version strings. Check that the API docs are available at <https://nodejs.org/api/>. Check that the release catalog files are correct at <https://nodejs.org/dist/index.tab> and <https://nodejs.org/dist/index.json>.
+Tu lanzamiento debería estar disponible en `https://nodejs.org/dist/vx.y.z/` y en <https://nodejs.org/dist/latest/>. Verifica que los archivos apropiedos están en su lugar. Pudieras verificar que los binarios están trabajando de manera apropiada y tienen los strings de versión interna correctos. Verifica que los documentos API están disponibles en <https://nodejs.org/api/>. Verifica que los archivos de los catálogos lanzados son los correctos en <https://nodejs.org/dist/index.tab> y <https://nodejs.org/dist/index.json>.
 
-### 14. Create a Blog Post
+### 14. Crear un Blog Post
 
 There is an automatic build that is kicked off when you promote new builds, so within a few minutes nodejs.org will be listing your new version as the latest release. However, the blog post is not yet fully automatic.
 
