@@ -206,33 +206,33 @@ Jenkins recoge los artefactos de la compilación, permitiéndote descargar e ins
 
 Una vez que hayas producido compilaciones con las que estés feliz, crea una nueva etiqueta. Al esperar hasta esta etapa para crear etiquetas, puedes descartar un lanzamiento propuesto si algo sale mal, o si se requieren commits adicionales. Una vez que hayas creado una etiqueta y la subas a GitHub, ***no deberías*** eliminar y reetiquetar. Si cometes un error después de hacer el etiquetado, entonces deberías actualizar la versión y empezar de nuevo, y contar esa etiqueta/versión como perdida.
 
-Tag summaries have a predictable format, look at a recent tag to see, `git tag
--v v6.0.0`. The message should look something like `2016-04-26 Node.js v6.0.0
+Los resúmenes de las etiquetas tienen un formato predecible, ve una etiqueta reciente para ver, `git tag
+-v v6.0.0`. El mensaje debería ser algo así `2016-04-26 Node.js v6.0.0
 (Current) Release`.
 
-Install `git-secure-tag` npm module:
+Instalar módulo npm `git-secure-tag`:
 
 ```console
 $ npm install -g git-secure-tag
 ```
 
-Create a tag using the following command:
+Crear una etiqueta usando el siguiente comando:
 
 ```console
 $ git secure-tag <vx.y.z> <commit-sha> -sm 'YYYY-MM-DD Node.js vx.y.z (Release Type) Release'
 ```
 
-The tag **must** be signed using the GPG key that's listed for you on the project README.
+La etiqueta **debe** ser firmada usando una clave GPG que está listada para ti en el proyecto README.
 
-Push the tag to the repo before you promote the builds. If you haven't pushed your tag first, then build promotion won't work properly. Push the tag using the following command:
+Empuja la etiqueta al repositorio antes que promuevas las compilaciones. Si no has empujado tu etiqueta primero, entonces la promoción de la compilación no funcionará correctamente. Empuja la etiqueta usando el siguiente comando:
 
 ```console
 $ git push <remote> <vx.y.z>
 ```
 
-### 11. Set Up For the Next Release
+### 11. Preparaciones Para el Próximo Lanzamiento
 
-On release proposal branch, edit `src/node_version.h` again and:
+En el branch de propuesta en lanzamiento, edita `src/node_version.h` nuevamente y:
 
 - Increment `NODE_PATCH_VERSION` by one
 - Change `NODE_VERSION_IS_RELEASE` back to `0`
