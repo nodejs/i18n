@@ -575,7 +575,7 @@ Chiama `.disconnect()` su ciascun worker all'interno di `cluster.workers`.
 
 Quando gli worker vengono disconnessi, tutti gli handle interni verranno chiusi, permettendo il lento arresto del processo master se non c'è nessun altro evento in attesa.
 
-The method takes an optional callback argument which will be called when finished.
+Il metodo accetta un argomento callback opzionale che verrà chiamato alla fine.
 
 Questo può essere chiamato solo dal processo master.
 
@@ -585,12 +585,12 @@ Questo può essere chiamato solo dal processo master.
 added: v0.6.0
 -->
 
-* `env` {Object} Key/value pairs to add to worker process environment.
-* Returns: {cluster.Worker}
+* `env` {Object} Coppie key/value da aggiungere all'ambiente del processo worker.
+* Restituisce: {cluster.Worker}
 
-Spawn a new worker process.
+Genera un nuovo processo worker.
 
-This can only be called from the master process.
+Questo può essere chiamato solo dal processo master.
 
 ## cluster.isMaster
 
@@ -600,7 +600,7 @@ added: v0.8.1
 
 * {boolean}
 
-True if the process is a master. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+Vero se il processo è un master. Questo è determinato da `process.env.NODE_UNIQUE_ID`. Se `process.env.NODE_UNIQUE_ID` è undefined (indefinito), allora `isMaster` è `true`.
 
 ## cluster.isWorker
 
@@ -610,7 +610,7 @@ added: v0.6.0
 
 * {boolean}
 
-True if the process is not a master (it is the negation of `cluster.isMaster`).
+Vero se il processo non è un master (è la negazione di `cluster.isMaster`).
 
 ## cluster.schedulingPolicy
 
@@ -618,7 +618,7 @@ True if the process is not a master (it is the negation of `cluster.isMaster`).
 added: v0.11.2
 -->
 
-The scheduling policy, either `cluster.SCHED_RR` for round-robin or `cluster.SCHED_NONE` to leave it to the operating system. This is a global setting and effectively frozen once either the first worker is spawned, or `cluster.setupMaster()` is called, whichever comes first.
+La politica di scheduling, `cluster.SCHED_RR` per il round-robin oppure `cluster.SCHED_NONE` per lasciare la decisione al sistema operativo. This is a global setting and effectively frozen once either the first worker is spawned, or `cluster.setupMaster()` is called, whichever comes first.
 
 `SCHED_RR` is the default on all operating systems except Windows. Windows will change to `SCHED_RR` once libuv is able to effectively distribute IOCP handles without incurring a large performance hit.
 
