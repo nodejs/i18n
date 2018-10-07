@@ -234,10 +234,10 @@ $ git push <remote> <vx.y.z>
 
 En el branch de propuesta en lanzamiento, edita `src/node_version.h` nuevamente y:
 
-- Increment `NODE_PATCH_VERSION` by one
-- Change `NODE_VERSION_IS_RELEASE` back to `0`
+- Incrementa `NODE_PATCH_VERSION` por uno
+- Cambia `NODE_VERSION_IS_RELEASE` de vuelta a `0`
 
-Commit this change with the following commit message format:
+Hazle commit a este cambio con el siguiente formato de mensaje commit:
 
 ```txt
 Working on vx.y.z # where 'z' is the incremented patch number
@@ -245,11 +245,11 @@ Working on vx.y.z # where 'z' is the incremented patch number
 PR-URL: <full URL to your release proposal PR>
 ```
 
-This sets up the branch so that nightly builds are produced with the next version number *and* a pre-release tag.
+Esto establece al branch para que las compilaciones nocturnas sean producidas con la siguiente número de versión *y* una etiqueta de pre-lanzamiento.
 
-Merge your release proposal branch into the stable branch that you are releasing from (e.g. `v8.x`), and rebase the corresponding staging branch (`v8.x-staging`) on top of that.
+Combina tu branch de propuesta de lanzamiento con el branch estable de donde estás lanzado (p. ej. `v8.x`), y encima de eso, rebasa la escenificación del branch correspondiente (`v8.x-staging`).
 
-Cherry-pick the release commit to `master`. After cherry-picking, edit `src/node_version.h` to ensure the version macros contain whatever values were previously on `master`. `NODE_VERSION_IS_RELEASE` should be `0`.
+Selecciona cuidadosamente el commit lanzado al `master`. Después de seleccionar, edita `src/node_version.h` para asegurar que los macros de la versión contengan todos los valores que tenían previamente en el `master`. `NODE_VERSION_IS_RELEASE` debería ser `0`.
 
 Run `make lint-md-build; make lint` before pushing to `master`, to make sure the Changelog formatting passes the lint rules on `master`.
 
