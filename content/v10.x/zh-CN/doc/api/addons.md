@@ -965,7 +965,7 @@ console.log(result);
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> 一个退出时要调用的函数的指针
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> 一个指向退出时要调用的函数的指针
 * `args` <span class="type">&lt;void\*&gt;</span> 一个退出时传递给回调函数的指针。
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.
@@ -1025,7 +1025,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-在JavaScript中测试：
+通过运行如下语句在 JavaScript 中测试：
 
 ```js
 // test.js
