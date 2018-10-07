@@ -268,14 +268,14 @@ Usa `tools/release.sh` para promover y firmar la compilación. Cuando ejecutes, 
 **d.** Usa `scp` para descargar SHASUMS256.txt a un directorio temporal en tu computadora.
 
 **e.** Firma el archivo SHASUMS256.txt usando un comando similar a: `gpg
---default-key YOURKEY --clearsign /path/to/SHASUMS256.txt`. You will be prompted by GPG for your password. The signed file will be named SHASUMS256.txt.asc.
+--default-key YOURKEY --clearsign /path/to/SHASUMS256.txt`. El GPG te pedirá tu contraseña. El archivo fimado será nombrado SHASUMS256.txt.asc.
 
-**f.** Output an ASCII armored version of your public GPG key using a command similar to: `gpg --default-key YOURKEY --armor --export --output
-/path/to/SHASUMS256.txt.gpg`. This does not require your password and is mainly a convenience for users, although not the recommended way to get a copy of your key.
+**f.** Imprime una versión reforzada ASCII de tu clave pública GPG key usando un comando similar a: `gpg --default-key YOURKEY --armor --export --output
+/path/to/SHASUMS256.txt.gpg`. Esto no requiere tu contraseña y es principalmente una conveniencia para los usuarios, aunque no es la manera recomendada para obtener una copia de tu clave.
 
-**g.** Upload the SHASUMS256.txt files back to the server into the release directory.
+**g.** Sube los archivos SHASUMS256.txt de vuelta al servidor en el directorio del lanazmiento.
 
-If you didn't wait for ARM builds in the previous step before promoting the release, you should re-run `tools/release.sh` after the ARM builds have finished. That will move the ARM artifacts into the correct location. You will be prompted to re-sign SHASUMS256.txt.
+Si no esperaste por las compilaciones ARM en los pasos previos antes de promover el lanzamiento, deberías volver a ejecutar `tools/release.sh` después que las compilaciones ARM terminaron. Eso moverá los artefactos ARM a la locación correcta. Te será pedido que vuelvas a firmar SHASUMS256.txt.
 
 *Note*: It is possible to only sign a release by running `./tools/release.sh -s
 vX.Y.Z`.
