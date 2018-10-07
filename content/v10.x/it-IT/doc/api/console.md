@@ -9,26 +9,26 @@ Il modulo `console` fornisce una semplice debugging console con funzionamento si
 Il modulo esporta due componenti specifici:
 
 * Una classe `Console` con metodi come `console.log()`, `console.error()` e `console.warn()` che possono essere utilizzati per eseguire la scrittura (writing) su qualsiasi stream di Node.js.
-* Un'istanza `console` globale configurata per eseguire la scrittura (writing) su [`process.stdout`][] e [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
+* Un'istanza global `console` configurata per eseguire la scrittura (writing) su [`process.stdout`][] e [`process.stderr`][]. La global `console` può essere utilizzata senza chiamare `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
+***Attenzione***: I metodi del global console object non sono né sincroni in modo costante come le API del browser a cui assomigliano, né asincroni in modo costante come tutti gli altri stream di Node.js. Vedi la [nota sul proceso I/O](process.html#process_a_note_on_process_i_o) per maggiori informazioni.
 
-Example using the global `console`:
+Esempio utilizzando la global `console`:
 
 ```js
 console.log('hello world');
-// Prints: hello world, to stdout
+// Stampa: hello world, a stdout
 console.log('hello %s', 'world');
-// Prints: hello world, to stdout
+// Stampa: hello world, a stdout
 console.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to stderr
+// Stampa: [Error: Whoops, something bad happened], a stderr
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+// Stampa: Danger Will Robinson! Danger!, a stderr
 ```
 
-Example using the `Console` class:
+Esempio utilizzando la classe `Console`:
 
 ```js
 const out = getStreamSomehow();
@@ -36,15 +36,15 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Prints: hello world, to out
+// Stampa: hello world, ad out
 myConsole.log('hello %s', 'world');
-// Prints: hello world, to out
+// Stampa: hello world, ad out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Prints: [Error: Whoops, something bad happened], to err
+// Stampa: [Error: Whoops, something bad happened], ad err
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to err
+// Stampa: Danger Will Robinson! Danger!, ad err
 ```
 
 ## Class: Console
