@@ -93,11 +93,11 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 * buffer: Rellena con ceros el exceso de bytes en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporcionan un parámetro `totalLength` que excede la longitud total del de los objetos `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич)
 * http: 
-  * CVE-2016-5325 - Validar apropiadamente los caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Corrige un posible vector de ataque de división de respuesta. Este introduce un nuevo caso en el que puede ocurrir `throw` cuando se estén configurando las respuestas de HTTP, los usuarios ya deberían adoptar try/catch aquí. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas)
-  * Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999. Lack of proper validation may also serve as a potential response splitting attack vector. Backported from v4.x. (Brian White)
+  * CVE-2016-5325 - Validar apropiadamente los caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Corrige un posible vector de ataque de división de respuesta. Este introduce un nuevo caso en el que puede ocurrir `throw` cuando se estén configurando las respuestas de HTTP, los usuarios ya deberían adoptar try/catch aquí. Originalmente reportado de forma independiente por Evan Lucas y Romain Gaucher. (Evan Lucas)
+  * Los códigos de estado inválidos ya no pueden ser enviados. Limitado a números de 3 dígitos entre 100 - 999. La falta de validación adecuada también puede servir como un potencial vector de ataque de división de respuesta. Backported from v4.x. (Brian White)
 * openssl: 
-  * Upgrade to 1.0.1u, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-6303, CVE-2016-2178 and CVE-2016-6306.
-  * Remove support for loading dynamic third-party engine modules. An attacker may be able to hide malicious code to be inserted into Node.js at runtime by masquerading as one of the dynamic engine modules. Originally reported by Ahmed Zaki (Skype). (Ben Noordhuis, Rod Vagg)
+  * Actualizado a 1.0.1u, corrige un número de defectos que impactan a Node.js: CVE-2016-6304 ("Crecimiento ilimitado de memoria de la extensión de solicitud de estado de OCSP", gravedad alta), CVE-2016-2183, CVE-2016-6303, CVE-2016-2178 y CVE-2016-6306.
+  * Elimina soporte para cargar módulos dinámicos de motor externo. Un atacante puede ser capaz de ocultar código malicioso a ser insertado en Node.js en el tiempo de ejecución enmascarándose como uno de los módulos de motor dinámico. Originalmente reportado por Ahmed Zaki (Skype). (Ben Noordhuis, Rod Vagg)
 * tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian). (Ben Noordhuis)
 
 ### Commits:
