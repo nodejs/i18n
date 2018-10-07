@@ -204,7 +204,7 @@ Jenkins recoge los artefactos de la compilación, permitiéndote descargar e ins
 
 ### 10. Etiqueta y Firma el Commit Lanzado
 
-Una vez que hayas producido compilaciones con las que estés feliz, crea una nueva etiqueta. By waiting until this stage to create tags, you can discard a proposed release if something goes wrong or additional commits are required. Once you have created a tag and pushed it to GitHub, you ***should not*** delete and re-tag. If you make a mistake after tagging then you'll have to version-bump and start again and count that tag/version as lost.
+Una vez que hayas producido compilaciones con las que estés feliz, crea una nueva etiqueta. Al esperar hasta esta etapa para crear etiquetas, puedes descartar un lanzamiento propuesto si algo sale mal, o si se requieren commits adicionales. Una vez que hayas creado una etiqueta y la subas a GitHub, ***no deberías*** eliminar y reetiquetar. Si cometes un error después de hacer el etiquetado, entonces deberías actualizar la versión y empezar de nuevo, y contar esa etiqueta/versión como perdida.
 
 Tag summaries have a predictable format, look at a recent tag to see, `git tag
 -v v6.0.0`. The message should look something like `2016-04-26 Node.js v6.0.0
