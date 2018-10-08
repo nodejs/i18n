@@ -87,11 +87,11 @@ Esta es una actualización de seguridad. Todos los usuarios de Node.js deben con
 
 ## 2016-09-27, Version 0.12.16 (Maintenance), @rvagg
 
-Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Cambios Notables:
 
-* buffer: Rellenar con ceros el exceso de bytes en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporcionan un parámetro `totalLength` que excede la longitud total del de los objetos `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич)
+* buffer: Rellenar con ceros el exceso de bytes en nuevos objetos `Buffer` creados con `Buffer.concat()` mientras proporcionan un parámetro `totalLength` que excede la longitud total de los objetos `Buffer` originales siendo concatenados. (Сковорода Никита Андреевич)
 * http: 
   * CVE-2016-5325 - Validar apropiadamente los caracteres permitidos en el argumento `reason` en `ServerResponse#writeHead()`. Corrige un posible vector de ataque de división de respuesta. Este introduce un nuevo caso en el que puede ocurrir `throw` cuando se estén configurando las respuestas de HTTP, los usuarios ya deberían adoptar try/catch aquí. Originalmente reportado de forma independiente por Evan Lucas y Romain Gaucher. (Evan Lucas)
   * Los códigos de estado inválidos ya no pueden ser enviados. Limitado a números de 3 dígitos entre 100 - 999. La falta de validación adecuada también puede servir como un potencial vector de ataque de división de respuesta. Backported from v4.x. (Brian White)
@@ -121,7 +121,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios Notables:
 
-Este es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 * libuv: (CVE-2014-9748) Corrige un bug en la implementación de bloqueo de lectura/escritura para Windows XP y Windows 2003 que pueden llevar a un comportamiento indefinido y potencialmente inseguro. Se puede encontrar más información en https://github.com/libuv/libuv/issues/515 o en https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 * V8: (CVE-2016-1669) Corrige una potencial vulnerabilidad de desbordamiento de Buffer descubierta en V8, se pueden encontrar más detalles en el CVE en https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
@@ -167,7 +167,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 ### Cambios Notables
 
 * npm: Actualizar a v2.15.1. (Forrest L Norvell)
-* openssl: OpenSSL v1.0.1s deshabilita los cifrados EXPORT y LOW ya que son obsoletos y no son considerados seguros. Esta versión de Node.js activa `OPENSSL_NO_WEAK_SSL_CIPHERS` para desactivar completamente los 27 cifrados incluidos en estas listas, los cuales pueden ser utilizados en SSLv3 y superiores. Los detalles completos pueden encontrarse en nuestra discusión de LTS sobre la materia (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* openssl: OpenSSL v1.0.1s desactiva los cifrados EXPORT y LOW ya que son obsoletos y no son considerados seguros. Esta versión de Node.js activa `OPENSSL_NO_WEAK_SSL_CIPHERS` para desactivar completamente los 27 cifrados incluidos en estas listas, los cuales pueden ser utilizados en SSLv3 y superiores. Los detalles completos pueden encontrarse en nuestra discusión de LTS sobre la materia (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 
 ### Commits
 
@@ -184,7 +184,7 @@ Este es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Cambios Notables:
 
-* openssl: Remover completamente soporte para SSLv2, el argumento de línea de comando `--enable-ssl2` producirá ahora un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad en la que SSLv2 es habilitado por un servidor, incluso si una conexión de cliente no está utilizando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente dañado y no debe ser soportado. Más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
+* openssl: Remover completamente soporte para SSLv2, el argumento de línea de comando `--enable-ssl2` producirá ahora un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad en la que SSLv2 es habilitado por un servidor, incluso si una conexión de cliente no está utilizando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente dañado y no debe ser soportado. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
 
 Tenga en cuenta que la actualización a OpenSSL 1.0.1s en Node.js v0.12.11 eliminó el soporte interno de SSLv2. El cambio en esta versión fue originalmente pensado para v0.12.11. El argumento de línea de comando `--enable-ssl2` ahora produce un error en lugar de ser un no-op.
 
