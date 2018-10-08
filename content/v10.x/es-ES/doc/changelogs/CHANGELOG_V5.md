@@ -103,22 +103,22 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **Búfer**: 
   * `Buffer.prototype.compare` ahora puere comparar los sub-rangos de dos búferes. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * **deps**: 
-  * update to http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
-  * update ESLint to 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
+  * actualizar a http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
+  * actualizar ESLint a 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
 * **net**: 
-  * adds support for passing DNS lookup hints to `createConnection()` (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
+  * añadir soporte para sugerencias de búsqueda DNS que pasan a `createConnection()` (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
 * **node**: 
-  * Make the builtin libraries available for the `--eval` and `--print` CLI options (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
+  * Hacer que las bibliotecas builtin estén disponibles para el `--eval` and `--print` CLI options (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
 * **npm**: 
-  * upgrade npm to 3.8.6 (Kat Marchán) [#6153](https://github.com/nodejs/node/pull/6153)
+  * actualizar npm a 3.8.6 (Kat Marchán) [#6153](https://github.com/nodejs/node/pull/6153)
 * **repl**: 
-  * Pressing enter in the repl will repeat the last command by default if no input has been received. This behaviour was in node previously and was not removed intentionally. (Rich Trott) [#6090](https://github.com/nodejs/node/pull/6090)
+  * Presionar enter en el repl va a repetir el último comando de manera predeterminada si no se ha recibido ninguna entrada. Este comportamiento estaba en node previamente y no fue removido intencionalmente. (Rich Trott) [#6090](https://github.com/nodejs/node/pull/6090)
 * **src**: 
-  * add SIGINFO to supported signals (James Reggio) [#6093](https://github.com/nodejs/node/pull/6093)
+  * añadir SIGINFO a las señales soportadas (James Reggio) [#6093](https://github.com/nodejs/node/pull/6093)
 * **streams**: 
-  * Fix a regression that caused by net streams requesting multiple chunks synchronously when combined with cork/uncork (Matteo Collina) [#6164](https://github.com/nodejs/node/pull/6164)
+  * Reparar una regresión que fue causada porque los net stream solicitaban múltiples fragmentos sincrónicamente cuando combinados con cork/uncork (Matteo Collina) [#6164](https://github.com/nodejs/node/pull/6164)
 * **zlib**: 
-  * The flushing flag is now configurable allowing for decompression of partial data (Anna Henningsen) [#6069](https://github.com/nodejs/node/pull/6069)
+  * Los datos arrojados ahora son configurables permitiendo para la descompresión de datos parciales (Anna Henningsen) [#6069](https://github.com/nodejs/node/pull/6069)
 
 ### Commits
 
