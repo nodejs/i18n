@@ -47,18 +47,18 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 为使 `Buffer` 实例的创建更加可靠且不易出错, `new Buffer()` 构造函数的各种形式已被 ** 否决**, 并由单独的 `Buffer.from()`、[`Buffer.alloc()`] 和 [`Buffer.allocUnsafe()`] 方法。
 
-*开发人员应将 `new Buffer()` 构造函数的所有现有使用迁移到这些新 api 之一中。*
+*开发者应当把所有正在使用的 `new Buffer()` 构造函数迁移到这些新的 API 上。*
 
 * [`Buffer.from(array)`] 返回一个新的 `Buffer`, *包含提供的八位字节的副本 *。
-* [`Buffer.from(arrayBuffer[, byteOffset[,length]])`][`Buffer.from(arrayBuf)`] 返回一个新的 `Buffer`,与给定的 [`ArrayBuffer`] *共享相同的已分配内存 *。
-* [`Buffer.from(array)`] 返回一个新的 `Buffer`, 它*包含一份已有的 `Buffer` 副本*。
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个*包含指定字符串副本的* `Buffer`。
+* [`Buffer.from(arrayBuffer[, byteOffset[,length]])`][`Buffer.from(arrayBuf)`] 返回一个新建的与给定的 [`ArrayBuffer`] 共享同一内存的 `Buffer`。
+* [`Buffer.from(array)`] 返回一个新建的包含所提供 `Buffer` 的内容副本的 `Buffer`。
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个*包含所提供的字符串副本的* `Buffer`。
 * [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回指定大小的新初始化的 `Buffer`。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 更慢, 但保证新创建的 `Buffer` 实例从不包含潜在的敏感旧数据。
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 返回一个指定 `size` 的未初始化的 `Buffer`。 因为该 `Buffer` 是未初始化的，分配的内存段可能包含潜在的敏感旧数据。
 
-`Buffer` instances returned by [`Buffer.allocUnsafe()`] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`]. Instances returned by [`Buffer.allocUnsafeSlow()`] *never* use the shared internal memory pool.
+如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， 则 [`Buffer.allocUnsafe()`] 返回的 `Buffer` 实例 *可能* 会被分配进一个共享的内部内存池。 [`Buffer.allocUnsafeSlow()`] 返回的实例 *从不* 使用共享的内部内存池。
 
-### The `--zero-fill-buffers` command line option
+### `--zero-fill-buffers` 命令行选项
 
 <!-- YAML
 added: v5.10.0
