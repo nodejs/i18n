@@ -329,9 +329,9 @@ function main(conf) {
 }
 ```
 
-### Crear una prueba de rendimiento
+### Crear una prueba de rendimiento HTTP
 
-El objeto `bench` devuelto por `createBenchmark` implementa el método `http(options, callback)`. Puede ser utilizado para ejecutar la herramienta externa a servidores HTTP de pruebas de rendimiento.
+El objeto `bench` devuelto por `createBenchmark` implementa el método `http(options, callback)`. Puede utilizarse para ejecutar la herramienta externa para hacer pruebas de rendimiento a servidores HTTP.
 
 ```js
 'use strict';
