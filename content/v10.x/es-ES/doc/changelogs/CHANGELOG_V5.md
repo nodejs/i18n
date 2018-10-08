@@ -89,19 +89,19 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`f316fd20a0`](https://github.com/nodejs/node/commit/f316fd20a0)] - **deps**: añadir -no_rand_screen al openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`263cc34657`](https://github.com/nodejs/node/commit/263cc34657)] - **deps**: reparar el error de compilación de asm build de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`889d1151de`](https://github.com/nodejs/node/commit/889d1151de)] - **deps**: repara el error de ensamblaje openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`ba49b636b8`](https://github.com/nodejs/node/commit/ba49b636b8)] - **deps**: copy all openssl header files to include dir (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
-* [[`cdad83a789`](https://github.com/nodejs/node/commit/cdad83a789)] - **deps**: upgrade openssl sources to 1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
-* [[`c1ddefdd79`](https://github.com/nodejs/node/commit/c1ddefdd79)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`bec5d50f1e`](https://github.com/nodejs/node/commit/bec5d50f1e)] - **test**: fix alpn tests for openssl1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
+* [[`ba49b636b8`](https://github.com/nodejs/node/commit/ba49b636b8)] - **deps**: copia todos los archivos de encabezados openssl header para incluir dir (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
+* [[`cdad83a789`](https://github.com/nodejs/node/commit/cdad83a789)] - **deps**: actualizar las fuentes openssl a 1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
+* [[`c1ddefdd79`](https://github.com/nodejs/node/commit/c1ddefdd79)] - **openssl**: reparar el requisito keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
+* [[`bec5d50f1e`](https://github.com/nodejs/node/commit/bec5d50f1e)] - **test**: reparar pruebas alpn para openssl1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
 
 <a id="5.11.0"></a>
 
-## 2016-04-20, Version 5.11.0 (Stable), @thealphanerd
+## 2016-04-20, Versión 5.11.0 (Estable), @thealphanerd
 
-## Notable Changes
+## Cambios Notables
 
-* **Buffer**: 
-  * `Buffer.prototype.compare` can now compare sub-ranges of two Buffers. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
+* **Búfer**: 
+  * `Buffer.prototype.compare` ahora puere comparar los sub-rangos de dos búferes. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * **deps**: 
   * update to http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
   * update ESLint to 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
