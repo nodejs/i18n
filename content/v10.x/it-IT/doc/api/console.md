@@ -135,7 +135,7 @@ console.assert(false, 'Whoops %s work', 'didn\'t');
 // Assertion failed: Whoops didn't work
 ```
 
-Calling `console.assert()` with a falsy assertion will only cause the `message` to be printed to the console without interrupting execution of subsequent code.
+Chiamare `console.assert()` con un assertion falso farà si che `message` venga stampato sulla console senza interrompere l'esecuzione del codice successivo.
 
 ### console.clear()
 
@@ -143,9 +143,9 @@ Calling `console.assert()` with a falsy assertion will only cause the `message` 
 added: v8.3.0
 -->
 
-When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
+Quando `stdout` è un TTY, con la chiamata di `console.clear()` si tenterà di cancellare il TTY. Quando `stdout` non è un TTY, questo metodo non fa nulla.
 
-The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
+L'operazione specifica di `console.clear()` può variare a seconda dei sistemi operativi e dei tipi di terminale. Per la maggior parte dei sistemi operativi Linux, `console.clear()` funziona in modo simile al comando `clear` di shell. Su Windows, `console.clear()` cancella solo l'output nella corrente finestra del terminale per il binario di Node.js.
 
 ### console.count([label='default'])
 
@@ -153,7 +153,7 @@ The specific operation of `console.clear()` can vary across operating systems an
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} L'etichetta del display per il counter. **Default:** `'default'`.
 
 Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
 
