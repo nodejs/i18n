@@ -73,7 +73,7 @@ A menos que haya sido examinado dentro de bloques o funciones, las variables dec
 
 #### Espectros Globales y Locales
 
-The default evaluator provides access to any variables that exist in the global scope. It is possible to expose a variable to the REPL explicitly by assigning it to the `context` object associated with each `REPLServer`:
+El evaluador por defecto provee acceso a cualquiera de las varaibles que existen en el espectro global. Es posible exponer explícitamente a una variable al REPL asignándola al objeto `context` asociado con cada `REPLServer`:
 
 ```js
 const repl = require('repl');
@@ -82,7 +82,7 @@ const msg = 'message';
 repl.start('> ').context.m = msg;
 ```
 
-Properties in the `context` object appear as local within the REPL:
+Las propiedades en el objeto `context` aperecen como locales dentro de REPL:
 
 <!-- eslint-skip -->
 
@@ -92,7 +92,7 @@ $ node repl_test.js
 'message'
 ```
 
-Context properties are not read-only by default. To specify read-only globals, context properties must be defined using `Object.defineProperty()`:
+Las propiedades de contexto no son de sólo lectura por defecto. Para especificar globales de sólo lectura, propiedades de contexto deben ser definidas utilizando `Object.defineProperty()`:
 
 ```js
 const repl = require('repl');
@@ -106,9 +106,9 @@ Object.defineProperty(r.context, 'm', {
 });
 ```
 
-#### Accessing Core Node.js Modules
+#### Accesando a los módulos principales de Node.Js
 
-The default evaluator will automatically load Node.js core modules into the REPL environment when used. For instance, unless otherwise declared as a global or scoped variable, the input `fs` will be evaluated on-demand as `global.fs = require('fs')`.
+El evaluador predeterminado cargará automáticamente los módulos principales de Node.JS al ambiante REPL cuando sea usado. For instance, unless otherwise declared as a global or scoped variable, the input `fs` will be evaluated on-demand as `global.fs = require('fs')`.
 
 <!-- eslint-skip -->
 
