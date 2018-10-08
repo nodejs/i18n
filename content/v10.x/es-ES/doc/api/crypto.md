@@ -1565,9 +1565,9 @@ La función `callback` es llamada con dos argumentos: `err` y `derivedKey`. Si u
 
 El argumento `iterations` debe ser un número establecido lo más alto posible. Mientras más alto sea el número de iteraciones, más segura será la clave derivada, pero tomará mucho más tiempo para completarse.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+La `salt` también debe ser lo más única posible. Es recomendable que las sales sean aleatorias y que sus longitudes sean de al menos de 16 bytes. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');
@@ -1577,7 +1577,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-The `crypto.DEFAULT_ENCODING` property can be used to change the way the `derivedKey` is passed to the callback. This property, however, has been deprecated and use should be avoided.
+La propiedad `crypto.DEFAULT_ENCODING` puede ser usada para cambiar la forma en que la `derivedKey` es pasada a la devolución de llamada. Esta propiedad, sin embargo, ha quedado en desuso y debe evitarse su utilización.
 
 ```js
 const crypto = require('crypto');
@@ -1588,9 +1588,9 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, derivedKey) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
 ### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
 
@@ -1615,15 +1615,15 @@ changes:
 - `digest` {string}
 - Returns: {Buffer}
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Proporciona una implementación asincrónica de la función 2 (PBKDF2) de derivación de clave basada en contraseña. Un algoritmo resumido HMAC seleccionado, especificado por `digest`, es aplicado para derivar una clave de la longitud de byte solicitada (`keylen`) de los `password`, `salt` y `iterations`.
 
-If an error occurs an `Error` will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Si ocurre un error, se arrojará un `Error`, de no ser así, la clave derivada será devuelta como un [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+El argumento `iterations` debe ser un número establecido lo más alto posible. Mientras más alto sea el número de iteraciones, más segura será la clave derivada, pero tomará mucho más tiempo para completarse.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+La `salt` también deber ser lo más única posible. Es recomendable que las sales sean aleatorias y que sus longitudes sean de al menos 16 bytes. Vea [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) para más detalles.
 
-Example:
+Ejemplo:
 
 ```js
 const crypto = require('crypto');
@@ -1631,7 +1631,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-The `crypto.DEFAULT_ENCODING` property may be used to change the way the `derivedKey` is returned. This property, however, has been deprecated and use should be avoided.
+La propiedad `crypto.DEFAULT_ENCODING` puede ser usada para cambiar la forma en la que la `derivedKey` es devuelta. Esta propiedad, sin embargo, ha quedado en desuso y debe evitarse su utilización.
 
 ```js
 const crypto = require('crypto');
@@ -1640,7 +1640,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key);  // '3745e48...aa39b34'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Una matriz de funciones de compilación compatibles puede ser recuperada usando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
@@ -1649,15 +1649,15 @@ added: v0.11.14
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `key` {string} Clave privada con codificación PEM.
+  - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Devuelve: {Buffer} Un nuevo `Buffer` con el contenido descifrado.
 
-Decrypts `buffer` with `privateKey`.
+Descifra `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`privateKey` puede ser un objeto o una string. Si `privateKey` es una string, es tratada como la clave sin frase de contraseña y va a usar `RSA_PKCS1_OAEP_PADDING`.
 
 ### crypto.privateEncrypt(privateKey, buffer)
 
@@ -1666,15 +1666,15 @@ added: v1.1.0
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Clave privada con codificación PEM.
+  - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the encrypted content.
+- Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
-Encrypts `buffer` with `privateKey`.
+Encripta `buffer` con la `privateKey`.
 
-`privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`privateKey` puede ser un objeto o una string. Si `privateKey` es una string, es tratada como la clave sin frase de contraseña y va a usar `RSA_PKCS1_PADDING`.
 
 ### crypto.publicDecrypt(key, buffer)
 
@@ -1683,17 +1683,17 @@ added: v1.1.0
 -->
 
 - `key` {Object | string} 
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `RSA_PKCS1_PADDING`.
+  - `key` {string} Clave pública o privada con codificación PEM.
+  - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING` o `RSA_PKCS1_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Devuelve: {Buffer} Un nuevo `Buffer` con el contenido descifrado.
 
-Decrypts `buffer` with `key`.
+Descifra `buffer` con la `key`.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
+`key` puede ser un objeto o una string. Si `key` es una string, es tratada como una clave sin frase de contraseña y va a usar `RSA_PKCS1_PADDING`.
 
-Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
+Debido a que las claves públicas RSA pueden ser derivadas de claves privadas, una clave privada puede ser pasada en lugar de una clave pública.
 
 ### crypto.publicEncrypt(key, buffer)
 
@@ -1702,17 +1702,17 @@ added: v0.11.14
 -->
 
 - `key` {Object | string} 
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `key` {string} Clave pública o privada con codificación PEM.
+  - `passphrase` {string} Una frase de contraseña opcional para la clave privada.
+  - `padding` {crypto.constants} Un valor de relleno opcional definido en `crypto.constants`, que puede ser: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the encrypted content.
+- Devuelve: {Buffer} Un nuevo `Buffer` con el contenido encriptado.
 
-Encrypts the content of `buffer` with `key` and returns a new [`Buffer`][] with encrypted content.
+Encripta en contenido del `buffer` con la `key` y devuelve un nuevo [`Buffer`][] con el contenido encriptado.
 
-`key` can be an object or a string. If `key` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
+`key` puede ser un objeto o una string. Si `key` es una string, es tratada como una clave sin frase de contraseña y va a usar `RSA_PKCS1_OAEP_PADDING`.
 
-Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
+Debido a que las claves públicas RSA pueden ser derivadas de claves privadas, una clave privada puede ser pasada en lugar de una clave pública.
 
 ### crypto.randomBytes(size[, callback])
 
@@ -1730,11 +1730,11 @@ changes:
 - `callback` {Function} 
   - `err` {Error}
   - `buf` {Buffer}
-- Returns: {Buffer} if the `callback` function is not provided.
+- Devuelve: {Buffer} si la función `callback` no es proporcionada.
 
-Generates cryptographically strong pseudo-random data. The `size` argument is a number indicating the number of bytes to generate.
+Genera datos pseudo-aleatorios criptográficamente fuertes. El argumento `size` es un número que indica el número de bytes que se generarán.
 
-If a `callback` function is provided, the bytes are generated asynchronously and the `callback` function is invoked with two arguments: `err` and `buf`. If an error occurs, `err` will be an `Error` object; otherwise it is `null`. The `buf` argument is a [`Buffer`][] containing the generated bytes.
+Si una función `callback` es proporcionada, los bytes son generados asincrónicamente y la función `callback` es invocada con dos argumentos: `err` y `buf`. Si ocurre un error, `err` será un objeto `Error`; de no ser así será `null`. El argumento `buf` es un [`Buffer`][] que contiene los bytes generados.
 
 ```js
 // Asynchronous
@@ -1745,7 +1745,7 @@ crypto.randomBytes(256, (err, buf) => {
 });
 ```
 
-If the `callback` function is not provided, the random bytes are generated synchronously and returned as a [`Buffer`][]. An error will be thrown if there is a problem generating the bytes.
+Si la función `callback` no es proporcionada, los bytes aleatorios son generados sincrónicamente y se devuelven como un [`Buffer`][]. Un error se producirá si hay un problema generando los bytes.
 
 ```js
 // Synchronous
@@ -1754,11 +1754,11 @@ console.log(
   `${buf.length} bytes of random data: ${buf.toString('hex')}`);
 ```
 
-The `crypto.randomBytes()` method will not complete until there is sufficient entropy available. This should normally never take longer than a few milliseconds. The only time when generating the random bytes may conceivably block for a longer period of time is right after boot, when the whole system is still low on entropy.
+El método `crypto.randomBytes()` no estará completo hasta que haya suficiente entropía disponible. Esto normalmente no debe tardar más de unos pocos milisegundos. El único momento en que la generación de bytes aleatorios puede bloquearse durante un período de tiempo más prolongado es justo después del arranque, cuando todo el sistema sigue estando bajo en entropía.
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para obtener más información.
 
-The asynchronous version of `crypto.randomBytes()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomBytes` requests when doing so as part of fulfilling a client request.
+La versión asincrónica de `crypto.randomBytes()` se lleva a cabo en una sola solicitud de agrupación de subprocesos. Para minimizar la variación de la longitud de la agrupación de subprocesos, particione las solicitudes grandes de `randomBytes` cuando lo haga como parte del cumplimiento de una solicitud de cliente.
 
 ### crypto.randomFillSync(buffer\[, offset\]\[, size\])
 
@@ -1771,12 +1771,12 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Debe ser suministrada.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
-- Returns: {Buffer}
+- Devuelve: {Buffer}
 
-Synchronous version of [`crypto.randomFill()`][].
+Versión sincrónica de [`crypto.randomFill()`][].
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1790,7 +1790,7 @@ crypto.randomFillSync(buf, 5, 5);
 console.log(buf.toString('hex'));
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Cualquier instancia `TypedArray` o `DataView` puede pasarse como `buffer`.
 
 ```js
 const a = new Uint32Array(10);
@@ -1814,14 +1814,14 @@ changes:
     description: The `buffer` argument may be any `TypedArray` or `DataView`.
 -->
 
-- `buffer` {Buffer|TypedArray|DataView} Must be supplied.
+- `buffer` {Buffer|TypedArray|DataView} Debe ser suministrada.
 - `offset` {number} **Default:** `0`
 - `size` {number} **Default:** `buffer.length - offset`
 - `callback` {Function} `function(err, buf) {}`.
 
-This function is similar to [`crypto.randomBytes()`][] but requires the first argument to be a [`Buffer`][] that will be filled. It also requires that a callback is passed in.
+Esta función es similar a [`crypto.randomBytes()`][] pero requiere que el primer argumento sea un [`Buffer`][] que será llenado. También requiere que pase una devolución de llamada.
 
-If the `callback` function is not provided, an error will be thrown.
+Si la función `callback` no es proporcionada, se producirá un error.
 
 ```js
 const buf = Buffer.alloc(10);
@@ -1842,7 +1842,7 @@ crypto.randomFill(buf, 5, 5, (err, buf) => {
 });
 ```
 
-Any `TypedArray` or `DataView` instance may be passed as `buffer`.
+Cualquier instancia `TypedArray` o `DataView` puede pasarse como `buffer`.
 
 ```js
 const a = new Uint32Array(10);
@@ -1864,9 +1864,9 @@ crypto.randomFill(c, (err, buf) => {
 });
 ```
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Tenga en cuenta que esta API usa el conjunto de subprocesos de libuv, el cual puede tener implicaciones de desempeño sorprendentes y negativas para algunas aplicaciones, vea la documentación [`UV_THREADPOOL_SIZE`][] para más información.
 
-The asynchronous version of `crypto.randomFill()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomFill` requests when doing so as part of fulfilling a client request.
+La versión asincrónica de`crypto.randomFill()` se lleva a cabo en una sola solicitud de agrupación de subprocesos. Para minimizar la variación de la longitud de la agrupación de subprocesos, particione las solicitudes grandes de `randomFill` cuando lo haga como parte del cumplimiento de una solicitud de cliente.
 
 ### crypto.setEngine(engine[, flags])
 
@@ -1875,13 +1875,13 @@ added: v0.11.11
 -->
 
 - `engine` {string}
-- `flags` {crypto.constants} **Default:** `crypto.constants.ENGINE_METHOD_ALL`
+- `flags` {crypto.constants} **Por defecto:** `crypto.constants.ENGINE_METHOD_ALL`
 
-Load and set the `engine` for some or all OpenSSL functions (selected by flags).
+Cargue y configure el `engine` para algunas o todas las funciones OpenSSL (seleccionadas por flags).
 
-`engine` could be either an id or a path to the engine's shared library.
+`engine` puede ser tanto un id o una ruta a la biblioteca compartida del motor.
 
-The optional `flags` argument uses `ENGINE_METHOD_ALL` by default. The `flags` is a bit field taking one of or a mix of the following flags (defined in `crypto.constants`):
+El argumento opcional `flags` usa `ENGINE_METHOD_ALL` por defecto. Las `flags` es un campo de bits que toma una o una mezcla de los siguientes flags (definidos en `crypto.constants`):
 
 - `crypto.constants.ENGINE_METHOD_RSA`
 - `crypto.constants.ENGINE_METHOD_DSA`
@@ -1895,7 +1895,7 @@ The optional `flags` argument uses `ENGINE_METHOD_ALL` by default. The `flags` i
 - `crypto.constants.ENGINE_METHOD_ALL`
 - `crypto.constants.ENGINE_METHOD_NONE`
 
-The flags below are deprecated in OpenSSL-1.1.0.
+Las siguientes flags están en desuso en OpenSSL-1.1.0.
 
 - `crypto.constants.ENGINE_METHOD_ECDH`
 - `crypto.constants.ENGINE_METHOD_ECDSA`
@@ -1907,9 +1907,9 @@ The flags below are deprecated in OpenSSL-1.1.0.
 added: v10.0.0
 -->
 
-- `bool` {boolean} `true` to enable FIPS mode.
+- `bool` {boolean} `true` para habilitar el modo FIPS.
 
-Enables the FIPS compliant crypto provider in a FIPS-enabled Node.js build. Throws an error if FIPS mode is not available.
+Habilita al proveedor de cifrado compatible FIPS en una compilación de Node.js habilitada para FIPS. Throws an error if FIPS mode is not available.
 
 ### crypto.timingSafeEqual(a, b)
 

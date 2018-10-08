@@ -1,8 +1,8 @@
-# Assert
+# 断言 (Assert)
 
 <!--introduced_in=v0.1.21-->
 
-> Stability: 2 - Stable
+> 稳定性：2 - 稳定的
 
 ` assert ` 模块提供了一组简单的断言测试, 可用于测试不变量。
 
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Strict mode（严格模式）
+## Strict 模式
 
 <!-- YAML
 added: v9.9.0
@@ -76,17 +76,17 @@ changes:
     description: Added strict mode to the assert module.
 -->
 
-When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
+当使用 `strict 模式` 时，任何 `assert` 函数都会使用严格函数模式的等式。 例如，[`assert.deepEqual()`] 会等同于 [`assert.deepStrictEqual()`]。
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
+除此之外，涉及对象的错误信息会产生一个错误差异比较，而不是展示两个对象。 Legacy 模式则不会这样。
 
-It can be accessed using:
+可以通过如下方式使用：
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Example error diff:
+错误差异比较的示例：
 
 ```js
 const assert = require('assert').strict;
@@ -107,21 +107,21 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
+使用 `NODE_DISABLE_COLORS` 环境变量可以停用颜色。 请注意，这也会停用REPL中的颜色。
 
-## Legacy mode
+## Legacy 模式
 
-> Stability: 0 - Deprecated: Use strict mode instead.
+> 稳定性：0 - 已弃用：改为使用Strict模式。
 
-When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
+当直接访问 `assert`， 而不是通过 `strict` 属性访问时，[Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) 将被用于任何名称中没有“strict”的函数， 例如[`assert.deepEqual()`]。
 
-It can be accessed using:
+可以使用以下方法访问它：
 
 ```js
 const assert = require('assert');
 ```
 
-It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+建议使用 [`strict 模式`]， 而不使用 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ， 因为后者通常会产生意想不到的结果。 这尤其适用于在比较规则宽松的地方，例如 [`assert.deepEqual()`]：
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -166,26 +166,26 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
-An alias of [`assert.deepStrictEqual()`][].
+[`assert.deepStrictEqual()`] 的别名。
 
-**Legacy mode**
+**Legacy 模式**
 
-> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`assert.deepStrictEqual()`][]。
 
-Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+测试 `actual` 和 `expected` 参数之间是否深度相等。 将原始值与 [Abstract Equality Comparison（抽象等式比较）](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 进行比较。
 
-Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+仅考虑 [可枚举的 “own” 属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。 [`assert.deepEqual()`] 的实现不测试对象的 [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 或可枚举的自身[`Symbol`]属性。 对于此类检查，考虑使用[`assert.deepStrictEqual()`]。 [`assert.deepEqual()`] 可能会产生意想不到的结果。 以下示例不会抛出 `AssertionError`， 因为 [`RegExp`] 对象上的属性是不可枚举的类型：
 
 ```js
 // WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-An exception is made for [`Map`][] and [`Set`][]. `Map`s and `Set`s have their contained items compared too, as expected.
+[`Map`][] 和 [`Set`][] 是一个例外。 因为 `Map` 和 `Set` 也比较了它们包含的项目。
 
-"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
+“深度”相等意味着子对象的可枚举的“own”属性也会被比较：
 
 ```js
 const assert = require('assert');
@@ -222,7 +222,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -259,21 +259,21 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests for deep equality between the `actual` and `expected` parameters. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
+测试 `actual` 和 `expected` 参数之间是否深度相等。 “深度”相等意味着子对象中可枚举的“own”属性也会按以下规则进行递归比较。
 
-### Comparison details
+### 比较的详细说明
 
-* Primitive values are compared using the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue), used by [`Object.is()`][].
-* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
-* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
-* [`Error`][] names and messages are always compared, even if these are not enumerable properties.
-* Enumerable own [`Symbol`][] properties are compared as well.
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
-* `Object` properties are compared unordered.
-* `Map` keys and `Set` items are compared unordered.
-* Recursion stops when both sides differ or both sides encounter a circular reference.
-* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See below for further details.
+* 原始值使用 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 进行比较，该方法被[`Object.is()`][] 使用。
+* 对象的 [类型标签](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) 应该相同。
+* 对象的 [`[[原型]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) 使用 [严格相等比较法](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) 进行比较。
+* 只比较 [可枚举的“own”属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)。
+* [`Error`][] 的名称和信息也会比较，即使不是可枚举的属性。
+* 可枚举的自身 [`Symbol`][] 属性也会比较。
+* [对象包装器](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) 会分别以对象以及解包装后值的方式进行比较。
+* `对象` 属性的比较是无序的。
+* `Map` 键和 `Set` 项目的比较是无序的。
+* 当两边的值不相同或遇到循环引用时，递归会停止。
+* [`WeakMap`][] 和 [`WeakSet`][] 的比较不依赖于它们的值。 请参阅下文了解更多详情。
 
 ```js
 const assert = require('assert').strict;
@@ -359,7 +359,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -371,15 +371,15 @@ added: v10.0.0
 * `error` {RegExp|Function}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
+Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否被拒绝（异常）。
 
-If `block` is a function and it throws an error synchronously, `assert.doesNotReject()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.doesNotReject()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.doesNotReject()` 会返回一个被拒绝的 `Promise`并携带这个被抛出的错误。 如果一个函数没有返回promise，`assert.doesNotReject()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 无论那种情况，都跳过错误处理程序。
 
-Please note: Using `assert.doesNotReject()` is actually not useful because there is little benefit by catching a rejection and then rejecting it again. Instead, consider adding a comment next to the specific code path that should not reject and keep error messages as expressive as possible.
+请注意：使用 `assert.doesNotReject()` 实际上没有用处，因为通过捕获拒绝并再次拒绝它，并没有任何好处。 相反，考虑在不应拒绝的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
-Besides the async nature to await the completion behaves identically to [`assert.doesNotThrow()`][].
+除了 await 的异步特性，完成行为与 [`assert.doesNotThrow()`][]完全相同。
 
 ```js
 (async () => {
@@ -417,17 +417,17 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Asserts that the function `block` does not throw an error.
+断言 `block` 函数不会抛出错误。
 
-Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
+请注意，使用 `assert.doesNotThrow()` 实际上没有用处，因为通过捕获一个错误并再抛出这个错误一次，并没有任何好处。 相反，考虑在不应抛出的特定代码路径旁边添加注释，并尽可能保持错误消息清晰的表达性。
 
-When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
+当 `assert.doesNotThrow()` 被调用时，它会立即调用 `block` 函数。
 
-If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
+如果一个错误被抛出，并且它与 `error` 参数所指定的类型相同，那么会抛出 `AssertionError`。 如果错误是不同的类型，或者 `error` 参数未定义，则将错误返回调用方。
 
-If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. See [`assert.throws()`][] for more details.
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。 请参考 [`assert.throws()`][] 以获取更多详细信息。
 
-The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
+下面这个示例会抛出 [`TypeError`][]， 因为在断言部分没有可匹配的错误类型：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -440,7 +440,7 @@ assert.doesNotThrow(
 );
 ```
 
-However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+然而，下面的示例会抛出带有错误信息 -“得到不想要的异常。。。”的 `AssertionError` ：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -453,7 +453,7 @@ assert.doesNotThrow(
 );
 ```
 
-If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
+如果 `AssertionError` 被抛出，并且提供一个值给 `message` 参数，那么 `message` 的值会被添加在 `AssertionError` 信息中：
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -478,15 +478,15 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
-An alias of [`assert.strictEqual()`][].
+[`assert.strictEqual()`][] 的别名。
 
-**Legacy mode**
+**Legacy 模式**
 
-> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`assert.strictEqual()`][]。
 
-Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+浅测试，使用 [抽象相等比较法](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) 比较 `actual` 和 `expected` 之间的强制相等性。
 
 ```js
 const assert = require('assert');
@@ -502,7 +502,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.fail([message])
 
@@ -512,7 +512,7 @@ added: v0.1.21
 
 * `message` {any} **Default:** `'Failed'`
 
-Throws an `AssertionError` with the provided error message or a default error message. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+抛出 `AssertionError`，并带上提供的错误信息或默认的错误信息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ```js
 const assert = require('assert').strict;
@@ -527,7 +527,7 @@ assert.fail(new TypeError('need array'));
 // TypeError: need array
 ```
 
-Using `assert.fail()` with more than two arguments is possible but deprecated. See below for further details.
+使用 `assert.fail()` 并带上多个参数的方法可行，但已被废弃。 请参阅下文了解更多详情。
 
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
 
@@ -547,9 +547,9 @@ changes:
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
-> Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert functions instead.
+> 稳定性：0 - 已弃用：改为使用 `assert.fail([message])` 或其它断言函数。
 
-If `message` is falsy, the error message is set as the values of `actual` and `expected` separated by the provided `operator`. If just the two `actual` and `expected` arguments are provided, `operator` will default to `'!='`. If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
+如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 如果只提供了 `actual` 和 `expected` 两个参数，`operator` 将被默认为是 `'!='`。 如果 `message` 被当做第三个参数提供，它将被作为错误消息，其它参数将作为各种属性存储在被抛出的对象上。 如果提供了 `stackStartFunction`， 所有在这个函数之上的栈帧将被从追溯栈中移除。（请参见 [`Error.captureStackTrace`] ） 如果没有提供任何参数，将使用默认消息 `Failed`。
 
 ```js
 const assert = require('assert').strict;
@@ -570,9 +570,9 @@ assert.fail(1, 2, new TypeError('need array'));
 // TypeError: need array
 ```
 
-In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
+在后三种情形中，`actual`， `expected` 和 `operator` 对错误信息没有影响。
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+使用 `stackStartFunction` 截断异常的追溯栈的示例：
 
 ```js
 function suppressFrame() {
@@ -658,11 +658,11 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
 An alias of [`assert.notDeepStrictEqual()`][].
 
-**Legacy mode**
+**Legacy 模式**
 
 > Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -759,11 +759,11 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strict mode（严格模式）**
+**Strict 模式**
 
 An alias of [`assert.notStrictEqual()`][].
 
-**Legacy mode**
+**Legacy 模式**
 
 > Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
@@ -814,7 +814,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.ok(value[, message])
 
@@ -833,9 +833,9 @@ changes:
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`. If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! See below for further details.
+Be aware that in the `repl` the error message will be different to the one thrown in a file! 请参阅下文了解更多详情。
 
 ```js
 const assert = require('assert').strict;
@@ -888,7 +888,7 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Awaits the `block` promise or, if `block` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
+Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 It will then check that the promise is rejected.
 
 If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
 

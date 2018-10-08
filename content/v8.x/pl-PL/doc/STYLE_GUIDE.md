@@ -30,7 +30,7 @@ otoczone spacjami, zgodnie z <a href="https://en.wikipedia.org/wiki/The_New_York
 
 <ul>
 <li>Jeśli chcesz dodać ilustrację lub pełny program, dodaj go do odpowiedniego podkatalogu
-w <code>aktywa /` kat.
+w <code>aktywa/` kat.
 * Podłącz do tego jak: `[Zasób](/xasoby/{podkat}/{nazwapliku})` dla zasobów plikowych, i `![Zasób](/xasoby/{podkat}/{nazwapliku})` dla zasobów obrazowych.
 * Dla ilustracji, preferuj SVG od innych zasobów. Kiedy SVG nie jest możliwe, proszę uważnie śledzić rozmiar pliku zasobów, które wprowadzasz.</li> 
 

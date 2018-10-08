@@ -1,31 +1,31 @@
-# Maintaining the Build files
+# Mantenimiento de los archivos Build
 
-This document explains how to maintain the build files in the codebase.
+Este documento explica cómo mantener los archivos build en la base del código.
 
-## Overview
+## Resumen
 
-On how to build the Node.js core, see [Building Node.js](../../BUILDING.md).
+Sobre cómo compilar el núcleo de Node.js, vea [Compilando Node.js](../../BUILDING.md).
 
-There are three main build files that may be directly run when building Node.js:
+Hay tres archivos build principales que pueden ser ejecutados directamente al compilar Node.js:
 
-- `configure`: A Python 2 script that detects system capabilities and runs [GYP](https://gyp.gsrc.io/docs/UserDocumentation.md). It generates `config.gypi` which includes parameters used by GYP to create platform-dependent build files. Its output is usually in one of these formats: Makefile, MSbuild, ninja, or XCode project files. (Note: the main Makefile mentioned below is maintained separately by humans). For a detailed guide on this script, see [configure](#configure).
-- `vcbuild.bat`: A Windows Batch Script that locates build tools, provides a subset of the targets available in the [Makefile](#makefile), and a few targets of its own. For a detailed guide on this script, see [vcbuild.bat](#vcbuild.bat).
-- `Makefile`: A Makefile that can be run with GNU Make. It provides a set of targets that build and test the Node.js binary, produce releases and documentation, and interact with the CI to run benchmarks or tests. For a detailed guide on this file, see [Makefile](#makefile).
+- `configure`: un script de Python 2 que detecta las capacidades del sistema y ejecuta [GYP](https://gyp.gsrc.io/docs/UserDocumentation.md). Genera `config.gypi`, el cual incluye parámetros usados por GYP para crear plataformas dependientes de los archivos build. Su output es usualmente en uno de estos formatos: archivos de proyecto Makefile, MSbuild, ninja o XCode. (Nota: el Makefile principal mencionado a continuación es mantenido por separado por humanos). Para una guía detallada sobre este script, vea [configure](#configure).
+- `vcbuild.bat`: Un Script Windows Batch que localiza herramientas de compilación, proporciona un subconjunto de objetivos disponibles en el [Makefile](#makefile), y unos pocos objetivos propios. Para una guía detallada sobre este script, vea [vcbuild.bat](#vcbuild.bat).
+- `Makefile`: Un Makefile que puede ser ejecutado por un Make GNU. Proporciona un conjunto de objetivos que compilan y prueban el binario de Node.js, producen lanzamientos y documentaciones, e interactúan con el CI para ejecutar pruebas de rendimiento o tests. Para una guía detallada sobre este archivo, vea [Makefile](#makefile).
 
-On Windows `vcbuild.bat` runs [configure](#configure) before building the Node.js binary, on other systems `configure` must be run manually before running `make` on the `Makefile`.
+En Windows `vcbuild.bat` ejecuta [configure](#configure) antes de compilar el binario de Node.js, en otros sistemas `configure` debe ser ejecutado manualmente antes de ejecutar `make` en el `Makefile`.
 
 ## vcbuild.bat
 
-To see the help text, run `.\vcbuild help`. Update this file when you need to update the build and testing process on Windows.
+Para ver el texto de ayuda, ejecuta `.\vcbuild help`. Actualice este archivo cuando necesite actualizar el build y probar procesos en Windows.
 
 ## configure
 
-To see the help text, run `python configure --help`. Update this file when you need to update the configuration process.
+Para ver el texto de ayuda, ejecute `python configure --help`. Actualice este archivo cuando necesite actualizar el proceso de configuración.
 
 ## Makefile
 
-To see the help text, run `make help`. This file is not generated, it is maintained by humans. Note that this is not usually run on Windows, where [vcbuild.bat](#vcbuild.bat) is used instead.
+Para ver el texto de ayuda, ejecute `make help`. Este archivo no es generado, es mantenido por humanos. Tenga en cuenta que no es usualmente ejecutado en Windows, donde [vcbuild.bat](#vcbuild.bat) se utiliza en su lugar.
 
-### Options
+### Opciones
 
-- `-j <n>`: number of threads used to build the binary. Note that on the non-ci targets, the parallel tests will take up all the available cores, regardless of this option.
+- `-j <n>`: número de subprocesos usados para compilar el binario. Tenga en cuenta que en los objetivos no-ci, las pruebas paralelas tomarán todos los núcleos disponibles, independientemente de esta opción.

@@ -329,9 +329,9 @@ function main(conf) {
 }
 ```
 
-### Creating an HTTP benchmark
+### Crear una prueba de rendimiento HTTP
 
-The `bench` object returned by `createBenchmark` implements `http(options, callback)` method. It can be used to run external tool to benchmark HTTP servers.
+El objeto `bench` devuelto por `createBenchmark` implementa el método `http(options, callback)`. Puede utilizarse para ejecutar la herramienta externa para hacer pruebas de rendimiento a servidores HTTP.
 
 ```js
 'use strict';
@@ -361,10 +361,10 @@ function main(conf) {
 }
 ```
 
-Supported options keys are:
+Las claves de opciones soportadas son:
 
-* `port` - defaults to `common.PORT`
-* `path` - defaults to `/`
-* `connections` - number of concurrent connections to use, defaults to 100
-* `duration` - duration of the benchmark in seconds, defaults to 10
-* `benchmarker` - benchmarker to use, defaults to `common.default_http_benchmarker`
+* `port` - predeterminado para `common.PORT`
+* `path` predeterminado para `/`
+* `connections` - número de conexiones concurrentes a usar, predeterminado para 100
+* `duration` duración de la prueba de rendimiento en segundos, predeterminado para 10
+* `benchmarker` - benchmarker a usar, predeterminado para `common.default_http_benchmarker`

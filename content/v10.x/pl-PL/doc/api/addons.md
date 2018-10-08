@@ -4,19 +4,19 @@
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Są one używane głównie w celu zapewnienia interfejsu między JavaScriptem uruchomionym w Node.js i bibliotekami C / C ++.
+Dodatki Node.js to dynamicznie połączone obiekty współdzielone, napisane w C++, które mogą być załadowane do Node.js za pomocą funkcji [`require()`](modules.html#modules_require) i używane tak, jakby były zwykłym modułem Node.js. Są one używane głównie w celu zapewnienia interfejsu między JavaScriptem uruchomionym w Node.js i bibliotekami C / C ++.
 
-At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
+Na ten moment, metoda realizacji implementowania dodatków jest dość skomplikowana i wymaga znajomości kilku komponentów i API:
 
 * V8: biblioteka C ++, którą Node.js obecnie używa do zapewnienia wykonania JavaScript. V8 zapewnia mechanizmy tworzenia obiektów, funkcji dzwoniących itp. API V8 jest udokumentowane głównie w `v8.h` pliku nagłówkowym (`deps/v8/include/v8.h` w drzewie źródłowym Node.js), które jest również dostępne [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): Biblioteka C która implementuje pętlę wydarzeń Node.js, jej wątki robocze i wszystkie asynchroniczne zachowania platformy. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv również zapewnia podobną do pthreads abstrakcję wątków, która może być używana do zasilania bardziej wyrafinowanych asynchronicznych dodatków, które muszą wyjść poza standardową pętlę wydarzeń. Autorzy Addon zachęcani są do przemyślenia, jak uniknąć blokowania pętli zdarzeń za pomocą I/O lub innych czasochłonnych zadań przez odciążanie pracy poprzez libuv do nieblokujących operacji systemowych, wątków roboczych lub korzystania z niestandardowych libuv's wątków.
+* [libuv](https://github.com/libuv/libuv): Biblioteka C która implementuje pętlę wydarzeń Node.js, jej wątki robocze i wszystkie asynchroniczne zachowania platformy. Służy także jako wieloplatformowa biblioteka abstrakcji, umożliwiając łatwy, podobny do POSIX dostęp we wszystkich głównych systemach operacyjnych do wielu powszechnych zadań systemowych, takich jak interakcja z systemem plików, gniazdami, zegarami i zdarzeniami systemowymi. libuv również zapewnia podobną do pthreads abstrakcję wątków, która może być używana do zasilania bardziej wyrafinowanych asynchronicznych dodatków, które muszą wyjść poza standardową pętlę wydarzeń. Autorzy Addon zachęcani są do przemyślenia, jak uniknąć blokowania pętli zdarzeń za pomocą I/O lub innych czasochłonnych zadań przez odciążanie pracy poprzez libuv do nieblokujących operacji systemowych, wątków roboczych lub korzystania z niestandardowych libuv's wątków.
 
 * Wewnętrzne biblioteki Node.js. Sam w sobie Node.js eksportuje wiele API C++ których dodatki mogą używać &mdash;, najważniejsze z nich to klasa `node::ObjectWrap`.
 
 * Node.js zawiera szereg innych bibliotek statycznych, w tym OpenSSL. Te inne biblioteki znajdują się w katalogu `deps/` w drzewie źródłowym Node.js. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Aby uzyskać dodatkowe informacje, zobacz [Łączenie z własnymi zależnościami Node.js](#addons_linking_to_node_js_own_dependencies).
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+Wszystkie poniższe przykłady są dostępne do [pobrania](https://github.com/nodejs/node-addon-examples) i mogą być używane jako punkt początkowy dla dodatków.
 
 ## Witaj świecie
 
@@ -55,7 +55,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Zwróć uwagę, że wszystkie dodatki Node.js muszą wyeksportować funkcję inicjalizacyjną zgodnie z następującym wzorcem:
 
 ```cpp
 void Initialize(Local<Object> exports);
@@ -64,7 +64,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Po `NODE_MODULE` nie ma średnika, ponieważ nie jest on funkcją (zobacz `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+Nazwa `module_name` musi być zgodna z nazwą pliku końcowego pliku binarnego (z wyjątkiem sufiksu `.node`).
 
 W przykładzie `hello.cc` funkcją inicjującą jest `init`, a nazwa modułu dodatku to `addon`.
 
@@ -91,7 +91,7 @@ Następnie użyj komendy `node-gyp build`, aby wygenerować skompilowany plik `a
 
 Przy użyciu `npm zainstaluj ` by zainstalować dodatek Node.js, npm używa własną wersję wiązany `węzeł gyp` by wykonać ten sam zestaw działań, generowanie skompilowanej wersji dodatku dla użytkownika platformy na żądanie.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Po skonfigurowaniu, binarny dodatek może zostać użyty z poziomu Node.js, poprzez wskazanie [`require()`](modules.html#modules_require) do skonfigurowanego modułu `addon.node`:
 
 ```js
 Hello.js
@@ -329,7 +329,7 @@ Zauważ, że w tym przykładzie funkcja zwrotna jest wywoływana synchronicznie.
 
 ### Fabryka obiektów
 
-Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. Obiekt jest tworzony i zwracany za pomocą właściwości`msg`, która odtwarza ciąg znaków przekazany do `createObject ()`:
+Dodatki mogą tworzyć i zwracać nowe obiekty z funkcji C ++ jako zilustrowane w poniższym przykładzie. Obiekt jest tworzony i zwracany za pomocą właściwości`msg`, która odtwarza ciąg znaków przekazany do `createObject()`:
 
 ```cpp
 // addon.cc
@@ -484,7 +484,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-W `myobject.cc` implementuj różne metody, które mają zostać naświetlone. Poniżej, metoda `plusOne ()` jest naświetlona poprzez dodanie jej do prototypu konstruktora:
+W `myobject.cc` implementuj różne metody, które mają zostać naświetlone. Poniżej, metoda `plusOne()` jest naświetlona poprzez dodanie jej do prototypu konstruktora:
 
 ```cpp
 // myobject.cc

@@ -1730,96 +1730,96 @@ https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 
 <a id="0.6.17"></a>
 
-## 2012.05.04 Version 0.6.17 (stable)
+## 2012.05.04 Versión 0.6.17 (estable)
 
 https://github.com/nodejs/node/commit/4ced23deaf36493f4303a18f6fdce768c58becc0
 
-* Upgrade npm to 1.1.21
-* uv: Add support for EROFS errors (Ben Noordhuis, Maciej Małecki)
-* uv: Add support for EIO and ENOSPC errors (Fedor Indutny)
-* windows: Add support for EXDEV errors (Bert Belder)
-* http: Fix client memory leaks (isaacs, Vincent Voyer)
-* fs: fix file descriptor leak in sync functions (Ben Noordhuis)
-* fs: fix ReadStream / WriteStream double close bug (Ben Noordhuis)
+* Actualizar npm a 1.1.21
+* uv: Añadir soporte para errores EROFS (Ben Noordhuis, Maciej Małecki)
+* uv: Añadir soporte para errores EIO y ENOSPC (Fedor Indutny)
+* windows: Añadir soporte para errores EXDEV (Bert Belder)
+* http: Corregir fugas de memoria del cliente (isaacs, Vincent Voyer)
+* fs: reparar fuga del descriptor de archivos en funciones sincrónicas (Ben Noordhuis)
+* fs: reparar bug de cierre doble de ReadStream / WriteStream (Ben Noordhuis)
 
 <a id="0.6.16"></a>
 
-## 2012.04.30 Version 0.6.16 (stable)
+## 2012.04.30 Versión 0.6.16 (estable)
 
 https://github.com/nodejs/node/commit/a1d193963ddc80a27da5da01b59751e14e33d1d6
 
-* Upgrade V8 to 3.6.6.25
-* Upgrade npm to 1.1.19
-* Windows: add mappings for UV_ENOENT (Bert Belder)
-* linux: add IN_MOVE_SELF to inotify event mask (Ben Noordhuis)
-* unix: call pipe handle connection cb on accept() error (Ben Noordhuis)
-* unix: handle EWOULDBLOCK (Ben Noordhuis)
-* map EWOULDBLOCK to UV_EAGAIN (Ben Noordhuis)
-* Map ENOMEM to UV_ENOMEM (isaacs)
-* Child process: support the `gid` and `uid` options (Bert Belder)
-* test: cluster: add worker death event test (Ben Noordhuis)
-* typo in node_http_parser (isaacs)
-* http_parser: Eat CRLF between requests, even on connection:close. (Ben Noordhuis)
-* don't check return value of unsetenv (Ben Noordhuis)
+* Actualizar V8 a 3.6.6.25
+* Actualizar npm a 1.1.19
+* Windows: añadir mapeos para UV_ENOENT (Bert Belder)
+* linux: añadir IN_MOVE_SELF a máscara de eventos inotify (Ben Noordhuis)
+* unix: llamar para que se maneje el cb de la conexión mediante pipe ante error de accept() (Ben Noordhuis)
+* unix: manejar EWOULDBLOCK (Ben Noordhuis)
+* mapear EWOULDBLOCK a UV_EAGAIN (Ben Noordhuis)
+* Mapear ENOMEM a UV_ENOMEM (isaacs)
+* Child process: soportar las opciones `gid` y `uid` (Bert Belder)
+* test: cluster: añadir prueba de evento de muerte de worker (Ben Noordhuis)
+* typo en node_http_parser (isaacs)
+* http_parser: Comerse a CRLF entre solicitudes, incluso ante connection:close. (Ben Noordhuis)
+* no revisar valor de retorno de unsetenv (Ben Noordhuis)
 
 <a id="0.6.15"></a>
 
-## 2012.04.09 Version 0.6.15 (stable)
+## 2012.04.09 Versión 0.6.15 (estable)
 
 https://github.com/nodejs/node/commit/f160a45b254e591eb33716311c92be533c6d86c4
 
-* Update npm to 1.1.16
-* Show licenses in binary installers.
-* unix: add uv_fs_read64, uv_fs_write64 and uv_fs_ftruncate64 (Ben Noordhuis)
-* add 64bit offset fs functions (Igor Zinkovsky)
-* windows: don't report ENOTSOCK when attempting to bind an udp handle twice (Bert Belder)
-* windows: backport pipe-connect-to-file fixes from master (Bert Belder)
-* windows: never call fs event callbacks after closing the watcher (Bert Belder)
-* fs.readFile: don't make the callback before the fd is closed (Bert Belder)
-* windows: use 64bit offsets for uv_fs apis (Igor Zinkovsky)
-* Fix [#2061](https://github.com/joyent/node/issues/2061): segmentation fault on OS X due to stat size mismatch (Ben Noordhuis)
+* Actualizar npm a 1.1.16
+* Mostrar licencias en instaladores binarios.
+* unix: añadir uv_fs_read64, uv_fs_write64 y uv_fs_ftruncate64 (Ben Noordhuis)
+* añadir funciones del fs de offset de 64bit (Igor Zinkovsky)
+* windows: no reportar ENOTSOCK al intentar enlazar un handle udp dos veces (Bert Belder)
+* windows: hacer backport a correcciones de pipe-connect-to-file desde el master (Bert Belder)
+* windows: nunca llamar a callbacks de evento del fs luego de cerrar el monitor (Bert Belder)
+* fs.readFile: no hacer la callback antes de que el fd esté cerrado (Bert Belder)
+* windows: usar offsets de 64bit para las apis de uv_fs (Igor Zinkovsky)
+* Fix [#2061](https://github.com/joyent/node/issues/2061): falla de segmentación en OS X debida a incongruencia en el tamaño de stat (Ben Noordhuis)
 
 <a id="0.6.14"></a>
 
-## 2012.03.22 Version 0.6.14 (stable)
+## 2012.03.22 Versión 0.6.14 (estable)
 
 https://github.com/nodejs/node/commit/e513ffef7549a56a5af728e1f0c2c0c8f290518a
 
-* net: don't crash when queued write fails (Igor Zinkovsky)
-* sunos: fix EMFILE on process.memoryUsage() (Bryan Cantrill)
-* crypto: fix compile-time error with openssl 0.9.7e (Ben Noordhuis)
-* unix: ignore ECONNABORTED errors from accept() (Ben Noordhuis)
-* Add UV_ENOSPC and mappings to it (Bert Belder)
-* http-parser: Fix response body is not read (koichik)
-* Upgrade npm to 1.1.12 
-  * upgrade node-gyp to 0.3.7
-  * work around AV-locked directories on Windows
-  * Fix isaacs/npm[#2293](https://github.com/joyent/node/issues/2293) Don't try to 'uninstall' /
-  * Exclude symbolic links from packages.
-  * Fix isaacs/npm[#2275](https://github.com/joyent/node/issues/2275) Spurious 'unresolvable cycle' error.
-  * Exclude/include dot files as if they were normal files
+* net: no colapsar cuando la escritura en cola falla (Igor Zinkovsky)
+* sunos: reparar EMFILE en process.memoryUsage() (Bryan Cantrill)
+* crypto: reparar error de compile-time con openssl 0.9.7e (Ben Noordhuis)
+* unix: ignorar errores ECONNABORTED provenientes de accept() (Ben Noordhuis)
+* Añadir UV_ENOSPC y mapeos a este (Bert Belder)
+* http-parser: Corregir que el cuerpo de respuesta no es leído (koichik)
+* Actualizar npm a 1.1.12 
+  * actualizar node-gyp a 0.3.7
+  * arreglar directorios con bloqueo de AV en Windows
+  * Reparar isaacs/npm[#2293](https://github.com/joyent/node/issues/2293) No intentar "uninstall" /
+  * Excluir de los paquetes a los enlaces simbólicos.
+  * Reparar isaacs/npm[#2275](https://github.com/joyent/node/issues/2275) Error "unresolvable cycle" falso.
+  * Excluir/incluir archivos dot como si fueran archivos normales
 
 <a id="0.6.13"></a>
 
-## 2012.03.15 Version 0.6.13 (stable)
+## 2012.03.15 Versión 0.6.13 (estable)
 
 https://github.com/nodejs/node/commit/9f7f86b534f8556290eb8cad915984ff4ca54996
 
-* Windows: Many libuv test fixes (Bert Belder)
-* Windows: avoid uv_guess_handle crash in when fd < 0 (Bert Belder)
-* Map EBUSY and ENOTEMPTY errors (Bert Belder)
-* Windows: include syscall in fs errors (Bert Belder)
-* Fix fs.watch ENOSYS on Linux kernel version mismatch (Ben Noordhuis)
-* Update npm to 1.1.9 
-  * upgrade node-gyp to 0.3.5 (Nathan Rajlich)
-  * Fix isaacs/npm[#2249](https://github.com/joyent/node/issues/2249) Add cache-max and cache-min configs
-  * Properly redirect across https/http registry requests
-  * log config usage if undefined key in set function (Kris Windham)
-  * Add support for os/cpu fields in package.json (Adam Blackburn)
-  * Automatically node-gyp packages containing a binding.gyp
-  * Fix failures unpacking in UNC shares
-  * Never create un-listable directories
-  * Handle cases where an optionalDependency fails to build
+* Windows: Muchas reparaciones de la prueba de libuv (Bert Belder)
+* Windows: evitar que uv_guess_handle colapse cuando fd < 0 (Bert Belder)
+* Mapear errores EBUSY y ENOTEMPTY (Bert Belder)
+* Windows: incluir syscall en errores del fs (Bert Belder)
+* Reparar incongruencia de ENOSYS de fs.watch en la versión kernel de Linux (Ben Noordhuis)
+* Actualizar npm a 1.1.9 
+  * actualizar node-gyp a 0.3.5 (Nathan Rajlich)
+  * Reparar isaacs/npm[#2249](https://github.com/joyent/node/issues/2249) Añadir configs de cache-max y cache-min
+  * Redirigir correctamente a través de peticiones de registro de https/http
+  * registrar uso de config si se aplica una clave indefinida en función set (Kris Windham)
+  * Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
+  * Aplicar automáticamente node-gyp a paquetes que contengan un binding.gyp
+  * Corregir fallas en el desempaque en recursos compartidos de UNC
+  * Nunca crear directorios no listables
+  * Manejar casos en los que una optionalDependency falla al compilar
 
 <a id="0.6.12"></a>
 
@@ -1827,108 +1827,108 @@ https://github.com/nodejs/node/commit/9f7f86b534f8556290eb8cad915984ff4ca54996
 
 https://github.com/nodejs/node/commit/48a2d34cfe6b7e1c9d15202a4ef5e3c82d1fba35
 
-* Upgrade V8 to 3.6.6.24
-* dtrace ustack helper improvements (Dave Pacheco)
-* API Documentation refactor (isaacs)
-* [#2827](https://github.com/joyent/node/issues/2827) net: fix race write() before and after connect() (koichik)
-* [#2554](https://github.com/joyent/node/issues/2554) [#2567](https://github.com/joyent/node/issues/2567) throw if fs args for 'start' or 'end' are strings (AJ ONeal)
-* punycode: Update to v1.0.0 (Mathias Bynens)
-* Make a fat binary for the OS X pkg (isaacs)
-* Fix hang on accessing process.stdin (isaacs)
-* repl: make tab completion work on non-objects (Nathan Rajlich)
-* Fix fs.watch on OS X (Ben Noordhuis)
-* Fix [#2515](https://github.com/joyent/node/issues/2515) nested setTimeouts cause premature process exit (Ben Noordhuis)
-* windows: fix time conversion in stat (Igor Zinkovsky)
-* windows: fs: handle EOF in read (Brandon Philips)
-* windows: avoid IOCP short-circuit on non-ifs lsps (Igor Zinkovsky)
-* Upgrade npm to 1.1.4 (isaacs) 
-  * windows fixes
-  * Bundle nested bundleDependencies properly
-  * install: support --save with url install targets
-  * shrinkwrap: behave properly with url-installed modules
-  * support installing uncompressed tars or single file modules from urls etc.
-  * don't run make clean on rebuild
-  * support HTTPS-over-HTTP proxy tunneling
+* Actualizar V8 a 3.6.6.24
+* mejoras del ayudante de ustack de dtrace (Dave Pacheco)
+* Refactorización de la documentación de la API (isaacs)
+* [#2827](https://github.com/joyent/node/issues/2827) net: corregir condición de carrera de write() antes y después de connect() (koichik)
+* [#2554](https://github.com/joyent/node/issues/2554) [#2567](https://github.com/joyent/node/issues/2567) arrojar si argumentos del fs para "start" o "end" son strings (AJ ONeal)
+* punycode: Actualizar a v1.0.0 (Mathias Bynens)
+* Crear un binario multiarquitectura para el pkg de OS X (isaacs)
+* Reparar congelamiento ante process.stdin (isaacs)
+* repl: hacer que la terminación de tab funcione en no-objetos (Nathan Rajlich)
+* Reparar fs.watch en OS X (Ben Noordhuis)
+* Reparar [#2515](https://github.com/joyent/node/issues/2515) setTimeouts anidados ocasionan salida prematura del proceso (Ben Noordhuis)
+* windows: corregir conversión de tiempo en stat (Igor Zinkovsky)
+* windows: fs: manejar EOF en la lectura (Brandon Philips)
+* windows: evitar cortocircuito de IOCP ante lsps no-ifs (Igor Zinkovsky)
+* Actualizar npm a 1.1.4 (isaacs) 
+  * correcciones de windows
+  * Empaquetar correctamente bundleDependencies anidadas
+  * install: soportar --save con objetivos de instalación url
+  * shrinkwrap: comportarse correctamente con módulos instalados en url
+  * soportar la instalación de tars descomprimidos o módulos de archivo sencillos desde urls etc.
+  * no ejecutar "make clean" en el rebuild
+  * soportar canalización de proxy HTTPS-over-HTTP
 
 <a id="0.6.11"></a>
 
-## 2012.02.17 Version 0.6.11 (stable)
+## 2012.02.17 Versión 0.6.11 (estable)
 
 https://github.com/nodejs/node/commit/1eb1fe32250fc88cb5b0a97cddf3e02be02e3f4a
 
-* http: allow multiple WebSocket RFC6455 headers (Einar Otto Stangvik)
-* http: allow multiple WWW-Authenticate headers (Ben Noordhuis)
-* windows: support unicode argv and environment variables (Bert Belder)
-* tls: mitigate session renegotiation attacks (Ben Noordhuis)
-* tcp, pipe: don't assert on uv_accept() errors (Ben Noordhuis)
-* tls: Allow establishing secure connection on the existing socket (koichik)
-* dgram: handle close of dgram socket before DNS lookup completes (Seth Fitzsimmons)
-* windows: Support half-duplex pipes (Igor Zinkovsky)
-* build: disable omit-frame-pointer on solaris systems (Dave Pacheco)
-* debugger: fix --debug-brk (Ben Noordhuis)
-* net: fix large file downloads failing (koichik)
-* fs: fix ReadStream failure to read from existing fd (Christopher Jeffrey)
-* net: destroy socket on DNS error (Stefan Rusu)
-* dtrace: add missing translator (Dave Pacheco)
-* unix: don't flush tty on switch to raw mode (Ben Noordhuis)
-* windows: reset brightness when reverting to default text color (Bert Belder)
-* npm: update to 1.1.1 
-  * Update which, fstream, mkdirp, request, and rimraf
-  * Fix [#2123](https://github.com/joyent/node/issues/2123) Set path properly for lifecycle scripts on windows
-  * Mark the root as seen, so we don't recurse into it. Fixes [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
+* http: permitir múltiples cabeceras WebSocket RFC6455 (Einar Otto Stangvik)
+* http: permitir múltiples cabeceras WWW-Authenticate (Ben Noordhuis)
+* windows: soportar argv y variables de ambiente unicode (Bert Belder)
+* tls: mitigar ataques de renegociación de la sesión (Ben Noordhuis)
+* tcp, pipe: no hacer aserción sobre errores de uv_accept() (Ben Noordhuis)
+* tls: Permitir el establecimiento de una conexión segura en el socket existente (koichik)
+* dgram: manejar cierre de socket de dgram antes de que la búsqueda de DNS se complete (Seth Fitzsimmons)
+* windows: Soportar pipes mitad-duplex (Igor Zinkovsky)
+* build: inhabilitar omit-frame-pointer en sistemas solaris (Dave Pacheco)
+* debugger: reparar --debug-brk (Ben Noordhuis)
+* net: reparar falla en la descarga de archivos grandes (koichik)
+* fs: Corregir falla de ReadStream al leer desde fd existente (Christopher Jeffrey)
+* net: destruir socket ante error del DNS (Stefan Rusu)
+* dtrace: añadir traductor faltante (Dave Pacheco)
+* unix: no vaciar tty al cambiar al modo raw (Ben Noordhuis)
+* windows: restablecer brillo al regresar al color de texto predeterminado (Bert Belder)
+* npm: actualizar a 1.1.1 
+  * Actualizar which, fstream, mkdirp, request, y rimraf
+  * Reparar [#2123](https://github.com/joyent/node/issues/2123) Establecer correctamente la ruta para scripts de lifecycle en windows
+  * Marcar el root como visto, de modo que no hagamos recursión a él. Repara al [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
 
 <a id="0.6.10"></a>
 
-## 2012.02.02, Version 0.6.10 (stable)
+## 2012.02.02, Versión 0.6.10 (estable)
 
 https://github.com/nodejs/node/commit/051908e023f87894fa68f5b64d0b99a19a7db01e
 
-* Update V8 to 3.6.6.20
-* Add npm msysgit bash shim to msi installer (isaacs)
-* buffers: fix intermittent out of bounds error (Ben Noordhuis)
-* buffers: honor length argument in base64 decoder (Ben Noordhuis)
-* windows: Fix path.exists regression (Bert Belder)
-* Make QueryString.parse run faster (Philip Tellis)
-* http: avoid freeing http-parser objects too early (koichik)
-* timers: add v0.4 compatibility hack (Ben Noordhuis)
-* Proper EPERM error code support (Igor Zinkovsky, Brandon Philips)
-* dgram: Implement udp multicast methods on windows (Bert Belder)
+* Actualizar V8 a 3.6.6.20
+* Añadir msysgit bash shim del npm al instalador de msi (isaacs)
+* buffers: corregir error de "fuera de los límites" intermitente (Ben Noordhuis)
+* buffers: hacer honor a la longitud del argumento en el decodificador de base64 (Ben Noordhuis)
+* windows: Corregir regresión de path.exists (Bert Belder)
+* Hacer que QueryString.parse se ejecute más rápido (Philip Tellis)
+* http: evitar liberar objetos de http-parser demasiado pronto (koichik)
+* timers: añadir hack de compatibilidad v0.4 (Ben Noordhuis)
+* Soporte correcto para el código de error de EPERM (Igor Zinkovsky, Brandon Philips)
+* dgram: Implementar métodos multidifusión de udp en windows (Bert Belder)
 
 <a id="0.6.9"></a>
 
-## 2012.01.27, Version 0.6.9 (stable)
+## 2012.01.27, Versión 0.6.9 (estable)
 
 https://github.com/nodejs/node/commit/f19e20d33f57c4d2853aaea7d2724d44f3b0012f
 
-* dgram: Bring back missing functionality for Unix (Dan VerWeire, Roman Shtylman, Ben Noordhuis)
+* dgram: Traer de vuelta funcionalidad para Unix faltante (Dan VerWeire, Roman Shtylman, Ben Noordhuis)
   
-  * Note: Windows UDP support not yet complete.
+  * Nota: El soporte de UDP de Windows aún no está completo.
 
-* http: Fix parser memory leak (koichik)
+* http: Reparar fuga de memoria del analizador (koichik)
 
-* zlib: Fix [#2365](https://github.com/joyent/node/issues/2365) crashes on invalid input (Nicolas LaCasse)
-* module: fix --debug-brk on symlinked scripts (Fedor Indutny)
-* Documentation Restyling (Matthew Fitzsimmons)
-* Update npm to 1.1.0-3 (isaacs)
-* Windows: fix regression in stat() calls to C:\ (Bert Belder)
+* zlib: Reparar colapsos de [#2365](https://github.com/joyent/node/issues/2365) ante input inválido (Nicolas LaCasse)
+* module: reparar --debug-brk en scripts symlinked (Fedor Indutny)
+* Re-estilización de la Documentación (Matthew Fitzsimmons)
+* Actualizar npm a 1.1.0-3 (isaacs)
+* Windows: reparar regresión en llamadas de stat() a C:\ (Bert Belder)
 
 <a id="0.6.8"></a>
 
-## 2012.01.19, Version 0.6.8 (stable)
+## 2012.01.19, Versión 0.6.8 (estable)
 
 https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 
-* Update V8 to 3.6.6.19
-* Numeric key hash collision fix for V8 (Erik Corry, Fedor Indutny)
-* Add missing TTY key translations for F1-F5 on Windows (Brandon Benvie)
-* path.extname bugfix with . and .. paths (Bert Belder)
-* cluster: don't always kill the master on uncaughtException (Ben Noordhuis)
-* Update npm to 1.1.0-2 (isaacs)
-* typed arrays: set class name (Ben Noordhuis)
-* zlib binding cleanup (isaacs, Bert Belder)
-* dgram: use slab memory allocator (Michael Bernstein)
-* fix segfault [#2473](https://github.com/joyent/node/issues/2473)
-* [#2521](https://github.com/joyent/node/issues/2521) 60% improvement in fs.stat on Windows (Igor Zinkovsky)
+* Actualizar V8 a 3.6.6.19
+* Reparación para V8 de colisión de hash de clave numérica (Erik Corry, Fedor Indutny)
+* Añadir traducciones de clave TTY faltante para F1-F5 en Windows (Brandon Benvie)
+* reparación de bug de path.extname con rutas . y .. (Bert Belder)
+* cluster: no matar siempre al master ante uncaughtException (Ben Noordhuis)
+* Actualizar npm a 1.1.0-2 (isaacs)
+* typed arrays: establecer nombre de clase (Ben Noordhuis)
+* limpieza de la vinculación de zlib (isaacs, Bert Belder)
+* dgram: utilizar asignador de memoria slab (Michael Bernstein)
+* reparar segfault [#2473](https://github.com/joyent/node/issues/2473)
+* [#2521](https://github.com/joyent/node/issues/2521) mejora del 60% de fs.stat en Windows (Igor Zinkovsky)
 
 <a id="0.6.7"></a>
 

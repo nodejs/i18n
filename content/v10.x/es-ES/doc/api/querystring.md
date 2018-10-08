@@ -22,7 +22,7 @@ added: v0.1.25
 
 El método `querystring.escape()` realiza la codificación de porcentaje de URL en la `str` dada de una manera que está optimizada para los requisitos específicos de las cadenas de consulta de URL.
 
-El método `querystring.escape()` es utilizado por `querystring.stringify()` y generalmente no se espera que se use directamente. Principalmente, es exportado para permitir que el código de aplicación para proporcionar una implementación de codificación de porcentaje de reemplazo si es necesario, asignando `querystring.escape` a una función alternativa.
+El método `querystring.escape()` es utilizado por `querystring.stringify()` y generalmente no se espera que se use directamente. Principalmente, es exportado para permitir que el código de aplicación pueda proporcionar una implementación de codificación de porcentaje de reemplazo si es necesario, asignando `querystring.escape` a una función alternativa.
 
 ## querystring.parse(str[, sep[, eq[, options]]])
 
@@ -63,7 +63,7 @@ Por ejemplo, la cadena de consulta `'foo=bar&abc=xyz&abc=123'` es analizada en:
 
 El objeto devuelto por el método `querystring.parse()` *no* se hereda de forma prototípica desde el `Object` de JavaScript. Esto significa que métodos típicos de `Object`, tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
 
-De forma predeterminada, se supondrá que los caracteres codificados en porcentaje dentro de la cadena de consulta utilizan la codificación UTF-8. Si un carácter alternativo codificado es utilizado, entonces una opción `decodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
+De forma predeterminada, se supondrá que los caracteres codificados en porcentaje dentro de la cadena de consulta utilizan la codificación UTF-8. Si una codificación alterna de caracteres es utilizada, entonces una opción `decodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
 
 ```js
 // Asumiendo que la función gbkDecodeURIComponent ya existe...
@@ -96,7 +96,7 @@ querystring.stringify({ foo: 'bar', baz: 'qux' }, ';', ':');
 // devuelve 'foo:bar;baz:qux'
 ```
 
-Por defecto, los caracteres que requieren codificación en porcentaje dentro de la cadena de consulta se codificarán como UTF-8. Si un carácter alternativo codificado es requerido, entonces una opción `encodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
+Por defecto, los caracteres que requieren codificación en porcentaje dentro de la cadena de consulta se codificarán como UTF-8. Si una codificación alternativa es requerida, entonces una opción `encodeURIComponent` alternativa necesitará ser especificada como se ilustra en el siguiente ejemplo:
 
 ```js
 // Asumiendo que la función gbkEncodeURIComponent ya existe,

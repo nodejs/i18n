@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stability: 2 - Stable
+> Stabilità: 2 - Stabile
 
-The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+Il modulo `crypto` fornisce una funzionalità crittografica che include un set di wrapper per le funzioni OpenSSL di hash, HMAC, cipher, decipher, sign e verify.
 
-Use `require('crypto')` to access this module.
+Utilizza `require('crypto')` per accedere a questo modulo.
 
 ```js
 const crypto = require('crypto');
@@ -16,13 +16,13 @@ const hash = crypto.createHmac('sha256', secret)
                    .update('I love cupcakes')
                    .digest('hex');
 console.log(hash);
-// Prints:
+// Stampa:
 //   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
 ```
 
-## Determining if crypto support is unavailable
+## Determinare se il supporto crittografico non è disponibile
 
-It is possible for Node.js to be built without including support for the `crypto` module. In such cases, calling `require('crypto')` will result in an error being thrown.
+È possibile creare Node.js senza includere il supporto per il modulo `crypto`. In questi casi, la chiamata di `require('crypto')` genererà un errore.
 
 ```js
 let crypto;
@@ -39,7 +39,7 @@ try {
 added: v0.11.8
 -->
 
-SPKAC is a Certificate Signing Request mechanism originally implemented by Netscape and was specified formally as part of [HTML5's `keygen` element][].
+SPKAC è un meccanismo di Certificate Signing Request (CSR) originariamente implementato da Netscape ed è stato specificato formalmente come parte di [HTML5's `keygen` element][].
 
 Note that `<keygen>` is deprecated since [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) and new projects should not use this element anymore.
 
@@ -93,7 +93,7 @@ added: v9.0.0
 const { Certificate } = require('crypto');
 const spkac = getSpkacSomehow();
 console.log(Certificate.verifySpkac(Buffer.from(spkac)));
-// Prints: true or false
+// Stampa: true oppure false
 ```
 
 ### Legacy API
@@ -188,7 +188,7 @@ cipher.on('readable', () => {
 });
 cipher.on('end', () => {
   console.log(encrypted);
-  // Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
+  // Stampa: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
 });
 
 cipher.write('some clear text data');
@@ -217,7 +217,7 @@ const cipher = crypto.createCipher('aes192', 'a password');
 let encrypted = cipher.update('some clear text data', 'utf8', 'hex');
 encrypted += cipher.final('hex');
 console.log(encrypted);
-// Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
+// Stampa: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
 ```
 
 ### cipher.final([outputEncoding])
