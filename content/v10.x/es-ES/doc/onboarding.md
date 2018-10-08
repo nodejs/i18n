@@ -151,10 +151,10 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
 * Ejemplo: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
   * Para el mensaje de commit sin procesar: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
-* Collaborators are in alphabetical order by GitHub username.
-* Optionally, include your personal pronouns.
-* Label your pull request with the `doc` subsystem label.
-* Run CI on the PR. Because the PR does not affect any code, use the `node-test-pull-request-lite` CI task. Alternatively, use the usual `node-test-pull-request` CI task and cancel it after the linter and one other subtask have passed.
+* Los colaboradores están ordenados alfabéticamente por el nombre de usuario de GitHub.
+* Opcionalmente, incluye sus pronombres personales.
+* Etiquete su pull request con la etiqueta de subsistema `doc`.
+* Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado la plantilla y otra subtarea.
 * After one or two approvals, land the PR (PRs of this type do not need to wait for 48/72 hours to land). 
   * Be sure to add the `PR-URL: <full-pr-url>` and appropriate `Reviewed-By:` metadata.
   * [`node-core-utils`][] automates the generation of metadata and the landing process. See the documentation of [`git-node`][].
