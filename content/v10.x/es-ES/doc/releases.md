@@ -196,7 +196,7 @@ Si tienes un error en Windows y necesitas comenzar de nuevo, ten en cuenta que t
 
 ARMv7 tarda más tiempo en compilar. Desafortunadamente ccache no es tan efectiva en compilaciones ya lanzadas, creo que es porque las configuraciones macro adicionales que están en una compilación lanzada que nulifica las compilaciones previas. También la mayoría de las máquinas de compilación lanzadas son separadas a las máquinas de compilación de pruebas, para que no obtengan ningún beneficio de compilaciones en curso entre lanzamientos. Puedes esperar 1.5 horas para que el compilador ARMv7 se complete y normalmente deberías esperar que esto termine. Es posible apresurar un lanzamiento si quieres y añadir compilaciones adicionales después pero normalmente proveemos ARMv7 desde una promoción inicial.
 
-No tienes que esperar por el / la ARMv6 / compilaciones Raspberry PR si se toman más tiempo que los otros. Solo es necesario tener el Linux principal (x64 y x86), macOS .pkg y .tar.gs, Windows (x64 y x86) .msi y .exe, fuente, encabezados, y los documentos (ambos actualmente producidos por un worker de macOS). **Si promueves compilaciones *antes* que las compilaciones ARM hayan terminado, debes repetir el paso de promocionar para las compilaciones ARM cuando estén listas**. Si la compilación ARMv6 falló por alguna razón puedes usar la compilación [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) en el CI lanzado para volver a ejecutar la compilación solo para ARMv6. Cuando se esté lanzando la compilación asegúrate usar el mismo hash commit en cuanto al lanzamiento original.
+No tienes que esperar por el / las ARMv6 / compilaciones Raspberry PR si se toman más tiempo que los otros. Solo es necesario tener el Linux principal (x64 y x86), macOS .pkg y .tar.gs, Windows (x64 y x86) .msi y .exe, fuente, encabezados, y los documentos (ambos actualmente producidos por un worker de macOS). **Si promueves compilaciones *antes* que las compilaciones ARM hayan terminado, debes repetir el paso de promocionar para las compilaciones ARM cuando estén listas**. Si la compilación ARMv6 falló por alguna razón puedes usar la compilación [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) en el CI lanzado para volver a ejecutar la compilación solo para ARMv6. Cuando se esté lanzando la compilación asegúrate usar el mismo hash commit en cuanto al lanzamiento original.
 
 ### 9. Probar la Compilación
 
@@ -245,55 +245,55 @@ Working on vx.y.z # where 'z' is the incremented patch number
 PR-URL: <full URL to your release proposal PR>
 ```
 
-Esto establece al branch para que las compilaciones nocturnas sean producidas con la siguiente número de versión *y* una etiqueta de pre-lanzamiento.
+Esto establece al branch para que las compilaciones nocturnas sean producidas con el siguiente número de versión *y* una etiqueta de pre-lanzamiento.
 
-Combina tu branch de propuesta de lanzamiento con el branch estable de donde estás lanzado (p. ej. `v8.x`), y encima de eso, rebasa la escenificación del branch correspondiente (`v8.x-staging`).
+Combina tu branch de propuesta de lanzamiento con el branch estable que estás lanzado de (p. ej. `v8.x`), y encima de eso, rebasa la escenificación del branch correspondiente (`v8.x-staging`).
 
 Selecciona cuidadosamente el commit lanzado al `master`. Después de seleccionar, edita `src/node_version.h` para asegurar que los macros de la versión contengan todos los valores que tenían previamente en el `master`. `NODE_VERSION_IS_RELEASE` debería ser `0`.
 
-Ejecuta `make lint-md-build; make lint` antes de empujar al master `master`, para asegurarse que el formato de los Registros de cambios pasen las reglas lint en el `master`.
+Ejecuta `make lint-md-build; make lint` antes de empujar al `master`, para asegurarse que el formato de los Registros de cambios pasen las reglas lint en el `master`.
 
 ### 12. Promover y Firmar las Compilaciones Lanzadas
 
-**Es importante que los mismos individuos que firmaron las etiquetas lanzadas sean los que promuevan las compilaciones, como el archivo SHASUMS256.txt que necesita ser firmado con ¡la misma clave GPG!**
+**Es importante que los mismos individuos que firmaron las etiquetas lanzadas sean los que promuevan las compilaciones, como el archivo SHASUMS256.txt que necesita ser firmado ¡con la misma clave GPG!**
 
-Usa `tools/release.sh` para promover y firmar la compilación. Cuando ejecutes, realizará las siguientes acciones:
+Usa `tools/release.sh` para promover y firmar la compilación. Cuando se ejecute, realizará las siguientes acciones:
 
 **a.** Seleccionar una clave GPG de tus claves privadas. Usará un comando similar a: `gpg --list-secret-keys` para listar tus claves. Si no tienes ninguna clave, no funcionará. (¿Por qué estás lanzando? ¡Tu etiqueta debería estar firmada!) Si solo tienes una clave, usará esa. Si tienes más de una clave, te preguntará para que selecciones una de la lista. Asegúrate de usar la misma clave con la que firmaste tu etiqueta git.
 
-**b.** Inicia sesión en el servidor mediante SSH y verifica por lanzamientos que pueden ser promovidos, junto con la lista de artefactos. Usará el comando `dist-promotable` en el servidor para encontrarlo. Serás preguntado, por cada lanzamiento promocionable, si quieres proceder. Si hay más de un lanzamiento para promover (no deberían existir), asegúrate de solo promocionar el lanzamiento del que eres responsable.
+**b.** Inicia sesión en el servidor mediante SSH y verifica por lanzamientos que pueden ser promovidos, junto con la lista de artefactos. Usará el comando `dist-promotable` en el servidor para encontrarlo. Serás preguntado, por cada lanzamiento promocionable, si quieres proceder. Si hay más de un lanzamiento para promover (que no debería existir), asegúrate de solo promocionar el lanzamiento del que eres responsable.
 
 **c.** Inicia sesión en el servidor mediante SSH y ejecuta el script promovido para el lanzamiento dado. El comando en el servidor será similar a: `dist-promote vx.y.z`. Después de este paso, los artefactos lanzados van a estar disponibles para descarga y un archivo SHASUMS256.txt estará presente. Sin embargo, el lanzamiento seguirá sin firmar.
 
 **d.** Usa `scp` para descargar SHASUMS256.txt a un directorio temporal en tu computadora.
 
 **e.** Firma el archivo SHASUMS256.txt usando un comando similar a: `gpg
---default-key YOURKEY --clearsign /path/to/SHASUMS256.txt`. El GPG te pedirá tu contraseña. El archivo fimado será nombrado SHASUMS256.txt.asc.
+--default-key YOURKEY --clearsign /path/to/SHASUMS256.txt`. El GPG te pedirá tu contraseña. El archivo firmado será nombrado SHASUMS256.txt.asc.
 
-**f.** Imprime una versión reforzada ASCII de tu clave pública GPG key usando un comando similar a: `gpg --default-key YOURKEY --armor --export --output
+**f.** Imprime una versión reforzada ASCII de tu clave pública GPG usando un comando similar a: `gpg --default-key YOURKEY --armor --export --output
 /path/to/SHASUMS256.txt.gpg`. Esto no requiere tu contraseña y es principalmente una conveniencia para los usuarios, aunque no es la manera recomendada para obtener una copia de tu clave.
 
-**g.** Sube los archivos SHASUMS256.txt de vuelta al servidor en el directorio del lanazmiento.
+**g.** Sube los archivos SHASUMS256.txt de vuelta al servidor en el directorio del lanzamiento.
 
-Si no esperaste por las compilaciones ARM en los pasos previos antes de promover el lanzamiento, deberías volver a ejecutar `tools/release.sh` después que las compilaciones ARM terminaron. Eso moverá los artefactos ARM a la locación correcta. Te será pedido que vuelvas a firmar SHASUMS256.txt.
+Si no esperaste por las compilaciones ARM en los pasos previos antes de promover el lanzamiento, deberías volver a ejecutar `tools/release.sh` después que las compilaciones ARM hayan terminado. Eso moverá los artefactos ARM a la locación correcta. Te será pedido que vuelvas a firmar SHASUMS256.txt.
 
 *Nota*: Es posible solo firmar un lanzamiento al ejecutarlo `./tools/release.sh -s
 vX.Y.Z`.
 
 ### 13. Verifica el Lanzamiento
 
-Tu lanzamiento debería estar disponible en `https://nodejs.org/dist/vx.y.z/` y en <https://nodejs.org/dist/latest/>. Verifica que los archivos apropiedos están en su lugar. Pudieras verificar que los binarios están trabajando de manera apropiada y tienen los strings de versión interna correctos. Verifica que los documentos API están disponibles en <https://nodejs.org/api/>. Verifica que los archivos de los catálogos lanzados son los correctos en <https://nodejs.org/dist/index.tab> y <https://nodejs.org/dist/index.json>.
+Tu lanzamiento debería estar disponible en `https://nodejs.org/dist/vx.y.z/` y en <https://nodejs.org/dist/latest/>. Verifica que los archivos apropiados están en su lugar. Puede que quieras verificar que los binarios están trabajando de manera apropiada y que tengan los strings de versión interna correctos. Verifica que los documentos API están disponibles en <https://nodejs.org/api/>. Verifica que los archivos de los catálogos lanzados son los correctos en <https://nodejs.org/dist/index.tab> y <https://nodejs.org/dist/index.json>.
 
 ### 14. Crear una Entrada en el Blog
 
-Hay una compilación automática que se inició cuando promueves nuevas compilaciones, entonces en unos pocos minutos nodejs.org listará tu nueva versión como el último lanzamiento. Sin embargo, la entrada en el blog aún no es completamente automático.
+Hay una compilación automática que es iniciada cuando promueves nuevas compilaciones, entonces en unos pocos minutos nodejs.org listará tu nueva versión como el último lanzamiento. Sin embargo, la entrada en el blog aún no es completamente automática.
 
 Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](https://github.com/nodejs/nodejs.org/blob/master/scripts/release-post.js). Este script usará las compilaciones promovidas y el registro de cambios para generar el post. Ejecuta `npm run serve` para ver previamente el post localmente antes de subirlo al repositorio [nodejs.org](https://github.com/nodejs/nodejs.org).
 
 - Puedes añadir un blurb corto debajo del encabezado principal si quieres decir algo importante, de otra manera el texto debería estar listo para la publicación.
-- Los enlaces a los archivos descargados no serán completados hasta que esperes por las compilaciones ARMv6. Cualquier descarga que esté faltante tendrá `*Coming soon*` al lado. Es tu responsabilidad actualizar manualmente estos luego, cuando tienes compilaciones sobresalientes.
+- Los enlaces a los archivos descargados no serán completados a menos que hayas esperado por las compilaciones ARMv6. Cualquier descarga que falte tendrá `*Coming soon*` al lado. Es tu responsabilidad actualizar manualmente estos luego, cuando tengas compilaciones sobresalientes.
 - El contenido de SHASUMS256.txt.asc está en la parte inferior de la publicación. Cuando actualizas la lista de tarballs, necesitarás copiar/pegar los nuevos contenidos en este archivo para reflejar esos cambios.
-- Siempre usa pull-requests en el repositorio de nodejs.org. Se respetuoso de ese grupo de trabajo, pero no deberías tener que esperar a que el PR termine. Abrir un PR y fusionarlo inmediatamente *debería* estar bien. Sin embargo, por favor sigue el siguiente formato del mensaje commit:
+- Siempre usa pull-requests en el repositorio de nodejs.org. Se respetuoso con ese grupo de trabajo, pero no deberías tener que esperar a que el PR termine. Abrir un PR y fusionarlo inmediatamente *debería* estar bien. Sin embargo, por favor sigue el siguiente formato del mensaje commit:
     
     ```console
     Blog: vX.Y.Z release post
