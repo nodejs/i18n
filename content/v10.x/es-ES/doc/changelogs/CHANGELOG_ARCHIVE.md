@@ -1789,19 +1789,19 @@ https://github.com/nodejs/node/commit/e513ffef7549a56a5af728e1f0c2c0c8f290518a
 * sunos: reparar EMFILE en process.memoryUsage() (Bryan Cantrill)
 * crypto: reparar error de compile-time con openssl 0.9.7e (Ben Noordhuis)
 * unix: ignorar errores de ECONNABORTED provenientes de accept() (Ben Noordhuis)
-* Add UV_ENOSPC and mappings to it (Bert Belder)
-* http-parser: Fix response body is not read (koichik)
-* Upgrade npm to 1.1.12 
-  * upgrade node-gyp to 0.3.7
-  * work around AV-locked directories on Windows
-  * Fix isaacs/npm[#2293](https://github.com/joyent/node/issues/2293) Don't try to 'uninstall' /
-  * Exclude symbolic links from packages.
-  * Fix isaacs/npm[#2275](https://github.com/joyent/node/issues/2275) Spurious 'unresolvable cycle' error.
-  * Exclude/include dot files as if they were normal files
+* Añadir UV_ENOSPC y mapeos a este (Bert Belder)
+* http-parser: Corregir que el cuerpo de respuesta no es leído (koichik)
+* Actualizar npm a 1.1.12 
+  * actualizar node-gyp a 0.3.7
+  * arreglar directorios con bloqueo de AV en Windows
+  * Reparar isaacs/npm[#2293](https://github.com/joyent/node/issues/2293) No intentar "uninstall" /
+  * Excluir de los paquetes a los enlaces simbólicos.
+  * Reparar isaacs/npm[#2275](https://github.com/joyent/node/issues/2275) Error "unresolvable cycle" falso.
+  * Excluir/incluir archivos dot como si fueran archivos normales
 
 <a id="0.6.13"></a>
 
-## 2012.03.15 Version 0.6.13 (stable)
+## 2012.03.15 Versión 0.6.13 (estable)
 
 https://github.com/nodejs/node/commit/9f7f86b534f8556290eb8cad915984ff4ca54996
 
