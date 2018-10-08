@@ -1875,28 +1875,28 @@ https://github.com/nodejs/node/commit/1eb1fe32250fc88cb5b0a97cddf3e02be02e3f4a
 * npm: actualizar a 1.1.1 
   * Actualizar which, fstream, mkdirp, request, y rimraf
   * Reparar [#2123](https://github.com/joyent/node/issues/2123) Establecer correctamente la ruta para scripts de lifecycle en windows
-  * Marcar el root como visto, de modo que no hagamos recursión a él. Fixes [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
+  * Marcar el root como visto, de modo que no hagamos recursión a él. Repara al [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
 
 <a id="0.6.10"></a>
 
-## 2012.02.02, Version 0.6.10 (stable)
+## 2012.02.02, Versión 0.6.10 (estable)
 
 https://github.com/nodejs/node/commit/051908e023f87894fa68f5b64d0b99a19a7db01e
 
-* Update V8 to 3.6.6.20
-* Add npm msysgit bash shim to msi installer (isaacs)
-* buffers: fix intermittent out of bounds error (Ben Noordhuis)
-* buffers: honor length argument in base64 decoder (Ben Noordhuis)
-* windows: Fix path.exists regression (Bert Belder)
-* Make QueryString.parse run faster (Philip Tellis)
-* http: avoid freeing http-parser objects too early (koichik)
-* timers: add v0.4 compatibility hack (Ben Noordhuis)
-* Proper EPERM error code support (Igor Zinkovsky, Brandon Philips)
-* dgram: Implement udp multicast methods on windows (Bert Belder)
+* Actualizar V8 a 3.6.6.20
+* Añadir msysgit bash shim del npm al instalador de msi (isaacs)
+* buffers: corregir error de "fuera de los límites" intermitente (Ben Noordhuis)
+* buffers: hacer honor a la longitud del argumento en el decodificador de base64 (Ben Noordhuis)
+* windows: Corregir regresión de path.exists (Bert Belder)
+* Hacer que QueryString.parse se ejecute más rápido (Philip Tellis)
+* http: evitar liberar objetos de http-parser demasiado pronto (koichik)
+* timers: añadir hack de compatibilidad v0.4 (Ben Noordhuis)
+* Soporte correcto para el código de error de EPERM (Igor Zinkovsky, Brandon Philips)
+* dgram: Implementar métodos multidifusión de udp en windows (Bert Belder)
 
 <a id="0.6.9"></a>
 
-## 2012.01.27, Version 0.6.9 (stable)
+## 2012.01.27, Versión 0.6.9 (estable)
 
 https://github.com/nodejs/node/commit/f19e20d33f57c4d2853aaea7d2724d44f3b0012f
 
