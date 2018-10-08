@@ -303,9 +303,9 @@ Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](h
 
 - Cambios al `master` en el repositorio de nodejs.org van a activar una nueva compilación de nodejs.org, entonces tus cambios deberían aparecer en unos minutos luego de empujar.
 
-### 15. Announce
+### 15. Anuncio
 
-The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
+El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva versión. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
 
 > v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
 
