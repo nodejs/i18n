@@ -124,9 +124,9 @@ changes:
 -->
 
 * `value` {any} Il valore testato per essere veritiero.
-* `...message` {any} All arguments besides `value` are used as error message.
+* `...message` {any} Tutti gli argomenti oltre a `value` vengono utilizzati come error message.
 
-A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+Un semplice test di asserzione che verifica se `value` è veritiero. Se non lo è, viene registrato `Assertion failed`. Se fornito, l'error `message` viene formattato utilizzando [`util.format()`][] passando tutti gli argomenti del messaggio. The output is used as the error message.
 
 ```js
 console.assert(true, 'does nothing');
