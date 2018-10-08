@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-如果两个值深度相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
+如果两个值深度相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -747,7 +747,7 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 // OK
 ```
 
-If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+如果两个值深度严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.notEqual(actual, expected[, message])
 
@@ -761,13 +761,13 @@ added: v0.1.21
 
 **Strict 模式**
 
-An alias of [`assert.notStrictEqual()`][].
+[`assert.notStrictEqual()`][] 的别名。
 
 **Legacy 模式**
 
-> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`assert.notStrictEqual()`][]。
 
-Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
+浅测试，使用 [抽象相等比较法](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ) 比较强制非相等性。
 
 ```js
 const assert = require('assert');
@@ -959,7 +959,7 @@ assert.strictEqual(1, '1');
 // + '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.throws(block\[, error\]\[, message\])
 
