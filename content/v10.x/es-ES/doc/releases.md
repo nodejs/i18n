@@ -305,11 +305,11 @@ Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](h
 
 ### 15. Anuncio
 
-El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva versión. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
+El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva versión. Para anunciar la compilación en Twitter a traves de la cuenta oficial @nodejs, envia un correo electrónico a <pr@nodejs.org> con un mensaje como:
 
 > v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
 
-To ensure communication goes out with the timing of the blog post, please allow 24 hour prior notice. If known, please include the date and time the release will be shared with the community in the email to coordinate these announcements.
+Para asegurar que la comunicación está sincronizada con la entrada del blog, por favor permite una notificación previa de 24 horas. If known, please include the date and time the release will be shared with the community in the email to coordinate these announcements.
 
 ### 16. Cleanup
 
