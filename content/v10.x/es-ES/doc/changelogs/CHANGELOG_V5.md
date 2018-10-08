@@ -78,12 +78,12 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 ### Cambios notables
 
-* **buffer**: safeguard against accidental kNoZeroFill (Сковорода Никита Андреевич) [nodejs/node-private#35](https://github.com/nodejs/node-private/pull/35)
-* **deps**: upgrade openssl sources to 1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
+* **buffer**: proteger contra kNoZeroFill accidental (Сковорода Никита Андреевич) [nodejs/node-private#35](https://github.com/nodejs/node-private/pull/35)
+* **deps**: actualizar las fuentes openssl a 1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
 
 ### Commits
 
-* [[`35f06df782`](https://github.com/nodejs/node/commit/35f06df782)] - **buffer**: safeguard against accidental kNoZeroFill (Сковорода Никита Андреевич) [nodejs/node-private#35](https://github.com/nodejs/node-private/pull/35)
+* [[`35f06df782`](https://github.com/nodejs/node/commit/35f06df782)] - **buffer**: proteger contra kNoZeroFill accidental (Сковорода Никита Андреевич) [nodejs/node-private#35](https://github.com/nodejs/node-private/pull/35)
 * [[`99920480ae`](https://github.com/nodejs/node/commit/99920480ae)] - **buffer**: fix a typo in Buffer example code (Mr C0B) [#6361](https://github.com/nodejs/node/pull/6361)
 * [[`d9f7b025d4`](https://github.com/nodejs/node/commit/d9f7b025d4)] - **deps**: update openssl asm and asm_obsolete files (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
 * [[`f316fd20a0`](https://github.com/nodejs/node/commit/f316fd20a0)] - **deps**: add -no_rand_screen to openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
