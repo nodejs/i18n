@@ -921,7 +921,7 @@ assert.rejects(
 });
 ```
 
-注意， `error` 不能是一个string。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
+注意， `error` 不能是一个string。 如果提供一个string作为第二个参数，那么会认为 `error` 被省略了，并且这个string会代替 `message`。 这会导致不容易被发现的错误。 如果考虑使用string作为第二个参数，请仔细阅读 [`assert.throws()`][] 中的示例。
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -938,7 +938,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests strict equality between the `actual` and `expected` parameters as determined by the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
+测试由 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 确定的 `actual` 和 `expected` 参数之间的严格相等性。
 
 ```js
 const assert = require('assert').strict;
@@ -959,7 +959,7 @@ assert.strictEqual(1, '1');
 // + '1'
 ```
 
-If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
+如果两个值不是严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.throws(block\[, error\]\[, message\])
 
@@ -979,7 +979,7 @@ changes:
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Expects the function `block` to throw an error.
+期望 `block` 函数抛出一个错误。
 
 如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
 
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-注意， `error` 不能是一个string。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+注意， `error` 不能是一个string。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. 这会导致不容易被发现的错误。 Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
 
 <!-- eslint-disable no-restricted-syntax -->
 
