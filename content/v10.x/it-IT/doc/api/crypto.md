@@ -290,9 +290,9 @@ changes:
 
 Aggiorna il cipher con `data`. Se viene specificato l'argomento `inputEncoding`, il suo valore dev'essere `'utf8'`, `'ascii'`, oppure `'latin1'` e l'argomento `data` è una stringa che utilizza l'encoding specificato. Se l'argomento `inputEncoding` non è specificato, `data` dev'essere un [`Buffer`][], un `TypedArray`, oppure un `DataView`. Se `data` è un [`Buffer`][], un `TypedArray`, oppure un `DataView`, allora `inputEncoding` viene ignorato.
 
-L'`outputEncoding` specifica il formato di output dei dati cifrati e può essere `'latin1'`, `'base64'` o `'hex'`. Se l'`outputEncoding` è specificato, viene restituita una stringa che utilizza l'encoding specificato. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+L'`outputEncoding` specifica il formato di output dei dati cifrati e può essere `'latin1'`, `'base64'` o `'hex'`. Se l'`outputEncoding` è specificato, viene restituita una stringa che utilizza l'encoding specificato. Se non viene fornito nessun `outputEncoding`, viene restituito un [`Buffer`][].
 
-The `cipher.update()` method can be called multiple times with new data until [`cipher.final()`][] is called. Calling `cipher.update()` after [`cipher.final()`][] will result in an error being thrown.
+Il metodo `cipher.update()` può essere chiamato più volte con i nuovi dati finché non viene chiamato [`cipher.final()`][]. Chiamare `cipher.update()` dopo [`cipher.final()`][] genererà un errore.
 
 ## Class: Decipher
 
