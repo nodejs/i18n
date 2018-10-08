@@ -81,7 +81,7 @@ added: v10.0.0
 
 * {string}
 
-A comma-separated list of the trace event categories covered by this `Tracing` object.
+Una lista separada por comas de categorías de seguimiento de eventos cubiertas por el objeto `Tracing`.
 
 #### `tracing.disable()`
 
@@ -89,9 +89,9 @@ A comma-separated list of the trace event categories covered by this `Tracing` o
 added: v10.0.0
 -->
 
-Disables this `Tracing` object.
+Deshabilita el objeto `Tracing`.
 
-Only trace event categories *not* covered by other enabled `Tracing` objects and *not* specified by the `--trace-event-categories` flag will be disabled.
+Solamente categorías de seguimiento de eventos *no* cubiertas por otros objetos de `Tracing` habilitados y *no* específicadas por la bandera `--trace-event-categories` serán deshabilitadas.
 
 ```js
 const trace_events = require('trace_events');
@@ -115,7 +115,7 @@ console.log(trace_events.getEnabledCategories());
 added: v10.0.0
 -->
 
-Enables this `Tracing` object for the set of categories covered by the `Tracing` object.
+Habilita a este objeto de `Tracing` para el conjunto de categorías cubiertos por el objeto `Tracing`.
 
 #### `tracing.enabled`
 
@@ -123,7 +123,7 @@ Enables this `Tracing` object for the set of categories covered by the `Tracing`
 added: v10.0.0
 -->
 
-* {boolean} `true` only if the `Tracing` object has been enabled.
+* {boolean} `true` solo si el objeto `Tracing` ha sido habilitado.
 
 ### `trace_events.createTracing(options)`
 
@@ -132,8 +132,8 @@ added: v10.0.0
 -->
 
 * `options` {Object} 
-  * `categories` {string[]} An array of trace category names. Values included in the array are coerced to a string when possible. An error will be thrown if the value cannot be coerced.
-* Returns: {Tracing}.
+  * `categories` {string[]} Un conjunto de nombres de categorías de seguimiento. Los valores incluidos en el conjuntos son forzados a un string cuando sea posible. Un error saldrá cuando el valor no pueda ser forzado.
+* Devuelve: {Tracing}
 
 Creates and returns a `Tracing` object for the given set of `categories`.
 
