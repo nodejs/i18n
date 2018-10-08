@@ -833,9 +833,9 @@ changes:
 
 测试 `value` 是否为真值。 它和 `assert.equal(!!value, true, message)` 功能完全一样。
 
-如果 `value` 不是真值，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+如果 `value` 不是真值，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。 如果没有传入任何参数，`message` 会被设定为如下字符串：``‘无参数值传入 `assert.ok()`'``。
 
-Be aware that in the `repl` the error message will be different to the one thrown in a file! 请参阅下文了解更多详情。
+注意，在 `repl` 中，错误消息将与在文件中被抛出的不同。 请参阅下文了解更多详情。
 
 ```js
 const assert = require('assert').strict;
@@ -888,9 +888,9 @@ added: v10.0.0
 * `error` {RegExp|Function|Object|Error}
 * `message` {any}
 
-Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 It will then check that the promise is rejected.
+Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否被拒绝。
 
-If `block` is a function and it throws an error synchronously, `assert.rejects()` will return a rejected `Promise` with that error. If the function does not return a promise, `assert.rejects()` will return a rejected `Promise` with an [`ERR_INVALID_RETURN_VALUE`][] error. In both cases the error handler is skipped.
+如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带这个被抛出的错误。 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 In both cases the error handler is skipped.
 
 Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
 
