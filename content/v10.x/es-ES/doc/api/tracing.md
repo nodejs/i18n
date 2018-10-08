@@ -63,15 +63,15 @@ Empezando con Node.Js 10.0.0, el sistema de seguimiento utiliza las mismas fuent
 added: v10.0.0
 -->
 
-### `Tracing` object
+### Objeto de `seguimiento`
 
 <!-- YAML
 added: v10.0.0
 -->
 
-The `Tracing` object is used to enable or disable tracing for sets of categories. Instances are created using the `trace_events.createTracing()` method.
+El objeto de `seguimiento` es usado para habilitar o deshabilitar el seguimiento para conjuntos de categorías. Las instancias son creadas usando el método `trace_events.createTracing()`.
 
-When created, the `Tracing` object is disabled. Calling the `tracing.enable()` method adds the categories to the set of enabled trace event categories. Calling `tracing.disable()` will remove the categories from the set of enabled trace event categories.
+Cuando fue creado, el objeto de `seguimiento` está deshabilitado. Llamar al método `tracing.enable()` añade categorías al conjunto de categorías de seguimiento de eventos. Llamar a `tracing.disable()` removerá las categorías del conjunto de categorías de seguimiento de eventos habilitadas.
 
 #### `tracing.categories`
 
