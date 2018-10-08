@@ -67,11 +67,11 @@ apply.whitespace fix`
 * [**Ver "Etiquetas"**](./onboarding-extras.md#labels)
   
   * Hay [un bot](https://github.com/nodejs-github-bot/github-bot) que aplica etiquetas de subsistema (por ejemplo, `doc`, `test`, `assert`, or `buffer`) para que sepamos en que partes del código se basan las modificaciones del pull request. No es perfecto, por supuesto. Siéntase libre de aplicar etiquetas relevantes y eliminar etiquetas irrelevantes desde los pull requests y los issues.
-  * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
+  * Utilice la etiqueta `tsc-review` si un tópico es controvertido o no llega a una conclusión después de un tiempo prolongado.
   * `semver-{minor,major}`: 
-    * If a change has the remote *chance* of breaking something, use the `semver-major` label
-    * When adding a `semver-*` label, add a comment explaining why you're adding it. Do it right away so you don't forget!
-  * Please add the `author-ready` label for PRs where: 
+    * Si un cambio tiene la *posibilidad* remota de romper algo, utilice la etiqueta `semver-major`
+    * Cuando agregue una etiqueta `semver-*`, añada un comentario explicando porqué lo agrega. ¡Hágalo de inmediato para que no se le olvide!
+  * Por favor, agregue la etiqueta `author-ready` para PRs donde: 
     * the CI has been started (not necessarily finished),
     * no outstanding review comments exist and
     * at least one collaborator approved the PR.
