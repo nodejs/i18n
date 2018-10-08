@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Current</th>
+<th>Actual</th>
 </tr>
   
   <tr>
@@ -19,7 +19,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -29,18 +29,18 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archive](CHANGELOG_ARCHIVE.md)
+  * [Archivo](CHANGELOG_ARCHIVE.md)
 
 <a id="10.1.0"></a>
 
-## 2018-05-08, Version 10.1.0 (Current), @MylesBorins
+## 2018-05-08, Versión 10.1.0 (Actual), @MylesBorins
 
-### Notable Changes
+### Cambios Notables
 
-* **console**: 
-  * make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
+* **consola**: 
+  * hacer console.table() utiliza inspeccionar color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**: 
-  * move fs/promises to fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
+  * mueve fs/promesa a fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
 * **http**: 
   * added aborted property to request (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
 * **n-api**: 
