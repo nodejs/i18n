@@ -163,13 +163,13 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
 ## Notas Finales
 
 * No se preocupe por cometer errores: todo el mundo lo hace, hay mucho que interiorizar y eso lleva tiempo (¡y reconocemos eso!)
-* Almost any mistake you could make can be fixed or reverted.
-* The existing Collaborators trust you and are grateful for your help!
-* Other repositories: 
+* Casi cualquier error que podría cometer puede ser arreglado o revertido.
+* ¡Los Colaboradores existentes confían en usted y están agradecidos por su ayuda!
+* Otros repositorios: 
   * <https://github.com/nodejs/TSC>
   * <https://github.com/nodejs/build>
   * <https://github.com/nodejs/nodejs.org>
   * <https://github.com/nodejs/readable-stream>
   * <https://github.com/nodejs/LTS>
   * <https://github.com/nodejs/citgm>
-* The Node.js Foundation hosts regular summits for active contributors to the Node.js project, where we have face-to-face discussions about our work on the project. The Foundation has travel funds to cover participants' expenses including accommodations, transportation, visa fees, etc. if needed. Check out the [summit](https://github.com/nodejs/summit) repository for details.
+* La Fundación Node.js organiza cumbres periódicas para los colaboradores del proyecto Node.js, en el que tenemos discusiones cara-a-cara sobre nuestro trabajo en el proyecto. La Fundación tiene fondos para viajes para cubrir los gastos de los participantes incluyendo alojamiento, transporte, tarifas de visado, etc. si es necesario. Eche un vistazo al repositorio de [cumbre](https://github.com/nodejs/summit) para más detalles.
