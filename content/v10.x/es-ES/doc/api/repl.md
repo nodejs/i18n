@@ -52,11 +52,11 @@ Las siguientes combinaciones de teclas en REPL tienen los siguientes efectos:
 
 ### Evaluación Predeterminada
 
-De forma predeterminada, todas las instancias del `repl.REPLServer` usan una función de evaluación que evalúa las expresiones de JavaScript y provee acceso a los módulos integrados de Node.Js. This default behavior can be overridden by passing in an alternative evaluation function when the `repl.REPLServer` instance is created.
+De forma predeterminada, todas las instancias del `repl.REPLServer` usan una función de evaluación que evalúa las expresiones de JavaScript y provee acceso a los módulos integrados de Node.Js. Este comportamiento predeterminado puede ser al pasar una función de evaluación alternativa cuando la instancia `repl.REPLServer` es creada.
 
-#### JavaScript Expressions
+#### Expresiones JavaScript
 
-The default evaluator supports direct evaluation of JavaScript expressions:
+El evaluador por defecto soporta evaluaciones directas de las expresiones de JavaScript:
 
 <!-- eslint-skip -->
 
