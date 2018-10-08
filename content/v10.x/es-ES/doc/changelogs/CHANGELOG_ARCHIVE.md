@@ -1859,23 +1859,23 @@ https://github.com/nodejs/node/commit/1eb1fe32250fc88cb5b0a97cddf3e02be02e3f4a
 * http: permitir múltiples cabeceras WebSocket RFC6455 (Einar Otto Stangvik)
 * http: permitir múltiples cabeceras WWW-Authenticate (Ben Noordhuis)
 * windows: soportar argv y variables de ambiente unicode (Bert Belder)
-* tls: mitigate session renegotiation attacks (Ben Noordhuis)
-* tcp, pipe: don't assert on uv_accept() errors (Ben Noordhuis)
-* tls: Allow establishing secure connection on the existing socket (koichik)
-* dgram: handle close of dgram socket before DNS lookup completes (Seth Fitzsimmons)
-* windows: Support half-duplex pipes (Igor Zinkovsky)
-* build: disable omit-frame-pointer on solaris systems (Dave Pacheco)
-* debugger: fix --debug-brk (Ben Noordhuis)
-* net: fix large file downloads failing (koichik)
-* fs: fix ReadStream failure to read from existing fd (Christopher Jeffrey)
-* net: destroy socket on DNS error (Stefan Rusu)
-* dtrace: add missing translator (Dave Pacheco)
-* unix: don't flush tty on switch to raw mode (Ben Noordhuis)
-* windows: reset brightness when reverting to default text color (Bert Belder)
-* npm: update to 1.1.1 
-  * Update which, fstream, mkdirp, request, and rimraf
-  * Fix [#2123](https://github.com/joyent/node/issues/2123) Set path properly for lifecycle scripts on windows
-  * Mark the root as seen, so we don't recurse into it. Fixes [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
+* tls: mitigar ataques de renegociación de la sesión (Ben Noordhuis)
+* tcp, pipe: no hacer aserción sobre errores de uv_accept() (Ben Noordhuis)
+* tls: Permitir el establecimiento de una conexión segura en el socket existente (koichik)
+* dgram: manejar cierre de socket de dgram antes de que la búsqueda de DNS se complete (Seth Fitzsimmons)
+* windows: Soportar pipes mitad-duplex (Igor Zinkovsky)
+* build: inhabilitar omit-frame-pointer en sistemas solaris (Dave Pacheco)
+* debugger: reparar --debug-brk (Ben Noordhuis)
+* net: reparar falla en la descarga de archivos grandes (koichik)
+* fs: Corregir falla de ReadStream al leer desde fd existente (Christopher Jeffrey)
+* net: destruir socket ante error del DNS (Stefan Rusu)
+* dtrace: añadir traductor faltante (Dave Pacheco)
+* unix: no vaciar tty al cambiar al modo raw (Ben Noordhuis)
+* windows: restablecer brillo al regresar al color de texto predeterminado (Bert Belder)
+* npm: actualizar a 1.1.1 
+  * Actualizar which, fstream, mkdirp, request, y rimraf
+  * Reparar [#2123](https://github.com/joyent/node/issues/2123) Establecer correctamente la ruta para scripts de lifecycle en windows
+  * Marcar el root como visto, de modo que no hagamos recursión a él. Fixes [#1838](https://github.com/joyent/node/issues/1838). (Martin Cooper)
 
 <a id="0.6.10"></a>
 
