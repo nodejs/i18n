@@ -70,13 +70,13 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`27785aeb37`](https://github.com/nodejs/node/commit/27785aeb37)] - **buffer**: ignorar longitudes de asignación negativas (Anna Henningsen) [#7221](https://github.com/nodejs/node/pull/7221)
 * [[`34b96c1322`](https://github.com/nodejs/node/commit/34b96c1322)] - **deps**: hace backport 3a9bfec desde un upstream v8 (Ben Noordhuis) [nodejs/node-private#40](https://github.com/nodejs/node-private/pull/40)
 * [[`2ebeb82852`](https://github.com/nodejs/node/commit/2ebeb82852)] - **test**: reparar la verificación del código del error test-net-* para getaddrinfo(3) (Natanael Copa) [#5099](https://github.com/nodejs/node/pull/5099)
-* [[`03d36aea4f`](https://github.com/nodejs/node/commit/03d36aea4f)] - **(SEMVER-MINOR)** **test**: add buffer testcase for resetting kZeroFill (Сковорода Никита Андреевич) [#7169](https://github.com/nodejs/node/pull/7169)
+* [[`03d36aea4f`](https://github.com/nodejs/node/commit/03d36aea4f)] - **(SEMVER-MINOR)** **test**: añadir búfer para resetear kZeroFill (Сковорода Никита Андреевич) [#7169](https://github.com/nodejs/node/pull/7169)
 
 <a id="5.11.1"></a>
 
-## 2016-05-05, Version 5.11.1 (Stable), @evanlucas
+## 2016-05-05, Versión 5.11.1 (Estable), @evanlucas
 
-### Notable changes
+### Cambios notables
 
 * **buffer**: safeguard against accidental kNoZeroFill (Сковорода Никита Андреевич) [nodejs/node-private#35](https://github.com/nodejs/node-private/pull/35)
 * **deps**: upgrade openssl sources to 1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
