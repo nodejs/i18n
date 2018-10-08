@@ -1735,9 +1735,9 @@ https://github.com/nodejs/node/commit/4bc1d395de6abed2cf1e4d0b7b3a1480a21c368f
 https://github.com/nodejs/node/commit/4ced23deaf36493f4303a18f6fdce768c58becc0
 
 * Actualizar npm a 1.1.21
-* uv: Añadir soporte para errores de EROFS (Ben Noordhuis, Maciej Małecki)
-* uv: Añadir soporte para errores de EIO y ENOSPC (Fedor Indutny)
-* windows: Añadir soporte para errores de EXDEV (Bert Belder)
+* uv: Añadir soporte para errores EROFS (Ben Noordhuis, Maciej Małecki)
+* uv: Añadir soporte para errores EIO y ENOSPC (Fedor Indutny)
+* windows: Añadir soporte para errores EXDEV (Bert Belder)
 * http: Corregir fugas de memoria del cliente (isaacs, Vincent Voyer)
 * fs: reparar fuga del descriptor de archivos en funciones sincrónicas (Ben Noordhuis)
 * fs: reparar bug de cierre doble de ReadStream / WriteStream (Ben Noordhuis)
@@ -1788,7 +1788,7 @@ https://github.com/nodejs/node/commit/e513ffef7549a56a5af728e1f0c2c0c8f290518a
 * net: no colapsar cuando la escritura en cola falla (Igor Zinkovsky)
 * sunos: reparar EMFILE en process.memoryUsage() (Bryan Cantrill)
 * crypto: reparar error de compile-time con openssl 0.9.7e (Ben Noordhuis)
-* unix: ignorar errores de ECONNABORTED provenientes de accept() (Ben Noordhuis)
+* unix: ignorar errores ECONNABORTED provenientes de accept() (Ben Noordhuis)
 * Añadir UV_ENOSPC y mapeos a este (Bert Belder)
 * http-parser: Corregir que el cuerpo de respuesta no es leído (koichik)
 * Actualizar npm a 1.1.12 
@@ -1805,15 +1805,15 @@ https://github.com/nodejs/node/commit/e513ffef7549a56a5af728e1f0c2c0c8f290518a
 
 https://github.com/nodejs/node/commit/9f7f86b534f8556290eb8cad915984ff4ca54996
 
-* Windows: Many libuv test fixes (Bert Belder)
-* Windows: avoid uv_guess_handle crash in when fd < 0 (Bert Belder)
-* Map EBUSY and ENOTEMPTY errors (Bert Belder)
-* Windows: include syscall in fs errors (Bert Belder)
-* Fix fs.watch ENOSYS on Linux kernel version mismatch (Ben Noordhuis)
-* Update npm to 1.1.9 
-  * upgrade node-gyp to 0.3.5 (Nathan Rajlich)
-  * Fix isaacs/npm[#2249](https://github.com/joyent/node/issues/2249) Add cache-max and cache-min configs
-  * Properly redirect across https/http registry requests
+* Windows: Muchas reparaciones de la prueba de libuv (Bert Belder)
+* Windows: evitar que uv_guess_handle colapse cuando fd < 0 (Bert Belder)
+* Mapear errores EBUSY y ENOTEMPTY (Bert Belder)
+* Windows: incluir syscall en errores del fs (Bert Belder)
+* Reparar incongruencia de ENOSYS de fs.watch en la versión kernel de Linux (Ben Noordhuis)
+* Actualizar npm a 1.1.9 
+  * actualizar node-gyp a 0.3.5 (Nathan Rajlich)
+  * Reparar isaacs/npm[#2249](https://github.com/joyent/node/issues/2249) Añadir configs de cache-max y cache-min
+  * Redirigir correctamente a través de peticiones de registro de https/http
   * log config usage if undefined key in set function (Kris Windham)
   * Add support for os/cpu fields in package.json (Adam Blackburn)
   * Automatically node-gyp packages containing a binding.gyp
