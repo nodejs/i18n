@@ -156,13 +156,13 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
 * Etiquete su pull request con la etiqueta de subsistema `doc`.
 * Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado la plantilla y otra subtarea.
 * After one or two approvals, land the PR (PRs of this type do not need to wait for 48/72 hours to land). 
-  * Be sure to add the `PR-URL: <full-pr-url>` and appropriate `Reviewed-By:` metadata.
-  * [`node-core-utils`][] automates the generation of metadata and the landing process. See the documentation of [`git-node`][].
-  * [`core-validate-commit`][] automates the validation of commit messages. This will be run during `git node land --final` of the [`git-node`][] command.
+  * Asegúrese de añadir el `PR-URL: <full-pr-url>` y los metadatos correspondientes `Reviewed-By:`.
+  * [`node-core-utils`][] automates the generation of metadata and the landing process. Consulte la documentación de [`git-node`][].
+  * [`core-validate-commit`][] automatiza la validación de mensajes de commit. Esto se ejecutará durante `git node land --final` del comando [`git-node`][].
 
-## Final notes
+## Notas Finales
 
-* Don't worry about making mistakes: everybody makes them, there's a lot to internalize and that takes time (and we recognize that!)
+* No se preocupe por cometer errores: todo el mundo lo hace, hay mucho que interiorizar y eso lleva tiempo (¡y reconocemos eso!)
 * Almost any mistake you could make can be fixed or reverted.
 * The existing Collaborators trust you and are grateful for your help!
 * Other repositories: 
