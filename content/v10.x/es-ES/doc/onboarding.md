@@ -84,8 +84,8 @@ apply.whitespace fix`
 
 * Cuando una discusión se calienta, puede requerir que otros Colaboradores la vigilen abriendo un issue en el repositorio privado [nodejs/moderation](https://github.com/nodejs/moderation).
   
-  * Este es un repositorio al que todos los miembros de la organización GitHub de `nodejs` (no solo los Colaboradores del núcleo Node.js) tienen acceso. Its contents should not be shared externally.
-  * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
+  * Este es un repositorio al que todos los miembros de la organización GitHub de `nodejs` (no solo los Colaboradores del núcleo Node.js) tienen acceso. Sus contenidos no deben ser compartidos externamente.
+  * Puede encontrar la política de moderación completa [aquí](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
 ## Revisión de PRs
 
@@ -126,7 +126,7 @@ apply.whitespace fix`
   * <https://ci.nodejs.org/> 
     * No se ejecuta automáticamente. Necesita iniciarlo manualmente.
   * Iniciar sesión en la CI está integrado con GitHub. ¡Intente iniciar sesión ahora!
-  * You will be using `node-test-pull-request` most of the time. Go there now! 
+  * Utilizará `node-test-pull-request` la mayor parte del tiempo. ¡Vaya allí ahora! 
     * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
   * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
   * To start CI testing from this screen, you need to fill in two elements on the form: 
