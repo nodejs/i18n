@@ -55,7 +55,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-Note that all Node.js Addons must export an initialization function following the pattern:
+Zwróć uwagę, że wszystkie dodatki Node.js muszą wyeksportować funkcję inicjalizacyjną zgodnie z następującym wzorcem:
 
 ```cpp
 void Initialize(Local<Object> exports);
@@ -64,7 +64,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Po `NODE_MODULE` nie ma średnika, ponieważ nie jest on funkcją (zobacz `node.h`).
 
-The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
+Nazwa `module_name` musi być zgodna z nazwą pliku końcowego pliku binarnego (z wyjątkiem sufiksu `.node`).
 
 W przykładzie `hello.cc` funkcją inicjującą jest `init`, a nazwa modułu dodatku to `addon`.
 
@@ -91,7 +91,7 @@ Następnie użyj komendy `node-gyp build`, aby wygenerować skompilowany plik `a
 
 Przy użyciu `npm zainstaluj ` by zainstalować dodatek Node.js, npm używa własną wersję wiązany `węzeł gyp` by wykonać ten sam zestaw działań, generowanie skompilowanej wersji dodatku dla użytkownika platformy na żądanie.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Po skonfigurowaniu, binarny dodatek może zostać użyty z poziomu Node.js, poprzez wskazanie [`require()`](modules.html#modules_require) do skonfigurowanego modułu `addon.node`:
 
 ```js
 Hello.js
