@@ -6,9 +6,9 @@
 
 El Seguimiento de Eventos provee un mecanismo para centralizar el seguimiento de la información generado por la versión V8 del núcleo Node.js, y código de espacio de usuario.
 
-El seguimiento puede ser habilitado con las `--categorías de seguimiento de eventos` banderas de línea de comandos o usando el módulo de `seguimiento de eventos`. The `--trace-event-categories` flag accepts a list of comma-separated category names.
+El seguimiento puede ser habilitado con la bandera de línea de comandos `--trace-event-categories` o al usar el módulo `trace_events`. La bandera de `--trace-event-categories` acepta una lista de nombres de categorías separados por comas.
 
-The available categories are:
+Las categorías disponibles son:
 
 * `node` - An empty placeholder.
 * `node.async_hooks` - Enables capture of detailed [`async_hooks`] trace data. The [`async_hooks`] events have a unique `asyncId` and a special `triggerId` `triggerAsyncId` property.
