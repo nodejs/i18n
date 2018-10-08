@@ -72,14 +72,14 @@ apply.whitespace fix`
     * Si un cambio tiene la *posibilidad* remota de romper algo, utilice la etiqueta `semver-major`
     * Cuando agregue una etiqueta `semver-*`, añada un comentario explicando porqué lo agrega. ¡Hágalo de inmediato para que no se le olvide!
   * Por favor, agregue la etiqueta `author-ready` para PRs donde: 
-    * the CI has been started (not necessarily finished),
-    * no outstanding review comments exist and
-    * at least one collaborator approved the PR.
+    * el CI ha comenzado (no necesariamente terminado),
+    * no existen comentarios pendientes para revisión y
+    * al menor un colaborados aprobó el PR.
 
 * See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
-  * This will come more naturally over time
-  * For many of the teams listed there, you can ask to be added if you are interested 
+  * Esto vendrá más naturalmente con el tiempo
+  * Para muchos de los equipos enlistados, puede solicitar ser añadido si está interesado 
     * Some are WGs with some process around adding people, others are only there for notifications
 
 * When a discussion gets heated, you can request that other Collaborators keep an eye on it by opening an issue at the private [nodejs/moderation](https://github.com/nodejs/moderation) repository.
