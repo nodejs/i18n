@@ -46,13 +46,13 @@ welcome('Node.js User');
 
 Las siguientes combinaciones de teclas en REPL tienen los siguientes efectos:
 
-* `<ctrl>-C` - When pressed once, has the same effect as the `.break` command. When pressed twice on a blank line, has the same effect as the `.exit` command.
-* `<ctrl>-D` - Has the same effect as the `.exit` command.
-* `<tab>` - When pressed on a blank line, displays global and local (scope) variables. When pressed while entering other input, displays relevant autocompletion options.
+* `<ctrl>-C` - Cuando es presionada, tiene el mismo efecto que el comando `.break`. Cuando es presionada dos veces en una línea en blanco, tiene el mismo efecto que el comando `.exit`.
+* `<ctrl>-D` - Tiene el mismo efecto que el comando `.exit`.
+* `<tab>` - Cuando es presionado en una línea en blanco, muestra las variables globales y locales (alcance). Cuando se presiona mientras se está introduciendo otra entrada, muestra las opciones de autocompletado relevantes.
 
-### Default Evaluation
+### Evaluación Predeterminada
 
-By default, all instances of `repl.REPLServer` use an evaluation function that evaluates JavaScript expressions and provides access to Node.js' built-in modules. This default behavior can be overridden by passing in an alternative evaluation function when the `repl.REPLServer` instance is created.
+De forma predeterminada, todas las instancias del `repl.REPLServer` usan una función de evaluación que evalúa las expresiones de JavaScript y provee acceso a los módulos integrados de Node.Js. This default behavior can be overridden by passing in an alternative evaluation function when the `repl.REPLServer` instance is created.
 
 #### JavaScript Expressions
 
