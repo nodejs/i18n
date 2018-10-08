@@ -603,7 +603,7 @@ changes:
 
 * `value` {any}
 
-Throws `value` if `value` is not `undefined` or `null`. This is useful when testing the `error` argument in callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. See below for an example.
+如果 `value` 不是 `undefined` 或 `null`，则抛出 `value`。 当在回调函数中测试 `error` 参数时，这一点很有用。 The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. See below for an example.
 
 ```js
 const assert = require('assert').strict;
