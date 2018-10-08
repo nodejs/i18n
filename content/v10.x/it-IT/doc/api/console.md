@@ -123,7 +123,7 @@ changes:
                  anymore.
 -->
 
-* `value` {any} The value tested for being truthy.
+* `value` {any} Il valore testato per essere veritiero.
 * `...message` {any} All arguments besides `value` are used as error message.
 
 A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
