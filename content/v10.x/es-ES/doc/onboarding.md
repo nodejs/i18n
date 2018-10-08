@@ -133,23 +133,23 @@ apply.whitespace fix`
     * La caja `CERTIFY_SAFE` debe ser verificada. Al comprobarlo, está indicando que ha revisado el código que está a punto de probar y está seguro que no contiene ningún código malicioso. (¡No queremos que las personas secuestren nuestros hosts de CI para atacar otros hosts en internet, por ejemplo!)
     * La caja `PR_ID` debe completarse con el número que identifica al pull request que contiene el código que desea probar. Por ejemplo, si el URL para el pull request es `https://github.com/nodejs/node/issues/7006`, entonces coloque `7006` en el `PR_ID`.
     * Los elementos restantes en el formulario generalmente no cambian con la excepción de `POST_STATUS_TO_PR`. Verifique si quiere que un indicador de estatus de CI sea insertado automáticamente dentro del PR.
-  * If you need help with something CI-related: 
-    * Use #node-dev (IRC) to talk to other Collaborators.
-    * Use #node-build (IRC) to talk to the Build WG members who maintain the CI infrastructure.
-    * Use the [Build WG repo](https://github.com/nodejs/build) to file issues for the Build WG members who maintain the CI infrastructure.
+  * Si necesita ayuda con algo relacionado con CI: 
+    * Utilice #node-dev (IRC) para hablar con otros Colaboradores.
+    * Utilice #node-build (IRC) para hablar con los miembros de Crear WG, los cuales mantienen la infraestructura de CI.
+    * Utilice el [repo Crear WG](https://github.com/nodejs/build) para issues de archivos para los miembros de Crear WG que mantienen la infraestructura de CI.
 
 ## Landing PRs
 
 See the Collaborator Guide: [Landing Pull Requests](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
-Note that commits in one PR that belong to one logical change should be squashed. It is rarely the case in onboarding exercises, so this needs to be pointed out separately during the onboarding.
+Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico deben ser aplastados. Rara vez es el caso de los ejercicios de orientación, por lo que esto debe ser señalado por separado durante la orientación.
 
 <!-- TODO(joyeechueng): provide examples about "one logical change" -->
 
-## Exercise: Make a PR adding yourself to the README
+## Ejercicio: Haga un PR agregándose usted mismo al README
 
-* Example: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
-  * For raw commit message: `git log ce986de829457c39257cd205067602e765768fb0
+* Ejemplo: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
+  * Para el mensaje de commit sin procesar: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
 * Collaborators are in alphabetical order by GitHub username.
 * Optionally, include your personal pronouns.
