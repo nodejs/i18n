@@ -799,7 +799,7 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-Tests strict inequality between the `actual` and `expected` parameters as determined by the [SameValue Comparison](https://tc39.github.io/ecma262/#sec-samevalue).
+测试由 [等值比较法](https://tc39.github.io/ecma262/#sec-samevalue) 确定的 `actual` 和 `expected` 参数之间的严格不相等性。
 
 ```js
 const assert = require('assert').strict;
@@ -831,9 +831,9 @@ changes:
 * `value` {any}
 * `message` {any}
 
-Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
+测试 `value` 是否为真值。 它和 `assert.equal(!!value, true, message)` 功能完全一样。
 
-If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
+如果 `value` 不是真值，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。 If no arguments are passed in at all `message` will be set to the string: ``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one thrown in a file! 请参阅下文了解更多详情。
 
