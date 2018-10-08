@@ -19,13 +19,13 @@ Las categorías disponibles son:
 * `node.fs.sync` - Permite la captura de datos de seguimientos para métodos de sincronización de archivos del sistema.
 * `v8` - The [V8](v8.html) son eventos recolectores de basura, compilan, y están relacionados con la ejecución.
 
-By default the `node`, `node.async_hooks`, and `v8` categories are enabled.
+Por defecto están activas las categorías `node`, `node.async_hooks`, y `v8`.
 
 ```txt
 node --trace-event-categories v8,node,node.async_hooks server.js
 ```
 
-Prior versions of Node.js required the use of the `--trace-events-enabled` flag to enable trace events. This requirement has been removed. However, the `--trace-events-enabled` flag *may* still be used and will enable the `node`, `node.async_hooks`, and `v8` trace event categories by default.
+Versiones anteriores de Node.js requerían del uso de la bandera `--trace-events-enabled` para permitir eventos de seguimiento. Este requisito ha sido removido. Sin embargo `--trace-events-enabled` flag *may* son aún usados y permiten las categorías`node`, `node.async_hooks`, y `v8` de forma predeterminada.
 
 ```txt
 node --trace-events-enabled
@@ -35,7 +35,7 @@ node --trace-events-enabled
 node --trace-event-categories v8,node,node.async_hooks
 ```
 
-Alternatively, trace events may be enabled using the `trace_events` module:
+Alternamente, los eventos de seguimiento pueden ser permitidos utilizando el módulo `trace_events`:
 
 ```js
 const trace_events = require('trace_events');
