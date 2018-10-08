@@ -48,13 +48,13 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Note*: Official support for the v5 release line is scheduled to expire around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
+*Note*: El apoyo oficial para la línea de lanzamiento v5 está programada para caducar alrededor de Junio del 2016. Los usuarios de v5 deberían actualizar a [Node.js v6](CHANGELOG_V6.md).
 
 <a id="5.12.0"></a>
 
-## 2016-06-23, Version 5.12.0 (Stable), @evanlucas
+## 2016-06-23, Versión 5.12.0 (Estable), @evanlucas
 
-### Notable changes
+### Cambios notables
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases for details on patched vulnerabilities.
 
