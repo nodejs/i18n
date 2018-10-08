@@ -338,12 +338,12 @@ added: v10.0.0
 -->
 
 * `tabularData` {any}
-* `properties` {string[]} Alternate properties for constructing the table.
+* `properties` {string[]} Proprietà alternative per la costruzione della tabella.
 
-Try to construct a table with the columns of the properties of `tabularData` (or use `properties`) and rows of `tabularData` and log it. Falls back to just logging the argument if it can’t be parsed as tabular.
+Prova a costruire una tabella con le colonne delle proprietà di `tabularData` (o utilizza `properties`) e le righe di `tabularData`, successivamente la registra. Torna indietro per registrare l'argomento solo se non può essere analizzato tramite il parsing come parte della tabella.
 
 ```js
-// These can't be parsed as tabular data
+// Questi non possono essere analizzati tramite il parsing come dati della tabella
 console.table(Symbol());
 // Symbol()
 
@@ -375,7 +375,7 @@ added: v0.1.104
 
 * `label` {string} **Default:** `'default'`
 
-Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Avvia un timer che può essere utilizzato per calcolare la durata di un'operazione. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
 ### console.timeEnd(label)
 
