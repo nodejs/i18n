@@ -11,9 +11,9 @@ El seguimiento puede ser habilitado con la bandera de línea de comandos `--trac
 Las categorías disponibles son:
 
 * `node` - Un marcador de posición vacío.
-* `node.async_hooks` - Permite la captura de rastros de datos detallados [`async_hooks`]. The [`async_hooks`] events have a unique `asyncId` and a special `triggerId` `triggerAsyncId` property.
-* `node.bootstrap` - Enables capture of Node.js bootstrap milestones.
-* `node.perf` - Enables capture of [Performance API](perf_hooks.html) measurements. 
+* `node.async_hooks` - Permite la captura de rastros de datos detallados [`async_hooks`]. Los eventos [`async_hooks`] tienen un único `asyncId`y una propiedad `triggerAsyncId` `triggerId` especial.
+* `node.bootstrap` - Permite la captura de los hitos bootstrap de Node.js.
+* `node.perf` Permite la captura de las mediciones de [Desempeño del API](perf_hooks.html). 
   * `node.perf.usertiming` - Enables capture of only Performance API User Timing measures and marks.
   * `node.perf.timerify` - Enables capture of only Performance API timerify measurements.
 * `node.fs.sync` - Enables capture of trace data for file system sync methods.
