@@ -245,7 +245,7 @@ Quando si utilizza una modalità di crittografia autenticata (attualmente sono s
 
 L'argomento `options` è facoltativo per la `GCM`. Quando si utilizza la `CCM`, deve essere specificata l'opzione `plaintextLength` e il suo valore deve corrispondere alla lunghezza del testo normale in byte. Vedi [Modalità CCM](#crypto_ccm_mode).
 
-Il metodo `cipher.setAAD()` deve essere chiamato prima di [`cipher.update()`][].
+Il metodo `cipher.setAAD()` dev'essere chiamato prima di [`cipher.update()`][].
 
 ### cipher.getAuthTag()
 
@@ -255,7 +255,7 @@ added: v1.0.0
 
 - Restituisce: {Buffer} Quando si utilizza una modalità di crittografia autenticata (attualmente sono supportate solo la `GCM` e la `CCM`), il metodo `cipher.getAuthTag()` restituisce un [`Buffer`][] contenente l'*authentication tag* che è stato calcolato dai dati forniti.
 
-Il metodo `cipher.getAuthTag()` deve essere chiamato solo dopo aver completato la crittografia utilizzando il metodo [`cipher.final()`][].
+Il metodo `cipher.getAuthTag()` dev'essere chiamato solo dopo aver completato la crittografia utilizzando il metodo [`cipher.final()`][].
 
 ### cipher.setAutoPadding([autoPadding])
 
@@ -268,9 +268,9 @@ added: v0.7.1
 
 Quando si utilizzano algoritmi di cifratura a blocchi, la classe `Cipher` eseguirà automaticamente il padding (riempimento) dei dati d'input fino a raggiungere la block size appropriata. Per disattivare il padding predefinito chiamare `cipher.setAutoPadding(false)`.
 
-When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an error. Disabling automatic padding is useful for non-standard padding, for instance using `0x0` instead of PKCS padding.
+Quando `autoPadding` è `false`, la lunghezza di tutti i dati d'input dev'essere un multiplo della block size del cipher altrimenti [`cipher.final()`][] genererà un errore. La disattivazione del padding automatico è utile per il padding non standard, ad esempio utilizzando `0x0` al posto del padding PKCS.
 
-The `cipher.setAutoPadding()` method must be called before [`cipher.final()`][].
+Il metodo `cipher.setAutoPadding()` dev'essere chiamato prima di [`cipher.final()`][].
 
 ### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -288,7 +288,7 @@ changes:
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Updates the cipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Aggiorna il cipher con `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
 The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'base64'` or `'hex'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
 
