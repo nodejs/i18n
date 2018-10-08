@@ -42,7 +42,7 @@ apply.whitespace fix`
 * `#node-dev` en [webchat.freenode.net](https://webchat.freenode.net/) es el mejor lugar para interactuar con el TSC / otros Colaboradores
   
   * Si hay alguna pregunta después de la sesión, ¡un buen lugar para preguntar es ahí!
-  * Presence is not mandatory, but please drop a note there if force-pushing to `master`
+  * La presencia no es obligatoria, pero por favor, deje una nota allí si presiona a la fuerza a `master`
 
 ## Objetivos & valores del proyecto
 
@@ -62,11 +62,11 @@ apply.whitespace fix`
 
 * Tiene (en su mayoría) rienda suelta; no dude en cerrar un issue si está seguro de que debería cerrarse
   
-  * Be nice about closing issues! Let people know why, and that issues and PRs can be reopened if necessary
+  * ¡Se amable acerca de los issues de cierre! Deje que las personas sepan por qué, y que issues y PRs pueden ser reabiertos si es necesario
 
-* [**See "Labels"**](./onboarding-extras.md#labels)
+* [**Ver "Etiquetas"**](./onboarding-extras.md#labels)
   
-  * There is [a bot](https://github.com/nodejs-github-bot/github-bot) that applies subsystem labels (for example, `doc`, `test`, `assert`, or `buffer`) so that we know what parts of the code base the pull request modifies. It is not perfect, of course. Feel free to apply relevant labels and remove irrelevant labels from pull requests and issues.
+  * Hay [un bot](https://github.com/nodejs-github-bot/github-bot) que aplica etiquetas de subsistema (por ejemplo, `doc`, `test`, `assert`, or `buffer`) para que sepamos en que partes del código se basan las modificaciones del pull request. No es perfecto, por supuesto. Siéntase libre de aplicar etiquetas relevantes y eliminar etiquetas irrelevantes desde los pull requests y los issues.
   * Use the `tsc-review` label if a topic is controversial or isn't coming to a conclusion after an extended time.
   * `semver-{minor,major}`: 
     * If a change has the remote *chance* of breaking something, use the `semver-major` label
