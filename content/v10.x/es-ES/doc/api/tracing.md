@@ -14,7 +14,7 @@ Las categorías disponibles son:
 * `node.async_hooks` - Permite la captura de rastros de datos detallados [`async_hooks`]. Los eventos [`async_hooks`] tienen un único `asyncId`y una propiedad `triggerAsyncId` `triggerId` especial.
 * `node.bootstrap` - Permite la captura de los hitos bootstrap de Node.js.
 * `node.perf` Permite la captura de las mediciones de [Desempeño del API](perf_hooks.html). 
-  * `node.perf.usertiming` - Enables capture of only Performance API User Timing measures and marks.
+  * `node.perf.usertiming` - Permite la captura de solamente mediciones y marcas del rendimiento del API cronometrado por el usuario.
   * `node.perf.timerify` - Enables capture of only Performance API timerify measurements.
 * `node.fs.sync` - Enables capture of trace data for file system sync methods.
 * `v8` - The [V8](v8.html) events are GC, compiling, and execution related.
