@@ -12,7 +12,7 @@ const repl = require('repl');
 
 ## Diseño y Características
 
-El módulo `repl` exporta la clase `repl.REPLServer`. Mientras se ejecuta, las instancias de `repl.REPLServer` aceptarán líneas de entrada de usuario individuales, y las evaluará de acuerdo a una función de evaluación definida por el usuario. Input and output may be from `stdin` and `stdout`, respectively, or may be connected to any Node.js [stream](stream.html).
+El módulo `repl` exporta la clase `repl.REPLServer`. Mientras se ejecuta, las instancias de `repl.REPLServer` aceptarán líneas de entrada de usuario individuales, y las evaluará de acuerdo a una función de evaluación definida por el usuario. Las entradas y las salidas pueden ser de `stdin` y `stdout`, respectivamente, o pueden estar conectadas a cualquier [stream](stream.html) Node.js.
 
 Instances of `repl.REPLServer` support automatic completion of inputs, simplistic Emacs-style line editing, multi-line inputs, ANSI-styled output, saving and restoring current REPL session state, error recovery, and customizable evaluation functions.
 
