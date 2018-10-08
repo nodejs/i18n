@@ -890,7 +890,7 @@ added: v10.0.0
 
 Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否被拒绝。
 
-如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带这个被抛出的错误。 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 In both cases the error handler is skipped.
+如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带这个被抛出的错误。 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 无论哪种情况，都跳过错误处理程序。
 
 Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
 
