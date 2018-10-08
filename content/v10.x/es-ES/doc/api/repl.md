@@ -164,9 +164,9 @@ Error: foo
 'foo'
 ```
 
-#### `await` keyword
+#### Palabra clave `await`
 
-With the [`--experimental-repl-await`][] command line option specified, experimental support for the `await` keyword is enabled.
+Con la opción de comando de línea [`--experimental-repl-await`][] específicada, soporte experimental para la palabra clave `await` es habilitado.
 
 <!-- eslint-skip -->
 
@@ -183,7 +183,7 @@ undefined
 undefined
 ```
 
-### Custom Evaluation Functions
+### Funciones de evaluación personalizadas
 
 When a new `repl.REPLServer` is created, a custom evaluation function may be provided. This can be used, for instance, to implement fully customized REPL applications.
 
