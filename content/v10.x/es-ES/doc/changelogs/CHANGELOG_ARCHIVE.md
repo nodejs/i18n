@@ -1843,22 +1843,22 @@ https://github.com/nodejs/node/commit/48a2d34cfe6b7e1c9d15202a4ef5e3c82d1fba35
 * windows: evitar cortocircuito de IOCP ante lsps no-ifs (Igor Zinkovsky)
 * Actualizar npm a 1.1.4 (isaacs) 
   * correcciones de windows
-  * Bundle nested bundleDependencies properly
-  * install: support --save with url install targets
-  * shrinkwrap: behave properly with url-installed modules
-  * support installing uncompressed tars or single file modules from urls etc.
-  * don't run make clean on rebuild
-  * support HTTPS-over-HTTP proxy tunneling
+  * Empaquetar correctamente bundleDependencies anidadas
+  * install: soportar --save con objetivos de instalación url
+  * shrinkwrap: comportarse correctamente con módulos instalados en url
+  * soportar la instalación de tars descomprimidos o módulos de archivo sencillos desde urls etc.
+  * no ejecutar "make clean" en el rebuild
+  * soportar canalización de proxy HTTPS-over-HTTP
 
 <a id="0.6.11"></a>
 
-## 2012.02.17 Version 0.6.11 (stable)
+## 2012.02.17 Versión 0.6.11 (estable)
 
 https://github.com/nodejs/node/commit/1eb1fe32250fc88cb5b0a97cddf3e02be02e3f4a
 
-* http: allow multiple WebSocket RFC6455 headers (Einar Otto Stangvik)
-* http: allow multiple WWW-Authenticate headers (Ben Noordhuis)
-* windows: support unicode argv and environment variables (Bert Belder)
+* http: permitir múltiples cabeceras WebSocket RFC6455 (Einar Otto Stangvik)
+* http: permitir múltiples cabeceras WWW-Authenticate (Ben Noordhuis)
+* windows: soportar argv y variables de ambiente unicode (Bert Belder)
 * tls: mitigate session renegotiation attacks (Ben Noordhuis)
 * tcp, pipe: don't assert on uv_accept() errors (Ben Noordhuis)
 * tls: Allow establishing secure connection on the existing socket (koichik)
