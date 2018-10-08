@@ -1925,10 +1925,10 @@ https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 * cluster: no matar siempre al master ante uncaughtException (Ben Noordhuis)
 * Actualizar npm a 1.1.0-2 (isaacs)
 * typed arrays: establecer nombre de clase (Ben Noordhuis)
-* zlib binding cleanup (isaacs, Bert Belder)
-* dgram: use slab memory allocator (Michael Bernstein)
-* fix segfault [#2473](https://github.com/joyent/node/issues/2473)
-* [#2521](https://github.com/joyent/node/issues/2521) 60% improvement in fs.stat on Windows (Igor Zinkovsky)
+* limpieza de la vinculación de zlib (isaacs, Bert Belder)
+* dgram: utilizar asignador de memoria slab (Michael Bernstein)
+* reparar segfault [#2473](https://github.com/joyent/node/issues/2473)
+* [#2521](https://github.com/joyent/node/issues/2521) mejora del 60% de fs.stat en Windows (Igor Zinkovsky)
 
 <a id="0.6.7"></a>
 
