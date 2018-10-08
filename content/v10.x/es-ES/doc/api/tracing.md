@@ -16,8 +16,8 @@ Las categorías disponibles son:
 * `node.perf` Permite la captura de las mediciones de [Desempeño del API](perf_hooks.html). 
   * `node.perf.usertiming` - Permite la captura de solamente mediciones y marcas del rendimiento del API cronometrado por el usuario.
   * `node.perf.timerify` - Permite la captura de solamente mediciones API de la función timerify.
-* `node.fs.sync` - Enables capture of trace data for file system sync methods.
-* `v8` - The [V8](v8.html) events are GC, compiling, and execution related.
+* `node.fs.sync` - Permite la captura de datos de seguimientos para métodos de sincronización de archivos del sistema.
+* `v8` - The [V8](v8.html) son eventos recolectores de basura, compilan, y están relacionados con la ejecución.
 
 By default the `node`, `node.async_hooks`, and `v8` categories are enabled.
 
