@@ -49,15 +49,15 @@ tracing.disable();  // Disable trace event capture for the 'node.perf' category
 
 Ejecutar Node.js con seguimiento habilitado producirá archivos de registro que pueden ser abiertos en la ventana de Chrome [`chrome://tracing`](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool).
 
-The logging file is by default called `node_trace.${rotation}.log`, where `${rotation}` is an incrementing log-rotation id. The filepath pattern can be specified with `--trace-event-file-pattern` that accepts a template string that supports `${rotation}` and `${pid}`. For example:
+El archivo de registro es llamado por defecto `node_trace.${rotation}.log`, donde `${rotation}` es una id ascendiente de la rotación de registros. El patrón de ruta de archivos puede ser específicado con `--trace-event-file-pattern` que acepte una plantilla de string que soporte `${rotation}` y `${pid}`. Por ejemplo:
 
 ```txt
 node --trace-event-categories v8 --trace-event-file-pattern '${pid}-${rotation}.log' server.js
 ```
 
-Starting with Node.js 10.0.0, the tracing system uses the same time source as the one used by `process.hrtime()` however the trace-event timestamps are expressed in microseconds, unlike `process.hrtime()` which returns nanoseconds.
+Empezando con Node.Js 10.0.0, el sistema de seguimiento utiliza las mismas fuentes de tiempo como las usadas por `process.hrtime()` sin embargo las marcas de tiempo son expresadas en microsegundos, a diferencia de `process.hrtime()` que devuelve nanosegundos.
 
-## The `trace_events` module
+## El módulo `trace_events`
 
 <!-- YAML
 added: v10.0.0
