@@ -130,9 +130,9 @@ apply.whitespace fix`
     * Considere marcarlo: https://ci.nodejs.org/job/node-test-pull-request/
   * Para obtener el formulario para iniciar un trabajo, haga clic en `Crear con Parámetros`. (Si no lo ve, probablemente signifique que no ha iniciado sesión) ¡Haga clic ahora!
   * Para iniciar la prueba de CI desde esta pantalla, necesita rellenar dos elementos en el formulario: 
-    * La caja `CERTIFY_SAFE` debe ser verificada. Al comprobarlo, está indicando que ha revisado el código que está a punto de probar y está seguro que no contiene ningún código malicioso. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
-    * The `PR_ID` box should be filled in with the number identifying the pull request containing the code you wish to test. For example, if the URL for the pull request is `https://github.com/nodejs/node/issues/7006`, then put `7006` in the `PR_ID`.
-    * The remaining elements on the form are typically unchanged with the exception of `POST_STATUS_TO_PR`. Check that if you want a CI status indicator to be automatically inserted into the PR.
+    * La caja `CERTIFY_SAFE` debe ser verificada. Al comprobarlo, está indicando que ha revisado el código que está a punto de probar y está seguro que no contiene ningún código malicioso. (¡No queremos que las personas secuestren nuestros hosts de CI para atacar otros hosts en internet, por ejemplo!)
+    * La caja `PR_ID` debe completarse con el número que identifica al pull request que contiene el código que desea probar. Por ejemplo, si el URL para el pull request es `https://github.com/nodejs/node/issues/7006`, entonces coloque `7006` en el `PR_ID`.
+    * Los elementos restantes en el formulario generalmente no cambian con la excepción de `POST_STATUS_TO_PR`. Verifique si quiere que un indicador de estatus de CI sea insertado automáticamente dentro del PR.
   * If you need help with something CI-related: 
     * Use #node-dev (IRC) to talk to other Collaborators.
     * Use #node-build (IRC) to talk to the Build WG members who maintain the CI infrastructure.
