@@ -82,9 +82,9 @@ apply.whitespace fix`
   * Para muchos de los equipos enlistados, puede solicitar ser añadido si está interesado 
     * Algunos son WGs con algún proceso para agregar personas, otros solo están allí para notificaciones
 
-* When a discussion gets heated, you can request that other Collaborators keep an eye on it by opening an issue at the private [nodejs/moderation](https://github.com/nodejs/moderation) repository.
+* Cuando una discusión se calienta, puede requerir que otros Colaboradores la vigilen abriendo un issue en el repositorio privado [nodejs/moderation](https://github.com/nodejs/moderation).
   
-  * This is a repository to which all members of the `nodejs` GitHub organization (not just Collaborators on Node.js core) have access. Its contents should not be shared externally.
+  * Este es un repositorio al que todos los miembros de la organización GitHub de `nodejs` (no solo los Colaboradores del núcleo Node.js) tienen acceso. Its contents should not be shared externally.
   * You can find the full moderation policy [here](https://github.com/nodejs/TSC/blob/master/Moderation-Policy.md).
 
 ## Revisión de PRs
