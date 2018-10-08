@@ -241,11 +241,11 @@ added: v1.0.0
 - `options` {Object}
 - Restituisce: {Cipher} per il method chaining.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+Quando si utilizza una modalità di crittografia autenticata (attualmente sono supportate solo la `GCM` e la `CCM`), il metodo `cipher.setAAD()` imposta il valore utilizzato per il parametro input *additional authenticated data* (AAD).
 
-The `options` argument is optional for `GCM`. When using `CCM`, the `plaintextLength` option must be specified and its value must match the length of the plaintext in bytes. See [CCM mode](#crypto_ccm_mode).
+L'argomento `options` è facoltativo per la `GCM`. Quando si utilizza la `CCM`, deve essere specificata l'opzione `plaintextLength` e il suo valore deve corrispondere alla lunghezza del testo normale in byte. Vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `cipher.setAAD()` method must be called before [`cipher.update()`][].
+Il metodo `cipher.setAAD()` deve essere chiamato prima di [`cipher.update()`][].
 
 ### cipher.getAuthTag()
 
@@ -253,9 +253,9 @@ The `cipher.setAAD()` method must be called before [`cipher.update()`][].
 added: v1.0.0
 -->
 
-- Returns: {Buffer} When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the *authentication tag* that has been computed from the given data.
+- Restituisce: {Buffer} Quando si utilizza una modalità di crittografia autenticata (attualmente sono supportate solo la `GCM` e la `CCM`), il metodo `cipher.getAuthTag()` restituisce un [`Buffer`][] contenente l'*authentication tag* che è stato calcolato dai dati forniti.
 
-The `cipher.getAuthTag()` method should only be called after encryption has been completed using the [`cipher.final()`][] method.
+Il metodo `cipher.getAuthTag()` deve essere chiamato solo dopo aver completato la crittografia utilizzando il metodo [`cipher.final()`][].
 
 ### cipher.setAutoPadding([autoPadding])
 
