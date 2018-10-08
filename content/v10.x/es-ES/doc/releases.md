@@ -144,7 +144,7 @@ doc/api/*.md`, y substituye esta versión del nodo con `sed -i
 "s/REPLACEME/$VERSION/g" doc/api/*.md` or `perl -pi -e "s/REPLACEME/$VERSION/g"
 doc/api/*.md`.
 
-*Nota*: `$VERSION` se le debería ser prefijada con `v`.
+*Nota*: `$VERSION` se debería ser prefijada con `v`.
 
 Si este lanzamiento incluye cualquier nueva desaprobación es necesario asegurarse que esas fueron asignadas un código estático de desaprobación apropiado. Estos están listados en el documento (vea`doc/api/deprecations.md`) y en la fuente como `DEP00XX`. Al código se le debe asignar un número (p. ej. `DEP0012`). Tenga en cuenta que esta asignación debería ocurrir cuando el PR es aterrizado, pero una verificación será realizada cuando la compilación lanzada es ejecutada.
 
@@ -157,7 +157,7 @@ AAAA-MM-DD, Versión x.y.z (Tipo de Lanzamiento)
 
 Cambios notables:
 
-* Copia los cambios notables aquí, reformatadeado para texto simple
+* Copia los cambios notables aquí, reformateado para texto simple
 ```
 
 ### 5. Proponer un Lanzamiento en GitHub
