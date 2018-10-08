@@ -108,7 +108,7 @@ Object.defineProperty(r.context, 'm', {
 
 #### Accesando a los módulos principales de Node.Js
 
-El evaluador predeterminado cargará automáticamente los módulos principales de Node.JS al ambiante REPL cuando sea usado. For instance, unless otherwise declared as a global or scoped variable, the input `fs` will be evaluated on-demand as `global.fs = require('fs')`.
+El evaluador predeterminado cargará automáticamente los módulos principales de Node.JS al ambiante REPL cuando sea usado. Por ejemplo, a menos que sea declarado como variable global o examinada, la entrada `fs` será evaluada cuando sea comandada como `global.fs = require('fs')`.
 
 <!-- eslint-skip -->
 
@@ -116,16 +116,16 @@ El evaluador predeterminado cargará automáticamente los módulos principales d
 > fs.createReadStream('./some/file');
 ```
 
-#### Global Uncaught Exceptions
+#### Excepciones globales no capturadas
 
-The REPL uses the [`domain`][] module to catch all uncaught exceptions for that REPL session.
+El REPL utiliza el módulo [`domain`][] para capturar todas las excepciones sin capturar para esa sesión REPL.
 
-This use of the [`domain`][] module in the REPL has these side effects:
+Este uso del módulo [`domain`][] en el REPL tiene estos efectos secudarios:
 
-* Uncaught exceptions do not emit the [`'uncaughtException'`][] event.
-* Trying to use [`process.setUncaughtExceptionCaptureCallback()`][] throws an [`ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE`][] error.
+* Las excepciones sin capturar no emiten el evento [`'uncaughtException'`][].
+* Trata de utilizar [`process.setUncaughtExceptionCaptureCallback()`][] produce un error [`ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE`][].
 
-#### Assignment of the `_` (underscore) variable
+#### La asignación de la variable `_` (barra baja)
 
 <!-- YAML
 changes:
@@ -135,7 +135,7 @@ changes:
     description: Added `_error` support.
 -->
 
-The default evaluator will, by default, assign the result of the most recently evaluated expression to the special variable `_` (underscore). Explicitly setting `_` to a value will disable this behavior.
+El evaluador predeterminado será, por decto, asignado al resultado de la expresión evaluada por la variable especial `_` (barra baja). Explicitamente configurar `_` a algún valor deshabilitará este comportamiento.
 
 <!-- eslint-skip -->
 
@@ -153,7 +153,7 @@ Expression assignment to _ now disabled.
 4
 ```
 
-Similarly, `_error` will refer to the last seen error, if there was any. Explicitly setting `_error` to a value will disable this behavior.
+Similarmente, `_error` referirá al último error visto, si hay alguno. Establecer explícitamente `_error` a algún valor deshabilitará este comportamiento.
 
 <!-- eslint-skip -->
 
