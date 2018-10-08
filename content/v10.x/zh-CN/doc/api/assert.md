@@ -549,7 +549,7 @@ changes:
 
 > 稳定性：0 - 已弃用：改为使用 `assert.fail([message])` 或其它断言函数。
 
-如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 如果只提供了 `actual` 和 `expected` 两个参数，`operator` 将被默认为是 `'!='`。 If `message` is provided as third argument it will be used as the error message and the other arguments will be stored as properties on the thrown object. If `stackStartFunction` is provided, all stack frames above that function will be removed from stacktrace (see [`Error.captureStackTrace`]). If no arguments are given, the default message `Failed` will be used.
+如果 `message` 是虚值，错误消息被设置为由提供的 `operator` 分隔的 `actual` 和 `expected` 的值。 如果只提供了 `actual` 和 `expected` 两个参数，`operator` 将被默认为是 `'!='`。 如果 `message` 被当做第三个参数提供，它将被作为错误消息，其它参数将作为各种属性存储在被抛出的对象上。 如果提供了 `stackStartFunction`， 所有在这个函数之上的栈帧将被从追溯栈中移除。（请参见 [`Error.captureStackTrace`] ） 如果没有提供任何参数，将使用默认消息 `Failed`。
 
 ```js
 const assert = require('assert').strict;
@@ -570,9 +570,9 @@ assert.fail(1, 2, new TypeError('need array'));
 // TypeError: need array
 ```
 
-In the last three cases `actual`, `expected`, and `operator` have no influence on the error message.
+在后三种情形中，`actual`， `expected` 和 `operator` 对错误信息没有影响。
 
-Example use of `stackStartFunction` for truncating the exception's stacktrace:
+使用 `stackStartFunction` 截断异常的追溯栈的示例：
 
 ```js
 function suppressFrame() {
