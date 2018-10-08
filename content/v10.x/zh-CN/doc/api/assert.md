@@ -983,9 +983,9 @@ changes:
 
 如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
+如果指定的话，假如block抛出失败，`message` 会是由 `AssertionError` 提供的消息。
 
-Custom error object / error instance:
+自定义error对象或error实例：
 
 ```js
 const err = new TypeError('Wrong value');
@@ -1013,7 +1013,7 @@ assert.throws(
 );
 ```
 
-Validate instanceof using constructor:
+使用构造函数验证实例：
 
 ```js
 assert.throws(
@@ -1024,9 +1024,9 @@ assert.throws(
 );
 ```
 
-Validate error message using [`RegExp`][]:
+使用 [`RegExp`][] 验证错误消息：
 
-Using a regular expression runs `.toString` on the error object, and will therefore also include the error name.
+使用正则表达式在error对象上运行 `.toString`，因此也将包含error名称。
 
 ```js
 assert.throws(
@@ -1037,7 +1037,7 @@ assert.throws(
 );
 ```
 
-Custom error validation:
+自定义错误名称：
 
 ```js
 assert.throws(
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-注意， `error` 不能是一个string。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. 这会导致不容易被发现的错误。 Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+注意， `error` 不能是一个string。 如果提供一个string作为第二个参数，那么会认为 `error` 被省略了，并且这个string会代替 `message`。 这会导致不容易被发现的错误。 Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. 如果考虑使用string作为第二个参数，请仔细阅读下面的示例。
 
 <!-- eslint-disable no-restricted-syntax -->
 
