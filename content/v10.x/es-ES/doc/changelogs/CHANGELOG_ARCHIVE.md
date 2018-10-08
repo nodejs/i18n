@@ -1771,24 +1771,24 @@ https://github.com/nodejs/node/commit/f160a45b254e591eb33716311c92be533c6d86c4
 * Actualizar npm a 1.1.16
 * Mostrar licencias en instaladores binarios.
 * unix: añadir uv_fs_read64, uv_fs_write64 y uv_fs_ftruncate64 (Ben Noordhuis)
-* add 64bit offset fs functions (Igor Zinkovsky)
-* windows: don't report ENOTSOCK when attempting to bind an udp handle twice (Bert Belder)
-* windows: backport pipe-connect-to-file fixes from master (Bert Belder)
-* windows: never call fs event callbacks after closing the watcher (Bert Belder)
-* fs.readFile: don't make the callback before the fd is closed (Bert Belder)
-* windows: use 64bit offsets for uv_fs apis (Igor Zinkovsky)
-* Fix [#2061](https://github.com/joyent/node/issues/2061): segmentation fault on OS X due to stat size mismatch (Ben Noordhuis)
+* añadir funciones del fs de offset de 64bit (Igor Zinkovsky)
+* windows: no reportar ENOTSOCK al intentar enlazar un handle udp dos veces (Bert Belder)
+* windows: hacer backport a correcciones de pipe-connect-to-file desde el master (Bert Belder)
+* windows: nunca llamar a callbacks de evento del fs luego de cerrar el monitor (Bert Belder)
+* fs.readFile: no hacer la callback antes de que el fd esté cerrado (Bert Belder)
+* windows: usar offsets de 64bit para las apis de uv_fs (Igor Zinkovsky)
+* Fix [#2061](https://github.com/joyent/node/issues/2061): falla de segmentación en OS X debida a incongruencia en el tamaño de stat (Ben Noordhuis)
 
 <a id="0.6.14"></a>
 
-## 2012.03.22 Version 0.6.14 (stable)
+## 2012.03.22 Versión 0.6.14 (estable)
 
 https://github.com/nodejs/node/commit/e513ffef7549a56a5af728e1f0c2c0c8f290518a
 
-* net: don't crash when queued write fails (Igor Zinkovsky)
-* sunos: fix EMFILE on process.memoryUsage() (Bryan Cantrill)
-* crypto: fix compile-time error with openssl 0.9.7e (Ben Noordhuis)
-* unix: ignore ECONNABORTED errors from accept() (Ben Noordhuis)
+* net: no colapsar cuando la escritura en cola falla (Igor Zinkovsky)
+* sunos: reparar EMFILE en process.memoryUsage() (Bryan Cantrill)
+* crypto: reparar error de compile-time con openssl 0.9.7e (Ben Noordhuis)
+* unix: ignorar errores de ECONNABORTED provenientes de accept() (Ben Noordhuis)
 * Add UV_ENOSPC and mappings to it (Bert Belder)
 * http-parser: Fix response body is not read (koichik)
 * Upgrade npm to 1.1.12 
