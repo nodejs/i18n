@@ -115,13 +115,13 @@ La nueva entrada debe tomar la siguiente forma:
 
 ```md
 <a id="x.y.x"></a>
-## YYYY-MM-DD, Version x.y.z (Release Type), @releaser
+## AAAA-MM-DD, Version x.y.z (Tipo de Lanzamiento), @releaser
 
-### Notable changes
+### Cambios notables
 
-* List interesting changes here
-* Particularly changes that are responsible for minor or major version bumps
-* Also be sure to look at any changes introduced by dependencies such as npm
+* Lista los cambios interesantes aquí
+* Cambios particulares que son responsables por saltos de versión menores o mayores
+* También asegúrate de buscar cualquier cambio introducido por las dependencias, tales como npm
 * ... e incluir cualquier elemento notable de ahí
 
 ### Commits
