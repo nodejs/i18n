@@ -375,7 +375,7 @@ added: v0.1.104
 
 * `label` {string} **Default:** `'default'`
 
-Avvia un timer che può essere utilizzato per calcolare la durata di un'operazione. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
+Avvia un timer che può essere utilizzato per calcolare la durata di un'operazione. I timer sono identificati da una `label` specifica. Utilizza la stessa `label` quando si chiama [`console.timeEnd()`][] per arrestare il timer ed emettere il tempo trascorso in millisecondi a `stdout`. Le misure del timer sono precise al millisecondo.
 
 ### console.timeEnd(label)
 
@@ -391,7 +391,7 @@ changes:
 
 * `label` {string} **Default:** `'default'`
 
-Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
+Arresta un timer precedentemente avviato chiamando [`console.time()`][] e stampa il risultato su `stdout`:
 
 ```js
 console.time('100-elements');
@@ -409,11 +409,11 @@ added: v0.1.104
 * `message` {any}
 * `...args` {any}
 
-Prints to `stderr` the string `'Trace: '`, followed by the [`util.format()`][] formatted message and stack trace to the current position in the code.
+Stampa la stringa `'Trace: '` su `stderr`, seguita dal messaggio formattato [`util.format()`][] e dallo stack trace sull'attuale posizione nel codice.
 
 ```js
 console.trace('Show me');
-// Prints: (stack trace will vary based on where trace is called)
+// Stampa: (lo stack trace varierà in base a dove viene chiamata la trace)
 //  Trace: Show me
 //    at repl:2:9
 //    at REPLServer.defaultEval (repl.js:248:27)
@@ -440,7 +440,7 @@ La funzione `console.warn()` è un alias di [`console.error()`][].
 
 ## Metodi solo per l'Inspector
 
-The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
+I seguenti metodi sono esposti dal V8 engine nell'API generale ma, se non vengono utilizzati insieme all'[inspector](debugger.html) (`--inspect` flag), non mostrano nulla.
 
 ### console.markTimeline(label)
 
@@ -450,7 +450,7 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-This method does not display anything unless used in the inspector. The `console.markTimeline()` method is the deprecated form of [`console.timeStamp()`][].
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.markTimeline()` method is the deprecated form of [`console.timeStamp()`][].
 
 ### console.profile([label])
 
@@ -460,7 +460,7 @@ added: v8.0.0
 
 * `label` {string}
 
-This method does not display anything unless used in the inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
 
 ```js
 console.profile('MyLabel');
@@ -475,7 +475,7 @@ console.profileEnd();
 added: v8.0.0
 -->
 
-This method does not display anything unless used in the inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
 
 ### console.timeStamp([label])
 
@@ -485,7 +485,7 @@ added: v8.0.0
 
 * `label` {string}
 
-This method does not display anything unless used in the inspector. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
 
 ### console.timeline([label])
 
@@ -495,7 +495,7 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-This method does not display anything unless used in the inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
 
 ### console.timelineEnd([label])
 
@@ -505,4 +505,4 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-This method does not display anything unless used in the inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
