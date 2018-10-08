@@ -126,7 +126,7 @@ La nueva entrada debe tomar la siguiente forma:
 
 ### Commits
 
-* Include the full list of commits since the last release here. Do not include "Working on X.Y.Z+1" commits.
+* Include the full list of commits since the last release here. No incluir commits "Working on X.Y.Z+1".
 ```
 
 El tipo de lanzamiento debe ser actual, LTS, o de mantenimiento, dependiendo del tipo de lanzamiento que se está produciendo.
@@ -309,12 +309,12 @@ El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva vers
 
 > v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
 
-Para asegurar que la comunicación está sincronizada con la entrada del blog, por favor permite una notificación previa de 24 horas. If known, please include the date and time the release will be shared with the community in the email to coordinate these announcements.
+Para asegurar que la comunicación está sincronizada con la entrada del blog, por favor permite una notificación previa de 24 horas. Si se conoce, por favor incluye la fecha y el tiempo en el que el lanzamiento será compartido con la comunidad en el correo electrónico para coordinar estos anuncios.
 
-### 16. Cleanup
+### 16. Limpieza
 
-Close your release proposal PR and remove the proposal branch.
+Cierra tu propuesta PR y remueve el branch propuesto.
 
-### 17. Celebrate
+### 17. Celebra
 
-*In whatever form you do this...*
+*De cualquier forma que hagas esto...*
