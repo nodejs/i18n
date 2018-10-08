@@ -1814,12 +1814,12 @@ https://github.com/nodejs/node/commit/9f7f86b534f8556290eb8cad915984ff4ca54996
   * actualizar node-gyp a 0.3.5 (Nathan Rajlich)
   * Reparar isaacs/npm[#2249](https://github.com/joyent/node/issues/2249) Añadir configs de cache-max y cache-min
   * Redirigir correctamente a través de peticiones de registro de https/http
-  * log config usage if undefined key in set function (Kris Windham)
-  * Add support for os/cpu fields in package.json (Adam Blackburn)
-  * Automatically node-gyp packages containing a binding.gyp
-  * Fix failures unpacking in UNC shares
-  * Never create un-listable directories
-  * Handle cases where an optionalDependency fails to build
+  * registrar uso de config si se aplica una clave indefinida en función set (Kris Windham)
+  * Añadir soporte para campos os/cpu en package.json (Adam Blackburn)
+  * Aplicar automáticamente node-gyp a paquetes que contengan un binding.gyp
+  * Corregir fallas en el desempaque en recursos compartidos de UNC
+  * Nunca crear directorios no listables
+  * Manejar casos en los que una optionalDependency falla al compilar
 
 <a id="0.6.12"></a>
 
@@ -1827,12 +1827,12 @@ https://github.com/nodejs/node/commit/9f7f86b534f8556290eb8cad915984ff4ca54996
 
 https://github.com/nodejs/node/commit/48a2d34cfe6b7e1c9d15202a4ef5e3c82d1fba35
 
-* Upgrade V8 to 3.6.6.24
-* dtrace ustack helper improvements (Dave Pacheco)
-* API Documentation refactor (isaacs)
-* [#2827](https://github.com/joyent/node/issues/2827) net: fix race write() before and after connect() (koichik)
-* [#2554](https://github.com/joyent/node/issues/2554) [#2567](https://github.com/joyent/node/issues/2567) throw if fs args for 'start' or 'end' are strings (AJ ONeal)
-* punycode: Update to v1.0.0 (Mathias Bynens)
+* Actualizar V8 a 3.6.6.24
+* mejoras del ayudante de ustack de dtrace (Dave Pacheco)
+* Refactorización de la documentación de la API (isaacs)
+* [#2827](https://github.com/joyent/node/issues/2827) net: corregir condición de carrera de write() antes y después de connect() (koichik)
+* [#2554](https://github.com/joyent/node/issues/2554) [#2567](https://github.com/joyent/node/issues/2567) arrojar si argumentos del fs para "start" o "end" son strings (AJ ONeal)
+* punycode: Actualizar a v1.0.0 (Mathias Bynens)
 * Make a fat binary for the OS X pkg (isaacs)
 * Fix hang on accessing process.stdin (isaacs)
 * repl: make tab completion work on non-objects (Nathan Rajlich)
