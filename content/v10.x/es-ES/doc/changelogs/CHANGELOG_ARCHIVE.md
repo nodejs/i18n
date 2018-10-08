@@ -1833,16 +1833,16 @@ https://github.com/nodejs/node/commit/48a2d34cfe6b7e1c9d15202a4ef5e3c82d1fba35
 * [#2827](https://github.com/joyent/node/issues/2827) net: corregir condición de carrera de write() antes y después de connect() (koichik)
 * [#2554](https://github.com/joyent/node/issues/2554) [#2567](https://github.com/joyent/node/issues/2567) arrojar si argumentos del fs para "start" o "end" son strings (AJ ONeal)
 * punycode: Actualizar a v1.0.0 (Mathias Bynens)
-* Make a fat binary for the OS X pkg (isaacs)
-* Fix hang on accessing process.stdin (isaacs)
-* repl: make tab completion work on non-objects (Nathan Rajlich)
-* Fix fs.watch on OS X (Ben Noordhuis)
-* Fix [#2515](https://github.com/joyent/node/issues/2515) nested setTimeouts cause premature process exit (Ben Noordhuis)
-* windows: fix time conversion in stat (Igor Zinkovsky)
-* windows: fs: handle EOF in read (Brandon Philips)
-* windows: avoid IOCP short-circuit on non-ifs lsps (Igor Zinkovsky)
-* Upgrade npm to 1.1.4 (isaacs) 
-  * windows fixes
+* Crear un binario multiarquitectura para el pkg de OS X (isaacs)
+* Reparar congelamiento ante process.stdin (isaacs)
+* repl: hacer que la terminación de tab funcione en no-objetos (Nathan Rajlich)
+* Reparar fs.watch en OS X (Ben Noordhuis)
+* Reparar [#2515](https://github.com/joyent/node/issues/2515) setTimeouts anidados ocasionan salida prematura del proceso (Ben Noordhuis)
+* windows: corregir conversión de tiempo en stat (Igor Zinkovsky)
+* windows: fs: manejar EOF en la lectura (Brandon Philips)
+* windows: evitar cortocircuito de IOCP ante lsps no-ifs (Igor Zinkovsky)
+* Actualizar npm a 1.1.4 (isaacs) 
+  * correcciones de windows
   * Bundle nested bundleDependencies properly
   * install: support --save with url install targets
   * shrinkwrap: behave properly with url-installed modules
