@@ -14,19 +14,19 @@ const repl = require('repl');
 
 El módulo `repl` exporta la clase `repl.REPLServer`. Mientras se ejecuta, las instancias de `repl.REPLServer` aceptarán líneas de entrada de usuario individuales, y las evaluará de acuerdo a una función de evaluación definida por el usuario. Las entradas y las salidas pueden ser de `stdin` y `stdout`, respectivamente, o pueden estar conectadas a cualquier [stream](stream.html) Node.js.
 
-Instances of `repl.REPLServer` support automatic completion of inputs, simplistic Emacs-style line editing, multi-line inputs, ANSI-styled output, saving and restoring current REPL session state, error recovery, and customizable evaluation functions.
+Las instancias de `repl.REPLServer` soportan la completación automática de las entradas, edición de línea simplista estilo Emac, entradas multi líneas, salidas estilo ANSI, guardar y restaurar el estado de la sesión actual RPL, recuperación de errores, y funciones de evaluación personalizables.
 
-### Commands and Special Keys
+### Comandos y Teclas Especiales
 
-The following special commands are supported by all REPL instances:
+Los siguientes comandos especiales son soportados por todas las instancias REPL:
 
-* `.break` - When in the process of inputting a multi-line expression, entering the `.break` command (or pressing the `<ctrl>-C` key combination) will abort further input or processing of that expression.
-* `.clear` - Resets the REPL `context` to an empty object and clears any multi-line expression currently being input.
-* `.exit` - Close the I/O stream, causing the REPL to exit.
-* `.help` - Show this list of special commands.
-* `.save` - Save the current REPL session to a file: `> .save ./file/to/save.js`
-* `.load` - Load a file into the current REPL session. `> .load ./file/to/load.js`
-* `.editor` - Enter editor mode (`<ctrl>-D` to finish, `<ctrl>-C` to cancel).
+* `.break` - Cuando en un proceso de entrada de una expresión de múltiples líneas, introducir el comando `.break` (o presionar la combinación de teclas `<ctrl>C`) anulará la entrada adicional o el procesamiento de esa expresión.
+* `.clear` - Resetee el `context` REPL a un objeto vacío y limpia cualquier expresión de múltiples líneas actualmente siendo introducida.
+* `.exit` - Cierra el stream E/S, causando que RPL se cierre.
+* `.help` - Muestra la lista de comandos especiales.
+* `.save` - Guarda la sesión actual de REPL a un archivo: `> .save ./file/to/save.js`
+* `.load` - Carga un archivo a la actual sesión REPL. `> .load ./file/to/load.js`
+* `.editor` - entra en el modo editor (`<ctrl>-D` para finalizar, `<ctrl>-C` para cancelar).
 
 <!-- eslint-skip -->
 
@@ -44,7 +44,7 @@ welcome('Node.js User');
 >
 ```
 
-The following key combinations in the REPL have these special effects:
+Las siguientes combinaciones de teclas en REPL tienen los siguientes efectos:
 
 * `<ctrl>-C` - When pressed once, has the same effect as the `.break` command. When pressed twice on a blank line, has the same effect as the `.exit` command.
 * `<ctrl>-D` - Has the same effect as the `.exit` command.
