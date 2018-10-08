@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-注意， `error` 不能是一个string。 如果提供一个string作为第二个参数，那么会认为 `error` 被省略了，并且这个string会代替 `message`。 这会导致不容易被发现的错误。 Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. 如果考虑使用string作为第二个参数，请仔细阅读下面的示例。
+注意， `error` 不能是一个string。 如果提供一个string作为第二个参数，那么会认为 `error` 被省略了，并且这个string会代替 `message`。 这会导致不容易被发现的错误。 如果使用被抛出的错误信息，会导致产生 `ERR_AMBIGUOUS_ARGUMENT` 错误。 如果考虑使用string作为第二个参数，请仔细阅读下面的示例。
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -1090,4 +1090,4 @@ assert.throws(throwingFirst, /Second$/);
 //     at throwingFirst (repl:2:9)
 ```
 
-Due to the confusing notation, it is recommended not to use a string as the second argument. This might lead to difficult-to-spot errors.
+由于令人困惑的表示方法，建议不要使用string作为第二个参数。 这可能会导致难以发现的错误。
