@@ -892,11 +892,11 @@ Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调�
 
 如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带这个被抛出的错误。 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 值的错误。 无论哪种情况，都跳过错误处理程序。
 
-Besides the async nature to await the completion behaves identically to [`assert.throws()`][].
+除了 await 的异步特性，完成行为与 [`assert.throws()`][] 完全相同。
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
 
-If specified, `message` will be the message provided by the `AssertionError` if the block fails to reject.
+如果指定的话，假如block拒绝失败，`message` 会是由 `AssertionError` 提供的消息。
 
 ```js
 (async () => {
@@ -921,7 +921,7 @@ assert.rejects(
 });
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
+注意， `error` 不能是一个string。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example in [`assert.throws()`][] carefully if using a string as the second argument gets considered.
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -981,7 +981,7 @@ changes:
 
 Expects the function `block` to throw an error.
 
-If specified, `error` can be a [`Class`][], [`RegExp`][], a validation function, an object where each property will be tested for, or an instance of error where each property will be tested for including the non-enumerable `message` and `name` properties.
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
 
 If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
 
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+注意， `error` 不能是一个string。 If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
 
 <!-- eslint-disable no-restricted-syntax -->
 
