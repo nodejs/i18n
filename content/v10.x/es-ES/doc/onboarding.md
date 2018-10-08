@@ -128,7 +128,7 @@ apply.whitespace fix`
   * Iniciar sesión en la CI está integrado con GitHub. ¡Intente iniciar sesión ahora!
   * Utilizará `node-test-pull-request` la mayor parte del tiempo. ¡Vaya allí ahora! 
     * Considere marcarlo: https://ci.nodejs.org/job/node-test-pull-request/
-  * Para obtener el formulario para iniciar un trabajo, haga clic en `Crear con Parámetros`. (If you don't see it, that probably means you are not logged in!) Click it now!
+  * Para obtener el formulario para iniciar un trabajo, haga clic en `Crear con Parámetros`. (Si no lo ve, probablemente signifique que no ha iniciado sesión) ¡Haga clic ahora!
   * To start CI testing from this screen, you need to fill in two elements on the form: 
     * The `CERTIFY_SAFE` box should be checked. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
     * The `PR_ID` box should be filled in with the number identifying the pull request containing the code you wish to test. For example, if the URL for the pull request is `https://github.com/nodejs/node/issues/7006`, then put `7006` in the `PR_ID`.
