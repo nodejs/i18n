@@ -603,7 +603,7 @@ changes:
 
 * `value` {any}
 
-如果 `value` 不是 `undefined` 或 `null`，则抛出 `value`。 当在回调函数中测试 `error` 参数时，这一点很有用。 The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself. See below for an example.
+如果 `value` 不是 `undefined` 或 `null`，则抛出 `value`。 当在回调函数中测试 `error` 参数时，这一点很有用。 追溯栈包含传递给 `ifError()` 的错误中的所有帧，`ifError()` 包含它自身潜在的新帧。 请参阅下面的示例。
 
 ```js
 const assert = require('assert').strict;
@@ -660,11 +660,11 @@ changes:
 
 **Strict 模式**
 
-An alias of [`assert.notDeepStrictEqual()`][].
+[`assert.notDeepStrictEqual()`][] 的别名。
 
 **Legacy 模式**
 
-> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`assert.notDeepStrictEqual()`][]。
 
 Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
