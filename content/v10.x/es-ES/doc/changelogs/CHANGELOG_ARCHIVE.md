@@ -1900,31 +1900,31 @@ https://github.com/nodejs/node/commit/051908e023f87894fa68f5b64d0b99a19a7db01e
 
 https://github.com/nodejs/node/commit/f19e20d33f57c4d2853aaea7d2724d44f3b0012f
 
-* dgram: Bring back missing functionality for Unix (Dan VerWeire, Roman Shtylman, Ben Noordhuis)
+* dgram: Traer de vuelta funcionalidad para Unix faltante (Dan VerWeire, Roman Shtylman, Ben Noordhuis)
   
-  * Note: Windows UDP support not yet complete.
+  * Nota: El soporte de UDP de Windows aún no está completo.
 
-* http: Fix parser memory leak (koichik)
+* http: Reparar fuga de memoria del analizador (koichik)
 
-* zlib: Fix [#2365](https://github.com/joyent/node/issues/2365) crashes on invalid input (Nicolas LaCasse)
-* module: fix --debug-brk on symlinked scripts (Fedor Indutny)
-* Documentation Restyling (Matthew Fitzsimmons)
-* Update npm to 1.1.0-3 (isaacs)
-* Windows: fix regression in stat() calls to C:\ (Bert Belder)
+* zlib: Reparar colapsos de [#2365](https://github.com/joyent/node/issues/2365) ante input inválido (Nicolas LaCasse)
+* module: reparar --debug-brk en scripts symlinked (Fedor Indutny)
+* Re-estilización de la Documentación (Matthew Fitzsimmons)
+* Actualizar npm a 1.1.0-3 (isaacs)
+* Windows: reparar regresión en llamadas de stat() a C:\ (Bert Belder)
 
 <a id="0.6.8"></a>
 
-## 2012.01.19, Version 0.6.8 (stable)
+## 2012.01.19, Versión 0.6.8 (estable)
 
 https://github.com/nodejs/node/commit/d18cebaf8a7ac701dabd71a3aa4eb0571db6a645
 
-* Update V8 to 3.6.6.19
-* Numeric key hash collision fix for V8 (Erik Corry, Fedor Indutny)
-* Add missing TTY key translations for F1-F5 on Windows (Brandon Benvie)
-* path.extname bugfix with . and .. paths (Bert Belder)
-* cluster: don't always kill the master on uncaughtException (Ben Noordhuis)
-* Update npm to 1.1.0-2 (isaacs)
-* typed arrays: set class name (Ben Noordhuis)
+* Actualizar V8 a 3.6.6.19
+* Reparación para V8 de colisión de hash de clave numérica (Erik Corry, Fedor Indutny)
+* Añadir traducciones de clave TTY faltante para F1-F5 en Windows (Brandon Benvie)
+* reparación de bug de path.extname con rutas . y .. (Bert Belder)
+* cluster: no matar siempre al master ante uncaughtException (Ben Noordhuis)
+* Actualizar npm a 1.1.0-2 (isaacs)
+* typed arrays: establecer nombre de clase (Ben Noordhuis)
 * zlib binding cleanup (isaacs, Bert Belder)
 * dgram: use slab memory allocator (Michael Bernstein)
 * fix segfault [#2473](https://github.com/joyent/node/issues/2473)
