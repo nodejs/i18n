@@ -169,12 +169,12 @@ added: v0.1.94
 
 Le istanze della classe `Cipher` vengono utilizzate per crittografare i dati. La classe può essere utilizzata in due modi:
 
-- As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
-- Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
+- Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing semplici dati non criptati per produrre i dati criptati sul lato readable, oppure
+- Utilizzando i metodi [`cipher.update()`][] e [`cipher.final()`][] per produrre i dati criptati.
 
-The [`crypto.createCipher()`][] or [`crypto.createCipheriv()`][] methods are used to create `Cipher` instances. `Cipher` objects are not to be created directly using the `new` keyword.
+I metodi [`crypto.createCipher()`][] o [`crypto.createCipheriv()`][] vengono usati per creare istanze `Cipher`. Gli `Cipher` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Cipher` objects as streams:
+Esempio: Utilizzando gli `Cipher` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -195,7 +195,7 @@ cipher.write('some clear text data');
 cipher.end();
 ```
 
-Example: Using `Cipher` and piped streams:
+Esempio: Utilizzando `Cipher` e i piped stream:
 
 ```js
 const crypto = require('crypto');
@@ -208,7 +208,7 @@ const output = fs.createWriteStream('test.enc');
 input.pipe(cipher).pipe(output);
 ```
 
-Example: Using the [`cipher.update()`][] and [`cipher.final()`][] methods:
+Esempio: Utilizzando i metodi [`cipher.update()`][] e [`cipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -227,7 +227,7 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Returns: {Buffer | string} Any remaining enciphered contents. If `outputEncoding` is one of `'latin1'`, `'base64'` or `'hex'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+- Restituisce: {Buffer | string} Qualsiasi contenuto cifrato restante. Se l'`outputEncoding` è `'latin1'`, `'base64'` o `'hex'`, viene restituita una stringa. Se non viene fornito nessun `outputEncoding`, viene restituito un [`Buffer`][].
 
 Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
 
