@@ -102,7 +102,7 @@ Come un'interfaccia legacy ancora supportata, è possibile (ma non consigliato) 
 
 #### new crypto.Certificate()
 
-Instances of the `Certificate` class can be created using the `new` keyword or by calling `crypto.Certificate()` as a function:
+Le istanze della classe `Certificate` possono essere create utilizzando la parola chiave `new` o chiamando `crypto.Certificate()` come funzione:
 
 ```js
 const crypto = require('crypto');
@@ -125,7 +125,7 @@ const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 const challenge = cert.exportChallenge(spkac);
 console.log(challenge.toString('utf8'));
-// Prints: the challenge as a UTF8 string
+// Stampa: la challenge come una stringa UTF8
 ```
 
 #### certificate.exportPublicKey(spkac)
@@ -142,7 +142,7 @@ const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 const publicKey = cert.exportPublicKey(spkac);
 console.log(publicKey);
-// Prints: the public key as <Buffer ...>
+// Stampa: la public key come un <Buffer ...>
 ```
 
 #### certificate.verifySpkac(spkac)
@@ -158,7 +158,7 @@ added: v0.11.8
 const cert = require('crypto').Certificate();
 const spkac = getSpkacSomehow();
 console.log(cert.verifySpkac(Buffer.from(spkac)));
-// Prints: true or false
+// Stampa: true oppure false
 ```
 
 ## Class: Cipher
@@ -167,7 +167,7 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 added: v0.1.94
 -->
 
-Instances of the `Cipher` class are used to encrypt data. The class can be used in one of two ways:
+Le istanze della classe `Cipher` vengono utilizzate per crittografare i dati. La classe può essere utilizzata in due modi:
 
 - As a [stream](stream.html) that is both readable and writable, where plain unencrypted data is written to produce encrypted data on the readable side, or
 - Using the [`cipher.update()`][] and [`cipher.final()`][] methods to produce the encrypted data.
@@ -286,7 +286,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Updates the cipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
@@ -435,7 +435,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
@@ -482,7 +482,7 @@ added: v0.5.0
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -495,7 +495,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -506,7 +506,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -517,7 +517,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -528,7 +528,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Returns the Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -539,7 +539,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Returns the Diffie-Hellman public key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -621,7 +621,7 @@ added: v10.0.0
 - `inputEncoding` {string}
 - `outputEncoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
 
@@ -669,7 +669,7 @@ changes:
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -685,7 +685,7 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
 
@@ -832,7 +832,7 @@ added: v0.1.92
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
@@ -918,7 +918,7 @@ added: v0.1.94
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
 
@@ -1014,7 +1014,7 @@ changes:
   - `key` {string}
   - `passphrase` {string}
 - `outputFormat` {string}
-- Returns: {Buffer | string}
+- Restituisce: {Buffer | string}
 
 Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
