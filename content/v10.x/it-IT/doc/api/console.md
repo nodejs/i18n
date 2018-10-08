@@ -450,7 +450,7 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.markTimeline()` method is the deprecated form of [`console.timeStamp()`][].
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Il metodo `console.markTimeline()` è la forma obsoleta/deprecata di [`console.timeStamp()`][].
 
 ### console.profile([label])
 
@@ -460,13 +460,13 @@ added: v8.0.0
 
 * `label` {string}
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Il metodo `console.profile()` avvia un profilo JavaScript CPU con una label (etichetta) facoltativa finché non viene chiamato [`console.profileEnd()`][]. Il profilo viene quindi aggiunto al pannello **Profile** dell'inspector.
 
 ```js
 console.profile('MyLabel');
-// Some code
+// Un pò di codice
 console.profileEnd();
-// Adds the profile 'MyLabel' to the Profiles panel of the inspector.
+// Aggiunge il profilo 'MyLabel' al pannello Profiles dell'inspector.
 ```
 
 ### console.profileEnd()
@@ -475,7 +475,7 @@ console.profileEnd();
 added: v8.0.0
 -->
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Interrompe la sessione corrente di profiling del JavaScript CPU se ne è stata avviata una e stampa il report nel pannello **Profiles** dell'inspector. Vedi [`console.profile()`][] per un esempio.
 
 ### console.timeStamp([label])
 
@@ -485,7 +485,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Il metodo `console.timeStamp()` aggiunge un evento con l'etichetta `'label'` al pannello **Timeline** dell'inspector.
 
 ### console.timeline([label])
 
@@ -495,7 +495,7 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Il metodo `console.timeline()` è la forma obsoleta/deprecata di [`console.time()`][].
 
 ### console.timelineEnd([label])
 
@@ -505,4 +505,4 @@ added: v8.0.0
 
 * `label` {string} **Default:** `'default'`
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].
+Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Il metodo `console.timelineEnd()` è la forma obsoleta/deprecata di [`console.timeEnd()`][].
