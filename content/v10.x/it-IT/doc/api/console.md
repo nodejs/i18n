@@ -259,7 +259,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Stampa una nuova riga (newline) su `stderr`. È possibile passare più argomenti, usando il primo come messaggio principale e tutti gli altri come valori di sostituzione simili a printf(3) (gli argomenti vengono passati tutti ad [`util.format()`][]).
 
 ```js
 const code = 5;
@@ -269,7 +269,7 @@ console.error('error', code);
 // Stampa: error 5, a stderr
 ```
 
-If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
+Se gli elementi di formattazione (ad esempio `%d`) non vengono trovati nella prima stringa, allora viene chiamato [`util.inspect()`][] su ogni argomento e i valori risultanti della stringa vengono concatenati. Vedi [`util.format()`][] per maggiori informazioni.
 
 ### console.group([...label])
 
@@ -279,9 +279,9 @@ added: v8.5.0
 
 * `...label` {any}
 
-Increases indentation of subsequent lines by two spaces.
+Aumenta l'indentazione delle righe successive di due spazi.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Se vengono fornite una o più `label` (etichette), queste vengono stampate per prime senza l'indentazione aggiuntiva.
 
 ### console.groupCollapsed()
 
@@ -297,7 +297,7 @@ Un alias di [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Riduce l'indentazione delle righe successive di due spazi.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -308,7 +308,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-The `console.info()` function is an alias for [`console.log()`][].
+La funzione `console.info()` è un alias di [`console.log()`][].
 
 ### console.log(\[data\]\[, ...args\])
 
@@ -319,7 +319,7 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
+Stampa una nuova riga (newline) su `stdout`. È possibile passare più argomenti, usando il primo come messaggio principale e tutti gli altri come valori di sostituzione simili a printf(3) (gli argomenti vengono passati tutti ad [`util.format()`][]).
 
 ```js
 const count = 5;
