@@ -43,7 +43,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 * 作为第一个参数传递字符串、数组或 `Buffer`, 将传递的对象的数据复制到 `Buffer` 中。
 * 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 返回一个 `Buffer`, 它与给定的数组缓冲区共享分配的内存。
 
-由于 ` new Buffer() ` 的行为不同于第一个参数的类型, 因此在不执行参数验证或 `Buffer` 初始化时, 可能会无意中将安全和可靠性问题引入到应用程序中。
+由于 ` new Buffer() ` 的行为会根据所传入的第一个参数的类型而改变，所以如果应用程序没有进行参数验证，或未能初始化新分配的 `Buffer`，就有可能在无意中为程序带来安全性与可靠性问题。
 
 为使 `Buffer` 实例的创建更加可靠且不易出错, `new Buffer()` 构造函数的各种形式已被 ** 否决**, 并由单独的 `Buffer.from()`、[`Buffer.alloc()`] 和 [`Buffer.allocUnsafe()`] 方法。
 
