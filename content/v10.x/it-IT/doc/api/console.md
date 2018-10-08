@@ -155,7 +155,7 @@ added: v8.3.0
 
 * `label` {string} L'etichetta del display per il counter. **Default:** `'default'`.
 
-Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
+Mantiene un counter interno specifico per `label` e restituisce a `stdout` il numero di volte in cui `console.count()` è stato chiamato con il `label` fornito.
 
 <!-- eslint-skip -->
 
@@ -187,9 +187,9 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. **Default:** `'default'`.
+* `label` {string} L'etichetta del display per il counter. **Default:** `'default'`.
 
-Resets the internal counter specific to `label`.
+Reimposta il counter interno specifico per `label`.
 
 <!-- eslint-skip -->
 
@@ -219,7 +219,7 @@ changes:
 * `data` {any}
 * `...args` {any}
 
-The `console.debug()` function is an alias for [`console.log()`][].
+La funzione `console.debug()` è un alias di [`console.log()`][].
 
 ### console.dir(obj[, options])
 
@@ -229,8 +229,8 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
+  * `showHidden` {boolean} Se `true` allora verranno visualizzate anche le proprietà non enumerabili dell'object e dei simboli. **Default:** `false`.
+  * `depth` {number} Indica ad [`util.inspect()`][] quante volte deve essere ripetuto durante la formattazione dell'object. E' utile per ispezionare gli object complicati di grandi dimensioni. Per farlo ripetere indefinitamente, passa `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
 
 Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
