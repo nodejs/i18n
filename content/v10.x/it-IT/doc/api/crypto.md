@@ -229,7 +229,7 @@ added: v0.1.94
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string} Qualsiasi contenuto cifrato restante. Se l'`outputEncoding` è `'latin1'`, `'base64'` o `'hex'`, viene restituita una stringa. Se non viene fornito nessun `outputEncoding`, viene restituito un [`Buffer`][].
 
-Once the `cipher.final()` method has been called, the `Cipher` object can no longer be used to encrypt data. Attempts to call `cipher.final()` more than once will result in an error being thrown.
+Una volta chiamato il metodo `cipher.final()`, il `Cipher` object non può più essere utilizzato per cifrare i dati. I tentativi di chiamare `cipher.final()` più di una volta genereranno un errore.
 
 ### cipher.setAAD(buffer[, options])
 
@@ -239,7 +239,7 @@ added: v1.0.0
 
 - `buffer` {Buffer}
 - `options` {Object}
-- Returns: {Cipher} for method chaining.
+- Restituisce: {Cipher} per il method chaining.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
@@ -264,7 +264,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Default:** `true`
-- Returns: {Cipher} for method chaining.
+- Restituisce: {Cipher} per il method chaining.
 
 When using block encryption algorithms, the `Cipher` class will automatically add padding to the input data to the appropriate block size. To disable the default padding call `cipher.setAutoPadding(false)`.
 
@@ -380,7 +380,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Cipher} for method chaining.
+- Restituisce: {Cipher} per il method chaining.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
@@ -398,7 +398,7 @@ changes:
 -->
 
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Cipher} for method chaining.
+- Restituisce: {Cipher} per il method chaining.
 
 When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
 
@@ -413,7 +413,7 @@ added: v0.7.1
 -->
 
 - `autoPadding` {boolean} **Default:** `true`
-- Returns: {Cipher} for method chaining.
+- Restituisce: {Cipher} per il method chaining.
 
 When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
 
