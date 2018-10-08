@@ -1757,20 +1757,20 @@ https://github.com/nodejs/node/commit/a1d193963ddc80a27da5da01b59751e14e33d1d6
 * mapear EWOULDBLOCK a UV_EAGAIN (Ben Noordhuis)
 * Mapear ENOMEM a UV_ENOMEM (isaacs)
 * Child process: soportar las opciones `gid` y `uid` (Bert Belder)
-* test: cluster: add worker death event test (Ben Noordhuis)
-* typo in node_http_parser (isaacs)
-* http_parser: Eat CRLF between requests, even on connection:close. (Ben Noordhuis)
-* don't check return value of unsetenv (Ben Noordhuis)
+* test: cluster: añadir prueba de evento de muerte de worker (Ben Noordhuis)
+* typo en node_http_parser (isaacs)
+* http_parser: Comerse a CRLF entre solicitudes, incluso ante connection:close. (Ben Noordhuis)
+* no revisar valor de retorno de unsetenv (Ben Noordhuis)
 
 <a id="0.6.15"></a>
 
-## 2012.04.09 Version 0.6.15 (stable)
+## 2012.04.09 Versión 0.6.15 (estable)
 
 https://github.com/nodejs/node/commit/f160a45b254e591eb33716311c92be533c6d86c4
 
-* Update npm to 1.1.16
-* Show licenses in binary installers.
-* unix: add uv_fs_read64, uv_fs_write64 and uv_fs_ftruncate64 (Ben Noordhuis)
+* Actualizar npm a 1.1.16
+* Mostrar licencias en instaladores binarios.
+* unix: añadir uv_fs_read64, uv_fs_write64 y uv_fs_ftruncate64 (Ben Noordhuis)
 * add 64bit offset fs functions (Igor Zinkovsky)
 * windows: don't report ENOTSOCK when attempting to bind an udp handle twice (Bert Belder)
 * windows: backport pipe-connect-to-file fixes from master (Bert Belder)
