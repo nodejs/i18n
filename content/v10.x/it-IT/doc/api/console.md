@@ -231,9 +231,9 @@ added: v0.1.101
 * `options` {Object} 
   * `showHidden` {boolean} Se `true` allora verranno visualizzate anche le proprietà non enumerabili dell'object e dei simboli. **Default:** `false`.
   * `depth` {number} Indica ad [`util.inspect()`][] quante volte deve essere ripetuto durante la formattazione dell'object. E' utile per ispezionare gli object complicati di grandi dimensioni. Per farlo ripetere indefinitamente, passa `null`. **Default:** `2`.
-  * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
+  * `colors` {boolean} Se `true`, l'output avrà uno stile con codici di colore ANSI. I colori sono personalizzabili; vedi [customizing `util.inspect()` colors][]. **Default:** `false`.
 
-Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
+Utilizza [`util.inspect()`][] su `obj` e stampa la stringa risultante su `stdout`. Questa funzione ignora qualsiasi funzione personalizzata `inspect()` definita su `obj`.
 
 ### console.dirxml(...data)
 
@@ -248,7 +248,7 @@ changes:
 
 * `...data` {any}
 
-This method calls `console.log()` passing it the arguments received. Please note that this method does not produce any XML formatting.
+Questo metodo chiama `console.log()` passandogli gli argomenti ricevuti. Si prega di notare che questo metodo non produce alcuna formattazione XML.
 
 ### console.error(\[data\]\[, ...args\])
 
@@ -264,9 +264,9 @@ Prints to `stderr` with newline. Multiple arguments can be passed, with the firs
 ```js
 const code = 5;
 console.error('error #%d', code);
-// Prints: error #5, to stderr
+// Stampa: error #5, a stderr
 console.error('error', code);
-// Prints: error 5, to stderr
+// Stampa: error 5, a stderr
 ```
 
 If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
@@ -289,7 +289,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Un alias di [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -324,12 +324,12 @@ Prints to `stdout` with newline. Multiple arguments can be passed, with the firs
 ```js
 const count = 5;
 console.log('count: %d', count);
-// Prints: count: 5, to stdout
+// Stampa: count: 5, a stdout
 console.log('count:', count);
-// Prints: count: 5, to stdout
+// Stampa: count: 5, a stdout
 ```
 
-See [`util.format()`][] for more information.
+Vedi [`util.format()`][] per maggiori informazioni.
 
 ### console.table(tabularData[, properties])
 
@@ -397,7 +397,7 @@ Stops a timer that was previously started by calling [`console.time()`][] and pr
 console.time('100-elements');
 for (let i = 0; i < 100; i++) {}
 console.timeEnd('100-elements');
-// prints 100-elements: 225.438ms
+// stampa 100-elements: 225.438ms
 ```
 
 ### console.trace(\[message\]\[, ...args\])
@@ -436,9 +436,9 @@ added: v0.1.100
 * `data` {any}
 * `...args` {any}
 
-The `console.warn()` function is an alias for [`console.error()`][].
+La funzione `console.warn()` è un alias di [`console.error()`][].
 
-## Inspector only methods
+## Metodi solo per l'Inspector
 
 The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
 
