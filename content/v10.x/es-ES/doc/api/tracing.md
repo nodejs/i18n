@@ -15,7 +15,7 @@ Las categorías disponibles son:
 * `node.bootstrap` - Permite la captura de los hitos bootstrap de Node.js.
 * `node.perf` Permite la captura de las mediciones de [Desempeño del API](perf_hooks.html). 
   * `node.perf.usertiming` - Permite la captura de solamente mediciones y marcas del rendimiento del API cronometrado por el usuario.
-  * `node.perf.timerify` - Enables capture of only Performance API timerify measurements.
+  * `node.perf.timerify` - Permite la captura de solamente mediciones API de la función timerify.
 * `node.fs.sync` - Enables capture of trace data for file system sync methods.
 * `v8` - The [V8](v8.html) events are GC, compiling, and execution related.
 
