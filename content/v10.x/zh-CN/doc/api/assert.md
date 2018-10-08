@@ -666,7 +666,7 @@ changes:
 
 > 稳定性：0 - 已弃用：改为使用 [`assert.notDeepStrictEqual()`][]。
 
-Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
+用于深度非相等测试。 与 [`assert.deepEqual()`][] 相反。
 
 ```js
 const assert = require('assert');
@@ -701,7 +701,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
+如果两个值深度相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 If the `message` parameter is undefined, a default error message is assigned. 如果 `message` 参数是 [`Error`][] 的实例，则会抛出它而不是 `AssertionError`。
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
