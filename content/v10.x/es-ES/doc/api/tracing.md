@@ -135,7 +135,7 @@ added: v10.0.0
   * `categories` {string[]} Un conjunto de nombres de categorías de seguimiento. Los valores incluidos en el conjuntos son forzados a un string cuando sea posible. Un error saldrá cuando el valor no pueda ser forzado.
 * Devuelve: {Tracing}
 
-Creates and returns a `Tracing` object for the given set of `categories`.
+Crea y devuelve un objeto `Tracing` para el conjunto de `categories` dado.
 
 ```js
 const trace_events = require('trace_events');
@@ -152,11 +152,11 @@ tracing.disable();
 added: v10.0.0
 -->
 
-* Returns: {string}
+* Devuelve: {string}
 
-Returns a comma-separated list of all currently-enabled trace event categories. The current set of enabled trace event categories is determined by the *union* of all currently-enabled `Tracing` objects and any categories enabled using the `--trace-event-categories` flag.
+Devuelve una lista separada por comas de todas las categorías de seguimiento de eventos actualmente habilitadas. El actual conjunto de categorías de seguimiento de eventos habilitados está determinado por la *unión* de todos los objetos `Tracing` actualmente habilitados y cualquier categoría habilitado utilizando la bandera de `--trace-event-categories`.
 
-Given the file `test.js` below, the command `node --trace-event-categories node.perf test.js` will print `'node.async_hooks,node.perf'` to the console.
+Dado el archivo `test.js` inferior, el comando `node --trace-event-categories node.perf test.js` imprimirá `'node.async_hooks,node.perf'` a la consola.
 
 ```js
 const trace_events = require('trace_events');
