@@ -68,8 +68,8 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 * [[`0ca0827b71`](https://github.com/nodejs/node/commit/0ca0827b71)] - **(SEMVER-MINOR)** **buffer**: hace backport allocUnsafeSlow (Сковорода Никита Андреевич) [#7169](https://github.com/nodejs/node/pull/7169)
 * [[`27785aeb37`](https://github.com/nodejs/node/commit/27785aeb37)] - **buffer**: ignorar longitudes de asignación negativas (Anna Henningsen) [#7221](https://github.com/nodejs/node/pull/7221)
-* [[`34b96c1322`](https://github.com/nodejs/node/commit/34b96c1322)] - **deps**: backport 3a9bfec from v8 upstream (Ben Noordhuis) [nodejs/node-private#40](https://github.com/nodejs/node-private/pull/40)
-* [[`2ebeb82852`](https://github.com/nodejs/node/commit/2ebeb82852)] - **test**: fix test-net-* error code check for getaddrinfo(3) (Natanael Copa) [#5099](https://github.com/nodejs/node/pull/5099)
+* [[`34b96c1322`](https://github.com/nodejs/node/commit/34b96c1322)] - **deps**: hace backport 3a9bfec desde un upstream v8 (Ben Noordhuis) [nodejs/node-private#40](https://github.com/nodejs/node-private/pull/40)
+* [[`2ebeb82852`](https://github.com/nodejs/node/commit/2ebeb82852)] - **test**: reparar la verificación del código del error test-net-* para getaddrinfo(3) (Natanael Copa) [#5099](https://github.com/nodejs/node/pull/5099)
 * [[`03d36aea4f`](https://github.com/nodejs/node/commit/03d36aea4f)] - **(SEMVER-MINOR)** **test**: add buffer testcase for resetting kZeroFill (Сковорода Никита Андреевич) [#7169](https://github.com/nodejs/node/pull/7169)
 
 <a id="5.11.1"></a>
