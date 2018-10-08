@@ -80,7 +80,7 @@ apply.whitespace fix`
   
   * Esto vendrá más naturalmente con el tiempo
   * Para muchos de los equipos enlistados, puede solicitar ser añadido si está interesado 
-    * Some are WGs with some process around adding people, others are only there for notifications
+    * Algunos son WGs con algún proceso para agregar personas, otros solo están allí para notificaciones
 
 * When a discussion gets heated, you can request that other Collaborators keep an eye on it by opening an issue at the private [nodejs/moderation](https://github.com/nodejs/moderation) repository.
   
