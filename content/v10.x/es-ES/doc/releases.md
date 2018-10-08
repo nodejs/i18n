@@ -122,11 +122,11 @@ La nueva entrada debe tomar la siguiente forma:
 * List interesting changes here
 * Particularly changes that are responsible for minor or major version bumps
 * Also be sure to look at any changes introduced by dependencies such as npm
-* ... and include any notable items from there
+* ... e incluir cualquier elemento notable de ahí
 
 ### Commits
 
-* Include the full list of commits since the last release here. No incluir commits "Working on X.Y.Z+1".
+* Incluye la lista completa de los commits desde el último lanzamiento aquí. No incluir commits "Working on X.Y.Z+1".
 ```
 
 El tipo de lanzamiento debe ser actual, LTS, o de mantenimiento, dependiendo del tipo de lanzamiento que se está produciendo.
@@ -307,7 +307,7 @@ Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](h
 
 El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva versión. Para anunciar la compilación en Twitter a traves de la cuenta oficial @nodejs, envia un correo electrónico a <pr@nodejs.org> con un mensaje como:
 
-> v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
+> salió la v5.8.0 de @nodejs: https://nodejs.org/en/blog/release/v5.8.0/ … aqlgo aquí sobre los cambios notables
 
 Para asegurar que la comunicación está sincronizada con la entrada del blog, por favor permite una notificación previa de 24 horas. Si se conoce, por favor incluye la fecha y el tiempo en el que el lanzamiento será compartido con la comunidad en el correo electrónico para coordinar estos anuncios.
 
