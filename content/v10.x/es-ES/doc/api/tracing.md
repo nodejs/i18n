@@ -47,7 +47,7 @@ tracing.enable();  // Enable trace event capture for the 'node.perf' category
 tracing.disable();  // Disable trace event capture for the 'node.perf' category
 ```
 
-Running Node.js with tracing enabled will produce log files that can be opened in the [`chrome://tracing`](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) tab of Chrome.
+Ejecutar Node.js con seguimiento habilitado producirá archivos de registro que pueden ser abiertos en la ventana de Chrome [`chrome://tracing`](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool).
 
 The logging file is by default called `node_trace.${rotation}.log`, where `${rotation}` is an incrementing log-rotation id. The filepath pattern can be specified with `--trace-event-file-pattern` that accepts a template string that supports `${rotation}` and `${pid}`. For example:
 
