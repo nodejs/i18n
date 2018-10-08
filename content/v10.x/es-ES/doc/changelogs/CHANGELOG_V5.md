@@ -1,4 +1,4 @@
-# Node.js 5 ChangeLog
+# Registro de Cambios de Node.js 5
 
 <!--lint disable prohibited-strings-->
 
@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Stable</th>
+<th>Estable</th>
 </tr>
   
   <tr>
@@ -36,7 +36,7 @@
   </tr>
 </table>
 
-* Other Versions 
+* Otras Versiones 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
