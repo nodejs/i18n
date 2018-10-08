@@ -39,7 +39,7 @@ try {
 added: v0.11.8
 -->
 
-SPKAC is a Certificate Signing Request mechanism originally implemented by Netscape and was specified formally as part of [HTML5's `keygen` element][].
+SPKAC è un meccanismo di Certificate Signing Request (CSR) originariamente implementato da Netscape ed è stato specificato formalmente come parte di [HTML5's `keygen` element][].
 
 Note that `<keygen>` is deprecated since [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) and new projects should not use this element anymore.
 
