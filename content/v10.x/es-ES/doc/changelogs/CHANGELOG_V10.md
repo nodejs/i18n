@@ -38,7 +38,7 @@
 ### Cambios Notables
 
 * **consola**: 
-  * hacer console.table() utiliza inspeccionar color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
+  * haga que console.table() utilice inspeccionar color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**: 
   * mueve fs/promesa a fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
 * **http**: 
@@ -56,12 +56,12 @@
 * [[`289e4cef3f`](https://github.com/nodejs/node/commit/289e4cef3f)] - **benchmark**: fijar next-tick-depth (Anatoli Papirovski) [#20461](https://github.com/nodejs/node/pull/20461)
 * [[`b0e6f10530`](https://github.com/nodejs/node/commit/b0e6f10530)] - **benchmark**: añadir plataforma para zlib gzip + gunzip cycle (Anna Henningsen) [#20034](https://github.com/nodejs/node/pull/20034)
 * [[`167de1f038`](https://github.com/nodejs/node/commit/167de1f038)] - **build**: verificar para diferentes firmas desaprobadas (Ruben Bridgewater) [#20384](https://github.com/nodejs/node/pull/20384)
-* [[`348d391a71`](https://github.com/nodejs/node/commit/348d391a71)] - **build**: remove --xcode configure switch (Ben Noordhuis) [#20328](https://github.com/nodejs/node/pull/20328)
+* [[`348d391a71`](https://github.com/nodejs/node/commit/348d391a71)] - **build**: remover interruptor de configuración --xcode (Ben Noordhuis) [#20328](https://github.com/nodejs/node/pull/20328)
 * [[`2ce4b7cb8c`](https://github.com/nodejs/node/commit/2ce4b7cb8c)] - **build**: no depende de `cp` en `PATH` (Anna Henningsen) [#20296](https://github.com/nodejs/node/pull/20296)
-* [[`c5b3459003`](https://github.com/nodejs/node/commit/c5b3459003)] - **build**: use -9 with `kill` in Makefile (Rich Trott) [#20195](https://github.com/nodejs/node/pull/20195)
-* [[`b5931e1d45`](https://github.com/nodejs/node/commit/b5931e1d45)] - **child_process**: name anonymous functions (Denis Fäcke) [#20399](https://github.com/nodejs/node/pull/20399)
-* [[`ec2037da12`](https://github.com/nodejs/node/commit/ec2037da12)] - **child_process**: fix leak when passing http sockets (Santiago Gimeno) [#20305](https://github.com/nodejs/node/pull/20305)
-* [[`a7758c76c0`](https://github.com/nodejs/node/commit/a7758c76c0)] - **(SEMVER-MINOR)** **console**: make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
+* [[`c5b3459003`](https://github.com/nodejs/node/commit/c5b3459003)] - **build**: utilice -9 con `kill` en Makefile (Rich Trott) [#20195](https://github.com/nodejs/node/pull/20195)
+* [[`b5931e1d45`](https://github.com/nodejs/node/commit/b5931e1d45)] - **child_process**: nombrar funciones anónimas (Denis Fäcke) [#20399](https://github.com/nodejs/node/pull/20399)
+* [[`ec2037da12`](https://github.com/nodejs/node/commit/ec2037da12)] - **child_process**: arreglar escapes al pasar sockets http (Santiago Gimeno) [#20305](https://github.com/nodejs/node/pull/20305)
+* [[`a7758c76c0`](https://github.com/nodejs/node/commit/a7758c76c0)] - **(SEMVER-MINOR)** **console**: hacer que console.table() utilice inspeccionar color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * [[`29bc735d42`](https://github.com/nodejs/node/commit/29bc735d42)] - **console**: fix console.table() display edge case (Rich Trott) [#20323](https://github.com/nodejs/node/pull/20323)
 * [[`dfcf20f5fd`](https://github.com/nodejs/node/commit/dfcf20f5fd)] - **crypto**: use new OpenSSL constants in CipherBase (Tobias Nießen) [#20339](https://github.com/nodejs/node/pull/20339)
 * [[`e17280e8c9`](https://github.com/nodejs/node/commit/e17280e8c9)] - **crypto**: make pbkdf2 use checkIsArrayBufferView (Daniel Bevenius) [#20251](https://github.com/nodejs/node/pull/20251)
