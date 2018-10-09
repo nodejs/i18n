@@ -143,9 +143,9 @@ changes:
 
 1. `Buffer` 对象的内存是被复制到 [`TypedArray`] 中的，而不是共享的。
 
-2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
+2. `Buffer` 对象的内存是被解析为一个截然不同的元素的数组，而不是一个目标类型的字节数组。 也就是说，`new Uint32Array(Buffer.from([1, 2, 3, 4]))` 会创建一个包含 `[1, 2, 3, 4]` 四个元素的 [`Uint32Array`]， 而不是一个只包含一个元素 `[0x1020304]` 或 `[0x4030201]` 的 [`Uint32Array`]。
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the `TypeArray` object's `.buffer` property.
+也可以通过 `TypeArray` 对象的 `.buffer` 属性创建一个新建的且与 [`TypedArray`] 实例共享同一分配内存的 `Buffer`。
 
 ```js
 const arr = new Uint16Array(2);
