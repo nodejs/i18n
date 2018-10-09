@@ -30,7 +30,7 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
 apply.whitespace fix`
   * Siempre continuar el PR desde su propia bifurcación de GitHub 
     * Las ramas en el repositorio `nodejs/node` solo son para las líneas de lanzamiento
-  * See [Updating Node.js from Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
+  * Consulte [Actualizar Node.js desde Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
   * Crear una nueva rama para cada PR que envíe.
   * Afiliación: Considere hacer su afiliación en la organización GitHub de Node.js pública. Esto hace que sea más fácil identificar a los Colaboradores. Las instrucciones sobre cómo hacerlo están disponibles en [Publicar u ocultar la afiliación a la organización](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
@@ -112,7 +112,7 @@ apply.whitespace fix`
   * Cuando utilice explícitamente `Changes requested`, muestre empatía - los comentarios usualmente se abordarán incluso si no la utiliza. 
     * Si lo hace, es bueno que esté disponible luego para verificar si se han abordado sus comentarios
     * Si observa que los cambios requeridos han sido realizados, puede borrar la revisión de los `Changes requested` de otro colaborador.
-    * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
+    * Utilice `Changes requested` para indicar que está considerando alguno de sus comentarios para impedir que el PR se reciba.
 
 * Lo que pertenece en Node.js:
   
@@ -138,9 +138,9 @@ apply.whitespace fix`
     * Utilice #node-build (IRC) para hablar con los miembros de Crear WG, los cuales mantienen la infraestructura de CI.
     * Utilice el [repo Crear WG](https://github.com/nodejs/build) para issues de archivos para los miembros de Crear WG que mantienen la infraestructura de CI.
 
-## Landing PRs
+## PRs recibidos
 
-See the Collaborator Guide: [Landing Pull Requests](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
+Consulte la Guía del Colaborador: [Pull Requests Recibidos](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
 Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico deben ser aplastados. Rara vez es el caso de los ejercicios de orientación, por lo que esto debe ser señalado por separado durante la orientación.
 
@@ -155,9 +155,9 @@ Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico debe
 * Opcionalmente, incluye sus pronombres personales.
 * Etiquete su pull request con la etiqueta de subsistema `doc`.
 * Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado la plantilla y otra subtarea.
-* After one or two approvals, land the PR (PRs of this type do not need to wait for 48/72 hours to land). 
+* Después de una o dos aprobaciones, reciba el PR (PRs de este tipo no necesitan esperar 48/72 horas para ser recibidos). 
   * Asegúrese de añadir el `PR-URL: <full-pr-url>` y los metadatos correspondientes `Reviewed-By:`.
-  * [`node-core-utils`][] automates the generation of metadata and the landing process. Consulte la documentación de [`git-node`][].
+  * [`node-core-utils`][] automatiza la generación de metadatos y el proceso de recepción. Consulte la documentación de [`git-node`][].
   * [`core-validate-commit`][] automatiza la validación de mensajes de commit. Esto se ejecutará durante `git node land --final` del comando [`git-node`][].
 
 ## Notas Finales
