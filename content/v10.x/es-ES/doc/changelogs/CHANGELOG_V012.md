@@ -232,12 +232,12 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 ### Cambios Notables
 
-* http: reparar defectos en el análisis del encabezado HTTP para solicitudes y respuestas que pueden permitir el contrabando de solicitudes (CVE-2016-2086) o división de respuesta (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
-* http-parser: upgrade from 2.3.0 to 2.3.1
-* openssl: upgrade from 1.0.1q to 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
+* http: reparar defectos en el análisis del encabezado HTTP para solicitudes y respuestas que pueden permitir el contrabando de solicitudes (CVE-2016-2086) o división de respuesta (CVE-2016-2216). El análisis de encabezado HTTP ahora se alinea más de cerca con la especificación HTTP, incluyendo la restricción de caracteres aceptables.
+* http-parser: actualizar de 2.3.0 a 2.3.1
+* openssl: actualizar de 1.0.1q a 1.0.1r. Para mitigar contra el ataque de Logjam, ahora los clientes TLS rechazan los handshakes de Diffie-Hellman con parámetros más cortos de 1024 bits, por encima del límite previo de 768 bits.
 * src: 
-  * introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
-  * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
+  * introducir nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
+  * permitir la corrección para CVE-2016-2216 sea revertida de manera selectiva utilizando `--security-revert=CVE-2016-2216`
 * build: 
   * xz compressed tar files will be made available from nodejs.org for v0.12 builds from v0.12.10 onward
   * A headers.tar.gz file will be made available from nodejs.org for v0.12 builds from v0.12.10 onward, a future change to node-gyp will be required to make use of these
