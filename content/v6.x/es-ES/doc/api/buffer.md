@@ -15,33 +15,33 @@ La clase `Buffer` es global dentro de Node.js, por lo que es poco probable que a
 Ejemplos:
 
 ```js
-// Creates a zero-filled Buffer of length 10.
+// Crea un Buffer lleno de ceros de longitud 10.
 const buf1 = Buffer.alloc(10);
 
-// Creates a Buffer of length 10, filled with 0x1.
+// Crea un Buffer de longitud 10, lleno con 0x1.
 const buf2 = Buffer.alloc(10, 1);
 
-// Creates an uninitialized buffer of length 10.
-// This is faster than calling Buffer.alloc() but the returned
-// Buffer instance might contain old data that needs to be
-// overwritten using either fill() or write().
+// Crea un buffer sin inicializar de longitud 10.
+// Esto es más rápido que llamar a Buffer.alloc() pero la instancia de Buffer
+// devuelta puede contener datos viejos que necesitan ser
+// sobrescritos utilizando ya sea fill() o write().
 const buf3 = Buffer.allocUnsafe(10);
 
-// Creates a Buffer containing [0x1, 0x2, 0x3].
+// Crea un Buffer que contiene [0x1, 0x2, 0x3].
 const buf4 = Buffer.from([1, 2, 3]);
 
-// Creates a Buffer containing UTF-8 bytes [0x74, 0xc3, 0xa9, 0x73, 0x74].
+// Crea un Buffer que contiene UTF-8 bytes [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Creates a Buffer containing Latin-1 bytes [0x74, 0xe9, 0x73, 0x74].
+// Crea un Buffer que contiene Latin-1 bytes [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
-## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
+## `Buffer.from()`, `Buffer.alloc()`, y `Buffer.allocUnsafe()`
 
-In versions of Node.js prior to v6, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
+En versiones de Node.js anteriores a v6, las instancias `Buffer` fueron creadas usando la función constructora `Buffer`, la cual asigna el ` Buffer ` devuelto de forma diferente en función de los argumentos proporcionados:
 
-* Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`), allocates a new `Buffer` object of the specified size. The memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be initialized *manually* by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`.
+* Pasar un número como el primer argumento a `Buffer()` (p. e.j `new Buffer(10)`), asigna un nuevo objeto `Buffer` del tamaño especificado. La memoria asignada para tales instancias `Buffer` *no* es inicializada y *puede contener datos sensibles*. Such `Buffer` instances *must* be initialized *manually* by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`.
 * Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
 
