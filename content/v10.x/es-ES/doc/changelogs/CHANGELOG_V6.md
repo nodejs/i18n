@@ -1503,7 +1503,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
   * soportar "--" después de "-e" como end-of-options (John Barboza) [#10651](https://github.com/nodejs/node/pull/10651)
 * **tls**: 
   * el nuevo tls.TLSSocket() soporta opciones sec ctx (Sam Roberts) [#11005](https://github.com/nodejs/node/pull/11005)
-  * Permitir combinaciones de clave/contraseña obvias. (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
+  * Permitir combinaciones obvias de clave/contraseña. (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
 
 ### Commits
 
