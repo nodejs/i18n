@@ -109,9 +109,9 @@ console.log(Buffer.from('fhqwhgads', 'utf16le'));
 
 Node.js当前支持的字符编码包括：
 
-* `'ascii'` - 仅支持 7 位 ASCII 数据。 This encoding is fast and will strip the high bit if set.
+* `'ascii'` - 仅支持 7 位 ASCII 数据。 如果设置剥离高位的话，这种编码是非常快的。
 
-* `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other document formats use UTF-8.
+* `'utf8'` - 多字节编码的 Unicode 字符。 很多网页或者其它文档的编码格式都是使用 UTF-8 的。
 
 * `'utf16le'` - 2 or 4 bytes, little-endian encoded Unicode characters. Surrogate pairs (U+10000 to U+10FFFF) are supported.
 
