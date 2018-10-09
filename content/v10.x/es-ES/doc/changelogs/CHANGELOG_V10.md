@@ -290,24 +290,24 @@
   * El soporte para NPN (próxima negociación del protocolo) se ha eliminado. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
   * El `ecdhCurve` predeterminado ahora es `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
 * Eventos de Seguimiento 
-  * A new `trace_events` top-level module allows trace event categories to be enabled/disabled at runtime. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
+  * Un nuevo módulo de alto nivel `trace_events` permite a las categorías de evento de seguimiento ser habilitadas/deshabilitadas en el tiempo de ejecución. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
 * URL 
-  * The WHATWG URL API is now a global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
+  * La API URL WHATWG ahora es un global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
 * Util 
-  * `util.types.is[…]` type checks have been added. [[`b20af8088a`](https://github.com/nodejs/node/commit/b20af8088a)]
-  * Support for bigint formatting has been added to `util.inspect()`. [[`39dc947409`](https://github.com/nodejs/node/commit/39dc947409)]
+  * Controles de tipo `util.types.is[…]` han sido agregados. [[`b20af8088a`](https://github.com/nodejs/node/commit/b20af8088a)]
+  * El soporte para el formato bigint se ha agregado a `util.inspect()`. [[`39dc947409`](https://github.com/nodejs/node/commit/39dc947409)]
 
-#### Deprecations:
+#### Desaprobaciones:
 
-The following APIs have been deprecated in Node.js 10.0.0
+Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 
-* Passing more than one argument to `assert.fail()` will emit a runtime deprecation warning. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
-* Previously deprecated legacy async_hooks APIs have reached end-of-life and have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
-* Using `require()` to access several of Node.js' own internal dependencies will emit a runtime deprecation. [[`0e10717e43`](https://github.com/nodejs/node/commit/0e10717e43)]
-* The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated in documentation.[[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
-* Using the `Decipher.finaltol()` method will emit a runtime deprecation warning. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
-* Using the `crypto.DEFAULT_ENCODING` property will emit a runtime deprecation warning. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
-* Use by native addons of the `MakeCallback()` variant that passes a `Domain` will emit a runtime deprecation warning. [[`14bc3e22f3`](https://github.com/nodejs/node/commit/14bc3e22f3)], [[`efb32592e1`](https://github.com/nodejs/node/commit/efb32592e1)]
+* Pasar más de un argumento a `assert.fail()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
+* Las APIs async_hooks heredadas previamente desaprobadas han alcanzado el final de su vida útil y han sido eliminadas. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
+* El uso de `require()` para acceder a varias de las dependencias internas propias de Node.js' emitirá una desaprobación del tiempo de ejecución. [[`0e10717e43`](https://github.com/nodejs/node/commit/0e10717e43)]
+* Los métodos `crypto.createCipher()` y `crypto.createDecipher()` se han desaprobado en la documentación. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
+* El uso del método `Decipher.finaltol()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
+* El uso de la propiedad `crypto.DEFAULT_ENCODING` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
+* El uso de complementos nativos de la variante `MakeCallback()` que pasa un `Domain` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`14bc3e22f3`](https://github.com/nodejs/node/commit/14bc3e22f3)], [[`efb32592e1`](https://github.com/nodejs/node/commit/efb32592e1)]
 * Previously deprecated internal getters/setters on `net.Server` has reached end-of-life and have been removed. [[`3701b02309`](https://github.com/nodejs/node/commit/3701b02309)]
 * Use of non-string values for `process.env` has been deprecated in documentation. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
 * Use of `process.assert()` will emit a runtime deprecation warning. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
