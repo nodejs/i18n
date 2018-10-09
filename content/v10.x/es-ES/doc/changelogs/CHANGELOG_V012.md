@@ -205,17 +205,17 @@ Tenga en cuenta que la actualización a OpenSSL 1.0.1s en Node.js v0.12.11 elimi
 * openssl: Actualizar de 1.0.1r a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5509 
   * Corregir un defecto de doble libertad en el análisis de claves DSA malformadas que potencialmente pudieran ser utilizadas para ataques DoS o de corrupción de memoria. Es probable que sea muy difícil utilizar este defecto para un ataque práctico y, por lo tanto, es considerado como baja severidad para los usuarios de Node.js. Más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0705
   * Corregir un defecto que puede causar corrupción en la memoria in ciertos casos muy raros relacionados a las funciones internas `BN_hex2bn()` y `BN_dec2bn()`. Se cree que Node.js no está invocando las rutas de código que utilizan estas funciones, por lo que es *poco probable* que sucedan los ataques prácticos a través de Node.js que utilizan este defecto. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0797
-  * Reparar un defecto que hace sea posible el ataque CacheBleed (https://ssrg.nicta.com.au/projects/TS/cachebleed/). This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0702
+  * Reparar un defecto que hace sea posible el ataque CacheBleed (https://ssrg.nicta.com.au/projects/TS/cachebleed/). Este defecto permite a los atacantes ejecutar ataques de canal lateral que conducen a la recuperación potencial de claves privadas RSA completas. Sólo afecta a la microarquitectura Sandy Bridge de Intel (y posiblemente a las anteriores) cuando se utiliza hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0702
 
 ### Commits:
 
-* [1ab6653db9] - build: update Node.js logo on OSX installer (Rod Vagg) https://github.com/nodejs/node/pull/5401
-* [fcc64792ae] - child_process: guard against race condition (Rich Trott) https://github.com/nodejs/node/pull/5153
-* [6c468df9af] - child_process: fix data loss with readable event (Brian White) https://github.com/nodejs/node/pull/5037
-* [61a22019c2] - deps: upgrade openssl to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5509
-* [fa26b13df7] - deps: update to http-parser 2.3.2 (James M Snell) https://github.com/nodejs/node/pull/5241
+* [1ab6653db9] - build: actualizar logo de Node.js en el instalador OSX (Rod Vagg) https://github.com/nodejs/node/pull/5401
+* [fcc64792ae] - child_process: proteger contra la condición de carrera (Rich Trott) https://github.com/nodejs/node/pull/5153
+* [6c468df9af] - child_process: corregir pérdida de datos con el evento readable (Brian White) https://github.com/nodejs/node/pull/5037
+* [61a22019c2] - deps: actualizar openssl a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5509
+* [fa26b13df7] - deps: actualizar a http-parser 2.3.2 (James M Snell) https://github.com/nodejs/node/pull/5241
 * [46c8e2165f] - deps: backport 1f8555 from v8's upstream (Trevor Norris) https://github.com/nodejs/node/pull/3945
-* [ce58c2c31a] - doc: remove SSLv2 descriptions (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
+* [ce58c2c31a] - doc: eliminar descripciones SSLv2 (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
 * [018e4e0b1a] - domains: fix handling of uncaught exceptions (Julien Gilli) https://github.com/nodejs/node/pull/3885
 * [d421e85dc9] - lib: fix cluster handle leak (Rich Trott) https://github.com/nodejs/node/pull/5152
 * [3a48f0022f] - node: fix leaking Context handle (Trevor Norris) https://github.com/nodejs/node/pull/3945
