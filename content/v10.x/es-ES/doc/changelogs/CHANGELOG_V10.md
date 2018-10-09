@@ -42,11 +42,11 @@
 * **fs**: 
   * mueve fs/promesa a fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
 * **http**: 
-  * added aborted property to request (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
+  * se agregó la propiedad abortada para solicitar (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
 * **n-api**: 
-  * initialize a module via a special symbol (Gabriel Schulhof) [#20161](https://github.com/nodejs/node/pull/20161)
+  * inicializa un módulo a través de un símbolo especial (Gabriel Schulhof) [#20161](https://github.com/nodejs/node/pull/20161)
 * **src**: 
-  * add public API to expose the main V8 Platform (Allen Yonghuang Wang) [#20447](https://github.com/nodejs/node/pull/20447)
+  * agrega la API pública para exponer la principal plataforma V8 (Allen Yonghuang Wang) [#20447](https://github.com/nodejs/node/pull/20447)
 
 ### Commits
 
