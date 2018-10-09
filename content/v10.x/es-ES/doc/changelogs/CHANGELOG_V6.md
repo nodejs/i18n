@@ -1229,7 +1229,7 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 ### Commits
 
 * [[`8d043876c1`](https://github.com/nodejs/node/commit/8d043876c1)] - doc/tools: corregir más inconsistencias de tipo (Roman Reiss) [#11697](https://github.com/nodejs/node/pull/11697)
-* [[`8860117600`](https://github.com/nodejs/node/commit/8860117600)] - **addons**: remover signos de punto y coma de después de la definición del módulo (Gabriel Schulhof) [#12919](https://github.com/nodejs/node/pull/12919)
+* [[`8860117600`](https://github.com/nodejs/node/commit/8860117600)] - **addons**: remover signos de punto y coma después de la definición del módulo (Gabriel Schulhof) [#12919](https://github.com/nodejs/node/pull/12919)
 * [[`bb3f54771b`](https://github.com/nodejs/node/commit/bb3f54771b)] - **benchmark**: actualizar una ruta obsoleta (Vse Mozhet Byt) [#12904](https://github.com/nodejs/node/pull/12904)
 * [[`7cc68e2c62`](https://github.com/nodejs/node/commit/7cc68e2c62)] - **benchmark**: añadir limpieza final a module-loader.js (Vse Mozhet Byt) [#12102](https://github.com/nodejs/node/pull/12102)
 * [[`0cc7addcb2`](https://github.com/nodejs/node/commit/0cc7addcb2)] - **benchmark,windows**: TCP.readStart() significativo solo después de completación (Refael Ackermann) [#12258](https://github.com/nodejs/node/pull/12258)
@@ -1321,7 +1321,7 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 * [[`0d35bcdf84`](https://github.com/nodejs/node/commit/0d35bcdf84)] - **doc,stream**: clarificar 'data', pipe() y 'readable' (Matteo Collina) [#13432](https://github.com/nodejs/node/pull/13432)
 * [[`351be2d5a8`](https://github.com/nodejs/node/commit/351be2d5a8)] - **dtrace**: resolver las advertencias de conversión de SLURP_INT (Christopher J. Brody) [#10143](https://github.com/nodejs/node/pull/10143)
 * [[`046bd79cf7`](https://github.com/nodejs/node/commit/046bd79cf7)] - **events**: remover código inalcanzable (cjihrig) [#12501](https://github.com/nodejs/node/pull/12501)
-* [[`8bf64d135f`](https://github.com/nodejs/node/commit/8bf64d135f)] - **events**: no mantener arrays con un solo listener (Luigi Pinca) [#12043](https://github.com/nodejs/node/pull/12043)
+* [[`8bf64d135f`](https://github.com/nodejs/node/commit/8bf64d135f)] - **events**: no conservar arrays con un solo listener (Luigi Pinca) [#12043](https://github.com/nodejs/node/pull/12043)
 * [[`f66f09f5d1`](https://github.com/nodejs/node/commit/f66f09f5d1)] - **http**: describir error de análisis en output de depuración (Sam Roberts) [#13206](https://github.com/nodejs/node/pull/13206)
 * [[`cab1285ccf`](https://github.com/nodejs/node/commit/cab1285ccf)] - **http**: fix first body chunk fast case for UTF-16 (Anna Henningsen) [#12747](https://github.com/nodejs/node/pull/12747)
 * [[`01302989a7`](https://github.com/nodejs/node/commit/01302989a7)] - **https**: soportar rejectUnauthorized para sockets de unix (cjihrig) [#13505](https://github.com/nodejs/node/pull/13505)
@@ -1363,7 +1363,7 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 * [[`47d59e7f97`](https://github.com/nodejs/node/commit/47d59e7f97)] - **test**: reparar sequential test-net-connect-local-error (Sebastian Plesciuc) [#13064](https://github.com/nodejs/node/pull/13064)
 * [[`1d3596561b`](https://github.com/nodejs/node/commit/1d3596561b)] - **test**: enlazar a 0 en dgram-send-callback-buffer-length (Artur Vieira) [#12943](https://github.com/nodejs/node/pull/12943)
 * [[`7909c6d46f`](https://github.com/nodejs/node/commit/7909c6d46f)] - **test**: usar puerto dinámico en test-dgram-send-callback-buffer (Artur Vieira) [#12942](https://github.com/nodejs/node/pull/12942)
-* [[`92cc96fa6b`](https://github.com/nodejs/node/commit/92cc96fa6b)] - **test**: permitir a usuario de nadie ausente en prueba de setuid (Rich Trott) [#13112](https://github.com/nodejs/node/pull/13112)
+* [[`92cc96fa6b`](https://github.com/nodejs/node/commit/92cc96fa6b)] - **test**: permitir la ausencia de usuario en la prueba setuid (Rich Trott) [#13112](https://github.com/nodejs/node/pull/13112)
 * [[`253c5aa794`](https://github.com/nodejs/node/commit/253c5aa794)] - **test**: mover prueba de error de reconexión de red a secuencial (Artur G Vieira) [#13033](https://github.com/nodejs/node/pull/13033)
 * [[`e279eb5aa3`](https://github.com/nodejs/node/commit/e279eb5aa3)] - **test**: ignorar 'EMFILE' espurio (Refael Ackermann) [#12698](https://github.com/nodejs/node/pull/12698)
 * [[`3e5e38e868`](https://github.com/nodejs/node/commit/3e5e38e868)] - **test**: usar puerto dinámico en test-cluster-dgram-reuse (Artur Vieira) [#12901](https://github.com/nodejs/node/pull/12901)
