@@ -38,7 +38,7 @@
 ### Cambios Notables
 
 * **consola**: 
-  * haga que console.table() utilice inspeccionar color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
+  * haga que console.table() utilice inspeccionar con color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**: 
   * mueve fs/promesa a fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
 * **http**: 
@@ -61,14 +61,14 @@
 * [[`c5b3459003`](https://github.com/nodejs/node/commit/c5b3459003)] - **build**: utilice -9 con `kill` en Makefile (Rich Trott) [#20195](https://github.com/nodejs/node/pull/20195)
 * [[`b5931e1d45`](https://github.com/nodejs/node/commit/b5931e1d45)] - **child_process**: nombrar funciones anónimas (Denis Fäcke) [#20399](https://github.com/nodejs/node/pull/20399)
 * [[`ec2037da12`](https://github.com/nodejs/node/commit/ec2037da12)] - **child_process**: arreglar escapes al pasar sockets http (Santiago Gimeno) [#20305](https://github.com/nodejs/node/pull/20305)
-* [[`a7758c76c0`](https://github.com/nodejs/node/commit/a7758c76c0)] - **(SEMVER-MINOR)** **console**: hacer que console.table() utilice inspeccionar color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
-* [[`29bc735d42`](https://github.com/nodejs/node/commit/29bc735d42)] - **console**: fix console.table() display edge case (Rich Trott) [#20323](https://github.com/nodejs/node/pull/20323)
-* [[`dfcf20f5fd`](https://github.com/nodejs/node/commit/dfcf20f5fd)] - **crypto**: use new OpenSSL constants in CipherBase (Tobias Nießen) [#20339](https://github.com/nodejs/node/pull/20339)
-* [[`e17280e8c9`](https://github.com/nodejs/node/commit/e17280e8c9)] - **crypto**: make pbkdf2 use checkIsArrayBufferView (Daniel Bevenius) [#20251](https://github.com/nodejs/node/pull/20251)
-* [[`61e93963ce`](https://github.com/nodejs/node/commit/61e93963ce)] - **crypto**: add checkIsArrayBufferView (Daniel Bevenius) [#20251](https://github.com/nodejs/node/pull/20251)
-* [[`e81bb9f8a3`](https://github.com/nodejs/node/commit/e81bb9f8a3)] - **crypto**: add getIntOption function to reduce dupl (Daniel Bevenius) [#20247](https://github.com/nodejs/node/pull/20247)
-* [[`391d2f830a`](https://github.com/nodejs/node/commit/391d2f830a)] - **crypto**: simplify diffiehellman getFormat function (Daniel Bevenius) [#20246](https://github.com/nodejs/node/pull/20246)
-* [[`3cf53b66c2`](https://github.com/nodejs/node/commit/3cf53b66c2)] - **deps**: patch V8 to 6.6.346.27 (Myles Borins) [#20480](https://github.com/nodejs/node/pull/20480)
+* [[`a7758c76c0`](https://github.com/nodejs/node/commit/a7758c76c0)] - **(SEMVER-MINOR)** **console**: hacer que console.table() utilice inspeccionar con color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
+* [[`29bc735d42`](https://github.com/nodejs/node/commit/29bc735d42)] - **console**: arreglar caso límite de console.table() (Rich Trott) [#20323](https://github.com/nodejs/node/pull/20323)
+* [[`dfcf20f5fd`](https://github.com/nodejs/node/commit/dfcf20f5fd)] - **crypto**: utilice las nuevas constantes OpenSSl en CipherBase (Tobias Nießen) [#20339](https://github.com/nodejs/node/pull/20339)
+* [[`e17280e8c9`](https://github.com/nodejs/node/commit/e17280e8c9)] - **crypto**: hacer que pbkdf2 utilice checkIsArrayBufferView (Daniel Bevenius) [#20251](https://github.com/nodejs/node/pull/20251)
+* [[`61e93963ce`](https://github.com/nodejs/node/commit/61e93963ce)] - **crypto**: agregar checkIsArrayBufferView (Daniel Bevenius) [#20251](https://github.com/nodejs/node/pull/20251)
+* [[`e81bb9f8a3`](https://github.com/nodejs/node/commit/e81bb9f8a3)] - **crypto**: añadir la función getIntOption para reducir dupl (Daniel Bevenius) [#20247](https://github.com/nodejs/node/pull/20247)
+* [[`391d2f830a`](https://github.com/nodejs/node/commit/391d2f830a)] - **crypto**: simplificar la función getFormat de diffiehellman (Daniel Bevenius) [#20246](https://github.com/nodejs/node/pull/20246)
+* [[`3cf53b66c2`](https://github.com/nodejs/node/commit/3cf53b66c2)] - **deps**: parche de V8 a 6.6.346.27 (Myles Borins) [#20480](https://github.com/nodejs/node/pull/20480)
 * [[`da8bc6ab50`](https://github.com/nodejs/node/commit/da8bc6ab50)] - **deps**: cherry-pick 76cab5f from upstream V8 (Michaël Zasso) [#20350](https://github.com/nodejs/node/pull/20350)
 * [[`05ce635e9a`](https://github.com/nodejs/node/commit/05ce635e9a)] - **doc**: match console.count()/countReset() signatures (Lambdac0re) [#20599](https://github.com/nodejs/node/pull/20599)
 * [[`e995ae5992`](https://github.com/nodejs/node/commit/e995ae5992)] - **doc**: clarify `this` in event listeners (daGo) [#20537](https://github.com/nodejs/node/pull/20537)
