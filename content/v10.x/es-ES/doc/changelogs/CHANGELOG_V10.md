@@ -254,14 +254,14 @@
   * V8 ha sido actualizado a 6.6. [[`9daebb48d6`](https://github.com/nodejs/node/commit/9daebb48d6)]
   * OpenSSL ha sido actualizado a 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter 
-  * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* File System 
-  * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
-  * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
-  * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
+  * El método `EventEmitter.prototype.off()` ha sido agregado como un alias para `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
+* Sistema de Archivos 
+  * La API `fs/promises` proporciona versiones experimentales prometidas de las funciones `fs`. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
+  * Los errores de ruta inválidos ahora se lanzan de forma sincrónica. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
+  * El método `fs.readFile()` ahora particiona las lecturas para evitar el agotamiento del grupo de subprocesos. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
 * HTTP 
-  * Processing of HTTP Status codes `100`, `102-199` has been improved. [[`baf8495078`](https://github.com/nodejs/node/commit/baf8495078)]
-  * Multi-byte characters in URL paths are now forbidden. [[`b961d9fd83`](https://github.com/nodejs/node/commit/b961d9fd83)]
+  * El procesamiento de los códigos de Estatus de HTTP `100`, `102-199` ha sido mejorado. [[`baf8495078`](https://github.com/nodejs/node/commit/baf8495078)]
+  * Los caracteres mult-byte en rutas URL ahora están prohibidos. [[`b961d9fd83`](https://github.com/nodejs/node/commit/b961d9fd83)]
 * N-API 
   * The n-api is no longer experimental. [[`cd7d7b15c1`](https://github.com/nodejs/node/commit/cd7d7b15c1)]
 * Net 
