@@ -16,11 +16,11 @@ La línea de lanzamiento "Actual" es mucho más indulgente que las líneas de la
 
 ## Cómo presentar un backport de una pull request
 
-Para los siguientes pasos, vamos a suponer que es necesario un backport para la línea de lanzamiento v6.x. Todos los comando usarán la rama `v6.x-staging` como la rama objetivo. In order to submit a backport pull request to another branch, simply replace that with the staging branch for the targeted release line.
+Para los siguientes pasos, vamos a suponer que es necesario un backport para la línea de lanzamiento v6.x. Todos los comando usarán la rama `v6.x-staging` como la rama objetivo. Para enviar un backport de una pull request a otra rama, simplemente reemplace eso con la escenificación de rama para la línea de lanzamiento dirigida.
 
-1. Checkout the staging branch for the targeted release line
-2. Make sure that the local staging branch is up to date with the remote
-3. Create a new branch off of the staging branch
+1. Compruebe la escenificación de rama para la línea de lanzamiento apuntada
+2. Asegúrese que la escenificación de rama local esté actualizada con el remoto
+3. Cree una nueva rama fuera de la escenificación de rama
 
 ```shell
 # Assuming your fork of Node.js is checked out in $NODE_DIR,
