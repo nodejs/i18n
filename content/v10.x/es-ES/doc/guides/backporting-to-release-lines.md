@@ -43,14 +43,14 @@ git clean -xfd ./test/
 ```shell
 # Decir que $SHA es 773cdc31ef
 $ git cherry-pick $SHA # Use su error de hash de commit: podría no aplicar 773cdc3... <commit title>
-hint: after resolving the conflicts, mark the corrected paths
-hint: with 'git add <paths>' or 'git rm <paths>'
-hint: and commit the result with 'git commit'
+pista: después de resolver los conflictos, marque las rutas corregidas 
+pista: con 'git add <paths>' or 'git rm <paths>
+pista: y realice commit de los resultados con 'git commit'
 ```
 
-1. Make the required changes to remove the conflicts, add the files to the index using `git add`, and then commit the changes. That can be done with `git cherry-pick --continue`.
-2. Leave the commit message as is. If you think it should be modified, comment in the Pull Request.
-3. Make sure `make -j4 test` passes.
+1. Realice los cambios requeridos para eliminar los conflictos, añada los archivos al índice usando `git add`, y luego realice commit a los cambios. Eso se puede hacer con `git cherry-pick --continue`.
+2. Deje el mensaje del commit como está. Si piensa que debe ser modificado, comente en la Pull Request.
+3. Asegúrese que `make -j4 test` pase.
 4. Push the changes to your fork
 5. Open a pull request: 
     1. Be sure to target the `v6.x-staging` branch in the pull request.
