@@ -232,13 +232,13 @@
 * Afirmar 
   * Llamar a `assert.fail()` con más de un argumento está desaprobado. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
   * Llamar a `assert.ok()` sin argumentos se lanzará ahora. [[`3cd7977a42`](https://github.com/nodejs/node/commit/3cd7977a42)]
-  * Llamar a `assert.ifError()` se lanzará ahora con algún argumento que no sea `undefined` o `null`. Previously the method would throw with any truthy value. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
-  * The `assert.rejects()` and `assert.doesNotReject()` methods have been added for working with async functions. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
+  * Llamar a `assert.ifError()` se lanzará ahora con algún argumento que no sea `undefined` o `null`. Previamente el método se lanzaba con cualquier valor verdadero. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
+  * Los métodos `assert.rejects()` y `assert.doesNotReject()` han sido añadidos para trabajar con funciones asincrónicas. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
 * Async_hooks 
-  * Older experimental async_hooks APIs have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
+  * Las APIs async_hooks experimentales antiguas han sido eliminadas. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
 * Buffer 
-  * Uses of `new Buffer()` and `Buffer()` outside of the `node_modules` directory will now emit a runtime deprecation warning. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
-  * `Buffer.isEncoding()` now returns `undefined` for falsy values, including an empty string. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
+  * Los usos de `new Buffer()` y `Buffer()` fuera del directorio `node_modules` ahora emitirá una advertencia de desaprobación del tiempo de ejecución. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
+  * `Buffer.isEncoding()` ahora devuelve `undefined` para valores falsos, incluyendo una cadena vacía. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
   * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
 * Child Process 
   * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
