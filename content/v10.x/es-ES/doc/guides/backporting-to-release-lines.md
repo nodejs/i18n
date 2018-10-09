@@ -51,13 +51,13 @@ pista: y realice commit de los resultados con 'git commit'
 1. Realice los cambios requeridos para eliminar los conflictos, añada los archivos al índice usando `git add`, y luego realice commit a los cambios. Eso se puede hacer con `git cherry-pick --continue`.
 2. Deje el mensaje del commit como está. Si piensa que debe ser modificado, comente en la Pull Request.
 3. Asegúrese que `make -j4 test` pase.
-4. Push the changes to your fork
-5. Open a pull request: 
-    1. Be sure to target the `v6.x-staging` branch in the pull request.
-    2. Include the backport target in the pull request title in the following format — `[v6.x backport] <commit title>`. Example: `[v6.x backport] process: improve performance of nextTick`
-    3. Check the checkbox labeled "Allow edits from maintainers".
-    4. In the description add a reference to the original PR
-    5. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
-6. If during the review process conflicts arise, use the following to rebase: `git pull --rebase upstream v6.x-staging`
+4. Impulse los cambios a su fork
+5. Abra una pull request: 
+    1. Asegúrese de apuntar la rama `v6.x-staging` en el pull request.
+    2. Incluya el objetivo del backport en el título de la pull request en el siguiente formato — `[v6.x backport] <commit title>`. Ejemplo: `proceso [v6.x backport]: mejora el rendimiento de nextTick`
+    3. Compruebe la casilla etiquetada como "Permitir ediciones de mantenedores".
+    4. En la descripción añada una referencia al PR original
+    5. Ejecute un trabajo CI [`node-test-pull-request`][] (con `REBASE_ONTO` establecido al predeterminado `<pr base branch>`)
+6. Si durante el proceso de revisión surgen conflictos, use lo siguiente para rebase: `git pull --rebase upstream v6.x-staging`
 
-After the PR lands replace the `backport-requested-v6.x` label on the original PR with `backported-to-v6.x`.
+Después que aterrice el PR reemplace la etiqueta `backport-requested-v6.x` en el PR original con `backported-to-v6.x`.
