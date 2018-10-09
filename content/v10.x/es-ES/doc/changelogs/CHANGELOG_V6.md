@@ -1480,7 +1480,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 
 * **build**: 
   * soporte para construcción mips64el (nanxiongchao) [#10991](https://github.com/nodejs/node/pull/10991)
-* **clúster**: 
+* **cluster**: 
   * disconnect() ahora devuelve una referencia al worker desconectado. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
 * **crypto**: 
   * capacidad para certificar almacenaje en tiempo de ejecución (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
@@ -1498,7 +1498,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * **process**: 
   * añadir variable de ambiente NODE_NO_WARNINGS (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
 * **readline**: 
-  * añadir opción para detener duplicados en historia (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
+  * añadir opción para detener duplicados en la historia (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
 * **src**: 
   * soportar "--" después de "-e" como end-of-options (John Barboza) [#10651](https://github.com/nodejs/node/pull/10651)
 * **tls**: 
@@ -1523,7 +1523,7 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * [[`fd9bb56f9a`](https://github.com/nodejs/node/commit/fd9bb56f9a)] - **(SEMVER-MINOR)** **crypto**: Usar CAs del sistema en vez de usar los empaquetados (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
 * [[`bbfd2e309b`](https://github.com/nodejs/node/commit/bbfd2e309b)] - **(SEMVER-MINOR)** **crypto**: no usar punteros para std::vector (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
 * [[`875674bb1c`](https://github.com/nodejs/node/commit/875674bb1c)] - **(SEMVER-MINOR)** **crypto**: devolver `this` en setAuthTag/setAAD (Kirill Fomichev) [#9398](https://github.com/nodejs/node/pull/9398)
-* [[`f8da60fb21`](https://github.com/nodejs/node/commit/f8da60fb21)] - **(SEMVER-MINOR)** **crypto**: soportar OPENSSL_CONF de nuevo (Sam Roberts) [#11006](https://github.com/nodejs/node/pull/11006)
+* [[`f8da60fb21`](https://github.com/nodejs/node/commit/f8da60fb21)] - **(SEMVER-MINOR)** **crypto**: soportar de nuevo a OPENSSL_CONF (Sam Roberts) [#11006](https://github.com/nodejs/node/pull/11006)
 * [[`0a79b2da1b`](https://github.com/nodejs/node/commit/0a79b2da1b)] - **crypto**: hacer LazyTransform compatible con Streams1 (Matteo Collina) [#12380](https://github.com/nodejs/node/pull/12380)
 * [[`7678da4c65`](https://github.com/nodejs/node/commit/7678da4c65)] - **crypto**: gestionar excepciones en hmac/hash.digest (Tobias Nießen) [#12164](https://github.com/nodejs/node/pull/12164)
 * [[`e714243408`](https://github.com/nodejs/node/commit/e714243408)] - **deps**: actualizar libuv a 1.11.0 (cjihrig) [#11094](https://github.com/nodejs/node/pull/11094)
