@@ -39,7 +39,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 在 Node.js 6.0.0 版本之前, 实例通过 `Buffer` 构造函数创建, 它基于不同构造参数 `Buffer` 返回不同的 `Buffer`实例：
 
-* 将一个数字作为第一个参数传入 `Buffer` (例子: `new Buffer(10)`) 创造一个有特定大小的新 `Buffer` 在 Node.js 8.0.0 之前, 为这样的 `Buffer` 实例分配的内存是 * 未 * 初始化的, 并且 * 可以包含敏感数据 *。 这样的 `Buffer` 实例 * 必须 * 随后使用 [` buf.fill(0) `] [` buf.fill()`] 或写入整个 `Buffer` 来初始化。 虽然此行为是 *有意* 提高性能, 但开发经验表明, 创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node. js 8.0.0, `Buffer(num)` 和 `new Buffer(num)` 将返回一个具有初始化内存的 `Buffer`。
+* 将一个数字作为第一个参数传入 `Buffer` (例子: `new Buffer(10)`)，将创造一个有特定大小的新 `Buffer` 在 Node.js 8.0.0 之前, 为这样的 `Buffer` 实例分配的内存是 * 未 * 初始化的, 并且 * 可以包含敏感数据 *。 这样的 `Buffer` 实例 * 必须 * 随后使用 [` buf.fill(0) `] [` buf.fill()`] 或写入整个 `Buffer` 来初始化。 虽然此行为是 *有意* 提高性能, 但开发经验表明, 创建快速但未初始化的 `Buffer` 与创建速度较慢但更安全的 `Buffer` 之间需要更明确的区别。 从 Node. js 8.0.0, `Buffer(num)` 和 `new Buffer(num)` 将返回一个具有初始化内存的 `Buffer`。
 * 作为第一个参数传递字符串、数组或 `Buffer`, 将传递的对象的数据复制到 `Buffer` 中。
 * 传递 [`ArrayBuffer`] 或 [`SharedArrayBuffer`] 返回一个 `Buffer`, 它与给定的数组缓冲区共享分配的内存。
 
@@ -47,13 +47,13 @@ const buf6 = Buffer.from('tést', 'latin1');
 
 为使 `Buffer` 实例的创建更加可靠且不易出错, `new Buffer()` 构造函数的各种形式已被 ** 否决**, 并由单独的 `Buffer.from()`、[`Buffer.alloc()`] 和 [`Buffer.allocUnsafe()`] 方法。
 
-*开发者应当把所有正在使用的 `new Buffer()` 构造函数迁移到这些新的 API 上。*
+*开发人员应将 `new Buffer()` 构造函数的所有现有使用迁移到这些新 api 之一中。*
 
 * [`Buffer.from(array)`] 返回一个新的 `Buffer`, *包含提供的八位字节的副本 *。
-* [`Buffer.from(arrayBuffer[, byteOffset[,length]])`][`Buffer.from(arrayBuf)`] 返回一个新建的与给定的 [`ArrayBuffer`] 共享同一内存的 `Buffer`。
-* [`Buffer.from(array)`] 返回一个新建的包含所提供 `Buffer` 的内容副本的 `Buffer`。
-* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个*包含所提供的字符串副本的* `Buffer`。
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回指定大小的新初始化的 `Buffer`。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 更慢, 但保证新创建的 `Buffer` 实例从不包含潜在的敏感旧数据。
+* [`Buffer.from(arrayBuffer[, byteOffset[,length]])`][`Buffer.from(arrayBuf)`] 返回一个新的 `Buffer`,与给定的 [`ArrayBuffer`] *共享相同的已分配内存 *。
+* [`Buffer.from(array)`] 返回一个新的 `Buffer`, 它*包含一份已有的 `Buffer` 副本*。
+* [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] 返回一个*包含指定字符串副本的* `Buffer`。
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] 返回指定大小的新初始化 `Buffer`。 此方法比 [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 更慢, 但保证新创建的 `Buffer` 实例从不包含可能敏感的旧数据。
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] 返回一个指定 `size` 的未初始化的 `Buffer`。 因为该 `Buffer` 是未初始化的，分配的内存段可能包含潜在的敏感旧数据。
 
 如果 `size` 小于或等于 [`Buffer.poolSize`] 的一半， 则 [`Buffer.allocUnsafe()`] 返回的 `Buffer` 实例 *可能* 会被分配进一个共享的内部内存池。 [`Buffer.allocUnsafeSlow()`] 返回的实例 *从不* 使用共享的内部内存池。
