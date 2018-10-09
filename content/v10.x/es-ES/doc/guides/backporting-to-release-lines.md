@@ -10,13 +10,13 @@ Cada línea de lanzamiento tiene una escenificación de rama que el publicador u
 
 Si un cherry-pick de master no aterriza limpiamente en una escenificación de rama, el lanzador marcará la pull request con una etiqueta particular para esa línea de lanzamiento (p. e.j `backport-requested-vN.x`), especificando a nuestras herramientas que esta pull request no debe ser incluida. Entonces, el lanzador agregará un comentario solicitando que se realice un backport para una pull request.
 
-## What can be backported?
+## ¿Qué puede ser backported?
 
-The "Current" release line is much more lenient than the LTS release lines in what can be landed. Our LTS release lines (see the [Release Plan](https://github.com/nodejs/Release#release-plan)) require that commits mature in the Current release for at least 2 weeks before they can be landed in an LTS staging branch. Only after "maturation" will those commits be cherry-picked or backported.
+La línea de lanzamiento "Actual" es mucho más indulgente que las líneas de lanzamiento LTS en lo que se puede aterrizar. Nuestras líneas de lanzamiento LTS (vea el [Plan de Lanzamiento](https://github.com/nodejs/Release#release-plan)) requieren que los commits maduren en el lanzamiento Current por al menos 2 semanas antes de que puedan aterrizar en una escenificación de rama LTS. Solo después de la "maduración" esos commits podrán ser seleccionados o backported.
 
-## How to submit a backport pull request
+## Cómo presentar un backport de una pull request
 
-For the following steps, let's assume that a backport is needed for the v6.x release line. All commands will use the `v6.x-staging` branch as the target branch. In order to submit a backport pull request to another branch, simply replace that with the staging branch for the targeted release line.
+Para los siguientes pasos, vamos a suponer que es necesario un backport para la línea de lanzamiento v6.x. Todos los comando usarán la rama `v6.x-staging` como la rama objetivo. In order to submit a backport pull request to another branch, simply replace that with the staging branch for the targeted release line.
 
 1. Checkout the staging branch for the targeted release line
 2. Make sure that the local staging branch is up to date with the remote
