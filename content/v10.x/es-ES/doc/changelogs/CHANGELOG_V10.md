@@ -239,20 +239,20 @@
 * Buffer 
   * Los usos de `new Buffer()` y `Buffer()` fuera del directorio `node_modules` ahora emitirá una advertencia de desaprobación del tiempo de ejecución. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
   * `Buffer.isEncoding()` ahora devuelve `undefined` para valores falsos, incluyendo una cadena vacía. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
-  * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
-* Child Process 
-  * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
-* Console 
-  * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
+  * `Buffer.fill()` se lanzará si se hace un intento de llenar con un `Buffer` vacío. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
+* Proceso Secundario 
+  * Las propiedades indefinidas de env son ignoradas. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
+* Consola 
+  * El método `console.table()` ha sido agregado. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Crypto 
-  * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
-  * The `decipher.finaltol()` method has been deprecated. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
-  * The `crypto.DEFAULT_ENCODING` property has been deprecated. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
-  * The `ECDH.convertKey()` method has been added. [[`f2e02883e7`](https://github.com/nodejs/node/commit/f2e02883e7)]
-  * The `crypto.fips` property has been deprecated. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
-* Dependencies 
-  * V8 has been updated to 6.6. [[`9daebb48d6`](https://github.com/nodejs/node/commit/9daebb48d6)]
-  * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
+  * Los métodos `crypto.createCipher()` y `crypto.createDecipher()` han sido desaprobados. Por favor, utilice `crypto.createCipheriv()` y `crypto.createDecipheriv()` en su lugar. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
+  * El método `decipher.finaltol()` ha sido desaprobado. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
+  * La propiedad `crypto.DEFAULT_ENCODING` ha sido desaprobada. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
+  * El método `ECDH.convertKey()` ha sido añadido. [[`f2e02883e7`](https://github.com/nodejs/node/commit/f2e02883e7)]
+  * La propiedad `crypto.fips` ha sido desaprobada. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
+* Dependencias 
+  * V8 ha sido actualizado a 6.6. [[`9daebb48d6`](https://github.com/nodejs/node/commit/9daebb48d6)]
+  * OpenSSL ha sido actualizado a 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter 
   * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
 * File System 
