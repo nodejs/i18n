@@ -1454,7 +1454,7 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 
 ## 2017-07-11, Versión 6.11.1 'Boron' (LTS), @MylesBorins
 
-This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
+Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
 ### Notable Changes
 
