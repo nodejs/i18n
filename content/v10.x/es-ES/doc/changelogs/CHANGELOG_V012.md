@@ -313,20 +313,20 @@ Actualización de Seguridad
   * [418cde0765] - doc: mencionar que el modo es ignorado si existe el archivo (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [85bcb281e4] - doc: mejorar descripción de http.abort (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [5ccb429ee8] - doc, comments: Corrección gramatical y ortográfica (Ville Skyttä) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [a24db43101] - docs: event emitter behavior notice (Samuel Mills (Henchman)) https://github.com/nodejs/node-v0.x-archive/pull/25467
+  * [a24db43101] - docs: aviso de comportamiento de evento emitter (Samuel Mills (Henchman)) https://github.com/nodejs/node-v0.x-archive/pull/25467
   * [8cbf7cb021] - docs: events clarify emitter.listener() behavior (Benjamin Steephenson) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [b7229debbe] - docs: Fix default options for fs.createWriteStream() (Chris Neave) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [f0453caea2] - domains: port caeb677 from v0.10 to v0.12 (Jeremy Whitlock) https://github.com/nodejs/node-v0.x-archive/pull/25835
+  * [b7229debbe] - docs: Corregir opciones por defecto para fs.createWriteStream() (Chris Neave) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [f0453caea2] - domains: puerto caeb677 de v0.10 a v0.12 (Jeremy Whitlock) https://github.com/nodejs/node-v0.x-archive/pull/25835
   * [261fa3620f] - src: fix intermittent SIGSEGV in resolveTxt (Evan Lucas) https://github.com/nodejs/node-v0.x-archive/pull/9300
-  * [1f7257b02d] - test: mark test-https-aws-ssl flaky on linux (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25893
-  * [cf435d55db] - test: mark test-signal-unregister as flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25750
-  * [ceb6a8c131] - test: fix test-debug-port-from-cmdline (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25748
-  * [22997731e6] - test: add regression test for #25735 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739
-  * [39e05639f4] - test: mark http-pipeline-flood flaky on win32 (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25707
-  * [78d256e7f5] - test: unmark tests that are no longer flaky (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25676
+  * [1f7257b02d] - test: marcar test-https-aws-ssl flaky en linux (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25893
+  * [cf435d55db] - test: marcar test-signal-unregister como flaky (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25750
+  * [ceb6a8c131] - test: reparar test-debug-port-from-cmdline (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25748
+  * [22997731e6] - test: añadir prueba de regresión para #25735 (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739
+  * [39e05639f4] - test: marcar http-pipeline-flood flaky en win32 (Julien Gilli) https://github.com/nodejs/node-v0.x-archive/pull/25707
+  * [78d256e7f5] - test: desmarcar pruebas que ya no son flaky (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25676
   * [a9b642cf5b] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
-  * [b48639befd] - test: support writing test output to file (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
-  * [caa16b41d6] - (SEMVER-MINOR) tls: prevent server from using dhe keys < 768 (Michael Dawson) https://github.com/nodejs/node/pull/3890
+  * [b48639befd] - test: soportar salida de prueba de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
+  * [caa16b41d6] - (SEMVER-MINOR) tls: prevenir al servidor utilizar claves dhe < 768 (Michael Dawson) https://github.com/nodejs/node/pull/3890
   * [0363cf4a80] - tls: Closing parent socket also closes the tls sock (Devin Nakamura) https://github.com/nodejs/node-v0.x-archive/pull/25642
   * [75697112e8] - tls: do not hang without `newSession` handler (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739
   * [d998a65058] - tools: pass constant to logger instead of string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25653
