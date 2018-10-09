@@ -1498,19 +1498,19 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
 * **process**: 
   * añadir variable de ambiente NODE_NO_WARNINGS (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
 * **readline**: 
-  * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
+  * añadir opción para detener duplicados en historia (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
 * **src**: 
-  * support "--" after "-e" as end-of-options (John Barboza) [#10651](https://github.com/nodejs/node/pull/10651)
+  * soportar "--" después de "-e" como end-of-options (John Barboza) [#10651](https://github.com/nodejs/node/pull/10651)
 * **tls**: 
-  * new tls.TLSSocket() supports sec ctx options (Sam Roberts) [#11005](https://github.com/nodejs/node/pull/11005)
-  * Allow obvious key/passphrase combinations. (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
+  * el nuevo tls.TLSSocket() soporta opciones sec ctx (Sam Roberts) [#11005](https://github.com/nodejs/node/pull/11005)
+  * Permitir combinaciones de clave/contraseña obvias. (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
 
 ### Commits
 
-* [[`d38364b062`](https://github.com/nodejs/node/commit/d38364b062)] - deps/v8: add missing #include "unicode/normlzr.h" (Bruno Pagani) [#13040](https://github.com/nodejs/node/pull/13040)
-* [[`62a8f4774e`](https://github.com/nodejs/node/commit/62a8f4774e)] - **async_wrap**: close the destroy_ids_idle_handle_ (René Schünemann) [#10385](https://github.com/nodejs/node/pull/10385)
-* [[`995423e790`](https://github.com/nodejs/node/commit/995423e790)] - **benchmark**: terminate child process on Windows (Rich Trott) [#12658](https://github.com/nodejs/node/pull/12658)
-* [[`32fa37f3d6`](https://github.com/nodejs/node/commit/32fa37f3d6)] - **benchmark**: cleanup child_process IPC benchmark (Yuya Tanaka) [#10557](https://github.com/nodejs/node/pull/10557)
+* [[`d38364b062`](https://github.com/nodejs/node/commit/d38364b062)] - deps/v8: añadir #include "unicode/normlzr.h" faltante (Bruno Pagani) [#13040](https://github.com/nodejs/node/pull/13040)
+* [[`62a8f4774e`](https://github.com/nodejs/node/commit/62a8f4774e)] - **async_wrap**: cerrar el destroy_ids_idle_handle_ (René Schünemann) [#10385](https://github.com/nodejs/node/pull/10385)
+* [[`995423e790`](https://github.com/nodejs/node/commit/995423e790)] - **benchmark**: terminar proceso secundario en Windows (Rich Trott) [#12658](https://github.com/nodejs/node/pull/12658)
+* [[`32fa37f3d6`](https://github.com/nodejs/node/commit/32fa37f3d6)] - **benchmark**: limpiar benchmark de IPC de child_process (Yuya Tanaka) [#10557](https://github.com/nodejs/node/pull/10557)
 * [[`dd0b170b58`](https://github.com/nodejs/node/commit/dd0b170b58)] - **build**: fix case in lib names (Refael Ackermann) [#12522](https://github.com/nodejs/node/pull/12522)
 * [[`bc64cf2b5e`](https://github.com/nodejs/node/commit/bc64cf2b5e)] - **build**: make linter targets silent (Sakthipriyan Vairamani (thefourtheye)) [#12423](https://github.com/nodejs/node/pull/12423)
 * [[`a0973c3c1c`](https://github.com/nodejs/node/commit/a0973c3c1c)] - **build**: don't create directory for NDK toolchain (TheBeastOfCaerbannog) [#11916](https://github.com/nodejs/node/pull/11916)
