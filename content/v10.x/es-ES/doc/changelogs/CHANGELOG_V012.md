@@ -261,29 +261,29 @@ Actualización de Seguridad
 
 ### Cambios notables
 
-* http: Repara CVE-2015-8027, un bug por el que un socket HTTP ya no puede tener un analizador asociado, pero una solicitud pipelined intenta desencadenar una pausa o reanudar en el analizador inexistente, una vulnerabilidad potencial de denegación de servicio. (Fedor Indutny)
-* openssl: Upgrade to 1.0.1q, fixes CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
+* http: Reparar CVE-2015-8027, un bug por el que un socket HTTP ya no puede tener un analizador asociado, pero una solicitud pipelined intenta desencadenar una pausa o reanudar en el analizador inexistente, una vulnerabilidad potencial de denegación de servicio. (Fedor Indutny)
+* openssl: Actualizar a 1.0.1q, repara CVE-2015-3194 "Fallo de verificación de certificado con parámetro PSS perdido", un potencial vector de denegación de servicio para los servidores TLS de Node.js mediante la autenticación de certificado de cliente; los clientes TLS también son impactados. Hay más detalles disponibles en <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
 ### Commits
 
-* [8d24a14f2c] - deps: upgrade to openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
-* [dfc6f4a9af] - http: fix pipeline regression (Fedor Indutny)
+* [8d24a14f2c] - deps: actualizar a openssl 1.0.1q (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
+* [dfc6f4a9af] - http: reparar regresión pipeline (Fedor Indutny)
 
 <a id="0.12.8"></a>
 
-## 2015.11.25, Version 0.12.8 (LTS), @rvagg
+## 2015.11.25, Versión 0.12.8 (LTS), @rvagg
 
 * [d9399569bd] - build: backport tools/release.sh (Rod Vagg) https://github.com/nodejs/node/pull/3642
 * [78c5b4c8bd] - build: backport config for new CI infrastructure (Rod Vagg) https://github.com/nodejs/node/pull/3642
-* [83441616a5] - build: fix --without-ssl compile time error (Ben Noordhuis) https://github.com/nodejs/node/pull/3825
-* [8887666b0b] - build: update manifest to include Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2843
-* [08afe4ec8e] - build: add MSVS 2015 support (Rod Vagg) https://github.com/nodejs/node/pull/2843
-* [4f2456369c] - build: work around VS2015 issue in ICU <56 (steven r. loomis) https:> 
+* [83441616a5] - build: reparar error de tiempo de compilación --without-ssl (Ben Noordhuis) https://github.com/nodejs/node/pull/3825
+* [8887666b0b] - build: actualizar manifiesto para incluir Windows 10 (Lucien Greathouse) https://github.com/nodejs/node/pull/2843
+* [08afe4ec8e] - build: agregar soporte MSVS 2015 (Rod Vagg) https://github.com/nodejs/node/pull/2843
+* [4f2456369c] - build: trabajar alrededor de falla VS2015 en ICU <56 (steven r. loomis) https:> 
   * [15030f26fd] - build: Intl: bump ICU4C from 54 to 55 (backport) (Steven R. Loomis) https://github.com/nodejs/node-v0.x-archive/pull/25856
-  * [1083fa70f0] - build: run-ci makefile rule (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
-  * [2d2494cf14] - build: support flaky tests in test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
-  * [b25d26f2ef] - build: support Jenkins via test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
-  * [7e4b47f38a] - build,win: fix node.exe resource version (João Reis) https://github.com/nodejs/node/pull/3053
+  * [1083fa70f0] - build: regla makefile run-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
+  * [2d2494cf14] - build: soportar pruebas flaky en test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
+  * [b25d26f2ef] - build: soportar Jenkins a través de test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
+  * [7e4b47f38a] - build,win: reparar versión de recurso node.exe (João Reis) https://github.com/nodejs/node/pull/3053
   * [e07c86e240] - build,win: try next MSVS version on failure (João Reis) https://github.com/nodejs/node/pull/2843
   * [b5a0abcfdf] - child_process: clone spawn options argument (cjihrig) https://github.com/nodejs/node-v0.x-archive/pull/9159
   * [8b81f98c41] - configure: add --without-mdb flag (cgalibern) https://github.com/nodejs/node-v0.x-archive/pull/25707
