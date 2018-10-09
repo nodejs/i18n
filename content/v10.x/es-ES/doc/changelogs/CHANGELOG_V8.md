@@ -582,7 +582,7 @@ Las correcciones para los siguientes CVEs se incluyen en esta versión:
 * [[`c5920737a1`](https://github.com/nodejs/node/commit/c5920737a1)] - **src**: operación abstracta getpid() (Ben Noordhuis) [#17087](https://github.com/nodejs/node/pull/17087)
 * [[`f12efd5990`](https://github.com/nodejs/node/commit/f12efd5990)] - **src**: usar unique_ptr para http2_state (Franziska Hinkelmann) [#17078](https://github.com/nodejs/node/pull/17078)
 * [[`e46f06c53d`](https://github.com/nodejs/node/commit/e46f06c53d)] - **src**: usar std::unique_ptr en base-object-inl.h (Franziska Hinkelmann) [#17079](https://github.com/nodejs/node/pull/17079)
-* [[`c9da446533`](https://github.com/nodejs/node/commit/c9da446533)] - **src**: fix size of CounterSet (Witthawat Piwawatthanapanit) [#16984](https://github.com/nodejs/node/pull/16984)
+* [[`c9da446533`](https://github.com/nodejs/node/commit/c9da446533)] - **src**: corregir el tamaño de CounterSet (Witthawat Piwawatthanapanit) [#16984](https://github.com/nodejs/node/pull/16984)
 * [[`05422689d7`](https://github.com/nodejs/node/commit/05422689d7)] - **src**: use smart pointer instead of new and delete (Franziska Hinkelmann) [#17020](https://github.com/nodejs/node/pull/17020)
 * [[`54706f0531`](https://github.com/nodejs/node/commit/54706f0531)] - **src**: perf_hooks: fix wrong sized delete (Ali Ijaz Sheikh) [#16898](https://github.com/nodejs/node/pull/16898)
 * [[`7db8f01ef7`](https://github.com/nodejs/node/commit/7db8f01ef7)] - **src**: implement backtrace-on-abort for windows (Anna Henningsen) [#16951](https://github.com/nodejs/node/pull/16951)
