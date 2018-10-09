@@ -141,7 +141,7 @@ changes:
 
 遵循以下注意事项，也可以从一个 `Buffer` 中创建一个新的 [`TypedArray`] 实例：
 
-1. The `Buffer` object's memory is copied to the [`TypedArray`], not shared.
+1. `Buffer` 对象的内存是被复制到 [`TypedArray`] 中的，而不是共享的。
 
 2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
 
