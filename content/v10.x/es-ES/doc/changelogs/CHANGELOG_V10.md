@@ -57,7 +57,7 @@
 * [[`b0e6f10530`](https://github.com/nodejs/node/commit/b0e6f10530)] - **benchmark**: añadir plataforma para zlib gzip + gunzip cycle (Anna Henningsen) [#20034](https://github.com/nodejs/node/pull/20034)
 * [[`167de1f038`](https://github.com/nodejs/node/commit/167de1f038)] - **build**: verificar para diferentes firmas desaprobadas (Ruben Bridgewater) [#20384](https://github.com/nodejs/node/pull/20384)
 * [[`348d391a71`](https://github.com/nodejs/node/commit/348d391a71)] - **build**: remove --xcode configure switch (Ben Noordhuis) [#20328](https://github.com/nodejs/node/pull/20328)
-* [[`2ce4b7cb8c`](https://github.com/nodejs/node/commit/2ce4b7cb8c)] - **build**: do not depend on `cp` in `PATH` (Anna Henningsen) [#20296](https://github.com/nodejs/node/pull/20296)
+* [[`2ce4b7cb8c`](https://github.com/nodejs/node/commit/2ce4b7cb8c)] - **build**: no depende de `cp` en `PATH` (Anna Henningsen) [#20296](https://github.com/nodejs/node/pull/20296)
 * [[`c5b3459003`](https://github.com/nodejs/node/commit/c5b3459003)] - **build**: use -9 with `kill` in Makefile (Rich Trott) [#20195](https://github.com/nodejs/node/pull/20195)
 * [[`b5931e1d45`](https://github.com/nodejs/node/commit/b5931e1d45)] - **child_process**: name anonymous functions (Denis Fäcke) [#20399](https://github.com/nodejs/node/pull/20399)
 * [[`ec2037da12`](https://github.com/nodejs/node/commit/ec2037da12)] - **child_process**: fix leak when passing http sockets (Santiago Gimeno) [#20305](https://github.com/nodejs/node/pull/20305)
