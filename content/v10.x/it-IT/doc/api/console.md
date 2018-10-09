@@ -229,7 +229,7 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean} Se `true` allora verranno visualizzate anche le proprietà non enumerabili dell'object e dei simboli. **Default:** `false`.
+  * `showHidden` {boolean} Se `true` allora verranno visualizzate anche le proprietà non enumerabili e simboliche dell'object. **Default:** `false`.
   * `depth` {number} Indica ad [`util.inspect()`][] quante volte deve essere ripetuto durante la formattazione dell'object. E' utile per ispezionare gli object complicati di grandi dimensioni. Per farlo ripetere indefinitamente, passa `null`. **Default:** `2`.
   * `colors` {boolean} Se `true`, l'output avrà uno stile con codici di colore ANSI. I colori sono personalizzabili; vedi [customizing `util.inspect()` colors][]. **Default:** `false`.
 
