@@ -284,35 +284,35 @@ Actualización de Seguridad
   * [2d2494cf14] - build: soportar pruebas flaky en test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
   * [b25d26f2ef] - build: soportar Jenkins a través de test-ci (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
   * [7e4b47f38a] - build,win: reparar versión de recurso node.exe (João Reis) https://github.com/nodejs/node/pull/3053
-  * [e07c86e240] - build,win: try next MSVS version on failure (João Reis) https://github.com/nodejs/node/pull/2843
-  * [b5a0abcfdf] - child_process: clone spawn options argument (cjihrig) https://github.com/nodejs/node-v0.x-archive/pull/9159
-  * [8b81f98c41] - configure: add --without-mdb flag (cgalibern) https://github.com/nodejs/node-v0.x-archive/pull/25707
-  * [071c860c2b] - crypto: replace rwlocks with simple mutexes (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
-  * [ca97fb6be3] - deps: upgrade npm to 2.14.9 (Forrest L Norvell) https://github.com/nodejs/node/pull/3684
-  * [583734342e] - deps: fix openssl for MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node/pull/2843
-  * [02c262a4c6] - deps: fix gyp to work on MacOSX without XCode (Shigeki Ohtsu) https://github.com/nodejs/node/pull/2843
-  * [f0fba0bce8] - deps: update gyp to 25ed9ac (João Reis) https://github.com/nodejs/node/pull/2843
-  * [f693565813] - deps: upgrade to npm 2.13.4 (Kat Marchán) https://github.com/nodejs/node-v0.x-archive/pull/25825
-  * [618b142679] - deps,v8: fix compilation in VS2015 (João Reis) https://github.com/nodejs/node/pull/2843
+  * [e07c86e240] - build,win: probar siguiente versión MSVS en caso de falla (João Reis) https://github.com/nodejs/node/pull/2843
+  * [b5a0abcfdf] - child_process: clonar argumento de opciones de reproducción (cjihrig) https://github.com/nodejs/node-v0.x-archive/pull/9159
+  * [8b81f98c41] - configure: agregar bandera --without-mdb (cgalibern) https://github.com/nodejs/node-v0.x-archive/pull/25707
+  * [071c860c2b] - crypto: reemplazar rwlocks con mutexes simples (Ben Noordhuis) https://github.com/nodejs/node/pull/2723
+  * [ca97fb6be3] - deps: actualizar npm a 2.14.9 (Forrest L Norvell) https://github.com/nodejs/node/pull/3684
+  * [583734342e] - deps: repara openssl para MSVS 2015 (Andy Polyakov) https://github.com/nodejs/node/pull/2843
+  * [02c262a4c6] - deps: reparar gyp para trabajar en MacOSX sin XCode (Shigeki Ohtsu) https://github.com/nodejs/node/pull/2843
+  * [f0fba0bce8] - deps: actualizar gyp a 25ed9ac (João Reis) https://github.com/nodejs/node/pull/2843
+  * [f693565813] - deps: actualizar a npm 2.13.4 (Kat Marchán) https://github.com/nodejs/node-v0.x-archive/pull/25825
+  * [618b142679] - deps,v8: reparara compilación en VS2015 (João Reis) https://github.com/nodejs/node/pull/2843
   * [49b4f0d54e] - doc: backport README.md (Rod Vagg) https://github.com/nodejs/node/pull/3642
   * [2860c53562] - doc: fixed child_process.exec doc (Tyler Anton) https://github.com/nodejs/node-v0.x-archive/pull/14088
-  * [4a91fa11a3] - doc: Update docs for os.platform() (George Kotchlamazashvili) https://github.com/nodejs/node-v0.x-archive/pull/25777
-  * [b03ab02fe8] - doc: Change the link for v8 docs to v8dox.com (Chad Walker) https://github.com/nodejs/node-v0.x-archive/pull/25811
+  * [4a91fa11a3] - doc: Actualizar documentos para os.platform() (George Kotchlamazashvili) https://github.com/nodejs/node-v0.x-archive/pull/25777
+  * [b03ab02fe8] - doc: Cambiar el enlace para documentos v8 a v8dox.com (Chad Walker) https://github.com/nodejs/node-v0.x-archive/pull/25811
   * [1fd8f37efd] - doc: buffer, adding missing backtick (Dyana Rose) https://github.com/nodejs/node-v0.x-archive/pull/25811
-  * [162d0db3bb] - doc: tls.markdown, adjust version from v0.10.39 to v0.10.x (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [eda2560cdc] - doc: additional refinement to readable event (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [881d9bea01] - doc: readable event clarification (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [162d0db3bb] - doc: tls.markdown, ajustar versión de v0.10.30 a v0.10.x (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [eda2560cdc] - doc: refinamiento adicional para evento readable (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [881d9bea01] - doc: aclaración de evento readable (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [b6378f0c75] - doc: stream.unshift does not reset reading state (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [4952e2b4d2] - doc: clarify Readable._read and Readable.push (fresheneesz) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [14000b97d4] - doc: two minor stream doc improvements (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [4952e2b4d2] - doc: aclarar Readable._read y Readable.push (fresheneesz) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [14000b97d4] - doc: dos mejoras menores de documento stream (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [6b6bd21497] - doc: Clarified read method with specified size argument. (Philippe Laferriere) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [16f547600a] - doc: Document http.request protocol option (Ville Skyttä) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [618e4ecda9] - doc: add a note about readable in flowing mode (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [0b165be37b] - doc: fix line wrapping in buffer.markdown (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [70dd13f88d] - doc: add CleartextStream deprecation notice (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [418cde0765] - doc: mention that mode is ignored if file exists (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [85bcb281e4] - doc: improve http.abort description (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [5ccb429ee8] - doc, comments: Grammar and spelling fixes (Ville Skyttä) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [618e4ecda9] - doc: añadir una nota sobre readable en el siguiente modo (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [0b165be37b] - doc: reparar envoltura de línea en buffer.markdown (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [70dd13f88d] - doc: agregar aviso de depreciación CleartextStream (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [418cde0765] - doc: mencionar que el modo es ignorado si existe el archivo (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [85bcb281e4] - doc: mejorar descripción de http.abort (James M Snell) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [5ccb429ee8] - doc, comments: Corrección gramatical y ortográfica (Ville Skyttä) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [a24db43101] - docs: event emitter behavior notice (Samuel Mills (Henchman)) https://github.com/nodejs/node-v0.x-archive/pull/25467
   * [8cbf7cb021] - docs: events clarify emitter.listener() behavior (Benjamin Steephenson) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [b7229debbe] - docs: Fix default options for fs.createWriteStream() (Chris Neave) https://github.com/nodejs/node-v0.x-archive/pull/25591
