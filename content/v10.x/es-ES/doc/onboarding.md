@@ -20,7 +20,7 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
   * [objetivos & valores del proyecto](#project-goals--values)
   * [gestionando el issue tracker](#managing-the-issue-tracker)
   * [revisión de PRs](#reviewing-prs)
-  * [landing PRs](#landing-prs)
+  * [PRs recibidos](#landing-prs)
 
 ## Configuración local
 
@@ -54,11 +54,11 @@ apply.whitespace fix`
   
   * La empatía hacía los usuarios es importante (esto es en parte la razón por la que orientamos a las personas)
   * En general: ¡intente ser amable con las personas!
-  * The best outcome is for people who come to our issue tracker to feel like they can come back again.
+  * El mejor resultado es para personas que vienen a nuestro issue tracker para sentir que pueden volver.
 
 * Se espera que siga *y* responsabilice a los demás ante el [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-## Managing the issue tracker
+## Gestionando el issue tracker
 
 * Tiene (en su mayoría) rienda suelta; no dude en cerrar un issue si está seguro de que debería cerrarse
   
@@ -76,7 +76,7 @@ apply.whitespace fix`
     * no existen comentarios pendientes para revisión y
     * al menor un colaborados aprobó el PR.
 
-* See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Consulte [A quien para el CC en el issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
   * Esto vendrá más naturalmente con el tiempo
   * Para muchos de los equipos enlistados, puede solicitar ser añadido si está interesado 
@@ -114,7 +114,7 @@ apply.whitespace fix`
     * Si observa que los cambios requeridos han sido realizados, puede borrar la revisión de los `Changes requested` de otro colaborador.
     * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
 
-* What belongs in Node.js:
+* Lo que pertenece en Node.js:
   
   * Las opiniones varían - ¡es bueno tener una extensa base de colaboradores por esa razón!
   * Si Node.js lo necesita (debido a razones históricas), entonces pertenece a Node.js. 
