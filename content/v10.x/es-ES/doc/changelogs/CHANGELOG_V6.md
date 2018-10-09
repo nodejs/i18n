@@ -1465,16 +1465,16 @@ Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ### Commits
 
-* [[`86c0eae524`](https://github.com/nodejs/node/commit/86c0eae524)] - **build**: disable V8 snapshots (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
-* [[`75bc33d16f`](https://github.com/nodejs/node/commit/75bc33d16f)] - **deps**: cherry-pick 9478908a49 from cares upstream (David Drysdale) [nodejs/node-private#88](https://github.com/nodejs/node-private/pull/88)
-* [[`a92d4ca460`](https://github.com/nodejs/node/commit/a92d4ca460)] - **deps**: Debug code requires bigger buffer on s390 (Michael Dawson) [nodejs/node-private#93](https://github.com/nodejs/node-private/pull/93)
-* [[`6e247b8a4e`](https://github.com/nodejs/node/commit/6e247b8a4e)] - **test**: verify hash seed uniqueness (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
+* [[`86c0eae524`](https://github.com/nodejs/node/commit/86c0eae524)] - **build**: deshabilitar snapshots de V8 (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
+* [[`75bc33d16f`](https://github.com/nodejs/node/commit/75bc33d16f)] - **deps**: hacer cherry-pick a 9478908a49 desde upstream de cares (David Drysdale) [nodejs/node-private#88](https://github.com/nodejs/node-private/pull/88)
+* [[`a92d4ca460`](https://github.com/nodejs/node/commit/a92d4ca460)] - **deps**: Código de depuración requiere un buffer mayor en s390 (Michael Dawson) [nodejs/node-private#93](https://github.com/nodejs/node-private/pull/93)
+* [[`6e247b8a4e`](https://github.com/nodejs/node/commit/6e247b8a4e)] - **test**: verificar la unicidad de hash seed (Ali Ijaz Sheikh) [nodejs/node-private#84](https://github.com/nodejs/node-private/pull/84)
 
 <a id="6.11.0"></a>
 
-## 2017-06-06, Version 6.11.0 'Boron' (LTS), @MylesBorins
+## 2017-06-06, Versión 6.11.0 'Boron' (LTS), @MylesBorins
 
-This LTS release comes with 126 commits. This includes 40 which are test related, 32 which are doc related, 12 which are build / tool related and 4 commits which are updates to dependencies.
+Esta actualización de LTS viene con 126 commits. This includes 40 which are test related, 32 which are doc related, 12 which are build / tool related and 4 commits which are updates to dependencies.
 
 ### Notable Changes
 
