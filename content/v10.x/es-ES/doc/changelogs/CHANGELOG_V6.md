@@ -1448,11 +1448,11 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 * [[`d9a8f80c0d`](https://github.com/nodejs/node/commit/d9a8f80c0d)] - **v8**: reparar errores de compilación g++ 7 (Zuzana Svetlikova) [#12392](https://github.com/nodejs/node/pull/12392)
 * [[`8b3aacc96a`](https://github.com/nodejs/node/commit/8b3aacc96a)] - **vm**: reparar condición de carrera con parámetro de timeout (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
 * [[`6e60c838c9`](https://github.com/nodejs/node/commit/6e60c838c9)] - **vm**: reparar displayErrors en runIn.. funciones (Marcel Laverdet) [#13074](https://github.com/nodejs/node/pull/13074)
-* [[`55cbe24c60`](https://github.com/nodejs/node/commit/55cbe24c60)] - **zlib**: fix node crashing on invalid options (Alexey Orlenko) [#13098](https://github.com/nodejs/node/pull/13098)
+* [[`55cbe24c60`](https://github.com/nodejs/node/commit/55cbe24c60)] - **zlib**: reparar el colapso de node en opciones inválidas (Alexey Orlenko) [#13098](https://github.com/nodejs/node/pull/13098)
 
 <a id="6.11.1"></a>
 
-## 2017-07-11, Version 6.11.1 'Boron' (LTS), @MylesBorins
+## 2017-07-11, Versión 6.11.1 'Boron' (LTS), @MylesBorins
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
 
