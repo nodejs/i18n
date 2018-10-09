@@ -239,29 +239,29 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
   * introducir nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
   * permitir la corrección para CVE-2016-2216 sea revertida de manera selectiva utilizando `--security-revert=CVE-2016-2216`
 * build: 
-  * xz compressed tar files will be made available from nodejs.org for v0.12 builds from v0.12.10 onward
-  * A headers.tar.gz file will be made available from nodejs.org for v0.12 builds from v0.12.10 onward, a future change to node-gyp will be required to make use of these
+  * archivos tar comprimidos en xz serán hechos disponibles desde nodejs.org para compilaciones v.012 desde v0.12.10 en adelante
+  * Un archivo header.tar.gz será hecho disponible desde nodejs.org para compilaciones v0.12 desde v0.12.10 en adelante, un cambio futuro a node-gyp será requerido para hacer uso de este
 
 ### Commits
 
-* [4312848bff] - build: enable xz compressed tarballs where possible (Rod Vagg) https://github.com/nodejs/node/pull/4894
-* [247626245c] - deps: upgrade openssl sources to 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
-* [744c9749fc] - deps: update http-parser to version 2.3.1 (James M Snell)
-* [d1c56ec7d1] - doc: clarify v0.12.9 notable items (Rod Vagg) https://github.com/nodejs/node/pull/4154
-* [e128d9a5b4] - http: strictly forbid invalid characters from headers (James M Snell)
-* [bdb9f2cf89] - src: avoiding compiler warnings in node_revert.cc (James M Snell)
-* [23bced1fb3] - src: add --security-revert command line flag (James M Snell)
+* [4312848bff] - build: activar tarballs comprimidos en xz donde sea posible (Rod Vagg) https://github.com/nodejs/node/pull/4894
+* [247626245c] - deps: actualizar fuentes openssl a 1.0.1r (Shigeki Ohtsu) https://github.com/joyent/node/pull/25368
+* [744c9749fc] - deps: actualizar http-parse a la versión 2.3.1 (James M Snell)
+* [d1c56ec7d1] - doc: clarificar ítemes notables de v0.12.9 (Rod Vagg) https://github.com/nodejs/node/pull/4154
+* [e128d9a5b4] - http: prohibir estrictamente caracteres inválidos desde las cabeceras (James M Snell)
+* [bdb9f2cf89] - src: evitar advertencias del compilador en node_revert.cc (James M Snell)
+* [23bced1fb3] - src: añadir bandera de línea de comando --security-revert (James M Snell)
 * [f41a3c73e7] - tools: backport tools/install.py for headers (Richard Lau) https://github.com/nodejs/node/pull/4149
 
 <a id="0.12.9"></a>
 
-## 2015-12-04, Version 0.12.9 (LTS), @rvagg
+## 2015-12-04, Versión 0.12.9 (LTS), @rvagg
 
-Security Update
+Actualización de Seguridad
 
-### Notable changes
+### Cambios notables
 
-* http: Fix CVE-2015-8027, a bug whereby an HTTP socket may no longer have a parser associated with it but a pipelined request attempts to trigger a pause or resume on the non-existent parser, a potential denial-of-service vulnerability. (Fedor Indutny)
+* http: Repara CVE-2015-8027, un bug por el que un socket HTTP ya no puede tener un analizador asociado, pero una solicitud pipelined intenta desencadenar una pausa o reanudar en el analizador inexistente, una vulnerabilidad potencial de denegación de servicio. (Fedor Indutny)
 * openssl: Upgrade to 1.0.1q, fixes CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
 ### Commits
