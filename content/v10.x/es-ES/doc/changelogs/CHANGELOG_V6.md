@@ -1394,7 +1394,7 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 * [[`802a945d81`](https://github.com/nodejs/node/commit/802a945d81)] - **test**: añadir mustCall en timers-unrefed-in-callback (Zahidul Islam) [#12594](https://github.com/nodejs/node/pull/12594)
 * [[`739c579134`](https://github.com/nodejs/node/commit/739c579134)] - **test**: reparar defectuosidad con `yes.exe` (Refael Ackermann) [#12821](https://github.com/nodejs/node/pull/12821)
 * [[`14e835831f`](https://github.com/nodejs/node/commit/14e835831f)] - **test**: puerto dinámico en pruebas de dgram (Sebastian Plesciuc) [#12623](https://github.com/nodejs/node/pull/12623)
-* [[`361bc845dc`](https://github.com/nodejs/node/commit/361bc845dc)] - **test**: verificar que fuga de listener solo se emite una vez (cjihrig) [#12502](https://github.com/nodejs/node/pull/12502)
+* [[`361bc845dc`](https://github.com/nodejs/node/commit/361bc845dc)] - **test**: verificar que la fuga del listener solo se emite una vez (cjihrig) [#12502](https://github.com/nodejs/node/pull/12502)
 * [[`f236dcbdd9`](https://github.com/nodejs/node/commit/f236dcbdd9)] - **test**: mover WPT a su propio módulo de prueba (Rich Trott) [#12736](https://github.com/nodejs/node/pull/12736)
 * [[`4eb28c80e8`](https://github.com/nodejs/node/commit/4eb28c80e8)] - **test**: introducir `common.crashOnUnhandledRejection` (Anna Henningsen) [#12489](https://github.com/nodejs/node/pull/12489)
 * [[`2411318f60`](https://github.com/nodejs/node/commit/2411318f60)] - **test**: añadir segundo argumento a assert.throws (Michaël Zasso) [#12270](https://github.com/nodejs/node/pull/12270)
