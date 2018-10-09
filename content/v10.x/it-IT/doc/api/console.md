@@ -340,7 +340,7 @@ added: v10.0.0
 * `tabularData` {any}
 * `properties` {string[]} Proprietà alternative per la costruzione della tabella.
 
-Prova a costruire una tabella con le colonne delle proprietà di `tabularData` (o utilizza `properties`) e le righe di `tabularData`, successivamente la registra. Torna indietro per registrare l'argomento solo se non può essere analizzato tramite il parsing come parte della tabella.
+Prova a costruire una tabella con le colonne delle proprietà di `tabularData` (o utilizza `properties`) e le righe di `tabularData` e registrala. Torna indietro per registrare l'argomento solo se non può essere analizzato tramite il parsing come parte della tabella.
 
 ```js
 // Questi non possono essere analizzati tramite il parsing come dati della tabella
