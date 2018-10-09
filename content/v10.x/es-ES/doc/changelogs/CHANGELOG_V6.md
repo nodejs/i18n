@@ -1484,19 +1484,19 @@ Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están r
   * disconnect() ahora devuelve una referencia al worker desconectado. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
 * **crypto**: 
   * capacidad para certificar almacenaje en tiempo de ejecución (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
-  * Use system CAs instead of using bundled ones (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
-  * The `Decipher` methods `setAuthTag()` and `setAAD` now return `this`. (Kirill Fomichev) [#9398](https://github.com/nodejs/node/pull/9398)
-  * adding support for OPENSSL_CONF again (Sam Roberts) [#11006](https://github.com/nodejs/node/pull/11006)
-  * make LazyTransform compabile with Streams1 (Matteo Collina) [#12380](https://github.com/nodejs/node/pull/12380)
+  * Usar CAs del sistema en vez de usar los empaquetados (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
+  * Los métodos `Decipher` `setAuthTag()` y `setAAD` ahora devuelven `this`. (Kirill Fomichev) [#9398](https://github.com/nodejs/node/pull/9398)
+  * añadir de nuevo soporte para OPENSSL_CONF (Sam Roberts) [#11006](https://github.com/nodejs/node/pull/11006)
+  * hacer LazyTransform compatible con Streams1 (Matteo Collina) [#12380](https://github.com/nodejs/node/pull/12380)
 * **deps**: 
-  * upgrade libuv to 1.11.0 (cjihrig) [#11094](https://github.com/nodejs/node/pull/11094)
-  * upgrade libuv to 1.10.2 (cjihrig) [#10717](https://github.com/nodejs/node/pull/10717)
-  * upgrade libuv to 1.10.1 (cjihrig) [#9647](https://github.com/nodejs/node/pull/9647)
-  * upgrade libuv to 1.10.0 (cjihrig) [#9267](https://github.com/nodejs/node/pull/9267)
+  * actualizar libuv a 1.11.0 (cjihrig) [#11094](https://github.com/nodejs/node/pull/11094)
+  * actualizar libuv a 1.10.2 (cjihrig) [#10717](https://github.com/nodejs/node/pull/10717)
+  * actualizar libuv a 1.10.1 (cjihrig) [#9647](https://github.com/nodejs/node/pull/9647)
+  * actualizar libuv a 1.10.0 (cjihrig) [#9267](https://github.com/nodejs/node/pull/9267)
 * **dns**: 
-  * Implemented `{ttl: true}` for `resolve4()` and `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
+  * Se implementó `{ttl: true}` para `resolve4()` y `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
 * **process**: 
-  * add NODE_NO_WARNINGS environment variable (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
+  * añadir variable de ambiente NODE_NO_WARNINGS (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
 * **readline**: 
   * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
 * **src**: 
