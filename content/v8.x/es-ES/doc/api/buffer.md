@@ -42,8 +42,8 @@ const buf6 = Buffer.from('tést', 'latin1');
 En versiones de Node.js anteriores a v6, las instancias `Buffer` fueron creadas usando la función constructora `Buffer`, la cual asigna el ` Buffer ` devuelto de forma diferente en función de los argumentos proporcionados:
 
 * Pasar un número como el primer argumento a `Buffer()` (p. e.j `new Buffer(10)`), asigna un nuevo objeto `Buffer` del tamaño especificado. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the `Buffer` completely. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Starting in Node.js 8.0.0, `Buffer(num)` and `new Buffer(num)` will return a `Buffer` with initialized memory.
-* Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
-* Passing an [`ArrayBuffer`] or a [`SharedArrayBuffer`] returns a `Buffer` that shares allocated memory with the given array buffer.
+* Pasar un string, array o `Buffer` como el primer argumento copia los datos del objeto pasado en el `Buffer`.
+* Pasar un [`ArrayBuffer`] o un [`SharedArrayBuffer`] devuelve un `Buffer` que comparte la memoria asignada con el buffer del array dado.
 
 Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
 
