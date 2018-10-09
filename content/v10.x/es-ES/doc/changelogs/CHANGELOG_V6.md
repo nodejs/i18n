@@ -1474,16 +1474,16 @@ Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2017-06-06, Versión 6.11.0 'Boron' (LTS), @MylesBorins
 
-Esta actualización de LTS viene con 126 commits. This includes 40 which are test related, 32 which are doc related, 12 which are build / tool related and 4 commits which are updates to dependencies.
+Esta actualización de LTS viene con 126 commits. Esto incluye a 40 que están relacionados a pruebas, 32 que están relacionados a documentación, 12 que están relacionados a build / tool y 4 commits que son actualizaciones para dependencias.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: 
-  * support for building mips64el (nanxiongchao) [#10991](https://github.com/nodejs/node/pull/10991)
-* **cluster**: 
-  * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
+  * soporte para construcción mips64el (nanxiongchao) [#10991](https://github.com/nodejs/node/pull/10991)
+* **clúster**: 
+  * disconnect() ahora devuelve una referencia al worker desconectado. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
 * **crypto**: 
-  * ability to select cert store at runtime (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
+  * capacidad para certificar almacenaje en tiempo de ejecución (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * Use system CAs instead of using bundled ones (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * The `Decipher` methods `setAuthTag()` and `setAAD` now return `this`. (Kirill Fomichev) [#9398](https://github.com/nodejs/node/pull/9398)
   * adding support for OPENSSL_CONF again (Sam Roberts) [#11006](https://github.com/nodejs/node/pull/11006)
