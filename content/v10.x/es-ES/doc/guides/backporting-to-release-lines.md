@@ -23,27 +23,26 @@ Para los siguientes pasos, vamos a suponer que es necesario un backport para la 
 3. Cree una nueva rama fuera de la escenificación de rama
 
 ```shell
-# Assuming your fork of Node.js is checked out in $NODE_DIR,
-# the origin remote points to your fork, and the upstream remote points
-# to git://github.com/nodejs/node
+# Asumiendo que tu fork de Node.js es verificado en $NODE_DIR,
+# el romoto de origen señala a tu fork, y el remoto upstream señala
+# a git://github.com/nodejs/node
 cd $NODE_DIR
-# If v6.x-staging is checked out `pull` should be used instead of `fetch`
+# Si v6.x-staging es verificado `pull` debería ser usado en lugar de `fetch`
 git fetch upstream v6.x-staging:v6.x-staging -f
-# Assume we want to backport PR #10157
+# Suponiendo que queremos realizar un backport para PR #10157
 git checkout -b backport-10157-to-v6.x v6.x-staging
-# Ensure there are no test artifacts from previous builds
-# Note that this command deletes all files and directories
-# not under revision control below the ./test directory.
-# It is optional and should be used with caution.
+# Asegúrate de que no haya artefactos de prueba de compilaciones anteriores
+# Tenga en cuenta que este comando elimina todos los archivos y directorios
+# que no están bajo el control de revisión de ./test directory.
+# Es opcional y debe ser usado con precaución.
 git clean -xfd ./test/
 ```
 
-1. After creating the branch, apply the changes to the branch. The cherry-pick will likely fail due to conflicts. In that case, you will see something like this:
+1. Después de crear la rama, aplique los cambios a la rama. El cherry-pick probablemente fallará debido a los conflictos. En ese caso, verás algo así:
 
 ```shell
-# Say the $SHA is 773cdc31ef
-$ git cherry-pick $SHA # Use your commit hash
-error: could not apply 773cdc3... <commit title>
+# Decir que $SHA es 773cdc31ef
+$ git cherry-pick $SHA # Use su error de hash de commit: podría no aplicar 773cdc3... <commit title>
 hint: after resolving the conflicts, mark the corrected paths
 hint: with 'git add <paths>' or 'git rm <paths>'
 hint: and commit the result with 'git commit'
