@@ -225,14 +225,14 @@
 
 <a id="10.0.0"></a>
 
-## 2018-04-24, Version 10.0.0 (Current), @jasnell
+## 2018-04-24, Versión 10.0.0 (Actual), @jasnell
 
-### Notable Changes
+### Cambios Notables
 
-* Assert 
-  * Calling `assert.fail()` with more than one argument is deprecated. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
-  * Calling `assert.ok()` with no arguments will now throw. [[`3cd7977a42`](https://github.com/nodejs/node/commit/3cd7977a42)]
-  * Calling `assert.ifError()` will now throw with any argument other than `undefined` or `null`. Previously the method would throw with any truthy value. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
+* Afirmar 
+  * Llamar a `assert.fail()` con más de un argumento está desaprobado. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
+  * Llamar a `assert.ok()` sin argumentos se lanzará ahora. [[`3cd7977a42`](https://github.com/nodejs/node/commit/3cd7977a42)]
+  * Llamar a `assert.ifError()` se lanzará ahora con algún argumento que no sea `undefined` o `null`. Previously the method would throw with any truthy value. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
   * The `assert.rejects()` and `assert.doesNotReject()` methods have been added for working with async functions. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
 * Async_hooks 
   * Older experimental async_hooks APIs have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
