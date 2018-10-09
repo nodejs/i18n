@@ -73,8 +73,8 @@
 * [[`05ce635e9a`](https://github.com/nodejs/node/commit/05ce635e9a)] - **doc**: hacer coincidir las firmas console.count()/countReset() (Lambdac0re) [#20599](https://github.com/nodejs/node/pull/20599)
 * [[`e995ae5992`](https://github.com/nodejs/node/commit/e995ae5992)] - **doc**: aclarar `this` en los detectores de eventos (daGo) [#20537](https://github.com/nodejs/node/pull/20537)
 * [[`bd27a59865`](https://github.com/nodejs/node/commit/bd27a59865)] - **doc**: move tunniclm to Emeritus (Rich Trott) [#20533](https://github.com/nodejs/node/pull/20533)
-* [[`ec65fe48d8`](https://github.com/nodejs/node/commit/ec65fe48d8)] - **doc**: add trace category for fs sync methods (Chin Huang) [#20526](https://github.com/nodejs/node/pull/20526)
-* [[`8148fca730`](https://github.com/nodejs/node/commit/8148fca730)] - **doc**: update "Who to cc..." in COLLABORATOR\_GUIDE (Vse Mozhet Byt) [#20564](https://github.com/nodejs/node/pull/20564)
+* [[`ec65fe48d8`](https://github.com/nodejs/node/commit/ec65fe48d8)] - **doc**: añadir categoría de seguimiento para métodos de sincronización fs (Chin Huang) [#20526](https://github.com/nodejs/node/pull/20526)
+* [[`8148fca730`](https://github.com/nodejs/node/commit/8148fca730)] - **doc**: actualización "A quien a cc..." en COLLABORATOR\_GUIDE (Vse Mozhet Byt) [#20564](https://github.com/nodejs/node/pull/20564)
 * [[`70586c0334`](https://github.com/nodejs/node/commit/70586c0334)] - **doc**: excise "periodically" before "emit events" (Jesse W. Collins) [#20581](https://github.com/nodejs/node/pull/20581)
 * [[`01560b69a7`](https://github.com/nodejs/node/commit/01560b69a7)] - **doc**: edit text about revoking deprecations (Rich Trott) [#20519](https://github.com/nodejs/node/pull/20519)
 * [[`eed3f10615`](https://github.com/nodejs/node/commit/eed3f10615)] - **doc**: edit text for DEP0013 (Rich Trott) [#20519](https://github.com/nodejs/node/pull/20519)
@@ -312,13 +312,13 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * El uso de valores no de cadena para `process.env` se ha desaprobado en la documentación. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
 * El uso de `process.assert()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * La variable de entorno `NODE_REPL_HISTORY_FILE` desaprobada previamente ha alcanzado el final de su vida útil y ha sido eliminada. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
-* Use of the `timers.enroll()` and `timers.unenroll()` methods will emit a runtime deprecation warning. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
-* Use of the `tls.convertNPNProtocols()` method will emit a runtime deprecation warning. Support for NPN has been removed from Node.js. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
-* The `crypto.fips` property has been deprecated in documentation. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
+* El uso de los métodos `timers.enroll()` y `timers.unenroll()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
+* El uso del método `tls.convertNPNProtocols()` emitirá una advertencia de desaprobación del tiempo de ejecución. El soporte para NPN se ha eliminado de Node.js. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
+* La propiedad `crypto.fips` ha sido desaprobada en la documentación. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
 
 ### Commits
 
-#### Semver-major
+#### Semver mayor
 
 * [[`c9bb91af33`](https://github.com/nodejs/node/commit/c9bb91af33)] - **(SEMVER-MAJOR)** **assert**: remove `errorDiff` property (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
 * [[`eb427caadd`](https://github.com/nodejs/node/commit/eb427caadd)] - **(SEMVER-MAJOR)** **assert**: improve default error messages (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
