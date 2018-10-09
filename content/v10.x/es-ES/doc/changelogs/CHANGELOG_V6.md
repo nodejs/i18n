@@ -1456,10 +1456,10 @@ Esta actualización de LTS viene con 221 commits. Esto incluye a 80 que están r
 
 Esto es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
 
-### Notable Changes
+### Cambios Notables
 
 * **build**: 
-  * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
+  * Deshabilitar snapshots de V8 - El hashseed incrustado en el snapshot actualmente es el mismo para todas las ejecuciones del binario. Esto expone a node a ataques de colisión que pueden resultar en una Denegación de Servicio. Hemos deshabilitado temporalmente los snapshots hasta que sea encontrada una solución más robusta (Ali Ijaz Sheikh)
 * **deps**: 
   * CVE-2017-1000381 - The c-ares function ares_parse_naptr_reply(), which is used for parsing NAPTR responses, could be triggered to read memory outside of the given input buffer if the passed in DNS response packet was crafted in a particular way. This patch checks that there is enough data for the required elements of an NAPTR record (2 int16, 3 bytes for string lengths) before processing a record. (David Drysdale)
 
