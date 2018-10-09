@@ -2,13 +2,13 @@
 
 ## Escenificación de ramas
 
-Cada línea de lanzamiento tiene una escenificación de rama que el publicador usará como un bloc de notas mientras prepara el lanzamiento. El nombre de la rama es formateado de la siguiente forma: `vN.x-staging` donde `N` es el mayor número de lanzamiento.
+Cada línea de lanzamiento tiene una escenificación de rama que el publicador usará como un bloc de notas mientras prepara el lanzamiento. El nombre de la rama es formateado de la siguiente forma: `vN.x-staging`, donde `N` es el número del lanzamiento mayor.
 
 *Nota*: Para la escenificación de ramas activa vea el [Calendario de Lanzamiento](https://github.com/nodejs/Release#release-schedule1).
 
-## What needs to be backported?
+## ¿Qué necesita ser backported?
 
-If a cherry-pick from master does not land cleanly on a staging branch, the releaser will mark the pull request with a particular label for that release line (e.g. `backport-requested-vN.x`), specifying to our tooling that this pull request should not be included. The releaser will then add a comment requesting that a backport pull request be made.
+Si un cherry-pick de master no aterriza limpiamente en una escenificación de rama, el lanzador marcará la pull request con una etiqueta particular para esa línea de lanzamiento (p. e.j `backport-requested-vN.x`), especificando a nuestras herramientas que esta pull request no debe ser incluida. Entonces, el lanzador agregará un comentario solicitando que se realice un backport para una pull request.
 
 ## What can be backported?
 
