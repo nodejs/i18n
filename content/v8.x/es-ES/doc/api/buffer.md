@@ -45,11 +45,11 @@ En versiones de Node.js anteriores a v6, las instancias `Buffer` fueron creadas 
 * Pasar un string, array o `Buffer` como el primer argumento copia los datos del objeto pasado en el `Buffer`.
 * Pasar un [`ArrayBuffer`] o un [`SharedArrayBuffer`] devuelve un `Buffer` que comparte la memoria asignada con el buffer del array dado.
 
-Because the behavior of `new Buffer()` changes significantly based on the type of value passed as the first argument, applications that do not properly validate the input arguments passed to `new Buffer()`, or that fail to appropriately initialize newly allocated `Buffer` content, can inadvertently introduce security and reliability issues into their code.
+Debido a que este comportamiento de `new Buffer()` cambia significativamente basado en el tipo de valor pasado como el primer argumento, aplicaciones que no validan propiamente los argumentos de entrada pasados a `new Buffer()`, o que fallan en inicializar apropiadamente nuevo contenido `Buffer` asignado, pueden producir inadvertidamente problemas de seguridad y confiabilidad en su código.
 
-To make the creation of `Buffer` instances more reliable and less error prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`], and [`Buffer.allocUnsafe()`] methods.
+Para hacer la creación de instancias `Buffer` más confiable y menos propensa a errores, las diversas formas del constructor `new Buffer()` han sido **desaprobadas** y reemplazadas por métodos separados `Buffer.from()`, [`Buffer.alloc()`], y [`Buffer.allocUnsafe()`].
 
-*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
+*Los desarrolladores deben migrar todos los usos existentes de los constructores `new Buffer()` a una de estas APIs nuevas.*
 
 * [`Buffer.from(array)`] returns a new `Buffer` containing a *copy* of the provided octets.
 * [`Buffer.from(arrayBuffer[, byteOffset [, length]])`][`Buffer.from(arrayBuffer)`] returns a new `Buffer` that *shares* the same allocated memory as the given [`ArrayBuffer`].
