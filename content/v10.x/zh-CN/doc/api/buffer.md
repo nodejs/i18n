@@ -64,7 +64,7 @@ const buf6 = Buffer.from('tést', 'latin1');
 added: v5.10.0
 -->
 
-Node.js 可以在一开始就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时自动用0填充。 使用这个命令行选项会对这些函数的性能有明显的负面影响。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
+Node.js 可以在一开始就使用 `--zero-fill-buffers` 命令行选项使所有用 `new Buffer(size)`， [`Buffer.allocUnsafe()`]，[`Buffer.allocUnsafeSlow()`] 和 `newSlowBuffer(size)` 新分配的 `Buffer` 实例在创建时自动用 0 填充。 使用这个命令行选项会对这些函数的性能有明显的负面影响。 建议只在需要强制新分配的 `Buffer` 实例不能包含潜在的敏感旧数据时才使用 `--zero-fill-buffers` 选项。
 
 ```txt
 $ node --zero-fill-buffers
@@ -74,9 +74,9 @@ $ node --zero-fill-buffers
 
 ### 是什么令 `Buffer.allocUnsafe()` 和 `Buffer.allocUnsafeSlow()` “不安全”？
 
-当调用 [`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow()`] 时，被分配的内存段是 *未初始化的* （没有用0填充）。 虽然这样的设计使得内存的分配非常快，但已分配的内存段可能包含潜在的敏感旧数据。 使用由 [`Buffer.allocUnsafe()`] 创建的没有被 *完全* 重写内存的 `Buffer`，在 `Buffer` 内存可读的情况下，可能泄露它的旧数据。
+当调用 [`Buffer.allocUnsafe()`] 和 [`Buffer.allocUnsafeSlow()`] 时，被分配的内存段是 *未初始化的* （没有用 0 填充）。 虽然这样的设计使得内存的分配非常快，但已分配的内存段可能包含潜在的敏感旧数据。 使用由 [`Buffer.allocUnsafe()`] 创建的没有被 *完全* 重写内存的 `Buffer`，在 `Buffer` 内存可读的情况下，可能泄露它的旧数据。
 
-While there are clear performance advantages to using [`Buffer.allocUnsafe()`], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
+虽然使用 [`Buffer.allocUnsafe()`] 有明显的性能优势，但 *必须* 要额外小心，以避免给应用程序带来安全漏洞。
 
 ## Buffers and Character Encodings
 
@@ -91,7 +91,7 @@ changes:
     description: Removed the deprecated `raw` and `raws` encodings.
 -->
 
-When string data is stored in or extracted out of a `Buffer` instance, a character encoding may be specified.
+在 `Buffer` 实例中存储或提取字符串数据时，可以指定字符编码。
 
 ```js
 const buf = Buffer.from('hello world', 'ascii');
@@ -107,9 +107,9 @@ console.log(Buffer.from('fhqwhgads', 'utf16le'));
 // Prints: <Buffer 66 00 68 00 71 00 77 00 68 00 67 00 61 00 64 00 73 00>
 ```
 
-The character encodings currently supported by Node.js include:
+Node.js当前支持的字符编码包括：
 
-* `'ascii'` - For 7-bit ASCII data only. This encoding is fast and will strip the high bit if set.
+* `'ascii'` - 仅支持 7 位 ASCII 数据。 This encoding is fast and will strip the high bit if set.
 
 * `'utf8'` - Multibyte encoded Unicode characters. Many web pages and other document formats use UTF-8.
 
