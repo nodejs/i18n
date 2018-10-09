@@ -245,34 +245,34 @@
 * Consola 
   * El método `console.table()` ha sido agregado. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Crypto 
-  * Los métodos `crypto.createCipher()` y `crypto.createDecipher()` han sido desaprobados. Por favor, utilice `crypto.createCipheriv()` y `crypto.createDecipheriv()` en su lugar. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
-  * El método `decipher.finaltol()` ha sido desaprobado. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
+  * Los métodos `crypto.createCipher()` y `crypto.createDecipher()` se han desaprobado. Por favor, utilice `crypto.createCipheriv()` y `crypto.createDecipheriv()` en su lugar. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
+  * El método `decipher.finaltol()` se ha desaprobado. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
   * La propiedad `crypto.DEFAULT_ENCODING` ha sido desaprobada. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
   * El método `ECDH.convertKey()` ha sido añadido. [[`f2e02883e7`](https://github.com/nodejs/node/commit/f2e02883e7)]
-  * La propiedad `crypto.fips` ha sido desaprobada. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
+  * La propiedad `crypto.fips` se ha desaprobado. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
 * Dependencias 
   * V8 ha sido actualizado a 6.6. [[`9daebb48d6`](https://github.com/nodejs/node/commit/9daebb48d6)]
   * OpenSSL ha sido actualizado a 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter 
-  * El método `EventEmitter.prototype.off()` ha sido agregado como un alias para `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
+  * El método `EventEmitter.prototype.off()` se ha agregado como un alias para `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
 * Sistema de Archivos 
   * La API `fs/promises` proporciona versiones experimentales prometidas de las funciones `fs`. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Los errores de ruta inválidos ahora se lanzan de forma sincrónica. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
   * El método `fs.readFile()` ahora particiona las lecturas para evitar el agotamiento del grupo de subprocesos. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
 * HTTP 
-  * El procesamiento de los códigos de Estatus de HTTP `100`, `102-199` ha sido mejorado. [[`baf8495078`](https://github.com/nodejs/node/commit/baf8495078)]
+  * El procesamiento de los códigos de Estatus de HTTP `100`, `102-199` se ha mejorado. [[`baf8495078`](https://github.com/nodejs/node/commit/baf8495078)]
   * Los caracteres mult-byte en rutas URL ahora están prohibidos. [[`b961d9fd83`](https://github.com/nodejs/node/commit/b961d9fd83)]
 * N-API 
-  * The n-api is no longer experimental. [[`cd7d7b15c1`](https://github.com/nodejs/node/commit/cd7d7b15c1)]
+  * El n-api ya no es experimental. [[`cd7d7b15c1`](https://github.com/nodejs/node/commit/cd7d7b15c1)]
 * Net 
-  * The `'close'` event will be emitted after `'end'`. [[`9b7a6914a7`](https://github.com/nodejs/node/commit/9b7a6914a7)]
+  * El evento `'close'` se emitirá después de `'end'`. [[`9b7a6914a7`](https://github.com/nodejs/node/commit/9b7a6914a7)]
 * Perf_hooks 
-  * The `PerformanceObserver` class is now an `AsyncResource` and can be monitored using `async_hooks`. [[`009e41826f`](https://github.com/nodejs/node/commit/009e41826f)]
-  * Trace events are now emitted for performance events. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
-  * The `performance` API has been simplified. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
-  * Performance milestone marks will be emitted as trace events. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
-* Process 
-  * Using non-string values for `process.env` is deprecated. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
+  * La clase `PerformanceObserver` ahora es un `AsyncResource` y puede monitorearse utilizando `async_hooks`. [[`009e41826f`](https://github.com/nodejs/node/commit/009e41826f)]
+  * Los eventos de seguimiento ahora se emiten para eventos de rendimiento. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
+  * La API `performance` se ha simplificado. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
+  * Las marcas de hitos de rendimiento se emitirá como eventos de seguimiento. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
+* Proceso 
+  * El uso de valores no de cadena para `process.env` está desaprobado. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
   * The `process.assert()` method is deprecated. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL 
   * REPL now experimentally supports top-level await when using the `--experimental-repl-await` flag. [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)]
