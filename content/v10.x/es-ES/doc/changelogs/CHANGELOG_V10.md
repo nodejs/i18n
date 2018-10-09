@@ -52,7 +52,7 @@
 
 * [[`7293c58d51`](https://github.com/nodejs/node/commit/7293c58d51)] - **assert**: hacer que el indicador de salto sea azul (Ruben Bridgewater) [#20315](https://github.com/nodejs/node/pull/20315)
 * [[`f5054d3412`](https://github.com/nodejs/node/commit/f5054d3412)] - **assert**: mejoras menores en los mensajes de error (Ruben Bridgewater) [#20315](https://github.com/nodejs/node/pull/20315)
-* [[`16970ffda4`](https://github.com/nodejs/node/commit/16970ffda4)] - **benchmark**: track exec time in next-tick-exec (Anatoli Papirovski) [#20462](https://github.com/nodejs/node/pull/20462)
+* [[`16970ffda4`](https://github.com/nodejs/node/commit/16970ffda4)] - **benchmark**: seguimiento del tiempo de ejecución en next-tick-exec (Anatoli Papirovski) [#20462](https://github.com/nodejs/node/pull/20462)
 * [[`289e4cef3f`](https://github.com/nodejs/node/commit/289e4cef3f)] - **benchmark**: fix next-tick-depth (Anatoli Papirovski) [#20461](https://github.com/nodejs/node/pull/20461)
 * [[`b0e6f10530`](https://github.com/nodejs/node/commit/b0e6f10530)] - **benchmark**: add bench for zlib gzip + gunzip cycle (Anna Henningsen) [#20034](https://github.com/nodejs/node/pull/20034)
 * [[`167de1f038`](https://github.com/nodejs/node/commit/167de1f038)] - **build**: check for different deprecation signatures (Ruben Bridgewater) [#20384](https://github.com/nodejs/node/pull/20384)
