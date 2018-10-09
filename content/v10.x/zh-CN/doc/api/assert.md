@@ -890,11 +890,11 @@ added: v10.0.0
 
 Await `block` 的 promise, 或者如果 `block` 是一个函数，则立即调用函数，并await返回的promise。 然后它会检查等待到的promise是否被拒绝。
 
-如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带这个被抛出的错误。 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 的错误。 无论哪种情况，都跳过错误处理程序。
+如果 `block` 是一个函数，并且同步抛出一个错误，则 `assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带这个被抛出的错误。 如果这个函数没有返回promise，`assert.rejects()` 会返回一个被拒绝的 `Promise` 并携带一个 [`ERR_INVALID_RETURN_VALUE`][] 错误。 无论哪种情况，都跳过错误处理程序。
 
 除了 await 的异步特性，完成行为与 [`assert.throws()`][] 完全相同。
 
-如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] ，验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
 
 如果指定的话，假如block拒绝失败，`message` 会是由 `AssertionError` 提供的消息。
 
@@ -921,7 +921,7 @@ assert.rejects(
 });
 ```
 
-注意， `error` 不能是一个string。 如果提供一个string作为第二个参数，那么会认为 `error` 被省略了，并且这个string会代替 `message`。 这会导致不容易被发现的错误。 如果考虑使用string作为第二个参数，请仔细阅读 [`assert.throws()`][] 中的示例。
+注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串会代替 `message`。 这会导致不容易被发现的错误。 如果考虑使用字符串作为第二个参数，请仔细阅读 [`assert.throws()`][] 中的示例。
 
 ## assert.strictEqual(actual, expected[, message])
 
@@ -981,7 +981,7 @@ changes:
 
 期望 `block` 函数抛出一个错误。
 
-如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] 或 验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
+如果指定的话，`error` 可以是一个 [`Class`][]，[`RegExp`][] ，验证函数。每个属性都将被测试的对象，或测试一个 error 的实例中的每个属性，包括不可枚举的 `message` 和 `name` 属性。
 
 如果指定的话，假如block抛出失败，`message` 会是由 `AssertionError` 提供的消息。
 
@@ -1053,7 +1053,7 @@ assert.throws(
 );
 ```
 
-注意， `error` 不能是一个string。 如果提供一个string作为第二个参数，那么会认为 `error` 被省略了，并且这个string会代替 `message`。 这会导致不容易被发现的错误。 如果使用被抛出的错误信息，会导致产生 `ERR_AMBIGUOUS_ARGUMENT` 错误。 如果考虑使用string作为第二个参数，请仔细阅读下面的示例。
+注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串会代替 `message`。 这会导致不容易被发现的错误。 如果使用被抛出的错误信息，会导致产生 `ERR_AMBIGUOUS_ARGUMENT` 错误。 如果考虑使用字符串作为第二个参数，请仔细阅读下面的示例。
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -1090,4 +1090,4 @@ assert.throws(throwingFirst, /Second$/);
 //     at throwingFirst (repl:2:9)
 ```
 
-由于令人困惑的表示方法，建议不要使用string作为第二个参数。 这可能会导致难以发现的错误。
+由于令人困惑的表示方法，建议不要使用字符串作为第二个参数。 这可能会导致难以发现的错误。
