@@ -570,7 +570,7 @@ assert.fail(1, 2, new TypeError('need array'));
 // TypeError: need array
 ```
 
-在后三种情形中，`actual`， `expected` 和 `operator` 对错误信息没有影响。
+在后三种情形中，`actual`， `expected` 和 `operator` 对错误消息没有影响。
 
 使用 `stackStartFunction` 截断异常的追溯栈的示例：
 
