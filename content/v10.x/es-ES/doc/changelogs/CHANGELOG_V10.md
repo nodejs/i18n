@@ -273,23 +273,23 @@
   * Las marcas de hitos de rendimiento se emitirá como eventos de seguimiento. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
 * Proceso 
   * El uso de valores no de cadena para `process.env` está desaprobado. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
-  * The `process.assert()` method is deprecated. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
+  * El método `process.assert()` está desaprobado. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL 
-  * REPL now experimentally supports top-level await when using the `--experimental-repl-await` flag. [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)]
-  * The previously deprecated "magic mode" has been removed. [[`4893f70d12`](https://github.com/nodejs/node/commit/4893f70d12)]
-  * The previously deprecated `NODE_REPL_HISTORY_FILE` environment variable has been removed. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
-  * Proxy objects are shown as Proxy objects when inspected. [[`90a43906ab`](https://github.com/nodejs/node/commit/90a43906ab)]
+  * REPL ahora soporta experimentalmente la espera de alto nivel cuando se utiliza el indicador `--experimental-repl-await`. [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)]
+  * El "modo mágico" desaprobado previamente se ha eliminado. [[`4893f70d12`](https://github.com/nodejs/node/commit/4893f70d12)]
+  * La variable de entorno `NODE_REPL_HISTORY_FILE` desaprobada previamente se ha eliminado. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
+  * Los objetos Proxy se muestran como objetos Proxy cuando se inspeccionan. [[`90a43906ab`](https://github.com/nodejs/node/commit/90a43906ab)]
 * Streams 
-  * The `'readable'` event is now always deferred with nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
-  * A new `pipeline()` method has been provided for building end-to-data stream pipelines. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
-  * Experimental support for async for-await has been added to `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
-* Timers 
-  * The `enroll()` and `unenroll()` methods have been deprecated. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
+  * El evento `'readable'` ahora siempre se aplaza con nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
+  * Un nuevo método `pipeline()` ha sido proporcionado para crear pipelines de stream de extremo a datos. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
+  * El soporte experimental para asincronizar para esperar se ha agregado a `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
+* Temporizadores 
+  * Los métodos `enroll()` y `unenroll()` se han desaprobado. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
 * TLS 
-  * The `tls.convertNPNProtocols()` method has been deprecated. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
-  * Support for NPN (next protocol negotiation) has been dropped. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
-  * The `ecdhCurve` default is now `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
-* Seguimiento de eventos 
+  * El método `tls.convertNPNProtocols()` se ha desaprobado. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
+  * El soporte para NPN (próxima negociación del protocolo) se ha eliminado. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
+  * El `ecdhCurve` predeterminado ahora es `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
+* Eventos de Seguimiento 
   * A new `trace_events` top-level module allows trace event categories to be enabled/disabled at runtime. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
 * URL 
   * The WHATWG URL API is now a global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
