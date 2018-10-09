@@ -216,23 +216,23 @@ Tenga en cuenta que la actualización a OpenSSL 1.0.1s en Node.js v0.12.11 elimi
 * [fa26b13df7] - deps: actualizar a http-parser 2.3.2 (James M Snell) https://github.com/nodejs/node/pull/5241
 * [46c8e2165f] - deps: backport 1f8555 from v8's upstream (Trevor Norris) https://github.com/nodejs/node/pull/3945
 * [ce58c2c31a] - doc: eliminar descripciones SSLv2 (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5541
-* [018e4e0b1a] - domains: fix handling of uncaught exceptions (Julien Gilli) https://github.com/nodejs/node/pull/3885
-* [d421e85dc9] - lib: fix cluster handle leak (Rich Trott) https://github.com/nodejs/node/pull/5152
+* [018e4e0b1a] - domains: reparar manejo de excepciones no capturadas (Julien Gilli) https://github.com/nodejs/node/pull/3885
+* [d421e85dc9] - lib: corregir fuga del handle del cluster (Rich Trott) https://github.com/nodejs/node/pull/5152
 * [3a48f0022f] - node: fix leaking Context handle (Trevor Norris) https://github.com/nodejs/node/pull/3945
-* [28dddabf6a] - src: fix build error without OpenSSL support (Jörg Krause) https://github.com/nodejs/node/pull/4201
-* [a79baf03cd] - src: use global SealHandleScope (Trevor Norris) https://github.com/nodejs/node/pull/3945
-* [be39f30447] - test: add test-domain-exit-dispose-again back (Julien Gilli) https://github.com/nodejs/node/pull/4278
-* [da66166b9a] - test: fix test-domain-exit-dispose-again (Julien Gilli) https://github.com/nodejs/node/pull/3991
+* [28dddabf6a] - src: reparar error de compilación sin soporte de OpenSSL (Jörg Krause) https://github.com/nodejs/node/pull/4201
+* [a79baf03cd] - src: utilizar SealHandleScope global (Trevor Norris) https://github.com/nodejs/node/pull/3945
+* [be39f30447] - test: agregar de vuelta test-domain-exit-dispose-again (Julien Gilli) https://github.com/nodejs/node/pull/4278
+* [da66166b9a] - test: reparar test-domain-exit-dispose-again (Julien Gilli) https://github.com/nodejs/node/pull/3991
 
 <a id="0.12.10"></a>
 
-## 2016-02-09, Version 0.12.10 (LTS), @jasnell
+## 2016-02-09, Versión 0.12.10 (LTS), @jasnell
 
-This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
+Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deben consultar el resumen de la actualización de seguridad en nodejs.org para más detalles de vulnerabilidades parcheadas.
 
-### Notable changes
+### Cambios Notables
 
-* http: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
+* http: reparar defectos en el análisis del encabezado HTTP para solicitudes y respuestas que pueden permitir el contrabando de solicitudes (CVE-2016-2086) o división de respuesta (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
 * http-parser: upgrade from 2.3.0 to 2.3.1
 * openssl: upgrade from 1.0.1q to 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
 * src: 
