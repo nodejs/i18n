@@ -89,7 +89,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`f316fd20a0`](https://github.com/nodejs/node/commit/f316fd20a0)] - **deps**: añadir -no_rand_screen al openssl s_client (Shigeki Ohtsu) [nodejs/io.js#1836](https://github.com/nodejs/io.js/pull/1836)
 * [[`263cc34657`](https://github.com/nodejs/node/commit/263cc34657)] - **deps**: reparar el error de compilación de asm build de openssl en x86_win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`889d1151de`](https://github.com/nodejs/node/commit/889d1151de)] - **deps**: repara el error de ensamblaje openssl en ia32 win32 (Fedor Indutny) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
-* [[`ba49b636b8`](https://github.com/nodejs/node/commit/ba49b636b8)] - **deps**: copia todos los archivos de encabezados openssl header para incluir dir (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
+* [[`ba49b636b8`](https://github.com/nodejs/node/commit/ba49b636b8)] - **deps**: copia todos los archivos de cabeceras openssl para incluir dir (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
 * [[`cdad83a789`](https://github.com/nodejs/node/commit/cdad83a789)] - **deps**: actualizar las fuentes openssl a 1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
 * [[`c1ddefdd79`](https://github.com/nodejs/node/commit/c1ddefdd79)] - **openssl**: reparar el requisito keypress en aplicaciones en win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`bec5d50f1e`](https://github.com/nodejs/node/commit/bec5d50f1e)] - **test**: reparar pruebas alpn para openssl1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
@@ -101,7 +101,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 ## Cambios Notables
 
 * **Búfer**: 
-  * `Buffer.prototype.compare` ahora puere comparar los sub-rangos de dos búferes. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
+  * `Buffer.prototype.compare` ahora puede comparar los sub-rangos de dos búferes. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * **deps**: 
   * actualizar a http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
   * actualizar ESLint a 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
@@ -118,7 +118,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **streams**: 
   * Reparar una regresión que fue causada porque los net stream solicitaban múltiples fragmentos sincrónicamente cuando combinados con cork/uncork (Matteo Collina) [#6164](https://github.com/nodejs/node/pull/6164)
 * **zlib**: 
-  * Los datos arrojados ahora son configurables permitiendo para la descompresión de datos parciales (Anna Henningsen) [#6069](https://github.com/nodejs/node/pull/6069)
+  * Los datos arrojados ahora son configurables permitiendo la descompresión de datos parciales (Anna Henningsen) [#6069](https://github.com/nodejs/node/pull/6069)
 
 ### Commits
 
@@ -127,7 +127,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`473f086a94`](https://github.com/nodejs/node/commit/473f086a94)] - **(SEMVER-MINOR)** **buffer**: añadir Buffer.prototype.compare por offset (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * [[`d44540f5af`](https://github.com/nodejs/node/commit/d44540f5af)] - **buffer**: estandarizar las verificaciones del índice de arreglos (Trevor Norris) [#6084](https://github.com/nodejs/node/pull/6084)
 * [[`bd12d72e0c`](https://github.com/nodejs/node/commit/bd12d72e0c)] - **build**: reparar los encabezados tar para Linux (Gibson Fahnestock) [#5978](https://github.com/nodejs/node/pull/5978)
-* [[`3c8d404a82`](https://github.com/nodejs/node/commit/3c8d404a82)] - **build**: permitir pruebas ci ejecute pruebas en paralelo (Johan Bergström) [#6208](https://github.com/nodejs/node/pull/6208)
+* [[`3c8d404a82`](https://github.com/nodejs/node/commit/3c8d404a82)] - **build**: permitir que pruebas ci ejecute pruebas en paralelo (Johan Bergström) [#6208](https://github.com/nodejs/node/pull/6208)
 * [[`a5f8d0c6ef`](https://github.com/nodejs/node/commit/a5f8d0c6ef)] - **build**: remover banderas -f{data,function}-sections (Ben Noordhuis) [#6077](https://github.com/nodejs/node/pull/6077)
 * [[`adfb1a4bb0`](https://github.com/nodejs/node/commit/adfb1a4bb0)] - **child_process**: añadir verificaciones nullptr después de allocs (Anna Henningsen) [#6256](https://github.com/nodejs/node/pull/6256)
 * [[`1fb40524ee`](https://github.com/nodejs/node/commit/1fb40524ee)] - **(SEMVER-MINOR)** **debugger**: ejecuta el último comando al presionar enter (Rich Trott) [#6090](https://github.com/nodejs/node/pull/6090)
@@ -138,7 +138,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`632e6b9617`](https://github.com/nodejs/node/commit/632e6b9617)] - **deps**: hace backport 125ac66 del upstream v8 (Myles Borins) [#6086](https://github.com/nodejs/node/pull/6086)
 * [[`4b8376986a`](https://github.com/nodejs/node/commit/4b8376986a)] - **doc**: git mv a .md (Robert Jefe Lindstaedt) [#4747](https://github.com/nodejs/node/pull/4747)
 * [[`e6f4a175d4`](https://github.com/nodejs/node/commit/e6f4a175d4)] - **doc**: añadir ejemplo completo para zlib.flush() (Anna Henningsen) [#6172](https://github.com/nodejs/node/pull/6172)
-* [[`50f3f10ce6`](https://github.com/nodejs/node/commit/50f3f10ce6)] - **doc**: notar que zlib.flush después de escrituras pendientes (Anna Henningsen) [#6172](https://github.com/nodejs/node/pull/6172)
+* [[`50f3f10ce6`](https://github.com/nodejs/node/commit/50f3f10ce6)] - **doc**: note que zlib.flush actúa después de escrituras pendientes (Anna Henningsen) [#6172](https://github.com/nodejs/node/pull/6172)
 * [[`985685d170`](https://github.com/nodejs/node/commit/985685d170)] - **doc**: reparar referencias rotas (Alexander Gromnitsky) [#6100](https://github.com/nodejs/node/pull/6100)
 * [[`d66d883a85`](https://github.com/nodejs/node/commit/d66d883a85)] - **doc**: path.format provee más ejemplos (John Eversole) [#5838](https://github.com/nodejs/node/pull/5838)
 * [[`dc1552e321`](https://github.com/nodejs/node/commit/dc1552e321)] - **doc**: reemplazar funciones con funciones flecha (abouthiroppy) [#6203](https://github.com/nodejs/node/pull/6203)
@@ -169,12 +169,12 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`abd101be1a`](https://github.com/nodejs/node/commit/abd101be1a)] - **http**: denegar el envío de códigos de estatus obviamente inválidos (Brian White) [#6291](https://github.com/nodejs/node/pull/6291)
 * [[`16b23b2c28`](https://github.com/nodejs/node/commit/16b23b2c28)] - **http**: saltar el cuerpo y próximos mensajes de CONNECT res (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
 * [[`a259ee4018`](https://github.com/nodejs/node/commit/a259ee4018)] - **http**: unref socket timer on parser execute (Fedor Indutny) [#6286](https://github.com/nodejs/node/pull/6286)
-* [[`d4abca5b27`](https://github.com/nodejs/node/commit/d4abca5b27)] - **lib**: remover indirección contexto global bootstrap (Jeremiah Senkpiel) [#5881](https://github.com/nodejs/node/pull/5881)
+* [[`d4abca5b27`](https://github.com/nodejs/node/commit/d4abca5b27)] - **lib**: remover bootstrap de contexto global bootstrap (Jeremiah Senkpiel) [#5881](https://github.com/nodejs/node/pull/5881)
 * [[`c8783aff21`](https://github.com/nodejs/node/commit/c8783aff21)] - **lib,test,tools**: alineamiento en asignaciones variables (Rich Trott) [#6242](https://github.com/nodejs/node/pull/6242)
 * [[`d5d4f194f1`](https://github.com/nodejs/node/commit/d5d4f194f1)] - **net**: reemplazar `__defineGetter__` con defineProperty (Fedor Indutny) [#6284](https://github.com/nodejs/node/pull/6284)
 * [[`6d9c0c9aa7`](https://github.com/nodejs/node/commit/6d9c0c9aa7)] - **(SEMVER-MINOR)** **net**: soporta insinuaciones DNS en createConnection() (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
 * [[`457f24f19c`](https://github.com/nodejs/node/commit/457f24f19c)] - **(SEMVER-MINOR)** **node**: hacer libs incorporados disponibles para `--eval` (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
-* [[`fc89d17656`](https://github.com/nodejs/node/commit/fc89d17656)] - **path**: repara unas pruebas que dañan algunas máquinas. (Mike Kaufman) [#6067](https://github.com/nodejs/node/pull/6067)
+* [[`fc89d17656`](https://github.com/nodejs/node/commit/fc89d17656)] - **path**: reparar unas pruebas que dañan algunas máquinas. (Mike Kaufman) [#6067](https://github.com/nodejs/node/pull/6067)
 * [[`1d408099b7`](https://github.com/nodejs/node/commit/1d408099b7)] - **process**: reparar uso incorrecto de assert.fail() (Rich Trott) [#6211](https://github.com/nodejs/node/pull/6211)
 * [[`07c9f981d6`](https://github.com/nodejs/node/commit/07c9f981d6)] - **(SEMVER-MINOR)** **repl**: mantener los módulos incorporados no-enumerables (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
 * [[`5382deaa18`](https://github.com/nodejs/node/commit/5382deaa18)] - **repl**: no completar expresiones no-simples (Anna Henningsen) [#6192](https://github.com/nodejs/node/pull/6192)
