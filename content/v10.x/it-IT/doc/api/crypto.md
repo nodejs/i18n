@@ -955,7 +955,7 @@ La classe `Sign` è un'utility per la generazione di firme. Può essere utilizza
 
 Le istanze `Sign` vengono create utilizzando il metodo [`crypto.createSign()`][]. L'argomento è il nome della stringa della funzione hash da utilizzare. I `Sign` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Sign` objects as streams:
+Esempio: Utilizzando i `Sign` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -966,12 +966,13 @@ sign.end();
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature using the specified private key and
-// SHA-256. For RSA keys, the algorithm is RSASSA-PKCS1-v1_5 (see padding
-// parameter below for RSASSA-PSS). For EC keys, the algorithm is ECDSA.
+// Stampa: la firma calcolata utilizzando la chiave privata e
+// l'SHA-256 specificati. Per le chiavi RSA, l'algoritmo è 
+// RSASSA-PKCS1-v1_5 (vedi il parametro padding in basso per RSASSA-PSS). 
+// Per le chiavi EC, l'algoritmo è ECDSA.
 ```
 
-Example: Using the [`sign.update()`][] and [`sign.sign()`][] methods:
+Esempio: Utilizzando i metodi [`sign.update()`][] e [`sign.sign()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -981,12 +982,12 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Stampa: la firma calcolata
 ```
 
-In some cases, a `Sign` instance can also be created by passing in a signature algorithm name, such as 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
+In alcuni casi, è anche possibile creare un'istanza `Sign` passando un nome dell'algoritmo di una firma, come ad esempio 'RSA-SHA256'. Questo utilizzerà l'algoritmo del digest corrispondente. Questo non funziona per tutti gli algoritmi delle firma, ad esempio per 'ecdsa-with-SHA256' non funziona. In questo caso utilizza i nomi dei digest.
 
-Example: signing using legacy signature algorithm name
+Esempio: firma utilizzando il nome dell'algoritmo della firma legacy
 
 ```js
 const crypto = require('crypto');
@@ -996,7 +997,7 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Stampa: la firma calcolata
 ```
 
 ### sign.sign(privateKey[, outputFormat])
@@ -1016,13 +1017,13 @@ changes:
 - `outputFormat` {string}
 - Restituisce: {Buffer | string}
 
-Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
+Calcola la firma su tutti i dati passati utilizzando [`sign.update()`][] oppure [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
-The `privateKey` argument can be an object or a string. If `privateKey` is a string, it is treated as a raw key with no passphrase. If `privateKey` is an object, it must contain one or more of the following properties:
+L'argomento `privateKey` può essere un object o una stringa. Se `privateKey` è una stringa, viene trattato come una raw key senza passphrase (frase d'accesso). Se `privateKey` è un object, deve contenere una o più delle seguenti proprietà:
 
-- `key`: {string} - PEM encoded private key (required)
-- `passphrase`: {string} - passphrase for the private key
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - Private key (chiave privata) con codifica PEM (obbligatoria)
+- `passphrase`: {string} - passphrase (frase d'accesso) per la private key (chiave privata)
+- `padding`: {integer} - Valore padding opzionale per RSA, può essere uno dei seguenti:
   
   - `crypto.constants.RSA_PKCS1_PADDING` (default)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
