@@ -449,7 +449,7 @@ Il metodo `decipher.update()` può essere chiamato più volte con i nuovi dati f
 added: v0.5.0
 -->
 
-La classe `DiffieHellman` è un'utility per la creazione di exchange di Diffie-Hellman key.
+La classe `DiffieHellman` è un'utility per la creazione di scambi di chiavi Diffie-Hellman.
 
 Le istanze della classe `DiffieHellman` possono essere create utilizzando la funzione [`crypto.createDiffieHellman()`][].
 
@@ -457,15 +457,15 @@ Le istanze della classe `DiffieHellman` possono essere create utilizzando la fun
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Genera le key di Alice...
+// Genera le chiavi di Alice...
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Genera le key di Bob...
+// Genera le chiavi di Bob...
 const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
 const bobKey = bob.generateKeys();
 
-// Esegue l'exchange e genera il segreto...
+// Esegue lo scambio e genera la chiave segreta...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
@@ -484,9 +484,9 @@ added: v0.5.0
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come la public key (chiave pubblica) dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato, e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. L'encoding può essere `'latin1'`, `'hex'`, o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Se viene fornito l'`outputEncoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.generateKeys([encoding])
 
@@ -497,7 +497,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Genera valori private Diffie-Hellman key (chiave privata) e public Diffie-Hellman key (chiave pubblica), e restituisce la public key (chiave pubblica) nell'`encoding` specificato. Questa chiave dovrebbe essere trasferita all'altra parte. L'encoding può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getGenerator([encoding])
 
@@ -508,7 +508,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Restituisce il generatore Diffie-Hellman nell'`encoding` specificato, che può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getPrime([encoding])
 
