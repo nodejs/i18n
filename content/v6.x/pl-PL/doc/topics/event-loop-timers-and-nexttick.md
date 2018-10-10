@@ -1,30 +1,30 @@
-# The Node.js Event Loop, Timers, and `process.nextTick()`
+# Pętla zdarzeń programu Node.js, Zegary i `process.nextTick()`
 
-## What is the Event Loop?
+## Co to jest Pętla Zdarzeń?
 
-The event loop is what allows Node.js to perform non-blocking I/O operations — despite the fact that JavaScript is single-threaded — by offloading operations to the system kernel whenever possible.
+Pętla zdarzeń umożliwia Node.js wykonywanie nieblokujących operacji wej/wyj operacje - pomimo tego, że JavaScript jest jednowątkowy - przez przeładowywanie operacji na jądro systemu, gdy tylko jest to możliwe.
 
-Since most modern kernels are multi-threaded, they can handle multiple operations executing in the background. When one of these operations completes, the kernel tells Node.js so that the appropriate callback may be added to the **poll** queue to eventually be executed. We'll explain this in further detail later in this topic.
+Ponieważ większość nowoczesnych jąder jest wielowątkowych, mogą obsługiwać wiele operacji wykonywanych w tle. Kiedy jedna z tych operacji zakończy się, jądro mówi Node.js, aby odpowiednie wywołanie zwrotne mogły zostać dodane do kolejki **sondażu**, aby ostatecznie został wykonany. Wyjaśnimy to bardziej szczegółowo w dalszej części tego tematu.
 
-## Event Loop Explained
+## Objaśnienie Pętli Zdarzeń
 
-When Node.js starts, it initializes the event loop, processes the provided input script (or drops into the [REPL](https://nodejs.org/api/repl.html#repl_repl), which is not covered in this document) which may make async API calls, schedule timers, or call `process.nextTick()`, then begins processing the event loop.
+Po uruchomieniu Node.js inicjuje pętlę zdarzeń, przetwarza dostarczony skrypt wejściowy (lub wpada w [REPL](https://nodejs.org/api/repl.html#repl_repl), który nie jest uwzględniony w ten dokument), który może wykonywać asynchroniczne wywołania API, planować zegary lub wywoływać `process.nextTick()`, a następnie rozpoczyna przetwarzanie pętli zdarzeń.
 
-The following diagram shows a simplified overview of the event loop's order of operations.
+Poniższy diagram przedstawia uproszczony przegląd kolejności operacji pętli zdarzeń.
 
 ```txt
    ┌───────────────────────┐
-┌─>│        timers         │
-│  └──────────┬────────────┘
-│  ┌──────────┴────────────┐
-│  │     I/O callbacks     │
-│  └──────────┬────────────┘
-│  ┌──────────┴────────────┐
-│  │     idle, prepare     │
-│  └──────────┬────────────┘      ┌───────────────┐
-│  ┌──────────┴────────────┐      │   incoming:   │
-│  │         poll          │<─────┤  connections, │
-│  └──────────┬────────────┘      │   data, etc.  │
+┌─>│ timery │
+│ └──────────┬────────────┘
+│ ┌──────────┴────────────┐
+│ │ I/O wywołania zwrotne │
+│ └──────────┬────────────┘
+│ ┌──────────┴────────────┐
+│ │ bezczynność, przygotowanie │
+│ └──────────┬────────────┘ ┌───────────────┐
+│ ┌──────────┴────────────┐ │ przychodzące: │
+│ │ sonda │<─────┤  połączenia, │ │
+└──────────┬────────────┘ │ dane, itp.  │
 │  ┌──────────┴────────────┐      └───────────────┘
 │  │        check          │
 │  └──────────┬────────────┘
@@ -33,7 +33,7 @@ The following diagram shows a simplified overview of the event loop's order of o
    └───────────────────────┘
 ```
 
-*note: each box will be referred to as a "phase" of the event loop.*
+*uwaga: każde pole będzie określane jako "faza" pętli zdarzeń.*
 
 Each phase has a FIFO queue of callbacks to execute. While each phase is special in its own way, generally, when the event loop enters a given phase, it will perform any operations specific to that phase, then execute callbacks in that phase's queue until the queue has been exhausted or the maximum number of callbacks has executed. When the queue has been exhausted or the callback limit is reached, the event loop will move to the next phase, and so on.
 
@@ -41,7 +41,7 @@ Since any of these operations may schedule *more* operations and new events proc
 
 ***NOTE:** There is a slight discrepancy between the Windows and the Unix/Linux implementation, but that's not important for this demonstration. The most important parts are here. There are actually seven or eight steps, but the ones we care about — ones that Node.js actually uses - are those above.*
 
-## Phases Overview
+## Przegląd Faz
 
 * **timers**: this phase executes callbacks scheduled by `setTimeout()` and `setInterval()`.
 * **I/O callbacks**: executes almost all callbacks with the exception of close callbacks, the ones scheduled by timers, and `setImmediate()`.
@@ -52,7 +52,7 @@ Since any of these operations may schedule *more* operations and new events proc
 
 Between each run of the event loop, Node.js checks if it is waiting for any asynchronous I/O or timers and shuts down cleanly if there are not any.
 
-## Phases in Detail
+## Fazy w Szczegółach
 
 ### timers
 

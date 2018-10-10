@@ -11,16 +11,16 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
 ## Quince minutos antes de la sesión de orientación
 
 * Antes de la sesión de orientación, agregar al nuevo Colaborador al [Equipo de Colaboradores](https://github.com/orgs/nodejs/teams/collaborators).
-* Pregúnteles si quieren unirse a algún equipo de subsistema. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Pregúnteles si quieren unirse a algún equipo de subsistema. Consulte [A quien para el CC en el issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
 ## Sesión de orientación
 
 * Esta sesión cubrirá: 
   * [configuración local](#local-setup)
   * [objetivos & valores del proyecto](#project-goals--values)
-  * [managing the issue tracker](#managing-the-issue-tracker)
+  * [gestionando el issue tracker](#managing-the-issue-tracker)
   * [revisión de PRs](#reviewing-prs)
-  * [landing PRs](#landing-prs)
+  * [PRs recibidos](#landing-prs)
 
 ## Configuración local
 
@@ -30,7 +30,7 @@ Este documento es un resumen de las cosas que le contamos a los nuevos Colaborad
 apply.whitespace fix`
   * Siempre continuar el PR desde su propia bifurcación de GitHub 
     * Las ramas en el repositorio `nodejs/node` solo son para las líneas de lanzamiento
-  * See [Updating Node.js from Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
+  * Consulte [Actualizar Node.js desde Upstream](./onboarding-extras.md#updating-nodejs-from-upstream)
   * Crear una nueva rama para cada PR que envíe.
   * Afiliación: Considere hacer su afiliación en la organización GitHub de Node.js pública. Esto hace que sea más fácil identificar a los Colaboradores. Las instrucciones sobre cómo hacerlo están disponibles en [Publicar u ocultar la afiliación a la organización](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
@@ -54,11 +54,11 @@ apply.whitespace fix`
   
   * La empatía hacía los usuarios es importante (esto es en parte la razón por la que orientamos a las personas)
   * En general: ¡intente ser amable con las personas!
-  * The best outcome is for people who come to our issue tracker to feel like they can come back again.
+  * El mejor resultado es para personas que vienen a nuestro issue tracker para sentir que pueden volver.
 
 * Se espera que siga *y* responsabilice a los demás ante el [Código de Conducta](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-## Managing the issue tracker
+## Gestionando el issue tracker
 
 * Tiene (en su mayoría) rienda suelta; no dude en cerrar un issue si está seguro de que debería cerrarse
   
@@ -76,7 +76,7 @@ apply.whitespace fix`
     * no existen comentarios pendientes para revisión y
     * al menor un colaborados aprobó el PR.
 
-* See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Consulte [A quien para el CC en el issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   
   * Esto vendrá más naturalmente con el tiempo
   * Para muchos de los equipos enlistados, puede solicitar ser añadido si está interesado 
@@ -112,9 +112,9 @@ apply.whitespace fix`
   * Cuando utilice explícitamente `Changes requested`, muestre empatía - los comentarios usualmente se abordarán incluso si no la utiliza. 
     * Si lo hace, es bueno que esté disponible luego para verificar si se han abordado sus comentarios
     * Si observa que los cambios requeridos han sido realizados, puede borrar la revisión de los `Changes requested` de otro colaborador.
-    * Use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing.
+    * Utilice `Changes requested` para indicar que está considerando alguno de sus comentarios para impedir que el PR se reciba.
 
-* What belongs in Node.js:
+* Lo que pertenece en Node.js:
   
   * Las opiniones varían - ¡es bueno tener una extensa base de colaboradores por esa razón!
   * Si Node.js lo necesita (debido a razones históricas), entonces pertenece a Node.js. 
@@ -129,47 +129,47 @@ apply.whitespace fix`
   * Utilizará `node-test-pull-request` la mayor parte del tiempo. ¡Vaya allí ahora! 
     * Considere marcarlo: https://ci.nodejs.org/job/node-test-pull-request/
   * Para obtener el formulario para iniciar un trabajo, haga clic en `Crear con Parámetros`. (Si no lo ve, probablemente signifique que no ha iniciado sesión) ¡Haga clic ahora!
-  * To start CI testing from this screen, you need to fill in two elements on the form: 
-    * The `CERTIFY_SAFE` box should be checked. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
-    * The `PR_ID` box should be filled in with the number identifying the pull request containing the code you wish to test. For example, if the URL for the pull request is `https://github.com/nodejs/node/issues/7006`, then put `7006` in the `PR_ID`.
-    * The remaining elements on the form are typically unchanged with the exception of `POST_STATUS_TO_PR`. Check that if you want a CI status indicator to be automatically inserted into the PR.
-  * If you need help with something CI-related: 
-    * Use #node-dev (IRC) to talk to other Collaborators.
-    * Use #node-build (IRC) to talk to the Build WG members who maintain the CI infrastructure.
-    * Use the [Build WG repo](https://github.com/nodejs/build) to file issues for the Build WG members who maintain the CI infrastructure.
+  * Para iniciar la prueba de CI desde esta pantalla, necesita rellenar dos elementos en el formulario: 
+    * La caja `CERTIFY_SAFE` debe ser verificada. Al comprobarlo, está indicando que ha revisado el código que está a punto de probar y está seguro que no contiene ningún código malicioso. (¡No queremos que las personas secuestren nuestros hosts de CI para atacar otros hosts en internet, por ejemplo!)
+    * La caja `PR_ID` debe completarse con el número que identifica al pull request que contiene el código que desea probar. Por ejemplo, si el URL para el pull request es `https://github.com/nodejs/node/issues/7006`, entonces coloque `7006` en el `PR_ID`.
+    * Los elementos restantes en el formulario generalmente no cambian con la excepción de `POST_STATUS_TO_PR`. Verifique si quiere que un indicador de estatus de CI sea insertado automáticamente dentro del PR.
+  * Si necesita ayuda con algo relacionado con CI: 
+    * Utilice #node-dev (IRC) para hablar con otros Colaboradores.
+    * Utilice #node-build (IRC) para hablar con los miembros de Crear WG, los cuales mantienen la infraestructura de CI.
+    * Utilice el [repo Crear WG](https://github.com/nodejs/build) para issues de archivos para los miembros de Crear WG que mantienen la infraestructura de CI.
 
-## Landing PRs
+## PRs recibidos
 
-See the Collaborator Guide: [Landing Pull Requests](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
+Consulte la Guía del Colaborador: [Pull Requests Recibidos](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
-Note that commits in one PR that belong to one logical change should be squashed. It is rarely the case in onboarding exercises, so this needs to be pointed out separately during the onboarding.
+Tenga en cuenta que los commits en un PR que pertenecen a un cambio lógico deben ser aplastados. Rara vez es el caso de los ejercicios de orientación, por lo que esto debe ser señalado por separado durante la orientación.
 
 <!-- TODO(joyeechueng): provide examples about "one logical change" -->
 
-## Exercise: Make a PR adding yourself to the README
+## Ejercicio: Haga un PR agregándose usted mismo al README
 
-* Example: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
-  * For raw commit message: `git log ce986de829457c39257cd205067602e765768fb0
+* Ejemplo: <https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0> 
+  * Para el mensaje de commit sin procesar: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
-* Collaborators are in alphabetical order by GitHub username.
-* Optionally, include your personal pronouns.
-* Label your pull request with the `doc` subsystem label.
-* Run CI on the PR. Because the PR does not affect any code, use the `node-test-pull-request-lite` CI task. Alternatively, use the usual `node-test-pull-request` CI task and cancel it after the linter and one other subtask have passed.
-* After one or two approvals, land the PR (PRs of this type do not need to wait for 48/72 hours to land). 
-  * Be sure to add the `PR-URL: <full-pr-url>` and appropriate `Reviewed-By:` metadata.
-  * [`node-core-utils`][] automates the generation of metadata and the landing process. See the documentation of [`git-node`][].
-  * [`core-validate-commit`][] automates the validation of commit messages. This will be run during `git node land --final` of the [`git-node`][] command.
+* Los colaboradores están ordenados alfabéticamente por el nombre de usuario de GitHub.
+* Opcionalmente, incluye sus pronombres personales.
+* Etiquete su pull request con la etiqueta de subsistema `doc`.
+* Ejecute CI en el PR. A causa de que el PR no afecta ningún código, utilice la tarea de CI `node-test-pull-request-lite`. De manera alternativa, utilice la tarea usual de CI `node-test-pull-request` y cancélela después de que hayan pasado la plantilla y otra subtarea.
+* Después de una o dos aprobaciones, reciba el PR (PRs de este tipo no necesitan esperar 48/72 horas para ser recibidos). 
+  * Asegúrese de añadir el `PR-URL: <full-pr-url>` y los metadatos correspondientes `Reviewed-By:`.
+  * [`node-core-utils`][] automatiza la generación de metadatos y el proceso de recepción. Consulte la documentación de [`git-node`][].
+  * [`core-validate-commit`][] automatiza la validación de mensajes de commit. Esto se ejecutará durante `git node land --final` del comando [`git-node`][].
 
-## Final notes
+## Notas Finales
 
-* Don't worry about making mistakes: everybody makes them, there's a lot to internalize and that takes time (and we recognize that!)
-* Almost any mistake you could make can be fixed or reverted.
-* The existing Collaborators trust you and are grateful for your help!
-* Other repositories: 
+* No se preocupe por cometer errores: todo el mundo lo hace, hay mucho que interiorizar y eso lleva tiempo (¡y reconocemos eso!)
+* Casi cualquier error que podría cometer puede ser arreglado o revertido.
+* ¡Los Colaboradores existentes confían en usted y están agradecidos por su ayuda!
+* Otros repositorios: 
   * <https://github.com/nodejs/TSC>
   * <https://github.com/nodejs/build>
   * <https://github.com/nodejs/nodejs.org>
   * <https://github.com/nodejs/readable-stream>
   * <https://github.com/nodejs/LTS>
   * <https://github.com/nodejs/citgm>
-* The Node.js Foundation hosts regular summits for active contributors to the Node.js project, where we have face-to-face discussions about our work on the project. The Foundation has travel funds to cover participants' expenses including accommodations, transportation, visa fees, etc. if needed. Check out the [summit](https://github.com/nodejs/summit) repository for details.
+* La Fundación Node.js organiza cumbres periódicas para los colaboradores del proyecto Node.js, en el que tenemos discusiones cara-a-cara sobre nuestro trabajo en el proyecto. La Fundación tiene fondos para viajes para cubrir los gastos de los participantes incluyendo alojamiento, transporte, tarifas de visado, etc. si es necesario. Eche un vistazo al repositorio de [cumbre](https://github.com/nodejs/summit) para más detalles.

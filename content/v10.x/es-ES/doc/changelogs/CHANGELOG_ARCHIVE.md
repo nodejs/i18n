@@ -845,7 +845,7 @@ https://github.com/nodejs/node/commit/d86d83c75f6343b5368bb7bd328b4466a035e1d4
 * añadir soporte de systemtap (Jan Wynholds)
 * windows: añadir soporte de ETW y PerfCounters (Scott Blomquist)
 * windows: reparar normalización de rutas UNC (Bert Belder)
-* crypto: reparar manejo de de error ssl (Sergey Kholodilov)
+* crypto: reparar manejo de error ssl (Sergey Kholodilov)
 * node: remover eio-emul.h (Ben Noordhuis)
 * os: añadir función os.endianness() (Nathan Rajlich)
 * readline: no emitir eventos "line" con un carácter "\n" posterior (Nathan Rajlich)

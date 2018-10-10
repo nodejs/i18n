@@ -115,18 +115,18 @@ La nueva entrada debe tomar la siguiente forma:
 
 ```md
 <a id="x.y.x"></a>
-## YYYY-MM-DD, Version x.y.z (Release Type), @releaser
+## AAAA-MM-DD, Version x.y.z (Tipo de Lanzamiento), @releaser
 
-### Notable changes
+### Cambios notables
 
-* List interesting changes here
-* Particularly changes that are responsible for minor or major version bumps
-* Also be sure to look at any changes introduced by dependencies such as npm
-* ... and include any notable items from there
+* Liste los cambios interesantes aquí
+* Cambios particulares que son responsables por saltos de versión menores o mayores
+* También asegúrate de buscar cualquier cambio introducido por las dependencias, tales como npm
+* ... e incluir cualquier elemento notable de ahí
 
 ### Commits
 
-* Include the full list of commits since the last release here. Do not include "Working on X.Y.Z+1" commits.
+* Incluye la lista completa de los commits desde el último lanzamiento aquí. No incluir commits "Working on X.Y.Z+1".
 ```
 
 El tipo de lanzamiento debe ser actual, LTS, o de mantenimiento, dependiendo del tipo de lanzamiento que se está produciendo.
@@ -144,7 +144,7 @@ doc/api/*.md`, y substituye esta versión del nodo con `sed -i
 "s/REPLACEME/$VERSION/g" doc/api/*.md` or `perl -pi -e "s/REPLACEME/$VERSION/g"
 doc/api/*.md`.
 
-*Nota*: `$VERSION` se debería ser prefijada con `v`.
+*Nota*: `$VERSION` debería ser prefijada con `v`.
 
 Si este lanzamiento incluye cualquier nueva desaprobación es necesario asegurarse que esas fueron asignadas un código estático de desaprobación apropiado. Estos están listados en el documento (vea`doc/api/deprecations.md`) y en la fuente como `DEP00XX`. Al código se le debe asignar un número (p. ej. `DEP0012`). Tenga en cuenta que esta asignación debería ocurrir cuando el PR es aterrizado, pero una verificación será realizada cuando la compilación lanzada es ejecutada.
 
@@ -251,7 +251,7 @@ Combina tu branch de propuesta de lanzamiento con el branch estable que estás l
 
 Selecciona cuidadosamente el commit lanzado al `master`. Después de seleccionar, edita `src/node_version.h` para asegurar que los macros de la versión contengan todos los valores que tenían previamente en el `master`. `NODE_VERSION_IS_RELEASE` debería ser `0`.
 
-Ejecuta `make lint-md-build; make lint` antes de empujar al `master`, para asegurarse que el formato de los Registros de cambios pasen las reglas lint en el `master`.
+Ejecuta `make lint-md-build; make lint` antes de empujar al `master`, para asegurarte que el formato de los Registros de cambios pasen las reglas lint en el `master`.
 
 ### 12. Promover y Firmar las Compilaciones Lanzadas
 
@@ -303,18 +303,18 @@ Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](h
 
 - Cambios al `master` en el repositorio de nodejs.org van a activar una nueva compilación de nodejs.org, entonces tus cambios deberían aparecer en unos minutos luego de empujar.
 
-### 15. Announce
+### 15. Anuncio
 
-The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
+El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva versión. Para anunciar la compilación en Twitter a traves de la cuenta oficial @nodejs, envia un correo electrónico a <pr@nodejs.org> con un mensaje como:
 
-> v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
+> salió la v5.8.0 de @nodejs: https://nodejs.org/en/blog/release/v5.8.0/ … aqlgo aquí sobre los cambios notables
 
-To ensure communication goes out with the timing of the blog post, please allow 24 hour prior notice. If known, please include the date and time the release will be shared with the community in the email to coordinate these announcements.
+Para asegurar que la comunicación está sincronizada con la entrada del blog, por favor permite una notificación previa de 24 horas. Si se conoce, por favor incluye la fecha y el tiempo en el que el lanzamiento será compartido con la comunidad en el correo electrónico para coordinar estos anuncios.
 
-### 16. Cleanup
+### 16. Limpieza
 
-Close your release proposal PR and remove the proposal branch.
+Cierra tu propuesta PR y remueve el branch propuesto.
 
-### 17. Celebrate
+### 17. Celebra
 
-*In whatever form you do this...*
+*De cualquier forma que hagas esto...*

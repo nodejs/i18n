@@ -1,6 +1,6 @@
-# Pull Requests
+# Żądania Zmiany
 
-There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
+Istnieją dwa fundamentalne komponenty procesu Żądania Zmiany: jeden konkretny i techniczny oraz drugi skupiony głównie wokół procesu. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
 
 * [Dependencies](#dependencies)
 * [Setting up your local environment](#setting-up-your-local-environment) 
