@@ -49,7 +49,7 @@ Ilość danych potencjalnie buforowanych zależy od opcji `highWaterMark` przeka
 
 Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
 
-Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
+Gdy całkowity rozmiar wewnętrznego bufora odczytu osiągnie wartość progową określoną przez `highWaterMark`, strumień tymczasowo przestanie odczytywać dane z bazowego zasobu, dopóki dane aktualnie buforowane nie zostaną zużyte (to znaczy, że strumień przestanie wywoływać wewnętrzną metodę `readable._read()`, która jest używana do wypełnienia bufora odczytu).
 
 Data is buffered in `Writable` streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
 
@@ -57,11 +57,11 @@ A key goal of the `stream` API, particularly the [`stream.pipe()`] method, is to
 
 Because [`Duplex`][] and [`Transform`][] streams are both `Readable` and `Writable`, each maintain *two* separate internal buffers used for reading and writing, allowing each side to operate independently of the other while maintaining an appropriate and efficient flow of data. For example, [`net.Socket`][] instances are [`Duplex`][] streams whose `Readable` side allows consumption of data received *from* the socket and whose `Writable` side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
 
-## API for Stream Consumers
+## API dla Konsumentów Strumienia
 
 <!--type=misc-->
 
-Almost all Node.js applications, no matter how simple, use streams in some manner. The following is an example of using streams in a Node.js application that implements an HTTP server:
+Niemal wszystkie aplikacje Node.js, bez względu na to, jak prostymi one są, wykorzystują strumienie w jakiś sposób. Poniżej przedstawiono przykład używania strumieni w aplikacji Node.js, która implementuje serwer HTTP:
 
 ```js
 const http = require('http');
