@@ -1,4 +1,4 @@
-# io.js ChangeLog
+# Registro de Cambios de io.js
 
 <!--lint disable prohibited-strings-->
 
