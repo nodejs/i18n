@@ -1,12 +1,12 @@
-# Stream
+# Strumień
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilność: 2 - Stabilna
 
-A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
+Strumień jest abstrakcyjnym interfejsem do pracy z danymi strumieniowymi w Node.js. Moduł `stream` zapewnia podstawowe API, które ułatwia konfigurowanie obiektów implementujących interfejs strumienia.
 
-There are many stream objects provided by Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
+Istnieje wiele obiektów strumieniowych udostępnianych przez Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
 
 Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
 
