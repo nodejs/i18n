@@ -700,7 +700,7 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- Restituisce: {Buffer | string} L'EC Diffie-Hellman private key nell'`encoding` specificato, che può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
+- Restituisce: {Buffer | string} L'EC Diffie-Hellman private key (chiave privata) nell'`encoding` specificato, che può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.getPublicKey(\[encoding\]\[, format\])
 
@@ -710,11 +710,11 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Returns: {Buffer | string} The EC Diffie-Hellman public key in the specified `encoding` and `format`.
+- Restituisce: {Buffer | string} L'EC Diffie-Hellman public key (chiave pubblica) nell'`encoding` e nel `format` specificati.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified the point will be returned in `'uncompressed'` format.
+L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is specified, a string is returned; otherwise a [`Buffer`][] is returned.
+L'argomento `encoding` può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.setPrivateKey(privateKey[, encoding])
 
@@ -725,9 +725,9 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman private key. The `encoding` can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Imposta l'EC Diffie-Hellman private key (chiave privata). L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
+Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
