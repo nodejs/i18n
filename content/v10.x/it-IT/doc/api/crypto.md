@@ -305,9 +305,9 @@ Le istanze della classe `Decipher` vengono utilizzate per decrittografare i dati
 - Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing semplici dati criptati per produrre i dati non criptati sul lato readable, oppure
 - Utilizzando i metodi [`decipher.update()`][] e [`decipher.final()`][] per produrre i dati non criptati.
 
-The [`crypto.createDecipher()`][] or [`crypto.createDecipheriv()`][] methods are used to create `Decipher` instances. `Decipher` objects are not to be created directly using the `new` keyword.
+I metodi [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] sono usati per creare istanze `Decipher`. Gli `Decipher` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Decipher` objects as streams:
+Esempio: Utilizzando gli `Decipher` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -321,7 +321,7 @@ decipher.on('readable', () => {
 });
 decipher.on('end', () => {
   console.log(decrypted);
-  // Prints: some clear text data
+  // Stampa: alcuni dati di testo chiari
 });
 
 const encrypted =
@@ -330,7 +330,7 @@ decipher.write(encrypted, 'hex');
 decipher.end();
 ```
 
-Example: Using `Decipher` and piped streams:
+Esempio: Utilizzando `Decipher` e i piped stream:
 
 ```js
 const crypto = require('crypto');
@@ -343,7 +343,7 @@ const output = fs.createWriteStream('test.js');
 input.pipe(decipher).pipe(output);
 ```
 
-Example: Using the [`decipher.update()`][] and [`decipher.final()`][] methods:
+Esempio: Utilizzando i metodi [`decipher.update()`][] e [`decipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -354,7 +354,7 @@ const encrypted =
 let decrypted = decipher.update(encrypted, 'hex', 'utf8');
 decrypted += decipher.final('utf8');
 console.log(decrypted);
-// Prints: some clear text data
+// Stampa: alcuni dati di testo chiari
 ```
 
 ### decipher.final([outputEncoding])
@@ -364,9 +364,9 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Returns: {Buffer | string} Any remaining deciphered contents. If `outputEncoding` is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+- Restituisce: {Buffer | string} Qualsiasi contenuto decifrato restante. Se l'`outputEncoding` è `'latin1'`, `'ascii'` o `'utf8'`, viene restituita una stringa. Se non viene fornito nessun `outputEncoding`, viene restituito un [`Buffer`][].
 
-Once the `decipher.final()` method has been called, the `Decipher` object can no longer be used to decrypt data. Attempts to call `decipher.final()` more than once will result in an error being thrown.
+Una volta chiamato il metodo `decipher.final()`, il `Decipher` object non può più essere utilizzato per decifrare i dati. I tentativi di chiamare `decipher.final()` più di una volta genereranno un errore.
 
 ### decipher.setAAD(buffer)
 
@@ -382,9 +382,9 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Restituisce: {Cipher} per il method chaining.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+Quando si utilizza una modalità di crittografia autenticata (attualmente sono supportate solo la `GCM` e la `CCM`), il metodo `decipher.setAAD()` imposta il valore utilizzato per il parametro input *additional authenticated data* (AAD).
 
-The `decipher.setAAD()` method must be called before [`decipher.update()`][].
+Il metodo `decipher.setAAD()` dev'essere chiamato prima di [`decipher.update()`][].
 
 ### decipher.setAuthTag(buffer)
 
