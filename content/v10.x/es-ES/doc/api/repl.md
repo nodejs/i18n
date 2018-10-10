@@ -185,9 +185,9 @@ undefined
 
 ### Funciones de evaluación personalizadas
 
-When a new `repl.REPLServer` is created, a custom evaluation function may be provided. This can be used, for instance, to implement fully customized REPL applications.
+Cuando un nuevo `repl.REPLServer` es creado, una función de evaluación personalizable puede ser provista. Esto puede ser usada, por ejemplo, para implementar aplicaciones REPL completamente personalizables.
 
-The following illustrates a hypothetical example of a REPL that performs translation of text from one language to another:
+Lo siguiente ilustra un ejemplo hipotético de un REPL que realiza la traducción de un texto de un lenguaje a otro ilustra:
 
 ```js
 const repl = require('repl');
@@ -202,7 +202,7 @@ function myEval(cmd, context, filename, callback) {
 repl.start({ prompt: '> ', eval: myEval });
 ```
 
-#### Recoverable Errors
+#### Errores recuperables
 
 As a user is typing input into the REPL prompt, pressing the `<enter>` key will send the current line of input to the `eval` function. In order to support multi-line input, the eval function can return an instance of `repl.Recoverable` to the provided callback function:
 
