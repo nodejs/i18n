@@ -276,8 +276,8 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 ### Cambios notables
 
 * **búfer**: 
-  * make byteLength work with ArrayBuffer & DataView (Jackson Tian) [#5255](https://github.com/nodejs/node/pull/5255)
-  * backport --zero-fill-buffers command line option (James M Snell) [#5744](https://github.com/nodejs/node/pull/5744)
+  * hacer funcionar a byteLength con ArrayBuffer & DataView (Jackson Tian) [#5255](https://github.com/nodejs/node/pull/5255)
+  * hacer backport a la opción de línea de comando --zero-fill-buffers (James M Snell) [#5744](https://github.com/nodejs/node/pull/5744)
   * backport new buffer constructor APIs (James M Snell) [#5763](https://github.com/nodejs/node/pull/5763)
   * add swap16() and swap32() methods (James M Snell) [#5724](https://github.com/nodejs/node/pull/5724)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
