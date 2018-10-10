@@ -356,9 +356,9 @@ changes:
 
 * `size` {integer} 新建 `Buffer` 的所需长度。
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+分配一个大小为 `size` 字节的新建 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
-Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` with zeroes.
+在 Node.js 8.0.0 之前，以这种方式创建的 `Buffer` 实例的底层内存是 *未初始化的*。 新建 `Buffer` 的内容是未知的，并且 *可能包含敏感数据*。 使用[`Buffer.alloc(size)`][`Buffer.alloc()`] 代替它去使用 0 初始化 `Buffer`。
 
 ```js
 const buf = new Buffer(10);
@@ -385,12 +385,12 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]。
 
-* `string` {string} String to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
+* `string` {string} 要编码的字符串。
+* `encoding` {string} `string` 的字符串编码。 **默认值:**`‘utf8'`。
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+创建一个包含 `string` 的 `Buffer`。 The `encoding` parameter identifies the character encoding of `string`.
 
 ```js
 const buf1 = new Buffer('this is a tést');
@@ -426,7 +426,7 @@ changes:
 
 * `size` {integer} The desired length of the new `Buffer`.
 * `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
-* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`.
+* `encoding` {string} If `fill` is a string, this is its encoding. **默认值:**`‘utf8'`。
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
@@ -437,7 +437,7 @@ console.log(buf);
 // Prints: <Buffer 00 00 00 00 00>
 ```
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
 If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
 
@@ -474,7 +474,7 @@ changes:
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances with zeroes.
 
@@ -504,7 +504,7 @@ added: v5.12.0
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances with zeroes.
 
@@ -549,7 +549,7 @@ changes:
 -->
 
 * `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
-* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`.
+* `encoding` {string} If `string` is a string, this is its encoding. **默认值:**`‘utf8'`。
 * Returns: {integer} The number of bytes contained within `string`.
 
 Returns the actual byte length of a string. This is not the same as [`String.prototype.length`] since that returns the number of *characters* in a string.
@@ -726,9 +726,9 @@ added: v5.10.0
 -->
 
 * `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
+* `encoding` {string} The encoding of `string`. **默认值:**`‘utf8'`。
 
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+创建一个包含 `string` 的 `Buffer`。 The `encoding` parameter identifies the character encoding of `string`.
 
 ```js
 const buf1 = Buffer.from('this is a tést');
@@ -1033,7 +1033,7 @@ changes:
 * `value` {string|Buffer|integer} The value with which to fill `buf`.
 * `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
 * `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
-* `encoding` {string} The encoding for `value` if `value` is a string. **Default:** `'utf8'`.
+* `encoding` {string} The encoding for `value` if `value` is a string. **默认值:**`‘utf8'`。
 * Returns: {Buffer} A reference to `buf`.
 
 Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled:
@@ -1079,7 +1079,7 @@ added: v5.3.0
 
 * `value` {string|Buffer|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
-* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`.
+* `encoding` {string} If `value` is a string, this is its encoding. **默认值:**`‘utf8'`。
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
@@ -1120,7 +1120,7 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
+* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **默认值:**`‘utf8'`。
 * Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
 If `value` is:
@@ -1213,7 +1213,7 @@ changes:
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
 * `byteOffset` {integer} Where to begin searching in `buf`. **Default:** [`buf.length`]`- 1`.
-* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
+* `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **默认值:**`‘utf8'`。
 * Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
 Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
@@ -1811,7 +1811,7 @@ console.log(copy);
 added: v0.1.90
 -->
 
-* `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
+* `encoding` {string} The character encoding to use. **默认值:**`‘utf8'`。
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
 * Returns: {string}
@@ -1888,7 +1888,7 @@ added: v0.1.90
 * `string` {string} String to write to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`.
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`.
-* `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`.
+* `encoding` {string} The character encoding of `string`. **默认值:**`‘utf8'`。
 * Returns: {integer} Number of bytes written.
 
 Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only part of `string` will be written. However, partially encoded characters will not be written.
@@ -2334,7 +2334,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
+Allocates a new `Buffer` of `size` bytes. 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` with zeroes.
 
