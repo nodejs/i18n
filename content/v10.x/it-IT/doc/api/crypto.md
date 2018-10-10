@@ -867,9 +867,9 @@ La classe `Hmac` è un'utility per la creazione di digest HMAC crittografici. Pu
 - Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing i dati per produrre un HMAC digest calcolato sul lato readable, oppure
 - Utilizzando i metodi [`hmac.update()`][] e [`hmac.digest()`][] per produrre l'HMAC digest calcolato.
 
-The [`crypto.createHmac()`][] method is used to create `Hmac` instances. `Hmac` objects are not to be created directly using the `new` keyword.
+Le istanze `Hmac` vengono create utilizzando il metodo [`crypto.createHmac()`][]. Gli `Hmac` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Hmac` objects as streams:
+Esempio: Utilizzando gli `Hmac` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -879,7 +879,7 @@ hmac.on('readable', () => {
   const data = hmac.read();
   if (data) {
     console.log(data.toString('hex'));
-    // Prints:
+    // Stampa:
     //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
   }
 });
@@ -888,7 +888,7 @@ hmac.write('some data to hash');
 hmac.end();
 ```
 
-Example: Using `Hmac` and piped streams:
+Esempio: Utilizzando `Hmac` e i piped stream:
 
 ```js
 const crypto = require('crypto');
@@ -899,7 +899,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hmac).pipe(process.stdout);
 ```
 
-Example: Using the [`hmac.update()`][] and [`hmac.digest()`][] methods:
+Esempio: Utilizzando i metodi [`hmac.update()`][] e [`hmac.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -907,7 +907,7 @@ const hmac = crypto.createHmac('sha256', 'a secret');
 
 hmac.update('some data to hash');
 console.log(hmac.digest('hex'));
-// Prints:
+// Stampa:
 //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
 ```
 
@@ -920,9 +920,9 @@ added: v0.1.94
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
+Calcola l'HMAC digest di tutti i dati passati utilizzando [`hmac.update()`][]. L'`encoding` può essere `'hex'`, `'latin1'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][];
 
-The `Hmac` object can not be used again after `hmac.digest()` has been called. Multiple calls to `hmac.digest()` will result in an error being thrown.
+L'`Hmac` object non può essere utilizzato nuovamente dopo aver chiamato il metodo `hmac.digest()`. Chiamate multiple di `hmac.digest()` genereranno un errore.
 
 ### hmac.update(data[, inputEncoding])
 
@@ -938,9 +938,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Hmac` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Aggiorna il contenuto dell'`Hmac` con il `data` fornito, il cui encoding è fornito in `inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray`, o un `DataView`, allora `inputEncoding` viene ignorato.
 
-This can be called many times with new data as it is streamed.
+Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
 ## Class: Sign
 
@@ -948,12 +948,12 @@ This can be called many times with new data as it is streamed.
 added: v0.1.92
 -->
 
-The `Sign` Class is a utility for generating signatures. It can be used in one of two ways:
+La classe `Sign` è un'utility per la generazione di firme. Può essere utilizzata in due modi:
 
-- As a writable [stream](stream.html), where data to be signed is written and the [`sign.sign()`][] method is used to generate and return the signature, or
-- Using the [`sign.update()`][] and [`sign.sign()`][] methods to produce the signature.
+- Come un writable [stream](stream.html), sul quale vengono scritti tramite il writing i dati da firmare e il metodo [`sign.sign()`][] viene utilizzato per generare e restituire la firma, oppure
+- Utilizzando i metodi [`sign.update()`][] e [`sign.sign()`][] per produrre la firma.
 
-The [`crypto.createSign()`][] method is used to create `Sign` instances. The argument is the string name of the hash function to use. `Sign` objects are not to be created directly using the `new` keyword.
+Le istanze `Sign` vengono create utilizzando il metodo [`crypto.createSign()`][]. L'argomento è il nome della stringa della funzione hash da utilizzare. I `Sign` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
 Example: Using `Sign` objects as streams:
 
