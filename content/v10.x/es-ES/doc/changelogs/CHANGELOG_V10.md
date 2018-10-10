@@ -232,14 +232,14 @@
 * Aserción 
   * Llamar a `assert.fail()` con más de un argumento está desaprobado. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
   * Llamar a `assert.ok()` sin argumentos ahora arrojará. [[`3cd7977a42`](https://github.com/nodejs/node/commit/3cd7977a42)]
-  * Llamar a `assert.ifError()` se lanzará ahora con algún argumento que no sea `undefined` o `null`. Previamente el método se lanzaba con cualquier valor verdadero. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
+  * Llamar a `assert.ifError()` ahora arrojará con cualquier argumento que no sea `undefined` o `null`. Previamente el método arrojaba con cualquier valor verdadero. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
   * Los métodos `assert.rejects()` y `assert.doesNotReject()` han sido añadidos para trabajar con funciones asincrónicas. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
 * Async_hooks 
   * Las APIs async_hooks experimentales antiguas han sido eliminadas. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
 * Buffer 
-  * Los usos de `new Buffer()` y `Buffer()` fuera del directorio `node_modules` ahora emitirá una advertencia de desaprobación del tiempo de ejecución. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
+  * Los usos de `new Buffer()` y `Buffer()` fuera del directorio `node_modules` ahora emitirán una advertencia de desaprobación del tiempo de ejecución. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
   * `Buffer.isEncoding()` ahora devuelve `undefined` para valores falsos, incluyendo una cadena vacía. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
-  * `Buffer.fill()` se lanzará si se hace un intento de llenar con un `Buffer` vacío. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
+  * `Buffer.fill()` arrojará si se hace un intento de llenar con un `Buffer` vacío. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
 * Proceso Secundario 
   * Las propiedades indefinidas de env son ignoradas. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
 * Consola 
@@ -256,9 +256,9 @@
 * EventEmitter 
   * El método `EventEmitter.prototype.off()` se ha agregado como un alias para `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
 * Sistema de Archivos 
-  * La API `fs/promises` proporciona versiones experimentales prometidas de las funciones `fs`. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
+  * La API `fs/promises` proporciona versiones promisificadas experimentales de las funciones del `fs`. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Los errores de ruta inválidos ahora se lanzan de forma sincrónica. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
-  * El método `fs.readFile()` ahora particiona las lecturas para evitar el agotamiento del grupo de subprocesos. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
+  * El método `fs.readFile()` ahora particiona las lecturas para evitar el agotamiento del pool de subprocesos. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
 * HTTP 
   * El procesamiento de los códigos de Estatus de HTTP `100`, `102-199` se ha mejorado. [[`baf8495078`](https://github.com/nodejs/node/commit/baf8495078)]
   * Los caracteres mult-byte en rutas URL ahora están prohibidos. [[`b961d9fd83`](https://github.com/nodejs/node/commit/b961d9fd83)]
@@ -269,20 +269,20 @@
 * Perf_hooks 
   * La clase `PerformanceObserver` ahora es un `AsyncResource` y puede monitorearse utilizando `async_hooks`. [[`009e41826f`](https://github.com/nodejs/node/commit/009e41826f)]
   * Los eventos de seguimiento ahora se emiten para eventos de rendimiento. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
-  * La API `performance` se ha simplificado. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
-  * Las marcas de hitos de rendimiento se emitirá como eventos de seguimiento. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
+  * La API de `performance` se ha simplificado. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
+  * Las marcas de hitos de rendimiento se emitirán como eventos de seguimiento. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
 * Proceso 
-  * El uso de valores no de cadena para `process.env` está desaprobado. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
+  * El uso de valores no-cadena para `process.env` está desaprobado. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
   * El método `process.assert()` está desaprobado. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL 
-  * REPL ahora soporta experimentalmente la espera de alto nivel cuando se utiliza el indicador `--experimental-repl-await`. [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)]
+  * REPL ahora soporta experimentalmente la espera de nivel superior cuando se utiliza el indicador `--experimental-repl-await`. [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)]
   * El "modo mágico" desaprobado previamente se ha eliminado. [[`4893f70d12`](https://github.com/nodejs/node/commit/4893f70d12)]
   * La variable de entorno `NODE_REPL_HISTORY_FILE` desaprobada previamente se ha eliminado. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
   * Los objetos Proxy se muestran como objetos Proxy cuando se inspeccionan. [[`90a43906ab`](https://github.com/nodejs/node/commit/90a43906ab)]
 * Streams 
   * El evento `'readable'` ahora siempre se aplaza con nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
   * Un nuevo método `pipeline()` ha sido proporcionado para crear pipelines de stream de extremo a datos. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
-  * El soporte experimental para asincronizar para esperar se ha agregado a `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
+  * El soporte experimental para for-await asincrónico se ha agregado a `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
 * Temporizadores 
   * Los métodos `enroll()` y `unenroll()` se han desaprobado. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
 * TLS 
@@ -309,7 +309,7 @@ Las siguientes APIs se ha desaprobado en Node.js 10.0.0
 * El uso de la propiedad `crypto.DEFAULT_ENCODING` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
 * El uso de complementos nativos de la variante `MakeCallback()` que pasa un `Domain` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`14bc3e22f3`](https://github.com/nodejs/node/commit/14bc3e22f3)], [[`efb32592e1`](https://github.com/nodejs/node/commit/efb32592e1)]
 * Los getters/setters internos desaprobados previamente en `net.Server` han alcanzado el final de su vida útil y han sido eliminados. [[`3701b02309`](https://github.com/nodejs/node/commit/3701b02309)]
-* El uso de valores no de cadena para `process.env` se ha desaprobado en la documentación. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
+* El uso de valores no-cadena para `process.env` se ha desaprobado en la documentación. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
 * El uso de `process.assert()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * La variable de entorno `NODE_REPL_HISTORY_FILE` desaprobada previamente ha alcanzado el final de su vida útil y ha sido eliminada. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
 * El uso de los métodos `timers.enroll()` y `timers.unenroll()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
