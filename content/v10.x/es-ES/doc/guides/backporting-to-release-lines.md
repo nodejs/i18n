@@ -6,17 +6,17 @@ Cada línea de lanzamiento tiene una escenificación de rama que el publicador u
 
 *Nota*: Para la escenificación de ramas activa vea el [Calendario de Lanzamiento](https://github.com/nodejs/Release#release-schedule1).
 
-## ¿Qué necesita ser backported?
+## ¿Qué necesita ser refactorizado?
 
 Si un cherry-pick de master no aterriza limpiamente en una escenificación de rama, el lanzador marcará la pull request con una etiqueta particular para esa línea de lanzamiento (p. e.j `backport-requested-vN.x`), especificando a nuestras herramientas que esta pull request no debe ser incluida. Entonces, el lanzador agregará un comentario solicitando que se realice un backport para una pull request.
 
-## ¿Qué puede ser backported?
+## ¿Qué puede ser refactorizado?
 
-La línea de lanzamiento "Actual" es mucho más indulgente que las líneas de lanzamiento LTS en lo que se puede aterrizar. Nuestras líneas de lanzamiento LTS (vea el [Plan de Lanzamiento](https://github.com/nodejs/Release#release-plan)) requieren que los commits maduren en el lanzamiento Current por al menos 2 semanas antes de que puedan aterrizar en una escenificación de rama LTS. Solo después de la "maduración" esos commits podrán ser seleccionados o backported.
+La línea de lanzamiento "Current" es mucho más indulgente que las líneas de lanzamiento LTS en lo que se puede aterrizar. Nuestras líneas de lanzamiento LTS (vea el [Plan de Lanzamiento](https://github.com/nodejs/Release#release-plan)) requieren que los commits maduren en el lanzamiento Current por al menos 2 semanas antes de que puedan aterrizar en una escenificación de rama LTS. Solo después de la "maduración" esos commits podrán ser seleccionados o refactorizados.
 
-## Cómo presentar un backport de una pull request
+## Cómo presentar una pull request de backport
 
-Para los siguientes pasos, vamos a suponer que es necesario un backport para la línea de lanzamiento v6.x. Todos los comando usarán la rama `v6.x-staging` como la rama objetivo. Para enviar un backport de una pull request a otra rama, simplemente reemplace eso con la escenificación de rama para la línea de lanzamiento dirigida.
+Para los siguientes pasos, vamos a suponer que es necesario un backport para la línea de lanzamiento v6.x. Todos los comandos usarán la rama `v6.x-staging` como la rama objetivo. Para enviar una pull request de backport a otra rama, simplemente reemplace eso con la escenificación de rama para la línea de lanzamiento hacia la que está dirigida.
 
 1. Compruebe la escenificación de rama para la línea de lanzamiento apuntada
 2. Asegúrese que la escenificación de rama local esté actualizada con el remoto
