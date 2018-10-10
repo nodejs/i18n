@@ -459,7 +459,7 @@ console.log(buf);
 
 调用 [`Buffer.alloc()`] 会明显得比另一个方法 [`Buffer.allocUnsafe()`] 慢，但是能确保新建 `Buffer` 实例的内容 *不会包含敏感数据*。
 
-A `TypeError` will be thrown if `size` is not a number.
+如果 `size` 不是一个数值，则会抛出 `TypeError` 错误。
 
 ### Class 方法：Buffer.allocUnsafe(size)
 
@@ -472,7 +472,7 @@ changes:
     description: Passing a negative `size` will now throw an error.
 -->
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} 新建 `Buffer` 的所需长度。
 
 分配一个大小为 `size` 字节的新建 `Buffer`。 如果 `size` 大于 [`buffer.constants.MAX_LENGTH`] 或小于 0，抛出 [`ERR_INVALID_OPT_VALUE`] 错误。 如果 `size` 为 0，则创建一个长度为 0 的 `Buffer`。
 
