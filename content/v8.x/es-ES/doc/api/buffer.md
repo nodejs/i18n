@@ -8,7 +8,7 @@ Antes de la introducción de [`TypedArray`] en [`ECMAScript 2015`] (ES6), el len
 
 Ahora que [`TypedArray`] ha sido añadido en ES6, la clase `Buffer` implementa la API [`Uint8Array`] de una manera más optimizada y adecuada para los casos de uso de Node.js.
 
-Las instancias de la clase `Buffer` son similares a los arrays de enteros pero corresponden a asignaciones de memoria de tamaño fijo fuera del montón de V8. El tamaño del `Buffer` es establecido cuando se crea y no puede ser cambiado.
+Las instancias de la clase `Buffer` son similares a los arrays de enteros pero corresponden a asignaciones de memoria de tamaño fijo fuera del montículo de V8. El tamaño del `Buffer` es establecido cuando se crea y no puede ser cambiado.
 
 La clase `Buffer` es global dentro de Node.js, por lo que es poco probable que alguna vez uno necesite `require('buffer').Buffer`.
 
