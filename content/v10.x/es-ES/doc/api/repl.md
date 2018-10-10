@@ -253,15 +253,15 @@ function myWriter(output) {
 added: v0.1.91
 -->
 
-La clase `repl.REPLServer` hereda de la clase [`readline.Interface`][]. Instances of `repl.REPLServer` are created using the `repl.start()` method and *should not* be created directly using the JavaScript `new` keyword.
+La clase `repl.REPLServer` hereda de la clase [`readline.Interface`][]. Las instancias del `repl.REPLServer` son creadas usando el método `repl.start()` y *no deberían* ser creadas directamnte utilizando la `nueva` palabra clave de JavaScript.
 
-### Event: 'exit'
+### Evento: 'salida'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-The `'exit'` event is emitted when the REPL is exited either by receiving the `.exit` command as input, the user pressing `<ctrl>-C` twice to signal `SIGINT`, or by pressing `<ctrl>-D` to signal `'end'` on the input stream. The listener callback is invoked without any arguments.
+El evento `'salida'` es emitido cuando el REPL es cerrado, sea por la introducción del comando `.exit`, el usuario presionando `<ctrl>-C` dos veces para señalar `SIGINT`, o al presionar `<ctrl>-D` para señalar `'fin'` en el stream de entrada. The listener callback is invoked without any arguments.
 
 ```js
 replServer.on('exit', () => {
