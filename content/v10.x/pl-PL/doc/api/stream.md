@@ -16,7 +16,7 @@ Dostęp do modułu `stream` można uzyskać za pomocą:
 const stream = require('stream');
 ```
 
-While it is important to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
+Chociaż ważne jest, aby zrozumieć, jak działają strumienie, sam moduł `stream` jest najbardziej przydatny dla deweloperów, którzy tworzą nowe typy instancji strumieni. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
 
 ## Organization of this Document
 
