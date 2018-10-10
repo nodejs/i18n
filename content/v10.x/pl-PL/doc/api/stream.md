@@ -45,7 +45,7 @@ Instancje strumieni są przełączane w tryb obiektu za pomocą opcji `objectMod
 
 Both [`Writable`][] and [`Readable`][] streams will store data in an internal buffer that can be retrieved using `writable.writableBuffer` or `readable.readableBuffer`, respectively.
 
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the streams constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
+Ilość danych potencjalnie buforowanych zależy od opcji `highWaterMark` przekazanej do konstruktora strumieni. W przypadku normalnych strumieni opcja `highWaterMark` określa [całkowitą liczbę bajtów](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). W przypadku strumieni działających w trybie obiektu, `highWaterMark` określa całkowitą liczbę obiektów.
 
 Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
 
