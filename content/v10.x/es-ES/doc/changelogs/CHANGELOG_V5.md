@@ -289,7 +289,7 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 ### Commits
 
-* [[`2cbbaafca9`](https://github.com/nodejs/node/commit/2cbbaafca9)] - **async_wrap**: don't abort on callback exception (Trevor Norris) [#5756](https://github.com/nodejs/node/pull/5756)
+* [[`2cbbaafca9`](https://github.com/nodejs/node/commit/2cbbaafca9)] - **async_wrap**: no abortar en la excepción callback (Trevor Norris) [#5756](https://github.com/nodejs/node/pull/5756)
 * [[`6f16882733`](https://github.com/nodejs/node/commit/6f16882733)] - **async_wrap**: notify post if intercepted exception (Trevor Norris) [#5756](https://github.com/nodejs/node/pull/5756)
 * [[`a4856122d3`](https://github.com/nodejs/node/commit/a4856122d3)] - **async_wrap**: setupHooks now accepts object (Trevor Norris) [#5756](https://github.com/nodejs/node/pull/5756)
 * [[`ee83c956c5`](https://github.com/nodejs/node/commit/ee83c956c5)] - **(SEMVER-MINOR)** **buffer**: make byteLength work with ArrayBuffer & DataView (Jackson Tian) [#5255](https://github.com/nodejs/node/pull/5255)
