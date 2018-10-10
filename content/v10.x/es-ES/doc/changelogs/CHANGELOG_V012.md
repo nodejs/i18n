@@ -327,22 +327,22 @@ Actualización de Seguridad
   * [a9b642cf5b] - test: runner should return 0 on flaky tests (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
   * [b48639befd] - test: soportar salida de prueba de escritura al archivo (Alexis Campailla) https://github.com/nodejs/node-v0.x-archive/pull/25653
   * [caa16b41d6] - (SEMVER-MINOR) tls: evitar que el servidor utilice claves dhe < 768 (Michael Dawson) https://github.com/nodejs/node/pull/3890
-  * [0363cf4a80] - tls: Closing parent socket also closes the tls sock (Devin Nakamura) https://github.com/nodejs/node-v0.x-archive/pull/25642
+  * [0363cf4a80] - tls: cierre de socket padre también cierra el sock de tls (Devin Nakamura) https://github.com/nodejs/node-v0.x-archive/pull/25642
   * [75697112e8] - tls: do not hang without `newSession` handler (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739
-  * [d998a65058] - tools: pass constant to logger instead of string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25653
-  * [1982ed6e63] - v8: port fbff705 from v0.10 to v0.12 (Jeremy Whitlock) https://github.com/nodejs/node-v0.x-archive/pull/25835
-  * [44d7054252] - win: fix custom actions for WiX older than 3.9 (João Reis) https://github.com/nodejs/node/pull/2843
-  * [586c4d8b8e] - win: fix custom actions on Visual Studio != 2013 (Julien Gilli) https://github.com/nodejs/node/pull/2843
-  * [14db629497] - win,msi: correct installation path registry keys (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25640
-  * [8e80528453] - win,msi: change InstallScope to perMachine (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25640
-  * [35bbe98401] - Update addons.markdown (Max Deepfield) https://github.com/nodejs/node-v0.x-archive/pull/25885
-  * [9a6f1ce416] - comma (Julien Valéry) https://github.com/nodejs/node-v0.x-archive/pull/25811
-  * [d384bf8f84] - Update assert.markdown (daveboivin) https://github.com/nodejs/node-v0.x-archive/pull/25811
+  * [d998a65058] - tools: pasar constante al logger en lugar de una string (Johan Bergström) https://github.com/nodejs/node-v0.x-archive/pull/25653
+  * [1982ed6e63] - v8: puerto fbff705 de v0.10 a v0.12 (Jeremy Whitlock) https://github.com/nodejs/node-v0.x-archive/pull/25835
+  * [44d7054252] - win: reparar acciones personalizadas para WiX anteriores a 3.9 (João Reis) https://github.com/nodejs/node/pull/2843
+  * [586c4d8b8e] - win: reparar acciones personalizada en Visual Studio != 2013 (Julien Gilli) https://github.com/nodejs/node/pull/2843
+  * [14db629497] - win,msi: claves de registro de ruta de instalación correctas (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25640
+  * [8e80528453] - win,msi: cambiar InstallScope a perMachine (João Reis) https://github.com/nodejs/node-v0.x-archive/pull/25640
+  * [35bbe98401] - Actualizar addons.markdown (Max Deepfield) https://github.com/nodejs/node-v0.x-archive/pull/25885
+  * [9a6f1ce416] - coma (Julien Valéry) https://github.com/nodejs/node-v0.x-archive/pull/25811
+  * [d384bf8f84] - Actualizar assert.markdown (daveboivin) https://github.com/nodejs/node-v0.x-archive/pull/25811
   * [89b22ccbe1] - Fixed typo (Andrew Murray) https://github.com/nodejs/node-v0.x-archive/pull/25811
-  * [5ad05af380] - Update util.markdown (Daniel Rentz) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [5ad05af380] - Actualizar util.markdown (Daniel Rentz) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [cb660ab3d3] - Update child_process.markdown, spelling (Jared Fox) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [59c67fe3cd] - updated documentation for fs.createReadStream (Michele Caini) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [53b6a615a5] - Documentation update about Buffer initialization (Sarath) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [59c67fe3cd] - documentación actualizada para fs.createReadStream (Michele Caini) https://github.com/nodejs/node-v0.x-archive/pull/25591
+  * [53b6a615a5] - Actualización de documentación sobre inicialización de Buffer (Sarath) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [b8d47a7b6f] - fix (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739</ul> 
   
 
