@@ -126,7 +126,7 @@
 * [[`b47044ac0f`](https://github.com/nodejs/node/commit/b47044ac0f)] - **doc**: mejorar parámetros para el evento Http2Session:goaway (Ujjwal Sharma) 
 * [[`701f536ef4`](https://github.com/nodejs/node/commit/701f536ef4)] - **doc**: eliminar URL superfluos requiere declaración (Mark Tiedemann) [#20364](https://github.com/nodejs/node/pull/20364)
 * [[`d9bc9217a7`](https://github.com/nodejs/node/commit/d9bc9217a7)] - **doc**: corregir error tipográfico en console.md (Daniel Hritzkiv) [#20349](https://github.com/nodejs/node/pull/20349)
-* [[`cc09d7ec5b`](https://github.com/nodejs/node/commit/cc09d7ec5b)] - **doc**: eliminar console.table() como inspector dependiente (Rich Trott) [#20346](https://github.com/nodejs/node/pull/20346)
+* [[`cc09d7ec5b`](https://github.com/nodejs/node/commit/cc09d7ec5b)] - **doc**: eliminar console.table() como dependiente del inspector (Rich Trott) [#20346](https://github.com/nodejs/node/pull/20346)
 * [[`14188b1266`](https://github.com/nodejs/node/commit/14188b1266)] - **doc**: add Slack community to support options (Tracy) [#18191](https://github.com/nodejs/node/pull/18191)
 * [[`3a3144cf04`](https://github.com/nodejs/node/commit/3a3144cf04)] - **doc**: eliminar nota de Windows os.uptime() (cjihrig) [#20308](https://github.com/nodejs/node/pull/20308)
 * [[`c139d2ab8d`](https://github.com/nodejs/node/commit/c139d2ab8d)] - **doc**: fix unhandled to uncaught (Ruben Bridgewater) [#20293](https://github.com/nodejs/node/pull/20293)
