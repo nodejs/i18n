@@ -673,9 +673,9 @@ changes:
 
 Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come la public key (chiave pubblica) dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato, e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'`, o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
+Se viene fornito l'`outputEncoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
-`ecdh.computeSecret` will throw an `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` error when `otherPublicKey` lies outside of the elliptic curve. Since `otherPublicKey` is usually supplied from a remote user over an insecure network, its recommended for developers to handle this exception accordingly.
+`ecdh.computeSecret` genererà un errore `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` quando `otherPublicKey` si trova al di fuori della curva ellittica. Poiché `otherPublicKey` viene solitamente fornita da un utente remoto su una rete non sicura, di conseguenza gli sviluppatori sono invitati a gestire quest'eccezione.
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -687,11 +687,11 @@ added: v0.11.14
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
+Genera valori private EC Diffie-Hellman key (chiave privata) e public EC Diffie-Hellman key (chiave pubblica), e restituisce la public key (chiave pubblica) nel `format` e nell'`encoding` specificati. Questa chiave dovrebbe essere trasferita all'altra parte.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
+L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+L'argomento `encoding` può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.getPrivateKey([encoding])
 
@@ -700,7 +700,7 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string} The EC Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+- Restituisce: {Buffer | string} L'EC Diffie-Hellman private key nell'`encoding` specificato, che può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.getPublicKey(\[encoding\]\[, format\])
 
