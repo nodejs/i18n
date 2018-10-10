@@ -212,7 +212,7 @@ for (const b of buf) {
 
 ## Class： Buffer
 
-`Buffer` 类是一个直接处理二进制数据的全局类型。 It can be constructed in a variety of ways.
+`Buffer` 类是一个直接处理二进制数据的全局类型。 它能够以多种方式构建。
 
 ### new Buffer(array)
 
@@ -232,11 +232,11 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(array)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(array)`]。
 
-* `array` {integer[]} An array of bytes to copy from.
+* `array` {integer[]} 要从中复制的字节数组。
 
-Allocates a new `Buffer` using an `array` of octets.
+使用 8 字节的 `array` 分配一个新的 `Buffer`。
 
 ```js
 // Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
@@ -265,10 +265,10 @@ changes:
     description: The `byteOffset` and `length` parameters are supported now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`]。
 
-* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
+* `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} [`ArrayBuffer`]，[`SharedArrayBuffer`] 或 [`TypedArray`] 的 `.buffer` 属性。
+* `byteOffset` {integer} 要暴露的第一个字节的索引。 **Default:** `0`.
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
