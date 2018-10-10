@@ -1,10 +1,10 @@
-# Seguimiento de eventos
+# Seguimiento de Eventos
 
 <!--introduced_in=v7.7.0-->
 
 > Estabilidad: 1 - Experimental
 
-El Seguimiento de Eventos provee un mecanismo para centralizar el seguimiento de la información generado por la versión V8 del núcleo Node.js, y código de espacio de usuario.
+El Seguimiento de Eventos provee un mecanismo para centralizar el seguimiento de la información generado por la versión V8 del núcleo Node.js, y el código de espacio de usuario.
 
 El seguimiento puede ser habilitado con la bandera de línea de comandos `--trace-event-categories` o al usar el módulo `trace_events`. La bandera de `--trace-event-categories` acepta una lista de nombres de categorías separados por comas.
 
@@ -71,7 +71,7 @@ added: v10.0.0
 
 El objeto de `seguimiento` es usado para habilitar o deshabilitar el seguimiento para conjuntos de categorías. Las instancias son creadas usando el método `trace_events.createTracing()`.
 
-Cuando fue creado, el objeto de `seguimiento` está deshabilitado. Llamar al método `tracing.enable()` añade categorías al conjunto de categorías de seguimiento de eventos. Llamar a `tracing.disable()` removerá las categorías del conjunto de categorías de seguimiento de eventos habilitadas.
+Cuando es creado, el objeto de `seguimiento` está deshabilitado. Llamar al método `tracing.enable()` añade categorías al conjunto de categorías de seguimiento de eventos. Llamar a `tracing.disable()` removerá las categorías del conjunto de categorías de seguimiento de eventos habilitadas.
 
 #### `tracing.categories`
 
@@ -154,7 +154,7 @@ added: v10.0.0
 
 * Devuelve: {string}
 
-Devuelve una lista separada por comas de todas las categorías de seguimiento de eventos actualmente habilitadas. El actual conjunto de categorías de seguimiento de eventos habilitados está determinado por la *unión* de todos los objetos `Tracing` actualmente habilitados y cualquier categoría habilitado utilizando la bandera de `--trace-event-categories`.
+Devuelve una lista separada por comas de todas las categorías de seguimiento de eventos actualmente habilitadas. El actual conjunto de categorías de seguimiento de eventos habilitados está determinado por la *unión* de todos los objetos `Tracing` actualmente habilitados y cualquier categoría habilitada utilizando la bandera de `--trace-event-categories`.
 
 Dado el archivo `test.js` inferior, el comando `node --trace-event-categories node.perf test.js` imprimirá `'node.async_hooks,node.perf'` a la consola.
 
