@@ -862,10 +862,10 @@ Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo stream
 added: v0.1.94
 -->
 
-The `Hmac` Class is a utility for creating cryptographic HMAC digests. It can be used in one of two ways:
+La classe `Hmac` è un'utility per la creazione di digest HMAC crittografici. Può essere utilizzata in due modi:
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed HMAC digest on the readable side, or
-- Using the [`hmac.update()`][] and [`hmac.digest()`][] methods to produce the computed HMAC digest.
+- Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing i dati per produrre un HMAC digest calcolato sul lato readable, oppure
+- Utilizzando i metodi [`hmac.update()`][] e [`hmac.digest()`][] per produrre l'HMAC digest calcolato.
 
 The [`crypto.createHmac()`][] method is used to create `Hmac` instances. `Hmac` objects are not to be created directly using the `new` keyword.
 
