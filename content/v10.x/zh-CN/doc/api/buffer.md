@@ -171,7 +171,7 @@ console.log(buf2);
 // Prints: <Buffer 88 13 70 17>
 ```
 
-Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
+请注意，当使用 [`TypedArray`] 的 `.buffer` 创建 `Buffer`时，也可以通过传入 `byteOffset` 和 `length` 参数只使用 [`ArrayBuffer`] 的一部分。
 
 ```js
 const arr = new Uint16Array(20);
@@ -181,7 +181,7 @@ console.log(buf.length);
 // Prints: 16
 ```
 
-The `Buffer.from()` and [`TypedArray.from()`] have different signatures and implementations. Specifically, the [`TypedArray`] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
+`Buffer.from()` 和 [`TypedArray.from()`] 有不同的签名和实现。 具体而言，[`TypedArray`] 的变体接受第二个参数，它是在类型数组的每个元素上调用的映射函数：
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
