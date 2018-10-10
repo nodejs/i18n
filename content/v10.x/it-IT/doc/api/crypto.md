@@ -300,10 +300,10 @@ Il metodo `cipher.update()` può essere chiamato più volte con i nuovi dati fin
 added: v0.1.94
 -->
 
-Instances of the `Decipher` class are used to decrypt data. The class can be used in one of two ways:
+Le istanze della classe `Decipher` vengono utilizzate per decrittografare i dati. La classe può essere utilizzata in due modi:
 
-- As a [stream](stream.html) that is both readable and writable, where plain encrypted data is written to produce unencrypted data on the readable side, or
-- Using the [`decipher.update()`][] and [`decipher.final()`][] methods to produce the unencrypted data.
+- Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing semplici dati criptati per produrre i dati non criptati sul lato readable, oppure
+- Utilizzando i metodi [`decipher.update()`][] e [`decipher.final()`][] per produrre i dati non criptati.
 
 The [`crypto.createDecipher()`][] or [`crypto.createDecipheriv()`][] methods are used to create `Decipher` instances. `Decipher` objects are not to be created directly using the `new` keyword.
 
