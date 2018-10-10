@@ -417,9 +417,9 @@ added: v0.7.1
 
 Quando i dati sono stati cifrati senza il padding standard del blocco, la chiamata a `decipher.setAutoPadding(false)` disabiliterà il padding automatico in modo da impedire a [`decipher.final()`][] di cercare e rimuovere il padding.
 
-Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
+La disattivazione del padding automatico sarà possibile solo se la lunghezza dei dati d'input è un multiplo della block size dei cipher.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+Il metodo `decipher.setAutoPadding()` dev'essere chiamato prima di [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -437,11 +437,11 @@ changes:
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Aggiorna il decipher con `data`. Se viene specificato l'argomento `inputEncoding`, il suo valore dev'essere `'latin1'`, `'base64'`, oppure `'hex'` e l'argomento `data` è una stringa che utilizza l'encoding specificato. Se non viene specificato l'argomento `inputEncoding`, `data` dev'essere un [`Buffer`][]. Se `data` è un [`Buffer`][] allora `inputEncoding` viene ignorato.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+L'`outputEncoding` specifica il formato di output dei dati decifrati e può essere `'latin1'`, `'ascii'` o `'utf8'`. Se l'`outputEncoding` è specificato, viene restituita una stringa che utilizza l'encoding specificato. Se non viene fornito nessun `outputEncoding`, viene restituito un [`Buffer`][].
 
-The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
+Il metodo `decipher.update()` può essere chiamato più volte con i nuovi dati finché non viene chiamato [`decipher.final()`][]. Chiamare `decipher.update()` dopo [`decipher.final()`][] genererà un errore.
 
 ## Class: DiffieHellman
 
@@ -449,23 +449,23 @@ The `decipher.update()` method can be called multiple times with new data until 
 added: v0.5.0
 -->
 
-The `DiffieHellman` class is a utility for creating Diffie-Hellman key exchanges.
+La classe `DiffieHellman` è un'utility per la creazione di exchange di Diffie-Hellman key.
 
-Instances of the `DiffieHellman` class can be created using the [`crypto.createDiffieHellman()`][] function.
+Le istanze della classe `DiffieHellman` possono essere create utilizzando la funzione [`crypto.createDiffieHellman()`][].
 
 ```js
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera le key di Alice...
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera le key di Bob...
 const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
+// Esegue l'exchange e genera il segreto...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
