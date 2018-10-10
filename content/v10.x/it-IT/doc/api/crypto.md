@@ -400,11 +400,11 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Restituisce: {Cipher} per il method chaining.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
+Quando si utilizza una modalità di crittografia autenticata (attualmente sono supportare solo la `GCM` e la `CCM`), il metodo `decipher.setAuthTag()` viene utilizzato per passare l'*authentication tag* ricevuto. Se non viene fornito alcun tag, o se il testo cifrato è stato manomesso, verrà eseguito [`decipher.final()`][], indicando che il testo cifrato dovrebbe essere scartato a causa dell'autenticazione fallita.
 
-Note that this Node.js version does not verify the length of GCM authentication tags. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Da notare che questa versione di Node.js non verifica la lunghezza degli authentication tag GCM. Tale controllo *deve* essere implementato dalle applicazioni ed è fondamentale per l'autenticità dei dati cifrati, altrimenti un utente malintenzionato potrebbe utilizzare un authentication tag arbitrariamente breve per aumentare le possibilità di passare l'autenticazione con successo (fino allo 0,39%). E' altamente consigliato di associare uno dei valori 16, 15, 14, 13, 12, 8 o 4 byte a ciascuna key e di accettare solo gli authentication tag di tale lunghezza, vedi [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
-The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
+Il metodo `decipher.setAuthTag()` dev'essere chiamato prima di [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
 
@@ -415,7 +415,7 @@ added: v0.7.1
 - `autoPadding` {boolean} **Default:** `true`
 - Restituisce: {Cipher} per il method chaining.
 
-When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
+Quando i dati sono stati cifrati senza il padding standard del blocco, la chiamata a `decipher.setAutoPadding(false)` disabiliterà il padding automatico in modo da impedire a [`decipher.final()`][] di cercare e rimuovere il padding.
 
 Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
 
