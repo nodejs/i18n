@@ -460,20 +460,20 @@ Actualización de Seguridad
 <a id="0.12.1"></a>
 
   
-  ## 2015-03-23, Version 0.12.1 (Stable)
+  ## 2015-03-23, Versión 0.12.1 (Estable)
   
   ### Commits
   
-  * [[`3b511a8ccd`](https://github.com/nodejs/node/commit/3b511a8ccd)] - **openssl**: upgrade to 1.0.1m (Addressing multiple CVES)
+  * [[`3b511a8ccd`](https://github.com/nodejs/node/commit/3b511a8ccd)] - **openssl**: actualizar a 1.0.1m (Addressing multiple CVES)
   
   
 
 <a id="0.12.0"></a>
 
   
-  ## 2015-02-06, Version 0.12.0 (Stable)
+  ## 2015-02-06, Versión 0.12.0 (Estable)
   
   ### Commits
   
-  * [[`087a7519ce`](https://github.com/nodejs/node/commit/087a7519ce)] - **npm**: Upgrade to 2.5.1
-  * [[`4312f8d760`](https://github.com/nodejs/node/commit/4312f8d760)] - **mdb_v8**: update for v0.12 (Dave Pacheco)
+  * [[`087a7519ce`](https://github.com/nodejs/node/commit/087a7519ce)] - **npm**: Actualizar a 2.5.1
+  * [[`4312f8d760`](https://github.com/nodejs/node/commit/4312f8d760)] - **mdb_v8**: actualizar para v0.12 (Dave Pacheco)
