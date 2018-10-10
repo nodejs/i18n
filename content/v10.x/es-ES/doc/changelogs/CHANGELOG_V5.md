@@ -217,14 +217,14 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * [[`a2dd848764`](https://github.com/nodejs/node/commit/a2dd848764)] - **tools,doc**: reparar json incompleto producido por doctool (firedfox) [#5966](https://github.com/nodejs/node/pull/5966)
 * [[`bad006f2e1`](https://github.com/nodejs/node/commit/bad006f2e1)] - **zlib**: reparar uso después de null cuando se llame .close (James Lal) [#5982](https://github.com/nodejs/node/pull/5982)
 * [[`83bc0a2ac9`](https://github.com/nodejs/node/commit/83bc0a2ac9)] - **(SEMVER-MINOR)** **zlib**: Hacer la bandera del limpiado final configurable (Anna Henningsen) [#6069](https://github.com/nodejs/node/pull/6069)
-* [[`2c23e14d5d`](https://github.com/nodejs/node/commit/2c23e14d5d)] - **(SEMVER-MINOR)** **zlib**: detect gzip files when using unzip* (Anna Henningsen) [#5884](https://github.com/nodejs/node/pull/5884)
-* [[`61167c3e23`](https://github.com/nodejs/node/commit/61167c3e23)] - **zlib**: fix gzip member head/buffer boundary issue (Anna Henningsen) [#5973](https://github.com/nodejs/node/pull/5973)
+* [[`2c23e14d5d`](https://github.com/nodejs/node/commit/2c23e14d5d)] - **(SEMVER-MINOR)** **zlib**: detectar archivos gzip cuando se use unzip* (Anna Henningsen) [#5884](https://github.com/nodejs/node/pull/5884)
+* [[`61167c3e23`](https://github.com/nodejs/node/commit/61167c3e23)] - **zlib**: reparar problema de límite del miembro gzip cabeza/búfer (Anna Henningsen) [#5973](https://github.com/nodejs/node/pull/5973)
 
 <a id="5.10.1"></a>
 
-## 2016-04-05, Version 5.10.1 (Stable), @thealphanerd
+## 2016-04-05, Versión 5.10.1 (Estable), @thealphanerd
 
-### Notable changes
+### Cambios notables
 
 **http**:
 
