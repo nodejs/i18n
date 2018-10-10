@@ -343,51 +343,51 @@ Actualización de Seguridad
   * [cb660ab3d3] - Update child_process.markdown, spelling (Jared Fox) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [59c67fe3cd] - documentación actualizada para fs.createReadStream (Michele Caini) https://github.com/nodejs/node-v0.x-archive/pull/25591
   * [53b6a615a5] - Actualización de documentación sobre inicialización de Buffer (Sarath) https://github.com/nodejs/node-v0.x-archive/pull/25591
-  * [b8d47a7b6f] - fix (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739</ul> 
+  * [b8d47a7b6f] - corregir (Fedor Indutny) https://github.com/nodejs/node-v0.x-archive/pull/25739</ul> 
   
 
 <a id="0.12.7"></a>
 
   
-  ## 2015-07-09, Version 0.12.7 (Stable)
+  ## 2015-07-09, Versión 0.12.7 (Estable)
   
   ### Commits
   
-  * [[`0cf9f27703`](https://github.com/nodejs/node/commit/0cf9f27703)] - **deps**: upgrade openssl sources to 1.0.1p [#25654](https://github.com/joyent/node/pull/25654)
-  * [[`8917e430b8`](https://github.com/nodejs/node/commit/8917e430b8)] - **deps**: upgrade to npm 2.11.3 [#25545](https://github.com/joyent/node/pull/25545)
+  * [[`0cf9f27703`](https://github.com/nodejs/node/commit/0cf9f27703)] - **deps**: actualizar fuentes de openssl a 1.0.1p [#25654](https://github.com/joyent/node/pull/25654)
+  * [[`8917e430b8`](https://github.com/nodejs/node/commit/8917e430b8)] - **deps**: actualizar a npm 2.11.3 [#25545](https://github.com/joyent/node/pull/25545)
   * [[`88a27a9621`](https://github.com/nodejs/node/commit/88a27a9621)] - **V8**: cherry-pick JitCodeEvent patch from upstream (Ben Noordhuis) [#25589](https://github.com/joyent/node/pull/25589)
-  * [[`18d413d299`](https://github.com/nodejs/node/commit/18d413d299)] - **win,msi**: create npm folder in AppData directory (Steven Rockarts) [#8838](https://github.com/joyent/node/pull/8838)
+  * [[`18d413d299`](https://github.com/nodejs/node/commit/18d413d299)] - **win,msi**: crear carpeta npm en el directorio AppData (Steven Rockarts) [#8838](https://github.com/joyent/node/pull/8838)
   
   
 
 <a id="0.12.6"></a>
 
   
-  ## 2015-07-03, Version 0.12.6 (Stable)
+  ## 2015-07-03, Versión 0.12.6 (Estable)
   
-  ### Notable changes
+  ### Cambios notables
   
-  * **deps**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
+  * **deps**: Reparada una escritura fuera de banda en decodificador utf8. **Esta es una actualización de seguridad importante** ya que puede ser utilizada para un ataque de denegación de servicio.
   ### Commits
   
-  * [[`78b0e30954`](https://github.com/nodejs/node/commit/78b0e30954)] - **deps**: fix out-of-band write in utf8 decoder (Fedor Indutny)
+  * [[`78b0e30954`](https://github.com/nodejs/node/commit/78b0e30954)] - **deps**: reparar escritura fuera de banda en decodificador utf8 (Fedor Indutny)
   
   
 
 <a id="0.12.5"></a>
 
   
-  ## 2015-06-22, Version 0.12.5 (Stable)
+  ## 2015-06-22, Versión 0.12.5 (Estable)
   
   ### Commits
   
-  * [[`456c22f63f`](https://github.com/nodejs/node/commit/456c22f63f)] - **openssl**: upgrade to 1.0.1o (Addressing multiple CVEs) [#25523](https://github.com/joyent/node/pull/25523)
-  * [[`20d8db1a42`](https://github.com/nodejs/node/commit/20d8db1a42)] - **npm**: upgrade to 2.11.2 [#25517](https://github.com/joyent/node/pull/25517)
-  * [[`50f961596d`](https://github.com/nodejs/node/commit/50f961596d)] - **uv**: upgrade to 1.6.1 [#25475](https://github.com/joyent/node/pull/25475)
-  * [[`b81a643f9a`](https://github.com/nodejs/node/commit/b81a643f9a)] - **V8**: avoid deadlock when profiling is active (Dmitri Melikyan) [#25309](https://github.com/joyent/node/pull/25309)
-  * [[`9d19dfbfdb`](https://github.com/nodejs/node/commit/9d19dfbfdb)] - **install**: fix source path for openssl headers (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
-  * [[`4028669531`](https://github.com/nodejs/node/commit/4028669531)] - **install**: make sure opensslconf.h is overwritten (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
-  * [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: fix timeout when added in timer's callback (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
+  * [[`456c22f63f`](https://github.com/nodejs/node/commit/456c22f63f)] - **openssl**: actualizar a 1.0.1o (Direccionar múltiples CVEs) [#25523](https://github.com/joyent/node/pull/25523)
+  * [[`20d8db1a42`](https://github.com/nodejs/node/commit/20d8db1a42)] - **npm**: actualizar a 2.11.2 [#25517](https://github.com/joyent/node/pull/25517)
+  * [[`50f961596d`](https://github.com/nodejs/node/commit/50f961596d)] - **uv**: actualizar a 1.6.1 [#25475](https://github.com/joyent/node/pull/25475)
+  * [[`b81a643f9a`](https://github.com/nodejs/node/commit/b81a643f9a)] - **V8**: evitar interbloqueo cuando el perfil está activo (Dmitri Melikyan) [#25309](https://github.com/joyent/node/pull/25309)
+  * [[`9d19dfbfdb`](https://github.com/nodejs/node/commit/9d19dfbfdb)] - **install**: reparar ruta fuente para cabeceras openssl (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
+  * [[`4028669531`](https://github.com/nodejs/node/commit/4028669531)] - **install**: asegurar que opensslconf.h está sobrescrito (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
+  * [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: reparar tiempo de espera al agregar un callback del temporizador (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
   * [[`e7c84f82c7`](https://github.com/nodejs/node/commit/e7c84f82c7)] - **windows**: broadcast WM_SETTINGCHANGE after install (Mathias Küsel) [#25100](https://github.com/joyent/node/pull/25100)
   
   
