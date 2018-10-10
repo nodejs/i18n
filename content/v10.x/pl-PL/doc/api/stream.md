@@ -16,15 +16,15 @@ Dostęp do modułu `stream` można uzyskać za pomocą:
 const stream = require('stream');
 ```
 
-Chociaż ważne jest, aby zrozumieć, jak działają strumienie, sam moduł `stream` jest najbardziej przydatny dla deweloperów, którzy tworzą nowe typy instancji strumieni. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
+Chociaż ważne jest, aby zrozumieć, jak działają strumienie, sam moduł `stream` jest najbardziej przydatny dla deweloperów, którzy tworzą nowe typy instancji strumieni. Deweloperzy, którzy głównie *zużywają* obiekty strumieniowe rzadko będą musieli korzystać bezpośrednio z modułu `stream`.
 
-## Organization of this Document
+## Organizacja tego Dokumentu
 
-This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
+Ten dokument jest podzielony na dwie główne sekcje z trzecią sekcją dla dodatkowych notatek. Pierwsza sekcja wyjaśnia elementy API strumienia, które są wymagane do *używania* strumieni w aplikacji. Druga sekcja wyjaśnia elementy API wymagane do *implementacji* nowych typów strumieni.
 
-## Types of Streams
+## Rodzaje Strumieni
 
-There are four fundamental stream types within Node.js:
+Istnieją cztery fundamentalne typy strumieni w Node.js:
 
 * [`Readable`][] - streams from which data can be read (for example [`fs.createReadStream()`][]).
 * [`Writable`][] - streams to which data can be written (for example [`fs.createWriteStream()`][]).
@@ -33,7 +33,7 @@ There are four fundamental stream types within Node.js:
 
 Additionally this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback) and [finished](#stream_stream_finished_stream_callback).
 
-### Object Mode
+### Tryb Obiektu
 
 All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 
