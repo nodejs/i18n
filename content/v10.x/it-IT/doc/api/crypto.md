@@ -552,7 +552,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta la Diffie-Hellman private key (chiave privata). If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `privateKey` is expected to be a string. If no `encoding` is provided, `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Imposta la Diffie-Hellman private key (chiave privata). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'`, o `'base64'`, `privateKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -563,7 +563,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the Diffie-Hellman public key. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `publicKey` is expected to be a string. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Imposta la Diffie-Hellman public key (chiave pubblica). Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'`, o `'base64'`, `publicKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `publicKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
 ### diffieHellman.verifyError
 
@@ -571,9 +571,9 @@ Sets the Diffie-Hellman public key. If the `encoding` argument is provided and i
 added: v0.11.12
 -->
 
-A bit field containing any warnings and/or errors resulting from a check performed during initialization of the `DiffieHellman` object.
+Un campo di bit contenente eventuali avvisi e/o errori risultanti da un controllo eseguito durante l'inizializzazione del `DiffieHellman` object.
 
-The following values are valid for this property (as defined in `constants` module):
+I seguenti valori sono validi per questa proprietà (come definita nel modulo `constants`):
 
 - `DH_CHECK_P_NOT_SAFE_PRIME`
 - `DH_CHECK_P_NOT_PRIME`
@@ -586,23 +586,23 @@ The following values are valid for this property (as defined in `constants` modu
 added: v0.11.14
 -->
 
-The `ECDH` class is a utility for creating Elliptic Curve Diffie-Hellman (ECDH) key exchanges.
+La classe `ECDH` è un'utility per la creazione di scambi di chiavi Elliptic Curve Diffie-Hellman (ECDH).
 
-Instances of the `ECDH` class can be created using the [`crypto.createECDH()`][] function.
+Le istanze della classe `ECDH` possono essere create utilizzando la funzione [`crypto.createECDH()`][].
 
 ```js
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera le chiavi di Alice...
 const alice = crypto.createECDH('secp521r1');
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera le chiavi di Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
+// Esegue lo scambio e genera la chiave segreta...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
@@ -623,7 +623,7 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
+Converte l'EC Diffie-Hellman public key (chiave pubblica) specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica il point encoding e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
 
 Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
