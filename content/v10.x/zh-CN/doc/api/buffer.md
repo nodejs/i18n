@@ -185,16 +185,16 @@ console.log(buf.length);
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-The `Buffer.from()` method, however, does not support the use of a mapping function:
+但是 `Buffer.from()` 方法不支持使用映射函数：
 
 * [`Buffer.from(array)`]
 * [`Buffer.from(buffer)`]
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers and iteration
+## Buffers 和 迭代
 
-`Buffer` instances can be iterated over using `for..of` syntax:
+`Buffer` 实例 可以通过 `for..of` 语法进行迭代：
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
@@ -208,11 +208,11 @@ for (const b of buf) {
 }
 ```
 
-Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
+而且，可以通过 [`buf.values()`]，[`buf.keys()`] 和 [`buf.entries()`] 方法创建迭代器。
 
-## Class: Buffer
+## Class： Buffer
 
-The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+`Buffer` 类是一个直接处理二进制数据的全局类型。 It can be constructed in a variety of ways.
 
 ### new Buffer(array)
 
