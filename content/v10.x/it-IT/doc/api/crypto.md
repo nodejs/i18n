@@ -623,15 +623,15 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Converte l'EC Diffie-Hellman public key (chiave pubblica) specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica il point encoding e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
+Converte l'EC Diffie-Hellman public key (chiave pubblica) specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica l'encoding del punto e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato, e la chiave restituita viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'`, o `'base64'`.
 
-Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Utilizza [`crypto.getCurves()`][] per ottenere un elenco di nomi di curve disponibili. Nelle versioni OpenSSL recenti, `openssl ecparam -list_curves` mostrerà anche il nome e la descrizione di ciascuna curva ellittica disponibile.
 
-If `format` is not specified the point will be returned in `'uncompressed'` format.
+Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-If the `inputEncoding` is not provided, `key` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Se non viene fornito l'`inputEncoding`, `key` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-Example (uncompressing a key):
+Esempio (decompressione di una chiave):
 
 ```js
 const { ECDH } = require('crypto');
@@ -647,7 +647,7 @@ const uncompressedKey = ECDH.convertKey(compressedKey,
                                         'hex',
                                         'uncompressed');
 
-// the converted key and the uncompressed public key should be the same
+// la chiave convertita e la chiave pubblica non compressa devono essere uguali
 console.log(uncompressedKey === ecdh.getPublicKey('hex'));
 ```
 
@@ -671,7 +671,7 @@ changes:
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come la public key (chiave pubblica) dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato, e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'`, o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
 If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
 
