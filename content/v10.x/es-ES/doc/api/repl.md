@@ -20,8 +20,8 @@ Las instancias de `repl.REPLServer` soportan la completación automática de las
 
 Los siguientes comandos especiales son soportados por todas las instancias REPL:
 
-* `.break` - Cuando en un proceso de entrada de una expresión de múltiples líneas, introducir el comando `.break` (o presionar la combinación de teclas `<ctrl>C`) anulará la entrada adicional o el procesamiento de esa expresión.
-* `.clear` - Resetee el `context` REPL a un objeto vacío y limpia cualquier expresión de múltiples líneas actualmente siendo introducida.
+* `.break` - Durante un proceso de entrada de una expresión de múltiples líneas, introducir el comando `.break` (o presionar la combinación de teclas `<ctrl>C`) anulará la entrada adicional o el procesamiento de esa expresión.
+* `.clear` - Resetea el `context` REPL a un objeto vacío y limpia cualquier expresión de múltiples líneas actualmente siendo introducida.
 * `.exit` - Cierra el stream E/S, causando que RPL se cierre.
 * `.help` - Muestra la lista de comandos especiales.
 * `.save` - Guarda la sesión actual de REPL a un archivo: `> .save ./file/to/save.js`
@@ -73,7 +73,7 @@ A menos que haya sido examinado dentro de bloques o funciones, las variables dec
 
 #### Espectros Globales y Locales
 
-El evaluador por defecto provee acceso a cualquiera de las varaibles que existen en el espectro global. Es posible exponer explícitamente a una variable al REPL asignándola al objeto `context` asociado con cada `REPLServer`:
+El evaluador por defecto provee acceso a cualquiera de las variables que existen en el espectro global. Es posible exponer explícitamente a una variable al REPL asignándola al objeto `context` asociado con cada `REPLServer`:
 
 ```js
 const repl = require('repl');
@@ -82,7 +82,7 @@ const msg = 'message';
 repl.start('> ').context.m = msg;
 ```
 
-Las propiedades en el objeto `context` aperecen como locales dentro de REPL:
+Las propiedades en el objeto `context` aparecen como locales dentro de REPL:
 
 <!-- eslint-skip -->
 
@@ -92,7 +92,7 @@ $ node repl_test.js
 'message'
 ```
 
-Las propiedades de contexto no son de sólo lectura por defecto. Para especificar globales de sólo lectura, propiedades de contexto deben ser definidas utilizando `Object.defineProperty()`:
+Las propiedades de contexto no son de sólo lectura por defecto. Para especificar globales de sólo lectura, deben ser definidas propiedades de contexto utilizando `Object.defineProperty()`:
 
 ```js
 const repl = require('repl');
@@ -261,7 +261,7 @@ La clase `repl.REPLServer` hereda de la clase [`readline.Interface`][]. Las inst
 added: v0.7.7
 -->
 
-El evento `'salida'` es emitido cuando el REPL es cerrado, sea por la introducción del comando `.exit`, el usuario presionando `<ctrl>-C` dos veces para señalar `SIGINT`, o al presionar `<ctrl>-D` para señalar `'fin'` en el stream de entrada. The listener callback is invoked without any arguments.
+El evento `'salida'` es emitido cuando el REPL es cerrado, sea por la introducción del comando `.exit`, el usuario presionando `<ctrl>-C` dos veces para señalar `SIGINT`, o al presionar `<ctrl>-D` para señalar `'fin'` en el stream de entrada. La función oyente de devolución es invocada sin ningún argumento.
 
 ```js
 replServer.on('exit', () => {
@@ -270,13 +270,13 @@ replServer.on('exit', () => {
 });
 ```
 
-### Event: 'reset'
+### Evento: 'reset'
 
 <!-- YAML
 added: v0.11.0
 -->
 
-The `'reset'` event is emitted when the REPL's context is reset. This occurs whenever the `.clear` command is received as input *unless* the REPL is using the default evaluator and the `repl.REPLServer` instance was created with the `useGlobal` option set to `true`. The listener callback will be called with a reference to the `context` object as the only argument.
+El evento `'reset'` ess emitido cuando el contexto de REPL es reseteado. This occurs whenever the `.clear` command is received as input *unless* the REPL is using the default evaluator and the `repl.REPLServer` instance was created with the `useGlobal` option set to `true`. The listener callback will be called with a reference to the `context` object as the only argument.
 
 This can be used primarily to re-initialize REPL context to some pre-defined state as illustrated in the following simple example:
 
