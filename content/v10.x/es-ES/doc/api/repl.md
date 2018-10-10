@@ -106,9 +106,9 @@ Object.defineProperty(r.context, 'm', {
 });
 ```
 
-#### Accesando a los módulos principales de Node.Js
+#### Acceder a los módulos principales de Node.Js
 
-El evaluador predeterminado cargará automáticamente los módulos principales de Node.JS al ambiante REPL cuando sea usado. Por ejemplo, a menos que sea declarado como variable global o examinada, la entrada `fs` será evaluada cuando sea comandada como `global.fs = require('fs')`.
+El evaluador predeterminado cargará automáticamente los módulos principales de Node.JS al ambiente REPL cuando sea usado. Por ejemplo, a menos que sea declarado como variable global o examinada, la entrada `fs` será evaluada cuando sea comandada como `global.fs = require('fs')`.
 
 <!-- eslint-skip -->
 
@@ -116,11 +116,11 @@ El evaluador predeterminado cargará automáticamente los módulos principales d
 > fs.createReadStream('./some/file');
 ```
 
-#### Excepciones globales no capturadas
+#### Excepciones Globales No Capturadas
 
 El REPL utiliza el módulo [`domain`][] para capturar todas las excepciones sin capturar para esa sesión REPL.
 
-Este uso del módulo [`domain`][] en el REPL tiene estos efectos secudarios:
+Este uso del módulo [`domain`][] en el REPL tiene estos efectos secundarios:
 
 * Las excepciones sin capturar no emiten el evento [`'uncaughtException'`][].
 * Trata de utilizar [`process.setUncaughtExceptionCaptureCallback()`][] produce un error [`ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE`][].
@@ -135,7 +135,7 @@ changes:
     description: Added `_error` support.
 -->
 
-El evaluador predeterminado será, por decto, asignado al resultado de la expresión evaluada por la variable especial `_` (barra baja). Explicitamente configurar `_` a algún valor deshabilitará este comportamiento.
+El evaluador predeterminado será, por defecto, asignado al resultado de la expresión evaluada por la variable especial `_` (barra baja). Explícitamente configurar `_` a algún valor deshabilitará este comportamiento.
 
 <!-- eslint-skip -->
 
@@ -153,7 +153,7 @@ Expression assignment to _ now disabled.
 4
 ```
 
-Similarmente, `_error` referirá al último error visto, si hay alguno. Establecer explícitamente `_error` a algún valor deshabilitará este comportamiento.
+De forma similar, `_error` referirá al último error visto, si hay alguno. Establecer explícitamente `_error` a algún valor deshabilitará este comportamiento.
 
 <!-- eslint-skip -->
 
@@ -166,7 +166,7 @@ Error: foo
 
 #### Palabra clave `await`
 
-Con la opción de comando de línea [`--experimental-repl-await`][] específicada, soporte experimental para la palabra clave `await` es habilitado.
+Con la opción de comando de línea [`--experimental-repl-await`][] especificada, el soporte experimental para la palabra clave `await` es habilitado.
 
 <!-- eslint-skip -->
 
@@ -183,7 +183,7 @@ undefined
 undefined
 ```
 
-### Funciones de evaluación personalizadas
+### Funciones de Evaluación Personalizadas
 
 Cuando un nuevo `repl.REPLServer` es creado, una función de evaluación personalizable puede ser provista. Esto puede ser usada, por ejemplo, para implementar aplicaciones REPL completamente personalizables.
 
