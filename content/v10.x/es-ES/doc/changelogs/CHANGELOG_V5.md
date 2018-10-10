@@ -278,14 +278,14 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 * **búfer**: 
   * hacer funcionar a byteLength con ArrayBuffer & DataView (Jackson Tian) [#5255](https://github.com/nodejs/node/pull/5255)
   * hacer backport a la opción de línea de comando --zero-fill-buffers (James M Snell) [#5744](https://github.com/nodejs/node/pull/5744)
-  * backport new buffer constructor APIs (James M Snell) [#5763](https://github.com/nodejs/node/pull/5763)
-  * add swap16() and swap32() methods (James M Snell) [#5724](https://github.com/nodejs/node/pull/5724)
-* **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
-* **net**: emit host in lookup event (HUANG Wei) [#5598](https://github.com/nodejs/node/pull/5598)
-* **node**: --no-browser-globals configure flag (Fedor Indutny) [#5853](https://github.com/nodejs/node/pull/5853)
-* **npm**: Upgrade to v3.8.3. Fixes a security flaw in the use of authentication tokens in HTTP requests that would allow an attacker to set up a server that could collect tokens from users of the command-line interface. Authentication tokens have previously been sent with every request made by the CLI for logged-in users, regardless of the destination of the request. This update fixes this by only including those tokens for requests made against the registry or registries used for the current install. (Forrest L Norvell) [npm/node#6](https://github.com/npm/node/pull/6)
-* **repl**: support standalone blocks (Prince J Wesley) [#5581](https://github.com/nodejs/node/pull/5581)
-* **src**: override v8 thread defaults using cli options (Tom Gallacher) [#4344](https://github.com/nodejs/node/pull/4344)
+  * hacer backport para las nuevas APIs de constructor de búfer (James M Snell) [#5763](https://github.com/nodejs/node/pull/5763)
+  * añadir métodos swap16() y swap32() (James M Snell) [#5724](https://github.com/nodejs/node/pull/5724)
+* **fs**: añadir la función fs.mkdtemp(). (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
+* **net**: emitir host en evento lookup (HUANG Wei) [#5598](https://github.com/nodejs/node/pull/5598)
+* **node**: --no-browser-globals configurar bandera (Fedor Indutny) [#5853](https://github.com/nodejs/node/pull/5853)
+* **npm**: Actualizar a v3.8.3. Repara una falla de seguridad en el uso de tokens de autenticación en solicitudes HTTP que le permitirían a un atacante configurar a un servidor que pudiera coleccionar los tokens de usuarios de la interfaz de línea de comando. Los tokens de autenticación han sido enviados previamente con cada solicitud hecha por el CLI para los usuarios conectados, sin importar del destino de la solicitud. Esta actualización repara esto al solo incluir esos tokens para las solicitudes hechas contra el registro, o registros usados para la instalación actual. (Forrest L Norvell) [npm/node#6](https://github.com/npm/node/pull/6)
+* **repl**: soporta bloques autónomos (Prince J Wesley) [#5581](https://github.com/nodejs/node/pull/5581)
+* **src**: sobreescribe los threads v8 predeterminados usando opciones cli (Tom Gallacher) [#4344](https://github.com/nodejs/node/pull/4344)
 
 ### Commits
 
