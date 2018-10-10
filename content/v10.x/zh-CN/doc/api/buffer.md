@@ -312,11 +312,11 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.from(buffer)`] instead.
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.from(buffer)`]。
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} 一个要被复制数据的 `Buffer` 或 [`Uint8Array`]。
 
-Copies the passed `buffer` data onto a new `Buffer` instance.
+将传入 `buffer` 的数据复制到新的 `Buffer` 实例。
 
 ```js
 const buf1 = new Buffer('buffer');
@@ -352,9 +352,9 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Stability: 0 - Deprecated: Use [`Buffer.alloc()`] instead (also see [`Buffer.allocUnsafe()`]).
+> 稳定性：0 - 已弃用：改为使用 [`Buffer.alloc()`]（也请参阅 [`Buffer.allocUnsafe()`]）。
 
-* `size` {integer} The desired length of the new `Buffer`.
+* `size` {integer} 新建 `Buffer` 的所需长度。
 
 Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`] or smaller than 0, [`ERR_INVALID_OPT_VALUE`] is thrown. A zero-length `Buffer` is created if `size` is 0.
 
@@ -701,7 +701,7 @@ A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`] or a [`S
 added: v5.10.0
 -->
 
-* `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`] from which to copy data.
+* `buffer` {Buffer|Uint8Array} 一个要被复制数据的 `Buffer` 或 [`Uint8Array`]。
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
