@@ -387,39 +387,39 @@ Actualización de Seguridad
   * [[`b81a643f9a`](https://github.com/nodejs/node/commit/b81a643f9a)] - **V8**: evitar interbloqueo cuando el perfil está activo (Dmitri Melikyan) [#25309](https://github.com/joyent/node/pull/25309)
   * [[`9d19dfbfdb`](https://github.com/nodejs/node/commit/9d19dfbfdb)] - **install**: reparar ruta fuente para cabeceras openssl (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
   * [[`4028669531`](https://github.com/nodejs/node/commit/4028669531)] - **install**: asegurar que opensslconf.h está sobrescrito (Oguz Bastemur) [#14089](https://github.com/joyent/node/pull/14089)
-  * [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: reparar tiempo de espera al agregar un callback del temporizador (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
-  * [[`e7c84f82c7`](https://github.com/nodejs/node/commit/e7c84f82c7)] - **windows**: broadcast WM_SETTINGCHANGE after install (Mathias Küsel) [#25100](https://github.com/joyent/node/pull/25100)
+  * [[`d38e865fce`](https://github.com/nodejs/node/commit/d38e865fce)] - **timers**: reparar tiempo de espera al agregarlo en el callback del temporizador (Julien Gilli) [#17203](https://github.com/joyent/node/pull/17203)
+  * [[`e7c84f82c7`](https://github.com/nodejs/node/commit/e7c84f82c7)] - **windows**: transmitir WM_SETTINGCHANGE después de instalar (Mathias Küsel) [#25100](https://github.com/joyent/node/pull/25100)
   
   
 
 <a id="0.12.4"></a>
 
   
-  ## 2015-05-22, Version 0.12.4 (Stable)
+  ## 2015-05-22, Versión 0.12.4 (Estable)
   
   ### Commits
   
-  * [[`202c18bbc3`](https://github.com/nodejs/node/commit/202c18bbc3)] - **npm**: upgrade to 2.10.1 [#25364](https://github.com/joyent/node/pull/25364)
-  * [[`6157697bd5`](https://github.com/nodejs/node/commit/6157697bd5)] - **V8**: revert v8 Array.prototype.values() removal (cjihrig) [#25328](https://github.com/joyent/node/pull/25328)
-  * [[`3122052890`](https://github.com/nodejs/node/commit/3122052890)] - **win**: bring back xp/2k3 support (Bert Belder) [#25367](https://github.com/joyent/node/pull/25367)
+  * [[`202c18bbc3`](https://github.com/nodejs/node/commit/202c18bbc3)] - **npm**: actualizar a 2.10.1 [#25364](https://github.com/joyent/node/pull/25364)
+  * [[`6157697bd5`](https://github.com/nodejs/node/commit/6157697bd5)] - **V8**: revertir eliminación de Array.prototype.values() de v8 (cjihrig) [#25328](https://github.com/joyent/node/pull/25328)
+  * [[`3122052890`](https://github.com/nodejs/node/commit/3122052890)] - **win**: traer devuelta soporte xp/2k3 (Bert Belder) [#25367](https://github.com/joyent/node/pull/25367)
   
   
 
 <a id="0.12.3"></a>
 
   
-  ## 2015-05-13, Version 0.12.3 (Stable)
+  ## 2015-05-13, Versión 0.12.3 (Estable)
   
   ### Commits
   
-  * [[`32166a90cf`](https://github.com/nodejs/node/commit/32166a90cf)] - **V8**: update to 3.28.71.19 [#18206](https://github.com/joyent/node/pull/18206)
-  * [[`84f1ab6114`](https://github.com/nodejs/node/commit/84f1ab6114)] - **uv**: upgrade to 1.5.0 [#25141](https://github.com/joyent/node/pull/25141)
-  * [[`03cfbd65fb`](https://github.com/nodejs/node/commit/03cfbd65fb)] - **npm**: upgrade to 2.9.1 [#25289](https://github.com/joyent/node/pull/25289)
+  * [[`32166a90cf`](https://github.com/nodejs/node/commit/32166a90cf)] - **V8**: actualizar a 3.28.71.19 [#18206](https://github.com/joyent/node/pull/18206)
+  * [[`84f1ab6114`](https://github.com/nodejs/node/commit/84f1ab6114)] - **uv**: actualizar a 1.5.0 [#25141](https://github.com/joyent/node/pull/25141)
+  * [[`03cfbd65fb`](https://github.com/nodejs/node/commit/03cfbd65fb)] - **npm**: actualizar a 2.9.1 [#25289](https://github.com/joyent/node/pull/25289)
   * [[`80cdae855f`](https://github.com/nodejs/node/commit/80cdae855f)] - **V8**: don't busy loop in v8 cpu profiler thread (Mike Tunnicliffe) [#25268](https://github.com/joyent/node/pull/25268)
-  * [[`2a5f4bd7ce`](https://github.com/nodejs/node/commit/2a5f4bd7ce)] - **V8**: fix issue with let bindings in for loops (adamk) [#23948](https://github.com/joyent/node/pull/23948)
-  * [[`f0ef597e09`](https://github.com/nodejs/node/commit/f0ef597e09)] - **debugger**: don't spawn child process in remote mode (Jackson Tian) [#14172](https://github.com/joyent/node/pull/14172)
-  * [[`0e392f3b68`](https://github.com/nodejs/node/commit/0e392f3b68)] - **net**: do not set V4MAPPED on FreeBSD (Julien Gilli) [#18204](https://github.com/joyent/node/pull/18204)
-  * [[`101e103e3b`](https://github.com/nodejs/node/commit/101e103e3b)] - **repl**: make 'Unexpected token' errors recoverable (Julien Gilli) [#8875](https://github.com/joyent/node/pull/8875)
+  * [[`2a5f4bd7ce`](https://github.com/nodejs/node/commit/2a5f4bd7ce)] - **V8**: reparar problema con dejar enlaces para bucles (adamk) [#23948](https://github.com/joyent/node/pull/23948)
+  * [[`f0ef597e09`](https://github.com/nodejs/node/commit/f0ef597e09)] - **debugger**: no generar proceso hijo en modo remoto (Jackson Tian) [#14172](https://github.com/joyent/node/pull/14172)
+  * [[`0e392f3b68`](https://github.com/nodejs/node/commit/0e392f3b68)] - **net**: no establecer V4MAPPED en FreeBSD (Julien Gilli) [#18204](https://github.com/joyent/node/pull/18204)
+  * [[`101e103e3b`](https://github.com/nodejs/node/commit/101e103e3b)] - **repl**: hacer recuperables errores 'Unexpected token' (Julien Gilli) [#8875](https://github.com/joyent/node/pull/8875)
   * [[`d5b32246fb`](https://github.com/nodejs/node/commit/d5b32246fb)] - **src**: backport ignore ENOTCONN on shutdown race (Ben Noordhuis) [#14480](https://github.com/joyent/node/pull/14480)
   * [[`f99eaefe75`](https://github.com/nodejs/node/commit/f99eaefe75)] - **src**: fix backport of SIGINT crash fix on FreeBSD (Julien Gilli) [#14819](https://github.com/joyent/node/pull/14819)
   
@@ -428,30 +428,30 @@ Actualización de Seguridad
 <a id="0.12.2"></a>
 
   
-  ## 2015-03-31, Version 0.12.2 (Stable)
+  ## 2015-03-31, Versión 0.12.2 (Estable)
   
   ### Commits
   
-  * [[`7a37910f25`](https://github.com/nodejs/node/commit/7a37910f25)] - **uv**: Upgrade to 1.4.2 [#9179](https://github.com/joyent/node/pull/9179)
-  * [[`2704c62933`](https://github.com/nodejs/node/commit/2704c62933)] - **npm**: Upgrade to 2.7.4 [#14180](https://github.com/joyent/node/pull/14180)
-  * [[`a103712a62`](https://github.com/nodejs/node/commit/a103712a62)] - **V8**: do not add extra newline in log file (Julien Gilli)
-  * [[`2fc5eeb3da`](https://github.com/nodejs/node/commit/2fc5eeb3da)] - **V8**: Fix --max_old_space_size=4096 integer overflow (Andrei Sedoi) [#9200](https://github.com/joyent/node/pull/9200)
-  * [[`605329d7f7`](https://github.com/nodejs/node/commit/605329d7f7)] - **asyncwrap**: fix constructor condition for early ret (Trevor Norris) [#9146](https://github.com/joyent/node/pull/9146)
-  * [[`a33f23cbbc`](https://github.com/nodejs/node/commit/a33f23cbbc)] - **buffer**: align chunks on 8-byte boundary (Fedor Indutny) [#9375](https://github.com/joyent/node/pull/9375)
-  * [[`a35ba2f67d`](https://github.com/nodejs/node/commit/a35ba2f67d)] - **buffer**: fix pool offset adjustment (Trevor Norris)
-  * [[`c0766eb1a4`](https://github.com/nodejs/node/commit/c0766eb1a4)] - **build**: fix use of strict aliasing (Trevor Norris) [#9179](https://github.com/joyent/node/pull/9179)
-  * [[`6c3647c38d`](https://github.com/nodejs/node/commit/6c3647c38d)] - **console**: allow Object.prototype fields as labels (Colin Ihrig) [#9116](https://github.com/joyent/node/pull/9116)
-  * [[`4823afcbe2`](https://github.com/nodejs/node/commit/4823afcbe2)] - **fs**: make F_OK/R_OK/W_OK/X_OK not writable (Jackson Tian) [#9060](https://github.com/joyent/node/pull/9060)
-  * [[`b3aa876f08`](https://github.com/nodejs/node/commit/b3aa876f08)] - **fs**: properly handle fd passed to truncate() (Bruno Jouhier) [#9161](https://github.com/joyent/node/pull/9161)
+  * [[`7a37910f25`](https://github.com/nodejs/node/commit/7a37910f25)] - **uv**: Actualizar a 1.4.2 [#9179](https://github.com/joyent/node/pull/9179)
+  * [[`2704c62933`](https://github.com/nodejs/node/commit/2704c62933)] - **npm**: Actualizar a 2.7.4 [#14180](https://github.com/joyent/node/pull/14180)
+  * [[`a103712a62`](https://github.com/nodejs/node/commit/a103712a62)] - **V8**: no añadir nueva línea adicional en archivo log (Julien Gilli)
+  * [[`2fc5eeb3da`](https://github.com/nodejs/node/commit/2fc5eeb3da)] - **V8**: reparar desbordamiento de entero --max_old_space_size=4096 (Andrei Sedoi) [#9200](https://github.com/joyent/node/pull/9200)
+  * [[`605329d7f7`](https://github.com/nodejs/node/commit/605329d7f7)] - **asyncwrap**: reparar condición de constructor para el inicio (Trevor Norris) [#9146](https://github.com/joyent/node/pull/9146)
+  * [[`a33f23cbbc`](https://github.com/nodejs/node/commit/a33f23cbbc)] - **buffer**: alinear trozos en límite de 8 bytes (Fedor Indutny) [#9375](https://github.com/joyent/node/pull/9375)
+  * [[`a35ba2f67d`](https://github.com/nodejs/node/commit/a35ba2f67d)] - **buffer**: reparar ajuste de offset del pool (Trevor Norris)
+  * [[`c0766eb1a4`](https://github.com/nodejs/node/commit/c0766eb1a4)] - **build**: reparar uso de alias estrictos (Trevor Norris) [#9179](https://github.com/joyent/node/pull/9179)
+  * [[`6c3647c38d`](https://github.com/nodejs/node/commit/6c3647c38d)] - **console**: permitir los campos de Object.prototype como etiquetas (Colin Ihrig) [#9116](https://github.com/joyent/node/pull/9116)
+  * [[`4823afcbe2`](https://github.com/nodejs/node/commit/4823afcbe2)] - **fs**: hacer F_OK/R_OK/W_OK/X_OK no editable (Jackson Tian) [#9060](https://github.com/joyent/node/pull/9060)
+  * [[`b3aa876f08`](https://github.com/nodejs/node/commit/b3aa876f08)] - **fs**: manejar apropiadamente fd pasado a truncate() (Bruno Jouhier) [#9161](https://github.com/joyent/node/pull/9161)
   * [[`d6484f3f7b`](https://github.com/nodejs/node/commit/d6484f3f7b)] - **http**: fix assert on data/end after socket error (Fedor Indutny) [#14087](https://github.com/joyent/node/pull/14087)
-  * [[`04b63e022a`](https://github.com/nodejs/node/commit/04b63e022a)] - **lib**: fix max size check in Buffer constructor (Ben Noordhuis) [#657](https://github.com/iojs/io.js/pull/657)
+  * [[`04b63e022a`](https://github.com/nodejs/node/commit/04b63e022a)] - **lib**: reparar verificación de tamaño máximo en constructor de Buffer (Ben Noordhuis) [#657](https://github.com/iojs/io.js/pull/657)
   * [[`2411bea0df`](https://github.com/nodejs/node/commit/2411bea0df)] - **lib**: fix stdio/ipc sync i/o regression (Ben Noordhuis) [#9179](https://github.com/joyent/node/pull/9179)
-  * [[`b8604fa480`](https://github.com/nodejs/node/commit/b8604fa480)] - **module**: replace NativeModule.require (Herbert Vojčík) [#9201](https://github.com/joyent/node/pull/9201)
-  * [[`1a2a4dac23`](https://github.com/nodejs/node/commit/1a2a4dac23)] - **net**: allow port 0 in connect() (cjihrig) [#9268](https://github.com/joyent/node/pull/9268)
+  * [[`b8604fa480`](https://github.com/nodejs/node/commit/b8604fa480)] - **module**: reemplazar NativeModule.require (Herbert Vojčík) [#9201](https://github.com/joyent/node/pull/9201)
+  * [[`1a2a4dac23`](https://github.com/nodejs/node/commit/1a2a4dac23)] - **net**: permitir puerto 0 en connect() (cjihrig) [#9268](https://github.com/joyent/node/pull/9268)
   * [[`bada87bd66`](https://github.com/nodejs/node/commit/bada87bd66)] - **net**: unref timer in parent sockets (Fedor Indutny) [#891](https://github.com/iojs/io.js/pull/891)
-  * [[`c66f8c21f0`](https://github.com/nodejs/node/commit/c66f8c21f0)] - **path**: refactor for performance and consistency (Nathan Woltman) [#9289](https://github.com/joyent/node/pull/9289)
-  * [[`9deade4322`](https://github.com/nodejs/node/commit/9deade4322)] - **smalloc**: extend user API (Trevor Norris) [#905](https://github.com/iojs/io.js/pull/905)
-  * [[`61fe1fe21b`](https://github.com/nodejs/node/commit/61fe1fe21b)] - **src**: fix for SIGINT crash on FreeBSD (Fedor Indutny) [#14184](https://github.com/joyent/node/pull/14184)
+  * [[`c66f8c21f0`](https://github.com/nodejs/node/commit/c66f8c21f0)] - **path**: refactor para rendimiento y consistencia (Nathan Woltman) [#9289](https://github.com/joyent/node/pull/9289)
+  * [[`9deade4322`](https://github.com/nodejs/node/commit/9deade4322)] - **smalloc**: extender API de usuario (Trevor Norris) [#905](https://github.com/iojs/io.js/pull/905)
+  * [[`61fe1fe21b`](https://github.com/nodejs/node/commit/61fe1fe21b)] - **src**: reparar para bloqueo SIGINT en FreeBSD (Fedor Indutny) [#14184](https://github.com/joyent/node/pull/14184)
   * [[`b233131901`](https://github.com/nodejs/node/commit/b233131901)] - **src**: fix builtin modules failing with --use-strict (Julien Gilli) [#9237](https://github.com/joyent/node/pull/9237)
   * [[`7e9d2f8de8`](https://github.com/nodejs/node/commit/7e9d2f8de8)] - **watchdog**: fix timeout for early polling return (Saúl Ibarra Corretgé) [#9410](https://github.com/joyent/node/pull/9410)
   
