@@ -35,11 +35,11 @@ Additionally this module includes the utility functions [pipeline](#stream_strea
 
 ### Tryb Obiektu
 
-All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
+Wszystkie strumienie utworzone przez API Node.js działają wyłącznie na ciągach i `Buffer` (lub `Uint8Array`) obiektach. Możliwe jest jednak, aby implementacje strumieni działały z innymi rodzajami wartości JavaScript (z wyjątkiem `null`, który służy do celów specjalnych w strumieniach). Takie strumienie są uważane za działające w "trybie obiektu".
 
-Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
+Instancje strumieni są przełączane w tryb obiektu za pomocą opcji `objectMode`, gdy strumień jest tworzony. Próba przełączenia istniejącego strumienia na tryb obiektu nie jest bezpieczna.
 
-### Buffering
+### Buforowanie
 
 <!--type=misc-->
 
