@@ -416,29 +416,29 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * **dgram**: si ocurre un error dentro de `socket.send()` y se proporciona una callback, el error sólo se pasa como el primera argumento a la callback y no es emitido en el objeto `socket`; el comportamiento previo era hacer ambos (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
 * **freelist**: Desaprueba el módulo núcleo `freelist` indocumentado (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
 * **http**: 
-  * Status codes now all use the official [IANA names](http://www.iana.org/assignments/http-status-codes) as per [RFC7231](https://tools.ietf.org/html/rfc7231), e.g. `http.STATUS_CODES[414]` now returns `'URI Too Long'` rather than `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
-  * Calling .getName() on an HTTP agent no longer returns a trailing colon, HTTPS agents will no longer return an extra colon near the middle of the string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
+  * Los códigos de estado ahora usan los [nombres IANA](http://www.iana.org/assignments/http-status-codes) oficiales según [RFC7231](https://tools.ietf.org/html/rfc7231), p. ej., `http.STATUS_CODES[414]` ahora devuelve `'URI Too Long'` en lugar de `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
+  * Llamar a .getName() en un agente HTTP ya no revuelve dos puntos finales; los agentes HTTPS ya no devolverán dos puntos extras cerca del medio de la string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
 * **node**: 
   * `NODE_MODULE_VERSION` has been bumped to `45` to reflect the break in ABI (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096).
-  * Introduce a new `process.release` object that contains a `name` property set to `'io.js'` and `sourceUrl`, `headersUrl` and `libUrl` (Windows only) properties containing URLs for the relevant resources; this is intended to be used by node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
+  * Introduce un nuevo objeto `process.release` que contiene una propiedad de `name` establecida a `'io.js'` y `sourceUrl`, las propiedades `headersUrl` y `libUrl` (sólo en Windows) que contienen URLs para las fuentes relevantes; esto está destinado a ser utilizado por node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
   * The version of node-gyp bundled with io.js now downloads and uses a tarball of header files from iojs.org rather than the full source for compiling native add-ons; it is hoped this is a temporary floating patch and the change will be upstreamed to node-gyp soon (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066).
-* **repl**: Persistent history is now enabled by default. The history file is located at ~/.node_repl_history, which can be overridden by the new environment variable `NODE_REPL_HISTORY`. This deprecates the previous `NODE_REPL_HISTORY_FILE` variable. Additionally, the format of the file has been changed to plain text to better handle file corruption. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
-* **smalloc**: The `smalloc` module has been removed as it is no longer possible to provide the API due to changes in V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
-* **tls**: Add `server.getTicketKeys()` and `server.setTicketKeys()` methods for [TLS session key](https://www.ietf.org/rfc/rfc5077.txt) rotation (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227).
-* **v8**: Upgraded to 4.4.63.26 
-  * ES6: Enabled [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names)
-  * ES6: `Array` can now be subclassed in strict mode
+* **repl**: La historia persistente ahora está habilitada por defecto. El archivo de historia ahora está ubicado en ~/.node_repl_history, el cual puede ser anulado por la nueva variable de entorno `NODE_REPL_HISTORY`. Esto desaprueba la variable `NODE_REPL_HISTORY_FILE` previa. Adicionalmente, el formate del archivo ha sido cambiado a texto sin formato para un mejor manejo de la corrupción de archivo. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
+* **smalloc**: El módulo `smalloc` ha sido eliminado ya que no es posible proporcionar el API debido a cambios en V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
+* **tls**: Añade los métodos `server.getTicketKeys()` y `server.setTicketKeys()` para la rotación de [TLS session key](https://www.ietf.org/rfc/rfc5077.txt) (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227).
+* **v8**: Actualizado a 4.4.63.26 
+  * ES6: [nombres de propiedades computadas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) habilitados
+  * ES6: `Array` ahora puede ser subclasificado en modo estricto
   * ES6: Implement [rest parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/rest_parameters) in staging, use the `--harmony-rest-parameters` command line flag
   * ES6: Implement the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) in staging, use the `--harmony-spreadcalls` command line flag
   * Removed `SetIndexedPropertiesToExternalArrayData` and related APIs, forcing a shift to `Buffer` to be reimplemented based on `Uint8Array`
   * Introduction of `Maybe` and `MaybeLocal` C++ API for objects which *may* or *may not* have a value.
-  * Added support for PPC
+  * Se añadió soporte para PPC
 
-See also https://github.com/nodejs/node/wiki/Breaking-Changes#300-from-2x for a summary of the breaking changes (SEMVER-MAJOR).
+Vea también https://github.com/nodejs/node/wiki/Breaking-Changes#300-from-2x para un resumen de los cambios de ruptura (SEMVER-MAJOR).
 
-### Known issues
+### Problemas conocidos
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
 * Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
@@ -526,7 +526,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Known issues
 
-See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
+Vea https://github.com/nodejs/node/labels/confirmed-bug para una lista completa y actual de problemas conocidos.
 
 * Using multiple REPL instances in parallel may cause some REPL history corruption or loss. [#1634](https://github.com/nodejs/node/issues/1634)
 * Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
