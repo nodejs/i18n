@@ -397,24 +397,24 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista actual y
 * [[`0ee4df9c7a`](https://github.com/nodejs/node/commit/0ee4df9c7a)] - **test**: hacer a listen-fd-cluster/server más robusto (Sam Roberts) [#1944](https://github.com/nodejs/io.js/pull/1944)
 * [[`cf9ba81398`](https://github.com/nodejs/node/commit/cf9ba81398)] - **test**: abordar problemas de tiempo en pruebas http simples (Gireesh Punathil) [#2294](https://github.com/nodejs/io.js/pull/2294)
 * [[`cbb75c4f86`](https://github.com/nodejs/node/commit/cbb75c4f86)] - **tls**: fix throughput issues after incorrect merge (Fedor Indutny) [#2381](https://github.com/nodejs/node/pull/2381)
-* [[`94b765f409`](https://github.com/nodejs/node/commit/94b765f409)] - **tls**: fix check for reused session (Fedor Indutny) [#2312](https://github.com/nodejs/io.js/pull/2312)
-* [[`e83a41ad65`](https://github.com/nodejs/node/commit/e83a41ad65)] - **tls**: introduce internal `onticketkeycallback` (Fedor Indutny) [#2312](https://github.com/nodejs/io.js/pull/2312)
+* [[`94b765f409`](https://github.com/nodejs/node/commit/94b765f409)] - **tls**: corregir la comprobación para la sesión reutilizada (Fedor Indutny) [#2312](https://github.com/nodejs/io.js/pull/2312)
+* [[`e83a41ad65`](https://github.com/nodejs/node/commit/e83a41ad65)] - **tls**: introducir `onticketkeycallback` interno (Fedor Indutny) [#2312](https://github.com/nodejs/io.js/pull/2312)
 * [[`fb0f5d733f`](https://github.com/nodejs/node/commit/fb0f5d733f)] - **(SEMVER-MINOR)** **tools**: run the tick processor without building v8 (Matt Loring) [#2090](https://github.com/nodejs/node/pull/2090)
-* [[`7606bdb897`](https://github.com/nodejs/node/commit/7606bdb897)] - **(SEMVER-MINOR)** **util**: display constructor when inspecting objects (Christopher Monsanto) [#1935](https://github.com/nodejs/io.js/pull/1935)
+* [[`7606bdb897`](https://github.com/nodejs/node/commit/7606bdb897)] - **(SEMVER-MINOR)** **util**: mostrar el constructor al inspeccionar objetos (Christopher Monsanto) [#1935](https://github.com/nodejs/io.js/pull/1935)
 
 <a id="3.0.0"></a>
 
-## 2015-08-04, Version 3.0.0, @rvagg
+## 2015-08-04, Versión 3.0.0, @rvagg
 
-### Notable changes
+### Cambios notables
 
 * **buffer**: 
-  * Due to changes in V8, it has been necessary to reimplement `Buffer` on top of V8's `Uint8Array`. Every effort has been made to minimize the performance impact, however `Buffer` instantiation is measurably slower. Access operations may be faster in some circumstances but the exact performance profile and difference over previous versions will depend on how `Buffer` is used within applications. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
-  * `Buffer` can now take `ArrayBuffer`s as a constructor argument (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
-  * When a single buffer is passed to `Buffer.concat()`, a new, copied `Buffer` object will be returned; previous behavior was to return the original `Buffer` object (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
-* **build**: PPC support has been added to core to allow compiling on pLinux BE and LE (AIX support coming soon) (Michael Dawson) [#2124](https://github.com/nodejs/node/pull/2124).
-* **dgram**: If an error occurs within `socket.send()` and a callback has been provided, the error is only passed as the first argument to the callback and not emitted on the `socket` object; previous behavior was to do both (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
-* **freelist**: Deprecate the undocumented `freelist` core module (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
+  * Debido a cambios en V8, ha sido necesario reimplementar `Buffer` encima del `Uint8Array` del V8. Cada esfuerzo ha sido realizado para minimizar el impacto del rendimiento, sin embargo, la instanciación de `Buffer` es considerablemente más lenta. Las operaciones de acceso pueden ser más rápidas en algunas circunstancias, pero el perfil de rendimiento exacto y la diferencia entre versiones anteriores dependerá en cómo se utiliza el `Buffer` dentro de las aplicaciones. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
+  * `Buffer` ahora puede tomar `ArrayBuffer`s como un argumento constructor (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
+  * Cuando se pasa un buffer simple a `Buffer.concat()`, se regresará un nuevo y copiado objeto `Buffer`; el comportamiento previo era regresar el objeto `Buffer` original (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
+* **build**: el soporte PPC ha sido añadido al núcleo para permitir la compilación en pLinux BE y LE (pronto soporte AIX) (Michael Dawson) [#2124](https://github.com/nodejs/node/pull/2124).
+* **dgram**: si ocurre un error dentro de `socket.send()` y se proporciona una callback, el error sólo se pasa como el primera argumento a la callback y no es emitido en el objeto `socket`; el comportamiento previo era hacer ambos (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
+* **freelist**: Desaprueba el módulo núcleo `freelist` indocumentado (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
 * **http**: 
   * Status codes now all use the official [IANA names](http://www.iana.org/assignments/http-status-codes) as per [RFC7231](https://tools.ietf.org/html/rfc7231), e.g. `http.STATUS_CODES[414]` now returns `'URI Too Long'` rather than `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
   * Calling .getName() on an HTTP agent no longer returns a trailing colon, HTTPS agents will no longer return an extra colon near the middle of the string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
