@@ -204,7 +204,7 @@ repl.start({ prompt: '> ', eval: myEval });
 
 #### Errores recuperables
 
-As a user is typing input into the REPL prompt, pressing the `<enter>` key will send the current line of input to the `eval` function. In order to support multi-line input, the eval function can return an instance of `repl.Recoverable` to the provided callback function:
+Mientras un usuario está ingresando información al campo de entrada del REPL, presionar la `<enter>` tecla enviará la línea actual de entrada a la función `eval`. Con el fin de soportar entradas de múltiples líneas, la función eval puede devolver una instancia de `repl.Recoverable` a la función callback provista:
 
 ```js
 function myEval(cmd, context, filename, callback) {
@@ -227,11 +227,11 @@ function isRecoverableError(error) {
 }
 ```
 
-### Customizing REPL Output
+### Personalizando la salida REPL
 
-By default, `repl.REPLServer` instances format output using the [`util.inspect()`][] method before writing the output to the provided `Writable` stream (`process.stdout` by default). The `useColors` boolean option can be specified at construction to instruct the default writer to use ANSI style codes to colorize the output from the `util.inspect()` method.
+Por defecto, las instancias `repl.REPLServer` formatean la salida usando el método [`util.inspect()`][] antes de escribir la entrada al stream `Writable` provisto (`process.stdout` por defecto). La opción booleana `useColors` puede ser especificada en la construcción para ordenar al escritor predeterminado a utilizar códigos al estilo ANSI para colorizar la salida del método `util.inspect()`.
 
-It is possible to fully customize the output of a `repl.REPLServer` instance by passing a new function in using the `writer` option on construction. The following example, for instance, simply converts any input text to upper case:
+Es posible personalizar totalmente la salida de la instancia `repl.REPLServer` al pasarle una nueva función al usar la opción `writer` en la construcción. El siguiente ejemplo, convierte un texto de entrada a mayúsculas:
 
 ```js
 const repl = require('repl');
@@ -247,13 +247,13 @@ function myWriter(output) {
 }
 ```
 
-## Class: REPLServer
+## Clase: REPLServer
 
 <!-- YAML
 added: v0.1.91
 -->
 
-The `repl.REPLServer` class inherits from the [`readline.Interface`][] class. Instances of `repl.REPLServer` are created using the `repl.start()` method and *should not* be created directly using the JavaScript `new` keyword.
+La clase `repl.REPLServer` hereda de la clase [`readline.Interface`][]. Instances of `repl.REPLServer` are created using the `repl.start()` method and *should not* be created directly using the JavaScript `new` keyword.
 
 ### Event: 'exit'
 
