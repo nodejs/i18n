@@ -135,7 +135,7 @@
 * [[`3bf736e569`](https://github.com/nodejs/node/commit/3bf736e569)] - **doc**: actualizar la plantilla del pull request en la guía (Zachary Vacura) [#20277](https://github.com/nodejs/node/pull/20277)
 * [[`171cbb1c64`](https://github.com/nodejs/node/commit/171cbb1c64)] - **doc**: corregir las inconsistencias del enlace net.Socket (Hackzzila) [#20271](https://github.com/nodejs/node/pull/20271)
 * [[`26525ef5ab`](https://github.com/nodejs/node/commit/26525ef5ab)] - **doc**: corregir errores de tipografía en doc/changelogs/CHANGELOG\_V10.md (Vse Mozhet Byt) [#20265](https://github.com/nodejs/node/pull/20265)
-* [[`3bc5353110`](https://github.com/nodejs/node/commit/3bc5353110)] - **doc**: corregir la ortografía del nombre de la API en el registro de cambios 10.0.0 (Tobias Nießen) [#20257](https://github.com/nodejs/node/pull/20257)
+* [[`3bc5353110`](https://github.com/nodejs/node/commit/3bc5353110)] - **doc**: corregir la escritura del nombre de la API en el registro de cambios 10.0.0 (Tobias Nießen) [#20257](https://github.com/nodejs/node/pull/20257)
 * [[`e25f2c9e91`](https://github.com/nodejs/node/commit/e25f2c9e91)] - **errors**: eliminar código muerto (Ruben Bridgewater) [#20483](https://github.com/nodejs/node/pull/20483)
 * [[`b89d8178b4`](https://github.com/nodejs/node/commit/b89d8178b4)] - **errors**: minor (SystemError) refactoring (Ruben Bridgewater) [#20337](https://github.com/nodejs/node/pull/20337)
 * [[`58a65d6689`](https://github.com/nodejs/node/commit/58a65d6689)] - **events**: optimizar la condición para un escenario óptimo (Anatoli Papirovski) [#20452](https://github.com/nodejs/node/pull/20452)
@@ -229,9 +229,9 @@
 
 ### Cambios Notables
 
-* Afirmar 
+* Aserción 
   * Llamar a `assert.fail()` con más de un argumento está desaprobado. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
-  * Llamar a `assert.ok()` sin argumentos se lanzará ahora. [[`3cd7977a42`](https://github.com/nodejs/node/commit/3cd7977a42)]
+  * Llamar a `assert.ok()` sin argumentos ahora arrojará. [[`3cd7977a42`](https://github.com/nodejs/node/commit/3cd7977a42)]
   * Llamar a `assert.ifError()` se lanzará ahora con algún argumento que no sea `undefined` o `null`. Previamente el método se lanzaba con cualquier valor verdadero. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
   * Los métodos `assert.rejects()` y `assert.doesNotReject()` han sido añadidos para trabajar con funciones asincrónicas. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
 * Async_hooks 
