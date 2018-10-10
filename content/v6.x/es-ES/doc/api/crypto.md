@@ -22,7 +22,7 @@ console.log(hash);
 
 ## Determinar si el soporte de crypto está desactivado
 
-It is possible for Node.js to be built without including support for the `crypto` module. In such cases, calling `require('crypto')` will result in an error being thrown.
+Para Node.js es posible crear sin la ayuda del módulo `crypto`. En estos casos, llamar al comando `require('crypto')` arrojará como resultado un error.
 
 ```js
 let crypto;
@@ -33,7 +33,7 @@ try {
 }
 ```
 
-## Class: Certificate
+## Tipo: Certificado
 
 <!-- YAML
 added: v0.11.8
