@@ -727,7 +727,7 @@ added: v0.11.14
 
 Imposta l'EC Diffie-Hellman private key (chiave privata). L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
+Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Dopo aver impostato la private key, viene generato e impostato nel `ECDH` object anche il public point (key) associato.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -736,37 +736,37 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> Stabilità: 0 - Obsoleto
 
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman public key. Key encoding can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided `publicKey` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Imposta l'EC Diffie-Hellman public key (chiave pubblica). L'encoding della chiave può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, la `publicKey` dovrebbe essere una stringa; in caso contrario dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
 
-Note that there is not normally a reason to call this method because `ECDH` only requires a private key and the other party's public key to compute the shared secret. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
+Da notare che normalmente non esiste un motivo per chiamare questo metodo poiché `ECDH` richiede solo una private key (chiave privata) e una public key (chiave pubblica) dell'altra parte per calcolare la chiave segreta condivisa. Solitamente viene chiamato [`ecdh.generateKeys()`][] oppure [`ecdh.setPrivateKey()`][]. Il metodo [`ecdh.setPrivateKey()`][] tenta di generare il/la public point/key (punto/chiave pubblico/a) associato/a alla private key (chiave privata) impostata.
 
-Example (obtaining a shared secret):
+Esempio (ottenendo una chiave segreta condivisa):
 
 ```js
 const crypto = require('crypto');
 const alice = crypto.createECDH('secp256k1');
 const bob = crypto.createECDH('secp256k1');
 
-// Note: This is a shortcut way to specify one of Alice's previous private
-// keys. It would be unwise to use such a predictable private key in a real
-// application.
+// Nota: questa è una scorciatoia per specificare una delle chiavi private di Alice
+// precedenti. Non sarebbe saggio usare una chiave privata così prevedibile in una vera
+// applicazione.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
 );
 
-// Bob uses a newly generated cryptographically strong
-// pseudorandom key pair
+// Bob usa una coppia di chiavi pseudocasuali
+// ben cifrate
 bob.generateKeys();
 
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-// aliceSecret and bobSecret should be the same shared secret value
+// aliceSecret e bobSecret dovrebbero avere lo stesso valore segreto condiviso
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -776,14 +776,14 @@ console.log(aliceSecret === bobSecret);
 added: v0.1.92
 -->
 
-The `Hash` class is a utility for creating hash digests of data. It can be used in one of two ways:
+La classe `Hash` è un'utility per creare hash digest di dati. Può essere utilizzata in due modi:
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed hash digest on the readable side, or
-- Using the [`hash.update()`][] and [`hash.digest()`][] methods to produce the computed hash.
+- Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing i dati per produrre un hash digest calcolato sul lato readable, oppure
+- Utilizzando i metodi [`hash.update()`][] e [`hash.digest()`][] per produrre l'hash calcolato.
 
-The [`crypto.createHash()`][] method is used to create `Hash` instances. `Hash` objects are not to be created directly using the `new` keyword.
+Le istanze `Hash` vengono create utilizzando il metodo [`crypto.createHash()`][]. Gli `Hash` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Hash` objects as streams:
+Esempio: Utilizzando gli `Hash` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -793,7 +793,7 @@ hash.on('readable', () => {
   const data = hash.read();
   if (data) {
     console.log(data.toString('hex'));
-    // Prints:
+    // Stampa:
     //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
   }
 });
@@ -802,7 +802,7 @@ hash.write('some data to hash');
 hash.end();
 ```
 
-Example: Using `Hash` and piped streams:
+Esempio: Utilizzando `Hash` e i piped stream:
 
 ```js
 const crypto = require('crypto');
@@ -813,7 +813,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hash).pipe(process.stdout);
 ```
 
-Example: Using the [`hash.update()`][] and [`hash.digest()`][] methods:
+Esempio: Utilizzando i metodi [`hash.update()`][] e [`hash.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -821,7 +821,7 @@ const hash = crypto.createHash('sha256');
 
 hash.update('some data to hash');
 console.log(hash.digest('hex'));
-// Prints:
+// Stampa:
 //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
 ```
 
@@ -834,7 +834,7 @@ added: v0.1.92
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
+Calcola il digest di tutti i dati passati per essere sottoposti all'hash (utilizzando il metodo [`hash.update()`][]). L'`encoding` può essere `'hex'`, `'latin1'` o `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
 The `Hash` object can not be used again after `hash.digest()` method has been called. Multiple calls will cause an error to be thrown.
 
