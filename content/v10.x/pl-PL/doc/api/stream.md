@@ -6,11 +6,11 @@
 
 Strumień jest abstrakcyjnym interfejsem do pracy z danymi strumieniowymi w Node.js. Moduł `stream` zapewnia podstawowe API, które ułatwia konfigurowanie obiektów implementujących interfejs strumienia.
 
-Istnieje wiele obiektów strumieniowych udostępnianych przez Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
+Istnieje wiele obiektów strumieniowych udostępnianych przez Node.js. Na przykład [żądanie do serwera HTTP](http.html#http_class_http_incomingmessage) i [`process.stdout`][] są instancjami strumieni.
 
-Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
+Strumienie mogą być tylko do odczytu, tylko do zapisu lub także do obu. Wszystkie strumienie są instancjami [`EventEmitter`][].
 
-The `stream` module can be accessed using:
+Dostęp do modułu `stream` można uzyskać za pomocą:
 
 ```js
 const stream = require('stream');
