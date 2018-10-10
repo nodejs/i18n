@@ -228,17 +228,17 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 
 **http**:
 
-    * Enclose IPv6 Host header in square brackets. This will enable proper separation of the host address from any port reference (Mihai Potra) [#5314](https://github.com/nodejs/node/pull/5314)
+    * Adjunta el encabezado del Host IPv6 en corchetes. Esto permitirá una separación correcta del la dirección del host de cualquier puerto de referencia (Mihai Potra) [#5314](https://github.com/nodejs/node/pull/5314)
     
 
 **path**:
 
-    * Make win32.isAbsolute more consistent (Brian White) [#6028](https://github.com/nodejs/node/pull/6028)
+    * Hacer a win32.isAbsolute más consistente (Brian White) [#6028](https://github.com/nodejs/node/pull/6028)
     
 
 ### Commits
 
-* [[`0f5a51ae4b`](https://github.com/nodejs/node/commit/0f5a51ae4b)] - **assert**: Check typed array view type in deepEqual (Anna Henningsen) [#5910](https://github.com/nodejs/node/pull/5910)
+* [[`0f5a51ae4b`](https://github.com/nodejs/node/commit/0f5a51ae4b)] - **assert**: Verificar el tipo de vista del arreglo tipeado en deepEqual (Anna Henningsen) [#5910](https://github.com/nodejs/node/pull/5910)
 * [[`e966d1f5db`](https://github.com/nodejs/node/commit/e966d1f5db)] - **buffer**: don't set `kNoZeroFill` flag in allocUnsafe (Vladimir Kurchatkin) [#6007](https://github.com/nodejs/node/pull/6007)
 * [[`3f75751c2e`](https://github.com/nodejs/node/commit/3f75751c2e)] - **build**: introduce ci targets for lint/benchmark (Johan Bergström) [#5921](https://github.com/nodejs/node/pull/5921)
 * [[`781290b61d`](https://github.com/nodejs/node/commit/781290b61d)] - **doc**: refine child_process detach behaviour (Robert Jefe Lindstaedt) [#5330](https://github.com/nodejs/node/pull/5330)
