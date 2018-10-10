@@ -239,9 +239,9 @@ Esto es un lanzamiento de seguridad. Todos los usuarios de Node.js deberían con
 ### Commits
 
 * [[`0f5a51ae4b`](https://github.com/nodejs/node/commit/0f5a51ae4b)] - **assert**: Verificar el tipo de vista del arreglo tipeado en deepEqual (Anna Henningsen) [#5910](https://github.com/nodejs/node/pull/5910)
-* [[`e966d1f5db`](https://github.com/nodejs/node/commit/e966d1f5db)] - **buffer**: don't set `kNoZeroFill` flag in allocUnsafe (Vladimir Kurchatkin) [#6007](https://github.com/nodejs/node/pull/6007)
-* [[`3f75751c2e`](https://github.com/nodejs/node/commit/3f75751c2e)] - **build**: introduce ci targets for lint/benchmark (Johan Bergström) [#5921](https://github.com/nodejs/node/pull/5921)
-* [[`781290b61d`](https://github.com/nodejs/node/commit/781290b61d)] - **doc**: refine child_process detach behaviour (Robert Jefe Lindstaedt) [#5330](https://github.com/nodejs/node/pull/5330)
+* [[`e966d1f5db`](https://github.com/nodejs/node/commit/e966d1f5db)] - **buffer**: no establecer la bandera `kNoZeroFill` en allocUnsafe (Vladimir Kurchatkin) [#6007](https://github.com/nodejs/node/pull/6007)
+* [[`3f75751c2e`](https://github.com/nodejs/node/commit/3f75751c2e)] - **build**: introducir objetivos ci para lint/pruebas de rendimiento (Johan Bergström) [#5921](https://github.com/nodejs/node/pull/5921)
+* [[`781290b61d`](https://github.com/nodejs/node/commit/781290b61d)] - **doc**: refinar el comportamiento de liberación de child_process (Robert Jefe Lindstaedt) [#5330](https://github.com/nodejs/node/pull/5330)
 * [[`aa9fb03202`](https://github.com/nodejs/node/commit/aa9fb03202)] - **doc**: use HTTPS for links where possible (Rich Trott) [#6019](https://github.com/nodejs/node/pull/6019)
 * [[`dd25984838`](https://github.com/nodejs/node/commit/dd25984838)] - **doc**: note assert.throws() pitfall (Rich Trott) [#6029](https://github.com/nodejs/node/pull/6029)
 * [[`f879f5e68a`](https://github.com/nodejs/node/commit/f879f5e68a)] - **doc**: document unspecified behavior for buf.write* methods (James M Snell) [#5925](https://github.com/nodejs/node/pull/5925)
