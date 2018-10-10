@@ -119,7 +119,7 @@ La nueva entrada debe tomar la siguiente forma:
 
 ### Cambios notables
 
-* Lista los cambios interesantes aquí
+* Liste los cambios interesantes aquí
 * Cambios particulares que son responsables por saltos de versión menores o mayores
 * También asegúrate de buscar cualquier cambio introducido por las dependencias, tales como npm
 * ... e incluir cualquier elemento notable de ahí
@@ -144,7 +144,7 @@ doc/api/*.md`, y substituye esta versión del nodo con `sed -i
 "s/REPLACEME/$VERSION/g" doc/api/*.md` or `perl -pi -e "s/REPLACEME/$VERSION/g"
 doc/api/*.md`.
 
-*Nota*: `$VERSION` se debería ser prefijada con `v`.
+*Nota*: `$VERSION` debería ser prefijada con `v`.
 
 Si este lanzamiento incluye cualquier nueva desaprobación es necesario asegurarse que esas fueron asignadas un código estático de desaprobación apropiado. Estos están listados en el documento (vea`doc/api/deprecations.md`) y en la fuente como `DEP00XX`. Al código se le debe asignar un número (p. ej. `DEP0012`). Tenga en cuenta que esta asignación debería ocurrir cuando el PR es aterrizado, pero una verificación será realizada cuando la compilación lanzada es ejecutada.
 
@@ -251,7 +251,7 @@ Combina tu branch de propuesta de lanzamiento con el branch estable que estás l
 
 Selecciona cuidadosamente el commit lanzado al `master`. Después de seleccionar, edita `src/node_version.h` para asegurar que los macros de la versión contengan todos los valores que tenían previamente en el `master`. `NODE_VERSION_IS_RELEASE` debería ser `0`.
 
-Ejecuta `make lint-md-build; make lint` antes de empujar al `master`, para asegurarse que el formato de los Registros de cambios pasen las reglas lint en el `master`.
+Ejecuta `make lint-md-build; make lint` antes de empujar al `master`, para asegurarte que el formato de los Registros de cambios pasen las reglas lint en el `master`.
 
 ### 12. Promover y Firmar las Compilaciones Lanzadas
 
