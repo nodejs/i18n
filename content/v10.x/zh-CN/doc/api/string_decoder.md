@@ -44,7 +44,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 added: v0.1.99
 -->
 
-* `encoding` {string} The character encoding the `StringDecoder` will use. **Default:** `'utf8'`.
+* `encoding` {string} The character encoding the `StringDecoder` will use. **默认值:**`‘utf8'`。
 
 Creates a new `StringDecoder` instance.
 
