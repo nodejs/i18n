@@ -38,32 +38,32 @@
 ### Cambios Notables
 
 * **consola**: 
-  * haga que console.table() utilice inspeccionar con color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
+  * hacer que console.table() utilice inspeccionar con color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**: 
-  * mueve fs/promesa a fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
+  * mover fs/promesa a fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
 * **http**: 
   * se agregó la propiedad abortada para solicitar (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
 * **n-api**: 
-  * inicializa un módulo a través de un símbolo especial (Gabriel Schulhof) [#20161](https://github.com/nodejs/node/pull/20161)
+  * inicializar un módulo a través de un símbolo especial (Gabriel Schulhof) [#20161](https://github.com/nodejs/node/pull/20161)
 * **src**: 
-  * agrega la API pública para exponer la principal plataforma V8 (Allen Yonghuang Wang) [#20447](https://github.com/nodejs/node/pull/20447)
+  * añadir API pública para exponer la Plataforma V8 principal (Allen Yonghuang Wang) [#20447](https://github.com/nodejs/node/pull/20447)
 
 ### Commits
 
 * [[`7293c58d51`](https://github.com/nodejs/node/commit/7293c58d51)] - **assert**: hacer que el indicador de salto sea azul (Ruben Bridgewater) [#20315](https://github.com/nodejs/node/pull/20315)
 * [[`f5054d3412`](https://github.com/nodejs/node/commit/f5054d3412)] - **assert**: mejoras menores en los mensajes de error (Ruben Bridgewater) [#20315](https://github.com/nodejs/node/pull/20315)
-* [[`16970ffda4`](https://github.com/nodejs/node/commit/16970ffda4)] - **benchmark**: seguimiento del tiempo de ejecución en next-tick-exec (Anatoli Papirovski) [#20462](https://github.com/nodejs/node/pull/20462)
+* [[`16970ffda4`](https://github.com/nodejs/node/commit/16970ffda4)] - **benchmark**: hacer seguimiento al tiempo de ejecución en next-tick-exec (Anatoli Papirovski) [#20462](https://github.com/nodejs/node/pull/20462)
 * [[`289e4cef3f`](https://github.com/nodejs/node/commit/289e4cef3f)] - **benchmark**: fijar next-tick-depth (Anatoli Papirovski) [#20461](https://github.com/nodejs/node/pull/20461)
 * [[`b0e6f10530`](https://github.com/nodejs/node/commit/b0e6f10530)] - **benchmark**: añadir plataforma para zlib gzip + gunzip cycle (Anna Henningsen) [#20034](https://github.com/nodejs/node/pull/20034)
 * [[`167de1f038`](https://github.com/nodejs/node/commit/167de1f038)] - **build**: verificar para diferentes firmas desaprobadas (Ruben Bridgewater) [#20384](https://github.com/nodejs/node/pull/20384)
 * [[`348d391a71`](https://github.com/nodejs/node/commit/348d391a71)] - **build**: remover interruptor de configuración --xcode (Ben Noordhuis) [#20328](https://github.com/nodejs/node/pull/20328)
-* [[`2ce4b7cb8c`](https://github.com/nodejs/node/commit/2ce4b7cb8c)] - **build**: no depende de `cp` en `PATH` (Anna Henningsen) [#20296](https://github.com/nodejs/node/pull/20296)
-* [[`c5b3459003`](https://github.com/nodejs/node/commit/c5b3459003)] - **build**: utilice -9 con `kill` en Makefile (Rich Trott) [#20195](https://github.com/nodejs/node/pull/20195)
+* [[`2ce4b7cb8c`](https://github.com/nodejs/node/commit/2ce4b7cb8c)] - **build**: no depender de `cp` en `PATH` (Anna Henningsen) [#20296](https://github.com/nodejs/node/pull/20296)
+* [[`c5b3459003`](https://github.com/nodejs/node/commit/c5b3459003)] - **build**: utilizar -9 con `kill` en Makefile (Rich Trott) [#20195](https://github.com/nodejs/node/pull/20195)
 * [[`b5931e1d45`](https://github.com/nodejs/node/commit/b5931e1d45)] - **child_process**: nombrar funciones anónimas (Denis Fäcke) [#20399](https://github.com/nodejs/node/pull/20399)
-* [[`ec2037da12`](https://github.com/nodejs/node/commit/ec2037da12)] - **child_process**: arreglar escapes al pasar sockets http (Santiago Gimeno) [#20305](https://github.com/nodejs/node/pull/20305)
+* [[`ec2037da12`](https://github.com/nodejs/node/commit/ec2037da12)] - **child_process**: arreglar fuga al pasar sockets http (Santiago Gimeno) [#20305](https://github.com/nodejs/node/pull/20305)
 * [[`a7758c76c0`](https://github.com/nodejs/node/commit/a7758c76c0)] - **(SEMVER-MINOR)** **console**: hacer que console.table() utilice inspeccionar con color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * [[`29bc735d42`](https://github.com/nodejs/node/commit/29bc735d42)] - **console**: arreglar caso límite de console.table() (Rich Trott) [#20323](https://github.com/nodejs/node/pull/20323)
-* [[`dfcf20f5fd`](https://github.com/nodejs/node/commit/dfcf20f5fd)] - **crypto**: utilice las nuevas constantes OpenSSl en CipherBase (Tobias Nießen) [#20339](https://github.com/nodejs/node/pull/20339)
+* [[`dfcf20f5fd`](https://github.com/nodejs/node/commit/dfcf20f5fd)] - **crypto**: utilizar las nuevas constantes OpenSSl en CipherBase (Tobias Nießen) [#20339](https://github.com/nodejs/node/pull/20339)
 * [[`e17280e8c9`](https://github.com/nodejs/node/commit/e17280e8c9)] - **crypto**: hacer que pbkdf2 utilice checkIsArrayBufferView (Daniel Bevenius) [#20251](https://github.com/nodejs/node/pull/20251)
 * [[`61e93963ce`](https://github.com/nodejs/node/commit/61e93963ce)] - **crypto**: agregar checkIsArrayBufferView (Daniel Bevenius) [#20251](https://github.com/nodejs/node/pull/20251)
 * [[`e81bb9f8a3`](https://github.com/nodejs/node/commit/e81bb9f8a3)] - **crypto**: añadir la función getIntOption para reducir dupl (Daniel Bevenius) [#20247](https://github.com/nodejs/node/pull/20247)
@@ -71,9 +71,9 @@
 * [[`3cf53b66c2`](https://github.com/nodejs/node/commit/3cf53b66c2)] - **deps**: parche de V8 a 6.6.346.27 (Myles Borins) [#20480](https://github.com/nodejs/node/pull/20480)
 * [[`da8bc6ab50`](https://github.com/nodejs/node/commit/da8bc6ab50)] - **deps**: cherry-pick 76cab5f from upstream V8 (Michaël Zasso) [#20350](https://github.com/nodejs/node/pull/20350)
 * [[`05ce635e9a`](https://github.com/nodejs/node/commit/05ce635e9a)] - **doc**: hacer coincidir las firmas console.count()/countReset() (Lambdac0re) [#20599](https://github.com/nodejs/node/pull/20599)
-* [[`e995ae5992`](https://github.com/nodejs/node/commit/e995ae5992)] - **doc**: aclarar `this` en los detectores de eventos (daGo) [#20537](https://github.com/nodejs/node/pull/20537)
+* [[`e995ae5992`](https://github.com/nodejs/node/commit/e995ae5992)] - **doc**: aclarar `this` en los listeners de eventos (daGo) [#20537](https://github.com/nodejs/node/pull/20537)
 * [[`bd27a59865`](https://github.com/nodejs/node/commit/bd27a59865)] - **doc**: move tunniclm to Emeritus (Rich Trott) [#20533](https://github.com/nodejs/node/pull/20533)
-* [[`ec65fe48d8`](https://github.com/nodejs/node/commit/ec65fe48d8)] - **doc**: añadir categoría de seguimiento para métodos de sincronización fs (Chin Huang) [#20526](https://github.com/nodejs/node/pull/20526)
+* [[`ec65fe48d8`](https://github.com/nodejs/node/commit/ec65fe48d8)] - **doc**: añadir categoría de seguimiento para métodos sincrónicos del fs (Chin Huang) [#20526](https://github.com/nodejs/node/pull/20526)
 * [[`8148fca730`](https://github.com/nodejs/node/commit/8148fca730)] - **doc**: actualización "A quien a cc..." en COLLABORATOR\_GUIDE (Vse Mozhet Byt) [#20564](https://github.com/nodejs/node/pull/20564)
 * [[`70586c0334`](https://github.com/nodejs/node/commit/70586c0334)] - **doc**: eliminar "periódicamente" antes de "emitir eventos" (Jesse W. Collins) [#20581](https://github.com/nodejs/node/pull/20581)
 * [[`01560b69a7`](https://github.com/nodejs/node/commit/01560b69a7)] - **doc**: editar texto sobre revocar desaprobaciones (Rich Trott) [#20519](https://github.com/nodejs/node/pull/20519)
