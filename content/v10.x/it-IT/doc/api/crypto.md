@@ -1062,11 +1062,11 @@ added: v0.1.92
 La classe `Verify` è un'utility per verificare le firme. Può essere utilizzata in due modi:
 
 - Come un writable [stream](stream.html), sul quale i dati scritti tramite il writing vengono utilizzati per convalidare la firma fornita, oppure
-- Using the [`verify.update()`][] and [`verify.verify()`][] methods to verify the signature.
+- Utilizzando i metodi [`verify.update()`][] e [`verify.verify()`][] per verificare la firma.
 
-The [`crypto.createVerify()`][] method is used to create `Verify` instances. `Verify` objects are not to be created directly using the `new` keyword.
+Le istanze `Verify` vengono create utilizzando il metodo [`crypto.createVerify()`][]. Gli `Verify` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Verify` objects as streams:
+Esempio: Utilizzando gli `Verify` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -1078,10 +1078,10 @@ verify.end();
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Stampa: true o false
 ```
 
-Example: Using the [`verify.update()`][] and [`verify.verify()`][] methods:
+Esempio: Utilizzando i metodi [`verify.update()`][] e [`verify.verify()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -1092,7 +1092,7 @@ verify.update('some data to sign');
 const publicKey = getPublicKeySomehow();
 const signature = getSignatureToVerify();
 console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+// Stampa: true o false
 ```
 
 ### verify.update(data[, inputEncoding])
@@ -1109,9 +1109,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Verify` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Aggiorna il contenuto di `Verify` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
-This can be called many times with new data as it is streamed.
+Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
 ### verify.verify(object, signature[, signatureFormat])
 
@@ -1127,19 +1127,19 @@ changes:
 - `object` {string | Object}
 - `signature` {string | Buffer | TypedArray | DataView}
 - `signatureFormat` {string}
-- Returns: {boolean} `true` or `false` depending on the validity of the signature for the data and public key.
+- Restituisce: {boolean} `true` o `false` a seconda della validità della firma per i dati e la chiave pubblica.
 
-Verifies the provided data using the given `object` and `signature`. The `object` argument can be either a string containing a PEM encoded object, which can be an RSA public key, a DSA public key, or an X.509 certificate, or an object with one or more of the following properties:
+Verifica i dati forniti utilizzando l'`object` e la `signature` specificati. L'argomento `object` può essere una stringa contenente un object con codifica PEM, il quale può essere una chiave pubblica RSA, una chiave pubblica DSA oppure un certificato X.509 o un object con una o più delle seguenti proprietà:
 
-- `key`: {string} - PEM encoded public key (required)
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - Chiave pubblica con codifica PEM (obbligatoria)
+- `padding`: {integer} - Valore padding opzionale per RSA, può essere uno dei seguenti:
   
-  - `crypto.constants.RSA_PKCS1_PADDING` (default)
+  - `crypto.constants.RSA_PKCS1_PADDING` (valore di default)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to verify the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Da notare che `RSA_PKCS1_PSS_PADDING` utilizzerà MGF1 con la stessa funzione hash utilizzata per verificare il messaggio come specificato nella sezione 3.1 del documento [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (default) causes it to be determined automatically.
+- `saltLength`: {integer} - lunghezza del salt per quando il padding è `RSA_PKCS1_PSS_PADDING`. Il valore speciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` imposta la lunghezza del salta nella dimensione del digest, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (valore di default) fa sì che venga determinato automaticamente.
 
 The `signature` argument is the previously calculated signature for the data, in the `signatureFormat` which can be `'latin1'`, `'hex'` or `'base64'`. If a `signatureFormat` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
