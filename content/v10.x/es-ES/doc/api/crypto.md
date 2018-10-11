@@ -100,7 +100,7 @@ console.log(Certificate.verifySpkac(Buffer.from(spkac)));
 
 Como una interfaz heredada que todavía es compatible, es posible (pero no se recomienda) crear nuevas instancias de la clase `crypto.Certificate` como se ilustra en los ejemplos a continuación.
 
-#### new crypto.Certificate()
+#### nuevo crypto.Certificate()
 
 Instancias de la clase `Certificate` pueden ser creadas usando la palabra clave `new` o llamando a `crypto.Certificate()` como una función:
 

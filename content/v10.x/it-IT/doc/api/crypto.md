@@ -305,9 +305,9 @@ Le istanze della classe `Decipher` vengono utilizzate per decrittografare i dati
 - Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing semplici dati criptati per produrre i dati non criptati sul lato readable, oppure
 - Utilizzando i metodi [`decipher.update()`][] e [`decipher.final()`][] per produrre i dati non criptati.
 
-The [`crypto.createDecipher()`][] or [`crypto.createDecipheriv()`][] methods are used to create `Decipher` instances. `Decipher` objects are not to be created directly using the `new` keyword.
+I metodi [`crypto.createDecipher()`][] o [`crypto.createDecipheriv()`][] sono usati per creare istanze `Decipher`. Gli `Decipher` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Decipher` objects as streams:
+Esempio: Utilizzando gli `Decipher` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -321,7 +321,7 @@ decipher.on('readable', () => {
 });
 decipher.on('end', () => {
   console.log(decrypted);
-  // Prints: some clear text data
+  // Stampa: alcuni dati di testo chiari
 });
 
 const encrypted =
@@ -330,7 +330,7 @@ decipher.write(encrypted, 'hex');
 decipher.end();
 ```
 
-Example: Using `Decipher` and piped streams:
+Esempio: Utilizzando `Decipher` e i piped stream:
 
 ```js
 const crypto = require('crypto');
@@ -343,7 +343,7 @@ const output = fs.createWriteStream('test.js');
 input.pipe(decipher).pipe(output);
 ```
 
-Example: Using the [`decipher.update()`][] and [`decipher.final()`][] methods:
+Esempio: Utilizzando i metodi [`decipher.update()`][] e [`decipher.final()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -354,7 +354,7 @@ const encrypted =
 let decrypted = decipher.update(encrypted, 'hex', 'utf8');
 decrypted += decipher.final('utf8');
 console.log(decrypted);
-// Prints: some clear text data
+// Stampa: alcuni dati di testo chiari
 ```
 
 ### decipher.final([outputEncoding])
@@ -364,9 +364,9 @@ added: v0.1.94
 -->
 
 - `outputEncoding` {string}
-- Returns: {Buffer | string} Any remaining deciphered contents. If `outputEncoding` is one of `'latin1'`, `'ascii'` or `'utf8'`, a string is returned. If an `outputEncoding` is not provided, a [`Buffer`][] is returned.
+- Restituisce: {Buffer | string} Qualsiasi contenuto decifrato restante. Se l'`outputEncoding` è `'latin1'`, `'ascii'` o `'utf8'`, viene restituita una stringa. Se non viene fornito nessun `outputEncoding`, viene restituito un [`Buffer`][].
 
-Once the `decipher.final()` method has been called, the `Decipher` object can no longer be used to decrypt data. Attempts to call `decipher.final()` more than once will result in an error being thrown.
+Una volta chiamato il metodo `decipher.final()`, il `Decipher` object non può più essere utilizzato per decifrare i dati. I tentativi di chiamare `decipher.final()` più di una volta genereranno un errore.
 
 ### decipher.setAAD(buffer)
 
@@ -382,9 +382,9 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Restituisce: {Cipher} per il method chaining.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
+Quando si utilizza una modalità di crittografia autenticata (attualmente sono supportate solo la `GCM` e la `CCM`), il metodo `decipher.setAAD()` imposta il valore utilizzato per il parametro input *additional authenticated data* (AAD).
 
-The `decipher.setAAD()` method must be called before [`decipher.update()`][].
+Il metodo `decipher.setAAD()` dev'essere chiamato prima di [`decipher.update()`][].
 
 ### decipher.setAuthTag(buffer)
 
@@ -400,11 +400,11 @@ changes:
 - `buffer` {Buffer | TypedArray | DataView}
 - Restituisce: {Cipher} per il method chaining.
 
-When using an authenticated encryption mode (only `GCM` and `CCM` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. If no tag is provided, or if the cipher text has been tampered with, [`decipher.final()`][] will throw, indicating that the cipher text should be discarded due to failed authentication.
+Quando si utilizza una modalità di crittografia autenticata (attualmente sono supportare solo la `GCM` e la `CCM`), il metodo `decipher.setAuthTag()` viene utilizzato per passare l'*authentication tag* ricevuto. Se non viene fornito alcun tag, o se il testo cifrato è stato manomesso, verrà eseguito [`decipher.final()`][], indicando che il testo cifrato dovrebbe essere scartato a causa dell'autenticazione fallita.
 
-Note that this Node.js version does not verify the length of GCM authentication tags. Such a check *must* be implemented by applications and is crucial to the authenticity of the encrypted data, otherwise, an attacker can use an arbitrarily short authentication tag to increase the chances of successfully passing authentication (up to 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Da notare che questa versione di Node.js non verifica la lunghezza degli authentication tag GCM. Tale controllo *deve* essere implementato dalle applicazioni ed è fondamentale per l'autenticità dei dati cifrati, altrimenti un utente malintenzionato potrebbe utilizzare un authentication tag arbitrariamente breve per aumentare le possibilità di passare l'autenticazione con successo (fino allo 0,39%). E' altamente consigliato di associare uno dei valori 16, 15, 14, 13, 12, 8 o 4 byte a ciascuna key e di accettare solo gli authentication tag di tale lunghezza, vedi [NIST SP 800-38D](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
-The `decipher.setAuthTag()` method must be called before [`decipher.final()`][].
+Il metodo `decipher.setAuthTag()` dev'essere chiamato prima di [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
 
@@ -415,11 +415,11 @@ added: v0.7.1
 - `autoPadding` {boolean} **Default:** `true`
 - Restituisce: {Cipher} per il method chaining.
 
-When data has been encrypted without standard block padding, calling `decipher.setAutoPadding(false)` will disable automatic padding to prevent [`decipher.final()`][] from checking for and removing padding.
+Quando i dati sono stati cifrati senza il padding standard del blocco, la chiamata a `decipher.setAutoPadding(false)` disabiliterà il padding automatico in modo da impedire a [`decipher.final()`][] di cercare e rimuovere il padding.
 
-Turning auto padding off will only work if the input data's length is a multiple of the ciphers block size.
+La disattivazione del padding automatico sarà possibile solo se la lunghezza dei dati d'input è un multiplo della block size dei cipher.
 
-The `decipher.setAutoPadding()` method must be called before [`decipher.final()`][].
+Il metodo `decipher.setAutoPadding()` dev'essere chiamato prima di [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
 
@@ -437,11 +437,11 @@ changes:
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
+Aggiorna il decipher con `data`. Se viene specificato l'argomento `inputEncoding`, il suo valore dev'essere `'latin1'`, `'base64'` oppure `'hex'` e l'argomento `data` è una stringa che utilizza l'encoding specificato. Se non viene specificato l'argomento `inputEncoding`, `data` dev'essere un [`Buffer`][]. Se `data` è un [`Buffer`][] allora `inputEncoding` viene ignorato.
 
-The `outputEncoding` specifies the output format of the enciphered data, and can be `'latin1'`, `'ascii'` or `'utf8'`. If the `outputEncoding` is specified, a string using the specified encoding is returned. If no `outputEncoding` is provided, a [`Buffer`][] is returned.
+L'`outputEncoding` specifica il formato di output dei dati decifrati e può essere `'latin1'`, `'ascii'` o `'utf8'`. Se l'`outputEncoding` è specificato, viene restituita una stringa che utilizza l'encoding specificato. Se non viene fornito nessun `outputEncoding`, viene restituito un [`Buffer`][].
 
-The `decipher.update()` method can be called multiple times with new data until [`decipher.final()`][] is called. Calling `decipher.update()` after [`decipher.final()`][] will result in an error being thrown.
+Il metodo `decipher.update()` può essere chiamato più volte con i nuovi dati finché non viene chiamato [`decipher.final()`][]. Chiamare `decipher.update()` dopo [`decipher.final()`][] genererà un errore.
 
 ## Class: DiffieHellman
 
@@ -449,23 +449,23 @@ The `decipher.update()` method can be called multiple times with new data until 
 added: v0.5.0
 -->
 
-The `DiffieHellman` class is a utility for creating Diffie-Hellman key exchanges.
+La classe `DiffieHellman` è un'utility per la creazione di scambi di chiavi Diffie-Hellman.
 
-Instances of the `DiffieHellman` class can be created using the [`crypto.createDiffieHellman()`][] function.
+Le istanze della classe `DiffieHellman` possono essere create utilizzando la funzione [`crypto.createDiffieHellman()`][].
 
 ```js
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera le chiavi di Alice...
 const alice = crypto.createDiffieHellman(2048);
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera le chiavi di Bob...
 const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
+// Esegue lo scambio e genera la chiave segreta...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
@@ -484,9 +484,9 @@ added: v0.5.0
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come la public key (chiave pubblica) dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato, e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. L'encoding può essere `'latin1'`, `'hex'` o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-If `outputEncoding` is given a string is returned; otherwise, a [`Buffer`][] is returned.
+Se viene fornito l'`outputEncoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.generateKeys([encoding])
 
@@ -497,7 +497,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Genera valori di chiave Diffie-Hellman privata e pubblica, e restituisce la chiave pubblica nell'`encoding` specificato. Questa chiave dovrebbe essere trasferita all'altra parte. L'encoding può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getGenerator([encoding])
 
@@ -508,7 +508,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Restituisce il generatore Diffie-Hellman nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getPrime([encoding])
 
@@ -519,7 +519,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Restituisce il Diffie-Hellman prime (numero primo) nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getPrivateKey([encoding])
 
@@ -530,7 +530,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Returns the Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Restituisce la Diffie-Hellman private key (chiave privata) nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.getPublicKey([encoding])
 
@@ -541,7 +541,7 @@ added: v0.5.0
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Returns the Diffie-Hellman public key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+Restituisce la chiave pubblica Diffie-Hellman nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### diffieHellman.setPrivateKey(privateKey[, encoding])
 
@@ -552,7 +552,7 @@ added: v0.5.0
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the Diffie-Hellman private key. If the `encoding` argument is provided and is either `'latin1'`, `'hex'`, or `'base64'`, `privateKey` is expected to be a string. If no `encoding` is provided, `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Imposta la chiave privata Diffie-Hellman. Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `privateKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
 
@@ -563,7 +563,7 @@ added: v0.5.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the Diffie-Hellman public key. If the `encoding` argument is provided and is either `'latin1'`, `'hex'` or `'base64'`, `publicKey` is expected to be a string. If no `encoding` is provided, `publicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Imposta la chiave pubblica Diffie-Hellman. Se viene fornito l'argomento `encoding` ed è `'latin1'`, `'hex'` o `'base64'`, `publicKey` dovrebbe essere una stringa. Se non viene fornito nessun `encoding`, `publicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 ### diffieHellman.verifyError
 
@@ -571,9 +571,9 @@ Sets the Diffie-Hellman public key. If the `encoding` argument is provided and i
 added: v0.11.12
 -->
 
-A bit field containing any warnings and/or errors resulting from a check performed during initialization of the `DiffieHellman` object.
+Un campo di bit contenente eventuali avvisi e/o errori risultanti da un controllo eseguito durante l'inizializzazione del `DiffieHellman` object.
 
-The following values are valid for this property (as defined in `constants` module):
+I seguenti valori sono validi per questa proprietà (come definita nel modulo `constants`):
 
 - `DH_CHECK_P_NOT_SAFE_PRIME`
 - `DH_CHECK_P_NOT_PRIME`
@@ -586,23 +586,23 @@ The following values are valid for this property (as defined in `constants` modu
 added: v0.11.14
 -->
 
-The `ECDH` class is a utility for creating Elliptic Curve Diffie-Hellman (ECDH) key exchanges.
+La classe `ECDH` è un'utility per la creazione di scambi di chiavi Elliptic Curve Diffie-Hellman (ECDH).
 
-Instances of the `ECDH` class can be created using the [`crypto.createECDH()`][] function.
+Le istanze della classe `ECDH` possono essere create utilizzando la funzione [`crypto.createECDH()`][].
 
 ```js
 const crypto = require('crypto');
 const assert = require('assert');
 
-// Generate Alice's keys...
+// Genera le chiavi di Alice...
 const alice = crypto.createECDH('secp521r1');
 const aliceKey = alice.generateKeys();
 
-// Generate Bob's keys...
+// Genera le chiavi di Bob...
 const bob = crypto.createECDH('secp521r1');
 const bobKey = bob.generateKeys();
 
-// Exchange and generate the secret...
+// Esegue lo scambio e genera la chiave segreta...
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
@@ -623,15 +623,15 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`.
+Converte la chiave pubblica EC Diffie-Hellman specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica l'encoding del punto e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave restituita viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`.
 
-Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Utilizza [`crypto.getCurves()`][] per ottenere un elenco di nomi di curve disponibili. Nelle versioni OpenSSL recenti, `openssl ecparam -list_curves` mostrerà anche il nome e la descrizione di ciascuna curva ellittica disponibile.
 
-If `format` is not specified the point will be returned in `'uncompressed'` format.
+Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-If the `inputEncoding` is not provided, `key` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Se non viene fornito l'`inputEncoding`, `key` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-Example (uncompressing a key):
+Esempio (decompressione di una chiave):
 
 ```js
 const { ECDH } = require('crypto');
@@ -647,7 +647,7 @@ const uncompressedKey = ECDH.convertKey(compressedKey,
                                         'hex',
                                         'uncompressed');
 
-// the converted key and the uncompressed public key should be the same
+// la chiave convertita e la chiave pubblica non compressa devono essere uguali
 console.log(uncompressedKey === ecdh.getPublicKey('hex'));
 ```
 
@@ -671,11 +671,11 @@ changes:
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come chiave pubblica dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-If `outputEncoding` is given a string will be returned; otherwise a [`Buffer`][] is returned.
+Se viene fornito l'`outputEncoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
-`ecdh.computeSecret` will throw an `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` error when `otherPublicKey` lies outside of the elliptic curve. Since `otherPublicKey` is usually supplied from a remote user over an insecure network, its recommended for developers to handle this exception accordingly.
+`ecdh.computeSecret` genererà un errore `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` quando `otherPublicKey` si trova al di fuori della curva ellittica. Poiché `otherPublicKey` viene solitamente fornita da un utente remoto su una rete non sicura, di conseguenza gli sviluppatori sono invitati a gestire quest'eccezione.
 
 ### ecdh.generateKeys([encoding[, format]])
 
@@ -687,11 +687,11 @@ added: v0.11.14
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
+Genera valori di chiave EC Diffie-Hellman privata e pubblica, e restituisce la chiave pubblica nel `format` e nell'`encoding` specificati. Questa chiave dovrebbe essere trasferita all'altra parte.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified, the point will be returned in `'uncompressed'` format.
+L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+L'argomento `encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.getPrivateKey([encoding])
 
@@ -700,7 +700,7 @@ added: v0.11.14
 -->
 
 - `encoding` {string}
-- Returns: {Buffer | string} The EC Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+- Restituisce: {Buffer | string} La chiave privata EC Diffie-Hellman nell'`encoding` specificato, che può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.getPublicKey(\[encoding\]\[, format\])
 
@@ -710,11 +710,11 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `'uncompressed'`
-- Returns: {Buffer | string} The EC Diffie-Hellman public key in the specified `encoding` and `format`.
+- Restituisce: {Buffer | string} La chiave pubblica EC Diffie-Hellman nell'`encoding` e nel `format` specificati.
 
-The `format` argument specifies point encoding and can be `'compressed'` or `'uncompressed'`. If `format` is not specified the point will be returned in `'uncompressed'` format.
+L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-The `encoding` argument can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is specified, a string is returned; otherwise a [`Buffer`][] is returned.
+L'argomento `encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.setPrivateKey(privateKey[, encoding])
 
@@ -725,9 +725,9 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman private key. The `encoding` can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided, `privateKey` is expected to be a string; otherwise `privateKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Imposta la chiave privata EC Diffie-Hellman. L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-If `privateKey` is not valid for the curve specified when the `ECDH` object was created, an error is thrown. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
+Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Dopo aver impostato la chiave privata, viene generato e impostato nel `ECDH` object anche il punto (chiave) pubblico associato.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
 
@@ -736,37 +736,37 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stability: 0 - Deprecated
+> Stabilità: 0 - Obsoleto
 
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Sets the EC Diffie-Hellman public key. Key encoding can be `'latin1'`, `'hex'` or `'base64'`. If `encoding` is provided `publicKey` is expected to be a string; otherwise a [`Buffer`][], `TypedArray`, or `DataView` is expected.
+Imposta la chiave pubblica EC Diffie-Hellman. L'encoding della chiave può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, la `publicKey` dovrebbe essere una stringa; in caso contrario dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
-Note that there is not normally a reason to call this method because `ECDH` only requires a private key and the other party's public key to compute the shared secret. Typically either [`ecdh.generateKeys()`][] or [`ecdh.setPrivateKey()`][] will be called. The [`ecdh.setPrivateKey()`][] method attempts to generate the public point/key associated with the private key being set.
+Da notare che normalmente non esiste un motivo per chiamare questo metodo poiché `ECDH` richiede solo una chiave privata e la chiave pubblica dell'altra parte per calcolare la chiave segreta condivisa. Solitamente viene chiamato [`ecdh.generateKeys()`][] oppure [`ecdh.setPrivateKey()`][]. Il metodo [`ecdh.setPrivateKey()`][] tenta di generare il punto pubblico/la chiave pubblica associati alla chiave privata impostata.
 
-Example (obtaining a shared secret):
+Esempio (ottenendo una chiave segreta condivisa):
 
 ```js
 const crypto = require('crypto');
 const alice = crypto.createECDH('secp256k1');
 const bob = crypto.createECDH('secp256k1');
 
-// Note: This is a shortcut way to specify one of Alice's previous private
-// keys. It would be unwise to use such a predictable private key in a real
-// application.
+// Nota: questa è una scorciatoia per specificare una delle chiavi private di Alice
+// precedenti. Non sarebbe saggio usare una chiave privata così prevedibile in una vera
+// applicazione.
 alice.setPrivateKey(
   crypto.createHash('sha256').update('alice', 'utf8').digest()
 );
 
-// Bob uses a newly generated cryptographically strong
-// pseudorandom key pair
+// Bob usa una coppia di chiavi pseudocasuali
+// ben cifrate
 bob.generateKeys();
 
 const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
 const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
 
-// aliceSecret and bobSecret should be the same shared secret value
+// aliceSecret e bobSecret dovrebbero avere lo stesso valore segreto condiviso
 console.log(aliceSecret === bobSecret);
 ```
 
@@ -776,14 +776,14 @@ console.log(aliceSecret === bobSecret);
 added: v0.1.92
 -->
 
-The `Hash` class is a utility for creating hash digests of data. It can be used in one of two ways:
+La classe `Hash` è un'utility per creare hash digest di dati. Può essere utilizzata in due modi:
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed hash digest on the readable side, or
-- Using the [`hash.update()`][] and [`hash.digest()`][] methods to produce the computed hash.
+- Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing i dati per produrre un hash digest calcolato sul lato readable, oppure
+- Utilizzando i metodi [`hash.update()`][] e [`hash.digest()`][] per produrre l'hash calcolato.
 
-The [`crypto.createHash()`][] method is used to create `Hash` instances. `Hash` objects are not to be created directly using the `new` keyword.
+Le istanze `Hash` vengono create utilizzando il metodo [`crypto.createHash()`][]. Gli `Hash` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Hash` objects as streams:
+Esempio: Utilizzando gli `Hash` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -793,7 +793,7 @@ hash.on('readable', () => {
   const data = hash.read();
   if (data) {
     console.log(data.toString('hex'));
-    // Prints:
+    // Stampa:
     //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
   }
 });
@@ -802,7 +802,7 @@ hash.write('some data to hash');
 hash.end();
 ```
 
-Example: Using `Hash` and piped streams:
+Esempio: Utilizzando `Hash` e i piped stream:
 
 ```js
 const crypto = require('crypto');
@@ -813,7 +813,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hash).pipe(process.stdout);
 ```
 
-Example: Using the [`hash.update()`][] and [`hash.digest()`][] methods:
+Esempio: Utilizzando i metodi [`hash.update()`][] e [`hash.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -821,7 +821,7 @@ const hash = crypto.createHash('sha256');
 
 hash.update('some data to hash');
 console.log(hash.digest('hex'));
-// Prints:
+// Stampa:
 //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
 ```
 
@@ -834,9 +834,9 @@ added: v0.1.92
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
+Calcola il digest di tutti i dati passati per essere sottoposti all'hash (utilizzando il metodo [`hash.update()`][]). L'`encoding` può essere `'hex'`, `'latin1'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
-The `Hash` object can not be used again after `hash.digest()` method has been called. Multiple calls will cause an error to be thrown.
+L'`Hash` object non può essere utilizzato nuovamente dopo aver chiamato il metodo `hash.digest()`. Chiamate multiple genereranno un errore.
 
 ### hash.update(data[, inputEncoding])
 
@@ -852,9 +852,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the hash content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Aggiorna il contenuto dell'hash con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
-This can be called many times with new data as it is streamed.
+Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
 ## Class: Hmac
 
@@ -862,14 +862,14 @@ This can be called many times with new data as it is streamed.
 added: v0.1.94
 -->
 
-The `Hmac` Class is a utility for creating cryptographic HMAC digests. It can be used in one of two ways:
+La classe `Hmac` è un'utility per la creazione di digest HMAC crittografici. Può essere utilizzata in due modi:
 
-- As a [stream](stream.html) that is both readable and writable, where data is written to produce a computed HMAC digest on the readable side, or
-- Using the [`hmac.update()`][] and [`hmac.digest()`][] methods to produce the computed HMAC digest.
+- Come uno [stream](stream.html) che è sia readable che writable (leggibile e scrivibile), sul quale vengono scritti tramite il writing i dati per produrre un HMAC digest calcolato sul lato readable, oppure
+- Utilizzando i metodi [`hmac.update()`][] e [`hmac.digest()`][] per produrre l'HMAC digest calcolato.
 
-The [`crypto.createHmac()`][] method is used to create `Hmac` instances. `Hmac` objects are not to be created directly using the `new` keyword.
+Le istanze `Hmac` vengono create utilizzando il metodo [`crypto.createHmac()`][]. Gli `Hmac` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Hmac` objects as streams:
+Esempio: Utilizzando gli `Hmac` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -879,7 +879,7 @@ hmac.on('readable', () => {
   const data = hmac.read();
   if (data) {
     console.log(data.toString('hex'));
-    // Prints:
+    // Stampa:
     //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
   }
 });
@@ -888,7 +888,7 @@ hmac.write('some data to hash');
 hmac.end();
 ```
 
-Example: Using `Hmac` and piped streams:
+Esempio: Utilizzando `Hmac` e i piped stream:
 
 ```js
 const crypto = require('crypto');
@@ -899,7 +899,7 @@ const input = fs.createReadStream('test.js');
 input.pipe(hmac).pipe(process.stdout);
 ```
 
-Example: Using the [`hmac.update()`][] and [`hmac.digest()`][] methods:
+Esempio: Utilizzando i metodi [`hmac.update()`][] e [`hmac.digest()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -907,7 +907,7 @@ const hmac = crypto.createHmac('sha256', 'a secret');
 
 hmac.update('some data to hash');
 console.log(hmac.digest('hex'));
-// Prints:
+// Stampa:
 //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
 ```
 
@@ -920,9 +920,9 @@ added: v0.1.94
 - `encoding` {string}
 - Restituisce: {Buffer | string}
 
-Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
+Calcola l'HMAC digest di tutti i dati passati utilizzando [`hmac.update()`][]. L'`encoding` può essere `'hex'`, `'latin1'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][];
 
-The `Hmac` object can not be used again after `hmac.digest()` has been called. Multiple calls to `hmac.digest()` will result in an error being thrown.
+L'`Hmac` object non può essere utilizzato nuovamente dopo aver chiamato il metodo `hmac.digest()`. Chiamate multiple di `hmac.digest()` genereranno un errore.
 
 ### hmac.update(data[, inputEncoding])
 
@@ -938,9 +938,9 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Hmac` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Aggiorna il contenuto dell'`Hmac` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
-This can be called many times with new data as it is streamed.
+Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 
 ## Class: Sign
 
@@ -948,14 +948,14 @@ This can be called many times with new data as it is streamed.
 added: v0.1.92
 -->
 
-The `Sign` Class is a utility for generating signatures. It can be used in one of two ways:
+La classe `Sign` è un'utility per la generazione di firme. Può essere utilizzata in due modi:
 
-- As a writable [stream](stream.html), where data to be signed is written and the [`sign.sign()`][] method is used to generate and return the signature, or
-- Using the [`sign.update()`][] and [`sign.sign()`][] methods to produce the signature.
+- Come un writable [stream](stream.html), sul quale vengono scritti tramite il writing i dati da firmare e il metodo [`sign.sign()`][] viene utilizzato per generare e restituire la firma, oppure
+- Utilizzando i metodi [`sign.update()`][] e [`sign.sign()`][] per produrre la firma.
 
-The [`crypto.createSign()`][] method is used to create `Sign` instances. The argument is the string name of the hash function to use. `Sign` objects are not to be created directly using the `new` keyword.
+Le istanze `Sign` vengono create utilizzando il metodo [`crypto.createSign()`][]. L'argomento è il nome della stringa della funzione hash da utilizzare. I `Sign` object non devono essere creati direttamente utilizzando la parola chiave `new`.
 
-Example: Using `Sign` objects as streams:
+Esempio: Utilizzando i `Sign` object come degli stream:
 
 ```js
 const crypto = require('crypto');
@@ -966,12 +966,12 @@ sign.end();
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature using the specified private key and
-// SHA-256. For RSA keys, the algorithm is RSASSA-PKCS1-v1_5 (see padding
-// parameter below for RSASSA-PSS). For EC keys, the algorithm is ECDSA.
+// Stampa: la firma calcolata utilizzando la chiave privata e
+// l'SHA-256 specificati. Per le chiavi RSA, l'algoritmo è 
+// RSASSA-PKCS1-v1_5 (vedi il parametro padding in basso per RSASSA-PSS). Per le chiavi EC, l'algoritmo è ECDSA.
 ```
 
-Example: Using the [`sign.update()`][] and [`sign.sign()`][] methods:
+Esempio: Utilizzando i metodi [`sign.update()`][] e [`sign.sign()`][]:
 
 ```js
 const crypto = require('crypto');
@@ -981,12 +981,12 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Stampa: la firma calcolata
 ```
 
-In some cases, a `Sign` instance can also be created by passing in a signature algorithm name, such as 'RSA-SHA256'. This will use the corresponding digest algorithm. This does not work for all signature algorithms, such as 'ecdsa-with-SHA256'. Use digest names instead.
+In alcuni casi, è anche possibile creare un'istanza `Sign` passando un nome dell'algoritmo di una firma, come ad esempio 'RSA-SHA256'. Questo utilizzerà l'algoritmo del digest corrispondente. Questo non funziona per tutti gli algoritmi delle firma, ad esempio per 'ecdsa-with-SHA256' non funziona. In questo caso utilizza i nomi dei digest.
 
-Example: signing using legacy signature algorithm name
+Esempio: firma utilizzando il nome dell'algoritmo della firma legacy
 
 ```js
 const crypto = require('crypto');
@@ -996,7 +996,7 @@ sign.update('some data to sign');
 
 const privateKey = getPrivateKeySomehow();
 console.log(sign.sign(privateKey, 'hex'));
-// Prints: the calculated signature
+// Stampa: la firma calcolata
 ```
 
 ### sign.sign(privateKey[, outputFormat])
@@ -1016,24 +1016,24 @@ changes:
 - `outputFormat` {string}
 - Restituisce: {Buffer | string}
 
-Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
+Calcola la firma su tutti i dati passati utilizzando [`sign.update()`][] oppure [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
-The `privateKey` argument can be an object or a string. If `privateKey` is a string, it is treated as a raw key with no passphrase. If `privateKey` is an object, it must contain one or more of the following properties:
+L'argomento `privateKey` può essere un object o una stringa. Se `privateKey` è una stringa, viene trattato come una raw key senza passphrase (frase d'accesso). Se `privateKey` è un object, deve contenere una o più delle seguenti proprietà:
 
-- `key`: {string} - PEM encoded private key (required)
-- `passphrase`: {string} - passphrase for the private key
-- `padding`: {integer} - Optional padding value for RSA, one of the following:
+- `key`: {string} - Chiave privata con codifica PEM (obbligatoria)
+- `passphrase`: {string} - passphrase (frase d'accesso) per la chiave privata
+- `padding`: {integer} - Valore padding opzionale per RSA, può essere uno dei seguenti:
   
-  - `crypto.constants.RSA_PKCS1_PADDING` (default)
+  - `crypto.constants.RSA_PKCS1_PADDING` (valore di default)
   - `crypto.constants.RSA_PKCS1_PSS_PADDING`
   
-  Note that `RSA_PKCS1_PSS_PADDING` will use MGF1 with the same hash function used to sign the message as specified in section 3.1 of [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+  Da notare che `RSA_PKCS1_PSS_PADDING` utilizzerà MGF1 con la stessa funzione hash utilizzata per firmare il messaggio come specificato nella sezione 3.1 del documento [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
 
-- `saltLength`: {integer} - salt length for when padding is `RSA_PKCS1_PSS_PADDING`. The special value `crypto.constants.RSA_PSS_SALTLEN_DIGEST` sets the salt length to the digest size, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (default) sets it to the maximum permissible value.
+- `saltLength`: {integer} - lunghezza del salt per quando il padding è `RSA_PKCS1_PSS_PADDING`. Il valore speciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` imposta la lunghezza del salt nella dimensione del digest, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (valore di default) lo imposta sul valore massimo consentito.
 
-The `outputFormat` can specify one of `'latin1'`, `'hex'` or `'base64'`. If `outputFormat` is provided a string is returned; otherwise a [`Buffer`][] is returned.
+L'`outputFormat` può essere `'latin1'`, `'hex'` oppure `'base64'`. Se viene fornito l'`outputFormat` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
-The `Sign` object can not be again used after `sign.sign()` method has been called. Multiple calls to `sign.sign()` will result in an error being thrown.
+Il `Sign` object non può essere utilizzato nuovamente dopo aver chiamato il metodo `sign.sign()`. Chiamate multiple di `sign.sign()` genereranno un errore.
 
 ### sign.update(data[, inputEncoding])
 
@@ -1049,7 +1049,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 
-Updates the `Sign` content with the given `data`, the encoding of which is given in `inputEncoding` and can be `'utf8'`, `'ascii'` or `'latin1'`. If `encoding` is not provided, and the `data` is a string, an encoding of `'utf8'` is enforced. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
+Aggiorna il contenuto di `Sign` con il `data` fornito, il cui encoding è fornito all'interno dell'`inputEncoding` e può essere `'utf8'`, `'ascii'` o `'latin1'`. Se non viene fornito l'`encoding`, e `data` è una stringa, viene imposto un encoding di `'utf8'`. Se `data` è un [`Buffer`][], `TypedArray` o un `DataView`, allora `inputEncoding` viene ignorato.
 
 Può essere chiamato più volte con i nuovi dati mentre viene eseguito lo streaming.
 

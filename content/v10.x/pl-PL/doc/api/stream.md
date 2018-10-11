@@ -1,30 +1,30 @@
-# Stream
+# Strumień
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilność: 2 - Stabilna
 
-A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
+Strumień jest abstrakcyjnym interfejsem do pracy z danymi strumieniowymi w Node.js. Moduł `stream` zapewnia podstawowe API, które ułatwia konfigurowanie obiektów implementujących interfejs strumienia.
 
-There are many stream objects provided by Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
+Istnieje wiele obiektów strumieniowych udostępnianych przez Node.js. Na przykład [żądanie do serwera HTTP](http.html#http_class_http_incomingmessage) i [`process.stdout`][] są instancjami strumieni.
 
-Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
+Strumienie mogą być tylko do odczytu, tylko do zapisu lub także do obu. Wszystkie strumienie są instancjami [`EventEmitter`][].
 
-The `stream` module can be accessed using:
+Dostęp do modułu `stream` można uzyskać za pomocą:
 
 ```js
 const stream = require('stream');
 ```
 
-While it is important to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
+Chociaż ważne jest, aby zrozumieć, jak działają strumienie, sam moduł `stream` jest najbardziej przydatny dla deweloperów, którzy tworzą nowe typy instancji strumieni. Deweloperzy, którzy głównie *zużywają* obiekty strumieniowe rzadko będą musieli korzystać bezpośrednio z modułu `stream`.
 
-## Organization of this Document
+## Organizacja tego Dokumentu
 
-This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
+Ten dokument jest podzielony na dwie główne sekcje z trzecią sekcją dla dodatkowych notatek. Pierwsza sekcja wyjaśnia elementy API strumienia, które są wymagane do *używania* strumieni w aplikacji. Druga sekcja wyjaśnia elementy API wymagane do *implementacji* nowych typów strumieni.
 
-## Types of Streams
+## Rodzaje Strumieni
 
-There are four fundamental stream types within Node.js:
+Istnieją cztery fundamentalne typy strumieni w Node.js:
 
 * [`Readable`][] - streams from which data can be read (for example [`fs.createReadStream()`][]).
 * [`Writable`][] - streams to which data can be written (for example [`fs.createWriteStream()`][]).
@@ -33,23 +33,23 @@ There are four fundamental stream types within Node.js:
 
 Additionally this module includes the utility functions [pipeline](#stream_stream_pipeline_streams_callback) and [finished](#stream_stream_finished_stream_callback).
 
-### Object Mode
+### Tryb Obiektu
 
-All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
+Wszystkie strumienie utworzone przez API Node.js działają wyłącznie na ciągach i `Buffer` (lub `Uint8Array`) obiektach. Możliwe jest jednak, aby implementacje strumieni działały z innymi rodzajami wartości JavaScript (z wyjątkiem `null`, który służy do celów specjalnych w strumieniach). Takie strumienie są uważane za działające w "trybie obiektu".
 
-Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
+Instancje strumieni są przełączane w tryb obiektu za pomocą opcji `objectMode`, gdy strumień jest tworzony. Próba przełączenia istniejącego strumienia na tryb obiektu nie jest bezpieczna.
 
-### Buffering
+### Buforowanie
 
 <!--type=misc-->
 
 Both [`Writable`][] and [`Readable`][] streams will store data in an internal buffer that can be retrieved using `writable.writableBuffer` or `readable.readableBuffer`, respectively.
 
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the streams constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
+Ilość danych potencjalnie buforowanych zależy od opcji `highWaterMark` przekazanej do konstruktora strumieni. W przypadku normalnych strumieni opcja `highWaterMark` określa [całkowitą liczbę bajtów](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). W przypadku strumieni działających w trybie obiektu, `highWaterMark` określa całkowitą liczbę obiektów.
 
 Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
 
-Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
+Gdy całkowity rozmiar wewnętrznego bufora odczytu osiągnie wartość progową określoną przez `highWaterMark`, strumień tymczasowo przestanie odczytywać dane z bazowego zasobu, dopóki dane aktualnie buforowane nie zostaną zużyte (to znaczy, że strumień przestanie wywoływać wewnętrzną metodę `readable._read()`, która jest używana do wypełnienia bufora odczytu).
 
 Data is buffered in `Writable` streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
 
@@ -57,11 +57,11 @@ A key goal of the `stream` API, particularly the [`stream.pipe()`] method, is to
 
 Because [`Duplex`][] and [`Transform`][] streams are both `Readable` and `Writable`, each maintain *two* separate internal buffers used for reading and writing, allowing each side to operate independently of the other while maintaining an appropriate and efficient flow of data. For example, [`net.Socket`][] instances are [`Duplex`][] streams whose `Readable` side allows consumption of data received *from* the socket and whose `Writable` side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
 
-## API for Stream Consumers
+## API dla Konsumentów Strumienia
 
 <!--type=misc-->
 
-Almost all Node.js applications, no matter how simple, use streams in some manner. The following is an example of using streams in a Node.js application that implements an HTTP server:
+Niemal wszystkie aplikacje Node.js, bez względu na to, jak prostymi one są, wykorzystują strumienie w jakiś sposób. Poniżej przedstawiono przykład używania strumieni w aplikacji Node.js, która implementuje serwer HTTP:
 
 ```js
 const http = require('http');
