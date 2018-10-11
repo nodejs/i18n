@@ -1199,13 +1199,13 @@ Crea e restituisce un `Cipher` object che utilizza l'`algorithm` e la `password`
 
 L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+L'`algorithm` dipende da OpenSSL, alcuni esempi sono `'aes192'`, ecc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
-The `password` is used to derive the cipher key and initialization vector (IV). The value must be either a `'latin1'` encoded string, a [`Buffer`][], a `TypedArray`, or a `DataView`.
+La `password` viene utilizzata per ricavare la chiave di cifratura (cipher key) e il vettore di inizializzazione (IV). Il valore deve essere una stringa con codifica `'latin1'`, un [`Buffer`][], un `TypedArray`, oppure un `DataView`.
 
-The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
+L'implementazione di `crypto.createCipher()` deriva le chiavi utilizzando la funzione OpenSSL [`EVP_BytesToKey`][] con l'algoritmo digest impostato su MD5, una iterazione e nessun salt. La mancanza di salt consente attacchi a dizionario poiché la stessa password crea sempre la stessa chiave. Il basso numero di iterazioni e l'algoritmo hash, non crittograficamente sicuro, permettono di testare le password molto rapidamente.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
+In linea con la raccomandazione di OpenSSL di utilizzare PBKDF2 invece di [`EVP_BytesToKey`][], si consiglia agli sviluppatori di derivare una chiave e l'IV autonomamente utilizzando [`crypto.pbkdf2()`][] e di utilizzare [`crypto.createCipheriv()`][] per creare il `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1229,7 +1229,7 @@ Creates and returns a `Cipher` object, with the given `algorithm`, `key` and ini
 
 L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
 The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
 
@@ -1295,7 +1295,7 @@ Creates and returns a `Decipher` object that uses the given `algorithm`, `key` a
 
 L'argomento `options` controlla il comportamento dello stream ed è facoltativo eccetto quando viene utilizzato un cipher in modalità CCM (ad es. `'aes-128-ccm'`). In tal caso, è richiesta l'opzione `authTagLength` che specifica la lunghezza dell'authentication tag in byte, vedi [Modalità CCM](#crypto_ccm_mode).
 
-The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. On recent OpenSSL releases, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` for older versions of OpenSSL) will display the available cipher algorithms.
+The `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc. Nelle versioni OpenSSL recenti, `openssl list -cipher-algorithms` (`openssl list-cipher-algorithms` per le versioni precedenti di OpenSSL) mostrerà gli algoritmi cipher disponibili.
 
 The `key` is the raw key used by the `algorithm` and `iv` is an [initialization vector](https://en.wikipedia.org/wiki/Initialization_vector). Both arguments must be `'utf8'` encoded strings, [Buffers][`Buffer`], `TypedArray`, or `DataView`s. If the cipher does not need an initialization vector, `iv` may be `null`.
 
