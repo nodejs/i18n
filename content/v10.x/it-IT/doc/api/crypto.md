@@ -1563,9 +1563,9 @@ Fornisce un'implementazione asincrona della Password-Based Key Derivation Functi
 
 La funzione `callback` fornita viene chiamata con due argomenti: `err` e `derivedKey`. Se si verifica un errore durante la derivazione della chiave, verrà impostato `err`; in caso contrario `err` sarà `null`. Di default, la `derivedKey` generata correttamente verrà passata al callback come un [`Buffer`][]. Se uno qualsiasi degli argomenti d'input specifica valori o tipi non validi verrà generato un errore.
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+L'argomento `iterations` dev'essere un numero impostato con il valore più alto possibile. Maggiore è il numero di iterazioni, più sicura sarà la chiave derivata, ma sarà necessario più tempo per completarla.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+Anche il `salt` dovrebbe essere il più unico possibile. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
 Example:
 
