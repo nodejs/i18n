@@ -623,13 +623,13 @@ added: v10.0.0
 - `format` {string} **Default:** `'uncompressed'`
 - Restituisce: {Buffer | string}
 
-Converte l'EC Diffie-Hellman public key (chiave pubblica) specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica l'encoding del punto e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato, e la chiave restituita viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'`, o `'base64'`.
+Converte l'EC Diffie-Hellman public key (chiave pubblica) specificata tramite `key` e `curve` nel formato specificato da `format`. L'argomento `format` specifica l'encoding del punto e può essere `'compressed'`, `'uncompressed'` oppure `'hybrid'`. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave restituita viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`.
 
 Utilizza [`crypto.getCurves()`][] per ottenere un elenco di nomi di curve disponibili. Nelle versioni OpenSSL recenti, `openssl ecparam -list_curves` mostrerà anche il nome e la descrizione di ciascuna curva ellittica disponibile.
 
 Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-Se non viene fornito l'`inputEncoding`, `key` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Se non viene fornito l'`inputEncoding`, `key` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 Esempio (decompressione di una chiave):
 
@@ -671,7 +671,7 @@ changes:
 - `outputEncoding` {string}
 - Restituisce: {Buffer | string}
 
-Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come la public key (chiave pubblica) dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato, e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'`, o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Calcola la chiave segreta condivisa utilizzando `otherPublicKey` come la public key (chiave pubblica) dell'altra parte e restituisce la chiave segreta condivisa calcolata. La chiave fornita viene interpretata utilizzando l'`inputEncoding` specificato e la chiave segreta viene codificata utilizzando l'`outputEncoding` specificato. Gli encoding possono essere `'latin1'`, `'hex'` o `'base64'`. Se non viene fornito l'`inputEncoding`, `otherPublicKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 Se viene fornito l'`outputEncoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
@@ -691,7 +691,7 @@ Genera valori private EC Diffie-Hellman key (chiave privata) e public EC Diffie-
 
 L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-L'argomento `encoding` può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
+L'argomento `encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.getPrivateKey([encoding])
 
@@ -714,7 +714,7 @@ added: v0.11.14
 
 L'argomento `format` specifica l'encoding del punto e può essere `'compressed'` oppure `'uncompressed'`. Se non viene specificato `format`, il punto verrà restituito nel formato `'uncompressed'`.
 
-L'argomento `encoding` può essere `'latin1'`, `'hex'`, o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
+L'argomento `encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding` viene restituita una stringa; in caso contrario, viene restituito un [`Buffer`][].
 
 ### ecdh.setPrivateKey(privateKey[, encoding])
 
@@ -725,7 +725,7 @@ added: v0.11.14
 - `privateKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta l'EC Diffie-Hellman private key (chiave privata). L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Imposta l'EC Diffie-Hellman private key (chiave privata). L'`encoding` può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, `privateKey` dovrebbe essere una stringa; in caso contrario `privateKey` dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 Se la `privateKey` non è valida per la curva specificata quando è stato creato l'`ECDH` object, viene generato un errore. Dopo aver impostato la private key, viene generato e impostato nel `ECDH` object anche il public point (key) associato.
 
@@ -741,7 +741,7 @@ deprecated: v5.2.0
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
 
-Imposta l'EC Diffie-Hellman public key (chiave pubblica). L'encoding della chiave può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, la `publicKey` dovrebbe essere una stringa; in caso contrario dovrebbe essere un [`Buffer`][], un `TypedArray`, o un `DataView`.
+Imposta l'EC Diffie-Hellman public key (chiave pubblica). L'encoding della chiave può essere `'latin1'`, `'hex'` o `'base64'`. Se viene fornito l'`encoding`, la `publicKey` dovrebbe essere una stringa; in caso contrario dovrebbe essere un [`Buffer`][], un `TypedArray` o un `DataView`.
 
 Da notare che normalmente non esiste un motivo per chiamare questo metodo poiché `ECDH` richiede solo una private key (chiave privata) e una public key (chiave pubblica) dell'altra parte per calcolare la chiave segreta condivisa. Solitamente viene chiamato [`ecdh.generateKeys()`][] oppure [`ecdh.setPrivateKey()`][]. Il metodo [`ecdh.setPrivateKey()`][] tenta di generare il/la public point/key (punto/chiave pubblico/a) associato/a alla private key (chiave privata) impostata.
 
