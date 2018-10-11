@@ -1565,9 +1565,9 @@ La funzione `callback` fornita viene chiamata con due argomenti: `err` e `derive
 
 L'argomento `iterations` dev'essere un numero impostato con il valore più alto possibile. Maggiore è il numero di iterazioni, più sicura sarà la chiave derivata, ma sarà necessario più tempo per completarla.
 
-Anche il `salt` dovrebbe essere il più unico possibile. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+Anche il `salt` dovrebbe essere il più unico possibile. E' consigliato che i salt siano casuali e la loro lunghezza sia di almeno 16 byte. Vedi [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) per ulteriori dettagli.
 
-Example:
+Esempio:
 
 ```js
 const crypto = require('crypto');
@@ -1577,7 +1577,7 @@ crypto.pbkdf2('secret', 'salt', 100000, 64, 'sha512', (err, derivedKey) => {
 });
 ```
 
-The `crypto.DEFAULT_ENCODING` property can be used to change the way the `derivedKey` is passed to the callback. This property, however, has been deprecated and use should be avoided.
+La proprietà `crypto.DEFAULT_ENCODING` può essere utilizzata per modificare il modo in cui la `derivedKey` viene passata al callback. Tuttavia questa proprietà è obsoleta e il suo utilizzo dovrebbe essere evitato.
 
 ```js
 const crypto = require('crypto');
@@ -1588,9 +1588,9 @@ crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, derivedKey) => {
 });
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Può essere recuperato un array di funzioni digest supportate utilizzando [`crypto.getHashes()`][].
 
-Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
+Da notare che quest'API utilizza il threadpool di libuv, il quale può avere implicazioni di prestazioni sorprendenti e negative per alcune applicazioni, vedi la documentazione [`UV_THREADPOOL_SIZE`][] per maggiori informazioni.
 
 ### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
 
@@ -1613,17 +1613,17 @@ changes:
 - `iterations` {number}
 - `keylen` {number}
 - `digest` {string}
-- Returns: {Buffer}
+- Restituisce: {Buffer}
 
-Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
+Fornisce un'implementazione sincrona della Password-Based Key Derivation Function 2 (PBKDF2). Viene applicato un algoritmo dell'HMAC digest selezionato specificato da `digest` per derivare una chiave della lunghezza di byte richiesta (`keylen`) dalla `password`, dal `salt` e dalle `iterations`.
 
-If an error occurs an `Error` will be thrown, otherwise the derived key will be returned as a [`Buffer`][].
+Se si verifica un errore verrà generato un `Error`, in caso contrario la chiave derivata verrà restituita come un [`Buffer`][].
 
-The `iterations` argument must be a number set as high as possible. The higher the number of iterations, the more secure the derived key will be, but will take a longer amount of time to complete.
+L'argomento `iterations` dev'essere un numero impostato con il valore più alto possibile. Maggiore è il numero di iterazioni, più sicura sarà la chiave derivata, ma sarà necessario più tempo per completarla.
 
-The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
+Anche il `salt` dovrebbe essere il più unico possibile. E' consigliato che i salt siano casuali e la loro lunghezza sia di almeno 16 byte. Vedi [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) per ulteriori dettagli.
 
-Example:
+Esempio:
 
 ```js
 const crypto = require('crypto');
@@ -1631,7 +1631,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 64, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...08d59ae'
 ```
 
-The `crypto.DEFAULT_ENCODING` property may be used to change the way the `derivedKey` is returned. This property, however, has been deprecated and use should be avoided.
+La proprietà `crypto.DEFAULT_ENCODING` potrebbe essere utilizzata per modificare il modo in cui viene restituita la `derivedKey`. Tuttavia questa proprietà è obsoleta e il suo utilizzo dovrebbe essere evitato.
 
 ```js
 const crypto = require('crypto');
@@ -1640,7 +1640,7 @@ const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
 console.log(key);  // '3745e48...aa39b34'
 ```
 
-An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
+Può essere recuperato un array di funzioni digest supportate utilizzando [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
 
@@ -1649,11 +1649,11 @@ added: v0.11.14
 -->
 
 - `privateKey` {Object | string} 
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+  - `key` {string} Una chiave privata con codifica PEM.
+  - `passphrase` {string} Una passphrase (frase d'accesso) per la chiave privata.
+  - `padding` {crypto.constants} Un valore padding opzionale definito all'interno di `crypto.constants`, che potrebbe essere: `crypto.constants.RSA_NO_PADDING`, `RSA_PKCS1_PADDING`, o `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 - `buffer` {Buffer | TypedArray | DataView}
-- Returns: {Buffer} A new `Buffer` with the decrypted content.
+- Restituisce: {Buffer} Un nuovo `Buffer` con il contenuto decifrato.
 
 Decrypts `buffer` with `privateKey`.
 
