@@ -1448,7 +1448,7 @@ added: v0.1.92
 - `options` {Object} [`stream.Writable` options][]
 - Restituisce: {Verify}
 
-Crea e restituisce un `Verify` object che utilizza l'algoritmo specificato. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
+Crea e restituisce un `Verify` object che utilizza l'algoritmo specificato. Utilizza [`crypto.getHashes()`][] per ottenere un array di nomi degli algoritmi per la firma disponibili. L'argomento `options` opzionale controlla il comportamento di `stream.Writable`.
 
 ### crypto.getCiphers()
 
@@ -1456,9 +1456,9 @@ Crea e restituisce un `Verify` object che utilizza l'algoritmo specificato. Use 
 added: v0.9.3
 -->
 
-- Returns: {string[]} An array with the names of the supported cipher algorithms.
+- Restituisce: {string[]} Un array con i nomi degli algoritmi cipher supportati.
 
-Example:
+Esempio:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1471,9 +1471,9 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 added: v2.3.0
 -->
 
-- Returns: {string[]} An array with the names of the supported elliptic curves.
+- Restituisce: {string[]} Un array con i nomi delle curve ellittiche supportate.
 
-Example:
+Esempio:
 
 ```js
 const curves = crypto.getCurves();
@@ -1487,9 +1487,9 @@ added: v0.7.5
 -->
 
 - `groupName` {string}
-- Returns: {Object}
+- Restituisce: {Object}
 
-Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Crea un `DiffieHellman` key exchange object predefinito. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
 Example (obtaining a shared secret):
 
