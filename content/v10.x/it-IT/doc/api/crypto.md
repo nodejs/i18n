@@ -1153,7 +1153,7 @@ Il `verify` object non può essere utilizzato nuovamente dopo aver chiamato `ver
 added: v6.3.0
 -->
 
-- Returns: {Object} An object containing commonly used constants for crypto and security related operations. The specific constants currently defined are described in [Crypto Constants](#crypto_crypto_constants_1).
+- Restituisce: {Object} Un object contenente costanti di uso comune per operazioni crittografiche e relative alla sicurezza. Le costanti specifiche attualmente definite sono descritte in [Costanti Crittografiche](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
 
@@ -1162,13 +1162,13 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
+L'encoding predefinito da utilizzare per le funzioni che possono utilizzare le stringhe oppure i [buffers] [`Buffer`]. Il valore predefinito è `'buffer'`, il quale rende i metodi predefiniti ai [`Buffer`][] object.
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility with legacy programs that expect `'latin1'` to be the default encoding.
+Il meccanismo `crypto.DEFAULT_ENCODING` viene fornito per la retrocompatibilità con i programmi legacy che prevedono che `'latin1'` sia l'encoding predefinito.
 
-New applications should expect the default to be `'buffer'`.
+Le nuove applicazioni dovrebbero aspettarsi che il valore predefinito sia `'buffer'`.
 
-This property is deprecated.
+Questa proprietà è obsoleta.
 
 ### crypto.fips
 
@@ -1179,7 +1179,7 @@ deprecated: v10.0.0
 
 Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
 
-This property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Questa proprietà è obsoleta. Please use `crypto.setFips()` and `crypto.getFips()` instead.
 
 ### crypto.createCipher(algorithm, password[, options])
 
